@@ -15,7 +15,7 @@
     "retrievalDate": "2026-05-09",
     "currentnessStatus": "current",
     "currentnessValidationStatus": "passed",
-    "exactTextValidationStatus": "pending",
+    "exactTextValidationStatus": "passed",
     "chunks": [
       {
         "chunkId": "ley-11179-codigo-penal--articulo-107-el-maximum-y-el-minimum-de-173",

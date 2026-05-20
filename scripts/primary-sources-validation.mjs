@@ -662,6 +662,21 @@ export function validatePrimarySources({
   }
   validateNoForbiddenSpanishSimplification(errors, coverage, "primary sources coverage");
 
+  if (strictMode) {
+    if (manifest.status !== "published") errors.push("official documents manifest status must be published in strict mode.");
+    if (coverage?.status !== "published") errors.push("primary sources coverage status must be published in strict mode.");
+    if (!coverageOnlyMode) {
+      if (corpus?.status !== "published") errors.push("primary sources corpus status must be published in strict mode.");
+      if (corpus?.contentStatus !== "unofficial_learning_aid") {
+        errors.push("primary sources corpus contentStatus must be unofficial_learning_aid in strict mode.");
+      }
+      if (qa?.status !== "published") errors.push("primary sources QA status must be published in strict mode.");
+      if (searchIndex?.status !== "published") {
+        errors.push("primary sources search index status must be published in strict mode.");
+      }
+    }
+  }
+
   const manifestEntryById = new Map();
   const manifestIds = [];
   for (const entry of asArray(manifest.entries)) {
@@ -727,6 +742,17 @@ export function validatePrimarySources({
       if (document.title !== manifestEntry.title) errors.push(`${documentId}.title must match official manifest title.`);
       if (document.officialSourceType !== manifestEntry.officialSourceType) {
         errors.push(`${documentId}.officialSourceType must match official manifest officialSourceType.`);
+      }
+      if (strictMode) {
+        if (document.currentnessStatus !== manifestEntry.currentness?.status) {
+          errors.push(`${documentId}.currentnessStatus must match official manifest currentness.status.`);
+        }
+        if (document.currentnessValidationStatus !== manifestEntry.currentness?.validationStatus) {
+          errors.push(`${documentId}.currentnessValidationStatus must match official manifest currentness.validationStatus.`);
+        }
+        if (document.exactTextValidationStatus !== manifestEntry.exactTextValidation?.status) {
+          errors.push(`${documentId}.exactTextValidationStatus must match official manifest exactTextValidation.status.`);
+        }
       }
     }
 

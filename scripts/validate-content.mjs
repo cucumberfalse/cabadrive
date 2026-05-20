@@ -94,7 +94,9 @@ const exceptions = readJson("content/validation/release-exceptions.json") || [];
 
 const allowedModes = new Set(policy?.contentAvailabilityModes || []);
 if (!mode || !allowedModes.has(mode.mode)) errors.push(`Unsupported content mode: ${mode?.mode}`);
-if (mode?.mode !== "unofficial_b_fallback") errors.push("Current MVP must use unofficial_b_fallback until official B question bank is validated.");
+if (mode?.mode !== "unofficial_b_fallback") {
+  errors.push("Current content mode must use unofficial_b_fallback until official B question bank is validated.");
+}
 if (!mode?.label?.includes("not an official question bank")) errors.push("Content mode label must block official question-bank claims.");
 
 const sourceById = new Map();

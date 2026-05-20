@@ -54,6 +54,7 @@ function guide(overrides = {}) {
     topics: [
       {
         id: "signals",
+        status: "draft",
         titleRu: "Жесты",
         summaryRu: "Короткий блок про жесты.",
         learningMaterialRu: ["Смотрите на слово seña и смысл жеста."],
@@ -99,6 +100,22 @@ function guide(overrides = {}) {
     ],
     ...overrides
   };
+}
+
+function publishedGuide(overrides = {}) {
+  const guideContent = guide({ status: "published", ...overrides });
+  for (const topic of guideContent.topics) topic.status = "published";
+  return guideContent;
+}
+
+function publishedCoverage(overrides = {}) {
+  const coverageManifest = coverage({ status: "published", ...overrides });
+  for (const topic of coverageManifest.topics) {
+    topic.phase = "published";
+    topic.status = "published";
+  }
+  for (const assignment of coverageManifest.assignments) assignment.phase = "published";
+  return coverageManifest;
 }
 
 function coverage(overrides = {}) {
@@ -175,12 +192,23 @@ function q2Ticket() {
   };
 }
 
-test("current topic guide placeholder and manifests pass draft validation", () => {
+test("current topic guide and manifests pass published validation", () => {
   const currentQuestions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const currentGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
   const currentCoverage = JSON.parse(readFileSync("content/guide/topic-study-guide.coverage.json", "utf8"));
   const currentTrace = JSON.parse(readFileSync("content/guide/topic-study-guide.source-trace.json", "utf8"));
 
+  assert.equal(currentGuide.status, "published");
+  assert(currentGuide.topics.every((topic) => topic.status === "published"));
+  assert.equal(currentCoverage.status, "published");
+  assert(currentCoverage.topics.every((topic) => topic.phase === "published" && topic.status === "published"));
+  assert(currentCoverage.assignments.every((assignment) => assignment.phase === "published"));
+  assert(
+    currentCoverage.assignments.every((assignment) =>
+      Object.values(assignment.placementPhases || {}).every((phase) => phase === "published")
+    )
+  );
+  assert.equal(currentTrace.status, "published");
   assert.deepEqual(
     validateTopicGuide({
       questions: currentQuestions,
@@ -299,22 +327,23 @@ test("rejects invalid placementPhases values and keys", () => {
 });
 
 test("published mode rejects planned-only assignments", () => {
-  const publishedGuide = guide({ status: "published" });
-  const publishedCoverage = coverage({ status: "published" });
+  const guideContent = publishedGuide();
+  const coverageManifest = publishedCoverage();
+  coverageManifest.assignments[1].phase = "planned";
   const errors = validate({
-    guideContent: publishedGuide,
-    coverageManifest: publishedCoverage,
+    guideContent,
+    coverageManifest,
     trace: sourceTrace({ status: "published" })
   });
 
-  assert(errors.includes("q2: published guide must promote planned assignments before release."));
+  assert(errors.includes("q2: published guide assignment phase must be published."));
+  assert(errors.includes("q2: published guide assignment placement phases must be published."));
 });
 
 test("published mode rejects planned placements inside a dual-assigned row", () => {
-  const publishedGuide = guide({ status: "published" });
-  publishedGuide.topics[0].tickets.push(q2Ticket());
-  const publishedCoverage = coverage({
-    status: "published",
+  const guideContent = publishedGuide();
+  guideContent.topics[0].tickets.push(q2Ticket());
+  const coverageManifest = publishedCoverage({
     assignments: [
       { questionId: "q1", topicIds: ["signals"], phase: "published" },
       {
@@ -329,12 +358,46 @@ test("published mode rejects planned placements inside a dual-assigned row", () 
     ]
   });
   const errors = validate({
-    guideContent: publishedGuide,
-    coverageManifest: publishedCoverage,
+    guideContent,
+    coverageManifest,
     trace: sourceTrace({ status: "published" })
   });
 
-  assert(errors.includes("q2: published guide must promote planned assignments before release."));
+  assert(errors.includes("q2: published guide assignment placement phases must be published."));
+});
+
+test("published mode rejects draft topic and coverage states", () => {
+  const guideContent = publishedGuide();
+  guideContent.topics[0].status = "draft";
+  const coverageManifest = publishedCoverage();
+  coverageManifest.topics[0].phase = "content_ready";
+  coverageManifest.topics[0].status = "draft";
+
+  const errors = validate({
+    guideContent,
+    coverageManifest,
+    trace: sourceTrace({ status: "published" })
+  });
+
+  assert(errors.includes("signals: published guide topic status must be published."));
+  assert(errors.includes("signals: published guide coverage topic phase must be published."));
+  assert(errors.includes("signals: published guide coverage topic status must be published."));
+});
+
+test("published mode rejects English scaffold residue in Russian learner prose", () => {
+  const guideContent = publishedGuide();
+  guideContent.topics[0].summaryRu = "Короткий current-system scaffold.";
+  const errors = validate({
+    guideContent,
+    coverageManifest: publishedCoverage(),
+    trace: sourceTrace({ status: "published" })
+  });
+
+  assert(
+    errors.includes(
+      'topics.0.summaryRu: published topic guide Russian learner prose must not contain English scaffold residue "current-system".'
+    )
+  );
 });
 
 test("rejects missing current question IDs even in draft planned coverage", () => {
@@ -558,9 +621,9 @@ test("rejects manifest status disagreement that could hide strict validation", (
 
   const guideCoverageErrors = validate({ guideContent, coverageManifest, trace });
   assert(guideCoverageErrors.includes("topic guide and coverage statuses must match."));
-  assert(guideCoverageErrors.includes("q2: published guide must promote planned assignments before release."));
+  assert(guideCoverageErrors.includes("signals: published guide topic status must be published."));
 
   const sourceTraceErrors = validate({ trace: sourceTrace({ status: "published" }) });
   assert(sourceTraceErrors.includes("topic guide source trace status must match topic guide and coverage status."));
-  assert(sourceTraceErrors.includes("q2: published guide must promote planned assignments before release."));
+  assert(sourceTraceErrors.includes("signals: published guide topic status must be published."));
 });

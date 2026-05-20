@@ -22,7 +22,7 @@
 
 ## Pricing Or Access Model
 
-Current planning assumption: local/private MVP and research-preview usage first. Public pricing is undecided and depends on licensing constraints for official materials.
+Current planning assumption: local/private study tool and research-preview usage first. Public pricing is undecided and depends on licensing constraints for official materials.
 
 ## Acquisition Notes
 

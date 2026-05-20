@@ -2,7 +2,7 @@
   "version": 1,
   "id": "topic-study-guide",
   "locale": "ru",
-  "status": "draft",
+  "status": "published",
   "contentStatus": "unofficial_learning_aid",
   "titleRu": "Тематический гид по билетам CABA",
   "disclaimer": "Неофициальный учебный материал Cabadrive по доступным билетам. Он помогает учиться, но не заменяет официальные тексты GCBA и не делает эту базу полной официальной подборкой.",
@@ -10,7 +10,7 @@
     {
       "id": "parking-clearances-and-corners",
       "slug": "parking-clearances-and-corners",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -21,13 +21,13 @@
           "numbers_thresholds",
           "trap_negation"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 4, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 13 терминов, 5 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 4, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 13 терминов, 5 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f338477641e41853830d427ae886468a33e1d77563e4fb538a11e8e16f5a5506",
+        "sourceFingerprint": "558958d48f4be7fec2887e6a9f0b68d2d6c84544e811b0de76f976e2e840650e",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -439,7 +439,7 @@
     {
       "id": "parking-prohibitions-and-signed-zones",
       "slug": "parking-prohibitions-and-signed-zones",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -450,13 +450,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 3, красные 3; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 3, красные 3; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "041540efe392e31ed5ffda5b704ccbd48122e65ea2dd84ba85ab6d68e6199f5d",
+        "sourceFingerprint": "c171ea7e3b9189bb72c77d931b523d956d61553480daee17ffdc3c6f00bb5c3c",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -800,19 +800,19 @@
       "claims": [
         {
           "id": "claim-caba-current-parking-general-system-boundary",
-          "textRu": "Ley 2148 задает общую current-system рамку estacionamiento/detención: правила применяются к calzada, различают detención и estacionamiento, задают общие нормы для avenidas/calles, vías rápidas и signage for special regimes; старые fallback-связки с acera izquierda/ambas aceras в b-fallback-010, b-fallback-074 и b-fallback-079 объясняются ticket-specific, а не как новая универсальная current-rule claim.",
+          "textRu": "Ley 2148 задает общую актуальную рамку estacionamiento/detención: правила применяются к calzada, различают detención и estacionamiento, задают общие нормы для avenidas/calles, vías rápidas и специальных режимов сигнализации; старые fallback-связки с acera izquierda/ambas aceras в b-fallback-010, b-fallback-074 и b-fallback-079 объясняются как особенности конкретных билетов, а не как новое универсальное утверждение о текущем правиле.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-prohibitions-caba-general-system-boundary"
         },
         {
           "id": "claim-parking-signs-and-colored-curbs",
-          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo и cordones pintados: R.8 запрещает estacionamiento, R.9 запрещает и estacionar, и detenerse, R.17 uses blue parking signage for exclusive parking, red cordón запрещает остановку/стоянку, yellow cordón запрещает только estacionar.",
+          "textRu": "Anexo L различает No estacionar, No estacionar ni detenerse, Estacionamiento exclusivo и cordones pintados: R.8 запрещает estacionamiento, R.9 запрещает и estacionar, и detenerse, R.17 использует синий знак для Estacionamiento exclusivo, red cordón запрещает остановку/стоянку, yellow cordón запрещает только estacionar.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-prohibitions-signs-and-curbs"
         },
         {
           "id": "claim-channelization-islets-and-contramano-boundary",
-          "textRu": "Anexo L поддерживает узкую границу для mixed tickets: isletas/marcas canalizadoras no se pueden trasponer или circular sobre ellas, а R.2 Contramano означает sentido de circulación opuesto и no se puede ingresar; эти элементы не превращаются в parking permission или bank-front parking rule.",
+          "textRu": "Anexo L поддерживает узкую границу для смешанных билетов: isletas/marcas canalizadoras no se pueden trasponer или circular sobre ellas, а R.2 Contramano означает sentido de circulación opuesto и no se puede ingresar; эти элементы не превращаются в разрешение парковки или правило парковки frente al banco.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-prohibitions-channelization-and-contramano-boundary"
         }
@@ -821,7 +821,7 @@
     {
       "id": "driver-hand-signals",
       "slug": "driver-hand-signals",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -832,13 +832,13 @@
           "cross_topic_dependence",
           "trap_negation"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 2, красные 0; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 8 терминов, 3 заметок о ловушках, 2 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 2, красные 0; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 8 терминов, 3 заметок о ловушках, 2 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "3727f1c94bfa396c90d3be0b6b99f5a88ba0714f334664b8d17f7a8462501cb2",
+        "sourceFingerprint": "36d15f090969ce302aaa7a784c54ef4fb2b1fcd6de08e76261184e320d6d39be",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -1073,13 +1073,13 @@
       "claims": [
         {
           "id": "claim-manual-signals-reinforce-maneuver-warning",
-          "textRu": "В CABA и национальной логике водитель заранее предупреждает непредсказуемые маневры соответствующими luces; manual signals используются как усиление предупреждения, когда это нужно.",
+          "textRu": "В CABA и национальной логике водитель заранее предупреждает непредсказуемые маневры соответствующими luces; señales manuales используются как усиление предупреждения, когда это нужно.",
           "requiresOfficialSource": true,
           "sourceTraceId": "driver-hand-signals-manual-warning"
         },
         {
           "id": "claim-balizas-emergency-and-obstacles",
-          "textRu": "Balizas/intermitentes применяются для detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или obstacle/imprevisto; они предупреждают других, но не делают опасное поведение безопасным само по себе.",
+          "textRu": "Balizas/intermitentes применяются для detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или obstáculo/imprevisto; они предупреждают других, но не делают опасное поведение безопасным само по себе.",
           "requiresOfficialSource": true,
           "sourceTraceId": "driver-hand-signals-balizas-emergency"
         }
@@ -1088,7 +1088,7 @@
     {
       "id": "vehicle-lights-and-signaling",
       "slug": "vehicle-lights-and-signaling",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -1099,13 +1099,13 @@
           "rule_complexity",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 12, красные 6; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 12, красные 6; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "ab6d169a24d197b16721ef7fefda552b37cef13ad9214ef70aca09cb4a484568",
+        "sourceFingerprint": "0110f2e25da2564f2a3171d3916ca030302c216ca4f10bcb78ea01d8c6dfe0a4",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -1126,7 +1126,7 @@
       "summaryRu": "Световые билеты: luces bajas/altas, rompeniebla, balizas, luz de giro и предупреждение маневра, остановки или аварийной ситуации.",
       "learningMaterialRu": [
         "Этот блок - неофициальная подсказка Cabadrive. В билетах про свет сначала спросите себя: надо ехать при плохой видимости, предупредить маневр, обозначить остановку, показать emergencia или распознать знак/картинку?",
-        "Базовая логика знакома и российскому водителю: фары помогают видеть и быть видимым, а balizas/intermitentes предупреждают о detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или imprevisto. Поэтому аварийка не дает права на double fila или остановку там, где это запрещено.",
+        "Базовая логика знакома и российскому водителю: фары помогают видеть и быть видимым, а balizas/intermitentes предупреждают о detenido, egreso, próxima detención/estacionamiento, maniobra riesgosa или imprevisto. Поэтому аварийка не дает права на doble fila или остановку там, где это запрещено.",
         "Для ingreso a garaje/estacionamiento в CABA правильный сигнал в билете - luces intermitentes de emergencia/balizas. Luz de giro hacia el lado или hacia el lado opuesto не подходит: экзамен ждет аварийные огни как предупреждение о необычном замедлении и въезде.",
         "При niebla или visibilidad disminuida не выбирайте luces altas: дальний свет в тумане мешает видеть. В этих билетах нужны luces bajas, а rompeniebla/rompenieblas добавляются только когда вопрос прямо про их назначение и они есть у автомобиля.",
         "Balizas во время обычного движения под дождем или в тумане - ловушка. Они нужны для остановки, аварии, рискованного маневра или другой нестандартной ситуации, а не как режим езды в плохую погоду.",
@@ -1362,7 +1362,7 @@
             {
               "answerId": "b-fallback-015-a2",
               "verdict": "correct",
-              "explanationRu": "Фраза ложная. Balizas предупреждают, что автомобиль detenido или выполняет рискованный/необычный маневр, но не легализуют double fila как временную стоянку."
+              "explanationRu": "Фраза ложная. Balizas предупреждают, что автомобиль detenido или выполняет рискованный/необычный маневр, но не легализуют doble fila как временную стоянку."
             }
           ]
         },
@@ -1372,7 +1372,7 @@
             {
               "answerId": "b-fallback-039-a1",
               "verdict": "incorrect",
-              "explanationRu": "На изображении balizas и короткое время для высадки пассажира не делают double fila разрешенной. Это типичная ловушка: аварийка не отменяет запрет."
+              "explanationRu": "На изображении balizas и короткое время для высадки пассажира не делают doble fila разрешенной. Это типичная ловушка: аварийка не отменяет запрет."
             },
             {
               "answerId": "b-fallback-039-a2",
@@ -1382,7 +1382,7 @@
             {
               "answerId": "b-fallback-039-a3",
               "verdict": "correct",
-              "explanationRu": "Правильно: действие запрещено, потому что double fila допускается только как detención previa a la maniobra de estacionamiento, а не для обычной посадки/высадки."
+              "explanationRu": "Правильно: действие запрещено, потому что doble fila допускается только как detención previa a la maniobra de estacionamiento, а не для обычной посадки/высадки."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b162.jpg"
@@ -1398,7 +1398,7 @@
             {
               "answerId": "b-fallback-097-a2",
               "verdict": "incorrect",
-              "explanationRu": "Водитель внутри автомобиля и включенные balizas не превращают double fila в разрешенную остановку около двух минут."
+              "explanationRu": "Водитель внутри автомобиля и включенные balizas не превращают doble fila в разрешенную остановку около двух минут."
             },
             {
               "answerId": "b-fallback-097-a3",
@@ -1740,7 +1740,7 @@
       "trapNotes": [
         {
           "id": "trap-balizas-not-permission",
-          "textRu": "Balizas предупреждают, но не разрешают double fila, остановку в запрещенном секторе или 2-5 минут ожидания.",
+          "textRu": "Balizas предупреждают, но не разрешают doble fila, остановку в запрещенном секторе или 2-5 минут ожидания.",
           "sourceQuestionIds": [
             "b-fallback-015",
             "b-fallback-039",
@@ -1802,7 +1802,7 @@
         },
         {
           "id": "claim-balizas-use-and-garage-egress",
-          "textRu": "Balizas/intermitentes предупреждают о stopped vehicle, egreso с public road, próxima detención/estacionamiento или рискованном/необычном маневре; CABA отдельно использует их для egreso hacia garajes/playas/estaciones.",
+          "textRu": "Balizas/intermitentes предупреждают о vehículo detenido, egreso hacia la vía pública, próxima detención/estacionamiento или рискованном/необычном маневре; CABA отдельно использует их для egreso hacia garajes/playas/estaciones.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-lights-balizas-and-garage-egress"
         },
@@ -1814,7 +1814,7 @@
         },
         {
           "id": "claim-breakdown-warning-balizas",
-          "textRu": "При avería/imprevisto, который obstructs the road, архивные правила CABA поддерживают предупреждение других через intermitentes/balizas и, когда применимо, размещение portable balizas со стороны приближающихся vehicles.",
+          "textRu": "При avería/imprevisto, который obstructuye la vía, архивные правила CABA поддерживают предупреждение других через intermitentes/balizas и, когда применимо, размещение balizas portátiles со стороны приближающегося транспорта.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-lights-breakdown-warning-balizas"
         },
@@ -1829,7 +1829,7 @@
     {
       "id": "vehicle-condition-maintenance-loads",
       "slug": "vehicle-condition-maintenance-loads",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -1840,13 +1840,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 2, синие 8, желтые 8, красные 3; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 38 терминов, 7 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 2, синие 8, желтые 8, красные 3; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 38 терминов, 7 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "efac5f9a145c7601e58c26037069cf07eec2cb51ac8b42c2fbc319d36eb73142",
+        "sourceFingerprint": "7a0372d20658bec75f70d2ddb298d42618d9e3f415d6ad0916c93fec5f62446d",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -2612,19 +2612,19 @@
         },
         {
           "id": "claim-fuel-engine-lights-prohibition",
-          "textRu": "Ley 2148 поддерживает ответ assigned fuel-station tickets: нельзя cargar combustible с включенными luces и работающим motor.",
+          "textRu": "Ley 2148 поддерживает ответ в назначенных билетах про estaciones de servicio: нельзя cargar combustible с включенными luces и работающим motor.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-condition-fuel-engine-lights-prohibition"
         },
         {
           "id": "claim-breakdown-tunnel-warning-and-towing",
-          "textRu": "При avería, caída de carga или inmovilización, которые мешают движению, архивные правила поддерживают warning через lights/balizas и быстрое восстановление свободного проезда; CABA также оставляет remolque аварийного/неисправного автомобиля за vehicle destined to that purpose.",
+          "textRu": "При avería, caída de carga или inmovilización, которые мешают движению, архивные правила поддерживают предупреждение через luces/balizas и быстрое восстановление свободного проезда; CABA также оставляет remolque аварийного/неисправного автомобиля за vehículo destinado a ese fin.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-condition-breakdown-tunnel-warning-and-towing"
         },
         {
           "id": "claim-transitory-signs-work-zones",
-          "textRu": "Señales transitorias предупреждают о construction and maintenance works на дороге или рядом с ней, а также о temporary risk/restriction in the zone.",
+          "textRu": "Señales transitorias предупреждают о trabajos de construcción y mantenimiento на дороге или рядом с ней, а также о riesgo или restricción temporaria en la zona.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vehicle-condition-transitory-signs-work-zones"
         }
@@ -2693,7 +2693,7 @@
     {
       "id": "pedestrian-and-school-road-markings",
       "slug": "pedestrian-and-school-road-markings",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -2704,13 +2704,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 4, красные 3; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 6 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 4, красные 3; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 6 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "872b567ebbc4617e530008c506c9558dc107ff09a7a0593b8ae883f115f054fa",
+        "sourceFingerprint": "d6ded03576ad3328a702e0d699b7bb67a001635cfe87fdbe3af3d65060cbbfef",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -3056,7 +3056,7 @@
       "claims": [
         {
           "id": "claim-senda-crosswalk-and-imaginary-continuation",
-          "textRu": "Senda peatonal официально является сектором calzada для pedestrian crossing; если она не размечена, используется prolongación longitudinal de la acera/vereda sobre la calzada, кроме специальных bolsones vehiculares.",
+          "textRu": "Senda peatonal официально является сектором calzada для cruce peatonal; если она не размечена, используется prolongación longitudinal de la acera/vereda sobre la calzada, кроме специальных bolsones vehiculares.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-road-markings-senda-and-imaginary-continuation"
         },
@@ -3074,7 +3074,7 @@
         },
         {
           "id": "claim-school-and-working-sign-traps",
-          "textRu": "Anexo L отдельно распознает P.25 Escolares/Niños и T.6 Hombres trabajando; поэтому school-zone и working-sign билеты нужно отвечать по конкретной картинке, не смешивая их с generic senda peatonal.",
+          "textRu": "Anexo L отдельно распознает P.25 Escolares/Niños и T.6 Hombres trabajando; поэтому билеты про zona escolar и señal de obra нужно отвечать по конкретной картинке, не смешивая их с общей логикой senda peatonal.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-road-markings-school-and-working-signs"
         },
@@ -3136,7 +3136,7 @@
     {
       "id": "pedestrian-school-zones-and-markings",
       "slug": "pedestrian-school-zones-and-markings",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -3147,13 +3147,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 10, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 10 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 10, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 10 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "812efcd6e383f17f43f4f51dbaab8527de6d7e6a75cd0c759bba35d0480b6340",
+        "sourceFingerprint": "8acac7f652610900e599b3a9fe0cf148a26e3f235a1987dc727aa871f8e07b9f",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -4065,31 +4065,31 @@
       "claims": [
         {
           "id": "claim-pedestrian-crossing-priority-and-stop-boundary",
-          "textRu": "Senda peatonal and the imaginary vereda continuation define where pedestrians cross, and drivers must yield to pedestrians crossing there or in areas destined for them; stop-line/senda markings explain stopping before the crossing.",
+          "textRu": "Senda peatonal и воображаемое продолжение vereda показывают место перехода пешеходов; водитель должен уступать пешеходам, которые переходят там или в зонах, предназначенных для них; разметка línea de detención/senda объясняет остановку перед переходом.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-senda-priority-and-stop-boundary"
         },
         {
           "id": "claim-school-zone-warning-and-speed-boundary",
-          "textRu": "Anexo L supports school/children warning signs, while Ley 2148 supports the school-ingress/egress precautionary-speed formula; posted speed signs in individual tickets are kept distinct from that time-window formula.",
+          "textRu": "Anexo L поддерживает предупреждающие знаки про школу/детей, а Ley 2148 поддерживает формулу скорости предосторожности у школьного ingreso/egreso; скоростные знаки в отдельных билетах остаются отдельными от этой временной формулы.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-zone-warning-and-speed-boundary"
         },
         {
           "id": "claim-cycling-spaces-and-child-cycling-boundary",
-          "textRu": "Ley 2148 supports the bicisenda/ciclovía definitions, ciclorrodado circulation away from the central zone when no cycling infrastructure exists, and the under-12 bicycle options used by the assigned tickets; exact green-crossing images remain ticket-specific.",
+          "textRu": "Ley 2148 поддерживает определения bicisenda/ciclovía, движение ciclorrodado вне центральной зоны при отсутствии велоинфраструктуры и варианты для велосипедистов младше 12 лет из назначенных билетов; точные изображения зеленых переходов остаются особенностями конкретных билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-cycling-spaces-and-child-cycling"
         },
         {
           "id": "claim-pedestrian-interventions-and-priority-areas",
-          "textRu": "Ley 2148 supports pedestrian interventions as roadway areas preferably destined to pedestrian circulation and the general duty not to drive on sidewalks or pedestrian-only areas, while Calle Prioridad Peatón image labels remain fallback-ticket specific.",
+          "textRu": "Ley 2148 поддерживает pedestrian interventions как дорожные зоны, предпочтительно предназначенные для пешеходного движения, и общий запрет ездить по veredas или зонам только для пешеходов; подписи Calle Prioridad Peatón на изображениях остаются особенностью fallback-билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-interventions-and-priority-areas"
         },
         {
           "id": "claim-ochava-yellow-cordon-and-school-detention-boundaries",
-          "textRu": "Ley 2148 and Anexo L support the ochava/corner parking boundary, no stopping/parking on sendas or stop lines, yellow-cordon parking-only prohibition, and narrow school ascenso/descenso context.",
+          "textRu": "Ley 2148 и Anexo L поддерживают границы парковки около ochava/esquina, запрет detenerse/estacionar на sendas или líneas de detención, yellow cordón как запрет estacionar и узкий школьный контекст ascenso/descenso.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-ochava-yellow-cordon-school-detention"
         }
@@ -4098,7 +4098,7 @@
     {
       "id": "speed-limits",
       "slug": "speed-limits",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -4109,13 +4109,13 @@
           "rule_complexity",
           "trap_negation"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 19, красные 4; нужно удержать точное число, расстояние, срок или порог; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 16 терминов, 5 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 19, красные 4; нужно удержать точное число, расстояние, срок или порог; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 16 терминов, 5 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "672cae49af40fba59b5202fc602d4857a8b55d13bacde7bee8f037654674f83c",
+        "sourceFingerprint": "26958233ff267b2fe89b27447e3f64a338246d62cec0c112b59cc4afbba14d74",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -4857,7 +4857,7 @@
     {
       "id": "safe-distance-and-braking",
       "slug": "safe-distance-and-braking",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -4867,13 +4867,13 @@
           "trap_negation",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 3, желтые 5, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 8 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 3, желтые 5, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 8 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "c04d37d1b9280caa4f8be26ca1a49a1db168eb375c519e2a5f7a571b1c710a42",
+        "sourceFingerprint": "89207fa3ab546dc811bbe3e7a69c31b502cce37c8db18463fd78ef54f453d3e0",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -5347,19 +5347,19 @@
       "claims": [
         {
           "id": "claim-safe-distance-two-seconds-and-prudent-distance",
-          "textRu": "Ley 2148 states that the minimum prudent following distance in CABA must account for speed, road and weather conditions and be at least a two-second time gap; Ley 24.449 also prohibits following closer than a prudent distance for the speed of travel.",
+          "textRu": "Ley 2148 говорит, что минимальная distancia prudente de seguimiento в CABA должна учитывать скорость, дорогу и погоду и составлять не меньше двух секунд; Ley 24.449 также запрещает ехать ближе distancia prudente для текущей скорости движения.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safe-distance-two-seconds-and-prudent-distance"
         },
         {
           "id": "claim-speed-weather-braking-and-control",
-          "textRu": "Ley 2148 and Ley 24.449 support adapting speed to visibility, road surface, weather, traffic and vehicle control, while Ley 2148 vehicle requirements support effective brakes and suspension/adherence as safety conditions.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают адаптацию скорости к видимости, состоянию покрытия, погоде, tránsito и контролю автомобиля; требования Ley 2148 к состоянию автомобиля отдельно поддерживают исправные frenos и suspensión/adherencia как условия безопасности.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safe-distance-speed-weather-braking-and-control"
         },
         {
           "id": "claim-tinted-glass-occupants-visible",
-          "textRu": "Ley 2148 requires vehicle safety glass and, for tint-degree roadside control, occupants must be distinguishable at short distance.",
+          "textRu": "Ley 2148 требует безопасные стекла автомобиля, а для roadside-контроля степени тонировки - чтобы occupants были различимы с короткой дистанции.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safe-distance-tinted-glass-occupants-visible"
         },
@@ -5374,7 +5374,7 @@
     {
       "id": "alcohol-drugs-and-impairment",
       "slug": "alcohol-drugs-and-impairment",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -5384,13 +5384,13 @@
           "numbers_thresholds",
           "rule_complexity"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 5, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог; правило условное или требует разобрать ситуацию, а не угадать по одному слову. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 5, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог; правило условное или требует разобрать ситуацию, а не угадать по одному слову. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "acfb6edfff32e6f3b33a8f9f5241904e00d8ab8dcec8d69beb7d4fa76733a214",
+        "sourceFingerprint": "2f6d284bd7722362ab4e5347f65ac64c84b2a5fcc888806de0c98caaf43481cf",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -6016,19 +6016,19 @@
       "claims": [
         {
           "id": "claim-alcohol-psychophysical-aptitude",
-          "textRu": "Ley 2148 requires the driver to maintain psychophysical conditions that allow vehicle control and prohibits driving after substances that reduce aptitude; it defines reduced aptitude through somnolence, fatigue, coordination, attention, sensory perception and judgment effects.",
+          "textRu": "Ley 2148 требует, чтобы водитель сохранял психофизические условия для контроля автомобиля, и запрещает ехать после веществ, которые уменьшают aptitud; reduced aptitude определяется через сонливость, усталость, координацию, внимание, сенсорное восприятие и способность оценивать ситуацию.",
           "requiresOfficialSource": true,
           "sourceTraceId": "alcohol-impairment-psychophysical-aptitude"
         },
         {
           "id": "claim-caba-alcohol-thresholds-and-beginner-period",
-          "textRu": "Ley 2148 sets CABA alcohol thresholds used by the assigned fallback tickets: 0.5 g/L for ordinary drivers, 0.2 g/L for motovehicles, and 0.0 g/L for passenger/minor/cargo transport and beginner drivers; beginner-driver status lasts two years.",
+          "textRu": "Ley 2148 задает alcohol thresholds CABA, которые используют назначенные fallback-билеты: 0,5 g/L для обычных conductores, 0,2 g/L для motovehículos и 0,0 g/L для passenger/minor/cargo transport и conductores principiantes; статус principiante длится два года.",
           "requiresOfficialSource": true,
           "sourceTraceId": "alcohol-impairment-caba-thresholds-and-beginner-period"
         },
         {
           "id": "claim-testing-refusal-and-removal",
-          "textRu": "Ley 2148 and Ley 24.449 require drivers to submit to alcohol/drug tests; refusal is an offense/presumed violation and CABA control procedure prevents continued driving and orders vehicle removal when alcohol is over the limit or the driver refuses.",
+          "textRu": "Ley 2148 и Ley 24.449 требуют, чтобы водители проходили controles de alcohol/drogas; отказ является infracción/presunción de violación, а процедура CABA не позволяет продолжить движение и распоряжается remover el vehículo при превышении лимита или отказе водителя.",
           "requiresOfficialSource": true,
           "sourceTraceId": "alcohol-impairment-testing-refusal-and-removal"
         }
@@ -6037,7 +6037,7 @@
     {
       "id": "adverse-weather-and-visibility",
       "slug": "adverse-weather-and-visibility",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -6048,13 +6048,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 7, желтые 8, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 22 терминов, 7 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 2, синие 7, желтые 8, красные 1; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 22 терминов, 7 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a089fe49c1d6fbc4f484bac496efc387bb763b471ea5b12727d4f582ffcae5ca",
+        "sourceFingerprint": "a717730b0735396bca42f3722f42b8a26922644fab97ac30e199be3d7bbb17fc",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -6388,7 +6388,7 @@
             {
               "answerId": "b-fallback-269-a3",
               "verdict": "incorrect",
-              "explanationRu": "30 lbs такая же неверная универсализация, как 28 lbs. Правильная pressure depends on that car manual."
+              "explanationRu": "30 lbs такая же неверная универсализация, как 28 lbs. Правильное давление зависит от manual del usuario этого автомобиля."
             }
           ]
         },
@@ -6444,7 +6444,7 @@
             {
               "answerId": "b-fallback-292-a2",
               "verdict": "correct",
-              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы обозначить stopped vehicle."
+              "explanationRu": "Правильно: если пришлось detener en la banquina, нужны luces reglamentarias y balizas, чтобы обозначить vehículo detenido."
             },
             {
               "answerId": "b-fallback-292-a3",
@@ -6532,7 +6532,7 @@
             {
               "answerId": "b-fallback-360-a3",
               "verdict": "incorrect",
-              "explanationRu": "Prohibido cualquier tipo de luz adicional слишком строго. В билете есть конкретные permitted exceptions."
+              "explanationRu": "Prohibido cualquier tipo de luz adicional слишком строго. В билете есть конкретные разрешенные исключения."
             }
           ]
         },
@@ -6702,19 +6702,19 @@
         },
         {
           "id": "claim-weather-lights-low-visibility-and-fog",
-          "textRu": "Ley 2148 и Ley 24.449 поддерживают использование low/position/plate lights, когда natural light или visibility/traffic conditions этого требуют; fog lights используются по собственному назначению, а emergency lights/balizas имеют отдельную warning-функцию.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают использование luces bajas/de posición/de patente, когда luz natural или condiciones de visibilidad/tránsito этого требуют; luces antiniebla используются по собственному назначению, а balizas имеют отдельную функцию предупреждения.",
           "requiresOfficialSource": true,
           "sourceTraceId": "adverse-weather-lights-low-visibility-and-fog"
         },
         {
           "id": "claim-weather-warning-signs-slippery-and-wind",
-          "textRu": "Decreto 779 Anexo L поддерживает значения warning signs для slippery roadway из-за water/oil/dust и для strong lateral winds.",
+          "textRu": "Decreto 779 Anexo L поддерживает значения señales preventivas для calzada resbaladiza из-за agua/aceite/polvo и для fuertes vientos laterales.",
           "requiresOfficialSource": true,
           "sourceTraceId": "adverse-weather-warning-signs-slippery-and-wind"
         },
         {
           "id": "claim-weather-additional-fog-lights",
-          "textRu": "Ley 2148 и Ley 24.449 поддерживают ограничение additional lights; weather-related элемент здесь - разрешенная пара fog lights, а точные pressure/manual/cold tyre answers остаются ticket-specific.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают ограничение дополнительных огней; погодный элемент здесь - разрешенная пара luces antiniebla, а точные ответы про presión/manual/neumáticos fríos остаются особенностями конкретных билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "adverse-weather-additional-fog-lights"
         }
@@ -6723,7 +6723,7 @@
     {
       "id": "fatigue-distraction-and-attention",
       "titleRu": "Усталость, стресс и отвлечения",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -6734,13 +6734,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 8, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 5 заметок о ловушках, 2 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 8, желтые 10, красные 2; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 34 терминов, 5 заметок о ловушках, 2 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "59c3177a6227d8a8750e0aa81bc34c661bbd29d459c8c7c7b4ea492d84cccdeb",
+        "sourceFingerprint": "66104be7b034c9655c523ca9215d65d906a8f35e6366b509e985c9e23853d29d",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -6776,7 +6776,7 @@
         },
         {
           "id": "claim-auriculares-manual-communication-distraction",
-          "textRu": "Архивные Ley 2148 и Ley 24.449 поддерживают запрет для conductores на auriculares и manual continuous communication systems; поэтому phone/headset answer patterns разбираются через loss of attention, hearing, hands and reaction.",
+          "textRu": "Архивные Ley 2148 и Ley 24.449 поддерживают запрет для conductores на auriculares и sistemas de comunicación continua manual; поэтому ответы про teléfono/auriculares разбираются через потерю внимания, слуха, свободных рук и реакции.",
           "requiresOfficialSource": true,
           "sourceTraceId": "fatigue-distraction-auriculares-manual-communication"
         }
@@ -7578,7 +7578,7 @@
     {
       "id": "road-types-highways-and-routes",
       "slug": "road-types-highways-and-routes",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -7589,13 +7589,13 @@
           "rule_complexity",
           "trap_negation"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 6, желтые 19, красные 1; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 18 терминов, 6 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 6, желтые 19, красные 1; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 18 терминов, 6 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "fce671fd20cc8bdaba8fc8f54bd052ff301db82cb2c7f71faa8ec1b45375aa6b",
+        "sourceFingerprint": "de355ec1f372904e901492e7006dd32585a2da7d59a38fa1af175e6b59e09955",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -8409,7 +8409,7 @@
     {
       "id": "regulatory-signs",
       "slug": "regulatory-signs",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -8420,13 +8420,13 @@
           "trap_negation",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 13, желтые 10, красные 3; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 13, желтые 10, красные 3; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "03ad5cb81b3ffd250f2b1a928c9e38dba8f9e86214e717e68e5fec18bf7e5bc0",
+        "sourceFingerprint": "6a2be2040cebc1ec9c6ebe49301b5eb360188240dc911e174e3106a43c94fe1d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -9260,7 +9260,7 @@
     {
       "id": "warning-signs",
       "slug": "warning-signs",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -9271,13 +9271,13 @@
           "caba_rf_divergence",
           "trap_negation"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 1, синие 14, желтые 8, красные 6; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 19 терминов, 5 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 1, синие 14, желтые 8, красные 6; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 19 терминов, 5 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b92f584dc5a0db31426306d045a3e25e4341d486c8fb691faf77a1836c263b3e",
+        "sourceFingerprint": "2cdef782c1fd94767fdadb8f6e5cb92d6974b9de189945544bb9f7da4e550334",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -10147,7 +10147,7 @@
     {
       "id": "information-signs",
       "slug": "information-signs",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -10158,13 +10158,13 @@
           "rule_complexity",
           "trap_negation"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 10 терминов, 4 заметок о ловушках, 2 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант. Дополнительная нагрузка темы: 10 терминов, 4 заметок о ловушках, 2 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "32c76f1470f71827155a9ea66c061396e668a7d51db743d9e90c3f9428aac68d",
+        "sourceFingerprint": "221a0d67f1afa0d388ec49da8e0a93061987b37f15a4e9de3cfa0ed89c84c125",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -10414,7 +10414,7 @@
     {
       "id": "traffic-lights-and-rail-crossings",
       "slug": "traffic-lights-and-rail-crossings",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -10425,13 +10425,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 12, красные 10; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 7 заметок о ловушках, 6 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 12, красные 10; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 7 заметок о ловушках, 6 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "2f5268e3c252bc01d5fc0f5a4fc5966a66213b573692c84a72c28c3336742c81",
+        "sourceFingerprint": "f523e1bc7c500d561707a9f285d3e5b67d7ded084b41a29b801f59283534b506",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -11333,7 +11333,7 @@
     {
       "id": "right-of-way-signals-and-rail-crossings",
       "slug": "right-of-way-signals-and-rail-crossings",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -11344,13 +11344,13 @@
           "spanish_lexical_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 0, желтые 7, красные 5; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 16 терминов, 7 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 0, желтые 7, красные 5; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 16 терминов, 7 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "8ef8891d74ccc2c92573a59446af91f41b16127c24858fbb7871ff28fef8c71d",
+        "sourceFingerprint": "cc7562438f7cf1cc190b0688521ca11defcfa93a9b2103e8c266c404c2c1c6b3",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -11841,7 +11841,7 @@
     {
       "id": "right-of-way-basic-intersections",
       "slug": "right-of-way-basic-intersections",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -11852,13 +11852,13 @@
           "spanish_lexical_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 11, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 7, желтые 11, красные 6; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b33c99e1bbfc855d16eb7714f687c079be38c0fd8c377a9e1002b4922762cbff",
+        "sourceFingerprint": "99b0fcdd24a8fb4c33908f75a4fd8f3f927f332a9a908208681cd3cb2a41f67a",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -12640,7 +12640,7 @@
         },
         {
           "id": "claim-row-basic-mixed-maneuver-boundaries",
-          "textRu": "CABA/national rules support the mixed-ticket boundaries for sobrepaso near dangerous places, giro/marcha atrás limits, and ticket-specific lane-change priority.",
+          "textRu": "Правила CABA/национальные правила поддерживают границы смешанных билетов про sobrepaso рядом с опасными местами, ограничения giro/marcha atrás и приоритет при смене полосы, привязанный к конкретному билету.",
           "requiresOfficialSource": true,
           "sourceTraceId": "right-of-way-basic-mixed-maneuver-boundaries"
         }
@@ -12649,7 +12649,7 @@
     {
       "id": "right-of-way-special-situations",
       "slug": "right-of-way-special-situations",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -12660,13 +12660,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 10, красные 7; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 23 терминов, 5 заметок о ловушках, 7 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 10, красные 7; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 23 терминов, 5 заметок о ловушках, 7 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7d568512996adb0e90e179716d34bc45fee5fad285ed48b95ebf6a910acd5ec7",
+        "sourceFingerprint": "639b95b7d95d445a941d62716e4aa8c0a5452f74bd59fbb006bc865206a3e99e",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -13380,7 +13380,7 @@
         },
         {
           "id": "claim-giro-left-turn-and-horn-boundary",
-          "textRu": "Giro предупреждают luz de giro заранее, а bocina не заменяет указатель; в CABA left turn на intersección semaforizada de doble sentido запрещен без señal luminosa específica que lo permita.",
+          "textRu": "Giro предупреждают luz de giro заранее, а bocina не заменяет указатель; в CABA giro a la izquierda на intersección semaforizada de doble sentido запрещен без señal luminosa específica que lo permita.",
           "requiresOfficialSource": true,
           "sourceTraceId": "right-of-way-special-giro-left-turn-and-horn-boundary"
         },
@@ -13395,7 +13395,7 @@
     {
       "id": "documents-licenses-and-insurance",
       "slug": "documents-licenses-and-insurance",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -13406,13 +13406,13 @@
           "trap_negation",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 18, красные 10; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 24 терминов, 8 заметок о ловушках, 10 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 18, красные 10; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 24 терминов, 8 заметок о ловушках, 10 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a033067b11ce536d7756dd2216ecef24078ee0d3f59b5fa3cbb7e8bc7d8d9c12",
+        "sourceFingerprint": "75dc7ccbbd018d8fea443a0173c93e1d1354a12bf4b0a2d40b28c822be31ebc0",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -14393,7 +14393,7 @@
     {
       "id": "authorities-controls-and-sanctions",
       "slug": "authorities-controls-and-sanctions",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -14404,13 +14404,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 4, красные 5; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 3, желтые 4, красные 5; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; используется юридико-административная лексика; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "036d54a52f810edb42829da849d49323073754613060c173acb9dfe5d4a22266",
+        "sourceFingerprint": "144f7d4dd786e359e20d4ee7ea8be38808ecfba8788355fbd041be306248553b",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -14935,7 +14935,7 @@
         },
         {
           "id": "claim-scoring-initial-points-and-discounts",
-          "textRu": "SEPC/Scoring assigns puntaje to each CABA-licensed conductor, gives 20 puntos initially, and subtracts points for comprobadas infractions rather than requiring an annual course from every driver.",
+          "textRu": "SEPC/Scoring назначает puntaje каждому conductor habilitado en CABA, дает 20 puntos inicialmente и вычитает баллы за infracciones comprobadas, а не требует ежегодный курс от каждого водителя.",
           "requiresOfficialSource": true,
           "sourceTraceId": "authorities-controls-scoring-initial-points-and-discounts"
         }
@@ -14944,7 +14944,7 @@
     {
       "id": "safety-principles-and-risk",
       "slug": "safety-principles-and-risk",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -14955,13 +14955,13 @@
           "rule_complexity",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 4, синие 11, желтые 14, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 25 терминов, 8 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 4, синие 11, желтые 14, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 25 терминов, 8 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "51d6085caaf8bdd1765a2431ea8d1c0bbcc01686506c6bd1417263ca68a0bb83",
+        "sourceFingerprint": "ae28d8daa6a3b5b3d5ba12a65a9cccf618f7df4e79d2a03ba62d71311723182b",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -15432,7 +15432,7 @@
             {
               "answerId": "b-fallback-161-a3",
               "verdict": "incorrect",
-              "explanationRu": "Этот вариант описывает regulatory/prescriptive signs: они дают обязательные órdenes, а не только предупреждают."
+              "explanationRu": "Этот вариант описывает señales reglamentarias/prescriptivas: они дают обязательные órdenes, а не только предупреждают."
             }
           ]
         },
@@ -15442,7 +15442,7 @@
             {
               "answerId": "b-fallback-182-a1",
               "verdict": "correct",
-              "explanationRu": "Verdadero: билет связывает mechanical failures с negligent maintenance. Для экзамена это часть контроля риска владельцем/водителем."
+              "explanationRu": "Verdadero: билет связывает fallas mecánicas с mantenimiento negligente. Для экзамена это часть контроля риска владельцем/водителем."
             },
             {
               "answerId": "b-fallback-182-a2",
@@ -15838,7 +15838,7 @@
     {
       "id": "stopping-vs-parking-maneuvers",
       "slug": "stopping-vs-parking-maneuvers",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -15849,13 +15849,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 11; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 11; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7272ffd967a11462a4dd24983fc18cc6284d61a54ab1b92bbbe41619479f3597",
+        "sourceFingerprint": "906b8ec38cb6bd44b7d6134a0c63674fc9a7e47c5d2aacbb2067e5692de2382c",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -16637,7 +16637,7 @@
     {
       "id": "center-lines-and-crossing-rules",
       "slug": "center-lines-and-crossing-rules",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -16648,13 +16648,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 6, красные 1; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 1, желтые 6, красные 1; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 5 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "2bbe6af6b6e183a88699ac5b28a4dbe56a148aca152cb1d328c3761f8e1fed29",
+        "sourceFingerprint": "987730dc932d49afe3c2def1a64761895279c197fd44fbe7638bf8502325582d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17044,7 +17044,7 @@
     {
       "id": "lane-and-channelization-markings",
       "slug": "lane-and-channelization-markings",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -17055,13 +17055,13 @@
           "trap_negation",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 10, красные 6; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 7 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 10, красные 6; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 7 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e0a0af9fc95c16a15f22316bc095a8729c4decb6c424f9ac3d493ac1a4584f0f",
+        "sourceFingerprint": "4dc524188e14f6cbe93b50f36b29cccd2880e75c152f4027a41f3a241810318d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17673,19 +17673,19 @@
       "claims": [
         {
           "id": "claim-lane-horizontal-markings",
-          "textRu": "H.2 lineas de carril направляют потоки одного направления; exclusive/preferential lane markings reserve or prioritize lanes for specified vehicles, and marked carriles have legal effect when demarcated.",
+          "textRu": "H.2 líneas de carril направляют потоки одного направления; demarcaciones de carril exclusivo/preferencial резервируют или приоритизируют полосы для указанных транспортных средств, а размеченные carriles имеют юридическое значение.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-lane-horizontal-markings"
         },
         {
           "id": "claim-caba-lane-use-and-autopistas",
-          "textRu": "CABA lane-use rules require staying centered in a lane, warning lane changes, using left lanes mainly for sobrepaso/adelantamiento, returning right when appropriate, and using acceleration/deceleration/right lanes for autopista incorporation or exit.",
+          "textRu": "Правила CABA по использованию полос требуют держаться по центру carril, предупреждать смену полосы, использовать левые полосы главным образом для sobrepaso/adelantamiento, возвращаться вправо при необходимости и использовать полосы acceleration/deceleration/right для въезда на autopista или съезда.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-caba-lane-use-and-autopistas"
         },
         {
           "id": "claim-exclusive-lanes-and-metrobus",
-          "textRu": "Carriles exclusivos, including Metrobus lanes, are reserved for authorized/specified vehicles; the guide treats exact emergency exceptions and schedule-image details only at ticket level.",
+          "textRu": "Carriles exclusivos, включая Metrobus, зарезервированы для разрешенных или указанных транспортных средств; точные excepciones por emergencia и детали расписания на изображении объясняются только на уровне конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-exclusive-lanes-and-metrobus"
         },
@@ -17697,7 +17697,7 @@
         },
         {
           "id": "claim-r10-temporary-channelization-and-yellow-cordon",
-          "textRu": "R.10 requires maintaining the same lane in a no-lane-change zone; temporary orange devices channelize traffic in work/danger zones; H.15 yellow cordon prohibits parking while allowing limited detentions.",
+          "textRu": "R.10 требует сохранять тот же carril в зоне запрета смены полосы; временные orange devices направляют поток в зоне работ/опасности; H.15 yellow cordon запрещает parking, но допускает ограниченные detenciones.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-r10-temporary-and-cordon"
         }
@@ -17706,7 +17706,7 @@
     {
       "id": "lane-choice-and-lane-changes",
       "slug": "lane-choice-and-lane-changes",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -17717,13 +17717,13 @@
           "rule_complexity",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 2; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 2; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e4f62472c0ed0f2abee5cbe772a380cce211e8e437547026ec62661e2904d8c2",
+        "sourceFingerprint": "c1de4a95be4dd02d89212a2a6321ebe2e6c60073a2e425422e8bb5708dad3b47",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18054,7 +18054,7 @@
     {
       "id": "public-transport-and-exclusive-lanes",
       "slug": "public-transport-and-exclusive-lanes",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -18065,13 +18065,13 @@
           "cross_topic_dependence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 2, красные 1; ответ легко спутать с привычками или ожиданиями из РФ; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; билет смешивает несколько тем или попадает в разные материалы; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "799cf02750cd05627ba48dd96cdab3ee48011da061be89c74aa2a7e83e50a451",
+        "sourceFingerprint": "f24d34416716675889f07da0c8473fefe3b21cad2c15eb03d920c3fa1032a323",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18341,7 +18341,7 @@
       "claims": [
         {
           "id": "claim-metrobus-public-transport-purpose",
-          "textRu": "Metrobus в CABA является частью integrated public-transport system и предназначен для приоритета массового пассажирского транспорта, а не для частных автомобилей.",
+          "textRu": "Metrobus в CABA является частью sistema integrado de transporte público и предназначен для приоритета массового пассажирского транспорта, а не для частных автомобилей.",
           "requiresOfficialSource": true,
           "sourceTraceId": "public-transport-metrobus-system-purpose"
         },
@@ -18353,7 +18353,7 @@
         },
         {
           "id": "claim-stops-terminals-and-school-detention",
-          "textRu": "Terminal/parada signs and stop-sector markings identify places for public passenger transport; school ascenso/descenso markings in this slice are kept as a narrow ticket-specific school context, not as a general parking rule.",
+          "textRu": "Знаки terminal/parada и разметка sectores de parada обозначают места для transporte público de pasajeros; школьные marcas de ascenso/descenso в этом срезе остаются узким школьным контекстом конкретных билетов, а не общим правилом парковки.",
           "requiresOfficialSource": true,
           "sourceTraceId": "public-transport-stops-terminals-school-detention"
         }
@@ -18362,7 +18362,7 @@
     {
       "id": "sustainable-mobility-and-vulnerable-users",
       "slug": "sustainable-mobility-and-vulnerable-users",
-      "status": "draft",
+      "status": "published",
       "difficulty": "blue",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -18373,13 +18373,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 4, синие 1, желтые 0, красные 0; знакомая дорожная логика и простая формулировка; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 4, синие 1, желтые 0, красные 0; знакомая дорожная логика и простая формулировка; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 12 терминов, 4 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b8fa767b024a145feb4c1e0c90c7d0231a02881827c42bae6efb8f7b9a52b42f",
+        "sourceFingerprint": "3799c551de6cfbba2abe5729ce8a1837ed0cf45b5722b232ce8fd01ae6eefdcc",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -18518,12 +18518,12 @@
             {
               "answerId": "b-fallback-132-a1",
               "verdict": "incorrect",
-            "explanationRu": "Taxis con pasajeros - неверно для этого билета. На изображении carril reservado для colectivos/Metrobus. Такси не получает право ехать по нему только потому, что в нем есть пассажир."
+              "explanationRu": "Taxis con pasajeros - неверно для этого билета. На изображении carril reservado для colectivos/Metrobus. Такси не получает право ехать по нему только потому, что в нем есть пассажир."
             },
             {
               "answerId": "b-fallback-132-a2",
               "verdict": "incorrect",
-            "explanationRu": "Motos тоже не подходят. Вопрос спрашивает, кто еще может circular por este carril. Мотоциклы не показаны как transporte autorizado для этой полосы."
+              "explanationRu": "Motos тоже не подходят. Вопрос спрашивает, кто еще может circular por este carril. Мотоциклы не показаны как transporte autorizado для этой полосы."
             },
             {
               "answerId": "b-fallback-132-a3",
@@ -18560,7 +18560,7 @@
             {
               "answerId": "b-fallback-368-a1",
               "verdict": "correct",
-            "explanationRu": "Правильно: Opción A показывает велосипед. Именно он в этом билете подходит под набор beneficios: ecológico, saludable, económico y rápido."
+              "explanationRu": "Правильно: Opción A показывает велосипед. Именно он в этом билете подходит под набор beneficios: ecológico, saludable, económico y rápido."
             },
             {
               "answerId": "b-fallback-368-a2",
@@ -18581,7 +18581,7 @@
             {
               "answerId": "b-fallback-371-a1",
               "verdict": "incorrect",
-            "explanationRu": "Неверно: утверждение переворачивает смысл. Меньше vehículos не означает большую siniestralidad; меньше конфликтующих участников обычно снижает риск."
+              "explanationRu": "Неверно: утверждение переворачивает смысл. Меньше vehículos не означает большую siniestralidad; меньше конфликтующих участников обычно снижает риск."
             },
             {
               "answerId": "b-fallback-371-a2",
@@ -18632,7 +18632,7 @@
         },
         {
           "id": "claim-exclusive-lane-ticket-boundary",
-          "textRu": "Carril exclusivo/Metrobus guidance is limited to reserved or authorized use; ticket `b-fallback-132` keeps its taxi/moto answer as a narrow image-specific conclusion.",
+          "textRu": "Ориентир по carril exclusivo/Metrobus ограничен правилом reserved/authorized use; билет `b-fallback-132` сохраняет ответ taxi/moto как узкий вывод по конкретному изображению.",
           "requiresOfficialSource": true,
           "sourceTraceId": "sustainable-mobility-exclusive-lane-reserved-use"
         }
@@ -18675,7 +18675,7 @@
     {
       "id": "vulnerable-users-and-shared-spaces",
       "slug": "vulnerable-users-and-shared-spaces",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -18686,13 +18686,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 1, желтые 4, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 8 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 1, желтые 4, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 14 терминов, 8 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "6620134e1af15cb330f086c2b7a4eb1f6c93d1dfe612af0c3720af1a86d2f7bd",
+        "sourceFingerprint": "fbf7876c5184f060851eee67a986089e954327512f780bf80dfb844738c44b8f",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -19052,31 +19052,31 @@
       "claims": [
         {
           "id": "claim-vulnerable-users-and-public-way-duty",
-          "textRu": "Ley 2148 supports a shared-road duty for every usuario de la vía pública and an education/prevention focus on actores vulnerables, while the exact b-fallback-061 vulnerability ranking remains ticket-specific.",
+          "textRu": "Ley 2148 поддерживает обязанность convivencia vial для каждого usuario de la vía pública и образовательный/профилактический фокус на actores vulnerables; точный порядок уязвимости из b-fallback-061 остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-public-way-duty-and-actors"
         },
         {
           "id": "claim-cycling-space-definitions",
-          "textRu": "Ley 2148 defines bicicleta, bicisenda, ciclocarril, ciclovía, ciclorrodado and ciclorrodado con pedaleo asistido; Anexo L supports the cycling-space sign/marking framing used only as broad context for assigned image tickets.",
+          "textRu": "Ley 2148 определяет bicicleta, bicisenda, ciclocarril, ciclovía, ciclorrodado и ciclorrodado con pedaleo asistido; Anexo L поддерживает контекст знаков/разметки для велосипедных пространств только как широкий контекст назначенных билетов с изображениями.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-cycling-space-definitions"
         },
         {
           "id": "claim-ciclorrodado-circulation-and-priority",
-          "textRu": "Ley 2148 supports the narrow circulation and priority rules used here: ciclorrodados use cycling infrastructure where present, avoid forbidden fast roads, and have priority over automotores that turn into another street across their path.",
+          "textRu": "Ley 2148 поддерживает узкие правила движения и приоритета, используемые здесь: ciclorrodados используют велоинфраструктуру, где она есть, избегают запрещенных быстрых дорог и имеют приоритет перед automotores, которые поворачивают через их траекторию.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-ciclorrodado-circulation-priority"
         },
         {
           "id": "claim-electric-assist-speed-boundary",
-          "textRu": "Ley 2148 supports the 25 km/h general maximum for ciclorrodados con pedaleo asistido eléctricamente; the ticket phrase about progressive power interruption is treated as fallback-ticket wording.",
+          "textRu": "Ley 2148 поддерживает общий максимум 25 km/h для ciclorrodados con pedaleo asistido eléctricamente; билетная фраза про постепенное прекращение помощи двигателя трактуется как формулировка конкретного fallback-билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-electric-assist-speed"
         },
         {
           "id": "claim-sustainable-mobility-bike-network-purpose",
-          "textRu": "Ley 2148 supports the sustainable-mobility framing through public bicycle transport goals, mobility/integrity/safety guarantees, and a safe bicycle-lane network; this remains concise exam support, not a full bicycle topic.",
+          "textRu": "Ley 2148 поддерживает логику movilidad sustentable через цели transporte público de bicicletas, гарантии movilidad/integridad/seguridad и безопасную велосипедную сеть; это остается краткой экзаменационной поддержкой, а не полноценной велосипедной темой.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-sustainable-bike-network-purpose"
         }
@@ -19145,7 +19145,7 @@
     {
       "id": "bicycles-and-micromobility",
       "slug": "bicycles-and-micromobility",
-      "status": "draft",
+      "status": "published",
       "difficulty": "red",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -19156,13 +19156,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 8 заметок о ловушках, 6 source claims.",
+        "rationaleRu": "Целевой повтор по материалу: связанные билеты распределены как зеленые 0, синие 5, желтые 11, красные 8; есть испанские термины или плотная формулировка для A1-уровня; ответ легко спутать с привычками или ожиданиями из РФ; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 28 терминов, 8 заметок о ловушках, 6 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5aeabb8bcc2321ca9ea580ba17656af1f3632f285cbf243961acba074f87deec",
+        "sourceFingerprint": "2d8b1b6add94db940eaf8081c597242211f817322c83aa3c902030158dd7a054",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -19936,37 +19936,37 @@
       "claims": [
         {
           "id": "claim-bike-definitions-and-spaces",
-          "textRu": "Ley 2148 defines bicicleta, bicisenda, ciclocarril, ciclorrodado, ciclorrodado con pedaleo asistido, ciclovía and DMP; Anexo L supports broad cyclist crossing/sign/marking context without proving every exact fallback image label.",
+          "textRu": "Ley 2148 определяет bicicleta, bicisenda, ciclocarril, ciclorrodado, ciclorrodado con pedaleo asistido, ciclovía и DMP; Anexo L поддерживает широкий контекст crossing/sign/marking для велосипедистов, но не доказывает каждую точную подпись на fallback-изображениях.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-definitions-and-spaces"
         },
         {
           "id": "claim-bike-circulation-age-and-priority",
-          "textRu": "Ley 2148 supports the circulation rules used here: allowed/forbidden arterias, age rules for under-12 and assisted ciclorrodados, use of ciclovías/ciclocarriles where present, non-central calzada positioning where absent, and priority over turning automotores.",
+          "textRu": "Ley 2148 поддерживает правила движения, используемые здесь: allowed/forbidden arterias, правила возраста для under-12 и assisted ciclorrodados, использование ciclovías/ciclocarriles при наличии, нецентральное положение на calzada при отсутствии инфраструктуры и приоритет перед turning automotores.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-circulation-age-priority"
         },
         {
           "id": "claim-dmp-and-assisted-speed",
-          "textRu": "Ley 2148 supports the 25 km/h general maximum for ciclorrodados con pedaleo asistido eléctricamente and DMP; progressive power-cut wording remains ticket-specific.",
+          "textRu": "Ley 2148 поддерживает общий максимум 25 km/h для ciclorrodados con pedaleo asistido eléctricamente и DMP; формулировка про постепенное прекращение помощи двигателя остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-assisted-dmp-speed"
         },
         {
           "id": "claim-bike-safety-load-and-distraction",
-          "textRu": "Ley 2148 and Ley 24.449 support the safety framing for cargo stability, visibility/control, and avoiding auriculares or continuous manual communication systems; exact clothing wording remains fallback-ticket wording.",
+          "textRu": "Ley 2148 и Ley 24.449 поддерживают safety framing про устойчивость carga, видимость/контроль и запрет auriculares или sistemas de comunicación continua manual; точная формулировка про одежду остается wording конкретного fallback-билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-safety-load-distraction"
         },
         {
           "id": "claim-bike-parking-and-curb-color",
-          "textRu": "Ley 2148 supports orange curbs for ciclorodado/motovehicle parking, sidewalk/free designed parking spaces for ciclorodados and DMP, and a city parking network; the exact b-fallback-228 parking-lot obligation remains ticket-specific.",
+          "textRu": "Ley 2148 поддерживает orange curbs для парковки ciclorodado/motovehicle, designed parking spaces на vereda/free spaces для ciclorodados и DMP, а также городскую сеть estacionamiento; точная обязанность playa de estacionamiento из b-fallback-228 остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-parking-curb-color"
         },
         {
           "id": "claim-bike-sustainable-risk-framing",
-          "textRu": "Ley 2148 supports the public-bicycle/safe bicycle-lane-network and education framing used to explain sustainable mobility and motorized-traffic risk traps without turning b-fallback-352 into a broad statistical claim.",
+          "textRu": "Ley 2148 поддерживает framing про transporte público de bicicletas, safe bicycle-lane network и education, который объясняет movilidad sustentable и ловушки про riesgo del tránsito motorizado, не превращая b-fallback-352 в широкое статистическое утверждение.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-sustainable-risk-framing"
         }
@@ -20044,7 +20044,7 @@
     {
       "id": "mirrors-blind-spots-and-visibility",
       "slug": "mirrors-blind-spots-and-visibility",
-      "status": "draft",
+      "status": "published",
       "difficulty": "blue",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -20055,13 +20055,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 1, красные 0; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 15 терминов, 5 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Обычная сложность по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 1, красные 0; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 15 терминов, 5 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "b858e35ba04591cefe3c27123cd63af0823bd3a8cecdab1e65dc9824829e68f1",
+        "sourceFingerprint": "50a96df15537a524e96fc07da5b014f22c780312e104fbddf26481de43ac72a0",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -20376,7 +20376,7 @@
     {
       "id": "occupant-protection",
       "slug": "occupant-protection",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -20387,13 +20387,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 4, желтые 6, красные 5; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 3 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 4, желтые 6, красные 5; есть испанские термины или плотная формулировка для A1-уровня; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 6 заметок о ловушках, 3 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "0c96c0b4a7b3766c37d5ff945948d7083405cf327e0c282276c212083d4efd8e",
+        "sourceFingerprint": "a4cc7dc13715d7efb0aaf38c4db2937ab64ce40712d0af64cd51cfeb8ad3cebf",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -20713,7 +20713,7 @@
             {
               "answerId": "b-fallback-120-a1",
               "verdict": "incorrect",
-              "explanationRu": "Sustituir al cinturón неверно. Ley 2148 прямо говорит, что air bags не заменяют cinturón de seguridad и не освобождают от обязанности его использовать."
+              "explanationRu": "Sustituir al cinturón неверно. Ley 2148 прямо говорит, что airbags не заменяют cinturón de seguridad и не освобождают от обязанности его использовать."
             },
             {
               "answerId": "b-fallback-120-a2",
@@ -20915,19 +20915,19 @@
       "claims": [
         {
           "id": "claim-seat-belts-sri-airbag-headrest",
-          "textRu": "Ley 2148 requires seat belts for conductor and occupants, SRI for passengers under 12 and under 1.50 m, says air bags do not replace seat belts, and defines the correct adjustable headrest height.",
+          "textRu": "Ley 2148 требует seat belts для conductor и occupants, SRI для пассажиров младше 12 лет и ниже 1,50 m, говорит, что airbags не заменяют cinturón de seguridad, и определяет правильную высоту регулируемого apoyacabezas.",
           "requiresOfficialSource": true,
           "sourceTraceId": "occupant-seat-belts-sri-airbag-headrest"
         },
         {
           "id": "claim-reflective-vest-emergency",
-          "textRu": "Ley 2148 requires a reflective vest accessible in the vehicle habitáculo and supports warning/emergency behavior for breakdowns or immobilization on autopistas/vías rápidas.",
+          "textRu": "Ley 2148 требует chaleco reflectante, доступный в habitáculo автомобиля, и поддерживает предупреждающее/emergencia-поведение при avería или inmovilización на autopistas/vías rápidas.",
           "requiresOfficialSource": true,
           "sourceTraceId": "occupant-reflective-vest-emergency"
         },
         {
           "id": "claim-minors-front-and-loose-animals",
-          "textRu": "Ley 2148 prohibits transporting children under 12 in front seats and transporting loose animals; exact pet-retention wording in the fallback image ticket remains ticket-specific.",
+          "textRu": "Ley 2148 запрещает перевозить детей младше 12 лет на передних сиденьях и перевозить свободно находящихся animales; точная формулировка про удержание питомца на fallback-изображении остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "occupant-minors-front-and-loose-animals"
         }
@@ -20987,7 +20987,7 @@
     {
       "id": "emergency-response-and-crash-scene",
       "slug": "emergency-response-and-crash-scene",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -20998,13 +20998,13 @@
           "visual_cue_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 10, желтые 9, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 7 заметок о ловушках, 8 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 3, синие 10, желтые 9, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; есть испанские термины или плотная формулировка для A1-уровня; правило условное или требует разобрать ситуацию, а не угадать по одному слову; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 19 терминов, 7 заметок о ловушках, 8 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "850628eab48abcd9d6b47c1ad4e44ab0a142658645af595266c0d37c8c2978b4",
+        "sourceFingerprint": "dc2feccee59cc4199f45421f3121cb7da039bbc0705a781d840ba07e56989382",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -21667,43 +21667,43 @@
       "claims": [
         {
           "id": "claim-incident-definition-preventability",
-          "textRu": "Incidente de tránsito/incidente vial is a road event with damage to persons or things during circulation, and GCBA materials teach avoiding accidente wording because many such events are preventable and tied to human errors.",
+          "textRu": "Incidente de tránsito/incidente vial - дорожное событие с daño a personas o cosas durante la circulación; материалы GCBA учат избегать слова accidente, потому что многие такие события предотвратимы и связаны с errores humanos.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-incident-definition-preventability"
         },
         {
           "id": "claim-pas-and-scene-protection",
-          "textRu": "The recommended initial response is Proteger - Alertar - Socorrer: protect and signal the place, alert emergency services with clear location/details/victims, and then help injured people without moving them except for immediate grave risk.",
+          "textRu": "Рекомендуемая первая реакция - Proteger - Alertar - Socorrer: защитить и обозначить место, сообщить emergency services точное место/детали/пострадавших, затем помогать раненым, не перемещая их, кроме ситуации непосредственного grave risk.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-pas-and-scene-protection"
         },
         {
           "id": "claim-scene-signaling-balizas",
-          "textRu": "For an immobilized vehicle after a siniestro, use balizas/reflective warning and place portable warning devices on the side from which vehicles approach, with distance linked to road speed/context.",
+          "textRu": "Для immobilized vehicle after a siniestro используются balizas/reflective warning и portable warning devices со стороны, откуда приближаются vehicles; дистанция связана со скоростью и дорожным контекстом.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-scene-signaling-balizas"
         },
         {
           "id": "claim-emergency-numbers",
-          "textRu": "For road incidents with injured people, the study materials support 107 for SAME/medical emergencies and 911 for police/emergency routing.",
+          "textRu": "Для incidentes viales с пострадавшими учебные материалы поддерживают 107 для SAME/emergencias médicas и 911 для policía/emergencias.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-emergency-numbers-107-911"
         },
         {
           "id": "claim-insurance-notice-72-hours",
-          "textRu": "After a siniestro, the insurer notice is 72 hours / three days where generalized for this exam topic.",
+          "textRu": "После siniestro уведомление страховщика в этой экзаменационной теме обобщается как 72 hours / three days.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-insurance-notice-72-hours"
         },
         {
           "id": "claim-vision-zero-speed-human-factor",
-          "textRu": "Vision Cero, human-error framing, speed/severity, minimum speed, and constant precautionary speed are taught as safety-system concepts that reduce deaths, serious injuries, incident likelihood, and fuel consumption.",
+          "textRu": "Vision Cero, логика errores humanos, speed/severity, minimum speed и constant precautionary speed преподаются как safety-system concepts, которые снижают смертность, тяжелые травмы, вероятность incident и расход топлива.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-vision-zero-speed-human-factor"
         },
         {
           "id": "claim-passive-safety-headrest",
-          "textRu": "Passive safety reduces consequences after a siniestro; the correctly positioned headrest reduces whiplash/cervical injury risk and complements the seat belt.",
+          "textRu": "Seguridad pasiva снижает последствия после siniestro; правильно расположенный apoyacabezas уменьшает риск whiplash/cervical injury и дополняет cinturón de seguridad.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-passive-safety-headrest"
         },
@@ -21718,7 +21718,7 @@
     {
       "id": "crash-liability-and-legal-duties",
       "slug": "crash-liability-and-legal-duties",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -21729,13 +21729,13 @@
           "spanish_lexical_load",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; используется юридико-административная лексика; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 5 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 2, желтые 3, красные 0; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; используется юридико-административная лексика; правило условное или требует разобрать ситуацию, а не угадать по одному слову; есть испанские термины или плотная формулировка для A1-уровня; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 18 терминов, 5 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "6ad83e9d3063f666a16cd81e86b81a3d28188a798dddb5d8b5d8c42618d4bce1",
+        "sourceFingerprint": "9cb8d5e1a16b79c451b15a9da373582256da4540bf486555fe0237089be6931a",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -22043,25 +22043,25 @@
       "claims": [
         {
           "id": "claim-civil-damage-demand-basis",
-          "textRu": "Civil liability/demand framing for this topic is based on real damage tied to the incident and the right to seek repair/indemnification for that damage.",
+          "textRu": "Логика responsabilidad civil и demanda в этой теме основана на реальном daño, связанном с incidente, и праве требовать reparación/indemnización за этот daño.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-civil-damage-demand-basis"
         },
         {
           "id": "claim-witness-duty-fiscalia",
-          "textRu": "A person summoned as a witness in a road-incident judicial proceeding must appear and truthfully state what they know and remember before the competent authority.",
+          "textRu": "Человек, вызванный как witness в судебном процессе по incidente vial, должен явиться и правдиво рассказать компетентному органу то, что знает и помнит.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-witness-duty-fiscalia"
         },
         {
           "id": "claim-insurance-certificate-general-duty",
-          "textRu": "The mandatory civil-liability insurance certificate/proof is a general circulation requirement, not an obligation only for interurban roads.",
+          "textRu": "Обязательный certificate/proof страхования civil liability является общим требованием для circulation, а не обязанностью только для interurban roads.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-insurance-certificate-general-duty"
         },
         {
           "id": "claim-fleeing-injured-abandonment-boundary",
-          "textRu": "A person who flees a road incident and leaves someone injured may be judged for abandono de persona; this claim stays within the GCBA guide wording and Código Penal Article 106 abandonment boundary.",
+          "textRu": "Человек, который скрывается с места incidente vial и оставляет кого-то раненым, может отвечать за abandono de persona; это утверждение остается в границах формулировок GCBA guide и Código Penal Article 106.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-fleeing-injured-abandonment-boundary"
         }
@@ -22070,7 +22070,7 @@
     {
       "id": "pedestrian-crossings-and-priority",
       "slug": "pedestrian-crossings-and-priority",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -22081,13 +22081,13 @@
           "caba_rf_divergence",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 9, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ легко спутать с привычками или ожиданиями из РФ; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 0, синие 4, желтые 9, красные 4; есть испанские термины или плотная формулировка для A1-уровня; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; ответ легко спутать с привычками или ожиданиями из РФ; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "5f8647c87004ca68a1dd0ec376fe0babd1238f1db94963537515f19199cdf299",
+        "sourceFingerprint": "9c13a8cab2e62a52d6934206b385243c0f776586a139c6408dea2c69ae2fd422",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -22599,7 +22599,7 @@
         },
         {
           "id": "claim-pedestrian-traffic-light-behavior",
-          "textRu": "При semáforo peatonal пешеход может начинать переход на habilitating green/white signal; с anaranjada titilante он не должен начинать crossing, а при vehicle-only green may cross in the same direction.",
+          "textRu": "При semáforo peatonal пешеход может начинать переход на verde/blanca habilitante; с anaranjada titilante он не должен начинать cruce, а при verde vehicular может переходить в том же направлении.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-semaforo-peatonal"
         },
@@ -22611,7 +22611,7 @@
         },
         {
           "id": "claim-pedestrian-warning-and-regulatory-signs",
-          "textRu": "Anexo L поддерживает различение P.5 Cruce de peatones как warning/proximity sign and R.24 as a regulatory pedestrian-side instruction; exact side wording in `b-fallback-399` remains ticket-specific.",
+          "textRu": "Anexo L поддерживает различение P.5 Cruce de peatones как señal preventiva de proximidad и R.24 как regulatory instruction для пешехода; точная формулировка стороны в `b-fallback-399` остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-pedestrian-signs"
         },
@@ -22671,7 +22671,7 @@
     {
       "id": "turns-direction-and-reversing",
       "slug": "turns-direction-and-reversing",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -22682,13 +22682,13 @@
           "rule_complexity",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 8, желтые 7, красные 0; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 8, желтые 7, красные 0; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ зависит от визуального признака на картинке, знаке, разметке или жесте; правило условное или требует разобрать ситуацию, а не угадать по одному слову; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 21 терминов, 6 заметок о ловушках, 5 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "9740216f0ded7a7dea31ad12a47cc60864c44f3566e300c3f42c1a1a130d6f48",
+        "sourceFingerprint": "6c0fe2461d1c45960d1f635a182ab5586c90cc3a79b4ca30c56a06a2f4887e1b",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23250,7 +23250,7 @@
         },
         {
           "id": "claim-speed-load-curve-control",
-          "textRu": "Общая официальная логика требует сохранять контроль с учетом road/visibility/vehicle/carga conditions and reducing speed before giro; exact luggage placement and route-curve answer formulas stay ticket-specific.",
+          "textRu": "Общая официальная логика требует сохранять контроль с учетом дороги, видимости, автомобиля и carga, а также снижать скорость перед giro; точная формула про размещение багажа и curvas на route остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "turns-speed-load-curve-control"
         }
@@ -23311,7 +23311,7 @@
     {
       "id": "overtaking-and-passing",
       "slug": "overtaking-and-passing",
-      "status": "draft",
+      "status": "published",
       "difficulty": "yellow",
       "difficultyMeta": {
         "rubricVersion": "cabadrive-difficulty-v1",
@@ -23322,13 +23322,13 @@
           "trap_negation",
           "numbers_thresholds"
         ],
-        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 2, желтые 14, красные 3; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 4 source claims.",
+        "rationaleRu": "Нужно разбирать внимательно по материалу: связанные билеты распределены как зеленые 1, синие 2, желтые 14, красные 3; есть испанские термины или плотная формулировка для A1-уровня; билет смешивает несколько тем или попадает в разные материалы; ответ легко спутать с привычками или ожиданиями из РФ; есть отрицание, verdadero/falso, запрет или похожий отвлекающий вариант; нужно удержать точное число, расстояние, срок или порог. Дополнительная нагрузка темы: 17 терминов, 5 заметок о ловушках, 4 утверждений с источниками.",
         "provenance": {
           "method": "manual_rubric_review",
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "be6a6d2342383ffabc8fa2c5d353ab92b1496c7f4a5eee8d4ef174eab0217de2",
+        "sourceFingerprint": "e1e18ad5147569bd50d55f4f841cb3833dd9fc20ca47fd57fd0cf5fb8bc763f2",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23914,25 +23914,25 @@
       "claims": [
         {
           "id": "claim-overtaking-main-rules",
-          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает limited right-side exceptions, если vehicle ahead intends to turn/stop left или left queue is stopped/slower. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
+          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает ограниченные исключения справа, если vehicle ahead intends to turn/stop left или left queue is stopped/slower. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-main-rules"
         },
         {
           "id": "claim-overtaking-lanes-markings-signs",
-          "textRu": "Carril de sobrepaso/left lane используется для overtake, continuous lines and R.6/R.10/markings restrict crossing, no adelantar, or lane changes according to the specific sign/marking.",
+          "textRu": "Carril de sobrepaso/carril izquierdo используется для adelantamiento; líneas continuas и R.6/R.10/markings ограничивают cruce, no adelantar или cambios de carril согласно конкретному знаку/разметке.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-lanes-markings-signs"
         },
         {
           "id": "claim-overtaking-horn-and-warning",
-          "textRu": "Bocina is not a generic overtake tool: CABA limits it to potentially dangerous situations; overtake warning relies on lights/turn indicators except where national rural wording permits horn.",
+          "textRu": "Bocina не является универсальным инструментом adelantamiento: CABA ограничивает ее потенциально опасными ситуациями; предупреждение об обгоне опирается на luces/indicadores de giro, кроме случаев, где национальная rural wording допускает bocina.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-horn-and-warning"
         },
         {
           "id": "claim-overtaking-temporary-narrowing",
-          "textRu": "При temporary narrowing/obra same-direction sobrepaso is prohibited and the following vehicle should line up behind the one ahead.",
+          "textRu": "При estrechamiento temporario/obra sobrepaso в том же направлении запрещен, а следующий автомобиль должен выстроиться за тем, кто впереди.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-temporary-narrowing"
         }

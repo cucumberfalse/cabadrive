@@ -118,4 +118,4 @@ Reset remains an explicit icon button with an accessible label. It clears local 
 ## Consistency Notes
 
 - This document complements `learning-experience-source-of-truth.md`; learning rules decide when support appears, UI rules decide how it is controlled and navigated.
-- Image explanation overlays are governed by `image-explanation-overlays.md` and remain blocked until the completed feature 009 dependency is merged into `origin/main` and this branch is synchronized with it.
+- Image explanation overlays are governed by `image-explanation-overlays.md` and may render only when approved local overlay metadata exists for the concrete question image.

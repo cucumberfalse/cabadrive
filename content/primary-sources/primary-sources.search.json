@@ -1,7 +1,7 @@
 {
   "version": 1,
   "schema": "primary-sources-search.v1",
-  "status": "draft",
+  "status": "published",
   "entries": [],
   "searchShardDirectories": [
     "content/primary-sources/search"

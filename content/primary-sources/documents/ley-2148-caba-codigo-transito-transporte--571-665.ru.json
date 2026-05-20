@@ -10,12 +10,12 @@
     "category": "traffic-law",
     "jurisdiction": "caba",
     "officialSourceType": "caba_law_updated_text",
-    "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion/1000",
     "archiveLocalPath": "content/official-documents/documents/ley-2148-caba-codigo-transito-transporte.md",
     "retrievalDate": "2026-05-09",
-    "currentnessStatus": "current",
+    "currentnessStatus": "in_force",
     "currentnessValidationStatus": "passed",
-    "exactTextValidationStatus": "pending",
+    "exactTextValidationStatus": "passed",
     "chunks": [
       {
         "chunkId": "ley-2148-caba-codigo-transito-transporte--12-11-6-2-prestador-en-transgresion-al-571",

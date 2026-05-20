@@ -15,7 +15,7 @@
     "retrievalDate": "2026-05-09",
     "currentnessStatus": "valid_current_material",
     "currentnessValidationStatus": "passed",
-    "exactTextValidationStatus": "pending",
+    "exactTextValidationStatus": "passed",
     "chunks": [
       {
         "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--100-101",

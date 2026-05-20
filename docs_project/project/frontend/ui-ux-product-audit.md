@@ -6,7 +6,7 @@ This audit maps the current Cabadrive product to the source-of-truth rules in:
 - `docs_project/project/learning/learning-experience-source-of-truth.md`;
 - `docs_project/project/frontend/image-explanation-overlays.md`.
 
-Audit date: 2026-05-09; updated 2026-05-10 after synchronizing merged feature 009 from `origin/main`. Branch: `codex/010-ui-ux-learning-intake`.
+Audit date: 2026-05-09; updated 2026-05-10 after synchronizing merged feature 009 from `origin/main`; current-state note refreshed 2026-05-20 by feature 024 audit. Branch: `codex/010-ui-ux-learning-intake`.
 
 ## Documentation Consistency Check
 
@@ -15,7 +15,7 @@ Audit date: 2026-05-09; updated 2026-05-10 after synchronizing merged feature 00
 | Constitution | Pass | Docs preserve spec-first workflow, testable boundaries, process memory, local-first deployability, and PR-only expectations. |
 | Durable project docs | Pass | Rules preserve Spanish-primary, unofficial Russian support, `unofficial_b_fallback`, no backend, Docker/static runtime, and hidden active-exam support. |
 | Source planning archive | Pass | Rules align with local browser app, no PDF viewer, Docker-only runtime, exam focus, and no full Spanish course. |
-| Feature 008 | Pass | `Материалы` is treated as a current audited surface and remains draft/incomplete unofficial learning support joined to canonical tickets. |
+| Feature 008 | Pass | `Материалы` is treated as a current audited surface and renders published unofficial learning support joined to canonical tickets. |
 | Feature 009 | Pass | Overlay docs consume merged 009 shared metadata plus per-question usage/relevance; implementation does not use local 009 worktrees or unmerged branches. |
 | Research basis | Pass | UI docs map NN/g and WCAG rules to product behavior; learning docs map active recall, feedback, distributed review, multimedia signaling, and Duolingo lessons to Cabadrive-specific rules. |
 | Internal docs | Pass | UI, learning, and image-overlay docs share the same mode boundaries: support after attempt in learning/mistakes, no support during active exam attempts. |
@@ -36,7 +36,7 @@ No unresolved contradiction blocks slices A/B/C/D/E/F. Image overlay implementat
 | Mistake review | UI-005, LEARN-005 | Gap | Current surface uses mistake collection; needs bottom previous/next and post-answer auto reveal while preserving repeated attempts. Task UX-010-001, UX-010-002. |
 | Vocabulary | LEARN-011, UI-007 | Pass | Searchable focused term cards are present; future links to questions remain audit-derived improvement. |
 | CABA/RF guide | LEARN-013 | Pass | Compact contrast guide remains separate from materials. |
-| Topic materials | LEARN-012, UI-001, UI-011 | Pass | Feature 008 surface renders status labels, topic list/detail, canonical ticket blocks, answer explanations, and local images. |
+| Topic materials | LEARN-012, UI-001, UI-011 | Pass | Feature 008 surface renders published/unofficial status labels, topic list/detail, canonical ticket blocks, answer explanations, and local images. |
 | Search/filtering | UI-005, UI-012 | Partial | Learning search exists; navigation must remain inside filtered results and reset to first result on query change. Task UX-010-002. |
 | Progress/reset/weak-topic status | UI-010, LEARN-007 | Partial | Status strip and reset exist; weak-topic/difficult guidance can be improved later. Task UX-010-004. |
 | Mobile layout | UI-007, UI-009 | Partial | Existing responsive stacking works; bottom nav needs mobile coverage. Task UX-010-002. |

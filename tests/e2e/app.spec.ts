@@ -729,7 +729,7 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await page.getByRole("button", { name: /Материалы/ }).click();
 
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
-  await expect(page.getByText("Черновик: материал неполный").first()).toBeVisible();
+  await expect(page.getByText("Опубликованный учебный материал").first()).toBeVisible();
   await expect(page.getByText("Неофициальная учебная поддержка")).toBeVisible();
   await expect(page.getByText("Текущие билеты: неофициальная B-практика, не полная официальная база GCBA")).toBeVisible();
   await expect(page.getByRole("button", { name: new RegExp(firstTopic.titleRu) })).toBeVisible();

@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "status": "draft",
+  "status": "published",
   "schema": "official-documents-manifest.v1",
   "sectionPath": "content/official-documents",
-  "description": "Governed manifest for official source documents archived verbatim for Cabadrive source traceability. Slice D seeds common legal sources for future topic-guide slices; final exact-text/currentness validation remains a later whole-archive gate.",
+  "description": "Governed manifest for official source documents archived verbatim for Cabadrive source traceability. The current archive covers 19 official-document entries and records passed currentness and whole-archive exact-text validation for the current manifest.",
   "entries": [
     {
       "id": "ley-24449-transito-seguridad-vial",
@@ -18,7 +18,7 @@
       "hashAlgorithm": "sha256",
       "hash": "deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3",
       "conversionMethod": "Cleaned rendered-text conversion from the official Argentina.gob.ar updated normativa page to Markdown paragraphs; inline emphasis and links flattened to visible text.",
-      "conversionNotes": "Official wording, paragraph order, article numbering, headings, and amendment notes are preserved as text. HTML styling, link targets, header images, and site chrome are not represented in Markdown. rawOriginalPath stores cleaned HTML evidence generated from the archived Markdown text after verifying the official Argentina.gob.ar updated page; it is not a byte-preserving network capture. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, paragraph order, article numbering, headings, and amendment notes are preserved as text. HTML styling, link targets, header images, and site chrome are not represented in Markdown. rawOriginalPath stores cleaned HTML evidence generated from the archived Markdown text after verifying the official Argentina.gob.ar updated page; it is not a byte-preserving network capture. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",
@@ -52,7 +52,7 @@
       "hashAlgorithm": "sha256",
       "hash": "40f20546bc74faa100569cf40e9f1a2828cca815d520badef21745dbd85177e4",
       "conversionMethod": "Scripted extraction from official Argentina.gob.ar normativa article HTML to Markdown paragraphs; inline emphasis and links flattened to visible text.",
-      "conversionNotes": "The main updated decree page was archived in full as served at the source URL. The page states that annexes are consulted separately because of their length; separate annex bodies are not archived in this Slice D seed. Final exact-text validation remains pending.",
+      "conversionNotes": "The main updated decree page was archived in full as served at the source URL. The page states that annexes are consulted separately because of their length; separate annex bodies are not archived in this Slice D seed. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",
@@ -85,7 +85,7 @@
       "hashAlgorithm": "sha256",
       "hash": "213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64",
       "conversionMethod": "Scripted extraction from the official InfoLeg updated Anexo L HTML body to Markdown; source bytes were decoded from Windows-1252 to UTF-8, paragraph and line-break structure was preserved as Markdown text, links were flattened to visible text, and source image references were converted to Markdown image references pointing to local originals.",
-      "conversionNotes": "Official wording, annex label, chapter headings, numbering, signal codes, signal names, captions, and the final IF identifier are preserved as text as far as the HTML source exposes them. The source is a Microsoft Word-style HTML page with embedded line wraps and 15 referenced JPG figures; Markdown cannot preserve the original page layout, alignment, colors, sign graphics, or Word/HTML styling. The referenced JPG files were stored under originals/ for later visual validation. The official Argentina.gob.ar Decreto 196/2025 PDF annex endpoint was checked as supporting source evidence but is not stored in this entry because the archived body source is the current InfoLeg HTML. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, annex label, chapter headings, numbering, signal codes, signal names, captions, and the final IF identifier are preserved as text as far as the HTML source exposes them. The source is a Microsoft Word-style HTML page with embedded line wraps and 15 referenced JPG figures; Markdown cannot preserve the original page layout, alignment, colors, sign graphics, or Word/HTML styling. The referenced JPG files were stored under originals/ for later visual validation. The official Argentina.gob.ar Decreto 196/2025 PDF annex endpoint was checked as supporting source evidence but is not stored in this entry because the archived body source is the current InfoLeg HTML. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "supportingOriginalPaths": [
         "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
         "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
@@ -128,7 +128,7 @@
       "id": "ley-2148-caba-codigo-transito-transporte",
       "title": "Ley 2148 - Código de Transito y Transporte de la CABA",
       "officialSourceType": "caba_law_updated_text",
-      "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion/1000",
       "retrievalDate": "2026-05-09",
       "retrievalTimestamp": "2026-05-09T01:48:48-03:00",
       "sourceFormat": "html",
@@ -137,7 +137,7 @@
       "hashAlgorithm": "sha256",
       "hash": "d8fab0170d78f0b226cf2e1627bc647a12f9b32b350010e99c1dc6bdfd9e478f",
       "conversionMethod": "Scripted extraction from official Argentina.gob.ar provincial normativa article HTML to Markdown paragraphs; inline emphasis and links flattened to visible text.",
-      "conversionNotes": "Official wording, paragraph order, article numbering, annex text, and general observations are preserved as text. The user-listed GCBA historical page was checked but contained only a short/partial Ley 2148 page, so the full Argentina.gob.ar provincial updated text was archived. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, paragraph order, article numbering, annex text, and general observations are preserved as text. The user-listed GCBA historical page was checked but contained only a short/partial Ley 2148 page, so the full Argentina.gob.ar provincial updated text was archived. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "in_force",
@@ -145,7 +145,7 @@
         "statusEvidence": "Official Argentina.gob.ar provincial normativa page was retrieved successfully and its visible text states Vigente, de alcance general.",
         "amendmentRepealEvidence": "The archived text includes general observations for the consolidated text and records that the Texto Consolidado is approved by Ley N° 6.347.",
         "evidenceUrls": [
-          "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+          "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion/1000",
           "https://buenosaires.gob.ar/gcaba_historico/normativa-general/ley-2148"
         ]
       },
@@ -245,7 +245,7 @@
         "amendmentRepealEvidence": "This is current service/topic material, not a consolidated legal norm. It is cross-checked against Disposición 29/2024, Disposición 343/2024, and the ANSV official note for cédula azul/non-expiry claims.",
         "evidenceUrls": [
           "https://www.argentina.gob.ar/tema/automotor",
-          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/texto",
           "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
         ]
       },
@@ -312,7 +312,7 @@
         "amendmentRepealEvidence": "The note cites Disposición 29/2024; current legal mechanics were cross-checked against Disposición 29/2024 and Disposición 343/2024. No official contrary current ANSV/DNRPA source was found during D4.",
         "evidenceUrls": [
           "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
-          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/texto",
           "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
         ]
       },
@@ -329,7 +329,7 @@
       "id": "disposicion-29-2024-cedulas-identificacion",
       "title": "Disposición 29 / 2024",
       "officialSourceType": "dnrpa_disposition_original_text",
-      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/texto",
       "retrievalDate": "2026-05-09",
       "retrievalTimestamp": "2026-05-09T05:17:42-03:00",
       "sourceFormat": "html",
@@ -345,8 +345,8 @@
         "statusEvidence": "Official Argentina.gob.ar normative page was retrieved successfully and records Disposición 29/2024 original text. It establishes non-expiry of cédulas while there is no ownership change, derogatation of the cédula de identificación para autorizado a conducir section, and continued validity of already issued authorized-driver cédulas until revocation.",
         "amendmentRepealEvidence": "Argentina.gob.ar relation page shows this norm is complemented/modified by Disposición 343/2024, archived separately in this slice, which puts the article 5 digital authorization procedure into force and substitutes that text. The Disposición 29/2024 cédula non-expiry and cédula azul derogation basis remains current for E6 conflict tracking.",
         "evidenceUrls": [
-          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
-          "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/normas-modifican",
+          "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/texto",
+          "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/normas-modifican",
           "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto"
         ]
       },
@@ -438,7 +438,7 @@
       "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
       "hashAlgorithm": "sha256",
       "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA PDF; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
-      "conversionNotes": "Raw PDF evidence is retained. The extraction preserves visible textual wording and rough order, including page/index text, but PDF layout, columns, page artwork, icons, typography, and exact pagination are not represented as Markdown. Line-end whitespace from PDF text extraction was trimmed in the Markdown conversion for repository diff hygiene; the raw PDF bytes are preserved separately. This entry was updated from the older 2023 PDF after the archived current GCBA Estrellas Amarillas page was found to link the newer 2026 static PDF. Final exact-text validation remains pending.",
+      "conversionNotes": "Raw PDF evidence is retained. The extraction preserves visible textual wording and rough order, including page/index text, but PDF layout, columns, page artwork, icons, typography, and exact pagination are not represented as Markdown. Line-end whitespace from PDF text extraction was trimmed in the Markdown conversion for repository diff hygiene; the raw PDF bytes are preserved separately. This entry was updated from the older 2023 PDF after the archived current GCBA Estrellas Amarillas page was found to link the newer 2026 static PDF. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "valid_current_material",
@@ -504,7 +504,7 @@
       "rawOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "hashAlgorithm": "sha256",
       "conversionMethod": "PDF text extraction with pdf-parse 1.1.1 from the official GCBA four-wheel manual linked by the current study-material page; extracted text written as Markdown with title and paragraph/line breaks preserved as plain text.",
-      "conversionNotes": "Raw 68 MB PDF evidence is retained. Text extraction preserves visible text and rough order, including category sections and annex text, but does not preserve exact page design, images, icons, tables, typography, or pagination. The raw PDF page 52 visibly contains the heading typo `3° Socorrerr`; Markdown preserves that source typo. PAS-order support must cite the preceding correct source sentence `Proteger-Alertar-Socorrer`, not the typo heading. The non-static buenosaires.gob.ar PDF URL linked from the current page redirected to a gcaba_historico 404 during retrieval, so the official static.buenosaires.gob.ar PDF URL was used. Final exact-text validation remains pending.",
+      "conversionNotes": "Raw 68 MB PDF evidence is retained. Text extraction preserves visible text and rough order, including category sections and annex text, but does not preserve exact page design, images, icons, tables, typography, or pagination. The raw PDF page 52 visibly contains the heading typo `3° Socorrerr`; Markdown preserves that source typo. PAS-order support must cite the preceding correct source sentence `Proteger-Alertar-Socorrer`, not the typo heading. The non-static buenosaires.gob.ar PDF URL linked from the current page redirected to a gcaba_historico 404 during retrieval, so the official static.buenosaires.gob.ar PDF URL was used. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "valid_current_material",
@@ -571,7 +571,7 @@
       "rawOriginalPath": "content/official-documents/originals/ley-11179-codigo-penal.html",
       "hashAlgorithm": "sha256",
       "conversionMethod": "Rendered-text conversion from official InfoLeg texact HTML to Markdown with Windows-1252 decoding; Argentina.gob.ar /actualizacion was verified through browser-accessible official page but returned HTTP 404 to local curl during D11.",
-      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. HTML layout, anchors, link targets, table structure, and site chrome are not represented exactly. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. HTML layout, anchors, link targets, table structure, and site chrome are not represented exactly. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",
@@ -604,7 +604,7 @@
       "rawOriginalPath": "content/official-documents/originals/ley-26994-codigo-civil-comercial.html",
       "hashAlgorithm": "sha256",
       "conversionMethod": "Rendered-text conversion from official InfoLeg texact HTML to Markdown with Windows-1252 decoding; Argentina.gob.ar /actualizacion was verified through browser-accessible official page but returned HTTP 404 to local curl during D11.",
-      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. The original HTML has large tables/indices and long article text; Markdown flattens table layout, anchors, links, and site chrome. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, article numbering, headings, thematic index, and amendment notes are preserved as text. The original HTML has large tables/indices and long article text; Markdown flattens table layout, anchors, links, and site chrome. The rawOriginalPath stores official InfoLeg texact HTML because local curl could not retrieve the Argentina.gob.ar /actualizacion page despite browser access; evidence URLs include both official sources. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",
@@ -637,7 +637,7 @@
       "rawOriginalPath": "content/official-documents/originals/ley-17418-seguros.html",
       "hashAlgorithm": "sha256",
       "conversionMethod": "Rendered-text conversion from the official Argentina.gob.ar updated normativa HTML page to Markdown using html-to-text; links and HTML styling flattened to visible text.",
-      "conversionNotes": "Official wording, article numbering, headings, and amendment notes are preserved as text. HTML styling, anchors, link targets, and site chrome are not represented exactly. Final exact-text validation remains pending.",
+      "conversionNotes": "Official wording, article numbering, headings, and amendment notes are preserved as text. HTML styling, anchors, link targets, and site chrome are not represented exactly. Whole-archive exact-text validation passed on 2026-05-20; the conversion caveats above remain part of the archive evidence.",
       "currentness": {
         "checkedAt": "2026-05-09",
         "status": "current",

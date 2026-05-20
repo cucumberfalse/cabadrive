@@ -13,5 +13,5 @@
   "questionOrderRule": "random_questions_from_available_validated_pool",
   "completionRule": "complete_all_questions_or_time_limit",
   "status": "defined",
-  "notes": "The 2025 GCBA procedure manual states theoretical exams have 40 random questions, require 85% correct answers, and allow 45 minutes. The current MVP has fewer sample questions, so practice uses the available official sample set while preserving the official format metadata."
+  "notes": "The 2025 GCBA procedure manual states theoretical exams have 40 random questions, require 85% correct answers, and allow 45 minutes. Current practice draws from the 460-question unofficial category B fallback pool while preserving the official format metadata; it is not an official GCBA question bank."
 }

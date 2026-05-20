@@ -31,6 +31,7 @@ function clone(value) {
 function manifest({ includeDoc2 = false } = {}) {
   return {
     version: 1,
+    status: "published",
     entries: [
       {
         id: "doc-1",
@@ -66,7 +67,8 @@ function corpus() {
   return {
     version: 1,
     schema: "primary-sources-learner-corpus.v1",
-    status: "draft",
+    status: "published",
+    contentStatus: "unofficial_learning_aid",
     locale: "ru",
     sectionPath: "content/primary-sources",
     documents: [
@@ -78,6 +80,9 @@ function corpus() {
         jurisdiction: "national",
         officialSourceType: "law",
         archiveLocalPath: "content/official-documents/documents/doc-1.md",
+        currentnessStatus: "current",
+        currentnessValidationStatus: "passed",
+        exactTextValidationStatus: "passed",
         chunks: [
           {
             chunkId: "doc-1--001",
@@ -109,7 +114,7 @@ function coverage() {
   return {
     version: 1,
     schema: "primary-sources-coverage.v1",
-    status: "draft",
+    status: "published",
     documents: [
       {
         officialDocumentId: "doc-1",
@@ -145,7 +150,7 @@ function qa({ status = "approved" } = {}) {
   return {
     version: 1,
     schema: "primary-sources-qa.v1",
-    status: "draft",
+    status: "published",
     documents: [
       {
         officialDocumentId: "doc-1",
@@ -186,7 +191,7 @@ function searchIndex() {
   return {
     version: 1,
     schema: "primary-sources-search.v1",
-    status: "draft",
+    status: "published",
     entries: [
       {
         entryId: "doc-1--001",
@@ -221,8 +226,8 @@ function validate(overrides = {}) {
   });
 }
 
-test("current repository draft primary-source corpus passes draft validation", () => {
-  assert.deepEqual(validatePrimarySourcesFromFiles({ mode: "draft" }), []);
+test("current repository primary-source corpus passes strict published validation", () => {
+  assert.deepEqual(validatePrimarySourcesFromFiles({ mode: "strict" }), []);
 });
 
 test("primary-source shard directory loading combines document, QA, and search shards", () => {
@@ -730,6 +735,46 @@ test("strict mode rejects pending exact-text source validation", () => {
     errors.includes(
       "doc-1.exactTextValidation.status must be passed for strict primary-source validation."
     )
+  );
+});
+
+test("strict mode rejects draft primary-source release roots", () => {
+  const badManifest = manifest();
+  badManifest.status = "draft";
+  const badCorpus = corpus();
+  badCorpus.status = "draft";
+  badCorpus.contentStatus = "draft_placeholder";
+  const badCoverage = coverage();
+  badCoverage.status = "draft";
+  const badQa = qa();
+  badQa.status = "draft";
+  const badSearchIndex = searchIndex();
+  badSearchIndex.status = "draft";
+
+  const errors = validate({
+    manifest: badManifest,
+    corpus: badCorpus,
+    coverage: badCoverage,
+    qa: badQa,
+    searchIndex: badSearchIndex
+  });
+
+  assert(errors.includes("official documents manifest status must be published in strict mode."));
+  assert(errors.includes("primary sources corpus status must be published in strict mode."));
+  assert(errors.includes("primary sources corpus contentStatus must be unofficial_learning_aid in strict mode."));
+  assert(errors.includes("primary sources coverage status must be published in strict mode."));
+  assert(errors.includes("primary sources QA status must be published in strict mode."));
+  assert(errors.includes("primary sources search index status must be published in strict mode."));
+});
+
+test("strict mode rejects stale learner-document source validation status", () => {
+  const badCorpus = corpus();
+  badCorpus.documents[0].exactTextValidationStatus = "pending";
+
+  const errors = validate({ corpus: badCorpus });
+
+  assert(
+    errors.includes("doc-1.exactTextValidationStatus must match official manifest exactTextValidation.status.")
   );
 });
 
