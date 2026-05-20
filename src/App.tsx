@@ -12,12 +12,14 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
+import { loadPrimarySources, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources";
+type SourceViewMode = "simple" | "full" | "spanish";
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
   remainingSeconds: number;
@@ -78,6 +80,35 @@ function processCalloutLabel(section: ProcessGuideSection) {
   if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
   if (section.calloutType === "adjacent_path") return "Соседний путь";
   return "Предупреждение";
+}
+
+function primarySourceCategoryLabel(category: string) {
+  const labels: Record<string, string> = {
+    "traffic-law": "ПДД и закон",
+    "traffic-code": "Кодекс CABA",
+    "traffic-signage": "Знаки",
+    "exam-study-material": "Подготовка",
+    "vehicle-documents": "Документы ТС",
+    "vehicle-inspection": "VTV",
+    "road-safety": "Безопасность",
+    insurance: "Страхование",
+    "legal-duties": "Правовые обязанности"
+  };
+  return labels[category] || category;
+}
+
+function primarySourceTypeLabel(sourceType: string) {
+  if (sourceType.includes("gcba")) return "GCBA";
+  if (sourceType.includes("national")) return "Национальный источник";
+  if (sourceType.includes("law")) return "Закон";
+  if (sourceType.includes("decree")) return "Декрет";
+  return sourceType.replaceAll("_", " ");
+}
+
+function exactTextLabel(status: string) {
+  if (status === "passed") return "точный текст проверен";
+  if (status === "failed") return "точный текст требует исправления";
+  return "точный текст: проверка pending";
 }
 
 function learningTimerStatusText(timer: LearningTicketTimerState) {
@@ -938,6 +969,161 @@ function ProcessGuideView() {
   );
 }
 
+function PrimarySourcesView() {
+  const [corpus, setCorpus] = useState<PrimarySourceCorpus | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [selectedDocumentId, setSelectedDocumentId] = useState<string | undefined>();
+  const [viewMode, setViewMode] = useState<SourceViewMode>("simple");
+  const [showAllChunks, setShowAllChunks] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    loadPrimarySources()
+      .then((nextCorpus) => {
+        if (!isMounted) return;
+        setCorpus(nextCorpus);
+        setSelectedDocumentId((current) => current ?? nextCorpus.documents[0]?.officialDocumentId);
+      })
+      .catch((error: unknown) => {
+        if (!isMounted) return;
+        setLoadError(error instanceof Error ? error.message : "Не удалось загрузить локальный корпус источников.");
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    setViewMode("simple");
+    setShowAllChunks(false);
+  }, [selectedDocumentId]);
+
+  if (loadError) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Локальный корпус источников не загрузился.</p>
+        <p className="muted">{loadError}</p>
+      </section>
+    );
+  }
+
+  if (!corpus) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Загружаю локальный корпус официальных источников...</p>
+      </section>
+    );
+  }
+
+  const selectedDocument = corpus.documents.find((document) => document.officialDocumentId === selectedDocumentId) ?? corpus.documents[0];
+  const visibleChunks = showAllChunks ? selectedDocument?.chunks ?? [] : selectedDocument?.chunks.slice(0, 120) ?? [];
+
+  function chunkText(chunk: PrimarySourceDocument["chunks"][number]) {
+    if (viewMode === "full") return chunk.fullTranslationRu;
+    if (viewMode === "spanish") return chunk.originalSpanish;
+    return chunk.simpleRu;
+  }
+
+  return (
+    <section className="source-reader" aria-labelledby="sources-title">
+      <header className="sources-header">
+        <div>
+          <p className="eyebrow">Источники</p>
+          <h2 id="sources-title">Официальные первоисточники</h2>
+          <p>Испанский архив - официальный слой. Русский текст здесь - неофициальная учебная поддержка Cabadrive.</p>
+        </div>
+        <div className="sources-status" aria-label="Покрытие корпуса источников">
+          <span>{corpus.manifestEntryCount} документов</span>
+          <span>{corpus.chunkCount} фрагментов</span>
+          <span>без runtime network</span>
+        </div>
+      </header>
+
+      <div className="sources-layout">
+        <aside className="source-list" aria-label="Список источников">
+          {corpus.documents.map((document) => (
+            <button
+              type="button"
+              key={document.officialDocumentId}
+              className={document.officialDocumentId === selectedDocument?.officialDocumentId ? "active" : ""}
+              onClick={() => setSelectedDocumentId(document.officialDocumentId)}
+            >
+              <strong>{document.shortTitleRu}</strong>
+              <span>{document.title}</span>
+              <small>
+                {primarySourceCategoryLabel(document.category)} · {primarySourceTypeLabel(document.officialSourceType)} · {document.chunks.length} chunks
+              </small>
+              <small>{exactTextLabel(document.exactTextValidationStatus)}</small>
+            </button>
+          ))}
+        </aside>
+
+        {selectedDocument ? (
+          <article className="source-detail">
+            <div className="source-detail-heading">
+              <div>
+                <span className="block-label">{selectedDocument.officialDocumentId}</span>
+                <h2>{selectedDocument.shortTitleRu}</h2>
+                <p>{selectedDocument.title}</p>
+              </div>
+              <div className="source-mode-controls" role="group" aria-label="Режим текста источника">
+                <button type="button" className={viewMode === "simple" ? "active" : ""} onClick={() => setViewMode("simple")}>
+                  Просто
+                </button>
+                <button type="button" className={viewMode === "full" ? "active" : ""} onClick={() => setViewMode("full")}>
+                  Полный перевод
+                </button>
+                <button type="button" className={viewMode === "spanish" ? "active" : ""} onClick={() => setViewMode("spanish")}>
+                  Оригинал ES
+                </button>
+              </div>
+            </div>
+
+            <div className="source-meta-row" aria-label="Метаданные источника">
+              <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
+              <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
+              <span>{selectedDocument.currentnessStatus}: {selectedDocument.currentnessValidationStatus}</span>
+              <span className={selectedDocument.exactTextValidationStatus === "passed" ? "" : "pending"}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
+            </div>
+
+            <div className="source-warning">
+              <strong>Точный текст pending.</strong>
+              <span>До финального релиза испанский архив требует отдельной exact-text проверки. Русский слой неофициальный и нужен только для учебы.</span>
+            </div>
+
+            <div className="source-chunk-list">
+              {visibleChunks.length ? visibleChunks.map((chunk) => (
+                <section className="source-chunk" key={chunk.chunkId}>
+                  <div className="source-chunk-heading">
+                    <span>{chunk.officialLabel || `Фрагмент ${chunk.order}`}</span>
+                    <small>{chunk.headingPath.join(" / ")}</small>
+                  </div>
+                  <p>{chunkText(chunk)}</p>
+                </section>
+              )) : (
+                <p>Фрагменты для этого источника не найдены. Корпус требует проверки.</p>
+              )}
+            </div>
+
+            {!showAllChunks && selectedDocument.chunks.length > visibleChunks.length && (
+              <button type="button" className="tool-button source-show-all" onClick={() => setShowAllChunks(true)}>
+                Показать все {selectedDocument.chunks.length} фрагментов
+              </button>
+            )}
+          </article>
+        ) : (
+          <article className="source-detail">
+            <h2>Источник не выбран</h2>
+            <p>Локальный корпус загружен, но список документов пуст.</p>
+          </article>
+        )}
+      </div>
+    </section>
+  );
+}
+
 export function App() {
   const [view, setView] = useState<View>("learn");
   const [progress, setProgress] = useState(loadProgress);
@@ -967,6 +1153,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "sources" ? "active" : ""} onClick={() => setView("sources")}><FileText size={18} /> Источники</button>
         <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
@@ -976,6 +1163,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
     </main>

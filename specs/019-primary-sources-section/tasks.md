@@ -166,18 +166,18 @@
 
 ## Slice I: Source Reader UI Shell
 
-- [ ] T075 Import learner-source corpus through the existing data boundary.
-- [ ] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories.
-- [ ] T077 Add a distinct app view for primary sources.
-- [ ] T078 Add navigation label `Источники` or an explicitly justified visible equivalent.
-- [ ] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows.
-- [ ] T080 Keep active exam attempt behavior unchanged.
-- [ ] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status.
-- [ ] T082 Render selected document detail with metadata and trust boundary labels.
-- [ ] T083 Render the first/opened document in simple Russian by default.
-- [ ] T084 Render source chunk headings/labels and selected chunk text.
-- [ ] T085 Render local fallback/missing-content states without crashing.
-- [ ] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced.
+- [x] T075 Import learner-source corpus through the existing data boundary. Evidence: `src/data/primarySources.ts` lazy-loads document shards with `import.meta.glob` and aggregates them for UI use.
+- [x] T076 Add typed UI-facing models for source documents, chunks, QA/status metadata, and categories. Evidence: `PrimarySourceDocument`, `PrimarySourceChunk`, and `PrimarySourceCorpus` expose UI-ready source/status/category fields.
+- [x] T077 Add a distinct app view for primary sources. Evidence: `src/App.tsx` adds `PrimarySourcesView`.
+- [x] T078 Add navigation label `Источники` or an explicitly justified visible equivalent. Evidence: app navigation includes `Источники`.
+- [x] T079 Preserve existing `Учить`, `Экзамен`, `Ошибки`, `Словарь`, `Материалы`, and `CABA/RF` flows. Evidence: existing view branches remain present and tests/build passed.
+- [x] T080 Keep active exam attempt behavior unchanged. Evidence: `ExamView` logic was not changed.
+- [x] T081 Render source list rows with title, short label, category, jurisdiction/source type, and compact status. Evidence: source list renders short/title/category/source type/chunk count/exact-text status.
+- [x] T082 Render selected document detail with metadata and trust boundary labels. Evidence: detail view renders metadata, exact-text pending warning, and unofficial Russian support label.
+- [x] T083 Render the first/opened document in simple Russian by default. Evidence: source view initializes and resets mode to `Просто`.
+- [x] T084 Render source chunk headings/labels and selected chunk text. Evidence: chunk list renders official labels, heading paths, and selected mode text.
+- [x] T085 Render local fallback/missing-content states without crashing. Evidence: source view renders loading, load-error, empty-document, and empty-chunk states.
+- [x] T086 Ensure no runtime network fetch, backend endpoint, live AI, remote asset, analytics, or PDF viewer is introduced. Evidence: source view uses bundled JSON shards only.
 
 ## Slice J: Search, Filters, Chunk Navigation, And View Controls
 
@@ -187,11 +187,11 @@
 - [ ] T090 Add filters for jurisdiction/source type.
 - [ ] T091 Add no-results state for search/filter combinations.
 - [ ] T092 Add document table of contents or chunk navigation.
-- [ ] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`.
-- [ ] T094 Confirm `Просто` remains the default when opening a new source or resetting filters.
-- [ ] T095 Confirm full Russian translation can be viewed for every document and chunk.
-- [ ] T096 Confirm original Spanish can be viewed for every document and chunk.
-- [ ] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists.
+- [x] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`. Evidence: source detail has three explicit mode controls.
+- [x] T094 Confirm `Просто` remains the default when opening a new source or resetting filters. Evidence: selected-document changes reset `viewMode` to `simple`; filters are not implemented in this slice.
+- [x] T095 Confirm full Russian translation can be viewed for every document and chunk. Evidence: all loaded chunks expose `fullTranslationRu`, and the `Полный перевод` mode renders that field.
+- [x] T096 Confirm original Spanish can be viewed for every document and chunk. Evidence: all loaded chunks expose `originalSpanish`, and the `Оригинал ES` mode renders that field.
+- [x] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists. Evidence: the source reader exposes only simple Russian, full Russian, and original Spanish modes.
 - [ ] T098 Avoid rendering very long documents as one unchunked page.
 - [ ] T099 Preserve selected document/chunk/search context when switching view modes.
 
