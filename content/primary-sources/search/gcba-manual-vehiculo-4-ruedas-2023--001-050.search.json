@@ -1,0 +1,558 @@
+{
+  "version": 1,
+  "schema": "primary-sources-search-shard.v1",
+  "status": "reviewed_content_batch",
+  "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+  "entries": [
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--manual-de-conduccion-vehicular-categoria-b-automoviles-001",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--manual-de-conduccion-vehicular-categoria-b-automoviles-001",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--1-002",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--1-002",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--2-003",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--2-003",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--3-004",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--3-004",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--4-005",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--4-005",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--5-006",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--5-006",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--6-007",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--6-007",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--7-008",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--7-008",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--8-009",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--8-009",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--9-010",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--9-010",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--10-011",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--10-011",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--11-012",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--11-012",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--12-013",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--12-013",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--13-014",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--13-014",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--14-015",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--14-015",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--15-016",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--15-016",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--16-017",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--16-017",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--17-018",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--17-018",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--18-019",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--18-019",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--19-020",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--19-020",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--20-021",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--20-021",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--21-022",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--21-022",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--22-023",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--22-023",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--23-024",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--23-024",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--24-025",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--24-025",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--25-026",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--25-026",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--26-027",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--26-027",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--27-028",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--27-028",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--28-029",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--28-029",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--29-030",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--29-030",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--30-031",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--30-031",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--31-032",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--31-032",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--32-033",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--32-033",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--33-034",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--33-034",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--34-035",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--34-035",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--35-036",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--35-036",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--36-037",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--36-037",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--37-038",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--37-038",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--38-039",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--38-039",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--39-040",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--39-040",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--40-041",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--40-041",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--41-042",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--41-042",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--42-043",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--42-043",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--43-044",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--43-044",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--44-045",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--44-045",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--45-046",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--45-046",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--46-047",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--46-047",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--47-048",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--47-048",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--48-049",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--48-049",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    },
+    {
+      "entryId": "gcba-manual-vehiculo-4-ruedas-2023--49-050",
+      "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--49-050",
+      "textFields": [
+        "title",
+        "fullTranslationRu",
+        "simpleRu",
+        "originalSpanish"
+      ]
+    }
+  ]
+}
