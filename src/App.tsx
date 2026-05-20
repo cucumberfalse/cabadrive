@@ -1,5 +1,5 @@
 import { BookMarked, BookOpen, CheckCircle2, ChevronLeft, ChevronRight, ClipboardList, ExternalLink, FileText, Flag, Image as ImageIcon, ListTree, MapPinned, RotateCcw, Search, Timer, XCircle } from "lucide-react";
-import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
   data,
   assetUrl,
@@ -12,7 +12,7 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
-import { loadPrimarySources, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
+import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet } from "./domain";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
@@ -23,6 +23,12 @@ type SourceViewMode = "simple" | "full" | "spanish";
 type SourceFilterOption = {
   value: string;
   label: string;
+};
+type PrimarySourceDocumentMatch = {
+  document: PrimarySourceDocument;
+  matchingChunks: PrimarySourceChunk[];
+  matchCount: number;
+  isVisible: boolean;
 };
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
@@ -995,6 +1001,7 @@ function PrimarySourcesView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [sourceFilter, setSourceFilter] = useState("all");
+  const previousEffectiveDocumentId = useRef<string | undefined>();
 
   useEffect(() => {
     let isMounted = true;
@@ -1014,42 +1021,20 @@ function PrimarySourcesView() {
     };
   }, []);
 
-  useEffect(() => {
-    setViewMode("simple");
-  }, [selectedDocumentId]);
-
-  if (loadError) {
-    return (
-      <section className="workspace source-reader">
-        <h2>Источники</h2>
-        <p>Локальный корпус источников не загрузился.</p>
-        <p className="muted">{loadError}</p>
-      </section>
-    );
-  }
-
-  if (!corpus) {
-    return (
-      <section className="workspace source-reader">
-        <h2>Источники</h2>
-        <p>Загружаю локальный корпус официальных источников...</p>
-      </section>
-    );
-  }
-
-  const categoryOptions: SourceFilterOption[] = Array.from(new Set(corpus.documents.map((document) => document.category)))
+  const documents = corpus?.documents ?? [];
+  const categoryOptions: SourceFilterOption[] = Array.from(new Set(documents.map((document) => document.category)))
     .sort((a, b) => primarySourceCategoryLabel(a).localeCompare(primarySourceCategoryLabel(b), "ru"))
     .map((category) => ({ value: category, label: primarySourceCategoryLabel(category) }));
   const sourceOptions: SourceFilterOption[] = [
-    ...Array.from(new Set(corpus.documents.map((document) => document.jurisdiction)))
+    ...Array.from(new Set(documents.map((document) => document.jurisdiction)))
       .sort((a, b) => primarySourceJurisdictionLabel(a).localeCompare(primarySourceJurisdictionLabel(b), "ru"))
       .map((jurisdiction) => ({ value: `jurisdiction:${jurisdiction}`, label: `Юрисдикция: ${primarySourceJurisdictionLabel(jurisdiction)}` })),
-    ...Array.from(new Set(corpus.documents.map((document) => document.officialSourceType)))
+    ...Array.from(new Set(documents.map((document) => document.officialSourceType)))
       .sort((a, b) => primarySourceTypeLabel(a).localeCompare(primarySourceTypeLabel(b), "ru"))
       .map((sourceType) => ({ value: `type:${sourceType}`, label: `Тип: ${primarySourceTypeLabel(sourceType)}` }))
   ];
   const query = normalizeSearchText(searchQuery.trim());
-  const documentMatches = corpus.documents
+  const documentMatches: PrimarySourceDocumentMatch[] = documents
     .map((document) => {
       const metadataText = normalizeSearchText(
         [
@@ -1098,12 +1083,45 @@ function PrimarySourcesView() {
     documentMatches[0]?.document;
   const selectedMatch = documentMatches.find((entry) => entry.document.officialDocumentId === selectedDocument?.officialDocumentId);
   const tocChunks = query && selectedMatch?.matchingChunks.length ? selectedMatch.matchingChunks : selectedDocument?.chunks ?? [];
+  const navigationChunks = tocChunks;
   const selectedChunk =
-    tocChunks.find((chunk) => chunk.chunkId === selectedChunkId) ??
-    tocChunks[0] ??
-    selectedDocument?.chunks.find((chunk) => chunk.chunkId === selectedChunkId) ??
+    navigationChunks.find((chunk) => chunk.chunkId === selectedChunkId) ??
+    navigationChunks[0] ??
     selectedDocument?.chunks[0];
-  const selectedChunkIndex = selectedDocument?.chunks.findIndex((chunk) => chunk.chunkId === selectedChunk?.chunkId) ?? -1;
+  const selectedChunkIndex = navigationChunks.findIndex((chunk) => chunk.chunkId === selectedChunk?.chunkId);
+  const effectiveSelectedDocumentId = selectedDocument?.officialDocumentId;
+  const firstNavigationChunkId = navigationChunks[0]?.chunkId ?? selectedDocument?.chunks[0]?.chunkId;
+
+  useEffect(() => {
+    if (!effectiveSelectedDocumentId) {
+      previousEffectiveDocumentId.current = undefined;
+      return;
+    }
+    if (previousEffectiveDocumentId.current === effectiveSelectedDocumentId) return;
+
+    previousEffectiveDocumentId.current = effectiveSelectedDocumentId;
+    setViewMode("simple");
+    setSelectedChunkId(firstNavigationChunkId);
+  }, [effectiveSelectedDocumentId, firstNavigationChunkId]);
+
+  if (loadError) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Локальный корпус источников не загрузился.</p>
+        <p className="muted">{loadError}</p>
+      </section>
+    );
+  }
+
+  if (!corpus) {
+    return (
+      <section className="workspace source-reader">
+        <h2>Источники</h2>
+        <p>Загружаю локальный корпус официальных источников...</p>
+      </section>
+    );
+  }
 
   function selectDocument(document: PrimarySourceDocument) {
     const match = documentMatches.find((entry) => entry.document.officialDocumentId === document.officialDocumentId);
@@ -1116,8 +1134,8 @@ function PrimarySourcesView() {
   }
 
   function goToRelativeChunk(offset: number) {
-    if (!selectedDocument || selectedChunkIndex < 0) return;
-    const nextChunk = selectedDocument.chunks[selectedChunkIndex + offset];
+    if (selectedChunkIndex < 0) return;
+    const nextChunk = navigationChunks[selectedChunkIndex + offset];
     if (nextChunk) setSelectedChunkId(nextChunk.chunkId);
   }
 
@@ -1295,8 +1313,8 @@ function PrimarySourcesView() {
                     <button type="button" className="tool-button" onClick={() => goToRelativeChunk(-1)} disabled={selectedChunkIndex <= 0}>
                       <ChevronLeft size={18} aria-hidden="true" /> Предыдущий
                     </button>
-                    <span>{selectedChunkIndex + 1} / {selectedDocument.chunks.length}</span>
-                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(1)} disabled={selectedChunkIndex < 0 || selectedChunkIndex >= selectedDocument.chunks.length - 1}>
+                    <span>{selectedChunkIndex + 1} / {navigationChunks.length}</span>
+                    <button type="button" className="tool-button" onClick={() => goToRelativeChunk(1)} disabled={selectedChunkIndex < 0 || selectedChunkIndex >= navigationChunks.length - 1}>
                       Следующий <ChevronRight size={18} aria-hidden="true" />
                     </button>
                   </div>

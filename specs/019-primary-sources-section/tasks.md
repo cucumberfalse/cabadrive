@@ -2225,3 +2225,8 @@
   - Replaced long-document body rendering from first-120/show-all chunks with a single selected chunk plus navigation. This closes the monolithic-rendering concern for the reader body while keeping all content locally available through TOC and navigation.
   - Preserved selected document, selected chunk, search query, and filters while switching `Просто`, `Полный перевод`, and `Оригинал ES`; opening a different document still resets the view mode to `Просто` per earlier default-mode requirement.
   - E2E tasks T118-T129 remain open in this slice by user-directed scope reduction.
+- PR #161 live review follow-up on 2026-05-20, starting from head `fa65908f25b365513282c4045daab43ba835d58a`:
+  - Fixed review comments `3271247649` / thread `PRRT_kwDOSX65IM6DXMj2`, duplicate `3271253544` / thread `PRRT_kwDOSX65IM6DXNlh`, and `3271253549` / thread `PRRT_kwDOSX65IM6DXNlj` in `src/App.tsx` only.
+  - Chunk navigation now uses the same active chunk collection as the rendered TOC and selected chunk. When search narrows the TOC to matching chunks, previous/next and the displayed chunk count move within those filtered results instead of the full document.
+  - The source reader now tracks the effective selected document, including the fallback to the first filtered match when `selectedDocumentId` is filtered out. When that effective document changes, it resets the mode to `Просто` and lands on the first active chunk without changing unrelated learner flows.
+  - Local verification passed: `pnpm run validate:content`; `pnpm run test` with 163 passing tests; `pnpm run build`; `git diff --check`. `node scripts/check-feature-memory.mjs --worktree` initially failed before this process-memory entry, then passed after recording the review-fix evidence.
