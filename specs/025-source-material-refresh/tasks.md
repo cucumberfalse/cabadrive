@@ -106,6 +106,16 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - User PDFs are candidates, not release authority.
 - Official Spanish archive stays exact and Spanish-only; Russian learner support stays outside it.
 
+### Decisions
+
+- Full ticket addition/update is too large for one implementation PR unless Slice 1 proves the accepted delta is tiny.
+- First recommended slice is Inventory And Candidate Disposition.
+- Later ticket batches must be small enough to review complete Spanish/source/support/image/evidence changes.
+- Process-guide refresh should normally be separate from ticket batches.
+- Current mode remains `unofficial_b_fallback`; official full-bank claims require separate scope.
+- User PDFs are candidates, not release authority.
+- Official Spanish archive stays exact and Spanish-only; Russian learner support stays outside it.
+
 ### Context Evidence
 
 - Architect worked only in `specs/025-source-material-refresh/`.
@@ -130,12 +140,19 @@ Architect scope note after Slice 1: this should be the next recommended separate
 ### Known Issues
 
 - The feature folder is untracked in this worktree as expected for new feature memory.
+  Architect disposition: disposed as non-blocking process state for PR #167; feature memory is intentionally the PR payload.
 - Architect made no code, content, docs, test, script, staging, commit, push, or PR changes.
+  Architect disposition: disposed as expected role-boundary evidence, not an owner decision or blocker.
 - `categoriab.pdf` yielded 447 structured Spanish candidates: 438 duplicate dispositions and 9 ambiguous dispositions.
+  Architect disposition: disposed for PR #167; duplicates are not imported, and the 9 ambiguous candidates are deferred to a possible future scoped currentness/support investigation.
 - `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` yielded 195 structured Spanish candidates: 7 duplicate, 53 ambiguous, and 135 outdated dispositions.
+  Architect disposition: disposed for PR #167; duplicates are not imported, ambiguous items lack required support, and the 135 outdated items are rejected/not-needed for this slice unless a separate future official-source investigation proves current validity.
 - No candidate was dispositioned `accepted-current`; absent/nonduplicate candidates do not yet have current official/legal support, reliable correct-answer evidence, and image/crop provenance.
+  Architect disposition: disposed as a blocker only to ticket import in this slice; it is not a blocker to PR #167 because this PR is inventory/disposition evidence only.
 - `agent_roadmap_ru.pdf` is unrelated to Cabadrive driving content and was rejected for this refresh.
+  Architect disposition: disposed as rejected/not-needed for PR #167.
 - Russian learning/process PDFs are deferred as unofficial references only; they are not authority for production facts or ticket import.
+  Architect disposition: disposed as deferred/not-authoritative for PR #167; future use requires separate scope and current official-source verification where facts are retained.
 
 ### Verification Evidence
 
@@ -164,13 +181,26 @@ Architect scope note after Slice 1: this should be the next recommended separate
   - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
   - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
 
+### Cycle PR Set
+
+- PR #167, branch `codex/025-source-material-refresh`, current head `747a5539b548136396b55f477851aa7dd405ad20`; status: process-memory normalization after accepted review fixes, not yet re-final-validated at this head; included in final validation for the Slice 1 source-material refresh cycle.
+
+### Final Validation Evidence
+
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Prior final Architect/Analyst validations for earlier heads are stale/superseded by later review-fix and process-memory-normalization changes; final Architect validation and final Analyst validation must be rerun after this normalization. No new final pass markers are recorded in this section.
+
 ### Implementation Agent Feedback
 
-- For Architect disposition: no Slice 2 ticket-import batch is ready from this evidence because `accepted-current` count is 0.
-- For Architect disposition: if later ticket work is desired, start with the 9 ambiguous `categoriab.pdf` candidates and require official/currentness validation plus full support evidence before any import.
-- For Architect disposition: do not batch-import unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` candidates unless a separate official-source investigation proves current validity.
-- For Architect disposition: run process-guide refresh as a separate slice using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model, with official GCBA/ANSV verification for every retained claim.
-- For Architect disposition: no official archive/manual update is recommended from Slice 1 because the supplied 2023 manual copy already matches the governed archive original.
+- No Slice 2 ticket-import batch is ready from this evidence because `accepted-current` count is 0. Architect disposition: not-needed for PR #167; do not import tickets from this slice.
+- If later ticket work is desired, start with the 9 ambiguous `categoriab.pdf` candidates and require official/currentness validation plus full support evidence before any import. Architect disposition: possible future investigation slice, deferred outside PR #167.
+- Do not batch-import unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` candidates unless a separate official-source investigation proves current validity. Architect disposition: rejected/not-needed for PR #167 batch import.
+- Run process-guide refresh as a separate slice using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model, with official GCBA/ANSV verification for every retained claim. Architect disposition: recommended next separate slice, not part of PR #167.
+- No official archive/manual update is recommended from Slice 1 because the supplied 2023 manual copy already matches the governed archive original. Architect disposition: not-needed for PR #167; no manual/archive update should be assigned from Slice 1 evidence.
+- Review-fix evidence sanitation removed committed verbatim extracted question/answer text and machine-specific paths while preserving candidate IDs, logical source/page metadata, match/disposition metadata, counts, and fingerprints. Architect disposition: accepted as evidence hygiene only; no new product/content decision is needed.
 
 ### Architect Dispositions
 
