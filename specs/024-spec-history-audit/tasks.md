@@ -170,11 +170,19 @@ Implementation Agent must replace the placeholder disposition values below with 
 ### Known Issues
 
 - Resolved in this PR: current repository evidence before implementation edits showed `content/guide/topic-study-guide.ru.json` with guide status `draft` and 38/38 topics also `draft`; the guide, coverage, and source trace are now `published`.
+  Architect disposition: resolved by implementation and verification evidence recorded below.
 - Resolved in this PR: current repository evidence before implementation edits showed `content/official-documents/manifest.json` with 19 entries, all 19 currentness validations passed, all 19 exact-text validations passed, but root/source-reader metadata and docs still described draft or blocked release state.
+  Architect disposition: resolved by implementation and verification evidence recorded below.
 - Resolved in this PR: a full live exact-text rerun during implementation initially returned 17 passed and 2 blocked because the manifest still used two stale official URL forms (`Ley 2148` without `/actualizacion/1000`, and `Disposicion 29/2024` with the accented slug). The canonical source/evidence URLs and learner shard source URLs were corrected, and the canonical exact-text evidence was regenerated with 19 passed, 0 blocked, and 0 failed.
+  Architect disposition: resolved by canonical source/evidence URL remediation and exact-text validation evidence recorded below.
 - Existing spec prefixes include historical duplicates for `002`, `012`, `018`, `019`, and `022`.
+  Architect disposition: accepted historical state; duplicate-prefix classification is recorded in the audit matrix and is not a current blocker.
 - Legacy folders `001-unicorn-bootstrap-docs-foundation`, `002-main-branch-protection`, `002-mvp-runtime`, and `002-orchestrator-role-boundary` lack `feature-request.md` because they predate current Analyst intake requirements.
+  Architect disposition: accepted legacy/no-intake exception; classification is recorded in the audit matrix and is not a current blocker.
 - No current blocker remains from legacy/no-intake or duplicate-prefix history; classification is recorded in the audit matrix.
+  Architect disposition: resolved; no remaining known issues.
+
+No remaining known issues.
 
 ### Verification Evidence
 
@@ -237,28 +245,13 @@ Implementation Agent must replace the placeholder disposition values below with 
 
 ### Final Validation Evidence
 
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-20T19:55:44Z
-- Architect return count: unchanged/0; no gaps found, so T075 required no return to Orchestrator for follow-up development.
-- Analyst validation pass: passed
-- Final Analyst validation completed at: 2026-05-20T20:00:51Z
-- Analyst return count: unchanged/0; no gaps found.
-- Effective content head: dd9b68dc826467db61094dfd7d9c13487429704c
-- Architect validated effective content head: dd9b68dc826467db61094dfd7d9c13487429704c
-- Analyst validated effective content head: dd9b68dc826467db61094dfd7d9c13487429704c
-- Final-validation evidence-only commit: none at Architect validation time. This Architect-owned evidence edit, together with the Analyst-owned final-validation notes in `feature-request.md`, is intended to be a later final-validation evidence-only change if Orchestrator commits it; any later non-evidence change invalidates this validation.
-- Architect read-only current-head guard: passed for PR #166 at `dd9b68dc826467db61094dfd7d9c13487429704c`; local `HEAD`, `origin/codex/024-spec-history-audit`, and GitHub PR `headRefOid` all matched the effective content head, base remained `origin/main` / `5f7ee7d8d301a27371a17a96d370d1ceec2629e8`, and GitHub reported `mergeable: MERGEABLE` / `mergeStateStatus: CLEAN`. Orchestrator final current-head guard remains pending after Analyst validation and any evidence-only commit.
-- Cycle PR set validation: passed. PR #166 is the only implementation PR slice for this work cycle; branch `codex/024-spec-history-audit`; current/effective content head `dd9b68dc826467db61094dfd7d9c13487429704c`; final-validation inclusion confirmed.
-- Required GitHub checks on current head: passed for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` via `gh pr checks 166 --repo cucumberfalse/cabadrive` and PR status rollup.
-- Review validation: passed. Review Agent final review for `dd9b68dc826467db61094dfd7d9c13487429704c` reported pass/no blocking findings; all review threads inspected by GraphQL were resolved, and prior blocking threads were either outdated or fixed.
-- Audit coverage validation: passed. The feature memory records 29 prior spec folders excluding active `024`; legacy no-intake folders are limited to `001-unicorn-bootstrap-docs-foundation`, `002-main-branch-protection`, `002-mvp-runtime`, and `002-orchestrator-role-boundary`; duplicate prefixes `002`, `012`, `018`, `019`, and `022` are accepted historical state; the final audit matrix has one disposition row for every prior feature.
-- Current-status validation: passed. Topic guide status is `published`, with 38/38 topics published, 460/460 assignments published, 639/639 effective placements published, and source trace `published` with 170 entries. Official-documents manifest status is `published`, with 19 entries, 19 currentness validations passed, and 19 exact-text validations passed; canonical exact-text evidence summary is `total: 19`, `passed: 19`, `blocked: 0`, `failed: 0`.
-- Current-quality marker validation: passed. Targeted scan for stale exact-text, MVP, draft/incomplete, blocked-release, old review-authority, and readiness artifact phrases returned no current-surface matches in `content`, `docs_project`, `src`, `scripts`, `tests`, `CREATE-DOCS.md`, `package.json`, or `.unicorn-hub`. Broad unfinished-marker hits were reviewed as schema/status enums, validator/test fixtures, search input placeholders, traffic-safety terms such as temporary roadwork, source HTML chrome, or active feature-memory audit evidence rather than accidental current-product incompletion.
-- Learner-prose validation: passed. A targeted traversal over learner-facing `*Ru` and `disclaimer` strings in `content/guide/topic-study-guide.ru.json`, excluding backtick code spans, found 0 suspect English scaffold rows for the previously reviewed residue classes.
-- Local read-only validation: passed. `node scripts/check-feature-memory.mjs --worktree` and `git diff --check origin/main...HEAD` passed during final Architect validation. Current diff scope is 129 changed paths, scoped to the feature-024 audit/remediation domains already represented in the matrix and evidence.
-- Implementation Agent feedback Architect disposition: none required; `Implementation Agent Feedback` remains none.
-- Analyst feedback Architect disposition: none required; final Analyst validation passed with no gaps, return count unchanged/0, and no follow-up development needed.
-- Limit escalation: none.
+- Previous final-validation evidence for effective content head `dd9b68dc826467db61094dfd7d9c13487429704c` is superseded by this Architect-owned process-memory cleanup because Orchestrator finalization later blocked on stale process memory, non-current evidence-only formatting, and undisposed known-issue entries.
+- Prior Architect validation for `dd9b68dc826467db61094dfd7d9c13487429704c`: superseded; it must not be treated as current final validation for PR #166 after this cleanup.
+- Prior Analyst validation for `dd9b68dc826467db61094dfd7d9c13487429704c`: superseded; it must not be treated as current final validation for PR #166 after this cleanup.
+- Effective content head: pending. After this process-memory cleanup is committed and pushed, Orchestrator will rerun final Architect validation and then final Analyst validation on the new effective content head.
+- Architect return count: 0; no Architect final-validation return is recorded at this cleanup point.
+- Analyst return count: 0; no Analyst final-validation return is recorded at this cleanup point.
+- Final current-head guard: pending fresh Orchestrator read-only guard after final Architect and Analyst validation are rerun.
 
 ### Cleanup Evidence
 
