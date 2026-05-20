@@ -544,6 +544,8 @@ test("primary source reader opens, preserves app flows, and switches Russian/Spa
   await expect(page.getByTestId("source-list-pane")).toBeVisible();
 
   await openSourceDocument(page, trafficLawSource);
+  await expect(page.getByTestId("source-detail-pane")).toContainText("Точный текст проверен.");
+  await expect(page.getByTestId("source-detail-pane")).not.toContainText("Проверка точного текста ожидается.");
   await expect(page.getByTestId("source-mode-simple")).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[0].simpleRu));
 

@@ -4,7 +4,7 @@ type OfficialManifest = typeof manifestJson;
 type ManifestEntry = OfficialManifest["entries"][number];
 
 type SourceDocumentShard = {
-  document: SourceDocumentPayload;
+  documents: SourceDocumentPayload[];
 };
 
 type SourceDocumentPayload = {
@@ -61,12 +61,26 @@ const documentShardModules = import.meta.glob("../../content/primary-sources/doc
 
 let primarySourcesPromise: Promise<PrimarySourceCorpus> | undefined;
 
-function assertSourceDocumentShard(modulePath: string, value: unknown): SourceDocumentShard {
-  const shard = (value as { default?: unknown }).default as SourceDocumentShard | undefined;
-  if (!shard?.document?.officialDocumentId || !Array.isArray(shard.document.chunks)) {
+function isSourceDocumentPayload(value: unknown): value is SourceDocumentPayload {
+  const document = value as SourceDocumentPayload | undefined;
+  return Boolean(document?.officialDocumentId && Array.isArray(document.chunks));
+}
+
+export function normalizeSourceDocumentShard(modulePath: string, value: unknown): SourceDocumentShard {
+  const shard = (value as { default?: unknown }).default as
+    | { document?: unknown; documents?: unknown }
+    | undefined;
+  const pluralDocuments = Array.isArray(shard?.documents) ? shard.documents : [];
+  const hasMalformedPluralDocument = pluralDocuments.some((document) => !isSourceDocumentPayload(document));
+  const documents = [
+    ...(isSourceDocumentPayload(shard?.document) ? [shard.document] : []),
+    ...pluralDocuments.filter(isSourceDocumentPayload)
+  ];
+
+  if (documents.length === 0 || hasMalformedPluralDocument) {
     throw new Error(`Primary source shard ${modulePath} is malformed.`);
   }
-  return shard;
+  return { documents };
 }
 
 function manifestEntryStatus(entry: ManifestEntry) {
@@ -77,14 +91,16 @@ function manifestEntryStatus(entry: ManifestEntry) {
   };
 }
 
-function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocumentShard[]): PrimarySourceDocument[] {
+export function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocumentShard[]): PrimarySourceDocument[] {
   const shardsByDocument = new Map<string, SourceDocumentPayload[]>();
 
   for (const shard of shards) {
-    const documentId = shard.document.officialDocumentId;
-    const current = shardsByDocument.get(documentId) ?? [];
-    current.push(shard.document);
-    shardsByDocument.set(documentId, current);
+    for (const document of shard.documents) {
+      const documentId = document.officialDocumentId;
+      const current = shardsByDocument.get(documentId) ?? [];
+      current.push(document);
+      shardsByDocument.set(documentId, current);
+    }
   }
 
   return entries.map((entry) => {
@@ -125,11 +141,13 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
   ]);
   const manifest = manifestModuleResult.default as OfficialManifest;
   const shards = shardModules
-    .map(({ path, module }) => assertSourceDocumentShard(path, module))
+    .map(({ path, module }) => normalizeSourceDocumentShard(path, module))
     .sort((a, b) => {
-      const documentCompare = a.document.officialDocumentId.localeCompare(b.document.officialDocumentId);
+      const documentA = a.documents[0];
+      const documentB = b.documents[0];
+      const documentCompare = documentA.officialDocumentId.localeCompare(documentB.officialDocumentId);
       if (documentCompare) return documentCompare;
-      return (a.document.chunks[0]?.order ?? 0) - (b.document.chunks[0]?.order ?? 0);
+      return (documentA.chunks[0]?.order ?? 0) - (documentB.chunks[0]?.order ?? 0);
     });
   const documents = mergeDocumentShards(manifest.entries, shards);
   const chunkCount = documents.reduce((sum, document) => sum + document.chunks.length, 0);

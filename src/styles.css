@@ -375,19 +375,28 @@ small,
   background: #dff3eb;
 }
 
-.source-warning {
+.source-status-note {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 10px;
   margin: 12px 0 16px;
   padding: 10px 12px;
-  border: 1px solid #dec98b;
   border-radius: 8px;
+}
+
+.source-status-note.pending {
+  border: 1px solid #dec98b;
   background: #fff9e5;
   color: #604b05;
 }
 
-.source-warning span {
+.source-status-note.passed {
+  border: 1px solid #9ccab7;
+  background: #eef8f3;
+  color: #185744;
+}
+
+.source-status-note span {
   min-width: min(100%, 420px);
 }
 

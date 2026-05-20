@@ -1566,9 +1566,18 @@ function PrimarySourcesView() {
               <span className={selectedDocument.exactTextValidationStatus === "passed" ? "" : "pending"}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
             </div>
 
-            <div className="source-warning">
-              <strong>Проверка точного текста ожидается.</strong>
-              <span>До финального релиза испанский архив требует отдельной exact-text проверки. Русский слой неофициальный и нужен только для учебы.</span>
+            <div className={`source-status-note ${selectedDocument.exactTextValidationStatus === "passed" ? "passed" : "pending"}`} role="status">
+              {selectedDocument.exactTextValidationStatus === "passed" ? (
+                <>
+                  <strong>Точный текст проверен.</strong>
+                  <span>Испанский архив прошел exact-text проверку для этого источника. Русский слой неофициальный и нужен только для учебы.</span>
+                </>
+              ) : (
+                <>
+                  <strong>Проверка точного текста ожидается.</strong>
+                  <span>До финального релиза испанский архив требует отдельной exact-text проверки. Русский слой неофициальный и нужен только для учебы.</span>
+                </>
+              )}
             </div>
 
             <div className="source-reader-grid">
