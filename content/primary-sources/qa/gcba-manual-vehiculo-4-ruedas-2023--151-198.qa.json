@@ -1,0 +1,731 @@
+{
+  "version": 1,
+  "schema": "primary-sources-qa-shard.v1",
+  "status": "approved",
+  "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+  "document": {
+    "officialDocumentId": "gcba-manual-vehiculo-4-ruedas-2023",
+    "chunks": [
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--150-151",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3736-3741, generated coverage order 151, fingerprint sha256:69408a50f226be471349beaf759ec4d927446f1f7bd228f3de85dc77480ae931, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 151; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3736-3741, generated coverage order 151, fingerprint sha256:69408a50f226be471349beaf759ec4d927446f1f7bd228f3de85dc77480ae931, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 151; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--151-152",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3742-3746, generated coverage order 152, fingerprint sha256:b3b20539053514e2a1ee13722654c947e8cffcb7dbb5146c627f6caa4a48c908, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 152; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3742-3746, generated coverage order 152, fingerprint sha256:b3b20539053514e2a1ee13722654c947e8cffcb7dbb5146c627f6caa4a48c908, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 152; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--152-153",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3747-3787, generated coverage order 153, fingerprint sha256:0ff4ee79d05d709529659d652fddca204351c8753a65e6770bfae5aff8434212, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 153; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3747-3787, generated coverage order 153, fingerprint sha256:0ff4ee79d05d709529659d652fddca204351c8753a65e6770bfae5aff8434212, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 153; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--153-154",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3788-3833, generated coverage order 154, fingerprint sha256:b0b55a215f318997479a6dadfb8ab49e6a30d721adb529bf91956bb8ed924f25, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 154; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3788-3833, generated coverage order 154, fingerprint sha256:b0b55a215f318997479a6dadfb8ab49e6a30d721adb529bf91956bb8ed924f25, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 154; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--154-155",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3834-3870, generated coverage order 155, fingerprint sha256:c129093e36721a483e91dd0b943ef45d3d179cc753c0a63f54d4657eac141f4e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 155; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3834-3870, generated coverage order 155, fingerprint sha256:c129093e36721a483e91dd0b943ef45d3d179cc753c0a63f54d4657eac141f4e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 155; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--155-156",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3871-3900, generated coverage order 156, fingerprint sha256:6fdf4ddfe55159ec0b2884224eaf05905f7a9d17d8479f8743d19d676c897a49, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 156; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3871-3900, generated coverage order 156, fingerprint sha256:6fdf4ddfe55159ec0b2884224eaf05905f7a9d17d8479f8743d19d676c897a49, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 156; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--156-157",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3901-3915, generated coverage order 157, fingerprint sha256:7fb089885e74d95bc1ced31db8cab232ae22148c7e28ec9ed0847e80e32090b9, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 157; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3901-3915, generated coverage order 157, fingerprint sha256:7fb089885e74d95bc1ced31db8cab232ae22148c7e28ec9ed0847e80e32090b9, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 157; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--157-158",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3916-3928, generated coverage order 158, fingerprint sha256:591f46b40afeeeab869d611c6fadf0936863f025f51e71f338efceb35e56c0b0, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 158; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3916-3928, generated coverage order 158, fingerprint sha256:591f46b40afeeeab869d611c6fadf0936863f025f51e71f338efceb35e56c0b0, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 158; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--158-159",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3929-3970, generated coverage order 159, fingerprint sha256:8c087c0012a68148734a8def478ceaf8967c85b8241f476e537cc70e8503ad3e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 159; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3929-3970, generated coverage order 159, fingerprint sha256:8c087c0012a68148734a8def478ceaf8967c85b8241f476e537cc70e8503ad3e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 159; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--159-160",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3971-4000, generated coverage order 160, fingerprint sha256:ccfcf1c679e2f58f6a3e1857e41ef87b6c8d6cb33d1edf4e136c365dafc9fd4f, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 160; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 3971-4000, generated coverage order 160, fingerprint sha256:ccfcf1c679e2f58f6a3e1857e41ef87b6c8d6cb33d1edf4e136c365dafc9fd4f, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 160; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--160-161",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4001-4022, generated coverage order 161, fingerprint sha256:a4b195a85ec34b3983aca967840358638d8b7e507eb069fef748975c5a50e6b3, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 161; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4001-4022, generated coverage order 161, fingerprint sha256:a4b195a85ec34b3983aca967840358638d8b7e507eb069fef748975c5a50e6b3, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 161; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--161-162",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4023-4053, generated coverage order 162, fingerprint sha256:2837be9b1f6b40550115224f489c9a319e0759251ac02cc28b83d13af129691d, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 162; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4023-4053, generated coverage order 162, fingerprint sha256:2837be9b1f6b40550115224f489c9a319e0759251ac02cc28b83d13af129691d, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 162; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--162-163",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4054-4057, generated coverage order 163, fingerprint sha256:9695d679c792ea4519788ab3285687f9abb8ec2f4498bcc123950d464def9f0b, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 163; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4054-4057, generated coverage order 163, fingerprint sha256:9695d679c792ea4519788ab3285687f9abb8ec2f4498bcc123950d464def9f0b, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 163; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--163-164",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4058-4083, generated coverage order 164, fingerprint sha256:9f2b18e80502d6aacfcf1fd95862c1b0aedc73c07a647d933b8d2e9921759876, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 164; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4058-4083, generated coverage order 164, fingerprint sha256:9f2b18e80502d6aacfcf1fd95862c1b0aedc73c07a647d933b8d2e9921759876, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 164; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--164-165",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4084-4097, generated coverage order 165, fingerprint sha256:047f749c8ce1cd061b4ee67cfc5e0fb45daaf61feb26ce7a42706fa4f695858c, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 165; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4084-4097, generated coverage order 165, fingerprint sha256:047f749c8ce1cd061b4ee67cfc5e0fb45daaf61feb26ce7a42706fa4f695858c, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 165; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--165-166",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4098-4129, generated coverage order 166, fingerprint sha256:bdcd9473f906ef172e734f5a87ea22a7bd57abedeceb219aabfef2f47ab447d4, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 166; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4098-4129, generated coverage order 166, fingerprint sha256:bdcd9473f906ef172e734f5a87ea22a7bd57abedeceb219aabfef2f47ab447d4, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 166; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--166-167",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4130-4155, generated coverage order 167, fingerprint sha256:1f4ca3a42802333f1fb30bef49d61864e069285764c45baf030afa5228084f8b, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 167; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4130-4155, generated coverage order 167, fingerprint sha256:1f4ca3a42802333f1fb30bef49d61864e069285764c45baf030afa5228084f8b, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 167; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--167-168",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4156-4208, generated coverage order 168, fingerprint sha256:7c8832762ae685d48b5807bbf534236d8fb0e3bda8cc9369e891b0da349b8a1e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 168; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4156-4208, generated coverage order 168, fingerprint sha256:7c8832762ae685d48b5807bbf534236d8fb0e3bda8cc9369e891b0da349b8a1e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 168; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--168-169",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4209-4250, generated coverage order 169, fingerprint sha256:7e46853c0009a3e3b89179072dccbf0b426ebddac91319c214b7cf390afca4da, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 169; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4209-4250, generated coverage order 169, fingerprint sha256:7e46853c0009a3e3b89179072dccbf0b426ebddac91319c214b7cf390afca4da, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 169; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--169-170",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4251-4286, generated coverage order 170, fingerprint sha256:ea24c9805fa0260e3ebfc629aa9370dd2abc07a8f561e884d2aa56f982b4e4f8, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 170; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4251-4286, generated coverage order 170, fingerprint sha256:ea24c9805fa0260e3ebfc629aa9370dd2abc07a8f561e884d2aa56f982b4e4f8, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 170; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--170-171",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4287-4324, generated coverage order 171, fingerprint sha256:47165d0da987fb99b34ed81a48e6b4dbeec90577236a5b79771d83fc283d2d13, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 171; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4287-4324, generated coverage order 171, fingerprint sha256:47165d0da987fb99b34ed81a48e6b4dbeec90577236a5b79771d83fc283d2d13, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 171; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--171-172",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4325-4345, generated coverage order 172, fingerprint sha256:4c3964887544a6c5c1b1b915d2ae8a2cb26e52e022ac5698e5d5881df18d3580, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 172; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4325-4345, generated coverage order 172, fingerprint sha256:4c3964887544a6c5c1b1b915d2ae8a2cb26e52e022ac5698e5d5881df18d3580, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 172; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--172-173",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4346-4364, generated coverage order 173, fingerprint sha256:8b15606d23a8a1e37f14842f534eb6c28002b4d50a999229a45324d6c6e3fa19, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 173; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4346-4364, generated coverage order 173, fingerprint sha256:8b15606d23a8a1e37f14842f534eb6c28002b4d50a999229a45324d6c6e3fa19, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 173; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--173-174",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4365-4386, generated coverage order 174, fingerprint sha256:68cf4d159a511a93007d1630b9105778b034e4cb91c0aba6f9860c3bb478a511, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 174; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4365-4386, generated coverage order 174, fingerprint sha256:68cf4d159a511a93007d1630b9105778b034e4cb91c0aba6f9860c3bb478a511, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 174; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--174-175",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4387-4413, generated coverage order 175, fingerprint sha256:598e060da5a77cae4235384e88f70763aad220e067abd8dd99e86e72576df4c7, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 175; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4387-4413, generated coverage order 175, fingerprint sha256:598e060da5a77cae4235384e88f70763aad220e067abd8dd99e86e72576df4c7, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 175; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--175-176",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4414-4450, generated coverage order 176, fingerprint sha256:79cdff5301a478255b7eb5074bf5dfd7c128c8c1783513d25b49eb1854509c49, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 176; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4414-4450, generated coverage order 176, fingerprint sha256:79cdff5301a478255b7eb5074bf5dfd7c128c8c1783513d25b49eb1854509c49, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 176; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--176-177",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4451-4464, generated coverage order 177, fingerprint sha256:7cef5ede22b7cfcfc0bde8bc03e6d3a9f00eb382607b2bb3f136b0dcdc82ebcb, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 177; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4451-4464, generated coverage order 177, fingerprint sha256:7cef5ede22b7cfcfc0bde8bc03e6d3a9f00eb382607b2bb3f136b0dcdc82ebcb, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 177; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--177-178",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4465-4496, generated coverage order 178, fingerprint sha256:eed08c1cb62b5c370ff0f7248fd44615af350437a6f7b77315dc7a8e81ff9d1e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 178; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4465-4496, generated coverage order 178, fingerprint sha256:eed08c1cb62b5c370ff0f7248fd44615af350437a6f7b77315dc7a8e81ff9d1e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 178; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--178-179",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4497-4515, generated coverage order 179, fingerprint sha256:fa27aeff70722ccb5257b4486fbbba1c05702d4634873d0dbcf46e3e95e368c7, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 179; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4497-4515, generated coverage order 179, fingerprint sha256:fa27aeff70722ccb5257b4486fbbba1c05702d4634873d0dbcf46e3e95e368c7, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 179; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--179-180",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4516-4549, generated coverage order 180, fingerprint sha256:d9989ef7250dcdb1f1fdd20427c75dd7326d6a39d194e52e772ab85b358d4af1, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 180; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4516-4549, generated coverage order 180, fingerprint sha256:d9989ef7250dcdb1f1fdd20427c75dd7326d6a39d194e52e772ab85b358d4af1, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 180; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--180-181",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4550-4586, generated coverage order 181, fingerprint sha256:ec9a0a9c74c586f0754c486bc786a6b84e57dd58e5330d4cecfc2dd3e8c58b77, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 181; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4550-4586, generated coverage order 181, fingerprint sha256:ec9a0a9c74c586f0754c486bc786a6b84e57dd58e5330d4cecfc2dd3e8c58b77, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 181; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--181-182",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4587-4589, generated coverage order 182, fingerprint sha256:4b1cdb62f5e6b7ce18eb4db66580ece72a614d5ca5d1de4ce629df87424bc3a8, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 182; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4587-4589, generated coverage order 182, fingerprint sha256:4b1cdb62f5e6b7ce18eb4db66580ece72a614d5ca5d1de4ce629df87424bc3a8, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 182; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--182-183",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4590-4597, generated coverage order 183, fingerprint sha256:ed49d1383dda12a4760e6d7dc6b3712a54ed4e50c4456962ed2feb41e927833e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 183; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4590-4597, generated coverage order 183, fingerprint sha256:ed49d1383dda12a4760e6d7dc6b3712a54ed4e50c4456962ed2feb41e927833e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 183; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--183-184",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4598-4601, generated coverage order 184, fingerprint sha256:7feb2c3b2df178ec9bfe5e8b0471c90c45622bd6f2554f994c7edaff48627c8a, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 184; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4598-4601, generated coverage order 184, fingerprint sha256:7feb2c3b2df178ec9bfe5e8b0471c90c45622bd6f2554f994c7edaff48627c8a, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 184; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--184-185",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4602-4605, generated coverage order 185, fingerprint sha256:6278da29208e8a1d1620036482552de1afb62492811bd75ef63795fa102384b4, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 185; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4602-4605, generated coverage order 185, fingerprint sha256:6278da29208e8a1d1620036482552de1afb62492811bd75ef63795fa102384b4, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 185; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--185-186",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4606-4610, generated coverage order 186, fingerprint sha256:697e6f7fc6648e99f66614b8ff467feef2a906331f9462b12c009bf891f2c760, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 186; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4606-4610, generated coverage order 186, fingerprint sha256:697e6f7fc6648e99f66614b8ff467feef2a906331f9462b12c009bf891f2c760, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 186; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--186-187",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4611-4614, generated coverage order 187, fingerprint sha256:c2459c736eb74a9a4d087bf5e70bec07d380825eb1f03cee13ca8714ba7701df, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 187; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4611-4614, generated coverage order 187, fingerprint sha256:c2459c736eb74a9a4d087bf5e70bec07d380825eb1f03cee13ca8714ba7701df, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 187; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--187-188",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4615-4620, generated coverage order 188, fingerprint sha256:6e7b40d8a9685372a301dd88e2cf6a0fb9951fedef776700bd15efdeab8fd375, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 188; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4615-4620, generated coverage order 188, fingerprint sha256:6e7b40d8a9685372a301dd88e2cf6a0fb9951fedef776700bd15efdeab8fd375, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 188; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--188-189",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4621-4624, generated coverage order 189, fingerprint sha256:907d377e9b60c256de714deb370f0b2ecebad8c3aec06d9f11d6627be7e82c75, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 189; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4621-4624, generated coverage order 189, fingerprint sha256:907d377e9b60c256de714deb370f0b2ecebad8c3aec06d9f11d6627be7e82c75, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 189; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--189-190",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4625-4627, generated coverage order 190, fingerprint sha256:e570dcecec93d71f27e88c3225193a9ca8d18cf37c7b0780a2f9ce0492e93eeb, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 190; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4625-4627, generated coverage order 190, fingerprint sha256:e570dcecec93d71f27e88c3225193a9ca8d18cf37c7b0780a2f9ce0492e93eeb, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 190; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--190-191",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4628-4631, generated coverage order 191, fingerprint sha256:e371bbe88c5e0fc7ea33d251eaef42134e84b4f38399ab409061024fd9d73498, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 191; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4628-4631, generated coverage order 191, fingerprint sha256:e371bbe88c5e0fc7ea33d251eaef42134e84b4f38399ab409061024fd9d73498, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 191; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--191-192",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4632-4649, generated coverage order 192, fingerprint sha256:821d47afac7a9fb908524649944727af13d8f85d4655af195b2cbf84b98e8299, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 192; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4632-4649, generated coverage order 192, fingerprint sha256:821d47afac7a9fb908524649944727af13d8f85d4655af195b2cbf84b98e8299, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 192; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--192-193",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4650-4654, generated coverage order 193, fingerprint sha256:0cc078cbab580ba779940984c21c76793317d0a5871c033349f4192f9a605038, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 193; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4650-4654, generated coverage order 193, fingerprint sha256:0cc078cbab580ba779940984c21c76793317d0a5871c033349f4192f9a605038, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 193; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--193-194",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4655-4659, generated coverage order 194, fingerprint sha256:93394f62375d3de0867a2834da134a78b5b9d250e91780da3a44bae8fb77864a, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 194; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4655-4659, generated coverage order 194, fingerprint sha256:93394f62375d3de0867a2834da134a78b5b9d250e91780da3a44bae8fb77864a, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 194; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--194-195",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4660-4664, generated coverage order 195, fingerprint sha256:e4fcac827d34b145dd60793ef1baf36e0575137f67964d9821d58497518465cc, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 195; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4660-4664, generated coverage order 195, fingerprint sha256:e4fcac827d34b145dd60793ef1baf36e0575137f67964d9821d58497518465cc, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 195; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--195-196",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4665-4667, generated coverage order 196, fingerprint sha256:c22e290c0f80bbed47f0dee9830725ecf0dc9712781e1c25abb5aa1fb1a9246f, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 196; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4665-4667, generated coverage order 196, fingerprint sha256:c22e290c0f80bbed47f0dee9830725ecf0dc9712781e1c25abb5aa1fb1a9246f, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 196; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--196-197",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4668-4673, generated coverage order 197, fingerprint sha256:c14180b8578f80cb4db65af08e4e2eb1af2b9f65f4e16ee646cec9f9a8d3a72e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 197; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4668-4673, generated coverage order 197, fingerprint sha256:c14180b8578f80cb4db65af08e4e2eb1af2b9f65f4e16ee646cec9f9a8d3a72e, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 197; learner text remains unofficial Cabadrive support."
+        }
+      },
+      {
+        "chunkId": "gcba-manual-vehiculo-4-ruedas-2023--197-198",
+        "translationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4674-4683, generated coverage order 198, fingerprint sha256:cef5898df55c72414aee47c84bf64e0e0393450e3c515b5610e97e9376e6af98, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Full Russian translation was authored from the official Spanish PDF-extracted span and reviewed paragraph-by-paragraph for complete meaning rather than summary.",
+          "reviewerNotes": "D12-004 translation QA approved for order 198; no official archive text was edited."
+        },
+        "simplificationQa": {
+          "status": "approved",
+          "checkedAt": "2026-05-20",
+          "methodNotes": "Reviewed for D12-004 against GCBA four-wheel manual PDF page-group archive span 4674-4683, generated coverage order 198, fingerprint sha256:cef5898df55c72414aee47c84bf64e0e0393450e3c515b5610e97e9376e6af98, and content/primary-sources/terminology.ru.md. The review preserved PDF page labels, source spans, cargo/professional-driving content, list/procedure/reference structure, signal taxonomy, safety-equipment wording, phone/email/URL references, legal citations, numeric thresholds, exceptions, institutional names, and source metadata. Manifest exact-text validation remains pending and is not resolved by learner-content QA. Simple Russian was reviewed as a school-student-friendly rewrite with concrete duties, limits, warnings, safety actions, page/source references where relevant, and no simplified Spanish.",
+          "reviewerNotes": "D12-004 simplification QA approved for order 198; learner text remains unofficial Cabadrive support."
+        }
+      }
+    ]
+  }
+}
