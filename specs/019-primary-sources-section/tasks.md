@@ -357,6 +357,7 @@
   - Regenerated `content/official-documents/validation/exact-text-validation-2026-05-20.json` and smoke evidence after the stricter policy; both contain zero `archive_contains_normalized_live_meaningful_source` match kinds.
   - The strict rerun remains 19/19 passed with 0 blocked and 0 failed, so T029 and T142 stay closed for the current manifest.
   - Addressed follow-up Codex Review findings on head `e6844e1ba282ddefa32e7b07be759b1217932904`: removed the unsafe adjacent-digit whitespace collapse, replaced it with the narrowly audited InfoLeg `Ley N° NN.NN D B.O.` layout repair, and derived evidence `checkedAt` from runtime local date instead of a hardcoded date.
+  - Addressed follow-up Codex Review P2 on head `4d9c9a25222daea34fef427ba24fcb361a9c2072`: `fetchBytes` now selects the text decoder from the final redirected response URL while preserving explicit response charset handling.
 
 ### Slice D10-001 Civil Code Quality Repair Notes
 

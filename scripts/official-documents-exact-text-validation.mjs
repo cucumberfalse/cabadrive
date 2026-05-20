@@ -417,13 +417,14 @@ async function fetchBytes(url) {
       }
     });
     const bytes = Buffer.from(await response.arrayBuffer());
+    const finalUrl = response.url;
     return {
       ok: response.ok,
       status: response.status,
-      finalUrl: response.url,
+      finalUrl,
       contentType: response.headers.get("content-type"),
       bytes,
-      text: decoderForResponse(url, response.headers).decode(bytes)
+      text: decoderForResponse(finalUrl, response.headers).decode(bytes)
     };
   } finally {
     clearTimeout(timeout);
