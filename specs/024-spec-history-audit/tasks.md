@@ -93,8 +93,8 @@
 
 ## Review And PR Readiness
 
-- [ ] T065 Open/update the implementation PR through Orchestrator/Implementation Agent workflow as assigned.
-- [ ] T066 Record cycle PR set with purpose, branch, PR metadata/number, head SHA, status, and final-validation inclusion.
+- [x] T065 Open/update the implementation PR through Orchestrator/Implementation Agent workflow as assigned.
+- [x] T066 Record cycle PR set with purpose, branch, PR metadata/number, head SHA, status, and final-validation inclusion.
 - [ ] T067 Review Agent verifies full audit coverage for all prior specs.
 - [ ] T068 Review Agent verifies current-status truthfulness, especially topic guide, primary-source reader, fallback-bank labeling, and durable docs.
 - [ ] T069 Review Agent verifies role boundaries, Orchestrator-first routing, latest-main startup, sibling-work preservation, generated-file discipline, and cleanup non-applicability.
@@ -212,7 +212,8 @@ Implementation Agent must replace the placeholder disposition values below with 
 
 ### Cycle PR Set
 
-- Pending implementation assignment.
+- PR #166: `https://github.com/cucumberfalse/cabadrive/pull/166`; purpose: single implementation PR slice for feature `024` spec-history audit and completion hardening; branch: `codex/024-spec-history-audit`; base: `main` at `5f7ee7d8d301a27371a17a96d370d1ceec2629e8`; head at PR creation: `4e2ac705602edd67d7ee427e223e7d71982ad04f`; status at Implementation Agent handoff: open, ready for review, not merged; final-validation inclusion: yes, this is the only implementation PR slice for the work cycle.
+- Note: the follow-up process-memory commit after PR creation records PR metadata only; the latest pushed head after that evidence commit is reported by the Implementation Agent final response and GitHub PR state.
 
 ### Final Validation Evidence
 
