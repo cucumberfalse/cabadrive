@@ -181,19 +181,19 @@
 
 ## Slice J: Search, Filters, Chunk Navigation, And View Controls
 
-- [ ] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish.
-- [ ] T088 Add useful search hint text in learner language.
-- [ ] T089 Add filters for practical category.
-- [ ] T090 Add filters for jurisdiction/source type.
-- [ ] T091 Add no-results state for search/filter combinations.
-- [ ] T092 Add document table of contents or chunk navigation.
+- [x] T087 Build local search over title/metadata, simple Russian, full Russian, and original Spanish. Evidence: `PrimarySourcesView` filters bundled corpus documents using normalized title/status/category/type/jurisdiction metadata plus each chunk's `simpleRu`, `fullTranslationRu`, and `originalSpanish`; no runtime service is introduced.
+- [x] T088 Add useful search hint text in learner language. Evidence: source search placeholder says `Искать правило, статью, документ или испанский термин`, with an accessible label describing Russian and Spanish source search.
+- [x] T089 Add filters for practical category. Evidence: source reader exposes a category `<select>` populated from corpus categories with Russian learner labels.
+- [x] T090 Add filters for jurisdiction/source type. Evidence: source reader exposes a combined jurisdiction/type `<select>` with `Юрисдикция: ...` and `Тип: ...` options from bundled document metadata.
+- [x] T091 Add no-results state for search/filter combinations. Evidence: empty result combinations show `Ничего не найдено`, explain that the corpus is local/offline, and provide a reset control.
+- [x] T092 Add document table of contents or chunk navigation. Evidence: selected source detail renders a chunk navigation pane and previous/next controls for the selected chunk.
 - [x] T093 Add view controls for `Просто`, `Полный перевод`, and `Оригинал ES`. Evidence: source detail has three explicit mode controls.
 - [x] T094 Confirm `Просто` remains the default when opening a new source or resetting filters. Evidence: selected-document changes reset `viewMode` to `simple`; filters are not implemented in this slice.
 - [x] T095 Confirm full Russian translation can be viewed for every document and chunk. Evidence: all loaded chunks expose `fullTranslationRu`, and the `Полный перевод` mode renders that field.
 - [x] T096 Confirm original Spanish can be viewed for every document and chunk. Evidence: all loaded chunks expose `originalSpanish`, and the `Оригинал ES` mode renders that field.
 - [x] T097 Confirm no simplified Spanish control, data field, route, or rendered text exists. Evidence: the source reader exposes only simple Russian, full Russian, and original Spanish modes.
-- [ ] T098 Avoid rendering very long documents as one unchunked page.
-- [ ] T099 Preserve selected document/chunk/search context when switching view modes.
+- [x] T098 Avoid rendering very long documents as one unchunked page. Evidence: source detail renders one selected chunk plus TOC/previous/next navigation instead of rendering the first 120 chunks or all chunks of long documents in the detail body.
+- [x] T099 Preserve selected document/chunk/search context when switching view modes. Evidence: `Просто` / `Полный перевод` / `Оригинал ES` controls only update `viewMode`; selected document, selected chunk, search query, and filters remain unchanged.
 
 ## Slice K: Responsive, Accessibility, And Visual Polish
 
@@ -2219,3 +2219,9 @@
   - Repeat Orchestrator QA cleanup on 2026-05-20 re-reviewed flagged orders 296, 301, 302, 305, 325, 333, 334, 345, 352, 359, 360, 372, and 376. Cleanup removed remaining learner-field residue such as `Microcentro`, `power unit`, ordinary `BA Taxi`/`Rutax` wording outside Russian quotation marks, `chunk`, and order 333 metadata-style phrasing. The revised order 333 `simpleRu` now names the heavy-traffic road categories, direction-sensitive segments, off-network nearest/shortest-route rule, bitren type 1/2/3 rules, and the following reduced-mobility transport topic. Final targeted D11-004 gate passed with 95/95/95 document/QA/search records, contiguous orders 286-380, exact archive-span and source fingerprint alignment, approved QA, 95 field-reference search projections, placeholder/generic `simpleRu` = 0, bad-term/machine residue = 0, simplified Spanish in `simpleRu` = 0, unquoted official-name issues = 0, copylike `simpleRu` = 0, summaryGuardFailures = 0, and 57 dense chunks reviewed.
   - Local verification after dependency hydration with `pnpm install --frozen-lockfile` passed: `pnpm run validate:content`; `pnpm run test` with 163 passing tests; `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`.
   - Known limitation: this is a partial Ley 2148 range shard only. The CABA Transit Code remains not release-complete until D11-001 through D11-007 and D11-900 recomposition pass.
+- Slice J UI controls/search implementation pass on 2026-05-20:
+  - Assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-ui-controls-current`, branch `codex/019-primary-sources-ui-controls-current`, based on PR #160 head `1270f416f254ee5de537d82fd7739db1d6c3b80b`.
+  - Implemented the narrowed reader-controls slice only: local in-memory search across source title/status/category/type/jurisdiction metadata plus chunk `simpleRu`, `fullTranslationRu`, and `originalSpanish`; Russian learner search hint; practical-category filter; combined jurisdiction/source-type filter; no-results state with local/offline wording and reset; chunk TOC; and previous/next chunk navigation.
+  - Replaced long-document body rendering from first-120/show-all chunks with a single selected chunk plus navigation. This closes the monolithic-rendering concern for the reader body while keeping all content locally available through TOC and navigation.
+  - Preserved selected document, selected chunk, search query, and filters while switching `Просто`, `Полный перевод`, and `Оригинал ES`; opening a different document still resets the view mode to `Просто` per earlier default-mode requirement.
+  - E2E tasks T118-T129 remain open in this slice by user-directed scope reduction.
