@@ -1226,6 +1226,7 @@ function PrimarySourcesView() {
                 onChange={(event) => updateSearchQuery(event.target.value)}
                 placeholder="Искать правило, статью, документ или испанский термин"
                 aria-label="Поиск по источникам, русскому и испанскому тексту"
+                data-testid="source-search-input"
               />
             </label>
             <div className="source-filter-row">

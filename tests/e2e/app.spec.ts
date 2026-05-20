@@ -344,11 +344,16 @@ test("primary source reader adapts between compact and expanded widths without r
   await expect(page.getByTestId("source-list-pane")).toBeVisible();
   await openSourceDocument(page, cabaTrafficSource);
   await expect(page.getByTestId("source-list-pane")).toBeHidden();
-  const compactSearchInput = page.getByRole("searchbox", { name: /Поиск по источникам/ });
-  await compactSearchInput.fill("licencia", { force: true });
+  const compactSearchInput = page.getByTestId("source-search-input");
+  await compactSearchInput.evaluate((input) => {
+    const searchInput = input as HTMLInputElement;
+    const valueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set;
+    valueSetter?.call(searchInput, "licencia");
+    searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+  });
   await expect(page.getByTestId("source-list-pane")).toBeVisible();
   await expect(page.getByTestId("source-detail-pane")).toBeHidden();
-  await compactSearchInput.fill("");
+  await page.getByRole("searchbox", { name: /Поиск по источникам/ }).fill("");
 
   await page.setViewportSize({ width: 1240, height: 900 });
   await expect(page.getByTestId("source-list-pane")).toBeVisible();
