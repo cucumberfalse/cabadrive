@@ -1,0 +1,749 @@
+{
+  "generatedAt": "2026-05-20T19:29:28-03:00",
+  "worktree": "/Users/chap/devel/cabadrive-worktrees/025-source-material-refresh",
+  "branch": "codex/025-source-material-refresh",
+  "verifiedBase": "04d2a3279cb3512dbc52625a687e7ba44a3d339b",
+  "currentnessResearch": {
+    "internetUsed": false,
+    "basis": "Slice 1 used existing governed project official-source evidence only. No live currentness research was performed.",
+    "projectOfficialSources": [
+      {
+        "id": "gcba-material-estudio-examen-teorico",
+        "sourceUrl": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+        "retrievalDate": "2026-05-09",
+        "currentness": {
+          "checkedAt": "2026-05-09",
+          "status": "valid_current_material",
+          "validationStatus": "passed",
+          "statusEvidence": "The official GCBA page returned HTTP 200 and its canonical metadata identifies the current material-de-estudio page. It states the theoretical exam framing and mandatory materials for autos/four-wheel vehicles and links the current four-wheel manual and siniestros guide.",
+          "amendmentRepealEvidence": "No stale/repealed marker was observed on the retrieved GCBA study-material page. It is the current official material page linked by the requested URL and canonicalized to the gcaba_historico page.",
+          "evidenceUrls": [
+            "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+            "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico"
+          ]
+        },
+        "exactTextValidation": {
+          "status": "passed",
+          "checkedAt": "2026-05-20",
+          "method": "live_html",
+          "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
+          "notes": "Passed by reproducible exact-text validation against official source input. Method: live_html; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        }
+      },
+      {
+        "id": "gcba-manual-vehiculo-4-ruedas-2023",
+        "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+        "retrievalDate": "2026-05-09",
+        "currentness": {
+          "checkedAt": "2026-05-09",
+          "status": "valid_current_material",
+          "validationStatus": "passed",
+          "statusEvidence": "The current official GCBA study-material page states that four-wheel exam applicants must study the manual de conducción de vehículos urbanos de cuatro ruedas and links MANUAL_Vehiculo_4Ruedas_2023 SA.pdf. The official static PDF endpoint returned HTTP 200 with content-length 71667934.",
+          "amendmentRepealEvidence": "No stale/repealed marker was observed on the retrieved GCBA study-material page. The page currently presents this 2023 manual as required reading for four-wheel theoretical-exam preparation.",
+          "evidenceUrls": [
+            "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+            "https://buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+            "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf"
+          ]
+        },
+        "exactTextValidation": {
+          "status": "passed",
+          "checkedAt": "2026-05-20",
+          "method": "live_pdf_plus_local_pdf_parse",
+          "evidencePath": "content/official-documents/validation/exact-text-validation-2026-05-20.json",
+          "notes": "Passed by reproducible exact-text validation against official source input. Method: live_pdf_plus_local_pdf_parse; match recorded in content/official-documents/validation/exact-text-validation-2026-05-20.json."
+        }
+      }
+    ]
+  },
+  "pdfs": [
+    {
+      "key": "categoriab_2019_questions",
+      "path": "/Users/chap/Downloads/categoriab.pdf",
+      "exists": true,
+      "byteSize": 9684093,
+      "sha256": "35490f88bbb3197d4ee76b281078fec9cd4dbb021be7607b2d52ce7d607fe3b4",
+      "role": "ticket source",
+      "sourceAuthority": "Apparent CABA/Dirección General Habilitación de Conductores y Transporte question document; not present in governed official archive and only states alignment to Manual del Conductor 2019.",
+      "currentnessStatus": "deferred: 2019 source currentness was not proven against current official/project legal sources in Slice 1.",
+      "licensingProvenanceConcerns": "User-supplied local PDF; no explicit license in extracted text; public redistribution/use as production source requires later provenance/legal review.",
+      "disposition": "use for comparison evidence only; do not import tickets in Slice 1.",
+      "pageCount": 153,
+      "metadata": {
+        "/Author": "Usuario",
+        "/Creator": "Microsoft® Word 2013",
+        "/CreationDate": "D:20190702150117-03'00'",
+        "/ModDate": "D:20190702150117-03'00'",
+        "/Producer": "Microsoft® Word 2013"
+      },
+      "textCharacterCount": 130951,
+      "firstPageTextSample": "Dirección General Habilitación de Conductores y Transporte pág. 1 Preguntas de examen - Categoría B Este documento contiene las preguntas que corresponden al examen teórico para la obtención de la licencia de conducir de la categoría B. Las mismas están formuladas de acuerdo al contenido del Manual del Conductor 2019 de la Ciudad de Buenos Aires (disponible en la web https://www.buenosaires.gob.ar/licenciasdeconducir) , y abarcan aspectos normativos y de idoneidad conductiva necesarios para manejar un vehículo de forma segura. Con el objetivo de facilitar su comprensión y lectura, las preguntas se encuentran ordenadas según los distintos apartados de dicho manual. INTRODUCCIÓN Según la Organización Mundial de la Salud, la siguiente problemática es categorizada como “pandemia” ya que consti",
+      "detectedUrlsSample": [
+        "https://www.buenosaires.gob.ar/licenciasdeconducir)"
+      ],
+      "detectedYears": [
+        "2019"
+      ],
+      "embeddedImageCount": 579,
+      "pagesWithEmbeddedImages": 153,
+      "embeddedImagePageSample": [
+        {
+          "page": 1,
+          "imageCount": 3
+        },
+        {
+          "page": 2,
+          "imageCount": 3
+        },
+        {
+          "page": 3,
+          "imageCount": 2
+        },
+        {
+          "page": 4,
+          "imageCount": 3
+        },
+        {
+          "page": 5,
+          "imageCount": 4
+        },
+        {
+          "page": 6,
+          "imageCount": 4
+        },
+        {
+          "page": 7,
+          "imageCount": 3
+        },
+        {
+          "page": 8,
+          "imageCount": 4
+        },
+        {
+          "page": 9,
+          "imageCount": 3
+        },
+        {
+          "page": 10,
+          "imageCount": 4
+        },
+        {
+          "page": 11,
+          "imageCount": 4
+        },
+        {
+          "page": 12,
+          "imageCount": 3
+        },
+        {
+          "page": 13,
+          "imageCount": 4
+        },
+        {
+          "page": 14,
+          "imageCount": 4
+        },
+        {
+          "page": 15,
+          "imageCount": 4
+        },
+        {
+          "page": 16,
+          "imageCount": 4
+        },
+        {
+          "page": 17,
+          "imageCount": 4
+        },
+        {
+          "page": 18,
+          "imageCount": 4
+        },
+        {
+          "page": 19,
+          "imageCount": 3
+        },
+        {
+          "page": 20,
+          "imageCount": 4
+        }
+      ]
+    },
+    {
+      "key": "gcba_four_wheel_manual_2023",
+      "path": "/Users/chap/Downloads/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf",
+      "exists": true,
+      "byteSize": 71667934,
+      "sha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+      "role": "official/manual candidate",
+      "sourceAuthority": "GCBA four-wheel manual candidate. Project official archive already records the official static GCBA manual URL as current required study material.",
+      "currentnessStatus": "current via existing project official evidence when byte-for-byte matching the governed archive original; no new live research performed in Slice 1.",
+      "licensingProvenanceConcerns": "Official GCBA public PDF; project archive notes public distribution of bundled snapshots remains pending legal/external review.",
+      "disposition": "defer content changes; use existing governed archive as authority, not this user-supplied copy.",
+      "pageCount": 200,
+      "metadata": {
+        "/Producer": "iLovePDF",
+        "/ModDate": "D:20241126171019Z"
+      },
+      "textCharacterCount": 265275,
+      "firstPageTextSample": "",
+      "detectedUrlsSample": [
+        "http://transito.buenosaires.gob.ar/",
+        "http://www2.cedom.gob.ar/es/legislacion/normas/leyes/anexos/al2148Ie.html#d1",
+        "https://boletinoficialpdf.buenosaires.gob.ar/util/imagen.php?idn=95322&idf=2",
+        "https://buenosaires.gob.ar/copidis/",
+        "https://buenosaires.gob.ar/justiciayseguridad/senderos-escolares",
+        "https://www.argentina.gob.ar/seguridadvial/linti",
+        "https://www.bueno-",
+        "https://www.buenosaires.gob.ar/compromisos/5-nuevas-areas-con-prioridad-peatonal",
+        "https://www.buenosaires.gob.ar/ecobici/pedalea-seguro/manual-ciclista",
+        "https://www.buenosaires.gob.ar/ecobici/sistema-ecobici/como-utilizar-el-servicio",
+        "https://www.buenosaires.gob.ar/jefaturadegabinete/movi-",
+        "https://www.buenosaires.gob.ar/justiciayseguridad/infraccio-",
+        "https://www.buenosaires.gob.ar/laciudad/noticias/boti-el-chat-de-la-ciudad-ya-te-indica-en-que-calles-",
+        "https://www.buenosaires.gob.ar/licenciadeconducir/educa-",
+        "https://www.buenosaires.gob.ar/licenciasdeconducir/practicas-de-manejo",
+        "https://www.buenosaires.gob.ar/movili-",
+        "https://www.buenosaires.gob.ar/movilidad/viaspreferenciales",
+        "https://www.buenosaires.gob.ar/tramites/amplia-",
+        "https://www.buenosaires.gob.ar/tramites/grabado-de-auto-",
+        "https://www.buenosaires.gob.ar/tramites/otorgamiento-de-licencia-de-conducir"
+      ],
+      "detectedYears": [
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2020",
+        "2022",
+        "2023"
+      ],
+      "embeddedImageCount": 256,
+      "pagesWithEmbeddedImages": 151,
+      "embeddedImagePageSample": [
+        {
+          "page": 1,
+          "imageCount": 1
+        },
+        {
+          "page": 2,
+          "imageCount": 1
+        },
+        {
+          "page": 3,
+          "imageCount": 3
+        },
+        {
+          "page": 4,
+          "imageCount": 1
+        },
+        {
+          "page": 15,
+          "imageCount": 2
+        },
+        {
+          "page": 17,
+          "imageCount": 1
+        },
+        {
+          "page": 18,
+          "imageCount": 1
+        },
+        {
+          "page": 19,
+          "imageCount": 1
+        },
+        {
+          "page": 20,
+          "imageCount": 2
+        },
+        {
+          "page": 23,
+          "imageCount": 3
+        },
+        {
+          "page": 24,
+          "imageCount": 2
+        },
+        {
+          "page": 25,
+          "imageCount": 1
+        },
+        {
+          "page": 26,
+          "imageCount": 2
+        },
+        {
+          "page": 27,
+          "imageCount": 3
+        },
+        {
+          "page": 28,
+          "imageCount": 2
+        },
+        {
+          "page": 29,
+          "imageCount": 3
+        },
+        {
+          "page": 30,
+          "imageCount": 1
+        },
+        {
+          "page": 31,
+          "imageCount": 2
+        },
+        {
+          "page": 32,
+          "imageCount": 1
+        },
+        {
+          "page": 33,
+          "imageCount": 1
+        }
+      ],
+      "matchesGovernedOfficialArchiveOriginal": true,
+      "governedArchiveOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+      "governedArchiveOriginalSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+      "governedArchiveManifestEntryId": "gcba-manual-vehiculo-4-ruedas-2023"
+    },
+    {
+      "key": "gcba_2008_questions",
+      "path": "/Users/chap/Downloads/PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf",
+      "exists": true,
+      "byteSize": 634192,
+      "sha256": "326bd63bafafe7e7767c173f46a38f3ffde859c52758e69bfee3e7376e8df940",
+      "role": "ticket source",
+      "sourceAuthority": "Apparent older GCBA category-B question document from PDF metadata/text.",
+      "currentnessStatus": "outdated/unsupported for new ticket acceptance: PDF metadata dates to 2008 and no current official support was proven in Slice 1.",
+      "licensingProvenanceConcerns": "User-supplied local PDF; no explicit license in extracted text; includes image-backed prompts without crop/source rights evidence.",
+      "disposition": "use for duplicate/variant comparison evidence only; reject unmatched candidates for current production import in this slice.",
+      "pageCount": 29,
+      "metadata": {
+        "/CreationDate": "D:20080611123540-03'00'",
+        "/Author": "luisk",
+        "/Creator": "Acrobat PDFMaker 7.0 for Word",
+        "/Producer": "Acrobat Distiller 7.0 (Windows)",
+        "/ModDate": "D:20080611123656-03'00'",
+        "/Company": "GCBA",
+        "/SourceModified": "D:20080611153530",
+        "/Title": "Titulo"
+      },
+      "textCharacterCount": 53014,
+      "firstPageTextSample": "Gobierno de la Ciudad de Buenos Aires Gobierno de la Ciudad de Buenos Aires ` 1 Preguntas Categoría B Determine qué indica la señal que a continuación se presenta: A. Proximidad de bosques. B. Zonas de palmeras. C. Vientos fuertes laterales. Cuando se debe cruzar la acera (vereda) para salir a la vía pública ¿de quién se presume que es la responsabilidad si se produce un accidente con un peatón u otro vehículo? A. Del peatón, por no tomar la precaución al llegar a una salida de vehículos. B. Del conductor del otro vehículo, por no tener cuidado. C. Del conductor del vehículo que sale a la vía pública. En algunas vías de tránsito podemos encontrar marcas en el piso o bien carteles con signos similares a una V invertida ¿qué significados tienen esos signos o marcas? A. Que estamos en una zon",
+      "detectedUrlsSample": [],
+      "detectedYears": [],
+      "embeddedImageCount": 90,
+      "pagesWithEmbeddedImages": 29,
+      "embeddedImagePageSample": [
+        {
+          "page": 1,
+          "imageCount": 2
+        },
+        {
+          "page": 2,
+          "imageCount": 2
+        },
+        {
+          "page": 3,
+          "imageCount": 3
+        },
+        {
+          "page": 4,
+          "imageCount": 1
+        },
+        {
+          "page": 5,
+          "imageCount": 1
+        },
+        {
+          "page": 6,
+          "imageCount": 2
+        },
+        {
+          "page": 7,
+          "imageCount": 6
+        },
+        {
+          "page": 8,
+          "imageCount": 9
+        },
+        {
+          "page": 9,
+          "imageCount": 5
+        },
+        {
+          "page": 10,
+          "imageCount": 8
+        },
+        {
+          "page": 11,
+          "imageCount": 4
+        },
+        {
+          "page": 12,
+          "imageCount": 1
+        },
+        {
+          "page": 13,
+          "imageCount": 1
+        },
+        {
+          "page": 14,
+          "imageCount": 4
+        },
+        {
+          "page": 15,
+          "imageCount": 9
+        },
+        {
+          "page": 16,
+          "imageCount": 8
+        },
+        {
+          "page": 17,
+          "imageCount": 8
+        },
+        {
+          "page": 18,
+          "imageCount": 3
+        },
+        {
+          "page": 19,
+          "imageCount": 2
+        },
+        {
+          "page": 20,
+          "imageCount": 2
+        }
+      ]
+    },
+    {
+      "key": "unrelated_ai_roadmap",
+      "path": "/Users/chap/Downloads/agent_roadmap_ru.pdf",
+      "exists": true,
+      "byteSize": 233955,
+      "sha256": "6ae5d9838d87e6b574420cb493ae5727743b5e9037273829a0ec8e5f18070518",
+      "role": "roadmap/reference",
+      "sourceAuthority": "Unrelated Russian AI-engineering roadmap, not a CABA driving source.",
+      "currentnessStatus": "not applicable to Cabadrive driving content.",
+      "licensingProvenanceConcerns": "User-supplied local PDF unrelated to project source governance.",
+      "disposition": "rejected for Cabadrive source refresh.",
+      "pageCount": 29,
+      "metadata": {
+        "/Producer": "macOS Версия 26.3.1 (Выпуск 25D2128) Quartz PDFContext, AppendMode 1.1",
+        "/CreationDate": "D:20260508082657Z00'00'",
+        "/ModDate": "D:20260508115015Z00'00'",
+        "/Creator": "LaTeX via pandoc"
+      },
+      "textCharacterCount": 53962,
+      "firstPageTextSample": "РОАДМАП ИНЖЕНЕРА Как стать AI Engineer в 2026 От нуля до продакшн-агентов за 17 недель Agentic AI & Harness Engineering 6 фаз, конкретные проекты, канонические источники Перевод и адаптация для @prompt_design",
+      "detectedUrlsSample": [
+        "https://anthropic.com/engineering)",
+        "https://raw."
+      ],
+      "detectedYears": [
+        "2024",
+        "2025",
+        "2026",
+        "2027"
+      ],
+      "embeddedImageCount": 0,
+      "pagesWithEmbeddedImages": 0,
+      "embeddedImagePageSample": []
+    },
+    {
+      "key": "ru_hard_ticket_learning_aid",
+      "path": "/Users/chap/Downloads/трудные билеты.pdf",
+      "exists": true,
+      "byteSize": 5932609,
+      "sha256": "4119b9c68dc1f249b23fb5e011d72d28515b6fbd0e8d7580ba42b09736183f4c",
+      "role": "Russian learning aid",
+      "sourceAuthority": "Russian notes/screenshots referencing testdeconducir category B; unofficial learning aid, not official Spanish ticket source.",
+      "currentnessStatus": "unsupported for production facts or ticket import; no Spanish tuple/currentness evidence.",
+      "licensingProvenanceConcerns": "User-supplied screenshots/notes; likely derived from a community simulator; no license or official authority in the PDF.",
+      "disposition": "defer only as optional learner-aid reference; do not use as ticket source.",
+      "pageCount": 125,
+      "metadata": {
+        "/Creator": "Google",
+        "/Title": "трудные билеты 4"
+      },
+      "textCharacterCount": 18390,
+      "firstPageTextSample": "Некоторые трудные билеты https://www.testdeconducir.com.ar/categoria /b",
+      "detectedUrlsSample": [
+        "https://www.testdeconducir.com.ar/categoria"
+      ],
+      "detectedYears": [],
+      "embeddedImageCount": 123,
+      "pagesWithEmbeddedImages": 123,
+      "embeddedImagePageSample": [
+        {
+          "page": 2,
+          "imageCount": 1
+        },
+        {
+          "page": 3,
+          "imageCount": 1
+        },
+        {
+          "page": 4,
+          "imageCount": 1
+        },
+        {
+          "page": 5,
+          "imageCount": 1
+        },
+        {
+          "page": 6,
+          "imageCount": 1
+        },
+        {
+          "page": 7,
+          "imageCount": 1
+        },
+        {
+          "page": 8,
+          "imageCount": 1
+        },
+        {
+          "page": 9,
+          "imageCount": 1
+        },
+        {
+          "page": 10,
+          "imageCount": 1
+        },
+        {
+          "page": 11,
+          "imageCount": 1
+        },
+        {
+          "page": 12,
+          "imageCount": 1
+        },
+        {
+          "page": 13,
+          "imageCount": 1
+        },
+        {
+          "page": 14,
+          "imageCount": 1
+        },
+        {
+          "page": 15,
+          "imageCount": 1
+        },
+        {
+          "page": 16,
+          "imageCount": 1
+        },
+        {
+          "page": 17,
+          "imageCount": 1
+        },
+        {
+          "page": 18,
+          "imageCount": 1
+        },
+        {
+          "page": 19,
+          "imageCount": 1
+        },
+        {
+          "page": 20,
+          "imageCount": 1
+        },
+        {
+          "page": 21,
+          "imageCount": 1
+        }
+      ]
+    },
+    {
+      "key": "ru_argentina_rules_learning_aid",
+      "path": "/Users/chap/Downloads/ПДД Аргентины.pdf",
+      "exists": true,
+      "byteSize": 1884133,
+      "sha256": "c31864547b1f47b845a7ba59a29963cb17d5705c36fe0744713d99bc4e5e02dd",
+      "role": "Russian learning aid",
+      "sourceAuthority": "Russian learner notes referencing the GCBA 2023 four-wheel manual URL.",
+      "currentnessStatus": "deferred: underlying official manual is current in project archive, but this Russian summary is unofficial and unverified.",
+      "licensingProvenanceConcerns": "User-supplied learning summary; no explicit license; unofficial Russian interpretations must be revalidated before use.",
+      "disposition": "defer as optional topic-material inspiration; do not use as authority.",
+      "pageCount": 32,
+      "metadata": {
+        "/Creator": "Google",
+        "/Title": "ПДД Аргентины"
+      },
+      "textCharacterCount": 4339,
+      "firstPageTextSample": "Трудные моменты ПДД Аргентины https://buenosaires.gob.ar/sites/default/ﬁles/ 2023-12/MANUAL_Vehiculo_4Ruedas_2023. pdf",
+      "detectedUrlsSample": [
+        "https://buenosaires.gob.ar/sites/default/ﬁles/"
+      ],
+      "detectedYears": [
+        "2023"
+      ],
+      "embeddedImageCount": 32,
+      "pagesWithEmbeddedImages": 31,
+      "embeddedImagePageSample": [
+        {
+          "page": 2,
+          "imageCount": 1
+        },
+        {
+          "page": 3,
+          "imageCount": 1
+        },
+        {
+          "page": 4,
+          "imageCount": 1
+        },
+        {
+          "page": 5,
+          "imageCount": 1
+        },
+        {
+          "page": 6,
+          "imageCount": 1
+        },
+        {
+          "page": 7,
+          "imageCount": 1
+        },
+        {
+          "page": 8,
+          "imageCount": 1
+        },
+        {
+          "page": 9,
+          "imageCount": 1
+        },
+        {
+          "page": 10,
+          "imageCount": 1
+        },
+        {
+          "page": 11,
+          "imageCount": 1
+        },
+        {
+          "page": 12,
+          "imageCount": 1
+        },
+        {
+          "page": 13,
+          "imageCount": 1
+        },
+        {
+          "page": 14,
+          "imageCount": 1
+        },
+        {
+          "page": 15,
+          "imageCount": 1
+        },
+        {
+          "page": 16,
+          "imageCount": 1
+        },
+        {
+          "page": 17,
+          "imageCount": 1
+        },
+        {
+          "page": 18,
+          "imageCount": 1
+        },
+        {
+          "page": 19,
+          "imageCount": 1
+        },
+        {
+          "page": 20,
+          "imageCount": 1
+        },
+        {
+          "page": 21,
+          "imageCount": 1
+        }
+      ]
+    },
+    {
+      "key": "ru_license_process_reference",
+      "path": "/Users/chap/Downloads/Первое_получение_прав_и_обновление.pdf",
+      "exists": true,
+      "byteSize": 785036,
+      "sha256": "953f1c70739b5edb721a15535994a0d9f8553b8acc81d019b510893622528eb3",
+      "role": "process-guide candidate",
+      "sourceAuthority": "Russian process notes with GCBA/miBA/renewal links; not official authority.",
+      "currentnessStatus": "deferred: administrative details are volatile and must be independently verified against current official GCBA/ANSV pages in a separate process-guide slice.",
+      "licensingProvenanceConcerns": "User-supplied Russian guide; no explicit license; contains volatile procedural claims.",
+      "disposition": "defer as process-guide structure/reference model only; no Slice 1 process-guide update.",
+      "pageCount": 12,
+      "metadata": {
+        "/Creator": "Google",
+        "/Title": "Первое получение прав и обновление"
+      },
+      "textCharacterCount": 2890,
+      "firstPageTextSample": "Первое получение прав и обновление САВА",
+      "detectedUrlsSample": [
+        "https://boletadepago.seguridad",
+        "https://buenosaires.gob.ar/jefaturadegabinete/innovacion/plataforma-mi",
+        "https://buenosaires.gob.ar/sites/default/",
+        "https://buenosaires.gob.ar/tramite",
+        "https://buenosaires.gob.ar/tramites/renovacion-de-licencia-de-conducir"
+      ],
+      "detectedYears": [
+        "2023"
+      ],
+      "embeddedImageCount": 12,
+      "pagesWithEmbeddedImages": 11,
+      "embeddedImagePageSample": [
+        {
+          "page": 2,
+          "imageCount": 1
+        },
+        {
+          "page": 3,
+          "imageCount": 1
+        },
+        {
+          "page": 4,
+          "imageCount": 2
+        },
+        {
+          "page": 5,
+          "imageCount": 1
+        },
+        {
+          "page": 6,
+          "imageCount": 1
+        },
+        {
+          "page": 7,
+          "imageCount": 1
+        },
+        {
+          "page": 8,
+          "imageCount": 1
+        },
+        {
+          "page": 9,
+          "imageCount": 1
+        },
+        {
+          "page": 10,
+          "imageCount": 1
+        },
+        {
+          "page": 11,
+          "imageCount": 1
+        },
+        {
+          "page": 12,
+          "imageCount": 1
+        }
+      ]
+    }
+  ]
+}
