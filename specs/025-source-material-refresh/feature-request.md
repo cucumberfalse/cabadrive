@@ -139,3 +139,14 @@ Expected acceptance outcomes:
 ## Implementation Boundary
 
 Exhaustive PDF extraction, ticket-by-ticket comparison, currentness/legal validation, source archive updates, ticket additions, image cropping, image analysis, guide updates, generated evidence refresh, tests, commits, pushes, and PR creation belong to Implementation Agent work after Architect creates `spec.md`, `plan.md`, and `tasks.md`.
+
+## Final Analyst Validation
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-20T19:43:12-03:00
+- Analyst validated effective content head: f64ffa445b00279d8092f56983eb31f0dace6520
+- Validation scope: PR #167 / `codex/025-source-material-refresh` first evidence/intake slice only. This slice establishes feature memory plus PDF inventory, extraction feasibility, ticket-candidate comparison, candidate dispositions, and follow-up recommendations; it does not attempt the full larger source-material refresh in one PR.
+- User intent fit for this slice: passed. The PR correctly inventories all seven supplied PDFs, compares extracted ticket candidates from ticket-source PDFs against the existing bundled bank where tooling permits, records that no candidate is currently safe to import, and avoids unsupported ticket/content changes.
+- Ticket import deferral: accepted for this PR, not a gap. The evidence records 642 structured Spanish candidates, 445 duplicates, 62 ambiguous, 135 outdated, and 0 `accepted-current`; absent/nonduplicate candidates lack sufficient current official/legal support, reliable correct-answer evidence, and image/crop provenance for safe import.
+- Remaining user-intent work intentionally deferred by Architect disposition: a separate process-guide refresh remains the recommended next slice, using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model with every retained acquisition/renewal claim independently verified against current official GCBA/ANSV sources. Later ticket work, if assigned, should start with the 9 ambiguous `categoriab.pdf` candidates and require full currentness/support/image evidence before any import.
+- Not reopened for this PR: no gap found in the first evidence/intake slice against the recorded Analyst acceptance expectations and Architect dispositions.

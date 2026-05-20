@@ -172,3 +172,15 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Process-guide refresh feedback: dispositioned as the recommended next separate implementation slice. Use `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model and validate every retained acquisition/renewal claim against current official GCBA/ANSV sources.
 - Official archive/manual update feedback: dispositioned as not-needed. The supplied 2023 manual matches the governed archive raw original byte-for-byte, so no official archive or manual refresh should be assigned from Slice 1 evidence.
 - Recommended next Orchestrator assignment: assign an Implementation Agent a separate Process Guide Refresh slice covering T030-T036 only, preserving the same role boundaries and requiring official-source evidence plus `pnpm run validate:content`. Do not assign ticket-import work until a separate candidate-currentness investigation is explicitly scoped.
+
+### Final Architect Validation
+
+- Effective content head: f64ffa445b00279d8092f56983eb31f0dace6520
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-20T19:41:37-03:00
+- Architect validated effective content head: f64ffa445b00279d8092f56983eb31f0dace6520
+- Cycle PR set validated for this first slice: PR #167 on branch `codex/025-source-material-refresh` at effective content head `f64ffa445b00279d8092f56983eb31f0dace6520`.
+- Validation scope: Slice 1 evidence/intake only. The PR contains feature memory and evidence artifacts under `specs/025-source-material-refresh/`; it does not modify product code, production content, tests, scripts, durable docs, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior.
+- Architect-assigned tasks/dispositions: T007-T018 and T045-T048 are complete or explicitly not applicable; ticket batch, process-guide, official archive, and durable-doc tasks remain gated/deferred as recorded. Implementation Agent feedback has been dispositioned in the Architect Dispositions section.
+- Customer intent in spirit for this slice: passed. All supplied PDFs were inventoried, ticket-source candidates were extracted/compared where feasible, all candidates were dispositioned, unsupported/import-risk candidates were not added, and deferrals were recorded for later scoped work.
+- Deferral/process confirmation: no ticket import, process-guide refresh, or official archive/manual update happened in this PR; those paths are intentionally deferred or not-needed according to the evidence and Architect dispositions.
