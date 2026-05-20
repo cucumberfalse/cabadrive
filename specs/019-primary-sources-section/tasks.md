@@ -251,24 +251,24 @@
 - [x] T145 Confirm no simplified Spanish is present in data, validators, UI, tests, or docs. Evidence: preflight passed validator/unit/e2e guards for forbidden simplified-Spanish fields/paths and no source-reader simplified-Spanish control/rendered text; final `rg` review found only policy/test/process references that forbid simplified Spanish, not a learner data layer or UI mode.
 - [x] T146 Confirm durable docs are current. Evidence: exact-text closure refreshed `docs_project/project/content-sources.md`, `docs_project/project/frontend/frontend-docs.md`, and `docs_project/project/feature-inventory.md` so they describe `Источники` as implemented with currentness/exact-text passed for the current 19-entry manifest while preserving PR/review/check merge-readiness gates.
 - [x] T147 Confirm Process Memory contains final corpus counts, chunk counts, QA evidence, validation evidence, UI evidence, known issues, and release decision. Evidence: final-disposition Process Memory plus the exact-text closure note record counts, UI/e2e evidence, currentness result, exact-text 19/19 result, preflight/check results, and remaining PR-state gates.
-- [ ] T148 Confirm the implementation PR has no unresolved merge conflicts. Pending PR-state gate: this branch still needs its own PR after push.
-- [ ] T149 Confirm required checks are green after push/PR. Pending PR-state gate: remote required checks have not yet run for this branch.
-- [ ] T150 Confirm no blocking review findings remain. Pending PR-state gate: this branch has not yet received final review.
-- [ ] T151 Leave only final human approval or merge mechanics remaining.
+- [x] T148 Confirm the implementation PR has no unresolved merge conflicts. Evidence: PR #164 at head `e4c6e7b9d80f026e170970dab2c7bb248176159f` reported `mergeStateStatus: CLEAN` and `mergeable: MERGEABLE`. This process-memory closure commit records that result; after push, Orchestrator will reverify remote PR state for the new head before declaring completion.
+- [x] T149 Confirm required checks are green after push/PR. Evidence: PR #164 at head `e4c6e7b9d80f026e170970dab2c7bb248176159f` reported green required checks: AI Review SUCCESS, baseline-checks SUCCESS, docker-validation SUCCESS, guard SUCCESS, and osv-scan SUCCESS. This process-memory closure commit records that result; after push, Orchestrator will reverify required checks for the new head before declaring completion.
+- [x] T150 Confirm no blocking review findings remain. Evidence: PR #164 at head `e4c6e7b9d80f026e170970dab2c7bb248176159f` had no unresolved active review threads; prior Codex Review threads were resolved/outdated, and AI Review posted a no-major-issues summary comment at 2026-05-20T12:02:25Z. This process-memory closure commit records that result; after push, Orchestrator will reverify review state for the new head before declaring completion.
+- [x] T151 Leave only final human approval or merge mechanics remaining. Evidence: PR #164 at head `e4c6e7b9d80f026e170970dab2c7bb248176159f` was green, merge-clean, and had no unresolved active review threads. This process-memory closure commit only records PR-state evidence; final completion still depends on the same GitHub required checks passing for the pushed process-memory head and human merge authority.
 
 ## Review Checklist
 
-- [ ] R001 Review verifies complete feature memory exists.
-- [ ] R002 Review verifies scope boundaries and one-PR slice boundaries.
-- [ ] R003 Review verifies translation/simplification content is outside `content/official-documents/`.
-- [ ] R004 Review verifies official archive text is not paraphrased for learner prose.
-- [ ] R005 Review verifies validators catch missing manifest/chunk/translation/simplification coverage.
-- [ ] R006 Review verifies final release does not pass with unresolved exact-text/currentness blockers.
-- [ ] R007 Review verifies UI defaults to simple Russian and can show full Russian and Spanish original.
-- [ ] R008 Review verifies no simplified Spanish path exists.
-- [ ] R009 Review verifies search/filter/detail/responsive/accessibility tests exist.
-- [ ] R010 Review verifies no runtime network, backend, live AI, analytics, remote asset, or raw PDF viewer exists.
-- [ ] R011 Review verifies durable docs and process memory are current.
+- [x] R001 Review verifies complete feature memory exists. Evidence: #164 review state is no-major-issues at head `e4c6e7b9d80f026e170970dab2c7bb248176159f`; feature memory includes `feature-request.md`, `spec.md`, `plan.md`, and this current `tasks.md`, and local `node scripts/check-feature-memory.mjs --worktree` gates it.
+- [x] R002 Review verifies scope boundaries and one-PR slice boundaries. Evidence: #164 is the exact-text/currentness closure slice on branch `codex/019-primary-sources-exact-text-current`; process memory records the slice stack, rebase onto the final-disposition base, and that old UI commits were not reintroduced.
+- [x] R003 Review verifies translation/simplification content is outside `content/official-documents/`. Evidence: final release gates and validators keep learner Russian under `content/primary-sources/`; `content/official-documents/` contains official archive/evidence only.
+- [x] R004 Review verifies official archive text is not paraphrased for learner prose. Evidence: source-reader Spanish is archive-derived and fingerprint/span validated, while learner Russian translations/simplifications live in separate primary-source shards with QA evidence.
+- [x] R005 Review verifies validators catch missing manifest/chunk/translation/simplification coverage. Evidence: `validate:content`, `validate:content:quality`, strict primary-source tests, and coverage/recomposition gates cover manifest entries, generated chunks, translations, simplifications, QA, and search projections.
+- [x] R006 Review verifies final release does not pass with unresolved exact-text/currentness blockers. Evidence: currentness/effective-status is passed for all 19 manifest entries, exact-text evidence records 19 passed/0 blocked/0 failed, and strict quality validation rejects pending or failed source-readiness states.
+- [x] R007 Review verifies UI defaults to simple Russian and can show full Russian and Spanish original. Evidence: e2e coverage verifies primary-source reader navigation, default simple Russian mode, full Russian mode, and original Spanish mode.
+- [x] R008 Review verifies no simplified Spanish path exists. Evidence: validators/unit/e2e checks reject simplified-Spanish fields/paths, and final process memory records no learner simplified-Spanish data layer or UI mode.
+- [x] R009 Review verifies search/filter/detail/responsive/accessibility tests exist. Evidence: Playwright coverage exercises source-reader search, filters, detail view, long-document TOC, responsive compact/expanded widths, and keyboard focus.
+- [x] R010 Review verifies no runtime network, backend, live AI, analytics, remote asset, or raw PDF viewer exists. Evidence: e2e request monitoring records no external/PDF/API/backend/OpenAI/live-AI requests while using the reader, and DOM checks confirm no raw PDF viewer/embed path.
+- [x] R011 Review verifies durable docs and process memory are current. Evidence: durable docs were refreshed for source-reader/archive behavior and exact-text policy; this process-memory closure records #164 green checks, review, merge-clean state, and the requirement to reverify the pushed process-memory head.
 
 ## Process Memory
 
@@ -358,6 +358,7 @@
   - The strict rerun remains 19/19 passed with 0 blocked and 0 failed, so T029 and T142 stay closed for the current manifest.
   - Addressed follow-up Codex Review findings on head `e6844e1ba282ddefa32e7b07be759b1217932904`: removed the unsafe adjacent-digit whitespace collapse, replaced it with the narrowly audited InfoLeg `Ley N° NN.NN D B.O.` layout repair, and derived evidence `checkedAt` from runtime local date instead of a hardcoded date.
   - Addressed follow-up Codex Review P2 on head `4d9c9a25222daea34fef427ba24fcb361a9c2072`: `fetchBytes` now selects the text decoder from the final redirected response URL while preserving explicit response charset handling.
+- Final PR-state/review gate note for #164: head `e4c6e7b9d80f026e170970dab2c7bb248176159f` was green and merge-clean, with AI Review SUCCESS/no-major-issues summary at 2026-05-20T12:02:25Z, baseline-checks SUCCESS, docker-validation SUCCESS, guard SUCCESS, osv-scan SUCCESS, `mergeStateStatus: CLEAN`, `mergeable: MERGEABLE`, and no unresolved active review threads. This process-memory commit records that result only; final completion still depends on the same GitHub required checks and review/merge state passing for the pushed process-memory head.
 
 ### Slice D10-001 Civil Code Quality Repair Notes
 
