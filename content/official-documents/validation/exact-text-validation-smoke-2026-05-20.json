@@ -16,7 +16,7 @@
     "markdownNormalization": "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
     "comparableNormalization": "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
     "archiveCandidates": "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
-    "layoutNormalization": "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, and digit-internal layout whitespace observed in official InfoLeg HTML, without changing letters, punctuation, or text order.",
+    "layoutNormalization": "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, whitespace before official B.O. markers, and the audited InfoLeg layout break `ley n° NN.NN D B.O.` before B.O. markers, without changing letters, punctuation, unrelated numbers, or text order.",
     "wrapperTolerance": "A live source may contain the archived body as one contiguous block with at most 240 normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence."
   },
   "results": [
@@ -66,10 +66,10 @@
       "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
       "pdfParseVersion": "1.1.1",
       "pdfPages": 31,
-      "normalizedPdfTextSha256": "2a9fc1e87c771a03adeccc875c4180f8897492841f85f800a118862da5f9c400",
-      "normalizedPdfTextLength": 25053,
-      "normalizedArchiveTextSha256": "2a9fc1e87c771a03adeccc875c4180f8897492841f85f800a118862da5f9c400",
-      "normalizedArchiveLength": 25053,
+      "normalizedPdfTextSha256": "e70474a6db1ee758fbe96a9f359a505b99276791132eb7f5a4f3da2122c17559",
+      "normalizedPdfTextLength": 25063,
+      "normalizedArchiveTextSha256": "e70474a6db1ee758fbe96a9f359a505b99276791132eb7f5a4f3da2122c17559",
+      "normalizedArchiveLength": 25063,
       "pdfTextMatch": {
         "passed": true,
         "matchKind": "normalized_equality",

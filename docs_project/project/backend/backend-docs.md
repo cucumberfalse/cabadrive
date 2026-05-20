@@ -36,7 +36,7 @@ Current tooling:
 
 Official source documents that support topic-guide claims are governed under `content/official-documents/`. See `docs_project/project/content-sources.md` for archive purpose, manifest fields, exact-text preservation rules, currentness/effective-status evidence, raw evidence requirements, and future-document rules.
 
-`scripts/official-documents-exact-text-validation.mjs` performs reproducible live-source exact-text checks for the governed archive. HTML validation builds audited extraction candidates from official `main`/`article`/`body`/document text and rejects subset-only live-source-contained-in-archive matches; PDF validation requires live official bytes to match the retained raw original before text comparison.
+`scripts/official-documents-exact-text-validation.mjs` performs reproducible live-source exact-text checks for the governed archive. HTML validation builds audited extraction candidates from official `main`/`article`/`body`/document text and rejects subset-only live-source-contained-in-archive matches; PDF validation requires live official bytes to match the retained raw original before text comparison. Evidence `checkedAt` is derived at runtime, and numeric layout cleanup is limited to audited source-format artifacts rather than collapsing arbitrary adjacent digits.
 
 ## Deployment
 

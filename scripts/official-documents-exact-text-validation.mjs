@@ -9,10 +9,19 @@ const pdfParse = require("pdf-parse/lib/pdf-parse.js");
 
 const DEFAULT_MANIFEST_PATH = "content/official-documents/manifest.json";
 const DEFAULT_EVIDENCE_PATH = "content/official-documents/validation/exact-text-validation-2026-05-20.json";
-const CHECKED_AT = "2026-05-20";
 const FETCH_TIMEOUT_MS = 45000;
 const USER_AGENT = "Cabadrive exact-text validation/1.0 (source archive verification)";
 const MAX_WRAPPER_CHARS = 240;
+
+function currentLocalIsoDate(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
 
 function parseArgs(argv) {
   const args = {
@@ -272,8 +281,8 @@ function normalizeComparableText(text) {
     .replace(/\s+([.,;:!?])/g, "$1")
     .replace(/([.;:)])\s*[-*•]\s+/g, "$1 - ")
     .replace(/\s+\(/g, "(")
+    .replace(/\bley n° (\d{2}\.\d{2})\s+(\d)(?=\s*b\.o\.)/g, "ley n° $1$2")
     .replace(/(?<=\d)\s+(?=b\.o\.)/g, "")
-    .replace(/(?<=\d)\s+(?=\d)/g, "")
     .trim();
 }
 
@@ -608,7 +617,7 @@ async function main() {
   const evidence = {
     schema: "official-documents-exact-text-validation-evidence.v1",
     featureId: "019-primary-sources-section",
-    checkedAt: CHECKED_AT,
+    checkedAt: currentLocalIsoDate(),
     manifestPath: args.manifestPath,
     command: `node scripts/official-documents-exact-text-validation.mjs${args.ids ? ` --ids ${args.ids.join(",")}` : ""} --write`,
     summary,
@@ -618,7 +627,7 @@ async function main() {
       markdownNormalization: "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
       comparableNormalization: "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
       archiveCandidates: "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
-      layoutNormalization: "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, and digit-internal layout whitespace observed in official InfoLeg HTML, without changing letters, punctuation, or text order.",
+      layoutNormalization: "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, whitespace before official B.O. markers, and the audited InfoLeg layout break `ley n° NN.NN D B.O.` before B.O. markers, without changing letters, punctuation, unrelated numbers, or text order.",
       wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence.`
     },
     results

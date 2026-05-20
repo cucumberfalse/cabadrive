@@ -103,6 +103,8 @@ The final topic-study-guide release and the final primary-source reader release 
 
 `scripts/official-documents-exact-text-validation.mjs` rejects live-source-as-subset-of-archive matches. HTML exact-text evidence may pass only when the normalized archive candidate exactly matches a live official extraction candidate, or when the live official source contains the archive candidate as one contiguous body with bounded official wrapper text. Reproducible archive candidates may remove page chrome such as navigation, sharing widgets, related-content lists, feedback forms, footers, and date-only metadata, but unmatched archive body text remains a blocker.
 
+Exact-text evidence derives `checkedAt` from the runtime local date. Numeric normalization must stay narrow and auditable: the validator does not collapse whitespace between arbitrary adjacent digits, and only repairs the observed InfoLeg layout break in `Ley N° NN.NN D B.O.` references before Boletín Oficial markers.
+
 ## Related Guide Files
 
 The topic-study-guide source trace is separate from the official archive:
