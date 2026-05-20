@@ -197,3 +197,20 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Architect-assigned tasks/dispositions: T007-T018 and T045-T048 are complete or explicitly not applicable; ticket batch, process-guide, official archive, and durable-doc tasks remain gated/deferred as recorded. Implementation Agent feedback has been dispositioned in the Architect Dispositions section.
 - Customer intent in spirit for this slice: passed. All supplied PDFs were inventoried, ticket-source candidates were extracted/compared where feasible, all candidates were dispositioned, unsupported/import-risk candidates were not added, and deferrals were recorded for later scoped work.
 - Deferral/process confirmation: no ticket import, process-guide refresh, or official archive/manual update happened in this PR; those paths are intentionally deferred or not-needed according to the evidence and Architect dispositions.
+
+### Final Architect Validation After Review Fixes
+
+- Effective content head: a0f91af32d10f94f9a6417a49944a327b5b831cf
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-20T20:08:16-03:00
+- Architect validated effective content head: a0f91af32d10f94f9a6417a49944a327b5b831cf
+- Supersession: the prior final Architect validation for `f64ffa445b00279d8092f56983eb31f0dace6520` is stale and is superseded by this validation because review-fix commit `a0f91af32d10f94f9a6417a49944a327b5b831cf` changed committed evidence/process content after that validation.
+- Cycle PR set validated for this first slice: PR #167 on branch `codex/025-source-material-refresh` at effective content head `a0f91af32d10f94f9a6417a49944a327b5b831cf`, including review-fix commit `a0f91af32d10f94f9a6417a49944a327b5b831cf`.
+- Validation scope remains Slice 1 evidence/intake only. The PR contains feature memory and evidence artifacts under `specs/025-source-material-refresh/`; it does not modify product code, production content, tests, scripts, durable docs, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior.
+- Review-fix validation: committed candidate-disposition evidence now keeps candidate IDs, source/page metadata, match/disposition metadata, existing IDs, counts, and SHA-256 fingerprints only. It no longer commits verbatim ticket question text, answer-choice text, or existing correct-answer text extracted from user-supplied PDFs.
+- Path-hygiene validation: committed feature memory and evidence use stable logical identifiers such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`; no machine-specific absolute path is needed or present in committed evidence.
+- Raw-extract validation: raw extracted PDF text or ticket tuples are intentionally not committed as feature evidence. The committed raw-extraction policy permits local operator inspection outside git only.
+- Architect-assigned tasks/dispositions: T007-T018 and T045-T048 remain complete or explicitly not applicable; ticket batch, process-guide, official archive, and durable-doc tasks remain gated/deferred as recorded. Implementation Agent feedback has been dispositioned in the Architect Dispositions section, and no unresolved Implementation Agent feedback remains for this PR.
+- Review status considered: Orchestrator reported CI, PR Guard, OSV Scan, and AI Review success on `a0f91af`; GitHub PR metadata confirms PR #167 head is `a0f91af32d10f94f9a6417a49944a327b5b831cf`, mergeable, and has a fresh Codex no-major-issues comment after the review-fix commit.
+- Customer intent in spirit for this slice: passed. All supplied PDFs were inventoried, ticket-source candidates were extracted/compared where feasible, all candidates were dispositioned, unsupported/import-risk candidates were not added, and deferrals were recorded for later scoped work.
+- Deferral/process confirmation: no ticket import, process-guide refresh, or official archive/manual update happened in this PR; those paths are intentionally deferred or not-needed according to the evidence and Architect dispositions.
