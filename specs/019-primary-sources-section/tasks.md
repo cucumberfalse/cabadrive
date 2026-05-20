@@ -318,6 +318,7 @@
 - T030 is closed for the current manifest because every included entry has passed currentness/effective-status validation. T143 remains open as a final whole-corpus release gate because future final-head manifest state still needs final confirmation.
 - T029 remains open and blocks final release because no dedicated reproducible official-source exact-text comparison was performed for the 19 entries. T142 remains open as the final exact-text release gate.
 - The source-reader UI integration can continue from this source-readiness state, but final release/merge-ready completion cannot be claimed until T029 is resolved or Architect/user explicitly accepts a narrowed non-final release status.
+- Follow-up readiness evidence on 2026-05-20 added `content/official-documents/validation/exact-text-readiness-2026-05-20.json` and linked every manifest entry's pending `exactTextValidation` notes to it. The evidence records 19/19 Markdown hashes matching the manifest and 19/19 raw originals present, but exact-text outcome remains `blocked_not_passed` for all entries because the repository still lacks a reproducible independent whole-archive comparison against official sources.
 - Verification for this slice: `pnpm run validate:content` passed; `pnpm run test` passed with 163 tests after installing missing worktree dependencies with `pnpm install --frozen-lockfile`; `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed.
 
 ### Slice D10-001 Civil Code Quality Repair Notes

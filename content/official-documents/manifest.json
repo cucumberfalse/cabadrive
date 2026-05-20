@@ -33,7 +33,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This slice performed source retrieval, conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation is reserved for Slice G."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -63,7 +64,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This slice did not perform final exact-text comparison. Annex-specific archive and validation remain future work before topics cite annex text."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -112,7 +114,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This Slice D3 archive performed retrieval, conversion, local hash verification, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -142,7 +145,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This slice performed preliminary currentness verification only. Dedicated whole-archive exact-text validation remains required before final release."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -173,7 +177,8 @@
       "hash": "83c00db5d5bcb2a2395a1f747245bbefc67bbe9085c4d8ea0ecf5c85b794ac8c",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -203,7 +208,8 @@
       "hash": "f32c5d8f9bc603d2f90822e2f07b13237db33ae3b5f1f44261d6a6b43281d644",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -234,7 +240,8 @@
       "hash": "fe0d905e52423b93c0b18ae7542dccd15356393b8cd0b43ac0a5b10d55d81f06",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -264,7 +271,8 @@
       "hash": "c327b9a440fd9fe2e1366de48fbbd0fac99d866211c66122a9dadebab34f68d0",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -295,7 +303,8 @@
       "hash": "b9eae6672d1d0d72726e6feefb26822e11b5c0082d163c18d70f5138eb4698a2",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -326,7 +335,8 @@
       "hash": "f553835d8c2eda215b23eb808f2e8e73094104e0743223a66d69212744ff696e",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -357,7 +367,8 @@
       "hash": "30958217e6a9836864c0a7a7c39ee59b22a78e4941c8f289af67a6074dcd2349",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -387,7 +398,8 @@
       "hash": "8d81576224b066874e047225cb078b810c3ddc22e56f874a92448f4bbe4cce1b",
       "exactTextValidation": {
         "status": "pending",
-        "notes": "This D4 prerequisite performed live retrieval, Markdown conversion, local hashing, and preliminary currentness checks only. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       }
     },
     {
@@ -416,7 +428,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval, PDF text extraction, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc"
     },
@@ -446,7 +459,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "0ecf371f6bd16e5bcfaa727e3649a8c1f0b13010790fc23a6f2e0deecfcf7bf7"
     },
@@ -477,7 +491,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval, PDF text extraction, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "3a9be877d138c3253b5759428a345d7eb2a500fd248f710902dab3432c7c7bfa"
     },
@@ -507,7 +522,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "755ba7e88e03d6b3dedad0d4aa5312974cb7080b88b7845352441104dc47b0d3"
     },
@@ -537,7 +553,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval/conversion from official InfoLeg text, browser currentness check for Argentina.gob.ar, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "dee33c6044ba01492bbc3c93eb8545310eac0520754a92779f63630838b77e80"
     },
@@ -567,7 +584,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval/conversion from official InfoLeg text, browser currentness check for Argentina.gob.ar, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "627d2619f73cc611c1c9efeb6b3e2cb03218642d4f67ddb91423fe30698ff9fa"
     },
@@ -597,7 +615,8 @@
       },
       "exactTextValidation": {
         "status": "pending",
-        "notes": "D11 performed source retrieval, visible-text conversion, local hashing, and preliminary currentness checks. Dedicated whole-archive exact-text validation remains reserved for the final strict release gate."
+        "notes": "Blocked for final release: local Markdown hashes and raw/original presence were verified, but no reproducible independent exact-text comparison proves this archive entry against the official source. See content/official-documents/validation/exact-text-readiness-2026-05-20.json.",
+        "checkedAt": "2026-05-20"
       },
       "hash": "2f18cba3d4250feb20e2acfc59dba0b97bc37a75722ace6f83fbf8df68ab54d7"
     }
