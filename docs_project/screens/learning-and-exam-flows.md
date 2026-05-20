@@ -10,7 +10,7 @@
 6. Topic Materials
 7. CABA License Process Guide
 8. CABA vs RF Guide
-9. Official Sources / `Источники` (planned; not implemented yet)
+9. Official Sources / `Источники`
 
 ## Home / Onboarding
 
@@ -18,7 +18,7 @@
 - Clarifies: translations and explanations are unofficial learning aids without requiring repeated disclaimer paragraphs on every question card.
 - Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the primary modes.
-- When the planned `Источники` section is implemented, home/navigation may expose it as a distinct official-source reference area without implying that the current practice questions are an official full bank.
+- `Источники` is exposed as a distinct official-source reference area without implying that the current practice questions are an official full bank.
 
 ## Learn Questions Flow
 
@@ -74,9 +74,9 @@
 8. Show local question images through bundled offline assets only.
 9. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
-## Official Sources / `Источники` Flow (Planned)
+## Official Sources / `Источники` Flow
 
-The `Источники` reader is planned by feature `019-primary-sources-section` and is not implemented in the current product yet.
+The `Источники` reader is implemented by feature `019-primary-sources-section` as a local, learner-facing reference surface. Its UI and learner corpus are present, but final release remains blocked until official archive exact-text validation is passed or explicitly dispositioned.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
 2. Browse or search official source documents from `content/official-documents/manifest.json`.
@@ -87,7 +87,7 @@ The `Источники` reader is planned by feature `019-primary-sources-secti
 7. Do not provide simplified Spanish.
 8. Use local bundled content only; no runtime network fetch, live AI, backend endpoint, or raw PDF viewer.
 
-Russian full translations and simple rewrites for this planned reader must live outside `content/official-documents/`, preferably under a future governed `content/primary-sources/` area. The official archive remains verbatim Spanish-only source material.
+Russian full translations and simple rewrites for this reader live outside `content/official-documents/` under governed `content/primary-sources/`. The official archive remains verbatim Spanish-only source material.
 
 ## CABA Vs RF Guide Flow
 

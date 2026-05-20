@@ -234,26 +234,26 @@
 - [x] T131 Run final-head `pnpm run test`. Evidence: passed on 2026-05-20 with 163 tests passing.
 - [x] T132 Run `pnpm run build`. Evidence: passed on 2026-05-20; Vite emitted the known large chunk warning and generated a service worker with 346 cached assets.
 - [x] T133 Run `pnpm run test:e2e`. Evidence: passed on 2026-05-20 with 28 Playwright tests passing across chromium and mobile after narrowing one strict locator.
-- [ ] T134 Run `pnpm run preflight`.
+- [x] T134 Run `pnpm run preflight`. Evidence: after hydrating the fresh worktree with `pnpm install --frozen-lockfile`, `pnpm run preflight` passed on 2026-05-20: feature-memory gate, repo baseline, content validation, 163 node tests, production build with the known Vite large-chunk warning and 346 cached service-worker assets, and 28 Playwright tests across chromium/mobile.
 - [x] T135 Run final-head `git diff --check`. Evidence: passed on 2026-05-20 with no output.
 - [x] T136 Record final-head command output summaries and exact unrelated blockers in Process Memory. Evidence: Slice K/e2e process-memory note records checks, the known build warning, and the unchanged exact-text final-release blocker.
 
 ## Final Whole-Corpus Release Gate
 
-- [ ] T137 Re-read final-head `content/official-documents/manifest.json`.
-- [ ] T138 Confirm every final-head manifest entry has learner-source document coverage.
-- [ ] T139 Confirm every final-head generated source chunk has approved full Russian translation.
-- [ ] T140 Confirm every final-head generated source chunk has approved simple Russian rewrite.
-- [ ] T141 Confirm every final-head source chunk can display original Spanish offline.
+- [x] T137 Re-read final-head `content/official-documents/manifest.json`. Evidence: final-disposition slice on 2026-05-20 observed 19 manifest entries with unchanged IDs, all `currentness.validationStatus: "passed"`, and all `exactTextValidation.status: "pending"`.
+- [x] T138 Confirm every final-head manifest entry has learner-source document coverage. Evidence: combined learner corpus has 19 documents for 19 manifest entries, with no missing manifest document IDs.
+- [x] T139 Confirm every final-head generated source chunk has approved full Russian translation. Evidence: combined corpus/QA count on 2026-05-20 found 5,225 generated coverage chunks, 5,225 learner chunks, 5,225 non-empty `fullTranslationRu` chunks, and 5,225 approved translation QA records.
+- [x] T140 Confirm every final-head generated source chunk has approved simple Russian rewrite. Evidence: combined corpus/QA count on 2026-05-20 found 5,225 generated coverage chunks, 5,225 non-empty `simpleRu` chunks, and 5,225 approved simplification QA records.
+- [x] T141 Confirm every final-head source chunk can display original Spanish offline. Evidence: combined corpus count on 2026-05-20 found 5,225 learner chunks with non-empty bundled `originalSpanish`, and preflight e2e passed original-Spanish mode with no external/PDF/API/backend/OpenAI/live-AI requests.
 - [ ] T142 Confirm exact-text validation is passed for every included manifest entry or final release is blocked by explicit disposition.
-- [ ] T143 Confirm currentness/effective-status validation is passed for every included manifest entry or final release is blocked by explicit disposition.
-- [ ] T144 Confirm no learner Russian files are under `content/official-documents/`.
-- [ ] T145 Confirm no simplified Spanish is present in data, validators, UI, tests, or docs.
-- [ ] T146 Confirm durable docs are current.
-- [ ] T147 Confirm Process Memory contains final corpus counts, chunk counts, QA evidence, validation evidence, UI evidence, known issues, and release decision.
-- [ ] T148 Confirm the implementation PR has no unresolved merge conflicts.
-- [ ] T149 Confirm required checks are green after push/PR.
-- [ ] T150 Confirm no blocking review findings remain.
+- [x] T143 Confirm currentness/effective-status validation is passed for every included manifest entry or final release is blocked by explicit disposition. Evidence: final manifest check on 2026-05-20 found all 19 entries have `currentness.validationStatus: "passed"` with release-usable statuses: 6 `current`, 4 `in_force`, and 9 `valid_current_material`.
+- [x] T144 Confirm no learner Russian files are under `content/official-documents/`. Evidence: path scan found no `.ru.json`, learner QA, learner search, or Russian-content files under `content/official-documents/`; the only `ru` substring matches there are the Spanish `gcba-manual-vehiculo-4-ruedas-2023` archive filenames.
+- [x] T145 Confirm no simplified Spanish is present in data, validators, UI, tests, or docs. Evidence: preflight passed validator/unit/e2e guards for forbidden simplified-Spanish fields/paths and no source-reader simplified-Spanish control/rendered text; final `rg` review found only policy/test/process references that forbid simplified Spanish, not a learner data layer or UI mode.
+- [x] T146 Confirm durable docs are current. Evidence: final-disposition slice refreshed `docs_project/project/content-sources.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/feature-inventory.md`, and `docs_project/screens/learning-and-exam-flows.md` so they describe `Источники` as implemented but not final-release complete while exact-text validation remains pending.
+- [x] T147 Confirm Process Memory contains final corpus counts, chunk counts, QA evidence, validation evidence, UI evidence, known issues, and release decision. Evidence: final-disposition Process Memory note added on 2026-05-20 records counts, UI/e2e evidence, exact-text blocker, currentness result, preflight result, strict quality-gate result, and release decision.
+- [ ] T148 Confirm the implementation PR has no unresolved merge conflicts. Pending PR-state gate: this branch still needs its own PR after push.
+- [ ] T149 Confirm required checks are green after push/PR. Pending PR-state gate: remote required checks have not yet run for this branch.
+- [ ] T150 Confirm no blocking review findings remain. Pending PR-state gate: this branch has not yet received final review.
 - [ ] T151 Leave only final human approval or merge mechanics remaining.
 
 ## Review Checklist
@@ -2242,3 +2242,13 @@
   - Fixed Codex Review P2 "Reopen source list when search query changes" in `src/App.tsx`: source search input changes now set the compact reader back to the list/filter pane, so a compact/mobile user cannot remain stranded in the detail/empty-detail state after changing search.
   - Added Playwright coverage for the compact hidden-detail search transition. Initial e2e retry failed because Playwright could not locate a role-based hidden searchbox after compact CSS removed the list pane from the accessibility tree; the test was corrected to dispatch the input event through a stable `source-search-input` test id and then assert that the list pane reopens.
   - Local verification passed after the review fix: `pnpm run validate:content`; `pnpm run test` with 163 passing tests; `pnpm run build` with the pre-existing large chunk warning and 346 service-worker assets; `pnpm run test:e2e` with 28 passing Playwright tests after the corrected retry.
+- Final disposition slice on 2026-05-20:
+  - Assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-final-disposition-current`, branch `codex/019-primary-sources-final-disposition-current`, originally based on PR #162 head `9f7c0df8f90a99eec014051bfaac1f7008bcd940` and then rebased onto `origin/codex/019-primary-sources-ui-e2e-current` at `db0632480d12ec4464a6482f82cf40d073bb709e` after the base force-push.
+  - Rebase conflict resolution preserved the fresh PR #162 process-memory notes and compact search-list fix while keeping this final-disposition record and its explicit non-release-complete decision.
+  - Hydrated the fresh worktree with `pnpm install --frozen-lockfile` after the first preflight attempt failed at `pnpm run test` because `node_modules` was absent and `tests/domain.test.mjs` could not resolve `typescript`.
+  - Final corpus counts from combined primary-source shards: 19 manifest entries, 19 coverage documents, 19 learner corpus documents, 19 QA documents, 5,225 generated coverage chunks, 5,225 learner chunks, 5,225 non-empty `fullTranslationRu` chunks, 5,225 non-empty `simpleRu` chunks, 5,225 non-empty offline `originalSpanish` chunks, 5,225 approved translation QA records, 5,225 approved simplification QA records, and 5,225 search entries. No manifest document IDs were missing from the learner corpus.
+  - Source-readiness state: currentness passed for all 19 manifest entries with 6 `current`, 4 `in_force`, and 9 `valid_current_material`; exact-text remains pending for all 19 manifest entries. `pnpm run validate:content:quality` failed as expected with exactly 19 strict primary-source errors, all `exactTextValidation.status must be passed`, confirming the final release blocker is exact-text validation rather than corpus/QA/search/UI coverage.
+  - UI/e2e evidence: full `pnpm run preflight` passed after dependency hydration, including feature-memory gate, repo baseline, content validation, 163 node tests, build with the known Vite large-chunk warning, generated service worker with 346 cached assets, and 28 Playwright tests across chromium/mobile covering source navigation, primary-flow preservation, simple/full/original modes, search/filter/TOC, responsive behavior, keyboard focus order, and no runtime external/PDF/API/backend/OpenAI/live-AI dependency.
+  - Durable docs refresh: updated `docs_project/project/content-sources.md`, `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/feature-inventory.md`, and `docs_project/screens/learning-and-exam-flows.md` so they no longer describe `Источники` as merely planned and instead state the reader/corpus are implemented but not final-release complete while exact-text validation remains pending.
+  - Post-rebase verification on 2026-05-20 passed after syncing onto `db0632480d12ec4464a6482f82cf40d073bb709e`: `pnpm run validate:content`; `pnpm run test` with 163 passing tests; `pnpm run build` with the known Vite large-chunk warning and 346 service-worker assets; `pnpm run test:e2e` with 28 passing Playwright tests; `git diff --check`; `node scripts/check-feature-memory.mjs --worktree`; and full `pnpm run preflight`. Local rebase conflicts are resolved, but T148 remains open until the pushed PR state reports no merge conflicts.
+  - Release decision: do not claim final release complete. T137-T141 and T143-T147 are verified, T142 remains open because exact-text validation is pending, and T148-T151 remain open for this branch's PR checks/review/merge-readiness gates.

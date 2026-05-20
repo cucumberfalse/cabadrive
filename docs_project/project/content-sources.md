@@ -66,20 +66,22 @@ Each future manifest entry must record:
 
 Official archive Markdown must preserve the source title, wording, numbering, headings, article/rule/section/page structure, bullet structure, and formal terminology as exactly as Markdown reasonably allows.
 
-Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs outside this archive and remains unofficial learning support. For the planned primary-source reader, full Russian translations and simple Russian rewrites should live in a governed learner-content area such as `content/primary-sources/`, not in `content/official-documents/`.
+Agents must not paraphrase, translate, simplify, summarize, or otherwise rewrite official text inside `content/official-documents/`. Any Russian learning material derived from official sources belongs outside this archive and remains unofficial learning support. For the primary-source reader, full Russian translations and simple Russian rewrites live in the governed learner-content area `content/primary-sources/`, not in `content/official-documents/`.
 
-## Planned Primary-Source Reader
+## Primary-Source Reader
 
-Feature `019-primary-sources-section` plans a learner-facing `Источники` / official primary-source reader. This section is not implemented in the current product at the time of this Slice A docs refresh. When implemented, it should remain distinct from the topic-study `Материалы` guide and should:
+Feature `019-primary-sources-section` adds a learner-facing `Источники` / official primary-source reader. It remains distinct from the topic-study `Материалы` guide and:
 
-- cover every entry in the implementation-time and final manifest;
-- default to schoolchild-friendly simple Russian text;
-- let the learner switch to full Russian translation and original Spanish official text;
-- omit simplified Spanish;
-- display compact source/currentness/exact-text status;
-- preserve local-first behavior without runtime network calls, live AI, or raw PDF viewing.
+- covers every current manifest entry with learner-source corpus data;
+- defaults to schoolchild-friendly simple Russian text;
+- lets the learner switch to full Russian translation and original Spanish official text;
+- omits simplified Spanish;
+- displays compact source/currentness/exact-text status;
+- preserves local-first behavior without runtime network calls, live AI, or raw PDF viewing.
 
 The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
+
+Release status: the reader UI and full learner corpus are implemented, but the final finished-section release gate remains open while every manifest entry has `exactTextValidation.status: "pending"`. Currentness validation is passed for all 19 entries.
 
 ## Currentness Rules
 
