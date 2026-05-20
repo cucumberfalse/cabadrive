@@ -39,7 +39,7 @@
 - [x] T026 Record currentness/effective-status validation state for every manifest entry.
 - [x] T027 Record exact-text validation state for every manifest entry.
 - [x] T028 Decide whether exact-text validation is completed before UI exposure or before final release; record the decision and rationale.
-- [ ] T029 Complete whole-archive exact-text validation for every manifest entry before final release, or record an explicit Architect/user blocker disposition. Disposition on 2026-05-20: exact-text remains a final-release blocker and is not passed for all 19 manifest entries because `exactTextValidation.status` is still `pending`; local originals plus Markdown hashes do not provide a reproducible independent whole-archive exact-text comparison against official sources.
+- [ ] T029 Complete whole-archive exact-text validation for every manifest entry before final release, or record an explicit Architect/user blocker disposition. Exact-text follow-up on 2026-05-20 added reproducible validation script/evidence and passed 14/19 entries, but final release remains blocked because 5 entries still cannot be proven against live official source inputs: `ley-24449-transito-seguridad-vial`, `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-material-estudio-examen-teorico`, `gcba-mapa-estrellas-amarillas`, and `ley-11179-codigo-penal`.
 - [x] T030 Confirm every final-release manifest entry has currentness/effective-status validation passed or an explicit blocker disposition. Evidence on 2026-05-20: manifest-only currentness check shows all 19 entries have release-usable status with `currentness.validationStatus: "passed"`: 6 `current`, 4 `in_force`, and 9 `valid_current_material`.
 - [x] T031 Refresh `docs_project/project/content-sources.md` so it no longer describes the archive as only a small three-source seed.
 - [x] T032 Refresh frontend/feature-inventory/learning-flow docs to describe the new `Источники` source reader and its relationship to `Материалы`.
@@ -240,12 +240,12 @@
 
 ## Final Whole-Corpus Release Gate
 
-- [x] T137 Re-read final-head `content/official-documents/manifest.json`. Evidence: final-disposition slice on 2026-05-20 observed 19 manifest entries with unchanged IDs, all `currentness.validationStatus: "passed"`, and all `exactTextValidation.status: "pending"`.
+- [x] T137 Re-read final-head `content/official-documents/manifest.json`. Evidence: exact-text follow-up on 2026-05-20 observed 19 manifest entries with unchanged IDs, all `currentness.validationStatus: "passed"`, 14 `exactTextValidation.status: "passed"`, and 5 `exactTextValidation.status: "pending"`.
 - [x] T138 Confirm every final-head manifest entry has learner-source document coverage. Evidence: combined learner corpus has 19 documents for 19 manifest entries, with no missing manifest document IDs.
 - [x] T139 Confirm every final-head generated source chunk has approved full Russian translation. Evidence: combined corpus/QA count on 2026-05-20 found 5,225 generated coverage chunks, 5,225 learner chunks, 5,225 non-empty `fullTranslationRu` chunks, and 5,225 approved translation QA records.
 - [x] T140 Confirm every final-head generated source chunk has approved simple Russian rewrite. Evidence: combined corpus/QA count on 2026-05-20 found 5,225 generated coverage chunks, 5,225 non-empty `simpleRu` chunks, and 5,225 approved simplification QA records.
 - [x] T141 Confirm every final-head source chunk can display original Spanish offline. Evidence: combined corpus count on 2026-05-20 found 5,225 learner chunks with non-empty bundled `originalSpanish`, and preflight e2e passed original-Spanish mode with no external/PDF/API/backend/OpenAI/live-AI requests.
-- [ ] T142 Confirm exact-text validation is passed for every included manifest entry or final release is blocked by explicit disposition.
+- [ ] T142 Confirm exact-text validation is passed for every included manifest entry or final release is blocked by explicit disposition. Current exact-text evidence passes 14/19 entries and leaves 5 pending blockers: `ley-24449-transito-seguridad-vial`, `ley-6631-caba-vtv-modificatoria-ley-2265`, `gcba-material-estudio-examen-teorico`, `gcba-mapa-estrellas-amarillas`, and `ley-11179-codigo-penal`.
 - [x] T143 Confirm currentness/effective-status validation is passed for every included manifest entry or final release is blocked by explicit disposition. Evidence: final manifest check on 2026-05-20 found all 19 entries have `currentness.validationStatus: "passed"` with release-usable statuses: 6 `current`, 4 `in_force`, and 9 `valid_current_material`.
 - [x] T144 Confirm no learner Russian files are under `content/official-documents/`. Evidence: path scan found no `.ru.json`, learner QA, learner search, or Russian-content files under `content/official-documents/`; the only `ru` substring matches there are the Spanish `gcba-manual-vehiculo-4-ruedas-2023` archive filenames.
 - [x] T145 Confirm no simplified Spanish is present in data, validators, UI, tests, or docs. Evidence: preflight passed validator/unit/e2e guards for forbidden simplified-Spanish fields/paths and no source-reader simplified-Spanish control/rendered text; final `rg` review found only policy/test/process references that forbid simplified Spanish, not a learner data layer or UI mode.
@@ -320,6 +320,30 @@
 - The source-reader UI integration can continue from this source-readiness state, but final release/merge-ready completion cannot be claimed until T029 is resolved or Architect/user explicitly accepts a narrowed non-final release status.
 - Follow-up readiness evidence on 2026-05-20 added `content/official-documents/validation/exact-text-readiness-2026-05-20.json` and linked every manifest entry's pending `exactTextValidation` notes to it. The evidence records 19/19 Markdown hashes matching the manifest and 19/19 raw originals present, but exact-text outcome remains `blocked_not_passed` for all entries because the repository still lacks a reproducible independent whole-archive comparison against official sources.
 - Verification for this slice: `pnpm run validate:content` passed; `pnpm run test` passed with 163 tests after installing missing worktree dependencies with `pnpm install --frozen-lockfile`; `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed.
+
+### Exact-Text T029/T142 Follow-Up Notes
+
+- Exact-text follow-up ran in assigned worktree `/Users/chap/devel/cabadrive-019-primary-sources-exact-text-current` on branch `codex/019-primary-sources-exact-text-current`.
+- Added reproducible validator `scripts/official-documents-exact-text-validation.mjs`. The validator downloads official inputs from each manifest entry's `sourceUrl` and `currentness.evidenceUrls`; for HTML it extracts meaningful `article`/`main`/`body` text while removing site chrome; for PDF it requires live official PDF bytes to match `rawOriginalPath` and then compares `pdf-parse@1.1.1` extracted text to archived Markdown. The normalizer accepts layout whitespace, Markdown link target annotations, heading markers, image references, list marker presentation, and small official wrapper text while preserving contiguous body order.
+- Representative smoke evidence passed for 3/3 sources: Argentina HTML `ley-17418-seguros`, InfoLeg HTML `decreto-779-1995-anexo-l-senalizacion-vial-uniforme`, and GCBA PDF `gcba-guia-practica-siniestros-viales`; evidence written to `content/official-documents/validation/exact-text-validation-smoke-2026-05-20.json`.
+- Whole-manifest exact-text evidence written to `content/official-documents/validation/exact-text-validation-2026-05-20.json`: 19 entries checked, 14 passed, 5 blocked, 0 failed. The 14 passed manifest entries were updated to `exactTextValidation.status: "passed"` with `checkedAt: "2026-05-20"` and evidence path.
+- Remaining blockers are specific and reproducible:
+  - `ley-24449-transito-seguridad-vial`: `sourceUrl` `/actualizacion` returned HTTP 404 or timed out through the deterministic fetch path, and the official `/texto`/InfoLeg candidates do not normalize-match the archived Markdown body.
+  - `ley-6631-caba-vtv-modificatoria-ley-2265`: the NormativaBA candidate did not produce a normalized exact match in the live run; supporting VTV/Ley 2265 evidence URLs are different source pages and cannot prove this archive entry.
+  - `gcba-material-estudio-examen-teorico`: live GCBA article text does not normalize-match the archived Markdown after site-chrome removal.
+  - `gcba-mapa-estrellas-amarillas`: live GCBA article text does not normalize-match the archived Markdown after site-chrome removal.
+  - `ley-11179-codigo-penal`: `sourceUrl` `/actualizacion` returned HTTP 404 or timed out through the deterministic fetch path, and the official InfoLeg candidate does not normalize-match the archived Markdown body.
+- T029 and T142 remain open. Final source-reader release is still blocked because not all 19 manifest entries have passed exact-text validation.
+- Verification for this follow-up:
+  - `node scripts/official-documents-exact-text-validation.mjs --ids ley-17418-seguros,decreto-779-1995-anexo-l-senalizacion-vial-uniforme,gcba-guia-practica-siniestros-viales --evidence content/official-documents/validation/exact-text-validation-smoke-2026-05-20.json --write` passed 3/3 representative sources.
+  - `node scripts/official-documents-exact-text-validation.mjs --write` exited nonzero by design with 14 passed, 5 blocked, 0 failed and wrote whole-manifest evidence.
+  - `pnpm run validate:content` passed.
+  - `pnpm run validate:content:quality` failed as expected with exactly the 5 remaining exact-text blockers listed above.
+  - `pnpm run test` passed with 163 tests.
+  - `pnpm run build` passed with the known Vite large-chunk warning and generated a service worker with 346 cached assets.
+  - `pnpm run test:e2e` passed with 28 Playwright tests.
+  - `git diff --check` passed.
+  - `node scripts/check-feature-memory.mjs --worktree` passed.
 
 ### Slice D10-001 Civil Code Quality Repair Notes
 

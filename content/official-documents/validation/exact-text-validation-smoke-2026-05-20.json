@@ -1,0 +1,119 @@
+{
+  "schema": "official-documents-exact-text-validation-evidence.v1",
+  "featureId": "019-primary-sources-section",
+  "checkedAt": "2026-05-20",
+  "manifestPath": "content/official-documents/manifest.json",
+  "command": "node scripts/official-documents-exact-text-validation.mjs --ids ley-17418-seguros,decreto-779-1995-anexo-l-senalizacion-vial-uniforme,gcba-guia-practica-siniestros-viales --write",
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "blocked": 0,
+    "failed": 0
+  },
+  "method": {
+    "officialInputs": "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
+    "htmlExtraction": "Remove script/style/noscript/svg/site header/nav/footer/form/aside, prefer article then main then body, flatten tags to visible text, and decode HTML entities.",
+    "markdownNormalization": "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
+    "comparableNormalization": "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
+    "wrapperTolerance": "A live source may contain the archived body as one contiguous block with at most 240 normalized characters of official wrapper text before/after it. Larger additions remain blocked."
+  },
+  "results": [
+    {
+      "id": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "title": "DECRETO 779-95 ANEXO L - SISTEMA DE SEÑALIZACION VIAL UNIFORME",
+      "sourceFormat": "html",
+      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "localPath": "content/official-documents/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.html",
+      "archiveMarkdownSha256": "213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "normalizedArchiveTextSha256": "56dd5bcbc3ae0b7203f3148d0b9cff8ab5343c814323263dc00067a9dc90399a",
+      "normalizedArchiveLength": 122272,
+      "attempts": [
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "9a1ebce0b544553c6d8f051bf8b3454b39d01f1afd02801fa8b44a8414bb4bda",
+          "normalizedSourceTextSha256": "56dd5bcbc3ae0b7203f3148d0b9cff8ab5343c814323263dc00067a9dc90399a",
+          "normalizedSourceLength": 122272,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "gcba-guia-practica-siniestros-viales",
+      "title": "Guía práctica de actuación ante siniestros viales",
+      "sourceFormat": "pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localPath": "content/official-documents/documents/gcba-guia-practica-siniestros-viales.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
+      "archiveMarkdownSha256": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc",
+      "outcome": "passed",
+      "officialInputKind": "live_pdf_plus_local_pdf_parse",
+      "officialInputUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+      "pdfParseVersion": "1.1.1",
+      "pdfPages": 31,
+      "normalizedPdfTextSha256": "422ac7537c74925bf1b7a4d0f3012cf328f82cc9877cb1c0a6b162d663d135f7",
+      "normalizedPdfTextLength": 25095,
+      "normalizedArchiveTextSha256": "422ac7537c74925bf1b7a4d0f3012cf328f82cc9877cb1c0a6b162d663d135f7",
+      "normalizedArchiveLength": 25095,
+      "pdfTextMatch": {
+        "passed": true,
+        "matchKind": "normalized_equality",
+        "archiveCandidate": "markdown-without-title-heading",
+        "sourcePrefixExtraChars": 0,
+        "sourceSuffixExtraChars": 0
+      },
+      "attempts": [
+        {
+          "url": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "finalUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "sourceBytesSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "liveBytesMatchLocalRawOriginal": true
+        }
+      ]
+    },
+    {
+      "id": "ley-17418-seguros",
+      "title": "LEY Nº 17.418 - LEY DE SEGUROS",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "localPath": "content/official-documents/documents/ley-17418-seguros.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-17418-seguros.html",
+      "archiveMarkdownSha256": "2f18cba3d4250feb20e2acfc59dba0b97bc37a75722ace6f83fbf8df68ab54d7",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "normalizedArchiveTextSha256": "d3f5c2bcff654e7e35563f803254f8319f84652f80b67c371320bc1b83e8e1ab",
+      "normalizedArchiveLength": 63068,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "4cae28626e09d0bbd9acf648477f4fee29ac90062e1050c373367bf2afb61534",
+          "normalizedSourceTextSha256": "d3f5c2bcff654e7e35563f803254f8319f84652f80b67c371320bc1b83e8e1ab",
+          "normalizedSourceLength": 63068,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    }
+  ]
+}

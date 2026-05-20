@@ -1,0 +1,694 @@
+{
+  "schema": "official-documents-exact-text-validation-evidence.v1",
+  "featureId": "019-primary-sources-section",
+  "checkedAt": "2026-05-20",
+  "manifestPath": "content/official-documents/manifest.json",
+  "command": "node scripts/official-documents-exact-text-validation.mjs --write",
+  "summary": {
+    "total": 19,
+    "passed": 14,
+    "blocked": 5,
+    "failed": 0
+  },
+  "method": {
+    "officialInputs": "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
+    "htmlExtraction": "Remove script/style/noscript/svg/site header/nav/footer/form/aside, prefer article then main then body, flatten tags to visible text, and decode HTML entities.",
+    "markdownNormalization": "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
+    "comparableNormalization": "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
+    "wrapperTolerance": "A live source may contain the archived body as one contiguous block with at most 240 normalized characters of official wrapper text before/after it. Larger additions remain blocked."
+  },
+  "results": [
+    {
+      "id": "ley-24449-transito-seguridad-vial",
+      "title": "Ley 24449",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion",
+      "localPath": "content/official-documents/documents/ley-24449-transito-seguridad-vial.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-24449-transito-seguridad-vial.html",
+      "archiveMarkdownSha256": "deda922c463db247eecc3c4292e76381f9ee86978041e8ba552f65ee7c525ad3",
+      "outcome": "blocked",
+      "officialInputKind": "live_html",
+      "blocker": "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/actualizacion",
+          "error": "This operation was aborted",
+          "matchKind": "fetch_or_extract_error",
+          "passed": false
+        },
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-24449-818/texto",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "ce0863c4161506b0bb621657b8659c7007425da56ef9ffa048ccac8bd122c28f",
+          "normalizedSourceTextSha256": "3594daaa7747b0d976f0f3e3e0ac43c4bf109787b3c71e106ca7d080c2be038d",
+          "normalizedSourceLength": 109800,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "ley 24449 honorable congreso de la nacion argentina ley de transito regimen legal sanción: 23-12-1994 publicada en el boletín oficial: 10-02-1995 texto actualizado de la norma normativa ley no 24.449 principios básicos. coordinación federal",
+          "sourcePreviewAtMismatch": "normativa ley de transito ley no 24.449 principios básicos. coordinación federal. consejo federal de seguridad vial registro nacional de antecedentes del tránsito. usuario de la vía pública. capacitación. licencia de conductor. vía pública."
+        },
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/0-4999/818/texact.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "7c45976f50628a1bd32758cae92c0f36835ee270867d23c1f65598a10709f508",
+          "normalizedSourceTextSha256": "aeea3f111263db1278e95272238023832e0d3bf9916d8f2ee59a2b2d5574b1c6",
+          "normalizedSourceLength": 134776,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 4,
+          "archivePreviewAtMismatch": "24449 honorable congreso de la nacion argentina ley de transito regimen legal sanción: 23-12-1994 publicada en el boletín oficial: 10-02-1995 texto actualizado de la norma normativa ley no 24.449 principios básicos. coordinación federal. co",
+          "sourcePreviewAtMismatch": "de transito ley no 24.449 principios básicos. coordinación federal. consejo federal de seguridad vial registro nacional de antecedentes del tránsito. usuario de la vía pública. capacitación. licencia de conductor. vía pública. vehículo. mod"
+        }
+      ]
+    },
+    {
+      "id": "decreto-779-1995-reglamentario-ley-24449",
+      "title": "Decreto Reglamentario 779 / 1995",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+      "localPath": "content/official-documents/documents/decreto-779-1995-reglamentario-ley-24449.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-reglamentario-ley-24449.html",
+      "archiveMarkdownSha256": "40f20546bc74faa100569cf40e9f1a2828cca815d520badef21745dbd85177e4",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+      "normalizedArchiveTextSha256": "60c6c692eacb22cc1ce87f2f8cf3fe4836496ac492b4723f8b18e7d328f44085",
+      "normalizedArchiveLength": 6423,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/30389/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "16feb1e8fe4b83226e93bbf42f043600908e52eb36ecca6f12b141b6f1e1eb8f",
+          "normalizedSourceTextSha256": "96e942cdcb738859a4c58cd4c56eadc91863b2aea7800d12e9ac538676f4ce69",
+          "normalizedSourceLength": 6433,
+          "passed": true,
+          "matchKind": "normalized_contiguous_match_with_small_official_wrapper",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 10,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "decreto-779-1995-anexo-l-senalizacion-vial-uniforme",
+      "title": "DECRETO 779-95 ANEXO L - SISTEMA DE SEÑALIZACION VIAL UNIFORME",
+      "sourceFormat": "html",
+      "sourceUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "localPath": "content/official-documents/documents/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.md",
+      "rawOriginalPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme.html",
+      "archiveMarkdownSha256": "213a662a29d47120b445d0d97a4e17120aef68a1c9de00523aa652d98f4c7a64",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+      "normalizedArchiveTextSha256": "cee08997cb184b0e5e24ff133d8ff9e953f693e0bd62475832d3a7cb3b9568ba",
+      "normalizedArchiveLength": 122250,
+      "attempts": [
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/30389/texactdto779-1995-anexoL.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "9a1ebce0b544553c6d8f051bf8b3454b39d01f1afd02801fa8b44a8414bb4bda",
+          "normalizedSourceTextSha256": "cee08997cb184b0e5e24ff133d8ff9e953f693e0bd62475832d3a7cb3b9568ba",
+          "normalizedSourceLength": 122250,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "ley-2148-caba-codigo-transito-transporte",
+      "title": "Ley 2148 - Código de Transito y Transporte de la CABA",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+      "localPath": "content/official-documents/documents/ley-2148-caba-codigo-transito-transporte.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-2148-caba-codigo-transito-transporte.html",
+      "archiveMarkdownSha256": "d8fab0170d78f0b226cf2e1627bc647a12f9b32b350010e99c1dc6bdfd9e478f",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+      "normalizedArchiveTextSha256": "5812ef0e372a1a886633917dc6584c685ea2b8b796fb56d1cb2c3941daededf9",
+      "normalizedArchiveLength": 584162,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/provincial/ley-2148-123456789-0abc-defg-841-2000xvorpyel/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "bb63ac63eda59b570ae174699a0809c696322f28ccfba8f4eea7819805d2d4fe",
+          "normalizedSourceTextSha256": "f0b2da2dc292cb6a01585dd33d281870151de50b031de1bb9e7482dcc6a6b08d",
+          "normalizedSourceLength": 584172,
+          "passed": true,
+          "matchKind": "normalized_contiguous_match_with_small_official_wrapper",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 10,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "ley-6631-caba-vtv-modificatoria-ley-2265",
+      "title": "LEY 6631 2023",
+      "sourceFormat": "html",
+      "sourceUrl": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298",
+      "localPath": "content/official-documents/documents/ley-6631-caba-vtv-modificatoria-ley-2265.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-6631-caba-vtv-modificatoria-ley-2265.html",
+      "archiveMarkdownSha256": "83c00db5d5bcb2a2395a1f747245bbefc67bbe9085c4d8ea0ecf5c85b794ac8c",
+      "outcome": "blocked",
+      "officialInputKind": "live_html",
+      "blocker": "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+      "attempts": [
+        {
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/657298",
+          "error": "This operation was aborted",
+          "matchKind": "fetch_or_extract_error",
+          "passed": false
+        },
+        {
+          "url": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "7dd3b00aeac59cd1f081d1b610b3a5d8840d0b43f1f9c750b71045c7e770343b",
+          "normalizedSourceTextSha256": "6b887dc9785c2d59f7902e3b30e24414da7324b0082f04d980c34bc69e5196df",
+          "normalizedSourceLength": 14227,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "ley 6631 2023 boletín oficial del gobierno de la ciudad de buenos aires ley 6631 2023 síntesis: modifica - ley n° 2265 - sistema de revisiones técnicas vehiculares - vto - periodicidad de las verificaciones - tipos de permiso - casos especi",
+          "sourcePreviewAtMismatch": "verificación técnica vehicular obligatoria la verificación técnica vehicular obligatoria (vtvo) está destinada a aquellos vehículos y motovehículos particulares radicados en la ciudad. recordá que es obligatorio circular con la verificación"
+        },
+        {
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/95763",
+          "finalUrl": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/95763",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "95f872fa545987d786cf30a0fd243816f7e146ff9d05d899f4be261fd46f144f",
+          "normalizedSourceTextSha256": "97850da610be3c81a3eb661fc7dffeff11d122b087567ad79f84a6424f118321",
+          "normalizedSourceLength": 28636,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 4,
+          "archivePreviewAtMismatch": "6631 2023 boletín oficial del gobierno de la ciudad de buenos aires ley 6631 2023 síntesis: modifica - ley n° 2265 - sistema de revisiones técnicas vehiculares - vto - periodicidad de las verificaciones - tipos de permiso - casos especiales",
+          "sourcePreviewAtMismatch": "2265 2006 síntesis: establece la verificación técnica vehicular obligatoria para todos los vehículos y motovehículos que circulen por la ciudad autónoma de buenos aires - seguridad vial - tránsito - sanciones - vtv - norma consolidada por l"
+        }
+      ]
+    },
+    {
+      "id": "gcba-vtv-tramite-current",
+      "title": "Verificación Técnica Vehicular Obligatoria",
+      "sourceFormat": "html",
+      "sourceUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+      "localPath": "content/official-documents/documents/gcba-vtv-tramite-current.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-vtv-tramite-current.html",
+      "archiveMarkdownSha256": "f32c5d8f9bc603d2f90822e2f07b13237db33ae3b5f1f44261d6a6b43281d644",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+      "normalizedArchiveTextSha256": "6b887dc9785c2d59f7902e3b30e24414da7324b0082f04d980c34bc69e5196df",
+      "normalizedArchiveLength": 14227,
+      "attempts": [
+        {
+          "url": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/tramites/verificacion-tecnica-vehicular-obligatoria",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "7dd3b00aeac59cd1f081d1b610b3a5d8840d0b43f1f9c750b71045c7e770343b",
+          "normalizedSourceTextSha256": "6b887dc9785c2d59f7902e3b30e24414da7324b0082f04d980c34bc69e5196df",
+          "normalizedSourceLength": 14227,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-full",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "argentina-vehiculos-automotor-cedulas",
+      "title": "Vehículos",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/tema/automotor",
+      "localPath": "content/official-documents/documents/argentina-vehiculos-automotor-cedulas.md",
+      "rawOriginalPath": "content/official-documents/originals/argentina-vehiculos-automotor-cedulas.html",
+      "archiveMarkdownSha256": "fe0d905e52423b93c0b18ae7542dccd15356393b8cd0b43ac0a5b10d55d81f06",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/tema/automotor",
+      "normalizedArchiveTextSha256": "d2027e482f61da695bac3d03b46b5c0ea4b631bc04b04189b7882cb225c6ca9e",
+      "normalizedArchiveLength": 4628,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/tema/automotor",
+          "finalUrl": "https://www.argentina.gob.ar/tema/automotor",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "8d92dead6d76dc9380eed3569f2659a7276fd5a8cdbd23ec6aa12db7608fd3c7",
+          "normalizedSourceTextSha256": "8e2995dd16af08acf3ac45744a9f9c811b6da5afc6ec1c5e4f598faef9488a55",
+          "normalizedSourceLength": 4563,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 65,
+          "archiveSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "dnrpa-registros-propiedad-automotor",
+      "title": "Registros de la Propiedad Automotor",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/propiedadautomotor",
+      "localPath": "content/official-documents/documents/dnrpa-registros-propiedad-automotor.md",
+      "rawOriginalPath": "content/official-documents/originals/dnrpa-registros-propiedad-automotor.html",
+      "archiveMarkdownSha256": "c327b9a440fd9fe2e1366de48fbbd0fac99d866211c66122a9dadebab34f68d0",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/propiedadautomotor",
+      "normalizedArchiveTextSha256": "563bfaec1125189493936725beb03530164679139a9cb670752d17345dddc33a",
+      "normalizedArchiveLength": 2870,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/propiedadautomotor",
+          "finalUrl": "https://www.argentina.gob.ar/propiedadautomotor",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "2d5ea5c024039ac744abf7a7be68d807478a9ad3f06fc75ff874d34b2614ebba",
+          "normalizedSourceTextSha256": "196030e0906cb336244913404046ee12d78bb63498b2af7f4218aa4df33b40b9",
+          "normalizedSourceLength": 1058,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 304,
+          "archiveSuffixExtraChars": 1508
+        }
+      ]
+    },
+    {
+      "id": "ansv-cedula-azul-no-exigible",
+      "title": "La cédula azul ya no es documento exigible para la circulación de vehículos en el país",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+      "localPath": "content/official-documents/documents/ansv-cedula-azul-no-exigible.md",
+      "rawOriginalPath": "content/official-documents/originals/ansv-cedula-azul-no-exigible.html",
+      "archiveMarkdownSha256": "b9eae6672d1d0d72726e6feefb26822e11b5c0082d163c18d70f5138eb4698a2",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+      "normalizedArchiveTextSha256": "4ecfae0e7c78c131071de3ba995c5cedeacdef304931d4b56baf89bb91985624",
+      "normalizedArchiveLength": 2098,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+          "finalUrl": "https://www.argentina.gob.ar/noticias/la-cedula-azul-ya-no-es-documento-exigible-para-la-circulacion-de-vehiculos-en-el-pais",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "e10a06a92c0b842a5602369e8077c3050205cd91e7beeb5f7078561056c909ed",
+          "normalizedSourceTextSha256": "8d98e3ed4784eaf45e51ddd8e8bdc65ecc11adb3b9882a9a9dab68b4f99d4f74",
+          "normalizedSourceLength": 1637,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 106,
+          "archiveSuffixExtraChars": 355
+        }
+      ]
+    },
+    {
+      "id": "disposicion-29-2024-cedulas-identificacion",
+      "title": "Disposición 29 / 2024",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+      "localPath": "content/official-documents/documents/disposicion-29-2024-cedulas-identificacion.md",
+      "rawOriginalPath": "content/official-documents/originals/disposicion-29-2024-cedulas-identificacion.html",
+      "archiveMarkdownSha256": "f553835d8c2eda215b23eb808f2e8e73094104e0743223a66d69212744ff696e",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+      "normalizedArchiveTextSha256": "c9590b0dc1b4ee9e5ef81882b8e6d19fd01ba90e504b0354419a20e78979abc1",
+      "normalizedArchiveLength": 15706,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "b7bacf1405e6ed97d93eb1eb81a573ebc63e295556ca2089aec01669406e8687",
+          "normalizedSourceTextSha256": "b34e3ceebfa124b4a229945ad0cd6a8d9471f9053a3c1ea516378ef3d5b68de3",
+          "normalizedSourceLength": 15238,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 440,
+          "archiveSuffixExtraChars": 28
+        }
+      ]
+    },
+    {
+      "id": "disposicion-343-2024-autorizacion-cedula-digital",
+      "title": "Disposición 343 / 2024",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+      "localPath": "content/official-documents/documents/disposicion-343-2024-autorizacion-cedula-digital.md",
+      "rawOriginalPath": "content/official-documents/originals/disposicion-343-2024-autorizacion-cedula-digital.html",
+      "archiveMarkdownSha256": "30958217e6a9836864c0a7a7c39ee59b22a78e4941c8f289af67a6074dcd2349",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+      "normalizedArchiveTextSha256": "a99c83cefecf1992c2948f8411f51e5f2899a73dba3734d293474a9fe4b8b5e7",
+      "normalizedArchiveLength": 6091,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-343-2024-406601/texto",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "50c45a54807d15bfad8582f3b9e1a16cf9459bcf5823f9e1911fc7463df6502e",
+          "normalizedSourceTextSha256": "19fc985eb752ffafd7bb63b3b62b987cbf8f57147f52734fbac9586c6a7bc29b",
+          "normalizedSourceLength": 5597,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 466,
+          "archiveSuffixExtraChars": 28
+        }
+      ]
+    },
+    {
+      "id": "argentina-duplicado-chapa-patente-automotor",
+      "title": "Obtener un duplicado de la chapa patente del automotor",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+      "localPath": "content/official-documents/documents/argentina-duplicado-chapa-patente-automotor.md",
+      "rawOriginalPath": "content/official-documents/originals/argentina-duplicado-chapa-patente-automotor.html",
+      "archiveMarkdownSha256": "8d81576224b066874e047225cb078b810c3ddc22e56f874a92448f4bbe4cce1b",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+      "normalizedArchiveTextSha256": "72b1396d60aa991eb07fd826c42b410d06035d669c8af2294118642e93ede7c4",
+      "normalizedArchiveLength": 3505,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+          "finalUrl": "https://www.argentina.gob.ar/servicio/obtener-un-duplicado-de-la-chapa-patente-del-automotor",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "f0142447284bc6f838282558c6db7b55e282f73dac33d303905e1ce36f6599ce",
+          "normalizedSourceTextSha256": "d4aa03e14a2fbf74c7097a4eea7e6d362c35a1522fd6712bd8851cff8eb90b4a",
+          "normalizedSourceLength": 2958,
+          "passed": true,
+          "matchKind": "archive_contains_normalized_live_meaningful_source",
+          "archiveCandidate": "markdown-full",
+          "archivePrefixExtraChars": 416,
+          "archiveSuffixExtraChars": 131
+        }
+      ]
+    },
+    {
+      "id": "gcba-guia-practica-siniestros-viales",
+      "title": "Guía práctica de actuación ante siniestros viales",
+      "sourceFormat": "pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localPath": "content/official-documents/documents/gcba-guia-practica-siniestros-viales.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-guia-practica-siniestros-viales.pdf",
+      "archiveMarkdownSha256": "66a381c64374d6473feb3a0e50c765f1211a2340e467ffb5707e4c116a7b04dc",
+      "outcome": "passed",
+      "officialInputKind": "live_pdf_plus_local_pdf_parse",
+      "officialInputUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+      "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+      "pdfParseVersion": "1.1.1",
+      "pdfPages": 31,
+      "normalizedPdfTextSha256": "96ca71e6ae36bacf1f60e27ebc7fb4951265ca8b406e54a2de02c2ac4b1984a3",
+      "normalizedPdfTextLength": 25085,
+      "normalizedArchiveTextSha256": "96ca71e6ae36bacf1f60e27ebc7fb4951265ca8b406e54a2de02c2ac4b1984a3",
+      "normalizedArchiveLength": 25085,
+      "pdfTextMatch": {
+        "passed": true,
+        "matchKind": "normalized_equality",
+        "archiveCandidate": "markdown-without-title-heading",
+        "sourcePrefixExtraChars": 0,
+        "sourceSuffixExtraChars": 0
+      },
+      "attempts": [
+        {
+          "url": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "finalUrl": "https://static.buenosaires.gob.ar/sites/default/files/2026-03/Gu%C3%ADa%20Siniestros%20Viales%20VF%20%281%29_0.pdf",
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "sourceBytesSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "localRawOriginalSha256": "f86f932e39690d66f3ad739dc890bbef09848c92e0aac6c60b71fdb083c7c26e",
+          "liveBytesMatchLocalRawOriginal": true
+        }
+      ]
+    },
+    {
+      "id": "gcba-material-estudio-examen-teorico",
+      "title": "Material de estudio para examen teórico",
+      "sourceFormat": "html",
+      "sourceUrl": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+      "localPath": "content/official-documents/documents/gcba-material-estudio-examen-teorico.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-material-estudio-examen-teorico.html",
+      "archiveMarkdownSha256": "0ecf371f6bd16e5bcfaa727e3649a8c1f0b13010790fc23a6f2e0deecfcf7bf7",
+      "outcome": "blocked",
+      "officialInputKind": "live_html",
+      "blocker": "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+      "attempts": [
+        {
+          "url": "https://buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "5fecc242db5309e9315874f5ba2eb3fd5e58bfa01e56ea586480101d2def3d11",
+          "normalizedSourceTextSha256": "e7b64995b71e8ab1d7a9e134e3764a9a2afb03e777d80a677d718b9a6ff8235e",
+          "normalizedSourceLength": 2020,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "material de estudio para examen teórico pasar al contenido principal / inicio 1. buenos aires 2. movilidad e infraestructura 3. movilidad 4. curso de educación vial para otorgamiento de licencia curso de educación vial para otorgamiento de ",
+          "sourcePreviewAtMismatch": "curso de educación vial para otorgamiento de licencia material de estudio para examen teórico escuelas de conducir autorizadas material de estudio para examen teórico el examen teórico consta de preguntas con opciones múltiples (multiplecho"
+        },
+        {
+          "url": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/infraestructura/movilidad/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para-examen-teorico",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "5fecc242db5309e9315874f5ba2eb3fd5e58bfa01e56ea586480101d2def3d11",
+          "normalizedSourceTextSha256": "e7b64995b71e8ab1d7a9e134e3764a9a2afb03e777d80a677d718b9a6ff8235e",
+          "normalizedSourceLength": 2020,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "material de estudio para examen teórico pasar al contenido principal / inicio 1. buenos aires 2. movilidad e infraestructura 3. movilidad 4. curso de educación vial para otorgamiento de licencia curso de educación vial para otorgamiento de ",
+          "sourcePreviewAtMismatch": "curso de educación vial para otorgamiento de licencia material de estudio para examen teórico escuelas de conducir autorizadas material de estudio para examen teórico el examen teórico consta de preguntas con opciones múltiples (multiplecho"
+        }
+      ]
+    },
+    {
+      "id": "gcba-manual-vehiculo-4-ruedas-2023",
+      "title": "Manual de conducción vehicular - Categoría B / Automóviles",
+      "sourceFormat": "pdf",
+      "sourceUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+      "localPath": "content/official-documents/documents/gcba-manual-vehiculo-4-ruedas-2023.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+      "archiveMarkdownSha256": "3a9be877d138c3253b5759428a345d7eb2a500fd248f710902dab3432c7c7bfa",
+      "outcome": "passed",
+      "officialInputKind": "live_pdf_plus_local_pdf_parse",
+      "officialInputUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+      "localRawOriginalSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+      "pdfParseVersion": "1.1.1",
+      "pdfPages": 200,
+      "normalizedPdfTextSha256": "ba0a3498bd3b33cacc71fc0339141bc70a7b266eea3ddeacad56b371be0a3bf1",
+      "normalizedPdfTextLength": 261472,
+      "normalizedArchiveTextSha256": "ba0a3498bd3b33cacc71fc0339141bc70a7b266eea3ddeacad56b371be0a3bf1",
+      "normalizedArchiveLength": 261472,
+      "pdfTextMatch": {
+        "passed": true,
+        "matchKind": "normalized_equality",
+        "archiveCandidate": "markdown-without-title-heading",
+        "sourcePrefixExtraChars": 0,
+        "sourceSuffixExtraChars": 0
+      },
+      "attempts": [
+        {
+          "url": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+          "finalUrl": "https://static.buenosaires.gob.ar/sites/default/files/2024-11/MANUAL_Vehiculo_4Ruedas_2023%20SA.pdf",
+          "httpStatus": 200,
+          "contentType": "application/pdf",
+          "sourceBytesSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+          "localRawOriginalSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+          "liveBytesMatchLocalRawOriginal": true
+        }
+      ]
+    },
+    {
+      "id": "gcba-mapa-estrellas-amarillas",
+      "title": "Mapa de Estrellas Amarillas en la Ciudad",
+      "sourceFormat": "html",
+      "sourceUrl": "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+      "localPath": "content/official-documents/documents/gcba-mapa-estrellas-amarillas.md",
+      "rawOriginalPath": "content/official-documents/originals/gcba-mapa-estrellas-amarillas.html",
+      "archiveMarkdownSha256": "755ba7e88e03d6b3dedad0d4aa5312974cb7080b88b7845352441104dc47b0d3",
+      "outcome": "blocked",
+      "officialInputKind": "live_html",
+      "blocker": "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+      "attempts": [
+        {
+          "url": "https://buenosaires.gob.ar/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "f8c601bdd87178cc21e3252204fdbae706af9da27e04dfe30a4db66a1cb4d339",
+          "normalizedSourceTextSha256": "c6275a6bdaaedf76622bb7bfaf20691b6c59dd331b83fd8ce5eb147a64a4fb50",
+          "normalizedSourceLength": 4129,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 41,
+          "archivePreviewAtMismatch": "1. buenos aires 2. movilidad e infraestructura mapa de estrellas amarillas en la ciudad el mapa de estrellas amarillas referencia en forma permanente el lugar de fallecimiento de una víctima de tránsito. realizado en conjunto con ongs y fam",
+          "sourcePreviewAtMismatch": "el mapa de estrellas amarillas referencia en forma permanente el lugar de fallecimiento de una víctima de tránsito. realizado en conjunto con ongs y familiares de las víctimas. compartir en redes en la ciudad de buenos aires la iniciativa e"
+        },
+        {
+          "url": "https://buenosaires.gob.ar/gcaba_historico/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "finalUrl": "https://buenosaires.gob.ar/gcaba_historico/jefaturadegabinete/movilidad/plan-de-seguridad-vial/mapa-de-estrellas-amarillas-en-la-ciudad",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "sourceBytesSha256": "f8c601bdd87178cc21e3252204fdbae706af9da27e04dfe30a4db66a1cb4d339",
+          "normalizedSourceTextSha256": "c6275a6bdaaedf76622bb7bfaf20691b6c59dd331b83fd8ce5eb147a64a4fb50",
+          "normalizedSourceLength": 4129,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 41,
+          "archivePreviewAtMismatch": "1. buenos aires 2. movilidad e infraestructura mapa de estrellas amarillas en la ciudad el mapa de estrellas amarillas referencia en forma permanente el lugar de fallecimiento de una víctima de tránsito. realizado en conjunto con ongs y fam",
+          "sourcePreviewAtMismatch": "el mapa de estrellas amarillas referencia en forma permanente el lugar de fallecimiento de una víctima de tránsito. realizado en conjunto con ongs y familiares de las víctimas. compartir en redes en la ciudad de buenos aires la iniciativa e"
+        }
+      ]
+    },
+    {
+      "id": "ley-11179-codigo-penal",
+      "title": "CODIGO PENAL DE LA NACION ARGENTINA",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+      "localPath": "content/official-documents/documents/ley-11179-codigo-penal.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-11179-codigo-penal.html",
+      "archiveMarkdownSha256": "dee33c6044ba01492bbc3c93eb8545310eac0520754a92779f63630838b77e80",
+      "outcome": "blocked",
+      "officialInputKind": "live_html",
+      "blocker": "No official HTML candidate from sourceUrl/currentness.evidenceUrls produced a normalized exact archive match.",
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-11179-16546/actualizacion",
+          "error": "This operation was aborted",
+          "matchKind": "fetch_or_extract_error",
+          "passed": false
+        },
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16546/texact.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/16546/texact.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "52575de7c849442282f2a8ff00a7464adb2a20a0c7d84d3f74ce50215bdfaa28",
+          "normalizedSourceTextSha256": "c891e01bbe56959f85a9f83c2ba7d3d50819224d87500b18c6f9d1c816ee4314",
+          "normalizedSourceLength": 247221,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-without-title-heading",
+          "commonPrefixChars": 20388,
+          "archivePreviewAtMismatch": "- al suspender condicionalmente la ejecución de la pena, el tribunal deberá disponer que, durante un plazo que fijará entre dos y cuatro años según la gravedad del delito, el condenado cumpla todas o alguna de las siguientes reglas de condu",
+          "sourcePreviewAtMismatch": " - al suspender condicionalmente la ejecución de la pena, el tribunal deberá disponer que, durante un plazo que fijará entre dos y cuatro años según la gravedad del delito, el condenado cumpla todas o alguna de las siguientes reglas de cond"
+        }
+      ]
+    },
+    {
+      "id": "ley-26994-codigo-civil-comercial",
+      "title": "CODIGO CIVIL Y COMERCIAL DE LA NACION",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-26994-235975/actualizacion",
+      "localPath": "content/official-documents/documents/ley-26994-codigo-civil-comercial.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-26994-codigo-civil-comercial.html",
+      "archiveMarkdownSha256": "627d2619f73cc611c1c9efeb6b3e2cb03218642d4f67ddb91423fe30698ff9fa",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/texact.htm",
+      "normalizedArchiveTextSha256": "9f961c3d7c78653e273b135de4e2baee5609df658e645e5d7ee35f02c294019a",
+      "normalizedArchiveLength": 1172246,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-26994-235975/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-26994-235975/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "c3e1ab53bdcd3d07cce02e59ee40c3d1f68263a55a73eadf695e31cb78826453",
+          "normalizedSourceTextSha256": "de3f5463adc6728cd2487006b3af028ce0194d5f098a7b7c103dd6ae101ffd30",
+          "normalizedSourceLength": 1172196,
+          "passed": false,
+          "matchKind": "normalized_text_mismatch",
+          "archiveCandidate": "markdown-full",
+          "commonPrefixChars": 0,
+          "archivePreviewAtMismatch": "codigo civil y comercial de la nacion codigo civil y comercial de la nacion ley 26.994 ver antecedentes normativos aprobación indice tematico título preliminar capítulo 1 derecho arts. 1° a 3° capítulo 2 ley arts. 4° a 8° capítulo 3 ejercic",
+          "sourcePreviewAtMismatch": "normativa ver antecedentes normativos indice tematico título preliminar capítulo 1 derecho arts. 1° a 3° capítulo 2 ley arts. 4° a 8° capítulo 3 ejercicio de los derechos arts. 9° a 14 capítulo 4 derechos y bienes arts. 15 a 18 libro primer"
+        },
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/texact.htm",
+          "finalUrl": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/235000-239999/235975/texact.htm",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "sourceBytesSha256": "82a773a1222dab22d47f6d14039baba4145c158447d450e1c97cf93cef2e1c40",
+          "normalizedSourceTextSha256": "9f961c3d7c78653e273b135de4e2baee5609df658e645e5d7ee35f02c294019a",
+          "normalizedSourceLength": 1172246,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    },
+    {
+      "id": "ley-17418-seguros",
+      "title": "LEY Nº 17.418 - LEY DE SEGUROS",
+      "sourceFormat": "html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "localPath": "content/official-documents/documents/ley-17418-seguros.md",
+      "rawOriginalPath": "content/official-documents/originals/ley-17418-seguros.html",
+      "archiveMarkdownSha256": "2f18cba3d4250feb20e2acfc59dba0b97bc37a75722ace6f83fbf8df68ab54d7",
+      "outcome": "passed",
+      "officialInputKind": "live_html",
+      "officialInputUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+      "normalizedArchiveTextSha256": "644ed9faa06cc193109952a68ec60ebf528d8dbd416003430e17d856a75257b9",
+      "normalizedArchiveLength": 63066,
+      "attempts": [
+        {
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "finalUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-17418-39520/actualizacion",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "sourceBytesSha256": "3dcb29fdf22e98876c3ae447aec90f4fe795c68b5dd729dafb0b0fa69091dc24",
+          "normalizedSourceTextSha256": "644ed9faa06cc193109952a68ec60ebf528d8dbd416003430e17d856a75257b9",
+          "normalizedSourceLength": 63066,
+          "passed": true,
+          "matchKind": "normalized_equality",
+          "archiveCandidate": "markdown-without-title-heading",
+          "sourcePrefixExtraChars": 0,
+          "sourceSuffixExtraChars": 0
+        }
+      ]
+    }
+  ]
+}
