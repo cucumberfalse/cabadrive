@@ -3,7 +3,7 @@
   "featureId": "019-primary-sources-section",
   "checkedAt": "2026-05-20",
   "manifestPath": "content/official-documents/manifest.json",
-  "command": "node scripts/official-documents-exact-text-validation.mjs --ids ley-17418-seguros,decreto-779-1995-anexo-l-senalizacion-vial-uniforme,gcba-guia-practica-siniestros-viales --write",
+  "command": "node scripts/official-documents-exact-text-validation.mjs --ids ley-17418-seguros,decreto-779-1995-anexo-l-senalizacion-vial-uniforme,gcba-guia-practica-siniestros-viales --evidence content/official-documents/validation/exact-text-validation-smoke-2026-05-20.json --write",
   "summary": {
     "total": 3,
     "passed": 3,

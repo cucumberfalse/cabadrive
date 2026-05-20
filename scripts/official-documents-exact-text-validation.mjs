@@ -32,6 +32,7 @@ function parseArgs(argv, checkedAt) {
   const args = {
     manifestPath: DEFAULT_MANIFEST_PATH,
     evidencePath: defaultEvidencePath,
+    defaultEvidencePath,
     ids: undefined,
     write: false
   };
@@ -65,6 +66,21 @@ By default, --write uses ${DEFAULT_EVIDENCE_DIR}/exact-text-validation-<current-
   }
 
   return args;
+}
+
+function quoteCliValue(value) {
+  if (/^[A-Za-z0-9_./:@%+=,-]+$/.test(value)) return value;
+  return `'${value.replaceAll("'", "'\\''")}'`;
+}
+
+function buildCommand(args) {
+  const parts = ["node", "scripts/official-documents-exact-text-validation.mjs"];
+  if (args.ids) parts.push("--ids", quoteCliValue(args.ids.join(",")));
+  if (resolve(args.evidencePath) !== resolve(args.defaultEvidencePath)) {
+    parts.push("--evidence", quoteCliValue(args.evidencePath));
+  }
+  if (args.write) parts.push("--write");
+  return parts.join(" ");
 }
 
 function sha256(value) {
@@ -637,7 +653,7 @@ async function main() {
     featureId: "019-primary-sources-section",
     checkedAt,
     manifestPath: args.manifestPath,
-    command: `node scripts/official-documents-exact-text-validation.mjs${args.ids ? ` --ids ${args.ids.join(",")}` : ""} --write`,
+    command: buildCommand(args),
     summary,
     method: {
       officialInputs: "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
