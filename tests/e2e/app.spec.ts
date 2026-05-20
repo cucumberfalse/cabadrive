@@ -40,13 +40,38 @@ type PrimarySourceDocument = {
   chunks: PrimarySourceChunk[];
 };
 
+function isPrimarySourceFixtureDocument(value: unknown): value is PrimarySourceDocument {
+  const document = value as PrimarySourceDocument | undefined;
+  return Boolean(document?.officialDocumentId && Array.isArray(document.chunks));
+}
+
+function normalizePrimarySourceFixtureShard(fileName: string, value: unknown) {
+  const shard = value as { document?: unknown; documents?: unknown };
+  const pluralDocuments = Array.isArray(shard.documents) ? shard.documents : [];
+  const hasMalformedPluralDocument = pluralDocuments.some((document) => !isPrimarySourceFixtureDocument(document));
+  const documents = [
+    ...(isPrimarySourceFixtureDocument(shard.document) ? [shard.document] : []),
+    ...pluralDocuments.filter(isPrimarySourceFixtureDocument)
+  ];
+
+  if (documents.length === 0 || hasMalformedPluralDocument) {
+    throw new Error(`Malformed primary source fixture shard ${fileName}`);
+  }
+  return documents;
+}
+
 function loadPrimarySourceDocuments() {
   const documentsById = new Map<string, PrimarySourceDocument>();
   for (const fileName of readdirSync("content/primary-sources/documents").filter((name) => name.endsWith(".json"))) {
-    const shard = JSON.parse(readFileSync(join("content/primary-sources/documents", fileName), "utf8")).document as PrimarySourceDocument;
-    const current = documentsById.get(shard.officialDocumentId) ?? { ...shard, chunks: [] };
-    current.chunks.push(...shard.chunks);
-    documentsById.set(shard.officialDocumentId, current);
+    const documents = normalizePrimarySourceFixtureShard(
+      fileName,
+      JSON.parse(readFileSync(join("content/primary-sources/documents", fileName), "utf8"))
+    );
+    for (const shard of documents) {
+      const current = documentsById.get(shard.officialDocumentId) ?? { ...shard, chunks: [] };
+      current.chunks.push(...shard.chunks);
+      documentsById.set(shard.officialDocumentId, current);
+    }
   }
   return primarySourceManifest.entries.map((entry: { id: string }) => {
     const document = documentsById.get(entry.id);
@@ -60,6 +85,38 @@ const trafficLawSource = primarySourceDocuments.find((document) => document.offi
 const cabaTrafficSource = primarySourceDocuments.find((document) => document.officialDocumentId === "ley-2148-caba-codigo-transito-transporte")!;
 const longPrimarySource = primarySourceDocuments.find((document) => document.officialDocumentId === "ley-26994-codigo-civil-comercial")!;
 const textSample = (value: string) => value.replace(/\s+/g, " ").trim().slice(0, 54);
+
+test("primary source fixture loader accepts singular and plural document shards", () => {
+  const fixtureDocument: PrimarySourceDocument = {
+    officialDocumentId: "fixture-doc",
+    title: "Fixture document",
+    shortTitleRu: "Тестовый источник",
+    category: "traffic-law",
+    jurisdiction: "national",
+    officialSourceType: "law",
+    chunks: [
+      {
+        chunkId: "fixture-doc--001",
+        order: 1,
+        headingPath: ["Fixture"],
+        originalSpanish: "Texto uno",
+        fullTranslationRu: "Полный перевод один",
+        simpleRu: "Просто один"
+      }
+    ]
+  };
+  const secondDocument = {
+    ...fixtureDocument,
+    chunks: [{ ...fixtureDocument.chunks[0], chunkId: "fixture-doc--002", order: 2 }]
+  };
+
+  expect(normalizePrimarySourceFixtureShard("singular.json", { document: fixtureDocument })).toHaveLength(1);
+  expect(normalizePrimarySourceFixtureShard("plural.json", { documents: [fixtureDocument, secondDocument] }).map((document) => document.chunks[0].chunkId)).toEqual([
+    "fixture-doc--001",
+    "fixture-doc--002"
+  ]);
+  expect(() => normalizePrimarySourceFixtureShard("mixed-plural.json", { documents: [fixtureDocument, { chunks: [] }] })).toThrow(/mixed-plural\.json/);
+});
 
 async function forceRandom(page: Page, randomValue: number) {
   await page.addInitScript((value) => {

@@ -17,6 +17,7 @@ import {
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
+import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus";
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
@@ -1365,6 +1366,8 @@ function PrimarySourcesView() {
   const selectedChunkIndex = navigationChunks.findIndex((chunk) => chunk.chunkId === selectedChunk?.chunkId);
   const effectiveSelectedDocumentId = selectedDocument?.officialDocumentId;
   const firstNavigationChunkId = navigationChunks[0]?.chunkId ?? selectedDocument?.chunks[0]?.chunkId;
+  const selectedExactTextStatusKind = selectedDocument ? exactTextStatusKind(selectedDocument.exactTextValidationStatus) : "pending";
+  const selectedExactTextStatusNote = selectedDocument ? exactTextStatusNote(selectedDocument.exactTextValidationStatus) : undefined;
 
   useEffect(() => {
     if (!effectiveSelectedDocumentId) {
@@ -1563,21 +1566,12 @@ function PrimarySourcesView() {
               <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
               <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
               <span>{primarySourceCurrentnessLabel(selectedDocument.currentnessStatus)}: {primarySourceValidationLabel(selectedDocument.currentnessValidationStatus)}</span>
-              <span className={selectedDocument.exactTextValidationStatus === "passed" ? "" : "pending"}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
+              <span className={selectedExactTextStatusKind === "passed" ? "" : selectedExactTextStatusKind}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
             </div>
 
-            <div className={`source-status-note ${selectedDocument.exactTextValidationStatus === "passed" ? "passed" : "pending"}`} role="status">
-              {selectedDocument.exactTextValidationStatus === "passed" ? (
-                <>
-                  <strong>Точный текст проверен.</strong>
-                  <span>Испанский архив прошел exact-text проверку для этого источника. Русский слой неофициальный и нужен только для учебы.</span>
-                </>
-              ) : (
-                <>
-                  <strong>Проверка точного текста ожидается.</strong>
-                  <span>До финального релиза испанский архив требует отдельной exact-text проверки. Русский слой неофициальный и нужен только для учебы.</span>
-                </>
-              )}
+            <div className={`source-status-note ${selectedExactTextStatusKind}`} role="status">
+              <strong>{selectedExactTextStatusNote?.title}</strong>
+              <span>{selectedExactTextStatusNote?.description}</span>
             </div>
 
             <div className="source-reader-grid">
