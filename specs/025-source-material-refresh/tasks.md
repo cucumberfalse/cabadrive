@@ -211,12 +211,12 @@ Architect scope note after Slice 1: this should be the next recommended separate
 
 ### Implementation Agent Feedback
 
-- No Slice 2 ticket-import batch is ready from this evidence because `accepted-current` count is 0. Architect disposition: not-needed for PR #167; do not import tickets from this slice.
-- If later ticket work is desired, start with the 9 ambiguous `categoriab.pdf` candidates and require official/currentness validation plus full support evidence before any import. Architect disposition: possible future investigation slice, deferred outside PR #167.
-- Do not batch-import unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` candidates unless a separate official-source investigation proves current validity. Architect disposition: rejected/not-needed for PR #167 batch import.
-- Run process-guide refresh as a separate slice using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model, with official GCBA/ANSV verification for every retained claim. Architect disposition: recommended next separate slice, not part of PR #167.
-- No official archive/manual update is recommended from Slice 1 because the supplied 2023 manual copy already matches the governed archive original. Architect disposition: not-needed for PR #167; no manual/archive update should be assigned from Slice 1 evidence.
-- Review-fix evidence sanitation removed committed verbatim extracted question/answer text and machine-specific paths while preserving candidate IDs, logical source/page metadata, match/disposition metadata, counts, and fingerprints. Architect disposition: accepted as evidence hygiene only; no new product/content decision is needed.
+- No Slice 2 ticket-import batch is ready from this evidence because `accepted-current` count is 0. Final Architect disposition: not needed for PR #167; do not import tickets from this slice.
+- If later ticket work is desired, start with the 9 ambiguous `categoriab.pdf` candidates and require official/currentness validation plus full support evidence before any import. Final Architect disposition: not needed for PR #167; disposed as a deferred possible future investigation slice outside this PR.
+- Do not batch-import unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` candidates unless a separate official-source investigation proves current validity. Final Architect disposition: rejected and not needed for PR #167 batch import.
+- Run process-guide refresh as a separate slice using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model, with official GCBA/ANSV verification for every retained claim. Final Architect disposition: accepted as a future separate slice and not part of PR #167.
+- No official archive/manual update is recommended from Slice 1 because the supplied 2023 manual copy already matches the governed archive original. Final Architect disposition: not needed for PR #167; no manual/archive update should be assigned from Slice 1 evidence.
+- Review-fix evidence sanitation removed committed verbatim extracted question/answer text and machine-specific paths while preserving candidate IDs, logical source/page metadata, match/disposition metadata, counts, and fingerprints. Final Architect disposition: accepted and resolved as evidence hygiene only; no new product/content decision is needed.
 
 ### Architect Dispositions
 
@@ -231,6 +231,7 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Process-guide refresh feedback: dispositioned as the recommended next separate implementation slice. Use `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model and validate every retained acquisition/renewal claim against current official GCBA/ANSV sources.
 - Official archive/manual update feedback: dispositioned as not-needed. The supplied 2023 manual matches the governed archive raw original byte-for-byte, so no official archive or manual refresh should be assigned from Slice 1 evidence.
 - Recommended next Orchestrator assignment: assign an Implementation Agent a separate Process Guide Refresh slice covering T030-T036 only, preserving the same role boundaries and requiring official-source evidence plus `pnpm run validate:content`. Do not assign ticket-import work until a separate candidate-currentness investigation is explicitly scoped.
+- Final-validation staleness disposition: prior final Architect and Analyst validation at effective content head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` is stale after this disposition-wording correction. Orchestrator must rerun final Architect validation and then final Analyst validation before completion or merge.
 
 ### Final Architect Validation
 
