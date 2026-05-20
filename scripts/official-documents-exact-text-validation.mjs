@@ -94,7 +94,7 @@ function extractFirstTag(html, tagName) {
   return html.match(pattern)?.[0];
 }
 
-function htmlToMeaningfulText(html) {
+function htmlToText(html, { removeSiteShell }) {
   let body = String(html)
     .replace(/<!--[\s\S]*?-->/g, " ")
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -102,15 +102,50 @@ function htmlToMeaningfulText(html) {
     .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
     .replace(/<svg[\s\S]*?<\/svg>/gi, " ");
 
-  body = extractFirstTag(body, "article") ?? extractFirstTag(body, "main") ?? extractFirstTag(body, "body") ?? body;
+  if (removeSiteShell) {
+    body = body.replace(/<(header|nav|footer|form|aside)\b[\s\S]*?<\/\1>/gi, " ");
+  }
+
   body = body
-    .replace(/<(header|nav|footer|form|aside)\b[\s\S]*?<\/\1>/gi, " ")
     .replace(/<img\b[^>]*>/gi, " ")
     .replace(/<br\s*\/?\s*>/gi, "\n")
     .replace(/<\/(p|div|h[1-6]|li|tr|td|th|section|article)>/gi, "\n")
     .replace(/<[^>]+>/g, " ");
 
   return decodeHtmlEntities(body);
+}
+
+function htmlMeaningfulTextCandidates(html) {
+  const preparedHtml = String(html)
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+    .replace(/<svg[\s\S]*?<\/svg>/gi, " ");
+
+  const rootCandidates = [
+    { name: "html-main", html: extractFirstTag(preparedHtml, "main") },
+    { name: "html-article", html: extractFirstTag(preparedHtml, "article") },
+    { name: "html-body", html: extractFirstTag(preparedHtml, "body") },
+    { name: "html-document", html: preparedHtml }
+  ].filter((candidate) => candidate.html);
+
+  const candidates = [];
+  for (const candidate of rootCandidates) {
+    for (const removeSiteShell of [true, false]) {
+      candidates.push({
+        name: `${candidate.name}${removeSiteShell ? "-without-site-shell" : "-with-site-shell"}`,
+        text: normalizeComparableText(htmlToText(candidate.html, { removeSiteShell }))
+      });
+    }
+  }
+
+  const seen = new Set();
+  return candidates.filter((candidate) => {
+    if (candidate.text.length === 0 || seen.has(candidate.text)) return false;
+    seen.add(candidate.text);
+    return true;
+  });
 }
 
 function markdownToText(markdown, { removeFirstHeading }) {
@@ -126,15 +161,73 @@ function markdownToText(markdown, { removeFirstHeading }) {
 }
 
 function removeArchivedPageChrome(markdown) {
+  const lines = String(markdown).split("\n");
+  const filtered = [];
+  let skippingRelatedContent = false;
+  let skippingFeedbackAndFooter = false;
+
+  const socialShareLines = new Set([
+    "Compartir en",
+    "redes sociales",
+    "- Compartir en Facebook",
+    "- Compartir en X",
+    "- Compartir en Linkedin",
+    "- Compartir en Whatsapp",
+    "- Compartir en Telegram"
+  ]);
+
+  const gcbaFooterStarts = [
+    "Complete",
+    "Ayudanos a mejorar",
+    "¿Te fue útil esta página?",
+    "Teléfonos útiles",
+    "BUENOS AIRES CIUDAD",
+    "Los contenidos de buenosaires.gob.ar"
+  ];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (/^#{1,6}\s+Noticias relacionadas$/i.test(trimmed)) {
+      skippingRelatedContent = true;
+      continue;
+    }
+    if (skippingRelatedContent) continue;
+
+    if (
+      gcbaFooterStarts.some((start) => trimmed.startsWith(start)) ||
+      /^[*-]\s+Complete$/i.test(trimmed)
+    ) {
+      skippingFeedbackAndFooter = true;
+      continue;
+    }
+    if (skippingFeedbackAndFooter) continue;
+
+    if (!trimmed) {
+      filtered.push(line);
+      continue;
+    }
+    if (trimmed === "Inicio" || trimmed === "- Inicio" || trimmed === "* Inicio") continue;
+    if (trimmed === "Pasar al contenido principal" || trimmed === "/" || trimmed === "*") continue;
+    if (/^-{3,}$/.test(trimmed)) continue;
+    if (/^\d+\.\s+.*\[\/[^\]]*]$/.test(trimmed)) continue;
+    if (/^\*\s+Actual Paso/.test(trimmed) || /^\*\s+Paso/.test(trimmed)) continue;
+    if (/^[*-]\s+Inicio\s+\[\/?]/.test(trimmed)) continue;
+    if (/^[*-]\s+Compartir en /.test(trimmed) || socialShareLines.has(trimmed)) continue;
+
+    filtered.push(line);
+  }
+
+  return filtered.join("\n");
+}
+
+function removeArchivedDateMetadata(markdown) {
   return String(markdown)
     .split("\n")
     .filter((line) => {
       const trimmed = line.trim();
       if (!trimmed) return true;
-      if (trimmed === "Pasar al contenido principal" || trimmed === "/" || trimmed === "*") return false;
-      if (/^-{3,}$/.test(trimmed)) return false;
-      if (/^\d+\.\s+.*\[\/[^\]]*]$/.test(trimmed)) return false;
-      if (/^\*\s+Actual Paso/.test(trimmed) || /^\*\s+Paso/.test(trimmed)) return false;
+      if (/^\d{1,2} de [a-záéíóúñ]+ de \d{4}$/iu.test(trimmed)) return false;
       return true;
     })
     .join("\n");
@@ -186,11 +279,13 @@ function normalizeComparableText(text) {
 
 function markdownCandidates(markdown) {
   const pageChromeRemoved = removeArchivedPageChrome(markdown);
+  const pageChromeAndDateMetadataRemoved = removeArchivedDateMetadata(pageChromeRemoved);
   const candidates = [
     { name: "markdown-full", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: false })) },
     { name: "markdown-without-title-heading", text: normalizeComparableText(markdownToText(markdown, { removeFirstHeading: true })) },
     { name: "markdown-without-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: false })) },
     { name: "markdown-without-title-heading-and-page-chrome", text: normalizeComparableText(markdownToText(pageChromeRemoved, { removeFirstHeading: true })) },
+    { name: "markdown-without-title-heading-page-chrome-and-date-metadata", text: normalizeComparableText(markdownToText(pageChromeAndDateMetadataRemoved, { removeFirstHeading: true })) },
     ...substantiveArchiveSlices(markdown).map((slice) => ({
       name: slice.name,
       text: normalizeComparableText(markdownToText(slice.text, { removeFirstHeading: false }))
@@ -232,18 +327,22 @@ function findTextMatch({ sourceText, archiveCandidates }) {
     }
   }
 
-  for (const candidate of archiveCandidates) {
-    const start = candidate.text.indexOf(sourceText);
-    if (start < 0) continue;
-    const suffixChars = candidate.text.length - start - sourceText.length;
-    return {
-      passed: true,
-      matchKind: "archive_contains_normalized_live_meaningful_source",
-      archiveCandidate: candidate.name,
-      archivePrefixExtraChars: start,
-      archiveSuffixExtraChars: suffixChars
-    };
-  }
+  const rejectedSubset = archiveCandidates
+    .map((candidate) => {
+      const start = candidate.text.indexOf(sourceText);
+      if (start < 0) return undefined;
+      return {
+        archiveCandidate: candidate.name,
+        archivePrefixExtraChars: start,
+        archiveSuffixExtraChars: candidate.text.length - start - sourceText.length
+      };
+    })
+    .filter(Boolean)
+    .sort((left, right) => {
+      const leftExtra = left.archivePrefixExtraChars + left.archiveSuffixExtraChars;
+      const rightExtra = right.archivePrefixExtraChars + right.archiveSuffixExtraChars;
+      return leftExtra - rightExtra;
+    })[0];
 
   const best = archiveCandidates
     .map((candidate) => {
@@ -263,6 +362,12 @@ function findTextMatch({ sourceText, archiveCandidates }) {
     passed: false,
     matchKind: "normalized_text_mismatch",
     archiveCandidate: best?.candidate.name,
+    rejectedSubsetMatch: rejectedSubset
+      ? {
+          ...rejectedSubset,
+          reason: "Live official source text is only a subset of archived Markdown; exact-text validation requires the full archive candidate to match the official source or fit inside bounded official wrapper text."
+        }
+      : undefined,
     commonPrefixChars: best?.commonPrefixChars ?? 0,
     archivePreviewAtMismatch: best?.candidate.text.slice(best.commonPrefixChars, best.commonPrefixChars + 240) ?? "",
     sourcePreviewAtMismatch: sourceText.slice(best?.commonPrefixChars ?? 0, (best?.commonPrefixChars ?? 0) + 240)
@@ -323,30 +428,45 @@ async function validateHtmlEntry(entry, archiveMarkdown) {
   for (const url of officialCandidateUrls(entry).filter(isHtmlCandidateUrl)) {
     try {
       const response = await fetchBytes(url);
-      const sourceText = normalizeComparableText(htmlToMeaningfulText(response.text));
-      const match = response.ok
-        ? findTextMatch({ sourceText, archiveCandidates })
-        : { passed: false, matchKind: "http_not_ok" };
-      const attempt = {
-        url,
-        finalUrl: response.finalUrl,
-        httpStatus: response.status,
-        contentType: response.contentType,
-        sourceBytesSha256: sha256(response.bytes),
-        normalizedSourceTextSha256: sha256(sourceText),
-        normalizedSourceLength: sourceText.length,
-        ...match
-      };
-      attempts.push(attempt);
-      if (attempt.passed) {
-        return {
-          outcome: "passed",
-          officialInputKind: "live_html",
-          officialInputUrl: url,
-          normalizedArchiveTextSha256: sha256(archiveCandidates.find((candidate) => candidate.name === attempt.archiveCandidate).text),
-          normalizedArchiveLength: archiveCandidates.find((candidate) => candidate.name === attempt.archiveCandidate).text.length,
-          attempts
+      if (!response.ok) {
+        attempts.push({
+          url,
+          finalUrl: response.finalUrl,
+          httpStatus: response.status,
+          contentType: response.contentType,
+          sourceBytesSha256: sha256(response.bytes),
+          passed: false,
+          matchKind: "http_not_ok"
+        });
+        continue;
+      }
+
+      for (const sourceCandidate of htmlMeaningfulTextCandidates(response.text)) {
+        const match = findTextMatch({ sourceText: sourceCandidate.text, archiveCandidates });
+        const attempt = {
+          url,
+          finalUrl: response.finalUrl,
+          httpStatus: response.status,
+          contentType: response.contentType,
+          sourceBytesSha256: sha256(response.bytes),
+          sourceCandidate: sourceCandidate.name,
+          normalizedSourceTextSha256: sha256(sourceCandidate.text),
+          normalizedSourceLength: sourceCandidate.text.length,
+          ...match
         };
+        attempts.push(attempt);
+        if (attempt.passed) {
+          const archiveCandidate = archiveCandidates.find((candidate) => candidate.name === attempt.archiveCandidate);
+          return {
+            outcome: "passed",
+            officialInputKind: "live_html",
+            officialInputUrl: url,
+            sourceCandidate: sourceCandidate.name,
+            normalizedArchiveTextSha256: sha256(archiveCandidate.text),
+            normalizedArchiveLength: archiveCandidate.text.length,
+            attempts
+          };
+        }
       }
     } catch (error) {
       attempts.push({ url, error: error.message, matchKind: "fetch_or_extract_error", passed: false });
@@ -494,12 +614,12 @@ async function main() {
     summary,
     method: {
       officialInputs: "For each manifest entry, the validator tries sourceUrl followed by currentness.evidenceUrls. HTML entries must match a live official HTML input. PDF entries must first prove live official PDF bytes match rawOriginalPath, then prove pdf-parse 1.1.1 text extraction matches archived Markdown.",
-      htmlExtraction: "Remove script/style/noscript/svg/site header/nav/footer/form/aside, prefer article then main then body, flatten tags to visible text, and decode HTML entities.",
+      htmlExtraction: "Remove script/style/noscript/svg noise, build audited live-source candidates from main/article/body/full document with and without removable site shell, flatten tags to visible text, and decode HTML entities.",
       markdownNormalization: "Remove Markdown heading markers, local image references, and visible link target annotations; keep official wording order.",
       comparableNormalization: "NFKC, lowercase, collapse whitespace, trim whitespace before punctuation, normalize curly quotes. This accepts HTML/PDF layout noise but keeps omissions, additions inside the body, and order changes detectable.",
-      archiveCandidates: "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation chrome, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
+      archiveCandidates: "Archived Markdown is compared as full text, without the local title heading, without reproducible page-navigation/related-content/feedback/footer chrome, without date-only page metadata, and from stable substantive legal/body markers when an official live mirror omits publication-page metadata but preserves the normative body.",
       layoutNormalization: "The normalizer also removes Markdown/HTML separator-only lines, duplicate link-target annotations, spaces before parentheticals, and digit-internal layout whitespace observed in official InfoLeg HTML, without changing letters, punctuation, or text order.",
-      wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked.`
+      wrapperTolerance: `A live source may contain the archived body as one contiguous block with at most ${MAX_WRAPPER_CHARS} normalized characters of official wrapper text before/after it. Larger additions remain blocked; live-source-as-subset-of-archive matches are recorded as rejected diagnostics, never as pass evidence.`
     },
     results
   };

@@ -101,6 +101,8 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 The final topic-study-guide release and the final primary-source reader release require dedicated whole-archive exact-text and currentness validation evidence. The current manifest records both currentness validation and exact-text validation as passed for all 19 entries; future manifest additions or source changes must refresh that evidence before a finished release claim.
 
+`scripts/official-documents-exact-text-validation.mjs` rejects live-source-as-subset-of-archive matches. HTML exact-text evidence may pass only when the normalized archive candidate exactly matches a live official extraction candidate, or when the live official source contains the archive candidate as one contiguous body with bounded official wrapper text. Reproducible archive candidates may remove page chrome such as navigation, sharing widgets, related-content lists, feedback forms, footers, and date-only metadata, but unmatched archive body text remains a blocker.
+
 ## Related Guide Files
 
 The topic-study-guide source trace is separate from the official archive:
