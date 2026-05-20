@@ -1,6 +1,6 @@
 # Russian Primary-Source Terminology Guide
 
-Status: draft guidance for Cabadrive learner-facing Russian translations.
+Status: published guidance for Cabadrive learner-facing Russian translations.
 
 This guide governs Russian full translations and simple Russian rewrites under `content/primary-sources/`. It does not change the Spanish official archive. When a term has legal force, preserve meaning and scope before improving style.
 

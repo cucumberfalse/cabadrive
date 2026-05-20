@@ -81,7 +81,7 @@ Feature `019-primary-sources-section` adds a learner-facing `Источники`
 
 The original Spanish archive remains the official/verbatim source layer. Russian translation, simplification, summaries, and learner notes are unofficial support layers and must be stored and validated outside `content/official-documents/`.
 
-Release status: the reader UI, full learner corpus, currentness gate, and exact-text gate are implemented and passed for all 19 manifest entries. Remaining merge readiness still depends on the active PR checks, review, conflict state, and human merge authority.
+Release status: the reader UI, full learner corpus, currentness gate, and exact-text gate are implemented and passed for all 19 manifest entries.
 
 ## Currentness Rules
 
@@ -97,7 +97,7 @@ Allowed `currentness.validationStatus` and `exactTextValidation.status` values a
 
 `scripts/official-documents-validation.mjs` owns no-file-I/O manifest validation. It validates supplied manifest data against an injectable file metadata/existence map or callback, so unit tests can run without real archive files.
 
-`scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. An empty draft manifest passes validation. Entries, when present, must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
+`scripts/validate-content.mjs` integrates the official-documents manifest validator with real local file existence and SHA-256 checks. Manifest entries must have required metadata, local paths inside the archive section, SHA-256 hash metadata that matches the local archived Markdown file, conversion notes, currentness fields, exact-text validation status, and raw/original evidence for lossy formats.
 
 The final topic-study-guide release and the final primary-source reader release require dedicated whole-archive exact-text and currentness validation evidence. The current manifest records both currentness validation and exact-text validation as passed for all 19 entries; future manifest additions or source changes must refresh that evidence before a finished release claim.
 

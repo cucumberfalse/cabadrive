@@ -1,10 +1,10 @@
 {
   "version": 1,
   "schema": "primary-sources-learner-corpus.v1",
-  "status": "draft",
+  "status": "published",
   "locale": "ru",
   "sectionPath": "content/primary-sources",
-  "contentStatus": "draft_placeholder",
+  "contentStatus": "unofficial_learning_aid",
   "disclaimerRu": "Неофициальный учебный слой Cabadrive. Официальным источником остается испанский текст из архива.",
   "documents": [],
   "documentShardDirectories": [

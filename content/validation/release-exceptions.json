@@ -1,16 +1,16 @@
 [
   {
-    "id": "exception-local-private-mvp-2026-05-08",
+    "id": "exception-unofficial-fallback-source-2026-05-08",
     "createdAt": "2026-05-08T19:53:17Z",
     "expiresAt": "2026-06-07T19:53:17Z",
-    "releaseType": "local_private_mvp",
+    "releaseType": "local_private_unofficial_fallback",
     "scope": "source",
     "sourceIds": ["gcba-manual-procedimientos-abril-2025", "bandinopla-testdeconducir-caba-b-source1-2026-05-08"],
     "approvalIds": ["approval-solo-gcba-exam-format-2026-05-08"],
-    "evidenceBundlePath": "content/validation/evidence/mvp-solo-self-audit.md",
-    "reason": "Allow local/private MVP while official B question bank and external validator review remain pending.",
-    "followUpReviewTask": "Find official CABA category B question bank or complete external validation of replacement official source before public release.",
-    "allowedClaims": ["unofficial category B practice set", "local private MVP", "official GCBA exam format metadata"],
+    "evidenceBundlePath": "content/validation/evidence/unofficial-fallback-source-self-audit.md",
+    "reason": "Allow the current local/private study release to use the unofficial category B fallback while a complete official CABA B question bank has not been confirmed.",
+    "followUpReviewTask": "Find an official CABA category B question bank or complete external validation of a replacement official source before making official-bank coverage claims.",
+    "allowedClaims": ["unofficial category B practice set", "local private study tool", "official GCBA exam format metadata"],
     "blockedClaims": ["official full question bank", "official GCBA B question bank", "externally validated"],
     "status": "active"
   }

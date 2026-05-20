@@ -1,4 +1,4 @@
-# MVP Solo Self-Audit Evidence
+# Unofficial Fallback Source Self-Audit Evidence
 
 Date: 2026-05-08
 
@@ -17,4 +17,4 @@ Date: 2026-05-08
 
 ## Known Limitation
 
-This is a solo self-audit for a local/private MVP. It is not external official content validation and does not permit public claims that the question bank is official or complete.
+This is a solo self-audit for the current local/private study tool. It is not external official content validation and does not permit public claims that the question bank is official or complete.

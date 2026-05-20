@@ -15,7 +15,7 @@
     "retrievalDate": "2026-05-09",
     "currentnessStatus": "valid_current_material",
     "currentnessValidationStatus": "passed",
-    "exactTextValidationStatus": "pending",
+    "exactTextValidationStatus": "passed",
     "chunks": [
       {
         "chunkId": "argentina-duplicado-chapa-patente-automotor--obtener-un-duplicado-de-la-chapa-patente-del-001",

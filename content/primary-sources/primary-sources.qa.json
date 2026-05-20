@@ -1,7 +1,7 @@
 {
   "version": 1,
   "schema": "primary-sources-qa.v1",
-  "status": "draft",
+  "status": "published",
   "documents": [],
   "qaShardDirectories": [
     "content/primary-sources/qa"

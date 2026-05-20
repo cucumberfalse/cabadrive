@@ -62,7 +62,7 @@ Vocabulary is useful when it links Spanish exam terms to real tickets and topics
 
 ### LEARN-012 Materials Are Unofficial Support
 
-`Материалы` renders the local topic study guide as draft/incomplete unofficial learning support while those statuses remain. Ticket blocks in materials join back to canonical questions for Spanish text, answers, correct answer, explanations, local images, and source status.
+`Материалы` renders the local topic study guide as published unofficial learning support. Ticket blocks in materials join back to canonical questions for Spanish text, answers, correct answer, explanations, local images, and source status.
 
 ### LEARN-013 CABA/RF Is A Compact Contrast Guide
 
@@ -102,7 +102,7 @@ All learning loops must work from bundled content after build. Offline reload is
 
 - Russian explanation is visible because the surface is passive support, not active recall.
 - Canonical Spanish ticket data remains visible inside ticket blocks.
-- Draft/incomplete and unofficial labels remain visible.
+- Published and unofficial-support labels remain visible.
 
 ## Acceptance Hooks
 

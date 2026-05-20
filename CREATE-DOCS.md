@@ -83,7 +83,7 @@ Create frontend and/or backend docs under `docs_project/project/`.
 
 ## Phase 4: Feature Inventory
 
-Ask for the full feature list and mark MVP vs later. Do not create long-lived feature docs by default. Feature implementation details belong in `specs/<feature-id>/`.
+Ask for the full feature list and mark current release scope vs later. Do not create long-lived feature docs by default. Feature implementation details belong in `specs/<feature-id>/`.
 
 ## Phase 5: Screens Or Interaction Maps
 

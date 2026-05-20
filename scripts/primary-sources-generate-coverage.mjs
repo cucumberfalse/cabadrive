@@ -291,7 +291,7 @@ function generateCoverage() {
   return {
     version: 1,
     schema: "primary-sources-coverage.v1",
-    status: "draft",
+    status: "published",
     manifestSnapshot: {
       capturedAt: generatedDate,
       manifestPath,
@@ -303,7 +303,7 @@ function generateCoverage() {
       generator: "scripts/primary-sources-generate-coverage.mjs",
       source: "content/official-documents/manifest.json",
       note:
-        "Generated inventory only. Russian translation, simplification, and QA approval are intentionally reserved for later slices."
+        "Generated archive chunk inventory. Russian translation, simplification, search projection, and QA approval are validated separately by the strict primary-source gate for the current published reader."
     },
     documents: manifest.entries.map(generateDocumentCoverage)
   };

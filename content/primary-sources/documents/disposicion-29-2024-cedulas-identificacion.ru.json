@@ -10,12 +10,12 @@
     "category": "vehicle-documents",
     "jurisdiction": "national",
     "officialSourceType": "dnrpa_disposition_original_text",
-    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposici%C3%B3n-29-2024-399197/texto",
+    "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/disposicion-29-2024-399197/texto",
     "archiveLocalPath": "content/official-documents/documents/disposicion-29-2024-cedulas-identificacion.md",
     "retrievalDate": "2026-05-09",
     "currentnessStatus": "in_force",
     "currentnessValidationStatus": "passed",
-    "exactTextValidationStatus": "pending",
+    "exactTextValidationStatus": "passed",
     "chunks": [
       {
         "chunkId": "disposicion-29-2024-cedulas-identificacion--disposicion-29-2024-001",

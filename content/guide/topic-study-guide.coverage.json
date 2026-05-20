@@ -1,7 +1,7 @@
 {
   "version": 1,
   "guideId": "topic-study-guide",
-  "status": "draft",
+  "status": "published",
   "baseline": {
     "questionFile": "content/questions/caba-b.unofficial-fallback.questions.json",
     "expectedQuestionCount": 460,
@@ -44,8 +44,8 @@
       "titleRu": "Жесты водителя и ручные сигналы",
       "categoryId": "signals",
       "splitCriteria": "Вопросы, где ключевое слово seña/señas означает жест водителя, а не дорожный знак.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "A/C"
     },
     {
@@ -53,8 +53,8 @@
       "titleRu": "Свет, поворотники и аварийная сигнализация",
       "categoryId": "vehicle-control",
       "splitCriteria": "Световые приборы, balizas, luz de giro и предупреждение других участников о маневре или остановке.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
@@ -62,8 +62,8 @@
       "titleRu": "Предупреждающие знаки и опасные участки",
       "categoryId": "signs",
       "splitCriteria": "Распознавание предупреждающих знаков, опасных участков, панелей и дорожных условий по изображению или формулировке.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E4"
     },
     {
@@ -71,8 +71,8 @@
       "titleRu": "Запрещающие и предписывающие знаки",
       "categoryId": "signs",
       "splitCriteria": "Знаки, которые задают обязательное, запрещенное или ограниченное действие, включая velocidad, pare, ceda и contramano.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E3"
     },
     {
@@ -80,8 +80,8 @@
       "titleRu": "Информационные знаки, сервисы и маршруты",
       "categoryId": "signs",
       "splitCriteria": "Информационные, сервисные и маршрутные знаки: ruta, aeropuerto, terminal, socorro, estacionamiento и начало автомагистрали.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E9"
     },
     {
@@ -89,8 +89,8 @@
       "titleRu": "Осевые линии и правила пересечения разметки",
       "categoryId": "signs",
       "splitCriteria": "Линии по центру проезжей части, continua/discontinua и вопрос, можно ли traspasar или circular sobre ellas.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E12"
     },
     {
@@ -98,8 +98,8 @@
       "titleRu": "Полосы, островки и направляющая разметка",
       "categoryId": "signs",
       "splitCriteria": "Carriles, isletas, marcas canalizadoras, carril exclusivo/aceleración/sobrepaso и разметка, организующая поток.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-lane-channelization-markings"
     },
     {
@@ -107,8 +107,8 @@
       "titleRu": "Пешеходная и школьная разметка",
       "categoryId": "signs",
       "splitCriteria": "Senda peatonal, cruce verde, intervenciones peatonales, zona escolar и разметка, которая требует снизить скорость или остановиться ради пешеходов.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-pedestrian-road-markings"
     },
     {
@@ -116,8 +116,8 @@
       "titleRu": "Лимиты скорости по типам дорог и зонам",
       "categoryId": "speed",
       "splitCriteria": "Числовые максимальные/минимальные скорости и velocidad precautoria по calle, avenida, ruta, autopista и школьным зонам.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E1"
     },
     {
@@ -125,8 +125,8 @@
       "titleRu": "Дистанция, торможение и реакция",
       "categoryId": "speed",
       "splitCriteria": "Дистанция безопасности, тормозной путь, время реакции и связь скорости с полем зрения.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -134,8 +134,8 @@
       "titleRu": "Погода, видимость и сцепление",
       "categoryId": "safety",
       "splitCriteria": "Дождь, туман, ветер, aquaplaning, мокрая дорога, ухудшенная видимость и адаптация управления.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -143,8 +143,8 @@
       "titleRu": "Базовый приоритет на перекрестках",
       "categoryId": "priority",
       "splitCriteria": "Encrucijada/bocacalle без специальных обстоятельств: правило правой стороны, avenida/calle/pasaje и обычный порядок проезда.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C"
     },
     {
@@ -152,8 +152,8 @@
       "titleRu": "Приоритет при светофорах и переездах",
       "categoryId": "priority",
       "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и ситуации, где сигнализация меняет обычный приоритет.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-right-of-way-signals-rail-crossings"
     },
     {
@@ -161,8 +161,8 @@
       "titleRu": "Светофоры, переезды и сигналы регулирования",
       "categoryId": "priority",
       "splitCriteria": "Semáforo, luces intermitentes, paso a nivel, barreras, rieles и сигналы персонала на переездах как отдельный набор сигналов, даже когда билет не спрашивает порядок приоритета.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E5"
     },
     {
@@ -170,8 +170,8 @@
       "titleRu": "Особые ситуации уступания и приоритета",
       "categoryId": "priority",
       "splitCriteria": "Rotonda, pendiente, obstrucción, incorporación al tránsito, emergencia, bocina, ambulancia и указания уполномоченного персонала.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-right-of-way-special-situations"
     },
     {
@@ -179,8 +179,8 @@
       "titleRu": "Повороты, направление движения и задний ход",
       "categoryId": "maneuvers",
       "splitCriteria": "Giro, sentido de circulación, curva, marcha atrás, въезд/выезд из гаража и предварительное обозначение маневра.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -188,8 +188,8 @@
       "titleRu": "Обгон и опережение",
       "categoryId": "maneuvers",
       "splitCriteria": "Sobrepaso/adelantamiento, запреты обгона, дистанция при объезде велосипедиста и возврат после маневра.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -197,8 +197,8 @@
       "titleRu": "Выбор полосы и перестроение",
       "categoryId": "maneuvers",
       "splitCriteria": "Cambio de carril, carril derecho/izquierdo, carril de sobrepaso/aceleración/exclusivo и приоритет при перестроении.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E13"
     },
     {
@@ -206,8 +206,8 @@
       "titleRu": "Запреты стоянки и знаки парковки",
       "categoryId": "parking",
       "splitCriteria": "Где estacionar запрещено или разрешено по знаку, цвету cartelería, acera и типу улицы/avenida.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E17"
     },
     {
@@ -215,8 +215,8 @@
       "titleRu": "Остановка, стоянка и маневр парковки",
       "categoryId": "parking",
       "splitCriteria": "Различие detenerse/estacionar, doble fila, ascenso/descenso, balizas, marcha atrás и маневры въезда в garaje.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -224,8 +224,8 @@
       "titleRu": "Расстояния при парковке, углы и въезды",
       "categoryId": "parking",
       "splitCriteria": "Нужные отступы у entradas/instituciones/esquinas, ochava, cordón, ориентация колес и видимость при стоянке.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E10"
     },
     {
@@ -233,8 +233,8 @@
       "titleRu": "Пешеходы на переходах и приоритет",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Поведение водителя у пешеходов: ceder paso, esperar, contacto visual, semáforo peatonal и завершение перехода.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -242,8 +242,8 @@
       "titleRu": "Школьные зоны, углы и пешеходная разметка",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Zona escolar, senda peatonal, ochava, cruce verde, intervenciones horizontales и специальные скоростные/остановочные ловушки у переходов.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C"
     },
     {
@@ -251,8 +251,8 @@
       "titleRu": "Уязвимые участники и совместное пространство",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Иерархия peatón/ciclista, bicisenda/ciclovía, calle prioridad peatón и вопросы, где пешеходная тема пересекается с велосипедами или устойчивой мобильностью.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-vulnerable-shared-spaces"
     },
     {
@@ -260,8 +260,8 @@
       "titleRu": "Велосипеды, велополосы и микромобильность",
       "categoryId": "vulnerable-users",
       "splitCriteria": "Bicicleta, ciclovía, bicisenda, ciclorodado, asistencia eléctrica, пассажиры и груз на велосипеде.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -269,8 +269,8 @@
       "titleRu": "Общественный транспорт и выделенные полосы",
       "categoryId": "urban-mobility",
       "splitCriteria": "Metrobús, carril exclusivo, colectivos autorizados, transporte público и ограничения движения по выделенным полосам.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E14"
     },
     {
@@ -278,8 +278,8 @@
       "titleRu": "Аварии, экстренные действия и место ДТП",
       "categoryId": "incident-response",
       "splitCriteria": "Первичные действия при siniestro/incidente, 107/911, сигнализация места, emergency vehicles и помощь пострадавшим.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E18"
     },
     {
@@ -287,8 +287,8 @@
       "titleRu": "Ответственность и юридические обязанности после ДТП",
       "categoryId": "incident-response",
       "splitCriteria": "Responsabilidad civil/penal, demanda, testigo, fiscalía, abandono de persona и юридические последствия ДТП.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E19"
     },
     {
@@ -296,8 +296,8 @@
       "titleRu": "Алкоголь, препараты и состояние водителя",
       "categoryId": "driver-state",
       "splitCriteria": "Alcohol, alcoholemia, resaca, drogas, medicamentos, estupefacientes и психофизическая пригодность.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -305,8 +305,8 @@
       "titleRu": "Усталость, стресс и отвлечения",
       "categoryId": "driver-state",
       "splitCriteria": "Fatiga, estrés, sueño, teléfono/celular, auriculares, distracción и снижение реакции.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -314,8 +314,8 @@
       "titleRu": "Ремни, детские кресла и подголовники",
       "categoryId": "safety",
       "splitCriteria": "Cinturón, SRI, embarazo, airbag, apoyacabeza, casco/chaleco и защита пассажиров.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "C+E-occupant-protection"
     },
     {
@@ -323,8 +323,8 @@
       "titleRu": "Состояние автомобиля, шины, грузы и обслуживание",
       "categoryId": "vehicle",
       "splitCriteria": "Mantenimiento, neumáticos, aceite, motor, frenos, carga/equipaje, cristales, remolque и техническое состояние.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-vehicle-condition-maintenance-loads"
     },
     {
@@ -332,8 +332,8 @@
       "titleRu": "Зеркала, слепые зоны и обзор",
       "categoryId": "vehicle",
       "splitCriteria": "Espejos, punto ciego, campo visual, visibilidad directa/indirecta и настройка обзора перед началом движения.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E16"
     },
     {
@@ -341,8 +341,8 @@
       "titleRu": "Документы, лицензия, VTV, страховка и номера",
       "categoryId": "administration",
       "splitCriteria": "Licencia, cédula, VTV, seguro, placa/dominio, scoring, renovación и разрешение управлять автомобилем.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E6"
     },
     {
@@ -350,8 +350,8 @@
       "titleRu": "Регулировщики, контроль и санкции",
       "categoryId": "administration",
       "splitCriteria": "Autoridad/agentes, personal ferroviario/de obra, controles, retención de licencia, sanciones и иерархия указаний.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E-authorities-controls-and-sanctions"
     },
     {
@@ -359,8 +359,8 @@
       "titleRu": "Типы дорог, трассы, автомагистрали и маршруты",
       "categoryId": "road-context",
       "splitCriteria": "Calle, avenida, ruta, autopista, semiautopista, banquina, túnel, General Paz, Cantilo и другие дорожные контексты.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E2"
     },
     {
@@ -368,8 +368,8 @@
       "titleRu": "Базовые принципы безопасности и риска",
       "categoryId": "safety",
       "splitCriteria": "Conducción preventiva, fluidez/seguridad, factor humano, probabilidad de siniestralidad и общие риск-паттерны.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E7"
     },
     {
@@ -377,8 +377,8 @@
       "titleRu": "Устойчивая мобильность и уязвимые участники",
       "categoryId": "urban-mobility",
       "splitCriteria": "Movilidad sustentable, экологичные способы перемещения, иерархия уязвимости и общие принципы городской мобильности.",
-      "phase": "content_ready",
-      "status": "draft",
+      "phase": "published",
+      "status": "published",
       "ownerSlice": "E15"
     }
   ],
@@ -388,7 +388,7 @@
       "topicIds": [
         "driver-hand-signals"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "A"
     },
     {
@@ -397,11 +397,11 @@
         "driver-hand-signals",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "driver-hand-signals": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "driver-hand-signals": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -409,7 +409,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -417,7 +417,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -425,7 +425,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -433,7 +433,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -441,7 +441,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -450,11 +450,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -463,11 +463,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -475,7 +475,7 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E17"
     },
     {
@@ -484,11 +484,11 @@
         "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "regulatory-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -497,11 +497,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -509,7 +509,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -517,7 +517,7 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -526,11 +526,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -538,7 +538,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -546,7 +546,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -554,7 +554,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -562,7 +562,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -570,7 +570,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -578,7 +578,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -586,7 +586,7 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E16"
     },
     {
@@ -595,11 +595,11 @@
         "crash-liability-and-legal-duties",
         "documents-licenses-and-insurance"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E19",
       "placementPhases": {
-        "crash-liability-and-legal-duties": "content_ready",
-        "documents-licenses-and-insurance": "content_ready"
+        "crash-liability-and-legal-duties": "published",
+        "documents-licenses-and-insurance": "published"
       }
     },
     {
@@ -607,7 +607,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -615,7 +615,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -624,10 +624,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -636,7 +636,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -644,7 +644,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -653,10 +653,10 @@
         "speed-limits",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "regulatory-signs": "content_ready"
+        "speed-limits": "published",
+        "regulatory-signs": "published"
       },
       "ownerSlice": "E1+E3"
     },
@@ -665,7 +665,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -674,10 +674,10 @@
         "parking-clearances-and-corners",
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "parking-clearances-and-corners": "content_ready",
-        "right-of-way-special-situations": "content_ready"
+        "parking-clearances-and-corners": "published",
+        "right-of-way-special-situations": "published"
       },
       "ownerSlice": "E10"
     },
@@ -687,10 +687,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -699,7 +699,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -707,7 +707,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -716,11 +716,11 @@
         "vehicle-condition-maintenance-loads",
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "content_ready",
-        "adverse-weather-and-visibility": "content_ready"
+        "vehicle-condition-maintenance-loads": "published",
+        "adverse-weather-and-visibility": "published"
       }
     },
     {
@@ -728,7 +728,7 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
@@ -737,11 +737,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -749,7 +749,7 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
@@ -758,11 +758,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -770,7 +770,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -778,7 +778,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -786,7 +786,7 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E14"
     },
     {
@@ -795,10 +795,10 @@
         "parking-clearances-and-corners",
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "content_ready"
+        "parking-clearances-and-corners": "published",
+        "right-of-way-basic-intersections": "published"
       },
       "ownerSlice": "E10+E-right-of-way-basic-intersections"
     },
@@ -808,11 +808,11 @@
         "alcohol-drugs-and-impairment",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
-        "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "alcohol-drugs-and-impairment": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -821,11 +821,11 @@
         "stopping-vs-parking-maneuvers",
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E8+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "stopping-vs-parking-maneuvers": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "stopping-vs-parking-maneuvers": "published"
       }
     },
     {
@@ -833,7 +833,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -841,7 +841,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -849,7 +849,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -858,10 +858,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -871,11 +871,11 @@
         "traffic-lights-and-rail-crossings",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "traffic-lights-and-rail-crossings": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "traffic-lights-and-rail-crossings": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -884,11 +884,11 @@
         "stopping-vs-parking-maneuvers",
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E8",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "stopping-vs-parking-maneuvers": "content_ready"
+        "right-of-way-special-situations": "published",
+        "stopping-vs-parking-maneuvers": "published"
       }
     },
     {
@@ -897,11 +897,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -909,7 +909,7 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
@@ -917,7 +917,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -925,7 +925,7 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E16"
     },
     {
@@ -933,7 +933,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -941,7 +941,7 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -949,7 +949,7 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E16"
     },
     {
@@ -957,7 +957,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -965,7 +965,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -973,7 +973,7 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
@@ -981,7 +981,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -990,11 +990,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1002,7 +1002,7 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E16"
     },
     {
@@ -1010,7 +1010,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -1019,11 +1019,11 @@
         "right-of-way-basic-intersections",
         "information-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E9+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "information-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "information-signs": "published"
       }
     },
     {
@@ -1031,7 +1031,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -1040,11 +1040,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1053,11 +1053,11 @@
         "fatigue-distraction-and-attention",
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "bicycles-and-micromobility": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "bicycles-and-micromobility": "published"
       }
     },
     {
@@ -1066,11 +1066,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1078,7 +1078,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1086,7 +1086,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -1094,7 +1094,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -1102,7 +1102,7 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E17"
     },
     {
@@ -1110,7 +1110,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -1119,11 +1119,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1132,11 +1132,11 @@
         "stopping-vs-parking-maneuvers",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "warning-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1144,7 +1144,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -1152,7 +1152,7 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E17"
     },
     {
@@ -1160,7 +1160,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -1168,7 +1168,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -1177,11 +1177,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -1189,7 +1189,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -1198,11 +1198,11 @@
         "right-of-way-special-situations",
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "turns-direction-and-reversing": "content_ready"
+        "right-of-way-special-situations": "published",
+        "turns-direction-and-reversing": "published"
       }
     },
     {
@@ -1211,11 +1211,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1223,7 +1223,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -1231,7 +1231,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -1239,10 +1239,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -1251,11 +1251,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -1263,7 +1263,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -1271,7 +1271,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -1280,11 +1280,11 @@
         "documents-licenses-and-insurance",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E6",
       "placementPhases": {
-        "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "documents-licenses-and-insurance": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -1293,11 +1293,11 @@
         "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-special-situations": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1306,11 +1306,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -1318,7 +1318,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -1326,7 +1326,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -1335,11 +1335,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -1347,7 +1347,7 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
@@ -1355,7 +1355,7 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -1363,7 +1363,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -1371,7 +1371,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -1379,7 +1379,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -1387,7 +1387,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -1395,7 +1395,7 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -1403,7 +1403,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -1412,11 +1412,11 @@
         "pedestrian-crossings-and-priority",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "content_ready",
-        "regulatory-signs": "content_ready"
+        "pedestrian-crossings-and-priority": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -1424,7 +1424,7 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E14"
     },
     {
@@ -1433,11 +1433,11 @@
         "emergency-response-and-crash-scene",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "emergency-response-and-crash-scene": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "emergency-response-and-crash-scene": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -1445,7 +1445,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1453,7 +1453,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -1461,7 +1461,7 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E12"
     },
     {
@@ -1469,7 +1469,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1477,7 +1477,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1485,7 +1485,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -1494,11 +1494,11 @@
         "turns-direction-and-reversing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -1506,7 +1506,7 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
@@ -1515,11 +1515,11 @@
         "alcohol-drugs-and-impairment",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
-        "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "alcohol-drugs-and-impairment": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -1528,11 +1528,11 @@
         "right-of-way-basic-intersections",
         "overtaking-and-passing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "overtaking-and-passing": "published"
       }
     },
     {
@@ -1541,11 +1541,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1553,7 +1553,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -1561,7 +1561,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -1569,7 +1569,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -1577,7 +1577,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -1586,11 +1586,11 @@
         "turns-direction-and-reversing",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "warning-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1598,7 +1598,7 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E1"
     },
     {
@@ -1606,7 +1606,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -1615,11 +1615,11 @@
         "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "regulatory-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -1628,11 +1628,11 @@
         "turns-direction-and-reversing",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "warning-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1641,11 +1641,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1653,7 +1653,7 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -1662,11 +1662,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1674,7 +1674,7 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E15"
     },
     {
@@ -1682,7 +1682,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -1690,7 +1690,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -1698,7 +1698,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -1707,11 +1707,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -1719,7 +1719,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -1727,7 +1727,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -1736,11 +1736,11 @@
         "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-special-situations": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -1749,11 +1749,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -1761,7 +1761,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1770,11 +1770,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -1782,7 +1782,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1791,10 +1791,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -1803,7 +1803,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1811,7 +1811,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -1819,7 +1819,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -1829,10 +1829,10 @@
         "lane-choice-and-lane-changes"
       ],
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "lane-choice-and-lane-changes": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "lane-choice-and-lane-changes": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-right-of-way-basic-intersections"
     },
     {
@@ -1840,7 +1840,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -1849,11 +1849,11 @@
         "right-of-way-basic-intersections",
         "overtaking-and-passing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "overtaking-and-passing": "published"
       }
     },
     {
@@ -1861,7 +1861,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -1869,7 +1869,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -1878,11 +1878,11 @@
         "pedestrian-crossings-and-priority",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "content_ready",
-        "warning-signs": "content_ready"
+        "pedestrian-crossings-and-priority": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1890,7 +1890,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -1898,7 +1898,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1907,11 +1907,11 @@
         "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "regulatory-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -1920,11 +1920,11 @@
         "documents-licenses-and-insurance",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E6",
       "placementPhases": {
-        "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "documents-licenses-and-insurance": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -1932,7 +1932,7 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E1"
     },
     {
@@ -1941,11 +1941,11 @@
         "pedestrian-school-zones-and-markings",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "warning-signs": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -1953,7 +1953,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1961,7 +1961,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -1969,7 +1969,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -1977,7 +1977,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -1986,11 +1986,11 @@
         "right-of-way-basic-intersections",
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "turns-direction-and-reversing": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "turns-direction-and-reversing": "published"
       }
     },
     {
@@ -2000,10 +2000,10 @@
         "lane-choice-and-lane-changes"
       ],
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "lane-choice-and-lane-changes": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "lane-choice-and-lane-changes": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-right-of-way-basic-intersections"
     },
     {
@@ -2011,7 +2011,7 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
@@ -2020,11 +2020,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -2033,11 +2033,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -2045,7 +2045,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -2054,11 +2054,11 @@
         "overtaking-and-passing",
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E12+E-overtaking-and-passing",
       "placementPhases": {
-        "center-lines-and-crossing-rules": "content_ready",
-        "overtaking-and-passing": "content_ready"
+        "center-lines-and-crossing-rules": "published",
+        "overtaking-and-passing": "published"
       }
     },
     {
@@ -2067,11 +2067,11 @@
         "right-of-way-basic-intersections",
         "overtaking-and-passing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections+E-overtaking-and-passing",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "overtaking-and-passing": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "overtaking-and-passing": "published"
       }
     },
     {
@@ -2080,11 +2080,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -2092,7 +2092,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2101,11 +2101,11 @@
         "pedestrian-crossings-and-priority",
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E12+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "center-lines-and-crossing-rules": "content_ready",
-        "pedestrian-crossings-and-priority": "content_ready"
+        "center-lines-and-crossing-rules": "published",
+        "pedestrian-crossings-and-priority": "published"
       }
     },
     {
@@ -2114,11 +2114,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -2127,10 +2127,10 @@
         "speed-limits",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "speed-limits": "published",
+        "lane-and-channelization-markings": "published"
       },
       "ownerSlice": "E1+E-lane-channelization-markings"
     },
@@ -2140,11 +2140,11 @@
         "turns-direction-and-reversing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -2152,10 +2152,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -2164,11 +2164,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -2177,11 +2177,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -2189,7 +2189,7 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -2197,7 +2197,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -2206,11 +2206,11 @@
         "vehicle-lights-and-signaling",
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "vehicle-lights-and-signaling": "content_ready",
-        "emergency-response-and-crash-scene": "content_ready"
+        "vehicle-lights-and-signaling": "published",
+        "emergency-response-and-crash-scene": "published"
       }
     },
     {
@@ -2218,7 +2218,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2226,7 +2226,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -2235,11 +2235,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -2248,11 +2248,11 @@
         "right-of-way-special-situations",
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "turns-direction-and-reversing": "content_ready"
+        "right-of-way-special-situations": "published",
+        "turns-direction-and-reversing": "published"
       }
     },
     {
@@ -2261,11 +2261,11 @@
         "stopping-vs-parking-maneuvers",
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E8+E12",
       "placementPhases": {
-        "center-lines-and-crossing-rules": "content_ready",
-        "stopping-vs-parking-maneuvers": "content_ready"
+        "center-lines-and-crossing-rules": "published",
+        "stopping-vs-parking-maneuvers": "published"
       }
     },
     {
@@ -2273,7 +2273,7 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E1"
     },
     {
@@ -2281,7 +2281,7 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
@@ -2290,11 +2290,11 @@
         "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-special-situations": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -2302,7 +2302,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -2310,7 +2310,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -2318,7 +2318,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -2326,7 +2326,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -2334,7 +2334,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -2342,7 +2342,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -2350,7 +2350,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -2358,7 +2358,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2366,7 +2366,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -2374,7 +2374,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -2382,7 +2382,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -2391,11 +2391,11 @@
         "alcohol-drugs-and-impairment",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
-        "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "alcohol-drugs-and-impairment": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -2403,7 +2403,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -2411,7 +2411,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -2419,7 +2419,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -2428,11 +2428,11 @@
         "overtaking-and-passing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "overtaking-and-passing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -2440,7 +2440,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2448,7 +2448,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -2456,7 +2456,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -2465,11 +2465,11 @@
         "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "regulatory-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -2477,7 +2477,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -2485,10 +2485,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -2496,7 +2496,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2504,7 +2504,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -2512,7 +2512,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -2521,11 +2521,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -2533,7 +2533,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2542,11 +2542,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -2554,7 +2554,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -2563,11 +2563,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -2575,7 +2575,7 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E12"
     },
     {
@@ -2585,10 +2585,10 @@
         "lane-and-channelization-markings"
       ],
       "placementPhases": {
-        "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "lane-choice-and-lane-changes": "published",
+        "lane-and-channelization-markings": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
@@ -2596,7 +2596,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -2604,7 +2604,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -2612,7 +2612,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2621,11 +2621,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -2633,7 +2633,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -2641,7 +2641,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -2649,7 +2649,7 @@
       "topicIds": [
         "public-transport-and-exclusive-lanes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E14"
     },
     {
@@ -2658,11 +2658,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -2671,11 +2671,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -2683,7 +2683,7 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
@@ -2691,7 +2691,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -2699,7 +2699,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -2708,10 +2708,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -2720,7 +2720,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -2729,11 +2729,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -2741,7 +2741,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -2749,7 +2749,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -2757,7 +2757,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -2765,7 +2765,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -2774,11 +2774,11 @@
         "documents-licenses-and-insurance",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E6",
       "placementPhases": {
-        "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "documents-licenses-and-insurance": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -2787,11 +2787,11 @@
         "right-of-way-basic-intersections",
         "turns-direction-and-reversing"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "turns-direction-and-reversing": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "turns-direction-and-reversing": "published"
       }
     },
     {
@@ -2799,7 +2799,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -2807,7 +2807,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -2815,7 +2815,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -2823,7 +2823,7 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
@@ -2831,7 +2831,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -2840,10 +2840,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -2852,7 +2852,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -2860,7 +2860,7 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
@@ -2868,7 +2868,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2877,10 +2877,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -2889,7 +2889,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -2897,7 +2897,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -2905,7 +2905,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -2913,7 +2913,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -2921,7 +2921,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -2930,11 +2930,11 @@
         "stopping-vs-parking-maneuvers",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "regulatory-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -2942,7 +2942,7 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -2951,11 +2951,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -2964,11 +2964,11 @@
         "driver-hand-signals",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "driver-hand-signals": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "driver-hand-signals": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -2976,7 +2976,7 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
@@ -2985,11 +2985,11 @@
         "turns-direction-and-reversing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -2997,7 +2997,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -3006,10 +3006,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3018,10 +3018,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -3030,11 +3030,11 @@
         "vehicle-condition-maintenance-loads",
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "content_ready",
-        "adverse-weather-and-visibility": "content_ready"
+        "vehicle-condition-maintenance-loads": "published",
+        "adverse-weather-and-visibility": "published"
       }
     },
     {
@@ -3043,11 +3043,11 @@
         "alcohol-drugs-and-impairment",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
-        "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "alcohol-drugs-and-impairment": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -3055,7 +3055,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -3063,7 +3063,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -3072,11 +3072,11 @@
         "turns-direction-and-reversing",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "warning-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3085,11 +3085,11 @@
         "pedestrian-crossings-and-priority",
         "information-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E9+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "content_ready",
-        "information-signs": "content_ready"
+        "pedestrian-crossings-and-priority": "published",
+        "information-signs": "published"
       }
     },
     {
@@ -3097,7 +3097,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -3106,11 +3106,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -3118,7 +3118,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3126,7 +3126,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -3134,7 +3134,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -3142,7 +3142,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -3150,7 +3150,7 @@
       "topicIds": [
         "right-of-way-basic-intersections"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-right-of-way-basic-intersections"
     },
     {
@@ -3158,7 +3158,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -3167,11 +3167,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -3179,7 +3179,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -3187,7 +3187,7 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E15"
     },
     {
@@ -3195,7 +3195,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -3203,7 +3203,7 @@
       "topicIds": [
         "information-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E9"
     },
     {
@@ -3212,11 +3212,11 @@
         "turns-direction-and-reversing",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-turns-direction-reversing",
       "placementPhases": {
-        "turns-direction-and-reversing": "content_ready",
-        "warning-signs": "content_ready"
+        "turns-direction-and-reversing": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3225,10 +3225,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3237,7 +3237,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -3246,11 +3246,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -3259,11 +3259,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -3272,11 +3272,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -3285,11 +3285,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -3297,7 +3297,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -3306,10 +3306,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3318,7 +3318,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -3327,11 +3327,11 @@
         "public-transport-and-exclusive-lanes",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E14",
       "placementPhases": {
-        "public-transport-and-exclusive-lanes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "public-transport-and-exclusive-lanes": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -3339,7 +3339,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3347,7 +3347,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -3355,7 +3355,7 @@
       "topicIds": [
         "stopping-vs-parking-maneuvers"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E8"
     },
     {
@@ -3365,10 +3365,10 @@
         "lane-and-channelization-markings"
       ],
       "placementPhases": {
-        "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "lane-choice-and-lane-changes": "published",
+        "lane-and-channelization-markings": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
@@ -3376,7 +3376,7 @@
       "topicIds": [
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces"
     },
     {
@@ -3384,7 +3384,7 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -3392,7 +3392,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3400,7 +3400,7 @@
       "topicIds": [
         "warning-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E4"
     },
     {
@@ -3408,7 +3408,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -3416,7 +3416,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -3424,7 +3424,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -3432,7 +3432,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -3441,11 +3441,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3454,11 +3454,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3466,7 +3466,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -3475,10 +3475,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3488,10 +3488,10 @@
         "road-types-highways-and-routes",
         "speed-limits"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "road-types-highways-and-routes": "content_ready",
-        "speed-limits": "content_ready"
+        "road-types-highways-and-routes": "published",
+        "speed-limits": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3500,7 +3500,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -3509,11 +3509,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -3522,11 +3522,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -3534,10 +3534,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -3546,11 +3546,11 @@
         "parking-prohibitions-and-signed-zones",
         "center-lines-and-crossing-rules"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E12+E17",
       "placementPhases": {
-        "parking-prohibitions-and-signed-zones": "content_ready",
-        "center-lines-and-crossing-rules": "content_ready"
+        "parking-prohibitions-and-signed-zones": "published",
+        "center-lines-and-crossing-rules": "published"
       }
     },
     {
@@ -3558,7 +3558,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -3567,11 +3567,11 @@
         "documents-licenses-and-insurance",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E6",
       "placementPhases": {
-        "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "documents-licenses-and-insurance": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -3579,7 +3579,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -3587,7 +3587,7 @@
       "topicIds": [
         "parking-prohibitions-and-signed-zones"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E17"
     },
     {
@@ -3597,10 +3597,10 @@
         "lane-and-channelization-markings"
       ],
       "placementPhases": {
-        "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "lane-choice-and-lane-changes": "published",
+        "lane-and-channelization-markings": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
@@ -3608,7 +3608,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -3616,7 +3616,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -3624,7 +3624,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -3632,7 +3632,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -3641,11 +3641,11 @@
         "safe-distance-and-braking",
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking+E-adverse-weather-visibility",
       "placementPhases": {
-        "safe-distance-and-braking": "content_ready",
-        "adverse-weather-and-visibility": "content_ready"
+        "safe-distance-and-braking": "published",
+        "adverse-weather-and-visibility": "published"
       }
     },
     {
@@ -3654,11 +3654,11 @@
         "overtaking-and-passing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "overtaking-and-passing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -3666,7 +3666,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3674,7 +3674,7 @@
       "topicIds": [
         "overtaking-and-passing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-overtaking-and-passing"
     },
     {
@@ -3682,7 +3682,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3690,7 +3690,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -3700,10 +3700,10 @@
         "lane-and-channelization-markings"
       ],
       "placementPhases": {
-        "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "lane-choice-and-lane-changes": "published",
+        "lane-and-channelization-markings": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
@@ -3712,11 +3712,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -3724,7 +3724,7 @@
       "topicIds": [
         "authorities-controls-and-sanctions"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C"
     },
     {
@@ -3732,7 +3732,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3741,11 +3741,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -3754,10 +3754,10 @@
         "parking-clearances-and-corners",
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "parking-clearances-and-corners": "content_ready",
-        "right-of-way-special-situations": "content_ready"
+        "parking-clearances-and-corners": "published",
+        "right-of-way-special-situations": "published"
       },
       "ownerSlice": "E10"
     },
@@ -3766,7 +3766,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -3775,10 +3775,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -3787,7 +3787,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -3796,11 +3796,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3808,7 +3808,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -3817,11 +3817,11 @@
         "stopping-vs-parking-maneuvers",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E8",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "warning-signs": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -3829,7 +3829,7 @@
       "topicIds": [
         "information-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E9"
     },
     {
@@ -3837,7 +3837,7 @@
       "topicIds": [
         "vehicle-lights-and-signaling"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling"
     },
     {
@@ -3845,7 +3845,7 @@
       "topicIds": [
         "driver-hand-signals"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E11"
     },
     {
@@ -3853,7 +3853,7 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E19"
     },
     {
@@ -3861,7 +3861,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -3869,7 +3869,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -3878,11 +3878,11 @@
         "fatigue-distraction-and-attention",
         "bicycles-and-micromobility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "bicycles-and-micromobility": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "bicycles-and-micromobility": "published"
       }
     },
     {
@@ -3890,7 +3890,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -3899,11 +3899,11 @@
         "parking-prohibitions-and-signed-zones",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E17",
       "placementPhases": {
-        "parking-prohibitions-and-signed-zones": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "parking-prohibitions-and-signed-zones": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -3912,11 +3912,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -3926,10 +3926,10 @@
         "lane-and-channelization-markings"
       ],
       "placementPhases": {
-        "lane-choice-and-lane-changes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "lane-choice-and-lane-changes": "published",
+        "lane-and-channelization-markings": "published"
       },
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E13+E-lane-channelization-markings"
     },
     {
@@ -3938,11 +3938,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -3951,11 +3951,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -3963,7 +3963,7 @@
       "topicIds": [
         "lane-and-channelization-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings"
     },
     {
@@ -3972,11 +3972,11 @@
         "pedestrian-school-zones-and-markings",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "lane-and-channelization-markings": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "lane-and-channelization-markings": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -3984,7 +3984,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -3992,7 +3992,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4000,7 +4000,7 @@
       "topicIds": [
         "mirrors-blind-spots-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E16"
     },
     {
@@ -4008,7 +4008,7 @@
       "topicIds": [
         "bicycles-and-micromobility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-bicycles-micromobility"
     },
     {
@@ -4017,11 +4017,11 @@
         "documents-licenses-and-insurance",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E6",
       "placementPhases": {
-        "documents-licenses-and-insurance": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "documents-licenses-and-insurance": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -4029,7 +4029,7 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E15"
     },
     {
@@ -4038,11 +4038,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -4051,11 +4051,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -4063,7 +4063,7 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E15"
     },
     {
@@ -4072,11 +4072,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -4085,11 +4085,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -4097,7 +4097,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4106,11 +4106,11 @@
         "vehicle-condition-maintenance-loads",
         "adverse-weather-and-visibility"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-adverse-weather-visibility+E-vehicle-condition-maintenance-loads",
       "placementPhases": {
-        "vehicle-condition-maintenance-loads": "content_ready",
-        "adverse-weather-and-visibility": "content_ready"
+        "vehicle-condition-maintenance-loads": "published",
+        "adverse-weather-and-visibility": "published"
       }
     },
     {
@@ -4118,7 +4118,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -4127,10 +4127,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -4140,11 +4140,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -4152,7 +4152,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -4160,7 +4160,7 @@
       "topicIds": [
         "driver-hand-signals"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E11"
     },
     {
@@ -4169,11 +4169,11 @@
         "pedestrian-school-zones-and-markings",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "regulatory-signs": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -4181,7 +4181,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -4189,7 +4189,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -4198,11 +4198,11 @@
         "overtaking-and-passing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "overtaking-and-passing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -4210,7 +4210,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -4218,7 +4218,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -4226,7 +4226,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -4235,11 +4235,11 @@
         "vehicle-lights-and-signaling",
         "emergency-response-and-crash-scene"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "vehicle-lights-and-signaling": "content_ready",
-        "emergency-response-and-crash-scene": "content_ready"
+        "vehicle-lights-and-signaling": "published",
+        "emergency-response-and-crash-scene": "published"
       }
     },
     {
@@ -4248,11 +4248,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -4261,11 +4261,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -4273,7 +4273,7 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E1"
     },
     {
@@ -4281,7 +4281,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -4289,7 +4289,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -4298,11 +4298,11 @@
         "right-of-way-signals-and-rail-crossings",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-signals-and-rail-crossings": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-signals-and-rail-crossings": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -4310,7 +4310,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -4319,10 +4319,10 @@
         "parking-clearances-and-corners",
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "content_ready"
+        "parking-clearances-and-corners": "published",
+        "right-of-way-basic-intersections": "published"
       },
       "ownerSlice": "E10+E-right-of-way-basic-intersections"
     },
@@ -4331,7 +4331,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -4340,10 +4340,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -4353,11 +4353,11 @@
         "pedestrian-crossings-and-priority",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-pedestrian-crossings-and-priority",
       "placementPhases": {
-        "pedestrian-crossings-and-priority": "content_ready",
-        "regulatory-signs": "content_ready"
+        "pedestrian-crossings-and-priority": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -4366,11 +4366,11 @@
         "overtaking-and-passing",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-lane-channelization-markings+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "overtaking-and-passing": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -4378,7 +4378,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -4386,7 +4386,7 @@
       "topicIds": [
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings"
     },
     {
@@ -4395,11 +4395,11 @@
         "right-of-way-special-situations",
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E5",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "traffic-lights-and-rail-crossings": "content_ready"
+        "right-of-way-special-situations": "published",
+        "traffic-lights-and-rail-crossings": "published"
       }
     },
     {
@@ -4407,7 +4407,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4416,11 +4416,11 @@
         "fatigue-distraction-and-attention",
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads+E-fatigue-distraction-attention",
       "placementPhases": {
-        "fatigue-distraction-and-attention": "content_ready",
-        "vehicle-condition-maintenance-loads": "content_ready"
+        "fatigue-distraction-and-attention": "published",
+        "vehicle-condition-maintenance-loads": "published"
       }
     },
     {
@@ -4428,7 +4428,7 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E19"
     },
     {
@@ -4436,7 +4436,7 @@
       "topicIds": [
         "traffic-lights-and-rail-crossings"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E5"
     },
     {
@@ -4445,11 +4445,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -4457,7 +4457,7 @@
       "topicIds": [
         "vehicle-condition-maintenance-loads"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-vehicle-condition-maintenance-loads"
     },
     {
@@ -4466,11 +4466,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -4479,11 +4479,11 @@
         "overtaking-and-passing",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E-overtaking-and-passing",
       "placementPhases": {
-        "overtaking-and-passing": "content_ready",
-        "regulatory-signs": "content_ready"
+        "overtaking-and-passing": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -4491,7 +4491,7 @@
       "topicIds": [
         "parking-clearances-and-corners"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E10"
     },
     {
@@ -4500,11 +4500,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -4512,7 +4512,7 @@
       "topicIds": [
         "turns-direction-and-reversing"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-turns-direction-reversing"
     },
     {
@@ -4520,7 +4520,7 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E12"
     },
     {
@@ -4529,11 +4529,11 @@
         "parking-prohibitions-and-signed-zones",
         "regulatory-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E3+E17",
       "placementPhases": {
-        "parking-prohibitions-and-signed-zones": "content_ready",
-        "regulatory-signs": "content_ready"
+        "parking-prohibitions-and-signed-zones": "published",
+        "regulatory-signs": "published"
       }
     },
     {
@@ -4541,7 +4541,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -4549,7 +4549,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -4557,7 +4557,7 @@
       "topicIds": [
         "safety-principles-and-risk"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E7"
     },
     {
@@ -4566,10 +4566,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -4578,7 +4578,7 @@
       "topicIds": [
         "pedestrian-crossings-and-priority"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-pedestrian-crossings-and-priority"
     },
     {
@@ -4586,7 +4586,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -4594,7 +4594,7 @@
       "topicIds": [
         "road-types-highways-and-routes"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E2"
     },
     {
@@ -4602,7 +4602,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -4611,11 +4611,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -4624,11 +4624,11 @@
         "bicycles-and-micromobility",
         "vulnerable-users-and-shared-spaces"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E-vulnerable-shared-spaces",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "vulnerable-users-and-shared-spaces": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "vulnerable-users-and-shared-spaces": "published"
       }
     },
     {
@@ -4636,7 +4636,7 @@
       "topicIds": [
         "sustainable-mobility-and-vulnerable-users"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E15"
     },
     {
@@ -4645,11 +4645,11 @@
         "adverse-weather-and-visibility",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling+E-adverse-weather-visibility",
       "placementPhases": {
-        "adverse-weather-and-visibility": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "adverse-weather-and-visibility": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -4657,7 +4657,7 @@
       "topicIds": [
         "regulatory-signs"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E3"
     },
     {
@@ -4665,10 +4665,10 @@
       "topicIds": [
         "right-of-way-special-situations"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready"
+        "right-of-way-special-situations": "published"
       }
     },
     {
@@ -4676,7 +4676,7 @@
       "topicIds": [
         "alcohol-drugs-and-impairment"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment"
     },
     {
@@ -4685,11 +4685,11 @@
         "crash-liability-and-legal-duties",
         "documents-licenses-and-insurance"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E19",
       "placementPhases": {
-        "crash-liability-and-legal-duties": "content_ready",
-        "documents-licenses-and-insurance": "content_ready"
+        "crash-liability-and-legal-duties": "published",
+        "documents-licenses-and-insurance": "published"
       }
     },
     {
@@ -4697,7 +4697,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -4705,7 +4705,7 @@
       "topicIds": [
         "crash-liability-and-legal-duties"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E19"
     },
     {
@@ -4713,7 +4713,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4722,11 +4722,11 @@
         "right-of-way-basic-intersections",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4+E-right-of-way-basic-intersections",
       "placementPhases": {
-        "right-of-way-basic-intersections": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-basic-intersections": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -4734,7 +4734,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4743,11 +4743,11 @@
         "public-transport-and-exclusive-lanes",
         "lane-and-channelization-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E14",
       "placementPhases": {
-        "public-transport-and-exclusive-lanes": "content_ready",
-        "lane-and-channelization-markings": "content_ready"
+        "public-transport-and-exclusive-lanes": "published",
+        "lane-and-channelization-markings": "published"
       }
     },
     {
@@ -4756,10 +4756,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -4769,11 +4769,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -4781,7 +4781,7 @@
       "topicIds": [
         "fatigue-distraction-and-attention"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-fatigue-distraction-attention"
     },
     {
@@ -4790,11 +4790,11 @@
         "stopping-vs-parking-maneuvers",
         "vehicle-lights-and-signaling"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-vehicle-lights-and-signaling",
       "placementPhases": {
-        "stopping-vs-parking-maneuvers": "content_ready",
-        "vehicle-lights-and-signaling": "content_ready"
+        "stopping-vs-parking-maneuvers": "published",
+        "vehicle-lights-and-signaling": "published"
       }
     },
     {
@@ -4802,7 +4802,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -4811,11 +4811,11 @@
         "right-of-way-special-situations",
         "warning-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E4",
       "placementPhases": {
-        "right-of-way-special-situations": "content_ready",
-        "warning-signs": "content_ready"
+        "right-of-way-special-situations": "published",
+        "warning-signs": "published"
       }
     },
     {
@@ -4823,7 +4823,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -4832,11 +4832,11 @@
         "alcohol-drugs-and-impairment",
         "authorities-controls-and-sanctions"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-alcohol-drugs-and-impairment",
       "placementPhases": {
-        "alcohol-drugs-and-impairment": "content_ready",
-        "authorities-controls-and-sanctions": "content_ready"
+        "alcohol-drugs-and-impairment": "published",
+        "authorities-controls-and-sanctions": "published"
       }
     },
     {
@@ -4844,7 +4844,7 @@
       "topicIds": [
         "emergency-response-and-crash-scene"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E18"
     },
     {
@@ -4852,7 +4852,7 @@
       "topicIds": [
         "adverse-weather-and-visibility"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-adverse-weather-visibility"
     },
     {
@@ -4861,10 +4861,10 @@
         "speed-limits",
         "road-types-highways-and-routes"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "speed-limits": "content_ready",
-        "road-types-highways-and-routes": "content_ready"
+        "speed-limits": "published",
+        "road-types-highways-and-routes": "published"
       },
       "ownerSlice": "E1/E2"
     },
@@ -4873,7 +4873,7 @@
       "topicIds": [
         "safe-distance-and-braking"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E-safe-distance-braking"
     },
     {
@@ -4881,7 +4881,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -4889,7 +4889,7 @@
       "topicIds": [
         "speed-limits"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E1"
     },
     {
@@ -4897,7 +4897,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -4905,7 +4905,7 @@
       "topicIds": [
         "occupant-protection"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E-occupant-protection"
     },
     {
@@ -4914,11 +4914,11 @@
         "stopping-vs-parking-maneuvers",
         "information-signs"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "C+E8+E9",
       "placementPhases": {
-        "information-signs": "content_ready",
-        "stopping-vs-parking-maneuvers": "content_ready"
+        "information-signs": "published",
+        "stopping-vs-parking-maneuvers": "published"
       }
     },
     {
@@ -4926,7 +4926,7 @@
       "topicIds": [
         "documents-licenses-and-insurance"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "E6"
     },
     {
@@ -4934,7 +4934,7 @@
       "topicIds": [
         "center-lines-and-crossing-rules"
       ],
-      "phase": "content_ready",
+      "phase": "published",
       "ownerSlice": "C+E12"
     },
     {
@@ -4943,11 +4943,11 @@
         "bicycles-and-micromobility",
         "pedestrian-school-zones-and-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "bicycles-and-micromobility": "content_ready",
-        "pedestrian-school-zones-and-markings": "content_ready"
+        "bicycles-and-micromobility": "published",
+        "pedestrian-school-zones-and-markings": "published"
       }
     },
     {
@@ -4956,11 +4956,11 @@
         "pedestrian-school-zones-and-markings",
         "pedestrian-and-school-road-markings"
       ],
-      "phase": "planned",
+      "phase": "published",
       "ownerSlice": "E-pedestrian-road-markings+E-pedestrian-school-zones-markings",
       "placementPhases": {
-        "pedestrian-school-zones-and-markings": "content_ready",
-        "pedestrian-and-school-road-markings": "content_ready"
+        "pedestrian-school-zones-and-markings": "published",
+        "pedestrian-and-school-road-markings": "published"
       }
     },
     {
@@ -4969,10 +4969,10 @@
         "parking-clearances-and-corners",
         "right-of-way-basic-intersections"
       ],
-      "phase": "planned",
+      "phase": "published",
       "placementPhases": {
-        "parking-clearances-and-corners": "content_ready",
-        "right-of-way-basic-intersections": "content_ready"
+        "parking-clearances-and-corners": "published",
+        "right-of-way-basic-intersections": "published"
       },
       "ownerSlice": "E10+E-right-of-way-basic-intersections"
     }

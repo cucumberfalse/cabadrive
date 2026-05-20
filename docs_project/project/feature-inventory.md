@@ -1,6 +1,6 @@
 # Feature Inventory
 
-## MVP Features
+## Current Features
 
 - Official source registry with source ownership, jurisdiction, verification date, and hashes.
 - Governed official-documents archive at `content/official-documents/` for verbatim official source materials, manifest metadata, exact-text/currentness validation expectations, and future source-document rules. The archive currently has a broader manifest than the original three-source seed; implementation-time inventory for feature `019-primary-sources-section` observed 19 entries.
@@ -12,10 +12,10 @@
 - Exam mode driven by `content/config/caba-exam-format.json` with approximate/exact status labeling.
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
-- Topic materials module that renders the draft `006` topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, governed Russian translations where available, concise missing-translation fallback, learner difficulty, and local images.
+- Topic materials module that renders the published unofficial topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, governed Russian translations where available, concise missing-translation fallback, learner difficulty, and local images.
 - Process guide module that renders the bundled Russian CABA B1/private-car `Otorgamiento` guide with official GCBA/ANSV links, checked dates, volatile-info warnings, adjacent-path callouts, and Spanish administrative glossary.
 - Validated learner-difficulty layer for all current questions and topic materials using `green`, `blue`, `yellow`, and `red` levels with dimensions, Russian rationale, provenance, and stale-source fingerprints.
-- `Источники` / official primary-source reader from feature `019-primary-sources-section`: exposes every current official manifest entry as a local reference surface, defaults to simple Russian, allows full Russian translation and original Spanish views, and keeps all Russian source-reader content outside `content/official-documents/`. The learner corpus, currentness gate, and exact-text gate are complete for the current 19-entry manifest; final completion still depends on active PR checks, review, conflict state, and human merge authority.
+- `Источники` / official primary-source reader from feature `019-primary-sources-section`: exposes every current official manifest entry as a local reference surface, defaults to simple Russian, allows full Russian translation and original Spanish views, and keeps all Russian source-reader content outside `content/official-documents/`. The learner corpus, currentness gate, and exact-text gate are complete for the current 19-entry manifest.
 - Guide module focused on CABA-vs-RF differences that matter for exam outcomes, including compact parking-clearance contrast notes where source-supported by the current fallback practice set.
 - Offline-capable local-first behavior after build.
 - Docker-only local runtime with `make build`, `make up`, and `make down`.
@@ -32,7 +32,7 @@
 - Current image metadata coverage is complete for 275 unique local images and 276 image-backed question references. Feature 009 reviewed shards contain actual-image visual metadata, stable object/detail/region IDs, question-specific relevance roles, complete Russian translations, complete Russian explanations, and deterministic evidence for the current 460-ticket fallback bank.
 - Feature 009 content is sharded by ticket range under `content/translations/ru/`, `content/explanations/ru/`, and `content/image-metadata/question-images/`. The adjacent monolithic JSON files are generated compatibility indexes, not editing sources. Full feature readiness requires fresh indexes/evidence plus passing `pnpm run validate:content` and `pnpm run validate:content:quality`.
 
-## Post-MVP Candidates
+## Future Candidates
 
 - Spaced-repetition scheduling.
 - Progress import/export.

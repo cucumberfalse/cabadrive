@@ -72,11 +72,11 @@
 6. Render ticket difficulty in material ticket blocks from the canonical question record, never from per-topic duplicate labels.
 7. Show governed Russian question and answer translations in ticket blocks when available; otherwise show a concise missing-translation fallback while keeping canonical Spanish primary.
 8. Show local question images through bundled offline assets only.
-9. Keep draft/incomplete, unofficial learning aid, and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
+9. Keep published/unofficial learning-aid and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
 ## Official Sources / `Источники` Flow
 
-The `Источники` reader is implemented by feature `019-primary-sources-section` as a local, learner-facing reference surface. Its UI and learner corpus are present, but final release remains blocked until official archive exact-text validation is passed or explicitly dispositioned.
+The `Источники` reader is implemented by feature `019-primary-sources-section` as a local, learner-facing reference surface. Its UI and learner corpus are present, and the current 19-entry official archive records passed currentness and exact-text validation.
 
 1. Open `Источники` as a distinct source-reference section, separate from topic-study `Материалы`.
 2. Browse or search official source documents from `content/official-documents/manifest.json`.
@@ -108,4 +108,4 @@ Russian full translations and simple rewrites for this reader live outside `cont
 
 If full official bank is unavailable, UI must clearly show `official_sample_set` labeling and avoid claims implying complete official coverage.
 
-Current MVP uses the stricter `unofficial_b_fallback` label because the available category B practice questions come from a non-official community simulator while official GCBA category B question bank availability remains unresolved.
+The current app uses the stricter `unofficial_b_fallback` label because the available category B practice questions come from a non-official community simulator while official GCBA category B question bank availability remains unresolved.

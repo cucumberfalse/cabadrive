@@ -3,6 +3,110 @@ import { createHash } from "node:crypto";
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const ASSIGNMENT_PHASES = new Set(["planned", "content_ready", "published"]);
 const RENDERED_ASSIGNMENT_PHASES = new Set(["content_ready", "published"]);
+const PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_PATTERNS = [
+  /\bsource claims?\b/i,
+  /\bcurrent-system\b/i,
+  /\bcurrent-rule\b/i,
+  /\bticket-specific\b/i,
+  /\bmixed tickets?\b/i,
+  /\bconstruction and maintenance works\b/i,
+  /\btemporary risk\/restriction\b/i,
+  /\bsame-direction\b/i,
+  /\buses blue parking signage\b/i,
+  /\bparking permission\b/i,
+  /\bbank-front parking rule\b/i,
+  /\bmanual signals\b/i,
+  /\bstopped vehicle\b/i,
+  /\bpublic road\b/i,
+  /\bobstructs the road\b/i,
+  /\bportable balizas\b/i,
+  /\bassigned fuel-station tickets\b/i,
+  /\bvehicle destined to that purpose\b/i,
+  /\bschool-zone\b/i,
+  /\bworking-sign\b/i,
+  /\bgeneric senda peatonal\b/i,
+  /\bLey 2148 and\b/i,
+  /\bsupport adapting speed\b/i,
+  /\broad surface\b/i,
+  /\bbeginner-driver\b/i,
+  /\bpressure depends on that car manual\b/i,
+  /\bpermitted exceptions\b/i,
+  /\bmanual continuous communication systems\b/i,
+  /\bguidance is limited\b/i,
+  /\bshared-road\b/i,
+  /\bimage tickets\b/i,
+  /\bprogressive power/i,
+  /\bsustainable-mobility\b/i,
+  /\bfallback-ticket\b/i,
+  /\bparking network\b/i,
+  /\bmotorized traffic risk\b/i,
+  /\bwarning\/emergency behavior\b/i,
+  /\bbreakdowns\b/i,
+  /\banimals\b/i,
+  /\bIncidente de tránsito\/incidente vial is a road event\b/i,
+  /\bFor an immobilized vehicle after a siniestro\b/i,
+  /\broad incidents\b/i,
+  /\bmedical emergencies\b/i,
+  /\bpolice\/emergency routing\b/i,
+  /\bhuman-error framing\b/i,
+  /\bPassive safety reduces\b/i,
+  /\bCivil liability\/demand\b/i,
+  /\bdamage\b/i,
+  /\brepair\/indemnification\b/i,
+  /\bA person summoned as a witness\b/i,
+  /\bA person who flees\b/i,
+  /\bvehicle-only green\b/i,
+  /\bside wording\b/i,
+  /\bexact luggage placement\b/i,
+  /\broute-curve answer formulas\b/i,
+  /\blimited right-side exceptions\b/i,
+  /\bleft lane\b/i,
+  /\bovertake\b/i,
+  /\bLey 2148 treats\b/i,
+  /\boccupants\b/i,
+  /\bRegistro where\b/i,
+  /\bprovisional paper plates\b/i,
+  /\b72 hours\b/i,
+  /\bthree days\b/i,
+  /\bspeed\/severity\b/i,
+  /\bminimum speed\b/i,
+  /\bconstant precautionary speed\b/i,
+  /\bsafety-system concepts\b/i,
+  /\bwhiplash\b/i,
+  /\bcervical injury\b/i,
+  /\bEstrellas Amarillas permanently mark\b/i,
+  /\bwitness\b/i,
+  /\bcertificate\/proof\b/i,
+  /\bcivil liability\b/i,
+  /\binterurban roads\b/i,
+  /\bArticle 106\b/i,
+  /\bvehicle ahead intends\b/i,
+  /\bleft queue is stopped\/slower\b/i,
+  /\bmarkings\b/i,
+  /\brural wording\b/i,
+  /\btemporary narrowing\b/i,
+  /\bfollowing vehicle should line up\b/i,
+  /\bdouble fila\b/i
+];
+const PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_ENGLISH_PROSE_PATTERNS = [
+  /\b(?:and|they|them|their|must|should|could|would|because|where|when|while)\b/i,
+  /\b(?:on the|of the|due to|by this|used by|entries used|at least)\b/i,
+  /\b(?:red|yellow)\s+cord[oó]n\b/i,
+  /\b(?:traffic|lowering|helps|avoid|visibility|weather|windshield|lights?|indicators?)\b/i,
+  /\b(?:allowed limits?|aerodynamics|illegal drugs?|slower reaction|motor capacity)\b/i,
+  /\b(?:allowed\/forbidden|under-12|assisted\s+ciclorrodados?|turning\s+automotores?)\b/i,
+  /\b(?:reserved\/authorized\s+use|acceleration\/deceleration\/right|slippery-road|nighttime\s+dirt\s+road|road\s+type)\b/i,
+  /\b(?:pedestrian interventions|alcohol thresholds|passenger\/minor\/cargo\s+transport|signal\/marking)\b/i,
+  /\b(?:road surface|support adapting|pressure depends|manual signals|stopped vehicle|public road)\b/i,
+  /\b(?:assigned|beginner driver|removal|guidance|image tickets|progressive power)\b/i,
+  /\b(?:parking|parking network|motorized|breakdowns|animals|road incidents|medical emergencies|police|routing|fallback)\b/i,
+  /\b(?:human-error|damage|repair|indemnification|vehicle-only|side wording|route-curve)\b/i,
+  /\b(?:left lane|overtake|occupants|provisional|speed\/severity|safety systems?|markings)\b/i,
+  /\b(?:wording|vehicles?|authorization|steering|braking|contact|stability|defect)\b/i,
+  /\b(?:orange devices|designed parking spaces|free spaces|safe bicycle-lane|education)\b/i,
+  /\b(?:reflective warning|portable warning devices|emergency services|grave risk)\b/i,
+  /\b(?:regulatory instruction|crosswalk|stop line|fog circulation|elevated brake lights|rompeniebla lights)\b/i
+];
 
 function isPlainObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -75,6 +179,44 @@ function coveragePlacementPhases(assignment, assignedTopicIds, errors, label) {
 
 function isRenderedAssignmentPhase(phase) {
   return RENDERED_ASSIGNMENT_PHASES.has(phase);
+}
+
+function shouldCheckPublishedRussianProse(path) {
+  const key = [...path].reverse().find((part) => typeof part === "string");
+  return key === "disclaimer" || (typeof key === "string" && key.endsWith("Ru"));
+}
+
+function codeSpansRemoved(value) {
+  return value.replace(/`[^`]*`/g, "");
+}
+
+function validatePublishedRussianProse(errors, value, path = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => validatePublishedRussianProse(errors, item, [...path, index]));
+    return;
+  }
+  if (isPlainObject(value)) {
+    for (const [key, nested] of Object.entries(value)) validatePublishedRussianProse(errors, nested, [...path, key]);
+    return;
+  }
+  if (!isNonEmptyString(value) || !shouldCheckPublishedRussianProse(path)) return;
+  for (const pattern of PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_PATTERNS) {
+    const match = value.match(pattern);
+    if (!match) continue;
+    errors.push(
+      `${path.join(".")}: published topic guide Russian learner prose must not contain English scaffold residue "${match[0]}".`
+    );
+    return;
+  }
+  const proseValue = codeSpansRemoved(value);
+  for (const pattern of PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_ENGLISH_PROSE_PATTERNS) {
+    const match = proseValue.match(pattern);
+    if (!match) continue;
+    errors.push(
+      `${path.join(".")}: published topic guide Russian learner prose must not contain English scaffold residue "${match[0]}".`
+    );
+    return;
+  }
 }
 
 function normalizeText(value) {
@@ -242,6 +384,9 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     if (!isNonEmptyString(topic.id)) errors.push(`${label}: topic id must be a non-empty string.`);
     if (topicIds.has(topic.id)) errors.push(`${topic.id}: duplicate topic id.`);
     topicIds.add(topic.id);
+    if (Object.hasOwn(topic, "status") && !["draft", "published"].includes(topic.status)) {
+      errors.push(`${label}: topic status must be draft or published.`);
+    }
     if (!isNonEmptyString(topic.titleRu)) errors.push(`${label}: titleRu must be a non-empty string.`);
     if (!isNonEmptyString(topic.summaryRu)) errors.push(`${label}: summaryRu must be a non-empty string.`);
     if (!Array.isArray(topic.learningMaterialRu) || topic.learningMaterialRu.length === 0) {
@@ -457,12 +602,30 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
     }
   }
   if (isPublished) {
+    validatePublishedRussianProse(errors, guide);
+    for (const topic of asArray(guide.topics)) {
+      if (!isPlainObject(topic)) continue;
+      const label = isNonEmptyString(topic.id) ? topic.id : "topic guide topic";
+      if (topic.status !== "published") errors.push(`${label}: published guide topic status must be published.`);
+    }
+    for (const topic of asArray(coverage.topics)) {
+      if (!isPlainObject(topic)) continue;
+      const topicId = isNonEmptyString(topic.topicId) ? topic.topicId : "topic guide coverage topic";
+      if (topic.phase !== "published") errors.push(`${topicId}: published guide coverage topic phase must be published.`);
+      if (topic.status !== "published") {
+        errors.push(`${topicId}: published guide coverage topic status must be published.`);
+      }
+    }
     for (const assignment of asArray(coverage.assignments)) {
       if (!isNonEmptyString(assignment?.questionId) || !Array.isArray(assignment?.topicIds)) continue;
       const assignedTopicIds = uniqueSorted(assignment.topicIds);
+      const fallbackPhase = coverageAssignmentPhase(assignment);
+      if (fallbackPhase !== "published") {
+        errors.push(`${assignment.questionId}: published guide assignment phase must be published.`);
+      }
       const placementPhases = coveragePlacementPhases(assignment, assignedTopicIds, errors, assignment.questionId);
-      if ([...placementPhases.values()].some((phase) => phase === "planned")) {
-        errors.push(`${assignment.questionId}: published guide must promote planned assignments before release.`);
+      if ([...placementPhases.values()].some((phase) => phase !== "published")) {
+        errors.push(`${assignment.questionId}: published guide assignment placement phases must be published.`);
       }
     }
   }
