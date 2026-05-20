@@ -77,7 +77,6 @@
         "/Producer": "Microsoft® Word 2013"
       },
       "textCharacterCount": 130951,
-      "firstPageTextSample": "Dirección General Habilitación de Conductores y Transporte pág. 1 Preguntas de examen - Categoría B Este documento contiene las preguntas que corresponden al examen teórico para la obtención de la licencia de conducir de la categoría B. Las mismas están formuladas de acuerdo al contenido del Manual del Conductor 2019 de la Ciudad de Buenos Aires (disponible en la web https://www.buenosaires.gob.ar/licenciasdeconducir) , y abarcan aspectos normativos y de idoneidad conductiva necesarios para manejar un vehículo de forma segura. Con el objetivo de facilitar su comprensión y lectura, las preguntas se encuentran ordenadas según los distintos apartados de dicho manual. INTRODUCCIÓN Según la Organización Mundial de la Salud, la siguiente problemática es categorizada como “pandemia” ya que consti",
       "detectedUrlsSample": [
         "https://www.buenosaires.gob.ar/licenciasdeconducir)"
       ],
@@ -167,7 +166,10 @@
           "page": 20,
           "imageCount": 4
         }
-      ]
+      ],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 800,
+      "textSampleSha256": "0d16530daeb8587d2d8724a1e64984c0f959311d56029b3564aec49b42614376"
     },
     {
       "key": "gcba_four_wheel_manual_2023",
@@ -186,7 +188,6 @@
         "/ModDate": "D:20241126171019Z"
       },
       "textCharacterCount": 265275,
-      "firstPageTextSample": "",
       "detectedUrlsSample": [
         "http://transito.buenosaires.gob.ar/",
         "http://www2.cedom.gob.ar/es/legislacion/normas/leyes/anexos/al2148Ie.html#d1",
@@ -305,7 +306,10 @@
       "matchesGovernedOfficialArchiveOriginal": true,
       "governedArchiveOriginalPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "governedArchiveOriginalSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
-      "governedArchiveManifestEntryId": "gcba-manual-vehiculo-4-ruedas-2023"
+      "governedArchiveManifestEntryId": "gcba-manual-vehiculo-4-ruedas-2023",
+      "textSampleStored": false,
+      "textSampleCharacterCount": 0,
+      "textSampleSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "key": "gcba_2008_questions",
@@ -330,7 +334,6 @@
         "/Title": "Titulo"
       },
       "textCharacterCount": 53014,
-      "firstPageTextSample": "Gobierno de la Ciudad de Buenos Aires Gobierno de la Ciudad de Buenos Aires ` 1 Preguntas Categoría B Determine qué indica la señal que a continuación se presenta: A. Proximidad de bosques. B. Zonas de palmeras. C. Vientos fuertes laterales. Cuando se debe cruzar la acera (vereda) para salir a la vía pública ¿de quién se presume que es la responsabilidad si se produce un accidente con un peatón u otro vehículo? A. Del peatón, por no tomar la precaución al llegar a una salida de vehículos. B. Del conductor del otro vehículo, por no tener cuidado. C. Del conductor del vehículo que sale a la vía pública. En algunas vías de tránsito podemos encontrar marcas en el piso o bien carteles con signos similares a una V invertida ¿qué significados tienen esos signos o marcas? A. Que estamos en una zon",
       "detectedUrlsSample": [],
       "detectedYears": [],
       "embeddedImageCount": 90,
@@ -416,7 +419,10 @@
           "page": 20,
           "imageCount": 2
         }
-      ]
+      ],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 800,
+      "textSampleSha256": "39210568cfed6296c1aa868915d2f139003c28119f4b97197d7bf21d1b464d65"
     },
     {
       "key": "unrelated_ai_roadmap",
@@ -437,7 +443,6 @@
         "/Creator": "LaTeX via pandoc"
       },
       "textCharacterCount": 53962,
-      "firstPageTextSample": "РОАДМАП ИНЖЕНЕРА Как стать AI Engineer в 2026 От нуля до продакшн-агентов за 17 недель Agentic AI & Harness Engineering 6 фаз, конкретные проекты, канонические источники Перевод и адаптация для @prompt_design",
       "detectedUrlsSample": [
         "https://anthropic.com/engineering)",
         "https://raw."
@@ -450,7 +455,10 @@
       ],
       "embeddedImageCount": 0,
       "pagesWithEmbeddedImages": 0,
-      "embeddedImagePageSample": []
+      "embeddedImagePageSample": [],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 208,
+      "textSampleSha256": "ddfab841ba6672ec73a37c22339cfcadfd2dd8b07fc7ace6bd79afb3dd4e4400"
     },
     {
       "key": "ru_hard_ticket_learning_aid",
@@ -469,7 +477,6 @@
         "/Title": "трудные билеты 4"
       },
       "textCharacterCount": 18390,
-      "firstPageTextSample": "Некоторые трудные билеты https://www.testdeconducir.com.ar/categoria /b",
       "detectedUrlsSample": [
         "https://www.testdeconducir.com.ar/categoria"
       ],
@@ -557,7 +564,10 @@
           "page": 21,
           "imageCount": 1
         }
-      ]
+      ],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 71,
+      "textSampleSha256": "17e9f16975a96d3b644e44d49082098c0d41f231602ef8653e525900bf854f8c"
     },
     {
       "key": "ru_argentina_rules_learning_aid",
@@ -576,7 +586,6 @@
         "/Title": "ПДД Аргентины"
       },
       "textCharacterCount": 4339,
-      "firstPageTextSample": "Трудные моменты ПДД Аргентины https://buenosaires.gob.ar/sites/default/ﬁles/ 2023-12/MANUAL_Vehiculo_4Ruedas_2023. pdf",
       "detectedUrlsSample": [
         "https://buenosaires.gob.ar/sites/default/ﬁles/"
       ],
@@ -666,7 +675,10 @@
           "page": 21,
           "imageCount": 1
         }
-      ]
+      ],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 118,
+      "textSampleSha256": "b07441676f5c3b564dfa11de22234df728b13cad84c4590429f7c9e31a1abc59"
     },
     {
       "key": "ru_license_process_reference",
@@ -685,7 +697,6 @@
         "/Title": "Первое получение прав и обновление"
       },
       "textCharacterCount": 2890,
-      "firstPageTextSample": "Первое получение прав и обновление САВА",
       "detectedUrlsSample": [
         "https://boletadepago.seguridad",
         "https://buenosaires.gob.ar/jefaturadegabinete/innovacion/plataforma-mi",
@@ -743,7 +754,11 @@
           "page": 12,
           "imageCount": 1
         }
-      ]
+      ],
+      "textSampleStored": false,
+      "textSampleCharacterCount": 39,
+      "textSampleSha256": "a216fa6dc1d3714bd2d09d0ddb22d6b40f95a25b563ff9a410d8cd6f06515676"
     }
-  ]
+  ],
+  "extractedProsePolicy": "Verbatim extracted PDF prose is omitted from committed evidence; inventory entries retain PDF SHA-256, extracted text character counts, and non-verbatim sample fingerprints/counts only."
 }

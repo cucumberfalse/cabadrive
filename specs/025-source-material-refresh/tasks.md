@@ -180,6 +180,14 @@ Architect scope note after Slice 1: this should be the next recommended separate
   - `git diff --check`: passed with no output.
   - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
   - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Latest PR #167 review fix, 2026-05-20: sanitized `pdf-inventory.json` to remove committed first-page sample prose from all seven PDF inventory entries. The inventory now keeps non-verbatim sample storage flags, sample character counts, and SHA-256 sample fingerprints alongside existing PDF metadata.
+- Latest review-fix scan, 2026-05-20: no other committed extracted PDF prose fields were identified in the feature evidence. Candidate-disposition evidence already used fingerprints/counts/labels instead of verbatim ticket text, and no production content was changed.
+- Latest review-fix verification, 2026-05-20:
+  - Sanitation `rg` checks over `specs/025-source-material-refresh/evidence` and `tasks.md`: passed with no output for prohibited raw sample, ticket-text, and local-path patterns.
+  - `git diff --check`: passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Latest review-fix known-issue/dead-end note, 2026-05-20: no new dead ends or known issues were introduced by this evidence-only sanitation; prior extraction and ticket-import blockers remain unchanged.
 
 ### Cycle PR Set
 
