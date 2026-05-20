@@ -452,6 +452,34 @@ test("published mode rejects review-cited English scaffold classes in Russian le
       },
       expected:
         'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "and".'
+    },
+    {
+      mutate(topic) {
+        topic.claims = [
+          {
+            id: "claim-bikes",
+            textRu:
+              "Ley 2148 поддерживает allowed/forbidden arterias, under-12 и assisted ciclorrodados перед turning automotores.",
+            requiresOfficialSource: false
+          }
+        ];
+      },
+      expected:
+        'topics.0.claims.0.textRu: published topic guide Russian learner prose must not contain English scaffold residue "allowed/forbidden".'
+    },
+    {
+      mutate(topic) {
+        topic.learningMaterialRu[0] = "Ориентир ограничен reserved/authorized use в этом билете.";
+      },
+      expected:
+        'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "reserved/authorized use".'
+    },
+    {
+      mutate(topic) {
+        topic.practicalReasoningRu = ["Используйте acceleration/deceleration/right полосы только по назначению."];
+      },
+      expected:
+        'topics.0.practicalReasoningRu.0: published topic guide Russian learner prose must not contain English scaffold residue "acceleration/deceleration/right".'
     }
   ];
 

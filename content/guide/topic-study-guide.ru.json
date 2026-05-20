@@ -456,7 +456,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a6df1599494058fc1dbc4e2fec3e46c26b8eb2dc55b78baf35dcab3d07dd5d7f",
+        "sourceFingerprint": "c84b7a7c541a1e5431beaa4aa169bb23c62c4f05868f0333910f4487e7c76cba",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -800,7 +800,7 @@
       "claims": [
         {
           "id": "claim-caba-current-parking-general-system-boundary",
-          "textRu": "Ley 2148 задает общую актуальную рамку estacionamiento/detención: правила применяются к calzada, различают detención и estacionamiento, задают общие нормы для avenidas/calles, vías rápidas и специальных режимов сигнализации; старые fallback-связки с acera izquierda/ambas aceras в b-fallback-010, b-fallback-074 и b-fallback-079 объясняются как особенности конкретных билетов, а не как новое универсальное утверждение о текущем правиле.",
+          "textRu": "Ley 2148 задает общую актуальную рамку estacionamiento/detención: правила применяются к calzada, различают detención и estacionamiento, задают общие нормы для avenidas/calles, vías rápidas и специальных режимов сигнализации; старые связки с acera izquierda/ambas aceras в `b-fallback-010`, `b-fallback-074` и `b-fallback-079` объясняются как особенности конкретных билетов, а не как новое универсальное утверждение о текущем правиле.",
           "requiresOfficialSource": true,
           "sourceTraceId": "parking-prohibitions-caba-general-system-boundary"
         },
@@ -3153,7 +3153,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "949e3100ce6b6737dcffe277a833e85f949b2ca545fd0b89fdf9dda0c63c341e",
+        "sourceFingerprint": "da4a8db091875d2a7fcd1bf46226091323af49dca21664e8168751a9eed9d89d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -4083,7 +4083,7 @@
         },
         {
           "id": "claim-pedestrian-interventions-and-priority-areas",
-          "textRu": "Ley 2148 поддерживает pedestrian interventions как дорожные зоны, предпочтительно предназначенные для пешеходного движения, и общий запрет ездить по veredas или зонам только для пешеходов; подписи Calle Prioridad Peatón на изображениях остаются особенностью fallback-билетов.",
+          "textRu": "Ley 2148 поддерживает intervenciones peatonales как дорожные зоны, предпочтительно предназначенные для пешеходного движения, и общий запрет ездить по veredas или зонам только для пешеходов; подписи Calle Prioridad Peatón на изображениях остаются особенностью старых билетов.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-school-interventions-and-priority-areas"
         },
@@ -5390,7 +5390,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "4f543c425f946253504be8ade79d1167f61fa75eef8f71a14dbb59f53286bb41",
+        "sourceFingerprint": "dac66ace3c03f7c8db060b2977fcd022c66101da41df79dc3672e0ac2999437b",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -6022,7 +6022,7 @@
         },
         {
           "id": "claim-caba-alcohol-thresholds-and-beginner-period",
-          "textRu": "Ley 2148 задает alcohol thresholds CABA, которые используют назначенные fallback-билеты: 0,5 g/L для обычных conductores, 0,2 g/L для motovehículos и 0,0 g/L для passenger/minor/cargo transport и conductores principiantes; статус principiante длится два года.",
+          "textRu": "Ley 2148 задает пороги alcohol CABA, которые используют назначенные старые билеты: 0,5 g/L для обычных conductores, 0,2 g/L для motovehículos и 0,0 g/L для transporte de pasajeros/menores/carga и conductores principiantes; статус principiante длится два года.",
           "requiresOfficialSource": true,
           "sourceTraceId": "alcohol-impairment-caba-thresholds-and-beginner-period"
         },
@@ -6054,7 +6054,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "7832aa82d4b8b1b5a1da96dde35ffd447669331ee40c9d3225cb7bc59bd2022e",
+        "sourceFingerprint": "7e762cc20ed1d50c199b639e9e84ff9e68275ffed941b6164b33390f932056bf",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -6352,7 +6352,7 @@
             {
               "answerId": "b-fallback-206-a3",
               "verdict": "incorrect",
-              "explanationRu": "Тормоза не отменяют slippery-road physics. Если они мокрые или сцепление хуже, эффективность торможения как раз может снизиться."
+              "explanationRu": "Тормоза не отменяют физику скользкой дороги. Если они мокрые или сцепление хуже, эффективность торможения как раз может снизиться."
             }
           ]
         },
@@ -6460,7 +6460,7 @@
             {
               "answerId": "b-fallback-317-a1",
               "verdict": "incorrect",
-              "explanationRu": "Únicamente de noche y por una vía sin asfaltar слишком узко. Эти luces связаны с niebla, а не только с nighttime dirt road."
+              "explanationRu": "Únicamente de noche y por una vía sin asfaltar слишком узко. Эти luces связаны с niebla, а не только с ночной грунтовой дорогой."
             },
             {
               "answerId": "b-fallback-317-a2",
@@ -6587,7 +6587,7 @@
             {
               "answerId": "b-fallback-390-a3",
               "verdict": "incorrect",
-              "explanationRu": "Sólo en rutas слишком узко. Вопрос задает condición climática, а не только road type."
+              "explanationRu": "Sólo en rutas слишком узко. Вопрос задает condición climática, а не только тип дороги."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b181.jpg"
@@ -17061,7 +17061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "3f814a030c0c36759f70fc770bc747e25f49337d260bc1d1537289103100b00c",
+        "sourceFingerprint": "5a08a6e5148c128733266af513d3648f4dc396410345b7e76820dae5c41018ae",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17679,7 +17679,7 @@
         },
         {
           "id": "claim-caba-lane-use-and-autopistas",
-          "textRu": "Правила CABA по использованию полос требуют держаться по центру carril, предупреждать смену полосы, использовать левые полосы главным образом для sobrepaso/adelantamiento, возвращаться вправо при необходимости и использовать полосы acceleration/deceleration/right для въезда на autopista или съезда.",
+          "textRu": "Правила CABA по использованию полос требуют держаться по центру carril, предупреждать смену полосы, использовать левые полосы главным образом для sobrepaso/adelantamiento, возвращаться вправо при необходимости и использовать carriles de aceleración/desaceleración/derecha для въезда на autopista или съезда.",
           "requiresOfficialSource": true,
           "sourceTraceId": "lane-channelization-caba-lane-use-and-autopistas"
         },
@@ -18071,7 +18071,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "ef40f142e926808ea1adbee23143014d58e9e1ef7a608b538a282eeac416e65e",
+        "sourceFingerprint": "f9f4ecf0c5a1baaaef36b61d95a14ae67bd2b9d6b92010baf1a3f474117812f2",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -18281,7 +18281,7 @@
             {
               "answerId": "b-fallback-298-a3",
               "verdict": "incorrect",
-              "explanationRu": "Ceda el paso - отдельная уступающая señal/marking. Она не равна carril exclusivo para colectivo."
+              "explanationRu": "Ceda el paso - отдельная señal/demarcación уступки. Она не равна carril exclusivo para colectivo."
             }
           ],
           "imageLocalPath": "content/assets/questions/source-bandinopla-testdeconducir-b/b29.jpg"
@@ -18379,7 +18379,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "3799c551de6cfbba2abe5729ce8a1837ed0cf45b5722b232ce8fd01ae6eefdcc",
+        "sourceFingerprint": "bf3f7fd27cbb1e01c9e730a0cb101f48d36f93c323d88cd01c72fa8436ad9a75",
         "basis": {
           "questionLevelCounts": {
             "green": 4,
@@ -18632,7 +18632,7 @@
         },
         {
           "id": "claim-exclusive-lane-ticket-boundary",
-          "textRu": "Ориентир по carril exclusivo/Metrobus ограничен правилом reserved/authorized use; билет `b-fallback-132` сохраняет ответ taxi/moto как узкий вывод по конкретному изображению.",
+          "textRu": "Ориентир по carril exclusivo/Metrobus ограничен правилом uso reservado/autorizado; билет `b-fallback-132` сохраняет ответ taxi/moto как узкий вывод по конкретному изображению.",
           "requiresOfficialSource": true,
           "sourceTraceId": "sustainable-mobility-exclusive-lane-reserved-use"
         }
@@ -18692,7 +18692,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "fbf7876c5184f060851eee67a986089e954327512f780bf80dfb844738c44b8f",
+        "sourceFingerprint": "296a9b30ed4c8d8b90ef801706cd12eed11b6c14e5d2114c1fe211f8d97e0cba",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -19052,7 +19052,7 @@
       "claims": [
         {
           "id": "claim-vulnerable-users-and-public-way-duty",
-          "textRu": "Ley 2148 поддерживает обязанность convivencia vial для каждого usuario de la vía pública и образовательный/профилактический фокус на actores vulnerables; точный порядок уязвимости из b-fallback-061 остается особенностью конкретного билета.",
+          "textRu": "Ley 2148 поддерживает обязанность convivencia vial для каждого usuario de la vía pública и образовательный/профилактический фокус на actores vulnerables; точный порядок уязвимости из `b-fallback-061` остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-public-way-duty-and-actors"
         },
@@ -19070,7 +19070,7 @@
         },
         {
           "id": "claim-electric-assist-speed-boundary",
-          "textRu": "Ley 2148 поддерживает общий максимум 25 km/h для ciclorrodados con pedaleo asistido eléctricamente; билетная фраза про постепенное прекращение помощи двигателя трактуется как формулировка конкретного fallback-билета.",
+          "textRu": "Ley 2148 поддерживает общий максимум 25 km/h для ciclorrodados con pedaleo asistido eléctricamente; билетная фраза про постепенное прекращение помощи двигателя трактуется как формулировка конкретного старого билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "vulnerable-shared-electric-assist-speed"
         },
@@ -19162,7 +19162,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "f990cdf44b19d0b97b9fa5db0f88ce9282db5ac05925147eeefc5d9050e5ded5",
+        "sourceFingerprint": "da28719eae5620d56facc28330592fb46df9f68aaf95dcb2815f90d75296c725",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -19942,7 +19942,7 @@
         },
         {
           "id": "claim-bike-circulation-age-and-priority",
-          "textRu": "Ley 2148 поддерживает правила движения, используемые здесь: allowed/forbidden arterias, правила возраста для under-12 и assisted ciclorrodados, использование ciclovías/ciclocarriles при наличии, нецентральное положение на calzada при отсутствии инфраструктуры и приоритет перед turning automotores.",
+          "textRu": "Ley 2148 поддерживает правила движения, используемые здесь: разрешенные и запрещенные arterias, правила возраста для menores de 12, ciclorrodados con pedaleo asistido, использование ciclovías/ciclocarriles при наличии, нецентральное положение на calzada при отсутствии инфраструктуры и приоритет перед automotores, которые поворачивают.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-circulation-age-priority"
         },
@@ -19960,13 +19960,13 @@
         },
         {
           "id": "claim-bike-parking-and-curb-color",
-          "textRu": "Ley 2148 поддерживает cordones anaranjados для парковки ciclorodados/motovehículos, espacios diseñados на vereda/espacios libres для ciclorodados и DMP, а также городскую сеть estacionamiento; точная обязанность playa de estacionamiento из b-fallback-228 остается особенностью конкретного билета.",
+          "textRu": "Ley 2148 поддерживает cordones anaranjados для парковки ciclorodados/motovehículos, espacios diseñados на vereda/espacios libres для ciclorodados и DMP, а также городскую сеть estacionamiento; точная обязанность playa de estacionamiento из `b-fallback-228` остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-parking-curb-color"
         },
         {
           "id": "claim-bike-sustainable-risk-framing",
-          "textRu": "Ley 2148 поддерживает рамку про transporte público de bicicletas, red segura de ciclovías/bicisendas и educación, которая объясняет movilidad sustentable и ловушки про riesgo del tránsito motorizado, не превращая b-fallback-352 в широкое статистическое утверждение.",
+          "textRu": "Ley 2148 поддерживает рамку про transporte público de bicicletas, red segura de ciclovías/bicisendas и educación, которая объясняет movilidad sustentable и ловушки про riesgo del tránsito motorizado, не превращая `b-fallback-352` в широкое статистическое утверждение.",
           "requiresOfficialSource": true,
           "sourceTraceId": "bicycles-micromobility-sustainable-risk-framing"
         }
@@ -20061,7 +20061,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e2f657d9fb0f5e3442de38e527761cd4001ca1dad49cde4982ca998e1087bdad",
+        "sourceFingerprint": "7a85e156092f73085cc39a2d6e6118f341487846ed945116ffc00e70d00c44ed",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -20330,7 +20330,7 @@
         },
         {
           "id": "claim-visibility-condition-and-ticket-boundaries",
-          "textRu": "Видимость является официально значимым условием безопасного контроля автомобиля, но точное определение punto ciego, картинка настройки зеркала и велосипедный пассажир остаются привязанными к fallback-билетам.",
+          "textRu": "Видимость является официально значимым условием безопасного контроля автомобиля, но точное определение punto ciego, картинка настройки зеркала и велосипедный пассажир остаются привязанными к старым билетам.",
           "requiresOfficialSource": true,
           "sourceTraceId": "mirrors-visibility-condition-and-ticket-boundaries"
         }
@@ -20393,7 +20393,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "3b00def12f7c5229fd5868a45cb03ead6e032f9c6c942c0fce285e643e65cdcf",
+        "sourceFingerprint": "e9d10b7a81603713f062e9bc548887dd29af4c92961c35e4d4659321d9aeb23b",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -20927,7 +20927,7 @@
         },
         {
           "id": "claim-minors-front-and-loose-animals",
-          "textRu": "Ley 2148 запрещает перевозить детей младше 12 лет на передних сиденьях и перевозить свободно находящихся animales; точная формулировка про удержание питомца на fallback-изображении остается особенностью конкретного билета.",
+          "textRu": "Ley 2148 запрещает перевозить детей младше 12 лет на передних сиденьях и перевозить свободно находящихся animales; точная формулировка про удержание питомца на старом изображении остается особенностью конкретного билета.",
           "requiresOfficialSource": true,
           "sourceTraceId": "occupant-minors-front-and-loose-animals"
         }
@@ -22087,7 +22087,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "d1f5637e5d414b92563f6a895bdbeb45432d7affd279bc3f24f918faba350b98",
+        "sourceFingerprint": "00b7d7fb37f6188c92e3417fdca86002ecb529b5ad8803c9b4e9818e4e4b94bc",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -22605,7 +22605,7 @@
         },
         {
           "id": "claim-green-light-does-not-allow-blocking-crossing",
-          "textRu": "Зеленый сигнал для автомобиля не разрешает въезжать в intersection или cruce peatonal, если поток остановит машину и она obstructs circulación transversal; перед движением нужно учитывать тех, кто уже начал crossing.",
+          "textRu": "Зеленый сигнал для автомобиля не разрешает въезжать в intersection или cruce peatonal, если поток остановит машину и она obstructs circulación transversal; перед движением нужно учитывать тех, кто уже начал cruce.",
           "requiresOfficialSource": true,
           "sourceTraceId": "pedestrian-crossings-green-light-blocking"
         },
