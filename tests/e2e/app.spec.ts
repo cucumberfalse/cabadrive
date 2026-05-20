@@ -1,10 +1,12 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
 const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
+const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
@@ -15,8 +17,62 @@ const difficultyAria: Record<string, string> = {
   red: "Сложность: красный, целевой повтор"
 };
 
+type PrimarySourceChunk = {
+  chunkId: string;
+  order: number;
+  officialLabel?: string;
+  headingPath: string[];
+  originalSpanish: string;
+  fullTranslationRu: string;
+  simpleRu: string;
+};
+
+type PrimarySourceDocument = {
+  officialDocumentId: string;
+  title: string;
+  shortTitleRu: string;
+  category: string;
+  jurisdiction: string;
+  officialSourceType: string;
+  chunks: PrimarySourceChunk[];
+};
+
+function loadPrimarySourceDocuments() {
+  const documentsById = new Map<string, PrimarySourceDocument>();
+  for (const fileName of readdirSync("content/primary-sources/documents").filter((name) => name.endsWith(".json"))) {
+    const shard = JSON.parse(readFileSync(join("content/primary-sources/documents", fileName), "utf8")).document as PrimarySourceDocument;
+    const current = documentsById.get(shard.officialDocumentId) ?? { ...shard, chunks: [] };
+    current.chunks.push(...shard.chunks);
+    documentsById.set(shard.officialDocumentId, current);
+  }
+  return primarySourceManifest.entries.map((entry: { id: string }) => {
+    const document = documentsById.get(entry.id);
+    if (!document) throw new Error(`Missing primary source fixture document ${entry.id}`);
+    return { ...document, chunks: [...document.chunks].sort((a, b) => a.order - b.order || a.chunkId.localeCompare(b.chunkId)) };
+  });
+}
+
+const primarySourceDocuments = loadPrimarySourceDocuments();
+const trafficLawSource = primarySourceDocuments.find((document) => document.officialDocumentId === "ley-24449-transito-seguridad-vial")!;
+const cabaTrafficSource = primarySourceDocuments.find((document) => document.officialDocumentId === "ley-2148-caba-codigo-transito-transporte")!;
+const longPrimarySource = primarySourceDocuments.find((document) => document.officialDocumentId === "ley-26994-codigo-civil-comercial")!;
+const textSample = (value: string) => value.replace(/\s+/g, " ").trim().slice(0, 54);
+
 async function storedAnswerCount(page: Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("cabadrive.progress.v1") || "{\"answers\":[]}").answers.length);
+}
+
+async function openPrimarySources(page: Page) {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Источники/ }).click();
+  await expect(page.getByRole("heading", { name: "Официальные первоисточники" })).toBeVisible();
+  await expect(page.getByLabel("Покрытие корпуса источников").getByText(`${primarySourceManifest.entries.length} документов`, { exact: true })).toBeVisible();
+}
+
+async function openSourceDocument(page: Page, document: PrimarySourceDocument) {
+  await page.getByRole("button", { name: new RegExp(document.shortTitleRu) }).click();
+  await expect(page.getByTestId("source-detail-pane")).toBeVisible();
+  await expect(page.getByRole("heading", { name: document.shortTitleRu })).toBeVisible();
 }
 
 test("learning flow renders category B image and records a mistake", async ({ page }) => {
@@ -202,6 +258,106 @@ test("process guide stays local-first without external requests, remote images, 
   await expect(page.locator(".process-view img")).toHaveCount(0);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
+});
+
+test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {
+  await openPrimarySources(page);
+  await expect(page.getByTestId("source-list-pane")).toBeVisible();
+
+  await openSourceDocument(page, trafficLawSource);
+  await expect(page.getByTestId("source-mode-simple")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[0].simpleRu));
+
+  await page.getByTestId("source-mode-full").click();
+  await expect(page.getByTestId("source-mode-full")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[0].fullTranslationRu));
+
+  await page.getByTestId("source-mode-spanish").click();
+  await expect(page.getByTestId("source-mode-spanish")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[0].originalSpanish));
+
+  await expect(page.getByRole("button", { name: /Español simplificado|Spanish simplificado|Simple ES|Упрощенный испанский/i })).toHaveCount(0);
+  await expect(page.locator(".source-reader")).not.toContainText(/simplified Spanish|español simplificado|spanish simple/i);
+
+  await page.getByRole("button", { name: /Учить/ }).click();
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.getByRole("button", { name: /Экзамен/ }).click();
+  await expect(page.getByText(/45:00|44:59/)).toBeVisible();
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+});
+
+test("primary source search, filters, long-document TOC, and keyboard focus work locally", async ({ page }) => {
+  await page.setViewportSize({ width: 1240, height: 900 });
+  await openPrimarySources(page);
+
+  const searchInput = page.getByRole("searchbox", { name: /Поиск по источникам/ });
+  await searchInput.fill("seguridad vial");
+  await expect(page.getByText(/Найдено:/)).toContainText("совпадений");
+  await expect(page.getByRole("button", { name: new RegExp(trafficLawSource.shortTitleRu) })).toBeVisible();
+
+  await page.getByLabel("Фильтр источников по практической категории").selectOption(trafficLawSource.category);
+  await expect(page.getByRole("button", { name: new RegExp(trafficLawSource.shortTitleRu) })).toBeVisible();
+  await page.getByLabel("Фильтр источников по юрисдикции или типу").selectOption(`jurisdiction:${trafficLawSource.jurisdiction}`);
+  await expect(page.getByRole("button", { name: new RegExp(trafficLawSource.shortTitleRu) })).toBeVisible();
+
+  await searchInput.fill("");
+  await page.getByLabel("Фильтр источников по практической категории").selectOption("all");
+  await page.getByLabel("Фильтр источников по юрисдикции или типу").selectOption("all");
+  await openSourceDocument(page, longPrimarySource);
+  await expect(page.getByRole("navigation", { name: "Оглавление фрагментов источника" })).toBeVisible();
+  await expect(page.getByText(`${longPrimarySource.chunks.length} фрагментов`)).toBeVisible();
+  await page.getByRole("button", { name: new RegExp(longPrimarySource.chunks[50].officialLabel!.slice(0, 30)) }).click();
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(longPrimarySource.chunks[50].simpleRu));
+  await expect(page.getByTestId("source-chunk-reader")).not.toContainText(textSample(longPrimarySource.chunks[0].simpleRu));
+
+  await searchInput.focus();
+  await expect(searchInput).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(page.getByLabel("Фильтр источников по практической категории")).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(page.getByLabel("Фильтр источников по юрисдикции или типу")).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: new RegExp(primarySourceDocuments[0].shortTitleRu) })).toBeFocused();
+});
+
+test("primary source reader adapts between compact and expanded widths without runtime network or PDF dependencies", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  const backendLikeRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+    if (/\/api\/|openai|live-ai|backend/i.test(url.pathname + url.hostname)) backendLikeRequests.push(request.url());
+  });
+
+  await page.setViewportSize({ width: 390, height: 900 });
+  await openPrimarySources(page);
+  await expect(page.getByTestId("source-list-pane")).toBeVisible();
+  await expect(page.getByTestId("source-detail-pane")).toBeHidden();
+  await openSourceDocument(page, cabaTrafficSource);
+  await expect(page.getByTestId("source-list-pane")).toBeHidden();
+  await expect(page.getByRole("button", { name: /К списку источников/ })).toBeVisible();
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(cabaTrafficSource.chunks[0].simpleRu));
+  await page.getByRole("button", { name: /К списку источников/ }).click();
+  await expect(page.getByTestId("source-list-pane")).toBeVisible();
+  await openSourceDocument(page, cabaTrafficSource);
+  await expect(page.getByTestId("source-list-pane")).toBeHidden();
+  const compactSearchInput = page.getByRole("searchbox", { name: /Поиск по источникам/ });
+  await compactSearchInput.fill("licencia", { force: true });
+  await expect(page.getByTestId("source-list-pane")).toBeVisible();
+  await expect(page.getByTestId("source-detail-pane")).toBeHidden();
+  await compactSearchInput.fill("");
+
+  await page.setViewportSize({ width: 1240, height: 900 });
+  await expect(page.getByTestId("source-list-pane")).toBeVisible();
+  await expect(page.getByTestId("source-detail-pane")).toBeVisible();
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".source-reader a[href$='.pdf'], .source-reader a[href*='.pdf']")).toHaveCount(0);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
+  expect(backendLikeRequests).toEqual([]);
 });
 
 test("materials view renders topic guide status, list, details, canonical ticket data, and local images", async ({ page }) => {

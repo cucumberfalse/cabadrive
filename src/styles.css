@@ -234,6 +234,12 @@ small,
   min-width: 0;
 }
 
+.source-mobile-back {
+  display: none;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
 .source-filter-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -290,9 +296,16 @@ small,
 .source-list button:focus-visible,
 .source-mode-controls button:focus-visible,
 .source-toc button:focus-visible,
-.source-filter-row select:focus-visible {
+.source-filter-row select:focus-visible,
+.source-chunk-actions button:focus-visible,
+.source-mobile-back:focus-visible {
   outline: 3px solid #176b57;
   outline-offset: 2px;
+}
+
+.source-search:focus-within {
+  border-color: #176b57;
+  box-shadow: 0 0 0 3px rgba(23, 107, 87, 0.18);
 }
 
 .source-list strong,
@@ -347,7 +360,9 @@ small,
 }
 
 .source-mode-controls button {
+  flex: 0 0 auto;
   min-height: 38px;
+  min-width: 106px;
   border: 1px solid #bec8c2;
   border-radius: 8px;
   background: #ffffff;
@@ -473,6 +488,8 @@ small,
 }
 
 .source-chunk-actions span {
+  min-width: 7ch;
+  text-align: center;
   color: #4d5f58;
   font-size: 0.9rem;
 }
@@ -1190,6 +1207,15 @@ small,
   .source-list,
   .source-toc-list {
     max-height: 360px;
+  }
+
+  .source-mobile-back {
+    display: inline-flex;
+  }
+
+  .sources-layout.compact-list-open .source-detail,
+  .sources-layout.compact-detail-open .source-list-pane {
+    display: none;
   }
 
   .source-reader-grid {

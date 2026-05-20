@@ -94,20 +94,43 @@ function processCalloutLabel(section: ProcessGuideSection) {
 
 function primarySourceCategoryLabel(category: string) {
   const labels: Record<string, string> = {
+    "civil-commercial-law": "Гражданское право",
+    "criminal-law": "Уголовное право",
     "traffic-law": "ПДД и закон",
     "traffic-code": "Кодекс CABA",
     "traffic-signage": "Знаки",
+    "signage-and-road-marking": "Знаки и разметка",
     "exam-study-material": "Подготовка",
+    "study-material": "Учебные материалы",
     "vehicle-documents": "Документы ТС",
     "vehicle-inspection": "VTV",
     "road-safety": "Безопасность",
     insurance: "Страхование",
+    "insurance-legal-duties": "Страхование и обязанности",
     "legal-duties": "Правовые обязанности"
   };
   return labels[category] || category;
 }
 
 function primarySourceTypeLabel(sourceType: string) {
+  const labels: Record<string, string> = {
+    caba_law_original_text: "Закон CABA, исходный текст",
+    caba_law_updated_text: "Закон CABA, актуализированный текст",
+    caba_service_current_material: "Текущий материал сервиса CABA",
+    dnrpa_current_material: "Текущий материал DNRPA",
+    dnrpa_disposition_original_text: "Распоряжение DNRPA, исходный текст",
+    gcba_road_safety_guide_pdf: "Руководство GCBA по безопасности",
+    gcba_road_safety_page: "Страница GCBA по безопасности",
+    gcba_study_material_page: "Учебная страница GCBA",
+    gcba_theoretical_exam_manual_pdf: "Учебный manual GCBA",
+    national_decree_annex_updated_text: "Национальный декрет, приложение",
+    national_decree_updated_text: "Национальный декрет",
+    national_law_updated_text: "Национальный закон",
+    national_road_safety_official_note: "Официальная заметка ANSV",
+    national_service_current_material: "Текущий национальный сервис",
+    national_service_topic_current_material: "Текущий национальный справочный материал"
+  };
+  if (labels[sourceType]) return labels[sourceType];
   if (sourceType.includes("gcba")) return "GCBA";
   if (sourceType.includes("national")) return "Национальный источник";
   if (sourceType.includes("law")) return "Закон";
@@ -124,7 +147,21 @@ function primarySourceJurisdictionLabel(jurisdiction: string) {
 function exactTextLabel(status: string) {
   if (status === "passed") return "точный текст проверен";
   if (status === "failed") return "точный текст требует исправления";
-  return "точный текст: проверка pending";
+  return "точный текст: проверка ожидается";
+}
+
+function primarySourceCurrentnessLabel(status: string) {
+  if (status === "current") return "актуальный источник";
+  if (status === "in_force") return "действует";
+  if (status === "valid_current_material") return "действующий справочный материал";
+  if (status === "stale") return "нужна актуализация";
+  return "статус актуальности требует проверки";
+}
+
+function primarySourceValidationLabel(status: string) {
+  if (status === "passed") return "проверка пройдена";
+  if (status === "failed") return "проверка не пройдена";
+  return "проверка ожидается";
 }
 
 function normalizeSearchText(value: string) {
@@ -1002,6 +1039,7 @@ function PrimarySourcesView() {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [sourceFilter, setSourceFilter] = useState("all");
   const previousEffectiveDocumentId = useRef<string | undefined>();
+  const [isSourceListOpen, setIsSourceListOpen] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -1127,10 +1165,16 @@ function PrimarySourcesView() {
     const match = documentMatches.find((entry) => entry.document.officialDocumentId === document.officialDocumentId);
     setSelectedDocumentId(document.officialDocumentId);
     setSelectedChunkId((match?.matchingChunks[0] ?? document.chunks[0])?.chunkId);
+    setIsSourceListOpen(false);
   }
 
   function selectChunk(chunkId: string) {
     setSelectedChunkId(chunkId);
+  }
+
+  function updateSearchQuery(nextQuery: string) {
+    setSearchQuery(nextQuery);
+    setIsSourceListOpen(true);
   }
 
   function goToRelativeChunk(offset: number) {
@@ -1152,6 +1196,7 @@ function PrimarySourcesView() {
     setSelectedDocumentId(corpus.documents[0]?.officialDocumentId);
     setSelectedChunkId(corpus.documents[0]?.chunks[0]?.chunkId);
     setViewMode("simple");
+    setIsSourceListOpen(true);
   }
 
   return (
@@ -1165,12 +1210,12 @@ function PrimarySourcesView() {
         <div className="sources-status" aria-label="Покрытие корпуса источников">
           <span>{corpus.manifestEntryCount} документов</span>
           <span>{corpus.chunkCount} фрагментов</span>
-          <span>без runtime network</span>
+          <span>без сетевых запросов во время работы</span>
         </div>
       </header>
 
-      <div className="sources-layout">
-        <aside className="source-list-pane" aria-label="Поиск и список источников">
+      <div className={`sources-layout ${isSourceListOpen ? "compact-list-open" : "compact-detail-open"}`} data-testid="source-reader-layout">
+        <aside className="source-list-pane" aria-label="Поиск и список источников" data-testid="source-list-pane">
           <div className="source-controls" aria-label="Поиск и фильтры источников">
             <label className="search-box source-search">
               <Search size={18} aria-hidden="true" />
@@ -1178,7 +1223,7 @@ function PrimarySourcesView() {
               <input
                 type="search"
                 value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
+                onChange={(event) => updateSearchQuery(event.target.value)}
                 placeholder="Искать правило, статью, документ или испанский термин"
                 aria-label="Поиск по источникам, русскому и испанскому тексту"
               />
@@ -1188,7 +1233,10 @@ function PrimarySourcesView() {
                 <span>Категория</span>
                 <select
                   value={categoryFilter}
-                  onChange={(event) => setCategoryFilter(event.target.value)}
+                  onChange={(event) => {
+                    setCategoryFilter(event.target.value);
+                    setIsSourceListOpen(true);
+                  }}
                   aria-label="Фильтр источников по практической категории"
                 >
                   <option value="all">Все категории</option>
@@ -1201,7 +1249,10 @@ function PrimarySourcesView() {
                 <span>Юрисдикция / тип</span>
                 <select
                   value={sourceFilter}
-                  onChange={(event) => setSourceFilter(event.target.value)}
+                  onChange={(event) => {
+                    setSourceFilter(event.target.value);
+                    setIsSourceListOpen(true);
+                  }}
                   aria-label="Фильтр источников по юрисдикции или типу"
                 >
                   <option value="all">Все юрисдикции и типы</option>
@@ -1247,7 +1298,10 @@ function PrimarySourcesView() {
         </aside>
 
         {selectedDocument ? (
-          <article className="source-detail">
+          <article className="source-detail" data-testid="source-detail-pane">
+            <button type="button" className="tool-button source-mobile-back" onClick={() => setIsSourceListOpen(true)}>
+              <ChevronLeft size={18} aria-hidden="true" /> К списку источников
+            </button>
             <div className="source-detail-heading">
               <div>
                 <span className="block-label">{selectedDocument.officialDocumentId}</span>
@@ -1255,13 +1309,13 @@ function PrimarySourcesView() {
                 <p>{selectedDocument.title}</p>
               </div>
               <div className="source-mode-controls" role="group" aria-label="Режим текста источника">
-                <button type="button" className={viewMode === "simple" ? "active" : ""} onClick={() => setViewMode("simple")} aria-pressed={viewMode === "simple"}>
+                <button type="button" className={viewMode === "simple" ? "active" : ""} onClick={() => setViewMode("simple")} aria-pressed={viewMode === "simple"} data-testid="source-mode-simple">
                   Просто
                 </button>
-                <button type="button" className={viewMode === "full" ? "active" : ""} onClick={() => setViewMode("full")} aria-pressed={viewMode === "full"}>
+                <button type="button" className={viewMode === "full" ? "active" : ""} onClick={() => setViewMode("full")} aria-pressed={viewMode === "full"} data-testid="source-mode-full">
                   Полный перевод
                 </button>
-                <button type="button" className={viewMode === "spanish" ? "active" : ""} onClick={() => setViewMode("spanish")} aria-pressed={viewMode === "spanish"}>
+                <button type="button" className={viewMode === "spanish" ? "active" : ""} onClick={() => setViewMode("spanish")} aria-pressed={viewMode === "spanish"} data-testid="source-mode-spanish">
                   Оригинал ES
                 </button>
               </div>
@@ -1271,12 +1325,12 @@ function PrimarySourcesView() {
               <span>{primarySourceCategoryLabel(selectedDocument.category)}</span>
               <span>{primarySourceJurisdictionLabel(selectedDocument.jurisdiction)}</span>
               <span>{primarySourceTypeLabel(selectedDocument.officialSourceType)}</span>
-              <span>{selectedDocument.currentnessStatus}: {selectedDocument.currentnessValidationStatus}</span>
+              <span>{primarySourceCurrentnessLabel(selectedDocument.currentnessStatus)}: {primarySourceValidationLabel(selectedDocument.currentnessValidationStatus)}</span>
               <span className={selectedDocument.exactTextValidationStatus === "passed" ? "" : "pending"}>{exactTextLabel(selectedDocument.exactTextValidationStatus)}</span>
             </div>
 
             <div className="source-warning">
-              <strong>Точный текст pending.</strong>
+              <strong>Проверка точного текста ожидается.</strong>
               <span>До финального релиза испанский архив требует отдельной exact-text проверки. Русский слой неофициальный и нужен только для учебы.</span>
             </div>
 
@@ -1303,7 +1357,7 @@ function PrimarySourcesView() {
               </nav>
 
               {selectedChunk ? (
-                <section className="source-chunk" key={selectedChunk.chunkId}>
+                <section className="source-chunk" key={selectedChunk.chunkId} data-testid="source-chunk-reader">
                   <div className="source-chunk-heading">
                     <span>{selectedChunk.officialLabel || `Фрагмент ${selectedChunk.order}`}</span>
                     <small>{selectedChunk.headingPath.join(" / ")}</small>
