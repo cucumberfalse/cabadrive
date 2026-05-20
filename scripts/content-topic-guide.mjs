@@ -612,7 +612,7 @@ export function validateTopicGuide({ questions, guide, coverage, sourceTrace }) 
       if (!isPlainObject(topic)) continue;
       const topicId = isNonEmptyString(topic.topicId) ? topic.topicId : "topic guide coverage topic";
       if (topic.phase !== "published") errors.push(`${topicId}: published guide coverage topic phase must be published.`);
-      if (Object.hasOwn(topic, "status") && topic.status !== "published") {
+      if (topic.status !== "published") {
         errors.push(`${topicId}: published guide coverage topic status must be published.`);
       }
     }

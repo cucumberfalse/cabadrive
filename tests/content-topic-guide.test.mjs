@@ -384,6 +384,19 @@ test("published mode rejects draft topic and coverage states", () => {
   assert(errors.includes("signals: published guide coverage topic status must be published."));
 });
 
+test("published mode rejects missing coverage topic status", () => {
+  const coverageManifest = publishedCoverage();
+  delete coverageManifest.topics[0].status;
+
+  const errors = validate({
+    guideContent: publishedGuide(),
+    coverageManifest,
+    trace: sourceTrace({ status: "published" })
+  });
+
+  assert(errors.includes("signals: published guide coverage topic status must be published."));
+});
+
 test("published mode rejects English scaffold residue in Russian learner prose", () => {
   const guideContent = publishedGuide();
   guideContent.topics[0].summaryRu = "Короткий current-system scaffold.";
