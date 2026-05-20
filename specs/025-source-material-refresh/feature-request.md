@@ -180,3 +180,20 @@ Exhaustive PDF extraction, ticket-by-ticket comparison, currentness/legal valida
 - Analyst validation evidence: review feedback about committed `firstPageTextSample` evidence was addressed at the effective content head, and the latest Codex review thread was reported resolved as outdated/fixed.
 - Analyst validation evidence: Orchestrator-provided check context for `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` is green for baseline-checks, docker-validation, guard/PR Guard, AI Review, and OSV Scan.
 - Analyst validation evidence: local review-fix verification was reported passed for sanitation `rg` checks, `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run validate:content`.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Analyst return count: 0
+- Final Analyst validation completed at: 2026-05-20T20:57:24-03:00
+- Analyst validated effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Customer intent check: this evidence/intake slice fits the user intent by safely inventorying all seven supplied PDFs, comparing ticket candidates where feasible, importing zero unsupported tickets, and deferring process-guide and ticket-import work as Architect-scoped future slices.
+- Gaps, if any: none
+- Architect disposition routing: not applicable; no Analyst final-validation gap requires Architect disposition.
+- Analyst limit escalation: none
+- Analyst validation evidence: final Architect validation for effective content head `735fa99959bc2d0717466dca0577fb81960ab28a` is recorded in `specs/025-source-material-refresh/tasks.md` before this Analyst validation.
+- Analyst validation evidence: PR #167 is validated only as Slice 1 evidence/intake; it records PDF inventory, extraction feasibility, ticket-candidate comparison and dispositions, and follow-up recommendations without production content changes.
+- Analyst validation evidence: evidence records all seven supplied PDFs as inventoried, 642 structured Spanish ticket candidates compared and dispositioned, 0 accepted-current imports, and no new ticket content imported.
+- Analyst validation evidence: process-guide refresh remains deferred to a later separate slice with independent official-source verification; this PR does not update process-guide content or authorize ticket import.
+- Analyst validation evidence: Orchestrator-provided check context for `735fa99959bc2d0717466dca0577fb81960ab28a` is green for CI baseline-checks, docker-validation, PR Guard, and OSV Scan.
+- Analyst validation evidence: AI Review flagged older final-validation markers pointing to `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; this appended Analyst validation supersedes those stale markers by validating effective content head `735fa99959bc2d0717466dca0577fb81960ab28a`.

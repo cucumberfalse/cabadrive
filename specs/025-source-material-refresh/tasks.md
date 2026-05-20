@@ -193,6 +193,7 @@ Architect scope note after Slice 1: this should be the next recommended separate
 
 - PR #167, branch `codex/025-source-material-refresh`, current head `747a5539b548136396b55f477851aa7dd405ad20`; status: process-memory normalization after accepted review fixes, not yet re-final-validated at this head; included in final validation for the Slice 1 source-material refresh cycle.
 - PR #167, branch `codex/025-source-material-refresh`, head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; status: Slice 1 evidence/intake final Architect validation passed for the effective content head after evidence sanitation and review-thread resolution; included in final validation for the Slice 1 source-material refresh cycle.
+- PR #167, branch `codex/025-source-material-refresh`, head `735fa99959bc2d0717466dca0577fb81960ab28a`; status: Slice 1 evidence/intake final Architect validation passed for the current effective content head after process-memory disposition correction and Codex review feedback; included in final validation for the Slice 1 source-material refresh cycle.
 
 ### Final Validation Evidence
 
@@ -207,6 +208,13 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Analyst return count: 0
 - Limit escalation: none
 - Current-PR-head read-only guard: current PR head differs from effective content head 4b051ec09153d0ac79cdf9b174ba3452f0c04d34 only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation: passed for effective content head 735fa99959bc2d0717466dca0577fb81960ab28a.
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head differs from effective content head 735fa99959bc2d0717466dca0577fb81960ab28a only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
 
 ### Implementation Agent Feedback
@@ -277,5 +285,23 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Architect validation evidence: latest Codex review finding about `firstPageTextSample` was fixed in `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` and the review thread was resolved as outdated/fixed.
 - Architect validation evidence: local review-fix verification passed with sanitation `rg` checks, `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run validate:content`.
 - Architect validation evidence: Implementation Agent feedback has Architect dispositions recorded; no ticket import, manual/archive refresh, or process-guide update is authorized by this slice.
+- Architect gaps: none
+- Open Architect dispositions: none
+
+## Final Architect Validation Notes
+
+- Effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-20T20:56:03-03:00
+- Architect validated effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation evidence: PR #167 is validated as Slice 1 evidence/intake only, with feature memory and sanitized evidence under `specs/025-source-material-refresh/` and zero production code, production content, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior changes.
+- Architect validation evidence: all seven supplied PDFs were inventoried, extraction/comparison/disposition evidence was recorded, 642 extracted structured Spanish candidates were dispositioned with 0 accepted-current imports, and unsupported or outdated candidates were not imported.
+- Architect validation evidence: process-guide refresh remains deferred to a later separate slice with independent current official-source verification; PR #167 does not update process-guide content.
+- Architect validation evidence: process-memory dispositions record that no ticket import, manual/archive refresh, or process-guide update is authorized by this slice, and Implementation Agent feedback has Architect dispositions recorded.
+- Architect validation evidence: current content head `735fa99959bc2d0717466dca0577fb81960ab28a` supersedes earlier effective-content markers after the process-memory disposition correction and Codex review feedback about older markers.
+- Architect validation evidence: Orchestrator context reports green checks on `735fa99959bc2d0717466dca0577fb81960ab28a` for CI baseline-checks, docker-validation, PR Guard, and OSV Scan.
+- Architect validation evidence: AI Review posted a P1 marker-staleness comment for the older `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` marker; this appended validation makes `735fa99959bc2d0717466dca0577fb81960ab28a` the latest Architect-validated effective content head for finalizer compatibility.
+- Architect validation evidence: local validation for this Architect-only edit passed with `git diff --check` and `node scripts/check-feature-memory.mjs --worktree`.
 - Architect gaps: none
 - Open Architect dispositions: none
