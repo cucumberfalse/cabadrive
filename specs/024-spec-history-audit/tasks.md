@@ -99,8 +99,8 @@
 - [ ] T068 Review Agent verifies current-status truthfulness, especially topic guide, primary-source reader, fallback-bank labeling, and durable docs.
 - [ ] T069 Review Agent verifies role boundaries, Orchestrator-first routing, latest-main startup, sibling-work preservation, generated-file discipline, and cleanup non-applicability.
 - [ ] T070 Review Agent verifies validation evidence covers every acceptance criterion and no required test/check was omitted without rationale.
-- [ ] T071 Resolve or disposition every blocking review finding before merge readiness.
-- [ ] T072 Confirm every Implementation Agent feedback item has Architect disposition.
+- [x] T071 Resolve or disposition every blocking review finding before merge readiness.
+- [x] T072 Confirm every Implementation Agent feedback item has Architect disposition.
 
 ## Final Validation And Merge Readiness
 
@@ -184,6 +184,15 @@ Implementation Agent must replace the placeholder disposition values below with 
 - Package scripts include `validate:content`, `validate:content:quality`, `validate:overlays`, `test`, `build`, `test:e2e`, and `preflight`.
 - Architect created only `specs/024-spec-history-audit/spec.md`, `plan.md`, and `tasks.md`.
 - Implementation assignment confirmed 2026-05-20: Orchestrator assigned Implementation Agent in `/Users/chap/devel/cabadrive-worktrees/024-spec-history-audit`, branch `codex/024-spec-history-audit`, single implementation PR slice from the Analyst handoff branch, with parallel-work preservation warning.
+- Follow-up implementation assignment confirmed 2026-05-20: Orchestrator assigned Implementation Agent to continue on the same PR #166/worktree/branch at head `0a9d22da932b54046a3bf5eab54e3715dc271134`, preserve sibling work, address blocking review findings, commit, push, and not merge.
+- Follow-up blocking review fixes completed by Implementation Agent: stale superseded `content/official-documents/validation/exact-text-readiness-2026-05-20.json` was removed instead of kept as contradictory current evidence; canonical exact-text validation still reports 19/19 passed; learner-facing `*Ru` topic-guide prose scaffold residue was corrected while preserving intentional Spanish exam terms; `content/primary-sources/terminology.ru.md` status now reflects published guidance; `scripts/content-topic-guide.mjs` now scans array-contained Russian learner prose fields in published mode and has a regression test.
+- Follow-up stale-evidence scan: `rg -n "exact-text-readiness-2026-05-20|blockedNotPassed|pendingInManifest|blocked_not_passed|Final source-reader release cannot|exactTextValidation remains pending|Status: draft guidance" content docs_project scripts tests` returned no matches in current product/docs/source/test surfaces after remediation.
+- Follow-up learner-prose scaffold scan: targeted `rg` scan for the review-blocker English phrases in `content/guide/topic-study-guide.ru.json` returned no learner-facing prose matches; the only remaining `witness` matches are source-trace identifiers, not published Russian learner prose.
+- Follow-up targeted tests: `node --test tests/content-topic-guide.test.mjs` passed 25/25; `node --test tests/content-topic-guide.test.mjs tests/primary-sources-validation.test.mjs tests/primary-sources-generate-coverage.test.mjs tests/primary-source-status.test.mjs` passed 80/80.
+- Follow-up source/content validation: `pnpm run validate:content`, `pnpm run validate:content:quality`, and `node scripts/official-documents-exact-text-validation.mjs` passed; full exact-text validation reported `total: 19`, `passed: 19`, `blocked: 0`, `failed: 0`.
+- Follow-up guards: `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and the stale current-state marker scan for exact-text pending, MVP, draft/incomplete, blocked-release, and old review-authority phrases passed with no current-surface matches.
+- Follow-up full preflight: `pnpm run preflight` passed, including feature-memory guard, repo baseline check, content validation, unit tests, production build, and 46/46 Playwright e2e tests.
+- Follow-up diff scope before commit: six paths changed for review-blocker remediation only: `content/guide/topic-study-guide.ru.json`, removed stale `content/official-documents/validation/exact-text-readiness-2026-05-20.json`, `content/primary-sources/terminology.ru.md`, `scripts/content-topic-guide.mjs`, `tests/content-topic-guide.test.mjs`, and this process evidence file.
 - Implementation startup command: `git fetch origin main`; resulting `HEAD`, `origin/main`, and `merge-base HEAD origin/main` were all `5f7ee7d8d301a27371a17a96d370d1ceec2629e8`.
 - Baseline implementation status before product/docs/content edits: `## codex/024-spec-history-audit...origin/main` with only untracked `specs/024-spec-history-audit/`.
 - Complete feature memory present before implementation: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.

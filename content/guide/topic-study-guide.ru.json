@@ -4873,7 +4873,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "89207fa3ab546dc811bbe3e7a69c31b502cce37c8db18463fd78ef54f453d3e0",
+        "sourceFingerprint": "fdbd0f246d32eb07603f109a72c69c5be051471528e38e0351ec5a6297419e6a",
         "basis": {
           "questionLevelCounts": {
             "green": 2,
@@ -5359,13 +5359,13 @@
         },
         {
           "id": "claim-tinted-glass-occupants-visible",
-          "textRu": "Ley 2148 требует безопасные стекла автомобиля, а для roadside-контроля степени тонировки - чтобы occupants были различимы с короткой дистанции.",
+          "textRu": "Ley 2148 требует безопасные стекла автомобиля, а для дорожного контроля степени тонировки - чтобы ocupantes были различимы с короткой дистанции.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safe-distance-tinted-glass-occupants-visible"
         },
         {
           "id": "claim-cyclists-general-traffic-rules",
-          "textRu": "Ley 2148 treats motovehicle/ciclorrodado drivers as having the same rights and obligations as other vehicle drivers except where the nature of the vehicle does not apply, and general traffic rules apply to ciclorodados and mobility devices where suitable.",
+          "textRu": "Ley 2148 рассматривает водителей motovehículo/ciclorrodado как участников с теми же правами и обязанностями, что и другие водители, кроме случаев, где природа транспорта не позволяет применить правило; общие нормы tránsito также применяются к ciclorodados и устройствам movilidad personal, когда это подходит.",
           "requiresOfficialSource": true,
           "sourceTraceId": "safe-distance-cyclists-general-traffic-rules"
         }
@@ -11350,7 +11350,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "cc7562438f7cf1cc190b0688521ca11defcfa93a9b2103e8c266c404c2c1c6b3",
+        "sourceFingerprint": "108c0f33765e2c9be382e638f7c37c14f93012939ea8d8f9a16c6e38898215f3",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -11808,7 +11808,7 @@
       "claims": [
         {
           "id": "claim-row-signal-priority-hierarchy",
-          "textRu": "В CABA порядок приоритета идет от órdenes de autoridad и señalización circunstancial/transitoria к semáforos, затем к vertical signs/markings и общим нормам.",
+          "textRu": "В CABA порядок приоритета идет от órdenes de autoridad и señalización circunstancial/transitoria к semáforos, затем к señales verticales/demarcación horizontal и общим нормам.",
           "requiresOfficialSource": true,
           "sourceTraceId": "right-of-way-signal-priority-hierarchy"
         },
@@ -13412,7 +13412,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "75dc7ccbbd018d8fea443a0173c93e1d1354a12bf4b0a2d40b28c822be31ebc0",
+        "sourceFingerprint": "e81d7f718c43844398cbd82250a7b6d98c8799b776924d0eda6b5d6de97ae64d",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -14384,7 +14384,7 @@
         },
         {
           "id": "claim-duplicate-chapa-registro",
-          "textRu": "Duplicado/reposición de chapa patente оформляется в Registro where the vehicle is radicado, с provisional paper plates до выдачи дубликата.",
+          "textRu": "Duplicado/reposición de chapa patente оформляется в Registro по месту radicación del vehículo, с временными бумажными placas provisorias до выдачи дубликата.",
           "requiresOfficialSource": true,
           "sourceTraceId": "documents-licenses-duplicate-chapa-registro"
         }
@@ -16654,7 +16654,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "987730dc932d49afe3c2def1a64761895279c197fd44fbe7638bf8502325582d",
+        "sourceFingerprint": "c069a023d9e3d2f912f12e8052f4225c5c41869224fad49fdb6fd4e70ab47bed",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -17035,7 +17035,7 @@
         },
         {
           "id": "claim-channelization-and-reduction-markings",
-          "textRu": "Заштрихованные/channelization markings направляют поток в сторону от препятствий или зон, по которым нельзя ехать; auxiliary reduction markings can induce drivers to reduce speed.",
+          "textRu": "Заштрихованные marcas canalizadoras направляют поток в сторону от препятствий или зон, по которым нельзя ехать; вспомогательная demarcación de reducción подсказывает водителю снизить скорость.",
           "requiresOfficialSource": true,
           "sourceTraceId": "center-lines-channelization-and-reduction-markings"
         }
@@ -20393,7 +20393,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "a4cc7dc13715d7efb0aaf38c4db2937ab64ce40712d0af64cd51cfeb8ad3cebf",
+        "sourceFingerprint": "3b00def12f7c5229fd5868a45cb03ead6e032f9c6c942c0fce285e643e65cdcf",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -20915,7 +20915,7 @@
       "claims": [
         {
           "id": "claim-seat-belts-sri-airbag-headrest",
-          "textRu": "Ley 2148 требует seat belts для conductor и occupants, SRI для пассажиров младше 12 лет и ниже 1,50 m, говорит, что airbags не заменяют cinturón de seguridad, и определяет правильную высоту регулируемого apoyacabezas.",
+          "textRu": "Ley 2148 требует cinturones de seguridad для conductor и ocupantes, SRI для пассажиров младше 12 лет и ниже 1,50 m, говорит, что airbags не заменяют cinturón de seguridad, и определяет правильную высоту регулируемого apoyacabezas.",
           "requiresOfficialSource": true,
           "sourceTraceId": "occupant-seat-belts-sri-airbag-headrest"
         },
@@ -21004,7 +21004,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "dc2feccee59cc4199f45421f3121cb7da039bbc0705a781d840ba07e56989382",
+        "sourceFingerprint": "b0fdffe93fd4749704d4057020be3a7ec7883e842d52b9f70e17ec89600ac0d5",
         "basis": {
           "questionLevelCounts": {
             "green": 3,
@@ -21691,25 +21691,25 @@
         },
         {
           "id": "claim-insurance-notice-72-hours",
-          "textRu": "После siniestro уведомление страховщика в этой экзаменационной теме обобщается как 72 hours / three days.",
+          "textRu": "После siniestro уведомление страховщика в этой экзаменационной теме обобщается как 72 часа / три дня.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-insurance-notice-72-hours"
         },
         {
           "id": "claim-vision-zero-speed-human-factor",
-          "textRu": "Vision Cero, логика errores humanos, speed/severity, minimum speed и constant precautionary speed преподаются как safety-system concepts, которые снижают смертность, тяжелые травмы, вероятность incident и расход топлива.",
+          "textRu": "Vision Cero, логика errores humanos, связь скорости с тяжестью последствий, velocidad mínima и velocidad precautoria constante преподаются как элементы безопасной системы, которые снижают смертность, тяжелые травмы, вероятность incidente и расход топлива.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-vision-zero-speed-human-factor"
         },
         {
           "id": "claim-passive-safety-headrest",
-          "textRu": "Seguridad pasiva снижает последствия после siniestro; правильно расположенный apoyacabezas уменьшает риск whiplash/cervical injury и дополняет cinturón de seguridad.",
+          "textRu": "Seguridad pasiva снижает последствия после siniestro; правильно расположенный apoyacabezas уменьшает риск хлыстовой/шейной травмы и дополняет cinturón de seguridad.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-passive-safety-headrest"
         },
         {
           "id": "claim-estrellas-amarillas-fatal-victim",
-          "textRu": "Estrellas Amarillas permanently mark places where traffic victims died and serve as public memory/prevention signs.",
+          "textRu": "Estrellas Amarillas постоянно отмечают места, где погибли víctimas viales, и служат общественным знаком памяти и prevención.",
           "requiresOfficialSource": true,
           "sourceTraceId": "emergency-response-estrellas-amarillas-fatal-victim"
         }
@@ -21735,7 +21735,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "9cb8d5e1a16b79c451b15a9da373582256da4540bf486555fe0237089be6931a",
+        "sourceFingerprint": "0d19d022c118a1751a07242949c7d3a67811f6fa76a42f5cf29e6a179fd363c1",
         "basis": {
           "questionLevelCounts": {
             "green": 0,
@@ -22049,19 +22049,19 @@
         },
         {
           "id": "claim-witness-duty-fiscalia",
-          "textRu": "Человек, вызванный как witness в судебном процессе по incidente vial, должен явиться и правдиво рассказать компетентному органу то, что знает и помнит.",
+          "textRu": "Человек, вызванный как testigo в судебном процессе по incidente vial, должен явиться и правдиво рассказать компетентному органу то, что знает и помнит.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-witness-duty-fiscalia"
         },
         {
           "id": "claim-insurance-certificate-general-duty",
-          "textRu": "Обязательный certificate/proof страхования civil liability является общим требованием для circulation, а не обязанностью только для interurban roads.",
+          "textRu": "Обязательный comprobante/certificado страхования responsabilidad civil является общим требованием для circulación, а не обязанностью только для vías interurbanas.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-insurance-certificate-general-duty"
         },
         {
           "id": "claim-fleeing-injured-abandonment-boundary",
-          "textRu": "Человек, который скрывается с места incidente vial и оставляет кого-то раненым, может отвечать за abandono de persona; это утверждение остается в границах формулировок GCBA guide и Código Penal Article 106.",
+          "textRu": "Человек, который скрывается с места incidente vial и оставляет кого-то раненым, может отвечать за abandono de persona; это утверждение остается в границах формулировок guía GCBA и Código Penal Art. 106.",
           "requiresOfficialSource": true,
           "sourceTraceId": "crash-liability-fleeing-injured-abandonment-boundary"
         }
@@ -23328,7 +23328,7 @@
           "reviewer": "cabadrive-017",
           "reviewedAt": "2026-05-10"
         },
-        "sourceFingerprint": "e1e18ad5147569bd50d55f4f841cb3833dd9fc20ca47fd57fd0cf5fb8bc763f2",
+        "sourceFingerprint": "7d6de724d874e05145faa1f6df681f0f3c9b5fa4cf29bc70d301a65776182430",
         "basis": {
           "questionLevelCounts": {
             "green": 1,
@@ -23914,19 +23914,19 @@
       "claims": [
         {
           "id": "claim-overtaking-main-rules",
-          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает ограниченные исключения справа, если vehicle ahead intends to turn/stop left или left queue is stopped/slower. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
+          "textRu": "Adelantamiento/sobrepaso обычно выполняются слева, при достаточной видимости и свободном пространстве; Ley 2148 допускает ограниченные исключения справа, если автомобиль впереди намерен повернуть или остановиться налево, либо левая очередь стоит или движется медленнее. Нельзя начинать рядом с encrucijada, curva, puente, paso a nivel или lugar peligroso, а завершение требует безопасного возврата вправо.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-main-rules"
         },
         {
           "id": "claim-overtaking-lanes-markings-signs",
-          "textRu": "Carril de sobrepaso/carril izquierdo используется для adelantamiento; líneas continuas и R.6/R.10/markings ограничивают cruce, no adelantar или cambios de carril согласно конкретному знаку/разметке.",
+          "textRu": "Carril de sobrepaso/carril izquierdo используется для adelantamiento; líneas continuas и R.6/R.10/demarcación horizontal ограничивают cruce, no adelantar или cambios de carril согласно конкретному знаку/разметке.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-lanes-markings-signs"
         },
         {
           "id": "claim-overtaking-horn-and-warning",
-          "textRu": "Bocina не является универсальным инструментом adelantamiento: CABA ограничивает ее потенциально опасными ситуациями; предупреждение об обгоне опирается на luces/indicadores de giro, кроме случаев, где национальная rural wording допускает bocina.",
+          "textRu": "Bocina не является универсальным инструментом adelantamiento: CABA ограничивает ее потенциально опасными ситуациями; предупреждение об обгоне опирается на luces/indicadores de giro, кроме случаев, где национальная формулировка для zona rural допускает bocina.",
           "requiresOfficialSource": true,
           "sourceTraceId": "overtaking-horn-and-warning"
         },

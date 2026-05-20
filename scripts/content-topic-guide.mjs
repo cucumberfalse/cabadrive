@@ -62,6 +62,28 @@ const PUBLISHED_RUSSIAN_PROSE_FORBIDDEN_PATTERNS = [
   /\blimited right-side exceptions\b/i,
   /\bleft lane\b/i,
   /\bovertake\b/i,
+  /\bLey 2148 treats\b/i,
+  /\boccupants\b/i,
+  /\bRegistro where\b/i,
+  /\bprovisional paper plates\b/i,
+  /\b72 hours\b/i,
+  /\bthree days\b/i,
+  /\bspeed\/severity\b/i,
+  /\bminimum speed\b/i,
+  /\bconstant precautionary speed\b/i,
+  /\bsafety-system concepts\b/i,
+  /\bwhiplash\b/i,
+  /\bcervical injury\b/i,
+  /\bEstrellas Amarillas permanently mark\b/i,
+  /\bwitness\b/i,
+  /\bcertificate\/proof\b/i,
+  /\bcivil liability\b/i,
+  /\binterurban roads\b/i,
+  /\bArticle 106\b/i,
+  /\bvehicle ahead intends\b/i,
+  /\bleft queue is stopped\/slower\b/i,
+  /\bmarkings\b/i,
+  /\brural wording\b/i,
   /\btemporary narrowing\b/i,
   /\bfollowing vehicle should line up\b/i,
   /\bdouble fila\b/i
@@ -141,7 +163,7 @@ function isRenderedAssignmentPhase(phase) {
 }
 
 function shouldCheckPublishedRussianProse(path) {
-  const key = path.at(-1);
+  const key = [...path].reverse().find((part) => typeof part === "string");
   return key === "disclaimer" || (typeof key === "string" && key.endsWith("Ru"));
 }
 

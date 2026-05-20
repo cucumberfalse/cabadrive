@@ -400,6 +400,22 @@ test("published mode rejects English scaffold residue in Russian learner prose",
   );
 });
 
+test("published mode rejects English scaffold residue inside Russian prose arrays", () => {
+  const guideContent = publishedGuide();
+  guideContent.topics[0].learningMaterialRu[0] = "Короткий current-system scaffold внутри массива.";
+  const errors = validate({
+    guideContent,
+    coverageManifest: publishedCoverage(),
+    trace: sourceTrace({ status: "published" })
+  });
+
+  assert(
+    errors.includes(
+      'topics.0.learningMaterialRu.0: published topic guide Russian learner prose must not contain English scaffold residue "current-system".'
+    )
+  );
+});
+
 test("rejects missing current question IDs even in draft planned coverage", () => {
   const coverageManifest = coverage({
     topics: [{ topicId: "signals", phase: "content_ready", status: "draft", titleRu: "Жесты" }],
