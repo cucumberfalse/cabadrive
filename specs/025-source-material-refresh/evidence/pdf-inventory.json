@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-05-20T19:29:28-03:00",
-  "worktree": "/Users/chap/devel/cabadrive-worktrees/025-source-material-refresh",
+  "worktree": "<worktree>",
   "branch": "codex/025-source-material-refresh",
   "verifiedBase": "04d2a3279cb3512dbc52625a687e7ba44a3d339b",
   "currentnessResearch": {
@@ -59,7 +59,7 @@
   "pdfs": [
     {
       "key": "categoriab_2019_questions",
-      "path": "/Users/chap/Downloads/categoriab.pdf",
+      "path": "<user-downloads>/categoriab.pdf",
       "exists": true,
       "byteSize": 9684093,
       "sha256": "35490f88bbb3197d4ee76b281078fec9cd4dbb021be7607b2d52ce7d607fe3b4",
@@ -171,7 +171,7 @@
     },
     {
       "key": "gcba_four_wheel_manual_2023",
-      "path": "/Users/chap/Downloads/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf",
+      "path": "<user-downloads>/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf",
       "exists": true,
       "byteSize": 71667934,
       "sha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
@@ -309,7 +309,7 @@
     },
     {
       "key": "gcba_2008_questions",
-      "path": "/Users/chap/Downloads/PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf",
+      "path": "<user-downloads>/PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf",
       "exists": true,
       "byteSize": 634192,
       "sha256": "326bd63bafafe7e7767c173f46a38f3ffde859c52758e69bfee3e7376e8df940",
@@ -420,7 +420,7 @@
     },
     {
       "key": "unrelated_ai_roadmap",
-      "path": "/Users/chap/Downloads/agent_roadmap_ru.pdf",
+      "path": "<user-downloads>/agent_roadmap_ru.pdf",
       "exists": true,
       "byteSize": 233955,
       "sha256": "6ae5d9838d87e6b574420cb493ae5727743b5e9037273829a0ec8e5f18070518",
@@ -454,7 +454,7 @@
     },
     {
       "key": "ru_hard_ticket_learning_aid",
-      "path": "/Users/chap/Downloads/трудные билеты.pdf",
+      "path": "<user-downloads>/трудные билеты.pdf",
       "exists": true,
       "byteSize": 5932609,
       "sha256": "4119b9c68dc1f249b23fb5e011d72d28515b6fbd0e8d7580ba42b09736183f4c",
@@ -561,7 +561,7 @@
     },
     {
       "key": "ru_argentina_rules_learning_aid",
-      "path": "/Users/chap/Downloads/ПДД Аргентины.pdf",
+      "path": "<user-downloads>/ПДД Аргентины.pdf",
       "exists": true,
       "byteSize": 1884133,
       "sha256": "c31864547b1f47b845a7ba59a29963cb17d5705c36fe0744713d99bc4e5e02dd",
@@ -670,7 +670,7 @@
     },
     {
       "key": "ru_license_process_reference",
-      "path": "/Users/chap/Downloads/Первое_получение_прав_и_обновление.pdf",
+      "path": "<user-downloads>/Первое_получение_прав_и_обновление.pdf",
       "exists": true,
       "byteSize": 785036,
       "sha256": "953f1c70739b5edb721a15535994a0d9f8553b8acc81d019b510893622528eb3",

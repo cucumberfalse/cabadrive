@@ -113,7 +113,7 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Existing ticket support layers are sharded and generated indexes are tooling-owned.
 - Process guide validates through `scripts/content-caba-exam-process.mjs`.
 - System PDF tools are documented as absent; implementation must refine extraction within bundled/project tooling constraints.
-- Implementation Agent started in `/Users/chap/devel/cabadrive-worktrees/025-source-material-refresh` on branch `codex/025-source-material-refresh`; `HEAD` and merge-base matched `04d2a3279cb3512dbc52625a687e7ba44a3d339b`.
+- Implementation Agent started in `<worktree>` on branch `codex/025-source-material-refresh`; `HEAD` and merge-base matched `04d2a3279cb3512dbc52625a687e7ba44a3d339b`.
 - Pre-implementation `git status --short --branch` was `## codex/025-source-material-refresh...origin/main` plus the expected untracked `specs/025-source-material-refresh/` feature folder.
 - Feature memory was complete before Slice 1 implementation: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` existed.
 - Current content mode remains `unofficial_b_fallback` in `content/meta/content-mode.json`.
@@ -155,6 +155,14 @@ Architect scope note after Slice 1: this should be the next recommended separate
   - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
   - `git diff --check`: passed with no output.
+- PR #167 Codex review fix, 2026-05-20: sanitized committed Slice 1 evidence after review findings. `ticket-candidate-dispositions.json` and `.csv` retain candidate IDs, logical PDF IDs/paths, pages, match/disposition metadata, existing IDs, counts, and SHA-256 fingerprints; they no longer commit verbatim candidate question or answer text extracted from user-supplied PDFs.
+- PR #167 Codex review fix, 2026-05-20: replaced machine-specific user-home paths in committed feature memory/evidence with stable logical identifiers such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`.
+- Raw extraction policy after review fix: raw local extraction output may exist outside git for operator inspection, but it is intentionally not committed as feature evidence.
+- Review-fix verification, 2026-05-20:
+  - Required sanitation search: passed for evidence sanitation; remaining hits are generic feature/spec/task wording about future ticket requirements, not committed extracted evidence fields or machine-specific paths.
+  - `git diff --check`: passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
 
 ### Implementation Agent Feedback
 
@@ -166,6 +174,11 @@ Architect scope note after Slice 1: this should be the next recommended separate
 
 ### Architect Dispositions
 
+- PR #167 review-fix feedback disposition: accepted as architecturally sufficient for the current Slice 1 evidence PR. The fix removes committed verbatim ticket question/answer/correct-answer text from unlicensed user-supplied evidence and replaces it with reviewable metadata, counts, match/disposition fields, logical source identifiers, and SHA-256 fingerprints.
+- PR #167 machine-path feedback disposition: accepted as architecturally sufficient. Committed feature memory/evidence should use stable logical placeholders such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`; no machine-specific absolute path is needed for acceptance evidence.
+- Review-fix product/content decision: no new product or content decision is needed. The review fix changes evidence hygiene and process memory only; it does not authorize ticket import, alter content mode, or change learner-visible content.
+- Raw extraction disposition: raw extracted PDF text or ticket tuples must remain uncommitted unless a later separately scoped and licensed workflow explicitly authorizes storing that material. Fingerprints and nonverbatim metadata are the correct committed evidence form for this PR.
+- Final-validation disposition after review fix: prior final Architect and Analyst validation at effective content head `f64ffa445b00279d8092f56983eb31f0dace6520` is stale because behaviorally meaningful evidence/process content changed after validation. Orchestrator must rerun final Architect validation and then final Analyst validation on the new reviewed head before completion or merge.
 - Slice 1 ticket-import readiness feedback: dispositioned as not-needed for the current PR/slice. Evidence shows 642 extracted structured Spanish candidates with 0 `accepted-current`; no ticket batch may proceed from Slice 1 evidence alone.
 - Later ticket work feedback for 9 ambiguous `categoriab.pdf` candidates: dispositioned as a possible future ticket/investigation slice, not an immediate import task. If Orchestrator assigns it, scope it to the 9 ambiguous `categoriab.pdf` candidates first, require official/currentness validation, reliable correct-answer evidence, image/crop provenance where applicable, and full support/evidence updates before any import.
 - Unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` feedback: dispositioned as not-needed for batch import. The 135 unmatched candidates are outdated for this feature unless a separate official-source investigation proves current validity; exact matches remain duplicates and old variants must not be imported opportunistically.

@@ -6,8 +6,8 @@
     "pdftoppm": null,
     "mutool": null
   },
-  "pythonRuntime": "/Users/chap/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
-  "nodeRuntime": "/Users/chap/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "pythonRuntime": "<codex-runtime>/dependencies/python/bin/python3",
+  "nodeRuntime": "<codex-runtime>/dependencies/node/bin/node",
   "pythonPackages": {
     "pypdf": true,
     "PIL": true,

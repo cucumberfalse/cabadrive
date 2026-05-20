@@ -4,7 +4,7 @@
 
 Analyst role: replacement Cabadrive Analyst only, assigned by Orchestrator.
 
-Repository/worktree: `/Users/chap/devel/cabadrive-worktrees/025-source-material-refresh`
+Repository/worktree: `<worktree>`
 
 Branch: `codex/025-source-material-refresh`
 
@@ -18,13 +18,13 @@ Created feature folder: `specs/025-source-material-refresh/`
 
 The user requests a careful source-material refresh using the listed local PDFs:
 
-- `/Users/chap/Downloads/categoriab.pdf`
-- `/Users/chap/Downloads/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf`
-- `/Users/chap/Downloads/PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf`
-- `/Users/chap/Downloads/agent_roadmap_ru.pdf`
-- `/Users/chap/Downloads/трудные билеты.pdf`
-- `/Users/chap/Downloads/ПДД Аргентины.pdf`
-- `/Users/chap/Downloads/Первое_получение_прав_и_обновление.pdf`
+- `<user-downloads>/categoriab.pdf`
+- `<user-downloads>/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf`
+- `<user-downloads>/PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf`
+- `<user-downloads>/agent_roadmap_ru.pdf`
+- `<user-downloads>/трудные билеты.pdf`
+- `<user-downloads>/ПДД Аргентины.pdf`
+- `<user-downloads>/Первое_получение_прав_и_обновление.pdf`
 
 Requested outcomes:
 

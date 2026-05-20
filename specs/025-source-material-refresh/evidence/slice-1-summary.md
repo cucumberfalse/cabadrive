@@ -27,6 +27,7 @@
 
 - Existing fallback bank: 460 questions, 276 image-backed records, content mode `unofficial_b_fallback`.
 - Extracted structured Spanish candidates: 642.
+- Codex review sanitation: committed candidate-disposition evidence now retains source/page, match/disposition metadata, existing IDs, counts, and SHA-256 fingerprints only. Verbatim candidate question and answer text extracted from user-supplied PDFs is intentionally not committed; raw local extraction output may remain outside git for operator inspection.
 - Counts by source: `{"PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf": 195, "categoriab.pdf": 447}`
 - Counts by match type: `{"exact_spanish_tuple": 445, "fuzzy_question_text": 3, "no_structured_match": 135, "question_text_only": 59}`
 - Counts by disposition: `{"ambiguous": 62, "duplicate": 445, "outdated": 135}`
@@ -54,3 +55,8 @@
 - `specs/025-source-material-refresh/evidence/ticket-candidate-dispositions.json`
 - `specs/025-source-material-refresh/evidence/ticket-candidate-dispositions.csv`
 - `specs/025-source-material-refresh/evidence/ticket-comparison-summary.json`
+
+## Review Fix Notes
+
+- PR #167 Codex review fix removed machine-specific user-home paths from committed feature evidence and memory, replacing them with `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...` logical identifiers.
+- The candidate-disposition JSON/CSV no longer stores verbatim extracted ticket text; it stores non-verbatim comparison metadata plus question, answer-set, Spanish-tuple, and existing-correct-answer SHA-256 fingerprints where applicable.
