@@ -47,6 +47,46 @@ function textSnippet(value, max = 88) {
   return String(value).replace(/\s+/g, " ").trim().slice(0, max);
 }
 
+function assetStemFromUnitId(unitId) {
+  return String(unitId)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 120);
+}
+
+function unitLabel(unit) {
+  switch (unit.kind) {
+    case "topicSummary":
+      return `теме "${unit.topicTitleRu}"`;
+    case "learningMaterial":
+      return `учебному абзацу темы "${unit.topicTitleRu}"`;
+    case "practicalReasoning":
+      return `практическому пояснению темы "${unit.topicTitleRu}"`;
+    case "trapNote":
+      return `ловушке темы "${unit.topicTitleRu}"`;
+    case "topicTerm":
+      return `термину "${unit.termEs}" в теме "${unit.topicTitleRu}"`;
+    case "vocabularyTerm":
+      return `словарному термину "${unit.termEs}"`;
+    default:
+      return "учебной единице";
+  }
+}
+
+function unitCaption(unit) {
+  if (unit.kind === "topicTerm" || unit.kind === "vocabularyTerm") return `Термин: ${unit.termEs}`;
+  if (unit.kind === "trapNote") return `Ловушка: ${unit.topicTitleRu}`;
+  if (unit.kind === "practicalReasoning") return `Практика: ${unit.topicTitleRu}`;
+  if (unit.kind === "learningMaterial") return `Материал: ${unit.topicTitleRu}`;
+  return `Схема: ${unit.topicTitleRu}`;
+}
+
+function unitAlt(unit) {
+  const concept = unit.termEs || unit.translationRu || unit.textRu || unit.topicTitleRu;
+  return `Учебная схема к ${unitLabel(unit)}: локальная дорожная ситуация без текста на изображении, связанная с "${textSnippet(concept, 72)}".`;
+}
+
 function unitFingerprint(unit) {
   return fingerprint({
     kind: unit.kind,
@@ -206,90 +246,52 @@ function svgDimensions(relativePath) {
 function buildGeneratedRecords({ topicGuide, vocabulary, units }) {
   const images = [];
   const coverage = [];
-  const imageIdsByTopic = new Map();
-  for (const topic of topicGuide.topics) {
-    const topicSlug = topic.slug || topic.id;
-    const imageId = `learning-topic-${topicSlug}`;
-    const localPath = `${assetRoot}/topic-${topicSlug}.svg`;
-    writeGeneratedAsset(localPath, svgForImage(topicSlug, "topic"));
-    const { width, height } = svgDimensions(localPath);
-    images.push({
-      imageId,
-      localPath,
-      sha256: sha256File(localPath),
-      width,
-      height,
-      aspectRatioFamily: "4:3",
-      styleVersion,
-      altRu: `Учебная схема к теме "${topic.titleRu}": дорога, ориентир, знак и автомобиль без текста на изображении.`,
-      captionRu: `Схема темы: ${topic.titleRu}`,
-      provenance: {
-        method: "programmatic_svg_generation",
-        promptSummary: `Deterministic educational road-safety SVG for topic ${topicSlug}, no text, no official logo, no ticket image source.`,
-        generatedAt: reviewedAt,
-        reviewer,
-        reviewedAt,
-        licenseNote: "Original local SVG generated for Cabadrive learning support."
-      },
-      safety: {
-        noRuntimeGeneration: true,
-        noRemoteSource: true,
-        noTicketImageReplacement: true,
-        noMisleadingRoadRuleCue: true,
-        noUnreviewedTextInImage: true
-      }
-    });
-    imageIdsByTopic.set(topic.id, imageId);
-  }
+  void topicGuide;
+  void vocabulary;
 
-  for (const term of vocabulary) {
-    const imageId = `learning-vocabulary-${term.id}`;
-    const localPath = `${assetRoot}/vocabulary-${term.id}.svg`;
-    writeGeneratedAsset(localPath, svgForImage(term.id, "term"));
-    const { width, height } = svgDimensions(localPath);
-    images.push({
-      imageId,
-      localPath,
-      sha256: sha256File(localPath),
-      width,
-      height,
-      aspectRatioFamily: "4:3",
-      styleVersion,
-      altRu: `Учебная иллюстрация термина "${term.termEs}": дорожная ситуация с автомобилем и ориентиром без текста на изображении.`,
-      captionRu: `Термин: ${term.termEs}`,
-      provenance: {
-        method: "programmatic_svg_generation",
-        promptSummary: `Deterministic educational road-safety SVG for vocabulary term ${term.id}, no text, no official logo, no ticket image source.`,
-        generatedAt: reviewedAt,
-        reviewer,
-        reviewedAt,
-        licenseNote: "Original local SVG generated for Cabadrive learning support."
-      },
-      safety: {
-        noRuntimeGeneration: true,
-        noRemoteSource: true,
-        noTicketImageReplacement: true,
-        noMisleadingRoadRuleCue: true,
-        noUnreviewedTextInImage: true
-      }
-    });
-  }
-
-  const vocabImageIds = new Map(vocabulary.map((term) => [term.id, `learning-vocabulary-${term.id}`]));
   for (const unit of units) {
-    const imageId = unit.kind === "vocabularyTerm" ? vocabImageIds.get(unit.termId) : imageIdsByTopic.get(unit.topicId);
+    const assetStem = assetStemFromUnitId(unit.unitId);
+    const imageId = `learning-${assetStem}`;
+    const localPath = `${assetRoot}/${assetStem}.svg`;
+    const variant = unit.kind === "topicTerm" || unit.kind === "vocabularyTerm" ? "term" : "topic";
+    writeGeneratedAsset(localPath, svgForImage(`${unit.unitId}:${unit.sourceFingerprint}`, variant));
+    const { width, height } = svgDimensions(localPath);
+    images.push({
+      imageId,
+      localPath,
+      sha256: sha256File(localPath),
+      width,
+      height,
+      aspectRatioFamily: "4:3",
+      styleVersion,
+      altRu: unitAlt(unit),
+      captionRu: unitCaption(unit),
+      provenance: {
+        method: "programmatic_svg_generation",
+        promptSummary: `Deterministic unit-specific road-safety SVG for ${unit.unitId}: ${textSnippet(unit.textRu || unit.termEs || unit.translationRu || unit.topicTitleRu, 120)}. No text, no official logo, no ticket image source.`,
+        generatedAt: reviewedAt,
+        reviewer,
+        reviewedAt,
+        licenseNote: "Original local SVG generated for Cabadrive learning support."
+      },
+      safety: {
+        noRuntimeGeneration: true,
+        noRemoteSource: true,
+        noTicketImageReplacement: true,
+        noMisleadingRoadRuleCue: true,
+        noUnreviewedTextInImage: true
+      }
+    });
     coverage.push({
       unitId: unit.unitId,
       unitKind: unit.kind,
       sourceFingerprint: unit.sourceFingerprint,
-      status: unit.kind === "vocabularyTerm" ? "direct" : "shared",
-      imageIds: imageId ? [imageId] : [],
+      status: "direct",
+      imageIds: [imageId],
       reviewer,
       reviewedAt,
       evidenceStatus: "approved",
-      noteRu: unit.kind === "vocabularyTerm"
-        ? `Локальная иллюстрация покрывает термин "${unit.termEs}".`
-        : `Общая схема темы "${unit.topicTitleRu}" используется как близкая визуальная опора для этой единицы: ${textSnippet(unit.textRu || unit.termEs)}`
+      noteRu: `Прямая локальная SVG-иллюстрация создана для ${unitLabel(unit)}: ${textSnippet(unit.textRu || unit.termEs || unit.translationRu)}`
     });
   }
   return { images, coverage };
@@ -398,6 +400,22 @@ export function validateLearningImages({
         if (!imageById.has(imageId)) errors.push(`${record.unitId}: imageId ${imageId} is missing from images.`);
       }
     }
+    if (record.status === "shared") {
+      const concept = record.sharedConcept;
+      const conceptKey = concept?.conceptKey;
+      if (!concept || typeof concept !== "object") errors.push(`${record.unitId}: shared coverage must include sharedConcept.`);
+      if (typeof conceptKey !== "string" || conceptKey.trim().length < 6) errors.push(`${record.unitId}: sharedConcept.conceptKey is required.`);
+      if (unit?.topicId && (conceptKey === unit.topicId || conceptKey === `topic:${unit.topicId}` || conceptKey?.startsWith(`topic-${unit.topicId}`))) {
+        errors.push(`${record.unitId}: shared coverage must use an auditable concept key, not generic topic-wide sharing.`);
+      }
+      if (typeof concept?.titleRu !== "string" || concept.titleRu.trim().length < 8) errors.push(`${record.unitId}: sharedConcept.titleRu is required.`);
+      if (typeof concept?.rationaleRu !== "string" || concept.rationaleRu.trim().length < 24) errors.push(`${record.unitId}: sharedConcept.rationaleRu is required.`);
+      if (!Array.isArray(concept?.relatedUnitIds) || concept.relatedUnitIds.length < 2 || concept.relatedUnitIds.length > 24) {
+        errors.push(`${record.unitId}: sharedConcept.relatedUnitIds must contain 2-24 audited unit IDs.`);
+      } else if (!concept.relatedUnitIds.includes(record.unitId)) {
+        errors.push(`${record.unitId}: sharedConcept.relatedUnitIds must include the covered unit.`);
+      }
+    }
   }
   for (const unit of units) {
     if (!seenCoverage.has(unit.unitId)) errors.push(`${unit.unitId}: missing learning-image coverage record.`);
@@ -451,7 +469,7 @@ function writeGeneratedManifest() {
     safetyNotes: [
       "Assets are committed local SVG files under content/assets/learning/generated/v1/.",
       "Images contain no readable text, no official logos, no personal data, and no source-ticket pixels.",
-      "Topic images may be shared when coverage records explicitly connect the unit to the image."
+      "Every current topic-study and vocabulary coverage unit has a unit-specific direct SVG asset."
     ]
   };
   mkdirSync(dirname(repoPath(manifestPath)), { recursive: true });

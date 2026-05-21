@@ -510,7 +510,7 @@ function QuestionCard({
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
         {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
-        {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
+        {mode !== "exam" && question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
 
       {learningTimer && (

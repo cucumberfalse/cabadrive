@@ -10,6 +10,8 @@ const learningImages = JSON.parse(readFileSync("content/learning-images/learning
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
+const learningImageById = new Map(learningImages.images.map((image: { imageId: string }) => [image.imageId, image]));
+const learningCoverageByUnitId = new Map(learningImages.coverage.map((record: { unitId: string }) => [record.unitId, record]));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
@@ -533,6 +535,7 @@ test("exam mode hides translation and explanation during active attempt and stor
   await expect(page.getByTestId("image-explanation-overlay")).toHaveCount(0);
   await expect(page.getByTestId("learning-image")).toHaveCount(0);
   await expect(page.locator(".difficulty-chip")).toHaveCount(0);
+  await expect(page.getByText("есть отрицание/ловушка")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Пояснение/ })).toHaveCount(0);
   await page.getByRole("button", { name: "Пропустить" }).click();
   await expect(page.getByText("2 / 40")).toBeVisible();
@@ -549,9 +552,11 @@ test("vocabulary and guide are available", async ({ page }) => {
   await page.getByRole("button", { name: /Словарь/ }).click();
   await page.getByPlaceholder(/Buscar/).fill("balizas");
   await expect(page.getByRole("heading", { name: "balizas" })).toBeVisible();
+  const balizasCoverage = learningCoverageByUnitId.get("vocabulary-term:term-balizas") as { imageIds: string[] };
+  const balizasImage = learningImageById.get(balizasCoverage.imageIds[0]) as { localPath: string };
   const vocabularyImage = page.getByTestId("learning-image").first();
   await expect(vocabularyImage).toBeVisible();
-  await expect(vocabularyImage.locator("img")).toHaveAttribute("src", /content\/assets\/learning\/generated\/v1\/vocabulary-term-balizas\.svg/);
+  await expect(vocabularyImage.locator("img")).toHaveAttribute("src", new RegExp(balizasImage.localPath.replace(/\//g, "\\/")));
   await expect(vocabularyImage.locator("img")).toHaveAttribute("alt", /balizas|термина/i);
   await expect(page.locator("[lang='es']").filter({ hasText: "balizas" })).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
@@ -867,8 +872,16 @@ test("materials view stays local-first without external requests or PDF viewer",
 });
 
 test("learning-image manifest coverage matches rendered local material/vocabulary assets", async ({ page }) => {
-  expect(learningImages.coverage).toHaveLength(1382);
-  expect(learningImages.images).toHaveLength(48);
+  const topicUnitCount = topicGuide.topics.reduce((total: number, topic: {
+    learningMaterialRu: string[];
+    practicalReasoningRu?: string[];
+    trapNotes: { textRu: string }[];
+    spanishTerms: { termEs: string }[];
+  }) => total + 1 + topic.learningMaterialRu.length + (topic.practicalReasoningRu?.length ?? 0) + topic.trapNotes.length + topic.spanishTerms.length, 0);
+  const expectedCoverage = topicUnitCount + learningImages.coverage.filter((record: { unitKind: string }) => record.unitKind === "vocabularyTerm").length;
+  expect(learningImages.coverage).toHaveLength(expectedCoverage);
+  expect(learningImages.images).toHaveLength(expectedCoverage);
+  expect(learningImages.coverage.every((record: { status: string }) => record.status === "direct")).toBeTruthy();
   expect(learningImages.images.every((image: { localPath: string }) => image.localPath.startsWith("content/assets/learning/generated/v1/"))).toBeTruthy();
 
   await page.goto("/");

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { collectLearningImageCoverageUnits, validateLearningImages } from "../scripts/content-learning-images.mjs";
+import { collectLearningImageCoverageUnits, formatLearningImageSummary, validateLearningImages } from "../scripts/content-learning-images.mjs";
 
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const vocabulary = JSON.parse(readFileSync("content/vocabulary/ru.vocabulary.json", "utf8"));
@@ -15,7 +15,8 @@ function clone(value) {
 
 test("learning-image validator passes current manifest and reports computed coverage", () => {
   const output = execFileSync("node", ["scripts/content-learning-images.mjs"], { encoding: "utf8" });
-  assert.match(output, /Learning images validated: 1382 units, 48 local images, 10 direct, 1372 shared, 0 exceptions/);
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest, evidence });
+  assert.equal(output.trim(), formatLearningImageSummary(result.summary));
 });
 
 test("learning-image units are computed from topic guide and vocabulary", () => {
@@ -54,4 +55,21 @@ test("learning-image validator rejects missing coverage records", () => {
   badManifest.coverage.pop();
   const result = validateLearningImages({ topicGuide, vocabulary, manifest: badManifest, evidence });
   assert.ok(result.errors.some((error) => error.includes("missing learning-image coverage record")));
+});
+
+test("learning-image validator rejects generic topic-wide shared coverage", () => {
+  const badManifest = clone(manifest);
+  const topicRecord = badManifest.coverage.find((record) => record.unitKind !== "vocabularyTerm");
+  topicRecord.status = "shared";
+  topicRecord.sharedConcept = {
+    conceptKey: `topic:${topicRecord.unitId.split(":")[1]}`,
+    titleRu: "Общая тема",
+    rationaleRu: "Намеренно слишком общий bucket всей темы, который не доказывает смысловую близость единиц.",
+    relatedUnitIds: badManifest.coverage
+      .filter((record) => record.unitId.includes(`:${topicRecord.unitId.split(":")[1]}:`) || record.unitId.endsWith(`:${topicRecord.unitId.split(":")[1]}`))
+      .slice(0, 4)
+      .map((record) => record.unitId)
+  };
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest: badManifest, evidence });
+  assert.ok(result.errors.some((error) => error.includes("generic topic-wide sharing")));
 });

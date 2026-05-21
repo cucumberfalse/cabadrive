@@ -5,8 +5,13 @@ import { test } from "node:test";
 
 test("content validation command passes", () => {
   const output = execFileSync("node", ["scripts/validate-content.mjs"], { encoding: "utf8" });
+  const learningEvidence = JSON.parse(readFileSync("content/validation/learning-images.evidence.json", "utf8"));
+  const learningSummary = learningEvidence.summary;
   assert.match(output, /Difficulty labels validated: 460 questions, 38 topics/);
-  assert.match(output, /Learning images validated: 1382 units, 48 local images/);
+  assert.match(
+    output,
+    new RegExp(`Learning images validated: ${learningSummary.coverageUnitCount} units, ${learningSummary.imageCount} local images`)
+  );
   assert.match(output, /Content validation passed/);
 });
 

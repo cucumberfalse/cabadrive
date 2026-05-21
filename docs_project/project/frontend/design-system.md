@@ -89,7 +89,8 @@ Visual rules:
 - no official logos, personal data, or copied ticket-image pixels;
 - no readable text inside the SVG unless the same text is also present as real HTML text;
 - alt text explains the learning concept in Russian;
-- shared topic images are allowed only when each content unit has an explicit coverage record.
+- current feature 026 coverage uses one deterministic local SVG per coverage unit and records it as `direct`;
+- shared images are allowed only with audited concept-level records, not broad topic-wide sharing.
 
 ## Validation
 

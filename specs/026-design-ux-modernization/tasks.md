@@ -122,6 +122,12 @@
 - [ ] T094 Review Agent verifies tests and evidence cover desktop/mobile layout, local-only behavior, accessibility/focus, build/offline behavior, and validation.
 - [ ] T095 Review Agent verifies Implementation Agent feedback has Architect disposition before final validation.
 
+## Review Finding Follow-Up Tasks
+
+- [x] T096 [P1 active-exam support hiding] Remove the active-exam `есть отрицание/ловушка` warning from `src/App.tsx` question metadata and any equivalent active-attempt metadata surface. This warning is learning support/hinting and must not appear during active exam attempts. Learning/mistake-review surfaces may continue showing allowed after-answer support according to the existing hidden-before-answer contract. Add or update Playwright coverage that starts an active exam attempt and asserts the warning text, generated learning images, translations, explanations, overlays, difficulty rationale, and support controls are absent before answer submission.
+- [x] T097 [P1 learning-image meaningful coverage] Replace the current broad generic topic-image assignment in `scripts/content-learning-images.mjs`, manifest records, evidence, and rendered materials so learning-image coverage no longer approves one generic topic SVG for every non-vocabulary material unit. Preferred remediation is unit-specific deterministic local SVG assets and direct coverage records for topic summaries, learning paragraphs, practical paragraphs, trap notes, and topic Spanish terms. If implementation instead uses shared images, the sharing model must be concept-level rather than topic-level: each shared bucket must have an explicit semantic concept key/title, a bounded set of related unit IDs, reviewer-auditable rationale, and assets that visibly illustrate the specific shared concept. Validator/evidence must report direct/shared/exception counts accurately, reject unbucketed generic topic sharing, reject stale source fingerprints, and avoid hard-coded stale expected counts by deriving unit totals from current content. Tests must cover rejection of generic topic-wide sharing and acceptance of either unit-specific direct records or audited concept-level sharing.
+- [x] T098 Rerun and record follow-up verification after T096-T097: `pnpm run validate:learning-images`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and ticket-immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7`.
+
 ## Process Memory
 
 ### Architect Decisions
@@ -156,12 +162,16 @@
 - Implementation: initial `pnpm exec tsc --noEmit` could not find `tsc` before dependencies were installed; `pnpm install` restored local dependencies and `pnpm exec tsc --noEmit` then passed.
 - Implementation: an initial screenshot helper had a local quoting mistake, then a missing `playwright` package import when using `require("playwright")`; reran successfully with `node --input-type=module` and `@playwright/test`.
 - Implementation: first `pnpm run test:e2e` failed because a new vocabulary image caption made `getByText("balizas")` ambiguous; the test was corrected to assert the vocabulary heading and the full e2e suite passed.
+- Follow-up: a targeted Playwright run before rebuilding served the previous `dist` bundle and still saw the old learning-image manifest path; reran through `pnpm run build`/`pnpm run test:e2e` so browser verification used current source.
+- Follow-up: first full `pnpm run test:e2e` after direct-image generation failed because the new alt text started with `Учебная локальная схема`, while the existing assertion expected `Учебная схема`; adjusted the deterministic alt template to keep the simpler leading phrase and reran successfully.
+- Follow-up: first temp-log preflight wrapper used zsh's readonly `status` variable; reran the same command with `rc` and captured a passing preflight tail.
 
 ### Known Issues
 
 - The feature folder is currently untracked in this Architect worktree, as expected for new feature memory.
-- The requested image coverage is large, but Implementation kept it reviewable by using 48 deterministic shared SVG assets plus explicit per-unit coverage records instead of hundreds of separate bitmap generations.
+- The requested image coverage is large; the follow-up replaced broad topic sharing with 1,382 deterministic unit-specific direct SVG assets and explicit per-unit direct coverage records.
 - Implementation known issues: none blocking. The production build retains the pre-existing Vite large-chunk warning for the main app/source-reader bundle; build still passes.
+- Follow-up known issues: none blocking. The direct unit-specific learning-image set increases the generated service-worker cached asset count to 1,728 and retains the pre-existing Vite large-chunk warning; build, e2e, and preflight still pass.
 
 ### Verification Evidence
 
@@ -200,8 +210,8 @@
   - Added generated local SVG assets under `content/assets/learning/generated/v1/`.
   - Image style version: `cabadrive-learning-image-v1`.
   - Generation method: deterministic programmatic SVG generation from documented style rules; no runtime generation, no remote image source, no official logos, no readable text inside the SVGs, no canonical ticket-image pixels.
-  - Asset volume: 48 SVG files, approximately 192K under `content/assets/learning/generated/v1/`.
-  - Coverage totals from validator: 1,382 computed units, 48 local images, 10 direct vocabulary coverage records, 1,372 shared material coverage records, 0 exceptions.
+  - Asset volume after follow-up: 1,382 SVG files under `content/assets/learning/generated/v1/`.
+  - Coverage totals from validator after follow-up: 1,382 computed units, 1,382 local images, 1,382 direct coverage records, 0 shared records, 0 exceptions.
 - Tests added/updated:
   - Added `tests/content-learning-images.test.mjs` for validator success and failure cases.
   - Updated `tests/content-validation.test.mjs` to assert the learning-image validation summary from `validate:content`.
@@ -214,7 +224,7 @@
   - `specs/026-design-ux-modernization/evidence/screenshots/mobile-learn.png`
   - `specs/026-design-ux-modernization/evidence/screenshots/mobile-materials.png`
 - Verification evidence:
-  - `pnpm run validate:learning-images`: passed; `Learning images validated: 1382 units, 48 local images, 10 direct, 1372 shared, 0 exceptions.`
+  - `pnpm run validate:learning-images`: passed before review follow-up; stale total superseded by T098 follow-up evidence below.
   - `pnpm run validate:content`: passed; includes learning-image validation and `Content validation passed: 460 category B fallback questions, 276 local image references.`
   - `pnpm run validate:content:quality`: passed with full content quality gate enabled.
   - `pnpm exec tsc --noEmit`: passed after installing local dependencies.
@@ -227,13 +237,38 @@
   - Ticket immutability diff passed with no output: `git diff --exit-code c083b248564a67d7599fa63d4181759fe30cd6a7 -- content/questions/caba-b.unofficial-fallback.questions.json content/assets/questions/source-bandinopla-testdeconducir-b`.
   - Development server for handoff is running at `http://localhost:5174/` because port 5173 was already in use.
 
+### Review Finding Follow-Up Evidence
+
+- Follow-up started from assigned PR head `80715237e0f77e80b286d6cb99cde9d651a2a697` on branch `codex/026-design-ux-modernization`; work stayed in `/Users/chap/devel/cabadrive-worktrees/026-design-ux-modernization`.
+- T096 implementation: `src/App.tsx` now renders the `есть отрицание/ловушка` metadata warning only when `mode !== "exam"`. Active exam attempts still hide translation, explanation, image overlays, generated learning images, difficulty chips/rationale, learning timer controls, and support controls.
+- T096 tests: `tests/e2e/app.spec.ts` active-exam coverage now asserts `есть отрицание/ловушка` is absent before answering, alongside existing assertions for translations, explanations, overlays, generated learning images, difficulty chips, and support controls.
+- T097 implementation: `scripts/content-learning-images.mjs` now generates one deterministic local SVG asset per current coverage unit and records every topic summary, learning paragraph, practical paragraph, trap note, topic Spanish term, and vocabulary term as `direct` coverage.
+- T097 validator hardening: shared coverage now requires an auditable `sharedConcept` with concept key, title, rationale, and a bounded related-unit list, and rejects generic topic-wide sharing keys. Current manifest uses no shared records.
+- T097 assets/evidence: `content/learning-images/learning-images.manifest.json` and `content/validation/learning-images.evidence.json` now report `1,382` computed units, `1,382` local SVG images, `1,382` direct records, `0` shared records, and `0` exceptions. Unit kind counts remain `38` topic summaries, `269` learning material paragraphs, `109` practical reasoning paragraphs, `225` trap notes, `731` topic terms, and `10` vocabulary terms.
+- T097 docs/tests: `docs_project/project/feature-inventory.md` and `docs_project/project/frontend/design-system.md` now describe direct unit-specific coverage and the no-generic-topic-sharing rule. `tests/content-learning-images.test.mjs`, `tests/content-validation.test.mjs`, and `tests/e2e/app.spec.ts` derive current totals from content/evidence where possible instead of stale hard-coded totals.
+- Focused pre-change checks: `pnpm exec node --test tests/content-learning-images.test.mjs` passed with the old sharing model; `pnpm exec playwright test tests/e2e/app.spec.ts -g "exam mode hides translation"` passed before the new warning assertion was added.
+- Focused follow-up checks: `pnpm run validate:learning-images` passed with `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`; `pnpm exec node --test tests/content-learning-images.test.mjs tests/content-validation.test.mjs` passed `10` tests; targeted Playwright for exam/vocabulary/manifest passed after rebuild.
+- T098 verification:
+  - `pnpm run validate:learning-images`: passed; `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
+  - `pnpm run validate:content`: passed; includes direct learning-image validation and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run validate:content:quality`: passed with full content quality gate enabled.
+  - `pnpm run test`: passed, `255` Node tests.
+  - `pnpm run build`: passed; service worker generated with `1,728` cached assets; Vite retained the existing large-chunk warning.
+  - `pnpm run test:e2e`: passed, `50` Playwright tests across chromium/mobile.
+  - `git diff --check`: passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed.
+  - Ticket immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7` passed with no output for `content/questions/caba-b.unofficial-fallback.questions.json` and `content/assets/questions/source-bandinopla-testdeconducir-b`.
+  - `pnpm run preflight`: passed; rerun log tail ended with `50 passed (18.4s)` from Playwright.
+
 ### Implementation Agent Feedback
 
-- Pending.
+- None. Follow-up fixes stayed within the Architect dispositions for T096-T097 and introduced no new product or architecture request.
 
 ### Architect Dispositions
 
-- Pending Implementation Agent feedback.
+- Review finding 1 disposition: accept/task. The active exam `есть отрицание/ловушка` metadata warning is learning support/hinting and violates the hard active-exam support-hiding contract. Implementation Agent must complete T096 before final Architect validation.
+- Review finding 2 disposition: accept/task. Current learning-image coverage is overstated because one generic topic SVG assigned to every non-vocabulary material unit does not satisfy meaningful paragraph/unit imagery. Implementation Agent must complete T097 before final Architect validation, preferring unit-specific deterministic local SVG assets/records where feasible or otherwise a tightly audited concept-level sharing model.
+- Implementation Agent feedback: none recorded by follow-up; no Architect disposition needed.
 
 ### Final Architect Validation Hooks
 
