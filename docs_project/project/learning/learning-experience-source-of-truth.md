@@ -64,6 +64,8 @@ Vocabulary is useful when it links Spanish exam terms to real tickets and topics
 
 `Материалы` renders the local topic study guide as published unofficial learning support. Ticket blocks in materials join back to canonical questions for Spanish text, answers, correct answer, explanations, local images, and source status.
 
+Feature 026 adds local generated learning images to authored topic-study units and Spanish term rows. These images are unofficial visual support, governed by coverage records and source fingerprints, and must not replace canonical ticket text or ticket images.
+
 ### LEARN-013 CABA/RF Is A Compact Contrast Guide
 
 `CABA/RF` explains high-risk differences from Russian driving expectations. It should stay compact and exam-focused.
@@ -103,6 +105,8 @@ All learning loops must work from bundled content after build. Offline reload is
 - Russian explanation is visible because the surface is passive support, not active recall.
 - Canonical Spanish ticket data remains visible inside ticket blocks.
 - Published and unofficial-support labels remain visible.
+- Spanish term rows use nearby Russian support and valid language boundaries where feasible.
+- Authored material units may render governed local learning images when coverage records are approved.
 
 ## Acceptance Hooks
 

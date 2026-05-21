@@ -7,6 +7,7 @@ import guide from "../../content/guide/ru.condensed-guide.json";
 import cabaExamProcessGuideJson from "../../content/guide/caba-exam-process.ru.json";
 import topicStudyGuideJson from "../../content/guide/topic-study-guide.ru.json";
 import imageOverlaysJson from "../../content/image-overlays/question-explanation-overlays.manifest.json";
+import learningImagesJson from "../../content/learning-images/learning-images.manifest.json";
 
 export type Answer = {
   id: string;
@@ -257,6 +258,36 @@ export type ImageOverlayManifest = {
   overlays: ImageExplanationOverlay[];
 };
 
+export type LearningImageRecord = {
+  imageId: string;
+  localPath: string;
+  sha256: string;
+  width: number;
+  height: number;
+  aspectRatioFamily: "4:3" | "16:9" | "1:1";
+  styleVersion: "cabadrive-learning-image-v1";
+  altRu: string;
+  captionRu: string;
+};
+
+export type LearningImageCoverageRecord = {
+  unitId: string;
+  unitKind: "topicSummary" | "learningMaterial" | "practicalReasoning" | "trapNote" | "topicTerm" | "vocabularyTerm";
+  sourceFingerprint: string;
+  status: "direct" | "shared" | "exception";
+  imageIds?: string[];
+  exceptionReason?: string;
+  noteRu?: string;
+};
+
+export type LearningImageManifest = {
+  version: number;
+  contentKind: "learning-images";
+  styleVersion: "cabadrive-learning-image-v1";
+  images: LearningImageRecord[];
+  coverage: LearningImageCoverageRecord[];
+};
+
 export type ProgressAnswer = {
   questionId: string;
   selectedAnswerId: string;
@@ -304,6 +335,7 @@ export const data = {
   translations: translations as Translation[],
   explanations: explanations as Explanation[],
   imageOverlays: (imageOverlaysJson as ImageOverlayManifest).overlays,
+  learningImages: learningImagesJson as LearningImageManifest,
   vocabulary,
   guide,
   cabaExamProcessGuide: cabaExamProcessGuideJson as CabaExamProcessGuide,
@@ -313,6 +345,8 @@ export const data = {
 export const translationByQuestion = new Map(data.translations.map((item) => [item.questionId, item]));
 export const explanationByQuestion = new Map(data.explanations.map((item) => [item.questionId, item]));
 export const imageOverlayByQuestion = new Map(data.imageOverlays.filter((item) => item.status === "approved").map((item) => [item.questionId, item]));
+export const learningImageById = new Map(data.learningImages.images.map((item) => [item.imageId, item]));
+export const learningImageCoverageByUnit = new Map(data.learningImages.coverage.map((item) => [item.unitId, item]));
 export const sourceById = new Map(data.sources.map((source) => [source.id, source]));
 export const questionById = new Map(data.questions.map((question) => [question.id, question]));
 

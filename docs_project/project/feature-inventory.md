@@ -13,6 +13,8 @@
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
 - Topic materials module that renders the published unofficial topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, governed Russian translations where available, concise missing-translation fallback, learner difficulty, and local images.
+- Governed local generated learning-image system for `Материалы` and `Словарь`, using `cabadrive-learning-image-v1` SVG assets, manifest coverage, source fingerprints, alt/provenance metadata, and validation through `pnpm run validate:learning-images`.
+- Materials bilingual UX renders Spanish/Russian term pairs with explicit language boundaries and keyboard/touch-accessible reveal state while keeping Russian support close to Spanish terms.
 - Process guide module that renders the bundled Russian CABA B1/private-car `Otorgamiento` guide with official GCBA/ANSV links, checked dates, volatile-info warnings, adjacent-path callouts, and Spanish administrative glossary.
 - Validated learner-difficulty layer for all current questions and topic materials using `green`, `blue`, `yellow`, and `red` levels with dimensions, Russian rationale, provenance, and stale-source fingerprints.
 - `Источники` / official primary-source reader from feature `019-primary-sources-section`: exposes every current official manifest entry as a local reference surface, defaults to simple Russian, allows full Russian translation and original Spanish views, and keeps all Russian source-reader content outside `content/official-documents/`. The learner corpus, currentness gate, and exact-text gate are complete for the current 19-entry manifest.
@@ -30,6 +32,7 @@
 - Question images are part of the learning surface and are stored locally in the repository for offline use.
 - Official primary-source documents are separate from practice-question availability. They support source traceability and the `Источники` reader, but their presence does not make the current practice set an official full GCBA question bank.
 - Current image metadata coverage is complete for 275 unique local images and 276 image-backed question references. Feature 009 reviewed shards contain actual-image visual metadata, stable object/detail/region IDs, question-specific relevance roles, complete Russian translations, complete Russian explanations, and deterministic evidence for the current 460-ticket fallback bank.
+- Current generated learning-image coverage is complete for topic-study and vocabulary coverage units: 1,382 units, 48 local SVG images, 10 direct vocabulary records, 1,372 shared material records, and 0 reviewed exceptions as of feature 026. These images are unofficial educational support and are separate from canonical ticket images.
 - Feature 009 content is sharded by ticket range under `content/translations/ru/`, `content/explanations/ru/`, and `content/image-metadata/question-images/`. The adjacent monolithic JSON files are generated compatibility indexes, not editing sources. Full feature readiness requires fresh indexes/evidence plus passing `pnpm run validate:content` and `pnpm run validate:content:quality`.
 
 ## Future Candidates

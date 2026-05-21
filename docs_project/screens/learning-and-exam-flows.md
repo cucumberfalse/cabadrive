@@ -59,8 +59,9 @@
 
 1. Browse by topic.
 2. Search Spanish/Russian terms.
-3. Open linked example questions.
-4. Prioritize critical-frequency terms.
+3. Review the local generated learning image for each current term.
+4. Open linked example questions.
+5. Prioritize critical-frequency terms.
 
 ## Topic Materials Flow
 
@@ -68,11 +69,13 @@
 2. Browse topic sections from `content/guide/topic-study-guide.ru.json`.
 3. See compact topic difficulty in the topic list and selected topic heading.
 4. Select a topic and read Russian learning material, practical reasoning when present, Spanish terms, trap notes, and full guide ticket blocks.
-5. Render ticket blocks by joining guide `questionId` and `answerId` references to canonical bundled questions and answers.
-6. Render ticket difficulty in material ticket blocks from the canonical question record, never from per-topic duplicate labels.
-7. Show governed Russian question and answer translations in ticket blocks when available; otherwise show a concise missing-translation fallback while keeping canonical Spanish primary.
-8. Show local question images through bundled offline assets only.
-9. Keep published/unofficial learning-aid and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
+5. Show governed local learning images for authored material units and Spanish term rows, using coverage records from the learning-image manifest.
+6. Render Spanish term rows as close Spanish/Russian pairs with keyboard/touch-accessible reveal state and `lang` boundaries where feasible.
+7. Render ticket blocks by joining guide `questionId` and `answerId` references to canonical bundled questions and answers.
+8. Render ticket difficulty in material ticket blocks from the canonical question record, never from per-topic duplicate labels.
+9. Show governed Russian question and answer translations in ticket blocks when available; otherwise show a concise missing-translation fallback while keeping canonical Spanish primary.
+10. Show local question images through bundled offline assets only.
+11. Keep published/unofficial learning-aid and current fallback question-set labels visible at section/product level without repeating the full status chip inside every ticket block.
 
 ## Official Sources / `Источники` Flow
 

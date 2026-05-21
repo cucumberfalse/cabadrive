@@ -1,9 +1,24 @@
 :root {
-  color: #16201d;
-  background: #f5f2ea;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17211f;
+  background: #eef3f1;
+  font-family: "Inter", "Segoe UI", "Noto Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  --ink: #17211f;
+  --muted: #56655f;
+  --surface: #fffefa;
+  --surface-strong: #ffffff;
+  --line: #cfd8d3;
+  --line-strong: #aebcb5;
+  --accent: #176b57;
+  --accent-soft: #e2f4ec;
+  --blue: #315f9a;
+  --blue-soft: #eef5ff;
+  --amber: #a06916;
+  --amber-soft: #fff3cf;
+  --danger: #b8473f;
+  --danger-soft: #fff0ee;
+  --shadow: 0 14px 40px rgba(28, 41, 37, 0.08);
 }
 
 * {
@@ -14,6 +29,9 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(238, 243, 241, 0.78) 280px),
+    #eef3f1;
 }
 
 button,
@@ -44,9 +62,9 @@ button:disabled {
 }
 
 main {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1220px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 24px 0 48px;
+  padding: 20px 0 48px;
 }
 
 .app-header {
@@ -54,12 +72,12 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 0 8px;
+  padding: 18px 0 10px;
 }
 
 .eyebrow {
   margin: 0 0 6px;
-  color: #5f6c67;
+  color: var(--muted);
   font-size: 0.86rem;
   text-transform: uppercase;
 }
@@ -73,8 +91,18 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: clamp(1.8rem, 3vw, 3rem);
+  max-width: 760px;
+  font-size: 2.35rem;
+  line-height: 1.05;
   letter-spacing: 0;
+}
+
+h2 {
+  line-height: 1.16;
+}
+
+p {
+  line-height: 1.58;
 }
 
 .icon-button,
@@ -85,10 +113,19 @@ h1 {
   justify-content: center;
   gap: 8px;
   min-height: 42px;
-  border: 1px solid #bec8c2;
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
-  background: #ffffff;
-  color: #16201d;
+  background: var(--surface-strong);
+  color: var(--ink);
+}
+
+.icon-button:focus-visible,
+.tool-button:focus-visible,
+.tabs button:focus-visible,
+.answer:focus-visible,
+.language-pair summary:focus-visible {
+  outline: 3px solid rgba(23, 107, 87, 0.34);
+  outline-offset: 2px;
 }
 
 .icon-button {
@@ -97,7 +134,7 @@ h1 {
 
 .status-strip {
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
+  grid-template-columns: minmax(280px, 2fr) repeat(3, minmax(150px, 1fr));
   gap: 12px;
   margin: 18px 0;
 }
@@ -110,11 +147,13 @@ h1 {
 .side-list {
   border: 1px solid #d4d9d1;
   border-radius: 8px;
-  background: #fffdf8;
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .status-strip div {
   padding: 14px;
+  box-shadow: none;
 }
 
 .status-strip strong,
@@ -134,6 +173,7 @@ small,
   gap: 8px;
   overflow-x: auto;
   padding-bottom: 8px;
+  scrollbar-width: thin;
 }
 
 .tabs button {
@@ -143,8 +183,9 @@ small,
 
 .tabs button.active,
 .tool-button.active {
-  border-color: #176b57;
-  background: #dff3eb;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: #0f4c3c;
 }
 
 .workspace {
@@ -542,6 +583,7 @@ small,
 
 .question-card {
   padding: 18px;
+  border-top: 4px solid var(--accent);
 }
 
 .question-meta,
@@ -674,6 +716,11 @@ small,
   background: #f7fbf8;
 }
 
+.official-block h2,
+.official-block h3 {
+  overflow-wrap: anywhere;
+}
+
 .question-toggle {
   cursor: pointer;
   outline: 0;
@@ -774,6 +821,46 @@ small,
   margin-top: 6px;
   color: #617069;
   font-size: 0.9rem;
+}
+
+.learning-image {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  min-width: 0;
+}
+
+.learning-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d8e1dc;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.learning-image.compact img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.learning-image figcaption {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 6px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
+.learning-image figcaption span,
+.learning-image figcaption small {
+  overflow-wrap: anywhere;
+}
+
+.learning-image figcaption small {
+  grid-column: 2;
 }
 
 .image-overlay-fallback {
@@ -937,6 +1024,16 @@ small,
   padding: 14px;
 }
 
+.term-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.term-card .learning-image {
+  margin: -4px -4px 0;
+}
+
 .guide-list {
   display: grid;
   gap: 12px;
@@ -1054,6 +1151,7 @@ small,
   justify-content: space-between;
   margin-bottom: 18px;
   border-bottom: 1px solid #e1e5e0;
+  padding-bottom: 16px;
 }
 
 .materials-topic-heading > div {
@@ -1081,6 +1179,77 @@ small,
   border: 1px solid #e1e5e0;
   border-radius: 8px;
   background: #ffffff;
+}
+
+.material-unit {
+  display: grid;
+  grid-template-columns: minmax(108px, 156px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #e2e9e5;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.material-unit-copy {
+  min-width: 0;
+}
+
+.material-unit-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.materials-term,
+.trap-note {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.language-pair {
+  display: grid;
+  gap: 8px;
+}
+
+.language-pair summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  min-height: 36px;
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.language-pair summary::-webkit-details-marker {
+  display: none;
+}
+
+.language-pair-es {
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.language-pair-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 8px;
+  border: 1px solid #c7d6ce;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.language-pair p {
+  margin-bottom: 0;
+  color: #33443e;
 }
 
 .materials-term p,
@@ -1300,6 +1469,7 @@ small,
   .split,
   .materials-header,
   .materials-layout,
+  .material-unit,
   .process-grid {
     grid-template-columns: 1fr;
   }
@@ -1348,6 +1518,11 @@ small,
 
   .source-reader-grid {
     grid-template-columns: 1fr;
+  }
+
+  .learning-image.compact img {
+    max-height: 220px;
+    object-fit: cover;
   }
 
   .sources-status,

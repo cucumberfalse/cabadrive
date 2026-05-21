@@ -78,6 +78,8 @@ Missing optional support should produce truthful local fallback text, not claims
 
 Study and exam surfaces use committed local assets. No runtime network images, PDF viewers, live AI, analytics calls, or backend APIs are introduced without a new feature spec.
 
+Generated learning images for passive support surfaces must come from the local learning-image manifest and committed `content/assets/learning/` files. They must not use or replace canonical ticket images under `content/assets/questions/`.
+
 ### UI-012 Review Gate
 
 Every UI-changing PR must cite the relevant source-of-truth IDs and provide evidence for the changed behavior. Evidence can be Playwright tests, unit tests, validator output, screenshots, or an explicit blocker recorded in feature memory.
@@ -107,6 +109,8 @@ The question card order is:
 9. bottom previous/next navigation;
 10. source line.
 
+Generated learning images are not part of question cards and must not appear during active exam attempts.
+
 ### Search And Filtering
 
 Search narrows the active learning collection. Previous/next respect the filtered collection, and changing the query returns the learner to the first result to avoid hidden modulo jumps.
@@ -119,3 +123,4 @@ Reset remains an explicit icon button with an accessible label. It clears local 
 
 - This document complements `learning-experience-source-of-truth.md`; learning rules decide when support appears, UI rules decide how it is controlled and navigated.
 - Image explanation overlays are governed by `image-explanation-overlays.md` and may render only when approved local overlay metadata exists for the concrete question image.
+- The app visual style, bilingual material controls, and generated learning-image style are governed by `design-system.md`.
