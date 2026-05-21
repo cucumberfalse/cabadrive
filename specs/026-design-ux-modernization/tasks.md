@@ -110,17 +110,17 @@
 
 ## Review Requirements
 
-- [ ] T085 Review Agent verifies complete feature memory and role-boundary compliance.
-- [ ] T086 Review Agent verifies durable design docs match implemented UI behavior.
-- [ ] T087 Review Agent verifies all top-level flows remain reachable and source/status labels remain visible.
-- [ ] T088 Review Agent verifies active exam support hiding is preserved.
-- [ ] T089 Review Agent verifies canonical ticket question/answer wording, correct-answer IDs, and ticket image assets are unchanged.
-- [ ] T090 Review Agent verifies learning images are local approved assets, not ticket replacements, and have alt/provenance/review metadata.
-- [ ] T091 Review Agent verifies coverage records and validator enforce every required material/vocabulary unit or reviewed exception.
-- [ ] T092 Review Agent verifies bilingual controls are accessible and not pointer-only.
-- [ ] T093 Review Agent verifies no runtime backend/network/image/font/AI/PDF dependency was introduced.
-- [ ] T094 Review Agent verifies tests and evidence cover desktop/mobile layout, local-only behavior, accessibility/focus, build/offline behavior, and validation.
-- [ ] T095 Review Agent verifies Implementation Agent feedback has Architect disposition before final validation.
+- [x] T085 Review Agent verifies complete feature memory and role-boundary compliance.
+- [x] T086 Review Agent verifies durable design docs match implemented UI behavior.
+- [x] T087 Review Agent verifies all top-level flows remain reachable and source/status labels remain visible.
+- [x] T088 Review Agent verifies active exam support hiding is preserved.
+- [x] T089 Review Agent verifies canonical ticket question/answer wording, correct-answer IDs, and ticket image assets are unchanged.
+- [x] T090 Review Agent verifies learning images are local approved assets, not ticket replacements, and have alt/provenance/review metadata.
+- [x] T091 Review Agent verifies coverage records and validator enforce every required material/vocabulary unit or reviewed exception.
+- [x] T092 Review Agent verifies bilingual controls are accessible and not pointer-only.
+- [x] T093 Review Agent verifies no runtime backend/network/image/font/AI/PDF dependency was introduced.
+- [x] T094 Review Agent verifies tests and evidence cover desktop/mobile layout, local-only behavior, accessibility/focus, build/offline behavior, and validation.
+- [x] T095 Review Agent verifies Implementation Agent feedback has Architect disposition before final validation.
 
 ## Review Finding Follow-Up Tasks
 
@@ -130,7 +130,7 @@
 
 ## Process Memory
 
-### Architect Decisions
+### Decisions
 
 - This cycle is scoped to durable design documentation, app-wide UI modernization, materials/vocabulary bilingual UX, and governed generated learning images for `Материалы` and `Словарь`.
 - Generated image coverage for `Процесс`, `Источники`, and `CABA/RF` content corpora is deferred. Those surfaces may receive UI modernization only in this cycle.
@@ -165,6 +165,7 @@
 - Follow-up: a targeted Playwright run before rebuilding served the previous `dist` bundle and still saw the old learning-image manifest path; reran through `pnpm run build`/`pnpm run test:e2e` so browser verification used current source.
 - Follow-up: first full `pnpm run test:e2e` after direct-image generation failed because the new alt text started with `Учебная локальная схема`, while the existing assertion expected `Учебная схема`; adjusted the deterministic alt template to keep the simpler leading phrase and reran successfully.
 - Follow-up: first temp-log preflight wrapper used zsh's readonly `status` variable; reran the same command with `rc` and captured a passing preflight tail.
+- Final Architect validation: GitHub connector startup failed in this session, so Architect used read-only `gh pr view` and `gh pr checks` as fallback evidence for PR head, checks, mergeability, and review comments.
 
 ### Known Issues
 
@@ -264,16 +265,36 @@
 
 - None. Follow-up fixes stayed within the Architect dispositions for T096-T097 and introduced no new product or architecture request.
 
+### Cycle PR Set
+
+- PR #169, `codex/026-design-ux-modernization` into `main`: single implementation PR slice for feature 026, including durable design docs, UI modernization, bilingual materials/vocabulary UX, learning-image manifest/validator/assets, tests, visual evidence, review fixes, and feature memory.
+- Base: `c083b248564a67d7599fa63d4181759fe30cd6a7`.
+- Current/effective PR head validated by Architect: `c378db72664b08f75bc27943b0de1206eb1b49bb`.
+- PR state from read-only `gh pr view` during final Architect validation: open, mergeable, head branch `codex/026-design-ux-modernization`, base branch `main`, head SHA `c378db72664b08f75bc27943b0de1206eb1b49bb`.
+- Required check evidence from read-only `gh pr checks`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed on the current PR head.
+- Review evidence from PR comments: Review Agent re-review for head `c378db72664b08f75bc27943b0de1206eb1b49bb` found no blocking issues and confirmed the active-exam support-hiding and learning-image coverage blockers were fixed.
+
 ### Architect Dispositions
 
 - Review finding 1 disposition: accept/task. The active exam `есть отрицание/ловушка` metadata warning is learning support/hinting and violates the hard active-exam support-hiding contract. Implementation Agent must complete T096 before final Architect validation.
 - Review finding 2 disposition: accept/task. Current learning-image coverage is overstated because one generic topic SVG assigned to every non-vocabulary material unit does not satisfy meaningful paragraph/unit imagery. Implementation Agent must complete T097 before final Architect validation, preferring unit-specific deterministic local SVG assets/records where feasible or otherwise a tightly audited concept-level sharing model.
 - Implementation Agent feedback: none recorded by follow-up; no Architect disposition needed.
 
-### Final Architect Validation Hooks
+### Final Validation Evidence
 
-- Effective content head: pending implementation.
-- Architect return count: 0.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-21T02:14:52Z
+- Effective content head: c378db72664b08f75bc27943b0de1206eb1b49bb
+- Architect validated effective content head: c378db72664b08f75bc27943b0de1206eb1b49bb
+- Architect return count: 0
 - Analyst return count: 0.
-- Limit escalation: none.
-- Final Architect validation is not yet performed. Orchestrator must invoke it after implementation, review, checks, feedback disposition, and evidence appear complete.
+- Limit escalation: none
+- Final Architect validation scope covered the full cycle PR set, assigned tasks, accepted review-finding dispositions, architecture guidance, open task state, process memory, review/follow-up evidence, and customer intent in spirit.
+- Open task state: T001-T098 are complete; no Architect-assigned task remains open.
+- Learning-image final evidence: `pnpm run validate:learning-images` passed during final Architect validation with `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
+- Learning-image evidence file reports approved `cabadrive-learning-image-v1` coverage with `1,382` coverage units, `1,382` images, `1,382` direct records, `0` shared records, and `0` exceptions.
+- Local feature-memory guard passed during final Architect validation: `node scripts/check-feature-memory.mjs --worktree`.
+- Whitespace guard passed during final Architect validation: `git diff --check`.
+- Ticket immutability diff against base `c083b248564a67d7599fa63d4181759fe30cd6a7` passed with no output for `content/questions/caba-b.unofficial-fallback.questions.json` and `content/assets/questions/source-bandinopla-testdeconducir-b`.
+- PR/check corroboration from read-only `gh`: PR #169 head is `c378db72664b08f75bc27943b0de1206eb1b49bb`; required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are green; PR is mergeable.
+- No unresolved Implementation Agent feedback remains. No new Architect gap was found.

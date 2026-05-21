@@ -197,3 +197,15 @@ Repository research basis:
 ## Analyst Recommendation
 
 Proceed to Architect without asking the user for clarification. The Architect should turn this into a scoped design-and-content modernization plan, likely with explicit implementation slices and coverage gates. The first Architect decision should be how to separate durable design documentation, UI modernization, bilingual translation interaction, generated-image asset pipeline, vocabulary coverage, and learning-material paragraph coverage while preserving the hard ticket immutability constraint.
+
+## Final Analyst Validation
+
+- Role: Analyst final validation only, invoked by Orchestrator after final Architect validation passed.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-21T02:19:25Z
+- Analyst validated effective content head: c378db72664b08f75bc27943b0de1206eb1b49bb
+- Analyst return count: 0
+- Validation basis: reviewed the original intake request, `spec.md`, `plan.md`, final evidence in `tasks.md`, durable design documentation, implementation snippets for language-pair/image/ticket/exam behavior, learning-image manifest/evidence summaries, PR/check state, and local validation output.
+- Customer-intent assessment: the final result satisfies the requested unified modernization in spirit and letter by documenting the visual system, modernizing primary UI flows, keeping navigation/tickets/timer in a consistent style, handling Spanish/Russian text with close accessible support, adding governed local images for vocabulary and materials, and preserving ticket wording and ticket images.
+- Evidence checked directly during Analyst validation: `pnpm run validate:learning-images` passed with `1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions`; `pnpm run validate:content` passed and included learning-image validation; ticket immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7` had no output for canonical question JSON and ticket image assets; `git diff --check` passed; `gh pr view 169` showed head `c378db72664b08f75bc27943b0de1206eb1b49bb`, mergeable PR state, and green required checks.
+- Gaps or returns: none. No new feature request or Analyst return is needed.
