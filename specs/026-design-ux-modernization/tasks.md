@@ -297,5 +297,5 @@
 - Whitespace guard passed during final Architect validation: `git diff --check`.
 - Ticket immutability diff against base `c083b248564a67d7599fa63d4181759fe30cd6a7` passed with no output for `content/questions/caba-b.unofficial-fallback.questions.json` and `content/assets/questions/source-bandinopla-testdeconducir-b`.
 - PR/check corroboration from read-only `gh`: PR #169 head is `c378db72664b08f75bc27943b0de1206eb1b49bb`; required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are green; PR is mergeable.
-- Orchestrator current-PR-head guard confirms effective content head `c378db72664b08f75bc27943b0de1206eb1b49bb` to current PR head `3fd9378788b508f1105e1cbb3ca1c0ba488f5238` changed only final-validation/process evidence files: `specs/026-design-ux-modernization/feature-request.md` and `specs/026-design-ux-modernization/tasks.md`.
+- Orchestrator current-PR-head guard must confirm that the diff from effective content head `c378db72664b08f75bc27943b0de1206eb1b49bb` to the current PR head at finalization time is limited to final-validation/process evidence files under `specs/026-design-ux-modernization/feature-request.md` and `specs/026-design-ux-modernization/tasks.md`.
 - No unresolved Implementation Agent feedback remains. No new Architect gap was found.
