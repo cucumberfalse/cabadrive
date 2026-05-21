@@ -306,10 +306,10 @@
 - Orchestrator current-PR-head guard must confirm that the diff from effective content head `c378db72664b08f75bc27943b0de1206eb1b49bb` to the current PR head at finalization time is limited to final-validation/process evidence files under `specs/026-design-ux-modernization/feature-request.md` and `specs/026-design-ux-modernization/tasks.md`.
 - No unresolved Implementation Agent feedback remains. No new Architect gap was found.
 - Effective content head: 8e7a283b8409d182645144dd8087e9f87fc7394a
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-21T02:50:29Z
+- Architect validation: passed; Architect validation pass: passed
+- Architect validation: Final Architect validation completed at: 2026-05-21T02:50:29Z
 - Architect validated effective content head: 8e7a283b8409d182645144dd8087e9f87fc7394a
 - Architect return count: 0
-- Architect validation evidence: PR #169 head is 8e7a283b8409d182645144dd8087e9f87fc7394a, PR is mergeable, and required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` pass after process-memory correction commit 8e7a283b8409d182645144dd8087e9f87fc7394a.
-- Architect gaps: none.
+- Architect validation: evidence PR #169 head is 8e7a283b8409d182645144dd8087e9f87fc7394a, PR is mergeable, and required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` pass after process-memory correction commit 8e7a283b8409d182645144dd8087e9f87fc7394a.
+- Architect validation: Architect gaps: none.
 - Current-PR-head read-only guard: effective content head 8e7a283b8409d182645144dd8087e9f87fc7394a is the Architect-validated head before Analyst revalidation.
