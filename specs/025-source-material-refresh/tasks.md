@@ -46,13 +46,13 @@ Architect scope note after Slice 1: no Slice 2 ticket-import batch is currently 
 
 Architect scope note after Slice 1: this should be the next recommended separate implementation slice if Orchestrator continues this feature. Use `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model; every retained fact must be independently verified against current official GCBA/ANSV sources before content changes.
 
-- [ ] T030 Identify the best supplied process PDF as a structure/reference model.
-- [ ] T031 Independently verify every retained acquisition/renewal claim against current official sources.
-- [ ] T032 Update `content/guide/caba-exam-process.ru.json` only for verified current claims.
-- [ ] T033 Preserve unofficial status, B1/private-car scope, official links, checked dates, and volatility warnings.
-- [ ] T034 Keep renewal/jurisdiction-change/foreigner/beginner material as concise adjacent-path support unless separately scoped.
-- [ ] T035 Run process-guide validation through `pnpm run validate:content`.
-- [ ] T036 Record official-source evidence and verification outcome.
+- [x] T030 Identify the best supplied process PDF as a structure/reference model.
+- [x] T031 Independently verify every retained acquisition/renewal claim against current official sources.
+- [x] T032 Update `content/guide/caba-exam-process.ru.json` only for verified current claims.
+- [x] T033 Preserve unofficial status, B1/private-car scope, official links, checked dates, and volatility warnings.
+- [x] T034 Keep renewal/jurisdiction-change/foreigner/beginner material as concise adjacent-path support unless separately scoped.
+- [x] T035 Run process-guide validation through `pnpm run validate:content`.
+- [x] T036 Record official-source evidence and verification outcome.
 
 ## Conditional Slice: Official Archive / Primary Sources
 
@@ -65,8 +65,8 @@ Architect scope note after Slice 1: this should be the next recommended separate
 
 ## Conditional Slice: Durable Docs
 
-- [ ] T043 Update durable docs only when behavior, source governance, workflow, validation, content counts, or visible status semantics change.
-- [ ] T044 Record why docs were or were not changed.
+- [x] T043 Update durable docs only when behavior, source governance, workflow, validation, content counts, or visible status semantics change.
+- [x] T044 Record why docs were or were not changed.
 
 ## Verification Gates
 
@@ -77,10 +77,10 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - [ ] T049 For ticket/support/image changes, run `pnpm run generate:content-indexes`.
 - [ ] T050 For ticket/support/image changes, run `pnpm run refresh:content-evidence`.
 - [ ] T051 For ticket/support/image changes, run `pnpm run validate:content:quality`.
-- [ ] T052 For learner-visible or tooling changes, run `pnpm run test`.
-- [ ] T053 For learner-visible or content bundle changes, run `pnpm run build`.
-- [ ] T054 For learner-visible behavior changes, run `pnpm run test:e2e`.
-- [ ] T055 Before final handoff, run `pnpm run preflight` or record exact unrelated blocker.
+- [x] T052 For learner-visible or tooling changes, run `pnpm run test`.
+- [x] T053 For learner-visible or content bundle changes, run `pnpm run build`.
+- [x] T054 For learner-visible behavior changes, run `pnpm run test:e2e`.
+- [x] T055 Before final handoff, run `pnpm run preflight` or record exact unrelated blocker.
 
 ## Review Requirements
 
@@ -129,6 +129,10 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Current content mode remains `unofficial_b_fallback` in `content/meta/content-mode.json`.
 - Slice 1 used existing project official-source evidence only for currentness notes; no internet/currentness browsing was performed.
 - The supplied `MANUAL_Vehiculo_4Ruedas_2023 SA.pdf` is byte-for-byte identical to the governed archive raw original at `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf`.
+- Process Guide Refresh slice used `<user-downloads>/Первое_получение_прав_и_обновление.pdf` only as a non-authoritative structure/reference model. The assigned PDF was present locally with SHA-256 `953f1c70739b5edb721a15535994a0d9f8553b8acc81d019b510893622528eb3`; no raw PDF text, screenshots, prices, or unverified PDF facts were committed.
+- Process Guide Refresh official-source checks on 2026-05-20 revalidated GCBA/ANSV sources accepted by the guide validator and added the current GCBA `Renovación de Licencia de Conducir` page as a concise adjacent-path source.
+- Process Guide Refresh kept the guide as `unofficial_learning_aid`, CABA/B1/private-car scoped, with official-action and volatility warnings; regular renewal, jurisdiction change, foreigners, and principiantes remain concise adjacent-path/support notes.
+- Durable docs were not changed for this slice because source governance, workflow, runtime behavior, content mode, and visible status semantics did not change; only the learner-visible process guide and slice evidence were refreshed.
 
 ### Dead Ends
 
@@ -136,6 +140,7 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Slice 1 did not extract page-rendered image crops because `pdftoppm`, `mutool`, PyMuPDF/`fitz`, and `pdfplumber` were unavailable. `pypdf` can enumerate embedded image objects, but that is not sufficient for project ticket crop/import evidence.
 - Slice 1 did not OCR `трудные билеты.pdf`; pypdf text extraction exposed Russian notes and correct-answer prose, not the Spanish question/answer tuple required for ticket comparison.
 - Slice 1 did not treat PDF answer styling as correct-answer evidence because `pypdf` text extraction did not expose reliable correct-answer marks.
+- Initial Process Guide Refresh `pnpm run test` and `pnpm run build` attempts failed because this fresh isolated worktree had no `node_modules` (`typescript` and `vite` were unavailable). `pnpm install` used the existing lockfile and resolved the local environment only; rerun verification passed.
 
 ### Known Issues
 
@@ -188,12 +193,30 @@ Architect scope note after Slice 1: this should be the next recommended separate
   - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
   - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
 - Latest review-fix known-issue/dead-end note, 2026-05-20: no new dead ends or known issues were introduced by this evidence-only sanitation; prior extraction and ticket-import blockers remain unchanged.
+- Process Guide Refresh evidence file:
+  - `specs/025-source-material-refresh/evidence/process-guide-refresh-2026-05-20.md`
+- Process Guide Refresh content updates, 2026-05-20:
+  - `content/guide/caba-exam-process.ru.json` `lastReviewedAt` and source `checkedAt` values updated to `2026-05-20`.
+  - Added official source/link `gcba-renovacion` for regular renewal as an adjacent path.
+  - Refreshed acquisition/renewal-adjacent wording for Otorgamiento scope, document routing, course options, theory-exam bank warning, renewal/change-of-jurisdiction/principiante notes, and community volatility cautions.
+- Process Guide Refresh verification, 2026-05-20:
+  - Pre-change `git status --short --branch`: `## codex/025-process-guide-refresh...origin/main`.
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `Feature-memory gate passed via specs/025-source-material-refresh/{spec,plan,tasks}.md`.
+  - `git diff --check`: passed with no output.
+  - Initial `pnpm run test`: failed before dependency install because `typescript` package was missing from local `node_modules`.
+  - Initial `pnpm run build`: failed before dependency install because `vite` was not found.
+  - `pnpm install`: passed using current lockfile; dependencies installed only in local ignored `node_modules`.
+  - Rerun `pnpm run test`: passed, 249 tests.
+  - Rerun `pnpm run build`: passed; generated service worker with 346 cached assets. Vite reported existing large-chunk warnings.
+  - `pnpm run preflight`: passed, including `check-feature-memory`, `check:repo`, `validate:content`, `test`, `build`, and `test:e2e`; Playwright reported 46 passed.
 
 ### Cycle PR Set
 
 - PR #167, branch `codex/025-source-material-refresh`, current head `747a5539b548136396b55f477851aa7dd405ad20`; status: process-memory normalization after accepted review fixes, not yet re-final-validated at this head; included in final validation for the Slice 1 source-material refresh cycle.
 - PR #167, branch `codex/025-source-material-refresh`, head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; status: Slice 1 evidence/intake final Architect validation passed for the effective content head after evidence sanitation and review-thread resolution; included in final validation for the Slice 1 source-material refresh cycle.
 - PR #167, branch `codex/025-source-material-refresh`, head `735fa99959bc2d0717466dca0577fb81960ab28a`; status: Slice 1 evidence/intake final Architect validation passed for the current effective content head after process-memory disposition correction and Codex review feedback; included in final validation for the Slice 1 source-material refresh cycle.
+- PR #168, branch `codex/025-process-guide-refresh`, head `c51836797b2d11611040beffefa8cfdeb66f0249`; status: Process Guide Refresh T030-T036 final Architect validation passed for the effective content head; included in final validation for the Process Guide Refresh slice.
 
 ### Final Validation Evidence
 
@@ -216,6 +239,28 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Limit escalation: none
 - Current-PR-head read-only guard: current PR head differs from effective content head 735fa99959bc2d0717466dca0577fb81960ab28a only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation: passed for effective content head c51836797b2d11611040beffefa8cfdeb66f0249.
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head differs from effective content head c51836797b2d11611040beffefa8cfdeb66f0249 only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+
+## Final Architect Validation Notes
+
+- Effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-21T00:28:26Z
+- Architect validated effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation evidence: PR #168 scope is the Process Guide Refresh slice for T030-T036 after PR #167 merged, changing `content/guide/caba-exam-process.ru.json`, `specs/025-source-material-refresh/evidence/process-guide-refresh-2026-05-20.md`, and this Architect-owned process memory.
+- Architect validation evidence: official-source verification is recorded for current GCBA/ANSV sources; the supplied PDF was used only as a structure/reference model, with no raw PDF extracts committed, and the guide remains an `unofficial_learning_aid` for CABA/B1/private-car preparation.
+- Architect validation evidence: T030-T036 are complete, including source identification, independent verification, guide update, unofficial/scope preservation, concise adjacent-path support, content validation, and evidence recording.
+- Architect validation evidence: checks on c51836797b2d11611040beffefa8cfdeb66f0249 were reported green for baseline-checks, docker-validation, PR Guard, AI Review, and OSV Scan; Review Agent left no-blocking GitHub COMMENT review id 4333072910.
+- Architect validation evidence: no unresolved Implementation Agent feedback or Architect dispositions remain for this slice.
+- Architect gaps: none
+- Open Architect dispositions: none
 
 ### Implementation Agent Feedback
 
@@ -303,5 +348,17 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Architect validation evidence: Orchestrator context reports green checks on `735fa99959bc2d0717466dca0577fb81960ab28a` for CI baseline-checks, docker-validation, PR Guard, and OSV Scan.
 - Architect validation evidence: AI Review posted a P1 marker-staleness comment for the older `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` marker; this appended validation makes `735fa99959bc2d0717466dca0577fb81960ab28a` the latest Architect-validated effective content head for finalizer compatibility.
 - Architect validation evidence: local validation for this Architect-only edit passed with `git diff --check` and `node scripts/check-feature-memory.mjs --worktree`.
+- Architect gaps: none
+- Open Architect dispositions: none
+
+## Final Architect Validation Notes
+
+- Effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-20T21:37:51-03:00
+- Architect validated effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation evidence: appended after older PR #167 Architect markers so the latest parser marker references the PR #168 effective content head.
+- Architect validation evidence: no product or content changes are included in this correction; it is role-owned final-validation evidence only.
 - Architect gaps: none
 - Open Architect dispositions: none
