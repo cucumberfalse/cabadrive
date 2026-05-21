@@ -143,6 +143,10 @@
 - [x] T112 Add focused validator tests for T111 with `images: [null]`, object-like invalid values, primitive image entries, and a mixed valid/invalid image array, asserting structured validation errors and no thrown exceptions. Rerun and record `pnpm exec node --test tests/content-learning-images.test.mjs`, `pnpm run validate:learning-images`, `pnpm run validate:content`, `pnpm run test`, and `git diff --check`.
 - [x] T113 [P2 entrypoint detection guard, `PRRT_kwDOSX65IM6Dr1XS`] Replace the direct invocation guard in `scripts/content-learning-images.mjs` so it compares normalized filesystem paths, using `fileURLToPath(import.meta.url)` and `resolve(process.argv[1])` or the repository's existing equivalent pattern. The script must reliably run validation when invoked as `node scripts/content-learning-images.mjs`, including when the repository path contains spaces or URL-escaped characters, and must not silently exit `0` without validation.
 - [x] T114 Add focused verification for T113 if practical, such as a unit test or subprocess smoke test that exercises the direct-entry path and proves validation output/exit behavior occurs from a path form that would fail manual `file://` URL comparison. At minimum, rerun and record `node scripts/content-learning-images.mjs`, `pnpm run validate:learning-images`, relevant content-learning-image tests, and `git diff --check`.
+- [x] T115 [P2 runtime-minimal learning-image manifest, `PRRT_kwDOSX65IM6Dr-GK`] Stop importing the full governance learning-image manifest into browser runtime code. Create and use a runtime-minimal learning-image manifest, generated stripped artifact, or equivalent build-time/runtime data path that contains only fields needed to render learning images in the app, such as image ID, local path, dimensions, alt/caption where needed, and coverage-to-image mappings. Keep `content/learning-images/learning-images.manifest.json` and `content/validation/learning-images.evidence.json` as full validator/governance artifacts with provenance, prompt summaries, safety metadata, hashes, review state, and source fingerprints.
+- [x] T116 Update `src/data/content.ts` and any learning-image render data imports to consume only the runtime-minimal artifact or stripped data path. Add tests or static assertions proving the app import does not include validator-only governance fields such as `provenance.promptSummary`, safety metadata, full hashes where not needed at runtime, review metadata, or source fingerprints. Preserve local-only/offline behavior and material/vocabulary image rendering.
+- [x] T117 Update learning-image generation/validation tooling so the runtime-minimal artifact is derived from and checked against the full governance manifest, or otherwise verified for consistency. Validation must still pass against the full manifest/evidence, and stale/missing runtime-minimal records must be detected by a content or learning-image validation test.
+- [x] T118 Add verification for T115-T117: `pnpm run validate:learning-images`, `pnpm run validate:content`, relevant content/data tests, `pnpm run test`, `pnpm run build`, e2e coverage for materials and vocabulary learning images, and `git diff --check`. If the durable content/runtime contract changes, update the appropriate durable docs in `docs_project/` as part of the implementation slice and record the docs touched in Process Memory.
 
 ## Process Memory
 
@@ -328,6 +332,29 @@
   - `node scripts/content-learning-images.mjs`: passed and printed `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
   - `pnpm exec node --test tests/content-learning-images.test.mjs`: passed, `23` tests.
 - T113-T114 dead ends: none.
+- T115-T118 implementation completed at `2026-05-21T04:43:59Z` in the assigned worktree `/Users/chap/devel/cabadrive-worktrees/026-design-ux-modernization` on branch `codex/026-design-ux-modernization`; no staging, commit, push, merge, or PR review-state mutation was performed.
+- T115 implementation: added `content/learning-images/learning-images.runtime.json`, a generated runtime projection containing only render metadata and coverage mappings. The full `learning-images.manifest.json` and `learning-images.evidence.json` remain the governance artifacts with hashes, source fingerprints, provenance, safety, review state, and prompt summaries.
+- T116 implementation: `src/data/content.ts` now imports the runtime artifact and its learning-image TypeScript types no longer include governance-only fields. `tests/e2e/app.spec.ts` also reads the runtime artifact for rendered materials/vocabulary image assertions.
+- T117 implementation: `scripts/content-learning-images.mjs` now builds the runtime projection during `--write-generated-assets`, validates runtime shape, rejects missing/stale runtime data, rejects governance-only runtime fields, and compares the runtime artifact to the full-manifest projection during `validate:learning-images`.
+- T118 docs touched for content/runtime contract: `docs_project/project/content-sources.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, and `docs_project/project/frontend/design-system.md`.
+- T115-T118 focused verification:
+  - `pnpm exec node scripts/content-learning-images.mjs --write-generated-assets`: passed and wrote the runtime projection.
+  - `pnpm exec node --test tests/content-learning-images.test.mjs`: first run failed because the new governance-field-exclusion test searched raw JSON text and matched the ordinary `road-safety` phrase; test was corrected to inspect object keys, runtime projection hardening for malformed full-manifest records was added, then passed with `27` tests.
+  - `pnpm run validate:learning-images`: passed; `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
+  - `pnpm run validate:content`: passed; `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm run test`: passed, `276` Node tests.
+  - `pnpm run build`: passed.
+  - `pnpm run test:e2e`: passed, `50` Playwright tests.
+  - `pnpm run preflight`: passed; includes feature-memory gate, repo baseline, content validation, `276` Node tests, build, and `50` Playwright tests.
+- T115-T118 dead ends: the initial raw-text governance-field test was too broad; no implementation dead ends remain.
+- T117 integration follow-up completed at `2026-05-21T04:51:05Z` after Orchestrator review found `scripts/validate-content.mjs` still omitted the runtime projection. `scripts/validate-content.mjs` now reads `content/learning-images/learning-images.runtime.json` and passes it as `runtimeManifest` to `validateLearningImages`, so `pnpm run validate:content`, `pnpm run build`, and `pnpm run preflight` catch stale, missing, malformed, or governance-heavy runtime data.
+- T117 integration test: `tests/content-validation.test.mjs` now asserts the content-validation command wires the learning-image runtime manifest into the validator.
+- T117 integration verification:
+  - `pnpm run validate:content`: passed; `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `pnpm exec node --test tests/content-validation.test.mjs`: passed, `5` tests.
+  - `pnpm run test`: passed, `277` Node tests.
+  - `pnpm run preflight`: passed; includes feature-memory gate, repo baseline, content validation, `277` Node tests, build, and `50` Playwright tests.
+- T117 integration dead ends: none.
 
 ### Implementation Agent Feedback
 
@@ -356,6 +383,7 @@
 - Review finding disposition (`PRRT_kwDOSX65IM6DrhWH`): accept/task. Null or non-object coverage entries must return structured validator errors instead of throwing during coverage property reads. Implementation Agent must complete T109-T110.
 - Additional validator-hardening disposition: accept/task. Orchestrator found the current dirty T101-T110 implementation still throws for `manifest.images = [null]` at `image.imageId`, while primitive image entries already return structured errors. Null and non-object image entries are the same malformed-manifest recovery class as the active hardening work, so Implementation Agent must complete T111-T112 before committing the follow-up.
 - Review finding disposition (`PRRT_kwDOSX65IM6Dr1XS`): accept/task. The direct invocation guard must not compare `import.meta.url` to a manually constructed `file://${process.argv[1]}` URL because URL escaping can prevent CLI validation from running while still exiting successfully. Implementation Agent must complete T113-T114 using `fileURLToPath(import.meta.url)` and normalized path comparison or the repository's existing safer equivalent.
+- Review finding disposition (`PRRT_kwDOSX65IM6Dr-GK`): accept/task. Browser runtime must not import the full learning-image governance manifest because it ships validator-only provenance, prompt summaries, safety metadata, hashes, review data, and source fingerprints to every session. Implementation Agent must complete T115-T118 by introducing a runtime-minimal manifest or equivalent stripped artifact while preserving full manifest/evidence validation.
 - Implementation Agent feedback: none recorded by follow-up; no Architect disposition needed.
 
 ### Final Validation Evidence

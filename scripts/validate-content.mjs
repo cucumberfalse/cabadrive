@@ -77,6 +77,7 @@ const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
 const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
 const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
 const learningImageManifest = readJson("content/learning-images/learning-images.manifest.json");
+const learningImageRuntimeManifest = readJson("content/learning-images/learning-images.runtime.json");
 const learningImageEvidence = readJson("content/validation/learning-images.evidence.json");
 const officialDocumentsManifest = readJson("content/official-documents/manifest.json");
 const primarySourcesCorpus = readJson("content/primary-sources/primary-sources.ru.json");
@@ -266,6 +267,7 @@ const learningImageValidation = validateLearningImages({
   topicGuide,
   vocabulary,
   manifest: learningImageManifest,
+  runtimeManifest: learningImageRuntimeManifest,
   evidence: learningImageEvidence,
   fileExists: (relativePath) => existsSync(path(relativePath)),
   fileSha256: (relativePath) => sha256(relativePath)

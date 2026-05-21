@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const manifestPath = "content/learning-images/learning-images.manifest.json";
+const runtimeManifestPath = "content/learning-images/learning-images.runtime.json";
 const evidencePath = "content/validation/learning-images.evidence.json";
 const assetRoot = "content/assets/learning/generated/v1";
 const styleVersion = "cabadrive-learning-image-v1";
@@ -15,6 +16,7 @@ const allowedStatuses = new Set(["direct", "shared", "exception"]);
 const allowedExceptionReasons = new Set(["misleading", "redundant_with_shared_image", "purely_grammatical", "status_navigation", "volatile_legal_admin"]);
 const allowedAspectFamilies = new Set(["4:3", "16:9", "1:1"]);
 const canonicalQuestionAssetRoot = "content/assets/questions";
+const forbiddenRuntimeFields = new Set(["sha256", "sourceFingerprint", "provenance", "safety", "promptSummary", "reviewer", "reviewedAt", "evidenceStatus", "noteRu", "sharedConcept"]);
 
 function repoPath(relativePath) {
   return join(root, relativePath);
@@ -194,6 +196,107 @@ function coverageFingerprint(coverage) {
     exceptionReason: record && typeof record === "object" ? record.exceptionReason : undefined,
     malformedValueType: record && typeof record === "object" ? undefined : typeof record
   })));
+}
+
+export function buildRuntimeLearningImageManifest(manifest) {
+  const images = Array.isArray(manifest?.images) ? manifest.images : [];
+  const coverage = Array.isArray(manifest?.coverage) ? manifest.coverage : [];
+  return {
+    version: 1,
+    contentKind: "learning-images-runtime",
+    styleVersion,
+    images: images.map((image) => {
+      if (!image || typeof image !== "object" || Array.isArray(image)) return image;
+      return {
+        imageId: image.imageId,
+        localPath: image.localPath,
+        width: image.width,
+        height: image.height,
+        aspectRatioFamily: image.aspectRatioFamily,
+        altRu: image.altRu,
+        captionRu: image.captionRu
+      };
+    }),
+    coverage: coverage.map((record) => {
+      if (!record || typeof record !== "object" || Array.isArray(record)) return record;
+      return {
+        unitId: record.unitId,
+        unitKind: record.unitKind,
+        status: record.status,
+        ...(Array.isArray(record.imageIds) ? { imageIds: record.imageIds } : {}),
+        ...(typeof record.exceptionReason === "string" ? { exceptionReason: record.exceptionReason } : {})
+      };
+    })
+  };
+}
+
+function findForbiddenRuntimeFields(value, prefix = "learning-images.runtime.json") {
+  const fields = [];
+  if (!value || typeof value !== "object") return fields;
+  if (Array.isArray(value)) {
+    for (const [index, item] of value.entries()) fields.push(...findForbiddenRuntimeFields(item, `${prefix}[${index}]`));
+    return fields;
+  }
+  for (const [key, item] of Object.entries(value)) {
+    const path = `${prefix}.${key}`;
+    if (forbiddenRuntimeFields.has(key)) fields.push(path);
+    fields.push(...findForbiddenRuntimeFields(item, path));
+  }
+  return fields;
+}
+
+function validateRuntimeManifest({ manifest, runtimeManifest, errors }) {
+  if (runtimeManifest === undefined) return;
+  if (!runtimeManifest || typeof runtimeManifest !== "object" || Array.isArray(runtimeManifest)) {
+    errors.push("learning-images.runtime.json: runtime manifest is missing or malformed.");
+    return;
+  }
+  if (runtimeManifest.version !== 1) errors.push("learning-images.runtime.json: version must be 1.");
+  if (runtimeManifest.contentKind !== "learning-images-runtime") errors.push("learning-images.runtime.json: contentKind must be learning-images-runtime.");
+  if (runtimeManifest.styleVersion !== styleVersion) errors.push(`learning-images.runtime.json: styleVersion must be ${styleVersion}.`);
+  if (!Array.isArray(runtimeManifest.images)) errors.push("learning-images.runtime.json: images must be an array.");
+  if (!Array.isArray(runtimeManifest.coverage)) errors.push("learning-images.runtime.json: coverage must be an array.");
+  for (const fieldPath of findForbiddenRuntimeFields(runtimeManifest)) {
+    errors.push(`${fieldPath}: governance-only field must not be present in runtime data.`);
+  }
+  if (Array.isArray(runtimeManifest.images)) {
+    for (const [index, image] of runtimeManifest.images.entries()) {
+      if (!image || typeof image !== "object" || Array.isArray(image)) {
+        errors.push(`runtime images[${index}]: image record must be an object.`);
+        continue;
+      }
+      const imageId = typeof image.imageId === "string" ? image.imageId : `runtime images[${index}]`;
+      if (typeof image.imageId !== "string") errors.push(`${imageId}: runtime imageId is required.`);
+      if (typeof image.localPath !== "string") errors.push(`${imageId}: runtime localPath is required.`);
+      if (!Number.isInteger(image.width) || image.width <= 0 || !Number.isInteger(image.height) || image.height <= 0) {
+        errors.push(`${imageId}: runtime width and height must be positive integers.`);
+      }
+      if (!allowedAspectFamilies.has(image.aspectRatioFamily)) errors.push(`${imageId}: runtime invalid aspectRatioFamily.`);
+      if (typeof image.altRu !== "string" || image.altRu.trim().length < 24) errors.push(`${imageId}: runtime altRu must be useful Russian alt text.`);
+      if (typeof image.captionRu !== "string" || image.captionRu.trim().length < 4) errors.push(`${imageId}: runtime captionRu is required.`);
+    }
+  }
+  if (Array.isArray(runtimeManifest.coverage)) {
+    for (const [index, record] of runtimeManifest.coverage.entries()) {
+      if (!record || typeof record !== "object" || Array.isArray(record)) {
+        errors.push(`runtime coverage[${index}]: coverage record must be an object.`);
+        continue;
+      }
+      const recordId = typeof record.unitId === "string" ? record.unitId : `runtime coverage[${index}]`;
+      if (typeof record.unitId !== "string") errors.push(`${recordId}: runtime unitId is required.`);
+      if (typeof record.unitKind !== "string") errors.push(`${recordId}: runtime unitKind is required.`);
+      if (!allowedStatuses.has(record.status)) errors.push(`${recordId}: runtime invalid coverage status.`);
+      if (record.status === "exception") {
+        if (!allowedExceptionReasons.has(record.exceptionReason)) errors.push(`${recordId}: runtime invalid exceptionReason.`);
+        if (record.imageIds?.length) errors.push(`${recordId}: runtime exception records must not reference imageIds.`);
+      } else if (!Array.isArray(record.imageIds) || record.imageIds.length === 0) {
+        errors.push(`${recordId}: runtime non-exception coverage must reference imageIds.`);
+      }
+    }
+  }
+  if (fingerprint(runtimeManifest) !== fingerprint(buildRuntimeLearningImageManifest(manifest))) {
+    errors.push("learning-images.runtime.json: runtime projection is stale or does not match learning-images.manifest.json.");
+  }
 }
 
 function imagePalette(seed) {
@@ -382,6 +485,7 @@ export function validateLearningImages({
   topicGuide,
   vocabulary,
   manifest,
+  runtimeManifest,
   evidence,
   fileExists = (relativePath) => existsSync(repoPath(relativePath)),
   fileSha256 = (relativePath) => sha256File(relativePath),
@@ -401,6 +505,7 @@ export function validateLearningImages({
   if (!Array.isArray(manifest.coverage)) errors.push("learning-images.manifest.json: coverage must be an array.");
   const manifestImages = Array.isArray(manifest.images) ? manifest.images : [];
   const manifestCoverage = Array.isArray(manifest.coverage) ? manifest.coverage : [];
+  validateRuntimeManifest({ manifest, runtimeManifest, errors });
 
   const imageById = new Map();
   for (const [index, image] of manifestImages.entries()) {
@@ -542,11 +647,14 @@ function writeGeneratedManifest() {
       "Every current topic-study and vocabulary coverage unit has a unit-specific direct SVG asset."
     ]
   };
+  const runtimeManifest = buildRuntimeLearningImageManifest(manifest);
   mkdirSync(dirname(repoPath(manifestPath)), { recursive: true });
+  mkdirSync(dirname(repoPath(runtimeManifestPath)), { recursive: true });
   mkdirSync(dirname(repoPath(evidencePath)), { recursive: true });
   writeFileSync(repoPath(manifestPath), `${JSON.stringify(manifest, null, 2)}\n`);
+  writeFileSync(repoPath(runtimeManifestPath), `${JSON.stringify(runtimeManifest, null, 2)}\n`);
   writeFileSync(repoPath(evidencePath), `${JSON.stringify(evidence, null, 2)}\n`);
-  return { manifest, evidence, units };
+  return { manifest, runtimeManifest, evidence, units };
 }
 
 function main() {
@@ -554,8 +662,8 @@ function main() {
   const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
   const vocabulary = readJson("content/vocabulary/ru.vocabulary.json");
   if (shouldWrite) {
-    const { manifest, evidence, units } = writeGeneratedManifest();
-    const result = validateLearningImages({ topicGuide, vocabulary, manifest, evidence });
+    const { manifest, runtimeManifest, evidence, units } = writeGeneratedManifest();
+    const result = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest, evidence });
     if (result.errors.length) {
       console.error("Learning-image generation produced invalid output:");
       for (const error of result.errors) console.error(`- ${error}`);
@@ -566,8 +674,9 @@ function main() {
   }
 
   const manifest = existsSync(repoPath(manifestPath)) ? readJson(manifestPath) : undefined;
+  const runtimeManifest = existsSync(repoPath(runtimeManifestPath)) ? readJson(runtimeManifestPath) : null;
   const evidence = existsSync(repoPath(evidencePath)) ? readJson(evidencePath) : undefined;
-  const result = validateLearningImages({ topicGuide, vocabulary, manifest, evidence });
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest, evidence });
   if (result.errors.length) {
     console.error("Learning-image validation failed:");
     for (const error of result.errors) console.error(`- ${error}`);

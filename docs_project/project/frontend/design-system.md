@@ -77,7 +77,7 @@ Style version: `cabadrive-learning-image-v1`.
 Generated learning images are deterministic local SVG illustrations:
 
 - stored under `content/assets/learning/generated/v1/`;
-- referenced through `content/learning-images/learning-images.manifest.json`;
+- governed by `content/learning-images/learning-images.manifest.json` and rendered through the stripped `content/learning-images/learning-images.runtime.json`;
 - validated by `scripts/content-learning-images.mjs`;
 - included in normal public asset sync and offline build output;
 - original Cabadrive learning-support assets, not official source evidence.

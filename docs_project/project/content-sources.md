@@ -26,10 +26,11 @@ Generated learning images are another separate unofficial support layer. Feature
 ```text
 content/assets/learning/generated/v1/
 content/learning-images/learning-images.manifest.json
+content/learning-images/learning-images.runtime.json
 content/validation/learning-images.evidence.json
 ```
 
-They illustrate authored `Материалы` and `Словарь` learning units only. They are not official source archives, not practice-ticket images, and not proof of a traffic rule. Validation must reject remote paths, question-image replacement paths, stale source fingerprints, missing alt/provenance metadata, and unapproved coverage.
+They illustrate authored `Материалы` and `Словарь` learning units only. They are not official source archives, not practice-ticket images, and not proof of a traffic rule. The full manifest and evidence files keep governance metadata such as hashes, source fingerprints, provenance, prompt summaries, safety flags, and review state. Browser runtime code imports only the generated `learning-images.runtime.json` projection with render fields and coverage mappings. Validation must reject remote paths, question-image replacement paths, stale source fingerprints, missing alt/provenance metadata, unapproved coverage, and stale or governance-heavy runtime projections.
 
 ## Ticket Learning-Support Lifecycle
 

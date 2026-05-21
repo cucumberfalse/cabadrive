@@ -7,7 +7,7 @@ import guide from "../../content/guide/ru.condensed-guide.json";
 import cabaExamProcessGuideJson from "../../content/guide/caba-exam-process.ru.json";
 import topicStudyGuideJson from "../../content/guide/topic-study-guide.ru.json";
 import imageOverlaysJson from "../../content/image-overlays/question-explanation-overlays.manifest.json";
-import learningImagesJson from "../../content/learning-images/learning-images.manifest.json";
+import learningImagesJson from "../../content/learning-images/learning-images.runtime.json";
 
 export type Answer = {
   id: string;
@@ -261,11 +261,9 @@ export type ImageOverlayManifest = {
 export type LearningImageRecord = {
   imageId: string;
   localPath: string;
-  sha256: string;
   width: number;
   height: number;
   aspectRatioFamily: "4:3" | "16:9" | "1:1";
-  styleVersion: "cabadrive-learning-image-v1";
   altRu: string;
   captionRu: string;
 };
@@ -273,16 +271,14 @@ export type LearningImageRecord = {
 export type LearningImageCoverageRecord = {
   unitId: string;
   unitKind: "topicSummary" | "learningMaterial" | "practicalReasoning" | "trapNote" | "topicTerm" | "vocabularyTerm";
-  sourceFingerprint: string;
   status: "direct" | "shared" | "exception";
   imageIds?: string[];
   exceptionReason?: string;
-  noteRu?: string;
 };
 
 export type LearningImageManifest = {
   version: number;
-  contentKind: "learning-images";
+  contentKind: "learning-images-runtime";
   styleVersion: "cabadrive-learning-image-v1";
   images: LearningImageRecord[];
   coverage: LearningImageCoverageRecord[];

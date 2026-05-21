@@ -15,6 +15,12 @@ test("content validation command passes", () => {
   assert.match(output, /Content validation passed/);
 });
 
+test("content validation wires learning-image runtime manifest into validator", () => {
+  const source = readFileSync("scripts/validate-content.mjs", "utf8");
+  assert.match(source, /content\/learning-images\/learning-images\.runtime\.json/);
+  assert.match(source, /runtimeManifest:\s*learningImageRuntimeManifest/);
+});
+
 test("category B fallback questions keep local image references", () => {
   const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const withImages = questions.filter((question) => question.image);

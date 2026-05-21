@@ -5,11 +5,19 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { test } from "node:test";
 import { pathToFileURL } from "node:url";
-import { collectLearningImageCoverageUnits, formatLearningImageSummary, isDirectInvocation, svgForImage, validateLearningImages } from "../scripts/content-learning-images.mjs";
+import {
+  buildRuntimeLearningImageManifest,
+  collectLearningImageCoverageUnits,
+  formatLearningImageSummary,
+  isDirectInvocation,
+  svgForImage,
+  validateLearningImages
+} from "../scripts/content-learning-images.mjs";
 
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const vocabulary = JSON.parse(readFileSync("content/vocabulary/ru.vocabulary.json", "utf8"));
 const manifest = JSON.parse(readFileSync("content/learning-images/learning-images.manifest.json", "utf8"));
+const runtimeManifest = JSON.parse(readFileSync("content/learning-images/learning-images.runtime.json", "utf8"));
 const evidence = JSON.parse(readFileSync("content/validation/learning-images.evidence.json", "utf8"));
 
 function clone(value) {
@@ -18,6 +26,19 @@ function clone(value) {
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function collectObjectKeys(value, keys = []) {
+  if (!value || typeof value !== "object") return keys;
+  if (Array.isArray(value)) {
+    for (const item of value) collectObjectKeys(item, keys);
+    return keys;
+  }
+  for (const [key, item] of Object.entries(value)) {
+    keys.push(key);
+    collectObjectKeys(item, keys);
+  }
+  return keys;
 }
 
 function validateWithMockFiles(badManifest) {
@@ -37,8 +58,53 @@ function validateWithMockFiles(badManifest) {
 
 test("learning-image validator passes current manifest and reports computed coverage", () => {
   const output = execFileSync("node", ["scripts/content-learning-images.mjs"], { encoding: "utf8" });
-  const result = validateLearningImages({ topicGuide, vocabulary, manifest, evidence });
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest, evidence });
   assert.equal(output.trim(), formatLearningImageSummary(result.summary));
+});
+
+test("learning-image runtime manifest is the stripped full-manifest projection", () => {
+  assert.deepEqual(runtimeManifest, buildRuntimeLearningImageManifest(manifest));
+});
+
+test("learning-image runtime manifest excludes governance-only fields", () => {
+  const runtimeKeys = new Set(collectObjectKeys(runtimeManifest));
+  for (const field of ["sha256", "sourceFingerprint", "provenance", "safety", "promptSummary", "reviewer", "reviewedAt", "evidenceStatus", "noteRu"]) {
+    assert.equal(runtimeKeys.has(field), false, `${field} leaked into runtime manifest`);
+  }
+  assert.ok(manifest.images.some((image) => image.sha256 && image.provenance?.promptSummary && image.safety));
+  assert.ok(manifest.coverage.some((record) => record.sourceFingerprint && record.reviewer && record.evidenceStatus));
+});
+
+test("learning-image validator rejects missing, stale, or governance-heavy runtime manifests", () => {
+  const missing = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest: null, evidence });
+  assert.ok(missing.errors.includes("learning-images.runtime.json: runtime manifest is missing or malformed."));
+
+  const stale = clone(runtimeManifest);
+  stale.images[0].localPath = runtimeManifest.images[1].localPath;
+  const staleResult = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest: stale, evidence });
+  assert.ok(staleResult.errors.includes("learning-images.runtime.json: runtime projection is stale or does not match learning-images.manifest.json."));
+
+  const governanceHeavy = clone(runtimeManifest);
+  governanceHeavy.images[0].sha256 = manifest.images[0].sha256;
+  governanceHeavy.images[0].provenance = manifest.images[0].provenance;
+  governanceHeavy.coverage[0].sourceFingerprint = manifest.coverage[0].sourceFingerprint;
+  const governanceResult = validateLearningImages({ topicGuide, vocabulary, manifest, runtimeManifest: governanceHeavy, evidence });
+  assert.ok(governanceResult.errors.some((error) => error.includes("governance-only field must not be present")));
+});
+
+test("learning-image runtime projection does not throw for malformed full-manifest records", () => {
+  const badManifest = clone(manifest);
+  badManifest.images = [null, ["bad"], badManifest.images[0]];
+  badManifest.coverage = [null, 7, badManifest.coverage[0]];
+  const result = validateLearningImages({
+    topicGuide,
+    vocabulary,
+    manifest: badManifest,
+    runtimeManifest: buildRuntimeLearningImageManifest(badManifest),
+    evidence
+  });
+  assert.ok(result.errors.some((error) => error.includes("images[0]: image record must be an object.")));
+  assert.ok(result.errors.some((error) => error.includes("coverage[0]: coverage record must be an object.")));
 });
 
 test("learning-image CLI direct invocation guard handles URL-escaped paths", () => {

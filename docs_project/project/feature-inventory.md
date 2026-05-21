@@ -13,7 +13,7 @@
 - Mistake tracking and repeated-error review loop.
 - Exam-oriented vocabulary module with topic grouping and search.
 - Topic materials module that renders the published unofficial topic study guide with topic list/detail, Russian learning material, Spanish terms, trap notes, canonical ticket blocks, governed Russian translations where available, concise missing-translation fallback, learner difficulty, and local images.
-- Governed local generated learning-image system for `Материалы` and `Словарь`, using `cabadrive-learning-image-v1` SVG assets, manifest coverage, source fingerprints, alt/provenance metadata, and validation through `pnpm run validate:learning-images`.
+- Governed local generated learning-image system for `Материалы` and `Словарь`, using `cabadrive-learning-image-v1` SVG assets, full governance manifest coverage with source fingerprints and alt/provenance metadata, a stripped runtime manifest for browser rendering, and validation through `pnpm run validate:learning-images`.
 - Materials bilingual UX renders Spanish/Russian term pairs with explicit language boundaries and keyboard/touch-accessible reveal state while keeping Russian support close to Spanish terms.
 - Process guide module that renders the bundled Russian CABA B1/private-car `Otorgamiento` guide with official GCBA/ANSV links, checked dates, volatile-info warnings, adjacent-path callouts, and Spanish administrative glossary.
 - Validated learner-difficulty layer for all current questions and topic materials using `green`, `blue`, `yellow`, and `red` levels with dimensions, Russian rationale, provenance, and stale-source fingerprints.
