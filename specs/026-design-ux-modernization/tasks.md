@@ -413,3 +413,15 @@
 - Architect validation: evidence PR #169 head is 8e7a283b8409d182645144dd8087e9f87fc7394a, PR is mergeable, and required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` pass after process-memory correction commit 8e7a283b8409d182645144dd8087e9f87fc7394a.
 - Architect validation: Architect gaps: none.
 - Current-PR-head read-only guard: effective content head 8e7a283b8409d182645144dd8087e9f87fc7394a is the Architect-validated head before Analyst revalidation.
+- Effective content head: 761c08a2d3887cd9afe34934a9190b73a93c1c12
+- Architect validation: passed; Architect validation pass: passed
+- Architect validation: Final Architect validation completed at: 2026-05-21T05:01:20Z
+- Architect validated effective content head: 761c08a2d3887cd9afe34934a9190b73a93c1c12
+- Architect return count: 0
+- Architect validation: PR set evidence: PR #169 on branch `codex/026-design-ux-modernization` is the single implementation PR slice for feature 026 and is validated at effective content head `761c08a2d3887cd9afe34934a9190b73a93c1c12`.
+- Architect validation: required-check evidence: Orchestrator reported `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` green on effective content head `761c08a2d3887cd9afe34934a9190b73a93c1c12`.
+- Architect validation: review evidence: Review Agent found no blocking or advisory issues on effective content head `761c08a2d3887cd9afe34934a9190b73a93c1c12`, confirmed `PRRT_kwDOSX65IM6Dr-GK` is addressed, and Orchestrator resolved that thread after Review Agent confirmation.
+- Architect validation: task evidence: T001-T118 are complete, including T115-T118 runtime-minimal learning-image manifest follow-up; full governance manifest and evidence remain validator artifacts, while browser runtime imports the generated runtime projection.
+- Architect validation: runtime-manifest evidence: `PRRT_kwDOSX65IM6Dr-GK` has Architect disposition as accept/task, implementation evidence records `content/learning-images/learning-images.runtime.json`, `src/data/content.ts` runtime import usage, validator consistency checks, durable docs updates, and verification through `validate:learning-images`, `validate:content`, Node tests, build, e2e, preflight, and `git diff --check`.
+- Architect validation: scope evidence: validated design/UX modernization, durable docs, bilingual materials/vocabulary UX, local learning-image governance, runtime-minimal image metadata, review follow-ups T096-T118, acceptance evidence, role boundaries, and process memory.
+- Architect validation: feedback evidence: Implementation Agent feedback is fully disposed; no remaining implementation feedback needs Architect disposition.
