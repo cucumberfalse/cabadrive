@@ -214,3 +214,19 @@ Exhaustive PDF extraction, ticket-by-ticket comparison, currentness/legal valida
 - Analyst validation evidence: the guide preserves unofficial Russian learning-support status, CABA/B1/private-car scope, volatility warnings, official-action links, adjacent-path support, and no official full-bank claim.
 - Analyst validation evidence: Orchestrator-provided check context for `c51836797b2d11611040beffefa8cfdeb66f0249` is green for baseline-checks, docker-validation, PR Guard, AI Review, and OSV Scan.
 - Analyst validation evidence: Review Agent left no-blocking GitHub COMMENT review id 4333072910 for PR #168.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Analyst return count: 0
+- Final Analyst validation completed at: 2026-05-21T00:44:30Z
+- Analyst validated effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Customer intent check: PR #168 still satisfies the user's "получение" request for this Process Guide Refresh slice by improving the CABA acquisition and adjacent renewal process material according to the supplied PDF structure while verifying retained facts against current official GCBA/ANSV sources.
+- Gaps, if any: none
+- Architect disposition routing: not applicable; no Analyst final-validation gap requires Architect disposition.
+- Analyst limit escalation: none
+- Analyst validation evidence: the latest Architect validation for the same effective content head `c51836797b2d11611040beffefa8cfdeb66f0249` is recorded in `specs/025-source-material-refresh/tasks.md` before this Analyst validation, with completion timestamp `2026-05-20T21:37:51-03:00`.
+- Analyst validation evidence: this correction is evidence-only and revalidates the same PR #168 effective content head after the later Architect marker; it does not change product code, content JSON, docs, tests, or Architect-owned files.
+- Analyst validation evidence: current PR head `e8dcd02541d715fc072644f77fa8a12f73b42d68` is understood from Orchestrator context as later final-validation evidence over effective content head `c51836797b2d11611040beffefa8cfdeb66f0249`.
+- Analyst validation evidence: PR #168 implements Process Guide Refresh tasks T030-T036 and preserves unofficial Russian learning-support status, CABA/B1/private-car scope, volatility warnings, official-action links, adjacent-path support, and no official full-bank claim.
+- Analyst validation evidence: Orchestrator-provided check context for `c51836797b2d11611040beffefa8cfdeb66f0249` remains green for baseline-checks, docker-validation, PR Guard, AI Review, and OSV Scan, with no-blocking Review Agent COMMENT review id 4333072910.
