@@ -10,6 +10,7 @@
   "scripts": {
     "check:feature-memory": "node scripts/check-feature-memory.mjs",
     "check:repo": "node scripts/check-repo-baseline.mjs",
+    "validate:learning-images": "node scripts/content-learning-images.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:content:quality": "node scripts/validate-content.mjs --quality-gate",
     "validate:overlays": "node scripts/content-image-overlays.mjs",

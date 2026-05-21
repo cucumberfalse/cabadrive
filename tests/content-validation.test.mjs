@@ -5,8 +5,20 @@ import { test } from "node:test";
 
 test("content validation command passes", () => {
   const output = execFileSync("node", ["scripts/validate-content.mjs"], { encoding: "utf8" });
+  const learningEvidence = JSON.parse(readFileSync("content/validation/learning-images.evidence.json", "utf8"));
+  const learningSummary = learningEvidence.summary;
   assert.match(output, /Difficulty labels validated: 460 questions, 38 topics/);
+  assert.match(
+    output,
+    new RegExp(`Learning images validated: ${learningSummary.coverageUnitCount} units, ${learningSummary.imageCount} local images`)
+  );
   assert.match(output, /Content validation passed/);
+});
+
+test("content validation wires learning-image runtime manifest into validator", () => {
+  const source = readFileSync("scripts/validate-content.mjs", "utf8");
+  assert.match(source, /content\/learning-images\/learning-images\.runtime\.json/);
+  assert.match(source, /runtimeManifest:\s*learningImageRuntimeManifest/);
 });
 
 test("category B fallback questions keep local image references", () => {

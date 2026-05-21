@@ -5,10 +5,14 @@ import {
   assetUrl,
   explanationByQuestion,
   imageOverlayByQuestion,
+  learningImageById,
+  learningImageCoverageByUnit,
   questionById,
   sourceById,
   translationByQuestion,
   type ImageExplanationOverlay,
+  type LearningImageCoverageRecord,
+  type LearningImageRecord,
   type ProgressAnswer,
   type ProcessGuideSection,
   type Question,
@@ -105,6 +109,30 @@ function processCalloutLabel(section: ProcessGuideSection) {
   if (section.calloutType === "optional_preparation") return "Опциональная подготовка";
   if (section.calloutType === "adjacent_path") return "Соседний путь";
   return "Предупреждение";
+}
+
+function topicSummaryUnitId(topicId: string) {
+  return `topic-summary:${topicId}`;
+}
+
+function topicLearningUnitId(topicId: string, index: number) {
+  return `topic-learning:${topicId}:${index + 1}`;
+}
+
+function topicPracticalUnitId(topicId: string, index: number) {
+  return `topic-practical:${topicId}:${index + 1}`;
+}
+
+function topicTrapUnitId(topicId: string, noteId: string | undefined, index: number) {
+  return `topic-trap:${topicId}:${noteId || index + 1}`;
+}
+
+function topicTermUnitId(topicId: string, termId: string) {
+  return `topic-term:${topicId}:${termId}`;
+}
+
+function vocabularyTermUnitId(termId: string) {
+  return `vocabulary-term:${termId}`;
 }
 
 function primarySourceCategoryLabel(category: string) {
@@ -279,6 +307,72 @@ function QuestionImageFigure({
   );
 }
 
+function LearningImageFigure({
+  unitId,
+  compact = false
+}: {
+  unitId: string;
+  compact?: boolean;
+}) {
+  const coverage = learningImageCoverageByUnit.get(unitId) as LearningImageCoverageRecord | undefined;
+  const image = coverage?.imageIds?.[0] ? learningImageById.get(coverage.imageIds[0]) as LearningImageRecord | undefined : undefined;
+  if (!coverage || coverage.status === "exception" || !image) return null;
+
+  return (
+    <figure
+      className={compact ? "learning-image compact" : "learning-image"}
+      data-testid="learning-image"
+      data-learning-unit-id={unitId}
+      data-coverage-status={coverage.status}
+    >
+      <img src={assetUrl(image.localPath)} alt={image.altRu} width={image.width} height={image.height} loading="lazy" />
+      <figcaption>
+        <ImageIcon size={15} aria-hidden="true" />
+        <span>{image.captionRu}</span>
+        <small>{coverage.status === "shared" ? "общая схема темы" : "прямая иллюстрация"}</small>
+      </figcaption>
+    </figure>
+  );
+}
+
+function MaterialUnit({
+  unitId,
+  children
+}: {
+  unitId: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="material-unit">
+      <LearningImageFigure unitId={unitId} compact />
+      <div className="material-unit-copy" lang="ru">{children}</div>
+    </div>
+  );
+}
+
+function LanguagePair({
+  termEs,
+  translationRu,
+  meta,
+  defaultOpen = true
+}: {
+  termEs: string;
+  translationRu: string;
+  meta?: ReactNode;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details className="language-pair" open={defaultOpen}>
+      <summary aria-label={`Показать или скрыть русский перевод для ${termEs}`}>
+        <span className="language-pair-es" lang="es">{termEs}</span>
+        <span className="language-pair-toggle">ES/RU</span>
+      </summary>
+      <p lang="ru">{translationRu}</p>
+      {meta ? <small>{meta}</small> : null}
+    </details>
+  );
+}
+
 function StatusStrip({ progress }: { progress: StoredProgress }) {
   const wrong = mistakesFromHistory(progress.answers).length;
   const lastAttempt = progress.examAttempts.at(-1);
@@ -404,7 +498,7 @@ function QuestionCard({
       onKeyDown={canToggleSupport ? handleQuestionKeyDown : undefined}
     >
       <span className="block-label">Испанский текст из practice source</span>
-      <h2>{question.officialTextEs}</h2>
+      <h2 lang="es">{question.officialTextEs}</h2>
     </div>
   );
 
@@ -416,7 +510,7 @@ function QuestionCard({
         <span>{question.jurisdiction}</span>
         <span>{question.topics.map(topicLabel).join(", ")}</span>
         {mode !== "exam" && <DifficultyIndicator level={question.difficulty} label="Сложность билета" />}
-        {question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
+        {mode !== "exam" && question.flags.hasNegationOrException && <span className="warning">есть отрицание/ловушка</span>}
       </div>
 
       {learningTimer && (
@@ -448,7 +542,7 @@ function QuestionCard({
 
       {showTranslation && (
         <aside className="support-block translation" id={translationId}>
-          <p>{translation?.questionTextRu || "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}</p>
+          <p lang="ru">{translation?.questionTextRu || "Русский перевод для этого вопроса еще не подготовлен. Ориентируйтесь на испанский текст."}</p>
         </aside>
       )}
 
@@ -498,8 +592,8 @@ function QuestionCard({
               className={`answer ${showState && isCorrectAnswer ? "correct" : ""} ${showState && isSelected && !isCorrectAnswer ? "incorrect" : ""}`}
               onClick={() => selectAnswer(answer.id)}
             >
-              <span>{answer.officialTextEs}</span>
-              {showTranslation && translated && <small>{translated}</small>}
+              <span lang="es">{answer.officialTextEs}</span>
+              {showTranslation && translated && <small lang="ru">{translated}</small>}
             </button>
           );
         })}
@@ -508,14 +602,14 @@ function QuestionCard({
       {answered && revealAfterAnswer && (
         <div className={correct ? "result correct-text" : "result incorrect-text"} role="status">
           {correct ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
-          {correct ? "Верно" : "Ошибка"} · правильный ответ: {question.answers.find((answer) => answer.id === question.correctAnswerId)?.officialTextEs}
+          {correct ? "Верно" : "Ошибка"} · правильный ответ: <span lang="es">{question.answers.find((answer) => answer.id === question.correctAnswerId)?.officialTextEs}</span>
         </div>
       )}
 
       {showExplanation && (
         <aside className="support-block explanation">
           <span className="block-label">Учебное пояснение</span>
-          <p>{explanation?.textRu || "Пояснение пока не подготовлено для этого вопроса."}</p>
+          <p lang="ru">{explanation?.textRu || "Пояснение пока не подготовлено для этого вопроса."}</p>
         </aside>
       )}
 
@@ -890,10 +984,11 @@ function VocabularyView() {
       <div className="term-grid">
         {terms.map((term) => (
           <article className="term-card" key={term.id}>
+            <LearningImageFigure unitId={vocabularyTermUnitId(term.id)} compact />
             <span>{term.category}</span>
-            <h3>{term.termEs}</h3>
-            <p>{term.translationRu}</p>
-            <small>{term.explanationRu}</small>
+            <h3 lang="es">{term.termEs}</h3>
+            <p lang="ru">{term.translationRu}</p>
+            <small lang="ru">{term.explanationRu}</small>
           </article>
         ))}
       </div>
@@ -954,17 +1049,17 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
       </div>
       <div className="official-block">
         <span className="block-label">Испанский текст из canonical question</span>
-        <h3>{question.officialTextEs}</h3>
+        <h3 lang="es">{question.officialTextEs}</h3>
       </div>
       {translation ? (
         <aside className="support-block translation materials-translation">
           <span className="block-label">Неофициальный русский перевод</span>
-          <p>{translation.questionTextRu}</p>
+          <p lang="ru">{translation.questionTextRu}</p>
         </aside>
       ) : (
         <aside className="support-block translation materials-translation missing-translation">
           <span className="block-label">Русский перевод</span>
-          <p>Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
+          <p lang="ru">Русский перевод для этого билета еще не подготовлен; сверяйтесь с испанским текстом.</p>
         </aside>
       )}
       {localImagePath && (
@@ -988,11 +1083,11 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
           return (
             <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
               <div>
-                <strong>{answer.officialTextEs}</strong>
-                {translation?.answerTranslations[answer.id] && <small className="answer-translation">{translation.answerTranslations[answer.id]}</small>}
+                <strong lang="es">{answer.officialTextEs}</strong>
+                {translation?.answerTranslations[answer.id] && <small className="answer-translation" lang="ru">{translation.answerTranslations[answer.id]}</small>}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
-              <p>{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
+              <p lang="ru">{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
             </div>
           );
         })}
@@ -1057,7 +1152,9 @@ function TopicGuideView() {
             <div>
               <span className="block-label">Выбранная тема</span>
               <h2>{selectedTopic.titleRu}</h2>
-              <p>{selectedTopic.summaryRu}</p>
+              <MaterialUnit unitId={topicSummaryUnitId(selectedTopic.id)}>
+                <p>{selectedTopic.summaryRu}</p>
+              </MaterialUnit>
             </div>
             <div className="materials-topic-badges">
               <span>{guideStatusLabel(selectedTopic.status)}</span>
@@ -1067,16 +1164,20 @@ function TopicGuideView() {
 
           <section className="materials-section" aria-labelledby="learning-material-title">
             <h3 id="learning-material-title">Короткий материал</h3>
-            {selectedTopic.learningMaterialRu.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+            {selectedTopic.learningMaterialRu.map((paragraph, index) => (
+              <MaterialUnit unitId={topicLearningUnitId(selectedTopic.id, index)} key={paragraph}>
+                <p>{paragraph}</p>
+              </MaterialUnit>
             ))}
           </section>
 
           {selectedTopic.practicalReasoningRu?.length ? (
             <section className="materials-section" aria-labelledby="practical-reasoning-title">
               <h3 id="practical-reasoning-title">Практическая логика</h3>
-              {selectedTopic.practicalReasoningRu.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+              {selectedTopic.practicalReasoningRu.map((paragraph, index) => (
+                <MaterialUnit unitId={topicPracticalUnitId(selectedTopic.id, index)} key={paragraph}>
+                  <p>{paragraph}</p>
+                </MaterialUnit>
               ))}
             </section>
           ) : null}
@@ -1086,9 +1187,12 @@ function TopicGuideView() {
             <div className="materials-term-grid">
               {selectedTopic.spanishTerms.map((term) => (
                 <div className="materials-term" key={term.id}>
-                  <strong>{term.termEs}</strong>
-                  <p>{term.translationRu}</p>
-                  <small>Связанные билеты: {term.sourceQuestionIds.join(", ")}</small>
+                  <LearningImageFigure unitId={topicTermUnitId(selectedTopic.id, term.id)} compact />
+                  <LanguagePair
+                    termEs={term.termEs}
+                    translationRu={term.translationRu}
+                    meta={<>Связанные билеты: {term.sourceQuestionIds.join(", ")}</>}
+                  />
                 </div>
               ))}
             </div>
@@ -1109,7 +1213,8 @@ function TopicGuideView() {
               <div className="trap-list">
                 {selectedTopic.trapNotes.map((note, index) => (
                   <div className="trap-note" key={note.id || `${selectedTopic.id}-trap-${index}`}>
-                    <p>{note.textRu}</p>
+                    <LearningImageFigure unitId={topicTrapUnitId(selectedTopic.id, note.id, index)} compact />
+                    <p lang="ru">{note.textRu}</p>
                     {note.sourceQuestionIds?.length ? <small>Связанные билеты: {note.sourceQuestionIds.join(", ")}</small> : null}
                   </div>
                 ))}
@@ -1275,7 +1380,7 @@ function PrimarySourcesView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [sourceFilter, setSourceFilter] = useState("all");
-  const previousEffectiveDocumentId = useRef<string | undefined>();
+  const previousEffectiveDocumentId = useRef<string | undefined>(undefined);
   const [isSourceListOpen, setIsSourceListOpen] = useState(true);
 
   useEffect(() => {
@@ -1432,8 +1537,8 @@ function PrimarySourcesView() {
     setSearchQuery("");
     setCategoryFilter("all");
     setSourceFilter("all");
-    setSelectedDocumentId(corpus.documents[0]?.officialDocumentId);
-    setSelectedChunkId(corpus.documents[0]?.chunks[0]?.chunkId);
+    setSelectedDocumentId(corpus?.documents[0]?.officialDocumentId);
+    setSelectedChunkId(corpus?.documents[0]?.chunks[0]?.chunkId);
     setViewMode("simple");
     setIsSourceListOpen(true);
   }

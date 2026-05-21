@@ -14,13 +14,14 @@ This folder stores durable Cabadrive context for agents and humans.
 3. `project/frontend/frontend-docs.md`
 4. `project/backend/backend-docs.md`
 5. `project/feature-inventory.md`
-6. `project/frontend/ui-ux-source-of-truth.md`
-7. `project/learning/learning-experience-source-of-truth.md`
-8. `project/frontend/image-explanation-overlays.md`
-9. `project/frontend/ui-ux-product-audit.md`
-10. `project/content-sources.md`
-11. `project/devops/`
-12. `screens/`
-13. `adr/`
+6. `project/frontend/design-system.md`
+7. `project/frontend/ui-ux-source-of-truth.md`
+8. `project/learning/learning-experience-source-of-truth.md`
+9. `project/frontend/image-explanation-overlays.md`
+10. `project/frontend/ui-ux-product-audit.md`
+11. `project/content-sources.md`
+12. `project/devops/`
+13. `screens/`
+14. `adr/`
 
 Feature implementation details live in `../specs/<feature-id>/`.

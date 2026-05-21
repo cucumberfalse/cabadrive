@@ -6,9 +6,12 @@ const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-f
 const translations = JSON.parse(readFileSync("content/translations/ru.translations.json", "utf8"));
 const explanations = JSON.parse(readFileSync("content/explanations/ru.explanations.json", "utf8"));
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
+const learningImages = JSON.parse(readFileSync("content/learning-images/learning-images.runtime.json", "utf8"));
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
+const learningImageById = new Map(learningImages.images.map((image: { imageId: string }) => [image.imageId, image]));
+const learningCoverageByUnitId = new Map(learningImages.coverage.map((record: { unitId: string }) => [record.unitId, record]));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
 const canonicalQuestionById = new Map(questions.map((question: { id: string }) => [question.id, question]));
 const translationByQuestionId = new Map(translations.map((translation: { questionId: string }) => [translation.questionId, translation]));
@@ -530,7 +533,9 @@ test("exam mode hides translation and explanation during active attempt and stor
   await expect(page.locator(".support-block.translation")).toHaveCount(0);
   await expect(page.locator(".support-block.explanation")).toHaveCount(0);
   await expect(page.getByTestId("image-explanation-overlay")).toHaveCount(0);
+  await expect(page.getByTestId("learning-image")).toHaveCount(0);
   await expect(page.locator(".difficulty-chip")).toHaveCount(0);
+  await expect(page.getByText("есть отрицание/ловушка")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Пояснение/ })).toHaveCount(0);
   await page.getByRole("button", { name: "Пропустить" }).click();
   await expect(page.getByText("2 / 40")).toBeVisible();
@@ -546,7 +551,14 @@ test("vocabulary and guide are available", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Словарь/ }).click();
   await page.getByPlaceholder(/Buscar/).fill("balizas");
-  await expect(page.getByText("balizas")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "balizas" })).toBeVisible();
+  const balizasCoverage = learningCoverageByUnitId.get("vocabulary-term:term-balizas") as { imageIds: string[] };
+  const balizasImage = learningImageById.get(balizasCoverage.imageIds[0]) as { localPath: string };
+  const vocabularyImage = page.getByTestId("learning-image").first();
+  await expect(vocabularyImage).toBeVisible();
+  await expect(vocabularyImage.locator("img")).toHaveAttribute("src", new RegExp(balizasImage.localPath.replace(/\//g, "\\/")));
+  await expect(vocabularyImage.locator("img")).toHaveAttribute("alt", /balizas|термина/i);
+  await expect(page.locator("[lang='es']").filter({ hasText: "balizas" })).toBeVisible();
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
   await page.getByRole("button", { name: /Процесс/ }).click();
@@ -737,6 +749,10 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.getByRole("heading", { name: firstTopic.titleRu })).toBeVisible();
   await expect(page.locator(".materials-topic-heading").locator(`[aria-label="${difficultyAria[firstTopic.difficulty]}"]`)).toBeVisible();
   await expect(page.getByText(firstTopic.summaryRu)).toBeVisible();
+  const summaryImage = page.locator(`[data-learning-unit-id="topic-summary:${firstTopic.id}"]`);
+  await expect(summaryImage).toBeVisible();
+  await expect(summaryImage.locator("img")).toHaveAttribute("src", /content\/assets\/learning\/generated\/v1\/topic-/);
+  await expect(summaryImage.locator("img")).toHaveAttribute("alt", /Учебная схема/);
   await expect(page.getByText(firstTopic.learningMaterialRu[0])).toBeVisible();
   await expect(page.getByText("hospital/centro de salud").first()).toBeVisible();
   await expect(page.getByText("10 metros de cada lado de la entrada").first()).toBeVisible();
@@ -749,7 +765,16 @@ test("materials view renders topic guide status, list, details, canonical ticket
   await expect(page.getByText("horario de atención al público").first()).toBeVisible();
   await expect(page.getByText(firstTopic.practicalReasoningRu[0])).toBeVisible();
   const firstTerm = page.locator(".materials-term").filter({ hasText: firstTopic.spanishTerms[0].translationRu });
+  await expect(firstTerm.getByTestId("learning-image")).toBeVisible();
+  await expect(firstTerm.locator("details.language-pair")).toHaveAttribute("open", "");
   await expect(firstTerm.getByText(firstTopic.spanishTerms[0].termEs, { exact: true })).toBeVisible();
+  await expect(firstTerm.locator("[lang='es']").filter({ hasText: firstTopic.spanishTerms[0].termEs })).toBeVisible();
+  await firstTerm.locator("summary").focus();
+  await expect(firstTerm.locator("summary")).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(firstTerm.locator("details.language-pair")).not.toHaveAttribute("open", "");
+  await page.keyboard.press("Enter");
+  await expect(firstTerm.locator("details.language-pair")).toHaveAttribute("open", "");
   await expect(firstTerm.getByText(firstTopic.spanishTerms[0].translationRu)).toBeVisible();
   await expect(page.getByText(firstTopic.trapNotes[0].textRu)).toBeVisible();
 
@@ -828,18 +853,58 @@ test("materials view renders a dual-topic ticket as a full block in both assigne
 test("materials view stays local-first without external requests or PDF viewer", async ({ page }) => {
   const externalRequests: string[] = [];
   const pdfRequests: string[] = [];
+  const backendLikeRequests: string[] = [];
   page.on("request", (request) => {
     const url = new URL(request.url());
     if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
     if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+    if (/\/api\/|openai|live-ai|backend|analytics/i.test(url.pathname + url.hostname)) backendLikeRequests.push(request.url());
   });
 
   await page.goto("/");
   await page.getByRole("button", { name: /Материалы/ }).click();
   await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await expect(page.getByTestId("learning-image").first()).toBeVisible();
   await expect(page.locator("iframe, embed, object")).toHaveCount(0);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
+  expect(backendLikeRequests).toEqual([]);
+});
+
+test("learning-image manifest coverage matches rendered local material/vocabulary assets", async ({ page }) => {
+  const topicUnitCount = topicGuide.topics.reduce((total: number, topic: {
+    learningMaterialRu: string[];
+    practicalReasoningRu?: string[];
+    trapNotes: { textRu: string }[];
+    spanishTerms: { termEs: string }[];
+  }) => total + 1 + topic.learningMaterialRu.length + (topic.practicalReasoningRu?.length ?? 0) + topic.trapNotes.length + topic.spanishTerms.length, 0);
+  const expectedCoverage = topicUnitCount + learningImages.coverage.filter((record: { unitKind: string }) => record.unitKind === "vocabularyTerm").length;
+  expect(learningImages.coverage).toHaveLength(expectedCoverage);
+  expect(learningImages.images).toHaveLength(expectedCoverage);
+  expect(learningImages.coverage.every((record: { status: string }) => record.status === "direct")).toBeTruthy();
+  expect(learningImages.images.every((image: { localPath: string }) => image.localPath.startsWith("content/assets/learning/generated/v1/"))).toBeTruthy();
+
+  await page.goto("/");
+  await page.getByRole("button", { name: /Словарь/ }).click();
+  await expect(page.getByTestId("learning-image")).toHaveCount(10);
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByTestId("learning-image").first()).toBeVisible();
+  const imageSrcs = await page.getByTestId("learning-image").locator("img").evaluateAll((images) =>
+    images.map((image) => (image as HTMLImageElement).getAttribute("src"))
+  );
+  expect(imageSrcs.every((src) => src?.startsWith("/content/assets/learning/generated/v1/"))).toBeTruthy();
+});
+
+test("modernized learning, vocabulary, and materials layouts avoid horizontal overflow on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/");
+  await expect(page.getByTestId("question-card")).toBeVisible();
+  await page.getByRole("button", { name: /Словарь/ }).click();
+  await expect(page.getByTestId("learning-image").first()).toBeVisible();
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(2);
 });
 
 test("offline reload works after first load", async ({ page, context }) => {

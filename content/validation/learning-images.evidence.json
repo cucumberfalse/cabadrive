@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "styleVersion": "cabadrive-learning-image-v1",
+  "reviewStatus": "approved",
+  "reviewer": "cabadrive-026-implementation",
+  "reviewedAt": "2026-05-21",
+  "contentFingerprint": "6b10c2bc550681db0130a116ceedb61f377de75bdb06cc4a0fc377321084bcea",
+  "coverageFingerprint": "71df1159927c90d1f8be54063192a729a3d243e029fba829cb4c88c80552e42a",
+  "generationMethod": "deterministic programmatic SVG generation from cabadrive-learning-image-v1 style rules",
+  "summary": {
+    "styleVersion": "cabadrive-learning-image-v1",
+    "imageCount": 1382,
+    "coverageUnitCount": 1382,
+    "coverageRecordCount": 1382,
+    "directCoverageCount": 1382,
+    "sharedCoverageCount": 0,
+    "exceptionCoverageCount": 0,
+    "unitKindCounts": {
+      "learningMaterial": 269,
+      "practicalReasoning": 109,
+      "topicSummary": 38,
+      "topicTerm": 731,
+      "trapNote": 225,
+      "vocabularyTerm": 10
+    }
+  },
+  "safetyNotes": [
+    "Assets are committed local SVG files under content/assets/learning/generated/v1/.",
+    "Images contain no readable text, no official logos, no personal data, and no source-ticket pixels.",
+    "Every current topic-study and vocabulary coverage unit has a unit-specific direct SVG asset."
+  ]
+}

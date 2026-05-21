@@ -9,6 +9,7 @@ import { validateDifficultyContent } from "./content-difficulty.mjs";
 import { validateExplanationAlignment } from "./content-explanation-alignment.mjs";
 import { validateImageExplanationOverlays } from "./content-image-overlays.mjs";
 import { validateQuestionImageMetadata } from "./content-image-metadata.mjs";
+import { formatLearningImageSummary, validateLearningImages } from "./content-learning-images.mjs";
 import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from "./content-shards.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
@@ -75,6 +76,9 @@ const cabaExamProcessGuide = readJson("content/guide/caba-exam-process.ru.json")
 const topicGuide = readJson("content/guide/topic-study-guide.ru.json");
 const topicGuideCoverage = readJson("content/guide/topic-study-guide.coverage.json");
 const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-trace.json");
+const learningImageManifest = readJson("content/learning-images/learning-images.manifest.json");
+const learningImageRuntimeManifest = readJson("content/learning-images/learning-images.runtime.json");
+const learningImageEvidence = readJson("content/validation/learning-images.evidence.json");
 const officialDocumentsManifest = readJson("content/official-documents/manifest.json");
 const primarySourcesCorpus = readJson("content/primary-sources/primary-sources.ru.json");
 const primarySourcesCoverage = readJson("content/primary-sources/primary-sources.coverage.json");
@@ -259,6 +263,16 @@ errors.push(
     sourceTrace: topicGuideSourceTrace
   })
 );
+const learningImageValidation = validateLearningImages({
+  topicGuide,
+  vocabulary,
+  manifest: learningImageManifest,
+  runtimeManifest: learningImageRuntimeManifest,
+  evidence: learningImageEvidence,
+  fileExists: (relativePath) => existsSync(path(relativePath)),
+  fileSha256: (relativePath) => sha256(relativePath)
+});
+errors.push(...learningImageValidation.errors);
 errors.push(
   ...validateOfficialDocumentsManifest({
     manifest: officialDocumentsManifest,
@@ -313,6 +327,7 @@ if (errors.length) {
 
 for (const warning of warnings) console.warn(`Warning: ${warning}`);
 console.log(`Difficulty labels validated: ${difficultyValidation.questionCount} questions, ${difficultyValidation.topicCount} topics.`);
+console.log(formatLearningImageSummary(learningImageValidation.summary));
 console.log(
   `Content validation passed: ${questions.length} category B fallback questions, ${imageCount} local image references${
     qualityGate ? ", full content quality gate enabled" : ""
