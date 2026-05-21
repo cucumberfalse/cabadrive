@@ -50,6 +50,20 @@ test("learning-image validator rejects remote or question-image replacement path
   assert.ok(result.errors.some((error) => error.includes("canonical question-image assets")));
 });
 
+test("learning-image validator reports malformed images field without throwing", () => {
+  const badManifest = clone(manifest);
+  badManifest.images = {};
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest: badManifest, evidence });
+  assert.ok(result.errors.includes("learning-images.manifest.json: images must be an array."));
+});
+
+test("learning-image validator reports malformed coverage field without throwing", () => {
+  const badManifest = clone(manifest);
+  badManifest.coverage = {};
+  const result = validateLearningImages({ topicGuide, vocabulary, manifest: badManifest, evidence });
+  assert.ok(result.errors.includes("learning-images.manifest.json: coverage must be an array."));
+});
+
 test("learning-image validator rejects missing coverage records", () => {
   const badManifest = clone(manifest);
   badManifest.coverage.pop();

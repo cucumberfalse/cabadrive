@@ -298,13 +298,15 @@ function buildGeneratedRecords({ topicGuide, vocabulary, units }) {
 }
 
 function summaryFrom({ units, manifest }) {
+  const images = Array.isArray(manifest.images) ? manifest.images : [];
+  const coverage = Array.isArray(manifest.coverage) ? manifest.coverage : [];
   const coverageByStatus = { direct: 0, shared: 0, exception: 0 };
-  for (const record of manifest.coverage || []) coverageByStatus[record.status] = (coverageByStatus[record.status] || 0) + 1;
+  for (const record of coverage) coverageByStatus[record.status] = (coverageByStatus[record.status] || 0) + 1;
   return {
     styleVersion: manifest.styleVersion,
-    imageCount: manifest.images?.length || 0,
+    imageCount: images.length,
     coverageUnitCount: units.length,
-    coverageRecordCount: manifest.coverage?.length || 0,
+    coverageRecordCount: coverage.length,
     directCoverageCount: coverageByStatus.direct,
     sharedCoverageCount: coverageByStatus.shared,
     exceptionCoverageCount: coverageByStatus.exception,
@@ -338,9 +340,11 @@ export function validateLearningImages({
   if (manifest.styleVersion !== styleVersion) errors.push(`learning-images.manifest.json: styleVersion must be ${styleVersion}.`);
   if (!Array.isArray(manifest.images)) errors.push("learning-images.manifest.json: images must be an array.");
   if (!Array.isArray(manifest.coverage)) errors.push("learning-images.manifest.json: coverage must be an array.");
+  const manifestImages = Array.isArray(manifest.images) ? manifest.images : [];
+  const manifestCoverage = Array.isArray(manifest.coverage) ? manifest.coverage : [];
 
   const imageById = new Map();
-  for (const image of manifest.images || []) {
+  for (const image of manifestImages) {
     if (!image?.imageId || typeof image.imageId !== "string") errors.push("learning image record missing imageId.");
     if (imageById.has(image.imageId)) errors.push(`${image.imageId}: duplicate imageId.`);
     imageById.set(image.imageId, image);
@@ -381,7 +385,7 @@ export function validateLearningImages({
   }
 
   const seenCoverage = new Set();
-  for (const record of manifest.coverage || []) {
+  for (const record of manifestCoverage) {
     const unit = unitById.get(record?.unitId);
     if (!unit) errors.push(`${record?.unitId || "coverage"}: coverage references an unknown unit.`);
     if (seenCoverage.has(record?.unitId)) errors.push(`${record.unitId}: duplicate coverage record.`);
@@ -429,7 +433,7 @@ export function validateLearningImages({
     if (evidence.reviewStatus !== "approved") errors.push("learning-images.evidence.json: reviewStatus must be approved.");
     if (evidence.reviewer !== reviewer || evidence.reviewedAt !== reviewedAt) errors.push("learning-images.evidence.json: reviewer/reviewedAt mismatch.");
     if (evidence.contentFingerprint !== contentFingerprint(units)) errors.push("learning-images.evidence.json: contentFingerprint is stale.");
-    if (evidence.coverageFingerprint !== coverageFingerprint(manifest.coverage || [])) errors.push("learning-images.evidence.json: coverageFingerprint is stale.");
+    if (evidence.coverageFingerprint !== coverageFingerprint(manifestCoverage)) errors.push("learning-images.evidence.json: coverageFingerprint is stale.");
     for (const [key, value] of Object.entries(summary)) {
       if (typeof value === "number" && evidence.summary?.[key] !== value) errors.push(`learning-images.evidence.json: summary.${key} must be ${value}.`);
     }

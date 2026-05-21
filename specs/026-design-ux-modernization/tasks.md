@@ -127,6 +127,8 @@
 - [x] T096 [P1 active-exam support hiding] Remove the active-exam `есть отрицание/ловушка` warning from `src/App.tsx` question metadata and any equivalent active-attempt metadata surface. This warning is learning support/hinting and must not appear during active exam attempts. Learning/mistake-review surfaces may continue showing allowed after-answer support according to the existing hidden-before-answer contract. Add or update Playwright coverage that starts an active exam attempt and asserts the warning text, generated learning images, translations, explanations, overlays, difficulty rationale, and support controls are absent before answer submission.
 - [x] T097 [P1 learning-image meaningful coverage] Replace the current broad generic topic-image assignment in `scripts/content-learning-images.mjs`, manifest records, evidence, and rendered materials so learning-image coverage no longer approves one generic topic SVG for every non-vocabulary material unit. Preferred remediation is unit-specific deterministic local SVG assets and direct coverage records for topic summaries, learning paragraphs, practical paragraphs, trap notes, and topic Spanish terms. If implementation instead uses shared images, the sharing model must be concept-level rather than topic-level: each shared bucket must have an explicit semantic concept key/title, a bounded set of related unit IDs, reviewer-auditable rationale, and assets that visibly illustrate the specific shared concept. Validator/evidence must report direct/shared/exception counts accurately, reject unbucketed generic topic sharing, reject stale source fingerprints, and avoid hard-coded stale expected counts by deriving unit totals from current content. Tests must cover rejection of generic topic-wide sharing and acceptance of either unit-specific direct records or audited concept-level sharing.
 - [x] T098 Rerun and record follow-up verification after T096-T097: `pnpm run validate:learning-images`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, `pnpm run test:e2e`, `pnpm run preflight`, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and ticket-immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7`.
+- [x] T099 [P2 malformed learning-image manifest guards] In `scripts/content-learning-images.mjs`, guard non-array `manifest.images` and `manifest.coverage` immediately after validation records field-shape errors and before any iteration, summary, fingerprint, or lookup path can throw `TypeError: object is not iterable`. Invalid manifests should report the existing validation error and continue returning structured validation results without crashing.
+- [x] T100 Add focused validator tests for malformed `images: {}` and `coverage: {}` manifests, then rerun and record follow-up verification for the learning-image validator path, including `pnpm run validate:learning-images`, relevant content-validation tests, `pnpm run test`, and `git diff --check`.
 
 ## Process Memory
 
@@ -264,6 +266,16 @@
   - `node scripts/check-feature-memory.mjs --worktree`: passed.
   - Ticket immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7` passed with no output for `content/questions/caba-b.unofficial-fallback.questions.json` and `content/assets/questions/source-bandinopla-testdeconducir-b`.
   - `pnpm run preflight`: passed; rerun log tail ended with `50 passed (18.4s)` from Playwright.
+- T099-T100 implementation completed at `2026-05-21T03:09:56Z` in the assigned worktree `/Users/chap/devel/cabadrive-worktrees/026-design-ux-modernization` on branch `codex/026-design-ux-modernization`.
+- T099 implementation: `scripts/content-learning-images.mjs` now normalizes `manifest.images` and `manifest.coverage` to safe local arrays after recording the existing `images must be an array` and `coverage must be an array` validation errors. Iteration, summary counts, image lookup, coverage lookup, and evidence coverage-fingerprint comparison use those safe arrays, so malformed object fields return structured validation results instead of throwing `TypeError: object is not iterable`.
+- T100 tests: `tests/content-learning-images.test.mjs` now covers malformed `images: {}` and `coverage: {}` manifests and asserts the validator returns the existing structured field-shape errors without throwing.
+- T100 verification:
+  - `pnpm exec node --test tests/content-learning-images.test.mjs`: passed, `8` tests.
+  - `pnpm run validate:learning-images`: passed; `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
+  - `pnpm exec node --test tests/content-learning-images.test.mjs tests/content-validation.test.mjs`: passed, `12` tests.
+  - `pnpm run test`: passed, `257` Node tests.
+  - `git diff --check`: passed with no output.
+- T099-T100 dead ends: none.
 
 ### Implementation Agent Feedback
 
@@ -284,6 +296,7 @@
 
 - Review finding 1 disposition: accept/task. The active exam `есть отрицание/ловушка` metadata warning is learning support/hinting and violates the hard active-exam support-hiding contract. Implementation Agent must complete T096 before final Architect validation.
 - Review finding 2 disposition: accept/task. Current learning-image coverage is overstated because one generic topic SVG assigned to every non-vocabulary material unit does not satisfy meaningful paragraph/unit imagery. Implementation Agent must complete T097 before final Architect validation, preferring unit-specific deterministic local SVG assets/records where feasible or otherwise a tightly audited concept-level sharing model.
+- Review finding 3 disposition (`PRRT_kwDOSX65IM6DrIPk`): accept/task. Malformed learning-image manifests with non-array `images` or `coverage` fields must be reported as validation errors without crashing later iteration, summary, or fingerprint paths. Implementation Agent must complete T099-T100 before finalization.
 - Implementation Agent feedback: none recorded by follow-up; no Architect disposition needed.
 
 ### Final Validation Evidence
