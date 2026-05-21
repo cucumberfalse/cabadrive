@@ -170,9 +170,13 @@
 ### Known Issues
 
 - The feature folder is currently untracked in this Architect worktree, as expected for new feature memory.
+  Architect disposition: resolved; the feature memory was committed into PR #169 during implementation, so this planning-time startup state is superseded.
 - The requested image coverage is large; the follow-up replaced broad topic sharing with 1,382 deterministic unit-specific direct SVG assets and explicit per-unit direct coverage records.
+  Architect disposition: addressed; T097/T098 evidence records direct unit-specific coverage for all 1,382 computed units with 0 shared records and 0 exceptions.
 - Implementation known issues: none blocking. The production build retains the pre-existing Vite large-chunk warning for the main app/source-reader bundle; build still passes.
+  Architect disposition: not applicable as a blocker; the warning is pre-existing, non-failing build output and `pnpm run build`/`pnpm run preflight` passed.
 - Follow-up known issues: none blocking. The direct unit-specific learning-image set increases the generated service-worker cached asset count to 1,728 and retains the pre-existing Vite large-chunk warning; build, e2e, and preflight still pass.
+  Architect disposition: resolved/no action needed; increased cached asset count is expected from direct local learning-image coverage, and build, e2e, and preflight passed.
 
 ### Verification Evidence
 
@@ -264,9 +268,11 @@
 ### Implementation Agent Feedback
 
 - None. Follow-up fixes stayed within the Architect dispositions for T096-T097 and introduced no new product or architecture request.
+- Architect disposition: resolved/no action needed; no unresolved Implementation Agent feedback remains.
 
 ### Cycle PR Set
 
+- PR #169 / pull request branch `codex/026-design-ux-modernization`, head SHA `c378db72664b08f75bc27943b0de1206eb1b49bb`, status open/mergeable with required checks passed, included in final validation for feature 026.
 - PR #169, `codex/026-design-ux-modernization` into `main`: single implementation PR slice for feature 026, including durable design docs, UI modernization, bilingual materials/vocabulary UX, learning-image manifest/validator/assets, tests, visual evidence, review fixes, and feature memory.
 - Base: `c083b248564a67d7599fa63d4181759fe30cd6a7`.
 - Current/effective PR head validated by Architect: `c378db72664b08f75bc27943b0de1206eb1b49bb`.
