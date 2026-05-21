@@ -4,7 +4,8 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { test } from "node:test";
-import { collectLearningImageCoverageUnits, formatLearningImageSummary, svgForImage, validateLearningImages } from "../scripts/content-learning-images.mjs";
+import { pathToFileURL } from "node:url";
+import { collectLearningImageCoverageUnits, formatLearningImageSummary, isDirectInvocation, svgForImage, validateLearningImages } from "../scripts/content-learning-images.mjs";
 
 const topicGuide = JSON.parse(readFileSync("content/guide/topic-study-guide.ru.json", "utf8"));
 const vocabulary = JSON.parse(readFileSync("content/vocabulary/ru.vocabulary.json", "utf8"));
@@ -38,6 +39,15 @@ test("learning-image validator passes current manifest and reports computed cove
   const output = execFileSync("node", ["scripts/content-learning-images.mjs"], { encoding: "utf8" });
   const result = validateLearningImages({ topicGuide, vocabulary, manifest, evidence });
   assert.equal(output.trim(), formatLearningImageSummary(result.summary));
+});
+
+test("learning-image CLI direct invocation guard handles URL-escaped paths", () => {
+  const scriptPath = resolve("tmp path with spaces", "content-learning-images.mjs");
+  const scriptUrl = pathToFileURL(scriptPath).href;
+  assert.ok(scriptUrl.includes("%20"));
+  assert.equal(isDirectInvocation(scriptUrl, scriptPath), true);
+  assert.equal(isDirectInvocation(scriptUrl, resolve("other path", "content-learning-images.mjs")), false);
+  assert.equal(isDirectInvocation(scriptUrl, undefined), false);
 });
 
 test("learning-image manifest has no duplicate direct image hashes", () => {

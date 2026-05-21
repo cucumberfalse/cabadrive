@@ -576,4 +576,8 @@ function main() {
   console.log(formatLearningImageSummary(result.summary));
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+export function isDirectInvocation(importMetaUrl, argvPath = process.argv[1]) {
+  return Boolean(argvPath) && resolve(argvPath) === fileURLToPath(importMetaUrl);
+}
+
+if (isDirectInvocation(import.meta.url)) main();

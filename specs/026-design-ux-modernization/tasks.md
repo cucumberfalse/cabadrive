@@ -141,6 +141,8 @@
 - [x] T110 Add focused validator tests for T109 with `coverage: [null]`, primitive entries, and a mixed valid/invalid coverage array, asserting structured validation errors and no thrown exceptions. Rerun and record `pnpm exec node --test tests/content-learning-images.test.mjs`, `pnpm run validate:learning-images`, `pnpm run validate:content`, `pnpm run test`, and `git diff --check`.
 - [x] T111 [P2 null/non-object image entry guard] Harden image-record validation in `scripts/content-learning-images.mjs` so null or non-object entries in `manifest.images` produce structured validation errors before any `image.imageId`, `localPath`, hash, dimension, provenance, review-state, summary, lookup, or filesystem path logic runs. This is the same malformed-manifest recovery class as T099-T110 and must not regress primitive image-entry structured errors.
 - [x] T112 Add focused validator tests for T111 with `images: [null]`, object-like invalid values, primitive image entries, and a mixed valid/invalid image array, asserting structured validation errors and no thrown exceptions. Rerun and record `pnpm exec node --test tests/content-learning-images.test.mjs`, `pnpm run validate:learning-images`, `pnpm run validate:content`, `pnpm run test`, and `git diff --check`.
+- [x] T113 [P2 entrypoint detection guard, `PRRT_kwDOSX65IM6Dr1XS`] Replace the direct invocation guard in `scripts/content-learning-images.mjs` so it compares normalized filesystem paths, using `fileURLToPath(import.meta.url)` and `resolve(process.argv[1])` or the repository's existing equivalent pattern. The script must reliably run validation when invoked as `node scripts/content-learning-images.mjs`, including when the repository path contains spaces or URL-escaped characters, and must not silently exit `0` without validation.
+- [x] T114 Add focused verification for T113 if practical, such as a unit test or subprocess smoke test that exercises the direct-entry path and proves validation output/exit behavior occurs from a path form that would fail manual `file://` URL comparison. At minimum, rerun and record `node scripts/content-learning-images.mjs`, `pnpm run validate:learning-images`, relevant content-learning-image tests, and `git diff --check`.
 
 ## Process Memory
 
@@ -319,6 +321,13 @@
   - `pnpm run preflight`: passed; includes feature-memory gate, repo baseline, content validation, Node tests, build, and `50` Playwright tests.
   - `git diff --check`: passed before process-memory update with no output; rerun after process-memory update is recorded in the final Implementation Agent report.
 - T111-T112 dead ends: one focused-test mismatch for malformed `{}` image localPath fallback text; fixed in the same follow-up before broader verification.
+- T113-T114 implementation completed at `2026-05-21T04:35:00Z` in the assigned worktree `/Users/chap/devel/cabadrive-worktrees/026-design-ux-modernization` on branch `codex/026-design-ux-modernization`; no staging, commit, push, merge, or PR review-state mutation was performed.
+- T113 implementation: `scripts/content-learning-images.mjs` now uses exported `isDirectInvocation(importMetaUrl, argvPath)` to compare normalized filesystem paths with `fileURLToPath(import.meta.url)` and `resolve(process.argv[1])`, replacing the fragile manually constructed `file://${process.argv[1]}` comparison.
+- T114 tests: `tests/content-learning-images.test.mjs` now covers a direct-invocation guard case using `pathToFileURL` for a filesystem path containing spaces, proving URL-escaped `import.meta.url` still matches the unescaped filesystem path and mismatched/empty argv paths do not match.
+- T113-T114 focused verification:
+  - `node scripts/content-learning-images.mjs`: passed and printed `Learning images validated: 1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions.`
+  - `pnpm exec node --test tests/content-learning-images.test.mjs`: passed, `23` tests.
+- T113-T114 dead ends: none.
 
 ### Implementation Agent Feedback
 
@@ -346,6 +355,7 @@
 - Review finding disposition (`PRRT_kwDOSX65IM6DreFk`): accept/task. Non-string shared `conceptKey` values must return structured validator errors instead of throwing during generic-sharing checks. Implementation Agent must complete T107-T108.
 - Review finding disposition (`PRRT_kwDOSX65IM6DrhWH`): accept/task. Null or non-object coverage entries must return structured validator errors instead of throwing during coverage property reads. Implementation Agent must complete T109-T110.
 - Additional validator-hardening disposition: accept/task. Orchestrator found the current dirty T101-T110 implementation still throws for `manifest.images = [null]` at `image.imageId`, while primitive image entries already return structured errors. Null and non-object image entries are the same malformed-manifest recovery class as the active hardening work, so Implementation Agent must complete T111-T112 before committing the follow-up.
+- Review finding disposition (`PRRT_kwDOSX65IM6Dr1XS`): accept/task. The direct invocation guard must not compare `import.meta.url` to a manually constructed `file://${process.argv[1]}` URL because URL escaping can prevent CLI validation from running while still exiting successfully. Implementation Agent must complete T113-T114 using `fileURLToPath(import.meta.url)` and normalized path comparison or the repository's existing safer equivalent.
 - Implementation Agent feedback: none recorded by follow-up; no Architect disposition needed.
 
 ### Final Validation Evidence
