@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-05-20T19:29:28-03:00",
+  "systemTools": {
+    "pdftotext": null,
+    "pdfinfo": null,
+    "pdftoppm": null,
+    "mutool": null
+  },
+  "pythonRuntime": "<codex-runtime>/dependencies/python/bin/python3",
+  "nodeRuntime": "<codex-runtime>/dependencies/node/bin/node",
+  "pythonPackages": {
+    "pypdf": true,
+    "PIL": true,
+    "PyPDF2": false,
+    "fitz": false,
+    "pdfplumber": false
+  },
+  "feasibility": {
+    "textExtraction": "feasible with bundled Python pypdf; used for inventory and ticket candidate extraction.",
+    "embeddedImageEnumeration": "feasible with pypdf page.images for image counts and coarse page evidence.",
+    "imageRenderingOrCropping": "blocked in Slice 1 environment: system pdftoppm/mutool are absent and no PyMuPDF/pdfplumber rendering stack is available. pypdf can extract embedded image objects but not reliable page-rendered crops for ticket import evidence.",
+    "ocr": "not available in the recorded tooling; Russian screenshot-only ticket notes were not OCR-extracted into Spanish tuples."
+  }
+}

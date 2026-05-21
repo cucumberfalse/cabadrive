@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-05-20T19:29:28-03:00",
+  "existingBank": {
+    "questionFile": "content/questions/caba-b.unofficial-fallback.questions.json",
+    "questionCount": 460,
+    "contentModeFile": "content/meta/content-mode.json",
+    "contentMode": {
+      "mode": "unofficial_b_fallback",
+      "label": "unofficial category B practice set, not an official question bank",
+      "jurisdiction": "CABA",
+      "checkedAt": "2026-05-08",
+      "notes": [
+        "A complete public official CABA B-class question bank has not been confirmed.",
+        "The committed practice questions are category B fallback data from an Apache-2.0 community simulator and are not official GCBA question text.",
+        "Official GCBA sources are used for exam format, jurisdiction context, and study-material attribution.",
+        "Russian translations, explanations, and guide comments are unofficial learning support."
+      ],
+      "blockedClaims": [
+        "official full question bank",
+        "complete CABA B-class bank",
+        "official GCBA B question bank",
+        "externally validated release"
+      ]
+    },
+    "imageBackedQuestionCount": 276,
+    "sourceIdCounts": {
+      "bandinopla-testdeconducir-caba-b-source1-2026-05-08": 460
+    }
+  },
+  "ticketSourcePdfsParsed": [
+    "categoriab.pdf",
+    "PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf"
+  ],
+  "ticketSourcePdfsNotParsedAsSpanishTuples": [
+    {
+      "sourcePdf": "трудные билеты.pdf",
+      "reason": "Russian notes/screenshots only in pypdf text extraction; no Spanish question/answer tuple, no official source authority, no OCR/rendering stack."
+    }
+  ],
+  "candidateCount": 642,
+  "countsBySource": {
+    "categoriab.pdf": 447,
+    "PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf": 195
+  },
+  "countsByMatchType": {
+    "exact_spanish_tuple": 445,
+    "question_text_only": 59,
+    "no_structured_match": 135,
+    "fuzzy_question_text": 3
+  },
+  "countsByDisposition": {
+    "duplicate": 445,
+    "ambiguous": 62,
+    "outdated": 135
+  },
+  "countsBySourceAndDisposition": {
+    "categoriab.pdf": {
+      "duplicate": 438,
+      "ambiguous": 9
+    },
+    "PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf": {
+      "duplicate": 7,
+      "outdated": 135,
+      "ambiguous": 53
+    }
+  },
+  "acceptedCurrentCount": 0,
+  "recommendations": [
+    "No ticket additions should be made from Slice 1 evidence. accepted-current count is 0 because no absent candidate has current official/legal support, correct-answer evidence, and image/crop provenance.",
+    "If Orchestrator/Architect want later ticket work, start with categoriab.pdf ambiguous/deferred candidates only, because it is newer and mostly aligns with the existing fallback bank; keep batches small and require official/currentness plus full learning-support evidence.",
+    "Do not batch-import unmatched 2008 PREGUNTAS candidates; treat exact matches as duplicates and old variants/unmatched candidates as rejected unless a separate official-source investigation proves current validity.",
+    "Run a separate process-guide slice for Первое_получение_прав_и_обновление.pdf, using it only as a structure/reference model and verifying all claims against official GCBA/ANSV pages.",
+    "No official archive/manual update is recommended in Slice 1 because the supplied 2023 manual copy matches the governed project archive original byte-for-byte."
+  ],
+  "blockers": [
+    "Candidate PDFs do not expose reliable correct-answer marks through pypdf text extraction; correct-answer comparison is only available where an existing-bank duplicate/variant match exists.",
+    "Page-rendered image crop extraction is blocked without pdftoppm/mutool/PyMuPDF/pdfplumber; image-backed absent candidates cannot satisfy project import standards in this slice.",
+    "Currentness for absent ticket candidates was not proven from official/project legal sources; all nonduplicate absent candidates remain deferred/outdated rather than accepted-current."
+  ]
+}

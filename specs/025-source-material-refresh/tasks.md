@@ -1,0 +1,307 @@
+# Tasks: Source Material Refresh
+
+## Architect Planning
+
+- [x] T001 Confirm assigned worktree, branch, and verified base from Orchestrator.
+- [x] T002 Read the active Analyst artifact `feature-request.md`.
+- [x] T003 Review governing project docs and relevant content/tooling contracts.
+- [x] T004 Create `spec.md`.
+- [x] T005 Create `plan.md`.
+- [x] T006 Create this `tasks.md`.
+
+## Slice 1: Inventory And Candidate Disposition
+
+- [x] T007 Confirm Implementation Agent starts from complete feature memory.
+- [x] T008 Run `git status --short --branch` and record pre-existing dirty/untracked state.
+- [x] T009 Confirm current content mode remains `unofficial_b_fallback`.
+- [x] T010 Inventory all seven supplied PDFs with path, existence, hash, apparent source/date, role, source authority, currentness, licensing/provenance concerns, and disposition.
+- [x] T011 Verify usable PDF text/image extraction tooling or record exact blocker.
+- [x] T012 Classify PDFs as ticket source, official/manual candidate, Russian learning aid, process-guide candidate, roadmap/reference, rejected, or ambiguous.
+- [x] T013 Extract ticket candidates from ticket-source PDFs or record blocker.
+- [x] T014 Compare every extracted candidate against the existing bundled bank by structured Spanish tuple, correct answer, category, and image evidence where applicable.
+- [x] T015 Disposition every candidate as duplicate, accepted-current, out-of-scope, outdated, unsupported, ambiguous, or deferred.
+- [x] T016 Record candidate counts, disposition counts, evidence paths, and blockers in Process Memory.
+- [x] T017 Recommend ticket batch grouping and whether separate process-guide/official-source slices are needed.
+- [x] T018 Run Slice 1 verification gates.
+
+## Conditional Slice 2+: Ticket Batches
+
+Complete only for Orchestrator-assigned accepted-current ticket batches.
+
+Architect scope note after Slice 1: no Slice 2 ticket-import batch is currently ready. These tasks remain gated until a separate official/currentness investigation proves one or more candidates are `accepted-current` and identifies a small reviewable batch with full support evidence.
+
+- [ ] T019 Assign stable IDs without renumbering existing tickets.
+- [ ] T020 Add or update source records with truthful authority, license/provenance, and category B practice scope.
+- [ ] T021 Add accepted question records with Spanish question/answers, correct answer, source trace, validation notes, topics, flags, and difficulty metadata.
+- [ ] T022 Add local image crops/assets with source page/region, hash, dimensions, crop method, and visual review when needed.
+- [ ] T023 Add Russian translations and answer translations in range shards.
+- [ ] T024 Add Russian explanations with correct-answer and wrong-answer rationales.
+- [ ] T025 Add/update image metadata and question-specific usage mappings for image-backed tickets.
+- [ ] T026 Update affected topic, vocabulary, overlay, or primary-source references only when required.
+- [ ] T027 Regenerate indexes and refresh deterministic evidence through project tooling.
+- [ ] T028 Run ticket-slice verification gates including `validate:content:quality`.
+- [ ] T029 Record accepted IDs, changed files, evidence, validation, and known issues.
+
+## Conditional Slice: Process Guide Refresh
+
+Architect scope note after Slice 1: this should be the next recommended separate implementation slice if Orchestrator continues this feature. Use `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model; every retained fact must be independently verified against current official GCBA/ANSV sources before content changes.
+
+- [ ] T030 Identify the best supplied process PDF as a structure/reference model.
+- [ ] T031 Independently verify every retained acquisition/renewal claim against current official sources.
+- [ ] T032 Update `content/guide/caba-exam-process.ru.json` only for verified current claims.
+- [ ] T033 Preserve unofficial status, B1/private-car scope, official links, checked dates, and volatility warnings.
+- [ ] T034 Keep renewal/jurisdiction-change/foreigner/beginner material as concise adjacent-path support unless separately scoped.
+- [ ] T035 Run process-guide validation through `pnpm run validate:content`.
+- [ ] T036 Record official-source evidence and verification outcome.
+
+## Conditional Slice: Official Archive / Primary Sources
+
+- [ ] T037 Add or refresh official archive entries only from independently verified official sources.
+- [ ] T038 Preserve exact Spanish text and raw/original evidence for lossy formats.
+- [ ] T039 Update manifest metadata, hashes, currentness, and exact-text evidence.
+- [ ] T040 Keep Russian learner content outside `content/official-documents/`.
+- [ ] T041 Update primary-source learner corpus only if archive coverage changes.
+- [ ] T042 Run relevant official-source validation.
+
+## Conditional Slice: Durable Docs
+
+- [ ] T043 Update durable docs only when behavior, source governance, workflow, validation, content counts, or visible status semantics change.
+- [ ] T044 Record why docs were or were not changed.
+
+## Verification Gates
+
+- [x] T045 Run `pnpm run validate:content`.
+- [x] T046 Run `node scripts/check-feature-memory.mjs --worktree`.
+- [x] T047 Run `git diff --check`.
+- [x] T048 Run helper tests if helper tooling was added. Not applicable: no helper tooling was committed.
+- [ ] T049 For ticket/support/image changes, run `pnpm run generate:content-indexes`.
+- [ ] T050 For ticket/support/image changes, run `pnpm run refresh:content-evidence`.
+- [ ] T051 For ticket/support/image changes, run `pnpm run validate:content:quality`.
+- [ ] T052 For learner-visible or tooling changes, run `pnpm run test`.
+- [ ] T053 For learner-visible or content bundle changes, run `pnpm run build`.
+- [ ] T054 For learner-visible behavior changes, run `pnpm run test:e2e`.
+- [ ] T055 Before final handoff, run `pnpm run preflight` or record exact unrelated blocker.
+
+## Review Requirements
+
+- [ ] T056 Review Agent verifies role boundaries and complete feature memory.
+- [ ] T057 Review Agent verifies PDF inventory and source dispositions.
+- [ ] T058 Review Agent verifies candidate comparison/dispositions.
+- [ ] T059 Review Agent verifies accepted tickets, if any, have full support/evidence and no stale generated files.
+- [ ] T060 Review Agent verifies image crop/metadata evidence for image-backed accepted tickets.
+- [ ] T061 Review Agent verifies process-guide changes use current official sources.
+- [ ] T062 Review Agent verifies official archive separation and exact-text governance.
+- [ ] T063 Review Agent verifies no official-full-bank claim or content-mode drift.
+- [ ] T064 Review Agent verifies validation evidence and unresolved feedback disposition.
+
+## Process Memory
+
+### Architect Decisions
+
+- Full ticket addition/update is too large for one implementation PR unless Slice 1 proves the accepted delta is tiny.
+- First recommended slice is Inventory And Candidate Disposition.
+- Later ticket batches must be small enough to review complete Spanish/source/support/image/evidence changes.
+- Process-guide refresh should normally be separate from ticket batches.
+- Current mode remains `unofficial_b_fallback`; official full-bank claims require separate scope.
+- User PDFs are candidates, not release authority.
+- Official Spanish archive stays exact and Spanish-only; Russian learner support stays outside it.
+
+### Decisions
+
+- Full ticket addition/update is too large for one implementation PR unless Slice 1 proves the accepted delta is tiny.
+- First recommended slice is Inventory And Candidate Disposition.
+- Later ticket batches must be small enough to review complete Spanish/source/support/image/evidence changes.
+- Process-guide refresh should normally be separate from ticket batches.
+- Current mode remains `unofficial_b_fallback`; official full-bank claims require separate scope.
+- User PDFs are candidates, not release authority.
+- Official Spanish archive stays exact and Spanish-only; Russian learner support stays outside it.
+
+### Context Evidence
+
+- Architect worked only in `specs/025-source-material-refresh/`.
+- Current project docs identify the active practice mode as `unofficial_b_fallback`.
+- Existing ticket support layers are sharded and generated indexes are tooling-owned.
+- Process guide validates through `scripts/content-caba-exam-process.mjs`.
+- System PDF tools are documented as absent; implementation must refine extraction within bundled/project tooling constraints.
+- Implementation Agent started in `<worktree>` on branch `codex/025-source-material-refresh`; `HEAD` and merge-base matched `04d2a3279cb3512dbc52625a687e7ba44a3d339b`.
+- Pre-implementation `git status --short --branch` was `## codex/025-source-material-refresh...origin/main` plus the expected untracked `specs/025-source-material-refresh/` feature folder.
+- Feature memory was complete before Slice 1 implementation: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` existed.
+- Current content mode remains `unofficial_b_fallback` in `content/meta/content-mode.json`.
+- Slice 1 used existing project official-source evidence only for currentness notes; no internet/currentness browsing was performed.
+- The supplied `MANUAL_Vehiculo_4Ruedas_2023 SA.pdf` is byte-for-byte identical to the governed archive raw original at `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf`.
+
+### Dead Ends
+
+- Architect planning: none.
+- Slice 1 did not extract page-rendered image crops because `pdftoppm`, `mutool`, PyMuPDF/`fitz`, and `pdfplumber` were unavailable. `pypdf` can enumerate embedded image objects, but that is not sufficient for project ticket crop/import evidence.
+- Slice 1 did not OCR `трудные билеты.pdf`; pypdf text extraction exposed Russian notes and correct-answer prose, not the Spanish question/answer tuple required for ticket comparison.
+- Slice 1 did not treat PDF answer styling as correct-answer evidence because `pypdf` text extraction did not expose reliable correct-answer marks.
+
+### Known Issues
+
+- The feature folder is untracked in this worktree as expected for new feature memory.
+  Architect disposition: disposed as non-blocking process state for PR #167; feature memory is intentionally the PR payload.
+- Architect made no code, content, docs, test, script, staging, commit, push, or PR changes.
+  Architect disposition: disposed as expected role-boundary evidence, not an owner decision or blocker.
+- `categoriab.pdf` yielded 447 structured Spanish candidates: 438 duplicate dispositions and 9 ambiguous dispositions.
+  Architect disposition: disposed for PR #167; duplicates are not imported, and the 9 ambiguous candidates are deferred to a possible future scoped currentness/support investigation.
+- `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` yielded 195 structured Spanish candidates: 7 duplicate, 53 ambiguous, and 135 outdated dispositions.
+  Architect disposition: disposed for PR #167; duplicates are not imported, ambiguous items lack required support, and the 135 outdated items are rejected/not-needed for this slice unless a separate future official-source investigation proves current validity.
+- No candidate was dispositioned `accepted-current`; absent/nonduplicate candidates do not yet have current official/legal support, reliable correct-answer evidence, and image/crop provenance.
+  Architect disposition: disposed as a blocker only to ticket import in this slice; it is not a blocker to PR #167 because this PR is inventory/disposition evidence only.
+- `agent_roadmap_ru.pdf` is unrelated to Cabadrive driving content and was rejected for this refresh.
+  Architect disposition: disposed as rejected/not-needed for PR #167.
+- Russian learning/process PDFs are deferred as unofficial references only; they are not authority for production facts or ticket import.
+  Architect disposition: disposed as deferred/not-authoritative for PR #167; future use requires separate scope and current official-source verification where facts are retained.
+
+### Verification Evidence
+
+- Architect created `spec.md`, `plan.md`, and `tasks.md`.
+- Slice 1 evidence files:
+  - `specs/025-source-material-refresh/evidence/pdf-inventory.json`
+  - `specs/025-source-material-refresh/evidence/pdf-tooling-feasibility.json`
+  - `specs/025-source-material-refresh/evidence/ticket-candidate-dispositions.json`
+  - `specs/025-source-material-refresh/evidence/ticket-candidate-dispositions.csv`
+  - `specs/025-source-material-refresh/evidence/ticket-comparison-summary.json`
+  - `specs/025-source-material-refresh/evidence/slice-1-summary.md`
+- Candidate comparison summary: 642 extracted structured Spanish candidates, with 445 exact duplicate tuples, 59 question-text-only matches, 3 fuzzy question matches, and 135 no structured matches.
+- Disposition summary: 445 duplicate, 62 ambiguous, 135 outdated, 0 accepted-current.
+- Tooling feasibility: bundled Python `pypdf` and `PIL` are available; system `pdftotext`, `pdfinfo`, `pdftoppm`, `mutool`, PyPDF2, PyMuPDF/`fitz`, and `pdfplumber` are unavailable.
+- Slice 1 verification, 2026-05-20:
+  - `git status --short --branch`: `## codex/025-source-material-refresh...origin/main` plus untracked `specs/025-source-material-refresh/`.
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
+  - `git diff --check`: passed with no output.
+- PR #167 Codex review fix, 2026-05-20: sanitized committed Slice 1 evidence after review findings. `ticket-candidate-dispositions.json` and `.csv` retain candidate IDs, logical PDF IDs/paths, pages, match/disposition metadata, existing IDs, counts, and SHA-256 fingerprints; they no longer commit verbatim candidate question or answer text extracted from user-supplied PDFs.
+- PR #167 Codex review fix, 2026-05-20: replaced machine-specific user-home paths in committed feature memory/evidence with stable logical identifiers such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`.
+- Raw extraction policy after review fix: raw local extraction output may exist outside git for operator inspection, but it is intentionally not committed as feature evidence.
+- Review-fix verification, 2026-05-20:
+  - Required sanitation search: passed for evidence sanitation; remaining hits are generic feature/spec/task wording about future ticket requirements, not committed extracted evidence fields or machine-specific paths.
+  - `git diff --check`: passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Latest PR #167 review fix, 2026-05-20: sanitized `pdf-inventory.json` to remove committed first-page sample prose from all seven PDF inventory entries. The inventory now keeps non-verbatim sample storage flags, sample character counts, and SHA-256 sample fingerprints alongside existing PDF metadata.
+- Latest review-fix scan, 2026-05-20: no other committed extracted PDF prose fields were identified in the feature evidence. Candidate-disposition evidence already used fingerprints/counts/labels instead of verbatim ticket text, and no production content was changed.
+- Latest review-fix verification, 2026-05-20:
+  - Sanitation `rg` checks over `specs/025-source-material-refresh/evidence` and `tasks.md`: passed with no output for prohibited raw sample, ticket-text, and local-path patterns.
+  - `git diff --check`: passed with no output.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed with `No configured product paths changed; feature-memory gate passes.`
+  - `pnpm run validate:content`: passed; output reported `Difficulty labels validated: 460 questions, 38 topics.` and `Content validation passed: 460 category B fallback questions, 276 local image references.`
+- Latest review-fix known-issue/dead-end note, 2026-05-20: no new dead ends or known issues were introduced by this evidence-only sanitation; prior extraction and ticket-import blockers remain unchanged.
+
+### Cycle PR Set
+
+- PR #167, branch `codex/025-source-material-refresh`, current head `747a5539b548136396b55f477851aa7dd405ad20`; status: process-memory normalization after accepted review fixes, not yet re-final-validated at this head; included in final validation for the Slice 1 source-material refresh cycle.
+- PR #167, branch `codex/025-source-material-refresh`, head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; status: Slice 1 evidence/intake final Architect validation passed for the effective content head after evidence sanitation and review-thread resolution; included in final validation for the Slice 1 source-material refresh cycle.
+- PR #167, branch `codex/025-source-material-refresh`, head `735fa99959bc2d0717466dca0577fb81960ab28a`; status: Slice 1 evidence/intake final Architect validation passed for the current effective content head after process-memory disposition correction and Codex review feedback; included in final validation for the Slice 1 source-material refresh cycle.
+
+### Final Validation Evidence
+
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Prior final Architect/Analyst validations for earlier heads are stale/superseded by later review-fix and process-memory-normalization changes; final Architect validation and final Analyst validation must be rerun after this normalization. No new final pass markers are recorded in this section.
+- Effective content head: 4b051ec09153d0ac79cdf9b174ba3452f0c04d34
+- Architect validation: passed for effective content head 4b051ec09153d0ac79cdf9b174ba3452f0c04d34.
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head differs from effective content head 4b051ec09153d0ac79cdf9b174ba3452f0c04d34 only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation: passed for effective content head 735fa99959bc2d0717466dca0577fb81960ab28a.
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head differs from effective content head 735fa99959bc2d0717466dca0577fb81960ab28a only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+
+### Implementation Agent Feedback
+
+- No Slice 2 ticket-import batch is ready from this evidence because `accepted-current` count is 0. Final Architect disposition: not needed for PR #167; do not import tickets from this slice.
+- If later ticket work is desired, start with the 9 ambiguous `categoriab.pdf` candidates and require official/currentness validation plus full support evidence before any import. Final Architect disposition: not needed for PR #167; disposed as a deferred possible future investigation slice outside this PR.
+- Do not batch-import unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` candidates unless a separate official-source investigation proves current validity. Final Architect disposition: rejected and not needed for PR #167 batch import.
+- Run process-guide refresh as a separate slice using `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model, with official GCBA/ANSV verification for every retained claim. Final Architect disposition: accepted as a future separate slice and not part of PR #167.
+- No official archive/manual update is recommended from Slice 1 because the supplied 2023 manual copy already matches the governed archive original. Final Architect disposition: not needed for PR #167; no manual/archive update should be assigned from Slice 1 evidence.
+- Review-fix evidence sanitation removed committed verbatim extracted question/answer text and machine-specific paths while preserving candidate IDs, logical source/page metadata, match/disposition metadata, counts, and fingerprints. Final Architect disposition: accepted and resolved as evidence hygiene only; no new product/content decision is needed.
+
+### Architect Dispositions
+
+- PR #167 review-fix feedback disposition: accepted as architecturally sufficient for the current Slice 1 evidence PR. The fix removes committed verbatim ticket question/answer/correct-answer text from unlicensed user-supplied evidence and replaces it with reviewable metadata, counts, match/disposition fields, logical source identifiers, and SHA-256 fingerprints.
+- PR #167 machine-path feedback disposition: accepted as architecturally sufficient. Committed feature memory/evidence should use stable logical placeholders such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`; no machine-specific absolute path is needed for acceptance evidence.
+- Review-fix product/content decision: no new product or content decision is needed. The review fix changes evidence hygiene and process memory only; it does not authorize ticket import, alter content mode, or change learner-visible content.
+- Raw extraction disposition: raw extracted PDF text or ticket tuples must remain uncommitted unless a later separately scoped and licensed workflow explicitly authorizes storing that material. Fingerprints and nonverbatim metadata are the correct committed evidence form for this PR.
+- Final-validation disposition after review fix: prior final Architect and Analyst validation at effective content head `f64ffa445b00279d8092f56983eb31f0dace6520` is stale because behaviorally meaningful evidence/process content changed after validation. Orchestrator must rerun final Architect validation and then final Analyst validation on the new reviewed head before completion or merge.
+- Slice 1 ticket-import readiness feedback: dispositioned as not-needed for the current PR/slice. Evidence shows 642 extracted structured Spanish candidates with 0 `accepted-current`; no ticket batch may proceed from Slice 1 evidence alone.
+- Later ticket work feedback for 9 ambiguous `categoriab.pdf` candidates: dispositioned as a possible future ticket/investigation slice, not an immediate import task. If Orchestrator assigns it, scope it to the 9 ambiguous `categoriab.pdf` candidates first, require official/currentness validation, reliable correct-answer evidence, image/crop provenance where applicable, and full support/evidence updates before any import.
+- Unmatched 2008 `PREGUNTAS-CATEGORIA-B LIC-AUTOS.pdf` feedback: dispositioned as not-needed for batch import. The 135 unmatched candidates are outdated for this feature unless a separate official-source investigation proves current validity; exact matches remain duplicates and old variants must not be imported opportunistically.
+- Process-guide refresh feedback: dispositioned as the recommended next separate implementation slice. Use `Первое_получение_прав_и_обновление.pdf` only as a structure/reference model and validate every retained acquisition/renewal claim against current official GCBA/ANSV sources.
+- Official archive/manual update feedback: dispositioned as not-needed. The supplied 2023 manual matches the governed archive raw original byte-for-byte, so no official archive or manual refresh should be assigned from Slice 1 evidence.
+- Recommended next Orchestrator assignment: assign an Implementation Agent a separate Process Guide Refresh slice covering T030-T036 only, preserving the same role boundaries and requiring official-source evidence plus `pnpm run validate:content`. Do not assign ticket-import work until a separate candidate-currentness investigation is explicitly scoped.
+- Final-validation staleness disposition: prior final Architect and Analyst validation at effective content head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` is stale after this disposition-wording correction. Orchestrator must rerun final Architect validation and then final Analyst validation before completion or merge.
+
+### Final Architect Validation
+
+- Effective content head: f64ffa445b00279d8092f56983eb31f0dace6520
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-20T19:41:37-03:00
+- Architect validated effective content head: f64ffa445b00279d8092f56983eb31f0dace6520
+- Cycle PR set validated for this first slice: PR #167 on branch `codex/025-source-material-refresh` at effective content head `f64ffa445b00279d8092f56983eb31f0dace6520`.
+- Validation scope: Slice 1 evidence/intake only. The PR contains feature memory and evidence artifacts under `specs/025-source-material-refresh/`; it does not modify product code, production content, tests, scripts, durable docs, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior.
+- Architect-assigned tasks/dispositions: T007-T018 and T045-T048 are complete or explicitly not applicable; ticket batch, process-guide, official archive, and durable-doc tasks remain gated/deferred as recorded. Implementation Agent feedback has been dispositioned in the Architect Dispositions section.
+- Customer intent in spirit for this slice: passed. All supplied PDFs were inventoried, ticket-source candidates were extracted/compared where feasible, all candidates were dispositioned, unsupported/import-risk candidates were not added, and deferrals were recorded for later scoped work.
+- Deferral/process confirmation: no ticket import, process-guide refresh, or official archive/manual update happened in this PR; those paths are intentionally deferred or not-needed according to the evidence and Architect dispositions.
+
+### Final Architect Validation After Review Fixes
+
+- Effective content head: a0f91af32d10f94f9a6417a49944a327b5b831cf
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-20T20:08:16-03:00
+- Architect validated effective content head: a0f91af32d10f94f9a6417a49944a327b5b831cf
+- Supersession: the prior final Architect validation for `f64ffa445b00279d8092f56983eb31f0dace6520` is stale and is superseded by this validation because review-fix commit `a0f91af32d10f94f9a6417a49944a327b5b831cf` changed committed evidence/process content after that validation.
+- Cycle PR set validated for this first slice: PR #167 on branch `codex/025-source-material-refresh` at effective content head `a0f91af32d10f94f9a6417a49944a327b5b831cf`, including review-fix commit `a0f91af32d10f94f9a6417a49944a327b5b831cf`.
+- Validation scope remains Slice 1 evidence/intake only. The PR contains feature memory and evidence artifacts under `specs/025-source-material-refresh/`; it does not modify product code, production content, tests, scripts, durable docs, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior.
+- Review-fix validation: committed candidate-disposition evidence now keeps candidate IDs, source/page metadata, match/disposition metadata, existing IDs, counts, and SHA-256 fingerprints only. It no longer commits verbatim ticket question text, answer-choice text, or existing correct-answer text extracted from user-supplied PDFs.
+- Path-hygiene validation: committed feature memory and evidence use stable logical identifiers such as `<worktree>`, `<user-downloads>/...`, and `<codex-runtime>/...`; no machine-specific absolute path is needed or present in committed evidence.
+- Raw-extract validation: raw extracted PDF text or ticket tuples are intentionally not committed as feature evidence. The committed raw-extraction policy permits local operator inspection outside git only.
+- Architect-assigned tasks/dispositions: T007-T018 and T045-T048 remain complete or explicitly not applicable; ticket batch, process-guide, official archive, and durable-doc tasks remain gated/deferred as recorded. Implementation Agent feedback has been dispositioned in the Architect Dispositions section, and no unresolved Implementation Agent feedback remains for this PR.
+- Review status considered: Orchestrator reported CI, PR Guard, OSV Scan, and AI Review success on `a0f91af`; GitHub PR metadata confirms PR #167 head is `a0f91af32d10f94f9a6417a49944a327b5b831cf`, mergeable, and has a fresh Codex no-major-issues comment after the review-fix commit.
+- Customer intent in spirit for this slice: passed. All supplied PDFs were inventoried, ticket-source candidates were extracted/compared where feasible, all candidates were dispositioned, unsupported/import-risk candidates were not added, and deferrals were recorded for later scoped work.
+- Deferral/process confirmation: no ticket import, process-guide refresh, or official archive/manual update happened in this PR; those paths are intentionally deferred or not-needed according to the evidence and Architect dispositions.
+
+## Final Architect Validation Notes
+
+- Effective content head: 4b051ec09153d0ac79cdf9b174ba3452f0c04d34
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-20T20:34:00-03:00
+- Architect validated effective content head: 4b051ec09153d0ac79cdf9b174ba3452f0c04d34
+- Architect validation evidence: PR #167 is validated as Slice 1 evidence/intake only, with feature memory and sanitized evidence under `specs/025-source-material-refresh/` and zero production code, content, docs, test, runtime, official-archive, ticket-data, or generated-index changes.
+- Architect validation evidence: all seven supplied PDFs were inventoried, extraction/comparison/disposition evidence was recorded, 642 extracted structured Spanish candidates were dispositioned with 0 accepted-current imports, and unsupported or outdated candidates were not imported.
+- Architect validation evidence: process-guide refresh remains intentionally deferred to a later separate slice with independent current official-source verification; PR #167 does not update process-guide content.
+- Architect validation evidence: review feedback about committed extracted evidence was addressed by sanitizing `firstPageTextSample` and other raw/verbatim or machine-specific evidence while preserving stable metadata, counts, logical identifiers, and SHA-256 fingerprints.
+- Architect validation evidence: Orchestrator context reports current checks green on `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`: baseline-checks, docker-validation, guard/PR Guard, AI Review, and OSV Scan.
+- Architect validation evidence: latest Codex review finding about `firstPageTextSample` was fixed in `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` and the review thread was resolved as outdated/fixed.
+- Architect validation evidence: local review-fix verification passed with sanitation `rg` checks, `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `pnpm run validate:content`.
+- Architect validation evidence: Implementation Agent feedback has Architect dispositions recorded; no ticket import, manual/archive refresh, or process-guide update is authorized by this slice.
+- Architect gaps: none
+- Open Architect dispositions: none
+
+## Final Architect Validation Notes
+
+- Effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-20T20:56:03-03:00
+- Architect validated effective content head: 735fa99959bc2d0717466dca0577fb81960ab28a
+- Architect validation evidence: PR #167 is validated as Slice 1 evidence/intake only, with feature memory and sanitized evidence under `specs/025-source-material-refresh/` and zero production code, production content, ticket data, process-guide content, official archive content, generated indexes, or runtime behavior changes.
+- Architect validation evidence: all seven supplied PDFs were inventoried, extraction/comparison/disposition evidence was recorded, 642 extracted structured Spanish candidates were dispositioned with 0 accepted-current imports, and unsupported or outdated candidates were not imported.
+- Architect validation evidence: process-guide refresh remains deferred to a later separate slice with independent current official-source verification; PR #167 does not update process-guide content.
+- Architect validation evidence: process-memory dispositions record that no ticket import, manual/archive refresh, or process-guide update is authorized by this slice, and Implementation Agent feedback has Architect dispositions recorded.
+- Architect validation evidence: current content head `735fa99959bc2d0717466dca0577fb81960ab28a` supersedes earlier effective-content markers after the process-memory disposition correction and Codex review feedback about older markers.
+- Architect validation evidence: Orchestrator context reports green checks on `735fa99959bc2d0717466dca0577fb81960ab28a` for CI baseline-checks, docker-validation, PR Guard, and OSV Scan.
+- Architect validation evidence: AI Review posted a P1 marker-staleness comment for the older `4b051ec09153d0ac79cdf9b174ba3452f0c04d34` marker; this appended validation makes `735fa99959bc2d0717466dca0577fb81960ab28a` the latest Architect-validated effective content head for finalizer compatibility.
+- Architect validation evidence: local validation for this Architect-only edit passed with `git diff --check` and `node scripts/check-feature-memory.mjs --worktree`.
+- Architect gaps: none
+- Open Architect dispositions: none
