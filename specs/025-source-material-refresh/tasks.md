@@ -216,6 +216,7 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - PR #167, branch `codex/025-source-material-refresh`, current head `747a5539b548136396b55f477851aa7dd405ad20`; status: process-memory normalization after accepted review fixes, not yet re-final-validated at this head; included in final validation for the Slice 1 source-material refresh cycle.
 - PR #167, branch `codex/025-source-material-refresh`, head `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; status: Slice 1 evidence/intake final Architect validation passed for the effective content head after evidence sanitation and review-thread resolution; included in final validation for the Slice 1 source-material refresh cycle.
 - PR #167, branch `codex/025-source-material-refresh`, head `735fa99959bc2d0717466dca0577fb81960ab28a`; status: Slice 1 evidence/intake final Architect validation passed for the current effective content head after process-memory disposition correction and Codex review feedback; included in final validation for the Slice 1 source-material refresh cycle.
+- PR #168, branch `codex/025-process-guide-refresh`, head `c51836797b2d11611040beffefa8cfdeb66f0249`; status: Process Guide Refresh T030-T036 final Architect validation passed for the effective content head; included in final validation for the Process Guide Refresh slice.
 
 ### Final Validation Evidence
 
@@ -238,6 +239,28 @@ Architect scope note after Slice 1: this should be the next recommended separate
 - Limit escalation: none
 - Current-PR-head read-only guard: current PR head differs from effective content head 735fa99959bc2d0717466dca0577fb81960ab28a only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation: passed for effective content head c51836797b2d11611040beffefa8cfdeb66f0249.
+- Architect return count: 1
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head differs from effective content head c51836797b2d11611040beffefa8cfdeb66f0249 only by role-owned final-validation evidence in feature-request.md and tasks.md; required checks, review, mergeability, conflicts, process memory, acceptance evidence, feedback disposition, and unresolved-thread gates remain required on the current PR head.
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+
+## Final Architect Validation Notes
+
+- Effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation pass: passed
+- Architect return count: 1
+- Final Architect validation completed at: 2026-05-21T00:28:26Z
+- Architect validated effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Architect validation evidence: PR #168 scope is the Process Guide Refresh slice for T030-T036 after PR #167 merged, changing `content/guide/caba-exam-process.ru.json`, `specs/025-source-material-refresh/evidence/process-guide-refresh-2026-05-20.md`, and this Architect-owned process memory.
+- Architect validation evidence: official-source verification is recorded for current GCBA/ANSV sources; the supplied PDF was used only as a structure/reference model, with no raw PDF extracts committed, and the guide remains an `unofficial_learning_aid` for CABA/B1/private-car preparation.
+- Architect validation evidence: T030-T036 are complete, including source identification, independent verification, guide update, unofficial/scope preservation, concise adjacent-path support, content validation, and evidence recording.
+- Architect validation evidence: checks on c51836797b2d11611040beffefa8cfdeb66f0249 were reported green for baseline-checks, docker-validation, PR Guard, AI Review, and OSV Scan; Review Agent left no-blocking GitHub COMMENT review id 4333072910.
+- Architect validation evidence: no unresolved Implementation Agent feedback or Architect dispositions remain for this slice.
+- Architect gaps: none
+- Open Architect dispositions: none
 
 ### Implementation Agent Feedback
 

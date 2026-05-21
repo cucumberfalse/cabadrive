@@ -197,3 +197,20 @@ Exhaustive PDF extraction, ticket-by-ticket comparison, currentness/legal valida
 - Analyst validation evidence: process-guide refresh remains deferred to a later separate slice with independent official-source verification; this PR does not update process-guide content or authorize ticket import.
 - Analyst validation evidence: Orchestrator-provided check context for `735fa99959bc2d0717466dca0577fb81960ab28a` is green for CI baseline-checks, docker-validation, PR Guard, and OSV Scan.
 - Analyst validation evidence: AI Review flagged older final-validation markers pointing to `4b051ec09153d0ac79cdf9b174ba3452f0c04d34`; this appended Analyst validation supersedes those stale markers by validating effective content head `735fa99959bc2d0717466dca0577fb81960ab28a`.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Analyst return count: 0
+- Final Analyst validation completed at: 2026-05-21T00:29:49Z
+- Analyst validated effective content head: c51836797b2d11611040beffefa8cfdeb66f0249
+- Customer intent check: PR #168 satisfies the user's "получение" request for this Process Guide Refresh slice by improving the CABA acquisition and adjacent renewal process material according to the supplied PDF structure while verifying retained facts against current official GCBA/ANSV sources.
+- Gaps, if any: none
+- Architect disposition routing: not applicable; no Analyst final-validation gap requires Architect disposition.
+- Analyst limit escalation: none
+- Analyst validation evidence: final Architect validation for effective content head `c51836797b2d11611040beffefa8cfdeb66f0249` is recorded in `specs/025-source-material-refresh/tasks.md` before this Analyst validation.
+- Analyst validation evidence: PR #168 implements Process Guide Refresh tasks T030-T036 and updates `content/guide/caba-exam-process.ru.json` with current official-source-verified acquisition and adjacent renewal process guidance.
+- Analyst validation evidence: the supplied `Первое_получение_прав_и_обновление.pdf` was used only as a structure/reference model; committed evidence is non-verbatim and records independent verification against current official GCBA/ANSV sources.
+- Analyst validation evidence: the guide preserves unofficial Russian learning-support status, CABA/B1/private-car scope, volatility warnings, official-action links, adjacent-path support, and no official full-bank claim.
+- Analyst validation evidence: Orchestrator-provided check context for `c51836797b2d11611040beffefa8cfdeb66f0249` is green for baseline-checks, docker-validation, PR Guard, AI Review, and OSV Scan.
+- Analyst validation evidence: Review Agent left no-blocking GitHub COMMENT review id 4333072910 for PR #168.
