@@ -209,3 +209,17 @@ Proceed to Architect without asking the user for clarification. The Architect sh
 - Customer-intent assessment: the final result satisfies the requested unified modernization in spirit and letter by documenting the visual system, modernizing primary UI flows, keeping navigation/tickets/timer in a consistent style, handling Spanish/Russian text with close accessible support, adding governed local images for vocabulary and materials, and preserving ticket wording and ticket images.
 - Evidence checked directly during Analyst validation: `pnpm run validate:learning-images` passed with `1382 units, 1382 local images, 1382 direct, 0 shared, 0 exceptions`; `pnpm run validate:content` passed and included learning-image validation; ticket immutability diff against `c083b248564a67d7599fa63d4181759fe30cd6a7` had no output for canonical question JSON and ticket image assets; `git diff --check` passed; `gh pr view 169` showed head `c378db72664b08f75bc27943b0de1206eb1b49bb`, mergeable PR state, and green required checks.
 - Gaps or returns: none. No new feature request or Analyst return is needed.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-21T02:55:33Z
+- Effective content head: 8e7a283b8409d182645144dd8087e9f87fc7394a
+- Analyst validated effective content head: 8e7a283b8409d182645144dd8087e9f87fc7394a
+- Analyst return count: 0
+- Analyst validation evidence: reviewed the original request, intake expectations, spec scope, plan, tasks evidence, final Architect validation from 2026-05-21T02:50:29Z, helper process evidence, PR #169 state, and check evidence for the current process-evidence head; the implemented result satisfies the requested modern design, typography, UX, bilingual learning support, governed local learning images, vocabulary/material image coverage, active exam support hiding, local-first constraints, and ticket immutability.
+- Customer intent check: satisfied in spirit and letter; the feature delivers a unified modern trainer experience with documented visual rules, accessible Spanish/Russian material support, complete governed local learning-image coverage for scoped vocabulary and material units, preserved ticket wording and ticket images, and visible unofficial support/source boundaries.
+- Gaps, if any: none.
+- Architect disposition routing: no Analyst gap requires Architect disposition.
+- Analyst limit escalation: none.
+- Analyst boundary reminder: Analyst final validation only; code, runtime files, durable docs, Architect-owned artifacts, tasks, staging, commits, pushes, PR review, and merge state were not changed.
