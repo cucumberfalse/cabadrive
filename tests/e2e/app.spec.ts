@@ -10,6 +10,7 @@ const learningImages = JSON.parse(readFileSync("content/learning-images/learning
 const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru.json", "utf8"));
 const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
+const manualManifest = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json", "utf8"));
 const learningImageById = new Map(learningImages.images.map((image: { imageId: string }) => [image.imageId, image]));
 const learningCoverageByUnitId = new Map(learningImages.coverage.map((record: { unitId: string }) => [record.unitId, record]));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
@@ -136,6 +137,17 @@ async function openPrimarySources(page: Page) {
   await page.getByRole("button", { name: /Источники/ }).click();
   await expect(page.getByRole("heading", { name: "Официальные первоисточники" })).toBeVisible();
   await expect(page.getByLabel("Покрытие корпуса источников").getByText(`${primarySourceManifest.entries.length} документов`, { exact: true })).toBeVisible();
+}
+
+async function openCompleteManual(page: Page) {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Руководство 4R/ }).click();
+  await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
+}
+
+async function showCompleteManualList(page: Page) {
+  const backButton = page.getByRole("button", { name: /К списку страниц/ });
+  if (await backButton.isVisible()) await backButton.click();
 }
 
 async function openSourceDocument(page: Page, document: PrimarySourceDocument) {
@@ -606,6 +618,53 @@ test("process guide stays local-first without external requests, remote images, 
   await expect(page.locator(".process-view img")).toHaveCount(0);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
+});
+
+test("complete RU manual surface renders first, middle, and last pages from local assets only", async ({ page }) => {
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  const backendLikeRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+    if (/\/api\/|openai|live-ai|backend/i.test(url.pathname + url.hostname)) backendLikeRequests.push(request.url());
+  });
+
+  await openCompleteManual(page);
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 / 200 страниц");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 локальных page assets");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("198 approved chunks");
+  await expect(page.locator("iframe, embed, object")).toHaveCount(0);
+  await expect(page.locator(".manual-reader a[href$='.pdf'], .manual-reader a[href*='.pdf']")).toHaveCount(0);
+
+  await page.getByTestId("manual-page-button-1").click();
+  const manualImage = page.getByTestId("manual-page-visual").locator("img");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[0].visualAsset.localPath.replace(/\//g, "\\/")));
+  await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[0].visualAsset.width);
+  await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[0].visualAsset.height);
+  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[0].translation.fullTranslationRu));
+  await expect(page.getByTestId("manual-page-detail")).toContainText(manualManifest.pages[0].translation.chunkProvenance.chunkId);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-page-button-100").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("PDF page 100");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[99].visualAsset.localPath.replace(/\//g, "\\/")));
+  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[99].translation.fullTranslationRu));
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  await page.getByTestId("manual-page-button-200").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("200 / 200");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[199].visualAsset.localPath.replace(/\//g, "\\/")));
+  await expect(page.getByTestId("manual-page-translation")).toContainText(manualManifest.pages[199].translation.fullTranslationRu);
+
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
+  expect(backendLikeRequests).toEqual([]);
 });
 
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {

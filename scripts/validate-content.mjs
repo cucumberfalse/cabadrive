@@ -10,6 +10,7 @@ import { validateExplanationAlignment } from "./content-explanation-alignment.mj
 import { validateImageExplanationOverlays } from "./content-image-overlays.mjs";
 import { validateQuestionImageMetadata } from "./content-image-metadata.mjs";
 import { formatLearningImageSummary, validateLearningImages } from "./content-learning-images.mjs";
+import { formatManualValidationSummary, validateManualVehiculo4RuedasRu } from "./content-manual-vehiculo-4ruedas.mjs";
 import { assertGeneratedContentIndexesFresh, combinedContentFromShards } from "./content-shards.mjs";
 import { validateTopicGuide } from "./content-topic-guide.mjs";
 import { validateTranslationAlignment } from "./content-translation-alignment.mjs";
@@ -79,6 +80,7 @@ const topicGuideSourceTrace = readJson("content/guide/topic-study-guide.source-t
 const learningImageManifest = readJson("content/learning-images/learning-images.manifest.json");
 const learningImageRuntimeManifest = readJson("content/learning-images/learning-images.runtime.json");
 const learningImageEvidence = readJson("content/validation/learning-images.evidence.json");
+const manualVehiculo4RuedasValidation = await validateManualVehiculo4RuedasRu({ root });
 const officialDocumentsManifest = readJson("content/official-documents/manifest.json");
 const primarySourcesCorpus = readJson("content/primary-sources/primary-sources.ru.json");
 const primarySourcesCoverage = readJson("content/primary-sources/primary-sources.coverage.json");
@@ -273,6 +275,7 @@ const learningImageValidation = validateLearningImages({
   fileSha256: (relativePath) => sha256(relativePath)
 });
 errors.push(...learningImageValidation.errors);
+errors.push(...manualVehiculo4RuedasValidation.errors);
 errors.push(
   ...validateOfficialDocumentsManifest({
     manifest: officialDocumentsManifest,
@@ -328,6 +331,7 @@ if (errors.length) {
 for (const warning of warnings) console.warn(`Warning: ${warning}`);
 console.log(`Difficulty labels validated: ${difficultyValidation.questionCount} questions, ${difficultyValidation.topicCount} topics.`);
 console.log(formatLearningImageSummary(learningImageValidation.summary));
+console.log(formatManualValidationSummary(manualVehiculo4RuedasValidation.summary));
 console.log(
   `Content validation passed: ${questions.length} category B fallback questions, ${imageCount} local image references${
     qualityGate ? ", full content quality gate enabled" : ""
