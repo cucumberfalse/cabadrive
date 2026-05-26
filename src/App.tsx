@@ -18,7 +18,7 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
-import { assertManualManifestRuntimeShape, manual4RuedasRu, manualManifestSummary, type ManualPage, type ManualRuManifest } from "./data/manual4Ruedas";
+import type { ManualPage, ManualRuManifest } from "./data/manual4Ruedas";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -37,6 +37,23 @@ type PrimarySourceDocumentMatch = {
   matchingChunks: PrimarySourceChunk[];
   matchCount: number;
   isVisible: boolean;
+};
+type ManualManifestSummary = {
+  pages: number;
+  expectedPages: number;
+  localAssets: number;
+  reusedTranslations: number;
+  visualTextTranslations: number;
+};
+type ManualManifestState = {
+  manifest?: ManualRuManifest;
+  summary?: ManualManifestSummary;
+  error?: string;
+  isLoading: boolean;
+};
+type ManualSearchIndexEntry = {
+  page: ManualPage;
+  searchText: string;
 };
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
@@ -1393,22 +1410,59 @@ function manualPageSearchText(page: ManualPage) {
 }
 
 function Manual4RuedasView() {
-  const manifestState = useMemo(() => {
-    try {
-      return { manifest: assertManualManifestRuntimeShape(manual4RuedasRu) as ManualRuManifest, error: undefined };
-    } catch (error) {
-      return {
-        manifest: undefined,
-        error: error instanceof Error ? error.message : "Не удалось проверить локальный manifest manual."
-      };
-    }
-  }, []);
+  const [manifestState, setManifestState] = useState<ManualManifestState>({ isLoading: true });
   const [selectedPageNumber, setSelectedPageNumber] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isManualListOpen, setIsManualListOpen] = useState(true);
   const [imageLoadFailedPage, setImageLoadFailedPage] = useState<number | undefined>();
 
-  if (manifestState.error || !manifestState.manifest) {
+  useEffect(() => {
+    let isMounted = true;
+    import("./data/manual4Ruedas")
+      .then(({ assertManualManifestRuntimeShape, manual4RuedasRu, manualManifestSummary }) => {
+        const manifest = assertManualManifestRuntimeShape(manual4RuedasRu) as ManualRuManifest;
+        const summary = manualManifestSummary(manifest);
+        if (isMounted) setManifestState({ manifest, summary, isLoading: false });
+      })
+      .catch((error: unknown) => {
+        if (!isMounted) return;
+        setManifestState({
+          error: error instanceof Error ? error.message : "Не удалось загрузить локальный manifest manual.",
+          isLoading: false
+        });
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const manifest = manifestState.manifest;
+  const summary = manifestState.summary;
+  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
+    () => manifest?.pages.map((page) => ({ page, searchText: manualPageSearchText(page) })) ?? [],
+    [manifest]
+  );
+  const query = normalizeSearchText(searchQuery.trim());
+  const matchingPages = manifest ? (query ? manualSearchIndex.filter((entry) => entry.searchText.includes(query)).map((entry) => entry.page) : manifest.pages) : [];
+  const selectedPage =
+    manifest && query
+      ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
+      : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages[0];
+  const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
+  const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
+  const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
+
+  if (manifestState.isLoading) {
+    return (
+      <section className="workspace manual-reader" aria-busy="true" data-testid="manual-loading">
+        <h2>Manual 4 ruedas</h2>
+        <p>Загружаем полный локальный manifest manual.</p>
+      </section>
+    );
+  }
+
+  if (manifestState.error || !manifest || !summary) {
     return (
       <section className="workspace manual-reader">
         <h2>Manual 4 ruedas</h2>
@@ -1417,17 +1471,6 @@ function Manual4RuedasView() {
       </section>
     );
   }
-
-  const manifest = manifestState.manifest;
-  const summary = manualManifestSummary(manifest);
-  const query = normalizeSearchText(searchQuery.trim());
-  const matchingPages = query ? manifest.pages.filter((page) => manualPageSearchText(page).includes(query)) : manifest.pages;
-  const selectedPage = query
-    ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
-    : manifest.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest.pages[0];
-  const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
-  const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
-  const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest.source.rawOriginalSha256;
 
   function selectManualPage(pageNumber: number) {
     setSelectedPageNumber(pageNumber);

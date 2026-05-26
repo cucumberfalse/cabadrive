@@ -349,6 +349,16 @@ function validateRuntimeManualSurface(errors, root) {
       if (pattern.test(text)) errors.push(`${relativePath}: manual surface must not use ${label}.`);
     }
   }
+
+  const appSourcePath = "src/App.tsx";
+  const appSource = existsSync(path(root, appSourcePath)) ? readFileSync(path(root, appSourcePath), "utf8") : "";
+  const topLevelRuntimeManualImport = /^import\s+(?!type\b)[^;]+from\s+["']\.\/data\/manual4Ruedas["'];/mu;
+  if (topLevelRuntimeManualImport.test(appSource)) {
+    errors.push(`${appSourcePath}: manual corpus must be loaded through the manual view lazy boundary, not a top-level runtime import.`);
+  }
+  if (!/import\(["']\.\/data\/manual4Ruedas["']\)/u.test(appSource)) {
+    errors.push(`${appSourcePath}: manual surface must dynamically import the local manual corpus when the view opens.`);
+  }
 }
 
 function validateManifestShape(errors, manifest) {

@@ -41,6 +41,15 @@
 - `[x]` Prevent fallback to a PDF iframe, browser PDF viewer, runtime PDF renderer, remote images, or network content fetches.
 - `[x]` Add accessible loading/error states that do not mask missing content as successful completion.
 
+### Post-Final-Validation Review Fixes
+
+- `[x]` Resolve PR #170 thread `PRRT_kwDOSX65IM6E8s5Z` / comment `3307364462`: defer loading the full `manual4RuedasRu` manifest/corpus until the `Руководство 4R` view opens, using route/view-level lazy loading, a dynamic local import, or an equivalent local-first boundary that removes the 200-page manual corpus from the initial app startup bundle.
+- `[x]` Preserve the local-first manual contract while deferring loading: the manual view must still load all 200 pages from repository-served local assets/content, avoid runtime PDF viewer/PDF.js behavior, avoid remote/manual network fetches, and keep accessible loading/error states.
+- `[x]` Add or update verification for deferred manual loading, including evidence that `src/App.tsx` no longer has a top-level static import of the full manual corpus and that the manual surface still opens and renders representative first/middle/last pages after the lazy boundary loads.
+- `[x]` Resolve PR #170 thread `PRRT_kwDOSX65IM6E8s5T` / comment `3307364457`: precompute normalized per-page manual search strings with `useMemo` or equivalent caching tied to the loaded manifest, then filter against that cache instead of recomputing normalized full-page text for every page on each render or keystroke.
+- `[x]` Add or update manual-search regression coverage after caching, preserving zero-match empty-detail behavior, representative page rendering, exact RU content/provenance display, and local-only/no-network constraints.
+- `[x]` Rerun and record relevant local validation/build/test evidence after the review fixes, including the manual validator, focused unit/e2e coverage, build, and repository preflight as applicable.
+
 ### Validators and Tests
 
 - `[x]` Add a source coverage validator proving 200/200 pages are represented and ordered.
@@ -69,6 +78,8 @@
 - `[x]` Runtime does not depend on PDF viewer behavior or network access.
 - `[x]` Spanish official source remains traceable for each page/content unit.
 - `[x]` Validators, tests, and durable docs are complete.
+- `[x]` Current-head P2 review findings for deferred manual loading and cached manual search are fixed and Implementation Agent verification evidence is recorded.
+- `[ ]` Final Architect and Analyst validation must rerun after this post-fix implementation head; Implementation Agent does not perform those role actions.
 
 ## Implementation Decisions
 
@@ -94,6 +105,17 @@
 
 ## Review Fix Evidence
 
+- Current-head P2 review fix recorded at `2026-05-26T23:33:54Z` for PR #170 threads `PRRT_kwDOSX65IM6E8s5Z` / comment `3307364462` and `PRRT_kwDOSX65IM6E8s5T` / comment `3307364457`.
+- Decision: `src/App.tsx` now type-imports only `ManualPage` and `ManualRuManifest`; `Manual4RuedasView` dynamically imports `./data/manual4Ruedas` from a `useEffect` when the view mounts, then runs `assertManualManifestRuntimeShape(manual4RuedasRu)` and `manualManifestSummary(manifest)` before rendering the loaded reader state.
+- Loading/error behavior: the manual view now exposes a loading state with `data-testid="manual-loading"` before the manifest is ready, keeps the existing local manifest validation error fallback, and still uses repository-served local manifest data and `/content/assets/...` page images only.
+- Runtime validator coverage: `scripts/content-manual-vehiculo-4ruedas.mjs` now rejects a top-level runtime import from `./data/manual4Ruedas` in `src/App.tsx` and requires a dynamic local import boundary for the manual corpus.
+- Search decision: `Manual4RuedasView` now builds `manualSearchIndex` with `useMemo` from the loaded manifest pages, storing `{ page, searchText }` entries once per manifest; filtering now checks `entry.searchText.includes(query)` instead of calling `manualPageSearchText(page)` inside the `filter(...)` expression on every render/keystroke.
+- Regression coverage: `tests/content-manual-vehiculo-4ruedas.test.mjs` now verifies that `src/App.tsx` has no top-level static runtime import from `./data/manual4Ruedas`, includes the dynamic local import and loading state, computes the summary after runtime validation, precomputes manual search text through `useMemo`, and does not call `manualPageSearchText(` inside the `matchingPages` filter statement.
+- `pnpm run validate:manual-4ruedas` passed with `Manual 4 ruedas RU validated: 200/200 pages, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` passed: 6 tests, 0 failures.
+- `pnpm run build` passed. It ran `validate:content`, synced `content/assets` into ignored `public/content/assets`, built with Vite, emitted the full manual corpus as a separate dynamic `manual4Ruedas-*.js` chunk, and generated a service worker with 1929 cached assets. The build emitted Vite's non-fatal large-chunk warning for other bundled local content.
+- `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual"` passed: 4 tests across `chromium` and `mobile`, 0 failures. Coverage included representative first/middle/last manual pages, zero-match empty-detail behavior, local JPEG assets, no PDF viewer elements, no `.pdf` links, no external requests, no PDF requests, and no backend/live-AI requests.
+- `pnpm run preflight` passed after the review-fix task-memory update. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 283 Node tests, production build/service-worker generation with the separate dynamic `manual4Ruedas-*.js` chunk, and 54 Playwright tests across `chromium` and `mobile`. The build emitted Vite's non-fatal large-chunk warning for bundled local content.
 - Review fix recorded at `2026-05-26T19:07:21-03:00` for PR #170 thread `discussion_r3307114807`.
 - Decision: `Manual4RuedasView` now computes `manualManifestSummary(manifest)` only after the `manifestState.error || !manifestState.manifest` guard passes, using the runtime-validated `manifestState.manifest` value instead of reading the module-level manifest before fallback UI can render.
 - Regression coverage: `tests/content-manual-vehiculo-4ruedas.test.mjs` now includes a focused guard-order test that fails if the manual summary computation moves before the runtime manifest guard or stops using the guarded manifest.
@@ -119,13 +141,14 @@
 - RU content coverage is verified by `pnpm run validate:manual-4ruedas`, which reported `198 approved reused translations` and `2 visual-label translation pages`; content tests also passed for the complete manual corpus and validation rules.
 - Local/offline/no-PDF behavior is verified by the runtime decision to import static JSON and local `/content/assets/...` images only, plus e2e checks confirming no iframe/embed/object PDF viewer, no `.pdf` links, no external requests, no PDF requests, and no backend/live-AI requests.
 - Representative UI and e2e coverage is verified by the `complete RU manual` Playwright checks across `chromium` and `mobile`, covering the `Руководство 4R` surface, first/middle/last page rendering, local JPEG dimensions, exact RU translation samples, and source/provenance display.
-- Full preflight evidence is recorded with `pnpm run preflight` passing after the review-fix task-memory update; it included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 282 Node tests, production build/service-worker generation, and 54 Playwright tests across `chromium` and `mobile`.
-- Review-fix regression coverage is recorded for both PR #170 review threads: the guarded-manifest-summary unit test in `tests/content-manual-vehiculo-4ruedas.test.mjs` passed, and the zero-match manual-search e2e test passed with no rendered page detail, no page counter/navigation, and restored page-1 fallback after search reset.
+- Latest full preflight evidence is recorded with `pnpm run preflight` passing after the current-head P2 review-fix task-memory update; it included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 283 Node tests, production build/service-worker generation with the separate dynamic `manual4Ruedas-*.js` chunk, and 54 Playwright tests across `chromium` and `mobile`.
+- Review-fix regression coverage is recorded for all PR #170 review threads so far: the guarded-manifest-summary unit test passed, the zero-match manual-search e2e test passed with no rendered page detail/counter/navigation and restored page-1 fallback after search reset, and the current-head P2 regression tests passed for deferred manual-corpus loading plus cached normalized manual search.
 
 ## Dead Ends and Known Issues
 
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
-- No unresolved functional blockers or accepted known issues remain for this implementation slice.
+- Current-head P2 review findings after prior final validation have implementation fixes and local verification evidence recorded in this Implementation Agent pass.
+- Prior final Architect and Analyst validation for effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` remains stale/superseded for completion and merge readiness until Orchestrator reroutes final Architect and Analyst validation on the post-fix effective content head.
 
 ## Decisions
 
@@ -141,39 +164,55 @@
 
 ## Known Issues
 
-- None.
+- No unresolved implementation blocker remains for the assigned current-head P2 review-fix slice.
+- Final Architect and Analyst validation remain pending Orchestrator routing after this post-fix implementation; Implementation Agent does not perform those role actions.
 
 ## Implementation Agent Feedback
 
 - None.
 
+## Post-Final-Validation Architect Disposition
+
+- Disposition recorded at: 2026-05-26T23:25:55Z
+- Current PR: #170
+- Current head requiring follow-up: `b25890ecd48148819d45ffdd9407fcd7654195c6`
+- Prior effective content head: `19f8bf803126ade66e639da47666d4ff47a8bf7f`
+- Prior final validation status: stale/superseded because current-head review found two unresolved P2 issues after final validation.
+- Architect return count: 1
+- Accepted finding: PR #170 thread `PRRT_kwDOSX65IM6E8s5Z`, comment `3307364462`, `src/App.tsx:21`; the top-level static `manual4RuedasRu` import should be removed from initial app startup and replaced with manual-view lazy loading while preserving local-first/offline behavior.
+- Accepted finding: PR #170 thread `PRRT_kwDOSX65IM6E8s5T`, comment `3307364457`, `src/App.tsx:1424`; manual search should precompute/cache normalized per-page search strings and filter against that cache.
+- Implementation boundary: Architect records disposition and tasks only. Architect does not edit code, tests, docs, runtime files, GitHub threads, or PR state.
+- Next routing: Orchestrator should assign Implementation Agent follow-up for the unchecked `Post-Final-Validation Review Fixes` tasks above.
+- Validation requirement: final Architect validation and final Analyst validation must rerun after follow-up implementation and verification, using the new post-fix effective content head.
+
 ## Cycle PR Set
 
-- PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, head SHA `19f8bf803126ade66e639da47666d4ff47a8bf7f`, status open/mergeable/checks passed, included in final validation.
+- PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, prior effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f`, current head `b25890ecd48148819d45ffdd9407fcd7654195c6`, status open with current-head P2 review follow-up required, included in this work cycle, final validation stale pending fixes.
 
 ## Final Validation Evidence
 
-- Effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
-- Architect validation: passed at 2026-05-26T22:54:19Z for PR #170 after validating the complete RU 4-wheel manual scope, recorded verification evidence, review-fix disposition, process memory, and current-head alignment.
-- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
-- Architect return count: 0
+- Current final-validation status: stale/superseded. Current PR head `b25890ecd48148819d45ffdd9407fcd7654195c6` has unresolved P2 review findings that require follow-up implementation before completion or merge readiness.
+- Effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded for completion by current-head P2 findings)
+- Architect validation: previously passed at 2026-05-26T22:54:19Z for PR #170, but this pass is now stale/superseded until the accepted follow-up tasks are implemented and final validation reruns.
+- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded)
+- Architect return count: 1
 - Limit escalation: none
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
-- Current-PR-head read-only guard: effective content head 19f8bf803126ade66e639da47666d4ff47a8bf7f matched the PR head during Architect validation; any later final-validation evidence-only commit must change only role-owned process-memory files and preserve required checks, review, mergeability, acceptance evidence, feedback disposition, and unresolved-thread gates.
+- Current-PR-head read-only guard: prior effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` no longer represents the current unresolved review state. Current head `b25890ecd48148819d45ffdd9407fcd7654195c6` requires follow-up implementation, verification, and rerun final Architect and Analyst validation.
 
 ## Final Architect Validation Notes
 
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-26T22:54:19Z
-- Effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
-- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
-- Architect return count: 0
-- Architect validation evidence: Scope matches the Analyst request and Architect spec: the implementation exposes a dedicated `Руководство 4R` surface, represents all 200 official source pages, preserves local page-faithful visual assets, provides complete RU content, and keeps Spanish official-source traceability.
-- Architect validation evidence: Current-head and gate evidence passed for PR #170 at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; Orchestrator evidence reports required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed, and local Architect validation additionally passed `node scripts/check-feature-memory.mjs --worktree` and `pnpm run validate:manual-4ruedas`.
-- Architect validation evidence: Prior Codex P2 review findings were fixed, outdated, and resolved; recorded review-fix evidence covers guarded manifest-summary computation and zero-match search behavior, with corresponding unit and Playwright regression coverage.
-- Architect validation evidence: Verification evidence records the canonical PDF SHA-256 and 200-page source count, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages, full preflight, build, Node test, content-validation, and Playwright e2e coverage.
-- Architect validation evidence: Process memory includes current `## Verification Evidence`, `## Decisions`, `## Dead Ends`, `## Known Issues`, and `## Implementation Agent Feedback` sections; no unresolved implementation feedback or known issues remain.
-- Architect validation evidence: Docs and tests are covered by implementation evidence for frontend docs, feature inventory, backend/content docs, content validators, frontend tests, e2e tests, and repository preflight.
-- Architect validation evidence: Runtime architecture uses static manifest data and local `/content/assets/...` page images only; validators and e2e evidence block iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, external network fetches, and backend/live-AI dependencies for this manual surface.
-- Architect gaps: none.
-- Open Architect dispositions: none.
+- Architect validation pass: stale/superseded (previous pass completed at 2026-05-26T22:54:19Z)
+- Prior final Architect validation completed at: 2026-05-26T22:54:19Z
+- Prior effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
+- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded)
+- Architect return count: 1
+- Prior Architect validation evidence, now superseded: Scope matched the Analyst request and Architect spec at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; the implementation exposed a dedicated `Руководство 4R` surface, represented all 200 official source pages, preserved local page-faithful visual assets, provided complete RU content, and kept Spanish official-source traceability.
+- Prior Architect validation evidence, now superseded: Gate evidence passed for PR #170 at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; Orchestrator evidence reported required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed, and local Architect validation additionally passed `node scripts/check-feature-memory.mjs --worktree` and `pnpm run validate:manual-4ruedas`.
+- Prior Architect validation evidence, now superseded: Earlier Codex P2 review findings were fixed, outdated, and resolved; recorded review-fix evidence covered guarded manifest-summary computation and zero-match search behavior, with corresponding unit and Playwright regression coverage.
+- Prior Architect validation evidence, now superseded: Verification evidence recorded the canonical PDF SHA-256 and 200-page source count, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages, full preflight, build, Node test, content-validation, and Playwright e2e coverage.
+- Current Architect disposition: process memory now records unresolved current-head P2 follow-up tasks in `## Post-Final-Validation Review Fixes`, `## Known Issues`, and `## Post-Final-Validation Architect Disposition`.
+- Prior Architect validation evidence, now superseded: Docs and tests were covered by implementation evidence for frontend docs, feature inventory, backend/content docs, content validators, frontend tests, e2e tests, and repository preflight.
+- Prior Architect validation evidence, now superseded: Runtime evidence showed local `/content/assets/...` page images and blocked iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, external network fetches, and backend/live-AI dependencies; current follow-up must additionally remove the full manual corpus from initial app startup loading.
+- Architect gaps: current-head P2 review findings require deferred manual-corpus loading and cached manual search normalization before completion.
+- Open Architect dispositions: none after accepting both P2 findings as follow-up implementation tasks; Orchestrator must route Implementation Agent next, then rerun final Architect and Analyst validation after fixes.

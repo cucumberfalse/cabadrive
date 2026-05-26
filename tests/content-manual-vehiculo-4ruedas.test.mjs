@@ -34,18 +34,38 @@ test("manual 4 ruedas generated manifest is stable against committed assets and 
   assert.deepEqual(buildManualManifest(), manifest);
 });
 
-test("manual 4 ruedas view computes summary only after runtime manifest validation passes", () => {
+test("manual 4 ruedas view lazy-loads the full corpus and computes summary after validation", () => {
   const appSource = readFileSync("src/App.tsx", "utf8");
   const componentStart = appSource.indexOf("function Manual4RuedasView()");
-  const guardIndex = appSource.indexOf("if (manifestState.error || !manifestState.manifest)", componentStart);
-  const manifestIndex = appSource.indexOf("const manifest = manifestState.manifest;", guardIndex);
-  const summaryIndex = appSource.indexOf("const summary = manualManifestSummary(manifest);", manifestIndex);
+  const topLevelRuntimeManualImport = /^import\s+(?!type\b)[^;]+from\s+["']\.\/data\/manual4Ruedas["'];/mu;
+  const dynamicImportIndex = appSource.indexOf('import("./data/manual4Ruedas")', componentStart);
+  const validationIndex = appSource.indexOf("assertManualManifestRuntimeShape(manual4RuedasRu)", dynamicImportIndex);
+  const summaryIndex = appSource.indexOf("manualManifestSummary(manifest)", validationIndex);
+  const loadingIndex = appSource.indexOf('data-testid="manual-loading"', componentStart);
 
   assert.notEqual(componentStart, -1);
-  assert.notEqual(guardIndex, -1);
-  assert.notEqual(manifestIndex, -1);
+  assert.equal(topLevelRuntimeManualImport.test(appSource), false);
+  assert.notEqual(dynamicImportIndex, -1);
+  assert.notEqual(validationIndex, -1);
   assert.notEqual(summaryIndex, -1);
-  assert.equal(appSource.slice(componentStart, guardIndex).includes("manualManifestSummary("), false);
+  assert.notEqual(loadingIndex, -1);
+});
+
+test("manual 4 ruedas view caches normalized page search text outside the filter loop", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const componentStart = appSource.indexOf("function Manual4RuedasView()");
+  const componentEnd = appSource.indexOf("function PrimarySourcesView()", componentStart);
+  const componentSource = appSource.slice(componentStart, componentEnd);
+  const indexStart = componentSource.indexOf("const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>");
+  const matchingStart = componentSource.indexOf("const matchingPages = ");
+  const matchingStatement = componentSource.slice(matchingStart, componentSource.indexOf(";", matchingStart) + 1);
+
+  assert.notEqual(componentStart, -1);
+  assert.notEqual(componentEnd, -1);
+  assert.notEqual(indexStart, -1);
+  assert.match(componentSource.slice(indexStart, matchingStart), /manualPageSearchText\(page\)/);
+  assert.match(matchingStatement, /manualSearchIndex\.filter/);
+  assert.equal(matchingStatement.includes("manualPageSearchText("), false);
 });
 
 test("manual 4 ruedas manifest records complete local source, asset, and translation coverage", () => {
