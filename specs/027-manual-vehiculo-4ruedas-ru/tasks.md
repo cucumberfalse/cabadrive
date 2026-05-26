@@ -117,32 +117,22 @@
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
 - No unresolved functional blockers or accepted known issues remain for this implementation slice.
 
+## Decisions
+
+- Preserve all 200 official source pages with local page-faithful JPEG assets generated from the canonical PDF, avoiding runtime PDF loading while retaining layout, images, tables, labels, and visual-only pages.
+- Publish the RU manual through `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json` and the dedicated `Руководство 4R` app surface, with local assets, exact RU content, ordered navigation, search, and Spanish source/provenance traceability.
+- Reuse existing approved RU chunks only where validators prove exact source coverage; represent pages 199-200 with page-faithful renders plus exact RU translations of visible labels.
+- Keep runtime and tests blocking iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, and backend/live-AI dependencies.
+- Accept both recorded review-fix decisions: guarded manifest summary computation uses the runtime-validated manifest, and zero-match manual search leaves the detail pane empty instead of falling back to page 1.
+
+## Dead Ends
+
+- The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
+
+## Known Issues
+
+- None.
+
 ## Implementation Agent Feedback
 
-- None. No unresolved Implementation Agent feedback remains after this review-fix slice.
-
-## Final Architect Validation
-
-Architect validation pass: passed
-Final Architect validation completed at: 2026-05-26T22:28:51Z
-Architect validated effective content head: 3721d65ac568678595e0244cee52e96aa5c9f052
-
-Effective content head: 3721d65ac568678595e0244cee52e96aa5c9f052
-
-Final validation summary: Architect reviewed the full feature cycle against the Analyst intake, `spec.md`, `plan.md`, implementation task state, current process memory, PR #170 metadata, review-thread state, GitHub check state, and fresh local preflight evidence. The implemented architecture satisfies the requested complete, non-MVP Russian manual surface by exposing a dedicated `Руководство 4R` UI, representing all 200 source pages/content units, preserving visual content through local page-faithful JPEG renders, aligning exact RU content to each page, keeping per-page official Spanish source traceability, and blocking runtime PDF viewer, remote/manual network fetch, and backend/live-AI dependencies.
-
-Cycle PR set:
-
-- PR #170: `codex/027-manual-vehiculo-4ruedas-ru`, current head `3721d65ac568678595e0244cee52e96aa5c9f052`, status open and mergeable, final Review Agent no-findings review posted for this head, required GitHub checks green (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`), included in final validation.
-
-Validation evidence reviewed:
-
-- Local `pnpm run preflight` rerun by Architect on `3721d65ac568678595e0244cee52e96aa5c9f052` passed: feature-memory gate, repository baseline, content validation, 282 Node tests, production build/service-worker generation, and 54 Playwright tests.
-- Content validation included `Manual 4 ruedas RU validated: 200/200 pages, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
-- Playwright evidence covered the complete manual surface on desktop/mobile, first/middle/last local asset rendering, exact RU translation samples, no iframe/embed/object PDF viewer, no manual `.pdf` links, no external requests, no PDF requests, and no backend/live-AI requests.
-- Review findings disposition is complete: the two prior P2 review threads are outdated on the current head, both fixes are recorded in process memory, and regression coverage exists for guarded manifest summary computation and zero-match manual search behavior.
-- Durable docs were updated for frontend behavior, backend/content tooling, feature inventory, and learning/manual flow source of truth.
-
-Architect validation return count: 0
-
-No unresolved gaps: all Architect-owned tasks/dispositions are complete, all acceptance criteria and negative scenarios have verification evidence, no accepted known issues remain, and no unresolved Implementation Agent feedback remains.
+- None.
