@@ -102,6 +102,15 @@
 - `pnpm run test` passed: 282 tests, 0 failures.
 - `pnpm run build` passed. It ran `validate:content`, synced `content/assets` into ignored `public/content/assets`, built with Vite, and generated a service worker with 1928 cached assets. The build emitted Vite's non-fatal large-chunk warning for the bundled local content corpus.
 - `node scripts/check-feature-memory.mjs --worktree` passed with `Feature-memory gate passed via specs/027-manual-vehiculo-4ruedas-ru/{spec,plan,tasks}.md`.
+- Second review fix recorded at `2026-05-26T19:18:08-03:00` for PR #170 thread `discussion_r3307159517`.
+- Decision: `Manual4RuedasView` now selects from `matchingPages` only while a search query is active. A zero-match query therefore leaves `selectedPage` undefined and renders the no-selection detail state instead of falling through to `manifest.pages[0]`. The no-query path still falls back to page 1 when no specific page is selected.
+- Empty-state UI: the detail area now exposes `data-testid="manual-empty-detail"` with a search-specific no-selection message, and it omits page counters, rendered page content, and previous/next navigation when `matchingPages.length === 0`.
+- Regression coverage: `tests/e2e/app.spec.ts` includes `complete RU manual search with no matches keeps the detail pane empty`, covering zero search matches, no rendered `manual-page-detail`, no `PDF page 1`, no page counter/navigation, and restored no-query page-1 fallback after resetting search.
+- `pnpm run build` passed. It ran `validate:content`, synced `content/assets` into ignored `public/content/assets`, built with Vite, and generated a service worker with 1928 cached assets. The build emitted Vite's non-fatal large-chunk warning for the bundled local content corpus.
+- `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` passed: 5 tests, 0 failures.
+- `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual search with no matches" --project=chromium` passed: 1 test, 0 failures.
+- An initial `pnpm run preflight` before this evidence update failed at `node scripts/check-feature-memory.mjs --worktree` with `Product paths changed without a complete feature-memory update`, as expected because `src/App.tsx` and `tests/e2e/app.spec.ts` had changed before `tasks.md` was touched.
+- `pnpm run preflight` passed after `tasks.md` was updated for this fix. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 282 Node tests, production build/service-worker generation, and 54 Playwright tests across `chromium` and `mobile`. The build emitted Vite's non-fatal large-chunk warning for the bundled local content corpus.
 
 ## Dead Ends and Known Issues
 

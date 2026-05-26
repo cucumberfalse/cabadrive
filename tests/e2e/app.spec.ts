@@ -667,6 +667,26 @@ test("complete RU manual surface renders first, middle, and last pages from loca
   expect(backendLikeRequests).toEqual([]);
 });
 
+test("complete RU manual search with no matches keeps the detail pane empty", async ({ page }) => {
+  await page.setViewportSize({ width: 1240, height: 900 });
+  await openCompleteManual(page);
+
+  await page.getByTestId("manual-search-input").fill("cabadrive-no-matching-manual-page");
+
+  await expect(page.getByText("Найдено: 0 страниц")).toBeVisible();
+  await expect(page.locator(".manual-page-list .source-empty-state")).toContainText("Ничего не найдено");
+  await expect(page.getByTestId("manual-page-detail")).toHaveCount(0);
+  await expect(page.getByTestId("manual-empty-detail")).toBeVisible();
+  await expect(page.getByTestId("manual-empty-detail")).toContainText("Страница не выбрана");
+  await expect(page.getByTestId("manual-empty-detail")).not.toContainText("PDF page 1");
+  await expect(page.locator(".manual-page-counter")).toHaveCount(0);
+  await expect(page.locator(".manual-actions")).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Сбросить поиск" }).click();
+
+  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+});
+
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {
   await openPrimarySources(page);
   await expect(page.getByTestId("source-list-pane")).toBeVisible();

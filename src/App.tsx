@@ -1422,10 +1422,9 @@ function Manual4RuedasView() {
   const summary = manualManifestSummary(manifest);
   const query = normalizeSearchText(searchQuery.trim());
   const matchingPages = query ? manifest.pages.filter((page) => manualPageSearchText(page).includes(query)) : manifest.pages;
-  const selectedPage =
-    matchingPages.find((page) => page.pageNumber === selectedPageNumber) ??
-    (query ? matchingPages[0] : manifest.pages.find((page) => page.pageNumber === selectedPageNumber)) ??
-    manifest.pages[0];
+  const selectedPage = query
+    ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
+    : manifest.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest.pages[0];
   const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
   const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
   const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest.source.rawOriginalSha256;
@@ -1596,9 +1595,13 @@ function Manual4RuedasView() {
             </footer>
           </article>
         ) : (
-          <article className="manual-page-detail">
+          <article className="manual-page-detail source-empty-state" data-testid="manual-empty-detail" role="status">
             <h2>Страница не выбрана</h2>
-            <p>Manifest загружен, но ни одна страница не подходит под текущий поиск.</p>
+            <p>
+              {query
+                ? "В полном локальном manual нет страницы под текущий поиск. Измените запрос или сбросьте поиск в списке."
+                : "Manifest загружен, но страница не выбрана."}
+            </p>
           </article>
         )}
       </div>
