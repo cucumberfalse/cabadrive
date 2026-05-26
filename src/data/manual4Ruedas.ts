@@ -105,13 +105,13 @@ export function manualPageCount() {
   return manual4RuedasRu.pages.length;
 }
 
-export function manualManifestSummary() {
+export function manualManifestSummary(manifest: ManualRuManifest = manual4RuedasRu) {
   return {
-    pages: manual4RuedasRu.pages.length,
-    expectedPages: manual4RuedasRu.source.pageCount,
-    localAssets: manual4RuedasRu.pages.filter((page) => page.visualAsset.localPath.startsWith("content/assets/")).length,
-    reusedTranslations: manual4RuedasRu.pages.filter((page) => page.translation.status === "reused_primary_source_chunk").length,
-    visualTextTranslations: manual4RuedasRu.pages.filter((page) => page.translation.status === "manual_visual_text").length
+    pages: manifest.pages.length,
+    expectedPages: manifest.source.pageCount,
+    localAssets: manifest.pages.filter((page) => page.visualAsset.localPath.startsWith("content/assets/")).length,
+    reusedTranslations: manifest.pages.filter((page) => page.translation.status === "reused_primary_source_chunk").length,
+    visualTextTranslations: manifest.pages.filter((page) => page.translation.status === "manual_visual_text").length
   };
 }
 

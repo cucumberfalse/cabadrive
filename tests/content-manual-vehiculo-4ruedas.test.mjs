@@ -34,6 +34,20 @@ test("manual 4 ruedas generated manifest is stable against committed assets and 
   assert.deepEqual(buildManualManifest(), manifest);
 });
 
+test("manual 4 ruedas view computes summary only after runtime manifest validation passes", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const componentStart = appSource.indexOf("function Manual4RuedasView()");
+  const guardIndex = appSource.indexOf("if (manifestState.error || !manifestState.manifest)", componentStart);
+  const manifestIndex = appSource.indexOf("const manifest = manifestState.manifest;", guardIndex);
+  const summaryIndex = appSource.indexOf("const summary = manualManifestSummary(manifest);", manifestIndex);
+
+  assert.notEqual(componentStart, -1);
+  assert.notEqual(guardIndex, -1);
+  assert.notEqual(manifestIndex, -1);
+  assert.notEqual(summaryIndex, -1);
+  assert.equal(appSource.slice(componentStart, guardIndex).includes("manualManifestSummary("), false);
+});
+
 test("manual 4 ruedas manifest records complete local source, asset, and translation coverage", () => {
   assert.equal(manifest.schema, "cabadrive-manual-ru.v1");
   assert.equal(manifest.source.rawOriginalSha256, "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e");

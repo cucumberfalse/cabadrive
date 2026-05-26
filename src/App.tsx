@@ -1403,7 +1403,6 @@ function Manual4RuedasView() {
       };
     }
   }, []);
-  const summary = useMemo(() => manualManifestSummary(), []);
   const [selectedPageNumber, setSelectedPageNumber] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isManualListOpen, setIsManualListOpen] = useState(true);
@@ -1420,6 +1419,7 @@ function Manual4RuedasView() {
   }
 
   const manifest = manifestState.manifest;
+  const summary = manualManifestSummary(manifest);
   const query = normalizeSearchText(searchQuery.trim());
   const matchingPages = query ? manifest.pages.filter((page) => manualPageSearchText(page).includes(query)) : manifest.pages;
   const selectedPage =

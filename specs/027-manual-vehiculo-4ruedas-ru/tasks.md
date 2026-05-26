@@ -92,6 +92,17 @@
 - `pnpm run test:e2e` passed: 52 tests across `chromium` and `mobile`, 0 failures. The manual e2e verified the `Руководство 4R` surface, first/middle/last page rendering, local JPEG dimensions, exact RU translation samples, no iframe/embed/object PDF viewer, no `.pdf` links in the manual reader, no external requests, no PDF requests, and no backend/live-AI requests.
 - `pnpm run preflight` passed. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 281 Node tests, build/service-worker generation, and 52 Playwright tests across `chromium` and `mobile`.
 
+## Review Fix Evidence
+
+- Review fix recorded at `2026-05-26T19:07:21-03:00` for PR #170 thread `discussion_r3307114807`.
+- Decision: `Manual4RuedasView` now computes `manualManifestSummary(manifest)` only after the `manifestState.error || !manifestState.manifest` guard passes, using the runtime-validated `manifestState.manifest` value instead of reading the module-level manifest before fallback UI can render.
+- Regression coverage: `tests/content-manual-vehiculo-4ruedas.test.mjs` now includes a focused guard-order test that fails if the manual summary computation moves before the runtime manifest guard or stops using the guarded manifest.
+- `pnpm run validate:manual-4ruedas` passed with `Manual 4 ruedas RU validated: 200/200 pages, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` passed: 5 tests, 0 failures.
+- `pnpm run test` passed: 282 tests, 0 failures.
+- `pnpm run build` passed. It ran `validate:content`, synced `content/assets` into ignored `public/content/assets`, built with Vite, and generated a service worker with 1928 cached assets. The build emitted Vite's non-fatal large-chunk warning for the bundled local content corpus.
+- `node scripts/check-feature-memory.mjs --worktree` passed with `Feature-memory gate passed via specs/027-manual-vehiculo-4ruedas-ru/{spec,plan,tasks}.md`.
+
 ## Dead Ends and Known Issues
 
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
@@ -99,4 +110,4 @@
 
 ## Implementation Agent Feedback
 
-- None yet.
+- None. No unresolved Implementation Agent feedback remains after this review-fix slice.
