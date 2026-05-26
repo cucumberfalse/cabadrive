@@ -112,6 +112,16 @@
 - An initial `pnpm run preflight` before this evidence update failed at `node scripts/check-feature-memory.mjs --worktree` with `Product paths changed without a complete feature-memory update`, as expected because `src/App.tsx` and `tests/e2e/app.spec.ts` had changed before `tasks.md` was touched.
 - `pnpm run preflight` passed after `tasks.md` was updated for this fix. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 282 Node tests, production build/service-worker generation, and 54 Playwright tests across `chromium` and `mobile`. The build emitted Vite's non-fatal large-chunk warning for the bundled local content corpus.
 
+## Verification Evidence
+
+- Source coverage is verified against the canonical official PDF: SHA-256 `69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e`, `mdls` page count `200`, and `pnpm run validate:manual-4ruedas` reporting `200/200 pages`.
+- Page-asset coverage is verified by the Swift render command producing `page-001.jpg` through `page-200.jpg` at `1191x1684`, `find ... | wc -l` returning `200`, and the manual validator confirming `200 local page assets`.
+- RU content coverage is verified by `pnpm run validate:manual-4ruedas`, which reported `198 approved reused translations` and `2 visual-label translation pages`; content tests also passed for the complete manual corpus and validation rules.
+- Local/offline/no-PDF behavior is verified by the runtime decision to import static JSON and local `/content/assets/...` images only, plus e2e checks confirming no iframe/embed/object PDF viewer, no `.pdf` links, no external requests, no PDF requests, and no backend/live-AI requests.
+- Representative UI and e2e coverage is verified by the `complete RU manual` Playwright checks across `chromium` and `mobile`, covering the `Руководство 4R` surface, first/middle/last page rendering, local JPEG dimensions, exact RU translation samples, and source/provenance display.
+- Full preflight evidence is recorded with `pnpm run preflight` passing after the review-fix task-memory update; it included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 282 Node tests, production build/service-worker generation, and 54 Playwright tests across `chromium` and `mobile`.
+- Review-fix regression coverage is recorded for both PR #170 review threads: the guarded-manifest-summary unit test in `tests/content-manual-vehiculo-4ruedas.test.mjs` passed, and the zero-match manual-search e2e test passed with no rendered page detail, no page counter/navigation, and restored page-1 fallback after search reset.
+
 ## Dead Ends and Known Issues
 
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
