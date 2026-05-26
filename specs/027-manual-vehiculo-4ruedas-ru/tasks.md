@@ -146,3 +146,34 @@
 ## Implementation Agent Feedback
 
 - None.
+
+## Cycle PR Set
+
+- PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, head SHA `19f8bf803126ade66e639da47666d4ff47a8bf7f`, status open/mergeable/checks passed, included in final validation.
+
+## Final Validation Evidence
+
+- Effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
+- Architect validation: passed at 2026-05-26T22:54:19Z for PR #170 after validating the complete RU 4-wheel manual scope, recorded verification evidence, review-fix disposition, process memory, and current-head alignment.
+- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
+- Architect return count: 0
+- Limit escalation: none
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Current-PR-head read-only guard: effective content head 19f8bf803126ade66e639da47666d4ff47a8bf7f matched the PR head during Architect validation; any later final-validation evidence-only commit must change only role-owned process-memory files and preserve required checks, review, mergeability, acceptance evidence, feedback disposition, and unresolved-thread gates.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-26T22:54:19Z
+- Effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
+- Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
+- Architect return count: 0
+- Architect validation evidence: Scope matches the Analyst request and Architect spec: the implementation exposes a dedicated `Руководство 4R` surface, represents all 200 official source pages, preserves local page-faithful visual assets, provides complete RU content, and keeps Spanish official-source traceability.
+- Architect validation evidence: Current-head and gate evidence passed for PR #170 at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; Orchestrator evidence reports required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed, and local Architect validation additionally passed `node scripts/check-feature-memory.mjs --worktree` and `pnpm run validate:manual-4ruedas`.
+- Architect validation evidence: Prior Codex P2 review findings were fixed, outdated, and resolved; recorded review-fix evidence covers guarded manifest-summary computation and zero-match search behavior, with corresponding unit and Playwright regression coverage.
+- Architect validation evidence: Verification evidence records the canonical PDF SHA-256 and 200-page source count, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages, full preflight, build, Node test, content-validation, and Playwright e2e coverage.
+- Architect validation evidence: Process memory includes current `## Verification Evidence`, `## Decisions`, `## Dead Ends`, `## Known Issues`, and `## Implementation Agent Feedback` sections; no unresolved implementation feedback or known issues remain.
+- Architect validation evidence: Docs and tests are covered by implementation evidence for frontend docs, feature inventory, backend/content docs, content validators, frontend tests, e2e tests, and repository preflight.
+- Architect validation evidence: Runtime architecture uses static manifest data and local `/content/assets/...` page images only; validators and e2e evidence block iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, external network fetches, and backend/live-AI dependencies for this manual surface.
+- Architect gaps: none.
+- Open Architect dispositions: none.
