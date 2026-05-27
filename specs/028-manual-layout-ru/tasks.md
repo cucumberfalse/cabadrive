@@ -122,8 +122,8 @@
 - `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
 - `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, exact-start semantic fallback, mobile readability, same-page search-result entry identity, and deduplicated search page-list paging.
 - `[x]` Review findings received through current Architect handoff are disposed by Architect before follow-up implementation.
-- `[ ]` Final Architect validation passes before final Analyst validation. Awaiting rerun after pre-final process-memory alignment.
-- `[ ]` Final Analyst validation passes before Orchestrator completion/merge readiness.
+- `[x]` Final Architect validation passes before final Analyst validation.
+- `[x]` Final Analyst validation passes before Orchestrator completion/merge readiness.
 
 ## Decisions
 
