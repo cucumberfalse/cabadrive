@@ -32,6 +32,26 @@ function exactStartEntryForPage(entries, pageNumber) {
   return undefined;
 }
 
+function findNavigationEntryById(entries, entryId) {
+  for (const entry of entries) {
+    if (entry.id === entryId) return entry;
+    const child = findNavigationEntryById(entry.children ?? [], entryId);
+    if (child) return child;
+  }
+  return undefined;
+}
+
+function destinationEntryForPage(entries, pageNumber, { requestedEntry, currentEntry } = {}) {
+  if (requestedEntry && pageNumberIsCoveredByEntry(pageNumber, requestedEntry)) return requestedEntry;
+
+  const exactStartEntry = exactStartEntryForPage(entries, pageNumber);
+  if (currentEntry && pageNumberIsCoveredByEntry(pageNumber, currentEntry)) {
+    return currentEntry.startPage === pageNumber ? currentEntry : exactStartEntry ?? currentEntry;
+  }
+
+  return exactStartEntry ?? entries.find((entry) => pageNumberIsCoveredByEntry(pageNumber, entry));
+}
+
 test("manual 4 ruedas validator passes current manifest and reports complete coverage", async () => {
   const output = execFileSync("node", ["scripts/content-manual-vehiculo-4ruedas.mjs"], { encoding: "utf8" });
   const result = await validateManualVehiculo4RuedasRu();
@@ -113,6 +133,33 @@ test("manual 4 ruedas page-only semantic lookup prefers exact topic starts befor
   assert.ok(exactStartIndex < coveringFallbackIndex);
   assert.equal(chapter4Topics.find((entry) => pageNumberIsCoveredByEntry(94, entry)).id, "ch4-sleep-fatigue");
   assert.equal(exactStartEntryForPage(navigation.entries, 94).id, "ch4-stress");
+});
+
+test("manual 4 ruedas previous-next transition prefers exact-start destination before preserving covering entry", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const resolverStart = appSource.indexOf("function manualNavigationEntryForDestinationPage");
+  const resolverEnd = appSource.indexOf("function manualBoundsStyle", resolverStart);
+  const resolverSource = appSource.slice(resolverStart, resolverEnd);
+  const exactStartIndex = resolverSource.indexOf("manualExactStartNavigationEntryForPage(entries, pageNumber)");
+  const currentCoverIndex = resolverSource.indexOf("manualNavigationEntryCoversPage(options.currentEntry, pageNumber)");
+  const selectStart = appSource.indexOf("function selectManualPage");
+  const selectEnd = appSource.indexOf("function selectManualEntry", selectStart);
+  const selectSource = appSource.slice(selectStart, selectEnd);
+  const sleepFatigue = findNavigationEntryById(navigation.entries, "ch4-sleep-fatigue");
+  const stress = findNavigationEntryById(navigation.entries, "ch4-stress");
+  const nextDestination = destinationEntryForPage(navigation.entries, 94, { currentEntry: sleepFatigue });
+
+  assert.notEqual(resolverStart, -1);
+  assert.notEqual(resolverEnd, -1);
+  assert.notEqual(exactStartIndex, -1);
+  assert.notEqual(currentCoverIndex, -1);
+  assert.ok(exactStartIndex < currentCoverIndex);
+  assert.match(selectSource, /manualNavigationEntryForDestinationPage\(navigation\.entries, pageNumber, \{ requestedEntry, currentEntry \}\)/);
+  assert.equal(pageNumberIsCoveredByEntry(93, sleepFatigue), true);
+  assert.equal(pageNumberIsCoveredByEntry(94, sleepFatigue), true);
+  assert.equal(sleepFatigue.startPage, 93);
+  assert.equal(stress.startPage, 94);
+  assert.equal(nextDestination.id, "ch4-stress");
 });
 
 function pageNumberIsCoveredByEntry(pageNumber, entry) {

@@ -1443,6 +1443,21 @@ function manualNavigationEntryCoversPage(entry: ManualNavigationEntry | undefine
   return Boolean(entry && pageNumber >= entry.startPage && pageNumber <= entry.endPage);
 }
 
+function manualNavigationEntryForDestinationPage(
+  entries: ManualNavigationEntry[],
+  pageNumber: number,
+  options: { requestedEntry?: ManualNavigationEntry; currentEntry?: ManualNavigationEntry } = {}
+) {
+  if (manualNavigationEntryCoversPage(options.requestedEntry, pageNumber)) return options.requestedEntry;
+
+  const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
+  if (manualNavigationEntryCoversPage(options.currentEntry, pageNumber)) {
+    return options.currentEntry?.startPage === pageNumber ? options.currentEntry : exactStartEntry ?? options.currentEntry;
+  }
+
+  return exactStartEntry ?? manualNavigationEntryForPage(entries, pageNumber, true);
+}
+
 function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
   return {
     left: `${bounds.x * 100}%`,
@@ -1630,15 +1645,9 @@ function Manual4RuedasView() {
   function selectManualPage(pageNumber: number, options: { entryId?: string; preserveCurrentEntry?: boolean } = {}) {
     const requestedEntry = options.entryId ? navigationEntryById.get(options.entryId) : undefined;
     const currentEntry = options.preserveCurrentEntry && selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
-    const fallbackEntry = navigation ? manualNavigationEntryForPage(navigation.entries, pageNumber, true) : undefined;
+    const destinationEntry = manualNavigationEntryForDestinationPage(navigation.entries, pageNumber, { requestedEntry, currentEntry });
     setSelectedPageNumber(pageNumber);
-    setSelectedNavigationEntryId(
-      manualNavigationEntryCoversPage(requestedEntry, pageNumber)
-        ? requestedEntry?.id
-        : manualNavigationEntryCoversPage(currentEntry, pageNumber)
-          ? currentEntry?.id
-          : fallbackEntry?.id
-    );
+    setSelectedNavigationEntryId(destinationEntry?.id);
     setImageLoadFailedPage(undefined);
     setIsManualListOpen(false);
   }
