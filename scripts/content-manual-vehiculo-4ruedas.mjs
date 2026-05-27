@@ -199,9 +199,9 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
     requiredPrintedPage: 88,
     children: [
       { id: "ch4-alcohol-drugs", titleRu: "Употребление алкоголя и наркотиков", titleEs: "Consumo de alcohol y drogas", startPage: 90, sourceEvidence: "index_pages_11_12" },
-      { id: "ch4-sleep-fatigue", titleRu: "Сон и усталость", titleEs: "Sueno y fatiga", startPage: 93, sourceEvidence: "index_pages_11_12" },
-      { id: "ch4-stress", titleRu: "Стресс", titleEs: "Estres", startPage: 95, sourceEvidence: "index_pages_11_12" },
-      { id: "ch4-distractions", titleRu: "Отвлечения", titleEs: "Distracciones", startPage: 95, sourceEvidence: "index_pages_11_12" }
+      { id: "ch4-sleep-fatigue", titleRu: "Сон и усталость", titleEs: "Sueno y fatiga", startPage: 93, endPage: 94, sourceEvidence: "index_pages_11_12" },
+      { id: "ch4-stress", titleRu: "Стресс", titleEs: "Estres", startPage: 94, endPage: 94, sourceEvidence: "page_heading" },
+      { id: "ch4-distractions", titleRu: "Отвлечения", titleEs: "Distracciones", startPage: 95, sourceEvidence: "page_heading" }
     ]
   },
   {
@@ -325,6 +325,11 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
     ]
   }
 ];
+
+const MANUAL_TOPIC_START_TEXT_EVIDENCE = new Map([
+  ["ch4-stress", { startPage: 94, requiredText: ["Стресс", "ВОЗ определяет"] }],
+  ["ch4-distractions", { startPage: 95, requiredText: ["Отвлечения", "Под отвлечением понимается"] }]
+]);
 
 function path(root, relativePath) {
   return join(root, relativePath);
@@ -1035,7 +1040,7 @@ function withChildRanges(entry) {
   const children = (entry.children ?? []).map((child, index, all) => ({
     ...child,
     level: "topic",
-    endPage: (all.slice(index + 1).find((nextChild) => nextChild.startPage > child.startPage)?.startPage ?? entry.endPage + 1) - 1
+    endPage: child.endPage ?? (all.slice(index + 1).find((nextChild) => nextChild.startPage > child.startPage)?.startPage ?? entry.endPage + 1) - 1
   }));
   return { ...entry, children };
 }
@@ -1364,6 +1369,7 @@ function validateManualNavigationManifest(errors, manifest, navigation) {
     return;
   }
 
+  const manualPageByNumber = new Map((manifest?.pages ?? []).map((page) => [page.pageNumber, page]));
   const requiredTopLevel = new Map(
     MANUAL_TOP_LEVEL_NAVIGATION.map((entry) => [
       entry.id,
@@ -1406,6 +1412,18 @@ function validateManualNavigationManifest(errors, manifest, navigation) {
       if (!isNonEmptyString(child.titleRu)) errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} titleRu is missing.`);
       if (child.sourceEvidence !== "index_pages_11_12" && child.sourceEvidence !== "page_heading" && child.sourceEvidence !== "curated_manual_review") {
         errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} sourceEvidence is not valid.`);
+      }
+      const startEvidence = MANUAL_TOPIC_START_TEXT_EVIDENCE.get(child.id);
+      if (startEvidence) {
+        if (child.startPage !== startEvidence.startPage) {
+          errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} must start on page ${startEvidence.startPage} based on page-heading/content evidence.`);
+        }
+        const pageText = normalizeManualLayoutText(manualPageByNumber.get(child.startPage)?.translation?.fullTranslationRu ?? "");
+        for (const requiredText of startEvidence.requiredText) {
+          if (!pageText.includes(requiredText)) {
+            errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} start page ${child.startPage} does not contain required evidence text "${requiredText}".`);
+          }
+        }
       }
     }
   }

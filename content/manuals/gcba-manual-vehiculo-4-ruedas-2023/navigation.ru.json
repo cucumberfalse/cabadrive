@@ -353,25 +353,25 @@
           "titleRu": "Сон и усталость",
           "titleEs": "Sueno y fatiga",
           "startPage": 93,
+          "endPage": 94,
           "sourceEvidence": "index_pages_11_12",
-          "level": "topic",
-          "endPage": 94
+          "level": "topic"
         },
         {
           "id": "ch4-stress",
           "titleRu": "Стресс",
           "titleEs": "Estres",
-          "startPage": 95,
-          "sourceEvidence": "index_pages_11_12",
-          "level": "topic",
-          "endPage": 97
+          "startPage": 94,
+          "endPage": 94,
+          "sourceEvidence": "page_heading",
+          "level": "topic"
         },
         {
           "id": "ch4-distractions",
           "titleRu": "Отвлечения",
           "titleEs": "Distracciones",
           "startPage": 95,
-          "sourceEvidence": "index_pages_11_12",
+          "sourceEvidence": "page_heading",
           "level": "topic",
           "endPage": 97
         }

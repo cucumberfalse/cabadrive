@@ -166,6 +166,7 @@ type ManualRenderedBox = {
   clientWidth: number;
   scrollHeight: number;
   clientHeight: number;
+  fontSize: number;
 };
 
 function boxesOverlap(first: ManualRenderedBox, second: ManualRenderedBox, tolerance = 0.75) {
@@ -195,7 +196,8 @@ async function renderedManualBoxes(locator: Locator): Promise<ManualRenderedBox[
         scrollWidth: element.scrollWidth,
         clientWidth: element.clientWidth,
         scrollHeight: element.scrollHeight,
-        clientHeight: element.clientHeight
+        clientHeight: element.clientHeight,
+        fontSize: Number.parseFloat(style.fontSize)
       };
     })
   );
@@ -226,6 +228,16 @@ async function expectIndependentManualPageLayout(page: Page, pageNumber: number,
     for (const visualBox of visualBoxes) {
       expect(boxesOverlap(blockBox, visualBox), `manual block ${blockBox.id} overlaps preserved visual region ${visualBox.id} on page ${pageNumber}`).toBe(false);
     }
+  }
+}
+
+async function expectReadableManualMobileBlocks(page: Page, pageNumber: number) {
+  const blockBoxes = await renderedManualBoxes(page.getByTestId("manual-layout-block"));
+  const instructionalBoxes = blockBoxes.filter((box) => box.type && !["pageNumber", "label", "footnote"].includes(box.type));
+  expect(instructionalBoxes.length, `page ${pageNumber} has primary Russian instructional blocks`).toBeGreaterThan(0);
+  for (const box of instructionalBoxes) {
+    expect(box.fontSize, `manual block ${box.id} on page ${pageNumber} is too small for mobile reading`).toBeGreaterThanOrEqual(8);
+    expect(box.height, `manual block ${box.id} on page ${pageNumber} has no practical text box height`).toBeGreaterThanOrEqual(box.fontSize * 0.95);
   }
 }
 
@@ -762,18 +774,37 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-ch4-stress").scrollIntoViewIfNeeded();
   await page.getByTestId("manual-nav-ch4-stress").click();
-  await expect(page.getByTestId("manual-page-detail")).toContainText("95 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
   await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВОЗ определяет");
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("Отвлечения");
   await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-ch4-distractions").scrollIntoViewIfNeeded();
   await page.getByTestId("manual-nav-ch4-distractions").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("95 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Отвлечения");
   await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Отвлечения");
   await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Стресс");
   await expect(page.getByTestId("manual-nav-ch4-distractions")).toHaveClass(/active/);
   await expect(page.getByTestId("manual-nav-ch4-stress")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch5-equal-society").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch5-equal-society").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("К равноправному обществу");
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch5-gender-violence-prevention").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch5-gender-violence-prevention").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Профилактика и помощь");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("К равноправному обществу");
+  await expect(page.getByTestId("manual-nav-ch5-gender-violence-prevention")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
@@ -788,7 +819,7 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   expect(backendLikeRequests).toEqual([]);
 });
 
-test("complete RU manual mobile navigation rows around pages 114-123 do not overlap or clip", async ({ page }) => {
+test("complete RU manual mobile navigation rows and pages 114-123 remain readable without overlap", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 900 });
   await openCompleteManual(page);
 
@@ -828,6 +859,7 @@ test("complete RU manual mobile navigation rows around pages 114-123 do not over
     }
     await row.click();
     await expectIndependentManualPageLayout(page, pageNumber, Math.min(3, manualLayout.pages[pageNumber - 1].blocks.length));
+    await expectReadableManualMobileBlocks(page, pageNumber);
     if (pageNumber < 123) await showCompleteManualList(page);
   }
 });

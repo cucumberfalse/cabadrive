@@ -152,8 +152,20 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.equal(navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").startPage, 123);
   assert.ok(navigation.entries.flatMap((entry) => entry.children ?? []).some((entry) => entry.id === "app4-signs-regulatory"));
   const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
-  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage, 95);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-sleep-fatigue").endPage, 94);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage, 94);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").endPage, 94);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").sourceEvidence, "page_heading");
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-distractions").startPage, 95);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-distractions").sourceEvidence, "page_heading");
+  assert.ok(manifest.pages[93].translation.fullTranslationRu.includes("Стресс"));
+  assert.ok(manifest.pages[93].translation.fullTranslationRu.includes("ВОЗ определяет"));
+  assert.ok(manifest.pages[94].translation.fullTranslationRu.includes("Отвлечения"));
+  assert.ok(manifest.pages[94].translation.fullTranslationRu.includes("Под отвлечением понимается"));
+
+  const chapter5Topics = navigation.entries.find((entry) => entry.id === "chapter-5-driving-behavior").children;
+  assert.equal(chapter5Topics.find((entry) => entry.id === "ch5-equal-society").startPage, 100);
+  assert.equal(chapter5Topics.find((entry) => entry.id === "ch5-gender-violence-prevention").startPage, 100);
 });
 
 test("manual 4 ruedas validator rejects remote assets, omitted translations, and stale counters", async () => {
@@ -183,6 +195,21 @@ test("manual 4 ruedas validator rejects missing layout coverage, text drift, and
   assert.ok(result.errors.some((error) => error.includes("page 2 ordered Russian blocks do not reconstruct fullTranslationRu")));
   assert.ok(result.errors.some((error) => error.includes("top-level navigation entry count is stale")));
   assert.ok(result.errors.some((error) => error.includes("required source-index topic app4-signs-regulatory is missing")));
+});
+
+test("manual 4 ruedas validator rejects stale Chapter 4 Stress and Distractions topic starts", async () => {
+  const badNavigation = clone(navigation);
+  const chapter4Topics = badNavigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+  chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage = 95;
+  chapter4Topics.find((entry) => entry.id === "ch4-stress").endPage = 97;
+  chapter4Topics.find((entry) => entry.id === "ch4-distractions").startPage = 94;
+
+  const result = await validateManualVehiculo4RuedasRu({ manifest, layout, navigation: badNavigation });
+
+  assert.ok(result.errors.some((error) => error.includes("child ch4-stress must start on page 94 based on page-heading/content evidence")));
+  assert.ok(result.errors.some((error) => error.includes("child ch4-stress start page 95 does not contain required evidence text \"Стресс\"")));
+  assert.ok(result.errors.some((error) => error.includes("child ch4-distractions must start on page 95 based on page-heading/content evidence")));
+  assert.ok(result.errors.some((error) => error.includes("child ch4-distractions start page 94 does not contain required evidence text \"Отвлечения\"")));
 });
 
 test("manual 4 ruedas validator rejects generic flow geometry and full-page visual catch-all", async () => {

@@ -1926,6 +1926,15 @@ small,
     flex-direction: column;
   }
 
+  .manual-page-detail {
+    overflow-x: auto;
+  }
+
+  .manual-document-page {
+    width: 1120px;
+    max-width: none;
+  }
+
   .manual-page-counter {
     width: 100%;
   }

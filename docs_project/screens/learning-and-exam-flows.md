@@ -104,8 +104,9 @@ The complete manual surface is a dedicated Russian-learning reader for the offic
 4. Read the exact full Russian translation as independently positioned layout blocks inside the page composition while local visual material, diagrams, signs, tables, and page hierarchy remain visible.
 5. Review compact per-page source traceability: official document ID, PDF page number, canonical source hash prefix, local asset hash prefix, layout-block count, and chunk or visual-label provenance.
 6. Move through ordered previous/next page navigation within the full manual or current search result set.
-7. On mobile, switch cleanly between navigation and page detail; semantic rows and secondary page rows grow with their text and must not overlap or clip.
-8. Stay fully local-first: no runtime PDF viewer, iframe/embed/object PDF loading, PDF.js rendering, remote image, network fetch, backend endpoint, or live AI dependency is used for manual content or assets.
+7. On mobile, switch cleanly between navigation and page detail; semantic rows and secondary page rows grow with their text and must not overlap or clip, while the page canvas keeps a readable minimum width with horizontal scrolling instead of shrinking Russian instructional text to microtype.
+8. Chapter 4 topic navigation opens the content-bearing pages directly: `Стресс` opens PDF page `94`, and `Отвлечения` opens PDF page `95`.
+9. Stay fully local-first: no runtime PDF viewer, iframe/embed/object PDF loading, PDF.js rendering, remote image, network fetch, backend endpoint, or live AI dependency is used for manual content or assets.
 
 ## CABA Vs RF Guide Flow
 
