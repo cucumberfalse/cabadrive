@@ -67,6 +67,40 @@ function manualPageSearchText(page) {
   );
 }
 
+function buildManualSearchIndexEntries() {
+  const navigationEntries = flattenNavigationEntries(navigation.entries);
+  const semanticEntriesByStartPage = new Map();
+  for (const entry of navigationEntries) {
+    if (entry.level !== "topic") continue;
+    semanticEntriesByStartPage.set(entry.startPage, [...(semanticEntriesByStartPage.get(entry.startPage) ?? []), entry]);
+  }
+
+  return manifest.pages.flatMap((page) => {
+    const exactStartEntries = semanticEntriesByStartPage.get(page.pageNumber) ?? [];
+    const semanticResults = exactStartEntries.map((section) => ({
+      page,
+      section,
+      resultId: `section-${section.id}`,
+      searchText: normalizeSearchText([manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+    }));
+    if (semanticResults.length) return semanticResults;
+    return {
+      page,
+      resultId: `page-${page.pageNumber}`,
+      searchText: manualPageSearchText(page)
+    };
+  });
+}
+
+function uniqueManualMatchingPages(entries) {
+  const seenPageNumbers = new Set();
+  return entries.flatMap((entry) => {
+    if (seenPageNumbers.has(entry.page.pageNumber)) return [];
+    seenPageNumbers.add(entry.page.pageNumber);
+    return [entry.page];
+  });
+}
+
 function destinationEntryForPage(entries, pageNumber, { requestedEntry, currentEntry } = {}) {
   if (requestedEntry && pageNumberIsCoveredByEntry(pageNumber, requestedEntry)) return requestedEntry;
 
@@ -169,6 +203,36 @@ test("manual 4 ruedas search index preserves same-page semantic entry identity",
   assert.match(componentSource, /selectManualPage\(page\.pageNumber, \{ entryId: section\?\.id \}\)/);
   assert.match(componentSource, /data-result-entry-id=\{section\?\.id \?\? ""\}/);
   assert.match(componentSource, /data-search-result-id=\{resultId\}/);
+});
+
+test("manual 4 ruedas page-number search deduplicates matching pages while preserving same-page topic rows", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const componentStart = appSource.indexOf("function Manual4RuedasView()");
+  const componentEnd = appSource.indexOf("function PrimarySourcesView()", componentStart);
+  const componentSource = appSource.slice(componentStart, componentEnd);
+  const searchIndexEntries = buildManualSearchIndexEntries();
+  const query = normalizeSearchText("100");
+  const queryPageNumber = /^\d+$/u.test(query) ? Number(query) : undefined;
+  const matchingEntries = searchIndexEntries.filter((entry) =>
+    queryPageNumber === undefined ? entry.searchText.includes(query) : entry.page.pageNumber === queryPageNumber
+  );
+  const matchingPages = uniqueManualMatchingPages(matchingEntries);
+  const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === 100);
+
+  assert.equal(queryPageNumber, 100);
+  assert.deepEqual(
+    matchingEntries.map((entry) => entry.section?.id),
+    ["ch5-equal-society", "ch5-gender-violence-prevention"]
+  );
+  assert.deepEqual(matchingEntries.map((entry) => entry.resultId), ["section-ch5-equal-society", "section-ch5-gender-violence-prevention"]);
+  assert.equal(matchingPages.length, 1);
+  assert.equal(matchingPages[0].pageNumber, 100);
+  assert.equal(selectedPageIndex, 0);
+  assert.equal(matchingPages[selectedPageIndex - 1], undefined);
+  assert.equal(matchingPages[selectedPageIndex + 1], undefined);
+  assert.match(componentSource, /const queryPageNumber = query \? manualQueryPageNumber\(query\) : undefined/);
+  assert.match(componentSource, /uniqueManualMatchingPages\(matchingEntries\)/);
+  assert.doesNotMatch(componentSource, /matchingEntries\.map\(\(entry\) => entry\.page\)/);
 });
 
 test("manual 4 ruedas page-only semantic lookup prefers exact topic starts before covering ranges", () => {

@@ -100,7 +100,9 @@ Each navigation entry must include:
 - Source evidence (`index_pages_11_12`, page heading, or curated manual review).
 - Children where applicable.
 
-Search results must be grouped or labelled by this semantic structure and must preserve the distinct semantic entry ID that caused each result. A page may legitimately contain multiple same-page topics, so the search index/results must not collapse all matches on a page to the first exact-start navigation entry. For example, searching for and opening `ch5-gender-violence-prevention` on page `100` must label, highlight, and open `ch5-gender-violence-prevention`, not `ch5-equal-society`.
+Search results must be grouped or labelled by this semantic structure and must preserve the distinct semantic entry ID that caused each result. A page may legitimately contain multiple same-page topics, so semantic topic search results must not collapse all matches on a page to the first exact-start navigation entry. For example, searching for and opening `ch5-gender-violence-prevention` on page `100` must label, highlight, and open `ch5-gender-violence-prevention`, not `ch5-equal-society`.
+
+Search-result page navigation must deduplicate page-list results by page number. Page-number or page-list searches can match multiple semantic entries on the same page, but the `matchingPages`/previous-next paging collection must contain each page number only once, with deterministic ordering by page number/source order. Deduplication must not remove distinct semantic topic search rows or their entry IDs; it applies to the page list used for result counts and previous/next page controls. Next/Previous through search results must never be enabled only to select the same page again because duplicate page objects share a page number.
 
 Direct page access must remain available as secondary navigation, not as a single long primary list.
 
@@ -164,6 +166,7 @@ Direct page access must remain available as secondary navigation, not as a singl
   - The old side-by-side Spanish image plus plain translation card is absent from primary UI.
   - Semantic navigation works for at least introduction, one middle chapter, Appendix I, Appendix II around pages `114`-`123`, and Appendix IV.
   - Search results preserve same-page semantic topic IDs, including page `100` where `ch5-gender-violence-prevention` must open with its own result label and active highlight rather than `ch5-equal-society`.
+  - Page-number/search paging deduplicates the page list by page number while preserving distinct semantic topic result identities; for query `100`, the user-visible found-page count and Next/Previous controls must not be inflated by multiple same-page semantic matches and must not no-op on a duplicate page `100`.
   - Mobile navigation/list rows around pages `114`-`123` do not overlap or clip based on bounding-box assertions and screenshots.
   - Representative image-heavy/table/sign pages render with local assets, nonblank page composition, and no visible Spanish source headings/captions in the primary Russian reader; coverage must include non-Appendix pages and page `185` explicitly.
 - TypeScript verification must include `pnpm exec tsc --noEmit` where available, or equivalent strict type-check coverage through the repository preflight/build command if the standalone command is unavailable.

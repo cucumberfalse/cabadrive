@@ -44,6 +44,8 @@ Previous/next navigation must also apply the exact-start rule before preserving 
 
 Manual search must index and return semantic entry identity separately from page identity. When a query matches a navigation topic or page text associated with a specific topic, the result must retain the matching entry ID and pass that ID through click/open behavior. Same-page topics must therefore produce distinct results or result metadata even when their `startPage` is identical; searching for `ch5-gender-violence-prevention` on page `100` must label/highlight/open that topic, not the first same-page topic `ch5-equal-society`.
 
+The search page-list/paging collection must be derived separately from semantic result rows and must deduplicate by `pageNumber`. Page-number queries such as `100` may still surface distinct semantic topic matches for page `100`, but the page list used for `Найдено ... страниц`, selected-page index, and Next/Previous through matching pages must contain page `100` only once. Next/Previous controls must be disabled when there is no different matching page to navigate to and must never perform a same-page no-op caused by duplicate page objects.
+
 ### 4. Refactor Manual Runtime UI
 
 Refactor `Manual4RuedasView` in `src/App.tsx` or split it into purpose-built manual components under `src/` following local patterns.
@@ -93,6 +95,7 @@ Update Playwright tests for:
 - The old side-by-side `.manual-visual` plus `.manual-translation` primary layout is absent.
 - Semantic navigation opens named sections/topics and updates the page.
 - Search results are grouped/labeled by semantic section and preserve distinct same-page entry IDs, with a regression for `ch5-gender-violence-prevention` on page `100` not collapsing to `ch5-equal-society`.
+- Page-number/search paging deduplicates matching pages by page number while preserving distinct semantic topic result rows where needed; Node coverage must include query `100`, and Playwright must verify the visible found-page count plus Next/Previous behavior do not treat duplicate same-page semantic matches as multiple pages.
 - Mobile navigation and secondary page list rows do not overlap. Use bounding-box assertions, not only text visibility.
 - No external/manual PDF/backend/live-AI requests occur.
 - Type-check verification covers nested handler narrowing, including the manual navigation manifest path, so `navigation` is narrowed/captured before handler functions use it.

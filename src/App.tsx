@@ -1459,6 +1459,19 @@ function manualNavigationEntryForDestinationPage(
   return exactStartEntry ?? manualNavigationEntryForPage(entries, pageNumber, true);
 }
 
+function uniqueManualMatchingPages(entries: ManualSearchIndexEntry[]) {
+  const seenPageNumbers = new Set<number>();
+  return entries.flatMap((entry) => {
+    if (seenPageNumbers.has(entry.page.pageNumber)) return [];
+    seenPageNumbers.add(entry.page.pageNumber);
+    return [entry.page];
+  });
+}
+
+function manualQueryPageNumber(query: string) {
+  return /^\d+$/u.test(query) ? Number(query) : undefined;
+}
+
 function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
   return {
     left: `${bounds.x * 100}%`,
@@ -1639,8 +1652,11 @@ function Manual4RuedasView() {
     [manifest, manualPageIndex, navigationEntries]
   );
   const query = normalizeSearchText(searchQuery.trim());
-  const matchingEntries = query ? manualSearchIndex.filter((entry) => entry.searchText.includes(query)) : manualSearchIndex;
-  const matchingPages = manifest ? (query ? matchingEntries.map((entry) => entry.page) : manifest.pages) : [];
+  const queryPageNumber = query ? manualQueryPageNumber(query) : undefined;
+  const matchingEntries = query
+    ? manualSearchIndex.filter((entry) => (queryPageNumber === undefined ? entry.searchText.includes(query) : entry.page.pageNumber === queryPageNumber))
+    : manualSearchIndex;
+  const matchingPages = manifest ? (query ? uniqueManualMatchingPages(matchingEntries) : manifest.pages) : [];
   const selectedPage =
     manifest && query
       ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]

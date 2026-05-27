@@ -953,6 +953,23 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
 
   await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("100");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  const equalSocietyPageNumberResult = page.locator('[data-search-result-id="section-ch5-equal-society"]');
+  const genderViolencePageNumberResult = page.locator('[data-search-result-id="section-ch5-gender-violence-prevention"]');
+  await expect(equalSocietyPageNumberResult).toBeVisible();
+  await expect(genderViolencePageNumberResult).toBeVisible();
+  await expect(equalSocietyPageNumberResult).toHaveAttribute("data-result-entry-id", "ch5-equal-society");
+  await expect(genderViolencePageNumberResult).toHaveAttribute("data-result-entry-id", "ch5-gender-violence-prevention");
+  await expect(page.getByTestId("manual-page-button-100")).toHaveCount(2);
+  await equalSocietyPageNumberResult.click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  const manualSearchPagingControls = page.locator(".manual-actions");
+  await expect(manualSearchPagingControls).toContainText("1 / 1");
+  await expect(manualSearchPagingControls.getByRole("button", { name: /Предыдущая/ })).toBeDisabled();
+  await expect(manualSearchPagingControls.getByRole("button", { name: /Следующая/ })).toBeDisabled();
+
+  await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
   await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
   await page.getByTestId("manual-page-button-200").click();
