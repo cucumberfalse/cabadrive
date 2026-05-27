@@ -483,14 +483,21 @@ small,
 }
 
 .source-toc button {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 4px;
+  align-content: start;
   width: 100%;
+  min-width: 0;
   min-height: 42px;
   border: 1px solid #d4d9d1;
   border-radius: 8px;
   background: #ffffff;
   color: #16201d;
   padding: 8px;
+  line-height: 1.25;
   text-align: left;
+  white-space: normal;
 }
 
 .source-toc button.active {
@@ -501,11 +508,12 @@ small,
 .source-toc span,
 .source-toc small {
   display: block;
+  min-width: 0;
+  line-height: 1.25;
   overflow-wrap: anywhere;
 }
 
 .source-toc small {
-  margin-top: 3px;
   color: #4d5f58;
 }
 

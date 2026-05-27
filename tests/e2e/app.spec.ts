@@ -156,6 +156,64 @@ async function openSourceDocument(page: Page, document: PrimarySourceDocument) {
   await expect(page.getByRole("heading", { name: document.shortTitleRu })).toBeVisible();
 }
 
+async function assertSourceTocGeometry(page: Page, options: { checkHorizontalOverflow?: boolean } = {}) {
+  const problems = await page.locator(".source-toc-list").evaluate((list, checkHorizontalOverflow) => {
+    const tolerance = 1;
+    const issues: string[] = [];
+    const listRect = list.getBoundingClientRect();
+    const viewportWidth = document.documentElement.clientWidth;
+
+    if (checkHorizontalOverflow && document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      issues.push(`document horizontal overflow: ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+
+    const visibleButtons = Array.from(list.querySelectorAll("button"))
+      .map((button, index) => ({ button, index, rect: button.getBoundingClientRect() }))
+      .filter(({ rect }) => rect.width > 0 && rect.height > 0 && rect.bottom > listRect.top + tolerance && rect.top < listRect.bottom - tolerance)
+      .sort((a, b) => a.rect.top - b.rect.top || a.index - b.index);
+
+    visibleButtons.forEach(({ button, index, rect }, visibleIndex) => {
+      const span = button.querySelector("span");
+      const small = button.querySelector("small");
+      if (!span || !small) {
+        issues.push(`toc button ${index} is missing label or subtitle`);
+        return;
+      }
+
+      const spanRect = span.getBoundingClientRect();
+      const smallRect = small.getBoundingClientRect();
+      if (spanRect.bottom > smallRect.top + tolerance) {
+        issues.push(`toc button ${index} label overlaps subtitle`);
+      }
+      for (const [name, childRect] of [
+        ["label", spanRect],
+        ["subtitle", smallRect]
+      ] as const) {
+        if (
+          childRect.top < rect.top - tolerance ||
+          childRect.bottom > rect.bottom + tolerance ||
+          childRect.left < rect.left - tolerance ||
+          childRect.right > rect.right + tolerance
+        ) {
+          issues.push(`toc button ${index} ${name} is clipped by the button box`);
+        }
+      }
+
+      const next = visibleButtons[visibleIndex + 1];
+      if (next && next.rect.top < rect.bottom - tolerance) {
+        issues.push(`toc button ${index} overlaps following visible button ${next.index}`);
+      }
+      if (checkHorizontalOverflow && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        issues.push(`toc button ${index} overflows viewport horizontally`);
+      }
+    });
+
+    return issues;
+  }, Boolean(options.checkHorizontalOverflow));
+
+  expect(problems).toEqual([]);
+}
+
 async function visibleTicketId(page: Page) {
   const metaText = await page.getByTestId("question-card").locator(".question-meta").textContent();
   const match = metaText?.match(/Билет\s+(b-fallback-\d+)/);
@@ -773,6 +831,40 @@ test("primary source search, filters, long-document TOC, and keyboard focus work
   await expect(page.getByLabel("Фильтр источников по юрисдикции или типу")).toBeFocused();
   await page.keyboard.press("Tab");
   await expect(page.getByRole("button", { name: new RegExp(primarySourceDocuments[0].shortTitleRu) })).toBeFocused();
+});
+
+test("primary source fragment navigation has stable desktop row geometry", async ({ page }) => {
+  await page.setViewportSize({ width: 1240, height: 900 });
+  await openPrimarySources(page);
+  await openSourceDocument(page, trafficLawSource);
+
+  const tocButtons = page.locator(".source-toc-list button");
+  await expect(tocButtons.first()).toBeVisible();
+  await assertSourceTocGeometry(page);
+
+  await tocButtons.nth(2).focus();
+  await expect(tocButtons.nth(2)).toBeFocused();
+  await assertSourceTocGeometry(page);
+
+  await tocButtons.nth(3).click();
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[3].simpleRu));
+  await assertSourceTocGeometry(page);
+});
+
+test("primary source fragment navigation has stable mobile row geometry", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await openPrimarySources(page);
+  await openSourceDocument(page, trafficLawSource);
+
+  await expect(page.getByTestId("source-list-pane")).toBeHidden();
+  await expect(page.getByTestId("source-detail-pane")).toBeVisible();
+  const tocButtons = page.locator(".source-toc-list button");
+  await expect(tocButtons.first()).toBeVisible();
+  await assertSourceTocGeometry(page, { checkHorizontalOverflow: true });
+
+  await tocButtons.nth(2).click();
+  await expect(page.getByTestId("source-chunk-reader")).toContainText(textSample(trafficLawSource.chunks[2].simpleRu));
+  await assertSourceTocGeometry(page, { checkHorizontalOverflow: true });
 });
 
 test("primary source reader adapts between compact and expanded widths without runtime network or PDF dependencies", async ({ page }) => {
