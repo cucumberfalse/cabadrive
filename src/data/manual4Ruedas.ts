@@ -106,9 +106,17 @@ export type ManualPageLayout = {
   masks: Array<{
     id: string;
     purpose: "replace_visible_source_text_with_russian_layout";
+    role?: string;
+    sourceGeometry?: "russian_block_replacement_region" | "source_page_text_region" | "source_page_caption_region";
     bounds: ManualPageBounds;
     fill: string;
     opacity: number;
+    sourceTextEs?: string;
+    provenance?: {
+      method: string;
+      sourcePageNumber?: number;
+      visualAssetPath?: string;
+    };
   }>;
   textRegions: Array<{
     id: string;

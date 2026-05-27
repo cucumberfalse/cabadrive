@@ -91128,50 +91128,194 @@
       },
       "masks": [
         {
-          "id": "page-185-mask-01",
+          "id": "page-185-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
         },
         {
-          "id": "page-185-mask-02",
+          "id": "page-185-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.29,
+            "y": 0.279,
+            "width": 0.44,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Reglamentarias",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
         },
         {
-          "id": "page-185-mask-03",
+          "id": "page-185-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.29,
+            "y": 0.306,
+            "width": 0.44,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "De prohibición",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.363,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.418,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.475,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.532,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.604,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
+        },
+        {
+          "id": "page-185-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.682,
+            "width": 0.375,
+            "height": 0.03
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 185,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-185-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.432,
+            "height": 0.067
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -91179,13 +91323,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-185-sign-grid",
+          "id": "page-185-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.39
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
         },
@@ -91233,10 +91377,10 @@
           "order": 2,
           "textRu": "Запрещающие",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.42,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -91258,10 +91402,10 @@
           "order": 3,
           "textRu": "Регулирующие",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -91305,62 +91449,214 @@
       },
       "masks": [
         {
-          "id": "page-186-mask-01",
+          "id": "page-186-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
         },
         {
-          "id": "page-186-mask-02",
+          "id": "page-186-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.43,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "De restricción",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
         },
         {
-          "id": "page-186-mask-03",
+          "id": "page-186-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.524,
+            "width": 0.43,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "De prioridad",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
         },
         {
-          "id": "page-186-mask-04",
+          "id": "page-186-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.136
+            "x": 0.292,
+            "y": 0.694,
+            "width": 0.43,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "De fin de prescripción",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.343,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.402,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.474,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.53,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.6,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
+        },
+        {
+          "id": "page-186-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.77,
+            "width": 0.375,
+            "height": 0.034
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 186,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-186-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.432,
+            "height": 0.46
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -91368,13 +91664,35 @@
       ],
       "visualRegions": [
         {
-          "id": "page-186-sign-grid",
+          "id": "page-186-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.315,
+            "width": 0.375,
+            "height": 0.19
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+        },
+        {
+          "id": "page-186-sign-grid-2",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.565,
+            "width": 0.375,
+            "height": 0.09
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+        },
+        {
+          "id": "page-186-sign-grid-3",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.735,
+            "width": 0.2,
+            "height": 0.07
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
         },
@@ -91422,10 +91740,10 @@
           "order": 2,
           "textRu": "Ограничивающие",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -91447,10 +91765,10 @@
           "order": 3,
           "textRu": "Приоритета",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.524,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -91472,10 +91790,10 @@
           "order": 4,
           "textRu": "Окончания предписания",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.13
+            "x": 0.292,
+            "y": 0.694,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -91519,50 +91837,194 @@
       },
       "masks": [
         {
-          "id": "page-187-mask-01",
+          "id": "page-187-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
         },
         {
-          "id": "page-187-mask-02",
+          "id": "page-187-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.49,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Preventivas",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
         },
         {
-          "id": "page-187-mask-03",
+          "id": "page-187-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.306,
+            "width": 0.49,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Advertencias sobre características de la vía",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.428,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.493,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.558,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.625,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
+        },
+        {
+          "id": "page-187-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.706,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 187,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-187-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.512,
+            "height": 0.067
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -91570,13 +92032,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-187-sign-grid",
+          "id": "page-187-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
         },
@@ -91624,10 +92086,10 @@
           "order": 2,
           "textRu": "Предупреждающие",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -91649,10 +92111,10 @@
           "order": 3,
           "textRu": "Предупреждения о характеристиках дороги",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.5,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -91696,74 +92158,214 @@
       },
       "masks": [
         {
-          "id": "page-188-mask-01",
+          "id": "page-188-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
         },
         {
-          "id": "page-188-mask-02",
+          "id": "page-188-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.49,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Advertencias de máximo peligro",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
         },
         {
-          "id": "page-188-mask-03",
+          "id": "page-188-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.476,
+            "width": 0.49,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Posibilidad de riesgo eventual",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
         },
         {
-          "id": "page-188-mask-04",
+          "id": "page-188-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.0749
+            "x": 0.292,
+            "y": 0.606,
+            "width": 0.49,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Anticipo de otros dispositivos de control del tránsito",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
         },
         {
-          "id": "page-188-mask-05",
+          "id": "page-188-source-heading-4",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.7619,
-            "width": 0.528,
-            "height": 0.0611
+            "x": 0.292,
+            "y": 0.734,
+            "width": 0.49,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Fin de prevención",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
+        },
+        {
+          "id": "page-188-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.368,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
+        },
+        {
+          "id": "page-188-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
+        },
+        {
+          "id": "page-188-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.54,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
+        },
+        {
+          "id": "page-188-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.668,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
+        },
+        {
+          "id": "page-188-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.795,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 188,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-188-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.492,
+            "height": 0.497
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -91771,13 +92373,46 @@
       ],
       "visualRegions": [
         {
-          "id": "page-188-sign-grid",
+          "id": "page-188-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.11
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+        },
+        {
+          "id": "page-188-sign-grid-2",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.51,
+            "width": 0.375,
+            "height": 0.08
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+        },
+        {
+          "id": "page-188-sign-grid-3",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.64,
+            "width": 0.375,
+            "height": 0.08
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+        },
+        {
+          "id": "page-188-sign-grid-4",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.765,
+            "width": 0.375,
+            "height": 0.07
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
         },
@@ -91825,10 +92460,10 @@
           "order": 2,
           "textRu": "Предупреждения о максимальной опасности",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.48,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -91850,10 +92485,10 @@
           "order": 3,
           "textRu": "Возможность возможного риска",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.476,
+            "width": 0.48,
+            "height": 0.03
           },
           "typography": {
             "role": "prominent",
@@ -91875,10 +92510,10 @@
           "order": 4,
           "textRu": "Предварительное предупреждение о других устройствах управления движением",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.0689
+            "x": 0.292,
+            "y": 0.606,
+            "width": 0.48,
+            "height": 0.03
           },
           "typography": {
             "role": "prominent",
@@ -91900,10 +92535,10 @@
           "order": 5,
           "textRu": "Окончание предупреждения",
           "bounds": {
-            "x": 0.24,
-            "y": 0.7649,
-            "width": 0.52,
-            "height": 0.0551
+            "x": 0.292,
+            "y": 0.734,
+            "width": 0.48,
+            "height": 0.03
           },
           "typography": {
             "role": "prominent",
@@ -91947,50 +92582,174 @@
       },
       "masks": [
         {
-          "id": "page-189-mask-01",
+          "id": "page-189-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
         },
         {
-          "id": "page-189-mask-02",
+          "id": "page-189-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.45,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Informativas",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
         },
         {
-          "id": "page-189-mask-03",
+          "id": "page-189-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.306,
+            "width": 0.45,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Características de la vía",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
+        },
+        {
+          "id": "page-189-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
+        },
+        {
+          "id": "page-189-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
+        },
+        {
+          "id": "page-189-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.495,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
+        },
+        {
+          "id": "page-189-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.56,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
+        },
+        {
+          "id": "page-189-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.625,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 189,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-189-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.432,
+            "height": 0.067
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -91998,13 +92757,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-189-sign-grid",
+          "id": "page-189-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
         },
@@ -92052,10 +92811,10 @@
           "order": 2,
           "textRu": "Информационные",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -92077,10 +92836,10 @@
           "order": 3,
           "textRu": "Характеристики дороги",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.42,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -92124,38 +92883,174 @@
       },
       "masks": [
         {
-          "id": "page-190-mask-01",
+          "id": "page-190-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
         },
         {
-          "id": "page-190-mask-02",
+          "id": "page-190-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.096
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.036
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Nomenclatura vial y urbana",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.495,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.56,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.625,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
+        },
+        {
+          "id": "page-190-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.69,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 190,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-190-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.512,
+            "height": 0.048
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -92163,13 +93058,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-190-sign-grid",
+          "id": "page-190-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
         },
@@ -92217,10 +93112,10 @@
           "order": 2,
           "textRu": "Дорожная и городская номенклатура",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.09
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.036
           },
           "typography": {
             "role": "prominent",
@@ -92264,50 +93159,174 @@
       },
       "masks": [
         {
-          "id": "page-191-mask-01",
+          "id": "page-191-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
         },
         {
-          "id": "page-191-mask-02",
+          "id": "page-191-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Información turística y de servicios",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
         },
         {
-          "id": "page-191-mask-03",
+          "id": "page-191-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.54,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Educativas y anuncios especiales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
+        },
+        {
+          "id": "page-191-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
+        },
+        {
+          "id": "page-191-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
+        },
+        {
+          "id": "page-191-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.495,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
+        },
+        {
+          "id": "page-191-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.62,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
+        },
+        {
+          "id": "page-191-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.685,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 191,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-191-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.512,
+            "height": 0.306
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -92315,13 +93334,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-191-sign-grid",
+          "id": "page-191-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
         },
@@ -92369,10 +93388,10 @@
           "order": 2,
           "textRu": "Туристическая и сервисная информация",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -92394,10 +93413,10 @@
           "order": 3,
           "textRu": "Образовательные и специальные объявления",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.54,
+            "width": 0.5,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -92441,98 +93460,74 @@
       },
       "masks": [
         {
-          "id": "page-192-mask-01",
+          "id": "page-192-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 192,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-192.jpg"
+          }
         },
         {
-          "id": "page-192-mask-02",
+          "id": "page-192-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.29,
+            "y": 0.268,
+            "width": 0.46,
+            "height": 0.035
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Una señal de Estrella Amarilla significa que, en el lugar en donde está instalada, hubo una víctima",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 192,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-192.jpg"
+          }
         },
         {
-          "id": "page-192-mask-03",
+          "id": "page-192-source-paragraph-body",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "instructional-text",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.285,
+            "y": 0.315,
+            "width": 0.46,
+            "height": 0.45
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
-        },
-        {
-          "id": "page-192-mask-04",
-          "purpose": "replace_visible_source_text_with_russian_layout",
-          "bounds": {
-            "x": 0.186,
-            "y": 0.662,
-            "width": 0.628,
-            "height": 0.0561
-          },
-          "fill": "#fffdf8",
-          "opacity": 0.94
-        },
-        {
-          "id": "page-192-mask-05",
-          "purpose": "replace_visible_source_text_with_russian_layout",
-          "bounds": {
-            "x": 0.186,
-            "y": 0.7181,
-            "width": 0.628,
-            "height": 0.0515
-          },
-          "fill": "#fffdf8",
-          "opacity": 0.94
-        },
-        {
-          "id": "page-192-mask-06",
-          "purpose": "replace_visible_source_text_with_russian_layout",
-          "bounds": {
-            "x": 0.186,
-            "y": 0.7696,
-            "width": 0.628,
-            "height": 0.0515
-          },
-          "fill": "#fffdf8",
-          "opacity": 0.94
-        },
-        {
-          "id": "page-192-mask-07",
-          "purpose": "replace_visible_source_text_with_russian_layout",
-          "bounds": {
-            "x": 0.186,
-            "y": 0.8211,
-            "width": 0.628,
-            "height": 0.0469
-          },
-          "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 1,
+          "sourceTextEs": "191\nUna señal de Estrella Amarilla significa que, en el lugar en donde está instalada, hubo una víctima\nfatal por un incidente de tránsito y tiene como objetivo recordar a la víctima y ser una señal de\nalarma, un llamado a tomar conciencia de la cantidad de víctimas fatales, que son muertes evitables.\nLas  5  puntas  de  cada  estrella  representan  los  valores:  Memoria,  Prevención,  Ley,  Justicia  y\nEducación. Cada estrella lleva el nombre de pila o apodo y edad de la víctima con la inscripción:\n“En memoria de una víctima de tránsito”.\nAdemás de acompañar la iniciativa de distintas ONG ‘S con la colocación de Estrellas Amarillas\nen la vía pública, existe un Mapa Interactivo que hace referencia al lugar del fallecimiento de\nuna víctima, en el cual hay publicados otros datos: nombre y apellido, edad, fecha de nacimiento\ny fallecimiento.\nSe busca despertar un fuerte valor pedagógico y aportar a la construcción de las memorias\ncolectivas de toda una sociedad que ve y sufre el drama social que representa hoy la siniestralidad vial.\nUna Estrella Amarilla puede ser solicitada de manera gratuita por las personas familiares de\nla víctima de tránsito al correo: estrellasamarillas@buenosaires.gob.ar o a través de una ONG.\nMapa de estrellas amarillas: https://buenosaires.gob.ar/informes-estadisticos-y-mapas/mapa-de-es-\ntrellas-amarillas-en-la-ciudad\n",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 192,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-192.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-192-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.184,
-            "y": 0.144,
-            "width": 0.632,
-            "height": 0.727
+            "x": 0.279,
+            "y": 0.309,
+            "width": 0.472,
+            "height": 0.4619
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.75
@@ -92540,13 +93535,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-192-sign-grid",
+          "id": "page-192-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-192.jpg"
         },
@@ -92594,10 +93589,10 @@
           "order": 2,
           "textRu": "Знак «Желтая звезда» означает, что в месте, где он установлен, была погибшая жертва дорожного инцидента. Его цель - помнить жертву и служить тревожным сигналом, призывом осознать количество погибших, то есть предотвратимых смертей.",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.285,
+            "y": 0.315,
+            "width": 0.46,
+            "height": 0.0764
           },
           "typography": {
             "role": "flow",
@@ -92619,10 +93614,10 @@
           "order": 3,
           "textRu": "Пять лучей каждой звезды представляют ценности: Память, Предотвращение, Закон, Справедливость и Образование. На каждой звезде указаны имя или прозвище и возраст жертвы с надписью: «В память о жертве дорожного движения».",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.285,
+            "y": 0.3974,
+            "width": 0.46,
+            "height": 0.0764
           },
           "typography": {
             "role": "flow",
@@ -92644,10 +93639,10 @@
           "order": 4,
           "textRu": "Кроме поддержки инициатив разных НКО по установке Желтых звезд на общественной дороге, существует интерактивная карта, которая указывает место гибели жертвы. На ней опубликованы и другие данные: имя и фамилия, возраст, дата рождения и смерти.",
           "bounds": {
-            "x": 0.19,
-            "y": 0.665,
-            "width": 0.62,
-            "height": 0.0501
+            "x": 0.285,
+            "y": 0.4798,
+            "width": 0.46,
+            "height": 0.0764
           },
           "typography": {
             "role": "flow",
@@ -92669,10 +93664,10 @@
           "order": 5,
           "textRu": "Цель - пробудить сильную педагогическую ценность и внести вклад в построение коллективной памяти всего общества, которое видит и переживает социальную драму, которой сегодня является дорожная аварийность.",
           "bounds": {
-            "x": 0.19,
-            "y": 0.7211,
-            "width": 0.62,
-            "height": 0.0455
+            "x": 0.285,
+            "y": 0.5622,
+            "width": 0.46,
+            "height": 0.0668
           },
           "typography": {
             "role": "flow",
@@ -92694,10 +93689,10 @@
           "order": 6,
           "textRu": "Желтую звезду могут бесплатно запросить родственники жертвы дорожного движения по адресу estrellasamarillas@buenosaires.gob.ar или через НКО.",
           "bounds": {
-            "x": 0.19,
-            "y": 0.7726,
-            "width": 0.62,
-            "height": 0.0455
+            "x": 0.285,
+            "y": 0.635,
+            "width": 0.46,
+            "height": 0.0668
           },
           "typography": {
             "role": "flow",
@@ -92719,10 +93714,10 @@
           "order": 7,
           "textRu": "Карта желтых звезд: https://buenosaires.gob.ar/informes-estadisticos-y-mapas/mapa-de-es-trellas-amarillas-en-la-ciudad",
           "bounds": {
-            "x": 0.19,
-            "y": 0.8241,
-            "width": 0.62,
-            "height": 0.0409
+            "x": 0.285,
+            "y": 0.7078,
+            "width": 0.46,
+            "height": 0.0571
           },
           "typography": {
             "role": "flow",
@@ -92766,62 +93761,214 @@
       },
       "masks": [
         {
-          "id": "page-193-mask-01",
+          "id": "page-193-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
         },
         {
-          "id": "page-193-mask-02",
+          "id": "page-193-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Transitorias",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
         },
         {
-          "id": "page-193-mask-03",
+          "id": "page-193-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.306,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Viales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
         },
         {
-          "id": "page-193-mask-04",
+          "id": "page-193-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.136
+            "x": 0.292,
+            "y": 0.675,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Peatonales y de ciclovías",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.425,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.486,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.548,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.608,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
+        },
+        {
+          "id": "page-193-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.735,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 193,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-193-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.512,
+            "height": 0.441
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -92829,13 +93976,24 @@
       ],
       "visualRegions": [
         {
-          "id": "page-193-sign-grid",
+          "id": "page-193-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.31
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+        },
+        {
+          "id": "page-193-sign-grid-2",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.71,
+            "width": 0.12,
+            "height": 0.07
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
         },
@@ -92883,10 +94041,10 @@
           "order": 2,
           "textRu": "Временные",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -92908,10 +94066,10 @@
           "order": 3,
           "textRu": "Дорожные",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.42,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -92933,10 +94091,10 @@
           "order": 4,
           "textRu": "Пешеходные и для велодорожек",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.13
+            "x": 0.292,
+            "y": 0.675,
+            "width": 0.5,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -92980,62 +94138,194 @@
       },
       "masks": [
         {
-          "id": "page-194-mask-01",
+          "id": "page-194-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
         },
         {
-          "id": "page-194-mask-02",
+          "id": "page-194-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Peatonales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
         },
         {
-          "id": "page-194-mask-03",
+          "id": "page-194-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.445,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "De ciclovías",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
         },
         {
-          "id": "page-194-mask-04",
+          "id": "page-194-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.136
+            "x": 0.292,
+            "y": 0.64,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Otros dispositivos",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
+        },
+        {
+          "id": "page-194-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
+        },
+        {
+          "id": "page-194-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.49,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
+        },
+        {
+          "id": "page-194-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.558,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
+        },
+        {
+          "id": "page-194-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.692,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
+        },
+        {
+          "id": "page-194-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.755,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 194,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-194-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.432,
+            "height": 0.406
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -93043,13 +94333,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-194-sign-grid",
+          "id": "page-194-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
         },
@@ -93097,10 +94387,10 @@
           "order": 2,
           "textRu": "Пешеходные",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93122,10 +94412,10 @@
           "order": 3,
           "textRu": "Для велодорожек",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.445,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93147,10 +94437,10 @@
           "order": 4,
           "textRu": "Другие устройства",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.13
+            "x": 0.292,
+            "y": 0.64,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93194,62 +94484,194 @@
       },
       "masks": [
         {
-          "id": "page-195-mask-01",
+          "id": "page-195-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
         },
         {
-          "id": "page-195-mask-02",
+          "id": "page-195-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Marcas longitudinales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
         },
         {
-          "id": "page-195-mask-03",
+          "id": "page-195-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.306,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Horizontales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
         },
         {
-          "id": "page-195-mask-04",
+          "id": "page-195-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.136
+            "x": 0.292,
+            "y": 0.614,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Marcas transversales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
+        },
+        {
+          "id": "page-195-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
+        },
+        {
+          "id": "page-195-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
+        },
+        {
+          "id": "page-195-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.49,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
+        },
+        {
+          "id": "page-195-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.675,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
+        },
+        {
+          "id": "page-195-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.735,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 195,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-195-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.492,
+            "height": 0.377
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -93257,13 +94679,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-195-sign-grid",
+          "id": "page-195-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
         },
@@ -93311,10 +94733,10 @@
           "order": 2,
           "textRu": "Продольная разметка",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.48,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -93336,10 +94758,10 @@
           "order": 3,
           "textRu": "Горизонтальная",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.48,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -93361,10 +94783,10 @@
           "order": 4,
           "textRu": "Поперечная разметка",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.13
+            "x": 0.292,
+            "y": 0.614,
+            "width": 0.48,
+            "height": 0.03
           },
           "typography": {
             "role": "prominent",
@@ -93408,38 +94830,174 @@
       },
       "masks": [
         {
-          "id": "page-196-mask-01",
+          "id": "page-196-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
         },
         {
-          "id": "page-196-mask-02",
+          "id": "page-196-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.096
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.45,
+            "height": 0.036
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Marcas especiales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.365,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.43,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.495,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-4",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.56,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-5",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.625,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
+        },
+        {
+          "id": "page-196-source-sign-caption-strip-6",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.327,
+            "y": 0.69,
+            "width": 0.375,
+            "height": 0.032
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 196,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-196-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.102
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.432,
+            "height": 0.045
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -93447,13 +95005,13 @@
       ],
       "visualRegions": [
         {
-          "id": "page-196-sign-grid",
+          "id": "page-196-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
         },
@@ -93501,10 +95059,10 @@
           "order": 2,
           "textRu": "Специальная разметка",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.09
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93548,74 +95106,225 @@
       },
       "masks": [
         {
-          "id": "page-197-mask-01",
+          "id": "page-197-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
         },
         {
-          "id": "page-197-mask-02",
+          "id": "page-197-source-heading-1",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.5,
+            "height": 0.033
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Señalamiento luminoso",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
         },
         {
-          "id": "page-197-mask-03",
+          "id": "page-197-source-heading-2",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1955,
-            "width": 0.608,
-            "height": 0.0475
+            "x": 0.292,
+            "y": 0.306,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Significado de las luces",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
         },
         {
-          "id": "page-197-mask-04",
+          "id": "page-197-source-heading-3",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.068
+            "x": 0.292,
+            "y": 0.536,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Disposición de unidades ópticas",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
         },
         {
-          "id": "page-197-mask-05",
+          "id": "page-197-source-heading-4",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.755,
-            "width": 0.528,
-            "height": 0.068
+            "x": 0.292,
+            "y": 0.615,
+            "width": 0.5,
+            "height": 0.028
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Semáforos especiales",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
+        },
+        {
+          "id": "page-197-source-traffic-light-explanatory-text",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "instructional-text",
+          "sourceGeometry": "source_page_text_region",
+          "bounds": {
+            "x": 0.35,
+            "y": 0.333,
+            "width": 0.24,
+            "height": 0.095
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish traffic-light explanatory text visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
+        },
+        {
+          "id": "page-197-source-special-traffic-light-captions",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "instructional-text",
+          "sourceGeometry": "source_page_text_region",
+          "bounds": {
+            "x": 0.38,
+            "y": 0.665,
+            "width": 0.32,
+            "height": 0.21
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish special traffic-light captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
+        },
+        {
+          "id": "page-197-source-sign-caption-strip-1",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.35,
+            "y": 0.347,
+            "width": 0.37,
+            "height": 0.058
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
+        },
+        {
+          "id": "page-197-source-sign-caption-strip-2",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.35,
+            "y": 0.705,
+            "width": 0.37,
+            "height": 0.058
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
+        },
+        {
+          "id": "page-197-source-sign-caption-strip-3",
+          "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "sign-caption",
+          "sourceGeometry": "source_page_caption_region",
+          "bounds": {
+            "x": 0.35,
+            "y": 0.842,
+            "width": 0.37,
+            "height": 0.058
+          },
+          "fill": "#fffdf8",
+          "opacity": 1,
+          "sourceTextEs": "Spanish sign captions visible in the source page image",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 197,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-197-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.286,
+            "y": 0.273,
+            "width": 0.492,
+            "height": 0.302
+          },
+          "fit": "absolute-positioned-blocks",
+          "fontScale": 0.92
+        },
+        {
+          "id": "page-197-visual-heavy-text-zone-2",
+          "bounds": {
+            "x": 0.366,
+            "y": 0.609,
+            "width": 0.432,
+            "height": 0.045
           },
           "fit": "absolute-positioned-blocks",
           "fontScale": 0.92
@@ -93623,13 +95332,24 @@
       ],
       "visualRegions": [
         {
-          "id": "page-197-sign-grid",
+          "id": "page-197-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.31,
+            "y": 0.335,
+            "width": 0.43,
+            "height": 0.18
+          },
+          "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+        },
+        {
+          "id": "page-197-sign-grid-2",
+          "type": "signs-diagrams-icons",
+          "bounds": {
+            "x": 0.31,
+            "y": 0.575,
+            "width": 0.43,
+            "height": 0.31
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
         },
@@ -93677,10 +95397,10 @@
           "order": 2,
           "textRu": "Значение огней",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.31,
+            "width": 0.48,
+            "height": 0.024
           },
           "typography": {
             "role": "prominent",
@@ -93702,10 +95422,10 @@
           "order": 3,
           "textRu": "Световая сигнализация",
           "bounds": {
-            "x": 0.2,
-            "y": 0.1985,
-            "width": 0.6,
-            "height": 0.0415
+            "x": 0.292,
+            "y": 0.279,
+            "width": 0.48,
+            "height": 0.026
           },
           "typography": {
             "role": "prominent",
@@ -93727,10 +95447,10 @@
           "order": 4,
           "textRu": "Расположение оптических блоков",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.062
+            "x": 0.292,
+            "y": 0.536,
+            "width": 0.48,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93752,10 +95472,10 @@
           "order": 5,
           "textRu": "Специальные светофоры",
           "bounds": {
-            "x": 0.24,
-            "y": 0.758,
-            "width": 0.52,
-            "height": 0.062
+            "x": 0.372,
+            "y": 0.615,
+            "width": 0.42,
+            "height": 0.033
           },
           "typography": {
             "role": "prominent",
@@ -93799,76 +95519,119 @@
       },
       "masks": [
         {
-          "id": "page-198-mask-01",
+          "id": "page-198-source-printed-page-number",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "page-number",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.133,
-            "y": 0.0715,
-            "width": 0.056,
-            "height": 0.026
+            "x": 0.263,
+            "y": 0.872,
+            "width": 0.035,
+            "height": 0.017
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 0.995,
+          "sourceTextEs": "Printed page number",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 198,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
+          }
         },
         {
-          "id": "page-198-mask-02",
+          "id": "page-198-source-closing-instructional-text",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "instructional-text",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.147,
-            "width": 0.608,
-            "height": 0.0507
+            "x": 0.265,
+            "y": 0.285,
+            "width": 0.47,
+            "height": 0.17
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 1,
+          "sourceTextEs": "197\nLas señales de tránsito, a través\nde su color, tamaño y posición,\nhacen más ágil, segura y eficiente\nla movilidad.\n\n198\n\n199\n",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 198,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
+          }
         },
         {
-          "id": "page-198-mask-03",
+          "id": "page-198-source-closing-source-number-198",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.196,
-            "y": 0.1987,
-            "width": 0.608,
-            "height": 0.0443
+            "x": 0.34,
+            "y": 0.53,
+            "width": 0.075,
+            "height": 0.055
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 1,
+          "sourceTextEs": "198",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 198,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
+          }
         },
         {
-          "id": "page-198-mask-04",
+          "id": "page-198-source-closing-source-number-199",
           "purpose": "replace_visible_source_text_with_russian_layout",
+          "role": "source-heading",
+          "sourceGeometry": "source_page_text_region",
           "bounds": {
-            "x": 0.236,
-            "y": 0.687,
-            "width": 0.528,
-            "height": 0.136
+            "x": 0.58,
+            "y": 0.53,
+            "width": 0.075,
+            "height": 0.055
           },
           "fill": "#fffdf8",
-          "opacity": 0.94
+          "opacity": 1,
+          "sourceTextEs": "199",
+          "provenance": {
+            "method": "curated_source_page_geometry",
+            "sourcePageNumber": 198,
+            "visualAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
+          }
         }
       ],
       "textRegions": [
         {
           "id": "page-198-visual-heavy-text-zone-1",
           "bounds": {
-            "x": 0.194,
-            "y": 0.144,
-            "width": 0.612,
-            "height": 0.682
+            "x": 0.259,
+            "y": 0.279,
+            "width": 0.482,
+            "height": 0.312
           },
           "fit": "absolute-positioned-blocks",
-          "fontScale": 0.863
+          "fontScale": 0.835
+        },
+        {
+          "id": "page-198-visual-heavy-text-zone-2",
+          "bounds": {
+            "x": 0.574,
+            "y": 0.524,
+            "width": 0.087,
+            "height": 0.067
+          },
+          "fit": "absolute-positioned-blocks",
+          "fontScale": 0.92
         }
       ],
       "visualRegions": [
         {
-          "id": "page-198-sign-grid",
+          "id": "page-198-sign-grid-1",
           "type": "signs-diagrams-icons",
           "bounds": {
-            "x": 0.115,
-            "y": 0.255,
-            "width": 0.77,
-            "height": 0.37
+            "x": 0.327,
+            "y": 0.335,
+            "width": 0.375,
+            "height": 0.4
           },
           "preservedFrom": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
         },
@@ -93916,10 +95679,10 @@
           "order": 2,
           "textRu": "Дорожные знаки и сигналы через свой цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной.",
           "bounds": {
-            "x": 0.2,
-            "y": 0.15,
-            "width": 0.6,
-            "height": 0.0447
+            "x": 0.265,
+            "y": 0.285,
+            "width": 0.47,
+            "height": 0.17
           },
           "typography": {
             "role": "flow",
@@ -93941,10 +95704,10 @@
           "order": 3,
           "textRu": "198",
           "bounds": {
-            "x": 0.2,
-            "y": 0.2017,
-            "width": 0.6,
-            "height": 0.0383
+            "x": 0.34,
+            "y": 0.53,
+            "width": 0.075,
+            "height": 0.055
           },
           "typography": {
             "role": "prominent",
@@ -93966,10 +95729,10 @@
           "order": 4,
           "textRu": "199",
           "bounds": {
-            "x": 0.24,
-            "y": 0.69,
-            "width": 0.52,
-            "height": 0.13
+            "x": 0.58,
+            "y": 0.53,
+            "width": 0.075,
+            "height": 0.055
           },
           "typography": {
             "role": "prominent",

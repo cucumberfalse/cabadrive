@@ -22,7 +22,7 @@ The layout manifest should be lazy-loaded with the manual view and should define
 - Document/canvas metadata.
 - One layout record per page.
 - Page visual base reference.
-- Masks for visible Spanish text regions.
+- Masks for visible Spanish text and caption regions, using source-region geometry rather than destination Russian block geometry.
 - Ordered Russian text blocks with page-relative positions.
 - Visual-only regions that preserve original images, diagrams, tables, and icons.
 - Per-block provenance and fit strategy.
@@ -72,9 +72,12 @@ Validation should cover:
 - Ordered text from layout blocks reconstructs `translation.fullTranslationRu` for the page after documented whitespace normalization.
 - Required block types cover headings, body text, lists, captions, tables, callouts, footnotes, labels, and page numbers where present.
 - Mask and text block bounds are within the page canvas.
+- Mask geometry is source-text/source-caption geometry or a structured/precomposed Russian replacement region. Validators must fail when masks are derived only from destination Russian block bounds while Spanish headings/captions remain visible in the visual base.
+- Appendix IV visual-heavy pages require explicit mask/coverage checks, including page `185`, so sign headings and captions from the Spanish source image are not visible in the primary Russian reader.
 - Text blocks do not use placeholder strings, summary markers, or intentionally untranslated Spanish body text.
 - Navigation ranges cover the full document, are ordered, and include the top-level source-index entries.
 - Runtime source scan still blocks PDF viewer/runtime PDF rendering/remote/manual network/backend/live-AI patterns.
+- TypeScript strictness is verified with `pnpm exec tsc --noEmit` if available in this repo, or through the equivalent local preflight/build type-check command if standalone `tsc` is not wired.
 
 ### 6. Testing
 
@@ -84,11 +87,13 @@ Update Playwright tests for:
 
 - Primary `Руководство 4R` page opens and renders the Russian layout page.
 - Representative first, index, infographic/image-heavy, table/list, pages `114`-`123`, Appendix IV, and final pages render from local assets.
+- Page `185` and representative Appendix IV sign pages prove source Spanish headings/captions are masked or replaced in the primary Russian canvas using visual/pixel/text coverage, not merely covered by newly placed Russian labels.
 - The old side-by-side `.manual-visual` plus `.manual-translation` primary layout is absent.
 - Semantic navigation opens named sections/topics and updates the page.
 - Search results are grouped/labeled by semantic section.
 - Mobile navigation and secondary page list rows do not overlap. Use bounding-box assertions, not only text visibility.
 - No external/manual PDF/backend/live-AI requests occur.
+- Type-check verification covers nested handler narrowing, including the manual navigation manifest path, so `navigation` is narrowed/captured before handler functions use it.
 
 Keep existing tests for deferred manual loading and service-worker manual asset exclusions, updating selectors as needed.
 

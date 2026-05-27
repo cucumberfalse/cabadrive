@@ -1519,6 +1519,10 @@ function ManualRussianPageCanvas({
         <div
           key={mask.id}
           className="manual-source-mask"
+          data-testid="manual-source-mask"
+          data-mask-id={mask.id}
+          data-mask-role={mask.role}
+          data-source-geometry={mask.sourceGeometry}
           style={{ ...manualBoundsStyle(mask.bounds), backgroundColor: mask.fill, opacity: mask.opacity }}
           aria-hidden="true"
         />
@@ -1641,11 +1645,12 @@ function Manual4RuedasView() {
       </section>
     );
   }
+  const manualNavigation = navigation;
 
   function selectManualPage(pageNumber: number, options: { entryId?: string; preserveCurrentEntry?: boolean } = {}) {
     const requestedEntry = options.entryId ? navigationEntryById.get(options.entryId) : undefined;
     const currentEntry = options.preserveCurrentEntry && selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
-    const destinationEntry = manualNavigationEntryForDestinationPage(navigation.entries, pageNumber, { requestedEntry, currentEntry });
+    const destinationEntry = manualNavigationEntryForDestinationPage(manualNavigation.entries, pageNumber, { requestedEntry, currentEntry });
     setSelectedPageNumber(pageNumber);
     setSelectedNavigationEntryId(destinationEntry?.id);
     setImageLoadFailedPage(undefined);
@@ -1705,7 +1710,7 @@ function Manual4RuedasView() {
             />
           </label>
           <div className="source-results-summary" aria-live="polite">
-            {query ? `Найдено: ${matchingPages.length} страниц` : `${navigation.entries.length} разделов из индекса manual`}
+            {query ? `Найдено: ${matchingPages.length} страниц` : `${manualNavigation.entries.length} разделов из индекса manual`}
           </div>
 
           {query && matchingPages.length ? (
@@ -1734,7 +1739,7 @@ function Manual4RuedasView() {
           ) : (
             <>
               <nav className="manual-toc" aria-label="Структура документа manual">
-                {navigation.entries.map((entry) => (
+                {manualNavigation.entries.map((entry) => (
                   <section key={entry.id} className="manual-toc-section">
                     <button
                       type="button"

@@ -154,7 +154,7 @@ test("manual 4 ruedas previous-next transition prefers exact-start destination b
   assert.notEqual(exactStartIndex, -1);
   assert.notEqual(currentCoverIndex, -1);
   assert.ok(exactStartIndex < currentCoverIndex);
-  assert.match(selectSource, /manualNavigationEntryForDestinationPage\(navigation\.entries, pageNumber, \{ requestedEntry, currentEntry \}\)/);
+  assert.match(selectSource, /manualNavigationEntryForDestinationPage\(manualNavigation\.entries, pageNumber, \{ requestedEntry, currentEntry \}\)/);
   assert.equal(pageNumberIsCoveredByEntry(93, sleepFatigue), true);
   assert.equal(pageNumberIsCoveredByEntry(94, sleepFatigue), true);
   assert.equal(sleepFatigue.startPage, 93);
@@ -208,6 +208,30 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.ok(page114.blocks.some((block) => block.bounds.x > 0.5), "page 114 uses a second column instead of one transcript rail");
   assert.ok(new Set(page114.blocks.map((block) => `${block.bounds.x}:${block.bounds.y}:${block.bounds.width}:${block.bounds.height}`)).size > page114.blocks.length * 0.8);
   assert.equal(page114.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+
+  const page185 = layout.pages[184];
+  assert.ok(page185.masks.some((mask) => mask.role === "source-heading" && mask.sourceTextEs === "Reglamentarias"));
+  assert.ok(page185.masks.some((mask) => mask.role === "source-heading" && mask.sourceTextEs === "De prohibición"));
+  assert.ok(page185.masks.filter((mask) => mask.role === "sign-caption").length >= 5);
+  assert.ok(page185.masks.every((mask) => mask.sourceGeometry === "source_page_text_region" || mask.sourceGeometry === "source_page_caption_region"));
+  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.35 && mask.bounds.y < 0.39));
+  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.52 && mask.bounds.y < 0.55));
+  assert.ok(page185.masks.some((mask) => mask.role === "sign-caption" && mask.bounds.y > 0.67 && mask.bounds.y < 0.7));
+  assert.equal(page185.blocks.find((block) => block.textRu === "Регулирующие").bounds.y, 0.279);
+  assert.equal(page185.blocks.find((block) => block.textRu === "Запрещающие").bounds.y, 0.31);
+
+  for (const pageNumber of [186, 187, 193, 197]) {
+    const appendixPage = layout.pages[pageNumber - 1];
+    assert.ok(appendixPage.masks.some((mask) => mask.role === "source-heading"), `page ${pageNumber} masks source headings`);
+    assert.ok(
+      appendixPage.masks.some((mask) => mask.role === "sign-caption" || mask.role === "instructional-text"),
+      `page ${pageNumber} masks source captions/instructional labels`
+    );
+    assert.ok(
+      appendixPage.masks.every((mask) => mask.provenance?.method === "curated_source_page_geometry"),
+      `page ${pageNumber} masks record curated source geometry provenance`
+    );
+  }
 
   assert.equal(navigation.schema, "cabadrive-manual-navigation-ru.v1");
   assert.equal(navigation.entries.length, 11);
@@ -332,4 +356,24 @@ test("manual 4 ruedas validator rejects generic flow geometry and full-page visu
   assert.ok(result.errors.some((error) => error.includes("one broad source-text mask")));
   assert.ok(result.errors.some((error) => error.includes("one full-page catch-all region")));
   assert.ok(result.errors.some((error) => error.includes("typography.fit must be absolute-fit")));
+});
+
+test("manual 4 ruedas validator rejects Appendix IV masks derived from Russian destination blocks", async () => {
+  const badLayout = clone(layout);
+  const page = badLayout.pages[184];
+  page.masks = page.blocks.map((block) => ({
+    id: `bad-mask-${block.order}`,
+    purpose: "replace_visible_source_text_with_russian_layout",
+    role: "russian-block-replacement",
+    sourceGeometry: "russian_block_replacement_region",
+    bounds: block.bounds,
+    fill: "#fffdf8",
+    opacity: 0.985
+  }));
+
+  const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
+
+  assert.ok(result.errors.some((error) => error.includes("Appendix IV masks must be based on source text/caption geometry")));
+  assert.ok(result.errors.some((error) => error.includes("missing source-heading mask over source Reglamentarias heading")));
+  assert.ok(result.errors.some((error) => error.includes("missing sign-caption mask over source first-row sign caption")));
 });

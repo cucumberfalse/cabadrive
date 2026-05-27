@@ -25,6 +25,8 @@
 - `[x]` For every page, record canvas dimensions/aspect ratio tied to the existing local page asset dimensions.
 - `[x]` For every page, record the local visual base asset or generated local visual layer used to preserve images/diagrams/tables/icons.
 - `[x]` For every page with visible source text, record masks or equivalent replacement regions so Spanish source text is not the primary visible instructional layer. Follow-up completed: masks are generated per text block rather than as one broad generic flow mask.
+- `[x]` Current-head follow-up for review comment `3308548477`: replace any destination-Russian-block-derived masking on Appendix IV/sign/visual-heavy pages with source-text/source-caption masking or structured/precomposed Russian replacements that remove visible Spanish source text from the underlying page image.
+- `[x]` Current-head follow-up for review comment `3308548477`: explicitly verify page `185` plus representative Appendix IV sign pages so Spanish headings, sign captions, and instructional labels are not visible in the primary Russian manual canvas.
 - `[x]` Segment each page's exact Russian translation into ordered layout blocks with stable IDs, block type, per-block bounding box, reading order, typography/fit metadata, and provenance. Follow-up completed: bounds are assigned per block from page-kind, heading/list/table/caption roles, one/two-column structure, and visual-heavy page structure rather than from one uniform splitter.
 - `[x]` Record visual-only regions for images, diagrams, tables, icons, and decorative/page-composition elements that remain from the local visual base. Follow-up completed: visual regions record page-specific section art bands, sign grids, gutters, margins, and footer/page-chrome regions instead of one full-page catch-all.
 - `[x]` Record page-level coverage metadata proving the ordered Russian blocks reconstruct the full existing exact translation for that page and that the recorded per-block geometry is the geometry used at runtime.
@@ -54,6 +56,7 @@
 - `[x]` Ensure long Russian text wraps, fits, or scales according to block metadata without overlapping neighboring blocks. Follow-up completed: per-block typography metadata drives container-relative font scale/line height and Playwright checks block overflow/overlap on representative pages.
 - `[x]` Preserve deferred manual loading so layout/navigation/manual corpus data do not enter the non-manual startup bundle.
 - `[x]` Preserve service-worker install-precache exclusions for the heavy manual corpus chunk and 200 manual page images, with on-demand runtime caching still available after manual access.
+- `[x]` Current-head follow-up for review comment `3308577851`: capture or otherwise narrow the validated manual navigation manifest before nested handler functions use it, so TypeScript no longer sees `navigation` as `ManualNavigationManifest | undefined`.
 
 ### Mobile UI Fixes
 
@@ -69,6 +72,7 @@
 - `[x]` Extend `pnpm run validate:manual-4ruedas` to validate the layout manifest, navigation manifest, and existing feature `027` source/translation/asset checks.
 - `[x]` Add validator checks that ordered page layout records cover pages 1-200 exactly once.
 - `[x]` Add validator checks that every page layout references existing local assets and has in-bounds, non-generic block/mask/visual-region coordinates tied to real page structure.
+- `[x]` Add validator, visual, pixel, and/or text-coverage checks that fail when masks cover only placed Russian block bounds while source Spanish text/caption regions remain visible, with explicit coverage for page `185` and representative Appendix IV pages.
 - `[x]` Add validator checks that ordered Russian text blocks reconstruct each page's `translation.fullTranslationRu` after documented whitespace normalization.
 - `[x]` Add validator checks that top-level navigation includes source-index entries for `Введение`, chapters 1-5, appendices I-IV, and covers the full page range without gaps.
 - `[x]` Add validator or tests that fail if manual runtime code reintroduces iframe/embed/object PDF display, PDF.js-style runtime rendering, remote manual assets, runtime fetches, backend endpoints, or live-AI calls.
@@ -82,6 +86,7 @@
 - `[x]` Add Playwright user-visible coverage for the same transition: select page `93` without a topic-specific click, press next, and assert page `94` shows/highlights `Стресс` / `ch4-stress` rather than `Сон и усталость` / `ch4-sleep-fatigue`.
 - `[x]` Add mobile readability regression coverage that fails when primary Russian instructional blocks compute to unusably tiny font sizes, even if geometric no-overlap assertions pass.
 - `[x]` Preserve or update existing deferred-manual-loading and service-worker tests.
+- `[x]` Run and record `pnpm exec tsc --noEmit` after the navigation-narrowing follow-up, or record the equivalent strict TypeScript check used by repository preflight/build if standalone `tsc` is unavailable.
 - `[x]` Run and record `pnpm run validate:manual-4ruedas` after the current-head navigation/readability follow-up.
 - `[x]` Run and record focused Node tests after the current-head navigation/readability follow-up.
 - `[x]` Run and record focused Playwright tests after the current-head navigation/readability follow-up.
@@ -134,7 +139,7 @@
 
 ## Known Issues
 
-- No implementation-known product issues remain after the previous/next preserved-entry exact-start follow-up. Review Agent and Orchestrator verification remain pending.
+- No implementation-known product issues remain after the Appendix IV source-mask and TypeScript navigation-narrowing follow-up. Review Agent and Orchestrator verification remain pending.
 
 ## Implementation Agent Feedback
 
@@ -189,6 +194,17 @@
 - Previous/next preserved-entry focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including selecting page `93` from secondary page access, pressing `Следующая`, and verifying page `94` labels/highlights `Стресс` / `ch4-stress` rather than `Сон и усталость` / `ch4-sleep-fatigue`.
 - Previous/next preserved-entry whitespace check passed: `git diff --check`.
 - Previous/next preserved-entry full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 291/291 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Appendix IV source-mask follow-up replaces visual-heavy page masks with curated source-page heading/caption/instructional-text regions rather than destination Russian block bounds. `layout.ru.json` now records source-geometry mask metadata for page `185` and representative Appendix IV sign pages including `186`, `187`, `193`, and `197`; visual-heavy Russian labels are repositioned over the source heading geometry and sign visual regions exclude the heading text bands.
+- Appendix IV validator coverage now fails when page `185` masks are derived from Russian block bounds instead of source text/caption regions, and checks required source-heading/sign-caption/instructional-text coverage points on page `185` plus representative Appendix IV pages.
+- Runtime source-mask regression coverage exposes mask metadata on `.manual-source-mask` elements and Playwright asserts page `185`, page `186`, and page `193` have source-geometry masks over Spanish heading/caption coordinates while the primary Russian layer does not contain Spanish headings such as `Reglamentarias` / `De prohibición`.
+- TypeScript navigation-narrowing follow-up captures the validated `navigation` as `manualNavigation` before nested handlers use it; `selectManualPage` and the rendered TOC read from that narrowed value.
+- Appendix IV/type follow-up validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Appendix IV/type follow-up focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 13/13 tests passed.
+- Appendix IV/type follow-up strict TypeScript check passed: `pnpm exec tsc --noEmit`.
+- Appendix IV/type follow-up production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Appendix IV/type follow-up focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including page `185` source masks and representative Appendix IV pages.
+- Appendix IV/type follow-up whitespace check passed: `git diff --check`.
+- Appendix IV/type follow-up full preflight was attempted twice. Both runs passed feature-memory, repository baseline, content validation, 292/292 Node tests, production builds, and 56/58 full Playwright tests, then hit Playwright timeout flakes outside the changed manual assertions (`primary source` timing/focus checks on the first run; `non-manual startup` and mobile manual row click timing on the second run). Each failed test was rerun directly and passed: first rerun `pnpm exec playwright test tests/e2e/app.spec.ts:1044 tests/e2e/app.spec.ts:1078 --project=chromium --project=mobile` -> 4/4 passed; second rerun `pnpm exec playwright test tests/e2e/app.spec.ts:925 tests/e2e/app.spec.ts:970 --project=chromium --project=mobile` -> 4/4 passed. No implementation-known product issue remains.
 
 ## Architect Disposition Of Review Findings
 
@@ -199,9 +215,17 @@
 - `PRRT_kwDOSX65IM6E_c4t` (`src/styles.css:860`, review `4369317292`, comment `3308368614`, current head `ed03406c731e0580145e9f14452153602514ee87`): accepted as P3 advisory severity but completion-blocking follow-up for this corrective cycle. The user explicitly reported the manual surface as smeared/unusable, and no-overlap checks alone are insufficient if default mobile rendering allows Russian instructional text to clamp to about `3.2px`. Implementation Agent must improve the mobile page readability model with a practical minimum rendered text size and/or default zoom/fit behavior, and tests must measure readability instead of only geometry.
 - `PRRT_kwDOSX65IM6E_q3_` (`src/App.tsx:1422`, current review head `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c`): accepted as blocking P2 implementation follow-up. The corrected Chapter 4 ranges created an overlapping-page case where `ch4-sleep-fatigue` covers pages `93-94` and `ch4-stress` starts on page `94`; page-only fallback currently chooses the first covering child and can label/highlight page `94` as `Сон и усталость` instead of `Стресс`. Implementation Agent must update semantic-entry lookup so exact `startPage === pageNumber` child matches are preferred before range-covering fallbacks whenever no preserved entry ID is available.
 - Comment `3308499475` / review `4369468027` (`src/App.tsx:1638`, current review head `6f6b452e694a628053ab50fcdb731bf8a802f67b`): accepted as blocking P2 implementation follow-up. The previous exact-start fix still allows previous/next to preserve `ch4-sleep-fatigue` when moving from page-only-selected page `93` to page `94`; this violates the semantic navigation requirement because page `94` has a more specific exact-start topic, `ch4-stress` / `Стресс`. Implementation Agent must ensure previous/next destination resolution checks exact-start topics before preserving a covering current entry.
+- `PRRT_kwDOSX65IM6E_8qf` / comment `3308548477` (`scripts/content-manual-vehiculo-4ruedas.mjs:917`, current review head `42e2b919c081a4f2de51678f0b3467f5fe9357ec`): accepted as blocking P1 implementation follow-up. The current masking model violates the layout-preserving Russian-reader requirement on visual-heavy pages because masks are generated from destination Russian block bounds rather than original source text/caption geometry. Page `185` still shows Spanish headings and sign captions in the underlying page image, so the primary reader is not a Russian page. Implementation Agent must mask actual source text/caption regions or use precomposed/structured Russian replacement layers that remove visible Spanish source text from sign/visual-heavy pages, with explicit validation evidence for page `185` and representative Appendix IV pages.
+- `PRRT_kwDOSX65IM6FAB5C` / comment `3308577851` (`src/App.tsx:1648`, current review head `42e2b919c081a4f2de51678f0b3467f5fe9357ec`): accepted as blocking P2 implementation follow-up. The nested handler uses `navigation` while TypeScript still treats it as `ManualNavigationManifest | undefined`, so `pnpm exec tsc --noEmit` fails. Implementation Agent must capture or otherwise narrow the validated navigation value before defining/using the handler, and must record strict type-check evidence.
 
 ## Follow-Up Implementation Requirements
 
+- Source-text masking must be based on source visual geometry. It is not sufficient to reuse the bounds of placed Russian labels/blocks if Spanish text remains visible elsewhere in the base page image.
+- Appendix IV sign pages must receive special handling for dense visual layouts: sign-category headings, captions, labels, and nearby instructional Spanish text must be masked/replaced at their source positions while preserving the signs and non-text visuals.
+- Page `185` is a required regression target. Verification must include page `185` and representative Appendix IV pages using a validator plus visual/pixel/text evidence that the primary Russian reader contains no visible Spanish headings/captions from the source page image.
+- Structured/precomposed Russian replacements are acceptable instead of masks only if they are local static assets or manifest-driven layers, preserve the page's sign/visual structure, and are covered by the same validation evidence.
+- Navigation manifest narrowing must be explicit in the runtime source. Capture a validated `navigation`/`manualNavigation` local or use an equivalent type guard before nested handlers reference it; relying on an earlier render-path return is not enough for TypeScript.
+- Type-check verification must include `pnpm exec tsc --noEmit` if available. If the repository intentionally lacks standalone `tsc` wiring, record the equivalent strict TypeScript check command used by local preflight/build and its passing output.
 - Layout generation must stop treating `translation.fullTranslationRu` as a transcript to be evenly divided through one flow region. Each page must have a reviewable set of block bounds matching visible document structure: headings, body paragraphs, bullet/list items, table cells, captions, callouts, labels, footnotes, and page numbers.
 - Runtime rendering must apply `manualBoundsStyle(block.bounds)` or equivalent per block. Tests or static validation must fail if the renderer maps all blocks into one unpositioned parent flow or ignores `block.bounds`.
 - Manifest validation must fail when a page's text blocks are generated by uniform vertical splitting, when all or most text blocks share a single generic region without page-specific geometry, or when a text-bearing page declares only a full-page visual region instead of meaningful preserved visual/non-text regions.
@@ -230,14 +254,16 @@
 - Review Agent must verify layout/text validators fail on missing layout coverage, missing text coverage, stale navigation, or runtime PDF/network dependency regressions.
 - Review Agent must verify mobile no-overlap and readability evidence covers pages `114`-`123`, including computed-size evidence that primary Russian text is not tiny/smeared.
 - Review Agent must verify process memory and durable docs were updated.
+- Review Agent must verify page `185` and representative Appendix IV pages no longer show Spanish source headings/captions in the primary Russian reader.
+- Review Agent must verify strict TypeScript coverage passes, preferably `pnpm exec tsc --noEmit`, and that navigation is narrowed/captured before nested handler use.
 
 ## Cycle PR Set
 
-- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, reviewed head with the accepted previous/next preserved-entry exact-start P2 finding was `6f6b452e694a628053ab50fcdb731bf8a802f67b`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Historical reviewed heads include `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c` before the first exact-start semantic fallback follow-up, `ed03406c731e0580145e9f14452153602514ee87` before the Stress/mobile readability follow-up, `c9f82a422db76009e28e3fa8b9cc5592f7843438` before the same-page follow-up, and `5f9a61301bdf52dff1c3da6bbea265559447854b` before the accepted P1 layout follow-up. Included in final validation only after the previous/next follow-up is committed, pushed, and re-reviewed.
+- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head with the accepted Appendix IV source-mask P1 finding and TypeScript navigation-narrowing P2 finding is `42e2b919c081a4f2de51678f0b3467f5fe9357ec`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Historical reviewed heads include `6f6b452e694a628053ab50fcdb731bf8a802f67b` before the previous/next preserved-entry exact-start follow-up, `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c` before the first exact-start semantic fallback follow-up, `ed03406c731e0580145e9f14452153602514ee87` before the Stress/mobile readability follow-up, `c9f82a422db76009e28e3fa8b9cc5592f7843438` before the same-page follow-up, and `5f9a61301bdf52dff1c3da6bbea265559447854b` before the accepted P1 layout follow-up. Included in final validation only after the current source-mask and TypeScript follow-ups are implemented, committed, pushed, and re-reviewed.
 
 ## Final Validation Evidence
 
-- Current final-validation status: accepted P1 layout findings, accepted P2 same-page semantic topic identity finding, accepted P2 Stress navigation finding, accepted P3 mobile readability finding, accepted P2 exact-start semantic fallback finding `PRRT_kwDOSX65IM6E_q3_`, and accepted P2 previous/next preserved-entry exact-start comment `3308499475` / review `4369468027` have follow-up implementation evidence recorded above. Final validation remains pending Review Agent/Orchestrator routing.
+- Current final-validation status: accepted P1 layout findings, accepted P2 same-page semantic topic identity finding, accepted P2 Stress navigation finding, accepted P3 mobile readability finding, accepted P2 exact-start semantic fallback finding `PRRT_kwDOSX65IM6E_q3_`, and accepted P2 previous/next preserved-entry exact-start comment `3308499475` / review `4369468027` have follow-up implementation evidence recorded above. Current-head review findings `PRRT_kwDOSX65IM6E_8qf` / comment `3308548477` and `PRRT_kwDOSX65IM6FAB5C` / comment `3308577851` are accepted and pending Implementation Agent follow-up. Final validation remains blocked pending implementation evidence, re-review, and Orchestrator routing.
 - Architect return count: 0.
 - Limit escalation: none.
 - Effective content head: pending implementation.

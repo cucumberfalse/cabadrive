@@ -231,6 +231,47 @@ async function expectIndependentManualPageLayout(page: Page, pageNumber: number,
   }
 }
 
+async function expectAppendixIVSourceMasks(
+  page: Page,
+  pageNumber: number,
+  samples: Array<{ role: string; x: number; y: number; label: string }>
+) {
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+  await expect(page.getByTestId("manual-source-mask").first()).toBeVisible();
+  const result = await page.getByTestId("manual-page-canvas").evaluate((canvas, samplePoints) => {
+    const canvasRect = canvas.getBoundingClientRect();
+    return (samplePoints as Array<{ role: string; x: number; y: number; label: string }>).map((sample) => {
+      const point = {
+        x: canvasRect.x + sample.x * canvasRect.width,
+        y: canvasRect.y + sample.y * canvasRect.height
+      };
+      const masks = [...canvas.querySelectorAll(".manual-source-mask")].map((mask) => {
+        const rect = mask.getBoundingClientRect();
+        const style = window.getComputedStyle(mask);
+        return {
+          id: mask.getAttribute("data-mask-id"),
+          role: mask.getAttribute("data-mask-role"),
+          geometry: mask.getAttribute("data-source-geometry"),
+          background: style.backgroundColor,
+          opacity: Number.parseFloat(style.opacity),
+          coversPoint: point.x >= rect.x && point.x <= rect.right && point.y >= rect.y && point.y <= rect.bottom
+        };
+      });
+      return {
+        ...sample,
+        coveringMask: masks.find((mask) => mask.role === sample.role && mask.coversPoint)
+      };
+    });
+  }, samples);
+
+  for (const sample of result) {
+    expect(sample.coveringMask, `${sample.label} is covered by a source mask`).toBeTruthy();
+    expect(sample.coveringMask?.geometry, `${sample.label} uses source geometry`).toMatch(/^source_page_/);
+    expect(sample.coveringMask?.background, `${sample.label} mask uses page-colored fill`).toBe("rgb(255, 253, 248)");
+    expect(sample.coveringMask?.opacity, `${sample.label} mask is opaque enough`).toBeGreaterThanOrEqual(0.99);
+  }
+}
+
 async function expectReadableManualMobileBlocks(page: Page, pageNumber: number) {
   const blockBoxes = await renderedManualBoxes(page.getByTestId("manual-layout-block"));
   const instructionalBoxes = blockBoxes.filter((box) => box.type && !["pageNumber", "label", "footnote"].includes(box.type));
@@ -769,7 +810,31 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-page-detail")).toContainText("185 / 200");
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Запрещающие");
   await expectIndependentManualPageLayout(page, 185, 3);
+  await expectAppendixIVSourceMasks(page, 185, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 185 Spanish category heading" },
+    { role: "source-heading", x: 0.36, y: 0.315, label: "page 185 Spanish subheading" },
+    { role: "sign-caption", x: 0.36, y: 0.369, label: "page 185 first-row sign captions" },
+    { role: "sign-caption", x: 0.58, y: 0.536, label: "page 185 middle sign captions" }
+  ]);
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("Reglamentarias");
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("De prohibición");
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[184].visualAsset.localPath.replace(/\//g, "\\/")));
+
+  await page.getByRole("button", { name: /Следующая/ }).click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("186 / 200");
+  await expectAppendixIVSourceMasks(page, 186, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 186 Spanish heading" },
+    { role: "source-heading", x: 0.36, y: 0.533, label: "page 186 priority heading" },
+    { role: "sign-caption", x: 0.46, y: 0.409, label: "page 186 sign captions" }
+  ]);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app4-signs-temporary").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("193 / 200");
+  await expectAppendixIVSourceMasks(page, 193, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 193 Spanish heading" },
+    { role: "sign-caption", x: 0.46, y: 0.493, label: "page 193 temporary sign captions" }
+  ]);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-ch4-stress").scrollIntoViewIfNeeded();

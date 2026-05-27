@@ -880,8 +880,22 @@ function visualRegionsForPage(kind, page, positionedBlocks, usesTwoColumns) {
   const pageId = `page-${padPageNumber(page.pageNumber)}`;
   const preservedFrom = page.visualAsset.localPath;
   if (kind === "visual-heavy") {
+    const visualRegionBoundsByPage = new Map([
+      [185, [layoutBounds(0.327, 0.335, 0.375, 0.39)]],
+      [186, [layoutBounds(0.327, 0.315, 0.375, 0.19), layoutBounds(0.327, 0.565, 0.375, 0.09), layoutBounds(0.327, 0.735, 0.2, 0.07)]],
+      [187, [layoutBounds(0.327, 0.335, 0.375, 0.4)]],
+      [188, [layoutBounds(0.327, 0.335, 0.375, 0.11), layoutBounds(0.327, 0.51, 0.375, 0.08), layoutBounds(0.327, 0.64, 0.375, 0.08), layoutBounds(0.327, 0.765, 0.375, 0.07)]],
+      [193, [layoutBounds(0.327, 0.335, 0.375, 0.31), layoutBounds(0.327, 0.71, 0.12, 0.07)]],
+      [197, [layoutBounds(0.31, 0.335, 0.43, 0.18), layoutBounds(0.31, 0.575, 0.43, 0.31)]]
+    ]);
+    const regionBounds = visualRegionBoundsByPage.get(page.pageNumber) ?? [layoutBounds(0.327, 0.335, 0.375, 0.4)];
     return [
-      { id: `${pageId}-sign-grid`, type: "signs-diagrams-icons", bounds: layoutBounds(0.115, 0.255, 0.77, 0.37), preservedFrom },
+      ...regionBounds.map((bounds, index) => ({
+        id: `${pageId}-sign-grid-${index + 1}`,
+        type: "signs-diagrams-icons",
+        bounds,
+        preservedFrom
+      })),
       { id: `${pageId}-footer-composition`, type: "page-footer-branding", bounds: layoutBounds(0.17, 0.92, 0.66, 0.035), preservedFrom }
     ];
   }
@@ -910,13 +924,166 @@ function visualRegionsForPage(kind, page, positionedBlocks, usesTwoColumns) {
   ];
 }
 
+function sourceMask(page, slug, role, bounds, sourceTextEs, opacity = 0.995) {
+  return {
+    id: `page-${padPageNumber(page.pageNumber)}-source-${slug}`,
+    purpose: "replace_visible_source_text_with_russian_layout",
+    role,
+    sourceGeometry: role === "sign-caption" ? "source_page_caption_region" : "source_page_text_region",
+    bounds,
+    fill: "#fffdf8",
+    opacity,
+    sourceTextEs,
+    provenance: {
+      method: "curated_source_page_geometry",
+      sourcePageNumber: page.sourcePageNumber,
+      visualAssetPath: page.visualAsset.localPath
+    }
+  };
+}
+
+function appendixIVCaptionStripMasks(page, yValues, options = {}) {
+  const x = options.x ?? 0.327;
+  const width = options.width ?? 0.37;
+  const height = options.height ?? 0.027;
+  return yValues.map((y, index) =>
+    sourceMask(
+      page,
+      `sign-caption-strip-${index + 1}`,
+      "sign-caption",
+      layoutBounds(x, y, width, height),
+      "Spanish sign captions visible in the source page image",
+      1
+    )
+  );
+}
+
+function appendixIVSourceHeadingMasks(page, sourceLines, yValues, options = {}) {
+  const x = options.x ?? 0.29;
+  const width = options.width ?? 0.44;
+  return yValues.map((y, index) =>
+    sourceMask(
+      page,
+      `heading-${index + 1}`,
+      "source-heading",
+      layoutBounds(x, y, width, options.height ?? (index === 0 ? 0.033 : 0.028)),
+      sourceLines[index] ?? "Spanish heading visible in the source page image",
+      0.995
+    )
+  );
+}
+
+function appendixIVSourceTextMasksForPage(page) {
+  const sourceLines = String(page.translation.sourceTextEs || "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => !/^\d+$/u.test(line));
+
+  const pageNumberMask = sourceMask(
+    page,
+    "printed-page-number",
+    "page-number",
+    layoutBounds(0.263, 0.872, 0.035, 0.017),
+    "Printed page number",
+    0.995
+  );
+
+  const headingMasksByPage = new Map([
+    [185, appendixIVSourceHeadingMasks(page, ["Reglamentarias", "De prohibición"], [0.279, 0.306])],
+    [186, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.524, 0.694], { x: 0.292, width: 0.43 })],
+    [187, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.306], { x: 0.292, width: 0.49 })],
+    [188, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.476, 0.606, 0.734], { x: 0.292, width: 0.49 })],
+    [189, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.306], { x: 0.292, width: 0.45 })],
+    [190, appendixIVSourceHeadingMasks(page, sourceLines, [0.279], { x: 0.292, width: 0.5, height: 0.036 })],
+    [191, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.54], { x: 0.292, width: 0.5 })],
+    [193, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.306, 0.675], { x: 0.292, width: 0.5 })],
+    [194, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.445, 0.64], { x: 0.292, width: 0.5 })],
+    [195, appendixIVSourceHeadingMasks(page, sourceLines, [0.279, 0.306, 0.614], { x: 0.292, width: 0.5 })],
+    [196, appendixIVSourceHeadingMasks(page, sourceLines, [0.279], { x: 0.292, width: 0.45, height: 0.036 })],
+    [
+      197,
+      appendixIVSourceHeadingMasks(
+        page,
+        ["Señalamiento luminoso", "Significado de las luces", "Disposición de unidades ópticas", "Semáforos especiales"],
+        [0.279, 0.306, 0.536, 0.615],
+        { x: 0.292, width: 0.5 }
+      )
+    ]
+  ]);
+
+  const captionMasksByPage = new Map([
+    [185, appendixIVCaptionStripMasks(page, [0.363, 0.418, 0.475, 0.532, 0.604, 0.682], { x: 0.327, width: 0.375, height: 0.03 })],
+    [186, appendixIVCaptionStripMasks(page, [0.343, 0.402, 0.474, 0.53, 0.6, 0.77], { x: 0.327, width: 0.375, height: 0.034 })],
+    [187, appendixIVCaptionStripMasks(page, [0.365, 0.428, 0.493, 0.558, 0.625, 0.706], { x: 0.327, width: 0.375, height: 0.032 })],
+    [188, appendixIVCaptionStripMasks(page, [0.368, 0.43, 0.54, 0.668, 0.795], { x: 0.327, width: 0.375, height: 0.032 })],
+    [189, appendixIVCaptionStripMasks(page, [0.365, 0.43, 0.495, 0.56, 0.625], { x: 0.327, width: 0.375, height: 0.032 })],
+    [190, appendixIVCaptionStripMasks(page, [0.365, 0.43, 0.495, 0.56, 0.625, 0.69], { x: 0.327, width: 0.375, height: 0.032 })],
+    [191, appendixIVCaptionStripMasks(page, [0.365, 0.43, 0.495, 0.62, 0.685], { x: 0.327, width: 0.375, height: 0.032 })],
+    [193, appendixIVCaptionStripMasks(page, [0.365, 0.425, 0.486, 0.548, 0.608, 0.735], { x: 0.327, width: 0.375, height: 0.032 })],
+    [194, appendixIVCaptionStripMasks(page, [0.365, 0.49, 0.558, 0.692, 0.755], { x: 0.327, width: 0.375, height: 0.032 })],
+    [195, appendixIVCaptionStripMasks(page, [0.365, 0.43, 0.49, 0.675, 0.735], { x: 0.327, width: 0.375, height: 0.032 })],
+    [196, appendixIVCaptionStripMasks(page, [0.365, 0.43, 0.495, 0.56, 0.625, 0.69], { x: 0.327, width: 0.375, height: 0.032 })],
+    [197, appendixIVCaptionStripMasks(page, [0.347, 0.705, 0.842], { x: 0.35, width: 0.37, height: 0.058 })]
+  ]);
+
+  const paragraphMasksByPage = new Map([
+    [
+      192,
+      [
+        ...appendixIVSourceHeadingMasks(page, sourceLines, [0.268], { x: 0.29, width: 0.46, height: 0.035 }),
+        sourceMask(page, "paragraph-body", "instructional-text", layoutBounds(0.285, 0.315, 0.46, 0.45), page.translation.sourceTextEs, 1)
+      ]
+    ],
+    [
+      198,
+      [
+        sourceMask(page, "closing-instructional-text", "instructional-text", layoutBounds(0.265, 0.285, 0.47, 0.17), page.translation.sourceTextEs, 1),
+        sourceMask(page, "closing-source-number-198", "source-heading", layoutBounds(0.34, 0.53, 0.075, 0.055), "198", 1),
+        sourceMask(page, "closing-source-number-199", "source-heading", layoutBounds(0.58, 0.53, 0.075, 0.055), "199", 1)
+      ]
+    ]
+  ]);
+  const extraMasksByPage = new Map([
+    [
+      197,
+      [
+        sourceMask(
+          page,
+          "traffic-light-explanatory-text",
+          "instructional-text",
+          layoutBounds(0.35, 0.333, 0.24, 0.095),
+          "Spanish traffic-light explanatory text visible in the source page image",
+          1
+        ),
+        sourceMask(
+          page,
+          "special-traffic-light-captions",
+          "instructional-text",
+          layoutBounds(0.38, 0.665, 0.32, 0.21),
+          "Spanish special traffic-light captions visible in the source page image",
+          1
+        )
+      ]
+    ]
+  ]);
+
+  return [
+    pageNumberMask,
+    ...(paragraphMasksByPage.get(page.pageNumber) ?? headingMasksByPage.get(page.pageNumber) ?? appendixIVSourceHeadingMasks(page, sourceLines, [0.279])),
+    ...(extraMasksByPage.get(page.pageNumber) ?? []),
+    ...(captionMasksByPage.get(page.pageNumber) ?? [])
+  ];
+}
+
 function sourceTextMasksForBlocks(page, blocks, kind) {
+  if (kind === "visual-heavy") return appendixIVSourceTextMasksForPage(page);
   return blocks.map((block) => ({
     id: `page-${padPageNumber(page.pageNumber)}-mask-${String(block.order).padStart(2, "0")}`,
     purpose: "replace_visible_source_text_with_russian_layout",
     bounds: expandLayoutBounds(block.bounds, block.type === "pageNumber" ? 0.002 : 0.004, block.type === "pageNumber" ? 0.0015 : 0.003),
     fill: "#fffdf8",
-    opacity: kind === "visual-heavy" ? 0.94 : 0.985
+    opacity: 0.985
   }));
 }
 
@@ -938,10 +1105,39 @@ function positionManualLayoutBlocks(page, kind) {
   }
 
   if (kind === "visual-heavy") {
-    const leadFrame = layoutBounds(0.2, 0.15, 0.6, 0.09);
-    positioned.push(...positionBlockStack(leadingDrafts, leadFrame, 0.007));
-    const bodyFrame = page.translation.fullTranslationRu.length > 500 ? layoutBounds(0.19, 0.665, 0.62, 0.2) : layoutBounds(0.24, 0.69, 0.52, 0.13);
-    positioned.push(...positionBlockStack(bodyDrafts, bodyFrame, 0.006));
+    const framesByPage = new Map([
+      [185, [layoutBounds(0.292, 0.31, 0.42, 0.024), layoutBounds(0.292, 0.279, 0.42, 0.026)]],
+      [186, [layoutBounds(0.292, 0.279, 0.42, 0.033), layoutBounds(0.292, 0.524, 0.42, 0.033), layoutBounds(0.292, 0.694, 0.42, 0.033)]],
+      [187, [layoutBounds(0.292, 0.279, 0.42, 0.026), layoutBounds(0.292, 0.31, 0.5, 0.024)]],
+      [188, [layoutBounds(0.292, 0.279, 0.48, 0.033), layoutBounds(0.292, 0.476, 0.48, 0.03), layoutBounds(0.292, 0.606, 0.48, 0.03), layoutBounds(0.292, 0.734, 0.48, 0.03)]],
+      [189, [layoutBounds(0.292, 0.279, 0.42, 0.026), layoutBounds(0.292, 0.31, 0.42, 0.024)]],
+      [190, [layoutBounds(0.292, 0.279, 0.5, 0.036)]],
+      [191, [layoutBounds(0.292, 0.279, 0.5, 0.033), layoutBounds(0.292, 0.54, 0.5, 0.033)]],
+      [192, [layoutBounds(0.285, 0.315, 0.46, 0.45)]],
+      [193, [layoutBounds(0.292, 0.279, 0.42, 0.026), layoutBounds(0.292, 0.31, 0.42, 0.024), layoutBounds(0.292, 0.675, 0.5, 0.033)]],
+      [194, [layoutBounds(0.292, 0.279, 0.42, 0.033), layoutBounds(0.292, 0.445, 0.42, 0.033), layoutBounds(0.292, 0.64, 0.42, 0.033)]],
+      [195, [layoutBounds(0.292, 0.31, 0.48, 0.024), layoutBounds(0.292, 0.279, 0.48, 0.026), layoutBounds(0.292, 0.614, 0.48, 0.03)]],
+      [196, [layoutBounds(0.292, 0.279, 0.42, 0.033)]],
+      [197, [layoutBounds(0.292, 0.31, 0.48, 0.024), layoutBounds(0.292, 0.279, 0.48, 0.026), layoutBounds(0.292, 0.536, 0.48, 0.033), layoutBounds(0.372, 0.615, 0.42, 0.033)]],
+      [198, [layoutBounds(0.265, 0.285, 0.47, 0.17), layoutBounds(0.34, 0.53, 0.075, 0.055), layoutBounds(0.58, 0.53, 0.075, 0.055)]]
+    ]);
+    const frames = framesByPage.get(page.pageNumber);
+    if (frames) {
+      const visualDrafts = [...leadingDrafts, ...bodyDrafts];
+      if (frames.length === 1 && visualDrafts.length > 1) {
+        positioned.push(...positionBlockStack(visualDrafts, frames[0], 0.006));
+      } else {
+        visualDrafts.forEach((draft, index) => {
+          const frame = frames[index] ?? frames.at(-1);
+          positioned.push(...positionBlockStack([draft], frame, 0));
+        });
+      }
+    } else {
+      const leadFrame = layoutBounds(0.292, 0.279, 0.5, 0.09);
+      positioned.push(...positionBlockStack(leadingDrafts, leadFrame, 0.007));
+      const bodyFrame = page.translation.fullTranslationRu.length > 500 ? layoutBounds(0.19, 0.665, 0.62, 0.2) : layoutBounds(0.24, 0.69, 0.52, 0.13);
+      positioned.push(...positionBlockStack(bodyDrafts, bodyFrame, 0.006));
+    }
     return finalizeLayoutBlocks(positioned.sort((a, b) => a.order - b.order), page);
   }
 
@@ -1227,6 +1423,82 @@ function validateNonGenericLayoutGeometry(errors, label, layoutPage) {
   }
 }
 
+function maskCoversPoint(mask, point) {
+  const bounds = mask?.bounds;
+  return Boolean(
+    bounds &&
+      point.x >= bounds.x &&
+      point.x <= bounds.x + bounds.width &&
+      point.y >= bounds.y &&
+      point.y <= bounds.y + bounds.height
+  );
+}
+
+function validateAppendixIVSourceTextMasks(errors, label, layoutPage) {
+  const requiredPointsByPage = new Map([
+    [
+      185,
+      [
+        { role: "source-heading", x: 0.36, y: 0.288, label: "Reglamentarias heading" },
+        { role: "source-heading", x: 0.36, y: 0.315, label: "De prohibicion heading" },
+        { role: "sign-caption", x: 0.36, y: 0.369, label: "first-row sign caption" },
+        { role: "sign-caption", x: 0.58, y: 0.536, label: "middle sign caption" },
+        { role: "sign-caption", x: 0.37, y: 0.688, label: "lower sign caption" }
+      ]
+    ],
+    [
+      186,
+      [
+        { role: "source-heading", x: 0.36, y: 0.288, label: "De restriccion heading" },
+        { role: "source-heading", x: 0.36, y: 0.533, label: "De prioridad heading" },
+        { role: "sign-caption", x: 0.46, y: 0.409, label: "restriction caption" }
+      ]
+    ],
+    [
+      187,
+      [
+        { role: "source-heading", x: 0.36, y: 0.288, label: "Preventivas heading" },
+        { role: "sign-caption", x: 0.46, y: 0.435, label: "warning caption" }
+      ]
+    ],
+    [
+      193,
+      [
+        { role: "source-heading", x: 0.36, y: 0.288, label: "Transitorias heading" },
+        { role: "sign-caption", x: 0.46, y: 0.493, label: "temporary sign caption" }
+      ]
+    ],
+    [
+      197,
+      [
+        { role: "source-heading", x: 0.36, y: 0.288, label: "Senalamiento luminoso heading" },
+        { role: "instructional-text", x: 0.47, y: 0.365, label: "traffic-light explanatory text" }
+      ]
+    ]
+  ]);
+  const requiredPoints = requiredPointsByPage.get(layoutPage.pageNumber);
+  if (!requiredPoints) return;
+
+  const masks = Array.isArray(layoutPage.masks) ? layoutPage.masks : [];
+  for (const mask of masks) {
+    if (mask?.sourceGeometry !== "source_page_text_region" && mask?.sourceGeometry !== "source_page_caption_region") {
+      errors.push(`${label}: Appendix IV masks must be based on source text/caption geometry, not destination Russian block geometry.`);
+    }
+    if (!isNonEmptyString(mask?.role)) errors.push(`${label}: Appendix IV mask ${mask?.id ?? "(missing id)"} must record a source-text role.`);
+    if (!isNonEmptyString(mask?.sourceTextEs)) errors.push(`${label}: Appendix IV mask ${mask?.id ?? "(missing id)"} must record hidden source text/caption evidence.`);
+    if (mask?.provenance?.method !== "curated_source_page_geometry") {
+      errors.push(`${label}: Appendix IV mask ${mask?.id ?? "(missing id)"} must record curated source-page provenance.`);
+    }
+  }
+
+  for (const point of requiredPoints) {
+    const coveringMask = masks.find((mask) => mask?.role === point.role && maskCoversPoint(mask, point));
+    if (!coveringMask) {
+      errors.push(`${label}: missing ${point.role} mask over source ${point.label} at ${point.x.toFixed(3)},${point.y.toFixed(3)}.`);
+    }
+  }
+}
+
 function validateManualLayoutManifest(errors, manifest, layout) {
   if (!isPlainObject(layout)) {
     errors.push(`${MANUAL_LAYOUT_PATH}: layout manifest must be an object.`);
@@ -1321,6 +1593,7 @@ function validateManualLayoutManifest(errors, manifest, layout) {
       orderedText.push(block.textRu);
     });
     validateNonGenericLayoutGeometry(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
+    validateAppendixIVSourceTextMasks(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
 
     const normalizedTranslation = normalizeManualLayoutText(page?.translation?.fullTranslationRu);
     const normalizedBlocks = normalizeManualLayoutText(orderedText.join("\n"));

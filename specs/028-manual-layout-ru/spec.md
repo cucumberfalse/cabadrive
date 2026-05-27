@@ -23,7 +23,7 @@ The corrected result must replace the current side-by-side Spanish page image pl
 1. The primary `Руководство 4R` experience is a Russian layout-preserving document reader.
 2. The current two-column model, where a Spanish PDF render is shown beside a separate plain Russian translation card, must be removed from the primary experience.
 3. Existing exact Russian translations from feature `027` may be reused, but they must be placed into page-layout blocks and validated against full per-page translation coverage.
-4. Existing local page-faithful JPEG renders remain useful as visual source assets, but visible Spanish text in those renders must not be the primary instructional layer. The Russian web page must mask/replace source text areas or use generated Russian page layers so the visible document page is Russian.
+4. Existing local page-faithful JPEG renders remain useful as visual source assets, but visible Spanish text in those renders must not be the primary instructional layer. The Russian web page must mask/replace source text areas or use generated Russian page layers so the visible document page is Russian. Masks must cover the original source text/caption geometry in the page image, not merely the destination Russian block boxes.
 5. All 200 pages/content units remain in scope. No MVP, sample subset, partial conversion, summary, simplification, omission, or placeholder page is acceptable.
 6. All source images, diagrams, tables, icons, labels, captions, callouts, footnotes, page numbers, and layout-sensitive relationships must remain present locally and connected to the translated page.
 7. The app must not use a runtime PDF iframe, PDF embed/object, browser PDF viewer, PDF.js-style runtime renderer, remote image, backend endpoint, live AI request, or runtime network fetch for manual content/assets.
@@ -41,7 +41,7 @@ The preferred runtime page composition is:
 
 - A fixed-ratio page canvas matching the PDF page aspect ratio (`1191x1684` from feature `027` assets).
 - The existing local page render as a visual base for images, diagrams, tables, icons, decorative shapes, and other non-text visual context.
-- Opaque or page-colored masks over source Spanish text regions where the original render would otherwise show Spanish as the visible instructional layer.
+- Opaque or page-colored masks over source Spanish text and caption regions where the original render would otherwise show Spanish as the visible instructional layer. The mask geometry must come from source-text/source-caption regions or equivalent precomposed/structured Russian replacement regions, not from the placed Russian text boxes.
 - Positioned Russian text blocks over those regions, using per-block typography metadata and responsive fit rules.
 - Optional original-source comparison as a secondary traceability toggle only; the default/primary page must be Russian.
 
@@ -64,7 +64,7 @@ Each page layout entry must include:
 - Reference to the existing local page visual asset or an explicitly generated local visual layer.
 - Ordered `blocks` array with stable IDs.
 - For every text block: type (`heading`, `body`, `list`, `tableCell`, `caption`, `callout`, `footnote`, `pageNumber`, `label`, or equivalent), `textRu`, optional `textEs`, reading order, bounding box in page-relative units, typography/fit metadata, and provenance to the source page/chunk.
-- For masks: bounding box, background/fill strategy, and the source text or visual label being hidden/replaced.
+- For masks: source-region bounding box, background/fill strategy, source-text/source-caption provenance, and the source text or visual label being hidden/replaced. On visual-heavy pages, including Appendix IV sign pages, mask entries must cover sign headings, captions, and other original Spanish labels visible in the underlying page image even when the Russian replacement text is placed elsewhere.
 - For visual-only regions: bounding boxes for images/diagrams/tables/icons that are intentionally preserved from the local source visual.
 - Per-page coverage metadata proving that the ordered Russian text blocks reconstruct the existing exact page translation.
 
@@ -154,6 +154,7 @@ Search results must be grouped or labelled by this semantic structure. Direct pa
 
 - Manual validator output proving 200/200 source pages still pass source, translation, asset, and provenance checks.
 - New layout validator output proving every page has page-layout data and every page's ordered Russian blocks reconstruct the existing exact translation.
+- Source-text/caption mask validation output proving visible Spanish instructional text is removed from the primary Russian canvas on representative visual-heavy pages, including PDF/page `185` and additional Appendix IV sign pages.
 - Navigation validator output proving semantic navigation covers the full page range without gaps or inverted/overlapping ranges, and top-level entries match source index pages `11-12`.
 - Runtime dependency scan proving no manual PDF viewer, runtime PDF rendering, remote/manual network fetch, backend endpoint, or live-AI dependency.
 - Playwright desktop and mobile evidence that:
@@ -161,7 +162,8 @@ Search results must be grouped or labelled by this semantic structure. Direct pa
   - The old side-by-side Spanish image plus plain translation card is absent from primary UI.
   - Semantic navigation works for at least introduction, one middle chapter, Appendix I, Appendix II around pages `114`-`123`, and Appendix IV.
   - Mobile navigation/list rows around pages `114`-`123` do not overlap or clip based on bounding-box assertions and screenshots.
-  - Representative image-heavy/table/sign pages render with local assets and nonblank page composition.
+  - Representative image-heavy/table/sign pages render with local assets, nonblank page composition, and no visible Spanish source headings/captions in the primary Russian reader; page `185` must be explicitly covered.
+- TypeScript verification must include `pnpm exec tsc --noEmit` where available, or equivalent strict type-check coverage through the repository preflight/build command if the standalone command is unavailable.
 - Local preflight/build evidence before PR completion.
 
 ## Review Requirements
