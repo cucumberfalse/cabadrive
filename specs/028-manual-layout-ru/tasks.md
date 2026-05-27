@@ -345,6 +345,12 @@
 - Architect return count: 0.
 - Current-PR-head read-only guard: effective content head 306c9496543874445ad6ff51e71383cb1c1ef6e1 will be used for the post-effective evidence-only guard; Orchestrator must recheck current PR head before merge.
 - Limit escalation: none.
+- Effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect validation: passed at 2026-05-27T12:23:07Z
+- Architect validated effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect return count: 0
+- Current-PR-head read-only guard: effective content head f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef will be used for the post-effective evidence-only guard; Orchestrator must recheck current PR head before merge.
+- Limit escalation: none
 
 ## Final Architect Validation Notes
 
@@ -359,3 +365,16 @@
 - Architect validation evidence: current process memory includes `## Decisions`, `## Verification Evidence`, `## Known Issues`, `## Implementation Agent Feedback`, `## Cycle PR Set`, `## Final Validation Evidence`, return counts, and no limit escalation; Review Agent feedback is dispositioned in Architect-owned memory with no open Architect dispositions.
 - Architect gaps: none.
 - Architect disposition: no follow-up development required.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T12:23:07Z
+- Effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect validated effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect return count: 0
+- Open Architect dispositions: none
+- Architect validation evidence: `git status --short --branch` confirmed branch `codex/028-manual-layout-ru` tracking `origin/codex/028-manual-layout-ru` with no dirty diff before validation edits; `git rev-parse HEAD` confirmed current head `f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed; `pnpm run validate:manual-4ruedas` passed with 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, and 2 visual-label translation pages.
+- Architect validation evidence: process-memory checklist alignment now identifies effective content head `f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef`, preserves prior final validation notes for earlier heads, records no open Architect dispositions, and leaves Orchestrator responsible for the current-PR-head read-only guard before merge.
+- Architect gaps: none
+- Architect disposition: no follow-up development required
