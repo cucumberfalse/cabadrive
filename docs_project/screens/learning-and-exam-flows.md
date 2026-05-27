@@ -10,7 +10,8 @@
 6. Topic Materials
 7. CABA License Process Guide
 8. CABA vs RF Guide
-9. Official Sources / `Источники`
+9. Complete GCBA 4-wheel manual / `Руководство 4R`
+10. Official Sources / `Источники`
 
 ## Home / Onboarding
 
@@ -19,6 +20,7 @@
 - Clarifies: current category B questions are an unofficial fallback practice set, not an official GCBA question bank.
 - Shows quick entry actions for the primary modes.
 - `Источники` is exposed as a distinct official-source reference area without implying that the current practice questions are an official full bank.
+- `Руководство 4R` is exposed as a distinct complete-manual study surface and remains separate from the text-oriented `Источники` reader.
 
 ## Learn Questions Flow
 
@@ -91,6 +93,18 @@ The `Источники` reader is implemented by feature `019-primary-sources-s
 8. Use local bundled content only; no runtime network fetch, live AI, backend endpoint, or raw PDF viewer.
 
 Russian full translations and simple rewrites for this reader live outside `content/official-documents/` under governed `content/primary-sources/`. The official archive remains verbatim Spanish-only source material.
+
+## Complete Manual / `Руководство 4R` Flow
+
+The complete manual surface is a dedicated Russian-learning reader for the official GCBA 4-wheel vehicle PDF. It is separate from `Источники`, which remains the text-oriented source reader.
+
+1. Open `Руководство 4R` as a top-level section.
+2. Browse or search all 200 manual pages/content units from the local manual manifest.
+3. Select any page and see the local page-faithful JPEG render of the official Spanish PDF page.
+4. Read the exact full Russian translation aligned to that page.
+5. Review per-page source traceability: official document ID, PDF page number, canonical source hash prefix, local asset hash prefix, and chunk or visual-label provenance.
+6. Move through ordered previous/next page navigation within the full manual or current search result set.
+7. Stay fully local-first: no runtime PDF viewer, iframe/embed/object PDF loading, PDF.js rendering, remote image, network fetch, backend endpoint, or live AI dependency is used for manual content or assets.
 
 ## CABA Vs RF Guide Flow
 

@@ -18,6 +18,7 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
+import type { ManualPage, ManualRuManifest } from "./data/manual4Ruedas";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -25,7 +26,7 @@ import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus"
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual";
 type SourceViewMode = "simple" | "full" | "spanish";
 type SourceFilterOption = {
   value: string;
@@ -36,6 +37,23 @@ type PrimarySourceDocumentMatch = {
   matchingChunks: PrimarySourceChunk[];
   matchCount: number;
   isVisible: boolean;
+};
+type ManualManifestSummary = {
+  pages: number;
+  expectedPages: number;
+  localAssets: number;
+  reusedTranslations: number;
+  visualTextTranslations: number;
+};
+type ManualManifestState = {
+  manifest?: ManualRuManifest;
+  summary?: ManualManifestSummary;
+  error?: string;
+  isLoading: boolean;
+};
+type ManualSearchIndexEntry = {
+  page: ManualPage;
+  searchText: string;
 };
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
 type LearningTicketTimerState = {
@@ -1371,6 +1389,269 @@ function ProcessGuideView() {
   );
 }
 
+function manualTranslationStatusLabel(page: ManualPage) {
+  if (page.translation.status === "reused_primary_source_chunk") return "Перевод из approved primary-source chunk";
+  return "Перевод визуального текста страницы";
+}
+
+function manualPageSearchText(page: ManualPage) {
+  return normalizeSearchText(
+    [
+      page.pageNumber,
+      page.translation.headingRu,
+      page.translation.officialLabel,
+      page.translation.fullTranslationRu,
+      page.translation.sourceTextEs,
+      page.translation.headingPathEs.join(" "),
+      page.translation.chunkProvenance?.chunkId ?? "",
+      page.sourceTrace.officialDocumentId
+    ].join(" ")
+  );
+}
+
+function Manual4RuedasView() {
+  const [manifestState, setManifestState] = useState<ManualManifestState>({ isLoading: true });
+  const [selectedPageNumber, setSelectedPageNumber] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isManualListOpen, setIsManualListOpen] = useState(true);
+  const [imageLoadFailedPage, setImageLoadFailedPage] = useState<number | undefined>();
+
+  useEffect(() => {
+    let isMounted = true;
+    import("./data/manual4Ruedas")
+      .then(({ assertManualManifestRuntimeShape, manual4RuedasRu, manualManifestSummary }) => {
+        const manifest = assertManualManifestRuntimeShape(manual4RuedasRu) as ManualRuManifest;
+        const summary = manualManifestSummary(manifest);
+        if (isMounted) setManifestState({ manifest, summary, isLoading: false });
+      })
+      .catch((error: unknown) => {
+        if (!isMounted) return;
+        setManifestState({
+          error: error instanceof Error ? error.message : "Не удалось загрузить локальный manifest manual.",
+          isLoading: false
+        });
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const manifest = manifestState.manifest;
+  const summary = manifestState.summary;
+  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
+    () => manifest?.pages.map((page) => ({ page, searchText: manualPageSearchText(page) })) ?? [],
+    [manifest]
+  );
+  const query = normalizeSearchText(searchQuery.trim());
+  const matchingPages = manifest ? (query ? manualSearchIndex.filter((entry) => entry.searchText.includes(query)).map((entry) => entry.page) : manifest.pages) : [];
+  const selectedPage =
+    manifest && query
+      ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
+      : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages[0];
+  const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
+  const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
+  const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
+
+  if (manifestState.isLoading) {
+    return (
+      <section className="workspace manual-reader" aria-busy="true" data-testid="manual-loading">
+        <h2>Manual 4 ruedas</h2>
+        <p>Загружаем полный локальный manifest manual.</p>
+      </section>
+    );
+  }
+
+  if (manifestState.error || !manifest || !summary) {
+    return (
+      <section className="workspace manual-reader">
+        <h2>Manual 4 ruedas</h2>
+        <p>Локальный manifest полного manual не прошел проверку.</p>
+        <p className="muted">{manifestState.error}</p>
+      </section>
+    );
+  }
+
+  function selectManualPage(pageNumber: number) {
+    setSelectedPageNumber(pageNumber);
+    setImageLoadFailedPage(undefined);
+    setIsManualListOpen(false);
+  }
+
+  function goToRelativeManualPage(offset: number) {
+    if (selectedPageIndex < 0) return;
+    const nextPage = matchingPages[selectedPageIndex + offset];
+    if (nextPage) selectManualPage(nextPage.pageNumber);
+  }
+
+  function resetManualControls() {
+    setSearchQuery("");
+    setSelectedPageNumber(1);
+    setImageLoadFailedPage(undefined);
+    setIsManualListOpen(true);
+  }
+
+  return (
+    <section className="manual-reader" aria-labelledby="manual-title">
+      <header className="materials-header manual-header">
+        <div>
+          <p className="eyebrow">Manual GCBA</p>
+          <h2 id="manual-title">{manifest.titleRu}</h2>
+          <p>Испанская страница показана как локальный page-faithful render; русский текст - полный точный перевод для учебной поддержки Cabadrive.</p>
+        </div>
+        <div className="materials-status manual-status" aria-label="Покрытие полного manual">
+          <span>{summary.pages} / {summary.expectedPages} страниц</span>
+          <span>{summary.localAssets} локальных page assets</span>
+          <span>{summary.reusedTranslations} approved chunks</span>
+          <span>{summary.visualTextTranslations} визуальные страницы</span>
+        </div>
+      </header>
+
+      <div className={`manual-layout ${isManualListOpen ? "compact-list-open" : "compact-detail-open"}`}>
+        <aside className="manual-page-list" aria-label="Страницы полного manual">
+          <label className="search-box manual-search">
+            <Search size={18} aria-hidden="true" />
+            <span className="sr-only">Поиск по manual</span>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => {
+                setSearchQuery(event.target.value);
+                setIsManualListOpen(true);
+              }}
+              placeholder="Страница, русский или испанский текст"
+              aria-label="Поиск по полному manual"
+              data-testid="manual-search-input"
+            />
+          </label>
+          <div className="source-results-summary" aria-live="polite">
+            Найдено: {matchingPages.length} страниц
+          </div>
+
+          {matchingPages.length ? (
+            <div className="manual-page-buttons" aria-label="Список страниц manual">
+              {matchingPages.map((page) => (
+                <button
+                  type="button"
+                  key={page.pageNumber}
+                  className={page.pageNumber === selectedPage?.pageNumber ? "active" : ""}
+                  onClick={() => selectManualPage(page.pageNumber)}
+                  aria-label={`Страница ${page.pageNumber}. ${page.translation.headingRu}`}
+                  data-testid={`manual-page-button-${page.pageNumber}`}
+                >
+                  <span>{page.pageNumber}</span>
+                  <strong>{page.translation.headingRu}</strong>
+                  <small>{manualTranslationStatusLabel(page)}</small>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="source-empty-state" role="status">
+              <strong>Ничего не найдено</strong>
+              <p>В полном локальном manual нет страницы под такой поиск.</p>
+              <button type="button" className="tool-button" onClick={resetManualControls}>Сбросить поиск</button>
+            </div>
+          )}
+        </aside>
+
+        {selectedPage ? (
+          <article className="manual-page-detail" data-testid="manual-page-detail">
+            <button type="button" className="tool-button source-mobile-back" onClick={() => setIsManualListOpen(true)}>
+              <ChevronLeft size={18} aria-hidden="true" /> К списку страниц
+            </button>
+            <div className="manual-page-heading">
+              <div>
+                <span className="block-label">PDF page {selectedPage.sourcePageNumber}</span>
+                <h2>{selectedPage.translation.headingRu}</h2>
+              </div>
+              <div className="manual-page-counter" aria-label="Позиция страницы">
+                {selectedPage.pageNumber} / {manifest.source.pageCount}
+              </div>
+            </div>
+
+            <div className="source-meta-row manual-meta-row" aria-label="Трассировка официального источника">
+              <span>{selectedPage.sourceTrace.officialDocumentId}</span>
+              <span>PDF page {selectedPage.sourcePageNumber}</span>
+              <span>PDF SHA {sourceSha.slice(0, 12)}</span>
+              <span>asset SHA {selectedPage.visualAsset.sha256.slice(0, 12)}</span>
+            </div>
+
+            <div className="manual-page-grid">
+              <figure className="manual-visual" data-testid="manual-page-visual">
+                {imageLoadFailed ? (
+                  <div className="manual-image-error" role="alert">
+                    Локальное изображение страницы не загрузилось: {selectedPage.visualAsset.localPath}
+                  </div>
+                ) : (
+                  <img
+                    src={assetUrl(selectedPage.visualAsset.localPath)}
+                    width={selectedPage.visualAsset.width}
+                    height={selectedPage.visualAsset.height}
+                    alt={`Оригинальная испанская страница ${selectedPage.sourcePageNumber} manual GCBA`}
+                    onError={() => setImageLoadFailedPage(selectedPage.pageNumber)}
+                  />
+                )}
+                <figcaption>
+                  Официальная испанская страница сохранена локально как render PDF. Runtime не загружает PDF viewer.
+                </figcaption>
+              </figure>
+
+              <section className="manual-translation" aria-labelledby="manual-translation-title" data-testid="manual-page-translation">
+                <span className="block-label">{manualTranslationStatusLabel(selectedPage)}</span>
+                <h3 id="manual-translation-title">Полный русский перевод</h3>
+                <p className="manual-translation-text">{selectedPage.translation.fullTranslationRu}</p>
+                <div className="manual-provenance">
+                  {selectedPage.translation.chunkProvenance ? (
+                    <>
+                      <strong>{selectedPage.translation.chunkProvenance.chunkId}</strong>
+                      <span>QA: {selectedPage.translation.chunkProvenance.translationQaStatus}</span>
+                      <span>Shard: {selectedPage.translation.chunkProvenance.shardPath}</span>
+                      {selectedPage.translation.chunkProvenance.sourceSpan && (
+                        <span>
+                          Archive lines {selectedPage.translation.chunkProvenance.sourceSpan.startLine}-{selectedPage.translation.chunkProvenance.sourceSpan.endLine}
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <strong>{selectedPage.translation.visualTextTranslationProvenance?.featureId}</strong>
+                      <span>{selectedPage.translation.visualTextTranslationProvenance?.method}</span>
+                      <span>Reviewed {selectedPage.translation.visualTextTranslationProvenance?.reviewedAt}</span>
+                    </>
+                  )}
+                </div>
+              </section>
+            </div>
+
+            <div className="manual-actions">
+              <button type="button" className="tool-button" onClick={() => goToRelativeManualPage(-1)} disabled={selectedPageIndex <= 0}>
+                <ChevronLeft size={18} aria-hidden="true" /> Предыдущая
+              </button>
+              <span>{selectedPageIndex + 1} / {matchingPages.length}</span>
+              <button type="button" className="tool-button" onClick={() => goToRelativeManualPage(1)} disabled={selectedPageIndex < 0 || selectedPageIndex >= matchingPages.length - 1}>
+                Следующая <ChevronRight size={18} aria-hidden="true" />
+              </button>
+            </div>
+
+            <footer className="source-line manual-source-line">
+              Архив: {manifest.source.rawOriginalPath}. Markdown-текст: {manifest.source.archiveMarkdownPath}. Source URL записан в manifest для трассировки и не используется как runtime asset.
+            </footer>
+          </article>
+        ) : (
+          <article className="manual-page-detail source-empty-state" data-testid="manual-empty-detail" role="status">
+            <h2>Страница не выбрана</h2>
+            <p>
+              {query
+                ? "В полном локальном manual нет страницы под текущий поиск. Измените запрос или сбросьте поиск в списке."
+                : "Manifest загружен, но страница не выбрана."}
+            </p>
+          </article>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function PrimarySourcesView() {
   const [corpus, setCorpus] = useState<PrimarySourceCorpus | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -1763,6 +2044,7 @@ export function App() {
         <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
         <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
         <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "manual" ? "active" : ""} onClick={() => setView("manual")}><FileText size={18} /> Руководство 4R</button>
         <button className={view === "sources" ? "active" : ""} onClick={() => setView("sources")}><FileText size={18} /> Источники</button>
         <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
         <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
@@ -1773,6 +2055,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "manual" && <Manual4RuedasView />}
       {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
       {view === "guide" && <GuideView />}
