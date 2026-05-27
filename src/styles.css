@@ -804,11 +804,14 @@ small,
   border-radius: 8px;
   background: #fffdf8;
   box-shadow: 0 16px 32px rgba(22, 32, 29, 0.12);
+  container-type: inline-size;
 }
 
 .manual-page-base,
 .manual-source-mask,
-.manual-russian-page-flow {
+.manual-preserved-visual-region,
+.manual-russian-page-layer,
+.manual-russian-block {
   position: absolute;
 }
 
@@ -836,24 +839,32 @@ small,
   box-shadow: 0 0 0 1px rgba(255, 253, 248, 0.76);
 }
 
-.manual-russian-page-flow {
+.manual-preserved-visual-region {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.manual-russian-page-layer {
+  inset: 0;
   z-index: 2;
-  overflow: auto;
-  padding: calc(12px * var(--manual-font-scale, 1));
-  color: #16201d;
-  font-size: clamp(0.44rem, calc(1rem * var(--manual-font-scale, 1)), 1.08rem);
-  line-height: 1.34;
-  scrollbar-width: thin;
+  pointer-events: none;
 }
 
 .manual-russian-block {
-  margin: 0 0 0.46em;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.18em 0.24em;
+  color: #16201d;
+  font-size: calc(6px * var(--manual-block-font-scale, 1));
+  font-size: max(3.2px, calc(0.92cqw * var(--manual-block-font-scale, 1)));
+  line-height: var(--manual-block-line-height, 1.2);
   overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .manual-russian-block-pageNumber {
   color: #617069;
-  font-size: 0.84em;
   font-weight: 800;
 }
 
@@ -865,8 +876,7 @@ small,
 }
 
 .manual-russian-block-heading {
-  font-size: 1.2em;
-  line-height: 1.15;
+  line-height: var(--manual-block-line-height, 1.12);
 }
 
 .manual-russian-block-list {
@@ -875,7 +885,6 @@ small,
 
 .manual-russian-block-footnote {
   color: #42534d;
-  font-size: 0.72em;
 }
 
 .manual-provenance {

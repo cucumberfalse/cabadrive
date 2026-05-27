@@ -626,38 +626,33 @@ function pageLayoutKind(pageNumber) {
   return "text";
 }
 
-function flowRegionForLayoutKind(kind, textLength) {
-  if (kind === "section-divider") return { x: 0.24, y: 0.33, width: 0.54, height: 0.24 };
-  if (kind === "visual-heavy") {
-    return textLength > 500
-      ? { x: 0.22, y: 0.62, width: 0.58, height: 0.24 }
-      : { x: 0.23, y: 0.70, width: 0.56, height: 0.12 };
-  }
-  if (kind === "index") return { x: 0.24, y: 0.22, width: 0.56, height: 0.62 };
-  if (kind === "front-matter") return { x: 0.23, y: 0.24, width: 0.58, height: 0.56 };
-  return { x: 0.25, y: 0.27, width: 0.56, height: 0.54 };
+function clampLayoutUnit(value, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
 }
 
-function fontScaleForText(kind, textLength, lineCount) {
-  if (kind === "section-divider") return 1.18;
-  if (kind === "visual-heavy" && textLength < 220) return 0.9;
-  if (kind === "index") return 0.68;
-  const density = Math.max(textLength / 900, lineCount / 18);
-  if (density > 3.2) return 0.48;
-  if (density > 2.2) return 0.56;
-  if (density > 1.45) return 0.66;
-  if (density > 0.9) return 0.76;
-  return 0.88;
+function roundLayoutUnit(value) {
+  return Number(value.toFixed(4));
 }
 
-function boundsWithinRegion(region, index, count) {
-  const slot = region.height / Math.max(count, 1);
+function layoutBounds(x, y, width, height) {
+  const safeX = clampLayoutUnit(x);
+  const safeY = clampLayoutUnit(y);
+  const safeWidth = clampLayoutUnit(width, 0.002, 1 - safeX);
+  const safeHeight = clampLayoutUnit(height, 0.002, 1 - safeY);
   return {
-    x: Number(region.x.toFixed(4)),
-    y: Number(Math.min(region.y + slot * index, region.y + region.height - Math.min(slot, 0.02)).toFixed(4)),
-    width: Number(region.width.toFixed(4)),
-    height: Number(Math.max(0.006, Math.min(slot * 0.92, region.height)).toFixed(4))
+    x: roundLayoutUnit(safeX),
+    y: roundLayoutUnit(safeY),
+    width: roundLayoutUnit(safeWidth),
+    height: roundLayoutUnit(safeHeight)
   };
+}
+
+function expandLayoutBounds(bounds, padX = 0.004, padY = 0.003) {
+  const x = clampLayoutUnit(bounds.x - padX);
+  const y = clampLayoutUnit(bounds.y - padY);
+  const right = clampLayoutUnit(bounds.x + bounds.width + padX);
+  const bottom = clampLayoutUnit(bounds.y + bounds.height + padY);
+  return layoutBounds(x, y, right - x, bottom - y);
 }
 
 function textBlockType(line, pageNumber, index, lines) {
@@ -670,25 +665,145 @@ function textBlockType(line, pageNumber, index, lines) {
   if (pageNumber >= 185 && pageNumber <= 198) return trimmed.length <= 90 ? "label" : "caption";
   if (pageNumber >= 199) return "caption";
   if (index <= 2 && (trimmed === trimmed.toLocaleUpperCase("ru-RU") || trimmed.length <= 72)) return "heading";
+  if (index > 0 && trimmed.length <= 82 && !/[.!?]$/u.test(trimmed) && /^[\p{Lu}\d]/u.test(trimmed)) return "heading";
   if (lines.length <= 4 && index > 0) return "callout";
   return "body";
 }
 
-function splitLayoutBlocks(page, region) {
-  const lines = String(page.translation.fullTranslationRu || "")
-    .split(/\r?\n/u)
-    .map((line) => line.trim())
-    .filter(Boolean);
-  return lines.map((line, index) => ({
-    id: `page-${padPageNumber(page.pageNumber)}-block-${String(index + 1).padStart(2, "0")}`,
-    type: textBlockType(line, page.pageNumber, index, lines),
-    order: index + 1,
-    textRu: line,
-    bounds: boundsWithinRegion(region, index, lines.length),
+function manualBlockDisplayText(block) {
+  return block.type === "heading" ? block.textRu.replace(/^#+\s*/u, "") : block.textRu;
+}
+
+function blockLayoutWeight(block) {
+  const text = manualBlockDisplayText(block);
+  const length = text.length;
+  const charsPerLineByType = {
+    pageNumber: 18,
+    heading: 44,
+    body: 78,
+    list: 72,
+    tableCell: 62,
+    caption: 70,
+    callout: 60,
+    footnote: 84,
+    label: 42
+  };
+  const baseByType = {
+    pageNumber: 0.55,
+    heading: 1.15,
+    body: 1,
+    list: 1.05,
+    tableCell: 0.85,
+    caption: 0.9,
+    callout: 1.05,
+    footnote: 0.7,
+    label: 0.82
+  };
+  const estimatedLines = Math.max(1, Math.ceil(length / (charsPerLineByType[block.type] ?? 72)));
+  return (baseByType[block.type] ?? 1) + estimatedLines * (block.type === "heading" ? 0.95 : 0.74);
+}
+
+function blockMinHeight(block) {
+  if (block.type === "pageNumber") return 0.018;
+  if (block.type === "footnote") return 0.021;
+  if (block.type === "tableCell" || block.type === "caption" || block.type === "label") return 0.026;
+  if (block.type === "heading" || block.type === "callout") return 0.034;
+  return 0.031;
+}
+
+function allocateWeightedHeights(blocks, frameHeight, gap) {
+  if (blocks.length === 0) return [];
+  const available = Math.max(0.018, frameHeight - gap * Math.max(0, blocks.length - 1));
+  const minimums = blocks.map(blockMinHeight);
+  const minimumTotal = minimums.reduce((sum, value) => sum + value, 0);
+  if (minimumTotal >= available) {
+    return minimums.map((value) => roundLayoutUnit((value / minimumTotal) * available));
+  }
+  const weights = blocks.map(blockLayoutWeight);
+  const weightTotal = weights.reduce((sum, value) => sum + value, 0);
+  return blocks.map((block, index) => roundLayoutUnit(minimums[index] + ((available - minimumTotal) * weights[index]) / weightTotal));
+}
+
+function blockFrameAdjustments(block, frame) {
+  if (block.type === "list") return { x: frame.x + 0.014, width: frame.width - 0.014 };
+  if (block.type === "footnote") return { x: frame.x + 0.01, width: frame.width - 0.01 };
+  if (block.type === "tableCell") return { x: frame.x + 0.006, width: frame.width - 0.006 };
+  if (block.type === "heading" && frame.width > 0.34) return { x: frame.x, width: frame.width * 0.94 };
+  return { x: frame.x, width: frame.width };
+}
+
+function positionBlockStack(blocks, frame, gap = 0.007) {
+  const heights = allocateWeightedHeights(blocks, frame.height, gap);
+  const positioned = [];
+  let y = frame.y;
+  blocks.forEach((block, index) => {
+    const adjusted = blockFrameAdjustments(block, frame);
+    positioned.push({ ...block, bounds: layoutBounds(adjusted.x, y, adjusted.width, heights[index]) });
+    y += heights[index] + gap;
+  });
+  return positioned;
+}
+
+function splitBlocksIntoColumns(blocks, columnCount) {
+  if (columnCount <= 1 || blocks.length <= 3) return [blocks];
+  const totalWeight = blocks.reduce((sum, block) => sum + blockLayoutWeight(block), 0);
+  const target = totalWeight / columnCount;
+  const columns = [];
+  let current = [];
+  let currentWeight = 0;
+  for (const block of blocks) {
+    const blockWeight = blockLayoutWeight(block);
+    if (columns.length < columnCount - 1 && current.length > 0 && currentWeight + blockWeight > target * (columns.length + 1)) {
+      columns.push(current);
+      current = [];
+    }
+    current.push(block);
+    currentWeight += blockWeight;
+  }
+  columns.push(current);
+  while (columns.length < columnCount) columns.push([]);
+  return columns;
+}
+
+function shouldUseTwoColumns(kind, page, bodyBlocks) {
+  if (kind === "index") return true;
+  if (kind !== "text") return false;
+  const textLength = page.translation.fullTranslationRu.length;
+  return bodyBlocks.length >= 12 || textLength >= 1300;
+}
+
+function blockFontScale(block, bounds) {
+  const base = {
+    pageNumber: 0.68,
+    heading: 1.12,
+    body: 0.82,
+    list: 0.78,
+    tableCell: 0.72,
+    caption: 0.75,
+    callout: 0.9,
+    footnote: 0.58,
+    label: 0.92
+  }[block.type] ?? 0.78;
+  const density = manualBlockDisplayText(block).length / Math.max(bounds.width * bounds.height * 10000, 1);
+  const densityScale = density > 28 ? 0.68 : density > 20 ? 0.76 : density > 14 ? 0.84 : 1;
+  return Number((base * densityScale).toFixed(3));
+}
+
+function blockLineHeight(block) {
+  if (block.type === "heading" || block.type === "label") return 1.12;
+  if (block.type === "footnote" || block.type === "tableCell") return 1.18;
+  return 1.22;
+}
+
+function finalizeLayoutBlocks(blocks, page) {
+  return blocks.map((block) => ({
+    ...block,
     typography: {
-      role: index <= 2 ? "prominent" : "flow",
-      fit: "flow-scale",
-      maxLines: line.length > 180 ? 6 : 3
+      role: block.type === "heading" || block.type === "callout" || block.type === "label" ? "prominent" : "flow",
+      fit: "absolute-fit",
+      fontScale: blockFontScale(block, block.bounds),
+      lineHeight: blockLineHeight(block),
+      maxLines: Math.max(1, Math.ceil(blockLayoutWeight(block)))
     },
     provenance: {
       translationManifestPath: MANUAL_MANIFEST_PATH,
@@ -699,13 +814,161 @@ function splitLayoutBlocks(page, region) {
   }));
 }
 
+function buildLayoutBlockDrafts(page) {
+  const lines = String(page.translation.fullTranslationRu || "")
+    .split(/\r?\n/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  return lines.map((line, index) => ({
+    id: `page-${padPageNumber(page.pageNumber)}-block-${String(index + 1).padStart(2, "0")}`,
+    type: textBlockType(line, page.pageNumber, index, lines),
+    order: index + 1,
+    textRu: line
+  }));
+}
+
+function pageNumberBounds() {
+  return layoutBounds(0.135, 0.073, 0.052, 0.023);
+}
+
+function leadingBlockCount(kind, blocks) {
+  if (kind === "section-divider") return blocks.length <= 4 ? blocks.length : Math.min(3, blocks.length);
+  if (kind === "visual-heavy") return Math.min(blocks.length, 2);
+  if (kind === "index") return Math.min(blocks.length, blocks[0]?.type === "heading" ? 1 : 0);
+  let count = 0;
+  while (count < blocks.length && count < 2 && ["heading", "callout", "label"].includes(blocks[count].type)) count += 1;
+  return count;
+}
+
+function pageTextFrames(kind, page, positionedBlocks) {
+  const textBlocks = positionedBlocks.filter((block) => block.type !== "pageNumber");
+  if (textBlocks.length === 0) return [];
+  const clusters = [];
+  for (const block of textBlocks) {
+    let cluster = clusters.find((candidate) => Math.abs(candidate.x - block.bounds.x) < 0.08);
+    if (!cluster) {
+      cluster = { x: block.bounds.x, y: block.bounds.y, right: block.bounds.x + block.bounds.width, bottom: block.bounds.y + block.bounds.height, blocks: [] };
+      clusters.push(cluster);
+    }
+    cluster.x = Math.min(cluster.x, block.bounds.x);
+    cluster.y = Math.min(cluster.y, block.bounds.y);
+    cluster.right = Math.max(cluster.right, block.bounds.x + block.bounds.width);
+    cluster.bottom = Math.max(cluster.bottom, block.bounds.y + block.bounds.height);
+    cluster.blocks.push(block);
+  }
+  return clusters
+    .sort((a, b) => a.x - b.x || a.y - b.y)
+    .map((cluster, index) => ({
+      id: `page-${padPageNumber(page.pageNumber)}-${kind}-text-zone-${index + 1}`,
+      bounds: expandLayoutBounds(layoutBounds(cluster.x, cluster.y, cluster.right - cluster.x, cluster.bottom - cluster.y), 0.006, 0.006),
+      fit: "absolute-positioned-blocks",
+      fontScale: Number(
+        (
+          cluster.blocks.reduce((sum, block) => sum + block.typography.fontScale, 0) /
+          Math.max(cluster.blocks.length, 1)
+        ).toFixed(3)
+      )
+    }));
+}
+
+function visualRegionsForPage(kind, page, positionedBlocks, usesTwoColumns) {
+  const pageId = `page-${padPageNumber(page.pageNumber)}`;
+  const preservedFrom = page.visualAsset.localPath;
+  if (kind === "visual-heavy") {
+    return [
+      { id: `${pageId}-sign-grid`, type: "signs-diagrams-icons", bounds: layoutBounds(0.115, 0.255, 0.77, 0.37), preservedFrom },
+      { id: `${pageId}-footer-composition`, type: "page-footer-branding", bounds: layoutBounds(0.17, 0.92, 0.66, 0.035), preservedFrom }
+    ];
+  }
+  if (kind === "section-divider") {
+    return [
+      { id: `${pageId}-section-art-band`, type: "section-divider-visual-band", bounds: layoutBounds(0.14, 0.13, 0.72, 0.14), preservedFrom },
+      { id: `${pageId}-section-footer`, type: "page-footer-branding", bounds: layoutBounds(0.18, 0.86, 0.64, 0.06), preservedFrom }
+    ];
+  }
+  if (kind === "index" || usesTwoColumns) {
+    const firstColumnBlockY =
+      positionedBlocks
+        .filter((block) => block.type !== "pageNumber" && block.bounds.width <= 0.34)
+        .map((block) => block.bounds.y)
+        .sort((a, b) => a - b)[0] ?? 0.215;
+    const gutterY = Math.max(0.19, firstColumnBlockY - 0.006);
+    return [
+      { id: `${pageId}-column-gutter`, type: "column-gutter-and-source-rules", bounds: layoutBounds(0.486, gutterY, 0.028, 0.87 - gutterY), preservedFrom },
+      { id: `${pageId}-footer-composition`, type: "page-footer-branding", bounds: layoutBounds(0.17, 0.925, 0.66, 0.032), preservedFrom }
+    ];
+  }
+  return [
+    { id: `${pageId}-left-margin-context`, type: "margin-icons-or-page-chrome", bounds: layoutBounds(0.075, 0.18, 0.07, 0.64), preservedFrom },
+    { id: `${pageId}-right-margin-context`, type: "margin-icons-or-page-chrome", bounds: layoutBounds(0.855, 0.18, 0.07, 0.64), preservedFrom },
+    { id: `${pageId}-footer-composition`, type: "page-footer-branding", bounds: layoutBounds(0.18, 0.925, 0.64, 0.032), preservedFrom }
+  ];
+}
+
+function sourceTextMasksForBlocks(page, blocks, kind) {
+  return blocks.map((block) => ({
+    id: `page-${padPageNumber(page.pageNumber)}-mask-${String(block.order).padStart(2, "0")}`,
+    purpose: "replace_visible_source_text_with_russian_layout",
+    bounds: expandLayoutBounds(block.bounds, block.type === "pageNumber" ? 0.002 : 0.004, block.type === "pageNumber" ? 0.0015 : 0.003),
+    fill: "#fffdf8",
+    opacity: kind === "visual-heavy" ? 0.94 : 0.985
+  }));
+}
+
+function positionManualLayoutBlocks(page, kind) {
+  const drafts = buildLayoutBlockDrafts(page);
+  const pageNumber = drafts[0]?.type === "pageNumber" ? drafts[0] : undefined;
+  const contentDrafts = pageNumber ? drafts.slice(1) : drafts;
+  const leadingCount = leadingBlockCount(kind, contentDrafts);
+  const leadingDrafts = contentDrafts.slice(0, leadingCount);
+  const bodyDrafts = contentDrafts.slice(leadingCount);
+  const positioned = [];
+
+  if (pageNumber) positioned.push({ ...pageNumber, bounds: pageNumberBounds() });
+
+  if (kind === "section-divider") {
+    const frame = layoutBounds(0.19, pageNumber ? 0.34 : 0.32, 0.62, pageNumber ? 0.24 : 0.27);
+    positioned.push(...positionBlockStack(contentDrafts, frame, 0.011));
+    return finalizeLayoutBlocks(positioned.sort((a, b) => a.order - b.order), page);
+  }
+
+  if (kind === "visual-heavy") {
+    const leadFrame = layoutBounds(0.2, 0.15, 0.6, 0.09);
+    positioned.push(...positionBlockStack(leadingDrafts, leadFrame, 0.007));
+    const bodyFrame = page.translation.fullTranslationRu.length > 500 ? layoutBounds(0.19, 0.665, 0.62, 0.2) : layoutBounds(0.24, 0.69, 0.52, 0.13);
+    positioned.push(...positionBlockStack(bodyDrafts, bodyFrame, 0.006));
+    return finalizeLayoutBlocks(positioned.sort((a, b) => a.order - b.order), page);
+  }
+
+  if (kind === "index") {
+    if (leadingDrafts.length > 0) positioned.push(...positionBlockStack(leadingDrafts, layoutBounds(0.2, 0.14, 0.6, 0.055), 0.006));
+    const columns = splitBlocksIntoColumns(bodyDrafts, 2);
+    const frames = [layoutBounds(0.18, 0.215, 0.3, 0.66), layoutBounds(0.525, 0.215, 0.3, 0.66)];
+    columns.forEach((column, index) => positioned.push(...positionBlockStack(column, frames[index], 0.0048)));
+    return finalizeLayoutBlocks(positioned.sort((a, b) => a.order - b.order), page);
+  }
+
+  const leadFrameHeight = leadingDrafts.length > 0 ? (kind === "front-matter" ? 0.12 : 0.09) : 0;
+  if (leadingDrafts.length > 0) positioned.push(...positionBlockStack(leadingDrafts, layoutBounds(0.19, 0.13, 0.62, leadFrameHeight), 0.008));
+  const bodyStart = leadingDrafts.length > 0 ? 0.13 + leadFrameHeight + 0.018 : kind === "front-matter" ? 0.19 : 0.13;
+  const bodyFrameHeight = kind === "front-matter" ? 0.68 - (bodyStart - 0.19) : 0.79 - (bodyStart - 0.13);
+  const usesTwoColumns = shouldUseTwoColumns(kind, page, bodyDrafts);
+  if (usesTwoColumns) {
+    const columns = splitBlocksIntoColumns(bodyDrafts, 2);
+    const frames = [layoutBounds(0.18, bodyStart, 0.3, bodyFrameHeight), layoutBounds(0.525, bodyStart, 0.3, bodyFrameHeight)];
+    columns.forEach((column, index) => positioned.push(...positionBlockStack(column, frames[index], 0.006)));
+  } else {
+    positioned.push(...positionBlockStack(bodyDrafts, layoutBounds(0.205, bodyStart, 0.59, bodyFrameHeight), 0.007));
+  }
+
+  return finalizeLayoutBlocks(positioned.sort((a, b) => a.order - b.order), page);
+}
+
 export function buildManualLayoutManifest(manifest = buildManualManifest(defaultRoot)) {
   const pages = manifest.pages.map((page) => {
     const kind = pageLayoutKind(page.pageNumber);
-    const textLength = page.translation.fullTranslationRu.length;
-    const lineCount = page.translation.fullTranslationRu.split(/\r?\n/u).filter((line) => line.trim()).length;
-    const flowRegion = flowRegionForLayoutKind(kind, textLength);
-    const blocks = splitLayoutBlocks(page, flowRegion);
+    const blocks = positionManualLayoutBlocks(page, kind);
+    const usesTwoColumns = kind === "index" || blocks.some((block) => block.type !== "pageNumber" && block.bounds.x >= 0.5);
     const normalizedTranslation = normalizeManualLayoutText(page.translation.fullTranslationRu);
     const normalizedBlocks = normalizeManualLayoutText(blocks.map((block) => block.textRu).join("\n"));
 
@@ -726,31 +989,9 @@ export function buildManualLayoutManifest(manifest = buildManualManifest(default
         sha256: page.visualAsset.sha256,
         strategy: "page_faithful_pdf_render_under_russian_text_layer"
       },
-      masks: [
-        {
-          id: `page-${padPageNumber(page.pageNumber)}-source-text-mask`,
-          purpose: "replace_visible_source_text_with_russian_layout",
-          bounds: flowRegion,
-          fill: "#fffdf8",
-          opacity: kind === "visual-heavy" ? 0.94 : 0.985
-        }
-      ],
-      textRegions: [
-        {
-          id: `page-${padPageNumber(page.pageNumber)}-russian-flow`,
-          bounds: flowRegion,
-          fit: "scale-and-scroll-if-needed",
-          fontScale: fontScaleForText(kind, textLength, lineCount)
-        }
-      ],
-      visualRegions: [
-        {
-          id: `page-${padPageNumber(page.pageNumber)}-visual-context`,
-          type: kind === "visual-heavy" ? "signs-diagrams-icons" : "page-composition",
-          bounds: { x: 0, y: 0, width: 1, height: 1 },
-          preservedFrom: page.visualAsset.localPath
-        }
-      ],
+      masks: sourceTextMasksForBlocks(page, blocks, kind),
+      textRegions: pageTextFrames(kind, page, blocks),
+      visualRegions: visualRegionsForPage(kind, page, blocks, usesTwoColumns),
       blocks,
       coverage: {
         translationSource: `${MANUAL_MANIFEST_PATH}#/pages/${page.pageNumber - 1}/translation/fullTranslationRu`,
@@ -858,6 +1099,12 @@ function validateRuntimeManualSurface(errors, root) {
   if (/manual-page-grid|manual-visual|manual-translation/u.test(appSource)) {
     errors.push(`${appSourcePath}: manual primary UI must not reintroduce the side-by-side visual plus translation card selectors.`);
   }
+  if (/manual-russian-page-flow/u.test(appSource)) {
+    errors.push(`${appSourcePath}: manual primary UI must not collapse Russian blocks into a single flow transcript.`);
+  }
+  if (!/manualBoundsStyle\(block\.bounds\)/u.test(appSource)) {
+    errors.push(`${appSourcePath}: manual renderer must position each Russian block using block.bounds.`);
+  }
 }
 
 function validateManifestShape(errors, manifest) {
@@ -902,6 +1149,77 @@ function validateBounds(errors, label, bounds) {
   }
   if (bounds.x < 0 || bounds.y < 0 || bounds.width <= 0 || bounds.height <= 0) errors.push(`${label}: bounds must use positive page-relative coordinates.`);
   if (bounds.x + bounds.width > 1.001 || bounds.y + bounds.height > 1.001) errors.push(`${label}: bounds must stay inside the page canvas.`);
+}
+
+function boundsArea(bounds) {
+  return Number(bounds?.width || 0) * Number(bounds?.height || 0);
+}
+
+function isFullPageBounds(bounds) {
+  return bounds && bounds.x <= 0.01 && bounds.y <= 0.01 && bounds.x + bounds.width >= 0.99 && bounds.y + bounds.height >= 0.99;
+}
+
+function closeEnough(a, b, epsilon = 0.0025) {
+  return Math.abs(Number(a) - Number(b)) <= epsilon;
+}
+
+function insideBounds(inner, outer, epsilon = 0.0025) {
+  return (
+    inner.x >= outer.x - epsilon &&
+    inner.y >= outer.y - epsilon &&
+    inner.x + inner.width <= outer.x + outer.width + epsilon &&
+    inner.y + inner.height <= outer.y + outer.height + epsilon
+  );
+}
+
+function boundsSignature(bounds) {
+  return ["x", "y", "width", "height"].map((key) => Number(bounds?.[key] ?? 0).toFixed(3)).join(":");
+}
+
+function hasUniformSyntheticBlockGeometry(blocks) {
+  const textBlocks = blocks.filter((block) => block.type !== "pageNumber" && isPlainObject(block.bounds));
+  if (textBlocks.length < 5) return false;
+  const sameHorizontalRail = textBlocks.every(
+    (block) => closeEnough(block.bounds.x, textBlocks[0].bounds.x) && closeEnough(block.bounds.width, textBlocks[0].bounds.width)
+  );
+  const sameHeights = textBlocks.every((block) => closeEnough(block.bounds.height, textBlocks[0].bounds.height));
+  const ySteps = textBlocks.slice(1).map((block, index) => Number((block.bounds.y - textBlocks[index].bounds.y).toFixed(4)));
+  const uniformYSteps = ySteps.length > 0 && ySteps.every((step) => closeEnough(step, ySteps[0], 0.0035));
+  const uniqueBounds = new Set(textBlocks.map((block) => boundsSignature(block.bounds))).size;
+  return (sameHorizontalRail && sameHeights && uniformYSteps) || uniqueBounds < Math.ceil(textBlocks.length * 0.65);
+}
+
+function validateNonGenericLayoutGeometry(errors, label, layoutPage) {
+  const blocks = Array.isArray(layoutPage.blocks) ? layoutPage.blocks : [];
+  const textBlocks = blocks.filter((block) => block?.type !== "pageNumber" && isPlainObject(block?.bounds));
+  if (hasUniformSyntheticBlockGeometry(blocks)) {
+    errors.push(`${label}: block bounds look like uniform synthetic flow geometry instead of page-specific layout boxes.`);
+  }
+
+  if (Array.isArray(layoutPage.textRegions)) {
+    const genericFlowRegion = layoutPage.textRegions.find((region) => /flow|scroll/i.test(`${region?.id ?? ""} ${region?.fit ?? ""}`));
+    if (genericFlowRegion && textBlocks.length >= 4 && textBlocks.every((block) => insideBounds(block.bounds, genericFlowRegion.bounds))) {
+      errors.push(`${label}: textRegions must not declare a single generic scrolling flow region that contains all text blocks.`);
+    }
+  }
+
+  if (Array.isArray(layoutPage.masks)) {
+    if (layoutPage.masks.length === 1 && textBlocks.length >= 3 && boundsArea(layoutPage.masks[0]?.bounds) > 0.16) {
+      errors.push(`${label}: masks must be page/block-specific instead of one broad source-text mask.`);
+    }
+    if (textBlocks.length >= 3 && layoutPage.masks.length < Math.min(textBlocks.length, 3)) {
+      errors.push(`${label}: masks must provide enough block-specific source-text replacement regions.`);
+    }
+  }
+
+  if (Array.isArray(layoutPage.visualRegions)) {
+    if (layoutPage.visualRegions.length === 1 && isFullPageBounds(layoutPage.visualRegions[0]?.bounds)) {
+      errors.push(`${label}: visualRegions must not be one full-page catch-all region.`);
+    }
+    if (layoutPage.visualRegions.length > 0 && layoutPage.visualRegions.every((region) => boundsArea(region?.bounds) > 0.9)) {
+      errors.push(`${label}: visualRegions must identify meaningful preserved page regions, not full-page catch-all geometry.`);
+    }
+  }
 }
 
 function validateManualLayoutManifest(errors, manifest, layout) {
@@ -958,7 +1276,12 @@ function validateManualLayoutManifest(errors, manifest, layout) {
     if (!Array.isArray(layoutPage.textRegions) || layoutPage.textRegions.length < 1) {
       errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include at least one Russian text region.`);
     } else {
-      layoutPage.textRegions.forEach((region, regionIndex) => validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} text region ${regionIndex + 1}`, region?.bounds));
+      layoutPage.textRegions.forEach((region, regionIndex) => {
+        validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} text region ${regionIndex + 1}`, region?.bounds);
+        if (region?.fit !== "absolute-positioned-blocks") {
+          errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} text region ${regionIndex + 1} must be absolute-positioned-blocks.`);
+        }
+      });
     }
     if (!Array.isArray(layoutPage.blocks) || layoutPage.blocks.length < 1) {
       errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include ordered Russian layout blocks.`);
@@ -981,8 +1304,18 @@ function validateManualLayoutManifest(errors, manifest, layout) {
       if (!isNonEmptyString(block.textRu)) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} textRu is missing.`);
       if (PLACEHOLDER_PATTERN.test(block.textRu || "")) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} textRu must not contain placeholder text.`);
       validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1}`, block.bounds);
+      if (block.typography?.fit !== "absolute-fit") {
+        errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} typography.fit must be absolute-fit.`);
+      }
+      if (typeof block.typography?.fontScale !== "number" || !Number.isFinite(block.typography.fontScale)) {
+        errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} typography.fontScale must be numeric.`);
+      }
+      if (typeof block.typography?.lineHeight !== "number" || !Number.isFinite(block.typography.lineHeight)) {
+        errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} typography.lineHeight must be numeric.`);
+      }
       orderedText.push(block.textRu);
     });
+    validateNonGenericLayoutGeometry(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
 
     const normalizedTranslation = normalizeManualLayoutText(page?.translation?.fullTranslationRu);
     const normalizedBlocks = normalizeManualLayoutText(orderedText.join("\n"));

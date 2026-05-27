@@ -18,6 +18,10 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function isFullPageBounds(bounds) {
+  return bounds.x <= 0.01 && bounds.y <= 0.01 && bounds.x + bounds.width >= 0.99 && bounds.y + bounds.height >= 0.99;
+}
+
 test("manual 4 ruedas validator passes current manifest and reports complete coverage", async () => {
   const output = execFileSync("node", ["scripts/content-manual-vehiculo-4ruedas.mjs"], { encoding: "utf8" });
   const result = await validateManualVehiculo4RuedasRu();
@@ -58,6 +62,9 @@ test("manual 4 ruedas view lazy-loads the full layout corpus and computes summar
   assert.notEqual(validationIndex, -1);
   assert.notEqual(summaryIndex, -1);
   assert.notEqual(loadingIndex, -1);
+  assert.equal(appSource.includes("manual-russian-page-flow"), false);
+  assert.ok(appSource.includes("manualBoundsStyle(block.bounds)"));
+  assert.ok(appSource.includes('data-testid="manual-layout-block"'));
 });
 
 test("manual 4 ruedas view caches normalized page search text outside the filter loop", () => {
@@ -108,6 +115,18 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.ok(layout.coverage.blockTypes.body > 0);
   assert.ok(layout.coverage.blockTypes.label > 0);
   assert.ok(layout.coverage.blockTypes.footnote > 0);
+  const page14 = layout.pages[13];
+  assert.equal(page14.blocks.every((block) => block.typography.fit === "absolute-fit"), true);
+  assert.equal(page14.textRegions.every((region) => region.fit === "absolute-positioned-blocks"), true);
+  assert.equal(page14.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+
+  const page114 = layout.pages[113];
+  assert.ok(page114.blocks.length > 20);
+  assert.ok(page114.masks.length >= page114.blocks.length);
+  assert.ok(page114.blocks.some((block) => block.bounds.x > 0.5), "page 114 uses a second column instead of one transcript rail");
+  assert.ok(new Set(page114.blocks.map((block) => `${block.bounds.x}:${block.bounds.y}:${block.bounds.width}:${block.bounds.height}`)).size > page114.blocks.length * 0.8);
+  assert.equal(page114.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+
   assert.equal(navigation.schema, "cabadrive-manual-navigation-ru.v1");
   assert.equal(navigation.entries.length, 11);
   assert.equal(navigation.entries[0].startPage, 1);
@@ -158,4 +177,47 @@ test("manual 4 ruedas validator rejects missing layout coverage, text drift, and
   assert.ok(result.errors.some((error) => error.includes("page 2 ordered Russian blocks do not reconstruct fullTranslationRu")));
   assert.ok(result.errors.some((error) => error.includes("top-level navigation entry count is stale")));
   assert.ok(result.errors.some((error) => error.includes("required source-index topic app4-signs-regulatory is missing")));
+});
+
+test("manual 4 ruedas validator rejects generic flow geometry and full-page visual catch-all", async () => {
+  const badLayout = clone(layout);
+  const page = badLayout.pages[113];
+  const flowRegion = { x: 0.25, y: 0.22, width: 0.56, height: 0.58 };
+  const slot = flowRegion.height / page.blocks.length;
+  page.textRegions = [{ id: "page-114-russian-flow", bounds: flowRegion, fit: "scale-and-scroll-if-needed", fontScale: 0.68 }];
+  page.masks = [
+    {
+      id: "page-114-source-text-mask",
+      purpose: "replace_visible_source_text_with_russian_layout",
+      bounds: flowRegion,
+      fill: "#fffdf8",
+      opacity: 0.985
+    }
+  ];
+  page.visualRegions = [
+    {
+      id: "page-114-visual-context",
+      type: "page-composition",
+      bounds: { x: 0, y: 0, width: 1, height: 1 },
+      preservedFrom: page.visualBase.localPath
+    }
+  ];
+  page.blocks = page.blocks.map((block, index) => ({
+    ...block,
+    bounds: {
+      x: flowRegion.x,
+      y: Number((flowRegion.y + slot * index).toFixed(4)),
+      width: flowRegion.width,
+      height: Number((slot * 0.92).toFixed(4))
+    },
+    typography: { ...block.typography, fit: "flow-scale" }
+  }));
+
+  const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
+
+  assert.ok(result.errors.some((error) => error.includes("uniform synthetic flow geometry")));
+  assert.ok(result.errors.some((error) => error.includes("single generic scrolling flow region")));
+  assert.ok(result.errors.some((error) => error.includes("one broad source-text mask")));
+  assert.ok(result.errors.some((error) => error.includes("one full-page catch-all region")));
+  assert.ok(result.errors.some((error) => error.includes("typography.fit must be absolute-fit")));
 });

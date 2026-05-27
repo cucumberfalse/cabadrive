@@ -152,6 +152,83 @@ async function showCompleteManualList(page: Page) {
   if (await backButton.isVisible()) await backButton.click();
 }
 
+type ManualRenderedBox = {
+  id: string | null;
+  type: string | null;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  right: number;
+  bottom: number;
+  position: string;
+  scrollWidth: number;
+  clientWidth: number;
+  scrollHeight: number;
+  clientHeight: number;
+};
+
+function boxesOverlap(first: ManualRenderedBox, second: ManualRenderedBox, tolerance = 0.75) {
+  return (
+    first.x < second.right - tolerance &&
+    first.right > second.x + tolerance &&
+    first.y < second.bottom - tolerance &&
+    first.bottom > second.y + tolerance
+  );
+}
+
+async function renderedManualBoxes(locator: Locator): Promise<ManualRenderedBox[]> {
+  return locator.evaluateAll((elements) =>
+    elements.map((element) => {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      return {
+        id: element.getAttribute("data-block-id") ?? element.getAttribute("data-region-type"),
+        type: element.getAttribute("data-block-type") ?? element.getAttribute("data-region-type"),
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        right: rect.right,
+        bottom: rect.bottom,
+        position: style.position,
+        scrollWidth: element.scrollWidth,
+        clientWidth: element.clientWidth,
+        scrollHeight: element.scrollHeight,
+        clientHeight: element.clientHeight
+      };
+    })
+  );
+}
+
+async function expectIndependentManualPageLayout(page: Page, pageNumber: number, minBlockCount = 3) {
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+  await expect(page.locator(".manual-russian-page-flow")).toHaveCount(0);
+  const blocks = page.getByTestId("manual-layout-block");
+  await expect(blocks.first()).toBeVisible();
+  const blockBoxes = await renderedManualBoxes(blocks);
+  expect(blockBoxes.length).toBeGreaterThanOrEqual(minBlockCount);
+  expect(new Set(blockBoxes.map((box) => `${Math.round(box.x)}:${Math.round(box.y)}:${Math.round(box.width)}:${Math.round(box.height)}`)).size).toBeGreaterThan(1);
+  expect(blockBoxes.every((box) => box.position === "absolute")).toBe(true);
+  for (const box of blockBoxes) {
+    expect(box.scrollWidth, `manual block ${box.id} overflows horizontally on page ${pageNumber}`).toBeLessThanOrEqual(box.clientWidth + 2);
+    expect(box.scrollHeight, `manual block ${box.id} overflows vertically on page ${pageNumber}`).toBeLessThanOrEqual(box.clientHeight + 2);
+  }
+  for (let index = 0; index < blockBoxes.length; index += 1) {
+    for (let nextIndex = index + 1; nextIndex < blockBoxes.length; nextIndex += 1) {
+      expect(boxesOverlap(blockBoxes[index], blockBoxes[nextIndex]), `manual blocks ${blockBoxes[index].id} and ${blockBoxes[nextIndex].id} overlap on page ${pageNumber}`).toBe(false);
+    }
+  }
+
+  const visualBoxes = (await renderedManualBoxes(page.getByTestId("manual-preserved-visual-region"))).filter((box) => box.width > 0 && box.height > 0);
+  expect(visualBoxes.length).toBeGreaterThan(0);
+  for (const blockBox of blockBoxes) {
+    for (const visualBox of visualBoxes) {
+      expect(boxesOverlap(blockBox, visualBox), `manual block ${blockBox.id} overlaps preserved visual region ${visualBox.id} on page ${pageNumber}`).toBe(false);
+    }
+  }
+}
+
 async function openSourceDocument(page: Page, document: PrimarySourceDocument) {
   await page.getByRole("button", { name: new RegExp(document.shortTitleRu) }).click();
   await expect(page.getByTestId("source-detail-pane")).toBeVisible();
@@ -641,6 +718,7 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.locator("iframe, embed, object")).toHaveCount(0);
   await expect(page.locator(".manual-reader a[href$='.pdf'], .manual-reader a[href*='.pdf']")).toHaveCount(0);
   await expect(page.locator(".manual-page-grid, .manual-visual, .manual-translation")).toHaveCount(0);
+  await expect(page.locator(".manual-russian-page-flow")).toHaveCount(0);
   await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
   await expect(page.getByTestId("manual-nav-introduction")).toBeVisible();
   await expect(page.getByTestId("manual-nav-appendix-4-road-signs")).toBeVisible();
@@ -652,6 +730,7 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
   await expect(page.getByTestId("manual-page-canvas")).toBeVisible();
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВВЕДЕНИЕ");
+  await expectIndependentManualPageLayout(page, 14, 3);
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[13].visualAsset.localPath.replace(/\//g, "\\/")));
   await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[13].visualAsset.width);
   await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[13].visualAsset.height);
@@ -665,16 +744,19 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await page.getByTestId("manual-nav-app1-safety-elements").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("105 / 200");
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Элементы безопасности");
+  await expectIndependentManualPageLayout(page, 105, 8);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-appendix-2-passenger-transport").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("123 / 200");
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ПЕРЕВОЗКА ПАССАЖИРОВ");
+  await expectIndependentManualPageLayout(page, 123, 3);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-app4-signs-regulatory").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("185 / 200");
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Запрещающие");
+  await expectIndependentManualPageLayout(page, 185, 3);
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[184].visualAsset.localPath.replace(/\//g, "\\/")));
 
   await showCompleteManualList(page);
@@ -720,6 +802,17 @@ test("complete RU manual mobile navigation rows around pages 114-123 do not over
 
   for (let index = 1; index < rowBoxes.length; index += 1) {
     expect(rowBoxes[index - 1].bottom, `manual pages ${rowBoxes[index - 1].pageNumber}-${rowBoxes[index].pageNumber} overlap`).toBeLessThanOrEqual(rowBoxes[index].y + 0.5);
+  }
+
+  for (let pageNumber = 114; pageNumber <= 123; pageNumber += 1) {
+    const row = page.getByTestId(`manual-page-button-${pageNumber}`);
+    if (!(await row.isVisible())) {
+      await page.getByTestId("manual-page-access").locator("summary").click();
+      await row.scrollIntoViewIfNeeded();
+    }
+    await row.click();
+    await expectIndependentManualPageLayout(page, pageNumber, Math.min(3, manualLayout.pages[pageNumber - 1].blocks.length));
+    if (pageNumber < 123) await showCompleteManualList(page);
   }
 });
 

@@ -77,7 +77,9 @@ export type ManualLayoutBlock = {
   bounds: ManualPageBounds;
   typography: {
     role: "prominent" | "flow";
-    fit: "flow-scale";
+    fit: "absolute-fit";
+    fontScale: number;
+    lineHeight: number;
     maxLines: number;
   };
   provenance: {
@@ -111,7 +113,7 @@ export type ManualPageLayout = {
   textRegions: Array<{
     id: string;
     bounds: ManualPageBounds;
-    fit: "scale-and-scroll-if-needed";
+    fit: "absolute-positioned-blocks";
     fontScale: number;
   }>;
   visualRegions: Array<{

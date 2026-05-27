@@ -24,10 +24,10 @@
 - `[x]` Ensure the layout manifest has exactly 200 ordered page layout records.
 - `[x]` For every page, record canvas dimensions/aspect ratio tied to the existing local page asset dimensions.
 - `[x]` For every page, record the local visual base asset or generated local visual layer used to preserve images/diagrams/tables/icons.
-- `[x]` For every page with visible source text, record masks or equivalent replacement regions so Spanish source text is not the primary visible instructional layer.
-- `[x]` Segment each page's exact Russian translation into ordered layout blocks with stable IDs, block type, bounding box, reading order, typography/fit metadata, and provenance.
-- `[x]` Record visual-only regions for images, diagrams, tables, icons, and decorative/page-composition elements that remain from the local visual base.
-- `[x]` Record page-level coverage metadata proving the ordered Russian blocks reconstruct the full existing exact translation for that page.
+- `[x]` For every page with visible source text, record masks or equivalent replacement regions so Spanish source text is not the primary visible instructional layer. Follow-up completed: masks are generated per text block rather than as one broad generic flow mask.
+- `[x]` Segment each page's exact Russian translation into ordered layout blocks with stable IDs, block type, per-block bounding box, reading order, typography/fit metadata, and provenance. Follow-up completed: bounds are assigned per block from page-kind, heading/list/table/caption roles, one/two-column structure, and visual-heavy page structure rather than from one uniform splitter.
+- `[x]` Record visual-only regions for images, diagrams, tables, icons, and decorative/page-composition elements that remain from the local visual base. Follow-up completed: visual regions record page-specific section art bands, sign grids, gutters, margins, and footer/page-chrome regions instead of one full-page catch-all.
+- `[x]` Record page-level coverage metadata proving the ordered Russian blocks reconstruct the full existing exact translation for that page and that the recorded per-block geometry is the geometry used at runtime.
 - `[x]` Add or update TypeScript types/loaders in `src/data/manual4Ruedas.ts` for the layout manifest while preserving route-level lazy loading.
 
 ### Semantic Navigation
@@ -43,12 +43,12 @@
 ### Frontend Reader
 
 - `[x]` Replace the primary side-by-side `.manual-page-grid` experience with a single Russian manual page canvas.
-- `[x]` Render Russian layout blocks inside the page composition instead of displaying `translation.fullTranslationRu` as one plain paragraph/card.
+- `[x]` Render Russian layout blocks inside the page composition instead of displaying `translation.fullTranslationRu` as one plain paragraph/card. Follow-up completed: the renderer positions each block using that block's own bounds and no longer emits `.manual-russian-page-flow`.
 - `[x]` Keep original Spanish source view, if retained, behind an optional secondary comparison/provenance control only.
 - `[x]` Remove primary-reader labels such as `Перевод из approved primary-source chunk`; keep provenance compact and secondary.
 - `[x]` Add previous/next controls that work within search/semantic context and across the full document.
 - `[x]` Add fit-to-width behavior and, if needed, zoom controls for page readability.
-- `[x]` Ensure long Russian text wraps, fits, or scales according to block metadata without overlapping neighboring blocks.
+- `[x]` Ensure long Russian text wraps, fits, or scales according to block metadata without overlapping neighboring blocks. Follow-up completed: per-block typography metadata drives container-relative font scale/line height and Playwright checks block overflow/overlap on representative pages.
 - `[x]` Preserve deferred manual loading so layout/navigation/manual corpus data do not enter the non-manual startup bundle.
 - `[x]` Preserve service-worker install-precache exclusions for the heavy manual corpus chunk and 200 manual page images, with on-demand runtime caching still available after manual access.
 
@@ -65,14 +65,14 @@
 
 - `[x]` Extend `pnpm run validate:manual-4ruedas` to validate the layout manifest, navigation manifest, and existing feature `027` source/translation/asset checks.
 - `[x]` Add validator checks that ordered page layout records cover pages 1-200 exactly once.
-- `[x]` Add validator checks that every page layout references existing local assets and has in-bounds block/mask/visual-region coordinates.
+- `[x]` Add validator checks that every page layout references existing local assets and has in-bounds, non-generic block/mask/visual-region coordinates tied to real page structure.
 - `[x]` Add validator checks that ordered Russian text blocks reconstruct each page's `translation.fullTranslationRu` after documented whitespace normalization.
 - `[x]` Add validator checks that top-level navigation includes source-index entries for `Введение`, chapters 1-5, appendices I-IV, and covers the full page range without gaps.
 - `[x]` Add validator or tests that fail if manual runtime code reintroduces iframe/embed/object PDF display, PDF.js-style runtime rendering, remote manual assets, runtime fetches, backend endpoints, or live-AI calls.
-- `[x]` Update Node tests for manual manifest/runtime shape, layout coverage, text coverage, semantic navigation coverage, and stale manifest failure cases.
+- `[x]` Update Node tests for manual manifest/runtime shape, layout coverage, text coverage, semantic navigation coverage, stale manifest failure cases, and generic-layout failure cases.
 - `[x]` Update Playwright tests so the old side-by-side Spanish visual plus separate Russian translation card is absent from primary UI.
-- `[x]` Add Playwright desktop coverage for first page, index pages, an image/diagram-heavy page, Appendix I, Appendix II around pages `114`-`123`, Appendix IV signs, and final pages.
-- `[x]` Add Playwright mobile coverage for semantic navigation and secondary page list rows around pages `114`-`123` with bounding-box no-overlap assertions.
+- `[x]` Add Playwright desktop coverage for first page, index pages, an image/diagram-heavy page, Appendix I, Appendix II around pages `114`-`123`, Appendix IV signs, and final pages, including evidence that multiple Russian blocks are independently placed from their own layout bounds.
+- `[x]` Add Playwright mobile coverage for semantic navigation, secondary page list rows, and the page canvas around pages `114`-`123` with bounding-box no-overlap assertions for independently positioned blocks.
 - `[x]` Preserve or update existing deferred-manual-loading and service-worker tests.
 - `[x]` Run and record `pnpm run validate:manual-4ruedas`.
 - `[x]` Run and record focused Node tests.
@@ -89,17 +89,17 @@
 
 ## Acceptance Checklist
 
-- `[x]` Primary `Руководство 4R` renders a Russian page-layout-preserving web manual, not a Spanish screenshot beside a Russian text card.
+- `[x]` Primary `Руководство 4R` renders a Russian page-layout-preserving web manual, not a Spanish screenshot beside a Russian text card. Follow-up implementation now drives runtime placement from per-block bounds.
 - `[x]` All 200 source pages/content units are represented in layout data and runtime UI.
 - `[x]` Exact Russian translation remains complete with no simplification, omission, summary, or placeholder content.
-- `[x]` Images, diagrams, tables, icons, captions, callouts, labels, footnotes, page numbers, and page visual hierarchy remain present locally.
+- `[x]` Images, diagrams, tables, icons, captions, callouts, labels, footnotes, page numbers, and page visual hierarchy remain present locally as structured page composition rather than a full-page visual catch-all plus one text flow.
 - `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics.
 - `[x]` Flat page navigation/search is secondary and does not remain the only way to browse the manual.
-- `[x]` Mobile navigation and page rows are readable and non-overlapping, including pages `114`-`123`.
+- `[x]` Mobile navigation, page rows, and mobile page canvas are readable and non-overlapping, including pages `114`-`123`, after the independently positioned layout fix.
 - `[x]` Runtime uses no PDF viewer, runtime PDF rendering, remote manual asset, backend endpoint, live AI request, or runtime network fetch for manual content/assets.
 - `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
-- `[x]` Validators, tests, docs, and process memory are complete.
-- `[ ]` Review findings are resolved or disposed by Architect before final validation.
+- `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture.
+- `[x]` Review findings are disposed by Architect before follow-up implementation; follow-up fixes are implemented and remain subject to Review Agent/Orchestrator verification.
 - `[ ]` Final Architect validation passes before final Analyst validation.
 - `[ ]` Final Analyst validation passes before Orchestrator completion/merge readiness.
 
@@ -125,7 +125,7 @@
 
 ## Known Issues
 
-- None known for the implementation slice before review. The prior feature `027` side-by-side reader, mobile row overlap risk, and flat-primary navigation were replaced by this feature.
+- None known after the follow-up implementation slice. The accepted P1 findings have implementation fixes and are awaiting pushed PR update plus Review Agent/Orchestrator verification.
 
 ## Implementation Agent Feedback
 
@@ -133,6 +133,7 @@
 
 ## Implementation Decisions And Evidence
 
+- The implementation evidence below is preserved as historical evidence for PR `#172` head `5f9a61301bdf52dff1c3da6bbea265559447854b`, but it is superseded for layout-preservation acceptance by the blocking Review Agent findings disposed below.
 - Added committed derived manifests: `layout.ru.json` contains 200 page layout records with canvas metadata, source-text masks, visual preservation regions, ordered Russian blocks, bounds, typography/fit metadata, provenance, and reconstruction hashes; `navigation.ru.json` contains 11 top-level source-derived sections and 56 child topics from index pages 11-12 plus page-heading review.
 - Runtime manual loading remains behind `import("./data/manual4Ruedas")`; non-manual startup still defers the manual chunk, and service-worker install precache exclusions for the manual data chunk and 200 page images remain covered by existing tests/build.
 - The primary UI now renders `manual-page-canvas` / `manual-page-russian-layout`; validator scans block `.manual-page-grid`, `.manual-visual`, and `.manual-translation` from returning to the manual runtime source.
@@ -142,6 +143,27 @@
 - Focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium` -> 3/3 tests passed, including semantic navigation, old split UI absence, local-only manual requests, and mobile bounding-box no-overlap checks for pages 114-123.
 - Full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, Node test suite, production build/service-worker generation, and full Playwright suite completed; E2E reported 58/58 tests passed.
 - Browser plugin sanity check against built preview at `http://127.0.0.1:5178/` confirmed `canvasCount: 1`, `oldGridCount: 0`, and page 14 Russian layout text in the primary manual detail.
+- Follow-up layout generation replaces uniform flow splitting with per-block absolute boxes, per-block source-text masks, and non-full-page visual regions. Validators now fail on uniform synthetic block geometry, single generic scrolling text regions, broad one-mask replacement, full-page-only visual catch-all regions, stale block typography fit, runtime `.manual-russian-page-flow`, or renderer source that does not call `manualBoundsStyle(block.bounds)`.
+- Follow-up runtime rendering uses `manual-page-russian-layout` as an absolute layer and renders each `manual-layout-block` with its own `block.bounds`, `fontScale`, and `lineHeight`; preserved visual regions are exposed as page metadata/DOM regions for regression checks.
+- Follow-up focused validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Follow-up focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 9/9 tests passed, including generic flow geometry and full-page catch-all rejection.
+- Follow-up focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual"` -> 6/6 tests passed across desktop and mobile, including absolute block placement, overflow/overlap checks, preserved visual-region non-overlap, old flow absence, and mobile pages 114-123.
+- Follow-up Browser sanity check against built preview at `http://127.0.0.1:5178/` confirmed `canvasCount: 1`, `layoutBlockCount: 3`, `absoluteBlocks: true`, `distinctBoxes: 3`, `visualRegionCount: 2`, `oldFlowCount: 0`, and `oldSplitCount: 0` on page 14.
+- Follow-up full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, 288/288 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+
+## Architect Disposition Of Review Findings
+
+- `PRRT_kwDOSX65IM6E_DSH` (`src/App.tsx:1491`, review `4369149578`): accepted as blocking P1. The renderer violates the spec because it maps every `layout.blocks` entry into a single `.manual-russian-page-flow`, so each block's own `bounds` do not drive placement. Follow-up task: Implementation Agent must render each Russian layout block as an independently positioned page element using that block's `bounds`, typography, fit metadata, and reading-order/provenance data. A flow container may exist only as a page canvas/layer; it must not be the mechanism that collapses all translated content into one scrolling text stream.
+- `PRRT_kwDOSX65IM6E_DSL` (`scripts/content-manual-vehiculo-4ruedas.mjs:687`, review `4369149578`): accepted as blocking P1. The generated layout data violates the spec because block geometry is synthetic uniform splitting (`boundsWithinRegion`) and visual preservation is represented by a generic full-page region/mask pattern rather than page-specific document structure. Follow-up task: Implementation Agent must replace the generator/manifest data with page-specific block bounds, masks, and visual regions derived from real page structure or curated against the rendered pages. Generic one-flow regions, one full-page visual catch-all, and coordinates that merely divide the transcript evenly are not acceptable.
+
+## Follow-Up Implementation Requirements
+
+- Layout generation must stop treating `translation.fullTranslationRu` as a transcript to be evenly divided through one flow region. Each page must have a reviewable set of block bounds matching visible document structure: headings, body paragraphs, bullet/list items, table cells, captions, callouts, labels, footnotes, and page numbers.
+- Runtime rendering must apply `manualBoundsStyle(block.bounds)` or equivalent per block. Tests or static validation must fail if the renderer maps all blocks into one unpositioned parent flow or ignores `block.bounds`.
+- Manifest validation must fail when a page's text blocks are generated by uniform vertical splitting, when all or most text blocks share a single generic region without page-specific geometry, or when a text-bearing page declares only a full-page visual region instead of meaningful preserved visual/non-text regions.
+- Node tests must include negative fixtures or mutation checks for generic flow bounds, full-page-only visual regions, and renderer/source patterns that ignore per-block bounds.
+- Playwright coverage must verify, on representative pages including page `14` and pages `114`-`123`, that multiple Russian blocks have distinct in-page bounding boxes and do not overlap each other or preserved visual regions on desktop and mobile.
+- Existing successful validation/preflight evidence may be reused only after the above fixes are implemented and rerun; the previous pass does not satisfy the layout-preservation acceptance criteria by itself.
 
 ## Review Requirements
 
@@ -153,11 +175,11 @@
 
 ## Cycle PR Set
 
-- Pending Orchestrator assignment. Expected implementation PR slice: feature `028` branch/worktree based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, unless Orchestrator assigns a newer latest-main implementation worktree.
+- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head `5f9a61301bdf52dff1c3da6bbea265559447854b`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Included in final validation only after accepted blocking review findings are fixed and re-reviewed.
 
 ## Final Validation Evidence
 
-- Current final-validation status: not started.
+- Current final-validation status: blocked by accepted P1 review findings until follow-up implementation and review verification complete.
 - Architect return count: 0.
 - Limit escalation: none.
 - Effective content head: pending implementation.

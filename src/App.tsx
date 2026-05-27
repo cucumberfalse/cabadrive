@@ -1449,7 +1449,6 @@ function ManualRussianPageCanvas({
   imageLoadFailed: boolean;
   onImageError: () => void;
 }) {
-  const textRegion = layout.textRegions[0];
   return (
     <div
       className={`manual-document-page manual-layout-${layout.layoutKind}`}
@@ -1473,6 +1472,16 @@ function ManualRussianPageCanvas({
           onError={onImageError}
         />
       )}
+      {layout.visualRegions.map((region) => (
+        <div
+          key={region.id}
+          className="manual-preserved-visual-region"
+          data-testid="manual-preserved-visual-region"
+          data-region-type={region.type}
+          style={manualBoundsStyle(region.bounds)}
+          aria-hidden="true"
+        />
+      ))}
       {layout.masks.map((mask) => (
         <div
           key={mask.id}
@@ -1481,19 +1490,27 @@ function ManualRussianPageCanvas({
           aria-hidden="true"
         />
       ))}
-      {textRegion && (
-        <div
-          className="manual-russian-page-flow"
-          data-testid="manual-page-russian-layout"
-          style={{ ...manualBoundsStyle(textRegion.bounds), "--manual-font-scale": textRegion.fontScale } as CSSProperties}
-        >
-          {layout.blocks.map((block) => (
-            <p key={block.id} className={`manual-russian-block manual-russian-block-${block.type}`} data-block-type={block.type}>
-              {manualDisplayText(block)}
-            </p>
-          ))}
-        </div>
-      )}
+      <div className="manual-russian-page-layer" data-testid="manual-page-russian-layout">
+        {layout.blocks.map((block) => (
+          <p
+            key={block.id}
+            className={`manual-russian-block manual-russian-block-${block.type}`}
+            data-testid="manual-layout-block"
+            data-block-id={block.id}
+            data-block-type={block.type}
+            data-block-bounds={`${block.bounds.x},${block.bounds.y},${block.bounds.width},${block.bounds.height}`}
+            style={
+              {
+                ...manualBoundsStyle(block.bounds),
+                "--manual-block-font-scale": block.typography.fontScale,
+                "--manual-block-line-height": block.typography.lineHeight
+              } as CSSProperties
+            }
+          >
+            {manualDisplayText(block)}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
