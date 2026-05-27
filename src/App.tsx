@@ -18,7 +18,7 @@ import {
   type Question,
   type TopicGuideTicket
 } from "./data/content";
-import type { ManualPage, ManualRuManifest } from "./data/manual4Ruedas";
+import type { ManualLayoutBlock, ManualNavigationEntry, ManualLayoutManifest, ManualPage, ManualPageBounds, ManualPageLayout, ManualRuManifest, ManualNavigationManifest } from "./data/manual4Ruedas";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -41,18 +41,25 @@ type PrimarySourceDocumentMatch = {
 type ManualManifestSummary = {
   pages: number;
   expectedPages: number;
+  layoutPages: number;
+  navigationSections: number;
+  navigationTopics: number;
   localAssets: number;
   reusedTranslations: number;
   visualTextTranslations: number;
 };
 type ManualManifestState = {
   manifest?: ManualRuManifest;
+  layout?: ManualLayoutManifest;
+  navigation?: ManualNavigationManifest;
   summary?: ManualManifestSummary;
   error?: string;
   isLoading: boolean;
 };
 type ManualSearchIndexEntry = {
   page: ManualPage;
+  section?: ManualNavigationEntry;
+  resultId: string;
   searchText: string;
 };
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
@@ -1389,11 +1396,6 @@ function ProcessGuideView() {
   );
 }
 
-function manualTranslationStatusLabel(page: ManualPage) {
-  if (page.translation.status === "reused_primary_source_chunk") return "Перевод из approved primary-source chunk";
-  return "Перевод визуального текста страницы";
-}
-
 function manualPageSearchText(page: ManualPage) {
   return normalizeSearchText(
     [
@@ -1409,9 +1411,165 @@ function manualPageSearchText(page: ManualPage) {
   );
 }
 
+const DEFAULT_MANUAL_PAGE = 14;
+
+function flattenManualNavigation(entries: ManualNavigationEntry[]): ManualNavigationEntry[] {
+  return entries.flatMap((entry) => [entry, ...flattenManualNavigation(entry.children ?? [])]);
+}
+
+function manualExactStartNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number): ManualNavigationEntry | undefined {
+  for (const entry of entries) {
+    if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
+    const childExactStart = manualExactStartNavigationEntryForPage(entry.children ?? [], pageNumber);
+    if (childExactStart) return childExactStart;
+    if (entry.startPage === pageNumber) return entry;
+  }
+  return undefined;
+}
+
+function manualNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number, deepest = false): ManualNavigationEntry | undefined {
+  if (deepest) {
+    const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
+    if (exactStartEntry) return exactStartEntry;
+  }
+  for (const entry of entries) {
+    if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
+    if (deepest) return manualNavigationEntryForPage(entry.children ?? [], pageNumber, true) ?? entry;
+    return entry;
+  }
+  return undefined;
+}
+
+function manualNavigationEntryCoversPage(entry: ManualNavigationEntry | undefined, pageNumber: number) {
+  return Boolean(entry && pageNumber >= entry.startPage && pageNumber <= entry.endPage);
+}
+
+function manualNavigationEntryForDestinationPage(
+  entries: ManualNavigationEntry[],
+  pageNumber: number,
+  options: { requestedEntry?: ManualNavigationEntry; currentEntry?: ManualNavigationEntry } = {}
+) {
+  if (manualNavigationEntryCoversPage(options.requestedEntry, pageNumber)) return options.requestedEntry;
+
+  const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
+  if (manualNavigationEntryCoversPage(options.currentEntry, pageNumber)) {
+    return options.currentEntry?.startPage === pageNumber ? options.currentEntry : exactStartEntry ?? options.currentEntry;
+  }
+
+  return exactStartEntry ?? manualNavigationEntryForPage(entries, pageNumber, true);
+}
+
+function uniqueManualMatchingPages(entries: ManualSearchIndexEntry[]) {
+  const seenPageNumbers = new Set<number>();
+  return entries.flatMap((entry) => {
+    if (seenPageNumbers.has(entry.page.pageNumber)) return [];
+    seenPageNumbers.add(entry.page.pageNumber);
+    return [entry.page];
+  });
+}
+
+function manualQueryPageNumber(query: string) {
+  return /^\d+$/u.test(query) ? Number(query) : undefined;
+}
+
+function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
+  return {
+    left: `${bounds.x * 100}%`,
+    top: `${bounds.y * 100}%`,
+    width: `${bounds.width * 100}%`,
+    height: `${bounds.height * 100}%`
+  };
+}
+
+function manualDisplayText(block: ManualLayoutBlock) {
+  return block.type === "heading" ? block.textRu.replace(/^#+\s*/u, "") : block.textRu;
+}
+
+function ManualRussianPageCanvas({
+  page,
+  layout,
+  imageLoadFailed,
+  onImageError
+}: {
+  page: ManualPage;
+  layout: ManualPageLayout;
+  imageLoadFailed: boolean;
+  onImageError: () => void;
+}) {
+  return (
+    <div
+      className={`manual-document-page manual-layout-${layout.layoutKind}`}
+      style={{ aspectRatio: `${layout.canvas.width} / ${layout.canvas.height}` }}
+      data-testid="manual-page-canvas"
+      aria-label={`Русская веб-страница ${page.pageNumber} из ${layout.canvas.width} на ${layout.canvas.height}`}
+    >
+      {imageLoadFailed ? (
+        <div className="manual-image-error" role="alert">
+          Локальная визуальная основа страницы не загрузилась: {layout.visualBase.localPath}
+        </div>
+      ) : (
+        <img
+          className="manual-page-base"
+          data-testid="manual-page-local-visual"
+          src={assetUrl(layout.visualBase.localPath)}
+          width={layout.visualBase.width}
+          height={layout.visualBase.height}
+          alt=""
+          aria-hidden="true"
+          onError={onImageError}
+        />
+      )}
+      {layout.visualRegions.map((region) => (
+        <div
+          key={region.id}
+          className="manual-preserved-visual-region"
+          data-testid="manual-preserved-visual-region"
+          data-region-type={region.type}
+          style={manualBoundsStyle(region.bounds)}
+          aria-hidden="true"
+        />
+      ))}
+      {layout.masks.map((mask) => (
+        <div
+          key={mask.id}
+          className="manual-source-mask"
+          data-testid="manual-source-mask"
+          data-mask-id={mask.id}
+          data-mask-role={mask.role}
+          data-source-geometry={mask.sourceGeometry}
+          style={{ ...manualBoundsStyle(mask.bounds), backgroundColor: mask.fill, opacity: mask.opacity }}
+          aria-hidden="true"
+        />
+      ))}
+      <div className="manual-russian-page-layer" data-testid="manual-page-russian-layout">
+        {layout.blocks.map((block) => (
+          <p
+            key={block.id}
+            className={`manual-russian-block manual-russian-block-${block.type}`}
+            data-testid="manual-layout-block"
+            data-block-id={block.id}
+            data-block-type={block.type}
+            data-block-bounds={`${block.bounds.x},${block.bounds.y},${block.bounds.width},${block.bounds.height}`}
+            style={
+              {
+                ...manualBoundsStyle(block.bounds),
+                "--manual-block-font-scale": block.typography.fontScale,
+                "--manual-block-line-height": block.typography.lineHeight
+              } as CSSProperties
+            }
+          >
+            {manualDisplayText(block)}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Manual4RuedasView() {
   const [manifestState, setManifestState] = useState<ManualManifestState>({ isLoading: true });
-  const [selectedPageNumber, setSelectedPageNumber] = useState(1);
+  const [selectedPageNumber, setSelectedPageNumber] = useState(DEFAULT_MANUAL_PAGE);
+  const [selectedNavigationEntryId, setSelectedNavigationEntryId] = useState<string | undefined>();
   const [searchQuery, setSearchQuery] = useState("");
   const [isManualListOpen, setIsManualListOpen] = useState(true);
   const [imageLoadFailedPage, setImageLoadFailedPage] = useState<number | undefined>();
@@ -1419,10 +1577,17 @@ function Manual4RuedasView() {
   useEffect(() => {
     let isMounted = true;
     import("./data/manual4Ruedas")
-      .then(({ assertManualManifestRuntimeShape, manual4RuedasRu, manualManifestSummary }) => {
-        const manifest = assertManualManifestRuntimeShape(manual4RuedasRu) as ManualRuManifest;
-        const summary = manualManifestSummary(manifest);
-        if (isMounted) setManifestState({ manifest, summary, isLoading: false });
+      .then(({ assertManualLayoutRuntimeShape, manual4RuedasLayoutRu, manual4RuedasNavigationRu, manual4RuedasRu, manualManifestSummary }) => {
+        const { manifest, layout, navigation } = assertManualLayoutRuntimeShape(manual4RuedasRu, manual4RuedasLayoutRu, manual4RuedasNavigationRu);
+        const baseSummary = manualManifestSummary(manifest);
+        const navigationTopics = flattenManualNavigation(navigation.entries).length - navigation.entries.length;
+        const summary: ManualManifestSummary = {
+          ...baseSummary,
+          layoutPages: layout.pages.length,
+          navigationSections: navigation.entries.length,
+          navigationTopics
+        };
+        if (isMounted) setManifestState({ manifest, layout, navigation, summary, isLoading: false });
       })
       .catch((error: unknown) => {
         if (!isMounted) return;
@@ -1438,17 +1603,73 @@ function Manual4RuedasView() {
   }, []);
 
   const manifest = manifestState.manifest;
+  const layout = manifestState.layout;
+  const navigation = manifestState.navigation;
   const summary = manifestState.summary;
+  const layoutByPageNumber = useMemo(() => new Map(layout?.pages.map((pageLayout) => [pageLayout.pageNumber, pageLayout]) ?? []), [layout]);
+  const navigationEntries = useMemo(() => (navigation ? flattenManualNavigation(navigation.entries) : []), [navigation]);
+  const navigationEntryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.id, entry])), [navigationEntries]);
+  const manualPageIndex = useMemo<ManualSearchIndexEntry[]>(
+    () =>
+      manifest?.pages.map((page) => {
+        const section = navigation ? manualNavigationEntryForPage(navigation.entries, page.pageNumber, true) : undefined;
+        return {
+          page,
+          section,
+          resultId: `page-${page.pageNumber}`,
+          searchText: normalizeSearchText([manualPageSearchText(page), section?.id ?? "", section?.titleRu ?? "", section?.titleEs ?? ""].join(" "))
+        };
+      }) ?? [],
+    [manifest, navigation]
+  );
   const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
-    () => manifest?.pages.map((page) => ({ page, searchText: manualPageSearchText(page) })) ?? [],
-    [manifest]
+    () => {
+      if (!manifest) return [];
+      const semanticEntriesByStartPage = new Map<number, ManualNavigationEntry[]>();
+      for (const entry of navigationEntries) {
+        if (entry.level !== "topic") continue;
+        semanticEntriesByStartPage.set(entry.startPage, [...(semanticEntriesByStartPage.get(entry.startPage) ?? []), entry]);
+      }
+
+      return manifest.pages.flatMap((page) => {
+        const pageEntry = manualPageIndex.find((entry) => entry.page.pageNumber === page.pageNumber);
+        const exactStartEntries = semanticEntriesByStartPage.get(page.pageNumber) ?? [];
+        const semanticResults = exactStartEntries.map((section) => ({
+          page,
+          section,
+          resultId: `section-${section.id}`,
+          searchText: normalizeSearchText([manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+        }));
+        if (semanticResults.length) return semanticResults;
+        if (pageEntry) return [pageEntry];
+        return {
+          page,
+          resultId: `page-${page.pageNumber}`,
+          searchText: manualPageSearchText(page)
+        };
+      });
+    },
+    [manifest, manualPageIndex, navigationEntries]
   );
   const query = normalizeSearchText(searchQuery.trim());
-  const matchingPages = manifest ? (query ? manualSearchIndex.filter((entry) => entry.searchText.includes(query)).map((entry) => entry.page) : manifest.pages) : [];
+  const queryPageNumber = query ? manualQueryPageNumber(query) : undefined;
+  const matchingEntries = query
+    ? manualSearchIndex.filter((entry) => (queryPageNumber === undefined ? entry.searchText.includes(query) : entry.page.pageNumber === queryPageNumber))
+    : manualSearchIndex;
+  const matchingPages = manifest ? (query ? uniqueManualMatchingPages(matchingEntries) : manifest.pages) : [];
   const selectedPage =
     manifest && query
       ? matchingPages.find((page) => page.pageNumber === selectedPageNumber) ?? matchingPages[0]
-      : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages[0];
+      : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages.find((page) => page.pageNumber === DEFAULT_MANUAL_PAGE) ?? manifest?.pages[0];
+  const selectedLayout = selectedPage ? layoutByPageNumber.get(selectedPage.pageNumber) : undefined;
+  const selectedTopLevelSection = navigation && selectedPage ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber) : undefined;
+  const selectedSemanticEntryById = selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
+  const selectedSemanticEntry =
+    selectedPage && manualNavigationEntryCoversPage(selectedSemanticEntryById, selectedPage.pageNumber)
+      ? selectedSemanticEntryById
+      : navigation && selectedPage
+        ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber, true)
+        : undefined;
   const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
   const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
   const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
@@ -1462,7 +1683,7 @@ function Manual4RuedasView() {
     );
   }
 
-  if (manifestState.error || !manifest || !summary) {
+  if (manifestState.error || !manifest || !layout || !navigation || !summary) {
     return (
       <section className="workspace manual-reader">
         <h2>Manual 4 ruedas</h2>
@@ -1471,22 +1692,33 @@ function Manual4RuedasView() {
       </section>
     );
   }
+  const manualNavigation = navigation;
 
-  function selectManualPage(pageNumber: number) {
+  function selectManualPage(pageNumber: number, options: { entryId?: string; preserveCurrentEntry?: boolean } = {}) {
+    const requestedEntry = options.entryId ? navigationEntryById.get(options.entryId) : undefined;
+    const currentEntry = options.preserveCurrentEntry && selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
+    const destinationEntry = manualNavigationEntryForDestinationPage(manualNavigation.entries, pageNumber, { requestedEntry, currentEntry });
     setSelectedPageNumber(pageNumber);
+    setSelectedNavigationEntryId(destinationEntry?.id);
     setImageLoadFailedPage(undefined);
     setIsManualListOpen(false);
+  }
+
+  function selectManualEntry(entry: ManualNavigationEntry) {
+    setSearchQuery("");
+    selectManualPage(entry.startPage, { entryId: entry.id });
   }
 
   function goToRelativeManualPage(offset: number) {
     if (selectedPageIndex < 0) return;
     const nextPage = matchingPages[selectedPageIndex + offset];
-    if (nextPage) selectManualPage(nextPage.pageNumber);
+    if (nextPage) selectManualPage(nextPage.pageNumber, { preserveCurrentEntry: true });
   }
 
   function resetManualControls() {
     setSearchQuery("");
-    setSelectedPageNumber(1);
+    setSelectedPageNumber(DEFAULT_MANUAL_PAGE);
+    setSelectedNavigationEntryId(undefined);
     setImageLoadFailedPage(undefined);
     setIsManualListOpen(true);
   }
@@ -1497,18 +1729,18 @@ function Manual4RuedasView() {
         <div>
           <p className="eyebrow">Manual GCBA</p>
           <h2 id="manual-title">{manifest.titleRu}</h2>
-          <p>Испанская страница показана как локальный page-faithful render; русский текст - полный точный перевод для учебной поддержки Cabadrive.</p>
+          <p>Русская веб-страница собирается из локальной визуальной основы, масок и проверенных текстовых блоков, сохраняя порядок, изображения и структуру официального manual.</p>
         </div>
         <div className="materials-status manual-status" aria-label="Покрытие полного manual">
           <span>{summary.pages} / {summary.expectedPages} страниц</span>
-          <span>{summary.localAssets} локальных page assets</span>
-          <span>{summary.reusedTranslations} approved chunks</span>
-          <span>{summary.visualTextTranslations} визуальные страницы</span>
+          <span>{summary.layoutPages} страниц верстки</span>
+          <span>{summary.navigationSections} разделов / {summary.navigationTopics} тем</span>
+          <span>{summary.localAssets} локальных изображений</span>
         </div>
       </header>
 
       <div className={`manual-layout ${isManualListOpen ? "compact-list-open" : "compact-detail-open"}`}>
-        <aside className="manual-page-list" aria-label="Страницы полного manual">
+        <aside className="manual-page-list" aria-label="Навигация полного manual" data-testid="manual-navigation-panel">
           <label className="search-box manual-search">
             <Search size={18} aria-hidden="true" />
             <span className="sr-only">Поиск по manual</span>
@@ -1525,44 +1757,107 @@ function Manual4RuedasView() {
             />
           </label>
           <div className="source-results-summary" aria-live="polite">
-            Найдено: {matchingPages.length} страниц
+            {query ? `Найдено: ${matchingPages.length} страниц` : `${manualNavigation.entries.length} разделов из индекса manual`}
           </div>
 
-          {matchingPages.length ? (
-            <div className="manual-page-buttons" aria-label="Список страниц manual">
-              {matchingPages.map((page) => (
+          {query && matchingPages.length ? (
+            <div className="manual-page-buttons manual-search-results" aria-label="Результаты поиска по страницам manual">
+              {matchingEntries.map(({ page, section, resultId }) => (
                 <button
                   type="button"
-                  key={page.pageNumber}
-                  className={page.pageNumber === selectedPage?.pageNumber ? "active" : ""}
-                  onClick={() => selectManualPage(page.pageNumber)}
+                  key={resultId}
+                  className={page.pageNumber === selectedPage?.pageNumber && (!section || selectedSemanticEntry?.id === section.id) ? "active" : ""}
+                  onClick={() => selectManualPage(page.pageNumber, { entryId: section?.id })}
                   aria-label={`Страница ${page.pageNumber}. ${page.translation.headingRu}`}
                   data-testid={`manual-page-button-${page.pageNumber}`}
+                  data-result-entry-id={section?.id ?? ""}
+                  data-search-result-id={resultId}
                 >
                   <span>{page.pageNumber}</span>
                   <strong>{page.translation.headingRu}</strong>
-                  <small>{manualTranslationStatusLabel(page)}</small>
+                  <small>{section?.titleRu ?? "Раздел manual"}</small>
                 </button>
               ))}
             </div>
-          ) : (
+          ) : query ? (
             <div className="source-empty-state" role="status">
               <strong>Ничего не найдено</strong>
               <p>В полном локальном manual нет страницы под такой поиск.</p>
               <button type="button" className="tool-button" onClick={resetManualControls}>Сбросить поиск</button>
             </div>
+          ) : (
+            <>
+              <nav className="manual-toc" aria-label="Структура документа manual">
+                {manualNavigation.entries.map((entry) => (
+                  <section key={entry.id} className="manual-toc-section">
+                    <button
+                      type="button"
+                      className={selectedTopLevelSection?.id === entry.id ? "manual-toc-button active" : "manual-toc-button"}
+                      onClick={() => selectManualEntry(entry)}
+                      aria-label={`${entry.titleRu}. Страницы ${entry.startPage}-${entry.endPage}`}
+                      data-testid={`manual-nav-${entry.id}`}
+                    >
+                      <span>{entry.startPage}-{entry.endPage}</span>
+                      <strong>{entry.titleRu}</strong>
+                      <small>{entry.children?.length ?? 0} тем · {entry.sourceEvidence === "index_pages_11_12" ? "индекс" : "заголовки"}</small>
+                    </button>
+                    {entry.children?.length ? (
+                      <div className="manual-toc-children">
+                        {entry.children.map((child) => (
+                          <button
+                            type="button"
+                            key={child.id}
+                            className={selectedSemanticEntry?.id === child.id ? "manual-topic-button active" : "manual-topic-button"}
+                            onClick={() => selectManualEntry(child)}
+                            aria-label={`${child.titleRu}. Страницы ${child.startPage}-${child.endPage}`}
+                            data-testid={`manual-nav-${child.id}`}
+                          >
+                            <span>{child.startPage}</span>
+                            <strong>{child.titleRu}</strong>
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+                  </section>
+                ))}
+              </nav>
+
+              <details className="manual-page-access" data-testid="manual-page-access">
+                <summary>Страницы 1-200</summary>
+                <div className="manual-page-buttons" aria-label="Вторичный список страниц manual">
+                  {manualPageIndex.map(({ page, section }) => (
+                    <button
+                      type="button"
+                      key={page.pageNumber}
+                      className={page.pageNumber === selectedPage?.pageNumber ? "active" : ""}
+                      onClick={() => selectManualPage(page.pageNumber)}
+                      aria-label={`Страница ${page.pageNumber}. ${page.translation.headingRu}`}
+                      data-testid={`manual-page-button-${page.pageNumber}`}
+                    >
+                      <span>{page.pageNumber}</span>
+                      <strong>{page.translation.headingRu}</strong>
+                      <small>{section?.titleRu ?? "Раздел manual"}</small>
+                    </button>
+                  ))}
+                </div>
+              </details>
+            </>
           )}
         </aside>
 
-        {selectedPage ? (
+        {selectedPage && selectedLayout ? (
           <article className="manual-page-detail" data-testid="manual-page-detail">
             <button type="button" className="tool-button source-mobile-back" onClick={() => setIsManualListOpen(true)}>
-              <ChevronLeft size={18} aria-hidden="true" /> К списку страниц
+              <ChevronLeft size={18} aria-hidden="true" /> К навигации
             </button>
             <div className="manual-page-heading">
               <div>
                 <span className="block-label">PDF page {selectedPage.sourcePageNumber}</span>
                 <h2>{selectedPage.translation.headingRu}</h2>
+                <p data-testid="manual-selected-semantic-label">
+                  {selectedTopLevelSection?.titleRu}
+                  {selectedSemanticEntry && selectedSemanticEntry.id !== selectedTopLevelSection?.id ? ` · ${selectedSemanticEntry.titleRu}` : ""}
+                </p>
               </div>
               <div className="manual-page-counter" aria-label="Позиция страницы">
                 {selectedPage.pageNumber} / {manifest.source.pageCount}
@@ -1576,52 +1871,12 @@ function Manual4RuedasView() {
               <span>asset SHA {selectedPage.visualAsset.sha256.slice(0, 12)}</span>
             </div>
 
-            <div className="manual-page-grid">
-              <figure className="manual-visual" data-testid="manual-page-visual">
-                {imageLoadFailed ? (
-                  <div className="manual-image-error" role="alert">
-                    Локальное изображение страницы не загрузилось: {selectedPage.visualAsset.localPath}
-                  </div>
-                ) : (
-                  <img
-                    src={assetUrl(selectedPage.visualAsset.localPath)}
-                    width={selectedPage.visualAsset.width}
-                    height={selectedPage.visualAsset.height}
-                    alt={`Оригинальная испанская страница ${selectedPage.sourcePageNumber} manual GCBA`}
-                    onError={() => setImageLoadFailedPage(selectedPage.pageNumber)}
-                  />
-                )}
-                <figcaption>
-                  Официальная испанская страница сохранена локально как render PDF. Runtime не загружает PDF viewer.
-                </figcaption>
-              </figure>
-
-              <section className="manual-translation" aria-labelledby="manual-translation-title" data-testid="manual-page-translation">
-                <span className="block-label">{manualTranslationStatusLabel(selectedPage)}</span>
-                <h3 id="manual-translation-title">Полный русский перевод</h3>
-                <p className="manual-translation-text">{selectedPage.translation.fullTranslationRu}</p>
-                <div className="manual-provenance">
-                  {selectedPage.translation.chunkProvenance ? (
-                    <>
-                      <strong>{selectedPage.translation.chunkProvenance.chunkId}</strong>
-                      <span>QA: {selectedPage.translation.chunkProvenance.translationQaStatus}</span>
-                      <span>Shard: {selectedPage.translation.chunkProvenance.shardPath}</span>
-                      {selectedPage.translation.chunkProvenance.sourceSpan && (
-                        <span>
-                          Archive lines {selectedPage.translation.chunkProvenance.sourceSpan.startLine}-{selectedPage.translation.chunkProvenance.sourceSpan.endLine}
-                        </span>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <strong>{selectedPage.translation.visualTextTranslationProvenance?.featureId}</strong>
-                      <span>{selectedPage.translation.visualTextTranslationProvenance?.method}</span>
-                      <span>Reviewed {selectedPage.translation.visualTextTranslationProvenance?.reviewedAt}</span>
-                    </>
-                  )}
-                </div>
-              </section>
-            </div>
+            <ManualRussianPageCanvas
+              page={selectedPage}
+              layout={selectedLayout}
+              imageLoadFailed={imageLoadFailed}
+              onImageError={() => setImageLoadFailedPage(selectedPage.pageNumber)}
+            />
 
             <div className="manual-actions">
               <button type="button" className="tool-button" onClick={() => goToRelativeManualPage(-1)} disabled={selectedPageIndex <= 0}>
@@ -1633,8 +1888,34 @@ function Manual4RuedasView() {
               </button>
             </div>
 
+            <details className="manual-provenance" data-testid="manual-page-provenance">
+              <summary>Источник и покрытие страницы</summary>
+              <div>
+                {selectedPage.translation.chunkProvenance ? (
+                  <>
+                    <strong>{selectedPage.translation.chunkProvenance.chunkId}</strong>
+                    <span>QA: {selectedPage.translation.chunkProvenance.translationQaStatus}</span>
+                    <span>Shard: {selectedPage.translation.chunkProvenance.shardPath}</span>
+                    {selectedPage.translation.chunkProvenance.sourceSpan && (
+                      <span>
+                        Archive lines {selectedPage.translation.chunkProvenance.sourceSpan.startLine}-{selectedPage.translation.chunkProvenance.sourceSpan.endLine}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <strong>{selectedPage.translation.visualTextTranslationProvenance?.featureId}</strong>
+                    <span>{selectedPage.translation.visualTextTranslationProvenance?.method}</span>
+                    <span>Reviewed {selectedPage.translation.visualTextTranslationProvenance?.reviewedAt}</span>
+                  </>
+                )}
+                <span>{selectedLayout.blocks.length} layout blocks</span>
+                <span>{selectedLayout.visualRegions.length} visual region</span>
+              </div>
+            </details>
+
             <footer className="source-line manual-source-line">
-              Архив: {manifest.source.rawOriginalPath}. Markdown-текст: {manifest.source.archiveMarkdownPath}. Source URL записан в manifest для трассировки и не используется как runtime asset.
+              Архив: {manifest.source.rawOriginalPath}. Верстка: layout.ru.json. Навигация: navigation.ru.json. Source URL записан только для трассировки.
             </footer>
           </article>
         ) : (

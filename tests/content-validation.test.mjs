@@ -12,7 +12,10 @@ test("content validation command passes", () => {
     output,
     new RegExp(`Learning images validated: ${learningSummary.coverageUnitCount} units, ${learningSummary.imageCount} local images`)
   );
-  assert.match(output, /Manual 4 ruedas RU validated: 200\/200 pages, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages/);
+  assert.match(
+    output,
+    /Manual 4 ruedas RU validated: 200\/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages/
+  );
   assert.match(output, /Content validation passed/);
 });
 

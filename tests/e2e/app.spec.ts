@@ -11,6 +11,8 @@ const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru
 const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
 const manualManifest = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json", "utf8"));
+const manualLayout = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/layout.ru.json", "utf8"));
+const manualNavigation = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json", "utf8"));
 const learningImageById = new Map(learningImages.images.map((image: { imageId: string }) => [image.imageId, image]));
 const learningCoverageByUnitId = new Map(learningImages.coverage.map((record: { unitId: string }) => [record.unitId, record]));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
@@ -146,8 +148,149 @@ async function openCompleteManual(page: Page) {
 }
 
 async function showCompleteManualList(page: Page) {
-  const backButton = page.getByRole("button", { name: /К списку страниц/ });
+  const backButton = page.getByRole("button", { name: /К навигации/ });
   if (await backButton.isVisible()) await backButton.click();
+}
+
+async function openCompleteManualPage(page: Page, pageNumber: number) {
+  await showCompleteManualList(page);
+  const pageAccess = page.getByTestId("manual-page-access");
+  if (!(await pageAccess.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await pageAccess.locator("summary").click();
+  }
+  await page.getByTestId(`manual-page-button-${pageNumber}`).scrollIntoViewIfNeeded();
+  await page.getByTestId(`manual-page-button-${pageNumber}`).click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+}
+
+type ManualRenderedBox = {
+  id: string | null;
+  type: string | null;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  right: number;
+  bottom: number;
+  position: string;
+  scrollWidth: number;
+  clientWidth: number;
+  scrollHeight: number;
+  clientHeight: number;
+  fontSize: number;
+};
+
+function boxesOverlap(first: ManualRenderedBox, second: ManualRenderedBox, tolerance = 0.75) {
+  return (
+    first.x < second.right - tolerance &&
+    first.right > second.x + tolerance &&
+    first.y < second.bottom - tolerance &&
+    first.bottom > second.y + tolerance
+  );
+}
+
+async function renderedManualBoxes(locator: Locator): Promise<ManualRenderedBox[]> {
+  return locator.evaluateAll((elements) =>
+    elements.map((element) => {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      return {
+        id: element.getAttribute("data-block-id") ?? element.getAttribute("data-region-type"),
+        type: element.getAttribute("data-block-type") ?? element.getAttribute("data-region-type"),
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        right: rect.right,
+        bottom: rect.bottom,
+        position: style.position,
+        scrollWidth: element.scrollWidth,
+        clientWidth: element.clientWidth,
+        scrollHeight: element.scrollHeight,
+        clientHeight: element.clientHeight,
+        fontSize: Number.parseFloat(style.fontSize)
+      };
+    })
+  );
+}
+
+async function expectIndependentManualPageLayout(page: Page, pageNumber: number, minBlockCount = 3) {
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+  await expect(page.locator(".manual-russian-page-flow")).toHaveCount(0);
+  const blocks = page.getByTestId("manual-layout-block");
+  await expect(blocks.first()).toBeVisible();
+  const blockBoxes = await renderedManualBoxes(blocks);
+  expect(blockBoxes.length).toBeGreaterThanOrEqual(minBlockCount);
+  expect(new Set(blockBoxes.map((box) => `${Math.round(box.x)}:${Math.round(box.y)}:${Math.round(box.width)}:${Math.round(box.height)}`)).size).toBeGreaterThan(1);
+  expect(blockBoxes.every((box) => box.position === "absolute")).toBe(true);
+  for (const box of blockBoxes) {
+    expect(box.scrollWidth, `manual block ${box.id} overflows horizontally on page ${pageNumber}`).toBeLessThanOrEqual(box.clientWidth + 2);
+    expect(box.scrollHeight, `manual block ${box.id} overflows vertically on page ${pageNumber}`).toBeLessThanOrEqual(box.clientHeight + 2);
+  }
+  for (let index = 0; index < blockBoxes.length; index += 1) {
+    for (let nextIndex = index + 1; nextIndex < blockBoxes.length; nextIndex += 1) {
+      expect(boxesOverlap(blockBoxes[index], blockBoxes[nextIndex]), `manual blocks ${blockBoxes[index].id} and ${blockBoxes[nextIndex].id} overlap on page ${pageNumber}`).toBe(false);
+    }
+  }
+
+  const visualBoxes = (await renderedManualBoxes(page.getByTestId("manual-preserved-visual-region"))).filter((box) => box.width > 0 && box.height > 0);
+  expect(visualBoxes.length).toBeGreaterThan(0);
+  for (const blockBox of blockBoxes) {
+    for (const visualBox of visualBoxes) {
+      expect(boxesOverlap(blockBox, visualBox), `manual block ${blockBox.id} overlaps preserved visual region ${visualBox.id} on page ${pageNumber}`).toBe(false);
+    }
+  }
+}
+
+async function expectAppendixIVSourceMasks(
+  page: Page,
+  pageNumber: number,
+  samples: Array<{ role: string; x: number; y: number; label: string }>
+) {
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+  await expect(page.getByTestId("manual-source-mask").first()).toBeVisible();
+  const result = await page.getByTestId("manual-page-canvas").evaluate((canvas, samplePoints) => {
+    const canvasRect = canvas.getBoundingClientRect();
+    return (samplePoints as Array<{ role: string; x: number; y: number; label: string }>).map((sample) => {
+      const point = {
+        x: canvasRect.x + sample.x * canvasRect.width,
+        y: canvasRect.y + sample.y * canvasRect.height
+      };
+      const masks = [...canvas.querySelectorAll(".manual-source-mask")].map((mask) => {
+        const rect = mask.getBoundingClientRect();
+        const style = window.getComputedStyle(mask);
+        return {
+          id: mask.getAttribute("data-mask-id"),
+          role: mask.getAttribute("data-mask-role"),
+          geometry: mask.getAttribute("data-source-geometry"),
+          background: style.backgroundColor,
+          opacity: Number.parseFloat(style.opacity),
+          coversPoint: point.x >= rect.x && point.x <= rect.right && point.y >= rect.y && point.y <= rect.bottom
+        };
+      });
+      return {
+        ...sample,
+        coveringMask: masks.find((mask) => mask.role === sample.role && mask.coversPoint)
+      };
+    });
+  }, samples);
+
+  for (const sample of result) {
+    expect(sample.coveringMask, `${sample.label} is covered by a source mask`).toBeTruthy();
+    expect(sample.coveringMask?.geometry, `${sample.label} uses source geometry`).toMatch(/^source_page_/);
+    expect(sample.coveringMask?.background, `${sample.label} mask uses page-colored fill`).toBe("rgb(255, 253, 248)");
+    expect(sample.coveringMask?.opacity, `${sample.label} mask is opaque enough`).toBeGreaterThanOrEqual(0.99);
+  }
+}
+
+async function expectReadableManualMobileBlocks(page: Page, pageNumber: number) {
+  const blockBoxes = await renderedManualBoxes(page.getByTestId("manual-layout-block"));
+  const instructionalBoxes = blockBoxes.filter((box) => box.type && !["pageNumber", "label", "footnote"].includes(box.type));
+  expect(instructionalBoxes.length, `page ${pageNumber} has primary Russian instructional blocks`).toBeGreaterThan(0);
+  for (const box of instructionalBoxes) {
+    expect(box.fontSize, `manual block ${box.id} on page ${pageNumber} is too small for mobile reading`).toBeGreaterThanOrEqual(8);
+    expect(box.height, `manual block ${box.id} on page ${pageNumber} has no practical text box height`).toBeGreaterThanOrEqual(box.fontSize * 0.95);
+  }
 }
 
 async function openSourceDocument(page: Page, document: PrimarySourceDocument) {
@@ -678,7 +821,7 @@ test("process guide stays local-first without external requests, remote images, 
   expect(pdfRequests).toEqual([]);
 });
 
-test("complete RU manual surface renders first, middle, and last pages from local assets only", async ({ page }) => {
+test("complete RU manual surface renders Russian layout pages with semantic navigation and local assets only", async ({ page }) => {
   const externalRequests: string[] = [];
   const pdfRequests: string[] = [];
   const backendLikeRequests: string[] = [];
@@ -691,26 +834,198 @@ test("complete RU manual surface renders first, middle, and last pages from loca
 
   await openCompleteManual(page);
   await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 / 200 страниц");
-  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 локальных page assets");
-  await expect(page.getByLabel("Покрытие полного manual")).toContainText("198 approved chunks");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 страниц верстки");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText(`${manualNavigation.entries.length} разделов`);
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 локальных изображений");
   await expect(page.locator("iframe, embed, object")).toHaveCount(0);
   await expect(page.locator(".manual-reader a[href$='.pdf'], .manual-reader a[href*='.pdf']")).toHaveCount(0);
+  await expect(page.locator(".manual-page-grid, .manual-visual, .manual-translation")).toHaveCount(0);
+  await expect(page.locator(".manual-russian-page-flow")).toHaveCount(0);
+  await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
+  await expect(page.getByTestId("manual-nav-introduction")).toBeVisible();
+  await expect(page.getByTestId("manual-nav-appendix-4-road-signs")).toBeVisible();
 
-  await page.getByTestId("manual-page-button-1").click();
-  const manualImage = page.getByTestId("manual-page-visual").locator("img");
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
-  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[0].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[0].visualAsset.width);
-  await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[0].visualAsset.height);
-  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[0].translation.fullTranslationRu));
-  await expect(page.getByTestId("manual-page-detail")).toContainText(manualManifest.pages[0].translation.chunkProvenance.chunkId);
+  if (!(await page.getByTestId("manual-page-canvas").isVisible())) {
+    await page.getByTestId("manual-nav-introduction").click();
+  }
+  const manualImage = page.getByTestId("manual-page-local-visual");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
+  await expect(page.getByTestId("manual-page-canvas")).toBeVisible();
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВВЕДЕНИЕ");
+  await expectIndependentManualPageLayout(page, 14, 3);
+  await expectAppendixIVSourceMasks(page, 14, [{ role: "source-heading", x: 0.481, y: 0.39, label: "page 14 Spanish introduction heading" }]);
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[13].visualAsset.localPath.replace(/\//g, "\\/")));
+  await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[13].visualAsset.width);
+  await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[13].visualAsset.height);
+
+  await openCompleteManualPage(page, 24);
+  await expectAppendixIVSourceMasks(page, 24, [
+    { role: "source-heading", x: 0.481, y: 0.175, label: "page 24 Spanish body heading" },
+    { role: "source-body", x: 0.33, y: 0.285, label: "page 24 Spanish body text" }
+  ]);
+
+  await openCompleteManualPage(page, 75);
+  await expectAppendixIVSourceMasks(page, 75, [{ role: "source-list", x: 0.507, y: 0.36, label: "page 75 Spanish list text" }]);
+
+  await openCompleteManualPage(page, 114);
+  await expectAppendixIVSourceMasks(page, 114, [
+    { role: "source-list", x: 0.337, y: 0.254, label: "page 114 Spanish list text" },
+    { role: "source-footnote", x: 0.68, y: 0.879, label: "page 114 Spanish footnote text" }
+  ]);
 
   await showCompleteManualList(page);
-  await page.getByTestId("manual-page-button-100").click();
+  await page.getByTestId("manual-nav-chapter-3-driving-rules").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("57 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ОСНОВНЫЕ НОРМЫ");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app1-safety-elements").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("105 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Элементы безопасности");
+  await expectIndependentManualPageLayout(page, 105, 8);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-appendix-2-passenger-transport").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("123 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ПЕРЕВОЗКА ПАССАЖИРОВ");
+  await expectIndependentManualPageLayout(page, 123, 3);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app4-signs-regulatory").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("185 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Запрещающие");
+  await expectIndependentManualPageLayout(page, 185, 3);
+  await expectAppendixIVSourceMasks(page, 185, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 185 Spanish category heading" },
+    { role: "source-heading", x: 0.36, y: 0.315, label: "page 185 Spanish subheading" },
+    { role: "sign-caption", x: 0.36, y: 0.369, label: "page 185 first-row sign captions" },
+    { role: "sign-caption", x: 0.58, y: 0.536, label: "page 185 middle sign captions" }
+  ]);
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("Reglamentarias");
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("De prohibición");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[184].visualAsset.localPath.replace(/\//g, "\\/")));
+
+  await page.getByRole("button", { name: /Следующая/ }).click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("186 / 200");
+  await expectAppendixIVSourceMasks(page, 186, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 186 Spanish heading" },
+    { role: "source-heading", x: 0.36, y: 0.533, label: "page 186 priority heading" },
+    { role: "sign-caption", x: 0.46, y: 0.409, label: "page 186 sign captions" }
+  ]);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app4-signs-temporary").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("193 / 200");
+  await expectAppendixIVSourceMasks(page, 193, [
+    { role: "source-heading", x: 0.36, y: 0.288, label: "page 193 Spanish heading" },
+    { role: "sign-caption", x: 0.46, y: 0.493, label: "page 193 temporary sign captions" }
+  ]);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch4-stress").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch4-stress").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВОЗ определяет");
+  await expect(page.getByTestId("manual-page-russian-layout")).not.toContainText("Отвлечения");
+  await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch4-distractions").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch4-distractions").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("95 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Отвлечения");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Отвлечения");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Стресс");
+  await expect(page.getByTestId("manual-nav-ch4-distractions")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch4-stress")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  const pageAccess = page.getByTestId("manual-page-access");
+  if (!(await pageAccess.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await pageAccess.locator("summary").click();
+  }
+  await page.getByTestId("manual-page-button-94").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-page-button-94").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Сон и усталость");
+  await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch4-sleep-fatigue")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  const transitionPageAccess = page.getByTestId("manual-page-access");
+  if (!(await transitionPageAccess.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await transitionPageAccess.locator("summary").click();
+  }
+  await page.getByTestId("manual-page-button-93").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-page-button-93").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("93 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Сон и усталость");
+  await page.getByRole("button", { name: /Следующая/ }).click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Сон и усталость");
+  await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch4-sleep-fatigue")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("ВОЗ определяет");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  await page.getByTestId("manual-page-button-94").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Сон и усталость");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("");
+  await page.getByTestId("manual-nav-ch5-equal-society").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch5-equal-society").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
-  await expect(page.getByTestId("manual-page-detail")).toContainText("PDF page 100");
-  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[99].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[99].translation.fullTranslationRu));
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("К равноправному обществу");
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch5-gender-violence-prevention").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch5-gender-violence-prevention").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Профилактика и помощь");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("К равноправному обществу");
+  await expect(page.getByTestId("manual-nav-ch5-gender-violence-prevention")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("ch5-gender-violence-prevention");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  const genderViolenceSearchResult = page.locator('[data-search-result-id="section-ch5-gender-violence-prevention"]');
+  await expect(genderViolenceSearchResult).toBeVisible();
+  await expect(genderViolenceSearchResult).toHaveAttribute("data-result-entry-id", "ch5-gender-violence-prevention");
+  await expect(genderViolenceSearchResult).toContainText("Профилактика и помощь");
+  await genderViolenceSearchResult.click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Профилактика и помощь");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("К равноправному обществу");
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("");
+  await expect(page.getByTestId("manual-nav-ch5-gender-violence-prevention")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("100");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  const equalSocietyPageNumberResult = page.locator('[data-search-result-id="section-ch5-equal-society"]');
+  const genderViolencePageNumberResult = page.locator('[data-search-result-id="section-ch5-gender-violence-prevention"]');
+  await expect(equalSocietyPageNumberResult).toBeVisible();
+  await expect(genderViolencePageNumberResult).toBeVisible();
+  await expect(equalSocietyPageNumberResult).toHaveAttribute("data-result-entry-id", "ch5-equal-society");
+  await expect(genderViolencePageNumberResult).toHaveAttribute("data-result-entry-id", "ch5-gender-violence-prevention");
+  await expect(page.getByTestId("manual-page-button-100")).toHaveCount(2);
+  await equalSocietyPageNumberResult.click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  const manualSearchPagingControls = page.locator(".manual-actions");
+  await expect(manualSearchPagingControls).toContainText("1 / 1");
+  await expect(manualSearchPagingControls.getByRole("button", { name: /Предыдущая/ })).toBeDisabled();
+  await expect(manualSearchPagingControls.getByRole("button", { name: /Следующая/ })).toBeDisabled();
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
@@ -718,11 +1033,56 @@ test("complete RU manual surface renders first, middle, and last pages from loca
   await page.getByTestId("manual-page-button-200").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("200 / 200");
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[199].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(page.getByTestId("manual-page-translation")).toContainText(manualManifest.pages[199].translation.fullTranslationRu);
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText(manualManifest.pages[199].translation.fullTranslationRu);
 
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
   expect(backendLikeRequests).toEqual([]);
+});
+
+test("complete RU manual mobile navigation rows and pages 114-123 remain readable without overlap", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await openCompleteManual(page);
+
+  await page.getByTestId("manual-nav-appendix-1-private-cars").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("104 / 200");
+  await page.getByRole("button", { name: /К навигации/ }).click();
+
+  await page.getByTestId("manual-page-access").locator("summary").click();
+  await page.getByTestId("manual-page-button-114").scrollIntoViewIfNeeded();
+
+  const rowBoxes: Array<{ pageNumber: number; y: number; bottom: number }> = [];
+  for (let pageNumber = 114; pageNumber <= 123; pageNumber += 1) {
+    const row = page.getByTestId(`manual-page-button-${pageNumber}`);
+    await expect(row).toBeVisible();
+    const rowBox = await row.boundingBox();
+    const markerBox = await row.locator("span").first().boundingBox();
+    const titleBox = await row.locator("strong").first().boundingBox();
+    const subtitleBox = await row.locator("small").first().boundingBox();
+    if (!rowBox || !markerBox || !titleBox || !subtitleBox) throw new Error(`Missing mobile bounding box for manual page ${pageNumber}`);
+
+    expect(markerBox.x + markerBox.width).toBeLessThanOrEqual(titleBox.x - 1);
+    expect(titleBox.y).toBeGreaterThanOrEqual(rowBox.y);
+    expect(subtitleBox.y).toBeGreaterThanOrEqual(titleBox.y);
+    expect(subtitleBox.y + subtitleBox.height).toBeLessThanOrEqual(rowBox.y + rowBox.height + 0.5);
+    rowBoxes.push({ pageNumber, y: rowBox.y, bottom: rowBox.y + rowBox.height });
+  }
+
+  for (let index = 1; index < rowBoxes.length; index += 1) {
+    expect(rowBoxes[index - 1].bottom, `manual pages ${rowBoxes[index - 1].pageNumber}-${rowBoxes[index].pageNumber} overlap`).toBeLessThanOrEqual(rowBoxes[index].y + 0.5);
+  }
+
+  for (let pageNumber = 114; pageNumber <= 123; pageNumber += 1) {
+    const row = page.getByTestId(`manual-page-button-${pageNumber}`);
+    if (!(await row.isVisible())) {
+      await page.getByTestId("manual-page-access").locator("summary").click();
+      await row.scrollIntoViewIfNeeded();
+    }
+    await row.click();
+    await expectIndependentManualPageLayout(page, pageNumber, Math.min(3, manualLayout.pages[pageNumber - 1].blocks.length));
+    await expectReadableManualMobileBlocks(page, pageNumber);
+    if (pageNumber < 123) await showCompleteManualList(page);
+  }
 });
 
 test("non-manual startup defers the manual corpus chunk until the manual view opens", async ({ page }) => {
@@ -744,7 +1104,7 @@ test("non-manual startup defers the manual corpus chunk until the manual view op
 
   await page.getByRole("button", { name: /Руководство 4R/ }).click();
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
   await expect(manualChunkRequests).toHaveLength(1);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
@@ -767,7 +1127,7 @@ test("complete RU manual search with no matches keeps the detail pane empty", as
 
   await page.getByRole("button", { name: "Сбросить поиск" }).click();
 
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
 });
 
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {

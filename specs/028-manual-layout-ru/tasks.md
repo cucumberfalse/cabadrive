@@ -1,0 +1,380 @@
+# Tasks: Layout-Preserving Russian Manual Reader
+
+## Status Legend
+
+- `[ ]` Not started
+- `[~]` In progress
+- `[x]` Complete
+
+## Architect Task State
+
+- `[x]` Read Analyst intake for feature `028`.
+- `[x]` Review relevant durable docs and feature `027` memory.
+- `[x]` Inspect current merged manual reader enough to identify the side-by-side layout, flat page list, and mobile row-overlap risk.
+- `[x]` Create `spec.md`.
+- `[x]` Create `plan.md`.
+- `[x]` Create implementation-ready `tasks.md`.
+
+## Implementation Tasks
+
+### Layout Data Foundation
+
+- `[x]` Confirm the canonical PDF path, SHA-256, page count, and existing 200 local page assets still match feature `027` evidence.
+- `[x]` Add a committed manual layout manifest under `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/`, preferably `layout.ru.json`, or equivalent validated manifest fields.
+- `[x]` Ensure the layout manifest has exactly 200 ordered page layout records.
+- `[x]` For every page, record canvas dimensions/aspect ratio tied to the existing local page asset dimensions.
+- `[x]` For every page, record the local visual base asset or generated local visual layer used to preserve images/diagrams/tables/icons.
+- `[x]` For every page with visible source text, record masks or equivalent replacement regions so Spanish source text is not the primary visible instructional layer. Follow-up completed: masks are generated per text block rather than as one broad generic flow mask.
+- `[x]` Current-head follow-up for review comment `3308548477`: replace any destination-Russian-block-derived masking on Appendix IV/sign/visual-heavy pages with source-text/source-caption masking or structured/precomposed Russian replacements that remove visible Spanish source text from the underlying page image.
+- `[x]` Current-head follow-up for review comment `3308548477`: explicitly verify page `185` plus representative Appendix IV sign pages so Spanish headings, sign captions, and instructional labels are not visible in the primary Russian manual canvas.
+- `[x]` Current-head follow-up for review `4371883035` / inline comment `3310426978`: extend source-text/source-caption mask provenance from the focused Appendix IV path to the full non-Appendix manual. Every mask across all 200 pages must be marked/proven as source-text/source-caption geometry or as a structured/precomposed Russian replacement; destination Russian block-derived masks without source provenance must fail validation.
+- `[x]` Current-head follow-up for review `4371883035` / inline comment `3310426978`: add representative non-Appendix validator and visual/DOM/pixel coverage for body text, lists, tables, captions, diagrams/infographics, callouts, and ordinary chapter pages, while preserving the already fixed Appendix IV/page `185` regression coverage.
+- `[x]` Segment each page's exact Russian translation into ordered layout blocks with stable IDs, block type, per-block bounding box, reading order, typography/fit metadata, and provenance. Follow-up completed: bounds are assigned per block from page-kind, heading/list/table/caption roles, one/two-column structure, and visual-heavy page structure rather than from one uniform splitter.
+- `[x]` Record visual-only regions for images, diagrams, tables, icons, and decorative/page-composition elements that remain from the local visual base. Follow-up completed: visual regions record page-specific section art bands, sign grids, gutters, margins, and footer/page-chrome regions instead of one full-page catch-all.
+- `[x]` Record page-level coverage metadata proving the ordered Russian blocks reconstruct the full existing exact translation for that page and that the recorded per-block geometry is the geometry used at runtime.
+- `[x]` Add or update TypeScript types/loaders in `src/data/manual4Ruedas.ts` for the layout manifest while preserving route-level lazy loading.
+
+### Semantic Navigation
+
+- `[x]` Add a committed semantic navigation manifest under `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/`, preferably `navigation.ru.json`, or equivalent validated manifest fields.
+- `[x]` Derive top-level navigation from source index pages `11-12` / PDF pages `12-13`.
+- `[x]` Include front matter, `Введение`, chapters 1-5, appendices I-IV, and source-derived child topics.
+- `[x]` Store stable IDs, Russian titles, Spanish/source titles when available, levels, start/end pages, source evidence, and children.
+- `[x]` Validate printed-page to PDF-page mapping against existing manifest page labels/headings. Current-head follow-up completed: `ch4-stress` now points to page `94` based on page-heading/content evidence, while `ch4-distractions` remains on page `95`.
+- `[x]` Make semantic navigation the primary manual navigation in the UI, preserving the exact selected topic identity even when sibling topics share the same start page.
+- `[x]` Correct the Chapter 4 Stress/Distractions topic ranges so `ch4-stress` opens the actual Stress page and no topic click lands on the next sibling's content.
+- `[x]` Prefer exact `startPage === pageNumber` semantic child matches before range-covering fallback for page-only navigation/search/previous-next lookups, so page `94` labels/highlights as `ch4-stress` rather than the earlier covering `ch4-sleep-fatigue` topic.
+- `[x]` Fix previous/next preserved-entry behavior so a covering current entry is not preserved when the destination page has a more specific exact-start topic. Required regression: starting from page-only page `93` and pressing next to page `94` now resolves the active semantic entry to `ch4-stress` / `Стресс`, not `ch4-sleep-fatigue` / `Сон и усталость`.
+- `[x]` Keep direct page access/search as secondary controls, grouped or labeled by semantic section.
+- `[x]` Current-head follow-up for review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681`: preserve distinct semantic entry IDs in the manual search index/results when multiple topics share the same page. Required regression completed: searching/opening `ch5-gender-violence-prevention` on page `100` labels, highlights, and opens `ch5-gender-violence-prevention`, not `ch5-equal-society`.
+- `[x]` Current-head follow-up for review thread `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420`: deduplicate the search matching-page/paging collection by page number while preserving distinct semantic topic result rows. Required regression completed: page-number query `100` counts page `100` once for `Найдено ... страниц`, while `ch5-equal-society` and `ch5-gender-violence-prevention` remain distinct search rows and Next/Previous are disabled because there is no different matching page.
+
+### Frontend Reader
+
+- `[x]` Replace the primary side-by-side `.manual-page-grid` experience with a single Russian manual page canvas.
+- `[x]` Render Russian layout blocks inside the page composition instead of displaying `translation.fullTranslationRu` as one plain paragraph/card. Follow-up completed: the renderer positions each block using that block's own bounds and no longer emits `.manual-russian-page-flow`.
+- `[x]` Keep original Spanish source view, if retained, behind an optional secondary comparison/provenance control only.
+- `[x]` Remove primary-reader labels such as `Перевод из approved primary-source chunk`; keep provenance compact and secondary.
+- `[x]` Add previous/next controls that work within search/semantic context and across the full document.
+- `[x]` Add fit-to-width behavior and, if needed, zoom controls for page readability. Current-head follow-up completed: mobile page detail uses a readable minimum page-canvas width with horizontal scrolling so primary Russian instructional text does not clamp to unusable microtype.
+- `[x]` Ensure long Russian text wraps, fits, or scales according to block metadata without overlapping neighboring blocks. Follow-up completed: per-block typography metadata drives container-relative font scale/line height and Playwright checks block overflow/overlap on representative pages.
+- `[x]` Preserve deferred manual loading so layout/navigation/manual corpus data do not enter the non-manual startup bundle.
+- `[x]` Preserve service-worker install-precache exclusions for the heavy manual corpus chunk and 200 manual page images, with on-demand runtime caching still available after manual access.
+- `[x]` Current-head follow-up for review comment `3308577851`: capture or otherwise narrow the validated manual navigation manifest before nested handler functions use it, so TypeScript no longer sees `navigation` as `ManualNavigationManifest | undefined`.
+
+### Mobile UI Fixes
+
+- `[x]` Rework manual semantic-navigation rows and secondary page-list rows to use auto-height or stable min-height layouts that grow with multi-line titles.
+- `[x]` Ensure page-number markers cannot overlap text or neighboring rows.
+- `[x]` Ensure subtitles/status/provenance snippets cannot be painted under later rows.
+- `[x]` Ensure mobile list/detail state hides inactive panes visually and interactively.
+- `[x]` Verify the dense page range around pages `114`-`123` on representative mobile viewport sizes with both no-overlap and practical readability evidence.
+- `[x]` Capture mobile screenshot or bounding-box/computed-style evidence for pages `114`-`123` showing no overlap, clipping, smearing, page-marker collision, or unusably tiny Russian instructional text.
+
+### Validators and Tests
+
+- `[x]` Extend `pnpm run validate:manual-4ruedas` to validate the layout manifest, navigation manifest, and existing feature `027` source/translation/asset checks.
+- `[x]` Add validator checks that ordered page layout records cover pages 1-200 exactly once.
+- `[x]` Add validator checks that every page layout references existing local assets and has in-bounds, non-generic block/mask/visual-region coordinates tied to real page structure.
+- `[x]` Add validator, visual, pixel, and/or text-coverage checks that fail when masks cover only placed Russian block bounds while source Spanish text/caption regions remain visible, with explicit coverage for page `185` and representative Appendix IV pages.
+- `[x]` Add validator checks that ordered Russian text blocks reconstruct each page's `translation.fullTranslationRu` after documented whitespace normalization.
+- `[x]` Add validator checks that top-level navigation includes source-index entries for `Введение`, chapters 1-5, appendices I-IV, and covers the full page range without gaps.
+- `[x]` Add validator or tests that fail if manual runtime code reintroduces iframe/embed/object PDF display, PDF.js-style runtime rendering, remote manual assets, runtime fetches, backend endpoints, or live-AI calls.
+- `[x]` Update Node tests for manual manifest/runtime shape, layout coverage, text coverage, semantic navigation coverage, stale manifest failure cases, and generic-layout failure cases.
+- `[x]` Update Playwright tests so the old side-by-side Spanish visual plus separate Russian translation card is absent from primary UI.
+- `[x]` Add Playwright desktop coverage for first page, index pages, an image/diagram-heavy page, Appendix I, Appendix II around pages `114`-`123`, Appendix IV signs, and final pages, including evidence that multiple Russian blocks are independently placed from their own layout bounds.
+- `[x]` Add Playwright mobile coverage for semantic navigation, secondary page list rows, and the page canvas around pages `114`-`123` with bounding-box no-overlap assertions for independently positioned blocks.
+- `[x]` Add validator or test coverage that fails when `ch4-stress` opens the Distractions page; expected behavior must be based on actual page-heading/content evidence, likely `ch4-stress.startPage` on page `94` and `ch4-distractions.startPage` on page `95` after verification.
+- `[x]` Add focused regression coverage for page-only topic lookup precedence: direct selection/search/previous-next to page `94` must choose the exact-start `ch4-stress` entry before the range-covering `ch4-sleep-fatigue` fallback.
+- `[x]` Add focused Node/unit coverage for the previous/next transition path from page-only-selected page `93` to page `94`, proving preserved `ch4-sleep-fatigue` context is discarded in favor of exact-start `ch4-stress`.
+- `[x]` Add Playwright user-visible coverage for the same transition: select page `93` without a topic-specific click, press next, and assert page `94` shows/highlights `Стресс` / `ch4-stress` rather than `Сон и усталость` / `ch4-sleep-fatigue`.
+- `[x]` Add Node/index regression coverage proving the manual search index can retain multiple same-page semantic entries and returns/carries `ch5-gender-violence-prevention` as a distinct result entry ID on page `100`.
+- `[x]` Add Playwright user-visible search coverage proving a learner can search for the gender-violence-prevention topic and the clicked result opens page `100` with `ch5-gender-violence-prevention` as the visible label/active highlight, not `ch5-equal-society`.
+- `[x]` Add Node regression coverage for page-number/search paging query `100` proving duplicate same-page semantic matches are collapsed to one matching page for page-list counts and selected-page-index navigation while semantic topic result rows remain distinct where needed.
+- `[x]` Add Playwright user-visible coverage for query `100` proving the visible found-page count reflects unique pages and the Next/Previous controls do not no-op by selecting page `100` again from a duplicate same-page match.
+- `[x]` Add mobile readability regression coverage that fails when primary Russian instructional blocks compute to unusably tiny font sizes, even if geometric no-overlap assertions pass.
+- `[x]` Preserve or update existing deferred-manual-loading and service-worker tests.
+- `[x]` Run and record `pnpm exec tsc --noEmit` after the navigation-narrowing follow-up, or record the equivalent strict TypeScript check used by repository preflight/build if standalone `tsc` is unavailable.
+- `[x]` Run and record `pnpm run validate:manual-4ruedas` after the current-head navigation/readability follow-up.
+- `[x]` Run and record focused Node tests after the current-head navigation/readability follow-up.
+- `[x]` Run and record focused Playwright tests after the current-head navigation/readability follow-up.
+- `[x]` Run and record `pnpm run preflight` before implementation handoff/PR readiness after the current-head navigation/readability follow-up.
+
+### Documentation
+
+- `[x]` Update `docs_project/project/frontend/frontend-docs.md` for the layout-preserving Russian manual reader and semantic navigation.
+- `[x]` Update `docs_project/screens/learning-and-exam-flows.md` for the corrected `Руководство 4R` flow.
+- `[x]` Update `docs_project/project/backend/backend-docs.md` for new layout/navigation manifest validation and any generation tooling.
+- `[x]` Update `docs_project/project/feature-inventory.md` for the corrected manual feature.
+- `[x]` Update durable docs if the Stress topic range, mobile default zoom/fit behavior, or manual readability controls change user-visible behavior.
+- `[x]` Record implementation decisions, verification evidence, dead ends, and known issues in this `tasks.md`.
+
+## Acceptance Checklist
+
+- `[x]` Primary `Руководство 4R` renders a Russian page-layout-preserving web manual, not a Spanish screenshot beside a Russian text card. Follow-up implementation now drives runtime placement from per-block bounds.
+- `[x]` All 200 source pages/content units are represented in layout data and runtime UI.
+- `[x]` Exact Russian translation remains complete with no simplification, omission, summary, or placeholder content.
+- `[x]` Images, diagrams, tables, icons, captions, callouts, labels, footnotes, page numbers, and page visual hierarchy remain present locally as structured page composition rather than a full-page visual catch-all plus one text flow.
+- `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics, and same-page sibling topics keep the selected topic highlighted/labeled. Search results now preserve distinct entry IDs, including `ch5-gender-violence-prevention` on page `100` rather than collapsing to `ch5-equal-society`.
+- `[x]` Flat page navigation/search is secondary and does not remain the only way to browse the manual.
+- `[x]` Mobile navigation, page rows, and mobile page canvas are readable and non-overlapping, including pages `114`-`123`, after the independently positioned layout fix. Current-head follow-up completed: mobile Playwright asserts no overlap plus a computed-size readability floor for primary Russian instructional blocks.
+- `[x]` Runtime uses no PDF viewer, runtime PDF rendering, remote manual asset, backend endpoint, live AI request, or runtime network fetch for manual content/assets.
+- `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
+- `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, exact-start semantic fallback, mobile readability, same-page search-result entry identity, and deduplicated search page-list paging.
+- `[x]` Review findings received through current Architect handoff are disposed by Architect before follow-up implementation.
+- `[x]` Final Architect validation passes before final Analyst validation.
+- `[x]` Final Analyst validation passes before Orchestrator completion/merge readiness.
+
+## Decisions
+
+- Build a layout-preserving Russian web manual instead of a transcript/card reader; document structure, pictures, tables, icons, captions, labels, and visual hierarchy stay visible locally.
+- Make source-derived semantic navigation from the official index and page-heading evidence primary; flat page access/search remains secondary.
+- Cover all 200 source pages with the exact approved Russian translation, without summaries, omissions, placeholders, or simplified wording.
+- Preserve local-first runtime behavior: no runtime PDF viewer/rendering, remote manual assets, backend endpoint, runtime network fetch, or live-AI dependency for manual content/assets.
+- Require every mask/replacement to carry source-text, source-caption, source-label, or explicit structured/precomposed replacement provenance; destination Russian block-derived masks without source provenance are invalid.
+- Keep mobile manual rows and page canvas readable with a practical primary-text readability floor in addition to no-overlap geometry checks.
+- Preserve same-page semantic identity and search result identity, including page `94` exact-start navigation and page `100` same-page topic rows, while deduplicating matching-page paging by page number.
+
+## Current Evidence To Reuse
+
+- Feature `027` established canonical PDF SHA-256 `69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e`.
+- Feature `027` established source page count `200`.
+- Feature `027` committed 200 local page assets under `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/`.
+- Current implementation exposes the broken/corrective target in `src/App.tsx`: `Manual4RuedasView` renders `.manual-page-grid` with `.manual-visual` and `.manual-translation`, and the page list uses 200 page buttons with long headings.
+- Current CSS uses fixed/min row assumptions around `.manual-page-buttons button` that are insufficient for long mobile headings, matching the user's screenshot.
+- Source index text in `manual.ru.json` lists the document structure on PDF pages `12-13`, including `Введение`, chapters 1-5, appendices I-IV, and child topics.
+
+## Dead Ends
+
+- Browser plugin screenshot capture timed out twice on the built preview. This did not block verification because Playwright bounding-box tests and Browser DOM state checks passed; no screenshot was required by the assigned implementation handoff.
+
+## Known Issues
+
+- No known issues.
+
+## Implementation Agent Feedback
+
+- Current-head Codex review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` on `src/App.tsx:1605` reported that manual search results for pages with multiple same-page semantic topics preserved only the first exact-start entry, for example page `100` where `ch5-equal-society` and `ch5-gender-violence-prevention` share a page.
+  Architect disposition: addressed by the same-page search-result entry identity follow-up. Recorded evidence shows search results preserve distinct `entryId` values, `data-result-entry-id`, and a click/selection path that selects `ch5-gender-violence-prevention` on page `100` instead of collapsing to `ch5-equal-society`.
+- Current-head Codex blocking review `4371883035` / inline comment `3310426978` reported that the Appendix IV source-mask fix did not close the broader contract: non-Appendix masks still derived from destination Russian block bounds and lacked source-text/source-caption provenance, while validation only enforced curated source geometry for Appendix IV.
+  Architect disposition: addressed by the full-manual source-mask provenance follow-up. Recorded evidence shows all 200 pages now require source-text/source-caption/source-label or structured/precomposed replacement provenance, reject destination Russian block-derived masks without source provenance, and include representative non-Appendix plus Appendix IV/page `185` validation.
+- Current-head Codex review thread `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` on `src/App.tsx:1643` reported that search-result paging still treated duplicate same-page semantic entries as duplicate matching pages for page-number queries.
+  Architect disposition: addressed by the search page-list paging follow-up. Recorded evidence shows `matchingPages` is deduplicated by page number while distinct semantic topic rows and entry IDs remain available; query `100` reports one found page and disables Previous/Next no-op duplicate-page navigation.
+
+## Implementation Decisions And Evidence
+
+- The implementation evidence below is preserved as historical evidence for PR `#172` head `5f9a61301bdf52dff1c3da6bbea265559447854b`, but it is superseded for layout-preservation acceptance by the blocking Review Agent findings disposed below.
+- Added committed derived manifests: `layout.ru.json` contains 200 page layout records with canvas metadata, source-text masks, visual preservation regions, ordered Russian blocks, bounds, typography/fit metadata, provenance, and reconstruction hashes; `navigation.ru.json` contains 11 top-level source-derived sections and 56 child topics from index pages 11-12 plus page-heading review.
+- Runtime manual loading remains behind `import("./data/manual4Ruedas")`; non-manual startup still defers the manual chunk, and service-worker install precache exclusions for the manual data chunk and 200 page images remain covered by existing tests/build.
+- The primary UI now renders `manual-page-canvas` / `manual-page-russian-layout`; validator scans block `.manual-page-grid`, `.manual-visual`, and `.manual-translation` from returning to the manual runtime source.
+- Focused validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 8/8 tests passed.
+- Build passed: `pnpm run build` -> content validation, asset sync, Vite build, and service-worker generation completed; manual chunk remained a deferred `manual4Ruedas-*.js` asset.
+- Focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium` -> 3/3 tests passed, including semantic navigation, old split UI absence, local-only manual requests, and mobile bounding-box no-overlap checks for pages 114-123.
+- Full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, Node test suite, production build/service-worker generation, and full Playwright suite completed; E2E reported 58/58 tests passed.
+- Browser plugin sanity check against built preview at `http://127.0.0.1:5178/` confirmed `canvasCount: 1`, `oldGridCount: 0`, and page 14 Russian layout text in the primary manual detail.
+- Follow-up layout generation replaces uniform flow splitting with per-block absolute boxes, per-block source-text masks, and non-full-page visual regions. Validators now fail on uniform synthetic block geometry, single generic scrolling text regions, broad one-mask replacement, full-page-only visual catch-all regions, stale block typography fit, runtime `.manual-russian-page-flow`, or renderer source that does not call `manualBoundsStyle(block.bounds)`.
+- Follow-up runtime rendering uses `manual-page-russian-layout` as an absolute layer and renders each `manual-layout-block` with its own `block.bounds`, `fontScale`, and `lineHeight`; preserved visual regions are exposed as page metadata/DOM regions for regression checks.
+- Follow-up focused validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Follow-up focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 9/9 tests passed, including generic flow geometry and full-page catch-all rejection.
+- Follow-up focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual"` -> 6/6 tests passed across desktop and mobile, including absolute block placement, overflow/overlap checks, preserved visual-region non-overlap, old flow absence, and mobile pages 114-123.
+- Follow-up Browser sanity check against built preview at `http://127.0.0.1:5178/` confirmed `canvasCount: 1`, `layoutBlockCount: 3`, `absoluteBlocks: true`, `distinctBoxes: 3`, `visualRegionCount: 2`, `oldFlowCount: 0`, and `oldSplitCount: 0` on page 14.
+- Follow-up full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, 288/288 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+- Same-page semantic topic identity follow-up stores the selected semantic navigation entry by stable ID and uses page-only lookup only as a fallback. Direct topic clicks pass the clicked entry ID into page selection, and previous/next page controls preserve the current semantic entry while the destination page remains inside that entry's page range.
+- Static Node coverage now verifies the runtime source keeps selected-entry state and page-coverage checks, and verifies the committed same-page sibling pair `ch4-stress` and `ch4-distractions` both start on page `95`. This evidence is superseded for navigation-range acceptance by current-head finding `PRRT_kwDOSX65IM6E_c4Z`.
+- Same-page semantic topic Playwright coverage now clicks `ch4-stress` and `ch4-distractions` in the complete RU manual flow and verifies both remain selectable on page `95` with the correct selected-topic label and active-row highlight. This evidence is historical only until the Stress/Distractions page ranges are corrected and retested.
+- Same-page semantic topic focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 9/9 tests passed.
+- Same-page semantic topic focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual surface"` -> 2/2 tests passed across desktop and mobile.
+- Same-page semantic topic validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Same-page semantic topic full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, 288/288 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+- Current-head Stress/Distractions follow-up corrects the generated semantic navigation source and committed `navigation.ru.json`: `ch4-sleep-fatigue` covers pages `93-94`, `ch4-stress` opens page `94` from page-heading/content evidence (`Стресс`, `ВОЗ определяет`), and `ch4-distractions` opens page `95` from page-heading/content evidence (`Отвлечения`, `Под отвлечением понимается`).
+- Current-head navigation validator coverage now rejects stale Chapter 4 starts when `ch4-stress` points to page `95` or `ch4-distractions` points to page `94`; focused Node coverage verifies the corrected ranges and preserves same-page identity coverage on the real Chapter 5 page `100` sibling pair.
+- Current-head mobile readability follow-up keeps the mobile page canvas at a readable minimum layout width with horizontal scrolling rather than shrinking text to `3.2px`; Playwright now asserts primary Russian instructional blocks on pages `114-123` have computed font size at least `8px` in addition to existing no-overlap/no-clipping checks.
+- Current-head durable docs updated: `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, and `docs_project/screens/learning-and-exam-flows.md` describe the corrected Chapter 4 navigation and mobile readability behavior.
+- Current-head focused validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Current-head focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 10/10 tests passed.
+- Current-head production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Current-head focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including Stress page `94`, Distractions page `95`, Chapter 5 same-page active-row identity, local-only manual requests, page rows `114-123`, and mobile computed-size readability floor.
+- Current-head full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 289/289 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+- Current-head whitespace check passed: `git diff --check`.
+- Exact-start semantic fallback follow-up adds `manualExactStartNavigationEntryForPage` before covering-range fallback, so page-only lookup prefers a descendant/topic with `startPage === pageNumber` before choosing the first covering range. This fixes the page `94` overlap where `ch4-sleep-fatigue` covers `93-94` but `ch4-stress` starts on `94`.
+- Exact-start fallback Node coverage passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 11/11 tests passed, including a regression proving the old first-covering match for page `94` would be `ch4-sleep-fatigue` while the exact-start lookup returns `ch4-stress`.
+- Exact-start fallback validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Exact-start fallback production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Exact-start fallback focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including page-list direct access and search-result navigation to page `94` showing/highlighting `Стресс` and not `Сон и усталость`.
+- Exact-start fallback full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 290/290 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+- Previous/next preserved-entry exact-start follow-up adds `manualNavigationEntryForDestinationPage`, which resolves requested entries first, then exact destination starts, then preserved current entries only when they are exact-start entries on the destination page or no exact-start entry exists. This keeps same-page selected topic identity while preventing a covering prior topic from masking a more specific destination topic.
+- Previous/next preserved-entry Node coverage passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 12/12 tests passed, including a regression proving page `93` under `ch4-sleep-fatigue` resolves to `ch4-stress` when moving to page `94`.
+- Previous/next preserved-entry validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Previous/next preserved-entry production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Previous/next preserved-entry focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including selecting page `93` from secondary page access, pressing `Следующая`, and verifying page `94` labels/highlights `Стресс` / `ch4-stress` rather than `Сон и усталость` / `ch4-sleep-fatigue`.
+- Previous/next preserved-entry whitespace check passed: `git diff --check`.
+- Previous/next preserved-entry full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 291/291 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Appendix IV source-mask follow-up replaces visual-heavy page masks with curated source-page heading/caption/instructional-text regions rather than destination Russian block bounds. `layout.ru.json` now records source-geometry mask metadata for page `185` and representative Appendix IV sign pages including `186`, `187`, `193`, and `197`; visual-heavy Russian labels are repositioned over the source heading geometry and sign visual regions exclude the heading text bands.
+- Appendix IV validator coverage now fails when page `185` masks are derived from Russian block bounds instead of source text/caption regions, and checks required source-heading/sign-caption/instructional-text coverage points on page `185` plus representative Appendix IV pages.
+- Runtime source-mask regression coverage exposes mask metadata on `.manual-source-mask` elements and Playwright asserts page `185`, page `186`, and page `193` have source-geometry masks over Spanish heading/caption coordinates while the primary Russian layer does not contain Spanish headings such as `Reglamentarias` / `De prohibición`.
+- TypeScript navigation-narrowing follow-up captures the validated `navigation` as `manualNavigation` before nested handlers use it; `selectManualPage` and the rendered TOC read from that narrowed value.
+- Appendix IV/type follow-up validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Appendix IV/type follow-up focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 13/13 tests passed.
+- Appendix IV/type follow-up strict TypeScript check passed: `pnpm exec tsc --noEmit`.
+- Appendix IV/type follow-up production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Appendix IV/type follow-up focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including page `185` source masks and representative Appendix IV pages.
+- Appendix IV/type follow-up whitespace check passed: `git diff --check`.
+- Appendix IV/type follow-up full preflight was attempted twice. Both runs passed feature-memory, repository baseline, content validation, 292/292 Node tests, production builds, and 56/58 full Playwright tests, then hit Playwright timeout flakes outside the changed manual assertions (`primary source` timing/focus checks on the first run; `non-manual startup` and mobile manual row click timing on the second run). Each failed test was rerun directly and passed: first rerun `pnpm exec playwright test tests/e2e/app.spec.ts:1044 tests/e2e/app.spec.ts:1078 --project=chromium --project=mobile` -> 4/4 passed; second rerun `pnpm exec playwright test tests/e2e/app.spec.ts:925 tests/e2e/app.spec.ts:970 --project=chromium --project=mobile` -> 4/4 passed. No implementation-known product issue remains.
+- Same-page search-result entry identity follow-up splits secondary page access from the search-result index. The page access list remains one row per page, while search results can emit distinct semantic-topic rows keyed by `section-<entry.id>` and pass `entryId` through `selectManualPage(page.pageNumber, { entryId })`.
+- Same-page search-result runtime behavior now includes the matching topic ID/title in each semantic result's search text and exposes `data-result-entry-id`, so searching `ch5-gender-violence-prevention` returns the page `100` result for that topic and opens page `100` with `ch5-gender-violence-prevention` selected instead of recomputing only from page number.
+- Same-page search-result Node coverage passed: `pnpm test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 293/293 tests passed, including the new regression proving page `100` has both `ch5-equal-society` and `ch5-gender-violence-prevention`, and the gender-violence search result carries `ch5-gender-violence-prevention`.
+- Same-page search-result strict TypeScript check passed: `pnpm exec tsc --noEmit`.
+- Same-page search-result validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Same-page search-result production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Same-page search-result focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual surface renders Russian layout pages"` -> 2/2 tests passed across desktop and mobile, including searching `ch5-gender-violence-prevention`, opening page `100`, verifying the selected semantic label is `Профилактика и помощь`, and verifying the `ch5-gender-violence-prevention` TOC row is active while `ch5-equal-society` is not.
+- Full-manual source-mask provenance follow-up changes non-Appendix mask generation from expanded destination Russian `block.bounds` to structured Spanish `translation.sourceTextEs` line regions. Every generated non-Appendix mask now records `sourceGeometry` (`source_page_text_region`, `source_page_caption_region`, or `source_page_label_region`), role, hidden `sourceTextEs`, source line span, source text hash, manifest pointer, source page number, and visual asset path. Appendix IV keeps the curated source-page geometry introduced by the prior follow-up.
+- Full-manual source-mask validation now runs on all 200 pages and rejects missing/generic provenance, `russian_block_replacement_region`, `destination_russian_block_geometry`, masks whose bounds match destination Russian block boxes on non-Appendix pages, and representative non-Appendix pages missing expected source-region roles. Representative coverage includes page `14` section divider, page `24` ordinary body, page `75` list, page `82` chapter body/heading, page `114` list/footnote, page `125` Appendix II body, page `144` safe-driving body, plus the existing Appendix IV page `185` and sign-page checks.
+- Full-manual source-mask Node coverage passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 15/15 tests passed, including a new negative regression that replaces page `114` masks with destination Russian block geometry and verifies validation failure.
+- Full-manual source-mask strict TypeScript check passed: `pnpm exec tsc --noEmit`.
+- Full-manual source-mask validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Full-manual source-mask production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Full-manual source-mask focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual surface renders Russian layout pages" --project=chromium` -> 1/1 passed, including non-Appendix source-mask DOM coverage for pages `14`, `24`, `75`, and `114` plus Appendix IV page `185` coverage; `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual mobile navigation rows" --project=mobile` -> 1/1 passed for pages `114-123`. An initial parallel desktop/mobile Playwright attempt failed because both runners tried to start the same preview port; rerunning separately passed.
+- Full-manual source-mask durable docs updated: `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`, `docs_project/project/feature-inventory.md`, and `docs_project/screens/learning-and-exam-flows.md` now describe source-text/source-caption/source-label mask provenance and rejection of destination block-derived masks.
+- Full-manual source-mask whitespace check passed: `git diff --check`.
+- Full-manual source-mask full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 294/294 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Same-page search-result whitespace check passed: `git diff --check`.
+- Same-page search-result full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 293/293 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Search page-list paging now derives `matchingPages` through `uniqueManualMatchingPages(matchingEntries)`, so page-count text, `selectedPageIndex`, and Next/Previous availability use one page object per page number while semantic result rows still render from `matchingEntries` with their own `resultId` and `data-result-entry-id`.
+- Numeric manual queries now use exact page-number matching before full-text matching. For query `100`, the search result rows remain `section-ch5-equal-society` and `section-ch5-gender-violence-prevention`, but the page/paging collection contains only page `100`.
+- Search page-list paging focused validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Search page-list paging strict TypeScript check passed: `pnpm exec tsc --noEmit`.
+- Search page-list paging focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 16/16 tests passed, including query `100` dedupe and same-page semantic row identity.
+- Search page-list paging production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Search page-list paging focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts --project=chromium --grep "complete RU manual surface renders Russian layout pages with semantic navigation and local assets only"` -> 1/1 passed, including query `100` visible count `Найдено: 1 страниц`, two distinct page-100 semantic result rows, and disabled Previous/Next controls showing `1 / 1`.
+- Search page-list paging whitespace check passed: `git diff --check`.
+- Search page-list paging full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 295/295 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+
+## Architect Disposition Of Review Findings
+
+- `PRRT_kwDOSX65IM6E_DSH` (`src/App.tsx:1491`, review `4369149578`): accepted as blocking P1. The renderer violates the spec because it maps every `layout.blocks` entry into a single `.manual-russian-page-flow`, so each block's own `bounds` do not drive placement. Follow-up task: Implementation Agent must render each Russian layout block as an independently positioned page element using that block's `bounds`, typography, fit metadata, and reading-order/provenance data. A flow container may exist only as a page canvas/layer; it must not be the mechanism that collapses all translated content into one scrolling text stream.
+- `PRRT_kwDOSX65IM6E_DSL` (`scripts/content-manual-vehiculo-4ruedas.mjs:687`, review `4369149578`): accepted as blocking P1. The generated layout data violates the spec because block geometry is synthetic uniform splitting (`boundsWithinRegion`) and visual preservation is represented by a generic full-page region/mask pattern rather than page-specific document structure. Follow-up task: Implementation Agent must replace the generator/manifest data with page-specific block bounds, masks, and visual regions derived from real page structure or curated against the rendered pages. Generic one-flow regions, one full-page visual catch-all, and coordinates that merely divide the transcript evenly are not acceptable.
+- `PRRT_kwDOSX65IM6E_DXO` (`src/App.tsx`, current review head `c9f82a422db76009e28e3fa8b9cc5592f7843438`): accepted as blocking P2 implementation follow-up. The feature requires meaningful semantic navigation, not only page navigation. If a user clicks a topic whose `startPage` is shared with a sibling, such as `ch4-distractions` sharing page `95` with `ch4-stress`, the UI must preserve the clicked topic's stable ID for active-row highlighting, section labels, and previous/next semantic context. Recomputing `selectedSemanticEntry` only from the selected page is insufficient because it collapses distinct same-page topics to the first matching entry.
+- `PRRT_kwDOSX65IM6E_c4Z` (`content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json:364`, review `4369317264`, comment `3308368590`, current head `ed03406c731e0580145e9f14452153602514ee87`): accepted as blocking P2 implementation follow-up. The semantic navigation still fails the user's "осмысленная навигация" requirement because `ch4-stress` points to page `95` while the actual Stress content appears on page `94`; clicking Stress therefore lands on the Distractions page. Implementation Agent must correct the Stress/Distractions page ranges from page-heading/content evidence, update validation/tests so this regression fails, and preserve stable selected-topic identity after the range correction.
+- `PRRT_kwDOSX65IM6E_c4t` (`src/styles.css:860`, review `4369317292`, comment `3308368614`, current head `ed03406c731e0580145e9f14452153602514ee87`): accepted as P3 advisory severity but completion-blocking follow-up for this corrective cycle. The user explicitly reported the manual surface as smeared/unusable, and no-overlap checks alone are insufficient if default mobile rendering allows Russian instructional text to clamp to about `3.2px`. Implementation Agent must improve the mobile page readability model with a practical minimum rendered text size and/or default zoom/fit behavior, and tests must measure readability instead of only geometry.
+- `PRRT_kwDOSX65IM6E_q3_` (`src/App.tsx:1422`, current review head `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c`): accepted as blocking P2 implementation follow-up. The corrected Chapter 4 ranges created an overlapping-page case where `ch4-sleep-fatigue` covers pages `93-94` and `ch4-stress` starts on page `94`; page-only fallback currently chooses the first covering child and can label/highlight page `94` as `Сон и усталость` instead of `Стресс`. Implementation Agent must update semantic-entry lookup so exact `startPage === pageNumber` child matches are preferred before range-covering fallbacks whenever no preserved entry ID is available.
+- Comment `3308499475` / review `4369468027` (`src/App.tsx:1638`, current review head `6f6b452e694a628053ab50fcdb731bf8a802f67b`): accepted as blocking P2 implementation follow-up. The previous exact-start fix still allows previous/next to preserve `ch4-sleep-fatigue` when moving from page-only-selected page `93` to page `94`; this violates the semantic navigation requirement because page `94` has a more specific exact-start topic, `ch4-stress` / `Стресс`. Implementation Agent must ensure previous/next destination resolution checks exact-start topics before preserving a covering current entry.
+- `PRRT_kwDOSX65IM6E_8qf` / comment `3308548477` (`scripts/content-manual-vehiculo-4ruedas.mjs:917`, current review head `42e2b919c081a4f2de51678f0b3467f5fe9357ec`): accepted as blocking P1 implementation follow-up. The current masking model violates the layout-preserving Russian-reader requirement on visual-heavy pages because masks are generated from destination Russian block bounds rather than original source text/caption geometry. Page `185` still shows Spanish headings and sign captions in the underlying page image, so the primary reader is not a Russian page. Implementation Agent must mask actual source text/caption regions or use precomposed/structured Russian replacement layers that remove visible Spanish source text from sign/visual-heavy pages, with explicit validation evidence for page `185` and representative Appendix IV pages.
+- `PRRT_kwDOSX65IM6FAB5C` / comment `3308577851` (`src/App.tsx:1648`, current review head `42e2b919c081a4f2de51678f0b3467f5fe9357ec`): accepted as blocking P2 implementation follow-up. The nested handler uses `navigation` while TypeScript still treats it as `ManualNavigationManifest | undefined`, so `pnpm exec tsc --noEmit` fails. Implementation Agent must capture or otherwise narrow the validated navigation value before defining/using the handler, and must record strict type-check evidence.
+- `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` (`src/App.tsx:1605`, current PR head `50bd16ac4e263f9c4d05c2699a91bc87937ba297`): accepted as blocking P2 implementation follow-up. The search index/result model violates meaningful semantic navigation because it collapses same-page exact-start topics to the first entry for that page. Page `100` contains both `ch5-equal-society` and `ch5-gender-violence-prevention`; searching for the second topic must preserve the second topic's stable entry ID in the result and click/open path, then label and highlight `ch5-gender-violence-prevention` rather than `ch5-equal-society`.
+- Review `4371883035` / inline comment `3310426978` (current PR head `3edf5c8dc268fad27d9acf8681eedd767c27e542`): accepted as blocking P2 implementation follow-up. The prior Appendix IV/page `185` source-mask work is necessary but insufficient because non-Appendix masks still derive from destination Russian block bounds and lack source-text/source-caption provenance, while validation only enforces curated source geometry for Appendix IV. Implementation Agent must extend the mask data model, generation/curation path, and validators so every manual mask is either proven source-text/source-caption geometry or an explicit structured/precomposed Russian replacement. Validation must fail destination-Russian-block-derived masks without source provenance across the full non-Appendix manual, not only on Appendix IV.
+- `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` (`src/App.tsx:1643`, current PR head `73fe43036236c5c82b00eb389418bf41868007e2`): accepted as blocking P2 implementation follow-up. The same-page semantic result identity fix preserved distinct topic rows, but page-number/search paging still builds `matchingPages` with duplicate page objects when a query matches multiple semantic entries on one page. Page `100` can match both `ch5-equal-society` and `ch5-gender-violence-prevention`; the visible found-page count can be inflated and Next can be enabled only to select page `100` again with `preserveCurrentEntry`. Implementation Agent must deduplicate the matching-page/paging list by page number while preserving distinct semantic topic search rows and entry IDs where needed.
+
+## Follow-Up Implementation Requirements
+
+- Source-text masking must be based on source visual geometry. It is not sufficient to reuse the bounds of placed Russian labels/blocks if Spanish text remains visible elsewhere in the base page image.
+- This source-geometry requirement applies to all 200 pages, including ordinary non-Appendix chapter pages. A mask derived from `block.bounds`, translated-label placement, or another destination Russian layout box is invalid unless the manifest also records source-text/source-caption provenance proving that box is the original Spanish text/caption region.
+- Every mask record must carry machine-validated provenance such as `source-text`, `source-caption`, `source-label`, or an explicit structured/precomposed replacement marker with source evidence. The validator must reject masks with missing provenance, generic provenance, destination-only provenance, or geometry classified only from Russian block placement.
+- Non-Appendix representative validation must cover pages from front matter/introduction/chapter body text, lists, table/cell regions, captions, diagrams/infographics, and callouts. Suggested coverage includes at least one page from the introduction/front matter, one middle chapter, one Appendix I/II page around `114`-`123`, and one table/list-heavy page, in addition to Appendix IV.
+- Appendix IV sign pages must receive special handling for dense visual layouts: sign-category headings, captions, labels, and nearby instructional Spanish text must be masked/replaced at their source positions while preserving the signs and non-text visuals.
+- Page `185` is a required regression target that must remain preserved. Verification must include page `185`, representative Appendix IV pages, and representative non-Appendix pages using validator plus visual/DOM/pixel/text evidence that the primary Russian reader contains no visible Spanish instructional text/headings/captions from the source page image.
+- Structured/precomposed Russian replacements are acceptable instead of masks only if they are local static assets or manifest-driven layers, preserve the page's visual structure, declare which source text/caption regions they replace, and are covered by the same full-manual validation evidence.
+- Existing Appendix IV/page `185` fixes must not regress while broadening validation. The implementation must keep the page `185` and representative Appendix IV source-geometry checks active, then add non-Appendix checks rather than replacing the focused sign-page coverage.
+- Navigation manifest narrowing must be explicit in the runtime source. Capture a validated `navigation`/`manualNavigation` local or use an equivalent type guard before nested handlers reference it; relying on an earlier render-path return is not enough for TypeScript.
+- Type-check verification must include `pnpm exec tsc --noEmit` if available. If the repository intentionally lacks standalone `tsc` wiring, record the equivalent strict TypeScript check command used by local preflight/build and its passing output.
+- Layout generation must stop treating `translation.fullTranslationRu` as a transcript to be evenly divided through one flow region. Each page must have a reviewable set of block bounds matching visible document structure: headings, body paragraphs, bullet/list items, table cells, captions, callouts, labels, footnotes, and page numbers.
+- Runtime rendering must apply `manualBoundsStyle(block.bounds)` or equivalent per block. Tests or static validation must fail if the renderer maps all blocks into one unpositioned parent flow or ignores `block.bounds`.
+- Manifest validation must fail when a page's text blocks are generated by uniform vertical splitting, when all or most text blocks share a single generic region without page-specific geometry, or when a text-bearing page declares only a full-page visual region instead of meaningful preserved visual/non-text regions.
+- Node tests must include negative fixtures or mutation checks for generic flow bounds, full-page-only visual regions, and renderer/source patterns that ignore per-block bounds.
+- Playwright coverage must verify, on representative pages including page `14` and pages `114`-`123`, that multiple Russian blocks have distinct in-page bounding boxes and do not overlap each other or preserved visual regions on desktop and mobile.
+- Existing successful validation/preflight evidence may be reused only after the above fixes are implemented and rerun; the previous pass does not satisfy the layout-preservation acceptance criteria by itself.
+- Same-page semantic topic selection must store or derive the selected navigation entry by stable entry ID, not by page number alone. Implementation Agent may keep both selected page and selected entry ID in state, or may pass the clicked entry through a lookup that is aware of the requested entry. Browser history/permalink behavior, if touched, must preserve backwards-compatible page access while allowing topic-specific selection when an entry ID is available.
+- The navigation manifest must be corrected so `ch4-stress` opens the actual Stress content, likely page `94`, and `ch4-distractions` opens its own content, likely page `95`; Implementation Agent must verify the exact boundaries from the rendered/translated page headings before committing and adjust neighboring `endPage` values accordingly.
+- Runtime behavior must be verified for the corrected Stress/Distractions range: clicking `ch4-stress` must show the Stress page and active label, and clicking `ch4-distractions` must show the Distractions page and active label. Same-page stable-ID behavior must remain covered with any real same-page sibling pair that remains after the range correction, or with a focused lookup regression if the manifest no longer contains such a pair.
+- Tests must include a regression check for same-page semantic topic identity. Prefer Playwright coverage in the complete RU manual flow plus a focused unit/Node test for the navigation lookup helper if one exists or is introduced. Existing navigation and page-search tests should continue proving direct page access remains available as secondary navigation.
+- Page-only semantic lookup must prefer exact topic starts before covering ranges. For page `94`, direct page entry, search-result navigation, URL/page restoration if applicable, and previous/next navigation without a preserved entry ID must resolve the semantic label/highlight to `ch4-stress` / `Стресс`, not `ch4-sleep-fatigue` / `Сон и усталость`. A covering-range fallback remains acceptable only when no exact-start child exists for the selected page.
+- Tests must include focused coverage for the exact-start fallback rule. At minimum, a Node/unit regression should exercise the lookup helper or equivalent source path for page `94`, and Playwright should verify a user-visible page-only route to page `94` shows/highlights `Стресс` rather than `Сон и усталость`.
+- Previous/next transitions must not preserve a covering selected entry when the destination page has a more specific exact-start topic. From page-only-selected page `93`, pressing next to page `94` must resolve the active semantic entry, visible label, and highlighted row to `ch4-stress` / `Стресс`; preserving `ch4-sleep-fatigue` is allowed only for destination pages with no exact-start semantic child.
+- Verification must cover this transition in both layers: a Node/unit regression for the transition/lookup helper or equivalent source path, and a Playwright user-visible regression that navigates page `93` -> next page `94` and asserts the page is labeled/highlighted as `Стресс`.
+- Manual search indexing must preserve semantic entry ID identity independently from page number. If multiple semantic topics share `startPage` or otherwise match the same page, the search index/result data must retain the matching `entry.id` and the click/open path must pass that ID into selection instead of recomputing only from page number.
+- Page `100` is a required same-page search regression target. Searching for `ch5-gender-violence-prevention` or its Russian visible title must produce/open a result whose semantic label, active row, and selected entry ID are `ch5-gender-violence-prevention`, not `ch5-equal-society`.
+- Verification must cover same-page search result identity in both layers: a Node/index regression for multiple same-page semantic entries on page `100`, and a Playwright user-visible regression that searches, clicks the `ch5-gender-violence-prevention` result, and asserts page `100` opens with the gender-violence-prevention topic label/highlight.
+- Search page-list paging must deduplicate page results by `pageNumber` after collecting semantic/page matches and before computing found-page counts, `selectedPageIndex`, and Next/Previous availability. The dedupe key is the page number/source page identity, not the semantic entry ID. Ordering must remain deterministic by page/source order.
+- Deduplicating matching pages must not collapse distinct semantic topic search rows or remove their entry IDs. The UI may show separate topic results for same-page semantic matches when that is needed for meaningful navigation, but the page list and page-result count must still treat those matches as one page.
+- Next/Previous through search results must only navigate to a different matching page. If the only additional matches for a page-number query are duplicate semantic entries on the current page, Next/Previous must be disabled or otherwise avoid dispatching a same-page selection; preserving the current entry must not turn a duplicate page object into a no-op navigation path.
+- Query `100` is a required paging regression target because page `100` contains multiple semantic entries. Node coverage must prove the matching-page list/count has one page `100` result while any semantic result rows for `ch5-equal-society` and `ch5-gender-violence-prevention` remain distinguishable where the search UI exposes them.
+- Playwright coverage must verify query `100` from the learner UI: the visible `Найдено ... страниц` count reflects unique pages, and pressing or inspecting Next/Previous cannot reselect page `100` from a duplicate same-page match. This user-visible check must run in the complete RU manual flow, not only against a helper.
+- Mobile CSS/runtime must not solve fit-to-width by shrinking primary Russian instructional text to unreadable sizes. Implementation Agent may introduce a minimum page width with horizontal scrolling, default readable zoom, zoom controls, or responsive block scaling, but the default mobile reader must be practically readable without pinch zoom and must still preserve document layout.
+- Mobile tests must assert a readability floor for primary Russian text blocks on representative pages, including pages `114`-`123`. A suggested floor is no body/list/callout instructional block below `8px` computed font size on a representative mobile viewport unless the block is explicitly a decorative/page-number/micro-label element and a zoom/readability control is available.
+- Playwright evidence must combine no-overlap checks with computed font-size or text-box-height checks, so a `3.2px` clamp cannot pass merely because it avoids collisions.
+
+## Review Requirements
+
+- Review Agent must verify the corrected UI is not a cosmetic restyle of the feature `027` two-column transcript reader.
+- Review Agent must verify semantic navigation is source-derived and validated.
+- Review Agent must verify `ch4-stress` opens the actual Stress page and does not land on Distractions, while `ch4-distractions` still opens its own content.
+- Review Agent must verify page-only navigation/search/previous-next fallback for page `94` labels/highlights the exact-start `ch4-stress` topic before the covering `ch4-sleep-fatigue` range.
+- Review Agent must verify previous/next from page-only-selected page `93` to page `94` does not preserve the covering `ch4-sleep-fatigue` entry and instead shows/highlights `ch4-stress` / `Стресс`.
+- Review Agent must verify manual search result identity for same-page topics, especially that searching/opening `ch5-gender-violence-prevention` on page `100` labels/highlights that topic and does not collapse to `ch5-equal-society`.
+- Review Agent must verify search page-list paging deduplicates same-page matches by page number while preserving semantic topic result identities; query `100` must not inflate the found-page count or allow Next/Previous to select page `100` again as a no-op.
+- Review Agent must verify layout/text validators fail on missing layout coverage, missing text coverage, stale navigation, or runtime PDF/network dependency regressions.
+- Review Agent must verify mask/provenance validation fails destination Russian block-derived masks without source-text/source-caption provenance across representative non-Appendix pages, not only Appendix IV.
+- Review Agent must verify mobile no-overlap and readability evidence covers pages `114`-`123`, including computed-size evidence that primary Russian text is not tiny/smeared.
+- Review Agent must verify process memory and durable docs were updated.
+- Review Agent must verify representative non-Appendix pages plus page `185` and representative Appendix IV pages no longer show Spanish source headings/captions/body instructional text in the primary Russian reader, and that their masks/replacements carry source provenance.
+- Review Agent must verify strict TypeScript coverage passes, preferably `pnpm exec tsc --noEmit`, and that navigation is narrowed/captured before nested handler use.
+
+## Verification Evidence
+
+- Manual validator passed at the effective implementation head: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Full preflight passed at the effective implementation head: `pnpm run preflight` -> feature-memory gate, repository baseline check, content validation, 295/295 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Strict TypeScript passed: `pnpm exec tsc --noEmit`.
+- Focused Node coverage passed for manual content/runtime shape and regressions, including per-block layout, source-mask provenance, page `94` exact-start navigation, page `100` same-page search identity, and query `100` matching-page dedupe.
+- Focused Playwright coverage passed for the complete RU manual surface, including local-only manual requests, old split UI absence, independently placed Russian blocks, page `185` and representative Appendix IV source masks, non-Appendix source-mask DOM coverage, page `94` Stress labeling/highlighting, page `100` same-page topic identity/search dedupe, and query `100` found-page count/Previous/Next behavior.
+- Mobile Playwright evidence covers pages `114`-`123` with no overlapping/clipped/smeared rows or page blocks and a computed primary Russian instructional text readability floor of at least `8px`.
+- Full-manual mask provenance evidence covers all 200 pages: masks/replacements are source-text/source-caption/source-label geometry or explicit structured/precomposed Russian replacements, and validation rejects destination Russian block-derived masks without source provenance.
+- Runtime dependency evidence confirms the manual reader uses local static data/assets with deferred loading and service-worker on-demand caching, and no runtime PDF viewer/rendering, remote manual asset, backend endpoint, runtime network fetch, or live-AI request for manual content/assets.
+
+## Cycle PR Set
+
+- Implementation PR slice: PR `#172`, branch `codex/028-manual-layout-ru`, base SHA `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, current effective implementation head `47ccb4631a3001a0e7814be13d963592d07cf283`, status: implementation accepted/reviewed with required evidence recorded; pre-final process-memory alignment is being prepared on top for a fresh final validation cycle. Final validation inclusion: PR `#172` is the single implementation PR slice for feature `028-manual-layout-ru` and is included in the next final validation cycle for effective implementation head `47ccb4631a3001a0e7814be13d963592d07cf283`.
+
+## Final Validation Evidence
+
+- Architect return count: 0.
+- Analyst return count: 0.
+- Limit escalation: none.
+- Effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect validation: passed at 2026-05-27T12:14:32Z.
+- Architect validated effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect return count: 0.
+- Current-PR-head read-only guard: effective content head 306c9496543874445ad6ff51e71383cb1c1ef6e1 will be used for the post-effective evidence-only guard; Orchestrator must recheck current PR head before merge.
+- Limit escalation: none.
+- Effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect validation: passed at 2026-05-27T12:23:07Z
+- Architect validated effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect return count: 0
+- Current-PR-head read-only guard: effective content head f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef will be used for the post-effective evidence-only guard; Orchestrator must recheck current PR head before merge.
+- Limit escalation: none
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed.
+- Final Architect validation completed at: 2026-05-27T12:14:32Z.
+- Effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect validated effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect return count: 0.
+- Open Architect dispositions: none.
+- Architect validation evidence: `git status --short --branch` confirmed branch `codex/028-manual-layout-ru` at `origin/codex/028-manual-layout-ru` with no dirty diff before validation edits; `git rev-parse HEAD` confirmed current head `306c9496543874445ad6ff51e71383cb1c1ef6e1`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed; `pnpm run validate:manual-4ruedas` passed with 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, and 2 visual-label translation pages.
+- Architect validation evidence: feature memory covers the original corrective intent for a complete exact Russian web manual preserving full structure, layout, images, semantic navigation beyond a flat page list, local-only runtime constraints, and mobile no-smear/no-overlap/readability; implementation evidence records `layout.ru.json`, `navigation.ru.json`, source-mask provenance across all 200 pages, page `94` Stress exact-start behavior, page `100` same-page search identity and paging dedupe, mobile pages `114`-`123`, no runtime PDF/network/backend/live-AI dependency, strict TypeScript, build, focused Node/Playwright, and full preflight evidence.
+- Architect validation evidence: current process memory includes `## Decisions`, `## Verification Evidence`, `## Known Issues`, `## Implementation Agent Feedback`, `## Cycle PR Set`, `## Final Validation Evidence`, return counts, and no limit escalation; Review Agent feedback is dispositioned in Architect-owned memory with no open Architect dispositions.
+- Architect gaps: none.
+- Architect disposition: no follow-up development required.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T12:23:07Z
+- Effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect validated effective content head: f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef
+- Architect return count: 0
+- Open Architect dispositions: none
+- Architect validation evidence: `git status --short --branch` confirmed branch `codex/028-manual-layout-ru` tracking `origin/codex/028-manual-layout-ru` with no dirty diff before validation edits; `git rev-parse HEAD` confirmed current head `f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed; `pnpm run validate:manual-4ruedas` passed with 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, and 2 visual-label translation pages.
+- Architect validation evidence: process-memory checklist alignment now identifies effective content head `f5e0ef78c58d080a1b1deb3238c4c24a291bf6ef`, preserves prior final validation notes for earlier heads, records no open Architect dispositions, and leaves Orchestrator responsible for the current-PR-head read-only guard before merge.
+- Architect gaps: none
+- Architect disposition: no follow-up development required

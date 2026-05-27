@@ -99,12 +99,14 @@ Russian full translations and simple rewrites for this reader live outside `cont
 The complete manual surface is a dedicated Russian-learning reader for the official GCBA 4-wheel vehicle PDF. It is separate from `Источники`, which remains the text-oriented source reader.
 
 1. Open `Руководство 4R` as a top-level section.
-2. Browse or search all 200 manual pages/content units from the local manual manifest.
-3. Select any page and see the local page-faithful JPEG render of the official Spanish PDF page.
-4. Read the exact full Russian translation aligned to that page.
-5. Review per-page source traceability: official document ID, PDF page number, canonical source hash prefix, local asset hash prefix, and chunk or visual-label provenance.
+2. Start from semantic document navigation derived from the manual index: front matter, introduction, chapters, appendices, and child topics. Direct page access remains secondary.
+3. Select a section/topic, search result, or page number and see a single Russian page-like web canvas, not a side-by-side Spanish screenshot and separate translation card.
+4. Read the exact full Russian translation as independently positioned layout blocks inside the page composition while local visual material, diagrams, signs, tables, and page hierarchy remain visible; Spanish source text/caption/label regions are masked using recorded source provenance rather than destination Russian block boxes.
+5. Review compact per-page source traceability: official document ID, PDF page number, canonical source hash prefix, local asset hash prefix, layout-block count, and chunk or visual-label provenance.
 6. Move through ordered previous/next page navigation within the full manual or current search result set.
-7. Stay fully local-first: no runtime PDF viewer, iframe/embed/object PDF loading, PDF.js rendering, remote image, network fetch, backend endpoint, or live AI dependency is used for manual content or assets.
+7. On mobile, switch cleanly between navigation and page detail; semantic rows and secondary page rows grow with their text and must not overlap or clip, while the page canvas keeps a readable minimum width with horizontal scrolling instead of shrinking Russian instructional text to microtype.
+8. Chapter 4 topic navigation opens the content-bearing pages directly: `Стресс` opens PDF page `94`, and `Отвлечения` opens PDF page `95`.
+9. Stay fully local-first: no runtime PDF viewer, iframe/embed/object PDF loading, PDF.js rendering, remote image, network fetch, backend endpoint, or live AI dependency is used for manual content or assets.
 
 ## CABA Vs RF Guide Flow
 
