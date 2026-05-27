@@ -143,7 +143,7 @@
 
 ## Implementation Agent Feedback
 
-- None yet.
+- New current-head Codex review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` on `src/App.tsx:1605` reports that manual search results for pages with multiple same-page semantic topics preserve only the first exact-start entry, for example page `100` where `ch5-equal-society` and `ch5-gender-violence-prevention` share a page. This was not one of the two Architect-accepted current-head findings assigned for this implementation pass, so it was not implemented in this commit. It needs Architect/Orchestrator disposition before follow-up development.
 
 ## Implementation Decisions And Evidence
 
