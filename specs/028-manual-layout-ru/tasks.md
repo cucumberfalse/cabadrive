@@ -37,7 +37,7 @@
 - `[x]` Include front matter, `Введение`, chapters 1-5, appendices I-IV, and source-derived child topics.
 - `[x]` Store stable IDs, Russian titles, Spanish/source titles when available, levels, start/end pages, source evidence, and children.
 - `[x]` Validate printed-page to PDF-page mapping against existing manifest page labels/headings.
-- `[x]` Make semantic navigation the primary manual navigation in the UI.
+- `[x]` Make semantic navigation the primary manual navigation in the UI, preserving the exact selected topic identity even when sibling topics share the same start page.
 - `[x]` Keep direct page access/search as secondary controls, grouped or labeled by semantic section.
 
 ### Frontend Reader
@@ -93,7 +93,7 @@
 - `[x]` All 200 source pages/content units are represented in layout data and runtime UI.
 - `[x]` Exact Russian translation remains complete with no simplification, omission, summary, or placeholder content.
 - `[x]` Images, diagrams, tables, icons, captions, callouts, labels, footnotes, page numbers, and page visual hierarchy remain present locally as structured page composition rather than a full-page visual catch-all plus one text flow.
-- `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics.
+- `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics, and same-page sibling topics keep the selected topic highlighted/labeled.
 - `[x]` Flat page navigation/search is secondary and does not remain the only way to browse the manual.
 - `[x]` Mobile navigation, page rows, and mobile page canvas are readable and non-overlapping, including pages `114`-`123`, after the independently positioned layout fix.
 - `[x]` Runtime uses no PDF viewer, runtime PDF rendering, remote manual asset, backend endpoint, live AI request, or runtime network fetch for manual content/assets.
@@ -125,7 +125,7 @@
 
 ## Known Issues
 
-- None known after the follow-up implementation slice. The accepted P1 findings have implementation fixes and are awaiting pushed PR update plus Review Agent/Orchestrator verification.
+- No implementation-known product issues remain after the accepted P1 layout follow-up and accepted P2 same-page semantic topic identity follow-up. Review Agent and Orchestrator verification remain pending.
 
 ## Implementation Agent Feedback
 
@@ -150,11 +150,19 @@
 - Follow-up focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual"` -> 6/6 tests passed across desktop and mobile, including absolute block placement, overflow/overlap checks, preserved visual-region non-overlap, old flow absence, and mobile pages 114-123.
 - Follow-up Browser sanity check against built preview at `http://127.0.0.1:5178/` confirmed `canvasCount: 1`, `layoutBlockCount: 3`, `absoluteBlocks: true`, `distinctBoxes: 3`, `visualRegionCount: 2`, `oldFlowCount: 0`, and `oldSplitCount: 0` on page 14.
 - Follow-up full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, 288/288 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
+- Same-page semantic topic identity follow-up stores the selected semantic navigation entry by stable ID and uses page-only lookup only as a fallback. Direct topic clicks pass the clicked entry ID into page selection, and previous/next page controls preserve the current semantic entry while the destination page remains inside that entry's page range.
+- Static Node coverage now verifies the runtime source keeps selected-entry state and page-coverage checks, and verifies the committed same-page sibling pair `ch4-stress` and `ch4-distractions` both start on page `95`.
+- Same-page semantic topic Playwright coverage now clicks `ch4-stress` and `ch4-distractions` in the complete RU manual flow and verifies both remain selectable on page `95` with the correct selected-topic label and active-row highlight.
+- Same-page semantic topic focused Node tests passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 9/9 tests passed.
+- Same-page semantic topic focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual surface"` -> 2/2 tests passed across desktop and mobile.
+- Same-page semantic topic validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Same-page semantic topic full preflight passed: `pnpm run preflight` -> feature memory gate, repository checks, content validation, 288/288 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
 
 ## Architect Disposition Of Review Findings
 
 - `PRRT_kwDOSX65IM6E_DSH` (`src/App.tsx:1491`, review `4369149578`): accepted as blocking P1. The renderer violates the spec because it maps every `layout.blocks` entry into a single `.manual-russian-page-flow`, so each block's own `bounds` do not drive placement. Follow-up task: Implementation Agent must render each Russian layout block as an independently positioned page element using that block's `bounds`, typography, fit metadata, and reading-order/provenance data. A flow container may exist only as a page canvas/layer; it must not be the mechanism that collapses all translated content into one scrolling text stream.
 - `PRRT_kwDOSX65IM6E_DSL` (`scripts/content-manual-vehiculo-4ruedas.mjs:687`, review `4369149578`): accepted as blocking P1. The generated layout data violates the spec because block geometry is synthetic uniform splitting (`boundsWithinRegion`) and visual preservation is represented by a generic full-page region/mask pattern rather than page-specific document structure. Follow-up task: Implementation Agent must replace the generator/manifest data with page-specific block bounds, masks, and visual regions derived from real page structure or curated against the rendered pages. Generic one-flow regions, one full-page visual catch-all, and coordinates that merely divide the transcript evenly are not acceptable.
+- `PRRT_kwDOSX65IM6E_DXO` (`src/App.tsx`, current review head `c9f82a422db76009e28e3fa8b9cc5592f7843438`): accepted as blocking P2 implementation follow-up. The feature requires meaningful semantic navigation, not only page navigation. If a user clicks a topic whose `startPage` is shared with a sibling, such as `ch4-distractions` sharing page `95` with `ch4-stress`, the UI must preserve the clicked topic's stable ID for active-row highlighting, section labels, and previous/next semantic context. Recomputing `selectedSemanticEntry` only from the selected page is insufficient because it collapses distinct same-page topics to the first matching entry.
 
 ## Follow-Up Implementation Requirements
 
@@ -164,6 +172,9 @@
 - Node tests must include negative fixtures or mutation checks for generic flow bounds, full-page-only visual regions, and renderer/source patterns that ignore per-block bounds.
 - Playwright coverage must verify, on representative pages including page `14` and pages `114`-`123`, that multiple Russian blocks have distinct in-page bounding boxes and do not overlap each other or preserved visual regions on desktop and mobile.
 - Existing successful validation/preflight evidence may be reused only after the above fixes are implemented and rerun; the previous pass does not satisfy the layout-preservation acceptance criteria by itself.
+- Same-page semantic topic selection must store or derive the selected navigation entry by stable entry ID, not by page number alone. Implementation Agent may keep both selected page and selected entry ID in state, or may pass the clicked entry through a lookup that is aware of the requested entry. Browser history/permalink behavior, if touched, must preserve backwards-compatible page access while allowing topic-specific selection when an entry ID is available.
+- Runtime behavior must be verified with at least one same-page sibling pair from the committed navigation manifest, including `ch4-stress` and `ch4-distractions` on page `95`. Clicking the later sibling must open the correct page while highlighting and labeling the later sibling, not the first sibling for that page.
+- Tests must include a regression check for same-page semantic topic identity. Prefer Playwright coverage in the complete RU manual flow plus a focused unit/Node test for the navigation lookup helper if one exists or is introduced. Existing navigation and page-search tests should continue proving direct page access remains available as secondary navigation.
 
 ## Review Requirements
 
@@ -175,11 +186,11 @@
 
 ## Cycle PR Set
 
-- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head `5f9a61301bdf52dff1c3da6bbea265559447854b`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Included in final validation only after accepted blocking review findings are fixed and re-reviewed.
+- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head before the P2 follow-up was `c9f82a422db76009e28e3fa8b9cc5592f7843438`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Included in final validation only after accepted blocking review findings are fixed and re-reviewed.
 
 ## Final Validation Evidence
 
-- Current final-validation status: blocked by accepted P1 review findings until follow-up implementation and review verification complete.
+- Current final-validation status: accepted P1 layout findings and accepted P2 same-page semantic topic identity finding have follow-up implementation evidence recorded above; Review Agent/Orchestrator verification remains pending before final validation.
 - Architect return count: 0.
 - Limit escalation: none.
 - Effective content head: pending implementation.

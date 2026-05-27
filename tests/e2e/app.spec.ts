@@ -760,6 +760,22 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[184].visualAsset.localPath.replace(/\//g, "\\/")));
 
   await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch4-stress").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch4-stress").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("95 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-ch4-distractions").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-nav-ch4-distractions").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("95 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Отвлечения");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Стресс");
+  await expect(page.getByTestId("manual-nav-ch4-distractions")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch4-stress")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
   await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
   await page.getByTestId("manual-page-button-200").click();

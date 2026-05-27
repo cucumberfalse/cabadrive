@@ -65,6 +65,9 @@ test("manual 4 ruedas view lazy-loads the full layout corpus and computes summar
   assert.equal(appSource.includes("manual-russian-page-flow"), false);
   assert.ok(appSource.includes("manualBoundsStyle(block.bounds)"));
   assert.ok(appSource.includes('data-testid="manual-layout-block"'));
+  assert.ok(appSource.includes("selectedNavigationEntryId"));
+  assert.ok(appSource.includes("manualNavigationEntryCoversPage"));
+  assert.ok(appSource.includes("selectManualPage(entry.startPage, { entryId: entry.id })"));
 });
 
 test("manual 4 ruedas view caches normalized page search text outside the filter loop", () => {
@@ -148,6 +151,9 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   ]);
   assert.equal(navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").startPage, 123);
   assert.ok(navigation.entries.flatMap((entry) => entry.children ?? []).some((entry) => entry.id === "app4-signs-regulatory"));
+  const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-stress").startPage, 95);
+  assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-distractions").startPage, 95);
 });
 
 test("manual 4 ruedas validator rejects remote assets, omitted translations, and stale counters", async () => {

@@ -1425,6 +1425,10 @@ function manualNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumb
   return undefined;
 }
 
+function manualNavigationEntryCoversPage(entry: ManualNavigationEntry | undefined, pageNumber: number) {
+  return Boolean(entry && pageNumber >= entry.startPage && pageNumber <= entry.endPage);
+}
+
 function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
   return {
     left: `${bounds.x * 100}%`,
@@ -1518,6 +1522,7 @@ function ManualRussianPageCanvas({
 function Manual4RuedasView() {
   const [manifestState, setManifestState] = useState<ManualManifestState>({ isLoading: true });
   const [selectedPageNumber, setSelectedPageNumber] = useState(DEFAULT_MANUAL_PAGE);
+  const [selectedNavigationEntryId, setSelectedNavigationEntryId] = useState<string | undefined>();
   const [searchQuery, setSearchQuery] = useState("");
   const [isManualListOpen, setIsManualListOpen] = useState(true);
   const [imageLoadFailedPage, setImageLoadFailedPage] = useState<number | undefined>();
@@ -1555,6 +1560,8 @@ function Manual4RuedasView() {
   const navigation = manifestState.navigation;
   const summary = manifestState.summary;
   const layoutByPageNumber = useMemo(() => new Map(layout?.pages.map((pageLayout) => [pageLayout.pageNumber, pageLayout]) ?? []), [layout]);
+  const navigationEntries = useMemo(() => (navigation ? flattenManualNavigation(navigation.entries) : []), [navigation]);
+  const navigationEntryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.id, entry])), [navigationEntries]);
   const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
     () =>
       manifest?.pages.map((page) => {
@@ -1576,7 +1583,13 @@ function Manual4RuedasView() {
       : manifest?.pages.find((page) => page.pageNumber === selectedPageNumber) ?? manifest?.pages.find((page) => page.pageNumber === DEFAULT_MANUAL_PAGE) ?? manifest?.pages[0];
   const selectedLayout = selectedPage ? layoutByPageNumber.get(selectedPage.pageNumber) : undefined;
   const selectedTopLevelSection = navigation && selectedPage ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber) : undefined;
-  const selectedSemanticEntry = navigation && selectedPage ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber, true) : undefined;
+  const selectedSemanticEntryById = selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
+  const selectedSemanticEntry =
+    selectedPage && manualNavigationEntryCoversPage(selectedSemanticEntryById, selectedPage.pageNumber)
+      ? selectedSemanticEntryById
+      : navigation && selectedPage
+        ? manualNavigationEntryForPage(navigation.entries, selectedPage.pageNumber, true)
+        : undefined;
   const selectedPageIndex = matchingPages.findIndex((page) => page.pageNumber === selectedPage?.pageNumber);
   const imageLoadFailed = imageLoadFailedPage === selectedPage?.pageNumber;
   const sourceSha = selectedPage?.sourceTrace.rawOriginalSha256 ?? manifest?.source.rawOriginalSha256 ?? "";
@@ -1600,26 +1613,37 @@ function Manual4RuedasView() {
     );
   }
 
-  function selectManualPage(pageNumber: number) {
+  function selectManualPage(pageNumber: number, options: { entryId?: string; preserveCurrentEntry?: boolean } = {}) {
+    const requestedEntry = options.entryId ? navigationEntryById.get(options.entryId) : undefined;
+    const currentEntry = options.preserveCurrentEntry && selectedNavigationEntryId ? navigationEntryById.get(selectedNavigationEntryId) : undefined;
+    const fallbackEntry = navigation ? manualNavigationEntryForPage(navigation.entries, pageNumber, true) : undefined;
     setSelectedPageNumber(pageNumber);
+    setSelectedNavigationEntryId(
+      manualNavigationEntryCoversPage(requestedEntry, pageNumber)
+        ? requestedEntry?.id
+        : manualNavigationEntryCoversPage(currentEntry, pageNumber)
+          ? currentEntry?.id
+          : fallbackEntry?.id
+    );
     setImageLoadFailedPage(undefined);
     setIsManualListOpen(false);
   }
 
   function selectManualEntry(entry: ManualNavigationEntry) {
     setSearchQuery("");
-    selectManualPage(entry.startPage);
+    selectManualPage(entry.startPage, { entryId: entry.id });
   }
 
   function goToRelativeManualPage(offset: number) {
     if (selectedPageIndex < 0) return;
     const nextPage = matchingPages[selectedPageIndex + offset];
-    if (nextPage) selectManualPage(nextPage.pageNumber);
+    if (nextPage) selectManualPage(nextPage.pageNumber, { preserveCurrentEntry: true });
   }
 
   function resetManualControls() {
     setSearchQuery("");
     setSelectedPageNumber(DEFAULT_MANUAL_PAGE);
+    setSelectedNavigationEntryId(undefined);
     setImageLoadFailedPage(undefined);
     setIsManualListOpen(true);
   }
@@ -1753,7 +1777,10 @@ function Manual4RuedasView() {
               <div>
                 <span className="block-label">PDF page {selectedPage.sourcePageNumber}</span>
                 <h2>{selectedPage.translation.headingRu}</h2>
-                <p>{selectedTopLevelSection?.titleRu}{selectedSemanticEntry && selectedSemanticEntry.id !== selectedTopLevelSection?.id ? ` · ${selectedSemanticEntry.titleRu}` : ""}</p>
+                <p data-testid="manual-selected-semantic-label">
+                  {selectedTopLevelSection?.titleRu}
+                  {selectedSemanticEntry && selectedSemanticEntry.id !== selectedTopLevelSection?.id ? ` · ${selectedSemanticEntry.titleRu}` : ""}
+                </p>
               </div>
               <div className="manual-page-counter" aria-label="Позиция страницы">
                 {selectedPage.pageNumber} / {manifest.source.pageCount}
