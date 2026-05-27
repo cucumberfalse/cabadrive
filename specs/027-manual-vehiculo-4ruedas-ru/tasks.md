@@ -57,6 +57,8 @@
 - `[x]` Update service-worker generation tests and build-inspection expectations so install-time precache excludes both the dynamic `manual4Ruedas-*.js` corpus chunk and the 200 manual page JPEG assets, while ordinary app assets remain precached and successful manual asset GET responses remain runtime-cacheable.
 - `[x]` Add or update startup/runtime coverage as needed to prove non-manual app startup does not request or install-precache manual page JPEG assets, while opening the manual view still loads local page images, preserves representative first/middle/last page rendering, and records no remote/manual PDF/backend/live-AI requests.
 - `[x]` Rerun and record relevant validation evidence after the P1 fix, including service-worker focused tests, build/service-worker inspection, manual validator, focused e2e coverage as applicable, `node scripts/check-feature-memory.mjs --worktree`, and repository preflight.
+- `[x]` Resolve PR #170 thread `PRRT_kwDOSX65IM6E90rE` / comment `3307779988`, review `4368625136`: align process memory so current head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` is explicitly named as the post-fix implementation/effective-content candidate, and older `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` references are historical/superseded.
+- `[x]` Dispose PR #170 thread `PRRT_kwDOSX65IM6E9zUc` / comment `3307772443` as not-needed implementation work: install-time precaching of the full manual chunk and 200 page JPEGs remains intentionally excluded under the accepted deferred-loading architecture, while repository-served local assets and runtime GET caching preserve local/offline reuse after manual access.
 
 ### Validators and Tests
 
@@ -128,7 +130,7 @@
 - `pnpm run preflight` passed after the review-fix task-memory update. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 283 Node tests, production build/service-worker generation with the separate dynamic `manual4Ruedas-*.js` chunk, and 54 Playwright tests across `chromium` and `mobile`. The build emitted Vite's non-fatal large-chunk warning for bundled local content.
 - Current-head P2 review fix recorded at `2026-05-26T23:59:08Z` for PR #170 threads `PRRT_kwDOSX65IM6E9J_W` / comment `3307532483` and `PRRT_kwDOSX65IM6E9J_a` / comment `3307532488`, review `4368314983`.
 - Post-follow-up implementation head: `221f634b8feb9a4c46528da655d352baa2a78131` (`Fix manual service worker precache`), created after pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` and prior superseded head `b25890ecd48148819d45ffdd9407fcd7654195c6`.
-- Current process-memory evidence head: `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` (`Record manual service worker evidence`), an evidence-only process-memory update after `221f634b8feb9a4c46528da655d352baa2a78131`; final Architect and Analyst validation remain pending on this current PR head before completion or merge.
+- Prior process-memory evidence head: `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` (`Record manual service worker evidence`), an evidence-only process-memory update after `221f634b8feb9a4c46528da655d352baa2a78131`; superseded by current post-fix implementation/effective-content candidate head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`.
 - Service-worker decision: `scripts/generate-service-worker.mjs` now exposes testable generation helpers and excludes both hashed `/assets/manual4Ruedas-*.js` files and `/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-*.jpg` manual page assets from install-time `ASSETS`; ordinary build assets, unrelated `content/assets`, and non-page manual-adjacent assets remain eligible for precache. The fetch handler still caches successful GET responses with `cache.put(event.request, copy)`, so the manual corpus chunk and manual page images are cached on demand after the manual view opens.
 - Startup regression coverage: `tests/e2e/app.spec.ts` now verifies non-manual startup reaches the default trainer without requesting `/assets/manual4Ruedas-*.js`; opening `Руководство 4R` then requests the local manual chunk once, renders page `1 / 200`, and records no external or PDF requests.
 - Service-worker regression coverage: `tests/service-worker-generation.test.mjs` builds a temporary `dist` fixture with a hashed `manual4Ruedas-*.js` chunk, ordinary JS assets, a non-JS manual asset, manual JPEG page assets, unrelated manual-adjacent content assets, and an old `sw.js`; it asserts install precache excludes only the deferred manual JS corpus chunk and 4R manual page JPEGs while the generated service worker retains runtime GET caching.
@@ -142,6 +144,7 @@
 - Post-build direct `dist/sw.js` inspection confirmed `manualChunks: 0`, `manualImages: 0`, `assetCount: 1728`, `hasRuntimeFetch: true`, `hasRuntimeCache: true`, and `hasInstallAddAll: true`; `dist/assets/manual4Ruedas-DqzUnZXS.js` still exists for on-demand local manual loading, and the 200 manual page JPEGs remain repository-served local assets for runtime loading.
 - P1 review fix recorded at `2026-05-27T00:43:52Z` for PR #170 thread `PRRT_kwDOSX65IM6E9nih` / comment `3307705691`.
 - Decision: `isManualPageImageAsset()` now matches only the dedicated 4R manual page JPEG path pattern `/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-###.jpg`; `shouldInstallPrecacheAsset()` excludes that matcher in addition to `/sw.js` and `/assets/manual4Ruedas-*.js`, avoiding a broad `content/assets` exclusion.
+- Current post-fix implementation/effective-content candidate head: `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`, which contains the accepted P1 manual page JPEG precache fix, validation evidence, and this review-disposition process-memory state.
 - Regression coverage: `tests/service-worker-generation.test.mjs` verifies the manual page matcher, excludes `page-001.jpg` and `page-200.jpg` from install precache, keeps ordinary app assets and manual-adjacent non-page/unrelated content assets eligible, and proves generated `sw.js` retains install `cache.addAll(ASSETS)` plus runtime `fetch(event.request)` and `cache.put(event.request, copy)`.
 - `node --test tests/service-worker-generation.test.mjs` passed: 2 tests, 0 failures.
 - `pnpm run validate:manual-4ruedas` passed with `Manual 4 ruedas RU validated: 200/200 pages, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
@@ -179,7 +182,7 @@
 
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
 - Prior P2 review findings after earlier final validation have implementation fixes and local verification evidence recorded in the Implementation Agent pass ending at head `44e4173a7fb0e15f02883b0771895557d4279c6b`.
-- Review `4368314983` introduced two accepted P2 follow-up findings at pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b`: the dynamic manual chunk remained in install-time service-worker precache, and process memory still named `b25890ecd48148819d45ffdd9407fcd7654195c6` as the then-current head. Both accepted findings are implemented at post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`, with current process-memory evidence recorded at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`.
+- Review `4368314983` introduced two accepted P2 follow-up findings at pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b`: the dynamic manual chunk remained in install-time service-worker precache, and process memory still named `b25890ecd48148819d45ffdd9407fcd7654195c6` as the then-current head. Both accepted findings are implemented at post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`, with historical process-memory evidence recorded at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`.
 - PR #170 thread `PRRT_kwDOSX65IM6E9nih` introduced an accepted P1 follow-up after final validation evidence commit `260c16dc03c93a8e98ce6be063e651dd97f0f37a`; the implementation in this pass excludes the 200 manual page JPEGs from install-time service-worker precache while preserving on-demand runtime caching.
 - Prior final Architect and Analyst validation for effective content head `330898c36037a14508acdc91381deb3652c0a166` remains stale/superseded for completion and merge readiness until Orchestrator reroutes final Architect and Analyst validation on the new post-fix PR head.
 
@@ -218,8 +221,8 @@
 - Architect disposition: both findings are accepted as follow-up implementation tasks; no rejection is justified.
 - Implementation boundary: Architect records disposition and tasks only. Architect does not edit code, tests, docs, runtime files, GitHub threads, or PR state.
 - Next routing: Orchestrator should assign Implementation Agent follow-up for the unchecked `Post-Final-Validation Review Fixes` tasks above.
-- Follow-up completion note: Implementation Agent fixed the accepted review `4368314983` findings at `221f634b8feb9a4c46528da655d352baa2a78131`, and the later evidence-only process-memory update at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` records the service-worker evidence. Final Architect and Analyst validation remain pending on `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`.
-- Validation requirement: final Architect validation and final Analyst validation must rerun after follow-up implementation and verification, using current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` as the effective-content candidate.
+- Follow-up completion note: Implementation Agent fixed the accepted review `4368314983` findings at `221f634b8feb9a4c46528da655d352baa2a78131`, and the later evidence-only process-memory update at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` recorded the service-worker evidence for that historical follow-up.
+- Historical validation requirement: final Architect validation and final Analyst validation were required after that follow-up using `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` as the then-current effective-content candidate; later P1 implementation superseded that candidate.
 - Disposition recorded at: 2026-05-27T00:37:52Z
 - Current PR: #170
 - Current PR head requiring follow-up: `260c16dc03c93a8e98ce6be063e651dd97f0f37a`
@@ -233,16 +236,31 @@
 - Implementation boundary: Architect records disposition and tasks only. Architect does not edit code, tests, docs, runtime files, GitHub threads, or PR state.
 - Next routing: Orchestrator should assign Implementation Agent follow-up for the unchecked P1 `Post-Final-Validation Review Fixes` tasks above.
 - Validation requirement: final Architect validation and final Analyst validation must rerun after P1 implementation and verification, using the new post-fix effective content head.
+- Disposition recorded at: 2026-05-27T00:59:09Z
+- Current PR: #170
+- Current PR head requiring disposition: `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`
+- Current post-fix implementation/effective-content candidate head: `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`
+- Prior process-memory evidence head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` is historical/superseded by the later P1 implementation and evidence sequence.
+- Prior final validation status: stale/superseded for merge readiness until final Architect and Analyst validation rerun on current head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` or a later evidence-only head.
+- Architect return count: 4
+- Accepted process-memory finding: PR #170 thread `PRRT_kwDOSX65IM6E90rE`, comment `3307779988`, review `4368625136`, `specs/027-manual-vehiculo-4ruedas-ru/tasks.md`; current post-fix head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` must be named clearly as the post-fix implementation/effective-content candidate, and old `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` candidate references must be historical/superseded.
+- Architect disposition: accepted as required process-memory follow-up and addressed in Architect-owned `tasks.md`; no product code, tests, runtime files, GitHub threads, staging, commits, pushes, or merge actions are part of this Architect disposition.
+- Conflicting AI Review finding: PR #170 thread `PRRT_kwDOSX65IM6E9zUc`, comment `3307772443`, `scripts/generate-service-worker.mjs`, line 19, requests keeping the manual corpus chunk and manual page JPEGs in install-time service-worker precache.
+- Architect disposition: not-needed as implementation work. Restoring install-time precache for the full manual payload conflicts with the accepted deferred-loading architecture from prior review dispositions, which requires non-manual startup not to request or install-precache the heavy manual corpus/chunk/images.
+- Rationale: the local-first contract for this feature is satisfied by repository-served local static assets, no runtime PDF/remote/backend/live-AI dependency, and runtime on-demand GET caching after the learner opens `Руководство 4R`; current docs and feature memory do not require first offline manual use before the manual has ever been opened online.
+- Resolution: no owner decision is required because the established Architect direction already balances local-first manual availability with startup performance by excluding the full manual payload from install-time precache and preserving on-demand local/runtime caching.
+- Validation requirement: final Architect and Analyst validation must rerun after AI Review routing completes and after any evidence-only process-memory commit, using current head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` or the later evidence-only head as appropriate.
 
 ## Cycle PR Set
 
 - PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, prior final-validated effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f`, post-fix implementation head before review `4368314983` follow-up `44e4173a7fb0e15f02883b0771895557d4279c6b`, prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` superseded, review `4368314983` implementation head `221f634b8feb9a4c46528da655d352baa2a78131` superseded by later evidence-only process-memory commit `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`, status open with accepted P2 follow-up implemented and current-head no-findings review evidence recorded by Orchestrator, included in this work cycle, final validation pending after the P1 manual-page-precache follow-up.
 - PR #170 update: final validation evidence commit head `260c16dc03c93a8e98ce6be063e651dd97f0f37a` recorded validation for effective content head `330898c36037a14508acdc91381deb3652c0a166`; subsequent AI Review P1 thread `PRRT_kwDOSX65IM6E9nih` is accepted as required follow-up, included in this work cycle, implemented and locally verified in this pass, and makes prior final Architect and Analyst validation stale/superseded for completion and merge readiness until validation reruns on the new post-fix PR head.
+- PR #170 update: current post-fix implementation/effective-content candidate head is `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`; process-memory P2 `PRRT_kwDOSX65IM6E90rE` is accepted and addressed, while conflicting AI Review P1 `PRRT_kwDOSX65IM6E9zUc` is disposed as not-needed implementation work with no owner decision required.
 
 ## Final Validation Evidence
 
 - Current final-validation status: pending. Pre-follow-up PR head `260c16dc03c93a8e98ce6be063e651dd97f0f37a` had accepted P1 review finding `PRRT_kwDOSX65IM6E9nih`; that finding is implemented and locally verified in this pass. Final Architect and Analyst validation must rerun on the new post-fix PR head before completion or merge readiness.
-- Effective content candidate head: the pushed commit containing the P1 manual-page-precache implementation and this task-memory evidence is not yet final-validated. Prior final-validated effective content head `330898c36037a14508acdc91381deb3652c0a166` is superseded for completion; prior follow-up heads `b25890ecd48148819d45ffdd9407fcd7654195c6`, `221f634b8feb9a4c46528da655d352baa2a78131`, and `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` remain superseded or contained in later PR history.
+- Effective content candidate head: `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` contains the P1 manual-page-precache implementation and current task-memory evidence, and is not yet final-validated. Prior final-validated effective content head `330898c36037a14508acdc91381deb3652c0a166` is superseded for completion; prior follow-up heads `b25890ecd48148819d45ffdd9407fcd7654195c6`, `221f634b8feb9a4c46528da655d352baa2a78131`, and `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` remain historical/superseded or contained in later PR history.
 - Architect validation: previously passed at 2026-05-26T22:54:19Z for PR #170, but this pass is now stale/superseded until the accepted follow-up tasks are implemented and final validation reruns.
 - Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded; no current-head final Architect validation has passed yet)
 - Architect return count: 2
@@ -260,24 +278,28 @@
 - Architect validation: stale/superseded after accepted P1 follow-up thread `PRRT_kwDOSX65IM6E9nih`; final Architect and Analyst validation must rerun after implementation and verification.
 - Architect return count: 3
 - Limit escalation: none
+- Current final-validation status: stale/superseded for completion and merge readiness until final Architect and Analyst validation rerun on current post-fix implementation/effective-content candidate `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` or a later evidence-only head.
+- Architect return count: 4
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Review disposition: process-memory P2 `PRRT_kwDOSX65IM6E90rE` is accepted and addressed; conflicting AI Review P1 `PRRT_kwDOSX65IM6E9zUc` is not-needed implementation work because install-time full-manual precache conflicts with accepted deferred loading and runtime on-demand caching.
 
 ## Final Architect Validation Notes
 
 - Architect validation pass: stale/superseded (previous pass completed at 2026-05-26T22:54:19Z)
 - Prior final Architect validation completed at: 2026-05-26T22:54:19Z
 - Prior effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f
-- Current effective-content candidate head: d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0 (pending Orchestrator-routed final Architect validation)
+- Historical effective-content candidate head: d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0 (superseded by later P1 implementation and current post-fix candidate head `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`)
 - Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded)
 - Architect return count: 2
 - Prior Architect validation evidence, now superseded: Scope matched the Analyst request and Architect spec at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; the implementation exposed a dedicated `Руководство 4R` surface, represented all 200 official source pages, preserved local page-faithful visual assets, provided complete RU content, and kept Spanish official-source traceability.
 - Prior Architect validation evidence, now superseded: Gate evidence passed for PR #170 at `19f8bf803126ade66e639da47666d4ff47a8bf7f`; Orchestrator evidence reported required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed, and local Architect validation additionally passed `node scripts/check-feature-memory.mjs --worktree` and `pnpm run validate:manual-4ruedas`.
 - Prior Architect validation evidence, now superseded: Earlier Codex P2 review findings were fixed, outdated, and resolved; recorded review-fix evidence covered guarded manifest-summary computation and zero-match search behavior, with corresponding unit and Playwright regression coverage.
 - Prior Architect validation evidence, now superseded: Verification evidence recorded the canonical PDF SHA-256 and 200-page source count, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages, full preflight, build, Node test, content-validation, and Playwright e2e coverage.
-- Current Architect disposition: accepted review `4368314983` P2 follow-up tasks are implemented at `221f634b8feb9a4c46528da655d352baa2a78131`, current process-memory evidence is recorded at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`, and no open Architect disposition remains before final validation.
+- Historical Architect disposition: accepted review `4368314983` P2 follow-up tasks are implemented at `221f634b8feb9a4c46528da655d352baa2a78131`, process-memory evidence was recorded at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`, and that head is superseded by current post-fix candidate `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511`.
 - Prior Architect validation evidence, now superseded: Docs and tests were covered by implementation evidence for frontend docs, feature inventory, backend/content docs, content validators, frontend tests, e2e tests, and repository preflight.
 - Prior Architect validation evidence, now superseded: Runtime evidence showed local `/content/assets/...` page images and blocked iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, external network fetches, and backend/live-AI dependencies; follow-up evidence additionally records the dynamic manual chunk excluded from install-time service-worker precache and non-manual startup not requesting it.
-- Architect gaps: none currently identified for accepted review `4368314983` findings; final Architect validation itself remains pending on current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` and is not performed in this normalization pass.
-- Open Architect dispositions: none; Orchestrator must rerun final Architect and Analyst validation on current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` before completion or merge readiness.
+- Architect gaps: none currently identified for accepted review `4368314983` findings; final Architect validation itself remains stale/superseded and must rerun on current post-fix candidate `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` or a later evidence-only head.
+- Open Architect dispositions: none for review `4368314983`; later dispositions for P1 manual page precache and current process-memory alignment are recorded below.
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-27T00:28:04Z
 - Effective content head: 330898c36037a14508acdc91381deb3652c0a166
@@ -298,3 +320,9 @@
 - Architect return count: 3
 - Architect validation gap: PR #170 thread `PRRT_kwDOSX65IM6E9nih` requires excluding manual page JPEG assets from install-time service-worker precache while preserving on-demand local/runtime caching for the manual surface.
 - Open Architect dispositions: accepted P1 follow-up is recorded as implementation work; no human owner decision is required. Final Architect and Analyst validation must rerun after implementation and verification.
+- Architect validation pass: stale/superseded until final validation reruns on current post-fix implementation/effective-content candidate `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` or a later evidence-only head.
+- Current post-fix implementation/effective-content candidate head: 00cf8b7e8ef1c4b6eeae44ad02d398d923e74511
+- Architect return count: 4
+- Architect validation gap: process-memory P2 `PRRT_kwDOSX65IM6E90rE` required naming `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` clearly as current candidate; this Architect-owned task-memory update addresses that gap.
+- Architect disposition: AI Review P1 `PRRT_kwDOSX65IM6E9zUc` is not-needed implementation work; full manual chunk/page-image install-time precache is intentionally excluded to preserve deferred loading, startup performance, and the accepted service-worker architecture while retaining repository-served local assets and on-demand runtime caching.
+- Open Architect dispositions: none; no owner decision is required for `PRRT_kwDOSX65IM6E9zUc`, and final Architect and Analyst validation must rerun only after AI Review routing and evidence-only process memory are current.
