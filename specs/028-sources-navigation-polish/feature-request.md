@@ -102,3 +102,15 @@ Architect and Implementation Agent should ensure that:
 ## Handoff
 
 Analyst intake is complete. Orchestrator may route this feature request to Architect for `spec.md`, `plan.md`, and `tasks.md`.
+
+## Final Analyst Validation
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-27T00:08:10-03:00
+- Analyst validated effective content head: 3198229bd03b1037cb49622fbcb56999b0c9dd22
+- Analyst validation return count: 0
+- New feature request escalation needed: no
+- Validation scope: final Analyst validation checked the completed result against the original customer request in spirit and letter: the user asked to work through Orchestrator workflow and reported that navigation in the `Источники` block was smeared/overlapping.
+- Customer outcome validation: passed. The recorded implementation and verification evidence show a narrow `Источники` `.source-toc` fragment-navigation layout fix that prevents row shrink overlap/clipping, keeps labels/subtitles readable on desktop and mobile, preserves selected/focus states, and keeps document selection, fragment selection, and `Просто`/`Полный перевод`/`Оригинал ES` behavior intact.
+- Acceptance expectation validation: passed. Evidence recorded by implementation and Architect includes pre-fix geometry failure, post-fix desktop/mobile Playwright geometry pass, focused primary-source e2e pass, full tests/build/preflight pass, no review findings, and no change to official/unofficial source labeling or local-only constraints.
+- Analyst gaps: none.
