@@ -114,3 +114,15 @@ Analyst intake is complete. Orchestrator may route this feature request to Archi
 - Customer outcome validation: passed. The recorded implementation and verification evidence show a narrow `Источники` `.source-toc` fragment-navigation layout fix that prevents row shrink overlap/clipping, keeps labels/subtitles readable on desktop and mobile, preserves selected/focus states, and keeps document selection, fragment selection, and `Просто`/`Полный перевод`/`Оригинал ES` behavior intact.
 - Acceptance expectation validation: passed. Evidence recorded by implementation and Architect includes pre-fix geometry failure, post-fix desktop/mobile Playwright geometry pass, focused primary-source e2e pass, full tests/build/preflight pass, no review findings, and no change to official/unofficial source labeling or local-only constraints.
 - Analyst gaps: none.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-05-27T00:31:03-03:00
+Analyst validated effective content head: 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55
+Analyst return count: 0
+Customer intent check: passed; the original customer outcome remains satisfied because the `Источники` fragment navigation is fixed by the narrow `.source-toc` layout change and desktop/mobile geometry checks, while the later effective head only normalizes process memory and does not change product code, tests, content, local-only constraints, or source-reader behavior.
+Gaps, if any: none
+Architect disposition routing: no Analyst gaps require Architect disposition; parser-gap/process-memory follow-up has already received Architect validation rerun pass for effective content head 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55.
+Analyst limit escalation: none
+Analyst boundary reminder: Analyst final validation rerun appended Analyst-owned notes only and did not edit code, tests, spec, plan, tasks, stage, commit, push, update PR state, or merge.

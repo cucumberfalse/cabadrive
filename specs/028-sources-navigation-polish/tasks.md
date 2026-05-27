@@ -156,6 +156,12 @@
 - Current-PR-head read-only guard: current PR head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d compared with effective content head 3198229bd03b1037cb49622fbcb56999b0c9dd22 contains only role-owned final-validation or process-memory evidence files and no product code, test, content, runtime, source archive, backend, PDF, or service-worker changes after the effective content head.
 - Final-validation evidence-only commit: current head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d records final-validation evidence after effective content head 3198229bd03b1037cb49622fbcb56999b0c9dd22; this follow-up normalizes machine-parseable process memory so Orchestrator can commit a new effective content head and rerun final Architect and Analyst validation before completion.
 - Analyst feedback Architect disposition: none.
+- Effective content head: 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55
+- Architect return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: effective content head 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55 includes the product fix at 3198229bd03b1037cb49622fbcb56999b0c9dd22, final-validation evidence at 995b2ef60aee6fdd064c8d2e93b961b67d7a921d, and parser-normalized process memory; this Architect validation evidence update is role-owned final-validation evidence only and does not change product code, tests, content, runtime, source archive, backend, PDF, or service-worker files.
+- Final-validation evidence-only commit: this Architect validation rerun records only final-validation evidence after effective content head 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55.
+- Analyst feedback Architect disposition: none.
 
 ## Final Architect Validation Notes
 
@@ -174,3 +180,15 @@
 - Architect disposition: Implementation Agent feedback required no action because no Implementation Agent feedback was recorded.
 - Architect gaps: none.
 - Architect validation evidence: this historical validation note is preserved in parseable `Final Architect Validation Notes` form so future post-effective final-validation evidence-only diffs are accepted by the finalize helper; it is not a new final validation pass for current head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T00:28:18-03:00
+- Effective content head: 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55
+- Architect validated effective content head: 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55
+- Architect return count: 0
+- Architect validation evidence: product and test implementation remains the previously validated source-reader TOC CSS fix and desktop/mobile Playwright geometry coverage from 3198229bd03b1037cb49622fbcb56999b0c9dd22; no product code, tests, runtime content, source archive, backend, PDF, or service-worker files changed after that product head.
+- Architect validation evidence: process memory at effective content head 3a47f28c4b5dca9578ef6ed1db2baba7dfc6ff55 is current and parseable, including `Cycle PR Set`, `Final Validation Evidence`, `Known Issues`, and `Implementation Agent Feedback` sections.
+- Architect validation evidence: known issues are recorded as none, and Implementation Agent feedback is recorded as none with no undisposed feedback remaining.
+- Architect validation evidence: the prior AI Review current-head guard thread was answered with Orchestrator guard evidence and resolved.
+- Architect validation evidence: required GitHub check completion for the post-evidence PR head remains an Orchestrator merge-readiness gate; Architect validation covers the effective content head and does not replace Orchestrator final check verification.
+- Architect disposition: no Implementation Agent feedback required Architect follow-up, and no known issue requires owner decision.
+- Architect gaps: none.
