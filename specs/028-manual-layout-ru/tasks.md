@@ -122,7 +122,7 @@
 - `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
 - `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, exact-start semantic fallback, mobile readability, same-page search-result entry identity, and deduplicated search page-list paging.
 - `[x]` Review findings received through current Architect handoff are disposed by Architect before follow-up implementation.
-- `[ ]` Final Architect validation passes before final Analyst validation.
+- `[x]` Final Architect validation passes before final Analyst validation.
 - `[ ]` Final Analyst validation passes before Orchestrator completion/merge readiness.
 
 ## Initial Architect Decisions
@@ -147,8 +147,7 @@
 
 ## Known Issues
 
-- Source-mask provenance follow-up has no implementation-known product issues after commit `3ec1cb22e0da44ad008e2f147d5aefdc5caa6703`; Review Agent and Orchestrator verification remain pending.
-- Search page-list paging follow-up has no implementation-known product issues after the current implementation commit; review thread `PRRT_kwDOSX65IM6FFPA1` / inline comment `3310443420` still needs reviewer confirmation after push.
+- No Architect-known product or process issues remain for current/effective content head `47ccb4631a3001a0e7814be13d963592d07cf283`. Orchestrator reported current PR head `47ccb4631a3001a0e7814be13d963592d07cf283`, required checks green, merge state `CLEAN`, and final Review Agent no findings at the current head before this final Architect validation.
 
 ## Implementation Agent Feedback
 
@@ -320,9 +319,15 @@
 
 ## Final Validation Evidence
 
-- Current final-validation status: accepted P1 layout findings, accepted P2 same-page semantic topic-click identity finding, accepted P2 Stress navigation finding, accepted P3 mobile readability finding, accepted P2 exact-start semantic fallback finding `PRRT_kwDOSX65IM6E_q3_`, accepted P2 previous/next preserved-entry exact-start comment `3308499475` / review `4369468027`, accepted P1 Appendix IV source-mask finding `PRRT_kwDOSX65IM6E_8qf`, accepted P2 TypeScript navigation-narrowing finding `PRRT_kwDOSX65IM6FAB5C`, accepted P2 same-page manual search-result finding `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681`, accepted P2 full-manual mask-provenance finding `4371883035` / inline comment `3310426978`, and accepted P2 search matching-page paging finding `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` have follow-up implementation evidence recorded above. Final validation remains pending re-review and Orchestrator routing.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T11:50:20Z
+- Effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
+- Architect validated effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
 - Architect return count: 0.
-- Limit escalation: none.
-- Effective content head: pending implementation.
-- Architect validated effective content head: pending implementation.
-- Analyst validated effective content head: pending implementation.
+- Limit escalation: none; Architect return limit not approached.
+- Cycle PR set validated: PR `#172`, branch `codex/028-manual-layout-ru`, single implementation PR slice, base `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, current/effective content head `47ccb4631a3001a0e7814be13d963592d07cf283`.
+- Review feedback disposition validated: all accepted blocking/advisory completion-blocking review findings recorded in Architect dispositions have implementation follow-up evidence above, including per-block layout rendering, page-specific layout geometry, same-page topic identity, corrected Stress/Distractions navigation, mobile readability, exact-start lookup, previous/next topic resolution, Appendix IV source masks, TypeScript navigation narrowing, same-page search-result identity, full-manual mask provenance, and search matching-page dedupe.
+- Acceptance evidence validated: `pnpm run validate:manual-4ruedas` passed during final Architect validation with `200/200 pages`, `200 layout pages`, `11 semantic sections`, `56 topics`, `200 local page assets`, `198 approved reused translations`, and `2 visual-label translation pages`; recorded implementation evidence also includes strict TypeScript, focused Node, focused Playwright, build, and full preflight passes at the current work cycle head.
+- Read-only final checks: `git status --short --branch` showed branch `codex/028-manual-layout-ru` tracking `origin/codex/028-manual-layout-ru` with no initial dirty entries; `git rev-parse HEAD` returned `47ccb4631a3001a0e7814be13d963592d07cf283`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed.
+- Customer intent validated in spirit and letter: the process memory and recorded evidence support a complete exact Russian web manual, preserved document layout/images/visual hierarchy through local page assets and structured layout data, non-overlapping readable mobile navigation around pages `114`-`123`, meaningful source-derived semantic navigation, and no runtime PDF viewer/network/backend/live-AI dependency.
+- Analyst validated effective content head: pending final Analyst validation.
