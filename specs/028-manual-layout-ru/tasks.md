@@ -122,15 +122,18 @@
 - `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
 - `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, exact-start semantic fallback, mobile readability, same-page search-result entry identity, and deduplicated search page-list paging.
 - `[x]` Review findings received through current Architect handoff are disposed by Architect before follow-up implementation.
-- `[x]` Final Architect validation passes before final Analyst validation.
+- `[ ]` Final Architect validation passes before final Analyst validation. Awaiting rerun after pre-final process-memory alignment.
 - `[ ]` Final Analyst validation passes before Orchestrator completion/merge readiness.
 
-## Initial Architect Decisions
+## Decisions
 
-- Use a layout-preserving page renderer rather than a transcript reader. This is required because the user's correction explicitly asks for the web version to preserve document structure, pictures, and layout in Russian.
-- Keep feature `027` exact translation and local asset foundation, but do not keep feature `027` primary presentation model.
-- Use the source index on printed pages `11-12` as the foundation for meaningful navigation. Page-only browsing is secondary.
-- Preserve the accepted feature `027` deferred-loading/service-worker architecture: heavy manual payloads are local static assets but are not install-time precached for users who never open the manual.
+- Build a layout-preserving Russian web manual instead of a transcript/card reader; document structure, pictures, tables, icons, captions, labels, and visual hierarchy stay visible locally.
+- Make source-derived semantic navigation from the official index and page-heading evidence primary; flat page access/search remains secondary.
+- Cover all 200 source pages with the exact approved Russian translation, without summaries, omissions, placeholders, or simplified wording.
+- Preserve local-first runtime behavior: no runtime PDF viewer/rendering, remote manual assets, backend endpoint, runtime network fetch, or live-AI dependency for manual content/assets.
+- Require every mask/replacement to carry source-text, source-caption, source-label, or explicit structured/precomposed replacement provenance; destination Russian block-derived masks without source provenance are invalid.
+- Keep mobile manual rows and page canvas readable with a practical primary-text readability floor in addition to no-overlap geometry checks.
+- Preserve same-page semantic identity and search result identity, including page `94` exact-start navigation and page `100` same-page topic rows, while deduplicating matching-page paging by page number.
 
 ## Current Evidence To Reuse
 
@@ -147,13 +150,16 @@
 
 ## Known Issues
 
-- No Architect-known product or process issues remain for current/effective content head `47ccb4631a3001a0e7814be13d963592d07cf283`. Orchestrator reported current PR head `47ccb4631a3001a0e7814be13d963592d07cf283`, required checks green, merge state `CLEAN`, and final Review Agent no findings at the current head before this final Architect validation.
+- No known issues.
 
 ## Implementation Agent Feedback
 
-- Current-head Codex review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` on `src/App.tsx:1605` reports that manual search results for pages with multiple same-page semantic topics preserve only the first exact-start entry, for example page `100` where `ch5-equal-society` and `ch5-gender-violence-prevention` share a page. Architect disposition below accepts this as a blocking P2 implementation follow-up.
-- Current-head Codex blocking review `4371883035` / inline comment `3310426978` reports that the Appendix IV source-mask fix did not close the broader contract: non-Appendix masks still derive from destination Russian block bounds and lack source-text/source-caption provenance, while validation only enforces curated source geometry for Appendix IV. Architect disposition below accepts this as a blocking P2 implementation follow-up for full-manual mask provenance and validation.
-- Current-head Codex review thread `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` on `src/App.tsx:1643` reports that search-result paging still treats duplicate same-page semantic entries as duplicate matching pages for page-number queries. Architect disposition below accepts this as a blocking P2 implementation follow-up.
+- Current-head Codex review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` on `src/App.tsx:1605` reported that manual search results for pages with multiple same-page semantic topics preserved only the first exact-start entry, for example page `100` where `ch5-equal-society` and `ch5-gender-violence-prevention` share a page.
+  Architect disposition: addressed by the same-page search-result entry identity follow-up. Recorded evidence shows search results preserve distinct `entryId` values, `data-result-entry-id`, and a click/selection path that selects `ch5-gender-violence-prevention` on page `100` instead of collapsing to `ch5-equal-society`.
+- Current-head Codex blocking review `4371883035` / inline comment `3310426978` reported that the Appendix IV source-mask fix did not close the broader contract: non-Appendix masks still derived from destination Russian block bounds and lacked source-text/source-caption provenance, while validation only enforced curated source geometry for Appendix IV.
+  Architect disposition: addressed by the full-manual source-mask provenance follow-up. Recorded evidence shows all 200 pages now require source-text/source-caption/source-label or structured/precomposed replacement provenance, reject destination Russian block-derived masks without source provenance, and include representative non-Appendix plus Appendix IV/page `185` validation.
+- Current-head Codex review thread `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` on `src/App.tsx:1643` reported that search-result paging still treated duplicate same-page semantic entries as duplicate matching pages for page-number queries.
+  Architect disposition: addressed by the search page-list paging follow-up. Recorded evidence shows `matchingPages` is deduplicated by page number while distinct semantic topic rows and entry IDs remain available; query `100` reports one found page and disables Previous/Next no-op duplicate-page navigation.
 
 ## Implementation Decisions And Evidence
 
@@ -313,21 +319,23 @@
 - Review Agent must verify representative non-Appendix pages plus page `185` and representative Appendix IV pages no longer show Spanish source headings/captions/body instructional text in the primary Russian reader, and that their masks/replacements carry source provenance.
 - Review Agent must verify strict TypeScript coverage passes, preferably `pnpm exec tsc --noEmit`, and that navigation is narrowed/captured before nested handler use.
 
+## Verification Evidence
+
+- Manual validator passed at the effective implementation head: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Full preflight passed at the effective implementation head: `pnpm run preflight` -> feature-memory gate, repository baseline check, content validation, 295/295 Node tests, production build/service-worker generation, second production build for E2E, and 58/58 Playwright tests completed.
+- Strict TypeScript passed: `pnpm exec tsc --noEmit`.
+- Focused Node coverage passed for manual content/runtime shape and regressions, including per-block layout, source-mask provenance, page `94` exact-start navigation, page `100` same-page search identity, and query `100` matching-page dedupe.
+- Focused Playwright coverage passed for the complete RU manual surface, including local-only manual requests, old split UI absence, independently placed Russian blocks, page `185` and representative Appendix IV source masks, non-Appendix source-mask DOM coverage, page `94` Stress labeling/highlighting, page `100` same-page topic identity/search dedupe, and query `100` found-page count/Previous/Next behavior.
+- Mobile Playwright evidence covers pages `114`-`123` with no overlapping/clipped/smeared rows or page blocks and a computed primary Russian instructional text readability floor of at least `8px`.
+- Full-manual mask provenance evidence covers all 200 pages: masks/replacements are source-text/source-caption/source-label geometry or explicit structured/precomposed Russian replacements, and validation rejects destination Russian block-derived masks without source provenance.
+- Runtime dependency evidence confirms the manual reader uses local static data/assets with deferred loading and service-worker on-demand caching, and no runtime PDF viewer/rendering, remote manual asset, backend endpoint, runtime network fetch, or live-AI request for manual content/assets.
+
 ## Cycle PR Set
 
-- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current implementation commit contains the follow-up for accepted blocking review thread `PRRT_kwDOSX65IM6FFPA1` / inline comment `3310443420`, deduplicating search matching-page paging by page number. Historical reviewed heads include `73fe43036236c5c82b00eb389418bf41868007e2` before this search paging dedupe fix, `3edf5c8dc268fad27d9acf8681eedd767c27e542` before the full-manual mask provenance fix, `50bd16ac4e263f9c4d05c2699a91bc87937ba297` before the same-page manual search-result fix, `42e2b919c081a4f2de51678f0b3467f5fe9357ec` before the Appendix IV source-mask and TypeScript navigation-narrowing follow-up, `6f6b452e694a628053ab50fcdb731bf8a802f67b` before the previous/next preserved-entry exact-start follow-up, `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c` before the first exact-start semantic fallback follow-up, `ed03406c731e0580145e9f14452153602514ee87` before the Stress/mobile readability follow-up, `c9f82a422db76009e28e3fa8b9cc5592f7843438` before the same-page topic-click follow-up, and `5f9a61301bdf52dff1c3da6bbea265559447854b` before the accepted P1 layout follow-up. Base remains verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Included in final validation only after the current search paging dedupe follow-up is pushed and re-reviewed.
+- Implementation PR slice: PR `#172`, branch `codex/028-manual-layout-ru`, base SHA `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, current effective implementation head `47ccb4631a3001a0e7814be13d963592d07cf283`, status: implementation accepted/reviewed with required evidence recorded; pre-final process-memory alignment is being prepared on top for a fresh final validation cycle. Final validation inclusion: PR `#172` is the single implementation PR slice for feature `028-manual-layout-ru` and is included in the next final validation cycle for effective implementation head `47ccb4631a3001a0e7814be13d963592d07cf283`.
 
 ## Final Validation Evidence
 
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-27T11:50:20Z
-- Effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
-- Architect validated effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
 - Architect return count: 0.
-- Limit escalation: none; Architect return limit not approached.
-- Cycle PR set validated: PR `#172`, branch `codex/028-manual-layout-ru`, single implementation PR slice, base `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, current/effective content head `47ccb4631a3001a0e7814be13d963592d07cf283`.
-- Review feedback disposition validated: all accepted blocking/advisory completion-blocking review findings recorded in Architect dispositions have implementation follow-up evidence above, including per-block layout rendering, page-specific layout geometry, same-page topic identity, corrected Stress/Distractions navigation, mobile readability, exact-start lookup, previous/next topic resolution, Appendix IV source masks, TypeScript navigation narrowing, same-page search-result identity, full-manual mask provenance, and search matching-page dedupe.
-- Acceptance evidence validated: `pnpm run validate:manual-4ruedas` passed during final Architect validation with `200/200 pages`, `200 layout pages`, `11 semantic sections`, `56 topics`, `200 local page assets`, `198 approved reused translations`, and `2 visual-label translation pages`; recorded implementation evidence also includes strict TypeScript, focused Node, focused Playwright, build, and full preflight passes at the current work cycle head.
-- Read-only final checks: `git status --short --branch` showed branch `codex/028-manual-layout-ru` tracking `origin/codex/028-manual-layout-ru` with no initial dirty entries; `git rev-parse HEAD` returned `47ccb4631a3001a0e7814be13d963592d07cf283`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed.
-- Customer intent validated in spirit and letter: the process memory and recorded evidence support a complete exact Russian web manual, preserved document layout/images/visual hierarchy through local page assets and structured layout data, non-overlapping readable mobile navigation around pages `114`-`123`, meaningful source-derived semantic navigation, and no runtime PDF viewer/network/backend/live-AI dependency.
-- Analyst validated effective content head: pending final Analyst validation.
+- Analyst return count: 0.
+- Limit escalation: none.

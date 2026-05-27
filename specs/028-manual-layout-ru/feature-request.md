@@ -154,14 +154,3 @@ The corrected manual reader must provide meaningful navigation by the manual's o
 ## Analyst Handoff
 
 This intake is ready for Orchestrator handoff to Architect. The corrective scope is clear: repair the manual implementation so it preserves document structure/layout in Russian web form, add meaningful source-derived document navigation beyond a flat 200-page list, and fix the mobile manual navigation/list rendering bug, while preserving local-first/static constraints and full 200-page completeness.
-
-## Final Analyst Validation
-
-- Analyst validation pass: passed
-- Final Analyst validation completed at: 2026-05-27T11:53:02Z
-- Effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
-- Analyst validated effective content head: 47ccb4631a3001a0e7814be13d963592d07cf283
-- Analyst return count: 0 of 5.
-- Limit escalation: none; Analyst return limit not approached and no new feature request is needed.
-- Evidence reviewed: Architect final validation passed first at `2026-05-27T11:50:20Z` for the same effective content head; `pnpm run validate:manual-4ruedas` independently reported `200/200 pages`, `200 layout pages`, `11 semantic sections`, `56 topics`, and `200 local page assets`; targeted manifest checks confirmed pages `1-200`, source-derived top-level navigation including the introduction, chapters, and appendices, and layout/mask data on representative pages `114` and `185`; recorded implementation evidence covers strict TypeScript, focused Node, focused Playwright, production build, full preflight, mobile pages `114-123`, full-manual source-mask provenance, same-page semantic search identity, search page-list dedupe, and absence of runtime PDF/network/backend/live-AI dependencies.
-- Customer intent validation: the recorded and rechecked evidence satisfies the original correction in spirit and letter: the primary `Руководство 4R` result is a complete Russian site-native manual page layout, not a PDF or side-by-side transcript; document structure, page order, images, diagrams, tables, captions, masks/replacements, and visual hierarchy are preserved through local static layout/assets; no simplification, deletion, summary, or partial subset is recorded; mobile navigation/readability around pages `114-123` is covered; and navigation is meaningful and source-derived rather than only a flat 200-page list.
