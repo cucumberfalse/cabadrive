@@ -11,6 +11,8 @@ const processGuide = JSON.parse(readFileSync("content/guide/caba-exam-process.ru
 const primarySourceManifest = JSON.parse(readFileSync("content/official-documents/manifest.json", "utf8"));
 const imageOverlays = JSON.parse(readFileSync("content/image-overlays/question-explanation-overlays.manifest.json", "utf8"));
 const manualManifest = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json", "utf8"));
+const manualLayout = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/layout.ru.json", "utf8"));
+const manualNavigation = JSON.parse(readFileSync("content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json", "utf8"));
 const learningImageById = new Map(learningImages.images.map((image: { imageId: string }) => [image.imageId, image]));
 const learningCoverageByUnitId = new Map(learningImages.coverage.map((record: { unitId: string }) => [record.unitId, record]));
 const firstQuestionWrongAnswerIndex = questions[0].answers.findIndex((answer: { id: string }) => answer.id !== questions[0].correctAnswerId);
@@ -146,7 +148,7 @@ async function openCompleteManual(page: Page) {
 }
 
 async function showCompleteManualList(page: Page) {
-  const backButton = page.getByRole("button", { name: /К списку страниц/ });
+  const backButton = page.getByRole("button", { name: /К навигации/ });
   if (await backButton.isVisible()) await backButton.click();
 }
 
@@ -620,7 +622,7 @@ test("process guide stays local-first without external requests, remote images, 
   expect(pdfRequests).toEqual([]);
 });
 
-test("complete RU manual surface renders first, middle, and last pages from local assets only", async ({ page }) => {
+test("complete RU manual surface renders Russian layout pages with semantic navigation and local assets only", async ({ page }) => {
   const externalRequests: string[] = [];
   const pdfRequests: string[] = [];
   const backendLikeRequests: string[] = [];
@@ -633,26 +635,47 @@ test("complete RU manual surface renders first, middle, and last pages from loca
 
   await openCompleteManual(page);
   await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 / 200 страниц");
-  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 локальных page assets");
-  await expect(page.getByLabel("Покрытие полного manual")).toContainText("198 approved chunks");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 страниц верстки");
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText(`${manualNavigation.entries.length} разделов`);
+  await expect(page.getByLabel("Покрытие полного manual")).toContainText("200 локальных изображений");
   await expect(page.locator("iframe, embed, object")).toHaveCount(0);
   await expect(page.locator(".manual-reader a[href$='.pdf'], .manual-reader a[href*='.pdf']")).toHaveCount(0);
+  await expect(page.locator(".manual-page-grid, .manual-visual, .manual-translation")).toHaveCount(0);
+  await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
+  await expect(page.getByTestId("manual-nav-introduction")).toBeVisible();
+  await expect(page.getByTestId("manual-nav-appendix-4-road-signs")).toBeVisible();
 
-  await page.getByTestId("manual-page-button-1").click();
-  const manualImage = page.getByTestId("manual-page-visual").locator("img");
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
-  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[0].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[0].visualAsset.width);
-  await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[0].visualAsset.height);
-  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[0].translation.fullTranslationRu));
-  await expect(page.getByTestId("manual-page-detail")).toContainText(manualManifest.pages[0].translation.chunkProvenance.chunkId);
+  if (!(await page.getByTestId("manual-page-canvas").isVisible())) {
+    await page.getByTestId("manual-nav-introduction").click();
+  }
+  const manualImage = page.getByTestId("manual-page-local-visual");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
+  await expect(page.getByTestId("manual-page-canvas")).toBeVisible();
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВВЕДЕНИЕ");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[13].visualAsset.localPath.replace(/\//g, "\\/")));
+  await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[13].visualAsset.width);
+  await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[13].visualAsset.height);
 
   await showCompleteManualList(page);
-  await page.getByTestId("manual-page-button-100").click();
-  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
-  await expect(page.getByTestId("manual-page-detail")).toContainText("PDF page 100");
-  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[99].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(page.getByTestId("manual-page-translation")).toContainText(textSample(manualManifest.pages[99].translation.fullTranslationRu));
+  await page.getByTestId("manual-nav-chapter-3-driving-rules").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("57 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ОСНОВНЫЕ НОРМЫ");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app1-safety-elements").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("105 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Элементы безопасности");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-appendix-2-passenger-transport").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("123 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ПЕРЕВОЗКА ПАССАЖИРОВ");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-nav-app4-signs-regulatory").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("185 / 200");
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText("Запрещающие");
+  await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[184].visualAsset.localPath.replace(/\//g, "\\/")));
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
@@ -660,11 +683,44 @@ test("complete RU manual surface renders first, middle, and last pages from loca
   await page.getByTestId("manual-page-button-200").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("200 / 200");
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[199].visualAsset.localPath.replace(/\//g, "\\/")));
-  await expect(page.getByTestId("manual-page-translation")).toContainText(manualManifest.pages[199].translation.fullTranslationRu);
+  await expect(page.getByTestId("manual-page-russian-layout")).toContainText(manualManifest.pages[199].translation.fullTranslationRu);
 
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
   expect(backendLikeRequests).toEqual([]);
+});
+
+test("complete RU manual mobile navigation rows around pages 114-123 do not overlap or clip", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await openCompleteManual(page);
+
+  await page.getByTestId("manual-nav-appendix-1-private-cars").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("104 / 200");
+  await page.getByRole("button", { name: /К навигации/ }).click();
+
+  await page.getByTestId("manual-page-access").locator("summary").click();
+  await page.getByTestId("manual-page-button-114").scrollIntoViewIfNeeded();
+
+  const rowBoxes: Array<{ pageNumber: number; y: number; bottom: number }> = [];
+  for (let pageNumber = 114; pageNumber <= 123; pageNumber += 1) {
+    const row = page.getByTestId(`manual-page-button-${pageNumber}`);
+    await expect(row).toBeVisible();
+    const rowBox = await row.boundingBox();
+    const markerBox = await row.locator("span").first().boundingBox();
+    const titleBox = await row.locator("strong").first().boundingBox();
+    const subtitleBox = await row.locator("small").first().boundingBox();
+    if (!rowBox || !markerBox || !titleBox || !subtitleBox) throw new Error(`Missing mobile bounding box for manual page ${pageNumber}`);
+
+    expect(markerBox.x + markerBox.width).toBeLessThanOrEqual(titleBox.x - 1);
+    expect(titleBox.y).toBeGreaterThanOrEqual(rowBox.y);
+    expect(subtitleBox.y).toBeGreaterThanOrEqual(titleBox.y);
+    expect(subtitleBox.y + subtitleBox.height).toBeLessThanOrEqual(rowBox.y + rowBox.height + 0.5);
+    rowBoxes.push({ pageNumber, y: rowBox.y, bottom: rowBox.y + rowBox.height });
+  }
+
+  for (let index = 1; index < rowBoxes.length; index += 1) {
+    expect(rowBoxes[index - 1].bottom, `manual pages ${rowBoxes[index - 1].pageNumber}-${rowBoxes[index].pageNumber} overlap`).toBeLessThanOrEqual(rowBoxes[index].y + 0.5);
+  }
 });
 
 test("non-manual startup defers the manual corpus chunk until the manual view opens", async ({ page }) => {
@@ -686,7 +742,7 @@ test("non-manual startup defers the manual corpus chunk until the manual view op
 
   await page.getByRole("button", { name: /Руководство 4R/ }).click();
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
   await expect(manualChunkRequests).toHaveLength(1);
   expect(externalRequests).toEqual([]);
   expect(pdfRequests).toEqual([]);
@@ -709,7 +765,7 @@ test("complete RU manual search with no matches keeps the detail pane empty", as
 
   await page.getByRole("button", { name: "Сбросить поиск" }).click();
 
-  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
 });
 
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {

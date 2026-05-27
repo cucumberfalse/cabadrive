@@ -1,0 +1,657 @@
+{
+  "schema": "cabadrive-manual-navigation-ru.v1",
+  "version": 1,
+  "manualId": "gcba-manual-vehiculo-4-ruedas-2023-ru-complete",
+  "locale": "ru",
+  "source": {
+    "manualManifestPath": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json",
+    "indexPdfPages": [
+      12,
+      13
+    ],
+    "indexPrintedPages": [
+      11,
+      12
+    ],
+    "indexTextSha256": "a7b81a249246161012aa03a4b585458013b7c8dbce8596ab2caded3f0afb609f",
+    "printedToPdfPageMapping": "printed page n maps to PDF page n + 1 for indexed body sections"
+  },
+  "pageCount": 200,
+  "entries": [
+    {
+      "id": "front-matter",
+      "titleRu": "Начало и справочные страницы",
+      "titleEs": "Presentacion, glosario e indice",
+      "level": "frontMatter",
+      "startPage": 1,
+      "endPage": 13,
+      "sourceEvidence": "curated_manual_review",
+      "children": [
+        {
+          "id": "front-title",
+          "titleRu": "Титульная страница",
+          "titleEs": "Portada",
+          "startPage": 1,
+          "sourceEvidence": "page_heading",
+          "level": "topic",
+          "endPage": 1
+        },
+        {
+          "id": "front-presentation",
+          "titleRu": "Презентация",
+          "titleEs": "Presentacion",
+          "startPage": 2,
+          "sourceEvidence": "page_heading",
+          "level": "topic",
+          "endPage": 2
+        },
+        {
+          "id": "front-categories",
+          "titleRu": "Материал по категориям",
+          "titleEs": "Material por categorias",
+          "startPage": 3,
+          "sourceEvidence": "page_heading",
+          "level": "topic",
+          "endPage": 3
+        },
+        {
+          "id": "front-glossary",
+          "titleRu": "Глоссарий",
+          "titleEs": "Glosario",
+          "startPage": 4,
+          "sourceEvidence": "page_heading",
+          "level": "topic",
+          "endPage": 11
+        },
+        {
+          "id": "front-index",
+          "titleRu": "Индекс",
+          "titleEs": "Indice",
+          "startPage": 12,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 13
+        }
+      ]
+    },
+    {
+      "id": "introduction",
+      "titleRu": "Введение",
+      "titleEs": "Introduccion",
+      "level": "chapter",
+      "startPage": 14,
+      "endPage": 20,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 13,
+      "children": [
+        {
+          "id": "intro-road-pandemic",
+          "titleRu": "Дорожная пандемия",
+          "titleEs": "Pandemia vial",
+          "startPage": 15,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 15
+        },
+        {
+          "id": "intro-ethical-civic-approach",
+          "titleRu": "Этико-гражданский подход в дорожной культуре",
+          "titleEs": "Enfoque etico ciudadano en la cultura vial",
+          "startPage": 16,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 16
+        },
+        {
+          "id": "intro-incident",
+          "titleRu": "Авария или дорожный инцидент?",
+          "titleEs": "Accidente o incidente vial?",
+          "startPage": 17,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 17
+        },
+        {
+          "id": "intro-road-safety-plan",
+          "titleRu": "План дорожной безопасности города Буэнос-Айрес",
+          "titleEs": "Plan de seguridad vial de la Ciudad de Buenos Aires",
+          "startPage": 18,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 20
+        }
+      ]
+    },
+    {
+      "id": "chapter-1-sustainable-mobility",
+      "titleRu": "Глава 1: К устойчивой мобильности",
+      "titleEs": "Capitulo 1: Hacia una movilidad sustentable",
+      "level": "chapter",
+      "startPage": 21,
+      "endPage": 42,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 20,
+      "children": [
+        {
+          "id": "ch1-cities-for-people",
+          "titleRu": "Города для людей",
+          "titleEs": "Ciudades para las personas",
+          "startPage": 22,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 22
+        },
+        {
+          "id": "ch1-sustainable-mobility",
+          "titleRu": "Что такое устойчивая мобильность?",
+          "titleEs": "Que es la movilidad sustentable?",
+          "startPage": 23,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 23
+        },
+        {
+          "id": "ch1-pedestrian-priority",
+          "titleRu": "Пешеходный приоритет",
+          "titleEs": "Prioridad peatonal",
+          "startPage": 24,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 29
+        },
+        {
+          "id": "ch1-bicycle",
+          "titleRu": "Велосипед",
+          "titleEs": "Bicicleta",
+          "startPage": 30,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 38
+        },
+        {
+          "id": "ch1-public-transport-system",
+          "titleRu": "Система общественного транспорта",
+          "titleEs": "Sistema de transporte publico",
+          "startPage": 39,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 40
+        },
+        {
+          "id": "ch1-shared-trip",
+          "titleRu": "Совместная поездка",
+          "titleEs": "Viaje compartido",
+          "startPage": 41,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 42
+        }
+      ]
+    },
+    {
+      "id": "chapter-2-responsibility",
+      "titleRu": "Глава 2: Управление транспортным средством - акт ответственности",
+      "titleEs": "Capitulo 2: Conducir un vehiculo - un acto de responsabilidad",
+      "level": "chapter",
+      "startPage": 43,
+      "endPage": 56,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 42,
+      "children": [
+        {
+          "id": "ch2-legal-responsibility",
+          "titleRu": "Юридическая ответственность",
+          "titleEs": "Responsabilidad juridica",
+          "startPage": 44,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 45
+        },
+        {
+          "id": "ch2-required-documents",
+          "titleRu": "Обязательные документы",
+          "titleEs": "Documentacion obligatoria",
+          "startPage": 46,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 50
+        },
+        {
+          "id": "ch2-incident-obligations",
+          "titleRu": "Обязанности в случае дорожных инцидентов",
+          "titleEs": "Obligaciones en caso de incidentes viales",
+          "startPage": 51,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 55
+        },
+        {
+          "id": "ch2-scoring",
+          "titleRu": "Система баллов Scoring",
+          "titleEs": "Sistema de puntos Scoring",
+          "startPage": 56,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 56
+        }
+      ]
+    },
+    {
+      "id": "chapter-3-driving-rules",
+      "titleRu": "Глава 3: Основные нормы вождения",
+      "titleEs": "Capitulo 3: Normas basicas de conduccion",
+      "level": "chapter",
+      "startPage": 57,
+      "endPage": 88,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 56,
+      "children": [
+        {
+          "id": "ch3-priority-of-rules",
+          "titleRu": "Приоритет норм",
+          "titleEs": "Prioridad normativa",
+          "startPage": 58,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 63
+        },
+        {
+          "id": "ch3-right-of-way",
+          "titleRu": "Преимущество проезда",
+          "titleEs": "Prioridad de paso",
+          "startPage": 64,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 66
+        },
+        {
+          "id": "ch3-lights",
+          "titleRu": "Использование света",
+          "titleEs": "Uso de luces",
+          "startPage": 67,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 68
+        },
+        {
+          "id": "ch3-speed",
+          "titleRu": "Скорость",
+          "titleEs": "Velocidad",
+          "startPage": 69,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 74
+        },
+        {
+          "id": "ch3-turns",
+          "titleRu": "Повороты на перекрестках",
+          "titleEs": "Giros en intersecciones",
+          "startPage": 75,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 75
+        },
+        {
+          "id": "ch3-overtaking",
+          "titleRu": "Обгон и опережение",
+          "titleEs": "Adelantamiento y sobrepaso",
+          "startPage": 76,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 77
+        },
+        {
+          "id": "ch3-highways",
+          "titleRu": "Движение по автомагистралям и другим скоростным дорогам",
+          "titleEs": "Circulacion por autopistas y otras vias rapidas",
+          "startPage": 78,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 78
+        },
+        {
+          "id": "ch3-adverse-conditions",
+          "titleRu": "Вождение в неблагоприятных условиях",
+          "titleEs": "Conduccion en condiciones adversas",
+          "startPage": 79,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 82
+        },
+        {
+          "id": "ch3-stopping-parking",
+          "titleRu": "Остановка и стоянка",
+          "titleEs": "Detencion y estacionamiento",
+          "startPage": 83,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 88
+        }
+      ]
+    },
+    {
+      "id": "chapter-4-natural-capacity",
+      "titleRu": "Глава 4: Естественная способность",
+      "titleEs": "Capitulo 4: Capacidad natural",
+      "level": "chapter",
+      "startPage": 89,
+      "endPage": 97,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 88,
+      "children": [
+        {
+          "id": "ch4-alcohol-drugs",
+          "titleRu": "Употребление алкоголя и наркотиков",
+          "titleEs": "Consumo de alcohol y drogas",
+          "startPage": 90,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 92
+        },
+        {
+          "id": "ch4-sleep-fatigue",
+          "titleRu": "Сон и усталость",
+          "titleEs": "Sueno y fatiga",
+          "startPage": 93,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 94
+        },
+        {
+          "id": "ch4-stress",
+          "titleRu": "Стресс",
+          "titleEs": "Estres",
+          "startPage": 95,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 97
+        },
+        {
+          "id": "ch4-distractions",
+          "titleRu": "Отвлечения",
+          "titleEs": "Distracciones",
+          "startPage": 95,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 97
+        }
+      ]
+    },
+    {
+      "id": "chapter-5-driving-behavior",
+      "titleRu": "Глава 5: Поведение при управлении",
+      "titleEs": "Capitulo 5: Comportamiento al conducir",
+      "level": "chapter",
+      "startPage": 98,
+      "endPage": 103,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 97,
+      "children": [
+        {
+          "id": "ch5-attitude-types",
+          "titleRu": "Типы установок",
+          "titleEs": "Tipos de actitudes",
+          "startPage": 99,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 99
+        },
+        {
+          "id": "ch5-equal-society",
+          "titleRu": "К равноправному обществу",
+          "titleEs": "Hacia una sociedad igualitaria",
+          "startPage": 100,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 100
+        },
+        {
+          "id": "ch5-gender-violence-prevention",
+          "titleRu": "Профилактика и помощь в ситуациях гендерного насилия",
+          "titleEs": "Prevencion y asistencia en situaciones de violencia de genero",
+          "startPage": 100,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 100
+        },
+        {
+          "id": "ch5-anticipatory-efficient-driving",
+          "titleRu": "Предупредительное и эффективное вождение",
+          "titleEs": "Conduccion preventiva y eficiente",
+          "startPage": 101,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 103
+        }
+      ]
+    },
+    {
+      "id": "appendix-1-private-cars",
+      "titleRu": "Приложение I. Частные автомобили",
+      "titleEs": "Anexo I. Automoviles particulares",
+      "level": "appendix",
+      "startPage": 104,
+      "endPage": 122,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 103,
+      "children": [
+        {
+          "id": "app1-safety-elements",
+          "titleRu": "Элементы безопасности",
+          "titleEs": "Elementos de seguridad",
+          "startPage": 105,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 118
+        },
+        {
+          "id": "app1-other-required-safety-elements",
+          "titleRu": "Другие обязательные элементы безопасности",
+          "titleEs": "Otros elementos de seguridad obligatorios",
+          "startPage": 119,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 120
+        },
+        {
+          "id": "app1-recommended-safety-elements",
+          "titleRu": "Рекомендуемые элементы безопасности",
+          "titleEs": "Elementos de seguridad recomendados",
+          "startPage": 121,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 122
+        }
+      ]
+    },
+    {
+      "id": "appendix-2-passenger-transport",
+      "titleRu": "Приложение II. Пассажирский транспорт",
+      "titleEs": "Anexo II. Transporte de pasajeros",
+      "level": "appendix",
+      "startPage": 123,
+      "endPage": 151,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 122,
+      "children": [
+        {
+          "id": "app2-social-responsibility",
+          "titleRu": "Социальная ответственность",
+          "titleEs": "Responsabilidad social",
+          "startPage": 124,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 124
+        },
+        {
+          "id": "app2-safety-elements",
+          "titleRu": "Элементы безопасности",
+          "titleEs": "Elementos de seguridad",
+          "startPage": 125,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 136
+        },
+        {
+          "id": "app2-driving-factors",
+          "titleRu": "Факторы, участвующие в вождении",
+          "titleEs": "Factores que intervienen en la conduccion",
+          "startPage": 137,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 143
+        },
+        {
+          "id": "app2-safe-driving",
+          "titleRu": "Безопасное вождение",
+          "titleEs": "Conduccion segura",
+          "startPage": 144,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 148
+        },
+        {
+          "id": "app2-highways-hospitals",
+          "titleRu": "Автомагистрали и больницы",
+          "titleEs": "Autopistas y hospitales",
+          "startPage": 149,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 151
+        }
+      ]
+    },
+    {
+      "id": "appendix-3-cargo",
+      "titleRu": "Приложение III. Перевозка грузов и товаров",
+      "titleEs": "Anexo III. Transporte de cargas y mercancias",
+      "level": "appendix",
+      "startPage": 152,
+      "endPage": 183,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 151,
+      "children": [
+        {
+          "id": "app3-cargo-driver-profile",
+          "titleRu": "Профиль перевозчика грузов",
+          "titleEs": "Perfil del transportista de carga",
+          "startPage": 153,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 154
+        },
+        {
+          "id": "app3-social-responsibility",
+          "titleRu": "Социальная ответственность",
+          "titleEs": "Responsabilidad social",
+          "startPage": 155,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 159
+        },
+        {
+          "id": "app3-driving-factors",
+          "titleRu": "Факторы, участвующие в вождении",
+          "titleEs": "Factores que intervienen en la conduccion",
+          "startPage": 160,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 161
+        },
+        {
+          "id": "app3-safe-driving",
+          "titleRu": "Безопасное вождение",
+          "titleEs": "Conduccion segura",
+          "startPage": 162,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 168
+        },
+        {
+          "id": "app3-safety-elements",
+          "titleRu": "Элементы безопасности",
+          "titleEs": "Elementos de seguridad",
+          "startPage": 169,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 181
+        },
+        {
+          "id": "app3-highways",
+          "titleRu": "Автомагистрали",
+          "titleEs": "Autopistas",
+          "startPage": 182,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 183
+        }
+      ]
+    },
+    {
+      "id": "appendix-4-road-signs",
+      "titleRu": "Приложение IV. Дорожные знаки",
+      "titleEs": "Anexo IV. Senales viales",
+      "level": "appendix",
+      "startPage": 184,
+      "endPage": 200,
+      "sourceEvidence": "index_pages_11_12",
+      "requiredPrintedPage": 183,
+      "children": [
+        {
+          "id": "app4-signs-regulatory",
+          "titleRu": "Предписывающие",
+          "titleEs": "Reglamentarias",
+          "startPage": 185,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 186
+        },
+        {
+          "id": "app4-signs-warning",
+          "titleRu": "Предупреждающие",
+          "titleEs": "Preventivas",
+          "startPage": 187,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 188
+        },
+        {
+          "id": "app4-signs-informational",
+          "titleRu": "Информационные",
+          "titleEs": "Informativas",
+          "startPage": 189,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 192
+        },
+        {
+          "id": "app4-signs-temporary",
+          "titleRu": "Временные",
+          "titleEs": "Transitorias",
+          "startPage": 193,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 194
+        },
+        {
+          "id": "app4-signs-horizontal",
+          "titleRu": "Горизонтальные",
+          "titleEs": "Horizontales",
+          "startPage": 195,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 196
+        },
+        {
+          "id": "app4-signs-traffic-lights",
+          "titleRu": "Световая сигнализация",
+          "titleEs": "Senalizacion luminosa",
+          "startPage": 197,
+          "sourceEvidence": "index_pages_11_12",
+          "level": "topic",
+          "endPage": 200
+        }
+      ]
+    }
+  ]
+}

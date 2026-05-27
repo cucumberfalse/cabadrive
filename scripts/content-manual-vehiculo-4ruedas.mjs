@@ -7,6 +7,8 @@ import { fileURLToPath } from "node:url";
 
 export const MANUAL_DOCUMENT_ID = "gcba-manual-vehiculo-4-ruedas-2023";
 export const MANUAL_MANIFEST_PATH = `content/manuals/${MANUAL_DOCUMENT_ID}/manual.ru.json`;
+export const MANUAL_LAYOUT_PATH = `content/manuals/${MANUAL_DOCUMENT_ID}/layout.ru.json`;
+export const MANUAL_NAVIGATION_PATH = `content/manuals/${MANUAL_DOCUMENT_ID}/navigation.ru.json`;
 export const MANUAL_ASSET_DIRECTORY = `content/assets/manuals/${MANUAL_DOCUMENT_ID}/pages`;
 export const EXPECTED_SOURCE = {
   rawOriginalPath: `content/official-documents/originals/${MANUAL_DOCUMENT_ID}.pdf`,
@@ -20,6 +22,8 @@ export const EXPECTED_SOURCE = {
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+const LAYOUT_SCHEMA = "cabadrive-manual-layout-ru.v1";
+const NAVIGATION_SCHEMA = "cabadrive-manual-navigation-ru.v1";
 const PLACEHOLDER_PATTERN =
   /(?:^|[^\p{L}\p{N}_])(?:todo|tbd|placeholder|draft|lorem\s+ipsum|чернов\p{L}*|заглушк\p{L}*)(?=$|[^\p{L}\p{N}_])/iu;
 const MANUAL_CHUNK_SHARDS = [
@@ -54,6 +58,273 @@ const SUPPLEMENTAL_VISUAL_TEXT = new Map([
     }
   ]
 ]);
+const MANUAL_TOP_LEVEL_NAVIGATION = [
+  {
+    id: "front-matter",
+    titleRu: "Начало и справочные страницы",
+    titleEs: "Presentacion, glosario e indice",
+    level: "frontMatter",
+    startPage: 1,
+    endPage: 13,
+    sourceEvidence: "curated_manual_review",
+    children: [
+      { id: "front-title", titleRu: "Титульная страница", titleEs: "Portada", startPage: 1, sourceEvidence: "page_heading" },
+      { id: "front-presentation", titleRu: "Презентация", titleEs: "Presentacion", startPage: 2, sourceEvidence: "page_heading" },
+      { id: "front-categories", titleRu: "Материал по категориям", titleEs: "Material por categorias", startPage: 3, sourceEvidence: "page_heading" },
+      { id: "front-glossary", titleRu: "Глоссарий", titleEs: "Glosario", startPage: 4, sourceEvidence: "page_heading" },
+      { id: "front-index", titleRu: "Индекс", titleEs: "Indice", startPage: 12, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "introduction",
+    titleRu: "Введение",
+    titleEs: "Introduccion",
+    level: "chapter",
+    startPage: 14,
+    endPage: 20,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 13,
+    children: [
+      { id: "intro-road-pandemic", titleRu: "Дорожная пандемия", titleEs: "Pandemia vial", startPage: 15, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "intro-ethical-civic-approach",
+        titleRu: "Этико-гражданский подход в дорожной культуре",
+        titleEs: "Enfoque etico ciudadano en la cultura vial",
+        startPage: 16,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "intro-incident", titleRu: "Авария или дорожный инцидент?", titleEs: "Accidente o incidente vial?", startPage: 17, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "intro-road-safety-plan",
+        titleRu: "План дорожной безопасности города Буэнос-Айрес",
+        titleEs: "Plan de seguridad vial de la Ciudad de Buenos Aires",
+        startPage: 18,
+        sourceEvidence: "index_pages_11_12"
+      }
+    ]
+  },
+  {
+    id: "chapter-1-sustainable-mobility",
+    titleRu: "Глава 1: К устойчивой мобильности",
+    titleEs: "Capitulo 1: Hacia una movilidad sustentable",
+    level: "chapter",
+    startPage: 21,
+    endPage: 42,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 20,
+    children: [
+      { id: "ch1-cities-for-people", titleRu: "Города для людей", titleEs: "Ciudades para las personas", startPage: 22, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "ch1-sustainable-mobility",
+        titleRu: "Что такое устойчивая мобильность?",
+        titleEs: "Que es la movilidad sustentable?",
+        startPage: 23,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "ch1-pedestrian-priority", titleRu: "Пешеходный приоритет", titleEs: "Prioridad peatonal", startPage: 24, sourceEvidence: "index_pages_11_12" },
+      { id: "ch1-bicycle", titleRu: "Велосипед", titleEs: "Bicicleta", startPage: 30, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "ch1-public-transport-system",
+        titleRu: "Система общественного транспорта",
+        titleEs: "Sistema de transporte publico",
+        startPage: 39,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "ch1-shared-trip", titleRu: "Совместная поездка", titleEs: "Viaje compartido", startPage: 41, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "chapter-2-responsibility",
+    titleRu: "Глава 2: Управление транспортным средством - акт ответственности",
+    titleEs: "Capitulo 2: Conducir un vehiculo - un acto de responsabilidad",
+    level: "chapter",
+    startPage: 43,
+    endPage: 56,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 42,
+    children: [
+      { id: "ch2-legal-responsibility", titleRu: "Юридическая ответственность", titleEs: "Responsabilidad juridica", startPage: 44, sourceEvidence: "index_pages_11_12" },
+      { id: "ch2-required-documents", titleRu: "Обязательные документы", titleEs: "Documentacion obligatoria", startPage: 46, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "ch2-incident-obligations",
+        titleRu: "Обязанности в случае дорожных инцидентов",
+        titleEs: "Obligaciones en caso de incidentes viales",
+        startPage: 51,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "ch2-scoring", titleRu: "Система баллов Scoring", titleEs: "Sistema de puntos Scoring", startPage: 56, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "chapter-3-driving-rules",
+    titleRu: "Глава 3: Основные нормы вождения",
+    titleEs: "Capitulo 3: Normas basicas de conduccion",
+    level: "chapter",
+    startPage: 57,
+    endPage: 88,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 56,
+    children: [
+      { id: "ch3-priority-of-rules", titleRu: "Приоритет норм", titleEs: "Prioridad normativa", startPage: 58, sourceEvidence: "index_pages_11_12" },
+      { id: "ch3-right-of-way", titleRu: "Преимущество проезда", titleEs: "Prioridad de paso", startPage: 64, sourceEvidence: "index_pages_11_12" },
+      { id: "ch3-lights", titleRu: "Использование света", titleEs: "Uso de luces", startPage: 67, sourceEvidence: "index_pages_11_12" },
+      { id: "ch3-speed", titleRu: "Скорость", titleEs: "Velocidad", startPage: 69, sourceEvidence: "index_pages_11_12" },
+      { id: "ch3-turns", titleRu: "Повороты на перекрестках", titleEs: "Giros en intersecciones", startPage: 75, sourceEvidence: "index_pages_11_12" },
+      { id: "ch3-overtaking", titleRu: "Обгон и опережение", titleEs: "Adelantamiento y sobrepaso", startPage: 76, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "ch3-highways",
+        titleRu: "Движение по автомагистралям и другим скоростным дорогам",
+        titleEs: "Circulacion por autopistas y otras vias rapidas",
+        startPage: 78,
+        sourceEvidence: "index_pages_11_12"
+      },
+      {
+        id: "ch3-adverse-conditions",
+        titleRu: "Вождение в неблагоприятных условиях",
+        titleEs: "Conduccion en condiciones adversas",
+        startPage: 79,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "ch3-stopping-parking", titleRu: "Остановка и стоянка", titleEs: "Detencion y estacionamiento", startPage: 83, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "chapter-4-natural-capacity",
+    titleRu: "Глава 4: Естественная способность",
+    titleEs: "Capitulo 4: Capacidad natural",
+    level: "chapter",
+    startPage: 89,
+    endPage: 97,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 88,
+    children: [
+      { id: "ch4-alcohol-drugs", titleRu: "Употребление алкоголя и наркотиков", titleEs: "Consumo de alcohol y drogas", startPage: 90, sourceEvidence: "index_pages_11_12" },
+      { id: "ch4-sleep-fatigue", titleRu: "Сон и усталость", titleEs: "Sueno y fatiga", startPage: 93, sourceEvidence: "index_pages_11_12" },
+      { id: "ch4-stress", titleRu: "Стресс", titleEs: "Estres", startPage: 95, sourceEvidence: "index_pages_11_12" },
+      { id: "ch4-distractions", titleRu: "Отвлечения", titleEs: "Distracciones", startPage: 95, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "chapter-5-driving-behavior",
+    titleRu: "Глава 5: Поведение при управлении",
+    titleEs: "Capitulo 5: Comportamiento al conducir",
+    level: "chapter",
+    startPage: 98,
+    endPage: 103,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 97,
+    children: [
+      { id: "ch5-attitude-types", titleRu: "Типы установок", titleEs: "Tipos de actitudes", startPage: 99, sourceEvidence: "index_pages_11_12" },
+      { id: "ch5-equal-society", titleRu: "К равноправному обществу", titleEs: "Hacia una sociedad igualitaria", startPage: 100, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "ch5-gender-violence-prevention",
+        titleRu: "Профилактика и помощь в ситуациях гендерного насилия",
+        titleEs: "Prevencion y asistencia en situaciones de violencia de genero",
+        startPage: 100,
+        sourceEvidence: "index_pages_11_12"
+      },
+      {
+        id: "ch5-anticipatory-efficient-driving",
+        titleRu: "Предупредительное и эффективное вождение",
+        titleEs: "Conduccion preventiva y eficiente",
+        startPage: 101,
+        sourceEvidence: "index_pages_11_12"
+      }
+    ]
+  },
+  {
+    id: "appendix-1-private-cars",
+    titleRu: "Приложение I. Частные автомобили",
+    titleEs: "Anexo I. Automoviles particulares",
+    level: "appendix",
+    startPage: 104,
+    endPage: 122,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 103,
+    children: [
+      { id: "app1-safety-elements", titleRu: "Элементы безопасности", titleEs: "Elementos de seguridad", startPage: 105, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "app1-other-required-safety-elements",
+        titleRu: "Другие обязательные элементы безопасности",
+        titleEs: "Otros elementos de seguridad obligatorios",
+        startPage: 119,
+        sourceEvidence: "index_pages_11_12"
+      },
+      {
+        id: "app1-recommended-safety-elements",
+        titleRu: "Рекомендуемые элементы безопасности",
+        titleEs: "Elementos de seguridad recomendados",
+        startPage: 121,
+        sourceEvidence: "index_pages_11_12"
+      }
+    ]
+  },
+  {
+    id: "appendix-2-passenger-transport",
+    titleRu: "Приложение II. Пассажирский транспорт",
+    titleEs: "Anexo II. Transporte de pasajeros",
+    level: "appendix",
+    startPage: 123,
+    endPage: 151,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 122,
+    children: [
+      { id: "app2-social-responsibility", titleRu: "Социальная ответственность", titleEs: "Responsabilidad social", startPage: 124, sourceEvidence: "index_pages_11_12" },
+      { id: "app2-safety-elements", titleRu: "Элементы безопасности", titleEs: "Elementos de seguridad", startPage: 125, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "app2-driving-factors",
+        titleRu: "Факторы, участвующие в вождении",
+        titleEs: "Factores que intervienen en la conduccion",
+        startPage: 137,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "app2-safe-driving", titleRu: "Безопасное вождение", titleEs: "Conduccion segura", startPage: 144, sourceEvidence: "index_pages_11_12" },
+      { id: "app2-highways-hospitals", titleRu: "Автомагистрали и больницы", titleEs: "Autopistas y hospitales", startPage: 149, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "appendix-3-cargo",
+    titleRu: "Приложение III. Перевозка грузов и товаров",
+    titleEs: "Anexo III. Transporte de cargas y mercancias",
+    level: "appendix",
+    startPage: 152,
+    endPage: 183,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 151,
+    children: [
+      { id: "app3-cargo-driver-profile", titleRu: "Профиль перевозчика грузов", titleEs: "Perfil del transportista de carga", startPage: 153, sourceEvidence: "index_pages_11_12" },
+      { id: "app3-social-responsibility", titleRu: "Социальная ответственность", titleEs: "Responsabilidad social", startPage: 155, sourceEvidence: "index_pages_11_12" },
+      {
+        id: "app3-driving-factors",
+        titleRu: "Факторы, участвующие в вождении",
+        titleEs: "Factores que intervienen en la conduccion",
+        startPage: 160,
+        sourceEvidence: "index_pages_11_12"
+      },
+      { id: "app3-safe-driving", titleRu: "Безопасное вождение", titleEs: "Conduccion segura", startPage: 162, sourceEvidence: "index_pages_11_12" },
+      { id: "app3-safety-elements", titleRu: "Элементы безопасности", titleEs: "Elementos de seguridad", startPage: 169, sourceEvidence: "index_pages_11_12" },
+      { id: "app3-highways", titleRu: "Автомагистрали", titleEs: "Autopistas", startPage: 182, sourceEvidence: "index_pages_11_12" }
+    ]
+  },
+  {
+    id: "appendix-4-road-signs",
+    titleRu: "Приложение IV. Дорожные знаки",
+    titleEs: "Anexo IV. Senales viales",
+    level: "appendix",
+    startPage: 184,
+    endPage: 200,
+    sourceEvidence: "index_pages_11_12",
+    requiredPrintedPage: 183,
+    children: [
+      { id: "app4-signs-regulatory", titleRu: "Предписывающие", titleEs: "Reglamentarias", startPage: 185, sourceEvidence: "index_pages_11_12" },
+      { id: "app4-signs-warning", titleRu: "Предупреждающие", titleEs: "Preventivas", startPage: 187, sourceEvidence: "index_pages_11_12" },
+      { id: "app4-signs-informational", titleRu: "Информационные", titleEs: "Informativas", startPage: 189, sourceEvidence: "index_pages_11_12" },
+      { id: "app4-signs-temporary", titleRu: "Временные", titleEs: "Transitorias", startPage: 193, sourceEvidence: "index_pages_11_12" },
+      { id: "app4-signs-horizontal", titleRu: "Горизонтальные", titleEs: "Horizontales", startPage: 195, sourceEvidence: "index_pages_11_12" },
+      { id: "app4-signs-traffic-lights", titleRu: "Световая сигнализация", titleEs: "Senalizacion luminosa", startPage: 197, sourceEvidence: "index_pages_11_12" }
+    ]
+  }
+];
 
 function path(root, relativePath) {
   return join(root, relativePath);
@@ -77,6 +348,10 @@ function readJson(root, relativePath) {
 
 function sha256Buffer(buffer) {
   return createHash("sha256").update(buffer).digest("hex");
+}
+
+function sha256Text(value) {
+  return sha256Buffer(Buffer.from(value, "utf8"));
 }
 
 function sha256File(root, relativePath) {
@@ -322,6 +597,227 @@ export function buildManualManifest(root = defaultRoot) {
   };
 }
 
+function normalizeManualLayoutText(value) {
+  return String(value || "")
+    .replace(/\r\n/g, "\n")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n /g, "\n")
+    .replace(/\n{2,}/g, "\n")
+    .trim();
+}
+
+function manualTranslationFingerprint(manifest) {
+  return sha256Text(
+    (manifest.pages ?? [])
+      .map((page) => `${page.pageNumber}:${normalizeManualLayoutText(page.translation?.fullTranslationRu)}`)
+      .join("\n---cabadrive-manual-page---\n")
+  );
+}
+
+function manualSourceIndexFingerprint(manifest) {
+  return sha256Text([12, 13].map((pageNumber) => normalizeManualLayoutText(manifest.pages?.[pageNumber - 1]?.translation?.fullTranslationRu)).join("\n"));
+}
+
+function pageLayoutKind(pageNumber) {
+  if ([1, 14, 21, 43, 57, 89, 98, 104, 123, 152, 184, 199, 200].includes(pageNumber)) return "section-divider";
+  if (pageNumber >= 185 && pageNumber <= 198) return "visual-heavy";
+  if ([12, 13].includes(pageNumber)) return "index";
+  if (pageNumber <= 11) return "front-matter";
+  return "text";
+}
+
+function flowRegionForLayoutKind(kind, textLength) {
+  if (kind === "section-divider") return { x: 0.24, y: 0.33, width: 0.54, height: 0.24 };
+  if (kind === "visual-heavy") {
+    return textLength > 500
+      ? { x: 0.22, y: 0.62, width: 0.58, height: 0.24 }
+      : { x: 0.23, y: 0.70, width: 0.56, height: 0.12 };
+  }
+  if (kind === "index") return { x: 0.24, y: 0.22, width: 0.56, height: 0.62 };
+  if (kind === "front-matter") return { x: 0.23, y: 0.24, width: 0.58, height: 0.56 };
+  return { x: 0.25, y: 0.27, width: 0.56, height: 0.54 };
+}
+
+function fontScaleForText(kind, textLength, lineCount) {
+  if (kind === "section-divider") return 1.18;
+  if (kind === "visual-heavy" && textLength < 220) return 0.9;
+  if (kind === "index") return 0.68;
+  const density = Math.max(textLength / 900, lineCount / 18);
+  if (density > 3.2) return 0.48;
+  if (density > 2.2) return 0.56;
+  if (density > 1.45) return 0.66;
+  if (density > 0.9) return 0.76;
+  return 0.88;
+}
+
+function boundsWithinRegion(region, index, count) {
+  const slot = region.height / Math.max(count, 1);
+  return {
+    x: Number(region.x.toFixed(4)),
+    y: Number(Math.min(region.y + slot * index, region.y + region.height - Math.min(slot, 0.02)).toFixed(4)),
+    width: Number(region.width.toFixed(4)),
+    height: Number(Math.max(0.006, Math.min(slot * 0.92, region.height)).toFixed(4))
+  };
+}
+
+function textBlockType(line, pageNumber, index, lines) {
+  const trimmed = line.trim();
+  if (/^\d+$/.test(trimmed) && index === 0) return "pageNumber";
+  if (/^\d+\//u.test(trimmed) || /^Источник\b/iu.test(trimmed)) return "footnote";
+  if (/^#+\s/u.test(trimmed)) return "heading";
+  if (/^[•*-]\s/u.test(trimmed)) return "list";
+  if (/[.]{4,}\s*стр\./iu.test(trimmed)) return "tableCell";
+  if (pageNumber >= 185 && pageNumber <= 198) return trimmed.length <= 90 ? "label" : "caption";
+  if (pageNumber >= 199) return "caption";
+  if (index <= 2 && (trimmed === trimmed.toLocaleUpperCase("ru-RU") || trimmed.length <= 72)) return "heading";
+  if (lines.length <= 4 && index > 0) return "callout";
+  return "body";
+}
+
+function splitLayoutBlocks(page, region) {
+  const lines = String(page.translation.fullTranslationRu || "")
+    .split(/\r?\n/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  return lines.map((line, index) => ({
+    id: `page-${padPageNumber(page.pageNumber)}-block-${String(index + 1).padStart(2, "0")}`,
+    type: textBlockType(line, page.pageNumber, index, lines),
+    order: index + 1,
+    textRu: line,
+    bounds: boundsWithinRegion(region, index, lines.length),
+    typography: {
+      role: index <= 2 ? "prominent" : "flow",
+      fit: "flow-scale",
+      maxLines: line.length > 180 ? 6 : 3
+    },
+    provenance: {
+      translationManifestPath: MANUAL_MANIFEST_PATH,
+      translationJsonPointer: `/pages/${page.pageNumber - 1}/translation/fullTranslationRu`,
+      ...(page.translation.chunkProvenance?.chunkId ? { sourceChunkId: page.translation.chunkProvenance.chunkId } : {}),
+      sourceEvidence: page.translation.status === "manual_visual_text" ? "manual_visual_label_translation" : "approved_primary_source_chunk"
+    }
+  }));
+}
+
+export function buildManualLayoutManifest(manifest = buildManualManifest(defaultRoot)) {
+  const pages = manifest.pages.map((page) => {
+    const kind = pageLayoutKind(page.pageNumber);
+    const textLength = page.translation.fullTranslationRu.length;
+    const lineCount = page.translation.fullTranslationRu.split(/\r?\n/u).filter((line) => line.trim()).length;
+    const flowRegion = flowRegionForLayoutKind(kind, textLength);
+    const blocks = splitLayoutBlocks(page, flowRegion);
+    const normalizedTranslation = normalizeManualLayoutText(page.translation.fullTranslationRu);
+    const normalizedBlocks = normalizeManualLayoutText(blocks.map((block) => block.textRu).join("\n"));
+
+    return {
+      pageNumber: page.pageNumber,
+      sourcePageNumber: page.sourcePageNumber,
+      layoutKind: kind,
+      canvas: {
+        width: page.visualAsset.width,
+        height: page.visualAsset.height,
+        unit: "px",
+        aspectRatio: Number((page.visualAsset.width / page.visualAsset.height).toFixed(8))
+      },
+      visualBase: {
+        localPath: page.visualAsset.localPath,
+        width: page.visualAsset.width,
+        height: page.visualAsset.height,
+        sha256: page.visualAsset.sha256,
+        strategy: "page_faithful_pdf_render_under_russian_text_layer"
+      },
+      masks: [
+        {
+          id: `page-${padPageNumber(page.pageNumber)}-source-text-mask`,
+          purpose: "replace_visible_source_text_with_russian_layout",
+          bounds: flowRegion,
+          fill: "#fffdf8",
+          opacity: kind === "visual-heavy" ? 0.94 : 0.985
+        }
+      ],
+      textRegions: [
+        {
+          id: `page-${padPageNumber(page.pageNumber)}-russian-flow`,
+          bounds: flowRegion,
+          fit: "scale-and-scroll-if-needed",
+          fontScale: fontScaleForText(kind, textLength, lineCount)
+        }
+      ],
+      visualRegions: [
+        {
+          id: `page-${padPageNumber(page.pageNumber)}-visual-context`,
+          type: kind === "visual-heavy" ? "signs-diagrams-icons" : "page-composition",
+          bounds: { x: 0, y: 0, width: 1, height: 1 },
+          preservedFrom: page.visualAsset.localPath
+        }
+      ],
+      blocks,
+      coverage: {
+        translationSource: `${MANUAL_MANIFEST_PATH}#/pages/${page.pageNumber - 1}/translation/fullTranslationRu`,
+        blockCount: blocks.length,
+        normalizedTranslationSha256: sha256Text(normalizedTranslation),
+        normalizedBlocksSha256: sha256Text(normalizedBlocks),
+        reconstruction: "normalize_crlf_spaces_and_blank_lines_then_join_ordered_text_blocks"
+      }
+    };
+  });
+
+  const blockTypeCounts = new Map();
+  for (const page of pages) {
+    for (const block of page.blocks) blockTypeCounts.set(block.type, (blockTypeCounts.get(block.type) ?? 0) + 1);
+  }
+
+  return {
+    schema: LAYOUT_SCHEMA,
+    version: 1,
+    manualId: manifest.id,
+    locale: "ru",
+    strategy: "html_css_russian_text_layer_over_local_page_visual",
+    source: {
+      manualManifestPath: MANUAL_MANIFEST_PATH,
+      manualManifestVersion: manifest.version,
+      translationFingerprint: manualTranslationFingerprint(manifest),
+      visualAssetDirectory: MANUAL_ASSET_DIRECTORY,
+      canvasWidth: 1191,
+      canvasHeight: 1684
+    },
+    coverage: {
+      requiredPages: EXPECTED_SOURCE.pageCount,
+      pages: pages.length,
+      blockTypes: Object.fromEntries([...blockTypeCounts.entries()].sort(([a], [b]) => a.localeCompare(b)))
+    },
+    pages
+  };
+}
+
+function withChildRanges(entry) {
+  const children = (entry.children ?? []).map((child, index, all) => ({
+    ...child,
+    level: "topic",
+    endPage: (all.slice(index + 1).find((nextChild) => nextChild.startPage > child.startPage)?.startPage ?? entry.endPage + 1) - 1
+  }));
+  return { ...entry, children };
+}
+
+export function buildManualNavigationManifest(manifest = buildManualManifest(defaultRoot)) {
+  const entries = MANUAL_TOP_LEVEL_NAVIGATION.map(withChildRanges);
+  return {
+    schema: NAVIGATION_SCHEMA,
+    version: 1,
+    manualId: manifest.id,
+    locale: "ru",
+    source: {
+      manualManifestPath: MANUAL_MANIFEST_PATH,
+      indexPdfPages: [12, 13],
+      indexPrintedPages: [11, 12],
+      indexTextSha256: manualSourceIndexFingerprint(manifest),
+      printedToPdfPageMapping: "printed page n maps to PDF page n + 1 for indexed body sections"
+    },
+    pageCount: EXPECTED_SOURCE.pageCount,
+    entries
+  };
+}
+
 async function readPdfPageCount(root, relativePath) {
   const pdfParse = require("pdf-parse/lib/pdf-parse.js");
   const result = await pdfParse(readFileSync(path(root, relativePath)), { max: 1 });
@@ -359,6 +855,9 @@ function validateRuntimeManualSurface(errors, root) {
   if (!/import\(["']\.\/data\/manual4Ruedas["']\)/u.test(appSource)) {
     errors.push(`${appSourcePath}: manual surface must dynamically import the local manual corpus when the view opens.`);
   }
+  if (/manual-page-grid|manual-visual|manual-translation/u.test(appSource)) {
+    errors.push(`${appSourcePath}: manual primary UI must not reintroduce the side-by-side visual plus translation card selectors.`);
+  }
 }
 
 function validateManifestShape(errors, manifest) {
@@ -393,12 +892,220 @@ function validateManifestShape(errors, manifest) {
   if (!Array.isArray(manifest.pages)) errors.push("Manual manifest pages must be an array.");
 }
 
-export async function validateManualVehiculo4RuedasRu({ root = defaultRoot, manifest } = {}) {
+function validateBounds(errors, label, bounds) {
+  if (!isPlainObject(bounds)) {
+    errors.push(`${label}: bounds must be an object.`);
+    return;
+  }
+  for (const key of ["x", "y", "width", "height"]) {
+    if (typeof bounds[key] !== "number" || !Number.isFinite(bounds[key])) errors.push(`${label}: bounds.${key} must be a finite number.`);
+  }
+  if (bounds.x < 0 || bounds.y < 0 || bounds.width <= 0 || bounds.height <= 0) errors.push(`${label}: bounds must use positive page-relative coordinates.`);
+  if (bounds.x + bounds.width > 1.001 || bounds.y + bounds.height > 1.001) errors.push(`${label}: bounds must stay inside the page canvas.`);
+}
+
+function validateManualLayoutManifest(errors, manifest, layout) {
+  if (!isPlainObject(layout)) {
+    errors.push(`${MANUAL_LAYOUT_PATH}: layout manifest must be an object.`);
+    return;
+  }
+  if (layout.schema !== LAYOUT_SCHEMA) errors.push(`${MANUAL_LAYOUT_PATH}: schema must be ${LAYOUT_SCHEMA}.`);
+  if (layout.manualId !== manifest?.id) errors.push(`${MANUAL_LAYOUT_PATH}: manualId must match manual.ru.json id.`);
+  if (layout.locale !== "ru") errors.push(`${MANUAL_LAYOUT_PATH}: locale must be ru.`);
+  if (layout.source?.manualManifestPath !== MANUAL_MANIFEST_PATH) errors.push(`${MANUAL_LAYOUT_PATH}: source.manualManifestPath is unexpected.`);
+  if (layout.source?.translationFingerprint !== manualTranslationFingerprint(manifest ?? { pages: [] })) {
+    errors.push(`${MANUAL_LAYOUT_PATH}: translation fingerprint is stale.`);
+  }
+  if (!Array.isArray(layout.pages)) {
+    errors.push(`${MANUAL_LAYOUT_PATH}: pages must be an array.`);
+    return;
+  }
+  if (layout.pages.length !== EXPECTED_SOURCE.pageCount) {
+    errors.push(`${MANUAL_LAYOUT_PATH}: expected ${EXPECTED_SOURCE.pageCount} page layout records, found ${layout.pages.length}.`);
+  }
+
+  const allowedBlockTypes = new Set(["heading", "body", "list", "tableCell", "caption", "callout", "footnote", "pageNumber", "label"]);
+  const seenTypes = new Set();
+  for (let index = 0; index < EXPECTED_SOURCE.pageCount; index += 1) {
+    const expectedPageNumber = index + 1;
+    const page = manifest?.pages?.[index];
+    const layoutPage = layout.pages[index];
+    if (!isPlainObject(layoutPage)) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} layout entry must be an object.`);
+      continue;
+    }
+    if (layoutPage.pageNumber !== expectedPageNumber) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} pageNumber is out of order.`);
+    if (layoutPage.sourcePageNumber !== expectedPageNumber) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} sourcePageNumber must match source page.`);
+    if (layoutPage.canvas?.width !== page?.visualAsset?.width || layoutPage.canvas?.height !== page?.visualAsset?.height) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} canvas must match local visual asset dimensions.`);
+    }
+    if (layoutPage.visualBase?.localPath !== page?.visualAsset?.localPath) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} visualBase.localPath must match manual visual asset.`);
+    }
+    if (layoutPage.visualBase?.sha256 !== page?.visualAsset?.sha256) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} visualBase.sha256 must match manual visual asset.`);
+    }
+    if (!Array.isArray(layoutPage.masks) || layoutPage.masks.length < 1) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include at least one source-text replacement mask.`);
+    } else {
+      layoutPage.masks.forEach((mask, maskIndex) => validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} mask ${maskIndex + 1}`, mask?.bounds));
+    }
+    if (!Array.isArray(layoutPage.visualRegions) || layoutPage.visualRegions.length < 1) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include at least one visual preservation region.`);
+    } else {
+      layoutPage.visualRegions.forEach((region, regionIndex) => validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} visual region ${regionIndex + 1}`, region?.bounds));
+    }
+    if (!Array.isArray(layoutPage.textRegions) || layoutPage.textRegions.length < 1) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include at least one Russian text region.`);
+    } else {
+      layoutPage.textRegions.forEach((region, regionIndex) => validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} text region ${regionIndex + 1}`, region?.bounds));
+    }
+    if (!Array.isArray(layoutPage.blocks) || layoutPage.blocks.length < 1) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} must include ordered Russian layout blocks.`);
+      continue;
+    }
+
+    const blockIds = new Set();
+    const orderedText = [];
+    layoutPage.blocks.forEach((block, blockIndex) => {
+      if (!isPlainObject(block)) {
+        errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} must be an object.`);
+        return;
+      }
+      if (!isNonEmptyString(block.id)) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} id is missing.`);
+      if (blockIds.has(block.id)) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block id ${block.id} is duplicated.`);
+      blockIds.add(block.id);
+      if (block.order !== blockIndex + 1) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} order is out of sequence.`);
+      if (!allowedBlockTypes.has(block.type)) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} has unsupported type ${block.type}.`);
+      seenTypes.add(block.type);
+      if (!isNonEmptyString(block.textRu)) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} textRu is missing.`);
+      if (PLACEHOLDER_PATTERN.test(block.textRu || "")) errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1} textRu must not contain placeholder text.`);
+      validateBounds(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} block ${blockIndex + 1}`, block.bounds);
+      orderedText.push(block.textRu);
+    });
+
+    const normalizedTranslation = normalizeManualLayoutText(page?.translation?.fullTranslationRu);
+    const normalizedBlocks = normalizeManualLayoutText(orderedText.join("\n"));
+    const normalizedTranslationSha256 = sha256Text(normalizedTranslation);
+    const normalizedBlocksSha256 = sha256Text(normalizedBlocks);
+    if (normalizedTranslation !== normalizedBlocks) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} ordered Russian blocks do not reconstruct fullTranslationRu.`);
+    }
+    if (layoutPage.coverage?.normalizedTranslationSha256 !== normalizedTranslationSha256) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} normalizedTranslationSha256 is stale.`);
+    }
+    if (layoutPage.coverage?.normalizedBlocksSha256 !== normalizedBlocksSha256) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} normalizedBlocksSha256 is stale.`);
+    }
+    if (layoutPage.coverage?.blockCount !== layoutPage.blocks.length) {
+      errors.push(`${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber} coverage.blockCount is stale.`);
+    }
+  }
+
+  for (const requiredType of allowedBlockTypes) {
+    if (!seenTypes.has(requiredType)) errors.push(`${MANUAL_LAYOUT_PATH}: layout blocks must include type ${requiredType} where present in the manual corpus.`);
+  }
+  if (layout.coverage?.pages !== layout.pages.length) errors.push(`${MANUAL_LAYOUT_PATH}: coverage.pages is stale.`);
+  if (layout.coverage?.requiredPages !== EXPECTED_SOURCE.pageCount) errors.push(`${MANUAL_LAYOUT_PATH}: coverage.requiredPages must be ${EXPECTED_SOURCE.pageCount}.`);
+}
+
+function flattenNavigationEntries(entries) {
+  return entries.flatMap((entry) => [entry, ...flattenNavigationEntries(entry.children ?? [])]);
+}
+
+function validateManualNavigationManifest(errors, manifest, navigation) {
+  if (!isPlainObject(navigation)) {
+    errors.push(`${MANUAL_NAVIGATION_PATH}: navigation manifest must be an object.`);
+    return;
+  }
+  if (navigation.schema !== NAVIGATION_SCHEMA) errors.push(`${MANUAL_NAVIGATION_PATH}: schema must be ${NAVIGATION_SCHEMA}.`);
+  if (navigation.manualId !== manifest?.id) errors.push(`${MANUAL_NAVIGATION_PATH}: manualId must match manual.ru.json id.`);
+  if (navigation.locale !== "ru") errors.push(`${MANUAL_NAVIGATION_PATH}: locale must be ru.`);
+  if (navigation.pageCount !== EXPECTED_SOURCE.pageCount) errors.push(`${MANUAL_NAVIGATION_PATH}: pageCount must be ${EXPECTED_SOURCE.pageCount}.`);
+  if (navigation.source?.manualManifestPath !== MANUAL_MANIFEST_PATH) errors.push(`${MANUAL_NAVIGATION_PATH}: source.manualManifestPath is unexpected.`);
+  if (navigation.source?.indexTextSha256 !== manualSourceIndexFingerprint(manifest ?? { pages: [] })) {
+    errors.push(`${MANUAL_NAVIGATION_PATH}: source index fingerprint is stale.`);
+  }
+  if (!Array.isArray(navigation.entries)) {
+    errors.push(`${MANUAL_NAVIGATION_PATH}: entries must be an array.`);
+    return;
+  }
+
+  const requiredTopLevel = new Map(
+    MANUAL_TOP_LEVEL_NAVIGATION.map((entry) => [
+      entry.id,
+      { titleRu: entry.titleRu, startPage: entry.startPage, endPage: entry.endPage, requiredPrintedPage: entry.requiredPrintedPage }
+    ])
+  );
+  if (navigation.entries.length !== MANUAL_TOP_LEVEL_NAVIGATION.length) {
+    errors.push(`${MANUAL_NAVIGATION_PATH}: top-level navigation entry count is stale.`);
+  }
+  let expectedStartPage = 1;
+  for (const entry of navigation.entries) {
+    if (!isPlainObject(entry)) {
+      errors.push(`${MANUAL_NAVIGATION_PATH}: top-level entry must be an object.`);
+      continue;
+    }
+    const required = requiredTopLevel.get(entry.id);
+    if (!required) errors.push(`${MANUAL_NAVIGATION_PATH}: unexpected top-level entry ${entry.id}.`);
+    if (required && entry.titleRu !== required.titleRu) errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} titleRu is stale.`);
+    if (required && entry.startPage !== required.startPage) errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} startPage must be ${required.startPage}.`);
+    if (required && entry.endPage !== required.endPage) errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} endPage must be ${required.endPage}.`);
+    if (entry.startPage !== expectedStartPage) errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} leaves a page coverage gap before page ${entry.startPage}.`);
+    expectedStartPage = entry.endPage + 1;
+    if (entry.requiredPrintedPage && entry.startPage !== entry.requiredPrintedPage + 1) {
+      errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} printed-to-PDF page mapping is stale.`);
+    }
+    if (!["frontMatter", "chapter", "appendix"].includes(entry.level)) {
+      errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} has unsupported top-level level ${entry.level}.`);
+    }
+    if (entry.sourceEvidence !== "index_pages_11_12" && entry.sourceEvidence !== "curated_manual_review") {
+      errors.push(`${MANUAL_NAVIGATION_PATH}: ${entry.id} sourceEvidence is not source-derived.`);
+    }
+    let previousChildStart = entry.startPage;
+    for (const child of entry.children ?? []) {
+      if (child.level !== "topic") errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} level must be topic.`);
+      if (child.startPage < entry.startPage || child.endPage > entry.endPage || child.startPage > child.endPage) {
+        errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} range must stay inside parent ${entry.id}.`);
+      }
+      if (child.startPage < previousChildStart) errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} is out of order.`);
+      previousChildStart = child.startPage;
+      if (!isNonEmptyString(child.titleRu)) errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} titleRu is missing.`);
+      if (child.sourceEvidence !== "index_pages_11_12" && child.sourceEvidence !== "page_heading" && child.sourceEvidence !== "curated_manual_review") {
+        errors.push(`${MANUAL_NAVIGATION_PATH}: child ${child.id} sourceEvidence is not valid.`);
+      }
+    }
+  }
+  if (expectedStartPage !== EXPECTED_SOURCE.pageCount + 1) {
+    errors.push(`${MANUAL_NAVIGATION_PATH}: top-level entries must cover through page ${EXPECTED_SOURCE.pageCount}.`);
+  }
+
+  const flattenedIds = new Set(flattenNavigationEntries(navigation.entries).map((entry) => entry.id));
+  for (const requiredId of [
+    "intro-road-pandemic",
+    "ch1-pedestrian-priority",
+    "ch2-required-documents",
+    "ch3-speed",
+    "ch4-sleep-fatigue",
+    "ch5-anticipatory-efficient-driving",
+    "app1-safety-elements",
+    "app2-safe-driving",
+    "app4-signs-regulatory"
+  ]) {
+    if (!flattenedIds.has(requiredId)) errors.push(`${MANUAL_NAVIGATION_PATH}: required source-index topic ${requiredId} is missing.`);
+  }
+}
+
+export async function validateManualVehiculo4RuedasRu({ root = defaultRoot, manifest, layout, navigation } = {}) {
   const errors = [];
   const loadedManifest = manifest ?? (existsSync(path(root, MANUAL_MANIFEST_PATH)) ? readJson(root, MANUAL_MANIFEST_PATH) : undefined);
+  const loadedLayout = layout ?? (existsSync(path(root, MANUAL_LAYOUT_PATH)) ? readJson(root, MANUAL_LAYOUT_PATH) : undefined);
+  const loadedNavigation = navigation ?? (existsSync(path(root, MANUAL_NAVIGATION_PATH)) ? readJson(root, MANUAL_NAVIGATION_PATH) : undefined);
   const corpus = loadManualChunkCorpus(root);
   errors.push(...corpus.errors);
   validateManifestShape(errors, loadedManifest);
+  validateManualLayoutManifest(errors, loadedManifest, loadedLayout);
+  validateManualNavigationManifest(errors, loadedManifest, loadedNavigation);
 
   const rawPdfExists = existsSync(path(root, EXPECTED_SOURCE.rawOriginalPath));
   if (!rawPdfExists) {
@@ -547,6 +1254,9 @@ export async function validateManualVehiculo4RuedasRu({ root = defaultRoot, mani
     summary: {
       pages: pages.length,
       sourcePdfPages: EXPECTED_SOURCE.pageCount,
+      layoutPages: Array.isArray(loadedLayout?.pages) ? loadedLayout.pages.length : 0,
+      navigationEntries: Array.isArray(loadedNavigation?.entries) ? loadedNavigation.entries.length : 0,
+      navigationTopics: Array.isArray(loadedNavigation?.entries) ? flattenNavigationEntries(loadedNavigation.entries).length - loadedNavigation.entries.length : 0,
       reusedApprovedChunkPages,
       manualVisualTextPages,
       localVisualAssets,
@@ -556,17 +1266,34 @@ export async function validateManualVehiculo4RuedasRu({ root = defaultRoot, mani
 }
 
 export function formatManualValidationSummary(summary) {
-  return `Manual 4 ruedas RU validated: ${summary.pages}/${summary.sourcePdfPages} pages, ${summary.localVisualAssets} local page assets, ${summary.reusedApprovedChunkPages} approved reused translations, ${summary.manualVisualTextPages} visual-label translation pages.`;
+  return `Manual 4 ruedas RU validated: ${summary.pages}/${summary.sourcePdfPages} pages, ${summary.layoutPages} layout pages, ${summary.navigationEntries} semantic sections, ${summary.navigationTopics} topics, ${summary.localVisualAssets} local page assets, ${summary.reusedApprovedChunkPages} approved reused translations, ${summary.manualVisualTextPages} visual-label translation pages.`;
 }
 
 async function main() {
   const writeManifest = process.argv.includes("--write-manifest");
+  const writeDerivedManifests = process.argv.includes("--write-derived-manifests");
+  const writeLayout = writeDerivedManifests || process.argv.includes("--write-layout");
+  const writeNavigation = writeDerivedManifests || process.argv.includes("--write-navigation");
+  const generatedManifest = buildManualManifest(defaultRoot);
   if (writeManifest) {
-    const manifest = buildManualManifest(defaultRoot);
     const targetPath = path(defaultRoot, MANUAL_MANIFEST_PATH);
     mkdirSync(dirname(targetPath), { recursive: true });
-    writeFileSync(targetPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    writeFileSync(targetPath, `${JSON.stringify(generatedManifest, null, 2)}\n`);
     console.log(`Wrote ${MANUAL_MANIFEST_PATH}`);
+  }
+  if (writeLayout) {
+    const layout = buildManualLayoutManifest(generatedManifest);
+    const targetPath = path(defaultRoot, MANUAL_LAYOUT_PATH);
+    mkdirSync(dirname(targetPath), { recursive: true });
+    writeFileSync(targetPath, `${JSON.stringify(layout, null, 2)}\n`);
+    console.log(`Wrote ${MANUAL_LAYOUT_PATH}`);
+  }
+  if (writeNavigation) {
+    const navigation = buildManualNavigationManifest(generatedManifest);
+    const targetPath = path(defaultRoot, MANUAL_NAVIGATION_PATH);
+    mkdirSync(dirname(targetPath), { recursive: true });
+    writeFileSync(targetPath, `${JSON.stringify(navigation, null, 2)}\n`);
+    console.log(`Wrote ${MANUAL_NAVIGATION_PATH}`);
   }
 
   const validation = await validateManualVehiculo4RuedasRu({ root: defaultRoot });

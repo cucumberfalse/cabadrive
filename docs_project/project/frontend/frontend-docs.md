@@ -15,7 +15,7 @@ Implemented stack:
 - local in-memory search index over bundled content
 - bundled topic study guide data rendered as local learning materials
 - bundled CABA exam-process guide data rendered as an unofficial Russian procedural guide
-- bundled complete RU 4-wheel GCBA manual surface backed by a local manifest and page-faithful rendered assets
+- bundled complete RU 4-wheel GCBA manual surface backed by local translation, layout, navigation, and page-faithful visual manifests
 - validated four-level learner difficulty metadata for every bundled question and topic material
 - native service worker generated after production build
 - Node test runner + Playwright for testing
@@ -108,8 +108,9 @@ The current question set is `unofficial_b_fallback`, not an official GCBA questi
 - `Процесс` renders the bundled CABA B1/private-car `Otorgamiento` process guide from local JSON, labels it as unofficial Russian support, shows official GCBA/ANSV source links with checked dates, and keeps volatile payments/sedes/turnos/document details behind explicit verify-on-official-source warnings.
 - `CABA/RF` remains a separate compact contrast guide.
 - `Источники` renders the official primary-source reader from bundled `content/primary-sources/` shards. It stays separate from `Материалы`, covers every current entry in `content/official-documents/manifest.json`, defaults to simple Russian, allows switching to full Russian translation and original Spanish, omits simplified Spanish, and labels Russian layers as unofficial learning support.
-- `Руководство 4R` renders the complete 200-page GCBA `Vehiculo 4 Ruedas 2023` manual as a dedicated Russian-learning surface, separate from `Источники`. It uses `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json`, shows local page-faithful JPEG renders for every PDF page, and displays the exact full Russian translation aligned to each page with official Spanish source traceability.
-- The complete manual surface must not use a runtime PDF iframe/viewer, PDF.js rendering, remote images, network fetches, or the text-only source-reader fallback. Page visuals are served through the existing `content/assets` sync path and are validated before build.
+- `Руководство 4R` renders the complete 200-page GCBA `Vehiculo 4 Ruedas 2023` manual as a dedicated Russian-learning surface, separate from `Источники`. It uses `manual.ru.json` for exact Russian page text, `layout.ru.json` for the page-like Russian web layout, and `navigation.ru.json` for source-derived front matter/chapter/appendix/topic navigation.
+- The complete manual primary reader is a single Russian page canvas: local page-faithful visual material remains in the page, source text regions are masked, and ordered Russian layout blocks are rendered into the document composition. It must not fall back to a side-by-side Spanish screenshot plus separate translation transcript.
+- The complete manual surface must not use a runtime PDF iframe/viewer, PDF.js rendering, remote images, network fetches, or the text-only source-reader fallback. Page visuals are served through the existing `content/assets` sync path and are validated before build. The manual data chunk and page images remain deferred from service-worker install precache and load on demand when the manual is opened.
 - The official source archive under `content/official-documents/` remains verbatim Spanish-only source material. Russian translations and simple rewrites for the source reader are stored outside that archive under `content/primary-sources/`.
 - Release status: the reader UI is implemented and locally tested, and the official archive currentness/exact-text gates are passed for all 19 manifest entries.
 - Feature `026-design-ux-modernization` adds the durable visual system in `docs_project/project/frontend/design-system.md`, local generated learning images for `Материалы` and `Словарь`, and a learning-image validator. Generated learning images are committed local SVG assets under `content/assets/learning/generated/v1/`; they are unofficial support and never replace canonical ticket images.

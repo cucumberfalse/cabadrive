@@ -1,0 +1,156 @@
+# Implementation Plan: Layout-Preserving Russian Manual Reader
+
+## Summary
+
+Replace the current transcript-style manual reader with a layout-preserving Russian document reader. The implementation should keep the proven feature `027` source/translation/asset foundation, then add structured page-layout data, semantic navigation, validators, and responsive UI that renders each manual page as a Russian web page with the original visual composition preserved.
+
+## Architecture
+
+### 1. Preserve Feature 027 Foundations
+
+- Keep `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf` as the canonical source.
+- Keep the existing 200 local page-faithful JPEG assets as visual source assets unless a better local generated layer is added.
+- Keep the exact Russian translation corpus from `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json`.
+- Preserve the existing deferred-loading and service-worker decisions: the manual corpus and 200 page images are not install-time precached, but local static assets and successful runtime GET caching remain available when the manual view opens.
+
+### 2. Add Layout Manifest
+
+Add a production layout manifest under `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/`, preferably `layout.ru.json`.
+
+The layout manifest should be lazy-loaded with the manual view and should define:
+
+- Document/canvas metadata.
+- One layout record per page.
+- Page visual base reference.
+- Masks for visible Spanish text regions.
+- Ordered Russian text blocks with page-relative positions.
+- Visual-only regions that preserve original images, diagrams, tables, and icons.
+- Per-block provenance and fit strategy.
+- Per-page coverage metadata.
+
+The manifest may be produced by a helper script plus curated review. If generation is used, generated outputs must be committed and validators must detect stale generation. The implementation must not depend on runtime PDF parsing.
+
+### 3. Add Semantic Navigation Manifest
+
+Add `navigation.ru.json` or equivalent manifest fields for document-structure navigation.
+
+Build the top-level structure from the source index content already present on PDF pages `12-13` / printed pages `11-12`. Include front matter, introduction, chapters, appendices, and child topics. Use page-heading evidence to refine child ranges where the source index only names a topic without an explicit page.
+
+The navigation model should be consumed by the UI and validators. It must not be a hard-coded React-only list hidden from validation.
+
+### 4. Refactor Manual Runtime UI
+
+Refactor `Manual4RuedasView` in `src/App.tsx` or split it into purpose-built manual components under `src/` following local patterns.
+
+Required UI changes:
+
+- Replace `.manual-page-grid` side-by-side visual/translation layout with a single page reader.
+- Render a page canvas using the layout manifest.
+- Display Russian text blocks inside the page composition.
+- Keep provenance compact and secondary.
+- Add semantic table-of-contents navigation as the primary manual navigation.
+- Keep search and page number jump as secondary controls.
+- Fix mobile navigation and retained page list layout with auto-height rows, stable page-number columns, and no clipped secondary text.
+
+The old `.manual-translation` primary card and status labels such as `Перевод из approved primary-source chunk` should disappear from the primary reading experience. Provenance may remain in compact metadata or details.
+
+### 5. Validation and Tooling
+
+Extend `scripts/content-manual-vehiculo-4ruedas.mjs` or add a focused layout validator that is invoked by `pnpm run validate:manual-4ruedas` and `pnpm run validate:content`.
+
+Validation should cover:
+
+- Existing source hash/page/asset/translation checks from feature `027`.
+- Presence of 200 layout page entries.
+- Ordered page layout records from 1 through 200.
+- Every layout page references an existing local visual base.
+- Every translated page has at least one layout block or an explicit visual-only/label-only representation.
+- Ordered text from layout blocks reconstructs `translation.fullTranslationRu` for the page after documented whitespace normalization.
+- Required block types cover headings, body text, lists, captions, tables, callouts, footnotes, labels, and page numbers where present.
+- Mask and text block bounds are within the page canvas.
+- Text blocks do not use placeholder strings, summary markers, or intentionally untranslated Spanish body text.
+- Navigation ranges cover the full document, are ordered, and include the top-level source-index entries.
+- Runtime source scan still blocks PDF viewer/runtime PDF rendering/remote/manual network/backend/live-AI patterns.
+
+### 6. Testing
+
+Add focused Node tests for validators and manifest shape.
+
+Update Playwright tests for:
+
+- Primary `Руководство 4R` page opens and renders the Russian layout page.
+- Representative first, index, infographic/image-heavy, table/list, pages `114`-`123`, Appendix IV, and final pages render from local assets.
+- The old side-by-side `.manual-visual` plus `.manual-translation` primary layout is absent.
+- Semantic navigation opens named sections/topics and updates the page.
+- Search results are grouped/labeled by semantic section.
+- Mobile navigation and secondary page list rows do not overlap. Use bounding-box assertions, not only text visibility.
+- No external/manual PDF/backend/live-AI requests occur.
+
+Keep existing tests for deferred manual loading and service-worker manual asset exclusions, updating selectors as needed.
+
+### 7. Documentation
+
+Update durable docs after implementation:
+
+- `docs_project/project/frontend/frontend-docs.md`: describe the layout-preserving Russian manual reader, semantic navigation, and primary UI behavior.
+- `docs_project/screens/learning-and-exam-flows.md`: update the `Руководство 4R` flow from page-by-page transcript reader to semantic document navigation plus Russian page canvas.
+- `docs_project/project/backend/backend-docs.md`: document new layout/navigation manifest tooling and validation.
+- `docs_project/project/feature-inventory.md`: update the current manual feature description.
+
+## File Areas for Implementation Agent
+
+Implementation is expected to touch these areas:
+
+- `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/`
+- `src/data/manual4Ruedas.ts`
+- `src/App.tsx` and/or new manual components under `src/`
+- `src/styles.css`
+- `scripts/content-manual-vehiculo-4ruedas.mjs` and possibly a new generation/validation helper
+- `tests/content-manual-vehiculo-4ruedas.test.mjs`
+- `tests/e2e/app.spec.ts`
+- `docs_project/project/frontend/frontend-docs.md`
+- `docs_project/screens/learning-and-exam-flows.md`
+- `docs_project/project/backend/backend-docs.md`
+- `docs_project/project/feature-inventory.md`
+- `specs/028-manual-layout-ru/tasks.md`
+
+Implementation should avoid touching unrelated practice-question, exam, materials, or source-reader behavior except where shared styles/components require narrowly scoped responsive fixes.
+
+## Navigation Rationale
+
+The source manual already contains a usable document structure in its index. Using that index avoids arbitrary page buckets and directly satisfies the user's request for meaningful navigation.
+
+The top-level ranges should map printed page references to PDF page records using the existing page-label evidence. For the current PDF, printed page `13` corresponds to PDF page `14`, printed page `20` to PDF page `21`, and so on. Validators should cross-check this mapping instead of relying on a silent magic offset.
+
+## Layout Rationale
+
+The user asked for the web version to preserve document structure, pictures, and layout in Russian. A plain transcript cannot satisfy that. Reconstructing every page as structured DOM/SVG over local visual assets gives the closest practical static-web result:
+
+- It keeps all original visual material local.
+- It avoids runtime PDF rendering.
+- It lets Russian text live inside the document layout.
+- It keeps text coverage testable.
+- It supports accessibility/search better than a raster-only translated page image.
+
+## Performance and Offline Rationale
+
+Continue the feature `027` performance decision: do not install-precache the heavy manual corpus or all page images on first app load. The manual remains local-first because all assets are committed and served by the static app; runtime caching can store them after the learner opens the manual.
+
+The new layout/navigation manifests should remain lazy-loaded with the manual route so normal trainer startup does not pay the complete manual cost.
+
+## Risks and Mitigations
+
+- Russian text is often longer than Spanish: require per-block fit strategies, no-overlap validation, and representative visual QA.
+- Fully automated PDF layout extraction may be imperfect: allow committed curated layout data, but require validators and reviewable provenance.
+- Masking source text could hide nearby visuals: require visual-region review and representative screenshot evidence for image/table-heavy pages.
+- Large layout manifests could increase manual chunk size: lazy-load the manual route and keep service-worker install precache exclusions.
+- Semantic navigation ranges may drift from page headings: validate against source index pages and representative page headings.
+
+## Implementation Agent Guidance
+
+- Work only in the Orchestrator-assigned implementation worktree/branch/PR slice.
+- Preserve sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- Keep `specs/028-manual-layout-ru/tasks.md` current with evidence, decisions, dead ends, and Implementation Agent feedback.
+- Do not silently reduce scope to a subset of pages or representative samples.
+- Do not reintroduce PDF viewer behavior or runtime network dependencies.
+- Record any infeasible page/layout issue as Implementation Agent feedback for Architect disposition rather than shipping an untracked exception.
