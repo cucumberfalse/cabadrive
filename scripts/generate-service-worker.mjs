@@ -11,8 +11,12 @@ export function isManualDynamicChunk(path) {
   return /^\/assets\/manual4Ruedas-[^/]+\.js$/u.test(path);
 }
 
+export function isManualPageImageAsset(path) {
+  return /^\/content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-\d{3}\.jpg$/u.test(path);
+}
+
 export function shouldInstallPrecacheAsset(path) {
-  return path !== "/sw.js" && !isManualDynamicChunk(path);
+  return path !== "/sw.js" && !isManualDynamicChunk(path) && !isManualPageImageAsset(path);
 }
 
 function walk(dir, dist) {
