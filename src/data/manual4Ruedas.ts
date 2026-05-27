@@ -107,7 +107,7 @@ export type ManualPageLayout = {
     id: string;
     purpose: "replace_visible_source_text_with_russian_layout";
     role?: string;
-    sourceGeometry?: "russian_block_replacement_region" | "source_page_text_region" | "source_page_caption_region";
+    sourceGeometry?: "source_page_text_region" | "source_page_caption_region" | "source_page_label_region";
     bounds: ManualPageBounds;
     fill: string;
     opacity: number;
@@ -116,6 +116,11 @@ export type ManualPageLayout = {
       method: string;
       sourcePageNumber?: number;
       visualAssetPath?: string;
+      sourceTextPointer?: string;
+      sourceLineStart?: number;
+      sourceLineEnd?: number;
+      sourceTextSha256?: string;
+      sourceChunkId?: string;
     };
   }>;
   textRegions: Array<{

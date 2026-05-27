@@ -101,7 +101,7 @@ The complete manual surface is a dedicated Russian-learning reader for the offic
 1. Open `Руководство 4R` as a top-level section.
 2. Start from semantic document navigation derived from the manual index: front matter, introduction, chapters, appendices, and child topics. Direct page access remains secondary.
 3. Select a section/topic, search result, or page number and see a single Russian page-like web canvas, not a side-by-side Spanish screenshot and separate translation card.
-4. Read the exact full Russian translation as independently positioned layout blocks inside the page composition while local visual material, diagrams, signs, tables, and page hierarchy remain visible.
+4. Read the exact full Russian translation as independently positioned layout blocks inside the page composition while local visual material, diagrams, signs, tables, and page hierarchy remain visible; Spanish source text/caption/label regions are masked using recorded source provenance rather than destination Russian block boxes.
 5. Review compact per-page source traceability: official document ID, PDF page number, canonical source hash prefix, local asset hash prefix, layout-block count, and chunk or visual-label provenance.
 6. Move through ordered previous/next page navigation within the full manual or current search result set.
 7. On mobile, switch cleanly between navigation and page detail; semantic rows and secondary page rows grow with their text and must not overlap or clip, while the page canvas keeps a readable minimum width with horizontal scrolling instead of shrinking Russian instructional text to microtype.

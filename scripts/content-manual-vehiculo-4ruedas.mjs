@@ -832,6 +832,20 @@ function buildLayoutBlockDrafts(page) {
   }));
 }
 
+function buildSourceTextBlockDrafts(page) {
+  const lines = String(page.translation.sourceTextEs || "")
+    .split(/\r?\n/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  return lines.map((line, index) => ({
+    id: `page-${padPageNumber(page.pageNumber)}-source-line-${String(index + 1).padStart(2, "0")}`,
+    type: textBlockType(line, page.pageNumber, index, lines),
+    order: index + 1,
+    textRu: line,
+    sourceLineNumber: index + 1
+  }));
+}
+
 function pageNumberBounds() {
   return layoutBounds(0.135, 0.073, 0.052, 0.023);
 }
@@ -938,6 +952,47 @@ function sourceMask(page, slug, role, bounds, sourceTextEs, opacity = 0.995) {
       method: "curated_source_page_geometry",
       sourcePageNumber: page.sourcePageNumber,
       visualAssetPath: page.visualAsset.localPath
+    }
+  };
+}
+
+function sourceMaskRoleForBlock(block) {
+  if (block.type === "heading") return "source-heading";
+  if (block.type === "list") return "source-list";
+  if (block.type === "tableCell") return "source-table-cell";
+  if (block.type === "caption") return "source-caption";
+  if (block.type === "callout") return "source-callout";
+  if (block.type === "footnote") return "source-footnote";
+  if (block.type === "pageNumber") return "page-number";
+  if (block.type === "label") return "source-label";
+  return "source-body";
+}
+
+function sourceGeometryForBlock(block) {
+  if (block.type === "caption") return "source_page_caption_region";
+  if (block.type === "label") return "source_page_label_region";
+  return "source_page_text_region";
+}
+
+function structuredSourceMaskFromBlock(page, block) {
+  return {
+    id: `page-${padPageNumber(page.pageNumber)}-source-line-mask-${String(block.sourceLineNumber ?? block.order).padStart(2, "0")}`,
+    purpose: "replace_visible_source_text_with_russian_layout",
+    role: sourceMaskRoleForBlock(block),
+    sourceGeometry: sourceGeometryForBlock(block),
+    bounds: expandLayoutBounds(block.bounds, block.type === "pageNumber" ? 0.002 : 0.004, block.type === "pageNumber" ? 0.0015 : 0.003),
+    fill: "#fffdf8",
+    opacity: block.type === "pageNumber" ? 0.985 : 0.99,
+    sourceTextEs: block.textRu,
+    provenance: {
+      method: "structured_source_text_region",
+      sourcePageNumber: page.sourcePageNumber,
+      visualAssetPath: page.visualAsset.localPath,
+      sourceTextPointer: `${MANUAL_MANIFEST_PATH}#/pages/${page.pageNumber - 1}/translation/sourceTextEs`,
+      sourceLineStart: block.sourceLineNumber ?? block.order,
+      sourceLineEnd: block.sourceLineNumber ?? block.order,
+      sourceTextSha256: sha256Text(normalizeManualLayoutText(block.textRu)),
+      ...(page.translation.chunkProvenance?.chunkId ? { sourceChunkId: page.translation.chunkProvenance.chunkId } : {})
     }
   };
 }
@@ -1078,13 +1133,16 @@ function appendixIVSourceTextMasksForPage(page) {
 
 function sourceTextMasksForBlocks(page, blocks, kind) {
   if (kind === "visual-heavy") return appendixIVSourceTextMasksForPage(page);
-  return blocks.map((block) => ({
-    id: `page-${padPageNumber(page.pageNumber)}-mask-${String(block.order).padStart(2, "0")}`,
-    purpose: "replace_visible_source_text_with_russian_layout",
-    bounds: expandLayoutBounds(block.bounds, block.type === "pageNumber" ? 0.002 : 0.004, block.type === "pageNumber" ? 0.0015 : 0.003),
-    fill: "#fffdf8",
-    opacity: 0.985
-  }));
+  const sourceDrafts = buildSourceTextBlockDrafts(page);
+  if (sourceDrafts.length === 0) return [];
+  const sourcePage = {
+    ...page,
+    translation: {
+      ...page.translation,
+      fullTranslationRu: sourceDrafts.map((draft) => draft.textRu).join("\n")
+    }
+  };
+  return positionManualLayoutBlocks(sourcePage, kind).map((block) => structuredSourceMaskFromBlock(page, block));
 }
 
 function positionManualLayoutBlocks(page, kind) {
@@ -1434,6 +1492,74 @@ function maskCoversPoint(mask, point) {
   );
 }
 
+const ALLOWED_SOURCE_MASK_GEOMETRIES = new Set(["source_page_text_region", "source_page_caption_region", "source_page_label_region"]);
+const ALLOWED_SOURCE_MASK_METHODS = new Set(["structured_source_text_region", "curated_source_page_geometry", "structured_precomposed_russian_replacement"]);
+const REPRESENTATIVE_NON_APPENDIX_SOURCE_MASK_PAGES = new Map([
+  [14, { label: "section-divider introduction page", requiredRoles: ["page-number", "source-heading"] }],
+  [24, { label: "ordinary chapter body page", requiredRoles: ["page-number", "source-heading", "source-body"] }],
+  [75, { label: "ordinary chapter list page", requiredRoles: ["page-number", "source-heading", "source-list"] }],
+  [82, { label: "ordinary chapter callout/body page", requiredRoles: ["page-number", "source-body", "source-heading"] }],
+  [114, { label: "Appendix I mixed list/table-like page", requiredRoles: ["page-number", "source-heading", "source-list", "source-footnote"] }],
+  [125, { label: "Appendix II body/caption page", requiredRoles: ["page-number", "source-body", "source-heading"] }],
+  [144, { label: "Appendix II safe-driving body page", requiredRoles: ["page-number", "source-body", "source-heading"] }]
+]);
+
+function validateMaskSourceProvenance(errors, label, layoutPage, manifestPage) {
+  const masks = Array.isArray(layoutPage.masks) ? layoutPage.masks : [];
+  const blockBounds = new Set((Array.isArray(layoutPage.blocks) ? layoutPage.blocks : []).map((block) => boundsSignature(block?.bounds)));
+  for (const mask of masks) {
+    const maskLabel = `${label}: mask ${mask?.id ?? "(missing id)"}`;
+    if (!isNonEmptyString(mask?.role)) errors.push(`${maskLabel} must record the source text/caption/label role being replaced.`);
+    if (!ALLOWED_SOURCE_MASK_GEOMETRIES.has(mask?.sourceGeometry)) {
+      errors.push(`${maskLabel} must use source text/caption/label geometry, not destination Russian block geometry.`);
+    }
+    if (!isNonEmptyString(mask?.sourceTextEs)) errors.push(`${maskLabel} must record hidden Spanish source text/caption/label evidence.`);
+    if (!ALLOWED_SOURCE_MASK_METHODS.has(mask?.provenance?.method)) {
+      errors.push(`${maskLabel} must record structured or curated source-region provenance.`);
+    }
+    if (mask?.provenance?.sourcePageNumber !== manifestPage?.sourcePageNumber) {
+      errors.push(`${maskLabel} provenance.sourcePageNumber must match the source page.`);
+    }
+    if (mask?.provenance?.visualAssetPath !== manifestPage?.visualAsset?.localPath) {
+      errors.push(`${maskLabel} provenance.visualAssetPath must match the local source page visual.`);
+    }
+    if (mask?.sourceGeometry === "russian_block_replacement_region" || mask?.provenance?.method === "destination_russian_block_geometry") {
+      errors.push(`${maskLabel} must not be derived from destination Russian block placement.`);
+    }
+    if (mask?.provenance?.method === "structured_source_text_region") {
+      if (!isNonEmptyString(mask?.provenance?.sourceTextPointer)) errors.push(`${maskLabel} must point to translation.sourceTextEs.`);
+      if (typeof mask?.provenance?.sourceLineStart !== "number" || typeof mask?.provenance?.sourceLineEnd !== "number") {
+        errors.push(`${maskLabel} must record source line span provenance.`);
+      }
+      if (!isNonEmptyString(mask?.provenance?.sourceTextSha256)) errors.push(`${maskLabel} must record source text hash provenance.`);
+    }
+    if (
+      layoutPage.pageNumber < 185 &&
+      blockBounds.has(boundsSignature(mask?.bounds)) &&
+      mask?.provenance?.method !== "structured_precomposed_russian_replacement"
+    ) {
+      errors.push(`${maskLabel} bounds match a destination Russian block; non-Appendix masks must come from source regions.`);
+    }
+  }
+}
+
+function validateRepresentativeNonAppendixSourceMasks(errors, label, layoutPage) {
+  const expectation = REPRESENTATIVE_NON_APPENDIX_SOURCE_MASK_PAGES.get(layoutPage.pageNumber);
+  if (!expectation) return;
+  const masks = Array.isArray(layoutPage.masks) ? layoutPage.masks : [];
+  for (const role of expectation.requiredRoles) {
+    if (!masks.some((mask) => mask?.role === role)) {
+      errors.push(`${label}: representative ${expectation.label} must include a ${role} source-region mask.`);
+    }
+  }
+  if (!masks.every((mask) => ALLOWED_SOURCE_MASK_GEOMETRIES.has(mask?.sourceGeometry))) {
+    errors.push(`${label}: representative ${expectation.label} must use source text/caption/label mask geometry only.`);
+  }
+  if (!masks.every((mask) => ALLOWED_SOURCE_MASK_METHODS.has(mask?.provenance?.method))) {
+    errors.push(`${label}: representative ${expectation.label} must record source-region provenance on every mask.`);
+  }
+}
+
 function validateAppendixIVSourceTextMasks(errors, label, layoutPage) {
   const requiredPointsByPage = new Map([
     [
@@ -1593,6 +1719,8 @@ function validateManualLayoutManifest(errors, manifest, layout) {
       orderedText.push(block.textRu);
     });
     validateNonGenericLayoutGeometry(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
+    validateMaskSourceProvenance(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage, page);
+    validateRepresentativeNonAppendixSourceMasks(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
     validateAppendixIVSourceTextMasks(errors, `${MANUAL_LAYOUT_PATH}: page ${expectedPageNumber}`, layoutPage);
 
     const normalizedTranslation = normalizeManualLayoutText(page?.translation?.fullTranslationRu);

@@ -152,6 +152,17 @@ async function showCompleteManualList(page: Page) {
   if (await backButton.isVisible()) await backButton.click();
 }
 
+async function openCompleteManualPage(page: Page, pageNumber: number) {
+  await showCompleteManualList(page);
+  const pageAccess = page.getByTestId("manual-page-access");
+  if (!(await pageAccess.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await pageAccess.locator("summary").click();
+  }
+  await page.getByTestId(`manual-page-button-${pageNumber}`).scrollIntoViewIfNeeded();
+  await page.getByTestId(`manual-page-button-${pageNumber}`).click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
+}
+
 type ManualRenderedBox = {
   id: string | null;
   type: string | null;
@@ -784,9 +795,25 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-page-canvas")).toBeVisible();
   await expect(page.getByTestId("manual-page-russian-layout")).toContainText("ВВЕДЕНИЕ");
   await expectIndependentManualPageLayout(page, 14, 3);
+  await expectAppendixIVSourceMasks(page, 14, [{ role: "source-heading", x: 0.481, y: 0.39, label: "page 14 Spanish introduction heading" }]);
   await expect(manualImage).toHaveAttribute("src", new RegExp(manualManifest.pages[13].visualAsset.localPath.replace(/\//g, "\\/")));
   await expect(manualImage).toHaveJSProperty("naturalWidth", manualManifest.pages[13].visualAsset.width);
   await expect(manualImage).toHaveJSProperty("naturalHeight", manualManifest.pages[13].visualAsset.height);
+
+  await openCompleteManualPage(page, 24);
+  await expectAppendixIVSourceMasks(page, 24, [
+    { role: "source-heading", x: 0.481, y: 0.175, label: "page 24 Spanish body heading" },
+    { role: "source-body", x: 0.33, y: 0.285, label: "page 24 Spanish body text" }
+  ]);
+
+  await openCompleteManualPage(page, 75);
+  await expectAppendixIVSourceMasks(page, 75, [{ role: "source-list", x: 0.507, y: 0.36, label: "page 75 Spanish list text" }]);
+
+  await openCompleteManualPage(page, 114);
+  await expectAppendixIVSourceMasks(page, 114, [
+    { role: "source-list", x: 0.337, y: 0.254, label: "page 114 Spanish list text" },
+    { role: "source-footnote", x: 0.68, y: 0.879, label: "page 114 Spanish footnote text" }
+  ]);
 
   await showCompleteManualList(page);
   await page.getByTestId("manual-nav-chapter-3-driving-rules").click();

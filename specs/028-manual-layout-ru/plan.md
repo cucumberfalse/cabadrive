@@ -74,8 +74,8 @@ Validation should cover:
 - Ordered text from layout blocks reconstructs `translation.fullTranslationRu` for the page after documented whitespace normalization.
 - Required block types cover headings, body text, lists, captions, tables, callouts, footnotes, labels, and page numbers where present.
 - Mask and text block bounds are within the page canvas.
-- Mask geometry is source-text/source-caption geometry or a structured/precomposed Russian replacement region. Validators must fail when masks are derived only from destination Russian block bounds while Spanish headings/captions remain visible in the visual base.
-- Appendix IV visual-heavy pages require explicit mask/coverage checks, including page `185`, so sign headings and captions from the Spanish source image are not visible in the primary Russian reader.
+- Mask geometry is source-text/source-caption geometry or a structured/precomposed Russian replacement region across the full 200-page manual. Validators must fail any destination-Russian-block-derived mask that lacks source-text/source-caption provenance, even outside Appendix IV and even if the destination Russian block happens to overlap part of the hidden source text.
+- Non-Appendix validation must include representative body, list, table, caption, diagram/infographic, and callout pages, proving masks/provenance come from source visual text regions or structured/precomposed Russian replacements rather than translated block placement. Appendix IV visual-heavy pages remain required explicit mask/coverage checks, including page `185`, so sign headings and captions from the Spanish source image are not visible in the primary Russian reader.
 - Text blocks do not use placeholder strings, summary markers, or intentionally untranslated Spanish body text.
 - Navigation ranges cover the full document, are ordered, and include the top-level source-index entries.
 - Runtime source scan still blocks PDF viewer/runtime PDF rendering/remote/manual network/backend/live-AI patterns.
@@ -89,7 +89,7 @@ Update Playwright tests for:
 
 - Primary `Руководство 4R` page opens and renders the Russian layout page.
 - Representative first, index, infographic/image-heavy, table/list, pages `114`-`123`, Appendix IV, and final pages render from local assets.
-- Page `185` and representative Appendix IV sign pages prove source Spanish headings/captions are masked or replaced in the primary Russian canvas using visual/pixel/text coverage, not merely covered by newly placed Russian labels.
+- Representative non-Appendix pages and Appendix IV sign pages prove source Spanish headings/captions/body text are masked or replaced in the primary Russian canvas using source-provenance validation plus visual/pixel/text coverage, not merely covered by newly placed Russian labels. Page `185` remains a required Appendix IV regression target.
 - The old side-by-side `.manual-visual` plus `.manual-translation` primary layout is absent.
 - Semantic navigation opens named sections/topics and updates the page.
 - Search results are grouped/labeled by semantic section and preserve distinct same-page entry IDs, with a regression for `ch5-gender-violence-prevention` on page `100` not collapsing to `ch5-equal-society`.

@@ -64,7 +64,7 @@ Each page layout entry must include:
 - Reference to the existing local page visual asset or an explicitly generated local visual layer.
 - Ordered `blocks` array with stable IDs.
 - For every text block: type (`heading`, `body`, `list`, `tableCell`, `caption`, `callout`, `footnote`, `pageNumber`, `label`, or equivalent), `textRu`, optional `textEs`, reading order, bounding box in page-relative units, typography/fit metadata, and provenance to the source page/chunk.
-- For masks: source-region bounding box, background/fill strategy, source-text/source-caption provenance, and the source text or visual label being hidden/replaced. On visual-heavy pages, including Appendix IV sign pages, mask entries must cover sign headings, captions, and other original Spanish labels visible in the underlying page image even when the Russian replacement text is placed elsewhere.
+- For masks: source-region bounding box, background/fill strategy, source-text/source-caption provenance, and the source text or visual label being hidden/replaced. Across the entire manual, masks must either be proven source-text/source-caption geometry or be part of a structured/precomposed Russian replacement layer; destination Russian block bounds alone are not valid mask provenance. On visual-heavy pages, including Appendix IV sign pages, mask entries must cover sign headings, captions, and other original Spanish labels visible in the underlying page image even when the Russian replacement text is placed elsewhere.
 - For visual-only regions: bounding boxes for images/diagrams/tables/icons that are intentionally preserved from the local source visual.
 - Per-page coverage metadata proving that the ordered Russian text blocks reconstruct the existing exact page translation.
 
@@ -156,7 +156,7 @@ Direct page access must remain available as secondary navigation, not as a singl
 
 - Manual validator output proving 200/200 source pages still pass source, translation, asset, and provenance checks.
 - New layout validator output proving every page has page-layout data and every page's ordered Russian blocks reconstruct the existing exact translation.
-- Source-text/caption mask validation output proving visible Spanish instructional text is removed from the primary Russian canvas on representative visual-heavy pages, including PDF/page `185` and additional Appendix IV sign pages.
+- Source-text/caption mask validation output proving visible Spanish instructional text is removed from the primary Russian canvas across the manual, not only Appendix IV. Validation must fail when masks are derived from destination Russian block boxes without source-text/source-caption provenance or structured/precomposed replacement evidence. Representative coverage must include non-Appendix body/list/caption/table/diagram pages, plus already fixed Appendix IV page `185` and additional Appendix IV sign pages.
 - Navigation validator output proving semantic navigation covers the full page range without gaps or inverted/overlapping ranges, and top-level entries match source index pages `11-12`.
 - Runtime dependency scan proving no manual PDF viewer, runtime PDF rendering, remote/manual network fetch, backend endpoint, or live-AI dependency.
 - Playwright desktop and mobile evidence that:
@@ -165,7 +165,7 @@ Direct page access must remain available as secondary navigation, not as a singl
   - Semantic navigation works for at least introduction, one middle chapter, Appendix I, Appendix II around pages `114`-`123`, and Appendix IV.
   - Search results preserve same-page semantic topic IDs, including page `100` where `ch5-gender-violence-prevention` must open with its own result label and active highlight rather than `ch5-equal-society`.
   - Mobile navigation/list rows around pages `114`-`123` do not overlap or clip based on bounding-box assertions and screenshots.
-  - Representative image-heavy/table/sign pages render with local assets, nonblank page composition, and no visible Spanish source headings/captions in the primary Russian reader; page `185` must be explicitly covered.
+  - Representative image-heavy/table/sign pages render with local assets, nonblank page composition, and no visible Spanish source headings/captions in the primary Russian reader; coverage must include non-Appendix pages and page `185` explicitly.
 - TypeScript verification must include `pnpm exec tsc --noEmit` where available, or equivalent strict type-check coverage through the repository preflight/build command if the standalone command is unavailable.
 - Local preflight/build evidence before PR completion.
 

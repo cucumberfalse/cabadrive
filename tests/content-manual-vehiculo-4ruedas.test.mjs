@@ -255,6 +255,8 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.equal(page14.blocks.every((block) => block.typography.fit === "absolute-fit"), true);
   assert.equal(page14.textRegions.every((region) => region.fit === "absolute-positioned-blocks"), true);
   assert.equal(page14.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+  assert.ok(page14.masks.every((mask) => mask.sourceGeometry === "source_page_text_region"));
+  assert.ok(page14.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"));
 
   const page114 = layout.pages[113];
   assert.ok(page114.blocks.length > 20);
@@ -262,6 +264,23 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
   assert.ok(page114.blocks.some((block) => block.bounds.x > 0.5), "page 114 uses a second column instead of one transcript rail");
   assert.ok(new Set(page114.blocks.map((block) => `${block.bounds.x}:${block.bounds.y}:${block.bounds.width}:${block.bounds.height}`)).size > page114.blocks.length * 0.8);
   assert.equal(page114.visualRegions.some((region) => isFullPageBounds(region.bounds)), false);
+  assert.ok(page114.masks.some((mask) => mask.role === "source-list"));
+  assert.ok(page114.masks.some((mask) => mask.role === "source-footnote"));
+  assert.ok(page114.masks.every((mask) => mask.sourceGeometry === "source_page_text_region"));
+  assert.ok(page114.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"));
+  assert.ok(page114.masks.every((mask) => typeof mask.provenance?.sourceLineStart === "number"));
+  assert.ok(page114.masks.every((mask) => typeof mask.provenance?.sourceTextSha256 === "string"));
+  assert.ok(page114.masks.some((mask) => mask.sourceTextEs.includes("Airbag")));
+
+  for (const pageNumber of [24, 75, 82, 125, 144]) {
+    const nonAppendixPage = layout.pages[pageNumber - 1];
+    assert.ok(nonAppendixPage.masks.every((mask) => mask.sourceGeometry?.startsWith("source_page_")), `page ${pageNumber} masks use source geometry`);
+    assert.ok(
+      nonAppendixPage.masks.every((mask) => mask.provenance?.method === "structured_source_text_region"),
+      `page ${pageNumber} masks record structured source provenance`
+    );
+    assert.ok(nonAppendixPage.masks.every((mask) => typeof mask.provenance?.sourceLineStart === "number"), `page ${pageNumber} masks record source lines`);
+  }
 
   const page185 = layout.pages[184];
   assert.ok(page185.masks.some((mask) => mask.role === "source-heading" && mask.sourceTextEs === "Reglamentarias"));
@@ -430,4 +449,31 @@ test("manual 4 ruedas validator rejects Appendix IV masks derived from Russian d
   assert.ok(result.errors.some((error) => error.includes("Appendix IV masks must be based on source text/caption geometry")));
   assert.ok(result.errors.some((error) => error.includes("missing source-heading mask over source Reglamentarias heading")));
   assert.ok(result.errors.some((error) => error.includes("missing sign-caption mask over source first-row sign caption")));
+});
+
+test("manual 4 ruedas validator rejects non-Appendix masks without source provenance", async () => {
+  const badLayout = clone(layout);
+  const page = badLayout.pages[113];
+  page.masks = page.blocks.map((block) => ({
+    id: `bad-non-appendix-mask-${block.order}`,
+    purpose: "replace_visible_source_text_with_russian_layout",
+    role: "russian-block-replacement",
+    sourceGeometry: "russian_block_replacement_region",
+    bounds: block.bounds,
+    fill: "#fffdf8",
+    opacity: 0.985,
+    sourceTextEs: block.textRu,
+    provenance: {
+      method: "destination_russian_block_geometry",
+      sourcePageNumber: page.sourcePageNumber,
+      visualAssetPath: page.visualBase.localPath
+    }
+  }));
+
+  const result = await validateManualVehiculo4RuedasRu({ manifest, layout: badLayout, navigation });
+
+  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must use source text/caption/label geometry")));
+  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must record structured or curated source-region provenance")));
+  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 must not be derived from destination Russian block placement")));
+  assert.ok(result.errors.some((error) => error.includes("page 114: mask bad-non-appendix-mask-1 bounds match a destination Russian block")));
 });
