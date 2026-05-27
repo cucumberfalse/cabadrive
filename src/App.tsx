@@ -59,6 +59,7 @@ type ManualManifestState = {
 type ManualSearchIndexEntry = {
   page: ManualPage;
   section?: ManualNavigationEntry;
+  resultId: string;
   searchText: string;
 };
 type LearningTicketTimerStatus = "running" | "paused" | "expired" | "answered";
@@ -1595,17 +1596,47 @@ function Manual4RuedasView() {
   const layoutByPageNumber = useMemo(() => new Map(layout?.pages.map((pageLayout) => [pageLayout.pageNumber, pageLayout]) ?? []), [layout]);
   const navigationEntries = useMemo(() => (navigation ? flattenManualNavigation(navigation.entries) : []), [navigation]);
   const navigationEntryById = useMemo(() => new Map(navigationEntries.map((entry) => [entry.id, entry])), [navigationEntries]);
-  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
+  const manualPageIndex = useMemo<ManualSearchIndexEntry[]>(
     () =>
       manifest?.pages.map((page) => {
         const section = navigation ? manualNavigationEntryForPage(navigation.entries, page.pageNumber, true) : undefined;
         return {
           page,
           section,
-          searchText: normalizeSearchText([manualPageSearchText(page), section?.titleRu ?? "", section?.titleEs ?? ""].join(" "))
+          resultId: `page-${page.pageNumber}`,
+          searchText: normalizeSearchText([manualPageSearchText(page), section?.id ?? "", section?.titleRu ?? "", section?.titleEs ?? ""].join(" "))
         };
       }) ?? [],
     [manifest, navigation]
+  );
+  const manualSearchIndex = useMemo<ManualSearchIndexEntry[]>(
+    () => {
+      if (!manifest) return [];
+      const semanticEntriesByStartPage = new Map<number, ManualNavigationEntry[]>();
+      for (const entry of navigationEntries) {
+        if (entry.level !== "topic") continue;
+        semanticEntriesByStartPage.set(entry.startPage, [...(semanticEntriesByStartPage.get(entry.startPage) ?? []), entry]);
+      }
+
+      return manifest.pages.flatMap((page) => {
+        const pageEntry = manualPageIndex.find((entry) => entry.page.pageNumber === page.pageNumber);
+        const exactStartEntries = semanticEntriesByStartPage.get(page.pageNumber) ?? [];
+        const semanticResults = exactStartEntries.map((section) => ({
+          page,
+          section,
+          resultId: `section-${section.id}`,
+          searchText: normalizeSearchText([manualPageSearchText(page), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+        }));
+        if (semanticResults.length) return semanticResults;
+        if (pageEntry) return [pageEntry];
+        return {
+          page,
+          resultId: `page-${page.pageNumber}`,
+          searchText: manualPageSearchText(page)
+        };
+      });
+    },
+    [manifest, manualPageIndex, navigationEntries]
   );
   const query = normalizeSearchText(searchQuery.trim());
   const matchingEntries = query ? manualSearchIndex.filter((entry) => entry.searchText.includes(query)) : manualSearchIndex;
@@ -1715,14 +1746,16 @@ function Manual4RuedasView() {
 
           {query && matchingPages.length ? (
             <div className="manual-page-buttons manual-search-results" aria-label="Результаты поиска по страницам manual">
-              {matchingEntries.map(({ page, section }) => (
+              {matchingEntries.map(({ page, section, resultId }) => (
                 <button
                   type="button"
-                  key={page.pageNumber}
-                  className={page.pageNumber === selectedPage?.pageNumber ? "active" : ""}
-                  onClick={() => selectManualPage(page.pageNumber)}
+                  key={resultId}
+                  className={page.pageNumber === selectedPage?.pageNumber && (!section || selectedSemanticEntry?.id === section.id) ? "active" : ""}
+                  onClick={() => selectManualPage(page.pageNumber, { entryId: section?.id })}
                   aria-label={`Страница ${page.pageNumber}. ${page.translation.headingRu}`}
                   data-testid={`manual-page-button-${page.pageNumber}`}
+                  data-result-entry-id={section?.id ?? ""}
+                  data-search-result-id={resultId}
                 >
                   <span>{page.pageNumber}</span>
                   <strong>{page.translation.headingRu}</strong>
@@ -1776,7 +1809,7 @@ function Manual4RuedasView() {
               <details className="manual-page-access" data-testid="manual-page-access">
                 <summary>Страницы 1-200</summary>
                 <div className="manual-page-buttons" aria-label="Вторичный список страниц manual">
-                  {manualSearchIndex.map(({ page, section }) => (
+                  {manualPageIndex.map(({ page, section }) => (
                     <button
                       type="button"
                       key={page.pageNumber}

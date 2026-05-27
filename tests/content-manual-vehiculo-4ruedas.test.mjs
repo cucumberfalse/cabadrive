@@ -41,6 +41,32 @@ function findNavigationEntryById(entries, entryId) {
   return undefined;
 }
 
+function flattenNavigationEntries(entries) {
+  return entries.flatMap((entry) => [entry, ...flattenNavigationEntries(entry.children ?? [])]);
+}
+
+function normalizeSearchText(value) {
+  return value
+    .toLocaleLowerCase("ru")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function manualPageSearchText(page) {
+  return normalizeSearchText(
+    [
+      page.pageNumber,
+      page.translation.headingRu,
+      page.translation.officialLabel,
+      page.translation.fullTranslationRu,
+      page.translation.sourceTextEs,
+      page.translation.headingPathEs.join(" "),
+      page.translation.chunkProvenance?.chunkId ?? "",
+      page.sourceTrace.officialDocumentId
+    ].join(" ")
+  );
+}
+
 function destinationEntryForPage(entries, pageNumber, { requestedEntry, currentEntry } = {}) {
   if (requestedEntry && pageNumberIsCoveredByEntry(pageNumber, requestedEntry)) return requestedEntry;
 
@@ -115,6 +141,34 @@ test("manual 4 ruedas view caches normalized page search text outside the filter
   assert.match(componentSource.slice(indexStart, matchingStart), /manualPageSearchText\(page\)/);
   assert.match(matchingStatement, /manualSearchIndex\.filter/);
   assert.equal(matchingStatement.includes("manualPageSearchText("), false);
+});
+
+test("manual 4 ruedas search index preserves same-page semantic entry identity", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const componentStart = appSource.indexOf("function Manual4RuedasView()");
+  const componentEnd = appSource.indexOf("function PrimarySourcesView()", componentStart);
+  const componentSource = appSource.slice(componentStart, componentEnd);
+  const navigationEntries = flattenNavigationEntries(navigation.entries);
+  const page100 = manifest.pages.find((page) => page.pageNumber === 100);
+  const samePageTopics = navigationEntries.filter((entry) => entry.level === "topic" && entry.startPage === 100);
+  const searchIndexEntries = samePageTopics.map((section) => ({
+    page: page100,
+    section,
+    resultId: `section-${section.id}`,
+    searchText: normalizeSearchText([manualPageSearchText(page100), section.id, section.titleRu, section.titleEs ?? ""].join(" "))
+  }));
+  const genderResult = searchIndexEntries.filter((entry) => entry.searchText.includes(normalizeSearchText("ch5-gender-violence-prevention")));
+
+  assert.deepEqual(samePageTopics.map((entry) => entry.id), ["ch5-equal-society", "ch5-gender-violence-prevention"]);
+  assert.equal(genderResult.length, 1);
+  assert.equal(genderResult[0].page.pageNumber, 100);
+  assert.equal(genderResult[0].section.id, "ch5-gender-violence-prevention");
+  assert.notEqual(genderResult[0].section.id, "ch5-equal-society");
+  assert.match(componentSource, /semanticEntriesByStartPage/);
+  assert.match(componentSource, /section\.id/);
+  assert.match(componentSource, /selectManualPage\(page\.pageNumber, \{ entryId: section\?\.id \}\)/);
+  assert.match(componentSource, /data-result-entry-id=\{section\?\.id \?\? ""\}/);
+  assert.match(componentSource, /data-search-result-id=\{resultId\}/);
 });
 
 test("manual 4 ruedas page-only semantic lookup prefers exact topic starts before covering ranges", () => {

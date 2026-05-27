@@ -42,6 +42,8 @@ When runtime code derives the current semantic topic from a page-only action suc
 
 Previous/next navigation must also apply the exact-start rule before preserving an existing covering entry. If the current selection is page-only page `93` under `ch4-sleep-fatigue` and the learner advances to page `94`, the destination page has a more specific exact-start child (`ch4-stress`), so the UI must switch the selected semantic label/highlight to `ch4-stress` / `Стресс` rather than preserving `ch4-sleep-fatigue`. Preserving a prior entry is acceptable only when the destination page has no more specific exact-start topic.
 
+Manual search must index and return semantic entry identity separately from page identity. When a query matches a navigation topic or page text associated with a specific topic, the result must retain the matching entry ID and pass that ID through click/open behavior. Same-page topics must therefore produce distinct results or result metadata even when their `startPage` is identical; searching for `ch5-gender-violence-prevention` on page `100` must label/highlight/open that topic, not the first same-page topic `ch5-equal-society`.
+
 ### 4. Refactor Manual Runtime UI
 
 Refactor `Manual4RuedasView` in `src/App.tsx` or split it into purpose-built manual components under `src/` following local patterns.
@@ -90,7 +92,7 @@ Update Playwright tests for:
 - Page `185` and representative Appendix IV sign pages prove source Spanish headings/captions are masked or replaced in the primary Russian canvas using visual/pixel/text coverage, not merely covered by newly placed Russian labels.
 - The old side-by-side `.manual-visual` plus `.manual-translation` primary layout is absent.
 - Semantic navigation opens named sections/topics and updates the page.
-- Search results are grouped/labeled by semantic section.
+- Search results are grouped/labeled by semantic section and preserve distinct same-page entry IDs, with a regression for `ch5-gender-violence-prevention` on page `100` not collapsing to `ch5-equal-society`.
 - Mobile navigation and secondary page list rows do not overlap. Use bounding-box assertions, not only text visibility.
 - No external/manual PDF/backend/live-AI requests occur.
 - Type-check verification covers nested handler narrowing, including the manual navigation manifest path, so `navigation` is narrowed/captured before handler functions use it.

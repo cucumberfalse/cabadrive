@@ -910,6 +910,22 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
 
   await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("ch5-gender-violence-prevention");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  const genderViolenceSearchResult = page.locator('[data-search-result-id="section-ch5-gender-violence-prevention"]');
+  await expect(genderViolenceSearchResult).toBeVisible();
+  await expect(genderViolenceSearchResult).toHaveAttribute("data-result-entry-id", "ch5-gender-violence-prevention");
+  await expect(genderViolenceSearchResult).toContainText("Профилактика и помощь");
+  await genderViolenceSearchResult.click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Профилактика и помощь");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("К равноправному обществу");
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("");
+  await expect(page.getByTestId("manual-nav-ch5-gender-violence-prevention")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch5-equal-society")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
   await page.getByTestId("manual-search-input").fill("Логотип города Буэнос-Айрес");
   await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
   await page.getByTestId("manual-page-button-200").click();

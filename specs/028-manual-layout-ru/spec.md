@@ -100,7 +100,9 @@ Each navigation entry must include:
 - Source evidence (`index_pages_11_12`, page heading, or curated manual review).
 - Children where applicable.
 
-Search results must be grouped or labelled by this semantic structure. Direct page access must remain available as secondary navigation, not as a single long primary list.
+Search results must be grouped or labelled by this semantic structure and must preserve the distinct semantic entry ID that caused each result. A page may legitimately contain multiple same-page topics, so the search index/results must not collapse all matches on a page to the first exact-start navigation entry. For example, searching for and opening `ch5-gender-violence-prevention` on page `100` must label, highlight, and open `ch5-gender-violence-prevention`, not `ch5-equal-society`.
+
+Direct page access must remain available as secondary navigation, not as a single long primary list.
 
 ## User Experience Requirements
 
@@ -161,6 +163,7 @@ Search results must be grouped or labelled by this semantic structure. Direct pa
   - `Руководство 4R` opens to the Russian layout-preserving page reader.
   - The old side-by-side Spanish image plus plain translation card is absent from primary UI.
   - Semantic navigation works for at least introduction, one middle chapter, Appendix I, Appendix II around pages `114`-`123`, and Appendix IV.
+  - Search results preserve same-page semantic topic IDs, including page `100` where `ch5-gender-violence-prevention` must open with its own result label and active highlight rather than `ch5-equal-society`.
   - Mobile navigation/list rows around pages `114`-`123` do not overlap or clip based on bounding-box assertions and screenshots.
   - Representative image-heavy/table/sign pages render with local assets, nonblank page composition, and no visible Spanish source headings/captions in the primary Russian reader; page `185` must be explicitly covered.
 - TypeScript verification must include `pnpm exec tsc --noEmit` where available, or equivalent strict type-check coverage through the repository preflight/build command if the standalone command is unavailable.
