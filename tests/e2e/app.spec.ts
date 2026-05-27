@@ -791,6 +791,28 @@ test("complete RU manual surface renders Russian layout pages with semantic navi
   await expect(page.getByTestId("manual-nav-ch4-stress")).not.toHaveClass(/active/);
 
   await showCompleteManualList(page);
+  const pageAccess = page.getByTestId("manual-page-access");
+  if (!(await pageAccess.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await pageAccess.locator("summary").click();
+  }
+  await page.getByTestId("manual-page-button-94").scrollIntoViewIfNeeded();
+  await page.getByTestId("manual-page-button-94").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Сон и усталость");
+  await expect(page.getByTestId("manual-nav-ch4-stress")).toHaveClass(/active/);
+  await expect(page.getByTestId("manual-nav-ch4-sleep-fatigue")).not.toHaveClass(/active/);
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("ВОЗ определяет");
+  await expect(page.getByText("Найдено: 1 страниц")).toBeVisible();
+  await page.getByTestId("manual-page-button-94").click();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("94 / 200");
+  await expect(page.getByTestId("manual-selected-semantic-label")).toContainText("Стресс");
+  await expect(page.getByTestId("manual-selected-semantic-label")).not.toContainText("Сон и усталость");
+
+  await showCompleteManualList(page);
+  await page.getByTestId("manual-search-input").fill("");
   await page.getByTestId("manual-nav-ch5-equal-society").scrollIntoViewIfNeeded();
   await page.getByTestId("manual-nav-ch5-equal-society").click();
   await expect(page.getByTestId("manual-page-detail")).toContainText("100 / 200");

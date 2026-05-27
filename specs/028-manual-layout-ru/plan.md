@@ -38,6 +38,8 @@ Build the top-level structure from the source index content already present on P
 
 The navigation model should be consumed by the UI and validators. It must not be a hard-coded React-only list hidden from validation.
 
+When runtime code derives the current semantic topic from a page-only action such as search, direct page entry, previous/next, or a restored URL without a preserved entry ID, it must prefer a child topic whose `startPage` exactly equals the selected page before falling back to the first topic whose range covers the page. This is required for overlapping ranges such as `ch4-sleep-fatigue` covering pages `93-94` and `ch4-stress` starting on page `94`; page `94` must label/highlight as `Стресс` for direct page selection.
+
 ### 4. Refactor Manual Runtime UI
 
 Refactor `Manual4RuedasView` in `src/App.tsx` or split it into purpose-built manual components under `src/` following local patterns.

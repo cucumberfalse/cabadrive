@@ -22,6 +22,16 @@ function isFullPageBounds(bounds) {
   return bounds.x <= 0.01 && bounds.y <= 0.01 && bounds.x + bounds.width >= 0.99 && bounds.y + bounds.height >= 0.99;
 }
 
+function exactStartEntryForPage(entries, pageNumber) {
+  for (const entry of entries) {
+    if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
+    const childExactStart = exactStartEntryForPage(entry.children ?? [], pageNumber);
+    if (childExactStart) return childExactStart;
+    if (entry.startPage === pageNumber) return entry;
+  }
+  return undefined;
+}
+
 test("manual 4 ruedas validator passes current manifest and reports complete coverage", async () => {
   const output = execFileSync("node", ["scripts/content-manual-vehiculo-4ruedas.mjs"], { encoding: "utf8" });
   const result = await validateManualVehiculo4RuedasRu();
@@ -86,6 +96,28 @@ test("manual 4 ruedas view caches normalized page search text outside the filter
   assert.match(matchingStatement, /manualSearchIndex\.filter/);
   assert.equal(matchingStatement.includes("manualPageSearchText("), false);
 });
+
+test("manual 4 ruedas page-only semantic lookup prefers exact topic starts before covering ranges", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  const lookupStart = appSource.indexOf("function manualNavigationEntryForPage");
+  const lookupEnd = appSource.indexOf("function manualNavigationEntryCoversPage", lookupStart);
+  const lookupSource = appSource.slice(lookupStart, lookupEnd);
+  const exactStartIndex = lookupSource.indexOf("manualExactStartNavigationEntryForPage(entries, pageNumber)");
+  const coveringFallbackIndex = lookupSource.indexOf("for (const entry of entries)");
+  const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
+
+  assert.notEqual(lookupStart, -1);
+  assert.notEqual(lookupEnd, -1);
+  assert.notEqual(exactStartIndex, -1);
+  assert.notEqual(coveringFallbackIndex, -1);
+  assert.ok(exactStartIndex < coveringFallbackIndex);
+  assert.equal(chapter4Topics.find((entry) => pageNumberIsCoveredByEntry(94, entry)).id, "ch4-sleep-fatigue");
+  assert.equal(exactStartEntryForPage(navigation.entries, 94).id, "ch4-stress");
+});
+
+function pageNumberIsCoveredByEntry(pageNumber, entry) {
+  return pageNumber >= entry.startPage && pageNumber <= entry.endPage;
+}
 
 test("manual 4 ruedas manifest records complete local source, asset, and translation coverage", () => {
   assert.equal(manifest.schema, "cabadrive-manual-ru.v1");

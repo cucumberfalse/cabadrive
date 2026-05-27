@@ -39,6 +39,7 @@
 - `[x]` Validate printed-page to PDF-page mapping against existing manifest page labels/headings. Current-head follow-up completed: `ch4-stress` now points to page `94` based on page-heading/content evidence, while `ch4-distractions` remains on page `95`.
 - `[x]` Make semantic navigation the primary manual navigation in the UI, preserving the exact selected topic identity even when sibling topics share the same start page.
 - `[x]` Correct the Chapter 4 Stress/Distractions topic ranges so `ch4-stress` opens the actual Stress page and no topic click lands on the next sibling's content.
+- `[x]` Prefer exact `startPage === pageNumber` semantic child matches before range-covering fallback for page-only navigation/search/previous-next lookups, so page `94` labels/highlights as `ch4-stress` rather than the earlier covering `ch4-sleep-fatigue` topic.
 - `[x]` Keep direct page access/search as secondary controls, grouped or labeled by semantic section.
 
 ### Frontend Reader
@@ -75,6 +76,7 @@
 - `[x]` Add Playwright desktop coverage for first page, index pages, an image/diagram-heavy page, Appendix I, Appendix II around pages `114`-`123`, Appendix IV signs, and final pages, including evidence that multiple Russian blocks are independently placed from their own layout bounds.
 - `[x]` Add Playwright mobile coverage for semantic navigation, secondary page list rows, and the page canvas around pages `114`-`123` with bounding-box no-overlap assertions for independently positioned blocks.
 - `[x]` Add validator or test coverage that fails when `ch4-stress` opens the Distractions page; expected behavior must be based on actual page-heading/content evidence, likely `ch4-stress.startPage` on page `94` and `ch4-distractions.startPage` on page `95` after verification.
+- `[x]` Add focused regression coverage for page-only topic lookup precedence: direct selection/search/previous-next to page `94` must choose the exact-start `ch4-stress` entry before the range-covering `ch4-sleep-fatigue` fallback.
 - `[x]` Add mobile readability regression coverage that fails when primary Russian instructional blocks compute to unusably tiny font sizes, even if geometric no-overlap assertions pass.
 - `[x]` Preserve or update existing deferred-manual-loading and service-worker tests.
 - `[x]` Run and record `pnpm run validate:manual-4ruedas` after the current-head navigation/readability follow-up.
@@ -97,13 +99,13 @@
 - `[x]` All 200 source pages/content units are represented in layout data and runtime UI.
 - `[x]` Exact Russian translation remains complete with no simplification, omission, summary, or placeholder content.
 - `[x]` Images, diagrams, tables, icons, captions, callouts, labels, footnotes, page numbers, and page visual hierarchy remain present locally as structured page composition rather than a full-page visual catch-all plus one text flow.
-- `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics, and same-page sibling topics keep the selected topic highlighted/labeled. Current-head follow-up completed: `ch4-stress` opens page `94`, `ch4-distractions` opens page `95`, and same-page identity remains covered by Chapter 5 topics on page `100`.
+- `[x]` Source-derived semantic navigation is available for front matter, introduction, chapters, appendices, and child topics, and same-page sibling topics keep the selected topic highlighted/labeled. Exact-start lookup follow-up completed: page-only selection and search-result navigation to page `94` now prefer `ch4-stress` over the covering `ch4-sleep-fatigue` range.
 - `[x]` Flat page navigation/search is secondary and does not remain the only way to browse the manual.
 - `[x]` Mobile navigation, page rows, and mobile page canvas are readable and non-overlapping, including pages `114`-`123`, after the independently positioned layout fix. Current-head follow-up completed: mobile Playwright asserts no overlap plus a computed-size readability floor for primary Russian instructional blocks.
 - `[x]` Runtime uses no PDF viewer, runtime PDF rendering, remote manual asset, backend endpoint, live AI request, or runtime network fetch for manual content/assets.
 - `[x]` Deferred-loading and on-demand runtime caching decisions from feature `027` remain intact.
-- `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, and mobile readability.
-- `[x]` Review findings are disposed by Architect before follow-up implementation; current P2/P3 findings are fixed locally and remain subject to Review Agent/Orchestrator verification.
+- `[x]` Validators, tests, docs, and process memory are complete for the corrected per-block layout architecture, semantic navigation ranges, exact-start semantic fallback, and mobile readability.
+- `[x]` Review findings are disposed by Architect before follow-up implementation; the current exact-start semantic fallback P2 finding is implemented locally and ready for re-review.
 - `[ ]` Final Architect validation passes before final Analyst validation.
 - `[ ]` Final Analyst validation passes before Orchestrator completion/merge readiness.
 
@@ -129,7 +131,7 @@
 
 ## Known Issues
 
-- No implementation-known product issues remain after the accepted current-head P2 Stress navigation follow-up and accepted current-head P3 mobile readability follow-up. Review Agent and Orchestrator verification remain pending.
+- No implementation-known product issues remain after the accepted exact-start semantic fallback follow-up. Review Agent and Orchestrator verification remain pending.
 
 ## Implementation Agent Feedback
 
@@ -171,6 +173,12 @@
 - Current-head focused Playwright passed after production build: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including Stress page `94`, Distractions page `95`, Chapter 5 same-page active-row identity, local-only manual requests, page rows `114-123`, and mobile computed-size readability floor.
 - Current-head full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 289/289 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
 - Current-head whitespace check passed: `git diff --check`.
+- Exact-start semantic fallback follow-up adds `manualExactStartNavigationEntryForPage` before covering-range fallback, so page-only lookup prefers a descendant/topic with `startPage === pageNumber` before choosing the first covering range. This fixes the page `94` overlap where `ch4-sleep-fatigue` covers `93-94` but `ch4-stress` starts on `94`.
+- Exact-start fallback Node coverage passed: `node --test tests/content-manual-vehiculo-4ruedas.test.mjs` -> 11/11 tests passed, including a regression proving the old first-covering match for page `94` would be `ch4-sleep-fatigue` while the exact-start lookup returns `ch4-stress`.
+- Exact-start fallback validation passed: `pnpm run validate:manual-4ruedas` -> `Manual 4 ruedas RU validated: 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, 2 visual-label translation pages.`
+- Exact-start fallback production build passed: `pnpm run build` -> content validation, asset sync, Vite production build, and service-worker generation completed.
+- Exact-start fallback focused Playwright passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual" --project=chromium --project=mobile` -> 6/6 tests passed across desktop and mobile, including page-list direct access and search-result navigation to page `94` showing/highlighting `Стресс` and not `Сон и усталость`.
+- Exact-start fallback full preflight passed: `pnpm run preflight` -> feature memory gate, repository baseline check, content validation, 290/290 Node tests, production build/service-worker generation, and 58/58 Playwright tests completed.
 
 ## Architect Disposition Of Review Findings
 
@@ -179,6 +187,7 @@
 - `PRRT_kwDOSX65IM6E_DXO` (`src/App.tsx`, current review head `c9f82a422db76009e28e3fa8b9cc5592f7843438`): accepted as blocking P2 implementation follow-up. The feature requires meaningful semantic navigation, not only page navigation. If a user clicks a topic whose `startPage` is shared with a sibling, such as `ch4-distractions` sharing page `95` with `ch4-stress`, the UI must preserve the clicked topic's stable ID for active-row highlighting, section labels, and previous/next semantic context. Recomputing `selectedSemanticEntry` only from the selected page is insufficient because it collapses distinct same-page topics to the first matching entry.
 - `PRRT_kwDOSX65IM6E_c4Z` (`content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json:364`, review `4369317264`, comment `3308368590`, current head `ed03406c731e0580145e9f14452153602514ee87`): accepted as blocking P2 implementation follow-up. The semantic navigation still fails the user's "осмысленная навигация" requirement because `ch4-stress` points to page `95` while the actual Stress content appears on page `94`; clicking Stress therefore lands on the Distractions page. Implementation Agent must correct the Stress/Distractions page ranges from page-heading/content evidence, update validation/tests so this regression fails, and preserve stable selected-topic identity after the range correction.
 - `PRRT_kwDOSX65IM6E_c4t` (`src/styles.css:860`, review `4369317292`, comment `3308368614`, current head `ed03406c731e0580145e9f14452153602514ee87`): accepted as P3 advisory severity but completion-blocking follow-up for this corrective cycle. The user explicitly reported the manual surface as smeared/unusable, and no-overlap checks alone are insufficient if default mobile rendering allows Russian instructional text to clamp to about `3.2px`. Implementation Agent must improve the mobile page readability model with a practical minimum rendered text size and/or default zoom/fit behavior, and tests must measure readability instead of only geometry.
+- `PRRT_kwDOSX65IM6E_q3_` (`src/App.tsx:1422`, current review head `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c`): accepted as blocking P2 implementation follow-up. The corrected Chapter 4 ranges created an overlapping-page case where `ch4-sleep-fatigue` covers pages `93-94` and `ch4-stress` starts on page `94`; page-only fallback currently chooses the first covering child and can label/highlight page `94` as `Сон и усталость` instead of `Стресс`. Implementation Agent must update semantic-entry lookup so exact `startPage === pageNumber` child matches are preferred before range-covering fallbacks whenever no preserved entry ID is available.
 
 ## Follow-Up Implementation Requirements
 
@@ -192,6 +201,8 @@
 - The navigation manifest must be corrected so `ch4-stress` opens the actual Stress content, likely page `94`, and `ch4-distractions` opens its own content, likely page `95`; Implementation Agent must verify the exact boundaries from the rendered/translated page headings before committing and adjust neighboring `endPage` values accordingly.
 - Runtime behavior must be verified for the corrected Stress/Distractions range: clicking `ch4-stress` must show the Stress page and active label, and clicking `ch4-distractions` must show the Distractions page and active label. Same-page stable-ID behavior must remain covered with any real same-page sibling pair that remains after the range correction, or with a focused lookup regression if the manifest no longer contains such a pair.
 - Tests must include a regression check for same-page semantic topic identity. Prefer Playwright coverage in the complete RU manual flow plus a focused unit/Node test for the navigation lookup helper if one exists or is introduced. Existing navigation and page-search tests should continue proving direct page access remains available as secondary navigation.
+- Page-only semantic lookup must prefer exact topic starts before covering ranges. For page `94`, direct page entry, search-result navigation, URL/page restoration if applicable, and previous/next navigation without a preserved entry ID must resolve the semantic label/highlight to `ch4-stress` / `Стресс`, not `ch4-sleep-fatigue` / `Сон и усталость`. A covering-range fallback remains acceptable only when no exact-start child exists for the selected page.
+- Tests must include focused coverage for the exact-start fallback rule. At minimum, a Node/unit regression should exercise the lookup helper or equivalent source path for page `94`, and Playwright should verify a user-visible page-only route to page `94` shows/highlights `Стресс` rather than `Сон и усталость`.
 - Mobile CSS/runtime must not solve fit-to-width by shrinking primary Russian instructional text to unreadable sizes. Implementation Agent may introduce a minimum page width with horizontal scrolling, default readable zoom, zoom controls, or responsive block scaling, but the default mobile reader must be practically readable without pinch zoom and must still preserve document layout.
 - Mobile tests must assert a readability floor for primary Russian text blocks on representative pages, including pages `114`-`123`. A suggested floor is no body/list/callout instructional block below `8px` computed font size on a representative mobile viewport unless the block is explicitly a decorative/page-number/micro-label element and a zoom/readability control is available.
 - Playwright evidence must combine no-overlap checks with computed font-size or text-box-height checks, so a `3.2px` clamp cannot pass merely because it avoids collisions.
@@ -201,17 +212,18 @@
 - Review Agent must verify the corrected UI is not a cosmetic restyle of the feature `027` two-column transcript reader.
 - Review Agent must verify semantic navigation is source-derived and validated.
 - Review Agent must verify `ch4-stress` opens the actual Stress page and does not land on Distractions, while `ch4-distractions` still opens its own content.
+- Review Agent must verify page-only navigation/search/previous-next fallback for page `94` labels/highlights the exact-start `ch4-stress` topic before the covering `ch4-sleep-fatigue` range.
 - Review Agent must verify layout/text validators fail on missing layout coverage, missing text coverage, stale navigation, or runtime PDF/network dependency regressions.
 - Review Agent must verify mobile no-overlap and readability evidence covers pages `114`-`123`, including computed-size evidence that primary Russian text is not tiny/smeared.
 - Review Agent must verify process memory and durable docs were updated.
 
 ## Cycle PR Set
 
-- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head with the new P2/P3 follow-up findings is `ed03406c731e0580145e9f14452153602514ee87`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Historical reviewed heads include `c9f82a422db76009e28e3fa8b9cc5592f7843438` before the same-page follow-up and `5f9a61301bdf52dff1c3da6bbea265559447854b` before the accepted P1 layout follow-up. Included in final validation only after accepted current-head navigation/readability findings are fixed and re-reviewed.
+- Implementation PR slice: PR `#172` on branch `codex/028-manual-layout-ru`, current reviewed head with the accepted exact-start semantic fallback P2 finding is `69ea858b300e2287d1cb6c9d6da90d5d3e455b8c`, based on verified `origin/main` at `c6e3c34d93bd63a0836c148ccfc5d0e32375a930`. Historical reviewed heads include `ed03406c731e0580145e9f14452153602514ee87` before the Stress/mobile readability follow-up, `c9f82a422db76009e28e3fa8b9cc5592f7843438` before the same-page follow-up, and `5f9a61301bdf52dff1c3da6bbea265559447854b` before the accepted P1 layout follow-up. Included in final validation only after the accepted current-head exact-start semantic fallback finding is fixed and re-reviewed.
 
 ## Final Validation Evidence
 
-- Current final-validation status: accepted P1 layout findings and accepted P2 same-page semantic topic identity finding have follow-up implementation evidence recorded above, but current-head P2 Stress navigation and P3 mobile readability findings are accepted for follow-up and block final validation until implemented, verified, and re-reviewed.
+- Current final-validation status: accepted P1 layout findings, accepted P2 same-page semantic topic identity finding, accepted P2 Stress navigation finding, accepted P3 mobile readability finding, and accepted P2 exact-start semantic fallback finding `PRRT_kwDOSX65IM6E_q3_` have follow-up implementation evidence recorded above. Final validation remains pending Review Agent/Orchestrator routing.
 - Architect return count: 0.
 - Limit escalation: none.
 - Effective content head: pending implementation.

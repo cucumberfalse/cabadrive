@@ -1416,7 +1416,21 @@ function flattenManualNavigation(entries: ManualNavigationEntry[]): ManualNaviga
   return entries.flatMap((entry) => [entry, ...flattenManualNavigation(entry.children ?? [])]);
 }
 
+function manualExactStartNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number): ManualNavigationEntry | undefined {
+  for (const entry of entries) {
+    if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
+    const childExactStart = manualExactStartNavigationEntryForPage(entry.children ?? [], pageNumber);
+    if (childExactStart) return childExactStart;
+    if (entry.startPage === pageNumber) return entry;
+  }
+  return undefined;
+}
+
 function manualNavigationEntryForPage(entries: ManualNavigationEntry[], pageNumber: number, deepest = false): ManualNavigationEntry | undefined {
+  if (deepest) {
+    const exactStartEntry = manualExactStartNavigationEntryForPage(entries, pageNumber);
+    if (exactStartEntry) return exactStartEntry;
+  }
   for (const entry of entries) {
     if (pageNumber < entry.startPage || pageNumber > entry.endPage) continue;
     if (deepest) return manualNavigationEntryForPage(entry.children ?? [], pageNumber, true) ?? entry;
