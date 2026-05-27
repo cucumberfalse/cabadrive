@@ -282,6 +282,13 @@
 - Architect return count: 4
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
 - Review disposition: process-memory P2 `PRRT_kwDOSX65IM6E90rE` is accepted and addressed; conflicting AI Review P1 `PRRT_kwDOSX65IM6E9zUc` is not-needed implementation work because install-time full-manual precache conflicts with accepted deferred loading and runtime on-demand caching.
+- Effective content head: 323158d1a202a20b9c74dbdc1374cd3bd87cf587
+- Architect validation: passed at 2026-05-27T01:43:05Z; PR #170 current head, review dispositions, local validation evidence, and required non-review checks were verified, and AI Review final-validation request PRRT_kwDOSX65IM6E99v8 is addressed by this role validation pass.
+- Architect return count: 4
+- Architect validated effective content head: 323158d1a202a20b9c74dbdc1374cd3bd87cf587
+- Limit escalation: none
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Current-PR-head read-only guard: PR head 323158d1a202a20b9c74dbdc1374cd3bd87cf587 matched effective content head 323158d1a202a20b9c74dbdc1374cd3bd87cf587 during Architect final validation; later final-validation evidence-only commit must change only role-owned validation evidence and process memory.
 
 ## Final Architect Validation Notes
 
@@ -326,3 +333,19 @@
 - Architect validation gap: process-memory P2 `PRRT_kwDOSX65IM6E90rE` required naming `00cf8b7e8ef1c4b6eeae44ad02d398d923e74511` clearly as current candidate; this Architect-owned task-memory update addresses that gap.
 - Architect disposition: AI Review P1 `PRRT_kwDOSX65IM6E9zUc` is not-needed implementation work; full manual chunk/page-image install-time precache is intentionally excluded to preserve deferred loading, startup performance, and the accepted service-worker architecture while retaining repository-served local assets and on-demand runtime caching.
 - Open Architect dispositions: none; no owner decision is required for `PRRT_kwDOSX65IM6E9zUc`, and final Architect and Analyst validation must rerun only after AI Review routing and evidence-only process memory are current.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T01:43:05Z
+- Effective content head: 323158d1a202a20b9c74dbdc1374cd3bd87cf587
+- Architect validated effective content head: 323158d1a202a20b9c74dbdc1374cd3bd87cf587
+- Architect return count: 4
+- Architect validation evidence: Scope and customer intent match the Analyst request and Architect spec; PR #170 provides a dedicated Russian `Руководство 4R` surface for the complete official 4-wheel vehicle manual, not an MVP, sample, summary, or partial-reader substitute.
+- Architect validation evidence: The implementation records all 200 official source pages/content units, exact complete RU page-aligned content, 198 validated reused approved translation pages, 2 translated visual-label pages, Spanish source traceability, and canonical PDF SHA-256 evidence.
+- Architect validation evidence: Visual preservation is satisfied through 200 local page-faithful JPEG assets with recorded dimensions/checksums and manifest entries, preserving images, icons, diagrams, tables, labels, and layout-sensitive source relationships.
+- Architect validation evidence: Runtime architecture uses local manifest data and local `/content/assets/...` images, with tests and validators covering no runtime PDF viewer, iframe/embed/object PDF use, PDF.js-style rendering, remote manual assets, manual PDF requests, external network calls, backend requests, or live-AI dependency.
+- Architect validation evidence: Deferred manual loading decisions are complete; the dynamic `manual4Ruedas-*.js` corpus chunk and 200 manual page JPEG assets are excluded from install-time service-worker precache, while repository-served local assets and runtime successful GET caching preserve on-demand local reuse after the manual surface opens.
+- Architect validation evidence: Review-fix dispositions are complete, including guarded manifest summary, zero-match search behavior, deferred manual corpus loading, cached search text, service-worker manual chunk/page-image precache exclusions, process-memory P2 `PRRT_kwDOSX65IM6E90rE`, and not-needed AI Review P1 `PRRT_kwDOSX65IM6E9zUc`.
+- Architect validation evidence: Orchestrator evidence reports current PR head `323158d1a202a20b9c74dbdc1374cd3bd87cf587`, disposed substantive review threads, required non-review checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` completed successfully, and AI Review final-validation request `PRRT_kwDOSX65IM6E99v8` addressed by this role validation pass.
+- Architect validation evidence: Local verification evidence records service-worker focused tests, build inspection with `manualChunks: 0` and `manualImages: 0`, runtime cache present, manual validator, focused Playwright manual/chunk coverage, feature-memory guard, `git diff --check`, and `pnpm run preflight` with 285 Node tests and 56 Playwright tests.
+- Architect validation evidence: Durable docs, validators, tests, process memory, cycle PR set, review dispositions, accepted follow-up fixes, finalizer-friendly `## Known Issues` with `- No known issues.`, and no unresolved Implementation Agent feedback are recorded for this work cycle.
+- Architect gaps: none.
+- Open Architect dispositions: none.
