@@ -122,6 +122,7 @@
 - `pnpm exec playwright test tests/e2e/app.spec.ts -g "complete RU manual"` passed: 4 tests across `chromium` and `mobile`, 0 failures. Coverage included representative first/middle/last manual pages, zero-match empty-detail behavior, local JPEG assets, no PDF viewer elements, no `.pdf` links, no external requests, no PDF requests, and no backend/live-AI requests.
 - `pnpm run preflight` passed after the review-fix task-memory update. It included `check-feature-memory --worktree`, `check:repo`, `validate:content`, 283 Node tests, production build/service-worker generation with the separate dynamic `manual4Ruedas-*.js` chunk, and 54 Playwright tests across `chromium` and `mobile`. The build emitted Vite's non-fatal large-chunk warning for bundled local content.
 - Current-head P2 review fix recorded at `2026-05-26T23:59:08Z` for PR #170 threads `PRRT_kwDOSX65IM6E9J_W` / comment `3307532483` and `PRRT_kwDOSX65IM6E9J_a` / comment `3307532488`, review `4368314983`.
+- Post-follow-up implementation head: `221f634b8feb9a4c46528da655d352baa2a78131` (`Fix manual service worker precache`), created after pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` and prior superseded head `b25890ecd48148819d45ffdd9407fcd7654195c6`.
 - Service-worker decision: `scripts/generate-service-worker.mjs` now exposes testable generation helpers and excludes only hashed `/assets/manual4Ruedas-*.js` files from install-time `ASSETS`; ordinary build assets, manual page JPEG assets, and non-JS `manual4Ruedas` assets remain eligible for precache. The fetch handler still caches successful GET responses with `cache.put(event.request, copy)`, so the manual corpus chunk is cached on demand after the manual view opens.
 - Startup regression coverage: `tests/e2e/app.spec.ts` now verifies non-manual startup reaches the default trainer without requesting `/assets/manual4Ruedas-*.js`; opening `Руководство 4R` then requests the local manual chunk once, renders page `1 / 200`, and records no external or PDF requests.
 - Service-worker regression coverage: `tests/service-worker-generation.test.mjs` builds a temporary `dist` fixture with a hashed `manual4Ruedas-*.js` chunk, ordinary JS assets, a non-JS manual asset, a manual JPEG page asset, and an old `sw.js`; it asserts the install precache excludes only the manual JS corpus chunk and the generated service worker retains runtime GET caching.
@@ -166,7 +167,7 @@
 
 - The earlier intermediate `node scripts/content-manual-vehiculo-4ruedas.mjs --write-manifest` failure was resolved after adding `src/data/manual4Ruedas.ts` and completing the runtime reader.
 - Prior P2 review findings after earlier final validation have implementation fixes and local verification evidence recorded in the Implementation Agent pass ending at head `44e4173a7fb0e15f02883b0771895557d4279c6b`.
-- Review `4368314983` introduced two accepted P2 follow-up findings at pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b`: the dynamic manual chunk remained in install-time service-worker precache, and process memory still named `b25890ecd48148819d45ffdd9407fcd7654195c6` as current unresolved head. Both accepted findings are implemented in this follow-up; final PR head will be the scoped Implementation Agent commit that contains this evidence.
+- Review `4368314983` introduced two accepted P2 follow-up findings at pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b`: the dynamic manual chunk remained in install-time service-worker precache, and process memory still named `b25890ecd48148819d45ffdd9407fcd7654195c6` as current unresolved head. Both accepted findings are implemented at post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`; this subsequent task-memory update is evidence-only for that implementation head.
 - Prior final Architect and Analyst validation for effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` remains stale/superseded for completion and merge readiness until Orchestrator reroutes final Architect and Analyst validation on the new post-follow-up effective content head.
 
 ## Decisions
@@ -184,7 +185,7 @@
 ## Known Issues
 
 - No unresolved implementation blocker remains for review `4368314983`; service-worker install-time precache now excludes the dynamic manual chunk, runtime caching remains on demand, and process memory is aligned with pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` plus prior superseded head `b25890ecd48148819d45ffdd9407fcd7654195c6`.
-- Final Architect and Analyst validation remain stale/superseded pending Orchestrator-routed validation on the post-follow-up implementation head; Implementation Agent does not perform those role actions.
+- Final Architect and Analyst validation remain stale/superseded pending Orchestrator-routed validation on post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`; Implementation Agent does not perform those role actions.
 
 ## Implementation Agent Feedback
 
@@ -208,18 +209,18 @@
 
 ## Cycle PR Set
 
-- PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, prior final-validated effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f`, post-fix implementation head before current follow-up `44e4173a7fb0e15f02883b0771895557d4279c6b`, prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` superseded, status open with review `4368314983` P2 follow-up implemented in this scoped Implementation Agent pass, included in this work cycle, final validation stale/superseded pending Orchestrator-routed validation on the new post-follow-up implementation head.
+- PR #170: branch `codex/027-manual-vehiculo-4ruedas-ru`, prior final-validated effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f`, post-fix implementation head before current follow-up `44e4173a7fb0e15f02883b0771895557d4279c6b`, prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` superseded, post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`, status open with review `4368314983` P2 follow-up implemented and this later task-memory update evidence-only, included in this work cycle, final validation stale/superseded pending Orchestrator-routed validation on the new post-follow-up implementation head.
 
 ## Final Validation Evidence
 
-- Current final-validation status: stale/superseded. Pre-follow-up PR head `44e4173a7fb0e15f02883b0771895557d4279c6b` had accepted P2 review findings from review `4368314983`; those findings are implemented in this scoped follow-up, and final validation must rerun on the new post-follow-up implementation head after commit/push.
-- Effective content head: not yet revalidated after post-final-validation implementation. Prior final-validated effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` is superseded for completion; current post-fix implementation head before this follow-up was `44e4173a7fb0e15f02883b0771895557d4279c6b`, and the prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` remains superseded/resolved/outdated.
+- Current final-validation status: stale/superseded. Pre-follow-up PR head `44e4173a7fb0e15f02883b0771895557d4279c6b` had accepted P2 review findings from review `4368314983`; those findings are implemented at post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`, and final validation must rerun before completion or merge readiness.
+- Effective content head: not yet revalidated after post-final-validation implementation. Prior final-validated effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` is superseded for completion; current post-fix implementation head before this follow-up was `44e4173a7fb0e15f02883b0771895557d4279c6b`, prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` remains superseded/resolved/outdated, and new implementation head `221f634b8feb9a4c46528da655d352baa2a78131` awaits Orchestrator-routed final validation.
 - Architect validation: previously passed at 2026-05-26T22:54:19Z for PR #170, but this pass is now stale/superseded until the accepted follow-up tasks are implemented and final validation reruns.
 - Architect validated effective content head: 19f8bf803126ade66e639da47666d4ff47a8bf7f (prior; superseded)
 - Architect return count: 2
 - Limit escalation: none
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
-- Current-PR-head read-only guard: prior effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` and prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` no longer represent the current review state. Pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` required service-worker/manual-chunk and process-memory follow-up implementation; this pass implements and verifies those items, so Orchestrator must rerun final Architect and Analyst validation on the new post-follow-up implementation head.
+- Current-PR-head read-only guard: prior effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` and prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` no longer represent the current review state. Pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` required service-worker/manual-chunk and process-memory follow-up implementation; this pass implements and verifies those items at `221f634b8feb9a4c46528da655d352baa2a78131`, so Orchestrator must rerun final Architect and Analyst validation on that new post-follow-up implementation head and treat this later task-memory update as evidence-only.
 
 ## Final Architect Validation Notes
 
