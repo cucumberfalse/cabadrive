@@ -40,6 +40,8 @@ The navigation model should be consumed by the UI and validators. It must not be
 
 When runtime code derives the current semantic topic from a page-only action such as search, direct page entry, previous/next, or a restored URL without a preserved entry ID, it must prefer a child topic whose `startPage` exactly equals the selected page before falling back to the first topic whose range covers the page. This is required for overlapping ranges such as `ch4-sleep-fatigue` covering pages `93-94` and `ch4-stress` starting on page `94`; page `94` must label/highlight as `Стресс` for direct page selection.
 
+Previous/next navigation must also apply the exact-start rule before preserving an existing covering entry. If the current selection is page-only page `93` under `ch4-sleep-fatigue` and the learner advances to page `94`, the destination page has a more specific exact-start child (`ch4-stress`), so the UI must switch the selected semantic label/highlight to `ch4-stress` / `Стресс` rather than preserving `ch4-sleep-fatigue`. Preserving a prior entry is acceptable only when the destination page has no more specific exact-start topic.
+
 ### 4. Refactor Manual Runtime UI
 
 Refactor `Manual4RuedasView` in `src/App.tsx` or split it into purpose-built manual components under `src/` following local patterns.
