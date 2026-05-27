@@ -185,8 +185,7 @@
 
 ## Known Issues
 
-- No implementation blocker remains for review `4368314983`; service-worker install-time precache now excludes the dynamic manual chunk, runtime caching remains on demand, and process memory is aligned through current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`, which includes post-follow-up implementation head `221f634b8feb9a4c46528da655d352baa2a78131`, pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b`, and prior superseded head `b25890ecd48148819d45ffdd9407fcd7654195c6`.
-- Final Architect and Analyst validation remain pending for current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` before completion or merge; Implementation Agent does not perform those role actions.
+- No known issues.
 
 ## Implementation Agent Feedback
 
