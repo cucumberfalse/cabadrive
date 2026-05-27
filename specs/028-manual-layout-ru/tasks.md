@@ -144,12 +144,14 @@
 
 ## Known Issues
 
-- No implementation-known product issues remain after the full-manual source-mask provenance follow-up. Review Agent and Orchestrator verification remain pending.
+- Source-mask provenance follow-up has no implementation-known product issues after commit `3ec1cb22e0da44ad008e2f147d5aefdc5caa6703`; Review Agent and Orchestrator verification remain pending.
+- Separate current review thread `PRRT_kwDOSX65IM6FFPA1` / inline comment `3310443420` remains unresolved and out of this assigned source-mask scope: page-number searches can include duplicate same-page semantic entries in `matchingPages`, inflating the result count and making next-page search navigation a no-op. This requires Architect/Orchestrator disposition before follow-up development.
 
 ## Implementation Agent Feedback
 
 - Current-head Codex review thread `PRRT_kwDOSX65IM6FCVtN` / comment `3309412681` on `src/App.tsx:1605` reports that manual search results for pages with multiple same-page semantic topics preserve only the first exact-start entry, for example page `100` where `ch5-equal-society` and `ch5-gender-violence-prevention` share a page. Architect disposition below accepts this as a blocking P2 implementation follow-up.
 - Current-head Codex blocking review `4371883035` / inline comment `3310426978` reports that the Appendix IV source-mask fix did not close the broader contract: non-Appendix masks still derive from destination Russian block bounds and lack source-text/source-caption provenance, while validation only enforces curated source geometry for Appendix IV. Architect disposition below accepts this as a blocking P2 implementation follow-up for full-manual mask provenance and validation.
+- Current-head Codex review thread `PRRT_kwDOSX65IM6FFPA1` / comment `3310443420` on `src/App.tsx:1643` reports that search-result paging still treats duplicate same-page semantic entries as duplicate matching pages for page-number queries. This is separate from the assigned source-mask provenance review thread and remains pending Architect/Orchestrator disposition.
 
 ## Implementation Decisions And Evidence
 
