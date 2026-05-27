@@ -339,3 +339,23 @@
 - Architect return count: 0.
 - Analyst return count: 0.
 - Limit escalation: none.
+- Effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect validation: passed at 2026-05-27T12:14:32Z.
+- Architect validated effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect return count: 0.
+- Current-PR-head read-only guard: effective content head 306c9496543874445ad6ff51e71383cb1c1ef6e1 will be used for the post-effective evidence-only guard; Orchestrator must recheck current PR head before merge.
+- Limit escalation: none.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed.
+- Final Architect validation completed at: 2026-05-27T12:14:32Z.
+- Effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect validated effective content head: 306c9496543874445ad6ff51e71383cb1c1ef6e1.
+- Architect return count: 0.
+- Open Architect dispositions: none.
+- Architect validation evidence: `git status --short --branch` confirmed branch `codex/028-manual-layout-ru` at `origin/codex/028-manual-layout-ru` with no dirty diff before validation edits; `git rev-parse HEAD` confirmed current head `306c9496543874445ad6ff51e71383cb1c1ef6e1`; `git diff --check` passed; `pnpm run check:feature-memory -- --worktree` passed; `pnpm run validate:manual-4ruedas` passed with 200/200 pages, 200 layout pages, 11 semantic sections, 56 topics, 200 local page assets, 198 approved reused translations, and 2 visual-label translation pages.
+- Architect validation evidence: feature memory covers the original corrective intent for a complete exact Russian web manual preserving full structure, layout, images, semantic navigation beyond a flat page list, local-only runtime constraints, and mobile no-smear/no-overlap/readability; implementation evidence records `layout.ru.json`, `navigation.ru.json`, source-mask provenance across all 200 pages, page `94` Stress exact-start behavior, page `100` same-page search identity and paging dedupe, mobile pages `114`-`123`, no runtime PDF/network/backend/live-AI dependency, strict TypeScript, build, focused Node/Playwright, and full preflight evidence.
+- Architect validation evidence: current process memory includes `## Decisions`, `## Verification Evidence`, `## Known Issues`, `## Implementation Agent Feedback`, `## Cycle PR Set`, `## Final Validation Evidence`, return counts, and no limit escalation; Review Agent feedback is dispositioned in Architect-owned memory with no open Architect dispositions.
+- Architect gaps: none.
+- Architect disposition: no follow-up development required.
