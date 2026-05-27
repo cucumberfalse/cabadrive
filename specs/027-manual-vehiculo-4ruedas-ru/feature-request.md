@@ -112,3 +112,24 @@ The official Spanish source must remain traceable to the original archived PDF a
 - Architect disposition routing: no Analyst gaps require Architect disposition.
 - Analyst limit escalation: none.
 - Analyst boundary reminder: Analyst final validation only; code, runtime files, durable docs, Architect-owned artifacts, tasks, staging, commits, pushes, PR review, and merge state were not changed.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-05-27T00:30:26Z
+- Effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Analyst validated effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Analyst return count: 0
+- Analyst validation evidence: Original request asked to integrate `/Users/chap/Downloads/MANUAL_Vehiculo_4Ruedas_2023 SA.pdf` into the site as a separate Russian-language block, with a full exact translation, no simplification, no deletion, no MVP/test substitute, complete implementation, and all images preserved; the recorded final scope matches that customer intent.
+- Analyst validation evidence: Architect final validation passed first at `2026-05-27T00:28:04Z` for the same effective content head `330898c36037a14508acdc91381deb3652c0a166`.
+- Analyst validation evidence: The final learner surface is a distinct `Руководство 4R` block, separate from the source reader, with ordered navigation, search, source/provenance display, local page imagery, and exact Russian manual content for study.
+- Analyst validation evidence: Complete source coverage is represented by all 200 pages from the byte-identical canonical official PDF, with validator and feature-memory evidence recording `200/200 pages` and no omitted source page.
+- Analyst validation evidence: Complete exact Russian content is represented by the manual manifest using 198 approved reused Russian translation chunks plus 2 visual-label translation pages, with acceptance evidence stating no simplification, summary replacement, removal, or placeholder/MVP substitution.
+- Analyst validation evidence: Image preservation is represented by 200 local page-faithful JPEG assets generated from the canonical PDF and tied to the manual manifest, preserving visual layout, figures, icons, tables, and page relationships for every page.
+- Analyst validation evidence: Local-only behavior is preserved by repository-managed manual data and assets, no runtime PDF iframe/embed/object viewer, no PDF.js-style runtime PDF rendering, no manual `.pdf` network request, no remote manual asset dependency, no backend dependency, and no live-AI dependency for the manual surface.
+- Analyst validation evidence: PR #170 evidence reports required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` completed successfully on `330898c36037a14508acdc91381deb3652c0a166`, all review threads resolved, current-head AI Review passed, and the local feature-memory guard passed.
+- Customer intent check: passed; the final result satisfies the user's Russian-language request in spirit and letter by delivering the complete official 4-wheel manual as a separate Russian site surface with all 200 pages, exact translated content, preserved images, and no truncated, simplified, test, or MVP substitute.
+- Gaps, if any: none.
+- Architect disposition routing: no Analyst gaps require Architect disposition.
+- Analyst limit escalation: none.
+- Analyst boundary reminder: Analyst final validation only; code/runtime/docs/tasks/staging/commits/pushes/PR review/merge state were not changed.

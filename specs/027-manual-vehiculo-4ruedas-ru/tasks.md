@@ -222,6 +222,13 @@
 - Limit escalation: none
 - Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
 - Current-PR-head read-only guard: prior effective content head `19f8bf803126ade66e639da47666d4ff47a8bf7f` and prior follow-up head `b25890ecd48148819d45ffdd9407fcd7654195c6` no longer represent the current review state. Pre-follow-up head `44e4173a7fb0e15f02883b0771895557d4279c6b` required service-worker/manual-chunk and process-memory follow-up implementation; those items are implemented and verified at `221f634b8feb9a4c46528da655d352baa2a78131`, with current evidence-only process memory at `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`. Orchestrator must rerun final Architect and Analyst validation on `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0`, and any later final-validation evidence-only commit must change only role-owned validation evidence/process memory.
+- Effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Architect validation: passed at 2026-05-27T00:28:04Z; PR #170 current head and required checks were verified by Orchestrator evidence.
+- Architect return count: 2
+- Architect validated effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Limit escalation: none
+- Analyst feedback Architect disposition: not applicable; no Analyst final-validation gap required Architect disposition.
+- Current-PR-head read-only guard: PR head 330898c36037a14508acdc91381deb3652c0a166 matched effective content head 330898c36037a14508acdc91381deb3652c0a166 during Architect final validation; later final-validation evidence-only commit must change only role-owned validation evidence and process memory.
 
 ## Final Architect Validation Notes
 
@@ -240,3 +247,18 @@
 - Prior Architect validation evidence, now superseded: Runtime evidence showed local `/content/assets/...` page images and blocked iframe/embed/object PDF viewers, PDF.js-style rendering, remote manual assets, manual PDF requests, external network fetches, and backend/live-AI dependencies; follow-up evidence additionally records the dynamic manual chunk excluded from install-time service-worker precache and non-manual startup not requesting it.
 - Architect gaps: none currently identified for accepted review `4368314983` findings; final Architect validation itself remains pending on current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` and is not performed in this normalization pass.
 - Open Architect dispositions: none; Orchestrator must rerun final Architect and Analyst validation on current PR head `d2ca3401d2b93627ac623d8cd0b8e37bc8dc38e0` before completion or merge readiness.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-27T00:28:04Z
+- Effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Architect validated effective content head: 330898c36037a14508acdc91381deb3652c0a166
+- Architect return count: 2
+- Architect validation evidence: Scope and customer intent match the Analyst request and Architect spec; PR #170 provides a dedicated Russian `Руководство 4R` surface for the complete official 4-wheel vehicle manual, with no MVP, sample, summary, or partial-reader substitution.
+- Architect validation evidence: The implementation records all 200 official source pages/content units, complete RU page-aligned content, 198 validated reused approved translation pages, 2 translated visual-label pages, Spanish source page traceability, and the canonical PDF SHA-256 evidence.
+- Architect validation evidence: Visual preservation is satisfied through 200 local page-faithful JPEG assets with recorded dimensions/checksums and manifest entries, preserving images, icons, diagrams, tables, labels, and layout-sensitive source relationships.
+- Architect validation evidence: Runtime architecture uses local manifest data and local `/content/assets/...` images, with tests and validators covering no runtime PDF viewer, iframe/embed/object PDF use, PDF.js-style rendering, remote manual assets, manual PDF requests, external network calls, backend requests, or live-AI dependency.
+- Architect validation evidence: Review-fix dispositions are complete; guarded manifest-summary order, zero-match search behavior, deferred manual corpus loading, cached search text, and review `4368314983` service-worker/process-memory findings all have implementation and regression evidence.
+- Architect validation evidence: Service-worker evidence records the dynamic `manual4Ruedas-*.js` corpus chunk excluded from install-time precache while preserving 200 manual images and on-demand runtime caching, with focused Node and Playwright coverage for the manual corpus chunk boundary.
+- Architect validation evidence: Orchestrator evidence reports current PR head `330898c36037a14508acdc91381deb3652c0a166`, PR #170 clean merge state, all review threads resolved, current-head Review Agent no findings, and required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` completed successfully.
+- Architect validation evidence: Durable docs, validators, tests, process memory, cycle PR set, review dispositions, accepted follow-up fixes, local feature-memory guard, prior `pnpm run preflight` evidence, and `## Known Issues` with `- No known issues.` are recorded for this work cycle.
+- Architect gaps: none.
+- Open Architect dispositions: none.
