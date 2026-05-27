@@ -120,13 +120,11 @@
 
 ### Known Issues
 
-- The planning-time feature folder untracked state is resolved/superseded by PR #171 head `3198229bd03b1037cb49622fbcb56999b0c9dd22`, where the feature memory is committed.
-- No blocking open questions from Analyst intake.
-- Implementation Agent found no new known product issues or unresolved blockers.
+- No known issues.
 
 ### Implementation Agent Feedback
 
-- None. No Implementation Agent feedback remains undisposed.
+- None.
 
 ### Verification Evidence
 
@@ -145,19 +143,34 @@
 - Full preflight at `2026-05-26T23:58:14-03:00`: `pnpm run preflight` passed. Included feature-memory gate, repository baseline check, `validate:content`, `pnpm run test` (285/285), production build/service-worker generation, and full Playwright e2e via `pnpm run test:e2e` (60/60).
 - Screenshot evidence was not separately captured because the desktop and mobile Playwright geometry assertions directly cover row overlap, child text clipping, focus stability, fragment selection, and mobile horizontal overflow.
 
-## Final Architect Validation
+## Cycle PR Set
+
+- PR #171 pull request https://github.com/cucumberfalse/cabadrive/pull/171; branch codex/028-sources-navigation-polish; head SHA 995b2ef60aee6fdd064c8d2e93b961b67d7a921d; status open after process-memory follow-up disposition; final-validation inclusion covers the single cycle PR, previously validated implementation content head 3198229bd03b1037cb49622fbcb56999b0c9dd22, and this process-memory-only follow-up for the next final validation rerun.
+
+## Final Validation Evidence
+
+- Effective content head: 3198229bd03b1037cb49622fbcb56999b0c9dd22
+- Architect return count: 0
+- Analyst return count: 0
+- Limit escalation: none
+- Current-PR-head read-only guard: current PR head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d compared with effective content head 3198229bd03b1037cb49622fbcb56999b0c9dd22 contains only role-owned final-validation or process-memory evidence files and no product code, test, content, runtime, source archive, backend, PDF, or service-worker changes after the effective content head.
+- Final-validation evidence-only commit: current head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d records final-validation evidence after effective content head 3198229bd03b1037cb49622fbcb56999b0c9dd22; this follow-up normalizes machine-parseable process memory so Orchestrator can commit a new effective content head and rerun final Architect and Analyst validation before completion.
+- Analyst feedback Architect disposition: none.
+
+## Final Architect Validation Notes
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-27T00:04:52-03:00
 - Effective content head: 3198229bd03b1037cb49622fbcb56999b0c9dd22
 - Architect validated effective content head: 3198229bd03b1037cb49622fbcb56999b0c9dd22
-- Validation return count: 0
-- Cycle PR set: single PR #171, `codex/028-sources-navigation-polish`, purpose `Источники` `Фрагменты` navigation overlap/clipping fix, base `origin/main c6e3c34d93bd63a0836c148ccfc5d0e32375a930`, current/final head `3198229bd03b1037cb49622fbcb56999b0c9dd22`, status open and mergeable at validation time.
-- Architect-assigned scope validation: passed. The implementation is limited to source-reader TOC CSS in `src/styles.css`, focused primary-source e2e geometry coverage in `tests/e2e/app.spec.ts`, and feature memory. No source content, archive records, translation corpus, validators, backend/runtime behavior, PDF behavior, service-worker behavior, or durable docs changed.
-- Customer-intent validation: passed. The visible defect from the intake screenshot, vertically compressed/smeared `Фрагменты` navigation rows, is addressed by non-shrinking, stable TOC button layout and desktop/mobile geometry tests that would fail on overlap, label/subtitle collision, clipping, or mobile horizontal overflow.
-- Acceptance evidence validation: passed. Recorded evidence includes pre-fix geometry failure 4/4, post-fix geometry pass 4/4, focused primary-source e2e pass 12/12, `pnpm run test` pass 285/285, `pnpm run build` pass, feature-memory gate pass, `git diff --check` pass, and full `pnpm run preflight` pass including e2e 60/60.
-- Review validation: passed. Review Agent recorded no findings for current head `3198229bd03b1037cb49622fbcb56999b0c9dd22` in GitHub review/comment `4369067653`, with residual risk limited to not rerunning checks as reviewer. Architect accepts that residual risk because Implementation Agent verification and Orchestrator-observed required checks cover the same gates.
-- Required-check evidence: Orchestrator and read-only PR inspection observed PR #171 checks completed SUCCESS for `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`; PR mergeability was clean/mergeable at validation time.
-- Open task state: complete. Implementation, verification, acceptance, and review requirement tasks are closed for this cycle; no Architect-assigned follow-up task remains open.
-- Implementation Agent feedback disposition: none needed. No Implementation Agent feedback remains undisposed.
-- Final Architect conclusion: the effective content head satisfies the feature request, Architect spec/plan/tasks, negative scenarios, local-first constraints, and review requirements in spirit and letter. Ready for Orchestrator to invoke final Analyst validation.
+- Architect return count: 0
+- Architect validation evidence: single PR #171 on branch codex/028-sources-navigation-polish fixed the `Источники` `Фрагменты` navigation overlap and clipping issue at effective content head 3198229bd03b1037cb49622fbcb56999b0c9dd22.
+- Architect validation evidence: the implementation was limited to source-reader TOC CSS in `src/styles.css`, focused primary-source e2e geometry coverage in `tests/e2e/app.spec.ts`, and feature memory; no source content, archive records, translation corpus, validators, backend/runtime behavior, PDF behavior, service-worker behavior, or durable docs changed.
+- Architect validation evidence: customer intent was satisfied because the visible vertically compressed or smeared navigation rows are addressed by non-shrinking stable TOC button layout and desktop/mobile geometry tests that fail on overlap, label/subtitle collision, clipping, or mobile horizontal overflow.
+- Architect validation evidence: acceptance evidence included pre-fix geometry failure 4/4, post-fix geometry pass 4/4, focused primary-source e2e pass 12/12, `pnpm run test` pass 285/285, `pnpm run build` pass, feature-memory gate pass, `git diff --check` pass, and full `pnpm run preflight` pass including e2e 60/60.
+- Architect validation evidence: Review Agent recorded no findings for current head 3198229bd03b1037cb49622fbcb56999b0c9dd22 in GitHub review/comment 4369067653, with residual risk limited to not rerunning checks as reviewer; Implementation Agent verification and Orchestrator-observed required checks covered the same gates.
+- Architect validation evidence: Orchestrator and read-only PR inspection observed PR #171 checks completed SUCCESS for `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`; PR mergeability was clean/mergeable at validation time.
+- Architect validation evidence: implementation, verification, acceptance, and review requirement tasks were complete for the validated effective content head; no Architect-assigned follow-up task remained open at that validation point.
+- Architect disposition: Implementation Agent feedback required no action because no Implementation Agent feedback was recorded.
+- Architect gaps: none.
+- Architect validation evidence: this historical validation note is preserved in parseable `Final Architect Validation Notes` form so future post-effective final-validation evidence-only diffs are accepted by the finalize helper; it is not a new final validation pass for current head 995b2ef60aee6fdd064c8d2e93b961b67d7a921d.
