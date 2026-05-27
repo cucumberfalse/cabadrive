@@ -667,6 +667,31 @@ test("complete RU manual surface renders first, middle, and last pages from loca
   expect(backendLikeRequests).toEqual([]);
 });
 
+test("non-manual startup defers the manual corpus chunk until the manual view opens", async ({ page }) => {
+  const manualChunkRequests: string[] = [];
+  const externalRequests: string[] = [];
+  const pdfRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (/^\/assets\/manual4Ruedas-[^/]+\.js$/u.test(url.pathname)) manualChunkRequests.push(request.url());
+    if (!["localhost", "127.0.0.1"].includes(url.hostname)) externalRequests.push(request.url());
+    if (url.pathname.toLowerCase().endsWith(".pdf")) pdfRequests.push(request.url());
+  });
+
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: /Тренажер теории/ })).toBeVisible();
+  await page.waitForLoadState("networkidle");
+
+  expect(manualChunkRequests).toEqual([]);
+
+  await page.getByRole("button", { name: /Руководство 4R/ }).click();
+  await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
+  await expect(page.getByTestId("manual-page-detail")).toContainText("1 / 200");
+  await expect(manualChunkRequests).toHaveLength(1);
+  expect(externalRequests).toEqual([]);
+  expect(pdfRequests).toEqual([]);
+});
+
 test("complete RU manual search with no matches keeps the detail pane empty", async ({ page }) => {
   await page.setViewportSize({ width: 1240, height: 900 });
   await openCompleteManual(page);
