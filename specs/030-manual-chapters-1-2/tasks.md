@@ -131,8 +131,11 @@ For each page `NNN`:
 ### Known Issues
 
 - Page `56` has a source-index child `Scoring` but the manifest-visible text for source page `56` is the closing slogan `Respetar las normas de tránsito implica salvar vidas.` Implementation Agent must confirm source content and record disposition before presenting it as substantive scoring content.
+  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to future page-slice `page-056` as a required source-content disposition before any scoring/slogan content is presented.
 - Legacy layout manifests classify many visual regions as page chrome or text, so page-specific visual inspection of local renders is mandatory even when `preservedVisualRegions` is zero.
+  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to every future page-slice as a required manual visual-inspection rule for source crops, bounding boxes, and screenshot evidence.
 - Page `55` contains source-listed NGO contacts that may be volatile. Implementation Agent must avoid presenting them as current live recommendations without a verify-before-use warning or Architect disposition.
+  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to future page-slice `page-055` as a required contacts/volatility disposition before learner-facing presentation.
 
 ### Verification Evidence
 
@@ -248,12 +251,13 @@ For each page `NNN`:
   - `pnpm run build` - passed; includes `validate:content` and the tightened manual-guide checker.
   - `git diff --check` - passed.
   - This is a non-evidence code/test fix after effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; prior final Architect/Analyst validation evidence is stale again and must be rerun by Orchestrator after this PR head update.
+- Current implementation head after current-head AI Review P2 `3327032161`: `05a6224562e21b3787d30481cf42604ac02e24f5`.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | prior effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; current non-evidence P2 fix pending commit/head recording | implementation complete; current-head P2 `3327032161` verified; final Architect/Analyst validation stale and must rerun | yes, as shared-prereq only |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | current implementation head `05a6224562e21b3787d30481cf42604ac02e24f5`; prior validation head `95222394f2dbad940223d0d2a38163128c9c36f7` is stale after non-evidence P2 `3327032161` | implementation complete for shared-prereq; current-head P2 `3327032161` verified; final Architect/Analyst validation still needs rerun on the committed post-fix head before merge/finalization | yes, as shared-prereq only |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -293,14 +297,14 @@ For each page `NNN`:
 
 ### Final Validation Evidence
 
-- Architect validation: stale after non-evidence current-head P2 `3327032161`; prior `Architect validation pass: passed` applied to effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Final Architect validation completed at: `2026-05-29T21:16:33Z`.
+- Architect validation: stale after non-evidence current-head P2 `3327032161`; prior shared-prereq Architect validation applied to head `95222394f2dbad940223d0d2a38163128c9c36f7` and is not current.
+- Final Architect validation completed at: pending rerun after current-head P2 `3327032161`; prior timestamp `2026-05-29T21:16:33Z` is stale.
 - Architect return count: `0`.
 - Analyst validation: stale after non-evidence current-head P2 `3327032161`; prior shared-prereq Analyst validation in `feature-request.md` applied to effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
 - Analyst return count: `0`.
-- Effective content head: pending rerun after current-head P2 `3327032161`.
-- Architect validated effective content head: stale; prior value `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Analyst validated effective content head: stale; prior value `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Current implementation head awaiting final validation rerun: `05a6224562e21b3787d30481cf42604ac02e24f5`.
+- Prior Architect validation head, stale after current-head P2 `3327032161`: `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Prior Analyst validation head, stale after current-head P2 `3327032161`: `95222394f2dbad940223d0d2a38163128c9c36f7`.
 - Final-validation evidence-only commit: prior evidence-only heads `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` and `67898c9f8e107627c9674f8fd534b02aef161a8d` are no longer current because this follow-up includes non-evidence code/test changes.
 - Current-PR-head read-only guard: stale after current-head P2 `3327032161`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
@@ -312,15 +316,17 @@ For each page `NNN`:
 
 ## Implementation Agent Feedback
 
-- None unresolved for shared-prerequisite PR #174. Review-surfaced P2 items, including current-head comments `3326875854` and `3326875856`, were implemented and verified before this Architect validation; no remaining Implementation Agent feedback requires Architect task/ticket/dispose follow-up for the shared-prereq slice.
-- Prior AI Review P1 `3326928165` is disposed by Architect as a process-evidence request for rerun validation on effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; it is not a shared-prereq architecture gap.
-- Current AI Review P1 `3326998390` is disposed by Architect as a process-memory consistency request: `tasks.md` now records the current Analyst validation pass at `2026-05-29T21:19:48Z`, the matching Analyst validated effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`, and current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` as a later final-validation evidence-only commit.
+- No unresolved Implementation Agent feedback.
+- Architect disposition: review P2 `3326875854` and `3326875856` were implemented and verified in the shared-prereq slice; no additional Architect task or ticket is required for those items.
+- Architect disposition: review P1 `3326928165` was a process-evidence request for rerun validation on head `95222394f2dbad940223d0d2a38163128c9c36f7`; it was satisfied by prior role-owned evidence and is superseded by the later non-evidence P2 fix.
+- Architect disposition: review P1 `3326998390` was a process-memory consistency request; it was satisfied by role-owned memory recording matching Architect/Analyst validation heads for the prior cycle before later P2 `3327032161`.
+- Architect disposition: current-head review P2 `3327032161` was implemented and verified at implementation head `05a6224562e21b3787d30481cf42604ac02e24f5`; no additional Architect task or ticket is required, and final Architect/Analyst validation must be rerun because the fix was non-evidence code/test work.
 
 ## Architect Dispositions
 
 - Page `56` / `Scoring` known issue: carried forward as a required future page-slice disposition for `page-056`; not a blocker for shared-prereq merge because PR #174 intentionally registers page `56` as pending and implements no scoring/slogan content.
 - Legacy layout visual-region classification known issue: carried forward as a required source-inspection rule for every future page PR; not a blocker for shared-prereq merge because PR #174 adds the checker/schema/registry and no page visual conversion.
 - Page `55` NGO contacts known issue: carried forward as a required future page-slice disposition for `page-055`; not a blocker for shared-prereq merge because PR #174 does not surface or validate the contacts as current learner content.
-- Prior `88cb0b4e91993c27b363f19f34926d25e94b67a4` Architect/Analyst validation evidence is stale and superseded. Current shared-prereq validation evidence is Architect pass at `2026-05-29T21:16:33Z` and Analyst pass at `2026-05-29T21:19:48Z`, both for effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Prior `88cb0b4e91993c27b363f19f34926d25e94b67a4` Architect/Analyst validation evidence is stale and superseded. Later validation evidence for head `95222394f2dbad940223d0d2a38163128c9c36f7` is also stale after current-head P2 `3327032161`.
 - Pages `021-056` remain pending by design. PR #174 is still only the shared-prerequisite slice; the full feature remains incomplete until each source page is implemented and merged one source page per PR.
-- Implementation Agent feedback disposition: no unresolved feedback. The prior review findings were fixed in content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34`, and `3b73981594260d9b5c6fe0f274361b1959238ad7`; effective content head `95222394f2dbad940223d0d2a38163128c9c36f7` is validated by Architect for the shared-prereq intermediate slice.
+- Implementation Agent feedback disposition: no unresolved feedback. The prior review findings were fixed in content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34`, `3b73981594260d9b5c6fe0f274361b1959238ad7`, and `05a6224562e21b3787d30481cf42604ac02e24f5`; final Architect validation is intentionally not recorded in this normalization pass.
