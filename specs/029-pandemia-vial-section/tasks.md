@@ -1542,3 +1542,37 @@ Current head reviewed: `6353e8048a7239f30d13c6507e5d3361b272e996`
   - `pnpm run preflight` - passed; feature-memory gate, repository baseline, content validation, `pnpm run test` 309/309, build, and `pnpm run test:e2e` 72/72.
   - `git diff --check` - passed with no whitespace errors.
 - Implementation Agent feedback for Architect disposition: none remaining for this P2. No source artwork, page 17/18/19 assets, or infographics were changed.
+
+## Cycle PR Set
+
+- PR #173 branch `codex/029-pandemia-vial-section` head SHA `1128b43bcab7c5ee61217f9052c3e0140ed5766a` status current PR head for final Architect validation with Orchestrator context reporting required checks passed on this head (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`) and review threads resolved with latest Codex summary reporting no major issues; included in final validation: yes, as the single implementation PR slice for feature `specs/029-pandemia-vial-section`.
+
+## Final Validation Evidence
+
+Effective content head: 1128b43bcab7c5ee61217f9052c3e0140ed5766a
+
+- Architect validation result: passed.
+- Architect validation/pass evidence: final Architect validation reviewed the implemented `Руководство` Introduction slice against the user request and Architect-owned requirements: Russian interactive document sections, Índice-based scalable navigation, separate Introduction routes, `Дорожная пандемия` article-shell styling, selectable DOM text, simple/natural Russian with ticket-critical detail retention, original/source artwork preservation, no broad masks or square patches, page 17/page 18/page 19 visual guardrails, durable conversion documentation, and automated visual/checker coverage.
+- Architect return count for this work cycle: 0. This is within the limit of 10; no final-validation return loop was used.
+- Limit escalation: none / not applicable.
+- Current-PR-head/head guard evidence: local worktree `/Users/chap/devel/cabadrive-worktrees/029-pandemia-vial-section` on branch `codex/029-pandemia-vial-section` reported `git rev-parse HEAD` = `1128b43bcab7c5ee61217f9052c3e0140ed5766a`, matching the effective content head above.
+- Current-PR-head review/check evidence: Orchestrator context reports required checks passed on the effective content head (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`), review threads resolved, and latest Codex summary with no major issues.
+- Current-PR-head local verification evidence: Implementation evidence above records final `pnpm run preflight` passing after the work-axis mobile-grid P2, including feature-memory gate, repository baseline, content validation, `pnpm run test` 309/309, build, and `pnpm run test:e2e` 72/72. Focused evidence also records passing content tests, TypeScript, build, Playwright slices, screenshots, and `git diff --check`.
+- Analyst feedback Architect disposition: all recorded review/process findings are disposed and resolved in this feature memory: prior P1 process-memory blocker, P2 hash/back synchronization and button semantics, P3 legacy manual query ambiguity, and P2 work-axis mobile-grid overflow. Implementation Agent feedback entries record none remaining.
+- Architect validation gaps: none.
+- Architect validation evidence: Open Architect dispositions none.
+- Final-validation evidence-only commit: this evidence-only change is limited to process/role validation evidence and contains no product/runtime/test/docs changes after effective content head `1128b43bcab7c5ee61217f9052c3e0140ed5766a`.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-05-29T14:35:40Z
+
+Architect validated effective content head: 1128b43bcab7c5ee61217f9052c3e0140ed5766a
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none.
+
+Architect gaps: none.
