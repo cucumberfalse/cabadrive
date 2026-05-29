@@ -1449,7 +1449,7 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
 - Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
 - Current verification status: complete for PR readiness. Final focused checks and `pnpm run preflight` are recorded in `Implementation Evidence - Documentation And Merge Preparation`.
-- Current blockers from Architect perspective: none. No unresolved Implementation Agent feedback, durable-docs gap, or verification rerun gap remains known in feature memory.
+- Current blockers from Architect perspective: the prior process-memory blocker is resolved. The current native Codex Review P2 findings below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
 
 ## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
 
@@ -1457,3 +1457,28 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Disposition: accepted as a process-memory blocker and resolved in this Architect follow-up.
 - Changes made: stale pending language was updated; page 18/page 19 source-crop tasks, typography/lower-row/global-card acceptance checks, and `pnpm run preflight` were marked complete only where later Implementation Agent evidence in this file records completion.
 - Remaining gaps: none known. If a future reviewer finds a product/runtime defect, it should be routed as a new implementation follow-up; this P1 process-memory contradiction is resolved.
+
+## Architect Review Disposition - PR #173 Current Native Codex Review P2 Findings
+
+- Review finding 1: `src/App.tsx` around the `selectView("pandemia")`/guide hash handling can leave React on `view === "pandemia"` after browser Back removes `#pandemia-vial` from a hashless entry URL. Accepted as an implementation follow-up blocker.
+- Implementation requirement 1: guide/hash synchronization must handle leaving guide hashes. When the current URL has no hash, or a non-Introduction/non-guide hash after Back/forward navigation, the app must exit the interactive `Руководство` view instead of keeping the guide rendered from stale React state. Direct supported hashes (`#pandemia-vial`, `#intro-enfoque-etico`, `#intro-accidente-incidente`, `#intro-plan-seguridad-vial`) must still open the matching `Руководство` child and active hierarchy state.
+- Verification expectation 1: add/update Playwright coverage for a hashless start URL, opening `Руководство`, observing `#pandemia-vial`, using browser Back/history to clear the hash, and asserting the guide view is no longer active/rendered. Keep existing direct-hash coverage for all implemented Introduction routes.
+- Review finding 2: `src/App.tsx` around the active route nav button sets `role="listitem"` directly on a `<button>`, overriding button semantics for screen readers. Accepted as an implementation follow-up blocker.
+- Implementation requirement 2: keep route controls as native buttons with button semantics. If list semantics are needed, place `role="list"`/`role="listitem"` on wrapper/container elements, not on the button. Preserve keyboard behavior, `aria-current` for the active page, accessible labels, disabled/pending semantics, and current visible navigation.
+- Verification expectation 2: add/update accessibility assertions so implemented route controls are discoverable by role `button`, no button carries `role="listitem"`, list/listitem semantics live on wrappers where used, and active route/current-state semantics remain intact.
+- Required follow-up verification after implementation: run at minimum `node --test tests/content-pandemia-vial-section.test.mjs`, `pnpm exec tsc --noEmit`, `pnpm run build`, the focused Playwright Introduction/navigation suite that covers the new Back/hash and button-role cases, and `git diff --check`. Rerun `pnpm run preflight` if Orchestrator assigns final readiness after these fixes.
+- Current status: resolved by Implementation Agent follow-up. Merge/final validation is no longer blocked by these two P2 findings from the Implementation Agent perspective.
+
+## Implementation Evidence - PR #173 P2 Hash And Accessibility Follow-up
+
+- [x] Fixed guide hash/back synchronization in `src/App.tsx`: direct supported Introduction hashes still enter `Руководство`, while Back/forward navigation to an empty or non-Introduction hash exits stale `view === "pandemia"` state back to the default learning view.
+- [x] Fixed guide navigation semantics in `src/App.tsx`: route controls remain native `<button>` elements with `aria-current`, accessible labels, disabled/pending state, and click/keyboard behavior; `role="listitem"` now lives on wrapper elements inside the existing `role="list"` container.
+- [x] Added focused Playwright coverage in `tests/e2e/app.spec.ts` for hashless start -> `Руководство` -> `#pandemia-vial` -> browser Back clearing the hash and hiding the guide, direct `#intro-accidente-incidente` routing, route controls discoverable by role `button`, no `button[role="listitem"]`, wrapper listitem semantics, and active/current state preservation.
+- Verification:
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, 14/14 tests.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed; content validation, asset sync, Vite build, and service worker generation succeeded.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|Introduction guide exits"` - passed, 4/4 tests across chromium and mobile.
+  - `git diff --check` - passed with no whitespace errors.
+- `pnpm run preflight` was not rerun for this scoped review follow-up because the assignment requested lightweight verification and no broader final-readiness rerun was assigned; the prior full preflight pass remains recorded above.
+- Implementation Agent feedback for Architect disposition: none remaining for these P2 findings.

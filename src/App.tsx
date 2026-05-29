@@ -1876,25 +1876,29 @@ function IntroductionSectionsView({
                       const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
                       const isActiveChild = child.introductionRouteId === selectedEntry.id;
                       return (
-                        <button
+                        <div
                           key={child.id}
-                          type="button"
-                          className={isActiveChild ? "active" : ""}
-                          disabled={child.status === "pending" || !introEntry}
-                          aria-disabled={child.status === "pending" || !introEntry}
-                          aria-current={isActiveChild ? "page" : undefined}
-                          aria-label={child.labelRu}
-                          onClick={() => introEntry && onSelectEntry(introEntry)}
-                          data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
-                          data-route-hash={child.routeHash}
-                          data-source-title-es={child.sourceTitleEs}
-                          data-source-page={child.sourcePage}
-                          data-status={child.status}
                           role="listitem"
+                          data-testid={child.introductionRouteId ? `manual-guide-route-item-${child.introductionRouteId}` : `manual-guide-pending-item-${child.id}`}
                         >
-                          <span>{child.labelRu}</span>
-                          {child.status === "pending" && <small>ожидает</small>}
-                        </button>
+                          <button
+                            type="button"
+                            className={isActiveChild ? "active" : ""}
+                            disabled={child.status === "pending" || !introEntry}
+                            aria-disabled={child.status === "pending" || !introEntry}
+                            aria-current={isActiveChild ? "page" : undefined}
+                            aria-label={child.labelRu}
+                            onClick={() => introEntry && onSelectEntry(introEntry)}
+                            data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
+                            data-route-hash={child.routeHash}
+                            data-source-title-es={child.sourceTitleEs}
+                            data-source-page={child.sourcePage}
+                            data-status={child.status}
+                          >
+                            <span>{child.labelRu}</span>
+                            {child.status === "pending" && <small>ожидает</small>}
+                          </button>
+                        </div>
                       );
                     })}
                   </div>
@@ -2744,10 +2748,16 @@ export function App() {
       if (introEntry) {
         setSelectedIntroductionId(introEntry.id);
         setView("pandemia");
+        return;
       }
+      setView((currentView) => (currentView === "pandemia" ? "learn" : currentView));
     }
     window.addEventListener("hashchange", syncHashView);
-    return () => window.removeEventListener("hashchange", syncHashView);
+    window.addEventListener("popstate", syncHashView);
+    return () => {
+      window.removeEventListener("hashchange", syncHashView);
+      window.removeEventListener("popstate", syncHashView);
+    };
   }, []);
 
   function reset() {

@@ -1659,9 +1659,14 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(reader.getByTestId("manual-guide-nav").locator('[data-status="pending"]').first()).toBeVisible();
     await expect(reader.locator('[data-testid="intro-index-nav"]')).toHaveCount(0);
     const activeIntroRoute = page.getByTestId(`intro-route-${route.id}`);
+    const activeRouteItem = reader.getByTestId(`manual-guide-route-item-${route.id}`);
+    await expect(activeRouteItem).toHaveAttribute("role", "listitem");
+    await expect(activeRouteItem.getByRole("button", { name: route.title, exact: true })).toBeVisible();
+    await expect(activeIntroRoute).not.toHaveAttribute("role", "listitem");
     await expect(activeIntroRoute).toHaveClass(/active/);
     await expect(activeIntroRoute).toHaveAttribute("aria-current", "page");
     await expect(activeIntroRoute).toHaveAttribute("aria-label", route.title);
+    await expect(reader.locator('button[role="listitem"]')).toHaveCount(0);
     await expect(page.getByRole("heading", { name: route.title })).toBeVisible();
     await expect(reader).toContainText(route.sample);
     await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
@@ -2605,6 +2610,37 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(page).toHaveURL(new RegExp(`${route.hash}$`));
     await expect(page.getByRole("heading", { name: route.title })).toBeVisible();
   }
+});
+
+test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/#pandemia-vial$/);
+
+  const reader = page.getByTestId("introduction-reader");
+  await expect(reader).toBeVisible();
+  await expect(page.getByTestId("pandemia-nav-entry")).toHaveClass(/active/);
+
+  const roadPandemicRoute = page.getByRole("button", { name: "Дорожная пандемия", exact: true });
+  await expect(roadPandemicRoute).toBeVisible();
+  await expect(roadPandemicRoute).toHaveAttribute("data-testid", "intro-route-intro-road-pandemic");
+  await expect(roadPandemicRoute).toHaveAttribute("aria-current", "page");
+  await expect(roadPandemicRoute).not.toHaveAttribute("role", "listitem");
+  await expect(reader.getByTestId("manual-guide-route-item-intro-road-pandemic")).toHaveAttribute("role", "listitem");
+  await expect(reader.locator('button[role="listitem"]')).toHaveCount(0);
+
+  await page.goBack();
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
+  await expect(reader).toHaveCount(0);
+  await expect(page.getByTestId("pandemia-nav-entry")).not.toHaveClass(/active/);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.goto("/#intro-accidente-incidente");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByTestId("intro-route-intro-incident")).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("heading", { name: "Авария или дорожный инцидент?" })).toBeVisible();
 });
 
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {
