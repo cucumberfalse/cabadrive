@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "030-manual-chapters-1-2",
-  "mode": "shared-prereq-pending-registry",
+  "mode": "page-pr-mixed-registry",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json",
   "requiredPageRange": {
     "start": 21,
@@ -80,5 +80,12 @@
     "implementedPages": 0,
     "screenshotEvidence": "not_applicable_until_page_pr",
     "sourceCropEvidence": "not_applicable_until_page_pr"
+  },
+  "pagePrExpectedOutput": {
+    "status": "pass",
+    "pendingPages": 35,
+    "implementedPages": 1,
+    "screenshotEvidence": "recorded",
+    "sourceCropEvidence": "recorded"
   }
 }

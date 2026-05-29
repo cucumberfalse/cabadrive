@@ -280,17 +280,19 @@ function main() {
   const evidence = readJson(evidencePath);
   validatePageRegistry(registry, evidence);
   validateSourceWiring(registry, evidence);
+  const pendingPages = registry.pages.filter((page) => page.status === "pending").length;
+  const implementedPages = registry.pages.filter((page) => page.status === "implemented").length;
 
   const result = {
     checkerId: evidence.checkerId,
     status: "pass",
     mode: evidence.mode,
     pagesChecked: registry.pages.length,
-    pendingPages: registry.pages.filter((page) => page.status === "pending").length,
-    implementedPages: registry.pages.filter((page) => page.status === "implemented").length,
+    pendingPages,
+    implementedPages,
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
-    screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
-    sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence
+    screenshotEvidence: implementedPages > 0 ? "recorded" : evidence.sharedPrereqExpectedOutput.screenshotEvidence,
+    sourceCropEvidence: implementedPages > 0 ? "recorded" : evidence.sharedPrereqExpectedOutput.sourceCropEvidence
   };
   console.log(JSON.stringify(result, null, 2));
 }

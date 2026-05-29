@@ -2612,7 +2612,8 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes Chapter 1 and 2 pending page entries without fake content", async ({ page }) => {
+test("Manual guide renders page 021 divider and keeps neighboring Chapter 1 and 2 pages pending", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2624,8 +2625,8 @@ test("Manual guide exposes Chapter 1 and 2 pending page entries without fake con
 
   const chapter1 = nav.locator('[data-guide-entry-id="chapter-1-sustainable-mobility"]');
   const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
-  await chapter1.locator("summary").click();
-  await chapter2.locator("summary").click();
+  if (!(await chapter1.evaluate((node) => node.hasAttribute("open")))) await chapter1.locator("summary").click();
+  if (!(await chapter2.evaluate((node) => node.hasAttribute("open")))) await chapter2.locator("summary").click();
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
@@ -2638,7 +2639,15 @@ test("Manual guide exposes Chapter 1 and 2 pending page entries without fake con
   const page24 = reader.getByTestId("manual-guide-pending-manual-page-024");
   const page43 = reader.getByTestId("manual-guide-pending-manual-page-043");
   const page56 = reader.getByTestId("manual-guide-pending-manual-page-056");
-  for (const pageButton of [page21, page24, page43, page56]) {
+  await expect(page21).toBeVisible();
+  await expect(page21).not.toBeDisabled();
+  await expect(page21).toHaveAttribute("data-status", "implemented");
+  await expect(page21).toHaveAttribute("data-source-region-metadata-status", "recorded");
+  await expect(page21).toHaveAttribute("data-visual-evidence-status", "recorded");
+  await expect(page21).toHaveAttribute("data-route-hash", "#manual-page-021");
+  await expect(page21).toHaveAttribute("data-content-module-path", "src/data/manual-pages/manual-page-021.ts");
+
+  for (const pageButton of [page24, page43, page56]) {
     await expect(pageButton).toBeVisible();
     await expect(pageButton).toBeDisabled();
     await expect(pageButton).toHaveAttribute("data-status", "pending");
@@ -2646,13 +2655,68 @@ test("Manual guide exposes Chapter 1 and 2 pending page entries without fake con
     await expect(pageButton).toHaveAttribute("data-visual-evidence-status", "pending_until_page_pr");
   }
 
-  await expect(page21).toHaveAttribute("data-route-hash", "#manual-page-021");
-  await expect(page21).toHaveAttribute("data-reference-asset", /page-021\.jpg$/);
   await expect(page56).toHaveAttribute("data-route-hash", "#manual-page-056");
   await expect(page56).toHaveAttribute("data-reference-asset", /page-056\.jpg$/);
   await expect(content.getByTestId("manual-guide-page")).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");
+
+  await page21.click();
+  await expect(page).toHaveURL(/#manual-page-021$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "manual-page-021");
+  await expect(content.getByTestId("manual-guide-page")).toHaveAttribute("data-manual-page-id", "manual-page-021");
+  const divider = content.locator('[data-block-kind="chapter-divider"]');
+  await expect(divider).toHaveAttribute("data-block-kind", "chapter-divider");
+  await expect(divider).toHaveAttribute("data-source-region", "298,421,595,842");
+  await expect(divider).toHaveAttribute("data-visible-spanish", "false");
+  const title = content.getByRole("heading", { name: "К устойчивой мобильности" });
+  await expect(title).toBeVisible();
+  await expect(content).toContainText("Глава 1 - Теоретическое руководство по управлению городскими четырехколесными транспортными средствами");
+  await expect(content).not.toContainText("HACIA UNA MOVILIDAD");
+  await expect(content).not.toContainText("Capítulo 1");
+  await expect(content).not.toContainText("Страница 21");
+
+  const selectedText = await title.evaluate((node) => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    return selection?.toString() ?? "";
+  });
+  expect(selectedText.toLocaleLowerCase("ru")).toContain("к устойчивой мобильности");
+
+  const geometry = await divider.evaluate((node) => {
+    const rect = node.getBoundingClientRect();
+    const panel = node.querySelector(".manual-chapter-divider-panel")?.getBoundingClientRect();
+    const titleRect = node.querySelector("h2")?.getBoundingClientRect();
+    return {
+      rect: { width: rect.width, height: rect.height },
+      panel: panel ? { width: panel.width, height: panel.height } : null,
+      title: titleRect
+        ? {
+            left: titleRect.left - rect.left,
+            rightGap: rect.right - titleRect.right,
+            top: titleRect.top - rect.top,
+            bottomGap: rect.bottom - titleRect.bottom
+          }
+        : null
+    };
+  });
+  expect(geometry.panel).not.toBeNull();
+  expect(geometry.title).not.toBeNull();
+  expect(geometry.rect.width / geometry.rect.height).toBeCloseTo(595 / 842, 1);
+  expect(geometry.title!.left).toBeGreaterThan(30);
+  expect(geometry.title!.rightGap).toBeGreaterThan(20);
+  expect(geometry.title!.top).toBeGreaterThan(180);
+  expect(geometry.title!.bottomGap).toBeGreaterThan(360);
+
+  await page.setViewportSize({ width: 390, height: 760 });
+  await page.goto("/#manual-page-021");
+  await expect(content.getByRole("heading", { name: "К устойчивой мобильности" })).toBeVisible();
+  const mobileOverflow = await content.getByTestId("manual-guide-page").evaluate((node) => node.scrollWidth - node.clientWidth);
+  expect(mobileOverflow).toBeLessThanOrEqual(1);
 });
 
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {

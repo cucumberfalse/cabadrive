@@ -1,4 +1,5 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+import { manualPage021 } from "./manual-pages/manual-page-021";
 import {
   introductionDocumentStyleGuide,
   introductionNavigation,
@@ -90,6 +91,24 @@ type ManualGuideChapter12Registry = {
 export type ManualGuideContentBlock =
   | {
       id: string;
+      kind: "chapter-divider";
+      eyebrowRu: string;
+      titleRu: string;
+      subtitleRu?: string;
+      sourceTextEs: string;
+      panelAssetPath: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      visibleSpanish: false;
+      cleanupStatus: string;
+    }
+  | {
+      id: string;
       kind: "lead" | "paragraph" | "callout" | "quote";
       textRu: string;
       sourceTextEs: string;
@@ -157,7 +176,7 @@ function pagesForIds(pageIds: string[]) {
   });
 }
 
-export const implementedManualGuidePages: ManualGuidePageContent[] = [];
+export const implementedManualGuidePages: ManualGuidePageContent[] = [manualPage021];
 export const manualGuidePageContentById = new Map(implementedManualGuidePages.map((page) => [page.pageId, page]));
 
 export const manualGuideDocumentStyleTokens = {

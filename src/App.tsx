@@ -1847,14 +1847,44 @@ function IntroductionArticleView({ section }: { section: IntroductionArticleSect
 }
 
 function ManualGuidePageContentView({ content }: { content: ManualGuidePageContent }) {
+  const hasChapterDivider = content.blocks.some((block) => block.kind === "chapter-divider");
   return (
-    <article className="intro-document manual-guide-page" aria-labelledby={`${content.pageId}-title`} data-testid="manual-guide-page" data-manual-page-id={content.pageId}>
-      <header className="intro-document-header">
-        <p className="eyebrow">Страница {content.sourcePage}</p>
-        <h2 id={`${content.pageId}-title`}>{content.titleRu}</h2>
-      </header>
+    <article
+      className={hasChapterDivider ? "intro-document manual-guide-page manual-guide-page-divider" : "intro-document manual-guide-page"}
+      aria-labelledby={`${content.pageId}-title`}
+      data-testid="manual-guide-page"
+      data-manual-page-id={content.pageId}
+    >
+      {!hasChapterDivider && (
+        <header className="intro-document-header">
+          <p className="eyebrow">Страница {content.sourcePage}</p>
+          <h2 id={`${content.pageId}-title`}>{content.titleRu}</h2>
+        </header>
+      )}
       <div className="intro-document-flow">
         {content.blocks.map((block) => {
+          if (block.kind === "chapter-divider") {
+            return (
+              <section
+                key={block.id}
+                className="manual-chapter-divider"
+                data-testid="manual-guide-page-block"
+                data-block-kind={block.kind}
+                data-block-id={block.id}
+                data-source-page={block.sourcePage}
+                data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+                data-visible-spanish={block.visibleSpanish}
+                data-cleanup-status={block.cleanupStatus}
+              >
+                <img className="manual-chapter-divider-panel" src={assetUrl(block.panelAssetPath)} alt="" aria-hidden="true" />
+                <div className="manual-chapter-divider-copy">
+                  <p className="manual-chapter-divider-eyebrow">{block.eyebrowRu}</p>
+                  <h2 id={`${content.pageId}-title`}>{block.titleRu}</h2>
+                  {block.subtitleRu && <p>{block.subtitleRu}</p>}
+                </div>
+              </section>
+            );
+          }
           if (block.kind === "list") {
             return (
               <section key={block.id} className="intro-doc-block intro-doc-list" data-testid="manual-guide-page-block" data-block-kind={block.kind} data-block-id={block.id}>
@@ -1912,10 +1942,11 @@ function IntroductionSectionsView({
 }) {
   const selectedArticle = selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
   const selectedManualPageContent = selectedManualPage ? manualGuidePageContentById.get(selectedManualPage.id) : undefined;
-  const activeGroupId = manualGuideNavigation.find((entry) =>
-    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id || child.pages?.some((page) => page.id === selectedManualPage?.id)) ||
-    entry.pages?.some((page) => page.id === selectedManualPage?.id)
-  )?.id;
+  const activeGroupId = selectedManualPage
+    ? manualGuideNavigation.find(
+        (entry) => entry.pages?.some((page) => page.id === selectedManualPage.id) || entry.children?.some((child) => child.pages?.some((page) => page.id === selectedManualPage.id))
+      )?.id
+    : manualGuideNavigation.find((entry) => entry.children?.some((child) => child.introductionRouteId === selectedEntry.id))?.id;
   const activeChildId = selectedManualPage?.id ?? selectedEntry.id;
 
   function renderManualPageButton(page: ManualGuidePageEntry) {

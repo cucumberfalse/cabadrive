@@ -1520,6 +1520,69 @@ small,
   line-height: 1.45;
 }
 
+.manual-guide-page-divider {
+  background: #fffdf8;
+}
+
+.manual-guide-page-divider .intro-document-flow {
+  padding-top: 28px;
+}
+
+.manual-chapter-divider {
+  position: relative;
+  width: min(100%, 595px);
+  aspect-ratio: 595 / 842;
+  justify-self: center;
+  overflow: hidden;
+  color: #303535;
+  user-select: text;
+}
+
+.manual-chapter-divider-panel {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.manual-chapter-divider-copy {
+  position: absolute;
+  top: 31.7%;
+  left: 8.6%;
+  right: 8%;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  pointer-events: auto;
+}
+
+.manual-chapter-divider-eyebrow {
+  margin: 0;
+  max-width: 46rem;
+  color: #303535;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.manual-chapter-divider-copy h2 {
+  margin: 0;
+  max-width: 42rem;
+  color: #303535;
+  font-size: 2rem;
+  font-weight: 850;
+  line-height: 0.98;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.manual-chapter-divider-copy p:not(.manual-chapter-divider-eyebrow) {
+  margin: 0;
+  max-width: 38rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
 .pandemia-prototype {
   --pandemia-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   margin-top: 14px;
@@ -2781,6 +2844,26 @@ small,
     grid-template-columns: 1fr;
   }
 
+  .manual-guide-page-divider .intro-document-flow {
+    padding-top: 18px;
+  }
+
+  .manual-chapter-divider-copy {
+    top: 30%;
+    left: 8%;
+    right: 8%;
+    gap: 9px;
+  }
+
+  .manual-chapter-divider-copy h2 {
+    font-size: 1.62rem;
+    line-height: 1.02;
+  }
+
+  .manual-chapter-divider-eyebrow {
+    font-size: 0.68rem;
+  }
+
   .intro-index-nav {
     margin-right: -10px;
     margin-left: -10px;
@@ -2877,5 +2960,9 @@ small,
     grid-template-columns: minmax(0, 1fr);
     width: 100%;
     gap: 30px;
+  }
+
+  .manual-chapter-divider-copy h2 {
+    font-size: 1.42rem;
   }
 }

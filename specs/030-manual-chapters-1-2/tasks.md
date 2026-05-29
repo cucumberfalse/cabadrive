@@ -113,6 +113,9 @@ For each page `NNN`:
 
 - None yet for feature `030`. Rejected patterns inherited from feature `029`: runtime PDF/full-page raster, side-by-side Spanish/Russian translation, generic icons, broad masks/plates, distorted infographic reassembly, unselectable Russian text, and duplicate `Руководство 4R` destination.
 - Shared prerequisite implementation note: first `pnpm exec tsc --noEmit` attempt failed before dependency installation because the isolated worktree had no `node_modules`/local `tsc`; `pnpm install --frozen-lockfile` completed without lockfile changes, after which TypeScript passed.
+- Page `021` implementation note: first focused Playwright run found the new implemented page content rendered but navigation still reported active group `introduction`; fixed by prioritizing selected manual-page lookup over the already-selected Introduction route. This shared runtime change is required for `manual-page-021` hash/click activation and does not implement page `022`.
+- Page `021` implementation note: `make build` could not complete Docker image construction because the uncached `node:22-alpine` and `nginx:1.29-alpine` metadata pulls stalled. The initial `make build` output stopped at `load metadata for docker.io/library/node:22-alpine` and `load metadata for docker.io/library/nginx:1.29-alpine` until it was interrupted with `make: *** [build] Error 130`; a bounded retry with plain Docker output also stalled on the same metadata step and exited without a built image. Because image build did not complete, isolated `make up`/`make down` was not run. Local non-Docker build, tests, browser route checks, and screenshots passed. GitHub `docker-validation` remains a required merge gate.
+- Page `021` implementation note: first `pnpm run preflight` attempt failed at `check-feature-memory --worktree` because product files were changed before this page-slice evidence was recorded in `tasks.md`; after the evidence update, `pnpm run preflight` passed.
 
 ### Decisions
 
@@ -127,6 +130,14 @@ For each page `NNN`:
 - Future implemented page PRs have a reserved page-local module path pattern `src/data/manual-pages/manual-page-NNN.ts`, a generic `ManualGuidePageContent` schema, and an empty `implementedManualGuidePages` registry to fill one page at a time.
 - Shared manual guide style tokens live in `src/data/manualGuide.ts` and inherit Introduction typography/callout tokens while naming future block families for prose, blue callouts, chapter dividers, source artwork, and legal-detail blocks.
 - `scripts/manual-guide-source-fidelity.mjs` and `content/validation/manual-guide-source-fidelity.evidence.json` define the deterministic checker/evidence format for pending and implemented page PRs; `pnpm run validate:content` now runs the checker after the existing content validator.
+- Page `021` uses the existing first-page implementation path: `src/data/manual-pages/manual-page-021.ts` is the only page-local content module added, and `implementedManualGuidePages` imports only `manualPage021`.
+- Page `021` visual strategy: the source page is a chapter divider/title page, not a prose or infographic page. The learner view omits book-only page number/footer chrome, uses a cleaned local text-free light-blue panel asset, and renders the Russian chapter line/title as selectable DOM text.
+- Page `021` shared-change scope record:
+  - `src/data/manualGuide.ts` adds the `chapter-divider` block type and imports `manualPage021` so the already-reserved implemented-page registry can expose exactly this first page.
+  - `src/App.tsx` adds rendering for the new `chapter-divider` block and fixes active-group priority when an implemented manual page is selected; both are needed for `manual-page-021` route/click behavior and do not add content for page `022`.
+  - `src/styles.css` adds only the reusable divider panel/copy rules used by `manual-page-021`.
+  - `scripts/manual-guide-source-fidelity.mjs` now reports screenshot/source-crop evidence as `recorded` when any implemented page exists; the page evidence validation rules remain page-registry driven.
+  - `tests/content-manual-guide-chapters.test.mjs` and `tests/e2e/app.spec.ts` were updated to assert page `021` implemented behavior and that neighboring pages, including `manual-page-022`, remain pending/disabled.
 
 ### Known Issues
 
@@ -260,12 +271,40 @@ For each page `NNN`:
   - `git diff --check` - passed after process-memory update.
   - This is a non-evidence code/test fix after effective content head `969b9875c36c3671cef96bb7f62bd3051b09acdf`; prior final Architect/Analyst validation evidence for that effective head is stale again and must be rerun by Orchestrator after this PR head update.
 
+#### Page 021 Implementation Evidence
+
+- T015/T016/T017: Orchestrator assigned Implementation Agent slice `page-021` in `/Users/chap/devel/cabadrive-worktrees/030-page-021`, branch `codex/030-page-021`, verified base `origin/main` at `7a07034d8a9380cbe83b9403a6a9aa7bc73dfa50`, with parallel-work preservation warning. Required repository memory and feature memory were read before edits. Baseline before edits: `git status --short --branch` -> `## codex/030-page-021...origin/main`.
+- T018/T019: Source inspection covered `manual.ru.json#/pages/20`, `layout.ru.json#/pages/20`, `navigation.ru.json`, and local render `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-021.jpg`. Page `021` source text is `HACIA UNA MOVILIDAD SUSTENTABLE` plus `Capítulo 1 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas`; Russian learner title is `К устойчивой мобильности`.
+- T019/T022: Source divider panel detected in the page render at `x=298 y=421 width=595 height=842`, source render dimensions `1191x1684`, source render SHA-256 `ed62d830b6238082c7f28e617545ac4b60aeefaec0b1e6fbcb0d6e5d5f618fe0`. Source crop evidence: `content/validation/manual-guide/page-021/source-panel-region.jpg`, `595x842`, SHA-256 `9455e5b453d27ec348826a3788d3019760a25ddbed12699ce517e4be399aff8c`.
+- T020/T021/T022: Implemented exactly `manual-page-021` as native HTML/CSS/local SVG. Page-local module: `src/data/manual-pages/manual-page-021.ts`. Runtime clean panel asset: `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/chapter-1/page-021/chapter-divider-panel-clean.svg`, `595x842` viewBox, SHA-256 `61af848b5bcf60ac9a9c0bea8ffdee961378c9fbc253511764d68157d50193c4`, `visibleSpanish: false`, no full-page raster. Russian title/chapter line are selectable DOM text; page number and footer/branding are omitted as book-only artifacts.
+- T020/T023: No legal/document/numeric page content is present on page `021`; no Chapter 1 topic prose from page `022` was implemented.
+- T024: Reused the existing manual guide style-token family and added only the source-backed `chapter-divider` block rendering/styles needed by page `021`.
+- T025: Focused test updates cover registry implemented status for page `021`, pending status for pages `022-056`, page-local module/asset metadata, forbidden full-page raster/page-module asset references, visible-Spanish evidence, route activation, DOM heading selection, desktop/mobile responsiveness, and pending neighbor pages.
+- T025/T026: Screenshot evidence generated with Playwright from local `http://127.0.0.1:5181/#manual-page-021`:
+  - Desktop: `content/validation/manual-guide/page-021/manual-page-021-desktop.png`.
+  - Mobile: `content/validation/manual-guide/page-021/manual-page-021-mobile.png`.
+- T026 browser route check: in-app browser verification on `http://127.0.0.1:5181/#manual-page-021` reported `activeGroup=chapter-1-sustainable-mobility`, `activeChild=manual-page-021`, `pageId=manual-page-021`, `visibleSpanish=false`, and `manual-page-022` still `pending`/disabled.
+- T026 focused verification passed:
+  - `pnpm install --frozen-lockfile` - passed; no lockfile changes.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; `36` pages checked, `35` pending, `1` implemented, screenshot/source-crop evidence `recorded`.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `14/14`.
+  - `pnpm run validate:content` - passed, including manual-guide checker.
+  - `pnpm run test` - passed, `323/323`.
+  - `pnpm run build` - passed after the active-group fix.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide renders page 021"` - passed, `2/2` across chromium and mobile.
+  - `pnpm run preflight` - passed after the page-slice evidence update; feature-memory gate, repo baseline, `validate:content`, Node tests, build, and `74/74` Playwright tests completed.
+  - `git diff --check` - passed.
+  - Vite dev server on `127.0.0.1:5181` was stopped after screenshot/route verification.
+- T026 Docker runtime fallback: `make build` did not complete because Docker stalled loading uncached base image metadata for `docker.io/library/node:22-alpine` and `docker.io/library/nginx:1.29-alpine`; the visible symptom was `load metadata for docker.io/library/node:22-alpine` and `load metadata for docker.io/library/nginx:1.29-alpine`, then manual interrupt with `make: *** [build] Error 130`. `docker images node:22-alpine` and `docker images nginx:1.29-alpine` returned no cached local images. `docker compose config --services` returned `cabadrive`. Bounded retry command `perl -e '$SIG{ALRM}=sub{ kill q(TERM), -$$; exit 124 }; alarm 120; system @ARGV; exit($? == -1 ? 127 : ($? >> 8))' docker compose build --progress=plain` also stalled on the same metadata step and exited without building. Since the image was not built, isolated `make up`/`make down` was not run. GitHub `docker-validation` remains a required merge gate.
+- T027: Implementation Agent feedback requiring Architect disposition: none. Scope note: this PR implements only source page `21`; pages `022-056` remain pending in the registry and disabled in the UI.
+
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | latest committed head before P2 `3327151430` fix `b912fe6b38a1c968a96b5bd3760e5771ffde4c91`; prior validation head `969b9875c36c3671cef96bb7f62bd3051b09acdf` is stale after non-evidence P2 `3327151430` | implementation complete for shared-prereq; current-head P2 `3327151430` verified locally; final Architect/Analyst validation still needs rerun on the committed post-fix head before merge/finalization | yes, as shared-prereq only |
-| page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
+| page-021 | Convert source page 21 | `codex/030-page-021` | Ready PR slice to be opened after verified commit/push; PR URL/number recorded in PR body and Implementation Agent final handoff | Exact pushed head SHA recorded in Implementation Agent final handoff after commit; local verified tree is this page-021 slice only | implementation complete locally; `pnpm run preflight` and `git diff --check` passed; Docker local fallback recorded; no page `022`+ implemented | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-024 | Convert source page 24 | pending Orchestrator assignment | pending | pending | pending | yes |

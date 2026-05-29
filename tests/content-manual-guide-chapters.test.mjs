@@ -8,6 +8,7 @@ import assert from "node:assert/strict";
 const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
+const page21ModulePath = "src/data/manual-pages/manual-page-021.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
 const stylesPath = "src/styles.css";
@@ -15,6 +16,7 @@ const stylesPath = "src/styles.css";
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
+const page21ModuleSource = readFileSync(page21ModulePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
@@ -84,7 +86,7 @@ function runCheckerWithFixture(registryFixturePath, moduleRoot) {
   });
 }
 
-test("Chapter 1 and 2 pending registry contains exactly source pages 21-56", () => {
+test("Chapter 1 and 2 registry contains implemented page 021 and pending pages 022-056", () => {
   assert.equal(registry.schemaVersion, 1);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "030-manual-chapters-1-2");
@@ -92,18 +94,32 @@ test("Chapter 1 and 2 pending registry contains exactly source pages 21-56", () 
 
   const ids = registry.pages.map((page) => page.id);
   assert.deepEqual(ids, Array.from({ length: 36 }, (_, index) => pageId(index + 21)));
+  assert.deepEqual(registry.pages.filter((page) => page.status === "implemented").map((page) => page.id), ["manual-page-021"]);
+  assert.equal(registry.pages.filter((page) => page.status === "pending").length, 35);
 
   for (const page of registry.pages) {
-    assert.equal(page.status, "pending", `${page.id} is pending in the shared prerequisite`);
+    const isPage21 = page.id === "manual-page-021";
+    assert.equal(page.status, isPage21 ? "implemented" : "pending", `${page.id} has the expected page PR status`);
     assert.equal(page.routeHash, `#${page.id}`);
-    assert.equal(page.labelRu, `Страница ${page.sourcePage}`);
+    assert.equal(page.labelRu, isPage21 ? "К устойчивой мобильности" : `Страница ${page.sourcePage}`);
     assert.equal(page.source.manualManifestPointer, `/pages/${page.sourcePage - 1}`);
     assert.equal(page.source.layoutManifestPointer, `/pages/${page.sourcePage - 1}`);
     assert.equal(page.source.referenceAsset, `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(page.sourcePage).padStart(3, "0")}.jpg`);
     assert.equal(existsSync(page.source.referenceAsset), true, `${page.id} local source render exists`);
     assert.equal(page.pageContentModulePath, `src/data/manual-pages/${page.id}.ts`);
-    assert.equal(page.sourceRegionMetadataStatus, "pending_until_page_pr");
-    assert.equal(page.visualEvidenceStatus, "pending_until_page_pr");
+    assert.equal(page.sourceRegionMetadataStatus, isPage21 ? "recorded" : "pending_until_page_pr");
+    assert.equal(page.visualEvidenceStatus, isPage21 ? "recorded" : "pending_until_page_pr");
+    if (isPage21) {
+      assert.equal(existsSync(page.pageContentModulePath), true, "page 021 page-local module exists");
+      assert.equal(page.implementationEvidence.pageId, "manual-page-021");
+      assert.equal(page.implementationEvidence.sourcePage, 21);
+      assert.equal(existsSync(page.implementationEvidence.sourceRegionMetadata.sourceAssetPath), true, "page 021 source-region evidence crop exists");
+      assert.equal(existsSync(page.implementationEvidence.localAssetMetadata.assetPath), true, "page 021 cleaned local panel asset exists");
+      assert.equal(page.implementationEvidence.localAssetMetadata.visibleSpanish, false);
+      assert.equal(page.implementationEvidence.visibleSpanishStatus, "none");
+      assert.equal(page.implementationEvidence.selectableTextStatus, "pass");
+      assert.equal(page.implementationEvidence.checkerResult, "pass");
+    }
     for (const forbiddenField of ["blocks", "bodyRu", "contentRu", "implementedContentPath", "screenshotPath", "sourceCropPath"]) {
       assert.equal(Object.hasOwn(page, forbiddenField), false, `${page.id} must not carry fake page content field ${forbiddenField}`);
     }
@@ -152,6 +168,7 @@ test("Manual guide schema prepares page-local implementation and reusable style 
     "manualGuidePageByHash",
     "manualGuidePageContentById",
     "implementedManualGuidePages",
+    "manualPage021",
     "manualGuideDocumentStyleTokens",
     "manualGuideVisualFidelityEvidenceFormat"
   ]) {
@@ -169,11 +186,22 @@ test("Manual guide schema prepares page-local implementation and reusable style 
     assert.ok(manualGuideSource.includes(requiredToken), `manual guide style token registry includes ${requiredToken}`);
   }
 
-  assert.match(manualGuideSource, /implementedManualGuidePages:\s*ManualGuidePageContent\[\]\s*=\s*\[\]/);
+  assert.match(manualGuideSource, /implementedManualGuidePages:\s*ManualGuidePageContent\[\]\s*=\s*\[manualPage021\]/);
   assert.match(manualGuideSource, /manualGuidePageContentById = new Map/);
 });
 
-test("Manual guide UI renders pending page entries without opening fake content", () => {
+test("Manual page 021 data records the chapter divider without full-page raster content", () => {
+  assert.match(page21ModuleSource, /pageId:\s*"manual-page-021"/);
+  assert.match(page21ModuleSource, /kind:\s*"chapter-divider"/);
+  assert.match(page21ModuleSource, /titleRu:\s*"К устойчивой мобильности"/);
+  assert.match(page21ModuleSource, /panelAssetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/sections\/chapter-1\/page-021\/chapter-divider-panel-clean\.svg"/);
+  assert.match(page21ModuleSource, /visibleSpanish:\s*false/);
+  assert.match(page21ModuleSource, /selectable DOM/);
+  assert.doesNotMatch(page21ModuleSource, /page-021\.jpg/);
+  assert.doesNotMatch(page21ModuleSource, /Руководство 4R|PDFViewer|pdfjs|side-by-side|dom-plate|backing-rectangle/iu);
+});
+
+test("Manual guide UI renders page 021 as available while keeping other pages pending", () => {
   assert.match(manualGuideAppSource, /function ManualGuidePageContentView/);
   assert.match(manualGuideAppSource, /manualGuidePageIsAvailable/);
   assert.match(manualGuideAppSource, /disabled=\{!isAvailable\}/);
@@ -183,8 +211,12 @@ test("Manual guide UI renders pending page entries without opening fake content"
   assert.match(manualGuideAppSource, /data-testid=\{`manual-guide-pending-\$\{page\.id\}`\}/);
   assert.match(manualGuideAppSource, /data-source-region-metadata-status=\{page\.sourceRegionMetadataStatus\}/);
   assert.match(manualGuideAppSource, /data-visual-evidence-status=\{page\.visualEvidenceStatus\}/);
+  assert.match(manualGuideAppSource, /block\.kind === "chapter-divider"/);
+  assert.match(manualGuideAppSource, /manual-chapter-divider/);
+  assert.match(manualGuideAppSource, /data-visible-spanish=\{block\.visibleSpanish\}/);
   assert.doesNotMatch(manualGuideAppSource, /ожидает\s+отдельный\s+PR/);
   assert.match(stylesSource, /\.manual-guide-pages/);
+  assert.match(stylesSource, /\.manual-chapter-divider/);
   assert.doesNotMatch(manualGuideAppSource, /page-02[1-9]\.jpg|page-03\d\.jpg|page-04\d\.jpg|page-05[0-6]\.jpg/);
   assert.doesNotMatch(manualGuideAppSource, /placeholder body|coming soon article|fake content|lorem/iu);
 });
@@ -195,17 +227,18 @@ test("Manual guide source-fidelity checker scans the implemented page renderer",
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });
 
-test("Manual guide source-fidelity checker passes the shared prerequisite registry", () => {
+test("Manual guide source-fidelity checker passes the page 021 mixed registry", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredPageRange, { start: 21, end: 56 });
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingPages, 36);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedPages, 0);
+  assert.equal(evidence.pagePrExpectedOutput.pendingPages, 35);
+  assert.equal(evidence.pagePrExpectedOutput.implementedPages, 1);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingPages, 36);
-  assert.equal(result.implementedPages, 0);
-  assert.equal(result.screenshotEvidence, "not_applicable_until_page_pr");
+  assert.equal(result.pendingPages, 35);
+  assert.equal(result.implementedPages, 1);
+  assert.equal(result.screenshotEvidence, "recorded");
+  assert.equal(result.sourceCropEvidence, "recorded");
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy page references", () => {

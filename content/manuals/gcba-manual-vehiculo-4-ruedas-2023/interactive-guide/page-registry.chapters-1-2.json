@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "030-manual-chapters-1-2",
-  "registryScope": "chapters-1-2-pending-page-registry",
+  "registryScope": "chapters-1-2-page-registry",
   "pageRange": {
     "start": 21,
     "end": 56
@@ -14,7 +14,7 @@
       "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
       "sourcePage": 21,
       "requiredPrintedPage": 20,
-      "status": "pending",
+      "status": "active",
       "chapterPageIds": ["manual-page-021"],
       "topics": [
         {
@@ -124,10 +124,10 @@
   "pages": [
     {
       "id": "manual-page-021",
-      "labelRu": "Страница 21",
+      "labelRu": "К устойчивой мобильности",
       "routeHash": "#manual-page-021",
       "sourcePage": 21,
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "parentTopicId": null,
       "placement": "chapter-divider",
@@ -137,9 +137,62 @@
         "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-021.jpg"
       },
       "pageContentModulePath": "src/data/manual-pages/manual-page-021.ts",
-      "sourceRegionMetadataStatus": "pending_until_page_pr",
-      "visualEvidenceStatus": "pending_until_page_pr",
-      "pendingReason": "No converted Russian interactive page content has been merged for this source page."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "pageId": "manual-page-021",
+        "sourcePage": 21,
+        "sourceRegionMetadata": {
+          "sourcePage": 21,
+          "sourceRegion": {
+            "x": 298,
+            "y": 421,
+            "width": 595,
+            "height": 842
+          },
+          "sourceAssetPath": "content/validation/manual-guide/page-021/source-panel-region.jpg",
+          "cropDimensions": {
+            "width": 595,
+            "height": 842
+          },
+          "cropSha256": "9455e5b453d27ec348826a3788d3019760a25ddbed12699ce517e4be399aff8c",
+          "cleanupScope": "source divider panel sampled as a solid light-blue field; source crop retains the original Spanish text only as reference evidence"
+        },
+        "localAssetMetadata": {
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/chapter-1/page-021/chapter-divider-panel-clean.svg",
+          "assetKind": "cleaned-source-panel",
+          "width": 595,
+          "height": 842,
+          "sha256": "61af848b5bcf60ac9a9c0bea8ffdee961378c9fbc253511764d68157d50193c4",
+          "containsText": false,
+          "visibleSpanish": false
+        },
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/page-021/manual-page-021-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/page-021/manual-page-021-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "chapter-divider-panel-fit",
+            "status": "pass",
+            "note": "The rendered panel keeps the source 595:842 proportions and centers inside the manual article without using the full PDF page raster."
+          },
+          {
+            "id": "chapter-divider-text-fit",
+            "status": "pass",
+            "note": "Russian DOM heading and chapter line fit inside the source title zone at desktop and mobile sizes with no overlap or clipping."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "note": "No runtime PDF viewer, full-page page-021 raster, broad mask, remote asset, duplicate manual destination, or side-by-side Spanish layout is used."
+        },
+        "visualReviewNotes": [
+          "Page 21 contains only a chapter-divider panel and title text; book-only page number and footer/branding are omitted from the learner view.",
+          "The local runtime panel asset has no text and no visible Spanish; Russian title and chapter line are selectable DOM text."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "manual-page-022",
