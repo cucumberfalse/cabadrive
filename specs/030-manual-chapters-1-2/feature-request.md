@@ -199,3 +199,27 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none / not applicable.
 
 Analyst boundary reminder: this validation edits only this Analyst-owned notes section in `specs/030-manual-chapters-1-2/feature-request.md`; no code, tests, assets, runtime files, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, or sibling work were changed.
+
+## Final Analyst Validation Notes - Shared Prerequisite PR #174 Rerun
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-29T21:19:48Z
+
+Analyst validated effective content head: 95222394f2dbad940223d0d2a38163128c9c36f7
+
+Analyst return count for this work cycle: 0
+
+Superseded validation note: the prior shared-prerequisite Analyst validation for `88cb0b4e91993c27b363f19f34926d25e94b67a4` is stale and superseded by this rerun because non-evidence code/test fixes landed afterward.
+
+Validation scope: shared-prerequisite PR #174 only. This validation does not claim full feature completion and does not validate pages `021-056` as implemented learner content.
+
+Customer intent check: passed for the current shared-prerequisite slice. The original customer intent remains to continue `Руководство` into Chapters 1 and 2, follow the prior manual-conversion guidelines, merge each source page as a separate PR, and treat infographic/artwork quality as a first-class gate. Current head `95222394f2dbad940223d0d2a38163128c9c36f7` supports that intent as prerequisite infrastructure: it keeps Chapter 1/2 content pages pending, provides the route/schema/checker/style/pending-registry foundation, strengthens future implemented-page validation, and records process evidence needed before the separate page PRs begin. The requested pages `021-056` remain pending by design and must still be implemented and merged one source page per PR before full feature completion can pass.
+
+Gaps, if any: none for shared-prerequisite acceptance. Full user-request completion remains pending because pages `021-056` are not yet converted; this is expected and explicitly outside this intermediate validation scope.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #174. Architect rerun passed at `2026-05-29T21:16:33Z` for the same effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; Architect-owned process memory records the current AI Review P1 `3326928165` as a rerun-validation evidence request, no unresolved Implementation Agent feedback for the shared-prereq slice, and page `021-056` work as future page PRs.
+
+Analyst limit escalation: none / not applicable.
+
+Analyst boundary reminder: this rerun edits only this Analyst-owned notes section in `specs/030-manual-chapters-1-2/feature-request.md`; no code, tests, assets, runtime files, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, or sibling work were changed.
