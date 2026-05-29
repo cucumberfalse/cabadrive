@@ -1533,6 +1533,13 @@ function introductionEntryById(id: string) {
   return introductionNavigation.find((entry) => entry.id === id) ?? defaultIntroductionEntry;
 }
 
+function introductionRouteUrl(routeHash: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("legacyManual");
+  url.hash = routeHash;
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
 function introductionArticleById(id: string) {
   return introductionArticleSections.find((section) => section.id === id);
 }
@@ -2734,8 +2741,9 @@ function PrimarySourcesView() {
 
 export function App() {
   const [view, setView] = useState<View>(() => {
+    if (introductionEntryForHash(window.location.hash)) return "pandemia";
     if (new URLSearchParams(window.location.search).get("legacyManual") === "1") return "manual";
-    return introductionEntryForHash(window.location.hash) ? "pandemia" : "learn";
+    return "learn";
   });
   const [selectedIntroductionId, setSelectedIntroductionId] = useState<IntroductionRouteId>(() =>
     (introductionEntryForHash(window.location.hash) ?? defaultIntroductionEntry).id
@@ -2769,7 +2777,8 @@ export function App() {
     setView(nextView);
     if (nextView === "pandemia") {
       const entry = introductionEntryById(selectedIntroductionId);
-      if (window.location.hash !== entry.routeHash) window.history.pushState(null, "", entry.routeHash);
+      const nextUrl = introductionRouteUrl(entry.routeHash);
+      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
     } else if (introductionEntryForHash(window.location.hash)) {
       window.history.pushState(null, "", window.location.pathname + window.location.search);
     }
@@ -2778,7 +2787,8 @@ export function App() {
   function selectIntroductionEntry(entry: IntroductionNavigationEntry) {
     setSelectedIntroductionId(entry.id);
     setView("pandemia");
-    if (window.location.hash !== entry.routeHash) window.history.pushState(null, "", entry.routeHash);
+    const nextUrl = introductionRouteUrl(entry.routeHash);
+    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
   }
 
   const selectedIntroductionEntry = introductionEntryById(selectedIntroductionId);

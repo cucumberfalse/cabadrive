@@ -2643,6 +2643,30 @@ test("Introduction guide exits on hash Back and keeps route buttons native", asy
   await expect(page.getByRole("heading", { name: "Авария или дорожный инцидент?" })).toBeVisible();
 });
 
+test("Introduction guide legacyManual URLs reload into the intended guide", async ({ page }) => {
+  await page.goto("/?legacyManual=1");
+  await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+
+  await page.goto("/?legacyManual=1#pandemia-vial");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+
+  await page.goto("/?legacyManual=1");
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/\/#pandemia-vial$/);
+  expect(page.url()).not.toContain("legacyManual=1");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+
+  await page.reload();
+  await expect(page).toHaveURL(/\/#pandemia-vial$/);
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+});
+
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {
   await openPrimarySources(page);
   await expect(page.getByTestId("source-list-pane")).toBeVisible();

@@ -1448,8 +1448,8 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Current intended product state: four Introduction routes are implemented inside the scalable `Руководство` hierarchy; future chapters/annexes are navigation placeholders; `Руководство 4R` is not a duplicate visible destination.
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
 - Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
-- Current verification status: complete for PR readiness. Final focused checks and `pnpm run preflight` are recorded in `Implementation Evidence - Documentation And Merge Preparation`.
-- Current blockers from Architect perspective: the prior process-memory blocker is resolved. The current native Codex Review P2 findings below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
+- Current verification status: complete for the implementation state recorded in `Implementation Evidence - Documentation And Merge Preparation`; later P2 and P3 follow-up verification evidence is recorded below.
+- Current blockers from Architect perspective: the prior process-memory blocker is resolved. The native Codex Review P2 findings and current native Codex Review P3 advisory below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
 
 ## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
 
@@ -1482,3 +1482,27 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
   - `git diff --check` - passed with no whitespace errors.
 - `pnpm run preflight` was not rerun for this scoped review follow-up because the assignment requested lightweight verification and no broader final-readiness rerun was assigned; the prior full preflight pass remains recorded above.
 - Implementation Agent feedback for Architect disposition: none remaining for these P2 findings.
+
+## Architect Review Disposition - PR #173 Current Native Codex Review P3 Advisory
+
+Current head reviewed: `0a4e9b59b3d2d6914bd9ea179e21216ca8ef0b7e`
+
+- Review finding: when the current URL is `/?legacyManual=1`, clicking the new `Руководство` destination can append `#pandemia-vial` and create `/?legacyManual=1#pandemia-vial`; reloading or sharing that URL can reopen the hidden legacy manual because startup checks `legacyManual=1` before the valid Introduction hash.
+- Disposition: accepted as a small implementation follow-up. This is advisory severity because it requires the hidden legacy test hook/query to be present, but it is worth fixing to avoid surprising shared/reloaded URLs.
+- Implementation requirement: either clear/remove `legacyManual=1` when opening the new `Руководство` destination, or make valid implemented Introduction hashes (`#pandemia-vial`, `#intro-enfoque-etico`, `#intro-accidente-incidente`, `#intro-plan-seguridad-vial`) take precedence over the legacy query during startup. The hidden legacy manual hook must remain available for explicit `/?legacyManual=1` without a valid Introduction hash so legacy e2e coverage is not lost.
+- Verification expectation: add/update Playwright coverage for `/?legacyManual=1#pandemia-vial` reload/startup and for clicking `Руководство` from `/?legacyManual=1`, asserting the interactive Introduction guide opens instead of the hidden legacy manual. Also keep a separate assertion that bare `/?legacyManual=1` still opens the legacy manual test hook.
+- Suggested focused commands after implementation: `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction|legacyManual"` or an equivalent focused e2e slice, `node --test tests/content-pandemia-vial-section.test.mjs` if route/static assertions change, `pnpm exec tsc --noEmit`, `pnpm run build`, and `git diff --check`.
+- Current status: resolved by Implementation Agent follow-up. No P1/P2/P3 product/test blocker is known from this advisory.
+
+## Implementation Evidence - PR #173 P3 Legacy Manual Query Follow-up
+
+- [x] Fixed startup routing in `src/App.tsx` so valid implemented Introduction hashes (`#pandemia-vial`, `#intro-enfoque-etico`, `#intro-accidente-incidente`, `#intro-plan-seguridad-vial`) take precedence over `?legacyManual=1`.
+- [x] Fixed new-guide navigation in `src/App.tsx` so opening or changing `Руководство` routes removes only the hidden `legacyManual` query parameter before writing the hash URL, preserving the hidden legacy manual hook for bare `/?legacyManual=1`.
+- [x] Added focused Playwright coverage in `tests/e2e/app.spec.ts`: bare `/?legacyManual=1` still opens the hidden complete manual, direct `/?legacyManual=1#pandemia-vial` opens the new interactive guide, and clicking `Руководство` from `/?legacyManual=1` produces a shareable `/#pandemia-vial` URL that reloads into the new guide.
+- Verification:
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, 14/14 tests.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed; content validation, asset sync, Vite build, and service worker generation succeeded.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|Introduction guide exits|legacyManual"` - passed, 6/6 tests across chromium and mobile.
+  - `git diff --check` - passed with no whitespace errors.
+- Implementation Agent feedback for Architect disposition: none remaining for this P3 advisory.
