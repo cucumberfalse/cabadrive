@@ -170,12 +170,22 @@ For each page `NNN`:
   - `pnpm run preflight` - passed; feature-memory gate, repo baseline, `validate:content` with manual-guide checker, `314/314` Node tests, build, and `74/74` Playwright tests passed.
 - Shared prerequisite PR opened ready for review at `2026-05-29T19:46:33Z`: https://github.com/cucumberfalse/cabadrive/pull/174.
 - Shared prerequisite effective content head before publication evidence update: `db4fa7166efe8f7dccb32a15461b88356a7b9729`.
+- Review fix P2 completed at `2026-05-29T19:54:13Z`: corrected the inaccurate Chapter 2 `sourceTitleEs` to the official source/index title `CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD`, and updated the matching static test expectation.
+- Review fix P2 verification completed at `2026-05-29T19:55:54Z`:
+  - `rg -n "CONDUCIR UN VEHÍCULO" content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json src tests specs || true` - passed with no remaining wrong-title occurrences.
+  - `rg -n "CONDUCIR ES UN ACTO DE RESPONSABILIDAD" content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json src tests specs` - passed; found the corrected registry/test expectation plus existing correct source references.
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `5/5` tests.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, `14/14` tests.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes|Introduction index routes"` - passed, `4/4` tests across chromium and mobile.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; current PR head includes publication evidence only | implementation complete, verification passed, PR opened | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; current PR head includes publication evidence and P2 review-fix evidence | implementation complete, verification passed, PR opened, P2 title fix verified | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |

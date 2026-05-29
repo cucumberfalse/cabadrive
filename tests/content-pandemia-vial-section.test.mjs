@@ -120,7 +120,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
 
   for (const sourceMetadata of [
     "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
-    "CAPÍTULO 2: CONDUCIR UN VEHÍCULO - UN ACTO DE RESPONSABILIDAD",
+    "CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD",
     "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
     "CAPÍTULO 4: CAPACIDAD NATURAL",
     "CAPÍTULO 5: ACTITUD AL CONDUCIR",
