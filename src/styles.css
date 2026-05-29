@@ -1395,9 +1395,10 @@ small,
 
 .intro-axis-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 38px 76px;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 38px clamp(28px, 8vw, 76px);
   width: min(100%, 620px);
+  max-width: 100%;
   align-items: start;
 }
 
@@ -1407,6 +1408,7 @@ small,
   justify-items: center;
   align-content: start;
   gap: 7px;
+  min-width: 0;
   background: transparent;
   text-align: center;
   padding: 0;
@@ -1416,8 +1418,10 @@ small,
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  max-width: 100%;
   min-height: 2.9rem;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .intro-axis-circle {
@@ -1436,6 +1440,11 @@ small,
   height: 66px;
   object-fit: contain;
   mix-blend-mode: multiply;
+}
+
+.intro-axis-card p {
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .intro-photo-quote {
@@ -2804,7 +2813,7 @@ small,
   }
 
   .intro-axis-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   }
 
   .manual-page-counter {
@@ -2813,5 +2822,13 @@ small,
 
   .manual-actions > span {
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .intro-axis-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    gap: 30px;
   }
 }

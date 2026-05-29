@@ -1448,8 +1448,8 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Current intended product state: four Introduction routes are implemented inside the scalable `Руководство` hierarchy; future chapters/annexes are navigation placeholders; `Руководство 4R` is not a duplicate visible destination.
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
 - Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
-- Current verification status: complete for the implementation state recorded in `Implementation Evidence - Documentation And Merge Preparation`; later P2 and P3 follow-up verification evidence is recorded below.
-- Current blockers from Architect perspective: the prior process-memory blocker is resolved. The native Codex Review P2 findings and current native Codex Review P3 advisory below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
+- Current verification status: complete for the implementation state recorded in `Implementation Evidence - Documentation And Merge Preparation`; later resolved P2/P3 follow-up verification evidence is recorded below, including the current work-axis mobile-grid P2 evidence.
+- Current blockers from Architect perspective: the prior process-memory blocker is resolved. Earlier native Codex Review P2 findings, the P3 advisory, and the current native Codex Review P2 work-axis mobile-grid finding below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
 
 ## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
 
@@ -1506,3 +1506,39 @@ Current head reviewed: `0a4e9b59b3d2d6914bd9ea179e21216ca8ef0b7e`
   - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|Introduction guide exits|legacyManual"` - passed, 6/6 tests across chromium and mobile.
   - `git diff --check` - passed with no whitespace errors.
 - Implementation Agent feedback for Architect disposition: none remaining for this P3 advisory.
+
+## Architect Review Disposition - PR #173 Current Native Codex Review P2 Work-Axis Mobile Grid
+
+Current head reviewed: `6353e8048a7239f30d13c6507e5d3361b272e996`
+
+- Review finding: `src/styles.css` around line 1400 leaves the `#intro-plan-seguridad-vial` work-axis block in a two-column grid with `minmax(220px, 1fr)` columns plus about `76px` gap. On a 320px mobile viewport the content width is about 264px, so the two-column minimum/gap cannot fit and the work-axis content overflows or clips.
+- Disposition: accepted as a current implementation blocker (`P2`). This violates the existing page 19 mobile/narrow usability rules, which require the work-axis content to remain readable, complete, and unclipped on mobile while preserving the source-derived artwork.
+- Implementation requirement: add a mobile/narrow override for the work-axis grid so it fits inside the available content width. A single-column collapse is preferred; a reduced min/gap is acceptable only if it proves no overflow or clipping at 320px and other supported narrow widths.
+- Preserve source-artwork rules while fixing layout: do not crop, distort, hide, replace, or simplify the four page 19 circular pictograms; do not solve the overflow by shrinking text below the established readable scale, rasterizing the section, adding horizontal page-level scroll, or changing unrelated page 17/page 18/page 19 artwork.
+- Preserve desktop/source-like layout: desktop and wider narrow views should keep the intended two-column work-axis grid where there is room, with stable row/column alignment, centered circles, complete pictograms, and existing source-faithful visual checks.
+- Mobile collapsed-state requirements: each work-axis item must be a readable vertical card/section with natural Russian text wrapping, no clipped text, no element overlap, no document-level horizontal overflow, complete centered circle/pictogram artwork, and consistent vertical gaps between items.
+- Verification expectations:
+  - Add or update Playwright coverage for direct `#intro-plan-seguridad-vial` at a 320px viewport, plus the existing mobile project and narrow in-app viewport, asserting the work-axis block and document do not overflow horizontally or clip content.
+  - Assert the work-axis grid collapses to one column, or otherwise that every card/pictogram/text bounding box fits within the content viewport at 320px.
+  - Preserve desktop regression checks for page 19: two-column alignment where applicable, equal circle sizes, aligned circle centers by row/column, complete source-derived pictograms, and no square crop boxes.
+  - Capture fresh screenshot/checker evidence for `#intro-plan-seguridad-vial` after the fix at desktop and mobile/320px widths.
+  - Run at minimum `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|work-axis|intro-plan-seguridad-vial"` or the closest focused e2e slice, `node --test tests/content-pandemia-vial-section.test.mjs` if style/content assertions change, `pnpm exec tsc --noEmit`, `pnpm run build`, and `git diff --check`. Rerun `pnpm run preflight` if Orchestrator assigns final readiness after this fix.
+- Current status: resolved by Implementation Agent follow-up. Final validation/merge readiness is no longer blocked by this P2 from the Implementation Agent perspective.
+
+## Implementation Evidence - PR #173 P2 Work-Axis Mobile Grid Follow-up
+
+- [x] Fixed the page 19 work-axis grid in `src/styles.css` without changing page 17/18/19 source artwork assets or infographic markup. The grid now uses content-aware `auto-fit` columns with `minmax(min(220px, 100%), 1fr)`, a responsive gap floor, `max-width: 100%`, and an explicit `max-width: 380px` single-column override for 320px-class mobile viewports.
+- [x] Preserved desktop/source-like behavior where there is room: the existing `Introduction index routes` desktop checks still require two-row/two-column page 19 circle alignment, equal circle sizes, complete source-derived pictograms, `object-fit: contain`, source alpha padding, and no square crop boxes.
+- [x] Added mobile/narrow regression coverage in `tests/e2e/app.spec.ts` for direct `#intro-plan-seguridad-vial` at `320px`: asserts one-column collapse, no document-level horizontal overflow, every work-axis card/title/body/circle/pictogram fits the viewport, natural text wrapping, no clipped title/body overflow, centered circular fields, and complete pictograms inside the circles.
+- [x] Updated `tests/content-pandemia-vial-section.test.mjs` so the static source-fidelity guard now enforces the content-aware grid, explicit 320px collapse, `min-width: 0`, and title/body wrapping instead of the old hard-coded always-two-column CSS. Initial `node --test tests/content-pandemia-vial-section.test.mjs` failed on the stale `repeat(2, minmax(220px, 1fr))` assertion; the guard was updated and rerun successfully.
+- Screenshot/checker evidence for the new 320px work-axis guard:
+  - `test-results/app-intro-plan-seguridad-vial-work-axis-grid-fits-at-320px-chromium/intro-plan-work-axis-320.png`
+  - `test-results/app-intro-plan-seguridad-vial-work-axis-grid-fits-at-320px-mobile/intro-plan-work-axis-320.png`
+- Verification:
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|work-axis|intro-plan-seguridad-vial"` - passed, 4/4 tests across chromium and mobile.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, 14/14 tests after updating the stale static CSS guard.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed; content validation, asset sync, Vite build, and service worker generation succeeded.
+  - `pnpm run preflight` - passed; feature-memory gate, repository baseline, content validation, `pnpm run test` 309/309, build, and `pnpm run test:e2e` 72/72.
+  - `git diff --check` - passed with no whitespace errors.
+- Implementation Agent feedback for Architect disposition: none remaining for this P2. No source artwork, page 17/18/19 assets, or infographics were changed.

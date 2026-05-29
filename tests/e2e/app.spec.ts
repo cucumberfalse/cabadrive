@@ -2667,6 +2667,105 @@ test("Introduction guide legacyManual URLs reload into the intended guide", asyn
   await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
 });
 
+test("intro-plan-seguridad-vial work-axis grid fits at 320px", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/#intro-plan-seguridad-vial");
+
+  const reader = page.getByTestId("introduction-reader");
+  await expect(reader).toBeVisible();
+  const workAxes = reader.locator(".intro-work-axes");
+  const axisGrid = workAxes.locator(".intro-axis-grid");
+  await expect(workAxes).toBeVisible();
+  await expect(axisGrid).toBeVisible();
+  await expect(workAxes.locator(".intro-axis-card")).toHaveCount(4);
+
+  const columnCount = await axisGrid.evaluate((element) =>
+    window.getComputedStyle(element).gridTemplateColumns.split(" ").filter(Boolean).length
+  );
+  expect(columnCount, "work-axis grid collapses to one column at 320px").toBe(1);
+
+  const problems = await workAxes.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const issues: string[] = [];
+    const withinViewport = (rect: DOMRect, label: string) => {
+      if (rect.left < -tolerance || rect.right > viewportWidth + tolerance) {
+        issues.push(`${label} overflows viewport horizontally: ${rect.left}..${rect.right} of ${viewportWidth}`);
+      }
+    };
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      issues.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+
+    const grid = root.querySelector(".intro-axis-grid");
+    if (!grid) return ["missing work-axis grid"];
+    withinViewport(grid.getBoundingClientRect(), "work-axis grid");
+
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(".intro-axis-card"));
+    const cardRects = cards.map((card) => card.getBoundingClientRect());
+    for (let index = 0; index < cards.length; index += 1) {
+      const card = cards[index];
+      const cardRect = cardRects[index];
+      const axisId = card.dataset.axisId ?? `axis-${index}`;
+      withinViewport(cardRect, `${axisId} card`);
+      if (index > 0 && Math.abs(cardRect.x - cardRects[0].x) > tolerance) {
+        issues.push(`${axisId} card is not in the collapsed single column`);
+      }
+      if (index > 0 && cardRect.y <= cardRects[index - 1].y) {
+        issues.push(`${axisId} card does not stack below the previous card`);
+      }
+
+      const circle = card.querySelector<HTMLElement>(".intro-axis-circle");
+      const icon = card.querySelector<HTMLImageElement>(".intro-axis-symbol");
+      const title = card.querySelector<HTMLElement>("h4");
+      const body = card.querySelector<HTMLElement>("p");
+      if (!circle || !icon || !title || !body) {
+        issues.push(`${axisId} card is missing title, body, circle, or pictogram`);
+        continue;
+      }
+      const circleRect = circle.getBoundingClientRect();
+      const iconRect = icon.getBoundingClientRect();
+      const titleRect = title.getBoundingClientRect();
+      const bodyRect = body.getBoundingClientRect();
+      withinViewport(titleRect, `${axisId} title`);
+      withinViewport(bodyRect, `${axisId} body`);
+      withinViewport(circleRect, `${axisId} circle`);
+      withinViewport(iconRect, `${axisId} pictogram`);
+      if (Math.abs(circleRect.width - circleRect.height) > tolerance) {
+        issues.push(`${axisId} circle is not circular`);
+      }
+      if (Math.abs(circleRect.x + circleRect.width / 2 - (cardRect.x + cardRect.width / 2)) > tolerance) {
+        issues.push(`${axisId} circle is not centered in its card`);
+      }
+      if (
+        iconRect.left < circleRect.left + 4 ||
+        iconRect.top < circleRect.top + 4 ||
+        iconRect.right > circleRect.right - 4 ||
+        iconRect.bottom > circleRect.bottom - 4
+      ) {
+        issues.push(`${axisId} pictogram is not complete inside the circle`);
+      }
+      for (const [label, element] of [
+        [`${axisId} title`, title],
+        [`${axisId} body`, body]
+      ] as const) {
+        const style = window.getComputedStyle(element);
+        if (style.whiteSpace !== "normal") issues.push(`${label} does not use natural wrapping`);
+        if (style.overflow === "hidden") issues.push(`${label} clips overflow`);
+        if (element.scrollWidth > element.clientWidth + tolerance) {
+          issues.push(`${label} text overflows its box: ${element.scrollWidth} > ${element.clientWidth}`);
+        }
+      }
+    }
+    return issues;
+  });
+  expect(problems).toEqual([]);
+
+  await workAxes.screenshot({
+    path: testInfo.outputPath("intro-plan-work-axis-320.png")
+  });
+});
+
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {
   await openPrimarySources(page);
   await expect(page.getByTestId("source-list-pane")).toBeVisible();

@@ -381,9 +381,24 @@ test("Introduction source-fidelity checker data rejects generic page 17-19 artwo
   assert.match(riskLobeRule, /background:\s*var\(--risk-panel-bg\)/, "risk lobe shares the source row color with the inset rectangle");
   assert.match(stylesSource, /\.intro-risk-card\.warning\s*\{[\s\S]*?--risk-panel-bg:\s*#f5e51f/, "human risk row keeps the source yellow color token");
   assert.match(stylesSource, /\.intro-axis-circle/);
-  assert.match(stylesSource, /\.intro-axis-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, minmax\(220px, 1fr\)\)/);
+  const axisGridRule = stylesSource.match(/\.intro-axis-grid\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  assert.match(
+    axisGridRule,
+    /grid-template-columns:\s*repeat\(auto-fit, minmax\(min\(220px, 100%\), 1fr\)\)/,
+    "page 19 work-axis grid keeps two columns when 220px columns fit and collapses by available width"
+  );
+  assert.match(axisGridRule, /gap:\s*38px clamp\(28px, 8vw, 76px\)/, "page 19 work-axis grid keeps source-like desktop gap with a narrower responsive floor");
+  assert.match(axisGridRule, /max-width:\s*100%/, "page 19 work-axis grid cannot exceed its content column");
+  assert.match(
+    stylesSource,
+    /@media \(max-width: 380px\)\s*\{[\s\S]*?\.intro-axis-grid\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\)/,
+    "page 19 work-axis grid has an explicit 320px-safe single-column collapse"
+  );
+  assert.match(stylesSource, /\.intro-axis-card\s*\{[\s\S]*?min-width:\s*0/, "page 19 work-axis cards cannot force horizontal overflow");
+  assert.match(stylesSource, /\.intro-axis-card p\s*\{[\s\S]*?overflow-wrap:\s*anywhere/, "page 19 work-axis body text wraps instead of clipping on mobile");
   assert.match(stylesSource, /\.intro-axis-card\s*\{[\s\S]*?grid-template-rows:\s*2\.9rem 82px auto/);
   assert.match(stylesSource, /\.intro-axis-card h4\s*\{[\s\S]*?min-height:\s*2\.9rem/);
+  assert.match(stylesSource, /\.intro-axis-card h4\s*\{[\s\S]*?overflow-wrap:\s*anywhere/, "page 19 work-axis titles wrap instead of clipping on mobile");
   assert.match(stylesSource, /\.intro-axis-symbol\s*\{[\s\S]*?width:\s*66px;[\s\S]*?height:\s*66px;[\s\S]*?object-fit:\s*contain/);
   assert.match(stylesSource, /\.intro-recommendation strong\s*\{[\s\S]*?left:\s*18px/, "recommendation tab is aligned to the border without reserving icon space");
   assert.doesNotMatch(stylesSource, /\.intro-recommendation-icon/);
