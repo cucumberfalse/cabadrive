@@ -77,6 +77,12 @@ function validateStatusObject(value, messagePrefix) {
   assertPassStatus(value, messagePrefix, { value });
 }
 
+function validateNoVisibleSpanishStatus(value, messagePrefix) {
+  const allowedStatuses = new Set(["pass", "none", "no_visible_spanish", "no-visible-spanish"]);
+  const status = isObject(value) && "status" in value ? value.status : value;
+  assertCondition(allowedStatuses.has(status), `${messagePrefix} must record no visible Spanish text`, { value });
+}
+
 function resolvePageContentModulePath(modulePath) {
   const prefix = "src/data/manual-pages/";
   if (modulePath.startsWith(prefix)) {
@@ -133,9 +139,11 @@ function validateImplementedPage(page, evidence, id) {
   });
   validateObjectOrArray(implementedEvidence.localAssetMetadata, format.localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
+    assertCondition(entry.visibleSpanish === false, `${label}.visibleSpanish must be false`, entry);
   });
   assertLocalPathExists(implementedEvidence.desktopScreenshot, `${id} desktopScreenshot`, implementedEvidence);
   assertLocalPathExists(implementedEvidence.mobileScreenshot, `${id} mobileScreenshot`, implementedEvidence);
+  validateNoVisibleSpanishStatus(implementedEvidence.visibleSpanishStatus, `${id} visibleSpanishStatus`);
   validateStatusObject(implementedEvidence.selectableTextStatus, `${id} selectableTextStatus`);
   validateObjectOrArray(implementedEvidence.boundingBoxChecks, ["status"], `${id} boundingBoxChecks`, (entry, label) => {
     assertPassStatus(entry.status, `${label}.status`, entry);

@@ -295,6 +295,46 @@ test("Manual guide source-fidelity checker rejects failing forbidden-pattern sca
   }
 });
 
+test("Manual guide source-fidelity checker rejects visible Spanish status failures", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-visible-spanish-status-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { pageId: "manual-page-021", blocks: [] };\n',
+      (implementationEvidence) => {
+        implementationEvidence.visibleSpanishStatus = "fail";
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when visibleSpanishStatus records a failure");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "manual-page-021 visibleSpanishStatus must record no visible Spanish text");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects local assets with visible Spanish", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-visible-spanish-asset-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { pageId: "manual-page-021", blocks: [] };\n',
+      (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata.visibleSpanish = true;
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when local asset evidence keeps visible Spanish text");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "manual-page-021 localAssetMetadata.visibleSpanish must be false");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker scans page content modules for forbidden assets", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-forbidden-module-"));
   try {
