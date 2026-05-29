@@ -2612,6 +2612,49 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
+test("Manual guide exposes Chapter 1 and 2 pending page entries without fake content", async ({ page }) => {
+  await page.goto("/#pandemia-vial");
+  const reader = page.getByTestId("introduction-reader");
+  const nav = reader.getByTestId("manual-guide-nav");
+  const content = reader.getByTestId("manual-guide-content");
+
+  await expect(reader).toBeVisible();
+  await expect(nav).toHaveAttribute("data-active-group-id", "introduction");
+  await expect(content.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+
+  const chapter1 = nav.locator('[data-guide-entry-id="chapter-1-sustainable-mobility"]');
+  const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
+  await chapter1.locator("summary").click();
+  await chapter2.locator("summary").click();
+
+  await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
+  await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
+  await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
+  await expect(chapter1.getByText("Велосипед")).toBeVisible();
+  await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
+  await expect(chapter2.getByText("Обязанности в случае дорожных инцидентов")).toBeVisible();
+
+  const page21 = reader.getByTestId("manual-guide-pending-manual-page-021");
+  const page24 = reader.getByTestId("manual-guide-pending-manual-page-024");
+  const page43 = reader.getByTestId("manual-guide-pending-manual-page-043");
+  const page56 = reader.getByTestId("manual-guide-pending-manual-page-056");
+  for (const pageButton of [page21, page24, page43, page56]) {
+    await expect(pageButton).toBeVisible();
+    await expect(pageButton).toBeDisabled();
+    await expect(pageButton).toHaveAttribute("data-status", "pending");
+    await expect(pageButton).toHaveAttribute("data-source-region-metadata-status", "pending_until_page_pr");
+    await expect(pageButton).toHaveAttribute("data-visual-evidence-status", "pending_until_page_pr");
+  }
+
+  await expect(page21).toHaveAttribute("data-route-hash", "#manual-page-021");
+  await expect(page21).toHaveAttribute("data-reference-asset", /page-021\.jpg$/);
+  await expect(page56).toHaveAttribute("data-route-hash", "#manual-page-056");
+  await expect(page56).toHaveAttribute("data-reference-asset", /page-056\.jpg$/);
+  await expect(content.getByTestId("manual-guide-page")).toHaveCount(0);
+  await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
+  await expect(content).not.toContainText("placeholder");
+});
+
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
