@@ -131,11 +131,11 @@ For each page `NNN`:
 ### Known Issues
 
 - Page `56` has a source-index child `Scoring` but the manifest-visible text for source page `56` is the closing slogan `Respetar las normas de tránsito implica salvar vidas.` Implementation Agent must confirm source content and record disposition before presenting it as substantive scoring content.
-  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to future page-slice `page-056` as a required source-content disposition before any scoring/slogan content is presented.
+  - Architect disposition: not needed for shared-prereq PR #174; addressed by carrying forward to future page-slice `page-056` as a required source-content disposition before any scoring/slogan content is presented.
 - Legacy layout manifests classify many visual regions as page chrome or text, so page-specific visual inspection of local renders is mandatory even when `preservedVisualRegions` is zero.
-  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to every future page-slice as a required manual visual-inspection rule for source crops, bounding boxes, and screenshot evidence.
+  - Architect disposition: not needed for shared-prereq PR #174; addressed by carrying forward to every future page-slice as a required manual visual-inspection rule for source crops, bounding boxes, and screenshot evidence.
 - Page `55` contains source-listed NGO contacts that may be volatile. Implementation Agent must avoid presenting them as current live recommendations without a verify-before-use warning or Architect disposition.
-  - Architect disposition: not blocking shared-prereq PR #174; no shared-prereq implementation change needed now; carried forward to future page-slice `page-055` as a required contacts/volatility disposition before learner-facing presentation.
+  - Architect disposition: not needed for shared-prereq PR #174; addressed by carrying forward to future page-slice `page-055` as a required contacts/volatility disposition before learner-facing presentation.
 
 ### Verification Evidence
 
@@ -317,10 +317,10 @@ For each page `NNN`:
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
-- Architect disposition: review P2 `3326875854` and `3326875856` were implemented and verified in the shared-prereq slice; no additional Architect task or ticket is required for those items.
-- Architect disposition: review P1 `3326928165` was a process-evidence request for rerun validation on head `95222394f2dbad940223d0d2a38163128c9c36f7`; it was satisfied by prior role-owned evidence and is superseded by the later non-evidence P2 fix.
-- Architect disposition: review P1 `3326998390` was a process-memory consistency request; it was satisfied by role-owned memory recording matching Architect/Analyst validation heads for the prior cycle before later P2 `3327032161`.
-- Architect disposition: current-head review P2 `3327032161` was implemented and verified at implementation head `05a6224562e21b3787d30481cf42604ac02e24f5`; no additional Architect task or ticket is required, and final Architect/Analyst validation must be rerun because the fix was non-evidence code/test work.
+- Architect disposition: addressed; review P2 `3326875854` and `3326875856` were implemented and verified in the shared-prereq slice, and no additional Architect task or ticket is required for those items.
+- Architect disposition: addressed; review P1 `3326928165` was a process-evidence request for rerun validation on head `95222394f2dbad940223d0d2a38163128c9c36f7`, satisfied by prior role-owned evidence and superseded by the later non-evidence P2 fix.
+- Architect disposition: addressed; review P1 `3326998390` was a process-memory consistency request, satisfied by role-owned memory recording matching Architect/Analyst validation heads for the prior cycle before later P2 `3327032161`.
+- Architect disposition: addressed; current-head review P2 `3327032161` was implemented and verified at implementation head `05a6224562e21b3787d30481cf42604ac02e24f5`, no additional Architect task or ticket is required, and final Architect/Analyst validation must be rerun because the fix was non-evidence code/test work.
 
 ## Architect Dispositions
 
