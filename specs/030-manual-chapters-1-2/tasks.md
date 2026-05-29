@@ -217,12 +217,22 @@ For each page `NNN`:
   - `pnpm exec tsc --noEmit` - passed.
   - `git diff --check origin/main...HEAD` - passed.
   - `gh pr diff 174 --name-only` / `git diff --name-status origin/main...HEAD` confirmed shared-prereq scope: registry, evidence/checker, shared data/style/runtime wiring, tests, package script, and feature memory; no page-local `src/data/manual-pages/manual-page-NNN.ts` content files or page `21-56` source crops are implemented in this slice.
+- Current-head P2 fixes for comments `3326875854` and `3326875856` accepted and completed at `2026-05-29T21:02:34Z`:
+  - `scripts/manual-guide-source-fidelity.mjs` now accepts future `implemented` page registry entries when they carry recorded source-region metadata, visual evidence, a local page content module, and required implementation evidence fields.
+  - The checker still protects the current shared-prereq state with `36` pending pages and `0` implemented pages.
+  - Forbidden-pattern scanning now covers the manual-guide implemented content data slice and page content modules, including generated full-page source render patterns for pages `021-056`, so data-driven `page-NNN.jpg` shortcuts and remote asset strings fail validation.
+  - This is a non-evidence code/test fix after final validation evidence; prior Architect/Analyst validation against `88cb0b4e91993c27b363f19f34926d25e94b67a4` is stale and must be rerun by Orchestrator after this PR head update.
+- Current-head P2 verification completed at `2026-05-29T21:02:34Z`:
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `9/9` tests including implemented-page acceptance and forbidden page-module asset rejection.
+  - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
+  - `git diff --check` - passed.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; earlier content heads `db4fa7166efe8f7dccb32a15461b88356a7b9729`, `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34` | intermediate shared-prereq Architect validation passed; implementation complete; checks/review green; merge-ready as prerequisite slice only, not full feature completion | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | prior validated head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; newer non-evidence P2 fixes pending commit/head recording | implementation complete; current-head P2 fixes verified; final Architect/Analyst validation stale and must rerun | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -262,16 +272,16 @@ For each page `NNN`:
 
 ### Final Validation Evidence
 
-- Architect validation: `Architect validation pass: passed` for shared-prerequisite PR #174 as an intermediate prerequisite slice only. This does not claim full feature completion and does not validate page PRs `021-056` as implemented content.
+- Architect validation: stale after non-evidence current-head P2 fixes for comments `3326875854` and `3326875856`; prior `Architect validation pass: passed` applied only to shared-prerequisite PR #174 at head `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
 - Final Architect validation completed at: `2026-05-29T20:28:37Z`.
 - Architect return count: `0`.
-- Analyst validation: not yet invoked.
+- Analyst validation: stale after non-evidence current-head P2 fixes; prior shared-prereq Analyst validation in `feature-request.md` applied to head `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
 - Analyst return count: `0`.
-- Effective content head: `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
-- Architect validated effective content head: `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
-- Analyst validated effective content head: not yet validated.
-- Final-validation evidence-only commit: this Architect-owned process-memory update is evidence-only if committed after `88cb0b4e91993c27b363f19f34926d25e94b67a4`; any non-evidence change after this validation makes the Architect pass stale.
-- Current-PR-head read-only guard: Architect read-only guard passed for PR #174 current head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; Orchestrator still owns final current-head guard before merge/finalization.
+- Effective content head: pending rerun after current-head P2 fixes.
+- Architect validated effective content head: stale; prior value `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
+- Analyst validated effective content head: stale; prior value `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
+- Final-validation evidence-only commit: prior evidence-only commit `802bfa1d6b9b8e32b7972b505bdf83f17c0545d6` is no longer current because this follow-up includes non-evidence code/test changes.
+- Current-PR-head read-only guard: stale after current-head P2 fixes; Orchestrator still owns final current-head guard before merge/finalization.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 

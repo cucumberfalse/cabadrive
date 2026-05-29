@@ -1,7 +1,7 @@
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
@@ -22,6 +22,65 @@ const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualG
 
 function pageId(pageNumber) {
   return `manual-page-${String(pageNumber).padStart(3, "0")}`;
+}
+
+function writeTempFile(path, contents = "fixture") {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, contents);
+  return path;
+}
+
+function writeImplementedRegistryFixture(tempDir, moduleSource) {
+  const moduleRoot = join(tempDir, "manual-pages");
+  const implementedRegistryPath = join(tempDir, "page-registry.implemented.json");
+  const implementedRegistry = JSON.parse(JSON.stringify(registry));
+  const page = implementedRegistry.pages.find((entry) => entry.id === "manual-page-021");
+  page.status = "implemented";
+  page.sourceRegionMetadataStatus = "recorded";
+  page.visualEvidenceStatus = "recorded";
+  page.implementationEvidence = {
+    pageId: "manual-page-021",
+    sourcePage: 21,
+    sourceRegionMetadata: {
+      sourcePage: 21,
+      sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
+      sourceAssetPath: writeTempFile(join(tempDir, "evidence", "source-crop.png")),
+      cropDimensions: { width: 120, height: 80 },
+      cropSha256: "fixture-source-crop-sha",
+      cleanupScope: "none"
+    },
+    localAssetMetadata: {
+      assetPath: writeTempFile(join(tempDir, "assets", "manual-page-021-artwork.png")),
+      assetKind: "source-artwork",
+      width: 120,
+      height: 80,
+      sha256: "fixture-artwork-sha",
+      containsText: false,
+      visibleSpanish: false
+    },
+    visibleSpanishStatus: "none",
+    selectableTextStatus: "pass",
+    desktopScreenshot: writeTempFile(join(tempDir, "screenshots", "manual-page-021-desktop.png")),
+    mobileScreenshot: writeTempFile(join(tempDir, "screenshots", "manual-page-021-mobile.png")),
+    boundingBoxChecks: [{ id: "fixture", status: "pass" }],
+    forbiddenPatternScan: { status: "pass" },
+    visualReviewNotes: ["fixture evidence only"],
+    checkerResult: "pass"
+  };
+  writeTempFile(join(moduleRoot, "manual-page-021.ts"), moduleSource);
+  writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
+  return { implementedRegistryPath, moduleRoot };
+}
+
+function runCheckerWithFixture(registryFixturePath, moduleRoot) {
+  return spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
+    encoding: "utf8",
+    env: {
+      ...process.env,
+      MANUAL_GUIDE_REGISTRY_PATH: registryFixturePath,
+      MANUAL_GUIDE_PAGE_MODULE_ROOT: moduleRoot
+    }
+  });
 }
 
 test("Chapter 1 and 2 pending registry contains exactly source pages 21-56", () => {
@@ -169,6 +228,42 @@ test("Manual guide source-fidelity checker rejects duplicate hierarchy page refe
     assert.equal(result.status, "fail");
     assert.equal(result.message, "Chapter/topic hierarchy must not duplicate pending page references");
     assert.deepEqual(result.details.duplicates, [{ id: "manual-page-044", count: 2 }]);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts implemented pages with evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-implemented-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { pageId: "manual-page-021", blocks: [] };\n'
+    );
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
+    assert.equal(output.pendingPages, 35);
+    assert.equal(output.implementedPages, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker scans page content modules for forbidden assets", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-forbidden-module-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-021.jpg" };\n'
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when page content data references a full-page source render");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.match(result.message, /Forbidden manual guide pattern 'page-021\.jpg'/);
+    assert.match(result.message, /manual-page-021\.ts/);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
