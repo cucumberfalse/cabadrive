@@ -168,12 +168,14 @@ For each page `NNN`:
   - `pnpm run test` - passed, `314/314` Node tests.
   - `git diff --check` - passed.
   - `pnpm run preflight` - passed; feature-memory gate, repo baseline, `validate:content` with manual-guide checker, `314/314` Node tests, build, and `74/74` Playwright tests passed.
+- Shared prerequisite PR opened ready for review at `2026-05-29T19:46:33Z`: https://github.com/cucumberfalse/cabadrive/pull/174.
+- Shared prerequisite effective content head before publication evidence update: `db4fa7166efe8f7dccb32a15461b88356a7b9729`.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR pending publication | head SHA pending commit | implementation complete, verification passed | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; current PR head includes publication evidence only | implementation complete, verification passed, PR opened | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
