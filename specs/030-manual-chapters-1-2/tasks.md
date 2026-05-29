@@ -180,14 +180,27 @@ For each page `NNN`:
   - `pnpm exec tsc --noEmit` - passed.
   - `pnpm run build` - passed.
   - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes|Introduction index routes"` - passed, `4/4` tests across chromium and mobile.
+  - `git diff --check` - passed before current-head P2 fix commit.
   - `git diff --check` - passed before review-fix commit.
 - Review fix P2 content head before evidence-only update: `2ad7dec4e53c239638ceada0606cd7fdb68a3466`.
+- Current-head P2 review fixes accepted and completed at `2026-05-29T20:04:50Z`:
+  - Chapter 2 pages `44-45` topic now uses official Índice source title `Responsabilidades legales`; Russian label remains `Юридическая ответственность`.
+  - `scripts/manual-guide-source-fidelity.mjs` now scans from `ManualGuidePageContentView` through `IntroductionSectionsView` to `manualDisplayText`, so future implemented page rendering is covered by forbidden-pattern checks.
+  - Manual page button aria labels now use the same conditional status text as the visible status: `ожидает PR` for unavailable pages and `готово` for implemented/available pages.
+- Current-head P2 verification completed at `2026-05-29T20:04:50Z`:
+  - `rg -n "Responsabilidad[[:space:]]+jurídica|ожидает[[:space:]]+отдельный[[:space:]]+PR" content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json scripts/manual-guide-source-fidelity.mjs src/App.tsx tests specs/030-manual-chapters-1-2 || true` - passed with no remaining rejected-topic or stale aria-label occurrences.
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `6/6` tests.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, `14/14` tests.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes|Introduction index routes"` - passed, `4/4` tests across chromium and mobile.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; P2 review-fix content head `2ad7dec4e53c239638ceada0606cd7fdb68a3466`; current PR head includes publication/review-fix evidence | implementation complete, verification passed, PR opened, P2 title fix verified | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; P2 review-fix content head `2ad7dec4e53c239638ceada0606cd7fdb68a3466`; current PR head includes publication/review-fix evidence | implementation complete, verification passed, PR opened, current-head P2 fixes verified | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |

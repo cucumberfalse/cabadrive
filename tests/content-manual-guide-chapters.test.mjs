@@ -7,14 +7,16 @@ const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interac
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
+const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
 const stylesPath = "src/styles.css";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
+const checkerSource = readFileSync(checkerPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
-const manualGuideAppSource = appSource.slice(appSource.indexOf("function IntroductionSectionsView"), appSource.indexOf("function manualDisplayText"));
+const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuidePageContentView"), appSource.indexOf("function manualDisplayText"));
 
 function pageId(pageNumber) {
   return `manual-page-${String(pageNumber).padStart(3, "0")}`;
@@ -67,6 +69,11 @@ test("Chapter 1 and 2 pages live under source-Índice chapter/topic hierarchy", 
   assert.deepEqual(topicPages.get("ch2-incident-obligations"), ["manual-page-051", "manual-page-052", "manual-page-053", "manual-page-054", "manual-page-055"]);
   assert.deepEqual(topicPages.get("ch2-scoring"), ["manual-page-056"]);
 
+  const topicSourceTitles = new Map(registry.chapters.flatMap((chapter) => chapter.topics.map((topic) => [topic.id, topic.sourceTitleEs])));
+  const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
+  assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
+  assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
+
   const referenced = new Set([
     ...registry.chapters.flatMap((chapter) => chapter.chapterPageIds),
     ...registry.chapters.flatMap((chapter) => chapter.topics.flatMap((topic) => topic.pageIds))
@@ -105,15 +112,25 @@ test("Manual guide schema prepares page-local implementation and reusable style 
 });
 
 test("Manual guide UI renders pending page entries without opening fake content", () => {
+  assert.match(manualGuideAppSource, /function ManualGuidePageContentView/);
   assert.match(manualGuideAppSource, /manualGuidePageIsAvailable/);
   assert.match(manualGuideAppSource, /disabled=\{!isAvailable\}/);
+  assert.match(manualGuideAppSource, /const pageStatusLabel = isAvailable \? "готово" : "ожидает PR"/);
+  assert.match(manualGuideAppSource, /aria-label=\{`\$\{page\.labelRu\}: \$\{pageStatusLabel\}`\}/);
+  assert.match(manualGuideAppSource, /<small>\{pageStatusLabel\}<\/small>/);
   assert.match(manualGuideAppSource, /data-testid=\{`manual-guide-pending-\$\{page\.id\}`\}/);
   assert.match(manualGuideAppSource, /data-source-region-metadata-status=\{page\.sourceRegionMetadataStatus\}/);
   assert.match(manualGuideAppSource, /data-visual-evidence-status=\{page\.visualEvidenceStatus\}/);
-  assert.match(manualGuideAppSource, /ManualGuidePageContentView/);
+  assert.doesNotMatch(manualGuideAppSource, /ожидает\s+отдельный\s+PR/);
   assert.match(stylesSource, /\.manual-guide-pages/);
   assert.doesNotMatch(manualGuideAppSource, /page-02[1-9]\.jpg|page-03\d\.jpg|page-04\d\.jpg|page-05[0-6]\.jpg/);
   assert.doesNotMatch(manualGuideAppSource, /placeholder body|coming soon article|fake content|lorem/iu);
+});
+
+test("Manual guide source-fidelity checker scans the implemented page renderer", () => {
+  assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuidePageContentView"/);
+  assert.match(manualGuideAppSource, /function ManualGuidePageContentView/);
+  assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });
 
 test("Manual guide source-fidelity checker passes the shared prerequisite registry", () => {

@@ -1921,6 +1921,7 @@ function IntroductionSectionsView({
   function renderManualPageButton(page: ManualGuidePageEntry) {
     const isAvailable = manualGuidePageIsAvailable(page);
     const isActivePage = selectedManualPage?.id === page.id;
+    const pageStatusLabel = isAvailable ? "готово" : "ожидает PR";
     return (
       <button
         key={page.id}
@@ -1929,7 +1930,7 @@ function IntroductionSectionsView({
         disabled={!isAvailable}
         aria-disabled={!isAvailable}
         aria-current={isActivePage ? "page" : undefined}
-        aria-label={`${page.labelRu}: ожидает отдельный PR`}
+        aria-label={`${page.labelRu}: ${pageStatusLabel}`}
         onClick={() => isAvailable && onSelectManualPage(page)}
         data-testid={`manual-guide-pending-${page.id}`}
         data-manual-page-id={page.id}
@@ -1942,7 +1943,7 @@ function IntroductionSectionsView({
         data-status={page.status}
       >
         <span>{page.labelRu}</span>
-        <small>{page.status === "pending" ? "ожидает PR" : "готово"}</small>
+        <small>{pageStatusLabel}</small>
       </button>
     );
   }

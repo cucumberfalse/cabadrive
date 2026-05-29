@@ -22,6 +22,14 @@ function pageId(pageNumber) {
   return `manual-page-${String(pageNumber).padStart(3, "0")}`;
 }
 
+function sliceSource(source, startMarker, endMarker, sourcePath) {
+  const startIndex = source.indexOf(startMarker);
+  const endIndex = source.indexOf(endMarker);
+  assertCondition(startIndex >= 0, `${sourcePath} is missing scan start marker ${startMarker}`);
+  assertCondition(endIndex > startIndex, `${sourcePath} is missing scan end marker ${endMarker} after ${startMarker}`);
+  return source.slice(startIndex, endIndex);
+}
+
 function expectedPages(start, end) {
   return Array.from({ length: end - start + 1 }, (_, index) => start + index);
 }
@@ -78,8 +86,8 @@ function validateSourceWiring(registry, evidence) {
   const appSource = readFileSync(appPath, "utf8");
   const manualGuideSource = readFileSync(manualGuidePath, "utf8");
   const stylesSource = readFileSync(stylesPath, "utf8");
-  const manualGuideAppSource = appSource.slice(appSource.indexOf("function IntroductionSectionsView"), appSource.indexOf("function manualDisplayText"));
-  const manualGuideStylesSource = stylesSource.slice(stylesSource.indexOf(".manual-guide-shell"), stylesSource.indexOf(".intro-document"));
+  const manualGuideAppSource = sliceSource(appSource, "function ManualGuidePageContentView", "function manualDisplayText", appPath);
+  const manualGuideStylesSource = sliceSource(stylesSource, ".manual-guide-shell", ".intro-document", stylesPath);
 
   for (const requiredSymbol of [
     "manualGuideChapter12Registry",
@@ -94,7 +102,9 @@ function validateSourceWiring(registry, evidence) {
   }
 
   assertCondition(manualGuideAppSource.includes("`manual-guide-pending-${page.id}`"), "manual guide renderer must expose pending page test ids");
+  assertCondition(manualGuideAppSource.includes("function ManualGuidePageContentView"), "manual guide forbidden-pattern scan must include the implemented page renderer");
   assertCondition(manualGuideAppSource.includes("disabled={!isAvailable}"), "Pending pages must render as disabled buttons until implemented content exists");
+  assertCondition(manualGuideAppSource.includes("assetUrl(block.assetPath)"), "manual guide forbidden-pattern scan must include future page artwork rendering");
   assertCondition(manualGuideAppSource.includes("data-source-region-metadata-status"), "Pending page buttons must expose source-region metadata status");
   assertCondition(manualGuideAppSource.includes("data-visual-evidence-status"), "Pending page buttons must expose visual evidence status");
   assertCondition(manualGuideStylesSource.includes(".manual-guide-pages"), "Manual guide pending page list styles must exist");
