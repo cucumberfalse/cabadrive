@@ -19,6 +19,18 @@ import {
   type TopicGuideTicket
 } from "./data/content";
 import type { ManualLayoutBlock, ManualNavigationEntry, ManualLayoutManifest, ManualPage, ManualPageBounds, ManualPageLayout, ManualRuManifest, ManualNavigationManifest } from "./data/manual4Ruedas";
+import {
+  introductionArticleSections,
+  introductionNavigation,
+  manualGuideNavigation,
+  pandemiaVialSection,
+  type IntroductionArticleBlock,
+  type IntroductionArticleSection,
+  type IntroductionNavigationEntry,
+  type IntroductionRouteId,
+  type IntroductionSourceArtworkAsset,
+  type PandemiaVialGeometry
+} from "./data/pandemiaVialSection";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -26,7 +38,7 @@ import { exactTextStatusKind, exactTextStatusNote } from "./primarySourceStatus"
 import { clearProgress, loadProgress, saveProgress, type StoredProgress } from "./storage";
 import { searchQuestions, searchVocabulary } from "./search";
 
-type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual";
+type View = "learn" | "exam" | "mistakes" | "vocabulary" | "guide" | "materials" | "process" | "sources" | "manual" | "pandemia";
 type SourceViewMode = "simple" | "full" | "spanish";
 type SourceFilterOption = {
   value: string;
@@ -1481,6 +1493,426 @@ function manualBoundsStyle(bounds: ManualPageBounds): CSSProperties {
   };
 }
 
+function pandemiaGeometryStyle(geometry: PandemiaVialGeometry, frame: PandemiaVialGeometry = pandemiaVialSection.contentFrame): CSSProperties {
+  return {
+    left: `${((geometry.x - frame.x) / frame.width) * 100}%`,
+    top: `${((geometry.y - frame.y) / frame.height) * 100}%`,
+    width: `${(geometry.width / frame.width) * 100}%`,
+    height: `${(geometry.height / frame.height) * 100}%`
+  };
+}
+
+const pandemiaPagePreviewWidth = 960;
+const pandemiaInfographicFrame: PandemiaVialGeometry = { x: 336, y: 602, width: 520, height: 612 };
+const defaultIntroductionEntry = introductionNavigation[0];
+
+const pandemiaNativeShapes: Array<{
+  id: string;
+  kind: "blue-strip" | "blue-cap" | "gray-panel" | "circle-stat";
+  geometry: PandemiaVialGeometry;
+}> = [
+  { id: "airplane-strip-panel", kind: "blue-strip", geometry: { x: 386, y: 678, width: 214, height: 31 } },
+  { id: "airplane-strip-cap", kind: "blue-cap", geometry: { x: 438, y: 660, width: 94, height: 49 } },
+  { id: "airplane-card-panel", kind: "gray-panel", geometry: { x: 386, y: 708, width: 214, height: 58 } },
+  { id: "stadium-strip-panel", kind: "blue-strip", geometry: { x: 620, y: 678, width: 214, height: 31 } },
+  { id: "stadium-strip-cap", kind: "blue-cap", geometry: { x: 674, y: 660, width: 94, height: 49 } },
+  { id: "stadium-card-panel", kind: "gray-panel", geometry: { x: 620, y: 708, width: 214, height: 58 } },
+  { id: "fatalities-panel", kind: "gray-panel", geometry: { x: 520, y: 833, width: 266, height: 55 } },
+  { id: "motorcyclists-circle", kind: "circle-stat", geometry: { x: 414, y: 890, width: 118, height: 118 } },
+  { id: "pedestrians-circle", kind: "circle-stat", geometry: { x: 536, y: 890, width: 118, height: 118 } },
+  { id: "car-occupants-circle", kind: "circle-stat", geometry: { x: 658, y: 890, width: 118, height: 118 } },
+  { id: "male-victims-panel", kind: "gray-panel", geometry: { x: 552, y: 1020, width: 234, height: 58 } },
+  { id: "age-range-panel", kind: "gray-panel", geometry: { x: 552, y: 1110, width: 234, height: 56 } }
+];
+
+function introductionEntryForHash(hash: string) {
+  return introductionNavigation.find((entry) => entry.routeHash === hash);
+}
+
+function introductionEntryById(id: string) {
+  return introductionNavigation.find((entry) => entry.id === id) ?? defaultIntroductionEntry;
+}
+
+function introductionArticleById(id: string) {
+  return introductionArticleSections.find((section) => section.id === id);
+}
+
+function artworkAssetById(assets: IntroductionSourceArtworkAsset[], id: string) {
+  return assets.find((asset) => asset.id === id);
+}
+
+function SourceArtworkImage({
+  asset,
+  className
+}: {
+  asset?: IntroductionSourceArtworkAsset;
+  className: string;
+}) {
+  if (!asset) return null;
+  return (
+    <img
+      className={className}
+      src={assetUrl(asset.localPath)}
+      alt=""
+      data-testid="intro-source-artwork"
+      data-artwork-id={asset.id}
+      data-source-page={asset.sourcePage}
+      data-source-region-unit={asset.sourceRegionUnit}
+      data-source-render-scale={asset.sourceRenderScale}
+      data-visible-spanish={asset.visibleSpanish}
+      data-cleanup-status={asset.cleanupStatus}
+      data-fidelity-role={asset.fidelityRole}
+      aria-hidden="true"
+      draggable={false}
+    />
+  );
+}
+
+function PandemiaVialPrototypeView() {
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return undefined;
+    const currentStage = stage;
+
+    function alignReadableMobilePreview() {
+      currentStage.scrollLeft = 0;
+    }
+
+    alignReadableMobilePreview();
+    const observer = new ResizeObserver(alignReadableMobilePreview);
+    observer.observe(currentStage);
+    return () => observer.disconnect();
+  }, []);
+
+  function renderSegment(segment: (typeof pandemiaVialSection.segments)[number]) {
+    const isResponsiveProse = segment.role === "heading" || segment.role === "intro" || segment.role === "body";
+    const className = [
+      "pandemia-segment",
+      `pandemia-segment-${segment.role}`,
+      isResponsiveProse && segment.role !== "heading" ? "intro-doc-block" : undefined
+    ].filter(Boolean).join(" ");
+    const style = isResponsiveProse ? undefined : pandemiaGeometryStyle(segment.geometry, pandemiaInfographicFrame);
+    const commonProps = {
+      key: segment.id,
+      className,
+      style,
+      "data-testid": "pandemia-segment",
+      "data-segment-id": segment.id,
+      "data-segment-role": segment.role,
+      "data-prose-role": isResponsiveProse ? "responsive" : undefined,
+      title: segment.fitNote
+    };
+
+    if (segment.role === "heading") {
+      return <h2 id="pandemia-vial-title" {...commonProps}>{segment.textRu}</h2>;
+    }
+    if (segment.role === "context-label") {
+      return <h3 {...commonProps}>{segment.textRu}</h3>;
+    }
+    return <p {...commonProps}>{segment.textRu}</p>;
+  }
+
+  const responsiveProseSegments = pandemiaVialSection.segments.filter((segment) =>
+    segment.role === "heading" || segment.role === "intro" || segment.role === "body"
+  );
+  const headingSegment = responsiveProseSegments.find((segment) => segment.role === "heading");
+  const introSegments = responsiveProseSegments.filter((segment) => segment.role === "intro");
+  const bodySegments = responsiveProseSegments.filter((segment) => segment.role === "body");
+  const infographicSegments = pandemiaVialSection.segments.filter((segment) =>
+    segment.role !== "heading" && segment.role !== "intro" && segment.role !== "body"
+  );
+
+  return (
+    <article className="intro-document pandemia-prototype" aria-labelledby="pandemia-vial-title" data-testid="pandemia-prototype" data-intro-section-id="intro-road-pandemic">
+      <header className="intro-document-header">
+        <h2 id="pandemia-vial-title">
+          <span
+            className="pandemia-segment"
+            data-testid="pandemia-segment"
+            data-segment-id={headingSegment?.id ?? "heading"}
+            data-segment-role="heading"
+            data-prose-role="responsive"
+            title={headingSegment?.fitNote}
+          >
+            {headingSegment?.textRu ?? "Дорожная пандемия"}
+          </span>
+        </h2>
+      </header>
+      <div className="intro-document-flow">
+        <div className="pandemia-prose pandemia-prose-intro" data-testid="pandemia-responsive-prose">
+          {introSegments.map(renderSegment)}
+        </div>
+        <div className="pandemia-stage-scroll" data-testid="pandemia-stage-scroll" ref={stageRef}>
+          <article
+            className="pandemia-page pandemia-native-page"
+            style={{
+              aspectRatio: `${pandemiaInfographicFrame.width} / ${pandemiaInfographicFrame.height}`,
+              width: pandemiaPagePreviewWidth
+            }}
+            aria-label="Инфографика раздела Дорожная пандемия - нативная русская реконструкция фрагмента GCBA manual page 15"
+            data-rendering="native-html-css-svg"
+            data-testid="pandemia-page"
+          >
+            <div className="pandemia-native-layer" data-testid="pandemia-native-layer">
+              {pandemiaNativeShapes.map((shape) => (
+                <span
+                  key={shape.id}
+                  className={`pandemia-native-shape pandemia-native-shape-${shape.kind}`}
+                  style={pandemiaGeometryStyle(shape.geometry, pandemiaInfographicFrame)}
+                  data-testid="pandemia-native-shape"
+                  data-shape-id={shape.id}
+                  aria-hidden="true"
+                />
+              ))}
+              {pandemiaVialSection.assets.map((asset) => (
+                <img
+                  key={asset.id}
+                  className={`pandemia-crop-asset pandemia-crop-asset-${asset.id}`}
+                  src={assetUrl(asset.localPath)}
+                  alt=""
+                  style={pandemiaGeometryStyle(asset.geometry, pandemiaInfographicFrame)}
+                  data-testid="pandemia-crop-asset"
+                  data-asset-id={asset.id}
+                  data-asset-kind={asset.kind}
+                  data-cleanup-status={asset.cleanupStatus}
+                  data-male-count={asset.pictogramSemantics?.maleCount}
+                  data-female-count={asset.pictogramSemantics?.femaleCount}
+                  data-total-count={asset.pictogramSemantics?.totalCount}
+                  data-male-signature={asset.pictogramSemantics?.maleSignature}
+                  data-female-signature={asset.pictogramSemantics?.femaleSignature}
+                  data-male-pictograms-identical={asset.pictogramSemantics?.malePictogramsIdentical}
+                  aria-hidden="true"
+                  draggable={false}
+                />
+              ))}
+            </div>
+            <div className="pandemia-text-layer" data-testid="pandemia-text-layer">
+              {infographicSegments.map(renderSegment)}
+            </div>
+          </article>
+        </div>
+        <div className="pandemia-prose pandemia-prose-conclusion" data-testid="pandemia-responsive-prose">
+          {bodySegments.map(renderSegment)}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlock }) {
+  if (block.kind === "list") {
+    return (
+      <section className="intro-doc-block intro-doc-list" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+        {block.titleRu && <h3>{block.titleRu}</h3>}
+        <ul>
+          {block.itemsRu.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
+
+  if (block.kind === "risk-factors") {
+    return (
+      <section className="intro-doc-block intro-risk-panel" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+        <div className="intro-risk-heading-row">
+          <h3>{block.headingRu}</h3>
+          <p>Риск возникает из взаимодействия этих трех факторов.</p>
+        </div>
+        <div className="intro-risk-list">
+          {block.factors.map((factor) => (
+            <article key={factor.id} className={factor.emphasis === "warning" ? "intro-risk-card warning" : "intro-risk-card"} data-risk-id={factor.id}>
+              <span className="intro-risk-lobe" aria-hidden="true">
+                <SourceArtworkImage asset={artworkAssetById(block.artworkAssets, factor.iconAssetId)} className="intro-risk-symbol" />
+              </span>
+              <div>
+                <h4>{factor.titleRu}</h4>
+                <p>{factor.textRu}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="intro-recommendation">
+          <strong>Рекомендации</strong>
+          <p>{block.recommendationRu}</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (block.kind === "consequence-diagram") {
+    return (
+      <section className="intro-doc-block intro-consequence" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+        <h3>{block.headingRu}</h3>
+        <div className="intro-consequence-diagram" data-testid="intro-consequence-diagram">
+          <SourceArtworkImage asset={block.backgroundAsset} className="intro-consequence-background" />
+          {block.groups.map((group) => (
+            <article key={group.id} className={group.tone === "dark" ? "intro-consequence-card dark" : "intro-consequence-card"} data-consequence-id={group.id}>
+              <h4>{group.titleRu}</h4>
+              <ul>
+                {group.itemsRu.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+          <div className="intro-consequence-center">
+            {block.centerRu.split(" ").map((word) => (
+              <span key={word}>{word}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (block.kind === "work-axes") {
+    return (
+      <section className="intro-doc-block intro-work-axes" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+        <h3>{block.headingRu}</h3>
+        <div className="intro-axis-grid">
+          {block.axes.map((axis) => (
+            <article key={axis.id} className="intro-axis-card" data-axis-id={axis.id}>
+              <h4>{axis.titleRu}</h4>
+              <span className="intro-axis-circle" aria-hidden="true">
+                <SourceArtworkImage asset={artworkAssetById(block.artworkAssets, axis.iconAssetId)} className="intro-axis-symbol" />
+              </span>
+              <p>{axis.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (block.kind === "photo-quote") {
+    return (
+      <figure className="intro-photo-quote" data-testid="intro-article-block" data-block-kind={block.kind} data-block-id={block.id}>
+        <img src={assetUrl(block.image.localPath)} alt={block.image.altRu} data-testid="intro-photo-crop" data-cleanup-status={block.image.cleanupStatus} />
+        <blockquote>{block.quoteRu}</blockquote>
+      </figure>
+    );
+  }
+
+  const Tag = block.kind === "quote" ? "blockquote" : "p";
+  return (
+    <Tag
+      className={`intro-doc-block intro-doc-${block.kind}`}
+      data-testid="intro-article-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+    >
+      {block.textRu}
+    </Tag>
+  );
+}
+
+function IntroductionArticleView({ section }: { section: IntroductionArticleSection }) {
+  return (
+    <article className="intro-document" aria-labelledby={`${section.id}-title`} data-testid="intro-article" data-intro-section-id={section.id}>
+      <header className="intro-document-header">
+        <h2 id={`${section.id}-title`}>{section.titleRu}</h2>
+      </header>
+      <div className="intro-document-flow">
+        {section.blocks.map((block) => (
+          <IntroductionArticleBlockView key={block.id} block={block} />
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function IntroductionSectionsView({
+  selectedEntry,
+  onSelectEntry
+}: {
+  selectedEntry: IntroductionNavigationEntry;
+  onSelectEntry: (entry: IntroductionNavigationEntry) => void;
+}) {
+  const selectedArticle = selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
+  const activeGroupId = manualGuideNavigation.find((entry) =>
+    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id)
+  )?.id;
+
+  return (
+    <section className="introduction-reader" aria-labelledby="introduction-reader-title" data-testid="introduction-reader">
+      <header className="materials-header introduction-header">
+        <div>
+          <p className="eyebrow">Интерактивное руководство</p>
+          <h2 id="introduction-reader-title">Руководство</h2>
+        </div>
+      </header>
+
+      <div className="manual-guide-shell" data-testid="manual-guide-shell">
+        <nav
+          className="manual-guide-nav"
+          aria-label="Оглавление руководства"
+          data-testid="manual-guide-nav"
+          data-active-group-id={activeGroupId}
+          data-active-child-id={selectedEntry.id}
+        >
+          {manualGuideNavigation.map((entry) => {
+            const isActiveGroup = entry.id === activeGroupId;
+            return (
+              <details
+                key={entry.id}
+                className={isActiveGroup ? "manual-guide-group active" : "manual-guide-group"}
+                open={isActiveGroup || entry.status === "active"}
+                data-guide-entry-id={entry.id}
+                data-source-title-es={entry.sourceTitleEs}
+                data-source-page={entry.sourcePage}
+                data-status={entry.status}
+              >
+                <summary aria-current={isActiveGroup ? "true" : undefined}>
+                  <span>{entry.labelRu}</span>
+                  {entry.status === "pending" && <small>позже</small>}
+                </summary>
+                {entry.children && (
+                  <div className="manual-guide-children" role="list">
+                    {entry.children.map((child) => {
+                      const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
+                      const isActiveChild = child.introductionRouteId === selectedEntry.id;
+                      return (
+                        <button
+                          key={child.id}
+                          type="button"
+                          className={isActiveChild ? "active" : ""}
+                          disabled={child.status === "pending" || !introEntry}
+                          aria-disabled={child.status === "pending" || !introEntry}
+                          aria-current={isActiveChild ? "page" : undefined}
+                          aria-label={child.labelRu}
+                          onClick={() => introEntry && onSelectEntry(introEntry)}
+                          data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
+                          data-route-hash={child.routeHash}
+                          data-source-title-es={child.sourceTitleEs}
+                          data-source-page={child.sourcePage}
+                          data-status={child.status}
+                          role="listitem"
+                        >
+                          <span>{child.labelRu}</span>
+                          {child.status === "pending" && <small>ожидает</small>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </details>
+            );
+          })}
+        </nav>
+
+        <div className="manual-guide-content" data-testid="manual-guide-content">
+          {selectedEntry.renderer === "pandemia" && <PandemiaVialPrototypeView />}
+          {selectedEntry.renderer === "article" && selectedArticle && <IntroductionArticleView section={selectedArticle} />}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function manualDisplayText(block: ManualLayoutBlock) {
   return block.type === "heading" ? block.textRu.replace(/^#+\s*/u, "") : block.textRu;
 }
@@ -2297,13 +2729,49 @@ function PrimarySourcesView() {
 }
 
 export function App() {
-  const [view, setView] = useState<View>("learn");
+  const [view, setView] = useState<View>(() => {
+    if (new URLSearchParams(window.location.search).get("legacyManual") === "1") return "manual";
+    return introductionEntryForHash(window.location.hash) ? "pandemia" : "learn";
+  });
+  const [selectedIntroductionId, setSelectedIntroductionId] = useState<IntroductionRouteId>(() =>
+    (introductionEntryForHash(window.location.hash) ?? defaultIntroductionEntry).id
+  );
   const [progress, setProgress] = useState(loadProgress);
+
+  useEffect(() => {
+    function syncHashView() {
+      const introEntry = introductionEntryForHash(window.location.hash);
+      if (introEntry) {
+        setSelectedIntroductionId(introEntry.id);
+        setView("pandemia");
+      }
+    }
+    window.addEventListener("hashchange", syncHashView);
+    return () => window.removeEventListener("hashchange", syncHashView);
+  }, []);
 
   function reset() {
     clearProgress();
     setProgress(loadProgress());
   }
+
+  function selectView(nextView: View) {
+    setView(nextView);
+    if (nextView === "pandemia") {
+      const entry = introductionEntryById(selectedIntroductionId);
+      if (window.location.hash !== entry.routeHash) window.history.pushState(null, "", entry.routeHash);
+    } else if (introductionEntryForHash(window.location.hash)) {
+      window.history.pushState(null, "", window.location.pathname + window.location.search);
+    }
+  }
+
+  function selectIntroductionEntry(entry: IntroductionNavigationEntry) {
+    setSelectedIntroductionId(entry.id);
+    setView("pandemia");
+    if (window.location.hash !== entry.routeHash) window.history.pushState(null, "", entry.routeHash);
+  }
+
+  const selectedIntroductionEntry = introductionEntryById(selectedIntroductionId);
 
   return (
     <main>
@@ -2320,15 +2788,15 @@ export function App() {
       <StatusStrip progress={progress} />
 
       <nav className="tabs" aria-label="Режимы">
-        <button className={view === "learn" ? "active" : ""} onClick={() => setView("learn")}><BookOpen size={18} /> Учить</button>
-        <button className={view === "exam" ? "active" : ""} onClick={() => setView("exam")}><ClipboardList size={18} /> Экзамен</button>
-        <button className={view === "mistakes" ? "active" : ""} onClick={() => setView("mistakes")}><XCircle size={18} /> Ошибки</button>
-        <button className={view === "vocabulary" ? "active" : ""} onClick={() => setView("vocabulary")}><Search size={18} /> Словарь</button>
-        <button className={view === "materials" ? "active" : ""} onClick={() => setView("materials")}><BookMarked size={18} /> Материалы</button>
-        <button className={view === "manual" ? "active" : ""} onClick={() => setView("manual")}><FileText size={18} /> Руководство 4R</button>
-        <button className={view === "sources" ? "active" : ""} onClick={() => setView("sources")}><FileText size={18} /> Источники</button>
-        <button className={view === "process" ? "active" : ""} onClick={() => setView("process")}><MapPinned size={18} /> Процесс</button>
-        <button className={view === "guide" ? "active" : ""} onClick={() => setView("guide")}><Flag size={18} /> CABA/RF</button>
+        <button className={view === "learn" ? "active" : ""} onClick={() => selectView("learn")}><BookOpen size={18} /> Учить</button>
+        <button className={view === "exam" ? "active" : ""} onClick={() => selectView("exam")}><ClipboardList size={18} /> Экзамен</button>
+        <button className={view === "mistakes" ? "active" : ""} onClick={() => selectView("mistakes")}><XCircle size={18} /> Ошибки</button>
+        <button className={view === "vocabulary" ? "active" : ""} onClick={() => selectView("vocabulary")}><Search size={18} /> Словарь</button>
+        <button className={view === "materials" ? "active" : ""} onClick={() => selectView("materials")}><BookMarked size={18} /> Материалы</button>
+        <button className={view === "pandemia" ? "active" : ""} onClick={() => selectView("pandemia")} data-testid="pandemia-nav-entry"><ListTree size={18} /> Руководство</button>
+        <button className={view === "sources" ? "active" : ""} onClick={() => selectView("sources")}><FileText size={18} /> Источники</button>
+        <button className={view === "process" ? "active" : ""} onClick={() => selectView("process")}><MapPinned size={18} /> Процесс</button>
+        <button className={view === "guide" ? "active" : ""} onClick={() => selectView("guide")}><Flag size={18} /> CABA/RF</button>
       </nav>
 
       {view === "learn" && <LearnView progress={progress} setProgress={setProgress} />}
@@ -2336,6 +2804,7 @@ export function App() {
       {view === "mistakes" && <MistakesView progress={progress} setProgress={setProgress} />}
       {view === "vocabulary" && <VocabularyView />}
       {view === "materials" && <TopicGuideView />}
+      {view === "pandemia" && <IntroductionSectionsView selectedEntry={selectedIntroductionEntry} onSelectEntry={selectIntroductionEntry} />}
       {view === "manual" && <Manual4RuedasView />}
       {view === "sources" && <PrimarySourcesView />}
       {view === "process" && <ProcessGuideView />}
