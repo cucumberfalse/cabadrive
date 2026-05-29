@@ -1540,6 +1540,13 @@ function introductionRouteUrl(routeHash: string) {
   return `${url.pathname}${url.search}${url.hash}`;
 }
 
+function nonIntroductionRouteUrl() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("legacyManual");
+  url.hash = "";
+  return `${url.pathname}${url.search}`;
+}
+
 function introductionArticleById(id: string) {
   return introductionArticleSections.find((section) => section.id === id);
 }
@@ -2780,7 +2787,7 @@ export function App() {
       const nextUrl = introductionRouteUrl(entry.routeHash);
       if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
     } else if (introductionEntryForHash(window.location.hash)) {
-      window.history.pushState(null, "", window.location.pathname + window.location.search);
+      window.history.pushState(null, "", nonIntroductionRouteUrl());
     }
   }
 

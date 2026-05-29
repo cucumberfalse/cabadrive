@@ -1018,6 +1018,12 @@ Review Agent must check:
 - Architect: the user-found circle overlap bug must be guarded by reusable overlap/bounding-box checks.
 - Architect: docs update is required for the current merge request. The accumulated PDF-to-Russian interactive-document requirements and visual checker rules must be moved into durable frontend docs, not left only in feature memory.
 
+## Dead Ends
+
+- No unresolved dead ends remain for feature 029.
+- Superseded approaches are resolved by later implementation evidence: PDF viewer/full-page raster/page-list prototype, Russian text over original Spanish full-page image, broad Spanish-text masks/patches, generic or visibly different SVG redraws for source pictograms, exposed duplicate `Руководство 4R`, flat Introduction-only navigation, page 17/18/19 generic source-artwork drafts, stale verification placeholders, stale known-issue wording, and stale finalizer guard wording.
+- Architect disposition: historical dead ends are resolved, superseded, or not applicable; no owner decision is required.
+
 ## Reusable PDF-Section Implementation/QA Checklist
 
 Use this checklist for this and future PDF-section-to-Russian-web conversions:
@@ -1459,7 +1465,7 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
 - Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
 - Current verification status: complete for the implementation state recorded in `Implementation Evidence - Documentation And Merge Preparation`; later resolved P2/P3 follow-up verification evidence is recorded below, including the current work-axis mobile-grid P2 evidence.
-- Current blockers from Architect perspective: the prior process-memory blocker is resolved. Earlier native Codex Review P2 findings, the P3 advisory, and the current native Codex Review P2 work-axis mobile-grid finding below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
+- Current blockers from Architect perspective: the prior process-memory blocker is resolved. Earlier native Codex Review P2 findings, the P3 advisory, the native Codex Review P2 work-axis mobile-grid finding, and the current native Codex Review P3 legacyManual-exit finding below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
 
 ## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
 
@@ -1516,6 +1522,28 @@ Current head reviewed: `0a4e9b59b3d2d6914bd9ea179e21216ca8ef0b7e`
   - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Introduction index routes|Introduction guide exits|legacyManual"` - passed, 6/6 tests across chromium and mobile.
   - `git diff --check` - passed with no whitespace errors.
 - Implementation Agent feedback for Architect disposition: none remaining for this P3 advisory.
+
+## Architect Review Disposition - PR #173 Current Native Codex Review P3 Legacy Manual Exit Query
+
+Current head reviewed: `eab4b6a5a2037e2ba5ed905daf0d62ff1e90dff0`
+
+- Review finding: accepted as a required runtime implementation follow-up. Starting from `/?legacyManual=1#pandemia-vial`, selecting a non-guide tab/view through `selectView` can remove only the hash while leaving `?legacyManual=1`; refresh/share of that URL can reopen the hidden legacy manual.
+- Implementation requirement: remove the `legacyManual` query parameter whenever the user exits implemented Introduction guide hashes or switches from `Руководство` to a non-guide view/tab. Keep the bare explicit `/?legacyManual=1` hidden legacy-manual hook available for compatibility tests.
+- Verification expectations: add focused Playwright coverage that starts at `/?legacyManual=1#pandemia-vial`, selects a non-guide tab/view, and asserts the resulting URL no longer contains `legacyManual=1` and does not reopen the hidden legacy manual on reload/share. Keep coverage that bare `/?legacyManual=1` still opens the hidden legacy-manual hook. Run the focused e2e slice plus content/static tests if route/static assertions change, `pnpm exec tsc --noEmit`, `pnpm run build`, and `git diff --check` at minimum.
+- Current status: resolved by Implementation Agent follow-up. Architect made no product code, test, docs, or asset changes for this disposition.
+
+## Implementation Evidence - PR #173 P3 Legacy Manual Exit Query Follow-up
+
+- [x] Fixed non-guide `selectView` exit routing in `src/App.tsx` so leaving an implemented Introduction hash removes both the guide hash and stale `legacyManual=1` from the URL.
+- [x] Preserved required compatibility behavior: bare `/?legacyManual=1` still opens the hidden legacy manual hook, and implemented Introduction guide routes with `legacyManual=1` in the query still open the new `Руководство` child route.
+- [x] Extended focused Playwright coverage in `tests/e2e/app.spec.ts`: starting at `/?legacyManual=1#pandemia-vial`, selecting `Учить` produces a URL with no `legacyManual=1` and no hash, hides the Introduction reader, and reloads without reopening the hidden legacy manual.
+- Verification:
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "legacyManual|Introduction guide exits" --project=chromium` - passed, 2/2 tests.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed; content validation, asset sync, Vite build, and service worker generation succeeded.
+  - `git diff --check` - passed with no whitespace errors.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` was not rerun for this follow-up because no content/static assertions changed.
+- Implementation Agent feedback for Architect disposition: none remaining for this P3.
 
 ## Architect Review Disposition - PR #173 Current Native Codex Review P2 Work-Axis Mobile Grid
 
