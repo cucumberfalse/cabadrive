@@ -3,9 +3,13 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 const dataPath = "src/data/pandemiaVialSection.ts";
+const manualGuideDataPath = "src/data/manualGuide.ts";
+const manualGuideRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const appPath = "src/App.tsx";
 const stylesPath = "src/styles.css";
 const dataSource = readFileSync(dataPath, "utf8");
+const manualGuideSource = readFileSync(manualGuideDataPath, "utf8");
+const manualGuideRegistrySource = readFileSync(manualGuideRegistryPath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
 const prototypeAppSource = appSource.slice(
@@ -16,6 +20,7 @@ const prototypeStylesSource = stylesSource.slice(
   stylesSource.indexOf(".pandemia-prototype")
 );
 const introductionDataSource = dataSource.slice(dataSource.indexOf("export const introductionNavigation"));
+const manualGuideNavigationSource = `${manualGuideSource.slice(manualGuideSource.indexOf("export const manualGuideNavigation"))}\n${manualGuideRegistrySource}`;
 const roadSafetyPlanArticleSource = introductionDataSource.slice(introductionDataSource.lastIndexOf('id: "intro-road-safety-plan"'));
 const introductionAppSource = appSource.slice(appSource.indexOf("function IntroductionArticleBlockView"), appSource.indexOf("function manualDisplayText"));
 const pandemiaOnlyDataSource = dataSource.slice(0, dataSource.indexOf("export const introductionNavigation"));
@@ -83,11 +88,11 @@ test("Introduction navigation is driven by four source Index headings, not raw p
   assert.match(introductionDataSource, /id:\s*"intro-road-safety-plan"[\s\S]*?startPage:\s*18[\s\S]*?endPage:\s*20/);
   assert.equal((introductionDataSource.match(/id:\s*"intro-road-safety-plan"/g) ?? []).length >= 2, true, "plan appears in navigation and article data");
   assert.doesNotMatch(introductionDataSource, /routeHash:\s*"#(?:page|manual|p)-?\d+/u);
-  assert.match(introductionDataSource, /export const manualGuideNavigation/);
+  assert.match(manualGuideSource, /export const manualGuideNavigation/);
   assert.match(introductionAppSource, /data-testid="manual-guide-shell"/);
   assert.match(introductionAppSource, /data-testid="manual-guide-nav"/);
   assert.match(introductionAppSource, /data-active-group-id=\{activeGroupId\}/);
-  assert.match(introductionAppSource, /data-active-child-id=\{selectedEntry\.id\}/);
+  assert.match(introductionAppSource, /data-active-child-id=\{activeChildId\}/);
   assert.match(introductionAppSource, /data-testid=\{child\.introductionRouteId \? `intro-route-\$\{child\.introductionRouteId\}`/);
   assert.match(introductionAppSource, /aria-current=\{isActiveChild \? "page" : undefined\}/);
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
@@ -110,7 +115,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "Приложение III. Грузовой транспорт и перевозка товаров",
     "Приложение IV. Дорожные знаки и разметка"
   ]) {
-    assert.ok(introductionDataSource.includes(requiredEntry), `full Indice navigation includes ${requiredEntry}`);
+    assert.ok(manualGuideNavigationSource.includes(requiredEntry), `full Indice navigation includes ${requiredEntry}`);
   }
 
   for (const sourceMetadata of [
@@ -121,10 +126,10 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "CAPÍTULO 5: ACTITUD AL CONDUCIR",
     "ANEXO IV SEÑALES VIALES"
   ]) {
-    assert.ok(introductionDataSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
+    assert.ok(manualGuideNavigationSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
   }
 
-  assert.match(introductionDataSource, /status:\s*"pending"/);
+  assert.match(manualGuideNavigationSource, /status:\s*"pending"/);
   assert.match(introductionAppSource, /disabled=\{child\.status === "pending" \|\| !introEntry\}/);
   assert.match(introductionAppSource, /data-source-title-es=\{child\.sourceTitleEs\}/);
   assert.match(appSource, /> Руководство<\/button>/);

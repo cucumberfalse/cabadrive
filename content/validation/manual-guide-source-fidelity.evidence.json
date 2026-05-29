@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "checkerId": "manual-guide-source-fidelity",
+  "featureId": "030-manual-chapters-1-2",
+  "mode": "shared-prereq-pending-registry",
+  "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json",
+  "requiredPageRange": {
+    "start": 21,
+    "end": 56
+  },
+  "pendingPageExpectations": {
+    "status": "pending",
+    "mustHaveRouteHash": true,
+    "mustHaveReferenceAsset": true,
+    "mustHaveManualAndLayoutPointers": true,
+    "mustNotHaveRuntimeContentBlocks": true,
+    "mustNotHaveImplementedContentPath": true,
+    "sourceRegionMetadataStatus": "pending_until_page_pr",
+    "visualEvidenceStatus": "pending_until_page_pr"
+  },
+  "implementedPageEvidenceFormat": {
+    "requiredFields": [
+      "pageId",
+      "sourcePage",
+      "sourceRegionMetadata",
+      "localAssetMetadata",
+      "visibleSpanishStatus",
+      "selectableTextStatus",
+      "desktopScreenshot",
+      "mobileScreenshot",
+      "boundingBoxChecks",
+      "forbiddenPatternScan",
+      "visualReviewNotes",
+      "checkerResult"
+    ],
+    "sourceRegionMetadataFields": ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope"],
+    "localAssetMetadataFields": ["assetPath", "assetKind", "width", "height", "sha256", "containsText", "visibleSpanish"],
+    "checkerResultValues": ["pass", "fail"]
+  },
+  "forbiddenPatterns": [
+    {
+      "id": "runtime-pdf-viewer",
+      "description": "Interactive Руководство pages must not use a runtime PDF viewer, PDF.js, iframe, object, or embed.",
+      "patterns": ["PDFViewer", "pdfjs", "<iframe", "<object", "<embed"]
+    },
+    {
+      "id": "full-page-raster-base",
+      "description": "Chapter 1/2 pending or implemented interactive pages must not render a full PDF page image as the learner-facing base.",
+      "patterns": ["manual-russian-page-flow", "manual-page-canvas", "page-021.jpg", "page-056.jpg"]
+    },
+    {
+      "id": "duplicate-manual-destination",
+      "description": "The visible app destination is Руководство; Руководство 4R must not reappear as a second user-facing manual entry.",
+      "patterns": ["Руководство 4R"]
+    },
+    {
+      "id": "side-by-side-translation",
+      "description": "The interactive manual must not return to Spanish page plus Russian transcript side-by-side rendering.",
+      "patterns": ["side-by-side", "spanish-preview", "translation-pane", "source-transcript"]
+    },
+    {
+      "id": "remote-assets",
+      "description": "Manual guide pages and evidence must stay local-first and offline.",
+      "patterns": ["http://", "https://", "//fonts.googleapis.com", "//cdn."]
+    },
+    {
+      "id": "broad-masks-plates",
+      "description": "Artwork translation must not use broad masks, source plates, or DOM backing rectangles over source graphics.",
+      "patterns": ["source-mask", "manual-source-mask", "broad-mask", "dom-plate", "backing-rectangle"]
+    },
+    {
+      "id": "fake-pending-content",
+      "description": "Pending pages may expose page metadata and disabled navigation only, never placeholder article bodies.",
+      "patterns": ["lorem", "placeholder body", "coming soon article", "fake content"]
+    }
+  ],
+  "sharedPrereqExpectedOutput": {
+    "status": "pass",
+    "pendingPages": 36,
+    "implementedPages": 0,
+    "screenshotEvidence": "not_applicable_until_page_pr",
+    "sourceCropEvidence": "not_applicable_until_page_pr"
+  }
+}
