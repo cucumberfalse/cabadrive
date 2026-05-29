@@ -228,7 +228,7 @@ For each page `NNN`:
   - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
   - `git diff --check` - passed.
 - Current-head implemented-page/content-scan P2 fix content head before evidence-only update: `3b73981594260d9b5c6fe0f274361b1959238ad7`.
-- Final Architect validation rerun for shared-prerequisite PR #174 completed at `2026-05-29T21:16:33Z` against current PR head `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Final Architect validation rerun for shared-prerequisite PR #174 completed at `2026-05-29T21:16:33Z` against then-current effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
   - Validation scope: shared route/schema/checker/style/pending-registry prerequisite only. Pages `021-056` remain pending by design and are not validated as implemented page content in this pass.
   - Previous shared-prereq Architect validation for `88cb0b4e91993c27b363f19f34926d25e94b67a4` is stale and superseded because non-evidence code/test fixes landed afterward.
   - `git rev-parse HEAD` - passed; local HEAD is `95222394f2dbad940223d0d2a38163128c9c36f7`.
@@ -239,14 +239,14 @@ For each page `NNN`:
   - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
   - `pnpm exec tsc --noEmit` - passed.
   - `git diff --check` - passed before Architect evidence edit.
-  - `gh pr checks 174` observed `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` green on current head; `AI Review` was pending/currently carrying the P1 requesting this rerun and remains a review/finalization gate after evidence is committed.
-  - Thread-aware review read passed with expected state: current AI Review P1 `3326928165` asks for rerun validation on `95222394f2dbad940223d0d2a38163128c9c36f7`; current-head P2 comments `3326875854` and `3326875856` are disposed as implemented and locally validated, while GitHub thread resolution or re-review remains Orchestrator-owned before merge.
+  - `gh pr checks 174` observed `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` green on then-current head; `AI Review` was pending/carrying the P1 requesting this rerun and remained a review/finalization gate after evidence was committed.
+  - Thread-aware review read passed with expected state: then-current AI Review P1 `3326928165` asked for rerun validation on `95222394f2dbad940223d0d2a38163128c9c36f7`; current-head P2 comments `3326875854` and `3326875856` were disposed as implemented and locally validated, while GitHub thread resolution or re-review remained Orchestrator-owned before merge.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; supersedes stale prior validation head `88cb0b4e91993c27b363f19f34926d25e94b67a4` | implementation complete; current-head P2 fixes verified; latest Architect validation passed for this intermediate shared-prereq slice; Analyst rerun and AI Review P1/thread resolution remain pending before merge/finalization | yes, as shared-prereq only |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is later final-validation evidence only; supersedes stale prior validation head `88cb0b4e91993c27b363f19f34926d25e94b67a4` | implementation complete; current-head P2 fixes verified; Architect validation passed at `2026-05-29T21:16:33Z`; Analyst validation passed at `2026-05-29T21:19:48Z`; AI Review P1/thread resolution and Orchestrator final guards remain pending before merge/finalization | yes, as shared-prereq only |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -289,13 +289,13 @@ For each page `NNN`:
 - Architect validation: `Architect validation pass: passed` for shared-prerequisite PR #174 as an intermediate prerequisite slice only; pages `021-056` remain pending by design and are not validated as implemented content in this pass.
 - Final Architect validation completed at: `2026-05-29T21:16:33Z`.
 - Architect return count: `0`.
-- Analyst validation: stale after non-evidence current-head P2 fixes; prior shared-prereq Analyst validation in `feature-request.md` applied to head `88cb0b4e91993c27b363f19f34926d25e94b67a4` and must be rerun by Orchestrator after this Architect pass if merge/finalization continues.
+- Analyst validation: passed for shared-prerequisite PR #174 as an intermediate prerequisite slice only; source of truth is `feature-request.md`, which records `Final Analyst validation completed at: 2026-05-29T21:19:48Z` for the same effective content head.
 - Analyst return count: `0`.
 - Effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
 - Architect validated effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Analyst validated effective content head: stale; prior value `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
-- Final-validation evidence-only commit: this Architect-owned update is evidence only if committed after `95222394f2dbad940223d0d2a38163128c9c36f7`; any later non-evidence change makes this pass stale and must return through role-appropriate validation.
-- Current-PR-head read-only guard: Architect read-only guard passed for current PR head `95222394f2dbad940223d0d2a38163128c9c36f7`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, Analyst rerun, and merge/finalization decision.
+- Analyst validated effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Final-validation evidence-only commit: current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is a later final-validation evidence-only commit after effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; any later non-evidence change makes this pass stale and must return through role-appropriate validation.
+- Current-PR-head read-only guard: Architect process-memory correction confirms the effective content head markers now match across Architect and Analyst evidence, and current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is evidence-only relative to `95222394f2dbad940223d0d2a38163128c9c36f7`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 
@@ -306,11 +306,14 @@ For each page `NNN`:
 ## Implementation Agent Feedback
 
 - None unresolved for shared-prerequisite PR #174. Review-surfaced P2 items, including current-head comments `3326875854` and `3326875856`, were implemented and verified before this Architect validation; no remaining Implementation Agent feedback requires Architect task/ticket/dispose follow-up for the shared-prereq slice.
-- Current AI Review P1 `3326928165` is disposed by Architect as a process-evidence request for rerun validation on the current head. It remains unresolved in GitHub until this evidence is committed and rechecked; this is a review/finalization gate, not a shared-prereq architecture gap.
+- Prior AI Review P1 `3326928165` is disposed by Architect as a process-evidence request for rerun validation on effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; it is not a shared-prereq architecture gap.
+- Current AI Review P1 `3326998390` is disposed by Architect as a process-memory consistency request: `tasks.md` now records the current Analyst validation pass at `2026-05-29T21:19:48Z`, the matching Analyst validated effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`, and current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` as a later final-validation evidence-only commit.
 
 ## Architect Dispositions
 
 - Page `56` / `Scoring` known issue: carried forward as a required future page-slice disposition for `page-056`; not a blocker for shared-prereq merge because PR #174 intentionally registers page `56` as pending and implements no scoring/slogan content.
 - Legacy layout visual-region classification known issue: carried forward as a required source-inspection rule for every future page PR; not a blocker for shared-prereq merge because PR #174 adds the checker/schema/registry and no page visual conversion.
 - Page `55` NGO contacts known issue: carried forward as a required future page-slice disposition for `page-055`; not a blocker for shared-prereq merge because PR #174 does not surface or validate the contacts as current learner content.
-- Implementation Agent feedback disposition: no unresolved feedback. The prior review findings were fixed in content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34`, and `3b73981594260d9b5c6fe0f274361b1959238ad7`; current PR head `95222394f2dbad940223d0d2a38163128c9c36f7` is validated by Architect for the shared-prereq intermediate slice.
+- Prior `88cb0b4e91993c27b363f19f34926d25e94b67a4` Architect/Analyst validation evidence is stale and superseded. Current shared-prereq validation evidence is Architect pass at `2026-05-29T21:16:33Z` and Analyst pass at `2026-05-29T21:19:48Z`, both for effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Pages `021-056` remain pending by design. PR #174 is still only the shared-prerequisite slice; the full feature remains incomplete until each source page is implemented and merged one source page per PR.
+- Implementation Agent feedback disposition: no unresolved feedback. The prior review findings were fixed in content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34`, and `3b73981594260d9b5c6fe0f274361b1959238ad7`; effective content head `95222394f2dbad940223d0d2a38163128c9c36f7` is validated by Architect for the shared-prereq intermediate slice.
