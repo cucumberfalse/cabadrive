@@ -142,8 +142,7 @@ async function openPrimarySources(page: Page) {
 }
 
 async function openCompleteManual(page: Page) {
-  await page.goto("/");
-  await page.getByRole("button", { name: /Руководство 4R/ }).click();
+  await page.goto("/?legacyManual=1");
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
 }
 
@@ -1102,7 +1101,7 @@ test("non-manual startup defers the manual corpus chunk until the manual view op
 
   expect(manualChunkRequests).toEqual([]);
 
-  await page.getByRole("button", { name: /Руководство 4R/ }).click();
+  await page.goto("/?legacyManual=1");
   await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
   await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
   await expect(manualChunkRequests).toHaveLength(1);
@@ -1128,6 +1127,1666 @@ test("complete RU manual search with no matches keeps the detail pane empty", as
   await page.getByRole("button", { name: "Сбросить поиск" }).click();
 
   await expect(page.getByTestId("manual-page-detail")).toContainText("14 / 200");
+});
+
+test("Pandemia vial prototype opens as a one-section native Russian PDF-faithful composition", async ({ page }, testInfo) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  const ordinaryMaterialsBodyTextSize = await page.locator(".material-unit-copy p").first().evaluate((element) =>
+    Number.parseFloat(window.getComputedStyle(element).fontSize)
+  );
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/#pandemia-vial$/);
+
+  const prototype = page.getByTestId("pandemia-prototype");
+  const pageCanvas = prototype.getByTestId("pandemia-page");
+  await expect(prototype).toBeVisible();
+  await expect(prototype.getByTestId("pandemia-responsive-prose")).toHaveCount(2);
+  await expect(prototype.getByTestId("pandemia-stage-scroll").locator('[data-prose-role="responsive"]')).toHaveCount(0);
+  await expect(pageCanvas).toHaveAttribute("data-rendering", "native-html-css-svg");
+  await expect(prototype.getByTestId("pandemia-native-layer")).toBeVisible();
+  await expect(prototype.getByTestId("pandemia-native-shape")).toHaveCount(12);
+  await expect(prototype.getByTestId("pandemia-crop-asset")).toHaveCount(7);
+  await expect(prototype.getByTestId("pandemia-svg-icon")).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-native-region")).toHaveCount(0);
+  await expect(pageCanvas.locator('[data-shape-id="corner-motif"]')).toHaveCount(0);
+  await expect(pageCanvas.locator('[data-segment-id="page-marker"]')).toHaveCount(0);
+  await expect(pageCanvas.locator('[data-segment-id="footnote"]')).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+  await expect(prototype.getByText(/Дорожное движение - одна из самых сложных систем/)).toBeVisible();
+  await expect(prototype.getByTestId("pandemia-segment").filter({ hasText: /В мире/ })).toBeVisible();
+  await expect(prototype.getByTestId("pandemia-segment").filter({ hasText: /В городе\s+Буэнос-Айрес/ })).toBeVisible();
+  await expect(prototype.getByText(/1,4 МИЛЛИОНА/)).toBeVisible();
+  await expect(prototype.getByText(/50 МИЛЛИОНОВ/)).toBeVisible();
+  await expect(prototype.getByText(/людей ранены за год/)).toBeVisible();
+  await expect(prototype.getByText(/96\s+погибших/)).toBeVisible();
+  await expect(prototype.getByText(/48%\s+на мото/)).toBeVisible();
+  await expect(prototype.getByText(/34%\s+пешком/)).toBeVisible();
+  await expect(prototype.getByText(/11%\s+в авто/)).toBeVisible();
+  await expect(prototype.getByText(/8 из 10/)).toBeVisible();
+  await expect(prototype.getByText(/49%\s+от 25 до 54 лет/)).toBeVisible();
+  await expect(prototype.getByText(/Это показывает: чтобы дороги стали безопаснее/)).toBeVisible();
+  await expect(prototype.getByText(/GCBA, OSV/)).toHaveCount(0);
+  await expect(prototype.getByText(/Эти данные взяты из статистического отчета/)).toHaveCount(0);
+  await expect(prototype.getByText(/Отчет подготовила Обсерватория/)).toHaveCount(0);
+  await expect(prototype.getByText(/Больше статистических отчетов/)).toHaveCount(0);
+  await expect(prototype.getByText(/observatoriovial/i)).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-source-mask")).toHaveCount(0);
+  await expect(pageCanvas.locator("img")).toHaveCount(7);
+  await expect(pageCanvas).not.toHaveAttribute("style", /page-015\.jpg/);
+  await expect(prototype.getByTestId("pandemia-zoom-fit")).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-zoom-actual")).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-focus-global-context")).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-focus-city-context")).toHaveCount(0);
+  await expect(prototype.getByText("Вписать", { exact: true })).toHaveCount(0);
+  await expect(prototype.getByText("100%", { exact: true })).toHaveCount(0);
+  await expect(prototype.getByRole("button", { name: /Мировой контекст|Контекст города/ })).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-provenance")).toHaveCount(0);
+  await expect(prototype.getByText("Источник и реконструкция", { exact: true })).toHaveCount(0);
+
+  const cropAssets = await prototype.getByTestId("pandemia-crop-asset").evaluateAll((assets) =>
+    assets.map((asset) => {
+      const image = asset as HTMLImageElement;
+      return {
+        id: image.getAttribute("data-asset-id"),
+        src: image.currentSrc,
+        naturalWidth: image.naturalWidth,
+        naturalHeight: image.naturalHeight,
+        kind: image.getAttribute("data-asset-kind"),
+        cleanupStatus: image.getAttribute("data-cleanup-status")
+      };
+    })
+  );
+  for (const asset of cropAssets) {
+    expect(asset.src).toContain("/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/");
+    expect(asset.src).not.toContain("/pages/page-015.jpg");
+    expect(asset.src).not.toMatch(/-clean\.svg|icon-people-grid-8m-2f\.svg/);
+    expect(asset.src, `${asset.id} uses the accepted source-derived crop`).toMatch(/-source\.png(?:[?#].*)?$/);
+    expect(asset.naturalWidth, "visual asset is not a full page raster").toBeLessThan(500);
+    expect(asset.naturalHeight, "visual asset is not a full page raster").toBeLessThan(500);
+    expect(asset.kind, "accepted artwork uses source-derived crops").toBe("cleaned-source-crop");
+    expect(asset.cleanupStatus).toMatch(/no Spanish text|cleaned/i);
+  }
+
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByTestId("manual-page-canvas")).toHaveCount(0);
+  await expect(prototype.getByText("Pandemia vial", { exact: true })).toHaveCount(0);
+  await expect(prototype.getByText("Contexto Mundial", { exact: true })).toHaveCount(0);
+
+  const stageBox = await prototype.getByTestId("pandemia-stage-scroll").boundingBox();
+  const pageBox = await pageCanvas.boundingBox();
+  expect(pageBox?.width ?? 0).toBeGreaterThan(0);
+  expect(pageBox?.width ?? 0, "desktop uses a content-sized web frame, not a tiny island").toBeGreaterThan(850);
+  const pageAspect = (pageBox?.width ?? 1) / (pageBox?.height ?? 1);
+  expect(pageAspect, "prototype is reframed away from the full PDF page aspect").toBeGreaterThan(0.68);
+  expect(pageAspect, "prototype is not the tall full PDF page canvas").toBeLessThan(0.9);
+  const headingBox = await page.getByRole("heading", { name: "Дорожная пандемия" }).boundingBox();
+  expect(headingBox?.y ?? 9999, "first viewport starts on meaningful content, not blank PDF whitespace").toBeLessThan((pageBox?.y ?? 0) + 80);
+  expect(headingBox?.x ?? 9999, "content is close to the web frame edge, not a centered PDF island").toBeLessThan((pageBox?.x ?? 0) + 90);
+  const contentBounds = await pageCanvas.evaluate((article) => {
+    const articleRect = article.getBoundingClientRect();
+    const elementRects = [
+      ...article.querySelectorAll('[data-testid="pandemia-segment"], [data-testid="pandemia-crop-asset"], [data-testid="pandemia-native-shape"]')
+    ]
+      .map((element) => element.getBoundingClientRect())
+      .filter((rect) => rect.width > 0 && rect.height > 0);
+    const left = Math.min(...elementRects.map((rect) => rect.left)) - articleRect.left;
+    const top = Math.min(...elementRects.map((rect) => rect.top)) - articleRect.top;
+    const right = articleRect.right - Math.max(...elementRects.map((rect) => rect.right));
+    const bottom = articleRect.bottom - Math.max(...elementRects.map((rect) => rect.bottom));
+    return {
+      leftRatio: left / articleRect.width,
+      topRatio: top / articleRect.height,
+      rightRatio: right / articleRect.width,
+      bottomRatio: bottom / articleRect.height
+    };
+  });
+  expect(contentBounds.leftRatio, "content frame has no huge left PDF margin").toBeLessThan(0.08);
+  expect(contentBounds.topRatio, "content frame has no huge top PDF margin").toBeLessThan(0.05);
+  expect(contentBounds.rightRatio, "content frame has no huge right PDF margin").toBeLessThan(0.12);
+  expect(contentBounds.bottomRatio, "content frame has no huge bottom PDF margin").toBeLessThan(0.08);
+  if (testInfo.project.name === "mobile") {
+    expect(pageBox?.width ?? 0, "mobile keeps a larger readable fixed-format document").toBeGreaterThan(stageBox?.width ?? 0);
+    const scrollLeft = await prototype.getByTestId("pandemia-stage-scroll").evaluate((element) => element.scrollLeft);
+    expect(scrollLeft, "mobile starts at the reframed content edge instead of panning across blank PDF margin").toBeLessThan(8);
+  }
+
+  await prototype.screenshot({
+    path: testInfo.outputPath(`pandemia-vial-${testInfo.project.name}.png`)
+  });
+
+  async function requireBox(locator: Locator, label: string) {
+    const box = await locator.boundingBox();
+    expect(box, `${label} has a rendered box`).not.toBeNull();
+    return box!;
+  }
+
+  function overlaps(
+    first: { x: number; y: number; width: number; height: number },
+    second: { x: number; y: number; width: number; height: number }
+  ) {
+    return (
+      first.x < second.x + second.width &&
+      first.x + first.width > second.x &&
+      first.y < second.y + second.height &&
+      first.y + first.height > second.y
+    );
+  }
+
+  for (const circle of [
+    { segment: "motorcyclists", asset: "motorcyclist-icon", shape: "motorcyclists-circle" },
+    { segment: "pedestrians", asset: "pedestrian-icon", shape: "pedestrians-circle" },
+    { segment: "car-occupants", asset: "car-icon", shape: "car-occupants-circle" }
+  ]) {
+    const assetLocator = pageCanvas.locator(`[data-asset-id="${circle.asset}"]`);
+    await assetLocator.scrollIntoViewIfNeeded();
+    const textBox = await requireBox(pageCanvas.locator(`[data-segment-id="${circle.segment}"]`), `${circle.segment} text`);
+    const assetBox = await requireBox(assetLocator, `${circle.asset} crop`);
+    const shapeBox = await requireBox(pageCanvas.locator(`[data-shape-id="${circle.shape}"]`), `${circle.shape} shape`);
+
+    expect(textBox.y, `${circle.segment} text starts inside circle`).toBeGreaterThanOrEqual(shapeBox.y - 1);
+    expect(assetBox.x, `${circle.asset} crop starts inside circle`).toBeGreaterThanOrEqual(shapeBox.x - 1);
+    expect(assetBox.x + assetBox.width, `${circle.asset} crop ends inside circle`).toBeLessThanOrEqual(shapeBox.x + shapeBox.width + 1);
+    expect(assetBox.y, `${circle.asset} crop starts inside circle`).toBeGreaterThanOrEqual(shapeBox.y - 1);
+    expect(assetBox.y + assetBox.height, `${circle.asset} crop stays inside circle`).toBeLessThanOrEqual(shapeBox.y + shapeBox.height + 1);
+    expect(textBox.y + textBox.height, `${circle.segment} text stays above icon crop`).toBeLessThanOrEqual(assetBox.y - 4);
+    expect(overlaps(textBox, assetBox), `${circle.segment} text does not overlap icon crop`).toBe(false);
+    const topElementAssetId = await page.evaluate(
+      ({ x, y }) => document.elementFromPoint(x, y)?.closest("[data-asset-id]")?.getAttribute("data-asset-id"),
+      { x: assetBox.x + assetBox.width / 2, y: assetBox.y + assetBox.height / 2 }
+    );
+    expect(topElementAssetId, `${circle.asset} is not covered by text layers or circle backgrounds`).toBe(circle.asset);
+  }
+
+  const peopleGridBox = await requireBox(pageCanvas.locator('[data-asset-id="people-grid-icon"]'), "people grid icon");
+  const peopleGridSemantics = await pageCanvas.locator('[data-asset-id="people-grid-icon"]').evaluate((element) => ({
+    maleCount: element.getAttribute("data-male-count"),
+    femaleCount: element.getAttribute("data-female-count"),
+    totalCount: element.getAttribute("data-total-count"),
+    maleSignature: element.getAttribute("data-male-signature"),
+    femaleSignature: element.getAttribute("data-female-signature"),
+    malePictogramsIdentical: element.getAttribute("data-male-pictograms-identical")
+  }));
+  expect(peopleGridSemantics).toEqual({
+    maleCount: "8",
+    femaleCount: "2",
+    totalCount: "10",
+    maleSignature: "source-pdf-male-silhouette",
+    femaleSignature: "source-pdf-female-silhouette",
+    malePictogramsIdentical: "true"
+  });
+  const maleVictimsBox = await requireBox(pageCanvas.locator('[data-segment-id="male-victims"]'), "male victims row");
+  const maleVictimsPanelBox = await requireBox(pageCanvas.locator('[data-shape-id="male-victims-panel"]'), "male victims gray panel");
+  const peoplePairBox = await requireBox(pageCanvas.locator('[data-asset-id="people-pair-icon"]'), "people pair icon");
+  const ageRangeBox = await requireBox(pageCanvas.locator('[data-segment-id="age-range"]'), "age range row");
+  const ageRangePanelBox = await requireBox(pageCanvas.locator('[data-shape-id="age-range-panel"]'), "age range gray panel");
+  const lowerRowTopAlignmentTolerance = 4;
+  const lowerRowGapMinimum = 28;
+  const lowerRowPanelMaxHeight = 115;
+  const lowerTextPaddingMinimum = 6;
+  expect(
+    Math.abs(peopleGridBox.y - maleVictimsPanelBox.y),
+    "8 из 10 gray row starts on the same horizontal as the people-grid icon"
+  ).toBeLessThanOrEqual(lowerRowTopAlignmentTolerance);
+  expect(
+    Math.abs(peoplePairBox.y - ageRangePanelBox.y),
+    "49% gray row starts on the same horizontal as the people-pair icon"
+  ).toBeLessThanOrEqual(lowerRowTopAlignmentTolerance);
+  expect(maleVictimsPanelBox.x - (peopleGridBox.x + peopleGridBox.width), "people-grid icon keeps a source-like white gap before the 8 из 10 gray panel").toBeGreaterThanOrEqual(lowerRowGapMinimum);
+  expect(ageRangePanelBox.x - (peoplePairBox.x + peoplePairBox.width), "people-pair icon keeps a source-like white gap before the 49% gray panel").toBeGreaterThanOrEqual(lowerRowGapMinimum);
+  expect(maleVictimsPanelBox.height, "8 из 10 gray panel is not vertically oversized").toBeLessThanOrEqual(lowerRowPanelMaxHeight);
+  expect(ageRangePanelBox.height, "49% gray panel is not vertically oversized").toBeLessThanOrEqual(lowerRowPanelMaxHeight);
+  for (const row of [
+    { iconBox: peopleGridBox, textBox: maleVictimsBox, panelBox: maleVictimsPanelBox, label: "male victims text" },
+    { iconBox: peoplePairBox, textBox: ageRangeBox, panelBox: ageRangePanelBox, label: "age range text" }
+  ]) {
+    const rowCenterDelta = Math.abs(row.iconBox.y + row.iconBox.height / 2 - (row.panelBox.y + row.panelBox.height / 2));
+    const rowBottomDelta = Math.abs(row.iconBox.y + row.iconBox.height - (row.panelBox.y + row.panelBox.height));
+    const panelToIconHeightRatio = row.panelBox.height / row.iconBox.height;
+    const lowerPanelEmptySpaceRatio = Math.max(0, row.panelBox.height - row.textBox.height) / row.panelBox.height;
+    const lowerTextBottomPadding = row.panelBox.y + row.panelBox.height - (row.textBox.y + row.textBox.height);
+    expect(rowCenterDelta, `${row.label} gray panel stays vertically centered with its pictogram row`).toBeLessThanOrEqual(3);
+    expect(rowBottomDelta, `${row.label} gray panel bottom aligns with its pictogram row`).toBeLessThanOrEqual(3);
+    expect(panelToIconHeightRatio, `${row.label} gray panel height matches the pictogram row`).toBeGreaterThanOrEqual(0.94);
+    expect(panelToIconHeightRatio, `${row.label} gray panel height matches the pictogram row`).toBeLessThanOrEqual(1.06);
+    expect(row.textBox.x, `${row.label} starts inside the aligned gray panel`).toBeGreaterThanOrEqual(row.panelBox.x - 1);
+    expect(row.textBox.y - row.panelBox.y, `${row.label} has source-like top padding inside the gray panel`).toBeGreaterThanOrEqual(lowerTextPaddingMinimum);
+    expect(row.textBox.x + row.textBox.width, `${row.label} ends inside the aligned gray panel`).toBeLessThanOrEqual(row.panelBox.x + row.panelBox.width + 1);
+    expect(lowerTextBottomPadding, `${row.label} has source-like bottom padding inside the gray panel`).toBeGreaterThanOrEqual(lowerTextPaddingMinimum);
+    expect(lowerTextBottomPadding, `${row.label} has no large lower empty area`).toBeLessThanOrEqual(row.panelBox.height * 0.24);
+    expect(lowerPanelEmptySpaceRatio, `${row.label} gray panel remains compact around the text`).toBeLessThanOrEqual(0.32);
+  }
+  const airplaneStripBox = await requireBox(pageCanvas.locator('[data-shape-id="airplane-strip-panel"]'), "airplane blue strip");
+  const airplaneCapBox = await requireBox(pageCanvas.locator('[data-shape-id="airplane-strip-cap"]'), "airplane localized blue cap");
+  const airplanePanelBox = await requireBox(pageCanvas.locator('[data-shape-id="airplane-card-panel"]'), "airplane gray card");
+  const airplaneIconBox = await requireBox(pageCanvas.locator('[data-asset-id="airplane-icon"]'), "airplane icon");
+  const airplaneCardTextBox = await requireBox(pageCanvas.locator('[data-segment-id="airplane-card"]'), "airplane card text");
+  const stadiumStripBox = await requireBox(pageCanvas.locator('[data-shape-id="stadium-strip-panel"]'), "stadium blue strip");
+  const stadiumCapBox = await requireBox(pageCanvas.locator('[data-shape-id="stadium-strip-cap"]'), "stadium localized blue cap");
+  const stadiumPanelBox = await requireBox(pageCanvas.locator('[data-shape-id="stadium-card-panel"]'), "stadium gray card");
+  const stadiumIconBox = await requireBox(pageCanvas.locator('[data-asset-id="stadium-icon"]'), "stadium icon");
+  const stadiumCardTextBox = await requireBox(pageCanvas.locator('[data-segment-id="stadium-card"]'), "stadium card text");
+  const blueStripCornerRadii = await pageCanvas.locator('[data-shape-id$="-strip-panel"]').evaluateAll((elements) =>
+    elements.map((element) => {
+      const style = window.getComputedStyle(element);
+      return {
+        id: element.getAttribute("data-shape-id"),
+        topLeft: style.borderTopLeftRadius,
+        topRight: style.borderTopRightRadius,
+        bottomLeft: style.borderBottomLeftRadius,
+        bottomRight: style.borderBottomRightRadius
+      };
+    })
+  );
+  const globalCardTextPaddingMinimum = 4;
+  const globalCardHeightAlignmentTolerance = 2;
+  const globalCardBottomAlignmentTolerance = 2;
+  expect(Math.abs(airplanePanelBox.height - stadiumPanelBox.height), "airplane and stadium gray panels use matching source-like height").toBeLessThanOrEqual(globalCardHeightAlignmentTolerance);
+  expect(
+    Math.abs(airplanePanelBox.y + airplanePanelBox.height - (stadiumPanelBox.y + stadiumPanelBox.height)),
+    "airplane and stadium gray panel bottoms align on the same baseline grid"
+  ).toBeLessThanOrEqual(globalCardBottomAlignmentTolerance);
+  for (const radius of blueStripCornerRadii) {
+    expect(radius.topLeft, `${radius.id} keeps a flat rectangular top-left corner`).toBe("0px");
+    expect(radius.topRight, `${radius.id} keeps a flat rectangular top-right corner`).toBe("0px");
+    expect(radius.bottomLeft, `${radius.id} keeps a flat rectangular bottom-left corner`).toBe("0px");
+    expect(radius.bottomRight, `${radius.id} keeps a flat rectangular bottom-right corner`).toBe("0px");
+  }
+  for (const card of [
+    { panelBox: airplanePanelBox, textBox: airplaneCardTextBox, stripBox: airplaneStripBox, capBox: airplaneCapBox, iconBox: airplaneIconBox, label: "airplane" },
+    { panelBox: stadiumPanelBox, textBox: stadiumCardTextBox, stripBox: stadiumStripBox, capBox: stadiumCapBox, iconBox: stadiumIconBox, label: "stadium" }
+  ]) {
+    const topPadding = card.textBox.y - card.panelBox.y;
+    const bottomPadding = card.panelBox.y + card.panelBox.height - (card.textBox.y + card.textBox.height);
+    const emptySpaceRatio = Math.max(0, card.panelBox.height - card.textBox.height) / card.panelBox.height;
+    const panelCenterOffset = Math.abs(card.textBox.y + card.textBox.height / 2 - (card.panelBox.y + card.panelBox.height / 2));
+    expect(card.panelBox.height, `${card.label} gray card is not vertically oversized`).toBeLessThanOrEqual(110);
+    expect(topPadding, `${card.label} card text keeps source-like top padding`).toBeGreaterThanOrEqual(globalCardTextPaddingMinimum);
+    expect(bottomPadding, `${card.label} card text keeps source-like bottom padding`).toBeGreaterThanOrEqual(globalCardTextPaddingMinimum);
+    expect(bottomPadding, `${card.label} card has no large lower empty area`).toBeLessThanOrEqual(card.panelBox.height * 0.26);
+    expect(emptySpaceRatio, `${card.label} gray card density stays close to the source`).toBeLessThanOrEqual(0.38);
+    expect(panelCenterOffset, `${card.label} text remains vertically balanced in the gray card`).toBeLessThanOrEqual(card.panelBox.height * 0.12);
+    expect(card.stripBox.y + card.stripBox.height, `${card.label} blue strip touches the gray card`).toBeGreaterThanOrEqual(card.panelBox.y - 1);
+    expect(card.stripBox.y + card.stripBox.height, `${card.label} blue strip does not drift past the gray card seam`).toBeLessThanOrEqual(card.panelBox.y + 2);
+    expect(card.capBox.width, `${card.label} cap is localized, not a full-width rounded strip`).toBeLessThanOrEqual(card.stripBox.width * 0.55);
+    expect(card.capBox.x, `${card.label} cap starts inside the flat strip width`).toBeGreaterThan(card.stripBox.x);
+    expect(card.capBox.x + card.capBox.width, `${card.label} cap ends inside the flat strip width`).toBeLessThan(card.stripBox.x + card.stripBox.width);
+    expect(Math.abs((card.capBox.x + card.capBox.width / 2) - (card.iconBox.x + card.iconBox.width / 2)), `${card.label} cap is centered under the source icon`).toBeLessThanOrEqual(card.iconBox.width * 0.25);
+    expect(card.capBox.y, `${card.label} cap rises above the flat strip`).toBeLessThan(card.stripBox.y);
+    expect(card.capBox.y + card.capBox.height, `${card.label} localized cap merges into the flat strip without a white seam`).toBeGreaterThanOrEqual(card.stripBox.y + card.stripBox.height - 1);
+    expect(card.capBox.y + card.capBox.height, `${card.label} localized cap remains aligned with the strip bottom instead of becoming a separate dome`).toBeLessThanOrEqual(card.stripBox.y + card.stripBox.height + 1);
+    expect(card.iconBox.y + card.iconBox.height, `${card.label} icon visually links into the localized cap`).toBeGreaterThanOrEqual(card.capBox.y + 1);
+    expect(card.iconBox.y, `${card.label} icon remains visibly above the localized strip cap`).toBeLessThan(card.capBox.y);
+  }
+  for (const shapeId of ["motorcyclists-circle", "pedestrians-circle", "car-occupants-circle"]) {
+    const shapeBox = await requireBox(pageCanvas.locator(`[data-shape-id="${shapeId}"]`), `${shapeId} shape`);
+    expect(shapeBox.y + shapeBox.height, `${shapeId} leaves vertical gap before people-grid icon`).toBeLessThanOrEqual(peopleGridBox.y - 8);
+    expect(shapeBox.y + shapeBox.height, `${shapeId} leaves vertical gap before male-victims row`).toBeLessThanOrEqual(maleVictimsBox.y - 8);
+    expect(overlaps(shapeBox, peopleGridBox), `${shapeId} does not overlap people-grid icon`).toBe(false);
+    expect(overlaps(shapeBox, maleVictimsBox), `${shapeId} does not overlap male-victims row`).toBe(false);
+  }
+
+  const readableSizes = await prototype.getByTestId("pandemia-segment").evaluateAll((elements) =>
+    elements.map((element) => {
+      const style = window.getComputedStyle(element);
+      return {
+        id: element.getAttribute("data-segment-id"),
+        role: element.getAttribute("data-segment-role"),
+        fontSize: Number.parseFloat(style.fontSize),
+        whiteSpace: style.whiteSpace,
+        textContent: element.textContent,
+        scrollWidth: element.scrollWidth,
+        clientWidth: element.clientWidth,
+        scrollHeight: element.scrollHeight,
+        clientHeight: element.clientHeight,
+        pointerEvents: style.pointerEvents,
+        userSelect: style.userSelect
+      };
+    })
+  );
+  for (const size of readableSizes) {
+    const minimum = Math.max(14, ordinaryMaterialsBodyTextSize * 0.875);
+    expect(size.fontSize, `${size.id} remains comparable to ordinary study-material text`).toBeGreaterThanOrEqual(minimum);
+    expect(size.scrollWidth, `${size.id} does not overflow horizontally`).toBeLessThanOrEqual(size.clientWidth + 2);
+    expect(size.scrollHeight, `${size.id} does not overflow vertically`).toBeLessThanOrEqual(size.clientHeight + 4);
+    expect(size.pointerEvents, `${size.id} remains selectable/copyable DOM text`).not.toBe("none");
+    expect(size.userSelect, `${size.id} does not disable text selection`).not.toBe("none");
+  }
+  for (const paragraph of readableSizes.filter((size) => size.role === "intro" || size.role === "body")) {
+    expect(paragraph.fontSize, `${paragraph.id} matches ordinary Materials body text`).toBeGreaterThanOrEqual(ordinaryMaterialsBodyTextSize - 0.5);
+    expect(paragraph.fontSize, `${paragraph.id} does not become oversized relative to Materials body text`).toBeLessThanOrEqual(ordinaryMaterialsBodyTextSize + 2);
+    expect(paragraph.whiteSpace, `${paragraph.id} uses adaptive paragraph wrapping`).toBe("normal");
+    expect(paragraph.textContent, `${paragraph.id} has no forced PDF-style line breaks`).not.toMatch(/\n/);
+  }
+
+  const typographyMetrics = await prototype.getByTestId("pandemia-segment").evaluateAll((elements) =>
+    elements.map((element) => {
+      const style = window.getComputedStyle(element);
+      const fontSize = Number.parseFloat(style.fontSize);
+      const firstLine = window.getComputedStyle(element, "::first-line");
+      return {
+        id: element.getAttribute("data-segment-id"),
+        role: element.getAttribute("data-segment-role"),
+        fontFamily: style.fontFamily,
+        fontWeight: Number.parseFloat(style.fontWeight),
+        lineHeight: Number.parseFloat(style.lineHeight),
+        lineHeightRatio: Number.parseFloat(style.lineHeight) / fontSize,
+        letterSpacing: style.letterSpacing,
+        firstLineFontWeight: Number.parseFloat(firstLine.fontWeight),
+        firstLineFontFamily: firstLine.fontFamily
+      };
+    })
+  );
+  const headingNoWrapMetrics = await page.getByRole("heading", { name: "Дорожная пандемия" }).evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return {
+      height: rect.height,
+      lineHeight: Number.parseFloat(style.lineHeight),
+      maxWidth: style.maxWidth,
+      scrollWidth: element.scrollWidth,
+      clientWidth: element.clientWidth
+    };
+  });
+  expect(headingNoWrapMetrics.maxWidth, "heading does not keep the rejected forced 16ch/narrow max-width").not.toMatch(/ch$/);
+  if (testInfo.project.name !== "mobile") {
+    expect(headingNoWrapMetrics.height, "desktop heading stays on one line at normal in-app width").toBeLessThanOrEqual(headingNoWrapMetrics.lineHeight * 1.35);
+  }
+  expect(headingNoWrapMetrics.scrollWidth, "heading is not clipped after removing forced wrap").toBeLessThanOrEqual(headingNoWrapMetrics.clientWidth + 2);
+  for (const metrics of typographyMetrics) {
+    expect(metrics.fontFamily, `${metrics.id} uses the readable modern UI Pandemia stack`).toMatch(/system-ui|-apple-system|BlinkMacSystemFont|Segoe UI|Roboto|Noto Sans|Helvetica Neue|Arial/i);
+    expect(metrics.fontFamily, `${metrics.id} does not use the rejected SF rounded stack`).not.toMatch(/^"?SFNSRounded|^"?SF Compact Rounded|^"?SF Pro Rounded|Arial Rounded/i);
+    expect(metrics.fontFamily, `${metrics.id} does not use Avenir as the primary stack`).not.toMatch(/^"?Avenir/i);
+    expect(metrics.fontFamily, `${metrics.id} does not use app Inter as the Pandemia primary stack`).not.toMatch(/Inter/i);
+    expect(metrics.letterSpacing, `${metrics.id} keeps non-negative readable letter spacing`).not.toMatch(/^-/);
+  }
+  const headingTypography = typographyMetrics.find((metrics) => metrics.id === "heading");
+  const introTypography = typographyMetrics.find((metrics) => metrics.id === "intro");
+  const bodyTypography = typographyMetrics.find((metrics) => metrics.id === "body");
+  const infographicTypography = typographyMetrics.filter((metrics) =>
+    ["context-label", "stat-strip", "stat-card", "city-stat"].includes(metrics.role ?? "")
+  );
+  expect(headingTypography?.fontWeight, "heading uses a readable strong UI weight").toBeGreaterThanOrEqual(680);
+  expect(headingTypography?.fontWeight, "heading avoids an over-heavy decorative weight").toBeLessThanOrEqual(760);
+  expect(headingTypography?.lineHeightRatio, "heading keeps compact readable line height").toBeGreaterThanOrEqual(1.02);
+  expect(headingTypography?.lineHeightRatio, "heading keeps compact readable line height").toBeLessThanOrEqual(1.16);
+  for (const metrics of [introTypography, bodyTypography]) {
+    expect(metrics?.fontWeight, `${metrics?.id} uses a normal readable UI body weight`).toBeGreaterThanOrEqual(390);
+    expect(metrics?.fontWeight, `${metrics?.id} uses a normal readable UI body weight`).toBeLessThanOrEqual(430);
+    expect(metrics?.lineHeightRatio, `${metrics?.id} uses comfortable paragraph rhythm`).toBeGreaterThanOrEqual(1.55);
+    expect(metrics?.lineHeightRatio, `${metrics?.id} uses looser paragraph rhythm`).toBeLessThanOrEqual(1.75);
+  }
+  expect(infographicTypography.length, "infographic text roles are included in computed typography evidence").toBeGreaterThanOrEqual(8);
+  for (const metrics of infographicTypography) {
+    expect(metrics.fontWeight, `${metrics.id} infographic label/statistic uses readable strong UI weight`).toBeGreaterThanOrEqual(680);
+    expect(metrics.fontWeight, `${metrics.id} infographic label/statistic avoids an ultra-heavy decorative weight`).toBeLessThanOrEqual(760);
+    expect(metrics.lineHeight, `${metrics.id} records a concrete infographic line-height`).toBeGreaterThan(0);
+  }
+  const contextTypography = typographyMetrics.filter((metrics) => metrics.role === "context-label");
+  expect(contextTypography.map((metrics) => metrics.id).sort()).toEqual(["city-label", "global-label"]);
+  expect(new Set(contextTypography.map((metrics) => metrics.fontWeight)).size).toBe(1);
+  for (const metrics of contextTypography) {
+    expect(metrics.firstLineFontWeight, `${metrics.id} has no partial context-label first-line weight override`).toBe(metrics.fontWeight);
+    expect(metrics.firstLineFontFamily, `${metrics.id} has no partial context-label first-line font override`).toBe(metrics.fontFamily);
+  }
+
+  const selectedProseText = await prototype.evaluate((root) => {
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    const range = document.createRange();
+    const intro = root.querySelector('[data-segment-id="intro"]');
+    const body = root.querySelector('[data-segment-id="body"]');
+    if (!intro || !body || !selection) return "";
+    range.setStartBefore(intro);
+    range.setEndAfter(body);
+    selection.addRange(range);
+    const selected = selection.toString();
+    selection.removeAllRanges();
+    return selected;
+  });
+  expect(selectedProseText, "intro/body prose can be selected as real DOM text").toContain("Дорожное движение - одна из самых сложных систем");
+  expect(selectedProseText, "bottom conclusion can be selected as real DOM text").toContain("Это показывает: чтобы дороги стали безопаснее");
+
+  async function expectResponsiveProseFitsViewport(label: string) {
+    const problems = await prototype.evaluate((root) => {
+      const tolerance = 2;
+      const viewportWidth = document.documentElement.clientWidth;
+      const issues: string[] = [];
+      if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+        issues.push(`document requires horizontal scroll: ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+      }
+      const stage = root.querySelector('[data-testid="pandemia-stage-scroll"]');
+      for (const element of Array.from(root.querySelectorAll('[data-prose-role="responsive"]'))) {
+        const segmentId = element.getAttribute("data-segment-id") ?? "unknown";
+        const role = element.getAttribute("data-segment-role") ?? "unknown";
+        const rect = element.getBoundingClientRect();
+        const style = window.getComputedStyle(element);
+        if (stage?.contains(element)) issues.push(`${segmentId} prose is inside the horizontal-scroll stage`);
+        if (style.position === "absolute" || style.position === "fixed") issues.push(`${segmentId} prose is pinned instead of responsive flow`);
+        if (rect.left < -tolerance || rect.right > viewportWidth + tolerance) {
+          issues.push(`${segmentId} prose overflows viewport horizontally: ${rect.left}..${rect.right} of ${viewportWidth}`);
+        }
+        if (element.scrollWidth > element.clientWidth + tolerance) {
+          issues.push(`${segmentId} prose content is clipped horizontally: ${element.scrollWidth} > ${element.clientWidth}`);
+        }
+        if ((role === "intro" || role === "body") && style.whiteSpace !== "normal") {
+          issues.push(`${segmentId} prose does not use normal wrapping: ${style.whiteSpace}`);
+        }
+      }
+      return issues;
+    });
+    expect(problems, label).toEqual([]);
+  }
+
+  await expectResponsiveProseFitsViewport(`${testInfo.project.name} responsive prose`);
+  if (testInfo.project.name === "chromium") {
+    await page.setViewportSize({ width: 760, height: 900 });
+    await expectResponsiveProseFitsViewport("narrow in-app viewport responsive prose");
+    await prototype.screenshot({
+      path: testInfo.outputPath("pandemia-vial-narrow.png")
+    });
+  }
+
+  await expect(prototype.getByTestId("pandemia-focus-frame")).toHaveCount(0);
+  await expect(prototype.getByTestId("pandemia-focus-note")).toHaveCount(0);
+});
+
+test("Introduction index routes open as separate native Russian document pages", async ({ page }, testInfo) => {
+  async function requireBox(locator: Locator, label: string) {
+    const box = await locator.boundingBox();
+    expect(box, `${label} has a rendered box`).not.toBeNull();
+    return box!;
+  }
+
+  function isInside(
+    inner: { x: number; y: number; width: number; height: number },
+    outer: { x: number; y: number; width: number; height: number },
+    padding: number
+  ) {
+    return (
+      inner.x >= outer.x + padding &&
+      inner.y >= outer.y + padding &&
+      inner.x + inner.width <= outer.x + outer.width - padding &&
+      inner.y + inner.height <= outer.y + outer.height - padding
+    );
+  }
+
+  const introRoutes = [
+    {
+      id: "intro-road-pandemic",
+      hash: "#pandemia-vial",
+      title: "Дорожная пандемия",
+      sample: /Дорожное движение - одна из самых сложных систем/,
+      forbiddenSpanish: [/Pandemia vial/, /Contexto Mundial/]
+    },
+    {
+      id: "intro-ethical-civic-approach",
+      hash: "#intro-enfoque-etico",
+      title: "Этико-гражданский подход в дорожной культуре",
+      sample: /В CABA действует Закон 2148/,
+      forbiddenSpanish: [/Enfoque/, /En CABA rige/]
+    },
+    {
+      id: "intro-incident",
+      hash: "#intro-accidente-incidente",
+      title: "Авария или дорожный инцидент?",
+      sample: /Если этого можно избежать, это не авария/,
+      forbiddenSpanish: [/Accidente/, /Factores de Riesgo/, /Recomendaciones/]
+    },
+    {
+      id: "intro-road-safety-plan",
+      hash: "#intro-plan-seguridad-vial",
+      title: "План дорожной безопасности города Буэнос-Айрес",
+      sample: /Vision Zero/,
+      forbiddenSpanish: [/Plan de seguridad vial/, /Objetivos/, /Ejes de trabajo/, /El tránsito es un sistema/]
+    }
+  ];
+
+  for (const route of introRoutes) {
+    await page.goto(`/${route.hash}`);
+    await expect(page).toHaveURL(new RegExp(`${route.hash.replace("#", "#")}$`));
+    const reader = page.getByTestId("introduction-reader");
+    await expect(reader).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Руководство$/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Руководство 4R/ })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: /^Введение$/ })).toHaveCount(0);
+    await expect(reader.getByTestId("manual-guide-shell")).toBeVisible();
+    await expect(reader.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "introduction");
+    await expect(reader.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-child-id", route.id);
+    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Предисловие");
+    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Глава 1. К устойчивой мобильности");
+    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Приложение IV. Дорожные знаки и разметка");
+    await expect(reader.getByTestId("manual-guide-nav").locator('[data-status="pending"]').first()).toBeVisible();
+    await expect(reader.locator('[data-testid="intro-index-nav"]')).toHaveCount(0);
+    const activeIntroRoute = page.getByTestId(`intro-route-${route.id}`);
+    const activeRouteItem = reader.getByTestId(`manual-guide-route-item-${route.id}`);
+    await expect(activeRouteItem).toHaveAttribute("role", "listitem");
+    await expect(activeRouteItem.getByRole("button", { name: route.title, exact: true })).toBeVisible();
+    await expect(activeIntroRoute).not.toHaveAttribute("role", "listitem");
+    await expect(activeIntroRoute).toHaveClass(/active/);
+    await expect(activeIntroRoute).toHaveAttribute("aria-current", "page");
+    await expect(activeIntroRoute).toHaveAttribute("aria-label", route.title);
+    await expect(reader.locator('button[role="listitem"]')).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: route.title })).toBeVisible();
+    await expect(reader).toContainText(route.sample);
+    await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+    await expect(page.getByTestId("manual-page-canvas")).toHaveCount(0);
+    await expect(reader.locator("iframe, object, embed")).toHaveCount(0);
+    await expect(reader.locator('[data-testid="manual-source-mask"], [data-testid="pandemia-source-mask"]')).toHaveCount(0);
+    for (const forbidden of route.forbiddenSpanish) {
+      await expect(reader.getByText(forbidden)).toHaveCount(0);
+    }
+
+    const issues = await reader.evaluate((root) => {
+      const tolerance = 2;
+      const viewportWidth = document.documentElement.clientWidth;
+      const problems: string[] = [];
+      if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+        problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+      }
+      for (const element of Array.from(root.querySelectorAll('[data-testid="intro-article-block"], [data-testid="pandemia-segment"][data-prose-role="responsive"]'))) {
+        const rect = element.getBoundingClientRect();
+        const style = window.getComputedStyle(element);
+        const id = element.getAttribute("data-block-id") ?? element.getAttribute("data-segment-id") ?? "unknown";
+        if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+          problems.push(`${id} overflows viewport horizontally`);
+        }
+        if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+        if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+        if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") {
+          const kind = element.getAttribute("data-block-kind");
+          const role = element.getAttribute("data-segment-role");
+          if (kind === "paragraph" || kind === "lead" || role === "intro" || role === "body") problems.push(`${id} forces PDF-style line breaks`);
+        }
+      }
+      return problems;
+    });
+    expect(issues).toEqual([]);
+
+    if (route.id === "intro-road-safety-plan") {
+      const photo = reader.getByTestId("intro-photo-crop");
+      await expect(photo).toBeVisible();
+      await expect(photo).toHaveAttribute("src", /sections\/intro-road-safety-plan\/child-seat-photo-source\.jpg/);
+      await expect(photo).toHaveAttribute("data-cleanup-status", /excludes the Spanish quote/);
+      await expect(reader).toContainText("Дорожное движение - это система, которую строят все граждане");
+    }
+
+    if (route.id === "intro-incident") {
+      await expect(reader.getByTestId("intro-source-artwork")).toHaveCount(3);
+      await expect(reader.locator('[data-artwork-id="recommendation-clipboard"]')).toHaveCount(0);
+      await expect(reader.locator(".intro-recommendation-icon")).toHaveCount(0);
+      for (const assetId of ["risk-ambiental", "risk-vehicular", "risk-humano"]) {
+        const artwork = reader.locator(`[data-artwork-id="${assetId}"]`);
+        await expect(artwork).toBeVisible();
+        await expect(artwork).toHaveAttribute("data-source-page", "17");
+        await expect(artwork).toHaveAttribute("data-visible-spanish", "false");
+        await expect(artwork).toHaveAttribute("data-fidelity-role", /page 17/);
+        const box = await artwork.boundingBox();
+        const maxRenderedComponentSize = 180;
+        expect(box?.width ?? 0, `${assetId} remains bounded source component art, not a full page raster`).toBeLessThan(
+          maxRenderedComponentSize
+        );
+        expect(box?.height ?? 0, `${assetId} remains bounded source component art, not a full page raster`).toBeLessThan(
+          maxRenderedComponentSize
+        );
+      }
+      const riskCards = reader.locator(".intro-risk-card");
+      await expect(riskCards).toHaveCount(3);
+      for (const riskId of ["ambiental", "vehicular", "humano"]) {
+        const card = reader.locator(`.intro-risk-card[data-risk-id="${riskId}"]`);
+        const lobe = card.locator(".intro-risk-lobe");
+        const symbol = card.locator(".intro-risk-symbol");
+        const cardBox = await requireBox(card, `${riskId} risk card`);
+        const lobeBox = await requireBox(lobe, `${riskId} circular lobe`);
+        const symbolBox = await requireBox(symbol, `${riskId} source pictogram`);
+        const riskTitleBox = await requireBox(card.locator("h4"), `${riskId} risk title`);
+        const riskTextBox = await requireBox(card.locator("p"), `${riskId} risk text`);
+        const lobeStyles = await lobe.evaluate((element) => {
+          const style = window.getComputedStyle(element);
+          return {
+            borderRadius: style.borderRadius,
+            overflow: style.overflow,
+            backgroundColor: style.backgroundColor
+          };
+        });
+        const symbolStyles = await symbol.evaluate((element) => {
+          const style = window.getComputedStyle(element);
+          return {
+            objectFit: style.objectFit,
+            mixBlendMode: style.mixBlendMode
+          };
+        });
+        const naturalSymbolBounds = await symbol.evaluate(async (element) => {
+          const image = element as HTMLImageElement;
+          if (!image.complete) {
+            await image.decode();
+          }
+          const canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d");
+          if (!context) {
+            throw new Error("Canvas context unavailable for page 17 risk pictogram bounds check");
+          }
+          context.drawImage(image, 0, 0);
+          const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+          let minX = canvas.width;
+          let minY = canvas.height;
+          let maxX = -1;
+          let maxY = -1;
+          for (let y = 0; y < canvas.height; y += 1) {
+            for (let x = 0; x < canvas.width; x += 1) {
+              const alpha = data[(y * canvas.width + x) * 4 + 3];
+              if (alpha <= 8) continue;
+              minX = Math.min(minX, x);
+              minY = Math.min(minY, y);
+              maxX = Math.max(maxX, x);
+              maxY = Math.max(maxY, y);
+            }
+          }
+          return {
+            naturalWidth: image.naturalWidth,
+            naturalHeight: image.naturalHeight,
+            marginLeft: minX,
+            marginTop: minY,
+            marginRight: canvas.width - 1 - maxX,
+            marginBottom: canvas.height - 1 - maxY,
+            contentWidth: maxX - minX + 1,
+            contentHeight: maxY - minY + 1
+          };
+        });
+        const panelGeometry = await card.evaluate((element) => {
+          const cardRect = element.getBoundingClientRect();
+          const lobeRect = element.querySelector(".intro-risk-lobe")!.getBoundingClientRect();
+          const before = window.getComputedStyle(element, "::before");
+          const cardStyle = window.getComputedStyle(element);
+          const toPixels = (value: string) => {
+            const parsed = Number.parseFloat(value);
+            return Number.isFinite(parsed) ? parsed : 0;
+          };
+          const panelTopOffset = toPixels(before.top);
+          const panelLeftOffset = toPixels(before.left);
+          const panelHeight = toPixels(before.height);
+          return {
+            cardBackground: cardStyle.backgroundColor,
+            panelBackground: before.backgroundColor,
+            panelContent: before.content,
+            panelBorderRadius: before.borderRadius,
+            panel: {
+              x: cardRect.x + panelLeftOffset,
+              y: cardRect.y + panelTopOffset,
+              height: panelHeight,
+              right: cardRect.x + cardRect.width
+            },
+            lobe: {
+              x: lobeRect.x,
+              y: lobeRect.y,
+              width: lobeRect.width,
+              height: lobeRect.height
+            }
+          };
+        });
+        expect(Math.abs(lobeBox.width - lobeBox.height), `${riskId} lobe is circular`).toBeLessThanOrEqual(1);
+        expect(lobeBox.width, `${riskId} circular lobe rejects the previous too-small/compressed risk row`).toBeGreaterThanOrEqual(110);
+        expect(lobeBox.x, `${riskId} lobe is integrated into the left edge, not a square crop box`).toBeLessThan(cardBox.x + 4);
+        expect(lobeBox.x + lobeBox.width, `${riskId} lobe overlaps the long rounded panel`).toBeGreaterThan(cardBox.x + 28);
+        expect(panelGeometry.cardBackground, `${riskId} card container itself is transparent so no full-height rectangle protrudes`).toBe("rgba(0, 0, 0, 0)");
+        expect(panelGeometry.panelContent, `${riskId} right panel is drawn by the tested pseudo-element`).not.toBe("none");
+        expect(panelGeometry.panel.height, `${riskId} right rectangle rejects the previous too-short compressed panel`).toBeGreaterThanOrEqual(92);
+        expect(panelGeometry.panel.height, `${riskId} right rectangle stays lower than the circular lobe`).toBeLessThan(panelGeometry.lobe.height - 2);
+        expect(panelGeometry.panel.y, `${riskId} rectangle top sits inside the circle, hiding square seam corners`).toBeGreaterThan(panelGeometry.lobe.y + 2);
+        expect(
+          panelGeometry.panel.y + panelGeometry.panel.height,
+          `${riskId} rectangle bottom sits inside the circle, hiding square seam corners`
+        ).toBeLessThan(panelGeometry.lobe.y + panelGeometry.lobe.height - 2);
+        expect(panelGeometry.panel.x, `${riskId} rectangle enters the circle instead of starting after it`).toBeGreaterThan(panelGeometry.lobe.x + panelGeometry.lobe.width * 0.5);
+        expect(panelGeometry.panel.x, `${riskId} circle overlaps the rectangle seam enough to mask square corners`).toBeLessThan(
+          panelGeometry.lobe.x + panelGeometry.lobe.width - 12
+        );
+        expect(panelGeometry.panelBorderRadius, `${riskId} right panel keeps only a soft right-side corner`).toMatch(/5px|4px/);
+        const riskTextTop = Math.min(riskTitleBox.y, riskTextBox.y);
+        const riskTextBottom = Math.max(riskTitleBox.y + riskTitleBox.height, riskTextBox.y + riskTextBox.height);
+        expect(riskTextTop - panelGeometry.panel.y, `${riskId} text keeps source-like top padding inside the panel`).toBeGreaterThanOrEqual(7.5);
+        expect(
+          panelGeometry.panel.y + panelGeometry.panel.height - riskTextBottom,
+          `${riskId} text keeps source-like bottom padding inside the panel`
+        ).toBeGreaterThanOrEqual(7.5);
+        expect(isInside(symbolBox, lobeBox, 2), `${riskId} pictogram is fully inside the circular lobe with padding`).toBe(true);
+        expect(lobeStyles.borderRadius, `${riskId} lobe uses circular geometry`).toMatch(/999px|50%/);
+        expect(lobeStyles.overflow, `${riskId} lobe does not hard-crop the source icon`).not.toBe("hidden");
+        expect(symbolStyles.objectFit, `${riskId} source pictogram is contained, not force-cropped`).toBe("contain");
+        expect(symbolStyles.mixBlendMode, `${riskId} source crop blends away any square bitmap background`).toBe("multiply");
+        expect(naturalSymbolBounds.naturalWidth, `${riskId} source pictogram PNG rejects the old tight natural crop width`).toBeGreaterThanOrEqual(256);
+        expect(naturalSymbolBounds.naturalHeight, `${riskId} source pictogram PNG rejects the old tight natural crop height`).toBeGreaterThanOrEqual(256);
+        expect(naturalSymbolBounds.naturalWidth / symbolBox.width, `${riskId} source pictogram is never browser-upscaled`).toBeGreaterThanOrEqual(2);
+        expect(naturalSymbolBounds.naturalHeight / symbolBox.height, `${riskId} source pictogram is never browser-upscaled`).toBeGreaterThanOrEqual(2);
+        for (const [edge, margin] of Object.entries({
+          left: naturalSymbolBounds.marginLeft,
+          top: naturalSymbolBounds.marginTop,
+          right: naturalSymbolBounds.marginRight,
+          bottom: naturalSymbolBounds.marginBottom
+        })) {
+          expect(margin, `${riskId} source pictogram has transparent ${edge} padding and is not clipped by the PNG bounds`).toBeGreaterThanOrEqual(10);
+        }
+        const renderedAlphaBox = {
+          x: symbolBox.x + (naturalSymbolBounds.marginLeft / naturalSymbolBounds.naturalWidth) * symbolBox.width,
+          y: symbolBox.y + (naturalSymbolBounds.marginTop / naturalSymbolBounds.naturalHeight) * symbolBox.height,
+          width: (naturalSymbolBounds.contentWidth / naturalSymbolBounds.naturalWidth) * symbolBox.width,
+          height: (naturalSymbolBounds.contentHeight / naturalSymbolBounds.naturalHeight) * symbolBox.height
+        };
+        const lobeCenter = { x: lobeBox.x + lobeBox.width / 2, y: lobeBox.y + lobeBox.height / 2 };
+        const iconCenter = { x: renderedAlphaBox.x + renderedAlphaBox.width / 2, y: renderedAlphaBox.y + renderedAlphaBox.height / 2 };
+        expect(Math.abs(iconCenter.x - lobeCenter.x), `${riskId} visible pictogram is centered in the circular lobe`).toBeLessThanOrEqual(
+          lobeBox.width * 0.08
+        );
+        expect(Math.abs(iconCenter.y - lobeCenter.y), `${riskId} visible pictogram is vertically centered in the circular lobe`).toBeLessThanOrEqual(
+          lobeBox.height * 0.08
+        );
+        expect(
+          Math.max(renderedAlphaBox.width, renderedAlphaBox.height) / lobeBox.width,
+          `${riskId} visible pictogram occupies a source-like fraction of the circle`
+        ).toBeGreaterThanOrEqual(0.72);
+        expect(
+          Math.max(renderedAlphaBox.width, renderedAlphaBox.height) / lobeBox.width,
+          `${riskId} visible pictogram does not overfill or crop against the lobe edge`
+        ).toBeLessThanOrEqual(0.9);
+        expect(isInside(renderedAlphaBox, lobeBox, 4), `${riskId} visual alpha bounds stay inside the circular lobe`).toBe(true);
+        if (riskId === "humano") {
+          expect(lobeStyles.backgroundColor, "human risk lobe preserves the yellow source row").toBe("rgb(245, 229, 31)");
+          expect(panelGeometry.panelBackground, "human risk rectangle preserves the yellow source row").toBe("rgb(245, 229, 31)");
+        } else {
+          expect(lobeStyles.backgroundColor, `${riskId} risk lobe preserves the gray source row`).toBe("rgb(231, 232, 230)");
+          expect(panelGeometry.panelBackground, `${riskId} risk rectangle preserves the gray source row`).toBe("rgb(231, 232, 230)");
+        }
+      }
+      const riskGaps = await riskCards.evaluateAll((cards) =>
+        cards.map((card) => {
+          const cardRect = card.getBoundingClientRect();
+          const lobeRect = card.querySelector(".intro-risk-lobe")!.getBoundingClientRect();
+          return {
+            id: card.getAttribute("data-risk-id"),
+            card: { y: cardRect.y, height: cardRect.height },
+            lobe: { y: lobeRect.y, height: lobeRect.height }
+          };
+        })
+      );
+      for (let index = 1; index < riskGaps.length; index += 1) {
+        const previous = riskGaps[index - 1];
+        const current = riskGaps[index];
+        const cardGap = current.card.y - (previous.card.y + previous.card.height);
+        const lobeGap = current.lobe.y - (previous.lobe.y + previous.lobe.height);
+        expect(cardGap, `${previous.id} and ${current.id} risk rows keep source-like vertical whitespace`).toBeGreaterThanOrEqual(10);
+        expect(lobeGap, `${previous.id} and ${current.id} circular lobes do not touch or visually merge`).toBeGreaterThanOrEqual(10);
+      }
+      await expect(reader.locator(".intro-recommendation")).toHaveCSS("border-top-width", "2px");
+      await expect(reader.locator(".intro-recommendation strong")).toHaveText("Рекомендации");
+      const recommendation = reader.locator(".intro-recommendation");
+      const recommendationBox = await requireBox(recommendation, "recommendation border");
+      const recommendationTabBox = await requireBox(recommendation.locator("strong"), "recommendation blue tab");
+      const recommendationTextBox = await requireBox(recommendation.locator("p"), "recommendation text");
+      const recommendationStyles = await recommendation.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        const tabStyle = window.getComputedStyle(element.querySelector("strong")!);
+        return {
+          overflow: style.overflow,
+          borderColor: style.borderTopColor,
+          tabBackground: tabStyle.backgroundColor
+        };
+      });
+      const oldIconHit = await page.evaluate(
+        ({ x, y }) =>
+          document
+            .elementsFromPoint(x, y)
+            .map((element) => element.closest("[data-artwork-id]")?.getAttribute("data-artwork-id"))
+            .find(Boolean) ?? null,
+        { x: recommendationBox.x + 24, y: recommendationBox.y - 10 }
+      );
+      expect(recommendationStyles.overflow, "recommendation callout keeps the raised tab unclipped").toBe("visible");
+      expect(recommendationStyles.borderColor, "recommendation border stays aligned with the blue tab").toBe("rgb(39, 135, 166)");
+      expect(recommendationStyles.tabBackground, "recommendation tab keeps the source blue").toBe("rgb(39, 135, 166)");
+      expect(recommendationTabBox.x, "recommendation tab starts inside the border without an icon gap").toBeGreaterThanOrEqual(
+        recommendationBox.x + 12
+      );
+      expect(recommendationTabBox.x + recommendationTabBox.width, "recommendation tab fits within the callout border").toBeLessThan(
+        recommendationBox.x + recommendationBox.width - 12
+      );
+      expect(recommendationTabBox.y, "recommendation tab remains raised above the top border").toBeLessThan(recommendationBox.y);
+      expect(
+        recommendationTabBox.y + recommendationTabBox.height,
+        "recommendation tab visually attaches to the top border instead of floating"
+      ).toBeGreaterThan(recommendationBox.y - 2);
+      expect(recommendationTextBox.y, "recommendation text clears the raised tab").toBeGreaterThan(recommendationTabBox.y + recommendationTabBox.height + 8);
+      expect(oldIconHit, "the old decorative clipboard/notebook artwork is not rendered or clipped at the callout edge").toBeNull();
+    }
+
+    if (route.id === "intro-road-safety-plan") {
+      await expect(reader.getByTestId("intro-consequence-diagram")).toBeVisible();
+      await expect(reader.getByTestId("intro-consequence-diagram").getByTestId("intro-source-artwork")).toHaveCount(1);
+      const consequenceBackground = reader.locator('[data-artwork-id="consequence-diagram-background"]');
+      await expect(consequenceBackground).toBeVisible();
+      await expect(consequenceBackground).toHaveAttribute("src", /diagram-consequences-clean-source\.png/);
+      await expect(consequenceBackground).toHaveAttribute("data-source-page", "18");
+      await expect(consequenceBackground).toHaveAttribute("data-visible-spanish", "false");
+      await expect(consequenceBackground).toHaveAttribute(
+        "data-cleanup-status",
+        /high-DPI PDF source crop from page 18.*local background restoration/
+      );
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /Spanish\/source text cleanup is limited to the original text-bearing regions/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /category labels retain source-shaped text-free label backings from the asset/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /center circle uses circular local-field cleanup inside the original circle, not rectangular\/block cover-up/);
+      await expect(consequenceBackground).toHaveAttribute(
+        "data-cleanup-status",
+        /rectangular cover-up masks are forbidden even when color-matched to the background/
+      );
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no white rectangular mask remnants at category label corners/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no masks cutting connector lines/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no white marks on the black fatal-victims label or wedge/);
+      await expect(consequenceBackground).toHaveAttribute(
+        "data-cleanup-status",
+        /no non-source beige horizontal bars below the diagram or under the institutions block/
+      );
+      await expect(consequenceBackground).toHaveAttribute(
+        "data-cleanup-status",
+        /no non-source black horizontal protrusion to the right of the fatal-victims wedge/
+      );
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no hard-edged center ring\/circle patch seam/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no redrawn geometry/);
+      await expect(consequenceBackground).toHaveAttribute("data-cleanup-status", /no native\/CSS\/SVG reconstruction/);
+      await expect(consequenceBackground).toHaveAttribute("data-source-render-scale", "6");
+      await expect(consequenceBackground).toHaveAttribute("data-fidelity-role", /complete original consequences gauge high-DPI PDF source crop/);
+      await expect(consequenceBackground).toHaveJSProperty("naturalWidth", 3720);
+      await expect(consequenceBackground).toHaveJSProperty("naturalHeight", 1560);
+      const sourceCropAudit = await consequenceBackground.evaluate(async (element) => {
+        const image = element as HTMLImageElement;
+        if (!image.complete) await image.decode();
+        const source = new Image();
+        source.src =
+          "/content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-018.jpg";
+        await source.decode();
+        const crop = { x: 280, y: 560, width: 620, height: 260 };
+        const masks = [
+          { id: "family-label", x: 145, y: 2, width: 170, height: 20, tone: "light" },
+          { id: "family-items", x: 137, y: 26, width: 155, height: 31, tone: "light" },
+          { id: "health-label", x: 340, y: 2, width: 96, height: 20, tone: "light" },
+          { id: "health-items", x: 338, y: 26, width: 160, height: 45, tone: "light" },
+          { id: "institutions-label", x: 97, y: 82, width: 130, height: 20, tone: "light" },
+          { id: "institutions-item-1", x: 96, y: 107, width: 135, height: 13, tone: "light" },
+          { id: "institutions-item-2", x: 96, y: 120, width: 140, height: 13, tone: "light" },
+          { id: "institutions-item-3", x: 96, y: 133, width: 136, height: 13, tone: "light" },
+          { id: "institutions-tail", x: 242, y: 133, width: 20, height: 13, tone: "light" },
+          { id: "fatalities-label", x: 405, y: 90, width: 115, height: 12, tone: "dark" },
+          { id: "center-label-top", x: 286, y: 174, width: 83, height: 20, tone: "light" },
+          { id: "center-label-bottom", x: 309, y: 197, width: 44, height: 18, tone: "light" },
+          { id: "center-left-remnant", x: 283, y: 181, width: 4, height: 14, tone: "light" },
+          { id: "center-middle-remnant", x: 309, y: 196, width: 6, height: 6, tone: "light" },
+          { id: "center-bottom-remnant", x: 307, y: 202, width: 12, height: 9, tone: "light" }
+        ];
+        const cleanedCanvas = document.createElement("canvas");
+        cleanedCanvas.width = crop.width;
+        cleanedCanvas.height = crop.height;
+        const cleanedContext = cleanedCanvas.getContext("2d");
+        if (!cleanedContext) throw new Error("no cleaned canvas context");
+        cleanedContext.drawImage(image, 0, 0, crop.width, crop.height);
+        const sourceCanvas = document.createElement("canvas");
+        sourceCanvas.width = crop.width;
+        sourceCanvas.height = crop.height;
+        const sourceContext = sourceCanvas.getContext("2d");
+        if (!sourceContext) throw new Error("no source canvas context");
+        sourceContext.drawImage(source, crop.x, crop.y, crop.width, crop.height, 0, 0, crop.width, crop.height);
+        const cleanedData = cleanedContext.getImageData(0, 0, crop.width, crop.height).data;
+        const sourceData = sourceContext.getImageData(0, 0, crop.width, crop.height).data;
+        const pointInTriangle = (
+          point: { x: number; y: number },
+          triangle: Array<{ x: number; y: number }>
+        ) => {
+          const [p0, p1, p2] = triangle;
+          const area = (p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y);
+          const s = ((p0.y - p2.y) * (point.x - p2.x) + (p2.x - p0.x) * (point.y - p2.y)) / area;
+          const t = ((p2.y - p1.y) * (point.x - p2.x) + (p1.x - p2.x) * (point.y - p2.y)) / area;
+          const u = 1 - s - t;
+          return s >= -0.035 && t >= -0.035 && u >= -0.035;
+        };
+        const isCenterLocalCleanup = (x: number, y: number) => {
+          const dx = x - 329.2;
+          const dy = y - 177.1;
+          const pointer = [
+            { x: 344, y: 166 },
+            { x: 473, y: 132 },
+            { x: 363, y: 187 }
+          ];
+          return Math.sqrt(dx * dx + dy * dy) <= 45.2 && !pointInTriangle({ x, y }, pointer);
+        };
+        const isMasked = (x: number, y: number) =>
+          isCenterLocalCleanup(x, y) ||
+          masks.some((mask) => x >= mask.x && y >= mask.y && x < mask.x + mask.width && y < mask.y + mask.height);
+        let comparedPixels = 0;
+        let totalDelta = 0;
+        let changedPixels = 0;
+        let maxDelta = 0;
+        for (let y = 0; y < crop.height; y += 1) {
+          for (let x = 0; x < crop.width; x += 1) {
+            if (isMasked(x, y)) continue;
+            const index = (y * crop.width + x) * 4;
+            const delta =
+              (Math.abs(cleanedData[index] - sourceData[index]) +
+                Math.abs(cleanedData[index + 1] - sourceData[index + 1]) +
+                Math.abs(cleanedData[index + 2] - sourceData[index + 2])) /
+              3;
+            comparedPixels += 1;
+            totalDelta += delta;
+            if (delta > 8) changedPixels += 1;
+            if (delta > maxDelta) maxDelta = delta;
+          }
+        }
+        const maskCleanliness = masks.map((zone) => {
+          let darkPixels = 0;
+          let lightPixels = 0;
+          const zoneData = cleanedContext.getImageData(zone.x, zone.y, zone.width, zone.height).data;
+          for (let index = 0; index < zoneData.length; index += 4) {
+            const red = zoneData[index];
+            const green = zoneData[index + 1];
+            const blue = zoneData[index + 2];
+            const luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+            if (luma < 110) darkPixels += 1;
+            if (luma > 170) lightPixels += 1;
+          }
+          const total = zoneData.length / 4;
+          return { id: zone.id, tone: zone.tone, darkRatio: darkPixels / total, lightRatio: lightPixels / total };
+        });
+        const artifactCanvas = document.createElement("canvas");
+        artifactCanvas.width = image.naturalWidth;
+        artifactCanvas.height = image.naturalHeight;
+        const artifactContext = artifactCanvas.getContext("2d");
+        if (!artifactContext) throw new Error("no artifact canvas context");
+        artifactContext.drawImage(image, 0, 0);
+        const scale = image.naturalWidth / crop.width;
+        const zoneStats = (zone: { id: string; x: number; y: number; width: number; height: number }) => {
+          const sx = Math.round(zone.x * scale);
+          const sy = Math.round(zone.y * scale);
+          const sw = Math.round(zone.width * scale);
+          const sh = Math.round(zone.height * scale);
+          const data = artifactContext.getImageData(sx, sy, sw, sh).data;
+          let whitePixels = 0;
+          let nonWhitePixels = 0;
+          let totalLuma = 0;
+          for (let index = 0; index < data.length; index += 4) {
+            const red = data[index];
+            const green = data[index + 1];
+            const blue = data[index + 2];
+            const luma = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+            totalLuma += luma;
+            if (luma > 245) whitePixels += 1;
+            if (luma < 220) nonWhitePixels += 1;
+          }
+          const total = data.length / 4;
+          return { id: zone.id, whiteRatio: whitePixels / total, nonWhiteRatio: nonWhitePixels / total, averageLuma: totalLuma / total };
+        };
+        const labelCornerZones = [
+          { id: "family-left-corner", x: 147, y: 6, width: 18, height: 10 },
+          { id: "family-right-corner", x: 293, y: 6, width: 18, height: 10 },
+          { id: "health-left-corner", x: 342, y: 6, width: 14, height: 10 },
+          { id: "health-right-corner", x: 418, y: 6, width: 14, height: 10 },
+          { id: "institutions-left-corner", x: 100, y: 88, width: 18, height: 10 },
+          { id: "institutions-right-corner", x: 207, y: 88, width: 18, height: 10 }
+        ].map(zoneStats);
+        const connectorZones = [{ id: "institutions-vertical-connector", x: 230, y: 98, width: 10, height: 58 }].map(zoneStats);
+        const fatalBlackZones = [{ id: "fatal-victims-black-label", x: 405, y: 90, width: 115, height: 12 }].map(zoneStats);
+        const rectanglePatchZones = [
+          { id: "institutions-old-vertical-white-block", x: 204, y: 105, width: 36, height: 58 },
+          { id: "institutions-old-arc-white-block", x: 210, y: 125, width: 55, height: 42 },
+          { id: "center-old-color-matched-block", x: 285, y: 170, width: 90, height: 42 }
+        ].map((zone) => {
+          let changedPixels = 0;
+          let whitePixels = 0;
+          let totalDelta = 0;
+          for (let y = zone.y; y < zone.y + zone.height; y += 1) {
+            for (let x = zone.x; x < zone.x + zone.width; x += 1) {
+              const index = (y * crop.width + x) * 4;
+              const delta =
+                (Math.abs(cleanedData[index] - sourceData[index]) +
+                  Math.abs(cleanedData[index + 1] - sourceData[index + 1]) +
+                  Math.abs(cleanedData[index + 2] - sourceData[index + 2])) /
+                3;
+              const luma =
+                0.2126 * cleanedData[index] + 0.7152 * cleanedData[index + 1] + 0.0722 * cleanedData[index + 2];
+              totalDelta += delta;
+              if (delta > 20) changedPixels += 1;
+              if (luma > 245) whitePixels += 1;
+            }
+          }
+          const total = zone.width * zone.height;
+          return {
+            id: zone.id,
+            averageDelta: totalDelta / total,
+            changedRatio: changedPixels / total,
+            whiteRatio: whitePixels / total
+          };
+        });
+        const restoredSourceZones = [
+          { id: "institutions-lower-non-source-beige-bar", x: 94, y: 150, width: 148, height: 31 },
+          { id: "bottom-left-non-source-beige-bar", x: 138, y: 232, width: 184, height: 28 },
+          { id: "bottom-right-non-source-beige-bar", x: 336, y: 232, width: 104, height: 28 },
+          { id: "fatality-right-non-source-black-bar", x: 426, y: 151, width: 114, height: 31 }
+        ].map((zone) => {
+          let changedPixels = 0;
+          let nonWhitePixels = 0;
+          let totalDelta = 0;
+          let totalLuma = 0;
+          for (let y = zone.y; y < zone.y + zone.height; y += 1) {
+            for (let x = zone.x; x < zone.x + zone.width; x += 1) {
+              const index = (y * crop.width + x) * 4;
+              const delta =
+                (Math.abs(cleanedData[index] - sourceData[index]) +
+                  Math.abs(cleanedData[index + 1] - sourceData[index + 1]) +
+                  Math.abs(cleanedData[index + 2] - sourceData[index + 2])) /
+                3;
+              const luma =
+                0.2126 * cleanedData[index] + 0.7152 * cleanedData[index + 1] + 0.0722 * cleanedData[index + 2];
+              totalDelta += delta;
+              totalLuma += luma;
+              if (delta > 20) changedPixels += 1;
+              if (luma < 230) nonWhitePixels += 1;
+            }
+          }
+          const total = zone.width * zone.height;
+          return {
+            id: zone.id,
+            averageDelta: totalDelta / total,
+            averageLuma: totalLuma / total,
+            changedRatio: changedPixels / total,
+            nonWhiteRatio: nonWhitePixels / total
+          };
+        });
+        const seamStats = (zone: { id: string; x: number; y: number; width: number; height: number }) => {
+          const sx = Math.round(zone.x * scale);
+          const sy = Math.round(zone.y * scale);
+          const sw = Math.round(zone.width * scale);
+          const sh = Math.round(zone.height * scale);
+          const data = artifactContext.getImageData(sx, sy, sw, sh).data;
+          const rowAverages: number[] = [];
+          const columnAverages: number[] = [];
+          for (let y = 0; y < sh; y += 1) {
+            let total = 0;
+            for (let x = 0; x < sw; x += 1) {
+              const index = (y * sw + x) * 4;
+              total += 0.2126 * data[index] + 0.7152 * data[index + 1] + 0.0722 * data[index + 2];
+            }
+            rowAverages.push(total / sw);
+          }
+          for (let x = 0; x < sw; x += 1) {
+            let total = 0;
+            for (let y = 0; y < sh; y += 1) {
+              const index = (y * sw + x) * 4;
+              total += 0.2126 * data[index] + 0.7152 * data[index + 1] + 0.0722 * data[index + 2];
+            }
+            columnAverages.push(total / sh);
+          }
+          const maxAdjacentDelta = (values: number[]) =>
+            values.slice(1).reduce((max, value, index) => Math.max(max, Math.abs(value - values[index])), 0);
+          return {
+            id: zone.id,
+            maxHorizontalEdge: maxAdjacentDelta(rowAverages),
+            maxVerticalEdge: maxAdjacentDelta(columnAverages)
+          };
+        };
+        const centerSeamZones = [
+          { id: "center-left-clean-field", x: 288, y: 169, width: 42, height: 44 },
+          { id: "center-lower-clean-field", x: 310, y: 193, width: 42, height: 24 }
+        ].map(seamStats);
+        return {
+          comparedPixels,
+          averageDelta: totalDelta / comparedPixels,
+          changedRatio: changedPixels / comparedPixels,
+          maxDelta,
+          maskCleanliness,
+          labelCornerZones,
+          connectorZones,
+          fatalBlackZones,
+          rectanglePatchZones,
+          restoredSourceZones,
+          centerSeamZones,
+          naturalWidth: image.naturalWidth,
+          naturalHeight: image.naturalHeight
+        };
+      });
+      expect(sourceCropAudit.comparedPixels, "page 18 source-crop comparison covers the full non-text diagram artwork").toBeGreaterThan(
+        100_000
+      );
+      expect(sourceCropAudit.naturalWidth, "page 18 runtime image rejects the old low-resolution 620px natural crop").toBe(3720);
+      expect(sourceCropAudit.naturalHeight, "page 18 runtime image rejects the old low-resolution 260px natural crop").toBe(1560);
+      expect(sourceCropAudit.averageDelta, "page 18 non-text artwork remains source-derived after high-DPI cleanup, not a redraw").toBeLessThan(12);
+      expect(sourceCropAudit.changedRatio, "page 18 arcs, pointer, sectors, label boxes, connectors, and icons are retained").toBeLessThan(
+        0.13
+      );
+      for (const zone of sourceCropAudit.maskCleanliness) {
+        if (zone.tone === "dark") {
+          expect(zone.lightRatio, `${zone.id} black label has no residual white Spanish text`).toBeLessThan(0.01);
+        } else if (zone.id.startsWith("center-")) {
+          expect(zone.darkRatio, `${zone.id} cleaned center keeps no visible Spanish while preserving the dark ring edge`).toBeLessThan(0.02);
+        } else {
+          expect(zone.darkRatio, `${zone.id} cleaned page 18 background has no residual dark Spanish/text artifacts`).toBeLessThan(0.01);
+        }
+      }
+      for (const zone of sourceCropAudit.labelCornerZones) {
+        expect(zone.whiteRatio, `${zone.id} has no white rectangular mask remnant at the category label corner`).toBeLessThan(0.02);
+        expect(zone.averageLuma, `${zone.id} remains beige source label material, not white cover-up`).toBeLessThan(210);
+      }
+      for (const zone of sourceCropAudit.connectorZones) {
+        expect(zone.nonWhiteRatio, `${zone.id} is preserved and not cut by a white cleanup mask`).toBeGreaterThan(0.2);
+      }
+      for (const zone of sourceCropAudit.fatalBlackZones) {
+        expect(zone.whiteRatio, `${zone.id} has no white text-mask marks on the black label`).toBeLessThan(0.005);
+        expect(zone.averageLuma, `${zone.id} remains black after local source-text cleanup`).toBeLessThan(30);
+      }
+      for (const zone of sourceCropAudit.rectanglePatchZones) {
+        expect(zone.whiteRatio, `${zone.id} rejects the stale white rectangular cleanup patch`).toBeLessThan(0.35);
+        expect(zone.changedRatio, `${zone.id} rejects block-level/color-matched rectangular cover-up outside glyph strokes`).toBeLessThan(0.3);
+      }
+      for (const zone of sourceCropAudit.restoredSourceZones) {
+        expect(zone.changedRatio, `${zone.id} is restored from source pixels instead of a non-source horizontal rectangle`).toBeLessThan(0.04);
+        expect(zone.averageDelta, `${zone.id} matches the source crop background after cleanup`).toBeLessThan(4);
+        expect(zone.averageLuma, `${zone.id} has no visible dark/beige bar artifact`).toBeGreaterThan(235);
+        expect(zone.nonWhiteRatio, `${zone.id} rejects leftover horizontal bar pixels`).toBeLessThan(0.2);
+      }
+      for (const zone of sourceCropAudit.centerSeamZones) {
+        expect(zone.maxHorizontalEdge, `${zone.id} has no horizontal hard-edged center patch seam`).toBeLessThan(8);
+        expect(zone.maxVerticalEdge, `${zone.id} has no vertical hard-edged center patch seam`).toBeLessThan(8);
+      }
+      const consequenceBox = await requireBox(reader.getByTestId("intro-consequence-diagram"), "page 18 consequence diagram");
+      const consequenceBackgroundBox = await requireBox(consequenceBackground, "page 18 cleaned source background");
+      await expect(consequenceBackground).toHaveCSS("object-fit", "contain");
+      expect(
+        3720 / consequenceBackgroundBox.width,
+        "page 18 source crop natural pixels are at least 2x the rendered width, avoiding browser upscaling"
+      ).toBeGreaterThanOrEqual(2);
+      expect(
+        1560 / consequenceBackgroundBox.height,
+        "page 18 source crop natural pixels are at least 2x the rendered height, avoiding browser upscaling"
+      ).toBeGreaterThanOrEqual(2);
+      const consequenceCenterBox = await requireBox(reader.locator(".intro-consequence-center"), "page 18 center incident label");
+      if (testInfo.project.name === "mobile") {
+        expect(consequenceBackgroundBox.width, "mobile keeps the complete page 18 gauge visible within the article").toBeLessThanOrEqual(
+          consequenceBox.width + 1
+        );
+        expect(consequenceBackgroundBox.width, "mobile still renders the complete page 18 gauge, not a clipped fragment").toBeGreaterThan(280);
+      } else {
+        expect(consequenceBackgroundBox.width, "desktop page 18 source crop renders as the full gauge composition").toBeGreaterThan(680);
+        expect(consequenceBackgroundBox.height, "desktop page 18 source crop preserves gauge proportions").toBeGreaterThan(280);
+      }
+      expect(
+        Math.abs(consequenceBackgroundBox.width / consequenceBackgroundBox.height - 620 / 260),
+        "page 18 gauge keeps complete source crop aspect ratio"
+      ).toBeLessThan(0.03);
+      expect(
+        isInside(consequenceCenterBox, consequenceBackgroundBox, testInfo.project.name === "mobile" ? 16 : 40),
+        "center Russian label sits inside the original gauge ring area"
+      ).toBe(true);
+      const consequenceComposition = await reader.getByTestId("intro-consequence-diagram").evaluate((diagram) => {
+        const labels = Array.from(diagram.querySelectorAll(".intro-consequence-card")).map((element) => {
+          const rect = element.getBoundingClientRect();
+          const heading = element.querySelector("h4")?.getBoundingClientRect();
+          const headingElement = element.querySelector("h4");
+          const headingStyle = headingElement ? window.getComputedStyle(headingElement) : null;
+          const textRange = headingElement ? document.createRange() : null;
+          if (textRange && headingElement) {
+            textRange.selectNodeContents(headingElement);
+          }
+          const textRect = textRange?.getBoundingClientRect();
+          textRange?.detach();
+          return {
+            id: element.getAttribute("data-consequence-id"),
+            rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+            heading: heading ? { x: heading.x, y: heading.y, width: heading.width, height: heading.height } : null,
+            text: textRect ? { x: textRect.x, y: textRect.y, width: textRect.width, height: textRect.height } : null,
+            headingStyle: headingStyle
+              ? {
+                  alignItems: headingStyle.alignItems,
+                  backgroundColor: headingStyle.backgroundColor,
+                  backgroundImage: headingStyle.backgroundImage,
+                  borderTopWidth: headingStyle.borderTopWidth,
+                  borderRadius: headingStyle.borderRadius,
+                  boxShadow: headingStyle.boxShadow,
+                  beforeContent: window.getComputedStyle(headingElement!, "::before").content,
+                  beforeBackgroundColor: window.getComputedStyle(headingElement!, "::before").backgroundColor,
+                  afterContent: window.getComputedStyle(headingElement!, "::after").content,
+                  afterBackgroundColor: window.getComputedStyle(headingElement!, "::after").backgroundColor,
+                  fontSize: headingStyle.fontSize,
+                  fontWeight: headingStyle.fontWeight,
+                  lineHeight: headingStyle.lineHeight,
+                  paddingLeft: headingStyle.paddingLeft,
+                  paddingRight: headingStyle.paddingRight,
+                  textTransform: headingStyle.textTransform
+                }
+              : null,
+            overflow: window.getComputedStyle(element).overflow
+          };
+        });
+        const centerElement = diagram.querySelector(".intro-consequence-center")!;
+        const center = centerElement.getBoundingClientRect();
+        const centerStyle = window.getComputedStyle(centerElement);
+        const centerBeforeStyle = window.getComputedStyle(centerElement, "::before");
+        const centerAfterStyle = window.getComputedStyle(centerElement, "::after");
+        const background = diagram.querySelector('[data-artwork-id="consequence-diagram-background"]')!.getBoundingClientRect();
+        return {
+          labels,
+          center: { x: center.x, y: center.y, width: center.width, height: center.height },
+          centerStyle: {
+            backgroundColor: centerStyle.backgroundColor,
+            backgroundImage: centerStyle.backgroundImage,
+            borderTopWidth: centerStyle.borderTopWidth,
+            boxShadow: centerStyle.boxShadow,
+            beforeContent: centerBeforeStyle.content,
+            beforeBackgroundColor: centerBeforeStyle.backgroundColor,
+            afterContent: centerAfterStyle.content,
+            afterBackgroundColor: centerAfterStyle.backgroundColor
+          },
+          background: { x: background.x, y: background.y, width: background.width, height: background.height }
+        };
+      });
+      expect(consequenceComposition.centerStyle.backgroundColor, "center incident text has no visible background rectangle").toBe(
+        "rgba(0, 0, 0, 0)"
+      );
+      expect(consequenceComposition.centerStyle.backgroundImage, "center incident text has no background image").toBe("none");
+      expect(consequenceComposition.centerStyle.borderTopWidth, "center incident text has no DOM border").toBe("0px");
+      expect(consequenceComposition.centerStyle.boxShadow, "center incident text has no rectangular shadow").toBe("none");
+      expect(consequenceComposition.centerStyle.beforeContent, "center incident text has no ::before backing").toBe("none");
+      expect(consequenceComposition.centerStyle.afterContent, "center incident text has no ::after backing").toBe("none");
+      expect(consequenceComposition.labels).toHaveLength(4);
+      const sourceLabelBoxes: Record<string, { x: number; y: number; width: number; height: number }> = {
+        "family-economy": { x: 145, y: 2, width: 170, height: 20 },
+        health: { x: 340, y: 2, width: 96, height: 20 },
+        institutions: { x: 97, y: 82, width: 130, height: 20 },
+        fatalities: { x: 405, y: 90, width: 115, height: 12 }
+      };
+      const familyLabel = consequenceComposition.labels.find((label) => label.id === "family-economy");
+      expect(familyLabel?.headingStyle?.fontSize, "family/economy label exposes the shared page 18 category label font size").toBeTruthy();
+      for (const label of consequenceComposition.labels) {
+        expect(label.overflow, `${label.id} Russian label is not clipped by its own container`).toBe("visible");
+        expect(isInside(label.rect, consequenceComposition.background, -2), `${label.id} label stays within the source gauge crop frame`).toBe(true);
+        expect(label.heading, `${label.id} has a rendered label heading`).not.toBeNull();
+        expect(label.text, `${label.id} has measurable text ink for optical centering`).not.toBeNull();
+        expect(label.headingStyle?.alignItems, `${label.id} label text uses vertical centering`).toBe("center");
+        expect(label.headingStyle?.backgroundColor, `${label.id} label text does not add a mismatched DOM backing plate`).toBe(
+          "rgba(0, 0, 0, 0)"
+        );
+        expect(label.headingStyle?.backgroundImage, `${label.id} label text has no DOM background image`).toBe("none");
+        expect(label.headingStyle?.borderTopWidth, `${label.id} label text has no DOM border plate`).toBe("0px");
+        expect(
+          Number.parseFloat(label.headingStyle?.borderRadius ?? "0"),
+          `${label.id} label corners come from the cleaned source asset, not a second DOM plate`
+        ).toBe(0);
+        expect(label.headingStyle?.boxShadow, `${label.id} label text has no rectangular backing shadow`).toBe("none");
+        expect(label.headingStyle?.beforeContent, `${label.id} label text has no ::before backing`).toBe("none");
+        expect(label.headingStyle?.afterContent, `${label.id} label text has no ::after backing`).toBe("none");
+        expect(label.headingStyle?.fontSize, `${label.id} category typography matches the other category labels`).toBe(
+          familyLabel?.headingStyle?.fontSize
+        );
+        expect(label.headingStyle?.fontWeight, `${label.id} category typography uses the shared weight`).toBe(familyLabel?.headingStyle?.fontWeight);
+        expect(label.headingStyle?.lineHeight, `${label.id} category typography uses the shared line-height`).toBe(familyLabel?.headingStyle?.lineHeight);
+        expect(label.headingStyle?.textTransform, `${label.id} category label keeps the shared uppercase treatment`).toBe("uppercase");
+        const sourceBox = sourceLabelBoxes[label.id ?? ""];
+        if (!sourceBox) {
+          throw new Error(`${label.id} has no known source label box`);
+        }
+        const sourceCenterY = consequenceComposition.background.y + ((sourceBox.y + sourceBox.height / 2) / 260) * consequenceComposition.background.height;
+        const sourceBackingWidth = (sourceBox.width / 620) * consequenceComposition.background.width;
+        const paddingLeft = Number.parseFloat(label.headingStyle?.paddingLeft ?? "0");
+        const paddingRight = Number.parseFloat(label.headingStyle?.paddingRight ?? "0");
+        const expectedBackingWidth = Math.max(sourceBackingWidth, label.text!.width + paddingLeft + paddingRight);
+        const headingCenterY = label.heading!.y + label.heading!.height / 2;
+        const textCenterY = label.text!.y + label.text!.height / 2;
+        expect(Math.abs(headingCenterY - sourceCenterY), `${label.id} Russian label text is vertically centered in the source box`).toBeLessThanOrEqual(
+          testInfo.project.name === "mobile" ? 5 : 6
+        );
+        expect(Math.abs(textCenterY - sourceCenterY), `${label.id} visible text ink is vertically centered, not top- or bottom-pinned`).toBeLessThanOrEqual(
+          testInfo.project.name === "mobile" ? 7 : 7
+        );
+        expect(
+          label.heading!.width,
+          `${label.id} label backing is not smaller than source width or Russian text plus padding`
+        ).toBeGreaterThanOrEqual(expectedBackingWidth - 1);
+        expect(
+          label.heading!.width,
+          `${label.id} label backing only widens as needed for Russian text`
+        ).toBeLessThanOrEqual(expectedBackingWidth + (testInfo.project.name === "mobile" ? 3 : 4));
+        if (label.id === "health") {
+          const sourceHeight = (sourceBox.height / 260) * consequenceComposition.background.height;
+          expect(
+            Math.abs(label.heading!.height - sourceHeight),
+            "health label preserves the source-height while the transparent DOM text wrapper fits the source-like asset backing"
+          ).toBeLessThanOrEqual(5);
+          expect(
+            label.heading!.width,
+            "health label transparent DOM text wrapper is wide enough for the Russian word"
+          ).toBeGreaterThanOrEqual(label.text!.width + paddingLeft + paddingRight - 1);
+        }
+        const overlapX = Math.max(0, Math.min(label.rect.x + label.rect.width, consequenceComposition.center.x + consequenceComposition.center.width) - Math.max(label.rect.x, consequenceComposition.center.x));
+        const overlapY = Math.max(0, Math.min(label.rect.y + label.rect.height, consequenceComposition.center.y + consequenceComposition.center.height) - Math.max(label.rect.y, consequenceComposition.center.y));
+        expect(overlapX * overlapY, `${label.id} label does not collide with the center ring text`).toBe(0);
+      }
+      for (const assetId of ["consequence-family-economy", "consequence-health", "consequence-institutions", "consequence-fatalities"]) {
+        await expect(reader.locator(`[data-artwork-id="${assetId}"]`)).toHaveCount(0);
+      }
+      for (const assetId of ["axis-infrastructure", "axis-education", "axis-control", "axis-participation"]) {
+        const artwork = reader.locator(`[data-artwork-id="${assetId}"]`);
+        await expect(artwork).toBeVisible();
+        await expect(artwork).toHaveAttribute("data-source-page", "19");
+        await expect(artwork).toHaveAttribute("data-visible-spanish", "false");
+      }
+      await expect(reader.locator(".intro-consequence-arc")).toHaveCount(0);
+      await expect(reader.locator(".intro-axis-circle")).toHaveCount(4);
+      await expect(reader.locator(".intro-axis-card")).toHaveCount(4);
+      const axisCircleBoxes: Record<string, { x: number; y: number; width: number; height: number }> = {};
+      for (const axisId of ["safe-infrastructure", "education", "control-legislation", "citizen-participation"]) {
+        const axisCard = reader.locator(`.intro-axis-card[data-axis-id="${axisId}"]`);
+        const titleBox = await requireBox(axisCard.locator("h4"), `${axisId} axis title`);
+        const circleBox = await requireBox(axisCard.locator(".intro-axis-circle"), `${axisId} gray circle`);
+        axisCircleBoxes[axisId] = circleBox;
+        const icon = axisCard.locator(".intro-axis-symbol");
+        const iconBox = await requireBox(icon, `${axisId} source icon`);
+        const bodyBox = await requireBox(axisCard.locator("p"), `${axisId} axis text`);
+        const circleStyles = await axisCard.locator(".intro-axis-circle").evaluate((element) => {
+          const style = window.getComputedStyle(element);
+          return {
+            borderRadius: style.borderRadius,
+            overflow: style.overflow,
+            backgroundColor: style.backgroundColor
+          };
+        });
+        const iconStyles = await icon.evaluate((element) => {
+          const style = window.getComputedStyle(element);
+          return {
+            objectFit: style.objectFit,
+            mixBlendMode: style.mixBlendMode
+          };
+        });
+        const naturalIconBounds = await icon.evaluate(async (element) => {
+          const image = element as HTMLImageElement;
+          if (!image.complete) await image.decode();
+          const tightSource = new Image();
+          tightSource.src = image.currentSrc.replace(/\.png(?:\?.*)?$/u, ".jpg");
+          await tightSource.decode();
+          const canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d");
+          if (!context) throw new Error("no axis icon canvas context");
+          context.drawImage(image, 0, 0);
+          const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+          let minX = Number.POSITIVE_INFINITY;
+          let minY = Number.POSITIVE_INFINITY;
+          let maxX = -1;
+          let maxY = -1;
+          for (let y = 0; y < canvas.height; y += 1) {
+            for (let x = 0; x < canvas.width; x += 1) {
+              const alpha = data[(y * canvas.width + x) * 4 + 3];
+              if (alpha <= 8) continue;
+              minX = Math.min(minX, x);
+              minY = Math.min(minY, y);
+              maxX = Math.max(maxX, x);
+              maxY = Math.max(maxY, y);
+            }
+          }
+          return {
+            naturalWidth: image.naturalWidth,
+            naturalHeight: image.naturalHeight,
+            previousTightWidth: tightSource.naturalWidth,
+            previousTightHeight: tightSource.naturalHeight,
+            marginLeft: minX,
+            marginTop: minY,
+            marginRight: canvas.width - maxX - 1,
+            marginBottom: canvas.height - maxY - 1
+          };
+        });
+        expect(titleBox.y + titleBox.height, `${axisId} title stays above the gray circle as in the source`).toBeLessThanOrEqual(circleBox.y + 4);
+        expect(bodyBox.y, `${axisId} body text stays below the gray circle`).toBeGreaterThan(circleBox.y + circleBox.height - 2);
+        expect(Math.abs(circleBox.width - circleBox.height), `${axisId} gray field remains circular`).toBeLessThanOrEqual(1);
+        expect(isInside(iconBox, circleBox, 6), `${axisId} pictogram is complete inside the gray circle with padding`).toBe(true);
+        expect(naturalIconBounds.naturalWidth, `${axisId} source asset has high-DPI padded natural width`).toBeGreaterThanOrEqual(192);
+        expect(naturalIconBounds.naturalHeight, `${axisId} source asset has high-DPI padded natural height`).toBeGreaterThanOrEqual(192);
+        expect(naturalIconBounds.naturalWidth / iconBox.width, `${axisId} source pictogram is never browser-upscaled`).toBeGreaterThanOrEqual(2);
+        expect(naturalIconBounds.naturalHeight / iconBox.height, `${axisId} source pictogram is never browser-upscaled`).toBeGreaterThanOrEqual(2);
+        expect(naturalIconBounds.naturalWidth, `${axisId} padded PNG is wider than the previous tight JPG crop`).toBeGreaterThan(
+          naturalIconBounds.previousTightWidth
+        );
+        expect(naturalIconBounds.naturalHeight, `${axisId} padded PNG is taller than the previous tight JPG crop`).toBeGreaterThan(
+          naturalIconBounds.previousTightHeight
+        );
+        for (const [edge, margin] of Object.entries({
+          left: naturalIconBounds.marginLeft,
+          top: naturalIconBounds.marginTop,
+          right: naturalIconBounds.marginRight,
+          bottom: naturalIconBounds.marginBottom
+        })) {
+          expect(margin, `${axisId} source pictogram alpha bounds have ${edge} padding and are not tight-cropped`).toBeGreaterThanOrEqual(
+            14
+          );
+        }
+        expect(circleStyles.borderRadius, `${axisId} axis field uses circular geometry`).toMatch(/999px|50%/);
+        expect(circleStyles.overflow, `${axisId} circle does not clip the original pictogram`).not.toBe("hidden");
+        expect(circleStyles.backgroundColor, `${axisId} circle preserves the source gray field`).toBe("rgb(236, 236, 234)");
+        expect(iconStyles.objectFit, `${axisId} source pictogram is contained, not force-cropped`).toBe("contain");
+        expect(iconStyles.mixBlendMode, `${axisId} source crop blends away square crop backgrounds`).toBe("multiply");
+      }
+      if (testInfo.project.name !== "mobile") {
+        const center = (box: { x: number; y: number; width: number; height: number }) => ({
+          x: box.x + box.width / 2,
+          y: box.y + box.height / 2
+        });
+        const topLeft = center(axisCircleBoxes["safe-infrastructure"]);
+        const topRight = center(axisCircleBoxes.education);
+        const bottomLeft = center(axisCircleBoxes["control-legislation"]);
+        const bottomRight = center(axisCircleBoxes["citizen-participation"]);
+        const diameters = Object.entries(axisCircleBoxes).map(([id, box]) => ({ id, diameter: box.width, height: box.height }));
+        for (const { id, diameter, height } of diameters) {
+          expect(Math.abs(diameter - height), `${id} axis circle keeps equal width/height`).toBeLessThanOrEqual(1);
+          expect(Math.abs(diameter - axisCircleBoxes["safe-infrastructure"].width), `${id} axis circle diameter matches the grid`).toBeLessThanOrEqual(1);
+        }
+        expect(Math.abs(topLeft.y - topRight.y), "page 19 top-row circle centers align on desktop").toBeLessThanOrEqual(1);
+        expect(Math.abs(bottomLeft.y - bottomRight.y), "page 19 bottom-row circle centers align on desktop").toBeLessThanOrEqual(1);
+        expect(Math.abs(topLeft.x - bottomLeft.x), "page 19 left-column circle centers align on desktop").toBeLessThanOrEqual(1);
+        expect(Math.abs(topRight.x - bottomRight.x), "page 19 right-column circle centers align on desktop").toBeLessThanOrEqual(1);
+        expect(Math.abs((bottomLeft.y - topLeft.y) - (bottomRight.y - topRight.y)), "page 19 row gaps stay consistent").toBeLessThanOrEqual(1);
+      }
+    }
+
+    await reader.screenshot({
+      path: testInfo.outputPath(`intro-route-${route.id}-${testInfo.project.name}.png`)
+    });
+    if (testInfo.project.name === "chromium" && ["intro-incident", "intro-road-safety-plan"].includes(route.id)) {
+      await page.setViewportSize({ width: 760, height: 900 });
+      await reader.screenshot({
+        path: testInfo.outputPath(`intro-route-${route.id}-narrow.png`)
+      });
+      await page.setViewportSize({ width: 1280, height: 720 });
+    }
+  }
+
+  await page.goto("/");
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/#pandemia-vial$/);
+  for (const route of introRoutes.slice(1)) {
+    await page.getByTestId(`intro-route-${route.id}`).click();
+    await expect(page).toHaveURL(new RegExp(`${route.hash}$`));
+    await expect(page.getByRole("heading", { name: route.title })).toBeVisible();
+  }
+});
+
+test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/#pandemia-vial$/);
+
+  const reader = page.getByTestId("introduction-reader");
+  await expect(reader).toBeVisible();
+  await expect(page.getByTestId("pandemia-nav-entry")).toHaveClass(/active/);
+
+  const roadPandemicRoute = page.getByRole("button", { name: "Дорожная пандемия", exact: true });
+  await expect(roadPandemicRoute).toBeVisible();
+  await expect(roadPandemicRoute).toHaveAttribute("data-testid", "intro-route-intro-road-pandemic");
+  await expect(roadPandemicRoute).toHaveAttribute("aria-current", "page");
+  await expect(roadPandemicRoute).not.toHaveAttribute("role", "listitem");
+  await expect(reader.getByTestId("manual-guide-route-item-intro-road-pandemic")).toHaveAttribute("role", "listitem");
+  await expect(reader.locator('button[role="listitem"]')).toHaveCount(0);
+
+  await page.goBack();
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
+  await expect(reader).toHaveCount(0);
+  await expect(page.getByTestId("pandemia-nav-entry")).not.toHaveClass(/active/);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.goto("/#intro-accidente-incidente");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByTestId("intro-route-intro-incident")).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("heading", { name: "Авария или дорожный инцидент?" })).toBeVisible();
+});
+
+test("Introduction guide legacyManual URLs reload into the intended guide", async ({ page }) => {
+  await page.goto("/?legacyManual=1");
+  await expect(page.getByRole("heading", { name: manualManifest.titleRu })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+
+  await page.getByRole("button", { name: /^Учить$/ }).click();
+  await expect.poll(() => page.evaluate(() => window.location.search)).toBe("");
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
+  expect(page.url()).not.toContain("legacyManual=1");
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.reload();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.goto("/?legacyManual=1#pandemia-vial");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+
+  await page.getByRole("button", { name: /^Учить$/ }).click();
+  await expect.poll(() => page.evaluate(() => window.location.search)).toBe("");
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
+  expect(page.url()).not.toContain("legacyManual=1");
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+
+  await page.reload();
+  await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.goto("/?legacyManual=1");
+  await page.getByTestId("pandemia-nav-entry").click();
+  await expect(page).toHaveURL(/\/#pandemia-vial$/);
+  expect(page.url()).not.toContain("legacyManual=1");
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+
+  await page.reload();
+  await expect(page).toHaveURL(/\/#pandemia-vial$/);
+  await expect(page.getByTestId("introduction-reader")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+});
+
+test("intro-plan-seguridad-vial work-axis grid fits at 320px", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/#intro-plan-seguridad-vial");
+
+  const reader = page.getByTestId("introduction-reader");
+  await expect(reader).toBeVisible();
+  const workAxes = reader.locator(".intro-work-axes");
+  const axisGrid = workAxes.locator(".intro-axis-grid");
+  await expect(workAxes).toBeVisible();
+  await expect(axisGrid).toBeVisible();
+  await expect(workAxes.locator(".intro-axis-card")).toHaveCount(4);
+
+  const columnCount = await axisGrid.evaluate((element) =>
+    window.getComputedStyle(element).gridTemplateColumns.split(" ").filter(Boolean).length
+  );
+  expect(columnCount, "work-axis grid collapses to one column at 320px").toBe(1);
+
+  const problems = await workAxes.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const issues: string[] = [];
+    const withinViewport = (rect: DOMRect, label: string) => {
+      if (rect.left < -tolerance || rect.right > viewportWidth + tolerance) {
+        issues.push(`${label} overflows viewport horizontally: ${rect.left}..${rect.right} of ${viewportWidth}`);
+      }
+    };
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      issues.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+
+    const grid = root.querySelector(".intro-axis-grid");
+    if (!grid) return ["missing work-axis grid"];
+    withinViewport(grid.getBoundingClientRect(), "work-axis grid");
+
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(".intro-axis-card"));
+    const cardRects = cards.map((card) => card.getBoundingClientRect());
+    for (let index = 0; index < cards.length; index += 1) {
+      const card = cards[index];
+      const cardRect = cardRects[index];
+      const axisId = card.dataset.axisId ?? `axis-${index}`;
+      withinViewport(cardRect, `${axisId} card`);
+      if (index > 0 && Math.abs(cardRect.x - cardRects[0].x) > tolerance) {
+        issues.push(`${axisId} card is not in the collapsed single column`);
+      }
+      if (index > 0 && cardRect.y <= cardRects[index - 1].y) {
+        issues.push(`${axisId} card does not stack below the previous card`);
+      }
+
+      const circle = card.querySelector<HTMLElement>(".intro-axis-circle");
+      const icon = card.querySelector<HTMLImageElement>(".intro-axis-symbol");
+      const title = card.querySelector<HTMLElement>("h4");
+      const body = card.querySelector<HTMLElement>("p");
+      if (!circle || !icon || !title || !body) {
+        issues.push(`${axisId} card is missing title, body, circle, or pictogram`);
+        continue;
+      }
+      const circleRect = circle.getBoundingClientRect();
+      const iconRect = icon.getBoundingClientRect();
+      const titleRect = title.getBoundingClientRect();
+      const bodyRect = body.getBoundingClientRect();
+      withinViewport(titleRect, `${axisId} title`);
+      withinViewport(bodyRect, `${axisId} body`);
+      withinViewport(circleRect, `${axisId} circle`);
+      withinViewport(iconRect, `${axisId} pictogram`);
+      if (Math.abs(circleRect.width - circleRect.height) > tolerance) {
+        issues.push(`${axisId} circle is not circular`);
+      }
+      if (Math.abs(circleRect.x + circleRect.width / 2 - (cardRect.x + cardRect.width / 2)) > tolerance) {
+        issues.push(`${axisId} circle is not centered in its card`);
+      }
+      if (
+        iconRect.left < circleRect.left + 4 ||
+        iconRect.top < circleRect.top + 4 ||
+        iconRect.right > circleRect.right - 4 ||
+        iconRect.bottom > circleRect.bottom - 4
+      ) {
+        issues.push(`${axisId} pictogram is not complete inside the circle`);
+      }
+      for (const [label, element] of [
+        [`${axisId} title`, title],
+        [`${axisId} body`, body]
+      ] as const) {
+        const style = window.getComputedStyle(element);
+        if (style.whiteSpace !== "normal") issues.push(`${label} does not use natural wrapping`);
+        if (style.overflow === "hidden") issues.push(`${label} clips overflow`);
+        if (element.scrollWidth > element.clientWidth + tolerance) {
+          issues.push(`${label} text overflows its box: ${element.scrollWidth} > ${element.clientWidth}`);
+        }
+      }
+    }
+    return issues;
+  });
+  expect(problems).toEqual([]);
+
+  await workAxes.screenshot({
+    path: testInfo.outputPath("intro-plan-work-axis-320.png")
+  });
 });
 
 test("primary source reader opens, preserves app flows, and switches Russian/Spanish modes", async ({ page }) => {

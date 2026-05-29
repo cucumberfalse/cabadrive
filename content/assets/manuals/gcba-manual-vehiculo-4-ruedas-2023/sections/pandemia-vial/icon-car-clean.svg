@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="car icon">
+  <path d="M18 52l9-19h42l9 19v20H18z" fill="#303737"/>
+  <path d="M33 39h30l5 12H28z" fill="#f6f7f5"/>
+  <circle cx="32" cy="74" r="8" fill="#303737"/>
+  <circle cx="64" cy="74" r="8" fill="#303737"/>
+  <path d="M18 58h60" fill="none" stroke="#f6f7f5" stroke-width="4" stroke-linecap="round"/>
+</svg>
