@@ -166,3 +166,21 @@ Architect disposition routing: complete. Final Architect validation passed at 20
 Analyst limit escalation: none / not applicable.
 
 Analyst boundary reminder: this Analyst validation appended only Analyst-owned final validation evidence under `## Final Analyst Validation Notes` in `specs/029-pandemia-vial-section/feature-request.md`; no existing lines were modified or deleted, and no code, tasks, specs, docs, tests, assets, staging, commits, pushes, merges, or PR state were changed.
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-29T17:01:33Z
+
+Analyst validated effective content head: 342c89e46d8c19f015b36390682ca57146311e9b
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed. The current effective content head preserves the user-requested outcome: PDF-section conversion work remains documented as reusable requirements/guidelines, the Russian interactive guide remains section-based inside `Руководство`, source layout/artwork preservation and readable Russian simplification remain binding, scalable full-manual navigation is represented, and visual checker/guideline evidence remains recorded. The P3 legacyManual-exit follow-up does not alter the user-facing manual content requirements; it preserves the expected guide routing by removing stale `legacyManual=1` when leaving implemented Introduction guide routes while keeping the hidden bare `/?legacyManual=1` compatibility hook.
+
+Gaps, if any: none.
+
+Architect disposition routing: complete. Final Architect validation passed at 2026-05-29T16:57:58Z for effective content head 342c89e46d8c19f015b36390682ca57146311e9b, and Architect-owned process memory records no open Architect dispositions, no Architect validation gaps, no unresolved Analyst feedback, and no unresolved Implementation Agent feedback for the P3 legacyManual-exit follow-up.
+
+Analyst limit escalation: none / not applicable.
+
+Analyst boundary reminder: this Analyst validation appended only Analyst-owned final validation evidence under `## Final Analyst Validation Notes` in `specs/029-pandemia-vial-section/feature-request.md`; no existing lines were modified or deleted, and no code, tasks, specs, docs, tests, assets, staging, commits, pushes, merges, or PR state were changed.

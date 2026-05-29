@@ -1613,6 +1613,16 @@ Effective content head: db03cc07a0e6193b7d4e06d6ee0d160632a0e12c
 - Architect validation evidence: Open Architect dispositions none.
 - Architect validation gaps: none.
 
+Effective content head: 342c89e46d8c19f015b36390682ca57146311e9b
+
+- Architect validation: passed for effective content head `342c89e46d8c19f015b36390682ca57146311e9b` after validating the implemented P3 legacyManual-exit runtime follow-up, current process memory shape, user-request alignment, review dispositions, and verification evidence.
+- Architect validation: current P3 legacyManual-exit finding is implemented; evidence records `/?legacyManual=1#pandemia-vial` then selecting a non-guide view removes `legacyManual=1`, hides the Introduction reader, and reloads without reopening the hidden legacy manual while preserving the bare `/?legacyManual=1` compatibility hook.
+- Current-PR-head read-only guard: effective content head is `342c89e46d8c19f015b36390682ca57146311e9b`; finalizer/current-head guard compares current PR head against this effective content head and verifies any post-effective diff is evidence-only process/role validation evidence in `specs/029-pandemia-vial-section/tasks.md`.
+- Final-validation evidence-only commit: this Architect validation addition is limited to process/role validation evidence in `specs/029-pandemia-vial-section/tasks.md` and contains no product/runtime/test/docs changes after effective content head `342c89e46d8c19f015b36390682ca57146311e9b`.
+- Architect return count: 0 for this work cycle, within the limit of 10.
+- Analyst feedback Architect disposition: no unresolved Analyst or Implementation Agent feedback remains in Architect-owned process memory; the P3 legacyManual-exit finding has implementation evidence and no remaining Architect disposition gap.
+- Limit escalation: none / not applicable.
+
 ## Final Architect Validation Notes
 
 Architect validation pass: passed
@@ -1640,3 +1650,17 @@ Open Architect dispositions: none.
 Architect gaps: none.
 
 Architect validation evidence: final Architect validation passed after the process-memory repair at effective content head db03cc07a0e6193b7d4e06d6ee0d160632a0e12c; exact Verification Evidence, Known Issues dispositions, Implementation Agent Feedback, final review disposition, and verification evidence are present in Architect-owned process memory.
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-05-29T16:57:58Z
+
+Architect validated effective content head: 342c89e46d8c19f015b36390682ca57146311e9b
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none.
+
+Architect gaps: none.
+
+Architect validation evidence: final Architect validation passed after the P3 legacyManual-exit runtime follow-up at effective content head 342c89e46d8c19f015b36390682ca57146311e9b; implementation evidence records focused Playwright `legacyManual|Introduction guide exits` chromium 2/2 passed, TypeScript passed, build passed, `git diff --check` passed, and content static test was not rerun because no content/static assertions changed.
