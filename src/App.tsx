@@ -2786,8 +2786,9 @@ export function App() {
       const entry = introductionEntryById(selectedIntroductionId);
       const nextUrl = introductionRouteUrl(entry.routeHash);
       if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
-    } else if (introductionEntryForHash(window.location.hash)) {
-      window.history.pushState(null, "", nonIntroductionRouteUrl());
+    } else if (introductionEntryForHash(window.location.hash) || new URLSearchParams(window.location.search).has("legacyManual")) {
+      const nextUrl = nonIntroductionRouteUrl();
+      if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
     }
   }
 

@@ -2649,6 +2649,17 @@ test("Introduction guide legacyManual URLs reload into the intended guide", asyn
   await expect(page.getByTestId("manual-navigation-panel")).toBeVisible();
   await expect(page.getByTestId("introduction-reader")).toHaveCount(0);
 
+  await page.getByRole("button", { name: /^Учить$/ }).click();
+  await expect.poll(() => page.evaluate(() => window.location.search)).toBe("");
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("");
+  expect(page.url()).not.toContain("legacyManual=1");
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
+  await page.reload();
+  await expect(page.getByTestId("manual-navigation-panel")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Учить$/ })).toHaveClass(/active/);
+
   await page.goto("/?legacyManual=1#pandemia-vial");
   await expect(page.getByTestId("introduction-reader")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Дорожная пандемия" })).toBeVisible();

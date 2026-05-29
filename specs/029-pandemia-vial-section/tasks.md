@@ -1465,7 +1465,7 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
 - Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
 - Current verification status: complete for the implementation state recorded in `Implementation Evidence - Documentation And Merge Preparation`; later resolved P2/P3 follow-up verification evidence is recorded below, including the current work-axis mobile-grid P2 evidence.
-- Current blockers from Architect perspective: the prior process-memory blocker is resolved. Earlier native Codex Review P2 findings, the P3 advisory, the native Codex Review P2 work-axis mobile-grid finding, and the current native Codex Review P3 legacyManual-exit finding below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
+- Current blockers from Architect perspective: the prior process-memory blocker is resolved. Earlier native Codex Review P2 findings, the P3 advisory, the native Codex Review P2 work-axis mobile-grid finding, the native Codex Review P3 legacyManual-exit finding, and the current native Codex Review P2 bare legacyManual exit finding below have implementation follow-up evidence recorded and no longer have a known product/test blocker from the Implementation Agent perspective.
 
 ## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
 
@@ -1544,6 +1544,28 @@ Current head reviewed: `eab4b6a5a2037e2ba5ed905daf0d62ff1e90dff0`
   - `git diff --check` - passed with no whitespace errors.
   - `node --test tests/content-pandemia-vial-section.test.mjs` was not rerun for this follow-up because no content/static assertions changed.
 - Implementation Agent feedback for Architect disposition: none remaining for this P3.
+
+## Architect Review Disposition - PR #173 Current Native Codex Review P2 Bare Legacy Manual Exit Query
+
+Current head reviewed: `bb76fb8bbb08fdc39e3d578051f4cc990b2e7eeb`
+
+- Review finding: accepted as a required runtime implementation follow-up. Starting from bare `/?legacyManual=1`, selecting a non-guide view/tab changes React state but can leave `?legacyManual=1` in the URL; refresh/share then reopens the hidden legacy manual instead of the selected tab.
+- Implementation requirement: selecting any non-guide view/tab from bare legacy manual mode must remove `legacyManual=1` from the URL. Preserve bare `/?legacyManual=1` as the initial hidden legacy-manual compatibility hook before the user navigates away. Preserve the implemented guide-hash cleanup behavior for `/?legacyManual=1#pandemia-vial` and other Introduction hashes.
+- Verification expectations: add focused Playwright coverage that opens `/?legacyManual=1`, confirms the hidden legacy manual is visible, clicks a non-guide tab such as `Учить`, asserts the URL no longer contains `legacyManual=1`, asserts the manual navigation is not visible, and verifies the selected tab survives reload/share. Keep existing `/?legacyManual=1#pandemia-vial` guide-exit coverage. Run the focused e2e slice, content/static tests if route/static assertions change, `pnpm exec tsc --noEmit`, `pnpm run build`, and `git diff --check` at minimum.
+- Current status: resolved by Implementation Agent follow-up. Architect made no product code, test, docs, or asset changes for this disposition.
+
+## Implementation Evidence - PR #173 P2 Bare Legacy Manual Exit Query Follow-up
+
+- [x] Fixed non-guide `selectView` routing in `src/App.tsx` so selecting any non-guide tab from bare `/?legacyManual=1` removes the stale hidden legacy-manual query before writing the URL.
+- [x] Preserved required compatibility behavior: bare `/?legacyManual=1` still opens the hidden legacy manual initially, and `/?legacyManual=1#pandemia-vial` still opens the new `Руководство` child route while preserving the earlier guide-exit cleanup.
+- [x] Extended focused Playwright coverage in `tests/e2e/app.spec.ts`: starting at bare `/?legacyManual=1`, selecting `Учить` removes `legacyManual=1`, leaves no hash, hides the legacy manual navigation, keeps `Учить` active, and reloads without reopening the hidden legacy manual.
+- Verification:
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "legacyManual|Introduction guide exits" --project=chromium` - passed, 2/2 tests after a serial rerun following `pnpm run build`. An earlier parallel run while build assets were still updating hit stale served output and was superseded by the passing rerun.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `pnpm run build` - passed; content validation, asset sync, Vite build, and service worker generation succeeded.
+  - `git diff --check` - passed with no whitespace errors.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` was not rerun for this follow-up because no content/static assertions changed.
+- Implementation Agent feedback for Architect disposition: none remaining for this P2.
 
 ## Architect Review Disposition - PR #173 Current Native Codex Review P2 Work-Axis Mobile Grid
 
