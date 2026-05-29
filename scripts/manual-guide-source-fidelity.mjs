@@ -65,6 +65,18 @@ function validateObjectOrArray(value, fields, messagePrefix, validateEntry = () 
   validateEntry(value, messagePrefix);
 }
 
+function assertPassStatus(value, message, details = {}) {
+  assertCondition(value === "pass" || value === true, `${message} must be pass`, details);
+}
+
+function validateStatusObject(value, messagePrefix) {
+  if (isObject(value) && "status" in value) {
+    assertPassStatus(value.status, `${messagePrefix}.status`, value);
+    return;
+  }
+  assertPassStatus(value, messagePrefix, { value });
+}
+
 function resolvePageContentModulePath(modulePath) {
   const prefix = "src/data/manual-pages/";
   if (modulePath.startsWith(prefix)) {
@@ -124,7 +136,11 @@ function validateImplementedPage(page, evidence, id) {
   });
   assertLocalPathExists(implementedEvidence.desktopScreenshot, `${id} desktopScreenshot`, implementedEvidence);
   assertLocalPathExists(implementedEvidence.mobileScreenshot, `${id} mobileScreenshot`, implementedEvidence);
-  assertCondition(JSON.stringify(implementedEvidence.forbiddenPatternScan).toLocaleLowerCase("en-US").includes("pass"), `${id} forbiddenPatternScan must record a pass result`, implementedEvidence);
+  validateStatusObject(implementedEvidence.selectableTextStatus, `${id} selectableTextStatus`);
+  validateObjectOrArray(implementedEvidence.boundingBoxChecks, ["status"], `${id} boundingBoxChecks`, (entry, label) => {
+    assertPassStatus(entry.status, `${label}.status`, entry);
+  });
+  validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
 }
 
 function validatePageRegistry(registry, evidence) {

@@ -30,7 +30,7 @@ function writeTempFile(path, contents = "fixture") {
   return path;
 }
 
-function writeImplementedRegistryFixture(tempDir, moduleSource) {
+function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence = () => {}) {
   const moduleRoot = join(tempDir, "manual-pages");
   const implementedRegistryPath = join(tempDir, "page-registry.implemented.json");
   const implementedRegistry = JSON.parse(JSON.stringify(registry));
@@ -67,6 +67,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource) {
     visualReviewNotes: ["fixture evidence only"],
     checkerResult: "pass"
   };
+  mutateEvidence(page.implementationEvidence);
   writeTempFile(join(moduleRoot, "manual-page-021.ts"), moduleSource);
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   return { implementedRegistryPath, moduleRoot };
@@ -246,6 +247,49 @@ test("Manual guide source-fidelity checker accepts implemented pages with eviden
     assert.equal(output.status, "pass");
     assert.equal(output.pendingPages, 35);
     assert.equal(output.implementedPages, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects failing implemented evidence statuses", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-failing-evidence-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { pageId: "manual-page-021", blocks: [] };\n',
+      (implementationEvidence) => {
+        implementationEvidence.forbiddenPatternScan = { status: "fail", note: "previous pass" };
+        implementationEvidence.selectableTextStatus = "fail";
+        implementationEvidence.boundingBoxChecks = [{ id: "fixture", status: "fail" }];
+        implementationEvidence.checkerResult = "pass";
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when implemented-page evidence records failing statuses");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "manual-page-021 selectableTextStatus must be pass");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects failing forbidden-pattern scans", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-failing-scan-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const manualPage021 = { pageId: "manual-page-021", blocks: [] };\n',
+      (implementationEvidence) => {
+        implementationEvidence.forbiddenPatternScan = { status: "fail", note: "previous pass" };
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when forbiddenPatternScan.status is fail despite containing the word pass");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "manual-page-021 forbiddenPatternScan.status must be pass");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

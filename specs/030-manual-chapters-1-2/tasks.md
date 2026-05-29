@@ -241,12 +241,19 @@ For each page `NNN`:
   - `git diff --check` - passed before Architect evidence edit.
   - `gh pr checks 174` observed `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` green on then-current head; `AI Review` was pending/carrying the P1 requesting this rerun and remained a review/finalization gate after evidence was committed.
   - Thread-aware review read passed with expected state: then-current AI Review P1 `3326928165` asked for rerun validation on `95222394f2dbad940223d0d2a38163128c9c36f7`; current-head P2 comments `3326875854` and `3326875856` were disposed as implemented and locally validated, while GitHub thread resolution or re-review remained Orchestrator-owned before merge.
+- Current-head AI Review P2 `3327032161` accepted and implemented at `2026-05-29T21:40:36Z`: `scripts/manual-guide-source-fidelity.mjs` now requires exact `pass` status or boolean `true` for implemented-page `selectableTextStatus`, every `boundingBoxChecks[*].status`, and `forbiddenPatternScan.status`, replacing the previous substring match. `tests/content-manual-guide-chapters.test.mjs` covers the review's failing example with `forbiddenPatternScan.status: "fail"`, `selectableTextStatus: "fail"`, and failing bounding-box status while `checkerResult` remains `pass`, plus a focused forbidden-scan substring regression.
+- Current-head AI Review P2 `3327032161` verification completed at `2026-05-29T21:40:36Z`:
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `11/11` tests.
+  - `pnpm run build` - passed; includes `validate:content` and the tightened manual-guide checker.
+  - `git diff --check` - passed.
+  - This is a non-evidence code/test fix after effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; prior final Architect/Analyst validation evidence is stale again and must be rerun by Orchestrator after this PR head update.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is later final-validation evidence only; supersedes stale prior validation head `88cb0b4e91993c27b363f19f34926d25e94b67a4` | implementation complete; current-head P2 fixes verified; Architect validation passed at `2026-05-29T21:16:33Z`; Analyst validation passed at `2026-05-29T21:19:48Z`; AI Review P1/thread resolution and Orchestrator final guards remain pending before merge/finalization | yes, as shared-prereq only |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | prior effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; current non-evidence P2 fix pending commit/head recording | implementation complete; current-head P2 `3327032161` verified; final Architect/Analyst validation stale and must rerun | yes, as shared-prereq only |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -286,16 +293,16 @@ For each page `NNN`:
 
 ### Final Validation Evidence
 
-- Architect validation: `Architect validation pass: passed` for shared-prerequisite PR #174 as an intermediate prerequisite slice only; pages `021-056` remain pending by design and are not validated as implemented content in this pass.
+- Architect validation: stale after non-evidence current-head P2 `3327032161`; prior `Architect validation pass: passed` applied to effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
 - Final Architect validation completed at: `2026-05-29T21:16:33Z`.
 - Architect return count: `0`.
-- Analyst validation: passed for shared-prerequisite PR #174 as an intermediate prerequisite slice only; source of truth is `feature-request.md`, which records `Final Analyst validation completed at: 2026-05-29T21:19:48Z` for the same effective content head.
+- Analyst validation: stale after non-evidence current-head P2 `3327032161`; prior shared-prereq Analyst validation in `feature-request.md` applied to effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`.
 - Analyst return count: `0`.
-- Effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Architect validated effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Analyst validated effective content head: `95222394f2dbad940223d0d2a38163128c9c36f7`.
-- Final-validation evidence-only commit: current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is a later final-validation evidence-only commit after effective content head `95222394f2dbad940223d0d2a38163128c9c36f7`; any later non-evidence change makes this pass stale and must return through role-appropriate validation.
-- Current-PR-head read-only guard: Architect process-memory correction confirms the effective content head markers now match across Architect and Analyst evidence, and current PR head `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` is evidence-only relative to `95222394f2dbad940223d0d2a38163128c9c36f7`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
+- Effective content head: pending rerun after current-head P2 `3327032161`.
+- Architect validated effective content head: stale; prior value `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Analyst validated effective content head: stale; prior value `95222394f2dbad940223d0d2a38163128c9c36f7`.
+- Final-validation evidence-only commit: prior evidence-only heads `4f2f45e625f98d32ec4fb96d70abfd4089cfcab5` and `67898c9f8e107627c9674f8fd534b02aef161a8d` are no longer current because this follow-up includes non-evidence code/test changes.
+- Current-PR-head read-only guard: stale after current-head P2 `3327032161`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 
