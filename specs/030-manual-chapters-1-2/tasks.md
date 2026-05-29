@@ -309,18 +309,6 @@ For each page `NNN`:
 - Current-PR-head read-only guard: stale after current-head P2 `3327032161`; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-29T21:56:39Z
-- Architect return count: 0
-- Effective content head: 20a04b05d4db29830d645419c90ce09d4f710988
-- Architect validated effective content head: 20a04b05d4db29830d645419c90ce09d4f710988
-- Architect validation scope: shared-prerequisite PR #174 only; pages 021-056 are unimplemented by design in this PR.
-- Architect validation verification: `git rev-parse HEAD` confirmed 20a04b05d4db29830d645419c90ce09d4f710988; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 36 pages checked and 0 implemented; `node --test tests/content-manual-guide-chapters.test.mjs` passed 11/11; `pnpm run build` passed; `git diff --check` passed.
-- Architect remote-check observation: `gh pr checks 174` observed `guard`, `docker-validation`, and `osv-scan` pass, with `baseline-checks` and `AI Review` still running at read time; Orchestrator owns remote check completion.
-- Final-validation evidence-only commit: effective content head 20a04b05d4db29830d645419c90ce09d4f710988; this Architect validation evidence is evidence-only.
-- Current-PR-head read-only guard: effective content head 20a04b05d4db29830d645419c90ce09d4f710988 matched local HEAD before Architect evidence edit; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
-- Analyst feedback Architect disposition: none
-- Limit escalation: none
 
 ### Cleanup Evidence
 
