@@ -771,7 +771,7 @@ Architect note: this older verification block was superseded by the final docume
 - [x] `pnpm run preflight` before publish if Orchestrator assigns PR publication/final readiness.
   - result: passed in the final documentation/merge-prep pass after the hidden legacy-manual test hook adjustment; see `Implementation Evidence - Documentation And Merge Preparation`.
 
-## Verification Evidence Placeholders
+## Verification Evidence
 
 - Source span verified from manifest/navigation/reference image: `src/data/pandemiaVialSection.ts` records `intro-road-pandemic`, PDF page 15, marker `14`, chunk `gcba-manual-vehiculo-4-ruedas-2023--14-015`, and reference SHA `9e25a91abe857426dfcc978e361a2511a6ab7a0c144ccc97f757c72ffe4b1496`.
 - Russian content/statistic coverage evidence: focused Node test checks required Russian title, intro, context labels, `1,4 МИЛЛИОНА`, `50 МИЛЛИОНОВ`, `96`, `48%`, `34%`, `11%`, `8 из 10`, `49%`, and the learning conclusion while asserting the visible Russian source-attribution sentences and footnote text are absent.
@@ -1108,10 +1108,15 @@ Use this checklist for this and future PDF-section-to-Russian-web conversions:
 ## Known Issues
 
 - Latest user feedback supersedes prior acceptance evidence when page 17 risk/recommendation visuals are square-cropped, lack separated circular/lobed geometry, clip icons, or reintroduce/cut off the decorative recommendation clipboard after the omission decision; this is now a standing non-regression rule covered by the follow-up evidence below.
+  - Architect disposition: resolved by the later source-derived page 17 risk-card implementation evidence, page 17 recommendation omission decision, screenshot evidence, and final preflight evidence recorded below.
 - Latest user feedback supersedes prior acceptance evidence when the page 18 consequences diagram is distorted, visibly dirty, contains residual source text/artifacts, or has Russian labels colliding with leftover background text; this is now a standing non-regression rule covered by the follow-up evidence below.
+  - Architect disposition: resolved by the later complete source-crop page 18 implementation evidence, artifact cleanup evidence, screenshot evidence, and final preflight evidence recorded below.
 - Latest user feedback supersedes prior acceptance evidence when page 19 work-axis pictograms are clipped, square-cropped, partially visible, or covered inside gray circles; this is now a standing non-regression rule covered by the follow-up evidence below.
+  - Architect disposition: resolved by the later source-derived page 19 pictogram implementation evidence, mobile work-axis grid follow-up, 320px screenshot evidence, and final preflight evidence recorded below.
 - The old exposed `Руководство 4R` tab is hidden from user-facing navigation. The legacy renderer code remains in the file for now but is no longer reachable through a visible manual destination.
-- Full `pnpm run preflight` was not run in this assignment; focused Node, TypeScript, build, Playwright, and diff-check evidence is recorded below.
+  - Architect disposition: not applicable as an owner-decision issue; the visible product destination is the new `Руководство`, while the hidden legacy manual hook is preserved only for compatibility evidence recorded below.
+- Historical note: full `pnpm run preflight` was not run in that earlier assignment; focused Node, TypeScript, build, Playwright, and diff-check evidence was recorded below.
+  - Architect disposition: resolved by later final `pnpm run preflight` evidence after the documentation/merge-prep pass and again after the work-axis mobile-grid follow-up, including 309/309 unit tests and 72/72 e2e tests.
 
 ## Implementation Agent Feedback For Architect Disposition
 
@@ -1129,6 +1134,11 @@ Use this checklist for this and future PDF-section-to-Russian-web conversions:
 - Architect disposition: visual checker/harness is now a required implementation follow-up for this PR slice. Completion is blocked without source screenshots, Russian screenshots, component/bounding-box metadata, asset/source-region checks, style-token checks, navigation checks, and pass/fail output that fails the user-reported regression classes.
 - Architect disposition: visual checker/harness completion is also blocked unless it fails distorted source-piece assemblies, including page 18 floating fragments, broken gauge/arc seams, misplaced black wedge, label/connector misalignment, and category text collisions.
 - Architect disposition: visual checker/harness completion is also blocked unless it fails clipping/crop/composition regressions, including page 17 flat risk rectangles with square icon crops, reintroduced/clipped page 17 recommendation clipboard fragments, page 19 cropped axis icon quadrants/crop-box corners, parent overflow cuts, and icon/background coverage.
+
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+- Architect disposition: historical Implementation Agent feedback above is resolved or superseded by later implementation evidence, review-follow-up evidence, final verification evidence, and final Architect validation evidence recorded in this file.
 
 ## Implementation Evidence - Latest Assignment
 
