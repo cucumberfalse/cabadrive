@@ -196,12 +196,18 @@ For each page `NNN`:
   - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes|Introduction index routes"` - passed, `4/4` tests across chromium and mobile.
   - `git diff --check` - passed before current-head P2 fix commit.
 - Current-head P2 fix content head before evidence-only update: `8aca7810b3e440a72caadfc5caa145af9ec84205`.
+- Current-head P2 duplicate-reference checker fix accepted and completed at `2026-05-29T20:18:03Z`: `scripts/manual-guide-source-fidelity.mjs` now counts raw flattened hierarchy page references before deduplicating, fails duplicate page assignments with per-ID counts, and keeps missing/unknown/raw-count guards explicit. `tests/content-manual-guide-chapters.test.mjs` now runs the checker against a temporary duplicated registry and verifies `manual-page-044` duplicated under a second topic fails validation.
+- Current-head P2 duplicate-reference verification completed at `2026-05-29T20:18:03Z`:
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `7/7` tests including duplicate hierarchy rejection.
+  - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
+  - `git diff --check` - passed.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; P2 review-fix content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`; current PR head includes publication/review-fix evidence | implementation complete, verification passed, PR opened, current-head P2 fixes verified | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; P2 review-fix content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`; current PR head includes publication/review-fix evidence | implementation complete, verification passed, PR opened, current-head P2 fixes verified including duplicate hierarchy guard | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |

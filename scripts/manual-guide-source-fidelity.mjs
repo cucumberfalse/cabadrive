@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 
-const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
-const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
+const registryPath = process.env.MANUAL_GUIDE_REGISTRY_PATH ?? "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+const evidencePath = process.env.MANUAL_GUIDE_EVIDENCE_PATH ?? "content/validation/manual-guide-source-fidelity.evidence.json";
 const appPath = "src/App.tsx";
 const manualGuidePath = "src/data/manualGuide.ts";
 const stylesPath = "src/styles.css";
@@ -69,10 +69,40 @@ function validatePendingRegistry(registry, evidence) {
     }
   }
 
-  const referencedPageIds = new Set([
+  const rawReferencedPageIds = [
     ...registry.chapters.flatMap((chapter) => chapter.chapterPageIds),
     ...registry.chapters.flatMap((chapter) => chapter.topics.flatMap((topic) => topic.pageIds))
-  ]);
+  ];
+  const expectedPageIds = expected.map(pageId);
+  const expectedPageIdSet = new Set(expectedPageIds);
+  const pageReferenceCounts = new Map();
+  for (const id of rawReferencedPageIds) {
+    pageReferenceCounts.set(id, (pageReferenceCounts.get(id) ?? 0) + 1);
+  }
+
+  const duplicatePageReferences = [...pageReferenceCounts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([id, count]) => ({ id, count }));
+  assertCondition(duplicatePageReferences.length === 0, "Chapter/topic hierarchy must not duplicate pending page references", {
+    duplicates: duplicatePageReferences
+  });
+
+  const unknownPageIds = [...new Set(rawReferencedPageIds.filter((id) => !expectedPageIdSet.has(id)))];
+  assertCondition(unknownPageIds.length === 0, "Chapter/topic hierarchy must not reference pages outside the required pending range", {
+    unknownPageIds
+  });
+
+  const missingPageIds = expectedPageIds.filter((id) => !pageReferenceCounts.has(id));
+  assertCondition(missingPageIds.length === 0, "Chapter/topic hierarchy must reference every pending page", {
+    missingPageIds
+  });
+
+  assertCondition(rawReferencedPageIds.length === expected.length, "Chapter/topic hierarchy must contain exactly one raw reference per pending page", {
+    referenced: rawReferencedPageIds.length,
+    expected: expected.length
+  });
+
+  const referencedPageIds = new Set(rawReferencedPageIds);
   assertCondition(referencedPageIds.size === expected.length, "Chapter/topic hierarchy must reference every pending page exactly once", {
     referenced: referencedPageIds.size,
     expected: expected.length

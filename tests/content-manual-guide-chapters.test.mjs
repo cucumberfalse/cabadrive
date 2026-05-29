@@ -1,5 +1,7 @@
-import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { execFileSync, spawnSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
@@ -144,4 +146,30 @@ test("Manual guide source-fidelity checker passes the shared prerequisite regist
   assert.equal(result.pendingPages, 36);
   assert.equal(result.implementedPages, 0);
   assert.equal(result.screenshotEvidence, "not_applicable_until_page_pr");
+});
+
+test("Manual guide source-fidelity checker rejects duplicate hierarchy page references", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-registry-"));
+  try {
+    const duplicateRegistryPath = join(tempDir, "page-registry.duplicate.json");
+    const duplicateRegistry = JSON.parse(JSON.stringify(registry));
+    duplicateRegistry.chapters[1].topics.find((topic) => topic.id === "ch2-scoring").pageIds.push("manual-page-044");
+    writeFileSync(duplicateRegistryPath, JSON.stringify(duplicateRegistry, null, 2));
+
+    const failure = spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        MANUAL_GUIDE_REGISTRY_PATH: duplicateRegistryPath
+      }
+    });
+
+    assert.notEqual(failure.status, 0, "checker must fail when a page is referenced twice in the source hierarchy");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "Chapter/topic hierarchy must not duplicate pending page references");
+    assert.deepEqual(result.details.duplicates, [{ id: "manual-page-044", count: 2 }]);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 });
