@@ -227,12 +227,13 @@ For each page `NNN`:
   - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `9/9` tests including implemented-page acceptance and forbidden page-module asset rejection.
   - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
   - `git diff --check` - passed.
+- Current-head implemented-page/content-scan P2 fix content head before evidence-only update: `3b73981594260d9b5c6fe0f274361b1959238ad7`.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | prior validated head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; newer non-evidence P2 fixes pending commit/head recording | implementation complete; current-head P2 fixes verified; final Architect/Analyst validation stale and must rerun | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | prior validated head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; current non-evidence P2 fix content head `3b73981594260d9b5c6fe0f274361b1959238ad7` | implementation complete; current-head P2 fixes verified; final Architect/Analyst validation stale and must rerun | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
