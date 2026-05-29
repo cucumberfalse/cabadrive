@@ -23,7 +23,7 @@
 - [x] T011 Shared prerequisite adds or generalizes style-token registry for manual page block families.
 - [x] T012 Shared prerequisite adds the page visual source-fidelity checker harness and evidence output format.
 - [x] T013 Shared prerequisite adds tests that reject runtime PDF viewer, full-page raster base, duplicate `Руководство 4R`, side-by-side translation, remote assets, broad masks/plates, and fake content for pending pages.
-- [ ] T014 Shared prerequisite records process-memory evidence and PR set row, then Orchestrator merges only after required checks/review pass.
+- [x] T014 Shared prerequisite records process-memory evidence and PR set row; Orchestrator merge remains gated on current PR checks/review/finalization.
 
 ## Page Slice Inventory
 
@@ -203,12 +203,26 @@ For each page `NNN`:
   - `pnpm run build` - passed; includes `validate:content` and the updated manual-guide checker.
   - `git diff --check` - passed.
 - Current-head duplicate-reference P2 fix content head before evidence-only update: `af70b3f4e46c0217f3cc16a56190a49192503a34`.
+- Final Architect validation for shared-prerequisite PR #174 completed at `2026-05-29T20:28:37Z` against current PR head `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
+  - Validation scope: shared route/schema/checker/style/pending-registry prerequisite only. Pages `021-056` remain pending by design and are not validated as implemented page content in this pass.
+  - `git rev-parse HEAD` - passed; local HEAD is `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
+  - `git status --short --branch` before Architect evidence edit - passed; branch `codex/030-manual-chapters-1-2...origin/codex/030-manual-chapters-1-2` was clean.
+  - `gh pr view 174 --json ...` - passed; PR #174 open, not draft, head `88cb0b4e91993c27b363f19f34926d25e94b67a4`, merge state `CLEAN`, current no-findings Codex Review comment present.
+  - GitHub required checks observed green on the current head through `gh pr view` / `gh pr checks 174`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` all passed. `gh pr checks 174 --required` returned no required-check classification for the branch, so the named status rollup was used as evidence.
+  - Review-thread read-only GraphQL check passed; all five review threads are resolved and outdated after fixes.
+  - Registry read-only count check passed: page range `21-56`, `36` pages, `36` pending, `0` implemented, `36` raw hierarchy references, `36` unique references, no fake implemented-content fields.
+  - `node scripts/manual-guide-source-fidelity.mjs` - passed; reported `36` pages checked, `36` pending, `0` implemented, `7` forbidden-pattern rules, screenshot/source-crop evidence not applicable until page PRs.
+  - `node --test tests/content-manual-guide-chapters.test.mjs` - passed, `7/7`.
+  - `node --test tests/content-pandemia-vial-section.test.mjs` - passed, `14/14`.
+  - `pnpm exec tsc --noEmit` - passed.
+  - `git diff --check origin/main...HEAD` - passed.
+  - `gh pr diff 174 --name-only` / `git diff --name-status origin/main...HEAD` confirmed shared-prereq scope: registry, evidence/checker, shared data/style/runtime wiring, tests, package script, and feature memory; no page-local `src/data/manual-pages/manual-page-NNN.ts` content files or page `21-56` source crops are implemented in this slice.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `db4fa7166efe8f7dccb32a15461b88356a7b9729`; P2 review-fix content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34`; current PR head includes publication/review-fix evidence | implementation complete, verification passed, PR opened, current-head P2 fixes verified including duplicate hierarchy guard | yes |
+| shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, ready | effective content head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; earlier content heads `db4fa7166efe8f7dccb32a15461b88356a7b9729`, `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, `af70b3f4e46c0217f3cc16a56190a49192503a34` | intermediate shared-prereq Architect validation passed; implementation complete; checks/review green; merge-ready as prerequisite slice only, not full feature completion | yes |
 | page-021 | Convert source page 21 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -248,15 +262,16 @@ For each page `NNN`:
 
 ### Final Validation Evidence
 
-- Architect validation: not yet invoked.
+- Architect validation: `Architect validation pass: passed` for shared-prerequisite PR #174 as an intermediate prerequisite slice only. This does not claim full feature completion and does not validate page PRs `021-056` as implemented content.
+- Final Architect validation completed at: `2026-05-29T20:28:37Z`.
 - Architect return count: `0`.
 - Analyst validation: not yet invoked.
 - Analyst return count: `0`.
-- Effective content head: not yet validated.
-- Architect validated effective content head: not yet validated.
+- Effective content head: `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
+- Architect validated effective content head: `88cb0b4e91993c27b363f19f34926d25e94b67a4`.
 - Analyst validated effective content head: not yet validated.
-- Final-validation evidence-only commit: none.
-- Current-PR-head read-only guard: pending.
+- Final-validation evidence-only commit: this Architect-owned process-memory update is evidence-only if committed after `88cb0b4e91993c27b363f19f34926d25e94b67a4`; any non-evidence change after this validation makes the Architect pass stale.
+- Current-PR-head read-only guard: Architect read-only guard passed for PR #174 current head `88cb0b4e91993c27b363f19f34926d25e94b67a4`; Orchestrator still owns final current-head guard before merge/finalization.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 
@@ -266,8 +281,11 @@ For each page `NNN`:
 
 ## Implementation Agent Feedback
 
-- None yet.
+- None unresolved for shared-prerequisite PR #174. Review-surfaced P2 items were implemented and verified before this Architect validation; no remaining Implementation Agent feedback requires Architect task/ticket/dispose follow-up before shared-prereq merge.
 
 ## Architect Dispositions
 
-- None yet.
+- Page `56` / `Scoring` known issue: carried forward as a required future page-slice disposition for `page-056`; not a blocker for shared-prereq merge because PR #174 intentionally registers page `56` as pending and implements no scoring/slogan content.
+- Legacy layout visual-region classification known issue: carried forward as a required source-inspection rule for every future page PR; not a blocker for shared-prereq merge because PR #174 adds the checker/schema/registry and no page visual conversion.
+- Page `55` NGO contacts known issue: carried forward as a required future page-slice disposition for `page-055`; not a blocker for shared-prereq merge because PR #174 does not surface or validate the contacts as current learner content.
+- Implementation Agent feedback disposition: no unresolved feedback. The prior review findings were fixed in content heads `2ad7dec4e53c239638ceada0606cd7fdb68a3466`, `8aca7810b3e440a72caadfc5caa145af9ec84205`, and `af70b3f4e46c0217f3cc16a56190a49192503a34`, with final PR head `88cb0b4e91993c27b363f19f34926d25e94b67a4` validated by Architect.
