@@ -141,7 +141,7 @@ These tasks supersede any evidence that accepted native symbolic/card replacemen
 
 ## Latest Plan Visual And Style Correction Tasks
 
-These tasks extend the source-artwork correction to `intro-plan-seguridad-vial` and add a reusable document style guide requirement. They are pending implementation tasks because Architect records the requirement but does not edit runtime/code/assets/tests.
+These tasks extended the source-artwork correction to `intro-plan-seguridad-vial` and added a reusable document style guide requirement. They were originally Architect-recorded pending tasks and are now closed by the later Implementation Agent evidence in this file.
 
 - [x] Replace page 18 `Consecuencias de los Incidentes de tránsito` generic/simplified visuals with the original gauge/semi-circle incident diagram.
 - [x] Preserve page 18 source components exactly: black fatal-victims wedge/label, beige category labels/panels, family/economy icon, health icon, institutions icon, pointer shape, colors, geometry, proportions, spacing, connector lines, and overall composition.
@@ -201,16 +201,16 @@ These tasks supersede earlier page 17/page 19 completion evidence. Prior checks 
 
 These tasks supersede earlier page 18/page 19 completion evidence. Previous attempts that redrew, reconstructed, componentized, or tightly cropped source artwork are rejected by the user and cannot be accepted as source-faithful.
 
-- [ ] Rebuild page 18 `Последствия дорожных инцидентов` / source `Consecuencias de los Incidentes de tránsito` using the complete original PDF infographic crop as the non-text visual layer.
-- [ ] Clean/remove only visible Spanish/source text from the page 18 complete source crop, then overlay selectable Russian DOM/SVG text in the original text positions.
-- [ ] Do not redraw, reconstruct, approximate, or separately reassemble page 18 arcs, sectors, pointer, black fatality wedge, label boxes, connector lines, pictograms, colors, geometry, proportions, or spacing with CSS/SVG/native shapes.
-- [ ] Reject page 18 if any original diagram component is missing, cropped away, materially shifted, visually redrawn, proportionally changed, blurred/stretched, or if any Spanish/source text remnants remain.
-- [ ] Update the page 18 checker to fail when the visual asset is not a full source crop, when geometry differs materially from the source screenshot, when labels/boxes/connector lines/arcs/pointer/sectors/icons are redrawn instead of retained from the source crop, or when Spanish/source remnants remain.
-- [ ] Rebuild page 19 `Направления работы` pictograms from complete source PDF pictogram crops with enough transparent/source padding so no pedestrian, megaphone, officer, or group edge touches the asset bounds.
-- [ ] Reject page 19 tight crops that show only part of a pictogram, cut off feet/handles/heads/bodies, expose square crop-box corners inside gray circles, or rely on `object-fit: contain` after the natural image content is already clipped.
-- [ ] Update the page 19 checker to inspect natural/content bounds or equivalent metadata plus rendered screenshots, and fail if a pictogram touches crop bounds without padding, is visibly clipped in the gray circle, or is replaced by a generic/reconstructed icon.
-- [ ] Add regression evidence from the latest user screenshots so the current broken page 18 diagram and page 19 clipped axis icons fail before implementation is considered complete again.
-- [ ] Capture fresh source-vs-Russian desktop and mobile screenshots for page 18 and page 19 after the rebuild, and record pass/fail evidence before returning to Orchestrator.
+- [x] Rebuild page 18 `Последствия дорожных инцидентов` / source `Consecuencias de los Incidentes de tránsito` using the complete original PDF infographic crop as the non-text visual layer.
+- [x] Clean/remove only visible Spanish/source text from the page 18 complete source crop, then overlay selectable Russian DOM/SVG text in the original text positions.
+- [x] Do not redraw, reconstruct, approximate, or separately reassemble page 18 arcs, sectors, pointer, black fatality wedge, label boxes, connector lines, pictograms, colors, geometry, proportions, or spacing with CSS/SVG/native shapes.
+- [x] Reject page 18 if any original diagram component is missing, cropped away, materially shifted, visually redrawn, proportionally changed, blurred/stretched, or if any Spanish/source text remnants remain.
+- [x] Update the page 18 checker to fail when the visual asset is not a full source crop, when geometry differs materially from the source screenshot, when labels/boxes/connector lines/arcs/pointer/sectors/icons are redrawn instead of retained from the source crop, or when Spanish/source remnants remain.
+- [x] Rebuild page 19 `Направления работы` pictograms from complete source PDF pictogram crops with enough transparent/source padding so no pedestrian, megaphone, officer, or group edge touches the asset bounds.
+- [x] Reject page 19 tight crops that show only part of a pictogram, cut off feet/handles/heads/bodies, expose square crop-box corners inside gray circles, or rely on `object-fit: contain` after the natural image content is already clipped.
+- [x] Update the page 19 checker to inspect natural/content bounds or equivalent metadata plus rendered screenshots, and fail if a pictogram touches crop bounds without padding, is visibly clipped in the gray circle, or is replaced by a generic/reconstructed icon.
+- [x] Add regression evidence from the latest user screenshots so the current broken page 18 diagram and page 19 clipped axis icons fail before implementation is considered complete again.
+- [x] Capture fresh source-vs-Russian desktop and mobile screenshots for page 18 and page 19 after the rebuild, and record pass/fail evidence before returning to Orchestrator.
 
 ## Current Page 18 Overlay Transfer Blocker Tasks
 
@@ -752,7 +752,7 @@ These tasks supersede checks that only prove card density or icon-strip contact.
 
 Implementation Agent should record command results here:
 
-Architect note: the newest memory-only requirements add pending typography and lower-row non-regression guards. Existing command results below are Implementation Agent/process evidence and must be rerun or updated after those pending tasks are implemented if they predate the newest criteria.
+Architect note: this older verification block was superseded by the final documentation/merge-prep evidence below. The typography and lower-row non-regression guards that were pending when this block was written are closed by later focused checks and final `pnpm run preflight`.
 
 - [x] `pnpm run validate:content`
   - result: passed as part of `pnpm run build` on 2026-05-27 after the card/panel layout fidelity fix; output included `Content validation passed: 460 category B fallback questions, 276 local image references.`
@@ -768,8 +768,8 @@ Architect note: the newest memory-only requirements add pending typography and l
   - result: passed on 2026-05-27, 2/2 tests after the readable-typography/lower-row regression fix; fresh desktop, narrow in-app-like, and mobile screenshots captured; checks include source-derived `*-source.png` accepted assets, reframed infographic density/no huge blank margins, desktop no tiny island, mobile no blank-start, responsive prose outside the horizontal-scroll stage, no document horizontal scroll required to read prose, 760px narrow viewport prose fit, intro/body font-size parity with `Материалы`, heading no forced `ch` max-width and desktop one-line rendering, no forced line breaks in normal paragraphs, text/stat labels selectable/copyable (`pointer-events` not `none`, `user-select` not `none`, Selection API includes intro/body Russian text), computed typography for heading/intro/body and infographic roles, modern UI/system stack, no SF-rounded-first stack, no Avenir-first stack, no Inter, no partial context-label `::first-line` styling, lower-row icon-to-panel gap, lower-row top/center/bottom/height-ratio alignment, lower gray panel height/density, lower empty-space ratio, lower text top/bottom padding, global gray-card height/density, equal global card heights/bottoms, rectangular blue strips with localized caps/no seam, airplane/stadium icon-to-blue-strip attachment, no visible source attribution, no footnote/page marker/corner motif, no text/icon overlap inside city circles, icon center not covered by text/background layers, explicit `8 male / 2 female` people-grid metadata, and no circle/lower-row overlap
 - [x] `git diff --check`
   - result: passed on 2026-05-27 after the readable-typography/lower-row regression fix
-- [ ] `pnpm run preflight` before publish if Orchestrator assigns PR publication/final readiness.
-  - result: not run; PR publication/final readiness was not assigned for this visual-fix iteration
+- [x] `pnpm run preflight` before publish if Orchestrator assigns PR publication/final readiness.
+  - result: passed in the final documentation/merge-prep pass after the hidden legacy-manual test hook adjustment; see `Implementation Evidence - Documentation And Merge Preparation`.
 
 ## Verification Evidence Placeholders
 
@@ -1049,27 +1049,27 @@ Use this checklist for this and future PDF-section-to-Russian-web conversions:
 - [x] Lower city paired rows preserve full source row geometry: panel top/center/bottom/height remain proportionate to the matching pictogram block; top-edge alignment alone is insufficient.
 - [x] Lower city gray panels have bounded height, empty-space ratio, and bottom whitespace relative to icon group and text block.
 - [x] Repeated user-reported visual regressions become stricter reusable guards and trigger grouped non-regression checks.
-- [ ] Lower city paired rows preserve source-like horizontal gap between pictogram block and gray statistic panel.
-- [ ] Lower city gray panels preserve source-like proportions and do not become oversized empty containers.
-- [ ] Lower city gray panel text has source-like internal top/bottom padding or vertical balance.
+- [x] Lower city paired rows preserve source-like horizontal gap between pictogram block and gray statistic panel.
+- [x] Lower city gray panels preserve source-like proportions and do not become oversized empty containers.
+- [x] Lower city gray panel text has source-like internal top/bottom padding or vertical balance.
 - [x] Embedded/source PDF fonts are identified before choosing section typography; for this section the source context is GothamRounded Book/Light/Medium/Bold plus HelveticaWorld-Regular.
-- [ ] If source-font imitation harms localized readability/quality, choose and document the modern UI readability stack instead of forcing a rounded/Gotham-like substitute.
-- [ ] Avenir-first and SFNSRounded/SF Compact Rounded/SF Pro Rounded-first stacks are rejected after the user's feedback unless a later explicit decision changes this.
-- [ ] Heading/body typography uses the documented modern UI readability stack.
-- [ ] Typography checks record computed heading and intro/body font family, weight, line-height, letter spacing, paragraph spacing, and text block width.
-- [ ] Heading wrap checks prove `Дорожная пандемия` is not forced into two lines at normal desktop width.
-- [ ] Infographic labels/numbers/cards/blue strips/gray boxes use the documented readability-first typography system, not untuned default typography.
-- [ ] Statistic card font rhythm is visually checked against the PDF; a passing font-stack assertion is not enough.
-- [ ] Upper global statistic cards preserve source-like gray-box density and avoid excessive empty area.
-- [ ] Airplane/stadium pictograms visually attach to the blue strip/cap geometry as in the PDF.
-- [ ] Icon-to-strip attachment preserves localized cap/rise geometry, with flat rectangular strip portions at left/right.
-- [ ] Icon/cap/strip/card top has no white seam/gap.
-- [ ] Paired global cards have equal panel heights and aligned bottom edges.
-- [ ] Global blue strip and gray panel left/right edges remain rectangular while any cap stays local.
-- [ ] Global gray-card empty-space ratio is bounded and text padding is source-like.
-- [ ] Typography system is unified across prose and infographic roles, with any source-faithful role distinction documented.
-- [ ] Context labels use consistent computed weight/emphasis; no city-name-only bolding or asymmetric pseudo-element/nested-span styling.
-- [ ] Fresh screenshots are reviewed for source-like typography rhythm.
+- [x] If source-font imitation harms localized readability/quality, choose and document the modern UI readability stack instead of forcing a rounded/Gotham-like substitute.
+- [x] Avenir-first and SFNSRounded/SF Compact Rounded/SF Pro Rounded-first stacks are rejected after the user's feedback unless a later explicit decision changes this.
+- [x] Heading/body typography uses the documented modern UI readability stack.
+- [x] Typography checks record computed heading and intro/body font family, weight, line-height, letter spacing, paragraph spacing, and text block width.
+- [x] Heading wrap checks prove `Дорожная пандемия` is not forced into two lines at normal desktop width.
+- [x] Infographic labels/numbers/cards/blue strips/gray boxes use the documented readability-first typography system, not untuned default typography.
+- [x] Statistic card font rhythm is visually checked against the PDF; a passing font-stack assertion is not enough.
+- [x] Upper global statistic cards preserve source-like gray-box density and avoid excessive empty area.
+- [x] Airplane/stadium pictograms visually attach to the blue strip/cap geometry as in the PDF.
+- [x] Icon-to-strip attachment preserves localized cap/rise geometry, with flat rectangular strip portions at left/right.
+- [x] Icon/cap/strip/card top has no white seam/gap.
+- [x] Paired global cards have equal panel heights and aligned bottom edges.
+- [x] Global blue strip and gray panel left/right edges remain rectangular while any cap stays local.
+- [x] Global gray-card empty-space ratio is bounded and text padding is source-like.
+- [x] Typography system is unified across prose and infographic roles, with any source-faithful role distinction documented.
+- [x] Context labels use consistent computed weight/emphasis; no city-name-only bolding or asymmetric pseudo-element/nested-span styling.
+- [x] Fresh screenshots are reviewed for source-like typography rhythm.
 - [x] Russian text is native DOM/SVG/text; no mask-over-Spanish-source and no overlay translation on the original page.
 - [x] Visual assets use original PDF/source artwork whenever possible, preferably high-resolution local crops from the PDF or best available source render; cleanup only removes source text needed for Russian DOM/SVG text.
 - [x] Source artwork is preserved 1:1 for images, infographics, pictograms, diagrams, panel shapes, borders, colors, spacing, and proportions; Russian text replacement is not a redesign license.
@@ -1447,6 +1447,13 @@ This feedback supersedes the two prior page 18 acceptance blocks above (`Clipboa
 
 - Current intended product state: four Introduction routes are implemented inside the scalable `Руководство` hierarchy; future chapters/annexes are navigation placeholders; `Руководство 4R` is not a duplicate visible destination.
 - Current intended visual/content state: `Дорожная пандемия` prose is styled like the other Introduction article pages, while its infographic remains source-faithful; page 17/18/19 visual guardrails remain active and must not be relaxed for merge.
-- Current durable-docs gap: the reusable conversion requirements exist in feature memory but still need to be promoted into `docs_project/project/frontend/`.
-- Current verification gap before PR: rerun local verification after durable docs are added and record the evidence in this file.
-- Current blockers from Architect perspective: none, provided Implementation Agent completes durable docs, final verification, and records no new unresolved feedback.
+- Current durable-docs status: complete. `docs_project/project/frontend/manual-conversion-guidelines.md` was added and `docs_project/project/frontend/frontend-docs.md` links it.
+- Current verification status: complete for PR readiness. Final focused checks and `pnpm run preflight` are recorded in `Implementation Evidence - Documentation And Merge Preparation`.
+- Current blockers from Architect perspective: none. No unresolved Implementation Agent feedback, durable-docs gap, or verification rerun gap remains known in feature memory.
+
+## Architect Review Disposition - PR #173 P1 Process-Memory Blocker
+
+- Review finding: stale `tasks.md` process memory contradicted later implementation evidence by leaving durable-docs and verification gaps open, and by leaving outdated acceptance checklist items unchecked.
+- Disposition: accepted as a process-memory blocker and resolved in this Architect follow-up.
+- Changes made: stale pending language was updated; page 18/page 19 source-crop tasks, typography/lower-row/global-card acceptance checks, and `pnpm run preflight` were marked complete only where later Implementation Agent evidence in this file records completion.
+- Remaining gaps: none known. If a future reviewer finds a product/runtime defect, it should be routed as a new implementation follow-up; this P1 process-memory contradiction is resolved.
