@@ -2025,7 +2025,7 @@ function IntroductionSectionsView({
                   <div className="manual-guide-children" role="list">
                     {entry.children.map((child) => {
                       const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
-                      const isActiveChild = child.introductionRouteId === selectedEntry.id;
+                      const isActiveChild = !selectedManualPage && child.introductionRouteId === selectedEntry.id;
                       return (
                         <div
                           key={child.id}

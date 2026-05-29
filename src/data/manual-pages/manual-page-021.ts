@@ -27,7 +27,7 @@ export const manualPage021: ManualGuidePageContent = {
       eyebrowRu: "Глава 1 - Теоретическое руководство по управлению городскими четырехколесными транспортными средствами",
       titleRu: "К устойчивой мобильности",
       sourceTextEs:
-        "HACIA UNA MOVILIDAD SUSTENTABLE\nCapítulo 1 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas",
+        "Capítulo 1 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas\nHACIA UNA MOVILIDAD SUSTENTABLE",
       panelAssetPath:
         "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/chapter-1/page-021/chapter-divider-panel-clean.svg",
       sourcePage: 21,

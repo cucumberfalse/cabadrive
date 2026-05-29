@@ -2665,6 +2665,10 @@ test("Manual guide renders page 021 divider and keeps neighboring Chapter 1 and 
   await expect(page).toHaveURL(/#manual-page-021$/);
   await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(nav).toHaveAttribute("data-active-child-id", "manual-page-021");
+  await expect(page21).toHaveAttribute("aria-current", "page");
+  const introRoadPandemicRoute = reader.getByTestId("intro-route-intro-road-pandemic");
+  await expect(introRoadPandemicRoute).not.toHaveAttribute("aria-current", "page");
+  await expect(introRoadPandemicRoute).not.toHaveClass(/active/);
   await expect(content.getByTestId("manual-guide-page")).toHaveAttribute("data-manual-page-id", "manual-page-021");
   const divider = content.locator('[data-block-kind="chapter-divider"]');
   await expect(divider).toHaveAttribute("data-block-kind", "chapter-divider");
@@ -2714,8 +2718,17 @@ test("Manual guide renders page 021 divider and keeps neighboring Chapter 1 and 
 
   await page.setViewportSize({ width: 390, height: 760 });
   await page.goto("/#manual-page-021");
-  await expect(content.getByRole("heading", { name: "К устойчивой мобильности" })).toBeVisible();
-  const mobileOverflow = await content.getByTestId("manual-guide-page").evaluate((node) => node.scrollWidth - node.clientWidth);
+  const directReader = page.getByTestId("introduction-reader");
+  const directNav = directReader.getByTestId("manual-guide-nav");
+  const directContent = directReader.getByTestId("manual-guide-content");
+  await expect(directNav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(directNav).toHaveAttribute("data-active-child-id", "manual-page-021");
+  await expect(directReader.getByTestId("manual-guide-pending-manual-page-021")).toHaveAttribute("aria-current", "page");
+  const directIntroRoadPandemicRoute = directReader.getByTestId("intro-route-intro-road-pandemic");
+  await expect(directIntroRoadPandemicRoute).not.toHaveAttribute("aria-current", "page");
+  await expect(directIntroRoadPandemicRoute).not.toHaveClass(/active/);
+  await expect(directContent.getByRole("heading", { name: "К устойчивой мобильности" })).toBeVisible();
+  const mobileOverflow = await directContent.getByTestId("manual-guide-page").evaluate((node) => node.scrollWidth - node.clientWidth);
   expect(mobileOverflow).toBeLessThanOrEqual(1);
 });
 

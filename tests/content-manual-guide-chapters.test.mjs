@@ -194,6 +194,11 @@ test("Manual page 021 data records the chapter divider without full-page raster 
   assert.match(page21ModuleSource, /pageId:\s*"manual-page-021"/);
   assert.match(page21ModuleSource, /kind:\s*"chapter-divider"/);
   assert.match(page21ModuleSource, /titleRu:\s*"К устойчивой мобильности"/);
+  assert.match(page21ModuleSource, /sourceTextEs:\s*"Capítulo 1 - Manual teórico de conducción de vehículos urbanos de cuatro ruedas\\nHACIA UNA MOVILIDAD SUSTENTABLE"/);
+  assert.ok(
+    page21ModuleSource.indexOf('eyebrowRu: "Глава 1') < page21ModuleSource.indexOf('      titleRu: "К устойчивой мобильности"'),
+    "page 021 keeps the source-backed chapter/manual line above the divider title"
+  );
   assert.match(page21ModuleSource, /panelAssetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/sections\/chapter-1\/page-021\/chapter-divider-panel-clean\.svg"/);
   assert.match(page21ModuleSource, /visibleSpanish:\s*false/);
   assert.match(page21ModuleSource, /selectable DOM/);
@@ -209,6 +214,7 @@ test("Manual guide UI renders page 021 as available while keeping other pages pe
   assert.match(manualGuideAppSource, /aria-label=\{`\$\{page\.labelRu\}: \$\{pageStatusLabel\}`\}/);
   assert.match(manualGuideAppSource, /<small>\{pageStatusLabel\}<\/small>/);
   assert.match(manualGuideAppSource, /data-testid=\{`manual-guide-pending-\$\{page\.id\}`\}/);
+  assert.match(manualGuideAppSource, /const isActiveChild = !selectedManualPage && child\.introductionRouteId === selectedEntry\.id/);
   assert.match(manualGuideAppSource, /data-source-region-metadata-status=\{page\.sourceRegionMetadataStatus\}/);
   assert.match(manualGuideAppSource, /data-visual-evidence-status=\{page\.visualEvidenceStatus\}/);
   assert.match(manualGuideAppSource, /block\.kind === "chapter-divider"/);
