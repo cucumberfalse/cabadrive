@@ -163,8 +163,8 @@
             "assetPath": "src/data/manual-sections/ch1-cities-for-people.ts",
             "assetKind": "native-dom-text-and-css-principle-pair",
             "width": 640,
-            "height": 210,
-            "sha256": "bf4b29526d0c094a64e1e7697c471e7544f75311a2cbe386ea6736ede76258ac",
+            "height": 140,
+            "sha256": "cf3b4dbdc2ce8a569fc05db957c7436e012db28dab4cdd31d42109de5a3f2b43",
             "containsText": true,
             "visibleSpanish": false
           }

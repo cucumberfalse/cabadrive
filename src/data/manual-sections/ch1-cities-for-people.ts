@@ -41,6 +41,26 @@ export const ch1CitiesForPeopleSection: ManualGuideSectionContent = {
         "Когда человек куда-то едет или идет, он обычно хочет добраться быстрее, целым и невредимым, и не причинить вреда другому."
     },
     {
+      id: "traffic-system-principles",
+      kind: "principle-pair",
+      sourceTextEs: "Principios básicos del sistema de tránsito mundial: FLUIDEZ SEGURIDAD",
+      titleRu: "Основные принципы мировой системы движения:",
+      sourcePage: 22,
+      sourceRegion: {
+        x: 403,
+        y: 645,
+        width: 390,
+        height: 92
+      },
+      leftRu: "ПЛАВНОСТЬ",
+      rightRu: "БЕЗОПАСНОСТЬ",
+      visualNotes: [
+        "Centered teal source heading and two balanced terms preserved as text.",
+        "Russian labels remain selectable DOM text, not an image crop.",
+        "Placed immediately after the safe-arrival paragraph to match source crop/page layout."
+      ]
+    },
+    {
       id: "solidarity-law-respect",
       kind: "paragraph",
       sourceTextEs:
@@ -55,6 +75,14 @@ export const ch1CitiesForPeopleSection: ManualGuideSectionContent = {
         "Un antiguo principio legal indica que se le debe pedir más cuidado al más fuerte... a quien conduce. Por eso, este manual está destinado a aquellas personas que aspiran a obtener su licencia de conducir: para que tomen conciencia de la peligrosidad que implica conducir un vehículo y de la especial responsabilidad que ello conlleva.",
       textRu:
         "С более сильного участника дороги требуют больше осторожности. В этой теме таким участником чаще всего становится водитель. Поэтому руководство обращено к тем, кто стремится получить водительское удостоверение: оно должно помочь заранее осознать опасность управления транспортным средством и особую ответственность, которая из этого следует."
+    },
+    {
+      id: "motorized-crash-likelihood",
+      kind: "principle-note",
+      sourceTextEs:
+        "A mayor cantidad de vehículos motorizados, mayor probabilidad de siniestralidad.",
+      textRu:
+        "Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов."
     },
     {
       id: "nine-million-trips",
@@ -79,28 +107,6 @@ export const ch1CitiesForPeopleSection: ManualGuideSectionContent = {
         "En la Ciudad de Buenos Aires, se desarrollan obras de conectividad... promueven una movilidad sustentable.",
       textRu:
         "В Буэнос-Айресе для этого развивают крупные проекты связности: они помогают движению быть более гибким и поддерживают устойчивую мобильность."
-    },
-    {
-      id: "traffic-system-principles",
-      kind: "principle-pair",
-      sourceTextEs: "Principios básicos del sistema de tránsito mundial: FLUIDEZ SEGURIDAD",
-      titleRu: "Основные принципы мировой системы движения:",
-      sourcePage: 22,
-      sourceRegion: {
-        x: 403,
-        y: 645,
-        width: 390,
-        height: 92
-      },
-      leftRu: "ПЛАВНОСТЬ",
-      rightRu: "БЕЗОПАСНОСТЬ",
-      closingRu:
-        "Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов.",
-      visualNotes: [
-        "Centered teal source heading and two balanced terms preserved as text.",
-        "Russian labels remain selectable DOM text, not an image crop.",
-        "Closing crash-likelihood idea keeps the source blue emphasis without visible Spanish."
-      ]
     }
   ]
 };

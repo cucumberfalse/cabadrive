@@ -335,6 +335,7 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
     "С более сильного участника дороги требуют больше осторожности",
     "стремится получить водительское удостоверение",
     "осознать опасность управления транспортным средством",
+    "Чем больше моторизованных транспортных средств",
     "больше девяти миллионов поездок в день",
     "общим пространством здорового сосуществования",
     "поддерживают устойчивую мобильность"
@@ -346,15 +347,18 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
   assert.match(manualGuideAppSource, /data-testid="manual-principle-terms"/);
   assert.match(stylesSource, /\.manual-principle-pair[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-principle-terms[\s\S]*?grid-template-columns:\s*repeat\(2/);
+  assert.match(manualGuideAppSource, /block\.kind === "principle-note"/);
+  assert.match(stylesSource, /\.manual-principle-note[\s\S]*?color:\s*#1b6680/);
   const orderedBlockIds = [
     "shared-public-space",
     "safe-arrival",
+    "traffic-system-principles",
     "solidarity-law-respect",
     "stronger-road-user-care",
+    "motorized-crash-likelihood",
     "nine-million-trips",
     "streets-as-shared-space",
-    "connectivity-sustainable-mobility",
-    "traffic-system-principles"
+    "connectivity-sustainable-mobility"
   ];
   let previousBlockIndex = -1;
   for (const blockId of orderedBlockIds) {

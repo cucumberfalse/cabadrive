@@ -1898,8 +1898,15 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
                   <strong>{block.leftRu}</strong>
                   <strong>{block.rightRu}</strong>
                 </div>
-                <p>{block.closingRu}</p>
+                {block.closingRu && <p>{block.closingRu}</p>}
               </section>
+            );
+          }
+          if (block.kind === "principle-note") {
+            return (
+              <p key={block.id} className="intro-doc-block manual-principle-note" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+                {block.textRu}
+              </p>
             );
           }
 

@@ -166,8 +166,14 @@ export type ManualGuideContentBlock =
       };
       leftRu: string;
       rightRu: string;
-      closingRu: string;
+      closingRu?: string;
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "principle-note";
+      textRu: string;
+      sourceTextEs: string;
     };
 
 export type ManualGuideSectionContent = {
