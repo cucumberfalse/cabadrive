@@ -346,6 +346,22 @@ test("ch1 cities section content covers source page 22 and no unrelated section 
   assert.match(manualGuideAppSource, /data-testid="manual-principle-terms"/);
   assert.match(stylesSource, /\.manual-principle-pair[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-principle-terms[\s\S]*?grid-template-columns:\s*repeat\(2/);
+  const orderedBlockIds = [
+    "shared-public-space",
+    "safe-arrival",
+    "solidarity-law-respect",
+    "stronger-road-user-care",
+    "nine-million-trips",
+    "streets-as-shared-space",
+    "connectivity-sustainable-mobility",
+    "traffic-system-principles"
+  ];
+  let previousBlockIndex = -1;
+  for (const blockId of orderedBlockIds) {
+    const blockIndex = ch1CitiesModuleSource.indexOf(`id: "${blockId}"`);
+    assert.ok(blockIndex > previousBlockIndex, `${blockId} follows source page 22 order`);
+    previousBlockIndex = blockIndex;
+  }
   assert.doesNotMatch(ch1CitiesModuleSource, /Что такое устойчивая мобильность|Пешеходный приоритет|Велосипед|Система общественного транспорта|Совместная поездка/u);
   assert.doesNotMatch(ch1CitiesModuleSource, /page-021|page-022\.jpg|manual-page-021|#manual-page/u);
 });
