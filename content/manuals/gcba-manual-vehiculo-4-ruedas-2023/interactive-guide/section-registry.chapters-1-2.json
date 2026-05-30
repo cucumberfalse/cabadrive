@@ -131,12 +131,71 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-022.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "sectionContentModulePath": "src/data/manual-sections/ch1-cities-for-people.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "sectionId": "ch1-cities-for-people",
+        "sourcePages": [22],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 22,
+            "sourceRegion": {
+              "x": 285,
+              "y": 435,
+              "width": 620,
+              "height": 650,
+              "unit": "page-022.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-cities-for-people/page-022-cities-for-people-source-crop.jpg",
+            "cropDimensions": {
+              "width": 620,
+              "height": 650
+            },
+            "cropSha256": "bdf97ca487edf8e307946497e9059afc6bfd7b146c56414b057d28489c600a72",
+            "cleanupScope": "reference-only source crop; no runtime Spanish artwork is rendered"
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch1-cities-for-people.ts",
+            "assetKind": "native-dom-text-and-css-principle-pair",
+            "width": 640,
+            "height": 140,
+            "sha256": "cf3b4dbdc2ce8a569fc05db957c7436e012db28dab4cdd31d42109de5a3f2b43",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch1-cities-for-people/ch1-cities-for-people-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch1-cities-for-people/ch1-cities-for-people-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "principle-pair-responsive-fit",
+            "status": "pass",
+            "evidence": "Playwright verifies the principle pair preserves two columns on desktop and mobile with adjusted spacing/type, and does not overflow its section container."
+          },
+          {
+            "id": "ordinary-prose-no-horizontal-overflow",
+            "status": "pass",
+            "evidence": "Playwright checks section blocks against the viewport on desktop and mobile."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF/page raster, source page 21 route, visible Spanish, remote asset, broad mask, or fake pending content."
+        },
+        "visualReviewNotes": [
+          "Source page 22 has no pictogram/photo artwork; the meaningful visual is the centered FLUIDEZ/SEGURIDAD typography relationship.",
+          "The Russian page recreates that relationship as selectable DOM text with the source teal emphasis and responsive wrapping.",
+          "The source crop is retained as internal reference evidence only and is not mounted in the learner view."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch1-sustainable-mobility",

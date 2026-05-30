@@ -1,4 +1,5 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import {
   introductionDocumentStyleGuide,
   introductionNavigation,
@@ -150,6 +151,29 @@ export type ManualGuideContentBlock =
       visibleSpanish: false;
       cleanupStatus: string;
       captionRu?: string;
+    }
+  | {
+      id: string;
+      kind: "principle-pair";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      leftRu: string;
+      rightRu: string;
+      closingRu?: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "principle-note";
+      textRu: string;
+      sourceTextEs: string;
     };
 
 export type ManualGuideSectionContent = {
@@ -193,7 +217,7 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
   return `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
 }
 
-export const implementedManualGuideSections: ManualGuideSectionContent[] = [];
+export const implementedManualGuideSections: ManualGuideSectionContent[] = [ch1CitiesForPeopleSection];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
 export const manualGuideDocumentStyleTokens = {
@@ -215,6 +239,11 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-section-heading",
       description: "Native section-opening treatment for source Índice topics; divider-only source pages stay navigation metadata only.",
       tokenSource: "manual-guide-document-style-v2"
+    },
+    {
+      id: "manual-principle-pair",
+      description: "Centered teal typographic relationship for paired traffic-system principles such as ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ.",
+      tokenSource: "source page 22 Ciudades para las personas"
     },
     {
       id: "manual-source-artwork",

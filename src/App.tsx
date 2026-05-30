@@ -1882,6 +1882,33 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
               </figure>
             );
           }
+          if (block.kind === "principle-pair") {
+            return (
+              <section
+                key={block.id}
+                className="manual-principle-pair"
+                data-testid="manual-guide-section-block"
+                data-block-kind={block.kind}
+                data-block-id={block.id}
+                data-source-page={block.sourcePage}
+                data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+              >
+                <h3>{block.titleRu}</h3>
+                <div className="manual-principle-terms" data-testid="manual-principle-terms">
+                  <strong>{block.leftRu}</strong>
+                  <strong>{block.rightRu}</strong>
+                </div>
+                {block.closingRu && <p>{block.closingRu}</p>}
+              </section>
+            );
+          }
+          if (block.kind === "principle-note") {
+            return (
+              <p key={block.id} className="intro-doc-block manual-principle-note" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+                {block.textRu}
+              </p>
+            );
+          }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";
           return (

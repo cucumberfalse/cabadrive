@@ -383,3 +383,63 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T05:40:34Z
+
+Analyst validated effective content head: 499aa8547f7d13b3b9819cbd0d2e8650fa99da06
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #177 `ch1-cities-for-people` only. This slice implements exactly the first Chapter 1 source-`Índice` website section, `Ciudades para las personas` / `Города для людей`, follows the corrected one-section-one-PR model, keeps divider-only source PDF page `21` skipped, avoids raw page `22` route delivery, preserves selectable Russian learner text, and retains source-fidelity/visual evidence for the section's `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` relationship.
+
+Gaps, if any: none for PR #177 customer-intent scope. This validation does not approve other Chapter 1/2 section content; `ch1-sustainable-mobility` and the remaining Chapter 1/2 sections remain future one-section PRs, and Orchestrator must still treat the AI Review required check as a merge gate before finalization.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #177. Architect validation passed at 2026-05-30T05:12:14Z for effective content head 499aa8547f7d13b3b9819cbd0d2e8650fa99da06 with return count 0; process memory records the P2 omitted-source-sentence review fix, Review Agent no findings after the fix, source-fidelity checker pass, content tests 17/17, build, focused Playwright 2/2, full preflight, Docker runtime smoke, regenerated screenshots, and Orchestrator visual inspection of desktop/mobile/source-crop evidence.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T09:30:01Z
+
+Analyst validated effective content head: f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #177 `ch1-cities-for-people` only. This rerun validates exactly the first Chapter 1 source-`Índice` website section, `Ciudades para las personas` / `Города для людей`, under the corrected one-section-one-PR model; it keeps divider-only source PDF page `21` skipped, avoids raw page `22` route delivery, leaves all other Chapter 1/2 sections for future PRs, and preserves selectable Russian text plus source-faithful visual treatment of the `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` relationship.
+
+Gaps, if any: none for PR #177 customer-intent scope. Full Chapter 1/2 completion remains future one-section PR work outside this slice.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #177. Architect validation passed at 2026-05-30T09:16:32Z for effective content head f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d with return count 0; process memory records the source-order fix, all PR #177 review threads resolved/outdated, Review Agent no actionable findings, required checks green, source-fidelity checker pass, content tests 17/17, build, focused Playwright 2/2, diff hygiene, feature-memory check, full preflight, Docker runtime smoke, and Orchestrator screenshot/source-crop inspection as acceptable.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T12:24:21Z
+
+Analyst validated effective content head: feed3e9be0f6d0bed7b8e924bd7d0d61179ad584
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #177 `ch1-cities-for-people` only. This validation covers exactly the `Ciudades para las personas` / `Города для людей` source-`Índice` website section, preserves the corrected one-section-one-PR model, skips divider-only source PDF page `21`, avoids raw page `22` route/page slicing, keeps all other Chapter 1/2 sections for later PRs, and preserves source-fidelity handling for the selectable `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` visual relationship.
+
+Gaps, if any: none for PR #177 customer-intent scope. Full Chapter 1/2 completion remains future one-section PR work outside this slice.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #177. Architect validation passed at 2026-05-30T12:14:20Z for effective content head feed3e9be0f6d0bed7b8e924bd7d0d61179ad584; process memory records correct source-crop visual order, source-fidelity checker pass, content tests 17/17, build pass, focused Playwright 2/2, diff hygiene, feature-memory check, required checks green, regenerated desktop/mobile screenshots inspected, Review Agent no findings, and all PR #177 review threads resolved.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
