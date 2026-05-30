@@ -333,6 +333,11 @@ For each section key:
 - Final-validation evidence-only commit: effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; Architect validation evidence is process-memory-only for PR #178.
 - Current-PR-head read-only guard: effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
+- Effective content head: ad8dd614a7ac41e945dfd6e88e78845f46b2fa16
+- Final-validation evidence-only commit: effective content head ad8dd614a7ac41e945dfd6e88e78845f46b2fa16; Architect validation evidence is process-memory-only for PR #178.
+- Current-PR-head read-only guard: effective content head ad8dd614a7ac41e945dfd6e88e78845f46b2fa16; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
 - Limit escalation: none.
 
 ### Cleanup Evidence
@@ -463,5 +468,18 @@ For each section key:
 - Architect validation evidence: source-fidelity P2 `3328876636` is addressed: the runtime 50-person modal-space comparison uses `space-comparison-50-people-source.jpg`, the vulnerability strip remains a separate asset, registry metadata records the page-23 crop path/hash, and content tests guard the path/hash separation.
 - Architect validation evidence: source-fidelity and infographic gates remain satisfied: source crops, runtime source-derived non-text pictogram crops, desktop/mobile screenshots, source-region metadata, selectable Russian DOM labels, no visible Spanish, and no full-page source raster are recorded in the registry and process memory.
 - Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on effective head, and PR #178 review feedback disposed.
+- Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T15:14:36Z
+- Architect return count: 0
+- Architect validated effective content head: ad8dd614a7ac41e945dfd6e88e78845f46b2fa16
+- Architect validation evidence: PR #178 validates only `ch1-sustainable-mobility` / `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?`; it implements one website section page from source page `23`, preserves the section-based one-PR contract, skips divider-only page `21`, and leaves later Chapter 1/2 sections as future section PR work.
+- Architect validation evidence: current effective head includes the previously recorded Architect dispositions for accessibility P2 `3328864017` and source-fidelity P2 `3328876636`; the finalizer guard issue is addressed by treating `ad8dd614a7ac41e945dfd6e88e78845f46b2fa16` as the validated effective content head.
+- Architect validation evidence: accessibility, source-fidelity, and infographic gates remain satisfied: desktop space-comparison labels are available to assistive technology, the 50-person modal-space comparison uses `space-comparison-50-people-source.jpg`, the vulnerability strip remains separate, source-region metadata and screenshots are recorded, Russian labels are DOM text, and no visible Spanish/full-page source raster is rendered.
+- Architect validation evidence: Orchestrator evidence reports all review threads resolved, current-head no-findings review, required checks green, source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, and feature-memory check pass.
 - Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
 - Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
