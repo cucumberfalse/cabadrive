@@ -81,6 +81,7 @@ For each section key:
 - [x] Generated source crop evidence at `content/validation/manual-guide/ch1-cities-for-people/page-022-cities-for-people-source-crop.jpg` and committed rendered desktop/mobile evidence screenshots under the same directory.
 - [x] Added focused content and e2e tests for route activation, implemented-vs-pending state, source coverage, no page-021/page-043/page-056 routes, no unrelated section implementation, selectable principle text, responsive/no-overflow checks, and no visible Spanish in the rendered section.
 - [x] Finalized implementation commit/push and opened ready PR metadata for this slice; implementation content head before this PR-metadata evidence update is `9ec2a7e39d0316caf16a9793f090635d5d5cff9f`.
+- [x] Addressed PR #177 P2 review thread `PRRT_kwDOSX65IM6F14fY` / `discussion_r3328114426` by preserving the omitted source page 22 block-05 sentence about license applicants understanding the danger of driving and the special responsibility it entails.
 
 ## Review Requirements
 
@@ -135,6 +136,7 @@ For each section key:
 - Implementation Agent decision for `ch1-cities-for-people`: source page `22` contains one substantive source-`Índice` website section; source PDF page `21` remains divider-only and is not included in this PR as content, route, module, placeholder, or screenshot target.
 - Implementation Agent decision for `ch1-cities-for-people`: the page has no source pictogram/photo/table requiring runtime image artwork. The meaningful visual relationship is the centered `FLUIDEZ / SEGURIDAD` typographic pair, so the learner view recreates it as selectable Russian DOM text (`ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ`) with source-teal emphasis and source-region evidence.
 - Implementation Agent decision for `ch1-cities-for-people`: the source page crop is committed only as internal reference evidence under `content/validation/manual-guide/ch1-cities-for-people/`; the learner UI does not render the Spanish crop, full source page raster, broad masks, page chrome, or page marker.
+- Implementation Agent review-fix decision for PR #177 P2 `PRRT_kwDOSX65IM6F14fY` / `discussion_r3328114426`: keep the omitted source page 22 block-05 license-applicant sentence inside the existing stronger-road-user callout, immediately after the stronger-user/driver responsibility idea, because it is the continuation of that source paragraph and does not create a new section or visual block.
 
 ### Known Issues
 
@@ -186,6 +188,9 @@ For each section key:
 - Docker runtime smoke passed for `ch1-cities-for-people` with isolated project/port: `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make build` built the image and reran content validation/build inside Docker; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make up` started the container; `curl -fsS http://127.0.0.1:5195/` fetched the served shell; a Playwright smoke of `http://127.0.0.1:5195/#manual-section-ch1-cities-for-people` confirmed the route hash, `Города для людей`, selectable `ПЛАВНОСТЬБЕЗОПАСНОСТЬ`, and no visible Spanish; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make down` stopped the runtime; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 docker compose ps --all` showed no remaining containers.
 - Final local hygiene after evidence updates passed for `ch1-cities-for-people`: `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `node scripts/manual-guide-source-fidelity.mjs`.
 - Ready PR opened for `ch1-cities-for-people`: PR #177, `https://github.com/cucumberfalse/cabadrive/pull/177`, branch `codex/030-ch1-cities-for-people`, implementation content head `9ec2a7e39d0316caf16a9793f090635d5d5cff9f`, draft status `false`. Final handoff head is the later process-memory evidence commit reported by the Implementation Agent after push.
+- PR #177 P2 review-fix source inspection: GitHub review thread `PRRT_kwDOSX65IM6F14fY` / `discussion_r3328114426` was open and not outdated at `src/data/manual-sections/ch1-cities-for-people.ts:79`; `manual.ru.json` page `22` block 05/source paragraph contains the omitted sentence beginning `Por eso, este manual está destinado...`.
+- PR #177 P2 review-fix implementation: updated `src/data/manual-sections/ch1-cities-for-people.ts` callout `stronger-road-user-care` to include the license-applicant/danger/responsibility sentence in Russian, updated `tests/content-manual-guide-chapters.test.mjs` content assertions, refreshed the module SHA in `section-registry.chapters-1-2.json`, and regenerated desktop/mobile screenshots because callout text layout changed.
+- PR #177 P2 review-fix verification passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`17/17`); `pnpm run build`; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 cities"` (`2/2`); `git diff --check`.
 
 ### Cycle PR Set
 
@@ -194,7 +199,7 @@ For each section key:
 | section-requirement-correction | Architect memory correction from source-PDF-page slicing to website-section slicing, carried by this shared correction branch | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push; prior validated head `8a435c84166e4c001220ddc70624abaa8017c96b` is stale after current-head P1 `PRRT_kwDOSX65IM6F1edn` | P1 Scoring source-boundary fix implemented locally; final validation rerun pending after push | yes |
 | shared-section-prereq | Shared correction/prerequisite for section registry/routes/checker/style, no section content | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push | Scoring source-boundary registry/test fix implemented locally; review-thread/final-validation state pending Orchestrator routing | yes |
 | PR-175-page-021-disposition | Existing PR #175 / `page-021` divider-only implementation | `codex/030-page-021` | PR #175, `https://github.com/cucumberfalse/cabadrive/pull/175` | `1e8334676ba26d867194dcc9b884758465837959` | closed unmerged, superseded by corrected section-based contract | no |
-| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` / `Города для людей` with source page `22` evidence and selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual | `codex/030-ch1-cities-for-people` | PR #177, `https://github.com/cucumberfalse/cabadrive/pull/177` | implementation content head `9ec2a7e39d0316caf16a9793f090635d5d5cff9f`; final handoff head reported after process-memory evidence push | ready PR opened; focused checker/content/build/Playwright, full preflight, Docker runtime smoke, and diff hygiene passed | yes |
+| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` / `Города для людей` with source page `22` evidence and selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual | `codex/030-ch1-cities-for-people` | PR #177, `https://github.com/cucumberfalse/cabadrive/pull/177` | implementation content head `9ec2a7e39d0316caf16a9793f090635d5d5cff9f`; final review-fix handoff head reported after push | ready PR opened; P2 review fix implemented locally; focused checker/content/build/Playwright, full preflight, Docker runtime smoke, and diff hygiene passed | yes |
 | `ch1-sustainable-mobility` | Implement website section page `¿Qué es la movilidad sustentable?` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-pedestrian-priority` | Implement website section page `Prioridad peatonal` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-bicycle` | Implement website section page `Bicicleta` | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -231,6 +236,7 @@ For each section key:
 
 - No unresolved Implementation Agent feedback for this shared correction/prerequisite pass.
 - No unresolved Implementation Agent feedback for the `ch1-cities-for-people` section slice at the time of local verification.
+- PR #177 P2 review thread `PRRT_kwDOSX65IM6F14fY` / `discussion_r3328114426` is safe for Orchestrator/Review routing to resolve after the review-fix commit is pushed and current-head checks complete.
 
 ## Architect Dispositions
 

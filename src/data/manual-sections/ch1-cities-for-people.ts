@@ -74,9 +74,9 @@ export const ch1CitiesForPeopleSection: ManualGuideSectionContent = {
       id: "stronger-road-user-care",
       kind: "callout",
       sourceTextEs:
-        "Un antiguo principio legal indica que se le debe pedir más cuidado al más fuerte... a quien conduce.",
+        "Un antiguo principio legal indica que se le debe pedir más cuidado al más fuerte... a quien conduce. Por eso, este manual está destinado a aquellas personas que aspiran a obtener su licencia de conducir: para que tomen conciencia de la peligrosidad que implica conducir un vehículo y de la especial responsabilidad que ello conlleva.",
       textRu:
-        "С более сильного участника дороги требуют больше осторожности. В этой теме таким участником чаще всего становится водитель, поэтому управление автомобилем всегда связано с особой ответственностью."
+        "С более сильного участника дороги требуют больше осторожности. В этой теме таким участником чаще всего становится водитель. Поэтому руководство обращено к тем, кто стремится получить водительское удостоверение: оно должно помочь заранее осознать опасность управления транспортным средством и особую ответственность, которая из этого следует."
     },
     {
       id: "nine-million-trips",
