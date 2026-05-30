@@ -2777,6 +2777,9 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
         problems.push(`${parentBlock?.getAttribute("data-block-id") ?? "source row"} requires horizontal scroll`);
       }
     }
+    if (root.querySelector(".manual-space-labels")?.getAttribute("aria-hidden") === "true") {
+      problems.push("space comparison labels are hidden from assistive technology");
+    }
     for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-space-labels span, .manual-vulnerability-labels span, .manual-mobile-pair-label'))) {
       const rect = element.getBoundingClientRect();
       const style = window.getComputedStyle(element);

@@ -1918,7 +1918,7 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
       <div className="manual-space-comparison">
         <h3>{block.space.titleRu}</h3>
         <div className="manual-source-row-scroll">
-          <div className="manual-space-labels" aria-hidden="true">
+          <div className="manual-space-labels">
             {block.space.modes.map((mode) => (
               <span key={mode.id}>{mode.labelRu}</span>
             ))}
