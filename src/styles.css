@@ -3085,11 +3085,30 @@ small,
     grid-template-columns: 1fr;
   }
 
-  .manual-space-labels,
+  .manual-source-row-scroll {
+    overflow-x: visible;
+  }
+
+  .manual-space-labels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+    text-align: left;
+  }
+
+  .manual-vulnerability-labels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-width: 0;
+  }
+
+  .manual-space-labels span,
+  .manual-vulnerability-labels span {
+    overflow-wrap: anywhere;
+  }
+
   .manual-space-comparison img,
-  .manual-vulnerability-labels,
   .manual-vulnerability-ranking img {
-    min-width: 540px;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .intro-risk-heading-row {

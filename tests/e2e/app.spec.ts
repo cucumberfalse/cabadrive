@@ -2771,6 +2771,12 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
       problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
     }
+    for (const scroller of Array.from(root.querySelectorAll(".manual-source-row-scroll"))) {
+      if (scroller.scrollWidth > scroller.clientWidth + tolerance) {
+        const parentBlock = scroller.closest("[data-block-id]");
+        problems.push(`${parentBlock?.getAttribute("data-block-id") ?? "source row"} requires horizontal scroll`);
+      }
+    }
     for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-space-labels span, .manual-vulnerability-labels span'))) {
       const rect = element.getBoundingClientRect();
       const style = window.getComputedStyle(element);
