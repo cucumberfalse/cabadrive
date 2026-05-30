@@ -376,6 +376,10 @@ For each section key:
 - Current-PR-head read-only guard: effective content head df13910b8d7d9b61c971d7e56059de78c9715922; Orchestrator-read evidence reports required checks green, all PR #179 review threads resolved, merge state CLEAN, and no-findings current-head review; Orchestrator owns merge/finalization decision.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
+- Current-PR-head read-only guard: effective content head df13910b8d7d9b61c971d7e56059de78c9715922; current PR head a7a464b6a769834c022a45d9637af84531338136 is evidence-only, AI Review P2 `PRRT_kwDOSX65IM6F5ttO` / `discussion_r3329418382` is disposed as not-needed because visible source page 29 order controls over PDF extraction order, and Orchestrator owns review-thread resolution plus merge/finalization decision.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -534,4 +538,16 @@ For each section key:
 - Architect validation evidence: review feedback is disposed for PR #179: weekday `11:00-16:00` wording/sign fit is addressed, empty `.manual-infrastructure-visual` slots are suppressed for text-only infrastructure cards, selected-text assertions now account for DOM casing, all review threads are resolved, and Review Agent reported no actionable findings on current head.
 - Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `19/19`, TypeScript pass, build pass, focused Playwright `2/2`, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, and merge state `CLEAN` for effective head `df13910b8d7d9b61c971d7e56059de78c9715922`.
 - Open Architect dispositions: none for PR #179 `ch1-pedestrian-priority`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #179 `ch1-pedestrian-priority`; remaining Chapter 1/2 sections stay future section PR work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T22:54:42Z
+- Architect return count: 0
+- Architect validated effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
+- Architect validation evidence: PR #179 AI Review P2 `PRRT_kwDOSX65IM6F5ttO` / `discussion_r3329418382` is not-needed; visual inspection of source page `page-029.jpg` shows infrastructure/carriles continuation, `Restricción vehículos particulares`, signs/permit/parking, `Circulación`, then `Zona 30`, and the runtime order `priority-area-restrictions` -> `priority-area-circulation` -> `zone-30` matches that visible source order.
+- Architect validation evidence: `manual.ru.json` extraction lists `Zona 30` before restriction content, but this is an extraction-order conflict; the established Architect rule for manual conversion is that source crop/page visual layout controls over PDF text-extraction order when they conflict.
+- Architect validation evidence: no product/code/test/runtime fix is required for PR #179 source order; effective content head remains `df13910b8d7d9b61c971d7e56059de78c9715922`, and current PR head `a7a464b6a769834c022a45d9637af84531338136` is evidence-only.
+- Open Architect dispositions: none for PR #179 `ch1-pedestrian-priority`; Orchestrator may resolve `PRRT_kwDOSX65IM6F5ttO` as not-needed/outdated based on source-page visual order.
 - Architect gaps: none for PR #179 `ch1-pedestrian-priority`; remaining Chapter 1/2 sections stay future section PR work.

@@ -523,3 +523,23 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T22:56:00Z
+
+Analyst validated effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #179 `ch1-pedestrian-priority` only. This rerun validates the same `Prioridad peatonal` / `Пешеходный приоритет` source-`Índice` website section from source pages `24-29`, preserves the corrected one-section-one-PR model, skips chapter-title/divider pages, introduces no raw source-page route/module, leaves later Chapter 1/2 sections for future one-section PRs, and keeps infographic/source-artwork quality as a first-class acceptance gate.
+
+Gaps, if any: none for PR #179 customer-intent scope. The later source-order review disposition does not create a customer-intent gap because Architect verified visible source page `page-029.jpg` orders restrictions/circulation before `Zona 30`, so the runtime order remains source-faithful despite PDF text-extraction order.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #179. Architect rerun passed at 2026-05-30T22:54:42Z for effective content head df13910b8d7d9b61c971d7e56059de78c9715922; process memory records AI Review P2 PRRT_kwDOSX65IM6F5ttO / discussion_r3329418382 as not-needed/outdated based on source-page visual order, with open Architect dispositions none.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
