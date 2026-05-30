@@ -319,6 +319,8 @@ For each section key:
 | `ch2-incident-obligations` | Implement website section page `Obligaciones en caso de incidentes viales` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch2-scoring` | Implement website section page `Scoring` | pending Orchestrator assignment | pending | pending | pending | yes |
 
+- Cycle PR Set current evidence: PR #179, branch `codex/030-ch1-pedestrian-priority`, head SHA `df13910b8d7d9b61c971d7e56059de78c9715922`, status implemented with required checks green, all review threads resolved, merge state `CLEAN`, and included in final Architect validation for the `ch1-pedestrian-priority` section slice.
+
 ### Final Validation Evidence
 
 - Historical validation note: prior Architect validation for `1846b88496fed61d72c3328eefdc70d4ed404004` is superseded by later process-memory normalization and must not be used as the current effective-head validation.
@@ -370,6 +372,10 @@ For each section key:
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 - Limit escalation: none.
+- Effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
+- Current-PR-head read-only guard: effective content head df13910b8d7d9b61c971d7e56059de78c9715922; Orchestrator-read evidence reports required checks green, all PR #179 review threads resolved, merge state CLEAN, and no-findings current-head review; Orchestrator owns merge/finalization decision.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -516,3 +522,16 @@ For each section key:
 - Architect validation evidence: Orchestrator evidence reports all review threads resolved, current-head no-findings review, required checks green, source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, and feature-memory check pass.
 - Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
 - Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T22:32:59Z
+- Architect return count: 0
+- Architect validated effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
+- Architect validation evidence: PR #179 validates only `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет`; it implements one website section page from source pages `24-29`, preserves the section-based one-PR contract, skips divider-only source pages, introduces no raw source-page route/module, and leaves later Chapter 1/2 sections as future section PR work.
+- Architect validation evidence: source-fidelity and infographic gates are satisfied for this section slice: source-region metadata covers pages `24-29`, validation crops and runtime source-derived non-text assets are recorded, Russian labels remain selectable DOM text, no visible Spanish/full-page source raster is rendered, and Orchestrator visually inspected the latest desktop/mobile screenshots as readable without clipping or overflow.
+- Architect validation evidence: review feedback is disposed for PR #179: weekday `11:00-16:00` wording/sign fit is addressed, empty `.manual-infrastructure-visual` slots are suppressed for text-only infrastructure cards, selected-text assertions now account for DOM casing, all review threads are resolved, and Review Agent reported no actionable findings on current head.
+- Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `19/19`, TypeScript pass, build pass, focused Playwright `2/2`, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, and merge state `CLEAN` for effective head `df13910b8d7d9b61c971d7e56059de78c9715922`.
+- Open Architect dispositions: none for PR #179 `ch1-pedestrian-priority`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #179 `ch1-pedestrian-priority`; remaining Chapter 1/2 sections stay future section PR work.
