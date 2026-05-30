@@ -2091,28 +2091,34 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
     <section className="manual-pedestrian-infrastructure" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
       <h3>{block.titleRu}</h3>
       <div className="manual-infrastructure-card-grid">
-        {block.cards.map((card) => (
-          <article
-            className="manual-infrastructure-card"
-            key={card.id}
-            data-card-id={card.id}
-            data-source-page={card.sourcePage}
-            data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
-          >
-            <div className="manual-infrastructure-visual">
-              <PedestrianInfrastructureVisual card={card} />
-            </div>
-            <div className="manual-infrastructure-copy">
-              <h4>{card.titleRu}</h4>
-              {card.details.map((detail) => (
-                <p key={detail.labelRu}>
-                  <strong>{detail.labelRu}:</strong> {detail.textRu}
-                </p>
-              ))}
-              {card.noteRu && <p className="manual-infrastructure-note">{card.noteRu}</p>}
-            </div>
-          </article>
-        ))}
+        {block.cards.map((card) => {
+          const hasVisual = Boolean(card.assetPath || card.visualKind);
+
+          return (
+            <article
+              className={`manual-infrastructure-card${hasVisual ? "" : " manual-infrastructure-card-text-only"}`}
+              key={card.id}
+              data-card-id={card.id}
+              data-source-page={card.sourcePage}
+              data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
+            >
+              {hasVisual && (
+                <div className="manual-infrastructure-visual">
+                  <PedestrianInfrastructureVisual card={card} />
+                </div>
+              )}
+              <div className="manual-infrastructure-copy">
+                <h4>{card.titleRu}</h4>
+                {card.details.map((detail) => (
+                  <p key={detail.labelRu}>
+                    <strong>{detail.labelRu}:</strong> {detail.textRu}
+                  </p>
+                ))}
+                {card.noteRu && <p className="manual-infrastructure-note">{card.noteRu}</p>}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

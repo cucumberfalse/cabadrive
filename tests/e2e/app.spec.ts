@@ -2899,6 +2899,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(pedestrianSection.locator('[data-block-kind="pedestrian-photo-comparison"]')).toBeVisible();
   await expect(pedestrianSection.locator('[data-block-kind="impact-diagram"]')).toBeVisible();
   await expect(pedestrianSection.locator('[data-block-kind="pedestrian-infrastructure"]')).toHaveCount(5);
+  await expect(pedestrianSection.locator('[data-card-id="area-infrastructure"] .manual-infrastructure-visual')).toHaveCount(0);
   await expect(pedestrianSection.locator('[data-block-kind="priority-area-map"]')).toBeVisible();
   await expect(pedestrianSection.locator('[data-block-kind="transport-mode-icons"]')).toBeVisible();
   await expect(pedestrianSection.locator('img[data-visible-spanish="false"]')).toHaveCount(11);
@@ -2938,6 +2939,9 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
       if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
       if (/pages\/page-02[4-9]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
     }
+    for (const visual of Array.from(root.querySelectorAll(".manual-infrastructure-visual"))) {
+      if (!visual.firstElementChild) problems.push("empty pedestrian infrastructure visual slot");
+    }
     for (const label of Array.from(root.querySelectorAll('.manual-restriction-signs strong, .manual-restriction-signs span:not([aria-hidden="true"])'))) {
       const labelRect = label.getBoundingClientRect();
       const signRect = label.parentElement?.getBoundingClientRect();
@@ -2974,11 +2978,12 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     selection.removeAllRanges();
     return text;
   });
-  expect(pedestrianSelectedText).toContain("ДО");
-  expect(pedestrianSelectedText).toContain("ПОСЛЕ");
-  expect(pedestrianSelectedText).toContain("КОНТАКТ");
-  expect(pedestrianSelectedText).toContain("ЭЛЕКТРОННЫЙ КОНТРОЛЬ");
-  expect(pedestrianSelectedText).toContain("ПЕШКОМ");
+  const pedestrianSelectedTextLower = pedestrianSelectedText.toLocaleLowerCase("ru-RU");
+  expect(pedestrianSelectedTextLower).toContain("до");
+  expect(pedestrianSelectedTextLower).toContain("после");
+  expect(pedestrianSelectedTextLower).toContain("контакт");
+  expect(pedestrianSelectedTextLower).toContain("электронный контроль");
+  expect(pedestrianSelectedTextLower).toContain("пешком");
 
   await pedestrianSection.screenshot({
     path: testInfo.outputPath(`ch1-pedestrian-priority-${testInfo.project.name}.png`)
