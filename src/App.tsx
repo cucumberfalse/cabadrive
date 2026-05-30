@@ -1860,6 +1860,10 @@ function splitManualMobilityStat(text: string) {
   };
 }
 
+function manualSpriteBackground(assetPath: string) {
+  return { backgroundImage: `url(${assetUrl(assetPath)})` };
+}
+
 function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "mobility-context" }> }) {
   const interjurisdictional = splitManualMobilityStat(block.trips.interjurisdictionalRu);
   const internal = splitManualMobilityStat(block.trips.internalRu);
@@ -1920,6 +1924,14 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
             ))}
           </div>
           <img src={assetUrl(block.space.assetPath)} alt={block.space.titleRu} data-visible-spanish={false} loading="lazy" />
+          <div className="manual-mobile-pairs manual-space-mobile-pairs">
+            {block.space.modes.map((mode) => (
+              <span className="manual-mobile-pair manual-space-mobile-pair" data-mobile-pair-id={mode.id} key={mode.id}>
+                <span className="manual-mobile-pair-label">{mode.labelRu}</span>
+                <span className={`manual-mobile-pair-icon manual-space-mobile-icon manual-space-mobile-icon-${mode.id}`} style={manualSpriteBackground(block.space.assetPath)} aria-hidden="true" />
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1948,6 +1960,17 @@ function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSe
           ))}
         </div>
         <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-mobile-pairs manual-vulnerability-mobile-pairs">
+          {block.levels.map((level, index) => (
+            <span className="manual-mobile-pair manual-vulnerability-mobile-pair" data-mobile-pair-id={String(index + 1)} key={level.labelRu}>
+              <span className="manual-mobile-pair-label">
+                <strong>{level.rankRu}</strong>
+                {level.labelRu}
+              </span>
+              <span className={`manual-mobile-pair-icon manual-vulnerability-mobile-icon manual-vulnerability-mobile-icon-${index + 1}`} style={manualSpriteBackground(block.assetPath)} aria-hidden="true" />
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

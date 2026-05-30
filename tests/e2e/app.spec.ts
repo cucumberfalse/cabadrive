@@ -2777,7 +2777,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
         problems.push(`${parentBlock?.getAttribute("data-block-id") ?? "source row"} requires horizontal scroll`);
       }
     }
-    for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-space-labels span, .manual-vulnerability-labels span'))) {
+    for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-space-labels span, .manual-vulnerability-labels span, .manual-mobile-pair-label'))) {
       const rect = element.getBoundingClientRect();
       const style = window.getComputedStyle(element);
       const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
@@ -2789,7 +2789,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
       if (style.userSelect === "none") problems.push(`${id} disables text selection`);
       if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
     }
-    for (const label of Array.from(root.querySelectorAll(".manual-vulnerability-labels span"))) {
+    for (const label of Array.from(root.querySelectorAll(".manual-vulnerability-labels span, .manual-mobile-pair-label"))) {
       for (const node of Array.from(label.childNodes)) {
         const word = node.textContent?.trim() ?? "";
         if (node.nodeType !== Node.TEXT_NODE || !word || /\s/.test(word)) continue;
@@ -2797,6 +2797,44 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
         range.selectNodeContents(node);
         const lineCount = Array.from(range.getClientRects()).filter((rect) => rect.width > 1 && rect.height > 1).length;
         if (lineCount > 1) problems.push(`${word} wraps inside a word`);
+      }
+    }
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      const pairGroups = [
+        { name: "space comparison", selector: ".manual-space-mobile-pair", expected: 4 },
+        { name: "vulnerability ranking", selector: ".manual-vulnerability-mobile-pair", expected: 6 }
+      ];
+      for (const group of pairGroups) {
+        const visiblePairs = Array.from(root.querySelectorAll(group.selector)).filter((pair) => window.getComputedStyle(pair).display !== "none");
+        if (visiblePairs.length !== group.expected) {
+          problems.push(`${group.name} has ${visiblePairs.length} visible mobile pairs, expected ${group.expected}`);
+        }
+        for (const pair of visiblePairs) {
+          const label = pair.querySelector(".manual-mobile-pair-label");
+          const icon = pair.querySelector(".manual-mobile-pair-icon");
+          const pairRect = pair.getBoundingClientRect();
+          const id = pair.getAttribute("data-mobile-pair-id") ?? pair.textContent?.trim() ?? group.name;
+          if (!label || !icon) {
+            problems.push(`${group.name} ${id} is missing a paired label or icon`);
+            continue;
+          }
+          const labelRect = label.getBoundingClientRect();
+          const iconRect = icon.getBoundingClientRect();
+          if (iconRect.width <= 1 || iconRect.height <= 1) {
+            problems.push(`${group.name} ${id} icon is not visible`);
+          }
+          const labelCenter = (labelRect.left + labelRect.right) / 2;
+          const iconCenter = (iconRect.left + iconRect.right) / 2;
+          if (Math.abs(labelCenter - iconCenter) > Math.max(12, pairRect.width * 0.12)) {
+            problems.push(`${group.name} ${id} label is not centered with its icon`);
+          }
+          if (labelRect.left < pairRect.left - tolerance || labelRect.right > pairRect.right + tolerance || iconRect.left < pairRect.left - tolerance || iconRect.right > pairRect.right + tolerance) {
+            problems.push(`${group.name} ${id} label/icon escapes its pair`);
+          }
+          if (iconRect.top < labelRect.bottom - tolerance) {
+            problems.push(`${group.name} ${id} icon overlaps its label`);
+          }
+        }
       }
     }
     return problems;

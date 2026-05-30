@@ -1722,6 +1722,44 @@ small,
   border-radius: 0;
 }
 
+.manual-mobile-pairs {
+  display: none;
+}
+
+.manual-mobile-pair {
+  min-width: 0;
+  color: #1b6680;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.manual-mobile-pair-label {
+  display: block;
+  max-width: 100%;
+  color: #1b6680;
+  font-size: 0.7rem;
+  font-weight: 850;
+  line-height: 1.12;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.manual-mobile-pair-label strong {
+  display: block;
+  color: #1b6680;
+  font-size: 1.2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.manual-mobile-pair-icon {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  background-repeat: no-repeat;
+}
+
 .manual-vulnerability-ranking {
   padding-top: 10px;
   border-top: 1px solid #d8e6e6;
@@ -3089,22 +3127,102 @@ small,
     overflow-x: visible;
   }
 
-  .manual-space-labels {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-width: 0;
-    text-align: left;
+  .manual-space-labels,
+  .manual-vulnerability-labels,
+  .manual-space-comparison .manual-source-row-scroll > img,
+  .manual-vulnerability-ranking .manual-source-row-scroll > img {
+    display: none;
   }
 
-  .manual-vulnerability-labels {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px 12px;
+  .manual-mobile-pairs {
+    display: grid;
     min-width: 0;
   }
 
-  .manual-vulnerability-labels span {
+  .manual-space-mobile-pairs,
+  .manual-vulnerability-mobile-pairs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .manual-mobile-pair {
+    display: grid;
+    gap: 5px;
+    justify-items: center;
+    align-content: start;
+  }
+
+  .manual-mobile-pair-label {
     font-size: 0.66rem;
     overflow-wrap: normal;
     word-break: normal;
+    hyphens: none;
+  }
+
+  .manual-mobile-pair-label strong {
+    font-size: 1.12rem;
+  }
+
+  .manual-space-mobile-icon {
+    width: 66px;
+    height: 36px;
+    background-size: 300px auto;
+  }
+
+  .manual-space-mobile-icon-bus {
+    width: 56px;
+    background-position: -19px center;
+  }
+
+  .manual-space-mobile-icon-walking {
+    width: 42px;
+    background-position: -70px center;
+  }
+
+  .manual-space-mobile-icon-bicycle {
+    width: 42px;
+    background-position: -109px center;
+  }
+
+  .manual-space-mobile-icon-car {
+    width: 98px;
+    background-position: -187px center;
+  }
+
+  .manual-vulnerability-mobile-icon {
+    width: 52px;
+    height: 42px;
+    background-size: 300px auto;
+  }
+
+  .manual-vulnerability-mobile-icon-1 {
+    width: 34px;
+    background-position: -10px center;
+  }
+
+  .manual-vulnerability-mobile-icon-2 {
+    width: 30px;
+    background-position: -49px center;
+  }
+
+  .manual-vulnerability-mobile-icon-3 {
+    width: 26px;
+    background-position: -88px center;
+  }
+
+  .manual-vulnerability-mobile-icon-4 {
+    width: 44px;
+    background-position: -112px center;
+  }
+
+  .manual-vulnerability-mobile-icon-5 {
+    width: 42px;
+    background-position: -154px center;
+  }
+
+  .manual-vulnerability-mobile-icon-6 {
+    width: 50px;
+    background-position: -200px center;
   }
 
   .manual-space-comparison img,
