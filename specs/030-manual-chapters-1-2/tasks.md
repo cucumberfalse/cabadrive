@@ -116,12 +116,12 @@ For each section key:
 
 ### Known Issues
 
-- Existing page-based PR/process memory may mention pages `021-056` as implementation units. Architect disposition: addressed by this correction; future agents must follow section-based slicing from this spec/plan/tasks and treat older page-based wording as superseded.
-- PR #175 / `page-021` conflicts with corrected requirements. Architect disposition: not merge-ready as-is; must be closed, superseded, or fully replaced with a section-based implementation before merge.
-- If PR #174 or any shared prerequisite still encodes a page-based pending registry, it may need a shared correction PR before section implementation continues. Architect disposition: route to Implementation Agent only through Orchestrator; no Architect code change authorized here.
-- Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed by requiring manual visual inspection for every section source range.
-- Section `ch2-incident-obligations` includes source NGO contacts that may be volatile. Architect disposition: carry forward as required section-level contact/volatility disposition before learner-facing presentation.
-- Section `ch2-scoring` has prior source-boundary concerns from page-based work. Architect disposition: carry forward as required source-boundary confirmation before scoring implementation.
+- Existing page-based PR/process memory may mention pages `021-056` as implementation units. Architect disposition: addressed; this correction supersedes page-based slicing, future agents must follow section-based slicing from this spec/plan/tasks, and older page-based wording is historical only.
+- PR #175 / `page-021` conflicts with corrected requirements. Architect disposition: resolved; PR #175 is closed unmerged and superseded by the corrected section-based contract, so it must not merge as-is.
+- PR #174 or earlier shared prerequisite state encoded a page-based pending registry. Architect disposition: resolved; PR #176 replaces the page-based registry with the section-based shared correction/prerequisite, so no additional Architect task is required for PR #174 in this slice.
+- Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed; every future section implementation must perform manual visual inspection across its full source range.
+- Section `ch2-incident-obligations` includes source NGO contacts that may be volatile. Architect disposition: addressed; carry forward as required section-level contact/volatility disposition before learner-facing presentation.
+- Section `ch2-scoring` has prior source-boundary concerns from page-based work. Architect disposition: addressed; carry forward as required source-boundary confirmation before scoring implementation.
 
 ### Verification Evidence
 
@@ -163,9 +163,8 @@ For each section key:
 
 ### Final Validation Evidence
 
-- Effective content head: 1846b88496fed61d72c3328eefdc70d4ed404004
-- Final-validation evidence-only commit: effective content head 1846b88496fed61d72c3328eefdc70d4ed404004; this Architect validation evidence is process-memory-only for PR #176.
-- Current-PR-head read-only guard: effective content head 1846b88496fed61d72c3328eefdc70d4ed404004; PR #176 validation covers the shared correction/prerequisite slice only, and Orchestrator still owns live required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Historical validation note: prior Architect validation for `1846b88496fed61d72c3328eefdc70d4ed404004` is superseded by later process-memory normalization and must not be used as the current effective-head validation.
+- Current normalization note: this pass records finalizer-compatible process memory only; Orchestrator must invoke a new final Architect validation before final Analyst validation or merge/finalization.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 
@@ -184,13 +183,13 @@ For each section key:
 - Architect disposition: addressed; PR #175 / `page-021` must not merge as-is and must be closed, superseded, or replaced by section-based implementation.
 - Architect disposition: addressed; infographic/source-artwork quality remains a first-class gate for each section PR.
 
-## Final Architect Validation Notes
+## Historical Final Architect Validation Notes
 
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-30T02:41:44Z
-- Architect return count: 0
-- Architect validated effective content head: 1846b88496fed61d72c3328eefdc70d4ed404004
-- Architect validation evidence: PR #176 shared correction/prerequisite only; the shared runtime/process contract now uses website-section slicing, skips divider-only source PDF pages `21` and `43`, records PR #175 as closed/unmerged and not merge-ready as-is, preserves infographic/source-fidelity gates, and leaves the ten section implementations pending.
-- Architect validation evidence: `git rev-parse HEAD` confirmed 1846b88496fed61d72c3328eefdc70d4ed404004; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 10 pending sections, 0 implemented sections, and skipped divider pages 21 and 43; `node --test tests/content-manual-guide-chapters.test.mjs` passed 14/14; `git diff --check` passed before evidence edit.
-- Open Architect dispositions: none for PR #176 shared correction/prerequisite; future section PRs retain their recorded source-boundary, contact/volatility, scoring, and infographic evidence obligations.
-- Architect gaps: none for PR #176 shared correction/prerequisite; full Chapter 1/2 section implementation remains outside this slice.
+- Historical Architect validation pass for superseded head: passed.
+- Historical Architect validation completion timestamp: 2026-05-30T02:41:44Z.
+- Historical Architect return count: 0.
+- Historical Architect validated head: 1846b88496fed61d72c3328eefdc70d4ed404004.
+- Historical Architect validation evidence: PR #176 shared correction/prerequisite only; the shared runtime/process contract used website-section slicing, skipped divider-only source PDF pages `21` and `43`, recorded PR #175 as closed/unmerged and not merge-ready as-is, preserved infographic/source-fidelity gates, and left the ten section implementations pending.
+- Historical Architect validation evidence: `git rev-parse HEAD` confirmed 1846b88496fed61d72c3328eefdc70d4ed404004; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 10 pending sections, 0 implemented sections, and skipped divider pages 21 and 43; `node --test tests/content-manual-guide-chapters.test.mjs` passed 14/14; `git diff --check` passed before evidence edit.
+- Historical open Architect dispositions: none for PR #176 shared correction/prerequisite; future section PRs retain their recorded source-boundary, contact/volatility, scoring, and infographic evidence obligations.
+- Historical Architect gaps: none for PR #176 shared correction/prerequisite; full Chapter 1/2 section implementation remained outside this slice.
