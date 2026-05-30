@@ -220,6 +220,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
 test("Manual guide UI renders pending section entries without opening fake content", () => {
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /manualGuideSectionIsAvailable/);
+  assert.match(manualGuideAppSource, /function manualGuideActiveGroupId/);
+  assert.match(manualGuideAppSource, /const activeGroupId = manualGuideActiveGroupId\(selectedEntry, selectedManualSection\)/);
+  const sectionGroupPrecedenceIndex = manualGuideAppSource.indexOf("child.section?.id === selectedManualSection.id");
+  const introductionGroupFallbackIndex = manualGuideAppSource.indexOf("child.introductionRouteId === selectedEntry.id");
+  assert.notEqual(sectionGroupPrecedenceIndex, -1, "active group lookup includes selected manual section");
+  assert.notEqual(introductionGroupFallbackIndex, -1, "active group lookup includes introduction fallback");
+  assert.ok(sectionGroupPrecedenceIndex < introductionGroupFallbackIndex, "selected manual section takes precedence over stale selected introduction entry");
   assert.match(manualGuideAppSource, /disabled=\{!isAvailable\}/);
   assert.match(manualGuideAppSource, /const sectionStatusLabel = isAvailable \? "готово" : "ожидает PR"/);
   assert.match(manualGuideAppSource, /aria-label=\{`\$\{section\.labelRu\}: \$\{sectionStatusLabel\}`\}/);

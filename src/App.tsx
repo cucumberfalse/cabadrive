@@ -1905,6 +1905,17 @@ function manualGuideSectionIsAvailable(section: ManualGuideSectionEntry) {
   return section.status === "implemented" && manualGuideSectionContentById.has(section.id);
 }
 
+function manualGuideActiveGroupId(selectedEntry: IntroductionNavigationEntry, selectedManualSection?: ManualGuideSectionEntry) {
+  if (selectedManualSection) {
+    return manualGuideNavigation.find((entry) =>
+      entry.children?.some((child) => child.section?.id === selectedManualSection.id)
+    )?.id;
+  }
+  return manualGuideNavigation.find((entry) =>
+    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id)
+  )?.id;
+}
+
 function IntroductionSectionsView({
   selectedEntry,
   onSelectEntry,
@@ -1918,9 +1929,7 @@ function IntroductionSectionsView({
 }) {
   const selectedArticle = selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
   const selectedManualSectionContent = selectedManualSection ? manualGuideSectionContentById.get(selectedManualSection.id) : undefined;
-  const activeGroupId = manualGuideNavigation.find((entry) =>
-    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id || child.section?.id === selectedManualSection?.id)
-  )?.id;
+  const activeGroupId = manualGuideActiveGroupId(selectedEntry, selectedManualSection);
   const activeChildId = selectedManualSection?.id ?? selectedEntry.id;
 
   function renderManualSectionButton(section: ManualGuideSectionEntry) {

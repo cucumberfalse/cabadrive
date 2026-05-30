@@ -112,6 +112,7 @@ For each section key:
 - Implementation Agent decision: this shared correction removes `page-registry.chapters-1-2.json` and replaces it with `section-registry.chapters-1-2.json`; source PDF pages remain only evidence metadata inside section entries.
 - Implementation Agent decision: Chapter 1/2 runtime navigation now exposes ten disabled pending website sections in `Руководство`; there is no standalone/pending/implemented learner route, hash, module path, placeholder, or button for raw source PDF pages `21` or `43`.
 - Implementation Agent decision: no converted learner content, section prose, or section-local assets are included in this prerequisite PR.
+- Review fix decision for P2 `PRRT_kwDOSX65IM6F1OW7` / `discussion_r3327868928`: when a future implemented manual section is selected, `selectedManualSection` must determine `data-active-group-id` before falling back to the selected Introduction entry. This prevents stale Introduction state from keeping Introduction highlighted while manual section content is displayed.
 
 ### Known Issues
 
@@ -139,6 +140,8 @@ For each section key:
 - Docker runtime smoke passed with isolated project/port: `docker version --format '{{.Server.Version}}'` reported `27.5.1`; `lsof -nP -iTCP:5187 -sTCP:LISTEN` returned no listener; `COMPOSE_PROJECT_NAME=cabadrive030section CABADRIVE_HOST_PORT=5187 make build` built the image and reran content validation/build inside Docker; `COMPOSE_PROJECT_NAME=cabadrive030section CABADRIVE_HOST_PORT=5187 make up` started `cabadrive030section-cabadrive-1`; `curl -fsS http://127.0.0.1:5187/ | head -n 5` returned the Russian HTML shell; `COMPOSE_PROJECT_NAME=cabadrive030section CABADRIVE_HOST_PORT=5187 make down` removed the container/network; `docker compose -p cabadrive030section ps` showed no remaining containers.
 - Final local hygiene after process-memory evidence update: `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed; `node scripts/manual-guide-source-fidelity.mjs` passed.
 - Shared correction PR opened ready: PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176`; implementation content head before PR-metadata evidence-only follow-up commit: `93ab0b57166a56258df0a56021448354c01e6e2a`.
+- Review fix P2 `PRRT_kwDOSX65IM6F1OW7` / `discussion_r3327868928` addressed: `src/App.tsx` now computes active manual-guide group through `manualGuideActiveGroupId`, which checks `selectedManualSection` section membership before falling back to `selectedEntry`; `tests/content-manual-guide-chapters.test.mjs` adds a guard that the section lookup precedes the Introduction fallback.
+- Review fix verification passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`14/14`); `pnpm run build`; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 and 2 pending section entries"` (`2/2` desktop/mobile). Final hygiene commands after this note are recorded in the Implementation Agent handoff.
 
 ### Cycle PR Set
 
