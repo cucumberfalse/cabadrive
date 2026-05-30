@@ -309,7 +309,7 @@ For each page `NNN`:
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | shared-prereq | Shared route/schema/checker/style infrastructure, no page content | `codex/030-manual-chapters-1-2` | PR #174, https://github.com/cucumberfalse/cabadrive/pull/174, merged | final PR head `e39f2e093c41ede8aa310a0768c13e709822d10e`; merge commit `7a07034d8a9380cbe83b9403a6a9aa7bc73dfa50` | merged into `main`; included here as the shared-prereq validation scope used by the page slices | yes, as shared-prereq validation scope |
-| page-021 | Convert source page 21 | `codex/030-page-021` | PR #175, https://github.com/cucumberfalse/cabadrive/pull/175, ready | verified content head before this process-memory-only evidence correction: `3ab405056dc3a2cf74423155b74f613fafab33e9`; this follow-up commit changes only `tasks.md`, and the exact pushed evidence-only head is recorded in the Implementation Agent handoff after commit because a commit cannot embed its own final SHA | implementation complete locally; PR #175 opened ready; `pnpm run preflight` and `git diff --check` passed on content head `3ab405056dc3a2cf74423155b74f613fafab33e9`; Docker local fallback recorded; no page `022`+ implemented | yes |
+| page-021 | Convert source page 21 | `codex/030-page-021` | PR #175, https://github.com/cucumberfalse/cabadrive/pull/175, ready | effective content head validated by Architect: `66eb91ce6301ec014cc93702daae6a6208448018`; later role-owned final-validation evidence may be evidence-only | implementation complete; local final Architect validation passed for page `021`; required PR checks observed green by Orchestrator/Architect; no page `022`+ implemented | yes |
 | page-022 | Convert source page 22 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-023 | Convert source page 23 | pending Orchestrator assignment | pending | pending | pending | yes |
 | page-024 | Convert source page 24 | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -370,6 +370,11 @@ For each page `NNN`:
 - Current-PR-head read-only guard: effective content head 28436a7f0c4d9e1841eb674d5ea52b71b68808c8; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 66eb91ce6301ec014cc93702daae6a6208448018
+- Final-validation evidence-only commit: effective content head 66eb91ce6301ec014cc93702daae6a6208448018; Architect validation evidence is evidence-only.
+- Current-PR-head read-only guard: effective content head 66eb91ce6301ec014cc93702daae6a6208448018; Orchestrator still owns the final current-head guard, required-check confirmation, review-thread resolution, and merge/finalization decision.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -414,3 +419,15 @@ For each page `NNN`:
 - Architect validation evidence: shared-prerequisite PR #174 validates only the route/schema/checker/style/registry foundation, including implemented-page status, forbidden-asset, and Spanish-visibility guards; pages 021-056 remain future page PRs.
 - Open Architect dispositions: none for shared-prerequisite PR #174.
 - Architect gaps: none for shared-prerequisite PR #174.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T00:45:21Z
+- Architect return count: 0
+- Architect validated effective content head: 66eb91ce6301ec014cc93702daae6a6208448018
+- Scope note: this validates PR #175/page-021 only; pages 022-056 and the full feature 030 remain future page PR work.
+- Architect validation evidence: `git rev-parse HEAD` confirmed 66eb91ce6301ec014cc93702daae6a6208448018; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 1 implemented page and 35 future pages; `node --test tests/content-manual-guide-chapters.test.mjs` passed 14/14; focused Playwright page-021 e2e passed 2/2; `pnpm run build` passed; `git diff --check` passed.
+- Architect validation evidence: PR #175 required checks were observed green: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
+- Open Architect dispositions: none for PR #175/page-021; review findings and Implementation Agent feedback have recorded dispositions.
+- Architect gaps: none for PR #175/page-021.
