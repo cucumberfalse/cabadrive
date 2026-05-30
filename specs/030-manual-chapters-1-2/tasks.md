@@ -252,6 +252,11 @@ For each section key:
 - Current-PR-head read-only guard: effective content head f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
+- Effective content head: feed3e9be0f6d0bed7b8e924bd7d0d61179ad584
+- Final-validation evidence-only commit: effective content head feed3e9be0f6d0bed7b8e924bd7d0d61179ad584; Architect validation evidence is process-memory-only for PR #177.
+- Current-PR-head read-only guard: effective content head feed3e9be0f6d0bed7b8e924bd7d0d61179ad584; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
 
 ### Cleanup Evidence
 
@@ -333,4 +338,17 @@ For each section key:
 - Architect validation evidence: source-order disposition is implemented in this effective head: selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` follows `safe-arrival` according to the source crop/page layout, and the crash-likelihood sentence is a separate blue note after `stronger-road-user-care`.
 - Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `17/17`, build pass, focused Playwright `2/2`, diff hygiene pass, feature-memory check pass, required checks green, regenerated desktop/mobile screenshots inspected, Review Agent no findings, and all PR #177 review threads resolved.
 - Open Architect dispositions: none for PR #177 `ch1-cities-for-people`; prior source-order disposition is addressed, and remaining Chapter 1/2 sections stay future section PR work.
+- Architect gaps: none for PR #177 `ch1-cities-for-people`; full Chapter 1/2 completion remains outside this slice.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T12:14:20Z
+- Architect return count: 0
+- Architect validated effective content head: feed3e9be0f6d0bed7b8e924bd7d0d61179ad584
+- Architect validation evidence: PR #177 validates only `ch1-cities-for-people` / `Ciudades para las personas` / `Города для людей`; it implements one website section page from source page `22`, skips divider-only page `21`, does not create a raw page `22` route, and does not implement `ch1-sustainable-mobility` or later sections.
+- Architect validation evidence: current effective head includes the post-`f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d` process-memory dispositions in `tasks.md`; Known Issues entries for stale validation and source-order conflicts now have explicit resolved dispositions and no owner decision remains.
+- Architect validation evidence: source-fidelity visual order remains correct in this effective head: selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` follows `safe-arrival` according to the source crop/page layout, and the crash-likelihood sentence remains a separate blue note after `stronger-road-user-care`.
+- Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `17/17`, build pass, focused Playwright `2/2`, diff hygiene pass, feature-memory check pass, required checks green, regenerated desktop/mobile screenshots inspected, Review Agent no findings, and all PR #177 review threads resolved.
+- Open Architect dispositions: none for PR #177 `ch1-cities-for-people`; remaining Chapter 1/2 sections stay future section PR work.
 - Architect gaps: none for PR #177 `ch1-cities-for-people`; full Chapter 1/2 completion remains outside this slice.
