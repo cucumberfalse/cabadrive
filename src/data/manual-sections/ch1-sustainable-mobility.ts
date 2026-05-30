@@ -66,7 +66,7 @@ export const ch1SustainableMobilitySection: ManualGuideSectionContent = {
       space: {
         titleRu: "Сколько места нужно 50 людям, чтобы передвигаться?",
         assetPath:
-          "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-icons-source.jpg",
+          "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
         modes: [
           {
             id: "bus",

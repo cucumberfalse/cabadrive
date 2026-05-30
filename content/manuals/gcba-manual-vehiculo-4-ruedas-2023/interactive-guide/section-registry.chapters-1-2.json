@@ -281,16 +281,16 @@
             "assetKind": "native-dom-text-and-infographic-data",
             "width": 760,
             "height": 620,
-            "sha256": "6475a1391cb8955bea49e33d579dc62abf7137a9587ede19ef54f2b6f8013bde",
+            "sha256": "179c6ded9d799c8cc0992c1ca5b805eb96ccd9043f1d367f279e8769124ad105",
             "containsText": true,
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-icons-source.jpg",
-            "assetKind": "source-derived-nontext-pictogram-row",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+            "assetKind": "source-derived-nontext-50-person-space-comparison-row",
             "width": 585,
             "height": 78,
-            "sha256": "1dd898dc1d066c4fe64ae9a7c1e21c82eec9b2c32a5fe340e5e68a0a28816bda",
+            "sha256": "baab91b6701ae95b1cde574f3c172ca6b2335e1cb0f84a3905e4021664135b2b",
             "containsText": false,
             "visibleSpanish": false
           },

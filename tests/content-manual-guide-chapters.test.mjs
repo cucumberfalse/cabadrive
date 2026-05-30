@@ -1,4 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -45,6 +46,10 @@ function duplicatedValues(values) {
 
 function sourcePageAssetPath(sourcePage) {
   return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(sourcePage).padStart(3, "0")}.jpg`;
+}
+
+function sha256File(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
 function writeTempFile(path, contents = "fixture") {
@@ -396,6 +401,21 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
     assert.equal(existsSync(asset.assetPath), true, `${asset.assetPath} exists`);
     assert.equal(asset.visibleSpanish, false, `${asset.assetPath} records no visible Spanish`);
   }
+  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-50-person-space-comparison-row");
+  const vulnerabilityAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-vulnerability-pictogram-row");
+  assert.ok(spaceAsset, "space comparison runtime crop metadata exists");
+  assert.ok(vulnerabilityAsset, "vulnerability runtime crop metadata exists");
+  assert.equal(spaceAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
+  assert.equal(spaceAsset.width, 585);
+  assert.equal(spaceAsset.height, 78);
+  assert.equal(spaceAsset.sha256, "baab91b6701ae95b1cde574f3c172ca6b2335e1cb0f84a3905e4021664135b2b");
+  assert.equal(sha256File(spaceAsset.assetPath), spaceAsset.sha256, "space comparison crop bytes match the recorded 50-person row hash");
+  assert.equal(vulnerabilityAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg");
+  assert.equal(vulnerabilityAsset.width, 590);
+  assert.equal(vulnerabilityAsset.height, 115);
+  assert.equal(vulnerabilityAsset.sha256, "016d48984bc5b463de8539e63f7608b0b6d227997d3aca84ee17da2f3edb91c5");
+  assert.equal(sha256File(vulnerabilityAsset.assetPath), vulnerabilityAsset.sha256, "vulnerability strip bytes match its recorded hash");
+  assert.notEqual(spaceAsset.sha256, vulnerabilityAsset.sha256, "space comparison must not reuse the vulnerability strip asset");
 
   for (const requiredText of [
     "Что такое устойчивая мобильность?",
@@ -430,7 +450,8 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   assert.match(appSource, /function VulnerabilityRankingBlockView/);
   assert.match(stylesSource, /\.manual-mobility-context[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-source-row-scroll[\s\S]*?overflow-x:\s*auto/);
-  assert.match(ch1SustainableModuleSource, /space-comparison-icons-source\.jpg/);
+  assert.match(ch1SustainableModuleSource, /space-comparison-50-people-source\.jpg/);
+  assert.doesNotMatch(ch1SustainableModuleSource, /space-comparison-icons-source\.jpg/);
   assert.match(ch1SustainableModuleSource, /vulnerability-icons-source\.jpg/);
   assert.doesNotMatch(ch1SustainableModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-023\.jpg/u);
   for (const outOfScopeText of ["Пешеходный приоритет", "Система общественного транспорта", "Совместная поездка"]) {
