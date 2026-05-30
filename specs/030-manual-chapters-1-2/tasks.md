@@ -67,6 +67,21 @@ For each section key:
 - [ ] T026 Run focused checks, local preflight, Docker runtime validation, and `git diff --check`; record exact commands/results.
 - [ ] T027 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR set row.
 
+## Current Section Slice: `ch1-cities-for-people`
+
+- [x] Confirmed Implementation Agent assignment for worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-cities-for-people`, branch `codex/030-ch1-cities-for-people`, assigned source section `ch1-cities-for-people`, and base `origin/main` at `b0b3506cea0165f2ae267a7b186b0149091a6fe0`.
+- [x] Recorded baseline status before edits: `git status --short --branch` returned `## codex/030-ch1-cities-for-people...origin/main`, and `git rev-parse HEAD` returned `b0b3506cea0165f2ae267a7b186b0149091a6fe0`.
+- [x] Read the required project memory, active feature memory, manual conversion guidelines, feature `029` guidance, current manual guide source files, registry/checker/tests, source page `22` data, and local page render before editing.
+- [x] Inspected source `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, and `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-022.jpg` for this section.
+- [x] Implemented only `Ciudades para las personas` / `Города для людей`; left `ch1-sustainable-mobility` and every later Chapter 1/2 section pending.
+- [x] Updated the section registry entry to `implemented`, with source-region metadata, local native-DOM visual evidence, screenshot paths, no-visible-Spanish status, selectable-text status, bounding-box evidence, and checker pass state.
+- [x] Added `src/data/manual-sections/ch1-cities-for-people.ts` as the section-local content module and wired it through `implementedManualGuideSections`.
+- [x] Recreated the source `FLUIDEZ / SEGURIDAD` relationship as selectable Russian DOM text: `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ`, with responsive CSS preserving the side-by-side relationship on mobile.
+- [x] Preserved source page `22` facts: shared public space, fast/safe/no-harm travel goal, solidarity and law/other-person respect, stronger-road-user/driver care duty, more than nine million daily CABA trips, streets as shared healthy coexistence spaces, connectivity works, sustainable mobility, and the crash-likelihood closing idea.
+- [x] Generated source crop evidence at `content/validation/manual-guide/ch1-cities-for-people/page-022-cities-for-people-source-crop.jpg` and committed rendered desktop/mobile evidence screenshots under the same directory.
+- [x] Added focused content and e2e tests for route activation, implemented-vs-pending state, source coverage, no page-021/page-043/page-056 routes, no unrelated section implementation, selectable principle text, responsive/no-overflow checks, and no visible Spanish in the rendered section.
+- [ ] Finalize commit, push, and ready PR metadata for this slice after local preflight, Docker runtime smoke, and final diff hygiene.
+
 ## Review Requirements
 
 - [ ] T028 Review Agent verifies one-section PR scope and no unrelated sections.
@@ -97,6 +112,9 @@ For each section key:
 - Superseded: prior feature `030` planning treated raw source PDF pages as PR delivery units. The corrected Analyst intake and this Architect update replace that assumption. Source PDF pages are now source metadata only.
 - Rejected patterns inherited from feature `029`: runtime PDF/full-page raster, side-by-side Spanish/Russian translation, generic icons, broad masks/plates, distorted infographic reassembly, unselectable Russian text, and duplicate `Руководство 4R` destination.
 - Implementation Agent dead end: first `pnpm run build` attempt failed before code compilation because this isolated worktree had no `node_modules` and `pdf-parse` could not be resolved by content validation. Resolution: ran `pnpm install --frozen-lockfile` locally in the worktree, then reran build successfully.
+- Implementation Agent note for `ch1-cities-for-people`: this fresh worktree initially had no `node_modules`, so `pnpm install --frozen-lockfile` was run before local verification.
+- Implementation Agent dead end for `ch1-cities-for-people`: first `pnpm run preflight` attempt stopped at `check-feature-memory` because product files were changed before this section-slice process-memory update was recorded. Resolution: update this `tasks.md` with section decisions/evidence, then rerun preflight.
+- Implementation Agent Docker-smoke note for `ch1-cities-for-people`: two ad hoc Playwright smoke attempts against the Docker container failed because the smoke harness first queried a non-existent section test id, then matched duplicate `ПЛАВНОСТЬ` text in prose and the principle visual, then expected whitespace that DOM text did not expose. Resolution: reran the smoke against the dedicated `manual-principle-terms` element with whitespace-insensitive text normalization; the container route passed.
 
 ### Decisions
 
@@ -114,6 +132,9 @@ For each section key:
 - Implementation Agent decision: no converted learner content, section prose, or section-local assets are included in this prerequisite PR.
 - Review fix decision for P2 `PRRT_kwDOSX65IM6F1OW7` / `discussion_r3327868928`: when a future implemented manual section is selected, `selectedManualSection` must determine `data-active-group-id` before falling back to the selected Introduction entry. This prevents stale Introduction state from keeping Introduction highlighted while manual section content is displayed.
 - Implementation Agent decision for P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: `ch2-scoring` now uses source PDF page `55` / `page-055.jpg`; source page `55` is intentionally shared with `ch2-incident-obligations` by layout-block boundary metadata, and source page `56` is skipped as book-only closing slogan material with no route/module/placeholder/PR slice.
+- Implementation Agent decision for `ch1-cities-for-people`: source page `22` contains one substantive source-`Índice` website section; source PDF page `21` remains divider-only and is not included in this PR as content, route, module, placeholder, or screenshot target.
+- Implementation Agent decision for `ch1-cities-for-people`: the page has no source pictogram/photo/table requiring runtime image artwork. The meaningful visual relationship is the centered `FLUIDEZ / SEGURIDAD` typographic pair, so the learner view recreates it as selectable Russian DOM text (`ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ`) with source-teal emphasis and source-region evidence.
+- Implementation Agent decision for `ch1-cities-for-people`: the source page crop is committed only as internal reference evidence under `content/validation/manual-guide/ch1-cities-for-people/`; the learner UI does not render the Spanish crop, full source page raster, broad masks, page chrome, or page marker.
 
 ### Known Issues
 
@@ -123,6 +144,7 @@ For each section key:
 - Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed; every future section implementation must perform manual visual inspection across its full source range.
 - Section `ch2-incident-obligations` includes source NGO contacts that may be volatile. Architect disposition: addressed; carry forward as required section-level contact/volatility disposition before learner-facing presentation.
 - Section `ch2-scoring` source-boundary issue from current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: resolved by implementation follow-up in PR #176. Registry/tests/evidence now assign Scoring to source PDF page `55`, assign `ch2-incident-obligations` only the pre-Scoring page-55 layout blocks, and skip page `56` as non-section closing slogan material. Final Architect/Analyst validation still must rerun after this non-evidence fix.
+- No unresolved known issues for local `ch1-cities-for-people` implementation at the time of this process-memory update.
 
 ### Verification Evidence
 
@@ -150,6 +172,19 @@ For each section key:
 - Implementation Agent focused verification after P1 fix passed before this process-memory update: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `pendingSections: 10`, `skippedSourcePages: [21, 43, 56]`, and `sharedSourcePages: [55]`; `node --test tests/content-manual-guide-chapters.test.mjs` passed `16/16`; `node --test tests/content-pandemia-vial-section.test.mjs` passed `14/14`; `git diff --check` passed.
 - Implementation Agent additional verification after process-memory update passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`16/16`); `node --test tests/content-pandemia-vial-section.test.mjs` (`14/14`); `pnpm run build` including `validate:content`, Vite build, and service worker generation; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 and 2 pending section entries"` (`2/2` desktop/mobile); `git diff --check`.
 - Review-thread state after P1 implementation: Implementation Agent did not resolve GitHub review thread `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`; Orchestrator/Review routing remains responsible for review-thread state and final validation rerun after this branch is pushed.
+- Implementation Agent baseline for `ch1-cities-for-people`: worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-cities-for-people`, branch `codex/030-ch1-cities-for-people`, base `b0b3506cea0165f2ae267a7b186b0149091a6fe0`; `git status --short --branch` returned `## codex/030-ch1-cities-for-people...origin/main` before edits.
+- Implementation Agent source inspection for `ch1-cities-for-people`: `jq` inspection of `manual.ru.json` source page `22`, `layout.ru.json` source page `22`, `navigation.ru.json` topic `ch1-cities-for-people`, registry entry `ch1-cities-for-people`, and visual inspection of `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-022.jpg` confirmed the section scope and source facts.
+- Source crop evidence for `ch1-cities-for-people`: generated `content/validation/manual-guide/ch1-cities-for-people/page-022-cities-for-people-source-crop.jpg` from source page `22`; dimensions `620x650`; SHA-256 `bdf97ca487edf8e307946497e9059afc6bfd7b146c56414b057d28489c600a72`.
+- Rendered screenshot evidence for `ch1-cities-for-people`: generated `content/validation/manual-guide/ch1-cities-for-people/ch1-cities-for-people-desktop.png` at `1280x900` viewport and `content/validation/manual-guide/ch1-cities-for-people/ch1-cities-for-people-mobile.png` at `390x900` viewport from local route `/#manual-section-ch1-cities-for-people`.
+- In-app browser verification for `ch1-cities-for-people`: direct route `http://127.0.0.1:5194/#manual-section-ch1-cities-for-people` rendered `data-manual-section-id="ch1-cities-for-people"`, active group `chapter-1-sustainable-mobility`, active child `ch1-cities-for-people`, `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` present, and no visible Spanish text detected in the section text.
+- Focused local verification passed for `ch1-cities-for-people`: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `pendingSections: 9`, `implementedSections: 1`, skipped source pages `[21, 43, 56]`, and `sourceCropEvidence`/`screenshotEvidence` recorded for this section.
+- Focused local verification passed for `ch1-cities-for-people`: `node --test tests/content-manual-guide-chapters.test.mjs` passed `17/17`; `node --test tests/content-pandemia-vial-section.test.mjs` passed `14/14`; `pnpm run build` passed including content validation, manual guide checker, Vite build, and service-worker generation.
+- Full local Node test verification passed after section implementation: `pnpm run test` passed `326/326`.
+- Focused Playwright verification passed for `ch1-cities-for-people`: `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 cities"` passed `2/2` across desktop Chromium and mobile projects.
+- First `pnpm run preflight` attempt for `ch1-cities-for-people` failed at `node scripts/check-feature-memory.mjs --worktree` because feature memory had not yet been updated in the worktree; this process-memory entry records the resolution path before rerunning preflight.
+- Full local preflight passed for `ch1-cities-for-people`: `pnpm run preflight` completed `check-feature-memory`, `check:repo`, `validate:content`, `pnpm run test` with `326/326` passing node tests, `pnpm run build`, and full Playwright e2e with `74/74` passing tests across desktop/mobile projects.
+- Docker runtime smoke passed for `ch1-cities-for-people` with isolated project/port: `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make build` built the image and reran content validation/build inside Docker; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make up` started the container; `curl -fsS http://127.0.0.1:5195/` fetched the served shell; a Playwright smoke of `http://127.0.0.1:5195/#manual-section-ch1-cities-for-people` confirmed the route hash, `Города для людей`, selectable `ПЛАВНОСТЬБЕЗОПАСНОСТЬ`, and no visible Spanish; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 make down` stopped the runtime; `COMPOSE_PROJECT_NAME=cabadrive030cities CABADRIVE_HOST_PORT=5195 docker compose ps --all` showed no remaining containers.
+- Final local hygiene after evidence updates passed for `ch1-cities-for-people`: `git diff --check`, `node scripts/check-feature-memory.mjs --worktree`, and `node scripts/manual-guide-source-fidelity.mjs`.
 
 ### Cycle PR Set
 
@@ -158,7 +193,7 @@ For each section key:
 | section-requirement-correction | Architect memory correction from source-PDF-page slicing to website-section slicing, carried by this shared correction branch | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push; prior validated head `8a435c84166e4c001220ddc70624abaa8017c96b` is stale after current-head P1 `PRRT_kwDOSX65IM6F1edn` | P1 Scoring source-boundary fix implemented locally; final validation rerun pending after push | yes |
 | shared-section-prereq | Shared correction/prerequisite for section registry/routes/checker/style, no section content | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push | Scoring source-boundary registry/test fix implemented locally; review-thread/final-validation state pending Orchestrator routing | yes |
 | PR-175-page-021-disposition | Existing PR #175 / `page-021` divider-only implementation | `codex/030-page-021` | PR #175, `https://github.com/cucumberfalse/cabadrive/pull/175` | `1e8334676ba26d867194dcc9b884758465837959` | closed unmerged, superseded by corrected section-based contract | no |
-| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` | pending Orchestrator assignment | pending | pending | pending | yes |
+| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` / `Города для людей` with source page `22` evidence and selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual | `codex/030-ch1-cities-for-people` | pending PR creation | pending commit | implemented locally; focused checker/content/build/Playwright passed; full preflight passed; Docker runtime smoke passed; final diff hygiene/commit/push/PR pending | yes |
 | `ch1-sustainable-mobility` | Implement website section page `¿Qué es la movilidad sustentable?` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-pedestrian-priority` | Implement website section page `Prioridad peatonal` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-bicycle` | Implement website section page `Bicicleta` | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -194,6 +229,7 @@ For each section key:
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback for this shared correction/prerequisite pass.
+- No unresolved Implementation Agent feedback for the `ch1-cities-for-people` section slice at the time of local verification.
 
 ## Architect Dispositions
 

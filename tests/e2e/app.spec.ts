@@ -2612,7 +2612,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes Chapter 1 and 2 pending section entries without fake content", async ({ page }) => {
+test("Manual guide exposes Chapter 1 cities section and keeps later sections pending", async ({ page }, testInfo) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2638,7 +2638,13 @@ test("Manual guide exposes Chapter 1 and 2 pending section entries without fake 
   const pedestrian = reader.getByTestId("manual-guide-pending-section-ch1-pedestrian-priority");
   const legal = reader.getByTestId("manual-guide-pending-section-ch2-legal-responsibility");
   const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
-  for (const sectionButton of [cities, pedestrian, legal, scoring]) {
+  await expect(cities).toBeVisible();
+  await expect(cities).toBeEnabled();
+  await expect(cities).toHaveAttribute("data-status", "implemented");
+  await expect(cities).toHaveAttribute("data-source-region-metadata-status", "recorded");
+  await expect(cities).toHaveAttribute("data-visual-evidence-status", "recorded");
+
+  for (const sectionButton of [pedestrian, legal, scoring]) {
     await expect(sectionButton).toBeVisible();
     await expect(sectionButton).toBeDisabled();
     await expect(sectionButton).toHaveAttribute("data-status", "pending");
@@ -2655,9 +2661,75 @@ test("Manual guide exposes Chapter 1 and 2 pending section entries without fake 
   await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
   await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
-  await expect(content.getByTestId("manual-guide-section")).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");
+
+  await cities.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-cities-for-people$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-cities-for-people");
+  await expect(cities).toHaveAttribute("aria-current", "page");
+
+  const section = content.getByTestId("manual-guide-section");
+  await expect(section).toBeVisible();
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch1-cities-for-people");
+  await expect(section.getByRole("heading", { name: "Города для людей" })).toBeVisible();
+  await expect(section).toContainText("пространство совместной жизни");
+  await expect(section).toContainText("больше девяти миллионов поездок в день");
+  const principlePair = section.locator('[data-block-kind="principle-pair"]');
+  await expect(principlePair).toBeVisible();
+  await expect(principlePair).toContainText("ПЛАВНОСТЬ");
+  await expect(principlePair).toContainText("БЕЗОПАСНОСТЬ");
+  await expect(section).not.toContainText("¿Qué es la movilidad sustentable?");
+  await expect(section).not.toContainText("Prioridad peatonal");
+  await expect(section.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(section.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const issues = await section.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-principle-terms strong'))) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    return problems;
+  });
+  expect(issues).toEqual([]);
+
+  const selectedText = await section.evaluate((root) => {
+    const selection = window.getSelection();
+    const principle = root.querySelector('[data-block-kind="principle-pair"]');
+    if (!selection || !principle) return "";
+    const range = document.createRange();
+    range.selectNodeContents(principle);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  expect(selectedText).toContain("ПЛАВНОСТЬ");
+  expect(selectedText).toContain("БЕЗОПАСНОСТЬ");
+
+  await section.screenshot({
+    path: testInfo.outputPath(`ch1-cities-for-people-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-cities-for-people");
+  await expect(page).toHaveURL(/#manual-section-ch1-cities-for-people$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-cities-for-people");
 });
 
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {

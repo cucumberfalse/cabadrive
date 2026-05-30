@@ -12,13 +12,16 @@ const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
 const stylesPath = "src/styles.css";
+const ch1CitiesModulePath = "src/data/manual-sections/ch1-cities-for-people.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+const implementedSectionIds = new Set(["ch1-cities-for-people"]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
+const ch1CitiesModuleSource = readFileSync(ch1CitiesModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 
 function sourcePagesForRange(start, end) {
@@ -107,6 +110,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
     checkerResult: "pass"
   };
   mutateEvidence(section.implementationEvidence);
+  writeTempFile(join(moduleRoot, "ch1-cities-for-people.ts"), "export const ch1CitiesForPeopleSection = { sectionId: \"ch1-cities-for-people\" };\n");
   writeTempFile(join(moduleRoot, "ch1-pedestrian-priority.ts"), moduleSource);
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   return { implementedRegistryPath, moduleRoot };
@@ -136,17 +140,26 @@ test("Chapter 1 and 2 registry contains exactly ten source Índice sections and 
   assert.deepEqual(registry.sections.map((section) => section.id), evidence.expectedSectionIds);
   for (const section of registry.sections) {
     const expectedRange = evidence.expectedSectionRanges[section.id];
+    const sourcePages = sourcePagesForRange(expectedRange.start, expectedRange.end);
     assert.deepEqual(section.sourcePageRange, expectedRange, `${section.id} source range follows source Índice`);
-    assert.equal(section.status, "pending", `${section.id} is pending in the shared prerequisite`);
     assert.equal(section.routeHash, `#manual-section-${section.id}`);
     assert.equal(section.sectionContentModulePath, `src/data/manual-sections/${section.id}.ts`);
-    assert.equal(section.sourceRegionMetadataStatus, "pending_until_section_pr");
-    assert.equal(section.visualEvidenceStatus, "pending_until_section_pr");
+    if (implementedSectionIds.has(section.id)) {
+      assert.equal(section.status, "implemented", `${section.id} is implemented in its section PR`);
+      assert.equal(section.sourceRegionMetadataStatus, "recorded");
+      assert.equal(section.visualEvidenceStatus, "recorded");
+      assert.equal(section.implementationEvidence.sectionId, section.id);
+      assert.deepEqual(section.implementationEvidence.sourcePages, sourcePages);
+      assert.equal(existsSync(section.sectionContentModulePath), true, `${section.id} section module exists`);
+    } else {
+      assert.equal(section.status, "pending", `${section.id} remains pending for a later section PR`);
+      assert.equal(section.sourceRegionMetadataStatus, "pending_until_section_pr");
+      assert.equal(section.visualEvidenceStatus, "pending_until_section_pr");
+    }
     assert.doesNotMatch(section.id, /^manual-page-\d{3}$/u);
     assert.doesNotMatch(section.routeHash, /^#manual-page-/u);
     assert.doesNotMatch(section.sectionContentModulePath, /src\/data\/manual-pages\//u);
 
-    const sourcePages = sourcePagesForRange(expectedRange.start, expectedRange.end);
     assert.deepEqual(section.sourcePages.map((entry) => entry.sourcePage), sourcePages);
     assert.equal(sourcePages.includes(21), false, `${section.id} does not include divider page 21`);
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
@@ -262,6 +275,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-prose",
     "manual-callout-blue",
     "manual-section-heading",
+    "manual-principle-pair",
     "manual-source-artwork",
     "manual-legal-detail",
     "introductionDocumentStyleGuide.tokens"
@@ -269,7 +283,8 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     assert.ok(manualGuideSource.includes(requiredToken), `manual guide style token registry includes ${requiredToken}`);
   }
 
-  assert.match(manualGuideSource, /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\]/);
+  assert.match(manualGuideSource, /import \{ ch1CitiesForPeopleSection \}/);
+  assert.match(manualGuideSource, /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[ch1CitiesForPeopleSection\]/);
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
 });
@@ -298,13 +313,48 @@ test("Manual guide UI renders pending section entries without opening fake conte
   assert.doesNotMatch(manualGuideAppSource, /placeholder body|coming soon article|fake content|lorem/iu);
 });
 
+test("ch1 cities section content covers source page 22 and no unrelated section content", () => {
+  const section = registry.sections.find((entry) => entry.id === "ch1-cities-for-people");
+  assert.ok(section, "ch1-cities-for-people registry entry exists");
+  assert.equal(section.status, "implemented");
+  assert.equal(section.sourceRegionMetadataStatus, "recorded");
+  assert.equal(section.visualEvidenceStatus, "recorded");
+  assert.equal(section.implementationEvidence.checkerResult, "pass");
+  assert.equal(existsSync(section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath), true);
+  assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
+  assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
+
+  for (const requiredText of [
+    "Города для людей",
+    "пешеходы, велосипедисты и водители",
+    "пространство совместной жизни",
+    "добраться быстрее, целым и невредимым",
+    "ПЛАВНОСТЬ",
+    "БЕЗОПАСНОСТЬ",
+    "Соблюдать правила и закон здесь означает уважать другого человека",
+    "С более сильного участника дороги требуют больше осторожности",
+    "больше девяти миллионов поездок в день",
+    "общим пространством здорового сосуществования",
+    "поддерживают устойчивую мобильность"
+  ]) {
+    assert.ok(ch1CitiesModuleSource.includes(requiredText), `missing page 22 learner text: ${requiredText}`);
+  }
+
+  assert.match(ch1CitiesModuleSource, /kind:\s*"principle-pair"/);
+  assert.match(manualGuideAppSource, /data-testid="manual-principle-terms"/);
+  assert.match(stylesSource, /\.manual-principle-pair[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-principle-terms[\s\S]*?grid-template-columns:\s*repeat\(2/);
+  assert.doesNotMatch(ch1CitiesModuleSource, /Что такое устойчивая мобильность|Пешеходный приоритет|Велосипед|Система общественного транспорта|Совместная поездка/u);
+  assert.doesNotMatch(ch1CitiesModuleSource, /page-021|page-022\.jpg|manual-page-021|#manual-page/u);
+});
+
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
   assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuideSectionContentView"/);
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });
 
-test("Manual guide source-fidelity checker passes the shared prerequisite section registry", () => {
+test("Manual guide source-fidelity checker passes the section registry with ch1 cities implemented", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
@@ -312,18 +362,18 @@ test("Manual guide source-fidelity checker passes the shared prerequisite sectio
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 10);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 0);
+  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 9);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 1);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingSections, 10);
-  assert.equal(result.implementedSections, 0);
+  assert.equal(result.pendingSections, 9);
+  assert.equal(result.implementedSections, 1);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "not_applicable_until_section_pr");
+  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people");
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy section references", () => {
@@ -421,8 +471,8 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.pendingSections, 9);
-    assert.equal(output.implementedSections, 1);
+    assert.equal(output.pendingSections, 8);
+    assert.equal(output.implementedSections, 2);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
