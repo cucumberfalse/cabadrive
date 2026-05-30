@@ -317,6 +317,11 @@ For each section key:
 - Current-PR-head read-only guard: effective content head feed3e9be0f6d0bed7b8e924bd7d0d61179ad584; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
+- Effective content head: 470333e95494438f86e128fe61858339d077367f
+- Final-validation evidence-only commit: effective content head 470333e95494438f86e128fe61858339d077367f; Architect validation evidence is process-memory-only for PR #178.
+- Current-PR-head read-only guard: effective content head 470333e95494438f86e128fe61858339d077367f; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
 
 ### Cleanup Evidence
 
@@ -332,7 +337,7 @@ For each section key:
 - PR #177 AI Review P2 thread `PRRT_kwDOSX65IM6F2v9j` / `discussion_r3328424446` is expected to be safe for Orchestrator/Review routing to resolve after this crop-order fix is pushed, current-head checks complete, and AI Review confirms no remaining source-order finding.
 - Architect disposition: addressed; PR #177 AI Review P2 thread `PRRT_kwDOSX65IM6F2v9j` / `discussion_r3328424446` is valid for current head `b1117ddee0e71a72ce4d8416c39b406161cf3eb2`, and Implementation Agent must restore the `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual to the source-crop position before rerunning validation.
 - No unresolved Implementation Agent feedback for the local `ch1-sustainable-mobility` implementation at the time of focused local verification.
-- PR #178 Review Agent P2 thread `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` is expected to be safe for Orchestrator/Review routing to resolve after this label/pictogram mapping fix is pushed and current-head checks complete.
+- Architect disposition: addressed; PR #178 Review Agent P2 thread `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` was fixed by pairing each mobile label with its source-derived pictogram, Review Agent reported no actionable findings on current head, and no additional Architect task remains.
 
 ## Architect Dispositions
 
@@ -342,6 +347,7 @@ For each section key:
 - Architect disposition: addressed; infographic/source-artwork quality remains a first-class gate for each section PR.
 - Architect disposition: addressed; current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510` requires Implementation Agent to move `ch2-scoring` registry/evidence from source PDF page `56` to the Scoring block on source PDF page `55`, keep `ch2-incident-obligations` page-55 ownership region before Scoring only, and treat page `56` as non-Scoring closing slogan material.
 - Architect disposition: addressed; for PR #177 `ch1-cities-for-people`, source crop/page layout controls over `manual.ru.json` extraction order for the `FLUIDEZ / SEGURIDAD` principles visual. Implementation Agent must move the selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` block back immediately after `safe-arrival` and before `solidarity-law-respect`, and keep the crash-likelihood blue statement after `stronger-road-user-care` and before `nine-million-trips`, splitting the statement from the principles block if needed.
+- Architect disposition: addressed; PR #178 `ch1-sustainable-mobility` mobile infographic P2 `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` is resolved by paired label/pictogram items on mobile, source-derived non-text crops with Russian DOM labels, no visible Spanish, and no additional Architect task.
 
 ## Historical Final Architect Validation Notes
 
@@ -415,3 +421,16 @@ For each section key:
 - Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `17/17`, build pass, focused Playwright `2/2`, diff hygiene pass, feature-memory check pass, required checks green, regenerated desktop/mobile screenshots inspected, Review Agent no findings, and all PR #177 review threads resolved.
 - Open Architect dispositions: none for PR #177 `ch1-cities-for-people`; remaining Chapter 1/2 sections stay future section PR work.
 - Architect gaps: none for PR #177 `ch1-cities-for-people`; full Chapter 1/2 completion remains outside this slice.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T14:13:35Z
+- Architect return count: 0
+- Architect validated effective content head: 470333e95494438f86e128fe61858339d077367f
+- Architect validation evidence: PR #178 validates only `ch1-sustainable-mobility` / `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?`; it implements one website section page from source page `23`, preserves the section-based one-PR contract, skips divider-only page `21`, and does not implement `ch1-pedestrian-priority` or later sections.
+- Architect validation evidence: source-fidelity and infographic gates are satisfied for this section slice: source crops, runtime source-derived non-text pictogram crops, desktop/mobile screenshots, source-region metadata, selectable Russian DOM labels, no visible Spanish, and no full-page source raster are recorded in the registry and process memory.
+- Architect validation evidence: mobile responsive review fix `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` is addressed by paired label/pictogram items for the 50-person comparison and vulnerability ranking; inspected mobile screenshot evidence shows labels remain associated with icons without clipping, horizontal scrolling, or letter-level word splitting.
+- Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on current head, and PR #178 review-thread disposition complete.
+- Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
