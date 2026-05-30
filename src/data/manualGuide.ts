@@ -1,5 +1,6 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
+import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
 import {
   introductionDocumentStyleGuide,
   introductionNavigation,
@@ -174,6 +175,60 @@ export type ManualGuideContentBlock =
       kind: "principle-note";
       textRu: string;
       sourceTextEs: string;
+    }
+  | {
+      id: string;
+      kind: "mobility-context";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      cityLabelRu: string;
+      cityStats: {
+        valueRu: string;
+        labelRu: string;
+      }[];
+      trips: {
+        titleRu: string;
+        interjurisdictionalRu: string;
+        internalRu: string;
+        residentShareRu: string;
+        inboundShareRu: string;
+      };
+      space: {
+        titleRu: string;
+        assetPath: string;
+        modes: {
+          id: string;
+          labelRu: string;
+        }[];
+      };
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "vulnerability-ranking";
+      titleRu: string;
+      sourceTextEs: string;
+      introRu: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      levels: {
+        rankRu: string;
+        labelRu: string;
+      }[];
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -217,7 +272,7 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
   return `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
 }
 
-export const implementedManualGuideSections: ManualGuideSectionContent[] = [ch1CitiesForPeopleSection];
+export const implementedManualGuideSections: ManualGuideSectionContent[] = [ch1CitiesForPeopleSection, ch1SustainableMobilitySection];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
 export const manualGuideDocumentStyleTokens = {
@@ -249,6 +304,16 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-source-artwork",
       description: "Source-faithful local crops or visually indistinguishable reconstructions with selectable Russian labels where needed.",
       tokenSource: "manual-guide-source-fidelity"
+    },
+    {
+      id: "manual-mobility-context",
+      description: "Page 23 city-context, daily-trip, and modal-space infographic layout using native Russian DOM labels plus source-derived non-text artwork crops.",
+      tokenSource: "source page 23 ¿Qué es la movilidad sustentable?"
+    },
+    {
+      id: "manual-vulnerability-order",
+      description: "Page 23 vulnerability hierarchy strip preserving source order, ranking numbers, and source-derived vehicle/pedestrian pictograms with Russian DOM labels.",
+      tokenSource: "source page 23 Uso de la vía pública de acuerdo a la Vulnerabilidad"
     },
     {
       id: "manual-legal-detail",

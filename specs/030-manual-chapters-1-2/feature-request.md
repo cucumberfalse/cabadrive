@@ -443,3 +443,63 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T14:15:05Z
+
+Analyst validated effective content head: 470333e95494438f86e128fe61858339d077367f
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #178 `ch1-sustainable-mobility` only. This slice implements exactly the `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` source-`Índice` website section from source page `23`, preserves the corrected one-section-one-PR model, keeps divider-only source PDF page `21` skipped, avoids page-based route/module/placeholder delivery, and leaves the remaining Chapter 1/2 sections for future one-section PRs.
+
+Gaps, if any: none for PR #178 customer-intent scope. Infographic/source-fidelity quality is acceptable for this slice after the mobile review fixes: paired labels and source-derived pictogram items remain visible, associated, aligned, and not clipped on mobile.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #178. Architect validation passed at 2026-05-30T14:13:35Z for effective content head 470333e95494438f86e128fe61858339d077367f; process memory records source-fidelity checker pass, content tests 18/18, TypeScript pass, build pass, focused Playwright 2/2, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on current head, PR #178 review-thread disposition complete, and mobile labels/icons visible and aligned.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T15:00:41Z
+
+Analyst validated effective content head: 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #178 `ch1-sustainable-mobility` only. This rerun validates exactly the `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` source-`Índice` website section from source page `23`, preserves the corrected one-section-one-PR model, keeps divider-only source PDF page `21` skipped, avoids page-based route/module/placeholder delivery, and leaves the remaining Chapter 1/2 sections for future one-section PRs.
+
+Gaps, if any: none for PR #178 customer-intent scope. Infographic/source-fidelity quality is acceptable for this slice after fixes: the top 50-person comparison uses the correct source crop, vulnerability labels/icons remain paired, desktop labels remain accessible to assistive tech, and mobile has no clipping or letter-level label split.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #178. Architect validation passed at 2026-05-30T14:59:00Z for effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; process memory records source-fidelity checker pass, content tests 18/18, TypeScript pass, build pass, focused Playwright 2/2, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on the effective head, desktop assistive-tech label coverage, explicit 50-person crop path/hash evidence, and mobile label/pictogram alignment.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T15:15:55Z
+
+Analyst validated effective content head: ad8dd614a7ac41e945dfd6e88e78845f46b2fa16
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #178 `ch1-sustainable-mobility` only. This rerun validates exactly the `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` source-`Índice` website section from source page `23`, preserves the corrected one-section-one-PR model, keeps divider-only source PDF page `21` skipped, avoids page-based route/module/placeholder delivery, and leaves all other Chapter 1/2 sections for future one-section PRs.
+
+Gaps, if any: none for PR #178 customer-intent scope. Infographic/source-fidelity quality remains acceptable: the 50-person modal-space comparison uses the corrected explicit source crop, the vulnerability strip remains separate, mobile labels remain paired with icons, desktop labels remain accessible to assistive technology, and no visible Spanish/full-page source raster is rendered.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #178. Architect validation passed at 2026-05-30T15:14:36Z for effective content head ad8dd614a7ac41e945dfd6e88e78845f46b2fa16; process memory records the current effective head, addressed accessibility and source-fidelity P2s, source-region metadata and screenshots, required checks green, no unresolved Implementation Agent feedback, and no open Architect dispositions.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.

@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "030-manual-chapters-1-2",
-  "mode": "section-registry-with-ch1-cities-for-people",
+  "mode": "section-registry-with-ch1-cities-and-sustainable-mobility",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
@@ -199,13 +199,13 @@
   ],
   "sharedPrereqExpectedOutput": {
     "status": "pass",
-    "pendingSections": 9,
-    "implementedSections": 1,
+    "pendingSections": 8,
+    "implementedSections": 2,
     "skippedSourcePages": [21, 43, 56],
     "skippedDividerPages": [21, 43],
     "omittedBookOnlyPages": [56],
     "sharedSourcePages": [55],
-    "screenshotEvidence": "recorded_for_ch1-cities-for-people",
-    "sourceCropEvidence": "recorded_for_ch1-cities-for-people"
+    "screenshotEvidence": "recorded_for_ch1-cities-for-people_and_ch1-sustainable-mobility",
+    "sourceCropEvidence": "recorded_for_ch1-cities-for-people_and_ch1-sustainable-mobility"
   }
 }

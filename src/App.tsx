@@ -1852,6 +1852,130 @@ function manualGuideSectionSourceLabel(sourcePages: number[]) {
   return `Источник: страницы ${sourcePages[0]}-${sourcePages[sourcePages.length - 1]}`;
 }
 
+function splitManualMobilityStat(text: string) {
+  const [value, unit, ...labelParts] = text.split(" ");
+  return {
+    value: [value, unit].filter(Boolean).join(" "),
+    label: labelParts.join(" ")
+  };
+}
+
+function manualSpriteBackground(assetPath: string) {
+  return { backgroundImage: `url(${assetUrl(assetPath)})` };
+}
+
+function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "mobility-context" }> }) {
+  const interjurisdictional = splitManualMobilityStat(block.trips.interjurisdictionalRu);
+  const internal = splitManualMobilityStat(block.trips.internalRu);
+
+  return (
+    <section
+      className="manual-mobility-context"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <div className="manual-mobility-context-top">
+        <div className="manual-mobility-city">
+          <p>{block.titleRu}</p>
+          <div className="manual-caba-map" aria-label={block.cityLabelRu}>
+            <svg viewBox="0 0 190 150" role="img" aria-hidden="true" focusable="false">
+              <path d="M33 18 L103 8 C135 23 169 44 177 78 C157 89 136 99 116 122 C87 111 61 105 31 116 L19 76 C28 55 21 36 33 18 Z" />
+              <path className="manual-caba-road" d="M28 43 C57 59 84 79 122 80" />
+              <path className="manual-caba-road" d="M54 21 C72 51 77 95 69 125" />
+              <path className="manual-caba-road" d="M31 112 C68 99 111 92 168 95" />
+            </svg>
+            <div className="manual-caba-map-stats">
+              {block.cityStats.map((stat) => (
+                <span key={stat.labelRu}>
+                  <strong>{stat.valueRu}</strong>
+                  {stat.labelRu}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="manual-mobility-trips">
+          <h3>{block.trips.titleRu}</h3>
+          <div className="manual-trip-main">
+            <p>
+              <strong>{interjurisdictional.value}</strong>
+              {interjurisdictional.label}
+            </p>
+            <p>
+              <strong>{internal.value}</strong>
+              {internal.label}
+            </p>
+          </div>
+          <div className="manual-trip-share">
+            <span>{block.trips.residentShareRu}</span>
+            <span>{block.trips.inboundShareRu}</span>
+          </div>
+        </div>
+      </div>
+      <div className="manual-space-comparison">
+        <h3>{block.space.titleRu}</h3>
+        <div className="manual-source-row-scroll">
+          <div className="manual-space-labels">
+            {block.space.modes.map((mode) => (
+              <span key={mode.id}>{mode.labelRu}</span>
+            ))}
+          </div>
+          <img src={assetUrl(block.space.assetPath)} alt={block.space.titleRu} data-visible-spanish={false} loading="lazy" />
+          <div className="manual-mobile-pairs manual-space-mobile-pairs">
+            {block.space.modes.map((mode) => (
+              <span className="manual-mobile-pair manual-space-mobile-pair" data-mobile-pair-id={mode.id} key={mode.id}>
+                <span className="manual-mobile-pair-label">{mode.labelRu}</span>
+                <span className={`manual-mobile-pair-icon manual-space-mobile-icon manual-space-mobile-icon-${mode.id}`} style={manualSpriteBackground(block.space.assetPath)} aria-hidden="true" />
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "vulnerability-ranking" }> }) {
+  return (
+    <section
+      className="manual-vulnerability-ranking"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <p>{block.introRu}</p>
+      <div className="manual-source-row-scroll">
+        <div className="manual-vulnerability-labels">
+          {block.levels.map((level) => (
+            <span key={level.labelRu}>
+              <strong>{level.rankRu}</strong>
+              {level.labelRu}
+            </span>
+          ))}
+        </div>
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-mobile-pairs manual-vulnerability-mobile-pairs">
+          {block.levels.map((level, index) => (
+            <span className="manual-mobile-pair manual-vulnerability-mobile-pair" data-mobile-pair-id={String(index + 1)} key={level.labelRu}>
+              <span className="manual-mobile-pair-label">
+                <strong>{level.rankRu}</strong>
+                {level.labelRu}
+              </span>
+              <span className={`manual-mobile-pair-icon manual-vulnerability-mobile-icon manual-vulnerability-mobile-icon-${index + 1}`} style={manualSpriteBackground(block.assetPath)} aria-hidden="true" />
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -1908,6 +2032,12 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
                 {block.textRu}
               </p>
             );
+          }
+          if (block.kind === "mobility-context") {
+            return <MobilityContextBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "vulnerability-ranking") {
+            return <VulnerabilityRankingBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";

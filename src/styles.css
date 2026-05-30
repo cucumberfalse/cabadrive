@@ -1543,6 +1543,253 @@ small,
   line-height: 1.34;
 }
 
+.manual-mobility-context,
+.manual-vulnerability-ranking {
+  box-sizing: border-box;
+  display: grid;
+  gap: 16px;
+  width: min(760px, 100%);
+  min-width: 0;
+  margin: 2px 0;
+  color: #243633;
+  user-select: text;
+}
+
+.manual-mobility-context {
+  padding: 18px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.manual-mobility-context-top {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.92fr) minmax(260px, 1.08fr);
+  gap: 20px;
+  align-items: start;
+  min-width: 0;
+}
+
+.manual-mobility-city {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-mobility-city > p {
+  margin: 0;
+  color: #353b38;
+  font-size: 1.18rem;
+  font-weight: 850;
+  line-height: 1.04;
+}
+
+.manual-caba-map {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  border-radius: 8px;
+  background:
+    linear-gradient(115deg, transparent 0 28%, rgba(255, 255, 255, 0.8) 28% 31%, transparent 31%),
+    linear-gradient(150deg, #ececea 0 32%, #f7f4ee 32% 36%, #e4e3df 36% 100%);
+}
+
+.manual-caba-map svg {
+  position: absolute;
+  inset: 16px auto auto 15px;
+  width: 78%;
+  max-width: 230px;
+  height: auto;
+  fill: #8bc7da;
+}
+
+.manual-caba-map .manual-caba-road {
+  fill: none;
+  stroke: #fffdf8;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.manual-caba-map-stats {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  width: min(166px, 72%);
+  margin: 68px auto 0;
+  padding: 10px 12px;
+  background: rgba(255, 253, 248, 0.9);
+  color: #263532;
+  font-size: 0.86rem;
+  line-height: 1.18;
+  text-transform: uppercase;
+}
+
+.manual-caba-map-stats strong {
+  display: block;
+  font-size: 1.04rem;
+  font-weight: 900;
+}
+
+.manual-mobility-trips {
+  display: grid;
+  gap: 13px;
+  min-width: 0;
+}
+
+.manual-mobility-trips h3,
+.manual-space-comparison h3,
+.manual-vulnerability-ranking h3 {
+  margin: 0;
+  color: #1b6680;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.manual-mobility-trips h3 {
+  padding: 7px 10px;
+  background: #8bc7da;
+  color: #ffffff;
+}
+
+.manual-trip-main,
+.manual-trip-share {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+}
+
+.manual-trip-main {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #b8d4d8;
+}
+
+.manual-trip-main p,
+.manual-trip-share span,
+.manual-vulnerability-labels span {
+  margin: 0;
+  min-width: 0;
+  color: #3d4846;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.manual-trip-main strong,
+.manual-vulnerability-labels strong {
+  display: block;
+  color: #1b6680;
+  font-size: 1.38rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.manual-space-comparison {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.manual-source-row-scroll {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.manual-space-labels {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1.15fr 2.35fr;
+  gap: 10px;
+  min-width: 560px;
+  color: #1b6680;
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.manual-space-comparison img,
+.manual-vulnerability-ranking img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 560px;
+  border-radius: 0;
+}
+
+.manual-mobile-pairs {
+  display: none;
+}
+
+.manual-mobile-pair {
+  min-width: 0;
+  color: #1b6680;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.manual-mobile-pair-label {
+  display: block;
+  max-width: 100%;
+  color: #1b6680;
+  font-size: 0.7rem;
+  font-weight: 850;
+  line-height: 1.12;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.manual-mobile-pair-label strong {
+  display: block;
+  color: #1b6680;
+  font-size: 1.2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.manual-mobile-pair-icon {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  background-repeat: no-repeat;
+}
+
+.manual-vulnerability-ranking {
+  padding-top: 10px;
+  border-top: 1px solid #d8e6e6;
+}
+
+.manual-vulnerability-ranking p {
+  max-width: 44rem;
+  margin: 0;
+  color: #4d5f58;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.manual-vulnerability-labels {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(82px, 1fr));
+  gap: 9px;
+  min-width: 560px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.manual-vulnerability-labels span {
+  color: #1b6680;
+  font-size: 0.68rem;
+  line-height: 1.1;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .manual-guide-source-artwork img {
   display: block;
   max-width: 100%;
@@ -2852,6 +3099,136 @@ small,
 
   .manual-principle-terms strong {
     font-size: 0.98rem;
+  }
+
+  .manual-mobility-context {
+    padding: 14px;
+  }
+
+  .manual-mobility-context-top {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .manual-mobility-city > p {
+    font-size: 1.08rem;
+  }
+
+  .manual-caba-map {
+    min-height: 166px;
+  }
+
+  .manual-trip-main,
+  .manual-trip-share {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-source-row-scroll {
+    overflow-x: visible;
+  }
+
+  .manual-space-labels,
+  .manual-vulnerability-labels,
+  .manual-space-comparison .manual-source-row-scroll > img,
+  .manual-vulnerability-ranking .manual-source-row-scroll > img {
+    display: none;
+  }
+
+  .manual-mobile-pairs {
+    display: grid;
+    min-width: 0;
+  }
+
+  .manual-space-mobile-pairs,
+  .manual-vulnerability-mobile-pairs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .manual-mobile-pair {
+    display: grid;
+    gap: 5px;
+    justify-items: center;
+    align-content: start;
+  }
+
+  .manual-mobile-pair-label {
+    font-size: 0.66rem;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .manual-mobile-pair-label strong {
+    font-size: 1.12rem;
+  }
+
+  .manual-space-mobile-icon {
+    width: 66px;
+    height: 36px;
+    background-size: 300px auto;
+  }
+
+  .manual-space-mobile-icon-bus {
+    width: 56px;
+    background-position: -19px center;
+  }
+
+  .manual-space-mobile-icon-walking {
+    width: 42px;
+    background-position: -70px center;
+  }
+
+  .manual-space-mobile-icon-bicycle {
+    width: 32px;
+    background-position: -126px center;
+  }
+
+  .manual-space-mobile-icon-car {
+    width: 98px;
+    background-position: -187px center;
+  }
+
+  .manual-vulnerability-mobile-icon {
+    width: 52px;
+    height: 42px;
+    background-size: 300px auto;
+  }
+
+  .manual-vulnerability-mobile-icon-1 {
+    width: 34px;
+    background-position: -10px center;
+  }
+
+  .manual-vulnerability-mobile-icon-2 {
+    width: 30px;
+    background-position: -49px center;
+  }
+
+  .manual-vulnerability-mobile-icon-3 {
+    width: 26px;
+    background-position: -88px center;
+  }
+
+  .manual-vulnerability-mobile-icon-4 {
+    width: 44px;
+    background-position: -112px center;
+  }
+
+  .manual-vulnerability-mobile-icon-5 {
+    width: 42px;
+    background-position: -154px center;
+  }
+
+  .manual-vulnerability-mobile-icon-6 {
+    width: 50px;
+    background-position: -200px center;
+  }
+
+  .manual-space-comparison img,
+  .manual-vulnerability-ranking img {
+    max-width: 100%;
+    min-width: 0;
   }
 
   .intro-risk-heading-row {
