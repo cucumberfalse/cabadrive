@@ -2612,7 +2612,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes Chapter 1 cities section and keeps later sections pending", async ({ page }, testInfo) => {
+test("Manual guide exposes Chapter 1 section pages and keeps later sections pending", async ({ page }, testInfo) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2635,14 +2635,18 @@ test("Manual guide exposes Chapter 1 cities section and keeps later sections pen
   await expect(chapter2.getByText("Обязанности в случае дорожных инцидентов")).toBeVisible();
 
   const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
+  const sustainable = reader.getByTestId("manual-guide-pending-section-ch1-sustainable-mobility");
   const pedestrian = reader.getByTestId("manual-guide-pending-section-ch1-pedestrian-priority");
   const legal = reader.getByTestId("manual-guide-pending-section-ch2-legal-responsibility");
   const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
   await expect(cities).toBeVisible();
-  await expect(cities).toBeEnabled();
-  await expect(cities).toHaveAttribute("data-status", "implemented");
-  await expect(cities).toHaveAttribute("data-source-region-metadata-status", "recorded");
-  await expect(cities).toHaveAttribute("data-visual-evidence-status", "recorded");
+  await expect(sustainable).toBeVisible();
+  for (const sectionButton of [cities, sustainable]) {
+    await expect(sectionButton).toBeEnabled();
+    await expect(sectionButton).toHaveAttribute("data-status", "implemented");
+    await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
+    await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
+  }
 
   for (const sectionButton of [pedestrian, legal, scoring]) {
     await expect(sectionButton).toBeVisible();
@@ -2654,6 +2658,8 @@ test("Manual guide exposes Chapter 1 cities section and keeps later sections pen
 
   await expect(cities).toHaveAttribute("data-route-hash", "#manual-section-ch1-cities-for-people");
   await expect(cities).toHaveAttribute("data-source-pages", "22");
+  await expect(sustainable).toHaveAttribute("data-route-hash", "#manual-section-ch1-sustainable-mobility");
+  await expect(sustainable).toHaveAttribute("data-source-pages", "23");
   await expect(pedestrian).toHaveAttribute("data-source-pages", "24-29");
   await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
   await expect(scoring).toHaveAttribute("data-source-pages", "55");
@@ -2730,6 +2736,80 @@ test("Manual guide exposes Chapter 1 cities section and keeps later sections pen
   await expect(page).toHaveURL(/#manual-section-ch1-cities-for-people$/);
   await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-cities-for-people");
+
+  await sustainable.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-sustainable-mobility$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-sustainable-mobility");
+  await expect(sustainable).toHaveAttribute("aria-current", "page");
+
+  const sustainableSection = content.getByTestId("manual-guide-section");
+  await expect(sustainableSection).toHaveAttribute("data-manual-section-id", "ch1-sustainable-mobility");
+  await expect(sustainableSection.getByRole("heading", { name: "Что такое устойчивая мобильность?" })).toBeVisible();
+  await expect(sustainableSection).toContainText("9 млн поездок в день");
+  await expect(sustainableSection).toContainText("3,5 млн");
+  await expect(sustainableSection).toContainText("межюрисдикционных поездок");
+  await expect(sustainableSection).toContainText("5,5 млн");
+  await expect(sustainableSection).toContainText("внутренних поездок");
+  await expect(sustainableSection).toContainText("Сколько места нужно 50 людям");
+  await expect(sustainableSection).toContainText("Мобильность - это право");
+  await expect(sustainableSection).toContainText("Использование дороги с учетом уязвимости");
+  await expect(sustainableSection).toContainText("Такси / автомобиль");
+  await expect(sustainableSection.locator('[data-block-kind="mobility-context"]')).toBeVisible();
+  await expect(sustainableSection.locator('[data-block-kind="vulnerability-ranking"]')).toBeVisible();
+  await expect(sustainableSection.locator('img[data-visible-spanish="false"]')).toHaveCount(2);
+  await expect(sustainableSection).not.toContainText("Contexto");
+  await expect(sustainableSection).not.toContainText("Ciudad de Buenos Aires");
+  await expect(sustainableSection).not.toContainText("Prioridad peatonal");
+  await expect(sustainableSection.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(sustainableSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const sustainableIssues = await sustainableSection.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"], .manual-space-labels span, .manual-vulnerability-labels span'))) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        const scrollParent = element.closest(".manual-source-row-scroll");
+        if (!scrollParent) problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    return problems;
+  });
+  expect(sustainableIssues).toEqual([]);
+
+  const sustainableSelectedText = await sustainableSection.evaluate((root) => {
+    const selection = window.getSelection();
+    const infographic = root.querySelector('[data-block-kind="mobility-context"]');
+    if (!selection || !infographic) return "";
+    const range = document.createRange();
+    range.selectNodeContents(infographic);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  expect(sustainableSelectedText.toLocaleLowerCase("ru-RU")).toContain("9 млн поездок в день");
+  expect(sustainableSelectedText.toLocaleLowerCase("ru-RU")).toContain("на автомобиле");
+
+  await sustainableSection.screenshot({
+    path: testInfo.outputPath(`ch1-sustainable-mobility-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-sustainable-mobility");
+  await expect(page).toHaveURL(/#manual-section-ch1-sustainable-mobility$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-sustainable-mobility");
 });
 
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {

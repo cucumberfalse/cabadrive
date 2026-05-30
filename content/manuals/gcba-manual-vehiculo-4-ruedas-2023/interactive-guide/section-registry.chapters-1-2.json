@@ -214,12 +214,128 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-023.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "sectionContentModulePath": "src/data/manual-sections/ch1-sustainable-mobility.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "sectionId": "ch1-sustainable-mobility",
+        "sourcePages": [23],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 23,
+            "sourceRegion": {
+              "x": 270,
+              "y": 430,
+              "width": 650,
+              "height": 920,
+              "unit": "page-023.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-sustainable-mobility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 650,
+              "height": 920
+            },
+            "cropSha256": "9125875f0e87b14045426669c28ae03f6a7768f400a6a3ed71dff3307af9958d",
+            "cleanupScope": "reference-only full section source crop; Spanish source text is not rendered in runtime learner content"
+          },
+          {
+            "sourcePage": 23,
+            "sourceRegion": {
+              "x": 280,
+              "y": 430,
+              "width": 620,
+              "height": 420,
+              "unit": "page-023.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-context-infographic-source-crop.jpg",
+            "cropDimensions": {
+              "width": 620,
+              "height": 420
+            },
+            "cropSha256": "960c94c15b55045e80f6cc29115e40552900c2404de88bf6b2f0ab6ea2e5357f",
+            "cleanupScope": "reference-only source crop for city context, trips, and modal-space infographic; runtime uses Russian DOM labels plus non-text source pictogram crop"
+          },
+          {
+            "sourcePage": 23,
+            "sourceRegion": {
+              "x": 270,
+              "y": 1115,
+              "width": 650,
+              "height": 270,
+              "unit": "page-023.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-vulnerability-source-crop.jpg",
+            "cropDimensions": {
+              "width": 650,
+              "height": 270
+            },
+            "cropSha256": "30d4095fabb0113e2227eff295ae5a224ba5bbed42c627ac0b76ffb88952f53e",
+            "cleanupScope": "reference-only source crop for vulnerability strip; runtime uses Russian DOM labels and a source-derived non-text pictogram crop"
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch1-sustainable-mobility.ts",
+            "assetKind": "native-dom-text-and-infographic-data",
+            "width": 760,
+            "height": 620,
+            "sha256": "6475a1391cb8955bea49e33d579dc62abf7137a9587ede19ef54f2b6f8013bde",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-icons-source.jpg",
+            "assetKind": "source-derived-nontext-pictogram-row",
+            "width": 585,
+            "height": 78,
+            "sha256": "1dd898dc1d066c4fe64ae9a7c1e21c82eec9b2c32a5fe340e5e68a0a28816bda",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg",
+            "assetKind": "source-derived-nontext-vulnerability-pictogram-row",
+            "width": 590,
+            "height": 115,
+            "sha256": "016d48984bc5b463de8539e63f7608b0b6d227997d3aca84ee17da2f3edb91c5",
+            "containsText": false,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "mobility-context-infographic-responsive-fit",
+            "status": "pass",
+            "evidence": "Playwright verifies the page-23 context/trips/space infographic stays inside its section container, with fixed source pictogram rows scrolling only inside their own visual frame on mobile."
+          },
+          {
+            "id": "vulnerability-ranking-responsive-fit",
+            "status": "pass",
+            "evidence": "Playwright verifies the vulnerability ranking labels and source-derived icon row stay aligned and do not force document-level horizontal overflow."
+          },
+          {
+            "id": "ordinary-prose-no-horizontal-overflow",
+            "status": "pass",
+            "evidence": "Playwright checks section prose blocks against the viewport on desktop and mobile."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF/page raster, raw page route, visible Spanish, remote asset, broad mask, DOM plate, or fake pending content. Spanish source crops are validation evidence only."
+        },
+        "visualReviewNotes": [
+          "Source page 23 includes a top city-context/trips/modal-space infographic and a bottom vulnerability-order strip; neither visual is omitted.",
+          "Runtime learner content uses native Russian DOM labels for all visible text and local source-derived non-text pictogram crops for the modal-space and vulnerability rows.",
+          "The full Spanish source section crop and focused infographic crops are retained under validation evidence only and are not mounted in the learner view."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch1-pedestrian-priority",
