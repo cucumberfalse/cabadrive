@@ -199,7 +199,7 @@ For each section key:
 | section-requirement-correction | Architect memory correction from source-PDF-page slicing to website-section slicing, carried by this shared correction branch | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push; prior validated head `8a435c84166e4c001220ddc70624abaa8017c96b` is stale after current-head P1 `PRRT_kwDOSX65IM6F1edn` | P1 Scoring source-boundary fix implemented locally; final validation rerun pending after push | yes |
 | shared-section-prereq | Shared correction/prerequisite for section registry/routes/checker/style, no section content | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push | Scoring source-boundary registry/test fix implemented locally; review-thread/final-validation state pending Orchestrator routing | yes |
 | PR-175-page-021-disposition | Existing PR #175 / `page-021` divider-only implementation | `codex/030-page-021` | PR #175, `https://github.com/cucumberfalse/cabadrive/pull/175` | `1e8334676ba26d867194dcc9b884758465837959` | closed unmerged, superseded by corrected section-based contract | no |
-| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` / `Города для людей` with source page `22` evidence and selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual | `codex/030-ch1-cities-for-people` | PR #177, `https://github.com/cucumberfalse/cabadrive/pull/177` | implementation content head `9ec2a7e39d0316caf16a9793f090635d5d5cff9f`; final review-fix handoff head reported after push | ready PR opened; P2 review fix implemented locally; focused checker/content/build/Playwright, full preflight, Docker runtime smoke, and diff hygiene passed | yes |
+| `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` / `Города для людей` with source page `22` evidence and selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual | `codex/030-ch1-cities-for-people` | PR #177, `https://github.com/cucumberfalse/cabadrive/pull/177` | effective content head `499aa8547f7d13b3b9819cbd0d2e8650fa99da06` | P2 review fix implemented and re-reviewed with no findings; focused checker/content/build/Playwright, full preflight, Docker runtime smoke, and diff hygiene passed; AI Review required check remains a merge gate | yes |
 | `ch1-sustainable-mobility` | Implement website section page `¿Qué es la movilidad sustentable?` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-pedestrian-priority` | Implement website section page `Prioridad peatonal` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-bicycle` | Implement website section page `Bicicleta` | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -225,6 +225,11 @@ For each section key:
 - Effective content head: 5763ed702f059046c0ef3541188aa3678ed47304
 - Final-validation evidence-only commit: effective content head 5763ed702f059046c0ef3541188aa3678ed47304; Architect validation evidence is process-memory-only for PR #176.
 - Current-PR-head read-only guard: effective content head 5763ed702f059046c0ef3541188aa3678ed47304; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
+- Effective content head: 499aa8547f7d13b3b9819cbd0d2e8650fa99da06
+- Final-validation evidence-only commit: effective content head 499aa8547f7d13b3b9819cbd0d2e8650fa99da06; Architect validation evidence is process-memory-only for PR #177.
+- Current-PR-head read-only guard: effective content head 499aa8547f7d13b3b9819cbd0d2e8650fa99da06; Orchestrator owns current-head guard, AI Review required-check completion, review-thread state, mergeability, and merge/finalization decision.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 
@@ -280,3 +285,16 @@ For each section key:
 - Architect validation evidence: reviewed current head `5763ed702f059046c0ef3541188aa3678ed47304`, PR diff scope, `spec.md`, `tasks.md`, section registry, and source-fidelity evidence; Orchestrator evidence reports required checks green, Review Agent no findings, old P1 and P2 review threads resolved/outdated, and Implementation verification passed for source-fidelity checker, content tests, build, focused Playwright, and diff hygiene.
 - Open Architect dispositions: none for PR #176 shared correction/prerequisite; future section PRs retain source-boundary, contact/volatility, scoring, and infographic evidence obligations.
 - Architect gaps: none for PR #176 shared correction/prerequisite; full Chapter 1/2 section content implementation remains outside this slice.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T05:12:14Z
+- Architect return count: 0
+- Architect validated effective content head: 499aa8547f7d13b3b9819cbd0d2e8650fa99da06
+- Architect validation evidence: PR #177 validates only `ch1-cities-for-people` / `Ciudades para las personas` / `Города для людей`; it implements one website section page from source page `22`, does not implement raw page `21`, does not create raw page `22` route content, and leaves `ch1-sustainable-mobility` plus all later Chapter 1/2 sections as future work.
+- Architect validation evidence: source-fidelity scope is satisfied for this section slice: source crop and desktop/mobile screenshot evidence are recorded, Russian learner text is selectable DOM text, no visible Spanish/page chrome is intended in learner screenshots, and the `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` visual relationship remains source-faithful without rendering the source page raster.
+- Architect validation evidence: review P2 `PRRT_kwDOSX65IM6F14fY` / `discussion_r3328114426` was fixed by restoring the omitted source sentence about license applicants understanding driving danger and special responsibility; Orchestrator evidence reports the outdated thread resolved and Review Agent no-findings re-review on current head.
+- Architect validation evidence: Implementation Agent reported passing source-fidelity checker, content tests `17/17`, build, focused Playwright `2/2`, diff hygiene, feature-memory check, full preflight, Docker runtime smoke, and regenerated screenshots after the review fix. Orchestrator evidence reports baseline-checks, docker-validation, guard, and osv-scan green; AI Review required check remains a merge gate before PR #177 merge.
+- Open Architect dispositions: none for PR #177 `ch1-cities-for-people`; future section PRs retain section-boundary, source-fidelity, infographic/artwork, and visual evidence obligations.
+- Architect gaps: none for PR #177 `ch1-cities-for-people`; full Chapter 1/2 section completion remains outside this slice.
