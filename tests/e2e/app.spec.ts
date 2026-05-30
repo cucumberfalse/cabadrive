@@ -2936,6 +2936,27 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
       if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
       if (/pages\/page-02[4-9]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
     }
+    for (const label of Array.from(root.querySelectorAll(".manual-restriction-signs strong"))) {
+      const labelRect = label.getBoundingClientRect();
+      const signRect = label.parentElement?.getBoundingClientRect();
+      const text = label.textContent?.trim() ?? "restriction label";
+      const style = window.getComputedStyle(label);
+      if (!signRect) {
+        problems.push(`${text} has no sign container`);
+        continue;
+      }
+      if (
+        labelRect.left < signRect.left - tolerance ||
+        labelRect.right > signRect.right + tolerance ||
+        labelRect.top < signRect.top - tolerance ||
+        labelRect.bottom > signRect.bottom + tolerance
+      ) {
+        problems.push(`${text} overflows its restriction sign`);
+      }
+      if (style.wordBreak === "break-all" || style.overflowWrap === "anywhere") {
+        problems.push(`${text} may split at letter level`);
+      }
+    }
     return problems;
   });
   expect(pedestrianIssues).toEqual([]);

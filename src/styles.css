@@ -2090,10 +2090,10 @@ small,
 
 .manual-restriction-signs {
   display: grid;
-  grid-template-columns: 66px minmax(90px, 1fr) 82px;
-  gap: 8px;
+  grid-template-columns: 50px minmax(88px, 1fr) minmax(90px, 0.9fr);
+  gap: 6px;
   align-items: center;
-  padding: 10px;
+  padding: 8px;
   background: #f7fbfb;
 }
 
@@ -2112,7 +2112,7 @@ small,
 
 .manual-no-parking-sign {
   position: relative;
-  width: 58px;
+  width: 48px;
   border-color: #e1262d;
   border-radius: 999px;
 }
@@ -2144,10 +2144,20 @@ small,
 .manual-authorized-sign strong,
 .manual-control-sign strong {
   color: #262b2a;
-  font-size: 0.68rem;
   font-weight: 950;
   line-height: 1.05;
+  letter-spacing: 0;
   text-transform: uppercase;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.manual-authorized-sign strong {
+  font-size: 0.58rem;
+}
+
+.manual-control-sign strong {
+  font-size: 0.56rem;
 }
 
 .manual-control-sign {
@@ -3731,8 +3741,9 @@ small,
   }
 
   .manual-restriction-signs {
-    grid-template-columns: 60px minmax(84px, 1fr) 74px;
-    gap: 6px;
+    grid-template-columns: 52px minmax(72px, 0.9fr) minmax(96px, 1.1fr);
+    gap: 4px;
+    padding: 8px;
   }
 
   .manual-no-parking-sign {
@@ -3740,9 +3751,20 @@ small,
     min-height: 52px;
   }
 
-  .manual-authorized-sign strong,
+  .manual-authorized-sign {
+    padding-inline: 5px;
+  }
+
+  .manual-control-sign {
+    padding-inline: 4px;
+  }
+
+  .manual-authorized-sign strong {
+    font-size: 0.56rem;
+  }
+
   .manual-control-sign strong {
-    font-size: 0.6rem;
+    font-size: 0.54rem;
   }
 
   .manual-priority-map-layout {
