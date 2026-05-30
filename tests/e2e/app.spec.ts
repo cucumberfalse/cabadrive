@@ -2612,7 +2612,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes Chapter 1 and 2 pending page entries without fake content", async ({ page }) => {
+test("Manual guide exposes Chapter 1 and 2 pending section entries without fake content", async ({ page }) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2634,23 +2634,28 @@ test("Manual guide exposes Chapter 1 and 2 pending page entries without fake con
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
   await expect(chapter2.getByText("Обязанности в случае дорожных инцидентов")).toBeVisible();
 
-  const page21 = reader.getByTestId("manual-guide-pending-manual-page-021");
-  const page24 = reader.getByTestId("manual-guide-pending-manual-page-024");
-  const page43 = reader.getByTestId("manual-guide-pending-manual-page-043");
-  const page56 = reader.getByTestId("manual-guide-pending-manual-page-056");
-  for (const pageButton of [page21, page24, page43, page56]) {
-    await expect(pageButton).toBeVisible();
-    await expect(pageButton).toBeDisabled();
-    await expect(pageButton).toHaveAttribute("data-status", "pending");
-    await expect(pageButton).toHaveAttribute("data-source-region-metadata-status", "pending_until_page_pr");
-    await expect(pageButton).toHaveAttribute("data-visual-evidence-status", "pending_until_page_pr");
+  const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
+  const pedestrian = reader.getByTestId("manual-guide-pending-section-ch1-pedestrian-priority");
+  const legal = reader.getByTestId("manual-guide-pending-section-ch2-legal-responsibility");
+  const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
+  for (const sectionButton of [cities, pedestrian, legal, scoring]) {
+    await expect(sectionButton).toBeVisible();
+    await expect(sectionButton).toBeDisabled();
+    await expect(sectionButton).toHaveAttribute("data-status", "pending");
+    await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "pending_until_section_pr");
+    await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "pending_until_section_pr");
   }
 
-  await expect(page21).toHaveAttribute("data-route-hash", "#manual-page-021");
-  await expect(page21).toHaveAttribute("data-reference-asset", /page-021\.jpg$/);
-  await expect(page56).toHaveAttribute("data-route-hash", "#manual-page-056");
-  await expect(page56).toHaveAttribute("data-reference-asset", /page-056\.jpg$/);
-  await expect(content.getByTestId("manual-guide-page")).toHaveCount(0);
+  await expect(cities).toHaveAttribute("data-route-hash", "#manual-section-ch1-cities-for-people");
+  await expect(cities).toHaveAttribute("data-source-pages", "22");
+  await expect(pedestrian).toHaveAttribute("data-source-pages", "24-29");
+  await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
+  await expect(scoring).toHaveAttribute("data-source-pages", "55");
+  await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
+  await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
+  await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
+  await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
+  await expect(content.getByTestId("manual-guide-section")).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");
 });

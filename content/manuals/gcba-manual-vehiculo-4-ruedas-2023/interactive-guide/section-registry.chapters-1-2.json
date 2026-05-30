@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 2,
+  "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
+  "featureId": "030-manual-chapters-1-2",
+  "registryScope": "chapters-1-2-pending-section-registry",
+  "sourcePageRange": {
+    "start": 21,
+    "end": 56
+  },
+  "skippedSourcePages": [
+    {
+      "sourcePage": 21,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 43,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-2-responsibility",
+      "sourceTitleEs": "CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 56,
+      "reason": "chapter-closing-slogan-only",
+      "parentChapterId": "chapter-2-responsibility",
+      "sourceTitleEs": "Respetar las normas de tránsito implica salvar vidas.",
+      "disposition": "Book-only closing slogan is not Scoring content; no standalone learner page, route, module, placeholder, or implementation PR."
+    }
+  ],
+  "sharedSourcePageOwnership": [
+    {
+      "sourcePage": 55,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-055.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 55 and layout.ru.json page-055 blocks 02-19",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch2-incident-obligations",
+          "ownedRegion": "pre-scoring-region",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-055-block-02",
+            "page-055-block-03",
+            "page-055-block-04",
+            "page-055-block-05",
+            "page-055-block-06",
+            "page-055-block-07"
+          ],
+          "endsBeforeLayoutBlockId": "page-055-block-08",
+          "excludesSectionId": "ch2-scoring"
+        },
+        {
+          "sectionId": "ch2-scoring",
+          "ownedRegion": "scoring-block-and-footnotes",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-055-block-08",
+            "page-055-block-09",
+            "page-055-block-10",
+            "page-055-block-11",
+            "page-055-block-12",
+            "page-055-block-13",
+            "page-055-block-14",
+            "page-055-block-15",
+            "page-055-block-16",
+            "page-055-block-17",
+            "page-055-block-18",
+            "page-055-block-19"
+          ],
+          "startsAtLayoutBlockId": "page-055-block-08",
+          "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
+          "omittedClosingSourcePage": 56
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1-sustainable-mobility",
+      "labelRu": "Глава 1. К устойчивой мобильности",
+      "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
+      "sourcePageRange": {
+        "start": 21,
+        "end": 42
+      },
+      "requiredPrintedPage": 20,
+      "status": "pending",
+      "sectionIds": [
+        "ch1-cities-for-people",
+        "ch1-sustainable-mobility",
+        "ch1-pedestrian-priority",
+        "ch1-bicycle",
+        "ch1-public-transport-system",
+        "ch1-shared-trip"
+      ]
+    },
+    {
+      "id": "chapter-2-responsibility",
+      "labelRu": "Глава 2. Вождение - ответственное действие",
+      "sourceTitleEs": "CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD",
+      "sourcePageRange": {
+        "start": 43,
+        "end": 56
+      },
+      "requiredPrintedPage": 42,
+      "status": "pending",
+      "sectionIds": [
+        "ch2-legal-responsibility",
+        "ch2-required-documents",
+        "ch2-incident-obligations",
+        "ch2-scoring"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "ch1-cities-for-people",
+      "labelRu": "Города для людей",
+      "sourceTitleEs": "Ciudades para las personas",
+      "routeHash": "#manual-section-ch1-cities-for-people",
+      "sourcePageRange": {
+        "start": 22,
+        "end": 22
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 22,
+          "manualManifestPointer": "/pages/21",
+          "layoutManifestPointer": "/pages/21",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-022.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-cities-for-people.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch1-sustainable-mobility",
+      "labelRu": "Что такое устойчивая мобильность?",
+      "sourceTitleEs": "¿Qué es la movilidad sustentable?",
+      "routeHash": "#manual-section-ch1-sustainable-mobility",
+      "sourcePageRange": {
+        "start": 23,
+        "end": 23
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 23,
+          "manualManifestPointer": "/pages/22",
+          "layoutManifestPointer": "/pages/22",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-023.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-sustainable-mobility.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch1-pedestrian-priority",
+      "labelRu": "Пешеходный приоритет",
+      "sourceTitleEs": "Prioridad peatonal",
+      "routeHash": "#manual-section-ch1-pedestrian-priority",
+      "sourcePageRange": {
+        "start": 24,
+        "end": 29
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 24,
+          "manualManifestPointer": "/pages/23",
+          "layoutManifestPointer": "/pages/23",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-024.jpg"
+        },
+        {
+          "sourcePage": 25,
+          "manualManifestPointer": "/pages/24",
+          "layoutManifestPointer": "/pages/24",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-025.jpg"
+        },
+        {
+          "sourcePage": 26,
+          "manualManifestPointer": "/pages/25",
+          "layoutManifestPointer": "/pages/25",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-026.jpg"
+        },
+        {
+          "sourcePage": 27,
+          "manualManifestPointer": "/pages/26",
+          "layoutManifestPointer": "/pages/26",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-027.jpg"
+        },
+        {
+          "sourcePage": 28,
+          "manualManifestPointer": "/pages/27",
+          "layoutManifestPointer": "/pages/27",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-028.jpg"
+        },
+        {
+          "sourcePage": 29,
+          "manualManifestPointer": "/pages/28",
+          "layoutManifestPointer": "/pages/28",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-029.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-pedestrian-priority.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch1-bicycle",
+      "labelRu": "Велосипед",
+      "sourceTitleEs": "Bicicleta",
+      "routeHash": "#manual-section-ch1-bicycle",
+      "sourcePageRange": {
+        "start": 30,
+        "end": 38
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 30,
+          "manualManifestPointer": "/pages/29",
+          "layoutManifestPointer": "/pages/29",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-030.jpg"
+        },
+        {
+          "sourcePage": 31,
+          "manualManifestPointer": "/pages/30",
+          "layoutManifestPointer": "/pages/30",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-031.jpg"
+        },
+        {
+          "sourcePage": 32,
+          "manualManifestPointer": "/pages/31",
+          "layoutManifestPointer": "/pages/31",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-032.jpg"
+        },
+        {
+          "sourcePage": 33,
+          "manualManifestPointer": "/pages/32",
+          "layoutManifestPointer": "/pages/32",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-033.jpg"
+        },
+        {
+          "sourcePage": 34,
+          "manualManifestPointer": "/pages/33",
+          "layoutManifestPointer": "/pages/33",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-034.jpg"
+        },
+        {
+          "sourcePage": 35,
+          "manualManifestPointer": "/pages/34",
+          "layoutManifestPointer": "/pages/34",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-035.jpg"
+        },
+        {
+          "sourcePage": 36,
+          "manualManifestPointer": "/pages/35",
+          "layoutManifestPointer": "/pages/35",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-036.jpg"
+        },
+        {
+          "sourcePage": 37,
+          "manualManifestPointer": "/pages/36",
+          "layoutManifestPointer": "/pages/36",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-037.jpg"
+        },
+        {
+          "sourcePage": 38,
+          "manualManifestPointer": "/pages/37",
+          "layoutManifestPointer": "/pages/37",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-038.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-bicycle.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch1-public-transport-system",
+      "labelRu": "Система общественного транспорта",
+      "sourceTitleEs": "Sistema de transporte público",
+      "routeHash": "#manual-section-ch1-public-transport-system",
+      "sourcePageRange": {
+        "start": 39,
+        "end": 40
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 39,
+          "manualManifestPointer": "/pages/38",
+          "layoutManifestPointer": "/pages/38",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-039.jpg"
+        },
+        {
+          "sourcePage": 40,
+          "manualManifestPointer": "/pages/39",
+          "layoutManifestPointer": "/pages/39",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-040.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-public-transport-system.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch1-shared-trip",
+      "labelRu": "Совместная поездка",
+      "sourceTitleEs": "Viaje compartido",
+      "routeHash": "#manual-section-ch1-shared-trip",
+      "sourcePageRange": {
+        "start": 41,
+        "end": 42
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 41,
+          "manualManifestPointer": "/pages/40",
+          "layoutManifestPointer": "/pages/40",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-041.jpg"
+        },
+        {
+          "sourcePage": 42,
+          "manualManifestPointer": "/pages/41",
+          "layoutManifestPointer": "/pages/41",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-042.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sectionContentModulePath": "src/data/manual-sections/ch1-shared-trip.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch2-legal-responsibility",
+      "labelRu": "Юридическая ответственность",
+      "sourceTitleEs": "Responsabilidades legales",
+      "routeHash": "#manual-section-ch2-legal-responsibility",
+      "sourcePageRange": {
+        "start": 44,
+        "end": 45
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 44,
+          "manualManifestPointer": "/pages/43",
+          "layoutManifestPointer": "/pages/43",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-044.jpg"
+        },
+        {
+          "sourcePage": 45,
+          "manualManifestPointer": "/pages/44",
+          "layoutManifestPointer": "/pages/44",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-045.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-2-responsibility",
+      "sectionContentModulePath": "src/data/manual-sections/ch2-legal-responsibility.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch2-required-documents",
+      "labelRu": "Обязательные документы",
+      "sourceTitleEs": "Documentación obligatoria",
+      "routeHash": "#manual-section-ch2-required-documents",
+      "sourcePageRange": {
+        "start": 46,
+        "end": 50
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 46,
+          "manualManifestPointer": "/pages/45",
+          "layoutManifestPointer": "/pages/45",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-046.jpg"
+        },
+        {
+          "sourcePage": 47,
+          "manualManifestPointer": "/pages/46",
+          "layoutManifestPointer": "/pages/46",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-047.jpg"
+        },
+        {
+          "sourcePage": 48,
+          "manualManifestPointer": "/pages/47",
+          "layoutManifestPointer": "/pages/47",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-048.jpg"
+        },
+        {
+          "sourcePage": 49,
+          "manualManifestPointer": "/pages/48",
+          "layoutManifestPointer": "/pages/48",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-049.jpg"
+        },
+        {
+          "sourcePage": 50,
+          "manualManifestPointer": "/pages/49",
+          "layoutManifestPointer": "/pages/49",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-050.jpg"
+        }
+      ],
+      "status": "pending",
+      "parentChapterId": "chapter-2-responsibility",
+      "sectionContentModulePath": "src/data/manual-sections/ch2-required-documents.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch2-incident-obligations",
+      "labelRu": "Обязанности в случае дорожных инцидентов",
+      "sourceTitleEs": "Obligaciones en caso de incidentes viales",
+      "routeHash": "#manual-section-ch2-incident-obligations",
+      "sourcePageRange": {
+        "start": 51,
+        "end": 55
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 51,
+          "manualManifestPointer": "/pages/50",
+          "layoutManifestPointer": "/pages/50",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-051.jpg"
+        },
+        {
+          "sourcePage": 52,
+          "manualManifestPointer": "/pages/51",
+          "layoutManifestPointer": "/pages/51",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-052.jpg"
+        },
+        {
+          "sourcePage": 53,
+          "manualManifestPointer": "/pages/52",
+          "layoutManifestPointer": "/pages/52",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-053.jpg"
+        },
+        {
+          "sourcePage": 54,
+          "manualManifestPointer": "/pages/53",
+          "layoutManifestPointer": "/pages/53",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-054.jpg"
+        },
+        {
+          "sourcePage": 55,
+          "manualManifestPointer": "/pages/54",
+          "layoutManifestPointer": "/pages/54",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-055.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 55,
+        "ownedRegion": "pre-scoring-region",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-055-block-02",
+          "page-055-block-03",
+          "page-055-block-04",
+          "page-055-block-05",
+          "page-055-block-06",
+          "page-055-block-07"
+        ],
+        "endsBeforeLayoutBlockId": "page-055-block-08",
+        "excludesSectionId": "ch2-scoring",
+        "boundaryEvidence": "Scoring starts at page-055-block-08 on source PDF page 55; incident obligations owns only the NGO/contact material before that block."
+      },
+      "status": "pending",
+      "parentChapterId": "chapter-2-responsibility",
+      "sectionContentModulePath": "src/data/manual-sections/ch2-incident-obligations.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    },
+    {
+      "id": "ch2-scoring",
+      "labelRu": "Система баллов Scoring",
+      "sourceTitleEs": "Sistema de puntos Scoring",
+      "routeHash": "#manual-section-ch2-scoring",
+      "sourcePageRange": {
+        "start": 55,
+        "end": 55
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 55,
+          "manualManifestPointer": "/pages/54",
+          "layoutManifestPointer": "/pages/54",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-055.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 55,
+        "ownedRegion": "scoring-block-and-footnotes",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-055-block-08",
+          "page-055-block-09",
+          "page-055-block-10",
+          "page-055-block-11",
+          "page-055-block-12",
+          "page-055-block-13",
+          "page-055-block-14",
+          "page-055-block-15",
+          "page-055-block-16",
+          "page-055-block-17",
+          "page-055-block-18",
+          "page-055-block-19"
+        ],
+        "startsAtLayoutBlockId": "page-055-block-08",
+        "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
+        "omittedClosingSourcePage": 56,
+        "boundaryEvidence": "manual.ru.json source page 55 contains the Scoring rules and footnotes; source page 56 contains only the closing slogan and is skipped as book-only closing material."
+      },
+      "status": "pending",
+      "parentChapterId": "chapter-2-responsibility",
+      "sectionContentModulePath": "src/data/manual-sections/ch2-scoring.ts",
+      "sourceRegionMetadataStatus": "pending_until_section_pr",
+      "visualEvidenceStatus": "pending_until_section_pr",
+      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+    }
+  ]
+}
