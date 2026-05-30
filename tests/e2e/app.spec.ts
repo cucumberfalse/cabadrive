@@ -2641,14 +2641,14 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
-  for (const sectionButton of [cities, sustainable]) {
+  for (const sectionButton of [cities, sustainable, pedestrian]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
     await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
     await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
   }
 
-  for (const sectionButton of [pedestrian, legal, scoring]) {
+  for (const sectionButton of [legal, scoring]) {
     await expect(sectionButton).toBeVisible();
     await expect(sectionButton).toBeDisabled();
     await expect(sectionButton).toHaveAttribute("data-status", "pending");
@@ -2660,6 +2660,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(cities).toHaveAttribute("data-source-pages", "22");
   await expect(sustainable).toHaveAttribute("data-route-hash", "#manual-section-ch1-sustainable-mobility");
   await expect(sustainable).toHaveAttribute("data-source-pages", "23");
+  await expect(pedestrian).toHaveAttribute("data-route-hash", "#manual-section-ch1-pedestrian-priority");
   await expect(pedestrian).toHaveAttribute("data-source-pages", "24-29");
   await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
   await expect(scoring).toHaveAttribute("data-source-pages", "55");
@@ -2867,6 +2868,131 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(page).toHaveURL(/#manual-section-ch1-sustainable-mobility$/);
   await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-sustainable-mobility");
+
+  await pedestrian.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-pedestrian-priority$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-pedestrian-priority");
+  await expect(pedestrian).toHaveAttribute("aria-current", "page");
+
+  const pedestrianSection = content.getByTestId("manual-guide-section");
+  await expect(pedestrianSection).toHaveAttribute("data-manual-section-id", "ch1-pedestrian-priority");
+  await expect(pedestrianSection.getByRole("heading", { name: "Пешеходный приоритет" })).toBeVisible();
+  await expect(pedestrianSection).toContainText("каждый человек является пешеходом");
+  await expect(pedestrianSection).toContainText("Av. Julio Argentino Roca");
+  await expect(pedestrianSection).toContainText("Фазы удара при наезде");
+  await expect(pedestrianSection).toContainText("40 км/ч");
+  await expect(pedestrianSection).toContainText("мигает оранжевым");
+  await expect(pedestrianSection).toContainText("электрических самокатов");
+  await expect(pedestrianSection).toContainText("Максимальная скорость");
+  await expect(pedestrianSection).toContainText("10 км/ч");
+  await expect(pedestrianSection).toContainText("ближе 10 метров");
+  await expect(pedestrianSection).toContainText("Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes");
+  await expect(pedestrianSection).toContainText("11:00 до 16:00");
+  await expect(pedestrianSection.locator(".manual-authorized-time")).toHaveText("11:00-16:00");
+  await expect(pedestrianSection).toContainText("с 7 до 21 часов");
+  await expect(pedestrianSection).toContainText("19:00 до 02:00");
+  await expect(pedestrianSection).toContainText("телефон 147");
+  await expect(pedestrianSection).toContainText("Общественный транспорт");
+  await expect(pedestrianSection).toContainText("5% может уменьшить количество погибших");
+  await expect(pedestrianSection).toContainText("30%");
+  await expect(pedestrianSection.locator('[data-block-kind="pedestrian-photo-comparison"]')).toBeVisible();
+  await expect(pedestrianSection.locator('[data-block-kind="impact-diagram"]')).toBeVisible();
+  await expect(pedestrianSection.locator('[data-block-kind="pedestrian-infrastructure"]')).toHaveCount(5);
+  await expect(pedestrianSection.locator('[data-card-id="area-infrastructure"] .manual-infrastructure-visual')).toHaveCount(0);
+  await expect(pedestrianSection.locator('[data-block-kind="priority-area-map"]')).toBeVisible();
+  await expect(pedestrianSection.locator('[data-block-kind="transport-mode-icons"]')).toBeVisible();
+  await expect(pedestrianSection.locator('img[data-visible-spanish="false"]')).toHaveCount(11);
+  await expect(pedestrianSection).not.toContainText("Prioridad peatonal");
+  await expect(pedestrianSection).not.toContainText("ANTES");
+  await expect(pedestrianSection).not.toContainText("DESPUÉS");
+  await expect(pedestrianSection).not.toContainText("Cruce de peatones");
+  await expect(pedestrianSection).not.toContainText("Restricción vehículos particulares");
+  await expect(pedestrianSection.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(pedestrianSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const pedestrianIssues = await pedestrianSection.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(
+      root.querySelectorAll(
+        '[data-testid="manual-guide-section-block"], .manual-infrastructure-card, .manual-infrastructure-copy p, .manual-priority-map-layout, .manual-transport-icon-labels span, .manual-impact-phases li'
+      )
+    )) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.getAttribute("data-card-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    for (const image of Array.from(root.querySelectorAll("img"))) {
+      const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const src = image.getAttribute("src") ?? "";
+      if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
+      if (/pages\/page-02[4-9]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
+    }
+    for (const visual of Array.from(root.querySelectorAll(".manual-infrastructure-visual"))) {
+      if (!visual.firstElementChild) problems.push("empty pedestrian infrastructure visual slot");
+    }
+    for (const label of Array.from(root.querySelectorAll('.manual-restriction-signs strong, .manual-restriction-signs span:not([aria-hidden="true"])'))) {
+      const labelRect = label.getBoundingClientRect();
+      const signRect = label.parentElement?.getBoundingClientRect();
+      const text = label.textContent?.trim() ?? "restriction label";
+      const style = window.getComputedStyle(label);
+      if (!signRect) {
+        problems.push(`${text} has no sign container`);
+        continue;
+      }
+      if (
+        labelRect.left < signRect.left - tolerance ||
+        labelRect.right > signRect.right + tolerance ||
+        labelRect.top < signRect.top - tolerance ||
+        labelRect.bottom > signRect.bottom + tolerance
+      ) {
+        problems.push(`${text} overflows its restriction sign`);
+      }
+      if (style.wordBreak === "break-all" || style.overflowWrap === "anywhere") {
+        problems.push(`${text} may split at letter level`);
+      }
+    }
+    return problems;
+  });
+  expect(pedestrianIssues).toEqual([]);
+
+  const pedestrianSelectedText = await pedestrianSection.evaluate((root) => {
+    const selection = window.getSelection();
+    if (!selection) return "";
+    const range = document.createRange();
+    range.selectNodeContents(root);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  const pedestrianSelectedTextLower = pedestrianSelectedText.toLocaleLowerCase("ru-RU");
+  expect(pedestrianSelectedTextLower).toContain("до");
+  expect(pedestrianSelectedTextLower).toContain("после");
+  expect(pedestrianSelectedTextLower).toContain("контакт");
+  expect(pedestrianSelectedTextLower).toContain("электронный контроль");
+  expect(pedestrianSelectedTextLower).toContain("пешком");
+
+  await pedestrianSection.screenshot({
+    path: testInfo.outputPath(`ch1-pedestrian-priority-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-pedestrian-priority");
+  await expect(page).toHaveURL(/#manual-section-ch1-pedestrian-priority$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-pedestrian-priority");
 });
 
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {

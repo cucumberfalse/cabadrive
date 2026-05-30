@@ -15,16 +15,18 @@ const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
 const stylesPath = "src/styles.css";
 const ch1CitiesModulePath = "src/data/manual-sections/ch1-cities-for-people.ts";
 const ch1SustainableModulePath = "src/data/manual-sections/ch1-sustainable-mobility.ts";
+const ch1PedestrianPriorityModulePath = "src/data/manual-sections/ch1-pedestrian-priority.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility"]);
+const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority"]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
 const ch1CitiesModuleSource = readFileSync(ch1CitiesModulePath, "utf8");
 const ch1SustainableModuleSource = readFileSync(ch1SustainableModulePath, "utf8");
+const ch1PedestrianPriorityModuleSource = readFileSync(ch1PedestrianPriorityModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 
 function sourcePagesForRange(start, end) {
@@ -287,6 +289,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-source-artwork",
     "manual-mobility-context",
     "manual-vulnerability-order",
+    "manual-pedestrian-priority-visuals",
     "manual-legal-detail",
     "introductionDocumentStyleGuide.tokens"
   ]) {
@@ -295,9 +298,10 @@ test("Manual guide schema prepares section-local implementation and reusable sty
 
   assert.match(manualGuideSource, /import \{ ch1CitiesForPeopleSection \}/);
   assert.match(manualGuideSource, /import \{ ch1SustainableMobilitySection \}/);
+  assert.match(manualGuideSource, /import \{ ch1PedestrianPrioritySection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
@@ -474,13 +478,172 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   }
 });
 
+test("ch1 pedestrian priority section covers source pages 24-29 visuals and no unrelated section content", () => {
+  const section = registry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
+  assert.ok(section, "ch1-pedestrian-priority registry entry exists");
+  assert.equal(section.status, "implemented");
+  assert.equal(section.sourceRegionMetadataStatus, "recorded");
+  assert.equal(section.visualEvidenceStatus, "recorded");
+  assert.equal(section.implementationEvidence.checkerResult, "pass");
+  assert.deepEqual(section.implementationEvidence.sourcePages, [24, 25, 26, 27, 28, 29]);
+  assert.equal(existsSync(section.sectionContentModulePath), true);
+  assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
+  assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
+
+  for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
+    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
+    assert.ok([24, 25, 26, 27, 28, 29].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+  }
+
+  const expectedAssets = new Map([
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
+      "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
+      "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
+      "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
+      "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+      "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+      "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+      "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+      "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+      "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+      "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
+      "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3"
+    ]
+  ]);
+
+  for (const [assetPath, expectedSha] of expectedAssets) {
+    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    assert.ok(asset, `${assetPath} local asset metadata exists`);
+    assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
+    assert.equal(asset.visibleSpanish, false, `${assetPath} records no visible Spanish`);
+    assert.equal(asset.sha256, expectedSha, `${assetPath} registry hash is stable`);
+    assert.equal(sha256File(assetPath), expectedSha, `${assetPath} bytes match registry hash`);
+  }
+
+  for (const requiredText of [
+    "Пешеходный приоритет",
+    "каждый человек является пешеходом",
+    "Av. Julio Argentino Roca",
+    "Фазы удара при наезде",
+    "40 км/ч",
+    "RACE и GOODYEAR",
+    "Переходить нужно по пешеходному переходу",
+    "мигает оранжевым",
+    "выставляйте ее на проезжую часть",
+    "электрических самокатов",
+    "Улица с пешеходным приоритетом",
+    "Максимальная скорость",
+    "10 км/ч",
+    "20 км/ч",
+    "Пешеходные указатели",
+    "Школьные маршруты",
+    "ближе 10 метров",
+    "Пешеходные вмешательства",
+    "Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes",
+    "рабочие дни с 11:00 до 16:00",
+    "с 7 до 21 часов",
+    "19:00 до 02:00",
+    "24 часа",
+    "телефон 147",
+    "Свободное движение в зоне",
+    "Общественный транспорт",
+    "Зона 30",
+    "5% может уменьшить количество погибших",
+    "30%",
+    "Ramón Lista, Nogoyá, Juan E. Martínez и Irigoyen"
+  ]) {
+    assert.ok(ch1PedestrianPriorityModuleSource.includes(requiredText), `missing pedestrian-priority learner text: ${requiredText}`);
+  }
+
+  for (const requiredKind of [
+    "pedestrian-photo-comparison",
+    "impact-diagram",
+    "pedestrian-infrastructure",
+    "priority-area-map",
+    "transport-mode-icons"
+  ]) {
+    assert.match(ch1PedestrianPriorityModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+  }
+
+  assert.match(appSource, /function PedestrianPhotoComparisonBlockView/);
+  assert.match(appSource, /function ImpactDiagramBlockView/);
+  assert.match(appSource, /function PedestrianInfrastructureBlockView/);
+  assert.match(appSource, /function PriorityAreaMapBlockView/);
+  assert.match(appSource, /function TransportModeIconsBlockView/);
+  assert.match(stylesSource, /\.manual-pedestrian-comparison[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-impact-diagram[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-pedestrian-infrastructure[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-priority-map[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-transport-icons[\s\S]*?user-select:\s*text/);
+  assert.match(ch1PedestrianPriorityModuleSource, /before-after-photos-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /impact-body-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /priority-area-map-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /circulation-icons-source\.jpg/);
+  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-02[4-9]\.jpg/u);
+  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /https?:\/\//u);
+  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /Bicicleta|Sistema de transporte público|Viaje compartido|Юридическая ответственность|Обязательные документы/u);
+
+  const orderedBlockIds = [
+    "pedestrian-priority-intro",
+    "julio-roca-before-after",
+    "road-coexistence",
+    "impact-phases",
+    "pedestrian-crossing-rules",
+    "driver-duties-list",
+    "pedestrian-street-types",
+    "school-and-wayfinding",
+    "pedestrian-interventions",
+    "priority-areas-map",
+    "priority-area-restrictions",
+    "priority-area-circulation",
+    "zone-30"
+  ];
+  let previousBlockIndex = -1;
+  for (const blockId of orderedBlockIds) {
+    const blockIndex = ch1PedestrianPriorityModuleSource.indexOf(`id: "${blockId}"`);
+    assert.ok(blockIndex > previousBlockIndex, `${blockId} follows source pages 24-29 order`);
+    previousBlockIndex = blockIndex;
+  }
+});
+
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
   assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuideSectionContentView"/);
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });
 
-test("Manual guide source-fidelity checker passes the section registry with ch1 cities implemented", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
@@ -488,18 +651,18 @@ test("Manual guide source-fidelity checker passes the section registry with ch1 
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 8);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 2);
+  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 7);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 3);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingSections, 8);
-  assert.equal(result.implementedSections, 2);
+  assert.equal(result.pendingSections, 7);
+  assert.equal(result.implementedSections, 3);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_and_ch1-sustainable-mobility");
+  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_and_ch1-pedestrian-priority");
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy section references", () => {

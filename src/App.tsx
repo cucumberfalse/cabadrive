@@ -1976,6 +1976,207 @@ function VulnerabilityRankingBlockView({ block }: { block: Extract<ManualGuideSe
   );
 }
 
+function PedestrianPhotoComparisonBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-photo-comparison" }> }) {
+  return (
+    <figure
+      className="manual-pedestrian-comparison"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-comparison-frame">
+        <img src={assetUrl(block.assetPath)} alt={block.captionRu} data-visible-spanish={false} loading="lazy" />
+        <div className="manual-comparison-labels manual-comparison-labels-bottom">
+          <span>{block.beforeLabelRu}</span>
+          <span>{block.afterLabelRu}</span>
+        </div>
+      </div>
+      <figcaption>{block.captionRu}</figcaption>
+    </figure>
+  );
+}
+
+function ImpactDiagramBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "impact-diagram" }> }) {
+  return (
+    <section
+      className="manual-impact-diagram"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-impact-layout">
+        <div className="manual-impact-art" aria-hidden="true">
+          <img className="manual-impact-body" src={assetUrl(block.bodyAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+          <div className="manual-impact-target-wrap">
+            <img className="manual-impact-target" src={assetUrl(block.targetAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+          </div>
+          <img className="manual-impact-car" src={assetUrl(block.carAssetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        </div>
+        <ol className="manual-impact-phases">
+          {block.phases.map((phase) => (
+            <li key={phase.id} data-phase-color={phase.color}>
+              <span className="manual-impact-dot" aria-hidden="true" />
+              <p>
+                <strong>{phase.labelRu}</strong>
+                {phase.textRu}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <p className="manual-impact-footnote">{block.footnoteRu}</p>
+    </section>
+  );
+}
+
+function PedestrianInfrastructureVisual({
+  card
+}: {
+  card: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }>["cards"][number];
+}) {
+  if (card.assetPath) {
+    return <img src={assetUrl(card.assetPath)} alt={card.altRu ?? ""} data-visible-spanish={false} loading="lazy" />;
+  }
+
+  if (card.visualKind === "wayfinding-sign") {
+    return (
+      <div className="manual-wayfinding-sign" aria-label={card.titleRu}>
+        <span>12 мин</span>
+        <strong>Метро</strong>
+        <span>Автобус</span>
+        <span>Пешком</span>
+      </div>
+    );
+  }
+
+  if (card.visualKind === "school-road-marking") {
+    return (
+      <div className="manual-school-road-marking" aria-label={card.titleRu}>
+        <span>ПОСАДКА</span>
+        <span>ВЫСАДКА</span>
+      </div>
+    );
+  }
+
+  if (card.visualKind === "restriction-signs") {
+    return (
+      <div className="manual-restriction-signs" aria-label={card.titleRu}>
+        <div className="manual-no-parking-sign">
+          <span aria-hidden="true">E</span>
+        </div>
+        <div className="manual-authorized-sign">
+          <strong>Будни</strong>
+          <span className="manual-authorized-time">11:00-16:00</span>
+          <span>только с разрешением</span>
+        </div>
+        <div className="manual-control-sign">
+          <span aria-hidden="true" />
+          <strong>Электронный контроль</strong>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }> }) {
+  return (
+    <section className="manual-pedestrian-infrastructure" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <h3>{block.titleRu}</h3>
+      <div className="manual-infrastructure-card-grid">
+        {block.cards.map((card) => {
+          const hasVisual = Boolean(card.assetPath || card.visualKind);
+
+          return (
+            <article
+              className={`manual-infrastructure-card${hasVisual ? "" : " manual-infrastructure-card-text-only"}`}
+              key={card.id}
+              data-card-id={card.id}
+              data-source-page={card.sourcePage}
+              data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
+            >
+              {hasVisual && (
+                <div className="manual-infrastructure-visual">
+                  <PedestrianInfrastructureVisual card={card} />
+                </div>
+              )}
+              <div className="manual-infrastructure-copy">
+                <h4>{card.titleRu}</h4>
+                {card.details.map((detail) => (
+                  <p key={detail.labelRu}>
+                    <strong>{detail.labelRu}:</strong> {detail.textRu}
+                  </p>
+                ))}
+                {card.noteRu && <p className="manual-infrastructure-note">{card.noteRu}</p>}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "priority-area-map" }> }) {
+  return (
+    <figure
+      className="manual-priority-map"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <p className="manual-priority-map-areas">{block.areasRu}</p>
+      <div className="manual-priority-map-layout">
+        <img src={assetUrl(block.assetPath)} alt={block.titleRu} data-visible-spanish={false} loading="lazy" />
+        <dl>
+          {block.legend.map((entry) => (
+            <div key={entry.id}>
+              <dt>
+                <span className={`manual-map-key manual-map-key-${entry.color}`} aria-hidden="true" />
+                {entry.labelRu}
+              </dt>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <figcaption>{block.captionRu}</figcaption>
+    </figure>
+  );
+}
+
+function TransportModeIconsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "transport-mode-icons" }> }) {
+  return (
+    <section
+      className="manual-transport-icons"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-transport-icons-frame">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-transport-icon-labels">
+          {block.modes.map((mode) => (
+            <span key={mode.id}>{mode.labelRu}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -2038,6 +2239,21 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "vulnerability-ranking") {
             return <VulnerabilityRankingBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "pedestrian-photo-comparison") {
+            return <PedestrianPhotoComparisonBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "impact-diagram") {
+            return <ImpactDiagramBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "pedestrian-infrastructure") {
+            return <PedestrianInfrastructureBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "priority-area-map") {
+            return <PriorityAreaMapBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "transport-mode-icons") {
+            return <TransportModeIconsBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";
