@@ -463,3 +463,23 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T15:00:41Z
+
+Analyst validated effective content head: 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #178 `ch1-sustainable-mobility` only. This rerun validates exactly the `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` source-`Índice` website section from source page `23`, preserves the corrected one-section-one-PR model, keeps divider-only source PDF page `21` skipped, avoids page-based route/module/placeholder delivery, and leaves the remaining Chapter 1/2 sections for future one-section PRs.
+
+Gaps, if any: none for PR #178 customer-intent scope. Infographic/source-fidelity quality is acceptable for this slice after fixes: the top 50-person comparison uses the correct source crop, vulnerability labels/icons remain paired, desktop labels remain accessible to assistive tech, and mobile has no clipping or letter-level label split.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #178. Architect validation passed at 2026-05-30T14:59:00Z for effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; process memory records source-fidelity checker pass, content tests 18/18, TypeScript pass, build pass, focused Playwright 2/2, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on the effective head, desktop assistive-tech label coverage, explicit 50-person crop path/hash evidence, and mobile label/pictogram alignment.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.

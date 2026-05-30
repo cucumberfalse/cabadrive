@@ -329,6 +329,11 @@ For each section key:
 - Limit escalation: none.
 - Stale validation notice: final Architect and Analyst validation for PR #178 effective content head `470333e95494438f86e128fe61858339d077367f` is stale after current-head AI Review P2 comment `3328864017` required a runtime accessibility fix; final validation must rerun on the post-fix effective content head before completion, finalization, or merge.
 - Stale validation notice: final Architect and Analyst validation for PR #178 remains stale after current-head AI Review P2 comment `3328876636` required a source-fidelity asset fix for the 50-person space comparison; final validation must rerun on the post-fix effective content head before completion, finalization, or merge.
+- Effective content head: 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7
+- Final-validation evidence-only commit: effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; Architect validation evidence is process-memory-only for PR #178.
+- Current-PR-head read-only guard: effective content head 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
 
 ### Cleanup Evidence
 
@@ -345,8 +350,8 @@ For each section key:
 - Architect disposition: addressed; PR #177 AI Review P2 thread `PRRT_kwDOSX65IM6F2v9j` / `discussion_r3328424446` is valid for current head `b1117ddee0e71a72ce4d8416c39b406161cf3eb2`, and Implementation Agent must restore the `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` visual to the source-crop position before rerunning validation.
 - No unresolved Implementation Agent feedback for the local `ch1-sustainable-mobility` implementation at the time of focused local verification.
 - Architect disposition: addressed; PR #178 Review Agent P2 thread `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` was fixed by pairing each mobile label with its source-derived pictogram, Review Agent reported no actionable findings on current head, and no additional Architect task remains.
-- PR #178 current-head AI Review P2 comment `3328864017` is expected to be safe for Orchestrator/Review routing to resolve after this assistive-tech fix is pushed and current-head checks complete.
-- PR #178 current-head AI Review P2 comment `3328876636` is expected to be safe for Orchestrator/Review routing to resolve after this 50-person crop fix is pushed and current-head checks complete.
+- Architect disposition: addressed; PR #178 current-head AI Review P2 comment `3328864017` was fixed by keeping desktop space-comparison labels exposed to assistive technology, Review Agent reported no findings on effective head `526ff7ec4bb2fc179b78eae30e72e56b83ca93b7`, required checks are green, and no additional Architect task remains.
+- Architect disposition: addressed; PR #178 current-head AI Review P2 comment `3328876636` was fixed by replacing the ambiguous/wrong space crop with `space-comparison-50-people-source.jpg`, adding registry/test hash evidence that it differs from the vulnerability strip, Review Agent reported no findings on effective head `526ff7ec4bb2fc179b78eae30e72e56b83ca93b7`, required checks are green, and no additional Architect task remains.
 
 ## Architect Dispositions
 
@@ -357,6 +362,8 @@ For each section key:
 - Architect disposition: addressed; current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510` requires Implementation Agent to move `ch2-scoring` registry/evidence from source PDF page `56` to the Scoring block on source PDF page `55`, keep `ch2-incident-obligations` page-55 ownership region before Scoring only, and treat page `56` as non-Scoring closing slogan material.
 - Architect disposition: addressed; for PR #177 `ch1-cities-for-people`, source crop/page layout controls over `manual.ru.json` extraction order for the `FLUIDEZ / SEGURIDAD` principles visual. Implementation Agent must move the selectable `ПЛАВНОСТЬ / БЕЗОПАСНОСТЬ` block back immediately after `safe-arrival` and before `solidarity-law-respect`, and keep the crash-likelihood blue statement after `stronger-road-user-care` and before `nine-million-trips`, splitting the statement from the principles block if needed.
 - Architect disposition: addressed; PR #178 `ch1-sustainable-mobility` mobile infographic P2 `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` is resolved by paired label/pictogram items on mobile, source-derived non-text crops with Russian DOM labels, no visible Spanish, and no additional Architect task.
+- Architect disposition: addressed; PR #178 accessibility P2 `3328864017` is resolved by exposing desktop space-comparison labels to assistive technology while preserving the visual strip and mobile paired label/pictogram layout.
+- Architect disposition: addressed; PR #178 source-fidelity P2 `3328876636` is resolved by using the explicit page-23 50-person modal-space crop `space-comparison-50-people-source.jpg`, keeping the vulnerability strip separate, and guarding the asset path/hash in tests.
 
 ## Historical Final Architect Validation Notes
 
@@ -441,5 +448,20 @@ For each section key:
 - Architect validation evidence: source-fidelity and infographic gates are satisfied for this section slice: source crops, runtime source-derived non-text pictogram crops, desktop/mobile screenshots, source-region metadata, selectable Russian DOM labels, no visible Spanish, and no full-page source raster are recorded in the registry and process memory.
 - Architect validation evidence: mobile responsive review fix `PRRT_kwDOSX65IM6F39RF` / `discussion_r3328826568` is addressed by paired label/pictogram items for the 50-person comparison and vulnerability ranking; inspected mobile screenshot evidence shows labels remain associated with icons without clipping, horizontal scrolling, or letter-level word splitting.
 - Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on current head, and PR #178 review-thread disposition complete.
+- Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-30T14:59:00Z
+- Architect return count: 0
+- Architect validated effective content head: 526ff7ec4bb2fc179b78eae30e72e56b83ca93b7
+- Architect validation evidence: PR #178 validates only `ch1-sustainable-mobility` / `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?`; it implements one website section page from source page `23`, preserves the section-based one-PR contract, skips divider-only page `21`, and leaves later Chapter 1/2 sections as future section PR work.
+- Architect validation evidence: previous PR #178 Architect validation for `470333e95494438f86e128fe61858339d077367f` is superseded by this validation because accessibility P2 `3328864017` and source-fidelity P2 `3328876636` changed runtime/source-fidelity content after that head.
+- Architect validation evidence: accessibility P2 `3328864017` is addressed: desktop space-comparison labels remain exposed to assistive technology, mobile paired labels remain readable and associated with pictograms, and the focused e2e guard covers hidden label regressions.
+- Architect validation evidence: source-fidelity P2 `3328876636` is addressed: the runtime 50-person modal-space comparison uses `space-comparison-50-people-source.jpg`, the vulnerability strip remains a separate asset, registry metadata records the page-23 crop path/hash, and content tests guard the path/hash separation.
+- Architect validation evidence: source-fidelity and infographic gates remain satisfied: source crops, runtime source-derived non-text pictogram crops, desktop/mobile screenshots, source-region metadata, selectable Russian DOM labels, no visible Spanish, and no full-page source raster are recorded in the registry and process memory.
+- Architect validation evidence: Orchestrator and Implementation evidence reports source-fidelity checker pass, content tests `18/18`, TypeScript pass, build pass, focused Playwright `2/2`, full preflight pass, Docker smoke pass, diff hygiene pass, feature-memory check pass, required checks green, Review Agent no findings on effective head, and PR #178 review feedback disposed.
 - Open Architect dispositions: none for PR #178 `ch1-sustainable-mobility`; no unresolved Implementation Agent feedback remains.
 - Architect gaps: none for PR #178 `ch1-sustainable-mobility`; remaining Chapter 1/2 sections stay future section PR work.
