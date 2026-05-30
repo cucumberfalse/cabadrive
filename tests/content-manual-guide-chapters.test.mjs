@@ -16,10 +16,11 @@ const stylesPath = "src/styles.css";
 const ch1CitiesModulePath = "src/data/manual-sections/ch1-cities-for-people.ts";
 const ch1SustainableModulePath = "src/data/manual-sections/ch1-sustainable-mobility.ts";
 const ch1PedestrianPriorityModulePath = "src/data/manual-sections/ch1-pedestrian-priority.ts";
+const ch1BicycleModulePath = "src/data/manual-sections/ch1-bicycle.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority"]);
+const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
@@ -27,6 +28,7 @@ const stylesSource = readFileSync(stylesPath, "utf8");
 const ch1CitiesModuleSource = readFileSync(ch1CitiesModulePath, "utf8");
 const ch1SustainableModuleSource = readFileSync(ch1SustainableModulePath, "utf8");
 const ch1PedestrianPriorityModuleSource = readFileSync(ch1PedestrianPriorityModulePath, "utf8");
+const ch1BicycleModuleSource = readFileSync(ch1BicycleModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 
 function sourcePagesForRange(start, end) {
@@ -122,6 +124,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch1-cities-for-people.ts"), "export const ch1CitiesForPeopleSection = { sectionId: \"ch1-cities-for-people\" };\n");
   writeTempFile(join(moduleRoot, "ch1-sustainable-mobility.ts"), "export const ch1SustainableMobilitySection = { sectionId: \"ch1-sustainable-mobility\" };\n");
   writeTempFile(join(moduleRoot, "ch1-pedestrian-priority.ts"), moduleSource);
+  writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), "export const ch1BicycleSection = { sectionId: \"ch1-bicycle\", blocks: [] };\n");
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   return { implementedRegistryPath, moduleRoot };
 }
@@ -290,6 +293,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-mobility-context",
     "manual-vulnerability-order",
     "manual-pedestrian-priority-visuals",
+    "manual-bicycle-visuals",
     "manual-legal-detail",
     "introductionDocumentStyleGuide.tokens"
   ]) {
@@ -299,9 +303,10 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch1CitiesForPeopleSection \}/);
   assert.match(manualGuideSource, /import \{ ch1SustainableMobilitySection \}/);
   assert.match(manualGuideSource, /import \{ ch1PedestrianPrioritySection \}/);
+  assert.match(manualGuideSource, /import \{ ch1BicycleSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
@@ -637,6 +642,214 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   }
 });
 
+test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated section content", () => {
+  const section = registry.sections.find((entry) => entry.id === "ch1-bicycle");
+  assert.ok(section, "ch1-bicycle registry entry exists");
+  assert.equal(section.status, "implemented");
+  assert.equal(section.sourceRegionMetadataStatus, "recorded");
+  assert.equal(section.visualEvidenceStatus, "recorded");
+  assert.equal(section.implementationEvidence.checkerResult, "pass");
+  assert.deepEqual(section.implementationEvidence.sourcePages, [30, 31, 32, 33, 34, 35, 36, 37, 38]);
+  assert.equal(existsSync(section.sectionContentModulePath), true);
+  assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
+  assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
+
+  for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
+    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
+    assert.ok([30, 31, 32, 33, 34, 35, 36, 37, 38].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+  }
+
+  const expectedAssets = new Map([
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
+      "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
+      "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
+      "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
+      "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+      "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+      "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
+      "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
+      "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
+      "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
+      "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
+      "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
+      "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781"
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
+      "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962"
+    ]
+  ]);
+
+  for (const [assetPath, expectedSha] of expectedAssets) {
+    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    assert.ok(asset, `${assetPath} local asset metadata exists`);
+    assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
+    assert.equal(asset.visibleSpanish, false, `${assetPath} records no visible Spanish`);
+    assert.equal(asset.sha256, expectedSha, `${assetPath} registry hash is stable`);
+    assert.equal(sha256File(assetPath), expectedSha, `${assetPath} bytes match registry hash`);
+  }
+
+  for (const requiredText of [
+    "Велосипед",
+    "Общественный транспорт, ходьба, велосипед и электрический самокат",
+    "Цепь должна быть натянута",
+    "Шины должны быть",
+    "Тормоза",
+    "сертифицированным",
+    "Правильно",
+    "Слишком низко",
+    "Сдвинут назад",
+    "Светоотражатели",
+    "Знаки и правила",
+    "Полная остановка",
+    "Максимальная скорость 30 км/ч",
+    "Пассажира можно перевозить",
+    "дополнительного сиденья, подножек и ручки",
+    "4,20 м",
+    "Наушники",
+    "По тротуару могут ехать только дети младше 12 лет",
+    "старше 18 лет",
+    "1500 ватт",
+    "1,5 м",
+    "Обгон выполняется слева",
+    "Повороты крупного транспорта",
+    "Поворот налево",
+    "Остановка",
+    "Поворот направо",
+    "пересадочные центры, университеты, школы и больницы",
+    "Защищенная велодорожка",
+    "Закон 4619/13",
+    "BA Ecobici by Tembici",
+    "24 часа в сутки 365 дней",
+    "500 ватт",
+    "25 км/ч",
+    "16 лет",
+    "Av. 9 de Julio",
+    "нельзя перевозить пассажира"
+  ]) {
+    assert.ok(ch1BicycleModuleSource.includes(requiredText), `missing bicycle learner text: ${requiredText}`);
+  }
+
+  for (const requiredKind of [
+    "bicycle-benefits",
+    "bicycle-helmet-fit",
+    "bicycle-gear",
+    "bicycle-signage",
+    "bicycle-posture",
+    "bicycle-distance",
+    "bicycle-hand-signals",
+    "pedestrian-infrastructure",
+    "source-artwork"
+  ]) {
+    assert.match(ch1BicycleModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+  }
+
+  assert.match(appSource, /function BicycleBenefitsBlockView/);
+  assert.match(appSource, /function BicycleHelmetFitBlockView/);
+  assert.match(appSource, /function BicycleGearBlockView/);
+  assert.match(appSource, /function BicycleSignageBlockView/);
+  assert.match(appSource, /function BicyclePostureBlockView/);
+  assert.match(appSource, /function BicycleDistanceBlockView/);
+  assert.match(appSource, /function BicycleHandSignalsBlockView/);
+  assert.match(stylesSource, /\.manual-bicycle-benefits[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-helmet[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-gear[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-signage[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-posture[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-distance[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-bicycle-signals[\s\S]*?user-select:\s*text/);
+
+  for (const assetFilename of [
+    "bicycle-change-cyclists-source.jpg",
+    "helmet-fit-source.jpg",
+    "cyclist-gear-source.jpg",
+    "posture-cyclist-source.jpg",
+    "safe-distance-source.jpg",
+    "unsafe-distance-source.jpg",
+    "offtracking-bus-source.jpg",
+    "hand-signals-source.jpg",
+    "bicisenda-photo-source.jpg",
+    "ciclovia-photo-source.jpg",
+    "bicycle-parking-source.jpg",
+    "ecobici-source.jpg",
+    "scooter-source.jpg"
+  ]) {
+    assert.match(ch1BicycleModuleSource, new RegExp(assetFilename.replaceAll(".", "\\.")), `${assetFilename} is used by the bicycle module`);
+  }
+
+  assert.doesNotMatch(ch1BicycleModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-03[0-8]\.jpg/u);
+  assert.doesNotMatch(ch1BicycleModuleSource, /https?:\/\//u);
+  assert.doesNotMatch(ch1BicycleModuleSource, /Система общественного транспорта|Совместная поездка|Юридическая ответственность|Обязательные документы/u);
+
+  const orderedBlockIds = [
+    "bicycle-intro-growth",
+    "bicycle-new-mobility-style",
+    "bicycle-benefits-visual",
+    "bicycle-safety-check",
+    "helmet-importance",
+    "helmet-fit",
+    "protection-gear",
+    "traffic-rules-signs",
+    "passenger-cargo-rules",
+    "natural-capacity",
+    "attention-distraction",
+    "body-posture",
+    "age-and-paths",
+    "coexistence-duty",
+    "safe-distance",
+    "overtaking-rules",
+    "offtracking-risk",
+    "driver-recommendations",
+    "hand-signals",
+    "lane-network",
+    "bike-lane-infrastructure",
+    "parking-and-ecobici",
+    "electric-scooter-photo",
+    "electric-scooter-requirements",
+    "electric-scooter-prohibitions"
+  ];
+  let previousBlockIndex = -1;
+  for (const blockId of orderedBlockIds) {
+    const blockIndex = ch1BicycleModuleSource.indexOf(`id: "${blockId}"`);
+    assert.ok(blockIndex > previousBlockIndex, `${blockId} follows source pages 30-38 order`);
+    previousBlockIndex = blockIndex;
+  }
+});
+
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
   assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuideSectionContentView"/);
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
@@ -651,18 +864,18 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 7);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 3);
+  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 6);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 4);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingSections, 7);
-  assert.equal(result.implementedSections, 3);
+  assert.equal(result.pendingSections, 6);
+  assert.equal(result.implementedSections, 4);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_and_ch1-pedestrian-priority");
+  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_ch1-pedestrian-priority_and_ch1-bicycle");
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy section references", () => {
@@ -760,8 +973,8 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.pendingSections, 7);
-    assert.equal(output.implementedSections, 3);
+    assert.equal(output.pendingSections, 6);
+    assert.equal(output.implementedSections, 4);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

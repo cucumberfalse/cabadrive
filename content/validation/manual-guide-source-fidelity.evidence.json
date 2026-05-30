@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "030-manual-chapters-1-2",
-  "mode": "section-registry-with-ch1-cities-sustainable-mobility-and-pedestrian-priority",
+  "mode": "section-registry-with-ch1-cities-sustainable-mobility-pedestrian-priority-and-bicycle",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
@@ -257,8 +257,8 @@
   ],
   "sharedPrereqExpectedOutput": {
     "status": "pass",
-    "pendingSections": 7,
-    "implementedSections": 3,
+    "pendingSections": 6,
+    "implementedSections": 4,
     "skippedSourcePages": [
       21,
       43,
@@ -274,7 +274,7 @@
     "sharedSourcePages": [
       55
     ],
-    "screenshotEvidence": "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_and_ch1-pedestrian-priority",
-    "sourceCropEvidence": "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_and_ch1-pedestrian-priority"
+    "screenshotEvidence": "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_ch1-pedestrian-priority_and_ch1-bicycle",
+    "sourceCropEvidence": "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_ch1-pedestrian-priority_and_ch1-bicycle"
   }
 }

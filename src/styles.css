@@ -2293,6 +2293,299 @@ small,
   text-transform: uppercase;
 }
 
+.manual-bicycle-benefits,
+.manual-bicycle-helmet,
+.manual-bicycle-gear,
+.manual-bicycle-signage,
+.manual-bicycle-posture,
+.manual-bicycle-distance,
+.manual-bicycle-signals {
+  box-sizing: border-box;
+  display: grid;
+  gap: 14px;
+  width: min(760px, 100%);
+  min-width: 0;
+  margin: 2px 0;
+  color: #263532;
+  user-select: text;
+}
+
+.manual-bicycle-benefits h3,
+.manual-bicycle-helmet h3,
+.manual-bicycle-gear h3,
+.manual-bicycle-signage h3,
+.manual-bicycle-posture h3,
+.manual-bicycle-distance h3,
+.manual-bicycle-signals h3 {
+  margin: 0;
+  color: #2b3536;
+  font-size: 1.28rem;
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.manual-bicycle-benefits,
+.manual-bicycle-helmet,
+.manual-bicycle-gear,
+.manual-bicycle-posture,
+.manual-bicycle-distance,
+.manual-bicycle-signals {
+  padding: 16px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.manual-bicycle-benefit-layout,
+.manual-bicycle-gear-layout,
+.manual-bicycle-posture-layout {
+  display: grid;
+  grid-template-columns: minmax(170px, 260px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-width: 0;
+}
+
+.manual-bicycle-benefit-layout img,
+.manual-bicycle-gear-layout img,
+.manual-bicycle-posture-layout img,
+.manual-bicycle-helmet-frame img,
+.manual-bicycle-distance-image img,
+.manual-bicycle-signals-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.manual-bicycle-benefit-cards,
+.manual-bicycle-gear-list,
+.manual-bicycle-posture-labels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-bicycle-benefit-cards article,
+.manual-bicycle-gear-list article,
+.manual-bicycle-posture-labels article,
+.manual-bicycle-distance-grid article,
+.manual-bicycle-signal-labels article {
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #eef3f2;
+}
+
+.manual-bicycle-benefit-cards h4,
+.manual-bicycle-gear-list h4,
+.manual-bicycle-posture-labels h4,
+.manual-bicycle-distance-grid h4,
+.manual-bicycle-signal-labels h4 {
+  margin: 0 0 5px;
+  color: #1b6680;
+  font-size: 0.88rem;
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.manual-bicycle-benefit-cards p,
+.manual-bicycle-gear-list p,
+.manual-bicycle-posture-labels p,
+.manual-bicycle-distance-grid p,
+.manual-bicycle-signal-labels p,
+.manual-bicycle-helmet p {
+  margin: 0;
+  color: #3d4846;
+  font-size: 0.95rem;
+  line-height: 1.38;
+}
+
+.manual-bicycle-helmet-frame {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.manual-bicycle-helmet-labels,
+.manual-bicycle-signal-labels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-bicycle-helmet-labels span {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 0;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #eef3f2;
+  color: #3d4846;
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.manual-bicycle-helmet-labels span[data-status="correct"] {
+  background: #e2f0cf;
+  color: #3e6d2e;
+}
+
+.manual-bicycle-helmet-labels span[data-status="wrong"] {
+  background: #f7dfdf;
+  color: #9e2f2f;
+}
+
+.manual-bicycle-sign-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-bicycle-sign-grid article {
+  display: grid;
+  grid-template-rows: 58px minmax(0, 1fr);
+  gap: 8px;
+  justify-items: center;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+  text-align: center;
+}
+
+.manual-bicycle-sign-marker {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  width: 58px;
+  height: 58px;
+  border: 5px solid currentColor;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #e1262d;
+  font-size: 0.9rem;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="blue"] .manual-bicycle-sign-marker {
+  border-color: #e1262d;
+  background: #1687b7;
+  color: #ffffff;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="green"] .manual-bicycle-sign-marker {
+  width: 84px;
+  border-color: #1f8f5b;
+  border-radius: 4px;
+  background: #1f8f5b;
+  color: #ffffff;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="yellow"] .manual-bicycle-sign-marker {
+  width: 54px;
+  height: 54px;
+  transform: rotate(45deg);
+  border-color: #222;
+  border-radius: 4px;
+  background: #f4cf27;
+  color: #222;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="yellow"] .manual-bicycle-sign-marker {
+  font-size: 0.76rem;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="red"] .manual-bicycle-sign-marker {
+  background: #e1262d;
+  color: #ffffff;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="triangle"] .manual-bicycle-sign-marker {
+  width: 0;
+  height: 0;
+  border-width: 0 32px 56px;
+  border-style: solid;
+  border-color: transparent transparent #e1262d;
+  border-radius: 0;
+  background: transparent;
+  color: transparent;
+}
+
+.manual-bicycle-sign-grid article[data-sign-kind="text"] .manual-bicycle-sign-marker {
+  width: 92px;
+  border-width: 2px;
+  border-color: #2d3332;
+  border-radius: 4px;
+  color: #2d3332;
+  font-size: 0.72rem;
+}
+
+.manual-bicycle-sign-grid p {
+  margin: 0;
+  color: #3d4846;
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.manual-bicycle-distance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  min-width: 0;
+}
+
+.manual-bicycle-distance-grid article {
+  display: grid;
+  gap: 9px;
+}
+
+.manual-bicycle-distance-grid article[data-distance-status="safe"] {
+  background: #edf5e8;
+}
+
+.manual-bicycle-distance-grid article[data-distance-status="unsafe"] {
+  background: #f8eeee;
+}
+
+.manual-bicycle-distance-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #e4e1d9;
+}
+
+.manual-bicycle-distance-image strong {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: #f4dc28;
+  color: #222;
+  font-size: 0.86rem;
+  font-weight: 950;
+}
+
+.manual-bicycle-signals-frame {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+}
+
+.manual-bicycle-signals-frame img {
+  border-bottom: 2px solid #1b6680;
+}
+
 .pandemia-prototype {
   --pandemia-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   margin-top: 14px;
@@ -3797,6 +4090,75 @@ small,
   .manual-transport-icon-labels {
     gap: 8px;
     font-size: 0.66rem;
+  }
+
+  .manual-bicycle-benefits,
+  .manual-bicycle-helmet,
+  .manual-bicycle-gear,
+  .manual-bicycle-posture,
+  .manual-bicycle-distance,
+  .manual-bicycle-signals {
+    padding: 14px;
+  }
+
+  .manual-bicycle-benefits h3,
+  .manual-bicycle-helmet h3,
+  .manual-bicycle-gear h3,
+  .manual-bicycle-signage h3,
+  .manual-bicycle-posture h3,
+  .manual-bicycle-distance h3,
+  .manual-bicycle-signals h3 {
+    font-size: 1.12rem;
+  }
+
+  .manual-bicycle-benefit-layout,
+  .manual-bicycle-gear-layout,
+  .manual-bicycle-posture-layout,
+  .manual-bicycle-distance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-bicycle-benefit-layout img,
+  .manual-bicycle-gear-layout img,
+  .manual-bicycle-posture-layout img {
+    width: min(260px, 100%);
+  }
+
+  .manual-bicycle-benefit-cards,
+  .manual-bicycle-gear-list,
+  .manual-bicycle-posture-labels {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-bicycle-sign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .manual-bicycle-sign-grid article {
+    grid-template-rows: 52px minmax(0, 1fr);
+    padding: 8px;
+  }
+
+  .manual-bicycle-sign-marker {
+    width: 52px;
+    height: 52px;
+    font-size: 0.78rem;
+  }
+
+  .manual-bicycle-sign-grid article[data-sign-kind="green"] .manual-bicycle-sign-marker,
+  .manual-bicycle-sign-grid article[data-sign-kind="text"] .manual-bicycle-sign-marker {
+    width: 76px;
+  }
+
+  .manual-bicycle-sign-grid p {
+    font-size: 0.72rem;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .manual-bicycle-helmet-labels,
+  .manual-bicycle-signal-labels {
+    grid-template-columns: 1fr;
   }
 
   .intro-risk-heading-row {

@@ -741,12 +741,319 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-038.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "sectionContentModulePath": "src/data/manual-sections/ch1-bicycle.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "sectionId": "ch1-bicycle",
+        "sourcePages": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 30,
+            "sourceRegion": {
+              "x": 330,
+              "y": 470,
+              "width": 540,
+              "height": 850
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
+            "cropDimensions": {
+              "width": 540,
+              "height": 850
+            },
+            "cropSha256": "b7274e2fb860908fd07e0590f34ca794a1e103b9438bd1bd0272ecf0c406fdc6",
+            "cleanupScope": "validation-source-only; runtime uses source-derived cyclist crop plus Russian DOM benefit labels"
+          },
+          {
+            "sourcePage": 31,
+            "sourceRegion": {
+              "x": 300,
+              "y": 430,
+              "width": 600,
+              "height": 850
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-031-protection-source-crop.jpg",
+            "cropDimensions": {
+              "width": 600,
+              "height": 850
+            },
+            "cropSha256": "07b62cbc7ec280fa08bf431e5d27d04fbfbd6300549d888a1a301561f09194d3",
+            "cleanupScope": "validation-source-only; runtime uses non-text helmet and cyclist gear crops with Russian DOM labels"
+          },
+          {
+            "sourcePage": 32,
+            "sourceRegion": {
+              "x": 330,
+              "y": 480,
+              "width": 550,
+              "height": 800
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-032-rules-signs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 550,
+              "height": 800
+            },
+            "cropSha256": "69aa1877c33c4dd8a6ddf887b6efb019bfff7fbf53ce5f568d72af37fb6bb961",
+            "cleanupScope": "validation-source-only; runtime sign faces use source-like CSS geometry and Russian DOM labels to avoid visible Spanish learner text"
+          },
+          {
+            "sourcePage": 33,
+            "sourceRegion": {
+              "x": 300,
+              "y": 430,
+              "width": 600,
+              "height": 860
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-033-posture-age-source-crop.jpg",
+            "cropDimensions": {
+              "width": 600,
+              "height": 860
+            },
+            "cropSha256": "4f6f7c0942388bf331e52011659f5c124a7dfa30e183c26171308687326c40d4",
+            "cleanupScope": "validation-source-only; runtime uses source-derived cyclist crop and Russian DOM posture labels"
+          },
+          {
+            "sourcePage": 34,
+            "sourceRegion": {
+              "x": 330,
+              "y": 470,
+              "width": 550,
+              "height": 780
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-034-distance-source-crop.jpg",
+            "cropDimensions": {
+              "width": 550,
+              "height": 780
+            },
+            "cropSha256": "84a4ebb9312afb73e52949f01ad0403bc872dc5e541e8b22e5c6e6b92371df4e",
+            "cleanupScope": "validation-source-only; runtime uses source-derived car/bicycle crops and Russian 1,5 m DOM badge"
+          },
+          {
+            "sourcePage": 35,
+            "sourceRegion": {
+              "x": 330,
+              "y": 470,
+              "width": 560,
+              "height": 900
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-035-hand-signals-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 900
+            },
+            "cropSha256": "0eb8f0753904f31c978a875ad658c7515ee591d0520fd1d08ad16eabad0d6dad",
+            "cleanupScope": "validation-source-only; runtime uses bus/off-tracking crop and gesture crop with Russian DOM labels"
+          },
+          {
+            "sourcePage": 36,
+            "sourceRegion": {
+              "x": 330,
+              "y": 470,
+              "width": 560,
+              "height": 800
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-036-lanes-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 800
+            },
+            "cropSha256": "4b6363b4004ecbfed153f07f28b2436e9823d21ec2e3a4ba6cf6f0e61dfa93ab",
+            "cleanupScope": "validation-source-only; runtime uses non-text bicisenda/ciclovia photo crops"
+          },
+          {
+            "sourcePage": 37,
+            "sourceRegion": {
+              "x": 330,
+              "y": 470,
+              "width": 560,
+              "height": 700
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-037-parking-ecobici-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 700
+            },
+            "cropSha256": "5bbe1aac1df3f136905a1fa52b597d3910edd5a87ce7403cd59808fb68886767",
+            "cleanupScope": "validation-source-only; runtime uses non-text parking and Ecobici photo crops with Russian DOM text"
+          },
+          {
+            "sourcePage": 38,
+            "sourceRegion": {
+              "x": 330,
+              "y": 480,
+              "width": 560,
+              "height": 650
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-bicycle/page-038-scooter-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 650
+            },
+            "cropSha256": "351a2dd5461d3d5d8dec3c3e301a3448751e8dbd5fbd4c536570d65542a6d688",
+            "cleanupScope": "validation-source-only; runtime uses source-derived scooter photo and Russian DOM requirement/prohibition lists"
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
+            "assetKind": "source-derived-nontext-bicycle-benefit-cyclists",
+            "width": 250,
+            "height": 130,
+            "sha256": "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
+            "assetKind": "source-derived-nontext-helmet-fit-heads",
+            "width": 470,
+            "height": 160,
+            "sha256": "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
+            "assetKind": "source-derived-nontext-cyclist-gear-art",
+            "width": 140,
+            "height": 230,
+            "sha256": "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
+            "assetKind": "source-derived-nontext-posture-cyclist",
+            "width": 150,
+            "height": 210,
+            "sha256": "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+            "assetKind": "source-derived-nontext-safe-distance-road-art",
+            "width": 135,
+            "height": 105,
+            "sha256": "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+            "assetKind": "source-derived-nontext-unsafe-distance-road-art",
+            "width": 170,
+            "height": 105,
+            "sha256": "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
+            "assetKind": "source-derived-nontext-offtracking-bus-cyclist",
+            "width": 255,
+            "height": 260,
+            "sha256": "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
+            "assetKind": "source-derived-nontext-hand-signal-cyclists",
+            "width": 500,
+            "height": 115,
+            "sha256": "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
+            "assetKind": "source-derived-nontext-bicisenda-photo",
+            "width": 255,
+            "height": 165,
+            "sha256": "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
+            "assetKind": "source-derived-nontext-ciclovia-photo",
+            "width": 255,
+            "height": 105,
+            "sha256": "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
+            "assetKind": "source-derived-nontext-bicycle-parking-photo",
+            "width": 255,
+            "height": 150,
+            "sha256": "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
+            "assetKind": "source-derived-nontext-ecobici-photo",
+            "width": 255,
+            "height": 130,
+            "sha256": "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
+            "assetKind": "source-derived-nontext-scooter-photo",
+            "width": 255,
+            "height": 145,
+            "sha256": "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962",
+            "containsText": false,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "desktop-bicycle-section-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright checks manual guide blocks, bicycle sign labels, helmet labels, hand-signal labels, lane cards, and scooter lists against the desktop viewport."
+          },
+          {
+            "id": "mobile-bicycle-section-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright checks the same bicycle section blocks against the mobile viewport with no horizontal overflow or text clipping."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF/page raster, raw page route, remote asset, broad mask, DOM backing plate over source artwork, visible Spanish learner text, or fake pending content."
+        },
+        "visualReviewNotes": [
+          "Source pages 30-38 were visually inspected from local page renders before crop creation.",
+          "Page 30 benefit labels are Russian DOM cards around the source-derived cyclist crop.",
+          "Page 31 helmet and gear visuals use source-derived non-text crops plus selectable Russian labels.",
+          "Page 32 source sign sheet is retained as validation evidence; runtime signs use source-like native geometry and Russian DOM labels to avoid rasterized Spanish captions.",
+          "Pages 33-35 body position, distance, off-tracking, and hand-signal visuals use source-derived non-text crops with Russian DOM labels and warnings.",
+          "Pages 36-38 lane, parking, Ecobici, and scooter photos are local source crops with Russian DOM definitions, legal details, and numeric thresholds."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch1-public-transport-system",

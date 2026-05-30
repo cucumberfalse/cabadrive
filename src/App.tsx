@@ -2177,6 +2177,188 @@ function TransportModeIconsBlockView({ block }: { block: Extract<ManualGuideSect
   );
 }
 
+function BicycleBenefitsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-benefits" }> }) {
+  return (
+    <section
+      className="manual-bicycle-benefits"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-benefit-layout">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-bicycle-benefit-cards">
+          {block.benefits.map((benefit) => (
+            <article key={benefit.id} data-benefit-id={benefit.id}>
+              <h4>{benefit.titleRu}</h4>
+              <p>{benefit.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BicycleHelmetFitBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-helmet-fit" }> }) {
+  return (
+    <section
+      className="manual-bicycle-helmet"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <p>{block.guidanceRu}</p>
+      <div className="manual-bicycle-helmet-frame">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-bicycle-helmet-labels">
+          {block.positions.map((position) => (
+            <span key={position.id} data-status={position.status}>
+              {position.labelRu}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BicycleGearBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-gear" }> }) {
+  return (
+    <section
+      className="manual-bicycle-gear"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-gear-layout">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-bicycle-gear-list">
+          {block.items.map((item) => (
+            <article key={item.id}>
+              <h4>{item.titleRu}</h4>
+              <p>{item.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-signage" }> }) {
+  return (
+    <section
+      className="manual-bicycle-signage"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-sign-grid">
+        {block.signs.map((sign) => (
+          <article key={sign.id} data-sign-kind={sign.visualKind}>
+            <span className="manual-bicycle-sign-marker" aria-hidden="true">
+              {sign.markerRu}
+            </span>
+            <p>{sign.labelRu}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BicyclePostureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-posture" }> }) {
+  return (
+    <section
+      className="manual-bicycle-posture"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-posture-layout">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-bicycle-posture-labels">
+          {block.labels.map((label) => (
+            <article key={label.id}>
+              <h4>{label.titleRu}</h4>
+              <p>{label.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-distance" }> }) {
+  return (
+    <section
+      className="manual-bicycle-distance"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-distance-grid">
+        {block.examples.map((example) => (
+          <article key={example.id} data-distance-status={example.status}>
+            <div className="manual-bicycle-distance-image">
+              <img src={assetUrl(example.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+              {example.badgeRu && <strong>{example.badgeRu}</strong>}
+            </div>
+            <h4>{example.titleRu}</h4>
+            <p>{example.textRu}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BicycleHandSignalsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "bicycle-hand-signals" }> }) {
+  return (
+    <section
+      className="manual-bicycle-signals"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-bicycle-signals-frame">
+        <img src={assetUrl(block.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+        <div className="manual-bicycle-signal-labels">
+          {block.signals.map((signal) => (
+            <article key={signal.id}>
+              <h4>{signal.titleRu}</h4>
+              <p>{signal.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -2254,6 +2436,27 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "transport-mode-icons") {
             return <TransportModeIconsBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-benefits") {
+            return <BicycleBenefitsBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-helmet-fit") {
+            return <BicycleHelmetFitBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-gear") {
+            return <BicycleGearBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-signage") {
+            return <BicycleSignageBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-posture") {
+            return <BicyclePostureBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-distance") {
+            return <BicycleDistanceBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "bicycle-hand-signals") {
+            return <BicycleHandSignalsBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";

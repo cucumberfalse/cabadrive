@@ -2637,18 +2637,22 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
   const sustainable = reader.getByTestId("manual-guide-pending-section-ch1-sustainable-mobility");
   const pedestrian = reader.getByTestId("manual-guide-pending-section-ch1-pedestrian-priority");
+  const bicycle = reader.getByTestId("manual-guide-pending-section-ch1-bicycle");
+  const publicTransport = reader.getByTestId("manual-guide-pending-section-ch1-public-transport-system");
+  const sharedTrip = reader.getByTestId("manual-guide-pending-section-ch1-shared-trip");
   const legal = reader.getByTestId("manual-guide-pending-section-ch2-legal-responsibility");
   const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
-  for (const sectionButton of [cities, sustainable, pedestrian]) {
+  await expect(bicycle).toBeVisible();
+  for (const sectionButton of [cities, sustainable, pedestrian, bicycle]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
     await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
     await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
   }
 
-  for (const sectionButton of [legal, scoring]) {
+  for (const sectionButton of [publicTransport, sharedTrip, legal, scoring]) {
     await expect(sectionButton).toBeVisible();
     await expect(sectionButton).toBeDisabled();
     await expect(sectionButton).toHaveAttribute("data-status", "pending");
@@ -2662,6 +2666,12 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(sustainable).toHaveAttribute("data-source-pages", "23");
   await expect(pedestrian).toHaveAttribute("data-route-hash", "#manual-section-ch1-pedestrian-priority");
   await expect(pedestrian).toHaveAttribute("data-source-pages", "24-29");
+  await expect(bicycle).toHaveAttribute("data-route-hash", "#manual-section-ch1-bicycle");
+  await expect(bicycle).toHaveAttribute("data-source-pages", "30-38");
+  await expect(publicTransport).toHaveAttribute("data-route-hash", "#manual-section-ch1-public-transport-system");
+  await expect(publicTransport).toHaveAttribute("data-source-pages", "39-40");
+  await expect(sharedTrip).toHaveAttribute("data-route-hash", "#manual-section-ch1-shared-trip");
+  await expect(sharedTrip).toHaveAttribute("data-source-pages", "41-42");
   await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
   await expect(scoring).toHaveAttribute("data-source-pages", "55");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
@@ -2993,6 +3003,116 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(page).toHaveURL(/#manual-section-ch1-pedestrian-priority$/);
   await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-pedestrian-priority");
+
+  await bicycle.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-bicycle$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-bicycle");
+  await expect(bicycle).toHaveAttribute("aria-current", "page");
+
+  const bicycleSection = content.getByTestId("manual-guide-section");
+  await expect(bicycleSection).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
+  await expect(bicycleSection.getByRole("heading", { name: "Велосипед", exact: true })).toBeVisible();
+  await expect(bicycleSection).toContainText("Цепь должна быть натянута");
+  await expect(bicycleSection).toContainText("дополнительного сиденья, подножек и ручки");
+  await expect(bicycleSection).toContainText("4,20 м");
+  await expect(bicycleSection).toContainText("старше 18 лет");
+  await expect(bicycleSection).toContainText("1500 ватт");
+  await expect(bicycleSection).toContainText("1,5 м");
+  await expect(bicycleSection).toContainText("Поворот налево");
+  await expect(bicycleSection).toContainText("BA Ecobici by Tembici");
+  await expect(bicycleSection).toContainText("500 ватт");
+  await expect(bicycleSection).toContainText("нельзя перевозить пассажира");
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-benefits"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-helmet-fit"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-gear"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-signage"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-posture"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-distance"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="bicycle-hand-signals"]')).toBeVisible();
+  await expect(bicycleSection.locator('[data-block-kind="pedestrian-infrastructure"]')).toHaveCount(2);
+  await expect(bicycleSection.locator('[data-block-kind="source-artwork"]')).toHaveCount(2);
+  await expect(bicycleSection.locator('img[data-visible-spanish="false"]')).toHaveCount(13);
+  await expect(bicycleSection).not.toContainText("Sistema de transporte público");
+  await expect(bicycleSection).not.toContainText("Viaje compartido");
+  await expect(bicycleSection).not.toContainText("Responsabilidades legales");
+  await expect(bicycleSection).not.toContainText("Acompanante");
+  await expect(bicycleSection.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(bicycleSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const bicycleIssues = await bicycleSection.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(
+      root.querySelectorAll(
+        '[data-testid="manual-guide-section-block"], .manual-bicycle-sign-grid article, .manual-bicycle-sign-marker, .manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article, .manual-bicycle-distance-grid article, .manual-infrastructure-card, .manual-infrastructure-copy p'
+      )
+    )) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.getAttribute("data-card-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    for (const image of Array.from(root.querySelectorAll("img"))) {
+      const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const src = image.getAttribute("src") ?? "";
+      if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
+      if (/pages\/page-03[0-8]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
+    }
+    for (const marker of Array.from(root.querySelectorAll(".manual-bicycle-sign-marker, .manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article"))) {
+      const markerRect = marker.getBoundingClientRect();
+      const parentRect = marker.parentElement?.getBoundingClientRect();
+      const text = marker.textContent?.trim() ?? "bicycle label";
+      const style = window.getComputedStyle(marker);
+      if (!parentRect) {
+        problems.push(`${text} has no parent container`);
+        continue;
+      }
+      if (markerRect.width > viewportWidth + tolerance || markerRect.left < -tolerance || markerRect.right > viewportWidth + tolerance) {
+        problems.push(`${text} overflows its parent container`);
+      }
+      if (style.wordBreak === "break-all" || style.overflowWrap === "anywhere") {
+        problems.push(`${text} may split at letter level`);
+      }
+    }
+    return problems;
+  });
+  expect(bicycleIssues).toEqual([]);
+
+  const bicycleSelectedText = await bicycleSection.evaluate((root) => {
+    const selection = window.getSelection();
+    if (!selection) return "";
+    const range = document.createRange();
+    range.selectNodeContents(root);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  expect(bicycleSelectedText).toContain("Правильно");
+  expect(bicycleSelectedText).toContain("Слишком низко");
+  expect(bicycleSelectedText).toContain("Поворот налево");
+  expect(bicycleSelectedText).toContain("1,5 м");
+  expect(bicycleSelectedText).toContain("500 ватт");
+
+  await bicycleSection.screenshot({
+    path: testInfo.outputPath(`ch1-bicycle-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-bicycle");
+  await expect(page).toHaveURL(/#manual-section-ch1-bicycle$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
 });
 
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {

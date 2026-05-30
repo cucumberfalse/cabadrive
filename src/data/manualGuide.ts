@@ -1,4 +1,5 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch1BicycleSection } from "./manual-sections/ch1-bicycle";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
@@ -339,6 +340,149 @@ export type ManualGuideContentBlock =
         labelRu: string;
       }[];
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-benefits";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      benefits: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-helmet-fit";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      guidanceRu: string;
+      positions: {
+        id: string;
+        status: "correct" | "wrong";
+        labelRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-gear";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      items: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-signage";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      signs: {
+        id: string;
+        visualKind: "blue" | "green" | "yellow" | "red" | "triangle" | "text";
+        markerRu: string;
+        labelRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-posture";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      labels: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-distance";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      examples: {
+        id: string;
+        status: "safe" | "unsafe";
+        titleRu: string;
+        assetPath: string;
+        badgeRu?: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-hand-signals";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      signals: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -385,7 +529,8 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
 export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch1CitiesForPeopleSection,
   ch1SustainableMobilitySection,
-  ch1PedestrianPrioritySection
+  ch1PedestrianPrioritySection,
+  ch1BicycleSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -433,6 +578,11 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-pedestrian-priority-visuals",
       description: "Pages 24-29 pedestrian-priority photo comparisons, impact diagram, infrastructure cards, priority-area map, restriction signs, and circulation icons with source-derived non-text crops plus Russian DOM labels.",
       tokenSource: "source pages 24-29 Prioridad peatonal"
+    },
+    {
+      id: "manual-bicycle-visuals",
+      description: "Pages 30-38 bicycle, helmet, sign, gesture, lane, parking, Ecobici, and scooter visuals using source-derived non-text crops, source-like sign geometry, and selectable Russian DOM labels.",
+      tokenSource: "source pages 30-38 Bicicleta"
     },
     {
       id: "manual-legal-detail",
