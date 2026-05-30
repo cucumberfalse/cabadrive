@@ -403,3 +403,23 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-30T09:30:01Z
+
+Analyst validated effective content head: f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #177 `ch1-cities-for-people` only. This rerun validates exactly the first Chapter 1 source-`Índice` website section, `Ciudades para las personas` / `Города для людей`, under the corrected one-section-one-PR model; it keeps divider-only source PDF page `21` skipped, avoids raw page `22` route delivery, leaves all other Chapter 1/2 sections for future PRs, and preserves selectable Russian text plus source-faithful visual treatment of the `ПЛАВНОСТЬ` / `БЕЗОПАСНОСТЬ` relationship.
+
+Gaps, if any: none for PR #177 customer-intent scope. Full Chapter 1/2 completion remains future one-section PR work outside this slice.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #177. Architect validation passed at 2026-05-30T09:16:32Z for effective content head f59c7a57d2b1a4a9571e00bf6a8821cb7ed2ac0d with return count 0; process memory records the source-order fix, all PR #177 review threads resolved/outdated, Review Agent no actionable findings, required checks green, source-fidelity checker pass, content tests 17/17, build, focused Playwright 2/2, diff hygiene, feature-memory check, full preflight, Docker runtime smoke, and Orchestrator screenshot/source-crop inspection as acceptable.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
