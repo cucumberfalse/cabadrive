@@ -39,8 +39,8 @@ Each row is one required implementation PR slice. `Source range metadata` is use
 | `ch1-shared-trip` | `Viaje compartido` / `Совместная поездка` | `41-42` | Shared-trip benefits and closing rhythm may include icon/benefit visuals or slogan-like layout. | Benefit/detail coverage, source visual metadata if present, DOM text selection, responsive screenshots. |
 | `ch2-legal-responsibility` | `Responsabilidades legales` / `Юридическая ответственность` | `44-45` | High legal precision: Law 2148, administrative/contravention/civil/insurance/criminal responsibility, sanctions, alcohol threshold, fleeing scene, footnote substance. | Legal term/detail coverage, law/article/numeric checks, source order, responsive prose, review focus on no over-simplification. |
 | `ch2-required-documents` | `Documentación obligatoria` / `Обязательные документы` | `46-50` | High document precision: DNI, license, novice restrictions, `0.0 g/L`, GNC, insurance, VTV/RTO validity, RVA, certificate/sticker visuals. | Document-name coverage, table/list detail retention, sticker/certificate visual metadata, numeric checks, responsive card/list evidence. |
-| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `51-55` | Emergency steps, `107`, `911`, data collection, follow-up duties, psychological/legal help, NGO contact list with volatility risk. | Ordered-step coverage, phone/detail checks, contact/volatility disposition, checklist/form responsiveness, source visual metadata if present. |
-| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `56` | Source-boundary risk: prior page-based memory flagged scoring/slogan mismatch; confirm source text and any spillover from adjacent manifest extraction before implementation. | Source-boundary confirmation, scoring rules/points/detail coverage, source screenshots, DOM text selection, Architect disposition if navigation/source range needs correction. |
+| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `51-55`, ending before the `Scoring` block on source PDF page `55` | Emergency steps, `107`, `911`, data collection, follow-up duties, psychological/legal help, NGO contact list with volatility risk. Source page `55` is shared with Scoring and requires region-level ownership. | Ordered-step coverage, phone/detail checks, contact/volatility disposition, checklist/form responsiveness, page-55 region metadata that excludes Scoring text, source visual metadata if present. |
+| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `55`, starting at the `Scoring` block on source PDF page `55` | Current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: Scoring text is on page `55`; page `56` is only closing slogan. | Update section registry/tests/checker expectations to use page `55` / `page-055.jpg` for Scoring; preserve scoring rules/points/footnotes; treat page `56` closing slogan as omitted book-only material or a separately evidenced closing artifact, not Scoring source content. |
 
 ## Skipped Source PDF Pages
 
@@ -113,6 +113,7 @@ For each section key:
 - Implementation Agent decision: Chapter 1/2 runtime navigation now exposes ten disabled pending website sections in `Руководство`; there is no standalone/pending/implemented learner route, hash, module path, placeholder, or button for raw source PDF pages `21` or `43`.
 - Implementation Agent decision: no converted learner content, section prose, or section-local assets are included in this prerequisite PR.
 - Review fix decision for P2 `PRRT_kwDOSX65IM6F1OW7` / `discussion_r3327868928`: when a future implemented manual section is selected, `selectedManualSection` must determine `data-active-group-id` before falling back to the selected Introduction entry. This prevents stale Introduction state from keeping Introduction highlighted while manual section content is displayed.
+- Implementation Agent decision for P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: `ch2-scoring` now uses source PDF page `55` / `page-055.jpg`; source page `55` is intentionally shared with `ch2-incident-obligations` by layout-block boundary metadata, and source page `56` is skipped as book-only closing slogan material with no route/module/placeholder/PR slice.
 
 ### Known Issues
 
@@ -121,7 +122,7 @@ For each section key:
 - PR #174 or earlier shared prerequisite state encoded a page-based pending registry. Architect disposition: resolved; PR #176 replaces the page-based registry with the section-based shared correction/prerequisite, so no additional Architect task is required for PR #174 in this slice.
 - Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed; every future section implementation must perform manual visual inspection across its full source range.
 - Section `ch2-incident-obligations` includes source NGO contacts that may be volatile. Architect disposition: addressed; carry forward as required section-level contact/volatility disposition before learner-facing presentation.
-- Section `ch2-scoring` has prior source-boundary concerns from page-based work. Architect disposition: addressed; carry forward as required source-boundary confirmation before scoring implementation.
+- Section `ch2-scoring` source-boundary issue from current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: resolved by implementation follow-up in PR #176. Registry/tests/evidence now assign Scoring to source PDF page `55`, assign `ch2-incident-obligations` only the pre-Scoring page-55 layout blocks, and skip page `56` as non-section closing slogan material. Final Architect/Analyst validation still must rerun after this non-evidence fix.
 
 ### Verification Evidence
 
@@ -129,6 +130,7 @@ For each section key:
 - Architect inspected corrected Analyst intake in `feature-request.md`, which states website pages must be source manual sections/topics and divider-only pages such as page `21` are skipped.
 - Architect inspected `docs_project/project/frontend/manual-conversion-guidelines.md`, which states route boundaries come from source `Índice`, not raw PDF page numbers.
 - Architect inspected `navigation.ru.json` Chapter 1/2 entries and confirmed ten substantive child topics with source ranges: `22`, `23`, `24-29`, `30-38`, `39-40`, `41-42`, `44-45`, `46-50`, `51-55`, and `56`.
+- Architect inspected `manual.ru.json` lines around source PDF pages `55` and `56` for current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: page `55` / `page-055.jpg` contains the `El Sistema de Evaluación Permanente de Conductores o Scoring...` text and footnotes, while page `56` / `page-056.jpg` contains only the closing slogan `Respetar las normas de tránsito implica salvar vidas.`
 - Architect updated `spec.md`, `plan.md`, and `tasks.md` only.
 - Implementation Agent baseline before code edits: `git status --short --branch` returned `## codex/030-section-requirement-correction...origin/main` plus only Analyst/Architect-owned feature-memory edits in `feature-request.md`, `plan.md`, `spec.md`, and `tasks.md`; local `HEAD` was `7a07034d8a9380cbe83b9403a6a9aa7bc73dfa50`.
 - Implementation Agent verified PR #175 disposition with `gh pr view 175 --json number,url,state,mergedAt,headRefName,headRefOid,title`: state `CLOSED`, `mergedAt: null`, URL `https://github.com/cucumberfalse/cabadrive/pull/175`, branch `codex/030-page-021`, head `1e8334676ba26d867194dcc9b884758465837959`.
@@ -142,13 +144,19 @@ For each section key:
 - Shared correction PR opened ready: PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176`; implementation content head before PR-metadata evidence-only follow-up commit: `93ab0b57166a56258df0a56021448354c01e6e2a`.
 - Review fix P2 `PRRT_kwDOSX65IM6F1OW7` / `discussion_r3327868928` addressed: `src/App.tsx` now computes active manual-guide group through `manualGuideActiveGroupId`, which checks `selectedManualSection` section membership before falling back to `selectedEntry`; `tests/content-manual-guide-chapters.test.mjs` adds a guard that the section lookup precedes the Introduction fallback.
 - Review fix verification passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`14/14`); `pnpm run build`; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 and 2 pending section entries"` (`2/2` desktop/mobile). Final hygiene commands after this note are recorded in the Implementation Agent handoff.
+- Implementation Agent source inspection for P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`: `jq` inspection of `manual.ru.json` and `layout.ru.json` confirmed source PDF page `55` / `page-055.jpg` contains Scoring text and footnotes; `page-055-block-08` starts `El Sistema de Evaluación Permanente de Conductores o Scoring`; blocks `page-055-block-08` through `page-055-block-19` are Scoring/footnotes; source PDF page `56` / `page-056.jpg` contains only the closing slogan `Respetar las normas de tránsito implica salvar vidas.`
+- Implementation Agent P1 fix: updated `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json` so `ch2-scoring` uses source page `55` and `page-055.jpg`; added explicit shared page-55 ownership metadata for `ch2-incident-obligations` pre-Scoring blocks and `ch2-scoring` Scoring/footnote blocks; added skipped source page `56` with `chapter-closing-slogan-only` reason.
+- Implementation Agent P1 fix: updated `content/validation/manual-guide-source-fidelity.evidence.json`, `scripts/manual-guide-source-fidelity.mjs`, `tests/content-manual-guide-chapters.test.mjs`, `tests/e2e/app.spec.ts`, and `src/data/manualGuide.ts` so validation allows only the intentional page-55 overlap, rejects missing shared-page boundary evidence, expects Scoring source page `55`, and confirms no raw page-56 learner route.
+- Implementation Agent focused verification after P1 fix passed before this process-memory update: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `pendingSections: 10`, `skippedSourcePages: [21, 43, 56]`, and `sharedSourcePages: [55]`; `node --test tests/content-manual-guide-chapters.test.mjs` passed `16/16`; `node --test tests/content-pandemia-vial-section.test.mjs` passed `14/14`; `git diff --check` passed.
+- Implementation Agent additional verification after process-memory update passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`16/16`); `node --test tests/content-pandemia-vial-section.test.mjs` (`14/14`); `pnpm run build` including `validate:content`, Vite build, and service worker generation; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 and 2 pending section entries"` (`2/2` desktop/mobile); `git diff --check`.
+- Review-thread state after P1 implementation: Implementation Agent did not resolve GitHub review thread `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`; Orchestrator/Review routing remains responsible for review-thread state and final validation rerun after this branch is pushed.
 
 ### Cycle PR Set
 
 | Slice | Purpose | Branch | PR metadata | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
-| section-requirement-correction | Architect memory correction from source-PDF-page slicing to website-section slicing, carried by this shared correction branch | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | implementation content head `93ab0b57166a56258df0a56021448354c01e6e2a`; later PR-metadata commit is process-memory-only | included in shared correction/prerequisite slice | yes |
-| shared-section-prereq | Shared correction/prerequisite for section registry/routes/checker/style, no section content | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | implementation content head `93ab0b57166a56258df0a56021448354c01e6e2a`; final pushed head reported by Implementation Agent after evidence-only metadata commit | ready PR opened; local verification passed | yes |
+| section-requirement-correction | Architect memory correction from source-PDF-page slicing to website-section slicing, carried by this shared correction branch | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push; prior validated head `8a435c84166e4c001220ddc70624abaa8017c96b` is stale after current-head P1 `PRRT_kwDOSX65IM6F1edn` | P1 Scoring source-boundary fix implemented locally; final validation rerun pending after push | yes |
+| shared-section-prereq | Shared correction/prerequisite for section registry/routes/checker/style, no section content | `codex/030-section-requirement-correction` | PR #176, `https://github.com/cucumberfalse/cabadrive/pull/176` | post-P1 implementation head to be reported by Implementation Agent after commit/push | Scoring source-boundary registry/test fix implemented locally; review-thread/final-validation state pending Orchestrator routing | yes |
 | PR-175-page-021-disposition | Existing PR #175 / `page-021` divider-only implementation | `codex/030-page-021` | PR #175, `https://github.com/cucumberfalse/cabadrive/pull/175` | `1e8334676ba26d867194dcc9b884758465837959` | closed unmerged, superseded by corrected section-based contract | no |
 | `ch1-cities-for-people` | Implement website section page `Ciudades para las personas` | pending Orchestrator assignment | pending | pending | pending | yes |
 | `ch1-sustainable-mobility` | Implement website section page `¿Qué es la movilidad sustentable?` | pending Orchestrator assignment | pending | pending | pending | yes |
@@ -167,11 +175,12 @@ For each section key:
 - Current normalization note: this pass records finalizer-compatible process memory only; Orchestrator must invoke a new final Architect validation before final Analyst validation or merge/finalization.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
-- Effective content head: 8a435c84166e4c001220ddc70624abaa8017c96b
-- Final-validation evidence-only commit: effective content head 8a435c84166e4c001220ddc70624abaa8017c96b; Architect validation evidence is process-memory-only for PR #176.
-- Current-PR-head read-only guard: effective content head 8a435c84166e4c001220ddc70624abaa8017c96b; Orchestrator owns current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision.
+- Historical effective-content head before current-head P1: 8a435c84166e4c001220ddc70624abaa8017c96b.
+- Historical final-validation evidence-only note: Architect validation evidence for 8a435c84166e4c001220ddc70624abaa8017c96b was process-memory-only for PR #176 before the Scoring source-boundary P1.
+- Historical current-PR-head guard note: Orchestrator owned current-head guard, required-check confirmation, review-thread state, mergeability, and merge/finalization decision for the now-superseded validation.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
+- Stale validation notice: prior final Architect validation for effective content head `8a435c84166e4c001220ddc70624abaa8017c96b` is stale after current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510`; Implementation Agent must fix Scoring source-boundary registry/test evidence and final Architect/Analyst validation must rerun.
 
 ### Cleanup Evidence
 
@@ -187,6 +196,7 @@ For each section key:
 - Architect disposition: addressed; divider-only source PDF pages `21` and `43` are skipped and receive no site page/PR.
 - Architect disposition: addressed; PR #175 / `page-021` must not merge as-is and must be closed, superseded, or replaced by section-based implementation.
 - Architect disposition: addressed; infographic/source-artwork quality remains a first-class gate for each section PR.
+- Architect disposition: addressed; current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` / `discussion_r3327958510` requires Implementation Agent to move `ch2-scoring` registry/evidence from source PDF page `56` to the Scoring block on source PDF page `55`, keep `ch2-incident-obligations` page-55 ownership region before Scoring only, and treat page `56` as non-Scoring closing slogan material.
 
 ## Historical Final Architect Validation Notes
 
@@ -199,14 +209,14 @@ For each section key:
 - Historical open Architect dispositions: none for PR #176 shared correction/prerequisite; future section PRs retain their recorded source-boundary, contact/volatility, scoring, and infographic evidence obligations.
 - Historical Architect gaps: none for PR #176 shared correction/prerequisite; full Chapter 1/2 section implementation remained outside this slice.
 
-## Final Architect Validation Notes
+## Historical Final Architect Validation Notes - Superseded After Scoring Boundary P1
 
-- Architect validation pass: passed
-- Final Architect validation completed at: 2026-05-30T03:02:24Z
-- Architect return count: 0
-- Architect validated effective content head: 8a435c84166e4c001220ddc70624abaa8017c96b
-- Architect validation evidence: PR #176 shared correction/prerequisite only; the shared runtime/process contract uses website-section slicing, skips divider-only source PDF pages `21` and `43`, records PR #175 as closed unmerged and not merge-ready as-is, preserves infographic/source-fidelity gates, and leaves the ten section content PRs as future work.
-- Architect validation evidence: `git rev-parse HEAD` confirmed 8a435c84166e4c001220ddc70624abaa8017c96b; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 10 section registry entries, 0 implemented sections, and skipped divider pages 21 and 43; `node --test tests/content-manual-guide-chapters.test.mjs` passed 14/14; `git diff --check` passed before evidence edit.
-- Architect validation evidence: Orchestrator evidence reports required checks green on 8a435c84166e4c001220ddc70624abaa8017c96b, Review Agent no findings on current head, prior AI Review P2 fixed and resolved, and PR #175 closed unmerged.
-- Open Architect dispositions: none for PR #176 shared correction/prerequisite; future section PRs retain source-boundary, contact/volatility, scoring, and infographic evidence obligations.
-- Architect gaps: none for PR #176 shared correction/prerequisite; full Chapter 1/2 section implementation remains outside this slice.
+- Historical Architect validation pass for superseded head: passed.
+- Historical Architect validation completion timestamp: 2026-05-30T03:02:24Z.
+- Historical Architect return count: 0.
+- Historical Architect validated head: 8a435c84166e4c001220ddc70624abaa8017c96b.
+- Historical Architect validation evidence: PR #176 shared correction/prerequisite only; the shared runtime/process contract used website-section slicing, skipped divider-only source PDF pages `21` and `43`, recorded PR #175 as closed unmerged and not merge-ready as-is, preserved infographic/source-fidelity gates, and left the ten section content PRs as future work.
+- Historical Architect validation evidence: `git rev-parse HEAD` confirmed 8a435c84166e4c001220ddc70624abaa8017c96b; `git status --short --branch` was clean before evidence edit; `node scripts/manual-guide-source-fidelity.mjs` passed with 10 section registry entries, 0 implemented sections, and skipped divider pages 21 and 43; `node --test tests/content-manual-guide-chapters.test.mjs` passed 14/14; `git diff --check` passed before evidence edit.
+- Historical Architect validation evidence: Orchestrator evidence reported required checks green on 8a435c84166e4c001220ddc70624abaa8017c96b, Review Agent no findings on current head, prior AI Review P2 fixed and resolved, and PR #175 closed unmerged.
+- Historical open Architect dispositions: none for PR #176 shared correction/prerequisite at that time; later current-head AI Review P1 `PRRT_kwDOSX65IM6F1edn` supersedes this validation and requires Scoring source-boundary implementation.
+- Historical Architect gaps: none recorded for that validation; current-head P1 now makes final validation stale until implementation and role validation rerun.

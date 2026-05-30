@@ -25,6 +25,19 @@ function sourcePagesForRange(start, end) {
   return Array.from({ length: end - start + 1 }, (_, index) => start + index);
 }
 
+function uniqueInOrder(values) {
+  return values.filter((value, index) => values.indexOf(value) === index);
+}
+
+function duplicatedValues(values) {
+  const counts = new Map();
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([value]) => value)
+    .sort((a, b) => a - b);
+}
+
 function sourcePageAssetPath(sourcePage) {
   return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(sourcePage).padStart(3, "0")}.jpg`;
 }
@@ -117,8 +130,8 @@ test("Chapter 1 and 2 registry contains exactly ten source Índice sections and 
   assert.equal(registry.featureId, "030-manual-chapters-1-2");
   assert.deepEqual(registry.sourcePageRange, { start: 21, end: 56 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43]);
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), ["chapter-divider-only", "chapter-divider-only"]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), ["chapter-divider-only", "chapter-divider-only", "chapter-closing-slogan-only"]);
 
   assert.deepEqual(registry.sections.map((section) => section.id), evidence.expectedSectionIds);
   for (const section of registry.sections) {
@@ -137,6 +150,7 @@ test("Chapter 1 and 2 registry contains exactly ten source Índice sections and 
     assert.deepEqual(section.sourcePages.map((entry) => entry.sourcePage), sourcePages);
     assert.equal(sourcePages.includes(21), false, `${section.id} does not include divider page 21`);
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
+    assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -183,7 +197,50 @@ test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF 
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(coveredSourcePages, sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 56)));
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55)));
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55]);
+});
+
+test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
+  const incident = registry.sections.find((section) => section.id === "ch2-incident-obligations");
+  const scoring = registry.sections.find((section) => section.id === "ch2-scoring");
+  assert.ok(incident, "incident obligations section exists");
+  assert.ok(scoring, "scoring section exists");
+
+  assert.deepEqual(incident.sourcePageRange, { start: 51, end: 55 });
+  assert.deepEqual(scoring.sourcePageRange, { start: 55, end: 55 });
+  assert.deepEqual(scoring.sourcePages.map((entry) => entry.sourcePage), [55]);
+  assert.equal(scoring.sourcePages[0].referenceAsset, sourcePageAssetPath(55));
+  assert.equal(registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage)).includes(56), false);
+
+  const closing = registry.skippedSourcePages.find((entry) => entry.sourcePage === 56);
+  assert.equal(closing?.reason, "chapter-closing-slogan-only");
+  assert.match(closing?.disposition ?? "", /not Scoring content/);
+
+  assert.deepEqual(
+    registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
+    [55],
+    "only source page 55 is intentionally shared between section topics"
+  );
+  const sharedPage55 = registry.sharedSourcePageOwnership[0];
+  assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
+  assert.deepEqual(sharedPage55.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch2-incident-obligations", "ch2-scoring"]);
+
+  assert.deepEqual(incident.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage, [
+    "page-055-block-02",
+    "page-055-block-03",
+    "page-055-block-04",
+    "page-055-block-05",
+    "page-055-block-06",
+    "page-055-block-07"
+  ]);
+  assert.equal(incident.sourceBoundaryEvidence.endsBeforeLayoutBlockId, "page-055-block-08");
+  assert.equal(incident.sourceBoundaryEvidence.excludesSectionId, "ch2-scoring");
+
+  assert.equal(scoring.sourceBoundaryEvidence.startsAtLayoutBlockId, "page-055-block-08");
+  assert.match(scoring.sourceBoundaryEvidence.startsAtSourceTextEs, /Sistema de Evaluación Permanente de Conductores o Scoring/);
+  assert.equal(scoring.sourceBoundaryEvidence.omittedClosingSourcePage, 56);
+  assert.deepEqual(scoring.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage.slice(0, 2), ["page-055-block-08", "page-055-block-09"]);
 });
 
 test("Manual guide schema prepares section-local implementation and reusable style tokens", () => {
@@ -250,7 +307,11 @@ test("Manual guide source-fidelity checker scans the implemented section rendere
 test("Manual guide source-fidelity checker passes the shared prerequisite section registry", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 10);
   assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 0);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
@@ -258,7 +319,10 @@ test("Manual guide source-fidelity checker passes the shared prerequisite sectio
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 10);
   assert.equal(result.implementedSections, 0);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
+  assert.deepEqual(result.omittedBookOnlyPages, [56]);
+  assert.deepEqual(result.sharedSourcePages, [55]);
   assert.equal(result.screenshotEvidence, "not_applicable_until_section_pr");
 });
 
@@ -314,7 +378,33 @@ test("Manual guide source-fidelity checker rejects skipped divider pages inside 
     assert.notEqual(failure.status, 0, "checker must fail when divider-only page 21 becomes section content");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.match(result.message, /ch1-cities-for-people sourcePageRange must match source Índice metadata|must not include skipped divider-only source page 21/u);
+    assert.match(result.message, /ch1-cities-for-people sourcePageRange must match source Índice metadata|must not include skipped non-section source page 21/u);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects accidental shared page duplicates without boundary evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-shared-boundary-"));
+  try {
+    const badRegistryPath = join(tempDir, "section-registry.bad-shared-page.json");
+    const badRegistry = JSON.parse(JSON.stringify(registry));
+    const scoring = badRegistry.sections.find((entry) => entry.id === "ch2-scoring");
+    delete scoring.sourceBoundaryEvidence;
+    writeFileSync(badRegistryPath, JSON.stringify(badRegistry, null, 2));
+
+    const failure = spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        MANUAL_GUIDE_REGISTRY_PATH: badRegistryPath
+      }
+    });
+
+    assert.notEqual(failure.status, 0, "checker must fail when shared page 55 lacks section boundary evidence");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch2-scoring sourceBoundaryEvidence must be an object");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

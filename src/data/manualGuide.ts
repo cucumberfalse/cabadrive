@@ -15,6 +15,18 @@ export type ManualGuideSourcePage = {
   referenceAsset: string;
 };
 
+export type ManualGuideSourceBoundaryEvidence = {
+  sharedSourcePage: number;
+  ownedRegion: string;
+  ownedLayoutBlockIdsOnSharedPage: string[];
+  boundaryEvidence: string;
+  startsAtLayoutBlockId?: string;
+  startsAtSourceTextEs?: string;
+  endsBeforeLayoutBlockId?: string;
+  excludesSectionId?: string;
+  omittedClosingSourcePage?: number;
+};
+
 export type ManualGuideSectionEntry = {
   id: string;
   kind: "content-section";
@@ -31,6 +43,7 @@ export type ManualGuideSectionEntry = {
   sectionContentModulePath: string;
   sourceRegionMetadataStatus: "pending_until_section_pr" | "recorded";
   visualEvidenceStatus: "pending_until_section_pr" | "recorded";
+  sourceBoundaryEvidence?: ManualGuideSourceBoundaryEvidence;
   pendingReason?: string;
 };
 
@@ -86,6 +99,22 @@ type ManualGuideChapter12Registry = {
     parentChapterId: string;
     sourceTitleEs: string;
     disposition: string;
+  }[];
+  sharedSourcePageOwnership?: {
+    sourcePage: number;
+    referenceAsset: string;
+    reason: string;
+    sourceEvidence: string;
+    sectionBoundaries: {
+      sectionId: string;
+      ownedRegion: string;
+      ownedLayoutBlockIdsOnSharedPage: string[];
+      startsAtLayoutBlockId?: string;
+      startsAtSourceTextEs?: string;
+      endsBeforeLayoutBlockId?: string;
+      excludesSectionId?: string;
+      omittedClosingSourcePage?: number;
+    }[];
   }[];
   chapters: ManualGuideRegistryChapter[];
   sections: ManualGuideRegistrySection[];
@@ -203,7 +232,8 @@ export const manualGuideDocumentStyleTokens = {
     "Implemented sections must provide source-region metadata for each meaningful source page/region, local asset metadata, screenshot evidence, visible-Spanish status, and checker pass/fail output.",
     "Normal prose uses shared Introduction article typography and selectable DOM text.",
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
-    "Divider-only source PDF pages 21 and 43 are skipped as standalone learner pages/routes/modules.",
+    "Divider-only source PDF pages 21 and 43 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
+    "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
     "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, and side-by-side translation layouts are forbidden."
   ]
 } as const;
@@ -284,6 +314,7 @@ export const manualGuideChapter12SectionSummary = {
   registryScope: chapter12Registry.registryScope,
   sourcePageRange: chapter12Registry.sourcePageRange,
   skippedSourcePages: chapter12Registry.skippedSourcePages,
+  sharedSourcePageOwnership: chapter12Registry.sharedSourcePageOwnership ?? [],
   expectedSectionIds: chapter12ManualGuideSections.map((section) => section.id),
   sourcePageRanges: chapter12ManualGuideSections.map((section) => ({
     sectionId: section.id,

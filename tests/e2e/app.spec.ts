@@ -2650,9 +2650,10 @@ test("Manual guide exposes Chapter 1 and 2 pending section entries without fake 
   await expect(cities).toHaveAttribute("data-source-pages", "22");
   await expect(pedestrian).toHaveAttribute("data-source-pages", "24-29");
   await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
-  await expect(scoring).toHaveAttribute("data-source-pages", "56");
+  await expect(scoring).toHaveAttribute("data-source-pages", "55");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
+  await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
   await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
   await expect(content.getByTestId("manual-guide-section")).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");

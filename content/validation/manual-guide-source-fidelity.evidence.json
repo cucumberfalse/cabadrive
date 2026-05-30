@@ -16,6 +16,10 @@
     {
       "sourcePage": 43,
       "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 56,
+      "reason": "chapter-closing-slogan-only"
     }
   ],
   "expectedSectionIds": [
@@ -68,10 +72,55 @@
       "end": 55
     },
     "ch2-scoring": {
-      "start": 56,
-      "end": 56
+      "start": 55,
+      "end": 55
     }
   },
+  "sharedSourcePageOwnership": [
+    {
+      "sourcePage": 55,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-055.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 55 contains Scoring text; layout.ru.json page-055 block 08 starts the Scoring block; source page 56 is closing slogan only.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch2-incident-obligations",
+          "ownedRegion": "pre-scoring-region",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-055-block-02",
+            "page-055-block-03",
+            "page-055-block-04",
+            "page-055-block-05",
+            "page-055-block-06",
+            "page-055-block-07"
+          ],
+          "endsBeforeLayoutBlockId": "page-055-block-08",
+          "excludesSectionId": "ch2-scoring"
+        },
+        {
+          "sectionId": "ch2-scoring",
+          "ownedRegion": "scoring-block-and-footnotes",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-055-block-08",
+            "page-055-block-09",
+            "page-055-block-10",
+            "page-055-block-11",
+            "page-055-block-12",
+            "page-055-block-13",
+            "page-055-block-14",
+            "page-055-block-15",
+            "page-055-block-16",
+            "page-055-block-17",
+            "page-055-block-18",
+            "page-055-block-19"
+          ],
+          "startsAtLayoutBlockId": "page-055-block-08",
+          "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
+          "omittedClosingSourcePage": 56
+        }
+      ]
+    }
+  ],
   "pendingSectionExpectations": {
     "status": "pending",
     "mustHaveRouteHash": true,
@@ -152,7 +201,10 @@
     "status": "pass",
     "pendingSections": 10,
     "implementedSections": 0,
+    "skippedSourcePages": [21, 43, 56],
     "skippedDividerPages": [21, 43],
+    "omittedBookOnlyPages": [56],
+    "sharedSourcePages": [55],
     "screenshotEvidence": "not_applicable_until_section_pr",
     "sourceCropEvidence": "not_applicable_until_section_pr"
   }

@@ -116,6 +116,25 @@ function sectionSourcePages(section) {
   return section.sourcePages.map((entry) => entry.sourcePage);
 }
 
+function uniqueInOrder(values) {
+  return values.filter((value, index) => values.indexOf(value) === index);
+}
+
+function duplicatedValues(values) {
+  const counts = new Map();
+  for (const value of values) {
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([value]) => value)
+    .sort((a, b) => a - b);
+}
+
+function compareJson(actual, expected, message, details = {}) {
+  assertCondition(JSON.stringify(actual) === JSON.stringify(expected), message, { ...details, actual, expected });
+}
+
 function validatePendingSection(section, evidence, id) {
   assertCondition(section.status === evidence.pendingSectionExpectations.status, `${id} pending entry must keep pending status`, section);
   assertCondition(section.sourceRegionMetadataStatus === evidence.pendingSectionExpectations.sourceRegionMetadataStatus, `${id} must not invent source-region metadata before implementation`, section);
@@ -160,11 +179,69 @@ function validateImplementedSection(section, evidence, id) {
   validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
 }
 
+function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages) {
+  const sharedOwnership = evidence.sharedSourcePageOwnership ?? [];
+  const expectedSharedSourcePages = sharedOwnership.map((entry) => entry.sourcePage).sort((a, b) => a - b);
+  const duplicateCoveredSourcePages = duplicatedValues(coveredSourcePages);
+  compareJson(
+    duplicateCoveredSourcePages,
+    expectedSharedSourcePages,
+    "Duplicate section source pages must be explicitly declared as shared source-page ownership",
+    { duplicateCoveredSourcePages }
+  );
+
+  for (const sharedEntry of sharedOwnership) {
+    assertRequiredFields(sharedEntry, ["sourcePage", "referenceAsset", "reason", "sectionBoundaries"], `sharedSourcePageOwnership ${sharedEntry.sourcePage}`);
+    assertLocalPathExists(sharedEntry.referenceAsset, `shared source page ${sharedEntry.sourcePage} referenceAsset`, sharedEntry);
+    assertCondition(sharedEntry.reason === "source-page-contains-two-source-index-topics", `shared source page ${sharedEntry.sourcePage} must explain the Índice-topic split`, sharedEntry);
+    assertCondition(Array.isArray(sharedEntry.sectionBoundaries) && sharedEntry.sectionBoundaries.length > 1, `shared source page ${sharedEntry.sourcePage} must name all owning sections`, sharedEntry);
+
+    const actualSectionIds = registry.sections
+      .filter((section) => sectionSourcePages(section).includes(sharedEntry.sourcePage))
+      .map((section) => section.id);
+    const expectedSectionIds = sharedEntry.sectionBoundaries.map((boundary) => boundary.sectionId);
+    compareJson(actualSectionIds, expectedSectionIds, `shared source page ${sharedEntry.sourcePage} owning sections must match evidence`);
+
+    for (const boundary of sharedEntry.sectionBoundaries) {
+      assertRequiredFields(boundary, ["sectionId", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage"], `sharedSourcePageOwnership ${sharedEntry.sourcePage} boundary`);
+      assertCondition(Array.isArray(boundary.ownedLayoutBlockIdsOnSharedPage) && boundary.ownedLayoutBlockIdsOnSharedPage.length > 0, `${boundary.sectionId} shared-page boundary must name owned layout blocks`, boundary);
+
+      const section = registry.sections.find((entry) => entry.id === boundary.sectionId);
+      assertCondition(Boolean(section), `${boundary.sectionId} shared-page boundary must reference an existing section`, boundary);
+      assertCondition(sectionSourcePages(section).includes(sharedEntry.sourcePage), `${boundary.sectionId} must include shared source page ${sharedEntry.sourcePage}`, section);
+
+      const sectionBoundary = section.sourceBoundaryEvidence;
+      assertRequiredFields(
+        sectionBoundary,
+        ["sharedSourcePage", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage", "boundaryEvidence"],
+        `${boundary.sectionId} sourceBoundaryEvidence`
+      );
+      assertCondition(sectionBoundary.sharedSourcePage === sharedEntry.sourcePage, `${boundary.sectionId} sourceBoundaryEvidence.sharedSourcePage must match shared ownership`, sectionBoundary);
+      assertCondition(sectionBoundary.ownedRegion === boundary.ownedRegion, `${boundary.sectionId} sourceBoundaryEvidence.ownedRegion must match shared ownership`, sectionBoundary);
+      compareJson(
+        sectionBoundary.ownedLayoutBlockIdsOnSharedPage,
+        boundary.ownedLayoutBlockIdsOnSharedPage,
+        `${boundary.sectionId} sourceBoundaryEvidence owned blocks must match shared ownership`
+      );
+      for (const optionalBoundaryField of ["startsAtLayoutBlockId", "startsAtSourceTextEs", "endsBeforeLayoutBlockId", "excludesSectionId", "omittedClosingSourcePage"]) {
+        if (optionalBoundaryField in boundary) {
+          assertCondition(
+            sectionBoundary[optionalBoundaryField] === boundary[optionalBoundaryField],
+            `${boundary.sectionId} sourceBoundaryEvidence.${optionalBoundaryField} must match shared ownership`,
+            { sectionBoundary, boundary }
+          );
+        }
+      }
+      assertCondition(typeof sectionBoundary.boundaryEvidence === "string" && sectionBoundary.boundaryEvidence.length > 0, `${boundary.sectionId} sourceBoundaryEvidence must include a source-backed note`, sectionBoundary);
+    }
+  }
+}
+
 function validateSectionRegistry(registry, evidence) {
   assertCondition(registry.schemaVersion === 2, "Manual guide section registry schemaVersion must be 2");
   assertCondition(registry.manualId === "gcba-manual-vehiculo-4-ruedas-2023", "Manual guide registry must target the GCBA 4-wheel manual");
   assertCondition(registry.featureId === evidence.featureId, "Manual guide registry and evidence feature ids must match");
-  assertCondition(JSON.stringify(registry.sourcePageRange) === JSON.stringify(evidence.requiredSourcePageRange), "Manual guide source page range must match evidence");
+  compareJson(registry.sourcePageRange, evidence.requiredSourcePageRange, "Manual guide source page range must match evidence");
 
   assertCondition(!("pages" in registry), "Manual guide registry must not expose a raw source-PDF-page pages array");
   assertCondition(registry.sections.length === evidence.expectedSectionIds.length, "Manual guide registry must contain exactly one entry per expected source Índice section", {
@@ -173,17 +250,21 @@ function validateSectionRegistry(registry, evidence) {
   });
 
   const skippedSourcePages = new Set(evidence.skippedSourcePages.map((entry) => entry.sourcePage));
-  assertCondition(JSON.stringify(registry.skippedSourcePages.map((entry) => entry.sourcePage).sort((a, b) => a - b)) === JSON.stringify([...skippedSourcePages].sort((a, b) => a - b)), "Skipped divider source pages must match evidence");
+  compareJson(
+    registry.skippedSourcePages.map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason })).sort((a, b) => a.sourcePage - b.sourcePage),
+    evidence.skippedSourcePages.map((entry) => ({ sourcePage: entry.sourcePage, reason: entry.reason })).sort((a, b) => a.sourcePage - b.sourcePage),
+    "Skipped source pages must match evidence"
+  );
 
   const sectionIds = registry.sections.map((section) => section.id);
-  assertCondition(JSON.stringify(sectionIds) === JSON.stringify(evidence.expectedSectionIds), "Manual guide sections must stay in source Índice order", { sectionIds });
+  compareJson(sectionIds, evidence.expectedSectionIds, "Manual guide sections must stay in source Índice order");
 
   const coveredSourcePages = [];
   for (const section of registry.sections) {
     const id = section.id;
     const expectedRange = evidence.expectedSectionRanges[id];
     assertCondition(Boolean(expectedRange), `${id} must be an expected source Índice section`, section);
-    assertCondition(JSON.stringify(section.sourcePageRange) === JSON.stringify(expectedRange), `${id} sourcePageRange must match source Índice metadata`, section);
+    compareJson(section.sourcePageRange, expectedRange, `${id} sourcePageRange must match source Índice metadata`);
     assertCondition(section.routeHash === `#manual-section-${id}`, `${id} must reserve a section route hash, not a raw page hash`, section);
     assertCondition(section.sectionContentModulePath === `src/data/manual-sections/${id}.ts`, `${id} must reserve a section-local future content module path`, section);
     assertCondition(!/^manual-page-\d{3}$/u.test(id), `${id} must not use a raw source PDF page id`, section);
@@ -191,9 +272,9 @@ function validateSectionRegistry(registry, evidence) {
     assertCondition(!section.sectionContentModulePath.includes("src/data/manual-pages/"), `${id} module path must not use the page-local module namespace`, section);
 
     const sourcePages = sourcePagesForRange(section.sourcePageRange.start, section.sourcePageRange.end);
-    assertCondition(JSON.stringify(sectionSourcePages(section)) === JSON.stringify(sourcePages), `${id} sourcePages must enumerate the full source range`, section);
+    compareJson(sectionSourcePages(section), sourcePages, `${id} sourcePages must enumerate the full source range`);
     for (const sourcePage of sourcePages) {
-      assertCondition(!skippedSourcePages.has(sourcePage), `${id} must not include skipped divider-only source page ${sourcePage}`, section);
+      assertCondition(!skippedSourcePages.has(sourcePage), `${id} must not include skipped non-section source page ${sourcePage}`, section);
     }
     section.sourcePages.forEach((sourcePageEntry) => {
       assertCondition(sourcePageEntry.manualManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`, `${id} manual manifest pointer must target the source page`, sourcePageEntry);
@@ -212,10 +293,11 @@ function validateSectionRegistry(registry, evidence) {
   assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", { duplicateSectionIds });
 
   const expectedCoveredPages = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
-  assertCondition(JSON.stringify(coveredSourcePages) === JSON.stringify(expectedCoveredPages), "Section registry must cover source pages 22-42 and 44-56 exactly once", {
+  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover source pages 22-42 and 44-55 as section source metadata", {
     coveredSourcePages,
     expectedCoveredPages
   });
+  validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages);
 
   const rawReferencedSectionIds = registry.chapters.flatMap((chapter) => {
     assertCondition(!("chapterPageIds" in chapter), `${chapter.id} must not keep raw chapter page ids`, chapter);
@@ -308,7 +390,10 @@ function main() {
     sectionsChecked: registry.sections.length,
     pendingSections: registry.sections.filter((section) => section.status === "pending").length,
     implementedSections: registry.sections.filter((section) => section.status === "implemented").length,
-    skippedDividerPages: registry.skippedSourcePages.map((entry) => entry.sourcePage),
+    skippedSourcePages: registry.skippedSourcePages.map((entry) => entry.sourcePage),
+    skippedDividerPages: registry.skippedSourcePages.filter((entry) => entry.reason === "chapter-divider-only").map((entry) => entry.sourcePage),
+    omittedBookOnlyPages: registry.skippedSourcePages.filter((entry) => entry.reason === "chapter-closing-slogan-only").map((entry) => entry.sourcePage),
+    sharedSourcePages: (evidence.sharedSourcePageOwnership ?? []).map((entry) => entry.sourcePage),
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
     screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
     sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence

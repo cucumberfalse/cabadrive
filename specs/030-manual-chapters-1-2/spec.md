@@ -34,7 +34,7 @@ Chapter 1 source range remains `21-42`, but implementation starts with the first
 
 Chapter 2 source range remains `43-56`, but implementation starts with the first substantive section on source PDF page `44`.
 
-Expected section PR inventory from current `navigation.ru.json`:
+Corrected section PR inventory:
 
 | Section PR key | Website section page | Source `Índice` id | Source range metadata | Disposition |
 | --- | --- | --- | --- | --- |
@@ -46,10 +46,12 @@ Expected section PR inventory from current `navigation.ru.json`:
 | `ch1-shared-trip` | `Viaje compartido` / `Совместная поездка` | `ch1-shared-trip` | `41-42` | implement as one section PR |
 | `ch2-legal-responsibility` | `Responsabilidades legales` / `Юридическая ответственность` | `ch2-legal-responsibility` | `44-45` | implement as one section PR |
 | `ch2-required-documents` | `Documentación obligatoria` / `Обязательные документы` | `ch2-required-documents` | `46-50` | implement as one section PR |
-| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `ch2-incident-obligations` | `51-55` | implement as one section PR |
-| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `ch2-scoring` | `56` | implement as one section PR after source-boundary verification |
+| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `ch2-incident-obligations` | `51-55`, ending before the `Scoring` block on source PDF page `55` | implement as one section PR with page-55 region metadata that excludes Scoring text |
+| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `ch2-scoring` | `55`, starting at the `El Sistema de Evaluación Permanente de Conductores o Scoring...` block on source PDF page `55` | implement as one section PR; source PDF page `56` is a closing slogan, not Scoring content |
 
-If source inspection proves that a current navigation range is wrong, Implementation Agent records feedback and stops for Architect/Orchestrator disposition before changing the section count, combining sections, splitting sections, or moving content between section PRs.
+Source-backed correction: current navigation-derived metadata may still point `ch2-scoring` at source PDF page `56`, but `manual.ru.json` shows the Scoring content on source PDF page `55` and page `56` contains only the closing slogan `Respetar las normas de tránsito implica salvar vidas.` Implementation must update shared section registry/tests/evidence so Scoring belongs to page `55`. The closing slogan is not a separate website section page; it may be omitted as book-only closing material or retained only as a clearly scoped chapter/Scoring closing artifact with source evidence.
+
+If source inspection proves that another current navigation range is wrong, Implementation Agent records feedback and stops for Architect/Orchestrator disposition before changing the section count, combining sections, splitting sections, or moving content between section PRs.
 
 ## Scope
 
