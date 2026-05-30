@@ -669,6 +669,7 @@
           "Page 24 before/after source labels are localized as DOM text and the runtime photo crop excludes ANTES/DESPUÉS.",
           "Page 25 impact diagram keeps source body/car/target artwork with Russian phase labels and the 40 km/h RACE/GOODYEAR note.",
           "Pages 26-29 use source-derived non-text crops where possible and localized DOM/CSS visuals where source photos or signs contain readable Spanish text.",
+          "Page 29 restriction sign window is localized as Russian DOM text: working days, 11:00-16:00, authorized vehicles only.",
           "The priority-area map crop excludes the source legend and footer URL; the legend is Russian DOM text while street names remain contextual map names."
         ],
         "checkerResult": "pass"

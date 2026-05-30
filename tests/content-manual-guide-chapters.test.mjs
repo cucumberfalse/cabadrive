@@ -571,6 +571,7 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "ближе 10 метров",
     "Пешеходные вмешательства",
     "Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes",
+    "рабочие дни с 11:00 до 16:00",
     "с 7 до 21 часов",
     "19:00 до 02:00",
     "24 часа",

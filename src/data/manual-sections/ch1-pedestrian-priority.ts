@@ -420,7 +420,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
       id: "priority-area-restrictions",
       kind: "pedestrian-infrastructure",
       titleRu: "Ограничения для частных транспортных средств",
-      sourceTextEs: "Restricción vehículos particulares; estacionamiento; circulación; infraestructura; carriles.",
+      sourceTextEs: "Restricción vehículos particulares; días hábiles de 11 a 16 hs; solo vehículos autorizados; estacionamiento; circulación; infraestructura; carriles.",
       cards: [
         {
           id: "restriction-signs",
@@ -436,7 +436,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           details: [
             {
               labelRu: "Разрешение",
-              textRu: "в период ограничения могут ехать только те, у кого есть действующее разрешение на въезд в Centro Peatonal или Tribunales Peatonal."
+              textRu: "в рабочие дни с 11:00 до 16:00 могут ехать только те, у кого есть действующее разрешение на въезд в Centro Peatonal или Tribunales Peatonal."
             },
             {
               labelRu: "Условие",
@@ -473,7 +473,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
       ],
       visualNotes: [
         "The source restriction signs contain Spanish text, so runtime signs are localized DOM/CSS visuals.",
-        "The time windows 7-21 and 19:00-02:00, the 24-hour exclusive lanes, permit condition, and phone 147 are preserved as Russian DOM text."
+        "The weekday 11:00-16:00 restriction sign, parking window 7-21, 19:00-02:00 Corrientes lane window, 24-hour exclusive lanes, permit condition, and phone 147 are preserved as Russian DOM text."
       ]
     },
     {

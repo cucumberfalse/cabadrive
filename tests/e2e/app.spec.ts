@@ -2888,6 +2888,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(pedestrianSection).toContainText("10 км/ч");
   await expect(pedestrianSection).toContainText("ближе 10 метров");
   await expect(pedestrianSection).toContainText("Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes");
+  await expect(pedestrianSection).toContainText("11:00 до 16:00");
+  await expect(pedestrianSection.locator(".manual-authorized-time")).toHaveText("11:00-16:00");
   await expect(pedestrianSection).toContainText("с 7 до 21 часов");
   await expect(pedestrianSection).toContainText("19:00 до 02:00");
   await expect(pedestrianSection).toContainText("телефон 147");
@@ -2936,7 +2938,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
       if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
       if (/pages\/page-02[4-9]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
     }
-    for (const label of Array.from(root.querySelectorAll(".manual-restriction-signs strong"))) {
+    for (const label of Array.from(root.querySelectorAll('.manual-restriction-signs strong, .manual-restriction-signs span:not([aria-hidden="true"])'))) {
       const labelRect = label.getBoundingClientRect();
       const signRect = label.parentElement?.getBoundingClientRect();
       const text = label.textContent?.trim() ?? "restriction label";

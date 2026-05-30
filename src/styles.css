@@ -2156,6 +2156,21 @@ small,
   font-size: 0.58rem;
 }
 
+.manual-authorized-time {
+  font-size: 0.62rem;
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.manual-authorized-sign span:not(.manual-authorized-time) {
+  font-size: 0.52rem;
+  font-weight: 850;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
 .manual-control-sign strong {
   font-size: 0.56rem;
 }

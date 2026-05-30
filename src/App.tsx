@@ -2071,7 +2071,8 @@ function PedestrianInfrastructureVisual({
           <span aria-hidden="true">E</span>
         </div>
         <div className="manual-authorized-sign">
-          <strong>Дни и часы</strong>
+          <strong>Будни</strong>
+          <span className="manual-authorized-time">11:00-16:00</span>
           <span>только с разрешением</span>
         </div>
         <div className="manual-control-sign">
