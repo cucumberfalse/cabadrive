@@ -2789,6 +2789,16 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
       if (style.userSelect === "none") problems.push(`${id} disables text selection`);
       if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
     }
+    for (const label of Array.from(root.querySelectorAll(".manual-vulnerability-labels span"))) {
+      for (const node of Array.from(label.childNodes)) {
+        const word = node.textContent?.trim() ?? "";
+        if (node.nodeType !== Node.TEXT_NODE || !word || /\s/.test(word)) continue;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const lineCount = Array.from(range.getClientRects()).filter((rect) => rect.width > 1 && rect.height > 1).length;
+        if (lineCount > 1) problems.push(`${word} wraps inside a word`);
+      }
+    }
     return problems;
   });
   expect(sustainableIssues).toEqual([]);
