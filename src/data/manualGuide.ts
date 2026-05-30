@@ -1,5 +1,6 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
+import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
 import {
   introductionDocumentStyleGuide,
@@ -229,6 +230,115 @@ export type ManualGuideContentBlock =
         labelRu: string;
       }[];
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "pedestrian-photo-comparison";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      beforeLabelRu: string;
+      afterLabelRu: string;
+      captionRu: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "impact-diagram";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      bodyAssetPath: string;
+      carAssetPath: string;
+      targetAssetPath: string;
+      phases: {
+        id: string;
+        color: "blue" | "yellow" | "dark" | "gray";
+        labelRu: string;
+        textRu: string;
+      }[];
+      footnoteRu: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "pedestrian-infrastructure";
+      titleRu: string;
+      sourceTextEs: string;
+      cards: {
+        id: string;
+        titleRu: string;
+        sourcePage: number;
+        sourceRegion: {
+          x: number;
+          y: number;
+          width: number;
+          height: number;
+        };
+        assetPath?: string;
+        altRu?: string;
+        visualKind?: "wayfinding-sign" | "school-road-marking" | "restriction-signs";
+        details: {
+          labelRu: string;
+          textRu: string;
+        }[];
+        noteRu?: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "priority-area-map";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      areasRu: string;
+      legend: {
+        id: string;
+        color: "gray" | "cyan" | "blue";
+        labelRu: string;
+      }[];
+      captionRu: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "transport-mode-icons";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      modes: {
+        id: string;
+        labelRu: string;
+      }[];
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -272,7 +382,11 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
   return `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
 }
 
-export const implementedManualGuideSections: ManualGuideSectionContent[] = [ch1CitiesForPeopleSection, ch1SustainableMobilitySection];
+export const implementedManualGuideSections: ManualGuideSectionContent[] = [
+  ch1CitiesForPeopleSection,
+  ch1SustainableMobilitySection,
+  ch1PedestrianPrioritySection
+];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
 export const manualGuideDocumentStyleTokens = {
@@ -314,6 +428,11 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-vulnerability-order",
       description: "Page 23 vulnerability hierarchy strip preserving source order, ranking numbers, and source-derived vehicle/pedestrian pictograms with Russian DOM labels.",
       tokenSource: "source page 23 Uso de la vía pública de acuerdo a la Vulnerabilidad"
+    },
+    {
+      id: "manual-pedestrian-priority-visuals",
+      description: "Pages 24-29 pedestrian-priority photo comparisons, impact diagram, infrastructure cards, priority-area map, restriction signs, and circulation icons with source-derived non-text crops plus Russian DOM labels.",
+      tokenSource: "source pages 24-29 Prioridad peatonal"
     },
     {
       id: "manual-legal-detail",

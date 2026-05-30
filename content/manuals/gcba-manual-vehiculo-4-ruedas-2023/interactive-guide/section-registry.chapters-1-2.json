@@ -138,7 +138,9 @@
       "visualEvidenceStatus": "recorded",
       "implementationEvidence": {
         "sectionId": "ch1-cities-for-people",
-        "sourcePages": [22],
+        "sourcePages": [
+          22
+        ],
         "sourceRegionMetadata": [
           {
             "sourcePage": 22,
@@ -221,7 +223,9 @@
       "visualEvidenceStatus": "recorded",
       "implementationEvidence": {
         "sectionId": "ch1-sustainable-mobility",
-        "sourcePages": [23],
+        "sourcePages": [
+          23
+        ],
         "sourceRegionMetadata": [
           {
             "sourcePage": 23,
@@ -384,12 +388,291 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-029.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "sectionContentModulePath": "src/data/manual-sections/ch1-pedestrian-priority.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "sectionId": "ch1-pedestrian-priority",
+        "sourcePages": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 24,
+            "sourceRegion": {
+              "x": 330,
+              "y": 430,
+              "width": 560,
+              "height": 780,
+              "unit": "page-024.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 780
+            },
+            "cropSha256": "ad92ce18efc4b440e3b0de4f4fc40331f4514742d286bf802a681224752b2b8d",
+            "cleanupScope": "reference-only source crop for section opening and before/after context; Spanish text is not rendered in runtime learner content"
+          },
+          {
+            "sourcePage": 24,
+            "sourceRegion": {
+              "x": 340,
+              "y": 780,
+              "width": 520,
+              "height": 360,
+              "unit": "page-024.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+            "cropDimensions": {
+              "width": 520,
+              "height": 360
+            },
+            "cropSha256": "b264370435f73b364c623717ee1af2128e6f28e8752a49a396902bbdb39a3c56",
+            "cleanupScope": "reference-only crop with Spanish source labels; runtime crop excludes labels and uses Russian DOM before/after labels"
+          },
+          {
+            "sourcePage": 25,
+            "sourceRegion": {
+              "x": 345,
+              "y": 580,
+              "width": 510,
+              "height": 310,
+              "unit": "page-025.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+            "cropDimensions": {
+              "width": 510,
+              "height": 310
+            },
+            "cropSha256": "8ed98c1039e7e2c6892f9a49e232a0ffc2dbb0420e0a75b49eda0f9ca4bb0867",
+            "cleanupScope": "reference-only source impact diagram with Spanish legend; runtime uses source-derived body/car/target crops and Russian DOM phase labels"
+          },
+          {
+            "sourcePage": 26,
+            "sourceRegion": {
+              "x": 330,
+              "y": 500,
+              "width": 560,
+              "height": 620,
+              "unit": "page-026.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 620
+            },
+            "cropSha256": "83c6b795564efd3549826a548ac9f93239dd8f375de60481f81b5fa5b97cb0ee",
+            "cleanupScope": "reference-only infrastructure source crop; runtime photo crops avoid readable Spanish sign text and render details as Russian DOM text"
+          },
+          {
+            "sourcePage": 27,
+            "sourceRegion": {
+              "x": 330,
+              "y": 420,
+              "width": 560,
+              "height": 650,
+              "unit": "page-027.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 650
+            },
+            "cropSha256": "8d836b2f56d1985e017a4a77bf43889649996347e1228226bc5aba55ba1e4361",
+            "cleanupScope": "reference-only source crop for wayfinding, school routes, and Sube y Baja; runtime localizes text-bearing visuals as DOM/CSS"
+          },
+          {
+            "sourcePage": 28,
+            "sourceRegion": {
+              "x": 330,
+              "y": 430,
+              "width": 560,
+              "height": 720,
+              "unit": "page-028.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 720
+            },
+            "cropSha256": "49b7a5b344a453c2baff73d3ca98d586a3aba71bdf1f8a96e7a0c211e472b384",
+            "cleanupScope": "reference-only source crop for pedestrian interventions and priority-area map; runtime map crop excludes Spanish legend and footer URL"
+          },
+          {
+            "sourcePage": 29,
+            "sourceRegion": {
+              "x": 330,
+              "y": 420,
+              "width": 560,
+              "height": 620,
+              "unit": "page-029.jpg px"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+            "cropDimensions": {
+              "width": 560,
+              "height": 620
+            },
+            "cropSha256": "da3069026c05e1e1c826a83181969f02ce7801133514ca7bd809442097451bc8",
+            "cleanupScope": "reference-only source crop for restrictions, mode icons, and Zona 30; runtime signs and labels are Russian DOM text"
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch1-pedestrian-priority.ts",
+            "assetKind": "native-dom-text-and-pedestrian-priority-visual-data",
+            "width": 760,
+            "height": 1800,
+            "sha256": "98e7a3a2bd0c764ce0d21c9bb471566a77d1ced9ae818aa5d5be5654c8057f2f",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
+            "assetKind": "source-derived-nontext-before-after-photo-pair",
+            "width": 520,
+            "height": 260,
+            "sha256": "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
+            "assetKind": "source-derived-nontext-impact-body-artwork",
+            "width": 110,
+            "height": 275,
+            "sha256": "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
+            "assetKind": "source-derived-nontext-impact-car-artwork",
+            "width": 260,
+            "height": 90,
+            "sha256": "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
+            "assetKind": "source-derived-nontext-impact-target-artwork",
+            "width": 70,
+            "height": 70,
+            "sha256": "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+            "assetKind": "source-derived-nontext-priority-street-photo",
+            "width": 170,
+            "height": 150,
+            "sha256": "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+            "assetKind": "source-derived-nontext-pedestrian-street-photo",
+            "width": 245,
+            "height": 150,
+            "sha256": "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+            "assetKind": "source-derived-nontext-school-route-photo",
+            "width": 245,
+            "height": 145,
+            "sha256": "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+            "assetKind": "source-derived-nontext-pedestrian-intervention-photo",
+            "width": 245,
+            "height": 120,
+            "sha256": "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+            "assetKind": "source-derived-map-with-dom-russian-legend",
+            "width": 410,
+            "height": 390,
+            "sha256": "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+            "assetKind": "source-derived-nontext-zone30-photo",
+            "width": 245,
+            "height": 125,
+            "sha256": "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
+            "assetKind": "source-derived-nontext-circulation-icon-row",
+            "width": 470,
+            "height": 58,
+            "sha256": "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3",
+            "containsText": false,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "pedestrian-priority-visual-blocks-responsive-fit",
+            "status": "pass",
+            "evidence": "Focused Playwright verifies comparison, impact diagram, infrastructure cards, map, restriction signs, circulation icons, and Zone 30 card fit desktop and mobile without document-level overflow."
+          },
+          {
+            "id": "pedestrian-priority-russian-dom-labels-selectable",
+            "status": "pass",
+            "evidence": "Before/after labels, impact phases, card labels, map legend, restriction sign text, and circulation labels are selectable Russian DOM text."
+          },
+          {
+            "id": "pedestrian-priority-no-visible-spanish-runtime-assets",
+            "status": "pass",
+            "evidence": "Runtime image crops avoid Spanish source labels; Spanish full/source crops are stored under validation only."
+          },
+          {
+            "id": "ordinary-prose-no-horizontal-overflow",
+            "status": "pass",
+            "evidence": "Playwright checks ordinary prose and list blocks against desktop/mobile viewports."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF/page raster, raw page route, visible Spanish learner label, remote asset, broad mask, DOM plate over source crop, or fake pending content."
+        },
+        "visualReviewNotes": [
+          "Source pages 24-29 were visually inspected from local page renders before crop creation.",
+          "Page 24 before/after source labels are localized as DOM text and the runtime photo crop excludes ANTES/DESPUÉS.",
+          "Page 25 impact diagram keeps source body/car/target artwork with Russian phase labels and the 40 km/h RACE/GOODYEAR note.",
+          "Pages 26-29 use source-derived non-text crops where possible and localized DOM/CSS visuals where source photos or signs contain readable Spanish text.",
+          "The priority-area map crop excludes the source legend and footer URL; the legend is Russian DOM text while street names remain contextual map names."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch1-bicycle",
