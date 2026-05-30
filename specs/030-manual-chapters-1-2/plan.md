@@ -2,109 +2,126 @@
 
 ## Summary
 
-Continue the accepted native `Руководство` conversion model from the Introduction into Chapter 1 and Chapter 2. Use one shared prerequisite PR for page-routing/schema/checker infrastructure, then one page/content-page PR for each source page `21-56`, merging every page separately with page-specific visual evidence.
+Continue the accepted native `Руководство` conversion model from the Introduction into Chapter 1 and Chapter 2 using section-based website pages. The corrected unit is one source-`Índice` topic per website page and one PR per website section page. Source PDF pages are QA/source metadata only. Divider-only source PDF pages `21` and `43` are skipped as standalone site pages.
 
 ## Technical Context
 
 - runtime: static local-first React + TypeScript + Vite app, Docker-served for local runtime.
-- dependencies: existing local toolchain; no runtime backend, remote assets, remote fonts, live AI, or PDF renderer.
-- product paths likely touched by implementation: `src/App.tsx`, `src/styles.css`, `src/data/pandemiaVialSection.ts` or a successor manual-guide data module, `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/`, `tests/`, `tests/e2e/`, optional visual checker scripts, and this feature memory.
-- source/reference paths: `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json`, `layout.ru.json`, `navigation.ru.json`, local renders `page-021.jpg` through `page-056.jpg`, and the archived official PDF SHA `69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e`.
-- latest-main base evidence: Orchestrator provided `origin/main` at `b82794b42c6661af8ff40e361a138e0ef074fc6c`; implementation slices must verify latest `origin/main` again before branch/worktree creation.
-- assigned isolated worktree/branch for Architect planning: `/Users/chap/devel/cabadrive-worktrees/030-manual-chapters-1-2`, `codex/030-manual-chapters-1-2`.
+- dependencies: existing local toolchain; no runtime backend, remote assets, remote fonts, live AI, analytics, or PDF renderer.
+- likely implementation paths: `src/App.tsx`, `src/styles.css`, manual-guide data modules, `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/`, `tests/`, `tests/e2e/`, visual/source-fidelity checker scripts, and this feature memory.
+- source/reference paths: `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/manual.ru.json`, `layout.ru.json`, `navigation.ru.json`, local source page renders, and official PDF SHA `69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e`.
+- corrected planning base evidence: Orchestrator provided `origin/main` at `7a07034d8a9380cbe83b9403a6a9aa7bc73dfa50`.
+- assigned correction worktree/branch: `/Users/chap/devel/cabadrive-worktrees/030-section-requirement-correction`, `codex/030-section-requirement-correction`.
 - cleanup applicability: not applicable to Architect planning; no cleanup is authorized.
 
 ## Scope Boundaries
 
-- in scope: Chapter 1 pages `21-42`, Chapter 2 pages `43-56`, source-`Índice` navigation integration, page-level routes/placeholders, local source artwork/crops, Russian native text, tests, visual checker evidence, process memory.
-- out of scope: Chapters 3-5, annexes, practice-question changes, old manual-reader replacement outside what is required for `Руководство`, cleanup, merge actions by Architect.
+- in scope: ten Chapter 1/2 website section pages, source-`Índice` navigation integration, section-level routes/placeholders, local source artwork/crops, Russian native text, tests, visual checker evidence, process memory, and any required section-registry/shared-checker correction.
+- out of scope: standalone divider-only pages `21` and `43`, source-PDF-page route/content PRs, Chapters 3-5, annexes, practice-question changes, old manual-reader expansion, cleanup, merge actions by Architect.
 - role-routing constraints: every file-changing implementation starts with Orchestrator assignment. Non-Orchestrator agents stop on new repository-changing requests and do not self-promote.
-- recovery constraints: if direct edits occur before routing or prerequisites, the agent stops, reports, preserves sibling/user work, and waits for Orchestrator/user disposition.
 - sibling-process coordination: preserve feature `029-pandemia-vial-section` decisions, `docs_project/project/frontend/manual-conversion-guidelines.md`, existing Introduction hashes/routes, sibling worktrees, and the root untracked `tmp_repair_page18_center.swift`.
 
 ## Constitution Check
 
-- Spec-first: complete `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` are required before implementation.
-- Testable boundaries: page data, route coverage, forbidden patterns, source-artwork metadata, visual checker output, and Playwright assertions must be testable per page.
-- PR-only: no direct push to `main`; one page/content page per implementation PR.
-- Latest-main isolation: every shared/page slice starts from latest verified `main`; unverified/fetch-failed base is a blocker or documented fallback.
+- Spec-first: complete `feature-request.md`, corrected `spec.md`, corrected `plan.md`, and corrected `tasks.md` are required before implementation continues.
+- Testable boundaries: section data, route coverage, forbidden patterns, source-artwork metadata, visual checker output, and Playwright assertions must be testable per section.
+- PR-only: no direct push to `main`; one website section page per implementation PR.
+- Latest-main isolation: every shared/section slice starts from latest verified `main`; unverified/fetch-failed base is a blocker or documented fallback.
 - Final validation loop: Orchestrator invokes final Architect validation, then final Analyst validation after Architect passes.
-- Simplicity: the shared prerequisite is allowed to avoid duplicating page-route/checker infrastructure across 36 page PRs; no additional abstraction is accepted without `plan.md`/process-memory justification.
+- Simplicity: one shared correction/prerequisite PR is allowed only to prevent duplicating section registry/route/checker infrastructure across section PRs.
 - Deployability: required checks and local preflight/Docker verification remain gates before merge readiness.
 - Active-model stop condition: Architect writes only Architect-owned artifacts in this assignment.
-- Complete feature-memory prerequisite: Implementation Agent must confirm `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md`.
 - Sibling-work preservation: every slice records parallel-work warning and avoids dirty/untracked/sibling mutation.
 
 ## Cycle And PR-Set Tracking
 
-- Work cycle boundary: feature `030-manual-chapters-1-2` from this planning branch through all accepted PR slices, final validation, completion, or escalation.
+- Work cycle boundary: feature `030-manual-chapters-1-2` from this corrected planning branch through all accepted PR slices, final validation, completion, or escalation.
 - Cycle PR set recording location: `tasks.md` section `Cycle PR Set`, with matching PR body notes recommended for each PR.
-- PR slice fields: `purpose`, `source page`, `branch`, `PR metadata`, `head SHA`, `status`, `evidence`, `merged?`, `included in final validation`.
-- Analyst handoff handling: the planning worktree remains planning-only. Orchestrator may reuse it only for role-appropriate planning/final-validation notes, not implementation unless explicitly reassigned.
-- Additional task-slice startup: Orchestrator fetches/verifies `origin/main`, records base SHA, creates one fresh isolated worktree/branch per shared/page slice, warns about parallel work, and requires no sibling mutation.
+- PR slice fields: `purpose`, `website section key`, `source range metadata`, `branch`, `PR metadata`, `head SHA`, `status`, `evidence`, `merged?`, `included in final validation`.
+- Source PDF pages are recorded as source range metadata inside each section row, not as PR rows.
+- Analyst/Architect planning branches remain planning-only unless Orchestrator explicitly assigns a later role-appropriate implementation slice.
+- Additional task-slice startup: Orchestrator fetches/verifies `origin/main`, records base SHA, creates one fresh isolated worktree/branch per shared/section slice, warns about parallel work, and requires no sibling mutation.
 
 ## PR Slicing Plan
 
-Recommended total: 37 PRs.
+Recommended implementation sequence: one shared correction/prerequisite PR if current runtime/checkers still encode page-based pending registry, then ten section PRs.
 
-1. Shared prerequisite PR, no converted Chapter 1/2 page content:
-   - establish Chapter 1/2 page-route model under `Руководство`;
-   - add pending page registry for pages `21-56`;
-   - add or generalize page content schema, visual-artwork metadata shape, style-token registry, and source-fidelity checker harness;
-   - add tests that pages can be pending without fake content and that old manual viewer/PDF patterns remain forbidden.
-2. Page PRs `21` through `56`, one source page/content page per PR:
-   - branch from latest verified `main`, normally after the shared prerequisite and any previous conflicting page PRs have merged;
-   - implement only that page's content, page-local source crops/assets, page-local tests/checker fixtures, screenshot evidence, and process-memory entry;
-   - update navigation from pending to implemented only for that page;
+1. Shared correction/prerequisite PR, no converted Chapter 1/2 section content:
+   - replace any source-PDF-page registry assumptions with section registry entries;
+   - ensure source ranges are metadata arrays/ranges inside section records;
+   - ensure divider-only pages `21` and `43` are not implemented/pending learner pages;
+   - update route/schema/checker terminology from page-based to section-based;
+   - retain guards against runtime PDF viewer, full-page raster, duplicate `Руководство 4R`, side-by-side translation, remote assets, broad masks/plates, fake content, forbidden full-page image shortcuts, and visible Spanish;
+   - keep visual-evidence schema capable of multiple source regions/pages per section.
+2. Section PRs, one source-`Índice` topic per PR:
+   - branch from latest verified `main`, normally after the shared correction/prerequisite and any previous conflicting section PRs have merged;
+   - implement only that section's content, section-local source crops/assets, section-local tests/checker fixtures, screenshot evidence, and process-memory entry;
+   - update navigation from pending to implemented only for that section;
    - record merge-readiness evidence before Orchestrator finalization.
 
-Default merge order is page order, `21 -> 56`, because adjacent pages often share topic-local navigation/data files and ordered rollout keeps process memory easy to audit. Orchestrator may parallelize non-overlapping page PRs only after verifying latest-main base and conflict safety.
+Default merge order follows source `Índice` order:
 
-## Page Route And Navigation Approach
+1. `ch1-cities-for-people`
+2. `ch1-sustainable-mobility`
+3. `ch1-pedestrian-priority`
+4. `ch1-bicycle`
+5. `ch1-public-transport-system`
+6. `ch1-shared-trip`
+7. `ch2-legal-responsibility`
+8. `ch2-required-documents`
+9. `ch2-incident-obligations`
+10. `ch2-scoring`
+
+Orchestrator may parallelize non-overlapping section PRs only after verifying latest-main base and conflict safety.
+
+## Route And Navigation Approach
 
 - Keep `Руководство` as the visible destination.
 - Keep existing Introduction hashes working.
-- Represent Chapter 1 and Chapter 2 as active top-level groups under the full source `Índice` tree.
-- Represent source topics as children under the chapters, and implemented page/content-page entries as ordered page children or route anchors under the relevant topic.
-- Recommended page route id format: `manual-page-021` through `manual-page-056`, with stable aliases or hash routes only if the implementation already has a compatible pattern.
-- Page numbers remain source metadata and secondary navigation, not the sole primary UI.
-- Chapter divider pages `21` and `43` belong directly under their chapter as chapter-opening pages.
+- Represent Chapter 1 and Chapter 2 as active source-`Índice` groups.
+- Represent each substantive source topic as one website section page under its chapter.
+- Recommended route ids are source topic ids, or stable existing aliases that map one-to-one to those ids.
+- Source PDF page numbers remain metadata for source references, screenshots, crops, and tests.
+- Divider-only source PDF pages `21` and `43` are not routes. Their chapter titles appear through chapter group headings and section context.
+- PR #175 / `page-021` must not merge in its current divider-page form. Orchestrator should close/supersede it or route a replacement that implements a real section page and updates PR title/body/process memory accordingly.
 
 ## Content And Visual Strategy
 
-- Start from source inspection for each page: `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local page render, and official PDF when region/crop confirmation is needed.
-- Use the existing approved Russian translation as source material, then simplify only locally for learner clarity.
-- Preserve source order and ticket-critical detail. If a detail appears legally or exam relevant, keep it unless Architect explicitly disposes it.
-- Convert prose to native responsive DOM flow. Do not preserve PDF column widths when they make text cramped or scroll horizontally.
+- Start from source inspection for each section: `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source renders across the full section range, and official PDF when region/crop confirmation is needed.
+- Use existing approved Russian translation as source material, then simplify only locally for learner clarity.
+- Preserve source section order and ticket-critical detail. If a detail appears legal, numeric, safety-critical, document-related, or exam relevant, keep it unless Architect explicitly disposes it.
+- Convert prose to native responsive DOM flow. Do not preserve PDF column widths when they make text cramped or force ordinary prose to scroll horizontally.
 - Preserve meaningful source visuals with local crops or visually indistinguishable reconstruction. Full-page source renders are reference/extraction inputs only.
 - For text-bearing artwork, clean only the source text area at glyph/local-pixel level where feasible, preserve surrounding shapes/connectors/edges, and overlay selectable Russian DOM/SVG labels.
-- Omit page numbers, footnote mechanics, source clutter, and book-only decoration when they do not help exam learning. For legal/source footnotes that carry exam-relevant law/document details, convert the substance into learner-facing notes or citations without preserving the footnote marker as decoration.
-- Record style tokens for recurring Chapter 1/2 block types: chapter divider, source-topic page header, two-column prose converted to responsive flow, blue/legal callout, warning/recommendation, sign/table row, pictogram figure, infographic label, legal document list, emergency checklist, contact/resource list, closing slogan.
+- Omit page numbers, footnote mechanics, source clutter, and book-only decoration when they do not help exam learning. Convert exam-relevant footnote substance into learner-facing notes or citations without preserving the marker as decoration.
+- Record style tokens for recurring Chapter 1/2 block types: section header, two-column prose converted to responsive flow, blue/legal callout, warning/recommendation, sign/table row, pictogram figure, infographic label, legal document list, emergency checklist, contact/resource list, closing slogan.
 
 ## Infographic And Artwork Quality Gate
 
-Every page PR has a visual gate. Pages with diagrams, signs, pictograms, tables, photos, or infographic-like callouts require strict evidence:
+Every section PR has a visual gate. Sections with diagrams, signs, pictograms, tables, photos, contact/resource layouts, or infographic-like callouts require strict evidence:
 
-- source-region/crop metadata with page number, region coordinates, asset path, dimensions/hash when practical, cleanup status, and visible-Spanish status;
+- source-region/crop metadata with section id, source page number(s), region coordinates, asset path, dimensions/hash when practical, cleanup status, and visible-Spanish status;
 - source screenshot/reference and Russian screenshot at desktop and mobile, plus narrow/high-risk viewport when fixed visuals are present;
 - bounding-box checks for label fit, no overlap, no clipping, no layout overflow, and source-like relationships;
 - no generic icon replacement, redesigned diagram, broad mask, DOM plate, color-matched rectangle, clipped crop box, distorted source-piece assembly, or visible Spanish;
-- visual checker pass/fail report that names any manual visual review notes, not just an AI-written summary.
+- visual checker pass/fail report that names manual visual review notes, not just an AI-written summary.
 
 ## Verification
 
 | Acceptance criterion | Evidence |
 | --- | --- |
-| One page per PR | PR diff scope, `tasks.md` cycle PR set row, Review Agent scope check |
-| Source-`Índice` hierarchy | content tests for Chapter 1/2 groups, topic/page placement, pending/implemented state |
-| Native Russian text | DOM tests, Playwright selection/computed-style checks, no rasterized text-only page |
+| One website section page per PR | PR diff scope, `tasks.md` cycle PR set row, Review Agent scope check |
+| No source-PDF-page splitting | section registry/tests, PR title/body, source range metadata |
+| Divider pages skipped | content/navigation tests prove no standalone pages for source PDF pages `21` and `43` |
+| Source-`Índice` hierarchy | content tests for Chapter 1/2 groups, topic placement, pending/implemented section state |
+| Native Russian text | DOM tests, Playwright selection/computed-style checks, no rasterized text-only section |
 | Responsive prose | Playwright desktop/narrow/mobile bounding-box checks and screenshots |
 | Source-faithful visuals | visual checker metadata, source/Russian screenshots, crop hashes/regions, bounding-box checks |
 | No forbidden runtime patterns | content tests scanning for PDF viewer, full-page raster base, side-by-side translation, remote URLs, masks/plates |
-| Legal/document detail retention | content tests or review evidence comparing source facts/numbers/obligations to Russian page content |
+| Legal/document/detail retention | content tests or review evidence comparing source facts/numbers/obligations to Russian section content |
 | Local-first runtime | `pnpm run build`, `pnpm run preflight`, Docker `make build`, isolated `make up`, browser screenshot/check, `make down` |
 | Latest-main startup | Orchestrator slice assignment and Implementation Agent baseline `git status`/base evidence |
-| Cycle PR set | `tasks.md` rows for shared prerequisite and pages `21-56` |
+| Cycle PR set | `tasks.md` rows for shared prerequisite/correction and ten section PRs |
 | Final Architect validation | Architect-owned validation notes after all PR slices appear complete |
 | Final Analyst validation | Analyst-owned validation notes after Architect pass |
 | Effective content head and current-head guard | matching SHA markers and Orchestrator read-only current-PR-head guard if evidence-only commits follow validation |
@@ -112,22 +129,24 @@ Every page PR has a visual gate. Pages with diagrams, signs, pictograms, tables,
 | Return limits | Architect return count `0-10`, Analyst return count `0-5`, or escalation evidence |
 | Merge gates | required checks from `.unicorn-hub/config.json`: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`, plus review/conflict/process-memory gates |
 
-Per page recommended commands:
+Per section recommended commands:
 
 ```bash
+node scripts/manual-guide-source-fidelity.mjs
+node --test tests/content-manual-guide-chapters.test.mjs
 node --test tests/content-pandemia-vial-section.test.mjs
 pnpm run validate:content
 pnpm run test
 pnpm run build
-pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual|Руководство|page 0NN"
+pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual|Руководство|<section-key>"
 pnpm run preflight
 make build
-COMPOSE_PROJECT_NAME=cabadrive-030-page-NNN CABADRIVE_HOST_PORT=<free-port> make up
+COMPOSE_PROJECT_NAME=cabadrive-030-<section-key> CABADRIVE_HOST_PORT=<free-port> make up
 make down
 git diff --check
 ```
 
-Implementation Agent may substitute a newer focused checker/test name created by the shared prerequisite PR, but must record the exact command and result.
+Implementation Agent may substitute a newer focused checker/test name created by the shared correction/prerequisite PR, but must record the exact command and result.
 
 ## Cleanup Planning
 
@@ -141,8 +160,9 @@ Implementation Agent may substitute a newer focused checker/test name created by
 
 ## Risks
 
-- 36 page PRs plus a prerequisite PR create coordination overhead. Mitigation: sequential default merge order and explicit cycle PR set.
-- Visual assets may require careful crop cleanup. Mitigation: strict source-region metadata, screenshots, and checker fail cases.
-- Legal/document pages may be over-simplified. Mitigation: detail-retention checks and Review Agent legal/content focus.
-- Shared infrastructure changes after page PRs merge can invalidate earlier visual validation. Mitigation: prerequisite-first architecture and final current-head guard.
-- Existing legacy manual layout code may tempt reuse of full-page raster/mask patterns. Mitigation: explicit forbidden-pattern tests and review requirements.
+- Existing page-based process memory and PRs can mislead future agents. Mitigation: corrected spec/plan/tasks supersede source-PDF-page slicing and record explicit PR #175 disposition.
+- Shared infrastructure may still use page-based registry concepts. Mitigation: route a shared correction/prerequisite PR before section content PRs if needed.
+- Section PRs spanning many source pages are larger than page PRs. Mitigation: strict one-section scope, section-level evidence bundles, and source-range metadata.
+- Visual assets may require careful crop cleanup across multiple pages. Mitigation: strict source-region metadata, screenshots, bounding-box checks, and visible-Spanish gates.
+- Legal/document sections may be over-simplified. Mitigation: detail-retention checks and Review Agent legal/content focus.
+- Shared infrastructure changes after section PRs merge can invalidate earlier visual validation. Mitigation: prerequisite-first architecture and final current-head guard.

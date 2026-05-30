@@ -1,4 +1,4 @@
-import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 import {
   introductionDocumentStyleGuide,
   introductionNavigation,
@@ -6,26 +6,31 @@ import {
 } from "./pandemiaVialSection";
 
 export type ManualGuideStatus = "pending" | "active";
-export type ManualGuidePageStatus = "pending" | "implemented";
+export type ManualGuideSectionStatus = "pending" | "implemented";
 
-export type ManualGuidePageEntry = {
-  id: string;
-  kind: "content-page";
-  labelRu: string;
-  routeHash: string;
+export type ManualGuideSourcePage = {
   sourcePage: number;
-  status: ManualGuidePageStatus;
-  parentChapterId: string;
-  parentTopicId: string | null;
-  placement: "chapter-divider" | "topic-page";
-  source: {
-    manualManifestPointer: string;
-    layoutManifestPointer: string;
-    referenceAsset: string;
+  manualManifestPointer: string;
+  layoutManifestPointer: string;
+  referenceAsset: string;
+};
+
+export type ManualGuideSectionEntry = {
+  id: string;
+  kind: "content-section";
+  labelRu: string;
+  sourceTitleEs: string;
+  routeHash: string;
+  sourcePageRange: {
+    start: number;
+    end: number;
   };
-  pageContentModulePath: string;
-  sourceRegionMetadataStatus: "pending_until_page_pr" | "recorded";
-  visualEvidenceStatus: "pending_until_page_pr" | "recorded";
+  sourcePages: ManualGuideSourcePage[];
+  status: ManualGuideSectionStatus;
+  parentChapterId: string;
+  sectionContentModulePath: string;
+  sourceRegionMetadataStatus: "pending_until_section_pr" | "recorded";
+  visualEvidenceStatus: "pending_until_section_pr" | "recorded";
   pendingReason?: string;
 };
 
@@ -39,7 +44,7 @@ export type ManualGuideNavigationChild = {
   status: ManualGuideStatus;
   routeHash?: string;
   introductionRouteId?: IntroductionRouteId;
-  pages?: ManualGuidePageEntry[];
+  section?: ManualGuideSectionEntry;
 };
 
 export type ManualGuideNavigationEntry = {
@@ -50,41 +55,40 @@ export type ManualGuideNavigationEntry = {
   sourcePage?: number;
   requiredPrintedPage?: number;
   status: ManualGuideStatus;
-  pages?: ManualGuidePageEntry[];
   children?: ManualGuideNavigationChild[];
 };
 
-type ManualGuideRegistryPage = Omit<ManualGuidePageEntry, "kind">;
-type ManualGuideRegistryTopic = {
-  id: string;
-  labelRu: string;
-  sourceTitleEs: string;
-  sourcePage: number;
-  endPage: number;
-  status: ManualGuideStatus;
-  pageIds: string[];
-};
+type ManualGuideRegistrySection = Omit<ManualGuideSectionEntry, "kind">;
 type ManualGuideRegistryChapter = {
   id: string;
   labelRu: string;
   sourceTitleEs: string;
-  sourcePage: number;
-  requiredPrintedPage: number;
-  status: ManualGuideStatus;
-  chapterPageIds: string[];
-  topics: ManualGuideRegistryTopic[];
-};
-type ManualGuideChapter12Registry = {
-  schemaVersion: 1;
-  manualId: string;
-  featureId: string;
-  registryScope: string;
-  pageRange: {
+  sourcePageRange: {
     start: number;
     end: number;
   };
+  requiredPrintedPage: number;
+  status: ManualGuideStatus;
+  sectionIds: string[];
+};
+type ManualGuideChapter12Registry = {
+  schemaVersion: 2;
+  manualId: string;
+  featureId: string;
+  registryScope: string;
+  sourcePageRange: {
+    start: number;
+    end: number;
+  };
+  skippedSourcePages: {
+    sourcePage: number;
+    reason: string;
+    parentChapterId: string;
+    sourceTitleEs: string;
+    disposition: string;
+  }[];
   chapters: ManualGuideRegistryChapter[];
-  pages: ManualGuideRegistryPage[];
+  sections: ManualGuideRegistrySection[];
 };
 
 export type ManualGuideContentBlock =
@@ -119,11 +123,11 @@ export type ManualGuideContentBlock =
       captionRu?: string;
     };
 
-export type ManualGuidePageContent = {
+export type ManualGuideSectionContent = {
   id: string;
-  pageId: string;
+  sectionId: string;
   titleRu: string;
-  sourcePage: number;
+  sourcePages: number[];
   sourceTitleEs: string;
   status: "implemented";
   styleTokenFamilies: string[];
@@ -138,30 +142,33 @@ export type ManualGuidePageContent = {
 
 const chapter12Registry = manualGuideChapter12Registry as ManualGuideChapter12Registry;
 
-function toManualPageEntry(page: ManualGuideRegistryPage): ManualGuidePageEntry {
+function toManualSectionEntry(section: ManualGuideRegistrySection): ManualGuideSectionEntry {
   return {
-    ...page,
-    kind: "content-page"
+    ...section,
+    kind: "content-section"
   };
 }
 
-export const chapter12ManualGuidePages = chapter12Registry.pages.map(toManualPageEntry);
-export const manualGuidePageById = new Map(chapter12ManualGuidePages.map((page) => [page.id, page]));
-export const manualGuidePageByHash = new Map(chapter12ManualGuidePages.map((page) => [page.routeHash, page]));
+export const chapter12ManualGuideSections = chapter12Registry.sections.map(toManualSectionEntry);
+export const manualGuideSectionById = new Map(chapter12ManualGuideSections.map((section) => [section.id, section]));
+export const manualGuideSectionByHash = new Map(chapter12ManualGuideSections.map((section) => [section.routeHash, section]));
 
-function pagesForIds(pageIds: string[]) {
-  return pageIds.map((pageId) => {
-    const page = manualGuidePageById.get(pageId);
-    if (!page) throw new Error(`Missing manual guide page registry entry ${pageId}`);
-    return page;
-  });
+function sectionForId(sectionId: string) {
+  const section = manualGuideSectionById.get(sectionId);
+  if (!section) throw new Error(`Missing manual guide section registry entry ${sectionId}`);
+  return section;
 }
 
-export const implementedManualGuidePages: ManualGuidePageContent[] = [];
-export const manualGuidePageContentById = new Map(implementedManualGuidePages.map((page) => [page.pageId, page]));
+function sourcePageLabel(section: ManualGuideSectionEntry) {
+  if (section.sourcePageRange.start === section.sourcePageRange.end) return String(section.sourcePageRange.start);
+  return `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
+}
+
+export const implementedManualGuideSections: ManualGuideSectionContent[] = [];
+export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
 export const manualGuideDocumentStyleTokens = {
-  id: "manual-guide-document-style-v1",
+  id: "manual-guide-document-style-v2",
   inherits: introductionDocumentStyleGuide.id,
   sharedTokens: introductionDocumentStyleGuide.tokens,
   blockFamilies: [
@@ -176,9 +183,9 @@ export const manualGuideDocumentStyleTokens = {
       tokenSource: "introductionDocumentStyleGuide.tokens.callout"
     },
     {
-      id: "manual-chapter-divider",
-      description: "Native chapter-opening page treatment for source divider pages such as manual-page-021 and manual-page-043.",
-      tokenSource: "manual-guide-document-style-v1"
+      id: "manual-section-heading",
+      description: "Native section-opening treatment for source Índice topics; divider-only source pages stay navigation metadata only.",
+      tokenSource: "manual-guide-document-style-v2"
     },
     {
       id: "manual-source-artwork",
@@ -188,23 +195,24 @@ export const manualGuideDocumentStyleTokens = {
     {
       id: "manual-legal-detail",
       description: "Dense legal/document/responsibility blocks that preserve numbers, document names, obligations, and exceptions.",
-      tokenSource: "manual-guide-document-style-v1"
+      tokenSource: "manual-guide-document-style-v2"
     }
   ],
   rules: [
-    "Pending pages expose only disabled navigation metadata and no article body or fake placeholder content.",
-    "Implemented pages must provide source-region metadata, local asset metadata, screenshot evidence, visible-Spanish status, and checker pass/fail output.",
+    "Pending sections expose only disabled navigation metadata and no article body or fake placeholder content.",
+    "Implemented sections must provide source-region metadata for each meaningful source page/region, local asset metadata, screenshot evidence, visible-Spanish status, and checker pass/fail output.",
     "Normal prose uses shared Introduction article typography and selectable DOM text.",
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
+    "Divider-only source PDF pages 21 and 43 are skipped as standalone learner pages/routes/modules.",
     "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, and side-by-side translation layouts are forbidden."
   ]
 } as const;
 
 export const manualGuideVisualFidelityEvidenceFormat = {
-  id: "manual-guide-source-fidelity-evidence-v1",
-  requiredImplementedPageFields: [
-    "pageId",
-    "sourcePage",
+  id: "manual-guide-source-fidelity-evidence-v2",
+  requiredImplementedSectionFields: [
+    "sectionId",
+    "sourcePages",
     "sourceRegionMetadata",
     "localAssetMetadata",
     "visibleSpanishStatus",
@@ -216,17 +224,18 @@ export const manualGuideVisualFidelityEvidenceFormat = {
     "visualReviewNotes",
     "checkerResult"
   ],
-  pendingPageFields: [
+  pendingSectionFields: [
     "id",
     "routeHash",
-    "sourcePage",
+    "sourcePageRange",
+    "sourcePages",
     "status",
-    "source.manualManifestPointer",
-    "source.layoutManifestPointer",
-    "source.referenceAsset",
+    "sectionContentModulePath",
     "sourceRegionMetadataStatus",
     "visualEvidenceStatus"
   ],
+  sourceRegionMetadataFields: ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope"],
+  localAssetMetadataFields: ["assetPath", "assetKind", "width", "height", "sha256", "containsText", "visibleSpanish"],
   forbiddenRuntimePatterns: [
     "runtime PDF viewer",
     "full-page raster base",
@@ -234,30 +243,53 @@ export const manualGuideVisualFidelityEvidenceFormat = {
     "side-by-side Spanish/Russian translation",
     "remote manual assets",
     "broad masks or DOM plates",
-    "fake pending-page content"
+    "fake pending-section content",
+    "raw source-PDF-page guide route"
   ]
 } as const;
 
-const chapter12NavigationEntries: ManualGuideNavigationEntry[] = chapter12Registry.chapters.map((chapter) => ({
-  id: chapter.id,
-  kind: "group",
-  labelRu: chapter.labelRu,
-  sourceTitleEs: chapter.sourceTitleEs,
-  sourcePage: chapter.sourcePage,
-  requiredPrintedPage: chapter.requiredPrintedPage,
-  status: chapter.status,
-  pages: pagesForIds(chapter.chapterPageIds),
-  children: chapter.topics.map((topic) => ({
-    id: topic.id,
+function childForSection(section: ManualGuideSectionEntry): ManualGuideNavigationChild {
+  return {
+    id: section.id,
     kind: "topic",
-    labelRu: topic.labelRu,
-    sourceTitleEs: topic.sourceTitleEs,
-    sourcePage: topic.sourcePage,
-    endPage: topic.endPage,
-    status: topic.status,
-    pages: pagesForIds(topic.pageIds)
+    labelRu: section.labelRu,
+    sourceTitleEs: section.sourceTitleEs,
+    sourcePage: section.sourcePageRange.start,
+    endPage: section.sourcePageRange.end,
+    status: section.status === "implemented" ? "active" : "pending",
+    routeHash: section.routeHash,
+    section
+  };
+}
+
+const chapter12NavigationEntries: ManualGuideNavigationEntry[] = chapter12Registry.chapters.map((chapter) => {
+  const sections = chapter.sectionIds.map(sectionForId);
+  return {
+    id: chapter.id,
+    kind: "group",
+    labelRu: chapter.labelRu,
+    sourceTitleEs: chapter.sourceTitleEs,
+    sourcePage: chapter.sourcePageRange.start,
+    requiredPrintedPage: chapter.requiredPrintedPage,
+    status: chapter.status,
+    children: sections.map(childForSection)
+  };
+});
+
+function sourcePageRangeDescription(section: ManualGuideSectionEntry) {
+  return `source pages ${sourcePageLabel(section)}`;
+}
+
+export const manualGuideChapter12SectionSummary = {
+  registryScope: chapter12Registry.registryScope,
+  sourcePageRange: chapter12Registry.sourcePageRange,
+  skippedSourcePages: chapter12Registry.skippedSourcePages,
+  expectedSectionIds: chapter12ManualGuideSections.map((section) => section.id),
+  sourcePageRanges: chapter12ManualGuideSections.map((section) => ({
+    sectionId: section.id,
+    sourcePages: sourcePageRangeDescription(section)
   }))
-}));
+} as const;
 
 function pendingTopic(id: string, labelRu: string, sourceTitleEs: string): ManualGuideNavigationChild {
   return {

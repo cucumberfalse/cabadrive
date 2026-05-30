@@ -32,11 +32,11 @@ import {
 } from "./data/pandemiaVialSection";
 import {
   manualGuideNavigation,
-  manualGuidePageByHash,
-  manualGuidePageById,
-  manualGuidePageContentById,
-  type ManualGuidePageContent,
-  type ManualGuidePageEntry
+  manualGuideSectionByHash,
+  manualGuideSectionById,
+  manualGuideSectionContentById,
+  type ManualGuideSectionContent,
+  type ManualGuideSectionEntry
 } from "./data/manualGuide";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
@@ -1846,18 +1846,24 @@ function IntroductionArticleView({ section }: { section: IntroductionArticleSect
   );
 }
 
-function ManualGuidePageContentView({ content }: { content: ManualGuidePageContent }) {
+function manualGuideSectionSourceLabel(sourcePages: number[]) {
+  if (sourcePages.length === 0) return "Раздел";
+  if (sourcePages.length === 1) return `Источник: страница ${sourcePages[0]}`;
+  return `Источник: страницы ${sourcePages[0]}-${sourcePages[sourcePages.length - 1]}`;
+}
+
+function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
-    <article className="intro-document manual-guide-page" aria-labelledby={`${content.pageId}-title`} data-testid="manual-guide-page" data-manual-page-id={content.pageId}>
+    <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
       <header className="intro-document-header">
-        <p className="eyebrow">Страница {content.sourcePage}</p>
-        <h2 id={`${content.pageId}-title`}>{content.titleRu}</h2>
+        <p className="eyebrow">{manualGuideSectionSourceLabel(content.sourcePages)}</p>
+        <h2 id={`${content.sectionId}-title`}>{content.titleRu}</h2>
       </header>
       <div className="intro-document-flow">
         {content.blocks.map((block) => {
           if (block.kind === "list") {
             return (
-              <section key={block.id} className="intro-doc-block intro-doc-list" data-testid="manual-guide-page-block" data-block-kind={block.kind} data-block-id={block.id}>
+              <section key={block.id} className="intro-doc-block intro-doc-list" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
                 {block.titleRu && <h3>{block.titleRu}</h3>}
                 <ul>
                   {block.itemsRu.map((item) => (
@@ -1869,7 +1875,7 @@ function ManualGuidePageContentView({ content }: { content: ManualGuidePageConte
           }
           if (block.kind === "source-artwork") {
             return (
-              <figure key={block.id} className="manual-guide-source-artwork" data-testid="manual-guide-page-block" data-block-kind={block.kind} data-block-id={block.id}>
+              <figure key={block.id} className="manual-guide-source-artwork" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
                 {block.titleRu && <h3>{block.titleRu}</h3>}
                 <img src={assetUrl(block.assetPath)} alt={block.altRu} data-visible-spanish={block.visibleSpanish} data-cleanup-status={block.cleanupStatus} />
                 {block.captionRu && <figcaption>{block.captionRu}</figcaption>}
@@ -1882,7 +1888,7 @@ function ManualGuidePageContentView({ content }: { content: ManualGuidePageConte
             <Tag
               key={block.id}
               className={`intro-doc-block intro-doc-${block.kind}`}
-              data-testid="manual-guide-page-block"
+              data-testid="manual-guide-section-block"
               data-block-kind={block.kind}
               data-block-id={block.id}
             >
@@ -1895,55 +1901,57 @@ function ManualGuidePageContentView({ content }: { content: ManualGuidePageConte
   );
 }
 
-function manualGuidePageIsAvailable(page: ManualGuidePageEntry) {
-  return page.status === "implemented" && manualGuidePageContentById.has(page.id);
+function manualGuideSectionIsAvailable(section: ManualGuideSectionEntry) {
+  return section.status === "implemented" && manualGuideSectionContentById.has(section.id);
 }
 
 function IntroductionSectionsView({
   selectedEntry,
   onSelectEntry,
-  selectedManualPage,
-  onSelectManualPage
+  selectedManualSection,
+  onSelectManualSection
 }: {
   selectedEntry: IntroductionNavigationEntry;
   onSelectEntry: (entry: IntroductionNavigationEntry) => void;
-  selectedManualPage?: ManualGuidePageEntry;
-  onSelectManualPage: (page: ManualGuidePageEntry) => void;
+  selectedManualSection?: ManualGuideSectionEntry;
+  onSelectManualSection: (section: ManualGuideSectionEntry) => void;
 }) {
   const selectedArticle = selectedEntry.renderer === "article" ? introductionArticleById(selectedEntry.id) : undefined;
-  const selectedManualPageContent = selectedManualPage ? manualGuidePageContentById.get(selectedManualPage.id) : undefined;
+  const selectedManualSectionContent = selectedManualSection ? manualGuideSectionContentById.get(selectedManualSection.id) : undefined;
   const activeGroupId = manualGuideNavigation.find((entry) =>
-    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id || child.pages?.some((page) => page.id === selectedManualPage?.id)) ||
-    entry.pages?.some((page) => page.id === selectedManualPage?.id)
+    entry.children?.some((child) => child.introductionRouteId === selectedEntry.id || child.section?.id === selectedManualSection?.id)
   )?.id;
-  const activeChildId = selectedManualPage?.id ?? selectedEntry.id;
+  const activeChildId = selectedManualSection?.id ?? selectedEntry.id;
 
-  function renderManualPageButton(page: ManualGuidePageEntry) {
-    const isAvailable = manualGuidePageIsAvailable(page);
-    const isActivePage = selectedManualPage?.id === page.id;
-    const pageStatusLabel = isAvailable ? "готово" : "ожидает PR";
+  function renderManualSectionButton(section: ManualGuideSectionEntry) {
+    const isAvailable = manualGuideSectionIsAvailable(section);
+    const isActiveSection = selectedManualSection?.id === section.id;
+    const sectionStatusLabel = isAvailable ? "готово" : "ожидает PR";
+    const sourcePagesLabel = section.sourcePageRange.start === section.sourcePageRange.end
+      ? String(section.sourcePageRange.start)
+      : `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
     return (
       <button
-        key={page.id}
+        key={section.id}
         type="button"
-        className={isActivePage ? "manual-guide-page-button active" : "manual-guide-page-button"}
+        className={isActiveSection ? "manual-guide-section-button active" : "manual-guide-section-button"}
         disabled={!isAvailable}
         aria-disabled={!isAvailable}
-        aria-current={isActivePage ? "page" : undefined}
-        aria-label={`${page.labelRu}: ${pageStatusLabel}`}
-        onClick={() => isAvailable && onSelectManualPage(page)}
-        data-testid={`manual-guide-pending-${page.id}`}
-        data-manual-page-id={page.id}
-        data-route-hash={page.routeHash}
-        data-source-page={page.sourcePage}
-        data-reference-asset={page.source.referenceAsset}
-        data-content-module-path={page.pageContentModulePath}
-        data-source-region-metadata-status={page.sourceRegionMetadataStatus}
-        data-visual-evidence-status={page.visualEvidenceStatus}
-        data-status={page.status}
+        aria-current={isActiveSection ? "page" : undefined}
+        aria-label={`${section.labelRu}: ${sectionStatusLabel}`}
+        onClick={() => isAvailable && onSelectManualSection(section)}
+        data-testid={`manual-guide-pending-section-${section.id}`}
+        data-manual-section-id={section.id}
+        data-route-hash={section.routeHash}
+        data-source-title-es={section.sourceTitleEs}
+        data-source-pages={sourcePagesLabel}
+        data-content-module-path={section.sectionContentModulePath}
+        data-source-region-metadata-status={section.sourceRegionMetadataStatus}
+        data-visual-evidence-status={section.visualEvidenceStatus}
+        data-status={section.status}
       >
-        <span>{page.labelRu}</span>
-        <small>{pageStatusLabel}</small>
+        <span>{section.labelRu}</span>
+        <small>{sectionStatusLabel}</small>
       </button>
     );
   }
@@ -1981,51 +1989,40 @@ function IntroductionSectionsView({
                   <span>{entry.labelRu}</span>
                   {entry.status === "pending" && <small>позже</small>}
                 </summary>
-                {entry.pages && (
-                  <div className="manual-guide-pages" role="list" aria-label={`${entry.labelRu}: страницы`}>
-                    {entry.pages.map((page) => (
-                      <div key={page.id} role="listitem" data-testid={`manual-guide-page-item-${page.id}`}>
-                        {renderManualPageButton(page)}
-                      </div>
-                    ))}
-                  </div>
-                )}
                 {entry.children && (
                   <div className="manual-guide-children" role="list">
                     {entry.children.map((child) => {
                       const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
-                      const isActiveChild = child.introductionRouteId === selectedEntry.id;
+                      const sectionEntry = child.section;
+                      const isActiveChild = child.introductionRouteId === selectedEntry.id && !selectedManualSection;
+                      const isActiveSection = sectionEntry?.id === selectedManualSection?.id;
+                      const isDisabled = sectionEntry ? !manualGuideSectionIsAvailable(sectionEntry) : child.status === "pending" || !introEntry;
                       return (
                         <div
                           key={child.id}
                           role="listitem"
-                          data-testid={child.introductionRouteId ? `manual-guide-route-item-${child.introductionRouteId}` : `manual-guide-pending-item-${child.id}`}
+                          data-testid={child.introductionRouteId ? `manual-guide-route-item-${child.introductionRouteId}` : `manual-guide-section-item-${child.id}`}
                         >
-                          <button
-                            type="button"
-                            className={isActiveChild ? "active" : ""}
-                            disabled={child.status === "pending" || !introEntry}
-                            aria-disabled={child.status === "pending" || !introEntry}
-                            aria-current={isActiveChild ? "page" : undefined}
-                            aria-label={child.labelRu}
-                            onClick={() => introEntry && onSelectEntry(introEntry)}
-                            data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
-                            data-route-hash={child.routeHash}
-                            data-source-title-es={child.sourceTitleEs}
-                            data-source-page={child.sourcePage}
-                            data-status={child.status}
-                          >
-                            <span>{child.labelRu}</span>
-                            {child.status === "pending" && <small>ожидает</small>}
-                          </button>
-                          {child.pages && (
-                            <div className="manual-guide-pages" role="list" aria-label={`${child.labelRu}: страницы`}>
-                              {child.pages.map((page) => (
-                                <div key={page.id} role="listitem" data-testid={`manual-guide-page-item-${page.id}`}>
-                                  {renderManualPageButton(page)}
-                                </div>
-                              ))}
-                            </div>
+                          {sectionEntry ? (
+                            renderManualSectionButton(sectionEntry)
+                          ) : (
+                            <button
+                              type="button"
+                              className={isActiveChild || isActiveSection ? "active" : ""}
+                              disabled={isDisabled}
+                              aria-disabled={isDisabled}
+                              aria-current={isActiveChild || isActiveSection ? "page" : undefined}
+                              aria-label={child.labelRu}
+                              onClick={() => introEntry && onSelectEntry(introEntry)}
+                              data-testid={child.introductionRouteId ? `intro-route-${child.introductionRouteId}` : `manual-guide-pending-${child.id}`}
+                              data-route-hash={child.routeHash}
+                              data-source-title-es={child.sourceTitleEs}
+                              data-source-page={child.sourcePage}
+                              data-status={child.status}
+                            >
+                              <span>{child.labelRu}</span>
+                              {child.status === "pending" && <small>ожидает</small>}
+                            </button>
                           )}
                         </div>
                       );
@@ -2038,9 +2035,9 @@ function IntroductionSectionsView({
         </nav>
 
         <div className="manual-guide-content" data-testid="manual-guide-content">
-          {selectedManualPageContent && <ManualGuidePageContentView content={selectedManualPageContent} />}
-          {!selectedManualPageContent && selectedEntry.renderer === "pandemia" && <PandemiaVialPrototypeView />}
-          {!selectedManualPageContent && selectedEntry.renderer === "article" && selectedArticle && <IntroductionArticleView section={selectedArticle} />}
+          {selectedManualSectionContent && <ManualGuideSectionContentView content={selectedManualSectionContent} />}
+          {!selectedManualSectionContent && selectedEntry.renderer === "pandemia" && <PandemiaVialPrototypeView />}
+          {!selectedManualSectionContent && selectedEntry.renderer === "article" && selectedArticle && <IntroductionArticleView section={selectedArticle} />}
         </div>
       </div>
     </section>
@@ -2865,17 +2862,17 @@ function PrimarySourcesView() {
 export function App() {
   const [view, setView] = useState<View>(() => {
     if (introductionEntryForHash(window.location.hash)) return "pandemia";
-    const manualPageForHash = manualGuidePageByHash.get(window.location.hash);
-    if (manualPageForHash && manualGuidePageIsAvailable(manualPageForHash)) return "pandemia";
+    const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
+    if (manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash)) return "pandemia";
     if (new URLSearchParams(window.location.search).get("legacyManual") === "1") return "manual";
     return "learn";
   });
   const [selectedIntroductionId, setSelectedIntroductionId] = useState<IntroductionRouteId>(() =>
     (introductionEntryForHash(window.location.hash) ?? defaultIntroductionEntry).id
   );
-  const [selectedManualPageId, setSelectedManualPageId] = useState<string | undefined>(() => {
-    const manualPageForHash = manualGuidePageByHash.get(window.location.hash);
-    return manualPageForHash && manualGuidePageIsAvailable(manualPageForHash) ? manualPageForHash.id : undefined;
+  const [selectedManualSectionId, setSelectedManualSectionId] = useState<string | undefined>(() => {
+    const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
+    return manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash) ? manualSectionForHash.id : undefined;
   });
   const [progress, setProgress] = useState(loadProgress);
 
@@ -2884,13 +2881,13 @@ export function App() {
       const introEntry = introductionEntryForHash(window.location.hash);
       if (introEntry) {
         setSelectedIntroductionId(introEntry.id);
-        setSelectedManualPageId(undefined);
+        setSelectedManualSectionId(undefined);
         setView("pandemia");
         return;
       }
-      const manualPageForHash = manualGuidePageByHash.get(window.location.hash);
-      if (manualPageForHash && manualGuidePageIsAvailable(manualPageForHash)) {
-        setSelectedManualPageId(manualPageForHash.id);
+      const manualSectionForHash = manualGuideSectionByHash.get(window.location.hash);
+      if (manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash)) {
+        setSelectedManualSectionId(manualSectionForHash.id);
         setView("pandemia");
         return;
       }
@@ -2912,11 +2909,11 @@ export function App() {
   function selectView(nextView: View) {
     setView(nextView);
     if (nextView === "pandemia") {
-      const selectedManualPage = selectedManualPageId ? manualGuidePageById.get(selectedManualPageId) : undefined;
+      const selectedManualSection = selectedManualSectionId ? manualGuideSectionById.get(selectedManualSectionId) : undefined;
       const entry = introductionEntryById(selectedIntroductionId);
-      const nextUrl = introductionRouteUrl(selectedManualPage?.routeHash ?? entry.routeHash);
+      const nextUrl = introductionRouteUrl(selectedManualSection?.routeHash ?? entry.routeHash);
       if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
-    } else if (introductionEntryForHash(window.location.hash) || manualGuidePageByHash.has(window.location.hash) || new URLSearchParams(window.location.search).has("legacyManual")) {
+    } else if (introductionEntryForHash(window.location.hash) || manualGuideSectionByHash.has(window.location.hash) || new URLSearchParams(window.location.search).has("legacyManual")) {
       const nextUrl = nonIntroductionRouteUrl();
       if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
     }
@@ -2924,22 +2921,22 @@ export function App() {
 
   function selectIntroductionEntry(entry: IntroductionNavigationEntry) {
     setSelectedIntroductionId(entry.id);
-    setSelectedManualPageId(undefined);
+    setSelectedManualSectionId(undefined);
     setView("pandemia");
     const nextUrl = introductionRouteUrl(entry.routeHash);
     if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
   }
 
-  function selectManualPage(page: ManualGuidePageEntry) {
-    if (!manualGuidePageIsAvailable(page)) return;
-    setSelectedManualPageId(page.id);
+  function selectManualSection(section: ManualGuideSectionEntry) {
+    if (!manualGuideSectionIsAvailable(section)) return;
+    setSelectedManualSectionId(section.id);
     setView("pandemia");
-    const nextUrl = introductionRouteUrl(page.routeHash);
+    const nextUrl = introductionRouteUrl(section.routeHash);
     if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) window.history.pushState(null, "", nextUrl);
   }
 
   const selectedIntroductionEntry = introductionEntryById(selectedIntroductionId);
-  const selectedManualPage = selectedManualPageId ? manualGuidePageById.get(selectedManualPageId) : undefined;
+  const selectedManualSection = selectedManualSectionId ? manualGuideSectionById.get(selectedManualSectionId) : undefined;
 
   return (
     <main>
@@ -2975,9 +2972,9 @@ export function App() {
       {view === "pandemia" && (
         <IntroductionSectionsView
           selectedEntry={selectedIntroductionEntry}
-          selectedManualPage={selectedManualPage}
+          selectedManualSection={selectedManualSection}
           onSelectEntry={selectIntroductionEntry}
-          onSelectManualPage={selectManualPage}
+          onSelectManualSection={selectManualSection}
         />
       )}
       {view === "manual" && <Manual4RuedasView />}

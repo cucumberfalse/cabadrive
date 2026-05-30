@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 
 const dataPath = "src/data/pandemiaVialSection.ts";
 const manualGuideDataPath = "src/data/manualGuide.ts";
-const manualGuideRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+const manualGuideRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const appPath = "src/App.tsx";
 const stylesPath = "src/styles.css";
 const dataSource = readFileSync(dataPath, "utf8");
@@ -94,7 +94,7 @@ test("Introduction navigation is driven by four source Index headings, not raw p
   assert.match(introductionAppSource, /data-active-group-id=\{activeGroupId\}/);
   assert.match(introductionAppSource, /data-active-child-id=\{activeChildId\}/);
   assert.match(introductionAppSource, /data-testid=\{child\.introductionRouteId \? `intro-route-\$\{child\.introductionRouteId\}`/);
-  assert.match(introductionAppSource, /aria-current=\{isActiveChild \? "page" : undefined\}/);
+  assert.match(introductionAppSource, /aria-current=\{isActiveChild \|\| isActiveSection \? "page" : undefined\}/);
   assert.match(introductionAppSource, /aria-label=\{child\.labelRu\}/);
   assert.doesNotMatch(introductionAppSource, /data-testid="intro-index-nav"/);
   assert.doesNotMatch(introductionAppSource, /manual-page-button-\$\{entry\.startPage\}|pageNumber|raw page/u);
@@ -130,7 +130,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
   }
 
   assert.match(manualGuideNavigationSource, /status:\s*"pending"/);
-  assert.match(introductionAppSource, /disabled=\{child\.status === "pending" \|\| !introEntry\}/);
+  assert.match(introductionAppSource, /disabled=\{isDisabled\}/);
   assert.match(introductionAppSource, /data-source-title-es=\{child\.sourceTitleEs\}/);
   assert.match(appSource, /> Руководство<\/button>/);
   assert.doesNotMatch(appSource, /> Руководство 4R<\/button>/);

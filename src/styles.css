@@ -948,15 +948,13 @@ small,
 }
 
 .manual-guide-group summary small,
-.manual-guide-children button small,
-.manual-guide-pages button small {
+.manual-guide-children button small {
   color: #70807a;
   font-size: 0.75rem;
   font-weight: 700;
 }
 
-.manual-guide-children,
-.manual-guide-pages {
+.manual-guide-children {
   display: grid;
   gap: 4px;
 }
@@ -965,16 +963,7 @@ small,
   padding: 0 8px 8px 14px;
 }
 
-.manual-guide-pages {
-  padding: 0 8px 8px 24px;
-}
-
-.manual-guide-children > div > .manual-guide-pages {
-  padding: 2px 0 6px 14px;
-}
-
-.manual-guide-children button,
-.manual-guide-pages button {
+.manual-guide-children button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -992,29 +981,17 @@ small,
   text-align: left;
 }
 
-.manual-guide-pages button {
-  min-height: 30px;
-  border-left: 2px solid #dbe4df;
-  border-radius: 0 7px 7px 0;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 5px 8px;
-}
-
-.manual-guide-children button:not(:disabled),
-.manual-guide-pages button:not(:disabled) {
+.manual-guide-children button:not(:disabled) {
   cursor: pointer;
 }
 
-.manual-guide-children button.active,
-.manual-guide-pages button.active {
+.manual-guide-children button.active {
   background: #e2f4ec;
   color: #0f4c3c;
   font-weight: 850;
 }
 
-.manual-guide-children button:disabled,
-.manual-guide-pages button:disabled {
+.manual-guide-children button:disabled {
   color: #8a9993;
 }
 

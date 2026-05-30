@@ -1,27 +1,91 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "030-manual-chapters-1-2",
-  "mode": "shared-prereq-pending-registry",
-  "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json",
-  "requiredPageRange": {
+  "mode": "shared-prereq-pending-section-registry",
+  "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
+  "requiredSourcePageRange": {
     "start": 21,
     "end": 56
   },
-  "pendingPageExpectations": {
+  "skippedSourcePages": [
+    {
+      "sourcePage": 21,
+      "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 43,
+      "reason": "chapter-divider-only"
+    }
+  ],
+  "expectedSectionIds": [
+    "ch1-cities-for-people",
+    "ch1-sustainable-mobility",
+    "ch1-pedestrian-priority",
+    "ch1-bicycle",
+    "ch1-public-transport-system",
+    "ch1-shared-trip",
+    "ch2-legal-responsibility",
+    "ch2-required-documents",
+    "ch2-incident-obligations",
+    "ch2-scoring"
+  ],
+  "expectedSectionRanges": {
+    "ch1-cities-for-people": {
+      "start": 22,
+      "end": 22
+    },
+    "ch1-sustainable-mobility": {
+      "start": 23,
+      "end": 23
+    },
+    "ch1-pedestrian-priority": {
+      "start": 24,
+      "end": 29
+    },
+    "ch1-bicycle": {
+      "start": 30,
+      "end": 38
+    },
+    "ch1-public-transport-system": {
+      "start": 39,
+      "end": 40
+    },
+    "ch1-shared-trip": {
+      "start": 41,
+      "end": 42
+    },
+    "ch2-legal-responsibility": {
+      "start": 44,
+      "end": 45
+    },
+    "ch2-required-documents": {
+      "start": 46,
+      "end": 50
+    },
+    "ch2-incident-obligations": {
+      "start": 51,
+      "end": 55
+    },
+    "ch2-scoring": {
+      "start": 56,
+      "end": 56
+    }
+  },
+  "pendingSectionExpectations": {
     "status": "pending",
     "mustHaveRouteHash": true,
-    "mustHaveReferenceAsset": true,
+    "mustHaveReferenceAssets": true,
     "mustHaveManualAndLayoutPointers": true,
     "mustNotHaveRuntimeContentBlocks": true,
     "mustNotHaveImplementedContentPath": true,
-    "sourceRegionMetadataStatus": "pending_until_page_pr",
-    "visualEvidenceStatus": "pending_until_page_pr"
+    "sourceRegionMetadataStatus": "pending_until_section_pr",
+    "visualEvidenceStatus": "pending_until_section_pr"
   },
-  "implementedPageEvidenceFormat": {
+  "implementedSectionEvidenceFormat": {
     "requiredFields": [
-      "pageId",
-      "sourcePage",
+      "sectionId",
+      "sourcePages",
       "sourceRegionMetadata",
       "localAssetMetadata",
       "visibleSpanishStatus",
@@ -40,13 +104,23 @@
   "forbiddenPatterns": [
     {
       "id": "runtime-pdf-viewer",
-      "description": "Interactive Руководство pages must not use a runtime PDF viewer, PDF.js, iframe, object, or embed.",
+      "description": "Interactive Руководство sections must not use a runtime PDF viewer, PDF.js, iframe, object, or embed.",
       "patterns": ["PDFViewer", "pdfjs", "<iframe", "<object", "<embed"]
     },
     {
       "id": "full-page-raster-base",
-      "description": "Chapter 1/2 pending or implemented interactive pages must not render a full PDF page image as the learner-facing base.",
-      "patterns": ["manual-russian-page-flow", "manual-page-canvas", "page-021.jpg", "page-056.jpg"]
+      "description": "Chapter 1/2 interactive sections must not render a full PDF page image as the learner-facing base.",
+      "patterns": ["manual-russian-page-flow", "manual-page-canvas"]
+    },
+    {
+      "id": "raw-source-page-routes",
+      "description": "Chapter 1/2 guide routing must not expose raw source PDF pages as learner pages.",
+      "patterns": ["#manual-page-021", "#manual-page-043", "manual-page-021.ts", "manual-page-043.ts"]
+    },
+    {
+      "id": "divider-page-implementation",
+      "description": "Divider-only pages 21 and 43 must remain skipped metadata, never implemented learner content.",
+      "patterns": ["manual-guide-pending-manual-page-021", "manual-guide-pending-manual-page-043"]
     },
     {
       "id": "duplicate-manual-destination",
@@ -60,7 +134,7 @@
     },
     {
       "id": "remote-assets",
-      "description": "Manual guide pages and evidence must stay local-first and offline.",
+      "description": "Manual guide sections and evidence must stay local-first and offline.",
       "patterns": ["http://", "https://", "//fonts.googleapis.com", "//cdn."]
     },
     {
@@ -70,15 +144,16 @@
     },
     {
       "id": "fake-pending-content",
-      "description": "Pending pages may expose page metadata and disabled navigation only, never placeholder article bodies.",
+      "description": "Pending sections may expose section metadata and disabled navigation only, never placeholder article bodies.",
       "patterns": ["lorem", "placeholder body", "coming soon article", "fake content"]
     }
   ],
   "sharedPrereqExpectedOutput": {
     "status": "pass",
-    "pendingPages": 36,
-    "implementedPages": 0,
-    "screenshotEvidence": "not_applicable_until_page_pr",
-    "sourceCropEvidence": "not_applicable_until_page_pr"
+    "pendingSections": 10,
+    "implementedSections": 0,
+    "skippedDividerPages": [21, 43],
+    "screenshotEvidence": "not_applicable_until_section_pr",
+    "sourceCropEvidence": "not_applicable_until_section_pr"
   }
 }

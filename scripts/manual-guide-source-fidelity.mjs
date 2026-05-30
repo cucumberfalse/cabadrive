@@ -1,11 +1,11 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const registryPath = process.env.MANUAL_GUIDE_REGISTRY_PATH ?? "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
+const registryPath = process.env.MANUAL_GUIDE_REGISTRY_PATH ?? "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const evidencePath = process.env.MANUAL_GUIDE_EVIDENCE_PATH ?? "content/validation/manual-guide-source-fidelity.evidence.json";
 const appPath = "src/App.tsx";
 const manualGuidePath = process.env.MANUAL_GUIDE_DATA_PATH ?? "src/data/manualGuide.ts";
-const pageModuleRoot = process.env.MANUAL_GUIDE_PAGE_MODULE_ROOT ?? "src/data/manual-pages";
+const sectionModuleRoot = process.env.MANUAL_GUIDE_SECTION_MODULE_ROOT ?? "src/data/manual-sections";
 const stylesPath = "src/styles.css";
 
 function readJson(path) {
@@ -20,8 +20,12 @@ function assertCondition(condition, message, details = {}) {
   }
 }
 
-function pageId(pageNumber) {
-  return `manual-page-${String(pageNumber).padStart(3, "0")}`;
+function sourcePagesForRange(start, end) {
+  return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+}
+
+function sourcePageAssetPath(sourcePage) {
+  return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(sourcePage).padStart(3, "0")}.jpg`;
 }
 
 function sliceSource(source, startMarker, endMarker, sourcePath) {
@@ -30,10 +34,6 @@ function sliceSource(source, startMarker, endMarker, sourcePath) {
   assertCondition(startIndex >= 0, `${sourcePath} is missing scan start marker ${startMarker}`);
   assertCondition(endIndex > startIndex, `${sourcePath} is missing scan end marker ${endMarker} after ${startMarker}`);
   return source.slice(startIndex, endIndex);
-}
-
-function expectedPages(start, end) {
-  return Array.from({ length: end - start + 1 }, (_, index) => start + index);
 }
 
 function isObject(value) {
@@ -83,10 +83,10 @@ function validateNoVisibleSpanishStatus(value, messagePrefix) {
   assertCondition(allowedStatuses.has(status), `${messagePrefix} must record no visible Spanish text`, { value });
 }
 
-function resolvePageContentModulePath(modulePath) {
-  const prefix = "src/data/manual-pages/";
+function resolveSectionContentModulePath(modulePath) {
+  const prefix = "src/data/manual-sections/";
   if (modulePath.startsWith(prefix)) {
-    return join(pageModuleRoot, modulePath.slice(prefix.length));
+    return join(sectionModuleRoot, modulePath.slice(prefix.length));
   }
   return modulePath;
 }
@@ -112,29 +112,38 @@ function assertNoForbiddenPatterns(scanTargets, evidence, extraPatterns = []) {
   }
 }
 
-function validatePendingPage(page, evidence, id) {
-  assertCondition(page.status === evidence.pendingPageExpectations.status, `${id} pending entry must keep pending status`, page);
-  assertCondition(page.sourceRegionMetadataStatus === evidence.pendingPageExpectations.sourceRegionMetadataStatus, `${id} must not invent source-region metadata before implementation`, page);
-  assertCondition(page.visualEvidenceStatus === evidence.pendingPageExpectations.visualEvidenceStatus, `${id} must not invent visual evidence before implementation`, page);
-  for (const forbiddenField of ["blocks", "bodyRu", "contentRu", "implementedContentPath", "screenshotPath", "sourceCropPath", "implementationEvidence", "implementedPageEvidence"]) {
-    assertCondition(!(forbiddenField in page), `${id} pending entry must not contain fake implemented content field ${forbiddenField}`, page);
+function sectionSourcePages(section) {
+  return section.sourcePages.map((entry) => entry.sourcePage);
+}
+
+function validatePendingSection(section, evidence, id) {
+  assertCondition(section.status === evidence.pendingSectionExpectations.status, `${id} pending entry must keep pending status`, section);
+  assertCondition(section.sourceRegionMetadataStatus === evidence.pendingSectionExpectations.sourceRegionMetadataStatus, `${id} must not invent source-region metadata before implementation`, section);
+  assertCondition(section.visualEvidenceStatus === evidence.pendingSectionExpectations.visualEvidenceStatus, `${id} must not invent visual evidence before implementation`, section);
+  for (const forbiddenField of ["blocks", "bodyRu", "contentRu", "implementedContentPath", "screenshotPath", "sourceCropPath", "implementationEvidence", "implementedSectionEvidence", "implementedPageEvidence"]) {
+    assertCondition(!(forbiddenField in section), `${id} pending entry must not contain fake implemented content field ${forbiddenField}`, section);
   }
 }
 
-function validateImplementedPage(page, evidence, id) {
-  assertCondition(page.sourceRegionMetadataStatus === "recorded", `${id} implemented entry must record source-region metadata`, page);
-  assertCondition(page.visualEvidenceStatus === "recorded", `${id} implemented entry must record visual evidence`, page);
-  assertLocalPathExists(resolvePageContentModulePath(page.pageContentModulePath), `${id} implemented page content module`, page);
+function validateImplementedSection(section, evidence, id) {
+  assertCondition(section.sourceRegionMetadataStatus === "recorded", `${id} implemented entry must record source-region metadata`, section);
+  assertCondition(section.visualEvidenceStatus === "recorded", `${id} implemented entry must record visual evidence`, section);
+  assertLocalPathExists(resolveSectionContentModulePath(section.sectionContentModulePath), `${id} implemented section content module`, section);
 
-  const implementedEvidence = page.implementationEvidence ?? page.implementedPageEvidence;
-  const format = evidence.implementedPageEvidenceFormat;
+  const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
+  const format = evidence.implementedSectionEvidenceFormat;
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
-  assertCondition(implementedEvidence.pageId === id, `${id} implementationEvidence.pageId must match the registry entry`, implementedEvidence);
-  assertCondition(implementedEvidence.sourcePage === page.sourcePage, `${id} implementationEvidence.sourcePage must match the registry entry`, implementedEvidence);
+  assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
+  assertCondition(
+    JSON.stringify(implementedEvidence.sourcePages) === JSON.stringify(sectionSourcePages(section)),
+    `${id} implementationEvidence.sourcePages must match the registry entry`,
+    implementedEvidence
+  );
   assertCondition(implementedEvidence.checkerResult === "pass", `${id} implementationEvidence.checkerResult must be pass`, implementedEvidence);
 
+  const allowedSourcePages = new Set(sectionSourcePages(section));
   validateObjectOrArray(implementedEvidence.sourceRegionMetadata, format.sourceRegionMetadataFields, `${id} sourceRegionMetadata`, (entry, label) => {
-    assertCondition(entry.sourcePage === page.sourcePage, `${label}.sourcePage must match the registry entry`, entry);
+    assertCondition(allowedSourcePages.has(entry.sourcePage), `${label}.sourcePage must belong to the section source range`, entry);
     assertLocalPathExists(entry.sourceAssetPath, `${label}.sourceAssetPath`, entry);
   });
   validateObjectOrArray(implementedEvidence.localAssetMetadata, format.localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
@@ -151,115 +160,126 @@ function validateImplementedPage(page, evidence, id) {
   validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
 }
 
-function validatePageRegistry(registry, evidence) {
-  assertCondition(registry.schemaVersion === 1, "Manual guide page registry schemaVersion must be 1");
+function validateSectionRegistry(registry, evidence) {
+  assertCondition(registry.schemaVersion === 2, "Manual guide section registry schemaVersion must be 2");
   assertCondition(registry.manualId === "gcba-manual-vehiculo-4-ruedas-2023", "Manual guide registry must target the GCBA 4-wheel manual");
   assertCondition(registry.featureId === evidence.featureId, "Manual guide registry and evidence feature ids must match");
+  assertCondition(JSON.stringify(registry.sourcePageRange) === JSON.stringify(evidence.requiredSourcePageRange), "Manual guide source page range must match evidence");
 
-  const expected = expectedPages(evidence.requiredPageRange.start, evidence.requiredPageRange.end);
-  assertCondition(registry.pages.length === expected.length, "Manual guide registry must contain exactly one entry per required page", {
-    expected: expected.length,
-    actual: registry.pages.length
+  assertCondition(!("pages" in registry), "Manual guide registry must not expose a raw source-PDF-page pages array");
+  assertCondition(registry.sections.length === evidence.expectedSectionIds.length, "Manual guide registry must contain exactly one entry per expected source Índice section", {
+    expected: evidence.expectedSectionIds.length,
+    actual: registry.sections.length
   });
 
-  const pagesById = new Map(registry.pages.map((page) => [page.id, page]));
-  for (const number of expected) {
-    const id = pageId(number);
-    const page = pagesById.get(id);
-    assertCondition(Boolean(page), `Missing pending manual page registry entry ${id}`);
-    assertCondition(page.sourcePage === number, `${id} sourcePage must match its id`, page);
-    assertCondition(page.routeHash === `#${id}`, `${id} must reserve a stable route hash`, page);
-    assertCondition(page.source.manualManifestPointer === `/pages/${number - 1}`, `${id} manual manifest pointer must target the source page`, page);
-    assertCondition(page.source.layoutManifestPointer === `/pages/${number - 1}`, `${id} layout manifest pointer must target the source page`, page);
-    assertCondition(
-      page.source.referenceAsset === `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(number).padStart(3, "0")}.jpg`,
-      `${id} must reference the local source page render only as evidence`,
-      page
-    );
-    assertCondition(existsSync(page.source.referenceAsset), `${id} reference asset must exist locally`, page);
-    assertCondition(page.pageContentModulePath === `src/data/manual-pages/${id}.ts`, `${id} must reserve a page-local future content module path`, page);
-    if (page.status === "pending") validatePendingPage(page, evidence, id);
-    else if (page.status === "implemented") validateImplementedPage(page, evidence, id);
-    else assertCondition(false, `${id} status must be pending or implemented`, page);
+  const skippedSourcePages = new Set(evidence.skippedSourcePages.map((entry) => entry.sourcePage));
+  assertCondition(JSON.stringify(registry.skippedSourcePages.map((entry) => entry.sourcePage).sort((a, b) => a - b)) === JSON.stringify([...skippedSourcePages].sort((a, b) => a - b)), "Skipped divider source pages must match evidence");
+
+  const sectionIds = registry.sections.map((section) => section.id);
+  assertCondition(JSON.stringify(sectionIds) === JSON.stringify(evidence.expectedSectionIds), "Manual guide sections must stay in source Índice order", { sectionIds });
+
+  const coveredSourcePages = [];
+  for (const section of registry.sections) {
+    const id = section.id;
+    const expectedRange = evidence.expectedSectionRanges[id];
+    assertCondition(Boolean(expectedRange), `${id} must be an expected source Índice section`, section);
+    assertCondition(JSON.stringify(section.sourcePageRange) === JSON.stringify(expectedRange), `${id} sourcePageRange must match source Índice metadata`, section);
+    assertCondition(section.routeHash === `#manual-section-${id}`, `${id} must reserve a section route hash, not a raw page hash`, section);
+    assertCondition(section.sectionContentModulePath === `src/data/manual-sections/${id}.ts`, `${id} must reserve a section-local future content module path`, section);
+    assertCondition(!/^manual-page-\d{3}$/u.test(id), `${id} must not use a raw source PDF page id`, section);
+    assertCondition(!section.routeHash.startsWith("#manual-page-"), `${id} routeHash must not expose a raw source PDF page route`, section);
+    assertCondition(!section.sectionContentModulePath.includes("src/data/manual-pages/"), `${id} module path must not use the page-local module namespace`, section);
+
+    const sourcePages = sourcePagesForRange(section.sourcePageRange.start, section.sourcePageRange.end);
+    assertCondition(JSON.stringify(sectionSourcePages(section)) === JSON.stringify(sourcePages), `${id} sourcePages must enumerate the full source range`, section);
+    for (const sourcePage of sourcePages) {
+      assertCondition(!skippedSourcePages.has(sourcePage), `${id} must not include skipped divider-only source page ${sourcePage}`, section);
+    }
+    section.sourcePages.forEach((sourcePageEntry) => {
+      assertCondition(sourcePageEntry.manualManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`, `${id} manual manifest pointer must target the source page`, sourcePageEntry);
+      assertCondition(sourcePageEntry.layoutManifestPointer === `/pages/${sourcePageEntry.sourcePage - 1}`, `${id} layout manifest pointer must target the source page`, sourcePageEntry);
+      assertCondition(sourcePageEntry.referenceAsset === sourcePageAssetPath(sourcePageEntry.sourcePage), `${id} must reference the local source page render only as evidence metadata`, sourcePageEntry);
+      assertCondition(existsSync(sourcePageEntry.referenceAsset), `${id} reference asset for source page ${sourcePageEntry.sourcePage} must exist locally`, sourcePageEntry);
+      coveredSourcePages.push(sourcePageEntry.sourcePage);
+    });
+
+    if (section.status === "pending") validatePendingSection(section, evidence, id);
+    else if (section.status === "implemented") validateImplementedSection(section, evidence, id);
+    else assertCondition(false, `${id} status must be pending or implemented`, section);
   }
 
-  const rawReferencedPageIds = [
-    ...registry.chapters.flatMap((chapter) => chapter.chapterPageIds),
-    ...registry.chapters.flatMap((chapter) => chapter.topics.flatMap((topic) => topic.pageIds))
-  ];
-  const expectedPageIds = expected.map(pageId);
-  const expectedPageIdSet = new Set(expectedPageIds);
-  const pageReferenceCounts = new Map();
-  for (const id of rawReferencedPageIds) {
-    pageReferenceCounts.set(id, (pageReferenceCounts.get(id) ?? 0) + 1);
-  }
+  const duplicateSectionIds = sectionIds.filter((id, index) => sectionIds.indexOf(id) !== index);
+  assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", { duplicateSectionIds });
 
-  const duplicatePageReferences = [...pageReferenceCounts.entries()]
+  const expectedCoveredPages = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
+  assertCondition(JSON.stringify(coveredSourcePages) === JSON.stringify(expectedCoveredPages), "Section registry must cover source pages 22-42 and 44-56 exactly once", {
+    coveredSourcePages,
+    expectedCoveredPages
+  });
+
+  const rawReferencedSectionIds = registry.chapters.flatMap((chapter) => {
+    assertCondition(!("chapterPageIds" in chapter), `${chapter.id} must not keep raw chapter page ids`, chapter);
+    assertCondition(!("topics" in chapter), `${chapter.id} must not keep page-based topic records`, chapter);
+    return chapter.sectionIds;
+  });
+  const sectionReferenceCounts = new Map();
+  for (const id of rawReferencedSectionIds) {
+    sectionReferenceCounts.set(id, (sectionReferenceCounts.get(id) ?? 0) + 1);
+  }
+  const duplicateSectionReferences = [...sectionReferenceCounts.entries()]
     .filter(([, count]) => count > 1)
     .map(([id, count]) => ({ id, count }));
-  assertCondition(duplicatePageReferences.length === 0, "Chapter/topic hierarchy must not duplicate pending page references", {
-    duplicates: duplicatePageReferences
+  assertCondition(duplicateSectionReferences.length === 0, "Chapter hierarchy must not duplicate section references", {
+    duplicates: duplicateSectionReferences
   });
 
-  const unknownPageIds = [...new Set(rawReferencedPageIds.filter((id) => !expectedPageIdSet.has(id)))];
-  assertCondition(unknownPageIds.length === 0, "Chapter/topic hierarchy must not reference pages outside the required pending range", {
-    unknownPageIds
-  });
-
-  const missingPageIds = expectedPageIds.filter((id) => !pageReferenceCounts.has(id));
-  assertCondition(missingPageIds.length === 0, "Chapter/topic hierarchy must reference every pending page", {
-    missingPageIds
-  });
-
-  assertCondition(rawReferencedPageIds.length === expected.length, "Chapter/topic hierarchy must contain exactly one raw reference per pending page", {
-    referenced: rawReferencedPageIds.length,
-    expected: expected.length
-  });
-
-  const referencedPageIds = new Set(rawReferencedPageIds);
-  assertCondition(referencedPageIds.size === expected.length, "Chapter/topic hierarchy must reference every pending page exactly once", {
-    referenced: referencedPageIds.size,
-    expected: expected.length
-  });
-  for (const number of expected) {
-    assertCondition(referencedPageIds.has(pageId(number)), `Chapter/topic hierarchy does not reference ${pageId(number)}`);
-  }
+  const expectedSectionIdSet = new Set(evidence.expectedSectionIds);
+  const unknownSectionIds = [...new Set(rawReferencedSectionIds.filter((id) => !expectedSectionIdSet.has(id)))];
+  assertCondition(unknownSectionIds.length === 0, "Chapter hierarchy must not reference unknown sections", { unknownSectionIds });
+  const missingSectionIds = evidence.expectedSectionIds.filter((id) => !sectionReferenceCounts.has(id));
+  assertCondition(missingSectionIds.length === 0, "Chapter hierarchy must reference every expected section", { missingSectionIds });
 }
 
 function validateSourceWiring(registry, evidence) {
   const appSource = readFileSync(appPath, "utf8");
   const manualGuideSource = readFileSync(manualGuidePath, "utf8");
   const stylesSource = readFileSync(stylesPath, "utf8");
-  const manualGuideAppSource = sliceSource(appSource, "function ManualGuidePageContentView", "function manualDisplayText", appPath);
-  const manualGuideContentDataSource = sliceSource(manualGuideSource, "export const implementedManualGuidePages", "export const manualGuideDocumentStyleTokens", manualGuidePath);
+  const manualGuideAppSource = sliceSource(appSource, "function ManualGuideSectionContentView", "function manualDisplayText", appPath);
+  const manualGuideContentDataSource = sliceSource(manualGuideSource, "export const implementedManualGuideSections", "export const manualGuideDocumentStyleTokens", manualGuidePath);
   const manualGuideStylesSource = sliceSource(stylesSource, ".manual-guide-shell", ".intro-document", stylesPath);
 
   for (const requiredSymbol of [
     "manualGuideChapter12Registry",
-    "chapter12ManualGuidePages",
-    "manualGuidePageByHash",
-    "manualGuidePageContentById",
+    "chapter12ManualGuideSections",
+    "manualGuideSectionByHash",
+    "manualGuideSectionContentById",
+    "manualGuideChapter12SectionSummary",
     "manualGuideDocumentStyleTokens",
     "manualGuideVisualFidelityEvidenceFormat",
-    "implementedManualGuidePages"
+    "implementedManualGuideSections"
   ]) {
     assertCondition(manualGuideSource.includes(requiredSymbol), `manual guide schema/source is missing ${requiredSymbol}`);
   }
 
-  assertCondition(manualGuideAppSource.includes("`manual-guide-pending-${page.id}`"), "manual guide renderer must expose pending page test ids");
-  assertCondition(manualGuideAppSource.includes("function ManualGuidePageContentView"), "manual guide forbidden-pattern scan must include the implemented page renderer");
-  assertCondition(manualGuideAppSource.includes("disabled={!isAvailable}"), "Pending pages must render as disabled buttons until implemented content exists");
-  assertCondition(manualGuideAppSource.includes("assetUrl(block.assetPath)"), "manual guide forbidden-pattern scan must include future page artwork rendering");
-  assertCondition(manualGuideAppSource.includes("data-source-region-metadata-status"), "Pending page buttons must expose source-region metadata status");
-  assertCondition(manualGuideAppSource.includes("data-visual-evidence-status"), "Pending page buttons must expose visual evidence status");
-  assertCondition(manualGuideStylesSource.includes(".manual-guide-pages"), "Manual guide pending page list styles must exist");
+  assertCondition(manualGuideAppSource.includes("`manual-guide-pending-section-${section.id}`"), "manual guide renderer must expose pending section test ids");
+  assertCondition(manualGuideAppSource.includes("function ManualGuideSectionContentView"), "manual guide forbidden-pattern scan must include the implemented section renderer");
+  assertCondition(manualGuideAppSource.includes("disabled={!isAvailable}"), "Pending sections must render as disabled buttons until implemented content exists");
+  assertCondition(manualGuideAppSource.includes("assetUrl(block.assetPath)"), "manual guide forbidden-pattern scan must include future section artwork rendering");
+  assertCondition(manualGuideAppSource.includes("data-source-region-metadata-status"), "Pending section buttons must expose source-region metadata status");
+  assertCondition(manualGuideAppSource.includes("data-visual-evidence-status"), "Pending section buttons must expose visual evidence status");
+  assertCondition(manualGuideStylesSource.includes(".manual-guide-children"), "Manual guide pending section list styles must exist");
+  assertCondition(!manualGuideStylesSource.includes(".manual-guide-pages"), "Manual guide styles must not keep raw page-list styles for Chapter 1/2 section inventory");
+  assertCondition(!manualGuideAppSource.includes("manualGuidePage"), "Manual guide renderer must not keep page-based guide state names");
+  assertCondition(!manualGuideSource.includes("chapter12ManualGuidePages"), "Manual guide data must not export Chapter 1/2 page registry concepts");
+  assertCondition(!manualGuideSource.includes("src/data/manual-pages/"), "Manual guide data must not reserve page-local module paths for Chapter 1/2");
 
-  const fullPageRasterPatterns = expectedPages(evidence.requiredPageRange.start, evidence.requiredPageRange.end).map((number) => `page-${String(number).padStart(3, "0")}.jpg`);
-  const pageModulePaths = new Set(collectFiles(pageModuleRoot).filter((path) => /\.(?:ts|tsx|mjs|js|json)$/u.test(path)));
-  for (const page of registry.pages.filter((page) => page.status === "implemented")) {
-    pageModulePaths.add(resolvePageContentModulePath(page.pageContentModulePath));
+  const fullPageRasterPatterns = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end)
+    .map((number) => `page-${String(number).padStart(3, "0")}.jpg`);
+  const sectionModulePaths = new Set(collectFiles(sectionModuleRoot).filter((path) => /\.(?:ts|tsx|mjs|js|json)$/u.test(path)));
+  for (const section of registry.sections.filter((section) => section.status === "implemented")) {
+    sectionModulePaths.add(resolveSectionContentModulePath(section.sectionContentModulePath));
   }
-  const pageModuleScanTargets = [...pageModulePaths].map((path) => ({
+  const sectionModuleScanTargets = [...sectionModulePaths].map((path) => ({
     label: path,
     source: readFileSync(path, "utf8")
   }));
@@ -267,8 +287,8 @@ function validateSourceWiring(registry, evidence) {
     [
       { label: `${appPath}:manual guide renderer`, source: manualGuideAppSource },
       { label: `${stylesPath}:manual guide styles`, source: manualGuideStylesSource },
-      { label: `${manualGuidePath}:implemented page data`, source: manualGuideContentDataSource },
-      ...pageModuleScanTargets
+      { label: `${manualGuidePath}:implemented section data`, source: manualGuideContentDataSource },
+      ...sectionModuleScanTargets
     ],
     evidence,
     fullPageRasterPatterns
@@ -278,16 +298,17 @@ function validateSourceWiring(registry, evidence) {
 function main() {
   const registry = readJson(registryPath);
   const evidence = readJson(evidencePath);
-  validatePageRegistry(registry, evidence);
+  validateSectionRegistry(registry, evidence);
   validateSourceWiring(registry, evidence);
 
   const result = {
     checkerId: evidence.checkerId,
     status: "pass",
     mode: evidence.mode,
-    pagesChecked: registry.pages.length,
-    pendingPages: registry.pages.filter((page) => page.status === "pending").length,
-    implementedPages: registry.pages.filter((page) => page.status === "implemented").length,
+    sectionsChecked: registry.sections.length,
+    pendingSections: registry.sections.filter((section) => section.status === "pending").length,
+    implementedSections: registry.sections.filter((section) => section.status === "implemented").length,
+    skippedDividerPages: registry.skippedSourcePages.map((entry) => entry.sourcePage),
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
     screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
     sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence
