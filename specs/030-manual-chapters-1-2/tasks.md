@@ -473,8 +473,8 @@ For each section key:
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
 - Effective content head: faee4f4a711019cf0a00ba7e923af1086923c0af
-- Final-validation evidence-only commit: post-effective-head evidence commits after effective content head faee4f4a711019cf0a00ba7e923af1086923c0af only record Architect/Analyst validation evidence and finalization markers in process memory; no product, task, runtime, or PR #181 content changes are included.
-- Current-PR-head read-only guard: effective content head faee4f4a711019cf0a00ba7e923af1086923c0af; Orchestrator/finalizer verifies the actual current PR head, required checks, review threads, merge state, and expected-head before merge/finalization.
+- Final-validation evidence-only commit: post-effective-head evidence commits after effective content head faee4f4a711019cf0a00ba7e923af1086923c0af are limited to `specs/030-manual-chapters-1-2/feature-request.md` and `specs/030-manual-chapters-1-2/tasks.md` final-validation/finalizer evidence; no product, test, runtime, asset, PR #181, or behavior content changes are included.
+- Current-PR-head read-only guard: effective content head faee4f4a711019cf0a00ba7e923af1086923c0af; Orchestrator/finalizer verifies actual current PR head ancestry from this effective content head, post-effective-head diff scope, required checks, review threads, merge state, and expected-head before merge/finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
 
@@ -680,6 +680,6 @@ For each section key:
 - Architect validation evidence: scope and root cause are correct for the user bug. The `src/App.tsx` change prevents the non-section Introduction children from comparing `undefined === undefined` by requiring a real `sectionEntry` before section-active state can apply, while preserving the Chapter 1 section active-state behavior.
 - Architect validation evidence: regression coverage is adequate for this shared UI slice: `tests/content-pandemia-vial-section.test.mjs` guards the active-state expression, and `tests/e2e/app.spec.ts` asserts exactly one active/current Introduction child on Introduction routes and exactly one active Chapter 1 child while switching implemented Chapter 1 sections.
 - Architect validation evidence: Orchestrator/Implementation/GitHub evidence confirms local checks passed (`node --test tests/content-pandemia-vial-section.test.mjs` `14/14`, `node --test tests/content-manual-guide-chapters.test.mjs` `21/21`, `pnpm exec tsc --noEmit`, `node scripts/manual-guide-source-fidelity.mjs`, `pnpm run validate:content`, `pnpm run build`, focused Playwright `4/4`, `pnpm run test` `330/330`, full `pnpm run preflight` with Playwright `74/74`, diff hygiene, feature-memory check, visual smoke, and Docker smoke on port `5212`).
-- Architect validation evidence: read-only PR inspection confirmed PR #182 current head `faee4f4a711019cf0a00ba7e923af1086923c0af`, base `93080b058333200b07bed21b0dff42fc719f20cb`, merge state `CLEAN`, required checks green (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`), and zero review threads.
+- Architect validation evidence: validated effective content head is `faee4f4a711019cf0a00ba7e923af1086923c0af`; later PR-head commits are evidence-only process-memory successors, and Orchestrator/finalizer verifies actual current PR head ancestry from this effective content head, post-effective-head diff scope, required checks, review threads, merge state, and expected-head before merge/finalization.
 - Open Architect dispositions: none for PR #182 `introduction-active-state`; no unresolved Implementation Agent feedback remains.
 - Architect gaps: none for PR #182 `introduction-active-state`.

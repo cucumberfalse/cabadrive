@@ -574,7 +574,7 @@ Analyst validated effective content head: faee4f4a711019cf0a00ba7e923af1086923c0
 
 Analyst return count: 0
 
-Analyst validation evidence: PR #182 `introduction-active-state` shared UI correction only.
+Analyst validation evidence: PR #182 `introduction-active-state` shared UI correction only; `faee4f4a711019cf0a00ba7e923af1086923c0af` is the validated effective content head for the user-facing UI fix, and later PR-head commits after that head are final-validation/finalizer evidence-only process-memory successors with no product/runtime/test/content changes; Orchestrator/finalizer must verify actual current head ancestry, diff, checks, review state, and merge readiness before merge.
 
 Customer intent check: passed for the reported `Введение` navigation bug. The user reported that selecting one item in the `Введение` block made all Introduction children appear green/active, while Chapter 1 behaved correctly. The validated head addresses that intent by requiring a real manual `sectionEntry` before section-active state can apply, preventing the `undefined === undefined` case from marking every non-section Introduction child active/current, while preserving the correct Chapter 1 active-state behavior.
 
