@@ -2219,6 +2219,12 @@ small,
   height: auto;
 }
 
+.manual-bicycle-helmet-frame img,
+.manual-bicycle-signals-frame img {
+  justify-self: center;
+  width: min(100%, 500px);
+}
+
 .manual-bicycle-benefit-cards,
 .manual-bicycle-gear-list,
 .manual-bicycle-posture-labels {
@@ -2356,9 +2362,15 @@ small,
 
 .manual-bicycle-distance-image {
   position: relative;
+  justify-self: center;
+  width: min(100%, 270px);
   overflow: hidden;
   border-radius: 6px;
   background: #e4e1d9;
+}
+
+.manual-bicycle-distance-grid article[data-distance-status="unsafe"] .manual-bicycle-distance-image {
+  width: min(100%, 250px);
 }
 
 .manual-bicycle-distance-image strong {

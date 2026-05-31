@@ -2313,7 +2313,15 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
         {block.examples.map((example) => (
           <article key={example.id} data-distance-status={example.status}>
             <div className="manual-bicycle-distance-image">
-              <img src={assetUrl(example.assetPath)} alt="" data-visible-spanish={false} loading="lazy" />
+              <img
+                src={assetUrl(example.assetPath)}
+                alt=""
+                data-visible-spanish={example.visibleSpanish ?? false}
+                data-source-image-exception={example.sourceImageException?.kind}
+                data-visible-spanish-scope={example.sourceImageException?.visibleSpanishScope}
+                data-source-as-is={example.sourceImageException?.sourceAsIs}
+                loading="lazy"
+              />
               {example.badgeRu && <strong>{example.badgeRu}</strong>}
             </div>
             <h4>{example.titleRu}</h4>

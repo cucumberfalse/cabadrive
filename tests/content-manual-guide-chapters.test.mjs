@@ -716,43 +716,51 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
-      { sha256: "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6", visibleSpanish: false }
+      { sha256: "1a888b8936c2ec987f8a4c2fa92bd9f2b07b0a61f9749f69fc9e597af062b33b", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
-      { sha256: "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28", visibleSpanish: false }
+      { sha256: "59b5dde3ced464cf10760d4b7acfff4fcd1345ad49a1ba1424b348544bc07391", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
-      { sha256: "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc", visibleSpanish: false }
+      { sha256: "872fd40c00cddc2afa9d5489574b87e605802d7e95a582d2922c36a9c3964edd", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
       {
-        sha256: "80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334",
+        sha256: "4dfcbefd5731a4a9677e9b66beab652e7bdb0c8db1fcdc6794d4aa97c0f9ac65",
         visibleSpanish: true,
         assetKind: "official-traffic-sign-source-as-is"
       }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
-      { sha256: "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8", visibleSpanish: false }
+      { sha256: "3da169144ff919429503b14c7c764e45e663ec76b564d4e39ee7da812533c587", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
-      { sha256: "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9", visibleSpanish: false }
+      {
+        sha256: "8ad1706e10ffe13e394c113c921cf14735feb0ec0da8ea3e5c69a6a1bf160595",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-safe-distance-road-panel"
+      }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
-      { sha256: "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d", visibleSpanish: false }
+      {
+        sha256: "e219de23c7855483e274057ac9627dcbc0129c90dd83b95786a0a0a06de1c8b9",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-unsafe-distance-road-panel"
+      }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
-      { sha256: "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d", visibleSpanish: false }
+      { sha256: "98b4e0867f96ed3bb6671c4d0aa5dfde145d43c5bbc42cbc10d798a3f76ffac0", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
-      { sha256: "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3", visibleSpanish: false }
+      { sha256: "dcbe4cf381e85536b609bf467cf225d1c77fef6ae16826c1022c583b3a2b4379", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
@@ -783,19 +791,29 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
     assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
-    if (expectation.visibleSpanish) {
+    if (expectation.assetKind === "official-traffic-sign-source-as-is") {
       assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} is the official sign exception asset`);
       assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
       assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
       assert.equal(asset.officialSignException.sourceAsIs, true);
+    } else if (expectation.visibleSpanish) {
+      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} source-image exception asset kind is stable`);
+      assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
+      assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
+      assert.equal(asset.sourceImageException.sourceAsIs, true);
+      assert.equal(asset.sourceImageException.russianExplanationOutsideImage, true);
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "official_traffic_sign_exception_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "none");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
-    ["content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg"]
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg"
+    ]
   );
 
   for (const requiredText of [

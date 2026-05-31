@@ -996,7 +996,7 @@
               "width": 550,
               "height": 220
             },
-            "cropSha256": "80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334",
+            "cropSha256": "4dfcbefd5731a4a9677e9b66beab652e7bdb0c8db1fcdc6794d4aa97c0f9ac65",
             "cleanupScope": "runtime official traffic sign sheet source-as-is; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
           },
           {
@@ -1102,16 +1102,16 @@
             "assetKind": "source-derived-nontext-bicycle-benefit-cyclists",
             "width": 250,
             "height": 130,
-            "sha256": "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6",
+            "sha256": "1a888b8936c2ec987f8a4c2fa92bd9f2b07b0a61f9749f69fc9e597af062b33b",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
             "assetKind": "source-derived-nontext-helmet-fit-heads",
-            "width": 470,
-            "height": 160,
-            "sha256": "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28",
+            "width": 500,
+            "height": 180,
+            "sha256": "59b5dde3ced464cf10760d4b7acfff4fcd1345ad49a1ba1424b348544bc07391",
             "containsText": false,
             "visibleSpanish": false
           },
@@ -1120,7 +1120,7 @@
             "assetKind": "source-derived-nontext-cyclist-gear-art",
             "width": 140,
             "height": 230,
-            "sha256": "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc",
+            "sha256": "872fd40c00cddc2afa9d5489574b87e605802d7e95a582d2922c36a9c3964edd",
             "containsText": false,
             "visibleSpanish": false
           },
@@ -1129,7 +1129,7 @@
             "assetKind": "official-traffic-sign-source-as-is",
             "width": 550,
             "height": 220,
-            "sha256": "80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334",
+            "sha256": "4dfcbefd5731a4a9677e9b66beab652e7bdb0c8db1fcdc6794d4aa97c0f9ac65",
             "containsText": true,
             "visibleSpanish": true,
             "officialSignException": {
@@ -1144,34 +1144,46 @@
             "assetKind": "source-derived-nontext-posture-cyclist",
             "width": 150,
             "height": 210,
-            "sha256": "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8",
+            "sha256": "3da169144ff919429503b14c7c764e45e663ec76b564d4e39ee7da812533c587",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
-            "assetKind": "source-derived-nontext-safe-distance-road-art",
-            "width": 135,
-            "height": 105,
-            "sha256": "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-safe-distance-road-panel",
+            "width": 270,
+            "height": 205,
+            "sha256": "8ad1706e10ffe13e394c113c921cf14735feb0ec0da8ea3e5c69a6a1bf160595",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
-            "assetKind": "source-derived-nontext-unsafe-distance-road-art",
-            "width": 170,
-            "height": 105,
-            "sha256": "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-unsafe-distance-road-panel",
+            "width": 250,
+            "height": 205,
+            "sha256": "e219de23c7855483e274057ac9627dcbc0129c90dd83b95786a0a0a06de1c8b9",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
             "assetKind": "source-derived-nontext-offtracking-bus-cyclist",
-            "width": 255,
+            "width": 270,
             "height": 260,
-            "sha256": "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d",
+            "sha256": "98b4e0867f96ed3bb6671c4d0aa5dfde145d43c5bbc42cbc10d798a3f76ffac0",
             "containsText": false,
             "visibleSpanish": false
           },
@@ -1180,7 +1192,7 @@
             "assetKind": "source-derived-nontext-hand-signal-cyclists",
             "width": 500,
             "height": 115,
-            "sha256": "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3",
+            "sha256": "dcbe4cf381e85536b609bf467cf225d1c77fef6ae16826c1022c583b3a2b4379",
             "containsText": false,
             "visibleSpanish": false
           },
@@ -1231,8 +1243,8 @@
           }
         ],
         "visibleSpanishStatus": {
-          "status": "official_traffic_sign_exception_only",
-          "nonSignVisibleSpanishStatus": "none",
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
           "exceptions": [
             {
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
@@ -1240,6 +1252,22 @@
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
               "reason": "Explicit user requirement: official road signs/sign sheets must be inserted source-as-is and not translated, redrawn, cleaned, relabeled, recolored, simplified, or reconstructed."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "The safe-distance panel is now an original source crop; Russian explanation is outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "The unsafe-distance panel is now an original source crop; Russian explanation is outside the image."
             }
           ]
         },
@@ -1265,9 +1293,9 @@
         "visualReviewNotes": [
           "Source pages 30-38 were visually inspected from local page renders before crop creation.",
           "Page 30 benefit labels are Russian DOM cards around the source-derived cyclist crop.",
-          "Page 31 helmet and gear visuals use source-derived non-text crops plus selectable Russian labels.",
+          "Page 31 helmet and gear visuals use clean source-page non-text crops plus selectable Russian labels; the helmet crop was refreshed from the official page image to avoid browser-upscaled soft edges.",
           "Page 32 official traffic sign sheet is rendered as a high-quality source-as-is crop; Spanish sign labels remain only inside that source image by explicit exception, and Russian explanation sits outside the image.",
-          "Pages 33-35 body position, distance, off-tracking, and hand-signal visuals use source-derived non-text crops with Russian DOM labels and warnings.",
+          "Pages 33-35 body position, distance, off-tracking, and hand-signal visuals use source-page crops; the distance panels are original source-image crops with Russian explanation outside the images, and off-tracking/hand-signal crops remain non-text source art.",
           "Pages 36-38 lane, parking, Ecobici, and scooter photos are local source crops with Russian DOM definitions, legal details, and numeric thresholds."
         ],
         "checkerResult": "pass"
