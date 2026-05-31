@@ -717,3 +717,15 @@ For each section key:
 - Required-check blocker: `.unicorn-hub/config.json` lists `AI Review` as a required check. Available handoff/review evidence still reports `AI Review` as `IN_PROGRESS`, and Architect did not query GitHub directly per the assigned role boundary. Therefore required-check completion is not confirmed for current head `089238adce9b23b67f5c44da7488509d5bff91d1`.
 - Architect validation result: blocked until Orchestrator confirms all required checks, including `AI Review`, are green on current head `089238adce9b23b67f5c44da7488509d5bff91d1`; then Architect final validation may rerun.
 - Analyst validation dependency: the stale Analyst validation block in `feature-request.md` for the old PR #181 head remains Analyst-owned, must be marked historical/stale by Analyst, and final Analyst validation must rerun only after current-head Architect validation passes.
+
+## Implementation Agent Review Fix Evidence - PR #181 current-head AI Review
+
+- Implementation Agent review-fix completed at: 2026-05-31T03:46:01Z.
+- Assigned PR/head: PR #181 on branch `codex/030-ch1-pedestrian-sign-source`, starting from current remote head `acced3f51329390077fcbe4a95b709da87cf5db0`.
+- Review finding addressed: `PRRT_kwDOSX65IM6F6b_d` / comment `3329657659` in `scripts/manual-guide-source-fidelity.mjs:127`.
+- Root cause: `visibleSpanishStatus.status === "official_traffic_sign_exception_only"` delegated to the generalized visible-Spanish exception validator, so a `source-image-original-visible-text` exception could pass under the official-sign-only status.
+- Fix evidence: `official_traffic_sign_exception_only` now validates each status exception with the narrow official traffic sign contract only: `kind === "official-traffic-sign-source-as-is"`, `visibleSpanishScope === "official-sign-image-only"`, `sourceAsIs === true`, and an existing local `assetPath`. The broader `source_image_exceptions_only` branch still accepts generalized visible-Spanish source-image exceptions.
+- Regression evidence: `tests/content-manual-guide-chapters.test.mjs` now includes a fixture test that lists `kind: "source-image-original-visible-text"` under `official_traffic_sign_exception_only` and expects the checker to fail with `.kind must be official-traffic-sign-source-as-is`.
+- Review finding routed/preserved: `PRRT_kwDOSX65IM6F6b_g` / comment `3329657664` was addressed by preserving the Analyst-authored provenance note in `specs/030-manual-chapters-1-2/feature-request.md`; Implementation Agent did not author Analyst validation content and only transported the existing Analyst-owned handoff note in this review-fix commit.
+- Verification commands completed for this review fix: `node scripts/manual-guide-source-fidelity.mjs` pass; `node --test tests/content-manual-guide-chapters.test.mjs` pass (`23/23`); `pnpm exec tsc --noEmit` pass; `pnpm run build` pass with existing Vite chunk-size warning only; `git diff --check` pass; `node scripts/check-feature-memory.mjs --worktree` pass.
+- Implementation Agent feedback: none; no Architect disposition requested by this review fix.

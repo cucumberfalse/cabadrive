@@ -1189,6 +1189,50 @@ test("Manual guide source-fidelity checker allows only explicit official traffic
   }
 });
 
+test("Manual guide source-fidelity checker rejects source-image exceptions under official traffic sign status", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-official-sign-status-source-image-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
+      (implementationEvidence) => {
+        const signAsset = implementationEvidence.localAssetMetadata[0];
+        signAsset.assetKind = "official-traffic-sign-source-as-is";
+        signAsset.containsText = true;
+        signAsset.visibleSpanish = true;
+        signAsset.officialSignException = {
+          kind: "official-traffic-sign-source-as-is",
+          visibleSpanishScope: "official-sign-image-only",
+          sourceAsIs: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "official_traffic_sign_exception_only",
+          nonSignVisibleSpanishStatus: "none",
+          exceptions: [
+            {
+              assetPath: signAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
+            }
+          ]
+        };
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when official-sign-only status lists a source-image exception");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority visibleSpanishStatus.exceptions[0].kind must be official-traffic-sign-source-as-is"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker allows explicit original source-image Spanish exceptions", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-source-image-exception-"));
   try {

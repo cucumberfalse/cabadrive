@@ -576,6 +576,8 @@ Former Analyst validated effective content head: bef7cb7f53954515299ac1cb28328e9
 
 Superseded at: 2026-05-31T03:30:02Z
 
+Analyst provenance note: this supersession/stale-status note was authored by Analyst under Orchestrator assignment. The later Implementation Agent commit/push only transported the already-authored Analyst-owned process-memory handoff because Analyst cannot stage, commit, or push by role; it was not Implementation Agent self-authored Analyst validation.
+
 Superseded reason: after this validation, PR #181 received non-evidence runtime/assets/test/process-memory changes for high-quality original wayfinding, Sube y Baja, and restriction-sign source crops. Therefore the prior validation for `bef7cb7f53954515299ac1cb28328e91ae8713eb` cannot satisfy final Analyst validation for current pushed head `089238adce9b23b67f5c44da7488509d5bff91d1`.
 
 Current PR #181 Analyst validation status: not run/blocked. Final Analyst validation for the current PR #181 head must rerun only after current-head final Architect validation passes and records the required effective content head evidence.

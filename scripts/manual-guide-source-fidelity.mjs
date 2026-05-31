@@ -116,6 +116,13 @@ function validateVisibleSpanishException(exception, messagePrefix) {
   assertCondition(false, `${messagePrefix}.kind must be an allowed visible-Spanish source-image exception`, exception);
 }
 
+function validateOfficialTrafficSignException(exception, messagePrefix) {
+  assertCondition(exception.kind === "official-traffic-sign-source-as-is", `${messagePrefix}.kind must be official-traffic-sign-source-as-is`, exception);
+  assertCondition(exception.visibleSpanishScope === "official-sign-image-only", `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`, exception);
+  assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+  assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
+}
+
 function validateNoVisibleSpanishStatus(value, messagePrefix) {
   const allowedStatuses = new Set(["pass", "none", "no_visible_spanish", "no-visible-spanish"]);
   const status = isObject(value) && "status" in value ? value.status : value;
@@ -124,7 +131,7 @@ function validateNoVisibleSpanishStatus(value, messagePrefix) {
     assertCondition(isObject(value), `${messagePrefix} official traffic sign exception must be an object`, { value });
     assertCondition(value.nonSignVisibleSpanishStatus === "none", `${messagePrefix}.nonSignVisibleSpanishStatus must be none`, { value });
     assertCondition(Array.isArray(value.exceptions) && value.exceptions.length > 0, `${messagePrefix}.exceptions must name the official sign exception`, { value });
-    for (const [index, exception] of value.exceptions.entries()) validateVisibleSpanishException(exception, `${messagePrefix}.exceptions[${index}]`);
+    for (const [index, exception] of value.exceptions.entries()) validateOfficialTrafficSignException(exception, `${messagePrefix}.exceptions[${index}]`);
     return;
   }
   if (status === "source_image_exceptions_only") {
