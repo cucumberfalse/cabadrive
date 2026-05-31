@@ -3,6 +3,13 @@ import type { ManualGuideSectionContent } from "../manualGuide";
 const assetRoot =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority";
 
+const originalSourceImageException = {
+  kind: "source-image-original-visible-text",
+  visibleSpanishScope: "source-image-only",
+  sourceAsIs: true,
+  russianExplanationOutsideImage: true
+} as const;
+
 export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
   id: "ch1-pedestrian-priority-content",
   sectionId: "ch1-pedestrian-priority",
@@ -34,8 +41,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source PDF pages 24-29 are converted as one source-Índice website section.",
-      "Runtime learner content uses Russian DOM text for labels, lists, map legend, impact phases, and traffic-sign explanations outside the sign image.",
-      "Spanish source crops remain validation evidence only except for the page 29 official traffic signs, which are inserted source-as-is as the required narrow official-sign exception."
+      "Runtime learner content uses Russian DOM text for explanatory labels, lists, map legend, impact phases, and image/sign explanations outside source imagery.",
+      "Original source images are inserted without translation or reconstruction; visible Spanish inside source images is scoped to the image only, and page 29 official traffic signs keep the narrower official-sign exception."
     ]
   },
   blocks: [
@@ -195,6 +202,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/priority-street-source.jpg`,
           altRu: "Фрагмент улицы совместного движения с боллардами и пешеходами",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -228,6 +237,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/pedestrian-street-source.jpg`,
           altRu: "Фрагмент пешеходной улицы с кашпо и людьми",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -245,7 +256,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Photo crops are source-derived and exclude readable Spanish labels where possible.",
+        "Photo crops are original high-resolution source images; any readable source text remains inside the image and is not translated or redrawn.",
         "All section labels and details are Russian DOM text.",
         "The no-entry street sign text from the source is not used as learner text."
       ]
@@ -266,7 +277,10 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             width: 245,
             height: 145
           },
-          visualKind: "wayfinding-sign",
+          assetPath: `${assetRoot}/wayfinding-source.jpg`,
+          altRu: "Оригинальное фото пешеходных указателей с направлениями и временем",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -290,6 +304,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/school-routes-source.jpg`,
           altRu: "Пешеходный переход рядом со школой с желто-белой разметкой",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -311,9 +327,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             x: 348,
             y: 895,
             width: 245,
-            height: 145
+            height: 125
           },
-          visualKind: "school-road-marking",
+          assetPath: `${assetRoot}/sube-y-baja-source.jpg`,
+          altRu: "Оригинальная желтая дорожная разметка Sube y Baja у школы",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -333,9 +352,9 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The runtime wayfinding and Sube y Baja visuals are localized DOM/CSS reconstructions because the source photos carry readable Spanish signage or road text.",
-        "The school-route photo crop has no learner-facing Spanish text.",
-        "Program names remain as named entities in Russian DOM text."
+        "The wayfinding, school-route, and Sube y Baja visuals are original high-resolution source-image crops, not localized DOM/CSS reconstructions.",
+        "Readable Spanish inside those source images remains unmodified and is scoped to the image only.",
+        "Russian explanations and program descriptions remain selectable DOM text outside the images."
       ]
     },
     {
@@ -356,6 +375,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/intervention-street-source.jpg`,
           altRu: "Улица с песочной разметкой и расширенным пешеходным пространством",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -373,7 +394,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The source photo crop is used without the Spanish paragraph text that surrounds it.",
+        "The original source photo crop is used without translation or reconstruction.",
         "Feature labels and conditions are rendered as Russian DOM text."
       ]
     },
@@ -390,6 +411,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         height: 390
       },
       assetPath: `${assetRoot}/priority-area-map-source.jpg`,
+      visibleSpanish: true,
+      sourceImageException: originalSourceImageException,
       areasRu: "Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes",
       legend: [
         {
@@ -411,7 +434,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
       captionRu:
         "В этих районах пешеходный поток настолько велик, что зоны с приоритетом создаются для качества жизни, сосуществования, движения, дорожной безопасности и окружающей среды.",
       visualNotes: [
-        "The runtime map crop excludes the Spanish source legend and footer URL.",
+        "The runtime map crop is the original high-resolution source map; street and area names remain part of the source image.",
         "The Russian legend is selectable DOM text; street names remain part of the map context.",
         "The full source region is retained as validation evidence."
       ]
@@ -543,6 +566,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/zone30-photo-source.jpg`,
           altRu: "Въезд в зону 30 с красно-белым пешеходным переходом",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           details: [
             {
               labelRu: "Характеристики",
@@ -564,7 +589,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The source photo crop keeps the red-white crossing and vertical sign context without using Spanish label crops as learner text.",
+        "The original source photo crop keeps the red-white crossing and vertical sign context without translating or reconstructing the image.",
         "The 30 km/h concept and numeric safety relationship are Russian DOM text."
       ]
     }

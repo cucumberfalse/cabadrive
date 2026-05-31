@@ -254,6 +254,9 @@
         "manual-no-parking-sign",
         "manual-authorized-sign",
         "manual-control-sign",
+        "manual-wayfinding-sign",
+        "manual-school-road-marking",
+        "visualKind",
         "data-sign-kind",
         "markerRu"
       ]

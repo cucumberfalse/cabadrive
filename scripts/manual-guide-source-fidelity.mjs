@@ -88,6 +88,34 @@ function isOfficialTrafficSignSourceAsIsException(entry) {
   );
 }
 
+function isOriginalSourceImageVisibleTextException(entry) {
+  return (
+    entry.visibleSpanish === true &&
+    isObject(entry.sourceImageException) &&
+    entry.sourceImageException.kind === "source-image-original-visible-text" &&
+    entry.sourceImageException.visibleSpanishScope === "source-image-only" &&
+    entry.sourceImageException.sourceAsIs === true &&
+    entry.sourceImageException.russianExplanationOutsideImage === true
+  );
+}
+
+function validateVisibleSpanishException(exception, messagePrefix) {
+  if (exception.kind === "official-traffic-sign-source-as-is") {
+    assertCondition(exception.visibleSpanishScope === "official-sign-image-only", `${messagePrefix}.visibleSpanishScope must be official-sign-image-only`, exception);
+    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+    assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
+    return;
+  }
+  if (exception.kind === "source-image-original-visible-text") {
+    assertCondition(exception.visibleSpanishScope === "source-image-only", `${messagePrefix}.visibleSpanishScope must be source-image-only`, exception);
+    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+    assertCondition(exception.russianExplanationOutsideImage === true, `${messagePrefix}.russianExplanationOutsideImage must be true`, exception);
+    assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
+    return;
+  }
+  assertCondition(false, `${messagePrefix}.kind must be an allowed visible-Spanish source-image exception`, exception);
+}
+
 function validateNoVisibleSpanishStatus(value, messagePrefix) {
   const allowedStatuses = new Set(["pass", "none", "no_visible_spanish", "no-visible-spanish"]);
   const status = isObject(value) && "status" in value ? value.status : value;
@@ -96,15 +124,17 @@ function validateNoVisibleSpanishStatus(value, messagePrefix) {
     assertCondition(isObject(value), `${messagePrefix} official traffic sign exception must be an object`, { value });
     assertCondition(value.nonSignVisibleSpanishStatus === "none", `${messagePrefix}.nonSignVisibleSpanishStatus must be none`, { value });
     assertCondition(Array.isArray(value.exceptions) && value.exceptions.length > 0, `${messagePrefix}.exceptions must name the official sign exception`, { value });
-    for (const [index, exception] of value.exceptions.entries()) {
-      assertCondition(exception.kind === "official-traffic-sign-source-as-is", `${messagePrefix}.exceptions[${index}].kind must be official-traffic-sign-source-as-is`, exception);
-      assertCondition(exception.visibleSpanishScope === "official-sign-image-only", `${messagePrefix}.exceptions[${index}].visibleSpanishScope must be official-sign-image-only`, exception);
-      assertCondition(exception.sourceAsIs === true, `${messagePrefix}.exceptions[${index}].sourceAsIs must be true`, exception);
-      assertLocalPathExists(exception.assetPath, `${messagePrefix}.exceptions[${index}].assetPath`, exception);
-    }
+    for (const [index, exception] of value.exceptions.entries()) validateVisibleSpanishException(exception, `${messagePrefix}.exceptions[${index}]`);
     return;
   }
-  assertCondition(false, `${messagePrefix} must record no visible Spanish text or an official traffic sign source-as-is exception`, { value });
+  if (status === "source_image_exceptions_only") {
+    assertCondition(isObject(value), `${messagePrefix} source-image exception must be an object`, { value });
+    assertCondition(value.nonSignVisibleSpanishStatus === "source-image-only", `${messagePrefix}.nonSignVisibleSpanishStatus must be source-image-only`, { value });
+    assertCondition(Array.isArray(value.exceptions) && value.exceptions.length > 0, `${messagePrefix}.exceptions must name the source-image exceptions`, { value });
+    for (const [index, exception] of value.exceptions.entries()) validateVisibleSpanishException(exception, `${messagePrefix}.exceptions[${index}]`);
+    return;
+  }
+  assertCondition(false, `${messagePrefix} must record no visible Spanish text or source-image-only exceptions`, { value });
 }
 
 function resolveSectionContentModulePath(modulePath) {
@@ -192,7 +222,11 @@ function validateImplementedSection(section, evidence, id) {
   validateObjectOrArray(implementedEvidence.localAssetMetadata, format.localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
     if (entry.visibleSpanish === false) return;
-    assertCondition(isOfficialTrafficSignSourceAsIsException(entry), `${label}.visibleSpanish=true requires an official traffic sign source-as-is exception`, entry);
+    assertCondition(
+      isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry),
+      `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
+      entry
+    );
   });
   assertLocalPathExists(implementedEvidence.desktopScreenshot, `${id} desktopScreenshot`, implementedEvidence);
   assertLocalPathExists(implementedEvidence.mobileScreenshot, `${id} mobileScreenshot`, implementedEvidence);

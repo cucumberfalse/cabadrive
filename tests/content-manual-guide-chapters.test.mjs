@@ -503,52 +503,60 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
-      { sha256: "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a", visibleSpanish: false }
+      { sha256: "21ad238fb1622c84899a7c0b65b2f24487c8a0a516bb66d637620d60d283d02a", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
-      { sha256: "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7", visibleSpanish: false }
+      { sha256: "42c864bfc9df2b2d824165a8127ef3c1a4b407fe2109314b4b171790407eb101", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
-      { sha256: "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673", visibleSpanish: false }
+      { sha256: "6741d5921e347984d56b08b38ac147e4d8a365328363edf313db83a9b1deef8c", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
-      { sha256: "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845", visibleSpanish: false }
+      { sha256: "4f46f2a52c919015cb6b258a21563ae0e4f02f8a58e37fc0541b800fe31da1d4", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
-      { sha256: "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af", visibleSpanish: false }
+      { sha256: "508dec0e2948e13aacd9980dc51946a8af79aad03f5ca1c3ca9bc40161782cc9", visibleSpanish: true, assetKind: "high-resolution-original-source-priority-street-photo" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
-      { sha256: "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea", visibleSpanish: false }
+      { sha256: "8113005c51dd845f4b42ba6621fea12b5d900548774dc2130d3811fa3908ea9f", visibleSpanish: true, assetKind: "high-resolution-original-source-pedestrian-street-photo" }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+      { sha256: "c708f1d34803a7b2d905998d90f97334aba498f893c295300a907333fd5da732", visibleSpanish: true, assetKind: "high-resolution-original-source-wayfinding-photo" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
-      { sha256: "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272", visibleSpanish: false }
+      { sha256: "829a25bda728e6352c363c81c126915d015bf91621c64e8ed7cc8dad38c8a7bb", visibleSpanish: true, assetKind: "high-resolution-original-source-school-route-photo" }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+      { sha256: "9173c0d979968dc60b661cb5d796f5f75d7d02b76c1031828639d0cad28211e1", visibleSpanish: true, assetKind: "high-resolution-original-source-sube-y-baja-road-marking" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
-      { sha256: "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f", visibleSpanish: false }
+      { sha256: "c3012aca894e6d05b4ec0f94030291e653befe7da9bdd6c21ae1bd3212dd6146", visibleSpanish: true, assetKind: "high-resolution-original-source-pedestrian-intervention-photo" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
-      { sha256: "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c", visibleSpanish: false }
+      { sha256: "d88ecd0fc39dac7f9c0227894794ef648cb7327b1ff229508787ce1f5222056b", visibleSpanish: true, assetKind: "high-resolution-original-source-priority-area-map" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
-      { sha256: "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35", visibleSpanish: false }
+      { sha256: "8035cdc4f94cdf7f92560e84ce9f0fa6828c56af250a6feb5130c710290e8e93", visibleSpanish: true, assetKind: "high-resolution-original-source-zone30-photo" }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
-      { sha256: "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3", visibleSpanish: false }
+      { sha256: "bed15de5034b89eb332f64e937cb90024304cfdda9d7a2f6952dcbd7c286e2a1", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
       {
-        sha256: "ce525f73f2e8eb4f70ab6105e117764873c8a4b32043f55177bb8d43616b73ad",
+        sha256: "03c8354fc44acff48de3fb0d40aa49757254f047b44de79179ec7f3b168e3f71",
         visibleSpanish: true,
         assetKind: "official-traffic-sign-source-as-is"
       }
@@ -563,18 +571,35 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
     assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
     if (expectation.visibleSpanish) {
-      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} is the official sign exception asset`);
-      assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
-      assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
-      assert.equal(asset.officialSignException.sourceAsIs, true);
+      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} exception asset kind is stable`);
+      if (expectation.assetKind === "official-traffic-sign-source-as-is") {
+        assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+        assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
+        assert.equal(asset.officialSignException.sourceAsIs, true);
+      } else {
+        assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
+        assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
+        assert.equal(asset.sourceImageException.sourceAsIs, true);
+        assert.equal(asset.sourceImageException.russianExplanationOutsideImage, true);
+      }
     }
   }
 
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "official_traffic_sign_exception_only");
-  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "none");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
   assert.deepEqual(
     section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
-    ["content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png"]
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg"
+    ]
   );
 
   for (const requiredText of [
@@ -636,8 +661,12 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   assert.match(stylesSource, /\.manual-transport-icons[\s\S]*?user-select:\s*text/);
   assert.match(ch1PedestrianPriorityModuleSource, /before-after-photos-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /impact-body-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /wayfinding-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /sube-y-baja-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /priority-area-map-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /restriction-signs-source-as-is\.png/);
+  assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /visualKind:\s*"wayfinding-sign"|visualKind:\s*"school-road-marking"/);
+  assert.doesNotMatch(appSource, /manual-wayfinding-sign|manual-school-road-marking/);
   assert.match(ch1PedestrianPriorityModuleSource, /official-traffic-sign-source-as-is/);
   assert.match(ch1PedestrianPriorityModuleSource, /circulation-icons-source\.jpg/);
   assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-02[4-9]\.jpg/u);
@@ -1097,7 +1126,7 @@ test("Manual guide source-fidelity checker rejects visible Spanish status failur
     assert.notEqual(failure.status, 0, "checker must fail when visibleSpanishStatus records a failure");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text or an official traffic sign source-as-is exception");
+    assert.equal(result.message, "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text or source-image-only exceptions");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -1117,7 +1146,7 @@ test("Manual guide source-fidelity checker rejects local assets with visible Spa
     assert.notEqual(failure.status, 0, "checker must fail when local asset evidence keeps visible Spanish text");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an official traffic sign source-as-is exception");
+    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -1148,6 +1177,45 @@ test("Manual guide source-fidelity checker allows only explicit official traffic
               kind: "official-traffic-sign-source-as-is",
               visibleSpanishScope: "official-sign-image-only",
               sourceAsIs: true
+            }
+          ]
+        };
+      }
+    );
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker allows explicit original source-image Spanish exceptions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-source-image-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
+      (implementationEvidence) => {
+        const sourceImageAsset = implementationEvidence.localAssetMetadata[0];
+        sourceImageAsset.assetKind = "high-resolution-original-source-wayfinding-photo";
+        sourceImageAsset.containsText = true;
+        sourceImageAsset.visibleSpanish = true;
+        sourceImageAsset.sourceImageException = {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: sourceImageAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
             }
           ]
         };

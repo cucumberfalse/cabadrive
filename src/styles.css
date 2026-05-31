@@ -2052,57 +2052,6 @@ small,
   border-top: 1px solid #d8e6e6;
 }
 
-.manual-wayfinding-sign,
-.manual-school-road-marking {
-  min-height: 130px;
-}
-
-.manual-wayfinding-sign {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-  align-content: center;
-  padding: 14px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.14), transparent 38%),
-    #2c3030;
-  color: #ffffff;
-}
-
-.manual-wayfinding-sign span,
-.manual-wayfinding-sign strong {
-  min-width: 0;
-  padding: 6px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 4px;
-  font-size: 0.86rem;
-  font-weight: 850;
-  line-height: 1.12;
-}
-
-.manual-wayfinding-sign strong {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.manual-school-road-marking {
-  display: grid;
-  align-content: center;
-  gap: 4px;
-  padding: 16px;
-  background:
-    repeating-linear-gradient(105deg, transparent 0 18px, rgba(255, 255, 255, 0.2) 18px 22px),
-    #373a3b;
-}
-
-.manual-school-road-marking span {
-  display: block;
-  color: #e6bc20;
-  font-size: clamp(1.35rem, 5vw, 2.05rem);
-  font-weight: 950;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
 .manual-priority-map {
   padding: 18px;
   border: 1px solid #d8e6e6;
@@ -3892,11 +3841,6 @@ small,
 
   .manual-infrastructure-visual {
     max-width: 360px;
-  }
-
-  .manual-wayfinding-sign,
-  .manual-school-road-marking {
-    min-height: 118px;
   }
 
   .manual-priority-map-layout {

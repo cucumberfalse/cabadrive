@@ -2912,7 +2912,28 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(pedestrianSection.locator('[data-card-id="area-infrastructure"] .manual-infrastructure-visual')).toHaveCount(0);
   await expect(pedestrianSection.locator('[data-block-kind="priority-area-map"]')).toBeVisible();
   await expect(pedestrianSection.locator('[data-block-kind="transport-mode-icons"]')).toBeVisible();
-  await expect(pedestrianSection.locator('img[data-visible-spanish="false"]')).toHaveCount(11);
+  const pedestrianImages = pedestrianSection.locator("img");
+  const pedestrianImageCount = await pedestrianImages.count();
+  for (let index = 0; index < pedestrianImageCount; index += 1) {
+    const image = pedestrianImages.nth(index);
+    await image.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0 && element.naturalHeight > 0))
+      .toBe(true);
+  }
+  await expect(pedestrianSection.locator('img[data-visible-spanish="false"]')).toHaveCount(5);
+  const pedestrianOriginalSourceImages = pedestrianSection.locator('img[data-source-image-exception="source-image-original-visible-text"]');
+  await expect(pedestrianOriginalSourceImages).toHaveCount(8);
+  await expect(
+    pedestrianOriginalSourceImages.evaluateAll((images) =>
+      images.every(
+        (image) =>
+          image.getAttribute("data-visible-spanish") === "true" &&
+          image.getAttribute("data-visible-spanish-scope") === "source-image-only" &&
+          image.getAttribute("data-source-as-is") === "true"
+      )
+    )
+  ).resolves.toBe(true);
   const pedestrianRestrictionSigns = pedestrianSection.locator('img[data-official-sign-exception="official-traffic-sign-source-as-is"]');
   await expect(pedestrianRestrictionSigns).toHaveCount(1);
   await expect(pedestrianRestrictionSigns).toHaveAttribute("src", /restriction-signs-source-as-is\.png/);
@@ -2955,13 +2976,25 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     for (const image of Array.from(root.querySelectorAll("img"))) {
       const visibleSpanish = image.getAttribute("data-visible-spanish");
       const officialSignException = image.getAttribute("data-official-sign-exception");
+      const sourceImageException = image.getAttribute("data-source-image-exception");
       const src = image.getAttribute("src") ?? "";
-      if (visibleSpanish !== "false" && officialSignException !== "official-traffic-sign-source-as-is") {
-        problems.push(`${src} has visible Spanish without official sign exception`);
+      if (
+        visibleSpanish !== "false" &&
+        officialSignException !== "official-traffic-sign-source-as-is" &&
+        sourceImageException !== "source-image-original-visible-text"
+      ) {
+        problems.push(`${src} has visible Spanish without an allowed source-image exception`);
       }
       if (officialSignException === "official-traffic-sign-source-as-is") {
         if (visibleSpanish !== "true") problems.push(`${src} official sign exception must record visible-Spanish=true`);
         if (image.getAttribute("data-visible-spanish-scope") !== "official-sign-image-only") problems.push(`${src} has wrong sign exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+        const rect = image.getBoundingClientRect();
+        if (rect.width > image.naturalWidth + tolerance) problems.push(`${src} must not be upscaled beyond source crop width`);
+      }
+      if (sourceImageException === "source-image-original-visible-text") {
+        if (visibleSpanish !== "true") problems.push(`${src} source image exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "source-image-only") problems.push(`${src} has wrong source-image exception scope`);
         if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
         const rect = image.getBoundingClientRect();
         if (rect.width > image.naturalWidth + tolerance) problems.push(`${src} must not be upscaled beyond source crop width`);

@@ -12,6 +12,13 @@ import {
 export type ManualGuideStatus = "pending" | "active";
 export type ManualGuideSectionStatus = "pending" | "implemented";
 
+type OriginalSourceImageTextException = {
+  kind: "source-image-original-visible-text";
+  visibleSpanishScope: "source-image-only";
+  sourceAsIs: true;
+  russianExplanationOutsideImage: true;
+};
+
 export type ManualGuideSourcePage = {
   sourcePage: number;
   manualManifestPointer: string;
@@ -297,7 +304,7 @@ export type ManualGuideContentBlock =
           visibleSpanishScope: "official-sign-image-only";
           sourceAsIs: true;
         };
-        visualKind?: "wayfinding-sign" | "school-road-marking";
+        sourceImageException?: OriginalSourceImageTextException;
         details: {
           labelRu: string;
           textRu: string;
@@ -319,6 +326,8 @@ export type ManualGuideContentBlock =
         height: number;
       };
       assetPath: string;
+      visibleSpanish?: boolean;
+      sourceImageException?: OriginalSourceImageTextException;
       areasRu: string;
       legend: {
         id: string;
