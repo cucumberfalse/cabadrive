@@ -389,6 +389,7 @@ For each section key:
 
 - Cycle PR Set current evidence: PR #179, branch `codex/030-ch1-pedestrian-priority`, head SHA `df13910b8d7d9b61c971d7e56059de78c9715922`, status implemented with required checks green, all review threads resolved, merge state `CLEAN`, and included in final Architect validation for the `ch1-pedestrian-priority` section slice.
 - Cycle PR Set Architect disposition for PR #180: previous head `e6b4cd436a19b9b54f74694981a26b2e14f3d1b6` was not final-validation-ready after the explicit road-sign rule; Implementation Agent fixed the page `32` source-as-is sign sheet at content/evidence head `7ceb65df8e3ef125196bad65db5dc096507c9522` and replaced the final/current handoff-head placeholder flagged by `discussion_r3329490911` with concrete source-as-is follow-up handoff head `1bf48bc3916895c038ad459d279830b360c42fa0`.
+- Cycle PR Set current evidence: PR #180, branch `codex/030-ch1-bicycle`, effective content head `8747cb88b1d8f7a460b238f480f538a35ad990bf`, status implemented with required checks green, Review Agent no-findings follow-up, Orchestrator-resolved review threads `PRRT_kwDOSX65IM6F57qk`, `PRRT_kwDOSX65IM6F54f9`, `PRRT_kwDOSX65IM6F54lR`, `PRRT_kwDOSX65IM6F54lS`, and `PRRT_kwDOSX65IM6F54lT`, and included in final Architect validation for the `ch1-bicycle` section slice.
 
 ### Final Validation Evidence
 
@@ -447,6 +448,11 @@ For each section key:
 - Limit escalation: none
 - Effective content head: df13910b8d7d9b61c971d7e56059de78c9715922
 - Current-PR-head read-only guard: effective content head df13910b8d7d9b61c971d7e56059de78c9715922; current PR head a7a464b6a769834c022a45d9637af84531338136 is evidence-only, AI Review P2 `PRRT_kwDOSX65IM6F5ttO` / `discussion_r3329418382` is disposed as not-needed because visible source page 29 order controls over PDF extraction order, and Orchestrator owns review-thread resolution plus merge/finalization decision.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 8747cb88b1d8f7a460b238f480f538a35ad990bf
+- Final-validation evidence-only commit: effective content head 8747cb88b1d8f7a460b238f480f538a35ad990bf; Architect validation evidence is process-memory-only for PR #180.
+- Current-PR-head read-only guard: effective content head 8747cb88b1d8f7a460b238f480f538a35ad990bf; any later PR head must be final-validation evidence-only and Orchestrator must compare it back to this effective content head before merge/finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
 
@@ -628,3 +634,16 @@ For each section key:
 - Architect validation evidence: no product/code/test/runtime fix is required for PR #179 source order; effective content head remains `df13910b8d7d9b61c971d7e56059de78c9715922`, and current PR head `a7a464b6a769834c022a45d9637af84531338136` is evidence-only.
 - Open Architect dispositions: none for PR #179 `ch1-pedestrian-priority`; Orchestrator may resolve `PRRT_kwDOSX65IM6F5ttO` as not-needed/outdated based on source-page visual order.
 - Architect gaps: none for PR #179 `ch1-pedestrian-priority`; remaining Chapter 1/2 sections stay future section PR work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T01:05:54Z
+- Architect return count: 0
+- Architect validated effective content head: 8747cb88b1d8f7a460b238f480f538a35ad990bf
+- Architect validation evidence: PR #180 validates only `ch1-bicycle` / `Bicicleta` / `Велосипед`; it implements one website section page from source pages `30-38`, preserves the section-based one-PR contract, introduces no raw source-page route/module, and leaves later Chapter 1/2 sections as future section work.
+- Architect validation evidence: source-as-is road-sign handling satisfies the explicit user rule: page `32` uses `bicycle-signs-source-as-is.jpg` as an official traffic sign crop with source-region metadata, dimensions/hash evidence, visible Spanish scoped to the sign image only, Russian explanation outside the image, and tests/checker guards rejecting translated or reconstructed sign DOM.
+- Architect validation evidence: review feedback is disposed for PR #180: sign-sheet source order, page `34` riding prohibition, stale cycle-row cleanup, explicit road-sign source-as-is follow-up, and cycle PR-set head placeholder `discussion_r3329490911` are addressed; Orchestrator evidence reports required checks green and all listed PR #180 review threads resolved.
+- Architect validation evidence: local validation confirmed head `8747cb88b1d8f7a460b238f480f538a35ad990bf`, clean pre-evidence worktree, `node scripts/manual-guide-source-fidelity.mjs` pass, `node --test tests/content-manual-guide-chapters.test.mjs` `21/21`, `pnpm run build` pass, official sign asset SHA `80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334`, and no product/code/test/runtime edits by Architect.
+- Open Architect dispositions: none for PR #180 `ch1-bicycle`; the separate future `ch1-pedestrian-priority` road-sign correction remains recorded outside this slice.
+- Architect gaps: none for PR #180 `ch1-bicycle`; remaining Chapter 1/2 sections stay future section work.
