@@ -496,6 +496,11 @@ For each section key:
 - Current-PR-head read-only guard: effective content head bef7cb7f53954515299ac1cb28328e91ae8713eb; any later PR head must be final-validation evidence-only, and Orchestrator must compare it back to this effective content head before final Analyst validation, completion, merge, or finalization. Any product behavior, code, asset, test, runtime, durable workflow, or non-evidence process-memory change after this head makes this validation stale.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 3739fd1fa1898137b4292bfaf8adec62de1b27b3
+- Final-validation evidence-only commit: effective content head 3739fd1fa1898137b4292bfaf8adec62de1b27b3; the upcoming/current evidence commit only records Architect/Analyst validation evidence and finalization markers in process memory after effective content head 3739fd1fa1898137b4292bfaf8adec62de1b27b3, with no product, runtime, test, or asset changes.
+- Current-PR-head read-only guard: effective content head 3739fd1fa1898137b4292bfaf8adec62de1b27b3; required checks are green, review threads are resolved, merge state is CLEAN, and Orchestrator owns the merge/finalization decision.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -729,3 +734,21 @@ For each section key:
 - Review finding routed/preserved: `PRRT_kwDOSX65IM6F6b_g` / comment `3329657664` was addressed by preserving the Analyst-authored provenance note in `specs/030-manual-chapters-1-2/feature-request.md`; Implementation Agent did not author Analyst validation content and only transported the existing Analyst-owned handoff note in this review-fix commit.
 - Verification commands completed for this review fix: `node scripts/manual-guide-source-fidelity.mjs` pass; `node --test tests/content-manual-guide-chapters.test.mjs` pass (`23/23`); `pnpm exec tsc --noEmit` pass; `pnpm run build` pass with existing Vite chunk-size warning only; `git diff --check` pass; `node scripts/check-feature-memory.mjs --worktree` pass.
 - Implementation Agent feedback: none; no Architect disposition requested by this review fix.
+
+## Final Architect Validation Notes - PR #181 ch1-pedestrian-priority Source Fidelity Correction
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T03:54:50Z
+- Architect validated effective content head: 3739fd1fa1898137b4292bfaf8adec62de1b27b3
+- Architect return count: 1
+- Supersession note: the earlier `Architect Validation Blocker - PR #181 ch1-pedestrian-priority Source Images` block for head `089238adce9b23b67f5c44da7488509d5bff91d1` is superseded by this current-head pass. Its blocker was required-check/review state, not a persistent product architecture gap.
+- Scope validation: PR #181 remains the correction slice for the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет` website section only. It does not include PR #182's Introduction active-state fix and does not include the future `ch1-bicycle` image-quality/sign-caption correction.
+- Source-fidelity validation: current head preserves the user's controlling visual rules for this section. Wayfinding, `Sube y Baja`, priority-area, school-route, Zone 30, and related source visuals use high-resolution original source crops/images with Russian learner explanation outside the source images. The official restriction/control signs use `restriction-signs-source-as-is.png` with `official-traffic-sign-source-as-is`, `visibleSpanishScope: "official-sign-image-only"`, and `sourceAsIs: true`; sign text, placards, symbols, and table-like sign contents remain unmodified/source-as-is.
+- Checker/test validation: the review-fix head narrows `official_traffic_sign_exception_only` so generalized `source-image-original-visible-text` exceptions cannot satisfy the official-sign-only branch. Regression coverage in `tests/content-manual-guide-chapters.test.mjs` now expects that contradictory evidence to fail, while `source_image_exceptions_only` still allows original non-sign source images with visible source text.
+- Evidence reviewed: feature memory (`feature-request.md`, `spec.md`, `plan.md`, this `tasks.md`), PR diff scope, section registry/source-fidelity records, `src/data/manual-sections/ch1-pedestrian-priority.ts`, checker/test changes, and current GitHub state for PR #181. Local read-only verification during Architect validation confirmed `git rev-parse HEAD` equals `3739fd1fa1898137b4292bfaf8adec62de1b27b3`; PR #181 head is the same SHA, state `OPEN`, draft `false`, merge state `CLEAN`.
+- Required-check evidence: GitHub reports `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passing on current head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
+- Review evidence: review threads `PRRT_kwDOSX65IM6F6Yoj`, `PRRT_kwDOSX65IM6F6b_d`, and `PRRT_kwDOSX65IM6F6b_g` are resolved; the first two are outdated and the remaining provenance thread is resolved on the current diff. No unresolved review findings remain for Architect disposition.
+- Implementation evidence accepted for this current head: `node scripts/manual-guide-source-fidelity.mjs` pass; `node --test tests/content-manual-guide-chapters.test.mjs` pass (`23/23`); `pnpm exec tsc --noEmit` pass; `pnpm run build` pass with the existing Vite chunk-size warning only; `git diff --check` pass; `node scripts/check-feature-memory.mjs --worktree` pass; earlier same-section visual evidence includes regenerated desktop/mobile screenshots and Docker smoke with loaded images, source-image exceptions, official sign exception, no image upscaling, and no horizontal overflow.
+- Open Architect dispositions: none for PR #181. The separate shared UI PR #182 and the future `ch1-bicycle` image-quality/sign-caption correction remain outside this PR's merge scope.
+- Architect gaps: none for PR #181 at current effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
+- Final Analyst validation dependency: Orchestrator may now invoke final Analyst validation for PR #181 against current effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
