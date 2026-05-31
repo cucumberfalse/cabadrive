@@ -2041,45 +2041,22 @@ function PedestrianInfrastructureVisual({
   card: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }>["cards"][number];
 }) {
   if (card.assetPath) {
-    return <img src={assetUrl(card.assetPath)} alt={card.altRu ?? ""} data-visible-spanish={false} loading="lazy" />;
-  }
+    const officialSignException = card.officialSignException;
+    const sourceImageException = card.sourceImageException;
+    const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
+    const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
 
-  if (card.visualKind === "wayfinding-sign") {
     return (
-      <div className="manual-wayfinding-sign" aria-label={card.titleRu}>
-        <span>12 мин</span>
-        <strong>Метро</strong>
-        <span>Автобус</span>
-        <span>Пешком</span>
-      </div>
-    );
-  }
-
-  if (card.visualKind === "school-road-marking") {
-    return (
-      <div className="manual-school-road-marking" aria-label={card.titleRu}>
-        <span>ПОСАДКА</span>
-        <span>ВЫСАДКА</span>
-      </div>
-    );
-  }
-
-  if (card.visualKind === "restriction-signs") {
-    return (
-      <div className="manual-restriction-signs" aria-label={card.titleRu}>
-        <div className="manual-no-parking-sign">
-          <span aria-hidden="true">E</span>
-        </div>
-        <div className="manual-authorized-sign">
-          <strong>Будни</strong>
-          <span className="manual-authorized-time">11:00-16:00</span>
-          <span>только с разрешением</span>
-        </div>
-        <div className="manual-control-sign">
-          <span aria-hidden="true" />
-          <strong>Электронный контроль</strong>
-        </div>
-      </div>
+      <img
+        src={assetUrl(card.assetPath)}
+        alt={card.altRu ?? ""}
+        data-visible-spanish={card.visibleSpanish ?? false}
+        data-official-sign-exception={officialSignException?.kind}
+        data-source-image-exception={sourceImageException?.kind}
+        data-visible-spanish-scope={visibleSpanishScope}
+        data-source-as-is={sourceAsIs}
+        loading={officialSignException ? "eager" : "lazy"}
+      />
     );
   }
 
@@ -2092,7 +2069,7 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
       <h3>{block.titleRu}</h3>
       <div className="manual-infrastructure-card-grid">
         {block.cards.map((card) => {
-          const hasVisual = Boolean(card.assetPath || card.visualKind);
+          const hasVisual = Boolean(card.assetPath);
 
           return (
             <article
@@ -2103,7 +2080,7 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
               data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
             >
               {hasVisual && (
-                <div className="manual-infrastructure-visual">
+                <div className={`manual-infrastructure-visual${card.officialSignException ? " manual-official-sign-visual" : ""}`}>
                   <PedestrianInfrastructureVisual card={card} />
                 </div>
               )}
@@ -2137,7 +2114,15 @@ function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSection
       <h3>{block.titleRu}</h3>
       <p className="manual-priority-map-areas">{block.areasRu}</p>
       <div className="manual-priority-map-layout">
-        <img src={assetUrl(block.assetPath)} alt={block.titleRu} data-visible-spanish={false} loading="lazy" />
+        <img
+          src={assetUrl(block.assetPath)}
+          alt={block.titleRu}
+          data-visible-spanish={block.visibleSpanish ?? false}
+          data-source-image-exception={block.sourceImageException?.kind}
+          data-visible-spanish-scope={block.sourceImageException?.visibleSpanishScope}
+          data-source-as-is={block.sourceImageException?.sourceAsIs}
+          loading="lazy"
+        />
         <dl>
           {block.legend.map((entry) => (
             <div key={entry.id}>

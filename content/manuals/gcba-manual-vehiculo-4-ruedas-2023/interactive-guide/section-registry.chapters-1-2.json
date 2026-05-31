@@ -483,11 +483,11 @@
             },
             "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
             "cropDimensions": {
-              "width": 560,
-              "height": 650
+              "width": 3360,
+              "height": 3900
             },
-            "cropSha256": "8d836b2f56d1985e017a4a77bf43889649996347e1228226bc5aba55ba1e4361",
-            "cleanupScope": "reference-only source crop for wayfinding, school routes, and Sube y Baja; runtime localizes text-bearing visuals as DOM/CSS"
+            "cropSha256": "f2a04e8bbe44b4723919f45ffb05c5503afef541bc1d3c9371c2989093fe6e27",
+            "cleanupScope": "reference-only high-resolution source crop for wayfinding, school routes, and Sube y Baja; runtime uses original source-image crops with Russian explanations outside the images"
           },
           {
             "sourcePage": 28,
@@ -517,11 +517,28 @@
             },
             "sourceAssetPath": "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
             "cropDimensions": {
-              "width": 560,
-              "height": 620
+              "width": 3360,
+              "height": 3720
             },
-            "cropSha256": "da3069026c05e1e1c826a83181969f02ce7801133514ca7bd809442097451bc8",
-            "cleanupScope": "reference-only source crop for restrictions, mode icons, and Zona 30; runtime signs and labels are Russian DOM text"
+            "cropSha256": "812615b295f3fb915a2aff8cfdc497a23fe76d80ea459094be0e25c9057ba1bb",
+            "cleanupScope": "reference-only high-resolution source crop for restrictions, mode icons, and Zona 30; runtime official restriction/control signs use a separate source-as-is crop, with Russian explanations outside the sign image"
+          },
+          {
+            "sourcePage": 29,
+            "sourceRegion": {
+              "x": 430,
+              "y": 615,
+              "width": 245,
+              "height": 92,
+              "unit": "page-029.jpg px"
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+            "cropDimensions": {
+              "width": 1470,
+              "height": 552
+            },
+            "cropSha256": "03c8354fc44acff48de3fb0d40aa49757254f047b44de79179ec7f3b168e3f71",
+            "cleanupScope": "runtime official traffic restriction/control signs source-as-is at high resolution; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
           }
         ],
         "localAssetMetadata": [
@@ -530,111 +547,268 @@
             "assetKind": "native-dom-text-and-pedestrian-priority-visual-data",
             "width": 760,
             "height": 1800,
-            "sha256": "98e7a3a2bd0c764ce0d21c9bb471566a77d1ced9ae818aa5d5be5654c8057f2f",
+            "sha256": "38c0abac3283f59710741d806469126101d50a59396e941e98918c3a8cc5c0a3",
             "containsText": true,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
-            "assetKind": "source-derived-nontext-before-after-photo-pair",
-            "width": 520,
-            "height": 260,
-            "sha256": "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a",
+            "assetKind": "high-resolution-source-before-after-photo-pair",
+            "width": 3072,
+            "height": 1560,
+            "sha256": "21ad238fb1622c84899a7c0b65b2f24487c8a0a516bb66d637620d60d283d02a",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
-            "assetKind": "source-derived-nontext-impact-body-artwork",
-            "width": 110,
-            "height": 275,
-            "sha256": "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7",
+            "assetKind": "high-resolution-source-impact-body-artwork",
+            "width": 630,
+            "height": 1740,
+            "sha256": "42c864bfc9df2b2d824165a8127ef3c1a4b407fe2109314b4b171790407eb101",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
-            "assetKind": "source-derived-nontext-impact-car-artwork",
-            "width": 260,
-            "height": 90,
-            "sha256": "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673",
+            "assetKind": "high-resolution-source-impact-car-artwork",
+            "width": 1560,
+            "height": 570,
+            "sha256": "6741d5921e347984d56b08b38ac147e4d8a365328363edf313db83a9b1deef8c",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
-            "assetKind": "source-derived-nontext-impact-target-artwork",
-            "width": 70,
-            "height": 70,
-            "sha256": "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845",
+            "assetKind": "high-resolution-source-impact-target-artwork",
+            "width": 450,
+            "height": 450,
+            "sha256": "4f46f2a52c919015cb6b258a21563ae0e4f02f8a58e37fc0541b800fe31da1d4",
             "containsText": false,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
-            "assetKind": "source-derived-nontext-priority-street-photo",
-            "width": 170,
-            "height": 150,
-            "sha256": "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-priority-street-photo",
+            "width": 1020,
+            "height": 900,
+            "sha256": "508dec0e2948e13aacd9980dc51946a8af79aad03f5ca1c3ca9bc40161782cc9",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
-            "assetKind": "source-derived-nontext-pedestrian-street-photo",
-            "width": 245,
-            "height": 150,
-            "sha256": "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-pedestrian-street-photo",
+            "width": 1470,
+            "height": 900,
+            "sha256": "8113005c51dd845f4b42ba6621fea12b5d900548774dc2130d3811fa3908ea9f",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+            "assetKind": "high-resolution-original-source-wayfinding-photo",
+            "width": 1470,
+            "height": 870,
+            "sha256": "c708f1d34803a7b2d905998d90f97334aba498f893c295300a907333fd5da732",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
-            "assetKind": "source-derived-nontext-school-route-photo",
-            "width": 245,
-            "height": 145,
-            "sha256": "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-school-route-photo",
+            "width": 1470,
+            "height": 870,
+            "sha256": "829a25bda728e6352c363c81c126915d015bf91621c64e8ed7cc8dad38c8a7bb",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+            "assetKind": "high-resolution-original-source-sube-y-baja-road-marking",
+            "width": 1470,
+            "height": 750,
+            "sha256": "9173c0d979968dc60b661cb5d796f5f75d7d02b76c1031828639d0cad28211e1",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
-            "assetKind": "source-derived-nontext-pedestrian-intervention-photo",
-            "width": 245,
-            "height": 120,
-            "sha256": "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-pedestrian-intervention-photo",
+            "width": 1470,
+            "height": 720,
+            "sha256": "c3012aca894e6d05b4ec0f94030291e653befe7da9bdd6c21ae1bd3212dd6146",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
-            "assetKind": "source-derived-map-with-dom-russian-legend",
-            "width": 410,
-            "height": 390,
-            "sha256": "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c",
+            "assetKind": "high-resolution-original-source-priority-area-map",
+            "width": 2460,
+            "height": 2340,
+            "sha256": "d88ecd0fc39dac7f9c0227894794ef648cb7327b1ff229508787ce1f5222056b",
             "containsText": true,
-            "visibleSpanish": false
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+            "assetKind": "official-traffic-sign-source-as-is",
+            "width": 1470,
+            "height": 552,
+            "sha256": "03c8354fc44acff48de3fb0d40aa49757254f047b44de79179ec7f3b168e3f71",
+            "containsText": true,
+            "visibleSpanish": true,
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
-            "assetKind": "source-derived-nontext-zone30-photo",
-            "width": 245,
-            "height": 125,
-            "sha256": "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35",
-            "containsText": false,
-            "visibleSpanish": false
+            "assetKind": "high-resolution-original-source-zone30-photo",
+            "width": 1470,
+            "height": 750,
+            "sha256": "8035cdc4f94cdf7f92560e84ce9f0fa6828c56af250a6feb5130c710290e8e93",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
-            "assetKind": "source-derived-nontext-circulation-icon-row",
-            "width": 470,
-            "height": 58,
-            "sha256": "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3",
+            "assetKind": "high-resolution-source-circulation-icon-row",
+            "width": 2820,
+            "height": 348,
+            "sha256": "bed15de5034b89eb332f64e937cb90024304cfdda9d7a2f6952dcbd7c286e2a1",
             "containsText": false,
             "visibleSpanish": false
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "reason": "Explicit user requirement: official road signs/sign sheets must be inserted source-as-is and not translated, redrawn, cleaned, relabeled, recolored, simplified, or reconstructed."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "Explicit user requirement: original source images must not be translated or reconstructed; Russian explanations are outside the image."
+            }
+          ]
+        },
         "selectableTextStatus": "pass",
         "desktopScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png",
@@ -642,7 +816,7 @@
           {
             "id": "pedestrian-priority-visual-blocks-responsive-fit",
             "status": "pass",
-            "evidence": "Focused Playwright verifies comparison, impact diagram, infrastructure cards, map, restriction signs, circulation icons, and Zone 30 card fit desktop and mobile without document-level overflow."
+            "evidence": "Focused Playwright verifies comparison, impact diagram, all high-resolution source-image infrastructure cards, the map, source-as-is restriction sign image, circulation icons, and Zone 30 card fit desktop and mobile without document-level overflow."
           },
           {
             "id": "pedestrian-priority-russian-dom-labels-selectable",
@@ -650,9 +824,9 @@
             "evidence": "Before/after labels, impact phases, card labels, map legend, restriction sign text, and circulation labels are selectable Russian DOM text."
           },
           {
-            "id": "pedestrian-priority-no-visible-spanish-runtime-assets",
+            "id": "pedestrian-priority-visible-spanish-source-image-scope",
             "status": "pass",
-            "evidence": "Runtime image crops avoid Spanish source labels; Spanish full/source crops are stored under validation only."
+            "evidence": "Visible Spanish is scoped to original source images/signs only; Russian learner explanations and captions are rendered outside images as selectable DOM text."
           },
           {
             "id": "ordinary-prose-no-horizontal-overflow",
@@ -662,16 +836,17 @@
         ],
         "forbiddenPatternScan": {
           "status": "pass",
-          "notes": "No runtime PDF/page raster, raw page route, visible Spanish learner label, remote asset, broad mask, DOM plate over source crop, or fake pending content."
+          "notes": "No runtime PDF/page raster, raw page route, remote asset, broad mask, DOM plate, translated traffic sign, localized wayfinding card, localized Sube y Baja marking, or fake pending content."
         },
         "visualReviewNotes": [
-          "Source pages 24-29 were visually inspected from local page renders before crop creation.",
-          "Page 24 before/after source labels are localized as DOM text and the runtime photo crop excludes ANTES/DESPUÉS.",
-          "Page 25 impact diagram keeps source body/car/target artwork with Russian phase labels and the 40 km/h RACE/GOODYEAR note.",
-          "Pages 26-29 use source-derived non-text crops where possible and localized DOM/CSS visuals where source photos or signs contain readable Spanish text.",
-          "Page 29 restriction sign window is localized as Russian DOM text: working days, 11:00-16:00, authorized vehicles only.",
+          "Source pages 24-29 were visually inspected from local page renders before high-resolution crop creation.",
+          "Page 24 before/after source labels are localized as DOM text and the runtime high-resolution photo crop excludes ANTES/DESPUES.",
+          "Page 25 impact diagram keeps high-resolution source body/car/target artwork with Russian phase labels and the 40 km/h RACE/GOODYEAR note.",
+          "Pages 26-29 use original high-resolution source-image crops; readable source text inside images remains unmodified and is scoped to the image only.",
+          "Page 27 wayfinding and Sube y Baja visuals are no longer DOM/CSS reconstructions; they render original source images with Russian explanations outside the images.",
+          "Page 29 restriction/control signs are inserted as a high-resolution source-as-is official sign crop; Russian explanations for working days, 11:00-16:00, authorized vehicles only, and electronic control sit outside the sign image.",
           "The page 29 infrastructure/lanes card is text-only and intentionally renders without an empty visual panel.",
-          "The priority-area map crop excludes the source legend and footer URL; the legend is Russian DOM text while street names remain contextual map names."
+          "The priority-area map is an original high-resolution source map; the Russian legend is selectable DOM text while street names remain contextual map names inside the image."
         ],
         "checkerResult": "pass"
       }

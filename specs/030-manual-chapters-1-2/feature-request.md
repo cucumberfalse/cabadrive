@@ -564,6 +564,60 @@ Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
 
+## Historical Superseded Analyst Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
+
+Historical Analyst validation status: superseded/stale; this is not an active final Analyst pass for the current PR #181 head.
+
+Former Analyst validation pass: passed for superseded effective content head `bef7cb7f53954515299ac1cb28328e91ae8713eb` only.
+
+Former Final Analyst validation completed at: 2026-05-31T01:54:45Z
+
+Former Analyst validated effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
+
+Superseded at: 2026-05-31T03:30:02Z
+
+Analyst provenance note: this supersession/stale-status note was authored by Analyst under Orchestrator assignment. The later Implementation Agent commit/push only transported the already-authored Analyst-owned process-memory handoff because Analyst cannot stage, commit, or push by role; it was not Implementation Agent self-authored Analyst validation.
+
+Superseded reason: after this validation, PR #181 received non-evidence runtime/assets/test/process-memory changes for high-quality original wayfinding, Sube y Baja, and restriction-sign source crops. Therefore the prior validation for `bef7cb7f53954515299ac1cb28328e91ae8713eb` cannot satisfy final Analyst validation for current pushed head `089238adce9b23b67f5c44da7488509d5bff91d1`.
+
+Current PR #181 Analyst validation status: not run/blocked. Final Analyst validation for the current PR #181 head must rerun only after current-head final Architect validation passes and records the required effective content head evidence.
+
+Historical Analyst return count: 0
+
+Historical customer intent check: passed for superseded PR #181 `ch1-pedestrian-priority` sign source correction content only. This correction slice satisfied the user's explicit rule that official road/traffic signs must not be changed at all: the page `29` restriction/control signs were inserted as the high-quality source-as-is image `restriction-signs-source-as-is.png`, with source-region metadata, dimensions/hash evidence, visible Spanish scoped to the official sign image only, and Russian explanation kept outside the image as selectable DOM text.
+
+Historical gaps, if any: none for the superseded PR #181 customer-intent scope at `bef7cb7f53954515299ac1cb28328e91ae8713eb`. This historical note does not claim that no current-head PR #181 customer-intent gaps remain.
+
+Historical Architect disposition routing: no customer-intent gaps required Architect disposition for the superseded PR #181 head. Architect validation passed at 2026-05-31T01:50:59Z for effective content head `bef7cb7f53954515299ac1cb28328e91ae8713eb`; later current-head Architect validation must pass again before any current-head final Analyst validation may be recorded.
+
+Historical Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T03:57:31Z
+
+Analyst validated effective content head: 3739fd1fa1898137b4292bfaf8adec62de1b27b3
+
+Analyst return count: 0
+
+Analyst validation evidence: the earlier PR #181 Analyst pass for `bef7cb7f53954515299ac1cb28328e91ae8713eb` remains historical/superseded only. This block is the current final Analyst validation for effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
+
+Analyst validation evidence: PR #181 `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет` source-fidelity correction only. This validation does not record anything for PR #182, does not validate the separate Introduction active-state fix, and does not validate the future `ch1-bicycle` image-quality/sign-caption correction.
+
+Customer intent check: passed. Current PR #181 satisfies the user's explicit source-visual requirements for this section: high-quality original source crops/images replace pixelated translated/reconstructed wayfinding, `Sube y Baja`, and restriction/control-sign visuals; official traffic signs and everything inside them, including embedded text, placards, symbols, and table-like sign contents, remain source-as-is with no translation, relabeling, reconstruction, cleanup, recoloring, or simplification; Russian learner explanation stays outside source images/signs. The PR remains a one-website-section correction slice and preserves the broader one-section-one-PR rule.
+
+Gaps, if any: none for PR #181 customer-intent scope at effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
+
+Architect disposition routing: none required. Architect final validation passed at `2026-05-31T03:54:50Z` for the same effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`, with Architect return count `1`, required checks green, review threads resolved, and open Architect dispositions none.
+
+Analyst limit escalation: none / not applicable.
+
+Analyst boundary reminder: this Analyst validation edits only the Analyst-owned `specs/030-manual-chapters-1-2/feature-request.md` notes. No code, tests, assets, runtime files, Architect-owned files, staging, commits, pushes, reviews, PR actions, merges, PR #182 files, other worktrees, or sibling work were changed by Analyst.
+
 ## Final Analyst Validation Notes
 
 Analyst validation pass: passed
@@ -585,3 +639,47 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/030-manual-chapters-1-2/feature-request.md`; no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, merge actions, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T05:10:47Z
+
+Analyst validated effective content head: 6918248e2ef92df1ffc536b10b3909abc13d4dd0
+
+Analyst return count: 0
+
+Analyst validation evidence: PR #181 current-head validation only for effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0; this does not validate PR #182 independently, future Chapter 1 or Chapter 2 section slices, review-thread resolution, check reruns, finalizer actions, or merge readiness.
+
+Customer intent check: passed. PR #181 current head satisfies the source-image/sign fidelity and one-section correction intent for ch1-pedestrian-priority: the correction remains scoped to the Prioridad peatonal / Пешеходный приоритет website section, preserves the one-section-one-PR model, keeps high-quality original source imagery for wayfinding, Sube y Baja, street/intervention/map/zone visuals, and leaves official restriction/control traffic signs source-as-is with Russian learner explanation outside the image.
+
+Gaps, if any: none for PR #181 current-head customer-intent scope at effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition. Architect validation passed at 2026-05-31T05:09:03Z for the same effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0, with Architect reporting no open dispositions and no gaps for PR #181.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T07:49:54Z
+
+Analyst validated effective content head: 404ea58578692fdb9bf4a00d98bdbc01b138134f
+
+Analyst return count: 0
+
+Analyst validation evidence: PR #181 current-head validation only for effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f; this does not validate unrelated section implementation, PR #182 independently, future Chapter 1 or Chapter 2 section slices, review-thread resolution, check reruns, finalizer actions, or merge readiness.
+
+Customer intent check: passed. PR #181 current head satisfies the source-image/sign fidelity, original-source guard, and one-section correction intent for ch1-pedestrian-priority: the correction remains scoped to the Prioridad peatonal / Пешеходный приоритет website section, preserves the one-section-one-PR model, uses high-quality original source images/crops for same-section runtime visuals, keeps official restriction/control traffic signs source-as-is, and keeps Russian learner explanation outside source images/signs.
+
+Gaps, if any: none for PR #181 current-head customer-intent scope at effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition. Architect validation passed at 2026-05-31T07:18:50Z for the same effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f, with Architect reporting no open dispositions and no gaps for PR #181.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
