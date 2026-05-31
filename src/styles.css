@@ -2530,6 +2530,14 @@ small,
   border-top: 1px solid #d8e6e6;
 }
 
+@media (max-width: 840px) {
+  .status-strip,
+  .manual-public-transport-comparison-layout,
+  .manual-public-transport-card {
+    grid-template-columns: 1fr;
+  }
+}
+
 .pandemia-prototype {
   --pandemia-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   margin-top: 14px;

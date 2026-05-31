@@ -3264,6 +3264,38 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   });
   expect(publicTransportIssues).toEqual([]);
 
+  if (testInfo.project.name === "chromium") {
+    await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /px .*px/);
+    for (const width of [761, 768, 785]) {
+      await page.setViewportSize({ width, height: 900 });
+      await expect(page).toHaveURL(/#manual-section-ch1-public-transport-system$/);
+      await expect(publicTransportSection).toHaveAttribute("data-manual-section-id", "ch1-public-transport-system");
+      await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /^[0-9.]+px$/);
+      await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /^[0-9.]+px$/);
+      const narrowIssues = await publicTransportSection.evaluate((root) => {
+        const tolerance = 2;
+        const viewportWidth = document.documentElement.clientWidth;
+        const problems: string[] = [];
+        if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+          problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+        }
+        for (const element of Array.from(root.querySelectorAll(".manual-public-transport-comparison, .manual-public-transport-comparison-layout, .manual-public-transport-facts article, .manual-public-transport-card-grid, .manual-public-transport-card, .manual-public-transport-copy"))) {
+          const rect = element.getBoundingClientRect();
+          const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+          if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+            problems.push(`${id} overflows viewport horizontally`);
+          }
+        }
+        return problems;
+      });
+      expect(narrowIssues, `public transport comparison fits at ${width}px`).toEqual([]);
+    }
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /px .*px/);
+  }
+
   const publicTransportSelectedText = await publicTransportSection.evaluate((root) => {
     const selection = window.getSelection();
     if (!selection) return "";
