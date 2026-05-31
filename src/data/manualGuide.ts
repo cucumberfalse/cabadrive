@@ -478,6 +478,8 @@ export type ManualGuideContentBlock =
         titleRu: string;
         assetPath: string;
         badgeRu?: string;
+        visibleSpanish?: boolean;
+        sourceImageException?: OriginalSourceImageTextException;
         textRu: string;
       }[];
       visualNotes: string[];

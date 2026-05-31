@@ -3,6 +3,13 @@ import type { ManualGuideSectionContent } from "../manualGuide";
 const assetRoot =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle";
 
+const originalSourceImageException = {
+  kind: "source-image-original-visible-text",
+  visibleSpanishScope: "source-image-only",
+  sourceAsIs: true,
+  russianExplanationOutsideImage: true
+} as const;
+
 export const ch1BicycleSection: ManualGuideSectionContent = {
   id: "ch1-bicycle-content",
   sectionId: "ch1-bicycle",
@@ -154,7 +161,7 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Helmet heads are source-derived and carry no Spanish labels.",
+        "Helmet heads are refreshed from the official source page image and carry no Spanish labels.",
         "Correct/wrong meanings are Russian DOM text; source check/cross geometry remains visible.",
         "The source recommendation paragraph is rendered as selectable Russian text above the image."
       ]
@@ -360,7 +367,8 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           status: "safe",
           titleRu: "Оставляйте место от дверей",
           assetPath: `${assetRoot}/safe-distance-source.jpg`,
-          badgeRu: "1,5 м",
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           textRu: "Рекомендуется держаться на 1,5 м от припаркованных автомобилей, чтобы не попасть под открывающуюся дверь."
         },
         {
@@ -368,13 +376,15 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           status: "unsafe",
           titleRu: "Не прижимайтесь к краю",
           assetPath: `${assetRoot}/unsafe-distance-source.jpg`,
+          visibleSpanish: true,
+          sourceImageException: originalSourceImageException,
           textRu: "Если ширины дороги не хватает для безопасного обгона, лучше ехать по центру полосы, пока не появится место."
         }
       ],
       visualNotes: [
-        "Road/cyclist/car artwork is source-derived; Spanish grey captions are excluded from the runtime crops.",
-        "The 1,5 m label is Russian DOM text over the source road crop.",
-        "Correct/incorrect meaning is presented as selectable Russian text rather than source caption raster."
+        "Road/cyclist/car panels are refreshed from the official source page image and kept source-as-is, including original labels inside the image.",
+        "Correct/incorrect meaning and learner explanation are selectable Russian text outside the source image panels.",
+        "The visible Spanish in these two panels is recorded as a source-image-only exception because the crop itself is the original source visual."
       ]
     },
     {
@@ -452,7 +462,7 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The cyclist backs are source-derived and cropped away from Spanish captions.",
+        "The cyclist backs are source-page crops kept away from Spanish captions.",
         "Russian maneuver labels are DOM text directly below the matching figures.",
         "Signal order matches the source: left, stop, right."
       ]

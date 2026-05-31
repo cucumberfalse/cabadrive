@@ -3079,7 +3079,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(bicycleSection.locator('[data-block-kind="bicycle-hand-signals"]')).toBeVisible();
   await expect(bicycleSection.locator('[data-block-kind="pedestrian-infrastructure"]')).toHaveCount(2);
   await expect(bicycleSection.locator('[data-block-kind="source-artwork"]')).toHaveCount(2);
-  await expect(bicycleSection.locator('img[data-visible-spanish="false"]')).toHaveCount(13);
+  await expect(bicycleSection.locator('img[data-visible-spanish="false"]')).toHaveCount(11);
+  await expect(bicycleSection.locator('img[data-source-image-exception="source-image-original-visible-text"]')).toHaveCount(2);
   const bicycleSignSheet = bicycleSection.locator('img[data-official-sign-exception="official-traffic-sign-source-as-is"]');
   await expect(bicycleSignSheet).toHaveCount(1);
   await expect(bicycleSignSheet).toHaveAttribute("src", /bicycle-signs-source-as-is\.jpg/);
@@ -3119,13 +3120,23 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     for (const image of Array.from(root.querySelectorAll("img"))) {
       const visibleSpanish = image.getAttribute("data-visible-spanish");
       const officialSignException = image.getAttribute("data-official-sign-exception");
+      const sourceImageException = image.getAttribute("data-source-image-exception");
       const src = image.getAttribute("src") ?? "";
-      if (visibleSpanish !== "false" && officialSignException !== "official-traffic-sign-source-as-is") {
-        problems.push(`${src} has visible Spanish without official sign exception`);
+      if (
+        visibleSpanish !== "false" &&
+        officialSignException !== "official-traffic-sign-source-as-is" &&
+        sourceImageException !== "source-image-original-visible-text"
+      ) {
+        problems.push(`${src} has visible Spanish without allowed source-image exception`);
       }
       if (officialSignException === "official-traffic-sign-source-as-is") {
         if (visibleSpanish !== "true") problems.push(`${src} official sign exception must record visible-Spanish=true`);
         if (image.getAttribute("data-visible-spanish-scope") !== "official-sign-image-only") problems.push(`${src} has wrong sign exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+      }
+      if (sourceImageException === "source-image-original-visible-text") {
+        if (visibleSpanish !== "true") problems.push(`${src} source image exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "source-image-only") problems.push(`${src} has wrong source-image exception scope`);
         if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
       }
       if (/pages\/page-03[0-8]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
