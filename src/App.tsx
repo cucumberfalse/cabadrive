@@ -2572,7 +2572,7 @@ function IntroductionSectionsView({
                       const introEntry = child.introductionRouteId ? introductionEntryById(child.introductionRouteId) : undefined;
                       const sectionEntry = child.section;
                       const isActiveChild = child.introductionRouteId === selectedEntry.id && !selectedManualSection;
-                      const isActiveSection = sectionEntry?.id === selectedManualSection?.id;
+                      const isActiveSection = Boolean(sectionEntry && selectedManualSection?.id === sectionEntry.id);
                       const isDisabled = sectionEntry ? !manualGuideSectionIsAvailable(sectionEntry) : child.status === "pending" || !introEntry;
                       return (
                         <div
