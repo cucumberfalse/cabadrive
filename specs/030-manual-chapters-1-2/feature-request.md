@@ -563,3 +563,23 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
+
+## Final Analyst Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T01:54:45Z
+
+Analyst validated effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
+
+Analyst return count: 0
+
+Customer intent check: passed for PR #181 `ch1-pedestrian-priority` sign source correction only. This correction slice satisfies the user's explicit rule that official road/traffic signs must not be changed at all: the page `29` restriction/control signs are inserted as the high-quality source-as-is image `restriction-signs-source-as-is.png`, with source-region metadata, dimensions/hash evidence, visible Spanish scoped to the official sign image only, and Russian explanation kept outside the image as selectable DOM text.
+
+Gaps, if any: none for PR #181 customer-intent scope. No customer-intent gaps remain for PR #181.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition for PR #181. Architect validation passed at 2026-05-31T01:50:59Z for effective content head bef7cb7f53954515299ac1cb28328e91ae8713eb; process memory records Review Agent no findings, required checks green, source-fidelity checker pass, content tests 21/21, TypeScript pass, build pass, focused Playwright 2/2, `git diff --check` pass, Docker smoke pass, no reconstructed/localized sign DOM, no upscaling beyond natural crop width, no document overflow, and open Architect dispositions none for this correction slice.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
