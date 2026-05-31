@@ -811,3 +811,33 @@ Architect disposition routing: no Analyst-discovered gap requires Architect disp
 Analyst limit escalation: none
 
 Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T20:10:26Z
+
+Analyst validated effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+
+Analyst return count: 0
+
+Analyst validation evidence: final Architect validation passed first for the same effective content head `4102b3ff598323333b061cf231e9fa8721489a34`, with `tasks.md` recording `Architect validation pass: passed`, no open Architect dispositions, and no Architect gaps for PR #184.
+
+Customer intent check: passed. PR #184 remains acceptable as the Chapter 1 completion PR under the latest one-PR-per-chapter instruction: it preserves the accepted `ch1-public-transport-system` work, includes `ch1-shared-trip` in the same Chapter 1 PR, keeps earlier merged Chapter 1 sections intact, and does not implement or bundle Chapter 2 content. Chapter 2 remains the next separate chapter PR from a fresh latest-main base after Chapter 1 is merged.
+
+Analyst validation evidence: the shared-trip P2 content issue is addressed. The four-car reduction is now explicitly tied to sharing the trip with other drivers who otherwise would drive separate cars, in both the definition paragraph and the congestion-benefit explanation, with content and e2e regression assertions recorded by Implementation/Architect evidence.
+
+Analyst validation evidence: Known Issues disposition remains resolved/superseded. The prior one-section PR #184 validation issue no longer blocks the Chapter 1 completion validation because `ch1-shared-trip` is included, Chapter 1 has six implemented and active sections, Chapter 2 remains pending for a separate future PR, and no human owner decision remains.
+
+Analyst validation evidence: image/sign source-as-is constraints remain preserved. The shared-trip content fix is text/test/process-memory only; source images, sign-like markings, crops, asset metadata, source-fidelity regions, and official traffic-sign/sign-sheet rules were not changed. Public-transport and shared-trip visuals remain high-quality original source crops/images with Russian learner explanation outside source images/sign-like markings.
+
+Analyst validation evidence: PR inspection confirmed current head `4102b3ff598323333b061cf231e9fa8721489a34`, title `[codex] Complete Chapter 1 manual guide`, open/not draft. Product checks other than AI Review were green at inspection time; AI Review was failing on stale final-validation evidence, and this Analyst validation is the requested role-owned refresh for that evidence rather than a customer-intent gap.
+
+Gaps, if any: none for PR #184 Chapter 1 customer-intent scope at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`.
+
+Architect disposition routing: no Analyst-discovered gap requires Architect disposition.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.

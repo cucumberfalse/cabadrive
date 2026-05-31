@@ -615,6 +615,11 @@ For each section key inside the assigned chapter-level PR:
 - Current-PR-head read-only guard: effective content head 0116f6f13e1976e801613abec40e7ad2e1382a18; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 4102b3ff598323333b061cf231e9fa8721489a34 records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 4102b3ff598323333b061cf231e9fa8721489a34; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -1078,3 +1083,21 @@ For each section key inside the assigned chapter-level PR:
 - Architect validation evidence: post-validation commits after effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18` must be final-validation evidence-only; any product, runtime, test, asset, CI, durable workflow, or other non-evidence change makes this validation stale.
 - Open Architect dispositions: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
 - Architect gaps: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T16:47:12Z
+- Architect return count: 0
+- Effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Architect validated effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Architect validation evidence: PR #184 is validated as the Chapter 1 completion PR at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`. Prior final validation for `0116f6f13e1976e801613abec40e7ad2e1382a18` is stale because the shared-trip text/test review fix changed non-evidence content.
+- Architect validation evidence: AI Review P2 `PRRT_kwDOSX65IM6F9DTU` is addressed and the thread is resolved/outdated. The shared-trip four-car reduction is now explicitly tied to sharing with other drivers who otherwise would drive separate cars, in both the definition paragraph and congestion-benefit explanation, with content/e2e regression assertions covering that condition.
+- Architect validation evidence: Chapter 1 remains complete with six implemented/active sections, and PR #184 does not implement Chapter 2. Chapter 2 remains a future separate chapter PR from a fresh latest-main base after Chapter 1 is merged.
+- Architect validation evidence: source/sign constraints remain preserved. The shared-trip P2 fix is text/test/process-memory only; no source images, sign-like markings, crops, asset metadata, source-fidelity regions, or source-as-is sign rules were changed.
+- Architect validation evidence: PR #184 current head is `4102b3ff598323333b061cf231e9fa8721489a34`, draft `false`, mergeable `MERGEABLE`. Required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are green; `AI Review` is pending/stale because final validation evidence is being refreshed for this head.
+- Architect validation evidence: local read-only inspection found unresolved review thread `PRRT_kwDOSX65IM6F8_9Y` is Analyst-validation/head-guard evidence for `feature-request.md`, not an Architect content or disposition gap. It remains for final Analyst validation after this Architect pass.
+- Architect validation evidence: Implementation Agent feedback requiring Architect disposition is none unresolved. Known Issues disposition remains resolved/superseded, including the prior PR #184 one-section validation known issue.
+- Architect validation evidence: post-validation commits after effective content head `4102b3ff598323333b061cf231e9fa8721489a34` must be final-validation evidence-only; any product, runtime, test, asset, CI, durable workflow, or other non-evidence change makes this validation stale.
+- Open Architect dispositions: none for PR #184 at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`.
+- Architect gaps: none for PR #184 at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`.
