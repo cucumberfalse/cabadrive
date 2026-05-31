@@ -639,3 +639,25 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/030-manual-chapters-1-2/feature-request.md`; no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, merge actions, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T05:10:47Z
+
+Analyst validated effective content head: 6918248e2ef92df1ffc536b10b3909abc13d4dd0
+
+Analyst return count: 0
+
+Analyst validation evidence: PR #181 current-head validation only for effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0; this does not validate PR #182 independently, future Chapter 1 or Chapter 2 section slices, review-thread resolution, check reruns, finalizer actions, or merge readiness.
+
+Customer intent check: passed. PR #181 current head satisfies the source-image/sign fidelity and one-section correction intent for ch1-pedestrian-priority: the correction remains scoped to the Prioridad peatonal / Пешеходный приоритет website section, preserves the one-section-one-PR model, keeps high-quality original source imagery for wayfinding, Sube y Baja, street/intervention/map/zone visuals, and leaves official restriction/control traffic signs source-as-is with Russian learner explanation outside the image.
+
+Gaps, if any: none for PR #181 current-head customer-intent scope at effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition. Architect validation passed at 2026-05-31T05:09:03Z for the same effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0, with Architect reporting no open dispositions and no gaps for PR #181.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.

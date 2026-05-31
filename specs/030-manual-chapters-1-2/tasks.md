@@ -786,3 +786,21 @@ For each section key:
 - Architect validation evidence: validated effective content head is `faee4f4a711019cf0a00ba7e923af1086923c0af`; later PR-head commits are evidence-only process-memory successors, and Orchestrator/finalizer verifies actual current PR head ancestry from this effective content head, post-effective-head diff scope, required checks, review threads, merge state, and expected-head before merge/finalization.
 - Open Architect dispositions: none for PR #182 `introduction-active-state`; no unresolved Implementation Agent feedback remains.
 - Architect gaps: none for PR #182 `introduction-active-state`.
+
+## Final Architect Validation Notes - PR #181 current head after origin/main merge
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T05:09:03Z
+- Architect return count: 1
+- Architect validated effective content head: 6918248e2ef92df1ffc536b10b3909abc13d4dd0
+- Effective content head: 6918248e2ef92df1ffc536b10b3909abc13d4dd0
+- Current-PR-head read-only guard: PR #181 current head 6918248e2ef92df1ffc536b10b3909abc13d4dd0 is the validated effective content head; any later PR-head commits must be final-validation evidence-only for this validation to remain current.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Architect validation evidence: PR #181 remains scoped to the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет` source-image and source-as-is correction. It preserves the source-as-is/high-quality visual changes from earlier PR #181 heads and incorporates the merged PR #182 Introduction active-state fix without changing PR #181 source imagery, checker policy, section registry meaning, or section content.
+- Architect validation evidence: Orchestrator reports current head 6918248e2ef92df1ffc536b10b3909abc13d4dd0 resolved merge conflicts only in feature memory and preserved both the PR #182 `src/App.tsx` active-state fix and the PR #181 pedestrian source-as-is changes.
+- Architect validation evidence: Orchestrator reports verification passed after the merge/update: `git diff --check`; `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`23/23`); `node --test tests/content-pandemia-vial-section.test.mjs` (`14/14`); `pnpm exec tsc --noEmit`; `pnpm run build` with the existing Vite chunk warning only.
+- Architect validation evidence: Orchestrator reports GitHub checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed on current head 6918248e2ef92df1ffc536b10b3909abc13d4dd0. `AI Review` was pending/stuck because stale validation evidence was the remaining review finding.
+- Architect validation evidence: stale validation review thread `PRRT_kwDOSX65IM6F6nvE` is addressed by this current-head Architect validation evidence for effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0; final review-thread resolution remains Orchestrator-owned.
+- Open Architect dispositions: none for PR #181 at current effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
+- Architect gaps: none for PR #181 at current effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
