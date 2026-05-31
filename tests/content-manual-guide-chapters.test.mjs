@@ -1272,6 +1272,48 @@ test("Manual guide source-fidelity checker allows explicit original source-image
   }
 });
 
+test("Manual guide source-fidelity checker rejects reconstructed source-image Spanish exceptions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-reconstructed-source-image-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
+      (implementationEvidence) => {
+        const sourceImageAsset = implementationEvidence.localAssetMetadata[0];
+        sourceImageAsset.assetKind = "generated-reconstructed-wayfinding-photo";
+        sourceImageAsset.containsText = true;
+        sourceImageAsset.visibleSpanish = true;
+        sourceImageAsset.sourceImageException = {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: sourceImageAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
+            }
+          ]
+        };
+      }
+    );
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when a source-image exception lacks original-source provenance");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker scans section content modules for forbidden full-page assets", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-forbidden-module-"));
   try {

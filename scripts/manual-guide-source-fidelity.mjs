@@ -91,6 +91,8 @@ function isOfficialTrafficSignSourceAsIsException(entry) {
 function isOriginalSourceImageVisibleTextException(entry) {
   return (
     entry.visibleSpanish === true &&
+    typeof entry.assetKind === "string" &&
+    entry.assetKind.startsWith("high-resolution-original-source-") &&
     isObject(entry.sourceImageException) &&
     entry.sourceImageException.kind === "source-image-original-visible-text" &&
     entry.sourceImageException.visibleSpanishScope === "source-image-only" &&

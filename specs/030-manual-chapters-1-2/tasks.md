@@ -755,6 +755,17 @@ For each section key:
 - Verification commands completed for this review fix: `node scripts/manual-guide-source-fidelity.mjs` pass; `node --test tests/content-manual-guide-chapters.test.mjs` pass (`23/23`); `pnpm exec tsc --noEmit` pass; `pnpm run build` pass with existing Vite chunk-size warning only; `git diff --check` pass; `node scripts/check-feature-memory.mjs --worktree` pass.
 - Implementation Agent feedback: none; no Architect disposition requested by this review fix.
 
+## Implementation Agent Review Fix Evidence - PR #181 source-image asset provenance
+
+- Implementation Agent review-fix completed at: 2026-05-31T06:30:19Z.
+- Assigned PR/head: PR #181 on branch `codex/030-ch1-pedestrian-sign-source`, starting from current PR head `308edfc796db8b84e0b758d4aff3cda74e3508fa`.
+- Review finding addressed: AI Review P2 `PRRT_kwDOSX65IM6F6vBK` / comment `discussion_r3329755669` in `scripts/manual-guide-source-fidelity.mjs` around `isOriginalSourceImageVisibleTextException(entry)`.
+- Root cause: `isOriginalSourceImageVisibleTextException(entry)` accepted visible-Spanish source-image exceptions from nested `sourceImageException` fields alone, so generated or reconstructed assets could pass by adding that nested object.
+- Fix evidence: source-image visible-Spanish exceptions now require `entry.assetKind` to start with `high-resolution-original-source-`; official sign source-as-is exceptions remain governed separately by `assetKind: "official-traffic-sign-source-as-is"` and `officialSignException`.
+- Regression evidence: `tests/content-manual-guide-chapters.test.mjs` keeps a passing fixture for `assetKind: "high-resolution-original-source-wayfinding-photo"` and adds a failing fixture for `assetKind: "generated-reconstructed-wayfinding-photo"` even when the nested `sourceImageException` object is otherwise valid.
+- Focused verification before this process-memory update: `node scripts/manual-guide-source-fidelity.mjs` pass; `node --test tests/content-manual-guide-chapters.test.mjs` pass (`24/24`).
+- Implementation Agent feedback: none; no Architect disposition requested by this review fix.
+
 ## Final Architect Validation Notes
 
 - Architect validation pass: passed
