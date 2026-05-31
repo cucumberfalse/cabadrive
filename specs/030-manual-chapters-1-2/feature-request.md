@@ -727,3 +727,31 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T13:31:45Z
+
+Analyst validated effective content head: 081c932a36bb00bb21b5cde1f279ecb79d4ac090
+
+Analyst return count: 0
+
+Analyst validation evidence: this is the current PR #184 public-transport validation for effective content head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`. The earlier Analyst validation for `7d38e185109a981af056c023b980699aa3a1129c` is stale because the later tablet-overflow CSS/test review fix was a non-evidence change.
+
+Analyst validation ordering: final Architect validation passed first at `2026-05-31T13:28:14Z` for the same effective content head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`, with no open Architect dispositions or gaps recorded for PR #184.
+
+Customer intent check: passed. PR #184 satisfies the corrected one-website-section-per-PR slice for `ch1-public-transport-system` / `Sistema de transporte público` / `Система общественного транспорта`, covering source pages `39-40` only. The diff, registry, section module, tests, and evidence keep `ch1-shared-trip` / `Viaje compartido` / `Совместная поездка` pending for its own separate site page and future PR, and do not implement any Chapter 2 section.
+
+Source and sign/image fidelity check: passed. The public-transport comparison, yellow box, bus platform, exclusive lane, Metrobus, and transport-center visuals are recorded as high-quality original source crops with source-region metadata and stable hashes. Sign-like `BUS` and Metrobus markings remain source-as-is inside source-image exceptions, while Russian learner explanations and captions remain selectable DOM text outside the images.
+
+Review disposition check: passed. AI Review P2 `PRRT_kwDOSX65IM6F8MRc` at `src/styles.css:2430` is resolved and disposed by the current effective content head; the implementation records the tablet-width collapse fix and e2e probes at `761`, `768`, and `785` px. GitHub reports PR #184 current head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`, not draft, clean/mergeable, and required checks green (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`).
+
+Gaps, if any: none for PR #184 current-head customer-intent scope at effective content head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`. The broader Chapter 1/2 cycle remains incomplete by design because `ch1-shared-trip` and Chapter 2 sections are still pending separate section PRs.
+
+Architect disposition routing: no Analyst-discovered gap requires Architect disposition for PR #184. Review P2 is already disposed and resolved, high-quality original source/sign constraints are preserved for this section, and `ch1-shared-trip` remains the next separate site page/PR candidate rather than skipped or bundled.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
