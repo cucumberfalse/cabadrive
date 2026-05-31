@@ -1,4 +1,5 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch1BicycleSection } from "./manual-sections/ch1-bicycle";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
@@ -339,6 +340,152 @@ export type ManualGuideContentBlock =
         labelRu: string;
       }[];
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-benefits";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      benefits: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-helmet-fit";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      guidanceRu: string;
+      positions: {
+        id: string;
+        status: "correct" | "wrong";
+        labelRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-gear";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      items: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-signage";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: true;
+      officialSignException: {
+        kind: "official-traffic-sign-source-as-is";
+        visibleSpanishScope: "official-sign-image-only";
+        sourceAsIs: true;
+      };
+      noticeItemsRu: string[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-posture";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      labels: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-distance";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      examples: {
+        id: string;
+        status: "safe" | "unsafe";
+        titleRu: string;
+        assetPath: string;
+        badgeRu?: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "bicycle-hand-signals";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      signals: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -385,7 +532,8 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
 export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch1CitiesForPeopleSection,
   ch1SustainableMobilitySection,
-  ch1PedestrianPrioritySection
+  ch1PedestrianPrioritySection,
+  ch1BicycleSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -435,6 +583,11 @@ export const manualGuideDocumentStyleTokens = {
       tokenSource: "source pages 24-29 Prioridad peatonal"
     },
     {
+      id: "manual-bicycle-visuals",
+      description: "Pages 30-38 bicycle, helmet, source-as-is official sign sheet, gesture, lane, parking, Ecobici, and scooter visuals using local source crops plus selectable Russian DOM explanation outside sign imagery.",
+      tokenSource: "source pages 30-38 Bicicleta"
+    },
+    {
       id: "manual-legal-detail",
       description: "Dense legal/document/responsibility blocks that preserve numbers, document names, obligations, and exceptions.",
       tokenSource: "manual-guide-document-style-v2"
@@ -447,7 +600,7 @@ export const manualGuideDocumentStyleTokens = {
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
     "Divider-only source PDF pages 21 and 43 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
     "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
-    "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, and side-by-side translation layouts are forbidden."
+    "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, side-by-side translation layouts, and translated/reconstructed traffic sign renderings are forbidden."
   ]
 } as const;
 
