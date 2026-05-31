@@ -1666,6 +1666,8 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(activeIntroRoute).toHaveClass(/active/);
     await expect(activeIntroRoute).toHaveAttribute("aria-current", "page");
     await expect(activeIntroRoute).toHaveAttribute("aria-label", route.title);
+    await expect(reader.locator('[data-guide-entry-id="introduction"] .manual-guide-children button.active')).toHaveCount(1);
+    await expect(reader.locator('[data-guide-entry-id="introduction"] .manual-guide-children button[aria-current="page"]')).toHaveCount(1);
     await expect(reader.locator('button[role="listitem"]')).toHaveCount(0);
     await expect(page.getByRole("heading", { name: route.title })).toBeVisible();
     await expect(reader).toContainText(route.sample);
@@ -2686,6 +2688,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(nav).toHaveAttribute("data-active-child-id", "ch1-cities-for-people");
   await expect(cities).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(sustainable).not.toHaveClass(/active/);
 
   const section = content.getByTestId("manual-guide-section");
   await expect(section).toBeVisible();
@@ -2753,6 +2757,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(nav).toHaveAttribute("data-active-child-id", "ch1-sustainable-mobility");
   await expect(sustainable).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(cities).not.toHaveClass(/active/);
 
   const sustainableSection = content.getByTestId("manual-guide-section");
   await expect(sustainableSection).toHaveAttribute("data-manual-section-id", "ch1-sustainable-mobility");
@@ -2884,6 +2890,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(nav).toHaveAttribute("data-active-child-id", "ch1-pedestrian-priority");
   await expect(pedestrian).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(sustainable).not.toHaveClass(/active/);
 
   const pedestrianSection = content.getByTestId("manual-guide-section");
   await expect(pedestrianSection).toHaveAttribute("data-manual-section-id", "ch1-pedestrian-priority");
@@ -3009,6 +3017,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
   await expect(nav).toHaveAttribute("data-active-child-id", "ch1-bicycle");
   await expect(bicycle).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(pedestrian).not.toHaveClass(/active/);
 
   const bicycleSection = content.getByTestId("manual-guide-section");
   await expect(bicycleSection).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
