@@ -521,6 +521,10 @@ For each section key:
 - Current-PR-head read-only guard: effective content head faee4f4a711019cf0a00ba7e923af1086923c0af; Orchestrator/finalizer verifies actual current PR head ancestry from this effective content head, post-effective-head diff scope, required checks, review threads, merge state, and expected-head before merge/finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 404ea58578692fdb9bf4a00d98bdbc01b138134f
+- Current-PR-head read-only guard: effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -815,3 +819,18 @@ For each section key:
 - Architect validation evidence: stale validation review thread `PRRT_kwDOSX65IM6F6nvE` is addressed by this current-head Architect validation evidence for effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0; final review-thread resolution remains Orchestrator-owned.
 - Open Architect dispositions: none for PR #181 at current effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
 - Architect gaps: none for PR #181 at current effective content head 6918248e2ef92df1ffc536b10b3909abc13d4dd0.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T07:18:50Z
+- Architect return count: 1
+- Architect validated effective content head: 404ea58578692fdb9bf4a00d98bdbc01b138134f
+- Effective content head: 404ea58578692fdb9bf4a00d98bdbc01b138134f
+- Architect validation evidence: PR #181 remains scoped to the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет` source-image and source-as-is correction. It does not include unrelated section implementation, PR #182 shared UI work, or future bicycle image-quality work.
+- Architect validation evidence: current effective head 404ea58578692fdb9bf4a00d98bdbc01b138134f includes the latest source-image asset provenance review fix. Source-image visible-Spanish exceptions now require an `assetKind` matching the high-resolution original source convention, while reconstructed or generated asset kinds fail even if nested exception fields are present.
+- Architect validation evidence: current effective head preserves the source-as-is/high-quality visual contract for this section: same-section runtime source visuals use original high-resolution source images/crops, official restriction/control signs remain source-as-is with the narrow official traffic sign exception, and Russian learner explanation stays outside source images/signs.
+- Architect validation evidence: Orchestrator and Implementation evidence reports passing verification for current effective head 404ea58578692fdb9bf4a00d98bdbc01b138134f: source-fidelity checker, content tests 24/24, TypeScript, build with the existing Vite chunk-size warning only, diff hygiene, feature-memory check, and GitHub required checks AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation evidence: current merge state is blocked only by unresolved review-thread/finalizer coordination owned by Orchestrator; no product architecture gap, unresolved Implementation Agent feedback, or Analyst feedback remains for Architect disposition.
+- Open Architect dispositions: none for PR #181 at current effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f.
+- Architect gaps: none for PR #181 at current effective content head 404ea58578692fdb9bf4a00d98bdbc01b138134f.
