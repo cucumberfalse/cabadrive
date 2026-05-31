@@ -580,7 +580,7 @@ Analyst provenance note: this supersession/stale-status note was authored by Ana
 
 Superseded reason: after this validation, PR #181 received non-evidence runtime/assets/test/process-memory changes for high-quality original wayfinding, Sube y Baja, and restriction-sign source crops. Therefore the prior validation for `bef7cb7f53954515299ac1cb28328e91ae8713eb` cannot satisfy final Analyst validation for current pushed head `089238adce9b23b67f5c44da7488509d5bff91d1`.
 
-Status at supersession time: current PR #181 Analyst validation had not been rerun and was blocked until current-head final Architect validation passed with required effective content head evidence.
+Current PR #181 Analyst validation status: not run/blocked. Final Analyst validation for the current PR #181 head must rerun only after current-head final Architect validation passes and records the required effective content head evidence.
 
 Historical Analyst return count: 0
 
@@ -594,7 +594,7 @@ Historical Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
 
-## Final Analyst Validation Notes - PR #181 ch1-pedestrian-priority Source Fidelity Correction
+## Final Analyst Validation Notes
 
 Analyst validation pass: passed
 
@@ -604,7 +604,7 @@ Analyst validated effective content head: 3739fd1fa1898137b4292bfaf8adec62de1b27
 
 Analyst return count: 0
 
-Supersession note: the earlier PR #181 Analyst pass for `bef7cb7f53954515299ac1cb28328e91ae8713eb` remains historical/superseded only. This block is the current final Analyst validation for effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
+Analyst validation evidence: the earlier PR #181 Analyst pass for `bef7cb7f53954515299ac1cb28328e91ae8713eb` remains historical/superseded only. This block is the current final Analyst validation for effective content head `3739fd1fa1898137b4292bfaf8adec62de1b27b3`.
 
 Analyst validation evidence: PR #181 `ch1-pedestrian-priority` / `Prioridad peatonal` / `Пешеходный приоритет` source-fidelity correction only. This validation does not record anything for PR #182, does not validate the separate Introduction active-state fix, and does not validate the future `ch1-bicycle` image-quality/sign-caption correction.
 
@@ -616,4 +616,4 @@ Architect disposition routing: none required. Architect final validation passed 
 
 Analyst limit escalation: none / not applicable.
 
-Role boundary reminder: this Analyst validation edits only the Analyst-owned `specs/030-manual-chapters-1-2/feature-request.md` notes. No code, tests, assets, runtime files, Architect-owned files, staging, commits, pushes, reviews, PR actions, merges, PR #182 files, other worktrees, or sibling work were changed by Analyst.
+Analyst boundary reminder: this Analyst validation edits only the Analyst-owned `specs/030-manual-chapters-1-2/feature-request.md` notes. No code, tests, assets, runtime files, Architect-owned files, staging, commits, pushes, reviews, PR actions, merges, PR #182 files, other worktrees, or sibling work were changed by Analyst.
