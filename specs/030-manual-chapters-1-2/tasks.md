@@ -362,7 +362,7 @@ For each section key inside the assigned chapter-level PR:
 ### Known Issues
 
 - Existing page-based or section-per-PR process memory may mention pages `021-056` or individual website sections as implementation PR units. Architect disposition: addressed; this correction supersedes page-based slicing and the former one-section PR slicing. Future agents must follow chapter-level PR slicing from this spec/plan/tasks, and older page/section PR wording is historical only.
-- PR #184 prior final validation conflicts with the newest chapter-level instruction because it validated only `ch1-public-transport-system` and explicitly left `ch1-shared-trip` out of scope. Architect disposition: stale/blocked until Implementation Agent adds `ch1-shared-trip` inside PR #184, reruns verification, Review Agent re-reviews the expanded Chapter 1 scope, and final Architect/Analyst validation rerun.
+- PR #184 prior final validation conflicted with the newest chapter-level instruction because it validated only `ch1-public-transport-system` and explicitly left `ch1-shared-trip` out of scope. Architect disposition: resolved/superseded; PR #184 now includes `ch1-shared-trip` inside the Chapter 1 completion PR, verification and Review Agent re-review completed on effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`, final Architect validation passed at `2026-05-31T15:27:42Z`, final Analyst validation passed at `2026-05-31T15:31:55Z`, and no owner or human decision remains.
 - PR #175 / `page-021` conflicts with corrected requirements. Architect disposition: resolved; PR #175 is closed unmerged and superseded by the corrected section-based contract, so it must not merge as-is.
 - PR #174 or earlier shared prerequisite state encoded a page-based pending registry. Architect disposition: resolved; PR #176 replaces the page-based registry with the section-based shared correction/prerequisite, so no additional Architect task is required for PR #174 in this slice.
 - Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed; every future section implementation must perform manual visual inspection across its full source range.
@@ -1033,3 +1033,16 @@ For each section key inside the assigned chapter-level PR:
 - Architect validation evidence: process memory is current for the Chapter 1 completion state: T064-T070 are complete, final Architect task T039/T040 is complete, T071 remains open only because final Analyst validation still follows this Architect pass, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
 - Open Architect dispositions: none for PR #184 at effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb.
 - Architect gaps: none for PR #184 at effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T15:44:50Z
+- Architect return count: 0
+- Effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validated effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validation evidence: this refresh validates the Architect-owned process-memory disposition fix for PR #184 after finalizer dry-run on current PR head `11f44eb2cb33d42f99aa149858b90c345cbb82e7`. The product/runtime effective content head remains `8ca6348e6ede71919d87309ad2770c5e985630bb`; this process-memory change only resolves the historical Known Issues wording that still described the already-satisfied Chapter 1 scope-expansion condition as stale/blocked.
+- Architect validation evidence: the Known Issues item for prior PR #184 one-section validation is now resolved/superseded. `ch1-shared-trip` is included in PR #184, Chapter 1 has six implemented sections, Chapter 2 remains a separate future chapter PR, required checks and Review Agent state were already green/resolved for the effective content head, and final Architect/Analyst validation passed in order.
+- Architect validation evidence: local read-only checks for this process-memory refresh confirmed the assigned worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, clean pre-edit status, and current PR head `11f44eb2cb33d42f99aa149858b90c345cbb82e7`.
+- Open Architect dispositions: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`; no unresolved known issue, Implementation Agent feedback, or Analyst feedback remains for Architect disposition.
+- Architect gaps: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`.
