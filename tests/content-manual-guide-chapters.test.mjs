@@ -211,12 +211,18 @@ test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF 
     "ch1-public-transport-system",
     "ch1-shared-trip"
   ]);
+  assert.equal(registry.chapters[0].status, "active", "Chapter 1 is active after every Chapter 1 section is implemented");
   assert.deepEqual(registry.chapters[1].sectionIds, [
     "ch2-legal-responsibility",
     "ch2-required-documents",
     "ch2-incident-obligations",
     "ch2-scoring"
   ]);
+  assert.equal(registry.chapters[1].status, "pending", "Chapter 2 remains pending until its future chapter PR");
+
+  const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
+  assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
+  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "pending"), "all Chapter 2 child sections remain pending");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);

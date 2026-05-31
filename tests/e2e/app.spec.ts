@@ -2626,11 +2626,19 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
 
   const chapter1 = nav.locator('[data-guide-entry-id="chapter-1-sustainable-mobility"]');
   const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
-  await chapter1.locator("summary").click();
-  await chapter2.locator("summary").click();
+  if (!(await chapter1.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter1.locator("summary").click();
+  }
+  if (!(await chapter2.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter2.locator("summary").click();
+  }
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
+  await expect(chapter1).toHaveAttribute("data-status", "active");
+  await expect(chapter2).toHaveAttribute("data-status", "pending");
+  await expect(chapter1.locator("summary small")).toHaveCount(0);
+  await expect(chapter2.locator("summary small")).toHaveText("позже");
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
