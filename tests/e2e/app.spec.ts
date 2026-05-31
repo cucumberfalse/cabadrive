@@ -2626,11 +2626,19 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
 
   const chapter1 = nav.locator('[data-guide-entry-id="chapter-1-sustainable-mobility"]');
   const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
-  await chapter1.locator("summary").click();
-  await chapter2.locator("summary").click();
+  if (!(await chapter1.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter1.locator("summary").click();
+  }
+  if (!(await chapter2.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter2.locator("summary").click();
+  }
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
+  await expect(chapter1).toHaveAttribute("data-status", "active");
+  await expect(chapter2).toHaveAttribute("data-status", "pending");
+  await expect(chapter1.locator("summary small")).toHaveCount(0);
+  await expect(chapter2.locator("summary small")).toHaveText("позже");
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
@@ -2647,14 +2655,14 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
   await expect(bicycle).toBeVisible();
-  for (const sectionButton of [cities, sustainable, pedestrian, bicycle]) {
+  for (const sectionButton of [cities, sustainable, pedestrian, bicycle, publicTransport, sharedTrip]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
     await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
     await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
   }
 
-  for (const sectionButton of [publicTransport, sharedTrip, legal, scoring]) {
+  for (const sectionButton of [legal, scoring]) {
     await expect(sectionButton).toBeVisible();
     await expect(sectionButton).toBeDisabled();
     await expect(sectionButton).toHaveAttribute("data-status", "pending");
@@ -3185,6 +3193,271 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await bicycleSection.screenshot({
     path: testInfo.outputPath(`ch1-bicycle-${testInfo.project.name}.png`)
   });
+
+  await publicTransport.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-public-transport-system$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-public-transport-system");
+  await expect(publicTransport).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(bicycle).not.toHaveClass(/active/);
+
+  const publicTransportSection = content.getByTestId("manual-guide-section");
+  await expect(publicTransportSection).toHaveAttribute("data-manual-section-id", "ch1-public-transport-system");
+  await expect(publicTransportSection.getByRole("heading", { name: "Система общественного транспорта", exact: true })).toBeVisible();
+  await expect(publicTransportSection).toContainText("уменьшить выбросы CO2");
+  await expect(publicTransportSection).toContainText("40-50");
+  await expect(publicTransportSection).toContainText("3-4");
+  await expect(publicTransportSection).toContainText("Желтые боксы");
+  await expect(publicTransportSection).toContainText("Выступы для ожидания автобусов");
+  await expect(publicTransportSection).toContainText("Эксклюзивные полосы");
+  await expect(publicTransportSection).toContainText("бесплатное разрешение");
+  await expect(publicTransportSection).toContainText("Metrobus de Buenos Aires");
+  await expect(publicTransportSection).toContainText("красная дорожка");
+  await expect(publicTransportSection).toContainText("через соответствующий пандус");
+  await expect(publicTransportSection).toContainText("удержания водительского удостоверения");
+  await expect(publicTransportSection).toContainText("Пересадочные центры");
+  await expect(publicTransportSection.locator('[data-block-kind="public-transport-comparison"]')).toBeVisible();
+  await expect(publicTransportSection.locator('[data-block-kind="public-transport-infrastructure"]')).toBeVisible();
+  await expect(publicTransportSection.locator('img[data-visible-spanish="false"]')).toHaveCount(4);
+  const publicTransportSourceImages = publicTransportSection.locator('img[data-source-image-exception="source-image-original-visible-text"]');
+  await expect(publicTransportSourceImages).toHaveCount(2);
+  await expect(publicTransportSourceImages.nth(0)).toHaveAttribute("src", /exclusive-lane-source\.jpg/);
+  await expect(publicTransportSourceImages.nth(1)).toHaveAttribute("src", /metrobus-source\.jpg/);
+  await expect(publicTransportSourceImages.nth(0)).toHaveAttribute("data-visible-spanish", "true");
+  await expect(publicTransportSourceImages.nth(0)).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(publicTransportSourceImages.nth(0)).toHaveAttribute("data-source-as-is", "true");
+  await expect(publicTransportSection).not.toContainText("Viaje compartido");
+  await expect(publicTransportSection).not.toContainText("Responsabilidades legales");
+  await expect(publicTransportSection.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(publicTransportSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const publicTransportIssues = await publicTransportSection.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(
+      root.querySelectorAll(
+        '[data-testid="manual-guide-section-block"], .manual-public-transport-card, .manual-public-transport-copy p, .manual-public-transport-facts article, .manual-public-transport-comparison figcaption'
+      )
+    )) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.getAttribute("data-card-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    for (const image of Array.from(root.querySelectorAll("img"))) {
+      const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const sourceImageException = image.getAttribute("data-source-image-exception");
+      const src = image.getAttribute("src") ?? "";
+      if (visibleSpanish !== "false" && sourceImageException !== "source-image-original-visible-text") {
+        problems.push(`${src} has visible Spanish without allowed source-image exception`);
+      }
+      if (sourceImageException === "source-image-original-visible-text") {
+        if (visibleSpanish !== "true") problems.push(`${src} source image exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "source-image-only") problems.push(`${src} has wrong source-image exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+      }
+      if (/pages\/page-0(?:39|40)\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
+    }
+    return problems;
+  });
+  expect(publicTransportIssues).toEqual([]);
+
+  if (testInfo.project.name === "chromium") {
+    await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /px .*px/);
+    for (const width of [761, 768, 785]) {
+      await page.setViewportSize({ width, height: 900 });
+      await expect(page).toHaveURL(/#manual-section-ch1-public-transport-system$/);
+      await expect(publicTransportSection).toHaveAttribute("data-manual-section-id", "ch1-public-transport-system");
+      await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /^[0-9.]+px$/);
+      await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /^[0-9.]+px$/);
+      const narrowIssues = await publicTransportSection.evaluate((root) => {
+        const tolerance = 2;
+        const viewportWidth = document.documentElement.clientWidth;
+        const problems: string[] = [];
+        if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+          problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+        }
+        for (const element of Array.from(root.querySelectorAll(".manual-public-transport-comparison, .manual-public-transport-comparison-layout, .manual-public-transport-facts article, .manual-public-transport-card-grid, .manual-public-transport-card, .manual-public-transport-copy"))) {
+          const rect = element.getBoundingClientRect();
+          const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+          if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+            problems.push(`${id} overflows viewport horizontally`);
+          }
+        }
+        return problems;
+      });
+      expect(narrowIssues, `public transport comparison fits at ${width}px`).toEqual([]);
+    }
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await expect(publicTransportSection.locator(".manual-public-transport-comparison-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(publicTransportSection.locator(".manual-public-transport-card").first()).toHaveCSS("grid-template-columns", /px .*px/);
+  }
+
+  const publicTransportSelectedText = await publicTransportSection.evaluate((root) => {
+    const selection = window.getSelection();
+    if (!selection) return "";
+    const range = document.createRange();
+    range.selectNodeContents(root);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  expect(publicTransportSelectedText).toContain("40-50");
+  expect(publicTransportSelectedText).toContain("Желтые боксы");
+  expect(publicTransportSelectedText).toContain("Metrobus de Buenos Aires");
+  expect(publicTransportSelectedText).toContain("Пересадочные центры");
+
+  await publicTransportSection.screenshot({
+    path: testInfo.outputPath(`ch1-public-transport-system-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-public-transport-system");
+  await expect(page).toHaveURL(/#manual-section-ch1-public-transport-system$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-public-transport-system");
+
+  await sharedTrip.click();
+  await expect(page).toHaveURL(/#manual-section-ch1-shared-trip$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch1-shared-trip");
+  await expect(sharedTrip).toHaveAttribute("aria-current", "page");
+  await expect(chapter1.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(publicTransport).not.toHaveClass(/active/);
+
+  const sharedTripSection = content.getByTestId("manual-guide-section");
+  await expect(sharedTripSection).toHaveAttribute("data-manual-section-id", "ch1-shared-trip");
+  await expect(sharedTripSection.getByRole("heading", { name: "Совместная поездка", exact: true })).toBeVisible();
+  await expect(sharedTripSection).toContainText("лучше использовать общественное пространство");
+  await expect(sharedTripSection).toContainText("ходить пешком");
+  await expect(sharedTripSection).toContainText("велосипедом или общественным транспортом");
+  await expect(sharedTripSection).toContainText("регулярных поездок");
+  await expect(sharedTripSection).toContainText("отдельных маршрутов");
+  await expect(sharedTripSection).toContainText("эффект \"на четыре автомобиля меньше\" относится к поездке с другими водителями");
+  await expect(sharedTripSection).toContainText("иначе поехали бы за рулем отдельных автомобилей");
+  await expect(sharedTripSection).toContainText("Больше места для стоянки");
+  await expect(sharedTripSection).toContainText("Бережет окружающую среду");
+  await expect(sharedTripSection).toContainText("топливо, плату за проезд и стоянку");
+  await expect(sharedTripSection).toContainText("Отдавать приоритет устойчивой мобильности");
+  await expect(sharedTripSection.locator('[data-block-kind="shared-trip-benefits"]')).toBeVisible();
+  await expect(sharedTripSection.locator('[data-block-kind="shared-trip-closing"]')).toBeVisible();
+  await expect(sharedTripSection.locator('img[data-visible-spanish="false"]')).toHaveCount(1);
+  const sharedTripSourceImage = sharedTripSection.locator('img[data-source-image-exception="source-image-original-visible-text"]');
+  await expect(sharedTripSourceImage).toHaveCount(1);
+  await expect(sharedTripSourceImage).toHaveAttribute("src", /mobility-priority-photo-source\.jpg/);
+  await expect(sharedTripSourceImage).toHaveAttribute("data-visible-spanish", "true");
+  await expect(sharedTripSourceImage).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(sharedTripSourceImage).toHaveAttribute("data-source-as-is", "true");
+  await expect(sharedTripSection).not.toContainText("Responsabilidades legales");
+  await expect(sharedTripSection).not.toContainText("Obligatoria");
+  await expect(sharedTripSection.locator("iframe, object, embed")).toHaveCount(0);
+  await expect(sharedTripSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
+
+  const sharedTripIssues = await sharedTripSection.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(
+      root.querySelectorAll(
+        '[data-testid="manual-guide-section-block"], .manual-shared-trip-benefits-layout, .manual-shared-trip-benefit-grid article, .manual-shared-trip-closing, .manual-shared-trip-quote, .manual-shared-trip-quote blockquote'
+      )
+    )) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.getAttribute("data-benefit-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.pointerEvents === "none") problems.push(`${id} disables pointer interaction`);
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+      if (style.whiteSpace === "pre" || style.whiteSpace === "pre-line") problems.push(`${id} forces PDF-style line breaks`);
+    }
+    for (const image of Array.from(root.querySelectorAll("img"))) {
+      const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const sourceImageException = image.getAttribute("data-source-image-exception");
+      const src = image.getAttribute("src") ?? "";
+      if (visibleSpanish !== "false" && sourceImageException !== "source-image-original-visible-text") {
+        problems.push(`${src} has visible Spanish without allowed source-image exception`);
+      }
+      if (sourceImageException === "source-image-original-visible-text") {
+        if (visibleSpanish !== "true") problems.push(`${src} source image exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "source-image-only") problems.push(`${src} has wrong source-image exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+      }
+      if (/pages\/page-0(?:41|42)\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
+    }
+    return problems;
+  });
+  expect(sharedTripIssues).toEqual([]);
+
+  if (testInfo.project.name === "chromium") {
+    await expect(sharedTripSection.locator(".manual-shared-trip-benefits-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(sharedTripSection.locator(".manual-shared-trip-closing")).toHaveCSS("grid-template-columns", /px .*px/);
+    for (const width of [761, 768, 785]) {
+      await page.setViewportSize({ width, height: 900 });
+      await expect(page).toHaveURL(/#manual-section-ch1-shared-trip$/);
+      await expect(sharedTripSection).toHaveAttribute("data-manual-section-id", "ch1-shared-trip");
+      const narrowIssues = await sharedTripSection.evaluate((root) => {
+        const tolerance = 2;
+        const viewportWidth = document.documentElement.clientWidth;
+        const problems: string[] = [];
+        if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+          problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+        }
+        for (const element of Array.from(root.querySelectorAll(".manual-shared-trip-benefits, .manual-shared-trip-benefits-layout, .manual-shared-trip-benefit-grid, .manual-shared-trip-benefit-grid article, .manual-shared-trip-closing, .manual-shared-trip-quote"))) {
+          const rect = element.getBoundingClientRect();
+          const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+          if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+            problems.push(`${id} overflows viewport horizontally`);
+          }
+        }
+        return problems;
+      });
+      expect(narrowIssues, `shared trip section fits at ${width}px`).toEqual([]);
+    }
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await expect(sharedTripSection.locator(".manual-shared-trip-benefits-layout")).toHaveCSS("grid-template-columns", /px .*px/);
+    await expect(sharedTripSection.locator(".manual-shared-trip-closing")).toHaveCSS("grid-template-columns", /px .*px/);
+  }
+
+  const sharedTripSelectedText = await sharedTripSection.evaluate((root) => {
+    const selection = window.getSelection();
+    if (!selection) return "";
+    const range = document.createRange();
+    range.selectNodeContents(root);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const text = selection.toString();
+    selection.removeAllRanges();
+    return text;
+  });
+  expect(sharedTripSelectedText).toContain("эффект \"на четыре автомобиля меньше\" относится к поездке с другими водителями");
+  expect(sharedTripSelectedText).toContain("Отдавать приоритет устойчивой мобильности");
+  expect(sharedTripSelectedText).toContain("русский смысл вынесен здесь как выбираемый текст");
+
+  await sharedTripSection.screenshot({
+    path: testInfo.outputPath(`ch1-shared-trip-${testInfo.project.name}.png`)
+  });
+
+  await page.goto("/#manual-section-ch1-shared-trip");
+  await expect(page).toHaveURL(/#manual-section-ch1-shared-trip$/);
+  await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-shared-trip");
 
   await page.goto("/#manual-section-ch1-bicycle");
   await expect(page).toHaveURL(/#manual-section-ch1-bicycle$/);

@@ -33,15 +33,21 @@
 - [ ] T048 Shared-ui correction adds or adjusts tests and visual checks for Introduction item selection, active styling, and regression coverage against all Introduction items becoming active-looking.
 - [ ] T049 Shared-ui correction is not part of PR #181. PR #181 remains scoped to the `ch1-pedestrian-priority` page image-quality/source-as-is correction; the shared UI bug blocks eventual broader manual-guide cycle completion but does not block PR #181 same-section image-quality implementation except through normal separate PR ordering.
 
-## Section Slice Inventory
+## Source Section Inventory For Chapter-Level PRs
 
-Each row is one required implementation PR slice. `Source range metadata` is used for source inspection, crop metadata, screenshots, and content coverage, not as a PR boundary.
+Each row is one source section/content unit. After the chapter-level correction, rows are not standalone PR slices. `Source range metadata` is used for source inspection, crop metadata, screenshots, and content coverage, not as a PR boundary.
+
+Active chapter-level disposition:
+
+- PR #184 is the Chapter 1 completion PR. It preserves `ch1-public-transport-system` and adds `ch1-shared-trip` in the same PR.
+- `ch1-shared-trip` must not be assigned as a separate PR.
+- Chapter 2 is a separate future chapter-level PR from a fresh latest-main base after Chapter 1 is merged.
 
 All source images and visual material across current and future Chapter 1/2 manual-guide sections must use high-quality original source images/crops, not pixelated translations or reconstructions. Already merged pages that violate this rule must be corrected by separate page/section correction PRs instead of being bundled into unrelated slices; ordinary learner captions or explanation outside/under source images may be translated.
 
 Traffic signs and traffic sign sheets have a controlling source-as-is rule for every current and future Chapter 1/2 section PR: do not translate, redraw, reconstruct, simplify, relabel, recolor, clean, or otherwise modify the sign image. Insert high-quality source crops/images as-is; place Russian explanation outside the sign image when needed. Everything inside official traffic signs, including text, tables, placards, labels, symbols, arrows, and pictograms, remains unmodified/source-as-is.
 
-| Section PR key | Website section page | Source range metadata | Visual-risk notes | Required per-slice evidence |
+| Source section key | Website section page | Source range metadata | Visual-risk notes | Required per-section evidence |
 | --- | --- | --- | --- | --- |
 | `ch1-cities-for-people` | `Ciudades para las personas` / `Города для людей` | `22` | Responsive prose; traffic-system principles; `FLUIDEZ / SEGURIDAD` typographic relationship. | Full text coverage, source order, responsive prose checks, style-token reuse, desktop/mobile screenshots. |
 | `ch1-sustainable-mobility` | `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` | `23` | Context/city framing and possible source margin visuals; inspect before omitting any visual. | Source inspection notes, section heading coverage, no visible Spanish/page chrome, screenshots. |
@@ -63,14 +69,14 @@ Traffic signs and traffic sign sheets have a controlling source-as-is rule for e
 
 ## Per-Section Implementation Checklist
 
-For each section key:
+For each section key inside the assigned chapter-level PR:
 
 - [ ] T015 Confirm Orchestrator section assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
 - [ ] T016 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
 - [ ] T017 Record baseline `git status --short --branch` and verify no sibling dirty work is touched.
 - [ ] T018 Inspect source `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, all local source renders in the section range, and official PDF if crop/source-region fidelity requires it.
 - [ ] T019 Record section title/topic, source text order, meaningful visuals, omitted page/book artifacts, crop/source regions, cleanup scope, visible-Spanish status, and any official-traffic-sign source-as-is exception.
-- [ ] T020 Implement only the assigned website section page's user-facing content and section-local assets/tests/process-memory updates.
+- [ ] T020 Implement only the assigned chapter/section scope's user-facing content and section-local assets/tests/process-memory updates.
 - [ ] T021 Keep ordinary Russian text selectable/copyable DOM/SVG text and responsive outside visual scrollers.
 - [ ] T022 Preserve original high-quality source artwork/crops and reject generic icons, pixelated translations, reconstructions, broad masks, visible Spanish outside explicit official-sign exceptions, distorted reassembly, clipped pictograms, and backing plates. Official traffic signs/sign sheets must remain unmodified source-as-is crops/images.
 - [ ] T023 Preserve legal/document/numeric/order details or record Architect disposition before dropping anything.
@@ -221,9 +227,52 @@ For each section key:
 - [x] Docker runtime smoke passed with isolated project/port: `docker version --format '{{.Server.Version}}'` reported `27.5.1`; `lsof -nP -iTCP:5209 -sTCP:LISTEN` returned no listener; `COMPOSE_PROJECT_NAME=cabadrive030bicyclesource CABADRIVE_HOST_PORT=5209 make build` built the image and reran content validation/source-fidelity/build inside Docker; `COMPOSE_PROJECT_NAME=cabadrive030bicyclesource CABADRIVE_HOST_PORT=5209 make up` served `http://localhost:5209`; `curl -fsS http://127.0.0.1:5209/ | head -n 5` returned the Russian HTML shell; Playwright smoke of `http://127.0.0.1:5209/#manual-section-ch1-bicycle` confirmed section id `ch1-bicycle`, two `source-image-original-visible-text` distance-panel exceptions, one `official-traffic-sign-source-as-is` sign exception, zero reconstructed sign nodes, no horizontal overflow, and no source-image upscaling for safe/unsafe/sign images; `COMPOSE_PROJECT_NAME=cabadrive030bicyclesource CABADRIVE_HOST_PORT=5209 make down` removed the container/network and `docker compose -p cabadrive030bicyclesource ps --all` returned no containers.
 - [x] Known issues / Implementation Agent feedback for Architect disposition: none unresolved for this correction slice. Historical note: the high-scale PDF render attempt was rejected because it did not provide higher-detail source pixels; committed source page images remain the reliable original crop source for these runtime assets.
 
+## Historical One-Section Slice Superseded By Chapter 1 Completion: `ch1-public-transport-system`
+
+- [x] Confirmed Implementation Agent assignment for worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, assigned source section `ch1-public-transport-system`, and Orchestrator-verified base `origin/main` at `501199aa6c35f46bcb4d363918da5a99a2329304`.
+- [x] Recorded baseline status before edits: `git status --short --branch` returned `## codex/030-ch1-public-transport-system...origin/main`, and `git rev-parse HEAD` returned `501199aa6c35f46bcb4d363918da5a99a2329304`.
+- [x] Read required project memory, active feature memory, manual conversion guidelines, current manual-guide renderer/registry/checker/tests, and existing Chapter 1 implemented section patterns before editing.
+- [x] Inspected `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, registry entry `ch1-public-transport-system`, and local source renders `page-039.jpg` / `page-040.jpg`; visual inspection confirmed this single source `Indice` section spans the public-transport comparison, yellow boxes, bus waiting platforms, exclusive lanes, Metrobus, and transport centers.
+- [x] Implemented only `Sistema de transporte público` / `Система общественного транспорта`; left `ch1-shared-trip` with source pages `41-42` pending and did not implement any Chapter 2 section.
+- [x] Added `src/data/manual-sections/ch1-public-transport-system.ts` and wired it through `implementedManualGuideSections`.
+- [x] Added reusable manual-guide block kinds for this source slice: `public-transport-comparison` and `public-transport-infrastructure`.
+- [x] Updated the section registry entry to `implemented`, with source-region metadata, local high-quality original source asset metadata, source-image visible-Spanish exceptions, screenshot paths, selectable-text status, bounding-box evidence, and checker pass state.
+- [x] Preserved source pages `39-40` facts and details: public transport reduces CO2 and supports smoother/healthier circulation; one bus carries `40-50` people while two cars in the same space carry only `3-4` people each; yellow boxes reserve stopping zones for passenger public transport and reinforce no stopping/parking for others; raised platforms improve bus stopping parallel to the curb and pedestrian visibility; exclusive lanes are marked by a diamond and vehicle type, separate public transport from traffic, and require free garage-access permits for private-vehicle exceptions; avenues disperse noise/gases/particles faster than side streets; Metrobus combines articulated/traditional buses with exclusive lanes; red crossings indicate Metrobus crossings; pedestrians enter stations by ramps and never mid-block; unauthorized vehicles including bicycles, private cars, taxis, remises, and combis are excluded and may cause license retention; transport centers support intermodality across buses, trains, subte, and bicycles.
+- [x] Generated validation source crops under `content/validation/manual-guide/ch1-public-transport-system/`: `page-039-public-transport-source-crop.jpg` (`620x820`, SHA-256 `404be954be9253d394c499e6bbc7992f238e9eaf5dd8077384de6d370459d85d`) and `page-040-public-transport-source-crop.jpg` (`620x820`, `c5e55f2b6eb007e5453a051d36e15b86f28bed68a66b42750802d6deb6a40696`).
+- [x] Generated runtime high-quality original source crops under `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/`: `avenue-comparison-source.jpg` (`510x255`, SHA-256 `9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600`), `yellow-box-source.jpg` (`245x126`, `235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5`), `bus-platform-source.jpg` (`245x130`, `9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d`), `exclusive-lane-source.jpg` (`245x126`, `12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258`), `metrobus-source.jpg` (`245x126`, `d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85`), and `transport-center-source.jpg` (`245x100`, `c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1`).
+- [x] Preserved sign-like/source markings source-as-is: `BUS` road marking in `exclusive-lane-source.jpg` and Metrobus source signage/markings in `metrobus-source.jpg` remain unmodified inside source-image-only exceptions; Russian explanation is DOM text outside the images.
+- [x] Regenerated rendered evidence screenshots from route `/#manual-section-ch1-public-transport-system`: desktop `content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-desktop.png` is `912x2446`, SHA-256 `5557c37b40f11fe4dd0803a738834b14eca299908f7867c593eb14b7cb0762bf`; mobile `content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-mobile.png` is `370x4222`, SHA-256 `d0fcb8044bdbcdecfc7028215bc365f3361bdb371df0365f3613906305094098`. Playwright screenshot metrics confirmed no horizontal overflow, no text-selection blockers, no forced PDF line breaks, no full-page source raster, and allowed visible Spanish only inside the two source-image exceptions.
+- [x] Added focused content/e2e tests for route activation, implemented-vs-pending state, source pages `39-40`, visual asset paths/hashes, CO2 and occupancy facts, infrastructure details, source-image exceptions, no unrelated section content, no full source page raster, selectable Russian text, and desktop/mobile no-overflow checks.
+- [x] Verification passed before this process-memory update: `pnpm exec tsc --noEmit`; `node scripts/manual-guide-source-fidelity.mjs` (`status: pass`, `implementedSections: 5`, `pendingSections: 5`, skipped source pages `[21, 43, 56]`, shared source pages `[55]`); `node --test tests/content-manual-guide-chapters.test.mjs` (`25/25`); `pnpm run build`; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages"` (`2/2` desktop/mobile).
+- [x] Docker runtime smoke passed with isolated project/port: `lsof -nP -iTCP:5216 -sTCP:LISTEN` returned no listener; `COMPOSE_PROJECT_NAME=cabadrive030publictransport CABADRIVE_HOST_PORT=5216 make build` built the image and reran content validation/source-fidelity/build inside Docker; `COMPOSE_PROJECT_NAME=cabadrive030publictransport CABADRIVE_HOST_PORT=5216 make up` served `http://localhost:5216`; Playwright smoke of `http://127.0.0.1:5216/#manual-section-ch1-public-transport-system` confirmed section id `ch1-public-transport-system`, title, `CO2`, `Metrobus de Buenos Aires`, exactly two source-image exceptions, zero full-page raster images for pages `39-40`, and no horizontal overflow; after the first immediate `curl` hit a startup race with `Recv failure: Connection reset by peer`, a rerun with `sleep 2` fetched the Russian HTML shell successfully; `COMPOSE_PROJECT_NAME=cabadrive030publictransport CABADRIVE_HOST_PORT=5216 make down` removed the container/network and `docker compose -p cabadrive030publictransport ps --all` returned no containers.
+- [x] Dead-end recorded: initial `pnpm exec tsc --noEmit` failed because the isolated worktree had no `node_modules` and `tsc` was not found; `pnpm install --frozen-lockfile` installed dependencies without modifying tracked files, after which TypeScript passed.
+- [x] Screenshot-generation dead-end recorded: first ad hoc Playwright screenshot helper waited for every lazy image load event and hung on mobile after producing the desktop screenshot; the helper process was killed, then screenshots were regenerated with eager image loading/decoding and both desktop/mobile passed with empty issue lists.
+- [x] Known issues / Implementation Agent feedback for Architect disposition: none unresolved for this section slice at local handoff. The source page images are the reliable original crop source; no higher-detail source pixels were identified or needed for pages `39-40`.
+- [x] Review-fix assignment accepted for PR #184 current head `15c6c0676e7b598ab614d5c9fff3390666cd8052`, evidence-only on top of validated effective content head `7d38e185109a981af056c023b980699aa3a1129c`; worktree baseline was clean on branch `codex/030-ch1-public-transport-system`.
+- [x] AI Review P2 at `src/styles.css:2430` disposed: public-transport comparison and infrastructure cards now collapse to one column at narrow-tablet widths before the existing `760px` mobile breakpoint, and the shared status strip also collapses at that same tablet edge so the route can be verified without document-level horizontal overflow at `761px`, `768px`, and `785px`. No source/sign images or section content were modified.
+- [x] Review-fix verification passed before commit: `pnpm run build` (including content validation and source-fidelity guard, with existing Vite large-chunk warning only); `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages" --project=chromium --project=mobile` (`2/2`, including desktop probes at `761`, `768`, and `785` px plus normal desktop/mobile behavior); `node scripts/manual-guide-source-fidelity.mjs` (`status: pass`, `implementedSections: 5`, `pendingSections: 5`); `node --test tests/content-manual-guide-chapters.test.mjs` (`25/25`); `pnpm exec tsc --noEmit`; `git diff --check`.
+- [x] Review-fix dead ends recorded: first focused Playwright rerun failed because `vite preview` served the pre-change `dist` bundle after the test file changed; rebuilding exposed the real remaining route overflow from the public-transport cards and shared status strip, which was fixed before the passing rerun.
+- [x] Final-validation stale note: this follow-up includes a non-evidence CSS/test change after final Architect/Analyst validation. Orchestrator must rerun role-appropriate final Architect validation and final Analyst validation before completion or merge.
+- [x] Scope superseded by chapter-level correction: the former PR #184 one-section scope and validation trail are historical only. PR #184 is now the Chapter 1 completion PR and must add `ch1-shared-trip` while preserving all accepted `ch1-public-transport-system` content, assets, tests, source-fidelity evidence, responsive fixes, and high-quality original/source-as-is image/sign rules.
+
+## Active Chapter 1 Completion Slice: PR #184
+
+- [x] T060 Architect accepted Orchestrator assignment for scope correction in worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, PR #184.
+- [x] T061 Recorded newest user instruction superseding section-per-PR slicing: `делай один пр на главу, ни на каждую страницу; тебе нужно сделать главу 1 и главу 2`.
+- [x] T062 Recorded Orchestrator decision to reuse PR #184 as the Chapter 1 completion PR because it is based on verified `origin/main` `501199aa6c35f46bcb4d363918da5a99a2329304` and already contains unmerged `ch1-public-transport-system` work.
+- [x] T063 Marked prior PR #184 final Architect/Analyst validation for effective heads `7d38e185109a981af056c023b980699aa3a1129c` and `081c932a36bb00bb21b5cde1f279ecb79d4ac090` stale after this non-evidence scope expansion.
+- [x] T064 Implementation Agent preserved the existing `ch1-public-transport-system` implementation, tablet-overflow fix, source-fidelity evidence, high-quality original source crops, source-image exceptions, and source-as-is sign/marking handling.
+- [x] T065 Implementation Agent added `ch1-shared-trip` / `Viaje compartido` / `Совместная поездка` from source pages `41-42` as a website section inside PR #184, not as a separate PR.
+- [x] T066 Implementation Agent inspected `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local renders `page-041.jpg` / `page-042.jpg`, and official source crops, then recorded source order, visuals, benefits/details, omitted book artifacts, crop/source regions, visible-Spanish status, and source-image exception evidence.
+- [x] T067 Implementation Agent updated registry/navigation/checker/tests/evidence so Chapter 1 is complete with six implemented sections after `ch1-shared-trip`, while Chapter 2 remains pending for its separate future chapter PR.
+- [x] T068 Implementation Agent preserved all controlling visual rules: high-quality original source images/crops for source visuals, source-as-is treatment for any source/sign-like markings, and Russian learner explanation outside source images/signs.
+- [x] T069 Required verification for PR #184 after `ch1-shared-trip` passed and is recorded below: source-fidelity guard; focused manual-guide content tests; `pnpm exec tsc --noEmit`; `pnpm run build`; focused Playwright for manual guide covering `ch1-public-transport-system` and `ch1-shared-trip` with desktop/mobile responsive/no-overflow and image-quality checks; `git diff --check`; feature-memory check; Docker smoke.
+- [ ] T070 Review Agent re-reviews PR #184 as a Chapter 1 completion PR, not a one-section public-transport PR. Current review follow-up state: product review fixes for Chapter 1 parent status have landed; stale section-per-PR thread `PRRT_kwDOSX65IM6F8m9v` is superseded by the newest user instruction and remains for Orchestrator review disposition.
+- [ ] T071 Final Architect validation and final Analyst validation rerun only after implementation, review, required checks, and process memory are current on the expanded PR #184 head.
+
 ## Review Requirements
 
-- [ ] T028 Review Agent verifies one-section PR scope and no unrelated sections.
+- [ ] T028 Review Agent verifies chapter-level PR scope: PR #184 contains only remaining Chapter 1 completion work and no Chapter 2 content; the future Chapter 2 PR contains only Chapter 2 content.
 - [ ] T029 Review Agent verifies no role-boundary violation, Orchestrator-first bypass, missing feature memory, stale/latest-main ambiguity, or sibling-work mutation.
 - [ ] T030 Review Agent verifies source-`Índice` hierarchy, pending/implemented section state, and direct route behavior.
 - [ ] T031 Review Agent verifies divider-only source PDF pages `21` and `43` are not standalone learner pages.
@@ -233,11 +282,11 @@ For each section key:
 
 ## Final Validation Tasks
 
-- [ ] T035 Orchestrator confirms all ten section PRs and any shared correction/prerequisite PRs are merged or explicitly disposed.
+- [ ] T035 Orchestrator confirms PR #184 completes Chapter 1, the future Chapter 2 PR is merged or explicitly pending/disposed according to cycle state, and any shared correction/prerequisite or historical section PRs are merged or explicitly disposed.
 - [ ] T036 Orchestrator confirms PR #175 / `page-021` was closed, superseded, or replaced by section-based implementation before merge.
 - [ ] T037 Orchestrator records the full cycle PR set with purpose, branch, PR metadata, head SHA, status, merge state, and final-validation inclusion.
 - [ ] T038 Orchestrator invokes final Architect validation before final Analyst validation.
-- [ ] T039 Architect final validation checks all PR slices, open task state, style/visual guidance, process memory, feedback dispositions, acceptance evidence, corrected section-slicing contract, and customer intent in spirit.
+- [ ] T039 Architect final validation checks all PR slices, open task state, style/visual guidance, process memory, feedback dispositions, acceptance evidence, corrected chapter-level slicing contract, and customer intent in spirit.
 - [ ] T040 If Architect validation passes, Architect records `Architect validation pass: passed`, timestamp, return count, and `Architect validated effective content head: <40-hex-sha>`.
 - [ ] T041 Orchestrator invokes final Analyst validation only after final Architect validation passes.
 - [ ] T042 Analyst final validation checks customer intent in spirit and letter.
@@ -270,9 +319,9 @@ For each section key:
 ### Decisions
 
 - One website page equals one source manual section/topic from source `Índice`, regardless of PDF page span.
-- One PR equals one website section page.
+- Superseded decision: one PR equals one website section page. Active decision from the newest user instruction: one PR equals one source manual chapter.
 - Source PDF pages `21` and `43` are skipped entirely as divider-only source pages; they receive no standalone route, content module, placeholder, implementation PR, or merge target.
-- Current expected section PR count is ten, based on current `navigation.ru.json` Chapter 1/2 child topics.
+- Current source section count remains ten based on `navigation.ru.json` Chapter 1/2 child topics, but the remaining implementation PR slicing is chapter-level: PR #184 completes Chapter 1 and a future separate PR completes Chapter 2.
 - Source PDF page ranges remain required metadata for crop extraction, source screenshots, text coverage, and visual QA.
 - Source `Índice` hierarchy remains primary; page numbers are secondary source metadata.
 - Infographic/artwork quality is a merge gate, not polish.
@@ -280,6 +329,8 @@ For each section key:
 - The no-visible-Spanish policy remains in force for prose and non-sign artwork; official traffic signs/sign sheets are the only approved learner-facing Spanish exception, and that exception must be explicit in registry/evidence/checker output with source-region metadata, dimensions/hash when practical, and screenshot quality evidence.
 - Controlling source-image decision from the latest user requirement: all source images and visual material across current and future manual-guide sections must be original, high-quality source images/crops, not pixelated translated images or reconstructions. Official traffic signs and anything inside them, including text/tables/placards, remain source-as-is; only learner captions or explanation outside/under signs and source images may be translated.
 - Already merged manual-guide pages with source-image quality gaps must be handled by separate page/section correction PRs, not opportunistically bundled into unrelated implementation slices.
+- Chapter-level slicing decision: PR #184 is retitled/reused as `[codex] Complete Chapter 1 manual guide`; it keeps `ch1-public-transport-system` and adds `ch1-shared-trip` inside the same PR. Chapter 2 must be a separate future chapter-level PR from a fresh latest-main base after Chapter 1 is merged.
+- Final-validation stale decision for PR #184: all final Architect/Analyst validation that treated PR #184 as only `ch1-public-transport-system` is stale after the new user instruction. Validation must rerun after `ch1-shared-trip` implementation, review, required checks, and process memory updates.
 - Shared correction/prerequisite work is allowed only to align registry/routes/checkers/style with section-based delivery and must not include converted section content.
 - PR #175 / `page-021` must not merge as-is because it implements only a divider-only source PDF page. Orchestrator must close/supersede it or route a full replacement as a section-based PR.
 - Implementation Agent decision: this shared correction removes `page-registry.chapters-1-2.json` and replaces it with `section-registry.chapters-1-2.json`; source PDF pages remain only evidence metadata inside section entries.
@@ -310,7 +361,8 @@ For each section key:
 
 ### Known Issues
 
-- Existing page-based PR/process memory may mention pages `021-056` as implementation units. Architect disposition: addressed; this correction supersedes page-based slicing, future agents must follow section-based slicing from this spec/plan/tasks, and older page-based wording is historical only.
+- Existing page-based or section-per-PR process memory may mention pages `021-056` or individual website sections as implementation PR units. Architect disposition: addressed; this correction supersedes page-based slicing and the former one-section PR slicing. Future agents must follow chapter-level PR slicing from this spec/plan/tasks, and older page/section PR wording is historical only.
+- PR #184 prior final validation conflicted with the newest chapter-level instruction because it validated only `ch1-public-transport-system` and explicitly left `ch1-shared-trip` out of scope. Architect disposition: resolved/superseded; PR #184 now includes `ch1-shared-trip` inside the Chapter 1 completion PR, verification and Review Agent re-review completed on effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`, final Architect validation passed at `2026-05-31T15:27:42Z`, final Analyst validation passed at `2026-05-31T15:31:55Z`, and no owner or human decision remains.
 - PR #175 / `page-021` conflicts with corrected requirements. Architect disposition: resolved; PR #175 is closed unmerged and superseded by the corrected section-based contract, so it must not merge as-is.
 - PR #174 or earlier shared prerequisite state encoded a page-based pending registry. Architect disposition: resolved; PR #176 replaces the page-based registry with the section-based shared correction/prerequisite, so no additional Architect task is required for PR #174 in this slice.
 - Legacy layout manifests may classify meaningful visual regions as page chrome or text. Architect disposition: addressed; every future section implementation must perform manual visual inspection across its full source range.
@@ -332,6 +384,9 @@ For each section key:
 
 ### Verification Evidence
 
+- Architect scope-correction evidence for PR #184: Orchestrator assigned Architect-only work in `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system` on branch `codex/030-ch1-public-transport-system`; local read-only checks confirmed branch `codex/030-ch1-public-transport-system`, HEAD `99dbf59304166cad3a8bed504f80cf700a6654c6`, and no dirty working-tree output before this Architect memory edit.
+- Architect scope-correction evidence: Orchestrator instructed that PR #184 is not to merge as the former one-section public-transport PR, but is reused as the Chapter 1 completion PR because its base is verified at `origin/main` `501199aa6c35f46bcb4d363918da5a99a2329304`.
+- Architect scope-correction evidence: PR #184 final validations that validated only public transport are stale after the newest user instruction; fresh validation must target the expanded Chapter 1 completion head after `ch1-shared-trip` implementation and checks.
 - Architect confirmed local HEAD/base for correction worktree: `7a07034d8a9380cbe83b9403a6a9aa7bc73dfa50` on branch `codex/030-section-requirement-correction`.
 - Architect inspected corrected Analyst intake in `feature-request.md`, which states website pages must be source manual sections/topics and divider-only pages such as page `21` are skipped.
 - Architect inspected `docs_project/project/frontend/manual-conversion-guidelines.md`, which states route boundaries come from source `Índice`, not raw PDF page numbers.
@@ -446,12 +501,13 @@ For each section key:
 | `ch1-pedestrian-priority-sign-source-correction` | Correct already merged `Prioridad peatonal` / `Пешеходный приоритет` source imagery under the explicit source-as-is/high-quality rule | `codex/030-ch1-pedestrian-sign-source` | PR #181, `https://github.com/cucumberfalse/cabadrive/pull/181` | previous effective content head `bef7cb7f53954515299ac1cb28328e91ae8713eb`; initial correction content/evidence head `9028ff3dae1c81041d283b0c25cd07b80ac07f0b`; replacement source-image content/evidence head `aeb2ce13754b49515a878587a90fb2054b8aea84`; final process-memory handoff head to be reported after push | replacement follow-up implemented locally: high-quality original source images/crops for all same-section runtime visuals, source-as-is high-resolution restriction signs, source-image-only exception policy/tests/checker, regenerated screenshots, focused verification, and Docker smoke passed; final Architect and Analyst validation must rerun after review/checks on the pushed head | yes |
 | `ch1-bicycle` | Implement website section page `Bicicleta` / `Велосипед` with source pages `30-38` visual/evidence coverage | `codex/030-ch1-bicycle` | PR #180, `https://github.com/cucumberfalse/cabadrive/pull/180` | implementation content head `73ae810f3a812f27301cf2e52c7a4b765ead3379`; review-fix baseline head `5b94f3e353e12da695b6a39f6cbba5e598400a5d`; review-fix content head `0cbfc1c8c270f555fb72e89f32435663eef6012d`; review-fix process/evidence head `e6b4cd436a19b9b54f74694981a26b2e14f3d1b6`; source-as-is sign content/evidence head `7ceb65df8e3ef125196bad65db5dc096507c9522`; source-as-is sign process-memory-only handoff head `1bf48bc3916895c038ad459d279830b360c42fa0` (then-current PR head when this mapping correction was assigned) | implemented and opened ready; PR #180 review fixes for sign-sheet source order, page 34 riding prohibition, stale cycle-row cleanup, explicit road-sign source-as-is follow-up, official-sign visible-Spanish exception, regenerated screenshots, source-fidelity/content/TypeScript/build/focused Playwright/diff/feature-memory verification passed locally; review-thread/final-validation state pending Orchestrator routing | yes |
 | `introduction-active-state` | Shared UI correction so only the selected `Введение` child appears active/current while Chapter 1 active-state behavior remains intact | `codex/030-introduction-active-state` | PR #182, `https://github.com/cucumberfalse/cabadrive/pull/182` | implementation content head `e603d2569f46047907a354e0bf424312e641b8a0`; final handoff head reported by Implementation Agent after the process-memory evidence push | implemented and opened ready; focused content tests, TypeScript, source-fidelity checker, build, focused Playwright `4/4`, full Node tests `330/330`, full preflight with e2e `74/74`, diff hygiene, feature-memory check, visual smoke, and Docker runtime smoke passed | yes |
-| `ch1-public-transport-system` | Implement website section page `Sistema de transporte público` | pending Orchestrator assignment | pending | pending | pending | yes |
-| `ch1-shared-trip` | Implement website section page `Viaje compartido` | pending Orchestrator assignment | pending | pending | pending | yes |
-| `ch2-legal-responsibility` | Implement website section page `Responsabilidades legales` | pending Orchestrator assignment | pending | pending | pending | yes |
-| `ch2-required-documents` | Implement website section page `Documentación obligatoria` | pending Orchestrator assignment | pending | pending | pending | yes |
-| `ch2-incident-obligations` | Implement website section page `Obligaciones en caso de incidentes viales` | pending Orchestrator assignment | pending | pending | pending | yes |
-| `ch2-scoring` | Implement website section page `Scoring` | pending Orchestrator assignment | pending | pending | pending | yes |
+| `ch1-completion` | Complete Chapter 1 in PR #184 by preserving `ch1-public-transport-system` source pages `39-40` and adding `ch1-shared-trip` source pages `41-42` as website sections | `codex/030-ch1-public-transport-system` | PR #184, `https://github.com/cucumberfalse/cabadrive/pull/184`, retitled `[codex] Complete Chapter 1 manual guide` | previous one-section implementation content head `99ef05f7d13e1991d41abda1a466971ac950c95a`; previous validated heads `7d38e185109a981af056c023b980699aa3a1129c` and `081c932a36bb00bb21b5cde1f279ecb79d4ac090` are stale after chapter-level scope expansion; post-shared-trip implementation content head `81bdec52c56d6bb8fd9841ccea1b02e99930b3ab`; final handoff head is reported by the Implementation Agent after push | public transport preserved; `ch1-shared-trip` implemented locally in same PR with source-fidelity/content/TypeScript/build/focused Playwright/screenshots/Docker evidence passing; final Architect/Analyst validation stale until rerun on the pushed head | yes |
+| `ch1-public-transport-system` | Historical one-section PR row superseded by `ch1-completion`; keep its accepted public-transport evidence inside PR #184 | `codex/030-ch1-public-transport-system` | PR #184, `https://github.com/cucumberfalse/cabadrive/pull/184` | implementation content head `99ef05f7d13e1991d41abda1a466971ac950c95a`; later one-section validation heads are stale after scope expansion | superseded as standalone PR row; do not merge PR #184 as public transport only | yes |
+| `ch1-shared-trip` | Implement website section page `Viaje compartido` / `Совместная поездка` from source pages `41-42` inside PR #184 | `codex/030-ch1-public-transport-system` | PR #184, `https://github.com/cucumberfalse/cabadrive/pull/184` | post-shared-trip implementation content head `81bdec52c56d6bb8fd9841ccea1b02e99930b3ab`; final handoff head is reported by the Implementation Agent after push | implemented locally inside Chapter 1 completion PR; must not become a separate PR; Chapter 2 remains pending for a future chapter PR | yes |
+| `ch2-legal-responsibility` | Future Chapter 2 PR section: website section page `Responsabilidades legales` | pending future Chapter 2 PR from fresh latest-main base | pending | pending | pending as part of the separate future Chapter 2 PR, not separate one-section PR | yes |
+| `ch2-required-documents` | Future Chapter 2 PR section: website section page `Documentación obligatoria` | pending future Chapter 2 PR from fresh latest-main base | pending | pending | pending as part of the separate future Chapter 2 PR, not separate one-section PR | yes |
+| `ch2-incident-obligations` | Future Chapter 2 PR section: website section page `Obligaciones en caso de incidentes viales` | pending future Chapter 2 PR from fresh latest-main base | pending | pending | pending as part of the separate future Chapter 2 PR, with page-55 region metadata excluding Scoring | yes |
+| `ch2-scoring` | Future Chapter 2 PR section: website section page `Scoring` | pending future Chapter 2 PR from fresh latest-main base | pending | pending | pending as part of the separate future Chapter 2 PR, sourced from page `55`; page `56` remains non-section closing slogan material | yes |
 | `manual-guide-introduction-active-state` | Shared UI correction for Introduction navigation active/selected styling so only the selected `Введение` item is active/green-highlighted | pending fresh latest-main Orchestrator assignment | pending | pending | pending; separate from PR #181; blocks broader manual-guide cycle completion but not PR #181 same-section image-quality implementation except through normal separate PR ordering | yes |
 
 - Cycle PR Set current evidence: PR #179, branch `codex/030-ch1-pedestrian-priority`, head SHA `df13910b8d7d9b61c971d7e56059de78c9715922`, status implemented with required checks green, all review threads resolved, merge state `CLEAN`, and included in final Architect validation for the `ch1-pedestrian-priority` section slice.
@@ -543,6 +599,25 @@ For each section key:
 - Limit escalation: none
 - Effective content head: 9e2bad2e672024882fee010283e3736764d3d238
 - Current-PR-head read-only guard: effective content head 9e2bad2e672024882fee010283e3736764d3d238; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Current-PR-head read-only guard: effective content head 7d38e185109a981af056c023b980699aa3a1129c; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 0116f6f13e1976e801613abec40e7ad2e1382a18 records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 0116f6f13e1976e801613abec40e7ad2e1382a18; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 4102b3ff598323333b061cf231e9fa8721489a34 records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 4102b3ff598323333b061cf231e9fa8721489a34; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
 
@@ -868,3 +943,161 @@ For each section key:
 - Architect validation evidence: review threads are reported as none for PR #183, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
 - Open Architect dispositions: none for PR #183 at current effective content head 9e2bad2e672024882fee010283e3736764d3d238.
 - Architect gaps: none for PR #183 at current effective content head 9e2bad2e672024882fee010283e3736764d3d238.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T12:52:27Z
+- Architect return count: 0
+- Architect validated effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Architect validation evidence: PR #184 validates only the `ch1-public-transport-system` / `Sistema de transporte público` / `Система общественного транспорта` website section from source pages `39-40`; it leaves `ch1-shared-trip` source pages `41-42` and Chapter 2 sections pending and out of scope.
+- Architect validation evidence: current effective head 7d38e185109a981af056c023b980699aa3a1129c satisfies the user's image-quality/source-as-is intent by using high-quality original source crops for the public-transport comparison, yellow box, bus platform, exclusive lane, Metrobus, and transport-center visuals, keeping sign-like `BUS` and Metrobus markings source-as-is inside source-image exceptions, and placing Russian learner explanation outside the images.
+- Architect validation evidence: Orchestrator and Implementation evidence reports passing verification for current effective head 7d38e185109a981af056c023b980699aa3a1129c: source-fidelity checker pass with implementedSections 5 and pendingSections 5, content tests 25/25, TypeScript, build with the existing large-chunk warning only, focused Playwright desktop/mobile 2/2, regenerated screenshots and visual checks, diff hygiene, feature-memory check, Docker smoke on isolated project cabadrive030publictransport port 5216, and GitHub required checks AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation evidence: review threads are reported as none for PR #184, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
+- Open Architect dispositions: none for PR #184 at current effective content head 7d38e185109a981af056c023b980699aa3a1129c.
+- Architect gaps: none for PR #184 at current effective content head 7d38e185109a981af056c023b980699aa3a1129c.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T13:28:14Z
+- Architect return count: 0
+- Architect validated effective content head: 081c932a36bb00bb21b5cde1f279ecb79d4ac090
+- Effective content head: 081c932a36bb00bb21b5cde1f279ecb79d4ac090
+- Architect validation evidence: Current-PR-head read-only guard confirms PR #184 current head `081c932a36bb00bb21b5cde1f279ecb79d4ac090` is the validated effective content head; any later PR-head commits must be final-validation evidence-only for this validation to remain current.
+- Architect validation evidence: PR #184 validates only the `ch1-public-transport-system` / `Sistema de transporte público` / `Система общественного транспорта` website section from source pages `39-40`; it leaves `ch1-shared-trip` source pages `41-42` intentionally pending/out of scope and does not implement any Chapter 2 section.
+- Architect validation evidence: previous PR #184 validation for `7d38e185109a981af056c023b980699aa3a1129c` was made stale by the non-evidence tablet-overflow CSS/test review fix; current effective head `081c932a36bb00bb21b5cde1f279ecb79d4ac090` includes that fix and is the active validation target.
+- Architect validation evidence: AI Review P2 `PRRT_kwDOSX65IM6F8MRc` at `src/styles.css:2430` is disposed and resolved. The public-transport comparison, infrastructure cards, and shared status strip collapse before the narrow-tablet overflow range, and focused e2e coverage checks `761`, `768`, and `785` px viewports.
+- Architect validation evidence: GitHub reports PR #184 current head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`, mergeable state `MERGEABLE`, draft `false`, and required checks green: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
+- Architect validation evidence: local read-only verification during Architect validation passed: `git diff --check origin/main...HEAD`; `node scripts/manual-guide-source-fidelity.mjs` with `implementedSections: 5` and `pendingSections: 5`; `node --test tests/content-manual-guide-chapters.test.mjs` with `25/25` passing tests.
+- Architect validation evidence: implementation evidence remains accepted for the section slice: source pages `39-40`, high-quality original source crops, source-image-only exceptions for sign-like `BUS` and Metrobus markings, selectable Russian learner text outside images, desktop/mobile screenshots, Docker smoke, and focused Playwright route checks including the review-fix tablet probes.
+- Open Architect dispositions: none for PR #184 at current effective content head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`; no unresolved Implementation Agent feedback or Analyst feedback remains.
+- Architect gaps: none for PR #184 at current effective content head `081c932a36bb00bb21b5cde1f279ecb79d4ac090`.
+
+## Architect Scope Correction Notes - PR #184 Chapter 1 Completion
+
+- Architect validation pass: not run for the expanded scope.
+- Scope correction completed at: 2026-05-31T13:53:04Z.
+- Active PR scope: PR #184 is the Chapter 1 completion PR, not the former one-section `ch1-public-transport-system` PR.
+- Stale validation notice: final Architect/Analyst validation for PR #184 effective heads `7d38e185109a981af056c023b980699aa3a1129c` and `081c932a36bb00bb21b5cde1f279ecb79d4ac090` is stale because the newest user instruction expands PR #184 to include `ch1-shared-trip`.
+- Required follow-up: Implementation Agent must preserve all accepted public-transport work, add `ch1-shared-trip` from source pages `41-42` in the same PR, rerun source-fidelity/content/TypeScript/build/focused Playwright/Docker-as-required verification, update process memory, and return for Review Agent plus fresh final Architect and Analyst validation.
+- Chapter 2 disposition: Chapter 2 is a separate future chapter-level PR from fresh latest `main` after Chapter 1 is merged.
+
+## Implementation Agent Evidence - PR #184 Chapter 1 Completion
+
+- Implementation Agent follow-up completed at: 2026-05-31T14:07:16Z before commit/push.
+- Assigned worktree/branch/PR: `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, PR #184 `[codex] Complete Chapter 1 manual guide`.
+- Baseline preservation: starting status contained only expected Architect-owned memory edits in `spec.md`, `plan.md`, and `tasks.md` plus the prepared shared-trip source crop folders; public-transport implementation files and evidence were preserved without behavior changes except shared renderer/test integration for the new Chapter 1 section.
+- Implemented `ch1-shared-trip` / `Viaje compartido` / `Совместная поездка` as one website section from source pages `41-42`; Chapter 2 remains pending and no separate `ch1-shared-trip` PR was created.
+- Source inspection: `manual.ru.json`, `layout.ru.json`, and local renders `page-041.jpg` / `page-042.jpg` show shared-trip public-space context, carpool definition, benefits, carpool diagram, and the page 42 mobility-priority photo/quote. Page 42 visible Spanish is embedded in the original source photo and is therefore recorded as `source-image-original-visible-text`; the Russian quote/explanation is selectable DOM text outside the image.
+- Shared-trip source crop evidence: validation crop `page-041-shared-trip-source-crop.jpg` is `650x610`, SHA-256 `709ce4fdd80b8ef23fb3ddf8fa20907adf706457e2ee5df62e6d8817401c3ba9`; validation/runtime page 42 photo crop is `610x850`, SHA-256 `1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725`.
+- Shared-trip runtime asset evidence: `carpool-diagram-source.jpg` is `440x185`, SHA-256 `59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948`, visible Spanish `false`; `mobility-priority-photo-source.jpg` is `610x850`, SHA-256 `1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725`, visible Spanish `true` only inside the original source image with `source-image-original-visible-text`.
+- Rendered shared-trip screenshot evidence: desktop `content/validation/manual-guide/ch1-shared-trip/ch1-shared-trip-desktop.png` is `912x1384`, SHA-256 `04728692b6ae2c7ef1a7352ec0ed5c2a21669389dc9fab7ebdf9f82b0a46ae22`; mobile `content/validation/manual-guide/ch1-shared-trip/ch1-shared-trip-mobile.png` is `370x2203`, SHA-256 `ef976fdaff3cc802973cbdbe086e58e614f0ed616a67289ac92be24db97589a7`.
+- Registry/source-fidelity evidence: `ch1-shared-trip` status is now `implemented`, source-region and visual evidence are `recorded`, Chapter 1 has six implemented sections, Chapter 2 has four pending sections, skipped divider/book-only pages remain `[21, 43, 56]`, and shared source page `55` remains a Chapter 2 boundary record only.
+- Dead end: an early `pnpm run build` attempt before screenshot generation failed at the source-fidelity guard because `ch1-shared-trip` desktop/mobile screenshots did not exist yet; after generating committed route screenshots, `node scripts/manual-guide-source-fidelity.mjs`, content tests, and `pnpm run build` passed.
+- Verification passed: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `implementedSections: 6`, `pendingSections: 4`, screenshot/source-crop evidence `recorded_for_complete_chapter_1_sections_including_ch1-shared-trip`.
+- Verification passed: `node --test tests/content-manual-guide-chapters.test.mjs` passed `26/26`; `pnpm exec tsc --noEmit` passed; `pnpm run build` passed with the existing Vite large-chunk warning only.
+- Focused Playwright verification passed: `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages" --project=chromium --project=mobile` passed `2/2`, including desktop/mobile shared-trip route checks, source-image exception checks, no full-page source raster checks, and `761`, `768`, `785` px overflow probes.
+- Docker runtime smoke passed: `lsof -nP -iTCP:5222 -sTCP:LISTEN` returned no listener; `COMPOSE_PROJECT_NAME=cabadrive030chapter1 CABADRIVE_HOST_PORT=5222 make build` built the image and reran content/source-fidelity/build in Docker; `make up` served `http://127.0.0.1:5222`; Playwright smoke confirmed `ch1-public-transport-system` with `6` images and `2` source-image exceptions, `ch1-shared-trip` with `2` images and `1` source-image exception, zero full-page rasters for pages `39-42`, and no horizontal overflow; `make down` removed the container/network and `docker compose -p cabadrive030chapter1 ps --all` returned no containers.
+- Remaining required hygiene to run immediately after this process-memory update and before commit: `git diff --check` and `node scripts/check-feature-memory.mjs --worktree`.
+- Known issues / Implementation Agent feedback: none unresolved for the Chapter 1 implementation. Prior PR #184 final Architect/Analyst validation is stale because this commit adds non-evidence section content, assets, tests, registry, and runtime CSS after the validated one-section effective head; Orchestrator must rerun Review Agent plus final Architect and final Analyst validation on the pushed head.
+
+## Implementation Agent Review Fix Evidence - PR #184 Chapter 1 parent status
+
+- Implementation Agent review-fix completed at: 2026-05-31T14:25:24Z before commit/push.
+- Assigned PR/head: PR #184 on branch `codex/030-ch1-public-transport-system`, starting from current PR head `d68dd0b2cd8c9c2836ee180926a6bb1e6253e57b`.
+- Review finding addressed: AI Review P2 `PRRT_kwDOSX65IM6F8eYI` / `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json:1609`.
+- Root cause: after `ch1-shared-trip` landed, all six `chapter-1-sustainable-mobility` child sections were implemented, but the parent chapter registry entry still had `status: "pending"`, causing the completed chapter group to continue displaying the pending/later state in guide navigation unless a child route forced it open.
+- Fix evidence: changed only the Chapter 1 parent chapter status to `active`; Chapter 2 parent remains `pending`, and no source/sign/runtime image files were touched.
+- Regression evidence: content tests now assert Chapter 1 status is `active` when every Chapter 1 child is implemented, and Chapter 2 remains `pending` while every Chapter 2 child is pending. Focused e2e now asserts the Chapter 1 navigation group has `data-status="active"` and no `позже` marker, while Chapter 2 keeps `data-status="pending"` and the `позже` marker.
+- Verification passed for this review fix: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `implementedSections: 6`, `pendingSections: 4`; `node --test tests/content-manual-guide-chapters.test.mjs` passed `26/26`; `pnpm exec tsc --noEmit` passed; `pnpm run build` passed with the existing Vite large-chunk warning only; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages" --project=chromium --project=mobile` passed `2/2` after rebuilding `dist`.
+- Dead end: the first focused Playwright rerun failed because it was started concurrently with `pnpm run build` and served the previous `dist` where Chapter 1 was still pending; after the build finished, the same focused Playwright command passed.
+- Docker smoke disposition: not rerun for this narrow registry/status/test-only fix; production build plus focused preview e2e covered the affected navigation behavior.
+- Remaining known issue: older P2 thread `PRRT_kwDOSX65IM6F8WpI` about stale current-head guard remains pending final chapter-level Architect/Analyst validation evidence; this review fix does not fake-resolve it in product code.
+- Stale validation notice: prior PR #184 final Architect/Analyst validation remains stale because this non-evidence registry/test/process-memory review fix changes runtime navigation state after the previous validation target. Orchestrator must rerun Review Agent plus final Architect and final Analyst validation on the pushed head.
+
+## Implementation Agent Process-Memory Review Fix Evidence - PR #184 Chapter 1 task state
+
+- Implementation Agent process-memory review fix completed at: 2026-05-31T15:15:05Z after product head `900d0b0ee46d2af10f6133a0c4d10dbb3306be50`.
+- Review finding addressed: AI Review P2 `PRRT_kwDOSX65IM6F8iFW` / `specs/030-manual-chapters-1-2/tasks.md:268`.
+- Fix evidence: marked completed Chapter 1 implementation tasks T064-T069 current. The completed state matches prior pushed evidence: `ch1-public-transport-system` was preserved, `ch1-shared-trip` was implemented inside PR #184, source order/crop/source-image exception metadata was recorded, Chapter 1 has six implemented sections, Chapter 2 remains pending for a future separate chapter PR, visual/source-as-is rules remain preserved, and required verification passed.
+- Still-pending state remains explicit: T070 Review Agent re-review and T071 fresh final Architect/Analyst validation remain open. Current stale section-per-PR review thread `PRRT_kwDOSX65IM6F8m9v` is superseded by the newest user instruction requiring one PR per chapter, not one PR per website section; Orchestrator owns final review-thread disposition.
+- Verification for this process-memory-only fix: `git diff --check` and `node scripts/check-feature-memory.mjs --worktree` are required and recorded by the Implementation Agent after this edit. Full product checks were not rerun because no product/code/assets/runtime files changed; prior green verification at product head `900d0b0ee46d2af10f6133a0c4d10dbb3306be50` remains the product evidence for this PR head.
+
+## Implementation Agent Review Fix Evidence - PR #184 shared-trip congestion condition
+
+- Implementation Agent content review fix completed at: 2026-05-31T16:38:45Z before commit/push.
+- Assigned PR/head: PR #184 on branch `codex/030-ch1-public-transport-system`, starting from current PR head `9e06d4ea43ae335e411f9841ecfba5c84ed9ff1c`.
+- Review finding addressed: AI Review P2 `PRRT_kwDOSX65IM6F9DTU` / `src/data/manual-sections/ch1-shared-trip.ts:59`.
+- Root cause: the Russian learner copy preserved the source's "four fewer cars" benefit but detached it from the source condition that the trip is shared with other drivers/people who otherwise would drive separate cars.
+- Fix evidence: updated `ch1-shared-trip` learner copy so the four-car reduction is explicitly tied to sharing the trip with other drivers who otherwise would drive separate cars, both in the definition paragraph and the congestion-benefit explanation.
+- Regression evidence: content and focused e2e assertions now require the driver-sharing / otherwise-separate-cars condition alongside the four-car reduction claim.
+- Source/sign image disposition: no source images, sign-like markings, crops, asset metadata, or source-fidelity regions were modified for this text-only source-faithfulness fix.
+- Stale validation notice: prior final Architect/Analyst validation for effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18` is stale because this content/test/process-memory review fix is a non-evidence change. Orchestrator must rerun final Architect validation and final Analyst validation on the pushed head after review/checks are current.
+- Verification passed after this edit: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `implementedSections: 6`, `pendingSections: 4`; `node --test tests/content-manual-guide-chapters.test.mjs` passed `26/26` after one assertion-string adjustment for TypeScript quote escaping; `pnpm exec tsc --noEmit` passed; `pnpm run build` passed with the existing Vite large-chunk warning only; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages" --project=chromium --project=mobile` passed `2/2`; `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T15:27:42Z
+- Architect return count: 0
+- Effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validated effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validation evidence: PR #184 is validated as the Chapter 1 completion PR under the newest chapter-level slicing instruction. It preserves `ch1-public-transport-system`, adds `ch1-shared-trip` inside the same PR, completes the six Chapter 1 website sections over current `main`, and does not implement or bundle Chapter 2 content.
+- Architect validation evidence: Chapter 2 remains pending for one later separate chapter-level PR from a fresh latest-main base after Chapter 1 is merged. The future Chapter 2 PR retains the source-boundary requirements for legal responsibility, required documents, incident obligations, Scoring on source page `55`, and skipped divider/book-only pages.
+- Architect validation evidence: stale PR #184 final validations for effective heads `7d38e185109a981af056c023b980699aa3a1129c` and `081c932a36bb00bb21b5cde1f279ecb79d4ac090`, plus any one-section/section-level PR #184 validation wording, are superseded by this Chapter 1 completion validation.
+- Architect validation evidence: local read-only checks confirmed branch `codex/030-ch1-public-transport-system`, clean pre-validation worktree, and HEAD `8ca6348e6ede71919d87309ad2770c5e985630bb`. GitHub reports PR #184 current head `8ca6348e6ede71919d87309ad2770c5e985630bb`, title `[codex] Complete Chapter 1 manual guide`, state `OPEN`, draft `false`, mergeable `MERGEABLE`, and base `main` at `501199aa6c35f46bcb4d363918da5a99a2329304`.
+- Architect validation evidence: required checks are green on `8ca6348e6ede71919d87309ad2770c5e985630bb`: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
+- Architect validation evidence: GitHub review threads are resolved for PR #184, including public-transport tablet overflow `PRRT_kwDOSX65IM6F8MRc`, stale current-head guard `PRRT_kwDOSX65IM6F8WpI`, Chapter 1 parent status `PRRT_kwDOSX65IM6F8eYI`, task-state refresh `PRRT_kwDOSX65IM6F8iFW`, and obsolete section-splitting thread `PRRT_kwDOSX65IM6F8m9v`, which is superseded by the newest one-PR-per-chapter user instruction.
+- Architect validation evidence: implementation and local verification evidence is accepted for the expanded Chapter 1 scope: source-fidelity guard pass with `implementedSections: 6` and `pendingSections: 4`; content tests `26/26`; TypeScript pass; build pass with the existing Vite large-chunk warning only; focused Playwright desktop/mobile `2/2`; Docker smoke for Chapter 1 route; `git diff --check`; and feature-memory check. During Architect validation, local read-only reruns confirmed `node scripts/manual-guide-source-fidelity.mjs` pass, `node --test tests/content-manual-guide-chapters.test.mjs` `26/26`, and `git diff --check 501199aa6c35f46bcb4d363918da5a99a2329304...HEAD` pass.
+- Architect validation evidence: image/sign source constraints remain preserved. Chapter 1 uses high-quality original source crops/images for public-transport and shared-trip visual material, explicit source-image exceptions only where source text remains inside original images, no full-page source rasters for pages `39-42`, Russian learner explanation outside source images/sign-like markings, and the standing source-as-is rule for official traffic signs/sign sheets remains controlling for current and future Chapter 1/2 work.
+- Architect validation evidence: process memory is current for the Chapter 1 completion state: T064-T070 are complete, final Architect task T039/T040 is complete, T071 remains open only because final Analyst validation still follows this Architect pass, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
+- Open Architect dispositions: none for PR #184 at effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb.
+- Architect gaps: none for PR #184 at effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T15:44:50Z
+- Architect return count: 0
+- Effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validated effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Architect validation evidence: this refresh validates the Architect-owned process-memory disposition fix for PR #184 after finalizer dry-run on current PR head `11f44eb2cb33d42f99aa149858b90c345cbb82e7`. The product/runtime effective content head remains `8ca6348e6ede71919d87309ad2770c5e985630bb`; this process-memory change only resolves the historical Known Issues wording that still described the already-satisfied Chapter 1 scope-expansion condition as stale/blocked.
+- Architect validation evidence: the Known Issues item for prior PR #184 one-section validation is now resolved/superseded. `ch1-shared-trip` is included in PR #184, Chapter 1 has six implemented sections, Chapter 2 remains a separate future chapter PR, required checks and Review Agent state were already green/resolved for the effective content head, and final Architect/Analyst validation passed in order.
+- Architect validation evidence: local read-only checks for this process-memory refresh confirmed the assigned worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, clean pre-edit status, and current PR head `11f44eb2cb33d42f99aa149858b90c345cbb82e7`.
+- Open Architect dispositions: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`; no unresolved known issue, Implementation Agent feedback, or Analyst feedback remains for Architect disposition.
+- Architect gaps: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T15:50:10Z
+- Architect return count: 0
+- Effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Architect validated effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Architect validation evidence: PR #184 is validated on new process-memory effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`, which includes the Architect-owned Known Issues disposition fix. The product/runtime content remains the earlier Chapter 1 implementation head, but the repository effective content head for final validation is now `0116f6f13e1976e801613abec40e7ad2e1382a18` because the known-issue disposition is meaningful process memory.
+- Architect validation evidence: acceptedKnownIssueDecisionPending is resolved/false. The prior PR #184 one-section validation known issue is resolved/superseded, `ch1-shared-trip` is included in PR #184, Chapter 1 has six implemented and active sections, Chapter 2 remains a future separate chapter PR from a fresh latest-main base, and no owner or human decision remains.
+- Architect validation evidence: source/sign constraints remain preserved for the Chapter 1 scope. Public-transport and shared-trip visual material uses high-quality original source crops/images with Russian learner explanation outside source images/sign-like markings, and the standing source-as-is rule for official traffic signs/sign sheets remains controlling for current and future Chapter 1/2 work.
+- Architect validation evidence: review findings are resolved, required checks were green before this process-memory commit and will rerun on GitHub for the new head, no unresolved Implementation Agent feedback remains, and no Analyst feedback requires Architect disposition.
+- Architect validation evidence: post-validation commits after effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18` must be final-validation evidence-only; any product, runtime, test, asset, CI, durable workflow, or other non-evidence change makes this validation stale.
+- Open Architect dispositions: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
+- Architect gaps: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T16:47:12Z
+- Architect return count: 0
+- Effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Architect validated effective content head: 4102b3ff598323333b061cf231e9fa8721489a34
+- Architect validation evidence: PR #184 is validated as the Chapter 1 completion PR at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`. Prior final validation for `0116f6f13e1976e801613abec40e7ad2e1382a18` is stale because the shared-trip text/test review fix changed non-evidence content.
+- Architect validation evidence: AI Review P2 `PRRT_kwDOSX65IM6F9DTU` is addressed and the thread is resolved/outdated. The shared-trip four-car reduction is now explicitly tied to sharing with other drivers who otherwise would drive separate cars, in both the definition paragraph and congestion-benefit explanation, with content/e2e regression assertions covering that condition.
+- Architect validation evidence: Chapter 1 remains complete with six implemented/active sections, and PR #184 does not implement Chapter 2. Chapter 2 remains a future separate chapter PR from a fresh latest-main base after Chapter 1 is merged.
+- Architect validation evidence: source/sign constraints remain preserved. The shared-trip P2 fix is text/test/process-memory only; no source images, sign-like markings, crops, asset metadata, source-fidelity regions, or source-as-is sign rules were changed.
+- Architect validation evidence: PR #184 current head is `4102b3ff598323333b061cf231e9fa8721489a34`, draft `false`, mergeable `MERGEABLE`. Required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are green; `AI Review` is pending/stale because final validation evidence is being refreshed for this head.
+- Architect validation evidence: local read-only inspection found unresolved review thread `PRRT_kwDOSX65IM6F8_9Y` is Analyst-validation/head-guard evidence for `feature-request.md`, not an Architect content or disposition gap. It remains for final Analyst validation after this Architect pass.
+- Architect validation evidence: Implementation Agent feedback requiring Architect disposition is none unresolved. Known Issues disposition remains resolved/superseded, including the prior PR #184 one-section validation known issue.
+- Architect validation evidence: post-validation commits after effective content head `4102b3ff598323333b061cf231e9fa8721489a34` must be final-validation evidence-only; any product, runtime, test, asset, CI, durable workflow, or other non-evidence change makes this validation stale.
+- Open Architect dispositions: none for PR #184 at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`.
+- Architect gaps: none for PR #184 at effective content head `4102b3ff598323333b061cf231e9fa8721489a34`.

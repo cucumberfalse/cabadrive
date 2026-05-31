@@ -2,8 +2,21 @@
 
 ## Architect Correction
 
+### Active Chapter-Level Correction
+
+- Source instruction: newest user correction `делай один пр на главу, ни на каждую страницу; тебе нужно сделать главу 1 и главу 2`.
+- Active delivery unit from this correction forward: one implementation PR per source manual chapter, not per source PDF page and not per individual website section.
+- PR #184 / branch `codex/030-ch1-public-transport-system` is reused as the Chapter 1 completion PR because Orchestrator verified it is based on `origin/main` at `501199aa6c35f46bcb4d363918da5a99a2329304` and it already contains unmerged `ch1-public-transport-system` work.
+- PR #184 must preserve the existing `ch1-public-transport-system` implementation and add the remaining unmerged Chapter 1 website section `ch1-shared-trip` / `Viaje compartido` from source pages `41-42`.
+- Previously merged Chapter 1 sections remain on `main`; PR #184 completes Chapter 1 over that base and must not duplicate or rewrite already merged Chapter 1 sections unless required to integrate the remaining Chapter 1 work.
+- Chapter 2 is a separate future chapter-level PR from a fresh latest-main base after Chapter 1 is merged.
+- Earlier final Architect/Analyst validation for PR #184 as a one-section public-transport PR is stale after this scope expansion. PR #184 must receive fresh implementation, checks/review, final Architect validation, and final Analyst validation before completion or merge.
+- Superseded delivery unit: one individual website section page per PR. Historical section-level evidence remains useful as source inventory and validation history, but it no longer controls PR #184 or the future Chapter 2 PR.
+
+### Historical Section-Level Correction
+
 - Source request: `feature-request.md`, including the Analyst-recorded correction that one website page means one source manual section/topic, not one source PDF page.
-- Corrected delivery unit: one website section page per PR.
+- Superseded delivery unit: one website section page per PR.
 - Superseded delivery unit: raw source PDF pages as PR delivery units. All prior requirements that treated source PDF pages `21-56` as implementation PR slices are replaced by this spec.
 - Assigned correction worktree: `/Users/chap/devel/cabadrive-worktrees/030-section-requirement-correction`.
 - Assigned correction branch: `codex/030-section-requirement-correction`.
@@ -13,7 +26,13 @@
 
 ## Section And PR Definition
 
-A website section page is one source `Índice` child topic under Chapter 1 or Chapter 2, regardless of how many source PDF pages the topic spans.
+A website section page remains one source `Índice` child topic under Chapter 1 or Chapter 2, regardless of how many source PDF pages the topic spans. The PR delivery unit is now the chapter:
+
+- A chapter-level PR may contain multiple website section pages from the same source chapter.
+- A chapter-level PR must not bundle Chapter 1 and Chapter 2 together.
+- A chapter-level PR must not split one source `Índice` section across multiple PRs.
+- PR #184 is the Chapter 1 completion PR and must contain the remaining unmerged Chapter 1 sections over its verified base: already implemented `ch1-public-transport-system` plus new `ch1-shared-trip`.
+- The future Chapter 2 PR must contain Chapter 2 section content only and start from a fresh latest-main base after Chapter 1 is merged.
 
 For this cycle:
 
@@ -21,12 +40,12 @@ For this cycle:
 - Source PDF page numbers are not website routes and are not implementation PR slice boundaries.
 - Chapter divider-only source PDF pages are skipped entirely. Source PDF pages `21` and `43` do not receive separate site pages, placeholders, content modules, or PRs.
 - Chapter titles remain represented by chapter navigation/group headings and section context, not standalone divider-page routes.
-- One implementation PR may contain exactly one website section page's learner-facing content, covering that section's full source range.
-- A section PR must not split one section across multiple PRs and must not bundle multiple sections into one PR unless Architect records a source-backed exception and Orchestrator explicitly accepts it.
+- The prior one-section PR rule is superseded for PR #184 and the future Chapter 2 PR.
+- A chapter PR may include several source sections, but only within that same chapter and with per-section source-range evidence.
 
 ## Goal
 
-Continue the native Russian interactive `Руководство` into official manual Chapters 1 and 2 as source-faithful, selectable, responsive website section pages, delivered one source-`Índice` topic per merged PR.
+Continue the native Russian interactive `Руководство` into official manual Chapters 1 and 2 as source-faithful, selectable, responsive website section pages, delivered from this correction forward as one chapter-level PR for Chapter 1 completion and one separate chapter-level PR for Chapter 2.
 
 ## Source Scope
 
@@ -34,24 +53,24 @@ Chapter 1 source range remains `21-42`, but implementation starts with the first
 
 Chapter 2 source range remains `43-56`, but implementation starts with the first substantive section on source PDF page `44`.
 
-Corrected section PR inventory:
+Chapter-level source-section inventory:
 
-| Section PR key | Website section page | Source `Índice` id | Source range metadata | Disposition |
+| Source section key | Website section page | Source `Índice` id | Source range metadata | Disposition |
 | --- | --- | --- | --- | --- |
-| `ch1-cities-for-people` | `Ciudades para las personas` / `Города для людей` | `ch1-cities-for-people` | `22` | implement as one section PR |
-| `ch1-sustainable-mobility` | `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` | `ch1-sustainable-mobility` | `23` | implement as one section PR |
-| `ch1-pedestrian-priority` | `Prioridad peatonal` / `Пешеходный приоритет` | `ch1-pedestrian-priority` | `24-29` | implement as one section PR |
-| `ch1-bicycle` | `Bicicleta` / `Велосипед` | `ch1-bicycle` | `30-38` | implement as one section PR |
-| `ch1-public-transport-system` | `Sistema de transporte público` / `Система общественного транспорта` | `ch1-public-transport-system` | `39-40` | implement as one section PR |
-| `ch1-shared-trip` | `Viaje compartido` / `Совместная поездка` | `ch1-shared-trip` | `41-42` | implement as one section PR |
-| `ch2-legal-responsibility` | `Responsabilidades legales` / `Юридическая ответственность` | `ch2-legal-responsibility` | `44-45` | implement as one section PR |
-| `ch2-required-documents` | `Documentación obligatoria` / `Обязательные документы` | `ch2-required-documents` | `46-50` | implement as one section PR |
-| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `ch2-incident-obligations` | `51-55`, ending before the `Scoring` block on source PDF page `55` | implement as one section PR with page-55 region metadata that excludes Scoring text |
-| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `ch2-scoring` | `55`, starting at the `El Sistema de Evaluación Permanente de Conductores o Scoring...` block on source PDF page `55` | implement as one section PR; source PDF page `56` is a closing slogan, not Scoring content |
+| `ch1-cities-for-people` | `Ciudades para las personas` / `Города для людей` | `ch1-cities-for-people` | `22` | already merged before this correction; do not duplicate in PR #184 |
+| `ch1-sustainable-mobility` | `¿Qué es la movilidad sustentable?` / `Что такое устойчивая мобильность?` | `ch1-sustainable-mobility` | `23` | already merged before this correction; do not duplicate in PR #184 |
+| `ch1-pedestrian-priority` | `Prioridad peatonal` / `Пешеходный приоритет` | `ch1-pedestrian-priority` | `24-29` | already merged before this correction; do not duplicate in PR #184 |
+| `ch1-bicycle` | `Bicicleta` / `Велосипед` | `ch1-bicycle` | `30-38` | already merged before this correction; do not duplicate in PR #184 |
+| `ch1-public-transport-system` | `Sistema de transporte público` / `Система общественного транспорта` | `ch1-public-transport-system` | `39-40` | keep in PR #184 as part of Chapter 1 completion |
+| `ch1-shared-trip` | `Viaje compartido` / `Совместная поездка` | `ch1-shared-trip` | `41-42` | add to PR #184 as part of Chapter 1 completion, not as a separate PR |
+| `ch2-legal-responsibility` | `Responsabilidades legales` / `Юридическая ответственность` | `ch2-legal-responsibility` | `44-45` | implement in the future Chapter 2 PR |
+| `ch2-required-documents` | `Documentación obligatoria` / `Обязательные документы` | `ch2-required-documents` | `46-50` | implement in the future Chapter 2 PR |
+| `ch2-incident-obligations` | `Obligaciones en caso de incidentes viales` / `Обязанности в случае дорожных инцидентов` | `ch2-incident-obligations` | `51-55`, ending before the `Scoring` block on source PDF page `55` | implement in the future Chapter 2 PR with page-55 region metadata that excludes Scoring text |
+| `ch2-scoring` | `Scoring` / `Система баллов Scoring` | `ch2-scoring` | `55`, starting at the `El Sistema de Evaluación Permanente de Conductores o Scoring...` block on source PDF page `55` | implement in the future Chapter 2 PR; source PDF page `56` is a closing slogan, not Scoring content |
 
 Source-backed correction: current navigation-derived metadata may still point `ch2-scoring` at source PDF page `56`, but `manual.ru.json` shows the Scoring content on source PDF page `55` and page `56` contains only the closing slogan `Respetar las normas de tránsito implica salvar vidas.` Implementation must update shared section registry/tests/evidence so Scoring belongs to page `55`. The closing slogan is not a separate website section page; it may be omitted as book-only closing material or retained only as a clearly scoped chapter/Scoring closing artifact with source evidence.
 
-If source inspection proves that another current navigation range is wrong, Implementation Agent records feedback and stops for Architect/Orchestrator disposition before changing the section count, combining sections, splitting sections, or moving content between section PRs.
+If source inspection proves that another current navigation range is wrong, Implementation Agent records feedback and stops for Architect/Orchestrator disposition before changing the section count, combining sections, splitting sections, or moving content between chapter PRs.
 
 ## Scope
 
@@ -59,12 +78,14 @@ In scope:
 
 - Convert the ten Chapter 1/2 source-`Índice` child topics listed above into native Russian website section pages.
 - Preserve the full source-`Índice` hierarchy: Chapter 1 and Chapter 2 are navigation groups; each section page lives under its source chapter.
+- Complete Chapter 1 in PR #184 by preserving `ch1-public-transport-system` and adding `ch1-shared-trip`.
+- Implement Chapter 2 later in one separate chapter-level PR from a fresh latest-main base.
 - Preserve existing Introduction routes and the visible destination `Руководство`.
 - Use existing manual manifests, local page renders, and official PDF as source/reference inputs only.
 - Produce native learner-facing Russian HTML/CSS/SVG/local assets, not a PDF/page-image reader.
 - Preserve source-faithful local artwork/crops, source-region metadata, cleaned originals, selectable Russian labels, responsive prose, style-token consistency, and visual checker evidence.
 - Keep all runtime behavior local-first/offline after build.
-- Add or correct shared infrastructure only when needed to support section-based registry, routes, checker evidence, and future section PRs.
+- Add or correct shared infrastructure only when needed to support section-based registry, routes, checker evidence, PR #184 Chapter 1 completion, and the future Chapter 2 PR.
 
 Out of scope:
 
@@ -85,13 +106,13 @@ As a Russian-speaking learner, I want Chapter 2 legal, document, incident, and s
 
 ### User Story 3
 
-As the project owner, I want one PR per website section page, so that source fidelity, infographic quality, and wording can be reviewed topic by topic.
+As the project owner, I want one PR per manual chapter from this correction forward, so Chapter 1 can be completed in PR #184 and Chapter 2 can be handled separately without page-by-page or section-by-section PR churn.
 
 ## Acceptance Criteria
 
 1. Given the user opens `Руководство`, when Chapter 1 or Chapter 2 is expanded, then the navigation shows chapter groups and substantive section topics, not standalone divider-only source PDF pages.
 2. Given a section spans multiple source PDF pages, when implemented, then one website section page contains the full section in source order with all required text, visuals, callouts, tables, and legal details from that source range.
-3. Given a section PR is reviewed, then its learner-facing content covers exactly one website section page and does not silently include another source-`Índice` topic.
+3. Given a chapter-level PR is reviewed, then its learner-facing content covers only source sections from that assigned chapter, with per-section source-range evidence and no cross-chapter bundling.
 4. Given source PDF page `21` or `43`, when section planning is checked, then there is no standalone site page/PR for that divider-only page.
 5. Given PR #175 / `page-021`, when merge readiness is considered, then it is not merge-ready in its divider-page form and must be closed, superseded, or fully replaced by a section-based implementation before any merge.
 6. Given ordinary prose, lists, legal text, and callouts are rendered, then Russian text is selectable/copyable DOM or SVG text, responsive, accessible, and free of forced PDF line breaks.
@@ -99,13 +120,13 @@ As the project owner, I want one PR per website section page, so that source fid
 8. Given source text exists inside non-sign artwork, then visible Spanish is absent from the learner view, cleanup is local and source-faithful, and Russian labels are selectable text where feasible.
 9. Given a section contains official traffic signs or traffic sign sheets, then the sign image is inserted from the source as-is in high quality, with no translation, relabeling, CSS/SVG reconstruction, simplification, recoloring, cleanup, or other modification to the sign itself.
 10. Given visual checker evidence is produced, then it includes source-region/crop metadata, source/Russian screenshots, bounding-box checks, visible-Spanish checks or explicit official-traffic-sign exceptions, responsive checks, selectable-text checks, and explicit pass/fail output for the whole section.
-11. Given final validation starts, then the cycle PR set records every contributing shared prerequisite/correction PR and every implemented section PR, with final Architect validation before final Analyst validation.
+11. Given final validation starts, then the cycle PR set records every contributing shared prerequisite/correction PR, historical section PR, PR #184 as the Chapter 1 completion PR, and the future Chapter 2 PR if implemented, with final Architect validation before final Analyst validation.
 
 ## Negative Scenarios
 
 1. Splitting `Prioridad peatonal`, `Bicicleta`, `Documentación obligatoria`, or any other multi-page source topic into several source-PDF-page PRs.
 2. Merging a divider-only source PDF page such as page `21` as its own website page.
-3. Bundling two or more source-`Índice` topics into one implementation PR without recorded Architect/Orchestrator exception.
+3. Bundling Chapter 1 and Chapter 2 content into one implementation PR, or moving `ch1-shared-trip` out of PR #184 into a new separate PR after this correction.
 4. Returning to the old `Руководство 4R` page-layout reader, side-by-side Spanish/Russian transcript, runtime PDF viewer, full-page raster base, or image-only Russian page.
 5. Flattening Russian learning text into images or blocking text selection.
 6. Replacing source pictograms, infographics, diagrams, tables, signs, or photos with generic icon sets, approximate redesigns, broad masks, backing plates, or text-only substitutes.
@@ -119,11 +140,11 @@ As the project owner, I want one PR per website section page, so that source fid
 
 - FR-001: `Руководство` remains the only user-facing interactive manual destination for this conversion.
 - FR-002: Route boundaries come from source `Índice` section/topic entries, not raw PDF page numbers.
-- FR-003: The current Chapter 1/2 implementation cycle contains ten expected website section page PRs, one per section listed in this spec.
+- FR-003: From this correction forward, the current Chapter 1/2 implementation cycle uses chapter-level PR slicing: PR #184 completes Chapter 1, and a future separate PR completes Chapter 2.
 - FR-004: Source PDF pages `21` and `43` are skipped as standalone implementation units because they are chapter divider-only pages.
 - FR-005: A shared prerequisite/correction PR is allowed when needed to replace page-based registry/routes/checkers with section-based registry/routes/checkers; it must contain no converted section content.
-- FR-006: Every implementation slice after planning must use a fresh isolated worktree/branch from latest verified `main`.
-- FR-007: Every section PR must update `tasks.md` process memory with source range metadata, decisions, evidence, known issues, Implementation Agent feedback, and cycle PR set details.
+- FR-006: Every implementation slice after planning must use a fresh isolated worktree/branch from latest verified `main`, except Orchestrator's explicit reuse of PR #184 for Chapter 1 because its base is verified at `501199aa6c35f46bcb4d363918da5a99a2329304` and it already contains the unmerged Chapter 1 public-transport work.
+- FR-007: Every chapter-level PR must update `tasks.md` process memory with per-section source range metadata, decisions, evidence, known issues, Implementation Agent feedback, and cycle PR set details.
 - FR-008: Every section must use native HTML/CSS/SVG/local assets; runtime PDF viewer, PDF.js, iframe/object/embed PDF display, remote assets, runtime fetches, backend endpoints, live AI calls, and remote fonts are forbidden.
 - FR-009: Russian learning text must be selectable/copyable DOM or SVG text and must not be rasterized into page images.
 - FR-010: Normal prose must wrap responsively; horizontal scrolling is allowed only inside fixed visual blocks whose source layout requires it.
@@ -132,7 +153,7 @@ As the project owner, I want one PR per website section page, so that source fid
 - FR-013: Russian wording may be simplified for learner clarity only when source order, meaning, and ticket-critical details remain intact across the full section span.
 - FR-014: Recurring style tokens for document shell, section headings, body, callouts, legal cards, figure captions, tables, sign/image blocks, infographic labels, document lists, emergency checklists, and contact/resource lists must be reused or extended with source-backed variants.
 - FR-015: Section-specific tests must cover route availability, section coverage, forbidden patterns, local assets, source-region metadata, selectable text, responsive prose, visible-Spanish absence outside explicit official-traffic-sign exceptions, source-as-is sign fidelity when traffic signs appear, and visual checker output.
-- FR-016: Review Agent must verify role boundaries, Orchestrator-first routing, complete feature memory, latest-main startup evidence, sibling-work preservation, one-section PR scope, and visual-quality evidence.
+- FR-016: Review Agent must verify role boundaries, Orchestrator-first routing, complete feature memory, latest-main startup evidence or explicit PR #184 reuse evidence, sibling-work preservation, chapter-level PR scope, and visual-quality evidence.
 - FR-017: The work cycle requires cycle PR-set tracking and final Architect validation before final Analyst validation, completion, conservative Orchestrator finalization, or merge.
 - FR-018: If Analyst final validation finds gaps, Analyst-owned validation notes require Architect accept/task/ticket/dispose disposition before follow-up development.
 - FR-019: If final validation targets an effective content head, record matching markers for effective content head, Architect validated effective content head, and Analyst validated effective content head.
@@ -141,10 +162,10 @@ As the project owner, I want one PR per website section page, so that source fid
 
 ## Success Criteria
 
-- SC-001: Chapter 1 and Chapter 2 are represented by ten separate merged website section page PRs, plus only explicitly needed shared prerequisite/correction PRs.
+- SC-001: Chapter 1 is completed by PR #184 over already merged earlier Chapter 1 sections, and Chapter 2 is represented by one later chapter-level PR, plus only explicitly needed shared prerequisite/correction PRs.
 - SC-002: `Руководство` exposes Chapter 1 and Chapter 2 in the full source `Índice` hierarchy with section content replacing section placeholders as PRs merge.
 - SC-003: Divider-only source PDF pages `21` and `43` do not appear as standalone learner pages.
-- SC-004: Every section PR records passing focused tests, visual checker output, screenshot evidence, source-region metadata, and local preflight evidence before merge readiness.
+- SC-004: Every chapter-level PR records passing focused tests, visual checker output, screenshot evidence, source-region metadata, and local preflight evidence for each included section before merge readiness.
 - SC-005: PR #175 / `page-021` is not merged as-is; it is closed, superseded, or fully replaced by a section-based PR before any merge.
 - SC-006: No duplicate visible manual destination, runtime PDF/page-raster reader, remote dependency, or old side-by-side translation flow is introduced.
 
@@ -154,12 +175,12 @@ As the project owner, I want one PR per website section page, so that source fid
 - Existing Introduction style and `docs_project/project/frontend/manual-conversion-guidelines.md` are the baseline for new section pages.
 - Current `navigation.ru.json` section ranges are accepted until source inspection proves a correction is needed.
 - Source PDF page spans inside a section may be used for crop/evidence granularity, but not for PR slicing.
-- Parallel section PRs are allowed only if Orchestrator verifies latest-main base, non-overlapping files, and conflict safety.
+- Parallel chapter PRs are not used for Chapter 1/Chapter 2 under this correction. Chapter 2 starts after Chapter 1 is merged from a fresh latest-main base unless Orchestrator records a new explicit fallback.
 
 ## Review And Verification Requirements
 
-- Implementation requirements: Implementation Agent starts only after Orchestrator assigns an isolated worktree, branch, website section key, PR slice, and complete feature memory. Implementation Agent edits exactly the assigned section plus necessary section-local tests/assets/process-memory entries, unless assigned a shared prerequisite/correction PR.
-- Review requirements: Review Agent checks Orchestrator-first compliance, role boundaries, latest-main startup, one-section scope, no sibling mutation, complete process memory, visual-source-fidelity gates, no forbidden manual rendering patterns, and final-validation compliance where applicable.
-- Test/verification requirements: section PRs run focused content tests, visual/source-fidelity checker, Playwright route tests with desktop/mobile screenshots, `pnpm run validate:content`, `pnpm run test` or focused equivalent, `pnpm run build`, `pnpm run preflight`, and Docker runtime validation unless Orchestrator records a specific fallback.
+- Implementation requirements: Implementation Agent starts only after Orchestrator assigns an isolated worktree, branch, chapter-level PR slice, and complete feature memory. For PR #184, Implementation Agent edits the assigned Chapter 1 completion scope only: preserve `ch1-public-transport-system`, add `ch1-shared-trip`, and update necessary section-local/chapter-local tests/assets/process-memory entries.
+- Review requirements: Review Agent checks Orchestrator-first compliance, role boundaries, latest-main startup or explicit PR #184 reuse evidence, chapter scope, no sibling mutation, complete process memory, visual-source-fidelity gates, no forbidden manual rendering patterns, and final-validation compliance where applicable.
+- Test/verification requirements: chapter-level PRs run the source-fidelity guard, focused/manual-guide content tests, TypeScript, `pnpm run build`, focused Playwright for the manual guide with desktop/mobile responsive/no-overflow and image-quality checks, `pnpm run validate:content`, `pnpm run test` or focused equivalent as assigned, `pnpm run preflight` when required, and Docker runtime validation for runtime-affecting changes unless Orchestrator records a specific fallback.
 - Handoff and blocker requirements: Implementation Agent feedback is recorded in process memory and routed to Architect. Ambiguous section boundaries, unsafe cleanup, credentials/permissions, data-loss risk, conflicting requirements, or PR state ambiguity stop the role for Orchestrator/user disposition.
 - Final validation requirements: Architect validates all included PR slices, Architect-assigned tasks/dispositions, architectural guidance, open task state, process memory, and customer intent in spirit. Analyst validates customer intent in spirit and letter only after Architect passes. Any non-evidence post-validation change makes validation stale.

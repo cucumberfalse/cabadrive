@@ -2,6 +2,8 @@ import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehi
 import { ch1BicycleSection } from "./manual-sections/ch1-bicycle";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
+import { ch1PublicTransportSystemSection } from "./manual-sections/ch1-public-transport-system";
+import { ch1SharedTripSection } from "./manual-sections/ch1-shared-trip";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
 import {
   introductionDocumentStyleGuide,
@@ -503,6 +505,98 @@ export type ManualGuideContentBlock =
         textRu: string;
       }[];
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "public-transport-comparison";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      visibleSpanish: boolean;
+      facts: {
+        id: string;
+        valueRu: string;
+        labelRu: string;
+      }[];
+      captionRu: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "public-transport-infrastructure";
+      titleRu: string;
+      sourceTextEs: string;
+      cards: {
+        id: string;
+        titleRu: string;
+        sourcePage: number;
+        sourceRegion: {
+          x: number;
+          y: number;
+          width: number;
+          height: number;
+        };
+        assetPath: string;
+        altRu: string;
+        visibleSpanish: boolean;
+        sourceImageException?: OriginalSourceImageTextException;
+        details: {
+          labelRu: string;
+          textRu: string;
+        }[];
+        noteRu?: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "shared-trip-benefits";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: false;
+      introRu: string;
+      benefits: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "shared-trip-closing";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: true;
+      sourceImageException: OriginalSourceImageTextException;
+      quoteRu: string;
+      captionRu: string;
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -550,7 +644,9 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch1CitiesForPeopleSection,
   ch1SustainableMobilitySection,
   ch1PedestrianPrioritySection,
-  ch1BicycleSection
+  ch1BicycleSection,
+  ch1PublicTransportSystemSection,
+  ch1SharedTripSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -603,6 +699,16 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-bicycle-visuals",
       description: "Pages 30-38 bicycle, helmet, source-as-is official sign sheet, gesture, lane, parking, Ecobici, and scooter visuals using local source crops plus selectable Russian DOM explanation outside sign imagery.",
       tokenSource: "source pages 30-38 Bicicleta"
+    },
+    {
+      id: "manual-public-transport-visuals",
+      description: "Pages 39-40 public-transport avenue comparison, yellow boxes, bus platforms, exclusive lanes, Metrobus, and transfer-center visuals using high-quality original source crops plus Russian DOM explanation outside sign-like markings.",
+      tokenSource: "source pages 39-40 Sistema de transporte publico"
+    },
+    {
+      id: "manual-shared-trip-visuals",
+      description: "Pages 41-42 shared-trip carpool diagram and mobility-priority photo using high-quality original source crops, with embedded source text left source-as-is and Russian explanation outside images.",
+      tokenSource: "source pages 41-42 Viaje compartido"
     },
     {
       id: "manual-legal-detail",
