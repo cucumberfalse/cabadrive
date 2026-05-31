@@ -610,6 +610,11 @@ For each section key inside the assigned chapter-level PR:
 - Current-PR-head read-only guard: effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 0116f6f13e1976e801613abec40e7ad2e1382a18 records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 0116f6f13e1976e801613abec40e7ad2e1382a18; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -1046,3 +1051,18 @@ For each section key inside the assigned chapter-level PR:
 - Architect validation evidence: local read-only checks for this process-memory refresh confirmed the assigned worktree `/Users/chap/devel/cabadrive-worktrees/030-ch1-public-transport-system`, branch `codex/030-ch1-public-transport-system`, clean pre-edit status, and current PR head `11f44eb2cb33d42f99aa149858b90c345cbb82e7`.
 - Open Architect dispositions: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`; no unresolved known issue, Implementation Agent feedback, or Analyst feedback remains for Architect disposition.
 - Architect gaps: none for PR #184 at effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T15:50:10Z
+- Architect return count: 0
+- Effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Architect validated effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+- Architect validation evidence: PR #184 is validated on new process-memory effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`, which includes the Architect-owned Known Issues disposition fix. The product/runtime content remains the earlier Chapter 1 implementation head, but the repository effective content head for final validation is now `0116f6f13e1976e801613abec40e7ad2e1382a18` because the known-issue disposition is meaningful process memory.
+- Architect validation evidence: acceptedKnownIssueDecisionPending is resolved/false. The prior PR #184 one-section validation known issue is resolved/superseded, `ch1-shared-trip` is included in PR #184, Chapter 1 has six implemented and active sections, Chapter 2 remains a future separate chapter PR from a fresh latest-main base, and no owner or human decision remains.
+- Architect validation evidence: source/sign constraints remain preserved for the Chapter 1 scope. Public-transport and shared-trip visual material uses high-quality original source crops/images with Russian learner explanation outside source images/sign-like markings, and the standing source-as-is rule for official traffic signs/sign sheets remains controlling for current and future Chapter 1/2 work.
+- Architect validation evidence: review findings are resolved, required checks were green before this process-memory commit and will rerun on GitHub for the new head, no unresolved Implementation Agent feedback remains, and no Analyst feedback requires Architect disposition.
+- Architect validation evidence: post-validation commits after effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18` must be final-validation evidence-only; any product, runtime, test, asset, CI, durable workflow, or other non-evidence change makes this validation stale.
+- Open Architect dispositions: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
+- Architect gaps: none for PR #184 at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.

@@ -783,3 +783,31 @@ Architect disposition routing: no Analyst-discovered gap requires Architect disp
 Analyst limit escalation: none
 
 Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T15:52:47Z
+
+Analyst validated effective content head: 0116f6f13e1976e801613abec40e7ad2e1382a18
+
+Analyst return count: 0
+
+Analyst validation evidence: final Architect validation passed first at `2026-05-31T15:50:10Z` for the same effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`. Architect recorded no open dispositions, no gaps, and no unresolved Analyst or Implementation Agent feedback.
+
+Customer intent check: passed. PR #184 remains acceptable as the Chapter 1 completion PR under the latest one-PR-per-chapter instruction. It preserves the already accepted `ch1-public-transport-system` work, includes `ch1-shared-trip` in the same Chapter 1 PR, keeps earlier merged Chapter 1 sections intact, and does not implement or bundle Chapter 2 content.
+
+Analyst validation evidence: Known Issues disposition is resolved/superseded for this validation target. The prior one-section PR #184 validation known issue no longer blocks finalization because `ch1-shared-trip` is included, Chapter 1 has six implemented and active sections, Chapter 2 remains pending for the next separate chapter PR, and no human owner decision remains.
+
+Analyst validation evidence: image/sign source-as-is constraints remain preserved. Public-transport and shared-trip visuals use high-quality original source crops/images with Russian learner explanation outside source images and sign-like markings. The controlling rule for official traffic signs/sign sheets remains unchanged: source images must not be translated, redrawn, relabeled, recolored, cleaned, or reconstructed.
+
+Analyst validation evidence: PR inspection confirmed current head `0116f6f13e1976e801613abec40e7ad2e1382a18`, title `[codex] Complete Chapter 1 manual guide`, open/not draft, and review threads resolved, including the obsolete section-splitting thread superseded by the one-PR-per-chapter instruction. GitHub checks were still rerunning after the process-memory commit at Analyst inspection time; that remains an Orchestrator merge-readiness gate, not a customer-intent gap.
+
+Gaps, if any: none for PR #184 Chapter 1 customer-intent scope at effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18`.
+
+Architect disposition routing: no Analyst-discovered gap requires Architect disposition.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
