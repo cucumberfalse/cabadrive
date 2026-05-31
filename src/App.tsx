@@ -2359,6 +2359,73 @@ function BicycleHandSignalsBlockView({ block }: { block: Extract<ManualGuideSect
   );
 }
 
+function PublicTransportComparisonBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "public-transport-comparison" }> }) {
+  return (
+    <figure
+      className="manual-public-transport-comparison"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-public-transport-comparison-layout">
+        <img src={assetUrl(block.assetPath)} alt={block.titleRu} data-visible-spanish={block.visibleSpanish} loading="lazy" />
+        <div className="manual-public-transport-facts">
+          {block.facts.map((fact) => (
+            <article key={fact.id} data-fact-id={fact.id}>
+              <strong>{fact.valueRu}</strong>
+              <span>{fact.labelRu}</span>
+            </article>
+          ))}
+        </div>
+      </div>
+      <figcaption>{block.captionRu}</figcaption>
+    </figure>
+  );
+}
+
+function PublicTransportInfrastructureBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "public-transport-infrastructure" }> }) {
+  return (
+    <section className="manual-public-transport-infrastructure" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <h3>{block.titleRu}</h3>
+      <div className="manual-public-transport-card-grid">
+        {block.cards.map((card) => (
+          <article
+            className="manual-public-transport-card"
+            key={card.id}
+            data-card-id={card.id}
+            data-source-page={card.sourcePage}
+            data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
+          >
+            <div className="manual-public-transport-visual">
+              <img
+                src={assetUrl(card.assetPath)}
+                alt={card.altRu}
+                data-visible-spanish={card.visibleSpanish}
+                data-source-image-exception={card.sourceImageException?.kind}
+                data-visible-spanish-scope={card.sourceImageException?.visibleSpanishScope}
+                data-source-as-is={card.sourceImageException?.sourceAsIs}
+                loading={card.visibleSpanish ? "eager" : "lazy"}
+              />
+            </div>
+            <div className="manual-public-transport-copy">
+              <h4>{card.titleRu}</h4>
+              {card.details.map((detail) => (
+                <p key={detail.labelRu}>
+                  <strong>{detail.labelRu}:</strong> {detail.textRu}
+                </p>
+              ))}
+              {card.noteRu && <p className="manual-public-transport-note">{card.noteRu}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -2457,6 +2524,12 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "bicycle-hand-signals") {
             return <BicycleHandSignalsBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "public-transport-comparison") {
+            return <PublicTransportComparisonBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "public-transport-infrastructure") {
+            return <PublicTransportInfrastructureBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";

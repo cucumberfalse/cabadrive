@@ -17,10 +17,11 @@ const ch1CitiesModulePath = "src/data/manual-sections/ch1-cities-for-people.ts";
 const ch1SustainableModulePath = "src/data/manual-sections/ch1-sustainable-mobility.ts";
 const ch1PedestrianPriorityModulePath = "src/data/manual-sections/ch1-pedestrian-priority.ts";
 const ch1BicycleModulePath = "src/data/manual-sections/ch1-bicycle.ts";
+const ch1PublicTransportModulePath = "src/data/manual-sections/ch1-public-transport-system.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
+const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system"]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
@@ -29,6 +30,7 @@ const ch1CitiesModuleSource = readFileSync(ch1CitiesModulePath, "utf8");
 const ch1SustainableModuleSource = readFileSync(ch1SustainableModulePath, "utf8");
 const ch1PedestrianPriorityModuleSource = readFileSync(ch1PedestrianPriorityModulePath, "utf8");
 const ch1BicycleModuleSource = readFileSync(ch1BicycleModulePath, "utf8");
+const ch1PublicTransportModuleSource = readFileSync(ch1PublicTransportModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 
 function sourcePagesForRange(start, end) {
@@ -125,6 +127,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch1-sustainable-mobility.ts"), "export const ch1SustainableMobilitySection = { sectionId: \"ch1-sustainable-mobility\" };\n");
   writeTempFile(join(moduleRoot, "ch1-pedestrian-priority.ts"), moduleSource);
   writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), "export const ch1BicycleSection = { sectionId: \"ch1-bicycle\", blocks: [] };\n");
+  writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), "export const ch1PublicTransportSystemSection = { sectionId: \"ch1-public-transport-system\", blocks: [] };\n");
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   return { implementedRegistryPath, moduleRoot };
 }
@@ -294,6 +297,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-vulnerability-order",
     "manual-pedestrian-priority-visuals",
     "manual-bicycle-visuals",
+    "manual-public-transport-visuals",
     "manual-legal-detail",
     "introductionDocumentStyleGuide.tokens"
   ]) {
@@ -304,9 +308,10 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch1SustainableMobilitySection \}/);
   assert.match(manualGuideSource, /import \{ ch1PedestrianPrioritySection \}/);
   assert.match(manualGuideSource, /import \{ ch1BicycleSection \}/);
+  assert.match(manualGuideSource, /import \{ ch1PublicTransportSystemSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
@@ -957,6 +962,135 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   }
 });
 
+test("ch1 public transport section covers source pages 39-40 visuals and no unrelated section content", () => {
+  const section = registry.sections.find((entry) => entry.id === "ch1-public-transport-system");
+  assert.ok(section, "ch1-public-transport-system registry entry exists");
+  assert.equal(section.status, "implemented");
+  assert.equal(section.sourceRegionMetadataStatus, "recorded");
+  assert.equal(section.visualEvidenceStatus, "recorded");
+  assert.equal(section.implementationEvidence.checkerResult, "pass");
+  assert.deepEqual(section.implementationEvidence.sourcePages, [39, 40]);
+  assert.equal(existsSync(section.sectionContentModulePath), true);
+  assert.equal(existsSync(section.implementationEvidence.desktopScreenshot), true);
+  assert.equal(existsSync(section.implementationEvidence.mobileScreenshot), true);
+
+  for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
+    assert.equal(existsSync(sourceRegion.sourceAssetPath), true, `${sourceRegion.sourceAssetPath} exists`);
+    assert.ok([39, 40].includes(sourceRegion.sourcePage), `${sourceRegion.sourceAssetPath} belongs to the assigned source range`);
+  }
+
+  const expectedAssets = new Map([
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+      { sha256: "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600", visibleSpanish: false }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+      { sha256: "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5", visibleSpanish: false }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+      { sha256: "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d", visibleSpanish: false }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+      {
+        sha256: "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-exclusive-lane-bus-marking-photo"
+      }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+      {
+        sha256: "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85",
+        visibleSpanish: true,
+        assetKind: "high-resolution-original-source-metrobus-station-photo"
+      }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+      { sha256: "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1", visibleSpanish: false }
+    ]
+  ]);
+
+  for (const [assetPath, expectation] of expectedAssets) {
+    const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+    assert.ok(asset, `${assetPath} local asset metadata exists`);
+    assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
+    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
+    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    if (expectation.visibleSpanish) {
+      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} source-image exception asset kind is stable`);
+      assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
+      assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
+      assert.equal(asset.sourceImageException.sourceAsIs, true);
+      assert.equal(asset.sourceImageException.russianExplanationOutsideImage, true);
+    }
+  }
+
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.deepEqual(
+    section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg"
+    ]
+  );
+
+  for (const requiredText of [
+    "Система общественного транспорта",
+    "уменьшить выбросы CO2",
+    "40-50",
+    "3-4",
+    "Желтые боксы",
+    "прерывистая желтая разметка",
+    "Выступы для ожидания автобусов",
+    "параллельно бордюру",
+    "Эксклюзивные полосы",
+    "бесплатное разрешение",
+    "Metrobus de Buenos Aires",
+    "красная дорожка",
+    "через соответствующий пандус",
+    "удержания водительского удостоверения",
+    "Пересадочные центры",
+    "автобусами, поездами, метро и велосипедами",
+    "source-image-original-visible-text",
+    "avenue-comparison-source.jpg",
+    "exclusive-lane-source.jpg",
+    "metrobus-source.jpg"
+  ]) {
+    assert.ok(ch1PublicTransportModuleSource.includes(requiredText), `missing public transport learner text: ${requiredText}`);
+  }
+
+  for (const requiredKind of ["public-transport-comparison", "public-transport-infrastructure"]) {
+    assert.match(ch1PublicTransportModuleSource, new RegExp(`kind:\\s*"${requiredKind}"`), `${requiredKind} block is present`);
+  }
+
+  assert.match(appSource, /function PublicTransportComparisonBlockView/);
+  assert.match(appSource, /function PublicTransportInfrastructureBlockView/);
+  assert.match(stylesSource, /\.manual-public-transport-comparison[\s\S]*?user-select:\s*text/);
+  assert.match(stylesSource, /\.manual-public-transport-infrastructure[\s\S]*?user-select:\s*text/);
+  assert.doesNotMatch(ch1PublicTransportModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-0(?:39|40)\.jpg/u);
+  assert.doesNotMatch(ch1PublicTransportModuleSource, /https?:\/\//u);
+  assert.doesNotMatch(ch1PublicTransportModuleSource, /Совместная поездка|Юридическая ответственность|Обязательные документы|Scoring/u);
+
+  const orderedBlockIds = [
+    "public-transport-intro",
+    "public-transport-capacity-comparison",
+    "city-supports-public-transport",
+    "public-transport-infrastructure"
+  ];
+  let previousBlockIndex = -1;
+  for (const blockId of orderedBlockIds) {
+    const blockIndex = ch1PublicTransportModuleSource.indexOf(`id: "${blockId}"`);
+    assert.ok(blockIndex > previousBlockIndex, `${blockId} follows source pages 39-40 order`);
+    previousBlockIndex = blockIndex;
+  }
+});
+
 test("Manual guide source-fidelity checker scans the implemented section renderer", () => {
   assert.match(checkerSource, /sliceSource\(appSource,\s*"function ManualGuideSectionContentView"/);
   assert.match(manualGuideAppSource, /function ManualGuideSectionContentView/);
@@ -971,18 +1105,18 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 6);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 4);
+  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 5);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 5);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingSections, 6);
-  assert.equal(result.implementedSections, 4);
+  assert.equal(result.pendingSections, 5);
+  assert.equal(result.implementedSections, 5);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_ch1-pedestrian-priority_and_ch1-bicycle");
+  assert.equal(result.screenshotEvidence, "recorded_for_ch1-cities-for-people_ch1-sustainable-mobility_ch1-pedestrian-priority_ch1-bicycle_and_ch1-public-transport-system");
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy section references", () => {
@@ -1080,8 +1214,8 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.pendingSections, 6);
-    assert.equal(output.implementedSections, 4);
+    assert.equal(output.pendingSections, 5);
+    assert.equal(output.implementedSections, 5);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

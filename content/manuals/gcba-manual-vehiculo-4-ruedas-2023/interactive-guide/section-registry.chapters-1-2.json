@@ -1324,12 +1324,264 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-040.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-1-sustainable-mobility",
       "sectionContentModulePath": "src/data/manual-sections/ch1-public-transport-system.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "sectionId": "ch1-public-transport-system",
+        "sourcePages": [
+          39,
+          40
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 39,
+            "sourceRegion": {
+              "x": 300,
+              "y": 430,
+              "width": 620,
+              "height": 820
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
+            "cropDimensions": {
+              "width": 620,
+              "height": 820
+            },
+            "cropSha256": "404be954be9253d394c499e6bbc7992f238e9eaf5dd8077384de6d370459d85d",
+            "cleanupScope": "validation-source-only; runtime uses high-quality original source crops plus Russian DOM text outside images"
+          },
+          {
+            "sourcePage": 39,
+            "sourceRegion": {
+              "x": 345,
+              "y": 520,
+              "width": 510,
+              "height": 255
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+            "cropDimensions": {
+              "width": 510,
+              "height": 255
+            },
+            "cropSha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600",
+            "cleanupScope": "runtime original source photo comparison crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+          },
+          {
+            "sourcePage": 39,
+            "sourceRegion": {
+              "x": 348,
+              "y": 932,
+              "width": 245,
+              "height": 126
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+            "cropDimensions": {
+              "width": 245,
+              "height": 126
+            },
+            "cropSha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5",
+            "cleanupScope": "runtime original source yellow-box infrastructure crop; source markings remain as-is"
+          },
+          {
+            "sourcePage": 39,
+            "sourceRegion": {
+              "x": 348,
+              "y": 1085,
+              "width": 245,
+              "height": 130
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+            "cropDimensions": {
+              "width": 245,
+              "height": 130
+            },
+            "cropSha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d",
+            "cleanupScope": "runtime original source bus-platform crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+          },
+          {
+            "sourcePage": 40,
+            "sourceRegion": {
+              "x": 300,
+              "y": 430,
+              "width": 620,
+              "height": 820
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-public-transport-system/page-040-public-transport-source-crop.jpg",
+            "cropDimensions": {
+              "width": 620,
+              "height": 820
+            },
+            "cropSha256": "c5e55f2b6eb007e5453a051d36e15b86f28bed68a66b42750802d6deb6a40696",
+            "cleanupScope": "validation-source-only; runtime uses high-quality original source crops plus Russian DOM text outside images"
+          },
+          {
+            "sourcePage": 40,
+            "sourceRegion": {
+              "x": 350,
+              "y": 493,
+              "width": 245,
+              "height": 126
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+            "cropDimensions": {
+              "width": 245,
+              "height": 126
+            },
+            "cropSha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258",
+            "cleanupScope": "runtime original source exclusive-lane crop; BUS marking remains source-as-is with Russian explanation outside image"
+          },
+          {
+            "sourcePage": 40,
+            "sourceRegion": {
+              "x": 350,
+              "y": 774,
+              "width": 245,
+              "height": 126
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+            "cropDimensions": {
+              "width": 245,
+              "height": 126
+            },
+            "cropSha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85",
+            "cleanupScope": "runtime original source Metrobus crop; station sign and markings remain source-as-is with Russian explanation outside image"
+          },
+          {
+            "sourcePage": 40,
+            "sourceRegion": {
+              "x": 350,
+              "y": 1062,
+              "width": 245,
+              "height": 100
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+            "cropDimensions": {
+              "width": 245,
+              "height": 100
+            },
+            "cropSha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1",
+            "cleanupScope": "runtime original source transport-center crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+            "assetKind": "high-resolution-original-source-avenue-comparison-photo",
+            "width": 510,
+            "height": 255,
+            "sha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+            "assetKind": "high-resolution-original-source-yellow-box-infrastructure-photo",
+            "width": 245,
+            "height": 126,
+            "sha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+            "assetKind": "high-resolution-original-source-bus-platform-photo",
+            "width": 245,
+            "height": 130,
+            "sha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d",
+            "containsText": false,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+            "assetKind": "high-resolution-original-source-exclusive-lane-bus-marking-photo",
+            "width": 245,
+            "height": 126,
+            "sha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+            "assetKind": "high-resolution-original-source-metrobus-station-photo",
+            "width": 245,
+            "height": 126,
+            "sha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+            "assetKind": "high-resolution-original-source-transport-center-photo",
+            "width": 245,
+            "height": 100,
+            "sha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1",
+            "containsText": false,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "The BUS road marking is inside an original high-quality source crop; Russian explanation is outside the image."
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "reason": "The Metrobus sign and street markings are inside an original high-quality source crop; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "desktop-public-transport-section-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright checks the public transport comparison, infrastructure cards, source-image exceptions, Russian DOM facts, and all section blocks against the desktop viewport."
+          },
+          {
+            "id": "mobile-public-transport-section-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright checks the same public transport blocks against the mobile viewport with no horizontal overflow, clipping, or image/text overlap."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF/page raster, raw page route, remote asset, broad mask, DOM backing plate over source artwork, translated/reconstructed traffic sign or marking DOM, or fake pending content."
+        },
+        "visualReviewNotes": [
+          "Source pages 39-40 were visually inspected from local page renders before crop creation.",
+          "The top avenue comparison uses the original source crop and Russian DOM facts for CO2 and occupancy.",
+          "Yellow box, bus-platform, exclusive-lane, Metrobus, and transport-center cards use high-quality original source crops from pages 39-40.",
+          "BUS road marking and Metrobus source sign/markings remain inside source-as-is images; Russian explanation is outside the images."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch1-shared-trip",
