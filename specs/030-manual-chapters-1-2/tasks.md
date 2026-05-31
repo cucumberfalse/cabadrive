@@ -267,8 +267,8 @@ For each section key inside the assigned chapter-level PR:
 - [x] T067 Implementation Agent updated registry/navigation/checker/tests/evidence so Chapter 1 is complete with six implemented sections after `ch1-shared-trip`, while Chapter 2 remains pending for its separate future chapter PR.
 - [x] T068 Implementation Agent preserved all controlling visual rules: high-quality original source images/crops for source visuals, source-as-is treatment for any source/sign-like markings, and Russian learner explanation outside source images/signs.
 - [x] T069 Required verification for PR #184 after `ch1-shared-trip` passed and is recorded below: source-fidelity guard; focused manual-guide content tests; `pnpm exec tsc --noEmit`; `pnpm run build`; focused Playwright for manual guide covering `ch1-public-transport-system` and `ch1-shared-trip` with desktop/mobile responsive/no-overflow and image-quality checks; `git diff --check`; feature-memory check; Docker smoke.
-- [x] T070 Review Agent re-reviewed PR #184 as a Chapter 1 completion PR, not a one-section public-transport PR. Current review follow-up state: product review fixes for Chapter 1 parent status have landed; all review threads are resolved, including stale section-per-PR thread `PRRT_kwDOSX65IM6F8m9v`, which is superseded by the newest user instruction requiring one PR per chapter.
-- [ ] T071 Final Architect validation and final Analyst validation rerun only after implementation, review, required checks, and process memory are current on the expanded PR #184 head. Final Architect validation passed for effective content head `8ca6348e6ede71919d87309ad2770c5e985630bb`; final Analyst validation remains pending.
+- [ ] T070 Review Agent re-reviews PR #184 as a Chapter 1 completion PR, not a one-section public-transport PR. Current review follow-up state: product review fixes for Chapter 1 parent status have landed; stale section-per-PR thread `PRRT_kwDOSX65IM6F8m9v` is superseded by the newest user instruction and remains for Orchestrator review disposition.
+- [ ] T071 Final Architect validation and final Analyst validation rerun only after implementation, review, required checks, and process memory are current on the expanded PR #184 head.
 
 ## Review Requirements
 
@@ -285,9 +285,9 @@ For each section key inside the assigned chapter-level PR:
 - [ ] T035 Orchestrator confirms PR #184 completes Chapter 1, the future Chapter 2 PR is merged or explicitly pending/disposed according to cycle state, and any shared correction/prerequisite or historical section PRs are merged or explicitly disposed.
 - [ ] T036 Orchestrator confirms PR #175 / `page-021` was closed, superseded, or replaced by section-based implementation before merge.
 - [ ] T037 Orchestrator records the full cycle PR set with purpose, branch, PR metadata, head SHA, status, merge state, and final-validation inclusion.
-- [x] T038 Orchestrator invokes final Architect validation before final Analyst validation.
-- [x] T039 Architect final validation checks all PR slices, open task state, style/visual guidance, process memory, feedback dispositions, acceptance evidence, corrected chapter-level slicing contract, and customer intent in spirit.
-- [x] T040 If Architect validation passes, Architect records `Architect validation pass: passed`, timestamp, return count, and `Architect validated effective content head: <40-hex-sha>`.
+- [ ] T038 Orchestrator invokes final Architect validation before final Analyst validation.
+- [ ] T039 Architect final validation checks all PR slices, open task state, style/visual guidance, process memory, feedback dispositions, acceptance evidence, corrected chapter-level slicing contract, and customer intent in spirit.
+- [ ] T040 If Architect validation passes, Architect records `Architect validation pass: passed`, timestamp, return count, and `Architect validated effective content head: <40-hex-sha>`.
 - [ ] T041 Orchestrator invokes final Analyst validation only after final Architect validation passes.
 - [ ] T042 Analyst final validation checks customer intent in spirit and letter.
 - [ ] T043 Any Analyst gap is routed to Architect for accept/task/ticket/dispose disposition before follow-up development.
@@ -603,6 +603,11 @@ For each section key inside the assigned chapter-level PR:
 - Limit escalation: none
 - Effective content head: 7d38e185109a981af056c023b980699aa3a1129c
 - Current-PR-head read-only guard: effective content head 7d38e185109a981af056c023b980699aa3a1129c; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
+- Effective content head: 8ca6348e6ede71919d87309ad2770c5e985630bb
+- Final-validation evidence-only commit: post-effective-head evidence after effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb records Architect and Analyst final validation notes only in process memory.
+- Current-PR-head read-only guard: effective content head 8ca6348e6ede71919d87309ad2770c5e985630bb; current PR head differs only by final-validation evidence in role-owned process memory, and Orchestrator/finalizer verifies expected head, checks, review threads, merge state, and post-effective-head diff before finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
 
@@ -1010,7 +1015,7 @@ For each section key inside the assigned chapter-level PR:
 - Still-pending state remains explicit: T070 Review Agent re-review and T071 fresh final Architect/Analyst validation remain open. Current stale section-per-PR review thread `PRRT_kwDOSX65IM6F8m9v` is superseded by the newest user instruction requiring one PR per chapter, not one PR per website section; Orchestrator owns final review-thread disposition.
 - Verification for this process-memory-only fix: `git diff --check` and `node scripts/check-feature-memory.mjs --worktree` are required and recorded by the Implementation Agent after this edit. Full product checks were not rerun because no product/code/assets/runtime files changed; prior green verification at product head `900d0b0ee46d2af10f6133a0c4d10dbb3306be50` remains the product evidence for this PR head.
 
-## Final Architect Validation Notes - PR #184 Chapter 1 Completion
+## Final Architect Validation Notes
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-05-31T15:27:42Z

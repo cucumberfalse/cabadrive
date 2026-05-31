@@ -756,7 +756,7 @@ Analyst limit escalation: none
 
 Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
 
-## Final Analyst Validation Notes - PR #184 Chapter 1 Completion
+## Final Analyst Validation Notes
 
 Analyst validation pass: passed
 
