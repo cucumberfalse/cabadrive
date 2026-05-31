@@ -736,7 +736,11 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "Светоотражатели",
     "Знаки и правила",
     "Полная остановка",
+    "Конец защищенной велодорожки",
+    "Сойти с велосипеда",
     "Максимальная скорость 30 км/ч",
+    "На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа",
+    "возможна эвакуация",
     "Пассажира можно перевозить",
     "дополнительного сиденья, подножек и ручки",
     "4,20 м",
@@ -744,6 +748,8 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "По тротуару могут ехать только дети младше 12 лет",
     "старше 18 лет",
     "1500 ватт",
+    "Запрещено ехать на велосипеде, держась за другие транспортные средства",
+    "сразу за моторными транспортными средствами",
     "1,5 м",
     "Обгон выполняется слева",
     "Повороты крупного транспорта",
@@ -814,6 +820,29 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   assert.doesNotMatch(ch1BicycleModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-03[0-8]\.jpg/u);
   assert.doesNotMatch(ch1BicycleModuleSource, /https?:\/\//u);
   assert.doesNotMatch(ch1BicycleModuleSource, /Система общественного транспорта|Совместная поездка|Юридическая ответственность|Обязательные документы/u);
+  assert.doesNotMatch(ch1BicycleModuleSource, /bike-station|Стоянка или станция велосипедов/u);
+
+  const orderedSignIds = [
+    "bike-lane",
+    "shared-path",
+    "direction",
+    "crossing",
+    "stop",
+    "no-bike",
+    "end-ciclovia",
+    "dismount-bicycle",
+    "max-30",
+    "two-way",
+    "no-parking",
+    "pedestrian-crossing",
+    "yield"
+  ];
+  let previousSignIndex = -1;
+  for (const signId of orderedSignIds) {
+    const signIndex = ch1BicycleModuleSource.indexOf(`id: "${signId}"`);
+    assert.ok(signIndex > previousSignIndex, `${signId} follows source sign sheet order`);
+    previousSignIndex = signIndex;
+  }
 
   const orderedBlockIds = [
     "bicycle-intro-growth",
@@ -830,6 +859,7 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "body-posture",
     "age-and-paths",
     "coexistence-duty",
+    "vehicle-holding-prohibition",
     "safe-distance",
     "overtaking-rules",
     "offtracking-risk",

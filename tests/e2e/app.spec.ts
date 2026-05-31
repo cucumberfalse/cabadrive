@@ -3018,6 +3018,11 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(bicycleSection).toContainText("4,20 м");
   await expect(bicycleSection).toContainText("старше 18 лет");
   await expect(bicycleSection).toContainText("1500 ватт");
+  await expect(bicycleSection).toContainText("Конец защищенной велодорожки");
+  await expect(bicycleSection).toContainText("Сойти с велосипеда");
+  await expect(bicycleSection).toContainText("На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа");
+  await expect(bicycleSection).toContainText("эвакуация");
+  await expect(bicycleSection).toContainText("Запрещено ехать на велосипеде, держась за другие транспортные средства");
   await expect(bicycleSection).toContainText("1,5 м");
   await expect(bicycleSection).toContainText("Поворот налево");
   await expect(bicycleSection).toContainText("BA Ecobici by Tembici");
@@ -3037,6 +3042,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(bicycleSection).not.toContainText("Viaje compartido");
   await expect(bicycleSection).not.toContainText("Responsabilidades legales");
   await expect(bicycleSection).not.toContainText("Acompanante");
+  await expect(bicycleSection).not.toContainText("Стоянка или станция велосипедов");
   await expect(bicycleSection.locator("iframe, object, embed")).toHaveCount(0);
   await expect(bicycleSection.locator('[data-testid="manual-page-canvas"], [data-testid="manual-source-mask"]')).toHaveCount(0);
 
@@ -3101,6 +3107,9 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   });
   expect(bicycleSelectedText).toContain("Правильно");
   expect(bicycleSelectedText).toContain("Слишком низко");
+  expect(bicycleSelectedText).toContain("Конец защищенной велодорожки");
+  expect(bicycleSelectedText).toContain("Сойти с велосипеда");
+  expect(bicycleSelectedText).toContain("Запрещено ехать на велосипеде");
   expect(bicycleSelectedText).toContain("Поворот налево");
   expect(bicycleSelectedText).toContain("1,5 м");
   expect(bicycleSelectedText).toContain("500 ватт");

@@ -255,10 +255,16 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           labelRu: "Движение на велосипеде запрещено"
         },
         {
-          id: "bike-station",
+          id: "end-ciclovia",
           visualKind: "text",
-          markerRu: "станция",
-          labelRu: "Стоянка или станция велосипедов"
+          markerRu: "!",
+          labelRu: "Конец защищенной велодорожки"
+        },
+        {
+          id: "dismount-bicycle",
+          visualKind: "text",
+          markerRu: "сойти",
+          labelRu: "Сойти с велосипеда"
         },
         {
           id: "max-30",
@@ -276,7 +282,7 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           id: "no-parking",
           visualKind: "red",
           markerRu: "E",
-          labelRu: "Запрещены остановка и стоянка"
+          labelRu: "На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация"
         },
         {
           id: "pedestrian-crossing",
@@ -392,6 +398,14 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
         "Moverse en la Ciudad requiere de atencion y compromiso de toda la ciudadania. Mejorar la convivencia implica reconocer los derechos y obligaciones de cada persona.",
       textRu:
         "Движение по городу требует внимания и ответственности всех. Сосуществование на дороге начинается с признания прав и обязанностей каждого, особенно самого уязвимого участника."
+    },
+    {
+      id: "vehicle-holding-prohibition",
+      kind: "paragraph",
+      sourceTextEs:
+        "Esta prohibido circular agarrados a otros vehiculos o enfilados inmediatamente tras otros automotores.",
+      textRu:
+        "Запрещено ехать на велосипеде, держась за другие транспортные средства, или сразу за моторными транспортными средствами."
     },
     {
       id: "safe-distance",
