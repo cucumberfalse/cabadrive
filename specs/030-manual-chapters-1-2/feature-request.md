@@ -705,3 +705,25 @@ Architect disposition routing: no customer-intent gaps require Architect disposi
 Analyst limit escalation: none
 
 Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-05-31T12:53:54Z
+
+Analyst validated effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+
+Analyst return count: 0
+
+Analyst validation evidence: PR #184 public-transport current-head validation only for effective content head 7d38e185109a981af056c023b980699aa3a1129c. This validation covers the ch1-public-transport-system website section slice only and does not validate ch1-shared-trip, Chapter 2 sections, finalizer actions, check reruns, merge readiness, or unrelated PRs.
+
+Customer intent check: passed. PR #184 satisfies the corrected one-section boundary for Sistema de transporte publico / Система общественного транспорта as one website section over source pages 39-40, uses high-quality original source crops for the public-transport comparison, yellow box, bus platform, exclusive lane, Metrobus, and transport-center visuals, keeps source-as-is sign-like markings inside source images with Russian learner explanation outside the images, and leaves Viaje compartido / Совместная поездка pending for its own future section PR.
+
+Gaps, if any: none for PR #184 current-head customer-intent scope at effective content head 7d38e185109a981af056c023b980699aa3a1129c.
+
+Architect disposition routing: no customer-intent gaps require Architect disposition. Architect validation passed at 2026-05-31T12:52:27Z for the same effective content head 7d38e185109a981af056c023b980699aa3a1129c, with Architect reporting no open dispositions and no gaps for PR #184.
+
+Analyst limit escalation: none
+
+Analyst boundary reminder: this Analyst validation edits only Analyst-owned notes in specs/030-manual-chapters-1-2/feature-request.md; no product code, tests, assets, runtime files, Architect-owned files such as tasks.md, durable docs outside feature-request.md, staging, commits, pushes, review-thread actions, check reruns, merges, other worktrees, or sibling work were changed by Analyst.

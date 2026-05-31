@@ -567,6 +567,10 @@ For each section key:
 - Current-PR-head read-only guard: effective content head 9e2bad2e672024882fee010283e3736764d3d238; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
 - Analyst feedback Architect disposition: none
 - Limit escalation: none
+- Effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Current-PR-head read-only guard: effective content head 7d38e185109a981af056c023b980699aa3a1129c; later PR-head commits after this validation must be final-validation evidence-only, and Orchestrator/finalizer verifies current head, checks, review threads, merge state, and expected head before finalization.
+- Analyst feedback Architect disposition: none
+- Limit escalation: none
 
 ### Cleanup Evidence
 
@@ -890,3 +894,17 @@ For each section key:
 - Architect validation evidence: review threads are reported as none for PR #183, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
 - Open Architect dispositions: none for PR #183 at current effective content head 9e2bad2e672024882fee010283e3736764d3d238.
 - Architect gaps: none for PR #183 at current effective content head 9e2bad2e672024882fee010283e3736764d3d238.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T12:52:27Z
+- Architect return count: 0
+- Architect validated effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Effective content head: 7d38e185109a981af056c023b980699aa3a1129c
+- Architect validation evidence: PR #184 validates only the `ch1-public-transport-system` / `Sistema de transporte público` / `Система общественного транспорта` website section from source pages `39-40`; it leaves `ch1-shared-trip` source pages `41-42` and Chapter 2 sections pending and out of scope.
+- Architect validation evidence: current effective head 7d38e185109a981af056c023b980699aa3a1129c satisfies the user's image-quality/source-as-is intent by using high-quality original source crops for the public-transport comparison, yellow box, bus platform, exclusive lane, Metrobus, and transport-center visuals, keeping sign-like `BUS` and Metrobus markings source-as-is inside source-image exceptions, and placing Russian learner explanation outside the images.
+- Architect validation evidence: Orchestrator and Implementation evidence reports passing verification for current effective head 7d38e185109a981af056c023b980699aa3a1129c: source-fidelity checker pass with implementedSections 5 and pendingSections 5, content tests 25/25, TypeScript, build with the existing large-chunk warning only, focused Playwright desktop/mobile 2/2, regenerated screenshots and visual checks, diff hygiene, feature-memory check, Docker smoke on isolated project cabadrive030publictransport port 5216, and GitHub required checks AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation evidence: review threads are reported as none for PR #184, and no unresolved Implementation Agent feedback or Analyst feedback remains for Architect disposition.
+- Open Architect dispositions: none for PR #184 at current effective content head 7d38e185109a981af056c023b980699aa3a1129c.
+- Architect gaps: none for PR #184 at current effective content head 7d38e185109a981af056c023b980699aa3a1129c.
