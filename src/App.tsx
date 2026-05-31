@@ -2426,6 +2426,67 @@ function PublicTransportInfrastructureBlockView({ block }: { block: Extract<Manu
   );
 }
 
+function SharedTripBenefitsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-benefits" }> }) {
+  return (
+    <section
+      className="manual-shared-trip-benefits"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <div className="manual-shared-trip-copy">
+        <h3>{block.titleRu}</h3>
+        <p>{block.introRu}</p>
+      </div>
+      <div className="manual-shared-trip-benefits-layout">
+        <figure className="manual-shared-trip-diagram">
+          <img src={assetUrl(block.assetPath)} alt={block.altRu} data-visible-spanish={block.visibleSpanish} loading="lazy" />
+        </figure>
+        <div className="manual-shared-trip-benefit-grid">
+          {block.benefits.map((benefit) => (
+            <article key={benefit.id} data-benefit-id={benefit.id}>
+              <h4>{benefit.titleRu}</h4>
+              <p>{benefit.textRu}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "shared-trip-closing" }> }) {
+  return (
+    <figure
+      className="manual-shared-trip-closing"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-source-page={block.sourcePage}
+      data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
+    >
+      <div className="manual-shared-trip-photo">
+        <img
+          src={assetUrl(block.assetPath)}
+          alt={block.altRu}
+          data-visible-spanish={block.visibleSpanish}
+          data-source-image-exception={block.sourceImageException.kind}
+          data-visible-spanish-scope={block.sourceImageException.visibleSpanishScope}
+          data-source-as-is={block.sourceImageException.sourceAsIs}
+          loading="lazy"
+        />
+      </div>
+      <figcaption className="manual-shared-trip-quote">
+        <h3>{block.titleRu}</h3>
+        <blockquote>{block.quoteRu}</blockquote>
+        <p>{block.captionRu}</p>
+      </figcaption>
+    </figure>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -2530,6 +2591,12 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "public-transport-infrastructure") {
             return <PublicTransportInfrastructureBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "shared-trip-benefits") {
+            return <SharedTripBenefitsBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "shared-trip-closing") {
+            return <SharedTripClosingBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";

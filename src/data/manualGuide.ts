@@ -3,6 +3,7 @@ import { ch1BicycleSection } from "./manual-sections/ch1-bicycle";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
 import { ch1PublicTransportSystemSection } from "./manual-sections/ch1-public-transport-system";
+import { ch1SharedTripSection } from "./manual-sections/ch1-shared-trip";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
 import {
   introductionDocumentStyleGuide,
@@ -553,6 +554,49 @@ export type ManualGuideContentBlock =
         noteRu?: string;
       }[];
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "shared-trip-benefits";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: false;
+      introRu: string;
+      benefits: {
+        id: string;
+        titleRu: string;
+        textRu: string;
+      }[];
+      visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "shared-trip-closing";
+      titleRu: string;
+      sourceTextEs: string;
+      sourcePage: number;
+      sourceRegion: {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+      };
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: true;
+      sourceImageException: OriginalSourceImageTextException;
+      quoteRu: string;
+      captionRu: string;
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -601,7 +645,8 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch1SustainableMobilitySection,
   ch1PedestrianPrioritySection,
   ch1BicycleSection,
-  ch1PublicTransportSystemSection
+  ch1PublicTransportSystemSection,
+  ch1SharedTripSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -659,6 +704,11 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-public-transport-visuals",
       description: "Pages 39-40 public-transport avenue comparison, yellow boxes, bus platforms, exclusive lanes, Metrobus, and transfer-center visuals using high-quality original source crops plus Russian DOM explanation outside sign-like markings.",
       tokenSource: "source pages 39-40 Sistema de transporte publico"
+    },
+    {
+      id: "manual-shared-trip-visuals",
+      description: "Pages 41-42 shared-trip carpool diagram and mobility-priority photo using high-quality original source crops, with embedded source text left source-as-is and Russian explanation outside images.",
+      tokenSource: "source pages 41-42 Viaje compartido"
     },
     {
       id: "manual-legal-detail",

@@ -2530,10 +2530,134 @@ small,
   border-top: 1px solid #d8e6e6;
 }
 
+.manual-shared-trip-benefits,
+.manual-shared-trip-closing {
+  box-sizing: border-box;
+  display: grid;
+  gap: 14px;
+  width: min(760px, 100%);
+  min-width: 0;
+  margin: 2px 0;
+  color: #263532;
+  user-select: text;
+}
+
+.manual-shared-trip-benefits {
+  padding: 16px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.manual-shared-trip-copy {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.manual-shared-trip-copy h3,
+.manual-shared-trip-quote h3 {
+  margin: 0;
+  color: #2b3536;
+  font-size: 1.28rem;
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.manual-shared-trip-copy p,
+.manual-shared-trip-benefit-grid p,
+.manual-shared-trip-quote p {
+  margin: 0;
+  color: #3d4846;
+  font-size: 0.95rem;
+  line-height: 1.42;
+}
+
+.manual-shared-trip-benefits-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+  align-items: start;
+  min-width: 0;
+}
+
+.manual-shared-trip-diagram,
+.manual-shared-trip-photo {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eef3f2;
+}
+
+.manual-shared-trip-diagram img,
+.manual-shared-trip-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.manual-shared-trip-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-shared-trip-benefit-grid article {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-width: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #eef3f2;
+}
+
+.manual-shared-trip-benefit-grid h4 {
+  margin: 0;
+  color: #1b6680;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.manual-shared-trip-closing {
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.manual-shared-trip-quote {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.manual-shared-trip-quote blockquote {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid #1b6680;
+  background: #eef3f2;
+  color: #263532;
+  font-size: 1.12rem;
+  font-weight: 850;
+  line-height: 1.34;
+}
+
 @media (max-width: 840px) {
   .status-strip,
   .manual-public-transport-comparison-layout,
-  .manual-public-transport-card {
+  .manual-public-transport-card,
+  .manual-shared-trip-benefits-layout,
+  .manual-shared-trip-closing {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-shared-trip-benefit-grid {
     grid-template-columns: 1fr;
   }
 }
