@@ -503,58 +503,79 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
-      "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a"
+      { sha256: "b95cabe395ffdc141e6f4de14893ef4bc7c853659054672f78b21401b204aa0a", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
-      "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7"
+      { sha256: "74c51d3cd191e13a3fbb7b7c3e152c79acb707cdf8b26e9bf959d5019ab564b7", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
-      "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673"
+      { sha256: "195ba8d2f83c0d678b8771eb4ef2bf86089d630bdfa4a7e43e3f7ab839bf2673", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
-      "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845"
+      { sha256: "7fca8f695a9f4d954b3d7334b279644f5c8db19d68847930e6c0dadffd3a1845", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
-      "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af"
+      { sha256: "902e96f43f28f2aa0212b51172f03aeaf301fa3465e8697bcc1fd6fbe0baa5af", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
-      "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea"
+      { sha256: "30920425c1aaebe28dd8be45aba5c7b61cbf6d406ece6580bb4ef2e6f128ffea", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
-      "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272"
+      { sha256: "0b7569dbc3d886267e8d276b25fdf1d0768a260c0ac1d6b13b6bd0b6207ae272", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
-      "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f"
+      { sha256: "cb5f19142d8d27c80aac3a293f6fdfbc042121f937661e0d1abcdfce2c19ac5f", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
-      "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c"
+      { sha256: "3148c77b63de6fd4d3c953cdd464ba29eeb7501465bd3ddec59933c17cdcb40c", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
-      "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35"
+      { sha256: "1fbea8b80b8873930b69089828ca0972c56d97e3188cc93a20d8ec1515b23b35", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
-      "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3"
+      { sha256: "579af8cc4133b9e9ad59815bdaf606ccc05c80557897d9999b4d133370c33ac3", visibleSpanish: false }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+      {
+        sha256: "ce525f73f2e8eb4f70ab6105e117764873c8a4b32043f55177bb8d43616b73ad",
+        visibleSpanish: true,
+        assetKind: "official-traffic-sign-source-as-is"
+      }
     ]
   ]);
 
-  for (const [assetPath, expectedSha] of expectedAssets) {
+  for (const [assetPath, expectation] of expectedAssets) {
     const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
-    assert.equal(asset.visibleSpanish, false, `${assetPath} records no visible Spanish`);
-    assert.equal(asset.sha256, expectedSha, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectedSha, `${assetPath} bytes match registry hash`);
+    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
+    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    if (expectation.visibleSpanish) {
+      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} is the official sign exception asset`);
+      assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+      assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
+      assert.equal(asset.officialSignException.sourceAsIs, true);
+    }
   }
+
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "official_traffic_sign_exception_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "none");
+  assert.deepEqual(
+    section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
+    ["content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png"]
+  );
 
   for (const requiredText of [
     "Пешеходный приоритет",
@@ -581,6 +602,8 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "19:00 до 02:00",
     "24 часа",
     "телефон 147",
+    "электронный контроль",
+    "изображение знаков оставлено без изменений",
     "Свободное движение в зоне",
     "Общественный транспорт",
     "Зона 30",
@@ -614,6 +637,8 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
   assert.match(ch1PedestrianPriorityModuleSource, /before-after-photos-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /impact-body-source\.jpg/);
   assert.match(ch1PedestrianPriorityModuleSource, /priority-area-map-source\.jpg/);
+  assert.match(ch1PedestrianPriorityModuleSource, /restriction-signs-source-as-is\.png/);
+  assert.match(ch1PedestrianPriorityModuleSource, /official-traffic-sign-source-as-is/);
   assert.match(ch1PedestrianPriorityModuleSource, /circulation-icons-source\.jpg/);
   assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-02[4-9]\.jpg/u);
   assert.doesNotMatch(ch1PedestrianPriorityModuleSource, /https?:\/\//u);

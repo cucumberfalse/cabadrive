@@ -2041,7 +2041,18 @@ function PedestrianInfrastructureVisual({
   card: Extract<ManualGuideSectionContent["blocks"][number], { kind: "pedestrian-infrastructure" }>["cards"][number];
 }) {
   if (card.assetPath) {
-    return <img src={assetUrl(card.assetPath)} alt={card.altRu ?? ""} data-visible-spanish={false} loading="lazy" />;
+    const officialSignException = card.officialSignException;
+    return (
+      <img
+        src={assetUrl(card.assetPath)}
+        alt={card.altRu ?? ""}
+        data-visible-spanish={card.visibleSpanish ?? false}
+        data-official-sign-exception={officialSignException?.kind}
+        data-visible-spanish-scope={officialSignException?.visibleSpanishScope}
+        data-source-as-is={officialSignException?.sourceAsIs}
+        loading={officialSignException ? "eager" : "lazy"}
+      />
+    );
   }
 
   if (card.visualKind === "wayfinding-sign") {
@@ -2060,25 +2071,6 @@ function PedestrianInfrastructureVisual({
       <div className="manual-school-road-marking" aria-label={card.titleRu}>
         <span>ПОСАДКА</span>
         <span>ВЫСАДКА</span>
-      </div>
-    );
-  }
-
-  if (card.visualKind === "restriction-signs") {
-    return (
-      <div className="manual-restriction-signs" aria-label={card.titleRu}>
-        <div className="manual-no-parking-sign">
-          <span aria-hidden="true">E</span>
-        </div>
-        <div className="manual-authorized-sign">
-          <strong>Будни</strong>
-          <span className="manual-authorized-time">11:00-16:00</span>
-          <span>только с разрешением</span>
-        </div>
-        <div className="manual-control-sign">
-          <span aria-hidden="true" />
-          <strong>Электронный контроль</strong>
-        </div>
       </div>
     );
   }
@@ -2103,7 +2095,7 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
               data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
             >
               {hasVisual && (
-                <div className="manual-infrastructure-visual">
+                <div className={`manual-infrastructure-visual${card.officialSignException ? " manual-official-sign-visual" : ""}`}>
                   <PedestrianInfrastructureVisual card={card} />
                 </div>
               )}

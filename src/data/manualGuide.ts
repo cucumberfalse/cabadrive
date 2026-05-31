@@ -291,7 +291,13 @@ export type ManualGuideContentBlock =
         };
         assetPath?: string;
         altRu?: string;
-        visualKind?: "wayfinding-sign" | "school-road-marking" | "restriction-signs";
+        visibleSpanish?: boolean;
+        officialSignException?: {
+          kind: "official-traffic-sign-source-as-is";
+          visibleSpanishScope: "official-sign-image-only";
+          sourceAsIs: true;
+        };
+        visualKind?: "wayfinding-sign" | "school-road-marking";
         details: {
           labelRu: string;
           textRu: string;

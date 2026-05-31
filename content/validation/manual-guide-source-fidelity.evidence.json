@@ -250,6 +250,10 @@
       "patterns": [
         "manual-bicycle-sign-grid",
         "manual-bicycle-sign-marker",
+        "manual-restriction-signs",
+        "manual-no-parking-sign",
+        "manual-authorized-sign",
+        "manual-control-sign",
         "data-sign-kind",
         "markerRu"
       ]

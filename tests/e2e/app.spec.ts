@@ -2899,7 +2899,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(pedestrianSection).toContainText("ближе 10 метров");
   await expect(pedestrianSection).toContainText("Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes");
   await expect(pedestrianSection).toContainText("11:00 до 16:00");
-  await expect(pedestrianSection.locator(".manual-authorized-time")).toHaveText("11:00-16:00");
+  await expect(pedestrianSection).toContainText("электронный контроль");
   await expect(pedestrianSection).toContainText("с 7 до 21 часов");
   await expect(pedestrianSection).toContainText("19:00 до 02:00");
   await expect(pedestrianSection).toContainText("телефон 147");
@@ -2913,6 +2913,15 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(pedestrianSection.locator('[data-block-kind="priority-area-map"]')).toBeVisible();
   await expect(pedestrianSection.locator('[data-block-kind="transport-mode-icons"]')).toBeVisible();
   await expect(pedestrianSection.locator('img[data-visible-spanish="false"]')).toHaveCount(11);
+  const pedestrianRestrictionSigns = pedestrianSection.locator('img[data-official-sign-exception="official-traffic-sign-source-as-is"]');
+  await expect(pedestrianRestrictionSigns).toHaveCount(1);
+  await expect(pedestrianRestrictionSigns).toHaveAttribute("src", /restriction-signs-source-as-is\.png/);
+  await expect(pedestrianRestrictionSigns).toHaveAttribute("data-visible-spanish", "true");
+  await expect(pedestrianRestrictionSigns).toHaveAttribute("data-visible-spanish-scope", "official-sign-image-only");
+  await expect(pedestrianRestrictionSigns).toHaveAttribute("data-source-as-is", "true");
+  await expect(
+    pedestrianSection.locator(".manual-restriction-signs, .manual-no-parking-sign, .manual-authorized-sign, .manual-control-sign")
+  ).toHaveCount(0);
   await expect(pedestrianSection).not.toContainText("Prioridad peatonal");
   await expect(pedestrianSection).not.toContainText("ANTES");
   await expect(pedestrianSection).not.toContainText("DESPUÉS");
@@ -2945,33 +2954,22 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     }
     for (const image of Array.from(root.querySelectorAll("img"))) {
       const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const officialSignException = image.getAttribute("data-official-sign-exception");
       const src = image.getAttribute("src") ?? "";
-      if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
+      if (visibleSpanish !== "false" && officialSignException !== "official-traffic-sign-source-as-is") {
+        problems.push(`${src} has visible Spanish without official sign exception`);
+      }
+      if (officialSignException === "official-traffic-sign-source-as-is") {
+        if (visibleSpanish !== "true") problems.push(`${src} official sign exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "official-sign-image-only") problems.push(`${src} has wrong sign exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+        const rect = image.getBoundingClientRect();
+        if (rect.width > image.naturalWidth + tolerance) problems.push(`${src} must not be upscaled beyond source crop width`);
+      }
       if (/pages\/page-02[4-9]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
     }
     for (const visual of Array.from(root.querySelectorAll(".manual-infrastructure-visual"))) {
       if (!visual.firstElementChild) problems.push("empty pedestrian infrastructure visual slot");
-    }
-    for (const label of Array.from(root.querySelectorAll('.manual-restriction-signs strong, .manual-restriction-signs span:not([aria-hidden="true"])'))) {
-      const labelRect = label.getBoundingClientRect();
-      const signRect = label.parentElement?.getBoundingClientRect();
-      const text = label.textContent?.trim() ?? "restriction label";
-      const style = window.getComputedStyle(label);
-      if (!signRect) {
-        problems.push(`${text} has no sign container`);
-        continue;
-      }
-      if (
-        labelRect.left < signRect.left - tolerance ||
-        labelRect.right > signRect.right + tolerance ||
-        labelRect.top < signRect.top - tolerance ||
-        labelRect.bottom > signRect.bottom + tolerance
-      ) {
-        problems.push(`${text} overflows its restriction sign`);
-      }
-      if (style.wordBreak === "break-all" || style.overflowWrap === "anywhere") {
-        problems.push(`${text} may split at letter level`);
-      }
     }
     return problems;
   });

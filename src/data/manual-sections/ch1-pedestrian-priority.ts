@@ -34,8 +34,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source PDF pages 24-29 are converted as one source-Índice website section.",
-      "Runtime learner content uses Russian DOM text for labels, lists, signs, map legend, and impact phases.",
-      "Spanish source crops remain validation evidence only; runtime source-derived assets are cropped to non-text photos, icons, body/car artwork, or map/street-name context."
+      "Runtime learner content uses Russian DOM text for labels, lists, map legend, impact phases, and traffic-sign explanations outside the sign image.",
+      "Spanish source crops remain validation evidence only except for the page 29 official traffic signs, which are inserted source-as-is as the required narrow official-sign exception."
     ]
   },
   blocks: [
@@ -427,12 +427,20 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           titleRu: "Въезд и контроль",
           sourcePage: 29,
           sourceRegion: {
-            x: 440,
-            y: 640,
-            width: 220,
-            height: 70
+            x: 430,
+            y: 615,
+            width: 245,
+            height: 92
           },
-          visualKind: "restriction-signs",
+          assetPath: `${assetRoot}/restriction-signs-source-as-is.png`,
+          altRu:
+            "Официальные дорожные знаки ограничения въезда и электронного контроля, оставленные как в источнике",
+          visibleSpanish: true,
+          officialSignException: {
+            kind: "official-traffic-sign-source-as-is",
+            visibleSpanishScope: "official-sign-image-only",
+            sourceAsIs: true
+          },
           details: [
             {
               labelRu: "Разрешение",
@@ -441,6 +449,10 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             {
               labelRu: "Условие",
               textRu: "для запроса разрешения нужно подтвердить наличие гаража для хранения транспортного средства."
+            },
+            {
+              labelRu: "Контроль",
+              textRu: "официальный знак с камерой обозначает электронный контроль; изображение знаков оставлено без изменений."
             },
             {
               labelRu: "Стоянка",
@@ -472,8 +484,8 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The source restriction signs contain Spanish text, so runtime signs are localized DOM/CSS visuals.",
-        "The weekday 11:00-16:00 restriction sign, parking window 7-21, 19:00-02:00 Corrientes lane window, 24-hour exclusive lanes, permit condition, and phone 147 are preserved as Russian DOM text."
+        "The page 29 official restriction/control signs are a source-as-is runtime image crop; they are not translated, cleaned, relabeled, recolored, simplified, redrawn, or reconstructed.",
+        "The weekday 11:00-16:00 restriction, electronic control, parking window 7-21, 19:00-02:00 Corrientes lane window, 24-hour exclusive lanes, permit condition, and phone 147 are preserved as Russian DOM text outside the sign image."
       ]
     },
     {

@@ -521,7 +521,24 @@
               "height": 620
             },
             "cropSha256": "da3069026c05e1e1c826a83181969f02ce7801133514ca7bd809442097451bc8",
-            "cleanupScope": "reference-only source crop for restrictions, mode icons, and Zona 30; runtime signs and labels are Russian DOM text"
+            "cleanupScope": "reference-only source crop for restrictions, mode icons, and Zona 30; runtime official restriction/control signs use a separate source-as-is crop, with Russian explanations outside the sign image"
+          },
+          {
+            "sourcePage": 29,
+            "sourceRegion": {
+              "x": 430,
+              "y": 615,
+              "width": 245,
+              "height": 92,
+              "unit": "page-029.jpg px"
+            },
+            "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+            "cropDimensions": {
+              "width": 245,
+              "height": 92
+            },
+            "cropSha256": "ce525f73f2e8eb4f70ab6105e117764873c8a4b32043f55177bb8d43616b73ad",
+            "cleanupScope": "runtime official traffic restriction/control signs source-as-is; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
           }
         ],
         "localAssetMetadata": [
@@ -530,7 +547,7 @@
             "assetKind": "native-dom-text-and-pedestrian-priority-visual-data",
             "width": 760,
             "height": 1800,
-            "sha256": "98e7a3a2bd0c764ce0d21c9bb471566a77d1ced9ae818aa5d5be5654c8057f2f",
+            "sha256": "ce6f53e357fd38c980aa6309e17ddea977cf3149cc8b80bb78b2f43b6754fd07",
             "containsText": true,
             "visibleSpanish": false
           },
@@ -616,6 +633,21 @@
             "visibleSpanish": false
           },
           {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+            "assetKind": "official-traffic-sign-source-as-is",
+            "width": 245,
+            "height": 92,
+            "sha256": "ce525f73f2e8eb4f70ab6105e117764873c8a4b32043f55177bb8d43616b73ad",
+            "containsText": true,
+            "visibleSpanish": true,
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
             "assetKind": "source-derived-nontext-zone30-photo",
             "width": 245,
@@ -634,7 +666,19 @@
             "visibleSpanish": false
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "reason": "Explicit user requirement: official road signs/sign sheets must be inserted source-as-is and not translated, redrawn, cleaned, relabeled, recolored, simplified, or reconstructed."
+            }
+          ]
+        },
         "selectableTextStatus": "pass",
         "desktopScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png",
@@ -642,7 +686,7 @@
           {
             "id": "pedestrian-priority-visual-blocks-responsive-fit",
             "status": "pass",
-            "evidence": "Focused Playwright verifies comparison, impact diagram, infrastructure cards, map, restriction signs, circulation icons, and Zone 30 card fit desktop and mobile without document-level overflow."
+            "evidence": "Focused Playwright verifies comparison, impact diagram, infrastructure cards, map, source-as-is restriction sign image, circulation icons, and Zone 30 card fit desktop and mobile without document-level overflow."
           },
           {
             "id": "pedestrian-priority-russian-dom-labels-selectable",
@@ -652,7 +696,7 @@
           {
             "id": "pedestrian-priority-no-visible-spanish-runtime-assets",
             "status": "pass",
-            "evidence": "Runtime image crops avoid Spanish source labels; Spanish full/source crops are stored under validation only."
+            "evidence": "Runtime image crops avoid Spanish source labels except the explicit source-as-is official restriction/control sign image exception."
           },
           {
             "id": "ordinary-prose-no-horizontal-overflow",
@@ -668,8 +712,8 @@
           "Source pages 24-29 were visually inspected from local page renders before crop creation.",
           "Page 24 before/after source labels are localized as DOM text and the runtime photo crop excludes ANTES/DESPUÉS.",
           "Page 25 impact diagram keeps source body/car/target artwork with Russian phase labels and the 40 km/h RACE/GOODYEAR note.",
-          "Pages 26-29 use source-derived non-text crops where possible and localized DOM/CSS visuals where source photos or signs contain readable Spanish text.",
-          "Page 29 restriction sign window is localized as Russian DOM text: working days, 11:00-16:00, authorized vehicles only.",
+          "Pages 26-29 use source-derived non-text crops where possible; page 29 official traffic signs are the explicit source-as-is exception.",
+          "Page 29 restriction/control signs are inserted as a source-as-is official sign crop; Russian explanations for working days, 11:00-16:00, authorized vehicles only, and electronic control sit outside the sign image.",
           "The page 29 infrastructure/lanes card is text-only and intentionally renders without an empty visual panel.",
           "The priority-area map crop excludes the source legend and footer URL; the legend is Russian DOM text while street names remain contextual map names."
         ],
