@@ -3345,7 +3345,8 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(sharedTripSection).toContainText("велосипедом или общественным транспортом");
   await expect(sharedTripSection).toContainText("регулярных поездок");
   await expect(sharedTripSection).toContainText("отдельных маршрутов");
-  await expect(sharedTripSection).toContainText("четыре автомобиля меньше");
+  await expect(sharedTripSection).toContainText("эффект \"на четыре автомобиля меньше\" относится к поездке с другими водителями");
+  await expect(sharedTripSection).toContainText("иначе поехали бы за рулем отдельных автомобилей");
   await expect(sharedTripSection).toContainText("Больше места для стоянки");
   await expect(sharedTripSection).toContainText("Бережет окружающую среду");
   await expect(sharedTripSection).toContainText("топливо, плату за проезд и стоянку");
@@ -3445,7 +3446,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     selection.removeAllRanges();
     return text;
   });
-  expect(sharedTripSelectedText).toContain("четыре автомобиля меньше");
+  expect(sharedTripSelectedText).toContain("эффект \"на четыре автомобиля меньше\" относится к поездке с другими водителями");
   expect(sharedTripSelectedText).toContain("Отдавать приоритет устойчивой мобильности");
   expect(sharedTripSelectedText).toContain("русский смысл вынесен здесь как выбираемый текст");
 

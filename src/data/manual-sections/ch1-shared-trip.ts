@@ -56,7 +56,7 @@ export const ch1SharedTripSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Ahora bien, si el traslado debe realizarse en auto, es recomendable la practica del carpool o viaje compartido, tanto para viajes regulares como para trayectos ocasionales.",
       textRu:
-        "Если поездку все же нужно выполнить на автомобиле, manual рекомендует carpool: совместную поездку для регулярных поездок или отдельных маршрутов. Практическая цель - максимально занять места в машине, чтобы на дороге было четыре автомобиля меньше."
+        "Если поездку все же нужно выполнить на автомобиле, manual рекомендует carpool: совместную поездку для регулярных поездок или отдельных маршрутов. Практическая цель - максимально занять места в машине; эффект \"на четыре автомобиля меньше\" относится к поездке с другими водителями, которые иначе поехали бы за рулем отдельных автомобилей."
     },
     {
       id: "shared-trip-benefits",
@@ -82,7 +82,7 @@ export const ch1SharedTripSection: ManualGuideSectionContent = {
           id: "less-congestion",
           titleRu: "Меньше заторов",
           textRu:
-            "четыре автомобиля меньше в потоке помогают улице работать спокойнее и предсказуемее."
+            "если объединиться с другими водителями, которые иначе выехали бы отдельно, в потоке может быть на четыре автомобиля меньше."
         },
         {
           id: "more-parking",

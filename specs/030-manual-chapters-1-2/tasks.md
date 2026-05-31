@@ -1020,6 +1020,18 @@ For each section key inside the assigned chapter-level PR:
 - Still-pending state remains explicit: T070 Review Agent re-review and T071 fresh final Architect/Analyst validation remain open. Current stale section-per-PR review thread `PRRT_kwDOSX65IM6F8m9v` is superseded by the newest user instruction requiring one PR per chapter, not one PR per website section; Orchestrator owns final review-thread disposition.
 - Verification for this process-memory-only fix: `git diff --check` and `node scripts/check-feature-memory.mjs --worktree` are required and recorded by the Implementation Agent after this edit. Full product checks were not rerun because no product/code/assets/runtime files changed; prior green verification at product head `900d0b0ee46d2af10f6133a0c4d10dbb3306be50` remains the product evidence for this PR head.
 
+## Implementation Agent Review Fix Evidence - PR #184 shared-trip congestion condition
+
+- Implementation Agent content review fix completed at: 2026-05-31T16:38:45Z before commit/push.
+- Assigned PR/head: PR #184 on branch `codex/030-ch1-public-transport-system`, starting from current PR head `9e06d4ea43ae335e411f9841ecfba5c84ed9ff1c`.
+- Review finding addressed: AI Review P2 `PRRT_kwDOSX65IM6F9DTU` / `src/data/manual-sections/ch1-shared-trip.ts:59`.
+- Root cause: the Russian learner copy preserved the source's "four fewer cars" benefit but detached it from the source condition that the trip is shared with other drivers/people who otherwise would drive separate cars.
+- Fix evidence: updated `ch1-shared-trip` learner copy so the four-car reduction is explicitly tied to sharing the trip with other drivers who otherwise would drive separate cars, both in the definition paragraph and the congestion-benefit explanation.
+- Regression evidence: content and focused e2e assertions now require the driver-sharing / otherwise-separate-cars condition alongside the four-car reduction claim.
+- Source/sign image disposition: no source images, sign-like markings, crops, asset metadata, or source-fidelity regions were modified for this text-only source-faithfulness fix.
+- Stale validation notice: prior final Architect/Analyst validation for effective content head `0116f6f13e1976e801613abec40e7ad2e1382a18` is stale because this content/test/process-memory review fix is a non-evidence change. Orchestrator must rerun final Architect validation and final Analyst validation on the pushed head after review/checks are current.
+- Verification passed after this edit: `node scripts/manual-guide-source-fidelity.mjs` returned `status: pass`, `implementedSections: 6`, `pendingSections: 4`; `node --test tests/content-manual-guide-chapters.test.mjs` passed `26/26` after one assertion-string adjustment for TypeScript quote escaping; `pnpm exec tsc --noEmit` passed; `pnpm run build` passed with the existing Vite large-chunk warning only; `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes Chapter 1 section pages" --project=chromium --project=mobile` passed `2/2`; `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree` passed.
+
 ## Final Architect Validation Notes
 
 - Architect validation pass: passed
