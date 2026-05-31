@@ -664,3 +664,17 @@ For each section key:
 - Architect validation evidence: local validation confirmed head `8747cb88b1d8f7a460b238f480f538a35ad990bf`, clean pre-evidence worktree, `node scripts/manual-guide-source-fidelity.mjs` pass, `node --test tests/content-manual-guide-chapters.test.mjs` `21/21`, `pnpm run build` pass, official sign asset SHA `80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334`, and no product/code/test/runtime edits by Architect.
 - Open Architect dispositions: none for PR #180 `ch1-bicycle`; the separate future `ch1-pedestrian-priority` road-sign correction remains recorded outside this slice.
 - Architect gaps: none for PR #180 `ch1-bicycle`; remaining Chapter 1/2 sections stay future section work.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-05-31T03:46:04Z
+- Architect return count: 0
+- Architect validated effective content head: faee4f4a711019cf0a00ba7e923af1086923c0af
+- Architect validation evidence: PR #182 validates only the shared UI correction `introduction-active-state`; it is not a content-section PR, does not alter PR #181, does not change manual guide source content, images, crops, section slicing, or road-sign handling, and leaves remaining Chapter 1/2 section work as future section PRs.
+- Architect validation evidence: scope and root cause are correct for the user bug. The `src/App.tsx` change prevents the non-section Introduction children from comparing `undefined === undefined` by requiring a real `sectionEntry` before section-active state can apply, while preserving the Chapter 1 section active-state behavior.
+- Architect validation evidence: regression coverage is adequate for this shared UI slice: `tests/content-pandemia-vial-section.test.mjs` guards the active-state expression, and `tests/e2e/app.spec.ts` asserts exactly one active/current Introduction child on Introduction routes and exactly one active Chapter 1 child while switching implemented Chapter 1 sections.
+- Architect validation evidence: Orchestrator/Implementation/GitHub evidence confirms local checks passed (`node --test tests/content-pandemia-vial-section.test.mjs` `14/14`, `node --test tests/content-manual-guide-chapters.test.mjs` `21/21`, `pnpm exec tsc --noEmit`, `node scripts/manual-guide-source-fidelity.mjs`, `pnpm run validate:content`, `pnpm run build`, focused Playwright `4/4`, `pnpm run test` `330/330`, full `pnpm run preflight` with Playwright `74/74`, diff hygiene, feature-memory check, visual smoke, and Docker smoke on port `5212`).
+- Architect validation evidence: read-only PR inspection confirmed PR #182 current head `faee4f4a711019cf0a00ba7e923af1086923c0af`, base `93080b058333200b07bed21b0dff42fc719f20cb`, merge state `CLEAN`, required checks green (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`), and zero review threads.
+- Open Architect dispositions: none for PR #182 `introduction-active-state`; no unresolved Implementation Agent feedback remains.
+- Architect gaps: none for PR #182 `introduction-active-state`.
