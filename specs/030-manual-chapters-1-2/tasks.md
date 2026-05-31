@@ -695,20 +695,25 @@ For each section key:
 - Open Architect dispositions: none for PR #180 `ch1-bicycle`; the separate future `ch1-pedestrian-priority` road-sign correction remains recorded outside this slice.
 - Architect gaps: none for PR #180 `ch1-bicycle`; remaining Chapter 1/2 sections stay future section work.
 
-## Final Architect Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
+## Historical Superseded Architect Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
 
-Architect validation pass: passed
+- Historical/superseded Architect validation outcome: passed at the time, but no longer current.
+- Historical/superseded Architect validation timestamp: 2026-05-31T01:50:59Z.
+- Historical/superseded Architect validated content head: bef7cb7f53954515299ac1cb28328e91ae8713eb.
+- Historical/superseded Architect return count: 0.
+- Historical/superseded content head: bef7cb7f53954515299ac1cb28328e91ae8713eb.
+- Stale validation reason: PR #181 later received non-evidence content changes for the broader source-image rule: high-quality original wayfinding and `Sube y Baja` source images, improved high-quality source-as-is restriction signs, registry/source-fidelity/test updates, and refreshed screenshots. Therefore this historical block must not be treated as active final Architect validation for merge readiness.
+- Historical validation evidence at the time: PR #181 validated only the correction slice for the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` website section; the official-sign exception was narrow; Review Agent and required-check evidence then applied only to `bef7cb7f53954515299ac1cb28328e91ae8713eb`.
+- Current-head guard: current PR #181 head `089238adce9b23b67f5c44da7488509d5bff91d1` supersedes historical head `bef7cb7f53954515299ac1cb28328e91ae8713eb`. The historical pass must not be used for final Analyst validation, completion, merge, or finalization.
 
-Final Architect validation completed at: 2026-05-31T01:50:59Z
+## Architect Validation Blocker - PR #181 ch1-pedestrian-priority Source Images
 
-Architect validated effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
-
-- Architect return count: 0
-- Effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
-- Architect validation evidence: PR #181 validates only the correction slice for the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` website section; it does not implement another Chapter 1/2 section, does not alter source-section slicing, and leaves the remaining pending sections as future work.
-- Architect validation evidence: the explicit official road/traffic sign rule is satisfied for page `29`: `restriction-signs-source-as-is.png` is recorded as a high-quality source-as-is official sign crop with source-region metadata, dimensions/hash evidence, visible Spanish scoped to `official-sign-image-only`, `sourceAsIs: true`, and Russian explanation outside the sign image.
-- Architect validation evidence: the official-sign exception remains narrow. Non-sign Spanish stays disallowed, reconstructed/localized restriction sign DOM/CSS classes are removed and guarded against, and screenshots/metrics record one source-as-is sign image, no reconstructed sign nodes, no upscaling beyond the crop width, and no document overflow.
-- Architect validation evidence: Orchestrator handoff evidence reports Review Agent no findings on `bef7cb7f53954515299ac1cb28328e91ae8713eb` and required checks green (`AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`); Implementation evidence reports source-fidelity checker, content tests `21/21`, TypeScript, build, focused Playwright, `git diff --check`, and Docker smoke passed.
-- Current-PR-head guard: any later PR head after `bef7cb7f53954515299ac1cb28328e91ae8713eb` must be final-validation evidence-only and must be compared back to this effective content head before final Analyst validation, completion, merge, or finalization. Any non-evidence content change makes this Architect validation stale.
-- Open Architect dispositions: none for PR #181 `ch1-pedestrian-priority` sign source correction; no unresolved Implementation Agent feedback remains for this slice.
-- Architect gaps: none for PR #181 correction slice; remaining Chapter 1/2 sections stay future section work.
+- Architect validation status: blocked at 2026-05-31T03:14:37Z.
+- Current PR #181 head reviewed for Architect validation: 089238adce9b23b67f5c44da7488509d5bff91d1.
+- Architect return count: 1.
+- Scope validation: PR #181 remains scoped to the already merged `ch1-pedestrian-priority` / `Prioridad peatonal` website section correction; it does not include the Introduction navigation highlight bug or the separate `ch1-bicycle` image/sign-caption corrections.
+- Source-image validation: Implementation and Review Agent evidence for `089238adce9b23b67f5c44da7488509d5bff91d1` reports high-quality original source crops for wayfinding, `Sube y Baja`, and restriction signs; sign content, including embedded labels/tablets, remains source-as-is; Russian explanatory text stays outside source images/signs; guards reject reconstructed/localized sign DOM.
+- Review evidence: Review Agent on `089238adce9b23b67f5c44da7488509d5bff91d1` reported no product/source-fidelity findings and confirmed the PR does not attempt out-of-scope fixes. The only review gap was stale process-memory validation, addressed here for Architect-owned `tasks.md`.
+- Required-check blocker: `.unicorn-hub/config.json` lists `AI Review` as a required check. Available handoff/review evidence still reports `AI Review` as `IN_PROGRESS`, and Architect did not query GitHub directly per the assigned role boundary. Therefore required-check completion is not confirmed for current head `089238adce9b23b67f5c44da7488509d5bff91d1`.
+- Architect validation result: blocked until Orchestrator confirms all required checks, including `AI Review`, are green on current head `089238adce9b23b67f5c44da7488509d5bff91d1`; then Architect final validation may rerun.
+- Analyst validation dependency: the stale Analyst validation block in `feature-request.md` for the old PR #181 head remains Analyst-owned, must be marked historical/stale by Analyst, and final Analyst validation must rerun only after current-head Architect validation passes.

@@ -564,22 +564,30 @@ Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
 
-## Final Analyst Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
+## Historical Superseded Analyst Validation Notes - PR #181 ch1-pedestrian-priority Sign Source Correction
 
-Analyst validation pass: passed
+Historical Analyst validation status: superseded/stale; this is not an active final Analyst pass for the current PR #181 head.
 
-Final Analyst validation completed at: 2026-05-31T01:54:45Z
+Former Analyst validation pass: passed for superseded effective content head `bef7cb7f53954515299ac1cb28328e91ae8713eb` only.
 
-Analyst validated effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
+Former Final Analyst validation completed at: 2026-05-31T01:54:45Z
 
-Analyst return count: 0
+Former Analyst validated effective content head: bef7cb7f53954515299ac1cb28328e91ae8713eb
 
-Customer intent check: passed for PR #181 `ch1-pedestrian-priority` sign source correction only. This correction slice satisfies the user's explicit rule that official road/traffic signs must not be changed at all: the page `29` restriction/control signs are inserted as the high-quality source-as-is image `restriction-signs-source-as-is.png`, with source-region metadata, dimensions/hash evidence, visible Spanish scoped to the official sign image only, and Russian explanation kept outside the image as selectable DOM text.
+Superseded at: 2026-05-31T03:30:02Z
 
-Gaps, if any: none for PR #181 customer-intent scope. No customer-intent gaps remain for PR #181.
+Superseded reason: after this validation, PR #181 received non-evidence runtime/assets/test/process-memory changes for high-quality original wayfinding, Sube y Baja, and restriction-sign source crops. Therefore the prior validation for `bef7cb7f53954515299ac1cb28328e91ae8713eb` cannot satisfy final Analyst validation for current pushed head `089238adce9b23b67f5c44da7488509d5bff91d1`.
 
-Architect disposition routing: no customer-intent gaps require Architect disposition for PR #181. Architect validation passed at 2026-05-31T01:50:59Z for effective content head bef7cb7f53954515299ac1cb28328e91ae8713eb; process memory records Review Agent no findings, required checks green, source-fidelity checker pass, content tests 21/21, TypeScript pass, build pass, focused Playwright 2/2, `git diff --check` pass, Docker smoke pass, no reconstructed/localized sign DOM, no upscaling beyond natural crop width, no document overflow, and open Architect dispositions none for this correction slice.
+Current PR #181 Analyst validation status: not run/blocked. Final Analyst validation for the current PR #181 head must rerun only after current-head final Architect validation passes and records the required effective content head evidence.
 
-Analyst limit escalation: none
+Historical Analyst return count: 0
+
+Historical customer intent check: passed for superseded PR #181 `ch1-pedestrian-priority` sign source correction content only. This correction slice satisfied the user's explicit rule that official road/traffic signs must not be changed at all: the page `29` restriction/control signs were inserted as the high-quality source-as-is image `restriction-signs-source-as-is.png`, with source-region metadata, dimensions/hash evidence, visible Spanish scoped to the official sign image only, and Russian explanation kept outside the image as selectable DOM text.
+
+Historical gaps, if any: none for the superseded PR #181 customer-intent scope at `bef7cb7f53954515299ac1cb28328e91ae8713eb`. This historical note does not claim that no current-head PR #181 customer-intent gaps remain.
+
+Historical Architect disposition routing: no customer-intent gaps required Architect disposition for the superseded PR #181 head. Architect validation passed at 2026-05-31T01:50:59Z for effective content head `bef7cb7f53954515299ac1cb28328e91ae8713eb`; later current-head Architect validation must pass again before any current-head final Analyst validation may be recorded.
+
+Historical Analyst limit escalation: none
 
 Analyst boundary reminder: no code, tests, runtime files, content files, Architect-owned files, staging, commits, pushes, reviews, check reruns, PR actions, or merge actions were performed by Analyst.
