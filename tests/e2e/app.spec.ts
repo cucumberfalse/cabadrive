@@ -3018,6 +3018,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(bicycleSection).toContainText("4,20 м");
   await expect(bicycleSection).toContainText("старше 18 лет");
   await expect(bicycleSection).toContainText("1500 ватт");
+  await expect(bicycleSection).toContainText("Знаки на изображении оставлены как в официальном источнике");
   await expect(bicycleSection).toContainText("Конец защищенной велодорожки");
   await expect(bicycleSection).toContainText("Сойти с велосипеда");
   await expect(bicycleSection).toContainText("На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа");
@@ -3038,6 +3039,12 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(bicycleSection.locator('[data-block-kind="pedestrian-infrastructure"]')).toHaveCount(2);
   await expect(bicycleSection.locator('[data-block-kind="source-artwork"]')).toHaveCount(2);
   await expect(bicycleSection.locator('img[data-visible-spanish="false"]')).toHaveCount(13);
+  const bicycleSignSheet = bicycleSection.locator('img[data-official-sign-exception="official-traffic-sign-source-as-is"]');
+  await expect(bicycleSignSheet).toHaveCount(1);
+  await expect(bicycleSignSheet).toHaveAttribute("src", /bicycle-signs-source-as-is\.jpg/);
+  await expect(bicycleSignSheet).toHaveAttribute("data-visible-spanish", "true");
+  await expect(bicycleSignSheet).toHaveAttribute("data-visible-spanish-scope", "official-sign-image-only");
+  await expect(bicycleSection.locator(".manual-bicycle-sign-grid, .manual-bicycle-sign-marker")).toHaveCount(0);
   await expect(bicycleSection).not.toContainText("Sistema de transporte público");
   await expect(bicycleSection).not.toContainText("Viaje compartido");
   await expect(bicycleSection).not.toContainText("Responsabilidades legales");
@@ -3055,7 +3062,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     }
     for (const element of Array.from(
       root.querySelectorAll(
-        '[data-testid="manual-guide-section-block"], .manual-bicycle-sign-grid article, .manual-bicycle-sign-marker, .manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article, .manual-bicycle-distance-grid article, .manual-infrastructure-card, .manual-infrastructure-copy p'
+        '[data-testid="manual-guide-section-block"], .manual-bicycle-sign-sheet, .manual-bicycle-sign-sheet img, .manual-bicycle-sign-notes li, .manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article, .manual-bicycle-distance-grid article, .manual-infrastructure-card, .manual-infrastructure-copy p'
       )
     )) {
       const rect = element.getBoundingClientRect();
@@ -3070,11 +3077,19 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
     }
     for (const image of Array.from(root.querySelectorAll("img"))) {
       const visibleSpanish = image.getAttribute("data-visible-spanish");
+      const officialSignException = image.getAttribute("data-official-sign-exception");
       const src = image.getAttribute("src") ?? "";
-      if (visibleSpanish !== "false") problems.push(`${src} does not record visible-Spanish=false`);
+      if (visibleSpanish !== "false" && officialSignException !== "official-traffic-sign-source-as-is") {
+        problems.push(`${src} has visible Spanish without official sign exception`);
+      }
+      if (officialSignException === "official-traffic-sign-source-as-is") {
+        if (visibleSpanish !== "true") problems.push(`${src} official sign exception must record visible-Spanish=true`);
+        if (image.getAttribute("data-visible-spanish-scope") !== "official-sign-image-only") problems.push(`${src} has wrong sign exception scope`);
+        if (image.getAttribute("data-source-as-is") !== "true") problems.push(`${src} must record source-as-is`);
+      }
       if (/pages\/page-03[0-8]\.jpg/u.test(src)) problems.push(`${src} renders a full source page raster`);
     }
-    for (const marker of Array.from(root.querySelectorAll(".manual-bicycle-sign-marker, .manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article"))) {
+    for (const marker of Array.from(root.querySelectorAll(".manual-bicycle-helmet-labels span, .manual-bicycle-signal-labels article"))) {
       const markerRect = marker.getBoundingClientRect();
       const parentRect = marker.parentElement?.getBoundingClientRect();
       const text = marker.textContent?.trim() ?? "bicycle label";
@@ -3107,6 +3122,7 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   });
   expect(bicycleSelectedText).toContain("Правильно");
   expect(bicycleSelectedText).toContain("Слишком низко");
+  expect(bicycleSelectedText).toContain("Знаки на изображении оставлены как в официальном источнике");
   expect(bicycleSelectedText).toContain("Конец защищенной велодорожки");
   expect(bicycleSelectedText).toContain("Сойти с велосипеда");
   expect(bicycleSelectedText).toContain("Запрещено ехать на велосипеде");

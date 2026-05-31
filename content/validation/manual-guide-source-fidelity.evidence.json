@@ -245,6 +245,16 @@
       ]
     },
     {
+      "id": "translated-reconstructed-traffic-signs",
+      "description": "Official traffic signs must be source-as-is image crops, not localized CSS/SVG/DOM reconstructions.",
+      "patterns": [
+        "manual-bicycle-sign-grid",
+        "manual-bicycle-sign-marker",
+        "data-sign-kind",
+        "markerRu"
+      ]
+    },
+    {
       "id": "fake-pending-content",
       "description": "Pending sections may expose section metadata and disabled navigation only, never placeholder article bodies.",
       "patterns": [

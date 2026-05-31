@@ -36,8 +36,9 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source PDF pages 30-38 are converted as one source-Indice website section.",
-      "Runtime learner content uses Russian DOM text for benefit, helmet, gear, sign, posture, distance, hand-signal, lane, parking, Ecobici, and scooter labels.",
-      "Text-bearing source diagrams are represented with source-derived non-text crops and selectable Russian labels; full Spanish source crops remain validation evidence only."
+      "Runtime learner content uses Russian DOM text for benefit, helmet, gear, posture, distance, hand-signal, lane, parking, Ecobici, and scooter labels.",
+      "The page 32 official traffic sign sheet is inserted source-as-is from a high-quality local crop; Russian explanations sit outside the sign image.",
+      "Text-bearing non-sign source diagrams are represented with source-derived non-text crops and selectable Russian labels; Spanish is visible only inside the official sign image exception."
     ]
   },
   blocks: [
@@ -212,95 +213,29 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
         "Quien conduce una bicicleta debe respetar las normas de transito. Conocer las senales de transito y cumplirlas ayudan a disminuir los riesgos.",
       sourcePage: 32,
       sourceRegion: {
-        x: 345,
-        y: 560,
-        width: 560,
-        height: 230
+        x: 330,
+        y: 545,
+        width: 550,
+        height: 220
       },
-      signs: [
-        {
-          id: "bike-lane",
-          visualKind: "blue",
-          markerRu: "Вело",
-          labelRu: "Исключительное движение велосипедов"
-        },
-        {
-          id: "shared-path",
-          visualKind: "blue",
-          markerRu: "Вело+пеш",
-          labelRu: "Совместное движение с пешеходами"
-        },
-        {
-          id: "direction",
-          visualKind: "green",
-          markerRu: "Центр",
-          labelRu: "Направление по велодорожке"
-        },
-        {
-          id: "crossing",
-          visualKind: "yellow",
-          markerRu: "Вело",
-          labelRu: "Пересечение велосипедистов"
-        },
-        {
-          id: "stop",
-          visualKind: "red",
-          markerRu: "СТОП",
-          labelRu: "Полная остановка"
-        },
-        {
-          id: "no-bike",
-          visualKind: "red",
-          markerRu: "нет",
-          labelRu: "Движение на велосипеде запрещено"
-        },
-        {
-          id: "end-ciclovia",
-          visualKind: "text",
-          markerRu: "!",
-          labelRu: "Конец защищенной велодорожки"
-        },
-        {
-          id: "dismount-bicycle",
-          visualKind: "text",
-          markerRu: "сойти",
-          labelRu: "Сойти с велосипеда"
-        },
-        {
-          id: "max-30",
-          visualKind: "red",
-          markerRu: "30",
-          labelRu: "Максимальная скорость 30 км/ч"
-        },
-        {
-          id: "two-way",
-          visualKind: "red",
-          markerRu: "↕",
-          labelRu: "Начало двустороннего движения"
-        },
-        {
-          id: "no-parking",
-          visualKind: "red",
-          markerRu: "E",
-          labelRu: "На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация"
-        },
-        {
-          id: "pedestrian-crossing",
-          visualKind: "triangle",
-          markerRu: "",
-          labelRu: "Пешеходный переход"
-        },
-        {
-          id: "yield",
-          visualKind: "triangle",
-          markerRu: "",
-          labelRu: "Уступить дорогу"
-        }
+      assetPath: `${assetRoot}/bicycle-signs-source-as-is.jpg`,
+      altRu:
+        "Официальная таблица дорожных знаков для велосипедистов из исходного руководства: знаки оставлены без перевода и изменений.",
+      visibleSpanish: true,
+      officialSignException: {
+        kind: "official-traffic-sign-source-as-is",
+        visibleSpanishScope: "official-sign-image-only",
+        sourceAsIs: true
+      },
+      noticeItemsRu: [
+        "Знаки на изображении оставлены как в официальном источнике: их нельзя переводить, перерисовывать или упрощать.",
+        "В таблице показаны исключительное движение велосипедов, совместное движение с пешеходами, направление велодорожки, пересечение велосипедистов, Полная остановка и Движение на велосипеде запрещено.",
+        "Также показаны Конец защищенной велодорожки, Сойти с велосипеда, Максимальная скорость 30 км/ч, Начало двустороннего движения, На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация, Пешеходный переход и Уступить дорогу."
       ],
       visualNotes: [
-        "Text-bearing source sign captions are not rasterized into the learner view.",
-        "Runtime signs use source-like shapes, colors, and Russian DOM labels so no Spanish learner text remains visible.",
-        "The full source sign sheet is kept as validation evidence for sign set/order."
+        "Official road signs are a source-as-is exception to the no-visible-Spanish artwork policy.",
+        "The runtime image is a tight high-quality crop from source page 32 and is not translated, cleaned, recolored, redrawn, or reconstructed.",
+        "Russian learner explanation is DOM text outside the sign image."
       ]
     },
     {

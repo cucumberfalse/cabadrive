@@ -95,10 +95,11 @@ As the project owner, I want one PR per website section page, so that source fid
 4. Given source PDF page `21` or `43`, when section planning is checked, then there is no standalone site page/PR for that divider-only page.
 5. Given PR #175 / `page-021`, when merge readiness is considered, then it is not merge-ready in its divider-page form and must be closed, superseded, or fully replaced by a section-based implementation before any merge.
 6. Given ordinary prose, lists, legal text, and callouts are rendered, then Russian text is selectable/copyable DOM or SVG text, responsive, accessible, and free of forced PDF line breaks.
-7. Given a section contains source artwork, pictograms, signs, diagrams, tables, maps, or infographics, then source geometry, colors, panels, connectors, borders, proportions, and meaningful visual relationships are preserved from local source crops or visually indistinguishable reconstruction.
-8. Given source text exists inside artwork, then visible Spanish is absent from the learner view, cleanup is local and source-faithful, and Russian labels are selectable text where feasible.
-9. Given visual checker evidence is produced, then it includes source-region/crop metadata, source/Russian screenshots, bounding-box checks, visible-Spanish checks, responsive checks, selectable-text checks, and explicit pass/fail output for the whole section.
-10. Given final validation starts, then the cycle PR set records every contributing shared prerequisite/correction PR and every implemented section PR, with final Architect validation before final Analyst validation.
+7. Given a section contains source artwork, pictograms, diagrams, tables, maps, or infographics, then source geometry, colors, panels, connectors, borders, proportions, and meaningful visual relationships are preserved from local source crops or visually indistinguishable reconstruction.
+8. Given source text exists inside non-sign artwork, then visible Spanish is absent from the learner view, cleanup is local and source-faithful, and Russian labels are selectable text where feasible.
+9. Given a section contains official traffic signs or traffic sign sheets, then the sign image is inserted from the source as-is in high quality, with no translation, relabeling, CSS/SVG reconstruction, simplification, recoloring, cleanup, or other modification to the sign itself.
+10. Given visual checker evidence is produced, then it includes source-region/crop metadata, source/Russian screenshots, bounding-box checks, visible-Spanish checks or explicit official-traffic-sign exceptions, responsive checks, selectable-text checks, and explicit pass/fail output for the whole section.
+11. Given final validation starts, then the cycle PR set records every contributing shared prerequisite/correction PR and every implemented section PR, with final Architect validation before final Analyst validation.
 
 ## Negative Scenarios
 
@@ -108,10 +109,11 @@ As the project owner, I want one PR per website section page, so that source fid
 4. Returning to the old `Руководство 4R` page-layout reader, side-by-side Spanish/Russian transcript, runtime PDF viewer, full-page raster base, or image-only Russian page.
 5. Flattening Russian learning text into images or blocking text selection.
 6. Replacing source pictograms, infographics, diagrams, tables, signs, or photos with generic icon sets, approximate redesigns, broad masks, backing plates, or text-only substitutes.
-7. Leaving Spanish source text visible in learner-facing artwork.
-8. Removing ticket-critical detail, ordered steps, legal terms, document names, phone numbers, thresholds, conditions, restrictions, exceptions, or scoring rules without Architect disposition.
-9. Claiming visual quality from structural tests alone, without source-vs-Russian screenshots and bounding-box/artifact evidence.
-10. Adding remote fonts/assets, runtime network calls, backend endpoints, analytics, or live AI behavior.
+7. Translating, redrawing, reconstructing, relabeling, simplifying, recoloring, cleaning, or otherwise modifying official traffic signs or sign sheets.
+8. Leaving Spanish source text visible in learner-facing artwork outside an explicit source-as-is official traffic sign exception.
+9. Removing ticket-critical detail, ordered steps, legal terms, document names, phone numbers, thresholds, conditions, restrictions, exceptions, or scoring rules without Architect disposition.
+10. Claiming visual quality from structural tests alone, without source-vs-Russian screenshots and bounding-box/artifact evidence.
+11. Adding remote fonts/assets, runtime network calls, backend endpoints, analytics, or live AI behavior.
 
 ## Requirements
 
@@ -125,11 +127,11 @@ As the project owner, I want one PR per website section page, so that source fid
 - FR-008: Every section must use native HTML/CSS/SVG/local assets; runtime PDF viewer, PDF.js, iframe/object/embed PDF display, remote assets, runtime fetches, backend endpoints, live AI calls, and remote fonts are forbidden.
 - FR-009: Russian learning text must be selectable/copyable DOM or SVG text and must not be rasterized into page images.
 - FR-010: Normal prose must wrap responsively; horizontal scrolling is allowed only inside fixed visual blocks whose source layout requires it.
-- FR-011: Source artwork and infographics must be local, source-faithful, and backed by metadata: section id, source PDF page(s), source region(s), asset path, crop dimensions/hash when practical, cleanup scope, visible-Spanish status, and quality notes.
-- FR-012: Generic icon sets, redesigned pictograms, approximate SVG redraws, altered colors, missing components, distorted source-piece assembly, broad masks, DOM label plates, and visible cleanup artifacts are forbidden.
+- FR-011: Source artwork and infographics must be local, source-faithful, and backed by metadata: section id, source PDF page(s), source region(s), asset path, crop dimensions/hash when practical, cleanup scope, visible-Spanish status or explicit official-traffic-sign exception, and quality notes.
+- FR-012: Generic icon sets, redesigned pictograms, approximate SVG redraws, altered colors, missing components, distorted source-piece assembly, broad masks, DOM label plates, and visible cleanup artifacts are forbidden. Official traffic signs and traffic sign sheets are stricter: they must be source-as-is high-quality crops/images, not translated, relabeled, reconstructed, simplified, recolored, cleaned, or otherwise modified; Russian explanations may appear outside the sign image only.
 - FR-013: Russian wording may be simplified for learner clarity only when source order, meaning, and ticket-critical details remain intact across the full section span.
 - FR-014: Recurring style tokens for document shell, section headings, body, callouts, legal cards, figure captions, tables, sign/image blocks, infographic labels, document lists, emergency checklists, and contact/resource lists must be reused or extended with source-backed variants.
-- FR-015: Section-specific tests must cover route availability, section coverage, forbidden patterns, local assets, source-region metadata, selectable text, responsive prose, visible-Spanish absence, and visual checker output.
+- FR-015: Section-specific tests must cover route availability, section coverage, forbidden patterns, local assets, source-region metadata, selectable text, responsive prose, visible-Spanish absence outside explicit official-traffic-sign exceptions, source-as-is sign fidelity when traffic signs appear, and visual checker output.
 - FR-016: Review Agent must verify role boundaries, Orchestrator-first routing, complete feature memory, latest-main startup evidence, sibling-work preservation, one-section PR scope, and visual-quality evidence.
 - FR-017: The work cycle requires cycle PR-set tracking and final Architect validation before final Analyst validation, completion, conservative Orchestrator finalization, or merge.
 - FR-018: If Analyst final validation finds gaps, Analyst-owned validation notes require Architect accept/task/ticket/dispose disposition before follow-up development.

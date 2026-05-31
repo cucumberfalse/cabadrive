@@ -662,66 +662,87 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   const expectedAssets = new Map([
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
-      "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6"
+      { sha256: "5c697766892f93f1b949f0ce76703cbf45a1ab49ead3b6b2e66b75e51e58bed6", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
-      "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28"
+      { sha256: "70764bbe42ca073982123631cb0fa5b7b9a22df0ded2245f7ea152bef7a96d28", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
-      "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc"
+      { sha256: "c125dc93e50b35809e96c578f4ac6474d610f5150d1770b6c48b9ba23da4f5fc", visibleSpanish: false }
+    ],
+    [
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
+      {
+        sha256: "80b7c1b231745dbe9a35feb1ffb528f3d95db33cb87935acf75ac7889c11a334",
+        visibleSpanish: true,
+        assetKind: "official-traffic-sign-source-as-is"
+      }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
-      "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8"
+      { sha256: "bf97f2471ac9ac8cdeb84b7fcc6be20ab62526f9ad5f56c9e8f942fe586cb3e8", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
-      "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9"
+      { sha256: "cea31134292919fbf322b6ba19cfd91fdb4714760b7557a7850b414ccc7349d9", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
-      "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d"
+      { sha256: "7a1124f7c1fb3fcf578f4f51a5611b4867d0537e2fee5b2c1933870b4260eb5d", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
-      "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d"
+      { sha256: "99acb609f2b4eca7f3c292b77d92d7197bf914789f44ef05a76d6eccff170f0d", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
-      "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3"
+      { sha256: "81588b672bcc377b2babb69f41a184007ee90b20d1bbdd30d397c6ac9f8ce7d3", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
-      "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f"
+      { sha256: "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
-      "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d"
+      { sha256: "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
-      "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d"
+      { sha256: "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
-      "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781"
+      { sha256: "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781", visibleSpanish: false }
     ],
     [
       "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
-      "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962"
+      { sha256: "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962", visibleSpanish: false }
     ]
   ]);
 
-  for (const [assetPath, expectedSha] of expectedAssets) {
+  for (const [assetPath, expectation] of expectedAssets) {
     const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
     assert.ok(asset, `${assetPath} local asset metadata exists`);
     assert.equal(existsSync(assetPath), true, `${assetPath} exists`);
-    assert.equal(asset.visibleSpanish, false, `${assetPath} records no visible Spanish`);
-    assert.equal(asset.sha256, expectedSha, `${assetPath} registry hash is stable`);
-    assert.equal(sha256File(assetPath), expectedSha, `${assetPath} bytes match registry hash`);
+    assert.equal(asset.visibleSpanish, expectation.visibleSpanish, `${assetPath} visible-Spanish evidence matches policy`);
+    assert.equal(asset.sha256, expectation.sha256, `${assetPath} registry hash is stable`);
+    assert.equal(sha256File(assetPath), expectation.sha256, `${assetPath} bytes match registry hash`);
+    if (expectation.visibleSpanish) {
+      assert.equal(asset.assetKind, expectation.assetKind, `${assetPath} is the official sign exception asset`);
+      assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+      assert.equal(asset.officialSignException.visibleSpanishScope, "official-sign-image-only");
+      assert.equal(asset.officialSignException.sourceAsIs, true);
+    }
   }
+
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "official_traffic_sign_exception_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "none");
+  assert.deepEqual(
+    section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath),
+    ["content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg"]
+  );
 
   for (const requiredText of [
     "Велосипед",
@@ -735,6 +756,9 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "Сдвинут назад",
     "Светоотражатели",
     "Знаки и правила",
+    "bicycle-signs-source-as-is.jpg",
+    "official-traffic-sign-source-as-is",
+    "Знаки на изображении оставлены как в официальном источнике",
     "Полная остановка",
     "Конец защищенной велодорожки",
     "Сойти с велосипеда",
@@ -803,6 +827,7 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "bicycle-change-cyclists-source.jpg",
     "helmet-fit-source.jpg",
     "cyclist-gear-source.jpg",
+    "bicycle-signs-source-as-is.jpg",
     "posture-cyclist-source.jpg",
     "safe-distance-source.jpg",
     "unsafe-distance-source.jpg",
@@ -820,29 +845,9 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
   assert.doesNotMatch(ch1BicycleModuleSource, /content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-03[0-8]\.jpg/u);
   assert.doesNotMatch(ch1BicycleModuleSource, /https?:\/\//u);
   assert.doesNotMatch(ch1BicycleModuleSource, /Система общественного транспорта|Совместная поездка|Юридическая ответственность|Обязательные документы/u);
-  assert.doesNotMatch(ch1BicycleModuleSource, /bike-station|Стоянка или станция велосипедов/u);
-
-  const orderedSignIds = [
-    "bike-lane",
-    "shared-path",
-    "direction",
-    "crossing",
-    "stop",
-    "no-bike",
-    "end-ciclovia",
-    "dismount-bicycle",
-    "max-30",
-    "two-way",
-    "no-parking",
-    "pedestrian-crossing",
-    "yield"
-  ];
-  let previousSignIndex = -1;
-  for (const signId of orderedSignIds) {
-    const signIndex = ch1BicycleModuleSource.indexOf(`id: "${signId}"`);
-    assert.ok(signIndex > previousSignIndex, `${signId} follows source sign sheet order`);
-    previousSignIndex = signIndex;
-  }
+  assert.doesNotMatch(ch1BicycleModuleSource, /bike-station|Стоянка или станция велосипедов|markerRu|manual-bicycle-sign-grid|manual-bicycle-sign-marker/u);
+  assert.doesNotMatch(appSource, /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u);
+  assert.doesNotMatch(stylesSource, /manual-bicycle-sign-grid|manual-bicycle-sign-marker|data-sign-kind/u);
 
   const orderedBlockIds = [
     "bicycle-intro-growth",
@@ -1067,7 +1072,7 @@ test("Manual guide source-fidelity checker rejects visible Spanish status failur
     assert.notEqual(failure.status, 0, "checker must fail when visibleSpanishStatus records a failure");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text");
+    assert.equal(result.message, "ch1-pedestrian-priority visibleSpanishStatus must record no visible Spanish text or an official traffic sign source-as-is exception");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -1087,7 +1092,44 @@ test("Manual guide source-fidelity checker rejects local assets with visible Spa
     assert.notEqual(failure.status, 0, "checker must fail when local asset evidence keeps visible Spanish text");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
-    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish must be false");
+    assert.equal(result.message, "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an official traffic sign source-as-is exception");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker allows only explicit official traffic sign Spanish exceptions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-official-sign-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
+      (implementationEvidence) => {
+        const signAsset = implementationEvidence.localAssetMetadata[0];
+        signAsset.assetKind = "official-traffic-sign-source-as-is";
+        signAsset.containsText = true;
+        signAsset.visibleSpanish = true;
+        signAsset.officialSignException = {
+          kind: "official-traffic-sign-source-as-is",
+          visibleSpanishScope: "official-sign-image-only",
+          sourceAsIs: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "official_traffic_sign_exception_only",
+          nonSignVisibleSpanishStatus: "none",
+          exceptions: [
+            {
+              assetPath: signAsset.assetPath,
+              kind: "official-traffic-sign-source-as-is",
+              visibleSpanishScope: "official-sign-image-only",
+              sourceAsIs: true
+            }
+          ]
+        };
+      }
+    );
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.equal(result.status, 0, result.stderr);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

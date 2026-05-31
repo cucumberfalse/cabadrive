@@ -414,12 +414,15 @@ export type ManualGuideContentBlock =
         width: number;
         height: number;
       };
-      signs: {
-        id: string;
-        visualKind: "blue" | "green" | "yellow" | "red" | "triangle" | "text";
-        markerRu: string;
-        labelRu: string;
-      }[];
+      assetPath: string;
+      altRu: string;
+      visibleSpanish: true;
+      officialSignException: {
+        kind: "official-traffic-sign-source-as-is";
+        visibleSpanishScope: "official-sign-image-only";
+        sourceAsIs: true;
+      };
+      noticeItemsRu: string[];
       visualNotes: string[];
     }
   | {
@@ -581,7 +584,7 @@ export const manualGuideDocumentStyleTokens = {
     },
     {
       id: "manual-bicycle-visuals",
-      description: "Pages 30-38 bicycle, helmet, sign, gesture, lane, parking, Ecobici, and scooter visuals using source-derived non-text crops, source-like sign geometry, and selectable Russian DOM labels.",
+      description: "Pages 30-38 bicycle, helmet, source-as-is official sign sheet, gesture, lane, parking, Ecobici, and scooter visuals using local source crops plus selectable Russian DOM explanation outside sign imagery.",
       tokenSource: "source pages 30-38 Bicicleta"
     },
     {
@@ -597,7 +600,7 @@ export const manualGuideDocumentStyleTokens = {
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
     "Divider-only source PDF pages 21 and 43 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
     "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
-    "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, and side-by-side translation layouts are forbidden."
+    "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, side-by-side translation layouts, and translated/reconstructed traffic sign renderings are forbidden."
   ]
 } as const;
 

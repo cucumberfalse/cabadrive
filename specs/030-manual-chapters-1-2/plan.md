@@ -51,7 +51,7 @@ Recommended implementation sequence: one shared correction/prerequisite PR if cu
    - ensure source ranges are metadata arrays/ranges inside section records;
    - ensure divider-only pages `21` and `43` are not implemented/pending learner pages;
    - update route/schema/checker terminology from page-based to section-based;
-   - retain guards against runtime PDF viewer, full-page raster, duplicate `Руководство 4R`, side-by-side translation, remote assets, broad masks/plates, fake content, forbidden full-page image shortcuts, and visible Spanish;
+   - retain guards against runtime PDF viewer, full-page raster, duplicate `Руководство 4R`, side-by-side translation, remote assets, broad masks/plates, fake content, forbidden full-page image shortcuts, visible Spanish outside explicit official-traffic-sign exceptions, and translated/reconstructed traffic signs;
    - keep visual-evidence schema capable of multiple source regions/pages per section.
 2. Section PRs, one source-`Índice` topic per PR:
    - branch from latest verified `main`, normally after the shared correction/prerequisite and any previous conflicting section PRs have merged;
@@ -92,7 +92,8 @@ Orchestrator may parallelize non-overlapping section PRs only after verifying la
 - Preserve source section order and ticket-critical detail. If a detail appears legal, numeric, safety-critical, document-related, or exam relevant, keep it unless Architect explicitly disposes it.
 - Convert prose to native responsive DOM flow. Do not preserve PDF column widths when they make text cramped or force ordinary prose to scroll horizontally.
 - Preserve meaningful source visuals with local crops or visually indistinguishable reconstruction. Full-page source renders are reference/extraction inputs only.
-- For text-bearing artwork, clean only the source text area at glyph/local-pixel level where feasible, preserve surrounding shapes/connectors/edges, and overlay selectable Russian DOM/SVG labels.
+- Official traffic signs and traffic sign sheets are a controlling exception to the translation/cleanup approach: insert them source-as-is as high-quality local crops/images, with no Russian relabeling, CSS/SVG reconstruction, simplification, recoloring, cleanup, or other modification to the sign itself. Russian explanatory text may be placed outside the sign image.
+- For text-bearing artwork other than official traffic signs, clean only the source text area at glyph/local-pixel level where feasible, preserve surrounding shapes/connectors/edges, and overlay selectable Russian DOM/SVG labels.
 - Omit page numbers, footnote mechanics, source clutter, and book-only decoration when they do not help exam learning. Convert exam-relevant footnote substance into learner-facing notes or citations without preserving the marker as decoration.
 - Record style tokens for recurring Chapter 1/2 block types: section header, two-column prose converted to responsive flow, blue/legal callout, warning/recommendation, sign/table row, pictogram figure, infographic label, legal document list, emergency checklist, contact/resource list, closing slogan.
 
@@ -100,10 +101,11 @@ Orchestrator may parallelize non-overlapping section PRs only after verifying la
 
 Every section PR has a visual gate. Sections with diagrams, signs, pictograms, tables, photos, contact/resource layouts, or infographic-like callouts require strict evidence:
 
-- source-region/crop metadata with section id, source page number(s), region coordinates, asset path, dimensions/hash when practical, cleanup status, and visible-Spanish status;
+- source-region/crop metadata with section id, source page number(s), region coordinates, asset path, dimensions/hash when practical, cleanup status, and visible-Spanish status or explicit official-traffic-sign source-as-is exception;
 - source screenshot/reference and Russian screenshot at desktop and mobile, plus narrow/high-risk viewport when fixed visuals are present;
 - bounding-box checks for label fit, no overlap, no clipping, no layout overflow, and source-like relationships;
-- no generic icon replacement, redesigned diagram, broad mask, DOM plate, color-matched rectangle, clipped crop box, distorted source-piece assembly, or visible Spanish;
+- no generic icon replacement, redesigned diagram, broad mask, DOM plate, color-matched rectangle, clipped crop box, distorted source-piece assembly, or visible Spanish outside explicit official traffic sign source-as-is crops;
+- traffic-sign evidence must prove the learner image is an unmodified high-quality source crop/image, not a translated, reconstructed, or relabeled DOM/CSS/SVG sign sheet;
 - visual checker pass/fail report that names manual visual review notes, not just an AI-written summary.
 
 ## Verification
@@ -117,6 +119,7 @@ Every section PR has a visual gate. Sections with diagrams, signs, pictograms, t
 | Native Russian text | DOM tests, Playwright selection/computed-style checks, no rasterized text-only section |
 | Responsive prose | Playwright desktop/narrow/mobile bounding-box checks and screenshots |
 | Source-faithful visuals | visual checker metadata, source/Russian screenshots, crop hashes/regions, bounding-box checks |
+| Official traffic signs source-as-is | source crop path, region/dimensions/hash, explicit exception marker for visible Spanish inside the sign image only, screenshot evidence, and tests/checker guards rejecting translated/reconstructed sign DOM |
 | No forbidden runtime patterns | content tests scanning for PDF viewer, full-page raster base, side-by-side translation, remote URLs, masks/plates |
 | Legal/document/detail retention | content tests or review evidence comparing source facts/numbers/obligations to Russian section content |
 | Local-first runtime | `pnpm run build`, `pnpm run preflight`, Docker `make build`, isolated `make up`, browser screenshot/check, `make down` |
@@ -163,6 +166,6 @@ Implementation Agent may substitute a newer focused checker/test name created by
 - Existing page-based process memory and PRs can mislead future agents. Mitigation: corrected spec/plan/tasks supersede source-PDF-page slicing and record explicit PR #175 disposition.
 - Shared infrastructure may still use page-based registry concepts. Mitigation: route a shared correction/prerequisite PR before section content PRs if needed.
 - Section PRs spanning many source pages are larger than page PRs. Mitigation: strict one-section scope, section-level evidence bundles, and source-range metadata.
-- Visual assets may require careful crop cleanup across multiple pages. Mitigation: strict source-region metadata, screenshots, bounding-box checks, and visible-Spanish gates.
+- Visual assets may require careful crop cleanup across multiple pages. Mitigation: strict source-region metadata, screenshots, bounding-box checks, visible-Spanish gates outside official traffic sign exceptions, and source-as-is sign guards.
 - Legal/document sections may be over-simplified. Mitigation: detail-retention checks and Review Agent legal/content focus.
 - Shared infrastructure changes after section PRs merge can invalidate earlier visual validation. Mitigation: prerequisite-first architecture and final current-head guard.

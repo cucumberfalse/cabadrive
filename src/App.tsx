@@ -2266,16 +2266,23 @@ function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionC
       data-source-region={`${block.sourceRegion.x},${block.sourceRegion.y},${block.sourceRegion.width},${block.sourceRegion.height}`}
     >
       <h3>{block.titleRu}</h3>
-      <div className="manual-bicycle-sign-grid">
-        {block.signs.map((sign) => (
-          <article key={sign.id} data-sign-kind={sign.visualKind}>
-            <span className="manual-bicycle-sign-marker" aria-hidden="true">
-              {sign.markerRu}
-            </span>
-            <p>{sign.labelRu}</p>
-          </article>
+      <figure className="manual-bicycle-sign-sheet">
+        <img
+          src={assetUrl(block.assetPath)}
+          alt={block.altRu}
+          data-visible-spanish={block.visibleSpanish}
+          data-official-sign-exception={block.officialSignException.kind}
+          data-visible-spanish-scope={block.officialSignException.visibleSpanishScope}
+          data-source-as-is={block.officialSignException.sourceAsIs}
+          loading="lazy"
+        />
+        <figcaption>Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.</figcaption>
+      </figure>
+      <ul className="manual-bicycle-sign-notes">
+        {block.noticeItemsRu.map((item) => (
+          <li key={item}>{item}</li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
