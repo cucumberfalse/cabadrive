@@ -230,10 +230,23 @@
       "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
       "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
     ],
+    "diagramRequiredFields": [
+      "assetCategory=source-transferred-diagram",
+      "diagramTransfer.sourceDiagramTransfer",
+      "diagramTransfer.noApproximateRedraw",
+      "diagramTransfer.noReconstruction",
+      "diagramTransfer.noGenericIconReplacement",
+      "diagramTransfer.broadMaskPlatePatchStatus=none",
+      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "diagramTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed"
+    ],
     "forbiddenStrictVisualTerms": [
       "approximate-redraw",
       "redrawn-infographic",
       "reconstructed-infographic",
+      "redrawn-diagram",
+      "reconstructed-diagram",
+      "generic-icon-replacement",
       "translated-sign",
       "translated-road-marking",
       "recolored-sign",

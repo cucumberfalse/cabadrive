@@ -147,6 +147,9 @@ const forbiddenStrictVisualTerms = [
   "approximate-redraw",
   "redrawn-infographic",
   "reconstructed-infographic",
+  "redrawn-diagram",
+  "reconstructed-diagram",
+  "generic-icon-replacement",
   "translated-sign",
   "translated-road-marking",
   "recolored-sign",
@@ -258,6 +261,31 @@ function validateTransferredInfographicAsset(asset, messagePrefix) {
   }
 }
 
+function validateTransferredDiagramAsset(asset, messagePrefix) {
+  assertRequiredFields(
+    asset.diagramTransfer,
+    ["sourceDiagramTransfer", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],
+    `${messagePrefix}.diagramTransfer`
+  );
+  assertCondition(asset.diagramTransfer.sourceDiagramTransfer === true, `${messagePrefix}.diagramTransfer.sourceDiagramTransfer must be true`, asset);
+  assertCondition(asset.diagramTransfer.noApproximateRedraw === true, `${messagePrefix}.diagramTransfer.noApproximateRedraw must be true`, asset);
+  assertCondition(asset.diagramTransfer.noReconstruction === true, `${messagePrefix}.diagramTransfer.noReconstruction must be true`, asset);
+  assertCondition(asset.diagramTransfer.noGenericIconReplacement === true, `${messagePrefix}.diagramTransfer.noGenericIconReplacement must be true`, asset);
+  assertCondition(asset.diagramTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.diagramTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
+    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset
+  );
+  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
+    assertCondition(
+      asset.diagramTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+      `${messagePrefix}.diagramTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
+      asset
+    );
+  }
+}
+
 function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
   assertCondition(implementedEvidence.visualEvidenceSchemaVersion === 3, `${messagePrefix}.visualEvidenceSchemaVersion must be 3 for new manual units`, implementedEvidence);
   assertCondition(implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity", `${messagePrefix}.visualRulePolicyId must be 031-strict-source-fidelity`, implementedEvidence);
@@ -292,6 +320,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       }
       if (protectedSourceAsIsCategories.has(asset.assetCategory)) validateProtectedSourceAsIsAsset(asset, label);
       if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label);
+      if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label);
     }
   );
 }

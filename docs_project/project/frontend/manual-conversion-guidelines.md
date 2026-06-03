@@ -158,10 +158,10 @@ The checker should pass only when:
   where practical, and runtime display-size/no-upscale evidence.
 - Photo, traffic-sign, and road-marking records prove source-as-is handling and
   Russian explanation outside the image.
-- Infographic records prove high-quality source-image transfer, no approximate
-  redraw/reconstruction, glyph/letter-level Spanish cleanup when applicable, no
-  broad masks/plates/patches, and selectable Russian DOM/SVG overlay where
-  feasible.
+- Infographic and diagram records prove high-quality source-image/source-diagram
+  transfer, no approximate redraw/reconstruction/generic icon replacement,
+  glyph/letter-level Spanish cleanup when applicable, no broad
+  masks/plates/patches, and selectable Russian DOM/SVG overlay where feasible.
 - Recurring style tokens match across repeated blocks.
 - Screenshots exist for desktop, narrow/high-risk, and mobile layouts where
   relevant.
@@ -173,8 +173,8 @@ The checker must fail on:
   source-derived pieces assembled into a distorted composition;
 - translated, relabeled, recolored, redrawn, retouched, masked, inpainted, or
   reconstructed photos, traffic signs, or road markings;
-- approximate infographic redraws or reconstructions instead of source-image
-  transfer;
+- approximate infographic or diagram redraws/reconstructions, or generic icon
+  replacements, instead of source-image/source-diagram transfer;
 - broad masks, square patches, broad boxes, large patches, DOM plates, opaque
   label backgrounds, backing rectangles, or visible cleanup artifacts over
   source artwork;

@@ -330,6 +330,14 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
     section.implementationEvidence.visualEvidenceSchemaVersion = 3;
     section.implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
     section.implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
+    section.implementationEvidence.localAssetMetadata[1].cleanupScope = "none-source-as-is";
+    section.implementationEvidence.localAssetMetadata[1].diagramTransfer = {
+      sourceDiagramTransfer: true,
+      noApproximateRedraw: true,
+      noReconstruction: true,
+      noGenericIconReplacement: true,
+      broadMaskPlatePatchStatus: "none"
+    };
     for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
       sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
       sourceRegion.extractionScaleEvidence = {
@@ -1443,8 +1451,21 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
   }
+  assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
+    "assetCategory=source-transferred-diagram",
+    "diagramTransfer.sourceDiagramTransfer",
+    "diagramTransfer.noApproximateRedraw",
+    "diagramTransfer.noReconstruction",
+    "diagramTransfer.noGenericIconReplacement",
+    "diagramTransfer.broadMaskPlatePatchStatus=none",
+    "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+    "diagramTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed"
+  ]);
   for (const forbiddenTerm of [
     "approximate-redraw",
+    "redrawn-diagram",
+    "reconstructed-diagram",
+    "generic-icon-replacement",
     "translated-sign",
     "translated-road-marking",
     "retouched-photo",
@@ -1518,6 +1539,25 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.implementedSections, 7);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-transferred diagrams without transfer proof", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-diagram-missing-transfer-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, {
+      strict: true,
+      mutateEvidence: (implementationEvidence) => {
+        delete implementationEvidence.localAssetMetadata[1].diagramTransfer;
+      }
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred diagram omits source-transfer proof");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
