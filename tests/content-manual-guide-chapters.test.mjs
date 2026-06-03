@@ -23,6 +23,15 @@ const ch2LegalModulePath = "src/data/manual-sections/ch2-legal-responsibility.ts
 const ch2RequiredDocumentsModulePath = "src/data/manual-sections/ch2-required-documents.ts";
 const ch2IncidentModulePath = "src/data/manual-sections/ch2-incident-obligations.ts";
 const ch2ScoringModulePath = "src/data/manual-sections/ch2-scoring.ts";
+const ch3PriorityModulePath = "src/data/manual-sections/ch3-priority-of-rules.ts";
+const ch3RightOfWayModulePath = "src/data/manual-sections/ch3-right-of-way.ts";
+const ch3LightsModulePath = "src/data/manual-sections/ch3-lights.ts";
+const ch3SpeedModulePath = "src/data/manual-sections/ch3-speed.ts";
+const ch3TurnsModulePath = "src/data/manual-sections/ch3-turns.ts";
+const ch3OvertakingModulePath = "src/data/manual-sections/ch3-overtaking.ts";
+const ch3HighwaysModulePath = "src/data/manual-sections/ch3-highways.ts";
+const ch3AdverseModulePath = "src/data/manual-sections/ch3-adverse-conditions.ts";
+const ch3StoppingParkingModulePath = "src/data/manual-sections/ch3-stopping-parking.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -32,7 +41,16 @@ const implementedSectionIds = new Set([
   "ch2-legal-responsibility",
   "ch2-required-documents",
   "ch2-incident-obligations",
-  "ch2-scoring"
+  "ch2-scoring",
+  "ch3-priority-of-rules",
+  "ch3-right-of-way",
+  "ch3-lights",
+  "ch3-speed",
+  "ch3-turns",
+  "ch3-overtaking",
+  "ch3-highways",
+  "ch3-adverse-conditions",
+  "ch3-stopping-parking"
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -48,6 +66,15 @@ const ch2LegalModuleSource = readFileSync(ch2LegalModulePath, "utf8");
 const ch2RequiredDocumentsModuleSource = readFileSync(ch2RequiredDocumentsModulePath, "utf8");
 const ch2IncidentModuleSource = readFileSync(ch2IncidentModulePath, "utf8");
 const ch2ScoringModuleSource = readFileSync(ch2ScoringModulePath, "utf8");
+const ch3PriorityModuleSource = readFileSync(ch3PriorityModulePath, "utf8");
+const ch3RightOfWayModuleSource = readFileSync(ch3RightOfWayModulePath, "utf8");
+const ch3LightsModuleSource = readFileSync(ch3LightsModulePath, "utf8");
+const ch3SpeedModuleSource = readFileSync(ch3SpeedModulePath, "utf8");
+const ch3TurnsModuleSource = readFileSync(ch3TurnsModulePath, "utf8");
+const ch3OvertakingModuleSource = readFileSync(ch3OvertakingModulePath, "utf8");
+const ch3HighwaysModuleSource = readFileSync(ch3HighwaysModulePath, "utf8");
+const ch3AdverseModuleSource = readFileSync(ch3AdverseModulePath, "utf8");
+const ch3StoppingParkingModuleSource = readFileSync(ch3StoppingParkingModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -221,6 +248,15 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch2-required-documents.ts"), 'export const ch2RequiredDocumentsSection = { sectionId: "ch2-required-documents", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch2-incident-obligations.ts"), 'export const ch2IncidentObligationsSection = { sectionId: "ch2-incident-obligations", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch2-scoring.ts"), 'export const ch2ScoringSection = { sectionId: "ch2-scoring", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-priority-of-rules.ts"), 'export const ch3PriorityOfRulesSection = { sectionId: "ch3-priority-of-rules", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-right-of-way.ts"), 'export const ch3RightOfWaySection = { sectionId: "ch3-right-of-way", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-lights.ts"), 'export const ch3LightsSection = { sectionId: "ch3-lights", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-speed.ts"), 'export const ch3SpeedSection = { sectionId: "ch3-speed", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-turns.ts"), 'export const ch3TurnsSection = { sectionId: "ch3-turns", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-overtaking.ts"), 'export const ch3OvertakingSection = { sectionId: "ch3-overtaking", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-highways.ts"), 'export const ch3HighwaysSection = { sectionId: "ch3-highways", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-adverse-conditions.ts"), 'export const ch3AdverseConditionsSection = { sectionId: "ch3-adverse-conditions", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch3-stopping-parking.ts"), 'export const ch3StoppingParkingSection = { sectionId: "ch3-stopping-parking", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -468,15 +504,20 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1 and 2 registry contains exactly ten source Índice sections and skipped divider metadata", () => {
+test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
-  assert.equal(registry.featureId, "030-manual-chapters-1-2");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 56 });
+  assert.equal(registry.featureId, "031-manual-document-completion");
+  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 88 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56]);
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), ["chapter-divider-only", "chapter-divider-only", "chapter-closing-slogan-only"]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
+    "chapter-divider-only",
+    "chapter-divider-only",
+    "chapter-closing-slogan-only",
+    "chapter-divider-only"
+  ]);
 
   assert.deepEqual(registry.sections.map((section) => section.id), evidence.expectedSectionIds);
   for (const section of registry.sections) {
@@ -505,6 +546,7 @@ test("Chapter 1 and 2 registry contains exactly ten source Índice sections and 
     assert.equal(sourcePages.includes(21), false, `${section.id} does not include divider page 21`);
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
     assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
+    assert.equal(sourcePages.includes(57), false, `${section.id} does not include divider page 57`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -519,11 +561,11 @@ test("Chapter 1 and 2 registry contains exactly ten source Índice sections and 
   }
 });
 
-test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 2);
+test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 3);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
-    ["chapter-1-sustainable-mobility", "chapter-2-responsibility"]
+    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules"]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
     "ch1-cities-for-people",
@@ -541,10 +583,23 @@ test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF 
     "ch2-scoring"
   ]);
   assert.equal(registry.chapters[1].status, "active", "Chapter 2 is active after every Chapter 2 section is implemented");
+  assert.deepEqual(registry.chapters[2].sectionIds, [
+    "ch3-priority-of-rules",
+    "ch3-right-of-way",
+    "ch3-lights",
+    "ch3-speed",
+    "ch3-turns",
+    "ch3-overtaking",
+    "ch3-highways",
+    "ch3-adverse-conditions",
+    "ch3-stopping-parking"
+  ]);
+  assert.equal(registry.chapters[2].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
   assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
+  assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -557,7 +612,7 @@ test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF 
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55)));
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88)));
   assert.deepEqual(duplicatedValues(coveredSourcePages), [55]);
 });
 
@@ -659,6 +714,127 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.doesNotMatch(ch2ScoringModuleSource, /Страница 56 не добавляет правил Scoring/u);
 });
 
+test("Chapter 3 sections retain priority, speed, adverse-condition, and parking details", () => {
+  for (const sectionId of [
+    "ch3-priority-of-rules",
+    "ch3-right-of-way",
+    "ch3-lights",
+    "ch3-speed",
+    "ch3-turns",
+    "ch3-overtaking",
+    "ch3-highways",
+    "ch3-adverse-conditions",
+    "ch3-stopping-parking"
+  ]) {
+    const section = registry.sections.find((entry) => entry.id === sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 3 PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+  }
+
+  assert.match(ch3PriorityModuleSource, /Сигналы и распоряжения контролирующего органа/u);
+  assert.match(ch3PriorityModuleSource, /Временная сигнализация/u);
+  assert.match(ch3PriorityModuleSource, /светофор/ui);
+  assert.match(ch3PriorityModuleSource, /Закон 2148/u);
+  assert.match(ch3PriorityModuleSource, /экстренных служб/u);
+
+  assert.match(ch3RightOfWayModuleSource, /Мигающий красный/u);
+  assert.match(ch3RightOfWayModuleSource, /Pare/u);
+  assert.match(ch3RightOfWayModuleSource, /Ceda el Paso/u);
+  assert.match(ch3RightOfWayModuleSource, /rotonda|круговом движении/u);
+  assert.match(ch3RightOfWayModuleSource, /avenida выше calle/u);
+
+  assert.match(ch3LightsModuleSource, /Запрещено менять тип и мощность заводских огней/u);
+  assert.match(ch3LightsModuleSource, /противотуманные/ui);
+  assert.match(ch3LightsModuleSource, /звуковая сигнализация/u);
+
+  assert.match(ch3SpeedModuleSource, /эффекта туннеля/u);
+  assert.match(ch3SpeedModuleSource, /примерно 1 секунда/u);
+  assert.match(ch3SpeedModuleSource, /минимум 2 секунды/u);
+  assert.match(ch3SpeedModuleSource, /kind:\s*"table"/);
+  assert.match(ch3SpeedModuleSource, /Pasajes y calles de convivencia[\s\S]*20 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Calles[\s\S]*40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Avenidas[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Autopistas CABA[\s\S]*100 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Исключения в некоторых avenidas/u);
+  assert.match(ch3SpeedModuleSource, /40 км\/ч[\s\S]*Av\. Corrientes[\s\S]*Junín y Libertad/u);
+  assert.match(ch3SpeedModuleSource, /60 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*calzadas para tránsito pesado[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. del Libertador/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Figueroa Alcorta/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Del Libertador/u);
+  assert.match(ch3SpeedModuleSource, /Av\. 27 de Febrero/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Costanera Rafael Obligado/u);
+  assert.match(ch3SpeedModuleSource, /80 км\/ч[\s\S]*Av\. Gral\. Paz[\s\S]*Autopista Ingeniero Pascual Palazzo[\s\S]*Av\. 27 de Febrero/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Intendente Cantilo/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Leopoldo Lugones/u);
+  assert.match(ch3SpeedModuleSource, /Av\. Tte\. Gral\. Luis J\. Dellepiane/u);
+  assert.match(ch3SpeedModuleSource, /100 км\/ч[\s\S]*Av\. Gral\. Paz en calzadas centrales[\s\S]*Av\. Leopoldo Lugones[\s\S]*Autopista Ingeniero Pascual Palazzo/u);
+  assert.match(ch3SpeedModuleSource, /Autopista Presidente Arturo U\. Illia/u);
+  assert.match(ch3SpeedModuleSource, /Maquinaria especial[\s\S]*Calles y avenidas[\s\S]*30 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Camiones[\s\S]*transporte colectivo de pasajeros\/as[\s\S]*Calles[\s\S]*40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Escolares y movilidad reducida[\s\S]*Avenidas[\s\S]*45 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Camiones y transporte colectivo de pasajeros\/as[\s\S]*Avenidas[\s\S]*50 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Autopistas y otras vias rapidas en CABA[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Paseo del Bajo[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /Todos los vehiculos[\s\S]*60 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Camiones, transporte de sustancias peligrosas, automotores con casa rodante",\s*"80 км\/ч",\s*"rutas, semiautopistas y autopistas nacionales"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Microbuses, omnibus y casas rodantes motorizadas",\s*"90 км\/ч",\s*"rutas y semiautopistas"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Microbuses, omnibus y casas rodantes motorizadas",\s*"100 км\/ч",\s*"autopistas nacionales"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"110 км\/ч",\s*"ruta"\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\[\s*"Camionetas",\s*"110 км\/ч",\s*"rutas, semiautopistas y autopistas nacionales"\s*\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"120 км\/ч",\s*"semiautopistas"\]/u);
+  assert.match(ch3SpeedModuleSource, /cellsRu:\s*\["Motocicletas y automoviles",\s*"130 км\/ч",\s*"autopistas nacionales"\]/u);
+  assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas, casas rodantes motorizadas, motocicletas/u);
+  assert.doesNotMatch(ch3SpeedModuleSource, /Camiones, casas rodantes motorizadas, motocicletas/u);
+  assert.doesNotMatch(ch3SpeedModuleSource, /Camionetas y transporte de pasajeros\/as/u);
+  assert.match(ch3SpeedModuleSource, /половина соответствующих максимальных лимитов/u);
+  assert.match(ch3SpeedModuleSource, /semiautopistas y rutas - 40 км\/ч/u);
+  assert.match(ch3SpeedModuleSource, /autopistas - 60 км\/ч/u);
+  assert.doesNotMatch(ch3SpeedModuleSource, /На отдельных avenidas источник показывает исключения/u);
+  assert.doesNotMatch(ch3SpeedModuleSource, /Для некоторых видов транспорта и участков источник показывает дополнительные специальные пределы/u);
+
+  assert.match(ch3TurnsModuleSource, /за 30 м/u);
+  assert.match(ch3OvertakingModuleSource, /Adelantamiento/u);
+  assert.match(ch3OvertakingModuleSource, /Sobrepaso/u);
+  assert.match(ch3OvertakingModuleSource, /Ley 24449/u);
+  assert.match(ch3HighwaysModuleSource, /carriles de aceleración/u);
+  assert.match(ch3HighwaysModuleSource, /espejos retrovisores/u);
+  assert.match(ch3HighwaysModuleSource, /luz de giro izquierda/u);
+  assert.match(ch3HighwaysModuleSource, /espacio \/ gap/u);
+  assert.match(ch3HighwaysModuleSource, /velocidad adecuada del tramo/u);
+  assert.match(ch3HighwaysModuleSource, /Carril izquierdo o de sobrepaso/u);
+  assert.match(ch3HighwaysModuleSource, /Carril derecho/u);
+  assert.match(ch3HighwaysModuleSource, /транспортные средства более 3500 кг/u);
+  assert.match(ch3HighwaysModuleSource, /Banquina не является полосой обычного движения, остановки или стоянки/u);
+  assert.match(ch3HighwaysModuleSource, /carril de desaceleración/u);
+  assert.match(ch3HighwaysModuleSource, /circular marcha atrás/u);
+  assert.match(ch3HighwaysModuleSource, /следующего разрешенного выхода/u);
+  assert.match(ch3HighwaysModuleSource, /señales viales/u);
+  assert.match(ch3HighwaysModuleSource, /vehículo inmovilizado/u);
+  assert.match(ch3HighwaysModuleSource, /balizas\/intermitentes/u);
+  assert.match(ch3HighwaysModuleSource, /auxilio\/asistencia/u);
+  assert.match(ch3HighwaysModuleSource, /postes de auxilio/u);
+  assert.match(ch3HighwaysModuleSource, /auxilio vial/u);
+  assert.match(ch3HighwaysModuleSource, /vehículo destinado a ese fin/u);
+  assert.match(ch3HighwaysModuleSource, /abandonar la autopista en la primera salida posible/u);
+  assert.doesNotMatch(ch3HighwaysModuleSource, /Практика движения на скоростных дорогах/u);
+
+  assert.match(ch3AdverseModuleSource, /aquaplaning/u);
+  assert.match(ch3AdverseModuleSource, /50 градусов примерно за 10 минут/u);
+  assert.match(ch3AdverseModuleSource, /снег не характерен для CABA/u);
+
+  assert.match(ch3StoppingParkingModuleSource, /не более 2 минут/u);
+  assert.match(ch3StoppingParkingModuleSource, /Av\. Cantilo/u);
+  assert.match(ch3StoppingParkingModuleSource, /5 м/u);
+  assert.match(ch3StoppingParkingModuleSource, /4,5 м/u);
+  assert.match(ch3StoppingParkingModuleSource, /Macrocentro/u);
+  assert.match(ch3StoppingParkingModuleSource, /50 м/u);
+  assert.match(ch3StoppingParkingModuleSource, /Cajones azules/u);
+  assert.match(ch3StoppingParkingModuleSource, /30 минут/u);
+  assert.match(ch3StoppingParkingModuleSource, /Símbolo Internacional de Acceso/u);
+});
+
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
@@ -736,11 +912,23 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch2RequiredDocumentsSection \}/);
   assert.match(manualGuideSource, /import \{ ch2IncidentObligationsSection \}/);
   assert.match(manualGuideSource, /import \{ ch2ScoringSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3PriorityOfRulesSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3RightOfWaySection \}/);
+  assert.match(manualGuideSource, /import \{ ch3LightsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3SpeedSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3TurnsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3OvertakingSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3HighwaysSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3AdverseConditionsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch3StoppingParkingSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
+  assert.match(manualGuideSource, /kind:\s*"table"/);
+  assert.match(appSource, /manual-guide-table-scroll/);
+  assert.match(stylesSource, /\.manual-guide-table-block/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
 });
 
@@ -1749,26 +1937,26 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1 and 2 implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, and 3 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 88 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 10);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 19);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
-  assert.equal(result.implementedSections, 10);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43]);
+  assert.equal(result.implementedSections, 19);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_and_2_sections");
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_3_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -1781,7 +1969,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 10);
+  assert.equal(result.implementedSections, 19);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -1881,7 +2069,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 10);
+    assert.equal(output.implementedSections, 19);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2830,7 +3018,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 10);
+    assert.equal(output.implementedSections, 19);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

@@ -575,3 +575,169 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T14:24:54Z
+
+Analyst validated effective content head: 565c71bc39b74891e97b1d02883a6a72d6e133bf
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #188 Chapter 3 scope. The effective content head advances the full-document completion request one chapter-equivalent PR at a time, covers Chapter 3 pages `57-88` only, preserves source detail in Russian/selectable form, requires high-resolution x5/equivalent image evidence, preserves photos, signs, and road markings without modification or translation, and keeps infographic handling source-faithful with glyph-level Spanish cleanup only if needed and Russian overlay outside or source-faithful.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T14:23:10Z` for the same effective content head `565c71bc39b74891e97b1d02883a6a72d6e133bf`.
+
+Analyst validation evidence: PR #188 scope is Chapter 3 pages `57-88` only and does not bundle another chapter; cycle PR-set coverage now includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, PR #187 Chapter 2 content slice, and PR #188 Chapter 3 content slice.
+
+Analyst validation evidence: Required checks passed at `565c71bc39b74891e97b1d02883a6a72d6e133bf` for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; PR state was open, not draft, mergeable, and CLEAN at that head.
+
+Analyst validation evidence: Review Agent verified the speed tables and exceptions, highway page 78 rules, and process-memory repair with no actionable findings in review `4419397061`; review threads total `3` and unresolved `0`.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T14:59:40Z
+
+Analyst validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the repaired PR #188 Chapter 3 scope. The effective content head advances the full-document completion request one chapter-equivalent PR at a time, covers Chapter 3 pages `57-88` only with page `57` divider-only, preserves source detail in Russian/selectable form, requires high-resolution x5/equivalent image evidence, preserves photos, signs, and road markings without modification or translation, and keeps infographic handling source-faithful with glyph-level Spanish cleanup only if needed and Russian overlay outside or source-faithful.
+
+Analyst validation evidence: Architect repeat validation passed first at `2026-06-03T14:57:43Z` for the same effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`.
+
+Analyst validation evidence: Prior Analyst validation for `565c71bc39b74891e97b1d02883a6a72d6e133bf` is stale and superseded because `f56c42d075dc92d61523301b1f84c3a33faf3a3e` includes the post-validation outside-CABA speed-table product/content repair after AI Review.
+
+Analyst validation evidence: The repair corrected source page 73 outside-CABA speed rows: microbuses, omnibuses, and motorhomes at `90/100`; trucks, hazardous cargo, and RV-towing at `80`; pickups and camionetas at `110` across routes, semihighways, and national highways; motorcycles and cars at `110/120/130`.
+
+Analyst validation evidence: Required checks passed at `f56c42d075dc92d61523301b1f84c3a33faf3a3e` for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; Review Agent found no actionable issues at that head and the three AI Review threads were resolved after verification.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T15:18:11Z
+
+Analyst validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the repeat PR #188 Chapter 3 validation scope. The effective content head advances full-document completion one chapter-equivalent PR at a time, covers Chapter 3 pages `57-88` only with page `57` divider-only, preserves source detail in Russian/selectable form, requires x5/high-resolution image evidence, preserves photos, signs, and road markings without modification or translation, and keeps infographic handling source-faithful with glyph-level Spanish cleanup only when needed and Russian overlay text.
+
+Analyst validation evidence: Architect repeat validation passed first at `2026-06-03T15:15:10Z` for the same effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`.
+
+Analyst validation evidence: Prior Analyst validation for `f56c42d075dc92d61523301b1f84c3a33faf3a3e` at `2026-06-03T14:59:40Z` is superseded by this repeat validation after finalizer-readable process-memory repair; the repair changed parser-readable process memory only and did not change product, customer content, tests, runtime files, source assets, or the validated effective content head.
+
+Analyst validation evidence: The outside-CABA page 73 speed rows remain corrected at effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`, required checks were green on that head and on current evidence head `e05adafe29f4c1eb4a8ef90792b502ffd319c530`, Review Agent found no actionable issues, AI Review passed, and all review threads are resolved.
+
+Analyst validation evidence: Architect parser sanity evidence records `feedbackDisposition: true` and `acceptedKnownIssueDecisionPending: false`; no Analyst-discovered customer-intent gap remains for this PR #188 Chapter 3 slice.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T15:48:11Z
+
+Analyst validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the repeat PR #188 Chapter 3 validation scope. The effective content head continues full-document completion one chapter-equivalent PR at a time, covers Chapter 3 pages `57-88` only with page `57` divider-only, preserves the strict visual requirements for x5/high-resolution evidence, no photo/sign/marking modification or translation, and source-faithful infographic handling with glyph-level Spanish cleanup only when needed plus Russian overlay text.
+
+Analyst validation evidence: Architect repeat validation passed first at `2026-06-03T15:44:39Z` for the same effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`.
+
+Analyst validation evidence: Prior Analyst validation for `f56c42d075dc92d61523301b1f84c3a33faf3a3e` at `2026-06-03T15:18:11Z` is superseded by this repeat validation after Cycle PR Set row-freshness process-memory repair for AI Review thread `PRRT_kwDOSX65IM6GzRmW`.
+
+Analyst validation evidence: The row-freshness repair refreshed Cycle PR Set rows for merged PR #186, merged PR #187, and current PR #188; removed stale must-rerun wording from the Chapter 3 row; recorded `PRRT_kwDOSX65IM6GzRmW` as addressed process-memory-only; and did not change product, learner content, tests, runtime files, source assets, or the validated effective content head.
+
+Analyst validation evidence: Outside-CABA page 73 speed rows remain corrected at effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`; customer acceptance remains satisfied for this PR #188 Chapter 3 slice.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T15:53:14Z
+
+Analyst validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the repeat PR #188 Chapter 3 validation scope. The effective content head remains Chapter 3 only for pages `57-88`, with page `57` divider-only, preserves one chapter-equivalent per PR, keeps the strict visual requirements satisfied, and includes the outside-CABA speed-table correction at `f56c42d075dc92d61523301b1f84c3a33faf3a3e`.
+
+Analyst validation evidence: Architect repeat validation passed first at `2026-06-03T15:50:25Z` for the same effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`.
+
+Analyst validation evidence: Prior Analyst validation for `f56c42d075dc92d61523301b1f84c3a33faf3a3e` at `2026-06-03T15:48:11Z` is superseded by this repeat validation after the final process-memory wording repair.
+
+Analyst validation evidence: The final wording repair replaced stale-prone current-head wording with timeless parser-repair evidence-head wording only; it did not change product, learner content, tests, runtime files, source assets, or the validated effective content head.
+
+Analyst validation evidence: Customer acceptance remains satisfied for PR #188: full-document continuation proceeds one chapter-equivalent PR at a time, Chapter 3 scope is not bundled with another chapter, visual requirements remain honored, and corrected source page 73 speed rows remain included.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T16:09:27Z
+
+Analyst validated effective content head: cf28cfc72f0ad21130a05d665de915fce0c75dea
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #188 Chapter 3 current-head validation scope. The effective content head is Chapter 3 only for pages `57-88`, does not bundle Chapter 4 or later content, preserves one chapter-equivalent per PR, keeps strict visual rules honored, and includes the outside-CABA speed-table correction plus process-memory repairs through `cf28cfc72f0ad21130a05d665de915fce0c75dea`.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T16:07:53Z` for the same effective content head `cf28cfc72f0ad21130a05d665de915fce0c75dea`.
+
+Analyst validation evidence: Prior Analyst validation for `f56c42d075dc92d61523301b1f84c3a33faf3a3e` is superseded because process-memory repairs through `cf28cfc72f0ad21130a05d665de915fce0c75dea` are now part of the effective content head.
+
+Analyst validation evidence: Required checks passed on `cf28cfc72f0ad21130a05d665de915fce0c75dea` for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; review threads are resolved.
+
+Gaps, if any: none for the PR #188 Chapter 3 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 3 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #188; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 3 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.

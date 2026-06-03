@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
-  "featureId": "030-manual-chapters-1-2",
-  "mode": "section-registry-with-complete-chapters-1-and-2",
+  "featureId": "031-manual-document-completion",
+  "mode": "section-registry-with-complete-chapters-1-through-3",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 56
+    "end": 88
   },
   "skippedSourcePages": [
     {
@@ -20,6 +20,10 @@
     {
       "sourcePage": 56,
       "reason": "chapter-closing-slogan-only"
+    },
+    {
+      "sourcePage": 57,
+      "reason": "chapter-divider-only"
     }
   ],
   "expectedSectionIds": [
@@ -32,7 +36,16 @@
     "ch2-legal-responsibility",
     "ch2-required-documents",
     "ch2-incident-obligations",
-    "ch2-scoring"
+    "ch2-scoring",
+    "ch3-priority-of-rules",
+    "ch3-right-of-way",
+    "ch3-lights",
+    "ch3-speed",
+    "ch3-turns",
+    "ch3-overtaking",
+    "ch3-highways",
+    "ch3-adverse-conditions",
+    "ch3-stopping-parking"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -74,6 +87,42 @@
     "ch2-scoring": {
       "start": 55,
       "end": 55
+    },
+    "ch3-priority-of-rules": {
+      "start": 58,
+      "end": 63
+    },
+    "ch3-right-of-way": {
+      "start": 64,
+      "end": 66
+    },
+    "ch3-lights": {
+      "start": 67,
+      "end": 68
+    },
+    "ch3-speed": {
+      "start": 69,
+      "end": 74
+    },
+    "ch3-turns": {
+      "start": 75,
+      "end": 75
+    },
+    "ch3-overtaking": {
+      "start": 76,
+      "end": 77
+    },
+    "ch3-highways": {
+      "start": 78,
+      "end": 78
+    },
+    "ch3-adverse-conditions": {
+      "start": 79,
+      "end": 82
+    },
+    "ch3-stopping-parking": {
+      "start": 83,
+      "end": 88
     }
   },
   "sharedSourcePageOwnership": [
@@ -418,15 +467,17 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 10,
+    "implementedSections": 19,
     "skippedSourcePages": [
       21,
       43,
-      56
+      56,
+      57
     ],
     "skippedDividerPages": [
       21,
-      43
+      43,
+      57
     ],
     "omittedBookOnlyPages": [
       56
@@ -434,7 +485,7 @@
     "sharedSourcePages": [
       55
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_and_2_sections",
-    "sourceCropEvidence": "recorded_for_complete_chapters_1_and_2_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_3_sections",
+    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_3_sections"
   }
 }
