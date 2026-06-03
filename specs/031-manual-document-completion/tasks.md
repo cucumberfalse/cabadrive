@@ -425,6 +425,7 @@ For each chapter-equivalent content PR:
 - Architect validation: required checks passed on cf28cfc72f0ad21130a05d665de915fce0c75dea: AI Review, baseline-checks, docker-validation, guard, and osv-scan; PR is clean/mergeable, not draft, and review threads are resolved including PRRT_kwDOSX65IM6GzRmW.
 - Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
 - Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head cf28cfc72f0ad21130a05d665de915fce0c75dea for PR #188; post-effective changes through final validation/guard evidence transport are final-validation evidence only in `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
 
 ## Known Issues / Architect Dispositions
 
