@@ -34,10 +34,10 @@
 
 ## Existing Content Audit / Correction Slices
 
-- [ ] T022 Orchestrator assigns Introduction and Chapter 1 visual-rule audit PR/task slice from latest verified `main`; no unrelated Chapter 2+ content is included.
-- [ ] T023 Audit Introduction pages `14-20`, including named guideline fixtures for pages `15`, `17`, `18`, and `19`.
-- [ ] T024 Audit Chapter 1 pages `21-42`, including all six merged Chapter 1 sections and their runtime assets/evidence.
-- [ ] T025 Audit records no-fix evidence or creates explicit correction tasks for every stricter-rule gap.
+- [x] T022 Orchestrator assigns Introduction and Chapter 1 visual-rule audit PR/task slice from latest verified `main`; no unrelated Chapter 2+ content is included.
+- [x] T023 Audit Introduction pages `14-20`, including named guideline fixtures for pages `15`, `17`, `18`, and `19`.
+- [x] T024 Audit Chapter 1 pages `21-42`, including all six merged Chapter 1 sections and their runtime assets/evidence.
+- [x] T025 Audit records no-fix evidence or creates explicit correction tasks for every stricter-rule gap.
 - [ ] T026 If Introduction correction is needed, Orchestrator assigns scoped correction PR(s) and preserves existing routes/hashes.
 - [ ] T027 If Chapter 1 correction is needed, Orchestrator assigns scoped correction PR(s) by affected section/chapter; do not mix fixes into unrelated future chapter content.
 - [ ] T028 Correction PRs replace noncompliant visuals with high-resolution source transfers, keep photos/signs/markings source-as-is, use glyph-level infographic cleanup only, keep Russian explanation outside protected images, and record evidence.
@@ -69,30 +69,30 @@
 
 For each chapter-equivalent content PR:
 
-- [ ] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
-- [ ] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
-- [ ] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
-- [ ] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
-- [ ] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
+- [x] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
+- [x] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
+- [x] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
+- [x] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
+- [x] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
 - [ ] T054 Implement only the assigned source chapter/appendix/front-matter scope.
 - [ ] T055 Keep Russian headings, prose, lists, captions, callouts, labels, and meaningful overlay text selectable/copyable DOM/SVG where feasible.
 - [ ] T056 Preserve source order and all ticket-critical legal, numeric, safety, document, sign, marking, scoring, exception, phone/contact, and ordered-list details.
 - [ ] T057 Extract new images/crops at x5 zoom/source export target or document equivalent/better method with dimensions/hash/runtime-size evidence.
 - [ ] T058 Keep photos, traffic signs, and road-marking images unmodified source-as-is; put Russian explanation outside the image.
 - [ ] T059 Transfer infographics as high-quality source images; remove Spanish only at glyph/letter level; preserve connectors/shapes/pictograms; overlay selectable Russian text where feasible.
-- [ ] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
+- [x] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
 - [ ] T061 Add/update route, content coverage, source inventory, visual metadata, source-as-is, infographic cleanup, forbidden-pattern, selectable-text, responsive, and Playwright tests.
-- [ ] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
-- [ ] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
+- [x] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
+- [x] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
 
 ## Cycle PR Set
 
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | latest effective content candidate includes strict transferred infographic/diagram source-linkage repair, strict source-as-is provenance byte/dimension repair, broad cleanup forbidden-term repair, earlier strict crop/extraction dimension checker/test/evidence-policy repair, and process-memory repairs; prior final validation for earlier effective content heads is stale until fresh role-owned validation records the current head | prerequisite-only visual-rule PR; final validation status is tracked by the latest role-owned validation sections and `Final Validation Evidence` before merge-readiness | yes |
-| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
-| Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
+| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
+| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR pending until opened | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | local audit evidence commit pending | audit-only PR; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
+| Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
 | Chapter 3 content | pages `57-88` | pending | pending | pending | pending | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
@@ -108,8 +108,8 @@ For each chapter-equivalent content PR:
 | Unit | Source pages | Disposition | Status |
 | --- | ---: | --- | --- |
 | Front matter | `1-13` | Separate support PR; include learner-useful presentation/glossary; omit book-only title/index/category pages with evidence | pending |
-| Introduction | `14-20` | Already implemented; stricter visual audit required | pending audit |
-| Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit required | merged, pending audit |
+| Introduction | `14-20` | Already implemented; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | audit complete; no correction needed |
+| Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | merged and audited; no correction needed |
 | Chapter 2 | `43-56` | One chapter PR, next likely | pending |
 | Chapter 3 | `57-88` | One chapter PR | pending |
 | Chapter 4 | `89-97` | One chapter PR | pending |
@@ -143,17 +143,22 @@ For each chapter-equivalent content PR:
 - Photos, traffic-sign images, and road-marking images must remain source-as-is with no translation, relabeling, redraw, recolor, cleanup, reconstruction, retouching, masking, inpainting, or meaningful-content removal; Russian explanation belongs outside protected images.
 - Infographics and diagrams must be transferred as high-quality source images rather than approximate redraws; Spanish cleanup is glyph/letter-level only, with broad patches/masks/plates forbidden and Russian overlay text selectable where feasible.
 - Legacy Chapter 1 baseline evidence remains allowed only for unchanged merged baseline state until the planned audit/correction slice; new or changed future manual units require strict v3 evidence.
+- Implementation decision, Introduction/Chapter 1 visual audit `2026-06-03T07:32:00Z`: audit-only slice assigned in worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, latest-main base `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` from merged PR #185. Scope remained process-memory audit evidence only: no Chapter 2+ content, front matter, runtime manual content, source assets, durable docs, tests, or checker code changed.
+- Audit decision: Introduction pages `14-20` and Chapter 1 pages `21-42` satisfy the stricter visual-rule requirements from PR #185 based on existing source-fidelity evidence, focused tests, and read-only asset/hash/dimension inspection. No Introduction or Chapter 1 correction PR is needed from this audit.
 
 ## Dead Ends
 
 - Resolved: strict fixture failures exposed legacy visible-Spanish ordering, source-integrity isolation, Chapter 2 strict fixture category setup, and temp-path false positives during forbidden-term matching; the checker/tests now cover those cases.
 - Resolved: review repairs closed legacy-registry exemption, strict diagram transfer proof, strict hash/provenance byte verification, legacy baseline-state fingerprinting, forbidden-term/asset-kind scanning, visible-Spanish exception gating, transferred-artwork Spanish rejection, and strict image byte-dimension validation.
 - No unresolved dead ends remain for PR #185 process-memory finalization repair.
+- No audit dead ends: the Introduction/Chapter 1 audit did not require PDF re-export or runtime changes because existing local source-region artifacts, source page renders, evidence metadata, and focused fixture tests were sufficient to verify source-fidelity status.
+- Resolved audit verification setup: first `pnpm run validate:content` attempt failed because this fresh worktree lacked `node_modules` and `pdf-parse`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies, and all verification commands passed on rerun.
 
 ## Known Issues
 
 - No unresolved known issues.
 - Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Disposition: not applicable.
+- Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR.
 
 ## Final Validation Evidence
 
@@ -263,6 +268,29 @@ For each chapter-equivalent content PR:
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
+- No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition.
+
+## Introduction And Chapter 1 Visual Audit Evidence
+
+- Assignment evidence: Implementation Agent audit-only slice, worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, base `origin/main` at `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c`, PR pending until opened.
+- Baseline status: `git status --short --branch` returned `## codex/031-intro-ch1-visual-audit...origin/main`; no dirty files before audit evidence edits.
+- Source inputs inspected: `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, `interactive-guide/section-registry.chapters-1-2.json`, local source page renders under `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/`, `src/data/pandemiaVialSection.ts`, `src/data/manualGuide.ts`, `src/data/manual-sections/*.ts`, and `docs_project/project/frontend/manual-conversion-guidelines.md`.
+- Introduction audit scope: pages `14-20`, covering route fixtures `#pandemia-vial`, `#intro-enfoque-etico`, `#intro-accidente-incidente`, and `#intro-plan-seguridad-vial`; named fixture pages `15`, `17`, `18`, and `19` were checked against durable guideline anchors.
+- Introduction audit outcome: no correction needed. Existing focused evidence records page 15 as a native Russian article shell with fixed source-faithful infographic artwork and original crops; page 17 risk-factor pictograms are high-DPI padded source crops and the decorative recommendation icon is omitted; page 18 uses the complete 3720x1560 high-DPI cleaned source crop with transparent DOM Russian labels and no broad masks/plates/patches; page 19 uses high-DPI padded source pictogram crops with aligned/selectable Russian DOM text; the page 20 child-seat photo uses a source crop with Russian quote/explanation outside the image.
+- Chapter 1 audit scope: pages `21-42`, including all six merged sections `ch1-cities-for-people`, `ch1-sustainable-mobility`, `ch1-pedestrian-priority`, `ch1-bicycle`, `ch1-public-transport-system`, and `ch1-shared-trip`.
+- Chapter 1 audit outcome: no correction needed. Read-only metadata review checked 34 source-region artifacts and 38 runtime image assets for Chapter 1 with no missing files, hash mismatches, or dimension mismatches. The 15 visible-Spanish runtime cases are all recorded as source-image or official-sign source-as-is exceptions with Russian explanation outside protected images.
+- Protected visual audit result: no translated, relabeled, redrawn, recolored, cleaned, reconstructed, retouched, masked, inpainted, or meaningfully-content-removed photo, traffic-sign, or road-marking runtime asset was found in the audited Introduction/Chapter 1 evidence.
+- Infographic/diagram audit result: no correction needed. Audited infographics/diagrams use source crops, high-DPI source artwork, or source-derived non-text crops with selectable Russian DOM/SVG labels; focused tests reject generic replacements, broad masks, old partial page 18 reconstructions, source-mask overlays, full-page rasters, and visible Spanish outside explicit source-as-is exceptions.
+- Audit read-only asset verification: a Node metadata audit reported Chapter 1 implemented sections `ch1-cities-for-people`, `ch1-sustainable-mobility`, `ch1-pedestrian-priority`, `ch1-bicycle`, `ch1-public-transport-system`, and `ch1-shared-trip`; `sourceRegionArtifactsChecked: 34`; `runtimeImageAssetsChecked: 38`; `visibleSpanishSourceImageExceptions: 15`; `mismatches: []`. The same audit reported `localImageAssetsChecked: 17` for Introduction and high-DPI fixture assets including three page 17 risk icons at `512x512`, the page 18 consequence diagram at `3720x1560`, and four page 19 axis icons at `192x192`, with `mismatches: []`.
+- Focused verification, `node scripts/manual-guide-source-fidelity.mjs`: passed; output reported `status: pass`, `sectionsChecked: 10`, `pendingSections: 4`, `implementedSections: 6`, skipped divider pages `21` and `43`, omitted book-only page `56`, and `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- Focused verification, `node --test tests/content-manual-guide-chapters.test.mjs`: passed; `64` tests passed, `0` failed. Coverage includes all six Chapter 1 sections, source-fidelity checker pass, unchanged legacy baseline allowance, strict future-unit requirements, source-as-is exceptions, transferred artwork source linkage, forbidden visual-edit terms, and forbidden full-page assets.
+- Focused verification, `node --test tests/content-pandemia-vial-section.test.mjs`: passed; `14` tests passed, `0` failed. Coverage includes Introduction routes, pages 15/17/18/19 named fixture guards, local cleaned visual assets, source-fidelity data rejecting generic replacements, no full-page raster/source mask, no runtime PDF/PDF.js/iframe/object/embed, selectable/adaptive Russian DOM text, and responsive page 19 work-axis behavior.
+- `pnpm install --frozen-lockfile`: passed after the first content-validation attempt reported missing `node_modules`; lockfile was up to date and 77 packages were installed into this assigned worktree.
+- `pnpm run validate:content`: first attempt failed due missing worktree dependencies (`pdf-parse` not installed); rerun after `pnpm install --frozen-lockfile` passed, including difficulty labels, learning images, 200/200 manual pages, 460 category B fallback questions, 276 local image references, and manual-guide checker `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- `pnpm run test`: passed; `373` tests passed, `0` failed.
+- `pnpm run build`: passed; content validation, asset sync, Vite production build, and service-worker generation completed. The existing non-fatal Vite large chunk warning remained.
+- `pnpm run preflight`: passed; included `check-feature-memory`, `check:repo`, `validate:content`, `test` (`373` passed), `build`, and Playwright e2e (`74` passed).
+- Docker local runtime validation: not applicable for this audit-only PR because only process-memory audit evidence changed; no runtime behavior, source assets, Docker files, or build/runtime contract files changed. CI docker-validation remains a later PR gate.
 
 ## Final Architect Validation - PR #185 Visual-Rule Prerequisite
 
