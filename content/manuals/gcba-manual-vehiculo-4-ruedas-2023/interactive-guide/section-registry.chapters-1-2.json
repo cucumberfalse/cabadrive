@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
-  "featureId": "030-manual-chapters-1-2",
-  "registryScope": "chapters-1-2-pending-section-registry",
+  "featureId": "031-manual-document-completion",
+  "registryScope": "chapters-1-3-section-registry",
   "sourcePageRange": {
     "start": 21,
-    "end": 56
+    "end": 88
   },
   "skippedSourcePages": [
     {
@@ -28,6 +28,13 @@
       "parentChapterId": "chapter-2-responsibility",
       "sourceTitleEs": "Respetar las normas de tránsito implica salvar vidas.",
       "disposition": "Book-only closing slogan is not Scoring content; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 57,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sourceTitleEs": "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -110,6 +117,28 @@
         "ch2-required-documents",
         "ch2-incident-obligations",
         "ch2-scoring"
+      ]
+    },
+    {
+      "id": "chapter-3-driving-rules",
+      "labelRu": "Глава 3. Основные нормы вождения",
+      "sourceTitleEs": "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
+      "sourcePageRange": {
+        "start": 57,
+        "end": 88
+      },
+      "requiredPrintedPage": 56,
+      "status": "active",
+      "sectionIds": [
+        "ch3-priority-of-rules",
+        "ch3-right-of-way",
+        "ch3-lights",
+        "ch3-speed",
+        "ch3-turns",
+        "ch3-overtaking",
+        "ch3-highways",
+        "ch3-adverse-conditions",
+        "ch3-stopping-parking"
       ]
     }
   ],
@@ -2722,6 +2751,1556 @@
           "Scoring is rendered as selectable Russian DOM text only.",
           "20 initial points, 4-point voluntary recovery, three-year expiry, 50% reassignment, 0-point sanctions from 60 days to 5 years, 10-point course reassignment, 3-business-day Boleta de Citación, and footnote exceptions are retained.",
           "Source page 56 is recorded as closing-slogan disposition and is not implemented as Scoring content."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-priority-of-rules",
+      "labelRu": "Приоритет норм",
+      "sourceTitleEs": "Prioridad normativa",
+      "routeHash": "#manual-section-ch3-priority-of-rules",
+      "sourcePageRange": {
+        "start": 58,
+        "end": 63
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 58,
+          "manualManifestPointer": "/pages/57",
+          "layoutManifestPointer": "/pages/57",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-058.jpg"
+        },
+        {
+          "sourcePage": 59,
+          "manualManifestPointer": "/pages/58",
+          "layoutManifestPointer": "/pages/58",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-059.jpg"
+        },
+        {
+          "sourcePage": 60,
+          "manualManifestPointer": "/pages/59",
+          "layoutManifestPointer": "/pages/59",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-060.jpg"
+        },
+        {
+          "sourcePage": 61,
+          "manualManifestPointer": "/pages/60",
+          "layoutManifestPointer": "/pages/60",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-061.jpg"
+        },
+        {
+          "sourcePage": 62,
+          "manualManifestPointer": "/pages/61",
+          "layoutManifestPointer": "/pages/61",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-062.jpg"
+        },
+        {
+          "sourcePage": 63,
+          "manualManifestPointer": "/pages/62",
+          "layoutManifestPointer": "/pages/62",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-063.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-priority-of-rules.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-priority-of-rules",
+        "sourcePages": [
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 58,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-058-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "571cdda89d337d40c8774b694f27c91a0b40b5d06000ad9c261f6e3068097cfa",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "571cdda89d337d40c8774b694f27c91a0b40b5d06000ad9c261f6e3068097cfa"
+            }
+          },
+          {
+            "sourcePage": 59,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-059-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "45bfcacb7b35ce952f5c4aa13da437203b4b0c5b6160bcd51a379b8490da5967",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "45bfcacb7b35ce952f5c4aa13da437203b4b0c5b6160bcd51a379b8490da5967"
+            }
+          },
+          {
+            "sourcePage": 60,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-060-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "f8f8694193409b252155feb1e19da98c3dc42b443a96e0f46ee520b8c65a206e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "f8f8694193409b252155feb1e19da98c3dc42b443a96e0f46ee520b8c65a206e"
+            }
+          },
+          {
+            "sourcePage": 61,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-061-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "f6e86889bd171bf5ffa9f3be0b2bd72c2c8e35a7d540785bb48623146b3775ce",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "f6e86889bd171bf5ffa9f3be0b2bd72c2c8e35a7d540785bb48623146b3775ce"
+            }
+          },
+          {
+            "sourcePage": 62,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-062-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "735cae1664bfe5d0b81c9916439854d9e4a99dbac197038f3bef521c7e2bfb46",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "735cae1664bfe5d0b81c9916439854d9e4a99dbac197038f3bef521c7e2bfb46"
+            }
+          },
+          {
+            "sourcePage": 63,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-priority-of-rules/page-063-priority-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "3d52b12e9d842c7543f3630dcef531fadb0d2af451c9bda626c27f62109f9b99",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "3d52b12e9d842c7543f3630dcef531fadb0d2af451c9bda626c27f62109f9b99"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-priority-of-rules.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-priority-of-rules/ch3-priority-of-rules-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-priority-of-rules/ch3-priority-of-rules-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-priority-of-rules-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-priority-of-rules-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Priority hierarchy, control authority, temporary signals, semaphores, horizontal/vertical marking, general legal norms, and emergency-vehicle priority are retained in selectable Russian DOM text.",
+          "Source priority and emergency diagrams are recorded as x5 reference crops only; no runtime source infographic is redrawn, translated, relabeled, cleaned, or masked."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-right-of-way",
+      "labelRu": "Преимущество проезда",
+      "sourceTitleEs": "Prioridad de paso",
+      "routeHash": "#manual-section-ch3-right-of-way",
+      "sourcePageRange": {
+        "start": 64,
+        "end": 66
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 64,
+          "manualManifestPointer": "/pages/63",
+          "layoutManifestPointer": "/pages/63",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-064.jpg"
+        },
+        {
+          "sourcePage": 65,
+          "manualManifestPointer": "/pages/64",
+          "layoutManifestPointer": "/pages/64",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-065.jpg"
+        },
+        {
+          "sourcePage": 66,
+          "manualManifestPointer": "/pages/65",
+          "layoutManifestPointer": "/pages/65",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-066.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-right-of-way.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-right-of-way",
+        "sourcePages": [
+          64,
+          65,
+          66
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 64,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-right-of-way/page-064-right-of-way-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "b0677f731c6b3831af19a7535a426e27dfd861c6d8c5e92fe310072215e34763",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "b0677f731c6b3831af19a7535a426e27dfd861c6d8c5e92fe310072215e34763"
+            }
+          },
+          {
+            "sourcePage": 65,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-right-of-way/page-065-right-of-way-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "acaf30d6fca0256faba9cc108c008a3d065ca353d753542b67e34413be4ee049",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "acaf30d6fca0256faba9cc108c008a3d065ca353d753542b67e34413be4ee049"
+            }
+          },
+          {
+            "sourcePage": 66,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-right-of-way/page-066-right-of-way-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "a70fffd95fae563c7e9dbb407cb85050d939bdf51616f4bc222d6e0fb3ae3949",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "a70fffd95fae563c7e9dbb407cb85050d939bdf51616f4bc222d6e0fb3ae3949"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-right-of-way.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-right-of-way/ch3-right-of-way-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-right-of-way/ch3-right-of-way-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-right-of-way-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-right-of-way-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Semaforized and non-semaforized intersection behavior, right-side priority, Pare/Ceda exceptions, rail crossing, roundabout, arterial hierarchy, slopes, obstruction, dirt/paved roads, and colectivo priority are retained.",
+          "Roundabout and right-of-way diagrams are x5 reference crops only; runtime rules are selectable Russian DOM text."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-lights",
+      "labelRu": "Использование света",
+      "sourceTitleEs": "Uso de luces",
+      "routeHash": "#manual-section-ch3-lights",
+      "sourcePageRange": {
+        "start": 67,
+        "end": 68
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 67,
+          "manualManifestPointer": "/pages/66",
+          "layoutManifestPointer": "/pages/66",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-067.jpg"
+        },
+        {
+          "sourcePage": 68,
+          "manualManifestPointer": "/pages/67",
+          "layoutManifestPointer": "/pages/67",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-068.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-lights.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-lights",
+        "sourcePages": [
+          67,
+          68
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 67,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-lights/page-067-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "cbc52c1d70f7677d062b344fa398cb022df2bf2d931d30e8adf9a9434d54c5b2",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "cbc52c1d70f7677d062b344fa398cb022df2bf2d931d30e8adf9a9434d54c5b2"
+            }
+          },
+          {
+            "sourcePage": 68,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-lights/page-068-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "fef2815df1412ee9408aa144611a502d29800368da0776bb58265af622bc181e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "fef2815df1412ee9408aa144611a502d29800368da0776bb58265af622bc181e"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-lights.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-lights/ch3-lights-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-lights/ch3-lights-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-lights-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-lights-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Light-purpose, factory-light modification ban, front-light categories, rear lights, and reverse-alarm detail are retained in selectable Russian DOM text.",
+          "Vehicle-light diagrams with embedded Spanish are reference-only; no runtime relabeling or cleanup is performed."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-speed",
+      "labelRu": "Скорость",
+      "sourceTitleEs": "Velocidad",
+      "routeHash": "#manual-section-ch3-speed",
+      "sourcePageRange": {
+        "start": 69,
+        "end": 74
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 69,
+          "manualManifestPointer": "/pages/68",
+          "layoutManifestPointer": "/pages/68",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-069.jpg"
+        },
+        {
+          "sourcePage": 70,
+          "manualManifestPointer": "/pages/69",
+          "layoutManifestPointer": "/pages/69",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-070.jpg"
+        },
+        {
+          "sourcePage": 71,
+          "manualManifestPointer": "/pages/70",
+          "layoutManifestPointer": "/pages/70",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-071.jpg"
+        },
+        {
+          "sourcePage": 72,
+          "manualManifestPointer": "/pages/71",
+          "layoutManifestPointer": "/pages/71",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-072.jpg"
+        },
+        {
+          "sourcePage": 73,
+          "manualManifestPointer": "/pages/72",
+          "layoutManifestPointer": "/pages/72",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-073.jpg"
+        },
+        {
+          "sourcePage": 74,
+          "manualManifestPointer": "/pages/73",
+          "layoutManifestPointer": "/pages/73",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-074.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-speed.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-speed",
+        "sourcePages": [
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 69,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-069-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "b0e4c1abe96513e12a6d8c34686e4a44ae43d6998a666a38788cf0403515b862",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "b0e4c1abe96513e12a6d8c34686e4a44ae43d6998a666a38788cf0403515b862"
+            }
+          },
+          {
+            "sourcePage": 70,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-070-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "f2bc1db888c8abe39c6d422bbaf7435417ddf5a574f8ecf0b516ebd6a7dc1072",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "f2bc1db888c8abe39c6d422bbaf7435417ddf5a574f8ecf0b516ebd6a7dc1072"
+            }
+          },
+          {
+            "sourcePage": 71,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-071-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "85c67fd3c06ba0f2c2553706865f92de1180864c8fc4eb28a87c00679a0fb3db",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "85c67fd3c06ba0f2c2553706865f92de1180864c8fc4eb28a87c00679a0fb3db"
+            }
+          },
+          {
+            "sourcePage": 72,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-072-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "1081f3a22125ec7dab924499a80d84d06eb04c4ba57ac8eae6ffbcf78cae9ff1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "1081f3a22125ec7dab924499a80d84d06eb04c4ba57ac8eae6ffbcf78cae9ff1"
+            }
+          },
+          {
+            "sourcePage": 73,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-073-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "c252a757bbff541fba258d60dc8b4f51c7b18cfb84b12cfc37506f687062a7e0",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "c252a757bbff541fba258d60dc8b4f51c7b18cfb84b12cfc37506f687062a7e0"
+            }
+          },
+          {
+            "sourcePage": 74,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-speed/page-074-speed-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "92d3b477d61b25f602ec35ab7f35e535b36b3afb7cf95f3ab86bba57ea579489",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "92d3b477d61b25f602ec35ab7f35e535b36b3afb7cf95f3ab86bba57ea579489"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-speed.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-speed/ch3-speed-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-speed/ch3-speed-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-speed-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-speed-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Speed risk, tunnel effect, reaction time, safety distance, braking/stopping distance, CABA limits, heavy/passenger special limits, minimum speeds, and precautionary speed examples are retained.",
+          "Speed tables and distance diagrams are source-reference crops only, preserving Russian learner meaning as selectable DOM text."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-turns",
+      "labelRu": "Повороты на перекрестках",
+      "sourceTitleEs": "Giros en intersecciones",
+      "routeHash": "#manual-section-ch3-turns",
+      "sourcePageRange": {
+        "start": 75,
+        "end": 75
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 75,
+          "manualManifestPointer": "/pages/74",
+          "layoutManifestPointer": "/pages/74",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-075.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-turns.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-turns",
+        "sourcePages": [
+          75
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 75,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-turns/page-075-turns-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "556248f8f5e9d3316827fb6c19a20d3cf814a5320100bcdc610243934c835c75",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "556248f8f5e9d3316827fb6c19a20d3cf814a5320100bcdc610243934c835c75"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-turns.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-turns/ch3-turns-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-turns/ch3-turns-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-turns-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-turns-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Turn-signal 30 m anticipation, gradual speed reduction, and moderate-speed turn execution are retained in selectable Russian DOM text.",
+          "This section is runtime text-only; no source visual is introduced."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-overtaking",
+      "labelRu": "Обгон и опережение",
+      "sourceTitleEs": "Adelantamiento y sobrepaso",
+      "routeHash": "#manual-section-ch3-overtaking",
+      "sourcePageRange": {
+        "start": 76,
+        "end": 77
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 76,
+          "manualManifestPointer": "/pages/75",
+          "layoutManifestPointer": "/pages/75",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-076.jpg"
+        },
+        {
+          "sourcePage": 77,
+          "manualManifestPointer": "/pages/76",
+          "layoutManifestPointer": "/pages/76",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-077.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-overtaking.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-overtaking",
+        "sourcePages": [
+          76,
+          77
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 76,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-overtaking/page-076-overtaking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "f1f77604f92d76d477c1bb1ec834ce116edee0e5f0aaf52a6d6f5e764f1a4ce5",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "f1f77604f92d76d477c1bb1ec834ce116edee0e5f0aaf52a6d6f5e764f1a4ce5"
+            }
+          },
+          {
+            "sourcePage": 77,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-overtaking/page-077-overtaking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "165370cd421d4d7a15628e0f3d77211f9aca33540ff7783076cd4661f99d012d",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "165370cd421d4d7a15628e0f3d77211f9aca33540ff7783076cd4661f99d012d"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-overtaking.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-overtaking/ch3-overtaking-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-overtaking/ch3-overtaking-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-overtaking-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-overtaking-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Adelantamiento/sobrepaso distinction, safe-space/time requirement, lane-use guidance, and Ley 24449 article 42 reference are retained.",
+          "Road and overtaking diagrams are x5 reference crops only; no road-marking image or diagram is modified."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-highways",
+      "labelRu": "Движение по автомагистралям и другим скоростным дорогам",
+      "sourceTitleEs": "Circulacion por autopistas y otras vias rapidas",
+      "routeHash": "#manual-section-ch3-highways",
+      "sourcePageRange": {
+        "start": 78,
+        "end": 78
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 78,
+          "manualManifestPointer": "/pages/77",
+          "layoutManifestPointer": "/pages/77",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-078.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-highways.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-highways",
+        "sourcePages": [
+          78
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 78,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-highways/page-078-highways-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "71901f5e60e8a95ca9bf23777865cf334bc3cc72336abc4e398227abfeabd46a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "71901f5e60e8a95ca9bf23777865cf334bc3cc72336abc4e398227abfeabd46a"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-highways.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-highways/ch3-highways-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-highways/ch3-highways-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-highways-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-highways-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Highway and fast-road entry, lane, distance, exit, and emergency stopping practices are rendered as selectable Russian DOM text.",
+          "The page source crop is reference-only; no highway visual is modified."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-adverse-conditions",
+      "labelRu": "Вождение в неблагоприятных условиях",
+      "sourceTitleEs": "Conduccion en condiciones adversas",
+      "routeHash": "#manual-section-ch3-adverse-conditions",
+      "sourcePageRange": {
+        "start": 79,
+        "end": 82
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 79,
+          "manualManifestPointer": "/pages/78",
+          "layoutManifestPointer": "/pages/78",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-079.jpg"
+        },
+        {
+          "sourcePage": 80,
+          "manualManifestPointer": "/pages/79",
+          "layoutManifestPointer": "/pages/79",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-080.jpg"
+        },
+        {
+          "sourcePage": 81,
+          "manualManifestPointer": "/pages/80",
+          "layoutManifestPointer": "/pages/80",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-081.jpg"
+        },
+        {
+          "sourcePage": 82,
+          "manualManifestPointer": "/pages/81",
+          "layoutManifestPointer": "/pages/81",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-082.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-adverse-conditions.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-adverse-conditions",
+        "sourcePages": [
+          79,
+          80,
+          81,
+          82
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 79,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-adverse-conditions/page-079-adverse-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "d1e34d8e3a3a810573cf013a86590bb294b0fd12c2ee1d98da1a400982046f8f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "d1e34d8e3a3a810573cf013a86590bb294b0fd12c2ee1d98da1a400982046f8f"
+            }
+          },
+          {
+            "sourcePage": 80,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-adverse-conditions/page-080-adverse-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "9595a961646cb766f295700dd78864121cfa689b73d3310b007c0ef35fd60154",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "9595a961646cb766f295700dd78864121cfa689b73d3310b007c0ef35fd60154"
+            }
+          },
+          {
+            "sourcePage": 81,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-adverse-conditions/page-081-adverse-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "b5e0e64baffaad6efa7cb23e686f5aaa4197f6264c32b6c0ec20ec545247a60b",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "b5e0e64baffaad6efa7cb23e686f5aaa4197f6264c32b6c0ec20ec545247a60b"
+            }
+          },
+          {
+            "sourcePage": 82,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-adverse-conditions/page-082-adverse-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "e3d29865ba01aa8a61a13ea5a526685bfb7b4d87628df5e7fd32b0fa1b6773e3",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "e3d29865ba01aa8a61a13ea5a526685bfb7b4d87628df5e7fd32b0fa1b6773e3"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-adverse-conditions.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-adverse-conditions/ch3-adverse-conditions-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-adverse-conditions/ch3-adverse-conditions-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-adverse-conditions-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-adverse-conditions-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Fog, rain, wind, snow, heat, aquaplaning, tire/road/brake conditions, and the 24-to-50-degrees-in-10-minutes heat example are retained.",
+          "Weather diagrams with Spanish labels are x5 reference crops only; no Spanish cleanup or broad masking is performed."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch3-stopping-parking",
+      "labelRu": "Остановка и стоянка",
+      "sourceTitleEs": "Detencion y estacionamiento",
+      "routeHash": "#manual-section-ch3-stopping-parking",
+      "sourcePageRange": {
+        "start": 83,
+        "end": 88
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 83,
+          "manualManifestPointer": "/pages/82",
+          "layoutManifestPointer": "/pages/82",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-083.jpg"
+        },
+        {
+          "sourcePage": 84,
+          "manualManifestPointer": "/pages/83",
+          "layoutManifestPointer": "/pages/83",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-084.jpg"
+        },
+        {
+          "sourcePage": 85,
+          "manualManifestPointer": "/pages/84",
+          "layoutManifestPointer": "/pages/84",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-085.jpg"
+        },
+        {
+          "sourcePage": 86,
+          "manualManifestPointer": "/pages/85",
+          "layoutManifestPointer": "/pages/85",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-086.jpg"
+        },
+        {
+          "sourcePage": 87,
+          "manualManifestPointer": "/pages/86",
+          "layoutManifestPointer": "/pages/86",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-087.jpg"
+        },
+        {
+          "sourcePage": 88,
+          "manualManifestPointer": "/pages/87",
+          "layoutManifestPointer": "/pages/87",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-088.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sectionContentModulePath": "src/data/manual-sections/ch3-stopping-parking.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch3-stopping-parking",
+        "sourcePages": [
+          83,
+          84,
+          85,
+          86,
+          87,
+          88
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 83,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-083-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "eef1bce34590e9df61328ffc0a9def57cc99d0769f9f27830d909470ecf1cf5c",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "eef1bce34590e9df61328ffc0a9def57cc99d0769f9f27830d909470ecf1cf5c"
+            }
+          },
+          {
+            "sourcePage": 84,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-084-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "9fd4a6aafe8e21c6a35d463c69ef6d471f8575c52d78666fb91ea36024a90892",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "9fd4a6aafe8e21c6a35d463c69ef6d471f8575c52d78666fb91ea36024a90892"
+            }
+          },
+          {
+            "sourcePage": 85,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-085-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "43273de69b4bc7bbb6ad367a23fce5c8ffd94eab32ac89c379c765bc747b6171",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "43273de69b4bc7bbb6ad367a23fce5c8ffd94eab32ac89c379c765bc747b6171"
+            }
+          },
+          {
+            "sourcePage": 86,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-086-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "8d6c82cee07965c8a1aa7f4b910e34d47e7afb2f7efe3e7e46cc6a870586d83e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "8d6c82cee07965c8a1aa7f4b910e34d47e7afb2f7efe3e7e46cc6a870586d83e"
+            }
+          },
+          {
+            "sourcePage": 87,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-087-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "9fbe9bdde22ac3fff8759044ef72742c94d275ebb4015a8ee8ddddc0d1d2d0c7",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "9fbe9bdde22ac3fff8759044ef72742c94d275ebb4015a8ee8ddddc0d1d2d0c7"
+            }
+          },
+          {
+            "sourcePage": 88,
+            "sourceRegion": {
+              "x": 650,
+              "y": 850,
+              "width": 1650,
+              "height": 2500
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch3-stopping-parking/page-088-stopping-parking-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1650,
+              "height": 2500
+            },
+            "cropSha256": "45045623c4482a9cc0f46fce0289e909fb2b29a6987fff455c311774b007caa0",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1650,
+                "height": 2500
+              },
+              "sha256": "45045623c4482a9cc0f46fce0289e909fb2b29a6987fff455c311774b007caa0"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch3-stopping-parking.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch3-stopping-parking/ch3-stopping-parking-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch3-stopping-parking/ch3-stopping-parking-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch3-stopping-parking-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 3 PR."
+          },
+          {
+            "id": "ch3-stopping-parking-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 3 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Detencion and estacionamiento definitions, 2-minute rule, balizas, no-stop zones, parking bans, avenidas/Macrocentro exceptions, correct/incorrect parking, slopes, carga y descarga, cajones azules, disability franchise, and closing slogan are retained.",
+          "Parking photos and diagrams remain source-reference evidence only; no photo/sign/marking/diagram is modified or translated."
         ],
         "checkerResult": "pass"
       }

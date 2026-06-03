@@ -1,4 +1,13 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch3AdverseConditionsSection } from "./manual-sections/ch3-adverse-conditions";
+import { ch3HighwaysSection } from "./manual-sections/ch3-highways";
+import { ch3LightsSection } from "./manual-sections/ch3-lights";
+import { ch3OvertakingSection } from "./manual-sections/ch3-overtaking";
+import { ch3PriorityOfRulesSection } from "./manual-sections/ch3-priority-of-rules";
+import { ch3RightOfWaySection } from "./manual-sections/ch3-right-of-way";
+import { ch3SpeedSection } from "./manual-sections/ch3-speed";
+import { ch3StoppingParkingSection } from "./manual-sections/ch3-stopping-parking";
+import { ch3TurnsSection } from "./manual-sections/ch3-turns";
 import { ch1BicycleSection } from "./manual-sections/ch1-bicycle";
 import { ch1CitiesForPeopleSection } from "./manual-sections/ch1-cities-for-people";
 import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-priority";
@@ -677,7 +686,16 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch2LegalResponsibilitySection,
   ch2RequiredDocumentsSection,
   ch2IncidentObligationsSection,
-  ch2ScoringSection
+  ch2ScoringSection,
+  ch3PriorityOfRulesSection,
+  ch3RightOfWaySection,
+  ch3LightsSection,
+  ch3SpeedSection,
+  ch3TurnsSection,
+  ch3OvertakingSection,
+  ch3HighwaysSection,
+  ch3AdverseConditionsSection,
+  ch3StoppingParkingSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -875,26 +893,6 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
     }))
   },
   ...chapter12NavigationEntries,
-  {
-    id: "chapter-3",
-    kind: "group",
-    labelRu: "Глава 3. Основные правила вождения",
-    sourceTitleEs: "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
-    sourcePage: 57,
-    requiredPrintedPage: 56,
-    status: "pending",
-    children: [
-      pendingTopic("chapter-3-norm-priority", "Приоритет норм", "Prioridad normativa"),
-      pendingTopic("chapter-3-way-priority", "Приоритет проезда", "Prioridades de paso"),
-      pendingTopic("chapter-3-lights", "Использование фар", "Uso de luces"),
-      pendingTopic("chapter-3-speed", "Скорость", "Velocidad"),
-      pendingTopic("chapter-3-turns", "Повороты на перекрестках", "Giros en intersecciones"),
-      pendingTopic("chapter-3-overtaking", "Обгон и опережение", "Adelantamiento y sobrepaso"),
-      pendingTopic("chapter-3-highways", "Движение по автомагистралям и быстрым дорогам", "Conducción en autopistas y otras vías rápidas"),
-      pendingTopic("chapter-3-adverse", "Движение в сложных условиях", "Conducción en situaciones adversas"),
-      pendingTopic("chapter-3-parking", "Остановка и стоянка", "Detención y estacionamiento")
-    ]
-  },
   {
     id: "chapter-4",
     kind: "group",
