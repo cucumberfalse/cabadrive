@@ -296,6 +296,19 @@ For each chapter-equivalent content PR:
 - Current-PR-head read-only guard: Orchestrator verified current PR head 6e9b3f9326b27fc428538abdb6a454abe340615e against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
 - Current-PR-head read-only guard: Orchestrator verified current PR head bb33ffc129f04de17d31c2968e51639cc0ff9cb6 against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes through bb33ffc129f04de17d31c2968e51639cc0ff9cb6 were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
 - Limit escalation: none
+- Effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+- Architect validation: passed at 2026-06-03T11:37:35Z for effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+- Architect validated effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+- Architect return count: 0
+- Architect validation: PR #187 Chapter 2 scope validated for pages 43-56 and sections ch2-legal-responsibility, ch2-required-documents, ch2-incident-obligations, and ch2-scoring.
+- Architect validation: required checks passed on 3b651151e5fc918c480b99a19f5569214ae2339f: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+- Architect validation: Review Agent no-findings review 4418020628 applies to 3b651151e5fc918c480b99a19f5569214ae2339f, and automated AI Review passed for the same effective content head.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope; review-fix threads PRRT_kwDOSX65IM6Gt8WL, PRRT_kwDOSX65IM6Gt8WS, PRRT_kwDOSX65IM6Gt-pp, and PRRT_kwDOSX65IM6GuLOz are resolved in content and verification evidence.
+- Analyst feedback Architect disposition: none requiring action for PR #187 Chapter 2 scope.
+- Architect validation: Chapter 2 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #187, accepted no action, and disposition not applicable.
+- Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice at effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head 3b651151e5fc918c480b99a19f5569214ae2339f for PR #187; post-effective changes through this validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
 
@@ -760,6 +773,46 @@ Architect disposition: no open Implementation Agent feedback remains for PR #186
 Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
 
 Architect disposition: owner decision for Vite large chunk warning and audit known-issue entries is accepted no action for PR #186 because they are pre-existing, nonfatal, unrelated to this audit-only slice, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T11:37:35Z
+
+Architect validated effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #187 Chapter 2 scope at 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect validation evidence: PR #187 implements only Chapter 2 pages 43-56, covering ch2-legal-responsibility, ch2-required-documents, ch2-incident-obligations, and ch2-scoring, with no Chapter 3+ content and no unrelated source unit bundled.
+
+Architect validation evidence: Chapter 2 page boundaries are preserved: source page 43 is a divider and not runtime content, incident obligations share page 55 only before page-055-block-08, Scoring starts at page-055-block-08, runtime Scoring is limited to page 55, and page 56 remains book-only omitted material in registry and process memory.
+
+Architect validation evidence: Strict visual requirements are satisfied for Chapter 2: source crops were produced from x5 source renders, required-document visuals use explicit source-as-is-document-example evidence with source-integrity byte and dimension matching, original visible Spanish remains inside source images, Russian explanations are outside images, and no photo, sign, marking, document example, or source crop was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, or modified.
+
+Architect validation evidence: Chapter 2 content fidelity is satisfied after review fixes: incident Proteger details include warning-device direction and distances, 30 m and 60 m city placement, 50 m and 100 m road placement, tunnel behavior, AUSA 140, and AUSOL 0800-999-9999; VTV cadence includes first VTV at year 4 or 60 000 km, 2-year validity until 8 years or 80 000 km, 4 000 km tolerance, then annual validity.
+
+Architect validation evidence: Required checks passed on 3b651151e5fc918c480b99a19f5569214ae2339f: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head 3b651151e5fc918c480b99a19f5569214ae2339f in review 4418020628 at 2026-06-03T11:24:39Z, and automated Codex bot review passed through AI Review for the same effective content head.
+
+Architect validation evidence: Local guard evidence from Orchestrator shows git status clean and synced with origin/codex/031-chapter-2, node scripts/check-feature-memory.mjs --worktree passed, and git diff --check origin/main..HEAD passed.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope; review-fix threads PRRT_kwDOSX65IM6Gt8WL, PRRT_kwDOSX65IM6Gt8WS, PRRT_kwDOSX65IM6Gt-pp, and PRRT_kwDOSX65IM6GuLOz are resolved by implementation and verification evidence.
+
+Architect validation evidence: Known Issues section records no unresolved Chapter 2 known issues; the Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #187, accepted no action, and disposition not applicable.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, PR #186 as Introduction and Chapter 1 audit-only slice, and PR #187 as Chapter 2 content slice at base 9750b1578627c531146226ebe0e9673aadfef67b and effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope at 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #187 Chapter 2 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #187 because it is pre-existing, nonfatal, unrelated to Chapter 2 content, and disposition not applicable.
 
 ## Review Requirements
 
