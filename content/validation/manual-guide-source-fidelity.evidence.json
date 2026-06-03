@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "030-manual-chapters-1-2",
-  "mode": "section-registry-with-complete-chapter-1-and-pending-chapter-2",
+  "mode": "section-registry-with-complete-chapters-1-and-2",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
@@ -224,6 +224,7 @@
       "source-as-is-photo",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
+      "source-as-is-document-example",
       "source-transferred-infographic",
       "source-transferred-diagram",
       "native-dom-text-only",
@@ -234,6 +235,9 @@
       "source-as-is-traffic-sign",
       "source-as-is-road-marking"
     ],
+    "documentExampleSourceAsIsCategories": [
+      "source-as-is-document-example"
+    ],
     "protectedSourceAsIsRequiredFields": [
       "sourceIntegrity.sourceAsIs",
       "sourceIntegrity.sourceAssetPath",
@@ -242,6 +246,18 @@
       "sourceIntegrity.russianExplanationOutsideImage",
       "cleanupScope=none-source-as-is",
       "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
+    ],
+    "documentExampleSourceAsIsRequiredFields": [
+      "assetCategory=source-as-is-document-example",
+      "assetKind starts with high-resolution-original-source-document-image-",
+      "sourceIntegrity.sourceAsIs",
+      "sourceIntegrity.sourceAssetPath",
+      "sourceIntegrity.noTranslationOrRelabeling",
+      "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+      "sourceIntegrity.russianExplanationOutsideImage",
+      "cleanupScope=none-source-as-is",
+      "visibleSpanishStatus.status=source_image_exceptions_only with exceptions.kind=source-document-example-original-visible-text and exceptions.assetPath matching assetPath when visibleSpanish=true",
+      "Russian explanation remains outside the source-as-is document example image"
     ],
     "infographicRequiredFields": [
       "assetCategory=source-transferred-infographic",
@@ -401,8 +417,8 @@
   ],
   "sharedPrereqExpectedOutput": {
     "status": "pass",
-    "pendingSections": 4,
-    "implementedSections": 6,
+    "pendingSections": 0,
+    "implementedSections": 10,
     "skippedSourcePages": [
       21,
       43,
@@ -418,7 +434,7 @@
     "sharedSourcePages": [
       55
     ],
-    "screenshotEvidence": "recorded_for_complete_chapter_1_sections_including_ch1-shared-trip",
-    "sourceCropEvidence": "recorded_for_complete_chapter_1_sections_including_ch1-shared-trip"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_and_2_sections",
+    "sourceCropEvidence": "recorded_for_complete_chapters_1_and_2_sections"
   }
 }

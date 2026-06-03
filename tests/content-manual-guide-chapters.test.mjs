@@ -19,10 +19,21 @@ const ch1PedestrianPriorityModulePath = "src/data/manual-sections/ch1-pedestrian
 const ch1BicycleModulePath = "src/data/manual-sections/ch1-bicycle.ts";
 const ch1PublicTransportModulePath = "src/data/manual-sections/ch1-public-transport-system.ts";
 const ch1SharedTripModulePath = "src/data/manual-sections/ch1-shared-trip.ts";
+const ch2LegalModulePath = "src/data/manual-sections/ch2-legal-responsibility.ts";
+const ch2RequiredDocumentsModulePath = "src/data/manual-sections/ch2-required-documents.ts";
+const ch2IncidentModulePath = "src/data/manual-sections/ch2-incident-obligations.ts";
+const ch2ScoringModulePath = "src/data/manual-sections/ch2-scoring.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const implementedSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
+const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
+const implementedSectionIds = new Set([
+  ...legacyBaselineSectionIds,
+  "ch2-legal-responsibility",
+  "ch2-required-documents",
+  "ch2-incident-obligations",
+  "ch2-scoring"
+]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
@@ -33,6 +44,10 @@ const ch1PedestrianPriorityModuleSource = readFileSync(ch1PedestrianPriorityModu
 const ch1BicycleModuleSource = readFileSync(ch1BicycleModulePath, "utf8");
 const ch1PublicTransportModuleSource = readFileSync(ch1PublicTransportModulePath, "utf8");
 const ch1SharedTripModuleSource = readFileSync(ch1SharedTripModulePath, "utf8");
+const ch2LegalModuleSource = readFileSync(ch2LegalModulePath, "utf8");
+const ch2RequiredDocumentsModuleSource = readFileSync(ch2RequiredDocumentsModulePath, "utf8");
+const ch2IncidentModuleSource = readFileSync(ch2IncidentModulePath, "utf8");
+const ch2ScoringModuleSource = readFileSync(ch2ScoringModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -202,6 +217,10 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), ch1BicycleModuleSource);
   writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), ch1PublicTransportModuleSource);
   writeTempFile(join(moduleRoot, "ch1-shared-trip.ts"), ch1SharedTripModuleSource);
+  writeTempFile(join(moduleRoot, "ch2-legal-responsibility.ts"), 'export const ch2LegalResponsibilitySection = { sectionId: "ch2-legal-responsibility", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch2-required-documents.ts"), 'export const ch2RequiredDocumentsSection = { sectionId: "ch2-required-documents", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch2-incident-obligations.ts"), 'export const ch2IncidentObligationsSection = { sectionId: "ch2-incident-obligations", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch2-scoring.ts"), 'export const ch2ScoringSection = { sectionId: "ch2-scoring", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -521,11 +540,11 @@ test("Chapter 1 and 2 hierarchy references source Índice sections, not raw PDF 
     "ch2-incident-obligations",
     "ch2-scoring"
   ]);
-  assert.equal(registry.chapters[1].status, "pending", "Chapter 2 remains pending until its future chapter PR");
+  assert.equal(registry.chapters[1].status, "active", "Chapter 2 is active after every Chapter 2 section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
-  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "pending"), "all Chapter 2 child sections remain pending");
+  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -553,6 +572,9 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
   assert.deepEqual(scoring.sourcePages.map((entry) => entry.sourcePage), [55]);
   assert.equal(scoring.sourcePages[0].referenceAsset, sourcePageAssetPath(55));
   assert.equal(registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage)).includes(56), false);
+  assert.doesNotMatch(ch2ScoringModuleSource, /page-56-disposition/);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Respetar las normas de tránsito implica salvar vidas/u);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Соблюдать правила дорожного движения означает спасать жизни/u);
 
   const closing = registry.skippedSourcePages.find((entry) => entry.sourcePage === 56);
   assert.equal(closing?.reason, "chapter-closing-slogan-only");
@@ -582,6 +604,93 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
   assert.match(scoring.sourceBoundaryEvidence.startsAtSourceTextEs, /Sistema de Evaluación Permanente de Conductores o Scoring/);
   assert.equal(scoring.sourceBoundaryEvidence.omittedClosingSourcePage, 56);
   assert.deepEqual(scoring.sourceBoundaryEvidence.ownedLayoutBlockIdsOnSharedPage.slice(0, 2), ["page-055-block-08", "page-055-block-09"]);
+});
+
+test("Chapter 2 sections retain legal, document, incident, and scoring details", () => {
+  for (const sectionId of ["ch2-legal-responsibility", "ch2-required-documents", "ch2-incident-obligations", "ch2-scoring"]) {
+    const section = registry.sections.find((entry) => entry.id === sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 2 PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+  }
+
+  assert.match(ch2LegalModuleSource, /Закон 2148/);
+  assert.match(ch2LegalModuleSource, /1,0 г\/л|1,0 грамм/u);
+  assert.match(ch2LegalModuleSource, /скрыться после участия в инциденте/);
+  assert.match(ch2LegalModuleSource, /Неосторожность/u);
+  assert.match(ch2LegalModuleSource, /Неблагоразумие/u);
+  assert.match(ch2LegalModuleSource, /Неумение/u);
+
+  assert.match(ch2RequiredDocumentsModuleSource, /DNI/);
+  assert.match(ch2RequiredDocumentsModuleSource, /0,0 г\/л/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /GNC/);
+  assert.match(ch2RequiredDocumentsModuleSource, /VTV/);
+  assert.match(ch2RequiredDocumentsModuleSource, /60 000 км/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /8 лет/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /80 000 км/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /допуск 4 000 км/u);
+  assert.doesNotMatch(ch2RequiredDocumentsModuleSource, /После первого прохождения срок становится ежегодным/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /RVA/);
+  assert.match(ch2RequiredDocumentsModuleSource, /source-image-cards/);
+  assert.match(ch2RequiredDocumentsModuleSource, /source-document-example-original-visible-text/);
+
+  assert.match(ch2IncidentModuleSource, /107/);
+  assert.match(ch2IncidentModuleSource, /911/);
+  assert.match(ch2IncidentModuleSource, /30 м и 60 м/u);
+  assert.match(ch2IncidentModuleSource, /50 м и 100 м/u);
+  assert.match(ch2IncidentModuleSource, /односторонним движением/u);
+  assert.match(ch2IncidentModuleSource, /двусторонним движением/u);
+  assert.match(ch2IncidentModuleSource, /тоннеле/u);
+  assert.match(ch2IncidentModuleSource, /габаритные огни/u);
+  assert.match(ch2IncidentModuleSource, /AUSA 140/u);
+  assert.match(ch2IncidentModuleSource, /AUSOL 0800-999-9999/u);
+  assert.match(ch2IncidentModuleSource, /149, опция 2/u);
+  assert.match(ch2IncidentModuleSource, /0800-222-3425/);
+  assert.match(ch2IncidentModuleSource, /1558125022/);
+  assert.match(ch2IncidentModuleSource, /на странице 55 после списка НКО начинается отдельный раздел Scoring/u);
+
+  assert.match(ch2ScoringModuleSource, /20 баллов/);
+  assert.match(ch2ScoringModuleSource, /4 балла/);
+  assert.match(ch2ScoringModuleSource, /50%/);
+  assert.match(ch2ScoringModuleSource, /60 дней до 5 лет/);
+  assert.match(ch2ScoringModuleSource, /10 баллов/);
+  assert.match(ch2ScoringModuleSource, /3 рабочих дня/);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Страница 56 не добавляет правил Scoring/u);
+});
+
+test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
+  const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
+  const evidenceRecord = section.implementationEvidence;
+  const visualAssets = evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-document-example");
+  assert.equal(visualAssets.length, 6);
+  assert.equal(evidenceRecord.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(evidenceRecord.visibleSpanishStatus.exceptions.length, 6);
+  assert.equal(evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-photo" && asset.assetKind.includes("document-image")).length, 0);
+  for (const exception of evidenceRecord.visibleSpanishStatus.exceptions) {
+    assert.equal(exception.kind, "source-document-example-original-visible-text");
+    assert.equal(exception.visibleSpanishScope, "source-document-example-image-only");
+  }
+
+  for (const asset of visualAssets) {
+    assert.match(asset.assetKind, /^high-resolution-original-source-document-image-/u);
+    assert.equal(asset.visibleSpanish, true);
+    assert.equal(asset.cleanupScope, "none-source-as-is");
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(asset.extractionScaleEvidence.target, "x5-zoom-source-export");
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.ok(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx);
+    assert.ok(existsSync(asset.assetPath), `${asset.assetPath} exists`);
+    assert.ok(existsSync(asset.sourceIntegrity.sourceAssetPath), `${asset.sourceIntegrity.sourceAssetPath} exists`);
+    assert.equal(sha256File(asset.assetPath), sha256File(asset.sourceIntegrity.sourceAssetPath), `${asset.assetPath} matches source crop bytes`);
+  }
+
+  assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
+  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\.kind\}/);
+  assert.match(stylesSource, /\.manual-source-image-card-grid/);
 });
 
 test("Manual guide schema prepares section-local implementation and reusable style tokens", () => {
@@ -623,9 +732,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch1BicycleSection \}/);
   assert.match(manualGuideSource, /import \{ ch1PublicTransportSystemSection \}/);
   assert.match(manualGuideSource, /import \{ ch1SharedTripSection \}/);
+  assert.match(manualGuideSource, /import \{ ch2LegalResponsibilitySection \}/);
+  assert.match(manualGuideSource, /import \{ ch2RequiredDocumentsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch2IncidentObligationsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch2ScoringSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.doesNotMatch(manualGuideSource, /chapter12ManualGuidePages|manualGuidePageByHash|manualGuidePageContentById|implementedManualGuidePages/);
@@ -1532,9 +1645,9 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "ch1-public-transport-system",
     "ch1-shared-trip"
   ]);
-  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...implementedSectionIds].sort());
-  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...implementedSectionIds].sort());
-  for (const id of implementedSectionIds) {
+  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...legacyBaselineSectionIds].sort());
+  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...legacyBaselineSectionIds].sort());
+  for (const id of legacyBaselineSectionIds) {
     const section = registry.sections.find((entry) => entry.id === id);
     const evidenceFingerprint = evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
     const stateFingerprint = evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints[id];
@@ -1556,6 +1669,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "source-as-is-photo",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
+    "source-as-is-document-example",
     "source-transferred-infographic",
     "source-transferred-diagram",
     "native-dom-text-only"
@@ -1570,6 +1684,19 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
     "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
+  ]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsCategories, ["source-as-is-document-example"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsRequiredFields, [
+    "assetCategory=source-as-is-document-example",
+    "assetKind starts with high-resolution-original-source-document-image-",
+    "sourceIntegrity.sourceAsIs",
+    "sourceIntegrity.sourceAssetPath",
+    "sourceIntegrity.noTranslationOrRelabeling",
+    "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+    "sourceIntegrity.russianExplanationOutsideImage",
+    "cleanupScope=none-source-as-is",
+    "visibleSpanishStatus.status=source_image_exceptions_only with exceptions.kind=source-document-example-original-visible-text and exceptions.assetPath matching assetPath when visibleSpanish=true",
+    "Russian explanation remains outside the source-as-is document example image"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.infographicRequiredFields, [
     "assetCategory=source-transferred-infographic",
@@ -1622,7 +1749,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1 implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1 and 2 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
@@ -1630,23 +1757,23 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
-  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 4);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 6);
+  assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 10);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.pendingSections, 4);
-  assert.equal(result.implementedSections, 6);
+  assert.equal(result.pendingSections, 0);
+  assert.equal(result.implementedSections, 10);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56]);
   assert.deepEqual(result.skippedDividerPages, [21, 43]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapter_1_sections_including_ch1-shared-trip");
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_and_2_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
 test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy baseline evidence allowed", () => {
-  for (const id of implementedSectionIds) {
+  for (const id of legacyBaselineSectionIds) {
     const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
     assert.equal("visualEvidenceSchemaVersion" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
     assert.equal("visualRulePolicyId" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
@@ -1654,7 +1781,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 6);
+  assert.equal(result.implementedSections, 10);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -1754,7 +1881,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 7);
+    assert.equal(output.implementedSections, 10);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2157,6 +2284,68 @@ test("Manual guide source-fidelity checker accepts strict source-as-is visible S
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.implementedSections, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts explicit source-as-is document examples", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-visible-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const documentAsset = implementationEvidence.localAssetMetadata[1];
+      documentAsset.assetKind = "high-resolution-original-source-document-image-fixture";
+      documentAsset.assetCategory = "source-as-is-document-example";
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: documentAsset.assetPath,
+            kind: "source-document-example-original-visible-text",
+            visibleSpanishScope: "source-document-example-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects source-as-is document examples with non-document asset kinds", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-wrong-kind-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const documentAsset = implementationEvidence.localAssetMetadata[1];
+      documentAsset.assetKind = "high-resolution-original-source-wayfinding-photo";
+      documentAsset.assetCategory = "source-as-is-document-example";
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: documentAsset.assetPath,
+            kind: "source-document-example-original-visible-text",
+            visibleSpanishScope: "source-document-example-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when document-example category is applied to non-document artwork");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetKind must identify a high-resolution original source document image"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2640,8 +2829,8 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.pendingSections, 4);
-    assert.equal(output.implementedSections, 6);
+    assert.equal(output.pendingSections, 0);
+    assert.equal(output.implementedSections, 10);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

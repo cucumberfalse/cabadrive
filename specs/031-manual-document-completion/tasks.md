@@ -44,9 +44,9 @@
 
 ## Chapter / Appendix Content Slices
 
-- [ ] T029 Orchestrator assigns Chapter 2 PR from fresh latest `main`; scope is pages `43-56` and sections `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, `ch2-scoring` only.
-- [ ] T030 Chapter 2 implementation preserves page `55` boundary between incident obligations and Scoring and records page `56` closing-slogan disposition.
-- [ ] T031 Chapter 2 PR records legal/document/scoring detail-retention evidence and visual evidence under the stricter rules.
+- [x] T029 Orchestrator assigns Chapter 2 PR from fresh latest `main`; scope is pages `43-56` and sections `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, `ch2-scoring` only.
+- [x] T030 Chapter 2 implementation preserves page `55` boundary between incident obligations and Scoring and records page `56` closing-slogan disposition.
+- [x] T031 Chapter 2 PR records legal/document/scoring detail-retention evidence and visual evidence under the stricter rules.
 - [ ] T032 Orchestrator assigns Chapter 3 PR from fresh latest `main`; scope is pages `57-88` only.
 - [ ] T033 Chapter 3 implementation covers priority, right-of-way, lights, speed, turns, overtaking, highways, adverse conditions, and stopping/parking sections in source order.
 - [ ] T034 Orchestrator assigns Chapter 4 PR from fresh latest `main`; scope is pages `89-97` only.
@@ -69,21 +69,21 @@
 
 For each chapter-equivalent content PR:
 
-- [ ] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
-- [ ] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
-- [ ] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
-- [ ] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
-- [ ] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
-- [ ] T054 Implement only the assigned source chapter/appendix/front-matter scope.
-- [ ] T055 Keep Russian headings, prose, lists, captions, callouts, labels, and meaningful overlay text selectable/copyable DOM/SVG where feasible.
-- [ ] T056 Preserve source order and all ticket-critical legal, numeric, safety, document, sign, marking, scoring, exception, phone/contact, and ordered-list details.
-- [ ] T057 Extract new images/crops at x5 zoom/source export target or document equivalent/better method with dimensions/hash/runtime-size evidence.
-- [ ] T058 Keep photos, traffic signs, and road-marking images unmodified source-as-is; put Russian explanation outside the image.
-- [ ] T059 Transfer infographics as high-quality source images; remove Spanish only at glyph/letter level; preserve connectors/shapes/pictograms; overlay selectable Russian text where feasible.
-- [ ] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
-- [ ] T061 Add/update route, content coverage, source inventory, visual metadata, source-as-is, infographic cleanup, forbidden-pattern, selectable-text, responsive, and Playwright tests.
-- [ ] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
-- [ ] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
+- [x] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
+- [x] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
+- [x] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
+- [x] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
+- [x] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
+- [x] T054 Implement only the assigned source chapter/appendix/front-matter scope.
+- [x] T055 Keep Russian headings, prose, lists, captions, callouts, labels, and meaningful overlay text selectable/copyable DOM/SVG where feasible.
+- [x] T056 Preserve source order and all ticket-critical legal, numeric, safety, document, sign, marking, scoring, exception, phone/contact, and ordered-list details.
+- [x] T057 Extract new images/crops at x5 zoom/source export target or document equivalent/better method with dimensions/hash/runtime-size evidence.
+- [x] T058 Keep photos, traffic signs, and road-marking images unmodified source-as-is; put Russian explanation outside the image.
+- [x] T059 Transfer infographics as high-quality source images; remove Spanish only at glyph/letter level; preserve connectors/shapes/pictograms; overlay selectable Russian text where feasible.
+- [x] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
+- [x] T061 Add/update route, content coverage, source inventory, visual metadata, source-as-is, infographic cleanup, forbidden-pattern, selectable-text, responsive, and Playwright tests.
+- [x] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
+- [x] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
 
 ## Cycle PR Set
 
@@ -93,7 +93,7 @@ For each chapter-equivalent content PR:
 | Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, https://github.com/cucumberfalse/cabadrive/pull/186 | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | original audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; audit content/effective head and post-validation evidence-only commits are recorded by the latest PR #186 `Effective content head`, `Final-validation evidence-only commit`, and `Current-PR-head read-only guard` bullets under `## Final Validation Evidence`; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | audit-only PR opened ready; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
-| Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
+| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR #187, https://github.com/cucumberfalse/cabadrive/pull/187 | `9750b1578627c531146226ebe0e9673aadfef67b` | implementation content head `60f25d7b48abefc1cfa57c1aa67c028abb2e0d1c`; process-memory repair head `d0f969e0789dd890db8b374009e509dd23d9461c` records PR #187 state; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | open ready PR; review fixes for threads `PRRT_kwDOSX65IM6Gt8WL` and `PRRT_kwDOSX65IM6Gt8WS` implemented; local verification passed; CI pending or rerunning | yes |
 | Chapter 3 content | pages `57-88` | pending | pending | pending | pending | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
 | Chapter 5 content | pages `98-103` | pending | pending | pending | pending | yes |
@@ -110,7 +110,7 @@ For each chapter-equivalent content PR:
 | Front matter | `1-13` | Separate support PR; include learner-useful presentation/glossary; omit book-only title/index/category pages with evidence | pending |
 | Introduction | `14-20` | Already implemented; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | audit complete; no correction needed |
 | Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | merged and audited; no correction needed |
-| Chapter 2 | `43-56` | One chapter PR, next likely | pending |
+| Chapter 2 | `43-56` | One chapter PR covering `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring`; page `43` divider skipped; page `56` closing slogan omitted as book-only | implemented in branch `codex/031-chapter-2`; ready PR #187 open at https://github.com/cucumberfalse/cabadrive/pull/187 |
 | Chapter 3 | `57-88` | One chapter PR | pending |
 | Chapter 4 | `89-97` | One chapter PR | pending |
 | Chapter 5 | `98-103` | One chapter PR | pending |
@@ -146,6 +146,14 @@ For each chapter-equivalent content PR:
 - Implementation decision, Introduction/Chapter 1 visual audit `2026-06-03T07:32:00Z`: audit-only slice assigned in worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, latest-main base `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` from merged PR #185. Scope remained process-memory audit evidence only: no Chapter 2+ content, front matter, runtime manual content, source assets, durable docs, tests, or checker code changed.
 - Audit decision: Introduction pages `14-20` and Chapter 1 pages `21-42` satisfy the stricter visual-rule requirements from PR #185 based on existing source-fidelity evidence, focused tests, and read-only asset/hash/dimension inspection. No Introduction or Chapter 1 correction PR is needed from this audit.
 - Process-memory repair decision, PR #186: the reusable per-chapter implementation checklist remains pending because this PR is audit-only; audit completion is recorded in T022-T025 and audit evidence sections.
+- Implementation decision, Chapter 2 content `2026-06-03T10:36:55Z`: Implementation Agent assignment was confirmed for worktree `/Users/chap/devel/cabadrive-worktrees/031-chapter-2`, branch `codex/031-chapter-2`, with latest verified base `9750b1578627c531146226ebe0e9673aadfef67b` after merged PR #186. Parallel work warning was preserved; no sibling worktree, branch, dirty diff, PR, or process memory was mutated.
+- Chapter 2 source-boundary decision: source page `43` is a divider and is not runtime content; `ch2-incident-obligations` owns page `55` only before `page-055-block-08`; `ch2-scoring` starts at `page-055-block-08`; source page `56` is a closing slogan and is recorded as book-only omitted material, not Scoring content.
+- Chapter 2 visual decision: required-document visuals are runtime source-as-is images with visible Spanish confined to the original image and Russian explanation in surrounding DOM text. No photo, traffic sign, or road-marking image was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, or otherwise modified. No Chapter 2 infographic needed Spanish glyph cleanup in this slice; source visuals were transferred as original source crops.
+- Chapter 2 content decision: legal, document, incident, and scoring details were preserved in source order, including Law 2148, responsibility types, sanctions, alcohol `0,0 g/L` novice rule and `1,0 g/L` contravention threshold, scene-flight duties, DNI/license rules, novice signage, insurance, VTV/RTO, GNC, RVA, incident phone/contact details, and Scoring point-loss/recovery details.
+- Review-fix decision, PR #187 `PRRT_kwDOSX65IM6Gt8WL`: required-document visuals are now classified as explicit `source-as-is-document-example` assets with `source-document-example-original-visible-text` exceptions. The checker validates that this category uses `high-resolution-original-source-document-image-*` asset kinds, source-integrity byte/dimension matching, no visual edits, and Russian explanation outside the image; the image bytes were not changed.
+- Review-fix decision, PR #187 `PRRT_kwDOSX65IM6Gt8WS`: the `ch2-incident-obligations` Proteger step now retains the concrete warning-device placement rules, `30 m / 60 m` city and `50 m / 100 m` road distances, tunnel behavior with position lights, vest, safe exit, and mechanical assistance, plus highway removal/emergency contacts including `AUSA 140` and `AUSOL 0800-999-9999`.
+- Review-fix decision, PR #187 `PRRT_kwDOSX65IM6Gt-pp`: the learner-facing `page-56-disposition` callout was removed from `ch2-scoring`. Page `56` remains recorded only in registry/process memory as `chapter-closing-slogan-only` / `omittedClosingSourcePage`; runtime Scoring content stays limited to source page `55`.
+- Review-fix decision, PR #187 `PRRT_kwDOSX65IM6GuLOz`: the `ch2-required-documents` VTV cadence now states that after the first inspection private CABA cars and motovehicles keep `2`-year validity until `8` years old or `80 000 km`; if mileage is the trigger the source `4 000 km` tolerance remains explicit; only after that threshold does VTV become annual. Source images/document crops were not modified.
 
 ## Dead Ends
 
@@ -154,12 +162,39 @@ For each chapter-equivalent content PR:
 - No unresolved dead ends remain for PR #185 process-memory finalization repair.
 - No audit dead ends: the Introduction/Chapter 1 audit did not require PDF re-export or runtime changes because existing local source-region artifacts, source page renders, evidence metadata, and focused fixture tests were sufficient to verify source-fidelity status.
 - Resolved audit verification setup: first `pnpm run validate:content` attempt failed because this fresh worktree lacked `node_modules` and `pdf-parse`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies, and all verification commands passed on rerun.
+- Resolved Chapter 2 setup: first `pnpm exec tsc --noEmit` failed because the fresh worktree lacked `node_modules`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies and TypeScript passed afterward.
+- Resolved Chapter 2 evidence setup: first manual-guide focused run failed because desktop/mobile screenshot evidence paths for Chapter 2 did not yet exist; focused Playwright capture created committed screenshots for all four Chapter 2 sections.
+- Resolved Chapter 2 runtime image evidence: the first no-upscale screenshot capture saw two lower required-document images as unloaded while offscreen; the capture script was updated to scroll through and decode all source-image cards before checking dimensions. Browser spot check then confirmed `6/6` source images loaded with `noUpscale: true` and no horizontal overflow.
+- Resolved Chapter 2 preflight gate: first `pnpm run preflight` stopped at `check-feature-memory --worktree` because the Chapter 2 product paths were not yet accompanied by a same-PR `tasks.md` update; this entry records the required feature-memory update before rerun.
+- Resolved PR #187 review finding `PRRT_kwDOSX65IM6Gt8WL`: source-as-is document examples no longer reuse the `source-as-is-photo` category; checker, registry evidence, runtime metadata, and tests now use an explicit document-example category and exception kind.
+- Resolved PR #187 review finding `PRRT_kwDOSX65IM6Gt8WS`: incident protection details that were collapsed into a general instruction are restored in runtime Russian content and asserted by focused tests.
+- Resolved PR #187 review finding `PRRT_kwDOSX65IM6Gt-pp`: Scoring no longer renders page `56` closing-slogan text; focused content and e2e tests assert page `56` is omitted from runtime routes/content while the registry retains the book-only disposition.
+- Resolved PR #187 review finding `PRRT_kwDOSX65IM6GuLOz`: VTV renewal cadence no longer incorrectly becomes annual immediately after the first inspection; runtime content and tests preserve the `8` years / `80 000 km` / `4 000 km` tolerance details.
 
 ## Known Issues
 
 - No unresolved known issues.
 - Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Owner decision: accepted no action for this prerequisite scope. Disposition: not applicable.
 - Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
+- Chapter 2 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 2 content and requires no action in this slice. Owner decision: accepted no action for PR #187. Disposition: not applicable.
+
+## Chapter 2 Implementation Verification Evidence
+
+- Base and scope evidence: `git rev-parse HEAD` before editing returned `9750b1578627c531146226ebe0e9673aadfef67b`, matching the Orchestrator-assigned latest verified `origin/main` base after PR #186. Initial `git status --short --branch` reported `## codex/031-chapter-2...origin/main` with no local changes. Work stayed in `/Users/chap/devel/cabadrive-worktrees/031-chapter-2` on branch `codex/031-chapter-2`.
+- Source extraction evidence: rendered `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf` with `swift scripts/render-manual-pdf-pages.swift ... --scale 5 --quality 0.95`; rendered pages were `2976x4209`. Source crop assets were produced from that x5 render with top-left coordinate crops and no resizing or visual cleanup. Runtime required-document images and validation crops have matching SHA-256 byte hashes recorded in `section-registry.chapters-1-2.json`.
+- Runtime image evidence: Chapter 2 required-document source images are `dni-source-as-is.jpg` `320x118`, `license-source-as-is.jpg` `300x105`, `beginner-sign-source-as-is.jpg` `315x215`, `cedulas-source-as-is.jpg` `1110x260`, `vtv-source-as-is.jpg` `1150x335`, and `rva-source-as-is.jpg` `360x300`. Runtime display metadata records `noUpscale: true`, and focused Playwright screenshot capture confirmed no horizontal overflow and no runtime upscaling.
+- Screenshot evidence: focused Playwright capture created committed desktop/mobile section screenshots for `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring` under `content/validation/manual-guide/ch2-*/`.
+- Browser evidence: in-app browser spot check at `http://localhost:5174/#manual-section-ch2-required-documents` reported `sectionId: ch2-required-documents`, six source-as-is document example images, six `data-source-as-is="true"` images, `loadedImages: 6`, `noUpscale: true`, and no horizontal overflow.
+- Focused verification passed: `node scripts/manual-guide-source-fidelity.mjs` passed with `sectionsChecked: 10`, `pendingSections: 0`, `implementedSections: 10`, `skippedSourcePages: [21,43,56]`, `sharedSourcePages: [55]`, and `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- Focused verification passed: `node --test tests/content-manual-guide-chapters.test.mjs` passed with `66` tests and `0` failures.
+- Focused verification passed: `pnpm exec tsc --noEmit`.
+- Focused e2e repair verification passed: `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1 and Chapter 2 section pages"` passed with `2` tests and `0` failures after updating the Chapter 2 group status expectation from pending to active.
+- Repository verification passed: `pnpm run validate:content`, `pnpm run test` (`375` tests, `0` failures), `pnpm run build`, `pnpm run preflight` (`375` unit tests and `74` Playwright tests, `0` failures), and `git diff --check`. The Vite large chunk warning appeared during builds and remains pre-existing/non-fatal.
+- PR #187 review-fix verification passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`68` tests, `0` failures); `pnpm exec tsc --noEmit`; `pnpm run validate:content`; `pnpm run test` (`377` tests, `0` failures); `pnpm run build`; focused e2e `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1 and Chapter 2 section pages"` (`2` tests, `0` failures); and `pnpm run preflight` (`377` unit tests and `74` Playwright tests, `0` failures). First focused e2e attempt failed against stale `dist`; rerun after `pnpm run build` passed.
+- PR #187 Scoring page-56 review-fix verification passed: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`68` tests, `0` failures); `pnpm exec tsc --noEmit`; `pnpm run validate:content`; `pnpm run build`; focused e2e `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1 and Chapter 2 section pages"` (`2` tests, `0` failures); `pnpm run test` (`377` tests, `0` failures); `pnpm run preflight` (`377` unit tests and `74` Playwright tests, `0` failures); `node scripts/check-feature-memory.mjs --worktree`; and `git diff --check`. These checks also reconfirmed the previous incident-obligations and document-category review fixes remain intact.
+- PR #187 VTV content-fidelity review-fix verification passed for `PRRT_kwDOSX65IM6GuLOz`: `node scripts/manual-guide-source-fidelity.mjs`; `node --test tests/content-manual-guide-chapters.test.mjs` (`68` tests, `0` failures); `pnpm exec tsc --noEmit`; `pnpm run validate:content`; `pnpm run test` (`377` tests, `0` failures); `pnpm run build`; focused e2e `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1 and Chapter 2 section pages"` (`2` tests, `0` failures); `pnpm run preflight` (`377` unit tests and `74` Playwright tests, `0` failures); `node scripts/check-feature-memory.mjs --worktree`; and `git diff --check`. The Vite large chunk warning remained pre-existing/non-fatal; no source images, photos, signs, markings, or document crops were modified.
+- Docker validation blocker: isolated Docker runtime validation was attempted with `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 make build`. Docker stalled while loading metadata for `docker.io/library/node:22-alpine` and `docker.io/library/nginx:1.29-alpine`; explicit `docker pull node:22-alpine` and `docker pull nginx:1.29-alpine` also produced no progress before being terminated. `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 docker compose ps` showed no project containers, and `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 make down` completed. Docker runtime smoke is blocked by base-image registry/metadata access, not by app validation failures.
+- Protected visual confirmation: no Chapter 2 photo, traffic sign, or road-marking visual was modified. Required-document visuals with Spanish text remain source-as-is inside image files; Russian explanations are outside images as DOM text. No infographic Spanish removal was performed in Chapter 2; source-image transfer/glyph-cleanup rules were therefore not exercised beyond preserving original source crops.
 
 ## Final Validation Evidence
 
@@ -261,6 +296,19 @@ For each chapter-equivalent content PR:
 - Current-PR-head read-only guard: Orchestrator verified current PR head 6e9b3f9326b27fc428538abdb6a454abe340615e against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
 - Current-PR-head read-only guard: Orchestrator verified current PR head bb33ffc129f04de17d31c2968e51639cc0ff9cb6 against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes through bb33ffc129f04de17d31c2968e51639cc0ff9cb6 were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
 - Limit escalation: none
+- Effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+- Architect validation: passed at 2026-06-03T11:37:35Z for effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+- Architect validated effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+- Architect return count: 0
+- Architect validation: PR #187 Chapter 2 scope validated for pages 43-56 and sections ch2-legal-responsibility, ch2-required-documents, ch2-incident-obligations, and ch2-scoring.
+- Architect validation: required checks passed on 3b651151e5fc918c480b99a19f5569214ae2339f: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+- Architect validation: Review Agent no-findings review 4418020628 applies to 3b651151e5fc918c480b99a19f5569214ae2339f, and automated AI Review passed for the same effective content head.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope; review-fix threads PRRT_kwDOSX65IM6Gt8WL, PRRT_kwDOSX65IM6Gt8WS, PRRT_kwDOSX65IM6Gt-pp, and PRRT_kwDOSX65IM6GuLOz are resolved in content and verification evidence.
+- Analyst feedback Architect disposition: none requiring action for PR #187 Chapter 2 scope.
+- Architect validation: Chapter 2 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #187, accepted no action, and disposition not applicable.
+- Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice at effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head 3b651151e5fc918c480b99a19f5569214ae2339f for PR #187; post-effective changes through this validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
 
@@ -334,6 +382,10 @@ For each chapter-equivalent content PR:
 
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
 - No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition. Architect disposition: disposed; no action needed for PR #186 audit-only scope.
+- No unresolved Implementation Agent feedback for the Chapter 2 content slice in PR #187. The Docker base-image metadata stall is recorded as a known verification blocker/disposition-not-product-feedback item, not product or architecture feedback. No Architect disposition is needed beyond the known-issue no-action disposition if applicable.
+- No unresolved Implementation Agent feedback remains for PR #187 review-fix threads `PRRT_kwDOSX65IM6Gt8WL` and `PRRT_kwDOSX65IM6Gt8WS`; both are implemented and covered by checker/content/e2e verification. No product or architecture follow-up is requested by Implementation Agent.
+- No unresolved Implementation Agent feedback remains for PR #187 review-fix thread `PRRT_kwDOSX65IM6Gt-pp`; the runtime Scoring section now excludes the page `56` slogan and keeps the omission disposition in registry/process memory only.
+- No unresolved Implementation Agent feedback remains for PR #187 review-fix thread `PRRT_kwDOSX65IM6GuLOz`; the VTV validity cadence is corrected in runtime content and asserted by focused content/e2e tests.
 
 ## Introduction And Chapter 1 Visual Audit Evidence
 
@@ -721,6 +773,46 @@ Architect disposition: no open Implementation Agent feedback remains for PR #186
 Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
 
 Architect disposition: owner decision for Vite large chunk warning and audit known-issue entries is accepted no action for PR #186 because they are pre-existing, nonfatal, unrelated to this audit-only slice, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T11:37:35Z
+
+Architect validated effective content head: 3b651151e5fc918c480b99a19f5569214ae2339f
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #187 Chapter 2 scope at 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect validation evidence: PR #187 implements only Chapter 2 pages 43-56, covering ch2-legal-responsibility, ch2-required-documents, ch2-incident-obligations, and ch2-scoring, with no Chapter 3+ content and no unrelated source unit bundled.
+
+Architect validation evidence: Chapter 2 page boundaries are preserved: source page 43 is a divider and not runtime content, incident obligations share page 55 only before page-055-block-08, Scoring starts at page-055-block-08, runtime Scoring is limited to page 55, and page 56 remains book-only omitted material in registry and process memory.
+
+Architect validation evidence: Strict visual requirements are satisfied for Chapter 2: source crops were produced from x5 source renders, required-document visuals use explicit source-as-is-document-example evidence with source-integrity byte and dimension matching, original visible Spanish remains inside source images, Russian explanations are outside images, and no photo, sign, marking, document example, or source crop was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, or modified.
+
+Architect validation evidence: Chapter 2 content fidelity is satisfied after review fixes: incident Proteger details include warning-device direction and distances, 30 m and 60 m city placement, 50 m and 100 m road placement, tunnel behavior, AUSA 140, and AUSOL 0800-999-9999; VTV cadence includes first VTV at year 4 or 60 000 km, 2-year validity until 8 years or 80 000 km, 4 000 km tolerance, then annual validity.
+
+Architect validation evidence: Required checks passed on 3b651151e5fc918c480b99a19f5569214ae2339f: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head 3b651151e5fc918c480b99a19f5569214ae2339f in review 4418020628 at 2026-06-03T11:24:39Z, and automated Codex bot review passed through AI Review for the same effective content head.
+
+Architect validation evidence: Local guard evidence from Orchestrator shows git status clean and synced with origin/codex/031-chapter-2, node scripts/check-feature-memory.mjs --worktree passed, and git diff --check origin/main..HEAD passed.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope; review-fix threads PRRT_kwDOSX65IM6Gt8WL, PRRT_kwDOSX65IM6Gt8WS, PRRT_kwDOSX65IM6Gt-pp, and PRRT_kwDOSX65IM6GuLOz are resolved by implementation and verification evidence.
+
+Architect validation evidence: Known Issues section records no unresolved Chapter 2 known issues; the Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #187, accepted no action, and disposition not applicable.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, PR #186 as Introduction and Chapter 1 audit-only slice, and PR #187 as Chapter 2 content slice at base 9750b1578627c531146226ebe0e9673aadfef67b and effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #187 Chapter 2 scope at 3b651151e5fc918c480b99a19f5569214ae2339f.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #187 Chapter 2 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #187 because it is pre-existing, nonfatal, unrelated to Chapter 2 content, and disposition not applicable.
 
 ## Review Requirements
 

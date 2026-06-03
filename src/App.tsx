@@ -2487,6 +2487,41 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
   );
 }
 
+function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "source-image-cards" }> }) {
+  return (
+    <section className="manual-source-image-cards" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+      <h3>{block.titleRu}</h3>
+      <div className="manual-source-image-card-grid">
+        {block.cards.map((card) => (
+          <article
+            key={card.id}
+            className="manual-source-image-card"
+            data-card-id={card.id}
+            data-source-page={card.sourcePage}
+            data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
+          >
+            <figure>
+              <img
+                src={assetUrl(card.assetPath)}
+                alt={card.altRu}
+                data-visible-spanish={card.visibleSpanish}
+                data-source-image-exception={card.sourceImageException.kind}
+                data-visible-spanish-scope={card.sourceImageException.visibleSpanishScope}
+                data-source-as-is={card.sourceImageException.sourceAsIs}
+                loading="lazy"
+              />
+            </figure>
+            <div>
+              <h4>{card.titleRu}</h4>
+              <p>{card.bodyRu}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
     <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
@@ -2597,6 +2632,9 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "shared-trip-closing") {
             return <SharedTripClosingBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "source-image-cards") {
+            return <SourceImageCardsBlockView key={block.id} block={block} />;
           }
 
           const Tag = block.kind === "quote" ? "blockquote" : "p";

@@ -5,6 +5,10 @@ import { ch1PedestrianPrioritySection } from "./manual-sections/ch1-pedestrian-p
 import { ch1PublicTransportSystemSection } from "./manual-sections/ch1-public-transport-system";
 import { ch1SharedTripSection } from "./manual-sections/ch1-shared-trip";
 import { ch1SustainableMobilitySection } from "./manual-sections/ch1-sustainable-mobility";
+import { ch2IncidentObligationsSection } from "./manual-sections/ch2-incident-obligations";
+import { ch2LegalResponsibilitySection } from "./manual-sections/ch2-legal-responsibility";
+import { ch2RequiredDocumentsSection } from "./manual-sections/ch2-required-documents";
+import { ch2ScoringSection } from "./manual-sections/ch2-scoring";
 import {
   introductionDocumentStyleGuide,
   introductionNavigation,
@@ -15,8 +19,8 @@ export type ManualGuideStatus = "pending" | "active";
 export type ManualGuideSectionStatus = "pending" | "implemented";
 
 type OriginalSourceImageTextException = {
-  kind: "source-image-original-visible-text";
-  visibleSpanishScope: "source-image-only";
+  kind: "source-image-original-visible-text" | "source-document-example-original-visible-text";
+  visibleSpanishScope: "source-image-only" | "source-document-example-image-only";
   sourceAsIs: true;
   russianExplanationOutsideImage: true;
 };
@@ -597,6 +601,29 @@ export type ManualGuideContentBlock =
       quoteRu: string;
       captionRu: string;
       visualNotes: string[];
+    }
+  | {
+      id: string;
+      kind: "source-image-cards";
+      titleRu: string;
+      sourceTextEs: string;
+      cards: {
+        id: string;
+        titleRu: string;
+        sourcePage: number;
+        sourceRegion: {
+          x: number;
+          y: number;
+          width: number;
+          height: number;
+        };
+        assetPath: string;
+        altRu: string;
+        visibleSpanish: true;
+        sourceImageException: OriginalSourceImageTextException;
+        bodyRu: string;
+      }[];
+      visualNotes: string[];
     };
 
 export type ManualGuideSectionContent = {
@@ -646,7 +673,11 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch1PedestrianPrioritySection,
   ch1BicycleSection,
   ch1PublicTransportSystemSection,
-  ch1SharedTripSection
+  ch1SharedTripSection,
+  ch2LegalResponsibilitySection,
+  ch2RequiredDocumentsSection,
+  ch2IncidentObligationsSection,
+  ch2ScoringSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
