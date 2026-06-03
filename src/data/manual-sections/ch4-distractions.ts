@@ -87,13 +87,18 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           assetPath: `${assetRoot}/distraction-panels-transferred-infographic.png`,
           altRu: "Перенесенный трехпанельный визуал отвлечений с сохраненными исходными рисунками.",
           visibleSpanish: false,
+          russianOverlayLabels: [
+            { id: "distraction-food-label", textRu: "Еда / mate", xPct: 7.2, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" },
+            { id: "distraction-object-label", textRu: "Предмет", xPct: 25.8, yPct: 29.4, widthPct: 17.9, heightPct: 12.4, tone: "dark-on-light" },
+            { id: "distraction-view-label", textRu: "Нет обзора", xPct: 44.4, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" }
+          ],
           bodyRu:
-            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
+            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
         }
       ],
       visualNotes: [
         "The distraction panels are transferred from the scale-5 source crop with glyph-level Spanish cleanup.",
-        "Russian learner explanation remains ordinary runtime text outside the image."
+        "Russian panel labels are selectable DOM overlays positioned on the cleaned infographic caption bands; learner explanation remains ordinary runtime text outside the image."
       ]
     },
     {

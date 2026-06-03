@@ -472,7 +472,17 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
   assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
   assertRequiredFields(
     asset.infographicTransfer,
-    ["sourceImageTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
+    [
+      "sourceImageTransfer",
+      "sourceAssetPath",
+      "sourceCropSha256",
+      "sourceCropDimensions",
+      "noApproximateRedraw",
+      "broadMaskPlatePatchStatus",
+      "russianOverlayStrategy",
+      "russianOverlayLabels",
+      "overlayTextSelectability"
+    ],
     `${messagePrefix}.infographicTransfer`
   );
   validateSourceTransferProvenance(asset.infographicTransfer, `${messagePrefix}.infographicTransfer`, sourceRegionRecords);
@@ -484,6 +494,24 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
     `${messagePrefix}.infographicTransfer.russianOverlayStrategy must be selectable DOM/SVG`,
     asset
   );
+  assertCondition(
+    asset.infographicTransfer.overlayTextSelectability === "selectable-dom-text" || asset.infographicTransfer.overlayTextSelectability === "selectable-svg-text",
+    `${messagePrefix}.infographicTransfer.overlayTextSelectability must be selectable DOM/SVG text`,
+    asset
+  );
+  assertCondition(Array.isArray(asset.infographicTransfer.russianOverlayLabels), `${messagePrefix}.infographicTransfer.russianOverlayLabels must be an array`, asset);
+  assertCondition(asset.infographicTransfer.russianOverlayLabels.length > 0, `${messagePrefix}.infographicTransfer.russianOverlayLabels must not be empty`, asset);
+  asset.infographicTransfer.russianOverlayLabels.forEach((label, index) => {
+    const labelPrefix = `${messagePrefix}.infographicTransfer.russianOverlayLabels[${index}]`;
+    assertRequiredFields(label, ["id", "textRu", "xPct", "yPct", "widthPct", "heightPct"], labelPrefix);
+    assertCondition(typeof label.id === "string" && label.id.length > 0, `${labelPrefix}.id must be a non-empty string`, label);
+    assertCondition(typeof label.textRu === "string" && /[А-Яа-яЁё]/u.test(label.textRu), `${labelPrefix}.textRu must contain Russian text`, label);
+    for (const field of ["xPct", "yPct", "widthPct", "heightPct"]) {
+      assertCondition(typeof label[field] === "number" && label[field] >= 0 && label[field] <= 100, `${labelPrefix}.${field} must be a percentage from 0 to 100`, label);
+    }
+    assertCondition(label.xPct + label.widthPct <= 100, `${labelPrefix} horizontal placement must stay within the image`, label);
+    assertCondition(label.yPct + label.heightPct <= 100, `${labelPrefix} vertical placement must stay within the image`, label);
+  });
   assertCondition(asset.cleanupScope === "glyph-level-spanish-cleanup", `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup`, asset);
   assertCondition(
     asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",

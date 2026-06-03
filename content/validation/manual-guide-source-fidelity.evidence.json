@@ -514,7 +514,9 @@
       "infographicTransfer.broadMaskPlatePatchStatus=none",
       "cleanupScope=glyph-level-spanish-cleanup",
       "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
-      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg",
+      "infographicTransfer.russianOverlayLabels nonempty with percentage placement over cleaned infographic surface",
+      "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text"
     ],
     "diagramRequiredFields": [
       "assetCategory=source-transferred-diagram",

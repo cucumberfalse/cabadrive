@@ -172,7 +172,10 @@ test("Introduction article pages use native Russian DOM content without visible 
   assert.match(stylesSource, /\.intro-doc-block[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.intro-doc-block[\s\S]*?white-space:\s*normal/);
   assert.match(stylesSource, /\.intro-photo-quote blockquote/);
-  assert.doesNotMatch(introductionAppSource, /<iframe|<object|<embed|pdfjs|PDFViewer|pandemia-source-mask|source-mask|overlay/i);
+  assert.doesNotMatch(
+    introductionAppSource,
+    /<iframe|<object|<embed|pdfjs|PDFViewer|pandemia-source-mask|source-mask|intro-[\w-]*overlay|pandemia-[\w-]*overlay/i
+  );
   assert.doesNotMatch(stylesSource, /\.intro-document[\s\S]*?background-image:\s*url\([^)]*page-0(?:16|17|18|19|20)\.jpg/);
 });
 

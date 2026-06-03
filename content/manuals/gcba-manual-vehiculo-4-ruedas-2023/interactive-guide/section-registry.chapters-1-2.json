@@ -4779,7 +4779,56 @@
               "noApproximateRedraw": true,
               "broadMaskPlatePatchStatus": "none",
               "cleanupMethod": "glyph-letter-level-background-restoration",
-              "russianOverlayStrategy": "selectable-dom"
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "principiantes-label",
+                  "textRu": "Нович.",
+                  "xPct": 9.1,
+                  "yPct": 36.5,
+                  "widthPct": 10.2,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "profesionales-label",
+                  "textRu": "Проф.",
+                  "xPct": 19.9,
+                  "yPct": 36.5,
+                  "widthPct": 10.4,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "motociclistas-label",
+                  "textRu": "Мото",
+                  "xPct": 30.7,
+                  "yPct": 36.5,
+                  "widthPct": 10.4,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "acompanantes-label",
+                  "textRu": "Пасс. мото",
+                  "xPct": 41.7,
+                  "yPct": 36.5,
+                  "widthPct": 10.3,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "particulares-label",
+                  "textRu": "Частн.",
+                  "xPct": 52.4,
+                  "yPct": 36.5,
+                  "widthPct": 10.3,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
             }
           }
         ],
@@ -4818,7 +4867,7 @@
         "visualReviewNotes": [
           "Pages 90-92 plus the alcohol/drugs topic blocks on shared page 93 are rendered as selectable Russian DOM text covering impairment, medication, drug-test, alcohol-limit, absorption, elimination, positive-test, refusal rules, responsible-driver guidance, certified/calibrated instruments, and resaca/veisalgia.",
           "The page 90 drug-test photo/device visual remains an x5 source-as-is runtime crop with matching source crop hash.",
-          "The page 91 alcohol-limit infographic is transferred from the x5 source crop with visibleSpanish=false, glyph-letter-level background restoration, source-shape preservation, no plate-style covering, and selectable Russian threshold rows outside the image."
+          "Page 91 alcohol-limit infographic uses the transferred source-crop PNG as its image base, with Spanish glyph cleanup and selectable Russian category labels over the cleaned header bands; threshold details remain selectable below the image."
         ],
         "checkerResult": "pass"
       },
@@ -5424,7 +5473,38 @@
               "noApproximateRedraw": true,
               "broadMaskPlatePatchStatus": "none",
               "cleanupMethod": "glyph-letter-level-background-restoration",
-              "russianOverlayStrategy": "selectable-dom"
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "distraction-food-label",
+                  "textRu": "Еда / mate",
+                  "xPct": 7.2,
+                  "yPct": 29.4,
+                  "widthPct": 18.1,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "distraction-object-label",
+                  "textRu": "Предмет",
+                  "xPct": 25.8,
+                  "yPct": 29.4,
+                  "widthPct": 17.9,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "distraction-view-label",
+                  "textRu": "Нет обзора",
+                  "xPct": 44.4,
+                  "yPct": 29.4,
+                  "widthPct": 18.1,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
             }
           },
           {
@@ -5495,7 +5575,7 @@
         "visualReviewNotes": [
           "Direct navigation starts on source page 95 and preserves the distractions topic through page 97.",
           "Runtime content covers eating/drinking/mate/smoking, phone, GPS, passenger/mirror/other-action details, and the 100% attention closing line.",
-          "The page 95 three-panel infographic is transferred from the x5 source crop with visibleSpanish=false, glyph-letter-level background restoration, source-shape preservation, no plate-style covering, and selectable Russian explanation outside the image.",
+          "Page 95 distraction-panel infographic uses the transferred source-crop PNG as its image base, with Spanish glyph cleanup and selectable Russian panel labels over the cleaned caption bands; page 97 photo remains protected source-as-is.",
           "The page 97 photo/quote remains an x5 source-as-is runtime crop with matching source crop hash and Russian learner explanation outside the protected photo visual."
         ],
         "checkerResult": "pass"

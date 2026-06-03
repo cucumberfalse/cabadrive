@@ -2745,9 +2745,15 @@ small,
   background: #eef3f2;
 }
 
+.manual-source-image-card[data-has-russian-overlay="true"] {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .manual-source-image-card figure {
   display: grid;
   place-items: center;
+  position: relative;
   min-width: 0;
   margin: 0;
   overflow: hidden;
@@ -2755,11 +2761,53 @@ small,
   background: #ffffff;
 }
 
+.manual-source-image-card[data-has-russian-overlay="true"] figure {
+  width: min(100%, 680px);
+  justify-self: center;
+}
+
 .manual-source-image-card img {
   display: block;
   width: 100%;
   max-width: 180px;
   height: auto;
+}
+
+.manual-source-image-card[data-has-russian-overlay="true"] img {
+  max-width: none;
+}
+
+.manual-source-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: text;
+}
+
+.manual-source-image-overlay-label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 2px;
+  overflow: hidden;
+  text-align: center;
+  overflow-wrap: anywhere;
+  color: #263532;
+  font-size: 0.62rem;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0;
+  pointer-events: auto;
+}
+
+.manual-source-image-overlay-label-light-on-blue {
+  color: #ffffff;
+}
+
+.manual-source-image-overlay-label-dark-on-light {
+  color: #263532;
 }
 
 .manual-source-image-card h4 {

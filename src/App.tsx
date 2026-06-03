@@ -2497,10 +2497,11 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
             key={card.id}
             className="manual-source-image-card"
             data-card-id={card.id}
+            data-has-russian-overlay={card.russianOverlayLabels ? true : undefined}
             data-source-page={card.sourcePage}
             data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
           >
-            <figure>
+            <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
               <img
                 src={assetUrl(card.assetPath)}
                 alt={card.altRu}
@@ -2510,6 +2511,25 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                 data-source-as-is={card.sourceImageException?.sourceAsIs}
                 loading="lazy"
               />
+              {card.russianOverlayLabels && (
+                <div className="manual-source-image-overlay" aria-label="Русские подписи поверх перенесенного инфографического визуала">
+                  {card.russianOverlayLabels.map((label) => (
+                    <span
+                      className={`manual-source-image-overlay-label manual-source-image-overlay-label-${label.tone}`}
+                      data-overlay-label-id={label.id}
+                      key={label.id}
+                      style={{
+                        left: `${label.xPct}%`,
+                        top: `${label.yPct}%`,
+                        width: `${label.widthPct}%`,
+                        height: `${label.heightPct}%`
+                      }}
+                    >
+                      {label.textRu}
+                    </span>
+                  ))}
+                </div>
+              )}
             </figure>
             <div>
               <h4>{card.titleRu}</h4>

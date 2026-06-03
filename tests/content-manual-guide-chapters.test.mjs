@@ -359,7 +359,18 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       noApproximateRedraw: true,
       broadMaskPlatePatchStatus: "none",
       cleanupMethod: "glyph-letter-level-background-restoration",
-      russianOverlayStrategy: "selectable-dom"
+      russianOverlayStrategy: "selectable-dom",
+      overlayTextSelectability: "selectable-dom-text",
+      russianOverlayLabels: [
+        {
+          id: "fixture-russian-label",
+          textRu: "Русская подпись",
+          xPct: 10,
+          yPct: 12,
+          widthPct: 40,
+          heightPct: 12
+        }
+      ]
     }
   };
   implementationEvidence.localAssetMetadata[1] = {
@@ -1076,7 +1087,8 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
       width: 850,
       height: 430,
       sha256: "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
-      sourceSha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
+      sourceSha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+      expectedLabels: ["Нович.", "Проф.", "Мото", "Пасс. мото", "Частн."]
     },
     {
       sectionId: "ch4-distractions",
@@ -1088,13 +1100,15 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
       width: 860,
       height: 260,
       sha256: "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
-      sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+      sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+      expectedLabels: ["Еда / mate", "Предмет", "Нет обзора"]
     }
   ];
 
   assert.match(ch4AlcoholDrugsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /drug-test-source-as-is\.jpg/u);
   assert.match(ch4AlcoholDrugsModuleSource, /alcohol-limits-transferred-infographic\.png/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /russianOverlayLabels[\s\S]*Пасс\. мото/u);
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /alcohol-limits-source-as-is\.jpg/u);
   assert.match(ch4AlcoholDrugsModuleSource, /source-image-original-visible-text/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
@@ -1102,6 +1116,7 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
   assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
   assert.match(ch4DistractionsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(ch4DistractionsModuleSource, /distraction-panels-transferred-infographic\.png/u);
+  assert.match(ch4DistractionsModuleSource, /russianOverlayLabels[\s\S]*Нет обзора/u);
   assert.doesNotMatch(ch4DistractionsModuleSource, /distraction-panels-source-as-is\.jpg/u);
   assert.match(ch4DistractionsModuleSource, /attention-photo-source-as-is\.jpg/u);
   assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
@@ -1161,6 +1176,13 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
     assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
     assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
     assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
+    assert.equal(asset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
+    assert.deepEqual(asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), expectation.expectedLabels);
+    for (const label of asset.infographicTransfer.russianOverlayLabels) {
+      assert.match(label.textRu, /[А-Яа-яЁё]/u);
+      assert.equal(label.xPct + label.widthPct <= 100, true);
+      assert.equal(label.yPct + label.heightPct <= 100, true);
+    }
     assert.equal(sha256File(asset.assetPath), expectation.sha256);
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sourceSha256);
     assert.notEqual(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
@@ -1198,7 +1220,9 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
 
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
   assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\?\.kind\}/);
+  assert.match(appSource, /data-russian-overlay-strategy=\{card\.russianOverlayLabels \? "selectable-dom" : undefined\}/);
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
+  assert.match(stylesSource, /\.manual-source-image-overlay-label/);
 });
 
 test("Manual guide schema prepares section-local implementation and reusable style tokens", () => {
@@ -2239,7 +2263,9 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "infographicTransfer.broadMaskPlatePatchStatus=none",
     "cleanupScope=glyph-level-spanish-cleanup",
     "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
-    "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+    "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg",
+    "infographicTransfer.russianOverlayLabels nonempty with percentage placement over cleaned infographic surface",
+    "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
@@ -2448,6 +2474,22 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects transferred infographics without Russian overlay labels", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-infographic-missing-russian-overlay-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      delete implementationEvidence.localAssetMetadata[0].infographicTransfer.russianOverlayLabels;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred infographic omits Russian overlay labels");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing russianOverlayLabels");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

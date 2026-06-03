@@ -646,6 +646,15 @@ export type ManualGuideContentBlock =
         altRu: string;
         visibleSpanish: boolean;
         sourceImageException?: OriginalSourceImageTextException;
+        russianOverlayLabels?: {
+          id: string;
+          textRu: string;
+          xPct: number;
+          yPct: number;
+          widthPct: number;
+          heightPct: number;
+          tone: "light-on-blue" | "dark-on-light";
+        }[];
         bodyRu: string;
       }[];
       visualNotes: string[];

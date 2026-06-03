@@ -158,13 +158,20 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           assetPath: `${assetRoot}/alcohol-limits-transferred-infographic.png`,
           altRu: "Перенесенный визуал пределов alcohol en sangre с сохраненными исходными пиктограммами и числовыми порогами.",
           visibleSpanish: false,
+          russianOverlayLabels: [
+            { id: "principiantes-label", textRu: "Нович.", xPct: 9.1, yPct: 36.5, widthPct: 10.2, heightPct: 4.4, tone: "light-on-blue" },
+            { id: "profesionales-label", textRu: "Проф.", xPct: 19.9, yPct: 36.5, widthPct: 10.4, heightPct: 4.4, tone: "light-on-blue" },
+            { id: "motociclistas-label", textRu: "Мото", xPct: 30.7, yPct: 36.5, widthPct: 10.4, heightPct: 4.4, tone: "light-on-blue" },
+            { id: "acompanantes-label", textRu: "Пасс. мото", xPct: 41.7, yPct: 36.5, widthPct: 10.3, heightPct: 4.4, tone: "light-on-blue" },
+            { id: "particulares-label", textRu: "Частн.", xPct: 52.4, yPct: 36.5, widthPct: 10.3, heightPct: 4.4, tone: "light-on-blue" }
+          ],
           bodyRu:
-            "Официальный визуал перенесен из x5-фрагмента: испанские буквы очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки. Конкретные пороги из него дублируются ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
+            "Официальный визуал перенесен из x5-фрагмента: испанские буквы очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Конкретные пороги из него дублируются ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
         }
       ],
       visualNotes: [
         "The alcohol-limit visual is transferred from the scale-5 source crop with glyph-level Spanish cleanup.",
-        "Russian learner explanation and threshold rows remain ordinary selectable runtime text outside the image."
+        "Russian category labels are selectable DOM overlays positioned on the cleaned infographic header bands; threshold rows remain ordinary selectable runtime text below the image."
       ]
     },
     {
