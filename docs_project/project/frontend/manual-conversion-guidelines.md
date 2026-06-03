@@ -154,8 +154,9 @@ The checker should pass only when:
 - Source artwork is present, source-faithful, locally bundled, and free of
   visible Spanish text except explicit source-as-is photo, traffic-sign, and
   road-marking exceptions.
-- New image/crop metadata proves x5/equivalent extraction, dimensions/hash
-  where practical, and runtime display-size/no-upscale evidence.
+- New image/crop metadata proves x5/equivalent extraction, dimensions, valid
+  64-hex SHA-256 hashes where required, and runtime display-size/no-upscale
+  evidence.
 - Photo, traffic-sign, and road-marking records prove source-as-is handling and
   Russian explanation outside the image.
 - Infographic and diagram records prove high-quality source-image/source-diagram

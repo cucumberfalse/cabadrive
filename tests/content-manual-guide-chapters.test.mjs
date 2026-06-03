@@ -101,7 +101,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
         assetKind: "source-artwork",
         width: 120,
         height: 80,
-        sha256: "fixture-artwork-1-sha",
+        sha256: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         containsText: false,
         visibleSpanish: false
       },
@@ -110,7 +110,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
         assetKind: "source-artwork",
         width: 90,
         height: 60,
-        sha256: "fixture-artwork-2-sha",
+        sha256: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
         containsText: false,
         visibleSpanish: false
       }
@@ -299,7 +299,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
         assetCategory: "source-transferred-diagram",
         width: 120,
         height: 80,
-        sha256: "fixture-artwork-2-sha",
+        sha256: "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
         containsText: false,
         visibleSpanish: false,
         extractionScaleEvidence: {
@@ -1574,6 +1574,22 @@ test("Manual guide source-fidelity checker rejects future image assets without n
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].runtimeDisplaySize.noUpscale must be true");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict image assets with bogus sha256 metadata", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-bogus-sha-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].sha256 = "fixture-artwork-1-sha";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata uses a placeholder hash");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must be a SHA-256 hash");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

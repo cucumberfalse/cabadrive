@@ -194,6 +194,10 @@ function assertNoForbiddenStrictVisualTerms(value, messagePrefix) {
   }
 }
 
+function validateSha256(value, messagePrefix) {
+  assertCondition(/^[a-f0-9]{64}$/u.test(value), `${messagePrefix} must be a SHA-256 hash`, { value });
+}
+
 function validateExtractionScaleEvidence(value, messagePrefix) {
   assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
   assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
@@ -201,7 +205,7 @@ function validateExtractionScaleEvidence(value, messagePrefix) {
   assertRequiredFields(value.outputDimensions, ["width", "height"], `${messagePrefix}.outputDimensions`);
   assertCondition(value.outputDimensions.width > 0 && value.outputDimensions.height > 0, `${messagePrefix}.outputDimensions must be positive`, value);
   if ("sha256" in value) {
-    assertCondition(/^[a-f0-9]{64}$/u.test(value.sha256), `${messagePrefix}.sha256 must be a SHA-256 hash when present`, value);
+    validateSha256(value.sha256, `${messagePrefix}.sha256`);
   }
 }
 
@@ -315,6 +319,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       assertNoForbiddenStrictVisualTerms(asset, label);
       if (strictImageAssetCategories.has(asset.assetCategory)) {
         assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
+        validateSha256(asset.sha256, `${label}.sha256`);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
         validateRuntimeDisplaySize(asset, label);
       }
