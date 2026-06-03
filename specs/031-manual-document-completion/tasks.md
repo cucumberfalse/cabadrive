@@ -200,7 +200,7 @@ For each chapter-equivalent content PR:
 - Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
 - Chapter 2 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 2 content and requires no action in this slice. Owner decision: accepted no action for PR #187. Disposition: not applicable.
 - Chapter 3 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 3 content and requires no action in this slice. Owner decision: accepted no action for Chapter 3 scope. Disposition: not applicable.
-- PR #188 review-fix known issues: none unresolved. No Chapter 3 source images, crops, traffic signs, road markings, photos, or diagrams were modified by the speed/highway review fix; the change is selectable DOM text/table rendering plus regression assertions and process memory.
+- PR #188 review-fix known issue disposition: resolved. No Chapter 3 source images, crops, traffic signs, road markings, photos, or diagrams were modified by the speed, highway, or speed-table fixes; the change is selectable DOM text/table rendering plus regression assertions and process memory. Owner decision: accepted no action for PR #188 review-fix known issues. Disposition: resolved.
 
 ## Chapter 2 Implementation Verification Evidence
 
@@ -388,6 +388,18 @@ For each chapter-equivalent content PR:
 - Architect validation: Chapter 3 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #188, accepted no action, and disposition not applicable.
 - Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, PR #187 Chapter 2 content slice, and PR #188 Chapter 3 content slice at effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
 - Limit escalation: none
+- Effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect validation: passed at 2026-06-03T15:15:10Z for effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect return count: 0
+- Architect validation: current PR head before this repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530; this Architect-owned repair edits only finalizer-readable process memory in tasks.md and does not change content, tests, runtime files, source assets, or durable docs outside Architect-owned process memory.
+- Architect validation: prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T14:57:43Z is superseded for finalization purposes by this repeat validation after parser-readable Implementation Agent Feedback and Known Issues disposition repair; the validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Architect validation: exact Implementation Agent Feedback section now records PR #188 Chapter 3 feedback as fully disposed with no action needed at f56c42d075dc92d61523301b1f84c3a33faf3a3e and no parser-confusing readiness wording in that disposition candidate.
+- Architect validation: exact Known Issues section now records PR #188 review-fix known issues with owner decision accepted no action and disposition not applicable/resolved, while preserving that no Chapter 3 source images, crops, traffic signs, road markings, photos, or diagrams were modified by the speed, highway, or speed-table fixes.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
+- Architect validation: required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent James posted no actionable findings and the three speed-table AI Review threads were resolved.
+- Architect validation: cycle PR-set coverage remains current for PR #188 as the Chapter 3 content slice after merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice.
+- Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e for PR #188; post-effective changes through this repeat validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
@@ -466,7 +478,8 @@ For each chapter-equivalent content PR:
 - No unresolved Implementation Agent feedback remains for PR #187 review-fix threads `PRRT_kwDOSX65IM6Gt8WL` and `PRRT_kwDOSX65IM6Gt8WS`; both are implemented and covered by checker/content/e2e verification. No product or architecture follow-up is requested by Implementation Agent.
 - No unresolved Implementation Agent feedback remains for PR #187 review-fix thread `PRRT_kwDOSX65IM6Gt-pp`; the runtime Scoring section now excludes the page `56` slogan and keeps the omission disposition in registry/process memory only.
 - No unresolved Implementation Agent feedback remains for PR #187 review-fix thread `PRRT_kwDOSX65IM6GuLOz`; the VTV validity cadence is corrected in runtime content and asserted by focused content/e2e tests.
-- No unresolved Implementation Agent feedback for the Chapter 3 content slice in PR #188 after this speed-table repair. Page `57` is disposed as divider-only; all assigned Chapter 3 source sections are implemented in source order; recovery from the accidental root write is complete and recorded; local verification/Docker/diff checks passed; ready PR #188 is open. Review-fix threads `PRRT_kwDOSX65IM6GwWxS` and `PRRT_kwDOSX65IM6GwWxX` are implemented, pushed, and verified at `2c128758de15de388a03f090ad394e39f3c36377`; process-memory thread `PRRT_kwDOSX65IM6GxhOg` is addressed by status repair; speed-table content threads `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv` are addressed by correcting page `73` vehicle/road combinations and regression assertions. No product or architecture follow-up is requested by Implementation Agent beyond the required rerun of stale final Architect and Analyst validation for the new content head.
+- Implementation Agent feedback for PR #188 Chapter 3 scope is fully disposed. Architect disposition: disposed; no action needed for PR #188 at f56c42d075dc92d61523301b1f84c3a33faf3a3e. Page `57` is disposed as divider-only; all assigned Chapter 3 source sections are implemented in source order; recovery from the accidental root write is complete and recorded; local verification, Docker verification, and diff checks passed. Review-fix threads `PRRT_kwDOSX65IM6GwWxS` and `PRRT_kwDOSX65IM6GwWxX` are implemented and verified at `2c128758de15de388a03f090ad394e39f3c36377`; process-memory thread `PRRT_kwDOSX65IM6GxhOg` is addressed by status repair; speed-table content threads `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv` are addressed by correcting page `73` vehicle/road combinations and regression assertions. No product or architecture follow-up is requested by Implementation Agent.
+- Architect disposition: disposed; no action needed for PR #188 Implementation Agent feedback at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
 
 ## Introduction And Chapter 1 Visual Audit Evidence
 
@@ -974,6 +987,46 @@ Architect disposition: no unresolved Implementation Agent feedback remains for P
 Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
 
 Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #188 because it is pre-existing, nonfatal, unrelated to Chapter 3 content, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T15:15:10Z
+
+Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e after finalizer-readable process-memory repair.
+
+Architect validation evidence: This repair is Architect-owned process memory only in specs/031-manual-document-completion/tasks.md; post-effective changes remain evidence/process-memory only and no content, tests, runtime files, source assets, or durable docs outside Architect-owned process memory were changed.
+
+Architect validation evidence: Prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T14:57:43Z is superseded for finalization purposes by this repeat validation after finalizer-readable Implementation Agent Feedback and Known Issues disposition repair.
+
+Architect validation evidence: Validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e; current PR head before this repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530.
+
+Architect validation evidence: Exact Implementation Agent Feedback section now records PR #188 Chapter 3 feedback as fully disposed with Architect disposition disposed and no action needed at f56c42d075dc92d61523301b1f84c3a33faf3a3e, without parser-confusing readiness wording in the disposition candidate.
+
+Architect validation evidence: Exact Known Issues section now records PR #188 review-fix known issues with owner decision accepted no action and disposition not applicable/resolved, while preserving that no Chapter 3 source images, crops, traffic signs, road markings, photos, or diagrams were modified by the speed, highway, or speed-table fixes.
+
+Architect validation evidence: PR #188 Chapter 3 scope remains pages 57-88 only, covering ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking, with no Chapter 4+ content, appendix content, front matter, or unrelated source unit bundled.
+
+Architect validation evidence: Strict visual requirements remain satisfied: x5 source render evidence is recorded, source crops were created without resizing or visual cleanup, Russian learner explanation is selectable DOM text outside source visuals, and no protected photo, traffic sign, road marking, diagram, source crop, source page image, or infographic was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, broadly patched, or modified.
+
+Architect validation evidence: Outside-CABA page 73 speed table correction remains included at the validated effective content head: microbuses, omnibus, and motorhomes are 90 km/h on rutas/semiautopistas and 100 km/h on autopistas nacionales; trucks, hazardous-substance transport, and vehicles towing motorhomes remain 80 km/h; pickups are 110 km/h across rutas, semiautopistas, and autopistas nacionales; motorcycles and cars are 110 km/h on rutas, 120 km/h on semiautopistas, and 130 km/h on autopistas nacionales.
+
+Architect validation evidence: Required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent James posted no actionable findings and the three speed-table AI Review threads were resolved.
+
+Architect validation evidence: Cycle PR-set coverage remains current for PR #188 as the Chapter 3 content slice after merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #188 Chapter 3 scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
 
 ## Review Requirements
 
