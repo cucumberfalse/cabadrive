@@ -355,6 +355,19 @@ For each chapter-equivalent content PR:
 - Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice at effective content head 3b651151e5fc918c480b99a19f5569214ae2339f.
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head 3b651151e5fc918c480b99a19f5569214ae2339f for PR #187; post-effective changes through this validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
+- Effective content head: 565c71bc39b74891e97b1d02883a6a72d6e133bf
+- Architect validation: passed at 2026-06-03T14:23:10Z for effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+- Architect validated effective content head: 565c71bc39b74891e97b1d02883a6a72d6e133bf
+- Architect return count: 0
+- Architect validation: PR #188 Chapter 3 scope validated for pages 57-88 and sections ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking.
+- Architect validation: required checks passed on 565c71bc39b74891e97b1d02883a6a72d6e133bf: AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation: Review Agent no-findings review 4419397061 applies to 565c71bc39b74891e97b1d02883a6a72d6e133bf after speed/highway content fixes and process-memory repair; review threads total 3 and unresolved 0.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; review-fix threads PRRT_kwDOSX65IM6GwWxS, PRRT_kwDOSX65IM6GwWxX, and PRRT_kwDOSX65IM6GxhOg are resolved in content, verification, and process-memory evidence.
+- Analyst feedback Architect disposition: none requiring action for PR #188 Chapter 3 scope.
+- Architect validation: Chapter 3 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #188, accepted no action, and disposition not applicable.
+- Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, PR #187 Chapter 2 content slice, and PR #188 Chapter 3 content slice at effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf for PR #188; post-effective changes through this validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, and at the effective head required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
 
@@ -860,6 +873,46 @@ Architect disposition: no unresolved Implementation Agent feedback remains for P
 Architect disposition: no Analyst feedback requires Architect action for PR #187 Chapter 2 scope.
 
 Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #187 because it is pre-existing, nonfatal, unrelated to Chapter 2 content, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T14:23:10Z
+
+Architect validated effective content head: 565c71bc39b74891e97b1d02883a6a72d6e133bf
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #188 Chapter 3 scope at 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect validation evidence: PR #188 implements only Chapter 3 pages 57-88, covering ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking, with no Chapter 4+ content, appendix content, front matter, or unrelated source unit bundled.
+
+Architect validation evidence: Chapter 3 page boundaries and source order are preserved: page 57 is divider-only, runtime Chapter 3 starts on page 58 and ends on page 88, and the nine assigned sections are recorded in source order in tasks, inventory, registry, and implementation evidence.
+
+Architect validation evidence: Strict visual requirements are satisfied for Chapter 3: source pages 58-88 were rendered from the canonical GCBA PDF at scale 5.0 to 2976x4209 page images, source crops were created without resizing or visual cleanup, Russian learner explanation is selectable DOM text outside source visuals, no runtime PDF or remote asset dependency is introduced, and no protected photo, traffic sign, road marking, diagram, source crop, or source page image was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, or modified.
+
+Architect validation evidence: Chapter 3 content-fidelity review fixes are satisfied: speed tables and exceptions are corrected, page 78 highway rules are restored, and stale process-memory status for the speed/highway review-fix head is repaired at effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect validation evidence: Required checks passed on 565c71bc39b74891e97b1d02883a6a72d6e133bf: AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head 565c71bc39b74891e97b1d02883a6a72d6e133bf in review 4419397061 after the two content fixes and process-memory repair; review threads total 3 and unresolved 0.
+
+Architect validation evidence: Local guard evidence from Orchestrator shows the worktree status clean at current head 565c71bc39b74891e97b1d02883a6a72d6e133bf, PR #188 open, not draft, mergeable, and mergeStateStatus CLEAN.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; review-fix threads PRRT_kwDOSX65IM6GwWxS and PRRT_kwDOSX65IM6GwWxX are implemented and verified at 2c128758de15de388a03f090ad394e39f3c36377, and process-memory thread PRRT_kwDOSX65IM6GxhOg is repaired at 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect validation evidence: Known Issues section records no unresolved Chapter 3 known issues; the Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #188, accepted no action, and disposition not applicable.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, PR #186 as Introduction and Chapter 1 audit-only slice, PR #187 as Chapter 2 content slice, and PR #188 as Chapter 3 content slice at base 49c145e9dd4f4661f99d05f79c3e55ed425d4155 and effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #188 because it is pre-existing, nonfatal, unrelated to Chapter 3 content, and disposition not applicable.
 
 ## Review Requirements
 
