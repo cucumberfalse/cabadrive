@@ -47,7 +47,7 @@ export const ch4StressSection: ManualGuideSectionContent = {
       sourceTextEs:
         "En la conducción, existe una doble relación con el estrés: esta actividad genera estrés por sí misma y, a su vez, esto provocará que se haga de manera más temeraria y menos segura.",
       textRu:
-        "У вождения со стрессом двойная связь: само управление транспортом порождает стресс, а стресс, в свою очередь, делает вождение более temeraria и менее безопасным, увеличивая напряжение в дорожной среде."
+        "У вождения со стрессом двойная связь: само управление транспортом порождает стресс, а стресс, в свою очередь, делает вождение более безрассудным (temeraria) и менее безопасным, увеличивая напряжение в дорожной среде."
     },
     {
       id: "stress-recommendations",
@@ -56,11 +56,11 @@ export const ch4StressSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Recomendaciones: prestar atención al contexto, planificar el viaje, salir con tiempo, regular la temperatura, adoptar actitud tolerante y paciente.",
       itemsRu: [
-        "Обращать внимание на дорожный контекст и оставлять в стороне переживания и споры во время вождения, потому что они повышают напряжение и создают высокий риск для seguridad vial.",
-        "Planificar el viaje и заранее оценивать альтернативные дороги к привычному маршруту.",
+        "Обращать внимание на дорожный контекст и оставлять в стороне переживания и споры во время вождения, потому что они повышают напряжение и создают высокий риск для безопасности дорожного движения (seguridad vial).",
+        "Планировать поездку и заранее оценивать альтернативные дороги к привычному маршруту.",
         "Выезжать с достаточным запасом времени, чтобы прибыть к месту назначения.",
         "Регулировать температуру в автомобиле: чрезмерная жара и холод являются стрессовыми стимулами.",
-        "В пробках adoptar una actitud tolerante y paciente - сохранять терпеливое и терпимое отношение."
+        "В пробках сохранять терпеливое и терпимое отношение (actitud tolerante y paciente)."
       ]
     }
   ]

@@ -966,10 +966,18 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
 
   assert.match(ch4AlcoholDrugsModuleSource, /центральной нервной системы/u);
   assert.match(ch4AlcoholDrugsModuleSource, /психофизическим examen psicofísico/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /Sueño y fatiga|сонливость и усталость/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Sueño y fatiga|Сонливость и усталость/u);
   assert.match(ch4AlcoholDrugsModuleSource, /medicamentos/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /sedantes/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /седативным эффектом[\s\S]*sedantes/u);
   assert.match(ch4AlcoholDrugsModuleSource, /контакте со слюной/u);
+  const alcoholImpairingFactorsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "factors-that-impair-driving");
+  assert.match(alcoholImpairingFactorsItemsRu, /Употребление алкоголя и наркотиков/u);
+  assert.match(alcoholImpairingFactorsItemsRu, /Сонливость и усталость/u);
+  assert.doesNotMatch(alcoholImpairingFactorsItemsRu, /^\s*"Ingesta de alcohol y drogas|^\s*"Sueño y fatiga|^\s*"Estrés|^\s*"Distracciones/um);
+  const medicationsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "medications-and-sedatives");
+  assert.match(medicationsItemsRu, /листок-вкладыш[\s\S]*prospecto explicativo/u);
+  assert.match(medicationsItemsRu, /наркотические вещества[\s\S]*estupefacientes/u);
+  assert.doesNotMatch(medicationsItemsRu, /читать prospecto explicativo|проверке на estupefacientes/u);
   const alcoholEffectsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "alcohol-effects");
   assert.match(alcoholEffectsItemsRu, /скорость реакции/u);
   assert.match(alcoholEffectsItemsRu, /периферическое зрение/u);
@@ -994,15 +1002,20 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /durante la primera hora/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /Retener la licencia|удерживают водительское удостоверение/u);
+  const alcoholMetabolismItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "metabolism-and-next-day-risk");
+  assert.match(alcoholMetabolismItemsRu, /в течение первого часа/u);
+  assert.doesNotMatch(alcoholMetabolismItemsRu, /durante la primera hora/u);
+  const positiveAndRefusalItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "positive-and-refusal-procedure");
+  assert.match(positiveAndRefusalItemsRu, /удерживают водительское удостоверение/u);
+  assert.doesNotMatch(positiveAndRefusalItemsRu, /contravencional sanction|retenеr la licencia|autoridad de control должна/u);
   assert.match(ch4AlcoholDrugsModuleSource, /remitir el vehículo[\s\S]*(направить|эвакуировать)/u);
   assert.match(ch4AlcoholDrugsModuleSource, /se presume positivo|считается положительным/u);
   assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /removal of vehicle|presumed positive/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"responsible-driver"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /conductor\/a responsable|ответственного водителя/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /certificados y calibrados|сертифицирован/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /сертифицированы и откалиброваны[\s\S]*certificados y calibrados/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /должным образом certificados y calibrados/u);
   assert.match(ch4AlcoholDrugsModuleSource, /veisalgia/u);
   assert.match(ch4AlcoholDrugsModuleSource, /обычным русским текстом/u);
   assert.match(ch4AlcoholDrugsModuleSource, /русской текстовой таблице/u);
@@ -1023,17 +1036,22 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
   assert.match(ch4SleepFatigueModuleSource, /усталость может усиливаться/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
-  assert.match(ch4SleepFatigueModuleSource, /microsueños/u);
-  assert.match(ch4SleepFatigueModuleSource, /8 horas/u);
-  assert.match(ch4SleepFatigueModuleSource, /200 kilometros/u);
-  assert.match(ch4SleepFatigueModuleSource, /2 часа/u);
-  assert.match(ch4SleepFatigueModuleSource, /100 kilómetros/u);
-  assert.match(ch4SleepFatigueModuleSource, /1 час/u);
-  assert.match(ch4SleepFatigueModuleSource, /ventilación/u);
-  assert.match(ch4SleepFatigueModuleSource, /comidas ligeras/u);
-  assert.match(ch4SleepFatigueModuleSource, /anochecer y al amanecer/u);
-  assert.match(ch4SleepFatigueModuleSource, /Профессиональные водители/u);
-  assert.match(ch4SleepFatigueModuleSource, /principiantes/u);
+  assert.match(ch4SleepFatigueModuleSource, /microsueños - микросон/u);
+  const fatiguePreventionItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "fatigue-prevention");
+  assert.match(fatiguePreventionItemsRu, /примерно 8 часов/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 200 км/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 2 часа/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 100 км/u);
+  assert.match(fatiguePreventionItemsRu, /каждый 1 час/u);
+  assert.match(fatiguePreventionItemsRu, /хорошую вентиляцию/u);
+  assert.match(fatiguePreventionItemsRu, /легкую пищу/u);
+  assert.match(fatiguePreventionItemsRu, /в сумерках и на рассвете/u);
+  assert.match(fatiguePreventionItemsRu, /профессиональных водителей/u);
+  assert.match(fatiguePreventionItemsRu, /новичков[\s\S]*principiantes/u);
+  assert.doesNotMatch(
+    fatiguePreventionItemsRu,
+    /aproximadamente 8 horas|cada 200 kilometros|cada 100 kilómetros|ventilación|comidas ligeras|al anochecer y al amanecer|predisposición a sufrir fatiga/u
+  );
   assert.match(ch4SleepFatigueModuleSource, /17 часов/u);
   const sleepVsFatigueRemediesItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "sleep-vs-fatigue-remedies");
   assert.match(sleepVsFatigueRemediesItemsRu, /усталости и недосыпе/u);
@@ -1047,33 +1065,52 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4StressModuleSource, /ВОЗ \(OMS\) определяет/u);
   assert.match(ch4StressModuleSource, /физиологических реакций/u);
   assert.match(ch4StressModuleSource, /двойная связь/u);
-  assert.match(ch4StressModuleSource, /temeraria/u);
+  assert.match(ch4StressModuleSource, /безрассудным[\s\S]*temeraria/u);
   assert.match(ch4StressModuleSource, /Prestar atención al contexto|Обращать внимание на дорожный контекст/u);
   assert.match(ch4StressModuleSource, /переживания и споры/u);
-  assert.match(ch4StressModuleSource, /Planificar el viaje/u);
+  const stressRecommendationsItemsRu = itemsRuSourceForBlock(ch4StressModuleSource, "stress-recommendations");
+  assert.match(stressRecommendationsItemsRu, /Планировать поездку/u);
   assert.match(ch4StressModuleSource, /достаточным запасом времени/u);
   assert.match(ch4StressModuleSource, /чрезмерная жара и холод/u);
-  assert.match(ch4StressModuleSource, /actitud tolerante y paciente/u);
+  assert.match(stressRecommendationsItemsRu, /терпеливое и терпимое отношение[\s\S]*actitud tolerante y paciente/u);
   assert.doesNotMatch(ch4StressModuleSource, /worries and discussions|adopting an/u);
+  assert.doesNotMatch(stressRecommendationsItemsRu, /Planificar el viaje|adoptar una actitud tolerante y paciente/u);
 
   assert.match(ch4DistractionsModuleSource, /Distracción/u);
   assert.match(ch4DistractionsModuleSource, /conducir/u);
-  assert.match(ch4DistractionsModuleSource, /Comer, beber, tomar mate/u);
-  assert.match(ch4DistractionsModuleSource, /ceniza/u);
-  assert.match(ch4DistractionsModuleSource, /руки не могут уверенно оставаться на руле/u);
-  assert.match(ch4DistractionsModuleSource, /telefonía celular запрещено/u);
-  assert.match(ch4DistractionsModuleSource, /Altavoz или auriculares/u);
+  assert.match(ch4DistractionsModuleSource, /Еда, питье, мате/u);
+  const eatingDistractionItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "eating-drinking-mate-smoking");
+  assert.match(eatingDistractionItemsRu, /проливания жидкости/u);
+  assert.match(eatingDistractionItemsRu, /горящей золы/u);
+  assert.match(eatingDistractionItemsRu, /манипуляций руками/u);
+  assert.match(eatingDistractionItemsRu, /руки не могут уверенно оставаться на руле/u);
+  assert.doesNotMatch(eatingDistractionItemsRu, /Comer, beber, tomar mate|fumar|cuidado|derrames|encendida ceniza|manipulación/u);
+  const cellPhoneRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "cell-phone-risk");
+  assert.match(cellPhoneRiskItemsRu, /Использование мобильного телефона запрещено/u);
+  assert.match(cellPhoneRiskItemsRu, /Громкая связь[\s\S]*altavoz/u);
+  assert.match(cellPhoneRiskItemsRu, /наушники[\s\S]*auriculares/u);
+  assert.doesNotMatch(cellPhoneRiskItemsRu, /Usar telefonía celular|Altavoz или auriculares/u);
   assert.match(ch4DistractionsModuleSource, /время реакции на стимул/u);
   assert.match(ch4DistractionsModuleSource, /мысленного представления/u);
   assert.doesNotMatch(ch4DistractionsModuleSource, /selectable text|response time|mental representation/u);
   assert.match(ch4DistractionsModuleSource, /GPS/u);
-  assert.match(ch4DistractionsModuleSource, /modo avión/u);
-  assert.match(ch4DistractionsModuleSource, /guantera или baúl/u);
-  assert.match(ch4DistractionsModuleSource, /balizas/u);
-  assert.match(ch4DistractionsModuleSource, /radio или CD/u);
-  assert.match(ch4DistractionsModuleSource, /DVD portátil/u);
-  assert.match(ch4DistractionsModuleSource, /espejo retrovisor/u);
-  assert.match(ch4DistractionsModuleSource, /peaje/u);
+  const gpsRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "gps-risk");
+  assert.match(gpsRiskItemsRu, /настраивать или трогать GPS/u);
+  assert.match(gpsRiskItemsRu, /запрограммировать заранее/u);
+  assert.doesNotMatch(gpsRiskItemsRu, /manipular GPS|programar con anterioridad/u);
+  const phoneRecommendationsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "phone-recommendations");
+  assert.match(phoneRecommendationsItemsRu, /режим полета[\s\S]*modo avión/u);
+  assert.match(phoneRecommendationsItemsRu, /бардачок или багажник[\s\S]*guantera или baúl/u);
+  assert.match(phoneRecommendationsItemsRu, /аварийные огни[\s\S]*balizas/u);
+  assert.doesNotMatch(phoneRecommendationsItemsRu, /Поставить его в modo avión|Убрать его в guantera|включить balizas/u);
+  const otherActionsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "other-actions");
+  assert.match(otherActionsItemsRu, /радио или CD/u);
+  assert.match(otherActionsItemsRu, /портативный DVD/u);
+  assert.match(otherActionsItemsRu, /пассажиров/u);
+  assert.match(otherActionsItemsRu, /верхнюю одежду/u);
+  assert.match(otherActionsItemsRu, /зеркало заднего вида/u);
+  assert.match(otherActionsItemsRu, /пунктом оплаты проезда/u);
+  assert.doesNotMatch(otherActionsItemsRu, /radio или CD|DVD portátil|occupants|abrigo|cinturón de seguridad|espejo retrovisor|peaje/u);
   assert.match(ch4DistractionsModuleSource, /100% внимания/u);
 });
 
@@ -1127,7 +1164,7 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
       height: 260,
       sha256: "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
       sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
-      expectedLabels: ["Еда / mate", "Предмет", "Нет обзора"]
+      expectedLabels: ["Еда / мате", "Предмет", "Нет обзора"]
     }
   ];
 

@@ -73,7 +73,7 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
         "Ощущение тяжелых глаз, рост количества и длительности морганий.",
         "Слезотечение и/или зуд в глазах.",
         "Cabeceos - кивки головой.",
-        "Непреднамеренное дремание или засыпание на несколько секунд, microsueños."
+        "Непреднамеренное дремание или засыпание на несколько секунд: microsueños - микросон."
       ]
     },
     {
@@ -83,13 +83,13 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Al emprender un viaje largo dormir aproximadamente 8 horas... interrumpir cada 200 kilometros o dos horas... motovehículos cada 100 kilómetros o cada hora.",
       itemsRu: [
-        "Перед длинной поездкой спать aproximadamente 8 horas предыдущей ночью.",
-        "Прерывать поездку cada 200 kilometros или каждые 2 часа.",
-        "Для водителей motovehículos источник рекомендует чаще: cada 100 kilómetros или каждый 1 час.",
-        "Поддерживать хорошую ventilación внутри автомобиля.",
-        "Часто пить воду и выбирать comidas ligeras.",
-        "Избегать вождения al anochecer y al amanecer, потому что слабая видимость усложняет управление.",
-        "Профессиональные водители имеют повышенную predisposición a sufrir fatiga из-за длительного времени за рулем, а principiantes - из-за высокой нагрузки задачи и недостатка опыта."
+        "Перед длинной поездкой выспаться: источник указывает примерно 8 часов сна предыдущей ночью.",
+        "Прерывать поездку каждые 200 км или каждые 2 часа.",
+        "Для водителей мототранспорта (motovehículos) источник рекомендует чаще: каждые 100 км или каждый 1 час.",
+        "Поддерживать хорошую вентиляцию внутри автомобиля.",
+        "Часто пить воду и выбирать легкую пищу.",
+        "Избегать вождения в сумерках и на рассвете, потому что слабая видимость усложняет управление.",
+        "У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта."
       ]
     },
     {
@@ -98,7 +98,7 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Estar 17 horas despierto/a provoca tener el mismo nivel de reacción que una persona con un nivel de alcohol en sangre mayor al permitido por ley.",
       textRu:
-        "17 часов бодрствования дают такой же уровень реакции, как у человека с уровнем alcohol en sangre выше разрешенного законом."
+        "17 часов бодрствования дают такой же уровень реакции, как у человека с уровнем алкоголя в крови (alcohol en sangre) выше разрешенного законом."
     },
     {
       id: "sleep-vs-fatigue-remedies",

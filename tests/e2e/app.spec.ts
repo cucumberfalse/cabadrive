@@ -4138,8 +4138,8 @@ test("Manual guide opens Chapter 4 stress and distractions from direct routes", 
   await expect(section.getByRole("heading", { name: "Стресс", exact: true })).toBeVisible();
   await expect(section).toContainText("ВОЗ (OMS) определяет");
   await expect(section).toContainText("двойная связь");
-  await expect(section).toContainText("Planificar el viaje");
-  await expect(section).toContainText("actitud tolerante y paciente");
+  await expect(section).toContainText("Планировать поездку");
+  await expect(section).toContainText("терпеливое и терпимое отношение");
   await expect(section).not.toContainText("Сон и усталость");
   await section.screenshot({ path: testInfo.outputPath(`ch4-stress-direct-${testInfo.project.name}.png`) });
 
@@ -4152,10 +4152,10 @@ test("Manual guide opens Chapter 4 stress and distractions from direct routes", 
   await expect(distractionsButton).toHaveAttribute("data-source-pages", "95-97");
   await expect(section).toHaveAttribute("data-manual-section-id", "ch4-distractions");
   await expect(section.getByRole("heading", { name: "Отвлечения" })).toBeVisible();
-  await expect(section).toContainText("Comer, beber, tomar mate");
-  await expect(section).toContainText("telefonía celular запрещено");
+  await expect(section).toContainText("Еда, питье, мате");
+  await expect(section).toContainText("Использование мобильного телефона запрещено");
   await expect(section).toContainText("GPS");
-  await expect(section).toContainText("espejo retrovisor");
+  await expect(section).toContainText("зеркало заднего вида");
   await expect(section).toContainText("100% внимания");
   await expect(section).not.toContainText("ВОЗ (OMS) определяет");
 

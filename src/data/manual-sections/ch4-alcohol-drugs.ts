@@ -77,10 +77,10 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Factores que impiden o disminuyen el buen ejercicio de conducir: ingesta de alcohol y drogas, sueño y fatiga, estrés, distracciones.",
       itemsRu: [
-        "Ingesta de alcohol y drogas - употребление алкоголя и наркотиков.",
-        "Sueño y fatiga - сонливость и усталость.",
-        "Estrés - стрессовое состояние.",
-        "Distracciones - отвлечения от основной задачи управления."
+        "Употребление алкоголя и наркотиков (ingesta de alcohol y drogas).",
+        "Сонливость и усталость (sueño y fatiga).",
+        "Стрессовое состояние (estrés).",
+        "Отвлечения от основной задачи управления (distracciones)."
       ]
     },
     {
@@ -90,10 +90,10 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Cierto tipo de medicamentos pueden afectar negativamente la capacidad de conducir... Instrumento para la medición o detección de estupefacientes.",
       itemsRu: [
-        "Некоторые лекарства ухудшают способность водить. В источнике отдельно названы препараты по рецепту с sedantes, например средства для сна.",
+        "Некоторые лекарства ухудшают способность водить. В источнике отдельно названы препараты по рецепту с седативным эффектом (sedantes), например средства для сна.",
         "Седативный эффект может сохраняться утром, даже если лекарство принято накануне вечером.",
-        "Нужно читать prospecto explicativo и предупреждение о влиянии на управление транспортом, а при сомнениях консультироваться с врачом.",
-        "При проверке на estupefacientes крышку устройства снимают, устройство помещают в рот и держат в контакте со слюной; результат считается положительным, если обнаружено наличие наркотических веществ."
+        "Нужно читать листок-вкладыш с объяснениями (prospecto explicativo) и предупреждение о влиянии на управление транспортом, а при сомнениях консультироваться с врачом.",
+        "При проверке на наркотические вещества (estupefacientes) крышку устройства снимают, устройство помещают в рот и держат в контакте со слюной; результат считается положительным, если обнаружено наличие таких веществ."
       ]
     },
     {
@@ -187,7 +187,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           cellsRu: [
             "Principiantes - водители-новички",
             "0.00 g/l",
-            "нулевой предел: начинающему водителю нельзя иметь измеряемый alcohol en sangre"
+            "нулевой предел: начинающему водителю нельзя иметь измеряемый алкоголь в крови (alcohol en sangre)"
           ]
         },
         {
@@ -259,7 +259,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       itemsRu: [
         "Алкоголь выводится главным образом через печень, почки и легкие.",
         "Процесс занимает индивидуальное время; концентрация не падает мгновенно до нуля.",
-        "В среднем после прекращения употребления концентрация продолжает расти durante la primera hora, а затем снижается постепенно.",
+        "В среднем после прекращения употребления концентрация продолжает расти в течение первого часа, а затем снижается постепенно.",
         "Вождение на следующий день после ночи чрезмерного употребления тоже рискованно: эффект не заканчивается вместе с последним напитком, а длится до полного выведения следов из организма."
       ]
     },
@@ -270,10 +270,10 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Procedimiento en caso de alcoholemia positiva... Negativa a realizar una prueba de alcoholemia.",
       itemsRu: [
-        "При положительной alcoholemia применяется административная санкция и, если есть основание, contravencional sanction.",
-        "У водителя retenеr la licencia de conducir - удерживают водительское удостоверение.",
-        "Транспорт remitir el vehículo - отправляют/эвакуируют так, чтобы водитель не продолжал движение.",
-        "При отказе от alcoholemia autoridad de control должна запретить продолжать управление и приказать remitir el vehículo - направить/эвакуировать транспорт, потому что состояние водителя se presume positivo (считается положительным)."
+        "При положительной проверке на алкоголь (alcoholemia positiva) применяется административная санкция и, если есть основание, санкция за нарушение (contravencional).",
+        "У водителя удерживают водительское удостоверение (retener la licencia de conducir).",
+        "Транспорт направляют или эвакуируют (remitir el vehículo), чтобы водитель не продолжал движение.",
+        "При отказе от проверки на алкоголь контролирующий орган должен запретить продолжать управление и приказать направить или эвакуировать транспорт (remitir el vehículo), потому что состояние водителя считается положительным (se presume positivo)."
       ]
     },
     {
@@ -282,7 +282,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Designar a una persona que se responsabilice para conducir... comprometerse a no ingerir alcohol y llevar a cada una a su destino.",
       textRu:
-        "Recomendación del conductor/a responsable: в группе людей, которым нужно уехать, назначить ответственного водителя. Этот человек обязуется не употреблять alcohol и довезти каждого до места назначения после встречи, заботясь и о себе, и о других."
+        "Рекомендация об ответственном водителе (conductor/a responsable): в группе людей, которым нужно уехать, назначить ответственного водителя. Этот человек обязуется не употреблять алкоголь и довезти каждого до места назначения после встречи, заботясь и о себе, и о других."
     },
     {
       id: "test-instruments-and-hangover",
@@ -290,7 +290,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El control de alcoholemia o toxicológico se realiza utilizando instrumentos... frente a un resultado positivo o la negativa... el procedimiento es el mismo. Resaca o veisalgia.",
       textRu:
-        "Контроль alcoholemia или toxicológico проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом certificados y calibrados. Источник уточняет: при положительном результате или отказе пройти контроль alcoholemia или estupefacientes процедура одинакова. Resaca, или медицинским термином veisalgia, опасна для вождения: она нарушает координацию, внимание и время реакции, поэтому conducir con resaca приравнивается к управлению в состоянии alcoholización."
+        "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). Источник уточняет: при положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización)."
     }
   ]
 };

@@ -51,7 +51,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Se entiende por distracción a la desviación de la atención por parte de una persona cuando ésta deba atender a algo específico.",
       textRu:
-        "Distracción - это отклонение внимания человека от того, чему он должен уделять внимание. В применении к вождению это означает небезопасное и imprudente управление, потому что вождение требует организации и координации воспринимаемых стимулов и достаточного уровня внимания."
+        "Distracción - это отклонение внимания человека от того, чему он должен уделять внимание. В применении к вождению это означает небезопасное и неосторожное (imprudente) управление, потому что вождение требует организации и координации воспринимаемых стимулов и достаточного уровня внимания."
     },
     {
       id: "divided-attention",
@@ -59,24 +59,24 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Si se reparte la atención entre la tarea principal (conducir) y otras secundarias...",
       textRu:
-        "Если внимание делится между главной задачей - conducir - и вторичными действиями, эффективность главной задачи падает: у водителя нет полной способности реагировать на imprevistos, которые могут возникнуть."
+        "Если внимание делится между главной задачей - вождением (conducir) - и вторичными действиями, эффективность главной задачи падает: у водителя нет полной способности реагировать на непредвиденные ситуации (imprevistos), которые могут возникнуть."
     },
     {
       id: "eating-drinking-mate-smoking",
       kind: "list",
-      titleRu: "Еда, питье, mate и курение",
+      titleRu: "Еда, питье, мате и курение",
       sourceTextEs:
         "Comer, beber, tomar mate y/o fumar demandan atención, cuidado para evitar derrames o ceniza encendida y manipulación.",
       itemsRu: [
-        "Comer, beber, tomar mate и/или fumar требуют определенного уровня внимания.",
-        "К этому добавляется cuidado, чтобы избежать derrames или падения encendida ceniza.",
-        "Кроме отвлечения, эти действия несут дополнительный риск: они требуют manipulación, поэтому руки не могут уверенно оставаться на руле."
+        "Еда, питье, мате и/или курение требуют определенного уровня внимания.",
+        "К этому добавляется осторожность, чтобы избежать проливания жидкости или падения горящей золы.",
+        "Кроме отвлечения, эти действия несут дополнительный риск: они требуют манипуляций руками, поэтому руки не могут уверенно оставаться на руле."
       ]
     },
     {
       id: "eating-distraction-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: отвлечение едой и mate",
+      titleRu: "Визуал источника: отвлечение едой и мате",
       sourceTextEs: "Comer, beber, tomar mate y/o fumar...",
       cards: [
         {
@@ -88,12 +88,12 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           altRu: "Перенесенный трехпанельный визуал отвлечений с сохраненными исходными рисунками.",
           visibleSpanish: false,
           russianOverlayLabels: [
-            { id: "distraction-food-label", textRu: "Еда / mate", xPct: 7.2, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" },
+            { id: "distraction-food-label", textRu: "Еда / мате", xPct: 7.2, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" },
             { id: "distraction-object-label", textRu: "Предмет", xPct: 25.8, yPct: 29.4, widthPct: 17.9, heightPct: 12.4, tone: "dark-on-light" },
             { id: "distraction-view-label", textRu: "Нет обзора", xPct: 44.4, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
+            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, мате и курение отвлекают внимание и занимают руки."
         }
       ],
       visualNotes: [
@@ -108,9 +108,9 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Usar telefonía celular está prohibido ya que disminuye la capacidad de atención y reacción...",
       itemsRu: [
-        "Usar telefonía celular запрещено: телефон снижает внимание и реакцию, увеличивает время реакции на стимул и ограничивает слух и/или зрение.",
+        "Использование мобильного телефона запрещено: телефон снижает внимание и реакцию, увеличивает время реакции на стимул и ограничивает слух и/или зрение.",
         "Во время управления нужно держать обе руки на руле.",
-        "Altavoz или auriculares тоже считаются рискованными: даже без рук разговор требует мысленного представления человека, с которым идет диалог."
+        "Громкая связь (altavoz) или наушники (auriculares) тоже считаются рискованными: даже без рук разговор требует мысленного представления человека, с которым идет диалог."
       ]
     },
     {
@@ -121,8 +121,8 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         "El GPS es una herramienta útil pero puede ser de riesgo si se lo utiliza incorrectamente.",
       itemsRu: [
         "GPS - полезный инструмент, но он опасен при неправильном использовании.",
-        "Нельзя manipular GPS во время движения.",
-        "Маршрут нужно programar con anterioridad до начала поездки.",
+        "Нельзя настраивать или трогать GPS во время движения.",
+        "Маршрут нужно запрограммировать заранее до начала поездки.",
         "Во время движения использовать GPS только чтобы слушать, а не смотреть."
       ]
     },
@@ -134,10 +134,10 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         "Apagar el teléfono, modo avión, guantera o baúl, acompañante atiende, balizas y detenerse en lugar permitido, aplicación de aviso.",
       itemsRu: [
         "Выключить телефон перед началом вождения.",
-        "Поставить его в modo avión.",
-        "Убрать его в guantera или baúl.",
+        "Поставить его в режим полета (modo avión).",
+        "Убрать его в бардачок или багажник (guantera или baúl).",
         "Позволить сопровождающему ответить на звонок и сообщить, что водитель свяжется после завершения движения.",
-        "Если ожидается важный звонок и другие меры невозможны, включить balizas и остановиться в разрешенном месте, чтобы не создавать риска.",
+        "Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.",
         "Можно установить приложение, которое сообщает звонящему, что человек не может ответить, потому что ведет машину, и даже может передать оставшееся время поездки."
       ]
     },
@@ -148,14 +148,14 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Cambiar de radio o CD, mirar DVD portátil, maquillarse, mirar ocupantes, quitar abrigo, cinturón o espejo, puerta o guantera, dinero antes del peaje.",
       itemsRu: [
-        "Менять radio или CD.",
-        "Смотреть DVD portátil.",
+        "Менять радио или CD.",
+        "Смотреть портативный DVD.",
         "Maquillarse - наносить макияж.",
-        "Смотреть на других occupants.",
-        "Пытаться снять abrigo.",
-        "Пытаться пристегнуть cinturón de seguridad или отрегулировать espejo retrovisor; эти действия должны быть сделаны до начала движения.",
-        "Тянуться, чтобы закрыть дверь или найти что-то в guantera.",
-        "Искать деньги перед peaje."
+        "Смотреть на других пассажиров.",
+        "Пытаться снять верхнюю одежду.",
+        "Пытаться пристегнуть ремень безопасности или отрегулировать зеркало заднего вида; эти действия должны быть сделаны до начала движения.",
+        "Тянуться, чтобы закрыть дверь или найти что-то в бардачке.",
+        "Искать деньги перед пунктом оплаты проезда."
       ]
     },
     {
