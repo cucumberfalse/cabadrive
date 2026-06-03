@@ -178,6 +178,16 @@ For each chapter-equivalent content PR:
 - Architect validation evidence: PR #185 prerequisite scope validated after source-as-is provenance byte/dimension/hash repair and broad cleanup forbidden-term repair.
 - Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at bc71004c284984f682745ce0337bf2e154fef143.
 - Limit escalation: none
+- Effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Architect validation: passed at 2026-06-03T06:55:33Z for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Required checks before Architect validation: baseline-checks pass, docker-validation pass after rerun for Docker Hub timeout, guard pass, osv-scan pass, AI Review pass on 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Review Agent before Architect validation: no actionable findings at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Prior validation status: prior Architect/Analyst validations for older heads are stale after non-evidence repairs; this validation supersedes them for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Architect validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Architect return count: 0
+- Architect validation evidence: PR #185 prerequisite scope validated after transferred infographic/diagram source-crop linkage repair with required checks and Review Agent no-findings at the effective content head.
+- Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -428,6 +438,42 @@ Architect validation evidence: Cycle PR-set coverage for PR #185 is current for 
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at bc71004c284984f682745ce0337bf2e154fef143.
+
+Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
+
+## Final Architect Validation Rerun - PR #185 Transferred Artwork Source Linkage Repair
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T06:55:33Z
+
+Architect validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #185 prerequisite scope at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
+
+Architect validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs/checker/evidence/tests/process memory; no chapter content implementation, runtime manual pages, source assets, Introduction/Chapter 1 audit implementation, or unrelated product implementation are bundled.
+
+Architect validation evidence: Prior Architect and Analyst validations for older effective content heads are stale because non-evidence repairs landed after them; this validation supersedes them for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
+
+Architect validation evidence: The transferred artwork source-linkage repair addresses Codex bot P2 comment 3346422482 by requiring strict source-transferred-infographic and source-transferred-diagram transfer metadata to reference existing strict sourceRegionMetadata through sourceAssetPath, with sourceCropSha256 and sourceCropDimensions matching the recorded source crop hash and decoded dimensions.
+
+Architect validation evidence: The repair preserves the intended distinction that transferred runtime artwork may differ from the source crop for glyph-level Spanish cleanup and Russian overlay, while preventing source-transfer booleans or generated runtime artwork from passing without source-crop provenance.
+
+Architect validation evidence: The repaired prerequisite still enforces x5/equivalent high-resolution export evidence, unmodified source-as-is protected handling for photos, traffic signs, and road markings, transferred-source infographic/diagram requirements, glyph/letter-level Spanish cleanup only, selectable Russian overlay guidance where feasible, byte-verified asset/crop hashes, crop/extraction decoded dimensions, no-upscale/runtime-size evidence, protected visible-Spanish exception gating, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Architect validation evidence: Implementation Agent recorded local verification for 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82: manual-guide checker passed, focused node test passed with 64 tests, validate:content passed, pnpm test passed with 373 tests, build passed with the known nonfatal Vite large chunk warning, preflight passed including 74 Playwright tests, check-feature-memory passed, and git diff --check passed.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82; AI Review passed at the same effective content head.
+
+Architect validation evidence: GitHub PR state observed current head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82, mergeable, with required checks green: baseline-checks, docker-validation after rerun for Docker Hub timeout, guard, osv-scan, and AI Review.
+
+Architect validation evidence: Cycle PR-set coverage for PR #185 is current for this prerequisite validation: branch codex/031-manual-document-completion, PR #185, base b07d5c72bf1689e7dac480e937c366a528d20299, effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82, with later audit/correction/chapter/appendix/front-matter rows still pending by design and outside this prerequisite validation pass.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
 
 Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
 
