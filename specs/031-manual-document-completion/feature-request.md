@@ -793,3 +793,31 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T20:11:30Z
+
+Analyst validated effective content head: 9b5b74b9b19b756225ffd50b2ba1df4732c56ab3
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 strict-infographic scope. The effective content head implements Chapter 4 pages `89-97` only with page `89` divider-only, preserves one chapter-equivalent per PR, keeps high-resolution visual evidence requirements, preserves protected photos, signs, markings, and source visuals as source-as-is, and handles infographics as transferred source images with strict cleanup/overlay policy rather than redraw.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T20:08:19Z` for the same effective content head `9b5b74b9b19b756225ffd50b2ba1df4732c56ab3`.
+
+Analyst validation evidence: Latest visual repair replaced Spanish-only alcohol-limit and distraction infographic runtime assets with transferred infographics and removed the `source-as-is-infographic` protected checker loophole while preserving protected photo/source visuals as source-as-is.
+
+Analyst validation evidence: Chapter 4 review fixes are included for alcohol threshold rows, Russian learner prose localization, page 93 boundary, page 94/95 boundary behavior, and strict infographic visual repair.
+
+Analyst validation evidence: Review Agent passed at `9b5b74b9b19b756225ffd50b2ba1df4732c56ab3`; required checks other than the canceled stale-validation AI Review were green, and the AI Review P1 stale-final-validation concern is addressed by Architect then Analyst validation plus evidence transport.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
