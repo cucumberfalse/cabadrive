@@ -2505,9 +2505,9 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                 src={assetUrl(card.assetPath)}
                 alt={card.altRu}
                 data-visible-spanish={card.visibleSpanish}
-                data-source-image-exception={card.sourceImageException.kind}
-                data-visible-spanish-scope={card.sourceImageException.visibleSpanishScope}
-                data-source-as-is={card.sourceImageException.sourceAsIs}
+                data-source-image-exception={card.sourceImageException?.kind}
+                data-visible-spanish-scope={card.sourceImageException?.visibleSpanishScope}
+                data-source-as-is={card.sourceImageException?.sourceAsIs}
                 loading="lazy"
               />
             </figure>

@@ -179,15 +179,13 @@ const strictImageAssetCategories = new Set([
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
   "source-as-is-document-example",
-  "source-as-is-infographic",
   "source-transferred-infographic",
   "source-transferred-diagram"
 ]);
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
-  "source-as-is-road-marking",
-  "source-as-is-infographic"
+  "source-as-is-road-marking"
 ]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
@@ -486,18 +484,12 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
     `${messagePrefix}.infographicTransfer.russianOverlayStrategy must be selectable DOM/SVG`,
     asset
   );
+  assertCondition(asset.cleanupScope === "glyph-level-spanish-cleanup", `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup`, asset);
   assertCondition(
-    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
-    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+    `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
     asset
   );
-  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
-    assertCondition(
-      asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
-      `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
-      asset
-    );
-  }
 }
 
 function validateTransferredDiagramAsset(asset, messagePrefix, sourceRegionRecords) {

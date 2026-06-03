@@ -39,9 +39,9 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
     ],
     notes: [
       "Direct navigation starts at source page 95 and opens the distractions section.",
-      "Source pages 95-97 are converted as selectable Russian DOM text, including phone, GPS, passenger, mirror, toll, and 100% attention details.",
-      "The page 95 three-panel distraction visual and page 97 photo/quote are rendered as x5 source-as-is runtime crops.",
-      "No Chapter 4 phone/GPS/source artwork is translated, relabeled, recolored, cleaned, masked, or redrawn; Russian explanation stays outside images."
+      "Source pages 95-97 are converted as ordinary selectable Russian runtime prose, including phone, GPS, passenger, mirror, toll, and 100% attention details.",
+      "The page 95 three-panel distraction infographic is transferred from its x5 source crop with Spanish glyph-level cleanup; the page 97 photo/quote remains an x5 source-as-is runtime crop.",
+      "No source photo, sign, or marking is translated, relabeled, recolored, cleaned, masked, or replaced; infographic source drawings stay source-derived and are not covered with plate-style edits."
     ]
   },
   blocks: [
@@ -81,20 +81,19 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       cards: [
         {
           id: "distraction-panels-source-card",
-          titleRu: "Три панели Distracciones",
+          titleRu: "Перенесенные три панели Distracciones",
           sourcePage: 95,
           sourceRegion: { x: 1190, y: 2160, width: 860, height: 260 },
-          assetPath: `${assetRoot}/distraction-panels-source-as-is.jpg`,
-          altRu: "Исходный трехпанельный визуал отвлечений из manual, оставленный без изменений.",
-          visibleSpanish: true,
-          sourceImageException,
+          assetPath: `${assetRoot}/distraction-panels-transferred-infographic.png`,
+          altRu: "Перенесенный трехпанельный визуал отвлечений с сохраненными исходными рисунками.",
+          visibleSpanish: false,
           bodyRu:
-            "Официальный визуал сохранен без перевода внутри изображения. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
+            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
         }
       ],
       visualNotes: [
-        "The distraction panels are a scale-5 source-as-is crop.",
-        "Spanish text inside the visual remains only inside the source image."
+        "The distraction panels are transferred from the scale-5 source crop with glyph-level Spanish cleanup.",
+        "Russian learner explanation remains ordinary runtime text outside the image."
       ]
     },
     {

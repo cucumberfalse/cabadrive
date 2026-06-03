@@ -644,8 +644,8 @@ export type ManualGuideContentBlock =
         };
         assetPath: string;
         altRu: string;
-        visibleSpanish: true;
-        sourceImageException: OriginalSourceImageTextException;
+        visibleSpanish: boolean;
+        sourceImageException?: OriginalSourceImageTextException;
         bodyRu: string;
       }[];
       visualNotes: string[];

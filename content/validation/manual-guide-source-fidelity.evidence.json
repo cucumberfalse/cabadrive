@@ -469,7 +469,6 @@
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
       "source-as-is-document-example",
-      "source-as-is-infographic",
       "source-transferred-infographic",
       "source-transferred-diagram",
       "native-dom-text-only",
@@ -478,8 +477,7 @@
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
       "source-as-is-traffic-sign",
-      "source-as-is-road-marking",
-      "source-as-is-infographic"
+      "source-as-is-road-marking"
     ],
     "documentExampleSourceAsIsCategories": [
       "source-as-is-document-example"
@@ -514,7 +512,7 @@
       "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
       "infographicTransfer.noApproximateRedraw",
       "infographicTransfer.broadMaskPlatePatchStatus=none",
-      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "cleanupScope=glyph-level-spanish-cleanup",
       "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
       "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
     ],

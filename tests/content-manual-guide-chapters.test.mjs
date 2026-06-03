@@ -1036,8 +1036,8 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4DistractionsModuleSource, /100% внимания/u);
 });
 
-test("Chapter 4 runtime renders source-as-is official visuals with provenance evidence", () => {
-  const visualExpectations = [
+test("Chapter 4 runtime renders protected photos and transferred infographics with provenance evidence", () => {
+  const sourceAsIsExpectations = [
     {
       sectionId: "ch4-alcohol-drugs",
       moduleSource: ch4AlcoholDrugsModuleSource,
@@ -1048,28 +1048,6 @@ test("Chapter 4 runtime renders source-as-is official visuals with provenance ev
       width: 820,
       height: 300,
       sha256: "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
-    },
-    {
-      sectionId: "ch4-alcohol-drugs",
-      moduleSource: ch4AlcoholDrugsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
-      assetCategory: "source-as-is-infographic",
-      assetKind: "high-resolution-original-source-infographic-alcohol-limits",
-      width: 850,
-      height: 430,
-      sha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
-    },
-    {
-      sectionId: "ch4-distractions",
-      moduleSource: ch4DistractionsModuleSource,
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
-      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
-      assetCategory: "source-as-is-infographic",
-      assetKind: "high-resolution-original-source-infographic-distraction-panels",
-      width: 860,
-      height: 260,
-      sha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
     },
     {
       sectionId: "ch4-distractions",
@@ -1083,21 +1061,52 @@ test("Chapter 4 runtime renders source-as-is official visuals with provenance ev
       sha256: "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
     }
   ];
+  const transferredInfographicExpectations = [
+    {
+      sectionId: "ch4-alcohol-drugs",
+      moduleSource: ch4AlcoholDrugsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+      assetKind: "high-resolution-transferred-source-infographic-alcohol-limits",
+      width: 850,
+      height: 430,
+      sha256: "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
+      sourceSha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
+    },
+    {
+      sectionId: "ch4-distractions",
+      moduleSource: ch4DistractionsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+      assetKind: "high-resolution-transferred-source-infographic-distraction-panels",
+      width: 860,
+      height: 260,
+      sha256: "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
+      sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+    }
+  ];
 
   assert.match(ch4AlcoholDrugsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /drug-test-source-as-is\.jpg/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /alcohol-limits-source-as-is\.jpg/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /alcohol-limits-transferred-infographic\.png/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /alcohol-limits-source-as-is\.jpg/u);
   assert.match(ch4AlcoholDrugsModuleSource, /source-image-original-visible-text/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
   assert.match(ch4DistractionsModuleSource, /kind:\s*"source-image-cards"/u);
-  assert.match(ch4DistractionsModuleSource, /distraction-panels-source-as-is\.jpg/u);
+  assert.match(ch4DistractionsModuleSource, /distraction-panels-transferred-infographic\.png/u);
+  assert.doesNotMatch(ch4DistractionsModuleSource, /distraction-panels-source-as-is\.jpg/u);
   assert.match(ch4DistractionsModuleSource, /attention-photo-source-as-is\.jpg/u);
   assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
+  assert.doesNotMatch(checkerSource, /source-as-is-infographic/u);
+  assert.equal(existsSync(transferredInfographicExpectations[0].removedAssetPath), false);
+  assert.equal(existsSync(transferredInfographicExpectations[1].removedAssetPath), false);
 
-  for (const expectation of visualExpectations) {
+  for (const expectation of sourceAsIsExpectations) {
     const section = sectionById(expectation.sectionId);
     assert.ok(section, `${expectation.sectionId} exists`);
     const asset = localAssetByPath(section, expectation.assetPath);
@@ -1121,6 +1130,36 @@ test("Chapter 4 runtime renders source-as-is official visuals with provenance ev
     assert.equal(sha256File(asset.assetPath), expectation.sha256);
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
     assert.equal(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
+  }
+
+  for (const expectation of transferredInfographicExpectations) {
+    const section = sectionById(expectation.sectionId);
+    assert.ok(section, `${expectation.sectionId} exists`);
+    const asset = localAssetByPath(section, expectation.assetPath);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+    assert.equal(exceptionPaths.includes(expectation.assetPath), false, `${expectation.assetPath} must not use a visible-Spanish source-as-is exception`);
+    assert.equal(asset.assetCategory, "source-transferred-infographic");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.visibleSpanish, false);
+    assert.equal(asset.cleanupScope, "glyph-level-spanish-cleanup");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.infographicTransfer.sourceImageTransfer, true);
+    assert.equal(asset.infographicTransfer.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.infographicTransfer.sourceCropSha256, expectation.sourceSha256);
+    assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, {
+      width: expectation.width,
+      height: expectation.height
+    });
+    assert.equal(asset.infographicTransfer.noApproximateRedraw, true);
+    assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
+    assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+    assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sourceSha256);
+    assert.notEqual(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
   }
 });
 
@@ -1154,7 +1193,7 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   }
 
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
-  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\.kind\}/);
+  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\?\.kind\}/);
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
 });
 
@@ -2151,18 +2190,17 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
     "source-as-is-document-example",
-    "source-as-is-infographic",
     "source-transferred-infographic",
     "source-transferred-diagram",
     "native-dom-text-only"
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
   }
+  assert.equal(evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"), false);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
     "source-as-is-photo",
     "source-as-is-traffic-sign",
-    "source-as-is-road-marking",
-    "source-as-is-infographic"
+    "source-as-is-road-marking"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
@@ -2195,7 +2233,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
     "infographicTransfer.noApproximateRedraw",
     "infographicTransfer.broadMaskPlatePatchStatus=none",
-    "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+    "cleanupScope=glyph-level-spanish-cleanup",
     "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
     "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
   ]);
@@ -2974,6 +3012,29 @@ test("Manual guide source-fidelity checker rejects strict source-as-is assets th
     assert.equal(
       result.message,
       "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sha256 must match source-as-is source crop bytes"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects source-as-is infographic as a strict category", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-infographic-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const infographicAsset = implementationEvidence.localAssetMetadata[0];
+      infographicAsset.assetKind = "high-resolution-original-source-infographic";
+      infographicAsset.assetCategory = "source-as-is-infographic";
+      infographicAsset.visibleSpanish = true;
+      infographicAsset.cleanupScope = "none-source-as-is";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when an infographic tries to use a source-as-is category");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetCategory must use the strict full-manual visual vocabulary"
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });

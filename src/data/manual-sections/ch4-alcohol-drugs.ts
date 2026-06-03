@@ -39,9 +39,9 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-mobile.png"
     ],
     notes: [
-      "Source PDF pages 90-92 plus the alcohol/drugs page 93 topic blocks are converted as selectable Russian DOM text.",
-      "The page 90 drug-test device/photo and page 91 alcohol-limit visual are rendered as x5 source-as-is runtime crops.",
-      "No source image, sign, marking, photo, or infographic is translated, relabeled, recolored, cleaned, masked, or redrawn; Russian explanation stays outside images.",
+      "Source PDF pages 90-92 plus the alcohol/drugs page 93 topic blocks are converted as ordinary selectable Russian runtime prose.",
+      "The page 90 drug-test device/photo is rendered as an x5 source-as-is runtime crop; the page 91 alcohol-limit infographic is transferred from the x5 source crop with Spanish glyph-level cleanup and Russian threshold detail outside the image.",
+      "No source photo, sign, or marking is translated, relabeled, recolored, cleaned, masked, or replaced; infographic source pictograms and numeric thresholds stay source-derived and are not covered with plate-style edits.",
       "Medication, drug-detection, alcohol-limit, absorption, elimination, positive-test, refusal procedure, responsible-driver, certified/calibrated instrument, and veisalgia details are retained in runtime text."
     ]
   },
@@ -152,20 +152,19 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       cards: [
         {
           id: "alcohol-limits-source-card",
-          titleRu: "Официальная визуальная таблица пределов",
+          titleRu: "Перенесенная визуальная таблица пределов",
           sourcePage: 91,
           sourceRegion: { x: 1180, y: 2030, width: 850, height: 430 },
-          assetPath: `${assetRoot}/alcohol-limits-source-as-is.jpg`,
-          altRu: "Исходный визуал Límites de alcohol en sangre para conducir, оставленный без изменений.",
-          visibleSpanish: true,
-          sourceImageException,
+          assetPath: `${assetRoot}/alcohol-limits-transferred-infographic.png`,
+          altRu: "Перенесенный визуал пределов alcohol en sangre с сохраненными исходными пиктограммами и числовыми порогами.",
+          visibleSpanish: false,
           bodyRu:
-            "Официальный визуал сохранен без перевода внутри изображения. Конкретные пороги из него дублируются ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
+            "Официальный визуал перенесен из x5-фрагмента: испанские буквы очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки. Конкретные пороги из него дублируются ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
         }
       ],
       visualNotes: [
-        "The alcohol-limit visual is a scale-5 source-as-is crop.",
-        "Russian learner explanation and threshold rows stay outside the image."
+        "The alcohol-limit visual is transferred from the scale-5 source crop with glyph-level Spanish cleanup.",
+        "Russian learner explanation and threshold rows remain ordinary selectable runtime text outside the image."
       ]
     },
     {

@@ -21,7 +21,7 @@ export const ch4StressSection: ManualGuideSectionContent = {
     notes: [
       "Direct navigation starts at source page 94, where the Estrés heading begins.",
       "Stress recommendation bullets continue on source page 95 before the distraction body; page 95 is shared with the distractions section by explicit boundary evidence.",
-      "Runtime stress content is selectable Russian DOM text only; no source artwork is modified."
+      "Runtime stress content is ordinary selectable Russian prose only; no source artwork is modified."
     ]
   },
   blocks: [
