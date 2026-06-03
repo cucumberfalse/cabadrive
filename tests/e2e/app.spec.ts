@@ -3467,6 +3467,16 @@ test("Manual guide exposes implemented Chapter 1 and Chapter 2 section pages", a
   await expect(chapter2Section.locator('[data-source-image-exception="source-document-example-original-visible-text"]')).toHaveCount(6);
   await expect(chapter2Section.locator('[data-visible-spanish-scope="source-document-example-image-only"]')).toHaveCount(6);
 
+  await page.goto("/#manual-section-ch2-scoring");
+  await expect(page).toHaveURL(/#manual-section-ch2-scoring$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-2-responsibility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch2-scoring");
+  const scoringSection = content.getByTestId("manual-guide-section");
+  await expect(scoringSection).toHaveAttribute("data-manual-section-id", "ch2-scoring");
+  await expect(scoringSection).toContainText("20 баллов");
+  await expect(scoringSection).not.toContainText("Соблюдать правила дорожного движения означает спасать жизни");
+  await expect(scoringSection).not.toContainText("Страница 56 не добавляет правил Scoring");
+
   await page.goto("/#manual-section-ch1-shared-trip");
   await expect(page).toHaveURL(/#manual-section-ch1-shared-trip$/);
   await expect(page.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "chapter-1-sustainable-mobility");

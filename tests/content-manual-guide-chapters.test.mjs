@@ -572,6 +572,9 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
   assert.deepEqual(scoring.sourcePages.map((entry) => entry.sourcePage), [55]);
   assert.equal(scoring.sourcePages[0].referenceAsset, sourcePageAssetPath(55));
   assert.equal(registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage)).includes(56), false);
+  assert.doesNotMatch(ch2ScoringModuleSource, /page-56-disposition/);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Respetar las normas de tránsito implica salvar vidas/u);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Соблюдать правила дорожного движения означает спасать жизни/u);
 
   const closing = registry.skippedSourcePages.find((entry) => entry.sourcePage === 56);
   assert.equal(closing?.reason, "chapter-closing-slogan-only");
@@ -648,7 +651,7 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2ScoringModuleSource, /60 дней до 5 лет/);
   assert.match(ch2ScoringModuleSource, /10 баллов/);
   assert.match(ch2ScoringModuleSource, /3 рабочих дня/);
-  assert.match(ch2ScoringModuleSource, /Страница 56 не добавляет правил Scoring/u);
+  assert.doesNotMatch(ch2ScoringModuleSource, /Страница 56 не добавляет правил Scoring/u);
 });
 
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {

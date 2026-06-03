@@ -69,14 +69,6 @@ export const ch2ScoringSection: ManualGuideSectionContent = {
         "Для информации о курсах и оценках дорожного переобучения источник указывает buenosaires.gob.ar/licenciadeconducir/educacion-vial-y-prevencion-de-siniestros-de-transito.",
         "Нарушения, предусмотренные пунктами d) и e) статьи 11.1.4 Código de Tránsito y Transporte, не дают возможности повторно присвоить 50% списанных баллов."
       ]
-    },
-    {
-      id: "page-56-disposition",
-      kind: "callout",
-      sourceTextEs:
-        "Respetar las normas de tránsito implica salvar vidas.",
-      textRu:
-        "Страница 56 не добавляет правил Scoring: это закрывающий лозунг главы «Соблюдать правила дорожного движения означает спасать жизни». Поэтому она сохранена как book-only disposition в процессной памяти и не превращена в дополнительный раздел Scoring."
     }
   ]
 };
