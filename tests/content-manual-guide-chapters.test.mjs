@@ -625,10 +625,18 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2RequiredDocumentsModuleSource, /VTV/);
   assert.match(ch2RequiredDocumentsModuleSource, /RVA/);
   assert.match(ch2RequiredDocumentsModuleSource, /source-image-cards/);
-  assert.match(ch2RequiredDocumentsModuleSource, /source-image-original-visible-text/);
+  assert.match(ch2RequiredDocumentsModuleSource, /source-document-example-original-visible-text/);
 
   assert.match(ch2IncidentModuleSource, /107/);
   assert.match(ch2IncidentModuleSource, /911/);
+  assert.match(ch2IncidentModuleSource, /30 м и 60 м/u);
+  assert.match(ch2IncidentModuleSource, /50 м и 100 м/u);
+  assert.match(ch2IncidentModuleSource, /односторонним движением/u);
+  assert.match(ch2IncidentModuleSource, /двусторонним движением/u);
+  assert.match(ch2IncidentModuleSource, /тоннеле/u);
+  assert.match(ch2IncidentModuleSource, /габаритные огни/u);
+  assert.match(ch2IncidentModuleSource, /AUSA 140/u);
+  assert.match(ch2IncidentModuleSource, /AUSOL 0800-999-9999/u);
   assert.match(ch2IncidentModuleSource, /149, опция 2/u);
   assert.match(ch2IncidentModuleSource, /0800-222-3425/);
   assert.match(ch2IncidentModuleSource, /1558125022/);
@@ -643,15 +651,21 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2ScoringModuleSource, /Страница 56 не добавляет правил Scoring/u);
 });
 
-test("Chapter 2 document visuals are high-resolution source-as-is images with Russian explanation outside", () => {
+test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
-  const visualAssets = evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-photo");
+  const visualAssets = evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-document-example");
   assert.equal(visualAssets.length, 6);
   assert.equal(evidenceRecord.visibleSpanishStatus.status, "source_image_exceptions_only");
   assert.equal(evidenceRecord.visibleSpanishStatus.exceptions.length, 6);
+  assert.equal(evidenceRecord.localAssetMetadata.filter((asset) => asset.assetCategory === "source-as-is-photo" && asset.assetKind.includes("document-image")).length, 0);
+  for (const exception of evidenceRecord.visibleSpanishStatus.exceptions) {
+    assert.equal(exception.kind, "source-document-example-original-visible-text");
+    assert.equal(exception.visibleSpanishScope, "source-document-example-image-only");
+  }
 
   for (const asset of visualAssets) {
+    assert.match(asset.assetKind, /^high-resolution-original-source-document-image-/u);
     assert.equal(asset.visibleSpanish, true);
     assert.equal(asset.cleanupScope, "none-source-as-is");
     assert.equal(asset.sourceIntegrity.sourceAsIs, true);
@@ -1647,6 +1661,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "source-as-is-photo",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
+    "source-as-is-document-example",
     "source-transferred-infographic",
     "source-transferred-diagram",
     "native-dom-text-only"
@@ -1661,6 +1676,19 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
     "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
+  ]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsCategories, ["source-as-is-document-example"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.documentExampleSourceAsIsRequiredFields, [
+    "assetCategory=source-as-is-document-example",
+    "assetKind starts with high-resolution-original-source-document-image-",
+    "sourceIntegrity.sourceAsIs",
+    "sourceIntegrity.sourceAssetPath",
+    "sourceIntegrity.noTranslationOrRelabeling",
+    "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+    "sourceIntegrity.russianExplanationOutsideImage",
+    "cleanupScope=none-source-as-is",
+    "visibleSpanishStatus.status=source_image_exceptions_only with exceptions.kind=source-document-example-original-visible-text and exceptions.assetPath matching assetPath when visibleSpanish=true",
+    "Russian explanation remains outside the source-as-is document example image"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.infographicRequiredFields, [
     "assetCategory=source-transferred-infographic",
@@ -2248,6 +2276,68 @@ test("Manual guide source-fidelity checker accepts strict source-as-is visible S
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.implementedSections, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts explicit source-as-is document examples", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-visible-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const documentAsset = implementationEvidence.localAssetMetadata[1];
+      documentAsset.assetKind = "high-resolution-original-source-document-image-fixture";
+      documentAsset.assetCategory = "source-as-is-document-example";
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: documentAsset.assetPath,
+            kind: "source-document-example-original-visible-text",
+            visibleSpanishScope: "source-document-example-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects source-as-is document examples with non-document asset kinds", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-document-example-wrong-kind-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const documentAsset = implementationEvidence.localAssetMetadata[1];
+      documentAsset.assetKind = "high-resolution-original-source-wayfinding-photo";
+      documentAsset.assetCategory = "source-as-is-document-example";
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: documentAsset.assetPath,
+            kind: "source-document-example-original-visible-text",
+            visibleSpanishScope: "source-document-example-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when document-example category is applied to non-document artwork");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetKind must identify a high-resolution original source document image"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

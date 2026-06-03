@@ -4,8 +4,8 @@ const assetRoot =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents";
 
 const sourceImageException = {
-  kind: "source-image-original-visible-text",
-  visibleSpanishScope: "source-image-only",
+  kind: "source-document-example-original-visible-text",
+  visibleSpanishScope: "source-document-example-image-only",
   sourceAsIs: true,
   russianExplanationOutsideImage: true
 } as const;
@@ -40,7 +40,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source PDF pages 46-50 are converted as one Chapter 2 documentation section.",
-      "DNI, license, beginner, cédula, VTV, and RVA visuals are scale-5 source crops rendered source-as-is.",
+      "DNI, license, beginner, cédula, VTV, and RVA visuals are scale-5 source document example crops rendered source-as-is.",
       "The Spanish text inside document visuals is not translated or cleaned; Russian explanations are selectable DOM text outside each image."
     ]
   },

@@ -2092,7 +2092,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-dni",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 320,
             "height": 118,
             "sha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d",
@@ -2124,7 +2124,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-license",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 300,
             "height": 105,
             "sha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee",
@@ -2156,7 +2156,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-beginner-sign",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 315,
             "height": 215,
             "sha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99",
@@ -2188,7 +2188,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-cedulas",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 1110,
             "height": 260,
             "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5",
@@ -2220,7 +2220,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-vtv",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 1150,
             "height": 335,
             "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98",
@@ -2252,7 +2252,7 @@
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-document-image-rva",
-            "assetCategory": "source-as-is-photo",
+            "assetCategory": "source-as-is-document-example",
             "width": 360,
             "height": 300,
             "sha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8",
@@ -2295,52 +2295,52 @@
           "nonSignVisibleSpanishStatus": "source-image-only",
           "exceptions": [
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
-              "reason": "DNI sample contains source Spanish text and is preserved source-as-is."
+              "reason": "DNI source document example contains source Spanish text and is preserved source-as-is."
             },
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
-              "reason": "License sample contains source Spanish text and is preserved source-as-is."
+              "reason": "License source document example contains source Spanish text and is preserved source-as-is."
             },
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
-              "reason": "Beginner sign document visual contains source Spanish text and is preserved source-as-is."
+              "reason": "Beginner sign source document example contains source Spanish text and is preserved source-as-is."
             },
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
-              "reason": "Cédula examples contain source Spanish text and are preserved source-as-is."
+              "reason": "Cédula source document examples contain source Spanish text and are preserved source-as-is."
             },
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
-              "reason": "VTV source visual contains source Spanish text and is preserved source-as-is."
+              "reason": "VTV source document example contains source Spanish text and is preserved source-as-is."
             },
             {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
+              "kind": "source-document-example-original-visible-text",
+              "visibleSpanishScope": "source-document-example-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
-              "reason": "RVA source visual contains source Spanish text and is preserved source-as-is."
+              "reason": "RVA source document example contains source Spanish text and is preserved source-as-is."
             }
           ]
         },
@@ -2364,8 +2364,8 @@
           "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, or fake pending content is introduced."
         },
         "visualReviewNotes": [
-          "DNI, license, beginner, cedula, VTV, and RVA visuals are scale-5 source crops used source-as-is in runtime.",
-          "Embedded Spanish inside document visuals remains source-image-only; Russian explanations are selectable DOM text outside images.",
+          "DNI, license, beginner, cedula, VTV, and RVA visuals are scale-5 source document example crops used source-as-is in runtime.",
+          "Embedded Spanish inside document examples remains source-document-example-image-only; Russian explanations are selectable DOM text outside images.",
           "DNI/license, novice 0.0 g/L, cédula, GNC, insurance, VTV/RTO, license plate, and RVA details are retained."
         ],
         "checkerResult": "pass"

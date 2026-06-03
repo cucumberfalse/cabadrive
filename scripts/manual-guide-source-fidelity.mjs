@@ -149,6 +149,13 @@ function validateVisibleSpanishException(exception, messagePrefix) {
     assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
     return;
   }
+  if (exception.kind === "source-document-example-original-visible-text") {
+    assertCondition(exception.visibleSpanishScope === "source-document-example-image-only", `${messagePrefix}.visibleSpanishScope must be source-document-example-image-only`, exception);
+    assertCondition(exception.sourceAsIs === true, `${messagePrefix}.sourceAsIs must be true`, exception);
+    assertCondition(exception.russianExplanationOutsideImage === true, `${messagePrefix}.russianExplanationOutsideImage must be true`, exception);
+    assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
+    return;
+  }
   assertCondition(false, `${messagePrefix}.kind must be an allowed visible-Spanish source-image exception`, exception);
 }
 
@@ -171,10 +178,12 @@ const strictImageAssetCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
+  "source-as-is-document-example",
   "source-transferred-infographic",
   "source-transferred-diagram"
 ]);
 const protectedSourceAsIsCategories = new Set(["source-as-is-photo", "source-as-is-traffic-sign", "source-as-is-road-marking"]);
+const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
 const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
 const forbiddenStrictVisualTerms = [
@@ -244,7 +253,7 @@ function isStrictVisualEvidenceOptIn(implementedEvidence) {
 function isStrictProtectedSourceAsIsException(entry) {
   return (
     entry.visibleSpanish === true &&
-    protectedSourceAsIsCategories.has(entry.assetCategory) &&
+    (protectedSourceAsIsCategories.has(entry.assetCategory) || documentExampleSourceAsIsCategories.has(entry.assetCategory)) &&
     isObject(entry.sourceIntegrity) &&
     entry.sourceIntegrity.sourceAsIs === true &&
     entry.sourceIntegrity.noTranslationOrRelabeling === true &&
@@ -256,9 +265,10 @@ function isStrictProtectedSourceAsIsException(entry) {
 function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
   if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
   const isTrafficSign = assetCategory === "source-as-is-traffic-sign";
+  const isDocumentExample = documentExampleSourceAsIsCategories.has(assetCategory);
   const allowedStatuses = isTrafficSign ? new Set(["official_traffic_sign_exception_only", "source_image_exceptions_only"]) : new Set(["source_image_exceptions_only"]);
   if (!allowedStatuses.has(value.status)) return new Set();
-  const expectedKind = isTrafficSign ? "official-traffic-sign-source-as-is" : "source-image-original-visible-text";
+  const expectedKind = isTrafficSign ? "official-traffic-sign-source-as-is" : isDocumentExample ? "source-document-example-original-visible-text" : "source-image-original-visible-text";
   return new Set(
     value.exceptions
       .filter((exception) => exception.kind === expectedKind)
@@ -391,7 +401,7 @@ function validateRuntimeDisplaySize(asset, messagePrefix, actualDimensions) {
   }
 }
 
-function validateProtectedSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actualDimensions) {
+function validateSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actualDimensions) {
   assertRequiredFields(
     asset.sourceIntegrity,
     ["sourceAsIs", "sourceAssetPath", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
@@ -426,6 +436,13 @@ function validateProtectedSourceAsIsAsset(asset, messagePrefix, sourceRegionReco
   );
   assertCondition(asset.sourceIntegrity.russianExplanationOutsideImage === true, `${messagePrefix}.sourceIntegrity.russianExplanationOutsideImage must be true`, asset);
   assertCondition(asset.cleanupScope === "none-source-as-is", `${messagePrefix}.cleanupScope must be none-source-as-is`, asset);
+  if (documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
+    assertCondition(
+      typeof asset.assetKind === "string" && asset.assetKind.startsWith("high-resolution-original-source-document-image-"),
+      `${messagePrefix}.assetKind must identify a high-resolution original source document image`,
+      asset
+    );
+  }
 }
 
 function validateSourceTransferProvenance(value, messagePrefix, sourceRegionRecords) {
@@ -542,11 +559,11 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
         const actualDimensions = validateStrictImageAssetDimensions(asset, label);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
         validateRuntimeDisplaySize(asset, label, actualDimensions);
-        if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
-          validateProtectedSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
+        if (protectedSourceAsIsCategories.has(asset.assetCategory) || documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
+          validateSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
         }
       }
-      if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
+      if (protectedSourceAsIsCategories.has(asset.assetCategory) || documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
         if (asset.visibleSpanish === true) {
           const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
           assertCondition(

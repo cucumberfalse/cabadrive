@@ -19,8 +19,8 @@ export type ManualGuideStatus = "pending" | "active";
 export type ManualGuideSectionStatus = "pending" | "implemented";
 
 type OriginalSourceImageTextException = {
-  kind: "source-image-original-visible-text";
-  visibleSpanishScope: "source-image-only";
+  kind: "source-image-original-visible-text" | "source-document-example-original-visible-text";
+  visibleSpanishScope: "source-image-only" | "source-document-example-image-only";
   sourceAsIs: true;
   russianExplanationOutsideImage: true;
 };
