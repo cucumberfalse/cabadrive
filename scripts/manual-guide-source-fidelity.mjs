@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -50,6 +51,39 @@ function assertRequiredFields(value, fields, messagePrefix) {
 function assertLocalPathExists(path, message, details = {}) {
   assertCondition(typeof path === "string" && path.length > 0, `${message} must be a non-empty path`, details);
   assertCondition(existsSync(path), `${message} must exist locally`, { ...details, path });
+}
+
+function readImageDimensions(path) {
+  const bytes = readFileSync(path);
+  if (
+    bytes.length >= 24 &&
+    bytes[0] === 0x89 &&
+    bytes[1] === 0x50 &&
+    bytes[2] === 0x4e &&
+    bytes[3] === 0x47 &&
+    bytes.toString("ascii", 12, 16) === "IHDR"
+  ) {
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+  if (bytes.length >= 10 && bytes.toString("ascii", 0, 3) === "GIF") {
+    return { width: bytes.readUInt16LE(6), height: bytes.readUInt16LE(8) };
+  }
+  if (bytes.length >= 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 4 < bytes.length) {
+      while (bytes[offset] === 0xff) offset += 1;
+      const marker = bytes[offset];
+      offset += 1;
+      if (marker === 0xd9 || marker === 0xda) break;
+      const segmentLength = bytes.readUInt16BE(offset);
+      if (segmentLength < 2 || offset + segmentLength > bytes.length) break;
+      if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7) || (marker >= 0xc9 && marker <= 0xcb) || (marker >= 0xcd && marker <= 0xcf)) {
+        return { width: bytes.readUInt16BE(offset + 5), height: bytes.readUInt16BE(offset + 3) };
+      }
+      offset += segmentLength;
+    }
+  }
+  return null;
 }
 
 function validateObjectOrArray(value, fields, messagePrefix, validateEntry = () => {}) {
@@ -125,6 +159,409 @@ function validateOfficialTrafficSignException(exception, messagePrefix) {
   assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
 }
 
+const legacyVisualEvidenceSectionIds = new Set([
+  "ch1-cities-for-people",
+  "ch1-sustainable-mobility",
+  "ch1-pedestrian-priority",
+  "ch1-bicycle",
+  "ch1-public-transport-system",
+  "ch1-shared-trip"
+]);
+const strictImageAssetCategories = new Set([
+  "source-as-is-photo",
+  "source-as-is-traffic-sign",
+  "source-as-is-road-marking",
+  "source-transferred-infographic",
+  "source-transferred-diagram"
+]);
+const protectedSourceAsIsCategories = new Set(["source-as-is-photo", "source-as-is-traffic-sign", "source-as-is-road-marking"]);
+const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
+const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
+const forbiddenStrictVisualTerms = [
+  "approximate-redraw",
+  "redrawn-infographic",
+  "reconstructed-infographic",
+  "redrawn-diagram",
+  "reconstructed-diagram",
+  "generic-icon-replacement",
+  "translated-sign",
+  "translated-road-marking",
+  "recolored-sign",
+  "retouched-photo",
+  "masked-photo",
+  "inpainted-photo",
+  "broad-mask",
+  "broad-box",
+  "large-patch",
+  "square-patch",
+  "color-matched-plate",
+  "opaque-rectangle",
+  "opaque-label-background",
+  "dom-plate",
+  "backing-rectangle"
+];
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+}
+
+function forbiddenStrictVisualTermPattern(term) {
+  return new RegExp(`\\b${term.split("-").map(escapeRegExp).join("[\\s_-]+")}\\b`, "iu");
+}
+
+const forbiddenStrictVisualTermPatterns = forbiddenStrictVisualTerms.map((term) => ({
+  term,
+  pattern: forbiddenStrictVisualTermPattern(term)
+}));
+const forbiddenStrictVisualTermIgnoredKeys = new Set([
+  "assetPath",
+  "sourceAssetPath",
+  "desktopScreenshot",
+  "mobileScreenshot",
+  "sha256",
+  "cropSha256",
+  "id",
+  "sectionId"
+]);
+
+function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {
+  const policy = evidence.strictVisualRulePolicy;
+  if (policy?.legacyBaselineSectionIds?.includes(section.id) !== true || !legacyVisualEvidenceSectionIds.has(section.id)) return false;
+  const expectedEvidenceFingerprint = policy.legacyBaselineEvidenceFingerprints?.[section.id];
+  const expectedStateFingerprint = policy.legacyBaselineStateFingerprints?.[section.id];
+  if (typeof expectedEvidenceFingerprint !== "string" || typeof expectedStateFingerprint !== "string") return false;
+  return sha256Json(implementedEvidence) === expectedEvidenceFingerprint && legacyBaselineStateFingerprint(section, implementedEvidence) === expectedStateFingerprint;
+}
+
+function isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) {
+  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence);
+}
+
+function isStrictVisualEvidenceOptIn(implementedEvidence) {
+  return implementedEvidence.visualEvidenceSchemaVersion === 3 || implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity";
+}
+
+function isStrictProtectedSourceAsIsException(entry) {
+  return (
+    entry.visibleSpanish === true &&
+    protectedSourceAsIsCategories.has(entry.assetCategory) &&
+    isObject(entry.sourceIntegrity) &&
+    entry.sourceIntegrity.sourceAsIs === true &&
+    entry.sourceIntegrity.noTranslationOrRelabeling === true &&
+    entry.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true &&
+    entry.sourceIntegrity.russianExplanationOutsideImage === true
+  );
+}
+
+function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
+  if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
+  const isTrafficSign = assetCategory === "source-as-is-traffic-sign";
+  const allowedStatuses = isTrafficSign ? new Set(["official_traffic_sign_exception_only", "source_image_exceptions_only"]) : new Set(["source_image_exceptions_only"]);
+  if (!allowedStatuses.has(value.status)) return new Set();
+  const expectedKind = isTrafficSign ? "official-traffic-sign-source-as-is" : "source-image-original-visible-text";
+  return new Set(
+    value.exceptions
+      .filter((exception) => exception.kind === expectedKind)
+      .map((exception) => exception.assetPath)
+      .filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0)
+  );
+}
+
+function collectForbiddenStrictVisualText(value, key = "") {
+  if (typeof value === "string") return forbiddenStrictVisualTermIgnoredKeys.has(key) ? [] : [value];
+  if (Array.isArray(value)) return value.flatMap((entry) => collectForbiddenStrictVisualText(entry));
+  if (isObject(value)) return Object.entries(value).flatMap(([entryKey, entryValue]) => collectForbiddenStrictVisualText(entryValue, entryKey));
+  return [];
+}
+
+function assertNoForbiddenStrictVisualTerms(value, messagePrefix) {
+  const serialized = collectForbiddenStrictVisualText(value).join("\n");
+  for (const { term, pattern } of forbiddenStrictVisualTermPatterns) {
+    assertCondition(!pattern.test(serialized), `${messagePrefix} must not record forbidden visual-edit term ${term}`, value);
+  }
+}
+
+function validateSha256(value, messagePrefix) {
+  assertCondition(/^[a-f0-9]{64}$/u.test(value), `${messagePrefix} must be a SHA-256 hash`, { value });
+}
+
+function sha256File(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function validateFileSha256(path, expectedSha256, messagePrefix, details = {}) {
+  validateSha256(expectedSha256, messagePrefix);
+  assertLocalPathExists(path, `${messagePrefix} referenced artifact`, details);
+  const actualSha256 = sha256File(path);
+  assertCondition(actualSha256 === expectedSha256, `${messagePrefix} must match referenced artifact bytes`, {
+    ...details,
+    path,
+    actualSha256,
+    expectedSha256
+  });
+}
+
+function fileSha256IfPresent(path) {
+  if (typeof path !== "string" || path.length === 0 || !existsSync(path)) return null;
+  return sha256File(path);
+}
+
+function visualArtifactHashRecords(value, pathField) {
+  const entries = Array.isArray(value) ? value : isObject(value) ? [value] : [];
+  return entries.map((entry, index) => ({
+    index,
+    path: entry[pathField],
+    sha256: fileSha256IfPresent(entry[pathField])
+  }));
+}
+
+function legacyBaselineStateFingerprint(section, implementedEvidence) {
+  const modulePath = resolveSectionContentModulePath(section.sectionContentModulePath);
+  const sectionContentModuleSha256 = fileSha256IfPresent(modulePath);
+  const sourceAssetHashes = visualArtifactHashRecords(implementedEvidence.sourceRegionMetadata, "sourceAssetPath");
+  const localAssetHashes = visualArtifactHashRecords(implementedEvidence.localAssetMetadata, "assetPath");
+  if (sectionContentModuleSha256 === null || [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)) return null;
+  return sha256Json({
+    implementationEvidence: implementedEvidence,
+    sectionContentModulePath: section.sectionContentModulePath,
+    sectionContentModuleSha256,
+    sourceAssetHashes,
+    localAssetHashes
+  });
+}
+
+function validateExtractionScaleEvidence(value, messagePrefix, actualDimensions = null) {
+  assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
+  assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
+  assertCondition(typeof value.method === "string" && value.method.length > 0, `${messagePrefix}.method must describe the export method`, value);
+  assertRequiredFields(value.outputDimensions, ["width", "height"], `${messagePrefix}.outputDimensions`);
+  assertCondition(value.outputDimensions.width > 0 && value.outputDimensions.height > 0, `${messagePrefix}.outputDimensions must be positive`, value);
+  if (actualDimensions !== null) {
+    assertCondition(value.outputDimensions.width === actualDimensions.width, `${messagePrefix}.outputDimensions.width must match referenced image width`, {
+      ...value,
+      actualDimensions
+    });
+    assertCondition(value.outputDimensions.height === actualDimensions.height, `${messagePrefix}.outputDimensions.height must match referenced image height`, {
+      ...value,
+      actualDimensions
+    });
+  }
+  if ("sha256" in value) {
+    validateSha256(value.sha256, `${messagePrefix}.sha256`);
+  }
+}
+
+function validateStrictSourceRegionDimensions(entry, messagePrefix) {
+  const dimensions = readImageDimensions(entry.sourceAssetPath);
+  assertCondition(dimensions !== null, `${messagePrefix}.sourceAssetPath must reference a supported image with readable dimensions`, entry);
+  assertRequiredFields(entry.cropDimensions, ["width", "height"], `${messagePrefix}.cropDimensions`);
+  assertCondition(entry.cropDimensions.width === dimensions.width, `${messagePrefix}.cropDimensions.width must match referenced image width`, {
+    ...entry,
+    actualDimensions: dimensions
+  });
+  assertCondition(entry.cropDimensions.height === dimensions.height, `${messagePrefix}.cropDimensions.height must match referenced image height`, {
+    ...entry,
+    actualDimensions: dimensions
+  });
+  return dimensions;
+}
+
+function validateStrictImageAssetDimensions(asset, messagePrefix) {
+  const dimensions = readImageDimensions(asset.assetPath);
+  assertCondition(dimensions !== null, `${messagePrefix}.assetPath must reference a supported image with readable dimensions`, asset);
+  assertCondition(asset.width === dimensions.width, `${messagePrefix}.width must match referenced image width`, { ...asset, actualDimensions: dimensions });
+  assertCondition(asset.height === dimensions.height, `${messagePrefix}.height must match referenced image height`, { ...asset, actualDimensions: dimensions });
+  return dimensions;
+}
+
+function validateRuntimeDisplaySize(asset, messagePrefix, actualDimensions) {
+  assertRequiredFields(asset.runtimeDisplaySize, ["maxWidthCssPx", "noUpscale"], `${messagePrefix}.runtimeDisplaySize`);
+  assertCondition(asset.runtimeDisplaySize.noUpscale === true, `${messagePrefix}.runtimeDisplaySize.noUpscale must be true`, asset);
+  assertCondition(asset.runtimeDisplaySize.maxWidthCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxWidthCssPx must be positive`, asset);
+  assertCondition(actualDimensions.width >= asset.runtimeDisplaySize.maxWidthCssPx, `${messagePrefix}.actualWidth must be at least runtime max display width`, {
+    ...asset,
+    actualDimensions
+  });
+  if ("maxHeightCssPx" in asset.runtimeDisplaySize) {
+    assertCondition(asset.runtimeDisplaySize.maxHeightCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxHeightCssPx must be positive`, asset);
+    assertCondition(actualDimensions.height >= asset.runtimeDisplaySize.maxHeightCssPx, `${messagePrefix}.actualHeight must be at least runtime max display height`, {
+      ...asset,
+      actualDimensions
+    });
+  }
+}
+
+function validateProtectedSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actualDimensions) {
+  assertRequiredFields(
+    asset.sourceIntegrity,
+    ["sourceAsIs", "sourceAssetPath", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
+    `${messagePrefix}.sourceIntegrity`
+  );
+  assertCondition(asset.sourceIntegrity.sourceAsIs === true, `${messagePrefix}.sourceIntegrity.sourceAsIs must be true`, asset);
+  assertCondition(
+    sourceRegionRecords.has(asset.sourceIntegrity.sourceAssetPath),
+    `${messagePrefix}.sourceIntegrity.sourceAssetPath must reference sourceRegionMetadata`,
+    asset
+  );
+  const sourceRegionRecord = sourceRegionRecords.get(asset.sourceIntegrity.sourceAssetPath);
+  assertCondition(asset.sha256 === sourceRegionRecord.sha256, `${messagePrefix}.sha256 must match source-as-is source crop bytes`, {
+    ...asset,
+    sourceRegionRecord
+  });
+  assertCondition(actualDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.width must match source-as-is source crop width`, {
+    ...asset,
+    actualDimensions,
+    sourceRegionRecord
+  });
+  assertCondition(actualDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.height must match source-as-is source crop height`, {
+    ...asset,
+    actualDimensions,
+    sourceRegionRecord
+  });
+  assertCondition(asset.sourceIntegrity.noTranslationOrRelabeling === true, `${messagePrefix}.sourceIntegrity.noTranslationOrRelabeling must be true`, asset);
+  assertCondition(
+    asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true,
+    `${messagePrefix}.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true`,
+    asset
+  );
+  assertCondition(asset.sourceIntegrity.russianExplanationOutsideImage === true, `${messagePrefix}.sourceIntegrity.russianExplanationOutsideImage must be true`, asset);
+  assertCondition(asset.cleanupScope === "none-source-as-is", `${messagePrefix}.cleanupScope must be none-source-as-is`, asset);
+}
+
+function validateSourceTransferProvenance(value, messagePrefix, sourceRegionRecords) {
+  assertRequiredFields(value, ["sourceAssetPath", "sourceCropSha256", "sourceCropDimensions"], messagePrefix);
+  assertCondition(sourceRegionRecords.has(value.sourceAssetPath), `${messagePrefix}.sourceAssetPath must reference sourceRegionMetadata`, value);
+  const sourceRegionRecord = sourceRegionRecords.get(value.sourceAssetPath);
+  assertCondition(value.sourceCropSha256 === sourceRegionRecord.sha256, `${messagePrefix}.sourceCropSha256 must match sourceRegionMetadata cropSha256`, {
+    ...value,
+    sourceRegionRecord
+  });
+  assertRequiredFields(value.sourceCropDimensions, ["width", "height"], `${messagePrefix}.sourceCropDimensions`);
+  assertCondition(value.sourceCropDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.sourceCropDimensions.width must match sourceRegionMetadata width`, {
+    ...value,
+    sourceRegionRecord
+  });
+  assertCondition(value.sourceCropDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.sourceCropDimensions.height must match sourceRegionMetadata height`, {
+    ...value,
+    sourceRegionRecord
+  });
+}
+
+function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionRecords) {
+  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
+  assertRequiredFields(
+    asset.infographicTransfer,
+    ["sourceImageTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
+    `${messagePrefix}.infographicTransfer`
+  );
+  validateSourceTransferProvenance(asset.infographicTransfer, `${messagePrefix}.infographicTransfer`, sourceRegionRecords);
+  assertCondition(asset.infographicTransfer.sourceImageTransfer === true, `${messagePrefix}.infographicTransfer.sourceImageTransfer must be true`, asset);
+  assertCondition(asset.infographicTransfer.noApproximateRedraw === true, `${messagePrefix}.infographicTransfer.noApproximateRedraw must be true`, asset);
+  assertCondition(asset.infographicTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.infographicTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  assertCondition(
+    asset.infographicTransfer.russianOverlayStrategy === "selectable-dom" || asset.infographicTransfer.russianOverlayStrategy === "selectable-svg",
+    `${messagePrefix}.infographicTransfer.russianOverlayStrategy must be selectable DOM/SVG`,
+    asset
+  );
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
+    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset
+  );
+  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
+    assertCondition(
+      asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+      `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
+      asset
+    );
+  }
+}
+
+function validateTransferredDiagramAsset(asset, messagePrefix, sourceRegionRecords) {
+  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred diagram artwork`, asset);
+  assertRequiredFields(
+    asset.diagramTransfer,
+    ["sourceDiagramTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],
+    `${messagePrefix}.diagramTransfer`
+  );
+  validateSourceTransferProvenance(asset.diagramTransfer, `${messagePrefix}.diagramTransfer`, sourceRegionRecords);
+  assertCondition(asset.diagramTransfer.sourceDiagramTransfer === true, `${messagePrefix}.diagramTransfer.sourceDiagramTransfer must be true`, asset);
+  assertCondition(asset.diagramTransfer.noApproximateRedraw === true, `${messagePrefix}.diagramTransfer.noApproximateRedraw must be true`, asset);
+  assertCondition(asset.diagramTransfer.noReconstruction === true, `${messagePrefix}.diagramTransfer.noReconstruction must be true`, asset);
+  assertCondition(asset.diagramTransfer.noGenericIconReplacement === true, `${messagePrefix}.diagramTransfer.noGenericIconReplacement must be true`, asset);
+  assertCondition(asset.diagramTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.diagramTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
+    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset
+  );
+  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
+    assertCondition(
+      asset.diagramTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+      `${messagePrefix}.diagramTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
+      asset
+    );
+  }
+}
+
+function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
+  assertCondition(implementedEvidence.visualEvidenceSchemaVersion === 3, `${messagePrefix}.visualEvidenceSchemaVersion must be 3 for new manual units`, implementedEvidence);
+  assertCondition(implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity", `${messagePrefix}.visualRulePolicyId must be 031-strict-source-fidelity`, implementedEvidence);
+  assertCondition(
+    implementedEvidence.highResolutionEvidenceStatus === "x5-or-equivalent-no-upscale-recorded",
+    `${messagePrefix}.highResolutionEvidenceStatus must prove x5/equivalent extraction and no runtime upscaling`,
+    implementedEvidence
+  );
+  assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
+
+  const sourceRegionRecords = new Map();
+  validateObjectOrArray(
+    implementedEvidence.sourceRegionMetadata,
+    ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
+    `${messagePrefix} sourceRegionMetadata`,
+    (entry, label) => {
+      validateFileSha256(entry.sourceAssetPath, entry.cropSha256, `${label}.cropSha256`, entry);
+      const actualDimensions = validateStrictSourceRegionDimensions(entry, label);
+      validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
+      assertNoForbiddenStrictVisualTerms(entry, label);
+      sourceRegionRecords.set(entry.sourceAssetPath, { sha256: entry.cropSha256, dimensions: actualDimensions });
+    }
+  );
+
+  validateObjectOrArray(
+    implementedEvidence.localAssetMetadata,
+    ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"],
+    `${messagePrefix} localAssetMetadata`,
+    (asset, label) => {
+      const allowedCategory = strictImageAssetCategories.has(asset.assetCategory) || strictNonImageAssetCategories.has(asset.assetCategory);
+      assertCondition(allowedCategory, `${label}.assetCategory must use the strict full-manual visual vocabulary`, asset);
+      assertNoForbiddenStrictVisualTerms(asset, label);
+      if (strictImageAssetCategories.has(asset.assetCategory)) {
+        assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
+        validateFileSha256(asset.assetPath, asset.sha256, `${label}.sha256`, asset);
+        const actualDimensions = validateStrictImageAssetDimensions(asset, label);
+        validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
+        validateRuntimeDisplaySize(asset, label, actualDimensions);
+        if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
+          validateProtectedSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
+        }
+      }
+      if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
+        if (asset.visibleSpanish === true) {
+          const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
+          assertCondition(
+            visibleSpanishExceptionAssetPaths.has(asset.assetPath),
+            `${label}.visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions`,
+            asset
+          );
+        }
+      }
+      if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label, sourceRegionRecords);
+      if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label, sourceRegionRecords);
+    }
+  );
+}
+
 function validateNoVisibleSpanishStatus(value, messagePrefix) {
   const allowedStatuses = new Set(["pass", "none", "no_visible_spanish", "no-visible-spanish"]);
   const status = isObject(value) && "status" in value ? value.status : value;
@@ -194,6 +631,21 @@ function duplicatedValues(values) {
     .sort((a, b) => a - b);
 }
 
+function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  if (isObject(value)) {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sha256Json(value) {
+  return createHash("sha256").update(stableStringify(value)).digest("hex");
+}
+
 function compareJson(actual, expected, message, details = {}) {
   assertCondition(JSON.stringify(actual) === JSON.stringify(expected), message, { ...details, actual, expected });
 }
@@ -215,6 +667,7 @@ function validateImplementedSection(section, evidence, id) {
   const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
   const format = evidence.implementedSectionEvidenceFormat;
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
+  const validateStrictEvidence = isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
   assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
   assertCondition(
     JSON.stringify(implementedEvidence.sourcePages) === JSON.stringify(sectionSourcePages(section)),
@@ -222,17 +675,26 @@ function validateImplementedSection(section, evidence, id) {
     implementedEvidence
   );
   assertCondition(implementedEvidence.checkerResult === "pass", `${id} implementationEvidence.checkerResult must be pass`, implementedEvidence);
+  if (validateStrictEvidence) {
+    validateStrictVisualEvidence(implementedEvidence, `${id} implementationEvidence`);
+  }
 
   const allowedSourcePages = new Set(sectionSourcePages(section));
   validateObjectOrArray(implementedEvidence.sourceRegionMetadata, format.sourceRegionMetadataFields, `${id} sourceRegionMetadata`, (entry, label) => {
     assertCondition(allowedSourcePages.has(entry.sourcePage), `${label}.sourcePage must belong to the section source range`, entry);
     assertLocalPathExists(entry.sourceAssetPath, `${label}.sourceAssetPath`, entry);
   });
-  validateObjectOrArray(implementedEvidence.localAssetMetadata, format.localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
+  const localAssetMetadataFields = validateStrictEvidence
+    ? ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"]
+    : format.localAssetMetadataFields;
+  validateObjectOrArray(implementedEvidence.localAssetMetadata, localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
     if (entry.visibleSpanish === false) return;
+    const allowsVisibleSpanish = validateStrictEvidence
+      ? isStrictProtectedSourceAsIsException(entry)
+      : isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry);
     assertCondition(
-      isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry),
+      allowsVisibleSpanish,
       `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
       entry
     );
@@ -361,7 +823,7 @@ function validateSectionRegistry(registry, evidence) {
   assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", { duplicateSectionIds });
 
   const expectedCoveredPages = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
-  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover source pages 22-42 and 44-55 as section source metadata", {
+  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover every non-skipped source page in the required range as section source metadata", {
     coveredSourcePages,
     expectedCoveredPages
   });
@@ -464,7 +926,8 @@ function main() {
     sharedSourcePages: (evidence.sharedSourcePageOwnership ?? []).map((entry) => entry.sourcePage),
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
     screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
-    sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence
+    sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence,
+    strictVisualRulePolicy: evidence.strictVisualRulePolicy?.id ?? null
   };
   console.log(JSON.stringify(result, null, 2));
 }

@@ -168,6 +168,133 @@
       "fail"
     ]
   },
+  "strictVisualRulePolicy": {
+    "id": "031-strict-source-fidelity",
+    "schemaVersion": 3,
+    "enforcement": "all-new-manual-units",
+    "legacyBaselineFeatureIds": [
+      "030-manual-chapters-1-2"
+    ],
+    "legacyBaselineSectionIds": [
+      "ch1-cities-for-people",
+      "ch1-sustainable-mobility",
+      "ch1-pedestrian-priority",
+      "ch1-bicycle",
+      "ch1-public-transport-system",
+      "ch1-shared-trip"
+    ],
+    "legacyBaselineEvidenceFingerprints": {
+      "ch1-cities-for-people": "f3af33cce8e057b2887618d72bc9d0b8a180a58f2e1ca5dfe516a8f16f7888dc",
+      "ch1-sustainable-mobility": "ec69d603a4e8915a5dbf28803020f3b8bb2b8a8a58023af3581b91f1a7e5b1d5",
+      "ch1-pedestrian-priority": "82836bdcf64582298541043aad6f2b0393781bbbcfd64355a1764f75bee21167",
+      "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14",
+      "ch1-public-transport-system": "373464b9d6026d2196fb12a836b1ec90a1c43cb0a399065c0d707f9f69cf0a5c",
+      "ch1-shared-trip": "01279a5990e2c7c31e09a4bf2cae4f15d1a701df77a4e8df541cdc8136411876"
+    },
+    "legacyBaselineStateFingerprints": {
+      "ch1-cities-for-people": "00f3aa2f0c157f1d1552677977a6c234a878e803ddf6be9b5b8ff0e324baf3bc",
+      "ch1-sustainable-mobility": "09fb29d2f8cf8df3a6534558237addfe988696312516c71d852596ab3a1a57c7",
+      "ch1-pedestrian-priority": "6b9f42c7bbdfbc36f288d6f37f76de668d05d883b0338bce7d7d7ab9af1183a3",
+      "ch1-bicycle": "f13938a6256811e2f659e34fcb1efb1fe8932847280fc57ee5acaed921dc7123",
+      "ch1-public-transport-system": "de79a2158b8ab6b43acb91f0b7e0d46eeacd9e07d38a46ea7ff65df28cf2021e",
+      "ch1-shared-trip": "6f6580ee40f8e143795712a86722013644cfa613534fd10f409116afad56800c"
+    },
+    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints and their section module plus referenced source/runtime visual asset bytes match legacyBaselineStateFingerprints.",
+    "highResolutionEvidence": {
+      "requiredFor": "every new image/crop extraction or export",
+      "allowedTargets": [
+        "x5-zoom-source-export",
+        "source-native-equivalent-or-better",
+        "higher-resolution-direct-export"
+      ],
+      "requiredFields": [
+        "extractionScaleEvidence.target",
+        "extractionScaleEvidence.method",
+        "extractionScaleEvidence.outputDimensions must match referenced artifact image bytes",
+        "sourceRegionMetadata.cropDimensions must match sourceAssetPath image bytes",
+        "sourceRegionMetadata.cropSha256=64-hex-sha256 matching sourceAssetPath bytes",
+        "localAssetMetadata.sha256=64-hex-sha256 matching assetPath bytes",
+        "localAssetMetadata.width/height must match referenced assetPath image bytes",
+        "protected source-as-is localAssetMetadata.sha256/width/height must match sourceIntegrity.sourceAssetPath source crop bytes",
+        "runtimeDisplaySize.maxWidthCssPx",
+        "runtimeDisplaySize.noUpscale"
+      ]
+    },
+    "assetCategories": [
+      "source-as-is-photo",
+      "source-as-is-traffic-sign",
+      "source-as-is-road-marking",
+      "source-transferred-infographic",
+      "source-transferred-diagram",
+      "native-dom-text-only",
+      "reference-only-not-runtime"
+    ],
+    "protectedSourceAsIsCategories": [
+      "source-as-is-photo",
+      "source-as-is-traffic-sign",
+      "source-as-is-road-marking"
+    ],
+    "protectedSourceAsIsRequiredFields": [
+      "sourceIntegrity.sourceAsIs",
+      "sourceIntegrity.sourceAssetPath",
+      "sourceIntegrity.noTranslationOrRelabeling",
+      "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+      "sourceIntegrity.russianExplanationOutsideImage",
+      "cleanupScope=none-source-as-is",
+      "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
+    ],
+    "infographicRequiredFields": [
+      "assetCategory=source-transferred-infographic",
+      "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
+      "infographicTransfer.sourceImageTransfer",
+      "infographicTransfer.sourceAssetPath references sourceRegionMetadata.sourceAssetPath",
+      "infographicTransfer.sourceCropSha256 matches sourceRegionMetadata.cropSha256",
+      "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
+      "infographicTransfer.noApproximateRedraw",
+      "infographicTransfer.broadMaskPlatePatchStatus=none",
+      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
+      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+    ],
+    "diagramRequiredFields": [
+      "assetCategory=source-transferred-diagram",
+      "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
+      "diagramTransfer.sourceDiagramTransfer",
+      "diagramTransfer.sourceAssetPath references sourceRegionMetadata.sourceAssetPath",
+      "diagramTransfer.sourceCropSha256 matches sourceRegionMetadata.cropSha256",
+      "diagramTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
+      "diagramTransfer.noApproximateRedraw",
+      "diagramTransfer.noReconstruction",
+      "diagramTransfer.noGenericIconReplacement",
+      "diagramTransfer.broadMaskPlatePatchStatus=none",
+      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "diagramTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed"
+    ],
+    "forbiddenStrictVisualTerms": [
+      "approximate-redraw",
+      "redrawn-infographic",
+      "reconstructed-infographic",
+      "redrawn-diagram",
+      "reconstructed-diagram",
+      "generic-icon-replacement",
+      "translated-sign",
+      "translated-road-marking",
+      "recolored-sign",
+      "retouched-photo",
+      "masked-photo",
+      "inpainted-photo",
+      "broad-mask",
+      "broad-box",
+      "large-patch",
+      "square-patch",
+      "color-matched-plate",
+      "opaque-rectangle",
+      "opaque-label-background",
+      "dom-plate",
+      "backing-rectangle"
+    ],
+    "forbiddenStrictVisualTermMatching": "case-insensitive canonical term matching across hyphen, space, and underscore separators; semantic kind/category/approach metadata is scanned while path/hash/id fields are excluded"
+  },
   "forbiddenPatterns": [
     {
       "id": "runtime-pdf-viewer",
@@ -182,7 +309,7 @@
     },
     {
       "id": "full-page-raster-base",
-      "description": "Chapter 1/2 interactive sections must not render a full PDF page image as the learner-facing base.",
+      "description": "Interactive manual sections must not render a full PDF page image as the learner-facing base.",
       "patterns": [
         "manual-russian-page-flow",
         "manual-page-canvas"
@@ -190,7 +317,7 @@
     },
     {
       "id": "raw-source-page-routes",
-      "description": "Chapter 1/2 guide routing must not expose raw source PDF pages as learner pages.",
+      "description": "Manual guide routing must not expose raw source PDF pages as learner pages.",
       "patterns": [
         "#manual-page-021",
         "#manual-page-043",
