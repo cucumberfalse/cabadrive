@@ -90,7 +90,7 @@ For each chapter-equivalent content PR:
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | effective content head `3769e53baaf6100cfb5667e265e07dd027fc2539`; current PR head is the evidence-only commit containing this PR-row update | ready PR opened; focused/full/preflight verification passed before opening; post-open change is process-memory evidence only | yes |
+| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | effective content head `36316f3781b9b04f305725018522b0f55407f900` | ready/open; GitHub reports PR head `36316f3781b9b04f305725018522b0f55407f900`, mergeable, required checks green (`baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`), and Review Agent no actionable findings for current head; Architect validation passed for prerequisite scope | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
@@ -165,9 +165,33 @@ For each chapter-equivalent content PR:
 
 ## Implementation Agent Feedback
 
-- None requiring Architect disposition for this prerequisite slice.
+- None requiring Architect disposition for this prerequisite slice. Final Architect validation for PR #185 confirms no unresolved Implementation Agent feedback remains for the visual-rule prerequisite scope.
 
 Future Implementation Agent feedback must be recorded here and routed to Architect for accept/task/ticket/not-needed disposition before follow-up development.
+
+## Final Architect Validation - PR #185 Visual-Rule Prerequisite
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T03:19:05Z
+
+Architect validated effective content head: 36316f3781b9b04f305725018522b0f55407f900
+
+Architect return count for this prerequisite validation: 0
+
+Validation scope: PR #185 visual-rule prerequisite only. This validation covers durable manual conversion guideline updates, manual-guide source-fidelity checker/evidence updates, focused tests, and feature process memory. It does not validate any Chapter 2+ content implementation, Introduction/Chapter 1 audit or correction implementation, front-matter implementation, or full manual completion.
+
+Cycle PR-set coverage: PR #185 is recorded in the cycle PR set as the visual-rule prerequisite row with branch `codex/031-manual-document-completion`, PR URL `https://github.com/cucumberfalse/cabadrive/pull/185`, base `b07d5c72bf1689e7dac480e937c366a528d20299`, and effective content head `36316f3781b9b04f305725018522b0f55407f900`. The later audit, correction, chapter, appendix, and front-matter rows remain pending by design and are outside this prerequisite validation pass.
+
+Architect validation evidence: local `HEAD` matched `36316f3781b9b04f305725018522b0f55407f900` on branch `codex/031-manual-document-completion`; the working tree was clean before this Architect-owned validation note; the PR diff from base is scoped to `docs_project/project/frontend/manual-conversion-guidelines.md`, `content/validation/manual-guide-source-fidelity.evidence.json`, `scripts/manual-guide-source-fidelity.mjs`, `tests/content-manual-guide-chapters.test.mjs`, and `specs/031-manual-document-completion/` feature memory.
+
+Architect validation evidence: PR #185 satisfies the planned prerequisite acceptance. The durable guidelines now record x5/equivalent high-resolution export evidence, protected source-as-is handling for photos/traffic signs/road markings, transferred-source infographic/diagram requirements, glyph/letter-level Spanish cleanup, no broad masks/plates/patches, and selectable Russian overlay guidance where feasible. The checker/evidence policy records `031-strict-source-fidelity`, strict future-unit asset categories, byte-verified hashes for strict images/crops, no-upscale/runtime-size requirements, source-as-is integrity fields, infographic/diagram transfer proof, forbidden visual-edit term scanning, and a fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Architect validation evidence: GitHub PR state for current head `36316f3781b9b04f305725018522b0f55407f900` reported required checks green: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`. Review Agent recorded no actionable findings for the same current head, and prior review findings were addressed in the current head.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #185. Docker runtime smoke was not run locally for this prerequisite slice because no runtime app behavior, manual route content, source assets, Docker files, or build/runtime contract files changed; GitHub `docker-validation` is green for the validated head and local/process evidence records passing `pnpm run preflight`.
+
+Remaining work after this prerequisite validation: Introduction/Chapter 1 visual-rule audit, any scoped corrections from that audit, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, final full-cycle Architect validation, and final Analyst validation remain pending in the cycle.
 
 ## Review Requirements
 
