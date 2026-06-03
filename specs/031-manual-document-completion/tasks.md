@@ -374,6 +374,21 @@ For each chapter-equivalent content PR:
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head 565c71bc39b74891e97b1d02883a6a72d6e133bf for PR #188; post-effective changes through this validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, and at the effective head required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 - Post-validation staleness notice: PR #188 AI Review threads `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv` required a non-evidence speed-table content/test repair after effective content head `565c71bc39b74891e97b1d02883a6a72d6e133bf` and evidence-only head `d25cb9c5bdbefebfa803cf7e136a986ce1e88c97`; the prior final Architect and Analyst validation for `565c71bc39b74891e97b1d02883a6a72d6e133bf` is stale and must be rerun after the repaired content head.
+- Effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect validation: passed at 2026-06-03T14:57:43Z for effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect return count: 0
+- Architect validation: prior Architect and Analyst validation for 565c71bc39b74891e97b1d02883a6a72d6e133bf is stale after the non-evidence outside-CABA speed-table content/test repair; this Architect validation supersedes it for PR #188 effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Architect validation: PR #188 Chapter 3 scope validated for pages 57-88 and sections ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking.
+- Architect validation: outside-CABA page 73 speed table correction is included: microbuses, omnibus, and motorhomes are 90 km/h on rutas/semiautopistas and 100 km/h on autopistas nacionales; trucks, hazardous-substance transport, and vehicles towing motorhomes remain 80 km/h; pickups are 110 km/h across rutas, semiautopistas, and autopistas nacionales; motorcycles and cars are 110 km/h on rutas, 120 km/h on semiautopistas, and 130 km/h on autopistas nacionales.
+- Architect validation: required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation: Review Agent James posted no actionable findings at f56c42d075dc92d61523301b1f84c3a33faf3a3e; AI Review passed and the three speed-table AI Review threads were resolved.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; review-fix threads PRRT_kwDOSX65IM6GwWxS, PRRT_kwDOSX65IM6GwWxX, PRRT_kwDOSX65IM6GxhOg, PRRT_kwDOSX65IM6GyAcg, PRRT_kwDOSX65IM6GyAcp, and PRRT_kwDOSX65IM6GyAcv are resolved in content, verification, and process-memory evidence.
+- Analyst feedback Architect disposition: none requiring action for PR #188 Chapter 3 scope.
+- Architect validation: Chapter 3 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #188, accepted no action, and disposition not applicable.
+- Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, PR #187 Chapter 2 content slice, and PR #188 Chapter 3 content slice at effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e for PR #188; post-effective changes through this repeat validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
 
@@ -915,6 +930,46 @@ Architect validation evidence: Cycle PR-set coverage for this validation include
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at 565c71bc39b74891e97b1d02883a6a72d6e133bf.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #188 because it is pre-existing, nonfatal, unrelated to Chapter 3 content, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T14:57:43Z
+
+Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect validation evidence: PR #188 implements only Chapter 3 pages 57-88, covering ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking, with no Chapter 4+ content, appendix content, front matter, or unrelated source unit bundled.
+
+Architect validation evidence: Prior final Architect and Analyst validation for 565c71bc39b74891e97b1d02883a6a72d6e133bf is stale after the non-evidence outside-CABA speed-table product/content repair; this validation supersedes it for effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect validation evidence: Chapter 3 page boundaries and source order are preserved: page 57 is divider-only, runtime Chapter 3 starts on page 58 and ends on page 88, and the nine assigned sections are recorded in source order in tasks, inventory, registry, and implementation evidence.
+
+Architect validation evidence: Strict visual requirements remain satisfied after the speed-table repair: source pages 58-88 were rendered from the canonical GCBA PDF at scale 5.0 to 2976x4209 page images, source crops were created without resizing or visual cleanup, Russian learner explanation is selectable DOM text outside source visuals, no runtime PDF or remote asset dependency is introduced, and no protected photo, traffic sign, road marking, diagram, source crop, source page image, or infographic was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, broadly patched, or modified.
+
+Architect validation evidence: Outside-CABA page 73 speed table correction is included and regression-asserted: microbuses, omnibus, and motorhomes are 90 km/h on rutas/semiautopistas and 100 km/h on autopistas nacionales; trucks, hazardous-substance transport, and vehicles towing motorhomes remain 80 km/h; pickups are 110 km/h across rutas, semiautopistas, and autopistas nacionales; motorcycles and cars are 110 km/h on rutas, 120 km/h on semiautopistas, and 130 km/h on autopistas nacionales.
+
+Architect validation evidence: Required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+
+Architect validation evidence: Review Agent James posted no actionable findings for current head f56c42d075dc92d61523301b1f84c3a33faf3a3e, AI Review passed, and the three speed-table AI Review threads PRRT_kwDOSX65IM6GyAcg, PRRT_kwDOSX65IM6GyAcp, and PRRT_kwDOSX65IM6GyAcv are resolved.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; review-fix threads PRRT_kwDOSX65IM6GwWxS and PRRT_kwDOSX65IM6GwWxX are implemented and verified at 2c128758de15de388a03f090ad394e39f3c36377, process-memory thread PRRT_kwDOSX65IM6GxhOg is repaired at 565c71bc39b74891e97b1d02883a6a72d6e133bf, and speed-table AI Review threads PRRT_kwDOSX65IM6GyAcg, PRRT_kwDOSX65IM6GyAcp, and PRRT_kwDOSX65IM6GyAcv are repaired at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect validation evidence: Known Issues section records no unresolved Chapter 3 known issues; the Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #188, accepted no action, and disposition not applicable.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, PR #186 as Introduction and Chapter 1 audit-only slice, PR #187 as Chapter 2 content slice, and PR #188 as Chapter 3 content slice at base 49c145e9dd4f4661f99d05f79c3e55ed425d4155 and effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
 
 Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
 
