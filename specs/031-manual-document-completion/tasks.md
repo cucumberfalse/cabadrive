@@ -206,6 +206,9 @@ For each chapter-equivalent content PR:
 - Architect validation: Review Agent no-findings review 4416640043 and AI Review no-major-issues summary apply to ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57.
 - Analyst feedback Architect disposition: none for PR #186 audit-only scope.
 - Limit escalation: none
+- Final-validation evidence-only commit: 225b2db7d5938a57cd860f3f4a3bc5b3fcdd7d52 recorded Architect validation evidence for effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 in tasks.md.
+- Final-validation evidence-only commit: 59ebb2b1de23a518c7589f3e2bcb8a6c3083c55b recorded Analyst validation evidence for effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head 59ebb2b1de23a518c7589f3e2bcb8a6c3083c55b against effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit remains final-validation process evidence for the same effective content head.
 
 ## Known Issues / Architect Dispositions
 
