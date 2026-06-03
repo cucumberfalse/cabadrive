@@ -2531,6 +2531,36 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
       </header>
       <div className="intro-document-flow">
         {content.blocks.map((block) => {
+          if (block.kind === "table") {
+            return (
+              <section key={block.id} className="intro-doc-block manual-guide-table-block" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+                <h3>{block.titleRu}</h3>
+                <div className="manual-guide-table-scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        {block.columnsRu.map((column) => (
+                          <th key={column} scope="col">
+                            {column}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {block.rows.map((row) => (
+                        <tr key={row.id}>
+                          {row.cellsRu.map((cell, index) => (
+                            <td key={`${row.id}-${index}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {block.captionRu && <p className="manual-guide-table-caption">{block.captionRu}</p>}
+              </section>
+            );
+          }
           if (block.kind === "list") {
             return (
               <section key={block.id} className="intro-doc-block intro-doc-list" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>

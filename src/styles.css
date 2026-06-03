@@ -2669,6 +2669,64 @@ small,
   line-height: 1.2;
 }
 
+.manual-guide-table-block {
+  display: grid;
+  gap: 12px;
+  width: min(820px, 100%);
+  min-width: 0;
+  color: #263532;
+  user-select: text;
+}
+
+.manual-guide-table-block h3 {
+  margin: 0;
+  color: #2b3536;
+  font-size: 1.18rem;
+  font-weight: 900;
+  line-height: 1.24;
+}
+
+.manual-guide-table-scroll {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.manual-guide-table-scroll table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.96rem;
+  line-height: 1.42;
+}
+
+.manual-guide-table-scroll th,
+.manual-guide-table-scroll td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #d8e6e6;
+  text-align: left;
+  vertical-align: top;
+}
+
+.manual-guide-table-scroll th {
+  background: #eef3f2;
+  color: #1f3f42;
+  font-weight: 850;
+}
+
+.manual-guide-table-scroll tr:last-child td {
+  border-bottom: 0;
+}
+
+.manual-guide-table-caption {
+  margin: 0;
+  color: #5d6d6f;
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
 .manual-source-image-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

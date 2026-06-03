@@ -162,6 +162,18 @@ export type ManualGuideContentBlock =
     }
   | {
       id: string;
+      kind: "table";
+      titleRu: string;
+      sourceTextEs: string;
+      columnsRu: string[];
+      rows: {
+        id: string;
+        cellsRu: string[];
+      }[];
+      captionRu?: string;
+    }
+  | {
+      id: string;
       kind: "source-artwork";
       titleRu?: string;
       altRu: string;
