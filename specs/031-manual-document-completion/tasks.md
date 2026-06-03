@@ -586,6 +586,8 @@ For each chapter-equivalent content PR:
 - Architect validation: cycle PR-set coverage includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, merged PR #186 Introduction and Chapter 1 audit-only slice, merged PR #187 Chapter 2 content slice, PR #188 Chapter 3 content slice, and PR #189 Chapter 4 content slice at effective content head 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a.
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a for PR #189; post-effective changes through final validation/evidence transport are final-validation evidence only in role/process memory files `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
+- Effective content head: 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98
+- Current-PR-head read-only guard: Orchestrator verified effective content/process head 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98 for PR #189; post-effective changes through final-validation recovery/evidence transport are final-validation evidence only in role/process memory files `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
 
 ## Known Issues / Architect Dispositions
 
@@ -1521,6 +1523,46 @@ Architect validation evidence: Cycle PR-set coverage for this validation include
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope at 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #189 Chapter 4 scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #189 Chapter 4 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #189 because it is pre-existing, nonfatal, unrelated to Chapter 4 content, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T23:18:58Z
+
+Architect validated effective content head: 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #189 Chapter 4 scope at 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98.
+
+Architect validation evidence: Effective content/process head 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98 supersedes 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a for finalization because the post-4e819cfd80ebf09b4d3db560a6bc3b57766ef39a process-memory updates are part of the validated current PR head.
+
+Architect validation evidence: Post-4e819cfd80ebf09b4d3db560a6bc3b57766ef39a changes through 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98 are process memory only; no product runtime, tests, assets, source crops, photos, signs, road markings, or transferred infographic PNG bytes changed after 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a.
+
+Architect validation evidence: PR #189 Chapter 4 scope remains pages 89-97 only, covering ch4-alcohol-drugs, ch4-sleep-fatigue, ch4-stress, and ch4-distractions, with no Chapter 5, appendix, or front-matter content bundled.
+
+Architect validation evidence: Chapter 4 boundary behavior remains preserved: page 89 is divider-only, alcohol/drugs owns pre-Sueño y fatiga page-93 blocks, sleep/fatigue begins at the Sueño y fatiga heading and continues through page 94, stress owns page 94 plus recommendations on shared page 95, and direct distractions navigation starts on page 95.
+
+Architect validation evidence: Strict visual requirements remain satisfied: x5/high-resolution source evidence is recorded; protected photos, signs, and road markings remain unmodified source-as-is with Russian explanation outside images; page 91 and page 95 infographics are transferred source-crop-based PNGs with glyph-letter-level Spanish cleanup, preserved source pictograms/shapes/numeric thresholds, visibleSpanish=false, source-crop provenance, no broad masks/plates/patches, selectable Russian DOM overlay labels over cleaned infographic surfaces, and Russian explanation/selectable content outside images.
+
+Architect validation evidence: Review fixes remain satisfied through the current process head: alcohol threshold grid, acompañantes en motovehículos legal scope, page 93 boundary, refusal-procedure localization, stress localization, strict infographic checker/runtime repair, overlay labels, mobile overlay clipping, and broader Chapter 4 learner-facing localization.
+
+Architect validation evidence: Required checks passed on 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98: AI Review, baseline-checks, docker-validation, guard, and osv-scan; unresolved review thread count is 0; PR is mergeable and CLEAN; Review Agent pass 4423381526 found no actionable findings; Codex bot reported no major issue after the current head.
+
+Architect validation evidence: Implementation Agent feedback and known-issue gates are disposed: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope, no unresolved known issue lacks owner decision, and no Analyst feedback requires Architect action.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, merged PR #186 Introduction and Chapter 1 audit-only slice, merged PR #187 Chapter 2 content slice, PR #188 Chapter 3 content slice, and PR #189 Chapter 4 content/process slice at effective content/process head 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope at 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98.
 
 Architect disposition: no unresolved known issue lacks owner decision for PR #189 Chapter 4 scope.
 
