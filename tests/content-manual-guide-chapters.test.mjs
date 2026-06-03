@@ -262,6 +262,89 @@ function writeStrictFutureRegistryFixture(tempDir, mutateEvidence = () => {}) {
   return { implementedRegistryPath, moduleRoot, strictEvidencePath };
 }
 
+function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, mutateEvidence = () => {} } = {}) {
+  const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+    tempDir,
+    'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+  );
+  const fixtureRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
+  const section = fixtureRegistry.sections.find((entry) => entry.id === "ch2-legal-responsibility");
+  section.status = "implemented";
+  section.sourceRegionMetadataStatus = "recorded";
+  section.visualEvidenceStatus = "recorded";
+  section.implementationEvidence = {
+    sectionId: "ch2-legal-responsibility",
+    sourcePages: [44, 45],
+    sourceRegionMetadata: [
+      {
+        sourcePage: 44,
+        sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
+        sourceAssetPath: writeTempFile(join(tempDir, "evidence", "source-crop-44.png")),
+        cropDimensions: { width: 120, height: 80 },
+        cropSha256: "fixture-source-crop-44-sha",
+        cleanupScope: "reference-only source crop"
+      }
+    ],
+    localAssetMetadata: [
+      {
+        assetPath: writeTempFile(join(tempDir, "assets", "ch2-legal-responsibility-dom.txt")),
+        assetKind: "native-dom-text-only",
+        assetCategory: "native-dom-text-only",
+        containsText: true,
+        visibleSpanish: false
+      },
+      {
+        assetPath: writeTempFile(join(tempDir, "assets", "ch2-legal-responsibility-reference.png")),
+        assetKind: "source-transferred-diagram",
+        assetCategory: "source-transferred-diagram",
+        width: 120,
+        height: 80,
+        sha256: "fixture-artwork-2-sha",
+        containsText: false,
+        visibleSpanish: false,
+        extractionScaleEvidence: {
+          target: "x5-zoom-source-export",
+          method: "fixture x5 zoom/source export",
+          outputDimensions: {
+            width: 120,
+            height: 80
+          }
+        },
+        runtimeDisplaySize: {
+          maxWidthCssPx: 60,
+          maxHeightCssPx: 40,
+          noUpscale: true
+        }
+      }
+    ],
+    visibleSpanishStatus: "none",
+    selectableTextStatus: "pass",
+    desktopScreenshot: writeTempFile(join(tempDir, "screenshots", "ch2-legal-responsibility-desktop.png")),
+    mobileScreenshot: writeTempFile(join(tempDir, "screenshots", "ch2-legal-responsibility-mobile.png")),
+    boundingBoxChecks: [{ id: "fixture", status: "pass" }],
+    forbiddenPatternScan: { status: "pass" },
+    visualReviewNotes: ["fixture evidence only"],
+    checkerResult: "pass"
+  };
+  if (strict) {
+    section.implementationEvidence.visualEvidenceSchemaVersion = 3;
+    section.implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
+    section.implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
+    for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
+      sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
+      sourceRegion.extractionScaleEvidence = {
+        target: "x5-zoom-source-export",
+        method: "fixture x5 zoom/source export",
+        outputDimensions: sourceRegion.cropDimensions
+      };
+    }
+  }
+  mutateEvidence(section.implementationEvidence);
+  writeTempFile(join(moduleRoot, "ch2-legal-responsibility.ts"), "export const ch2LegalResponsibilitySection = { sectionId: \"ch2-legal-responsibility\", blocks: [] };\n");
+  writeFileSync(implementedRegistryPath, JSON.stringify(fixtureRegistry, null, 2));
+  return { implementedRegistryPath, moduleRoot };
+}
+
 test("Chapter 1 and 2 registry contains exactly ten source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
@@ -1337,6 +1420,14 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.equal(evidence.strictVisualRulePolicy.schemaVersion, 3);
   assert.equal(evidence.strictVisualRulePolicy.enforcement, "all-new-manual-units");
   assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineFeatureIds, ["030-manual-chapters-1-2"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineSectionIds, [
+    "ch1-cities-for-people",
+    "ch1-sustainable-mobility",
+    "ch1-pedestrian-priority",
+    "ch1-bicycle",
+    "ch1-public-transport-system",
+    "ch1-shared-trip"
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
     "source-native-equivalent-or-better",
@@ -1404,6 +1495,34 @@ test("Manual guide source-fidelity checker requires strict visual evidence for f
   }
 });
 
+test("Manual guide source-fidelity checker requires strict evidence for newly implemented Chapter 2 sections in the legacy registry", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-legacy-evidence-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir);
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when a pending Chapter 2 section is newly implemented with legacy evidence");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch2-legal-responsibility implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 sections only with strict v3 evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-strict-evidence-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, { strict: true });
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
+    assert.equal(output.implementedSections, 7);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker rejects future image assets without no-upscale evidence", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-upscale-"));
   try {
@@ -1415,6 +1534,37 @@ test("Manual guide source-fidelity checker rejects future image assets without n
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].runtimeDisplaySize.noUpscale must be true");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts strict non-image asset categories without image sizing metadata", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-non-image-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata = [
+        {
+          assetPath: writeTempFile(join(tempDir, "assets", "native-dom-text-only.txt")),
+          assetKind: "native-dom-text-only",
+          assetCategory: "native-dom-text-only",
+          containsText: true,
+          visibleSpanish: false
+        },
+        {
+          assetPath: writeTempFile(join(tempDir, "assets", "reference-only-not-runtime.txt")),
+          assetKind: "reference-only-not-runtime",
+          assetCategory: "reference-only-not-runtime",
+          containsText: false,
+          visibleSpanish: false
+        }
+      ];
+      implementationEvidence.visibleSpanishStatus = "none";
+    });
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

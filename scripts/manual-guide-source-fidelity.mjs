@@ -125,7 +125,14 @@ function validateOfficialTrafficSignException(exception, messagePrefix) {
   assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
 }
 
-const legacyVisualEvidenceFeatureIds = new Set(["030-manual-chapters-1-2"]);
+const legacyVisualEvidenceSectionIds = new Set([
+  "ch1-cities-for-people",
+  "ch1-sustainable-mobility",
+  "ch1-pedestrian-priority",
+  "ch1-bicycle",
+  "ch1-public-transport-system",
+  "ch1-shared-trip"
+]);
 const strictImageAssetCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
@@ -153,8 +160,12 @@ const forbiddenStrictVisualTerms = [
   "backing-rectangle"
 ];
 
-function isStrictVisualEvidenceRequired(registry, evidence) {
-  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !legacyVisualEvidenceFeatureIds.has(registry.featureId);
+function isLegacyVisualEvidenceAllowed(section, evidence) {
+  return evidence.strictVisualRulePolicy?.legacyBaselineSectionIds?.includes(section.id) === true && legacyVisualEvidenceSectionIds.has(section.id);
+}
+
+function isStrictVisualEvidenceRequired(section, evidence) {
+  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !isLegacyVisualEvidenceAllowed(section, evidence);
 }
 
 function isStrictVisualEvidenceOptIn(implementedEvidence) {
@@ -268,13 +279,14 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
 
   validateObjectOrArray(
     implementedEvidence.localAssetMetadata,
-    ["assetPath", "assetKind", "assetCategory", "width", "height", "sha256", "containsText", "visibleSpanish", "runtimeDisplaySize"],
+    ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"],
     `${messagePrefix} localAssetMetadata`,
     (asset, label) => {
       const allowedCategory = strictImageAssetCategories.has(asset.assetCategory) || strictNonImageAssetCategories.has(asset.assetCategory);
       assertCondition(allowedCategory, `${label}.assetCategory must use the strict full-manual visual vocabulary`, asset);
       assertNoForbiddenStrictVisualTerms(asset, label);
       if (strictImageAssetCategories.has(asset.assetCategory)) {
+        assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
         validateRuntimeDisplaySize(asset, label);
       }
@@ -366,14 +378,14 @@ function validatePendingSection(section, evidence, id) {
   }
 }
 
-function validateImplementedSection(section, evidence, id, registry) {
+function validateImplementedSection(section, evidence, id) {
   assertCondition(section.sourceRegionMetadataStatus === "recorded", `${id} implemented entry must record source-region metadata`, section);
   assertCondition(section.visualEvidenceStatus === "recorded", `${id} implemented entry must record visual evidence`, section);
   assertLocalPathExists(resolveSectionContentModulePath(section.sectionContentModulePath), `${id} implemented section content module`, section);
 
   const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
   const format = evidence.implementedSectionEvidenceFormat;
-  const validateStrictEvidence = isStrictVisualEvidenceRequired(registry, evidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
+  const validateStrictEvidence = isStrictVisualEvidenceRequired(section, evidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
   assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
   assertCondition(
@@ -388,7 +400,10 @@ function validateImplementedSection(section, evidence, id, registry) {
     assertCondition(allowedSourcePages.has(entry.sourcePage), `${label}.sourcePage must belong to the section source range`, entry);
     assertLocalPathExists(entry.sourceAssetPath, `${label}.sourceAssetPath`, entry);
   });
-  validateObjectOrArray(implementedEvidence.localAssetMetadata, format.localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
+  const localAssetMetadataFields = validateStrictEvidence
+    ? ["assetPath", "assetKind", "assetCategory", "containsText", "visibleSpanish"]
+    : format.localAssetMetadataFields;
+  validateObjectOrArray(implementedEvidence.localAssetMetadata, localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
     if (entry.visibleSpanish === false) return;
     assertCondition(
@@ -518,7 +533,7 @@ function validateSectionRegistry(registry, evidence) {
     });
 
     if (section.status === "pending") validatePendingSection(section, evidence, id);
-    else if (section.status === "implemented") validateImplementedSection(section, evidence, id, registry);
+    else if (section.status === "implemented") validateImplementedSection(section, evidence, id);
     else assertCondition(false, `${id} status must be pending or implemented`, section);
   }
 

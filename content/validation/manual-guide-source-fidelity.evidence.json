@@ -175,7 +175,15 @@
     "legacyBaselineFeatureIds": [
       "030-manual-chapters-1-2"
     ],
-    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Feature 030 remains a legacy baseline to be audited in a later slice.",
+    "legacyBaselineSectionIds": [
+      "ch1-cities-for-people",
+      "ch1-sustainable-mobility",
+      "ch1-pedestrian-priority",
+      "ch1-bicycle",
+      "ch1-public-transport-system",
+      "ch1-shared-trip"
+    ],
+    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice.",
     "highResolutionEvidence": {
       "requiredFor": "every new image/crop extraction or export",
       "allowedTargets": [
