@@ -112,7 +112,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Визуал оставлен как официальный источник: он показывает устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным selectable DOM text."
+            "Визуал оставлен как официальный источник: он показывает устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным русским текстом."
         }
       ],
       visualNotes: [
@@ -160,12 +160,12 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Официальный визуал сохранен без перевода внутри изображения. Конкретные пороги из него дублируются ниже в selectable Russian table: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
+            "Официальный визуал сохранен без перевода внутри изображения. Конкретные пороги из него дублируются ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
         }
       ],
       visualNotes: [
         "The alcohol-limit visual is a scale-5 source-as-is crop.",
-        "The learner-facing Russian explanation and thresholds are selectable text outside the image."
+        "Russian learner explanation and threshold rows stay outside the image."
       ]
     },
     {

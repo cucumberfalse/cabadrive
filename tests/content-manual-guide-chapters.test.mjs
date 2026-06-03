@@ -975,6 +975,9 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /certificados y calibrados|сертифицирован/u);
   assert.match(ch4AlcoholDrugsModuleSource, /veisalgia/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /обычным русским текстом/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /русской текстовой таблице/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /selectable DOM text|selectable Russian table/u);
 
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"responsible-driver"/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
@@ -1005,10 +1008,12 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4StressModuleSource, /двойная связь/u);
   assert.match(ch4StressModuleSource, /temeraria/u);
   assert.match(ch4StressModuleSource, /Prestar atención al contexto|Обращать внимание на дорожный контекст/u);
+  assert.match(ch4StressModuleSource, /переживания и споры/u);
   assert.match(ch4StressModuleSource, /Planificar el viaje/u);
   assert.match(ch4StressModuleSource, /достаточным запасом времени/u);
   assert.match(ch4StressModuleSource, /чрезмерная жара и холод/u);
   assert.match(ch4StressModuleSource, /actitud tolerante y paciente/u);
+  assert.doesNotMatch(ch4StressModuleSource, /worries and discussions|adopting an/u);
 
   assert.match(ch4DistractionsModuleSource, /Distracción/u);
   assert.match(ch4DistractionsModuleSource, /conducir/u);
@@ -1017,7 +1022,9 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4DistractionsModuleSource, /руки не могут уверенно оставаться на руле/u);
   assert.match(ch4DistractionsModuleSource, /telefonía celular запрещено/u);
   assert.match(ch4DistractionsModuleSource, /Altavoz или auriculares/u);
-  assert.match(ch4DistractionsModuleSource, /mental representation/u);
+  assert.match(ch4DistractionsModuleSource, /время реакции на стимул/u);
+  assert.match(ch4DistractionsModuleSource, /мысленного представления/u);
+  assert.doesNotMatch(ch4DistractionsModuleSource, /selectable text|response time|mental representation/u);
   assert.match(ch4DistractionsModuleSource, /GPS/u);
   assert.match(ch4DistractionsModuleSource, /modo avión/u);
   assert.match(ch4DistractionsModuleSource, /guantera или baúl/u);

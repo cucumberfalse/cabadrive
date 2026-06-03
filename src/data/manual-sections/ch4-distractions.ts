@@ -59,7 +59,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Si se reparte la atención entre la tarea principal (conducir) y otras secundarias...",
       textRu:
-        "Если внимание делится между главной задачей - conducir - и вторичными действиями, эффективность главной задачи падает: у водителя нет всей способности response frente a imprevistos, которые могут возникнуть."
+        "Если внимание делится между главной задачей - conducir - и вторичными действиями, эффективность главной задачи падает: у водителя нет полной способности реагировать на imprevistos, которые могут возникнуть."
     },
     {
       id: "eating-drinking-mate-smoking",
@@ -89,7 +89,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Официальный визуал сохранен без перевода внутри изображения. Рядом русским selectable text объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
+            "Официальный визуал сохранен без перевода внутри изображения. Рядом русским текстом объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
         }
       ],
       visualNotes: [
@@ -104,9 +104,9 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Usar telefonía celular está prohibido ya que disminuye la capacidad de atención y reacción...",
       itemsRu: [
-        "Usar telefonía celular запрещено: телефон снижает внимание и реакцию, увеличивает response time на стимул и ограничивает слух и/или зрение.",
+        "Usar telefonía celular запрещено: телефон снижает внимание и реакцию, увеличивает время реакции на стимул и ограничивает слух и/или зрение.",
         "Во время управления нужно держать обе руки на руле.",
-        "Altavoz или auriculares тоже считаются рискованными: даже без рук разговор требует mental representation человека, с которым идет диалог."
+        "Altavoz или auriculares тоже считаются рискованными: даже без рук разговор требует мысленного представления человека, с которым идет диалог."
       ]
     },
     {

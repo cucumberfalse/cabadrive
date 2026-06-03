@@ -56,11 +56,11 @@ export const ch4StressSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Recomendaciones: prestar atención al contexto, planificar el viaje, salir con tiempo, regular la temperatura, adoptar actitud tolerante y paciente.",
       itemsRu: [
-        "Обращать внимание на дорожный контекст и оставлять в стороне worries and discussions во время вождения, потому что они повышают напряжение и создают высокий риск для seguridad vial.",
+        "Обращать внимание на дорожный контекст и оставлять в стороне переживания и споры во время вождения, потому что они повышают напряжение и создают высокий риск для seguridad vial.",
         "Planificar el viaje и заранее оценивать альтернативные дороги к привычному маршруту.",
         "Выезжать с достаточным запасом времени, чтобы прибыть к месту назначения.",
         "Регулировать температуру в автомобиле: чрезмерная жара и холод являются стрессовыми стимулами.",
-        "В пробках adopting an actitud tolerante y paciente - сохранять терпеливое и терпимое отношение."
+        "В пробках adoptar una actitud tolerante y paciente - сохранять терпеливое и терпимое отношение."
       ]
     }
   ]
