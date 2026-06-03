@@ -304,6 +304,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
     `${messagePrefix} sourceRegionMetadata`,
     (entry, label) => {
+      validateSha256(entry.cropSha256, `${label}.cropSha256`);
       validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
       assertNoForbiddenStrictVisualTerms(entry, label);
     }

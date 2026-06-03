@@ -151,8 +151,11 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
   implementationEvidence.visualEvidenceSchemaVersion = 3;
   implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
   implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
-  for (const sourceRegion of implementationEvidence.sourceRegionMetadata) {
+  for (const [index, sourceRegion] of implementationEvidence.sourceRegionMetadata.entries()) {
     sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
+    sourceRegion.cropSha256 = index === 0
+      ? "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      : "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
     sourceRegion.extractionScaleEvidence = {
       target: "x5-zoom-source-export",
       method: "fixture x5 zoom/source export",
@@ -340,6 +343,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
     };
     for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
       sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
+      sourceRegion.cropSha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
       sourceRegion.extractionScaleEvidence = {
         target: "x5-zoom-source-export",
         method: "fixture x5 zoom/source export",
@@ -1590,6 +1594,22 @@ test("Manual guide source-fidelity checker rejects strict image assets with bogu
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must be a SHA-256 hash");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source crops with bogus cropSha256 metadata", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-bogus-crop-sha-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.sourceRegionMetadata[0].cropSha256 = "fixture-source-crop-24-sha";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict source crop metadata uses a placeholder hash");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must be a SHA-256 hash");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
