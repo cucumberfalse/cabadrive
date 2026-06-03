@@ -188,6 +188,9 @@ For each chapter-equivalent content PR:
 - Architect validation evidence: PR #185 prerequisite scope validated after transferred infographic/diagram source-crop linkage repair with required checks and Review Agent no-findings at the effective content head.
 - Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
 - Limit escalation: none
+- Final-validation evidence-only commit: ac4a5fd87ea4b3161b35a7fa4d0a0e1a90b9eac2 recorded Architect validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in tasks.md.
+- Final-validation evidence-only commit: f2a4047e3344e14b21bc740a015971079869b6ad recorded Analyst validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head f2a4047e3344e14b21bc740a015971079869b6ad against effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
 
 ## Known Issues / Architect Dispositions
 
