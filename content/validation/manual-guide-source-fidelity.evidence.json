@@ -183,7 +183,15 @@
       "ch1-public-transport-system",
       "ch1-shared-trip"
     ],
-    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice.",
+    "legacyBaselineEvidenceFingerprints": {
+      "ch1-cities-for-people": "f3af33cce8e057b2887618d72bc9d0b8a180a58f2e1ca5dfe516a8f16f7888dc",
+      "ch1-sustainable-mobility": "ec69d603a4e8915a5dbf28803020f3b8bb2b8a8a58023af3581b91f1a7e5b1d5",
+      "ch1-pedestrian-priority": "82836bdcf64582298541043aad6f2b0393781bbbcfd64355a1764f75bee21167",
+      "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14",
+      "ch1-public-transport-system": "373464b9d6026d2196fb12a836b1ec90a1c43cb0a399065c0d707f9f69cf0a5c",
+      "ch1-shared-trip": "01279a5990e2c7c31e09a4bf2cae4f15d1a701df77a4e8df541cdc8136411876"
+    },
+    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints.",
     "highResolutionEvidence": {
       "requiredFor": "every new image/crop extraction or export",
       "allowedTargets": [

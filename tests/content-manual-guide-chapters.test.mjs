@@ -34,6 +34,7 @@ const ch1BicycleModuleSource = readFileSync(ch1BicycleModulePath, "utf8");
 const ch1PublicTransportModuleSource = readFileSync(ch1PublicTransportModulePath, "utf8");
 const ch1SharedTripModuleSource = readFileSync(ch1SharedTripModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
+const fixtureEvidencePaths = new Map();
 
 function sourcePagesForRange(start, end) {
   return Array.from({ length: end - start + 1 }, (_, index) => start + index);
@@ -58,6 +59,21 @@ function sourcePageAssetPath(sourcePage) {
 
 function sha256File(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sha256Json(value) {
+  return createHash("sha256").update(stableStringify(value)).digest("hex");
 }
 
 function writeTempFile(path, contents = "fixture") {
@@ -132,16 +148,25 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), "export const ch1PublicTransportSystemSection = { sectionId: \"ch1-public-transport-system\", blocks: [] };\n");
   writeTempFile(join(moduleRoot, "ch1-shared-trip.ts"), "export const ch1SharedTripSection = { sectionId: \"ch1-shared-trip\", blocks: [] };\n");
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
-  return { implementedRegistryPath, moduleRoot };
+  const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
+  const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
+  fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints = {
+    ...fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints,
+    "ch1-pedestrian-priority": sha256Json(section.implementationEvidence)
+  };
+  writeFileSync(fixtureEvidencePath, JSON.stringify(fixtureEvidence, null, 2));
+  fixtureEvidencePaths.set(implementedRegistryPath, fixtureEvidencePath);
+  return { implementedRegistryPath, moduleRoot, fixtureEvidencePath };
 }
 
-function runCheckerWithFixture(registryFixturePath, moduleRoot, evidenceFixturePath = evidencePath) {
+function runCheckerWithFixture(registryFixturePath, moduleRoot, evidenceFixturePath) {
+  const resolvedEvidencePath = evidenceFixturePath ?? fixtureEvidencePaths.get(registryFixturePath) ?? evidencePath;
   return spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
     encoding: "utf8",
     env: {
       ...process.env,
       MANUAL_GUIDE_REGISTRY_PATH: registryFixturePath,
-      MANUAL_GUIDE_EVIDENCE_PATH: evidenceFixturePath,
+      MANUAL_GUIDE_EVIDENCE_PATH: resolvedEvidencePath,
       MANUAL_GUIDE_SECTION_MODULE_ROOT: moduleRoot
     }
   });
@@ -1440,6 +1465,13 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "ch1-public-transport-system",
     "ch1-shared-trip"
   ]);
+  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...implementedSectionIds].sort());
+  for (const id of implementedSectionIds) {
+    const fingerprint = evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
+    const section = registry.sections.find((entry) => entry.id === id);
+    assert.match(fingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline fingerprint must be a SHA-256 hash`);
+    assert.equal(fingerprint, sha256Json(section.implementationEvidence), `${id} legacy baseline fingerprint must match current merged evidence`);
+  }
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
     "source-native-equivalent-or-better",
@@ -1504,6 +1536,18 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
+test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy baseline evidence allowed", () => {
+  for (const id of implementedSectionIds) {
+    const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
+    assert.equal("visualEvidenceSchemaVersion" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
+    assert.equal("visualRulePolicyId" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
+  }
+  const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
+  const result = JSON.parse(output);
+  assert.equal(result.status, "pass");
+  assert.equal(result.implementedSections, 6);
+});
+
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-missing-"));
   try {
@@ -1512,6 +1556,25 @@ test("Manual guide source-fidelity checker requires strict visual evidence for f
     });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.notEqual(failure.status, 0, "checker must fail when a future manual unit omits strict schema version evidence");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects future Chapter 1 legacy-section changes without strict v3 evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch1-legacy-reimplementation-"));
+  try {
+    const implementedRegistryPath = join(tempDir, "section-registry.ch1-legacy-reimplementation.json");
+    const changedRegistry = JSON.parse(JSON.stringify(registry));
+    const section = changedRegistry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
+    section.implementationEvidence.checkerRunAt = "future-audit-or-correction-without-strict-v3";
+    writeFileSync(implementedRegistryPath, JSON.stringify(changedRegistry, null, 2));
+
+    const failure = runCheckerWithFixture(implementedRegistryPath, "src/data/manual-sections");
+    assert.notEqual(failure.status, 0, "checker must fail when a legacy Chapter 1 section changes evidence without strict v3 markers");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");

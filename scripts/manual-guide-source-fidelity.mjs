@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -163,12 +164,16 @@ const forbiddenStrictVisualTerms = [
   "backing-rectangle"
 ];
 
-function isLegacyVisualEvidenceAllowed(section, evidence) {
-  return evidence.strictVisualRulePolicy?.legacyBaselineSectionIds?.includes(section.id) === true && legacyVisualEvidenceSectionIds.has(section.id);
+function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {
+  const policy = evidence.strictVisualRulePolicy;
+  if (policy?.legacyBaselineSectionIds?.includes(section.id) !== true || !legacyVisualEvidenceSectionIds.has(section.id)) return false;
+  const expectedFingerprint = policy.legacyBaselineEvidenceFingerprints?.[section.id];
+  if (typeof expectedFingerprint !== "string") return false;
+  return sha256Json(implementedEvidence) === expectedFingerprint;
 }
 
-function isStrictVisualEvidenceRequired(section, evidence) {
-  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !isLegacyVisualEvidenceAllowed(section, evidence);
+function isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) {
+  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence);
 }
 
 function isStrictVisualEvidenceOptIn(implementedEvidence) {
@@ -400,6 +405,21 @@ function duplicatedValues(values) {
     .sort((a, b) => a - b);
 }
 
+function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
+  if (isObject(value)) {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sha256Json(value) {
+  return createHash("sha256").update(stableStringify(value)).digest("hex");
+}
+
 function compareJson(actual, expected, message, details = {}) {
   assertCondition(JSON.stringify(actual) === JSON.stringify(expected), message, { ...details, actual, expected });
 }
@@ -420,8 +440,8 @@ function validateImplementedSection(section, evidence, id) {
 
   const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
   const format = evidence.implementedSectionEvidenceFormat;
-  const validateStrictEvidence = isStrictVisualEvidenceRequired(section, evidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
+  const validateStrictEvidence = isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
   assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
   assertCondition(
     JSON.stringify(implementedEvidence.sourcePages) === JSON.stringify(sectionSourcePages(section)),
@@ -429,6 +449,9 @@ function validateImplementedSection(section, evidence, id) {
     implementedEvidence
   );
   assertCondition(implementedEvidence.checkerResult === "pass", `${id} implementationEvidence.checkerResult must be pass`, implementedEvidence);
+  if (validateStrictEvidence) {
+    validateStrictVisualEvidence(implementedEvidence, `${id} implementationEvidence`);
+  }
 
   const allowedSourcePages = new Set(sectionSourcePages(section));
   validateObjectOrArray(implementedEvidence.sourceRegionMetadata, format.sourceRegionMetadataFields, `${id} sourceRegionMetadata`, (entry, label) => {
@@ -457,9 +480,6 @@ function validateImplementedSection(section, evidence, id) {
     assertPassStatus(entry.status, `${label}.status`, entry);
   });
   validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
-  if (validateStrictEvidence) {
-    validateStrictVisualEvidence(implementedEvidence, `${id} implementationEvidence`);
-  }
 }
 
 function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages) {
