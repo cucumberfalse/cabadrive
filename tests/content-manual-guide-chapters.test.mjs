@@ -935,6 +935,11 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /visión periférica/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Ley 2148/u);
   assert.match(ch4AlcoholDrugsModuleSource, /0,5 gramos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Profesionales[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Acompañantes[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
@@ -943,9 +948,11 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /presumed positive|presume el estado/u);
 
   assert.match(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
-  assert.match(ch4SleepFatigueModuleSource, /biological need/u);
+  assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
   assert.match(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
   assert.match(ch4SleepFatigueModuleSource, /veisalgia/u);
+  assert.match(ch4SleepFatigueModuleSource, /время реакции/u);
   assert.match(ch4SleepFatigueModuleSource, /capacidad de reacción/u);
   assert.match(ch4SleepFatigueModuleSource, /microsueños/u);
   assert.match(ch4SleepFatigueModuleSource, /8 horas/u);

@@ -101,6 +101,58 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         "Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires. Общее правило источника: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre; к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia, потому что провинции и муниципалитеты имеют собственную нормативную автономию."
     },
     {
+      id: "blood-alcohol-limit-table",
+      kind: "table",
+      titleRu: "Límites de alcohol en sangre para conducir",
+      sourceTextEs:
+        "Límites de alcohol en sangre para conducir: principiantes, profesionales, motociclistas, acompañantes y particulares.",
+      columnsRu: ["Категория из источника", "Предел", "Как читать для экзамена"],
+      rows: [
+        {
+          id: "limit-principiantes",
+          cellsRu: [
+            "Principiantes - водители-новички",
+            "0.00 g/l",
+            "нулевой предел: начинающему водителю нельзя иметь измеряемый alcohol en sangre"
+          ]
+        },
+        {
+          id: "limit-profesionales",
+          cellsRu: [
+            "Profesionales - профессиональные водители",
+            "0.00 g/l",
+            "для профессионального водителя источник также указывает нулевой предел"
+          ]
+        },
+        {
+          id: "limit-motociclistas",
+          cellsRu: [
+            "Motociclistas - водители мототранспорта",
+            "0.20 g/l",
+            "предел ниже общего частного значения; категория не сводится к 0,50"
+          ]
+        },
+        {
+          id: "limit-acompanantes",
+          cellsRu: [
+            "Acompañantes - сопровождающие",
+            "0.50 g/l",
+            "эта категория из таблицы источника сохраняется отдельно"
+          ]
+        },
+        {
+          id: "limit-particulares",
+          cellsRu: [
+            "Particulares - частные водители",
+            "0.50 g/l",
+            "это общий предел для частного случая, но он не отменяет более строгие строки выше"
+          ]
+        }
+      ],
+      captionRu:
+        "Таблица сохраняет конкретные строки источника: principiantes и profesionales - 0.00 g/l, motociclistas - 0.20 g/l, acompañantes и particulares - 0.50 g/l."
+    },
+    {
       id: "absorption-factors",
       kind: "list",
       titleRu: "От чего зависит степень алкоголизации",

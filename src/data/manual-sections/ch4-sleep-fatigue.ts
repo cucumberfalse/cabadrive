@@ -39,7 +39,7 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El sueño es una parte integral de la vida cotidiana, una necesidad biológica...",
       textRu:
-        "Сон - часть повседневной жизни и biological need, которая восстанавливает физические, психологические и социальные функции человека."
+        "Сон - часть повседневной жизни и биологическая потребность, которая восстанавливает физические, психологические и социальные функции человека."
     },
     {
       id: "insufficient-sleep-and-performance",
@@ -55,7 +55,7 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El control de alcoholemia o toxicológico se realiza utilizando instrumentos... frente a un resultado positivo o la negativa... el procedimiento es el mismo. Resaca o veisalgia.",
       textRu:
-        "Alcoholemia или toxicological control проводят сертифицированными и калиброванными измерительными/детекторными приборами. При положительном результате или отказе от проверки процедура для alcohol control и estupefacientes control одинаковая. Resaca, медицински veisalgia, тоже опасна: она нарушает координацию, внимание и reaction time, поэтому вождение с похмельем приравнивается к вождению в состоянии алкоголизации."
+        "Проверку alcoholemia или токсикологический контроль проводят сертифицированными и калиброванными измерительными/детекторными приборами. При положительном результате или отказе от проверки процедура для контроля алкоголя и контроля estupefacientes одинаковая. Resaca, медицински veisalgia, тоже опасна: она нарушает координацию, внимание и время реакции, поэтому вождение с похмельем приравнивается к вождению в состоянии алкоголизации."
     },
     {
       id: "few-hours-sleep-effects",
