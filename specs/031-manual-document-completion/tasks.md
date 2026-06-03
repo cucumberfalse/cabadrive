@@ -158,8 +158,8 @@ For each chapter-equivalent content PR:
 ## Known Issues
 
 - No unresolved known issues.
-- Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Disposition: not applicable.
-- Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR.
+- Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Owner decision: accepted no action for this prerequisite scope. Disposition: not applicable.
+- Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
 
 ## Final Validation Evidence
 
@@ -319,7 +319,7 @@ For each chapter-equivalent content PR:
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
-- No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition.
+- No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition. Architect disposition: disposed; no action needed for PR #186 audit-only scope.
 
 ## Introduction And Chapter 1 Visual Audit Evidence
 
