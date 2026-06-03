@@ -236,7 +236,8 @@
       "sourceIntegrity.noTranslationOrRelabeling",
       "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
       "sourceIntegrity.russianExplanationOutsideImage",
-      "cleanupScope=none-source-as-is"
+      "cleanupScope=none-source-as-is",
+      "visibleSpanishStatus.exceptions.assetPath matching assetPath when visibleSpanish=true"
     ],
     "infographicRequiredFields": [
       "assetCategory=source-transferred-infographic",

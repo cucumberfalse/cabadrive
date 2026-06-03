@@ -216,6 +216,11 @@ function isStrictProtectedSourceAsIsException(entry) {
   );
 }
 
+function visibleSpanishStatusExceptionAssetPaths(value) {
+  if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
+  return new Set(value.exceptions.map((exception) => exception.assetPath).filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0));
+}
+
 function collectForbiddenStrictVisualText(value, key = "") {
   if (typeof value === "string") return forbiddenStrictVisualTermIgnoredKeys.has(key) ? [] : [value];
   if (Array.isArray(value)) return value.flatMap((entry) => collectForbiddenStrictVisualText(entry));
@@ -380,6 +385,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     implementedEvidence
   );
   assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
+  const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus);
 
   validateObjectOrArray(
     implementedEvidence.sourceRegionMetadata,
@@ -406,7 +412,16 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
         validateRuntimeDisplaySize(asset, label);
       }
-      if (protectedSourceAsIsCategories.has(asset.assetCategory)) validateProtectedSourceAsIsAsset(asset, label);
+      if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
+        validateProtectedSourceAsIsAsset(asset, label);
+        if (asset.visibleSpanish === true) {
+          assertCondition(
+            visibleSpanishExceptionAssetPaths.has(asset.assetPath),
+            `${label}.visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions`,
+            asset
+          );
+        }
+      }
       if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label);
       if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label);
     }

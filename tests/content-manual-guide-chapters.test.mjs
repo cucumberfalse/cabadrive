@@ -1535,6 +1535,14 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
   }
+  assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
+    "sourceIntegrity.sourceAsIs",
+    "sourceIntegrity.noTranslationOrRelabeling",
+    "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+    "sourceIntegrity.russianExplanationOutsideImage",
+    "cleanupScope=none-source-as-is",
+    "visibleSpanishStatus.exceptions.assetPath matching assetPath when visibleSpanish=true"
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
     "diagramTransfer.sourceDiagramTransfer",
@@ -1848,6 +1856,58 @@ test("Manual guide source-fidelity checker rejects future source-as-is assets wi
     assert.equal(
       result.message,
       "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts strict source-as-is visible Spanish only with matching exception evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir);
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
+    assert.equal(output.implementedSections, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish hidden by none status", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-none-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.visibleSpanishStatus = "none";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is asset keeps Spanish but top-level status claims none");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish with mismatched exception path", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-wrong-path-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.visibleSpanishStatus.exceptions[0].assetPath = implementationEvidence.localAssetMetadata[0].assetPath;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is visible-Spanish exception names another asset");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
