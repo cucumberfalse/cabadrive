@@ -117,6 +117,26 @@ function writeTempFile(path, contents = "fixture") {
   return path;
 }
 
+function pngBytesWithDimensions(width, height) {
+  const bytes = Buffer.alloc(45);
+  Buffer.from("89504e470d0a1a0a", "hex").copy(bytes, 0);
+  bytes.writeUInt32BE(13, 8);
+  bytes.write("IHDR", 12, "ascii");
+  bytes.writeUInt32BE(width, 16);
+  bytes.writeUInt32BE(height, 20);
+  bytes[24] = 8;
+  bytes[25] = 6;
+  bytes.writeUInt32BE(0, 29);
+  bytes.writeUInt32BE(0, 33);
+  bytes.write("IEND", 37, "ascii");
+  bytes.writeUInt32BE(0, 41);
+  return bytes;
+}
+
+function writePngFixtureFile(path, width, height) {
+  return writeTempFile(path, pngBytesWithDimensions(width, height));
+}
+
 function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence = () => {}) {
   const moduleRoot = join(tempDir, "manual-sections");
   const implementedRegistryPath = join(tempDir, "section-registry.implemented.json");
@@ -148,7 +168,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
     ],
     localAssetMetadata: [
       {
-        assetPath: writeTempFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-1.png")),
+        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-1.png"), 120, 80),
         assetKind: "source-artwork",
         width: 120,
         height: 80,
@@ -157,7 +177,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
         visibleSpanish: false
       },
       {
-        assetPath: writeTempFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-2.png")),
+        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch1-pedestrian-priority-artwork-2.png"), 90, 60),
         assetKind: "source-artwork",
         width: 90,
         height: 60,
@@ -361,7 +381,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
         visibleSpanish: false
       },
       {
-        assetPath: writeTempFile(join(tempDir, "assets", "ch2-legal-responsibility-reference.png")),
+        assetPath: writePngFixtureFile(join(tempDir, "assets", "ch2-legal-responsibility-reference.png"), 120, 80),
         assetKind: "source-transferred-diagram",
         assetCategory: "source-transferred-diagram",
         width: 120,
@@ -1828,6 +1848,42 @@ test("Manual guide source-fidelity checker rejects strict image assets with stal
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must match referenced artifact bytes");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict image assets with overclaimed dimensions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-overclaimed-dimensions-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].width += 1;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata overstates the referenced image width");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].width must match referenced image width");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict image assets with non-image bytes", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-non-image-bytes-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      writeFileSync(implementationEvidence.localAssetMetadata[0].assetPath, "not image bytes");
+      implementationEvidence.localAssetMetadata[0].sha256 = sha256File(implementationEvidence.localAssetMetadata[0].assetPath);
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata references non-image bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetPath must reference a supported image with readable dimensions"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

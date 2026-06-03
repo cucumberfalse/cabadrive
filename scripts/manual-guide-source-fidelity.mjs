@@ -53,6 +53,39 @@ function assertLocalPathExists(path, message, details = {}) {
   assertCondition(existsSync(path), `${message} must exist locally`, { ...details, path });
 }
 
+function readImageDimensions(path) {
+  const bytes = readFileSync(path);
+  if (
+    bytes.length >= 24 &&
+    bytes[0] === 0x89 &&
+    bytes[1] === 0x50 &&
+    bytes[2] === 0x4e &&
+    bytes[3] === 0x47 &&
+    bytes.toString("ascii", 12, 16) === "IHDR"
+  ) {
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+  if (bytes.length >= 10 && bytes.toString("ascii", 0, 3) === "GIF") {
+    return { width: bytes.readUInt16LE(6), height: bytes.readUInt16LE(8) };
+  }
+  if (bytes.length >= 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 4 < bytes.length) {
+      while (bytes[offset] === 0xff) offset += 1;
+      const marker = bytes[offset];
+      offset += 1;
+      if (marker === 0xd9 || marker === 0xda) break;
+      const segmentLength = bytes.readUInt16BE(offset);
+      if (segmentLength < 2 || offset + segmentLength > bytes.length) break;
+      if ((marker >= 0xc0 && marker <= 0xc3) || (marker >= 0xc5 && marker <= 0xc7) || (marker >= 0xc9 && marker <= 0xcb) || (marker >= 0xcd && marker <= 0xcf)) {
+        return { width: bytes.readUInt16BE(offset + 5), height: bytes.readUInt16BE(offset + 3) };
+      }
+      offset += segmentLength;
+    }
+  }
+  return null;
+}
+
 function validateObjectOrArray(value, fields, messagePrefix, validateEntry = () => {}) {
   if (Array.isArray(value)) {
     assertCondition(value.length > 0, `${messagePrefix} must contain at least one entry`);
@@ -304,14 +337,28 @@ function validateExtractionScaleEvidence(value, messagePrefix) {
   }
 }
 
-function validateRuntimeDisplaySize(asset, messagePrefix) {
+function validateStrictImageAssetDimensions(asset, messagePrefix) {
+  const dimensions = readImageDimensions(asset.assetPath);
+  assertCondition(dimensions !== null, `${messagePrefix}.assetPath must reference a supported image with readable dimensions`, asset);
+  assertCondition(asset.width === dimensions.width, `${messagePrefix}.width must match referenced image width`, { ...asset, actualDimensions: dimensions });
+  assertCondition(asset.height === dimensions.height, `${messagePrefix}.height must match referenced image height`, { ...asset, actualDimensions: dimensions });
+  return dimensions;
+}
+
+function validateRuntimeDisplaySize(asset, messagePrefix, actualDimensions) {
   assertRequiredFields(asset.runtimeDisplaySize, ["maxWidthCssPx", "noUpscale"], `${messagePrefix}.runtimeDisplaySize`);
   assertCondition(asset.runtimeDisplaySize.noUpscale === true, `${messagePrefix}.runtimeDisplaySize.noUpscale must be true`, asset);
   assertCondition(asset.runtimeDisplaySize.maxWidthCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxWidthCssPx must be positive`, asset);
-  assertCondition(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx, `${messagePrefix}.width must be at least runtime max display width`, asset);
+  assertCondition(actualDimensions.width >= asset.runtimeDisplaySize.maxWidthCssPx, `${messagePrefix}.actualWidth must be at least runtime max display width`, {
+    ...asset,
+    actualDimensions
+  });
   if ("maxHeightCssPx" in asset.runtimeDisplaySize) {
     assertCondition(asset.runtimeDisplaySize.maxHeightCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxHeightCssPx must be positive`, asset);
-    assertCondition(asset.height >= asset.runtimeDisplaySize.maxHeightCssPx, `${messagePrefix}.height must be at least runtime max display height`, asset);
+    assertCondition(actualDimensions.height >= asset.runtimeDisplaySize.maxHeightCssPx, `${messagePrefix}.actualHeight must be at least runtime max display height`, {
+      ...asset,
+      actualDimensions
+    });
   }
 }
 
@@ -419,8 +466,9 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       if (strictImageAssetCategories.has(asset.assetCategory)) {
         assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
         validateFileSha256(asset.assetPath, asset.sha256, `${label}.sha256`, asset);
+        const actualDimensions = validateStrictImageAssetDimensions(asset, label);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
-        validateRuntimeDisplaySize(asset, label);
+        validateRuntimeDisplaySize(asset, label, actualDimensions);
       }
       if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
         validateProtectedSourceAsIsAsset(asset, label);
