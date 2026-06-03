@@ -222,7 +222,7 @@ Gaps: none for the PR #185 prerequisite scope. Remaining full-document work stay
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
 
-## Final Analyst Validation Rerun - PR #185 Transferred Artwork Source Linkage Repair
+## Final Analyst Validation Notes
 
 Analyst validation pass: passed
 
@@ -281,6 +281,38 @@ Analyst validation evidence: Review Agent posted no actionable findings for `bc7
 Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
 
 Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `bc71004c284984f682745ce0337bf2e154fef143`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T07:19:34Z
+
+Analyst validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #185 prerequisite scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T06:55:33Z` for the same effective content head `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; later evidence and formatting commits are process-only and do not change the validated effective content head.
+
+Analyst validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs, checker, evidence policy, tests, and process memory; it does not implement Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 audit, correction PRs, runtime manual pages, or chapter content.
+
+Analyst validation evidence: Earlier Analyst validations for older effective content heads are superseded and stale because later non-evidence checker, test, evidence-policy, and process-memory repairs changed the validated prerequisite behavior; this section is the latest Analyst validation marker for `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`.
+
+Analyst validation evidence: The transferred artwork source-linkage repair strengthens the infographic and diagram source-transfer requirement by requiring strict source-transferred-infographic and source-transferred-diagram metadata to reference existing strict sourceRegionMetadata through sourceAssetPath, with sourceCropSha256 and sourceCropDimensions matching the recorded source crop hash and decoded dimensions.
+
+Analyst validation evidence: The repaired prerequisite preserves x5/equivalent high-resolution export evidence, source-as-is protected handling for photos, traffic signs, and road markings, transferred-source infographic and diagram requirements, glyph/letter-level Spanish cleanup only, selectable Russian overlay guidance where feasible, byte-verified asset and crop hashes, crop and extraction decoded dimensions, no-upscale/runtime-size evidence, protected visible-Spanish exception gating, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Analyst validation evidence: Review Agent posted no actionable findings for `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`, AI Review passed at the same effective content head, and process memory records required checks green for baseline-checks, docker-validation, guard, osv-scan, and AI Review.
+
+Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
 
 Analyst limit escalation: none.
 
@@ -385,5 +417,37 @@ Completion boundary: PR #185 remains prerequisite-only. It supports but does not
 Architect prerequisite: final Architect validation passed before this Analyst validation at `2026-06-03T04:26:07Z` for the same latest repaired effective content head `bcc377a154c936374715f6ca4ce2d5714af4a722`. The later commit `7447f0a0bf4666986351350ea61265ec68778dfe` is treated as Architect-owned validation evidence only; it records the Architect pass in `tasks.md` and does not intend product/code/test/runtime/manual-content behavior changes.
 
 Gaps: none for the PR #185 latest repaired prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T07:20:29Z
+
+Analyst validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #185 prerequisite scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T06:55:33Z` for the same effective content head `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; later evidence and formatting commits are process-only and do not change the validated effective content head.
+
+Analyst validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs, checker, evidence policy, tests, and process memory; it does not implement Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 audit, correction PRs, runtime manual pages, or chapter content.
+
+Analyst validation evidence: Earlier Analyst validations for older effective content heads are superseded and stale because later non-evidence checker, test, evidence-policy, and process-memory repairs changed the validated prerequisite behavior; this section is the latest Analyst validation marker for `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`.
+
+Analyst validation evidence: The transferred artwork source-linkage repair strengthens the infographic and diagram source-transfer requirement by requiring strict source-transferred-infographic and source-transferred-diagram metadata to reference existing strict sourceRegionMetadata through sourceAssetPath, with sourceCropSha256 and sourceCropDimensions matching the recorded source crop hash and decoded dimensions.
+
+Analyst validation evidence: The repaired prerequisite preserves x5/equivalent high-resolution export evidence, source-as-is protected handling for photos, traffic signs, and road markings, transferred-source infographic and diagram requirements, glyph/letter-level Spanish cleanup only, selectable Russian overlay guidance where feasible, byte-verified asset and crop hashes, crop and extraction decoded dimensions, no-upscale/runtime-size evidence, protected visible-Spanish exception gating, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Analyst validation evidence: Review Agent posted no actionable findings for `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`, AI Review passed at the same effective content head, and process memory records required checks green for baseline-checks, docker-validation, guard, osv-scan, and AI Review.
+
+Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
+
+Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
