@@ -56,23 +56,37 @@ second guide destination.
 
 - Preserve source artwork 1:1 for images, infographics, pictograms, diagrams,
   panel shapes, borders, colors, spacing, and proportions.
-- Use original PDF/source artwork crops or cleaned originals by default.
-  Generic icon sets, approximate redrawn SVGs, alternate card designs, or
-  source-like-but-different pictograms fail the conversion contract.
+- New source images and crops must be extracted/exported at a high-resolution
+  target: x5 zoom/source export, direct high-DPI PDF export, source-native
+  raster dimensions, or a documented equivalent/better method. Evidence must
+  record the method, output dimensions, SHA-256 hash where practical, runtime
+  display size, and `noUpscale` proof that the browser does not enlarge the
+  asset beyond its exported dimensions.
+- Use original PDF/source artwork crops or source-transferred originals by
+  default. Generic icon sets, approximate redrawn SVGs, alternate card designs,
+  source-like-but-different pictograms, or reconstructed diagrams fail the
+  conversion contract.
 - Vectorization is acceptable only with evidence that it is visually
-  indistinguishable from the source.
+  indistinguishable from the source and only for non-protected artwork.
 - Crop narrowly scoped artwork fragments or complete infographics as needed;
   never use the full PDF page as the visible base.
-- Remove Spanish text from artwork with local source-crop cleanup or inpainting
-  that preserves surrounding pixels, edges, connector lines, rings, panels, and
-  corners.
+- Photos, traffic-sign images, and road-marking images are protected
+  source-as-is assets. Do not translate, relabel, redraw, recolor, clean,
+  reconstruct, retouch, mask, inpaint, remove meaningful content, or otherwise
+  edit them. Russian explanation must live outside the protected image.
+- Infographics must be transferred as high-quality source images, not redrawn
+  or reconstructed from approximate CSS/SVG/icon components. If Spanish text is
+  removed from an infographic, cleanup is glyph/letter-level only: restore each
+  letter area with surrounding background pixels/colors while preserving edges,
+  connector lines, rings, panels, corners, pictograms, proportions, and spacing.
 - Do not cover Spanish text with broad masks, square patches, color-matched
-  plates, DOM label backgrounds, or opaque rectangles that change the source
-  artwork.
-- Russian replacement labels sit as selectable text in source-faithful
-  positions. If text fitting requires a change, prefer text wrapping, font
-  tuning, or a documented width-only label adjustment; do not change source
-  shape height, corner geometry, connector relationships, or diagram structure.
+  plates, DOM label backgrounds, opaque rectangles, broad boxes, or large
+  patches that change the source artwork.
+- Russian replacement labels sit as selectable DOM/SVG text in source-faithful
+  positions where feasible. If text fitting requires a change, prefer text
+  wrapping, font tuning, or a documented width-only label adjustment; do not
+  change source shape height, corner geometry, connector relationships, or
+  diagram structure.
 
 ## Typography And Style Tokens
 
@@ -138,7 +152,16 @@ The checker should pass only when:
 - Russian text is selectable DOM/SVG text and ordinary prose has no horizontal
   clipping or forced PDF-style line breaks.
 - Source artwork is present, source-faithful, locally bundled, and free of
-  visible Spanish text.
+  visible Spanish text except explicit source-as-is photo, traffic-sign, and
+  road-marking exceptions.
+- New image/crop metadata proves x5/equivalent extraction, dimensions/hash
+  where practical, and runtime display-size/no-upscale evidence.
+- Photo, traffic-sign, and road-marking records prove source-as-is handling and
+  Russian explanation outside the image.
+- Infographic records prove high-quality source-image transfer, no approximate
+  redraw/reconstruction, glyph/letter-level Spanish cleanup when applicable, no
+  broad masks/plates/patches, and selectable Russian DOM/SVG overlay where
+  feasible.
 - Recurring style tokens match across repeated blocks.
 - Screenshots exist for desktop, narrow/high-risk, and mobile layouts where
   relevant.
@@ -148,8 +171,15 @@ The checker must fail on:
 - runtime PDF/full-page raster/image-only rendering;
 - generic icon replacement, redesigned pictograms, missing source artwork, or
   source-derived pieces assembled into a distorted composition;
-- broad masks, square patches, DOM plates, backing rectangles, or visible
-  cleanup artifacts over source artwork;
+- translated, relabeled, recolored, redrawn, retouched, masked, inpainted, or
+  reconstructed photos, traffic signs, or road markings;
+- approximate infographic redraws or reconstructions instead of source-image
+  transfer;
+- broad masks, square patches, broad boxes, large patches, DOM plates, opaque
+  label backgrounds, backing rectangles, or visible cleanup artifacts over
+  source artwork;
+- low-resolution or runtime-upscaled source assets, or missing extraction
+  method/dimensions/hash/runtime-display evidence;
 - clipped icons, square crop boxes inside circles/lobes, parent-overflow cuts,
   mismatched row/column alignment, excessive blank canvas, or tiny centered
   content islands;
@@ -164,12 +194,19 @@ Before opening a PR for a manual fragment:
 
 1. Verify source `Índice` heading, route id, page span, source text, visual
    blocks, and omitted book/source artifacts.
-2. Record crop paths, source regions, cleanup scope, and visible-Spanish status.
+2. Record crop paths, source regions, x5/equivalent extraction method,
+   dimensions, hashes where practical, runtime display-size/no-upscale evidence,
+   cleanup scope, and visible-Spanish status.
 3. Record Russian wording decisions and ticket-critical detail retention.
-4. Add or update style-token metadata for every recurring block type.
-5. Add content tests for route coverage, forbidden patterns, local assets,
+4. For photos, traffic signs, and road markings, record source-as-is evidence
+   and keep Russian explanation outside the image.
+5. For infographics, record source-image transfer evidence, glyph/letter-level
+   cleanup scope when Spanish is removed, and selectable Russian overlay
+   strategy where feasible.
+6. Add or update style-token metadata for every recurring block type.
+7. Add content tests for route coverage, forbidden patterns, local assets,
    navigation hierarchy, and visible labels.
-6. Add Playwright checks for responsive prose, selectable text, artwork
+8. Add Playwright checks for responsive prose, selectable text, artwork
    bounding boxes, named fixture geometry, and screenshots.
-7. Run focused content tests, TypeScript, build, focused Playwright, whitespace
+9. Run focused content tests, TypeScript, build, focused Playwright, whitespace
    check, and preflight before PR readiness.

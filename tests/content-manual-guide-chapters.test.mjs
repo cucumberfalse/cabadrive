@@ -135,15 +135,131 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   return { implementedRegistryPath, moduleRoot };
 }
 
-function runCheckerWithFixture(registryFixturePath, moduleRoot) {
+function runCheckerWithFixture(registryFixturePath, moduleRoot, evidenceFixturePath = evidencePath) {
   return spawnSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], {
     encoding: "utf8",
     env: {
       ...process.env,
       MANUAL_GUIDE_REGISTRY_PATH: registryFixturePath,
+      MANUAL_GUIDE_EVIDENCE_PATH: evidenceFixturePath,
       MANUAL_GUIDE_SECTION_MODULE_ROOT: moduleRoot
     }
   });
+}
+
+function addStrictVisualEvidenceFields(implementationEvidence) {
+  implementationEvidence.visualEvidenceSchemaVersion = 3;
+  implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
+  implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
+  for (const sourceRegion of implementationEvidence.sourceRegionMetadata) {
+    sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
+    sourceRegion.extractionScaleEvidence = {
+      target: "x5-zoom-source-export",
+      method: "fixture x5 zoom/source export",
+      outputDimensions: sourceRegion.cropDimensions
+    };
+  }
+  implementationEvidence.localAssetMetadata[0] = {
+    ...implementationEvidence.localAssetMetadata[0],
+    assetKind: "strict-source-transferred-infographic",
+    assetCategory: "source-transferred-infographic",
+    cleanupScope: "glyph-level-spanish-cleanup",
+    extractionScaleEvidence: {
+      target: "x5-zoom-source-export",
+      method: "fixture x5 zoom/source export",
+      outputDimensions: {
+        width: implementationEvidence.localAssetMetadata[0].width,
+        height: implementationEvidence.localAssetMetadata[0].height
+      }
+    },
+    runtimeDisplaySize: {
+      maxWidthCssPx: 60,
+      maxHeightCssPx: 40,
+      noUpscale: true
+    },
+    infographicTransfer: {
+      sourceImageTransfer: true,
+      noApproximateRedraw: true,
+      broadMaskPlatePatchStatus: "none",
+      cleanupMethod: "glyph-letter-level-background-restoration",
+      russianOverlayStrategy: "selectable-dom"
+    }
+  };
+  implementationEvidence.localAssetMetadata[1] = {
+    ...implementationEvidence.localAssetMetadata[1],
+    assetKind: "strict-source-as-is-road-marking",
+    assetCategory: "source-as-is-road-marking",
+    cleanupScope: "none-source-as-is",
+    containsText: true,
+    visibleSpanish: true,
+    extractionScaleEvidence: {
+      target: "source-native-equivalent-or-better",
+      method: "fixture source-native crop",
+      outputDimensions: {
+        width: implementationEvidence.localAssetMetadata[1].width,
+        height: implementationEvidence.localAssetMetadata[1].height
+      }
+    },
+    runtimeDisplaySize: {
+      maxWidthCssPx: 45,
+      maxHeightCssPx: 30,
+      noUpscale: true
+    },
+    sourceIntegrity: {
+      sourceAsIs: true,
+      noTranslationOrRelabeling: true,
+      noRedrawRecolorCleanupRetouchMaskInpaint: true,
+      russianExplanationOutsideImage: true
+    },
+    sourceImageException: {
+      kind: "source-image-original-visible-text",
+      visibleSpanishScope: "source-image-only",
+      sourceAsIs: true,
+      russianExplanationOutsideImage: true
+    }
+  };
+  implementationEvidence.visibleSpanishStatus = {
+    status: "source_image_exceptions_only",
+    nonSignVisibleSpanishStatus: "source-image-only",
+    exceptions: [
+      {
+        assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+        kind: "source-image-original-visible-text",
+        visibleSpanishScope: "source-image-only",
+        sourceAsIs: true,
+        russianExplanationOutsideImage: true
+      }
+    ]
+  };
+}
+
+function writeStrictFutureRegistryFixture(tempDir, mutateEvidence = () => {}) {
+  const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+    tempDir,
+    'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n',
+    (implementationEvidence) => {
+      addStrictVisualEvidenceFields(implementationEvidence);
+      mutateEvidence(implementationEvidence);
+    }
+  );
+  const strictRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
+  strictRegistry.featureId = "031-manual-document-completion";
+  for (const section of strictRegistry.sections) {
+    if (section.id === "ch1-pedestrian-priority") continue;
+    section.status = "pending";
+    section.sourceRegionMetadataStatus = "pending_until_section_pr";
+    section.visualEvidenceStatus = "pending_until_section_pr";
+    delete section.implementationEvidence;
+    delete section.implementedSectionEvidence;
+  }
+  writeFileSync(implementedRegistryPath, JSON.stringify(strictRegistry, null, 2));
+
+  const strictEvidencePath = join(tempDir, "manual-guide-source-fidelity.strict.evidence.json");
+  const strictEvidence = JSON.parse(JSON.stringify(evidence));
+  strictEvidence.featureId = "031-manual-document-completion";
+  strictEvidence.mode = "strict-visual-rule-fixture-for-future-manual-units";
+  writeFileSync(strictEvidencePath, JSON.stringify(strictEvidence, null, 2));
+  return { implementedRegistryPath, moduleRoot, strictEvidencePath };
 }
 
 test("Chapter 1 and 2 registry contains exactly ten source Índice sections and skipped divider metadata", () => {
@@ -1216,6 +1332,39 @@ test("Manual guide source-fidelity checker scans the implemented section rendere
   assert.match(manualGuideAppSource, /assetUrl\(block\.assetPath\)/);
 });
 
+test("Manual guide source-fidelity evidence schema records strict full-manual visual policy", () => {
+  assert.equal(evidence.strictVisualRulePolicy.id, "031-strict-source-fidelity");
+  assert.equal(evidence.strictVisualRulePolicy.schemaVersion, 3);
+  assert.equal(evidence.strictVisualRulePolicy.enforcement, "all-new-manual-units");
+  assert.deepEqual(evidence.strictVisualRulePolicy.legacyBaselineFeatureIds, ["030-manual-chapters-1-2"]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
+    "x5-zoom-source-export",
+    "source-native-equivalent-or-better",
+    "higher-resolution-direct-export"
+  ]);
+  for (const requiredCategory of [
+    "source-as-is-photo",
+    "source-as-is-traffic-sign",
+    "source-as-is-road-marking",
+    "source-transferred-infographic",
+    "source-transferred-diagram",
+    "native-dom-text-only"
+  ]) {
+    assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
+  }
+  for (const forbiddenTerm of [
+    "approximate-redraw",
+    "translated-sign",
+    "translated-road-marking",
+    "retouched-photo",
+    "broad-mask",
+    "opaque-label-background",
+    "backing-rectangle"
+  ]) {
+    assert.ok(evidence.strictVisualRulePolicy.forbiddenStrictVisualTerms.includes(forbiddenTerm), `strict schema forbids ${forbiddenTerm}`);
+  }
+});
+
 test("Manual guide source-fidelity checker passes the section registry with Chapter 1 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 56 });
@@ -1236,6 +1385,91 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55]);
   assert.equal(result.screenshotEvidence, "recorded_for_complete_chapter_1_sections_including_ch1-shared-trip");
+  assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
+});
+
+test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-missing-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      delete implementationEvidence.visualEvidenceSchemaVersion;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a future manual unit omits strict schema version evidence");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects future image assets without no-upscale evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-upscale-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].runtimeDisplaySize.noUpscale = false;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when future image metadata allows runtime upscaling");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].runtimeDisplaySize.noUpscale must be true");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects future source-as-is assets with visual edits", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-edit-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[1].visibleSpanish = false;
+      implementationEvidence.visibleSpanishStatus = "none";
+      implementationEvidence.localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint = false;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when protected source-as-is photos/signs/markings are edited");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects future infographic broad patch cleanup", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-patch-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].infographicTransfer.broadMaskPlatePatchStatus = "large-patch";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when infographic cleanup uses broad patches");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.match(result.message, /forbidden visual-edit term large-patch|broadMaskPlatePatchStatus must be none/u);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts future strict visual evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-pass-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir);
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
+    assert.equal(output.implementedSections, 1);
+    assert.equal(output.strictVisualRulePolicy, "031-strict-source-fidelity");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 });
 
 test("Manual guide source-fidelity checker rejects duplicate hierarchy section references", () => {

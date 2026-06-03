@@ -125,6 +125,165 @@ function validateOfficialTrafficSignException(exception, messagePrefix) {
   assertLocalPathExists(exception.assetPath, `${messagePrefix}.assetPath`, exception);
 }
 
+const legacyVisualEvidenceFeatureIds = new Set(["030-manual-chapters-1-2"]);
+const strictImageAssetCategories = new Set([
+  "source-as-is-photo",
+  "source-as-is-traffic-sign",
+  "source-as-is-road-marking",
+  "source-transferred-infographic",
+  "source-transferred-diagram"
+]);
+const protectedSourceAsIsCategories = new Set(["source-as-is-photo", "source-as-is-traffic-sign", "source-as-is-road-marking"]);
+const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
+const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
+const forbiddenStrictVisualTerms = [
+  "approximate-redraw",
+  "redrawn-infographic",
+  "reconstructed-infographic",
+  "translated-sign",
+  "translated-road-marking",
+  "recolored-sign",
+  "retouched-photo",
+  "masked-photo",
+  "inpainted-photo",
+  "broad-mask",
+  "large-patch",
+  "opaque-label-background",
+  "dom-plate",
+  "backing-rectangle"
+];
+
+function isStrictVisualEvidenceRequired(registry, evidence) {
+  return evidence.strictVisualRulePolicy?.enforcement === "all-new-manual-units" && !legacyVisualEvidenceFeatureIds.has(registry.featureId);
+}
+
+function isStrictVisualEvidenceOptIn(implementedEvidence) {
+  return implementedEvidence.visualEvidenceSchemaVersion === 3 || implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity";
+}
+
+function isStrictProtectedSourceAsIsException(entry) {
+  return (
+    entry.visibleSpanish === true &&
+    protectedSourceAsIsCategories.has(entry.assetCategory) &&
+    isObject(entry.sourceIntegrity) &&
+    entry.sourceIntegrity.sourceAsIs === true &&
+    entry.sourceIntegrity.noTranslationOrRelabeling === true &&
+    entry.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true &&
+    entry.sourceIntegrity.russianExplanationOutsideImage === true
+  );
+}
+
+function assertNoForbiddenStrictVisualTerms(value, messagePrefix) {
+  const serialized = JSON.stringify(value).toLocaleLowerCase("en-US");
+  for (const term of forbiddenStrictVisualTerms) {
+    assertCondition(!serialized.includes(term), `${messagePrefix} must not record forbidden visual-edit term ${term}`, value);
+  }
+}
+
+function validateExtractionScaleEvidence(value, messagePrefix) {
+  assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
+  assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
+  assertCondition(typeof value.method === "string" && value.method.length > 0, `${messagePrefix}.method must describe the export method`, value);
+  assertRequiredFields(value.outputDimensions, ["width", "height"], `${messagePrefix}.outputDimensions`);
+  assertCondition(value.outputDimensions.width > 0 && value.outputDimensions.height > 0, `${messagePrefix}.outputDimensions must be positive`, value);
+  if ("sha256" in value) {
+    assertCondition(/^[a-f0-9]{64}$/u.test(value.sha256), `${messagePrefix}.sha256 must be a SHA-256 hash when present`, value);
+  }
+}
+
+function validateRuntimeDisplaySize(asset, messagePrefix) {
+  assertRequiredFields(asset.runtimeDisplaySize, ["maxWidthCssPx", "noUpscale"], `${messagePrefix}.runtimeDisplaySize`);
+  assertCondition(asset.runtimeDisplaySize.noUpscale === true, `${messagePrefix}.runtimeDisplaySize.noUpscale must be true`, asset);
+  assertCondition(asset.runtimeDisplaySize.maxWidthCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxWidthCssPx must be positive`, asset);
+  assertCondition(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx, `${messagePrefix}.width must be at least runtime max display width`, asset);
+  if ("maxHeightCssPx" in asset.runtimeDisplaySize) {
+    assertCondition(asset.runtimeDisplaySize.maxHeightCssPx > 0, `${messagePrefix}.runtimeDisplaySize.maxHeightCssPx must be positive`, asset);
+    assertCondition(asset.height >= asset.runtimeDisplaySize.maxHeightCssPx, `${messagePrefix}.height must be at least runtime max display height`, asset);
+  }
+}
+
+function validateProtectedSourceAsIsAsset(asset, messagePrefix) {
+  assertRequiredFields(
+    asset.sourceIntegrity,
+    ["sourceAsIs", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
+    `${messagePrefix}.sourceIntegrity`
+  );
+  assertCondition(asset.sourceIntegrity.sourceAsIs === true, `${messagePrefix}.sourceIntegrity.sourceAsIs must be true`, asset);
+  assertCondition(asset.sourceIntegrity.noTranslationOrRelabeling === true, `${messagePrefix}.sourceIntegrity.noTranslationOrRelabeling must be true`, asset);
+  assertCondition(
+    asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true,
+    `${messagePrefix}.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint must be true`,
+    asset
+  );
+  assertCondition(asset.sourceIntegrity.russianExplanationOutsideImage === true, `${messagePrefix}.sourceIntegrity.russianExplanationOutsideImage must be true`, asset);
+  assertCondition(asset.cleanupScope === "none-source-as-is", `${messagePrefix}.cleanupScope must be none-source-as-is`, asset);
+}
+
+function validateTransferredInfographicAsset(asset, messagePrefix) {
+  assertRequiredFields(
+    asset.infographicTransfer,
+    ["sourceImageTransfer", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
+    `${messagePrefix}.infographicTransfer`
+  );
+  assertCondition(asset.infographicTransfer.sourceImageTransfer === true, `${messagePrefix}.infographicTransfer.sourceImageTransfer must be true`, asset);
+  assertCondition(asset.infographicTransfer.noApproximateRedraw === true, `${messagePrefix}.infographicTransfer.noApproximateRedraw must be true`, asset);
+  assertCondition(asset.infographicTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.infographicTransfer.broadMaskPlatePatchStatus must be none`, asset);
+  assertCondition(
+    asset.infographicTransfer.russianOverlayStrategy === "selectable-dom" || asset.infographicTransfer.russianOverlayStrategy === "selectable-svg",
+    `${messagePrefix}.infographicTransfer.russianOverlayStrategy must be selectable DOM/SVG`,
+    asset
+  );
+  assertCondition(
+    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
+    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset
+  );
+  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
+    assertCondition(
+      asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+      `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
+      asset
+    );
+  }
+}
+
+function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
+  assertCondition(implementedEvidence.visualEvidenceSchemaVersion === 3, `${messagePrefix}.visualEvidenceSchemaVersion must be 3 for new manual units`, implementedEvidence);
+  assertCondition(implementedEvidence.visualRulePolicyId === "031-strict-source-fidelity", `${messagePrefix}.visualRulePolicyId must be 031-strict-source-fidelity`, implementedEvidence);
+  assertCondition(
+    implementedEvidence.highResolutionEvidenceStatus === "x5-or-equivalent-no-upscale-recorded",
+    `${messagePrefix}.highResolutionEvidenceStatus must prove x5/equivalent extraction and no runtime upscaling`,
+    implementedEvidence
+  );
+
+  validateObjectOrArray(
+    implementedEvidence.sourceRegionMetadata,
+    ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
+    `${messagePrefix} sourceRegionMetadata`,
+    (entry, label) => {
+      validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
+      assertNoForbiddenStrictVisualTerms(entry, label);
+    }
+  );
+
+  validateObjectOrArray(
+    implementedEvidence.localAssetMetadata,
+    ["assetPath", "assetKind", "assetCategory", "width", "height", "sha256", "containsText", "visibleSpanish", "runtimeDisplaySize"],
+    `${messagePrefix} localAssetMetadata`,
+    (asset, label) => {
+      const allowedCategory = strictImageAssetCategories.has(asset.assetCategory) || strictNonImageAssetCategories.has(asset.assetCategory);
+      assertCondition(allowedCategory, `${label}.assetCategory must use the strict full-manual visual vocabulary`, asset);
+      assertNoForbiddenStrictVisualTerms(asset, label);
+      if (strictImageAssetCategories.has(asset.assetCategory)) {
+        validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
+        validateRuntimeDisplaySize(asset, label);
+      }
+      if (protectedSourceAsIsCategories.has(asset.assetCategory)) validateProtectedSourceAsIsAsset(asset, label);
+      if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label);
+    }
+  );
+}
+
 function validateNoVisibleSpanishStatus(value, messagePrefix) {
   const allowedStatuses = new Set(["pass", "none", "no_visible_spanish", "no-visible-spanish"]);
   const status = isObject(value) && "status" in value ? value.status : value;
@@ -207,13 +366,14 @@ function validatePendingSection(section, evidence, id) {
   }
 }
 
-function validateImplementedSection(section, evidence, id) {
+function validateImplementedSection(section, evidence, id, registry) {
   assertCondition(section.sourceRegionMetadataStatus === "recorded", `${id} implemented entry must record source-region metadata`, section);
   assertCondition(section.visualEvidenceStatus === "recorded", `${id} implemented entry must record visual evidence`, section);
   assertLocalPathExists(resolveSectionContentModulePath(section.sectionContentModulePath), `${id} implemented section content module`, section);
 
   const implementedEvidence = section.implementationEvidence ?? section.implementedSectionEvidence;
   const format = evidence.implementedSectionEvidenceFormat;
+  const validateStrictEvidence = isStrictVisualEvidenceRequired(registry, evidence) || isStrictVisualEvidenceOptIn(implementedEvidence);
   assertRequiredFields(implementedEvidence, format.requiredFields, `${id} implementationEvidence`);
   assertCondition(implementedEvidence.sectionId === id, `${id} implementationEvidence.sectionId must match the registry entry`, implementedEvidence);
   assertCondition(
@@ -232,7 +392,9 @@ function validateImplementedSection(section, evidence, id) {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
     if (entry.visibleSpanish === false) return;
     assertCondition(
-      isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry),
+      isOfficialTrafficSignSourceAsIsException(entry) ||
+        isOriginalSourceImageVisibleTextException(entry) ||
+        (validateStrictEvidence && isStrictProtectedSourceAsIsException(entry)),
       `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
       entry
     );
@@ -245,6 +407,9 @@ function validateImplementedSection(section, evidence, id) {
     assertPassStatus(entry.status, `${label}.status`, entry);
   });
   validateStatusObject(implementedEvidence.forbiddenPatternScan, `${id} forbiddenPatternScan`);
+  if (validateStrictEvidence) {
+    validateStrictVisualEvidence(implementedEvidence, `${id} implementationEvidence`);
+  }
 }
 
 function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages) {
@@ -353,7 +518,7 @@ function validateSectionRegistry(registry, evidence) {
     });
 
     if (section.status === "pending") validatePendingSection(section, evidence, id);
-    else if (section.status === "implemented") validateImplementedSection(section, evidence, id);
+    else if (section.status === "implemented") validateImplementedSection(section, evidence, id, registry);
     else assertCondition(false, `${id} status must be pending or implemented`, section);
   }
 
@@ -361,7 +526,7 @@ function validateSectionRegistry(registry, evidence) {
   assertCondition(duplicateSectionIds.length === 0, "Manual guide section ids must be unique", { duplicateSectionIds });
 
   const expectedCoveredPages = sourcePagesForRange(evidence.requiredSourcePageRange.start, evidence.requiredSourcePageRange.end).filter((sourcePage) => !skippedSourcePages.has(sourcePage));
-  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover source pages 22-42 and 44-55 as section source metadata", {
+  compareJson(uniqueInOrder(coveredSourcePages), expectedCoveredPages, "Section registry must cover every non-skipped source page in the required range as section source metadata", {
     coveredSourcePages,
     expectedCoveredPages
   });
@@ -464,7 +629,8 @@ function main() {
     sharedSourcePages: (evidence.sharedSourcePageOwnership ?? []).map((entry) => entry.sourcePage),
     forbiddenPatternRules: evidence.forbiddenPatterns.length,
     screenshotEvidence: evidence.sharedPrereqExpectedOutput.screenshotEvidence,
-    sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence
+    sourceCropEvidence: evidence.sharedPrereqExpectedOutput.sourceCropEvidence,
+    strictVisualRulePolicy: evidence.strictVisualRulePolicy?.id ?? null
   };
   console.log(JSON.stringify(result, null, 2));
 }

@@ -168,6 +168,77 @@
       "fail"
     ]
   },
+  "strictVisualRulePolicy": {
+    "id": "031-strict-source-fidelity",
+    "schemaVersion": 3,
+    "enforcement": "all-new-manual-units",
+    "legacyBaselineFeatureIds": [
+      "030-manual-chapters-1-2"
+    ],
+    "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Feature 030 remains a legacy baseline to be audited in a later slice.",
+    "highResolutionEvidence": {
+      "requiredFor": "every new image/crop extraction or export",
+      "allowedTargets": [
+        "x5-zoom-source-export",
+        "source-native-equivalent-or-better",
+        "higher-resolution-direct-export"
+      ],
+      "requiredFields": [
+        "extractionScaleEvidence.target",
+        "extractionScaleEvidence.method",
+        "extractionScaleEvidence.outputDimensions",
+        "sha256 when practical",
+        "runtimeDisplaySize.maxWidthCssPx",
+        "runtimeDisplaySize.noUpscale"
+      ]
+    },
+    "assetCategories": [
+      "source-as-is-photo",
+      "source-as-is-traffic-sign",
+      "source-as-is-road-marking",
+      "source-transferred-infographic",
+      "source-transferred-diagram",
+      "native-dom-text-only",
+      "reference-only-not-runtime"
+    ],
+    "protectedSourceAsIsCategories": [
+      "source-as-is-photo",
+      "source-as-is-traffic-sign",
+      "source-as-is-road-marking"
+    ],
+    "protectedSourceAsIsRequiredFields": [
+      "sourceIntegrity.sourceAsIs",
+      "sourceIntegrity.noTranslationOrRelabeling",
+      "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
+      "sourceIntegrity.russianExplanationOutsideImage",
+      "cleanupScope=none-source-as-is"
+    ],
+    "infographicRequiredFields": [
+      "assetCategory=source-transferred-infographic",
+      "infographicTransfer.sourceImageTransfer",
+      "infographicTransfer.noApproximateRedraw",
+      "infographicTransfer.broadMaskPlatePatchStatus=none",
+      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
+      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+    ],
+    "forbiddenStrictVisualTerms": [
+      "approximate-redraw",
+      "redrawn-infographic",
+      "reconstructed-infographic",
+      "translated-sign",
+      "translated-road-marking",
+      "recolored-sign",
+      "retouched-photo",
+      "masked-photo",
+      "inpainted-photo",
+      "broad-mask",
+      "large-patch",
+      "opaque-label-background",
+      "dom-plate",
+      "backing-rectangle"
+    ]
+  },
   "forbiddenPatterns": [
     {
       "id": "runtime-pdf-viewer",
@@ -182,7 +253,7 @@
     },
     {
       "id": "full-page-raster-base",
-      "description": "Chapter 1/2 interactive sections must not render a full PDF page image as the learner-facing base.",
+      "description": "Interactive manual sections must not render a full PDF page image as the learner-facing base.",
       "patterns": [
         "manual-russian-page-flow",
         "manual-page-canvas"
@@ -190,7 +261,7 @@
     },
     {
       "id": "raw-source-page-routes",
-      "description": "Chapter 1/2 guide routing must not expose raw source PDF pages as learner pages.",
+      "description": "Manual guide routing must not expose raw source PDF pages as learner pages.",
       "patterns": [
         "#manual-page-021",
         "#manual-page-043",
