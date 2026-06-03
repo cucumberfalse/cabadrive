@@ -199,3 +199,25 @@ The user's instruction `одна глава - один пр` supersedes any olde
 ## Analyst Handoff
 
 This intake is ready for Orchestrator handoff to Architect. The request is to continue the existing interactive Russian `Руководство` through full manual/document completion, using one PR per source manual chapter from this point forward, treating appendices as chapter-equivalent PR units by assumption, and applying stricter high-resolution/source-as-is/glyph-level visual rules to all future manual work and any needed correction PRs.
+
+## Final Analyst Validation - PR #185 Visual-Rule Prerequisite
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T03:21:43Z
+
+Analyst validated effective content head: 36316f3781b9b04f305725018522b0f55407f900
+
+Analyst return count for this prerequisite validation: 0
+
+Validation scope: PR #185 visual-rule prerequisite only. This Analyst validation covers whether the prerequisite supports the original user intent to continue until the whole document is complete, use one source manual chapter per PR from this point forward, require high-resolution x5/equivalent visual export, keep photos/signs/road markings unmodified including no translation, and require infographics to be transferred as source images with glyph/letter-level Spanish cleanup and Russian overlay text.
+
+Customer intent check: passed for the prerequisite scope. The validated effective content head records the stricter visual rules in durable manual-conversion guidance, checker/evidence policy, tests, and process memory. It supports the user's request by making future chapter, appendix, audit, and correction PRs accountable to the requested high-resolution/source-as-is/source-transferred visual standard and the one-chapter/one-PR continuation model.
+
+Completion boundary: this prerequisite supports but does not itself complete Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 visual audit, or any correction PRs. One-chapter/one-PR continuation remains required for remaining source manual chapters and chapter-equivalent appendices before full-document completion can pass.
+
+Architect prerequisite: final Architect validation passed before this Analyst validation at `2026-06-03T03:19:05Z` for the same effective content head `36316f3781b9b04f305725018522b0f55407f900`. The later commit `b589407488a7fc4c7f1d00426a74b71644597ad5` is treated as Architect-owned validation evidence only; it records the Architect pass in `tasks.md` and does not intend product/code/test/runtime/manual-content behavior changes.
+
+Gaps: none for the PR #185 prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
