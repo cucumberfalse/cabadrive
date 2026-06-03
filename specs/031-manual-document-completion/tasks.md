@@ -90,7 +90,7 @@ For each chapter-equivalent content PR:
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | repaired effective content head `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`; prior `36316f3781b9b04f305725018522b0f55407f900` validation is stale/superseded | repaired after non-evidence visible-Spanish checker/test/evidence changes; local verification passed; Review Agent no actionable findings for `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`; non-AI required checks green (`baseline-checks`, `docker-validation`, `guard`, `osv-scan`); AI Review process P1 requires fresh Architect/Analyst validation and this Architect rerun passed | yes |
+| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | latest repaired effective content head `bcc377a154c936374715f6ca4ce2d5714af4a722`; prior `36316f3781b9b04f305725018522b0f55407f900` and `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c` validations are stale/superseded | repaired after non-evidence strict visible-Spanish checker/test/evidence changes; local verification passed; Review Agent no actionable findings for `bcc377a154c936374715f6ca4ce2d5714af4a722`; required checks green (`baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`); latest Architect validation passed and PR #185 is ready for Analyst final validation once evidence is transported | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
@@ -170,7 +170,7 @@ For each chapter-equivalent content PR:
 
 ## Implementation Agent Feedback
 
-- None requiring Architect disposition for this prerequisite slice. Final Architect validation rerun for PR #185 confirms no unresolved Implementation Agent feedback remains for the repaired visual-rule prerequisite scope at `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`.
+- None requiring Architect disposition for this prerequisite slice. Latest final Architect validation for PR #185 confirms no unresolved Implementation Agent feedback remains for the repaired visual-rule prerequisite scope at `bcc377a154c936374715f6ca4ce2d5714af4a722`.
 
 Future Implementation Agent feedback must be recorded here and routed to Architect for accept/task/ticket/not-needed disposition before follow-up development.
 
@@ -223,6 +223,34 @@ Architect validation evidence: Implementation Agent recorded full local verifica
 Architect validation evidence: Review Agent posted no actionable findings for `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c` (review id `4415281531`). GitHub PR state for current head `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c` reported non-AI required checks green: `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`. The current AI Review blocker is process-only and asks for final Architect/Analyst validation to be rerun for this repaired head; this Architect validation rerun addresses the Architect half of that process gap.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`. PR #185 is ready for Analyst final validation once this Architect validation evidence is transported. AI Review should be re-evaluated after Analyst final validation records the same repaired effective content head.
+
+Remaining work after this prerequisite validation rerun: final Analyst validation for PR #185 prerequisite scope, then Orchestrator current-head/readiness guards. The broader feature remains pending for Introduction/Chapter 1 visual-rule audit, any scoped corrections from that audit, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, final full-cycle Architect validation, and final Analyst validation.
+
+## Final Architect Validation Rerun - PR #185 Latest Visible-Spanish Repairs
+
+Superseded validation notice: the prior final Architect and Analyst validations for `36316f3781b9b04f305725018522b0f55407f900` and `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c` are stale because later non-evidence checker/test/evidence repairs changed strict visible-Spanish validation behavior. The current effective content head for this prerequisite slice is `bcc377a154c936374715f6ca4ce2d5714af4a722`.
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T04:26:07Z
+
+Architect validated effective content head: bcc377a154c936374715f6ca4ce2d5714af4a722
+
+Architect return count for this prerequisite validation rerun: 0
+
+Validation scope: PR #185 visual-rule prerequisite only. This latest rerun covers durable manual conversion guideline updates, manual-guide source-fidelity checker/evidence updates, focused tests, process memory, and the post-validation strict visible-Spanish repairs through `bcc377a154c936374715f6ca4ce2d5714af4a722`. It does not validate any Chapter 2+ content implementation, Introduction/Chapter 1 audit or correction implementation, front-matter implementation, or full manual completion.
+
+Cycle PR-set coverage: PR #185 is recorded in the cycle PR set as the visual-rule prerequisite row with branch `codex/031-manual-document-completion`, PR URL `https://github.com/cucumberfalse/cabadrive/pull/185`, base `b07d5c72bf1689e7dac480e937c366a528d20299`, and latest repaired effective content head `bcc377a154c936374715f6ca4ce2d5714af4a722`. The later audit, correction, chapter, appendix, and front-matter rows remain pending by design and are outside this prerequisite validation pass.
+
+Architect validation evidence: local `HEAD` matched `bcc377a154c936374715f6ca4ce2d5714af4a722` on branch `codex/031-manual-document-completion`; the working tree was clean before this Architect-owned validation note; the PR diff from base remains scoped to `docs_project/project/frontend/manual-conversion-guidelines.md`, `content/validation/manual-guide-source-fidelity.evidence.json`, `scripts/manual-guide-source-fidelity.mjs`, `tests/content-manual-guide-chapters.test.mjs`, and `specs/031-manual-document-completion/` feature memory, with no chapter content implementation, no runtime manual page implementation, no Introduction/Chapter 1 audit implementation, and no unrelated assets.
+
+Architect validation evidence: the latest repaired head preserves the prerequisite intent and closes the latest strict visible-Spanish policy holes. Strict `source-transferred-infographic` and `source-transferred-diagram` assets now require `visibleSpanish: false`; strict visible-Spanish `sourceImageException` allowance is limited to protected source-as-is photo, traffic-sign, and road-marking categories through strict source-integrity and matching exception/status evidence; legacy `officialSignException` and `sourceImageException` allowances remain limited to non-strict legacy evidence. The strict visual-rule policy still covers x5/equivalent export evidence, source-as-is photo/sign/marking handling, infographic/diagram source transfer, glyph/letter-level cleanup, byte-verified hashes, no-upscale/runtime-size evidence, forbidden visual-edit term scanning, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Architect validation evidence: Implementation Agent recorded full local verification for `bcc377a154c936374715f6ca4ce2d5714af4a722`: `node scripts/manual-guide-source-fidelity.mjs` passed; focused `node --test tests/content-manual-guide-chapters.test.mjs` passed with `54` tests; `pnpm run validate:content` passed; `pnpm run test` passed with `363` tests; `pnpm run build` passed; `pnpm run preflight` passed including `74` Playwright tests; feature-memory check and diff check passed.
+
+Architect validation evidence: Review Agent posted no actionable findings for `bcc377a154c936374715f6ca4ce2d5714af4a722` (review id `4415418564`). GitHub PR state for current head `bcc377a154c936374715f6ca4ce2d5714af4a722` reported all required checks green: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at `bcc377a154c936374715f6ca4ce2d5714af4a722`. PR #185 is ready for Analyst final validation once this Architect validation evidence is transported.
 
 Remaining work after this prerequisite validation rerun: final Analyst validation for PR #185 prerequisite scope, then Orchestrator current-head/readiness guards. The broader feature remains pending for Introduction/Chapter 1 visual-rule audit, any scoped corrections from that audit, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, final full-cycle Architect validation, and final Analyst validation.
 
