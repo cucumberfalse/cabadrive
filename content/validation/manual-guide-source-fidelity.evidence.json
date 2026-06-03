@@ -275,7 +275,8 @@
       "opaque-label-background",
       "dom-plate",
       "backing-rectangle"
-    ]
+    ],
+    "forbiddenStrictVisualTermMatching": "case-insensitive canonical term matching across hyphen, space, and underscore separators"
   },
   "forbiddenPatterns": [
     {

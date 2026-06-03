@@ -164,6 +164,31 @@ const forbiddenStrictVisualTerms = [
   "backing-rectangle"
 ];
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+}
+
+function forbiddenStrictVisualTermPattern(term) {
+  return new RegExp(`\\b${term.split("-").map(escapeRegExp).join("[\\s_-]+")}\\b`, "iu");
+}
+
+const forbiddenStrictVisualTermPatterns = forbiddenStrictVisualTerms.map((term) => ({
+  term,
+  pattern: forbiddenStrictVisualTermPattern(term)
+}));
+const forbiddenStrictVisualTermIgnoredKeys = new Set([
+  "assetPath",
+  "sourceAssetPath",
+  "desktopScreenshot",
+  "mobileScreenshot",
+  "sha256",
+  "cropSha256",
+  "id",
+  "sectionId",
+  "assetKind",
+  "assetCategory"
+]);
+
 function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {
   const policy = evidence.strictVisualRulePolicy;
   if (policy?.legacyBaselineSectionIds?.includes(section.id) !== true || !legacyVisualEvidenceSectionIds.has(section.id)) return false;
@@ -193,10 +218,17 @@ function isStrictProtectedSourceAsIsException(entry) {
   );
 }
 
+function collectForbiddenStrictVisualText(value, key = "") {
+  if (typeof value === "string") return forbiddenStrictVisualTermIgnoredKeys.has(key) ? [] : [value];
+  if (Array.isArray(value)) return value.flatMap((entry) => collectForbiddenStrictVisualText(entry));
+  if (isObject(value)) return Object.entries(value).flatMap(([entryKey, entryValue]) => collectForbiddenStrictVisualText(entryValue, entryKey));
+  return [];
+}
+
 function assertNoForbiddenStrictVisualTerms(value, messagePrefix) {
-  const serialized = JSON.stringify(value).toLocaleLowerCase("en-US");
-  for (const term of forbiddenStrictVisualTerms) {
-    assertCondition(!serialized.includes(term), `${messagePrefix} must not record forbidden visual-edit term ${term}`, value);
+  const serialized = collectForbiddenStrictVisualText(value).join("\n");
+  for (const { term, pattern } of forbiddenStrictVisualTermPatterns) {
+    assertCondition(!pattern.test(serialized), `${messagePrefix} must not record forbidden visual-edit term ${term}`, value);
   }
 }
 
@@ -349,6 +381,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     `${messagePrefix}.highResolutionEvidenceStatus must prove x5/equivalent extraction and no runtime upscaling`,
     implementedEvidence
   );
+  assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
 
   validateObjectOrArray(
     implementedEvidence.sourceRegionMetadata,

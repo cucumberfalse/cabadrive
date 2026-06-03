@@ -1559,6 +1559,10 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.forbiddenStrictVisualTerms.includes(forbiddenTerm), `strict schema forbids ${forbiddenTerm}`);
   }
+  assert.equal(
+    evidence.strictVisualRulePolicy.forbiddenStrictVisualTermMatching,
+    "case-insensitive canonical term matching across hyphen, space, and underscore separators"
+  );
 });
 
 test("Manual guide source-fidelity checker passes the section registry with Chapter 1 implemented sections", () => {
@@ -1863,6 +1867,46 @@ test("Manual guide source-fidelity checker rejects future infographic broad patc
     assert.match(result.message, /forbidden visual-edit term large-patch|broadMaskPlatePatchStatus must be none/u);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects forbidden strict visual terms with alternate separators", () => {
+  const cases = [
+    {
+      name: "broad-mask-space",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "broad mask over the source background";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-mask"
+    },
+    {
+      name: "approximate-redraw-space",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.visualReviewNotes = ["approximate redraw was used for this strict fixture"];
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term approximate-redraw"
+    },
+    {
+      name: "large-patch-underscore",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.sourceRegionMetadata[0].cleanupScope = "large_patch cleanup";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0] must not record forbidden visual-edit term large-patch"
+    }
+  ];
+
+  for (const testCase of cases) {
+    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-`));
+    try {
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
+      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+      assert.notEqual(failure.status, 0, `checker must fail when strict metadata records ${testCase.name}`);
+      const result = JSON.parse(failure.stderr);
+      assert.equal(result.status, "fail");
+      assert.equal(result.message, testCase.expectedMessage);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
   }
 });
 
