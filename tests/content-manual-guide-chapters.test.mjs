@@ -76,6 +76,41 @@ function sha256Json(value) {
   return createHash("sha256").update(stableStringify(value)).digest("hex");
 }
 
+function resolveSectionContentModulePath(modulePath, moduleRoot = "src/data/manual-sections") {
+  const prefix = "src/data/manual-sections/";
+  if (modulePath.startsWith(prefix)) return join(moduleRoot, modulePath.slice(prefix.length));
+  return modulePath;
+}
+
+function fileSha256IfPresent(path) {
+  if (typeof path !== "string" || path.length === 0 || !existsSync(path)) return null;
+  return sha256File(path);
+}
+
+function visualArtifactHashRecords(value, pathField) {
+  const entries = Array.isArray(value) ? value : value && typeof value === "object" ? [value] : [];
+  return entries.map((entry, index) => ({
+    index,
+    path: entry[pathField],
+    sha256: fileSha256IfPresent(entry[pathField])
+  }));
+}
+
+function legacyBaselineStateFingerprint(section, implementedEvidence, moduleRoot = "src/data/manual-sections") {
+  const modulePath = resolveSectionContentModulePath(section.sectionContentModulePath, moduleRoot);
+  const sectionContentModuleSha256 = fileSha256IfPresent(modulePath);
+  const sourceAssetHashes = visualArtifactHashRecords(implementedEvidence.sourceRegionMetadata, "sourceAssetPath");
+  const localAssetHashes = visualArtifactHashRecords(implementedEvidence.localAssetMetadata, "assetPath");
+  if (sectionContentModuleSha256 === null || [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)) return null;
+  return sha256Json({
+    implementationEvidence: implementedEvidence,
+    sectionContentModulePath: section.sectionContentModulePath,
+    sectionContentModuleSha256,
+    sourceAssetHashes,
+    localAssetHashes
+  });
+}
+
 function writeTempFile(path, contents = "fixture") {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, contents);
@@ -141,18 +176,22 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
     checkerResult: "pass"
   };
   mutateEvidence(section.implementationEvidence);
-  writeTempFile(join(moduleRoot, "ch1-cities-for-people.ts"), "export const ch1CitiesForPeopleSection = { sectionId: \"ch1-cities-for-people\" };\n");
-  writeTempFile(join(moduleRoot, "ch1-sustainable-mobility.ts"), "export const ch1SustainableMobilitySection = { sectionId: \"ch1-sustainable-mobility\" };\n");
+  writeTempFile(join(moduleRoot, "ch1-cities-for-people.ts"), ch1CitiesModuleSource);
+  writeTempFile(join(moduleRoot, "ch1-sustainable-mobility.ts"), ch1SustainableModuleSource);
   writeTempFile(join(moduleRoot, "ch1-pedestrian-priority.ts"), moduleSource);
-  writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), "export const ch1BicycleSection = { sectionId: \"ch1-bicycle\", blocks: [] };\n");
-  writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), "export const ch1PublicTransportSystemSection = { sectionId: \"ch1-public-transport-system\", blocks: [] };\n");
-  writeTempFile(join(moduleRoot, "ch1-shared-trip.ts"), "export const ch1SharedTripSection = { sectionId: \"ch1-shared-trip\", blocks: [] };\n");
+  writeTempFile(join(moduleRoot, "ch1-bicycle.ts"), ch1BicycleModuleSource);
+  writeTempFile(join(moduleRoot, "ch1-public-transport-system.ts"), ch1PublicTransportModuleSource);
+  writeTempFile(join(moduleRoot, "ch1-shared-trip.ts"), ch1SharedTripModuleSource);
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
   fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints = {
     ...fixtureEvidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints,
     "ch1-pedestrian-priority": sha256Json(section.implementationEvidence)
+  };
+  fixtureEvidence.strictVisualRulePolicy.legacyBaselineStateFingerprints = {
+    ...fixtureEvidence.strictVisualRulePolicy.legacyBaselineStateFingerprints,
+    "ch1-pedestrian-priority": legacyBaselineStateFingerprint(section, section.implementationEvidence, moduleRoot)
   };
   writeFileSync(fixtureEvidencePath, JSON.stringify(fixtureEvidence, null, 2));
   fixtureEvidencePaths.set(implementedRegistryPath, fixtureEvidencePath);
@@ -1467,11 +1506,19 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "ch1-shared-trip"
   ]);
   assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...implementedSectionIds].sort());
+  assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...implementedSectionIds].sort());
   for (const id of implementedSectionIds) {
-    const fingerprint = evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
     const section = registry.sections.find((entry) => entry.id === id);
-    assert.match(fingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline fingerprint must be a SHA-256 hash`);
-    assert.equal(fingerprint, sha256Json(section.implementationEvidence), `${id} legacy baseline fingerprint must match current merged evidence`);
+    const evidenceFingerprint = evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints[id];
+    const stateFingerprint = evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints[id];
+    assert.match(evidenceFingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline evidence fingerprint must be a SHA-256 hash`);
+    assert.equal(evidenceFingerprint, sha256Json(section.implementationEvidence), `${id} legacy baseline fingerprint must match current merged evidence`);
+    assert.match(stateFingerprint, /^[a-f0-9]{64}$/u, `${id} legacy baseline state fingerprint must be a SHA-256 hash`);
+    assert.equal(
+      stateFingerprint,
+      legacyBaselineStateFingerprint(section, section.implementationEvidence),
+      `${id} legacy baseline state fingerprint must match current merged module and visual asset bytes`
+    );
   }
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
@@ -1576,6 +1623,46 @@ test("Manual guide source-fidelity checker rejects future Chapter 1 legacy-secti
 
     const failure = runCheckerWithFixture(implementedRegistryPath, "src/data/manual-sections");
     assert.notEqual(failure.status, 0, "checker must fail when a legacy Chapter 1 section changes evidence without strict v3 markers");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects changed legacy Chapter 1 module bytes without strict v3 evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch1-legacy-module-state-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+    );
+    writeFileSync(join(moduleRoot, "ch1-pedestrian-priority.ts"), 'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: ["changed"] };\n');
+
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when legacy module bytes change without strict v3 markers");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects changed legacy Chapter 1 visual asset bytes without strict v3 evidence", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch1-legacy-asset-state-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeImplementedRegistryFixture(
+      tempDir,
+      'export const ch1PedestrianPriority = { sectionId: "ch1-pedestrian-priority", blocks: [] };\n'
+    );
+    const fixtureRegistry = JSON.parse(readFileSync(implementedRegistryPath, "utf8"));
+    const section = fixtureRegistry.sections.find((entry) => entry.id === "ch1-pedestrian-priority");
+    writeFileSync(section.implementationEvidence.localAssetMetadata[0].assetPath, "changed visual asset bytes");
+
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when legacy visual asset bytes change without strict v3 markers");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units");

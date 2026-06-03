@@ -167,9 +167,10 @@ const forbiddenStrictVisualTerms = [
 function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {
   const policy = evidence.strictVisualRulePolicy;
   if (policy?.legacyBaselineSectionIds?.includes(section.id) !== true || !legacyVisualEvidenceSectionIds.has(section.id)) return false;
-  const expectedFingerprint = policy.legacyBaselineEvidenceFingerprints?.[section.id];
-  if (typeof expectedFingerprint !== "string") return false;
-  return sha256Json(implementedEvidence) === expectedFingerprint;
+  const expectedEvidenceFingerprint = policy.legacyBaselineEvidenceFingerprints?.[section.id];
+  const expectedStateFingerprint = policy.legacyBaselineStateFingerprints?.[section.id];
+  if (typeof expectedEvidenceFingerprint !== "string" || typeof expectedStateFingerprint !== "string") return false;
+  return sha256Json(implementedEvidence) === expectedEvidenceFingerprint && legacyBaselineStateFingerprint(section, implementedEvidence) === expectedStateFingerprint;
 }
 
 function isStrictVisualEvidenceRequired(section, evidence, implementedEvidence) {
@@ -216,6 +217,35 @@ function validateFileSha256(path, expectedSha256, messagePrefix, details = {}) {
     path,
     actualSha256,
     expectedSha256
+  });
+}
+
+function fileSha256IfPresent(path) {
+  if (typeof path !== "string" || path.length === 0 || !existsSync(path)) return null;
+  return sha256File(path);
+}
+
+function visualArtifactHashRecords(value, pathField) {
+  const entries = Array.isArray(value) ? value : isObject(value) ? [value] : [];
+  return entries.map((entry, index) => ({
+    index,
+    path: entry[pathField],
+    sha256: fileSha256IfPresent(entry[pathField])
+  }));
+}
+
+function legacyBaselineStateFingerprint(section, implementedEvidence) {
+  const modulePath = resolveSectionContentModulePath(section.sectionContentModulePath);
+  const sectionContentModuleSha256 = fileSha256IfPresent(modulePath);
+  const sourceAssetHashes = visualArtifactHashRecords(implementedEvidence.sourceRegionMetadata, "sourceAssetPath");
+  const localAssetHashes = visualArtifactHashRecords(implementedEvidence.localAssetMetadata, "assetPath");
+  if (sectionContentModuleSha256 === null || [...sourceAssetHashes, ...localAssetHashes].some((entry) => entry.sha256 === null)) return null;
+  return sha256Json({
+    implementationEvidence: implementedEvidence,
+    sectionContentModulePath: section.sectionContentModulePath,
+    sectionContentModuleSha256,
+    sourceAssetHashes,
+    localAssetHashes
   });
 }
 
