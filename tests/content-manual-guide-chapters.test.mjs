@@ -2113,6 +2113,69 @@ test("Manual guide source-fidelity checker rejects future infographic transferre
   }
 });
 
+test("Manual guide source-fidelity checker rejects strict non-protected categories using source-image Spanish exceptions", () => {
+  const cases = [
+    {
+      name: "native-dom-text-only",
+      assetCategory: "native-dom-text-only",
+      assetKind: "high-resolution-original-source-native-dom-text"
+    },
+    {
+      name: "reference-only-not-runtime",
+      assetCategory: "reference-only-not-runtime",
+      assetKind: "high-resolution-original-source-reference-only"
+    }
+  ];
+  for (const testCase of cases) {
+    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-visible-spanish-`));
+    try {
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+        const nonProtectedAsset = implementationEvidence.localAssetMetadata[0];
+        nonProtectedAsset.assetKind = testCase.assetKind;
+        nonProtectedAsset.assetCategory = testCase.assetCategory;
+        nonProtectedAsset.containsText = true;
+        nonProtectedAsset.visibleSpanish = true;
+        nonProtectedAsset.sourceImageException = {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: nonProtectedAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
+            },
+            {
+              assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
+            }
+          ]
+        };
+      });
+      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+      assert.notEqual(failure.status, 0, `checker must fail when strict ${testCase.assetCategory} keeps visible Spanish`);
+      const result = JSON.parse(failure.stderr);
+      assert.equal(result.status, "fail");
+      assert.equal(
+        result.message,
+        "ch1-pedestrian-priority localAssetMetadata[0].visibleSpanish=true requires an explicit source-image-only exception"
+      );
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
+  }
+});
+
 test("Manual guide source-fidelity checker rejects forbidden strict visual terms with alternate separators", () => {
   const cases = [
     {

@@ -567,10 +567,11 @@ function validateImplementedSection(section, evidence, id) {
   validateObjectOrArray(implementedEvidence.localAssetMetadata, localAssetMetadataFields, `${id} localAssetMetadata`, (entry, label) => {
     assertLocalPathExists(entry.assetPath, `${label}.assetPath`, entry);
     if (entry.visibleSpanish === false) return;
+    const allowsVisibleSpanish = validateStrictEvidence
+      ? isStrictProtectedSourceAsIsException(entry)
+      : isOfficialTrafficSignSourceAsIsException(entry) || isOriginalSourceImageVisibleTextException(entry);
     assertCondition(
-      isOfficialTrafficSignSourceAsIsException(entry) ||
-        isOriginalSourceImageVisibleTextException(entry) ||
-        (validateStrictEvidence && isStrictProtectedSourceAsIsException(entry)),
+      allowsVisibleSpanish,
       `${label}.visibleSpanish=true requires an explicit source-image-only exception`,
       entry
     );
