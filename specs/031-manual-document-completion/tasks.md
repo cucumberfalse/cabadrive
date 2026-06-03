@@ -93,7 +93,7 @@ For each chapter-equivalent content PR:
 | Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, https://github.com/cucumberfalse/cabadrive/pull/186 | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | original audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; audit content/effective head and post-validation evidence-only commits are recorded by the latest PR #186 `Effective content head`, `Final-validation evidence-only commit`, and `Current-PR-head read-only guard` bullets under `## Final Validation Evidence`; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | audit-only PR opened ready; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
-| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR pending | `9750b1578627c531146226ebe0e9673aadfef67b` | pending until commit/PR | implemented in this slice; local verification in progress | yes |
+| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR #187, https://github.com/cucumberfalse/cabadrive/pull/187 | `9750b1578627c531146226ebe0e9673aadfef67b` | content head before process-memory repair `60f25d7b48abefc1cfa57c1aa67c028abb2e0d1c`; current follow-up head reported by Implementation Agent after repair push | open ready PR; local verification passed; CI pending or rerunning | yes |
 | Chapter 3 content | pages `57-88` | pending | pending | pending | pending | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
 | Chapter 5 content | pages `98-103` | pending | pending | pending | pending | yes |
@@ -110,7 +110,7 @@ For each chapter-equivalent content PR:
 | Front matter | `1-13` | Separate support PR; include learner-useful presentation/glossary; omit book-only title/index/category pages with evidence | pending |
 | Introduction | `14-20` | Already implemented; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | audit complete; no correction needed |
 | Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | merged and audited; no correction needed |
-| Chapter 2 | `43-56` | One chapter PR covering `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring`; page `43` divider skipped; page `56` closing slogan omitted as book-only | implemented in branch `codex/031-chapter-2`; PR pending |
+| Chapter 2 | `43-56` | One chapter PR covering `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring`; page `43` divider skipped; page `56` closing slogan omitted as book-only | implemented in branch `codex/031-chapter-2`; ready PR #187 open at https://github.com/cucumberfalse/cabadrive/pull/187 |
 | Chapter 3 | `57-88` | One chapter PR | pending |
 | Chapter 4 | `89-97` | One chapter PR | pending |
 | Chapter 5 | `98-103` | One chapter PR | pending |
@@ -168,7 +168,7 @@ For each chapter-equivalent content PR:
 - No unresolved known issues.
 - Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Owner decision: accepted no action for this prerequisite scope. Disposition: not applicable.
 - Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
-- Chapter 2 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 2 content and requires no action in this slice.
+- Chapter 2 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 2 content and requires no action in this slice. Owner decision: accepted no action for PR #187. Disposition: not applicable.
 
 ## Chapter 2 Implementation Verification Evidence
 
@@ -358,6 +358,7 @@ For each chapter-equivalent content PR:
 
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
 - No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition. Architect disposition: disposed; no action needed for PR #186 audit-only scope.
+- No unresolved Implementation Agent feedback for the Chapter 2 content slice in PR #187. The Docker base-image metadata stall is recorded as a known verification blocker/disposition-not-product-feedback item, not product or architecture feedback. No Architect disposition is needed beyond the known-issue no-action disposition if applicable.
 
 ## Introduction And Chapter 1 Visual Audit Evidence
 
