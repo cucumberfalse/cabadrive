@@ -1543,8 +1543,19 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "cleanupScope=none-source-as-is",
     "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
   ]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.infographicRequiredFields, [
+    "assetCategory=source-transferred-infographic",
+    "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
+    "infographicTransfer.sourceImageTransfer",
+    "infographicTransfer.noApproximateRedraw",
+    "infographicTransfer.broadMaskPlatePatchStatus=none",
+    "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+    "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
+    "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
+    "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
     "diagramTransfer.sourceDiagramTransfer",
     "diagramTransfer.noApproximateRedraw",
     "diagramTransfer.noReconstruction",
@@ -1725,6 +1736,50 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-transferred diagrams with visible Spanish", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-diagram-visible-spanish-"));
+  try {
+    const { implementedRegistryPath, moduleRoot } = writeChapter2LegalResponsibilityFixture(tempDir, {
+      strict: true,
+      mutateEvidence: (implementationEvidence) => {
+        const diagramAsset = implementationEvidence.localAssetMetadata[1];
+        diagramAsset.assetKind = "high-resolution-original-source-diagram";
+        diagramAsset.containsText = true;
+        diagramAsset.visibleSpanish = true;
+        diagramAsset.sourceImageException = {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true
+        };
+        implementationEvidence.visibleSpanishStatus = {
+          status: "source_image_exceptions_only",
+          nonSignVisibleSpanishStatus: "source-image-only",
+          exceptions: [
+            {
+              assetPath: diagramAsset.assetPath,
+              kind: "source-image-original-visible-text",
+              visibleSpanishScope: "source-image-only",
+              sourceAsIs: true,
+              russianExplanationOutsideImage: true
+            }
+          ]
+        };
+      }
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred diagram keeps visible Spanish");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].visibleSpanish must be false for transferred diagram artwork"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2005,6 +2060,54 @@ test("Manual guide source-fidelity checker rejects future infographic broad patc
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.match(result.message, /forbidden visual-edit term large-patch|broadMaskPlatePatchStatus must be none/u);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects future infographic transferred artwork with visible Spanish", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-visible-spanish-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const infographicAsset = implementationEvidence.localAssetMetadata[0];
+      infographicAsset.assetKind = "high-resolution-original-source-infographic";
+      infographicAsset.containsText = true;
+      infographicAsset.visibleSpanish = true;
+      infographicAsset.sourceImageException = {
+        kind: "source-image-original-visible-text",
+        visibleSpanishScope: "source-image-only",
+        sourceAsIs: true,
+        russianExplanationOutsideImage: true
+      };
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: infographicAsset.assetPath,
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
+          {
+            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred infographic keeps visible Spanish");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].visibleSpanish must be false for transferred infographic artwork"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

@@ -333,6 +333,7 @@ function validateProtectedSourceAsIsAsset(asset, messagePrefix) {
 }
 
 function validateTransferredInfographicAsset(asset, messagePrefix) {
+  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
   assertRequiredFields(
     asset.infographicTransfer,
     ["sourceImageTransfer", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
@@ -361,6 +362,7 @@ function validateTransferredInfographicAsset(asset, messagePrefix) {
 }
 
 function validateTransferredDiagramAsset(asset, messagePrefix) {
+  assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred diagram artwork`, asset);
   assertRequiredFields(
     asset.diagramTransfer,
     ["sourceDiagramTransfer", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],

@@ -241,6 +241,7 @@
     ],
     "infographicRequiredFields": [
       "assetCategory=source-transferred-infographic",
+      "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
       "infographicTransfer.sourceImageTransfer",
       "infographicTransfer.noApproximateRedraw",
       "infographicTransfer.broadMaskPlatePatchStatus=none",
@@ -250,6 +251,7 @@
     ],
     "diagramRequiredFields": [
       "assetCategory=source-transferred-diagram",
+      "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
       "diagramTransfer.sourceDiagramTransfer",
       "diagramTransfer.noApproximateRedraw",
       "diagramTransfer.noReconstruction",
