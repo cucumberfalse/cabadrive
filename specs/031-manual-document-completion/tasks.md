@@ -34,10 +34,10 @@
 
 ## Existing Content Audit / Correction Slices
 
-- [ ] T022 Orchestrator assigns Introduction and Chapter 1 visual-rule audit PR/task slice from latest verified `main`; no unrelated Chapter 2+ content is included.
-- [ ] T023 Audit Introduction pages `14-20`, including named guideline fixtures for pages `15`, `17`, `18`, and `19`.
-- [ ] T024 Audit Chapter 1 pages `21-42`, including all six merged Chapter 1 sections and their runtime assets/evidence.
-- [ ] T025 Audit records no-fix evidence or creates explicit correction tasks for every stricter-rule gap.
+- [x] T022 Orchestrator assigns Introduction and Chapter 1 visual-rule audit PR/task slice from latest verified `main`; no unrelated Chapter 2+ content is included.
+- [x] T023 Audit Introduction pages `14-20`, including named guideline fixtures for pages `15`, `17`, `18`, and `19`.
+- [x] T024 Audit Chapter 1 pages `21-42`, including all six merged Chapter 1 sections and their runtime assets/evidence.
+- [x] T025 Audit records no-fix evidence or creates explicit correction tasks for every stricter-rule gap.
 - [ ] T026 If Introduction correction is needed, Orchestrator assigns scoped correction PR(s) and preserves existing routes/hashes.
 - [ ] T027 If Chapter 1 correction is needed, Orchestrator assigns scoped correction PR(s) by affected section/chapter; do not mix fixes into unrelated future chapter content.
 - [ ] T028 Correction PRs replace noncompliant visuals with high-resolution source transfers, keep photos/signs/markings source-as-is, use glyph-level infographic cleanup only, keep Russian explanation outside protected images, and record evidence.
@@ -90,9 +90,9 @@ For each chapter-equivalent content PR:
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | latest effective content candidate includes strict transferred infographic/diagram source-linkage repair, strict source-as-is provenance byte/dimension repair, broad cleanup forbidden-term repair, earlier strict crop/extraction dimension checker/test/evidence-policy repair, and process-memory repairs; prior final validation for earlier effective content heads is stale until fresh role-owned validation records the current head | prerequisite-only visual-rule PR; final validation status is tracked by the latest role-owned validation sections and `Final Validation Evidence` before merge-readiness | yes |
-| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
-| Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
+| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
+| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, https://github.com/cucumberfalse/cabadrive/pull/186 | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | original audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; audit content/effective head and post-validation evidence-only commits are recorded by the latest PR #186 `Effective content head`, `Final-validation evidence-only commit`, and `Current-PR-head read-only guard` bullets under `## Final Validation Evidence`; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | audit-only PR opened ready; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
+| Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
 | Chapter 3 content | pages `57-88` | pending | pending | pending | pending | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
@@ -108,8 +108,8 @@ For each chapter-equivalent content PR:
 | Unit | Source pages | Disposition | Status |
 | --- | ---: | --- | --- |
 | Front matter | `1-13` | Separate support PR; include learner-useful presentation/glossary; omit book-only title/index/category pages with evidence | pending |
-| Introduction | `14-20` | Already implemented; stricter visual audit required | pending audit |
-| Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit required | merged, pending audit |
+| Introduction | `14-20` | Already implemented; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | audit complete; no correction needed |
+| Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | merged and audited; no correction needed |
 | Chapter 2 | `43-56` | One chapter PR, next likely | pending |
 | Chapter 3 | `57-88` | One chapter PR | pending |
 | Chapter 4 | `89-97` | One chapter PR | pending |
@@ -143,17 +143,23 @@ For each chapter-equivalent content PR:
 - Photos, traffic-sign images, and road-marking images must remain source-as-is with no translation, relabeling, redraw, recolor, cleanup, reconstruction, retouching, masking, inpainting, or meaningful-content removal; Russian explanation belongs outside protected images.
 - Infographics and diagrams must be transferred as high-quality source images rather than approximate redraws; Spanish cleanup is glyph/letter-level only, with broad patches/masks/plates forbidden and Russian overlay text selectable where feasible.
 - Legacy Chapter 1 baseline evidence remains allowed only for unchanged merged baseline state until the planned audit/correction slice; new or changed future manual units require strict v3 evidence.
+- Implementation decision, Introduction/Chapter 1 visual audit `2026-06-03T07:32:00Z`: audit-only slice assigned in worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, latest-main base `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` from merged PR #185. Scope remained process-memory audit evidence only: no Chapter 2+ content, front matter, runtime manual content, source assets, durable docs, tests, or checker code changed.
+- Audit decision: Introduction pages `14-20` and Chapter 1 pages `21-42` satisfy the stricter visual-rule requirements from PR #185 based on existing source-fidelity evidence, focused tests, and read-only asset/hash/dimension inspection. No Introduction or Chapter 1 correction PR is needed from this audit.
+- Process-memory repair decision, PR #186: the reusable per-chapter implementation checklist remains pending because this PR is audit-only; audit completion is recorded in T022-T025 and audit evidence sections.
 
 ## Dead Ends
 
 - Resolved: strict fixture failures exposed legacy visible-Spanish ordering, source-integrity isolation, Chapter 2 strict fixture category setup, and temp-path false positives during forbidden-term matching; the checker/tests now cover those cases.
 - Resolved: review repairs closed legacy-registry exemption, strict diagram transfer proof, strict hash/provenance byte verification, legacy baseline-state fingerprinting, forbidden-term/asset-kind scanning, visible-Spanish exception gating, transferred-artwork Spanish rejection, and strict image byte-dimension validation.
 - No unresolved dead ends remain for PR #185 process-memory finalization repair.
+- No audit dead ends: the Introduction/Chapter 1 audit did not require PDF re-export or runtime changes because existing local source-region artifacts, source page renders, evidence metadata, and focused fixture tests were sufficient to verify source-fidelity status.
+- Resolved audit verification setup: first `pnpm run validate:content` attempt failed because this fresh worktree lacked `node_modules` and `pdf-parse`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies, and all verification commands passed on rerun.
 
 ## Known Issues
 
 - No unresolved known issues.
-- Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Disposition: not applicable.
+- Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Owner decision: accepted no action for this prerequisite scope. Disposition: not applicable.
+- Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
 
 ## Final Validation Evidence
 
@@ -191,6 +197,70 @@ For each chapter-equivalent content PR:
 - Final-validation evidence-only commit: ac4a5fd87ea4b3161b35a7fa4d0a0e1a90b9eac2 recorded Architect validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in tasks.md.
 - Final-validation evidence-only commit: f2a4047e3344e14b21bc740a015971079869b6ad recorded Analyst validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in feature-request.md.
 - Current-PR-head read-only guard: Orchestrator verified current PR head f2a4047e3344e14b21bc740a015971079869b6ad against effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
+- Effective content head: ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
+- Architect validation: passed at 2026-06-03T08:12:17Z for effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
+- Architect validated effective content head: ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
+- Architect return count: 0
+- Architect validation: PR #186 audit-only no-fix scope validated with no Chapter 2+ content or runtime/content/assets changes.
+- Architect validation: required checks passed on ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+- Architect validation: Review Agent no-findings review 4416640043 and AI Review no-major-issues summary apply to ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57.
+- Analyst feedback Architect disposition: none for PR #186 audit-only scope.
+- Limit escalation: none
+- Final-validation evidence-only commit: 225b2db7d5938a57cd860f3f4a3bc5b3fcdd7d52 recorded Architect validation evidence for effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 in tasks.md.
+- Final-validation evidence-only commit: 59ebb2b1de23a518c7589f3e2bcb8a6c3083c55b recorded Analyst validation evidence for effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head 59ebb2b1de23a518c7589f3e2bcb8a6c3083c55b against effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit remains final-validation process evidence for the same effective content head.
+- Current-PR-head read-only guard: Orchestrator verified reviewed PR branch head b872b965b569a94f2de70db25bbb56e2f20f07b8 against effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57; post-effective changes through b872b965b569a94f2de70db25bbb56e2f20f07b8 were final-validation evidence only in tasks.md and feature-request.md, and this repair commit only refreshes current-head guard evidence for the same effective content head.
+- Effective content head: 7f2bf99d1e85a4b338e9483b391a6569610ca29a
+- Architect validation: passed at 2026-06-03T08:42:00Z for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+- Architect validated effective content head: 7f2bf99d1e85a4b338e9483b391a6569610ca29a
+- Architect return count: 0
+- Architect validation: prior Architect and Analyst validations for ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 are stale after process-memory row repair; this validation supersedes them for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+- Analyst feedback Architect disposition: none requiring action for PR #186 audit-only scope.
+- Architect validation: owner decision for Vite large chunk warning is accepted no action for PR #186; the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
+- Architect validation: PR #186 remains audit-only for Introduction pages 14-20 and Chapter 1 pages 21-42, with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+- Limit escalation: none
+- Analyst validated effective content head: 7f2bf99d1e85a4b338e9483b391a6569610ca29a
+- Analyst return count: 0
+- Analyst feedback Architect disposition: none for PR #186 audit-only scope.
+- Implementation Agent feedback Architect disposition: none; no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+- Known issue owner decision: Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #186 audit-only scope, accepted with no action for this slice.
+- Final-validation evidence-only commit: 8c12015e596604a3e0bb7eb94a907ccd409804c5 recorded Architect validation evidence for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a in tasks.md.
+- Final-validation evidence-only commit: a0178f6d9e98632c06d3b62665214d1bee61b98a recorded Analyst validation evidence for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head a0178f6d9e98632c06d3b62665214d1bee61b98a against effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
+- Current-PR-head read-only guard: Orchestrator verified current PR head e16eeb86b965e4d393479ca142cb3d46602206b0 against effective content head e16eeb86b965e4d393479ca142cb3d46602206b0; post-effective changes from that head through this guard-evidence commit are final-validation process evidence only in tasks.md.
+- Limit escalation: none
+- Effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
+- Architect validation: passed at 2026-06-03T09:08:06Z for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0.
+- Architect validated effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
+- Architect return count: 0
+- Architect validation: prior Architect and Analyst validations for 7f2bf99d1e85a4b338e9483b391a6569610ca29a are superseded after Cycle PR Set row stabilization; this validation supersedes them for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at effective content head e16eeb86b965e4d393479ca142cb3d46602206b0.
+- Analyst feedback Architect disposition: none requiring action for PR #186 audit-only scope.
+- Architect validation: owner decision for Vite large chunk warning is accepted no action for PR #186; the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
+- Architect validation: PR #186 remains audit-only for Introduction pages 14-20 and Chapter 1 pages 21-42, with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+- Architect validation: checks context recorded for e16eeb86b965e4d393479ca142cb3d46602206b0 and guard evidence: baseline-checks pass, docker-validation pass, guard pass, osv-scan pass; AI Review finding is about e16 role-validation and guard ordering evidence and is resolved by role validation plus later Analyst and guard evidence rather than product or content change.
+- Analyst validated effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
+- Analyst return count: 0
+- Final-validation evidence-only commit: 156da79b608d00567f0c889bdf4af1087b469c32 recorded current-head guard evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in tasks.md.
+- Final-validation evidence-only commit: dcdf0b697b420a442ab8397c23c97b675023f28a recorded Architect validation evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in tasks.md.
+- Final-validation evidence-only commit: ca1b438df0b528f579941c20f327e4b6860b3b30 recorded Analyst validation evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head ca1b438df0b528f579941c20f327e4b6860b3b30 against effective content head e16eeb86b965e4d393479ca142cb3d46602206b0; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
+- Limit escalation: none
+- Effective content head: dd22d1f241300fa803050200a2bb412642aec165
+- Architect validation: passed at 2026-06-03T09:22:48Z for effective content head dd22d1f241300fa803050200a2bb412642aec165.
+- Architect validated effective content head: dd22d1f241300fa803050200a2bb412642aec165
+- Architect return count: 0
+- Architect validation: prior Architect validation for e16eeb86b965e4d393479ca142cb3d46602206b0 is superseded after finalizer-readable disposition repair; this validation supersedes it for effective content head dd22d1f241300fa803050200a2bb412642aec165.
+- Architect validation: Implementation Agent feedback disposition is none; no open Implementation Agent feedback remains for PR #186 audit-only scope at dd22d1f241300fa803050200a2bb412642aec165.
+- Analyst feedback Architect disposition: none requiring action for PR #186 audit-only scope.
+- Architect validation: Known Issues section records no open known issues; Vite warning and audit known-issue entries are pre-existing, nonfatal, unrelated to PR #186 audit-only scope, accepted no action, and disposition not applicable for this slice.
+- Architect validation: PR #186 remains audit-only for Introduction pages 14-20 and Chapter 1 pages 21-42, with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+- Final-validation evidence-only commit: 3d0beb4d9bcbb67ab26b0bf46c4302a1605e0456 recorded Architect validation evidence for effective content head dd22d1f241300fa803050200a2bb412642aec165 in tasks.md.
+- Final-validation evidence-only commit: 6e9b3f9326b27fc428538abdb6a454abe340615e recorded Analyst validation evidence for effective content head dd22d1f241300fa803050200a2bb412642aec165 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head 6e9b3f9326b27fc428538abdb6a454abe340615e against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
+- Current-PR-head read-only guard: Orchestrator verified current PR head bb33ffc129f04de17d31c2968e51639cc0ff9cb6 against effective content head dd22d1f241300fa803050200a2bb412642aec165; post-effective changes through bb33ffc129f04de17d31c2968e51639cc0ff9cb6 were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -263,6 +333,30 @@ For each chapter-equivalent content PR:
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
+- No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition. Architect disposition: disposed; no action needed for PR #186 audit-only scope.
+
+## Introduction And Chapter 1 Visual Audit Evidence
+
+- Assignment evidence: Implementation Agent audit-only slice, worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, base `origin/main` at `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c`, PR pending until opened.
+- PR evidence: ready PR #186 opened at https://github.com/cucumberfalse/cabadrive/pull/186 from branch `codex/031-intro-ch1-visual-audit` to `main` after audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; this follow-up process-memory update records the PR URL.
+- Baseline status: `git status --short --branch` returned `## codex/031-intro-ch1-visual-audit...origin/main`; no dirty files before audit evidence edits.
+- Source inputs inspected: `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, `interactive-guide/section-registry.chapters-1-2.json`, local source page renders under `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/`, `src/data/pandemiaVialSection.ts`, `src/data/manualGuide.ts`, `src/data/manual-sections/*.ts`, and `docs_project/project/frontend/manual-conversion-guidelines.md`.
+- Introduction audit scope: pages `14-20`, covering route fixtures `#pandemia-vial`, `#intro-enfoque-etico`, `#intro-accidente-incidente`, and `#intro-plan-seguridad-vial`; named fixture pages `15`, `17`, `18`, and `19` were checked against durable guideline anchors.
+- Introduction audit outcome: no correction needed. Existing focused evidence records page 15 as a native Russian article shell with fixed source-faithful infographic artwork and original crops; page 17 risk-factor pictograms are high-DPI padded source crops and the decorative recommendation icon is omitted; page 18 uses the complete 3720x1560 high-DPI cleaned source crop with transparent DOM Russian labels and no broad masks/plates/patches; page 19 uses high-DPI padded source pictogram crops with aligned/selectable Russian DOM text; the page 20 child-seat photo uses a source crop with Russian quote/explanation outside the image.
+- Chapter 1 audit scope: pages `21-42`, including all six merged sections `ch1-cities-for-people`, `ch1-sustainable-mobility`, `ch1-pedestrian-priority`, `ch1-bicycle`, `ch1-public-transport-system`, and `ch1-shared-trip`.
+- Chapter 1 audit outcome: no correction needed. Read-only metadata review checked 34 source-region artifacts and 38 runtime image assets for Chapter 1 with no missing files, hash mismatches, or dimension mismatches. The 15 visible-Spanish runtime cases are all recorded as source-image or official-sign source-as-is exceptions with Russian explanation outside protected images.
+- Protected visual audit result: no translated, relabeled, redrawn, recolored, cleaned, reconstructed, retouched, masked, inpainted, or meaningfully-content-removed photo, traffic-sign, or road-marking runtime asset was found in the audited Introduction/Chapter 1 evidence.
+- Infographic/diagram audit result: no correction needed. Audited infographics/diagrams use source crops, high-DPI source artwork, or source-derived non-text crops with selectable Russian DOM/SVG labels; focused tests reject generic replacements, broad masks, old partial page 18 reconstructions, source-mask overlays, full-page rasters, and visible Spanish outside explicit source-as-is exceptions.
+- Audit read-only asset verification: a Node metadata audit reported Chapter 1 implemented sections `ch1-cities-for-people`, `ch1-sustainable-mobility`, `ch1-pedestrian-priority`, `ch1-bicycle`, `ch1-public-transport-system`, and `ch1-shared-trip`; `sourceRegionArtifactsChecked: 34`; `runtimeImageAssetsChecked: 38`; `visibleSpanishSourceImageExceptions: 15`; `mismatches: []`. The same audit reported `localImageAssetsChecked: 17` for Introduction and high-DPI fixture assets including three page 17 risk icons at `512x512`, the page 18 consequence diagram at `3720x1560`, and four page 19 axis icons at `192x192`, with `mismatches: []`.
+- Focused verification, `node scripts/manual-guide-source-fidelity.mjs`: passed; output reported `status: pass`, `sectionsChecked: 10`, `pendingSections: 4`, `implementedSections: 6`, skipped divider pages `21` and `43`, omitted book-only page `56`, and `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- Focused verification, `node --test tests/content-manual-guide-chapters.test.mjs`: passed; `64` tests passed, `0` failed. Coverage includes all six Chapter 1 sections, source-fidelity checker pass, unchanged legacy baseline allowance, strict future-unit requirements, source-as-is exceptions, transferred artwork source linkage, forbidden visual-edit terms, and forbidden full-page assets.
+- Focused verification, `node --test tests/content-pandemia-vial-section.test.mjs`: passed; `14` tests passed, `0` failed. Coverage includes Introduction routes, pages 15/17/18/19 named fixture guards, local cleaned visual assets, source-fidelity data rejecting generic replacements, no full-page raster/source mask, no runtime PDF/PDF.js/iframe/object/embed, selectable/adaptive Russian DOM text, and responsive page 19 work-axis behavior.
+- `pnpm install --frozen-lockfile`: passed after the first content-validation attempt reported missing `node_modules`; lockfile was up to date and 77 packages were installed into this assigned worktree.
+- `pnpm run validate:content`: first attempt failed due missing worktree dependencies (`pdf-parse` not installed); rerun after `pnpm install --frozen-lockfile` passed, including difficulty labels, learning images, 200/200 manual pages, 460 category B fallback questions, 276 local image references, and manual-guide checker `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- `pnpm run test`: passed; `373` tests passed, `0` failed.
+- `pnpm run build`: passed; content validation, asset sync, Vite production build, and service-worker generation completed. The existing non-fatal Vite large chunk warning remained.
+- `pnpm run preflight`: passed; included `check-feature-memory`, `check:repo`, `validate:content`, `test` (`373` passed), `build`, and Playwright e2e (`74` passed).
+- Docker local runtime validation: not applicable for this audit-only PR because only process-memory audit evidence changed; no runtime behavior, source assets, Docker files, or build/runtime contract files changed. CI docker-validation remains a later PR gate.
 
 ## Final Architect Validation - PR #185 Visual-Rule Prerequisite
 
@@ -479,6 +573,154 @@ Architect gaps: none.
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
 
 Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T08:12:17Z
+
+Architect validated effective content head: ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #186 audit-only scope at ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57.
+
+Architect validation evidence: PR #186 is an audit-only process-memory slice for Introduction pages 14-20 and Chapter 1 pages 21-42, and records a no-fix audit outcome with no correction PR needed from this audit.
+
+Architect validation evidence: PR #186 scope remains limited to specs/031-manual-document-completion/tasks.md process memory; no Chapter 2+ content, runtime manual changes, assets, code, or docs outside feature memory are included.
+
+Architect validation evidence: Audit completion is recorded in T022 through T025, while reusable per-chapter content checklist T049 through T063 remains reserved for future chapter-equivalent PR work.
+
+Architect validation evidence: The audit validates the strict visual requirements for the already-merged Introduction and Chapter 1 baseline: x5 or equivalent high-resolution evidence, source-as-is no-modification handling for photos, traffic signs, and road markings, and source-image infographic/diagram transfer with glyph-level Spanish cleanup only and Russian overlay outside protected source imagery where applicable.
+
+Architect validation evidence: Local process memory records Introduction pages 14-20 and Chapter 1 pages 21-42 audit coverage, including named Introduction fixtures pages 15, 17, 18, and 19, all six merged Chapter 1 sections, 34 Chapter 1 source-region artifacts, 38 Chapter 1 runtime image assets, 17 Introduction local image assets, no hash or dimension mismatches, and no stricter-rule gaps requiring correction.
+
+Architect validation evidence: Verification evidence recorded for the audit includes manual-guide checker pass, focused node tests pass, validate:content pass, pnpm test pass, build pass with the known nonfatal Vite large chunk warning, preflight pass with 74 Playwright tests, check-feature-memory pass, and git diff --check pass.
+
+Architect validation evidence: Required checks passed on ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57, review id 4416640043; AI Review latest bot summary reported no major issues.
+
+Architect validation evidence: PR #186 is open, not draft, and mergeable by read-only GitHub state; old review-thread cleanup remains Orchestrator-owned and outside Architect validation.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice at base 3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c and effective content head ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T08:42:00Z
+
+Architect validated effective content head: 7f2bf99d1e85a4b338e9483b391a6569610ca29a
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #186 audit-only scope at 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+
+Architect validation evidence: PR #186 remains audit-only process memory for Introduction pages 14-20 and Chapter 1 pages 21-42, recording a no-fix audit outcome with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+
+Architect validation evidence: The process-memory row repair after ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57 made earlier role validations stale for finalizer purposes; this validation supersedes them for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+
+Architect validation evidence: Audit completion remains recorded in T022 through T025; reusable per-chapter content checklist T049 through T063 remains reserved for future chapter-equivalent PR work.
+
+Architect validation evidence: The audit validates the strict visual requirements for the already-merged Introduction and Chapter 1 baseline: x5 or equivalent high-resolution evidence, source-as-is no-modification handling for photos, traffic signs, and road markings, and source-image infographic or diagram transfer with glyph-level Spanish cleanup only and Russian overlay outside protected source imagery where applicable.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #186 audit-only scope at 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+
+Architect validation evidence: Analyst feedback Architect disposition is none requiring action for PR #186 audit-only scope.
+
+Architect validation evidence: Owner decision for the Vite large chunk warning is accepted no action for PR #186; the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice at base 3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c and effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at 7f2bf99d1e85a4b338e9483b391a6569610ca29a.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #186 because it is pre-existing, nonfatal, and unrelated to this audit-only slice.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T09:08:06Z
+
+Architect validated effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #186 audit-only scope at e16eeb86b965e4d393479ca142cb3d46602206b0.
+
+Architect validation evidence: PR #186 remains audit-only process memory for Introduction pages 14-20 and Chapter 1 pages 21-42, recording a no-fix audit outcome with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+
+Architect validation evidence: Cycle PR Set row stabilization in e16eeb86b965e4d393479ca142cb3d46602206b0 made earlier role validations for 7f2bf99d1e85a4b338e9483b391a6569610ca29a stale for finalizer purposes; this validation supersedes them for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0.
+
+Architect validation evidence: Audit completion remains recorded in T022 through T025; reusable per-chapter content checklist T049 through T063 remains reserved for future chapter-equivalent PR work.
+
+Architect validation evidence: The audit validates the strict visual requirements for the already-merged Introduction and Chapter 1 baseline: x5 or equivalent high-resolution evidence, source-as-is no-modification handling for photos, traffic signs, and road markings, and source-image infographic or diagram transfer with glyph-level Spanish cleanup only and Russian overlay outside protected source imagery where applicable.
+
+Architect validation evidence: No unresolved Implementation Agent feedback remains for PR #186 audit-only scope at e16eeb86b965e4d393479ca142cb3d46602206b0.
+
+Architect validation evidence: Analyst feedback Architect disposition is none requiring action for PR #186 audit-only scope.
+
+Architect validation evidence: Owner decision for the Vite large chunk warning is accepted no action for PR #186; the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
+
+Architect validation evidence: Checks context is recorded for e16eeb86b965e4d393479ca142cb3d46602206b0 and guard evidence: baseline-checks passed, docker-validation passed, guard passed, and osv-scan passed; AI Review evidence request concerns e16 role-validation and guard ordering evidence and is resolved through role validation plus later Analyst and guard evidence rather than product or content change.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice at base 3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c and effective content head e16eeb86b965e4d393479ca142cb3d46602206b0.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #186 audit-only scope at e16eeb86b965e4d393479ca142cb3d46602206b0.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #186 because it is pre-existing, nonfatal, and unrelated to this audit-only slice.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T09:22:48Z
+
+Architect validated effective content head: dd22d1f241300fa803050200a2bb412642aec165
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #186 audit-only scope at dd22d1f241300fa803050200a2bb412642aec165.
+
+Architect validation evidence: PR #186 remains audit-only process memory for Introduction pages 14-20 and Chapter 1 pages 21-42, recording a no-fix audit outcome with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
+
+Architect validation evidence: Finalizer-readable disposition repair in dd22d1f241300fa803050200a2bb412642aec165 made earlier role validation for e16eeb86b965e4d393479ca142cb3d46602206b0 superseded for finalizer purposes; this validation supersedes it for effective content head dd22d1f241300fa803050200a2bb412642aec165.
+
+Architect validation evidence: Implementation Agent Feedback section records no open Implementation Agent feedback for the Introduction and Chapter 1 visual audit slice, with Architect disposition disposed and no action needed for PR #186 audit-only scope.
+
+Architect validation evidence: Known Issues section records no open known issues; the Vite warning and audit known-issue entries have owner decision accepted no action, disposition not applicable for PR #186 audit-only scope, and are pre-existing, nonfatal, and unrelated to this audit-only slice.
+
+Architect validation evidence: Analyst feedback Architect disposition is none requiring action for PR #186 audit-only scope.
+
+Architect validation evidence: Audit completion remains recorded in T022 through T025; reusable per-chapter content checklist T049 through T063 remains reserved for future chapter-equivalent PR work.
+
+Architect validation evidence: The audit validates the strict visual requirements for the already-merged Introduction and Chapter 1 baseline: x5 or equivalent high-resolution evidence, source-as-is no-modification handling for photos, traffic signs, and road markings, and source-image infographic or diagram transfer with glyph-level Spanish cleanup only and Russian overlay outside protected source imagery where applicable.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice at base 3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c and effective content head dd22d1f241300fa803050200a2bb412642aec165.
+
+Architect gaps: none.
+
+Architect disposition: no open Implementation Agent feedback remains for PR #186 audit-only scope at dd22d1f241300fa803050200a2bb412642aec165.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #186 audit-only scope.
+
+Architect disposition: owner decision for Vite large chunk warning and audit known-issue entries is accepted no action for PR #186 because they are pre-existing, nonfatal, unrelated to this audit-only slice, and disposition not applicable.
 
 ## Review Requirements
 
