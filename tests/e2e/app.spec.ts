@@ -3463,6 +3463,11 @@ test("Manual guide exposes implemented Chapter 1 and Chapter 2 section pages", a
   await expect(chapter2Section).toHaveAttribute("data-manual-section-id", "ch2-required-documents");
   await expect(chapter2Section.getByRole("heading", { name: "Обязательные документы" })).toBeVisible();
   await expect(chapter2Section).toContainText("0,0 г/л");
+  await expect(chapter2Section).toContainText("60 000 км");
+  await expect(chapter2Section).toContainText("8 лет");
+  await expect(chapter2Section).toContainText("80 000 км");
+  await expect(chapter2Section).toContainText("допуск 4 000 км");
+  await expect(chapter2Section).not.toContainText("После первого прохождения срок становится ежегодным");
   await expect(chapter2Section.locator('[data-source-as-is="true"]')).toHaveCount(6);
   await expect(chapter2Section.locator('[data-source-image-exception="source-document-example-original-visible-text"]')).toHaveCount(6);
   await expect(chapter2Section.locator('[data-visible-spanish-scope="source-document-example-image-only"]')).toHaveCount(6);

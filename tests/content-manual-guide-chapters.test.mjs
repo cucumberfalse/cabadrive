@@ -626,6 +626,11 @@ test("Chapter 2 sections retain legal, document, incident, and scoring details",
   assert.match(ch2RequiredDocumentsModuleSource, /0,0 г\/л/u);
   assert.match(ch2RequiredDocumentsModuleSource, /GNC/);
   assert.match(ch2RequiredDocumentsModuleSource, /VTV/);
+  assert.match(ch2RequiredDocumentsModuleSource, /60 000 км/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /8 лет/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /80 000 км/u);
+  assert.match(ch2RequiredDocumentsModuleSource, /допуск 4 000 км/u);
+  assert.doesNotMatch(ch2RequiredDocumentsModuleSource, /После первого прохождения срок становится ежегодным/u);
   assert.match(ch2RequiredDocumentsModuleSource, /RVA/);
   assert.match(ch2RequiredDocumentsModuleSource, /source-image-cards/);
   assert.match(ch2RequiredDocumentsModuleSource, /source-document-example-original-visible-text/);
