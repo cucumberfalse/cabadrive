@@ -967,7 +967,9 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
   assert.match(ch4AlcoholDrugsModuleSource, /durante la primera hora/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Retener la licencia|удерживают водительское удостоверение/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /presumed positive|presume el estado/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /remitir el vehículo[\s\S]*(направить|эвакуировать)/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /se presume positivo|считается положительным/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /removal of vehicle|presumed positive/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"responsible-driver"/u);
   assert.match(ch4AlcoholDrugsModuleSource, /conductor\/a responsable|ответственного водителя/u);
   assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);

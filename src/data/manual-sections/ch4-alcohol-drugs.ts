@@ -267,7 +267,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         "При положительной alcoholemia применяется административная санкция и, если есть основание, contravencional sanction.",
         "У водителя retenеr la licencia de conducir - удерживают водительское удостоверение.",
         "Транспорт remitir el vehículo - отправляют/эвакуируют так, чтобы водитель не продолжал движение.",
-        "При отказе от alcoholemia autoridad de control должна запретить продолжать управление и приказать removal of vehicle, потому что состояние presumed positive."
+        "При отказе от alcoholemia autoridad de control должна запретить продолжать управление и приказать remitir el vehículo - направить/эвакуировать транспорт, потому что состояние водителя se presume positivo (считается положительным)."
       ]
     },
     {
