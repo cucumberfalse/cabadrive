@@ -222,6 +222,36 @@ Gaps: none for the PR #185 prerequisite scope. Remaining full-document work stay
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
 
+## Final Analyst Validation Rerun - PR #185 Strict Crop Extraction Dimension Repair
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T06:08:56Z
+
+Analyst validated effective content head: 1a45d342637feae88f2c102cbb9cf815079eaefb
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #185 prerequisite scope. The effective content head supports the original request to continue until the whole document is complete, keep one source manual chapter per PR from this point forward, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
+
+Analyst validation evidence: Earlier Analyst validations for `36316f3781b9b04f305725018522b0f55407f900`, `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`, `bcc377a154c936374715f6ca4ce2d5714af4a722`, and `ae5db4936c77f759e337c07e84c95924eee0db74` are superseded and stale because later non-evidence checker, test, evidence-policy, and process-memory repairs changed the validated prerequisite behavior.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T06:06:15Z` for the same effective content head `1a45d342637feae88f2c102cbb9cf815079eaefb`; commit `33e9711e63e2ca5b5b7718c449cc3445d114bb34` transports Architect-owned validation evidence only in `tasks.md`.
+
+Analyst validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs, checker, evidence policy, tests, and process memory; it does not implement Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 audit, correction PRs, runtime manual pages, or chapter content.
+
+Analyst validation evidence: The latest repair strengthens the high-resolution and no-upscale requirement by requiring strict source crop artifacts to decode as supported image bytes, tying crop dimensions and extraction output dimensions to decoded artifacts, and preserving the strict visual-rule policy for source-as-is protected images, transferred infographics/diagrams, glyph-level cleanup, forbidden visual-edit patterns, and unchanged Chapter 1 legacy baseline gating.
+
+Analyst validation evidence: Review Agent posted no actionable findings for `1a45d342637feae88f2c102cbb9cf815079eaefb` in review `4415885493`; process memory records required PR checks as green or in the process-revalidation lane addressed by the Architect and Analyst validation reruns.
+
+Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `1a45d342637feae88f2c102cbb9cf815079eaefb`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
 ## Final Analyst Validation Rerun - PR #185 Strict Image Dimension Repair
 
 Superseded validation notice: the earlier Analyst validations for `36316f3781b9b04f305725018522b0f55407f900`, `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`, and `bcc377a154c936374715f6ca4ce2d5714af4a722` are superseded and stale because later non-evidence repair commits changed strict image dimension validation behavior. The latest repaired effective content head for this prerequisite validation is `ae5db4936c77f759e337c07e84c95924eee0db74`.
