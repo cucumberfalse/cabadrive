@@ -741,3 +741,161 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T17:56:07Z
+
+Analyst validated effective content head: a8ecdac9daed66274ba51fb04ecbe47279aae2f6
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 scope. The effective content head implements Chapter 4 pages `89-97` only, does not bundle Chapter 5, appendices, or front matter, preserves one chapter-equivalent per PR, keeps strict visual requirements honored, and includes policy-compliant runtime visuals where source visuals are learner-relevant.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T17:54:46Z` for the same effective content head `a8ecdac9daed66274ba51fb04ecbe47279aae2f6`.
+
+Analyst validation evidence: Review fixes are included for the alcohol threshold grid, Russian sleep/fatigue wording, and runtime source visuals on pages `90`, `91`, `95`, and `97`.
+
+Analyst validation evidence: Required checks and reviews passed for PR #189 at the effective content head, and review threads are resolved according to Architect process memory.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T18:42:42Z
+
+Analyst validated effective content head: 17dd8db5872dc90586191b6e9c972cfbe681da7b
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 scope. The effective content head implements Chapter 4 pages `89-97` only with page `89` divider-only, does not bundle Chapter 5, appendices, or front matter, preserves one chapter-equivalent per PR, keeps strict visual requirements honored, and includes source-as-is runtime visuals with Russian explanation outside protected images.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T18:40:30Z` for the same effective content head `17dd8db5872dc90586191b6e9c972cfbe681da7b`.
+
+Analyst validation evidence: The latest fix moved page-93 pre-heading alcohol and drugs blocks into the alcohol/drugs section, so sleep/fatigue now begins at the `Sueño y fatiga` heading.
+
+Analyst validation evidence: Review Agent passed at `17dd8db5872dc90586191b6e9c972cfbe681da7b`, required GitHub checks passed, unresolved review threads are `0`, and merge state is CLEAN/MERGEABLE according to the assigned evidence.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T20:11:30Z
+
+Analyst validated effective content head: 9b5b74b9b19b756225ffd50b2ba1df4732c56ab3
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 strict-infographic scope. The effective content head implements Chapter 4 pages `89-97` only with page `89` divider-only, preserves one chapter-equivalent per PR, keeps high-resolution visual evidence requirements, preserves protected photos, signs, markings, and source visuals as source-as-is, and handles infographics as transferred source images with strict cleanup/overlay policy rather than redraw.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T20:08:19Z` for the same effective content head `9b5b74b9b19b756225ffd50b2ba1df4732c56ab3`.
+
+Analyst validation evidence: Latest visual repair replaced Spanish-only alcohol-limit and distraction infographic runtime assets with transferred infographics and removed the `source-as-is-infographic` protected checker loophole while preserving protected photo/source visuals as source-as-is.
+
+Analyst validation evidence: Chapter 4 review fixes are included for alcohol threshold rows, Russian learner prose localization, page 93 boundary, page 94/95 boundary behavior, and strict infographic visual repair.
+
+Analyst validation evidence: Review Agent passed at `9b5b74b9b19b756225ffd50b2ba1df4732c56ab3`; required checks other than the canceled stale-validation AI Review were green, and the AI Review P1 stale-final-validation concern is addressed by Architect then Analyst validation plus evidence transport.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T21:15:35Z
+
+Analyst validated effective content head: 3de005c1b46ea8b28b96b6ec46d4d51d61719dae
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 final scope. The effective content head implements Chapter 4 pages `89-97` only, preserves one chapter-equivalent per PR, keeps the highlighted strict visual requirements satisfied, and includes the legal-scope fix for `acompañantes en motovehículos` / motovehicle passenger-seat context without broadening it to all passengers.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T21:12:03Z` for the same effective content head `3de005c1b46ea8b28b96b6ec46d4d51d61719dae`.
+
+Analyst validation evidence: Review Agent pass `4422714934` reported no actionable findings for the current head; automated checks passed for `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; AI Review failed only because fresh final validation was missing before these role notes.
+
+Analyst validation evidence: Implementation verification for `3de005c1b46ea8b28b96b6ec46d4d51d61719dae` recorded targeted content tests, source-fidelity, feature-memory check, diff check, and full preflight as passing.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T23:07:23Z
+
+Analyst validated effective content head: 4e819cfd80ebf09b4d3db560a6bc3b57766ef39a
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 final scope. The effective content head implements Chapter 4 pages `89-97` only, preserves one chapter-equivalent per PR, keeps the highlighted strict visual requirements satisfied, and includes transferred infographic Russian overlays, mobile clipping regression repair, learner-facing localization audit, `acompañantes en motovehículos`, page-boundary/localization fixes, and source-fidelity metadata.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T23:03:09Z` for the same effective content head `4e819cfd80ebf09b4d3db560a6bc3b57766ef39a`.
+
+Analyst validation evidence: Review Agent pass `4423381526` reported no actionable findings for the current head; automated checks passed for `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; AI Review only has stale-validation finding `3352407299`, addressed by this fresh Architect then Analyst validation.
+
+Analyst validation evidence: Implementation verification for the latest head recorded content tests, source-fidelity, TypeScript, feature-memory check, diff check, and full preflight as passing.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T23:20:16Z
+
+Analyst validated effective content head: 85729ac7f2015b0229b3d7fbc5fdf15677cf2c98
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 recovery scope. The effective content/process head preserves Chapter 4 pages `89-97` only, one chapter-equivalent per PR, and the validated strict visual requirements: high-res/x5 images, protected photos/signs/markings unmodified, and transferred infographics with glyph-level cleanup and Russian overlays rather than redraws or broad boxes.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T23:18:58Z` for the same effective content/process head `85729ac7f2015b0229b3d7fbc5fdf15677cf2c98`.
+
+Analyst validation evidence: Finalizer recovery moved current process-memory updates into the effective content/process head; no product, runtime, test, or asset changes occurred after `4e819cfd80ebf09b4d3db560a6bc3b57766ef39a`, and the next transport commit is expected to be evidence-only.
+
+Analyst validation evidence: Current PR state at `85729ac7f2015b0229b3d7fbc5fdf15677cf2c98` has required checks passed for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`, unresolved threads count `0`, and PR mergeable/CLEAN per assigned evidence.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.

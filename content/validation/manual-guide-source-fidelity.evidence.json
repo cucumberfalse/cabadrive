@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "section-registry-with-complete-chapters-1-through-3",
+  "mode": "section-registry-with-complete-chapters-1-through-4",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 88
+    "end": 97
   },
   "skippedSourcePages": [
     {
@@ -23,6 +23,10 @@
     },
     {
       "sourcePage": 57,
+      "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 89,
       "reason": "chapter-divider-only"
     }
   ],
@@ -45,7 +49,11 @@
     "ch3-overtaking",
     "ch3-highways",
     "ch3-adverse-conditions",
-    "ch3-stopping-parking"
+    "ch3-stopping-parking",
+    "ch4-alcohol-drugs",
+    "ch4-sleep-fatigue",
+    "ch4-stress",
+    "ch4-distractions"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -123,6 +131,22 @@
     "ch3-stopping-parking": {
       "start": 83,
       "end": 88
+    },
+    "ch4-alcohol-drugs": {
+      "start": 90,
+      "end": 93
+    },
+    "ch4-sleep-fatigue": {
+      "start": 93,
+      "end": 94
+    },
+    "ch4-stress": {
+      "start": 94,
+      "end": 95
+    },
+    "ch4-distractions": {
+      "start": 95,
+      "end": 97
     }
   },
   "sharedSourcePageOwnership": [
@@ -130,7 +154,7 @@
       "sourcePage": 55,
       "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-055.jpg",
       "reason": "source-page-contains-two-source-index-topics",
-      "sourceEvidence": "manual.ru.json source page 55 contains Scoring text; layout.ru.json page-055 block 08 starts the Scoring block; source page 56 is closing slogan only.",
+      "sourceEvidence": "manual.ru.json source page 55 and layout.ru.json page-055 blocks 02-19",
       "sectionBoundaries": [
         {
           "sectionId": "ch2-incident-obligations",
@@ -166,6 +190,177 @@
           "startsAtLayoutBlockId": "page-055-block-08",
           "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
           "omittedClosingSourcePage": 56
+        }
+      ]
+    },
+    {
+      "sourcePage": 93,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 93 and layout.ru.json page-093 source-line masks 02-35; masks 03-09, 16-23, and 34-35 are alcohol/drugs topic blocks, while mask 02 starts Sueño y fatiga.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-alcohol-drugs",
+          "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-03",
+            "page-093-source-line-mask-04",
+            "page-093-source-line-mask-05",
+            "page-093-source-line-mask-06",
+            "page-093-source-line-mask-07",
+            "page-093-source-line-mask-08",
+            "page-093-source-line-mask-09",
+            "page-093-source-line-mask-16",
+            "page-093-source-line-mask-17",
+            "page-093-source-line-mask-18",
+            "page-093-source-line-mask-19",
+            "page-093-source-line-mask-20",
+            "page-093-source-line-mask-21",
+            "page-093-source-line-mask-22",
+            "page-093-source-line-mask-23",
+            "page-093-source-line-mask-34",
+            "page-093-source-line-mask-35"
+          ],
+          "excludesSectionId": "ch4-sleep-fatigue"
+        },
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
+        }
+      ]
+    },
+    {
+      "sourcePage": 94,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-094.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 94 and layout.ru.json page-094 source-line masks 02-41; mask 31 starts Estrés.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-symptoms-recommendations-and-remedies",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-02",
+            "page-094-source-line-mask-03",
+            "page-094-source-line-mask-04",
+            "page-094-source-line-mask-05",
+            "page-094-source-line-mask-06",
+            "page-094-source-line-mask-07",
+            "page-094-source-line-mask-08",
+            "page-094-source-line-mask-09",
+            "page-094-source-line-mask-10",
+            "page-094-source-line-mask-11",
+            "page-094-source-line-mask-12",
+            "page-094-source-line-mask-13",
+            "page-094-source-line-mask-14",
+            "page-094-source-line-mask-15",
+            "page-094-source-line-mask-16",
+            "page-094-source-line-mask-17",
+            "page-094-source-line-mask-18",
+            "page-094-source-line-mask-19",
+            "page-094-source-line-mask-20",
+            "page-094-source-line-mask-21",
+            "page-094-source-line-mask-22",
+            "page-094-source-line-mask-23",
+            "page-094-source-line-mask-24",
+            "page-094-source-line-mask-25",
+            "page-094-source-line-mask-26",
+            "page-094-source-line-mask-27",
+            "page-094-source-line-mask-28",
+            "page-094-source-line-mask-29",
+            "page-094-source-line-mask-30"
+          ],
+          "endsBeforeLayoutBlockId": "page-094-source-line-mask-31",
+          "excludesSectionId": "ch4-stress"
+        },
+        {
+          "sectionId": "ch4-stress",
+          "ownedRegion": "stress-definition-and-driving-relationship",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-31",
+            "page-094-source-line-mask-32",
+            "page-094-source-line-mask-33",
+            "page-094-source-line-mask-34",
+            "page-094-source-line-mask-35",
+            "page-094-source-line-mask-36",
+            "page-094-source-line-mask-37",
+            "page-094-source-line-mask-38",
+            "page-094-source-line-mask-39",
+            "page-094-source-line-mask-40",
+            "page-094-source-line-mask-41"
+          ],
+          "startsAtLayoutBlockId": "page-094-source-line-mask-31",
+          "startsAtSourceTextEs": "Estrés",
+          "excludesSectionId": "ch4-sleep-fatigue"
+        }
+      ]
+    },
+    {
+      "sourcePage": 95,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-095.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 95 and layout.ru.json page-095 source-line masks 02-23; masks 08-14 continue stress recommendations while masks 02-07 and 15-23 belong to distractions.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-stress",
+          "ownedRegion": "stress-recommendations-continuation",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-095-source-line-mask-08",
+            "page-095-source-line-mask-09",
+            "page-095-source-line-mask-10",
+            "page-095-source-line-mask-11",
+            "page-095-source-line-mask-12",
+            "page-095-source-line-mask-13",
+            "page-095-source-line-mask-14"
+          ],
+          "startsAtLayoutBlockId": "page-095-source-line-mask-08",
+          "startsAtSourceTextEs": "Prestar atención al contexto",
+          "excludesSectionId": "ch4-distractions"
+        },
+        {
+          "sectionId": "ch4-distractions",
+          "ownedRegion": "distractions-heading-eating-body-and-recommendations-intro",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-095-source-line-mask-02",
+            "page-095-source-line-mask-03",
+            "page-095-source-line-mask-04",
+            "page-095-source-line-mask-05",
+            "page-095-source-line-mask-06",
+            "page-095-source-line-mask-07",
+            "page-095-source-line-mask-15",
+            "page-095-source-line-mask-16",
+            "page-095-source-line-mask-17",
+            "page-095-source-line-mask-18",
+            "page-095-source-line-mask-19",
+            "page-095-source-line-mask-20",
+            "page-095-source-line-mask-21",
+            "page-095-source-line-mask-22",
+            "page-095-source-line-mask-23"
+          ],
+          "startsAtLayoutBlockId": "page-095-source-line-mask-02",
+          "startsAtSourceTextEs": "Distracciones",
+          "excludesSectionId": "ch4-stress"
         }
       ]
     }
@@ -317,9 +512,11 @@
       "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
       "infographicTransfer.noApproximateRedraw",
       "infographicTransfer.broadMaskPlatePatchStatus=none",
-      "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+      "cleanupScope=glyph-level-spanish-cleanup",
       "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
-      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+      "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg",
+      "infographicTransfer.russianOverlayLabels nonempty with percentage placement over cleaned infographic surface",
+      "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text"
     ],
     "diagramRequiredFields": [
       "assetCategory=source-transferred-diagram",
@@ -387,15 +584,21 @@
         "#manual-page-021",
         "#manual-page-043",
         "manual-page-021.ts",
-        "manual-page-043.ts"
+        "manual-page-043.ts",
+        "#manual-page-057",
+        "#manual-page-089",
+        "manual-page-057.ts",
+        "manual-page-089.ts"
       ]
     },
     {
       "id": "divider-page-implementation",
-      "description": "Divider-only pages 21 and 43 must remain skipped metadata, never implemented learner content.",
+      "description": "Divider-only pages 21, 43, 57, and 89 must remain skipped metadata, never implemented learner content.",
       "patterns": [
         "manual-guide-pending-manual-page-021",
-        "manual-guide-pending-manual-page-043"
+        "manual-guide-pending-manual-page-043",
+        "manual-guide-pending-manual-page-057",
+        "manual-guide-pending-manual-page-089"
       ]
     },
     {
@@ -467,25 +670,30 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 19,
+    "implementedSections": 23,
     "skippedSourcePages": [
       21,
       43,
       56,
-      57
+      57,
+      89
     ],
     "skippedDividerPages": [
       21,
       43,
-      57
+      57,
+      89
     ],
     "omittedBookOnlyPages": [
       56
     ],
     "sharedSourcePages": [
-      55
+      55,
+      93,
+      94,
+      95
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_3_sections",
-    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_3_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_4_sections",
+    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_4_sections"
   }
 }

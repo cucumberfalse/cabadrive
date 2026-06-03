@@ -2614,7 +2614,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 section pages", async ({ page }, testInfo) => {
+test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chapter 4 section pages", async ({ page }, testInfo) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2627,6 +2627,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
   const chapter1 = nav.locator('[data-guide-entry-id="chapter-1-sustainable-mobility"]');
   const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
   const chapter3 = nav.locator('[data-guide-entry-id="chapter-3-driving-rules"]');
+  const chapter4 = nav.locator('[data-guide-entry-id="chapter-4-natural-capacity"]');
   if (!(await chapter1.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter1.locator("summary").click();
   }
@@ -2636,16 +2637,22 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
   if (!(await chapter3.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter3.locator("summary").click();
   }
+  if (!(await chapter4.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter4.locator("summary").click();
+  }
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
   await expect(chapter3.getByText("Глава 3. Основные нормы вождения")).toBeVisible();
+  await expect(chapter4.getByText("Глава 4. Естественная способность")).toBeVisible();
   await expect(chapter1).toHaveAttribute("data-status", "active");
   await expect(chapter2).toHaveAttribute("data-status", "active");
   await expect(chapter3).toHaveAttribute("data-status", "active");
+  await expect(chapter4).toHaveAttribute("data-status", "active");
   await expect(chapter1.locator("summary small")).toHaveCount(0);
   await expect(chapter2.locator("summary small")).toHaveCount(0);
   await expect(chapter3.locator("summary small")).toHaveCount(0);
+  await expect(chapter4.locator("summary small")).toHaveCount(0);
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
@@ -2653,6 +2660,10 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
   await expect(chapter3.getByText("Приоритет норм")).toBeVisible();
   await expect(chapter3.getByText("Скорость")).toBeVisible();
   await expect(chapter3.getByText("Остановка и стоянка")).toBeVisible();
+  await expect(chapter4.getByText("Употребление алкоголя и наркотиков")).toBeVisible();
+  await expect(chapter4.getByText("Сон и усталость")).toBeVisible();
+  await expect(chapter4.getByText("Стресс")).toBeVisible();
+  await expect(chapter4.getByText("Отвлечения")).toBeVisible();
 
   const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
   const sustainable = reader.getByTestId("manual-guide-pending-section-ch1-sustainable-mobility");
@@ -2673,6 +2684,10 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
   const highways = reader.getByTestId("manual-guide-pending-section-ch3-highways");
   const adverseConditions = reader.getByTestId("manual-guide-pending-section-ch3-adverse-conditions");
   const stoppingParking = reader.getByTestId("manual-guide-pending-section-ch3-stopping-parking");
+  const alcoholDrugs = reader.getByTestId("manual-guide-pending-section-ch4-alcohol-drugs");
+  const sleepFatigue = reader.getByTestId("manual-guide-pending-section-ch4-sleep-fatigue");
+  const stress = reader.getByTestId("manual-guide-pending-section-ch4-stress");
+  const distractions = reader.getByTestId("manual-guide-pending-section-ch4-distractions");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
   await expect(bicycle).toBeVisible();
@@ -2695,7 +2710,11 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
     overtaking,
     highways,
     adverseConditions,
-    stoppingParking
+    stoppingParking,
+    alcoholDrugs,
+    sleepFatigue,
+    stress,
+    distractions
   ]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
@@ -2741,10 +2760,19 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, and Chapter 3 secti
   await expect(adverseConditions).toHaveAttribute("data-source-pages", "79-82");
   await expect(stoppingParking).toHaveAttribute("data-route-hash", "#manual-section-ch3-stopping-parking");
   await expect(stoppingParking).toHaveAttribute("data-source-pages", "83-88");
+  await expect(alcoholDrugs).toHaveAttribute("data-route-hash", "#manual-section-ch4-alcohol-drugs");
+  await expect(alcoholDrugs).toHaveAttribute("data-source-pages", "90-93");
+  await expect(sleepFatigue).toHaveAttribute("data-route-hash", "#manual-section-ch4-sleep-fatigue");
+  await expect(sleepFatigue).toHaveAttribute("data-source-pages", "93-94");
+  await expect(stress).toHaveAttribute("data-route-hash", "#manual-section-ch4-stress");
+  await expect(stress).toHaveAttribute("data-source-pages", "94-95");
+  await expect(distractions).toHaveAttribute("data-route-hash", "#manual-section-ch4-distractions");
+  await expect(distractions).toHaveAttribute("data-source-pages", "95-97");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-057"]')).toHaveCount(0);
+  await expect(reader.locator('[data-route-hash="#manual-page-089"]')).toHaveCount(0);
   await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");
@@ -4093,4 +4121,109 @@ test("offline reload works after first load", async ({ page, context }) => {
   await context.setOffline(true);
   await page.reload();
   await expect(page.getByTestId("question-card")).toBeVisible();
+});
+
+test("Manual guide opens Chapter 4 stress and distractions from direct routes", async ({ page }, testInfo) => {
+  await page.goto("/#manual-section-ch4-stress");
+  const reader = page.getByTestId("introduction-reader");
+  const nav = reader.getByTestId("manual-guide-nav");
+  const stressButton = reader.getByTestId("manual-guide-pending-section-ch4-stress");
+  let section = reader.getByTestId("manual-guide-section");
+
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-4-natural-capacity");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch4-stress");
+  await expect(stressButton).toHaveAttribute("aria-current", "page");
+  await expect(stressButton).toHaveAttribute("data-source-pages", "94-95");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch4-stress");
+  await expect(section.getByRole("heading", { name: "Стресс", exact: true })).toBeVisible();
+  await expect(section).toContainText("ВОЗ (OMS) определяет");
+  await expect(section).toContainText("двойная связь");
+  await expect(section).toContainText("Планировать поездку");
+  await expect(section).toContainText("терпеливое и терпимое отношение");
+  await expect(section).not.toContainText("Сон и усталость");
+  await section.screenshot({ path: testInfo.outputPath(`ch4-stress-direct-${testInfo.project.name}.png`) });
+
+  await page.goto("/#manual-section-ch4-distractions");
+  const distractionsButton = reader.getByTestId("manual-guide-pending-section-ch4-distractions");
+  section = reader.getByTestId("manual-guide-section");
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-4-natural-capacity");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch4-distractions");
+  await expect(distractionsButton).toHaveAttribute("aria-current", "page");
+  await expect(distractionsButton).toHaveAttribute("data-source-pages", "95-97");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch4-distractions");
+  await expect(section.getByRole("heading", { name: "Отвлечения" })).toBeVisible();
+  await expect(section).toContainText("Еда, питье, мате");
+  await expect(section).toContainText("Использование мобильного телефона запрещено");
+  await expect(section).toContainText("GPS");
+  await expect(section).toContainText("зеркало заднего вида");
+  await expect(section).toContainText("100% внимания");
+  await expect(section).not.toContainText("ВОЗ (OMS) определяет");
+
+  const overflow = await section.evaluate((root) => {
+    const tolerance = 2;
+    const viewportWidth = document.documentElement.clientWidth;
+    const problems: string[] = [];
+    if (document.documentElement.scrollWidth > viewportWidth + tolerance) {
+      problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
+    }
+    for (const element of Array.from(root.querySelectorAll('[data-testid="manual-guide-section-block"]'))) {
+      const rect = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      const id = element.getAttribute("data-block-id") ?? element.textContent?.trim() ?? "unknown";
+      if (rect.width > 0 && (rect.left < -tolerance || rect.right > viewportWidth + tolerance)) {
+        problems.push(`${id} overflows viewport horizontally`);
+      }
+      if (style.userSelect === "none") problems.push(`${id} disables text selection`);
+    }
+    return problems;
+  });
+  expect(overflow).toEqual([]);
+  await section.screenshot({ path: testInfo.outputPath(`ch4-distractions-direct-${testInfo.project.name}.png`) });
+});
+
+test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone width", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/#manual-section-ch4-alcohol-drugs");
+  const section = page.getByTestId("manual-guide-section");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch4-alcohol-drugs");
+  const card = section.locator('[data-card-id="alcohol-limits-source-card"]');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toBeVisible();
+  const figure = card.locator('[data-russian-overlay-strategy="selectable-dom"]');
+  const image = figure.locator('img[data-visible-spanish="false"]');
+  await image.evaluate((node) => (node as HTMLImageElement).decode?.().catch(() => undefined));
+  await expect(figure).toBeVisible();
+  await expect(image).toBeVisible();
+  await expect(figure.locator('[data-overlay-label-id="acompanantes-label"]')).toContainText("Пасс. мото");
+
+  const overlayProblems = await figure.evaluate((root) => {
+    const tolerance = 1;
+    const figureRect = root.getBoundingClientRect();
+    const problems: string[] = [];
+    for (const label of Array.from(root.querySelectorAll<HTMLElement>(".manual-source-image-overlay-label"))) {
+      const id = label.getAttribute("data-overlay-label-id") ?? label.textContent?.trim() ?? "unknown";
+      const rect = label.getBoundingClientRect();
+      const style = window.getComputedStyle(label);
+      if (rect.width <= 1 || rect.height <= 1 || style.visibility === "hidden" || style.display === "none") {
+        problems.push(`${id} is not visible`);
+      }
+      if (label.scrollHeight > label.clientHeight + tolerance) {
+        problems.push(`${id} clips vertically: ${label.scrollHeight} > ${label.clientHeight}`);
+      }
+      if (label.scrollWidth > label.clientWidth + tolerance) {
+        problems.push(`${id} clips horizontally: ${label.scrollWidth} > ${label.clientWidth}`);
+      }
+      if (
+        rect.left < figureRect.left - tolerance ||
+        rect.right > figureRect.right + tolerance ||
+        rect.top < figureRect.top - tolerance ||
+        rect.bottom > figureRect.bottom + tolerance
+      ) {
+        problems.push(`${id} leaves transferred visual bounds`);
+      }
+    }
+    return problems;
+  });
+  expect(overlayProblems).toEqual([]);
+  await section.screenshot({ path: testInfo.outputPath(`ch4-alcohol-overlay-labels-phone-${testInfo.project.name}.png`) });
 });

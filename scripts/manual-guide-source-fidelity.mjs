@@ -182,7 +182,11 @@ const strictImageAssetCategories = new Set([
   "source-transferred-infographic",
   "source-transferred-diagram"
 ]);
-const protectedSourceAsIsCategories = new Set(["source-as-is-photo", "source-as-is-traffic-sign", "source-as-is-road-marking"]);
+const protectedSourceAsIsCategories = new Set([
+  "source-as-is-photo",
+  "source-as-is-traffic-sign",
+  "source-as-is-road-marking"
+]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
 const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
@@ -468,7 +472,17 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
   assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
   assertRequiredFields(
     asset.infographicTransfer,
-    ["sourceImageTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
+    [
+      "sourceImageTransfer",
+      "sourceAssetPath",
+      "sourceCropSha256",
+      "sourceCropDimensions",
+      "noApproximateRedraw",
+      "broadMaskPlatePatchStatus",
+      "russianOverlayStrategy",
+      "russianOverlayLabels",
+      "overlayTextSelectability"
+    ],
     `${messagePrefix}.infographicTransfer`
   );
   validateSourceTransferProvenance(asset.infographicTransfer, `${messagePrefix}.infographicTransfer`, sourceRegionRecords);
@@ -481,17 +495,29 @@ function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionR
     asset
   );
   assertCondition(
-    asset.cleanupScope === "glyph-level-spanish-cleanup" || asset.cleanupScope === "none-source-as-is",
-    `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup or none-source-as-is`,
+    asset.infographicTransfer.overlayTextSelectability === "selectable-dom-text" || asset.infographicTransfer.overlayTextSelectability === "selectable-svg-text",
+    `${messagePrefix}.infographicTransfer.overlayTextSelectability must be selectable DOM/SVG text`,
     asset
   );
-  if (asset.cleanupScope === "glyph-level-spanish-cleanup") {
-    assertCondition(
-      asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
-      `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
-      asset
-    );
-  }
+  assertCondition(Array.isArray(asset.infographicTransfer.russianOverlayLabels), `${messagePrefix}.infographicTransfer.russianOverlayLabels must be an array`, asset);
+  assertCondition(asset.infographicTransfer.russianOverlayLabels.length > 0, `${messagePrefix}.infographicTransfer.russianOverlayLabels must not be empty`, asset);
+  asset.infographicTransfer.russianOverlayLabels.forEach((label, index) => {
+    const labelPrefix = `${messagePrefix}.infographicTransfer.russianOverlayLabels[${index}]`;
+    assertRequiredFields(label, ["id", "textRu", "xPct", "yPct", "widthPct", "heightPct"], labelPrefix);
+    assertCondition(typeof label.id === "string" && label.id.length > 0, `${labelPrefix}.id must be a non-empty string`, label);
+    assertCondition(typeof label.textRu === "string" && /[А-Яа-яЁё]/u.test(label.textRu), `${labelPrefix}.textRu must contain Russian text`, label);
+    for (const field of ["xPct", "yPct", "widthPct", "heightPct"]) {
+      assertCondition(typeof label[field] === "number" && label[field] >= 0 && label[field] <= 100, `${labelPrefix}.${field} must be a percentage from 0 to 100`, label);
+    }
+    assertCondition(label.xPct + label.widthPct <= 100, `${labelPrefix} horizontal placement must stay within the image`, label);
+    assertCondition(label.yPct + label.heightPct <= 100, `${labelPrefix} vertical placement must stay within the image`, label);
+  });
+  assertCondition(asset.cleanupScope === "glyph-level-spanish-cleanup", `${messagePrefix}.cleanupScope must be glyph-level-spanish-cleanup`, asset);
+  assertCondition(
+    asset.infographicTransfer.cleanupMethod === "glyph-letter-level-background-restoration",
+    `${messagePrefix}.infographicTransfer.cleanupMethod must be glyph-letter-level-background-restoration`,
+    asset
+  );
 }
 
 function validateTransferredDiagramAsset(asset, messagePrefix, sourceRegionRecords) {
@@ -757,7 +783,10 @@ function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePage
       assertCondition(Boolean(section), `${boundary.sectionId} shared-page boundary must reference an existing section`, boundary);
       assertCondition(sectionSourcePages(section).includes(sharedEntry.sourcePage), `${boundary.sectionId} must include shared source page ${sharedEntry.sourcePage}`, section);
 
-      const sectionBoundary = section.sourceBoundaryEvidence;
+      const sectionBoundaryEvidence = section.sourceBoundaryEvidence;
+      const sectionBoundary = Array.isArray(sectionBoundaryEvidence)
+        ? sectionBoundaryEvidence.find((entry) => entry.sharedSourcePage === sharedEntry.sourcePage)
+        : sectionBoundaryEvidence;
       assertRequiredFields(
         sectionBoundary,
         ["sharedSourcePage", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage", "boundaryEvidence"],

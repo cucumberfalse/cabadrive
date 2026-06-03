@@ -32,6 +32,10 @@ const ch3OvertakingModulePath = "src/data/manual-sections/ch3-overtaking.ts";
 const ch3HighwaysModulePath = "src/data/manual-sections/ch3-highways.ts";
 const ch3AdverseModulePath = "src/data/manual-sections/ch3-adverse-conditions.ts";
 const ch3StoppingParkingModulePath = "src/data/manual-sections/ch3-stopping-parking.ts";
+const ch4AlcoholDrugsModulePath = "src/data/manual-sections/ch4-alcohol-drugs.ts";
+const ch4SleepFatigueModulePath = "src/data/manual-sections/ch4-sleep-fatigue.ts";
+const ch4StressModulePath = "src/data/manual-sections/ch4-stress.ts";
+const ch4DistractionsModulePath = "src/data/manual-sections/ch4-distractions.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -50,7 +54,11 @@ const implementedSectionIds = new Set([
   "ch3-overtaking",
   "ch3-highways",
   "ch3-adverse-conditions",
-  "ch3-stopping-parking"
+  "ch3-stopping-parking",
+  "ch4-alcohol-drugs",
+  "ch4-sleep-fatigue",
+  "ch4-stress",
+  "ch4-distractions"
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -75,6 +83,10 @@ const ch3OvertakingModuleSource = readFileSync(ch3OvertakingModulePath, "utf8");
 const ch3HighwaysModuleSource = readFileSync(ch3HighwaysModulePath, "utf8");
 const ch3AdverseModuleSource = readFileSync(ch3AdverseModulePath, "utf8");
 const ch3StoppingParkingModuleSource = readFileSync(ch3StoppingParkingModulePath, "utf8");
+const ch4AlcoholDrugsModuleSource = readFileSync(ch4AlcoholDrugsModulePath, "utf8");
+const ch4SleepFatigueModuleSource = readFileSync(ch4SleepFatigueModulePath, "utf8");
+const ch4StressModuleSource = readFileSync(ch4StressModulePath, "utf8");
+const ch4DistractionsModuleSource = readFileSync(ch4DistractionsModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -95,12 +107,35 @@ function duplicatedValues(values) {
     .sort((a, b) => a - b);
 }
 
+function itemsRuSourceForBlock(moduleSource, blockId) {
+  const blockMatch = moduleSource.match(new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?itemsRu:\\s*\\[([\\s\\S]*?)\\]`, "u"));
+  assert.ok(blockMatch, `${blockId} itemsRu block found`);
+  return blockMatch[1];
+}
+
+function sourceBoundaryEvidenceFor(section, sourcePage) {
+  if (Array.isArray(section.sourceBoundaryEvidence)) {
+    return section.sourceBoundaryEvidence.find((entry) => entry.sharedSourcePage === sourcePage);
+  }
+  return section.sourceBoundaryEvidence?.sharedSourcePage === sourcePage ? section.sourceBoundaryEvidence : undefined;
+}
+
 function sourcePageAssetPath(sourcePage) {
   return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(sourcePage).padStart(3, "0")}.jpg`;
 }
 
 function sha256File(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function sectionById(sectionId) {
+  return registry.sections.find((entry) => entry.id === sectionId);
+}
+
+function localAssetByPath(section, assetPath) {
+  const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+  assert.ok(asset, `${section.id} records ${assetPath} in localAssetMetadata`);
+  return asset;
 }
 
 function stableStringify(value) {
@@ -257,6 +292,10 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch3-highways.ts"), 'export const ch3HighwaysSection = { sectionId: "ch3-highways", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch3-adverse-conditions.ts"), 'export const ch3AdverseConditionsSection = { sectionId: "ch3-adverse-conditions", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch3-stopping-parking.ts"), 'export const ch3StoppingParkingSection = { sectionId: "ch3-stopping-parking", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-alcohol-drugs.ts"), 'export const ch4AlcoholDrugsSection = { sectionId: "ch4-alcohol-drugs", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-sleep-fatigue.ts"), 'export const ch4SleepFatigueSection = { sectionId: "ch4-sleep-fatigue", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-stress.ts"), 'export const ch4StressSection = { sectionId: "ch4-stress", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-distractions.ts"), 'export const ch4DistractionsSection = { sectionId: "ch4-distractions", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -326,7 +365,18 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       noApproximateRedraw: true,
       broadMaskPlatePatchStatus: "none",
       cleanupMethod: "glyph-letter-level-background-restoration",
-      russianOverlayStrategy: "selectable-dom"
+      russianOverlayStrategy: "selectable-dom",
+      overlayTextSelectability: "selectable-dom-text",
+      russianOverlayLabels: [
+        {
+          id: "fixture-russian-label",
+          textRu: "Русская подпись",
+          xPct: 10,
+          yPct: 12,
+          widthPct: 40,
+          heightPct: 12
+        }
+      ]
     }
   };
   implementationEvidence.localAssetMetadata[1] = {
@@ -504,18 +554,19 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped divider metadata", () => {
+test("Chapter 1, 2, 3, and 4 registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 88 });
+  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 97 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
+    "chapter-divider-only",
     "chapter-divider-only"
   ]);
 
@@ -547,6 +598,7 @@ test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped 
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
     assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
     assert.equal(sourcePages.includes(57), false, `${section.id} does not include divider page 57`);
+    assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -561,11 +613,11 @@ test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped 
   }
 });
 
-test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 3);
+test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 4);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
-    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules"]
+    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules", "chapter-4-natural-capacity"]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
     "ch1-cities-for-people",
@@ -595,11 +647,19 @@ test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw 
     "ch3-stopping-parking"
   ]);
   assert.equal(registry.chapters[2].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
+  assert.deepEqual(registry.chapters[3].sectionIds, [
+    "ch4-alcohol-drugs",
+    "ch4-sleep-fatigue",
+    "ch4-stress",
+    "ch4-distractions"
+  ]);
+  assert.equal(registry.chapters[3].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
   assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
   assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
+  assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -612,8 +672,8 @@ test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw 
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88)));
-  assert.deepEqual(duplicatedValues(coveredSourcePages), [55]);
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97)));
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95]);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -637,10 +697,10 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55],
-    "only source page 55 is intentionally shared between section topics"
+    [55, 93, 94, 95],
+    "source pages 55, 93, 94, and 95 are intentionally shared between section topics"
   );
-  const sharedPage55 = registry.sharedSourcePageOwnership[0];
+  const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
   assert.deepEqual(sharedPage55.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch2-incident-obligations", "ch2-scoring"]);
 
@@ -835,6 +895,363 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3StoppingParkingModuleSource, /Símbolo Internacional de Acceso/u);
 });
 
+test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, and page 95 direct distractions boundary are explicit", () => {
+  const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 89);
+  assert.equal(divider?.reason, "chapter-divider-only");
+  assert.match(divider?.disposition ?? "", /navigation only/);
+
+  const alcoholDrugs = registry.sections.find((section) => section.id === "ch4-alcohol-drugs");
+  const sleepFatigue = registry.sections.find((section) => section.id === "ch4-sleep-fatigue");
+  const stress = registry.sections.find((section) => section.id === "ch4-stress");
+  const distractions = registry.sections.find((section) => section.id === "ch4-distractions");
+  assert.ok(alcoholDrugs, "alcohol/drugs section exists");
+  assert.ok(sleepFatigue, "sleep/fatigue section exists");
+  assert.ok(stress, "stress section exists");
+  assert.ok(distractions, "distractions section exists");
+
+  assert.deepEqual(alcoholDrugs.sourcePageRange, { start: 90, end: 93 });
+  assert.deepEqual(sleepFatigue.sourcePageRange, { start: 93, end: 94 });
+  assert.deepEqual(stress.sourcePageRange, { start: 94, end: 95 });
+  assert.deepEqual(distractions.sourcePageRange, { start: 95, end: 97 });
+  assert.equal(stress.routeHash, "#manual-section-ch4-stress");
+  assert.equal(distractions.routeHash, "#manual-section-ch4-distractions");
+  assert.equal(stress.sourcePages[0].sourcePage, 94, "direct stress navigation opens at source page 94");
+  assert.equal(distractions.sourcePages[0].sourcePage, 95, "direct distractions navigation opens at source page 95");
+
+  assert.deepEqual(
+    registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
+    [55, 93, 94, 95]
+  );
+  const sharedPage93 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 93);
+  const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
+  const sharedPage95 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 95);
+  assert.deepEqual(sharedPage93.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-alcohol-drugs", "ch4-sleep-fatigue"]);
+  assert.deepEqual(sharedPage94.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-sleep-fatigue", "ch4-stress"]);
+  assert.deepEqual(sharedPage95.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-stress", "ch4-distractions"]);
+
+  const alcoholPage93Boundary = sourceBoundaryEvidenceFor(alcoholDrugs, 93);
+  const sleepPage93Boundary = sourceBoundaryEvidenceFor(sleepFatigue, 93);
+  const sleepBoundary = sourceBoundaryEvidenceFor(sleepFatigue, 94);
+  const stressPage94Boundary = sourceBoundaryEvidenceFor(stress, 94);
+  const stressPage95Boundary = sourceBoundaryEvidenceFor(stress, 95);
+  const distractionsBoundary = sourceBoundaryEvidenceFor(distractions, 95);
+  assert.equal(alcoholPage93Boundary.ownedRegion, "responsible-driver-and-alcoholemia-toxicology-hangover");
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-03"), true);
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-16"), true);
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-23"), true);
+  assert.equal(sleepPage93Boundary.startsAtLayoutBlockId, "page-093-source-line-mask-02");
+  assert.match(sleepPage93Boundary.startsAtSourceTextEs, /Sueño y fatiga/u);
+  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-10"), true);
+  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-24"), true);
+  assert.equal(sleepBoundary.endsBeforeLayoutBlockId, "page-094-source-line-mask-31");
+  assert.equal(stressPage94Boundary.startsAtLayoutBlockId, "page-094-source-line-mask-31");
+  assert.match(stressPage94Boundary.startsAtSourceTextEs, /Estrés/u);
+  assert.equal(stressPage95Boundary.startsAtLayoutBlockId, "page-095-source-line-mask-08");
+  assert.match(stressPage95Boundary.startsAtSourceTextEs, /Prestar atención al contexto/u);
+  assert.equal(distractionsBoundary.startsAtLayoutBlockId, "page-095-source-line-mask-02");
+  assert.match(distractionsBoundary.startsAtSourceTextEs, /Distracciones/u);
+  assert.equal(stressPage95Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-14"), true);
+  assert.equal(distractionsBoundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-15"), true);
+});
+
+test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details", () => {
+  for (const sectionId of ["ch4-alcohol-drugs", "ch4-sleep-fatigue", "ch4-stress", "ch4-distractions"]) {
+    const section = registry.sections.find((entry) => entry.id === sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 4 PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+  }
+
+  assert.match(ch4AlcoholDrugsModuleSource, /центральной нервной системы/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /психофизическим examen psicofísico/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Sueño y fatiga|Сонливость и усталость/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /medicamentos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /седативным эффектом[\s\S]*sedantes/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /контакте со слюной/u);
+  const alcoholImpairingFactorsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "factors-that-impair-driving");
+  assert.match(alcoholImpairingFactorsItemsRu, /Употребление алкоголя и наркотиков/u);
+  assert.match(alcoholImpairingFactorsItemsRu, /Сонливость и усталость/u);
+  assert.doesNotMatch(alcoholImpairingFactorsItemsRu, /^\s*"Ingesta de alcohol y drogas|^\s*"Sueño y fatiga|^\s*"Estrés|^\s*"Distracciones/um);
+  const medicationsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "medications-and-sedatives");
+  assert.match(medicationsItemsRu, /листок-вкладыш[\s\S]*prospecto explicativo/u);
+  assert.match(medicationsItemsRu, /наркотические вещества[\s\S]*estupefacientes/u);
+  assert.doesNotMatch(medicationsItemsRu, /читать prospecto explicativo|проверке на estupefacientes/u);
+  const alcoholEffectsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "alcohol-effects");
+  assert.match(alcoholEffectsItemsRu, /скорость реакции/u);
+  assert.match(alcoholEffectsItemsRu, /периферическое зрение/u);
+  assert.match(alcoholEffectsItemsRu, /устойчивость к ослеплению/u);
+  assert.match(alcoholEffectsItemsRu, /зрительно-двигательную/u);
+  assert.match(alcoholEffectsItemsRu, /связность мышления/u);
+  assert.doesNotMatch(
+    alcoholEffectsItemsRu,
+    /capacidad de reacción|visión periférica|resistencia al deslumbramiento|viso-motor coordination|motor coordination|asociación de ideas|exceso de confianza en uno mismo|inhibition|somnolencia/u
+  );
+  assert.match(ch4AlcoholDrugsModuleSource, /Ley 2148/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /0,5 gramos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Profesionales[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Acompañantes en motovehículos[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /plaza de acompañante en motovehículos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /это не общий предел для всех сопровождающих в автомобиле/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /Acompañantes - сопровождающие/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /эта категория из таблицы источника сохраняется отдельно/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
+  const alcoholMetabolismItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "metabolism-and-next-day-risk");
+  assert.match(alcoholMetabolismItemsRu, /в течение первого часа/u);
+  assert.doesNotMatch(alcoholMetabolismItemsRu, /durante la primera hora/u);
+  const positiveAndRefusalItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "positive-and-refusal-procedure");
+  assert.match(positiveAndRefusalItemsRu, /удерживают водительское удостоверение/u);
+  assert.doesNotMatch(positiveAndRefusalItemsRu, /contravencional sanction|retenеr la licencia|autoridad de control должна/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /remitir el vehículo[\s\S]*(направить|эвакуировать)/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /se presume positivo|считается положительным/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /removal of vehicle|presumed positive/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"responsible-driver"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /сертифицированы и откалиброваны[\s\S]*certificados y calibrados/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /должным образом certificados y calibrados/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /veisalgia/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /обычным русским текстом/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /русской текстовой таблице/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /selectable DOM text|selectable Russian table/u);
+
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"responsible-driver"/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"test-instruments-and-hangover"/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /veisalgia/u);
+  assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
+  assert.match(ch4SleepFatigueModuleSource, /время ответа/u);
+  const fewHoursSleepItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "few-hours-sleep-effects");
+  assert.match(fewHoursSleepItemsRu, /скорость реакции/u);
+  assert.match(fewHoursSleepItemsRu, /бдительность/u);
+  assert.doesNotMatch(fewHoursSleepItemsRu, /capacidad de reacción|estado de alerta/u);
+  assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
+  assert.match(ch4SleepFatigueModuleSource, /усталость может усиливаться/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
+  assert.match(ch4SleepFatigueModuleSource, /microsueños - микросон/u);
+  const fatiguePreventionItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "fatigue-prevention");
+  assert.match(fatiguePreventionItemsRu, /примерно 8 часов/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 200 км/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 2 часа/u);
+  assert.match(fatiguePreventionItemsRu, /каждые 100 км/u);
+  assert.match(fatiguePreventionItemsRu, /каждый 1 час/u);
+  assert.match(fatiguePreventionItemsRu, /хорошую вентиляцию/u);
+  assert.match(fatiguePreventionItemsRu, /легкую пищу/u);
+  assert.match(fatiguePreventionItemsRu, /в сумерках и на рассвете/u);
+  assert.match(fatiguePreventionItemsRu, /профессиональных водителей/u);
+  assert.match(fatiguePreventionItemsRu, /новичков[\s\S]*principiantes/u);
+  assert.doesNotMatch(
+    fatiguePreventionItemsRu,
+    /aproximadamente 8 horas|cada 200 kilometros|cada 100 kilómetros|ventilación|comidas ligeras|al anochecer y al amanecer|predisposición a sufrir fatiga/u
+  );
+  assert.match(ch4SleepFatigueModuleSource, /17 часов/u);
+  const sleepVsFatigueRemediesItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "sleep-vs-fatigue-remedies");
+  assert.match(sleepVsFatigueRemediesItemsRu, /усталости и недосыпе/u);
+  assert.match(sleepVsFatigueRemediesItemsRu, /сонливостью[\s\S]*поспать/u);
+  assert.match(sleepVsFatigueRemediesItemsRu, /прервать поездку[\s\S]*остановку для отдыха/u);
+  assert.doesNotMatch(
+    sleepVsFatigueRemediesItemsRu,
+    /fatigue\/cansancio|sueño|dormir|tratar la fatiga|interrumpir el viaje|parada de descanso/u
+  );
+
+  assert.match(ch4StressModuleSource, /ВОЗ \(OMS\) определяет/u);
+  assert.match(ch4StressModuleSource, /физиологических реакций/u);
+  assert.match(ch4StressModuleSource, /двойная связь/u);
+  assert.match(ch4StressModuleSource, /безрассудным[\s\S]*temeraria/u);
+  assert.match(ch4StressModuleSource, /Prestar atención al contexto|Обращать внимание на дорожный контекст/u);
+  assert.match(ch4StressModuleSource, /переживания и споры/u);
+  const stressRecommendationsItemsRu = itemsRuSourceForBlock(ch4StressModuleSource, "stress-recommendations");
+  assert.match(stressRecommendationsItemsRu, /Планировать поездку/u);
+  assert.match(ch4StressModuleSource, /достаточным запасом времени/u);
+  assert.match(ch4StressModuleSource, /чрезмерная жара и холод/u);
+  assert.match(stressRecommendationsItemsRu, /терпеливое и терпимое отношение[\s\S]*actitud tolerante y paciente/u);
+  assert.doesNotMatch(ch4StressModuleSource, /worries and discussions|adopting an/u);
+  assert.doesNotMatch(stressRecommendationsItemsRu, /Planificar el viaje|adoptar una actitud tolerante y paciente/u);
+
+  assert.match(ch4DistractionsModuleSource, /Distracción/u);
+  assert.match(ch4DistractionsModuleSource, /conducir/u);
+  assert.match(ch4DistractionsModuleSource, /Еда, питье, мате/u);
+  const eatingDistractionItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "eating-drinking-mate-smoking");
+  assert.match(eatingDistractionItemsRu, /проливания жидкости/u);
+  assert.match(eatingDistractionItemsRu, /горящей золы/u);
+  assert.match(eatingDistractionItemsRu, /манипуляций руками/u);
+  assert.match(eatingDistractionItemsRu, /руки не могут уверенно оставаться на руле/u);
+  assert.doesNotMatch(eatingDistractionItemsRu, /Comer, beber, tomar mate|fumar|cuidado|derrames|encendida ceniza|manipulación/u);
+  const cellPhoneRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "cell-phone-risk");
+  assert.match(cellPhoneRiskItemsRu, /Использование мобильного телефона запрещено/u);
+  assert.match(cellPhoneRiskItemsRu, /Громкая связь[\s\S]*altavoz/u);
+  assert.match(cellPhoneRiskItemsRu, /наушники[\s\S]*auriculares/u);
+  assert.doesNotMatch(cellPhoneRiskItemsRu, /Usar telefonía celular|Altavoz или auriculares/u);
+  assert.match(ch4DistractionsModuleSource, /время реакции на стимул/u);
+  assert.match(ch4DistractionsModuleSource, /мысленного представления/u);
+  assert.doesNotMatch(ch4DistractionsModuleSource, /selectable text|response time|mental representation/u);
+  assert.match(ch4DistractionsModuleSource, /GPS/u);
+  const gpsRiskItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "gps-risk");
+  assert.match(gpsRiskItemsRu, /настраивать или трогать GPS/u);
+  assert.match(gpsRiskItemsRu, /запрограммировать заранее/u);
+  assert.doesNotMatch(gpsRiskItemsRu, /manipular GPS|programar con anterioridad/u);
+  const phoneRecommendationsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "phone-recommendations");
+  assert.match(phoneRecommendationsItemsRu, /режим полета[\s\S]*modo avión/u);
+  assert.match(phoneRecommendationsItemsRu, /бардачок или багажник[\s\S]*guantera или baúl/u);
+  assert.match(phoneRecommendationsItemsRu, /аварийные огни[\s\S]*balizas/u);
+  assert.doesNotMatch(phoneRecommendationsItemsRu, /Поставить его в modo avión|Убрать его в guantera|включить balizas/u);
+  const otherActionsItemsRu = itemsRuSourceForBlock(ch4DistractionsModuleSource, "other-actions");
+  assert.match(otherActionsItemsRu, /радио или CD/u);
+  assert.match(otherActionsItemsRu, /портативный DVD/u);
+  assert.match(otherActionsItemsRu, /пассажиров/u);
+  assert.match(otherActionsItemsRu, /верхнюю одежду/u);
+  assert.match(otherActionsItemsRu, /зеркало заднего вида/u);
+  assert.match(otherActionsItemsRu, /пунктом оплаты проезда/u);
+  assert.doesNotMatch(otherActionsItemsRu, /radio или CD|DVD portátil|occupants|abrigo|cinturón de seguridad|espejo retrovisor|peaje/u);
+  assert.match(ch4DistractionsModuleSource, /100% внимания/u);
+});
+
+test("Chapter 4 runtime renders protected photos and transferred infographics with provenance evidence", () => {
+  const sourceAsIsExpectations = [
+    {
+      sectionId: "ch4-alcohol-drugs",
+      moduleSource: ch4AlcoholDrugsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+      assetCategory: "source-as-is-photo",
+      assetKind: "high-resolution-original-source-photo-drug-test-device",
+      width: 820,
+      height: 300,
+      sha256: "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+    },
+    {
+      sectionId: "ch4-distractions",
+      moduleSource: ch4DistractionsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+      assetCategory: "source-as-is-photo",
+      assetKind: "high-resolution-original-source-photo-attention-quote",
+      width: 720,
+      height: 900,
+      sha256: "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+    }
+  ];
+  const transferredInfographicExpectations = [
+    {
+      sectionId: "ch4-alcohol-drugs",
+      moduleSource: ch4AlcoholDrugsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+      assetKind: "high-resolution-transferred-source-infographic-alcohol-limits",
+      width: 850,
+      height: 430,
+      sha256: "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
+      sourceSha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+      expectedLabels: ["Нович.", "Проф.", "Мото", "Пасс. мото", "Частн."]
+    },
+    {
+      sectionId: "ch4-distractions",
+      moduleSource: ch4DistractionsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+      removedAssetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+      assetKind: "high-resolution-transferred-source-infographic-distraction-panels",
+      width: 860,
+      height: 260,
+      sha256: "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
+      sourceSha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+      expectedLabels: ["Еда / мате", "Предмет", "Нет обзора"]
+    }
+  ];
+
+  assert.match(ch4AlcoholDrugsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /drug-test-source-as-is\.jpg/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /alcohol-limits-transferred-infographic\.png/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /russianOverlayLabels[\s\S]*Пасс\. мото/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /alcohol-limits-source-as-is\.jpg/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /source-image-original-visible-text/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4DistractionsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(ch4DistractionsModuleSource, /distraction-panels-transferred-infographic\.png/u);
+  assert.match(ch4DistractionsModuleSource, /russianOverlayLabels[\s\S]*Нет обзора/u);
+  assert.doesNotMatch(ch4DistractionsModuleSource, /distraction-panels-source-as-is\.jpg/u);
+  assert.match(ch4DistractionsModuleSource, /attention-photo-source-as-is\.jpg/u);
+  assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
+  assert.doesNotMatch(checkerSource, /source-as-is-infographic/u);
+  assert.equal(existsSync(transferredInfographicExpectations[0].removedAssetPath), false);
+  assert.equal(existsSync(transferredInfographicExpectations[1].removedAssetPath), false);
+
+  for (const expectation of sourceAsIsExpectations) {
+    const section = sectionById(expectation.sectionId);
+    assert.ok(section, `${expectation.sectionId} exists`);
+    const asset = localAssetByPath(section, expectation.assetPath);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+    assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+    assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+    assert.equal(exceptionPaths.includes(expectation.assetPath), true, `${expectation.assetPath} has visible-Spanish exception evidence`);
+    assert.equal(asset.assetCategory, expectation.assetCategory);
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.visibleSpanish, true);
+    assert.equal(asset.cleanupScope, "none-source-as-is");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+    assert.equal(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
+  }
+
+  for (const expectation of transferredInfographicExpectations) {
+    const section = sectionById(expectation.sectionId);
+    assert.ok(section, `${expectation.sectionId} exists`);
+    const asset = localAssetByPath(section, expectation.assetPath);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+    assert.equal(exceptionPaths.includes(expectation.assetPath), false, `${expectation.assetPath} must not use a visible-Spanish source-as-is exception`);
+    assert.equal(asset.assetCategory, "source-transferred-infographic");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.visibleSpanish, false);
+    assert.equal(asset.cleanupScope, "glyph-level-spanish-cleanup");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.infographicTransfer.sourceImageTransfer, true);
+    assert.equal(asset.infographicTransfer.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.infographicTransfer.sourceCropSha256, expectation.sourceSha256);
+    assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, {
+      width: expectation.width,
+      height: expectation.height
+    });
+    assert.equal(asset.infographicTransfer.noApproximateRedraw, true);
+    assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
+    assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+    assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
+    assert.equal(asset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
+    assert.deepEqual(asset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), expectation.expectedLabels);
+    for (const label of asset.infographicTransfer.russianOverlayLabels) {
+      assert.match(label.textRu, /[А-Яа-яЁё]/u);
+      assert.equal(label.xPct + label.widthPct <= 100, true);
+      assert.equal(label.yPct + label.heightPct <= 100, true);
+    }
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sourceSha256);
+    assert.notEqual(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
+  }
+});
+
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
@@ -865,8 +1282,10 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   }
 
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
-  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\.kind\}/);
+  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\?\.kind\}/);
+  assert.match(appSource, /data-russian-overlay-strategy=\{card\.russianOverlayLabels \? "selectable-dom" : undefined\}/);
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
+  assert.match(stylesSource, /\.manual-source-image-overlay-label/);
 });
 
 test("Manual guide schema prepares section-local implementation and reusable style tokens", () => {
@@ -921,9 +1340,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch3HighwaysSection \}/);
   assert.match(manualGuideSource, /import \{ ch3AdverseConditionsSection \}/);
   assert.match(manualGuideSource, /import \{ ch3StoppingParkingSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4AlcoholDrugsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4SleepFatigueSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4StressSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4DistractionsSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
@@ -1864,6 +2287,12 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
   }
+  assert.equal(evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"), false);
+  assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
+    "source-as-is-photo",
+    "source-as-is-traffic-sign",
+    "source-as-is-road-marking"
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
     "sourceIntegrity.sourceAssetPath",
@@ -1895,9 +2324,11 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
     "infographicTransfer.noApproximateRedraw",
     "infographicTransfer.broadMaskPlatePatchStatus=none",
-    "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
+    "cleanupScope=glyph-level-spanish-cleanup",
     "infographicTransfer.cleanupMethod=glyph-letter-level-background-restoration when Spanish is removed",
-    "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg"
+    "infographicTransfer.russianOverlayStrategy=selectable-dom or selectable-svg",
+    "infographicTransfer.russianOverlayLabels nonempty with percentage placement over cleaned infographic surface",
+    "infographicTransfer.overlayTextSelectability=selectable-dom-text or selectable-svg-text"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
@@ -1937,26 +2368,27 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, and 3 implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, and 4 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 88 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57]);
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 97 });
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 19);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 23);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
-  assert.equal(result.implementedSections, 19);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43, 57]);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
+  assert.equal(result.implementedSections, 23);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
-  assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_3_sections");
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_4_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -1969,7 +2401,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 19);
+  assert.equal(result.implementedSections, 23);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -2069,7 +2501,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 19);
+    assert.equal(output.implementedSections, 23);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2105,6 +2537,22 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects transferred infographics without Russian overlay labels", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-infographic-missing-russian-overlay-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      delete implementationEvidence.localAssetMetadata[0].infographicTransfer.russianOverlayLabels;
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict transferred infographic omits Russian overlay labels");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing russianOverlayLabels");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -2679,6 +3127,29 @@ test("Manual guide source-fidelity checker rejects strict source-as-is assets th
   }
 });
 
+test("Manual guide source-fidelity checker rejects source-as-is infographic as a strict category", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-infographic-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const infographicAsset = implementationEvidence.localAssetMetadata[0];
+      infographicAsset.assetKind = "high-resolution-original-source-infographic";
+      infographicAsset.assetCategory = "source-as-is-infographic";
+      infographicAsset.visibleSpanish = true;
+      infographicAsset.cleanupScope = "none-source-as-is";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when an infographic tries to use a source-as-is category");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetCategory must use the strict full-manual visual vocabulary"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker rejects future infographic broad patch cleanup", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-patch-"));
   try {
@@ -3018,7 +3489,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 19);
+    assert.equal(output.implementedSections, 23);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

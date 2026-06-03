@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "chapters-1-3-section-registry",
+  "registryScope": "chapters-1-4-section-registry",
   "sourcePageRange": {
     "start": 21,
-    "end": 88
+    "end": 97
   },
   "skippedSourcePages": [
     {
@@ -34,6 +34,13 @@
       "reason": "chapter-divider-only",
       "parentChapterId": "chapter-3-driving-rules",
       "sourceTitleEs": "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 89,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sourceTitleEs": "CAPÍTULO 4: CAPACIDAD NATURAL",
       "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     }
   ],
@@ -78,6 +85,177 @@
           "startsAtLayoutBlockId": "page-055-block-08",
           "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
           "omittedClosingSourcePage": 56
+        }
+      ]
+    },
+    {
+      "sourcePage": 93,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 93 and layout.ru.json page-093 source-line masks 02-35; masks 03-09, 16-23, and 34-35 are alcohol/drugs topic blocks, while mask 02 starts Sueño y fatiga.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-alcohol-drugs",
+          "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-03",
+            "page-093-source-line-mask-04",
+            "page-093-source-line-mask-05",
+            "page-093-source-line-mask-06",
+            "page-093-source-line-mask-07",
+            "page-093-source-line-mask-08",
+            "page-093-source-line-mask-09",
+            "page-093-source-line-mask-16",
+            "page-093-source-line-mask-17",
+            "page-093-source-line-mask-18",
+            "page-093-source-line-mask-19",
+            "page-093-source-line-mask-20",
+            "page-093-source-line-mask-21",
+            "page-093-source-line-mask-22",
+            "page-093-source-line-mask-23",
+            "page-093-source-line-mask-34",
+            "page-093-source-line-mask-35"
+          ],
+          "excludesSectionId": "ch4-sleep-fatigue"
+        },
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
+        }
+      ]
+    },
+    {
+      "sourcePage": 94,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-094.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 94 and layout.ru.json page-094 source-line masks 02-41; mask 31 starts Estrés.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-symptoms-recommendations-and-remedies",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-02",
+            "page-094-source-line-mask-03",
+            "page-094-source-line-mask-04",
+            "page-094-source-line-mask-05",
+            "page-094-source-line-mask-06",
+            "page-094-source-line-mask-07",
+            "page-094-source-line-mask-08",
+            "page-094-source-line-mask-09",
+            "page-094-source-line-mask-10",
+            "page-094-source-line-mask-11",
+            "page-094-source-line-mask-12",
+            "page-094-source-line-mask-13",
+            "page-094-source-line-mask-14",
+            "page-094-source-line-mask-15",
+            "page-094-source-line-mask-16",
+            "page-094-source-line-mask-17",
+            "page-094-source-line-mask-18",
+            "page-094-source-line-mask-19",
+            "page-094-source-line-mask-20",
+            "page-094-source-line-mask-21",
+            "page-094-source-line-mask-22",
+            "page-094-source-line-mask-23",
+            "page-094-source-line-mask-24",
+            "page-094-source-line-mask-25",
+            "page-094-source-line-mask-26",
+            "page-094-source-line-mask-27",
+            "page-094-source-line-mask-28",
+            "page-094-source-line-mask-29",
+            "page-094-source-line-mask-30"
+          ],
+          "endsBeforeLayoutBlockId": "page-094-source-line-mask-31",
+          "excludesSectionId": "ch4-stress"
+        },
+        {
+          "sectionId": "ch4-stress",
+          "ownedRegion": "stress-definition-and-driving-relationship",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-31",
+            "page-094-source-line-mask-32",
+            "page-094-source-line-mask-33",
+            "page-094-source-line-mask-34",
+            "page-094-source-line-mask-35",
+            "page-094-source-line-mask-36",
+            "page-094-source-line-mask-37",
+            "page-094-source-line-mask-38",
+            "page-094-source-line-mask-39",
+            "page-094-source-line-mask-40",
+            "page-094-source-line-mask-41"
+          ],
+          "startsAtLayoutBlockId": "page-094-source-line-mask-31",
+          "startsAtSourceTextEs": "Estrés",
+          "excludesSectionId": "ch4-sleep-fatigue"
+        }
+      ]
+    },
+    {
+      "sourcePage": 95,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-095.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 95 and layout.ru.json page-095 source-line masks 02-23; masks 08-14 continue stress recommendations while masks 02-07 and 15-23 belong to distractions.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-stress",
+          "ownedRegion": "stress-recommendations-continuation",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-095-source-line-mask-08",
+            "page-095-source-line-mask-09",
+            "page-095-source-line-mask-10",
+            "page-095-source-line-mask-11",
+            "page-095-source-line-mask-12",
+            "page-095-source-line-mask-13",
+            "page-095-source-line-mask-14"
+          ],
+          "startsAtLayoutBlockId": "page-095-source-line-mask-08",
+          "startsAtSourceTextEs": "Prestar atención al contexto",
+          "excludesSectionId": "ch4-distractions"
+        },
+        {
+          "sectionId": "ch4-distractions",
+          "ownedRegion": "distractions-heading-eating-body-and-recommendations-intro",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-095-source-line-mask-02",
+            "page-095-source-line-mask-03",
+            "page-095-source-line-mask-04",
+            "page-095-source-line-mask-05",
+            "page-095-source-line-mask-06",
+            "page-095-source-line-mask-07",
+            "page-095-source-line-mask-15",
+            "page-095-source-line-mask-16",
+            "page-095-source-line-mask-17",
+            "page-095-source-line-mask-18",
+            "page-095-source-line-mask-19",
+            "page-095-source-line-mask-20",
+            "page-095-source-line-mask-21",
+            "page-095-source-line-mask-22",
+            "page-095-source-line-mask-23"
+          ],
+          "startsAtLayoutBlockId": "page-095-source-line-mask-02",
+          "startsAtSourceTextEs": "Distracciones",
+          "excludesSectionId": "ch4-stress"
         }
       ]
     }
@@ -139,6 +317,23 @@
         "ch3-highways",
         "ch3-adverse-conditions",
         "ch3-stopping-parking"
+      ]
+    },
+    {
+      "id": "chapter-4-natural-capacity",
+      "labelRu": "Глава 4. Естественная способность",
+      "sourceTitleEs": "CAPÍTULO 4: CAPACIDAD NATURAL",
+      "sourcePageRange": {
+        "start": 89,
+        "end": 97
+      },
+      "requiredPrintedPage": 88,
+      "status": "active",
+      "sectionIds": [
+        "ch4-alcohol-drugs",
+        "ch4-sleep-fatigue",
+        "ch4-stress",
+        "ch4-distractions"
       ]
     }
   ],
@@ -4303,6 +4498,1112 @@
           "Parking photos and diagrams remain source-reference evidence only; no photo/sign/marking/diagram is modified or translated."
         ],
         "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "ch4-alcohol-drugs",
+      "labelRu": "Употребление алкоголя и наркотиков",
+      "sourceTitleEs": "Consumo de alcohol y drogas",
+      "routeHash": "#manual-section-ch4-alcohol-drugs",
+      "sourcePageRange": {
+        "start": 90,
+        "end": 93
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 90,
+          "manualManifestPointer": "/pages/89",
+          "layoutManifestPointer": "/pages/89",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-090.jpg"
+        },
+        {
+          "sourcePage": 91,
+          "manualManifestPointer": "/pages/90",
+          "layoutManifestPointer": "/pages/90",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-091.jpg"
+        },
+        {
+          "sourcePage": 92,
+          "manualManifestPointer": "/pages/91",
+          "layoutManifestPointer": "/pages/91",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-092.jpg"
+        },
+        {
+          "sourcePage": 93,
+          "manualManifestPointer": "/pages/92",
+          "layoutManifestPointer": "/pages/92",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sectionContentModulePath": "src/data/manual-sections/ch4-alcohol-drugs.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch4-alcohol-drugs",
+        "sourcePages": [
+          90,
+          91,
+          92,
+          93
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 90,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-090-alcohol-drugs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "29041dc64d891cbedea2154b8f26cd94847370193c191cb642f6cade4f3b5486",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "29041dc64d891cbedea2154b8f26cd94847370193c191cb642f6cade4f3b5486"
+            }
+          },
+          {
+            "sourcePage": 90,
+            "sourceRegion": {
+              "x": 1180,
+              "y": 2245,
+              "width": 820,
+              "height": 300
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+            "cropDimensions": {
+              "width": 820,
+              "height": 300
+            },
+            "cropSha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 90 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 820,
+                "height": 300
+              },
+              "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+            }
+          },
+          {
+            "sourcePage": 91,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-drugs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "77835428ca63e5c923363e2db7083b2f7b3d0bfaf2ef8357b4fb507cbc9725d4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "77835428ca63e5c923363e2db7083b2f7b3d0bfaf2ef8357b4fb507cbc9725d4"
+            }
+          },
+          {
+            "sourcePage": 91,
+            "sourceRegion": {
+              "x": 1180,
+              "y": 2030,
+              "width": 850,
+              "height": 430
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+            "cropDimensions": {
+              "width": 850,
+              "height": 430
+            },
+            "cropSha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 91 source-reference export using top-left coordinates; retained as the source crop for glyph-letter-level infographic transfer without resizing",
+              "outputDimensions": {
+                "width": 850,
+                "height": 430
+              },
+              "sha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
+            }
+          },
+          {
+            "sourcePage": 92,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-092-alcohol-drugs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "06d4e2f95ac73d778f61397903c5f030b929cb9a302b1eaef6d4247d2024cdbd",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "06d4e2f95ac73d778f61397903c5f030b929cb9a302b1eaef6d4247d2024cdbd"
+            }
+          },
+          {
+            "sourcePage": 93,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-093-alcohol-drugs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch4-alcohol-drugs.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-drug-test-device",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 820,
+            "height": 300,
+            "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 640,
+              "maxHeightCssPx": 300,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 90 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 820,
+                "height": 300
+              },
+              "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-alcohol-limits",
+            "assetCategory": "source-transferred-infographic",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "width": 850,
+            "height": 430,
+            "sha256": "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "maxHeightCssPx": 430,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 91 source crop transferred as the base image; Spanish letter pixels cleaned with background restoration, output kept at source crop dimensions with no resize or upscale",
+              "outputDimensions": {
+                "width": 850,
+                "height": 430
+              },
+              "sha256": "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251"
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+              "sourceCropSha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+              "sourceCropDimensions": {
+                "width": 850,
+                "height": 430
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "cleanupMethod": "glyph-letter-level-background-restoration",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "principiantes-label",
+                  "textRu": "Нович.",
+                  "xPct": 9.1,
+                  "yPct": 36.5,
+                  "widthPct": 10.2,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "profesionales-label",
+                  "textRu": "Проф.",
+                  "xPct": 19.9,
+                  "yPct": 36.5,
+                  "widthPct": 10.4,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "motociclistas-label",
+                  "textRu": "Мото",
+                  "xPct": 30.7,
+                  "yPct": 36.5,
+                  "widthPct": 10.4,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "acompanantes-label",
+                  "textRu": "Пасс. мото",
+                  "xPct": 41.7,
+                  "yPct": 36.5,
+                  "widthPct": 10.3,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "particulares-label",
+                  "textRu": "Частн.",
+                  "xPct": 52.4,
+                  "yPct": 36.5,
+                  "widthPct": 10.3,
+                  "heightPct": 4.4,
+                  "tone": "light-on-blue"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg"
+            }
+          ]
+        },
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch4-alcohol-drugs-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 4 PR."
+          },
+          {
+            "id": "ch4-alcohol-drugs-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 4 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 90-92 plus the alcohol/drugs topic blocks on shared page 93 are rendered as selectable Russian DOM text covering impairment, medication, drug-test, alcohol-limit, absorption, elimination, positive-test, refusal rules, responsible-driver guidance, certified/calibrated instruments, and resaca/veisalgia.",
+          "The page 90 drug-test photo/device visual remains an x5 source-as-is runtime crop with matching source crop hash.",
+          "Page 91 alcohol-limit infographic uses the transferred source-crop PNG as its image base, with Spanish glyph cleanup and selectable Russian category labels over the cleaned header bands; threshold details remain selectable below the image."
+        ],
+        "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 93,
+        "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-093-source-line-mask-03",
+          "page-093-source-line-mask-04",
+          "page-093-source-line-mask-05",
+          "page-093-source-line-mask-06",
+          "page-093-source-line-mask-07",
+          "page-093-source-line-mask-08",
+          "page-093-source-line-mask-09",
+          "page-093-source-line-mask-16",
+          "page-093-source-line-mask-17",
+          "page-093-source-line-mask-18",
+          "page-093-source-line-mask-19",
+          "page-093-source-line-mask-20",
+          "page-093-source-line-mask-21",
+          "page-093-source-line-mask-22",
+          "page-093-source-line-mask-23",
+          "page-093-source-line-mask-34",
+          "page-093-source-line-mask-35"
+        ],
+        "boundaryEvidence": "layout.ru.json page 93 masks 03-09 retain the responsible-driver recommendation; masks 16-23 retain the alcoholemia/toxicological instrument, positive/refusal-procedure, and resaca/veisalgia content; masks 34-35 are the Conductor/a Responsable label. These page-93 alcohol/drugs topic blocks are excluded from sleep/fatigue runtime.",
+        "excludesSectionId": "ch4-sleep-fatigue"
+      }
+    },
+    {
+      "id": "ch4-sleep-fatigue",
+      "labelRu": "Сон и усталость",
+      "sourceTitleEs": "Sueño y fatiga",
+      "routeHash": "#manual-section-ch4-sleep-fatigue",
+      "sourcePageRange": {
+        "start": 93,
+        "end": 94
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 93,
+          "manualManifestPointer": "/pages/92",
+          "layoutManifestPointer": "/pages/92",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg"
+        },
+        {
+          "sourcePage": 94,
+          "manualManifestPointer": "/pages/93",
+          "layoutManifestPointer": "/pages/93",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-094.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sectionContentModulePath": "src/data/manual-sections/ch4-sleep-fatigue.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch4-sleep-fatigue",
+        "sourcePages": [
+          93,
+          94
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 93,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-sleep-fatigue/page-093-sleep-fatigue-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e"
+            }
+          },
+          {
+            "sourcePage": 94,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-sleep-fatigue/page-094-sleep-fatigue-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "debef893b3a4678f3f2a85e213eef2e1290cf72f34f7d9125f8143292adef55a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "debef893b3a4678f3f2a85e213eef2e1290cf72f34f7d9125f8143292adef55a"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch4-sleep-fatigue.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch4-sleep-fatigue/ch4-sleep-fatigue-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch4-sleep-fatigue/ch4-sleep-fatigue-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch4-sleep-fatigue-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 4 PR."
+          },
+          {
+            "id": "ch4-sleep-fatigue-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 4 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Page 93 is shared; sleep/fatigue starts at the Sueño y fatiga heading and excludes the responsible-driver and alcoholemia/toxicology/veisalgia alcohol/drugs blocks.",
+          "Page 94 is shared; sleep/fatigue owns masks 02-30 before the Estrés heading at mask 31.",
+          "No Spanish glyph cleanup was needed for this section because runtime content is native text only."
+        ],
+        "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": [
+        {
+          "sharedSourcePage": 93,
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "boundaryEvidence": "layout.ru.json page 93 mask 02 is the Sueño y fatiga heading; masks 10-15 contain the biological-need and insufficient-sleep text; masks 24-33 contain Dormir pocas horas and the fatigue definition. Responsible-driver, alcoholemia/toxicology, and resaca/veisalgia masks are excluded to ch4-alcohol-drugs.",
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
+        },
+        {
+          "sharedSourcePage": 94,
+          "ownedRegion": "sleep-fatigue-symptoms-recommendations-and-remedies",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-02",
+            "page-094-source-line-mask-03",
+            "page-094-source-line-mask-04",
+            "page-094-source-line-mask-05",
+            "page-094-source-line-mask-06",
+            "page-094-source-line-mask-07",
+            "page-094-source-line-mask-08",
+            "page-094-source-line-mask-09",
+            "page-094-source-line-mask-10",
+            "page-094-source-line-mask-11",
+            "page-094-source-line-mask-12",
+            "page-094-source-line-mask-13",
+            "page-094-source-line-mask-14",
+            "page-094-source-line-mask-15",
+            "page-094-source-line-mask-16",
+            "page-094-source-line-mask-17",
+            "page-094-source-line-mask-18",
+            "page-094-source-line-mask-19",
+            "page-094-source-line-mask-20",
+            "page-094-source-line-mask-21",
+            "page-094-source-line-mask-22",
+            "page-094-source-line-mask-23",
+            "page-094-source-line-mask-24",
+            "page-094-source-line-mask-25",
+            "page-094-source-line-mask-26",
+            "page-094-source-line-mask-27",
+            "page-094-source-line-mask-28",
+            "page-094-source-line-mask-29",
+            "page-094-source-line-mask-30"
+          ],
+          "boundaryEvidence": "layout.ru.json page 94 masks 02-30 contain the footnote, fatigue symptoms, 8-hour/200-km/2-hour and motovehicle 100-km/1-hour recommendations, 17-awake-hours comparison, and sleep-vs-fatigue remedies; mask 31 starts Estrés.",
+          "endsBeforeLayoutBlockId": "page-094-source-line-mask-31",
+          "excludesSectionId": "ch4-stress"
+        }
+      ]
+    },
+    {
+      "id": "ch4-stress",
+      "labelRu": "Стресс",
+      "sourceTitleEs": "Estrés",
+      "routeHash": "#manual-section-ch4-stress",
+      "sourcePageRange": {
+        "start": 94,
+        "end": 95
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 94,
+          "manualManifestPointer": "/pages/93",
+          "layoutManifestPointer": "/pages/93",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-094.jpg"
+        },
+        {
+          "sourcePage": 95,
+          "manualManifestPointer": "/pages/94",
+          "layoutManifestPointer": "/pages/94",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-095.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sectionContentModulePath": "src/data/manual-sections/ch4-stress.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch4-stress",
+        "sourcePages": [
+          94,
+          95
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 94,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-stress/page-094-stress-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "debef893b3a4678f3f2a85e213eef2e1290cf72f34f7d9125f8143292adef55a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "debef893b3a4678f3f2a85e213eef2e1290cf72f34f7d9125f8143292adef55a"
+            }
+          },
+          {
+            "sourcePage": 95,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-stress/page-095-stress-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "541366568d636df919f1a3a948481c83228f9a5d15849c6bfdafc8b70c2f1dd1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "541366568d636df919f1a3a948481c83228f9a5d15849c6bfdafc8b70c2f1dd1"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch4-stress.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch4-stress/ch4-stress-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch4-stress/ch4-stress-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch4-stress-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 4 PR."
+          },
+          {
+            "id": "ch4-stress-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 4 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Direct navigation starts on source page 94, where Estrés begins; recommendation bullets continue on shared source page 95.",
+          "Stress is rendered as selectable Russian DOM text covering the OMS definition, double relation with driving, and recommendation list.",
+          "No Spanish glyph cleanup was needed for this section because runtime content is native text only."
+        ],
+        "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": [
+        {
+          "sharedSourcePage": 94,
+          "ownedRegion": "stress-definition-and-driving-relationship",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-31",
+            "page-094-source-line-mask-32",
+            "page-094-source-line-mask-33",
+            "page-094-source-line-mask-34",
+            "page-094-source-line-mask-35",
+            "page-094-source-line-mask-36",
+            "page-094-source-line-mask-37",
+            "page-094-source-line-mask-38",
+            "page-094-source-line-mask-39",
+            "page-094-source-line-mask-40",
+            "page-094-source-line-mask-41"
+          ],
+          "boundaryEvidence": "layout.ru.json page 94 mask 31 starts the Estrés heading and masks 32-41 contain the OMS definition, modern-demand context, double relationship with driving, and Recomendaciones heading.",
+          "startsAtLayoutBlockId": "page-094-source-line-mask-31",
+          "startsAtSourceTextEs": "Estrés",
+          "excludesSectionId": "ch4-sleep-fatigue"
+        },
+        {
+          "sharedSourcePage": 95,
+          "ownedRegion": "stress-recommendations-continuation",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-095-source-line-mask-08",
+            "page-095-source-line-mask-09",
+            "page-095-source-line-mask-10",
+            "page-095-source-line-mask-11",
+            "page-095-source-line-mask-12",
+            "page-095-source-line-mask-13",
+            "page-095-source-line-mask-14"
+          ],
+          "boundaryEvidence": "layout.ru.json page 95 masks 08-14 continue the stress Recomendaciones list from the preceding page before the distractions definition/body continues.",
+          "startsAtLayoutBlockId": "page-095-source-line-mask-08",
+          "startsAtSourceTextEs": "Prestar atención al contexto",
+          "excludesSectionId": "ch4-distractions"
+        }
+      ]
+    },
+    {
+      "id": "ch4-distractions",
+      "labelRu": "Отвлечения",
+      "sourceTitleEs": "Distracciones",
+      "routeHash": "#manual-section-ch4-distractions",
+      "sourcePageRange": {
+        "start": 95,
+        "end": 97
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 95,
+          "manualManifestPointer": "/pages/94",
+          "layoutManifestPointer": "/pages/94",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-095.jpg"
+        },
+        {
+          "sourcePage": 96,
+          "manualManifestPointer": "/pages/95",
+          "layoutManifestPointer": "/pages/95",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-096.jpg"
+        },
+        {
+          "sourcePage": 97,
+          "manualManifestPointer": "/pages/96",
+          "layoutManifestPointer": "/pages/96",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-097.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sectionContentModulePath": "src/data/manual-sections/ch4-distractions.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch4-distractions",
+        "sourcePages": [
+          95,
+          96,
+          97
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 95,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-095-distractions-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "541366568d636df919f1a3a948481c83228f9a5d15849c6bfdafc8b70c2f1dd1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "541366568d636df919f1a3a948481c83228f9a5d15849c6bfdafc8b70c2f1dd1"
+            }
+          },
+          {
+            "sourcePage": 95,
+            "sourceRegion": {
+              "x": 1190,
+              "y": 2160,
+              "width": 860,
+              "height": 260
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+            "cropDimensions": {
+              "width": 860,
+              "height": 260
+            },
+            "cropSha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 95 source-reference export using top-left coordinates; retained as the source crop for glyph-letter-level infographic transfer without resizing",
+              "outputDimensions": {
+                "width": 860,
+                "height": 260
+              },
+              "sha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+            }
+          },
+          {
+            "sourcePage": 96,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-096-distractions-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "64d769b0f270ebad9a9d33967b99d6a657ffff32ec6177c8fce03d81ddde5d8a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "64d769b0f270ebad9a9d33967b99d6a657ffff32ec6177c8fce03d81ddde5d8a"
+            }
+          },
+          {
+            "sourcePage": 97,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-097-distractions-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1672ef9ab63b534bbfe0564ab9f0d7ec1948a74d042d6df719ed3eb84e2253a2",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1672ef9ab63b534bbfe0564ab9f0d7ec1948a74d042d6df719ed3eb84e2253a2"
+            }
+          },
+          {
+            "sourcePage": 97,
+            "sourceRegion": {
+              "x": 1160,
+              "y": 1680,
+              "width": 720,
+              "height": 900
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+            "cropDimensions": {
+              "width": 720,
+              "height": 900
+            },
+            "cropSha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 97 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 720,
+                "height": 900
+              },
+              "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch4-distractions.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-distraction-panels",
+            "assetCategory": "source-transferred-infographic",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "width": 860,
+            "height": 260,
+            "sha256": "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "maxHeightCssPx": 260,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 95 source crop transferred as the base image; Spanish letter pixels cleaned with background restoration, output kept at source crop dimensions with no resize or upscale",
+              "outputDimensions": {
+                "width": 860,
+                "height": 260
+              },
+              "sha256": "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c"
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+              "sourceCropSha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+              "sourceCropDimensions": {
+                "width": 860,
+                "height": 260
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "cleanupMethod": "glyph-letter-level-background-restoration",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "distraction-food-label",
+                  "textRu": "Еда / мате",
+                  "xPct": 7.2,
+                  "yPct": 29.4,
+                  "widthPct": 18.1,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "distraction-object-label",
+                  "textRu": "Предмет",
+                  "xPct": 25.8,
+                  "yPct": 29.4,
+                  "widthPct": 17.9,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "distraction-view-label",
+                  "textRu": "Нет обзора",
+                  "xPct": 44.4,
+                  "yPct": 29.4,
+                  "widthPct": 18.1,
+                  "heightPct": 12.4,
+                  "tone": "dark-on-light"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-attention-quote",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 720,
+            "height": 900,
+            "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 480,
+              "maxHeightCssPx": 900,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 97 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 720,
+                "height": 900
+              },
+              "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg"
+            }
+          ]
+        },
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch4-distractions/ch4-distractions-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch4-distractions/ch4-distractions-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch4-distractions-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 4 PR."
+          },
+          {
+            "id": "ch4-distractions-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 4 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Direct navigation starts on source page 95 and preserves the distractions topic through page 97.",
+          "Runtime content covers eating/drinking/mate/smoking, phone, GPS, passenger/mirror/other-action details, and the 100% attention closing line.",
+          "Page 95 distraction-panel infographic uses the transferred source-crop PNG as its image base, with Spanish glyph cleanup and selectable Russian panel labels over the cleaned caption bands; page 97 photo remains protected source-as-is.",
+          "The page 97 photo/quote remains an x5 source-as-is runtime crop with matching source crop hash and Russian learner explanation outside the protected photo visual."
+        ],
+        "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 95,
+        "ownedRegion": "distractions-heading-eating-body-and-recommendations-intro",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-095-source-line-mask-02",
+          "page-095-source-line-mask-03",
+          "page-095-source-line-mask-04",
+          "page-095-source-line-mask-05",
+          "page-095-source-line-mask-06",
+          "page-095-source-line-mask-07",
+          "page-095-source-line-mask-15",
+          "page-095-source-line-mask-16",
+          "page-095-source-line-mask-17",
+          "page-095-source-line-mask-18",
+          "page-095-source-line-mask-19",
+          "page-095-source-line-mask-20",
+          "page-095-source-line-mask-21",
+          "page-095-source-line-mask-22",
+          "page-095-source-line-mask-23"
+        ],
+        "boundaryEvidence": "layout.ru.json page 95 masks 02-07 contain Distracciones heading plus eating/drinking/mate/smoking risk; masks 15-23 contain the distraction definition, driving application, divided-attention warning, and Recomendaciones heading. Masks 08-14 belong to stress recommendations.",
+        "startsAtLayoutBlockId": "page-095-source-line-mask-02",
+        "startsAtSourceTextEs": "Distracciones",
+        "excludesSectionId": "ch4-stress"
       }
     }
   ]
