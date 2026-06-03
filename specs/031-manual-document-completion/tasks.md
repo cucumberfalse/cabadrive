@@ -171,6 +171,13 @@ For each chapter-equivalent content PR:
 - Architect validation evidence: PR #185 prerequisite scope validated after strict crop/extraction dimension repair and follow-up process-memory wording fix.
 - Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 1a45d342637feae88f2c102cbb9cf815079eaefb.
 - Limit escalation: none
+- Effective content head: bc71004c284984f682745ce0337bf2e154fef143
+- Architect validation: passed at 2026-06-03T06:31:34Z for effective content head bc71004c284984f682745ce0337bf2e154fef143.
+- Architect validated effective content head: bc71004c284984f682745ce0337bf2e154fef143
+- Architect return count: 0
+- Architect validation evidence: PR #185 prerequisite scope validated after source-as-is provenance byte/dimension/hash repair and broad cleanup forbidden-term repair.
+- Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at bc71004c284984f682745ce0337bf2e154fef143.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -377,6 +384,42 @@ Architect validation evidence: Cycle PR-set coverage for PR #185 is current for 
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 1a45d342637feae88f2c102cbb9cf815079eaefb.
+
+Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
+
+## Final Architect Validation Rerun - PR #185 Source-As-Is Provenance And Broad Cleanup Repair
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T06:31:34Z
+
+Architect validated effective content head: bc71004c284984f682745ce0337bf2e154fef143
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #185 prerequisite scope at bc71004c284984f682745ce0337bf2e154fef143.
+
+Architect validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs/checker/evidence/tests/process memory; no chapter content implementation, runtime manual pages, source assets, Introduction/Chapter 1 audit implementation, or unrelated product implementation are bundled.
+
+Architect validation evidence: Prior final validations for earlier effective content heads are stale because non-evidence checker/test/evidence-policy repairs followed; this validation covers the current PR head and effective content head bc71004c284984f682745ce0337bf2e154fef143, including the source-as-is provenance repair and broad cleanup forbidden-term repair.
+
+Architect validation evidence: The source-as-is provenance repair satisfies the visual-source-fidelity intent by requiring strict source-as-is-photo, source-as-is-traffic-sign, and source-as-is-road-marking runtime assets to reference strict sourceRegionMetadata through sourceIntegrity.sourceAssetPath, with local runtime asset SHA-256 and decoded dimensions matching the referenced source crop bytes and dimensions.
+
+Architect validation evidence: The broad cleanup repair satisfies the infographic/diagram cleanup constraint by rejecting square patch, color-matched plate, opaque rectangle, broad box, and separator/case variants under strict forbidden-term scanning, alongside the existing broad mask, broad patch, broad plate, redraw, reconstruction, and generic replacement protections.
+
+Architect validation evidence: The repaired prerequisite still enforces x5/equivalent high-resolution export evidence, unmodified source-as-is protected handling for photos, traffic signs, and road markings, transferred-source infographic/diagram requirements, glyph/letter-level Spanish cleanup only, selectable Russian overlay guidance where feasible, byte-verified asset/crop hashes, crop/extraction decoded dimensions, no-upscale/runtime-size evidence, protected visible-Spanish exception gating, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Architect validation evidence: Implementation Agent recorded local verification for bc71004c284984f682745ce0337bf2e154fef143: manual-guide checker passed, focused node test passed with 61 tests, validate:content passed, pnpm test passed with 370 tests, build passed with the known nonfatal Vite large chunk warning, preflight passed including 74 Playwright tests, check-feature-memory passed, and git diff --check passed.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head bc71004c284984f682745ce0337bf2e154fef143, review id 4416063852; earlier Codex bot findings 3346333846 and 3346315639 were addressed.
+
+Architect validation evidence: GitHub PR state observed current head bc71004c284984f682745ce0337bf2e154fef143, mergeable, with required checks green: baseline-checks, docker-validation, guard, AI Review, and osv-scan.
+
+Architect validation evidence: Cycle PR-set coverage for PR #185 is current for this prerequisite validation: branch codex/031-manual-document-completion, PR #185, base b07d5c72bf1689e7dac480e937c366a528d20299, effective content head bc71004c284984f682745ce0337bf2e154fef143, with later audit/correction/chapter/appendix/front-matter rows still pending by design and outside this prerequisite validation pass.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at bc71004c284984f682745ce0337bf2e154fef143.
 
 Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
 
