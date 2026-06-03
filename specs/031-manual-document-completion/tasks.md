@@ -95,7 +95,7 @@ For each chapter-equivalent content PR:
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
 | Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR #187, merged | `9750b1578627c531146226ebe0e9673aadfef67b` | effective content head `3b651151e5fc918c480b99a19f5569214ae2339f`; final/evidence head `deb1bc2ecfc951e8631496f5d3dd000bfb60f58f`; merge commit `49c145e9dd4f4661f99d05f79c3e55ed425d4155` | merged into `main`; Chapter 2 content and review fixes completed for pages `43-56` | yes |
 | Chapter 3 content | pages `57-88` | branch `codex/031-chapter-3`; PR #188, https://github.com/cucumberfalse/cabadrive/pull/188 | `49c145e9dd4f4661f99d05f79c3e55ed425d4155` | implementation content head `4f0c782505242b9cc8583af7644e5f6f44173254`; speed/highway review-fix content head `2c128758de15de388a03f090ad394e39f3c36377`; outside-CABA speed-table repair included at effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`; repeat Architect and Analyst validation passed for that effective head; finalizer-readable parser repair evidence head `60d366fd946841919f8740f27710d906b2a47d8d`; current/final PR head is verified by Orchestrator final guards/finalizer before merge | ready for final guards after process-memory-only row freshness repair for `PRRT_kwDOSX65IM6GzRmW`; post-effective commits are final-validation/process-memory evidence only; no Chapter 4+ content bundled | yes |
-| Chapter 4 content | pages `89-97` | branch `codex/031-chapter-4`; PR #189, https://github.com/cucumberfalse/cabadrive/pull/189 | `19fecc3a1a2ca4ab9273cdbe6833e7d6d5d7ef27` | implementation content head `2338c3a5e777cbd469f9ca23bcbbbf9dbbd4c62b`; first review-fix head before visual-fidelity repair `2f4aad4250fdd63e66495d515274293d2721a737`; prior validated effective content head `a8ecdac9daed66274ba51fb04ecbe47279aae2f6`; page-93 boundary review-fix head is supplied by Implementation Agent handoff after verified commit/push | ready PR open; Chapter 4 content and review fixes for `PRRT_kwDOSX65IM6G1K3A`, `PRRT_kwDOSX65IM6G1LSI`, visual-fidelity thread `PRRT_kwDOSX65IM6G1aYu`, and Codex review comment `3350790136` are implemented; because the page-93 boundary fix is a post-validation non-evidence content/test/registry/process repair, fresh Architect then Analyst final validation is required for the new effective content head | yes |
+| Chapter 4 content | pages `89-97` | branch `codex/031-chapter-4`; PR #189, https://github.com/cucumberfalse/cabadrive/pull/189 | `19fecc3a1a2ca4ab9273cdbe6833e7d6d5d7ef27` | implementation content head `2338c3a5e777cbd469f9ca23bcbbbf9dbbd4c62b`; first review-fix head before visual-fidelity repair `2f4aad4250fdd63e66495d515274293d2721a737`; prior validated effective content head `a8ecdac9daed66274ba51fb04ecbe47279aae2f6`; page-93 boundary review-fix and current effective content head `17dd8db5872dc90586191b6e9c972cfbe681da7b` | ready for Analyst final validation after Architect pass at `17dd8db5872dc90586191b6e9c972cfbe681da7b`; Chapter 4 content and review fixes for `PRRT_kwDOSX65IM6G1K3A`, `PRRT_kwDOSX65IM6G1LSI`, visual-fidelity thread `PRRT_kwDOSX65IM6G1aYu`, and Codex review comment `3350790136` are implemented and verified; no Chapter 5+ content bundled | yes |
 | Chapter 5 content | pages `98-103` | pending | pending | pending | pending | yes |
 | Appendix I content | pages `104-122` | pending | pending | pending | pending | yes |
 | Appendix II content | pages `123-151` | pending | pending | pending | pending | yes |
@@ -486,6 +486,18 @@ For each chapter-equivalent content PR:
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head a8ecdac9daed66274ba51fb04ecbe47279aae2f6 for PR #189; post-effective changes through final validation/guard evidence transport are final-validation evidence only in `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
 - Validation staleness notice, PR #189: Codex review comment `3350790136` required a post-validation non-evidence content/test/registry/process repair after effective content head `a8ecdac9daed66274ba51fb04ecbe47279aae2f6`; therefore the Architect/Analyst final validation and current-head guard evidence recorded for `a8ecdac9daed66274ba51fb04ecbe47279aae2f6` are stale for finalization. The next pushed page-93 boundary repair head must become the new effective content head and receive fresh Architect then Analyst final validation before finalization.
+- Effective content head: 17dd8db5872dc90586191b6e9c972cfbe681da7b
+- Architect validation: passed at 2026-06-03T18:40:30Z for effective content head 17dd8db5872dc90586191b6e9c972cfbe681da7b.
+- Architect validated effective content head: 17dd8db5872dc90586191b6e9c972cfbe681da7b
+- Architect return count: 0
+- Architect validation: prior Architect validation for a8ecdac9daed66274ba51fb04ecbe47279aae2f6 is superseded because the page-93 boundary content/test/registry/process repair through 17dd8db5872dc90586191b6e9c972cfbe681da7b is part of the new effective content head.
+- Architect validation: PR #189 Chapter 4 scope validated for pages 89-97 only; page 89 is divider-only, alcohol/drugs owns pre-Sueño y fatiga page-93 blocks, sleep/fatigue begins at the Sueño y fatiga heading and continues through page 94, stress owns page 94 plus recommendations on shared page 95, and direct distractions navigation starts on page 95.
+- Architect validation: required checks passed on 17dd8db5872dc90586191b6e9c972cfbe681da7b: AI Review, baseline-checks, docker-validation, guard, and osv-scan; PR is clean/mergeable, not draft, and review threads are resolved including PRRT_kwDOSX65IM6G2Ddl.
+- Architect validation: Review Agent pass 4421626162 found no actionable findings at 17dd8db5872dc90586191b6e9c972cfbe681da7b; blocking Codex P2 3350790136 / PRRT_kwDOSX65IM6G2Ddl is fixed and resolved.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
+- Architect validation: Chapter 4 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #189, accepted no action for Chapter 4 scope, and disposition not applicable.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head 17dd8db5872dc90586191b6e9c972cfbe681da7b for PR #189; post-effective changes through final validation/guard evidence transport are final-validation evidence only in `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
 
 ## Known Issues / Architect Dispositions
 
@@ -557,7 +569,7 @@ For each chapter-equivalent content PR:
 
 ## Implementation Agent Feedback
 
-- Implementation Agent feedback for Chapter 4 scope: none requiring Architect action. Page `89` is disposed as divider-only; pages `90-97` are implemented as the assigned Chapter 4 content slice; page `93` alcohol/drugs-to-sleep/fatigue boundary, page `94` sleep/fatigue-to-stress boundary, and page `95` stress-to-distractions/direct-route boundary are recorded and tested; visual/source-fidelity evidence includes source-as-is x5 runtime crops for the official Chapter 4 visuals with selectable Russian DOM explanation outside images and no source visual modification. PR #189 review fixes for alcohol-limit rows, sleep/fatigue Russian wording, visual-fidelity thread `PRRT_kwDOSX65IM6G1aYu`, and Codex review comment `3350790136` are implemented and verified locally; prior final validation for `a8ecdac9daed66274ba51fb04ecbe47279aae2f6` is stale and must be rerun for the new effective content head after this repair is pushed.
+- Implementation Agent feedback for Chapter 4 scope: none requiring Architect action. Architect disposition: disposed; no action needed for PR #189 at `17dd8db5872dc90586191b6e9c972cfbe681da7b`. Page `89` is disposed as divider-only; pages `90-97` are implemented as the assigned Chapter 4 content slice; page `93` alcohol/drugs-to-sleep/fatigue boundary, page `94` sleep/fatigue-to-stress boundary, and page `95` stress-to-distractions/direct-route boundary are recorded and tested; visual/source-fidelity evidence includes source-as-is x5 runtime crops for the official Chapter 4 visuals with selectable Russian DOM explanation outside images and no source visual modification. PR #189 review fixes for alcohol-limit rows, sleep/fatigue Russian wording, visual-fidelity thread `PRRT_kwDOSX65IM6G1aYu`, and Codex review comment `3350790136` are implemented and verified locally.
 - No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
 - No unresolved Implementation Agent feedback for the Introduction/Chapter 1 visual audit slice. Audit found no correction scope that requires Architect disposition. Architect disposition: disposed; no action needed for PR #186 audit-only scope.
 - No unresolved Implementation Agent feedback for the Chapter 2 content slice in PR #187. The Docker base-image metadata stall is recorded as a known verification blocker/disposition-not-product-feedback item, not product or architecture feedback. No Architect disposition is needed beyond the known-issue no-action disposition if applicable.
@@ -1247,6 +1259,50 @@ Architect validation evidence: Cycle PR-set coverage for this validation include
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope at a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #189 Chapter 4 scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #189 Chapter 4 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #189 because it is pre-existing, nonfatal, unrelated to Chapter 4 content, and disposition not applicable.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T18:40:30Z
+
+Architect validated effective content head: 17dd8db5872dc90586191b6e9c972cfbe681da7b
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #189 Chapter 4 scope at 17dd8db5872dc90586191b6e9c972cfbe681da7b.
+
+Architect validation evidence: Effective content head 17dd8db5872dc90586191b6e9c972cfbe681da7b supersedes a8ecdac9daed66274ba51fb04ecbe47279aae2f6 because the post-validation page-93 boundary content/test/registry/process repair is part of the effective content head.
+
+Architect validation evidence: PR #189 implements only Chapter 4 pages 89-97, covering ch4-alcohol-drugs, ch4-sleep-fatigue, ch4-stress, and ch4-distractions, with no Chapter 5, appendix, or front-matter content bundled.
+
+Architect validation evidence: Page 93 split is architecturally acceptable: alcohol/drugs owns the pre-Sueño y fatiga blocks including responsible-driver, certified/calibrated controls, and veisalgia/alcohol-specific blocks; sleep/fatigue begins at the Sueño y fatiga heading and continues through page 94.
+
+Architect validation evidence: Chapter 4 boundary behavior remains preserved: page 89 is divider-only, page 94 sleep/fatigue-to-stress boundary is recorded by line-mask evidence, and direct ch4-distractions navigation starts on shared page 95.
+
+Architect validation evidence: Strict visual requirements remain satisfied: x5/high-resolution evidence is recorded, runtime source visuals for pages 90, 91, 95, and 97 are source-as-is local assets with source-integrity metadata and Russian explanation outside images, official source-as-is infographics are preserved under source-as-is metadata, and no protected photo, sign, marking, source image/crop, diagram, or infographic was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, broadly patched, or modified.
+
+Architect validation evidence: Review fixes remain satisfied: alcohol threshold grid preserves 0.00, 0.20, and 0.50 g/l rows by category, sleep/fatigue learner wording is Russian-only, learner-visible runtime source visuals for pages 90, 91, 95, and 97 are present with strict evidence, and page-93 alcohol/sleep boundary fix is included.
+
+Architect validation evidence: Required checks passed on 17dd8db5872dc90586191b6e9c972cfbe681da7b: AI Review, baseline-checks, docker-validation, guard, and osv-scan; PR #189 is clean/mergeable, not draft, and unresolved review threads count is zero.
+
+Architect validation evidence: Review Agent pass 4421626162 found no actionable findings at 17dd8db5872dc90586191b6e9c972cfbe681da7b; blocking Codex P2 3350790136 / PRRT_kwDOSX65IM6G2Ddl was fixed and resolved after verification.
+
+Architect validation evidence: Implementation Agent feedback and known-issue gates are disposed: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope, no unresolved known issue lacks owner decision, and no Analyst feedback requires Architect action.
+
+Architect validation evidence: Known Issues section records the Vite large chunk warning as pre-existing, nonfatal, unrelated to Chapter 4 content, accepted no action for Chapter 4 scope, and disposition not applicable; PR #189 review-fix known issues are resolved with no source visual modification.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, merged PR #186 as Introduction and Chapter 1 audit-only slice, merged PR #187 as Chapter 2 content slice, PR #188 as Chapter 3 content slice, and PR #189 as Chapter 4 content slice at base 19fecc3a1a2ca4ab9273cdbe6833e7d6d5d7ef27 and effective content head 17dd8db5872dc90586191b6e9c972cfbe681da7b.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope at 17dd8db5872dc90586191b6e9c972cfbe681da7b.
 
 Architect disposition: no unresolved known issue lacks owner decision for PR #189 Chapter 4 scope.
 

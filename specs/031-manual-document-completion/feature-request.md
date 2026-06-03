@@ -767,3 +767,29 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T18:42:42Z
+
+Analyst validated effective content head: 17dd8db5872dc90586191b6e9c972cfbe681da7b
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #189 Chapter 4 scope. The effective content head implements Chapter 4 pages `89-97` only with page `89` divider-only, does not bundle Chapter 5, appendices, or front matter, preserves one chapter-equivalent per PR, keeps strict visual requirements honored, and includes source-as-is runtime visuals with Russian explanation outside protected images.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T18:40:30Z` for the same effective content head `17dd8db5872dc90586191b6e9c972cfbe681da7b`.
+
+Analyst validation evidence: The latest fix moved page-93 pre-heading alcohol and drugs blocks into the alcohol/drugs section, so sleep/fatigue now begins at the `Sueño y fatiga` heading.
+
+Analyst validation evidence: Review Agent passed at `17dd8db5872dc90586191b6e9c972cfbe681da7b`, required GitHub checks passed, unresolved review threads are `0`, and merge state is CLEAN/MERGEABLE according to the assigned evidence.
+
+Gaps, if any: none for the PR #189 Chapter 4 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 4 validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #189; Architect process memory records no unresolved Implementation Agent feedback for this Chapter 4 scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
