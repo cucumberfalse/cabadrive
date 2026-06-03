@@ -208,29 +208,29 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
           ]
         },
         {
-          id: "outside-pickup-rv-motorcycle-route",
+          id: "outside-passenger-routes-semihighways",
           cellsRu: [
-            "Camionetas, casas rodantes motorizadas, motocicletas",
+            "Microbuses, omnibus y casas rodantes motorizadas",
             "90 км/ч",
-            "ruta y semiautopista"
+            "rutas y semiautopistas"
           ]
         },
         {
-          id: "outside-heavy-rv-motorcycle-highway",
+          id: "outside-passenger-national-highways",
           cellsRu: [
-            "Camiones, casas rodantes motorizadas, motocicletas",
+            "Microbuses, omnibus y casas rodantes motorizadas",
             "100 км/ч",
             "autopistas nacionales"
           ]
         },
         {
-          id: "outside-cars-route",
-          cellsRu: ["Automoviles", "110 км/ч", "ruta"]
+          id: "outside-cars-motorcycles-route",
+          cellsRu: ["Motocicletas y automoviles", "110 км/ч", "ruta"]
         },
         {
-          id: "outside-passenger-pickup-network",
+          id: "outside-pickups-network",
           cellsRu: [
-            "Camionetas y transporte de pasajeros/as",
+            "Camionetas",
             "110 км/ч",
             "rutas, semiautopistas y autopistas nacionales"
           ]
