@@ -152,7 +152,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
       {
         sourcePage: 24,
         sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
-        sourceAssetPath: writeTempFile(join(tempDir, "evidence", "source-crop-24.png")),
+        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-24.png"), 120, 80),
         cropDimensions: { width: 120, height: 80 },
         cropSha256: "fixture-source-crop-24-sha",
         cleanupScope: "none"
@@ -160,7 +160,7 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
       {
         sourcePage: 29,
         sourceRegion: { x: 10, y: 10, width: 90, height: 60 },
-        sourceAssetPath: writeTempFile(join(tempDir, "evidence", "source-crop-29.png")),
+        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-29.png"), 90, 60),
         cropDimensions: { width: 90, height: 60 },
         cropSha256: "fixture-source-crop-29-sha",
         cleanupScope: "none"
@@ -366,7 +366,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
       {
         sourcePage: 44,
         sourceRegion: { x: 0, y: 0, width: 120, height: 80 },
-        sourceAssetPath: writeTempFile(join(tempDir, "evidence", "source-crop-44.png")),
+        sourceAssetPath: writePngFixtureFile(join(tempDir, "evidence", "source-crop-44.png"), 120, 80),
         cropDimensions: { width: 120, height: 80 },
         cropSha256: "fixture-source-crop-44-sha",
         cleanupScope: "reference-only source crop"
@@ -1869,6 +1869,25 @@ test("Manual guide source-fidelity checker rejects strict image assets with over
   }
 });
 
+test("Manual guide source-fidelity checker rejects strict image assets with overclaimed extraction output dimensions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-overclaimed-extraction-dimensions-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].extractionScaleEvidence.outputDimensions = { width: 121, height: 80 };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict extraction metadata overstates referenced image dimensions");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker rejects strict image assets with non-image bytes", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-non-image-bytes-"));
   try {
@@ -1883,6 +1902,26 @@ test("Manual guide source-fidelity checker rejects strict image assets with non-
     assert.equal(
       result.message,
       "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].assetPath must reference a supported image with readable dimensions"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source crops with non-image bytes", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-crop-non-image-bytes-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      writeFileSync(implementationEvidence.sourceRegionMetadata[0].sourceAssetPath, "not image bytes");
+      implementationEvidence.sourceRegionMetadata[0].cropSha256 = sha256File(implementationEvidence.sourceRegionMetadata[0].sourceAssetPath);
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict source crop metadata references non-image bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].sourceAssetPath must reference a supported image with readable dimensions"
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -1916,6 +1955,44 @@ test("Manual guide source-fidelity checker rejects strict source crops with stal
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must match referenced artifact bytes");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source crops with mismatched cropDimensions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-crop-dimensions-mismatch-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.sourceRegionMetadata[0].cropDimensions = { width: 121, height: 80 };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict cropDimensions do not match source crop artifact bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropDimensions.width must match referenced image width"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source crops with overclaimed extraction output dimensions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-crop-extraction-dimensions-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions = { width: 121, height: 80 };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict source crop extraction dimensions do not match artifact bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].extractionScaleEvidence.outputDimensions.width must match referenced image width"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

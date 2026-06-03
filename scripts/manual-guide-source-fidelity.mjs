@@ -326,15 +326,40 @@ function legacyBaselineStateFingerprint(section, implementedEvidence) {
   });
 }
 
-function validateExtractionScaleEvidence(value, messagePrefix) {
+function validateExtractionScaleEvidence(value, messagePrefix, actualDimensions = null) {
   assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
   assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
   assertCondition(typeof value.method === "string" && value.method.length > 0, `${messagePrefix}.method must describe the export method`, value);
   assertRequiredFields(value.outputDimensions, ["width", "height"], `${messagePrefix}.outputDimensions`);
   assertCondition(value.outputDimensions.width > 0 && value.outputDimensions.height > 0, `${messagePrefix}.outputDimensions must be positive`, value);
+  if (actualDimensions !== null) {
+    assertCondition(value.outputDimensions.width === actualDimensions.width, `${messagePrefix}.outputDimensions.width must match referenced image width`, {
+      ...value,
+      actualDimensions
+    });
+    assertCondition(value.outputDimensions.height === actualDimensions.height, `${messagePrefix}.outputDimensions.height must match referenced image height`, {
+      ...value,
+      actualDimensions
+    });
+  }
   if ("sha256" in value) {
     validateSha256(value.sha256, `${messagePrefix}.sha256`);
   }
+}
+
+function validateStrictSourceRegionDimensions(entry, messagePrefix) {
+  const dimensions = readImageDimensions(entry.sourceAssetPath);
+  assertCondition(dimensions !== null, `${messagePrefix}.sourceAssetPath must reference a supported image with readable dimensions`, entry);
+  assertRequiredFields(entry.cropDimensions, ["width", "height"], `${messagePrefix}.cropDimensions`);
+  assertCondition(entry.cropDimensions.width === dimensions.width, `${messagePrefix}.cropDimensions.width must match referenced image width`, {
+    ...entry,
+    actualDimensions: dimensions
+  });
+  assertCondition(entry.cropDimensions.height === dimensions.height, `${messagePrefix}.cropDimensions.height must match referenced image height`, {
+    ...entry,
+    actualDimensions: dimensions
+  });
+  return dimensions;
 }
 
 function validateStrictImageAssetDimensions(asset, messagePrefix) {
@@ -450,7 +475,8 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     `${messagePrefix} sourceRegionMetadata`,
     (entry, label) => {
       validateFileSha256(entry.sourceAssetPath, entry.cropSha256, `${label}.cropSha256`, entry);
-      validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
+      const actualDimensions = validateStrictSourceRegionDimensions(entry, label);
+      validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
       assertNoForbiddenStrictVisualTerms(entry, label);
     }
   );
@@ -467,7 +493,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
         assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
         validateFileSha256(asset.assetPath, asset.sha256, `${label}.sha256`, asset);
         const actualDimensions = validateStrictImageAssetDimensions(asset, label);
-        validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
+        validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
         validateRuntimeDisplaySize(asset, label, actualDimensions);
       }
       if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
