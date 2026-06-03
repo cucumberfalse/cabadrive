@@ -1541,7 +1541,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
-    "visibleSpanishStatus.status=source_image_exceptions_only or official_traffic_sign_exception_only with exceptions.assetPath matching assetPath when visibleSpanish=true"
+    "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
@@ -1871,6 +1871,56 @@ test("Manual guide source-fidelity checker accepts strict source-as-is visible S
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.implementedSections, 1);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker accepts strict mixed source-image and sign visible Spanish exceptions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-mixed-source-sign-visible-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const signAsset = implementationEvidence.localAssetMetadata[0];
+      signAsset.assetKind = "official-traffic-sign-source-as-is";
+      signAsset.assetCategory = "source-as-is-traffic-sign";
+      signAsset.cleanupScope = "none-source-as-is";
+      signAsset.containsText = true;
+      signAsset.visibleSpanish = true;
+      signAsset.sourceIntegrity = {
+        sourceAsIs: true,
+        noTranslationOrRelabeling: true,
+        noRedrawRecolorCleanupRetouchMaskInpaint: true,
+        russianExplanationOutsideImage: true
+      };
+      signAsset.officialSignException = {
+        kind: "official-traffic-sign-source-as-is",
+        visibleSpanishScope: "official-sign-image-only",
+        sourceAsIs: true
+      };
+      implementationEvidence.visibleSpanishStatus = {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath: signAsset.assetPath,
+            kind: "official-traffic-sign-source-as-is",
+            visibleSpanishScope: "official-sign-image-only",
+            sourceAsIs: true
+          },
+          {
+            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const result = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.equal(result.status, 0, result.stderr);
+    const output = JSON.parse(result.stdout);
+    assert.equal(output.status, "pass");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

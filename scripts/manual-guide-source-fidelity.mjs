@@ -218,9 +218,16 @@ function isStrictProtectedSourceAsIsException(entry) {
 
 function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
   if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
-  const expectedStatus = assetCategory === "source-as-is-traffic-sign" ? "official_traffic_sign_exception_only" : "source_image_exceptions_only";
-  if (value.status !== expectedStatus) return new Set();
-  return new Set(value.exceptions.map((exception) => exception.assetPath).filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0));
+  const isTrafficSign = assetCategory === "source-as-is-traffic-sign";
+  const allowedStatuses = isTrafficSign ? new Set(["official_traffic_sign_exception_only", "source_image_exceptions_only"]) : new Set(["source_image_exceptions_only"]);
+  if (!allowedStatuses.has(value.status)) return new Set();
+  const expectedKind = isTrafficSign ? "official-traffic-sign-source-as-is" : "source-image-original-visible-text";
+  return new Set(
+    value.exceptions
+      .filter((exception) => exception.kind === expectedKind)
+      .map((exception) => exception.assetPath)
+      .filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0)
+  );
 }
 
 function collectForbiddenStrictVisualText(value, key = "") {

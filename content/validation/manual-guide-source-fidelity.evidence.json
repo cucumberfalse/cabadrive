@@ -237,7 +237,7 @@
       "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
       "sourceIntegrity.russianExplanationOutsideImage",
       "cleanupScope=none-source-as-is",
-      "visibleSpanishStatus.status=source_image_exceptions_only or official_traffic_sign_exception_only with exceptions.assetPath matching assetPath when visibleSpanish=true"
+      "visibleSpanishStatus.status=source_image_exceptions_only for source-image or mixed source-image/sign exceptions, or official_traffic_sign_exception_only for sign-only exceptions, with exceptions.assetPath matching assetPath when visibleSpanish=true"
     ],
     "infographicRequiredFields": [
       "assetCategory=source-transferred-infographic",
