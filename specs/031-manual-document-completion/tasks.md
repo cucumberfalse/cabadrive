@@ -164,6 +164,13 @@ For each chapter-equivalent content PR:
 - Analyst return count: 0
 - Analyst feedback Architect disposition: none; no unresolved Analyst feedback required Architect action for PR #185 prerequisite scope.
 - Limit escalation: none
+- Effective content head: 1a45d342637feae88f2c102cbb9cf815079eaefb
+- Architect validation: passed at 2026-06-03T06:06:15Z for effective content head 1a45d342637feae88f2c102cbb9cf815079eaefb.
+- Architect validated effective content head: 1a45d342637feae88f2c102cbb9cf815079eaefb
+- Architect return count: 0
+- Architect validation evidence: PR #185 prerequisite scope validated after strict crop/extraction dimension repair and follow-up process-memory wording fix.
+- Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 1a45d342637feae88f2c102cbb9cf815079eaefb.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -328,6 +335,42 @@ Architect validation evidence: Review Agent posted no actionable findings for `a
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`. PR #185 is ready for Analyst final validation once this Architect validation evidence is transported.
 
 Remaining work after this prerequisite validation rerun: final Analyst validation for PR #185 prerequisite scope, then Orchestrator current-head/readiness guards. The broader feature remains pending for Introduction/Chapter 1 visual-rule audit, any scoped corrections from that audit, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, final full-cycle Architect validation, and final Analyst validation.
+
+## Final Architect Validation Rerun - PR #185 Strict Crop Extraction Dimension Repair
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T06:06:15Z
+
+Architect validated effective content head: 1a45d342637feae88f2c102cbb9cf815079eaefb
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #185 prerequisite scope at 1a45d342637feae88f2c102cbb9cf815079eaefb.
+
+Architect validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs/checker/evidence/tests/process memory; no chapter content, runtime manual pages, source assets, Introduction/Chapter 1 audit implementation, or unrelated product implementation are bundled.
+
+Architect validation evidence: Prior final validations for earlier effective content heads are stale because non-evidence checker/test/evidence-policy repairs followed; this validation covers the current PR head and effective content head 1a45d342637feae88f2c102cbb9cf815079eaefb, including the 30e123420e97438a419e7eeccaa90f4e37f70d1c strict crop/extraction dimension repair and the 1a45d342637feae88f2c102cbb9cf815079eaefb process-memory wording fix.
+
+Architect validation evidence: The strict crop/extraction repair satisfies the visual-source-fidelity intent by requiring strict source crop artifacts to decode as supported PNG/GIF/JPEG images, tying cropDimensions to decoded crop bytes, tying extractionScaleEvidence.outputDimensions to decoded artifact dimensions for strict source crops and strict runtime image assets, and preserving strict non-image category behavior.
+
+Architect validation evidence: The repaired prerequisite still enforces x5/equivalent high-resolution export evidence, source-as-is protected handling for photos, traffic signs, and road markings, transferred-source infographic/diagram requirements, glyph/letter-level Spanish cleanup only, no broad masks/plates/patches, selectable Russian overlay guidance where feasible, byte-verified asset/crop hashes, no-upscale/runtime-size evidence, forbidden visual-edit term scanning, protected visible-Spanish exception gating, and fingerprint-locked legacy allowance only for unchanged merged Chapter 1 baseline sections until the planned audit/correction slice.
+
+Architect validation evidence: Implementation Agent recorded local verification for 30e123420e97438a419e7eeccaa90f4e37f70d1c: manual-guide checker passed, focused node test passed with 60 tests, validate:content passed, pnpm test passed with 369 tests, build passed with the known nonfatal Vite large chunk warning, preflight passed including 74 Playwright tests, check-feature-memory passed, and git diff --check passed.
+
+Architect validation evidence: Implementation Agent recorded local verification for 1a45d342637feae88f2c102cbb9cf815079eaefb: check-feature-memory passed and git diff --check passed after the process-memory wording fix.
+
+Architect validation evidence: Review Agent posted no actionable findings for current head 1a45d342637feae88f2c102cbb9cf815079eaefb, review id 4415885493; earlier Review Agent findings for the strict crop/extraction repair and Cycle PR Set wording were addressed.
+
+Architect validation evidence: GitHub PR state observed current head 1a45d342637feae88f2c102cbb9cf815079eaefb, mergeable, with baseline-checks, docker-validation, guard, and osv-scan green; AI Review was in the process-revalidation lane, and this Architect validation records the role-owned evidence needed for that process gap.
+
+Architect validation evidence: Cycle PR-set coverage for PR #185 is current for this prerequisite validation: branch codex/031-manual-document-completion, PR #185, base b07d5c72bf1689e7dac480e937c366a528d20299, effective content head 1a45d342637feae88f2c102cbb9cf815079eaefb, with later audit/correction/chapter/appendix/front-matter rows still pending by design and outside this prerequisite validation pass.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 1a45d342637feae88f2c102cbb9cf815079eaefb.
+
+Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
 
 ## Review Requirements
 
