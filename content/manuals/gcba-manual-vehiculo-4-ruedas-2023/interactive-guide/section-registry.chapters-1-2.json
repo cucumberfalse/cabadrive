@@ -104,7 +104,7 @@
         "end": 56
       },
       "requiredPrintedPage": 42,
-      "status": "pending",
+      "status": "active",
       "sectionIds": [
         "ch2-legal-responsibility",
         "ch2-required-documents",
@@ -1774,12 +1774,109 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-045.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-2-responsibility",
       "sectionContentModulePath": "src/data/manual-sections/ch2-legal-responsibility.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch2-legal-responsibility",
+        "sourcePages": [
+          44,
+          45
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 44,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-legal-responsibility/page-044-legal-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "4d957773c67e6a00ddc3c72caea5bb159e54423bed6b10b007104485b47cb68b",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "4d957773c67e6a00ddc3c72caea5bb159e54423bed6b10b007104485b47cb68b"
+            }
+          },
+          {
+            "sourcePage": 45,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-legal-responsibility/page-045-legal-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "2c8472a9cdce38e180cfbe0d9395cca8271ed6e7af04d19fb37b56f72ddf9185",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "2c8472a9cdce38e180cfbe0d9395cca8271ed6e7af04d19fb37b56f72ddf9185"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch2-legal-responsibility.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch2-legal-responsibility/ch2-legal-responsibility-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch2-legal-responsibility/ch2-legal-responsibility-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch2-legal-responsibility-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 2 PR."
+          },
+          {
+            "id": "ch2-legal-responsibility-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 2 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Text-only legal section rendered as selectable Russian DOM text.",
+          "Law 2148, administrative, contravention, civil, criminal, alcohol 1.0 g/L, fleeing scene, and negligence/imprudence/impericia details are retained.",
+          "No protected photo, traffic sign, road marking, or infographic runtime asset is present in this section."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch2-required-documents",
@@ -1822,12 +1919,457 @@
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-050.jpg"
         }
       ],
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-2-responsibility",
       "sectionContentModulePath": "src/data/manual-sections/ch2-required-documents.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch2-required-documents",
+        "sourcePages": [
+          46,
+          47,
+          48,
+          49,
+          50
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 46,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 1795,
+              "width": 320,
+              "height": 118
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+            "cropDimensions": {
+              "width": 320,
+              "height": 118
+            },
+            "cropSha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 320,
+                "height": 118
+              },
+              "sha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d"
+            }
+          },
+          {
+            "sourcePage": 46,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 1950,
+              "width": 300,
+              "height": 105
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+            "cropDimensions": {
+              "width": 300,
+              "height": 105
+            },
+            "cropSha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 300,
+                "height": 105
+              },
+              "sha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee"
+            }
+          },
+          {
+            "sourcePage": 47,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 1605,
+              "width": 315,
+              "height": 215
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+            "cropDimensions": {
+              "width": 315,
+              "height": 215
+            },
+            "cropSha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 315,
+                "height": 215
+              },
+              "sha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99"
+            }
+          },
+          {
+            "sourcePage": 47,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 2490,
+              "width": 1110,
+              "height": 260
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1110,
+              "height": 260
+            },
+            "cropSha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1110,
+                "height": 260
+              },
+              "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5"
+            }
+          },
+          {
+            "sourcePage": 49,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 2000,
+              "width": 1150,
+              "height": 335
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1150,
+              "height": 335
+            },
+            "cropSha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1150,
+                "height": 335
+              },
+              "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98"
+            }
+          },
+          {
+            "sourcePage": 50,
+            "sourceRegion": {
+              "x": 1085,
+              "y": 2190,
+              "width": 360,
+              "height": 300
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+            "cropDimensions": {
+              "width": 360,
+              "height": 300
+            },
+            "cropSha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 360,
+                "height": 300
+              },
+              "sha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-dni",
+            "assetCategory": "source-as-is-photo",
+            "width": 320,
+            "height": 118,
+            "sha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 320,
+                "height": 118
+              },
+              "sha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 110,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-license",
+            "assetCategory": "source-as-is-photo",
+            "width": 300,
+            "height": 105,
+            "sha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 300,
+                "height": 105
+              },
+              "sha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 100,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-beginner-sign",
+            "assetCategory": "source-as-is-photo",
+            "width": 315,
+            "height": 215,
+            "sha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 315,
+                "height": 215
+              },
+              "sha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 140,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-cedulas",
+            "assetCategory": "source-as-is-photo",
+            "width": 1110,
+            "height": 260,
+            "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1110,
+                "height": 260
+              },
+              "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 90,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-vtv",
+            "assetCategory": "source-as-is-photo",
+            "width": 1150,
+            "height": 335,
+            "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1150,
+                "height": 335
+              },
+              "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 80,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-document-image-rva",
+            "assetCategory": "source-as-is-photo",
+            "width": 360,
+            "height": 300,
+            "sha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 360,
+                "height": 300
+              },
+              "sha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 180,
+              "maxHeightCssPx": 160,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "src/data/manual-sections/ch2-required-documents.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
+              "reason": "DNI sample contains source Spanish text and is preserved source-as-is."
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
+              "reason": "License sample contains source Spanish text and is preserved source-as-is."
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
+              "reason": "Beginner sign document visual contains source Spanish text and is preserved source-as-is."
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
+              "reason": "Cédula examples contain source Spanish text and are preserved source-as-is."
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
+              "reason": "VTV source visual contains source Spanish text and is preserved source-as-is."
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
+              "reason": "RVA source visual contains source Spanish text and is preserved source-as-is."
+            }
+          ]
+        },
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch2-required-documents-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 2 PR."
+          },
+          {
+            "id": "ch2-required-documents-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 2 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "DNI, license, beginner, cedula, VTV, and RVA visuals are scale-5 source crops used source-as-is in runtime.",
+          "Embedded Spanish inside document visuals remains source-image-only; Russian explanations are selectable DOM text outside images.",
+          "DNI/license, novice 0.0 g/L, cédula, GNC, insurance, VTV/RTO, license plate, and RVA details are retained."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch2-incident-obligations",
@@ -1885,12 +2427,187 @@
         "excludesSectionId": "ch2-scoring",
         "boundaryEvidence": "Scoring starts at page-055-block-08 on source PDF page 55; incident obligations owns only the NGO/contact material before that block."
       },
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-2-responsibility",
       "sectionContentModulePath": "src/data/manual-sections/ch2-incident-obligations.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch2-incident-obligations",
+        "sourcePages": [
+          51,
+          52,
+          53,
+          54,
+          55
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 51,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-incident-obligations/page-051-incident-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "85f342fbbb033a909a93a5dd58636c5abed339088e50a0eb5cea2b15eb4f8949",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "85f342fbbb033a909a93a5dd58636c5abed339088e50a0eb5cea2b15eb4f8949"
+            }
+          },
+          {
+            "sourcePage": 52,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-incident-obligations/page-052-incident-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "d1474d4ab1bdab63bdee1413ee3f3fb79421033bcb578230ec9f6e601dbd1dab",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "d1474d4ab1bdab63bdee1413ee3f3fb79421033bcb578230ec9f6e601dbd1dab"
+            }
+          },
+          {
+            "sourcePage": 53,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-incident-obligations/page-053-incident-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "bb49dea7e5e6d28753f98c0e336a645090c04d0522665fd76a1bf133e81fa669",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "bb49dea7e5e6d28753f98c0e336a645090c04d0522665fd76a1bf133e81fa669"
+            }
+          },
+          {
+            "sourcePage": 54,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 1350,
+              "height": 1280
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-incident-obligations/page-054-incident-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 1280
+            },
+            "cropSha256": "7da186f9a09e626a80c626da7410fae5779940132637c634f9032b51a015f883",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 1280
+              },
+              "sha256": "7da186f9a09e626a80c626da7410fae5779940132637c634f9032b51a015f883"
+            }
+          },
+          {
+            "sourcePage": 55,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 1550,
+              "width": 700,
+              "height": 760
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-incident-obligations/page-055-ngo-source-crop.jpg",
+            "cropDimensions": {
+              "width": 700,
+              "height": 760
+            },
+            "cropSha256": "81331ca0a4ed695f66d15094750a44f479de85b4b533ee1acd4ee3cd966bad5e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 700,
+                "height": 760
+              },
+              "sha256": "81331ca0a4ed695f66d15094750a44f479de85b4b533ee1acd4ee3cd966bad5e"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch2-incident-obligations.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch2-incident-obligations/ch2-incident-obligations-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch2-incident-obligations/ch2-incident-obligations-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch2-incident-obligations-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 2 PR."
+          },
+          {
+            "id": "ch2-incident-obligations-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 2 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Incident obligations are rendered as selectable Russian DOM text.",
+          "Emergency 107 and 911 instructions, data collection, legal/psychological support contacts, and NGO phone/email details are retained.",
+          "Source page 55 ownership stops before Scoring starts at page-055-block-08."
+        ],
+        "checkerResult": "pass"
+      }
     },
     {
       "id": "ch2-scoring",
@@ -1931,12 +2648,83 @@
         "omittedClosingSourcePage": 56,
         "boundaryEvidence": "manual.ru.json source page 55 contains the Scoring rules and footnotes; source page 56 contains only the closing slogan and is skipped as book-only closing material."
       },
-      "status": "pending",
+      "status": "implemented",
       "parentChapterId": "chapter-2-responsibility",
       "sectionContentModulePath": "src/data/manual-sections/ch2-scoring.ts",
-      "sourceRegionMetadataStatus": "pending_until_section_pr",
-      "visualEvidenceStatus": "pending_until_section_pr",
-      "pendingReason": "No converted Russian interactive section content has been merged for this source Índice topic."
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch2-scoring",
+        "sourcePages": [
+          55
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 55,
+            "sourceRegion": {
+              "x": 1040,
+              "y": 2170,
+              "width": 1350,
+              "height": 900
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch2-scoring/page-055-scoring-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 900
+            },
+            "cropSha256": "b98c68c9d7371e78b76bac69bf2153266929da2af04fe7a54921fdfc7fd5821d",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, then top-left coordinate crop without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 900
+              },
+              "sha256": "b98c68c9d7371e78b76bac69bf2153266929da2af04fe7a54921fdfc7fd5821d"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch2-scoring.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch2-scoring/ch2-scoring-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch2-scoring/ch2-scoring-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch2-scoring-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for this Chapter 2 PR."
+          },
+          {
+            "id": "ch2-scoring-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for this Chapter 2 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Scoring is rendered as selectable Russian DOM text only.",
+          "20 initial points, 4-point voluntary recovery, three-year expiry, 50% reassignment, 0-point sanctions from 60 days to 5 years, 10-point course reassignment, 3-business-day Boleta de Citación, and footnote exceptions are retained.",
+          "Source page 56 is recorded as closing-slogan disposition and is not implemented as Scoring content."
+        ],
+        "checkerResult": "pass"
+      }
     }
   ]
 }

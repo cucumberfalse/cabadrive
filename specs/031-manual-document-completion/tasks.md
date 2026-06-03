@@ -44,9 +44,9 @@
 
 ## Chapter / Appendix Content Slices
 
-- [ ] T029 Orchestrator assigns Chapter 2 PR from fresh latest `main`; scope is pages `43-56` and sections `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, `ch2-scoring` only.
-- [ ] T030 Chapter 2 implementation preserves page `55` boundary between incident obligations and Scoring and records page `56` closing-slogan disposition.
-- [ ] T031 Chapter 2 PR records legal/document/scoring detail-retention evidence and visual evidence under the stricter rules.
+- [x] T029 Orchestrator assigns Chapter 2 PR from fresh latest `main`; scope is pages `43-56` and sections `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, `ch2-scoring` only.
+- [x] T030 Chapter 2 implementation preserves page `55` boundary between incident obligations and Scoring and records page `56` closing-slogan disposition.
+- [x] T031 Chapter 2 PR records legal/document/scoring detail-retention evidence and visual evidence under the stricter rules.
 - [ ] T032 Orchestrator assigns Chapter 3 PR from fresh latest `main`; scope is pages `57-88` only.
 - [ ] T033 Chapter 3 implementation covers priority, right-of-way, lights, speed, turns, overtaking, highways, adverse conditions, and stopping/parking sections in source order.
 - [ ] T034 Orchestrator assigns Chapter 4 PR from fresh latest `main`; scope is pages `89-97` only.
@@ -69,21 +69,21 @@
 
 For each chapter-equivalent content PR:
 
-- [ ] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
-- [ ] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
-- [ ] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
-- [ ] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
-- [ ] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
-- [ ] T054 Implement only the assigned source chapter/appendix/front-matter scope.
-- [ ] T055 Keep Russian headings, prose, lists, captions, callouts, labels, and meaningful overlay text selectable/copyable DOM/SVG where feasible.
-- [ ] T056 Preserve source order and all ticket-critical legal, numeric, safety, document, sign, marking, scoring, exception, phone/contact, and ordered-list details.
-- [ ] T057 Extract new images/crops at x5 zoom/source export target or document equivalent/better method with dimensions/hash/runtime-size evidence.
-- [ ] T058 Keep photos, traffic signs, and road-marking images unmodified source-as-is; put Russian explanation outside the image.
-- [ ] T059 Transfer infographics as high-quality source images; remove Spanish only at glyph/letter level; preserve connectors/shapes/pictograms; overlay selectable Russian text where feasible.
-- [ ] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
-- [ ] T061 Add/update route, content coverage, source inventory, visual metadata, source-as-is, infographic cleanup, forbidden-pattern, selectable-text, responsive, and Playwright tests.
-- [ ] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
-- [ ] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
+- [x] T049 Confirm Orchestrator assignment, isolated worktree, branch, PR slice, latest-main base SHA, and parallel-work warning.
+- [x] T050 Read `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` before editing.
+- [x] T051 Record baseline `git status --short --branch` and verify no sibling work is touched.
+- [x] T052 Inspect `navigation.ru.json`, `manual.ru.json`, `layout.ru.json`, local source page renders, and official PDF when region/crop fidelity requires it.
+- [x] T053 Record source child sections, source ranges, shared-page boundaries, omitted book artifacts, visual inventory, legal/numeric/detail risks, and route ids.
+- [x] T054 Implement only the assigned source chapter/appendix/front-matter scope.
+- [x] T055 Keep Russian headings, prose, lists, captions, callouts, labels, and meaningful overlay text selectable/copyable DOM/SVG where feasible.
+- [x] T056 Preserve source order and all ticket-critical legal, numeric, safety, document, sign, marking, scoring, exception, phone/contact, and ordered-list details.
+- [x] T057 Extract new images/crops at x5 zoom/source export target or document equivalent/better method with dimensions/hash/runtime-size evidence.
+- [x] T058 Keep photos, traffic signs, and road-marking images unmodified source-as-is; put Russian explanation outside the image.
+- [x] T059 Transfer infographics as high-quality source images; remove Spanish only at glyph/letter level; preserve connectors/shapes/pictograms; overlay selectable Russian text where feasible.
+- [x] T060 Avoid runtime PDF viewer, PDF.js, iframe/object/embed PDF, full-page raster, side-by-side source reader, remote assets/fonts, runtime fetch, backend call, analytics, or live AI.
+- [x] T061 Add/update route, content coverage, source inventory, visual metadata, source-as-is, infographic cleanup, forbidden-pattern, selectable-text, responsive, and Playwright tests.
+- [x] T062 Run focused checks, local preflight, Docker runtime validation where applicable, and `git diff --check`; record exact commands/results.
+- [x] T063 Update this `tasks.md` with decisions, dead ends, known issues, evidence, Implementation Agent feedback, and cycle PR-set row.
 
 ## Cycle PR Set
 
@@ -93,7 +93,7 @@ For each chapter-equivalent content PR:
 | Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, https://github.com/cucumberfalse/cabadrive/pull/186 | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | original audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; audit content/effective head and post-validation evidence-only commits are recorded by the latest PR #186 `Effective content head`, `Final-validation evidence-only commit`, and `Current-PR-head read-only guard` bullets under `## Final Validation Evidence`; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | audit-only PR opened ready; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
-| Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
+| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR pending | `9750b1578627c531146226ebe0e9673aadfef67b` | pending until commit/PR | implemented in this slice; local verification in progress | yes |
 | Chapter 3 content | pages `57-88` | pending | pending | pending | pending | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
 | Chapter 5 content | pages `98-103` | pending | pending | pending | pending | yes |
@@ -110,7 +110,7 @@ For each chapter-equivalent content PR:
 | Front matter | `1-13` | Separate support PR; include learner-useful presentation/glossary; omit book-only title/index/category pages with evidence | pending |
 | Introduction | `14-20` | Already implemented; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | audit complete; no correction needed |
 | Chapter 1 | `21-42` | Already merged through PR #184; stricter visual audit completed in branch `codex/031-intro-ch1-visual-audit` | merged and audited; no correction needed |
-| Chapter 2 | `43-56` | One chapter PR, next likely | pending |
+| Chapter 2 | `43-56` | One chapter PR covering `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring`; page `43` divider skipped; page `56` closing slogan omitted as book-only | implemented in branch `codex/031-chapter-2`; PR pending |
 | Chapter 3 | `57-88` | One chapter PR | pending |
 | Chapter 4 | `89-97` | One chapter PR | pending |
 | Chapter 5 | `98-103` | One chapter PR | pending |
@@ -146,6 +146,10 @@ For each chapter-equivalent content PR:
 - Implementation decision, Introduction/Chapter 1 visual audit `2026-06-03T07:32:00Z`: audit-only slice assigned in worktree `/Users/chap/devel/cabadrive-worktrees/031-intro-ch1-visual-audit`, branch `codex/031-intro-ch1-visual-audit`, latest-main base `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` from merged PR #185. Scope remained process-memory audit evidence only: no Chapter 2+ content, front matter, runtime manual content, source assets, durable docs, tests, or checker code changed.
 - Audit decision: Introduction pages `14-20` and Chapter 1 pages `21-42` satisfy the stricter visual-rule requirements from PR #185 based on existing source-fidelity evidence, focused tests, and read-only asset/hash/dimension inspection. No Introduction or Chapter 1 correction PR is needed from this audit.
 - Process-memory repair decision, PR #186: the reusable per-chapter implementation checklist remains pending because this PR is audit-only; audit completion is recorded in T022-T025 and audit evidence sections.
+- Implementation decision, Chapter 2 content `2026-06-03T10:36:55Z`: Implementation Agent assignment was confirmed for worktree `/Users/chap/devel/cabadrive-worktrees/031-chapter-2`, branch `codex/031-chapter-2`, with latest verified base `9750b1578627c531146226ebe0e9673aadfef67b` after merged PR #186. Parallel work warning was preserved; no sibling worktree, branch, dirty diff, PR, or process memory was mutated.
+- Chapter 2 source-boundary decision: source page `43` is a divider and is not runtime content; `ch2-incident-obligations` owns page `55` only before `page-055-block-08`; `ch2-scoring` starts at `page-055-block-08`; source page `56` is a closing slogan and is recorded as book-only omitted material, not Scoring content.
+- Chapter 2 visual decision: required-document visuals are runtime source-as-is images with visible Spanish confined to the original image and Russian explanation in surrounding DOM text. No photo, traffic sign, or road-marking image was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, or otherwise modified. No Chapter 2 infographic needed Spanish glyph cleanup in this slice; source visuals were transferred as original source crops.
+- Chapter 2 content decision: legal, document, incident, and scoring details were preserved in source order, including Law 2148, responsibility types, sanctions, alcohol `0,0 g/L` novice rule and `1,0 g/L` contravention threshold, scene-flight duties, DNI/license rules, novice signage, insurance, VTV/RTO, GNC, RVA, incident phone/contact details, and Scoring point-loss/recovery details.
 
 ## Dead Ends
 
@@ -154,12 +158,32 @@ For each chapter-equivalent content PR:
 - No unresolved dead ends remain for PR #185 process-memory finalization repair.
 - No audit dead ends: the Introduction/Chapter 1 audit did not require PDF re-export or runtime changes because existing local source-region artifacts, source page renders, evidence metadata, and focused fixture tests were sufficient to verify source-fidelity status.
 - Resolved audit verification setup: first `pnpm run validate:content` attempt failed because this fresh worktree lacked `node_modules` and `pdf-parse`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies, and all verification commands passed on rerun.
+- Resolved Chapter 2 setup: first `pnpm exec tsc --noEmit` failed because the fresh worktree lacked `node_modules`; `pnpm install --frozen-lockfile` installed the lockfile-pinned dependencies and TypeScript passed afterward.
+- Resolved Chapter 2 evidence setup: first manual-guide focused run failed because desktop/mobile screenshot evidence paths for Chapter 2 did not yet exist; focused Playwright capture created committed screenshots for all four Chapter 2 sections.
+- Resolved Chapter 2 runtime image evidence: the first no-upscale screenshot capture saw two lower required-document images as unloaded while offscreen; the capture script was updated to scroll through and decode all source-image cards before checking dimensions. Browser spot check then confirmed `6/6` source images loaded with `noUpscale: true` and no horizontal overflow.
+- Resolved Chapter 2 preflight gate: first `pnpm run preflight` stopped at `check-feature-memory --worktree` because the Chapter 2 product paths were not yet accompanied by a same-PR `tasks.md` update; this entry records the required feature-memory update before rerun.
 
 ## Known Issues
 
 - No unresolved known issues.
 - Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Owner decision: accepted no action for this prerequisite scope. Disposition: not applicable.
 - Audit known issues: none. Introduction and Chapter 1 audit found no stricter-rule gaps requiring correction tasks; the Vite large chunk warning remains pre-existing, non-fatal, and unrelated to this audit-only process-memory PR. Owner decision: accepted no action for PR #186 audit-only scope. Disposition: not applicable.
+- Chapter 2 known issues: none unresolved. The existing Vite large chunk warning remains non-fatal and pre-existing; it is unrelated to Chapter 2 content and requires no action in this slice.
+
+## Chapter 2 Implementation Verification Evidence
+
+- Base and scope evidence: `git rev-parse HEAD` before editing returned `9750b1578627c531146226ebe0e9673aadfef67b`, matching the Orchestrator-assigned latest verified `origin/main` base after PR #186. Initial `git status --short --branch` reported `## codex/031-chapter-2...origin/main` with no local changes. Work stayed in `/Users/chap/devel/cabadrive-worktrees/031-chapter-2` on branch `codex/031-chapter-2`.
+- Source extraction evidence: rendered `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf` with `swift scripts/render-manual-pdf-pages.swift ... --scale 5 --quality 0.95`; rendered pages were `2976x4209`. Source crop assets were produced from that x5 render with top-left coordinate crops and no resizing or visual cleanup. Runtime required-document images and validation crops have matching SHA-256 byte hashes recorded in `section-registry.chapters-1-2.json`.
+- Runtime image evidence: Chapter 2 required-document source images are `dni-source-as-is.jpg` `320x118`, `license-source-as-is.jpg` `300x105`, `beginner-sign-source-as-is.jpg` `315x215`, `cedulas-source-as-is.jpg` `1110x260`, `vtv-source-as-is.jpg` `1150x335`, and `rva-source-as-is.jpg` `360x300`. Runtime display metadata records `noUpscale: true`, and focused Playwright screenshot capture confirmed no horizontal overflow and no runtime upscaling.
+- Screenshot evidence: focused Playwright capture created committed desktop/mobile section screenshots for `ch2-legal-responsibility`, `ch2-required-documents`, `ch2-incident-obligations`, and `ch2-scoring` under `content/validation/manual-guide/ch2-*/`.
+- Browser evidence: in-app browser spot check at `http://localhost:5174/#manual-section-ch2-required-documents` reported `sectionId: ch2-required-documents`, six `source-image-original-visible-text` exceptions, six `data-source-as-is="true"` images, `loadedImages: 6`, `noUpscale: true`, and no horizontal overflow.
+- Focused verification passed: `node scripts/manual-guide-source-fidelity.mjs` passed with `sectionsChecked: 10`, `pendingSections: 0`, `implementedSections: 10`, `skippedSourcePages: [21,43,56]`, `sharedSourcePages: [55]`, and `strictVisualRulePolicy: 031-strict-source-fidelity`.
+- Focused verification passed: `node --test tests/content-manual-guide-chapters.test.mjs` passed with `66` tests and `0` failures.
+- Focused verification passed: `pnpm exec tsc --noEmit`.
+- Focused e2e repair verification passed: `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1 and Chapter 2 section pages"` passed with `2` tests and `0` failures after updating the Chapter 2 group status expectation from pending to active.
+- Repository verification passed: `pnpm run validate:content`, `pnpm run test` (`375` tests, `0` failures), `pnpm run build`, `pnpm run preflight` (`375` unit tests and `74` Playwright tests, `0` failures), and `git diff --check`. The Vite large chunk warning appeared during builds and remains pre-existing/non-fatal.
+- Docker validation blocker: isolated Docker runtime validation was attempted with `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 make build`. Docker stalled while loading metadata for `docker.io/library/node:22-alpine` and `docker.io/library/nginx:1.29-alpine`; explicit `docker pull node:22-alpine` and `docker pull nginx:1.29-alpine` also produced no progress before being terminated. `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 docker compose ps` showed no project containers, and `COMPOSE_PROJECT_NAME=cabadrive-031-chapter-2 CABADRIVE_HOST_PORT=5182 make down` completed. Docker runtime smoke is blocked by base-image registry/metadata access, not by app validation failures.
+- Protected visual confirmation: no Chapter 2 photo, traffic sign, or road-marking visual was modified. Required-document visuals with Spanish text remain source-as-is inside image files; Russian explanations are outside images as DOM text. No infographic Spanish removal was performed in Chapter 2; source-image transfer/glyph-cleanup rules were therefore not exercised beyond preserving original source crops.
 
 ## Final Validation Evidence
 

@@ -2648,12 +2648,85 @@ small,
   line-height: 1.34;
 }
 
+.manual-source-image-cards {
+  display: grid;
+  gap: 14px;
+  width: min(780px, 100%);
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+  color: #263532;
+  user-select: text;
+}
+
+.manual-source-image-cards h3 {
+  margin: 0;
+  color: #2b3536;
+  font-size: 1.24rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.manual-source-image-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.manual-source-image-card {
+  display: grid;
+  grid-template-columns: minmax(110px, 180px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  min-width: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #eef3f2;
+}
+
+.manual-source-image-card figure {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.manual-source-image-card img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+}
+
+.manual-source-image-card h4 {
+  margin: 0 0 5px;
+  color: #1b6680;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.manual-source-image-card p {
+  margin: 0;
+  color: #3d4846;
+  font-size: 0.93rem;
+  line-height: 1.42;
+}
+
 @media (max-width: 840px) {
   .status-strip,
   .manual-public-transport-comparison-layout,
   .manual-public-transport-card,
   .manual-shared-trip-benefits-layout,
-  .manual-shared-trip-closing {
+  .manual-shared-trip-closing,
+  .manual-source-image-card-grid,
+  .manual-source-image-card {
     grid-template-columns: 1fr;
   }
 

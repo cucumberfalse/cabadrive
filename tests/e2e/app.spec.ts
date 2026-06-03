@@ -2614,7 +2614,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes Chapter 1 section pages and keeps later sections pending", async ({ page }, testInfo) => {
+test("Manual guide exposes implemented Chapter 1 and Chapter 2 section pages", async ({ page }, testInfo) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2636,9 +2636,9 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
   await expect(chapter1).toHaveAttribute("data-status", "active");
-  await expect(chapter2).toHaveAttribute("data-status", "pending");
+  await expect(chapter2).toHaveAttribute("data-status", "active");
   await expect(chapter1.locator("summary small")).toHaveCount(0);
-  await expect(chapter2.locator("summary small")).toHaveText("позже");
+  await expect(chapter2.locator("summary small")).toHaveCount(0);
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
@@ -2651,23 +2651,17 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   const publicTransport = reader.getByTestId("manual-guide-pending-section-ch1-public-transport-system");
   const sharedTrip = reader.getByTestId("manual-guide-pending-section-ch1-shared-trip");
   const legal = reader.getByTestId("manual-guide-pending-section-ch2-legal-responsibility");
+  const requiredDocuments = reader.getByTestId("manual-guide-pending-section-ch2-required-documents");
+  const incidentObligations = reader.getByTestId("manual-guide-pending-section-ch2-incident-obligations");
   const scoring = reader.getByTestId("manual-guide-pending-section-ch2-scoring");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
   await expect(bicycle).toBeVisible();
-  for (const sectionButton of [cities, sustainable, pedestrian, bicycle, publicTransport, sharedTrip]) {
+  for (const sectionButton of [cities, sustainable, pedestrian, bicycle, publicTransport, sharedTrip, legal, requiredDocuments, incidentObligations, scoring]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
     await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
     await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
-  }
-
-  for (const sectionButton of [legal, scoring]) {
-    await expect(sectionButton).toBeVisible();
-    await expect(sectionButton).toBeDisabled();
-    await expect(sectionButton).toHaveAttribute("data-status", "pending");
-    await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "pending_until_section_pr");
-    await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "pending_until_section_pr");
   }
 
   await expect(cities).toHaveAttribute("data-route-hash", "#manual-section-ch1-cities-for-people");
@@ -2682,6 +2676,12 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await expect(publicTransport).toHaveAttribute("data-source-pages", "39-40");
   await expect(sharedTrip).toHaveAttribute("data-route-hash", "#manual-section-ch1-shared-trip");
   await expect(sharedTrip).toHaveAttribute("data-source-pages", "41-42");
+  await expect(legal).toHaveAttribute("data-route-hash", "#manual-section-ch2-legal-responsibility");
+  await expect(legal).toHaveAttribute("data-source-pages", "44-45");
+  await expect(requiredDocuments).toHaveAttribute("data-route-hash", "#manual-section-ch2-required-documents");
+  await expect(requiredDocuments).toHaveAttribute("data-source-pages", "46-50");
+  await expect(incidentObligations).toHaveAttribute("data-route-hash", "#manual-section-ch2-incident-obligations");
+  await expect(incidentObligations).toHaveAttribute("data-source-pages", "51-55");
   await expect(scoring).toHaveAttribute("data-route-hash", "#manual-section-ch2-scoring");
   await expect(scoring).toHaveAttribute("data-source-pages", "55");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
@@ -3453,6 +3453,18 @@ test("Manual guide exposes Chapter 1 section pages and keeps later sections pend
   await sharedTripSection.screenshot({
     path: testInfo.outputPath(`ch1-shared-trip-${testInfo.project.name}.png`)
   });
+
+  await requiredDocuments.click();
+  await expect(page).toHaveURL(/#manual-section-ch2-required-documents$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "chapter-2-responsibility");
+  await expect(nav).toHaveAttribute("data-active-child-id", "ch2-required-documents");
+  await expect(requiredDocuments).toHaveAttribute("aria-current", "page");
+  const chapter2Section = content.getByTestId("manual-guide-section");
+  await expect(chapter2Section).toHaveAttribute("data-manual-section-id", "ch2-required-documents");
+  await expect(chapter2Section.getByRole("heading", { name: "Обязательные документы" })).toBeVisible();
+  await expect(chapter2Section).toContainText("0,0 г/л");
+  await expect(chapter2Section.locator('[data-source-as-is="true"]')).toHaveCount(6);
+  await expect(chapter2Section.locator('[data-source-image-exception="source-image-original-visible-text"]')).toHaveCount(6);
 
   await page.goto("/#manual-section-ch1-shared-trip");
   await expect(page).toHaveURL(/#manual-section-ch1-shared-trip$/);
