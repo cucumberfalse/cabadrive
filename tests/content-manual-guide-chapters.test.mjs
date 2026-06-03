@@ -265,6 +265,9 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
     sha256: sha256File(implementationEvidence.localAssetMetadata[0].assetPath),
     infographicTransfer: {
       sourceImageTransfer: true,
+      sourceAssetPath: implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+      sourceCropSha256: implementationEvidence.sourceRegionMetadata[0].cropSha256,
+      sourceCropDimensions: implementationEvidence.sourceRegionMetadata[0].cropDimensions,
       noApproximateRedraw: true,
       broadMaskPlatePatchStatus: "none",
       cleanupMethod: "glyph-letter-level-background-restoration",
@@ -422,6 +425,9 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
     section.implementationEvidence.localAssetMetadata[1].sha256 = sha256File(section.implementationEvidence.localAssetMetadata[1].assetPath);
     section.implementationEvidence.localAssetMetadata[1].diagramTransfer = {
       sourceDiagramTransfer: true,
+      sourceAssetPath: section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
+      sourceCropSha256: sha256File(section.implementationEvidence.sourceRegionMetadata[0].sourceAssetPath),
+      sourceCropDimensions: section.implementationEvidence.sourceRegionMetadata[0].cropDimensions,
       noApproximateRedraw: true,
       noReconstruction: true,
       noGenericIconReplacement: true,
@@ -1569,6 +1575,9 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "assetCategory=source-transferred-infographic",
     "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
     "infographicTransfer.sourceImageTransfer",
+    "infographicTransfer.sourceAssetPath references sourceRegionMetadata.sourceAssetPath",
+    "infographicTransfer.sourceCropSha256 matches sourceRegionMetadata.cropSha256",
+    "infographicTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
     "infographicTransfer.noApproximateRedraw",
     "infographicTransfer.broadMaskPlatePatchStatus=none",
     "cleanupScope=glyph-level-spanish-cleanup or none-source-as-is",
@@ -1579,6 +1588,9 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "assetCategory=source-transferred-diagram",
     "visibleSpanish=false after glyph-level cleanup or selectable Russian overlay",
     "diagramTransfer.sourceDiagramTransfer",
+    "diagramTransfer.sourceAssetPath references sourceRegionMetadata.sourceAssetPath",
+    "diagramTransfer.sourceCropSha256 matches sourceRegionMetadata.cropSha256",
+    "diagramTransfer.sourceCropDimensions match sourceRegionMetadata.cropDimensions",
     "diagramTransfer.noApproximateRedraw",
     "diagramTransfer.noReconstruction",
     "diagramTransfer.noGenericIconReplacement",
@@ -1748,6 +1760,22 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
   }
 });
 
+test("Manual guide source-fidelity checker accepts strict transferred artwork with source-region linkage", () => {
+  const infographicTempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-infographic-source-link-pass-"));
+  const diagramTempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-diagram-source-link-pass-"));
+  try {
+    const infographicFixture = writeStrictFutureRegistryFixture(infographicTempDir);
+    const infographicResult = runCheckerWithFixture(infographicFixture.implementedRegistryPath, infographicFixture.moduleRoot, infographicFixture.strictEvidencePath);
+    assert.equal(infographicResult.status, 0, infographicResult.stderr);
+    const diagramFixture = writeChapter2LegalResponsibilityFixture(diagramTempDir, { strict: true });
+    const diagramResult = runCheckerWithFixture(diagramFixture.implementedRegistryPath, diagramFixture.moduleRoot);
+    assert.equal(diagramResult.status, 0, diagramResult.stderr);
+  } finally {
+    rmSync(infographicTempDir, { recursive: true, force: true });
+    rmSync(diagramTempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker rejects strict source-transferred diagrams without transfer proof", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-ch2-diagram-missing-transfer-"));
   try {
@@ -1762,6 +1790,70 @@ test("Manual guide source-fidelity checker rejects strict source-transferred dia
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer must be an object");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict transferred artwork without source-region linkage", () => {
+  const cases = [
+    {
+      name: "infographic",
+      writeFixture: (tempDir) =>
+        writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+          delete implementationEvidence.localAssetMetadata[0].infographicTransfer.sourceAssetPath;
+        }),
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer is missing sourceAssetPath"
+    },
+    {
+      name: "diagram",
+      writeFixture: (tempDir) =>
+        writeChapter2LegalResponsibilityFixture(tempDir, {
+          strict: true,
+          mutateEvidence: (implementationEvidence) => {
+            delete implementationEvidence.localAssetMetadata[1].diagramTransfer.sourceAssetPath;
+          }
+        }),
+      expectedMessage: "ch2-legal-responsibility implementationEvidence localAssetMetadata[1].diagramTransfer is missing sourceAssetPath"
+    }
+  ];
+
+  for (const testCase of cases) {
+    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-source-link-missing-`));
+    try {
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = testCase.writeFixture(tempDir);
+      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+      assert.notEqual(failure.status, 0, `checker must fail when strict transferred ${testCase.name} omits source linkage`);
+      const result = JSON.parse(failure.stderr);
+      assert.equal(result.status, "fail");
+      assert.equal(result.message, testCase.expectedMessage);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
+  }
+});
+
+test("Manual guide source-fidelity checker rejects self-certified transferred artwork without a source crop", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-transfer-self-certified-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const transferredAsset = implementationEvidence.localAssetMetadata[0];
+      transferredAsset.assetKind = "generated-but-self-certified-infographic";
+      transferredAsset.infographicTransfer.sourceAssetPath = transferredAsset.assetPath;
+      transferredAsset.infographicTransfer.sourceCropSha256 = transferredAsset.sha256;
+      transferredAsset.infographicTransfer.sourceCropDimensions = {
+        width: transferredAsset.width,
+        height: transferredAsset.height
+      };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when transferred artwork links only to its own generated runtime asset");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].infographicTransfer.sourceAssetPath must reference sourceRegionMetadata"
+    );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

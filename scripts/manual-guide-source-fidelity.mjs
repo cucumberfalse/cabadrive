@@ -428,13 +428,33 @@ function validateProtectedSourceAsIsAsset(asset, messagePrefix, sourceRegionReco
   assertCondition(asset.cleanupScope === "none-source-as-is", `${messagePrefix}.cleanupScope must be none-source-as-is`, asset);
 }
 
-function validateTransferredInfographicAsset(asset, messagePrefix) {
+function validateSourceTransferProvenance(value, messagePrefix, sourceRegionRecords) {
+  assertRequiredFields(value, ["sourceAssetPath", "sourceCropSha256", "sourceCropDimensions"], messagePrefix);
+  assertCondition(sourceRegionRecords.has(value.sourceAssetPath), `${messagePrefix}.sourceAssetPath must reference sourceRegionMetadata`, value);
+  const sourceRegionRecord = sourceRegionRecords.get(value.sourceAssetPath);
+  assertCondition(value.sourceCropSha256 === sourceRegionRecord.sha256, `${messagePrefix}.sourceCropSha256 must match sourceRegionMetadata cropSha256`, {
+    ...value,
+    sourceRegionRecord
+  });
+  assertRequiredFields(value.sourceCropDimensions, ["width", "height"], `${messagePrefix}.sourceCropDimensions`);
+  assertCondition(value.sourceCropDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.sourceCropDimensions.width must match sourceRegionMetadata width`, {
+    ...value,
+    sourceRegionRecord
+  });
+  assertCondition(value.sourceCropDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.sourceCropDimensions.height must match sourceRegionMetadata height`, {
+    ...value,
+    sourceRegionRecord
+  });
+}
+
+function validateTransferredInfographicAsset(asset, messagePrefix, sourceRegionRecords) {
   assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred infographic artwork`, asset);
   assertRequiredFields(
     asset.infographicTransfer,
-    ["sourceImageTransfer", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
+    ["sourceImageTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "broadMaskPlatePatchStatus", "russianOverlayStrategy"],
     `${messagePrefix}.infographicTransfer`
   );
+  validateSourceTransferProvenance(asset.infographicTransfer, `${messagePrefix}.infographicTransfer`, sourceRegionRecords);
   assertCondition(asset.infographicTransfer.sourceImageTransfer === true, `${messagePrefix}.infographicTransfer.sourceImageTransfer must be true`, asset);
   assertCondition(asset.infographicTransfer.noApproximateRedraw === true, `${messagePrefix}.infographicTransfer.noApproximateRedraw must be true`, asset);
   assertCondition(asset.infographicTransfer.broadMaskPlatePatchStatus === "none", `${messagePrefix}.infographicTransfer.broadMaskPlatePatchStatus must be none`, asset);
@@ -457,13 +477,14 @@ function validateTransferredInfographicAsset(asset, messagePrefix) {
   }
 }
 
-function validateTransferredDiagramAsset(asset, messagePrefix) {
+function validateTransferredDiagramAsset(asset, messagePrefix, sourceRegionRecords) {
   assertCondition(asset.visibleSpanish === false, `${messagePrefix}.visibleSpanish must be false for transferred diagram artwork`, asset);
   assertRequiredFields(
     asset.diagramTransfer,
-    ["sourceDiagramTransfer", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],
+    ["sourceDiagramTransfer", "sourceAssetPath", "sourceCropSha256", "sourceCropDimensions", "noApproximateRedraw", "noReconstruction", "noGenericIconReplacement", "broadMaskPlatePatchStatus"],
     `${messagePrefix}.diagramTransfer`
   );
+  validateSourceTransferProvenance(asset.diagramTransfer, `${messagePrefix}.diagramTransfer`, sourceRegionRecords);
   assertCondition(asset.diagramTransfer.sourceDiagramTransfer === true, `${messagePrefix}.diagramTransfer.sourceDiagramTransfer must be true`, asset);
   assertCondition(asset.diagramTransfer.noApproximateRedraw === true, `${messagePrefix}.diagramTransfer.noApproximateRedraw must be true`, asset);
   assertCondition(asset.diagramTransfer.noReconstruction === true, `${messagePrefix}.diagramTransfer.noReconstruction must be true`, asset);
@@ -535,8 +556,8 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
           );
         }
       }
-      if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label);
-      if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label);
+      if (asset.assetCategory === "source-transferred-infographic") validateTransferredInfographicAsset(asset, label, sourceRegionRecords);
+      if (asset.assetCategory === "source-transferred-diagram") validateTransferredDiagramAsset(asset, label, sourceRegionRecords);
     }
   );
 }
