@@ -240,6 +240,12 @@ For each chapter-equivalent content PR:
 - Architect validation: owner decision for Vite large chunk warning is accepted no action for PR #186; the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
 - Architect validation: PR #186 remains audit-only for Introduction pages 14-20 and Chapter 1 pages 21-42, with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
 - Architect validation: checks context recorded for e16eeb86b965e4d393479ca142cb3d46602206b0 and guard evidence: baseline-checks pass, docker-validation pass, guard pass, osv-scan pass; AI Review finding is about e16 role-validation and guard ordering evidence and is resolved by role validation plus later Analyst and guard evidence rather than product or content change.
+- Analyst validated effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
+- Analyst return count: 0
+- Final-validation evidence-only commit: 156da79b608d00567f0c889bdf4af1087b469c32 recorded current-head guard evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in tasks.md.
+- Final-validation evidence-only commit: dcdf0b697b420a442ab8397c23c97b675023f28a recorded Architect validation evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in tasks.md.
+- Final-validation evidence-only commit: ca1b438df0b528f579941c20f327e4b6860b3b30 recorded Analyst validation evidence for effective content head e16eeb86b965e4d393479ca142cb3d46602206b0 in feature-request.md.
+- Current-PR-head read-only guard: Orchestrator verified current PR head ca1b438df0b528f579941c20f327e4b6860b3b30 against effective content head e16eeb86b965e4d393479ca142cb3d46602206b0; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
 - Limit escalation: none
 
 ## Known Issues / Architect Dispositions
