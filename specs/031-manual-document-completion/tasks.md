@@ -228,6 +228,7 @@ For each chapter-equivalent content PR:
 - Final-validation evidence-only commit: 8c12015e596604a3e0bb7eb94a907ccd409804c5 recorded Architect validation evidence for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a in tasks.md.
 - Final-validation evidence-only commit: a0178f6d9e98632c06d3b62665214d1bee61b98a recorded Analyst validation evidence for effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a in feature-request.md.
 - Current-PR-head read-only guard: Orchestrator verified current PR head a0178f6d9e98632c06d3b62665214d1bee61b98a against effective content head 7f2bf99d1e85a4b338e9483b391a6569610ca29a; post-effective changes were final-validation evidence only in tasks.md and feature-request.md, and this guard-evidence commit records final-validation process evidence for the same effective content head.
+- Current-PR-head read-only guard: Orchestrator verified current PR head e16eeb86b965e4d393479ca142cb3d46602206b0 against effective content head e16eeb86b965e4d393479ca142cb3d46602206b0; post-effective changes from that head through this guard-evidence commit are final-validation process evidence only in tasks.md.
 - Limit escalation: none
 
 ## Known Issues / Architect Dispositions
