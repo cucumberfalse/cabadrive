@@ -39,7 +39,7 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Cuando una persona no duerme lo suficiente... aumento de la necesidad de sueño en los días posteriores y disminución del rendimiento.",
       textRu:
-        "Если человек спит недостаточно, организм пытается вернуть равновесие: в последующие дни растет потребность во сне и снижается rendimiento. Источник также предупреждает, что cansancio может усиливаться от алкоголя и обильной еды."
+        "Если человек спит недостаточно, организм пытается вернуть равновесие: в последующие дни растет потребность во сне и снижается работоспособность. Источник также предупреждает, что усталость может усиливаться от алкоголя и обильной еды."
     },
     {
       id: "few-hours-sleep-effects",
@@ -48,8 +48,8 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Dormir pocas horas reduce la capacidad de reacción, reduce el estado de alerta, predispone a tomar malas decisiones.",
       itemsRu: [
-        "Снижается capacidad de reacción и увеличивается время ответа на стимул.",
-        "Падает estado de alerta: уменьшается интеллектуальная работоспособность, труднее концентрироваться и использовать память.",
+        "Снижается скорость реакции и увеличивается время ответа на стимул.",
+        "Падает бдительность: уменьшается интеллектуальная работоспособность, труднее концентрироваться и использовать память.",
         "Возрастает склонность к плохим решениям из-за изменений настроения, тревожности и раздражительности."
       ]
     },

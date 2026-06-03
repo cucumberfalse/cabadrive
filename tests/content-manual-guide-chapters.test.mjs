@@ -107,6 +107,12 @@ function duplicatedValues(values) {
     .sort((a, b) => a - b);
 }
 
+function itemsRuSourceForBlock(moduleSource, blockId) {
+  const blockMatch = moduleSource.match(new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?itemsRu:\\s*\\[([\\s\\S]*?)\\]`, "u"));
+  assert.ok(blockMatch, `${blockId} itemsRu block found`);
+  return blockMatch[1];
+}
+
 function sourceBoundaryEvidenceFor(section, sourcePage) {
   if (Array.isArray(section.sourceBoundaryEvidence)) {
     return section.sourceBoundaryEvidence.find((entry) => entry.sharedSourcePage === sourcePage);
@@ -964,8 +970,16 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /medicamentos/u);
   assert.match(ch4AlcoholDrugsModuleSource, /sedantes/u);
   assert.match(ch4AlcoholDrugsModuleSource, /контакте со слюной/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /capacidad de reacción/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /visión periférica/u);
+  const alcoholEffectsItemsRu = itemsRuSourceForBlock(ch4AlcoholDrugsModuleSource, "alcohol-effects");
+  assert.match(alcoholEffectsItemsRu, /скорость реакции/u);
+  assert.match(alcoholEffectsItemsRu, /периферическое зрение/u);
+  assert.match(alcoholEffectsItemsRu, /устойчивость к ослеплению/u);
+  assert.match(alcoholEffectsItemsRu, /зрительно-двигательную/u);
+  assert.match(alcoholEffectsItemsRu, /связность мышления/u);
+  assert.doesNotMatch(
+    alcoholEffectsItemsRu,
+    /capacidad de reacción|visión periférica|resistencia al deslumbramiento|viso-motor coordination|motor coordination|asociación de ideas|exceso de confianza en uno mismo|inhibition|somnolencia/u
+  );
   assert.match(ch4AlcoholDrugsModuleSource, /Ley 2148/u);
   assert.match(ch4AlcoholDrugsModuleSource, /0,5 gramos/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
@@ -1002,7 +1016,13 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
   assert.match(ch4SleepFatigueModuleSource, /время ответа/u);
-  assert.match(ch4SleepFatigueModuleSource, /capacidad de reacción/u);
+  const fewHoursSleepItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "few-hours-sleep-effects");
+  assert.match(fewHoursSleepItemsRu, /скорость реакции/u);
+  assert.match(fewHoursSleepItemsRu, /бдительность/u);
+  assert.doesNotMatch(fewHoursSleepItemsRu, /capacidad de reacción|estado de alerta/u);
+  assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
+  assert.match(ch4SleepFatigueModuleSource, /усталость может усиливаться/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
   assert.match(ch4SleepFatigueModuleSource, /microsueños/u);
   assert.match(ch4SleepFatigueModuleSource, /8 horas/u);
   assert.match(ch4SleepFatigueModuleSource, /200 kilometros/u);

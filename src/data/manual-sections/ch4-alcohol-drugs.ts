@@ -127,13 +127,13 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El alcohol es una droga depresora del sistema nervioso central cuyo consumo produce reducción de reacción, disminución de visión periférica, somnolencia y otros efectos.",
       itemsRu: [
-        "Снижает capacidad de reacción и увеличивает время ответа на стимул.",
-        "Уменьшает visión periférica.",
-        "Ухудшает resistencia al deslumbramiento - устойчивость к ослеплению.",
-        "Нарушает viso-motor coordination и motor coordination.",
-        "Нарушает внимание и asociación de ideas.",
-        "Создает exceso de confianza en uno mismo.",
-        "Снижает inhibition и вызывает somnolencia."
+        "Снижает скорость реакции и увеличивает время ответа на стимул.",
+        "Сужает периферическое зрение.",
+        "Ухудшает устойчивость к ослеплению от яркого света.",
+        "Нарушает зрительно-двигательную и двигательную координацию.",
+        "Нарушает внимание и связность мышления.",
+        "Создает чрезмерную уверенность в себе.",
+        "Снижает самоконтроль и вызывает сонливость."
       ]
     },
     {
