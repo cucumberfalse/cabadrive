@@ -90,7 +90,7 @@ For each chapter-equivalent content PR:
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence | branch `codex/031-manual-document-completion`; PR pending creation after commit/push | `b07d5c72bf1689e7dac480e937c366a528d20299` | pending commit | implementation complete locally; focused and full verification passed; PR pending | yes |
+| Visual-rule prerequisite | Shared docs/checker/evidence | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | effective content head `3769e53baaf6100cfb5667e265e07dd027fc2539`; current PR head is the evidence-only commit containing this PR-row update | ready PR opened; focused/full/preflight verification passed before opening; post-open change is process-memory evidence only | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
@@ -197,3 +197,4 @@ Future Implementation Agent feedback must be recorded here and routed to Archite
 - `pnpm run preflight`: passed; included `node scripts/check-feature-memory.mjs --worktree`, `pnpm run check:repo`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, and `pnpm run test:e2e`; Playwright e2e reported `74 passed`.
 - `git diff --check`: passed before process-memory update.
 - `node scripts/check-feature-memory.mjs --worktree`: passed after process-memory update; feature-memory gate passed via `specs/031-manual-document-completion/{spec,plan,tasks}.md`.
+- PR evidence: ready PR #185 opened at https://github.com/cucumberfalse/cabadrive/pull/185 from branch `codex/031-manual-document-completion` to `main`; PR opened after effective content head `3769e53baaf6100cfb5667e265e07dd027fc2539` and this subsequent process-memory update records the PR row.
