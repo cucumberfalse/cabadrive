@@ -294,6 +294,7 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
     sha256: sha256File(implementationEvidence.localAssetMetadata[1].assetPath),
     sourceIntegrity: {
       sourceAsIs: true,
+      sourceAssetPath: implementationEvidence.sourceRegionMetadata[1].sourceAssetPath,
       noTranslationOrRelabeling: true,
       noRedrawRecolorCleanupRetouchMaskInpaint: true,
       russianExplanationOutsideImage: true
@@ -1557,6 +1558,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   }
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
+    "sourceIntegrity.sourceAssetPath",
     "sourceIntegrity.noTranslationOrRelabeling",
     "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
     "sourceIntegrity.russianExplanationOutsideImage",
@@ -1593,6 +1595,10 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "translated-road-marking",
     "retouched-photo",
     "broad-mask",
+    "broad-box",
+    "square-patch",
+    "color-matched-plate",
+    "opaque-rectangle",
     "opaque-label-background",
     "backing-rectangle"
   ]) {
@@ -2076,6 +2082,7 @@ test("Manual guide source-fidelity checker accepts strict mixed source-image and
       signAsset.visibleSpanish = true;
       signAsset.sourceIntegrity = {
         sourceAsIs: true,
+        sourceAssetPath: implementationEvidence.sourceRegionMetadata[0].sourceAssetPath,
         noTranslationOrRelabeling: true,
         noRedrawRecolorCleanupRetouchMaskInpaint: true,
         russianExplanationOutsideImage: true
@@ -2176,6 +2183,27 @@ test("Manual guide source-fidelity checker rejects strict source-as-is visible S
     assert.equal(
       result.message,
       "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-as-is assets that do not match source crop bytes", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-byte-mismatch-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const protectedAsset = implementationEvidence.localAssetMetadata[1];
+      writeFileSync(protectedAsset.assetPath, Buffer.concat([pngBytesWithDimensions(protectedAsset.width, protectedAsset.height), Buffer.from("retouched-source-as-is")]));
+      protectedAsset.sha256 = sha256File(protectedAsset.assetPath);
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is asset differs from its source crop bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].sha256 must match source-as-is source crop bytes"
     );
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
@@ -2331,6 +2359,34 @@ test("Manual guide source-fidelity checker rejects forbidden strict visual terms
         implementationEvidence.sourceRegionMetadata[0].cleanupScope = "large_patch cleanup";
       },
       expectedMessage: "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0] must not record forbidden visual-edit term large-patch"
+    },
+    {
+      name: "square-patch-space",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "square patch cleanup over Spanish glyphs";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term square-patch"
+    },
+    {
+      name: "color-matched-plate-underscore",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "color_matched_plate cleanup";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term color-matched-plate"
+    },
+    {
+      name: "opaque-rectangle-case",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.visualReviewNotes = ["Opaque Rectangle was applied behind labels"];
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence.visualReviewNotes must not record forbidden visual-edit term opaque-rectangle"
+    },
+    {
+      name: "broad-box-space",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].infographicTransfer.cleanupMethod = "broad box behind Russian overlay";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term broad-box"
     }
   ];
 

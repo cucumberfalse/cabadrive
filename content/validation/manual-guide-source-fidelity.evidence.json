@@ -215,6 +215,7 @@
         "sourceRegionMetadata.cropSha256=64-hex-sha256 matching sourceAssetPath bytes",
         "localAssetMetadata.sha256=64-hex-sha256 matching assetPath bytes",
         "localAssetMetadata.width/height must match referenced assetPath image bytes",
+        "protected source-as-is localAssetMetadata.sha256/width/height must match sourceIntegrity.sourceAssetPath source crop bytes",
         "runtimeDisplaySize.maxWidthCssPx",
         "runtimeDisplaySize.noUpscale"
       ]
@@ -235,6 +236,7 @@
     ],
     "protectedSourceAsIsRequiredFields": [
       "sourceIntegrity.sourceAsIs",
+      "sourceIntegrity.sourceAssetPath",
       "sourceIntegrity.noTranslationOrRelabeling",
       "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
       "sourceIntegrity.russianExplanationOutsideImage",
@@ -276,7 +278,11 @@
       "masked-photo",
       "inpainted-photo",
       "broad-mask",
+      "broad-box",
       "large-patch",
+      "square-patch",
+      "color-matched-plate",
+      "opaque-rectangle",
       "opaque-label-background",
       "dom-plate",
       "backing-rectangle"

@@ -191,7 +191,11 @@ const forbiddenStrictVisualTerms = [
   "masked-photo",
   "inpainted-photo",
   "broad-mask",
+  "broad-box",
   "large-patch",
+  "square-patch",
+  "color-matched-plate",
+  "opaque-rectangle",
   "opaque-label-background",
   "dom-plate",
   "backing-rectangle"
@@ -387,13 +391,33 @@ function validateRuntimeDisplaySize(asset, messagePrefix, actualDimensions) {
   }
 }
 
-function validateProtectedSourceAsIsAsset(asset, messagePrefix) {
+function validateProtectedSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actualDimensions) {
   assertRequiredFields(
     asset.sourceIntegrity,
-    ["sourceAsIs", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
+    ["sourceAsIs", "sourceAssetPath", "noTranslationOrRelabeling", "noRedrawRecolorCleanupRetouchMaskInpaint", "russianExplanationOutsideImage"],
     `${messagePrefix}.sourceIntegrity`
   );
   assertCondition(asset.sourceIntegrity.sourceAsIs === true, `${messagePrefix}.sourceIntegrity.sourceAsIs must be true`, asset);
+  assertCondition(
+    sourceRegionRecords.has(asset.sourceIntegrity.sourceAssetPath),
+    `${messagePrefix}.sourceIntegrity.sourceAssetPath must reference sourceRegionMetadata`,
+    asset
+  );
+  const sourceRegionRecord = sourceRegionRecords.get(asset.sourceIntegrity.sourceAssetPath);
+  assertCondition(asset.sha256 === sourceRegionRecord.sha256, `${messagePrefix}.sha256 must match source-as-is source crop bytes`, {
+    ...asset,
+    sourceRegionRecord
+  });
+  assertCondition(actualDimensions.width === sourceRegionRecord.dimensions.width, `${messagePrefix}.width must match source-as-is source crop width`, {
+    ...asset,
+    actualDimensions,
+    sourceRegionRecord
+  });
+  assertCondition(actualDimensions.height === sourceRegionRecord.dimensions.height, `${messagePrefix}.height must match source-as-is source crop height`, {
+    ...asset,
+    actualDimensions,
+    sourceRegionRecord
+  });
   assertCondition(asset.sourceIntegrity.noTranslationOrRelabeling === true, `${messagePrefix}.sourceIntegrity.noTranslationOrRelabeling must be true`, asset);
   assertCondition(
     asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true,
@@ -469,6 +493,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
   );
   assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
 
+  const sourceRegionRecords = new Map();
   validateObjectOrArray(
     implementedEvidence.sourceRegionMetadata,
     ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
@@ -478,6 +503,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       const actualDimensions = validateStrictSourceRegionDimensions(entry, label);
       validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
       assertNoForbiddenStrictVisualTerms(entry, label);
+      sourceRegionRecords.set(entry.sourceAssetPath, { sha256: entry.cropSha256, dimensions: actualDimensions });
     }
   );
 
@@ -495,9 +521,11 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
         const actualDimensions = validateStrictImageAssetDimensions(asset, label);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
         validateRuntimeDisplaySize(asset, label, actualDimensions);
+        if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
+          validateProtectedSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
+        }
       }
       if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
-        validateProtectedSourceAsIsAsset(asset, label);
         if (asset.visibleSpanish === true) {
           const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
           assertCondition(
