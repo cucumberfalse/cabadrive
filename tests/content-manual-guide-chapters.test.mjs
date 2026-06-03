@@ -1035,8 +1035,14 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4SleepFatigueModuleSource, /Профессиональные водители/u);
   assert.match(ch4SleepFatigueModuleSource, /principiantes/u);
   assert.match(ch4SleepFatigueModuleSource, /17 часов/u);
-  assert.match(ch4SleepFatigueModuleSource, /Чтобы бороться со sueño, нужно dormir/u);
-  assert.match(ch4SleepFatigueModuleSource, /parada de descanso/u);
+  const sleepVsFatigueRemediesItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "sleep-vs-fatigue-remedies");
+  assert.match(sleepVsFatigueRemediesItemsRu, /усталости и недосыпе/u);
+  assert.match(sleepVsFatigueRemediesItemsRu, /сонливостью[\s\S]*поспать/u);
+  assert.match(sleepVsFatigueRemediesItemsRu, /прервать поездку[\s\S]*остановку для отдыха/u);
+  assert.doesNotMatch(
+    sleepVsFatigueRemediesItemsRu,
+    /fatigue\/cansancio|sueño|dormir|tratar la fatiga|interrumpir el viaje|parada de descanso/u
+  );
 
   assert.match(ch4StressModuleSource, /ВОЗ \(OMS\) определяет/u);
   assert.match(ch4StressModuleSource, /физиологических реакций/u);

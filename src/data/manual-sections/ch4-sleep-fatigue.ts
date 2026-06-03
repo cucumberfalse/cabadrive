@@ -107,9 +107,9 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Los efectos de conducir con fatiga o cansancio son similares... Para combatir el sueño se necesita dormir. Para tratar la fatiga es necesario interrumpir el viaje y hacer una parada de descanso.",
       itemsRu: [
-        "При fatigue/cansancio и при недосыпе снижается реакция и растет время ответа на стимул.",
-        "Чтобы бороться со sueño, нужно dormir.",
-        "Чтобы tratar la fatiga, нужно interrumpir el viaje и сделать parada de descanso."
+        "При усталости и недосыпе снижается реакция и растет время ответа на стимул.",
+        "Чтобы бороться с сонливостью, нужно поспать.",
+        "Чтобы справиться с усталостью, нужно прервать поездку и сделать остановку для отдыха."
       ]
     }
   ]
