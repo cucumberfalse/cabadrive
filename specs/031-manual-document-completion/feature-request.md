@@ -221,3 +221,27 @@ Architect prerequisite: final Architect validation passed before this Analyst va
 Gaps: none for the PR #185 prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Rerun - PR #185 Repaired Visual-Rule Prerequisite
+
+Superseded validation notice: the earlier Analyst validation for `36316f3781b9b04f305725018522b0f55407f900` is superseded and stale because later non-evidence repair commits changed strict visible-Spanish source-as-is validation behavior. The repaired effective content head for this prerequisite validation rerun is `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`.
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T04:00:31Z
+
+Analyst validated effective content head: c0b08aa2b23fefdb4eef1425035e94d5d6f8236c
+
+Analyst return count for this prerequisite validation rerun: 0
+
+Validation scope: PR #185 visual-rule prerequisite only. This Analyst rerun validates the repaired prerequisite against the original user intent: continue until the whole document is complete, keep one source manual chapter per PR from this point forward, require high-resolution x5/equivalent visual export, prohibit alteration or translation of photos/signs/road markings, and require infographics to be source-image transfers with glyph/letter-level Spanish cleanup and Russian overlay text.
+
+Customer intent check: passed for the repaired prerequisite scope. The repaired effective content head preserves the prerequisite support for future full-manual work and strengthens the strict source-as-is evidence around visible-Spanish exceptions so future chapter, appendix, audit, and correction PRs remain accountable to the user's visual requirements.
+
+Completion boundary: PR #185 remains prerequisite-only. It supports but does not itself complete Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 visual audit, or any correction PRs. One-chapter/one-PR continuation remains required for remaining source manual chapters and chapter-equivalent appendices before full-document completion can pass.
+
+Architect prerequisite: final Architect validation rerun passed before this Analyst rerun at `2026-06-03T03:58:12Z` for the same repaired effective content head `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`. The later commit `b95826fbcb539646ab647073ec61ab1493000010` is treated as Architect-owned validation evidence only; it records the Architect rerun in `tasks.md` and does not intend product/code/test/runtime/manual-content behavior changes.
+
+Gaps: none for the PR #185 repaired prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation rerun.
+
+Analyst boundary reminder: this rerun edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
