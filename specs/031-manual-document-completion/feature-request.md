@@ -486,21 +486,21 @@ Analyst boundary reminder: this validation edits only Analyst-owned notes in `sp
 
 Analyst validation pass: passed
 
-Final Analyst validation completed at: 2026-06-03T08:45:34Z
+Final Analyst validation completed at: 2026-06-03T09:10:42Z
 
-Analyst validated effective content head: 7f2bf99d1e85a4b338e9483b391a6569610ca29a
+Analyst validated effective content head: e16eeb86b965e4d393479ca142cb3d46602206b0
 
 Analyst return count for this work cycle: 0
 
 Customer intent check: passed for the PR #186 audit-only scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
 
-Analyst validation evidence: Architect validation passed first at `2026-06-03T08:42:00Z` for the same effective content head `7f2bf99d1e85a4b338e9483b391a6569610ca29a`; current head `8c12015e596604a3e0bb7eb94a907ccd409804c5` transports Architect-owned validation evidence only in `tasks.md`.
+Analyst validation evidence: Architect validation passed first at `2026-06-03T09:08:06Z` for the same effective content head `e16eeb86b965e4d393479ca142cb3d46602206b0`; commit `dcdf0b697b420a442ab8397c23c97b675023f28a` transports Architect-owned validation evidence only in `tasks.md`.
 
 Analyst validation evidence: PR #186 remains an audit-only process-memory slice for Introduction pages `14-20` and Chapter 1 pages `21-42`; it does not implement Chapter 2 or later manual units, runtime manual pages, assets, code, tests, or docs outside feature memory.
 
 Analyst validation evidence: The audit records a no-fix outcome for the stricter visual rules on Introduction and Chapter 1, with audit completion recorded for T022 through T025 and reusable per-chapter content checklist T049 through T063 reserved for later chapter-equivalent PR work.
 
-Analyst validation evidence: The process-memory row repair after `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57` made prior role validations stale for finalizer purposes, and this Analyst validation supersedes them for effective content head `7f2bf99d1e85a4b338e9483b391a6569610ca29a`.
+Analyst validation evidence: The Cycle PR Set row stabilization in `e16eeb86b965e4d393479ca142cb3d46602206b0` supersedes the prior Analyst validation for `7f2bf99d1e85a4b338e9483b391a6569610ca29a` for finalizer purposes, and this Analyst validation covers effective content head `e16eeb86b965e4d393479ca142cb3d46602206b0`.
 
 Analyst validation evidence: Architect process memory records the Vite large chunk warning owner decision as accepted no action for PR #186 because the warning is pre-existing, nonfatal, and unrelated to this audit-only slice.
 
@@ -508,7 +508,7 @@ Analyst validation evidence: The cycle state now includes merged PR #184 as Chap
 
 Gaps, if any: none for the PR #186 audit-only scope. Remaining planned full-document work, including future chapter-equivalent content PRs and final full-cycle validation, stays outside this audit slice by design and is not an audit-scope gap.
 
-Architect disposition routing: no Analyst gap requires Architect disposition for PR #186 at `7f2bf99d1e85a4b338e9483b391a6569610ca29a`; Architect process memory records no unresolved Implementation Agent feedback and no Architect dispositions requiring action for this audit-only scope.
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #186 at `e16eeb86b965e4d393479ca142cb3d46602206b0`; Architect process memory records no unresolved Implementation Agent feedback and records the Vite warning owner decision for this audit-only scope.
 
 Analyst limit escalation: none.
 
