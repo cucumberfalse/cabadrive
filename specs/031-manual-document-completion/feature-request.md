@@ -222,6 +222,38 @@ Gaps: none for the PR #185 prerequisite scope. Remaining full-document work stay
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
 
+## Final Analyst Validation Rerun - PR #185 Transferred Artwork Source Linkage Repair
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T06:58:43Z
+
+Analyst validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #185 prerequisite scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
+
+Analyst validation evidence: Earlier Analyst validations for older effective content heads are superseded and stale because later non-evidence checker, test, evidence-policy, and process-memory repairs changed the validated prerequisite behavior; this Analyst validation covers effective content head `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-03T06:55:33Z` for the same effective content head `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; commit `ac4a5fd87ea4b3161b35a7fa4d0a0e1a90b9eac2` transports Architect-owned validation evidence only in `tasks.md`.
+
+Analyst validation evidence: PR #185 remains prerequisite-only visual-rule work covering docs, checker, evidence policy, tests, and process memory; it does not implement Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 audit, correction PRs, runtime manual pages, or chapter content.
+
+Analyst validation evidence: The transferred artwork source-linkage repair strengthens the infographic and diagram source-transfer requirement by requiring strict source-transferred-infographic and source-transferred-diagram metadata to reference existing strict sourceRegionMetadata through sourceAssetPath, with sourceCropSha256 and sourceCropDimensions matching the recorded source crop hash and decoded dimensions.
+
+Analyst validation evidence: The repaired prerequisite preserves the intended distinction that transferred runtime artwork may differ from the source crop for glyph-level Spanish cleanup and Russian overlay while preventing source-transfer booleans or generated runtime artwork from passing without source-crop provenance.
+
+Analyst validation evidence: Review Agent posted no actionable findings for `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`, AI Review passed at the same effective content head, and process memory records required checks green for baseline-checks, docker-validation, guard, osv-scan, and AI Review.
+
+Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
 ## Final Analyst Validation Rerun - PR #185 Source-As-Is Provenance And Broad Cleanup Repair
 
 Analyst validation pass: passed
