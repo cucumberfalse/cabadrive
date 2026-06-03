@@ -19,20 +19,12 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/ch4-sleep-fatigue/ch4-sleep-fatigue-mobile.png"
     ],
     notes: [
-      "Source PDF pages 93-94 are converted as selectable Russian DOM text.",
+      "Source PDF page 93 is split by topic: sleep/fatigue begins at the Sueño y fatiga heading, while the responsible-driver and alcohol/drugs control blocks belong to alcohol/drugs.",
       "Page 94 is shared: sleep/fatigue owns fatigue symptoms and recommendations through the rest-stop remedies; stress starts at the Estrés heading.",
       "No Chapter 4 source artwork is rendered or modified in runtime."
     ]
   },
   blocks: [
-    {
-      id: "responsible-driver",
-      kind: "callout",
-      sourceTextEs:
-        "Designar a una persona que se responsabilice para conducir... comprometerse a no ingerir alcohol y llevar a cada una a su destino.",
-      textRu:
-        "Recomendación del conductor/a responsable: в группе людей, которым нужно уехать, назначить ответственного водителя. Этот человек обязуется не употреблять alcohol и довезти каждого до места назначения после встречи, заботясь и о себе, и о других."
-    },
     {
       id: "sleep-biological-need",
       kind: "lead",
@@ -48,14 +40,6 @@ export const ch4SleepFatigueSection: ManualGuideSectionContent = {
         "Cuando una persona no duerme lo suficiente... aumento de la necesidad de sueño en los días posteriores y disminución del rendimiento.",
       textRu:
         "Если человек спит недостаточно, организм пытается вернуть равновесие: в последующие дни растет потребность во сне и снижается rendimiento. Источник также предупреждает, что cansancio может усиливаться от алкоголя и обильной еды."
-    },
-    {
-      id: "test-instruments-and-hangover",
-      kind: "callout",
-      sourceTextEs:
-        "El control de alcoholemia o toxicológico se realiza utilizando instrumentos... frente a un resultado positivo o la negativa... el procedimiento es el mismo. Resaca o veisalgia.",
-      textRu:
-        "Проверку alcoholemia или токсикологический контроль проводят сертифицированными и калиброванными измерительными/детекторными приборами. При положительном результате или отказе от проверки процедура для контроля алкоголя и контроля estupefacientes одинаковая. Resaca, медицински veisalgia, тоже опасна: она нарушает координацию, внимание и время реакции, поэтому вождение с похмельем приравнивается к вождению в состоянии алкоголизации."
     },
     {
       id: "few-hours-sleep-effects",

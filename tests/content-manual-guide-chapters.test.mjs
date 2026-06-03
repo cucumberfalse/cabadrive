@@ -656,7 +656,7 @@ test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not r
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
   assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97)));
-  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 94, 95]);
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95]);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -680,8 +680,8 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 94, 95],
-    "source pages 55, 94, and 95 are intentionally shared between section topics"
+    [55, 93, 94, 95],
+    "source pages 55, 93, 94, and 95 are intentionally shared between section topics"
   );
   const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
@@ -878,7 +878,7 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3StoppingParkingModuleSource, /Símbolo Internacional de Acceso/u);
 });
 
-test("Chapter 4 divider, page 94 stress boundary, and page 95 direct distractions boundary are explicit", () => {
+test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, and page 95 direct distractions boundary are explicit", () => {
   const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 89);
   assert.equal(divider?.reason, "chapter-divider-only");
   assert.match(divider?.disposition ?? "", /navigation only/);
@@ -892,7 +892,7 @@ test("Chapter 4 divider, page 94 stress boundary, and page 95 direct distraction
   assert.ok(stress, "stress section exists");
   assert.ok(distractions, "distractions section exists");
 
-  assert.deepEqual(alcoholDrugs.sourcePageRange, { start: 90, end: 92 });
+  assert.deepEqual(alcoholDrugs.sourcePageRange, { start: 90, end: 93 });
   assert.deepEqual(sleepFatigue.sourcePageRange, { start: 93, end: 94 });
   assert.deepEqual(stress.sourcePageRange, { start: 94, end: 95 });
   assert.deepEqual(distractions.sourcePageRange, { start: 95, end: 97 });
@@ -903,17 +903,29 @@ test("Chapter 4 divider, page 94 stress boundary, and page 95 direct distraction
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 94, 95]
+    [55, 93, 94, 95]
   );
+  const sharedPage93 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 93);
   const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
   const sharedPage95 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 95);
+  assert.deepEqual(sharedPage93.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-alcohol-drugs", "ch4-sleep-fatigue"]);
   assert.deepEqual(sharedPage94.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-sleep-fatigue", "ch4-stress"]);
   assert.deepEqual(sharedPage95.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-stress", "ch4-distractions"]);
 
+  const alcoholPage93Boundary = sourceBoundaryEvidenceFor(alcoholDrugs, 93);
+  const sleepPage93Boundary = sourceBoundaryEvidenceFor(sleepFatigue, 93);
   const sleepBoundary = sourceBoundaryEvidenceFor(sleepFatigue, 94);
   const stressPage94Boundary = sourceBoundaryEvidenceFor(stress, 94);
   const stressPage95Boundary = sourceBoundaryEvidenceFor(stress, 95);
   const distractionsBoundary = sourceBoundaryEvidenceFor(distractions, 95);
+  assert.equal(alcoholPage93Boundary.ownedRegion, "responsible-driver-and-alcoholemia-toxicology-hangover");
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-03"), true);
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-16"), true);
+  assert.equal(alcoholPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-23"), true);
+  assert.equal(sleepPage93Boundary.startsAtLayoutBlockId, "page-093-source-line-mask-02");
+  assert.match(sleepPage93Boundary.startsAtSourceTextEs, /Sueño y fatiga/u);
+  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-10"), true);
+  assert.equal(sleepPage93Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-093-source-line-mask-24"), true);
   assert.equal(sleepBoundary.endsBeforeLayoutBlockId, "page-094-source-line-mask-31");
   assert.equal(stressPage94Boundary.startsAtLayoutBlockId, "page-094-source-line-mask-31");
   assert.match(stressPage94Boundary.startsAtSourceTextEs, /Estrés/u);
@@ -956,13 +968,20 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /durante la primera hora/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Retener la licencia|удерживают водительское удостоверение/u);
   assert.match(ch4AlcoholDrugsModuleSource, /presumed positive|presume el estado/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"responsible-driver"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /id:\s*"test-instruments-and-hangover"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /certificados y calibrados|сертифицирован/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /veisalgia/u);
 
-  assert.match(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"responsible-driver"/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /id:\s*"test-instruments-and-hangover"/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /veisalgia/u);
   assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
-  assert.match(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
-  assert.match(ch4SleepFatigueModuleSource, /veisalgia/u);
-  assert.match(ch4SleepFatigueModuleSource, /время реакции/u);
+  assert.match(ch4SleepFatigueModuleSource, /время ответа/u);
   assert.match(ch4SleepFatigueModuleSource, /capacidad de reacción/u);
   assert.match(ch4SleepFatigueModuleSource, /microsueños/u);
   assert.match(ch4SleepFatigueModuleSource, /8 horas/u);
@@ -2212,22 +2231,23 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
 test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, and 4 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 97 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 94, 95]);
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 94, 95]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
   assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 23);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
   assert.equal(result.implementedSections, 23);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89]);
   assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
-  assert.deepEqual(result.sharedSourcePages, [55, 94, 95]);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
   assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_4_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });

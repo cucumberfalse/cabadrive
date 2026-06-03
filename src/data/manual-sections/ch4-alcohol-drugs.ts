@@ -14,7 +14,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
   id: "ch4-alcohol-drugs-content",
   sectionId: "ch4-alcohol-drugs",
   titleRu: "Употребление алкоголя и наркотиков",
-  sourcePages: [90, 91, 92],
+  sourcePages: [90, 91, 92, 93],
   sourceTitleEs: "Consumo de alcohol y drogas",
   status: "implemented",
   styleTokenFamilies: [
@@ -31,17 +31,18 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
       "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-drugs-source-crop.jpg",
       "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
-      "content/validation/manual-guide/ch4-alcohol-drugs/page-092-alcohol-drugs-source-crop.jpg"
+      "content/validation/manual-guide/ch4-alcohol-drugs/page-092-alcohol-drugs-source-crop.jpg",
+      "content/validation/manual-guide/ch4-alcohol-drugs/page-093-alcohol-drugs-source-crop.jpg"
     ],
     russianScreenshots: [
       "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-desktop.png",
       "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-mobile.png"
     ],
     notes: [
-      "Source PDF pages 90-92 are converted as selectable Russian DOM text.",
+      "Source PDF pages 90-92 plus the alcohol/drugs page 93 topic blocks are converted as selectable Russian DOM text.",
       "The page 90 drug-test device/photo and page 91 alcohol-limit visual are rendered as x5 source-as-is runtime crops.",
       "No source image, sign, marking, photo, or infographic is translated, relabeled, recolored, cleaned, masked, or redrawn; Russian explanation stays outside images.",
-      "Medication, drug-detection, alcohol-limit, absorption, elimination, positive-test, and refusal procedure details are retained in runtime text."
+      "Medication, drug-detection, alcohol-limit, absorption, elimination, positive-test, refusal procedure, responsible-driver, certified/calibrated instrument, and veisalgia details are retained in runtime text."
     ]
   },
   blocks: [
@@ -268,6 +269,22 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         "Транспорт remitir el vehículo - отправляют/эвакуируют так, чтобы водитель не продолжал движение.",
         "При отказе от alcoholemia autoridad de control должна запретить продолжать управление и приказать removal of vehicle, потому что состояние presumed positive."
       ]
+    },
+    {
+      id: "responsible-driver",
+      kind: "callout",
+      sourceTextEs:
+        "Designar a una persona que se responsabilice para conducir... comprometerse a no ingerir alcohol y llevar a cada una a su destino.",
+      textRu:
+        "Recomendación del conductor/a responsable: в группе людей, которым нужно уехать, назначить ответственного водителя. Этот человек обязуется не употреблять alcohol и довезти каждого до места назначения после встречи, заботясь и о себе, и о других."
+    },
+    {
+      id: "test-instruments-and-hangover",
+      kind: "callout",
+      sourceTextEs:
+        "El control de alcoholemia o toxicológico se realiza utilizando instrumentos... frente a un resultado positivo o la negativa... el procedimiento es el mismo. Resaca o veisalgia.",
+      textRu:
+        "Контроль alcoholemia или toxicológico проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом certificados y calibrados. Источник уточняет: при положительном результате или отказе пройти контроль alcoholemia или estupefacientes процедура одинакова. Resaca, или медицинским термином veisalgia, опасна для вождения: она нарушает координацию, внимание и время реакции, поэтому conducir con resaca приравнивается к управлению в состоянии alcoholización."
     }
   ]
 };

@@ -2761,7 +2761,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(stoppingParking).toHaveAttribute("data-route-hash", "#manual-section-ch3-stopping-parking");
   await expect(stoppingParking).toHaveAttribute("data-source-pages", "83-88");
   await expect(alcoholDrugs).toHaveAttribute("data-route-hash", "#manual-section-ch4-alcohol-drugs");
-  await expect(alcoholDrugs).toHaveAttribute("data-source-pages", "90-92");
+  await expect(alcoholDrugs).toHaveAttribute("data-source-pages", "90-93");
   await expect(sleepFatigue).toHaveAttribute("data-route-hash", "#manual-section-ch4-sleep-fatigue");
   await expect(sleepFatigue).toHaveAttribute("data-source-pages", "93-94");
   await expect(stress).toHaveAttribute("data-route-hash", "#manual-section-ch4-stress");

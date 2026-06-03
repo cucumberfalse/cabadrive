@@ -89,6 +89,64 @@
       ]
     },
     {
+      "sourcePage": 93,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 93 and layout.ru.json page-093 source-line masks 02-35; masks 03-09, 16-23, and 34-35 are alcohol/drugs topic blocks, while mask 02 starts Sueño y fatiga.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-alcohol-drugs",
+          "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-03",
+            "page-093-source-line-mask-04",
+            "page-093-source-line-mask-05",
+            "page-093-source-line-mask-06",
+            "page-093-source-line-mask-07",
+            "page-093-source-line-mask-08",
+            "page-093-source-line-mask-09",
+            "page-093-source-line-mask-16",
+            "page-093-source-line-mask-17",
+            "page-093-source-line-mask-18",
+            "page-093-source-line-mask-19",
+            "page-093-source-line-mask-20",
+            "page-093-source-line-mask-21",
+            "page-093-source-line-mask-22",
+            "page-093-source-line-mask-23",
+            "page-093-source-line-mask-34",
+            "page-093-source-line-mask-35"
+          ],
+          "excludesSectionId": "ch4-sleep-fatigue"
+        },
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
+        }
+      ]
+    },
+    {
       "sourcePage": 94,
       "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-094.jpg",
       "reason": "source-page-contains-two-source-index-topics",
@@ -4449,7 +4507,7 @@
       "routeHash": "#manual-section-ch4-alcohol-drugs",
       "sourcePageRange": {
         "start": 90,
-        "end": 92
+        "end": 93
       },
       "sourcePages": [
         {
@@ -4469,6 +4527,12 @@
           "manualManifestPointer": "/pages/91",
           "layoutManifestPointer": "/pages/91",
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-092.jpg"
+        },
+        {
+          "sourcePage": 93,
+          "manualManifestPointer": "/pages/92",
+          "layoutManifestPointer": "/pages/92",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg"
         }
       ],
       "status": "implemented",
@@ -4484,7 +4548,8 @@
         "sourcePages": [
           90,
           91,
-          92
+          92,
+          93
         ],
         "sourceRegionMetadata": [
           {
@@ -4611,6 +4676,31 @@
               },
               "sha256": "06d4e2f95ac73d778f61397903c5f030b929cb9a302b1eaef6d4247d2024cdbd"
             }
+          },
+          {
+            "sourcePage": 93,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-093-alcohol-drugs-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "943db74a5b21349a9b498ea426b10c935472734748af56e5c28e9c7c7760619e"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -4727,11 +4817,36 @@
           "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
         },
         "visualReviewNotes": [
-          "Pages 90-92 are rendered as selectable Russian DOM text covering impairment, medication, drug-test, alcohol-limit, absorption, elimination, positive-test, and refusal rules.",
+          "Pages 90-92 plus the alcohol/drugs topic blocks on shared page 93 are rendered as selectable Russian DOM text covering impairment, medication, drug-test, alcohol-limit, absorption, elimination, positive-test, refusal rules, responsible-driver guidance, certified/calibrated instruments, and resaca/veisalgia.",
           "The page 90 drug-test photo/device visual and page 91 alcohol-limit visual are x5 source-as-is runtime crops with matching source crop hashes.",
           "Spanish text remains only inside those source images; Russian learner explanation and the alcohol thresholds are selectable DOM text outside the images."
         ],
         "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 93,
+        "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-093-source-line-mask-03",
+          "page-093-source-line-mask-04",
+          "page-093-source-line-mask-05",
+          "page-093-source-line-mask-06",
+          "page-093-source-line-mask-07",
+          "page-093-source-line-mask-08",
+          "page-093-source-line-mask-09",
+          "page-093-source-line-mask-16",
+          "page-093-source-line-mask-17",
+          "page-093-source-line-mask-18",
+          "page-093-source-line-mask-19",
+          "page-093-source-line-mask-20",
+          "page-093-source-line-mask-21",
+          "page-093-source-line-mask-22",
+          "page-093-source-line-mask-23",
+          "page-093-source-line-mask-34",
+          "page-093-source-line-mask-35"
+        ],
+        "boundaryEvidence": "layout.ru.json page 93 masks 03-09 retain the responsible-driver recommendation; masks 16-23 retain the alcoholemia/toxicological instrument, positive/refusal-procedure, and resaca/veisalgia content; masks 34-35 are the Conductor/a Responsable label. These page-93 alcohol/drugs topic blocks are excluded from sleep/fatigue runtime.",
+        "excludesSectionId": "ch4-sleep-fatigue"
       }
     },
     {
@@ -4854,50 +4969,79 @@
           "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
         },
         "visualReviewNotes": [
-          "Pages 93-94 are rendered as selectable Russian DOM text.",
+          "Page 93 is shared; sleep/fatigue starts at the Sueño y fatiga heading and excludes the responsible-driver and alcoholemia/toxicology/veisalgia alcohol/drugs blocks.",
           "Page 94 is shared; sleep/fatigue owns masks 02-30 before the Estrés heading at mask 31.",
           "No Spanish glyph cleanup was needed for this section because runtime content is native text only."
         ],
         "checkerResult": "pass"
       },
-      "sourceBoundaryEvidence": {
-        "sharedSourcePage": 94,
-        "ownedRegion": "sleep-fatigue-symptoms-recommendations-and-remedies",
-        "ownedLayoutBlockIdsOnSharedPage": [
-          "page-094-source-line-mask-02",
-          "page-094-source-line-mask-03",
-          "page-094-source-line-mask-04",
-          "page-094-source-line-mask-05",
-          "page-094-source-line-mask-06",
-          "page-094-source-line-mask-07",
-          "page-094-source-line-mask-08",
-          "page-094-source-line-mask-09",
-          "page-094-source-line-mask-10",
-          "page-094-source-line-mask-11",
-          "page-094-source-line-mask-12",
-          "page-094-source-line-mask-13",
-          "page-094-source-line-mask-14",
-          "page-094-source-line-mask-15",
-          "page-094-source-line-mask-16",
-          "page-094-source-line-mask-17",
-          "page-094-source-line-mask-18",
-          "page-094-source-line-mask-19",
-          "page-094-source-line-mask-20",
-          "page-094-source-line-mask-21",
-          "page-094-source-line-mask-22",
-          "page-094-source-line-mask-23",
-          "page-094-source-line-mask-24",
-          "page-094-source-line-mask-25",
-          "page-094-source-line-mask-26",
-          "page-094-source-line-mask-27",
-          "page-094-source-line-mask-28",
-          "page-094-source-line-mask-29",
-          "page-094-source-line-mask-30"
-        ],
-        "boundaryEvidence": "layout.ru.json page 94 masks 02-30 contain the footnote, fatigue symptoms, 8-hour/200-km/2-hour and motovehicle 100-km/1-hour recommendations, 17-awake-hours comparison, and sleep-vs-fatigue remedies; mask 31 starts Estrés.",
-        "endsBeforeLayoutBlockId": "page-094-source-line-mask-31",
-        "excludesSectionId": "ch4-stress"
-      }
+      "sourceBoundaryEvidence": [
+        {
+          "sharedSourcePage": 93,
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "boundaryEvidence": "layout.ru.json page 93 mask 02 is the Sueño y fatiga heading; masks 10-15 contain the biological-need and insufficient-sleep text; masks 24-33 contain Dormir pocas horas and the fatigue definition. Responsible-driver, alcoholemia/toxicology, and resaca/veisalgia masks are excluded to ch4-alcohol-drugs.",
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
+        },
+        {
+          "sharedSourcePage": 94,
+          "ownedRegion": "sleep-fatigue-symptoms-recommendations-and-remedies",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-094-source-line-mask-02",
+            "page-094-source-line-mask-03",
+            "page-094-source-line-mask-04",
+            "page-094-source-line-mask-05",
+            "page-094-source-line-mask-06",
+            "page-094-source-line-mask-07",
+            "page-094-source-line-mask-08",
+            "page-094-source-line-mask-09",
+            "page-094-source-line-mask-10",
+            "page-094-source-line-mask-11",
+            "page-094-source-line-mask-12",
+            "page-094-source-line-mask-13",
+            "page-094-source-line-mask-14",
+            "page-094-source-line-mask-15",
+            "page-094-source-line-mask-16",
+            "page-094-source-line-mask-17",
+            "page-094-source-line-mask-18",
+            "page-094-source-line-mask-19",
+            "page-094-source-line-mask-20",
+            "page-094-source-line-mask-21",
+            "page-094-source-line-mask-22",
+            "page-094-source-line-mask-23",
+            "page-094-source-line-mask-24",
+            "page-094-source-line-mask-25",
+            "page-094-source-line-mask-26",
+            "page-094-source-line-mask-27",
+            "page-094-source-line-mask-28",
+            "page-094-source-line-mask-29",
+            "page-094-source-line-mask-30"
+          ],
+          "boundaryEvidence": "layout.ru.json page 94 masks 02-30 contain the footnote, fatigue symptoms, 8-hour/200-km/2-hour and motovehicle 100-km/1-hour recommendations, 17-awake-hours comparison, and sleep-vs-fatigue remedies; mask 31 starts Estrés.",
+          "endsBeforeLayoutBlockId": "page-094-source-line-mask-31",
+          "excludesSectionId": "ch4-stress"
+        }
+      ]
     },
     {
       "id": "ch4-stress",

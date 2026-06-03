@@ -134,7 +134,7 @@
     },
     "ch4-alcohol-drugs": {
       "start": 90,
-      "end": 92
+      "end": 93
     },
     "ch4-sleep-fatigue": {
       "start": 93,
@@ -190,6 +190,64 @@
           "startsAtLayoutBlockId": "page-055-block-08",
           "startsAtSourceTextEs": "El Sistema de Evaluación Permanente de Conductores o Scoring",
           "omittedClosingSourcePage": 56
+        }
+      ]
+    },
+    {
+      "sourcePage": 93,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-093.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 93 and layout.ru.json page-093 source-line masks 02-35; masks 03-09, 16-23, and 34-35 are alcohol/drugs topic blocks, while mask 02 starts Sueño y fatiga.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch4-alcohol-drugs",
+          "ownedRegion": "responsible-driver-and-alcoholemia-toxicology-hangover",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-03",
+            "page-093-source-line-mask-04",
+            "page-093-source-line-mask-05",
+            "page-093-source-line-mask-06",
+            "page-093-source-line-mask-07",
+            "page-093-source-line-mask-08",
+            "page-093-source-line-mask-09",
+            "page-093-source-line-mask-16",
+            "page-093-source-line-mask-17",
+            "page-093-source-line-mask-18",
+            "page-093-source-line-mask-19",
+            "page-093-source-line-mask-20",
+            "page-093-source-line-mask-21",
+            "page-093-source-line-mask-22",
+            "page-093-source-line-mask-23",
+            "page-093-source-line-mask-34",
+            "page-093-source-line-mask-35"
+          ],
+          "excludesSectionId": "ch4-sleep-fatigue"
+        },
+        {
+          "sectionId": "ch4-sleep-fatigue",
+          "ownedRegion": "sleep-fatigue-heading-definition-few-hours-and-fatigue-definition",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-093-source-line-mask-02",
+            "page-093-source-line-mask-10",
+            "page-093-source-line-mask-11",
+            "page-093-source-line-mask-12",
+            "page-093-source-line-mask-13",
+            "page-093-source-line-mask-14",
+            "page-093-source-line-mask-15",
+            "page-093-source-line-mask-24",
+            "page-093-source-line-mask-25",
+            "page-093-source-line-mask-26",
+            "page-093-source-line-mask-27",
+            "page-093-source-line-mask-28",
+            "page-093-source-line-mask-29",
+            "page-093-source-line-mask-30",
+            "page-093-source-line-mask-31",
+            "page-093-source-line-mask-32",
+            "page-093-source-line-mask-33"
+          ],
+          "startsAtLayoutBlockId": "page-093-source-line-mask-02",
+          "startsAtSourceTextEs": "Sueño y fatiga",
+          "excludesSectionId": "ch4-alcohol-drugs"
         }
       ]
     },
@@ -631,6 +689,7 @@
     ],
     "sharedSourcePages": [
       55,
+      93,
       94,
       95
     ],
