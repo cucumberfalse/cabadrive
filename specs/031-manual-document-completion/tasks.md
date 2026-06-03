@@ -467,6 +467,18 @@ For each chapter-equivalent content PR:
 - Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head cf28cfc72f0ad21130a05d665de915fce0c75dea for PR #188; post-effective changes through final validation/guard evidence transport are final-validation evidence only in `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
+- Effective content head: a8ecdac9daed66274ba51fb04ecbe47279aae2f6
+- Architect validation: passed at 2026-06-03T17:54:46Z for effective content head a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+- Architect validated effective content head: a8ecdac9daed66274ba51fb04ecbe47279aae2f6
+- Architect return count: 0
+- Architect validation: PR #189 Chapter 4 scope validated for pages 89-97 and sections ch4-alcohol-drugs, ch4-sleep-fatigue, ch4-stress, and ch4-distractions; page 89 is divider-only, page 94 shared boundary is preserved, and page 95 direct distractions navigation is preserved.
+- Architect validation: required checks passed on a8ecdac9daed66274ba51fb04ecbe47279aae2f6: AI Review, baseline-checks, docker-validation, guard, and osv-scan.
+- Architect validation: Review Agent follow-up found no actionable findings at a8ecdac9daed66274ba51fb04ecbe47279aae2f6; AI Review passed; review threads PRRT_kwDOSX65IM6G1K3A, PRRT_kwDOSX65IM6G1LSI, and PRRT_kwDOSX65IM6G1aYu are verified and resolved.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
+- Architect validation: Chapter 4 known issues section records no unresolved known issues; Vite large chunk warning is pre-existing, nonfatal, unrelated to PR #189, accepted no action for Chapter 4 scope, and disposition not applicable.
+- Architect validation: cycle PR-set coverage includes merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, merged PR #186 Introduction and Chapter 1 audit-only slice, merged PR #187 Chapter 2 content slice, PR #188 Chapter 3 content slice, and PR #189 Chapter 4 content slice at effective content head a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+- Limit escalation: none
+- Current-PR-head read-only guard: Orchestrator verified effective content head a8ecdac9daed66274ba51fb04ecbe47279aae2f6 for PR #189; post-effective changes through final validation/guard evidence transport are final-validation evidence only in `feature-request.md` and `tasks.md`, and required checks, review threads, and mergeability are rechecked by finalizer expected-head before merge.
 
 ## Known Issues / Architect Dispositions
 
@@ -1196,6 +1208,44 @@ Architect disposition: no unresolved Implementation Agent feedback remains for P
 Architect disposition: no unresolved known issue lacks owner decision for PR #188 Chapter 3 scope.
 
 Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T17:54:46Z
+
+Architect validated effective content head: a8ecdac9daed66274ba51fb04ecbe47279aae2f6
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #189 Chapter 4 scope at a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+
+Architect validation evidence: PR #189 implements only Chapter 4 pages 89-97, covering ch4-alcohol-drugs pages 90-92, ch4-sleep-fatigue pages 93-94, ch4-stress page 94 with recommendations on page 95, and ch4-distractions pages 95-97; no Chapter 5, appendix, or front-matter content is bundled.
+
+Architect validation evidence: Chapter 4 source boundaries are preserved: page 89 is divider-only, page 94 sleep/fatigue-to-stress boundary is recorded by line-mask evidence, and direct ch4-distractions navigation starts on shared page 95.
+
+Architect validation evidence: Strict visual requirements are satisfied for Chapter 4: x5 source-render evidence is recorded, runtime source visuals for pages 90, 91, 95, and 97 are source-as-is local assets with source-integrity metadata and Russian explanation outside images, and no protected photo, traffic sign, road marking, source crop, source page image, diagram, or infographic was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, broadly patched, or modified.
+
+Architect validation evidence: Review fixes are satisfied: the alcohol threshold grid preserves 0.00, 0.20, and 0.50 g/l rows by category, sleep/fatigue learner wording is Russian-only, and learner-visible runtime source visuals for pages 90, 91, 95, and 97 are present with strict evidence.
+
+Architect validation evidence: Required checks passed on a8ecdac9daed66274ba51fb04ecbe47279aae2f6: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent follow-up found no actionable findings, AI Review passed, and review threads PRRT_kwDOSX65IM6G1K3A, PRRT_kwDOSX65IM6G1LSI, and PRRT_kwDOSX65IM6G1aYu are verified and resolved.
+
+Architect validation evidence: Implementation Agent feedback and known-issue gates are disposed: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope, no unresolved known issue lacks owner decision, and no Analyst feedback requires Architect action.
+
+Architect validation evidence: Known Issues section records the Vite large chunk warning as pre-existing, nonfatal, unrelated to Chapter 4 content, accepted no action for Chapter 4 scope, and disposition not applicable; PR #189 review-fix known issues are resolved with no source visual modification.
+
+Architect validation evidence: Cycle PR-set coverage for this validation includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, merged PR #186 as Introduction and Chapter 1 audit-only slice, merged PR #187 as Chapter 2 content slice, PR #188 as Chapter 3 content slice, and PR #189 as Chapter 4 content slice at base 19fecc3a1a2ca4ab9273cdbe6833e7d6d5d7ef27 and effective content head a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #189 Chapter 4 scope at a8ecdac9daed66274ba51fb04ecbe47279aae2f6.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #189 Chapter 4 scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #189 Chapter 4 scope.
+
+Architect disposition: owner decision for Vite large chunk warning is accepted no action for PR #189 because it is pre-existing, nonfatal, unrelated to Chapter 4 content, and disposition not applicable.
 
 ## Review Requirements
 
