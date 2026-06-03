@@ -757,7 +757,10 @@ function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePage
       assertCondition(Boolean(section), `${boundary.sectionId} shared-page boundary must reference an existing section`, boundary);
       assertCondition(sectionSourcePages(section).includes(sharedEntry.sourcePage), `${boundary.sectionId} must include shared source page ${sharedEntry.sourcePage}`, section);
 
-      const sectionBoundary = section.sourceBoundaryEvidence;
+      const sectionBoundaryEvidence = section.sourceBoundaryEvidence;
+      const sectionBoundary = Array.isArray(sectionBoundaryEvidence)
+        ? sectionBoundaryEvidence.find((entry) => entry.sharedSourcePage === sharedEntry.sourcePage)
+        : sectionBoundaryEvidence;
       assertRequiredFields(
         sectionBoundary,
         ["sharedSourcePage", "ownedRegion", "ownedLayoutBlockIdsOnSharedPage", "boundaryEvidence"],

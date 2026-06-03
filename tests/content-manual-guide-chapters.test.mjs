@@ -32,6 +32,10 @@ const ch3OvertakingModulePath = "src/data/manual-sections/ch3-overtaking.ts";
 const ch3HighwaysModulePath = "src/data/manual-sections/ch3-highways.ts";
 const ch3AdverseModulePath = "src/data/manual-sections/ch3-adverse-conditions.ts";
 const ch3StoppingParkingModulePath = "src/data/manual-sections/ch3-stopping-parking.ts";
+const ch4AlcoholDrugsModulePath = "src/data/manual-sections/ch4-alcohol-drugs.ts";
+const ch4SleepFatigueModulePath = "src/data/manual-sections/ch4-sleep-fatigue.ts";
+const ch4StressModulePath = "src/data/manual-sections/ch4-stress.ts";
+const ch4DistractionsModulePath = "src/data/manual-sections/ch4-distractions.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -50,7 +54,11 @@ const implementedSectionIds = new Set([
   "ch3-overtaking",
   "ch3-highways",
   "ch3-adverse-conditions",
-  "ch3-stopping-parking"
+  "ch3-stopping-parking",
+  "ch4-alcohol-drugs",
+  "ch4-sleep-fatigue",
+  "ch4-stress",
+  "ch4-distractions"
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -75,6 +83,10 @@ const ch3OvertakingModuleSource = readFileSync(ch3OvertakingModulePath, "utf8");
 const ch3HighwaysModuleSource = readFileSync(ch3HighwaysModulePath, "utf8");
 const ch3AdverseModuleSource = readFileSync(ch3AdverseModulePath, "utf8");
 const ch3StoppingParkingModuleSource = readFileSync(ch3StoppingParkingModulePath, "utf8");
+const ch4AlcoholDrugsModuleSource = readFileSync(ch4AlcoholDrugsModulePath, "utf8");
+const ch4SleepFatigueModuleSource = readFileSync(ch4SleepFatigueModulePath, "utf8");
+const ch4StressModuleSource = readFileSync(ch4StressModulePath, "utf8");
+const ch4DistractionsModuleSource = readFileSync(ch4DistractionsModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -93,6 +105,13 @@ function duplicatedValues(values) {
     .filter(([, count]) => count > 1)
     .map(([value]) => value)
     .sort((a, b) => a - b);
+}
+
+function sourceBoundaryEvidenceFor(section, sourcePage) {
+  if (Array.isArray(section.sourceBoundaryEvidence)) {
+    return section.sourceBoundaryEvidence.find((entry) => entry.sharedSourcePage === sourcePage);
+  }
+  return section.sourceBoundaryEvidence?.sharedSourcePage === sourcePage ? section.sourceBoundaryEvidence : undefined;
 }
 
 function sourcePageAssetPath(sourcePage) {
@@ -257,6 +276,10 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch3-highways.ts"), 'export const ch3HighwaysSection = { sectionId: "ch3-highways", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch3-adverse-conditions.ts"), 'export const ch3AdverseConditionsSection = { sectionId: "ch3-adverse-conditions", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch3-stopping-parking.ts"), 'export const ch3StoppingParkingSection = { sectionId: "ch3-stopping-parking", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-alcohol-drugs.ts"), 'export const ch4AlcoholDrugsSection = { sectionId: "ch4-alcohol-drugs", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-sleep-fatigue.ts"), 'export const ch4SleepFatigueSection = { sectionId: "ch4-sleep-fatigue", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-stress.ts"), 'export const ch4StressSection = { sectionId: "ch4-stress", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch4-distractions.ts"), 'export const ch4DistractionsSection = { sectionId: "ch4-distractions", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -504,18 +527,19 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped divider metadata", () => {
+test("Chapter 1, 2, 3, and 4 registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 88 });
+  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 97 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
+    "chapter-divider-only",
     "chapter-divider-only"
   ]);
 
@@ -547,6 +571,7 @@ test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped 
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
     assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
     assert.equal(sourcePages.includes(57), false, `${section.id} does not include divider page 57`);
+    assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -561,11 +586,11 @@ test("Chapter 1, 2, and 3 registry contains source Índice sections and skipped 
   }
 });
 
-test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 3);
+test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 4);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
-    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules"]
+    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules", "chapter-4-natural-capacity"]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
     "ch1-cities-for-people",
@@ -595,11 +620,19 @@ test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw 
     "ch3-stopping-parking"
   ]);
   assert.equal(registry.chapters[2].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
+  assert.deepEqual(registry.chapters[3].sectionIds, [
+    "ch4-alcohol-drugs",
+    "ch4-sleep-fatigue",
+    "ch4-stress",
+    "ch4-distractions"
+  ]);
+  assert.equal(registry.chapters[3].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
   assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
   assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
+  assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -612,8 +645,8 @@ test("Chapter 1, 2, and 3 hierarchy references source Índice sections, not raw 
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88)));
-  assert.deepEqual(duplicatedValues(coveredSourcePages), [55]);
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97)));
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 94, 95]);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -637,10 +670,10 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55],
-    "only source page 55 is intentionally shared between section topics"
+    [55, 94, 95],
+    "source pages 55, 94, and 95 are intentionally shared between section topics"
   );
-  const sharedPage55 = registry.sharedSourcePageOwnership[0];
+  const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
   assert.deepEqual(sharedPage55.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch2-incident-obligations", "ch2-scoring"]);
 
@@ -835,6 +868,129 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3StoppingParkingModuleSource, /Símbolo Internacional de Acceso/u);
 });
 
+test("Chapter 4 divider, page 94 stress boundary, and page 95 direct distractions boundary are explicit", () => {
+  const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 89);
+  assert.equal(divider?.reason, "chapter-divider-only");
+  assert.match(divider?.disposition ?? "", /navigation only/);
+
+  const alcoholDrugs = registry.sections.find((section) => section.id === "ch4-alcohol-drugs");
+  const sleepFatigue = registry.sections.find((section) => section.id === "ch4-sleep-fatigue");
+  const stress = registry.sections.find((section) => section.id === "ch4-stress");
+  const distractions = registry.sections.find((section) => section.id === "ch4-distractions");
+  assert.ok(alcoholDrugs, "alcohol/drugs section exists");
+  assert.ok(sleepFatigue, "sleep/fatigue section exists");
+  assert.ok(stress, "stress section exists");
+  assert.ok(distractions, "distractions section exists");
+
+  assert.deepEqual(alcoholDrugs.sourcePageRange, { start: 90, end: 92 });
+  assert.deepEqual(sleepFatigue.sourcePageRange, { start: 93, end: 94 });
+  assert.deepEqual(stress.sourcePageRange, { start: 94, end: 95 });
+  assert.deepEqual(distractions.sourcePageRange, { start: 95, end: 97 });
+  assert.equal(stress.routeHash, "#manual-section-ch4-stress");
+  assert.equal(distractions.routeHash, "#manual-section-ch4-distractions");
+  assert.equal(stress.sourcePages[0].sourcePage, 94, "direct stress navigation opens at source page 94");
+  assert.equal(distractions.sourcePages[0].sourcePage, 95, "direct distractions navigation opens at source page 95");
+
+  assert.deepEqual(
+    registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
+    [55, 94, 95]
+  );
+  const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
+  const sharedPage95 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 95);
+  assert.deepEqual(sharedPage94.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-sleep-fatigue", "ch4-stress"]);
+  assert.deepEqual(sharedPage95.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch4-stress", "ch4-distractions"]);
+
+  const sleepBoundary = sourceBoundaryEvidenceFor(sleepFatigue, 94);
+  const stressPage94Boundary = sourceBoundaryEvidenceFor(stress, 94);
+  const stressPage95Boundary = sourceBoundaryEvidenceFor(stress, 95);
+  const distractionsBoundary = sourceBoundaryEvidenceFor(distractions, 95);
+  assert.equal(sleepBoundary.endsBeforeLayoutBlockId, "page-094-source-line-mask-31");
+  assert.equal(stressPage94Boundary.startsAtLayoutBlockId, "page-094-source-line-mask-31");
+  assert.match(stressPage94Boundary.startsAtSourceTextEs, /Estrés/u);
+  assert.equal(stressPage95Boundary.startsAtLayoutBlockId, "page-095-source-line-mask-08");
+  assert.match(stressPage95Boundary.startsAtSourceTextEs, /Prestar atención al contexto/u);
+  assert.equal(distractionsBoundary.startsAtLayoutBlockId, "page-095-source-line-mask-02");
+  assert.match(distractionsBoundary.startsAtSourceTextEs, /Distracciones/u);
+  assert.equal(stressPage95Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-14"), true);
+  assert.equal(distractionsBoundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-15"), true);
+});
+
+test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details", () => {
+  for (const sectionId of ["ch4-alcohol-drugs", "ch4-sleep-fatigue", "ch4-stress", "ch4-distractions"]) {
+    const section = registry.sections.find((entry) => entry.id === sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 4 PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+  }
+
+  assert.match(ch4AlcoholDrugsModuleSource, /центральной нервной системы/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /психофизическим examen psicofísico/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Sueño y fatiga|сонливость и усталость/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /medicamentos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /sedantes/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /контакте со слюной/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /capacidad de reacción/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /visión periférica/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Ley 2148/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /0,5 gramos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Si tomaste alcohol, no manejes|Если пил алкоголь/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /durante la primera hora/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Retener la licencia|удерживают водительское удостоверение/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /presumed positive|presume el estado/u);
+
+  assert.match(ch4SleepFatigueModuleSource, /conductor\/a responsable|ответственного водителя/u);
+  assert.match(ch4SleepFatigueModuleSource, /biological need/u);
+  assert.match(ch4SleepFatigueModuleSource, /certificados y calibrados|сертифицированными и калиброванными/u);
+  assert.match(ch4SleepFatigueModuleSource, /veisalgia/u);
+  assert.match(ch4SleepFatigueModuleSource, /capacidad de reacción/u);
+  assert.match(ch4SleepFatigueModuleSource, /microsueños/u);
+  assert.match(ch4SleepFatigueModuleSource, /8 horas/u);
+  assert.match(ch4SleepFatigueModuleSource, /200 kilometros/u);
+  assert.match(ch4SleepFatigueModuleSource, /2 часа/u);
+  assert.match(ch4SleepFatigueModuleSource, /100 kilómetros/u);
+  assert.match(ch4SleepFatigueModuleSource, /1 час/u);
+  assert.match(ch4SleepFatigueModuleSource, /ventilación/u);
+  assert.match(ch4SleepFatigueModuleSource, /comidas ligeras/u);
+  assert.match(ch4SleepFatigueModuleSource, /anochecer y al amanecer/u);
+  assert.match(ch4SleepFatigueModuleSource, /Профессиональные водители/u);
+  assert.match(ch4SleepFatigueModuleSource, /principiantes/u);
+  assert.match(ch4SleepFatigueModuleSource, /17 часов/u);
+  assert.match(ch4SleepFatigueModuleSource, /Чтобы бороться со sueño, нужно dormir/u);
+  assert.match(ch4SleepFatigueModuleSource, /parada de descanso/u);
+
+  assert.match(ch4StressModuleSource, /ВОЗ \(OMS\) определяет/u);
+  assert.match(ch4StressModuleSource, /физиологических реакций/u);
+  assert.match(ch4StressModuleSource, /двойная связь/u);
+  assert.match(ch4StressModuleSource, /temeraria/u);
+  assert.match(ch4StressModuleSource, /Prestar atención al contexto|Обращать внимание на дорожный контекст/u);
+  assert.match(ch4StressModuleSource, /Planificar el viaje/u);
+  assert.match(ch4StressModuleSource, /достаточным запасом времени/u);
+  assert.match(ch4StressModuleSource, /чрезмерная жара и холод/u);
+  assert.match(ch4StressModuleSource, /actitud tolerante y paciente/u);
+
+  assert.match(ch4DistractionsModuleSource, /Distracción/u);
+  assert.match(ch4DistractionsModuleSource, /conducir/u);
+  assert.match(ch4DistractionsModuleSource, /Comer, beber, tomar mate/u);
+  assert.match(ch4DistractionsModuleSource, /ceniza/u);
+  assert.match(ch4DistractionsModuleSource, /руки не могут уверенно оставаться на руле/u);
+  assert.match(ch4DistractionsModuleSource, /telefonía celular запрещено/u);
+  assert.match(ch4DistractionsModuleSource, /Altavoz или auriculares/u);
+  assert.match(ch4DistractionsModuleSource, /mental representation/u);
+  assert.match(ch4DistractionsModuleSource, /GPS/u);
+  assert.match(ch4DistractionsModuleSource, /modo avión/u);
+  assert.match(ch4DistractionsModuleSource, /guantera или baúl/u);
+  assert.match(ch4DistractionsModuleSource, /balizas/u);
+  assert.match(ch4DistractionsModuleSource, /radio или CD/u);
+  assert.match(ch4DistractionsModuleSource, /DVD portátil/u);
+  assert.match(ch4DistractionsModuleSource, /espejo retrovisor/u);
+  assert.match(ch4DistractionsModuleSource, /peaje/u);
+  assert.match(ch4DistractionsModuleSource, /100% внимания/u);
+});
+
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
@@ -921,9 +1077,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch3HighwaysSection \}/);
   assert.match(manualGuideSource, /import \{ ch3AdverseConditionsSection \}/);
   assert.match(manualGuideSource, /import \{ ch3StoppingParkingSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4AlcoholDrugsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4SleepFatigueSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4StressSection \}/);
+  assert.match(manualGuideSource, /import \{ ch4DistractionsSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
@@ -1937,26 +2097,26 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, and 3 implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, and 4 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 88 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57]);
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 97 });
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 94, 95]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 94, 95]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 19);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 23);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
-  assert.equal(result.implementedSections, 19);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43, 57]);
+  assert.equal(result.implementedSections, 23);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
-  assert.deepEqual(result.sharedSourcePages, [55]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_3_sections");
+  assert.deepEqual(result.sharedSourcePages, [55, 94, 95]);
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_4_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -1969,7 +2129,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 19);
+  assert.equal(result.implementedSections, 23);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -2069,7 +2229,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 19);
+    assert.equal(output.implementedSections, 23);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -3018,7 +3178,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 19);
+    assert.equal(output.implementedSections, 23);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

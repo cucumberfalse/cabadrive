@@ -1,4 +1,8 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch4AlcoholDrugsSection } from "./manual-sections/ch4-alcohol-drugs";
+import { ch4DistractionsSection } from "./manual-sections/ch4-distractions";
+import { ch4SleepFatigueSection } from "./manual-sections/ch4-sleep-fatigue";
+import { ch4StressSection } from "./manual-sections/ch4-stress";
 import { ch3AdverseConditionsSection } from "./manual-sections/ch3-adverse-conditions";
 import { ch3HighwaysSection } from "./manual-sections/ch3-highways";
 import { ch3LightsSection } from "./manual-sections/ch3-lights";
@@ -69,7 +73,7 @@ export type ManualGuideSectionEntry = {
   sectionContentModulePath: string;
   sourceRegionMetadataStatus: "pending_until_section_pr" | "recorded";
   visualEvidenceStatus: "pending_until_section_pr" | "recorded";
-  sourceBoundaryEvidence?: ManualGuideSourceBoundaryEvidence;
+  sourceBoundaryEvidence?: ManualGuideSourceBoundaryEvidence | ManualGuideSourceBoundaryEvidence[];
   pendingReason?: string;
 };
 
@@ -707,7 +711,11 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch3OvertakingSection,
   ch3HighwaysSection,
   ch3AdverseConditionsSection,
-  ch3StoppingParkingSection
+  ch3StoppingParkingSection,
+  ch4AlcoholDrugsSection,
+  ch4SleepFatigueSection,
+  ch4StressSection,
+  ch4DistractionsSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -782,8 +790,9 @@ export const manualGuideDocumentStyleTokens = {
     "Implemented sections must provide source-region metadata for each meaningful source page/region, local asset metadata, screenshot evidence, visible-Spanish status, and checker pass/fail output.",
     "Normal prose uses shared Introduction article typography and selectable DOM text.",
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
-    "Divider-only source PDF pages 21 and 43 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
+    "Divider-only source PDF pages 21, 43, 57, and 89 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
     "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
+    "Shared source PDF page 94 is split between sleep/fatigue and stress; shared source PDF page 95 is split between stress recommendations and distractions.",
     "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, side-by-side translation layouts, and translated/reconstructed traffic sign renderings are forbidden."
   ]
 } as const;
@@ -905,21 +914,6 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
     }))
   },
   ...chapter12NavigationEntries,
-  {
-    id: "chapter-4",
-    kind: "group",
-    labelRu: "Глава 4. Физическое состояние водителя",
-    sourceTitleEs: "CAPÍTULO 4: CAPACIDAD NATURAL",
-    sourcePage: 89,
-    requiredPrintedPage: 88,
-    status: "pending",
-    children: [
-      pendingTopic("chapter-4-alcohol-drugs", "Алкоголь и наркотики", "Ingesta de alcohol y drogas"),
-      pendingTopic("chapter-4-fatigue", "Сон и усталость", "Sueño y fatiga"),
-      pendingTopic("chapter-4-stress", "Стресс", "Estrés"),
-      pendingTopic("chapter-4-distractions", "Отвлечения", "Distracciones")
-    ]
-  },
   {
     id: "chapter-5",
     kind: "group",
