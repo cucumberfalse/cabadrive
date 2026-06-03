@@ -4180,3 +4180,50 @@ test("Manual guide opens Chapter 4 stress and distractions from direct routes", 
   expect(overflow).toEqual([]);
   await section.screenshot({ path: testInfo.outputPath(`ch4-distractions-direct-${testInfo.project.name}.png`) });
 });
+
+test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone width", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/#manual-section-ch4-alcohol-drugs");
+  const section = page.getByTestId("manual-guide-section");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch4-alcohol-drugs");
+  const card = section.locator('[data-card-id="alcohol-limits-source-card"]');
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toBeVisible();
+  const figure = card.locator('[data-russian-overlay-strategy="selectable-dom"]');
+  const image = figure.locator('img[data-visible-spanish="false"]');
+  await image.evaluate((node) => (node as HTMLImageElement).decode?.().catch(() => undefined));
+  await expect(figure).toBeVisible();
+  await expect(image).toBeVisible();
+  await expect(figure.locator('[data-overlay-label-id="acompanantes-label"]')).toContainText("Пасс. мото");
+
+  const overlayProblems = await figure.evaluate((root) => {
+    const tolerance = 1;
+    const figureRect = root.getBoundingClientRect();
+    const problems: string[] = [];
+    for (const label of Array.from(root.querySelectorAll<HTMLElement>(".manual-source-image-overlay-label"))) {
+      const id = label.getAttribute("data-overlay-label-id") ?? label.textContent?.trim() ?? "unknown";
+      const rect = label.getBoundingClientRect();
+      const style = window.getComputedStyle(label);
+      if (rect.width <= 1 || rect.height <= 1 || style.visibility === "hidden" || style.display === "none") {
+        problems.push(`${id} is not visible`);
+      }
+      if (label.scrollHeight > label.clientHeight + tolerance) {
+        problems.push(`${id} clips vertically: ${label.scrollHeight} > ${label.clientHeight}`);
+      }
+      if (label.scrollWidth > label.clientWidth + tolerance) {
+        problems.push(`${id} clips horizontally: ${label.scrollWidth} > ${label.clientWidth}`);
+      }
+      if (
+        rect.left < figureRect.left - tolerance ||
+        rect.right > figureRect.right + tolerance ||
+        rect.top < figureRect.top - tolerance ||
+        rect.bottom > figureRect.bottom + tolerance
+      ) {
+        problems.push(`${id} leaves transferred visual bounds`);
+      }
+    }
+    return problems;
+  });
+  expect(overlayProblems).toEqual([]);
+  await section.screenshot({ path: testInfo.outputPath(`ch4-alcohol-overlay-labels-phone-${testInfo.project.name}.png`) });
+});

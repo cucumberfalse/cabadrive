@@ -2786,18 +2786,21 @@ small,
 
 .manual-source-image-overlay-label {
   position: absolute;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 0;
-  padding: 0 2px;
+  min-height: 2.1em;
+  padding: 0;
   overflow: hidden;
   text-align: center;
   overflow-wrap: anywhere;
+  white-space: normal;
   color: #263532;
-  font-size: 0.62rem;
+  font-size: clamp(0.38rem, 1.9vw, 0.62rem);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1;
   letter-spacing: 0;
   pointer-events: auto;
 }

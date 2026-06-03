@@ -2522,7 +2522,7 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                         left: `${label.xPct}%`,
                         top: `${label.yPct}%`,
                         width: `${label.widthPct}%`,
-                        height: `${label.heightPct}%`
+                        height: `max(${label.heightPct}%, 2.1em)`
                       }}
                     >
                       {label.textRu}
