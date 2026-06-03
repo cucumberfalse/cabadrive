@@ -172,7 +172,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       kind: "table",
       titleRu: "Límites de alcohol en sangre para conducir",
       sourceTextEs:
-        "Límites de alcohol en sangre para conducir: principiantes, profesionales, motociclistas, acompañantes y particulares.",
+        "Límites de alcohol en sangre para conducir: principiantes, profesionales, motociclistas, acompañantes y particulares. Ley 2148 art. 5.4.5: plaza de acompañante en motovehículos.",
       columnsRu: ["Категория из источника", "Предел", "Как читать для экзамена"],
       rows: [
         {
@@ -202,9 +202,9 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         {
           id: "limit-acompanantes",
           cellsRu: [
-            "Acompañantes - сопровождающие",
+            "Acompañantes en motovehículos - пассажиры мототранспорта",
             "0.50 g/l",
-            "эта категория из таблицы источника сохраняется отдельно"
+            "специальный случай Ley 2148: нельзя занимать plaza de acompañante в motovehículo с более чем 0,5 g/l, кроме отдельного внешнего habitáculo; это не общий предел для всех сопровождающих в автомобиле"
           ]
         },
         {
@@ -217,7 +217,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         }
       ],
       captionRu:
-        "Таблица сохраняет конкретные строки источника: principiantes и profesionales - 0.00 g/l, motociclistas - 0.20 g/l, acompañantes и particulares - 0.50 g/l."
+        "Таблица сохраняет конкретные строки источника: principiantes и profesionales - 0.00 g/l, motociclistas - 0.20 g/l, particulares - 0.50 g/l; строка acompañantes читается как acompañantes en motovehículos по Ley 2148 Art. 5.4.5, а не как правило для любого пассажира автомобиля."
     },
     {
       id: "absorption-factors",

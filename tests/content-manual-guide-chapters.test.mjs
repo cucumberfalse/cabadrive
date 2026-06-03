@@ -960,7 +960,11 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Profesionales[\s\S]*0\.00 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
-  assert.match(ch4AlcoholDrugsModuleSource, /Acompañantes[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Acompañantes en motovehículos[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /plaza de acompañante en motovehículos/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /это не общий предел для всех сопровождающих в автомобиле/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /Acompañantes - сопровождающие/u);
+  assert.doesNotMatch(ch4AlcoholDrugsModuleSource, /эта категория из таблицы источника сохраняется отдельно/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Tipo de bebida|Тип напитка/u);
   assert.match(ch4AlcoholDrugsModuleSource, /Funcionamiento hepático|Работа печени/u);
