@@ -91,10 +91,10 @@ For each chapter-equivalent content PR:
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
 | Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, merged | `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | merged into `main`; strict visual-rule prerequisite available for audit and future chapter PRs | yes |
-| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, https://github.com/cucumberfalse/cabadrive/pull/186 | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | original audit evidence commit `7058d2760e0aff32035c15e75a18e0f4dd7defda`; audit content/effective head and post-validation evidence-only commits are recorded by the latest PR #186 `Effective content head`, `Final-validation evidence-only commit`, and `Current-PR-head read-only guard` bullets under `## Final Validation Evidence`; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | audit-only PR opened ready; no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
+| Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | branch `codex/031-intro-ch1-visual-audit`; PR #186, merged | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | effective content head `dd22d1f241300fa803050200a2bb412642aec165`; final/evidence head `f091406ca389a875d623a9bfca5a66cf19754f33`; merge commit `9750b1578627c531146226ebe0e9673aadfef67b` | merged into `main`; audit-only PR recorded no-fix outcome for Introduction and Chapter 1 with no runtime content/assets/docs changed; no correction tasks needed from this audit | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | not needed after audit | `3b7fb9f2930dc5986cf54175556e9b9ab9ab4b5c` | not applicable | audit found no stricter-rule gaps requiring correction PRs | yes if created |
-| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR #187, https://github.com/cucumberfalse/cabadrive/pull/187 | `9750b1578627c531146226ebe0e9673aadfef67b` | implementation content head `60f25d7b48abefc1cfa57c1aa67c028abb2e0d1c`; process-memory repair head `d0f969e0789dd890db8b374009e509dd23d9461c` records PR #187 state; current/final branch head is verified by GitHub PR metadata and finalizer expected-head before merge | open ready PR; review fixes for threads `PRRT_kwDOSX65IM6Gt8WL` and `PRRT_kwDOSX65IM6Gt8WS` implemented; local verification passed; CI pending or rerunning | yes |
-| Chapter 3 content | pages `57-88` | branch `codex/031-chapter-3`; PR #188, https://github.com/cucumberfalse/cabadrive/pull/188 | `49c145e9dd4f4661f99d05f79c3e55ed425d4155` | implementation content head `4f0c782505242b9cc8583af7644e5f6f44173254`; speed/highway review-fix content head `2c128758de15de388a03f090ad394e39f3c36377` pushed and verified for threads `PRRT_kwDOSX65IM6GwWxS` and `PRRT_kwDOSX65IM6GwWxX`; post-validation outside-CABA speed-table repair addresses `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv`; current/final branch head to be verified by GitHub PR metadata and Orchestrator guards | open ready PR; prior final Architect/Analyst validation for `565c71bc39b74891e97b1d02883a6a72d6e133bf` is stale after this non-evidence content/test repair and must be rerun after the new content head | yes |
+| Chapter 2 content | pages `43-56` | branch `codex/031-chapter-2`; PR #187, merged | `9750b1578627c531146226ebe0e9673aadfef67b` | effective content head `3b651151e5fc918c480b99a19f5569214ae2339f`; final/evidence head `deb1bc2ecfc951e8631496f5d3dd000bfb60f58f`; merge commit `49c145e9dd4f4661f99d05f79c3e55ed425d4155` | merged into `main`; Chapter 2 content and review fixes completed for pages `43-56` | yes |
+| Chapter 3 content | pages `57-88` | branch `codex/031-chapter-3`; PR #188, https://github.com/cucumberfalse/cabadrive/pull/188 | `49c145e9dd4f4661f99d05f79c3e55ed425d4155` | implementation content head `4f0c782505242b9cc8583af7644e5f6f44173254`; speed/highway review-fix content head `2c128758de15de388a03f090ad394e39f3c36377`; outside-CABA speed-table repair included at effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`; repeat Architect and Analyst validation passed for that effective head; finalizer-readable parser repair evidence head `60d366fd946841919f8740f27710d906b2a47d8d`; current/final PR head is verified by Orchestrator final guards/finalizer before merge | ready for final guards after process-memory-only row freshness repair for `PRRT_kwDOSX65IM6GzRmW`; post-effective commits are final-validation/process-memory evidence only; no Chapter 4+ content bundled | yes |
 | Chapter 4 content | pages `89-97` | pending | pending | pending | pending | yes |
 | Chapter 5 content | pages `98-103` | pending | pending | pending | pending | yes |
 | Appendix I content | pages `104-122` | pending | pending | pending | pending | yes |
@@ -165,6 +165,7 @@ For each chapter-equivalent content PR:
 - Process-memory repair decision, PR #188 `PRRT_kwDOSX65IM6GxhOg`: the stale Chapter 3 Cycle PR Set row and Implementation Agent Feedback wording now record speed/highway review-fix head `2c128758de15de388a03f090ad394e39f3c36377` as pushed and verified instead of pending commit/push or verification-in-progress. This repair is process memory only; no product code, source assets, or tests are changed.
 - AI Review speed-table correction decision, PR #188 `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv`: source page `73` / Ley 24.449 Art. 51 is restored in the outside-CABA maximum table. `90 км/ч` and `100 км/ч` rows now belong to `Microbuses, omnibus y casas rodantes motorizadas` for `rutas y semiautopistas` and `autopistas nacionales` respectively; `Camiones`, hazardous-substance transport, and automotores con casa rodante remain `80 км/ч` across rutas/semiautopistas/autopistas nacionales; `Camionetas` are `110 км/ч` across rutas/semiautopistas/autopistas nacionales; motorcycles are grouped with automobiles at `110 км/ч` on ruta, `120 км/ч` on semiautopistas, and `130 км/ч` on autopistas nacionales.
 - Validation staleness decision, PR #188 `2026-06-03T14:40:43Z`: AI Review found product/content speed-table errors after evidence-only head `d25cb9c5bdbefebfa803cf7e136a986ce1e88c97`. This non-evidence content/test/process-memory repair makes the prior final Architect and Analyst validation for effective content head `565c71bc39b74891e97b1d02883a6a72d6e133bf` stale; final Architect validation and then final Analyst validation must be rerun after the new repaired content head is committed, pushed, and verified.
+- Process-memory repair decision, PR #188 `PRRT_kwDOSX65IM6GzRmW`: the Chapter 3 Cycle PR Set row is refreshed after current-head AI Review so it no longer states final validation must be rerun for the outside-CABA speed-table repair. This repair records that effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e` includes the speed-table correction, repeat Architect and Analyst validation passed for that effective head, post-effective commits are final-validation/process-memory evidence only, and current/final PR head verification remains Orchestrator/finalizer-owned before merge. This repair is process memory only; no product code, tests, runtime files, source assets, or durable docs outside Architect-owned process memory are changed.
 
 ## Dead Ends
 
@@ -192,6 +193,7 @@ For each chapter-equivalent content PR:
 - Resolved PR #188 review finding `PRRT_kwDOSX65IM6GwWxX`: the highway section no longer uses one generic summary list. It now preserves page `78` entry, lane-use, exit, speed/signage, immobilized-vehicle assistance, and remolque rule groups, with focused tests guarding the previously omitted categories.
 - Resolved PR #188 process-memory review finding `PRRT_kwDOSX65IM6GxhOg`: stale pending commit/push, ready-PR-pending, and verification-in-progress status wording was removed for the already pushed and verified speed/highway review-fix head `2c128758de15de388a03f090ad394e39f3c36377`.
 - Resolved PR #188 AI Review speed-table findings `PRRT_kwDOSX65IM6GyAcg`, `PRRT_kwDOSX65IM6GyAcp`, and `PRRT_kwDOSX65IM6GyAcv`: outside-CABA page `73` rows no longer assign pickups or motorcycles to `90 км/ч`, no longer group trucks and motorcycles at `100 км/ч`, and no longer place passenger transport in the `110 км/ч` pickup row.
+- Resolved PR #188 AI Review process-memory row freshness finding `PRRT_kwDOSX65IM6GzRmW`: the Chapter 3 Cycle PR Set row no longer says final validation must be rerun after the outside-CABA speed-table repair; it now records the repaired effective content head `f56c42d075dc92d61523301b1f84c3a33faf3a3e`, passed repeat role validation for that effective head, finalizer-readable parser repair evidence head `60d366fd946841919f8740f27710d906b2a47d8d`, and Orchestrator/finalizer ownership of current/final PR-head guards.
 
 ## Known Issues
 
@@ -392,7 +394,7 @@ For each chapter-equivalent content PR:
 - Architect validation: passed at 2026-06-03T15:15:10Z for effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
 - Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
 - Architect return count: 0
-- Architect validation: current PR head before this repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530; this Architect-owned repair edits only finalizer-readable process memory in tasks.md and does not change content, tests, runtime files, source assets, or durable docs outside Architect-owned process memory.
+- Architect validation: PR head before the parser-readable repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530; this Architect-owned repair edits only finalizer-readable process memory in tasks.md and does not change content, tests, runtime files, source assets, or durable docs outside Architect-owned process memory.
 - Architect validation: prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T14:57:43Z is superseded for finalization purposes by this repeat validation after parser-readable Implementation Agent Feedback and Known Issues disposition repair; the validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e.
 - Architect validation: exact Implementation Agent Feedback section now records PR #188 Chapter 3 feedback as fully disposed with no action needed at f56c42d075dc92d61523301b1f84c3a33faf3a3e and no parser-confusing readiness wording in that disposition candidate.
 - Architect validation: exact Known Issues section now records PR #188 review-fix known issues with owner decision accepted no action and disposition not applicable/resolved, while preserving that no Chapter 3 source images, crops, traffic signs, road markings, photos, or diagrams were modified by the speed, highway, or speed-table fixes.
@@ -401,6 +403,18 @@ For each chapter-equivalent content PR:
 - Architect validation: cycle PR-set coverage remains current for PR #188 as the Chapter 3 content slice after merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice.
 - Limit escalation: none
 - Current-PR-head read-only guard: Orchestrator verified effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e for PR #188; post-effective changes through this repeat validation-evidence transport are final-validation evidence only in tasks.md and feature-request.md, required checks passed, mergeability was CLEAN/MERGEABLE, and review threads were resolved.
+- Effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect validation: passed at 2026-06-03T15:44:39Z for effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+- Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+- Architect return count: 0
+- Architect validation: PR head before the row-freshness repair was 60d366fd946841919f8740f27710d906b2a47d8d; this Architect-owned repair edits only process memory in tasks.md and does not change content, code, tests, runtime files, source assets, or durable docs outside Architect-owned process memory.
+- Architect validation: prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T15:15:10Z is superseded for finalization purposes by this repeat validation after Cycle PR Set row freshness repair for PRRT_kwDOSX65IM6GzRmW.
+- Architect validation: Chapter 3 Cycle PR Set row now records the outside-CABA speed-table repair as included at effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e, repeat Architect and Analyst validation passed for that effective head, post-effective commits are final-validation/process-memory evidence only, and finalizer-readable parser repair evidence head is 60d366fd946841919f8740f27710d906b2a47d8d.
+- Architect validation: adjacent Cycle PR Set rows now record PR #186 and PR #187 as merged with their effective content heads, final/evidence heads, and merge commits instead of stale ready/CI wording.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action.
+- Architect validation: required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent James posted no actionable findings and the three speed-table AI Review threads were resolved.
+- Architect validation: cycle PR-set coverage remains current for PR #188 as the Chapter 3 content slice after merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, merged PR #186 Introduction and Chapter 1 audit-only slice, and merged PR #187 Chapter 2 content slice.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -1004,7 +1018,7 @@ Architect validation evidence: This repair is Architect-owned process memory onl
 
 Architect validation evidence: Prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T14:57:43Z is superseded for finalization purposes by this repeat validation after finalizer-readable Implementation Agent Feedback and Known Issues disposition repair.
 
-Architect validation evidence: Validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e; current PR head before this repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530.
+Architect validation evidence: Validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e; PR head before the parser-readable repair was e05adafe29f4c1eb4a8ef90792b502ffd319c530.
 
 Architect validation evidence: Exact Implementation Agent Feedback section now records PR #188 Chapter 3 feedback as fully disposed with Architect disposition disposed and no action needed at f56c42d075dc92d61523301b1f84c3a33faf3a3e, without parser-confusing readiness wording in the disposition candidate.
 
@@ -1019,6 +1033,74 @@ Architect validation evidence: Outside-CABA page 73 speed table correction remai
 Architect validation evidence: Required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent James posted no actionable findings and the three speed-table AI Review threads were resolved.
 
 Architect validation evidence: Cycle PR-set coverage remains current for PR #188 as the Chapter 3 content slice after merged PR #184 baseline, merged PR #185 strict visual-rule prerequisite, PR #186 Introduction and Chapter 1 audit-only slice, and PR #187 Chapter 2 content slice.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #188 Chapter 3 scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #188 Chapter 3 scope.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T15:44:39Z
+
+Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e after Cycle PR Set row freshness repair.
+
+Architect validation evidence: This repair is Architect-owned process memory only in specs/031-manual-document-completion/tasks.md; no content, code, tests, runtime files, source assets, or durable docs outside Architect-owned process memory were changed.
+
+Architect validation evidence: Prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T15:15:10Z is superseded for finalization purposes by this repeat validation after AI Review row-freshness repair PRRT_kwDOSX65IM6GzRmW.
+
+Architect validation evidence: Validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e; PR head before the row-freshness repair was 60d366fd946841919f8740f27710d906b2a47d8d.
+
+Architect validation evidence: Chapter 3 Cycle PR Set row now records that outside-CABA speed-table repair is included at effective content head f56c42d075dc92d61523301b1f84c3a33faf3a3e, repeat Architect and Analyst validation passed for that effective head, post-effective commits are final-validation/process-memory evidence only, finalizer-readable parser repair evidence head is 60d366fd946841919f8740f27710d906b2a47d8d, and current/final PR head verification remains Orchestrator/finalizer-owned before merge.
+
+Architect validation evidence: Adjacent Cycle PR Set rows now record PR #186 as merged with effective content head dd22d1f241300fa803050200a2bb412642aec165, final/evidence head f091406ca389a875d623a9bfca5a66cf19754f33, and merge commit 9750b1578627c531146226ebe0e9673aadfef67b; PR #187 as merged with effective content head 3b651151e5fc918c480b99a19f5569214ae2339f, final/evidence head deb1bc2ecfc951e8631496f5d3dd000bfb60f58f, and merge commit 49c145e9dd4f4661f99d05f79c3e55ed425d4155.
+
+Architect validation evidence: PR #188 Chapter 3 scope remains pages 57-88 only, covering ch3-priority-of-rules, ch3-right-of-way, ch3-lights, ch3-speed, ch3-turns, ch3-overtaking, ch3-highways, ch3-adverse-conditions, and ch3-stopping-parking, with no Chapter 4+ content, appendix content, front matter, or unrelated source unit bundled.
+
+Architect validation evidence: Strict visual requirements remain satisfied: x5 source render evidence is recorded, source crops were created without resizing or visual cleanup, Russian learner explanation is selectable DOM text outside source visuals, and no protected photo, traffic sign, road marking, diagram, source crop, source page image, or infographic was translated, relabeled, recolored, retouched, masked, inpainted, reconstructed, redrawn, broadly patched, or modified.
+
+Architect validation evidence: Implementation Agent feedback and known-issue parser gates remain disposed: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope, no unresolved known issue lacks owner decision, and no Analyst feedback requires Architect action.
+
+Architect validation evidence: Required checks passed on f56c42d075dc92d61523301b1f84c3a33faf3a3e: AI Review, baseline-checks, docker-validation, guard, and osv-scan; Review Agent James posted no actionable findings and AI Review row-freshness finding PRRT_kwDOSX65IM6GzRmW is addressed in process memory.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #188 Chapter 3 scope.
+
+Architect disposition: AI Review row-freshness finding PRRT_kwDOSX65IM6GzRmW is addressed as process-memory-only repair.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-03T15:50:25Z
+
+Architect validated effective content head: f56c42d075dc92d61523301b1f84c3a33faf3a3e
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #188 Chapter 3 scope at f56c42d075dc92d61523301b1f84c3a33faf3a3e after timeless parser-repair evidence-head wording repair.
+
+Architect validation evidence: This repair is Architect-owned process memory only in specs/031-manual-document-completion/tasks.md; no content, code, tests, runtime files, source assets, durable docs outside Architect-owned process memory, PR state, GitHub threads, commits, or pushes were changed.
+
+Architect validation evidence: Prior Architect validation for f56c42d075dc92d61523301b1f84c3a33faf3a3e at 2026-06-03T15:44:39Z is superseded for finalization purposes by this repeat validation after wording-only process-memory repair.
+
+Architect validation evidence: Cycle PR Set, resolved dead-end, and validation evidence wording now use timeless finalizer-readable parser repair evidence-head wording for 60d366fd946841919f8740f27710d906b2a47d8d instead of describing that SHA as the current head.
+
+Architect validation evidence: Current/final PR head verification remains Orchestrator/finalizer-owned before merge; validated effective content head remains f56c42d075dc92d61523301b1f84c3a33faf3a3e.
+
+Architect validation evidence: Implementation Agent feedback and known-issue parser gates remain disposed: no unresolved Implementation Agent feedback remains for PR #188 Chapter 3 scope, no unresolved known issue lacks owner decision, and no Analyst feedback requires Architect action.
 
 Architect gaps: none.
 
