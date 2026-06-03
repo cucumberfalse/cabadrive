@@ -176,11 +176,9 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
   implementationEvidence.visualEvidenceSchemaVersion = 3;
   implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
   implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
-  for (const [index, sourceRegion] of implementationEvidence.sourceRegionMetadata.entries()) {
+  for (const sourceRegion of implementationEvidence.sourceRegionMetadata) {
     sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
-    sourceRegion.cropSha256 = index === 0
-      ? "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-      : "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+    sourceRegion.cropSha256 = sha256File(sourceRegion.sourceAssetPath);
     sourceRegion.extractionScaleEvidence = {
       target: "x5-zoom-source-export",
       method: "fixture x5 zoom/source export",
@@ -205,6 +203,7 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       maxHeightCssPx: 40,
       noUpscale: true
     },
+    sha256: sha256File(implementationEvidence.localAssetMetadata[0].assetPath),
     infographicTransfer: {
       sourceImageTransfer: true,
       noApproximateRedraw: true,
@@ -233,6 +232,7 @@ function addStrictVisualEvidenceFields(implementationEvidence) {
       maxHeightCssPx: 30,
       noUpscale: true
     },
+    sha256: sha256File(implementationEvidence.localAssetMetadata[1].assetPath),
     sourceIntegrity: {
       sourceAsIs: true,
       noTranslationOrRelabeling: true,
@@ -359,6 +359,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
     section.implementationEvidence.visualRulePolicyId = "031-strict-source-fidelity";
     section.implementationEvidence.highResolutionEvidenceStatus = "x5-or-equivalent-no-upscale-recorded";
     section.implementationEvidence.localAssetMetadata[1].cleanupScope = "none-source-as-is";
+    section.implementationEvidence.localAssetMetadata[1].sha256 = sha256File(section.implementationEvidence.localAssetMetadata[1].assetPath);
     section.implementationEvidence.localAssetMetadata[1].diagramTransfer = {
       sourceDiagramTransfer: true,
       noApproximateRedraw: true,
@@ -368,7 +369,7 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
     };
     for (const sourceRegion of section.implementationEvidence.sourceRegionMetadata) {
       sourceRegion.cleanupScope = "glyph-level-spanish-cleanup";
-      sourceRegion.cropSha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+      sourceRegion.cropSha256 = sha256File(sourceRegion.sourceAssetPath);
       sourceRegion.extractionScaleEvidence = {
         target: "x5-zoom-source-export",
         method: "fixture x5 zoom/source export",
@@ -1662,6 +1663,22 @@ test("Manual guide source-fidelity checker rejects strict image assets with bogu
   }
 });
 
+test("Manual guide source-fidelity checker rejects strict image assets with stale sha256 metadata", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-stale-sha-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.localAssetMetadata[0].sha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict image metadata hash does not match asset bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0].sha256 must match referenced artifact bytes");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("Manual guide source-fidelity checker rejects strict source crops with bogus cropSha256 metadata", () => {
   const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-bogus-crop-sha-"));
   try {
@@ -1673,6 +1690,22 @@ test("Manual guide source-fidelity checker rejects strict source crops with bogu
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must be a SHA-256 hash");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source crops with stale cropSha256 metadata", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-stale-crop-sha-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.sourceRegionMetadata[0].cropSha256 = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when strict crop hash does not match source crop artifact bytes");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(result.message, "ch1-pedestrian-priority implementationEvidence sourceRegionMetadata[0].cropSha256 must match referenced artifact bytes");
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

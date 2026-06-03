@@ -203,6 +203,22 @@ function validateSha256(value, messagePrefix) {
   assertCondition(/^[a-f0-9]{64}$/u.test(value), `${messagePrefix} must be a SHA-256 hash`, { value });
 }
 
+function sha256File(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function validateFileSha256(path, expectedSha256, messagePrefix, details = {}) {
+  validateSha256(expectedSha256, messagePrefix);
+  assertLocalPathExists(path, `${messagePrefix} referenced artifact`, details);
+  const actualSha256 = sha256File(path);
+  assertCondition(actualSha256 === expectedSha256, `${messagePrefix} must match referenced artifact bytes`, {
+    ...details,
+    path,
+    actualSha256,
+    expectedSha256
+  });
+}
+
 function validateExtractionScaleEvidence(value, messagePrefix) {
   assertRequiredFields(value, ["target", "method", "outputDimensions"], messagePrefix);
   assertCondition(highResolutionTargets.has(value.target), `${messagePrefix}.target must be x5 or equivalent/better`, value);
@@ -309,7 +325,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     ["sourcePage", "sourceRegion", "sourceAssetPath", "cropDimensions", "cropSha256", "cleanupScope", "extractionScaleEvidence"],
     `${messagePrefix} sourceRegionMetadata`,
     (entry, label) => {
-      validateSha256(entry.cropSha256, `${label}.cropSha256`);
+      validateFileSha256(entry.sourceAssetPath, entry.cropSha256, `${label}.cropSha256`, entry);
       validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
       assertNoForbiddenStrictVisualTerms(entry, label);
     }
@@ -325,7 +341,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       assertNoForbiddenStrictVisualTerms(asset, label);
       if (strictImageAssetCategories.has(asset.assetCategory)) {
         assertRequiredFields(asset, ["width", "height", "sha256", "runtimeDisplaySize"], label);
-        validateSha256(asset.sha256, `${label}.sha256`);
+        validateFileSha256(asset.assetPath, asset.sha256, `${label}.sha256`, asset);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`);
         validateRuntimeDisplaySize(asset, label);
       }
