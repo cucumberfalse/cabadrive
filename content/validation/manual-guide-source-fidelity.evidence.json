@@ -411,6 +411,7 @@
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
       "source-as-is-document-example",
+      "source-as-is-infographic",
       "source-transferred-infographic",
       "source-transferred-diagram",
       "native-dom-text-only",
@@ -419,7 +420,8 @@
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
       "source-as-is-traffic-sign",
-      "source-as-is-road-marking"
+      "source-as-is-road-marking",
+      "source-as-is-infographic"
     ],
     "documentExampleSourceAsIsCategories": [
       "source-as-is-document-example"

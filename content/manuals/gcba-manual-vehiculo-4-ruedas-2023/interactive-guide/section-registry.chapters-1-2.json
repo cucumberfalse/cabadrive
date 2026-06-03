@@ -4513,6 +4513,31 @@
             }
           },
           {
+            "sourcePage": 90,
+            "sourceRegion": {
+              "x": 1180,
+              "y": 2245,
+              "width": 820,
+              "height": 300
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+            "cropDimensions": {
+              "width": 820,
+              "height": 300
+            },
+            "cropSha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 90 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 820,
+                "height": 300
+              },
+              "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+            }
+          },
+          {
             "sourcePage": 91,
             "sourceRegion": {
               "x": 0,
@@ -4535,6 +4560,31 @@
                 "height": 4209
               },
               "sha256": "77835428ca63e5c923363e2db7083b2f7b3d0bfaf2ef8357b4fb507cbc9725d4"
+            }
+          },
+          {
+            "sourcePage": 91,
+            "sourceRegion": {
+              "x": 1180,
+              "y": 2030,
+              "width": 850,
+              "height": 430
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+            "cropDimensions": {
+              "width": 850,
+              "height": 430
+            },
+            "cropSha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 91 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 850,
+                "height": 430
+              },
+              "sha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
             }
           },
           {
@@ -4571,9 +4621,92 @@
             "containsText": true,
             "visibleSpanish": false,
             "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-drug-test-device",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 820,
+            "height": 300,
+            "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 640,
+              "maxHeightCssPx": 300,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 90 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 820,
+                "height": 300
+              },
+              "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-infographic-alcohol-limits",
+            "assetCategory": "source-as-is-infographic",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 850,
+            "height": 430,
+            "sha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "maxHeightCssPx": 430,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 91 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 850,
+                "height": 430
+              },
+              "sha256": "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg"
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg"
+            }
+          ]
+        },
         "selectableTextStatus": "pass",
         "desktopScreenshot": "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-mobile.png",
@@ -4595,8 +4728,8 @@
         },
         "visualReviewNotes": [
           "Pages 90-92 are rendered as selectable Russian DOM text covering impairment, medication, drug-test, alcohol-limit, absorption, elimination, positive-test, and refusal rules.",
-          "Source evidence is x5 reference-only page export; no protected image, traffic sign, road marking, photo, or infographic is modified or rendered as a learner-facing raster base.",
-          "No Spanish glyph cleanup was needed for this section because runtime content is native text only."
+          "The page 90 drug-test photo/device visual and page 91 alcohol-limit visual are x5 source-as-is runtime crops with matching source crop hashes.",
+          "Spanish text remains only inside those source images; Russian learner explanation and the alcohol thresholds are selectable DOM text outside the images."
         ],
         "checkerResult": "pass"
       }
@@ -5004,6 +5137,31 @@
             }
           },
           {
+            "sourcePage": 95,
+            "sourceRegion": {
+              "x": 1190,
+              "y": 2160,
+              "width": 860,
+              "height": 260
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+            "cropDimensions": {
+              "width": 860,
+              "height": 260
+            },
+            "cropSha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 95 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 860,
+                "height": 260
+              },
+              "sha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+            }
+          },
+          {
             "sourcePage": 96,
             "sourceRegion": {
               "x": 0,
@@ -5052,6 +5210,31 @@
               },
               "sha256": "1672ef9ab63b534bbfe0564ab9f0d7ec1948a74d042d6df719ed3eb84e2253a2"
             }
+          },
+          {
+            "sourcePage": 97,
+            "sourceRegion": {
+              "x": 1160,
+              "y": 1680,
+              "width": 720,
+              "height": 900
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+            "cropDimensions": {
+              "width": 720,
+              "height": 900
+            },
+            "cropSha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 97 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 720,
+                "height": 900
+              },
+              "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -5062,9 +5245,92 @@
             "containsText": true,
             "visibleSpanish": false,
             "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-infographic-distraction-panels",
+            "assetCategory": "source-as-is-infographic",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 860,
+            "height": 260,
+            "sha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "maxHeightCssPx": 260,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 95 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 860,
+                "height": 260
+              },
+              "sha256": "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-attention-quote",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 720,
+            "height": 900,
+            "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 480,
+              "maxHeightCssPx": 900,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "sips crop from the x5 page 97 source-reference export using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 720,
+                "height": 900
+              },
+              "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg"
+            },
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg"
+            }
+          ]
+        },
         "selectableTextStatus": "pass",
         "desktopScreenshot": "content/validation/manual-guide/ch4-distractions/ch4-distractions-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/ch4-distractions/ch4-distractions-mobile.png",
@@ -5087,7 +5353,8 @@
         "visualReviewNotes": [
           "Direct navigation starts on source page 95 and preserves the distractions topic through page 97.",
           "Runtime content covers eating/drinking/mate/smoking, phone, GPS, passenger/mirror/other-action details, and the 100% attention closing line.",
-          "No Spanish glyph cleanup was needed for this section because runtime content is native text only."
+          "The page 95 three-panel visual and page 97 photo/quote are x5 source-as-is runtime crops with matching source crop hashes.",
+          "Spanish text remains only inside those source images; Russian learner explanation is selectable DOM text outside the images."
         ],
         "checkerResult": "pass"
       },

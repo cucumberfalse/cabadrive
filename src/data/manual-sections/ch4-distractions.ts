@@ -1,5 +1,15 @@
 import type { ManualGuideSectionContent } from "../manualGuide";
 
+const assetRoot =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions";
+
+const sourceImageException = {
+  kind: "source-image-original-visible-text",
+  visibleSpanishScope: "source-image-only",
+  sourceAsIs: true,
+  russianExplanationOutsideImage: true
+} as const;
+
 export const ch4DistractionsSection: ManualGuideSectionContent = {
   id: "ch4-distractions-content",
   sectionId: "ch4-distractions",
@@ -7,13 +17,21 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
   sourcePages: [95, 96, 97],
   sourceTitleEs: "Distracciones",
   status: "implemented",
-  styleTokenFamilies: ["manual-prose", "manual-section-heading", "manual-callout-blue", "manual-legal-detail"],
+  styleTokenFamilies: [
+    "manual-prose",
+    "manual-section-heading",
+    "manual-callout-blue",
+    "manual-source-artwork",
+    "manual-legal-detail"
+  ],
   visualEvidence: {
     checkerStatus: "pass",
     sourceScreenshots: [
       "content/validation/manual-guide/ch4-distractions/page-095-distractions-source-crop.jpg",
+      "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
       "content/validation/manual-guide/ch4-distractions/page-096-distractions-source-crop.jpg",
-      "content/validation/manual-guide/ch4-distractions/page-097-distractions-source-crop.jpg"
+      "content/validation/manual-guide/ch4-distractions/page-097-distractions-source-crop.jpg",
+      "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg"
     ],
     russianScreenshots: [
       "content/validation/manual-guide/ch4-distractions/ch4-distractions-desktop.png",
@@ -22,7 +40,8 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
     notes: [
       "Direct navigation starts at source page 95 and opens the distractions section.",
       "Source pages 95-97 are converted as selectable Russian DOM text, including phone, GPS, passenger, mirror, toll, and 100% attention details.",
-      "No Chapter 4 phone/GPS/source artwork is redrawn, relabeled, masked, or rendered as a runtime protected image."
+      "The page 95 three-panel distraction visual and page 97 photo/quote are rendered as x5 source-as-is runtime crops.",
+      "No Chapter 4 phone/GPS/source artwork is translated, relabeled, recolored, cleaned, masked, or redrawn; Russian explanation stays outside images."
     ]
   },
   blocks: [
@@ -52,6 +71,30 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         "Comer, beber, tomar mate и/или fumar требуют определенного уровня внимания.",
         "К этому добавляется cuidado, чтобы избежать derrames или падения encendida ceniza.",
         "Кроме отвлечения, эти действия несут дополнительный риск: они требуют manipulación, поэтому руки не могут уверенно оставаться на руле."
+      ]
+    },
+    {
+      id: "eating-distraction-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: отвлечение едой и mate",
+      sourceTextEs: "Comer, beber, tomar mate y/o fumar...",
+      cards: [
+        {
+          id: "distraction-panels-source-card",
+          titleRu: "Три панели Distracciones",
+          sourcePage: 95,
+          sourceRegion: { x: 1190, y: 2160, width: 860, height: 260 },
+          assetPath: `${assetRoot}/distraction-panels-source-as-is.jpg`,
+          altRu: "Исходный трехпанельный визуал отвлечений из manual, оставленный без изменений.",
+          visibleSpanish: true,
+          sourceImageException,
+          bodyRu:
+            "Официальный визуал сохранен без перевода внутри изображения. Рядом русским selectable text объясняется тот же риск: еда, напитки, mate и курение отвлекают внимание и занимают руки."
+        }
+      ],
+      visualNotes: [
+        "The distraction panels are a scale-5 source-as-is crop.",
+        "Spanish text inside the visual remains only inside the source image."
       ]
     },
     {
@@ -118,6 +161,30 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         "Conducir, requiere del 100% de atención y coordinación.",
       textRu:
         "Вождение требует 100% внимания и координации."
+    },
+    {
+      id: "attention-source-photo",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: 100% внимания",
+      sourceTextEs: "Conducir, requiere del 100% de atención y coordinación.",
+      cards: [
+        {
+          id: "attention-photo-source-card",
+          titleRu: "Фото и цитата источника",
+          sourcePage: 97,
+          sourceRegion: { x: 1160, y: 1680, width: 720, height: 900 },
+          assetPath: `${assetRoot}/attention-photo-source-as-is.jpg`,
+          altRu: "Исходное фото и цитата о 100% внимания и координации, оставленные без изменений.",
+          visibleSpanish: true,
+          sourceImageException,
+          bodyRu:
+            "Фото и цитата оставлены как официальный источник. Русская строка выше передает смысл: управление требует 100% внимания и координации."
+        }
+      ],
+      visualNotes: [
+        "The photo/quote is a scale-5 source-as-is crop.",
+        "No Spanish text is removed or replaced in the protected photo visual."
+      ]
     }
   ]
 };

@@ -122,6 +122,16 @@ function sha256File(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
 
+function sectionById(sectionId) {
+  return registry.sections.find((entry) => entry.id === sectionId);
+}
+
+function localAssetByPath(section, assetPath) {
+  const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
+  assert.ok(asset, `${section.id} records ${assetPath} in localAssetMetadata`);
+  return asset;
+}
+
 function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
   if (value && typeof value === "object") {
@@ -996,6 +1006,94 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4DistractionsModuleSource, /espejo retrovisor/u);
   assert.match(ch4DistractionsModuleSource, /peaje/u);
   assert.match(ch4DistractionsModuleSource, /100% внимания/u);
+});
+
+test("Chapter 4 runtime renders source-as-is official visuals with provenance evidence", () => {
+  const visualExpectations = [
+    {
+      sectionId: "ch4-alcohol-drugs",
+      moduleSource: ch4AlcoholDrugsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+      assetCategory: "source-as-is-photo",
+      assetKind: "high-resolution-original-source-photo-drug-test-device",
+      width: 820,
+      height: 300,
+      sha256: "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+    },
+    {
+      sectionId: "ch4-alcohol-drugs",
+      moduleSource: ch4AlcoholDrugsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+      assetCategory: "source-as-is-infographic",
+      assetKind: "high-resolution-original-source-infographic-alcohol-limits",
+      width: 850,
+      height: 430,
+      sha256: "1793e4e77b2549c5b7e6aed931bc0c606b6ae7bc34eec4a2fd5d22e11a49c613"
+    },
+    {
+      sectionId: "ch4-distractions",
+      moduleSource: ch4DistractionsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+      assetCategory: "source-as-is-infographic",
+      assetKind: "high-resolution-original-source-infographic-distraction-panels",
+      width: 860,
+      height: 260,
+      sha256: "1723e149dfbbf839bdf9674183e0feec53693f574899a2f7cd039d7e46dac354"
+    },
+    {
+      sectionId: "ch4-distractions",
+      moduleSource: ch4DistractionsModuleSource,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+      sourceAssetPath: "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+      assetCategory: "source-as-is-photo",
+      assetKind: "high-resolution-original-source-photo-attention-quote",
+      width: 720,
+      height: 900,
+      sha256: "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+    }
+  ];
+
+  assert.match(ch4AlcoholDrugsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /drug-test-source-as-is\.jpg/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /alcohol-limits-source-as-is\.jpg/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /source-image-original-visible-text/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Principiantes[\s\S]*0\.00 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Motociclistas[\s\S]*0\.20 g\/l/u);
+  assert.match(ch4AlcoholDrugsModuleSource, /Particulares[\s\S]*0\.50 g\/l/u);
+  assert.match(ch4DistractionsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(ch4DistractionsModuleSource, /distraction-panels-source-as-is\.jpg/u);
+  assert.match(ch4DistractionsModuleSource, /attention-photo-source-as-is\.jpg/u);
+  assert.match(ch4SleepFatigueModuleSource, /биологическая потребность/u);
+  assert.doesNotMatch(ch4SleepFatigueModuleSource, /biological need/u);
+
+  for (const expectation of visualExpectations) {
+    const section = sectionById(expectation.sectionId);
+    assert.ok(section, `${expectation.sectionId} exists`);
+    const asset = localAssetByPath(section, expectation.assetPath);
+    const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+    assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+    assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+    assert.equal(exceptionPaths.includes(expectation.assetPath), true, `${expectation.assetPath} has visible-Spanish exception evidence`);
+    assert.equal(asset.assetCategory, expectation.assetCategory);
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.visibleSpanish, true);
+    assert.equal(asset.cleanupScope, "none-source-as-is");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+    assert.equal(sha256File(asset.assetPath), sha256File(expectation.sourceAssetPath));
+  }
 });
 
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
@@ -2025,12 +2123,19 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
     "source-as-is-document-example",
+    "source-as-is-infographic",
     "source-transferred-infographic",
     "source-transferred-diagram",
     "native-dom-text-only"
   ]) {
     assert.ok(evidence.strictVisualRulePolicy.assetCategories.includes(requiredCategory), `strict schema includes ${requiredCategory}`);
   }
+  assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
+    "source-as-is-photo",
+    "source-as-is-traffic-sign",
+    "source-as-is-road-marking",
+    "source-as-is-infographic"
+  ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
     "sourceIntegrity.sourceAssetPath",

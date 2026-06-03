@@ -179,10 +179,16 @@ const strictImageAssetCategories = new Set([
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
   "source-as-is-document-example",
+  "source-as-is-infographic",
   "source-transferred-infographic",
   "source-transferred-diagram"
 ]);
-const protectedSourceAsIsCategories = new Set(["source-as-is-photo", "source-as-is-traffic-sign", "source-as-is-road-marking"]);
+const protectedSourceAsIsCategories = new Set([
+  "source-as-is-photo",
+  "source-as-is-traffic-sign",
+  "source-as-is-road-marking",
+  "source-as-is-infographic"
+]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
 const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);

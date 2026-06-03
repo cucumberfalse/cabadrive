@@ -1,5 +1,15 @@
 import type { ManualGuideSectionContent } from "../manualGuide";
 
+const assetRoot =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs";
+
+const sourceImageException = {
+  kind: "source-image-original-visible-text",
+  visibleSpanishScope: "source-image-only",
+  sourceAsIs: true,
+  russianExplanationOutsideImage: true
+} as const;
+
 export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
   id: "ch4-alcohol-drugs-content",
   sectionId: "ch4-alcohol-drugs",
@@ -7,12 +17,20 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
   sourcePages: [90, 91, 92],
   sourceTitleEs: "Consumo de alcohol y drogas",
   status: "implemented",
-  styleTokenFamilies: ["manual-prose", "manual-section-heading", "manual-callout-blue", "manual-legal-detail"],
+  styleTokenFamilies: [
+    "manual-prose",
+    "manual-section-heading",
+    "manual-callout-blue",
+    "manual-source-artwork",
+    "manual-legal-detail"
+  ],
   visualEvidence: {
     checkerStatus: "pass",
     sourceScreenshots: [
       "content/validation/manual-guide/ch4-alcohol-drugs/page-090-alcohol-drugs-source-crop.jpg",
+      "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
       "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-drugs-source-crop.jpg",
+      "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
       "content/validation/manual-guide/ch4-alcohol-drugs/page-092-alcohol-drugs-source-crop.jpg"
     ],
     russianScreenshots: [
@@ -21,7 +39,8 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source PDF pages 90-92 are converted as selectable Russian DOM text.",
-      "Chapter 4 alcohol/drug pages use x5 full-page source-reference evidence only; no source image, sign, marking, photo, or infographic is modified.",
+      "The page 90 drug-test device/photo and page 91 alcohol-limit visual are rendered as x5 source-as-is runtime crops.",
+      "No source image, sign, marking, photo, or infographic is translated, relabeled, recolored, cleaned, masked, or redrawn; Russian explanation stays outside images.",
       "Medication, drug-detection, alcohol-limit, absorption, elimination, positive-test, and refusal procedure details are retained in runtime text."
     ]
   },
@@ -77,6 +96,30 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "drug-test-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: проверка на наркотические вещества",
+      sourceTextEs: "Instrumento para la medición o detección de estupefacientes.",
+      cards: [
+        {
+          id: "drug-test-device-source-card",
+          titleRu: "Устройство проверки на estupefacientes",
+          sourcePage: 90,
+          sourceRegion: { x: 1180, y: 2245, width: 820, height: 300 },
+          assetPath: `${assetRoot}/drug-test-source-as-is.jpg`,
+          altRu: "Исходный визуал устройства проверки на наркотические вещества, оставленный без изменений.",
+          visibleSpanish: true,
+          sourceImageException,
+          bodyRu:
+            "Визуал оставлен как официальный источник: он показывает устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным selectable DOM text."
+        }
+      ],
+      visualNotes: [
+        "The source image is a scale-5 crop rendered source-as-is.",
+        "Spanish text inside the official visual is not translated, cleaned, or relabeled."
+      ]
+    },
+    {
       id: "alcohol-effects",
       kind: "list",
       titleRu: "Что делает алкоголь с водителем",
@@ -99,6 +142,30 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         "La Ley 2148 determina los valores límite... Está prohibido conducir cualquier tipo de vehículo con más de 0,5 gramos de alcohol por litro de sangre.",
       textRu:
         "Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires. Общее правило источника: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre; к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia, потому что провинции и муниципалитеты имеют собственную нормативную автономию."
+    },
+    {
+      id: "alcohol-limit-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: límites de alcohol en sangre",
+      sourceTextEs: "Límites de alcohol en sangre para conducir.",
+      cards: [
+        {
+          id: "alcohol-limits-source-card",
+          titleRu: "Официальная визуальная таблица пределов",
+          sourcePage: 91,
+          sourceRegion: { x: 1180, y: 2030, width: 850, height: 430 },
+          assetPath: `${assetRoot}/alcohol-limits-source-as-is.jpg`,
+          altRu: "Исходный визуал Límites de alcohol en sangre para conducir, оставленный без изменений.",
+          visibleSpanish: true,
+          sourceImageException,
+          bodyRu:
+            "Официальный визуал сохранен без перевода внутри изображения. Конкретные пороги из него дублируются ниже в selectable Russian table: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям источника."
+        }
+      ],
+      visualNotes: [
+        "The alcohol-limit visual is a scale-5 source-as-is crop.",
+        "The learner-facing Russian explanation and thresholds are selectable text outside the image."
+      ]
     },
     {
       id: "blood-alcohol-limit-table",
