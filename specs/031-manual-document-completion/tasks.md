@@ -252,9 +252,9 @@ For each chapter-equivalent content PR:
 - Architect validated effective content head: dd22d1f241300fa803050200a2bb412642aec165
 - Architect return count: 0
 - Architect validation: prior Architect validation for e16eeb86b965e4d393479ca142cb3d46602206b0 is superseded after finalizer-readable disposition repair; this validation supersedes it for effective content head dd22d1f241300fa803050200a2bb412642aec165.
-- Implementation Agent feedback Architect disposition: none; no open Implementation Agent feedback remains for PR #186 audit-only scope at dd22d1f241300fa803050200a2bb412642aec165.
+- Architect validation: Implementation Agent feedback disposition is none; no open Implementation Agent feedback remains for PR #186 audit-only scope at dd22d1f241300fa803050200a2bb412642aec165.
 - Analyst feedback Architect disposition: none requiring action for PR #186 audit-only scope.
-- Known issue owner decision: Known Issues section records no open known issues; Vite warning and audit known-issue entries are pre-existing, nonfatal, unrelated to PR #186 audit-only scope, accepted no action, and disposition not applicable for this slice.
+- Architect validation: Known Issues section records no open known issues; Vite warning and audit known-issue entries are pre-existing, nonfatal, unrelated to PR #186 audit-only scope, accepted no action, and disposition not applicable for this slice.
 - Architect validation: PR #186 remains audit-only for Introduction pages 14-20 and Chapter 1 pages 21-42, with no runtime, content, asset, code, test, or durable-doc change outside Architect-owned process memory.
 - Final-validation evidence-only commit: 3d0beb4d9bcbb67ab26b0bf46c4302a1605e0456 recorded Architect validation evidence for effective content head dd22d1f241300fa803050200a2bb412642aec165 in tasks.md.
 - Final-validation evidence-only commit: 6e9b3f9326b27fc428538abdb6a454abe340615e recorded Analyst validation evidence for effective content head dd22d1f241300fa803050200a2bb412642aec165 in feature-request.md.
