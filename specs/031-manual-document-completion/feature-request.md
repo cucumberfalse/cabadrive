@@ -226,36 +226,6 @@ Analyst boundary reminder: this validation edits only Analyst-owned notes in `sp
 
 Analyst validation pass: passed
 
-Final Analyst validation completed at: 2026-06-03T08:14:50Z
-
-Analyst validated effective content head: ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
-
-Analyst return count for this work cycle: 0
-
-Customer intent check: passed for the PR #186 audit-only scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
-
-Analyst validation evidence: Architect validation passed first at `2026-06-03T08:12:17Z` for the same effective content head `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57`; current head `225b2db7d5938a57cd860f3f4a3bc5b3fcdd7d52` transports Architect-owned validation evidence only in `tasks.md`.
-
-Analyst validation evidence: PR #186 remains an audit-only process-memory slice for Introduction pages `14-20` and Chapter 1 pages `21-42`; it does not implement Chapter 2 or later manual units, runtime manual pages, assets, code, tests, or docs outside feature memory.
-
-Analyst validation evidence: The audit records a no-fix outcome for the stricter visual rules on Introduction and Chapter 1, with audit completion recorded for T022 through T025 and reusable per-chapter content checklist T049 through T063 reserved for later chapter-equivalent PR work.
-
-Analyst validation evidence: Review Agent posted no actionable findings for `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57` in review `4416640043`, AI Review reported no major issues, and process memory records required checks green for baseline-checks, docker-validation, guard, AI Review, and osv-scan.
-
-Analyst validation evidence: The cycle state now includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice; continuing one chapter-equivalent per PR remains required after PR #186.
-
-Gaps, if any: none for the PR #186 audit-only scope. Remaining planned full-document work, including future chapter-equivalent content PRs and final full-cycle validation, stays outside this audit slice by design and is not an audit-scope gap.
-
-Architect disposition routing: no Analyst gap requires Architect disposition for PR #186 at `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57`; Architect process memory records no unresolved Implementation Agent feedback and no Architect dispositions requiring action for this audit-only scope.
-
-Analyst limit escalation: none.
-
-Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
-
-## Final Analyst Validation Notes
-
-Analyst validation pass: passed
-
 Final Analyst validation completed at: 2026-06-03T06:58:43Z
 
 Analyst validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
@@ -279,36 +249,6 @@ Analyst validation evidence: Review Agent posted no actionable findings for `8d1
 Gaps, if any: none for the PR #185 prerequisite scope. Remaining full-document work, including the Introduction/Chapter 1 visual audit, any scoped corrections, Chapter 2, Chapters 3-5, Appendices I-IV, front matter, and final full-cycle validation, remains pending by design and is not a prerequisite-scope gap.
 
 Architect disposition routing: no Analyst gap requires Architect disposition for PR #185 at `8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82`; Architect process memory records no unresolved Implementation Agent feedback for this prerequisite scope.
-
-Analyst limit escalation: none.
-
-Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
-
-## Final Analyst Validation Notes
-
-Analyst validation pass: passed
-
-Final Analyst validation completed at: 2026-06-03T08:15:28Z
-
-Analyst validated effective content head: ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57
-
-Analyst return count for this work cycle: 0
-
-Customer intent check: passed for the PR #186 audit-only scope. The effective content head supports the original request to continue until the whole document is complete, keep one chapter-equivalent PR per remaining source unit, require high-resolution x5/equivalent export evidence, prohibit modification or translation of photos, traffic signs, and road markings, require infographics and diagrams to be transferred from source images rather than redrawn, require glyph/letter-level Spanish cleanup with background restoration, and support Russian overlay text for future manual sections.
-
-Analyst validation evidence: Architect validation passed first at `2026-06-03T08:12:17Z` for the same effective content head `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57`; current head `225b2db7d5938a57cd860f3f4a3bc5b3fcdd7d52` transports Architect-owned validation evidence only in `tasks.md`.
-
-Analyst validation evidence: PR #186 remains an audit-only process-memory slice for Introduction pages `14-20` and Chapter 1 pages `21-42`; it does not implement Chapter 2 or later manual units, runtime manual pages, assets, code, tests, or docs outside feature memory.
-
-Analyst validation evidence: The audit records a no-fix outcome for the stricter visual rules on Introduction and Chapter 1, with audit completion recorded for T022 through T025 and reusable per-chapter content checklist T049 through T063 reserved for later chapter-equivalent PR work.
-
-Analyst validation evidence: Review Agent posted no actionable findings for `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57` in review `4416640043`, AI Review reported no major issues, and process memory records required checks green for baseline-checks, docker-validation, guard, AI Review, and osv-scan.
-
-Analyst validation evidence: The cycle state now includes merged PR #184 as Chapter 1 baseline, merged PR #185 as strict visual-rule prerequisite, and PR #186 as the Introduction and Chapter 1 audit-only slice; continuing one chapter-equivalent per PR remains required after PR #186.
-
-Gaps, if any: none for the PR #186 audit-only scope. Remaining planned full-document work, including future chapter-equivalent content PRs and final full-cycle validation, stays outside this audit slice by design and is not an audit-scope gap.
-
-Architect disposition routing: no Analyst gap requires Architect disposition for PR #186 at `ed7c9fe9db2bbb8b31e7fa67e8166c88e53cfd57`; Architect process memory records no unresolved Implementation Agent feedback and no Architect dispositions requiring action for this audit-only scope.
 
 Analyst limit escalation: none.
 
