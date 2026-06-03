@@ -182,11 +182,11 @@ For each chapter-equivalent content PR:
 - Architect validation: passed at 2026-06-03T06:55:33Z for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
 - Required checks before Architect validation: baseline-checks pass, docker-validation pass after rerun for Docker Hub timeout, guard pass, osv-scan pass, AI Review pass on 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
 - Review Agent before Architect validation: no actionable findings at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
-- Prior validation status: prior Architect/Analyst validations for older heads are stale after non-evidence repairs; this validation supersedes them for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
+- Architect validation: prior Architect/Analyst validations for older heads are stale after non-evidence repairs; this validation supersedes them for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
 - Architect validated effective content head: 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82
 - Architect return count: 0
-- Architect validation evidence: PR #185 prerequisite scope validated after transferred infographic/diagram source-crop linkage repair with required checks and Review Agent no-findings at the effective content head.
-- Architect disposition: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
+- Architect validation: PR #185 prerequisite scope validated after transferred infographic/diagram source-crop linkage repair with required checks and Review Agent no-findings at the effective content head.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #185 at 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82.
 - Limit escalation: none
 - Final-validation evidence-only commit: ac4a5fd87ea4b3161b35a7fa4d0a0e1a90b9eac2 recorded Architect validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in tasks.md.
 - Final-validation evidence-only commit: f2a4047e3344e14b21bc740a015971079869b6ad recorded Analyst validation evidence for effective content head 8d1b217b79e322a03f29b2ebda1e83c3a0ac7a82 in feature-request.md.
@@ -444,7 +444,7 @@ Architect disposition: no unresolved Implementation Agent feedback remains for P
 
 Architect disposition: PR #185 is ready for Analyst final validation once this Architect validation evidence is transported, with Orchestrator current-head/readiness guards still outside the Architect role.
 
-## Final Architect Validation Rerun - PR #185 Transferred Artwork Source Linkage Repair
+## Final Architect Validation Notes
 
 Architect validation pass: passed
 
