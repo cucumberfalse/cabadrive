@@ -216,8 +216,10 @@ function isStrictProtectedSourceAsIsException(entry) {
   );
 }
 
-function visibleSpanishStatusExceptionAssetPaths(value) {
+function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
   if (!isObject(value) || !Array.isArray(value.exceptions)) return new Set();
+  const expectedStatus = assetCategory === "source-as-is-traffic-sign" ? "official_traffic_sign_exception_only" : "source_image_exceptions_only";
+  if (value.status !== expectedStatus) return new Set();
   return new Set(value.exceptions.map((exception) => exception.assetPath).filter((assetPath) => typeof assetPath === "string" && assetPath.length > 0));
 }
 
@@ -385,7 +387,6 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
     implementedEvidence
   );
   assertNoForbiddenStrictVisualTerms(implementedEvidence.visualReviewNotes, `${messagePrefix}.visualReviewNotes`);
-  const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus);
 
   validateObjectOrArray(
     implementedEvidence.sourceRegionMetadata,
@@ -415,6 +416,7 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       if (protectedSourceAsIsCategories.has(asset.assetCategory)) {
         validateProtectedSourceAsIsAsset(asset, label);
         if (asset.visibleSpanish === true) {
+          const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
           assertCondition(
             visibleSpanishExceptionAssetPaths.has(asset.assetPath),
             `${label}.visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions`,

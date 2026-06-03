@@ -1541,7 +1541,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint",
     "sourceIntegrity.russianExplanationOutsideImage",
     "cleanupScope=none-source-as-is",
-    "visibleSpanishStatus.exceptions.assetPath matching assetPath when visibleSpanish=true"
+    "visibleSpanishStatus.status=source_image_exceptions_only or official_traffic_sign_exception_only with exceptions.assetPath matching assetPath when visibleSpanish=true"
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.diagramRequiredFields, [
     "assetCategory=source-transferred-diagram",
@@ -1884,6 +1884,36 @@ test("Manual guide source-fidelity checker rejects strict source-as-is visible S
     });
     const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
     assert.notEqual(failure.status, 0, "checker must fail when a strict source-as-is asset keeps Spanish but top-level status claims none");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].visibleSpanish=true must be recorded in visibleSpanishStatus.exceptions"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects strict source-as-is visible Spanish with none status object", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-strict-source-as-is-visible-none-object-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      implementationEvidence.visibleSpanishStatus = {
+        status: "none",
+        exceptions: [
+          {
+            assetPath: implementationEvidence.localAssetMetadata[1].assetPath,
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          }
+        ]
+      };
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when exceptions are paired with a non-exception visible-Spanish status");
     const result = JSON.parse(failure.stderr);
     assert.equal(result.status, "fail");
     assert.equal(
