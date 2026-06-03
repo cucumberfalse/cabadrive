@@ -90,7 +90,7 @@ For each chapter-equivalent content PR:
 | Purpose | Source unit/pages | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- | --- |
 | Merged baseline: Chapter 1 completion | Chapter 1 pages `21-42` | PR #184, merged | `501199aa6c35f46bcb4d363918da5a99a2329304` for PR #184; current cycle base `b07d5c72bf1689e7dac480e937c366a528d20299` | merge commit `b07d5c72bf1689e7dac480e937c366a528d20299` | merged into `main`; Chapter 1 complete baseline | yes, as existing baseline/audit subject |
-| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | latest repaired effective content head `ae5db4936c77f759e337c07e84c95924eee0db74`; prior `36316f3781b9b04f305725018522b0f55407f900`, `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c`, and `bcc377a154c936374715f6ca4ce2d5714af4a722` validations are stale/superseded | repaired after non-evidence strict image byte-dimension checker/test/evidence-policy changes; local verification passed; Review Agent no actionable findings for `ae5db4936c77f759e337c07e84c95924eee0db74`; required checks green (`baseline-checks`, `docker-validation`, `guard`, `AI Review`, `osv-scan`); latest Architect validation passed and PR #185 is ready for Analyst final validation once evidence is transported | yes |
+| Visual-rule prerequisite | Shared docs/checker/evidence/tests/process memory; no chapter content implementation | branch `codex/031-manual-document-completion`; PR #185, https://github.com/cucumberfalse/cabadrive/pull/185 | `b07d5c72bf1689e7dac480e937c366a528d20299` | latest validated behavior head `ae5db4936c77f759e337c07e84c95924eee0db74`; evidence-only commits `98572bf79fc463700e07fd2b6c245bcdcd396511` and `a9a7a6b0cccc0e0840439b0a4cb62382861490fa`; this process-memory finalization repair will create the next effective content head candidate after commit | process-memory finalization repair only; Orchestrator resolved old review threads after latest Review Agent no-findings and AI Review pass; Architect and Analyst validation must rerun for the new effective content head after this repair is pushed | yes |
 | Introduction and Chapter 1 visual audit | Introduction `14-20`, Chapter 1 `21-42` | pending | pending | pending | pending Orchestrator assignment | yes |
 | Introduction/Chapter 1 corrections | scoped affected sections only if audit finds gaps | pending if needed | pending | pending | not needed until audit creates tasks | yes if created |
 | Chapter 2 content | pages `43-56` | pending | pending | pending | next likely chapter-level PR | yes |
@@ -136,6 +136,35 @@ For each chapter-equivalent content PR:
 - Review findings and dispositions.
 - Final validation markers and effective content head where applicable.
 
+## Decisions
+
+- PR #185 remains a visual-rule prerequisite only: no Chapter 2+ content, no runtime manual pages, no new chapter assets, and no Introduction/Chapter 1 audit or correction implementation are included.
+- Strict future manual units must require x5/equivalent high-resolution image/crop export evidence, byte-verified local asset and source crop hashes, actual image-byte dimensions for strict image categories, and runtime no-upscale evidence.
+- Photos, traffic-sign images, and road-marking images must remain source-as-is with no translation, relabeling, redraw, recolor, cleanup, reconstruction, retouching, masking, inpainting, or meaningful-content removal; Russian explanation belongs outside protected images.
+- Infographics and diagrams must be transferred as high-quality source images rather than approximate redraws; Spanish cleanup is glyph/letter-level only, with broad patches/masks/plates forbidden and Russian overlay text selectable where feasible.
+- Legacy Chapter 1 baseline evidence remains allowed only for unchanged merged baseline state until the planned audit/correction slice; new or changed future manual units require strict v3 evidence.
+
+## Dead Ends
+
+- Resolved: strict fixture failures exposed legacy visible-Spanish ordering, source-integrity isolation, Chapter 2 strict fixture category setup, and temp-path false positives during forbidden-term matching; the checker/tests now cover those cases.
+- Resolved: review repairs closed legacy-registry exemption, strict diagram transfer proof, strict hash/provenance byte verification, legacy baseline-state fingerprinting, forbidden-term/asset-kind scanning, visible-Spanish exception gating, transferred-artwork Spanish rejection, and strict image byte-dimension validation.
+- No unresolved dead ends remain for PR #185 process-memory finalization repair.
+
+## Known Issues
+
+- No unresolved known issues.
+- Existing Vite large chunk warning is pre-existing and non-fatal for this prerequisite scope; known issue not applicable to PR #185 merge readiness. Disposition: not applicable.
+
+## Final Validation Evidence
+
+- Effective content head: ae5db4936c77f759e337c07e84c95924eee0db74
+- Final-validation evidence-only commit: `98572bf79fc463700e07fd2b6c245bcdcd396511` recorded Architect validation for `ae5db4936c77f759e337c07e84c95924eee0db74`.
+- Final-validation evidence-only commit: `a9a7a6b0cccc0e0840439b0a4cb62382861490fa` recorded Analyst validation for `ae5db4936c77f759e337c07e84c95924eee0db74`.
+- Architect return count: 0
+- Analyst return count: 0
+- Analyst feedback Architect disposition: none; no unresolved Analyst feedback required Architect action for PR #185 prerequisite scope.
+- Limit escalation: none
+
 ## Known Issues / Architect Dispositions
 
 - Chapter 1 is already merged through PR #184. Architect disposition: do not reimplement it in future chapter PRs; audit and correction only through explicit scoped PRs.
@@ -180,9 +209,7 @@ For each chapter-equivalent content PR:
 
 ## Implementation Agent Feedback
 
-- None requiring Architect disposition for this prerequisite slice. Latest final Architect validation for PR #185 confirms no unresolved Implementation Agent feedback remains for the repaired visual-rule prerequisite scope at `ae5db4936c77f759e337c07e84c95924eee0db74`.
-
-Future Implementation Agent feedback must be recorded here and routed to Architect for accept/task/ticket/not-needed disposition before follow-up development.
+- No unresolved Implementation Agent feedback. Architect disposition: disposed; no action needed for PR #185 at `ae5db4936c77f759e337c07e84c95924eee0db74`.
 
 ## Final Architect Validation - PR #185 Visual-Rule Prerequisite
 
