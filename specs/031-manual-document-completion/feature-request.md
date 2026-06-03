@@ -245,3 +245,27 @@ Architect prerequisite: final Architect validation rerun passed before this Anal
 Gaps: none for the PR #185 repaired prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation rerun.
 
 Analyst boundary reminder: this rerun edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Rerun - PR #185 Latest Repaired Visual-Rule Prerequisite
+
+Superseded validation notice: the earlier Analyst validations for `36316f3781b9b04f305725018522b0f55407f900` and `c0b08aa2b23fefdb4eef1425035e94d5d6f8236c` are superseded and stale because later non-evidence repair commits changed strict visible-Spanish validation behavior, including transferred infographic/diagram visible-Spanish rejection and strict source-as-is exceptions only for protected photos/signs/road markings. The latest repaired effective content head for this prerequisite validation is `bcc377a154c936374715f6ca4ce2d5714af4a722`.
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-03T04:29:32Z
+
+Analyst validated effective content head: bcc377a154c936374715f6ca4ce2d5714af4a722
+
+Analyst return count for this prerequisite validation rerun: 0
+
+Validation scope: PR #185 visual-rule prerequisite only. This Analyst validation validates the latest repaired prerequisite against the original user intent: continue until the whole document is complete, keep one source manual chapter per PR from this point forward, require high-resolution x5/equivalent visual export, prohibit alteration or translation of photos/signs/road markings, and require infographics to be source-image transfers with glyph/letter-level Spanish cleanup and Russian overlay text.
+
+Customer intent check: passed for the latest repaired prerequisite scope. The latest effective content head preserves the prerequisite support for future full-manual work and strengthens the strict evidence model so transferred infographics/diagrams cannot retain visible Spanish through protected-image exception paths, while protected source-as-is exceptions remain limited to photos, traffic signs, and road markings as required by the user's visual rules.
+
+Completion boundary: PR #185 remains prerequisite-only. It supports but does not itself complete Chapter 2, Chapters 3-5, Appendices I-IV, front matter, Introduction/Chapter 1 visual audit, or any correction PRs. One-chapter/one-PR continuation remains required for remaining source manual chapters and chapter-equivalent appendices before full-document completion can pass.
+
+Architect prerequisite: final Architect validation passed before this Analyst validation at `2026-06-03T04:26:07Z` for the same latest repaired effective content head `bcc377a154c936374715f6ca4ce2d5714af4a722`. The later commit `7447f0a0bf4666986351350ea61265ec68778dfe` is treated as Architect-owned validation evidence only; it records the Architect pass in `tasks.md` and does not intend product/code/test/runtime/manual-content behavior changes.
+
+Gaps: none for the PR #185 latest repaired prerequisite scope. Remaining full-document work stays pending by design and is not a gap in this prerequisite validation.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
