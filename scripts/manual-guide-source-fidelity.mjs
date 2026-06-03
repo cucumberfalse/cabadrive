@@ -184,9 +184,7 @@ const forbiddenStrictVisualTermIgnoredKeys = new Set([
   "sha256",
   "cropSha256",
   "id",
-  "sectionId",
-  "assetKind",
-  "assetCategory"
+  "sectionId"
 ]);
 
 function isLegacyVisualEvidenceAllowed(section, evidence, implementedEvidence) {

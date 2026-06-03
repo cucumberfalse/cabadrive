@@ -1561,7 +1561,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   }
   assert.equal(
     evidence.strictVisualRulePolicy.forbiddenStrictVisualTermMatching,
-    "case-insensitive canonical term matching across hyphen, space, and underscore separators"
+    "case-insensitive canonical term matching across hyphen, space, and underscore separators; semantic kind/category/approach metadata is scanned while path/hash/id fields are excluded"
   );
 });
 
@@ -1901,6 +1901,39 @@ test("Manual guide source-fidelity checker rejects forbidden strict visual terms
       const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
       const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
       assert.notEqual(failure.status, 0, `checker must fail when strict metadata records ${testCase.name}`);
+      const result = JSON.parse(failure.stderr);
+      assert.equal(result.status, "fail");
+      assert.equal(result.message, testCase.expectedMessage);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
+  }
+});
+
+test("Manual guide source-fidelity checker rejects forbidden strict assetKind values", () => {
+  const cases = [
+    {
+      name: "generic-icon-replacement-kind",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[0].assetKind = "generic-icon-replacement";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[0] must not record forbidden visual-edit term generic-icon-replacement"
+    },
+    {
+      name: "redrawn-diagram-kind",
+      mutateEvidence: (implementationEvidence) => {
+        implementationEvidence.localAssetMetadata[1].assetKind = "redrawn-diagram";
+      },
+      expectedMessage: "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1] must not record forbidden visual-edit term redrawn-diagram"
+    }
+  ];
+
+  for (const testCase of cases) {
+    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-strict-${testCase.name}-`));
+    try {
+      const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, testCase.mutateEvidence);
+      const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+      assert.notEqual(failure.status, 0, `checker must fail when strict assetKind records ${testCase.name}`);
       const result = JSON.parse(failure.stderr);
       assert.equal(result.status, "fail");
       assert.equal(result.message, testCase.expectedMessage);

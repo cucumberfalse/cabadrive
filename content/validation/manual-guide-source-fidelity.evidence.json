@@ -276,7 +276,7 @@
       "dom-plate",
       "backing-rectangle"
     ],
-    "forbiddenStrictVisualTermMatching": "case-insensitive canonical term matching across hyphen, space, and underscore separators"
+    "forbiddenStrictVisualTermMatching": "case-insensitive canonical term matching across hyphen, space, and underscore separators; semantic kind/category/approach metadata is scanned while path/hash/id fields are excluded"
   },
   "forbiddenPatterns": [
     {
