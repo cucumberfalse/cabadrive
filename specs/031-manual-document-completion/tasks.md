@@ -898,7 +898,7 @@ For each chapter-equivalent content PR:
 - Architect validation: cycle PR-set coverage includes merged PR #185 visual-rule prerequisite, merged PR #186 Introduction and Chapter 1 visual audit, merged PR #187 Chapter 2, merged PR #188 Chapter 3, merged PR #189 Chapter 4, merged PR #190 Chapter 5, merged PR #191 Appendix I, and current PR #192 Appendix II at effective content/process head 2d42695dbfbc3b94959d4bfef63c0cc246731f1b.
 - Current-PR-head read-only guard: effective content/process head 2d42695dbfbc3b94959d4bfef63c0cc246731f1b is the guard basis for PR #192; later commits must be final-validation evidence-only in tasks.md and feature-request.md, and finalizer rechecks the actual expected PR head, required checks, mergeability, and review threads before merge.
 - Limit escalation: none
-- Current-PR-head read-only guard: effective content/process head 92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32 is the guard basis for PR #192; any later commit must be final-validation evidence-only in tasks.md and feature-request.md, and finalizer rechecks the actual expected PR head, required checks, mergeability, and review threads before merge.
+- Architect validation: Review Agent P2 `3358811150` / top-level comment `4625987767` accepted as a process-memory guard clarity issue; the old `92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32` current-PR-head guard is superseded by the adjacent `2d42695dbfbc3b94959d4bfef63c0cc246731f1b` guard above. This correction changes Architect-owned process memory only, does not alter product content/assets/runtime/tests, and preserves the final Architect validation markers for effective content/process head `2d42695dbfbc3b94959d4bfef63c0cc246731f1b`.
 - Limit escalation: none
 
 ## Known Issues / Architect Dispositions
