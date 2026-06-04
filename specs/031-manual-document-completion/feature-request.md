@@ -981,3 +981,31 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T07:00:37Z
+
+Analyst validated effective content head: 7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the fresh PR #191 Appendix I scope. The effective content head advances full-document completion one chapter-equivalent appendix PR at a time, covers Appendix I pages `104-122` only with page `104` divider-only, and keeps strict visual requirements central: high-resolution/x5 source export evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as high-quality image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T06:55:53Z` for the same effective content head `7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5`.
+
+Analyst validation evidence: Prior Analyst validation for `77eefbf268236ba78a0d9f55e8de8f6001a7301c` is stale and superseded because post-validation content changes are included in effective content head `7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5`.
+
+Analyst validation evidence: Appendix I scope is page `104` divider-only; `app1-safety-elements` pages `105-118` plus page `119` `Equipaje`/luggage/max-load paragraphs before the next heading; `app1-other-required-safety-elements` starts on page `119` at `Otros elementos de seguridad obligatorios` heading/mask `10` and continues page `120`; `app1-recommended-safety-elements` covers pages `121-122`.
+
+Analyst validation evidence: Current fixes are included for Russian localization, exact `Elementos de seguridad recomendables`, SRI all-threshold rule, page `109` `Pinchaduras`, page `119` luggage/shared boundary, mirror photo-only runtime crop without visible Spanish body text, and SRI +0 label `1-4 года, 10-18 kg` without changing SRI PNG/source-crop pixels.
+
+Gaps, if any: none for the PR #191 Appendix I scope. Remaining planned document units continue one chapter-equivalent appendix PR at a time by design and are outside this Appendix I validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191; Architect process memory records no unresolved Implementation Agent feedback for this Appendix I scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
