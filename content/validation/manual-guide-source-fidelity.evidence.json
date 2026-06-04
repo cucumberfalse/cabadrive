@@ -57,13 +57,6 @@
       "parentChapterId": "appendix-1-private-cars",
       "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
       "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
-    },
-    {
-      "sourcePage": 123,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "appendix-2-passenger-transport",
-      "sourceTitleEs": "ANEXO II TRANSPORTE DE PASAJEROS/AS",
-      "disposition": "Appendix II divider/title page is represented by the Appendix II navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
     }
   ],
   "expectedSectionIds": [
@@ -225,7 +218,7 @@
       "end": 122
     },
     "app2-social-responsibility": {
-      "start": 124,
+      "start": 123,
       "end": 124
     },
     "app2-safety-elements": {
@@ -984,8 +977,7 @@
       57,
       89,
       98,
-      104,
-      123
+      104
     ],
     "skippedDividerPages": [
       21,
@@ -993,8 +985,7 @@
       57,
       89,
       98,
-      104,
-      123
+      104
     ],
     "omittedBookOnlyPages": [
       56

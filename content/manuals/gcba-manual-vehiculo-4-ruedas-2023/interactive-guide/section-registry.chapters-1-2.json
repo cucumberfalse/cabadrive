@@ -56,13 +56,6 @@
       "parentChapterId": "appendix-1-private-cars",
       "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
       "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
-    },
-    {
-      "sourcePage": 123,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "appendix-2-passenger-transport",
-      "sourceTitleEs": "ANEXO II TRANSPORTE DE PASAJEROS/AS",
-      "disposition": "Appendix II divider/title page is represented by the Appendix II navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -7796,10 +7789,16 @@
       "sourceTitleEs": "Responsabilidad social",
       "routeHash": "#manual-section-app2-social-responsibility",
       "sourcePageRange": {
-        "start": 124,
+        "start": 123,
         "end": 124
       },
       "sourcePages": [
+        {
+          "sourcePage": 123,
+          "manualManifestPointer": "/pages/122",
+          "layoutManifestPointer": "/pages/122",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-123.jpg"
+        },
         {
           "sourcePage": 124,
           "manualManifestPointer": "/pages/123",
@@ -7818,9 +7817,35 @@
         "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
         "sectionId": "app2-social-responsibility",
         "sourcePages": [
+          123,
           124
         ],
         "sourceRegionMetadata": [
+          {
+            "sourcePage": 123,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-social-responsibility/page-123-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "075d8472e50bb69c5d8c3a3b938f4cbe469a444f12d857d241e6e1d74336c0cc",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "075d8472e50bb69c5d8c3a3b938f4cbe469a444f12d857d241e6e1d74336c0cc"
+            }
+          },
           {
             "sourcePage": 124,
             "sourceRegion": {
@@ -7874,8 +7899,8 @@
           "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
         },
         "visualReviewNotes": [
-          "Source page 123 is the Appendix II divider/title page and is represented by the Appendix II navigation parent only.",
-          "Page 124 is implemented as native Russian text; no source visual pixels are used at runtime or altered.",
+          "Source pages 123-124 are implemented as native Russian text; page 123 is learner-relevant Appendix II introduction and professional-driver content, not skipped/divider-only.",
+          "No source visual pixels are used at runtime or altered.",
           "No Appendix III, Appendix IV, front-matter, cleanup, or unrelated correction content is bundled."
         ],
         "checkerResult": "pass"

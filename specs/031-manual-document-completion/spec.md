@@ -116,7 +116,7 @@ Chapter and appendix child sections remain website section pages inside their ch
 
 | Section id | Source title | Russian title | Source pages |
 | --- | --- | --- | ---: |
-| `app2-social-responsibility` | `Responsabilidad social` | `Социальная ответственность` | `124` |
+| `app2-social-responsibility` | `Responsabilidad social` | `Социальная ответственность` | `123-124` |
 | `app2-safety-elements` | `Elementos de seguridad` | `Элементы безопасности` | `125-136` |
 | `app2-driving-factors` | `Factores que intervienen en la conduccion` | `Факторы, участвующие в вождении` | `137-143` |
 | `app2-safe-driving` | `Conduccion segura` | `Безопасное вождение` | `144-148` |

@@ -609,12 +609,11 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II registry contains sourc
   assert.equal(registry.featureId, "031-manual-document-completion");
   assert.deepEqual(registry.sourcePageRange, { start: 21, end: 151 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98, 104, 123]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98, 104]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
-    "chapter-divider-only",
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-divider-only",
@@ -652,7 +651,11 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II registry contains sourc
     assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
     assert.equal(sourcePages.includes(98), false, `${section.id} does not include divider page 98`);
     assert.equal(sourcePages.includes(104), false, `${section.id} does not include Appendix I divider page 104`);
-    assert.equal(sourcePages.includes(123), false, `${section.id} does not include Appendix II divider page 123`);
+    if (section.id === "app2-social-responsibility") {
+      assert.equal(sourcePages.includes(123), true, "app2-social-responsibility owns Appendix II page 123 content");
+    } else {
+      assert.equal(sourcePages.includes(123), false, `${section.id} does not include Appendix II page 123 content`);
+    }
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -762,7 +765,7 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II hierarchy references so
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103), sourcePagesForRange(105, 122), sourcePagesForRange(124, 151)));
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103), sourcePagesForRange(105, 122), sourcePagesForRange(123, 151)));
   assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101, 119]);
 });
 
@@ -1399,17 +1402,18 @@ test("Appendix II divider and passenger-transport section boundaries are explici
     "app2-highways-hospitals"
   ]);
 
-  const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 123);
-  assert.equal(divider?.reason, "chapter-divider-only");
-  assert.equal(divider?.parentChapterId, "appendix-2-passenger-transport");
-  assert.match(divider?.disposition ?? "", /navigation parent/u);
+  assert.equal(registry.skippedSourcePages.some((entry) => entry.sourcePage === 123), false);
 
-  assert.deepEqual(sectionById("app2-social-responsibility").sourcePageRange, { start: 124, end: 124 });
+  assert.deepEqual(sectionById("app2-social-responsibility").sourcePageRange, { start: 123, end: 124 });
+  assert.deepEqual(sectionById("app2-social-responsibility").sourcePages.map((entry) => entry.sourcePage), [123, 124]);
   assert.deepEqual(sectionById("app2-safety-elements").sourcePageRange, { start: 125, end: 136 });
   assert.deepEqual(sectionById("app2-driving-factors").sourcePageRange, { start: 137, end: 143 });
   assert.deepEqual(sectionById("app2-safe-driving").sourcePageRange, { start: 144, end: 148 });
   assert.deepEqual(sectionById("app2-highways-hospitals").sourcePageRange, { start: 149, end: 151 });
-  assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 123)), false);
+  assert.equal(
+    registry.sections.filter((section) => section.sourcePages.some((page) => page.sourcePage === 123)).map((section) => section.id).join(","),
+    "app2-social-responsibility"
+  );
   assert.equal(registry.sections.some((section) => /^app[3-4]-/u.test(section.id)), false, "Appendix III-IV content is not bundled");
 });
 
@@ -1450,8 +1454,13 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   }
 
   assert.match(app2SocialResponsibilityModuleSource, /Минимальный возраст[\s\S]*21 год/u);
+  assert.match(app2SocialResponsibilityModuleSource, /Общественный транспорт поддерживает почти все повседневные действия общества/u);
+  assert.match(app2SocialResponsibilityModuleSource, /устойчивой и безопасной мобильности[\s\S]*право на мобильность|устойчивой и безопасной мобильности[\s\S]*альтернативы частному автомобилю/u);
+  assert.match(app2SocialResponsibilityModuleSource, /Профессиональный водитель[\s\S]*вождение является профессией/u);
+  assert.match(app2SocialResponsibilityModuleSource, /категорий C, D и E/u);
   assert.match(app2SocialResponsibilityModuleSource, /стаж больше 1 года в классе B/u);
   assert.match(app2SocialResponsibilityModuleSource, /старше 65 лет[\s\S]*практический экзамен/u);
+  assert.match(app2SocialResponsibilityModuleSource, /ключевую роль на общественной дороге/u);
   assert.match(app2SafetyElementsModuleSource, /VTV/u);
   assert.match(app2SafetyElementsModuleSource, /каждые 6 месяцев/u);
   assert.match(app2SafetyElementsModuleSource, /тормозной путь может увеличиться на 10%/u);
@@ -3197,8 +3206,8 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 151 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 123]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104, 123]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
@@ -3209,8 +3218,8 @@ test("Manual guide source-fidelity checker passes the section registry with Chap
   assert.equal(result.pendingSections, 0);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(result.implementedSections, 35);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 123]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104, 123]);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections");

@@ -269,7 +269,7 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
     sourceEvidence: "index_pages_11_12",
     requiredPrintedPage: 122,
     children: [
-      { id: "app2-social-responsibility", titleRu: "Социальная ответственность", titleEs: "Responsabilidad social", startPage: 124, sourceEvidence: "index_pages_11_12" },
+      { id: "app2-social-responsibility", titleRu: "Социальная ответственность", titleEs: "Responsabilidad social", startPage: 123, sourceEvidence: "index_pages_11_12" },
       { id: "app2-safety-elements", titleRu: "Элементы безопасности", titleEs: "Elementos de seguridad", startPage: 125, sourceEvidence: "index_pages_11_12" },
       {
         id: "app2-driving-factors",

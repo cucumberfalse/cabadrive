@@ -4,7 +4,7 @@ export const app2SocialResponsibilitySection: ManualGuideSectionContent = {
   id: "app2-social-responsibility-content",
   sectionId: "app2-social-responsibility",
   titleRu: "Социальная ответственность пассажирского транспорта",
-  sourcePages: [124],
+  sourcePages: [123, 124],
   sourceTitleEs: "Responsabilidad social",
   status: "implemented",
   styleTokenFamilies: [
@@ -16,6 +16,7 @@ export const app2SocialResponsibilitySection: ManualGuideSectionContent = {
   visualEvidence: {
     checkerStatus: "pass",
     sourceScreenshots: [
+      "content/validation/manual-guide/app2-social-responsibility/page-123-social-responsibility-source-crop.jpg",
       "content/validation/manual-guide/app2-social-responsibility/page-124-social-responsibility-source-crop.jpg"
     ],
     russianScreenshots: [
@@ -23,7 +24,7 @@ export const app2SocialResponsibilitySection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-social-responsibility/app2-social-responsibility-mobile.png"
     ],
     notes: [
-      "Source page 123 is an Appendix II divider represented by navigation only; page 124 is rendered as selectable Russian DOM text.",
+      "Source pages 123-124 are rendered as selectable Russian DOM text covering the Appendix II introduction, professional-driver requirements, and social-responsibility vehicle checks.",
       "No photograph, traffic sign, road marking, or source infographic is altered."
     ]
   },
