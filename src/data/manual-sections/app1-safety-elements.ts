@@ -3,13 +3,6 @@ import type { ManualGuideSectionContent } from "../manualGuide";
 const assetRoot =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements";
 
-const sourceImageException = {
-  kind: "source-image-original-visible-text",
-  visibleSpanishScope: "source-image-only",
-  sourceAsIs: true,
-  russianExplanationOutsideImage: true
-} as const;
-
 export const app1SafetyElementsSection: ManualGuideSectionContent = {
   id: "app1-safety-elements-content",
   sectionId: "app1-safety-elements",
@@ -54,7 +47,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "Source page 104 is the Appendix I divider and is recorded in registry evidence, not as a standalone runtime article.",
       "Pages 105-119 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
       "Page 119 is shared: the Equipaje paragraphs before the Otros elementos de seguridad obligatorios heading belong to this safety-elements section; the heading and following obligatory equipment content belong to the next section.",
-      "The mirror-orientation visual is an x5 source-as-is crop because it is treated as a protected source image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text."
+      "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text."
     ]
   },
   blocks: [
@@ -179,19 +172,18 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
           id: "mirror-orientation-source-card",
           titleRu: "Исходная схема зеркал",
           sourcePage: 110,
-          sourceRegion: { x: 1180, y: 980, width: 1295, height: 620 },
+          sourceRegion: { x: 1570, y: 1008, width: 495, height: 163 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.jpg`,
           altRu:
             "Исходная схема правильной ориентации зеркал, оставленная без изменений.",
-          visibleSpanish: true,
-          sourceImageException,
+          visibleSpanish: false,
           bodyRu:
-            "Визуал оставлен без изменений: испанские подписи внутри изображения не переводятся. Смысл правила источника: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля."
+            "Визуал оставлен как исходный фотофрагмент без перевода, ретуши или перерисовки. Испанская подпись страницы перенесена в русский текст: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля."
         }
       ],
       visualNotes: [
-        "The mirror orientation image is byte-identical to the x5 source crop.",
-        "No photo/source-image text is translated, cleaned, recolored, or relabeled inside the image."
+        "The mirror orientation image is byte-identical to the x5 source crop of the protected photo collage only.",
+        "Spanish body/caption text around the source photo is excluded from the image and translated in surrounding selectable Russian page text."
       ]
     },
     {

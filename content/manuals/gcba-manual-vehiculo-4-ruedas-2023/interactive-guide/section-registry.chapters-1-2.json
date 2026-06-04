@@ -7141,26 +7141,26 @@
           {
             "sourcePage": 110,
             "sourceRegion": {
-              "x": 1180,
-              "y": 980,
-              "width": 1295,
-              "height": 620
+              "x": 1570,
+              "y": 1008,
+              "width": 495,
+              "height": 163
             },
             "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
             "cropDimensions": {
-              "width": 1295,
-              "height": 620
+              "width": 495,
+              "height": 163
             },
-            "cropSha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149",
-            "cleanupScope": "none-source-as-is",
+            "cropSha256": "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48",
+            "cleanupScope": "cropped-source-as-is-photo-only-no-spanish-body-text",
             "extractionScaleEvidence": {
               "target": "x5-zoom-source-export",
-              "method": "Focused crop exported from the x5 source page evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup.",
+              "method": "Focused crop exported from the x5 mirror-orientation source evidence by cropping to only the protected mirror photo collage; surrounding Spanish caption/body text is excluded and translated in selectable Russian page text. The crop is retained without resizing, cleanup, retouching, relabeling, or redraw.",
               "outputDimensions": {
-                "width": 1295,
-                "height": 620
+                "width": 495,
+                "height": 163
               },
-              "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149"
+              "sha256": "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
             }
           },
           {
@@ -7251,29 +7251,23 @@
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
             "assetKind": "high-resolution-original-source-photo-mirror-orientation",
             "assetCategory": "source-as-is-photo",
-            "width": 1295,
-            "height": 620,
-            "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149",
-            "containsText": true,
-            "visibleSpanish": true,
-            "sourceImageException": {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
-              "sourceAsIs": true,
-              "russianExplanationOutsideImage": true
-            },
+            "width": 495,
+            "height": 163,
+            "sha256": "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48",
+            "containsText": false,
+            "visibleSpanish": false,
             "cleanupScope": "none-source-as-is",
             "extractionScaleEvidence": {
               "target": "x5-zoom-source-export",
-              "method": "Runtime mirror visual is byte-identical to the x5 focused source crop; copied without resizing or cleanup.",
+              "method": "Runtime mirror visual is byte-identical to the x5 focused crop of only the protected mirror photo collage; copied without resizing, cleanup, retouching, relabeling, or redraw.",
               "outputDimensions": {
-                "width": 1295,
-                "height": 620
+                "width": 495,
+                "height": 163
               },
-              "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149"
+              "sha256": "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 495,
               "noUpscale": true
             },
             "sourceIntegrity": {
@@ -7281,7 +7275,8 @@
               "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
               "noTranslationOrRelabeling": true,
               "noRedrawRecolorCleanupRetouchMaskInpaint": true,
-              "russianExplanationOutsideImage": true
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishCaptionAndBodyTextExcluded": true
             }
           },
           {
@@ -7462,17 +7457,8 @@
           }
         ],
         "visibleSpanishStatus": {
-          "status": "source_image_exceptions_only",
-          "nonSignVisibleSpanishStatus": "source-image-only",
-          "exceptions": [
-            {
-              "kind": "source-image-original-visible-text",
-              "visibleSpanishScope": "source-image-only",
-              "sourceAsIs": true,
-              "russianExplanationOutsideImage": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg"
-            }
-          ]
+          "status": "pass",
+          "evidence": "Appendix I runtime images no longer expose Spanish body text in the mirror visual; the mirror asset is cropped to the protected photo collage only, and the official 10% mirror rule plus horn guidance are Russian selectable page text outside the image."
         },
         "selectableTextStatus": {
           "status": "pass",

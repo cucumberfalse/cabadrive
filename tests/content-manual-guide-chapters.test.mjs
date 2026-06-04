@@ -1421,9 +1421,9 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
     sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
     assetKind: "high-resolution-original-source-photo-mirror-orientation",
-    width: 1295,
-    height: 620,
-    sha256: "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149"
+    width: 495,
+    height: 163,
+    sha256: "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
   };
   const transferred = [
     {
@@ -1449,17 +1449,20 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   ];
 
   assert.match(app1SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.jpg/u);
-  assert.match(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
+  assert.doesNotMatch(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
+  assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /sri-types-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /russianOverlayLabels[\s\S]*Высота подголовника[\s\S]*Виды SRI/u);
 
-  const exceptionPaths = safety.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+  const exceptionPaths = safety.implementationEvidence.visibleSpanishStatus.exceptions?.map((entry) => entry.assetPath) ?? [];
   const mirrorAsset = localAssetByPath(safety, sourceAsIsMirror.assetPath);
-  assert.equal(exceptionPaths.includes(sourceAsIsMirror.assetPath), true);
+  assert.equal(exceptionPaths.includes(sourceAsIsMirror.assetPath), false);
   assert.equal(mirrorAsset.assetCategory, "source-as-is-photo");
   assert.equal(mirrorAsset.assetKind, sourceAsIsMirror.assetKind);
-  assert.equal(mirrorAsset.visibleSpanish, true);
+  assert.equal(mirrorAsset.containsText, false);
+  assert.equal(mirrorAsset.visibleSpanish, false);
+  assert.equal(mirrorAsset.sourceImageException, undefined);
   assert.equal(mirrorAsset.cleanupScope, "none-source-as-is");
   assert.equal(mirrorAsset.width, sourceAsIsMirror.width);
   assert.equal(mirrorAsset.height, sourceAsIsMirror.height);
@@ -1468,6 +1471,7 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.equal(mirrorAsset.sourceIntegrity.sourceAssetPath, sourceAsIsMirror.sourceAssetPath);
   assert.equal(mirrorAsset.sourceIntegrity.noTranslationOrRelabeling, true);
   assert.equal(mirrorAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(mirrorAsset.sourceIntegrity.surroundingSpanishCaptionAndBodyTextExcluded, true);
   assert.equal(sha256File(mirrorAsset.assetPath), sourceAsIsMirror.sha256);
   assert.equal(sha256File(sourceAsIsMirror.sourceAssetPath), sourceAsIsMirror.sha256);
 
