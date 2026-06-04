@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "chapters-1-5-section-registry",
+  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendix-1",
   "sourcePageRange": {
     "start": 21,
-    "end": 103
+    "end": 122
   },
   "skippedSourcePages": [
     {
@@ -49,6 +49,13 @@
       "parentChapterId": "chapter-5-driving-behavior",
       "sourceTitleEs": "CAPÍTULO 5: ACTITUD AL CONDUCIR",
       "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 104,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-1-private-cars",
+      "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
+      "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -513,6 +520,22 @@
         "ch5-equal-society",
         "ch5-gender-violence-prevention",
         "ch5-anticipatory-efficient-driving"
+      ]
+    },
+    {
+      "id": "appendix-1-private-cars",
+      "labelRu": "Приложение I. Частные автомобили",
+      "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
+      "sourcePageRange": {
+        "start": 104,
+        "end": 122
+      },
+      "requiredPrintedPage": 103,
+      "status": "active",
+      "sectionIds": [
+        "app1-safety-elements",
+        "app1-other-required-safety-elements",
+        "app1-recommended-safety-elements"
       ]
     }
   ],
@@ -6591,6 +6614,1058 @@
       "sectionContentModulePath": "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts",
       "sourceRegionMetadataStatus": "recorded",
       "visualEvidenceStatus": "recorded"
+    },
+    {
+      "id": "app1-safety-elements",
+      "labelRu": "Элементы безопасности",
+      "sourceTitleEs": "Elementos de seguridad",
+      "routeHash": "#manual-section-app1-safety-elements",
+      "sourcePageRange": {
+        "start": 105,
+        "end": 118
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 105,
+          "manualManifestPointer": "/pages/104",
+          "layoutManifestPointer": "/pages/104",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-105.jpg"
+        },
+        {
+          "sourcePage": 106,
+          "manualManifestPointer": "/pages/105",
+          "layoutManifestPointer": "/pages/105",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-106.jpg"
+        },
+        {
+          "sourcePage": 107,
+          "manualManifestPointer": "/pages/106",
+          "layoutManifestPointer": "/pages/106",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-107.jpg"
+        },
+        {
+          "sourcePage": 108,
+          "manualManifestPointer": "/pages/107",
+          "layoutManifestPointer": "/pages/107",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-108.jpg"
+        },
+        {
+          "sourcePage": 109,
+          "manualManifestPointer": "/pages/108",
+          "layoutManifestPointer": "/pages/108",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-109.jpg"
+        },
+        {
+          "sourcePage": 110,
+          "manualManifestPointer": "/pages/109",
+          "layoutManifestPointer": "/pages/109",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-110.jpg"
+        },
+        {
+          "sourcePage": 111,
+          "manualManifestPointer": "/pages/110",
+          "layoutManifestPointer": "/pages/110",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-111.jpg"
+        },
+        {
+          "sourcePage": 112,
+          "manualManifestPointer": "/pages/111",
+          "layoutManifestPointer": "/pages/111",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-112.jpg"
+        },
+        {
+          "sourcePage": 113,
+          "manualManifestPointer": "/pages/112",
+          "layoutManifestPointer": "/pages/112",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-113.jpg"
+        },
+        {
+          "sourcePage": 114,
+          "manualManifestPointer": "/pages/113",
+          "layoutManifestPointer": "/pages/113",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-114.jpg"
+        },
+        {
+          "sourcePage": 115,
+          "manualManifestPointer": "/pages/114",
+          "layoutManifestPointer": "/pages/114",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-115.jpg"
+        },
+        {
+          "sourcePage": 116,
+          "manualManifestPointer": "/pages/115",
+          "layoutManifestPointer": "/pages/115",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-116.jpg"
+        },
+        {
+          "sourcePage": 117,
+          "manualManifestPointer": "/pages/116",
+          "layoutManifestPointer": "/pages/116",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-117.jpg"
+        },
+        {
+          "sourcePage": 118,
+          "manualManifestPointer": "/pages/117",
+          "layoutManifestPointer": "/pages/117",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-118.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-1-private-cars",
+      "sectionContentModulePath": "src/data/manual-sections/app1-safety-elements.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app1-safety-elements",
+        "sourcePages": [
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 105,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9beea42ada911ab6257c8cc5d036520e1ab3f412cbf83a018b7482c3bea8a282",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9beea42ada911ab6257c8cc5d036520e1ab3f412cbf83a018b7482c3bea8a282"
+            }
+          },
+          {
+            "sourcePage": 106,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "33859fb54104307c3e56cccc34d06933ea7a9a8ff80b49a848e42d02237ff39f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "33859fb54104307c3e56cccc34d06933ea7a9a8ff80b49a848e42d02237ff39f"
+            }
+          },
+          {
+            "sourcePage": 107,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1d774318483f12b2276b058d58391d28362995d8fa071908d6e39a243d1ffb39",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1d774318483f12b2276b058d58391d28362995d8fa071908d6e39a243d1ffb39"
+            }
+          },
+          {
+            "sourcePage": 108,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b21c9905856aac7962f5ed9c207c7796b3476b1173e1b16226013cc339519e58",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b21c9905856aac7962f5ed9c207c7796b3476b1173e1b16226013cc339519e58"
+            }
+          },
+          {
+            "sourcePage": 109,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "783a2c49482448193d0e0f48960ea7669eb29249b3836af0c3cab43f35277b94",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "783a2c49482448193d0e0f48960ea7669eb29249b3836af0c3cab43f35277b94"
+            }
+          },
+          {
+            "sourcePage": 110,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "c0ea66a74c19e2ebad9f022c5294f52f08136821d8d89c7c3a6f2ab9993115e0",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "c0ea66a74c19e2ebad9f022c5294f52f08136821d8d89c7c3a6f2ab9993115e0"
+            }
+          },
+          {
+            "sourcePage": 111,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-111-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "8d54d54d3224dcd544626d9431dc0ee5ad8539aeb0d15d85ea2e82c63eab1a7a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8d54d54d3224dcd544626d9431dc0ee5ad8539aeb0d15d85ea2e82c63eab1a7a"
+            }
+          },
+          {
+            "sourcePage": 112,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-112-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "916c85aafbe3f6fae85e70e0c9de0ee8831e24f7d17a580d2149c0c0e1c255a0",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "916c85aafbe3f6fae85e70e0c9de0ee8831e24f7d17a580d2149c0c0e1c255a0"
+            }
+          },
+          {
+            "sourcePage": 113,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-113-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7d254f2afbcd9e4ac7968eaea09d4496c3d923b4ecd92593d3736aa68d5a5059",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7d254f2afbcd9e4ac7968eaea09d4496c3d923b4ecd92593d3736aa68d5a5059"
+            }
+          },
+          {
+            "sourcePage": 114,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-114-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e1dbd251932474c64bd87170fd6d7e534b4c8fb0e40861184af2d501d4f81131",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e1dbd251932474c64bd87170fd6d7e534b4c8fb0e40861184af2d501d4f81131"
+            }
+          },
+          {
+            "sourcePage": 115,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-115-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5358689d483b04e1c83222c0589d7083c5679b2b6e3d34acbd0440cdec43afe1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5358689d483b04e1c83222c0589d7083c5679b2b6e3d34acbd0440cdec43afe1"
+            }
+          },
+          {
+            "sourcePage": 116,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-116-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "92b6b40a12abf86a638642e41bfcd430758077405b4ac205547822b5ccd4c7d6",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "92b6b40a12abf86a638642e41bfcd430758077405b4ac205547822b5ccd4c7d6"
+            }
+          },
+          {
+            "sourcePage": 117,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-117-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "72adb82ebb5a7be0ef0da756b586b981d28e48985915c9c36e6ef7257baba327",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "72adb82ebb5a7be0ef0da756b586b981d28e48985915c9c36e6ef7257baba327"
+            }
+          },
+          {
+            "sourcePage": 118,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-118-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a54c0a2b0471e7a4d8dd270c727839c1627d9d6633fa058dc716f56cb7aab1f7",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a54c0a2b0471e7a4d8dd270c727839c1627d9d6633fa058dc716f56cb7aab1f7"
+            }
+          },
+          {
+            "sourcePage": 110,
+            "sourceRegion": {
+              "x": 1180,
+              "y": 980,
+              "width": 1295,
+              "height": 620
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1295,
+              "height": 620
+            },
+            "cropSha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the x5 source page evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 1295,
+                "height": 620
+              },
+              "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149"
+            }
+          },
+          {
+            "sourcePage": 113,
+            "sourceRegion": {
+              "x": 980,
+              "y": 1010,
+              "width": 1190,
+              "height": 185
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1190,
+              "height": 185
+            },
+            "cropSha256": "837206121af108c0ca93ae8d4730b1c7a15270e51eab162eafde8bf19ceb6aaf",
+            "cleanupScope": "source-crop-for-glyph-level-transfer",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the x5 source page evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 1190,
+                "height": 185
+              },
+              "sha256": "837206121af108c0ca93ae8d4730b1c7a15270e51eab162eafde8bf19ceb6aaf"
+            }
+          },
+          {
+            "sourcePage": 115,
+            "sourceRegion": {
+              "x": 900,
+              "y": 1320,
+              "width": 1220,
+              "height": 260
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1220,
+              "height": 260
+            },
+            "cropSha256": "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6",
+            "cleanupScope": "source-crop-for-glyph-level-transfer",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the x5 source page evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 1220,
+                "height": 260
+              },
+              "sha256": "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app1-safety-elements.ts",
+            "assetKind": "native-dom-text-only-private-car-safety-elements",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-mirror-orientation",
+            "assetCategory": "source-as-is-photo",
+            "width": 1295,
+            "height": 620,
+            "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149",
+            "containsText": true,
+            "visibleSpanish": true,
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            },
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime mirror visual is byte-identical to the x5 focused source crop; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 1295,
+                "height": 620
+              },
+              "sha256": "15e26b040ac665111bbb710bc4cbda7130160a42776d5988dd59ce6f97755149"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-headrest-position",
+            "assetCategory": "source-transferred-infographic",
+            "width": 1190,
+            "height": 185,
+            "sha256": "e1d0495817ba757b9d4f5acd1862ddb911170ee0094859f19548910e61edf066",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime PNG generated from the x5 source crop by detecting Spanish glyph and antialias pixels inside label regions, restoring each affected pixel from nearby source background, and preserving pictograms, numerals, guide lines, and geometry.",
+              "outputDimensions": {
+                "width": 1190,
+                "height": 185
+              },
+              "sha256": "e1d0495817ba757b9d4f5acd1862ddb911170ee0094859f19548910e61edf066"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
+              "sourceCropSha256": "837206121af108c0ca93ae8d4730b1c7a15270e51eab162eafde8bf19ceb6aaf",
+              "sourceCropDimensions": {
+                "width": 1190,
+                "height": 185
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "headrest-height-title",
+                  "textRu": "Высота подголовника",
+                  "xPct": 29.5,
+                  "yPct": 2,
+                  "widthPct": 16,
+                  "heightPct": 13
+                },
+                {
+                  "id": "headrest-distance-title",
+                  "textRu": "Дистанция подголовника",
+                  "xPct": 52,
+                  "yPct": 2,
+                  "widthPct": 20,
+                  "heightPct": 13
+                },
+                {
+                  "id": "headrest-good",
+                  "textRu": "хорошо",
+                  "xPct": 28.8,
+                  "yPct": 37,
+                  "widthPct": 7.5,
+                  "heightPct": 8
+                },
+                {
+                  "id": "headrest-acceptable",
+                  "textRu": "допустимо",
+                  "xPct": 28.8,
+                  "yPct": 49,
+                  "widthPct": 8.5,
+                  "heightPct": 8
+                },
+                {
+                  "id": "headrest-medium",
+                  "textRu": "средне",
+                  "xPct": 28.8,
+                  "yPct": 61,
+                  "widthPct": 7.5,
+                  "heightPct": 8
+                },
+                {
+                  "id": "headrest-bad",
+                  "textRu": "плохо",
+                  "xPct": 28.8,
+                  "yPct": 73,
+                  "widthPct": 7.5,
+                  "heightPct": 8
+                }
+              ],
+              "overlayTextSelectability": "selectable-dom-text",
+              "cleanupMethod": "glyph-letter-level-background-restoration"
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-sri-types",
+            "assetCategory": "source-transferred-infographic",
+            "width": 1220,
+            "height": 260,
+            "sha256": "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime PNG generated from the x5 source crop by detecting Spanish glyph and antialias pixels inside label regions, restoring each affected pixel from nearby source background, and preserving pictograms, numerals, guide lines, and geometry.",
+              "outputDimensions": {
+                "width": 1220,
+                "height": 260
+              },
+              "sha256": "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
+              "sourceCropSha256": "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6",
+              "sourceCropDimensions": {
+                "width": 1220,
+                "height": 260
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "sri-title",
+                  "textRu": "Виды SRI",
+                  "xPct": 28,
+                  "yPct": 9,
+                  "widthPct": 13,
+                  "heightPct": 10
+                },
+                {
+                  "id": "sri-newborns",
+                  "textRu": "Новорожденные и малыши до 1 года / 10 kg",
+                  "xPct": 29.2,
+                  "yPct": 64,
+                  "widthPct": 8.5,
+                  "heightPct": 24
+                },
+                {
+                  "id": "sri-group-0-plus",
+                  "textRu": "1 год, 10-18 kg",
+                  "xPct": 37.4,
+                  "yPct": 64,
+                  "widthPct": 8.5,
+                  "heightPct": 24
+                },
+                {
+                  "id": "sri-group-1",
+                  "textRu": "9 месяцев - 4 года, 9-18 kg",
+                  "xPct": 45.4,
+                  "yPct": 64,
+                  "widthPct": 8.5,
+                  "heightPct": 24
+                },
+                {
+                  "id": "sri-group-2",
+                  "textRu": "4-8 лет, 15-25 kg",
+                  "xPct": 53.5,
+                  "yPct": 64,
+                  "widthPct": 8.5,
+                  "heightPct": 24
+                },
+                {
+                  "id": "sri-group-3",
+                  "textRu": "8-12 лет, 22-36 kg",
+                  "xPct": 61.6,
+                  "yPct": 64,
+                  "widthPct": 8.5,
+                  "heightPct": 24
+                }
+              ],
+              "overlayTextSelectability": "selectable-dom-text",
+              "cleanupMethod": "glyph-letter-level-background-restoration"
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg"
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "Appendix I learner prose and transferred-visual Russian overlays are rendered as selectable DOM text."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused screenshots verify Appendix I safety content and transferred overlay labels remain inside their source image frames."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source-page route, side-by-side translation, remote asset, fake pending article, or full-page raster runtime base is introduced."
+        },
+        "visualReviewNotes": [
+          "Page 104 is an appendix divider and is represented by the Appendix I navigation parent only.",
+          "Mirror orientation remains a protected source-as-is crop with Russian explanation outside the image.",
+          "Headrest and SRI visuals are transferred from focused x5 source crops; cleanup is limited to detected Spanish glyph and antialias pixels inside label regions while preserving silhouettes, guide lines, pictograms, numerals, and geometry.",
+          "No photograph, traffic sign, or road marking is altered."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app1-other-required-safety-elements",
+      "labelRu": "Другие обязательные элементы безопасности",
+      "sourceTitleEs": "Otros elementos de seguridad obligatorios",
+      "routeHash": "#manual-section-app1-other-required-safety-elements",
+      "sourcePageRange": {
+        "start": 119,
+        "end": 120
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 119,
+          "manualManifestPointer": "/pages/118",
+          "layoutManifestPointer": "/pages/118",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-119.jpg"
+        },
+        {
+          "sourcePage": 120,
+          "manualManifestPointer": "/pages/119",
+          "layoutManifestPointer": "/pages/119",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-120.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-1-private-cars",
+      "sectionContentModulePath": "src/data/manual-sections/app1-other-required-safety-elements.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app1-other-required-safety-elements",
+        "sourcePages": [
+          119,
+          120
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 119,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "bc3cf04d3bc4fb4b6afeb85b8c75b9d3977868c54e960aad053669617646726a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "bc3cf04d3bc4fb4b6afeb85b8c75b9d3977868c54e960aad053669617646726a"
+            }
+          },
+          {
+            "sourcePage": 120,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "05e7423ccc442097ecb0a7b7c3b440c2b70077a51a2782066ef3b8b4d5b76681",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "05e7423ccc442097ecb0a7b7c3b440c2b70077a51a2782066ef3b8b4d5b76681"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app1-other-required-safety-elements.ts",
+            "assetKind": "native-dom-text-only-app1-other-required-safety-elements",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app1-other-required-safety-elements is rendered as selectable Russian DOM text."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix I route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No source image alteration, raw page route, remote asset, or fake placeholder content is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 119-120 are implemented as native Russian text, including luggage, hazard triangles, extinguisher, and reflective vest details.",
+          "No photograph, traffic sign, or road marking is altered."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app1-recommended-safety-elements",
+      "labelRu": "Рекомендуемые элементы безопасности",
+      "sourceTitleEs": "Elementos de seguridad recomendados",
+      "routeHash": "#manual-section-app1-recommended-safety-elements",
+      "sourcePageRange": {
+        "start": 121,
+        "end": 122
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 121,
+          "manualManifestPointer": "/pages/120",
+          "layoutManifestPointer": "/pages/120",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-121.jpg"
+        },
+        {
+          "sourcePage": 122,
+          "manualManifestPointer": "/pages/121",
+          "layoutManifestPointer": "/pages/121",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-122.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-1-private-cars",
+      "sectionContentModulePath": "src/data/manual-sections/app1-recommended-safety-elements.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app1-recommended-safety-elements",
+        "sourcePages": [
+          121,
+          122
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 121,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-recommended-safety-elements/page-121-recommended-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "d09c3fc7a05ba5267af403ced75bc02822da79f04dae0dfe4e11fbc38fe41f09",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "d09c3fc7a05ba5267af403ced75bc02822da79f04dae0dfe4e11fbc38fe41f09"
+            }
+          },
+          {
+            "sourcePage": 122,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-recommended-safety-elements/page-122-recommended-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7f245e0ec36608837e9bf279cd45636f8bed8b54f26ed161b288996eaf66c7ee",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7f245e0ec36608837e9bf279cd45636f8bed8b54f26ed161b288996eaf66c7ee"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app1-recommended-safety-elements.ts",
+            "assetKind": "native-dom-text-only-app1-recommended-safety-elements",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app1-recommended-safety-elements is rendered as selectable Russian DOM text."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app1-recommended-safety-elements/app1-recommended-safety-elements-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app1-recommended-safety-elements/app1-recommended-safety-elements-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix I route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No source image alteration, raw page route, remote asset, or fake placeholder content is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 121-122 are implemented as native Russian text, including first-aid kit, tow bar, and closing vehicle-condition safety details.",
+          "No photograph, traffic sign, or road marking is altered."
+        ],
+        "checkerResult": "pass"
+      }
     }
   ]
 }

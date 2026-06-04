@@ -1,4 +1,7 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { app1OtherRequiredSafetyElementsSection } from "./manual-sections/app1-other-required-safety-elements";
+import { app1RecommendedSafetyElementsSection } from "./manual-sections/app1-recommended-safety-elements";
+import { app1SafetyElementsSection } from "./manual-sections/app1-safety-elements";
 import { ch5AnticipatoryEfficientDrivingSection } from "./manual-sections/ch5-anticipatory-efficient-driving";
 import { ch5AttitudeTypesSection } from "./manual-sections/ch5-attitude-types";
 import { ch5EqualSocietySection } from "./manual-sections/ch5-equal-society";
@@ -732,7 +735,10 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch5AttitudeTypesSection,
   ch5EqualSocietySection,
   ch5GenderViolencePreventionSection,
-  ch5AnticipatoryEfficientDrivingSection
+  ch5AnticipatoryEfficientDrivingSection,
+  app1SafetyElementsSection,
+  app1OtherRequiredSafetyElementsSection,
+  app1RecommendedSafetyElementsSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -808,6 +814,7 @@ export const manualGuideDocumentStyleTokens = {
     "Normal prose uses shared Introduction article typography and selectable DOM text.",
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
     "Divider-only source PDF pages 21, 43, 57, 89, and 98 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
+    "Appendix I divider-only source PDF page 104 is represented by the Appendix I navigation parent, not a standalone learner page/route/module.",
     "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
     "Shared source PDF page 94 is split between sleep/fatigue and stress; shared source PDF page 95 is split between stress recommendations and distractions.",
     "Shared source PDF pages 99, 100, and 101 preserve Chapter 5 source-topic boundaries across attitude/equality, equality/gender-violence support, and gender-violence/preventive-efficient-driving sections.",
@@ -932,20 +939,6 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
     }))
   },
   ...chapter12NavigationEntries,
-  {
-    id: "annex-1",
-    kind: "annex",
-    labelRu: "Приложение I. Легковые автомобили",
-    sourceTitleEs: "ANEXO I AUTOMÓVILES PARTICULARES",
-    sourcePage: 104,
-    requiredPrintedPage: 103,
-    status: "pending",
-    children: [
-      pendingTopic("annex-1-safety", "Элементы безопасности", "Elementos de seguridad"),
-      pendingTopic("annex-1-required", "Другие обязательные элементы безопасности", "Otros elementos de seguridad obligatorios"),
-      pendingTopic("annex-1-recommended", "Рекомендуемые элементы безопасности", "Elementos de seguridad recomendables")
-    ]
-  },
   {
     id: "annex-2",
     kind: "annex",

@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "section-registry-with-complete-chapters-1-through-5",
+  "mode": "section-registry-with-complete-chapters-1-through-5-and-appendix-1",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 103
+    "end": 122
   },
   "skippedSourcePages": [
     {
@@ -31,6 +31,10 @@
     },
     {
       "sourcePage": 98,
+      "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 104,
       "reason": "chapter-divider-only"
     }
   ],
@@ -61,7 +65,10 @@
     "ch5-attitude-types",
     "ch5-equal-society",
     "ch5-gender-violence-prevention",
-    "ch5-anticipatory-efficient-driving"
+    "ch5-anticipatory-efficient-driving",
+    "app1-safety-elements",
+    "app1-other-required-safety-elements",
+    "app1-recommended-safety-elements"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -171,6 +178,18 @@
     "ch5-anticipatory-efficient-driving": {
       "start": 101,
       "end": 103
+    },
+    "app1-safety-elements": {
+      "start": 105,
+      "end": 118
+    },
+    "app1-other-required-safety-elements": {
+      "start": 119,
+      "end": 120
+    },
+    "app1-recommended-safety-elements": {
+      "start": 121,
+      "end": 122
     }
   },
   "sharedSourcePageOwnership": [
@@ -849,21 +868,23 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 27,
+    "implementedSections": 30,
     "skippedSourcePages": [
       21,
       43,
       56,
       57,
       89,
-      98
+      98,
+      104
     ],
     "skippedDividerPages": [
       21,
       43,
       57,
       89,
-      98
+      98,
+      104
     ],
     "omittedBookOnlyPages": [
       56
@@ -877,7 +898,7 @@
       100,
       101
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_sections",
-    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_5_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendix_1_sections",
+    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendix_1_sections"
   }
 }
