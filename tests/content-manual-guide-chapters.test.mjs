@@ -1340,6 +1340,9 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /1\.6 mm/u);
   assert.match(app1SafetyElementsModuleSource, /аквапланирования/u);
   assert.match(app1SafetyElementsModuleSource, /не использовать шины старше 5 лет/u);
+  assert.match(app1SafetyElementsModuleSource, /Если во время движения шина лопнула/u);
+  assert.match(app1SafetyElementsModuleSource, /не тормозить сразу[\s\S]*постепенно снижать скорость/u);
+  assert.match(app1SafetyElementsModuleSource, /Pinchaduras[\s\S]*no frenar inmediatamente[\s\S]*desacelerar lentamente/u);
   assert.match(app1SafetyElementsModuleSource, /не больше 10% задней части/u);
   assert.match(app1SafetyElementsModuleSource, /сигнал в 90 dB[\s\S]*65 dB/u);
   assert.match(app1SafetyElementsModuleSource, /врачи или фельдшеры[\s\S]*пожарные/u);

@@ -144,6 +144,14 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "tire-blowout",
+      kind: "callout",
+      sourceTextEs:
+        "Pinchaduras. Si esto ocurre mientras se está manejando: no frenar inmediatamente; es aconsejable desacelerar lentamente y sujetar firmemente el volante.",
+      textRu:
+        "Если во время движения шина лопнула или резко потеряла давление, источник предупреждает: не тормозить сразу. Нужно крепко держать руль и постепенно снижать скорость, чтобы вернуть контроль над автомобилем."
+    },
+    {
       id: "mirrors-and-blind-spots",
       kind: "list",
       titleRu: "Зеркала и слепые зоны",
