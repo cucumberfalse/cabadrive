@@ -139,16 +139,14 @@ export const app3SafeDrivingSection: ManualGuideSectionContent = {
       kind: "list",
       titleRu: "Правила Paseo del Bajo",
       sourceTextEs:
-        "Prohibida circulacion de vehiculos no permitidos; prohibido estacionamiento y detencion 24 horas; aviso a AUSA por inconvenientes, emergencias, sustancias peligrosas, cargas excepcionales e indivisibles; permisos para area delimitada y contingencias.",
+        "Prohibida circulacion de vehiculos no permitidos; prohibido estacionamiento y detencion 24 horas; aviso a AUSA por inconvenientes, emergencias, sustancias peligrosas, cargas excepcionales e indivisibles.",
       itemsRu: [
         "Велосипеды, мотоциклы, автомобили, такси, remises, городские автобусные линии и любой неразрешенный транспорт там запрещены.",
         "Стоянка и остановка запрещены 24 часа на обеих проезжих частях.",
         "Если транспорт не может продолжить нормальное движение, нужно уведомить AUSA, которая организует буксировку и удаление.",
         "Экстренные транспортные средства и автомобили сопровождения тяжелого транспорта могут двигаться исключительным образом при обязательном предварительном уведомлении Autopistas Urbanas S.A.",
         "Транспорт с опасными веществами должен предварительно уведомить Autopistas Urbanas S.A.",
-        "Исключительные и неделимые грузы со специальными габаритами должны заранее оформить разрешение у компетентного органа.",
-        "Для въезда тяжелого транспорта 12 t или больше в обозначенную центральную зону требуется предварительное разрешение.",
-        "Если дорожная ситуация полностью блокирует Paseo del Bajo, источник допускает исключительные альтернативные маршруты север-юг и юг-север для тяжелых грузовиков и междугородних автобусов."
+        "Исключительные и неделимые грузы со специальными габаритами должны заранее оформить разрешение у компетентного органа."
       ]
     }
   ]

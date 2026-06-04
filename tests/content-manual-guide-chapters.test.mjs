@@ -1571,6 +1571,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SafeDrivingModuleSource, /1,5 m/u);
   assert.match(app3SafeDrivingModuleSource, /более 12 t/u);
   assert.match(app3SafeDrivingModuleSource, /205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
+  assert.match(app3SafeDrivingModuleSource, /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u);
   assert.match(app3SafeDrivingModuleSource, /Paseo del Bajo[\s\S]*60 km\/h/u);
   assert.match(app3SafeDrivingModuleSource, /Велосипеды, мотоциклы, автомобили, такси/u);
   assert.match(app3SafetyElementsModuleSource, /1,6 mm/u);
@@ -1584,6 +1585,33 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SafetyElementsModuleSource, /больше 1 kg/u);
   assert.match(app3HighwaysModuleSource, /Профессионализация перевозки грузов и товаров/u);
   assert.doesNotMatch(app3HighwaysModuleSource, /ANEXO IV|SEÑALES VIALES|appendix-4/u);
+});
+
+test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
+  const safeDriving = sectionById("app3-safe-driving");
+  const safetyElements = sectionById("app3-safety-elements");
+
+  assert.deepEqual(safeDriving.sourcePageRange, { start: 162, end: 168 });
+  assert.deepEqual(safeDriving.sourcePages.map((page) => page.sourcePage), [162, 163, 164, 165, 166, 167, 168]);
+  assert.deepEqual(safetyElements.sourcePageRange, { start: 169, end: 181 });
+  assert.equal(safetyElements.sourcePages.some((page) => page.sourcePage === 169), true);
+
+  assert.match(app3SafeDrivingModuleSource, /Red de transito pesado[\s\S]*205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
+  assert.match(app3SafeDrivingModuleSource, /грузовиков и прицепов[\s\S]*индивидуальной массой 12 t[\s\S]*междугородних пассажирских автобусов[\s\S]*19 мест/u);
+  assert.match(app3SafeDrivingModuleSource, /Paseo del Bajo[\s\S]*60 km\/h/u);
+  assert.match(app3SafeDrivingModuleSource, /Велосипеды, мотоциклы, автомобили, такси/u);
+  assert.match(app3SafeDrivingModuleSource, /Экстренные транспортные средства[\s\S]*Autopistas Urbanas S\.A\./u);
+  assert.match(app3SafeDrivingModuleSource, /Исключительные и неделимые грузы[\s\S]*разрешение у компетентного органа/u);
+
+  assert.match(app3SafetyElementsModuleSource, /paseo-del-bajo-page-169-carryover/u);
+  assert.match(app3SafetyElementsModuleSource, /Av\. Paseo Colon[\s\S]*Av\. San Juan/u);
+  assert.match(app3SafetyElementsModuleSource, /дорожная непредвиденная ситуация[\s\S]*полностью исключает движение через Paseo del Bajo/u);
+  assert.match(app3SafetyElementsModuleSource, /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u);
+
+  assert.doesNotMatch(
+    app3SafeDrivingModuleSource,
+    /Av\. Paseo Colon|Av\. San Juan|обозначенную центральную зону|дорожная ситуация полностью блокирует Paseo del Bajo|исключительные альтернативные маршруты|permisos para area delimitada|contingencias/u
+  );
 });
 
 test("Appendix II sections retain passenger-transport legal, safety, health, and route details", () => {
