@@ -656,6 +656,12 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II registry contains sourc
     } else {
       assert.equal(sourcePages.includes(123), false, `${section.id} does not include Appendix II page 123 content`);
     }
+    if (Object.hasOwn(section, "topicNavigationStartPage")) {
+      assert.ok(
+        section.topicNavigationStartPage >= section.sourcePageRange.start && section.topicNavigationStartPage <= section.sourcePageRange.end,
+        `${section.id} topic navigation start override stays inside its source range`
+      );
+    }
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -1404,8 +1410,16 @@ test("Appendix II divider and passenger-transport section boundaries are explici
 
   assert.equal(registry.skippedSourcePages.some((entry) => entry.sourcePage === 123), false);
 
-  assert.deepEqual(sectionById("app2-social-responsibility").sourcePageRange, { start: 123, end: 124 });
-  assert.deepEqual(sectionById("app2-social-responsibility").sourcePages.map((entry) => entry.sourcePage), [123, 124]);
+  const socialResponsibility = sectionById("app2-social-responsibility");
+  assert.deepEqual(socialResponsibility.sourcePageRange, { start: 123, end: 124 });
+  assert.deepEqual(socialResponsibility.sourcePages.map((entry) => entry.sourcePage), [123, 124]);
+  assert.equal(socialResponsibility.topicNavigationStartPage, 124);
+  assert.equal(
+    socialResponsibility.topicNavigationStartPage ?? socialResponsibility.sourcePageRange.start,
+    124,
+    "derived manualGuideNavigation child sourcePage/display start is page 124"
+  );
+  assert.match(manualGuideSource, /sourcePage:\s*section\.topicNavigationStartPage\s*\?\?\s*section\.sourcePageRange\.start/u);
   assert.deepEqual(sectionById("app2-safety-elements").sourcePageRange, { start: 125, end: 136 });
   assert.deepEqual(sectionById("app2-driving-factors").sourcePageRange, { start: 137, end: 143 });
   assert.deepEqual(sectionById("app2-safe-driving").sourcePageRange, { start: 144, end: 148 });

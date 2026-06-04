@@ -79,6 +79,7 @@ export type ManualGuideSectionEntry = {
     start: number;
     end: number;
   };
+  topicNavigationStartPage?: number;
   sourcePages: ManualGuideSourcePage[];
   status: ManualGuideSectionStatus;
   parentChapterId: string;
@@ -878,7 +879,7 @@ function childForSection(section: ManualGuideSectionEntry): ManualGuideNavigatio
     kind: "topic",
     labelRu: section.labelRu,
     sourceTitleEs: section.sourceTitleEs,
-    sourcePage: section.sourcePageRange.start,
+    sourcePage: section.topicNavigationStartPage ?? section.sourcePageRange.start,
     endPage: section.sourcePageRange.end,
     status: section.status === "implemented" ? "active" : "pending",
     routeHash: section.routeHash,
