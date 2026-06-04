@@ -113,7 +113,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "Глава 5. Поведение за рулем",
     "Приложение I. Частные автомобили",
     "Приложение II. Пассажирский транспорт",
-    "Приложение III. Грузовой транспорт и перевозка товаров",
+    "Приложение III. Перевозка грузов и товаров",
     "Приложение IV. Дорожные знаки и разметка"
   ]) {
     assert.ok(manualGuideNavigationSource.includes(requiredEntry), `full Indice navigation includes ${requiredEntry}`);
