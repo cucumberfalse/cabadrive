@@ -114,7 +114,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "Приложение I. Частные автомобили",
     "Приложение II. Пассажирский транспорт",
     "Приложение III. Перевозка грузов и товаров",
-    "Приложение IV. Дорожные знаки и разметка"
+    "Приложение IV. Дорожные знаки и сигналы"
   ]) {
     assert.ok(manualGuideNavigationSource.includes(requiredEntry), `full Indice navigation includes ${requiredEntry}`);
   }
@@ -125,7 +125,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
     "CAPÍTULO 4: CAPACIDAD NATURAL",
     "CAPÍTULO 5: ACTITUD AL CONDUCIR",
-    "ANEXO IV SEÑALES VIALES"
+    "Anexo IV. Senales viales"
   ]) {
     assert.ok(manualGuideNavigationSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
   }

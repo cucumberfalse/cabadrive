@@ -2,68 +2,48 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "complete-chapters-1-through-5-and-appendices-1-through-3",
+  "mode": "complete-chapters-1-through-5-and-appendices-1-through-4",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 183
+    "end": 200
   },
   "skippedSourcePages": [
     {
       "sourcePage": 21,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "chapter-1-sustainable-mobility",
-      "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
-      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 43,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "chapter-2-responsibility",
-      "sourceTitleEs": "CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD",
-      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 56,
-      "reason": "chapter-closing-slogan-only",
-      "parentChapterId": "chapter-2-responsibility",
-      "sourceTitleEs": "Respetar las normas de tránsito implica salvar vidas.",
-      "disposition": "Book-only closing slogan is not Scoring content; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-closing-slogan-only"
     },
     {
       "sourcePage": 57,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "chapter-3-driving-rules",
-      "sourceTitleEs": "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
-      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 89,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "chapter-4-natural-capacity",
-      "sourceTitleEs": "CAPÍTULO 4: CAPACIDAD NATURAL",
-      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 98,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "chapter-5-driving-behavior",
-      "sourceTitleEs": "CAPÍTULO 5: ACTITUD AL CONDUCIR",
-      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 104,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "appendix-1-private-cars",
-      "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
-      "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
+      "reason": "chapter-divider-only"
     },
     {
       "sourcePage": 152,
-      "reason": "chapter-divider-only",
-      "parentChapterId": "appendix-3-cargo",
-      "sourceTitleEs": "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
-      "disposition": "Appendix III divider/title page is represented by the Appendix III navigation parent; no standalone learner page, route, module, placeholder, or implementation PR content is created."
+      "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 184,
+      "reason": "chapter-divider-only"
     }
   ],
   "expectedSectionIds": [
@@ -107,7 +87,13 @@
     "app3-driving-factors",
     "app3-safe-driving",
     "app3-safety-elements",
-    "app3-highways"
+    "app3-highways",
+    "app4-signs-regulatory",
+    "app4-signs-warning",
+    "app4-signs-informational",
+    "app4-signs-temporary",
+    "app4-signs-horizontal",
+    "app4-signs-traffic-lights"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -273,6 +259,30 @@
     "app3-highways": {
       "start": 182,
       "end": 183
+    },
+    "app4-signs-regulatory": {
+      "start": 185,
+      "end": 186
+    },
+    "app4-signs-warning": {
+      "start": 187,
+      "end": 188
+    },
+    "app4-signs-informational": {
+      "start": 189,
+      "end": 192
+    },
+    "app4-signs-temporary": {
+      "start": 193,
+      "end": 194
+    },
+    "app4-signs-horizontal": {
+      "start": 195,
+      "end": 196
+    },
+    "app4-signs-traffic-lights": {
+      "start": 197,
+      "end": 200
     }
   },
   "sharedSourcePageOwnership": [
@@ -1006,7 +1016,7 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 41,
+    "implementedSections": 47,
     "skippedSourcePages": [
       21,
       43,
@@ -1015,7 +1025,8 @@
       89,
       98,
       104,
-      152
+      152,
+      184
     ],
     "skippedDividerPages": [
       21,
@@ -1024,7 +1035,8 @@
       89,
       98,
       104,
-      152
+      152,
+      184
     ],
     "omittedBookOnlyPages": [
       56
@@ -1039,7 +1051,7 @@
       101,
       119
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_3_sections",
-    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_3_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_4_sections",
+    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_4_sections"
   }
 }

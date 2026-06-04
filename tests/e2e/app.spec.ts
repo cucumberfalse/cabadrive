@@ -1655,7 +1655,7 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(reader.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-child-id", route.id);
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Предисловие");
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Глава 1. К устойчивой мобильности");
-    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Приложение IV. Дорожные знаки и разметка");
+    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Приложение IV. Дорожные знаки и сигналы");
     await expect(reader.getByTestId("manual-guide-nav").locator('[data-status="pending"]').first()).toBeVisible();
     await expect(reader.locator('[data-testid="intro-index-nav"]')).toHaveCount(0);
     const activeIntroRoute = page.getByTestId(`intro-route-${route.id}`);

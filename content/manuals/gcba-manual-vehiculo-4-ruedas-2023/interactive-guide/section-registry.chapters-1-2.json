@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-3",
+  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-4",
   "sourcePageRange": {
     "start": 21,
-    "end": 183
+    "end": 200
   },
   "skippedSourcePages": [
     {
@@ -63,6 +63,13 @@
       "parentChapterId": "appendix-3-cargo",
       "sourceTitleEs": "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
       "disposition": "Appendix III divider/title page is represented by the Appendix III navigation parent; no standalone learner page, route, module, placeholder, or implementation PR content is created."
+    },
+    {
+      "sourcePage": 184,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-4-road-signs",
+      "sourceTitleEs": "ANEXO IV SENIALES VIALES",
+      "disposition": "Appendix IV divider/title page is represented by the Appendix IV navigation parent; no standalone learner page, route, module, placeholder, or separate PR content is created."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -624,6 +631,25 @@
         "app3-safe-driving",
         "app3-safety-elements",
         "app3-highways"
+      ]
+    },
+    {
+      "id": "appendix-4-road-signs",
+      "labelRu": "Приложение IV. Дорожные знаки и сигналы",
+      "sourceTitleEs": "Anexo IV. Senales viales",
+      "sourcePageRange": {
+        "start": 184,
+        "end": 200
+      },
+      "requiredPrintedPage": 183,
+      "status": "active",
+      "sectionIds": [
+        "app4-signs-regulatory",
+        "app4-signs-warning",
+        "app4-signs-informational",
+        "app4-signs-temporary",
+        "app4-signs-horizontal",
+        "app4-signs-traffic-lights"
       ]
     }
   ],
@@ -10867,6 +10893,1616 @@
           "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
           "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice.",
           "Page 183 is the Appendix III closing slogan only; Appendix IV page 184 and later are not included."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-regulatory",
+      "labelRu": "Предписывающие",
+      "sourceTitleEs": "Reglamentarias",
+      "routeHash": "#manual-section-app4-signs-regulatory",
+      "sourcePageRange": {
+        "start": 185,
+        "end": 186
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 185,
+          "manualManifestPointer": "/pages/184",
+          "layoutManifestPointer": "/pages/184",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-185.jpg"
+        },
+        {
+          "sourcePage": 186,
+          "manualManifestPointer": "/pages/185",
+          "layoutManifestPointer": "/pages/185",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-186.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-regulatory.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-regulatory",
+        "sourcePages": [
+          185,
+          186
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 185,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f"
+            }
+          },
+          {
+            "sourcePage": 186,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-regulatory.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-regulatory",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-185",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-186",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-regulatory renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-warning",
+      "labelRu": "Предупреждающие",
+      "sourceTitleEs": "Preventivas",
+      "routeHash": "#manual-section-app4-signs-warning",
+      "sourcePageRange": {
+        "start": 187,
+        "end": 188
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 187,
+          "manualManifestPointer": "/pages/186",
+          "layoutManifestPointer": "/pages/186",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-187.jpg"
+        },
+        {
+          "sourcePage": 188,
+          "manualManifestPointer": "/pages/187",
+          "layoutManifestPointer": "/pages/187",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-188.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-warning.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-warning",
+        "sourcePages": [
+          187,
+          188
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 187,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc"
+            }
+          },
+          {
+            "sourcePage": 188,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-warning.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-warning",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-187",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-188",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-warning renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-informational",
+      "labelRu": "Информационные",
+      "sourceTitleEs": "Informativas",
+      "routeHash": "#manual-section-app4-signs-informational",
+      "sourcePageRange": {
+        "start": 189,
+        "end": 192
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 189,
+          "manualManifestPointer": "/pages/188",
+          "layoutManifestPointer": "/pages/188",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-189.jpg"
+        },
+        {
+          "sourcePage": 190,
+          "manualManifestPointer": "/pages/189",
+          "layoutManifestPointer": "/pages/189",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-190.jpg"
+        },
+        {
+          "sourcePage": 191,
+          "manualManifestPointer": "/pages/190",
+          "layoutManifestPointer": "/pages/190",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-191.jpg"
+        },
+        {
+          "sourcePage": 192,
+          "manualManifestPointer": "/pages/191",
+          "layoutManifestPointer": "/pages/191",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-192.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-informational.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-informational",
+        "sourcePages": [
+          189,
+          190,
+          191,
+          192
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 189,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09"
+            }
+          },
+          {
+            "sourcePage": 190,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47"
+            }
+          },
+          {
+            "sourcePage": 191,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9"
+            }
+          },
+          {
+            "sourcePage": 192,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-informational.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-informational",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-189",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-190",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-191",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-192",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-informational renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-temporary",
+      "labelRu": "Временные",
+      "sourceTitleEs": "Transitorias",
+      "routeHash": "#manual-section-app4-signs-temporary",
+      "sourcePageRange": {
+        "start": 193,
+        "end": 194
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 193,
+          "manualManifestPointer": "/pages/192",
+          "layoutManifestPointer": "/pages/192",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-193.jpg"
+        },
+        {
+          "sourcePage": 194,
+          "manualManifestPointer": "/pages/193",
+          "layoutManifestPointer": "/pages/193",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-194.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-temporary.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-temporary",
+        "sourcePages": [
+          193,
+          194
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 193,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235"
+            }
+          },
+          {
+            "sourcePage": 194,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-temporary.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-temporary",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-193",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-194",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-temporary renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-horizontal",
+      "labelRu": "Горизонтальные",
+      "sourceTitleEs": "Horizontales",
+      "routeHash": "#manual-section-app4-signs-horizontal",
+      "sourcePageRange": {
+        "start": 195,
+        "end": 196
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 195,
+          "manualManifestPointer": "/pages/194",
+          "layoutManifestPointer": "/pages/194",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-195.jpg"
+        },
+        {
+          "sourcePage": 196,
+          "manualManifestPointer": "/pages/195",
+          "layoutManifestPointer": "/pages/195",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-196.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-horizontal.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-horizontal",
+        "sourcePages": [
+          195,
+          196
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 195,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7",
+            "cleanupScope": "source-as-is runtime road-marking sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7"
+            }
+          },
+          {
+            "sourcePage": 196,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1",
+            "cleanupScope": "source-as-is runtime road-marking sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-horizontal.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-horizontal",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-road-marking-sheet-page-195",
+            "assetCategory": "source-as-is-road-marking",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "appendix-iv-road-marking-sheet-page-195-only"
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-road-marking-sheet-page-196",
+            "assetCategory": "source-as-is-road-marking",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "appendix-iv-road-marking-sheet-page-196-only"
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "appendix-iv-road-marking-sheet-page-195-only"
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "appendix-iv-road-marking-sheet-page-196-only"
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-horizontal renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app4-signs-traffic-lights",
+      "labelRu": "Световая сигнализация",
+      "sourceTitleEs": "Senalizacion luminosa",
+      "routeHash": "#manual-section-app4-signs-traffic-lights",
+      "sourcePageRange": {
+        "start": 197,
+        "end": 200
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 197,
+          "manualManifestPointer": "/pages/196",
+          "layoutManifestPointer": "/pages/196",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-197.jpg"
+        },
+        {
+          "sourcePage": 198,
+          "manualManifestPointer": "/pages/197",
+          "layoutManifestPointer": "/pages/197",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-198.jpg"
+        },
+        {
+          "sourcePage": 199,
+          "manualManifestPointer": "/pages/198",
+          "layoutManifestPointer": "/pages/198",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-199.jpg"
+        },
+        {
+          "sourcePage": 200,
+          "manualManifestPointer": "/pages/199",
+          "layoutManifestPointer": "/pages/199",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-200.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-4-road-signs",
+      "sectionContentModulePath": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app4-signs-traffic-lights",
+        "sourcePages": [
+          197,
+          198,
+          199,
+          200
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 197,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd"
+            }
+          },
+          {
+            "sourcePage": 198,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e"
+            }
+          },
+          {
+            "sourcePage": 199,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d"
+            }
+          },
+          {
+            "sourcePage": 200,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005",
+            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-appendix-iv-app4-signs-traffic-lights",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-197",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-198",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-199",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-page-200",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 2976,
+            "height": 4209,
+            "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "official_traffic_sign_exception_only",
+          "nonSignVisibleSpanishStatus": "none",
+          "exceptions": [
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+              "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app4-signs-traffic-lights renders learner-facing Russian as selectable DOM text; Spanish remains only in protected source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
+          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
         ],
         "checkerResult": "pass"
       }

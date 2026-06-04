@@ -2501,16 +2501,23 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
             data-source-page={card.sourcePage}
             data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
           >
-            <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
-              <img
-                src={assetUrl(card.assetPath)}
-                alt={card.altRu}
-                data-visible-spanish={card.visibleSpanish}
-                data-source-image-exception={card.sourceImageException?.kind}
-                data-visible-spanish-scope={card.sourceImageException?.visibleSpanishScope}
-                data-source-as-is={card.sourceImageException?.sourceAsIs}
-                loading="lazy"
-              />
+            {(() => {
+              const officialSignException = card.officialSignException;
+              const sourceImageException = card.sourceImageException;
+              const exceptionKind = officialSignException?.kind ?? sourceImageException?.kind;
+              const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
+              const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
+              return (
+                <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
+                  <img
+                    src={assetUrl(card.assetPath)}
+                    alt={card.altRu}
+                    data-visible-spanish={card.visibleSpanish}
+                    data-source-image-exception={exceptionKind}
+                    data-visible-spanish-scope={visibleSpanishScope}
+                    data-source-as-is={sourceAsIs}
+                    loading="lazy"
+                  />
               {card.russianOverlayLabels && (
                 <div className="manual-source-image-overlay" aria-label="Русские подписи поверх перенесенного инфографического визуала">
                   {card.russianOverlayLabels.map((label) => (
@@ -2530,7 +2537,9 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                   ))}
                 </div>
               )}
-            </figure>
+                </figure>
+              );
+            })()}
             <div>
               <h4>{card.titleRu}</h4>
               <p>{card.bodyRu}</p>
