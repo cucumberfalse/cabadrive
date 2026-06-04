@@ -955,3 +955,135 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T05:06:09Z
+
+Analyst validated effective content head: 77eefbf268236ba78a0d9f55e8de8f6001a7301c
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #191 Appendix I scope. The effective content head advances full-document completion one chapter-equivalent appendix PR at a time, covers Appendix I pages `104-122` only with page `104` divider-only, and keeps the user-highlighted strict visual requirements central: high-resolution/x5 source export evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as high-quality image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T05:03:23Z` for the same effective content head `77eefbf268236ba78a0d9f55e8de8f6001a7301c`.
+
+Analyst validation evidence: Appendix I scope matches expected structure: `app1-safety-elements` pages `105-118`, `app1-other-required-safety-elements` pages `119-120`, and `app1-recommended-safety-elements` pages `121-122`.
+
+Analyst validation evidence: Review and AI fixes are included for Russian localization, exact `Elementos de seguridad recomendables`, SRI all-threshold rule, fresh screenshots, and page `109` `Pinchaduras` guidance; required checks passed and review threads are resolved per assigned evidence.
+
+Gaps, if any: none for the PR #191 Appendix I scope. Remaining planned document units continue one chapter-equivalent appendix PR at a time by design and are outside this Appendix I validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191; Architect process memory records no unresolved Implementation Agent feedback for this Appendix I scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T07:00:37Z
+
+Analyst validated effective content head: 7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the fresh PR #191 Appendix I scope. The effective content head advances full-document completion one chapter-equivalent appendix PR at a time, covers Appendix I pages `104-122` only with page `104` divider-only, and keeps strict visual requirements central: high-resolution/x5 source export evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as high-quality image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T06:55:53Z` for the same effective content head `7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5`.
+
+Analyst validation evidence: Prior Analyst validation for `77eefbf268236ba78a0d9f55e8de8f6001a7301c` is stale and superseded because post-validation content changes are included in effective content head `7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5`.
+
+Analyst validation evidence: Appendix I scope is page `104` divider-only; `app1-safety-elements` pages `105-118` plus page `119` `Equipaje`/luggage/max-load paragraphs before the next heading; `app1-other-required-safety-elements` starts on page `119` at `Otros elementos de seguridad obligatorios` heading/mask `10` and continues page `120`; `app1-recommended-safety-elements` covers pages `121-122`.
+
+Analyst validation evidence: Current fixes are included for Russian localization, exact `Elementos de seguridad recomendables`, SRI all-threshold rule, page `109` `Pinchaduras`, page `119` luggage/shared boundary, mirror photo-only runtime crop without visible Spanish body text, and SRI +0 label `1-4 года, 10-18 kg` without changing SRI PNG/source-crop pixels.
+
+Gaps, if any: none for the PR #191 Appendix I scope. Remaining planned document units continue one chapter-equivalent appendix PR at a time by design and are outside this Appendix I validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191; Architect process memory records no unresolved Implementation Agent feedback for this Appendix I scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, or sibling worktrees were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T08:14:10Z
+
+Analyst validated effective content head: 866646b8cfc54116975f21d8212e09f8d1c9b7c4
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #191 Appendix I scope. The effective content head advances full-document completion one chapter-equivalent appendix PR at a time, covers Appendix I pages `104-122` only with page `104` divider-only, and keeps strict visual requirements central: high-resolution/x5 source export evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as high-quality image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T08:09:53Z` for the same effective content head `866646b8cfc54116975f21d8212e09f8d1c9b7c4`.
+
+Analyst validation evidence: Prior Analyst validation for `7b8ffb3f58e8c91b660ea2d9f952c509ffff98f5` is stale and superseded because the post-validation SRI `+0` Russian overlay and refreshed evidence are included in effective content head `866646b8cfc54116975f21d8212e09f8d1c9b7c4`.
+
+Analyst validation evidence: Current fixes include SRI `+0` Russian overlay `1-15 месяцев, 0-13 kg` without changing protected SRI PNG/source-crop pixels, while preserving the Appendix I shared page `119` scope and previous localization/source-fidelity fixes.
+
+Gaps, if any: none for the PR #191 Appendix I scope. Remaining planned document units continue one chapter-equivalent appendix PR at a time by design and are outside this Appendix I validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191; Architect process memory records no unresolved Implementation Agent feedback for this Appendix I scope.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, sibling worktrees, or the existing untracked duplicate crop were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T08:59:52Z
+
+Analyst validated effective content head: dda0ad28119335c49499b9594e2f79a994fea823
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #191 Appendix I content/process-head scope. The effective head continues full-document completion one chapter-equivalent appendix PR at a time, keeps Appendix I pages `104-122` only, and preserves the strict visual requirements: high-resolution/x5 source evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as source-crop-based image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T08:56:25Z` for the same effective content/process head `dda0ad28119335c49499b9594e2f79a994fea823`.
+
+Analyst validation evidence: Prior Analyst validation for `866646b8cfc54116975f21d8212e09f8d1c9b7c4` is stale and superseded for finalizer/process-head purposes because `dda0ad28119335c49499b9594e2f79a994fea823` includes the parser-readable known issue owner decision, disposition, and finalizer process decision repair.
+
+Analyst validation evidence: Appendix I product content remains aligned with the validated scope, including the corrected SRI `+0` Russian overlay `1-15 месяцев, 0-13 kg` and refreshed evidence from the prior content head, while the process-fix head records the finalizer-readable process state needed for PR #191 completion.
+
+Gaps, if any: none for the PR #191 Appendix I scope. Remaining planned document units continue one chapter-equivalent appendix PR at a time by design and are outside this Appendix I validation scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation edits only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, sibling worktrees, or the known untracked duplicate crop were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T09:13:05Z
+
+Analyst validated effective content head: ee99d8e220462ea906da840b99068e75011842f7
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #191 Appendix I content/process-head scope. The effective head keeps Appendix I as one chapter-equivalent appendix PR, preserves Appendix I pages `104-122` only, and continues to satisfy the strict visual requirements: high-resolution/x5 source evidence, protected photos/signs/markings unmodified and untranslated, and transferred infographics as source-crop-based image transfers with glyph-level Spanish cleanup/background restoration and Russian overlays only as needed.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T09:11:23Z` for the same effective content/process head `ee99d8e220462ea906da840b99068e75011842f7`.
+
+Analyst validation evidence: Prior Analyst validation for `dda0ad28119335c49499b9594e2f79a994fea823` is superseded for finalizer/process-head purposes because `ee99d8e220462ea906da840b99068e75011842f7` is now the effective head.
+
+Analyst validation evidence: Appendix I customer intent remains satisfied after the process-head update; product content remains aligned with prior validated Appendix I evidence, including the corrected SRI `+0` Russian overlay `1-15 месяцев, 0-13 kg`, source-fidelity evidence, and strict visual handling.
+
+Gaps, if any: none for the PR #191 Appendix I scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #191.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no prior notes, code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, sibling worktrees, or the known untracked duplicate crop were changed.

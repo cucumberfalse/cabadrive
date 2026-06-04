@@ -253,7 +253,7 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
       {
         id: "app1-recommended-safety-elements",
         titleRu: "Рекомендуемые элементы безопасности",
-        titleEs: "Elementos de seguridad recomendados",
+        titleEs: "Elementos de seguridad recomendables",
         startPage: 121,
         sourceEvidence: "index_pages_11_12"
       }
