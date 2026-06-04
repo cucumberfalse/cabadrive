@@ -1,5 +1,8 @@
 import type { ManualGuideSectionContent } from "../manualGuide";
 
+const assetRoot =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements";
+
 export const app2SafetyElementsSection: ManualGuideSectionContent = {
   id: "app2-safety-elements-content",
   sectionId: "app2-safety-elements",
@@ -11,6 +14,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     "manual-prose",
     "manual-section-heading",
     "manual-callout-blue",
+    "manual-source-artwork",
     "manual-legal-detail"
   ],
   visualEvidence: {
@@ -22,8 +26,13 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-safety-elements/page-128-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-129-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-130-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
       "content/validation/manual-guide/app2-safety-elements/page-131-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
       "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-position-source-crop.png",
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
       "content/validation/manual-guide/app2-safety-elements/page-133-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-134-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-135-safety-elements-source-crop.jpg",
@@ -34,8 +43,9 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-safety-elements/app2-safety-elements-mobile.png"
     ],
     notes: [
-      "Pages 125-136 are implemented as selectable Russian DOM text; repeated tire, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only.",
-      "Page 150-style Spanish-visible images are not introduced here; no protected photo, traffic sign, road marking, or transferred infographic pixels are modified."
+      "Pages 125-136 are implemented as selectable Russian DOM text with key source visual instructions preserved at runtime.",
+      "The mirror and seat-belt visuals are tight x5 source-as-is photo crops with surrounding Spanish caption/body text translated outside the image.",
+      "The headrest-position visual is preserved as tight x5 source diagram crops that exclude Spanish labels; Russian explanation remains selectable outside the images, and no protected photo, traffic sign, road marking, source crop, or source page render is modified."
     ]
   },
   blocks: [
@@ -136,6 +146,31 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "mirror-orientation-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: ориентация зеркал",
+      sourceTextEs:
+        "Sólo debe reflejarse como máximo el 10% de la parte trasera del vehículo.",
+      cards: [
+        {
+          id: "app2-mirror-orientation-source-card",
+          titleRu: "Исходные фото зеркал",
+          sourcePage: 130,
+          sourceRegion: { x: 930, y: 1960, width: 1260, height: 125 },
+          assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.png`,
+          altRu:
+            "Исходные фотографии правильной и неправильной ориентации бокового зеркала, оставленные без изменений.",
+          visibleSpanish: false,
+          bodyRu:
+            "Фотофрагмент оставлен как исходный материал без изменений: без перевода, ретуши, дорисовки или изменения дорожной сцены. Испанская подпись перенесена в русский текст: в зеркале должно отражаться не больше 10% задней части собственного транспортного средства."
+        }
+      ],
+      visualNotes: [
+        "The mirror photos are copied byte-for-byte from the focused x5 source crop.",
+        "The Spanish caption under the photos is excluded from the runtime image and translated in selectable Russian text outside it."
+      ]
+    },
+    {
       id: "seat-belts",
       kind: "list",
       titleRu: "Ремни безопасности",
@@ -152,6 +187,30 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "seatbelt-use-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: правильный ремень",
+      sourceTextEs: "Uso correcto del cinturón de seguridad.",
+      cards: [
+        {
+          id: "app2-seatbelt-use-source-card",
+          titleRu: "Исходные фото положения ремня",
+          sourcePage: 131,
+          sourceRegion: { x: 1015, y: 2005, width: 1060, height: 285 },
+          assetPath: `${assetRoot}/seatbelt-use-photo-source-as-is.png`,
+          altRu:
+            "Исходные фотографии правильного и неправильного положения ремня безопасности, оставленные без изменений.",
+          visibleSpanish: false,
+          bodyRu:
+            "Фотографии сохранены как исходный фрагмент: знак правильного и неправильного положения остается частью изображения без изменений. Русские правила расположения ремня приведены в тексте рядом, а испанские пункты под фото не входят в рабочий фрагмент."
+        }
+      ],
+      visualNotes: [
+        "The seat-belt photos are copied byte-for-byte from the focused x5 source crop.",
+        "Spanish bullet text below the source photos is excluded from the runtime image and translated in selectable Russian text outside it."
+      ]
+    },
+    {
       id: "pregnancy-headrest-airbag",
       kind: "list",
       titleRu: "Беременность, подголовник и подушка безопасности",
@@ -165,6 +224,42 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         "Самая высокая часть подголовника должна быть на уровне верхней части головы, центральная - на уровне линии глаз.",
         "Подушка безопасности дополняет ремень и не заменяет его; без ремня она может причинить тяжелые травмы.",
         "Для безопасного раскрытия подушки нужно минимальное расстояние 25 cm от тела."
+      ]
+    },
+    {
+      id: "headrest-position-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Визуал источника: положение подголовника",
+      sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
+      cards: [
+        {
+          id: "app2-headrest-height-source-card",
+          titleRu: "Исходная схема высоты",
+          sourcePage: 132,
+          sourceRegion: { x: 1330, y: 2240, width: 185, height: 105 },
+          assetPath: `${assetRoot}/headrest-height-diagram-source-as-is.png`,
+          altRu:
+            "Исходная схема высоты подголовника без испанских подписей, с сохраненными силуэтами головы и направляющими линиями.",
+          visibleSpanish: false,
+          bodyRu:
+            "Фрагмент показывает, что верх подголовника должен соответствовать верхней части головы, а центральная часть - линии глаз. Испанские подписи не входят в этот рабочий фрагмент; правило приведено русским текстом рядом."
+        },
+        {
+          id: "app2-headrest-distance-source-card",
+          titleRu: "Исходная схема дистанции",
+          sourcePage: 132,
+          sourceRegion: { x: 1520, y: 2250, width: 260, height: 95 },
+          assetPath: `${assetRoot}/headrest-distance-diagram-source-as-is.png`,
+          altRu:
+            "Исходная схема дистанции подголовника без испанских подписей, с сохраненными силуэтами головы и вертикальными направляющими.",
+          visibleSpanish: false,
+          bodyRu:
+            "Фрагмент сохраняет исходную геометрию расстояния между головой и подголовником. Чем ближе подголовник к голове без неудобства, тем лучше защита от хлыстовой травмы; русское объяснение находится вне изображения."
+        }
+      ],
+      visualNotes: [
+        "The headrest visuals are tight source diagram crops from the Appendix II page 132 x5 evidence.",
+        "Spanish labels are excluded by crop boundary rather than cleaned or covered; silhouettes, dashed guides, pictograms, and spatial relationships are source pixels."
       ]
     },
     {

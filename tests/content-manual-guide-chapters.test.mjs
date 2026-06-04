@@ -1465,6 +1465,106 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /source-image-cards|assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u);
 });
 
+test("Appendix II safety visuals render as preserved source images with provenance evidence", () => {
+  const safety = sectionById("app2-safety-elements");
+  const sourceAsIs = [
+    {
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
+      assetKind: "high-resolution-original-source-photo-app2-mirror-orientation",
+      width: 1260,
+      height: 125,
+      sha256: "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
+    },
+    {
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
+      assetKind: "high-resolution-original-source-photo-app2-seatbelt-use",
+      width: 1060,
+      height: 285,
+      sha256: "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
+    }
+  ];
+  const headrestDiagrams = [
+    {
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
+      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
+      assetKind: "high-resolution-source-diagram-app2-headrest-height",
+      width: 185,
+      height: 105,
+      sha256: "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
+    },
+    {
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
+      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
+      assetKind: "high-resolution-source-diagram-app2-headrest-distance",
+      width: 260,
+      height: 95,
+      sha256: "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
+    }
+  ];
+
+  assert.match(app2SafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(app2SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /seatbelt-use-photo-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /source-as-is изображ|runtime-crop/u);
+
+  for (const expectation of sourceAsIs) {
+    const asset = localAssetByPath(safety, expectation.assetPath);
+    assert.equal(asset.assetCategory, "source-as-is-photo");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.containsText, false);
+    assert.equal(asset.visibleSpanish, false);
+    assert.equal(asset.cleanupScope, "none-source-as-is");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+  }
+
+  for (const expectation of headrestDiagrams) {
+    const asset = localAssetByPath(safety, expectation.assetPath);
+    assert.equal(asset.assetCategory, "source-transferred-diagram");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.containsText, false);
+    assert.equal(asset.visibleSpanish, false);
+    assert.equal(asset.cleanupScope, "none-source-as-is");
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.diagramTransfer.sourceDiagramTransfer, true);
+    assert.equal(asset.diagramTransfer.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.diagramTransfer.sourceCropSha256, expectation.sha256);
+    assert.deepEqual(asset.diagramTransfer.sourceCropDimensions, { width: expectation.width, height: expectation.height });
+    assert.equal(asset.diagramTransfer.noApproximateRedraw, true);
+    assert.equal(asset.diagramTransfer.noReconstruction, true);
+    assert.equal(asset.diagramTransfer.noGenericIconReplacement, true);
+    assert.equal(asset.diagramTransfer.broadMaskPlatePatchStatus, "none");
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+  }
+
+  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), ...headrestDiagrams.map((entry) => entry.sourceAssetPath)]) {
+    assert.ok(
+      safety.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourceAssetPath === sourceAssetPath),
+      `${sourceAssetPath} is recorded in Appendix II safety sourceRegionMetadata`
+    );
+  }
+});
+
 test("Appendix I sections retain private-car safety details", () => {
   for (const sectionId of [
     "app1-safety-elements",

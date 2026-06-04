@@ -8288,6 +8288,131 @@
               },
               "sha256": "a770e659998d156107989ae89e4f20ac1802d2f7e009519d1fc07685efc45874"
             }
+          },
+          {
+            "sourcePage": 130,
+            "sourceRegion": {
+              "x": 930,
+              "y": 1960,
+              "width": 1260,
+              "height": 125
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
+            "cropDimensions": {
+              "width": 1260,
+              "height": 125
+            },
+            "cropSha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787",
+            "cleanupScope": "cropped-source-as-is-photo-only-no-spanish-caption-text",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the x5 page 130 source evidence by cropping to the protected mirror photo pair only; surrounding Spanish caption/body text is excluded and translated in selectable Russian page text. The crop is retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 1260,
+                "height": 125
+              },
+              "sha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
+            }
+          },
+          {
+            "sourcePage": 131,
+            "sourceRegion": {
+              "x": 1015,
+              "y": 2005,
+              "width": 1060,
+              "height": 285
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
+            "cropDimensions": {
+              "width": 1060,
+              "height": 285
+            },
+            "cropSha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203",
+            "cleanupScope": "cropped-source-as-is-photo-only-no-spanish-body-text",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the x5 page 131 source evidence by cropping to the protected seat-belt photo pair only; surrounding Spanish bullet text is excluded and translated in selectable Russian page text. The crop is retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 1060,
+                "height": 285
+              },
+              "sha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
+            }
+          },
+          {
+            "sourcePage": 132,
+            "sourceRegion": {
+              "x": 970,
+              "y": 2160,
+              "width": 1190,
+              "height": 185
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-position-source-crop.png",
+            "cropDimensions": {
+              "width": 1190,
+              "height": 185
+            },
+            "cropSha256": "dfd5ca451974f2ba73f846ef5ff91a901aef89aebc4e99d4296ddd6cd11f29c9",
+            "cleanupScope": "source-crop-for-glyph-level-transfer",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the Appendix II page 132 x5 source evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup before the transferred runtime PNG cleanup.",
+              "outputDimensions": {
+                "width": 1190,
+                "height": 185
+              },
+              "sha256": "dfd5ca451974f2ba73f846ef5ff91a901aef89aebc4e99d4296ddd6cd11f29c9"
+            }
+          },
+          {
+            "sourcePage": 132,
+            "sourceRegion": {
+              "x": 1330,
+              "y": 2240,
+              "width": 185,
+              "height": 105
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
+            "cropDimensions": {
+              "width": 185,
+              "height": 105
+            },
+            "cropSha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
+            "cleanupScope": "cropped-source-diagram-only-no-spanish-labels",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused diagram crop exported from the Appendix II page 132 x5 source evidence. Spanish labels are outside the crop boundary; diagram pixels are retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 185,
+                "height": 105
+              },
+              "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
+            }
+          },
+          {
+            "sourcePage": 132,
+            "sourceRegion": {
+              "x": 1520,
+              "y": 2250,
+              "width": 260,
+              "height": 95
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
+            "cropDimensions": {
+              "width": 260,
+              "height": 95
+            },
+            "cropSha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
+            "cleanupScope": "cropped-source-diagram-only-no-spanish-labels",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused diagram crop exported from the Appendix II page 132 x5 source evidence. Spanish labels are outside the crop boundary; diagram pixels are retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 260,
+                "height": 95
+              },
+              "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -8297,6 +8422,144 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+            "assetKind": "high-resolution-original-source-photo-app2-mirror-orientation",
+            "assetCategory": "source-as-is-photo",
+            "width": 1260,
+            "height": 125,
+            "sha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime mirror photo pair is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 1260,
+                "height": 125
+              },
+              "sha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishCaptionAndBodyTextExcluded": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+            "assetKind": "high-resolution-original-source-photo-app2-seatbelt-use",
+            "assetCategory": "source-as-is-photo",
+            "width": 1060,
+            "height": 285,
+            "sha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime seat-belt photo pair is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 1060,
+                "height": 285
+              },
+              "sha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishCaptionAndBodyTextExcluded": true
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
+            "assetKind": "high-resolution-source-diagram-app2-headrest-height",
+            "assetCategory": "source-transferred-diagram",
+            "width": 185,
+            "height": 105,
+            "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime headrest-height diagram is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 185,
+                "height": 105
+              },
+              "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 185,
+              "noUpscale": true
+            },
+            "diagramTransfer": {
+              "sourceDiagramTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
+              "sourceCropSha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
+              "sourceCropDimensions": {
+                "width": 185,
+                "height": 105
+              },
+              "noApproximateRedraw": true,
+              "noReconstruction": true,
+              "noGenericIconReplacement": true,
+              "broadMaskPlatePatchStatus": "none"
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
+            "assetKind": "high-resolution-source-diagram-app2-headrest-distance",
+            "assetCategory": "source-transferred-diagram",
+            "width": 260,
+            "height": 95,
+            "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
+            "containsText": false,
+            "visibleSpanish": false,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime headrest-distance diagram is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "outputDimensions": {
+                "width": 260,
+                "height": 95
+              },
+              "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 260,
+              "noUpscale": true
+            },
+            "diagramTransfer": {
+              "sourceDiagramTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
+              "sourceCropSha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
+              "sourceCropDimensions": {
+                "width": 260,
+                "height": 95
+              },
+              "noApproximateRedraw": true,
+              "noReconstruction": true,
+              "noGenericIconReplacement": true,
+              "broadMaskPlatePatchStatus": "none"
+            }
           }
         ],
         "visibleSpanishStatus": "none",
@@ -8317,9 +8580,9 @@
           "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
         },
         "visualReviewNotes": [
-          "Pages 125-136 are implemented as native Russian text, including active/passive safety, VTV, brakes, suspension, tires, mirrors, passive safety, passenger-cabin loose-object rules, mandatory equipment, and recommended equipment.",
-          "Repeated tire, mirror, seat-belt, headrest, and equipment visuals are retained as x5 source evidence only; no runtime source image with Spanish body text is introduced.",
-          "No photograph, traffic sign, road marking, source crop, source page render, or transferred infographic PNG is modified."
+          "Appendix II safety-elements runtime now preserves key source visual instructions: mirror and seat-belt photo pairs as tight source-as-is x5 crops, and the page 132 headrest-position diagrams as tight source diagram crops with Spanish labels outside the crop boundaries.",
+          "The page 130 and page 131 source-as-is photo crops exclude surrounding Spanish caption/body text; Russian explanation is outside the images. No photo, traffic sign, road marking, source crop, source page render, or protected source-as-is visual pixels are translated, relabeled, retouched, masked, inpainted, reconstructed, or otherwise changed.",
+          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map disposition remains evidence-only with Russian DOM text outside the source image."
         ],
         "checkerResult": "pass"
       }
