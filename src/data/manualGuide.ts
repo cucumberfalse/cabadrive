@@ -1,4 +1,8 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { ch5AnticipatoryEfficientDrivingSection } from "./manual-sections/ch5-anticipatory-efficient-driving";
+import { ch5AttitudeTypesSection } from "./manual-sections/ch5-attitude-types";
+import { ch5EqualSocietySection } from "./manual-sections/ch5-equal-society";
+import { ch5GenderViolencePreventionSection } from "./manual-sections/ch5-gender-violence-prevention";
 import { ch4AlcoholDrugsSection } from "./manual-sections/ch4-alcohol-drugs";
 import { ch4DistractionsSection } from "./manual-sections/ch4-distractions";
 import { ch4SleepFatigueSection } from "./manual-sections/ch4-sleep-fatigue";
@@ -724,7 +728,11 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   ch4AlcoholDrugsSection,
   ch4SleepFatigueSection,
   ch4StressSection,
-  ch4DistractionsSection
+  ch4DistractionsSection,
+  ch5AttitudeTypesSection,
+  ch5EqualSocietySection,
+  ch5GenderViolencePreventionSection,
+  ch5AnticipatoryEfficientDrivingSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -799,9 +807,10 @@ export const manualGuideDocumentStyleTokens = {
     "Implemented sections must provide source-region metadata for each meaningful source page/region, local asset metadata, screenshot evidence, visible-Spanish status, and checker pass/fail output.",
     "Normal prose uses shared Introduction article typography and selectable DOM text.",
     "Fixed infographic blocks may scroll horizontally only inside their own visual frame.",
-    "Divider-only source PDF pages 21, 43, 57, and 89 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
+    "Divider-only source PDF pages 21, 43, 57, 89, and 98 and the book-only closing slogan on source PDF page 56 are skipped as standalone learner pages/routes/modules.",
     "Shared source PDF page 55 is split by explicit layout-block ownership: incident obligations before page-055-block-08, Scoring from page-055-block-08 through footnotes.",
     "Shared source PDF page 94 is split between sleep/fatigue and stress; shared source PDF page 95 is split between stress recommendations and distractions.",
+    "Shared source PDF pages 99, 100, and 101 preserve Chapter 5 source-topic boundaries across attitude/equality, equality/gender-violence support, and gender-violence/preventive-efficient-driving sections.",
     "Generic icons, broad masks, DOM plates, remote assets, full-page raster bases, side-by-side translation layouts, and translated/reconstructed traffic sign renderings are forbidden."
   ]
 } as const;
@@ -923,21 +932,6 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
     }))
   },
   ...chapter12NavigationEntries,
-  {
-    id: "chapter-5",
-    kind: "group",
-    labelRu: "Глава 5. Поведение за рулем",
-    sourceTitleEs: "CAPÍTULO 5: ACTITUD AL CONDUCIR",
-    sourcePage: 98,
-    requiredPrintedPage: 97,
-    status: "pending",
-    children: [
-      pendingTopic("chapter-5-attitudes", "Типы поведения", "Tipos de actitudes"),
-      pendingTopic("chapter-5-equality", "К равному обществу", "Hacia una sociedad igualitaria"),
-      pendingTopic("chapter-5-gender-violence", "Профилактика и помощь при гендерном насилии", "Prevención y asistencia en situaciones de violencia de género"),
-      pendingTopic("chapter-5-preventive-efficient", "Предупредительное и эффективное вождение", "Conducción preventiva y eficiente")
-    ]
-  },
   {
     id: "annex-1",
     kind: "annex",

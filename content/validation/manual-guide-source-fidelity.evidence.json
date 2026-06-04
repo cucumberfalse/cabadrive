@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "section-registry-with-complete-chapters-1-through-4",
+  "mode": "section-registry-with-complete-chapters-1-through-5",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 97
+    "end": 103
   },
   "skippedSourcePages": [
     {
@@ -27,6 +27,10 @@
     },
     {
       "sourcePage": 89,
+      "reason": "chapter-divider-only"
+    },
+    {
+      "sourcePage": 98,
       "reason": "chapter-divider-only"
     }
   ],
@@ -53,7 +57,11 @@
     "ch4-alcohol-drugs",
     "ch4-sleep-fatigue",
     "ch4-stress",
-    "ch4-distractions"
+    "ch4-distractions",
+    "ch5-attitude-types",
+    "ch5-equal-society",
+    "ch5-gender-violence-prevention",
+    "ch5-anticipatory-efficient-driving"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -147,6 +155,22 @@
     "ch4-distractions": {
       "start": 95,
       "end": 97
+    },
+    "ch5-attitude-types": {
+      "start": 99,
+      "end": 99
+    },
+    "ch5-equal-society": {
+      "start": 99,
+      "end": 100
+    },
+    "ch5-gender-violence-prevention": {
+      "start": 100,
+      "end": 101
+    },
+    "ch5-anticipatory-efficient-driving": {
+      "start": 101,
+      "end": 103
     }
   },
   "sharedSourcePageOwnership": [
@@ -361,6 +385,161 @@
           "startsAtLayoutBlockId": "page-095-source-line-mask-02",
           "startsAtSourceTextEs": "Distracciones",
           "excludesSectionId": "ch4-stress"
+        }
+      ]
+    },
+    {
+      "sourcePage": 99,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-099.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 99 and layout.ru.json page-099 source-line masks 02-29; mask 17 starts Hacia una sociedad igualitaria after the attitude content.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-attitude-types",
+          "ownedRegion": "attitude-definition-positive-and-negative-attitude-types",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-099-source-line-mask-02",
+            "page-099-source-line-mask-03",
+            "page-099-source-line-mask-04",
+            "page-099-source-line-mask-05",
+            "page-099-source-line-mask-06",
+            "page-099-source-line-mask-07",
+            "page-099-source-line-mask-08",
+            "page-099-source-line-mask-09",
+            "page-099-source-line-mask-10",
+            "page-099-source-line-mask-11",
+            "page-099-source-line-mask-12",
+            "page-099-source-line-mask-13",
+            "page-099-source-line-mask-14",
+            "page-099-source-line-mask-15",
+            "page-099-source-line-mask-16",
+            "page-099-source-line-mask-29"
+          ],
+          "endsBeforeLayoutBlockId": "page-099-source-line-mask-17",
+          "excludesSectionId": "ch5-equal-society"
+        },
+        {
+          "sectionId": "ch5-equal-society",
+          "ownedRegion": "equal-society-heading-and-social-planning-context",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-099-source-line-mask-17",
+            "page-099-source-line-mask-18",
+            "page-099-source-line-mask-19",
+            "page-099-source-line-mask-20",
+            "page-099-source-line-mask-21",
+            "page-099-source-line-mask-22",
+            "page-099-source-line-mask-23",
+            "page-099-source-line-mask-24",
+            "page-099-source-line-mask-25",
+            "page-099-source-line-mask-26",
+            "page-099-source-line-mask-27",
+            "page-099-source-line-mask-28"
+          ],
+          "startsAtLayoutBlockId": "page-099-source-line-mask-17",
+          "startsAtSourceTextEs": "Hacia una sociedad igualitaria",
+          "excludesSectionId": "ch5-attitude-types"
+        }
+      ]
+    },
+    {
+      "sourcePage": 100,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-100.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 100 and layout.ru.json page-100 source-line masks 02-20; mask 19 starts Prevención y asistencia en situaciones de violencia de género after equality content.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-equal-society",
+          "ownedRegion": "equal-society-mobility-patterns-right-to-city-and-caba-context-visual",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-02",
+            "page-100-source-line-mask-03",
+            "page-100-source-line-mask-04",
+            "page-100-source-line-mask-05",
+            "page-100-source-line-mask-06",
+            "page-100-source-line-mask-07",
+            "page-100-source-line-mask-08",
+            "page-100-source-line-mask-09",
+            "page-100-source-line-mask-10",
+            "page-100-source-line-mask-11",
+            "page-100-source-line-mask-12",
+            "page-100-source-line-mask-17",
+            "page-100-source-line-mask-18"
+          ],
+          "endsBeforeLayoutBlockId": "page-100-source-line-mask-19",
+          "excludesSectionId": "ch5-gender-violence-prevention"
+        },
+        {
+          "sectionId": "ch5-gender-violence-prevention",
+          "ownedRegion": "gender-violence-heading-911-and-22676-support-line",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-13",
+            "page-100-source-line-mask-14",
+            "page-100-source-line-mask-15",
+            "page-100-source-line-mask-16",
+            "page-100-source-line-mask-19",
+            "page-100-source-line-mask-20"
+          ],
+          "startsAtLayoutBlockId": "page-100-source-line-mask-19",
+          "startsAtSourceTextEs": "Prevención y asistencia en situaciones de violencia de género",
+          "excludesSectionId": "ch5-equal-society"
+        }
+      ]
+    },
+    {
+      "sourcePage": 101,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-101.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 101 and layout.ru.json page-101 source-line masks 02-34; masks 11-25 continue gender-violence support while mask 09 starts Conducción preventiva y eficiente.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-gender-violence-prevention",
+          "ownedRegion": "sms-report-containment-and-not-911-derivation-block",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-101-source-line-mask-11",
+            "page-101-source-line-mask-12",
+            "page-101-source-line-mask-13",
+            "page-101-source-line-mask-14",
+            "page-101-source-line-mask-15",
+            "page-101-source-line-mask-16",
+            "page-101-source-line-mask-17",
+            "page-101-source-line-mask-18",
+            "page-101-source-line-mask-19",
+            "page-101-source-line-mask-20",
+            "page-101-source-line-mask-21",
+            "page-101-source-line-mask-22",
+            "page-101-source-line-mask-23",
+            "page-101-source-line-mask-24",
+            "page-101-source-line-mask-25"
+          ],
+          "excludesSectionId": "ch5-anticipatory-efficient-driving",
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body."
+        },
+        {
+          "sectionId": "ch5-anticipatory-efficient-driving",
+          "ownedRegion": "preventive-efficient-driving-heading-preventive-and-efficient-driving-content",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-101-source-line-mask-02",
+            "page-101-source-line-mask-03",
+            "page-101-source-line-mask-04",
+            "page-101-source-line-mask-05",
+            "page-101-source-line-mask-06",
+            "page-101-source-line-mask-07",
+            "page-101-source-line-mask-08",
+            "page-101-source-line-mask-09",
+            "page-101-source-line-mask-10",
+            "page-101-source-line-mask-26",
+            "page-101-source-line-mask-27",
+            "page-101-source-line-mask-28",
+            "page-101-source-line-mask-29",
+            "page-101-source-line-mask-30",
+            "page-101-source-line-mask-31",
+            "page-101-source-line-mask-32",
+            "page-101-source-line-mask-33",
+            "page-101-source-line-mask-34"
+          ],
+          "startsAtLayoutBlockId": "page-101-source-line-mask-09",
+          "startsAtSourceTextEs": "Conducción preventiva y eficiente",
+          "excludesSectionId": "ch5-gender-violence-prevention"
         }
       ]
     }
@@ -670,19 +849,21 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 23,
+    "implementedSections": 27,
     "skippedSourcePages": [
       21,
       43,
       56,
       57,
-      89
+      89,
+      98
     ],
     "skippedDividerPages": [
       21,
       43,
       57,
-      89
+      89,
+      98
     ],
     "omittedBookOnlyPages": [
       56
@@ -691,9 +872,12 @@
       55,
       93,
       94,
-      95
+      95,
+      99,
+      100,
+      101
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_4_sections",
-    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_4_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_sections",
+    "sourceCropEvidence": "recorded_for_complete_chapters_1_through_5_sections"
   }
 }

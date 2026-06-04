@@ -2628,6 +2628,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   const chapter2 = nav.locator('[data-guide-entry-id="chapter-2-responsibility"]');
   const chapter3 = nav.locator('[data-guide-entry-id="chapter-3-driving-rules"]');
   const chapter4 = nav.locator('[data-guide-entry-id="chapter-4-natural-capacity"]');
+  const chapter5 = nav.locator('[data-guide-entry-id="chapter-5-driving-behavior"]');
   if (!(await chapter1.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter1.locator("summary").click();
   }
@@ -2640,19 +2641,25 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   if (!(await chapter4.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter4.locator("summary").click();
   }
+  if (!(await chapter5.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await chapter5.locator("summary").click();
+  }
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
   await expect(chapter3.getByText("Глава 3. Основные нормы вождения")).toBeVisible();
   await expect(chapter4.getByText("Глава 4. Естественная способность")).toBeVisible();
+  await expect(chapter5.getByText("Глава 5. Поведение за рулем")).toBeVisible();
   await expect(chapter1).toHaveAttribute("data-status", "active");
   await expect(chapter2).toHaveAttribute("data-status", "active");
   await expect(chapter3).toHaveAttribute("data-status", "active");
   await expect(chapter4).toHaveAttribute("data-status", "active");
+  await expect(chapter5).toHaveAttribute("data-status", "active");
   await expect(chapter1.locator("summary small")).toHaveCount(0);
   await expect(chapter2.locator("summary small")).toHaveCount(0);
   await expect(chapter3.locator("summary small")).toHaveCount(0);
   await expect(chapter4.locator("summary small")).toHaveCount(0);
+  await expect(chapter5.locator("summary small")).toHaveCount(0);
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
@@ -2664,6 +2671,10 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(chapter4.getByText("Сон и усталость")).toBeVisible();
   await expect(chapter4.getByText("Стресс")).toBeVisible();
   await expect(chapter4.getByText("Отвлечения")).toBeVisible();
+  await expect(chapter5.getByText("Типы установок")).toBeVisible();
+  await expect(chapter5.getByText("К равноправному обществу")).toBeVisible();
+  await expect(chapter5.getByText("Профилактика и помощь в ситуациях гендерного насилия")).toBeVisible();
+  await expect(chapter5.getByText("Предупредительное и эффективное вождение")).toBeVisible();
 
   const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
   const sustainable = reader.getByTestId("manual-guide-pending-section-ch1-sustainable-mobility");
@@ -2688,6 +2699,10 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   const sleepFatigue = reader.getByTestId("manual-guide-pending-section-ch4-sleep-fatigue");
   const stress = reader.getByTestId("manual-guide-pending-section-ch4-stress");
   const distractions = reader.getByTestId("manual-guide-pending-section-ch4-distractions");
+  const attitudeTypes = reader.getByTestId("manual-guide-pending-section-ch5-attitude-types");
+  const equalSociety = reader.getByTestId("manual-guide-pending-section-ch5-equal-society");
+  const genderViolencePrevention = reader.getByTestId("manual-guide-pending-section-ch5-gender-violence-prevention");
+  const anticipatoryEfficientDriving = reader.getByTestId("manual-guide-pending-section-ch5-anticipatory-efficient-driving");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
   await expect(bicycle).toBeVisible();
@@ -2714,7 +2729,11 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
     alcoholDrugs,
     sleepFatigue,
     stress,
-    distractions
+    distractions,
+    attitudeTypes,
+    equalSociety,
+    genderViolencePrevention,
+    anticipatoryEfficientDriving
   ]) {
     await expect(sectionButton).toBeEnabled();
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
@@ -2768,11 +2787,20 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(stress).toHaveAttribute("data-source-pages", "94-95");
   await expect(distractions).toHaveAttribute("data-route-hash", "#manual-section-ch4-distractions");
   await expect(distractions).toHaveAttribute("data-source-pages", "95-97");
+  await expect(attitudeTypes).toHaveAttribute("data-route-hash", "#manual-section-ch5-attitude-types");
+  await expect(attitudeTypes).toHaveAttribute("data-source-pages", "99");
+  await expect(equalSociety).toHaveAttribute("data-route-hash", "#manual-section-ch5-equal-society");
+  await expect(equalSociety).toHaveAttribute("data-source-pages", "99-100");
+  await expect(genderViolencePrevention).toHaveAttribute("data-route-hash", "#manual-section-ch5-gender-violence-prevention");
+  await expect(genderViolencePrevention).toHaveAttribute("data-source-pages", "100-101");
+  await expect(anticipatoryEfficientDriving).toHaveAttribute("data-route-hash", "#manual-section-ch5-anticipatory-efficient-driving");
+  await expect(anticipatoryEfficientDriving).toHaveAttribute("data-source-pages", "101-103");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-057"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-089"]')).toHaveCount(0);
+  await expect(reader.locator('[data-route-hash="#manual-page-098"]')).toHaveCount(0);
   await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");

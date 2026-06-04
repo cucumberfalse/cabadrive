@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "chapters-1-4-section-registry",
+  "registryScope": "chapters-1-5-section-registry",
   "sourcePageRange": {
     "start": 21,
-    "end": 97
+    "end": 103
   },
   "skippedSourcePages": [
     {
@@ -41,6 +41,13 @@
       "reason": "chapter-divider-only",
       "parentChapterId": "chapter-4-natural-capacity",
       "sourceTitleEs": "CAPÍTULO 4: CAPACIDAD NATURAL",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
+    },
+    {
+      "sourcePage": 98,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "sourceTitleEs": "CAPÍTULO 5: ACTITUD AL CONDUCIR",
       "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     }
   ],
@@ -258,6 +265,161 @@
           "excludesSectionId": "ch4-stress"
         }
       ]
+    },
+    {
+      "sourcePage": 99,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-099.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 99 and layout.ru.json page-099 source-line masks 02-29; mask 17 starts Hacia una sociedad igualitaria after the attitude content.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-attitude-types",
+          "ownedRegion": "attitude-definition-positive-and-negative-attitude-types",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-099-source-line-mask-02",
+            "page-099-source-line-mask-03",
+            "page-099-source-line-mask-04",
+            "page-099-source-line-mask-05",
+            "page-099-source-line-mask-06",
+            "page-099-source-line-mask-07",
+            "page-099-source-line-mask-08",
+            "page-099-source-line-mask-09",
+            "page-099-source-line-mask-10",
+            "page-099-source-line-mask-11",
+            "page-099-source-line-mask-12",
+            "page-099-source-line-mask-13",
+            "page-099-source-line-mask-14",
+            "page-099-source-line-mask-15",
+            "page-099-source-line-mask-16",
+            "page-099-source-line-mask-29"
+          ],
+          "endsBeforeLayoutBlockId": "page-099-source-line-mask-17",
+          "excludesSectionId": "ch5-equal-society"
+        },
+        {
+          "sectionId": "ch5-equal-society",
+          "ownedRegion": "equal-society-heading-and-social-planning-context",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-099-source-line-mask-17",
+            "page-099-source-line-mask-18",
+            "page-099-source-line-mask-19",
+            "page-099-source-line-mask-20",
+            "page-099-source-line-mask-21",
+            "page-099-source-line-mask-22",
+            "page-099-source-line-mask-23",
+            "page-099-source-line-mask-24",
+            "page-099-source-line-mask-25",
+            "page-099-source-line-mask-26",
+            "page-099-source-line-mask-27",
+            "page-099-source-line-mask-28"
+          ],
+          "startsAtLayoutBlockId": "page-099-source-line-mask-17",
+          "startsAtSourceTextEs": "Hacia una sociedad igualitaria",
+          "excludesSectionId": "ch5-attitude-types"
+        }
+      ]
+    },
+    {
+      "sourcePage": 100,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-100.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 100 and layout.ru.json page-100 source-line masks 02-20; mask 19 starts Prevención y asistencia en situaciones de violencia de género after equality content.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-equal-society",
+          "ownedRegion": "equal-society-mobility-patterns-right-to-city-and-caba-context-visual",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-02",
+            "page-100-source-line-mask-03",
+            "page-100-source-line-mask-04",
+            "page-100-source-line-mask-05",
+            "page-100-source-line-mask-06",
+            "page-100-source-line-mask-07",
+            "page-100-source-line-mask-08",
+            "page-100-source-line-mask-09",
+            "page-100-source-line-mask-10",
+            "page-100-source-line-mask-11",
+            "page-100-source-line-mask-12",
+            "page-100-source-line-mask-17",
+            "page-100-source-line-mask-18"
+          ],
+          "endsBeforeLayoutBlockId": "page-100-source-line-mask-19",
+          "excludesSectionId": "ch5-gender-violence-prevention"
+        },
+        {
+          "sectionId": "ch5-gender-violence-prevention",
+          "ownedRegion": "gender-violence-heading-911-and-22676-support-line",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-13",
+            "page-100-source-line-mask-14",
+            "page-100-source-line-mask-15",
+            "page-100-source-line-mask-16",
+            "page-100-source-line-mask-19",
+            "page-100-source-line-mask-20"
+          ],
+          "startsAtLayoutBlockId": "page-100-source-line-mask-19",
+          "startsAtSourceTextEs": "Prevención y asistencia en situaciones de violencia de género",
+          "excludesSectionId": "ch5-equal-society"
+        }
+      ]
+    },
+    {
+      "sourcePage": 101,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-101.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "manual.ru.json source page 101 and layout.ru.json page-101 source-line masks 02-34; masks 11-25 continue gender-violence support while mask 09 starts Conducción preventiva y eficiente.",
+      "sectionBoundaries": [
+        {
+          "sectionId": "ch5-gender-violence-prevention",
+          "ownedRegion": "sms-report-containment-and-not-911-derivation-block",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-101-source-line-mask-11",
+            "page-101-source-line-mask-12",
+            "page-101-source-line-mask-13",
+            "page-101-source-line-mask-14",
+            "page-101-source-line-mask-15",
+            "page-101-source-line-mask-16",
+            "page-101-source-line-mask-17",
+            "page-101-source-line-mask-18",
+            "page-101-source-line-mask-19",
+            "page-101-source-line-mask-20",
+            "page-101-source-line-mask-21",
+            "page-101-source-line-mask-22",
+            "page-101-source-line-mask-23",
+            "page-101-source-line-mask-24",
+            "page-101-source-line-mask-25"
+          ],
+          "excludesSectionId": "ch5-anticipatory-efficient-driving",
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body."
+        },
+        {
+          "sectionId": "ch5-anticipatory-efficient-driving",
+          "ownedRegion": "preventive-efficient-driving-heading-preventive-and-efficient-driving-content",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-101-source-line-mask-02",
+            "page-101-source-line-mask-03",
+            "page-101-source-line-mask-04",
+            "page-101-source-line-mask-05",
+            "page-101-source-line-mask-06",
+            "page-101-source-line-mask-07",
+            "page-101-source-line-mask-08",
+            "page-101-source-line-mask-09",
+            "page-101-source-line-mask-10",
+            "page-101-source-line-mask-26",
+            "page-101-source-line-mask-27",
+            "page-101-source-line-mask-28",
+            "page-101-source-line-mask-29",
+            "page-101-source-line-mask-30",
+            "page-101-source-line-mask-31",
+            "page-101-source-line-mask-32",
+            "page-101-source-line-mask-33",
+            "page-101-source-line-mask-34"
+          ],
+          "startsAtLayoutBlockId": "page-101-source-line-mask-09",
+          "startsAtSourceTextEs": "Conducción preventiva y eficiente",
+          "excludesSectionId": "ch5-gender-violence-prevention"
+        }
+      ]
     }
   ],
   "chapters": [
@@ -334,6 +496,23 @@
         "ch4-sleep-fatigue",
         "ch4-stress",
         "ch4-distractions"
+      ]
+    },
+    {
+      "id": "chapter-5-driving-behavior",
+      "labelRu": "Глава 5. Поведение за рулем",
+      "sourceTitleEs": "CAPÍTULO 5: ACTITUD AL CONDUCIR",
+      "sourcePageRange": {
+        "start": 98,
+        "end": 103
+      },
+      "requiredPrintedPage": 97,
+      "status": "active",
+      "sectionIds": [
+        "ch5-attitude-types",
+        "ch5-equal-society",
+        "ch5-gender-violence-prevention",
+        "ch5-anticipatory-efficient-driving"
       ]
     }
   ],
@@ -5605,6 +5784,813 @@
         "startsAtSourceTextEs": "Distracciones",
         "excludesSectionId": "ch4-stress"
       }
+    },
+    {
+      "id": "ch5-attitude-types",
+      "labelRu": "Типы установок",
+      "sourceTitleEs": "Tipos de actitudes",
+      "sourcePageRange": {
+        "start": 99,
+        "end": 99
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 99,
+          "manualManifestPointer": "/pages/98",
+          "layoutManifestPointer": "/pages/98",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-099.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 99,
+        "ownedRegion": "attitude-definition-positive-and-negative-attitude-types",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-099-source-line-mask-02",
+          "page-099-source-line-mask-03",
+          "page-099-source-line-mask-04",
+          "page-099-source-line-mask-05",
+          "page-099-source-line-mask-06",
+          "page-099-source-line-mask-07",
+          "page-099-source-line-mask-08",
+          "page-099-source-line-mask-09",
+          "page-099-source-line-mask-10",
+          "page-099-source-line-mask-11",
+          "page-099-source-line-mask-12",
+          "page-099-source-line-mask-13",
+          "page-099-source-line-mask-14",
+          "page-099-source-line-mask-15",
+          "page-099-source-line-mask-16",
+          "page-099-source-line-mask-29"
+        ],
+        "boundaryEvidence": "layout.ru.json page 99 masks 02-16 contain the attitude definition and positive/negative attitude types; mask 29 is the source heading Tipos de actitudes. Mask 17 starts Hacia una sociedad igualitaria and belongs to ch5-equal-society.",
+        "endsBeforeLayoutBlockId": "page-099-source-line-mask-17",
+        "excludesSectionId": "ch5-equal-society"
+      },
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch5-attitude-types",
+        "sourcePages": [
+          99
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 99,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-attitude-types/page-099-attitude-types-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "01819fe2995b5e281cfd8de0d6b2a6ffb3475bdae06b7507a0f103bd3dc33f50",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 99 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "01819fe2995b5e281cfd8de0d6b2a6ffb3475bdae06b7507a0f103bd3dc33f50"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch5-attitude-types.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch5-attitude-types/ch5-attitude-types-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch5-attitude-types/ch5-attitude-types-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch5-attitude-types-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 5 PR."
+          },
+          {
+            "id": "ch5-attitude-types-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 5 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Source page 99 attitude content is rendered as selectable Russian DOM text before the equality section boundary.",
+          "No Chapter 5 attitude visual is present or modified."
+        ],
+        "checkerResult": "pass"
+      },
+      "status": "implemented",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "routeHash": "#manual-section-ch5-attitude-types",
+      "sectionContentModulePath": "src/data/manual-sections/ch5-attitude-types.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded"
+    },
+    {
+      "id": "ch5-equal-society",
+      "labelRu": "К равноправному обществу",
+      "sourceTitleEs": "Hacia una sociedad igualitaria",
+      "sourcePageRange": {
+        "start": 99,
+        "end": 100
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 99,
+          "manualManifestPointer": "/pages/98",
+          "layoutManifestPointer": "/pages/98",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-099.jpg"
+        },
+        {
+          "sourcePage": 100,
+          "manualManifestPointer": "/pages/99",
+          "layoutManifestPointer": "/pages/99",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-100.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": [
+        {
+          "sharedSourcePage": 99,
+          "ownedRegion": "equal-society-heading-and-social-planning-context",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-099-source-line-mask-17",
+            "page-099-source-line-mask-18",
+            "page-099-source-line-mask-19",
+            "page-099-source-line-mask-20",
+            "page-099-source-line-mask-21",
+            "page-099-source-line-mask-22",
+            "page-099-source-line-mask-23",
+            "page-099-source-line-mask-24",
+            "page-099-source-line-mask-25",
+            "page-099-source-line-mask-26",
+            "page-099-source-line-mask-27",
+            "page-099-source-line-mask-28"
+          ],
+          "boundaryEvidence": "layout.ru.json page 99 mask 17 starts Hacia una sociedad igualitaria and masks 18-28 continue the equality/planning context after the attitude section.",
+          "startsAtLayoutBlockId": "page-099-source-line-mask-17",
+          "startsAtSourceTextEs": "Hacia una sociedad igualitaria",
+          "excludesSectionId": "ch5-attitude-types"
+        },
+        {
+          "sharedSourcePage": 100,
+          "ownedRegion": "equal-society-mobility-patterns-right-to-city-and-caba-context-visual",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-02",
+            "page-100-source-line-mask-03",
+            "page-100-source-line-mask-04",
+            "page-100-source-line-mask-05",
+            "page-100-source-line-mask-06",
+            "page-100-source-line-mask-07",
+            "page-100-source-line-mask-08",
+            "page-100-source-line-mask-09",
+            "page-100-source-line-mask-10",
+            "page-100-source-line-mask-11",
+            "page-100-source-line-mask-12",
+            "page-100-source-line-mask-17",
+            "page-100-source-line-mask-18"
+          ],
+          "boundaryEvidence": "layout.ru.json page 100 masks 02-12 continue equality mobility patterns and right-to-city content; masks 17-18 label the Contexto de Ciudad de Buenos Aires visual. Mask 19 starts the gender-violence support heading.",
+          "endsBeforeLayoutBlockId": "page-100-source-line-mask-19",
+          "excludesSectionId": "ch5-gender-violence-prevention"
+        }
+      ],
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch5-equal-society",
+        "sourcePages": [
+          99,
+          100
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 99,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-equal-society/page-099-equal-society-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "01819fe2995b5e281cfd8de0d6b2a6ffb3475bdae06b7507a0f103bd3dc33f50",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 99 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "01819fe2995b5e281cfd8de0d6b2a6ffb3475bdae06b7507a0f103bd3dc33f50"
+            }
+          },
+          {
+            "sourcePage": 100,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-equal-society/page-100-equal-society-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "293e92c30067c31157948b334e8e364cdb3ec1d8ced72590dfa081711751268f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 100 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "293e92c30067c31157948b334e8e364cdb3ec1d8ced72590dfa081711751268f"
+            }
+          },
+          {
+            "sourcePage": 100,
+            "sourceRegion": {
+              "x": 900,
+              "y": 1830,
+              "width": 1220,
+              "height": 175
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-equal-society/page-100-mobility-context-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1220,
+              "height": 175
+            },
+            "cropSha256": "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633",
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 100 source crop using top-left coordinates; retained as the source crop for glyph-letter-level infographic transfer without resizing",
+              "outputDimensions": {
+                "width": 1220,
+                "height": 175
+              },
+              "sha256": "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch5-equal-society.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-mobility-context",
+            "assetCategory": "source-transferred-infographic",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "width": 1220,
+            "height": 175,
+            "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "maxHeightCssPx": 175,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 100 source crop transferred as the base image; Spanish letter pixels cleaned with background restoration, output kept at source crop dimensions with no resize or upscale",
+              "outputDimensions": {
+                "width": 1220,
+                "height": 175
+              },
+              "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846"
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch5-equal-society/page-100-mobility-context-source-crop.jpg",
+              "sourceCropSha256": "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633",
+              "sourceCropDimensions": {
+                "width": 1220,
+                "height": 175
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "cleanupMethod": "glyph-letter-level-background-restoration",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "public-transport-label",
+                  "textRu": "общественный транспорт",
+                  "xPct": 45.5,
+                  "yPct": 10.5,
+                  "widthPct": 25,
+                  "heightPct": 23,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "work-study-label",
+                  "textRu": "работа / учеба",
+                  "xPct": 50.5,
+                  "yPct": 43,
+                  "widthPct": 24.5,
+                  "heightPct": 20,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "care-tasks-label",
+                  "textRu": "задачи ухода",
+                  "xPct": 50.5,
+                  "yPct": 66,
+                  "widthPct": 27,
+                  "heightPct": 23,
+                  "tone": "dark-on-light"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
+            }
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch5-equal-society/ch5-equal-society-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch5-equal-society/ch5-equal-society-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch5-equal-society-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 5 PR."
+          },
+          {
+            "id": "ch5-equal-society-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 5 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "The page 100 mobility-context infographic uses the transferred source-crop PNG as its image base, with letter-level Spanish cleanup and selectable Russian labels over the cleaned source surface.",
+          "Source map, person pictogram, public-transport icons, and numeric values remain source-derived; no protected photo, sign, or marking is modified."
+        ],
+        "checkerResult": "pass"
+      },
+      "status": "implemented",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "routeHash": "#manual-section-ch5-equal-society",
+      "sectionContentModulePath": "src/data/manual-sections/ch5-equal-society.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded"
+    },
+    {
+      "id": "ch5-gender-violence-prevention",
+      "labelRu": "Профилактика и помощь в ситуациях гендерного насилия",
+      "sourceTitleEs": "Prevención y asistencia en situaciones de violencia de género",
+      "sourcePageRange": {
+        "start": 100,
+        "end": 101
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 100,
+          "manualManifestPointer": "/pages/99",
+          "layoutManifestPointer": "/pages/99",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-100.jpg"
+        },
+        {
+          "sourcePage": 101,
+          "manualManifestPointer": "/pages/100",
+          "layoutManifestPointer": "/pages/100",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-101.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": [
+        {
+          "sharedSourcePage": 100,
+          "ownedRegion": "gender-violence-heading-911-and-22676-support-line",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-100-source-line-mask-13",
+            "page-100-source-line-mask-14",
+            "page-100-source-line-mask-15",
+            "page-100-source-line-mask-16",
+            "page-100-source-line-mask-19",
+            "page-100-source-line-mask-20"
+          ],
+          "boundaryEvidence": "layout.ru.json page 100 masks 19-20 start the gender-violence support heading; masks 13-16 contain the 911 and 22676 ACOSO support-line details after the equality content.",
+          "startsAtLayoutBlockId": "page-100-source-line-mask-19",
+          "startsAtSourceTextEs": "Prevención y asistencia en situaciones de violencia de género",
+          "excludesSectionId": "ch5-equal-society"
+        },
+        {
+          "sharedSourcePage": 101,
+          "ownedRegion": "sms-report-containment-and-not-911-derivation-block",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-101-source-line-mask-11",
+            "page-101-source-line-mask-12",
+            "page-101-source-line-mask-13",
+            "page-101-source-line-mask-14",
+            "page-101-source-line-mask-15",
+            "page-101-source-line-mask-16",
+            "page-101-source-line-mask-17",
+            "page-101-source-line-mask-18",
+            "page-101-source-line-mask-19",
+            "page-101-source-line-mask-20",
+            "page-101-source-line-mask-21",
+            "page-101-source-line-mask-22",
+            "page-101-source-line-mask-23",
+            "page-101-source-line-mask-24",
+            "page-101-source-line-mask-25"
+          ],
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body.",
+          "excludesSectionId": "ch5-anticipatory-efficient-driving"
+        }
+      ],
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch5-gender-violence-prevention",
+        "sourcePages": [
+          100,
+          101
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 100,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-gender-violence-prevention/page-100-gender-violence-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "293e92c30067c31157948b334e8e364cdb3ec1d8ced72590dfa081711751268f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 100 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "293e92c30067c31157948b334e8e364cdb3ec1d8ced72590dfa081711751268f"
+            }
+          },
+          {
+            "sourcePage": 101,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-gender-violence-prevention/page-101-gender-violence-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9f4d39d482998b99d630bf231457d473297fc59a081915ab1cb9e74fb9a33750",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 101 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9f4d39d482998b99d630bf231457d473297fc59a081915ab1cb9e74fb9a33750"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch5-gender-violence-prevention/ch5-gender-violence-prevention-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch5-gender-violence-prevention/ch5-gender-violence-prevention-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch5-gender-violence-prevention-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 5 PR."
+          },
+          {
+            "id": "ch5-gender-violence-prevention-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 5 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "The gender-violence support route preserves 911, 22676 ACOSO, 24/365, SMS, report, containment, and not-911-derivation details as selectable Russian DOM text.",
+          "No Chapter 5 gender-violence support visual is present or modified."
+        ],
+        "checkerResult": "pass"
+      },
+      "status": "implemented",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "routeHash": "#manual-section-ch5-gender-violence-prevention",
+      "sectionContentModulePath": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded"
+    },
+    {
+      "id": "ch5-anticipatory-efficient-driving",
+      "labelRu": "Предупредительное и эффективное вождение",
+      "sourceTitleEs": "Conducción preventiva y eficiente",
+      "sourcePageRange": {
+        "start": 101,
+        "end": 103
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 101,
+          "manualManifestPointer": "/pages/100",
+          "layoutManifestPointer": "/pages/100",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-101.jpg"
+        },
+        {
+          "sourcePage": 102,
+          "manualManifestPointer": "/pages/101",
+          "layoutManifestPointer": "/pages/101",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-102.jpg"
+        },
+        {
+          "sourcePage": 103,
+          "manualManifestPointer": "/pages/102",
+          "layoutManifestPointer": "/pages/102",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-103.jpg"
+        }
+      ],
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 101,
+        "ownedRegion": "preventive-efficient-driving-heading-preventive-and-efficient-driving-content",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-101-source-line-mask-02",
+          "page-101-source-line-mask-03",
+          "page-101-source-line-mask-04",
+          "page-101-source-line-mask-05",
+          "page-101-source-line-mask-06",
+          "page-101-source-line-mask-07",
+          "page-101-source-line-mask-08",
+          "page-101-source-line-mask-09",
+          "page-101-source-line-mask-10",
+          "page-101-source-line-mask-26",
+          "page-101-source-line-mask-27",
+          "page-101-source-line-mask-28",
+          "page-101-source-line-mask-29",
+          "page-101-source-line-mask-30",
+          "page-101-source-line-mask-31",
+          "page-101-source-line-mask-32",
+          "page-101-source-line-mask-33",
+          "page-101-source-line-mask-34"
+        ],
+        "boundaryEvidence": "layout.ru.json page 101 mask 09 starts Conducción preventiva y eficiente; masks 02-10 and 26-34 contain the preventive/efficient driving content on the shared page. Masks 11-25 belong to the preceding gender-violence support route.",
+        "startsAtLayoutBlockId": "page-101-source-line-mask-09",
+        "startsAtSourceTextEs": "Conducción preventiva y eficiente",
+        "excludesSectionId": "ch5-gender-violence-prevention"
+      },
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "ch5-anticipatory-efficient-driving",
+        "sourcePages": [
+          101,
+          102,
+          103
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 101,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-101-anticipatory-efficient-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9f4d39d482998b99d630bf231457d473297fc59a081915ab1cb9e74fb9a33750",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 101 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9f4d39d482998b99d630bf231457d473297fc59a081915ab1cb9e74fb9a33750"
+            }
+          },
+          {
+            "sourcePage": 102,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-102-anticipatory-efficient-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "261d60976457ae6af8bd3b3f90df5dd1b17105f231495d1d4993ffca43196f45",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 102 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "261d60976457ae6af8bd3b3f90df5dd1b17105f231495d1d4993ffca43196f45"
+            }
+          },
+          {
+            "sourcePage": 103,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-anticipatory-efficient-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "8c4f8ddcfa1285662bac46e62a028a78e8ba77b34584ffe187071ee0bd104462",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, copied as x5 page 103 evidence without resizing or cleanup",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8c4f8ddcfa1285662bac46e62a028a78e8ba77b34584ffe187071ee0bd104462"
+            }
+          },
+          {
+            "sourcePage": 103,
+            "sourceRegion": {
+              "x": 740,
+              "y": 1080,
+              "width": 1500,
+              "height": 2200
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
+            "cropDimensions": {
+              "width": 1500,
+              "height": 2200
+            },
+            "cropSha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 103 source crop using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1500,
+                "height": 2200
+              },
+              "sha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts",
+            "assetKind": "selectable-russian-dom-text",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-photo-driving-culture-quote",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 1500,
+            "height": 2200,
+            "sha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 520,
+              "maxHeightCssPx": 2200,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "x5 page 103 source crop using top-left coordinates; copied to runtime without resizing or cleanup",
+              "outputDimensions": {
+                "width": 1500,
+                "height": 2200
+              },
+              "sha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg"
+            }
+          ]
+        },
+        "selectableTextStatus": "pass",
+        "desktopScreenshot": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/ch5-anticipatory-efficient-driving-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/ch5-anticipatory-efficient-driving/ch5-anticipatory-efficient-driving-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "id": "ch5-anticipatory-efficient-driving-desktop-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright desktop screenshot and visible section checks recorded for the Chapter 5 PR."
+          },
+          {
+            "id": "ch5-anticipatory-efficient-driving-mobile-no-overflow",
+            "status": "pass",
+            "evidence": "Focused Playwright mobile screenshot and visible section checks recorded for the Chapter 5 PR."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "notes": "No runtime PDF viewer, page-image reader, remote asset, source-image relabeling, source visual cleanup, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Preventive and efficient driving rules, including source numeric details, are rendered as selectable Russian DOM text from source pages 101-103.",
+          "The page 103 driving-culture photo and quote remain an x5 source-as-is runtime crop with matching source crop hash and Russian learner explanation outside the protected image."
+        ],
+        "checkerResult": "pass"
+      },
+      "status": "implemented",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+      "sectionContentModulePath": "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded"
     }
   ]
 }
