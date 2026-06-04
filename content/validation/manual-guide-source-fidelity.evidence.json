@@ -2,11 +2,11 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "complete-chapters-1-through-5-and-appendices-1-through-2",
+  "mode": "complete-chapters-1-through-5-and-appendices-1-through-3",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 151
+    "end": 183
   },
   "skippedSourcePages": [
     {
@@ -57,6 +57,13 @@
       "parentChapterId": "appendix-1-private-cars",
       "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
       "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
+    },
+    {
+      "sourcePage": 152,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-3-cargo",
+      "sourceTitleEs": "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
+      "disposition": "Appendix III divider/title page is represented by the Appendix III navigation parent; no standalone learner page, route, module, placeholder, or implementation PR content is created."
     }
   ],
   "expectedSectionIds": [
@@ -94,7 +101,13 @@
     "app2-safety-elements",
     "app2-driving-factors",
     "app2-safe-driving",
-    "app2-highways-hospitals"
+    "app2-highways-hospitals",
+    "app3-cargo-driver-profile",
+    "app3-social-responsibility",
+    "app3-driving-factors",
+    "app3-safe-driving",
+    "app3-safety-elements",
+    "app3-highways"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -236,6 +249,30 @@
     "app2-highways-hospitals": {
       "start": 149,
       "end": 151
+    },
+    "app3-cargo-driver-profile": {
+      "start": 153,
+      "end": 154
+    },
+    "app3-social-responsibility": {
+      "start": 155,
+      "end": 159
+    },
+    "app3-driving-factors": {
+      "start": 160,
+      "end": 161
+    },
+    "app3-safe-driving": {
+      "start": 162,
+      "end": 168
+    },
+    "app3-safety-elements": {
+      "start": 169,
+      "end": 181
+    },
+    "app3-highways": {
+      "start": 182,
+      "end": 183
     }
   },
   "sharedSourcePageOwnership": [
@@ -969,7 +1006,7 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 35,
+    "implementedSections": 41,
     "skippedSourcePages": [
       21,
       43,
@@ -977,7 +1014,8 @@
       57,
       89,
       98,
-      104
+      104,
+      152
     ],
     "skippedDividerPages": [
       21,
@@ -985,7 +1023,8 @@
       57,
       89,
       98,
-      104
+      104,
+      152
     ],
     "omittedBookOnlyPages": [
       56
@@ -1000,7 +1039,7 @@
       101,
       119
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections",
-    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_3_sections",
+    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_3_sections"
   }
 }

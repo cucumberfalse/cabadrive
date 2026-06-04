@@ -1,4 +1,10 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { app3CargoDriverProfileSection } from "./manual-sections/app3-cargo-driver-profile";
+import { app3DrivingFactorsSection } from "./manual-sections/app3-driving-factors";
+import { app3HighwaysSection } from "./manual-sections/app3-highways";
+import { app3SafeDrivingSection } from "./manual-sections/app3-safe-driving";
+import { app3SafetyElementsSection } from "./manual-sections/app3-safety-elements";
+import { app3SocialResponsibilitySection } from "./manual-sections/app3-social-responsibility";
 import { app2DrivingFactorsSection } from "./manual-sections/app2-driving-factors";
 import { app2HighwaysHospitalsSection } from "./manual-sections/app2-highways-hospitals";
 import { app2SafeDrivingSection } from "./manual-sections/app2-safe-driving";
@@ -749,7 +755,13 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   app2SafetyElementsSection,
   app2DrivingFactorsSection,
   app2SafeDrivingSection,
-  app2HighwaysHospitalsSection
+  app2HighwaysHospitalsSection,
+  app3CargoDriverProfileSection,
+  app3SocialResponsibilitySection,
+  app3DrivingFactorsSection,
+  app3SafeDrivingSection,
+  app3SafetyElementsSection,
+  app3HighwaysSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -950,23 +962,6 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
     }))
   },
   ...chapter12NavigationEntries,
-  {
-    id: "annex-3",
-    kind: "annex",
-    labelRu: "Приложение III. Грузовой транспорт и перевозка товаров",
-    sourceTitleEs: "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
-    sourcePage: 152,
-    requiredPrintedPage: 151,
-    status: "pending",
-    children: [
-      pendingTopic("annex-3-profile", "Профиль грузоперевозчика", "Perfil del transportista de cargas"),
-      pendingTopic("annex-3-social", "Социальная ответственность", "Una responsabilidad social"),
-      pendingTopic("annex-3-factors", "Факторы вождения", "Factores involucrados en la conducción"),
-      pendingTopic("annex-3-safe-driving", "Безопасное вождение", "Conducción segura"),
-      pendingTopic("annex-3-safety", "Элементы безопасности", "Elementos de seguridad"),
-      pendingTopic("annex-3-highways", "Автомагистрали", "Autopistas")
-    ]
-  },
   {
     id: "annex-4",
     kind: "annex",

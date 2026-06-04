@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-2",
+  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-3",
   "sourcePageRange": {
     "start": 21,
-    "end": 151
+    "end": 183
   },
   "skippedSourcePages": [
     {
@@ -56,6 +56,13 @@
       "parentChapterId": "appendix-1-private-cars",
       "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
       "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
+    },
+    {
+      "sourcePage": 152,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-3-cargo",
+      "sourceTitleEs": "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
+      "disposition": "Appendix III divider/title page is represented by the Appendix III navigation parent; no standalone learner page, route, module, placeholder, or implementation PR content is created."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -598,6 +605,25 @@
         "app2-driving-factors",
         "app2-safe-driving",
         "app2-highways-hospitals"
+      ]
+    },
+    {
+      "id": "appendix-3-cargo",
+      "labelRu": "Приложение III. Перевозка грузов и товаров",
+      "sourceTitleEs": "ANEXO III TRANSPORTE DE CARGA Y MERCADERÍAS",
+      "sourcePageRange": {
+        "start": 152,
+        "end": 183
+      },
+      "requiredPrintedPage": 151,
+      "status": "active",
+      "sectionIds": [
+        "app3-cargo-driver-profile",
+        "app3-social-responsibility",
+        "app3-driving-factors",
+        "app3-safe-driving",
+        "app3-safety-elements",
+        "app3-highways"
       ]
     }
   ],
@@ -9347,6 +9373,1500 @@
           "Paseo del Bajo runtime content remains in app2-highways-hospitals with local sourcePage 149 provenance under repository sourcePage convention.",
           "Page 150 hospital map remains an owner-approved source-as-is visible-Spanish exception: the x5 source map is reused byte-identically at runtime, and Russian title/list translations are adjacent to or below the unchanged image as selectable DOM text.",
           "No protected visual, source crop, source page render, photo, traffic sign, road marking, or hospital-map pixel was edited."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-cargo-driver-profile",
+      "labelRu": "Профиль перевозчика грузов",
+      "sourceTitleEs": "Perfil del transportista de cargas",
+      "routeHash": "#manual-section-app3-cargo-driver-profile",
+      "sourcePageRange": {
+        "start": 153,
+        "end": 154
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 153,
+          "manualManifestPointer": "/pages/152",
+          "layoutManifestPointer": "/pages/152",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-153.jpg"
+        },
+        {
+          "sourcePage": 154,
+          "manualManifestPointer": "/pages/153",
+          "layoutManifestPointer": "/pages/153",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-154.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-cargo-driver-profile.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-cargo-driver-profile",
+        "sourcePages": [
+          153,
+          154
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 153,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-cargo-driver-profile/page-153-cargo-driver-profile-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "c96b2f93799f7b32a31e537683fd2fcfcf3ec9ad41b6dfc9db9ed2ddd7e05558",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "c96b2f93799f7b32a31e537683fd2fcfcf3ec9ad41b6dfc9db9ed2ddd7e05558"
+            }
+          },
+          {
+            "sourcePage": 154,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-cargo-driver-profile/page-154-cargo-driver-profile-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b0cbdcf3457e448d1dc88fc466f177b8002d5e0689158beb432778b5186ab924",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b0cbdcf3457e448d1dc88fc466f177b8002d5e0689158beb432778b5186ab924"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-cargo-driver-profile.ts",
+            "assetKind": "selectable-russian-dom-text-app3-cargo-driver-profile",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-cargo-driver-profile renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-cargo-driver-profile/app3-cargo-driver-profile-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-cargo-driver-profile/app3-cargo-driver-profile-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-social-responsibility",
+      "labelRu": "Социальная ответственность",
+      "sourceTitleEs": "Una responsabilidad social",
+      "routeHash": "#manual-section-app3-social-responsibility",
+      "sourcePageRange": {
+        "start": 155,
+        "end": 159
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 155,
+          "manualManifestPointer": "/pages/154",
+          "layoutManifestPointer": "/pages/154",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-155.jpg"
+        },
+        {
+          "sourcePage": 156,
+          "manualManifestPointer": "/pages/155",
+          "layoutManifestPointer": "/pages/155",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-156.jpg"
+        },
+        {
+          "sourcePage": 157,
+          "manualManifestPointer": "/pages/156",
+          "layoutManifestPointer": "/pages/156",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-157.jpg"
+        },
+        {
+          "sourcePage": 158,
+          "manualManifestPointer": "/pages/157",
+          "layoutManifestPointer": "/pages/157",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-158.jpg"
+        },
+        {
+          "sourcePage": 159,
+          "manualManifestPointer": "/pages/158",
+          "layoutManifestPointer": "/pages/158",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-159.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-social-responsibility.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-social-responsibility",
+        "sourcePages": [
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 155,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-social-responsibility/page-155-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "4af1560ce73d19e21d082cda178eecc620c18c001368f99ee0680a11e8b28dc5",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4af1560ce73d19e21d082cda178eecc620c18c001368f99ee0680a11e8b28dc5"
+            }
+          },
+          {
+            "sourcePage": 156,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-social-responsibility/page-156-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b91ae0f008dec063f144b64ee44dbdb981f7c62ceedd5cd1bd6a391d13dbda4d",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b91ae0f008dec063f144b64ee44dbdb981f7c62ceedd5cd1bd6a391d13dbda4d"
+            }
+          },
+          {
+            "sourcePage": 157,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-social-responsibility/page-157-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "ee6c35dc884a3635270a29210185a00ca1612c5b8e642af28e4bea975497cf21",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "ee6c35dc884a3635270a29210185a00ca1612c5b8e642af28e4bea975497cf21"
+            }
+          },
+          {
+            "sourcePage": 158,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-social-responsibility/page-158-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "486daa414c81320bf958aba6fb2f981ddc436ea04f6ba39649182f6a8f69858f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "486daa414c81320bf958aba6fb2f981ddc436ea04f6ba39649182f6a8f69858f"
+            }
+          },
+          {
+            "sourcePage": 159,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-social-responsibility/page-159-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "84803012af54d9f7d5290e07b1dd207df0384f3dc53058a348d19a02653f4f44",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "84803012af54d9f7d5290e07b1dd207df0384f3dc53058a348d19a02653f4f44"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-social-responsibility.ts",
+            "assetKind": "selectable-russian-dom-text-app3-social-responsibility",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-social-responsibility renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-social-responsibility/app3-social-responsibility-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-social-responsibility/app3-social-responsibility-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice.",
+          "Page 157 cargo-handling pictograms with Spanish source labels remain x5 source evidence only; the learner-facing rules are Russian selectable DOM text outside the source visual."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-driving-factors",
+      "labelRu": "Факторы, участвующие в вождении",
+      "sourceTitleEs": "Factores involucrados en la conduccion",
+      "routeHash": "#manual-section-app3-driving-factors",
+      "sourcePageRange": {
+        "start": 160,
+        "end": 161
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 160,
+          "manualManifestPointer": "/pages/159",
+          "layoutManifestPointer": "/pages/159",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-160.jpg"
+        },
+        {
+          "sourcePage": 161,
+          "manualManifestPointer": "/pages/160",
+          "layoutManifestPointer": "/pages/160",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-161.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-driving-factors.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-driving-factors",
+        "sourcePages": [
+          160,
+          161
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 160,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-driving-factors/page-160-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "f624ae82cbeee938118e25d23212da6f1707502a01d6ac78b4d0f18b41b1a2c6",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "f624ae82cbeee938118e25d23212da6f1707502a01d6ac78b4d0f18b41b1a2c6"
+            }
+          },
+          {
+            "sourcePage": 161,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-driving-factors/page-161-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "d4b3c069c30038520d39f79cff6541d83e67469136565bffe7524d5ba6c8877f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "d4b3c069c30038520d39f79cff6541d83e67469136565bffe7524d5ba6c8877f"
+            }
+          },
+          {
+            "sourcePage": 161,
+            "sourceRegion": {
+              "x": 820,
+              "y": 1800,
+              "width": 1350,
+              "height": 430
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-driving-factors/page-161-body-posture-source-crop.png",
+            "cropDimensions": {
+              "width": 1350,
+              "height": 430
+            },
+            "cropSha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e",
+            "cleanupScope": "source-as-is runtime body-posture photo/callout crop; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the Appendix III x5 page 161 source evidence and reused byte-identically as the runtime body-posture image; crop is not resized, redrawn, cleaned, masked, inpainted, relabeled, or otherwise modified.",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 430
+              },
+              "sha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-driving-factors.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-body-posture-explanation",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
+            "assetKind": "high-resolution-original-source-body-posture-photo-page-161",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 1350,
+            "height": 430,
+            "sha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix III x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 1350,
+                "height": 430
+              },
+              "sha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app3-driving-factors/page-161-body-posture-source-crop.png",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "page-161-body-posture-photo-and-callouts-only"
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "page-161-body-posture-photo-and-callouts-only"
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-driving-factors renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-driving-factors/app3-driving-factors-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-driving-factors/app3-driving-factors-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-safe-driving",
+      "labelRu": "Безопасное вождение",
+      "sourceTitleEs": "Conduccion segura",
+      "routeHash": "#manual-section-app3-safe-driving",
+      "sourcePageRange": {
+        "start": 162,
+        "end": 168
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 162,
+          "manualManifestPointer": "/pages/161",
+          "layoutManifestPointer": "/pages/161",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-162.jpg"
+        },
+        {
+          "sourcePage": 163,
+          "manualManifestPointer": "/pages/162",
+          "layoutManifestPointer": "/pages/162",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-163.jpg"
+        },
+        {
+          "sourcePage": 164,
+          "manualManifestPointer": "/pages/163",
+          "layoutManifestPointer": "/pages/163",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-164.jpg"
+        },
+        {
+          "sourcePage": 165,
+          "manualManifestPointer": "/pages/164",
+          "layoutManifestPointer": "/pages/164",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-165.jpg"
+        },
+        {
+          "sourcePage": 166,
+          "manualManifestPointer": "/pages/165",
+          "layoutManifestPointer": "/pages/165",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-166.jpg"
+        },
+        {
+          "sourcePage": 167,
+          "manualManifestPointer": "/pages/166",
+          "layoutManifestPointer": "/pages/166",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-167.jpg"
+        },
+        {
+          "sourcePage": 168,
+          "manualManifestPointer": "/pages/167",
+          "layoutManifestPointer": "/pages/167",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-168.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-safe-driving.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-safe-driving",
+        "sourcePages": [
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 162,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-162-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "33298dd73ccf1bbdaedd45a891ba979d8cc580efe17e42176631abc1f5eff1bb",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "33298dd73ccf1bbdaedd45a891ba979d8cc580efe17e42176631abc1f5eff1bb"
+            }
+          },
+          {
+            "sourcePage": 163,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-163-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e392bd900e1e30951081e8b8f19da3986e0b9006bb28c04cac07c7ffabfc80bc",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e392bd900e1e30951081e8b8f19da3986e0b9006bb28c04cac07c7ffabfc80bc"
+            }
+          },
+          {
+            "sourcePage": 164,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-164-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "6115081a8f47a5f6db06dfa04c491c991220a01c939fdcba6e0370b5caf8d14f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "6115081a8f47a5f6db06dfa04c491c991220a01c939fdcba6e0370b5caf8d14f"
+            }
+          },
+          {
+            "sourcePage": 165,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-165-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7c42c10b9c39c87346afe59a5e1d7738a1049f3fcd263e62d20bcf090d4bf065",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7c42c10b9c39c87346afe59a5e1d7738a1049f3fcd263e62d20bcf090d4bf065"
+            }
+          },
+          {
+            "sourcePage": 166,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-166-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "77b1906455dd259e5f4076400ecaf6e7b6c24699f9d435053e323dd517d249c5",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "77b1906455dd259e5f4076400ecaf6e7b6c24699f9d435053e323dd517d249c5"
+            }
+          },
+          {
+            "sourcePage": 167,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-167-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7aa460564f8f8d922c5a5ae9776b035afa8b72b86a274fba9396a54a1426fc11",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7aa460564f8f8d922c5a5ae9776b035afa8b72b86a274fba9396a54a1426fc11"
+            }
+          },
+          {
+            "sourcePage": 168,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safe-driving/page-168-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "99956552d206d8be666c3f3cc39f5b0616c286639489f81ebcc418692aa6934e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "99956552d206d8be666c3f3cc39f5b0616c286639489f81ebcc418692aa6934e"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-safe-driving.ts",
+            "assetKind": "selectable-russian-dom-text-app3-safe-driving",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-safe-driving renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-safe-driving/app3-safe-driving-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-safe-driving/app3-safe-driving-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice.",
+          "Source truck/road and Paseo del Bajo images remain x5 source evidence only; the route, lane, mass, authorization, and 60 km/h details are Russian selectable DOM text."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-safety-elements",
+      "labelRu": "Элементы безопасности",
+      "sourceTitleEs": "Elementos de seguridad",
+      "routeHash": "#manual-section-app3-safety-elements",
+      "sourcePageRange": {
+        "start": 169,
+        "end": 181
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 169,
+          "manualManifestPointer": "/pages/168",
+          "layoutManifestPointer": "/pages/168",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-169.jpg"
+        },
+        {
+          "sourcePage": 170,
+          "manualManifestPointer": "/pages/169",
+          "layoutManifestPointer": "/pages/169",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-170.jpg"
+        },
+        {
+          "sourcePage": 171,
+          "manualManifestPointer": "/pages/170",
+          "layoutManifestPointer": "/pages/170",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-171.jpg"
+        },
+        {
+          "sourcePage": 172,
+          "manualManifestPointer": "/pages/171",
+          "layoutManifestPointer": "/pages/171",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-172.jpg"
+        },
+        {
+          "sourcePage": 173,
+          "manualManifestPointer": "/pages/172",
+          "layoutManifestPointer": "/pages/172",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-173.jpg"
+        },
+        {
+          "sourcePage": 174,
+          "manualManifestPointer": "/pages/173",
+          "layoutManifestPointer": "/pages/173",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-174.jpg"
+        },
+        {
+          "sourcePage": 175,
+          "manualManifestPointer": "/pages/174",
+          "layoutManifestPointer": "/pages/174",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-175.jpg"
+        },
+        {
+          "sourcePage": 176,
+          "manualManifestPointer": "/pages/175",
+          "layoutManifestPointer": "/pages/175",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-176.jpg"
+        },
+        {
+          "sourcePage": 177,
+          "manualManifestPointer": "/pages/176",
+          "layoutManifestPointer": "/pages/176",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-177.jpg"
+        },
+        {
+          "sourcePage": 178,
+          "manualManifestPointer": "/pages/177",
+          "layoutManifestPointer": "/pages/177",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-178.jpg"
+        },
+        {
+          "sourcePage": 179,
+          "manualManifestPointer": "/pages/178",
+          "layoutManifestPointer": "/pages/178",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-179.jpg"
+        },
+        {
+          "sourcePage": 180,
+          "manualManifestPointer": "/pages/179",
+          "layoutManifestPointer": "/pages/179",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-180.jpg"
+        },
+        {
+          "sourcePage": 181,
+          "manualManifestPointer": "/pages/180",
+          "layoutManifestPointer": "/pages/180",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-181.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-safety-elements.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-safety-elements",
+        "sourcePages": [
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 169,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-169-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a1915b872ce452ebd3b95812be385510e59845124a7f1a3e09f0fcd305fdbd98",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a1915b872ce452ebd3b95812be385510e59845124a7f1a3e09f0fcd305fdbd98"
+            }
+          },
+          {
+            "sourcePage": 170,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-170-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "2fdc22820a57911bc716fd9c2274d8954fd524c86e219f074bd52df71546e562",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "2fdc22820a57911bc716fd9c2274d8954fd524c86e219f074bd52df71546e562"
+            }
+          },
+          {
+            "sourcePage": 171,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-171-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "3c9caee39b110eaeedefc03a934c8bf0fdbaf803fe40b963caf26a4b1ead99a8",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "3c9caee39b110eaeedefc03a934c8bf0fdbaf803fe40b963caf26a4b1ead99a8"
+            }
+          },
+          {
+            "sourcePage": 172,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-172-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "8f98fb09e9acae728bd7577a00d87e91d5a73ee31402206520074f02584e35e3",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8f98fb09e9acae728bd7577a00d87e91d5a73ee31402206520074f02584e35e3"
+            }
+          },
+          {
+            "sourcePage": 173,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-173-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "ea65491733139eb898b4ff2b9e5ee320354fbd9888c2f169b1632da02ccb63db",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "ea65491733139eb898b4ff2b9e5ee320354fbd9888c2f169b1632da02ccb63db"
+            }
+          },
+          {
+            "sourcePage": 174,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-174-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5222a092185be114836baa5864faf04d4f6e59af2fa3fd6799581f171c5c3ea4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5222a092185be114836baa5864faf04d4f6e59af2fa3fd6799581f171c5c3ea4"
+            }
+          },
+          {
+            "sourcePage": 175,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-175-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "f7bc435492f8df29955d2836158c85f1af24e96585c534d5e2d44de0d75d706d",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "f7bc435492f8df29955d2836158c85f1af24e96585c534d5e2d44de0d75d706d"
+            }
+          },
+          {
+            "sourcePage": 176,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-176-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9d0640fa31a0840bb189112ffcd527b201039564964cc600b3693c3f546eaac3",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9d0640fa31a0840bb189112ffcd527b201039564964cc600b3693c3f546eaac3"
+            }
+          },
+          {
+            "sourcePage": 177,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-177-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "2c1f73c590737545328490347a77251edc89894ca402a8730cc88133834a2fd5",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "2c1f73c590737545328490347a77251edc89894ca402a8730cc88133834a2fd5"
+            }
+          },
+          {
+            "sourcePage": 178,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-178-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e6f117df4efd3b1e59d41fbcaaa9d911966a41983d2f83c6a96af39a80b875fb",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e6f117df4efd3b1e59d41fbcaaa9d911966a41983d2f83c6a96af39a80b875fb"
+            }
+          },
+          {
+            "sourcePage": 179,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-179-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a76d2f51551d83493773e2cbfac453d6e3146bae0fddaf64befa7bba00f270b1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a76d2f51551d83493773e2cbfac453d6e3146bae0fddaf64befa7bba00f270b1"
+            }
+          },
+          {
+            "sourcePage": 180,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-180-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9d7e1b5147d75485f2927cac5dd8d3f700f1980ac3aba24d126f44de0fe57505",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9d7e1b5147d75485f2927cac5dd8d3f700f1980ac3aba24d126f44de0fe57505"
+            }
+          },
+          {
+            "sourcePage": 181,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-181-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "121a9acb61439f38cfbbf148dd40b42f384d320966aefbfbe7ddda183a40a333",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "121a9acb61439f38cfbbf148dd40b42f384d320966aefbfbe7ddda183a40a333"
+            }
+          },
+          {
+            "sourcePage": 176,
+            "sourceRegion": {
+              "x": 875,
+              "y": 1250,
+              "width": 1175,
+              "height": 1125
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-176-seatbelt-source-crop.png",
+            "cropDimensions": {
+              "width": 1175,
+              "height": 1125
+            },
+            "cropSha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741",
+            "cleanupScope": "source-as-is runtime seatbelt photo/caption crop; no Spanish cleanup or pixel modification",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the Appendix III x5 page 176 source evidence and reused byte-identically as the runtime seatbelt image; crop is not resized, redrawn, cleaned, masked, inpainted, relabeled, or otherwise modified.",
+              "outputDimensions": {
+                "width": 1175,
+                "height": 1125
+              },
+              "sha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-safety-elements.ts",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-seatbelt-explanation",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
+            "assetKind": "high-resolution-original-source-seatbelt-photo-page-176",
+            "assetCategory": "source-as-is-photo",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 1175,
+            "height": 1125,
+            "sha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime image is byte-identical to the Appendix III x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "outputDimensions": {
+                "width": 1175,
+                "height": 1125
+              },
+              "sha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app3-safety-elements/page-176-seatbelt-source-crop.png",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "page-176-seatbelt-photo-and-captions-only"
+            }
+          }
+        ],
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-04",
+              "scope": "page-176-seatbelt-photo-and-captions-only"
+            }
+          ]
+        },
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-safety-elements renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-safety-elements/app3-safety-elements-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-safety-elements/app3-safety-elements-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice.",
+          "Page 179 impact-speed infographic and page 180 equipment illustrations remain x5 source evidence; learner-facing values and rules are Russian selectable DOM text rather than translated inside source graphics."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app3-highways",
+      "labelRu": "Автомагистрали",
+      "sourceTitleEs": "Autopistas",
+      "routeHash": "#manual-section-app3-highways",
+      "sourcePageRange": {
+        "start": 182,
+        "end": 183
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 182,
+          "manualManifestPointer": "/pages/181",
+          "layoutManifestPointer": "/pages/181",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-182.jpg"
+        },
+        {
+          "sourcePage": 183,
+          "manualManifestPointer": "/pages/182",
+          "layoutManifestPointer": "/pages/182",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-183.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-3-cargo",
+      "sectionContentModulePath": "src/data/manual-sections/app3-highways.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app3-highways",
+        "sourcePages": [
+          182,
+          183
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 182,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-highways/page-182-highways-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "0d1ee41bda377619f638a539e46d07da0dcc761acb3316c88ff5fb5969e9eb00",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "0d1ee41bda377619f638a539e46d07da0dcc761acb3316c88ff5fb5969e9eb00"
+            }
+          },
+          {
+            "sourcePage": 183,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app3-highways/page-183-highways-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "f93a611b07660413fb31508a13378e15f9a8d9df120ffce8354a1db4488115c9",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix III source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, redraw, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "f93a611b07660413fb31508a13378e15f9a8d9df120ffce8354a1db4488115c9"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app3-highways.ts",
+            "assetKind": "selectable-russian-dom-text-app3-highways",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app3-highways renders learner-facing Russian as selectable DOM text; Spanish remains only in sourceTextEs/evidence metadata or source-as-is images with Russian explanation outside."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app3-highways/app3-highways-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app3-highways/app3-highways-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded; section text and source-as-is image cards fit without overlap."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No full-page raster runtime base, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
+        },
+        "visualReviewNotes": [
+          "Appendix III high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
+          "Protected/source-as-is visuals are left unchanged; Russian explanations are adjacent or below the image as selectable DOM text.",
+          "No Chapter 1 evidence or legacy merged content is modified by this Appendix III implementation slice.",
+          "Page 183 is the Appendix III closing slogan only; Appendix IV page 184 and later are not included."
         ],
         "checkerResult": "pass"
       }
