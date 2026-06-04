@@ -2755,6 +2755,11 @@ small,
   grid-template-columns: minmax(0, 1fr);
 }
 
+.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .manual-source-image-card figure {
   display: grid;
   place-items: center;
@@ -2778,6 +2783,11 @@ small,
   overflow-x: auto;
 }
 
+.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] figure {
+  width: min(100%, 680px);
+  justify-self: center;
+}
+
 .manual-source-image-card img {
   display: block;
   width: 100%;
@@ -2791,6 +2801,10 @@ small,
 
 .manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] img {
   width: 760px;
+  max-width: none;
+}
+
+.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] img {
   max-width: none;
 }
 

@@ -763,6 +763,7 @@
       "source-as-is-photo",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
+      "source-as-is-map",
       "source-as-is-document-example",
       "source-transferred-infographic",
       "source-transferred-diagram",
@@ -772,7 +773,8 @@
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
       "source-as-is-traffic-sign",
-      "source-as-is-road-marking"
+      "source-as-is-road-marking",
+      "source-as-is-map"
     ],
     "documentExampleSourceAsIsCategories": [
       "source-as-is-document-example"

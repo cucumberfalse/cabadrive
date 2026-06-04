@@ -178,6 +178,7 @@ const strictImageAssetCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
+  "source-as-is-map",
   "source-as-is-document-example",
   "source-transferred-infographic",
   "source-transferred-diagram"
@@ -185,7 +186,8 @@ const strictImageAssetCategories = new Set([
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
-  "source-as-is-road-marking"
+  "source-as-is-road-marking",
+  "source-as-is-map"
 ]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);

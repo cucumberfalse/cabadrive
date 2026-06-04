@@ -29,9 +29,9 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png"
     ],
     notes: [
-      "Page 150 hospital map is rendered at runtime as a transferred source infographic from the x5 source crop.",
-      "Spanish map labels were removed from tight label-local glyph regions with OpenCV Telea inpainting; no broad square/plate cleanup is used.",
-      "Yellow H/H1/H2 hospital markers, colored regions, boundaries, roads/lines, icons, layout, and colors remain source-derived; Russian marker labels are selectable DOM overlay text."
+      "Page 150 hospital map is rendered at runtime as an unchanged source-as-is x5 crop after owner decision on 2026-06-04.",
+      "Spanish map labels remain only inside the source image; Russian legend and full hospital-name translations are selectable DOM text below the image.",
+      "Yellow H/H1/H2 hospital markers, colored regions, boundaries, roads/lines, icons, layout, and colors remain byte-identical to the source crop."
     ]
   },
   blocks: [
@@ -88,15 +88,15 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Mapa de Hospitales Generales de Agudos: Dr. I. Pirovano, A. Zubizarreta, D. Velez Sarsfield, Dr. T. Alvarez, P. Pinero, J. M. Penna, Dr. C. Argerich, J. M. Ramos Mejia, Dr. E. Tornu, Dr. C. Durand, Dr. J. A. Fernandez, B. Rivadavia, Donacion F. Santojanni, Cecilia Grierson.",
       itemsRu: [
-        "Страница 150 источника содержит карту общих больниц для острых случаев. В русской версии карта перенесена как исходное изображение: испанские подписи удалены на уровне букв, а русские метки добавлены поверх как выбираемый DOM-текст.",
-        "Желтые маркеры H/H1/H2 сохранены как исходные пиксели карты. Русские метки Б/Б1/Б2 рядом с ними помогают читать карту без изменения самих маркеров.",
-        "Полные названия больниц приведены ниже обычным русским текстом, потому что полностью подписывать каждую больницу внутри плотной карты было бы плохо читаемо."
+        "По решению владельца от 2026-06-04 карта на странице 150 показана как неизмененное исходное изображение высокого разрешения.",
+        "Испанские подписи остаются только внутри самой карты; перевод, легенда и список больниц даны рядом и ниже обычным выбираемым русским текстом.",
+        "Маркеры H/H1/H2, цвета районов, границы, дороги, линии, иконки и вся геометрия карты сохранены без очистки, дорисовки или ретуши."
       ]
     },
     {
       id: "hospital-map-source-visual",
       kind: "source-image-cards",
-      titleRu: "Перенесенная карта больниц",
+      titleRu: "Исходная карта больниц",
       sourceTextEs:
         "Mapa de Hospitales Generales de Agudos.",
       cards: [
@@ -105,36 +105,24 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
           titleRu: "Карта больниц CABA",
           sourcePage: 150,
           sourceRegion: { x: 1332, y: 1854, width: 780, height: 335 },
-          assetPath: `${assetRoot}/hospital-map-transferred-infographic.png`,
+          assetPath: `${assetRoot}/hospital-map-source-as-is.png`,
           altRu:
-            "Перенесенная карта общих больниц CABA с сохраненными исходными маркерами H и русскими метками поверх карты.",
-          visibleSpanish: false,
-          russianOverlayLabels: [
-            { id: "hospital-map-title", textRu: "Больницы CABA", xPct: 6, yPct: 12, widthPct: 20, heightPct: 7, tone: "dark-on-light" },
-            { id: "hospital-map-legend", textRu: "Б = больница", xPct: 6, yPct: 21, widthPct: 18, heightPct: 7, tone: "dark-on-light" },
-            { id: "hospital-marker-north", textRu: "Б", xPct: 46.8, yPct: 13, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-west-north", textRu: "Б", xPct: 42.2, yPct: 29.5, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-west", textRu: "Б", xPct: 35.5, yPct: 36.8, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-west-center", textRu: "Б", xPct: 36.7, yPct: 52.5, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-southwest", textRu: "Б", xPct: 38.2, yPct: 68.5, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-south", textRu: "Б", xPct: 47.5, yPct: 84.2, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-h1-center", textRu: "Б1", xPct: 44.7, yPct: 53.5, widthPct: 5.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-h2-center", textRu: "Б2", xPct: 48.5, yPct: 66.8, widthPct: 5.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-red", textRu: "Б", xPct: 51.8, yPct: 42.6, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-northeast-blue", textRu: "Б", xPct: 59, yPct: 26.7, widthPct: 4.5, heightPct: 6, tone: "light-on-blue" },
-            { id: "hospital-marker-northeast-orange", textRu: "Б", xPct: 61.6, yPct: 33.4, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-east", textRu: "Б", xPct: 59, yPct: 47.5, widthPct: 4.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-h1-east", textRu: "Б1", xPct: 59.1, yPct: 63.1, widthPct: 5.5, heightPct: 6, tone: "dark-on-light" },
-            { id: "hospital-marker-southeast", textRu: "Б", xPct: 68.4, yPct: 56.2, widthPct: 4.5, heightPct: 6, tone: "light-on-blue" }
-          ],
+            "Исходная карта общих больниц CABA с сохраненными испанскими подписями и маркерами H/H1/H2.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
           bodyRu:
-            "Карта перенесена из x5-фрагмента страницы 150. Испанские подписи районов удалены только в узких областях букв, без перерисовки карты; русские метки Б/Б1/Б2 наложены как выбираемый текст поверх сохраненного исходного изображения."
+            "Карта показана без изменений из x5-фрагмента страницы 150. Испанские подписи не очищены и не переведены внутри изображения; русская легенда и полный список больниц приведены ниже."
         }
       ],
       visualNotes: [
-        "The map base is the x5 page 150 source crop, not a redraw.",
-        "Spanish map labels are cleaned with tight glyph-local inpainting; yellow H/H1/H2 markers, colored regions, boundaries, roads/lines, icons, layout, and colors are preserved.",
-        "Russian map labels are selectable DOM overlays; full hospital names are listed below for readability."
+        "The runtime map is byte-identical to the x5 page 150 source crop, not a redraw.",
+        "Spanish map labels remain inside the source image under the owner-approved page-150 source-as-is exception.",
+        "Russian legend and full hospital names are selectable DOM text below the unchanged image."
       ]
     },
     {
