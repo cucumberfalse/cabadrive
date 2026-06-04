@@ -110,7 +110,7 @@ Chapter and appendix child sections remain website section pages inside their ch
 | --- | --- | --- | ---: |
 | `app1-safety-elements` | `Elementos de seguridad` | `Элементы безопасности` | `105-118` |
 | `app1-other-required-safety-elements` | `Otros elementos de seguridad obligatorios` | `Другие обязательные элементы безопасности` | `119-120` |
-| `app1-recommended-safety-elements` | `Elementos de seguridad recomendados` | `Рекомендуемые элементы безопасности` | `121-122` |
+| `app1-recommended-safety-elements` | `Elementos de seguridad recomendables` | `Рекомендуемые элементы безопасности` | `121-122` |
 
 ### Appendix II: `123-151`
 

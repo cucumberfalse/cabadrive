@@ -723,6 +723,8 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
   const topicSourceTitles = new Map(registry.sections.map((section) => [section.id, section.sourceTitleEs]));
   const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
   assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
+  assert.equal(topicSourceTitles.get("app1-recommended-safety-elements"), "Elementos de seguridad recomendables");
+  assert.equal([...topicSourceTitles.values()].includes("Elementos de seguridad recomendados"), false);
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
@@ -1344,6 +1346,8 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /25 cm/u);
   assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*хлыстовой травмы/u);
   assert.match(app1SafetyElementsModuleSource, /1\.50 m[\s\S]*36 kg/u);
+  assert.match(app1SafetyElementsModuleSource, /Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги/u);
+  assert.doesNotMatch(app1SafetyElementsModuleSource, /Если ребенок превышает возраст, рост или вес/u);
   assert.match(app1SafetyElementsModuleSource, /80%[\s\S]*70%/u);
   assert.match(app1SafetyElementsModuleSource, /Isofix или Latch/u);
   assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);

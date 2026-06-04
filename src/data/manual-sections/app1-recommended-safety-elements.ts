@@ -5,7 +5,7 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
   sectionId: "app1-recommended-safety-elements",
   titleRu: "Рекомендуемые элементы безопасности",
   sourcePages: [121, 122],
-  sourceTitleEs: "Elementos de seguridad recomendados",
+  sourceTitleEs: "Elementos de seguridad recomendables",
   status: "implemented",
   styleTokenFamilies: [
     "manual-prose",
