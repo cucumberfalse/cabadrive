@@ -231,10 +231,10 @@
     },
     "app2-safe-driving": {
       "start": 144,
-      "end": 148
+      "end": 147
     },
     "app2-highways-hospitals": {
-      "start": 149,
+      "start": 148,
       "end": 151
     }
   },

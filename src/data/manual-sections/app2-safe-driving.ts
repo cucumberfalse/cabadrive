@@ -4,7 +4,7 @@ export const app2SafeDrivingSection: ManualGuideSectionContent = {
   id: "app2-safe-driving-content",
   sectionId: "app2-safe-driving",
   titleRu: "Безопасное вождение пассажирского транспорта",
-  sourcePages: [144, 145, 146, 147, 148],
+  sourcePages: [144, 145, 146, 147],
   sourceTitleEs: "Conduccion segura",
   status: "implemented",
   styleTokenFamilies: [
@@ -19,15 +19,14 @@ export const app2SafeDrivingSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-safe-driving/page-144-safe-driving-source-crop.jpg",
       "content/validation/manual-guide/app2-safe-driving/page-145-safe-driving-source-crop.jpg",
       "content/validation/manual-guide/app2-safe-driving/page-146-safe-driving-source-crop.jpg",
-      "content/validation/manual-guide/app2-safe-driving/page-147-safe-driving-source-crop.jpg",
-      "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg"
+      "content/validation/manual-guide/app2-safe-driving/page-147-safe-driving-source-crop.jpg"
     ],
     russianScreenshots: [
       "content/validation/manual-guide/app2-safe-driving/app2-safe-driving-desktop.png",
       "content/validation/manual-guide/app2-safe-driving/app2-safe-driving-mobile.png"
     ],
     notes: [
-      "Pages 144-148 are implemented as selectable Russian DOM text.",
+      "Pages 144-147 are implemented as selectable Russian DOM text.",
       "No source images, photos, traffic signs, or road markings are used at runtime or altered."
     ]
   },

@@ -8902,7 +8902,7 @@
       "routeHash": "#manual-section-app2-safe-driving",
       "sourcePageRange": {
         "start": 144,
-        "end": 148
+        "end": 147
       },
       "sourcePages": [
         {
@@ -8928,12 +8928,6 @@
           "manualManifestPointer": "/pages/146",
           "layoutManifestPointer": "/pages/146",
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-147.jpg"
-        },
-        {
-          "sourcePage": 148,
-          "manualManifestPointer": "/pages/147",
-          "layoutManifestPointer": "/pages/147",
-          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-148.jpg"
         }
       ],
       "status": "implemented",
@@ -8950,8 +8944,7 @@
           144,
           145,
           146,
-          147,
-          148
+          147
         ],
         "sourceRegionMetadata": [
           {
@@ -9053,31 +9046,6 @@
               },
               "sha256": "28527e80ae28ccc7950a4052a7c441126afe1561165570870cdd8f4b47864b26"
             }
-          },
-          {
-            "sourcePage": 148,
-            "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
-            },
-            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg",
-            "cropDimensions": {
-              "width": 2976,
-              "height": 4209
-            },
-            "cropSha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
-            "cleanupScope": "reference-only-not-runtime",
-            "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
-              "outputDimensions": {
-                "width": 2976,
-                "height": 4209
-              },
-              "sha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4"
-            }
           }
         ],
         "localAssetMetadata": [
@@ -9107,7 +9075,7 @@
           "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
         },
         "visualReviewNotes": [
-          "Pages 144-148 are implemented as native Russian text for limit driving, slopes/curves, vulnerable users, 1.5 m cyclist distance, off-tracking, stopping/parking, intersections, and speed.",
+          "Pages 144-147 are implemented as native Russian text for limit driving, slopes/curves, vulnerable users, 1.5 m cyclist distance, off-tracking, stopping/parking, intersections, and speed.",
           "No source visual pixels are used at runtime or altered."
         ],
         "checkerResult": "pass"
@@ -9119,10 +9087,16 @@
       "sourceTitleEs": "Autopistas y hospitales",
       "routeHash": "#manual-section-app2-highways-hospitals",
       "sourcePageRange": {
-        "start": 149,
+        "start": 148,
         "end": 151
       },
       "sourcePages": [
+        {
+          "sourcePage": 148,
+          "manualManifestPointer": "/pages/147",
+          "layoutManifestPointer": "/pages/147",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-148.jpg"
+        },
         {
           "sourcePage": 149,
           "manualManifestPointer": "/pages/148",
@@ -9153,11 +9127,37 @@
         "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
         "sectionId": "app2-highways-hospitals",
         "sourcePages": [
+          148,
           149,
           150,
           151
         ],
         "sourceRegionMetadata": [
+          {
+            "sourcePage": 148,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-148-highways-hospitals-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; moved from app2-safe-driving evidence to app2-highways-hospitals evidence without byte changes, resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4"
+            }
+          },
           {
             "sourcePage": 149,
             "sourceRegion": {
@@ -9339,9 +9339,9 @@
           "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
         },
         "visualReviewNotes": [
-          "Pages 149-151 are implemented as native Russian text for Paseo del Bajo rules, prohibited users, breakdown handling, exceptional routes, the page 150 hospital map reference, and the closing public-transport statement.",
-          "Owner decision on 2026-06-04 keeps the page 150 hospital map as an unchanged high-resolution source image at runtime; Spanish labels remain only inside that source-as-is image, with Russian legend and hospital-name translations below as selectable DOM text.",
-          "The runtime hospital map PNG is byte-identical to the x5 source crop, preserving yellow H/H1/H2 markers, colored regions, boundaries, roads/lines, icons, layout, colors, and all source map detail without image cleanup or redraw."
+          "Pages 148-151 are implemented as native Russian text for Paseo del Bajo, hospital-map owner-decision context, hospital names, and public-transport closure guidance.",
+          "Page 148 source crop evidence was moved byte-identically from app2-safe-driving to app2-highways-hospitals because the source page starts Autopistas y Hospitales / Paseo del Bajo.",
+          "The page 150 hospital map remains an unchanged source-as-is x5 crop with Russian translations outside and below the image."
         ],
         "checkerResult": "pass"
       }
