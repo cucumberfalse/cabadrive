@@ -37,20 +37,20 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Botiquín de primeros auxilios: identificado con una cruz; gasas, vendas, cinta, agua oxigenada, solución yodada...",
       itemsRu: [
-        "Аптечку рекомендуется иметь в автомобиле; она обозначается cross и хранится в secure fixed place.",
-        "Источник перечисляет sterile hydrophilic gauze.",
-        "Bandages or dressings.",
-        "Hypoallergenic tape.",
-        "Hydrogen peroxide.",
-        "Iodine solution.",
-        "Alcohol or disinfectant.",
-        "Несколько пар latex or vinyl gloves.",
-        "Burn cream.",
-        "Antidiarrheal charcoal tablets.",
-        "Analgesics and anti-inflammatory medicine.",
-        "Insect-bite cream.",
-        "Tweezers and scissors.",
-        "Flashlight with spare batteries or battery."
+        "Аптечку рекомендуется иметь в автомобиле; она обозначается крестом и хранится в надежно закрепленном месте.",
+        "Источник перечисляет стерильную гидрофильную марлю.",
+        "Бинты или перевязочные материалы.",
+        "Гипоаллергенный пластырь.",
+        "Перекись водорода.",
+        "Раствор йода.",
+        "Спирт или дезинфицирующее средство.",
+        "Несколько пар латексных или виниловых перчаток.",
+        "Крем от ожогов.",
+        "Противодиарейные угольные таблетки.",
+        "Анальгетики и противовоспалительные лекарства.",
+        "Крем от укусов насекомых.",
+        "Пинцет и ножницы.",
+        "Фонарик с запасными батарейками или аккумулятором."
       ]
     },
     {
@@ -60,11 +60,11 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Barra de remolque homologada, telescópica, reemplaza sogas, cables u otros medios flexibles; no puede usarse dentro de CABA.",
       itemsRu: [
-        "Источник рекомендует homologated telescopic tow bar.",
-        "Она заменяет ropes, cables and other flexible means, которые источник считает небезопасными и недействительными.",
-        "Штанга соединяет factory towing points двух автомобилей.",
-        "В CABA частному автомобилю запрещено буксировать другой private vehicle.",
-        "Буксировка должна выполняться authorized vehicle."
+        "Источник рекомендует сертифицированную телескопическую буксировочную штангу.",
+        "Она заменяет веревки, тросы и другие гибкие средства, которые источник считает небезопасными и недействительными.",
+        "Штанга соединяет заводские точки буксировки двух автомобилей.",
+        "В CABA частному автомобилю запрещено буксировать другой частный автомобиль.",
+        "Буксировка должна выполняться уполномоченным автомобилем."
       ]
     },
     {

@@ -1329,43 +1329,46 @@ test("Appendix I sections retain private-car safety details", () => {
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
   }
 
-  assert.match(app1SafetyElementsModuleSource, /periodic VTV/u);
+  assert.match(app1SafetyElementsModuleSource, /периодической VTV/u);
   assert.match(app1SafetyElementsModuleSource, /Амортизаторы[\s\S]*10%/u);
   assert.match(app1SafetyElementsModuleSource, /50 000 km/u);
   assert.match(app1SafetyElementsModuleSource, /25 000 km/u);
   assert.match(app1SafetyElementsModuleSource, /mecánica[\s\S]*hidráulica[\s\S]*electrohidráulica/u);
   assert.match(app1SafetyElementsModuleSource, /ABS[\s\S]*блокировке колес/u);
   assert.match(app1SafetyElementsModuleSource, /1\.6 mm/u);
-  assert.match(app1SafetyElementsModuleSource, /hydroplaning или aquaplaning/u);
+  assert.match(app1SafetyElementsModuleSource, /аквапланирования/u);
   assert.match(app1SafetyElementsModuleSource, /не использовать шины старше 5 лет/u);
   assert.match(app1SafetyElementsModuleSource, /не больше 10% задней части/u);
-  assert.match(app1SafetyElementsModuleSource, /90 dB[\s\S]*65 dB/u);
-  assert.match(app1SafetyElementsModuleSource, /врачи или paramedics[\s\S]*bomberos/u);
+  assert.match(app1SafetyElementsModuleSource, /сигнал в 90 dB[\s\S]*65 dB/u);
+  assert.match(app1SafetyElementsModuleSource, /врачи или фельдшеры[\s\S]*пожарные/u);
   assert.match(app1SafetyElementsModuleSource, /25 cm/u);
-  assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*whiplash/u);
+  assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*хлыстовой травмы/u);
   assert.match(app1SafetyElementsModuleSource, /1\.50 m[\s\S]*36 kg/u);
   assert.match(app1SafetyElementsModuleSource, /80%[\s\S]*70%/u);
   assert.match(app1SafetyElementsModuleSource, /Isofix или Latch/u);
-  assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40 times/u);
-  assert.match(app1SafetyElementsModuleSource, /Ley 2148[\s\S]*bumpers/u);
-  assert.match(app1SafetyElementsModuleSource, /Pets нельзя перевозить loose/u);
+  assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);
+  assert.match(app1SafetyElementsModuleSource, /Закон CABA 2148[\s\S]*бамперы/u);
+  assert.match(app1SafetyElementsModuleSource, /Животных нельзя перевозить без фиксации/u);
+  assert.doesNotMatch(app1SafetyElementsModuleSource, /periodic VTV|warning triangles, reflective vest|wheel wrench|hydroplaning или aquaplaning|peripheral vision|Homologated convex mirrors разрешены|90 dB horn|удар о windshield|врачи или paramedics|abdomen и chest|excessive fatigue|clavicle|pelvis ниже abdomen|риск whiplash|occupants|integrated или height adjustable|Airbag поглощает|Airbag бывает|curtain|child seats и homologated devices|abdominal two-point belt|DOM text|babies|international standards и иметь label|читать manual автомобиля|used SRI|rear-facing|head, neck and spine|maximum weight|должны быть tight|удержан harness|deformation zones|cabin должна|protective и undeformable|из-за inertia|40 times|bumper поглощает|уменьшает damage|сам impact|Ley 2148[\s\S]*bumpers|fenders|visibility, aerodynamics|rain, wind, dust and insects|laminated или tempered|occupants должны различаться на short distance|Pets нельзя перевозить loose|appropriate harness/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /Appendix II|Appendix III|Appendix IV|TRANSPORTE DE PASAJEROS|TRANSPORTE DE CARGA|SEÑALES VIALES/u);
 
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Roof rack/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два hazard triangles/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /extinguisher 1 kg типа ABC/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /elastic clamp источник запрещает/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Reflective vest/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /force majeure[\s\S]*highways и fast roads/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Багажник на крыше/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два аварийных треугольника/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /огнетушитель 1 kg типа ABC/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Световозвращающий жилет/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u);
+  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u);
 
-  assert.match(app1RecommendedSafetyElementsModuleSource, /sterile hydrophilic gauze/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /Hydrogen peroxide/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /Flashlight with spare batteries/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /homologated telescopic tow bar/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /стерильную гидрофильную марлю/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Перекись водорода/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Фонарик с запасными батарейками/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /сертифицированную телескопическую буксировочную штангу/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /В CABA частному автомобилю запрещено буксировать/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /authorized vehicle/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /уполномоченным автомобилем/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /состояния автомобиля и его элементов безопасности/u);
+  assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /обозначается cross|secure fixed place|sterile hydrophilic gauze|Bandages or dressings|Hypoallergenic tape|Hydrogen peroxide|Iodine solution|latex or vinyl gloves|Burn cream|Antidiarrheal charcoal tablets|Analgesics and anti-inflammatory medicine|Insect-bite cream|Tweezers and scissors|Flashlight with spare batteries|homologated telescopic tow bar|ropes, cables and other flexible means|factory towing points|private vehicle|authorized vehicle/u);
 });
 
 test("Appendix I visuals render source-as-is and transferred infographics with provenance evidence", () => {
