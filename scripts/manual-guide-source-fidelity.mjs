@@ -753,6 +753,12 @@ function validateImplementedSection(section, evidence, id) {
 }
 
 function validateSharedSourcePageOwnership(registry, evidence, coveredSourcePages) {
+  compareJson(
+    registry.sharedSourcePageOwnership ?? [],
+    evidence.sharedSourcePageOwnership ?? [],
+    "Registry top-level shared source-page ownership must match source-fidelity evidence"
+  );
+
   const sharedOwnership = evidence.sharedSourcePageOwnership ?? [];
   const expectedSharedSourcePages = sharedOwnership.map((entry) => entry.sourcePage).sort((a, b) => a - b);
   const duplicateCoveredSourcePages = duplicatedValues(coveredSourcePages);

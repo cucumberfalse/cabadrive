@@ -753,8 +753,8 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 93, 94, 95, 99, 100, 101],
-    "source pages 55, 93, 94, 95, 99, 100, and 101 are intentionally shared between section topics"
+    [55, 93, 94, 95, 99, 100, 101, 119],
+    "source pages 55, 93, 94, 95, 99, 100, 101, and 119 are intentionally shared between section topics"
   );
   const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
@@ -976,7 +976,7 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 93, 94, 95, 99, 100, 101]
+    [55, 93, 94, 95, 99, 100, 101, 119]
   );
   const sharedPage93 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 93);
   const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
@@ -1319,6 +1319,34 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
   assert.equal(otherRequired.sourceBoundaryEvidence.startsAtLayoutBlockId, "page-119-source-line-mask-10");
   assert.equal(otherRequired.sourceBoundaryEvidence.startsAtSourceTextEs, "Otros elementos de seguridad obligatorios");
   assert.match(otherRequired.sourceBoundaryEvidence.boundaryEvidence, /preceding Equipaje/u);
+  const sharedPage119 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 119);
+  assert.ok(sharedPage119, "page 119 is declared in top-level shared source-page ownership");
+  assert.equal(sharedPage119.referenceAsset, sourcePageAssetPath(119));
+  assert.deepEqual(sharedPage119.sectionBoundaries.map((boundary) => boundary.sectionId), [
+    "app1-safety-elements",
+    "app1-other-required-safety-elements"
+  ]);
+  assert.deepEqual(sharedPage119.sectionBoundaries[0].ownedLayoutBlockIdsOnSharedPage, [
+    "page-119-source-line-mask-02",
+    "page-119-source-line-mask-03",
+    "page-119-source-line-mask-04",
+    "page-119-source-line-mask-05",
+    "page-119-source-line-mask-06",
+    "page-119-source-line-mask-07",
+    "page-119-source-line-mask-08",
+    "page-119-source-line-mask-09"
+  ]);
+  assert.equal(sharedPage119.sectionBoundaries[0].endsBeforeLayoutBlockId, "page-119-source-line-mask-10");
+  assert.deepEqual(sharedPage119.sectionBoundaries[1].ownedLayoutBlockIdsOnSharedPage, [
+    "page-119-source-line-mask-10",
+    "page-119-source-line-mask-11",
+    "page-119-source-line-mask-12",
+    "page-119-source-line-mask-13",
+    "page-119-source-line-mask-14",
+    "page-119-source-line-mask-15",
+    "page-119-source-line-mask-16"
+  ]);
+  assert.equal(sharedPage119.sectionBoundaries[1].startsAtLayoutBlockId, "page-119-source-line-mask-10");
   assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 104)), false);
   assert.equal(registry.sections.some((section) => /^app[2-4]-/u.test(section.id)), false, "Appendix II-IV content is not bundled");
   assert.doesNotMatch(manualGuideSource, /annex-1-safety|annex-1-required|annex-1-recommended/u);
