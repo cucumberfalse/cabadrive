@@ -773,8 +773,17 @@
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
       "source-as-is-traffic-sign",
-      "source-as-is-road-marking",
-      "source-as-is-map"
+      "source-as-is-road-marking"
+    ],
+    "scopedSourceAsIsMapExceptions": [
+      {
+        "sectionId": "app2-highways-hospitals",
+        "sourcePage": 150,
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+        "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+        "ownerDecisionDate": "2026-06-04",
+        "scope": "page-150-hospital-map-only"
+      }
     ],
     "documentExampleSourceAsIsCategories": [
       "source-as-is-document-example"

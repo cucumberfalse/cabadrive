@@ -186,10 +186,20 @@ const strictImageAssetCategories = new Set([
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
   "source-as-is-traffic-sign",
-  "source-as-is-road-marking",
-  "source-as-is-map"
+  "source-as-is-road-marking"
 ]);
 const documentExampleSourceAsIsCategories = new Set(["source-as-is-document-example"]);
+const scopedSourceAsIsMapCategories = new Set(["source-as-is-map"]);
+const approvedSourceAsIsMapExceptions = [
+  {
+    sectionId: "app2-highways-hospitals",
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+    sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+    sourcePage: 150,
+    ownerDecisionDate: "2026-06-04",
+    scope: "page-150-hospital-map-only"
+  }
+];
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
 const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
 const forbiddenStrictVisualTerms = [
@@ -259,13 +269,33 @@ function isStrictVisualEvidenceOptIn(implementedEvidence) {
 function isStrictProtectedSourceAsIsException(entry) {
   return (
     entry.visibleSpanish === true &&
-    (protectedSourceAsIsCategories.has(entry.assetCategory) || documentExampleSourceAsIsCategories.has(entry.assetCategory)) &&
+    (
+      protectedSourceAsIsCategories.has(entry.assetCategory) ||
+      documentExampleSourceAsIsCategories.has(entry.assetCategory) ||
+      isApprovedSourceAsIsMapExceptionAsset(entry)
+    ) &&
     isObject(entry.sourceIntegrity) &&
     entry.sourceIntegrity.sourceAsIs === true &&
     entry.sourceIntegrity.noTranslationOrRelabeling === true &&
     entry.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint === true &&
     entry.sourceIntegrity.russianExplanationOutsideImage === true
   );
+}
+
+function isApprovedSourceAsIsMapExceptionAsset(asset) {
+  if (asset.assetCategory !== "source-as-is-map") return false;
+  return approvedSourceAsIsMapExceptions.some((approved) =>
+    asset.assetPath === approved.assetPath &&
+    asset.sourceIntegrity?.sourceAssetPath === approved.sourceAssetPath &&
+    asset.sourceImageException?.ownerDecisionDate === approved.ownerDecisionDate &&
+    asset.sourceImageException?.scope === approved.scope
+  );
+}
+
+function requiresSourceAsIsValidation(assetCategory) {
+  return protectedSourceAsIsCategories.has(assetCategory) ||
+    documentExampleSourceAsIsCategories.has(assetCategory) ||
+    scopedSourceAsIsMapCategories.has(assetCategory);
 }
 
 function visibleSpanishStatusExceptionAssetPaths(value, assetCategory) {
@@ -451,6 +481,39 @@ function validateSourceAsIsAsset(asset, messagePrefix, sourceRegionRecords, actu
   }
 }
 
+function validateScopedSourceAsIsMapAsset(sectionId, asset, messagePrefix, sourceRegionRecords) {
+  const approved = approvedSourceAsIsMapExceptions.find((entry) => entry.assetPath === asset.assetPath);
+  assertCondition(Boolean(approved), `${messagePrefix}.assetPath must match an approved source-as-is map exception`, asset);
+  assertCondition(sectionId === approved.sectionId, `${messagePrefix}.sectionId must match approved source-as-is map exception`, {
+    sectionId,
+    asset,
+    approved
+  });
+  assertCondition(asset.sourceIntegrity.sourceAssetPath === approved.sourceAssetPath, `${messagePrefix}.sourceIntegrity.sourceAssetPath must match approved source-as-is map source path`, {
+    asset,
+    approved
+  });
+  const sourceRegionRecord = sourceRegionRecords.get(asset.sourceIntegrity.sourceAssetPath);
+  assertCondition(sourceRegionRecord?.sourcePage === approved.sourcePage, `${messagePrefix}.sourceRegionMetadata.sourcePage must match approved source-as-is map page`, {
+    asset,
+    sourceRegionRecord,
+    approved
+  });
+  assertCondition(isObject(asset.sourceImageException), `${messagePrefix}.sourceImageException must record approved source-as-is map owner decision`, asset);
+  assertCondition(asset.sourceImageException.kind === "source-image-original-visible-text", `${messagePrefix}.sourceImageException.kind must be source-image-original-visible-text`, asset);
+  assertCondition(asset.sourceImageException.visibleSpanishScope === "source-image-only", `${messagePrefix}.sourceImageException.visibleSpanishScope must be source-image-only`, asset);
+  assertCondition(asset.sourceImageException.sourceAsIs === true, `${messagePrefix}.sourceImageException.sourceAsIs must be true`, asset);
+  assertCondition(asset.sourceImageException.russianExplanationOutsideImage === true, `${messagePrefix}.sourceImageException.russianExplanationOutsideImage must be true`, asset);
+  assertCondition(asset.sourceImageException.ownerDecisionDate === approved.ownerDecisionDate, `${messagePrefix}.sourceImageException.ownerDecisionDate must match approved source-as-is map owner decision`, {
+    asset,
+    approved
+  });
+  assertCondition(asset.sourceImageException.scope === approved.scope, `${messagePrefix}.sourceImageException.scope must match approved source-as-is map scope`, {
+    asset,
+    approved
+  });
+}
+
 function validateSourceTransferProvenance(value, messagePrefix, sourceRegionRecords) {
   assertRequiredFields(value, ["sourceAssetPath", "sourceCropSha256", "sourceCropDimensions"], messagePrefix);
   assertCondition(sourceRegionRecords.has(value.sourceAssetPath), `${messagePrefix}.sourceAssetPath must reference sourceRegionMetadata`, value);
@@ -569,7 +632,11 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
       const actualDimensions = validateStrictSourceRegionDimensions(entry, label);
       validateExtractionScaleEvidence(entry.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
       assertNoForbiddenStrictVisualTerms(entry, label);
-      sourceRegionRecords.set(entry.sourceAssetPath, { sha256: entry.cropSha256, dimensions: actualDimensions });
+      sourceRegionRecords.set(entry.sourceAssetPath, {
+        sha256: entry.cropSha256,
+        dimensions: actualDimensions,
+        sourcePage: entry.sourcePage
+      });
     }
   );
 
@@ -587,11 +654,12 @@ function validateStrictVisualEvidence(implementedEvidence, messagePrefix) {
         const actualDimensions = validateStrictImageAssetDimensions(asset, label);
         validateExtractionScaleEvidence(asset.extractionScaleEvidence, `${label}.extractionScaleEvidence`, actualDimensions);
         validateRuntimeDisplaySize(asset, label, actualDimensions);
-        if (protectedSourceAsIsCategories.has(asset.assetCategory) || documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
+        if (requiresSourceAsIsValidation(asset.assetCategory)) {
           validateSourceAsIsAsset(asset, label, sourceRegionRecords, actualDimensions);
+          if (asset.assetCategory === "source-as-is-map") validateScopedSourceAsIsMapAsset(implementedEvidence.sectionId, asset, label, sourceRegionRecords);
         }
       }
-      if (protectedSourceAsIsCategories.has(asset.assetCategory) || documentExampleSourceAsIsCategories.has(asset.assetCategory)) {
+      if (requiresSourceAsIsValidation(asset.assetCategory)) {
         if (asset.visibleSpanish === true) {
           const visibleSpanishExceptionAssetPaths = visibleSpanishStatusExceptionAssetPaths(implementedEvidence.visibleSpanishStatus, asset.assetCategory);
           assertCondition(

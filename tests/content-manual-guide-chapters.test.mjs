@@ -3090,8 +3090,17 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
     "source-as-is-photo",
     "source-as-is-traffic-sign",
-    "source-as-is-road-marking",
-    "source-as-is-map"
+    "source-as-is-road-marking"
+  ]);
+  assert.deepEqual(evidence.strictVisualRulePolicy.scopedSourceAsIsMapExceptions, [
+    {
+      sectionId: "app2-highways-hospitals",
+      sourcePage: 150,
+      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      ownerDecisionDate: "2026-06-04",
+      scope: "page-150-hospital-map-only"
+    }
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
     "sourceIntegrity.sourceAsIs",
@@ -4495,6 +4504,89 @@ test("Manual guide source-fidelity checker allows explicit original source-image
     assert.equal(result.status, 0, result.stderr);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects unapproved source-as-is map Spanish exceptions", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "manual-guide-unapproved-source-map-exception-"));
+  try {
+    const { implementedRegistryPath, moduleRoot, strictEvidencePath } = writeStrictFutureRegistryFixture(tempDir, (implementationEvidence) => {
+      const mapAsset = implementationEvidence.localAssetMetadata[1];
+      mapAsset.assetKind = "high-resolution-original-source-future-map";
+      mapAsset.assetCategory = "source-as-is-map";
+      mapAsset.sourceImageException = {
+        kind: "source-image-original-visible-text",
+        visibleSpanishScope: "source-image-only",
+        sourceAsIs: true,
+        russianExplanationOutsideImage: true,
+        ownerDecisionDate: "2026-06-04",
+        scope: "page-150-hospital-map-only"
+      };
+      implementationEvidence.visibleSpanishStatus.exceptions = [
+        {
+          assetPath: mapAsset.assetPath,
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true,
+          ownerDecisionDate: "2026-06-04",
+          scope: "page-150-hospital-map-only"
+        }
+      ];
+    });
+    const failure = runCheckerWithFixture(implementedRegistryPath, moduleRoot, strictEvidencePath);
+    assert.notEqual(failure.status, 0, "checker must fail when an unrelated map self-certifies the page-150 exception");
+    const result = JSON.parse(failure.stderr);
+    assert.equal(result.status, "fail");
+    assert.equal(
+      result.message,
+      "ch1-pedestrian-priority implementationEvidence localAssetMetadata[1].assetPath must match an approved source-as-is map exception"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("Manual guide source-fidelity checker rejects approved source-as-is map evidence with mismatched page or scope", () => {
+  const cases = [
+    {
+      name: "page",
+      mutate: (implementationEvidence) => {
+        const sourceRegion = implementationEvidence.sourceRegionMetadata.find((entry) =>
+          entry.sourceAssetPath === "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png"
+        );
+        sourceRegion.sourcePage = 149;
+      },
+      expectedMessage:
+        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceRegionMetadata.sourcePage must match approved source-as-is map page"
+    },
+    {
+      name: "scope",
+      mutate: (implementationEvidence) => {
+        const mapAsset = implementationEvidence.localAssetMetadata.find((entry) => entry.assetCategory === "source-as-is-map");
+        mapAsset.sourceImageException.scope = "future-map-self-certified";
+      },
+      expectedMessage:
+        "app2-highways-hospitals implementationEvidence localAssetMetadata[1].sourceImageException.scope must match approved source-as-is map scope"
+    }
+  ];
+
+  for (const testCase of cases) {
+    const tempDir = mkdtempSync(join(tmpdir(), `manual-guide-approved-source-map-${testCase.name}-mismatch-`));
+    try {
+      const registryFixture = JSON.parse(JSON.stringify(registry));
+      const app2HighwaysHospitals = registryFixture.sections.find((entry) => entry.id === "app2-highways-hospitals");
+      testCase.mutate(app2HighwaysHospitals.implementationEvidence);
+      const implementedRegistryPath = join(tempDir, "section-registry.map-scope-fixture.json");
+      writeFileSync(implementedRegistryPath, JSON.stringify(registryFixture, null, 2));
+      const failure = runCheckerWithFixture(implementedRegistryPath, "src/data/manual-sections");
+      assert.notEqual(failure.status, 0, `checker must fail when approved map ${testCase.name} evidence mismatches`);
+      const result = JSON.parse(failure.stderr);
+      assert.equal(result.status, "fail");
+      assert.equal(result.message, testCase.expectedMessage);
+    } finally {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
   }
 });
 
