@@ -397,8 +397,8 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
     124
   );
   const appendix2Topics = navigation.entries.find((entry) => entry.id === "appendix-2-passenger-transport").children;
-  assert.equal(appendix2Topics.find((entry) => entry.id === "app2-safe-driving").endPage, 147);
-  assert.equal(appendix2Topics.find((entry) => entry.id === "app2-highways-hospitals").startPage, 148);
+  assert.equal(appendix2Topics.find((entry) => entry.id === "app2-safe-driving").endPage, 148);
+  assert.equal(appendix2Topics.find((entry) => entry.id === "app2-highways-hospitals").startPage, 149);
   assert.ok(navigation.entries.flatMap((entry) => entry.children ?? []).some((entry) => entry.id === "app4-signs-regulatory"));
   const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
   assert.equal(chapter4Topics.find((entry) => entry.id === "ch4-sleep-fatigue").endPage, 94);

@@ -7,7 +7,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
   id: "app2-highways-hospitals-content",
   sectionId: "app2-highways-hospitals",
   titleRu: "Автомагистрали и больницы",
-  sourcePages: [148, 149, 150, 151],
+  sourcePages: [149, 150, 151],
   sourceTitleEs: "Autopistas y hospitales",
   status: "implemented",
   styleTokenFamilies: [
@@ -20,7 +20,6 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
   visualEvidence: {
     checkerStatus: "pass",
     sourceScreenshots: [
-      "content/validation/manual-guide/app2-highways-hospitals/page-148-highways-hospitals-source-crop.jpg",
       "content/validation/manual-guide/app2-highways-hospitals/page-149-highways-hospitals-source-crop.jpg",
       "content/validation/manual-guide/app2-highways-hospitals/page-150-highways-hospitals-source-crop.jpg",
       "content/validation/manual-guide/app2-highways-hospitals/page-151-highways-hospitals-source-crop.jpg"

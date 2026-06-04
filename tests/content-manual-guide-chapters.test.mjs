@@ -1424,34 +1424,33 @@ test("Appendix II divider and passenger-transport section boundaries are explici
   assert.deepEqual(sectionById("app2-driving-factors").sourcePageRange, { start: 137, end: 143 });
   const safeDriving = sectionById("app2-safe-driving");
   const highwaysHospitals = sectionById("app2-highways-hospitals");
-  assert.deepEqual(safeDriving.sourcePageRange, { start: 144, end: 147 });
-  assert.deepEqual(safeDriving.sourcePages.map((entry) => entry.sourcePage), [144, 145, 146, 147]);
-  assert.deepEqual(safeDriving.implementationEvidence.sourcePages, [144, 145, 146, 147]);
-  assert.equal(safeDriving.sourcePages.some((entry) => entry.sourcePage === 148), false);
-  assert.deepEqual(highwaysHospitals.sourcePageRange, { start: 148, end: 151 });
-  assert.deepEqual(highwaysHospitals.sourcePages.map((entry) => entry.sourcePage), [148, 149, 150, 151]);
-  assert.deepEqual(highwaysHospitals.implementationEvidence.sourcePages, [148, 149, 150, 151]);
-  assert.equal(highwaysHospitals.topicNavigationStartPage ?? highwaysHospitals.sourcePageRange.start, 148);
+  assert.deepEqual(safeDriving.sourcePageRange, { start: 144, end: 148 });
+  assert.deepEqual(safeDriving.sourcePages.map((entry) => entry.sourcePage), [144, 145, 146, 147, 148]);
+  assert.deepEqual(safeDriving.implementationEvidence.sourcePages, [144, 145, 146, 147, 148]);
+  assert.deepEqual(highwaysHospitals.sourcePageRange, { start: 149, end: 151 });
+  assert.deepEqual(highwaysHospitals.sourcePages.map((entry) => entry.sourcePage), [149, 150, 151]);
+  assert.deepEqual(highwaysHospitals.implementationEvidence.sourcePages, [149, 150, 151]);
+  assert.equal(highwaysHospitals.topicNavigationStartPage ?? highwaysHospitals.sourcePageRange.start, 149);
   assert.equal(
-    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some(
+    safeDriving.implementationEvidence.sourceRegionMetadata.some(
       (entry) =>
         entry.sourcePage === 148 &&
         entry.sourceAssetPath ===
-          "content/validation/manual-guide/app2-highways-hospitals/page-148-highways-hospitals-source-crop.jpg" &&
+          "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg" &&
         entry.cropSha256 === "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4"
     ),
     true,
-    "page 148 source crop provenance belongs to app2-highways-hospitals"
+    "page 148 source crop provenance belongs to app2-safe-driving under local sourcePage convention"
   );
   assert.equal(
-    safeDriving.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourcePage === 148),
+    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourcePage === 148),
     false,
-    "page 148 source crop provenance no longer belongs to app2-safe-driving"
+    "page 148 source crop provenance no longer belongs to app2-highways-hospitals"
   );
   assert.equal(
-    sha256File("content/validation/manual-guide/app2-highways-hospitals/page-148-highways-hospitals-source-crop.jpg"),
+    sha256File("content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg"),
     "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
-    "moved page 148 x5 source crop bytes are preserved"
+    "restored page 148 x5 source crop bytes are preserved"
   );
   assert.equal(
     registry.sections.filter((section) => section.sourcePages.some((page) => page.sourcePage === 123)).map((section) => section.id).join(","),
@@ -1459,7 +1458,7 @@ test("Appendix II divider and passenger-transport section boundaries are explici
   );
   assert.equal(
     registry.sections.filter((section) => section.sourcePages.some((page) => page.sourcePage === 148)).map((section) => section.id).join(","),
-    "app2-highways-hospitals"
+    "app2-safe-driving"
   );
   assert.equal(registry.sections.some((section) => /^app[3-4]-/u.test(section.id)), false, "Appendix III-IV content is not bundled");
 });

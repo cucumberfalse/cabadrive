@@ -279,7 +279,7 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
         sourceEvidence: "index_pages_11_12"
       },
       { id: "app2-safe-driving", titleRu: "Безопасное вождение", titleEs: "Conduccion segura", startPage: 144, sourceEvidence: "index_pages_11_12" },
-      { id: "app2-highways-hospitals", titleRu: "Автомагистрали и больницы", titleEs: "Autopistas y hospitales", startPage: 148, sourceEvidence: "index_pages_11_12" }
+      { id: "app2-highways-hospitals", titleRu: "Автомагистрали и больницы", titleEs: "Autopistas y hospitales", startPage: 149, sourceEvidence: "index_pages_11_12" }
     ]
   },
   {
