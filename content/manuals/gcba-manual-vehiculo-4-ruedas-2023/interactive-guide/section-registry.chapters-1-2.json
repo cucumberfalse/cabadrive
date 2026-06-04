@@ -8582,7 +8582,7 @@
         "visualReviewNotes": [
           "Appendix II safety-elements runtime now preserves key source visual instructions: mirror and seat-belt photo pairs as tight source-as-is x5 crops, and the page 132 headrest-position diagrams as tight source diagram crops with Spanish labels outside the crop boundaries.",
           "The page 130 and page 131 source-as-is photo crops exclude surrounding Spanish caption/body text; Russian explanation is outside the images. No photo, traffic sign, road marking, source crop, source page render, or protected source-as-is visual pixels are translated, relabeled, retouched, masked, inpainted, reconstructed, or otherwise changed.",
-          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map disposition remains evidence-only with Russian DOM text outside the source image."
+          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map transfer is handled in app2-highways-hospitals with x5 source-crop provenance, glyph-level Spanish cleanup, and selectable Russian DOM overlay labels."
         ],
         "checkerResult": "pass"
       }
@@ -9183,6 +9183,31 @@
             }
           },
           {
+            "sourcePage": 150,
+            "sourceRegion": {
+              "x": 1332,
+              "y": 1854,
+              "width": 780,
+              "height": 335
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+            "cropDimensions": {
+              "width": 780,
+              "height": 335
+            },
+            "cropSha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526",
+            "cleanupScope": "source-crop-for-glyph-level-transfer",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Focused crop exported from the Appendix II x5 page 150 source evidence and retained as the source image for tight hospital-map text cleanup; crop is not resized, redrawn, or cleaned.",
+              "outputDimensions": {
+                "width": 780,
+                "height": 335
+              },
+              "sha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526"
+            }
+          },
+          {
             "sourcePage": 151,
             "sourceRegion": {
               "x": 0,
@@ -9211,16 +9236,201 @@
         "localAssetMetadata": [
           {
             "assetPath": "src/data/manual-sections/app2-highways-hospitals.ts",
-            "assetKind": "native-dom-text-only-app2-highways-hospitals",
+            "assetKind": "selectable-russian-dom-text-and-hospital-map-transfer",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-transferred-infographic.png",
+            "assetKind": "high-resolution-transferred-source-infographic-app2-hospital-map",
+            "assetCategory": "source-transferred-infographic",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "glyph-level-spanish-cleanup",
+            "width": 780,
+            "height": 335,
+            "sha256": "9ef67cea1c450f877730f47948003fc9e0d3fa308a751a65060d1136543ac802",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 680,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime PNG generated from the x5 hospital-map source crop with a label-local glyph mask and OpenCV Telea inpainting; output kept at source crop dimensions with no resize, redraw, broad plate, or browser upscale.",
+              "outputDimensions": {
+                "width": 780,
+                "height": 335
+              },
+              "sha256": "9ef67cea1c450f877730f47948003fc9e0d3fa308a751a65060d1136543ac802"
+            },
+            "infographicTransfer": {
+              "sourceImageTransfer": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+              "sourceCropSha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526",
+              "sourceCropDimensions": {
+                "width": 780,
+                "height": 335
+              },
+              "noApproximateRedraw": true,
+              "broadMaskPlatePatchStatus": "none",
+              "cleanupMethod": "glyph-letter-level-background-restoration",
+              "russianOverlayStrategy": "selectable-dom",
+              "russianOverlayLabels": [
+                {
+                  "id": "hospital-map-title",
+                  "textRu": "Больницы CABA",
+                  "xPct": 6,
+                  "yPct": 12,
+                  "widthPct": 20,
+                  "heightPct": 7,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-map-legend",
+                  "textRu": "Б = больница",
+                  "xPct": 6,
+                  "yPct": 21,
+                  "widthPct": 18,
+                  "heightPct": 7,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-north",
+                  "textRu": "Б",
+                  "xPct": 46.8,
+                  "yPct": 13,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-west-north",
+                  "textRu": "Б",
+                  "xPct": 42.2,
+                  "yPct": 29.5,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-west",
+                  "textRu": "Б",
+                  "xPct": 35.5,
+                  "yPct": 36.8,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-west-center",
+                  "textRu": "Б",
+                  "xPct": 36.7,
+                  "yPct": 52.5,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-southwest",
+                  "textRu": "Б",
+                  "xPct": 38.2,
+                  "yPct": 68.5,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-south",
+                  "textRu": "Б",
+                  "xPct": 47.5,
+                  "yPct": 84.2,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-h1-center",
+                  "textRu": "Б1",
+                  "xPct": 44.7,
+                  "yPct": 53.5,
+                  "widthPct": 5.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-h2-center",
+                  "textRu": "Б2",
+                  "xPct": 48.5,
+                  "yPct": 66.8,
+                  "widthPct": 5.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-red",
+                  "textRu": "Б",
+                  "xPct": 51.8,
+                  "yPct": 42.6,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-northeast-blue",
+                  "textRu": "Б",
+                  "xPct": 59,
+                  "yPct": 26.7,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "light-on-blue"
+                },
+                {
+                  "id": "hospital-marker-northeast-orange",
+                  "textRu": "Б",
+                  "xPct": 61.6,
+                  "yPct": 33.4,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-east",
+                  "textRu": "Б",
+                  "xPct": 59,
+                  "yPct": 47.5,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-h1-east",
+                  "textRu": "Б1",
+                  "xPct": 59.1,
+                  "yPct": 63.1,
+                  "widthPct": 5.5,
+                  "heightPct": 6,
+                  "tone": "dark-on-light"
+                },
+                {
+                  "id": "hospital-marker-southeast",
+                  "textRu": "Б",
+                  "xPct": 68.4,
+                  "yPct": 56.2,
+                  "widthPct": 4.5,
+                  "heightPct": 6,
+                  "tone": "light-on-blue"
+                }
+              ],
+              "russianOverlayPlacement": "over-cleaned-infographic-surface",
+              "overlayTextSelectability": "selectable-dom-text"
+            }
           }
         ],
         "visibleSpanishStatus": "none",
         "selectableTextStatus": {
           "status": "pass",
-          "evidence": "app2-highways-hospitals is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+          "evidence": "app2-highways-hospitals renders selectable Russian DOM text plus selectable Russian DOM overlay labels over the transferred hospital map; Spanish is limited to sourceTextEs/evidence metadata."
         },
         "desktopScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png",
@@ -9236,8 +9446,8 @@
         },
         "visualReviewNotes": [
           "Pages 149-151 are implemented as native Russian text for Paseo del Bajo rules, prohibited users, breakdown handling, exceptional routes, the page 150 hospital map reference, and the closing public-transport statement.",
-          "Page 150 hospital map remains an x5 source evidence crop only; runtime uses selectable Russian text/list to avoid showing Spanish map labels and to avoid non-compliant broad cleanup of an infographic/map.",
-          "No map, photograph, traffic sign, road marking, source crop, source page render, or transferred infographic PNG is modified."
+          "Page 150 hospital map now renders as a runtime transferred source infographic based on the x5 source crop; Spanish labels were removed with label-local glyph masking and OpenCV Telea inpainting, not with broad square/plate cleanup.",
+          "Yellow H/H1/H2 hospital markers, colored regions, boundaries, roads/lines, icons, layout, and colors remain source-derived; Russian Б/Б1/Б2 marker labels are selectable DOM overlay text, and full hospital names are listed below the map in Russian."
         ],
         "checkerResult": "pass"
       }

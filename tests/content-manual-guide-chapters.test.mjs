@@ -1461,8 +1461,67 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   assert.match(app2HighwaysHospitalsModuleSource, /60 km\/h/u);
   assert.match(app2HighwaysHospitalsModuleSource, /AUSA/u);
   assert.match(app2HighwaysHospitalsModuleSource, /Карта больниц/u);
-  assert.match(app2HighwaysHospitalsModuleSource, /не показывать испанские подписи карты/u);
-  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /source-image-cards|assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /hospital-map-transferred-infographic\.png/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /russianOverlayLabels[\s\S]*Больницы CABA[\s\S]*Б = больница[\s\S]*Б1[\s\S]*Б2/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /Доктор И\. Пировано[\s\S]*Сесилия Гриерсон/u);
+  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /не показывать испанские подписи карты|передана как текстовый список|source evidence only/u);
+  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u);
+});
+
+test("Appendix II hospital map renders as a source-transferred infographic with Russian overlays", () => {
+  const highwaysHospitals = sectionById("app2-highways-hospitals");
+  const sourceCropPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
+  const textCleanupMaskPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
+  const runtimeAssetPath = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-transferred-infographic.png";
+  const sourceCropSha256 = "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526";
+  const cleanupMaskSha256 = "98bc3792782d567172a568708b620426d520c5eac1886a9912cd129f76a56a23";
+  const runtimeAssetSha256 = "9ef67cea1c450f877730f47948003fc9e0d3fa308a751a65060d1136543ac802";
+
+  assert.equal(sha256File(sourceCropPath), sourceCropSha256);
+  assert.equal(sha256File(textCleanupMaskPath), cleanupMaskSha256);
+  assert.equal(sha256File(runtimeAssetPath), runtimeAssetSha256);
+
+  assert.ok(
+    highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) =>
+      entry.sourceAssetPath === sourceCropPath &&
+      entry.cleanupScope === "source-crop-for-glyph-level-transfer" &&
+      entry.cropSha256 === sourceCropSha256 &&
+      entry.sourceRegion.x === 1332 &&
+      entry.sourceRegion.y === 1854 &&
+      entry.cropDimensions.width === 780 &&
+      entry.cropDimensions.height === 335
+    ),
+    "hospital map x5 source crop provenance is recorded"
+  );
+
+  const asset = localAssetByPath(highwaysHospitals, runtimeAssetPath);
+  assert.equal(asset.assetCategory, "source-transferred-infographic");
+  assert.equal(asset.assetKind, "high-resolution-transferred-source-infographic-app2-hospital-map");
+  assert.equal(asset.containsText, true);
+  assert.equal(asset.visibleSpanish, false);
+  assert.equal(asset.cleanupScope, "glyph-level-spanish-cleanup");
+  assert.equal(asset.width, 780);
+  assert.equal(asset.height, 335);
+  assert.equal(asset.sha256, runtimeAssetSha256);
+  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 680);
+  assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(asset.infographicTransfer.sourceImageTransfer, true);
+  assert.equal(asset.infographicTransfer.sourceAssetPath, sourceCropPath);
+  assert.equal(asset.infographicTransfer.sourceCropSha256, sourceCropSha256);
+  assert.deepEqual(asset.infographicTransfer.sourceCropDimensions, { width: 780, height: 335 });
+  assert.equal(asset.infographicTransfer.noApproximateRedraw, true);
+  assert.equal(asset.infographicTransfer.broadMaskPlatePatchStatus, "none");
+  assert.equal(asset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+  assert.equal(asset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
+  assert.equal(asset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
+  assert.equal(asset.infographicTransfer.russianOverlayLabels.length, 16);
+  assert.deepEqual(
+    asset.infographicTransfer.russianOverlayLabels.slice(0, 2).map((label) => label.textRu),
+    ["Больницы CABA", "Б = больница"]
+  );
+  assert.ok(asset.infographicTransfer.russianOverlayLabels.some((label) => label.textRu === "Б1"));
+  assert.ok(asset.infographicTransfer.russianOverlayLabels.some((label) => label.textRu === "Б2"));
 });
 
 test("Appendix II safety visuals render as preserved source images with provenance evidence", () => {
