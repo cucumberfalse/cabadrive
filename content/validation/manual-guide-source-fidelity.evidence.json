@@ -181,7 +181,7 @@
     },
     "app1-safety-elements": {
       "start": 105,
-      "end": 118
+      "end": 119
     },
     "app1-other-required-safety-elements": {
       "start": 119,
@@ -561,6 +561,50 @@
           "excludesSectionId": "ch5-gender-violence-prevention"
         }
       ]
+    },
+    {
+      "sourcePage": 119,
+      "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-119.jpg",
+      "reason": "source-page-contains-two-source-index-topics",
+      "sourceEvidence": "layout.ru.json page 119 masks 02-09 are Equipaje; mask 10 starts Otros elementos de seguridad obligatorios",
+      "sectionBoundaries": [
+        {
+          "sectionId": "app1-safety-elements",
+          "sharedSourcePage": 119,
+          "ownedRegion": "equipaje-paragraphs-before-obligatory-elements-heading",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-119-source-line-mask-02",
+            "page-119-source-line-mask-03",
+            "page-119-source-line-mask-04",
+            "page-119-source-line-mask-05",
+            "page-119-source-line-mask-06",
+            "page-119-source-line-mask-07",
+            "page-119-source-line-mask-08",
+            "page-119-source-line-mask-09"
+          ],
+          "endsBeforeLayoutBlockId": "page-119-source-line-mask-10",
+          "excludesSectionId": "app1-other-required-safety-elements",
+          "boundaryEvidence": "Source page 119 starts with Equipaje; the Otros elementos de seguridad obligatorios heading begins at page-119-source-line-mask-10, so the luggage/max-load guidance remains in app1-safety-elements."
+        },
+        {
+          "sectionId": "app1-other-required-safety-elements",
+          "sharedSourcePage": 119,
+          "ownedRegion": "otros-elementos-heading-and-obligatory-equipment",
+          "ownedLayoutBlockIdsOnSharedPage": [
+            "page-119-source-line-mask-10",
+            "page-119-source-line-mask-11",
+            "page-119-source-line-mask-12",
+            "page-119-source-line-mask-13",
+            "page-119-source-line-mask-14",
+            "page-119-source-line-mask-15",
+            "page-119-source-line-mask-16"
+          ],
+          "startsAtLayoutBlockId": "page-119-source-line-mask-10",
+          "startsAtSourceTextEs": "Otros elementos de seguridad obligatorios",
+          "excludesSectionId": "app1-safety-elements",
+          "boundaryEvidence": "Source page 119 other-required ownership begins only at the Otros elementos de seguridad obligatorios heading; preceding Equipaje masks 02-09 are excluded from this route."
+        }
+      ]
     }
   ],
   "pendingSectionExpectations": {
@@ -896,7 +940,8 @@
       95,
       99,
       100,
-      101
+      101,
+      119
     ],
     "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendix_1_sections",
     "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendix_1_sections"

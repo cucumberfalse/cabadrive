@@ -25,25 +25,11 @@ export const app1OtherRequiredSafetyElementsSection: ManualGuideSectionContent =
     ],
     notes: [
       "Pages 119-120 are implemented as selectable Russian DOM text.",
-      "The page 119 luggage guidance is preserved with the source section boundary because the Índice assigns page 119 to this Appendix I topic.",
+      "Page 119 is shared: this section starts at the official Otros elementos de seguridad obligatorios heading; the preceding Equipaje paragraphs are owned by app1-safety-elements.",
       "No source image, sign, or road marking is translated or modified in this section."
     ]
   },
   blocks: [
-    {
-      id: "luggage-safety",
-      kind: "list",
-      titleRu: "Багаж и максимальная загрузка",
-      sourceTextEs:
-        "El peso máximo que puede transportar el vehículo se encuentra en el manual... equipaje pesado en el fondo del baúl y cerca del centro.",
-      itemsRu: [
-        "Максимальная загрузка автомобиля указана в руководстве.",
-        "Перегруз усложняет маневры.",
-        "Тяжелый багаж размещают глубоко в багажнике и ближе к центру автомобиля.",
-        "Багажник на крыше должен быть надежно закреплен.",
-        "Груз на крыше не должен ухудшать аэродинамику и видимость, закрывать световые приборы или превышать установленные пределы."
-      ]
-    },
     {
       id: "warning-triangles",
       kind: "callout",

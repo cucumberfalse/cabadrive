@@ -6622,7 +6622,7 @@
       "routeHash": "#manual-section-app1-safety-elements",
       "sourcePageRange": {
         "start": 105,
-        "end": 118
+        "end": 119
       },
       "sourcePages": [
         {
@@ -6708,6 +6708,12 @@
           "manualManifestPointer": "/pages/117",
           "layoutManifestPointer": "/pages/117",
           "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-118.jpg"
+        },
+        {
+          "sourcePage": 119,
+          "manualManifestPointer": "/pages/118",
+          "layoutManifestPointer": "/pages/118",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-119.jpg"
         }
       ],
       "status": "implemented",
@@ -6734,7 +6740,8 @@
           115,
           116,
           117,
-          118
+          118,
+          119
         ],
         "sourceRegionMetadata": [
           {
@@ -7161,6 +7168,31 @@
               },
               "sha256": "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6"
             }
+          },
+          {
+            "sourcePage": 119,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "bc3cf04d3bc4fb4b6afeb85b8c75b9d3977868c54e960aad053669617646726a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Existing Appendix I x5 source export verified by dimensions, SHA-256, and source-page naming; copied without resizing or cleanup.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "bc3cf04d3bc4fb4b6afeb85b8c75b9d3977868c54e960aad053669617646726a"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -7416,11 +7448,29 @@
         },
         "visualReviewNotes": [
           "Page 104 is an appendix divider and is represented by the Appendix I navigation parent only.",
+          "Page 119 is shared: app1-safety-elements owns the Equipaje luggage/max-load masks before the Otros elementos de seguridad obligatorios heading; the other-required route starts at that heading.",
           "Mirror orientation remains a protected source-as-is crop with Russian explanation outside the image.",
           "Headrest and SRI visuals are transferred from focused x5 source crops; cleanup is limited to detected Spanish glyph and antialias pixels inside label regions while preserving silhouettes, guide lines, pictograms, numerals, and geometry.",
           "No photograph, traffic sign, or road marking is altered."
         ],
         "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 119,
+        "ownedRegion": "equipaje-paragraphs-before-obligatory-elements-heading",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-119-source-line-mask-02",
+          "page-119-source-line-mask-03",
+          "page-119-source-line-mask-04",
+          "page-119-source-line-mask-05",
+          "page-119-source-line-mask-06",
+          "page-119-source-line-mask-07",
+          "page-119-source-line-mask-08",
+          "page-119-source-line-mask-09"
+        ],
+        "endsBeforeLayoutBlockId": "page-119-source-line-mask-10",
+        "excludesSectionId": "app1-other-required-safety-elements",
+        "boundaryEvidence": "Source page 119 starts with Equipaje; the Otros elementos de seguridad obligatorios heading begins at page-119-source-line-mask-10, so the luggage/max-load guidance remains in app1-safety-elements."
       }
     },
     {
@@ -7539,10 +7589,28 @@
           "evidence": "No source image alteration, raw page route, remote asset, or fake placeholder content is introduced."
         },
         "visualReviewNotes": [
-          "Pages 119-120 are implemented as native Russian text, including luggage, hazard triangles, extinguisher, and reflective vest details.",
+          "Page 119 is shared: this section begins at the Otros elementos de seguridad obligatorios heading and excludes the preceding Equipaje luggage/max-load masks owned by app1-safety-elements.",
+          "Pages 119-120 are implemented as native Russian text for hazard triangles, extinguisher, and reflective vest details.",
           "No photograph, traffic sign, or road marking is altered."
         ],
         "checkerResult": "pass"
+      },
+      "sourceBoundaryEvidence": {
+        "sharedSourcePage": 119,
+        "ownedRegion": "otros-elementos-heading-and-obligatory-equipment",
+        "ownedLayoutBlockIdsOnSharedPage": [
+          "page-119-source-line-mask-10",
+          "page-119-source-line-mask-11",
+          "page-119-source-line-mask-12",
+          "page-119-source-line-mask-13",
+          "page-119-source-line-mask-14",
+          "page-119-source-line-mask-15",
+          "page-119-source-line-mask-16"
+        ],
+        "startsAtLayoutBlockId": "page-119-source-line-mask-10",
+        "startsAtSourceTextEs": "Otros elementos de seguridad obligatorios",
+        "excludesSectionId": "app1-safety-elements",
+        "boundaryEvidence": "Source page 119 other-required ownership begins only at the Otros elementos de seguridad obligatorios heading; preceding Equipaje masks 02-09 are excluded from this route."
       }
     },
     {

@@ -14,7 +14,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
   id: "app1-safety-elements-content",
   sectionId: "app1-safety-elements",
   titleRu: "Элементы безопасности",
-  sourcePages: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118],
+  sourcePages: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119],
   sourceTitleEs: "Elementos de seguridad",
   status: "implemented",
   styleTokenFamilies: [
@@ -43,7 +43,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-116-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-117-safety-elements-source-crop.jpg",
-      "content/validation/manual-guide/app1-safety-elements/page-118-safety-elements-source-crop.jpg"
+      "content/validation/manual-guide/app1-safety-elements/page-118-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg"
     ],
     russianScreenshots: [
       "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-desktop.png",
@@ -51,7 +52,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     ],
     notes: [
       "Source page 104 is the Appendix I divider and is recorded in registry evidence, not as a standalone runtime article.",
-      "Pages 105-118 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
+      "Pages 105-119 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
+      "Page 119 is shared: the Equipaje paragraphs before the Otros elementos de seguridad obligatorios heading belong to this safety-elements section; the heading and following obligatory equipment content belong to the next section.",
       "The mirror-orientation visual is an x5 source-as-is crop because it is treated as a protected source image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text."
     ]
   },
@@ -378,6 +380,20 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Стекла могут быть многослойными или закаленными; фрагменты должны быть безопасными.",
         "Все стекла должны гарантировать видимость в обе стороны; при тонировке пассажиры должны различаться на короткой дистанции.",
         "Животных нельзя перевозить без фиксации. Они едут сзади и с соответствующей шлейкой."
+      ]
+    },
+    {
+      id: "luggage-safety",
+      kind: "list",
+      titleRu: "Багаж и максимальная загрузка",
+      sourceTextEs:
+        "Equipaje. El peso máximo que puede transportar el vehículo se encuentra en el manual... equipaje pesado en el fondo del baúl y cerca del centro.",
+      itemsRu: [
+        "Максимальная загрузка автомобиля указана в руководстве.",
+        "Перегруз усложняет маневры даже для опытного водителя.",
+        "Тяжелый багаж размещают глубоко в багажнике и ближе к центру автомобиля: это помогает устойчивости направления и поведению автомобиля в поворотах.",
+        "Багажник на крыше должен быть надежно закреплен.",
+        "Груз на крыше не должен ухудшать аэродинамику и видимость, закрывать световые приборы или превышать установленные пределы."
       ]
     }
   ]

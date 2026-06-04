@@ -729,7 +729,7 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
   assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103), sourcePagesForRange(105, 122)));
-  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101, 119]);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -1309,9 +1309,16 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
   const safety = sectionById("app1-safety-elements");
   const otherRequired = sectionById("app1-other-required-safety-elements");
   const recommended = sectionById("app1-recommended-safety-elements");
-  assert.deepEqual(safety.sourcePageRange, { start: 105, end: 118 });
+  assert.deepEqual(safety.sourcePageRange, { start: 105, end: 119 });
   assert.deepEqual(otherRequired.sourcePageRange, { start: 119, end: 120 });
   assert.deepEqual(recommended.sourcePageRange, { start: 121, end: 122 });
+  assert.equal(safety.sourceBoundaryEvidence.sharedSourcePage, 119);
+  assert.equal(safety.sourceBoundaryEvidence.endsBeforeLayoutBlockId, "page-119-source-line-mask-10");
+  assert.match(safety.sourceBoundaryEvidence.boundaryEvidence, /Equipaje[\s\S]*Otros elementos de seguridad obligatorios/u);
+  assert.equal(otherRequired.sourceBoundaryEvidence.sharedSourcePage, 119);
+  assert.equal(otherRequired.sourceBoundaryEvidence.startsAtLayoutBlockId, "page-119-source-line-mask-10");
+  assert.equal(otherRequired.sourceBoundaryEvidence.startsAtSourceTextEs, "Otros elementos de seguridad obligatorios");
+  assert.match(otherRequired.sourceBoundaryEvidence.boundaryEvidence, /preceding Equipaje/u);
   assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 104)), false);
   assert.equal(registry.sections.some((section) => /^app[2-4]-/u.test(section.id)), false, "Appendix II-IV content is not bundled");
   assert.doesNotMatch(manualGuideSource, /annex-1-safety|annex-1-required|annex-1-recommended/u);
@@ -1356,11 +1363,13 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);
   assert.match(app1SafetyElementsModuleSource, /Закон CABA 2148[\s\S]*бамперы/u);
   assert.match(app1SafetyElementsModuleSource, /Животных нельзя перевозить без фиксации/u);
+  assert.match(app1SafetyElementsModuleSource, /Максимальная загрузка/u);
+  assert.match(app1SafetyElementsModuleSource, /Багажник на крыше/u);
+  assert.match(app1SafetyElementsModuleSource, /устойчивости направления[\s\S]*поворотах/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /periodic VTV|warning triangles, reflective vest|wheel wrench|hydroplaning или aquaplaning|peripheral vision|Homologated convex mirrors разрешены|90 dB horn|удар о windshield|врачи или paramedics|abdomen и chest|excessive fatigue|clavicle|pelvis ниже abdomen|риск whiplash|occupants|integrated или height adjustable|Airbag поглощает|Airbag бывает|curtain|child seats и homologated devices|abdominal two-point belt|DOM text|babies|international standards и иметь label|читать manual автомобиля|used SRI|rear-facing|head, neck and spine|maximum weight|должны быть tight|удержан harness|deformation zones|cabin должна|protective и undeformable|из-за inertia|40 times|bumper поглощает|уменьшает damage|сам impact|Ley 2148[\s\S]*bumpers|fenders|visibility, aerodynamics|rain, wind, dust and insects|laminated или tempered|occupants должны различаться на short distance|Pets нельзя перевозить loose|appropriate harness/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /Appendix II|Appendix III|Appendix IV|TRANSPORTE DE PASAJEROS|TRANSPORTE DE CARGA|SEÑALES VIALES/u);
 
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /Багажник на крыше/u);
+  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка|Багажник на крыше|устойчивости направления/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два аварийных треугольника/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /огнетушитель 1 kg типа ABC/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
@@ -2808,23 +2817,23 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
 test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, 4, 5, and Appendix I implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
   assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 122 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
   assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 30);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
-  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(result.implementedSections, 30);
   assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
   assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
-  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_and_appendix_1_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
