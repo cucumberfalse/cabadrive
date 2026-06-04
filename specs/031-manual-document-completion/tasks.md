@@ -840,6 +840,18 @@ For each chapter-equivalent content PR:
 - Architect validation: no unresolved Implementation Agent feedback remains for PR #192 Appendix II scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action before Analyst final validation.
 - Current-PR-head read-only guard: effective process/content head 3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4 is the guard basis for PR #192; any later commit must be final-validation evidence-only in tasks.md and feature-request.md, and finalizer rechecks the actual expected PR head, required checks, mergeability, and review threads before merge.
 - Limit escalation: none
+- Effective content head: d502fad26cdfcf8c4c03b57134cf6bd9d870828d
+- Architect validation: passed at 2026-06-04T17:15:49Z for effective process/content head d502fad26cdfcf8c4c03b57134cf6bd9d870828d.
+- Architect validated effective content head: d502fad26cdfcf8c4c03b57134cf6bd9d870828d
+- Architect return count: 0
+- Architect validation: PR #192 Appendix II scope validates pages 123-151 only; page 123 is divider-only; runtime covers app2-social-responsibility, app2-safety-elements, app2-driving-factors, app2-safe-driving, and app2-highways-hospitals; no Appendix III/IV/front-matter or unrelated content is bundled.
+- Architect validation: effective process/content head d502fad26cdfcf8c4c03b57134cf6bd9d870828d includes Paseo del Bajo content repair d1202047571a4b51abd0a517d3b88307703e2e82 restoring the mandatory/exclusive rule, and d502fad26cdfcf8c4c03b57134cf6bd9d870828d is an empty workflow-retry commit with no tree/file diff from that content repair.
+- Architect validation: Review Agent pass 4429756373 confirms AI Review P2 3357404998 is addressed; required checks passed on d502fad26cdfcf8c4c03b57134cf6bd9d870828d: AI Review, baseline-checks, docker-validation, guard, and osv-scan; all review threads are resolved per Orchestrator evidence.
+- Architect validation: page 150 source-as-is hospital-map owner-decision repair and checker fence remain intact: the runtime map is the original high-resolution source image unchanged, broad cleanup artifacts and transferred-map/glyph-cleanup certification remain removed, and Russian translations/legend/list content is adjacent to or below the image.
+- Architect validation: strict visual requirements remain satisfied for Appendix II: x5/equivalent high-resolution evidence is recorded; protected photos, traffic signs, road markings, source-as-is map, source page renders, and source-as-is photo crops are unmodified; page 132 transferred headrest diagrams preserve source pixels with Spanish labels outside crop boundaries; page 150 is a page-specific owner-approved visible-Spanish source-as-is image exception with Russian text outside the image.
+- Architect validation: no unresolved Implementation Agent feedback remains for PR #192 Appendix II scope; no unresolved known issue lacks owner decision; no Analyst feedback requires Architect action before Analyst final validation.
+- Current-PR-head read-only guard: effective process/content head d502fad26cdfcf8c4c03b57134cf6bd9d870828d is the guard basis for PR #192; any later commit must be final-validation evidence-only in tasks.md and feature-request.md, and finalizer rechecks the actual expected PR head, required checks, mergeability, and review threads before merge.
+- Limit escalation: none
 
 ## Known Issues / Architect Dispositions
 
@@ -2154,6 +2166,38 @@ Architect validation evidence: Current-PR-head read-only guard basis is effectiv
 Architect gaps: none.
 
 Architect disposition: no unresolved Implementation Agent feedback remains for PR #192 Appendix II scope at 3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4.
+
+Architect disposition: no unresolved known issue lacks owner decision for PR #192 Appendix II scope.
+
+Architect disposition: no Analyst feedback requires Architect action for PR #192 Appendix II scope.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-04T17:15:49Z
+
+Architect validated effective content head: d502fad26cdfcf8c4c03b57134cf6bd9d870828d
+
+Architect return count for this work cycle: 0
+
+Open Architect dispositions: none for PR #192 Appendix II scope at d502fad26cdfcf8c4c03b57134cf6bd9d870828d.
+
+Architect validation evidence: PR #192 Appendix II scope validates pages 123-151 only, page 123 divider-only, and no Appendix III/IV/front-matter or unrelated content is bundled.
+
+Architect validation evidence: Effective process/content head d502fad26cdfcf8c4c03b57134cf6bd9d870828d includes Paseo del Bajo content repair d1202047571a4b51abd0a517d3b88307703e2e82 restoring the mandatory/exclusive rule, and d502fad26cdfcf8c4c03b57134cf6bd9d870828d is an empty workflow-retry commit with no tree/file diff from that content repair.
+
+Architect validation evidence: Review Agent pass 4429756373 confirms AI Review P2 3357404998 is addressed; required checks passed on d502fad26cdfcf8c4c03b57134cf6bd9d870828d: AI Review, baseline-checks, docker-validation, guard, and osv-scan; all review threads are resolved per Orchestrator evidence.
+
+Architect validation evidence: Page 150 source-as-is hospital-map owner-decision repair and checker fence remain intact: the runtime map is the original high-resolution source image unchanged, Russian translations/legend/list content is adjacent to or below the image, and the broad-mask transferred-map approach remains removed from runtime/evidence.
+
+Architect validation evidence: Strict visual requirements remain satisfied for Appendix II: x5/equivalent high-resolution evidence is recorded; protected photos, traffic signs, road markings, source-as-is map, source page renders, and source-as-is photo crops are unmodified; page 132 transferred headrest diagrams preserve source pixels with Spanish labels outside crop boundaries; page 150 is a page-specific owner-approved visible-Spanish source-as-is image exception with Russian text outside the image.
+
+Architect validation evidence: Current-PR-head read-only guard basis is effective process/content head d502fad26cdfcf8c4c03b57134cf6bd9d870828d; later commits must be final-validation evidence-only in tasks.md and feature-request.md, and finalizer rechecks the actual expected PR head, required checks, mergeability, and review threads before merge.
+
+Architect gaps: none.
+
+Architect disposition: no unresolved Implementation Agent feedback remains for PR #192 Appendix II scope at d502fad26cdfcf8c4c03b57134cf6bd9d870828d.
 
 Architect disposition: no unresolved known issue lacks owner decision for PR #192 Appendix II scope.
 
