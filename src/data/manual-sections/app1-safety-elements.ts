@@ -311,7 +311,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
           russianOverlayLabels: [
             { id: "sri-title", textRu: "Виды SRI", xPct: 28, yPct: 9, widthPct: 13, heightPct: 10, tone: "dark-on-light" },
             { id: "sri-newborns", textRu: "Новорожденные и малыши до 1 года / 10 kg", xPct: 29.2, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" },
-            { id: "sri-group-0-plus", textRu: "1 год, 10-18 kg", xPct: 37.4, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" },
+            { id: "sri-group-0-plus", textRu: "1-4 года, 10-18 kg", xPct: 37.4, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" },
             { id: "sri-group-1", textRu: "9 месяцев - 4 года, 9-18 kg", xPct: 45.4, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" },
             { id: "sri-group-2", textRu: "4-8 лет, 15-25 kg", xPct: 53.5, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" },
             { id: "sri-group-3", textRu: "8-12 лет, 22-36 kg", xPct: 61.6, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" }

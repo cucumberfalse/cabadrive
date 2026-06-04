@@ -1444,7 +1444,7 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
       height: 260,
       sha256: "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b",
       sourceSha256: "5d28a11f1a15db90531119cdde12980929dfd36dd82917d150a82fe27525d9a6",
-      expectedLabels: ["Виды SRI", "Новорожденные и малыши до 1 года / 10 kg", "1 год, 10-18 kg", "9 месяцев - 4 года, 9-18 kg", "4-8 лет, 15-25 kg", "8-12 лет, 22-36 kg"]
+      expectedLabels: ["Виды SRI", "Новорожденные и малыши до 1 года / 10 kg", "1-4 года, 10-18 kg", "9 месяцев - 4 года, 9-18 kg", "4-8 лет, 15-25 kg", "8-12 лет, 22-36 kg"]
     }
   ];
 
@@ -1453,6 +1453,7 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /sri-types-transferred-infographic\.png/u);
+  assert.doesNotMatch(app1SafetyElementsModuleSource, /1 год, 10-18 kg/u);
   assert.match(app1SafetyElementsModuleSource, /russianOverlayLabels[\s\S]*Высота подголовника[\s\S]*Виды SRI/u);
 
   const exceptionPaths = safety.implementationEvidence.visibleSpanishStatus.exceptions?.map((entry) => entry.assetPath) ?? [];
