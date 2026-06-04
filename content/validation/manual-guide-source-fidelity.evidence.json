@@ -2,40 +2,68 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "section-registry-with-complete-chapters-1-through-5-and-appendix-1",
+  "mode": "complete-chapters-1-through-5-and-appendices-1-through-2",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
     "start": 21,
-    "end": 122
+    "end": 151
   },
   "skippedSourcePages": [
     {
       "sourcePage": 21,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-1-sustainable-mobility",
+      "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 43,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-2-responsibility",
+      "sourceTitleEs": "CAPÍTULO 2: CONDUCIR ES UN ACTO DE RESPONSABILIDAD",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 56,
-      "reason": "chapter-closing-slogan-only"
+      "reason": "chapter-closing-slogan-only",
+      "parentChapterId": "chapter-2-responsibility",
+      "sourceTitleEs": "Respetar las normas de tránsito implica salvar vidas.",
+      "disposition": "Book-only closing slogan is not Scoring content; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 57,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-3-driving-rules",
+      "sourceTitleEs": "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 89,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-4-natural-capacity",
+      "sourceTitleEs": "CAPÍTULO 4: CAPACIDAD NATURAL",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 98,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "chapter-5-driving-behavior",
+      "sourceTitleEs": "CAPÍTULO 5: ACTITUD AL CONDUCIR",
+      "disposition": "Chapter title is represented by navigation only; no standalone learner page, route, module, placeholder, or implementation PR."
     },
     {
       "sourcePage": 104,
-      "reason": "chapter-divider-only"
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-1-private-cars",
+      "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
+      "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
+    },
+    {
+      "sourcePage": 123,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sourceTitleEs": "ANEXO II TRANSPORTE DE PASAJEROS/AS",
+      "disposition": "Appendix II divider/title page is represented by the Appendix II navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
     }
   ],
   "expectedSectionIds": [
@@ -68,7 +96,12 @@
     "ch5-anticipatory-efficient-driving",
     "app1-safety-elements",
     "app1-other-required-safety-elements",
-    "app1-recommended-safety-elements"
+    "app1-recommended-safety-elements",
+    "app2-social-responsibility",
+    "app2-safety-elements",
+    "app2-driving-factors",
+    "app2-safe-driving",
+    "app2-highways-hospitals"
   ],
   "expectedSectionRanges": {
     "ch1-cities-for-people": {
@@ -190,6 +223,26 @@
     "app1-recommended-safety-elements": {
       "start": 121,
       "end": 122
+    },
+    "app2-social-responsibility": {
+      "start": 124,
+      "end": 124
+    },
+    "app2-safety-elements": {
+      "start": 125,
+      "end": 136
+    },
+    "app2-driving-factors": {
+      "start": 137,
+      "end": 143
+    },
+    "app2-safe-driving": {
+      "start": 144,
+      "end": 148
+    },
+    "app2-highways-hospitals": {
+      "start": 149,
+      "end": 151
     }
   },
   "sharedSourcePageOwnership": [
@@ -912,7 +965,7 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 30,
+    "implementedSections": 35,
     "skippedSourcePages": [
       21,
       43,
@@ -920,7 +973,8 @@
       57,
       89,
       98,
-      104
+      104,
+      123
     ],
     "skippedDividerPages": [
       21,
@@ -928,7 +982,8 @@
       57,
       89,
       98,
-      104
+      104,
+      123
     ],
     "omittedBookOnlyPages": [
       56
@@ -943,7 +998,7 @@
       101,
       119
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendix_1_sections",
-    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendix_1_sections"
+    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections",
+    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections"
   }
 }

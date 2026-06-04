@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendix-1",
+  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-2",
   "sourcePageRange": {
     "start": 21,
-    "end": 122
+    "end": 151
   },
   "skippedSourcePages": [
     {
@@ -56,6 +56,13 @@
       "parentChapterId": "appendix-1-private-cars",
       "sourceTitleEs": "ANEXO I AUTOMÓVILES PARTICULARES",
       "disposition": "Appendix I divider/title page is represented by the Appendix I navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
+    },
+    {
+      "sourcePage": 123,
+      "reason": "chapter-divider-only",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sourceTitleEs": "ANEXO II TRANSPORTE DE PASAJEROS/AS",
+      "disposition": "Appendix II divider/title page is represented by the Appendix II navigation parent; no standalone learner page, route, module, placeholder, or implementation PR is created."
     }
   ],
   "sharedSourcePageOwnership": [
@@ -580,6 +587,24 @@
         "app1-safety-elements",
         "app1-other-required-safety-elements",
         "app1-recommended-safety-elements"
+      ]
+    },
+    {
+      "id": "appendix-2-passenger-transport",
+      "labelRu": "Приложение II. Пассажирский транспорт",
+      "sourceTitleEs": "ANEXO II TRANSPORTE DE PASAJEROS/AS",
+      "sourcePageRange": {
+        "start": 123,
+        "end": 151
+      },
+      "requiredPrintedPage": 122,
+      "status": "active",
+      "sectionIds": [
+        "app2-social-responsibility",
+        "app2-safety-elements",
+        "app2-driving-factors",
+        "app2-safe-driving",
+        "app2-highways-hospitals"
       ]
     }
   ],
@@ -7761,6 +7786,1195 @@
         "visualReviewNotes": [
           "Pages 121-122 are implemented as native Russian text, including first-aid kit, tow bar, and closing vehicle-condition safety details.",
           "No photograph, traffic sign, or road marking is altered."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app2-social-responsibility",
+      "labelRu": "Социальная ответственность",
+      "sourceTitleEs": "Responsabilidad social",
+      "routeHash": "#manual-section-app2-social-responsibility",
+      "sourcePageRange": {
+        "start": 124,
+        "end": 124
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 124,
+          "manualManifestPointer": "/pages/123",
+          "layoutManifestPointer": "/pages/123",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-124.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sectionContentModulePath": "src/data/manual-sections/app2-social-responsibility.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app2-social-responsibility",
+        "sourcePages": [
+          124
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 124,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-social-responsibility/page-124-social-responsibility-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "8b7bad121152655b123c6ca4189059a80632b3d067ffdab0fbf90e5e756afb35",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "8b7bad121152655b123c6ca4189059a80632b3d067ffdab0fbf90e5e756afb35"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app2-social-responsibility.ts",
+            "assetKind": "native-dom-text-only-app2-social-responsibility",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app2-social-responsibility is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app2-social-responsibility/app2-social-responsibility-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app2-social-responsibility/app2-social-responsibility-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix II route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
+        },
+        "visualReviewNotes": [
+          "Source page 123 is the Appendix II divider/title page and is represented by the Appendix II navigation parent only.",
+          "Page 124 is implemented as native Russian text; no source visual pixels are used at runtime or altered.",
+          "No Appendix III, Appendix IV, front-matter, cleanup, or unrelated correction content is bundled."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app2-safety-elements",
+      "labelRu": "Элементы безопасности",
+      "sourceTitleEs": "Elementos de seguridad",
+      "routeHash": "#manual-section-app2-safety-elements",
+      "sourcePageRange": {
+        "start": 125,
+        "end": 136
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 125,
+          "manualManifestPointer": "/pages/124",
+          "layoutManifestPointer": "/pages/124",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-125.jpg"
+        },
+        {
+          "sourcePage": 126,
+          "manualManifestPointer": "/pages/125",
+          "layoutManifestPointer": "/pages/125",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-126.jpg"
+        },
+        {
+          "sourcePage": 127,
+          "manualManifestPointer": "/pages/126",
+          "layoutManifestPointer": "/pages/126",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-127.jpg"
+        },
+        {
+          "sourcePage": 128,
+          "manualManifestPointer": "/pages/127",
+          "layoutManifestPointer": "/pages/127",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-128.jpg"
+        },
+        {
+          "sourcePage": 129,
+          "manualManifestPointer": "/pages/128",
+          "layoutManifestPointer": "/pages/128",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-129.jpg"
+        },
+        {
+          "sourcePage": 130,
+          "manualManifestPointer": "/pages/129",
+          "layoutManifestPointer": "/pages/129",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-130.jpg"
+        },
+        {
+          "sourcePage": 131,
+          "manualManifestPointer": "/pages/130",
+          "layoutManifestPointer": "/pages/130",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-131.jpg"
+        },
+        {
+          "sourcePage": 132,
+          "manualManifestPointer": "/pages/131",
+          "layoutManifestPointer": "/pages/131",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-132.jpg"
+        },
+        {
+          "sourcePage": 133,
+          "manualManifestPointer": "/pages/132",
+          "layoutManifestPointer": "/pages/132",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-133.jpg"
+        },
+        {
+          "sourcePage": 134,
+          "manualManifestPointer": "/pages/133",
+          "layoutManifestPointer": "/pages/133",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-134.jpg"
+        },
+        {
+          "sourcePage": 135,
+          "manualManifestPointer": "/pages/134",
+          "layoutManifestPointer": "/pages/134",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-135.jpg"
+        },
+        {
+          "sourcePage": 136,
+          "manualManifestPointer": "/pages/135",
+          "layoutManifestPointer": "/pages/135",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-136.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sectionContentModulePath": "src/data/manual-sections/app2-safety-elements.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app2-safety-elements",
+        "sourcePages": [
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 125,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-125-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5f5067cebd3880432ab1586a2f2ad6fdba162d34f9003201f257f86cc205c07d",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5f5067cebd3880432ab1586a2f2ad6fdba162d34f9003201f257f86cc205c07d"
+            }
+          },
+          {
+            "sourcePage": 126,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-126-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b27593d2a4b9b75a5d8bff2018cba827f7790284e395d116150ef527aa653d9e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b27593d2a4b9b75a5d8bff2018cba827f7790284e395d116150ef527aa653d9e"
+            }
+          },
+          {
+            "sourcePage": 127,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-127-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "d31003dc0cf07a268b17f5a533fdb9da8efaa212d636bc3e0a5c0a78515bff21",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "d31003dc0cf07a268b17f5a533fdb9da8efaa212d636bc3e0a5c0a78515bff21"
+            }
+          },
+          {
+            "sourcePage": 128,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-128-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "9366e7424661d8309a84251b2ceb0cc84485e53cf566dc9afd1180010de5d5d3",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "9366e7424661d8309a84251b2ceb0cc84485e53cf566dc9afd1180010de5d5d3"
+            }
+          },
+          {
+            "sourcePage": 129,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-129-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "74358f3aa5f3cec03cf37de2ec43841dceccdcc034ce70a39bd2795d07549daa",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "74358f3aa5f3cec03cf37de2ec43841dceccdcc034ce70a39bd2795d07549daa"
+            }
+          },
+          {
+            "sourcePage": 130,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-130-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7e6f175bd181a27b090d18f51ada89450eafd3c55e41613d986403a386029a44",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7e6f175bd181a27b090d18f51ada89450eafd3c55e41613d986403a386029a44"
+            }
+          },
+          {
+            "sourcePage": 131,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-131-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "ae088ee1c28d743b327d17c3b5df1927d012e695f618a224be5dddcb60db479c",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "ae088ee1c28d743b327d17c3b5df1927d012e695f618a224be5dddcb60db479c"
+            }
+          },
+          {
+            "sourcePage": 132,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "12a1f540f6f2396b741e966a25e71bb32fe01664f2e043bc897d5d52335efee0",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "12a1f540f6f2396b741e966a25e71bb32fe01664f2e043bc897d5d52335efee0"
+            }
+          },
+          {
+            "sourcePage": 133,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-133-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "33790c6d5bbef00a7463cbe383711eba2bc354e694c8512b353bf7b40e291b1e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "33790c6d5bbef00a7463cbe383711eba2bc354e694c8512b353bf7b40e291b1e"
+            }
+          },
+          {
+            "sourcePage": 134,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-134-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1cf41a8bbbfc07597e29185d76e21fa9f5f34d1f008b5f56225e104a371b682f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1cf41a8bbbfc07597e29185d76e21fa9f5f34d1f008b5f56225e104a371b682f"
+            }
+          },
+          {
+            "sourcePage": 135,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-135-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "7576326ea56c7e2d524b2cd2e0a7a539ab4761c1f748efc883d95e84f6ffb04a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "7576326ea56c7e2d524b2cd2e0a7a539ab4761c1f748efc883d95e84f6ffb04a"
+            }
+          },
+          {
+            "sourcePage": 136,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-136-safety-elements-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a770e659998d156107989ae89e4f20ac1802d2f7e009519d1fc07685efc45874",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a770e659998d156107989ae89e4f20ac1802d2f7e009519d1fc07685efc45874"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app2-safety-elements.ts",
+            "assetKind": "native-dom-text-only-app2-safety-elements",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app2-safety-elements is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app2-safety-elements/app2-safety-elements-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app2-safety-elements/app2-safety-elements-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix II route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 125-136 are implemented as native Russian text, including active/passive safety, VTV, brakes, suspension, tires, mirrors, passive safety, passenger-cabin loose-object rules, mandatory equipment, and recommended equipment.",
+          "Repeated tire, mirror, seat-belt, headrest, and equipment visuals are retained as x5 source evidence only; no runtime source image with Spanish body text is introduced.",
+          "No photograph, traffic sign, road marking, source crop, source page render, or transferred infographic PNG is modified."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app2-driving-factors",
+      "labelRu": "Факторы, участвующие в вождении",
+      "sourceTitleEs": "Factores que intervienen en la conduccion",
+      "routeHash": "#manual-section-app2-driving-factors",
+      "sourcePageRange": {
+        "start": 137,
+        "end": 143
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 137,
+          "manualManifestPointer": "/pages/136",
+          "layoutManifestPointer": "/pages/136",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-137.jpg"
+        },
+        {
+          "sourcePage": 138,
+          "manualManifestPointer": "/pages/137",
+          "layoutManifestPointer": "/pages/137",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-138.jpg"
+        },
+        {
+          "sourcePage": 139,
+          "manualManifestPointer": "/pages/138",
+          "layoutManifestPointer": "/pages/138",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-139.jpg"
+        },
+        {
+          "sourcePage": 140,
+          "manualManifestPointer": "/pages/139",
+          "layoutManifestPointer": "/pages/139",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-140.jpg"
+        },
+        {
+          "sourcePage": 141,
+          "manualManifestPointer": "/pages/140",
+          "layoutManifestPointer": "/pages/140",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-141.jpg"
+        },
+        {
+          "sourcePage": 142,
+          "manualManifestPointer": "/pages/141",
+          "layoutManifestPointer": "/pages/141",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-142.jpg"
+        },
+        {
+          "sourcePage": 143,
+          "manualManifestPointer": "/pages/142",
+          "layoutManifestPointer": "/pages/142",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-143.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sectionContentModulePath": "src/data/manual-sections/app2-driving-factors.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app2-driving-factors",
+        "sourcePages": [
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 137,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-137-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b4802779364ed852b949a06135b23fad33525b6a0e90f7f6340ddb4b150b8420",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b4802779364ed852b949a06135b23fad33525b6a0e90f7f6340ddb4b150b8420"
+            }
+          },
+          {
+            "sourcePage": 138,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-138-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "1039c62bac712624de9656d194abdb3fbc34d6efcb5216afa5f68bf2b27498f2",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "1039c62bac712624de9656d194abdb3fbc34d6efcb5216afa5f68bf2b27498f2"
+            }
+          },
+          {
+            "sourcePage": 139,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-139-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "cabc3aa0089c73459937ed6c2ed5ded39acbdc25fd224023834512f2a59c23a7",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "cabc3aa0089c73459937ed6c2ed5ded39acbdc25fd224023834512f2a59c23a7"
+            }
+          },
+          {
+            "sourcePage": 140,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-140-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "0e87e68954e95a0ec41902140c1ea0d783a5f6ee77bc11f42befa81d8fc4405c",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "0e87e68954e95a0ec41902140c1ea0d783a5f6ee77bc11f42befa81d8fc4405c"
+            }
+          },
+          {
+            "sourcePage": 141,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-141-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a01e09b7db71c757fb7851c3f94ba5da79eefd5e84c1730b34172fa37e79a5be",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a01e09b7db71c757fb7851c3f94ba5da79eefd5e84c1730b34172fa37e79a5be"
+            }
+          },
+          {
+            "sourcePage": 142,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-142-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "a90faf7d2dd58b14b4dd2d8a6304d4e6dcc857ca6ccf587e22690df01cb8d2a1",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "a90faf7d2dd58b14b4dd2d8a6304d4e6dcc857ca6ccf587e22690df01cb8d2a1"
+            }
+          },
+          {
+            "sourcePage": 143,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-driving-factors/page-143-driving-factors-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "196e1820899520b50f11c97af933cd2fbbfec1d598cdd35f08c1495ad08587fb",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "196e1820899520b50f11c97af933cd2fbbfec1d598cdd35f08c1495ad08587fb"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app2-driving-factors.ts",
+            "assetKind": "native-dom-text-only-app2-driving-factors",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app2-driving-factors is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app2-driving-factors/app2-driving-factors-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app2-driving-factors/app2-driving-factors-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix II route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 137-143 are implemented as native Russian text for rest stops, stretching, food, posture, health effects, accessibility, taxi, bus, school transport, and reduced-mobility transport duties.",
+          "No source visual pixels are used at runtime or altered."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app2-safe-driving",
+      "labelRu": "Безопасное вождение",
+      "sourceTitleEs": "Conduccion segura",
+      "routeHash": "#manual-section-app2-safe-driving",
+      "sourcePageRange": {
+        "start": 144,
+        "end": 148
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 144,
+          "manualManifestPointer": "/pages/143",
+          "layoutManifestPointer": "/pages/143",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-144.jpg"
+        },
+        {
+          "sourcePage": 145,
+          "manualManifestPointer": "/pages/144",
+          "layoutManifestPointer": "/pages/144",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-145.jpg"
+        },
+        {
+          "sourcePage": 146,
+          "manualManifestPointer": "/pages/145",
+          "layoutManifestPointer": "/pages/145",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-146.jpg"
+        },
+        {
+          "sourcePage": 147,
+          "manualManifestPointer": "/pages/146",
+          "layoutManifestPointer": "/pages/146",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-147.jpg"
+        },
+        {
+          "sourcePage": 148,
+          "manualManifestPointer": "/pages/147",
+          "layoutManifestPointer": "/pages/147",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-148.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sectionContentModulePath": "src/data/manual-sections/app2-safe-driving.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app2-safe-driving",
+        "sourcePages": [
+          144,
+          145,
+          146,
+          147,
+          148
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 144,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-144-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "2a46152434629f00c06567a0cdaa95b4b5d3b09cb7a8374e54644a2394e6d611",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "2a46152434629f00c06567a0cdaa95b4b5d3b09cb7a8374e54644a2394e6d611"
+            }
+          },
+          {
+            "sourcePage": 145,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-145-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e81eeee1cb609c468bf4194ec50de89ce603842bd541a615eccaf2aa775f65cc",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e81eeee1cb609c468bf4194ec50de89ce603842bd541a615eccaf2aa775f65cc"
+            }
+          },
+          {
+            "sourcePage": 146,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-146-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "d2df5aa6b5014957f6749a57f3f0da8b880225c8a30e6d0fd084ee3ad71a383f",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "d2df5aa6b5014957f6749a57f3f0da8b880225c8a30e6d0fd084ee3ad71a383f"
+            }
+          },
+          {
+            "sourcePage": 147,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-147-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "28527e80ae28ccc7950a4052a7c441126afe1561165570870cdd8f4b47864b26",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "28527e80ae28ccc7950a4052a7c441126afe1561165570870cdd8f4b47864b26"
+            }
+          },
+          {
+            "sourcePage": 148,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-safe-driving/page-148-safe-driving-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "e1fe1bce0876304faf48e99cd8b44c0aa2a6017fc4a9e7d74039985945fde2a4"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app2-safe-driving.ts",
+            "assetKind": "native-dom-text-only-app2-safe-driving",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app2-safe-driving is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app2-safe-driving/app2-safe-driving-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app2-safe-driving/app2-safe-driving-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix II route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 144-148 are implemented as native Russian text for limit driving, slopes/curves, vulnerable users, 1.5 m cyclist distance, off-tracking, stopping/parking, intersections, and speed.",
+          "No source visual pixels are used at runtime or altered."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "app2-highways-hospitals",
+      "labelRu": "Автомагистрали и больницы",
+      "sourceTitleEs": "Autopistas y hospitales",
+      "routeHash": "#manual-section-app2-highways-hospitals",
+      "sourcePageRange": {
+        "start": 149,
+        "end": 151
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 149,
+          "manualManifestPointer": "/pages/148",
+          "layoutManifestPointer": "/pages/148",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-149.jpg"
+        },
+        {
+          "sourcePage": 150,
+          "manualManifestPointer": "/pages/149",
+          "layoutManifestPointer": "/pages/149",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-150.jpg"
+        },
+        {
+          "sourcePage": 151,
+          "manualManifestPointer": "/pages/150",
+          "layoutManifestPointer": "/pages/150",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-151.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "appendix-2-passenger-transport",
+      "sectionContentModulePath": "src/data/manual-sections/app2-highways-hospitals.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "app2-highways-hospitals",
+        "sourcePages": [
+          149,
+          150,
+          151
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 149,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-149-highways-hospitals-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "d6d40f9b2729f69b3205b09344f30b7f6ff8ba373e57cfa11f55bc484cb88349",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "d6d40f9b2729f69b3205b09344f30b7f6ff8ba373e57cfa11f55bc484cb88349"
+            }
+          },
+          {
+            "sourcePage": 150,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-highways-hospitals-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5ea273243426fea4e22e9098a33f70ffb11e2f7f462aa7716c4f714650e342d4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5ea273243426fea4e22e9098a33f70ffb11e2f7f462aa7716c4f714650e342d4"
+            }
+          },
+          {
+            "sourcePage": 151,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-151-highways-hospitals-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "aca4885b3a5e7a06c316a14a8db9c706e4728e785be9eb16458132ded731e155",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, or translation.",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "aca4885b3a5e7a06c316a14a8db9c706e4728e785be9eb16458132ded731e155"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/app2-highways-hospitals.ts",
+            "assetKind": "native-dom-text-only-app2-highways-hospitals",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "app2-highways-hospitals is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png",
+        "boundingBoxChecks": [
+          {
+            "status": "pass",
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix II route."
+          }
+        ],
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
+        },
+        "visualReviewNotes": [
+          "Pages 149-151 are implemented as native Russian text for Paseo del Bajo rules, prohibited users, breakdown handling, exceptional routes, the page 150 hospital map reference, and the closing public-transport statement.",
+          "Page 150 hospital map remains an x5 source evidence crop only; runtime uses selectable Russian text/list to avoid showing Spanish map labels and to avoid non-compliant broad cleanup of an infographic/map.",
+          "No map, photograph, traffic sign, road marking, source crop, source page render, or transferred infographic PNG is modified."
         ],
         "checkerResult": "pass"
       }

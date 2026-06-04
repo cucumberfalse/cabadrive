@@ -43,6 +43,11 @@ const ch5AnticipatoryEfficientDrivingModulePath = "src/data/manual-sections/ch5-
 const app1SafetyElementsModulePath = "src/data/manual-sections/app1-safety-elements.ts";
 const app1OtherRequiredSafetyElementsModulePath = "src/data/manual-sections/app1-other-required-safety-elements.ts";
 const app1RecommendedSafetyElementsModulePath = "src/data/manual-sections/app1-recommended-safety-elements.ts";
+const app2SocialResponsibilityModulePath = "src/data/manual-sections/app2-social-responsibility.ts";
+const app2SafetyElementsModulePath = "src/data/manual-sections/app2-safety-elements.ts";
+const app2DrivingFactorsModulePath = "src/data/manual-sections/app2-driving-factors.ts";
+const app2SafeDrivingModulePath = "src/data/manual-sections/app2-safe-driving.ts";
+const app2HighwaysHospitalsModulePath = "src/data/manual-sections/app2-highways-hospitals.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -72,7 +77,12 @@ const implementedSectionIds = new Set([
   "ch5-anticipatory-efficient-driving",
   "app1-safety-elements",
   "app1-other-required-safety-elements",
-  "app1-recommended-safety-elements"
+  "app1-recommended-safety-elements",
+  "app2-social-responsibility",
+  "app2-safety-elements",
+  "app2-driving-factors",
+  "app2-safe-driving",
+  "app2-highways-hospitals"
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -108,6 +118,11 @@ const ch5AnticipatoryEfficientDrivingModuleSource = readFileSync(ch5Anticipatory
 const app1SafetyElementsModuleSource = readFileSync(app1SafetyElementsModulePath, "utf8");
 const app1OtherRequiredSafetyElementsModuleSource = readFileSync(app1OtherRequiredSafetyElementsModulePath, "utf8");
 const app1RecommendedSafetyElementsModuleSource = readFileSync(app1RecommendedSafetyElementsModulePath, "utf8");
+const app2SocialResponsibilityModuleSource = readFileSync(app2SocialResponsibilityModulePath, "utf8");
+const app2SafetyElementsModuleSource = readFileSync(app2SafetyElementsModulePath, "utf8");
+const app2DrivingFactorsModuleSource = readFileSync(app2DrivingFactorsModulePath, "utf8");
+const app2SafeDrivingModuleSource = readFileSync(app2SafeDrivingModulePath, "utf8");
+const app2HighwaysHospitalsModuleSource = readFileSync(app2HighwaysHospitalsModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -324,6 +339,11 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "app1-safety-elements.ts"), 'export const app1SafetyElementsSection = { sectionId: "app1-safety-elements", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "app1-other-required-safety-elements.ts"), 'export const app1OtherRequiredSafetyElementsSection = { sectionId: "app1-other-required-safety-elements", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "app1-recommended-safety-elements.ts"), 'export const app1RecommendedSafetyElementsSection = { sectionId: "app1-recommended-safety-elements", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "app2-social-responsibility.ts"), 'export const app2SocialResponsibilitySection = { sectionId: "app2-social-responsibility", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "app2-safety-elements.ts"), 'export const app2SafetyElementsSection = { sectionId: "app2-safety-elements", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "app2-driving-factors.ts"), 'export const app2DrivingFactorsSection = { sectionId: "app2-driving-factors", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "app2-safe-driving.ts"), 'export const app2SafeDrivingSection = { sectionId: "app2-safe-driving", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "app2-highways-hospitals.ts"), 'export const app2HighwaysHospitalsSection = { sectionId: "app2-highways-hospitals", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -582,18 +602,19 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1, 2, 3, 4, 5, and Appendix I registry contains source Índice sections and skipped divider metadata", () => {
+test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 122 });
+  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 151 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98, 104]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98, 104, 123]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
+    "chapter-divider-only",
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-divider-only",
@@ -631,6 +652,7 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I registry contains source Índice sec
     assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
     assert.equal(sourcePages.includes(98), false, `${section.id} does not include divider page 98`);
     assert.equal(sourcePages.includes(104), false, `${section.id} does not include Appendix I divider page 104`);
+    assert.equal(sourcePages.includes(123), false, `${section.id} does not include Appendix II divider page 123`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -645,8 +667,8 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I registry contains source Índice sec
   }
 });
 
-test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 6);
+test("Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 7);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
     [
@@ -655,7 +677,8 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
       "chapter-3-driving-rules",
       "chapter-4-natural-capacity",
       "chapter-5-driving-behavior",
-      "appendix-1-private-cars"
+      "appendix-1-private-cars",
+      "appendix-2-passenger-transport"
     ]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
@@ -706,6 +729,14 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
     "app1-recommended-safety-elements"
   ]);
   assert.equal(registry.chapters[5].status, "active", "Appendix I is active after every Appendix I section is implemented");
+  assert.deepEqual(registry.chapters[6].sectionIds, [
+    "app2-social-responsibility",
+    "app2-safety-elements",
+    "app2-driving-factors",
+    "app2-safe-driving",
+    "app2-highways-hospitals"
+  ]);
+  assert.equal(registry.chapters[6].status, "active", "Appendix II is active after every Appendix II section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
@@ -714,6 +745,7 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
   assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
   assert.ok(registry.chapters[4].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 5 child sections are implemented");
   assert.ok(registry.chapters[5].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix I child sections are implemented");
+  assert.ok(registry.chapters[6].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix II child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -724,11 +756,13 @@ test("Chapter 1, 2, 3, 4, 5, and Appendix I hierarchy references source Índice 
   const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
   assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
   assert.equal(topicSourceTitles.get("app1-recommended-safety-elements"), "Elementos de seguridad recomendables");
+  assert.equal(topicSourceTitles.get("app2-driving-factors"), "Factores que intervienen en la conduccion");
+  assert.equal(topicSourceTitles.get("app2-safe-driving"), "Conduccion segura");
   assert.equal([...topicSourceTitles.values()].includes("Elementos de seguridad recomendados"), false);
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103), sourcePagesForRange(105, 122)));
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103), sourcePagesForRange(105, 122), sourcePagesForRange(124, 151)));
   assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101, 119]);
 });
 
@@ -1348,8 +1382,87 @@ test("Appendix I divider and private-car safety section boundaries are explicit"
   ]);
   assert.equal(sharedPage119.sectionBoundaries[1].startsAtLayoutBlockId, "page-119-source-line-mask-10");
   assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 104)), false);
-  assert.equal(registry.sections.some((section) => /^app[2-4]-/u.test(section.id)), false, "Appendix II-IV content is not bundled");
+  assert.equal(registry.sections.some((section) => /^app[3-4]-/u.test(section.id)), false, "Appendix III-IV content is not bundled");
   assert.doesNotMatch(manualGuideSource, /annex-1-safety|annex-1-required|annex-1-recommended/u);
+});
+
+test("Appendix II divider and passenger-transport section boundaries are explicit", () => {
+  const appendix = registry.chapters.find((chapter) => chapter.id === "appendix-2-passenger-transport");
+  assert.ok(appendix, "Appendix II parent exists");
+  assert.deepEqual(appendix.sourcePageRange, { start: 123, end: 151 });
+  assert.equal(appendix.requiredPrintedPage, 122);
+  assert.deepEqual(appendix.sectionIds, [
+    "app2-social-responsibility",
+    "app2-safety-elements",
+    "app2-driving-factors",
+    "app2-safe-driving",
+    "app2-highways-hospitals"
+  ]);
+
+  const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 123);
+  assert.equal(divider?.reason, "chapter-divider-only");
+  assert.equal(divider?.parentChapterId, "appendix-2-passenger-transport");
+  assert.match(divider?.disposition ?? "", /navigation parent/u);
+
+  assert.deepEqual(sectionById("app2-social-responsibility").sourcePageRange, { start: 124, end: 124 });
+  assert.deepEqual(sectionById("app2-safety-elements").sourcePageRange, { start: 125, end: 136 });
+  assert.deepEqual(sectionById("app2-driving-factors").sourcePageRange, { start: 137, end: 143 });
+  assert.deepEqual(sectionById("app2-safe-driving").sourcePageRange, { start: 144, end: 148 });
+  assert.deepEqual(sectionById("app2-highways-hospitals").sourcePageRange, { start: 149, end: 151 });
+  assert.equal(registry.sections.some((section) => section.sourcePages.some((page) => page.sourcePage === 123)), false);
+  assert.equal(registry.sections.some((section) => /^app[3-4]-/u.test(section.id)), false, "Appendix III-IV content is not bundled");
+});
+
+test("Appendix II sections retain passenger-transport legal, safety, health, and route details", () => {
+  for (const sectionId of [
+    "app2-social-responsibility",
+    "app2-safety-elements",
+    "app2-driving-factors",
+    "app2-safe-driving",
+    "app2-highways-hospitals"
+  ]) {
+    const section = sectionById(sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Appendix II PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+    assert.equal(section.implementationEvidence.visibleSpanishStatus, "none");
+  }
+
+  assert.match(app2SocialResponsibilityModuleSource, /Минимальный возраст[\s\S]*21 год/u);
+  assert.match(app2SocialResponsibilityModuleSource, /стаж больше 1 года в классе B/u);
+  assert.match(app2SocialResponsibilityModuleSource, /старше 65 лет[\s\S]*практический экзамен/u);
+  assert.match(app2SafetyElementsModuleSource, /VTV/u);
+  assert.match(app2SafetyElementsModuleSource, /каждые 6 месяцев/u);
+  assert.match(app2SafetyElementsModuleSource, /тормозной путь может увеличиться на 10%/u);
+  assert.match(app2SafetyElementsModuleSource, /2 mm/u);
+  assert.match(app2SafetyElementsModuleSource, /[Вв]осстановленные шины запрещены на передних осях/u);
+  assert.match(app2SafetyElementsModuleSource, /примерно 3 метра/u);
+  assert.match(app2SafetyElementsModuleSource, /максимум 10% задней части/u);
+  assert.match(app2SafetyElementsModuleSource, /врачи или парамедики[\s\S]*пожарные/u);
+  assert.match(app2SafetyElementsModuleSource, /25 cm/u);
+  assert.match(app2SafetyElementsModuleSource, /50 km\/h[\s\S]*до 40 раз/u);
+  assert.match(app2SafetyElementsModuleSource, /[Ии]нвалидные кресла[\s\S]*соответствующие крепления/u);
+  assert.match(app2SafetyElementsModuleSource, /минимум два/u);
+  assert.match(app2SafetyElementsModuleSource, /эластичный хомут запрещен/u);
+  assert.match(app2SafetyElementsModuleSource, /форс-мажоре на автомагистралях/u);
+  assert.match(app2SafetyElementsModuleSource, /[Сс]терильные гидрофильн/u);
+  assert.match(app2DrivingFactorsModuleSource, /Сидячий образ жизни[\s\S]*дефициту витамина D/u);
+  assert.match(app2DrivingFactorsModuleSource, /SUBE неисправен[\s\S]*пассажиров нужно пропустить/u);
+  assert.match(app2DrivingFactorsModuleSource, /22:00 до 6:00/u);
+  assert.match(app2DrivingFactorsModuleSource, /вместимости больше 15 мест/u);
+  assert.match(app2DrivingFactorsModuleSource, /ремни на всех сиденьях[\s\S]*крепления инвалидных кресел/u);
+  assert.match(app2SafeDrivingModuleSource, /1,5 m/u);
+  assert.match(app2SafeDrivingModuleSource, /off-tracking/u);
+  assert.match(app2SafeDrivingModuleSource, /задние колеса идут по дуге меньшего радиуса/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /12 t/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /больше 19 мест/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /60 km\/h/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /AUSA/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /Карта больниц/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /не показывать испанские подписи карты/u);
+  assert.doesNotMatch(app2HighwaysHospitalsModuleSource, /source-image-cards|assetPath:\s*"content\/assets\/manuals\/gcba-manual-vehiculo-4-ruedas-2023\/pages\/page-150\.jpg/u);
 });
 
 test("Appendix I sections retain private-car safety details", () => {
@@ -1824,9 +1937,14 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ app1SafetyElementsSection \}/);
   assert.match(manualGuideSource, /import \{ app1OtherRequiredSafetyElementsSection \}/);
   assert.match(manualGuideSource, /import \{ app1RecommendedSafetyElementsSection \}/);
+  assert.match(manualGuideSource, /import \{ app2SocialResponsibilitySection \}/);
+  assert.match(manualGuideSource, /import \{ app2SafetyElementsSection \}/);
+  assert.match(manualGuideSource, /import \{ app2DrivingFactorsSection \}/);
+  assert.match(manualGuideSource, /import \{ app2SafeDrivingSection \}/);
+  assert.match(manualGuideSource, /import \{ app2HighwaysHospitalsSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection,\s*app2SocialResponsibilitySection,\s*app2SafetyElementsSection,\s*app2DrivingFactorsSection,\s*app2SafeDrivingSection,\s*app2HighwaysHospitalsSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
@@ -2848,27 +2966,27 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, 4, 5, and Appendix I implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, 4, 5, Appendix I, and Appendix II implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 122 });
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 151 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 123]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104, 123]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 30);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 35);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.equal(result.implementedSections, 30);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104]);
+  assert.equal(result.implementedSections, 35);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 123]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104, 123]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_and_appendix_1_sections");
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_2_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -2881,7 +2999,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 30);
+  assert.equal(result.implementedSections, 35);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -2981,7 +3099,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 30);
+    assert.equal(output.implementedSections, 35);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -3969,7 +4087,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 30);
+    assert.equal(output.implementedSections, 35);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
