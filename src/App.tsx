@@ -2504,7 +2504,6 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
             {(() => {
               const officialSignException = card.officialSignException;
               const sourceImageException = card.sourceImageException;
-              const exceptionKind = officialSignException?.kind ?? sourceImageException?.kind;
               const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
               const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
               return (
@@ -2513,7 +2512,8 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
                     src={assetUrl(card.assetPath)}
                     alt={card.altRu}
                     data-visible-spanish={card.visibleSpanish}
-                    data-source-image-exception={exceptionKind}
+                    data-official-sign-exception={officialSignException?.kind}
+                    data-source-image-exception={sourceImageException?.kind}
                     data-visible-spanish-scope={visibleSpanishScope}
                     data-source-as-is={sourceAsIs}
                     loading="lazy"

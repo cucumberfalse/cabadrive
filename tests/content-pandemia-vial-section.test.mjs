@@ -125,7 +125,7 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     "CAPÍTULO 3: NORMAS BÁSICAS DE CONDUCCIÓN",
     "CAPÍTULO 4: CAPACIDAD NATURAL",
     "CAPÍTULO 5: ACTITUD AL CONDUCIR",
-    "Anexo IV. Senales viales"
+    "ANEXO IV SEÑALES VIALES"
   ]) {
     assert.ok(manualGuideNavigationSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
   }

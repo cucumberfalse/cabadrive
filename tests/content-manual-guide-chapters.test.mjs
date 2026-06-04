@@ -1626,6 +1626,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
 test("Appendix IV divider and traffic-sign section boundaries are explicit", () => {
   const appendix = registry.chapters.find((chapter) => chapter.id === "appendix-4-road-signs");
   assert.ok(appendix, "Appendix IV parent exists");
+  assert.equal(appendix.sourceTitleEs, "ANEXO IV SEÑALES VIALES");
   assert.deepEqual(appendix.sourcePageRange, { start: 184, end: 200 });
   assert.equal(appendix.requiredPrintedPage, 183);
   assert.deepEqual(appendix.sectionIds, [
@@ -2414,7 +2415,8 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   }
 
   assert.match(manualGuideAppSource, /SourceImageCardsBlockView/);
-  assert.match(appSource, /data-source-image-exception=\{card\.sourceImageException\?\.kind\}/);
+  assert.match(appSource, /data-official-sign-exception=\{officialSignException\?\.kind\}/);
+  assert.match(appSource, /data-source-image-exception=\{sourceImageException\?\.kind\}/);
   assert.match(appSource, /data-russian-overlay-strategy=\{card\.russianOverlayLabels \? "selectable-dom" : undefined\}/);
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
   assert.match(stylesSource, /\.manual-source-image-overlay-label/);

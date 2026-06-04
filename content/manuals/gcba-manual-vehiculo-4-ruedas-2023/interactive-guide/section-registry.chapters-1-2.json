@@ -68,7 +68,7 @@
       "sourcePage": 184,
       "reason": "chapter-divider-only",
       "parentChapterId": "appendix-4-road-signs",
-      "sourceTitleEs": "ANEXO IV SENIALES VIALES",
+      "sourceTitleEs": "ANEXO IV SEÑALES VIALES",
       "disposition": "Appendix IV divider/title page is represented by the Appendix IV navigation parent; no standalone learner page, route, module, placeholder, or separate PR content is created."
     }
   ],
@@ -636,7 +636,7 @@
     {
       "id": "appendix-4-road-signs",
       "labelRu": "Приложение IV. Дорожные знаки и сигналы",
-      "sourceTitleEs": "Anexo IV. Senales viales",
+      "sourceTitleEs": "ANEXO IV SEÑALES VIALES",
       "sourcePageRange": {
         "start": 184,
         "end": 200
