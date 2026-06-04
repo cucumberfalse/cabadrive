@@ -1246,6 +1246,8 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
   assert.doesNotMatch(smsSupportItemsRu, /paradas de colectivo|estaciones de subte/u);
   assert.doesNotMatch(activeListeningItemsRu, /escucha activa/u);
 
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /titleRu: "Предупредительное вождение"/u);
+  assert.doesNotMatch(ch5AnticipatoryEfficientDrivingModuleSource, /anticipada-вождение|Предупредительное или anticipada/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /предвидеть все, ожидать все, предполагать все/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /80 km\/h/u);
   assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /19 и 24 ºC/u);

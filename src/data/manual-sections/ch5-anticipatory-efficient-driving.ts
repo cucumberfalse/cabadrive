@@ -54,7 +54,7 @@ export const ch5AnticipatoryEfficientDrivingSection: ManualGuideSectionContent =
     {
       id: "preventive-driving",
       kind: "list",
-      titleRu: "Предупредительное или anticipada-вождение",
+      titleRu: "Предупредительное вождение",
       sourceTextEs:
         "Conductas cautelosas que se adoptan al conducir... basándose en la premisa de anticiparse a todo, esperar todo, suponer todo.",
       itemsRu: [
