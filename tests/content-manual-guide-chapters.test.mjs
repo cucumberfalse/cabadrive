@@ -1513,6 +1513,9 @@ test("Appendix II safety visuals render as preserved source images with provenan
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /source-as-is изображ|runtime-crop/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\][\s\S]*grid-column:\s*1 \/ -1/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\] figure[\s\S]*max-width:\s*760px[\s\S]*overflow-x:\s*auto/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\] img[\s\S]*width:\s*760px[\s\S]*max-width:\s*none/u);
 
   for (const expectation of sourceAsIs) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -1525,6 +1528,10 @@ test("Appendix II safety visuals render as preserved source images with provenan
     assert.equal(asset.height, expectation.height);
     assert.equal(asset.sha256, expectation.sha256);
     assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    if (expectation.assetPath.includes("mirror-orientation")) {
+      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 760);
+      assert.ok(asset.width > asset.runtimeDisplaySize.maxWidthCssPx);
+    }
     assert.equal(asset.sourceIntegrity.sourceAsIs, true);
     assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
     assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);

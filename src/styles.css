@@ -2750,6 +2750,11 @@ small,
   grid-template-columns: minmax(0, 1fr);
 }
 
+.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .manual-source-image-card figure {
   display: grid;
   place-items: center;
@@ -2766,6 +2771,13 @@ small,
   justify-self: center;
 }
 
+.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] figure {
+  width: 100%;
+  max-width: 760px;
+  justify-self: center;
+  overflow-x: auto;
+}
+
 .manual-source-image-card img {
   display: block;
   width: 100%;
@@ -2774,6 +2786,11 @@ small,
 }
 
 .manual-source-image-card[data-has-russian-overlay="true"] img {
+  max-width: none;
+}
+
+.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] img {
+  width: 760px;
   max-width: none;
 }
 
