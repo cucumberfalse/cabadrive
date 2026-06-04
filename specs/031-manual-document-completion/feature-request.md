@@ -916,6 +916,8 @@ Analyst validation evidence: Architect validation passed first at `2026-06-04T01
 
 Analyst validation evidence: PR #190 headRefOid is `46132199fb12a2590032b81d6c9b9ebc86efab44`, PR state is OPEN, not draft, mergeable/MERGEABLE, and mergeStateStatus CLEAN; required checks are green for `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
 
+Analyst validation evidence: The preceding PR #190 headRefOid line records PR state at the validated effective content head `46132199fb12a2590032b81d6c9b9ebc86efab44` and at the time of Analyst validation, not the current PR head after later final-validation evidence-only commits; post-effective evidence commit verification is owned by the current-PR-head read-only guard and finalizer expected-head process recorded in `tasks.md`.
+
 Analyst validation evidence: Review Agent pass `4423885292` applies to this head, unresolved review threads are `0`, and automated Codex Review P2 comments `3352716346` and `3352716350` plus prior Review Agent P2 `3352682015` are fixed and resolved.
 
 Gaps, if any: none for the PR #190 Chapter 5 scope. Remaining planned document units continue one chapter-equivalent per PR by design and are outside this Chapter 5 validation scope.
