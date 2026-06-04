@@ -1087,3 +1087,139 @@ Architect disposition routing: no Analyst gap requires Architect disposition for
 Analyst limit escalation: none.
 
 Analyst boundary reminder: this validation appends only Analyst-owned notes in `specs/031-manual-document-completion/feature-request.md`; no prior notes, code, tests, runtime files, durable docs outside Analyst-owned notes, Architect artifacts, staging, commits, pushes, reviews, PR state, merges, cleanup, root worktree files, sibling worktrees, or the known untracked duplicate crop were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T15:35:47Z
+
+Analyst validated effective content head: 589f22ed37e37fc18c7eda92310d8a0f044bf36c
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #192 Appendix II scope. The effective content head advances full-document completion one chapter-equivalent appendix PR at a time, covers Appendix II as its own PR slice, and preserves the strict visual requirements: x5/high-quality source evidence, protected photos/signs/markings unmodified and untranslated, infographics not redrawn, and page `150` hospital map kept as an unchanged high-resolution source image with Russian translations placed below or adjacent.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T15:34:01Z` for the same effective content head `589f22ed37e37fc18c7eda92310d8a0f044bf36c`.
+
+Analyst validation evidence: Assigned PR-state evidence for `589f22ed37e37fc18c7eda92310d8a0f044bf36c` records all GitHub checks green, Review Agent pass `4429122443`, all review threads resolved, and merge state CLEAN/MERGEABLE.
+
+Analyst validation evidence: Page `150` map handling satisfies the later owner decision: the runtime renders a byte-identical source-as-is high-resolution image, broad cleanup artifacts are removed, Russian translations are below or adjacent, and the checker exception is fenced to the approved page only.
+
+Gaps, if any: none for the PR #192 Appendix II scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #192.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned final validation notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, assets, Architect-owned artifacts, staging, commits, pushes, reviews, PR state, merges, sibling worktrees, or user work were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T16:34:41Z
+
+Analyst validated effective content head: 3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #192 Appendix II process-content scope. The effective head keeps one chapter-equivalent appendix per PR, preserves the original 031 manual-document completion intent, and continues to satisfy the strict visual requirements and page `150` owner decision: original high-quality hospital map source image unchanged, with Russian translations adjacent or under the image.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T16:32:52Z` for the same effective process-content head `3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4`.
+
+Analyst validation evidence: Prior Analyst validation for `589f22ed37e37fc18c7eda92310d8a0f044bf36c` is superseded for finalizer/process-head purposes because `3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4` includes the process-memory repair and empty workflow-retry commit with no tree diff from that repair.
+
+Analyst validation evidence: Assigned evidence records current PR checks green, Review Agent passes, no unresolved review threads, and page `150` map handling still byte-identical source-as-is with checker exception fenced to the approved page only.
+
+Gaps, if any: none for the PR #192 Appendix II scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #192.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned final validation notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, assets, Architect-owned artifacts, staging, commits, pushes, reviews, PR state, merges, sibling worktrees, or user work were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T17:17:17Z
+
+Analyst validated effective content head: d502fad26cdfcf8c4c03b57134cf6bd9d870828d
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #192 Appendix II process-content scope. The effective head keeps one chapter-equivalent appendix per PR, preserves the original 031 manual-document completion request, and continues to satisfy the user visual requirements and page `150` owner decision: original high-quality hospital map source image unchanged, with Russian translations adjacent or under the image.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T17:15:49Z` for the same effective process-content head `d502fad26cdfcf8c4c03b57134cf6bd9d870828d`.
+
+Analyst validation evidence: Prior Analyst validation for `3cce7c3c87d9de5c69e927d6567dbf8afce8b3f4` is superseded for finalizer/process-head purposes because `d502fad26cdfcf8c4c03b57134cf6bd9d870828d` is now the current effective process-content head.
+
+Analyst validation evidence: Latest Paseo del Bajo content repair is included; Russian learner text preserves that the corridor is exclusive and mandatory for the specified heavy traffic and long-distance passenger buses.
+
+Analyst validation evidence: Assigned evidence records current PR checks green, Review Agent passes, no unresolved review threads, and page `150` map handling still byte-identical source-as-is with checker exception fenced to the approved page only.
+
+Gaps, if any: none for the PR #192 Appendix II scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #192.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned final validation notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, assets, Architect-owned artifacts, staging, commits, pushes, reviews, PR state, merges, sibling worktrees, or user work were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T18:44:03Z
+
+Analyst validated effective content head: 92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #192 Appendix II content-process scope. The effective head keeps one chapter-equivalent appendix per PR, preserves the original 031 manual-document completion request, includes page `123` as learner-relevant Appendix II intro/professional-driver content while Appendix II navigation starts at `123` and child topic starts at `124`, and satisfies the user visual requirements including the page `150` owner decision: original high-quality source image/map unchanged with Russian translations adjacent or below.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T18:40:23Z` for the same effective content-process head `92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32`.
+
+Analyst validation evidence: Prior Analyst validation for `d502fad26cdfcf8c4c03b57134cf6bd9d870828d` is superseded for finalizer/process-head purposes because `92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32` is now the current effective content-process head.
+
+Analyst validation evidence: Assigned evidence records required checks green on `92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32`, Review Agent pass `4430464710`, trusted Codex no-major-issues comment at `2026-06-04T18:37:49Z`, AI Review required check passed at `2026-06-04T18:38:28Z`, and no unresolved review threads.
+
+Analyst validation evidence: Page `150` map handling remains source-as-is: original high-quality image unchanged, no in-image cleanup, translation, or alteration, with Russian translations adjacent or below; images are high quality, protected visuals are unmodified, and infographic/visual rules are handled per feature memory dispositions.
+
+Gaps, if any: none for the PR #192 Appendix II scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #192.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned final validation notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, assets, Architect-owned artifacts, staging, commits, pushes, reviews, PR state, merges, sibling worktrees, or user work were changed.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+
+Final Analyst validation completed at: 2026-06-04T20:45:06Z
+
+Analyst validated effective content head: 2d42695dbfbc3b94959d4bfef63c0cc246731f1b
+
+Analyst return count for this work cycle: 0
+
+Customer intent check: passed for the PR #192 Appendix II scope. The effective head preserves the original 031 full-manual completion request, keeps one chapter-equivalent appendix per PR, implements Appendix II pages `123-151` only without bundling Appendix III, Appendix IV, or front matter, and satisfies the strict visual requirement that source/protected images remain unchanged in high quality.
+
+Analyst validation evidence: Architect validation passed first at `2026-06-04T20:41:44Z` for the same effective content head `2d42695dbfbc3b94959d4bfef63c0cc246731f1b`.
+
+Analyst validation evidence: Page `150` hospital map follows the latest owner instruction: the original high-quality source image remains unchanged, with no in-image cleanup, translation, or alteration, and Russian translations are adjacent or below the image.
+
+Analyst validation evidence: Appendix II sourcePage convention repairs are acceptable for this scope: `app2-social-responsibility` covers pages `123-124` while child topic display/start uses page `124` via `topicNavigationStartPage`, `app2-safe-driving` owns local pages `144-148`, and `app2-highways-hospitals` owns local pages `149-151` and starts/displays at `149`.
+
+Analyst validation evidence: Prior Analyst validation for `92771e10ca9afdaa9f7906a71f74d4fa8f9c3b32` is superseded for finalizer/process-head purposes because `2d42695dbfbc3b94959d4bfef63c0cc246731f1b` is now the effective content head.
+
+Gaps, if any: none for the PR #192 Appendix II scope.
+
+Architect disposition routing: no Analyst gap requires Architect disposition for PR #192.
+
+Analyst limit escalation: none.
+
+Analyst boundary reminder: this validation appends only Analyst-owned final validation notes in `specs/031-manual-document-completion/feature-request.md`; no code, tests, runtime files, assets, docs outside Analyst-owned notes, Architect-owned artifacts, staging, commits, pushes, reviews, PR state, merges, sibling worktrees, or user work were changed.
