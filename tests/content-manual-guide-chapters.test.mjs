@@ -1477,6 +1477,9 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
   assert.match(app2SafeDrivingModuleSource, /задние колеса идут по дуге меньшего радиуса/u);
   assert.match(app2HighwaysHospitalsModuleSource, /12 t/u);
   assert.match(app2HighwaysHospitalsModuleSource, /больше 19 мест/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /Paseo del Bajo[\s\S]*исключительным и обязательным[\s\S]*не просто предпочтительным/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /исключительным и обязательным[\s\S]*грузовиков и прицепов[\s\S]*12 t/u);
+  assert.match(app2HighwaysHospitalsModuleSource, /исключительным и обязательным[\s\S]*междугородних пассажирских автобусов[\s\S]*больше 19 мест[\s\S]*с пассажирами или без них/u);
   assert.match(app2HighwaysHospitalsModuleSource, /60 km\/h/u);
   assert.match(app2HighwaysHospitalsModuleSource, /AUSA/u);
   assert.match(app2HighwaysHospitalsModuleSource, /Карта больниц/u);

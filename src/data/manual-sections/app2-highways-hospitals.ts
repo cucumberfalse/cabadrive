@@ -39,19 +39,19 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       id: "paseo-del-bajo-role",
       kind: "lead",
       sourceTextEs:
-        "Paseo del Bajo es corredor vial preferencial para transito pesado y omnibus de larga distancia con mas de 19 asientos.",
+        "Paseo del Bajo tiene circulacion exclusiva y obligatoria para transito pesado y omnibus de larga distancia con mas de 19 asientos.",
       textRu:
-        "Paseo del Bajo - предпочтительный дорожный коридор для тяжелого транспорта и междугородних пассажирских автобусов. Он отделяет такие потоки от пешеходов, частных автомобилей и городских автобусов, потому что они движутся на другом уровне."
+        "Paseo del Bajo - дорожный коридор, где движение для указанного тяжелого транспорта и междугородних пассажирских автобусов является исключительным и обязательным, а не просто предпочтительным. Он отделяет такие потоки от пешеходов, частных автомобилей и городских автобусов, потому что они движутся на другом уровне."
     },
     {
       id: "paseo-del-bajo-allowed",
       kind: "list",
       titleRu: "Кто и как движется по Paseo del Bajo",
       sourceTextEs:
-        "Camiones y acoplados de 12 toneladas o mas y omnibus de larga distancia con capacidad mayor de 19 asientos habilitados para turismo; velocidad maxima 60 km/h.",
+        "Circulacion exclusiva y obligatoria para camiones y acoplados de 12 toneladas o mas y omnibus de larga distancia con capacidad mayor de 19 asientos habilitados para turismo; velocidad maxima 60 km/h.",
       itemsRu: [
-        "Коридор предназначен для грузовиков и прицепов с индивидуальной массой 12 t или больше.",
-        "Также он предназначен для междугородних пассажирских автобусов с вместимостью больше 19 мест, допущенных для туристической деятельности, с пассажирами или без них.",
+        "Движение через Paseo del Bajo является исключительным и обязательным для грузовиков и прицепов с индивидуальной массой 12 t или больше.",
+        "Также движение через этот коридор является исключительным и обязательным для междугородних пассажирских автобусов с вместимостью больше 19 мест, допущенных для туристической деятельности, с пассажирами или без них.",
         "Он соединяет Autopista Illia, Autopista Buenos Aires-La Plata и Autopista 25 de Mayo.",
         "Максимальная скорость на разных уровнях - 60 km/h."
       ]
