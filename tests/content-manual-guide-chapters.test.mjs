@@ -36,6 +36,10 @@ const ch4AlcoholDrugsModulePath = "src/data/manual-sections/ch4-alcohol-drugs.ts
 const ch4SleepFatigueModulePath = "src/data/manual-sections/ch4-sleep-fatigue.ts";
 const ch4StressModulePath = "src/data/manual-sections/ch4-stress.ts";
 const ch4DistractionsModulePath = "src/data/manual-sections/ch4-distractions.ts";
+const ch5AttitudeTypesModulePath = "src/data/manual-sections/ch5-attitude-types.ts";
+const ch5EqualSocietyModulePath = "src/data/manual-sections/ch5-equal-society.ts";
+const ch5GenderViolencePreventionModulePath = "src/data/manual-sections/ch5-gender-violence-prevention.ts";
+const ch5AnticipatoryEfficientDrivingModulePath = "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -58,7 +62,11 @@ const implementedSectionIds = new Set([
   "ch4-alcohol-drugs",
   "ch4-sleep-fatigue",
   "ch4-stress",
-  "ch4-distractions"
+  "ch4-distractions",
+  "ch5-attitude-types",
+  "ch5-equal-society",
+  "ch5-gender-violence-prevention",
+  "ch5-anticipatory-efficient-driving"
 ]);
 const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
@@ -87,6 +95,10 @@ const ch4AlcoholDrugsModuleSource = readFileSync(ch4AlcoholDrugsModulePath, "utf
 const ch4SleepFatigueModuleSource = readFileSync(ch4SleepFatigueModulePath, "utf8");
 const ch4StressModuleSource = readFileSync(ch4StressModulePath, "utf8");
 const ch4DistractionsModuleSource = readFileSync(ch4DistractionsModulePath, "utf8");
+const ch5AttitudeTypesModuleSource = readFileSync(ch5AttitudeTypesModulePath, "utf8");
+const ch5EqualSocietyModuleSource = readFileSync(ch5EqualSocietyModulePath, "utf8");
+const ch5GenderViolencePreventionModuleSource = readFileSync(ch5GenderViolencePreventionModulePath, "utf8");
+const ch5AnticipatoryEfficientDrivingModuleSource = readFileSync(ch5AnticipatoryEfficientDrivingModulePath, "utf8");
 const manualGuideAppSource = appSource.slice(appSource.indexOf("function ManualGuideSectionContentView"), appSource.indexOf("function manualDisplayText"));
 const fixtureEvidencePaths = new Map();
 
@@ -296,6 +308,10 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
   writeTempFile(join(moduleRoot, "ch4-sleep-fatigue.ts"), 'export const ch4SleepFatigueSection = { sectionId: "ch4-sleep-fatigue", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch4-stress.ts"), 'export const ch4StressSection = { sectionId: "ch4-stress", blocks: [] };\n');
   writeTempFile(join(moduleRoot, "ch4-distractions.ts"), 'export const ch4DistractionsSection = { sectionId: "ch4-distractions", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch5-attitude-types.ts"), 'export const ch5AttitudeTypesSection = { sectionId: "ch5-attitude-types", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch5-equal-society.ts"), 'export const ch5EqualSocietySection = { sectionId: "ch5-equal-society", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch5-gender-violence-prevention.ts"), 'export const ch5GenderViolencePreventionSection = { sectionId: "ch5-gender-violence-prevention", blocks: [] };\n');
+  writeTempFile(join(moduleRoot, "ch5-anticipatory-efficient-driving.ts"), 'export const ch5AnticipatoryEfficientDrivingSection = { sectionId: "ch5-anticipatory-efficient-driving", blocks: [] };\n');
   writeFileSync(implementedRegistryPath, JSON.stringify(implementedRegistry, null, 2));
   const fixtureEvidencePath = join(tempDir, "manual-guide-source-fidelity.fixture.evidence.json");
   const fixtureEvidence = JSON.parse(JSON.stringify(evidence));
@@ -554,18 +570,19 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1, 2, 3, and 4 registry contains source Índice sections and skipped divider metadata", () => {
+test("Chapter 1, 2, 3, 4, and 5 registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 97 });
+  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 103 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
+    "chapter-divider-only",
     "chapter-divider-only",
     "chapter-divider-only"
   ]);
@@ -599,6 +616,7 @@ test("Chapter 1, 2, 3, and 4 registry contains source Índice sections and skipp
     assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
     assert.equal(sourcePages.includes(57), false, `${section.id} does not include divider page 57`);
     assert.equal(sourcePages.includes(89), false, `${section.id} does not include divider page 89`);
+    assert.equal(sourcePages.includes(98), false, `${section.id} does not include divider page 98`);
 
     for (const sourcePageEntry of section.sourcePages) {
       assert.equal(sourcePageEntry.manualManifestPointer, `/pages/${sourcePageEntry.sourcePage - 1}`);
@@ -613,11 +631,17 @@ test("Chapter 1, 2, 3, and 4 registry contains source Índice sections and skipp
   }
 });
 
-test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 4);
+test("Chapter 1, 2, 3, 4, and 5 hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 5);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
-    ["chapter-1-sustainable-mobility", "chapter-2-responsibility", "chapter-3-driving-rules", "chapter-4-natural-capacity"]
+    [
+      "chapter-1-sustainable-mobility",
+      "chapter-2-responsibility",
+      "chapter-3-driving-rules",
+      "chapter-4-natural-capacity",
+      "chapter-5-driving-behavior"
+    ]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
     "ch1-cities-for-people",
@@ -654,12 +678,20 @@ test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not r
     "ch4-distractions"
   ]);
   assert.equal(registry.chapters[3].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
+  assert.deepEqual(registry.chapters[4].sectionIds, [
+    "ch5-attitude-types",
+    "ch5-equal-society",
+    "ch5-gender-violence-prevention",
+    "ch5-anticipatory-efficient-driving"
+  ]);
+  assert.equal(registry.chapters[4].status, "active", "Chapter 5 is active after every Chapter 5 section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
   assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
   assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
   assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
   assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
+  assert.ok(registry.chapters[4].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 5 child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -672,8 +704,8 @@ test("Chapter 1, 2, 3, and 4 hierarchy references source Índice sections, not r
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
-  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97)));
-  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95]);
+  assert.deepEqual(uniqueInOrder(coveredSourcePages), sourcePagesForRange(22, 42).concat(sourcePagesForRange(44, 55), sourcePagesForRange(58, 88), sourcePagesForRange(90, 97), sourcePagesForRange(99, 103)));
+  assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101]);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -697,8 +729,8 @@ test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing mat
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 93, 94, 95],
-    "source pages 55, 93, 94, and 95 are intentionally shared between section topics"
+    [55, 93, 94, 95, 99, 100, 101],
+    "source pages 55, 93, 94, 95, 99, 100, and 101 are intentionally shared between section topics"
   );
   const sharedPage55 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 55);
   assert.equal(sharedPage55.referenceAsset, sourcePageAssetPath(55));
@@ -920,7 +952,7 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
 
   assert.deepEqual(
     registry.sharedSourcePageOwnership.map((entry) => entry.sourcePage),
-    [55, 93, 94, 95]
+    [55, 93, 94, 95, 99, 100, 101]
   );
   const sharedPage93 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 93);
   const sharedPage94 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 94);
@@ -952,6 +984,57 @@ test("Chapter 4 divider, page 93 alcohol/sleep split, page 94 stress boundary, a
   assert.match(distractionsBoundary.startsAtSourceTextEs, /Distracciones/u);
   assert.equal(stressPage95Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-14"), true);
   assert.equal(distractionsBoundary.ownedLayoutBlockIdsOnSharedPage.includes("page-095-source-line-mask-15"), true);
+});
+
+test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are explicit", () => {
+  const divider = registry.skippedSourcePages.find((entry) => entry.sourcePage === 98);
+  assert.equal(divider?.reason, "chapter-divider-only");
+  assert.match(divider?.sourceTitleEs ?? "", /ACTITUD AL CONDUCIR/u);
+  assert.match(divider?.disposition ?? "", /navigation only/);
+
+  const attitudeTypes = registry.sections.find((section) => section.id === "ch5-attitude-types");
+  const equalSociety = registry.sections.find((section) => section.id === "ch5-equal-society");
+  const genderViolence = registry.sections.find((section) => section.id === "ch5-gender-violence-prevention");
+  const anticipatoryEfficient = registry.sections.find((section) => section.id === "ch5-anticipatory-efficient-driving");
+  assert.ok(attitudeTypes, "attitude types section exists");
+  assert.ok(equalSociety, "equal society section exists");
+  assert.ok(genderViolence, "gender violence support section exists");
+  assert.ok(anticipatoryEfficient, "anticipatory efficient driving section exists");
+
+  assert.deepEqual(attitudeTypes.sourcePageRange, { start: 99, end: 99 });
+  assert.deepEqual(equalSociety.sourcePageRange, { start: 99, end: 100 });
+  assert.deepEqual(genderViolence.sourcePageRange, { start: 100, end: 101 });
+  assert.deepEqual(anticipatoryEfficient.sourcePageRange, { start: 101, end: 103 });
+  assert.equal(equalSociety.routeHash, "#manual-section-ch5-equal-society");
+  assert.equal(genderViolence.routeHash, "#manual-section-ch5-gender-violence-prevention");
+  assert.equal(anticipatoryEfficient.routeHash, "#manual-section-ch5-anticipatory-efficient-driving");
+
+  const sharedPage99 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 99);
+  const sharedPage100 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 100);
+  const sharedPage101 = registry.sharedSourcePageOwnership.find((entry) => entry.sourcePage === 101);
+  assert.deepEqual(sharedPage99.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-attitude-types", "ch5-equal-society"]);
+  assert.deepEqual(sharedPage100.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-equal-society", "ch5-gender-violence-prevention"]);
+  assert.deepEqual(sharedPage101.sectionBoundaries.map((boundary) => boundary.sectionId), ["ch5-gender-violence-prevention", "ch5-anticipatory-efficient-driving"]);
+
+  const attitudePage99Boundary = sourceBoundaryEvidenceFor(attitudeTypes, 99);
+  const equalityPage99Boundary = sourceBoundaryEvidenceFor(equalSociety, 99);
+  const equalityPage100Boundary = sourceBoundaryEvidenceFor(equalSociety, 100);
+  const genderPage100Boundary = sourceBoundaryEvidenceFor(genderViolence, 100);
+  const genderPage101Boundary = sourceBoundaryEvidenceFor(genderViolence, 101);
+  const anticipatoryPage101Boundary = sourceBoundaryEvidenceFor(anticipatoryEfficient, 101);
+  assert.equal(attitudePage99Boundary.endsBeforeLayoutBlockId, "page-099-source-line-mask-17");
+  assert.equal(attitudePage99Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-099-source-line-mask-29"), true);
+  assert.equal(equalityPage99Boundary.startsAtLayoutBlockId, "page-099-source-line-mask-17");
+  assert.match(equalityPage99Boundary.startsAtSourceTextEs, /Hacia una sociedad igualitaria/u);
+  assert.equal(equalityPage100Boundary.endsBeforeLayoutBlockId, "page-100-source-line-mask-19");
+  assert.equal(equalityPage100Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-100-source-line-mask-17"), true);
+  assert.equal(genderPage100Boundary.startsAtLayoutBlockId, "page-100-source-line-mask-19");
+  assert.match(genderPage100Boundary.startsAtSourceTextEs, /Prevenci[oó]n y asistencia/u);
+  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-24"), true);
+  assert.equal(genderPage101Boundary.excludesSectionId, "ch5-anticipatory-efficient-driving");
+  assert.equal(anticipatoryPage101Boundary.startsAtLayoutBlockId, "page-101-source-line-mask-09");
+  assert.match(anticipatoryPage101Boundary.startsAtSourceTextEs, /Conducci[oó]n preventiva y eficiente/u);
+  assert.equal(anticipatoryPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-34"), true);
 });
 
 test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details", () => {
@@ -1114,6 +1197,69 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(ch4DistractionsModuleSource, /100% внимания/u);
 });
 
+test("Chapter 5 sections retain attitude, equality, support-line, and efficient-driving details", () => {
+  for (const sectionId of [
+    "ch5-attitude-types",
+    "ch5-equal-society",
+    "ch5-gender-violence-prevention",
+    "ch5-anticipatory-efficient-driving"
+  ]) {
+    const section = registry.sections.find((entry) => entry.id === sectionId);
+    assert.equal(section.status, "implemented", `${sectionId} is implemented in the Chapter 5 PR`);
+    assert.equal(section.implementationEvidence.visualEvidenceSchemaVersion, 3, `${sectionId} uses strict visual evidence`);
+    assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
+    assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
+    assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
+  }
+
+  assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установку или отношение/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Tolerante[\s\S]*терпимая/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Solidaria[\s\S]*солидарная/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Comprensiva[\s\S]*понимающая/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Prudente[\s\S]*осторожная/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Prepotente[\s\S]*властная/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Desconsiderada[\s\S]*невнимательная/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Exhibicionista[\s\S]*демонстративная/u);
+  assert.match(ch5AttitudeTypesModuleSource, /Transgresora[\s\S]*нарушающая правила/u);
+
+  assert.match(ch5EqualSocietyModuleSource, /общественного пространства и транспорта/u);
+  assert.match(ch5EqualSocietyModuleSource, /пола, возраста, здоровья/u);
+  assert.match(ch5EqualSocietyModuleSource, /13% поездок/u);
+  assert.match(ch5EqualSocietyModuleSource, /54%[\s\S]*общественный транспорт/u);
+  assert.match(ch5EqualSocietyModuleSource, /50%[\s\S]*работой или учебой/u);
+  assert.match(ch5EqualSocietyModuleSource, /30%[\s\S]*задачам ухода/u);
+  assert.match(ch5EqualSocietyModuleSource, /право жить свободно/u);
+  assert.match(ch5EqualSocietyModuleSource, /от девочек до пожилых женщин/u);
+  assert.match(ch5EqualSocietyModuleSource, /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u);
+  const mobilityPatternsItemsRu = itemsRuSourceForBlock(ch5EqualSocietyModuleSource, "mobility-patterns");
+  assert.doesNotMatch(mobilityPatternsItemsRu, /son en transporte publico|por trabajo\/estudio|tareas de cuidado/u);
+
+  assert.match(ch5GenderViolencePreventionModuleSource, /911/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /22676 ACOSO/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /24 часа[\s\S]*365 дней/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /SMS[\s\S]*22676/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /reporte - сообщение/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /contención\/asesoramiento - запрос поддержки/u);
+  assert.match(ch5GenderViolencePreventionModuleSource, /не работает как центр переадресации вызовов на 911/u);
+  const smsSupportItemsRu = itemsRuSourceForBlock(ch5GenderViolencePreventionModuleSource, "sms-support-flow");
+  const activeListeningItemsRu = itemsRuSourceForBlock(ch5GenderViolencePreventionModuleSource, "active-listening-and-limits");
+  assert.doesNotMatch(smsSupportItemsRu, /paradas de colectivo|estaciones de subte/u);
+  assert.doesNotMatch(activeListeningItemsRu, /escucha activa/u);
+
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /предвидеть все, ожидать все, предполагать все/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /80 km\/h/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /19 и 24 ºC/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /12 000 km/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /20% расхода топлива/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /5 минут/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /тормозов[\s\S]*воздушного, масляного и топливного фильтров/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /давление должно соответствовать загрузке/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /более 3 минут/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /дорожное движение[\s\S]*городской культуры/u);
+  const efficientMeasuresItemsRu = itemsRuSourceForBlock(ch5AnticipatoryEfficientDrivingModuleSource, "efficient-driving-measures");
+  assert.doesNotMatch(efficientMeasuresItemsRu, /ralenti|baja revoluciones|velocidad constante|vehículo detenido/u);
+});
+
 test("Chapter 4 runtime renders protected photos and transferred infographics with provenance evidence", () => {
   const sourceAsIsExpectations = [
     {
@@ -1252,6 +1398,89 @@ test("Chapter 4 runtime renders protected photos and transferred infographics wi
   }
 });
 
+test("Chapter 5 runtime renders transferred infographic and protected photo with provenance evidence", () => {
+  const transferredInfographicExpectation = {
+    sectionId: "ch5-equal-society",
+    moduleSource: ch5EqualSocietyModuleSource,
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+    sourceAssetPath: "content/validation/manual-guide/ch5-equal-society/page-100-mobility-context-source-crop.jpg",
+    assetKind: "high-resolution-transferred-source-infographic-mobility-context",
+    width: 1220,
+    height: 175,
+    sha256: "8dfa6f9096b920e3db9980dcaf0606f7f594f81e320553bade127e10f35d7807",
+    sourceSha256: "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633",
+    expectedLabels: ["общественный транспорт", "работа / учеба", "задачи ухода"]
+  };
+  const sourceAsIsPhotoExpectation = {
+    sectionId: "ch5-anticipatory-efficient-driving",
+    moduleSource: ch5AnticipatoryEfficientDrivingModuleSource,
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+    sourceAssetPath: "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
+    assetCategory: "source-as-is-photo",
+    assetKind: "high-resolution-original-source-photo-driving-culture-quote",
+    width: 1500,
+    height: 2200,
+    sha256: "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6"
+  };
+
+  assert.match(ch5EqualSocietyModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(ch5EqualSocietyModuleSource, /mobility-context-transferred-infographic\.png/u);
+  assert.match(ch5EqualSocietyModuleSource, /russianOverlayLabels[\s\S]*общественный транспорт[\s\S]*работа \/ учеба[\s\S]*задачи ухода/u);
+  assert.doesNotMatch(ch5EqualSocietyModuleSource, /source-as-is-infographic/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /driving-culture-photo-source-as-is\.jpg/u);
+  assert.match(ch5AnticipatoryEfficientDrivingModuleSource, /source-image-original-visible-text/u);
+
+  const infographicSection = sectionById(transferredInfographicExpectation.sectionId);
+  const infographicAsset = localAssetByPath(infographicSection, transferredInfographicExpectation.assetPath);
+  assert.equal(infographicSection.implementationEvidence.visibleSpanishStatus, "none");
+  assert.equal(infographicAsset.assetCategory, "source-transferred-infographic");
+  assert.equal(infographicAsset.assetKind, transferredInfographicExpectation.assetKind);
+  assert.equal(infographicAsset.visibleSpanish, false);
+  assert.equal(infographicAsset.cleanupScope, "glyph-level-spanish-cleanup");
+  assert.equal(infographicAsset.width, transferredInfographicExpectation.width);
+  assert.equal(infographicAsset.height, transferredInfographicExpectation.height);
+  assert.equal(infographicAsset.sha256, transferredInfographicExpectation.sha256);
+  assert.equal(infographicAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(infographicAsset.infographicTransfer.sourceImageTransfer, true);
+  assert.equal(infographicAsset.infographicTransfer.sourceAssetPath, transferredInfographicExpectation.sourceAssetPath);
+  assert.equal(infographicAsset.infographicTransfer.sourceCropSha256, transferredInfographicExpectation.sourceSha256);
+  assert.deepEqual(infographicAsset.infographicTransfer.sourceCropDimensions, {
+    width: transferredInfographicExpectation.width,
+    height: transferredInfographicExpectation.height
+  });
+  assert.equal(infographicAsset.infographicTransfer.noApproximateRedraw, true);
+  assert.equal(infographicAsset.infographicTransfer.broadMaskPlatePatchStatus, "none");
+  assert.equal(infographicAsset.infographicTransfer.cleanupMethod, "glyph-letter-level-background-restoration");
+  assert.equal(infographicAsset.infographicTransfer.russianOverlayStrategy, "selectable-dom");
+  assert.equal(infographicAsset.infographicTransfer.overlayTextSelectability, "selectable-dom-text");
+  assert.deepEqual(infographicAsset.infographicTransfer.russianOverlayLabels.map((label) => label.textRu), transferredInfographicExpectation.expectedLabels);
+  assert.equal(sha256File(infographicAsset.assetPath), transferredInfographicExpectation.sha256);
+  assert.equal(sha256File(transferredInfographicExpectation.sourceAssetPath), transferredInfographicExpectation.sourceSha256);
+  assert.notEqual(sha256File(infographicAsset.assetPath), sha256File(transferredInfographicExpectation.sourceAssetPath));
+
+  const photoSection = sectionById(sourceAsIsPhotoExpectation.sectionId);
+  const photoAsset = localAssetByPath(photoSection, sourceAsIsPhotoExpectation.assetPath);
+  const exceptionPaths = photoSection.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+  assert.equal(photoSection.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(photoSection.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(exceptionPaths.includes(sourceAsIsPhotoExpectation.assetPath), true);
+  assert.equal(photoAsset.assetCategory, sourceAsIsPhotoExpectation.assetCategory);
+  assert.equal(photoAsset.assetKind, sourceAsIsPhotoExpectation.assetKind);
+  assert.equal(photoAsset.visibleSpanish, true);
+  assert.equal(photoAsset.cleanupScope, "none-source-as-is");
+  assert.equal(photoAsset.width, sourceAsIsPhotoExpectation.width);
+  assert.equal(photoAsset.height, sourceAsIsPhotoExpectation.height);
+  assert.equal(photoAsset.sha256, sourceAsIsPhotoExpectation.sha256);
+  assert.equal(photoAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(photoAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(photoAsset.sourceIntegrity.sourceAssetPath, sourceAsIsPhotoExpectation.sourceAssetPath);
+  assert.equal(photoAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(photoAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(photoAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(sha256File(photoAsset.assetPath), sourceAsIsPhotoExpectation.sha256);
+  assert.equal(sha256File(sourceAsIsPhotoExpectation.sourceAssetPath), sourceAsIsPhotoExpectation.sha256);
+});
+
 test("Chapter 2 document visuals are explicit source-as-is document examples with Russian explanation outside", () => {
   const section = registry.sections.find((entry) => entry.id === "ch2-required-documents");
   const evidenceRecord = section.implementationEvidence;
@@ -1344,9 +1573,13 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ ch4SleepFatigueSection \}/);
   assert.match(manualGuideSource, /import \{ ch4StressSection \}/);
   assert.match(manualGuideSource, /import \{ ch4DistractionsSection \}/);
+  assert.match(manualGuideSource, /import \{ ch5AttitudeTypesSection \}/);
+  assert.match(manualGuideSource, /import \{ ch5EqualSocietySection \}/);
+  assert.match(manualGuideSource, /import \{ ch5GenderViolencePreventionSection \}/);
+  assert.match(manualGuideSource, /import \{ ch5AnticipatoryEfficientDrivingSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
@@ -2368,27 +2601,27 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, and 4 implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, 4, and 5 implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 97 });
-  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89]);
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 103 });
+  assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 23);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 27);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
-  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
-  assert.equal(result.implementedSections, 23);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89]);
-  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89]);
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
+  assert.equal(result.implementedSections, 27);
+  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98]);
+  assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
-  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_4_sections");
+  assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101]);
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -2401,7 +2634,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 23);
+  assert.equal(result.implementedSections, 27);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -2501,7 +2734,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 23);
+    assert.equal(output.implementedSections, 27);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -3489,7 +3722,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 23);
+    assert.equal(output.implementedSections, 27);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
