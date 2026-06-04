@@ -1030,7 +1030,11 @@ test("Chapter 5 divider and page 99, 100, and 101 source-topic boundaries are ex
   assert.equal(equalityPage100Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-100-source-line-mask-17"), true);
   assert.equal(genderPage100Boundary.startsAtLayoutBlockId, "page-100-source-line-mask-19");
   assert.match(genderPage100Boundary.startsAtSourceTextEs, /Prevenci[oó]n y asistencia/u);
+  assert.equal(genderPage101Boundary.endsBeforeLayoutBlockId, undefined);
+  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-11"), true);
   assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-24"), true);
+  assert.equal(genderPage101Boundary.ownedLayoutBlockIdsOnSharedPage.includes("page-101-source-line-mask-25"), true);
+  assert.match(genderPage101Boundary.boundaryEvidence, /continues the gender-violence support[\s\S]*masks 11-25/u);
   assert.equal(genderPage101Boundary.excludesSectionId, "ch5-anticipatory-efficient-driving");
   assert.equal(anticipatoryPage101Boundary.startsAtLayoutBlockId, "page-101-source-line-mask-09");
   assert.match(anticipatoryPage101Boundary.startsAtSourceTextEs, /Conducci[oó]n preventiva y eficiente/u);
@@ -1409,7 +1413,7 @@ test("Chapter 5 runtime renders transferred infographic and protected photo with
     assetKind: "high-resolution-transferred-source-infographic-mobility-context",
     width: 1220,
     height: 175,
-    sha256: "8dfa6f9096b920e3db9980dcaf0606f7f594f81e320553bade127e10f35d7807",
+    sha256: "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846",
     sourceSha256: "d4c13162206fbaa15881b98eafc527985717ac1cabc98201c7834d530c719633",
     expectedLabels: ["общественный транспорт", "работа / учеба", "задачи ухода"]
   };

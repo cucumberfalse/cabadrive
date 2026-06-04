@@ -511,8 +511,8 @@
             "page-101-source-line-mask-24",
             "page-101-source-line-mask-25"
           ],
-          "endsBeforeLayoutBlockId": "page-101-source-line-mask-09",
-          "excludesSectionId": "ch5-anticipatory-efficient-driving"
+          "excludesSectionId": "ch5-anticipatory-efficient-driving",
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body."
         },
         {
           "sectionId": "ch5-anticipatory-efficient-driving",

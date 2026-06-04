@@ -389,8 +389,8 @@
             "page-101-source-line-mask-24",
             "page-101-source-line-mask-25"
           ],
-          "endsBeforeLayoutBlockId": "page-101-source-line-mask-09",
-          "excludesSectionId": "ch5-anticipatory-efficient-driving"
+          "excludesSectionId": "ch5-anticipatory-efficient-driving",
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body."
         },
         {
           "sectionId": "ch5-anticipatory-efficient-driving",
@@ -6076,7 +6076,7 @@
             "cleanupScope": "glyph-level-spanish-cleanup",
             "width": 1220,
             "height": 175,
-            "sha256": "8dfa6f9096b920e3db9980dcaf0606f7f594f81e320553bade127e10f35d7807",
+            "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846",
             "runtimeDisplaySize": {
               "maxWidthCssPx": 680,
               "maxHeightCssPx": 175,
@@ -6089,7 +6089,7 @@
                 "width": 1220,
                 "height": 175
               },
-              "sha256": "8dfa6f9096b920e3db9980dcaf0606f7f594f81e320553bade127e10f35d7807"
+              "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846"
             },
             "infographicTransfer": {
               "sourceImageTransfer": true,
@@ -6229,8 +6229,7 @@
             "page-101-source-line-mask-24",
             "page-101-source-line-mask-25"
           ],
-          "boundaryEvidence": "layout.ru.json page 101 masks 11-25 continue the gender-violence SMS/report/containment and not-911-derivation guidance; mask 09 is the Conducción preventiva y eficiente heading for the next section.",
-          "endsBeforeLayoutBlockId": "page-101-source-line-mask-09",
+          "boundaryEvidence": "Page 101 continues the gender-violence support phone/SMS/report guidance through masks 11-25 after the page introduces the next heading at mask 09; this boundary owns only the support masks and excludes the preventive/efficient-driving body.",
           "excludesSectionId": "ch5-anticipatory-efficient-driving"
         }
       ],
