@@ -9071,7 +9071,7 @@
             "cleanupScope": "reference-only-not-runtime",
             "extractionScaleEvidence": {
               "target": "x5-zoom-source-export",
-              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; moved from app2-safe-driving evidence to app2-highways-hospitals evidence without byte changes, resizing, cleanup, retouching, or translation.",
+              "method": "Appendix II source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; restored from app2-highways-hospitals evidence to app2-safe-driving evidence without byte changes, resizing, cleanup, retouching, masking, reconstruction, or translation.",
               "outputDimensions": {
                 "width": 2976,
                 "height": 4209
