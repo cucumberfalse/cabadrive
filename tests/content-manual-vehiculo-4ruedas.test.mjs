@@ -394,7 +394,7 @@ test("manual 4 ruedas layout and navigation cover all pages and source-derived s
     navigation.entries
       .find((entry) => entry.id === "appendix-2-passenger-transport")
       .children.find((entry) => entry.id === "app2-social-responsibility").startPage,
-    123
+    124
   );
   assert.ok(navigation.entries.flatMap((entry) => entry.children ?? []).some((entry) => entry.id === "app4-signs-regulatory"));
   const chapter4Topics = navigation.entries.find((entry) => entry.id === "chapter-4-natural-capacity").children;
