@@ -8582,7 +8582,7 @@
         "visualReviewNotes": [
           "Appendix II safety-elements runtime now preserves key source visual instructions: mirror and seat-belt photo pairs as tight source-as-is x5 crops, and the page 132 headrest-position diagrams as tight source diagram crops with Spanish labels outside the crop boundaries.",
           "The page 130 and page 131 source-as-is photo crops exclude surrounding Spanish caption/body text; Russian explanation is outside the images. No photo, traffic sign, road marking, source crop, source page render, or protected source-as-is visual pixels are translated, relabeled, retouched, masked, inpainted, reconstructed, or otherwise changed.",
-          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map transfer is handled in app2-highways-hospitals with x5 source-crop provenance, glyph-level Spanish cleanup, and selectable Russian DOM overlay labels."
+          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map handling is recorded in app2-highways-hospitals as an owner-approved source-as-is visible-Spanish exception: the x5 source map is reused byte-identically at runtime, and Russian title/list translations are adjacent to or below the unchanged image as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -9236,7 +9236,7 @@
         "localAssetMetadata": [
           {
             "assetPath": "src/data/manual-sections/app2-highways-hospitals.ts",
-            "assetKind": "selectable-russian-dom-text-and-hospital-map-transfer",
+            "assetKind": "selectable-russian-dom-text-and-source-as-is-hospital-map-explanation",
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false

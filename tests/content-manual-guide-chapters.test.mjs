@@ -1492,6 +1492,7 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
 
 test("Appendix II hospital map renders as an owner-approved source-as-is map with Russian text outside the image", () => {
   const highwaysHospitals = sectionById("app2-highways-hospitals");
+  const safetyElements = sectionById("app2-safety-elements");
   const sourceCropPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
   const textCleanupMaskPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
   const runtimeAssetPath = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
@@ -1504,6 +1505,18 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.equal(sha256File(runtimeAssetPath), sha256File(sourceCropPath));
   assert.equal(existsSync(textCleanupMaskPath), false);
   assert.equal(existsSync(oldTransferredAssetPath), false);
+  assert.equal(
+    highwaysHospitals.implementationEvidence.localAssetMetadata[0].assetKind,
+    "selectable-russian-dom-text-and-source-as-is-hospital-map-explanation"
+  );
+  assert.doesNotMatch(
+    JSON.stringify([highwaysHospitals.implementationEvidence, safetyElements.implementationEvidence]),
+    /hospital map transfer|hospital-map-transfer|glyph-level Spanish cleanup|selectable Russian DOM overlay labels|text-cleanup mask/u
+  );
+  assert.match(
+    JSON.stringify(safetyElements.implementationEvidence.visualReviewNotes),
+    /owner-approved source-as-is visible-Spanish exception[\s\S]*reused byte-identically[\s\S]*Russian title\/list translations/u
+  );
 
   assert.ok(
     highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) =>
