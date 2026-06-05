@@ -2,13 +2,53 @@
   "schemaVersion": 2,
   "checkerId": "manual-guide-source-fidelity",
   "featureId": "031-manual-document-completion",
-  "mode": "complete-chapters-1-through-5-and-appendices-1-through-4",
+  "mode": "complete-front-matter-chapters-1-through-5-and-appendices-1-through-4",
   "checkedRegistry": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
   "requiredSourcePageRange": {
-    "start": 21,
+    "start": 1,
     "end": 200
   },
   "skippedSourcePages": [
+    {
+      "sourcePage": 1,
+      "reason": "front-title-navigation-only"
+    },
+    {
+      "sourcePage": 12,
+      "reason": "front-index-navigation-only"
+    },
+    {
+      "sourcePage": 13,
+      "reason": "front-index-navigation-only"
+    },
+    {
+      "sourcePage": 14,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 15,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 16,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 17,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 18,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 19,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
+    {
+      "sourcePage": 20,
+      "reason": "introduction-owned-by-existing-runtime"
+    },
     {
       "sourcePage": 21,
       "reason": "chapter-divider-only"
@@ -47,6 +87,9 @@
     }
   ],
   "expectedSectionIds": [
+    "front-presentation",
+    "front-categories",
+    "front-glossary",
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
@@ -96,6 +139,18 @@
     "app4-signs-traffic-lights"
   ],
   "expectedSectionRanges": {
+    "front-presentation": {
+      "start": 2,
+      "end": 2
+    },
+    "front-categories": {
+      "start": 3,
+      "end": 4
+    },
+    "front-glossary": {
+      "start": 5,
+      "end": 11
+    },
     "ch1-cities-for-people": {
       "start": 22,
       "end": 22
@@ -1016,8 +1071,18 @@
   "sharedPrereqExpectedOutput": {
     "status": "pass",
     "pendingSections": 0,
-    "implementedSections": 47,
+    "implementedSections": 50,
     "skippedSourcePages": [
+      1,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
       21,
       43,
       56,
@@ -1051,7 +1116,7 @@
       101,
       119
     ],
-    "screenshotEvidence": "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_4_sections",
-    "sourceCropEvidence": "x5_source_crops_recorded_for_complete_chapters_1_through_5_and_appendices_1_through_4_sections"
+    "screenshotEvidence": "recorded_for_complete_front_matter_chapters_1_through_5_and_appendices_1_through_4_sections",
+    "sourceCropEvidence": "recorded_for_complete_front_matter_chapters_1_through_5_and_appendices_1_through_4_sections"
   }
 }

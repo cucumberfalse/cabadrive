@@ -1656,7 +1656,8 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Предисловие");
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Глава 1. К устойчивой мобильности");
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Приложение IV. Дорожные знаки и сигналы");
-    await expect(reader.getByTestId("manual-guide-nav").locator('[data-status="pending"]').first()).toBeVisible();
+    await expect(reader.getByTestId("manual-guide-pending-section-front-presentation")).toHaveAttribute("data-status", "implemented");
+    await expect(reader.getByTestId("manual-guide-pending-section-front-glossary")).toHaveAttribute("data-status", "implemented");
     await expect(reader.locator('[data-testid="intro-index-nav"]')).toHaveCount(0);
     const activeIntroRoute = page.getByTestId(`intro-route-${route.id}`);
     const activeRouteItem = reader.getByTestId(`manual-guide-route-item-${route.id}`);

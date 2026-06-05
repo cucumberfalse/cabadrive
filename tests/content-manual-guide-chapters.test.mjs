@@ -13,6 +13,9 @@ const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
 const stylesPath = "src/styles.css";
+const frontPresentationModulePath = "src/data/manual-sections/front-presentation.ts";
+const frontCategoriesModulePath = "src/data/manual-sections/front-categories.ts";
+const frontGlossaryModulePath = "src/data/manual-sections/front-glossary.ts";
 const ch1CitiesModulePath = "src/data/manual-sections/ch1-cities-for-people.ts";
 const ch1SustainableModulePath = "src/data/manual-sections/ch1-sustainable-mobility.ts";
 const ch1PedestrianPriorityModulePath = "src/data/manual-sections/ch1-pedestrian-priority.ts";
@@ -65,6 +68,9 @@ const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
 const implementedSectionIds = new Set([
+  "front-presentation",
+  "front-categories",
+  "front-glossary",
   ...legacyBaselineSectionIds,
   "ch2-legal-responsibility",
   "ch2-required-documents",
@@ -112,6 +118,9 @@ const manualGuideSource = readFileSync(manualGuidePath, "utf8");
 const appSource = readFileSync(appPath, "utf8");
 const checkerSource = readFileSync(checkerPath, "utf8");
 const stylesSource = readFileSync(stylesPath, "utf8");
+const frontPresentationModuleSource = readFileSync(frontPresentationModulePath, "utf8");
+const frontCategoriesModuleSource = readFileSync(frontCategoriesModulePath, "utf8");
+const frontGlossaryModuleSource = readFileSync(frontGlossaryModulePath, "utf8");
 const ch1CitiesModuleSource = readFileSync(ch1CitiesModulePath, "utf8");
 const ch1SustainableModuleSource = readFileSync(ch1SustainableModulePath, "utf8");
 const ch1PedestrianPriorityModuleSource = readFileSync(ch1PedestrianPriorityModulePath, "utf8");
@@ -345,6 +354,9 @@ function writeImplementedRegistryFixture(tempDir, moduleSource, mutateEvidence =
     checkerResult: "pass"
   };
   mutateEvidence(section.implementationEvidence);
+  writeTempFile(join(moduleRoot, "front-presentation.ts"), frontPresentationModuleSource);
+  writeTempFile(join(moduleRoot, "front-categories.ts"), frontCategoriesModuleSource);
+  writeTempFile(join(moduleRoot, "front-glossary.ts"), frontGlossaryModuleSource);
   writeTempFile(join(moduleRoot, "ch1-cities-for-people.ts"), ch1CitiesModuleSource);
   writeTempFile(join(moduleRoot, "ch1-sustainable-mobility.ts"), ch1SustainableModuleSource);
   writeTempFile(join(moduleRoot, "ch1-pedestrian-priority.ts"), moduleSource);
@@ -650,15 +662,25 @@ function writeChapter2LegalResponsibilityFixture(tempDir, { strict = false, muta
   return { implementedRegistryPath, moduleRoot };
 }
 
-test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV registry contains source Índice sections and skipped divider metadata", () => {
+test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV registry contains source Índice sections and skipped divider metadata", () => {
   assert.equal(existsSync(oldPageRegistryPath), false, "page-based Chapter 1/2 registry was removed");
   assert.equal(registry.schemaVersion, 2);
   assert.equal(registry.manualId, "gcba-manual-vehiculo-4-ruedas-2023");
   assert.equal(registry.featureId, "031-manual-document-completion");
-  assert.deepEqual(registry.sourcePageRange, { start: 21, end: 200 });
+  assert.deepEqual(registry.sourcePageRange, { start: 1, end: 200 });
   assert.equal(Object.hasOwn(registry, "pages"), false, "registry must not expose raw PDF page entries");
-  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [21, 43, 56, 57, 89, 98, 104, 152, 184]);
+  assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.sourcePage), [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(registry.skippedSourcePages.map((entry) => entry.reason), [
+    "front-title-navigation-only",
+    "front-index-navigation-only",
+    "front-index-navigation-only",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
+    "introduction-owned-by-existing-runtime",
     "chapter-divider-only",
     "chapter-divider-only",
     "chapter-closing-slogan-only",
@@ -694,6 +716,9 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     assert.doesNotMatch(section.sectionContentModulePath, /src\/data\/manual-pages\//u);
 
     assert.deepEqual(section.sourcePages.map((entry) => entry.sourcePage), sourcePages);
+    assert.equal(sourcePages.includes(1), false, `${section.id} does not include title-only front-matter page 1`);
+    assert.equal(sourcePages.includes(12), false, `${section.id} does not include source-index page 12`);
+    assert.equal(sourcePages.includes(13), false, `${section.id} does not include source-index page 13`);
     assert.equal(sourcePages.includes(21), false, `${section.id} does not include divider page 21`);
     assert.equal(sourcePages.includes(43), false, `${section.id} does not include divider page 43`);
     assert.equal(sourcePages.includes(56), false, `${section.id} does not include page 56 closing slogan as section content`);
@@ -728,11 +753,12 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
   }
 });
 
-test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV hierarchy references source Índice sections, not raw PDF pages", () => {
-  assert.equal(registry.chapters.length, 9);
+test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV hierarchy references source Índice sections, not raw PDF pages", () => {
+  assert.equal(registry.chapters.length, 10);
   assert.deepEqual(
     registry.chapters.map((chapter) => chapter.id),
     [
+      "front-matter",
       "chapter-1-sustainable-mobility",
       "chapter-2-responsibility",
       "chapter-3-driving-rules",
@@ -745,6 +771,12 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     ]
   );
   assert.deepEqual(registry.chapters[0].sectionIds, [
+    "front-presentation",
+    "front-categories",
+    "front-glossary"
+  ]);
+  assert.equal(registry.chapters[0].status, "active", "Front matter is active after learner-useful support sections are implemented");
+  assert.deepEqual(registry.chapters[1].sectionIds, [
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
@@ -752,15 +784,15 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     "ch1-public-transport-system",
     "ch1-shared-trip"
   ]);
-  assert.equal(registry.chapters[0].status, "active", "Chapter 1 is active after every Chapter 1 section is implemented");
-  assert.deepEqual(registry.chapters[1].sectionIds, [
+  assert.equal(registry.chapters[1].status, "active", "Chapter 1 is active after every Chapter 1 section is implemented");
+  assert.deepEqual(registry.chapters[2].sectionIds, [
     "ch2-legal-responsibility",
     "ch2-required-documents",
     "ch2-incident-obligations",
     "ch2-scoring"
   ]);
-  assert.equal(registry.chapters[1].status, "active", "Chapter 2 is active after every Chapter 2 section is implemented");
-  assert.deepEqual(registry.chapters[2].sectionIds, [
+  assert.equal(registry.chapters[2].status, "active", "Chapter 2 is active after every Chapter 2 section is implemented");
+  assert.deepEqual(registry.chapters[3].sectionIds, [
     "ch3-priority-of-rules",
     "ch3-right-of-way",
     "ch3-lights",
@@ -771,36 +803,36 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     "ch3-adverse-conditions",
     "ch3-stopping-parking"
   ]);
-  assert.equal(registry.chapters[2].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
-  assert.deepEqual(registry.chapters[3].sectionIds, [
+  assert.equal(registry.chapters[3].status, "active", "Chapter 3 is active after every Chapter 3 section is implemented");
+  assert.deepEqual(registry.chapters[4].sectionIds, [
     "ch4-alcohol-drugs",
     "ch4-sleep-fatigue",
     "ch4-stress",
     "ch4-distractions"
   ]);
-  assert.equal(registry.chapters[3].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
-  assert.deepEqual(registry.chapters[4].sectionIds, [
+  assert.equal(registry.chapters[4].status, "active", "Chapter 4 is active after every Chapter 4 section is implemented");
+  assert.deepEqual(registry.chapters[5].sectionIds, [
     "ch5-attitude-types",
     "ch5-equal-society",
     "ch5-gender-violence-prevention",
     "ch5-anticipatory-efficient-driving"
   ]);
-  assert.equal(registry.chapters[4].status, "active", "Chapter 5 is active after every Chapter 5 section is implemented");
-  assert.deepEqual(registry.chapters[5].sectionIds, [
+  assert.equal(registry.chapters[5].status, "active", "Chapter 5 is active after every Chapter 5 section is implemented");
+  assert.deepEqual(registry.chapters[6].sectionIds, [
     "app1-safety-elements",
     "app1-other-required-safety-elements",
     "app1-recommended-safety-elements"
   ]);
-  assert.equal(registry.chapters[5].status, "active", "Appendix I is active after every Appendix I section is implemented");
-  assert.deepEqual(registry.chapters[6].sectionIds, [
+  assert.equal(registry.chapters[6].status, "active", "Appendix I is active after every Appendix I section is implemented");
+  assert.deepEqual(registry.chapters[7].sectionIds, [
     "app2-social-responsibility",
     "app2-safety-elements",
     "app2-driving-factors",
     "app2-safe-driving",
     "app2-highways-hospitals"
   ]);
-  assert.equal(registry.chapters[6].status, "active", "Appendix II is active after every Appendix II section is implemented");
-  assert.deepEqual(registry.chapters[7].sectionIds, [
+  assert.equal(registry.chapters[7].status, "active", "Appendix II is active after every Appendix II section is implemented");
+  assert.deepEqual(registry.chapters[8].sectionIds, [
     "app3-cargo-driver-profile",
     "app3-social-responsibility",
     "app3-driving-factors",
@@ -808,8 +840,8 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     "app3-safety-elements",
     "app3-highways"
   ]);
-  assert.equal(registry.chapters[7].status, "active", "Appendix III is active after every Appendix III section is implemented");
-  assert.deepEqual(registry.chapters[8].sectionIds, [
+  assert.equal(registry.chapters[8].status, "active", "Appendix III is active after every Appendix III section is implemented");
+  assert.deepEqual(registry.chapters[9].sectionIds, [
     "app4-signs-regulatory",
     "app4-signs-warning",
     "app4-signs-informational",
@@ -817,18 +849,19 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
     "app4-signs-horizontal",
     "app4-signs-traffic-lights"
   ]);
-  assert.equal(registry.chapters[8].status, "active", "Appendix IV is active after every Appendix IV section is implemented");
+  assert.equal(registry.chapters[9].status, "active", "Appendix IV is active after every Appendix IV section is implemented");
 
   const sectionStatusById = new Map(registry.sections.map((section) => [section.id, section.status]));
-  assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
-  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
-  assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
-  assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
-  assert.ok(registry.chapters[4].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 5 child sections are implemented");
-  assert.ok(registry.chapters[5].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix I child sections are implemented");
-  assert.ok(registry.chapters[6].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix II child sections are implemented");
-  assert.ok(registry.chapters[7].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix III child sections are implemented");
-  assert.ok(registry.chapters[8].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix IV child sections are implemented");
+  assert.ok(registry.chapters[0].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all front-matter support child sections are implemented");
+  assert.ok(registry.chapters[1].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 1 child sections are implemented");
+  assert.ok(registry.chapters[2].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 2 child sections are implemented");
+  assert.ok(registry.chapters[3].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 3 child sections are implemented");
+  assert.ok(registry.chapters[4].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 4 child sections are implemented");
+  assert.ok(registry.chapters[5].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Chapter 5 child sections are implemented");
+  assert.ok(registry.chapters[6].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix I child sections are implemented");
+  assert.ok(registry.chapters[7].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix II child sections are implemented");
+  assert.ok(registry.chapters[8].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix III child sections are implemented");
+  assert.ok(registry.chapters[9].sectionIds.every((sectionId) => sectionStatusById.get(sectionId) === "implemented"), "all Appendix IV child sections are implemented");
 
   for (const chapter of registry.chapters) {
     assert.equal(Object.hasOwn(chapter, "chapterPageIds"), false, `${chapter.id} skips divider-only page ids`);
@@ -836,6 +869,9 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
   }
 
   const topicSourceTitles = new Map(registry.sections.map((section) => [section.id, section.sourceTitleEs]));
+  assert.equal(topicSourceTitles.get("front-presentation"), "Presentacion");
+  assert.equal(topicSourceTitles.get("front-categories"), "Material por categorias");
+  assert.equal(topicSourceTitles.get("front-glossary"), "Glosario");
   const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
   assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
   assert.equal(topicSourceTitles.get("app1-recommended-safety-elements"), "Elementos de seguridad recomendables");
@@ -847,7 +883,8 @@ test("Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix
   const coveredSourcePages = registry.sections.flatMap((section) => section.sourcePages.map((entry) => entry.sourcePage));
   assert.deepEqual(
     uniqueInOrder(coveredSourcePages),
-    sourcePagesForRange(22, 42).concat(
+    sourcePagesForRange(2, 11).concat(
+      sourcePagesForRange(22, 42),
       sourcePagesForRange(44, 55),
       sourcePagesForRange(58, 88),
       sourcePagesForRange(90, 97),
@@ -2441,6 +2478,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-prose",
     "manual-callout-blue",
     "manual-section-heading",
+    "manual-front-matter",
     "manual-principle-pair",
     "manual-source-artwork",
     "manual-mobility-context",
@@ -2455,6 +2493,9 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     assert.ok(manualGuideSource.includes(requiredToken), `manual guide style token registry includes ${requiredToken}`);
   }
 
+  assert.match(manualGuideSource, /import \{ frontPresentationSection \}/);
+  assert.match(manualGuideSource, /import \{ frontCategoriesSection \}/);
+  assert.match(manualGuideSource, /import \{ frontGlossarySection \}/);
   assert.match(manualGuideSource, /import \{ ch1CitiesForPeopleSection \}/);
   assert.match(manualGuideSource, /import \{ ch1SustainableMobilitySection \}/);
   assert.match(manualGuideSource, /import \{ ch1PedestrianPrioritySection \}/);
@@ -2504,7 +2545,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
   assert.match(manualGuideSource, /import \{ app4SignsTrafficLightsSection \}/);
   assert.match(
     manualGuideSource,
-    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection,\s*app2SocialResponsibilitySection,\s*app2SafetyElementsSection,\s*app2DrivingFactorsSection,\s*app2SafeDrivingSection,\s*app2HighwaysHospitalsSection,\s*app3CargoDriverProfileSection,\s*app3SocialResponsibilitySection,\s*app3DrivingFactorsSection,\s*app3SafeDrivingSection,\s*app3SafetyElementsSection,\s*app3HighwaysSection,\s*app4SignsRegulatorySection,\s*app4SignsWarningSection,\s*app4SignsInformationalSection,\s*app4SignsTemporarySection,\s*app4SignsHorizontalSection,\s*app4SignsTrafficLightsSection\s*\]/
+    /implementedManualGuideSections:\s*ManualGuideSectionContent\[\]\s*=\s*\[\s*frontPresentationSection,\s*frontCategoriesSection,\s*frontGlossarySection,\s*ch1CitiesForPeopleSection,\s*ch1SustainableMobilitySection,\s*ch1PedestrianPrioritySection,\s*ch1BicycleSection,\s*ch1PublicTransportSystemSection,\s*ch1SharedTripSection,\s*ch2LegalResponsibilitySection,\s*ch2RequiredDocumentsSection,\s*ch2IncidentObligationsSection,\s*ch2ScoringSection,\s*ch3PriorityOfRulesSection,\s*ch3RightOfWaySection,\s*ch3LightsSection,\s*ch3SpeedSection,\s*ch3TurnsSection,\s*ch3OvertakingSection,\s*ch3HighwaysSection,\s*ch3AdverseConditionsSection,\s*ch3StoppingParkingSection,\s*ch4AlcoholDrugsSection,\s*ch4SleepFatigueSection,\s*ch4StressSection,\s*ch4DistractionsSection,\s*ch5AttitudeTypesSection,\s*ch5EqualSocietySection,\s*ch5GenderViolencePreventionSection,\s*ch5AnticipatoryEfficientDrivingSection,\s*app1SafetyElementsSection,\s*app1OtherRequiredSafetyElementsSection,\s*app1RecommendedSafetyElementsSection,\s*app2SocialResponsibilitySection,\s*app2SafetyElementsSection,\s*app2DrivingFactorsSection,\s*app2SafeDrivingSection,\s*app2HighwaysHospitalsSection,\s*app3CargoDriverProfileSection,\s*app3SocialResponsibilitySection,\s*app3DrivingFactorsSection,\s*app3SafeDrivingSection,\s*app3SafetyElementsSection,\s*app3HighwaysSection,\s*app4SignsRegulatorySection,\s*app4SignsWarningSection,\s*app4SignsInformationalSection,\s*app4SignsTemporarySection,\s*app4SignsHorizontalSection,\s*app4SignsTrafficLightsSection\s*\]/
   );
   assert.match(manualGuideSource, /manualGuideSectionContentById = new Map/);
   assert.match(manualGuideSource, /kind:\s*"table"/);
@@ -3537,27 +3578,27 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   );
 });
 
-test("Manual guide source-fidelity checker passes the section registry with Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV implemented sections", () => {
+test("Manual guide source-fidelity checker passes the section registry with front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III, and Appendix IV implemented sections", () => {
   assert.equal(evidence.checkerId, "manual-guide-source-fidelity");
-  assert.deepEqual(evidence.requiredSourcePageRange, { start: 21, end: 200 });
+  assert.deepEqual(evidence.requiredSourcePageRange, { start: 1, end: 200 });
   assert.deepEqual(evidence.sharedSourcePageOwnership.map((entry) => entry.sourcePage), [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 152, 184]);
+  assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedSourcePages, [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.skippedDividerPages, [21, 43, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.omittedBookOnlyPages, [56]);
   assert.deepEqual(evidence.sharedPrereqExpectedOutput.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
   assert.equal(evidence.sharedPrereqExpectedOutput.pendingSections, 0);
-  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 47);
+  assert.equal(evidence.sharedPrereqExpectedOutput.implementedSections, 50);
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
   assert.equal(result.pendingSections, 0);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.equal(result.implementedSections, 47);
-  assert.deepEqual(result.skippedSourcePages, [21, 43, 56, 57, 89, 98, 104, 152, 184]);
+  assert.equal(result.implementedSections, 50);
+  assert.deepEqual(result.skippedSourcePages, [1, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 43, 56, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(result.skippedDividerPages, [21, 43, 57, 89, 98, 104, 152, 184]);
   assert.deepEqual(result.omittedBookOnlyPages, [56]);
   assert.deepEqual(result.sharedSourcePages, [55, 93, 94, 95, 99, 100, 101, 119]);
-  assert.equal(result.screenshotEvidence, "recorded_for_complete_chapters_1_through_5_and_appendices_1_through_4_sections");
+  assert.equal(result.screenshotEvidence, "recorded_for_complete_front_matter_chapters_1_through_5_and_appendices_1_through_4_sections");
   assert.equal(result.strictVisualRulePolicy, "031-strict-source-fidelity");
 });
 
@@ -3570,7 +3611,7 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);
   assert.equal(result.status, "pass");
-  assert.equal(result.implementedSections, 47);
+  assert.equal(result.implementedSections, 50);
 });
 
 test("Manual guide source-fidelity checker requires strict visual evidence for future manual units", () => {
@@ -3670,7 +3711,7 @@ test("Manual guide source-fidelity checker accepts newly implemented Chapter 2 s
     assert.equal(result.status, 0, result.stderr);
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
-    assert.equal(output.implementedSections, 47);
+    assert.equal(output.implementedSections, 50);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -4658,7 +4699,7 @@ test("Manual guide source-fidelity checker accepts implemented sections with mul
     const output = JSON.parse(result.stdout);
     assert.equal(output.status, "pass");
     assert.equal(output.pendingSections, 0);
-    assert.equal(output.implementedSections, 47);
+    assert.equal(output.implementedSections, 50);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

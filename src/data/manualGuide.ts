@@ -1,4 +1,7 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { frontCategoriesSection } from "./manual-sections/front-categories";
+import { frontGlossarySection } from "./manual-sections/front-glossary";
+import { frontPresentationSection } from "./manual-sections/front-presentation";
 import { app4SignsHorizontalSection } from "./manual-sections/app4-signs-horizontal";
 import { app4SignsInformationalSection } from "./manual-sections/app4-signs-informational";
 import { app4SignsRegulatorySection } from "./manual-sections/app4-signs-regulatory";
@@ -732,6 +735,9 @@ function sourcePageLabel(section: ManualGuideSectionEntry) {
 }
 
 export const implementedManualGuideSections: ManualGuideSectionContent[] = [
+  frontPresentationSection,
+  frontCategoriesSection,
+  frontGlossarySection,
   ch1CitiesForPeopleSection,
   ch1SustainableMobilitySection,
   ch1PedestrianPrioritySection,
@@ -809,8 +815,13 @@ export const manualGuideDocumentStyleTokens = {
     },
     {
       id: "manual-source-artwork",
-      description: "Source-faithful local crops or visually indistinguishable reconstructions with selectable Russian labels where needed.",
+      description: "Source-faithful local crops or protected source images with selectable Russian text adjacent to or below them.",
       tokenSource: "manual-guide-source-fidelity"
+    },
+    {
+      id: "manual-front-matter",
+      description: "Front-matter support routes for presentation, category scope, and glossary content rendered as selectable Russian DOM text.",
+      tokenSource: "source pages 2-11 front matter"
     },
     {
       id: "manual-mobility-context",
@@ -947,8 +958,6 @@ export const manualGuideChapter12SectionSummary = {
 } as const;
 
 export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
-  { id: "presentation", kind: "support", labelRu: "Предисловие", sourceTitleEs: "Presentación", status: "pending" },
-  { id: "glossary", kind: "support", labelRu: "Глоссарий", sourceTitleEs: "Glosario", status: "pending" },
   {
     id: "introduction",
     kind: "group",
