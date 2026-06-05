@@ -2676,9 +2676,10 @@ small,
 }
 
 .manual-source-image-cards {
+  box-sizing: border-box;
   display: grid;
   gap: 14px;
-  width: min(780px, 100%);
+  width: 100%;
   min-width: 0;
   padding: 16px;
   border: 1px solid #d8e6e6;
@@ -2772,17 +2773,7 @@ small,
   background: #eef3f2;
 }
 
-.manual-source-image-card[data-has-russian-overlay="true"] {
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] {
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] {
+.manual-source-image-card[data-display-mode="full-width"] {
   grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr);
 }
@@ -2798,21 +2789,18 @@ small,
   background: #ffffff;
 }
 
-.manual-source-image-card[data-has-russian-overlay="true"] figure {
-  width: min(100%, 680px);
+.manual-source-image-card[data-display-mode="full-width"] figure {
+  width: min(100%, var(--manual-source-image-max-width, 100%));
   justify-self: center;
+  overflow-x: hidden;
 }
 
-.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] figure {
-  width: 100%;
-  max-width: 760px;
-  justify-self: center;
+.manual-source-image-card[data-display-mode="full-width"][data-min-display-width-px] figure {
+  max-width: 100%;
+  justify-items: start;
   overflow-x: auto;
-}
-
-.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] figure {
-  width: min(100%, 680px);
-  justify-self: center;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
 }
 
 .manual-source-image-card img {
@@ -2822,17 +2810,18 @@ small,
   height: auto;
 }
 
-.manual-source-image-card[data-has-russian-overlay="true"] img {
+.manual-source-image-card[data-display-mode="full-width"] img {
   max-width: none;
 }
 
-.manual-source-image-card[data-card-id="app2-mirror-orientation-source-card"] img {
-  width: 760px;
-  max-width: none;
-}
-
-.manual-source-image-card[data-card-id="app2-hospital-map-source-card"] img {
-  max-width: none;
+.manual-source-image-card[data-display-mode="full-width"][data-min-display-width-px] img {
+  width: max(
+    100%,
+    min(
+      var(--manual-source-image-min-width, 100%),
+      var(--manual-source-image-max-width, var(--manual-source-image-min-width, 100%))
+    )
+  );
 }
 
 .manual-source-image-overlay {

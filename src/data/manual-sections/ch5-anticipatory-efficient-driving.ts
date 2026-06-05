@@ -123,6 +123,8 @@ export const ch5AnticipatoryEfficientDrivingSection: ManualGuideSectionContent =
         {
           id: "driving-culture-photo-source-card",
           titleRu: "Фото и цитата источника",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1500,
           sourcePage: 103,
           sourceRegion: { x: 740, y: 1080, width: 1500, height: 2200 },
           assetPath: `${assetRoot}/driving-culture-photo-source-as-is.jpg`,

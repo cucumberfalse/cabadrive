@@ -70,6 +70,8 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
         {
           id: "app4-horizontal-page-195-source-card",
           titleRu: "Страница 195: продольная и поперечная разметка",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 195,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/marking-sheet-195-source-as-is.jpg`,
@@ -83,6 +85,8 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
         {
           id: "app4-horizontal-page-196-source-card",
           titleRu: "Страница 196: специальная разметка",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 196,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/marking-sheet-196-source-as-is.jpg`,

@@ -105,6 +105,8 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         {
           id: "drug-test-device-source-card",
           titleRu: "Устройство проверки на estupefacientes",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 820,
           sourcePage: 90,
           sourceRegion: { x: 1180, y: 2245, width: 820, height: 300 },
           assetPath: `${assetRoot}/drug-test-source-as-is.jpg`,
@@ -153,6 +155,8 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         {
           id: "alcohol-limits-source-card",
           titleRu: "Перенесенная визуальная таблица пределов",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 850,
           sourcePage: 91,
           sourceRegion: { x: 1180, y: 2030, width: 850, height: 430 },
           assetPath: `${assetRoot}/alcohol-limits-transferred-infographic.png`,

@@ -70,6 +70,8 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
         {
           id: "app4-temporary-page-193-source-card",
           titleRu: "Страница 193: дорожные, пешеходные и велосипедные временные знаки",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 193,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-193-source-as-is.jpg`,
@@ -83,6 +85,8 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
         {
           id: "app4-temporary-page-194-source-card",
           titleRu: "Страница 194: пешеходные, велосипедные и другие временные устройства",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 194,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-194-source-as-is.jpg`,

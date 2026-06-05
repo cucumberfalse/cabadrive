@@ -103,6 +103,8 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
         {
           id: "app2-hospital-map-source-card",
           titleRu: "Карта больниц CABA",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 780,
           sourcePage: 150,
           sourceRegion: { x: 1332, y: 1854, width: 780, height: 335 },
           assetPath: `${assetRoot}/hospital-map-source-as-is.png`,

@@ -171,6 +171,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "mirror-orientation-source-card",
           titleRu: "Исходная схема зеркал",
+          displayMode: "compact",
           sourcePage: 110,
           sourceRegion: { x: 1570, y: 1008, width: 495, height: 163 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.jpg`,
@@ -244,6 +245,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "headrest-position-source-card",
           titleRu: "Перенесенная схема подголовника",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1190,
           sourcePage: 113,
           sourceRegion: { x: 980, y: 1010, width: 1190, height: 185 },
           assetPath: `${assetRoot}/headrest-position-transferred-infographic.png`,
@@ -302,6 +305,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "sri-types-source-card",
           titleRu: "Перенесенная схема типов SRI",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1220,
           sourcePage: 115,
           sourceRegion: { x: 900, y: 1320, width: 1220, height: 260 },
           assetPath: `${assetRoot}/sri-types-transferred-infographic.png`,

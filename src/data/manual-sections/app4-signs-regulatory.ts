@@ -70,6 +70,8 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
         {
           id: "app4-regulatory-page-185-source-card",
           titleRu: "Страница 185: запрещающие",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 185,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-185-source-as-is.jpg`,
@@ -83,6 +85,8 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
         {
           id: "app4-regulatory-page-186-source-card",
           titleRu: "Страница 186: ограничения, приоритет и конец предписания",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 186,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-186-source-as-is.jpg`,

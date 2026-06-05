@@ -70,6 +70,8 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
         {
           id: "app4-warning-page-187-source-card",
           titleRu: "Страница 187: характеристики дороги",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 187,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-187-source-as-is.jpg`,
@@ -83,6 +85,8 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
         {
           id: "app4-warning-page-188-source-card",
           titleRu: "Страница 188: максимальная опасность и другие предупреждения",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 188,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-188-source-as-is.jpg`,

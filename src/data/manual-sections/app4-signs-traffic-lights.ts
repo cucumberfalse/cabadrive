@@ -72,6 +72,8 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
         {
           id: "app4-traffic-lights-page-197-source-card",
           titleRu: "Страница 197: значение огней и специальные светофоры",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 197,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/signal-sheet-197-source-as-is.jpg`,
@@ -85,6 +87,8 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
         {
           id: "app4-traffic-lights-page-198-source-card",
           titleRu: "Страница 198: завершающее сообщение о знаках",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 198,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/signal-sheet-198-source-as-is.jpg`,
@@ -98,6 +102,8 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
         {
           id: "app4-traffic-lights-page-199-source-card",
           titleRu: "Страница 199: завершающая иллюстрация",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 199,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/signal-sheet-199-source-as-is.jpg`,
@@ -111,6 +117,8 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
         {
           id: "app4-traffic-lights-page-200-source-card",
           titleRu: "Страница 200: логотип города",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 200,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/signal-sheet-200-source-as-is.jpg`,

@@ -72,6 +72,8 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         {
           id: "app4-informational-page-189-source-card",
           titleRu: "Страница 189: характеристики дороги",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 189,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-189-source-as-is.jpg`,
@@ -85,6 +87,8 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         {
           id: "app4-informational-page-190-source-card",
           titleRu: "Страница 190: дорожная и городская номенклатура",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 190,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-190-source-as-is.jpg`,
@@ -98,6 +102,8 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         {
           id: "app4-informational-page-191-source-card",
           titleRu: "Страница 191: туристическая, сервисная и специальная информация",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 191,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-191-source-as-is.jpg`,
@@ -111,6 +117,8 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         {
           id: "app4-informational-page-192-source-card",
           titleRu: "Страница 192: Желтая звезда",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 2976,
           sourcePage: 192,
           sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
           assetPath: `${assetRoot}/sign-sheet-192-source-as-is.jpg`,

@@ -82,6 +82,8 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         {
           id: "distraction-panels-source-card",
           titleRu: "Перенесенные три панели Distracciones",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 860,
           sourcePage: 95,
           sourceRegion: { x: 1190, y: 2160, width: 860, height: 260 },
           assetPath: `${assetRoot}/distraction-panels-transferred-infographic.png`,
@@ -175,6 +177,8 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
         {
           id: "attention-photo-source-card",
           titleRu: "Фото и цитата источника",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 720,
           sourcePage: 97,
           sourceRegion: { x: 1160, y: 1680, width: 720, height: 900 },
           assetPath: `${assetRoot}/attention-photo-source-as-is.jpg`,

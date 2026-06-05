@@ -62,6 +62,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "dni-source-card",
           titleRu: "DNI",
+          displayMode: "compact",
           sourcePage: 46,
           sourceRegion: { x: 1085, y: 1795, width: 320, height: 118 },
           assetPath: `${assetRoot}/dni-source-as-is.jpg`,
@@ -74,6 +75,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "license-source-card",
           titleRu: "Licencia de Conducir",
+          displayMode: "compact",
           sourcePage: 46,
           sourceRegion: { x: 1085, y: 1950, width: 300, height: 105 },
           assetPath: `${assetRoot}/license-source-as-is.jpg`,
@@ -115,6 +117,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "beginner-sign-source-card",
           titleRu: "Знак начинающего водителя",
+          displayMode: "compact",
           sourcePage: 47,
           sourceRegion: { x: 1085, y: 1605, width: 315, height: 215 },
           assetPath: `${assetRoot}/beginner-sign-source-as-is.jpg`,
@@ -127,6 +130,8 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "cedulas-source-card",
           titleRu: "Cédula de identificación",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1110,
           sourcePage: 47,
           sourceRegion: { x: 1085, y: 2490, width: 1110, height: 260 },
           assetPath: `${assetRoot}/cedulas-source-as-is.jpg`,
@@ -201,6 +206,8 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "vtv-source-card",
           titleRu: "VTV и месяц по номеру",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1150,
           sourcePage: 49,
           sourceRegion: { x: 1085, y: 2000, width: 1150, height: 335 },
           assetPath: `${assetRoot}/vtv-source-as-is.jpg`,
@@ -213,6 +220,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         {
           id: "rva-source-card",
           titleRu: "RVA Autopartes Grabadas",
+          displayMode: "compact",
           sourcePage: 50,
           sourceRegion: { x: 1085, y: 2190, width: 360, height: 300 },
           assetPath: `${assetRoot}/rva-source-as-is.jpg`,

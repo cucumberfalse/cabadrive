@@ -2492,60 +2492,69 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
     <section className="manual-source-image-cards" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
       <h3>{block.titleRu}</h3>
       <div className="manual-source-image-card-grid">
-        {block.cards.map((card) => (
-          <article
-            key={card.id}
-            className="manual-source-image-card"
-            data-card-id={card.id}
-            data-has-russian-overlay={card.russianOverlayLabels ? true : undefined}
-            data-source-page={card.sourcePage}
-            data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
-          >
-            {(() => {
-              const officialSignException = card.officialSignException;
-              const sourceImageException = card.sourceImageException;
-              const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
-              const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
-              return (
-                <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
-                  <img
-                    src={assetUrl(card.assetPath)}
-                    alt={card.altRu}
-                    data-visible-spanish={card.visibleSpanish}
-                    data-official-sign-exception={officialSignException?.kind}
-                    data-source-image-exception={sourceImageException?.kind}
-                    data-visible-spanish-scope={visibleSpanishScope}
-                    data-source-as-is={sourceAsIs}
-                    loading="lazy"
-                  />
-              {card.russianOverlayLabels && (
-                <div className="manual-source-image-overlay" aria-label="Русские подписи поверх перенесенного инфографического визуала">
-                  {card.russianOverlayLabels.map((label) => (
-                    <span
-                      className={`manual-source-image-overlay-label manual-source-image-overlay-label-${label.tone}`}
-                      data-overlay-label-id={label.id}
-                      key={label.id}
-                      style={{
-                        left: `${label.xPct}%`,
-                        top: `${label.yPct}%`,
-                        width: `${label.widthPct}%`,
-                        height: `max(${label.heightPct}%, 2.1em)`
-                      }}
-                    >
-                      {label.textRu}
-                    </span>
-                  ))}
-                </div>
-              )}
-                </figure>
-              );
-            })()}
-            <div>
-              <h4>{card.titleRu}</h4>
-              <p>{card.bodyRu}</p>
-            </div>
-          </article>
-        ))}
+        {block.cards.map((card) => {
+          const officialSignException = card.officialSignException;
+          const sourceImageException = card.sourceImageException;
+          const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
+          const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
+          const cardStyle = card.maxDisplayWidthPx || card.minDisplayWidthPx
+            ? ({
+                ...(card.maxDisplayWidthPx ? { "--manual-source-image-max-width": `${card.maxDisplayWidthPx}px` } : {}),
+                ...(card.minDisplayWidthPx ? { "--manual-source-image-min-width": `${card.minDisplayWidthPx}px` } : {})
+              } as CSSProperties)
+            : undefined;
+
+          return (
+            <article
+              key={card.id}
+              className="manual-source-image-card"
+              data-card-id={card.id}
+              data-display-mode={card.displayMode}
+              data-max-display-width-px={card.maxDisplayWidthPx}
+              data-min-display-width-px={card.minDisplayWidthPx}
+              data-has-russian-overlay={card.russianOverlayLabels ? true : undefined}
+              data-source-page={card.sourcePage}
+              data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}
+              style={cardStyle}
+            >
+              <figure data-russian-overlay-strategy={card.russianOverlayLabels ? "selectable-dom" : undefined}>
+                <img
+                  src={assetUrl(card.assetPath)}
+                  alt={card.altRu}
+                  data-visible-spanish={card.visibleSpanish}
+                  data-official-sign-exception={officialSignException?.kind}
+                  data-source-image-exception={sourceImageException?.kind}
+                  data-visible-spanish-scope={visibleSpanishScope}
+                  data-source-as-is={sourceAsIs}
+                  loading="lazy"
+                />
+                {card.russianOverlayLabels && (
+                  <div className="manual-source-image-overlay" aria-label="Русские подписи поверх перенесенного инфографического визуала">
+                    {card.russianOverlayLabels.map((label) => (
+                      <span
+                        className={`manual-source-image-overlay-label manual-source-image-overlay-label-${label.tone}`}
+                        data-overlay-label-id={label.id}
+                        key={label.id}
+                        style={{
+                          left: `${label.xPct}%`,
+                          top: `${label.yPct}%`,
+                          width: `${label.widthPct}%`,
+                          height: `max(${label.heightPct}%, 2.1em)`
+                        }}
+                      >
+                        {label.textRu}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </figure>
+              <div>
+                <h4>{card.titleRu}</h4>
+                <p>{card.bodyRu}</p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

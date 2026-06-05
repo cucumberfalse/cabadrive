@@ -1,6 +1,6 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
@@ -247,6 +247,123 @@ function resolveSectionContentModulePath(modulePath, moduleRoot = "src/data/manu
 function fileSha256IfPresent(path) {
   if (typeof path !== "string" || path.length === 0 || !existsSync(path)) return null;
   return sha256File(path);
+}
+
+function balancedSourceSlice(source, startIndex, openChar, closeChar) {
+  let depth = 0;
+  let stringQuote = "";
+  let escaped = false;
+  for (let index = startIndex; index < source.length; index += 1) {
+    const char = source[index];
+    if (stringQuote) {
+      if (escaped) escaped = false;
+      else if (char === "\\") escaped = true;
+      else if (char === stringQuote) stringQuote = "";
+      continue;
+    }
+    if (char === "\"" || char === "'" || char === "`") {
+      stringQuote = char;
+      continue;
+    }
+    if (char === openChar) depth += 1;
+    if (char === closeChar) {
+      depth -= 1;
+      if (depth === 0) return source.slice(startIndex, index + 1);
+    }
+  }
+  throw new Error(`Unbalanced source slice starting at ${startIndex}`);
+}
+
+function topLevelObjectSources(arraySource) {
+  const objects = [];
+  let depth = 0;
+  let stringQuote = "";
+  let escaped = false;
+  let objectStart = -1;
+  for (let index = 0; index < arraySource.length; index += 1) {
+    const char = arraySource[index];
+    if (stringQuote) {
+      if (escaped) escaped = false;
+      else if (char === "\\") escaped = true;
+      else if (char === stringQuote) stringQuote = "";
+      continue;
+    }
+    if (char === "\"" || char === "'" || char === "`") {
+      stringQuote = char;
+      continue;
+    }
+    if (char === "{") {
+      if (depth === 0) objectStart = index;
+      depth += 1;
+    } else if (char === "}") {
+      depth -= 1;
+      if (depth === 0 && objectStart >= 0) objects.push(arraySource.slice(objectStart, index + 1));
+    }
+  }
+  return objects;
+}
+
+function moduleStringField(source, fieldName) {
+  return source.match(new RegExp(`${fieldName}:\\s*"([^"]+)"`, "u"))?.[1] ?? "";
+}
+
+function moduleNumberField(source, fieldName) {
+  const match = source.match(new RegExp(`${fieldName}:\\s*(\\d+)`, "u"));
+  return match ? Number(match[1]) : undefined;
+}
+
+function moduleSourceRegion(source) {
+  const match = source.match(/sourceRegion:\s*\{\s*x:\s*(\d+),\s*y:\s*(\d+),\s*width:\s*(\d+),\s*height:\s*(\d+)\s*\}/u);
+  return match
+    ? {
+        x: Number(match[1]),
+        y: Number(match[2]),
+        width: Number(match[3]),
+        height: Number(match[4])
+      }
+    : undefined;
+}
+
+function moduleAssetPath(source, assetRoot) {
+  const templateMatch = source.match(/assetPath:\s*`\$\{assetRoot\}\/([^`]+)`/u);
+  if (templateMatch) return `${assetRoot}/${templateMatch[1]}`;
+  return source.match(/assetPath:\s*"([^"]+)"/u)?.[1] ?? "";
+}
+
+function sourceImageCardInventory() {
+  const cards = [];
+  for (const fileName of readdirSync("src/data/manual-sections").filter((name) => name.endsWith(".ts")).sort()) {
+    const source = readFileSync(join("src/data/manual-sections", fileName), "utf8");
+    const assetRoot = source.match(/const assetRoot =\s*(?:\n\s*)?"([^"]+)"/u)?.[1] ?? "";
+    const sectionId = moduleStringField(source, "sectionId");
+    let cursor = 0;
+    while ((cursor = source.indexOf('kind: "source-image-cards"', cursor)) >= 0) {
+      const prelude = source.slice(Math.max(0, cursor - 400), cursor);
+      const blockId = [...prelude.matchAll(/id:\s*"([^"]+)"/gu)].at(-1)?.[1] ?? "";
+      const cardsIndex = source.indexOf("cards:", cursor);
+      const arrayStart = source.indexOf("[", cardsIndex);
+      const cardsArray = balancedSourceSlice(source, arrayStart, "[", "]");
+      for (const cardSource of topLevelObjectSources(cardsArray)) {
+        cards.push({
+          sectionId,
+          fileName,
+          blockId,
+          cardId: moduleStringField(cardSource, "id"),
+          displayMode: moduleStringField(cardSource, "displayMode"),
+          maxDisplayWidthPx: moduleNumberField(cardSource, "maxDisplayWidthPx"),
+          minDisplayWidthPx: moduleNumberField(cardSource, "minDisplayWidthPx"),
+          sourcePage: moduleNumberField(cardSource, "sourcePage"),
+          sourceRegion: moduleSourceRegion(cardSource),
+          assetPath: moduleAssetPath(cardSource, assetRoot),
+          hasOfficialSignException: /officialSignException/u.test(cardSource),
+          hasSourceImageException: /sourceImageException/u.test(cardSource),
+          hasRussianOverlayLabels: /russianOverlayLabels/u.test(cardSource)
+        });
+      }
+      cursor = arrayStart + cardsArray.length;
+    }
+  }
+  return cards;
 }
 
 function visualArtifactHashRecords(value, pathField) {
@@ -1986,7 +2103,7 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.equal(asset.width, 780);
   assert.equal(asset.height, 335);
   assert.equal(asset.sha256, sourceCropSha256);
-  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 680);
+  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 780);
   assert.equal(asset.runtimeDisplaySize.noUpscale, true);
   assert.equal(asset.sourceIntegrity.sourceAsIs, true);
   assert.equal(asset.sourceIntegrity.sourceAssetPath, sourceCropPath);
@@ -2065,9 +2182,14 @@ test("Appendix II safety visuals render as preserved source images with provenan
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /source-as-is изображ|runtime-crop/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\][\s\S]*grid-column:\s*1 \/ -1/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\] figure[\s\S]*max-width:\s*760px[\s\S]*overflow-x:\s*auto/u);
-  assert.match(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\] img[\s\S]*width:\s*760px[\s\S]*max-width:\s*none/u);
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /app2-mirror-orientation-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*1260[\s\S]*minDisplayWidthPx:\s*760/u
+  );
+  assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
+  assert.match(stylesSource, /--manual-source-image-min-width/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
+  assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\]/u);
 
   for (const expectation of sourceAsIs) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -2081,8 +2203,12 @@ test("Appendix II safety visuals render as preserved source images with provenan
     assert.equal(asset.sha256, expectation.sha256);
     assert.equal(asset.runtimeDisplaySize.noUpscale, true);
     if (expectation.assetPath.includes("mirror-orientation")) {
-      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 760);
-      assert.ok(asset.width > asset.runtimeDisplaySize.maxWidthCssPx);
+      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 1260);
+      assert.ok(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx);
+    }
+    if (expectation.assetPath.includes("seatbelt-use")) {
+      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 1060);
+      assert.ok(asset.width >= asset.runtimeDisplaySize.maxWidthCssPx);
     }
     assert.equal(asset.sourceIntegrity.sourceAsIs, true);
     assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
@@ -2532,6 +2658,125 @@ test("Chapter 2 document visuals are explicit source-as-is document examples wit
   assert.match(appSource, /data-russian-overlay-strategy=\{card\.russianOverlayLabels \? "selectable-dom" : undefined\}/);
   assert.match(stylesSource, /\.manual-source-image-card-grid/);
   assert.match(stylesSource, /\.manual-source-image-overlay-label/);
+});
+
+test("Manual guide source image cards declare reusable full-width or compact display modes", () => {
+  const cards = sourceImageCardInventory();
+  const byId = new Map(cards.map((card) => [card.cardId, card]));
+  const expectedFullWidthCardIds = new Set([
+    "headrest-position-source-card",
+    "sri-types-source-card",
+    "app2-hospital-map-source-card",
+    "app2-mirror-orientation-source-card",
+    "app2-seatbelt-use-source-card",
+    "app3-body-posture-source-card",
+    "app3-seatbelt-source-card",
+    "app4-horizontal-page-195-source-card",
+    "app4-horizontal-page-196-source-card",
+    "app4-informational-page-189-source-card",
+    "app4-informational-page-190-source-card",
+    "app4-informational-page-191-source-card",
+    "app4-informational-page-192-source-card",
+    "app4-regulatory-page-185-source-card",
+    "app4-regulatory-page-186-source-card",
+    "app4-temporary-page-193-source-card",
+    "app4-temporary-page-194-source-card",
+    "app4-traffic-lights-page-197-source-card",
+    "app4-traffic-lights-page-198-source-card",
+    "app4-traffic-lights-page-199-source-card",
+    "app4-traffic-lights-page-200-source-card",
+    "app4-warning-page-187-source-card",
+    "app4-warning-page-188-source-card",
+    "cedulas-source-card",
+    "vtv-source-card",
+    "drug-test-device-source-card",
+    "alcohol-limits-source-card",
+    "distraction-panels-source-card",
+    "attention-photo-source-card",
+    "driving-culture-photo-source-card",
+    "mobility-context-transferred-card"
+  ]);
+  const expectedCompactCardIds = new Set([
+    "mirror-orientation-source-card",
+    "app2-headrest-height-source-card",
+    "app2-headrest-distance-source-card",
+    "dni-source-card",
+    "license-source-card",
+    "beginner-sign-source-card",
+    "rva-source-card"
+  ]);
+  const expectedPanoramicMinWidthByCardId = new Map([["app2-mirror-orientation-source-card", 760]]);
+
+  assert.equal(cards.length, 38);
+  assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
+  assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
+  assert.deepEqual(
+    cards.filter((card) => !["full-width", "compact"].includes(card.displayMode)).map((card) => card.cardId),
+    []
+  );
+  assert.deepEqual(cards.filter((card) => card.displayMode === "full-width" && !expectedFullWidthCardIds.has(card.cardId)), []);
+  assert.deepEqual(cards.filter((card) => card.displayMode === "compact" && !expectedCompactCardIds.has(card.cardId)), []);
+
+  for (const cardId of expectedFullWidthCardIds) {
+    const card = byId.get(cardId);
+    assert.ok(card, `${cardId} exists`);
+    assert.equal(card.displayMode, "full-width", `${cardId} is full-width`);
+    assert.ok(card.maxDisplayWidthPx > 0, `${cardId} records a no-upscale max display width`);
+    const section = sectionById(card.sectionId);
+    const asset = localAssetByPath(section, card.assetPath);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true, `${cardId} keeps no-upscale evidence`);
+    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, card.maxDisplayWidthPx, `${cardId} evidence matches display metadata`);
+    assert.ok(asset.width >= card.maxDisplayWidthPx, `${cardId} max display width does not exceed natural/source asset width`);
+    if (card.minDisplayWidthPx !== undefined) {
+      assert.equal(card.minDisplayWidthPx, expectedPanoramicMinWidthByCardId.get(cardId), `${cardId} records the expected panoramic min width`);
+      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} panoramic min width respects max display width`);
+      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} panoramic min width does not exceed natural/source asset width`);
+    }
+  }
+
+  for (const cardId of expectedCompactCardIds) {
+    const card = byId.get(cardId);
+    assert.ok(card, `${cardId} exists`);
+    assert.equal(card.displayMode, "compact", `${cardId} remains compact`);
+    assert.equal(card.maxDisplayWidthPx, undefined, `${cardId} does not opt into full-width no-upscale sizing`);
+    assert.equal(card.minDisplayWidthPx, undefined, `${cardId} does not opt into panoramic minimum sizing`);
+  }
+
+  assert.deepEqual(
+    cards.filter((card) => card.minDisplayWidthPx !== undefined).map((card) => [card.cardId, card.minDisplayWidthPx]),
+    [...expectedPanoramicMinWidthByCardId],
+    "only explicit ultra-wide/panoramic source cards opt into visual-only scroll minimums"
+  );
+
+  const appendixCards = cards
+    .filter((card) => card.cardId.startsWith("app4-"))
+    .sort((a, b) => a.sourcePage - b.sourcePage || a.cardId.localeCompare(b.cardId));
+  assert.deepEqual(appendixCards.map((card) => card.sourcePage), sourcePagesForRange(185, 200));
+  assert.equal(appendixCards.every((card) => card.displayMode === "full-width"), true);
+  assert.equal(appendixCards.every((card) => card.maxDisplayWidthPx === 2976), true);
+  assert.equal(appendixCards.every((card) => card.hasOfficialSignException || card.hasSourceImageException), true);
+
+  assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 780);
+  assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 2976);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 2976);
+  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app2-mirror-orientation-source-card").minDisplayWidthPx, 760);
+
+  assert.match(appSource, /data-display-mode=\{card\.displayMode\}/u);
+  assert.match(appSource, /data-max-display-width-px=\{card\.maxDisplayWidthPx\}/u);
+  assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
+  assert.match(appSource, /--manual-source-image-max-width/u);
+  assert.match(appSource, /--manual-source-image-min-width/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] figure[\s\S]*--manual-source-image-max-width/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] figure[\s\S]*overflow-x:\s*auto/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] img[\s\S]*--manual-source-image-min-width/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] img[\s\S]*max-width:\s*none/u);
+  assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id=/u);
 });
 
 test("Manual guide schema prepares section-local implementation and reusable style tokens", () => {
