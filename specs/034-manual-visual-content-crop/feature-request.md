@@ -185,3 +185,13 @@ No external research was needed for this intake because the user request and rep
 ## Analyst Handoff
 
 This intake is ready for Orchestrator handoff to Architect. The customer intent is clear: the manual must not merely stretch margin-heavy raster images. It must return to the official source document/pages, extract/crop the meaningful visual content at faithful high quality, remove excessive empty margins, and render the corrected visuals large enough to inspect across the whole manual while preserving protected official image pixels, no-upscale quality limits, local-first constraints, and selectable Russian support text outside protected images.
+
+## Final Analyst Validation - 2026-06-05
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-05T18:57:14-03:00
+- Analyst validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
+- Analyst validation basis: original intake request, recorded same-cycle user examples in `spec.md`, Architect-owned final validation in `tasks.md`, current PR `#200` evidence for head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, required-check status, and committed visual/copy evidence files.
+- Outcome validation: the final result satisfies the user's desired outcome in spirit and letter for this PR. The guide no longer treats the reported issue as a CSS stretch problem; evidence records official-source extraction/cropping, no-upscale display caps, large regulatory Anexo L panels plus focused `NO AVANZAR`, corrected hospital map and blind-spot/tire/headrest/public-space visuals, restored App I `Matafuegos`/`Chaleco reflectivo` visuals, protected-image internal text preservation, separate Russian term translations outside images, and learner-facing provenance-copy cleanup.
+- User-example validation: the concrete examples named in feature memory are represented in the implementation evidence as implemented or explicitly dispositioned. The one remaining visible residual, `matafuegos-chaleco-reflectivo` as App I only with App2/App3 equipment visuals not claimed complete, is accepted for this PR because the user-called-out extinguisher/vest visuals are restored from the official App I source and the residual is transparent in `remainingRequiredExamples`, not hidden as completed.
+- Gate validation: Architect validation passed first at `2026-06-05T18:53:45-03:00` for the same effective content head. PR `#200` head, mergeability, and required checks were verified before this note: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` are green on `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`.

@@ -197,15 +197,18 @@
   at `a1529501649c1e79765ddedc1081fb26eea522d4`, pushed to
   `origin/codex/034-manual-visual-content-crop`, and ready PR `#200`
   <https://github.com/cucumberfalse/cabadrive/pull/200> opened.
-- [ ] T078 Review Agent checks source extraction quality, whole-manual
+- [x] T078 Review Agent checks source extraction quality, whole-manual
   inventory completeness, useful-content bbox evidence, protected-image
   preservation, no-upscale proof, mobile layout, feature `032` regression
-  safety, and process-memory compliance.
-- [ ] T079 Implementation Agent records and resolves review findings only
-  through Orchestrator assignment.
-- [ ] T080 Orchestrator invokes final Architect validation before final Analyst
+  safety, and process-memory compliance. Latest AI Review on PR `#200` current
+  head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` passed at
+  `2026-06-05T21:50:48Z`.
+- [x] T079 Implementation Agent records and resolves review findings only
+  through Orchestrator assignment. Same-cycle P1/P2 and CI blockers have
+  Architect dispositions and implementation evidence below.
+- [x] T080 Orchestrator invokes final Architect validation before final Analyst
   validation after implementation, checks, review, and feedback disposition are
-  complete.
+  complete. Final Architect validation is recorded at the end of this file.
 
 ## Same-Cycle Acceptance Clarification Follow-Up
 
@@ -320,11 +323,15 @@
 - [x] T109 Implementation Agent must update content/static tests so protected
   sign interiors and map internals cannot be translated/modified, while
   external sign captions may be translated only as separate DOM/SVG text.
-- [ ] T110 If official original extraction still cannot meet readability for a
+- [x] T110 If official original extraction still cannot meet readability for a
   user-highlighted visual, Implementation Agent must record a narrow blocker
   with all official-source attempts and route it to Orchestrator/human. Broad
   "source-limited" completion is no longer acceptable for Appendix IV signs or
-  the hospital map.
+  the hospital map. Final disposition: no same-cycle readability blocker
+  remains for the user-highlighted Appendix IV signs or hospital map; the
+  current head uses large official Anexo L regulatory panels plus the focused
+  `NO AVANZAR` card, and the hospital map has best-official direct PDF region
+  crop evidence.
 - [x] T111 Implementation Agent reruns focused content tests,
   `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, focused Playwright, `git diff --check`, and full
@@ -370,9 +377,11 @@
   named by the user.
 - [x] T121 Implementation Agent must keep the earlier protected-image rules and
   latest image-quality work intact while doing the copy cleanup.
-- [ ] T122 Final validation remains blocked until both the latest sign/map image
+- [x] T122 Final validation remains blocked until both the latest sign/map image
   quality work and this runtime copy audit/rewrite are implemented and
-  evidenced.
+  evidenced. Final disposition: sign/map image-quality work and the runtime
+  learner-facing copy audit/rewrite are implemented, evidenced, and covered by
+  current passing checks.
 
 ## Consolidated 2026-06-05 Requirements Gate
 
@@ -390,35 +399,38 @@
   `НА ВЕЛОСИПЕДЕ`, and `НА АВТОМОБИЛЕ` appears low-quality/pixelated or
   reconstructed and must be replaced by the official original image with
   separate Russian translations outside protected pixels.
-- [ ] T126 Implementation Agent must perform a whole-document visual
+- [x] T126 Implementation Agent must perform a whole-document visual
   completeness audit comparing official PDF/manual visual regions to runtime
   guide visual blocks/assets, not only enumerating images already present in
-  runtime data.
-- [ ] T127 Implementation Agent must disposition every learner-meaningful PDF
+  runtime data. Final evidence is
+  `content/validation/manual-guide-visual-completeness.evidence.json`.
+- [x] T127 Implementation Agent must disposition every learner-meaningful PDF
   visual as present, added, duplicate-covered, explicitly omitted with
   rationale, or narrow missing-image blocker. Learner-meaningful means any
   image/diagram/photo/infographic/map/sign sheet/chart/icon that conveys a
   rule, risk, classification, comparison, example, label, or visual term.
-- [ ] T128 Implementation Agent must locate, export from the official
+  Final disposition evidence records user examples and residual partial scopes
+  without hiding them.
+- [x] T128 Implementation Agent must locate, export from the official
   PDF/original, and insert or narrowly block the required candidate visuals:
   tire manufacturing/date and tread-life visual (`Fecha de Fabricación`,
   `Vida útil de los Neumáticos`), blind-spot visual
   (`¿A qué se denomina punto ciego?`), `Matafuegos`,
   `Chaleco reflectivo`, hospital map, Appendix IV signs, headrest diagrams,
   and the public-space `50` people mobility visual.
-- [ ] T129 Implementation Agent must export images at best available faithful
+- [x] T129 Implementation Agent must export images at best available faithful
   official quality, remove excessive blank/white margins, avoid bitmap
   stretching, cap runtime display at natural dimensions, and preserve the
   original image-to-document-text scale relationship. For `Matafuegos`, record
   the extinguisher visual-height comparison against the user's approximate
   `15` body-text-line anchor.
-- [ ] T130 Implementation Agent must preserve protected image pixels for maps,
+- [x] T130 Implementation Agent must preserve protected image pixels for maps,
   blind-spot, headrest, tire, extinguisher, vest, public-space, signs, photos,
   diagrams, and similar visuals: no redraw, vector recreation, retouching,
   recoloring, masking, inpainting, cleanup, replacement, or translation inside
   the image unless a prior accepted feature explicitly allowed a specific
   overlay/cleanup.
-- [ ] T131 Implementation Agent must keep visuals with Spanish terms as
+- [x] T131 Implementation Agent must keep visuals with Spanish terms as
   original protected images and add Russian translations/glossaries separately
   below or near the image as selectable DOM text. This includes the headrest
   terms `Altura apoyacabeza`, `Distancia del apoyacabeza`, `Bueno`,
@@ -450,11 +462,11 @@
   `Главный вывод источника`, and similar) and rewrite visible titles, bodies,
   captions, and notes as normal adapted Russian learning copy. Internal
   evidence/spec/provenance fields may retain technical `source` wording.
-- [ ] T137 Implementation Agent must preserve the interrupted Swift direct PDF
+- [x] T137 Implementation Agent must preserve the interrupted Swift direct PDF
   source-region helper work and adapt it where useful, but treat it only as
   supporting machinery; it is insufficient unless it supports the actual
   completeness/quality/scale evidence required here.
-- [ ] T138 Implementation Agent must record evidence listing present, added,
+- [x] T138 Implementation Agent must record evidence listing present, added,
   missing, duplicate-covered, explicitly omitted, and blocker visuals with
   source page/region, extraction method/scale, asset dimensions, hash where
   practical, runtime display size, no-upscale proof, protected-image policy,
@@ -474,7 +486,7 @@
   `b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35`,
   runtime no-upscale display bounds, source-limited PDF raster disposition, and
   protected-image policy.
-- [ ] T139 Implementation Agent must add or update tests/audit scripts so
+- [x] T139 Implementation Agent must add or update tests/audit scripts so
   missing meaningful visuals, tiny image displays, excessive blank margins,
   protected-image edits, missing separate translations, and learner-facing
   source/provenance wording regressions fail.
@@ -490,7 +502,7 @@
   exception, page `108`/PDF page `109` offset, separate Russian DOM term
   translations, absent learner-facing provenance wording, and remaining tire /
   broader Appendix IV pending scope.
-- [ ] T140 Implementation Agent must run and record focused content tests,
+- [x] T140 Implementation Agent must run and record focused content tests,
   `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, focused Playwright screenshots/checks for
   representative required visuals, `git diff --check`, and full
@@ -499,14 +511,18 @@
   Focused Crop Evidence - 2026-06-05` for that slice's command evidence. See
   `Appendix IV Anexo Regulatory Panel Evidence - 2026-06-05` below for the
   latest regulatory-panel command evidence.
-- [ ] T141 PR `#200` final validation remains blocked until T126-T140 and the
+- [x] T141 PR `#200` final validation remains blocked until T126-T140 and the
   explicit user-example checklist below are implemented and evidenced, or every
   remaining gap is a narrow evidence-backed blocker routed to
-  Orchestrator/human.
+  Orchestrator/human. Final Architect validation accepts the explicitly exposed
+  App2/App3 equipment residual as non-blocking residual scope for this PR
+  because the user-called-out `Matafuegos`/`Chaleco reflectivo` visuals are
+  restored from the official App I source and the residual is not hidden or
+  claimed complete.
 - [x] T142 Architect records the explicit `Context Examples From User` section
   in `spec.md`, listing the concrete user screenshot/callout examples, why each
   matters, the expected implementation outcome, and the review/evidence hook.
-- [ ] T143 Implementation Agent must treat `spec.md` section
+- [x] T143 Implementation Agent must treat `spec.md` section
   `Context Examples From User` as a named evidence checklist. For each listed
   example, record one of: implemented with evidence, duplicate-covered with the
   covering block named, explicitly omitted with rationale, or narrow blocker
@@ -519,7 +535,7 @@
   `implemented` with source-as-is crop evidence; tire manufacturing/tread-life
   remains pending and `NO AVANZAR` remained `implemented-representative` until
   the later regulatory-panel slice.
-- [ ] T144 Implementation Agent evidence must specifically cover the user
+- [x] T144 Implementation Agent evidence must specifically cover the user
   examples: Appendix IV regulatory signs and `NO AVANZAR`, hospital map,
   seatbelt/headrest copy problems, blind-spot visual, tire
   manufacturing/tread-life visual, `Matafuegos`, `Chaleco reflectivo`,
@@ -1978,8 +1994,11 @@
   full-width source image cards stay readable and avoid upscaling"
   --project=chromium --project=mobile` (`2` passed, including DOM evidence for
   `data-source-page="108"`).
-- [ ] T169 Final validation remains blocked until T164-T168 are implemented,
+- [x] T169 Final validation remains blocked until T164-T168 are implemented,
   evidenced, and the AI Review P2 is resolved or made outdated by the fix.
+  Final disposition: T164-T168 are complete, the latest AI Review passed on
+  current head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, and the metadata
+  P2 is resolved or superseded.
 
 ## Architect Disposition: Current-Head E2E Visibility CI Blocker - 2026-06-05
 
@@ -2053,6 +2072,44 @@
   --noEmit`; and `pnpm run build`, including its validation stage and service
   worker generation with `1870` cached assets; `node
   scripts/check-feature-memory.mjs --worktree`; and `git diff --check`.
-- [ ] T176 Final validation remains blocked until T172-T175 are implemented,
+- [x] T176 Final validation remains blocked until T172-T175 are implemented,
   evidenced, and the current-head `baseline-checks` failure is resolved or
-  superseded by passing required checks on a newer PR head.
+  superseded by passing required checks on a newer PR head. Final disposition:
+  T172-T175 are complete and `baseline-checks` passed on current head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` at `2026-06-05T21:48:33Z`.
+
+## Final Architect Validation - 2026-06-05
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T18:53:45-03:00
+- Architect validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
+- Cycle PR set: PR `#200`
+  <https://github.com/cucumberfalse/cabadrive/pull/200>, branch
+  `codex/034-manual-visual-content-crop`, current/effective head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, status included in final
+  validation.
+- Current PR/check evidence verified by Architect before this note:
+  PR headRefOid `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, mergeable
+  `MERGEABLE`, not draft; required checks passed on current head:
+  `AI Review` success at `2026-06-05T21:50:48Z`, `baseline-checks` success at
+  `2026-06-05T21:48:33Z`, `docker-validation` success,
+  `guard` success, and `osv-scan` success.
+- Architect validation evidence: local HEAD matches the effective content head,
+  worktree was clean before validation edits, latest visual-completeness audit
+  passed in read-only check mode, `manual-visual-content-inventory` reported
+  `46` source-image cards, `2` source-artwork blocks, and `16` corrected
+  Appendix IV crops, and current feature memory records same-cycle
+  dispositions for AI Review P1/P2 findings and CI blockers.
+- Acceptance disposition: official-source fidelity, high-quality/large image
+  rendering, protected-image internal text preservation, external Russian
+  translations, learner-facing provenance-copy cleanup, read-only evidence
+  check mode, and CI/e2e validation are evidenced for the required current
+  head. No open architecture/product gap remains that should return to
+  implementation before final Analyst validation.
+- Residual scope disposition: visual-completeness evidence intentionally keeps
+  `matafuegos-chaleco-reflectivo` visible as `implemented-app1-only` with
+  App2/App3 equipment visuals not claimed complete. Architect accepts this as
+  transparent non-blocking residual scope for this PR because the concrete
+  user-called-out extinguisher/vest visuals are implemented from the official
+  App I source, the residual is preserved for future Orchestrator disposition,
+  and it is not hidden from `remainingRequiredExamples`.
