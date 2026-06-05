@@ -75,7 +75,7 @@
 | Purpose | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- |
 | Analyst intake and Architect planning | `codex/032-term-translations` | `51e42f657d867fb802bbe3a68591b6008b45a60f` | pending | feature memory planning in progress | yes |
-| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` | ready PR open; process-evidence update pending | yes |
+| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | effective content head `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`; current PR head includes later process-evidence-only commits | ready PR open | yes |
 
 ## Decisions
 
@@ -137,6 +137,7 @@
 - PR evidence on `2026-06-05`:
   - Commit `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` pushed to `origin/codex/032-term-translations`.
   - Ready PR opened against `main`: https://github.com/cucumberfalse/cabadrive/pull/197.
+  - Post-PR branch updates are process-memory evidence only.
 
 ## Final Architect Validation Placeholder
 
