@@ -59,7 +59,7 @@
 - [x] T043 Preserve timestamp fallback for otherwise acceptable trusted Codex summaries that contain no SHA-like marker. Evidence: no-SHA comments still reach the existing `created_at >= headCommittedAt` fallback after trusted login and `Codex Review:` summary checks.
 - [x] T044 Add focused helper tests for old-SHA summary rejection with `headCommittedAt` supplied and a fresh comment timestamp, current-SHA summary acceptance, unknown-login summary rejection, and fresh no-SHA summary acceptance by timestamp fallback. Evidence: helper tests now include current full-head acceptance, current short-head acceptance, stale SHA marker rejection before timestamp fallback, unknown-login rejection, and no-SHA timestamp fallback acceptance.
 - [x] T045 Run `node --test tests/ai-review-helpers.test.mjs`, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and `pnpm run preflight` when feasible after the follow-up implementation. Record evidence in this process memory. Evidence: focused helper tests, workflow guard tests, full preflight, post-process-memory feature-memory gate, and `git diff --check` all passed.
-- [ ] T046 Update process memory after implementation with the follow-up head SHA, verification evidence, changed-file scope, and any Implementation Agent feedback for Architect disposition. Pending final commit/head evidence.
+- [x] T046 Update process memory after implementation with the follow-up head SHA, verification evidence, changed-file scope, and any Implementation Agent feedback for Architect disposition. Evidence: follow-up implementation content head `04da895e68aebb3d1c7377a03cbbf8061dd8aea1`; verification and changed-file scope recorded; no Implementation Agent feedback identified.
 
 ## Process Memory
 
@@ -109,10 +109,12 @@
 - Follow-up full preflight: `pnpm run preflight` passed. Evidence included feature-memory gate pass, repository baseline pass, content validation pass, `node --test tests/*.test.mjs` with 410 tests passed, production build/service-worker generation passed with existing large-chunk warnings, and Playwright e2e with 78 tests passed.
 - Follow-up changed-file scope before final staging: code/test changes are limited to `scripts/ai-review-helpers.mjs` and `tests/ai-review-helpers.test.mjs`; process-memory changes are limited to `specs/033-ai-review-login-gate/tasks.md` plus pre-existing Architect dirty files in `specs/033-ai-review-login-gate/spec.md` and `specs/033-ai-review-login-gate/plan.md`.
 - Follow-up post-process-memory verification at `2026-06-05T04:32:53Z`: `node scripts/check-feature-memory.mjs --worktree` passed and `git diff --check` passed.
+- Follow-up implementation content head recorded at `2026-06-05T04:33:26Z`: `04da895e68aebb3d1c7377a03cbbf8061dd8aea1`.
 
 ### Cycle PR Set
 
 - Slice: purpose `AI Review Codex connector login gate fix`; branch `codex/033-ai-review-login-gate`; PR metadata `#199` at `https://github.com/cucumberfalse/cabadrive/pull/199`, ready/open, base `main`, head branch `codex/033-ai-review-login-gate`; implementation/effective content head at PR opening `1eeb9236df513700c5d8dc73816af6fdcb1080bc`; status `open, mergeable, required checks running at PR-open inspection`; included in final validation `yes`.
+- Follow-up slice update: Review Agent P2 `discussion_r3360346983` fixed on branch `codex/033-ai-review-login-gate`; follow-up implementation content head `04da895e68aebb3d1c7377a03cbbf8061dd8aea1`; final process-memory evidence commit may follow; included in final validation `yes`.
 - Process-memory note: this PR metadata update is process-memory-only after the implementation/effective content head. Orchestrator final-validation guards should treat any later commit containing only role/process evidence under `specs/033-ai-review-login-gate/` according to the repository evidence-only commit rules.
 - Post-merge Orchestrator handoff requirement: after this gate-fix PR lands on default, rerun or observe `AI Review` on PR `#198` and verify it evaluates current PR `#198` head evidence rather than stale review evidence.
 
@@ -136,7 +138,7 @@
 
 ## Implementation Agent Feedback
 
-- None.
+- None for this follow-up.
 
 ## Architect Dispositions
 
