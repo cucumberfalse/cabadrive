@@ -414,6 +414,20 @@ Additional latest-priority candidates:
 
 Content/static tests:
 
+- Require `scripts/manual-guide-visual-completeness-audit.mjs` to default to
+  read-only/check behavior for validation and build paths. The script may
+  support evidence regeneration only through an explicit `--write` or similarly
+  named generate mode.
+- Assert check mode compares freshly computed visual-completeness evidence
+  against
+  `content/validation/manual-guide-visual-completeness.evidence.json` and
+  fails when the committed file is stale, missing, malformed, or different.
+  The failure should be clear enough for an Implementation Agent to rerun the
+  explicit write/generate command intentionally.
+- Assert validation/build package scripts use check mode and do not rewrite the
+  tracked evidence file as a side effect. A focused test may hash or stat the
+  evidence file before/after check mode, or use a stale fixture/temp copy to
+  prove stale committed evidence fails instead of being silently regenerated.
 - Require a PDF-vs-runtime visual completeness inventory with dispositions for
   official learner-meaningful visual regions, not only current runtime image
   assets.
@@ -504,6 +518,10 @@ Playwright tests:
 
 Standard checks:
 
+- Run focused audit check/write split tests proving validation/build check mode
+  does not rewrite
+  `content/validation/manual-guide-visual-completeness.evidence.json` and
+  fails on stale committed evidence.
 - Run focused content/static tests early.
 - Run `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, `pnpm run test`, `pnpm run build`, focused
@@ -535,6 +553,11 @@ Do not update durable docs merely to restate this feature's process notes.
 
 Review Agent should especially check:
 
+- validation/build package scripts run the visual-completeness audit in
+  read-only check mode, and evidence regeneration requires explicit write mode;
+- stale
+  `content/validation/manual-guide-visual-completeness.evidence.json` causes a
+  failing check instead of being rewritten silently;
 - the reported screenshot symptom is fixed by source extraction/cropping, not
   CSS scale;
 - missing learner-meaningful PDF visuals were found by a PDF-vs-runtime audit,

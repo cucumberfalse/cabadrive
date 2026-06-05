@@ -2,7 +2,8 @@ import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const evidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
+const defaultEvidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
+const evidencePath = process.env.MANUAL_GUIDE_VISUAL_COMPLETENESS_EVIDENCE_PATH ?? defaultEvidencePath;
 const sectionRoot = "src/data/manual-sections";
 const spaceAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg";
@@ -130,6 +131,16 @@ const allowedCopyPatterns = [
     reason: "Genuine semantic Russian use: source/cause of stress, not document provenance."
   }
 ];
+
+const args = process.argv.slice(2);
+const writeMode = args.includes("--write");
+const unknownArgs = args.filter((arg) => arg !== "--write");
+
+if (unknownArgs.length > 0) {
+  console.error(`Unknown argument(s): ${unknownArgs.join(", ")}`);
+  console.error("Usage: node scripts/manual-guide-visual-completeness-audit.mjs [--write]");
+  process.exit(1);
+}
 
 const userExampleRecords = [
   {
@@ -793,11 +804,79 @@ const document = {
     }))
 };
 
-writeFileSync(evidencePath, `${JSON.stringify(document, null, 2)}\n`);
+function evidenceString(value) {
+  return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+function firstDifferentLine(actual, expected) {
+  const actualLines = actual.split("\n");
+  const expectedLines = expected.split("\n");
+  const maxLength = Math.max(actualLines.length, expectedLines.length);
+  for (let index = 0; index < maxLength; index += 1) {
+    if (actualLines[index] !== expectedLines[index]) {
+      return {
+        line: index + 1,
+        actual: actualLines[index] ?? "<missing>",
+        expected: expectedLines[index] ?? "<missing>"
+      };
+    }
+  }
+  return null;
+}
+
+function reportEvidenceMismatch(reason, detail) {
+  console.error(`manual guide visual completeness audit failed: ${reason}`);
+  if (detail) console.error(detail);
+  console.error(`Expected committed evidence to match ${evidencePath}.`);
+  console.error("Run `node scripts/manual-guide-visual-completeness-audit.mjs --write` to intentionally regenerate it.");
+}
+
+const expectedEvidence = evidenceString(document);
+
+if (writeMode) {
+  writeFileSync(evidencePath, expectedEvidence);
+  console.log(`manual guide visual completeness audit wrote ${evidencePath}`);
+  if (copyAudit.findings.length > 0) {
+    console.error(`manual guide copy audit failed with ${copyAudit.findings.length} finding(s). Evidence: ${evidencePath}`);
+    process.exit(1);
+  }
+  process.exit(0);
+}
+
+let failed = false;
 
 if (copyAudit.findings.length > 0) {
   console.error(`manual guide copy audit failed with ${copyAudit.findings.length} finding(s). Evidence: ${evidencePath}`);
+  failed = true;
+}
+
+if (!existsSync(evidencePath)) {
+  reportEvidenceMismatch("committed evidence file is missing");
+  failed = true;
+} else {
+  const committedEvidence = readFileSync(evidencePath, "utf8");
+  let malformed = false;
+  try {
+    JSON.parse(committedEvidence);
+  } catch (error) {
+    reportEvidenceMismatch("committed evidence file is malformed JSON", error.message);
+    malformed = true;
+    failed = true;
+  }
+  if (!malformed && committedEvidence !== expectedEvidence) {
+    const difference = firstDifferentLine(committedEvidence, expectedEvidence);
+    reportEvidenceMismatch(
+      "committed evidence is stale or different",
+      difference
+        ? `First difference at line ${difference.line}.\nCommitted: ${difference.actual}\nExpected: ${difference.expected}`
+        : undefined
+    );
+    failed = true;
+  }
+}
+
+if (failed) {
   process.exit(1);
 }
 
-console.log(`manual guide visual completeness audit wrote ${evidencePath}`);
+console.log(`manual guide visual completeness audit checked ${evidencePath}`);

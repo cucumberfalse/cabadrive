@@ -16,6 +16,7 @@
     "validate:content": "node scripts/validate-content.mjs && node scripts/manual-guide-source-fidelity.mjs && node scripts/manual-guide-visual-completeness-audit.mjs",
     "validate:content:quality": "node scripts/validate-content.mjs --quality-gate",
     "validate:overlays": "node scripts/content-image-overlays.mjs",
+    "generate:manual-guide-visual-completeness-evidence": "node scripts/manual-guide-visual-completeness-audit.mjs --write",
     "generate:content-indexes": "node scripts/content-shards.mjs --write-indexes",
     "check:content-indexes": "node scripts/content-shards.mjs --check-indexes",
     "refresh:content-evidence": "node scripts/refresh-learning-support-evidence.mjs",

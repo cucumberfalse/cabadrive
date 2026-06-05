@@ -538,15 +538,96 @@
   source-faithful crops with Russian translations outside the image; app2/app3
   equipment visuals remain pending for separate slices.
 
+## Review Feedback: Visual Completeness Evidence Check Mode
+
+- [x] T146 Architect receives and dispositions AI Review finding on PR `#200`
+  current head `77126c397bdb26c8d0fa356cceadede516267fda`: validation/build
+  paths now invoke `scripts/manual-guide-visual-completeness-audit.mjs`, but
+  the script unconditionally writes tracked evidence file
+  `content/validation/manual-guide-visual-completeness.evidence.json` with
+  `writeFileSync`, so stale committed evidence can be silently regenerated and
+  validation can pass.
+- [x] T147 Architect classifies the finding as same-cycle required review fix
+  for feature `034`, not a future ticket. Final validation remains blocked
+  until the implementation fix and evidence are complete.
+- [x] T148 Implementation Agent must split the visual-completeness audit into
+  read-only/check behavior for validation paths and explicit write/generate
+  behavior for intentional evidence regeneration. The script should default to
+  check mode, or package scripts must otherwise make the check/write mode
+  explicit and unambiguous.
+- [x] T149 Implementation Agent must ensure check mode computes the expected
+  visual-completeness evidence and compares it with committed
+  `content/validation/manual-guide-visual-completeness.evidence.json`, failing
+  with a clear message when the committed file is missing, malformed, stale, or
+  different. Check mode must not rewrite the tracked evidence file.
+- [x] T150 Implementation Agent must update package scripts used by
+  `validate:manual-guide`, `validate:content`, `build`, preflight, or
+  equivalent gates so they call read-only check mode rather than write mode.
+  Evidence regeneration must require an explicit command or flag such as
+  `--write`.
+- [x] T151 Implementation Agent must add or update focused tests proving stale
+  committed visual-completeness evidence fails instead of being regenerated
+  silently, or at minimum proving check mode does not modify
+  `content/validation/manual-guide-visual-completeness.evidence.json` while
+  reporting a diff. Prefer a fixture/temp-copy test that mutates expected
+  evidence without touching repository state.
+- [x] T152 Implementation Agent must run and record review-fix verification:
+  focused audit check/write split tests, `pnpm run validate:manual-guide`,
+  `pnpm run validate:content`, `pnpm run build` if build invokes this audit,
+  `node scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.
+  Full `pnpm run preflight` should be rerun if feasible before PR readiness.
+
+## AI Review P2 Check-Mode Fix Evidence - 2026-06-05
+
+- Implementation Agent continued assigned PR `#200` in
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, from required committed head
+  `77126c397bdb26c8d0fa356cceadede516267fda`. Startup dirty
+  Architect-owned feature-memory edits in `spec.md`, `plan.md`, and
+  `tasks.md` were preserved and adopted.
+- Updated `scripts/manual-guide-visual-completeness-audit.mjs` so default
+  execution is read-only check mode. It builds the expected evidence document
+  in memory, stringifies it deterministically with a trailing newline, parses
+  the committed evidence file, compares exact bytes, and fails clearly for
+  missing, malformed, stale, or different evidence. It also fails check mode
+  when learner-facing copy audit findings exist. Check mode does not write
+  `content/validation/manual-guide-visual-completeness.evidence.json`.
+- Evidence regeneration now requires explicit write mode:
+  `node scripts/manual-guide-visual-completeness-audit.mjs --write`. Added
+  package script
+  `generate:manual-guide-visual-completeness-evidence` for that intentional
+  path. Existing `validate:manual-guide`, `validate:content`, `build`, and
+  preflight paths continue to call the default read-only checker.
+- Added focused temp-fixture test
+  `tests/manual-guide-visual-completeness-audit.test.mjs`. It verifies missing
+  evidence fails without creating a file, `--write` generates evidence,
+  current check mode leaves evidence unchanged, stale valid JSON fails without
+  being rewritten, malformed JSON fails without being rewritten, and failure
+  output tells the operator to rerun the explicit `--write` command.
+- Verification passed:
+  `node --test tests/manual-guide-visual-completeness-audit.test.mjs`;
+  `node scripts/manual-guide-visual-completeness-audit.mjs` printed
+  `checked`; `node scripts/manual-guide-visual-completeness-audit.mjs --write`
+  printed `wrote` and left tracked evidence unchanged because it was current;
+  `node scripts/manual-visual-content-inventory.mjs`;
+  `node --test tests/content-manual-guide-chapters.test.mjs` (`97` pass);
+  `pnpm run validate:manual-guide`; `pnpm run validate:content`;
+  `pnpm exec tsc --noEmit`; `pnpm run build` passed and its validation stage
+  printed `manual guide visual completeness audit checked ...`;
+  `node scripts/check-feature-memory.mjs --worktree`; `git diff --check`.
+
 ## First Controlled Batch Evidence - 2026-06-05
 
 - Implementation Agent status: first controlled batch only; do not treat
   feature `034` as complete.
 - Implemented repeatable audit script
-  `scripts/manual-guide-visual-completeness-audit.mjs`. It writes
-  `content/validation/manual-guide-visual-completeness.evidence.json` and
-  records every `spec.md` `Context Examples From User` example by name with
-  statuses such as `implemented` and `needs-implementation`.
+  `scripts/manual-guide-visual-completeness-audit.mjs`. Current AI Review P2
+  fix evidence above supersedes the original default-write behavior: normal
+  validation now checks committed
+  `content/validation/manual-guide-visual-completeness.evidence.json`, while
+  explicit `--write` intentionally regenerates it. The evidence records every
+  `spec.md` `Context Examples From User` example by name with statuses such as
+  `implemented` and `needs-implementation`.
 - Implemented learner-facing copy guard for runtime `Руководство` Russian
   strings in `src/data/manual-sections/*.ts`. The guard blocks visible
   provenance/meta wording including `Визуал источника`,

@@ -239,7 +239,42 @@ serve this consolidated contract.
     protected-image rules, separate term translations, Appendix IV sign fix,
     hospital map fix, blind-spot visual, public-space visual, and
     learner-facing copy cleanup are implemented and evidenced, or a narrow
-    evidence-backed blocker is routed to Orchestrator/human.
+    evidence-backed blocker is routed to Orchestrator/human. Validation and
+    build commands must also prove committed evidence is current without
+    silently rewriting tracked evidence files.
+
+## Current Review Feedback Disposition
+
+Architect disposition `2026-06-05T17:30:29-03:00`: AI Review finding on PR
+`#200` head `77126c397bdb26c8d0fa356cceadede516267fda` is a same-cycle
+required fix for feature `034`.
+
+The finding reports that `package.json` validation/build paths now invoke
+`scripts/manual-guide-visual-completeness-audit.mjs`, but that script
+unconditionally writes tracked evidence file
+`content/validation/manual-guide-visual-completeness.evidence.json` with
+`writeFileSync`. This can let validation or build regenerate stale committed
+evidence and pass instead of detecting that the repository evidence is stale.
+
+Required outcome:
+
+- normal validation/build/check commands must run the visual-completeness audit
+  in read-only check mode;
+- read-only check mode must compute the expected evidence content and compare
+  it with the committed tracked evidence file, then fail with a clear message
+  when the file is missing, stale, malformed, or different;
+- evidence regeneration must require an explicit opt-in such as `--write` or a
+  similarly unambiguous generate command;
+- package scripts used by `validate:manual-guide`, `validate:content`, `build`,
+  preflight, or equivalent gates must call the read-only check path, not the
+  write/regenerate path;
+- implementation tests must cover stale evidence behavior, preferably by
+  asserting check mode fails on a deliberately stale committed-evidence
+  fixture or by proving check mode does not modify the evidence file while
+  reporting a diff.
+
+Final validation remains blocked until this review finding is fixed,
+evidenced, and verified.
 
 Implementation guidance: preserve the interrupted Swift direct PDF
 source-region helper work and adapt it where useful, but treat it only as
