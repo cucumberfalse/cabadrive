@@ -189,6 +189,11 @@ type ManualSourceImageCardMetrics = {
 };
 
 async function expectRenderedManualImage(image: Locator, label: string) {
+  await image.evaluate((element: HTMLImageElement) => {
+    const figure = element.closest("figure");
+    (figure ?? element).scrollIntoView({ block: "center", inline: "nearest" });
+    element.scrollIntoView({ block: "center", inline: "nearest" });
+  });
   await expect(image, `${label} image is visible`).toBeVisible();
   await expect
     .poll(
@@ -4572,6 +4577,7 @@ test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone wid
 });
 
 test("Manual guide full-width source image cards stay readable and avoid upscaling", async ({ page }, testInfo) => {
+  test.setTimeout(90_000);
   const scenarios: Array<{
     sectionId: string;
     hash: string;

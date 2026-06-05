@@ -1004,3 +1004,37 @@ forbidden provenance words are caught without regressing the
 `источник стресса` allowlist, and focused Playwright/CI evidence must prove the
 image sizing check no longer hangs on `image.decode()` while still failing
 clearly for unreadable, broken, or upscaled images.
+
+## Architect CI Disposition - Current Head `7950b516933514948dcd2dad8b8c33af14ccbc3f`
+
+Disposition recorded at `2026-06-05T18:28:22-03:00` for PR `#200` current-head
+CI feedback. Required `baseline-checks` failed while `AI Review`,
+`docker-validation`, `guard`, and `osv-scan` passed. The failure occurs in
+`pnpm run test:e2e` after build/content validation passed and `80` tests
+passed.
+
+The failed scenario is
+`tests/e2e/app.spec.ts:4574`:
+`Manual guide full-width source image cards stay readable and avoid upscaling`.
+Chromium failed at `expectRenderedManualImage` around line `192` because
+`app1-tire-manufacturing-tread-life-source-card` resolved to the expected
+image element but remained hidden for the visibility assertion. Mobile exceeded
+the default `30000ms` timeout around the same helper polling path while the
+test was checking many manual sections, viewports, and screenshots.
+
+Architect accepts this as a same-cycle CI blocker for feature `034`. The
+likely implementation issue is test readiness/scrolling, not a relaxation of
+the content contract: the helper appears to scroll only the card, while the
+lazy/offscreen/large image or its figure can remain outside the rendered
+viewport in CI. Implementation Agent must stabilize the e2e helper/scenario by
+scrolling the actual image or containing figure into view before visibility,
+loaded, rendered-rect, natural-size, useful-content-width, no-upscale, and
+overflow assertions run.
+
+The fix must preserve the product assertions. Do not weaken requirements for
+natural dimensions, visible rendered rect, no browser upscaling, useful-content
+width, readable source-image display, or mobile no-overflow. If a timeout
+increase is necessary, it must be targeted to this large multi-section/manual
+source-card scenario or the specific helper expectation, and evidence must
+record why the timeout is covering legitimate CI workload rather than masking
+a product failure.

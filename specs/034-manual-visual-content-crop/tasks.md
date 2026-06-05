@@ -1980,3 +1980,79 @@
   `data-source-page="108"`).
 - [ ] T169 Final validation remains blocked until T164-T168 are implemented,
   evidenced, and the AI Review P2 is resolved or made outdated by the fix.
+
+## Architect Disposition: Current-Head E2E Visibility CI Blocker - 2026-06-05
+
+- [x] T170 Architect receives and dispositions PR `#200` current head
+  `7950b516933514948dcd2dad8b8c33af14ccbc3f`: required
+  `baseline-checks` failed while `AI Review`, `docker-validation`, `guard`,
+  and `osv-scan` passed. The failure is in `pnpm run test:e2e` after
+  build/content validation passed and `80` tests passed.
+- [x] T171 Architect classifies this as a same-cycle CI blocker for feature
+  `034`, not a future ticket. The failing scenario is
+  `tests/e2e/app.spec.ts:4574`,
+  `Manual guide full-width source image cards stay readable and avoid
+  upscaling`. Chromium resolved
+  `app1-tire-manufacturing-tread-life-source-card` to the expected image but
+  received hidden for `10s` at `expectRenderedManualImage`; mobile exceeded
+  the default `30000ms` timeout around the same helper poll while processing
+  the large source-card scenario.
+- [x] T172 Implementation Agent must stabilize `expectRenderedManualImage` or
+  the surrounding scenario by scrolling the actual image or containing figure
+  into view before visibility, loaded/readiness, rendered-rect,
+  natural-dimension, useful-content-width, no-upscale, and overflow checks.
+  Scrolling only the card is insufficient for lazy/offscreen/large manual
+  images in CI.
+- Evidence: updated `tests/e2e/app.spec.ts` helper
+  `expectRenderedManualImage` so it scrolls the nearest containing `figure`
+  and then the actual `img` into view before the visibility assertion and the
+  loaded/rendered polling check. The existing helper still requires the image
+  to be visible, complete, have positive natural dimensions, and have a
+  nonzero rendered rect before callers collect useful-content and sizing
+  metrics.
+- [x] T173 Implementation Agent must keep the content requirements intact:
+  positive natural dimensions, visible nonzero rendered rect, no browser
+  upscaling beyond natural/source dimensions, useful-content width/readability,
+  and no mobile document-level overflow. Do not skip the tire card or weaken
+  the test because the image is large or lazy-loaded.
+- Evidence: no card IDs, natural-size checks, useful-content calculations,
+  no-upscale assertions, readable scroll-card assertions, or document-overflow
+  assertions were removed or relaxed. The tire card remains in the scenario
+  with its existing `760x995` natural-size expectation, no-upscale check,
+  rendered-width lower bound, term-translation checks, and protected
+  source-as-is metadata checks.
+- [x] T174 If timeout changes are needed, Implementation Agent must make them
+  targeted to this large multi-section/source-card scenario or to the specific
+  helper readiness expectation. Evidence must explain why the timeout covers
+  legitimate CI workload across many sections/viewports/screenshots and does
+  not mask a hidden, broken, unreadable, overflowing, or upscaled product
+  image.
+- Evidence: added `test.setTimeout(90_000)` only inside
+  `Manual guide full-width source image cards stay readable and avoid
+  upscaling`. This scenario loops across desktop and mobile viewports,
+  multiple manual sections, many source-image cards, mobile readable-scroll
+  checks, canvas useful-content calculations, and section screenshots. The
+  timeout is scoped to that workload only and does not mask product failures
+  because every image still must be visible, loaded, rendered with nonzero
+  bounds, within natural-size/no-upscale limits, useful-content readable where
+  required, and free of document-level horizontal overflow.
+- [x] T175 Implementation Agent must record focused verification for this CI
+  blocker: the Playwright grep
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide
+  full-width source image cards stay readable and avoid upscaling"` in
+  Chromium and mobile where feasible, plus any build/content validation gates
+  rerun from the failed `baseline-checks` path, `node
+  scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.
+  If full `baseline-checks` cannot be reproduced locally, record the closest
+  local command evidence and reason.
+- Evidence passed:
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide
+  full-width source image cards stay readable and avoid upscaling"
+  --project=chromium --project=mobile` (`2` passed: chromium in `5.5s`,
+  mobile in `14.5s`); `pnpm run validate:content`; `pnpm exec tsc
+  --noEmit`; and `pnpm run build`, including its validation stage and service
+  worker generation with `1870` cached assets; `node
+  scripts/check-feature-memory.mjs --worktree`; and `git diff --check`.
+- [ ] T176 Final validation remains blocked until T172-T175 are implemented,
+  evidenced, and the current-head `baseline-checks` failure is resolved or
+  superseded by passing required checks on a newer PR head.

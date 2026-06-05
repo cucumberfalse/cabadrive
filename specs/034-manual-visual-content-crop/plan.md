@@ -668,3 +668,33 @@ blockers. Implementation Agent must:
   `node scripts/manual-guide-visual-completeness-audit.mjs`, the focused
   Playwright grep in the same project(s) that failed CI where feasible,
   `node scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.
+
+## Current-Head CI Follow-Up Plan - `7950b516933514948dcd2dad8b8c33af14ccbc3f`
+
+Architect accepts the new `baseline-checks` failure as a same-cycle blocker.
+The previous bounded-image-readiness work did not fully stabilize the large
+manual source-card e2e scenario in CI.
+
+Implementation Agent must:
+
+- Stabilize
+  `Manual guide full-width source image cards stay readable and avoid
+  upscaling` without weakening the manual visual content requirements.
+- Update `expectRenderedManualImage` or the scenario flow so it scrolls the
+  actual `img` or containing `figure` into view before visibility, load,
+  rendered-rect, natural-dimension, useful-content, no-upscale, and overflow
+  checks. Scrolling only the outer card is not sufficient for
+  lazy/offscreen/large source images in CI.
+- Keep the assertions that prove natural size is positive, the rendered image
+  is visible with a nonzero rect, browser display width does not exceed natural
+  width, useful source content remains wide/readable, and mobile layout has no
+  document-level overflow.
+- If the large scenario needs more time because it loops across many manual
+  sections, viewports, and screenshots, use a targeted timeout for this
+  scenario or helper expectation only. Record why that timeout reflects
+  legitimate CI workload and does not hide broken, hidden, unreadable, or
+  upscaled images.
+- Record verification with the focused Playwright grep in Chromium and mobile
+  where feasible, plus the local gates relevant to the failed `baseline-checks`
+  path: build/content validation evidence if rerun, `node
+  scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.
