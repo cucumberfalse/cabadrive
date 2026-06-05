@@ -2075,7 +2075,8 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
 
   assert.match(app4SignsRegulatoryModuleSource, /Запрещающие[\s\S]*Ограничивающие[\s\S]*приоритет/u);
   assert.match(app4SignsRegulatoryModuleSource, /app4-regulatory-no-avanzar-source-card/);
-  assert.match(app4SignsRegulatoryModuleSource, /NO AVANZAR[\s\S]*Движение прямо запрещено/u);
+  assert.match(app4SignsRegulatoryModuleSource, /NO AVANZAR[\s\S]*Проезд запрещен/u);
+  assert.doesNotMatch(app4SignsRegulatoryModuleSource, /Движение прямо запрещено/u);
   assert.match(app4SignsWarningModuleSource, /Предупреждение не всегда запрещает действие/u);
   assert.match(app4SignsInformationalModuleSource, /Желтая звезда[\s\S]*estrellasamarillas@buenosaires\.gob\.ar/u);
   assert.match(app4SignsTemporaryModuleSource, /Временные дорожные знаки имеют приоритет/u);
@@ -2434,7 +2435,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(noAvanzarRecord.runtimeDisplay.noUpscale, true);
   assert.match(noAvanzarRecord.externalCaptionBoundary, /not part of the sign body/u);
   assert.deepEqual(noAvanzarRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
-    "NO AVANZAR:Движение прямо запрещено"
+    "NO AVANZAR:Проезд запрещен"
   ]);
   assert.match(noAvanzarRecord.remainingScopeNote, /Broad regulatory readability/u);
   const anexoPanelsRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-anexo-panels");
@@ -2457,6 +2458,12 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"), false);
   assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
   assert.equal(remainingExampleIds.includes("tire-manufacturing-tread-life"), false);
+  assert.equal(remainingExampleIds.includes("matafuegos-chaleco-reflectivo"), true);
+  const remainingEquipmentExample = visualCompletenessEvidence.remainingRequiredExamples.find(
+    (entry) => entry.id === "matafuegos-chaleco-reflectivo"
+  );
+  assert.equal(remainingEquipmentExample.status, "implemented-app1-only");
+  assert.match(remainingEquipmentExample.notes, /App2\/app3 equipment visuals remain outside this slice/u);
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {

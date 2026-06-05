@@ -4668,9 +4668,10 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await page.setViewportSize({ width: 1280, height: 950 });
   await page.goto("/#manual-section-app4-signs-regulatory");
   const noAvanzarCard = page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"]');
-  await expect(noAvanzarCard).toContainText("Движение прямо запрещено");
+  await expect(noAvanzarCard).toContainText("Проезд запрещен");
+  await expect(noAvanzarCard).not.toContainText("Движение прямо запрещено");
   await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
-  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
+  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Проезд запрещен");
   await expect(noAvanzarCard).not.toContainText("источник");
   await expect(noAvanzarCard).not.toContainText("фрагмент");
   const anexoPanel01 = page.locator('[data-card-id="app4-regulatory-anexo-panel-01-source-card"]');
@@ -4681,7 +4682,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expect(anexoPanel01.locator("img")).toHaveAttribute("data-visible-spanish-scope", "official-sign-image-only");
   await expect(anexoPanel01.locator("img")).toHaveAttribute("data-source-as-is", "true");
   await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
-  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Проезд запрещен");
   await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("PROHIBICIÓN DE CIRCULAR CAMIÓN");
   await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Движение грузовиков запрещено");
   const anexoPanel02 = page.locator('[data-card-id="app4-regulatory-anexo-panel-02-source-card"]');

@@ -907,3 +907,32 @@ This feature is ready for Implementation Agent after Orchestrator assignment.
 Implementation must preserve role boundaries and sibling work, then keep
 `tasks.md` current with inventory results, extraction decisions, verification
 evidence, known issues, and any feedback requiring Architect disposition.
+
+## Architect Review Disposition - Current Head `ec2125ffa28cc5b079f7c0ed777b1ef9aba5e097`
+
+Disposition recorded at `2026-06-05T17:49:29-03:00` for PR `#200`
+current-head AI Review feedback. Both P2 findings are accepted as same-cycle
+required fixes and block final validation until implemented and evidenced:
+
+1. `scripts/manual-guide-visual-completeness-audit.mjs` must not hide
+   app-specific residual scope from `remainingRequiredExamples` or equivalent
+   disposition evidence. A status such as `implemented-app1-only` cannot be
+   filtered out by a broad `startsWith("implemented")` rule while its notes say
+   App2/App3 equipment visuals remain pending. Implementation must either keep
+   such records visible in remaining/disposition evidence, rename/classify the
+   status so partial implementation remains distinguishable from complete
+   implementation, or explicitly update the status and notes only after
+   validating against the original user request that the App2/App3 scope is
+   truly out of this feature and no longer a user-required example.
+2. The learner-facing Russian translation for `NO AVANZAR` must be corrected
+   everywhere visible and evidence-tested. `Движение прямо запрещено` is not
+   acceptable because it implies only straight-ahead movement is forbidden.
+   Use `Проезд запрещен` or another accurate Russian phrase that conveys not
+   proceeding/entering past the sign. The protected image pixels, including the
+   Spanish catalog caption inside the source crop/panels, must remain
+   unchanged.
+
+Implementation evidence must cover both fixes with focused tests or audit
+assertions, regenerated/check-mode evidence as needed, and `tasks.md` notes
+showing the status/disposition semantics and corrected translation were
+verified.

@@ -451,7 +451,7 @@
       "terms": [
         {
           "termEs": "NO AVANZAR",
-          "translationRu": "Движение прямо запрещено"
+          "translationRu": "Проезд запрещен"
         }
       ],
       "remainingScopeNote": "The focused NO AVANZAR card remains as a large example. Broad regulatory readability is now covered by Anexo L panels 01-04; CABA page 185/186 sheets remain as overview/local variants."
@@ -725,5 +725,12 @@
       "relatedScopeDisposition": "This record covers the user-reported App I page-108 visual only. App II/App III tire sections are not silently populated with this App I visual."
     }
   ],
-  "remainingRequiredExamples": []
+  "remainingRequiredExamples": [
+    {
+      "id": "matafuegos-chaleco-reflectivo",
+      "label": "Matafuegos and Chaleco reflectivo",
+      "status": "implemented-app1-only",
+      "notes": "Implemented for app1 only in this narrow batch: official page 120 safety equipment title+icon crops are shown as source pixels with external Russian term translations. App2/app3 equipment visuals remain outside this slice and are not claimed complete here."
+    }
+  ]
 }

@@ -608,3 +608,21 @@ No additional user clarification is required. The main open implementation
 decision is tooling shape for repeatable useful-content bbox measurement. Any
 approach is acceptable if it is deterministic enough for review, records the
 threshold/method, and backs acceptance with committed evidence.
+
+## Current-Head AI Review Follow-Up Plan - `ec2125ffa28cc5b079f7c0ed777b1ef9aba5e097`
+
+Architect accepts both current-head P2 findings as same-cycle required fixes.
+Implementation Agent must:
+
+- Update the visual-completeness audit/evidence semantics so partial statuses
+  such as `implemented-app1-only` remain visible in remaining or disposition
+  evidence unless the residual App2/App3 scope is explicitly validated against
+  the original user request as out of scope. Do not let a generic
+  `implemented*` prefix filter make whole-document evidence pass prematurely.
+- Correct the learner-facing Russian translation for `NO AVANZAR` everywhere
+  visible and evidence-tested, likely to `Проезд запрещен` or an equivalent
+  phrase. Keep all protected sign/panel image pixels unchanged.
+- Add or update focused tests/audit assertions and evidence so review can see
+  both fixes: partial app-specific residual scope is still surfaced, and the
+  corrected `NO AVANZAR` translation appears in runtime/evidence without the
+  misleading straight-ahead-only wording.

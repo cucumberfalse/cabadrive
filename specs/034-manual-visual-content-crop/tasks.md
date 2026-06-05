@@ -1488,10 +1488,10 @@
 - Runtime card:
   `app4-regulatory-no-avanzar-source-card` in
   `src/data/manual-sections/app4-signs-regulatory.ts`, title
-  `Движение прямо запрещено`, `displayMode: "full-width"`,
-  `maxDisplayWidthPx: 200`, `minDisplayWidthPx: 200`, and no browser upscaling.
-  Separate selectable DOM term translation below the protected image is
-  `NO AVANZAR` -> `Движение прямо запрещено`.
+  `Проезд запрещен`, `displayMode: "full-width"`, `maxDisplayWidthPx: 200`,
+  `minDisplayWidthPx: 200`, and no browser upscaling. Separate selectable DOM
+  term translation below the protected image is `NO AVANZAR` ->
+  `Проезд запрещен`.
 - Protected-image boundary: the sign body, red ring/slash, black arrow, and the
   Spanish `NO AVANZAR` catalog-caption pixels inside the crop remain unchanged.
   No AI generation, redraw, retouch, cleanup, mask, recolor, translation, or
@@ -1713,3 +1713,87 @@
   `--project=mobile` passed (`1` test, `1` pass);
   `node scripts/check-feature-memory.mjs --worktree` passed; `git diff --check`
   passed.
+
+## Architect Disposition: Current-Head AI Review Required Fixes - 2026-06-05
+
+- Architect disposition was recorded for PR `#200` current head
+  `ec2125ffa28cc5b079f7c0ed777b1ef9aba5e097` at
+  `2026-06-05T17:49:29-03:00`. Both current-head P2 AI Review findings are
+  accepted as same-cycle required fixes and block final validation.
+- Required implementation task: fix
+  `scripts/manual-guide-visual-completeness-audit.mjs` so
+  `remainingRequiredExamples` or equivalent disposition evidence does not drop
+  app-specific partial records merely because the status starts with
+  `implemented`. In particular, `matafuegos-chaleco-reflectivo` currently uses
+  `implemented-app1-only` while its notes say App2/App3 equipment visuals
+  remain pending; that residual scope must stay visible or be renamed/classified
+  so it is not mistaken for complete whole-document coverage. Implementation
+  may update status/notes only if it explicitly validates against the original
+  user request that App2/App3 equipment visuals are truly out of this feature
+  and no longer a user-required example.
+- Required implementation task: correct the learner-facing Russian translation
+  for `NO AVANZAR` everywhere visible and evidence-tested, including
+  `src/data/manual-sections/app4-signs-regulatory.ts` and generated evidence or
+  tests that assert the term translation. `Движение прямо запрещено` is
+  misleading because it implies only straight-ahead movement is forbidden.
+  Prefer `Проезд запрещен` or another accurate phrase that means not to
+  proceed/enter past the sign. Keep protected image pixels unchanged, including
+  the Spanish `NO AVANZAR` catalog-caption pixels inside the source crop and
+  regulatory panels.
+- Required evidence/tests for the next Implementation Agent: focused audit or
+  content tests must prove partial app-specific statuses remain surfaced in
+  remaining/disposition evidence, and content/runtime/evidence assertions must
+  prove the corrected `NO AVANZAR` Russian translation is used while the old
+  straight-ahead-only wording is absent from learner-facing/evidence-tested
+  locations. Record commands and outcomes here after implementation.
+
+## AI Review P2 Translation And Partial-Status Fix Evidence - 2026-06-05
+
+- Implementation Agent continued assigned PR `#200` in
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, from committed head
+  `ec2125ffa28cc5b079f7c0ed777b1ef9aba5e097`. Startup status preserved dirty
+  Architect-owned feature-memory edits in `spec.md`, `plan.md`, and
+  `tasks.md`; parallel worktree/branch/PR/process memory preservation was
+  honored.
+- Corrected the learner-facing `NO AVANZAR` Russian translation in
+  `src/data/manual-sections/app4-signs-regulatory.ts` from the
+  straight-ahead-only wording to `Проезд запрещен` for both the focused
+  `app4-regulatory-no-avanzar-source-card` title/term translation and the
+  Anexo L panel `01` separate DOM term translation. Protected sign/panel image
+  pixels, Spanish catalog-caption pixels, asset files, crop regions, hashes,
+  and no-upscale display metadata were not modified.
+- Updated evidence-tested translation records in
+  `content/validation/manual-guide-no-avanzar-source-crop.evidence.json` and
+  regenerated
+  `content/validation/manual-guide-visual-completeness.evidence.json` via
+  explicit `node scripts/manual-guide-visual-completeness-audit.mjs --write`.
+  Content and Playwright tests now assert `NO AVANZAR` -> `Проезд запрещен`
+  and assert the prior misleading Russian wording is absent from the runtime
+  module/card.
+- Updated `scripts/manual-guide-visual-completeness-audit.mjs` so
+  `remainingRequiredExamples` uses explicit complete-status semantics instead
+  of a broad `status.startsWith("implemented")` filter. Partial statuses such
+  as `implemented-app1-only` and `implemented-app2-only` remain visible unless
+  future Architect/Implementation work records them as fully complete or
+  explicitly out of scope.
+- Regenerated visual-completeness evidence now keeps
+  `matafuegos-chaleco-reflectivo` visible in `remainingRequiredExamples` with
+  status `implemented-app1-only` and notes that App2/App3 equipment visuals
+  remain outside this slice. The same evidence continues to treat
+  `implemented-regulatory-panels-with-caba-overview`, `blind-spot-visual`, and
+  `tire-manufacturing-tread-life` as complete for this review-fix scope, so
+  those examples do not reappear in the remaining list.
+- Verification passed after this note:
+  `node scripts/manual-guide-visual-completeness-audit.mjs --write` regenerated
+  visual-completeness evidence; `node scripts/manual-visual-content-inventory.mjs`
+  passed with `46` source-image cards, `2` source-artwork blocks, and `16`
+  corrected Appendix IV crops; `node scripts/manual-guide-visual-completeness-audit.mjs`
+  passed in read-only check mode; `node --test tests/content-manual-guide-chapters.test.mjs`
+  passed with `97` tests; `pnpm run validate:manual-guide` passed;
+  `pnpm run validate:content` passed; `pnpm exec tsc --noEmit` passed;
+  `pnpm run build` passed and generated the service worker with `1870` cached
+  assets, with only the existing Vite large-chunk warning; focused Playwright
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed (`1` test); `node scripts/check-feature-memory.mjs --worktree`
+  passed; `git diff --check` passed.

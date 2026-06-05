@@ -607,7 +607,7 @@ function noAvanzarRecord() {
       noUpscale: true,
       translationDomSelector: ".manual-source-image-term-translations"
     },
-    terms: [{ termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" }],
+    terms: [{ termEs: "NO AVANZAR", translationRu: "Проезд запрещен" }],
     remainingScopeNote:
       "The focused NO AVANZAR card remains as a large example. Broad regulatory readability is now covered by Anexo L panels 01-04; CABA page 185/186 sheets remain as overview/local variants."
   };
@@ -774,6 +774,16 @@ function tireManufacturingTreadLifeRecord() {
   };
 }
 
+function isCompleteUserExample(entry) {
+  if (entry.status === "implemented-app1-only" || entry.status === "implemented-app2-only") return false;
+  if (String(entry.status).endsWith("representative")) return false;
+  return (
+    entry.status === "implemented" ||
+    entry.status === "implemented-app1-canonical" ||
+    entry.status === "implemented-regulatory-panels-with-caba-overview"
+  );
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -794,7 +804,7 @@ const document = {
     tireManufacturingTreadLifeRecord()
   ],
   remainingRequiredExamples: userExampleRecords
-    .filter((entry) => !String(entry.status).startsWith("implemented") || String(entry.status).endsWith("representative"))
+    .filter((entry) => !isCompleteUserExample(entry))
     .map((entry) => ({
       id: entry.id,
       label: entry.label,

@@ -68,7 +68,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       cards: [
         {
           id: "app4-regulatory-no-avanzar-source-card",
-          titleRu: "Движение прямо запрещено",
+          titleRu: "Проезд запрещен",
           displayMode: "full-width",
           maxDisplayWidthPx: 200,
           minDisplayWidthPx: 200,
@@ -80,7 +80,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           visibleSpanish: true,
           officialSignException,
           termTranslations: [
-            { termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" }
+            { termEs: "NO AVANZAR", translationRu: "Проезд запрещен" }
           ],
           bodyRu:
             "Здесь знак показан отдельно и крупнее, чем на обзорном листе. Русская расшифровка дана ниже, а изображение знака и испанская подпись внутри картинки не менялись."
@@ -113,7 +113,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           visibleSpanish: true,
           officialSignException,
           termTranslations: [
-            { termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" },
+            { termEs: "NO AVANZAR", translationRu: "Проезд запрещен" },
             { termEs: "CONTRAMANO", translationRu: "Встречное направление" },
             { termEs: "PROHIBICIÓN DE CIRCULAR AUTOS", translationRu: "Движение автомобилей запрещено" },
             { termEs: "PROHIBICIÓN DE CIRCULAR MOTOS", translationRu: "Движение мотоциклов запрещено" },
