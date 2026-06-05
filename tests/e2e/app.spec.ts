@@ -4568,9 +4568,21 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app4-signs-regulatory",
       hash: "/#manual-section-app4-signs-regulatory",
-      cards: ["app4-regulatory-no-avanzar-source-card", "app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+      cards: [
+        "app4-regulatory-no-avanzar-source-card",
+        "app4-regulatory-anexo-panel-01-source-card",
+        "app4-regulatory-anexo-panel-02-source-card",
+        "app4-regulatory-anexo-panel-03-source-card",
+        "app4-regulatory-anexo-panel-04-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card"
+      ],
       usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
       readableScrollCards: [
+        { id: "app4-regulatory-anexo-panel-01-source-card", minDisplayWidthPx: 615 },
+        { id: "app4-regulatory-anexo-panel-02-source-card", minDisplayWidthPx: 618 },
+        { id: "app4-regulatory-anexo-panel-03-source-card", minDisplayWidthPx: 616 },
+        { id: "app4-regulatory-anexo-panel-04-source-card", minDisplayWidthPx: 616 },
         { id: "app4-regulatory-page-185-source-card", minDisplayWidthPx: 664 },
         { id: "app4-regulatory-page-186-source-card", minDisplayWidthPx: 704 }
       ]
@@ -4661,6 +4673,61 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
   await expect(noAvanzarCard).not.toContainText("источник");
   await expect(noAvanzarCard).not.toContainText("фрагмент");
+  const anexoPanel01 = page.locator('[data-card-id="app4-regulatory-anexo-panel-01-source-card"]');
+  await expect(anexoPanel01).toBeVisible();
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("src", /anexo-regulatory-panel-01-source-as-is\.jpg/);
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-official-sign-exception", "official-traffic-sign-source-as-is");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-visible-spanish-scope", "official-sign-image-only");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("PROHIBICIÓN DE CIRCULAR CAMIÓN");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Движение грузовиков запрещено");
+  const anexoPanel02 = page.locator('[data-card-id="app4-regulatory-anexo-panel-02-source-card"]');
+  await expect(anexoPanel02.locator(".manual-source-image-term-translations")).toContainText("NO ESTACIONAR NI DETENERSE");
+  await expect(anexoPanel02.locator(".manual-source-image-term-translations")).toContainText("Остановка и стоянка запрещены");
+  const anexoPanel03 = page.locator('[data-card-id="app4-regulatory-anexo-panel-03-source-card"]');
+  await expect(anexoPanel03.locator(".manual-source-image-term-translations")).toContainText("CIRCULACIÓN EXCLUSIVA (PEATONES)");
+  await expect(anexoPanel03.locator(".manual-source-image-term-translations")).toContainText("Движение только пешеходов");
+  const anexoPanel04 = page.locator('[data-card-id="app4-regulatory-anexo-panel-04-source-card"]');
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("FIN DE LA PRESCRIPCIÓN");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("Конец предписания");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("CEDA EL PASO");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("Уступите дорогу");
+  for (const panelCard of [anexoPanel01, anexoPanel02, anexoPanel03, anexoPanel04]) {
+    await expect(panelCard).not.toContainText("источник");
+    await expect(panelCard).not.toContainText("фрагмент");
+  }
+  const anexoPanelSizing = await page.evaluate(async () => {
+    const expected = new Map([
+      ["app4-regulatory-anexo-panel-01-source-card", { width: 615, height: 743 }],
+      ["app4-regulatory-anexo-panel-02-source-card", { width: 618, height: 733 }],
+      ["app4-regulatory-anexo-panel-03-source-card", { width: 616, height: 734 }],
+      ["app4-regulatory-anexo-panel-04-source-card", { width: 616, height: 694 }]
+    ]);
+    const results: Array<{ id: string; naturalWidth: number; naturalHeight: number; renderedWidth: number; expectedWidth: number; expectedHeight: number }> = [];
+    for (const [id, size] of expected) {
+      const image = document.querySelector(`[data-card-id="${id}"] img`) as HTMLImageElement | null;
+      if (!image) throw new Error(`${id} image is missing`);
+      await image.decode?.().catch(() => undefined);
+      const rect = image.getBoundingClientRect();
+      results.push({
+        id,
+        naturalWidth: image.naturalWidth,
+        naturalHeight: image.naturalHeight,
+        renderedWidth: rect.width,
+        expectedWidth: size.width,
+        expectedHeight: size.height
+      });
+    }
+    return results;
+  });
+  for (const panel of anexoPanelSizing) {
+    expect(panel.naturalWidth, `${panel.id} natural width`).toBe(panel.expectedWidth);
+    expect(panel.naturalHeight, `${panel.id} natural height`).toBe(panel.expectedHeight);
+    expect(panel.renderedWidth, `${panel.id} does not upscale`).toBeLessThanOrEqual(panel.expectedWidth + 1);
+  }
   await page.goto("/#manual-section-app1-safety-elements");
   const blindSpotCard = page.locator('[data-card-id="app1-blind-spot-source-card"]');
   await expect(blindSpotCard).toBeVisible();

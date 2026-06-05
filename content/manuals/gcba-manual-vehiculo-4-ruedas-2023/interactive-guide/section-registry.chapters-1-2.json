@@ -12291,6 +12291,118 @@
               "sourceQualityDisposition": "retained-official-anexo-l-original-image-selected-for-focused-no-avanzar-card-after-caba-page-185-sheet-probes-remained-source-limited",
               "externalCaptionBoundary": "R.1 NO AVANZAR is printed below the sign as the external catalog caption, not inside the sign body or a supplementary plate."
             }
+          },
+          {
+            "sourcePage": 185,
+            "sourceRegion": {
+              "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+              "x": 0,
+              "y": 0,
+              "width": 615,
+              "height": 743
+            },
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+            "cropDimensions": {
+              "width": 615,
+              "height": 743
+            },
+            "cropSha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+            "cleanupScope": "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime asset is a byte-identical copy of the retained official Decreto 779/1995 Anexo L JPG panel. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+              "outputDimensions": {
+                "width": 615,
+                "height": 743
+              },
+              "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions."
+            }
+          },
+          {
+            "sourcePage": 186,
+            "sourceRegion": {
+              "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg pixels",
+              "x": 0,
+              "y": 0,
+              "width": 618,
+              "height": 733
+            },
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+            "cropDimensions": {
+              "width": 618,
+              "height": 733
+            },
+            "cropSha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+            "cleanupScope": "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime asset is a byte-identical copy of the retained official Decreto 779/1995 Anexo L JPG panel. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+              "outputDimensions": {
+                "width": 618,
+                "height": 733
+              },
+              "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions."
+            }
+          },
+          {
+            "sourcePage": 186,
+            "sourceRegion": {
+              "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg pixels",
+              "x": 0,
+              "y": 0,
+              "width": 616,
+              "height": 734
+            },
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+            "cropDimensions": {
+              "width": 616,
+              "height": 734
+            },
+            "cropSha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+            "cleanupScope": "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime asset is a byte-identical copy of the retained official Decreto 779/1995 Anexo L JPG panel. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+              "outputDimensions": {
+                "width": 616,
+                "height": 734
+              },
+              "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.17-R.22 exclusive circulation and mandatory-direction signs."
+            }
+          },
+          {
+            "sourcePage": 186,
+            "sourceRegion": {
+              "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg pixels",
+              "x": 0,
+              "y": 0,
+              "width": 616,
+              "height": 694
+            },
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+            "cropDimensions": {
+              "width": 616,
+              "height": 694
+            },
+            "cropSha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+            "cleanupScope": "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime asset is a byte-identical copy of the retained official Decreto 779/1995 Anexo L JPG panel. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+              "outputDimensions": {
+                "width": 616,
+                "height": 694
+              },
+              "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material."
+            }
           }
         ],
         "localAssetMetadata": [
@@ -12441,6 +12553,178 @@
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
               "reason": "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
             }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-anexo-regulatory-panel-01",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 615,
+            "height": 743,
+            "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 615,
+              "minWidthCssPx": 615,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime image is byte-identical to the retained official Anexo L regulatory panel JPG; display is capped at natural width and Russian term translations are separate DOM text below the image.",
+              "outputDimensions": {
+                "width": 615,
+                "height": 743
+              },
+              "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions."
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "byteIdenticalCopy": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-anexo-regulatory-panel-02",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 618,
+            "height": 733,
+            "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 618,
+              "minWidthCssPx": 618,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime image is byte-identical to the retained official Anexo L regulatory panel JPG; display is capped at natural width and Russian term translations are separate DOM text below the image.",
+              "outputDimensions": {
+                "width": 618,
+                "height": 733
+              },
+              "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions."
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "byteIdenticalCopy": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-anexo-regulatory-panel-03",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 616,
+            "height": 734,
+            "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 616,
+              "minWidthCssPx": 616,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime image is byte-identical to the retained official Anexo L regulatory panel JPG; display is capped at natural width and Russian term translations are separate DOM text below the image.",
+              "outputDimensions": {
+                "width": 616,
+                "height": 734
+              },
+              "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.17-R.22 exclusive circulation and mandatory-direction signs."
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "byteIdenticalCopy": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-anexo-regulatory-panel-04",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 616,
+            "height": 694,
+            "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 616,
+              "minWidthCssPx": 616,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "extractionScaleEvidence": {
+              "target": "retained-official-original-image-copy",
+              "method": "Runtime image is byte-identical to the retained official Anexo L regulatory panel JPG; display is capped at natural width and Russian term translations are separate DOM text below the image.",
+              "outputDimensions": {
+                "width": 616,
+                "height": 694
+              },
+              "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+              "sourceQualityDisposition": "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+              "captionScope": "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material."
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "byteIdenticalCopy": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            }
           }
         ],
         "visibleSpanishStatus": {
@@ -12467,6 +12751,34 @@
               "sourceAsIs": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
               "reason": "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+              "reason": "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
             }
           ]
         },
@@ -12488,7 +12800,8 @@
           "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
           "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
           "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text.",
-          "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text."
+          "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text.",
+          "Anexo L regulatory panels 01-04 are displayed as protected byte-identical official images before the CABA overview sheets; panel 05 starts warning signs and is outside this regulatory scope."
         ],
         "checkerResult": "pass"
       }

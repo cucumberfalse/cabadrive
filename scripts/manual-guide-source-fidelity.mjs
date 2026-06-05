@@ -205,6 +205,7 @@ const highResolutionTargets = new Set([
   "x5-zoom-source-export",
   "source-native-equivalent-or-better",
   "higher-resolution-direct-export",
+  "retained-official-original-image-copy",
   "direct-pdf-region-render-scale-36-map-only-lossless-png"
 ]);
 const forbiddenStrictVisualTerms = [

@@ -429,13 +429,14 @@
   separate Russian translations for terms such as by bus, walking, bicycle, and
   car, extract at high faithful quality, avoid extra blank margins, and display
   it at the original-like scale relative to body text.
-- [ ] T133 Implementation Agent must continue the Appendix IV sign follow-up:
+- [x] T133 Implementation Agent must continue the Appendix IV sign follow-up:
   whole sign sheets are insufficient when signs/captions remain tiny; use large
   individual signs, sign rows, or source-faithful panels where possible, and
   translate only proven external catalog captions such as `NO AVANZAR`.
-  Partial 2026-06-05 representative slice: `NO AVANZAR` now has a focused
-  official-source runtime crop and separate Russian DOM translation. Remaining
-  Appendix IV breadth is not claimed complete.
+  2026-06-05 regulatory-panel slice: broad regulatory readability now uses
+  large protected official Anexo L panels `01`-`04` before the CABA overview
+  sheets, keeps the focused `NO AVANZAR` card, and keeps CABA pages `185`/`186`
+  as overview/local variants.
 - [x] T134 Implementation Agent must continue the hospital-map follow-up:
   re-extract or verify `app2-hospital-map-source-card` from the best official
   original source so labels are readable at body-text scale, without translating
@@ -460,7 +461,12 @@
   and screenshots.
   Partial 2026-06-05 representative slice: evidence for `NO AVANZAR` records
   source path, crop region, method, dimensions, hash, runtime display bounds,
-  protected/external-caption boundary, and remaining Appendix IV scope.
+  and protected/external-caption boundary.
+  2026-06-05 regulatory-panel slice: evidence for Anexo L panels `01`-`04`
+  records official source paths, byte-identical runtime copies, dimensions,
+  SHA-256 hashes, no-upscale/min-width display metadata, protected-image
+  boundary, separate Russian DOM translations, CABA overview disposition, and
+  the reason panel `05` is not selected for regulatory scope.
   Partial 2026-06-05 blind-spot slice: evidence for
   `app1-blind-spot-source-card` records printed/manual page `108`, PDF/render
   page `109`, direct-PDF crop and final trim coordinates, `546x440`
@@ -473,9 +479,12 @@
   protected-image edits, missing separate translations, and learner-facing
   source/provenance wording regressions fail.
   Partial 2026-06-05 representative slice: tests now assert the focused
-  `NO AVANZAR` asset/hash/no-upscale policy, separate term translation, visible
-  remaining-scope evidence, and Playwright readability relative to the overview
-  sheet.
+  `NO AVANZAR` asset/hash/no-upscale policy, separate term translation, and
+  Playwright readability relative to the overview sheet.
+  2026-06-05 regulatory-panel slice: tests now assert all four Anexo L panel
+  assets are byte-identical official copies, recorded in registry/evidence,
+  protected with official-sign exceptions, displayed without upscaling, and
+  paired with separate DOM translations.
   Partial 2026-06-05 blind-spot slice: tests and audits now assert the
   blind-spot asset/hash/no-upscale policy, source-as-is visible Spanish
   exception, page `108`/PDF page `109` offset, separate Russian DOM term
@@ -487,7 +496,9 @@
   representative required visuals, `git diff --check`, and full
   `pnpm run preflight` if feasible.
   Partial 2026-06-05 representative slice: see `NO AVANZAR Representative
-  Focused Crop Evidence - 2026-06-05` for this slice's command evidence.
+  Focused Crop Evidence - 2026-06-05` for that slice's command evidence. See
+  `Appendix IV Anexo Regulatory Panel Evidence - 2026-06-05` below for the
+  latest regulatory-panel command evidence.
 - [ ] T141 PR `#200` final validation remains blocked until T126-T140 and the
   explicit user-example checklist below are implemented and evidenced, or every
   remaining gap is a narrow evidence-backed blocker routed to
@@ -501,11 +512,13 @@
   covering block named, explicitly omitted with rationale, or narrow blocker
   routed to Orchestrator/human.
   Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
-  `NO AVANZAR` is recorded as `implemented-representative`; blind spot and tire
-  visuals remain required pending examples.
+  `NO AVANZAR` was recorded as `implemented-representative`; later
+  regulatory-panel evidence supersedes that status with
+  `implemented-regulatory-panels-with-caba-overview`.
   Partial 2026-06-05 blind-spot slice: blind-spot visual is recorded as
   `implemented` with source-as-is crop evidence; tire manufacturing/tread-life
-  remains pending and `NO AVANZAR` remains `implemented-representative`.
+  remains pending and `NO AVANZAR` remained `implemented-representative` until
+  the later regulatory-panel slice.
 - [ ] T144 Implementation Agent evidence must specifically cover the user
   examples: Appendix IV regulatory signs and `NO AVANZAR`, hospital map,
   seatbelt/headrest copy problems, blind-spot visual, tire
@@ -513,8 +526,9 @@
   headrest combined diagram/glossary, `50` people mobility-space visual, and
   whole-guide `источник` wording cleanup.
   Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
-  `NO AVANZAR` now has concrete representative evidence; broad Appendix IV
-  rows/panels, blind spot, and tire examples remain visible in audit evidence.
+  `NO AVANZAR` received concrete representative evidence. The later
+  regulatory-panel slice adds broad Anexo L panels `01`-`04`; CABA sheets
+  remain overview/local variants rather than being replaced.
   Partial 2026-06-05 blind-spot slice: blind spot now has concrete evidence in
   the app1 runtime card, visual completeness audit, crop inventory, registry,
   static tests, and focused Playwright assertions. Tire and broad Appendix IV
@@ -1549,3 +1563,72 @@
   `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
   The audit now records `tire-manufacturing-tread-life` as
   `implemented-app1-canonical` and removes it from remaining required examples.
+
+## Appendix IV Anexo Regulatory Panel Evidence - 2026-06-05
+
+- Implementation Agent continued assigned PR `#200` in clean worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, from required head
+  `f0414c449aa877fd96cbebff523373f3d58a7cd1`. Startup status before edits was
+  `## codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`
+  with no dirty files. Parallel worktree/branch/PR/process memory preservation
+  was honored.
+- Added large protected official Anexo L regulatory panels before the CABA
+  page `185`/`186` overview sheets in
+  `src/data/manual-sections/app4-signs-regulatory.ts`. The focused
+  `app4-regulatory-no-avanzar-source-card` remains in place.
+- Runtime assets are byte-identical copies from retained official source files
+  under
+  `content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/`:
+  `dec196AnexoIII-01.jpg` ->
+  `anexo-regulatory-panel-01-source-as-is.jpg`, `615x743`, SHA-256
+  `d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9`;
+  `dec196AnexoIII-02.jpg` ->
+  `anexo-regulatory-panel-02-source-as-is.jpg`, `618x733`, SHA-256
+  `1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6`;
+  `dec196AnexoIII-03.jpg` ->
+  `anexo-regulatory-panel-03-source-as-is.jpg`, `616x734`, SHA-256
+  `ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3`;
+  `dec196AnexoIII-04.jpg` ->
+  `anexo-regulatory-panel-04-source-as-is.jpg`, `616x694`, SHA-256
+  `93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868`.
+- Panel `05` was inspected and not added because it starts `P.*` warning-sign
+  material, not the page `186` regulatory end-of-prescription scope. Panels
+  `01`/`02` cover page `185` and first page-`186` prohibitions/restrictions;
+  panels `03`/`04` cover the remaining page-`186` exclusive circulation,
+  mandatory direction, priority, control, and end-of-prescription material.
+- Protected-image boundary: all sign bodies, symbols, numbers, supplementary
+  plates/tablets, placards, Spanish catalog captions, and panel pixels remain
+  unchanged. No translation, relabeling, redraw, recolor, cleanup, retouch,
+  mask, inpaint, resize, or reconstruction was performed inside the images.
+  Russian translations are separate selectable DOM `termTranslations` below
+  the protected images.
+- Runtime status/evidence changed from broad `implemented-representative`
+  wording to `implemented-regulatory-panels-with-caba-overview`. Existing CABA
+  page `185`/`186` source-sheet crops remain after the Anexo panels as
+  CABA overview/local variants because the CABA manual may include local sheet
+  context not replaced by the Anexo panels.
+- Updated registry/evidence/audit/inventory/tests:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  `content/validation/manual-guide-visual-completeness.evidence.json`,
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `scripts/manual-guide-source-fidelity.mjs`,
+  `scripts/manual-guide-visual-completeness-audit.mjs`,
+  `scripts/manual-visual-content-inventory.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
+  The source-fidelity checker now accepts
+  `retained-official-original-image-copy` as an explicit high-resolution target
+  for byte-identical retained official originals.
+- Verification passed:
+  `node scripts/manual-guide-visual-completeness-audit.mjs`;
+  `node scripts/manual-visual-content-inventory.mjs`;
+  `node --test tests/content-manual-guide-chapters.test.mjs` (`97` tests,
+  `97` pass, `0` fail); `pnpm run validate:manual-guide`;
+  `pnpm run validate:content`; `pnpm exec tsc --noEmit`; `pnpm run build`
+  passed and generated the service worker with `1870` cached assets; focused
+  Playwright
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed (`1` test, `1` pass); the same focused Playwright command with
+  `--project=mobile` passed (`1` test, `1` pass);
+  `node scripts/check-feature-memory.mjs --worktree` passed; `git diff --check`
+  passed.

@@ -69,6 +69,45 @@ const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
 const noAvanzarSourceAssetPath = "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 const noAvanzarCropEvidencePath = "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const anexoRegulatoryPanels = [
+  {
+    cardId: "app4-regulatory-anexo-panel-01-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+    dimensions: { width: 615, height: 743 },
+    sha256: "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-02-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+    dimensions: { width: 618, height: 733 },
+    sha256: "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-03-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+    dimensions: { width: 616, height: 734 },
+    sha256: "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-04-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+    dimensions: { width: 616, height: 694 },
+    sha256: "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
+  }
+];
+const anexoRegulatoryPanelCardIds = new Set(anexoRegulatoryPanels.map((panel) => panel.cardId));
 const tireAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg";
 const tireSourceAssetPath =
@@ -1923,6 +1962,23 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
         (record) => record.sectionId === sectionId && record.outputSourceAssetPath === entry.sourceAssetPath
       );
       if (!cropRecord) {
+        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.sourceAssetPath === entry.sourceAssetPath);
+        if (anexoPanel) {
+          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
+          assert.deepEqual(entry.cropDimensions, anexoPanel.dimensions);
+          assert.equal(entry.cropSha256, anexoPanel.sha256);
+          assert.deepEqual(entry.sourceRegion, {
+            coordinateSystem: `${anexoPanel.sourceAssetPath} pixels`,
+            x: 0,
+            y: 0,
+            width: anexoPanel.dimensions.width,
+            height: anexoPanel.dimensions.height
+          });
+          assert.equal(entry.extractionScaleEvidence.target, "retained-official-original-image-copy");
+          assert.equal(sha256File(anexoPanel.assetPath), anexoPanel.sha256);
+          assert.equal(sha256File(anexoPanel.sourceAssetPath), anexoPanel.sha256);
+          continue;
+        }
         assert.equal(entry.sourceAssetPath, noAvanzarSourceAssetPath, `${sectionId} extra source region is the focused NO AVANZAR crop`);
         assert.deepEqual(entry.cropDimensions, { width: 200, height: 145 });
         assert.equal(entry.cropSha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
@@ -1953,6 +2009,23 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     for (const asset of imageAssets) {
       const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
       if (!cropRecord) {
+        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.assetPath === asset.assetPath);
+        if (anexoPanel) {
+          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
+          assert.equal(asset.assetKind, `official-traffic-sign-source-as-is-anexo-regulatory-panel-${anexoPanel.cardId.match(/panel-(\d+)/u)[1]}`);
+          assert.equal(asset.width, anexoPanel.dimensions.width);
+          assert.equal(asset.height, anexoPanel.dimensions.height);
+          assert.equal(asset.sha256, anexoPanel.sha256);
+          assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, anexoPanel.dimensions.width);
+          assert.equal(asset.runtimeDisplaySize.minWidthCssPx, anexoPanel.dimensions.width);
+          assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+          assert.equal(asset.sourceIntegrity.sourceAssetPath, anexoPanel.sourceAssetPath);
+          assert.equal(asset.sourceIntegrity.byteIdenticalCopy, true);
+          assert.equal(sha256File(asset.assetPath), anexoPanel.sha256);
+          assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), anexoPanel.sha256);
+          assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+          continue;
+        }
         assert.equal(asset.assetPath, noAvanzarAssetPath, `${asset.assetPath} is the focused NO AVANZAR official-source crop`);
         assert.equal(asset.assetKind, "official-traffic-sign-source-as-is-no-avanzar");
         assert.equal(asset.width, 200);
@@ -2044,13 +2117,13 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
 
   const summary = visualCropEvidence.wholeManualInventory.summary;
   const readability = visualCropEvidence.wholeManualInventory.textReadability;
-  assert.equal(summary.sourceImageCardCount, 42);
+  assert.equal(summary.sourceImageCardCount, 46);
   assert.equal(summary.sourceArtworkCount, 2);
   assert.equal(summary.correctedAppendixIvCount, 16);
   assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
   assert.equal(summary.compactSourceImageCardCount, 5);
   assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
-  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 42);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 46);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
   assert.equal(readability.baseline.documentBodyTextFontSizePx, 16);
@@ -2058,13 +2131,20 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
   assert.equal(readability.officialBetterSourceAudit.status, "checked");
   assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
-  assert.equal(readability.sourceImageCardRelevanceCounts.required, 20);
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 24);
   assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-tire-manufacturing-tread-life-source-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-representative-focused-official-sign-crop"], 1);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-regulatory-panels-with-caba-overview"], 4);
   assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
-  assert.equal(readability.sourceImageCardDispositionTotal, 42);
+  assert.equal(readability.sourceImageCardDispositionTotal, 46);
+  assert.match(readability.officialBetterSourceAudit.result, /Panels 01-04/u);
+  assert.match(readability.officialBetterSourceAudit.nonSelectedPanel05Disposition, /warning-sign/u);
+  assert.deepEqual(
+    readability.officialBetterSourceAudit.selectedRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`),
+    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`)
+  );
   assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
   assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
   assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
@@ -2117,6 +2197,18 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(noAvanzarInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(noAvanzarInventory.textReadability.intendedReadableText, /DOM text/u);
   assert.ok(existsSync(noAvanzarCropEvidencePath), "focused NO AVANZAR crop evidence exists");
+  for (const panel of anexoRegulatoryPanels) {
+    const panelInventory = inventoryByCardId.get(panel.cardId);
+    assert.ok(panelInventory, `${panel.cardId} exists in whole-manual inventory`);
+    assert.equal(panelInventory.disposition, "implemented-regulatory-panels-with-caba-overview");
+    assert.deepEqual(panelInventory.dimensions, panel.dimensions);
+    assert.equal(panelInventory.textReadability.relevance, "required");
+    assert.equal(panelInventory.textReadability.disposition, "implemented-regulatory-panels-with-caba-overview");
+    assert.equal(panelInventory.textReadability.requiresOwnerDisposition, false);
+    assert.match(panelInventory.textReadability.sourceIntegrity, /byte-identical/u);
+    assert.equal(sha256File(panel.assetPath), panel.sha256);
+    assert.equal(sha256File(panel.sourceAssetPath), panel.sha256);
+  }
   const blindSpotInventory = inventoryByCardId.get("app1-blind-spot-source-card");
   assert.ok(blindSpotInventory, "blind-spot card exists in whole-manual inventory");
   assert.equal(blindSpotInventory.disposition, "implemented-source-limited-blind-spot-crop");
@@ -2210,7 +2302,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   );
 
   assert.equal(examplesById.get("mobility-space-50-people").status, "implemented");
-  assert.equal(examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status, "implemented-representative");
+  assert.equal(examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status, "implemented-regulatory-panels-with-caba-overview");
   assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
   assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "implemented-app1-canonical");
@@ -2328,7 +2420,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
 
   const noAvanzarRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar");
   assert.ok(noAvanzarRecord, "NO AVANZAR has a concrete representative evidence record");
-  assert.equal(noAvanzarRecord.status, "implemented-representative");
+  assert.equal(noAvanzarRecord.status, "implemented-regulatory-panels-with-caba-overview");
   assert.equal(noAvanzarRecord.assetPath, noAvanzarAssetPath);
   assert.equal(noAvanzarRecord.sourceAssetPath, noAvanzarSourceAssetPath);
   assert.equal(
@@ -2344,15 +2436,27 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.deepEqual(noAvanzarRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
     "NO AVANZAR:Движение прямо запрещено"
   ]);
-  assert.match(noAvanzarRecord.remainingScopeNote, /Remaining Appendix IV breadth/u);
+  assert.match(noAvanzarRecord.remainingScopeNote, /Broad regulatory readability/u);
+  const anexoPanelsRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-anexo-panels");
+  assert.ok(anexoPanelsRecord, "Anexo L regulatory panels have concrete evidence");
+  assert.equal(anexoPanelsRecord.status, "implemented-regulatory-panels-with-caba-overview");
+  assert.match(anexoPanelsRecord.extractionMethod, /Byte-identical copies/u);
+  assert.match(anexoPanelsRecord.protectedImagePolicy, /Russian translations/u);
+  assert.match(anexoPanelsRecord.nonSelectedPanel05Disposition, /warning-sign P\.\*/u);
+  assert.match(anexoPanelsRecord.cabaOverviewDisposition, /overview\/local variants/u);
+  assert.deepEqual(
+    anexoPanelsRecord.panels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:${panel.byteIdenticalToSource}`),
+    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:true`)
+  );
+  for (const panel of anexoPanelsRecord.panels) {
+    assert.equal(panel.runtimeDisplay.maxDisplayWidthPx, panel.dimensions.width);
+    assert.equal(panel.runtimeDisplay.minDisplayWidthPx, panel.dimensions.width);
+    assert.equal(panel.runtimeDisplay.noUpscale, true);
+  }
   const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map((entry) => entry.id);
-  assert.ok(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"));
+  assert.equal(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"), false);
   assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
   assert.equal(remainingExampleIds.includes("tire-manufacturing-tread-life"), false);
-  assert.match(
-    visualCompletenessEvidence.remainingRequiredExamples.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar").remainingScopeNote,
-    /Representative only[\s\S]*not every Appendix IV regulatory sign/u
-  );
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -3334,6 +3438,10 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "app4-informational-page-190-source-card",
     "app4-informational-page-191-source-card",
     "app4-informational-page-192-source-card",
+    "app4-regulatory-anexo-panel-01-source-card",
+    "app4-regulatory-anexo-panel-02-source-card",
+    "app4-regulatory-anexo-panel-03-source-card",
+    "app4-regulatory-anexo-panel-04-source-card",
     "app4-regulatory-no-avanzar-source-card",
     "app4-regulatory-page-185-source-card",
     "app4-regulatory-page-186-source-card",
@@ -3373,6 +3481,10 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-informational-page-191-source-card", 672],
     ["app4-informational-page-192-source-card", 706],
     ["app4-regulatory-no-avanzar-source-card", 200],
+    ["app4-regulatory-anexo-panel-01-source-card", 615],
+    ["app4-regulatory-anexo-panel-02-source-card", 618],
+    ["app4-regulatory-anexo-panel-03-source-card", 616],
+    ["app4-regulatory-anexo-panel-04-source-card", 616],
     ["app4-regulatory-page-185-source-card", 664],
     ["app4-regulatory-page-186-source-card", 704],
     ["app4-temporary-page-193-source-card", 673],
@@ -3385,7 +3497,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-warning-page-188-source-card", 705]
   ]);
 
-  assert.equal(cards.length, 42);
+  assert.equal(cards.length, 46);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(
@@ -3427,7 +3539,12 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   );
 
   const appendixCards = cards
-    .filter((card) => card.cardId.startsWith("app4-") && card.cardId !== "app4-regulatory-no-avanzar-source-card")
+    .filter(
+      (card) =>
+        card.cardId.startsWith("app4-") &&
+        card.cardId !== "app4-regulatory-no-avanzar-source-card" &&
+        !anexoRegulatoryPanelCardIds.has(card.cardId)
+    )
     .sort((a, b) => a.sourcePage - b.sourcePage || a.cardId.localeCompare(b.cardId));
   assert.deepEqual(appendixCards.map((card) => card.sourcePage), sourcePagesForRange(185, 200));
   assert.equal(appendixCards.every((card) => card.displayMode === "full-width"), true);
@@ -3448,6 +3565,17 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(noAvanzarCard.assetPath, noAvanzarAssetPath);
   assert.deepEqual(noAvanzarCard.sourceRegion, { x: 32, y: 85, width: 200, height: 145 });
   assert.equal(noAvanzarCard.hasOfficialSignException, true);
+  for (const panel of anexoRegulatoryPanels) {
+    const card = byId.get(panel.cardId);
+    assert.ok(card, `${panel.cardId} exists`);
+    assert.equal(card.maxDisplayWidthPx, panel.dimensions.width);
+    assert.equal(card.minDisplayWidthPx, panel.dimensions.width);
+    assert.equal(card.assetPath, panel.assetPath);
+    assert.deepEqual(card.sourceRegion, { x: 0, y: 0, width: panel.dimensions.width, height: panel.dimensions.height });
+    assert.equal(card.hasOfficialSignException, true);
+    assert.equal(sha256File(panel.assetPath), panel.sha256);
+    assert.equal(sha256File(panel.sourceAssetPath), panel.sha256);
+  }
 
   const blindSpotCard = byId.get("app1-blind-spot-source-card");
   assert.equal(blindSpotCard.maxDisplayWidthPx, 546);
@@ -3469,10 +3597,18 @@ test("Manual guide source image cards declare reusable full-width or compact dis
 
   assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-01-source-card").maxDisplayWidthPx, 615);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-02-source-card").maxDisplayWidthPx, 618);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-03-source-card").maxDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-04-source-card").maxDisplayWidthPx, 616);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 664);
   assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 704);
   assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-01-source-card").minDisplayWidthPx, 615);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-02-source-card").minDisplayWidthPx, 618);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-03-source-card").minDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-04-source-card").minDisplayWidthPx, 616);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, 664);
   assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, 704);
   assert.equal(byId.get("app4-regulatory-no-avanzar-source-card").minDisplayWidthPx, 200);

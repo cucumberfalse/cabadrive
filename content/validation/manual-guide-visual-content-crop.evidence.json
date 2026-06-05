@@ -2321,6 +2321,266 @@
       {
         "sectionId": "app4-signs-regulatory",
         "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-anexo-panels",
+        "cardId": "app4-regulatory-anexo-panel-01-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 615,
+        "minDisplayWidthPx": 615,
+        "sourcePage": 185,
+        "sourceRegion": {
+          "x": 0,
+          "y": 0,
+          "width": 615,
+          "height": 743
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+        "dimensions": {
+          "width": 615,
+          "height": 743
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-regulatory-panels-with-caba-overview",
+        "reason": "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants.",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-regulatory-panels-with-caba-overview",
+          "intendedReadableText": "Official Anexo L external catalog captions are preserved inside the protected panel image, with Russian term translations rendered below as selectable DOM text.",
+          "inspectedSample": "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions.",
+          "renderedImageWidthPx": 615,
+          "estimatedSmallestTextHeightPx": 8,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "panel-captions-remain-official-image-text-and-separate-dom-translation-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 615,
+                "height": 743
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 615,
+                "height": 743
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
+          "evidencePath": "content/validation/manual-guide-visual-completeness.evidence.json",
+          "sourceIntegrity": "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-anexo-panels",
+        "cardId": "app4-regulatory-anexo-panel-02-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 618,
+        "minDisplayWidthPx": 618,
+        "sourcePage": 186,
+        "sourceRegion": {
+          "x": 0,
+          "y": 0,
+          "width": 618,
+          "height": 733
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+        "dimensions": {
+          "width": 618,
+          "height": 733
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-regulatory-panels-with-caba-overview",
+        "reason": "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants.",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-regulatory-panels-with-caba-overview",
+          "intendedReadableText": "Official Anexo L external catalog captions are preserved inside the protected panel image, with Russian term translations rendered below as selectable DOM text.",
+          "inspectedSample": "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions.",
+          "renderedImageWidthPx": 618,
+          "estimatedSmallestTextHeightPx": 8,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "panel-captions-remain-official-image-text-and-separate-dom-translation-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 618,
+                "height": 733
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 618,
+                "height": 733
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
+          "evidencePath": "content/validation/manual-guide-visual-completeness.evidence.json",
+          "sourceIntegrity": "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-anexo-panels",
+        "cardId": "app4-regulatory-anexo-panel-03-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 616,
+        "minDisplayWidthPx": 616,
+        "sourcePage": 186,
+        "sourceRegion": {
+          "x": 0,
+          "y": 0,
+          "width": 616,
+          "height": 734
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+        "dimensions": {
+          "width": 616,
+          "height": 734
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-regulatory-panels-with-caba-overview",
+        "reason": "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants.",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-regulatory-panels-with-caba-overview",
+          "intendedReadableText": "Official Anexo L external catalog captions are preserved inside the protected panel image, with Russian term translations rendered below as selectable DOM text.",
+          "inspectedSample": "R.17-R.22 exclusive circulation and mandatory-direction signs.",
+          "renderedImageWidthPx": 616,
+          "estimatedSmallestTextHeightPx": 8,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "panel-captions-remain-official-image-text-and-separate-dom-translation-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 616,
+                "height": 734
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 616,
+                "height": 734
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
+          "evidencePath": "content/validation/manual-guide-visual-completeness.evidence.json",
+          "sourceIntegrity": "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-anexo-panels",
+        "cardId": "app4-regulatory-anexo-panel-04-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 616,
+        "minDisplayWidthPx": 616,
+        "sourcePage": 186,
+        "sourceRegion": {
+          "x": 0,
+          "y": 0,
+          "width": 616,
+          "height": 694
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+        "dimensions": {
+          "width": 616,
+          "height": 694
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-regulatory-panels-with-caba-overview",
+        "reason": "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants.",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-regulatory-panels-with-caba-overview",
+          "intendedReadableText": "Official Anexo L external catalog captions are preserved inside the protected panel image, with Russian term translations rendered below as selectable DOM text.",
+          "inspectedSample": "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material.",
+          "renderedImageWidthPx": 616,
+          "estimatedSmallestTextHeightPx": 8,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "panel-captions-remain-official-image-text-and-separate-dom-translation-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 616,
+                "height": 694
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 616,
+                "height": 694
+              },
+              "estimatedSmallestTextHeightPx": 8,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-regulatory-panels-with-caba-overview",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
+          "evidencePath": "content/validation/manual-guide-visual-completeness.evidence.json",
+          "sourceIntegrity": "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
         "blockId": "regulatory-source-sheets",
         "cardId": "app4-regulatory-page-185-source-card",
         "displayMode": "full-width",
@@ -4116,6 +4376,42 @@
         "disposition": "referenced-current-manual-visual"
       },
       {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 615,
+          "height": 743
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 618,
+          "height": 733
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 616,
+          "height": 734
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 616,
+          "height": 694
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
         "referencedByManualData": true,
         "dimensions": {
@@ -5123,16 +5419,60 @@
           "min": 618,
           "max": 747
         },
-        "result": "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs; their 613-620px widths are not higher quality than the corrected manual crop widths around 664-757px.",
+        "result": "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs. Panels 01-04 are now used as protected byte-identical regulatory source panels because they show individual signs larger than the CABA overview sheets while preserving official pixels.",
+        "selectedRegulatoryPanels": [
+          {
+            "cardId": "app4-regulatory-anexo-panel-01-source-card",
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+            "runtimeAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+            "dimensions": {
+              "width": 615,
+              "height": 743
+            },
+            "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+          },
+          {
+            "cardId": "app4-regulatory-anexo-panel-02-source-card",
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+            "runtimeAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+            "dimensions": {
+              "width": 618,
+              "height": 733
+            },
+            "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+          },
+          {
+            "cardId": "app4-regulatory-anexo-panel-03-source-card",
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+            "runtimeAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+            "dimensions": {
+              "width": 616,
+              "height": 734
+            },
+            "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+          },
+          {
+            "cardId": "app4-regulatory-anexo-panel-04-source-card",
+            "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+            "runtimeAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+            "dimensions": {
+              "width": 616,
+              "height": 694
+            },
+            "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
+          }
+        ],
+        "nonSelectedPanel05Disposition": "dec196AnexoIII-05.jpg starts P.* warning-sign material, not the page-186 regulatory end-of-prescription material; regulatory panels 01-04 are the selected scope.",
         "samplePaths": [
           "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
           "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
-          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg"
+          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg"
         ]
       },
       "sourceImageCardRelevanceCounts": {
         "none": 12,
-        "required": 20,
+        "required": 24,
         "supporting": 10
       },
       "sourceImageCardDispositionCounts": {
@@ -5144,9 +5484,10 @@
         "readable-with-adjacent-dom-text": 4,
         "source-limited-exception": 16,
         "implemented-representative-focused-official-sign-crop": 1,
+        "implemented-regulatory-panels-with-caba-overview": 4,
         "implementation-feedback-needs-source-region-verification": 1
       },
-      "sourceImageCardDispositionTotal": 42,
+      "sourceImageCardDispositionTotal": 46,
       "requiredCardIds": [
         "app1-blind-spot-source-card",
         "app1-tire-manufacturing-tread-life-source-card",
@@ -5157,6 +5498,10 @@
         "app4-informational-page-190-source-card",
         "app4-informational-page-191-source-card",
         "app4-informational-page-192-source-card",
+        "app4-regulatory-anexo-panel-01-source-card",
+        "app4-regulatory-anexo-panel-02-source-card",
+        "app4-regulatory-anexo-panel-03-source-card",
+        "app4-regulatory-anexo-panel-04-source-card",
         "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card",
@@ -5231,6 +5576,10 @@
         "app4-informational-page-190-source-card",
         "app4-informational-page-191-source-card",
         "app4-informational-page-192-source-card",
+        "app4-regulatory-anexo-panel-01-source-card",
+        "app4-regulatory-anexo-panel-02-source-card",
+        "app4-regulatory-anexo-panel-03-source-card",
+        "app4-regulatory-anexo-panel-04-source-card",
         "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card",
@@ -5309,9 +5658,9 @@
       }
     },
     "summary": {
-      "sourceImageCardCount": 42,
+      "sourceImageCardCount": 46,
       "sourceArtworkCount": 2,
-      "sectionAssetFileCount": 138,
+      "sectionAssetFileCount": 142,
       "correctedAppendixIvCount": 16,
       "appendixIvPagesCovered": [
         185,

@@ -93,9 +93,147 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "regulatory-anexo-panels",
+      kind: "source-image-cards",
+      titleRu: "Крупные панели знаков из Anexo L",
+      sourceTextEs:
+        "Sistema de señalización vial uniforme. Señales reglamentarias.",
+      cards: [
+        {
+          id: "app4-regulatory-anexo-panel-01-source-card",
+          titleRu: "Запрещающие знаки: въезд и виды транспорта",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 615,
+          minDisplayWidthPx: 615,
+          sourcePage: 185,
+          sourceRegion: { x: 0, y: 0, width: 615, height: 743 },
+          assetPath: `${assetRoot}/anexo-regulatory-panel-01-source-as-is.jpg`,
+          altRu:
+            "Панель Anexo L с запрещающими дорожными знаками R.1-R.3(10) и испанскими подписями.",
+          visibleSpanish: true,
+          officialSignException,
+          termTranslations: [
+            { termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" },
+            { termEs: "CONTRAMANO", translationRu: "Встречное направление" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR AUTOS", translationRu: "Движение автомобилей запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR MOTOS", translationRu: "Движение мотоциклов запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR BICICLETA", translationRu: "Движение велосипедов запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR CAMIÓN", translationRu: "Движение грузовиков запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR ACOPLADO", translationRu: "Движение с прицепом запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR PEATÓN", translationRu: "Движение пешеходов запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR TRAC. A.N.", translationRu: "Движение на тяге животных запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR ANIMAL", translationRu: "Прогон животных запрещен" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR CARRO DE MANO", translationRu: "Движение ручных тележек запрещено" },
+            { termEs: "PROHIBICIÓN DE CIRCULAR TRACTOR", translationRu: "Движение тракторов запрещено" }
+          ],
+          bodyRu:
+            "Панель показывает первые запрещающие знаки крупнее обзорного листа CABA. Испанские подписи остаются частью изображения; русская расшифровка дана отдельным текстом ниже."
+        },
+        {
+          id: "app4-regulatory-anexo-panel-02-source-card",
+          titleRu: "Запреты маневров и ограничения",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 618,
+          minDisplayWidthPx: 618,
+          sourcePage: 186,
+          sourceRegion: { x: 0, y: 0, width: 618, height: 733 },
+          assetPath: `${assetRoot}/anexo-regulatory-panel-02-source-as-is.jpg`,
+          altRu:
+            "Панель Anexo L со знаками запрета поворотов, обгона, стоянки и ограничений R.4-R.16.",
+          visibleSpanish: true,
+          officialSignException,
+          termTranslations: [
+            { termEs: "NO GIRAR A LA IZQUIERDA", translationRu: "Поворот налево запрещен" },
+            { termEs: "NO GIRAR A LA DERECHA", translationRu: "Поворот направо запрещен" },
+            { termEs: "NO GIRAR EN U (NO RETOMAR)", translationRu: "Разворот запрещен" },
+            { termEs: "PROHIBIDO ADELANTAR", translationRu: "Обгон запрещен" },
+            { termEs: "NO RUIDOS MOLESTOS", translationRu: "Запрещены раздражающие шумы" },
+            { termEs: "NO ESTACIONAR", translationRu: "Стоянка запрещена" },
+            { termEs: "NO ESTACIONAR NI DETENERSE", translationRu: "Остановка и стоянка запрещены" },
+            { termEs: "PROHIBICIÓN DE CAMBIAR DE CARRIL", translationRu: "Перестроение запрещено" },
+            { termEs: "LIMITACIÓN DE PESO", translationRu: "Ограничение массы" },
+            { termEs: "LIMITACIÓN DE ALTURA", translationRu: "Ограничение высоты" },
+            { termEs: "LIMITACIÓN DE ANCHO", translationRu: "Ограничение ширины" },
+            { termEs: "LIMITACIÓN DEL LARGO DEL VEHÍCULO", translationRu: "Ограничение длины транспортного средства" },
+            { termEs: "LIMITACIÓN DE VELOCIDAD MÁXIMA", translationRu: "Ограничение максимальной скорости" },
+            { termEs: "LIMITACIÓN DE VELOCIDAD MÍNIMA", translationRu: "Ограничение минимальной скорости" }
+          ],
+          bodyRu:
+            "Здесь собраны запреты маневров, остановки и стоянки, а также ограничения по массе, габаритам и скорости. Числа и испанские подписи внутри картинки сохранены без изменений."
+        },
+        {
+          id: "app4-regulatory-anexo-panel-03-source-card",
+          titleRu: "Исключительные полосы и обязательные направления",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 616,
+          minDisplayWidthPx: 616,
+          sourcePage: 186,
+          sourceRegion: { x: 0, y: 0, width: 616, height: 734 },
+          assetPath: `${assetRoot}/anexo-regulatory-panel-03-source-as-is.jpg`,
+          altRu:
+            "Панель Anexo L с регулирующими знаками R.17-R.22 про исключительное движение и обязательные направления.",
+          visibleSpanish: true,
+          officialSignException,
+          termTranslations: [
+            { termEs: "ESTACIONAMIENTO EXCLUSIVO", translationRu: "Исключительная стоянка" },
+            { termEs: "CIRCULACIÓN EXCLUSIVA (TRANSP. PÚBL.)", translationRu: "Движение только общественного транспорта" },
+            { termEs: "CIRCULACIÓN EXCLUSIVA (MOTOS)", translationRu: "Движение только мотоциклов" },
+            { termEs: "CIRCULACIÓN EXCLUSIVA (BICICLETA)", translationRu: "Движение только велосипедов" },
+            { termEs: "CIRCULACIÓN EXCLUSIVA (JINETES)", translationRu: "Движение только всадников" },
+            { termEs: "CIRCULACIÓN EXCLUSIVA (PEATONES)", translationRu: "Движение только пешеходов" },
+            { termEs: "USO DE CADENAS PARA NIEVE", translationRu: "Использование цепей противоскольжения" },
+            { termEs: "GIRO OBLIGATORIO (DERECHA)", translationRu: "Обязательный поворот направо" },
+            { termEs: "GIRO OBLIGATORIO (IZQUIERDA)", translationRu: "Обязательный поворот налево" },
+            { termEs: "SENTIDO DE CIRCULACIÓN (DERECHA)", translationRu: "Направление движения направо" },
+            { termEs: "SENTIDO DE CIRCULACIÓN (IZQUIERDA)", translationRu: "Направление движения налево" },
+            { termEs: "SENTIDO DE CIRCULACIÓN (comienzo sentido único)", translationRu: "Начало одностороннего движения" },
+            { termEs: "SENTIDO DE CIRCULACIÓN (alternativa)", translationRu: "Альтернативное указание направления" },
+            { termEs: "PASO OBLIGADO (derecha)", translationRu: "Обязательный объезд справа" },
+            { termEs: "PASO OBLIGADO (izquierda)", translationRu: "Обязательный объезд слева" }
+          ],
+          bodyRu:
+            "Эта панель помогает рассмотреть знаки исключительного движения и обязательного направления. Перевод вынесен в подписи под изображением."
+        },
+        {
+          id: "app4-regulatory-anexo-panel-04-source-card",
+          titleRu: "Приоритет, контроль и конец предписания",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 616,
+          minDisplayWidthPx: 616,
+          sourcePage: 186,
+          sourceRegion: { x: 0, y: 0, width: 616, height: 694 },
+          assetPath: `${assetRoot}/anexo-regulatory-panel-04-source-as-is.jpg`,
+          altRu:
+            "Панель Anexo L со знаками приоритета, контроля, железнодорожного барьера и конца предписания R.23-R.32.",
+          visibleSpanish: true,
+          officialSignException,
+          termTranslations: [
+            { termEs: "TRÁNSITO PESADO A LA DERECHA", translationRu: "Тяжелый транспорт направо" },
+            { termEs: "PEATONES POR LA IZQUIERDA", translationRu: "Пешеходы слева" },
+            { termEs: "PUESTO DEL CONTROL", translationRu: "Пункт контроля" },
+            { termEs: "COMIENZO DE DOBLE MANO", translationRu: "Начало двустороннего движения" },
+            { termEs: "PARE", translationRu: "Стоп" },
+            { termEs: "CEDA EL PASO", translationRu: "Уступите дорогу" },
+            { termEs: "PREFERENCIA DE AVANCE", translationRu: "Преимущество встречного разъезда" },
+            { termEs: "BARRERAS FERROVIALES", translationRu: "Железнодорожные шлагбаумы" },
+            { termEs: "FIN DE LA PRESCRIPCIÓN", translationRu: "Конец предписания" },
+            { termEs: "FIN DE LA PRESCRIPCIÓN (ej.)", translationRu: "Пример конца предписания" },
+            { termEs: "CRUCE FERROVIARIO", translationRu: "Железнодорожный переезд" }
+          ],
+          bodyRu:
+            "Панель закрывает оставшуюся часть регулирующих знаков: приоритет, контроль, железнодорожные барьеры и конец действия предписания."
+        }
+      ],
+      visualNotes: [
+        "Panels 01-04 are byte-identical copies of retained official Anexo L JPG files.",
+        "Panel 05 starts warning-sign material, so it is not part of this regulatory-panel scope.",
+        "Spanish sign and catalog-caption pixels remain unchanged; Russian translations are separate DOM text."
+      ]
+    },
+    {
       id: "regulatory-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Листы регулирующих знаков",
+      titleRu: "Листы CABA с локальными вариантами",
       sourceTextEs:
         "Reglamentarias: de prohibicion, de restriccion, de prioridad y de fin de prescripcion.",
       cards: [

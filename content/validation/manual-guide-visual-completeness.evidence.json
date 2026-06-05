@@ -8,20 +8,36 @@
     {
       "id": "appendix-iv-regulatory-signs-no-avanzar",
       "label": "Appendix IV regulatory signs and NO AVANZAR",
-      "status": "implemented-representative",
+      "status": "implemented-regulatory-panels-with-caba-overview",
       "sourcePages": [
         185,
         186
       ],
       "runtimeTargets": [
+        "app4-regulatory-anexo-panel-01-source-card",
+        "app4-regulatory-anexo-panel-02-source-card",
+        "app4-regulatory-anexo-panel-03-source-card",
+        "app4-regulatory-anexo-panel-04-source-card",
         "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card"
       ],
       "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
       "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
-      "remainingScopeNote": "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row.",
-      "notes": "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context."
+      "panelAssetPaths": [
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg"
+      ],
+      "panelSourceAssetPaths": [
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg"
+      ],
+      "remainingScopeNote": "Panels 01-04 cover the broad official Anexo L regulatory sign set for this section. CABA page 185/186 sheets remain as CABA overview/local variants because CABA includes local sheet context not replaced by the Anexo panels.",
+      "notes": "Implemented with four large byte-identical official Anexo L regulatory panels, the focused NO AVANZAR card, and separate Russian DOM translations for catalog captions. The current CABA page sheets remain after the panels as overview/local-variant context."
     },
     {
       "id": "app2-hospital-map-source-card",
@@ -399,7 +415,7 @@
     },
     {
       "id": "appendix-iv-regulatory-signs-no-avanzar",
-      "status": "implemented-representative",
+      "status": "implemented-regulatory-panels-with-caba-overview",
       "sourcePage": 185,
       "officialSourceAsset": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
       "sourceRegion": {
@@ -438,7 +454,130 @@
           "translationRu": "Движение прямо запрещено"
         }
       ],
-      "remainingScopeNote": "This record covers the user-reported NO AVANZAR example only. Remaining Appendix IV breadth is still represented by source-limited overview sheets unless later slices add more focused official sign rows or panels."
+      "remainingScopeNote": "The focused NO AVANZAR card remains as a large example. Broad regulatory readability is now covered by Anexo L panels 01-04; CABA page 185/186 sheets remain as overview/local variants."
+    },
+    {
+      "id": "appendix-iv-regulatory-anexo-panels",
+      "status": "implemented-regulatory-panels-with-caba-overview",
+      "sourcePages": [
+        185,
+        186
+      ],
+      "extractionMethod": "Byte-identical copies from retained official Decreto 779/1995 Anexo L JPG panels dec196AnexoIII-01 through dec196AnexoIII-04. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+      "panels": [
+        {
+          "panelNumber": 1,
+          "cardId": "app4-regulatory-anexo-panel-01-source-card",
+          "sourcePage": 185,
+          "scope": "R.1-R.3(10): prohibition signs and vehicle/user circulation prohibitions.",
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+          "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+          "dimensions": {
+            "width": 615,
+            "height": 743
+          },
+          "sourceDimensions": {
+            "width": 615,
+            "height": 743
+          },
+          "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+          "sourceSha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+          "byteIdenticalToSource": true,
+          "runtimeDisplay": {
+            "cardId": "app4-regulatory-anexo-panel-01-source-card",
+            "maxDisplayWidthPx": 615,
+            "minDisplayWidthPx": 615,
+            "noUpscale": true,
+            "mobileContainedScroll": true,
+            "translationDomSelector": ".manual-source-image-term-translations"
+          }
+        },
+        {
+          "panelNumber": 2,
+          "cardId": "app4-regulatory-anexo-panel-02-source-card",
+          "sourcePage": 186,
+          "scope": "R.4-R.16: turn, overtaking, parking, weight, dimension, and speed restrictions.",
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+          "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+          "dimensions": {
+            "width": 618,
+            "height": 733
+          },
+          "sourceDimensions": {
+            "width": 618,
+            "height": 733
+          },
+          "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+          "sourceSha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+          "byteIdenticalToSource": true,
+          "runtimeDisplay": {
+            "cardId": "app4-regulatory-anexo-panel-02-source-card",
+            "maxDisplayWidthPx": 618,
+            "minDisplayWidthPx": 618,
+            "noUpscale": true,
+            "mobileContainedScroll": true,
+            "translationDomSelector": ".manual-source-image-term-translations"
+          }
+        },
+        {
+          "panelNumber": 3,
+          "cardId": "app4-regulatory-anexo-panel-03-source-card",
+          "sourcePage": 186,
+          "scope": "R.17-R.22: exclusive circulation and mandatory-direction signs.",
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+          "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+          "dimensions": {
+            "width": 616,
+            "height": 734
+          },
+          "sourceDimensions": {
+            "width": 616,
+            "height": 734
+          },
+          "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+          "sourceSha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+          "byteIdenticalToSource": true,
+          "runtimeDisplay": {
+            "cardId": "app4-regulatory-anexo-panel-03-source-card",
+            "maxDisplayWidthPx": 616,
+            "minDisplayWidthPx": 616,
+            "noUpscale": true,
+            "mobileContainedScroll": true,
+            "translationDomSelector": ".manual-source-image-term-translations"
+          }
+        },
+        {
+          "panelNumber": 4,
+          "cardId": "app4-regulatory-anexo-panel-04-source-card",
+          "sourcePage": 186,
+          "scope": "R.23-R.32: priority, control, railway-barrier, and end-of-prescription material.",
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+          "sourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+          "dimensions": {
+            "width": 616,
+            "height": 694
+          },
+          "sourceDimensions": {
+            "width": 616,
+            "height": 694
+          },
+          "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+          "sourceSha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+          "byteIdenticalToSource": true,
+          "runtimeDisplay": {
+            "cardId": "app4-regulatory-anexo-panel-04-source-card",
+            "maxDisplayWidthPx": 616,
+            "minDisplayWidthPx": 616,
+            "noUpscale": true,
+            "mobileContainedScroll": true,
+            "translationDomSelector": ".manual-source-image-term-translations"
+          }
+        }
+      ],
+      "protectedImagePolicy": "All sign bodies, plates, tablets, symbols, numbers, Spanish catalog captions, and panel pixels remain unchanged inside the protected images. Russian translations are rendered only as selectable DOM text below the cards.",
+      "termsCoverage": "Runtime data includes separate Russian term translations for all visible catalog captions on panels 01-02 and the major captions on panels 03-04.",
+      "nonSelectedPanel05Disposition": "dec196AnexoIII-05.jpg starts warning-sign P.* material, so it is not needed for the page-186 regulatory end-of-prescription scope.",
+      "cabaOverviewDisposition": "Existing CABA page 185/186 sheet crops are kept after the Anexo panels as overview/local variants; their image pixels and no-upscale caps are unchanged."
     },
     {
       "id": "blind-spot-visual",
@@ -586,13 +725,5 @@
       "relatedScopeDisposition": "This record covers the user-reported App I page-108 visual only. App II/App III tire sections are not silently populated with this App I visual."
     }
   ],
-  "remainingRequiredExamples": [
-    {
-      "id": "appendix-iv-regulatory-signs-no-avanzar",
-      "label": "Appendix IV regulatory signs and NO AVANZAR",
-      "status": "implemented-representative",
-      "notes": "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context.",
-      "remainingScopeNote": "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row."
-    }
-  ]
+  "remainingRequiredExamples": []
 }

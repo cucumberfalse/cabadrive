@@ -8,6 +8,47 @@ const registryPath =
 const sectionAssetRoot = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections";
 const officialAnnexImageRoot =
   "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images";
+const anexoRegulatoryPanels = [
+  {
+    panelNumber: 1,
+    cardId: "app4-regulatory-anexo-panel-01-source-card",
+    sourcePage: 185,
+    fileName: "dec196AnexoIII-01.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+    captionScope: "R.1-R.3(10) prohibition signs: no entry, wrong way, and vehicle/user circulation prohibitions."
+  },
+  {
+    panelNumber: 2,
+    cardId: "app4-regulatory-anexo-panel-02-source-card",
+    sourcePage: 186,
+    fileName: "dec196AnexoIII-02.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+    captionScope: "R.4-R.16 turning, overtaking, parking, weight, dimension, and speed restrictions."
+  },
+  {
+    panelNumber: 3,
+    cardId: "app4-regulatory-anexo-panel-03-source-card",
+    sourcePage: 186,
+    fileName: "dec196AnexoIII-03.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+    captionScope: "R.17-R.22 exclusive circulation and mandatory-direction signs."
+  },
+  {
+    panelNumber: 4,
+    cardId: "app4-regulatory-anexo-panel-04-source-card",
+    sourcePage: 186,
+    fileName: "dec196AnexoIII-04.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+    captionScope: "R.23-R.32 priority, control, railway-barrier, and end-of-prescription material."
+  }
+].map((record) => ({
+  ...record,
+  sourceAssetPath: join(officialAnnexImageRoot, record.fileName)
+}));
 const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
 const noAvanzarSourceAssetPath =
@@ -96,6 +137,7 @@ const sourceTextSupportingCardIds = new Set([
 
 const suspectCropCardIds = new Set(["cedulas-source-card"]);
 const focusedOfficialSignCardIds = new Set(["app4-regulatory-no-avanzar-source-card"]);
+const anexoRegulatoryPanelCardIds = new Set(anexoRegulatoryPanels.map((panel) => panel.cardId));
 
 function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSmallestTextHeightPx, disposition) {
   const renderedSize = {
@@ -192,8 +234,17 @@ function officialAnnexImageAudit() {
     widthRangePx: widths.length ? { min: Math.min(...widths), max: Math.max(...widths) } : null,
     heightRangePx: heights.length ? { min: Math.min(...heights), max: Math.max(...heights) } : null,
     result:
-      "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs; their 613-620px widths are not higher quality than the corrected manual crop widths around 664-757px.",
-    samplePaths: records.slice(0, 3).map((record) => record.path)
+      "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs. Panels 01-04 are now used as protected byte-identical regulatory source panels because they show individual signs larger than the CABA overview sheets while preserving official pixels.",
+    selectedRegulatoryPanels: anexoRegulatoryPanels.map((panel) => ({
+      cardId: panel.cardId,
+      sourceAssetPath: panel.sourceAssetPath,
+      runtimeAssetPath: panel.assetPath,
+      dimensions: readImageDimensions(panel.assetPath),
+      sha256: existsSync(panel.assetPath) ? sha256File(panel.assetPath) : null
+    })),
+    nonSelectedPanel05Disposition:
+      "dec196AnexoIII-05.jpg starts P.* warning-sign material, not the page-186 regulatory end-of-prescription material; regulatory panels 01-04 are the selected scope.",
+    samplePaths: records.slice(0, 4).map((record) => record.path)
   };
 }
 
@@ -383,6 +434,13 @@ function dispositionForCard(card, cropRecord) {
         "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context."
     };
   }
+  if (anexoRegulatoryPanelCardIds.has(card.cardId)) {
+    return {
+      disposition: "implemented-regulatory-panels-with-caba-overview",
+      reason:
+        "Byte-identical retained official Anexo L regulatory panel is displayed as a protected large source-as-is image before the CABA overview sheets; CABA sheets remain for local/manual variants."
+    };
+  }
   if (card.cardId === "app1-blind-spot-source-card") {
     const cropEvidence = existsSync(blindSpotCropEvidencePath) ? readJson(blindSpotCropEvidencePath) : null;
     const target = cropEvidence?.targets?.find((entry) => entry.cardId === card.cardId);
@@ -516,6 +574,33 @@ function textReadabilityForCard(card, cropRecord) {
             "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation."
         }
       ],
+      requiresOwnerDisposition: false
+    };
+  }
+  if (anexoRegulatoryPanelCardIds.has(card.cardId)) {
+    const panel = anexoRegulatoryPanels.find((entry) => entry.cardId === card.cardId);
+    return {
+      relevance: "required",
+      disposition: "implemented-regulatory-panels-with-caba-overview",
+      intendedReadableText:
+        "Official Anexo L external catalog captions are preserved inside the protected panel image, with Russian term translations rendered below as selectable DOM text.",
+      inspectedSample: panel?.captionScope ?? "Anexo L regulatory panel captions.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 8,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText:
+        "panel-captions-remain-official-image-text-and-separate-dom-translation-carries-learning",
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        8,
+        "implemented-regulatory-panels-with-caba-overview"
+      ),
+      strategyApplied:
+        "Use retained official Anexo L panel images 01-04 as large source-as-is cards before the CABA overview sheets. Runtime max/min width equals natural panel width, so the browser does not upscale and mobile uses contained scrolling instead of shrinking the panels below source width.",
+      evidencePath: "content/validation/manual-guide-visual-completeness.evidence.json",
+      sourceIntegrity:
+        "Runtime panel is a byte-identical copy of the retained official Anexo L JPG; no translation, cleanup, redraw, retouch, masking, recoloring, inpainting, or pixel modification was performed.",
       requiresOwnerDisposition: false
     };
   }
@@ -886,6 +971,113 @@ function upsertFocusedNoAvanzarEvidence(registry) {
   ];
 }
 
+function upsertAnexoRegulatoryPanelEvidence(registry) {
+  const section = registry.sections.find((entry) => entry.id === "app4-signs-regulatory");
+  if (!section) throw new Error("Missing registry section app4-signs-regulatory");
+  const implementation = section.implementationEvidence;
+  const panelExceptions = [];
+
+  for (const panel of anexoRegulatoryPanels) {
+    const dimensions = readImageDimensions(panel.assetPath);
+    const sourceDimensions = readImageDimensions(panel.sourceAssetPath);
+    if (!dimensions || !sourceDimensions) throw new Error(`Missing Anexo L panel dimensions for ${panel.cardId}`);
+    const sha256 = sha256File(panel.assetPath);
+    const sourceSha256 = sha256File(panel.sourceAssetPath);
+    if (sha256 !== sourceSha256) throw new Error(`${panel.cardId} runtime asset must be byte-identical to retained official source`);
+
+    const sourceRegionEntry = {
+      sourcePage: panel.sourcePage,
+      sourceRegion: {
+        coordinateSystem: `${panel.sourceAssetPath} pixels`,
+        x: 0,
+        y: 0,
+        width: sourceDimensions.width,
+        height: sourceDimensions.height
+      },
+      sourceAssetPath: panel.sourceAssetPath,
+      cropDimensions: sourceDimensions,
+      cropSha256: sourceSha256,
+      cleanupScope: "source-as-is full retained official Anexo L regulatory panel; no protected-pixel modification",
+      extractionScaleEvidence: {
+        target: "retained-official-original-image-copy",
+        method:
+          "Runtime asset is a byte-identical copy of the retained official Decreto 779/1995 Anexo L JPG panel. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+        outputDimensions: sourceDimensions,
+        sha256: sourceSha256,
+        sourceQualityDisposition:
+          "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+        captionScope: panel.captionScope
+      }
+    };
+    const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
+      (entry) => entry.sourceAssetPath === panel.sourceAssetPath
+    );
+    if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+    else implementation.sourceRegionMetadata.push(sourceRegionEntry);
+
+    const exception = {
+      kind: "official-traffic-sign-source-as-is",
+      visibleSpanishScope: "official-sign-image-only",
+      sourceAsIs: true,
+      assetPath: panel.assetPath,
+      reason:
+        "Official Anexo L regulatory panel is protected source-as-is; Russian translations are outside the image."
+    };
+    panelExceptions.push(exception);
+    const localAsset = {
+      assetPath: panel.assetPath,
+      assetKind: `official-traffic-sign-source-as-is-anexo-regulatory-panel-${String(panel.panelNumber).padStart(2, "0")}`,
+      assetCategory: "source-as-is-traffic-sign",
+      containsText: true,
+      visibleSpanish: true,
+      cleanupScope: "none-source-as-is",
+      width: dimensions.width,
+      height: dimensions.height,
+      sha256,
+      runtimeDisplaySize: {
+        maxWidthCssPx: dimensions.width,
+        minWidthCssPx: dimensions.width,
+        noUpscale: true,
+        mobileContainedScroll: true
+      },
+      extractionScaleEvidence: {
+        target: "retained-official-original-image-copy",
+        method:
+          "Runtime image is byte-identical to the retained official Anexo L regulatory panel JPG; display is capped at natural width and Russian term translations are separate DOM text below the image.",
+        outputDimensions: dimensions,
+        sha256,
+        sourceQualityDisposition:
+          "retained-official-anexo-l-regulatory-panel-selected-for-large-readable-regulatory-sign-presentation",
+        captionScope: panel.captionScope
+      },
+      sourceIntegrity: {
+        sourceAsIs: true,
+        sourceAssetPath: panel.sourceAssetPath,
+        noTranslationOrRelabeling: true,
+        noRedrawRecolorCleanupRetouchMaskInpaint: true,
+        russianExplanationOutsideImage: true,
+        byteIdenticalCopy: true
+      },
+      officialSignException: exception
+    };
+    const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === panel.assetPath);
+    if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+    else implementation.localAssetMetadata.push(localAsset);
+  }
+
+  if (implementation.visibleSpanishStatus?.exceptions) {
+    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
+      (entry) => !anexoRegulatoryPanels.some((panel) => panel.assetPath === entry.assetPath)
+    );
+    implementation.visibleSpanishStatus.exceptions.push(...panelExceptions);
+  }
+
+  implementation.visualReviewNotes = [
+    ...implementation.visualReviewNotes.filter((note) => !note.includes("Anexo L regulatory panel")),
+    "Anexo L regulatory panels 01-04 are displayed as protected byte-identical official images before the CABA overview sheets; panel 05 starts warning signs and is outside this regulatory scope."
+  ];
+}
+
 function upsertTireEvidence(registry) {
   const section = registry.sections.find((entry) => entry.id === "app1-safety-elements");
   if (!section) throw new Error("Missing registry section app1-safety-elements");
@@ -992,6 +1184,7 @@ const cropEvidence = readJson(cropEvidencePath);
 const registry = readJson(registryPath);
 updateRegistryFromCropEvidence(registry, cropEvidence);
 upsertFocusedNoAvanzarEvidence(registry);
+upsertAnexoRegulatoryPanelEvidence(registry);
 upsertTireEvidence(registry);
 
 const cropByCardId = new Map(cropEvidence.targets.map((record) => [record.cardId, record]));

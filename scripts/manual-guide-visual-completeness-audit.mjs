@@ -32,6 +32,48 @@ const noAvanzarSourceAssetPath =
   "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 const noAvanzarCropEvidencePath =
   "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const anexoRegulatoryPanelRecords = [
+  {
+    panelNumber: 1,
+    cardId: "app4-regulatory-anexo-panel-01-source-card",
+    sourcePage: 185,
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+    scope: "R.1-R.3(10): prohibition signs and vehicle/user circulation prohibitions."
+  },
+  {
+    panelNumber: 2,
+    cardId: "app4-regulatory-anexo-panel-02-source-card",
+    sourcePage: 186,
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+    scope: "R.4-R.16: turn, overtaking, parking, weight, dimension, and speed restrictions."
+  },
+  {
+    panelNumber: 3,
+    cardId: "app4-regulatory-anexo-panel-03-source-card",
+    sourcePage: 186,
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+    scope: "R.17-R.22: exclusive circulation and mandatory-direction signs."
+  },
+  {
+    panelNumber: 4,
+    cardId: "app4-regulatory-anexo-panel-04-source-card",
+    sourcePage: 186,
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+    scope: "R.23-R.32: priority, control, railway-barrier, and end-of-prescription material."
+  }
+];
 const blindSpotAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg";
 const blindSpotSourceAssetPath =
@@ -93,19 +135,25 @@ const userExampleRecords = [
   {
     id: "appendix-iv-regulatory-signs-no-avanzar",
     label: "Appendix IV regulatory signs and NO AVANZAR",
-    status: "implemented-representative",
+    status: "implemented-regulatory-panels-with-caba-overview",
     sourcePages: [185, 186],
     runtimeTargets: [
+      "app4-regulatory-anexo-panel-01-source-card",
+      "app4-regulatory-anexo-panel-02-source-card",
+      "app4-regulatory-anexo-panel-03-source-card",
+      "app4-regulatory-anexo-panel-04-source-card",
       "app4-regulatory-no-avanzar-source-card",
       "app4-regulatory-page-185-source-card",
       "app4-regulatory-page-186-source-card"
     ],
     assetPath: noAvanzarAssetPath,
     sourceAssetPath: noAvanzarSourceAssetPath,
+    panelAssetPaths: anexoRegulatoryPanelRecords.map((panel) => panel.assetPath),
+    panelSourceAssetPaths: anexoRegulatoryPanelRecords.map((panel) => panel.sourceAssetPath),
     remainingScopeNote:
-      "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row.",
+      "Panels 01-04 cover the broad official Anexo L regulatory sign set for this section. CABA page 185/186 sheets remain as CABA overview/local variants because CABA includes local sheet context not replaced by the Anexo panels.",
     notes:
-      "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context."
+      "Implemented with four large byte-identical official Anexo L regulatory panels, the focused NO AVANZAR card, and separate Russian DOM translations for catalog captions. The current CABA page sheets remain after the panels as overview/local-variant context."
   },
   {
     id: "app2-hospital-map-source-card",
@@ -516,7 +564,7 @@ function noAvanzarRecord() {
     : null;
   return {
     id: "appendix-iv-regulatory-signs-no-avanzar",
-    status: "implemented-representative",
+    status: "implemented-regulatory-panels-with-caba-overview",
     sourcePage: 185,
     officialSourceAsset:
       "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
@@ -550,7 +598,51 @@ function noAvanzarRecord() {
     },
     terms: [{ termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" }],
     remainingScopeNote:
-      "This record covers the user-reported NO AVANZAR example only. Remaining Appendix IV breadth is still represented by source-limited overview sheets unless later slices add more focused official sign rows or panels."
+      "The focused NO AVANZAR card remains as a large example. Broad regulatory readability is now covered by Anexo L panels 01-04; CABA page 185/186 sheets remain as overview/local variants."
+  };
+}
+
+function anexoRegulatoryPanelsRecord() {
+  return {
+    id: "appendix-iv-regulatory-anexo-panels",
+    status: "implemented-regulatory-panels-with-caba-overview",
+    sourcePages: [185, 186],
+    extractionMethod:
+      "Byte-identical copies from retained official Decreto 779/1995 Anexo L JPG panels dec196AnexoIII-01 through dec196AnexoIII-04. No crop, resize, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
+    panels: anexoRegulatoryPanelRecords.map((panel) => {
+      const dimensions = existsSync(panel.assetPath) ? readImageDimensions(panel.assetPath) : null;
+      return {
+        panelNumber: panel.panelNumber,
+        cardId: panel.cardId,
+        sourcePage: panel.sourcePage,
+        scope: panel.scope,
+        assetPath: panel.assetPath,
+        sourceAssetPath: panel.sourceAssetPath,
+        dimensions,
+        sourceDimensions: existsSync(panel.sourceAssetPath) ? readImageDimensions(panel.sourceAssetPath) : null,
+        sha256: existsSync(panel.assetPath) ? sha256File(panel.assetPath) : null,
+        sourceSha256: existsSync(panel.sourceAssetPath) ? sha256File(panel.sourceAssetPath) : null,
+        byteIdenticalToSource: existsSync(panel.assetPath) && existsSync(panel.sourceAssetPath)
+          ? sha256File(panel.assetPath) === sha256File(panel.sourceAssetPath)
+          : false,
+        runtimeDisplay: {
+          cardId: panel.cardId,
+          maxDisplayWidthPx: dimensions?.width ?? null,
+          minDisplayWidthPx: dimensions?.width ?? null,
+          noUpscale: true,
+          mobileContainedScroll: true,
+          translationDomSelector: ".manual-source-image-term-translations"
+        }
+      };
+    }),
+    protectedImagePolicy:
+      "All sign bodies, plates, tablets, symbols, numbers, Spanish catalog captions, and panel pixels remain unchanged inside the protected images. Russian translations are rendered only as selectable DOM text below the cards.",
+    termsCoverage:
+      "Runtime data includes separate Russian term translations for all visible catalog captions on panels 01-02 and the major captions on panels 03-04.",
+    nonSelectedPanel05Disposition:
+      "dec196AnexoIII-05.jpg starts warning-sign P.* material, so it is not needed for the page-186 regulatory end-of-prescription scope.",
+    cabaOverviewDisposition:
+      "Existing CABA page 185/186 sheet crops are kept after the Anexo panels as overview/local variants; their image pixels and no-upscale caps are unchanged."
   };
 }
 
@@ -686,6 +778,7 @@ const document = {
     safetyEquipmentRecord(),
     hospitalMapRecord(),
     noAvanzarRecord(),
+    anexoRegulatoryPanelsRecord(),
     blindSpotRecord(),
     tireManufacturingTreadLifeRecord()
   ],
