@@ -65,7 +65,7 @@
 ## Review And PR Tasks
 
 - [x] T049 Update this `tasks.md` with implementation decisions, verification evidence, known issues, dead ends, and Implementation Agent feedback.
-- [ ] T050 Stage, commit, push, and open a ready PR only if assigned to Implementation Agent by Orchestrator.
+- [x] T050 Stage, commit, push, and open a ready PR only if assigned to Implementation Agent by Orchestrator.
 - [ ] T051 Review Agent checks complete feature memory and role-boundary compliance.
 - [ ] T052 Review Agent checks coverage, semantics, translation quality, styling/accessibility, local-first constraints, and evidence freshness.
 - [ ] T053 Implementation Agent addresses routed review findings only after Orchestrator assignment and records dispositions/evidence.
@@ -75,7 +75,7 @@
 | Purpose | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- |
 | Analyst intake and Architect planning | `codex/032-term-translations` | `51e42f657d867fb802bbe3a68591b6008b45a60f` | pending | feature memory planning in progress | yes |
-| Implementation slice | `codex/032-term-translations` | `51e42f657d867fb802bbe3a68591b6008b45a60f` | pending commit | implementation complete, final local guards pending | yes |
+| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` | ready PR open; process-evidence update pending | yes |
 
 ## Decisions
 
@@ -134,6 +134,9 @@
   - In-app Browser DOM check against `http://127.0.0.1:4399/#manual-section-front-glossary` passed: 5 glossary blocks, 75 glossary rows, `Acera (тротуар): ...`, `Vía rápida (скоростная дорога): ...`, `STRONG` term tag with `lang="es"`, Russian translation/definition `lang="ru"`, `overflow-wrap: anywhere`, and no section/document overflow.
   - `node scripts/check-feature-memory.mjs --worktree` passed.
   - `git diff --check` passed.
+- PR evidence on `2026-06-05`:
+  - Commit `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` pushed to `origin/codex/032-term-translations`.
+  - Ready PR opened against `main`: https://github.com/cucumberfalse/cabadrive/pull/197.
 
 ## Final Architect Validation Placeholder
 
