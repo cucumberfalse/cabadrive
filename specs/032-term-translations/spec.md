@@ -192,16 +192,22 @@ Recommended focused test additions:
 
 ### Known Issues
 
-- Exact Russian translation choices for several context-sensitive terms require Implementation Agent content review, especially `Baliza`, `Ciclorodado`, `Detención`, `Estacionamiento`, `Sobrepaso`, `Tránsito`, and `Vía rápida`.
-- Existing front-glossary screenshots/evidence may become stale after visual text changes unless refreshed or explicitly superseded by new focused evidence.
+- Resolved during implementation: context-sensitive terms `Baliza`, `Ciclorodado`, `Detención`, `Estacionamiento`, `Sobrepaso`, `Tránsito`, and `Vía rápida` received concise learner-facing translations and are covered by focused content/E2E evidence.
+- Existing front-glossary screenshot paths remain recorded as visual evidence; focused Playwright and browser DOM/layout evidence supersede old wording for the new structured term/translation treatment.
+- No unresolved known issues remain at final Architect validation.
 
 ### Implementation Agent Feedback
 
-- Pending. Implementation Agent must record any need to diverge from the structured model, any translation uncertainty that affects acceptance, or any evidence-refresh blocker.
+- None. Implementation Agent reported no need to diverge from the structured model, no unresolved translation uncertainty, and no evidence-refresh blocker requiring Architect disposition.
 
-### Final Architect Validation Placeholder
+### Final Architect Validation
 
-- Architect validation pass: pending.
-- Final Architect validation completed at: pending.
-- Architect validated effective content head: pending.
+- Effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
+- Architect validation pass: passed.
+- Final Architect validation completed at: `2026-06-05T00:34:48-03:00`.
+- Architect validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
 - Architect return count: 0.
+- Architect final validation gaps: none.
+- Final-validation scope confirmed PR #197 / `codex/032-term-translations` current head `06f1d38cf5cd9d07420deb4404ba323032142cad`; commits after the effective content head touch only `specs/032-term-translations/tasks.md` and are process-evidence-only.
+- Required checks were observed green read-only during final validation: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
+- Review Agent result considered: no findings reported for current head `06f1d38cf5cd9d07420deb4404ba323032142cad`.

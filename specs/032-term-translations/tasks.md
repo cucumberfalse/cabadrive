@@ -66,16 +66,16 @@
 
 - [x] T049 Update this `tasks.md` with implementation decisions, verification evidence, known issues, dead ends, and Implementation Agent feedback.
 - [x] T050 Stage, commit, push, and open a ready PR only if assigned to Implementation Agent by Orchestrator.
-- [ ] T051 Review Agent checks complete feature memory and role-boundary compliance.
-- [ ] T052 Review Agent checks coverage, semantics, translation quality, styling/accessibility, local-first constraints, and evidence freshness.
-- [ ] T053 Implementation Agent addresses routed review findings only after Orchestrator assignment and records dispositions/evidence.
+- [x] T051 Review Agent checks complete feature memory and role-boundary compliance.
+- [x] T052 Review Agent checks coverage, semantics, translation quality, styling/accessibility, local-first constraints, and evidence freshness.
+- [x] T053 No routed review findings remain for Implementation Agent to address.
 
 ## Cycle PR Set
 
 | Purpose | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- |
-| Analyst intake and Architect planning | `codex/032-term-translations` | `51e42f657d867fb802bbe3a68591b6008b45a60f` | pending | feature memory planning in progress | yes |
-| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | effective content head `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`; current PR head includes later process-evidence-only commits | ready PR open | yes |
+| Analyst intake and Architect planning | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | current PR head `06f1d38cf5cd9d07420deb4404ba323032142cad` | intake/planning included in ready PR and covered by final Architect validation | yes |
+| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | effective content head `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`; current PR head `06f1d38cf5cd9d07420deb4404ba323032142cad` includes later process-evidence-only commits | ready PR open; required checks green; Review Agent reported no findings | yes |
 
 ## Decisions
 
@@ -105,6 +105,7 @@
 
 ## Verification Evidence
 
+- Effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
 - Architect read-only context gathered on `2026-06-05`:
   - `git rev-parse HEAD` returned `51e42f657d867fb802bbe3a68591b6008b45a60f`.
   - Branch is `codex/032-term-translations`.
@@ -138,17 +139,29 @@
   - Commit `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` pushed to `origin/codex/032-term-translations`.
   - Ready PR opened against `main`: https://github.com/cucumberfalse/cabadrive/pull/197.
   - Post-PR branch updates are process-memory evidence only.
+  - Review Agent reported no findings for PR #197 at head `06f1d38cf5cd9d07420deb4404ba323032142cad` and posted the no-findings comment: https://github.com/cucumberfalse/cabadrive/pull/197#issuecomment-4627831171.
+  - Final Architect validation read-only `gh pr checks 197 --repo cucumberfalse/cabadrive` observed all required checks passing: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
+- Final Architect validation evidence on `2026-06-05T00:34:48-03:00`:
+  - Startup guard in `/Users/chap/devel/cabadrive-worktrees/032-term-translations`: `pwd` returned the assigned worktree, `git status --short --branch` returned `## codex/032-term-translations...origin/codex/032-term-translations`, and `git rev-parse HEAD` returned current PR head `06f1d38cf5cd9d07420deb4404ba323032142cad`.
+  - `git diff --name-status a3302746b4ffb6eb8fb642ed60a49ab79b79bde6..HEAD` showed only `M specs/032-term-translations/tasks.md`; the post-effective-head diff is process-evidence-only.
+  - Architect inspected the structured glossary model, all-five-block source conversion, dedicated renderer branch, glossary styles, focused content/E2E assertions, durable manual conversion guidance, Review Agent result, required check state, open task state, process memory, and implementation evidence.
 
-## Final Architect Validation Placeholder
+## Final Architect Validation
 
-- Architect validation pass: pending.
-- Final Architect validation completed at: pending.
-- Architect validated effective content head: pending.
+- Architect validation pass: passed.
+- Final Architect validation completed at: `2026-06-05T00:34:48-03:00`.
+- Architect validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
 - Architect return count: 0.
+- Architect final validation gaps: none.
+- No unresolved Implementation Agent feedback remains.
+- No Architect return was needed.
 
-## Final Analyst Validation Placeholder
+## Final Analyst Validation
 
-- Analyst validation pass: pending.
-- Final Analyst validation completed at: pending.
-- Analyst validated effective content head: pending.
+- Analyst validation pass: passed.
+- Final Analyst validation completed at: `2026-06-05T00:39:21-03:00`.
+- Analyst validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
 - Analyst return count: 0.
+- Analyst final validation gaps: none.
+- Final Analyst validation passed after final Architect validation against the same effective content head.
+- This update records final-validation evidence only in process memory; no non-evidence content changed.
