@@ -94,9 +94,9 @@
 ## Review / PR / Final Validation Prep
 
 - [x] T063 Implementation Agent stages, commits, pushes, and opens/updates one ready PR only if assigned by Orchestrator.
-- [ ] T064 Review Agent checks inventory completeness, layout criteria, source-as-is preservation, no-upscale evidence, mobile layout, and feature-memory compliance. Status: in progress; PR `#198` has two unresolved P2 review threads covering the same ultra-wide mobile source-card root cause.
+- [x] T064 Review Agent checks inventory completeness, layout criteria, source-as-is preservation, no-upscale evidence, mobile layout, and feature-memory compliance. Status: complete; PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c` has required checks passing and both duplicate P2 review threads resolved after same-cycle follow-up evidence.
 - [x] T065 Implementation Agent records and resolves review findings only through Orchestrator assignment. Status: accepted duplicate P2 ultra-wide mobile source-card follow-up implemented and recorded; GitHub review-thread resolution remains Orchestrator/Review coordination.
-- [ ] T066 Orchestrator invokes final Architect validation before final Analyst validation after implementation, checks, review, and feedback disposition are complete.
+- [x] T066 Orchestrator invokes final Architect validation before final Analyst validation after implementation, checks, review, and feedback disposition are complete. Status: final Architect validation recorded below for effective content head `06feced225e2779ce8fd5e33578a5e4d4a43070c`; final Analyst validation remains the next Orchestrator-routed role step.
 
 ## Merge-Gate Blocker Follow-Up
 
@@ -108,7 +108,7 @@
 - [x] T072 Gate-fix Implementation Agent adds focused tests proving `trustedReviewLoginsForAgent("codex")` and `isTrustedReviewLogin(..., "codex")` accept both connector login forms, and proving current-head native Codex review evidence from `chatgpt-codex-connector` is accepted while unknown-login or stale-head evidence is rejected.
 - [x] T073 Gate-fix Implementation Agent updates finalization/blocking-review tests if trusted Codex login defaults affect those paths.
 - [x] T074 Gate-fix Implementation Agent runs affected helper/workflow/finalization tests, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and `pnpm run preflight` if feasible; any omitted check requires recorded evidence and reason.
-- [ ] T075 After the default branch contains the gate fix, Orchestrator reruns or observes `AI Review` for PR `#198` and records that the required check accepts current-head Codex review evidence. Status: pending after the accepted same-cycle product follow-up is implemented and pushed.
+- [x] T075 After the default branch contains the gate fix, Orchestrator reruns or observes `AI Review` for PR `#198` and records that the required check accepts current-head Codex review evidence. Status: complete; PR `#199` landed on `main` at `1f0eb71b9cdb882c44c3b519d11148b402bef7ed`, and `AI Review` passes on PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c`.
 
 ## Review Findings Disposition
 
@@ -162,6 +162,11 @@ Appendix IV group expected full-width unless implementation records a narrow exc
 | `app4-signs-horizontal` | `195-196` |
 | `app4-signs-traffic-lights` | `197-200` |
 
+## Cycle PR Set
+
+- PR `#198`, branch `codex/032-manual-figures-full-width`, head SHA `06feced225e2779ce8fd5e33578a5e4d4a43070c`, status mergeable/clean with required checks passing, purpose manual source figure full-width implementation plus same-cycle panoramic review follow-up, included in final validation.
+- PR `#199`, branch `codex/033-ai-review-login-gate`, squash merge commit on `main` `1f0eb71b9cdb882c44c3b519d11148b402bef7ed`, status merged, purpose AI Review trusted-login gate prerequisite for PR `#198`, included in final validation as prerequisite merge-gate evidence.
+
 ## Decisions
 
 - Architect decision: one implementation PR slice is appropriate unless asset re-export or repository state creates a documented blocker.
@@ -175,16 +180,20 @@ Appendix IV group expected full-width unless implementation records a narrow exc
 - Implementation decision: no hospital-map asset re-export was performed. The existing source-as-is crop remains byte-preserved at `780x335`, the reusable full-width metadata caps it at `maxDisplayWidthPx: 780`, and Playwright asserts runtime display width never exceeds natural width.
 - Implementation follow-up decision `2026-06-05T06:48:49Z`: the accepted duplicate panoramic-mobile P2 findings are implemented with reusable metadata, not card-id CSS. `ManualSourceImageCard` now supports optional `minDisplayWidthPx`; only `app2-mirror-orientation-source-card` opts in with `minDisplayWidthPx: 760` while retaining `maxDisplayWidthPx: 1260` and byte-preserved source-as-is pixels. `SourceImageCardsBlockView` emits `data-min-display-width-px` and `--manual-source-image-min-width`; CSS keeps ordinary full-width figures fit-to-content/no-upscale, while min-width panoramic figures contain horizontal overflow inside the figure only and keep the image width capped by `--manual-source-image-max-width`.
 
+## Dead Ends
+
+- No open dead ends remain for Architect validation. The interim source-image-card TypeScript type placement error was fixed forward in the implementation slice, the AI Review trusted-login gate blocker was split and landed through PR `#199`, and the duplicate panoramic mobile review finding was addressed in PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c`.
+
 ## Known Issues
 
-- Same-cycle review follow-up status: the ultra-wide/panoramic mobile source-card fix is implemented locally in this PR slice and covered by content/static and Playwright mobile evidence. Orchestrator still needs to observe/rerun PR `#198` `AI Review`, handle review-thread resolution, and route final Architect/Analyst validation after the pushed head is checked.
-- Hospital map quality disposition: the current `780x335` source-as-is asset is intentionally capped at natural width. The user-visible fix is layout/full-width treatment bounded by no-upscale, not browser upscaling or source-pixel editing.
-- Merge-gate prerequisite resolved: default branch now contains the AI Review trusted-login compatibility fix from PR `#199` / `1f0eb71b9cdb882c44c3b519d11148b402bef7ed`. `AI Review` still needs to be rerun or observed for PR `#198` after the accepted same-cycle product follow-up.
+- Architect disposition: resolved. Same-cycle review follow-up status is complete for Architect validation. The ultra-wide/panoramic mobile source-card fix is implemented in this PR slice and covered by content/static and Playwright mobile evidence; Orchestrator evidence shows `AI Review` passing and both duplicate review threads resolved on PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c`.
+- Architect disposition: accepted. Hospital map quality remains intentionally bounded by the current `780x335` source-as-is asset natural width. The user-visible fix is layout/full-width treatment bounded by no-upscale, not browser upscaling or source-pixel editing.
+- Architect disposition: resolved. The merge-gate prerequisite is complete because default branch contains the AI Review trusted-login compatibility fix from PR `#199` / `1f0eb71b9cdb882c44c3b519d11148b402bef7ed`, and `AI Review` has been observed passing for PR `#198` after the accepted same-cycle product follow-up.
 
 ## Implementation Agent Feedback
 
-- Same-cycle required follow-up from review: implement the accepted duplicate P2 panoramic mobile source-card fix from `PRRT_kwDOSX65IM6HQU-W` and `PRRT_kwDOSX65IM6HQdFB`. Use reusable metadata/CSS contract rather than new card-id selectors; preserve protected source images and compact-card behavior; add focused content/static contract coverage and Playwright mobile evidence for `app2-mirror-orientation-source-card`.
-- Implementation follow-up feedback `2026-06-05T06:48:49Z`: no new Architect disposition is needed from implementation. The follow-up stayed within the assigned scope and did not identify additional product or architecture issues.
+- Architect disposition: accepted and addressed. Same-cycle required follow-up from review implemented the duplicate P2 panoramic mobile source-card fix from `PRRT_kwDOSX65IM6HQU-W` and `PRRT_kwDOSX65IM6HQdFB` with reusable metadata/CSS, protected source images preserved, compact-card behavior preserved, and focused content/static plus Playwright mobile evidence for `app2-mirror-orientation-source-card`.
+- Architect disposition: not needed. Implementation follow-up feedback `2026-06-05T06:48:49Z` stayed within the assigned scope and did not identify additional product or architecture issues.
 
 ## Verification Evidence
 
@@ -215,3 +224,18 @@ Appendix IV group expected full-width unless implementation records a narrow exc
   - `test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-safety-elements-desktop-chromium.png`
   - `test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-safety-elements-mobile-chromium.png`
 - `git diff --check` passed after this evidence update.
+
+### Final Validation Evidence
+
+- Effective content head: 06feced225e2779ce8fd5e33578a5e4d4a43070c
+- Current-PR-head read-only guard: current PR head equals effective content head 06feced225e2779ce8fd5e33578a5e4d4a43070c; any later commit used for finalization evidence contains only final-validation process-memory lines after this effective content head.
+- Limit escalation: none.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T06:57:40Z
+- Architect validated effective content head: 06feced225e2779ce8fd5e33578a5e4d4a43070c
+- Architect return count: 0.
+- Architect validation evidence: Cycle PR set covers PR `#198` manual figure layout work plus prerequisite PR `#199` gate fix landed on `main`; PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c` is mergeable/clean with required checks `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passing, duplicate P2 panoramic review threads resolved, acceptance covered by full source-card inventory/no-upscale/mobile-scroll/preflight evidence, and process memory records feedback disposition with no open Architect gaps.
+- Architect gaps: none found.

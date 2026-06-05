@@ -180,3 +180,11 @@ Out of scope for this intake:
 ## Analyst Handoff
 
 This intake is ready for Orchestrator handoff to Architect. The corrective intent is clear: pages `185-186`, `Исходная схема посадки водителя`, `Исходная карта больниц`, and all similar whole-document source visuals must stop rendering as tiny thumbnails or visibly poor-quality images and must instead use the available page/content width where that matches the original manual's visual role, while preserving source-as-is official imagery, selectable Russian explanatory text outside protected images, local-first constraints, and existing manual navigation/content boundaries.
+
+## Final Analyst Validation Notes
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-05T07:01:59Z
+- Analyst validated effective content head: 06feced225e2779ce8fd5e33578a5e4d4a43070c
+- Analyst validation evidence: PR `#198` current head `06feced225e2779ce8fd5e33578a5e4d4a43070c` satisfies the user's full-document image sizing and quality intent: reported pages `185`/`186`, `app3-body-posture-source-card`, and `app2-hospital-map-source-card` are covered as full-width examples; the whole-manual source-image-card inventory records `38` cards with `31` full-width and `7` intentional compact dispositions, including Appendix IV pages `185-200`; protected source-as-is and no-upscale rules preserve official pixels and bound the `780px` hospital map instead of degrading it; the mobile panoramic follow-up for `app2-mirror-orientation-source-card` is implemented; required checks pass and duplicate review threads are resolved; the workflow preserved strict Orchestrator routing with Analyst, Architect, Implementation Agent, and Review Agent boundaries.
+- Analyst return count: 0; within the limit of 5. No Analyst gaps or new Architect dispositions are required.
