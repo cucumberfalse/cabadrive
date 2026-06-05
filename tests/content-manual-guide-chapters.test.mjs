@@ -2120,7 +2120,35 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
   assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
   assert.equal(examplesById.get("blind-spot-visual").status, "needs-implementation");
-  assert.equal(examplesById.get("headrest-combined-diagram").status, "needs-implementation");
+  assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
+  const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
+  assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
+  assert.equal(headrestRecord.status, "implemented-app2-only");
+  assert.equal(
+    headrestRecord.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg"
+  );
+  assert.equal(
+    headrestRecord.sourceAssetPath,
+    "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg"
+  );
+  assert.deepEqual(headrestRecord.dimensions, { width: 820, height: 600 });
+  assert.equal(headrestRecord.sha256, "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c");
+  assert.equal(headrestRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(headrestRecord.runtimeDisplay.cardId, "app2-headrest-combined-source-card");
+  assert.match(headrestRecord.remainingScopeNote, /App1 page 113/u);
+  assert.deepEqual(
+    headrestRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    [
+      "Altura apoyacabeza:Высота подголовника",
+      "Distancia del apoyacabeza:Расстояние до подголовника",
+      "Bueno:Хорошо",
+      "Aceptable:Допустимо",
+      "Regular:Средне",
+      "Malo:Плохо",
+      "Botón de desbloqueo:Кнопка разблокировки"
+    ]
+  );
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -2164,7 +2192,24 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
     assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
-    if (sectionId === "app2-highways-hospitals") {
+    if (sectionId === "app2-safety-elements") {
+      assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath:
+              "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true,
+            ownerDecisionDate: "2026-06-05",
+            scope: "app2-page-132-headrest-combined-diagram-only"
+          }
+        ]
+      });
+    } else if (sectionId === "app2-highways-hospitals") {
       assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
         status: "source_image_exceptions_only",
         nonSignVisibleSpanishStatus: "source-image-only",
@@ -2336,30 +2381,25 @@ test("Appendix II safety visuals render as preserved source images with provenan
       sha256: "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
     }
   ];
-  const headrestDiagrams = [
-    {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-      assetKind: "high-resolution-source-diagram-app2-headrest-height",
-      width: 185,
-      height: 105,
-      sha256: "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
-    },
-    {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
-      assetKind: "high-resolution-source-diagram-app2-headrest-distance",
-      width: 260,
-      height: 95,
-      sha256: "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
-    }
-  ];
+  const headrestDiagram = {
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+    sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
+    assetKind: "high-resolution-original-source-diagram-app2-headrest-combined",
+    width: 820,
+    height: 600,
+    sha256: "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
+  };
 
   assert.match(app2SafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(app2SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.png/u);
   assert.match(app2SafetyElementsModuleSource, /seatbelt-use-photo-source-as-is\.png/u);
-  assert.match(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
-  assert.match(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /headrest-combined-diagram-source-as-is\.jpg/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /app2-headrest-combined-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*820/u);
+  assert.match(app2SafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
+  assert.match(app2SafetyElementsModuleSource, /termTranslations[\s\S]*Altura apoyacabeza[\s\S]*Высота подголовника[\s\S]*Botón de desbloqueo[\s\S]*Кнопка разблокировки/u);
+  assert.match(appSource, /manual-source-image-term-translations/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
@@ -2401,30 +2441,41 @@ test("Appendix II safety visuals render as preserved source images with provenan
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
   }
 
-  for (const expectation of headrestDiagrams) {
-    const asset = localAssetByPath(safety, expectation.assetPath);
-    assert.equal(asset.assetCategory, "source-transferred-diagram");
-    assert.equal(asset.assetKind, expectation.assetKind);
-    assert.equal(asset.containsText, false);
-    assert.equal(asset.visibleSpanish, false);
-    assert.equal(asset.cleanupScope, "none-source-as-is");
-    assert.equal(asset.width, expectation.width);
-    assert.equal(asset.height, expectation.height);
-    assert.equal(asset.sha256, expectation.sha256);
-    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
-    assert.equal(asset.diagramTransfer.sourceDiagramTransfer, true);
-    assert.equal(asset.diagramTransfer.sourceAssetPath, expectation.sourceAssetPath);
-    assert.equal(asset.diagramTransfer.sourceCropSha256, expectation.sha256);
-    assert.deepEqual(asset.diagramTransfer.sourceCropDimensions, { width: expectation.width, height: expectation.height });
-    assert.equal(asset.diagramTransfer.noApproximateRedraw, true);
-    assert.equal(asset.diagramTransfer.noReconstruction, true);
-    assert.equal(asset.diagramTransfer.noGenericIconReplacement, true);
-    assert.equal(asset.diagramTransfer.broadMaskPlatePatchStatus, "none");
-    assert.equal(sha256File(asset.assetPath), expectation.sha256);
-    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
-  }
+  const headrestAsset = localAssetByPath(safety, headrestDiagram.assetPath);
+  assert.equal(headrestAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(headrestAsset.assetKind, headrestDiagram.assetKind);
+  assert.equal(headrestAsset.containsText, true);
+  assert.equal(headrestAsset.visibleSpanish, true);
+  assert.equal(headrestAsset.cleanupScope, "none-source-as-is");
+  assert.equal(headrestAsset.width, headrestDiagram.width);
+  assert.equal(headrestAsset.height, headrestDiagram.height);
+  assert.equal(headrestAsset.sha256, headrestDiagram.sha256);
+  assert.equal(headrestAsset.runtimeDisplaySize.maxWidthCssPx, 820);
+  assert.equal(headrestAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(headrestAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(headrestAsset.sourceIntegrity.sourceAssetPath, headrestDiagram.sourceAssetPath);
+  assert.equal(headrestAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(headrestAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(headrestAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(headrestAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(headrestAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(headrestAsset.sourceImageException.scope, "app2-page-132-headrest-combined-diagram-only");
+  assert.deepEqual(
+    headrestAsset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    [
+      "Altura apoyacabeza:Высота подголовника",
+      "Distancia del apoyacabeza:Расстояние до подголовника",
+      "Bueno:Хорошо",
+      "Aceptable:Допустимо",
+      "Regular:Средне",
+      "Malo:Плохо",
+      "Botón de desbloqueo:Кнопка разблокировки"
+    ]
+  );
+  assert.equal(sha256File(headrestAsset.assetPath), headrestDiagram.sha256);
+  assert.equal(sha256File(headrestDiagram.sourceAssetPath), headrestDiagram.sha256);
 
-  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), ...headrestDiagrams.map((entry) => entry.sourceAssetPath)]) {
+  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), headrestDiagram.sourceAssetPath]) {
     assert.ok(
       safety.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourceAssetPath === sourceAssetPath),
       `${sourceAssetPath} is recorded in Appendix II safety sourceRegionMetadata`
@@ -2849,6 +2900,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "headrest-position-source-card",
     "sri-types-source-card",
     "app2-hospital-map-source-card",
+    "app2-headrest-combined-source-card",
     "app2-mirror-orientation-source-card",
     "app2-seatbelt-use-source-card",
     "app3-body-posture-source-card",
@@ -2880,8 +2932,6 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   ]);
   const expectedCompactCardIds = new Set([
     "mirror-orientation-source-card",
-    "app2-headrest-height-source-card",
-    "app2-headrest-distance-source-card",
     "dni-source-card",
     "license-source-card",
     "beginner-sign-source-card",
@@ -2907,7 +2957,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-warning-page-188-source-card", 705]
   ]);
 
-  assert.equal(cards.length, 38);
+  assert.equal(cards.length, 37);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(
@@ -4037,6 +4087,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   ]);
   for (const requiredCategory of [
     "source-as-is-photo",
+    "source-as-is-diagram",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
     "source-as-is-map",
@@ -4050,6 +4101,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.equal(evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"), false);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
     "source-as-is-photo",
+    "source-as-is-diagram",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking"
   ]);

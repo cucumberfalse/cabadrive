@@ -702,6 +702,10 @@ export type ManualGuideContentBlock =
           sourceAsIs: true;
         };
         sourceImageException?: OriginalSourceImageTextException;
+        termTranslations?: {
+          termEs: string;
+          translationRu: string;
+        }[];
         russianOverlayLabels?: {
           id: string;
           textRu: string;

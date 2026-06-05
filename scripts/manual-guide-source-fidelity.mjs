@@ -176,6 +176,7 @@ const legacyVisualEvidenceSectionIds = new Set([
 ]);
 const strictImageAssetCategories = new Set([
   "source-as-is-photo",
+  "source-as-is-diagram",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
   "source-as-is-map",
@@ -185,6 +186,7 @@ const strictImageAssetCategories = new Set([
 ]);
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
+  "source-as-is-diagram",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking"
 ]);

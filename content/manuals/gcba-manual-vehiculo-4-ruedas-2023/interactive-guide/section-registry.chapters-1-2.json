@@ -9334,76 +9334,26 @@
           {
             "sourcePage": 132,
             "sourceRegion": {
-              "x": 970,
+              "x": 1040,
               "y": 2160,
-              "width": 1190,
-              "height": 185
+              "width": 820,
+              "height": 600
             },
-            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-position-source-crop.png",
+            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
             "cropDimensions": {
-              "width": 1190,
-              "height": 185
+              "width": 820,
+              "height": 600
             },
-            "cropSha256": "dfd5ca451974f2ba73f846ef5ff91a901aef89aebc4e99d4296ddd6cd11f29c9",
-            "cleanupScope": "source-crop-for-glyph-level-transfer",
+            "cropSha256": "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c",
+            "cleanupScope": "cropped-source-as-is-combined-diagram-with-visible-spanish-terms",
             "extractionScaleEvidence": {
               "target": "x5-zoom-source-export",
-              "method": "Focused crop exported from the Appendix II page 132 x5 source evidence and verified by dimensions and SHA-256; source crop is retained without resizing or cleanup before the transferred runtime PNG cleanup.",
+              "method": "Conservative source-faithful crop exported from the Appendix II page 132 x5 source evidence with sips --cropToHeightWidth 600 820 --cropOffset 2160 1040. The crop preserves the two headrest diagrams, Bueno/Aceptable/Regular/Malo labels, Boton de desbloqueo diagram, and a small bottom/page-number margin so protected text is not cut. Runtime asset is byte-identical to this validation crop and is retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
               "outputDimensions": {
-                "width": 1190,
-                "height": 185
+                "width": 820,
+                "height": 600
               },
-              "sha256": "dfd5ca451974f2ba73f846ef5ff91a901aef89aebc4e99d4296ddd6cd11f29c9"
-            }
-          },
-          {
-            "sourcePage": 132,
-            "sourceRegion": {
-              "x": 1330,
-              "y": 2240,
-              "width": 185,
-              "height": 105
-            },
-            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-            "cropDimensions": {
-              "width": 185,
-              "height": 105
-            },
-            "cropSha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
-            "cleanupScope": "cropped-source-diagram-only-no-spanish-labels",
-            "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Focused diagram crop exported from the Appendix II page 132 x5 source evidence. Spanish labels are outside the crop boundary; diagram pixels are retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
-              "outputDimensions": {
-                "width": 185,
-                "height": 105
-              },
-              "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
-            }
-          },
-          {
-            "sourcePage": 132,
-            "sourceRegion": {
-              "x": 1520,
-              "y": 2250,
-              "width": 260,
-              "height": 95
-            },
-            "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
-            "cropDimensions": {
-              "width": 260,
-              "height": 95
-            },
-            "cropSha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
-            "cleanupScope": "cropped-source-diagram-only-no-spanish-labels",
-            "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Focused diagram crop exported from the Appendix II page 132 x5 source evidence. Spanish labels are outside the crop boundary; diagram pixels are retained without resizing, cleanup, retouching, relabeling, or reconstruction.",
-              "outputDimensions": {
-                "width": 260,
-                "height": 95
-              },
-              "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
+              "sha256": "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
             }
           }
         ],
@@ -9480,81 +9430,91 @@
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
-            "assetKind": "high-resolution-source-diagram-app2-headrest-height",
-            "assetCategory": "source-transferred-diagram",
-            "width": 185,
-            "height": 105,
-            "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
-            "containsText": false,
-            "visibleSpanish": false,
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-diagram-app2-headrest-combined",
+            "assetCategory": "source-as-is-diagram",
+            "width": 820,
+            "height": 600,
+            "sha256": "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c",
+            "containsText": true,
+            "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
             "extractionScaleEvidence": {
               "target": "x5-zoom-source-export",
-              "method": "Runtime headrest-height diagram is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
+              "method": "Runtime headrest combined diagram is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, translation, or reconstruction. Russian term translations are selectable DOM text outside the image.",
               "outputDimensions": {
-                "width": 185,
-                "height": 105
+                "width": 820,
+                "height": 600
               },
-              "sha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
+              "sha256": "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 185,
+              "maxWidthCssPx": 820,
               "noUpscale": true
             },
-            "diagramTransfer": {
-              "sourceDiagramTransfer": true,
-              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-              "sourceCropSha256": "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b",
-              "sourceCropDimensions": {
-                "width": 185,
-                "height": 105
-              },
-              "noApproximateRedraw": true,
-              "noReconstruction": true,
-              "noGenericIconReplacement": true,
-              "broadMaskPlatePatchStatus": "none"
-            }
-          },
-          {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
-            "assetKind": "high-resolution-source-diagram-app2-headrest-distance",
-            "assetCategory": "source-transferred-diagram",
-            "width": 260,
-            "height": 95,
-            "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
-            "containsText": false,
-            "visibleSpanish": false,
-            "cleanupScope": "none-source-as-is",
-            "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime headrest-distance diagram is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, or reconstruction.",
-              "outputDimensions": {
-                "width": 260,
-                "height": 95
-              },
-              "sha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "conservativeCropKeepsBottomWhitespaceAndPageNumber": true
             },
-            "runtimeDisplaySize": {
-              "maxWidthCssPx": 260,
-              "noUpscale": true
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app2-page-132-headrest-combined-diagram-only"
             },
-            "diagramTransfer": {
-              "sourceDiagramTransfer": true,
-              "sourceAssetPath": "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
-              "sourceCropSha256": "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead",
-              "sourceCropDimensions": {
-                "width": 260,
-                "height": 95
+            "termTranslations": [
+              {
+                "termEs": "Altura apoyacabeza",
+                "translationRu": "Высота подголовника"
               },
-              "noApproximateRedraw": true,
-              "noReconstruction": true,
-              "noGenericIconReplacement": true,
-              "broadMaskPlatePatchStatus": "none"
-            }
+              {
+                "termEs": "Distancia del apoyacabeza",
+                "translationRu": "Расстояние до подголовника"
+              },
+              {
+                "termEs": "Bueno",
+                "translationRu": "Хорошо"
+              },
+              {
+                "termEs": "Aceptable",
+                "translationRu": "Допустимо"
+              },
+              {
+                "termEs": "Regular",
+                "translationRu": "Средне"
+              },
+              {
+                "termEs": "Malo",
+                "translationRu": "Плохо"
+              },
+              {
+                "termEs": "Botón de desbloqueo",
+                "translationRu": "Кнопка разблокировки"
+              }
+            ]
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app2-page-132-headrest-combined-diagram-only"
+            }
+          ]
+        },
         "selectableTextStatus": {
           "status": "pass",
           "evidence": "app2-safety-elements is rendered as selectable Russian DOM text; Spanish is limited to sourceTextEs/evidence metadata."
@@ -9574,7 +9534,8 @@
         "visualReviewNotes": [
           "Appendix II safety-elements runtime now preserves key source visual instructions: mirror and seat-belt photo pairs as tight source-as-is x5 crops, and the page 132 headrest-position diagrams as tight source diagram crops with Spanish labels outside the crop boundaries.",
           "The page 130 and page 131 source-as-is photo crops exclude surrounding Spanish caption/body text; Russian explanation is outside the images. No photo, traffic sign, road marking, source crop, source page render, or protected source-as-is visual pixels are translated, relabeled, retouched, masked, inpainted, reconstructed, or otherwise changed.",
-          "The page 132 headrest diagram crops preserve source silhouettes, dashed guides, pictograms, geometry, and spacing without Spanish cleanup or broad cover artifacts. Page 150 hospital map handling is recorded in app2-highways-hospitals as an owner-approved source-as-is visible-Spanish exception: the x5 source map is reused byte-identically at runtime, and Russian title/list translations are adjacent to or below the unchanged image as selectable DOM text."
+          "The page 132 headrest combined diagram is now a source-as-is crop from the x5 official page render. Spanish labels remain inside the protected image, Russian term translations render as selectable DOM text below, and the conservative crop intentionally keeps some bottom whitespace/page number rather than risk clipping protected labels.",
+          "Page 150 hospital map handling remains recorded in app2-highways-hospitals as an owner-approved source-as-is visible-Spanish exception: the x5 source map is reused byte-identically at runtime, and Russian title/list translations are adjacent to or below the unchanged image as selectable DOM text."
         ],
         "checkerResult": "pass"
       }

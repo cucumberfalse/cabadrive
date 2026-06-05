@@ -8,6 +8,10 @@ const spaceAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg";
 const spaceSourceAssetPath =
   "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg";
+const headrestAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg";
+const headrestSourceAssetPath =
+  "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg";
 
 const deniedCopyPatterns = [
   {
@@ -91,10 +95,13 @@ const userExampleRecords = [
   {
     id: "headrest-combined-diagram",
     label: "Headrest combined diagram",
-    status: "needs-implementation",
+    status: "implemented",
     sourcePages: [113, 132],
-    runtimeTargets: ["headrest-position-source-card", "app2-headrest-height-source-card", "app2-headrest-distance-source-card"],
-    notes: "Pending later batch: combined official Spanish image as-is with external Russian term glossary."
+    runtimeTargets: ["app2-headrest-combined-source-card"],
+    assetPath: headrestAssetPath,
+    sourceAssetPath: headrestSourceAssetPath,
+    notes:
+      "Implemented for app2 only in this narrow batch: page 132 combined Spanish diagram is shown as source pixels with external Russian term glossary. App1 headrest remains outside this slice and is not claimed complete here."
   },
   {
     id: "mobility-space-50-people",
@@ -261,6 +268,50 @@ function mobilitySpaceRecord() {
   };
 }
 
+function headrestCombinedRecord() {
+  const dimensions = existsSync(headrestAssetPath) ? readImageDimensions(headrestAssetPath) : null;
+  const sourceDimensions = existsSync(headrestSourceAssetPath) ? readImageDimensions(headrestSourceAssetPath) : null;
+  return {
+    id: "headrest-combined-diagram",
+    status: "implemented-app2-only",
+    sourcePage: 132,
+    sourceRegion: {
+      coordinateSystem: "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg pixels",
+      x: 1040,
+      y: 2160,
+      width: 820,
+      height: 600
+    },
+    extractionMethod:
+      "Source-faithful crop from retained official Appendix II page-132 x5 source render using sips cropOffset 2160 1040, crop 600x820. The runtime asset is byte-identical to this validation/source crop.",
+    assetPath: headrestAssetPath,
+    sourceAssetPath: headrestSourceAssetPath,
+    dimensions,
+    sourceDimensions,
+    sha256: existsSync(headrestAssetPath) ? sha256File(headrestAssetPath) : null,
+    sourceSha256: existsSync(headrestSourceAssetPath) ? sha256File(headrestSourceAssetPath) : null,
+    protectedImagePolicy:
+      "Spanish terms and diagram pixels remain unchanged inside the protected image; Russian translations are rendered below as selectable DOM text.",
+    runtimeDisplay: {
+      cardId: "app2-headrest-combined-source-card",
+      maxDisplayWidthPx: dimensions?.width ?? null,
+      noUpscale: true,
+      translationDomSelector: ".manual-source-image-term-translations"
+    },
+    terms: [
+      { termEs: "Altura apoyacabeza", translationRu: "Высота подголовника" },
+      { termEs: "Distancia del apoyacabeza", translationRu: "Расстояние до подголовника" },
+      { termEs: "Bueno", translationRu: "Хорошо" },
+      { termEs: "Aceptable", translationRu: "Допустимо" },
+      { termEs: "Regular", translationRu: "Средне" },
+      { termEs: "Malo", translationRu: "Плохо" },
+      { termEs: "Botón de desbloqueo", translationRu: "Кнопка разблокировки" }
+    ],
+    remainingScopeNote:
+      "This record covers only app2 page 132. App1 page 113 headrest visuals remain pending for a separate slice."
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -270,7 +321,7 @@ const document = {
   scopeStatus: "first-controlled-batch-partial",
   userExamples: userExampleRecords,
   copyAudit,
-  visualRecords: [mobilitySpaceRecord()],
+  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord()],
   remainingRequiredExamples: userExampleRecords
     .filter((entry) => entry.status !== "implemented")
     .map((entry) => ({ id: entry.id, label: entry.label, status: entry.status, notes: entry.notes }))

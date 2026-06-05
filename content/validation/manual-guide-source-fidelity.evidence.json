@@ -856,6 +856,7 @@
     },
     "assetCategories": [
       "source-as-is-photo",
+      "source-as-is-diagram",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
       "source-as-is-map",
@@ -867,6 +868,7 @@
     ],
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
+      "source-as-is-diagram",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking"
     ],

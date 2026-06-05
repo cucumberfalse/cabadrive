@@ -528,6 +528,84 @@
   above; final PR validation remains blocked until full source-fidelity/content
   validation is restored.
 
+## App2 Headrest Combined Diagram Micro-Slice Evidence - 2026-06-05
+
+- Implementation Agent status: ultra-narrow Orchestrator-assigned slice for
+  PR `#200` only. Scope is limited to the Appendix II/app2 headrest combined
+  diagram; do not treat feature `034`, whole-document visual completeness, app1
+  headrest, Appendix IV signs, hospital map, blind spot, tire, `Matafuegos`, or
+  `Chaleco reflectivo` as complete from this evidence.
+- Startup status before this slice was clean:
+  `## codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`.
+  Assigned worktree, branch, and PR were confirmed:
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  `codex/034-manual-visual-content-crop`, PR `#200`; current saved HEAD before
+  this slice was `22235ea380e5f686a9743a8ac40bc2684fcfa1ee`.
+- Created protected combined runtime asset
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg`
+  and identical validation/source asset
+  `content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg`.
+  Both are `820x600`, SHA-256
+  `cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c`.
+- Extraction command used the retained official x5 page render as source:
+  `sips --cropToHeightWidth 600 820 --cropOffset 2160 1040 content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg --out content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg`.
+  The crop is intentionally conservative: it keeps some bottom whitespace and
+  the page number rather than risk clipping protected labels. Visual check
+  confirmed the single image preserves `Altura apoyacabeza`,
+  `Distancia del apoyacabeza`, `Bueno`, `Aceptable`, `Regular`, `Malo`, and
+  `Botón de desbloqueo`; protected Spanish pixels were not translated,
+  cleaned, retouched, relabeled, redrawn, masked, or reconstructed.
+- Runtime data now replaces the two split app2 cards
+  `app2-headrest-height-source-card` and
+  `app2-headrest-distance-source-card` with one full-width source-image card
+  `app2-headrest-combined-source-card`, `visibleSpanish: true`,
+  `maxDisplayWidthPx: 820`, and `sourceImageException` scoped to the protected
+  source image only.
+- Added `termTranslations` support to source-image cards and rendered the app2
+  Spanish terms as selectable DOM text below the image:
+  `Altura apoyacabeza` -> `Высота подголовника`,
+  `Distancia del apoyacabeza` -> `Расстояние до подголовника`,
+  `Bueno` -> `Хорошо`, `Aceptable` -> `Допустимо`,
+  `Regular` -> `Средне`, `Malo` -> `Плохо`,
+  `Botón de desbloqueo` -> `Кнопка разблокировки`.
+- Added strict source-fidelity vocabulary category `source-as-is-diagram` so
+  protected diagrams with visible Spanish can use the same no-edit/no-upscale
+  source-as-is validation path without being misclassified as photos.
+- Updated
+  `scripts/manual-guide-visual-completeness-audit.mjs` and regenerated
+  `content/validation/manual-guide-visual-completeness.evidence.json`.
+  The `headrest-combined-diagram` user example is recorded as implemented for
+  app2 only with runtime asset path, source asset path, hash, dimensions,
+  source region, protected-image policy, no-upscale display cap, DOM
+  translation selector, and a note that app1 page 113 remains outside this
+  slice.
+- Updated `tests/content-manual-guide-chapters.test.mjs` to expect the app2
+  combined card/asset/translations/evidence instead of the old split app2
+  headrest assets. The reusable source-image-card inventory count changed from
+  `38` to `37` because two app2 split cards became one full-width card.
+- Verification so far:
+  `node scripts/manual-guide-visual-completeness-audit.mjs` passed;
+  focused `node --test --test-name-pattern "Manual guide visual completeness audit records user examples and blocks learner-facing provenance copy|Appendix II safety visuals render as preserved source images with provenance evidence|Appendix II sections retain passenger-transport legal, safety, health, and route details|Manual guide source-fidelity evidence schema records strict full-manual visual policy" tests/content-manual-guide-chapters.test.mjs`
+  passed (`4` pass, `92` skipped);
+  `pnpm run validate:manual-guide` passed;
+  `pnpm exec tsc --noEmit` passed.
+- Full `node --test tests/content-manual-guide-chapters.test.mjs` still fails
+  only at the pre-existing blocker documented by Orchestrator:
+  `Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy baseline evidence allowed`,
+  assertion message
+  `ch1-public-transport-system baseline evidence remains legacy before planned audit`,
+  expected `false`, actual `true`. Headrest-specific tests pass.
+- Process note: `node scripts/check-feature-memory.mjs --worktree` was run
+  before this `tasks.md` evidence entry existed and failed because product
+  paths had changed without a feature-memory diff. This was a sequencing
+  issue; rerun after this tasks update is required and should be recorded
+  below.
+- Final verification for this micro-slice:
+  `node scripts/check-feature-memory.mjs --worktree` passed after this
+  `tasks.md` update with
+  `Feature-memory gate passed via specs/034-manual-visual-content-crop/{spec,plan,tasks}.md`;
+  `git diff --check` passed.
+
 ## Initial Evidence Notes
 
 - Orchestrator read-only evidence: `sign-sheet-185-source-as-is.jpg` natural

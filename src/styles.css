@@ -2895,6 +2895,40 @@ small,
   line-height: 1.42;
 }
 
+.manual-source-image-term-translations {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+
+.manual-source-image-term-translation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding-block: 4px;
+  border-top: 1px solid rgba(71, 93, 88, 0.16);
+}
+
+.manual-source-image-term-translation dt,
+.manual-source-image-term-translation dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+.manual-source-image-term-translation dt {
+  color: #41514d;
+  font-weight: 800;
+}
+
+.manual-source-image-term-translation dd {
+  color: #1b6680;
+  font-weight: 900;
+}
+
 @media (max-width: 840px) {
   .status-strip,
   .manual-public-transport-comparison-layout,

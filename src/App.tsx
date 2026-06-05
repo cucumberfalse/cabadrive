@@ -2562,6 +2562,16 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
               <div>
                 <h4>{card.titleRu}</h4>
                 <p>{card.bodyRu}</p>
+                {card.termTranslations && (
+                  <dl className="manual-source-image-term-translations" aria-label="Перевод подписей на изображении">
+                    {card.termTranslations.map((term) => (
+                      <div className="manual-source-image-term-translation" key={term.termEs}>
+                        <dt lang="es">{term.termEs}</dt>
+                        <dd>{term.translationRu}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
               </div>
             </article>
           );

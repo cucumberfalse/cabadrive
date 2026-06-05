@@ -30,9 +30,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-safety-elements/page-131-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
       "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-position-source-crop.png",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-133-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-134-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-135-safety-elements-source-crop.jpg",
@@ -45,7 +43,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     notes: [
       "Pages 125-136 are implemented as selectable Russian DOM text with key source visual instructions preserved at runtime.",
       "The mirror and seat-belt visuals are tight x5 source-as-is photo crops with surrounding Spanish caption/body text translated outside the image.",
-      "The headrest-position visual is preserved as tight x5 source diagram crops that exclude Spanish labels; Russian explanation remains selectable outside the images, and no protected photo, traffic sign, road marking, source crop, or source page render is modified."
+      "The page 132 headrest-position visual is preserved as one source-as-is combined diagram crop with Spanish labels unchanged inside the image and Russian term translations rendered as selectable DOM text below it."
     ]
   },
   blocks: [
@@ -235,38 +233,42 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       id: "headrest-position-source-visual",
       kind: "source-image-cards",
       titleRu: "Положение подголовника",
-      sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
+      sourceTextEs:
+        "Altura apoyacabeza, distancia del apoyacabeza, Bueno, Aceptable, Regular, Malo y Botón de desbloqueo.",
       cards: [
         {
-          id: "app2-headrest-height-source-card",
-          titleRu: "Схема высоты",
-          displayMode: "compact",
+          id: "app2-headrest-combined-source-card",
+          titleRu: "Как выставить подголовник",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 820,
           sourcePage: 132,
-          sourceRegion: { x: 1330, y: 2240, width: 185, height: 105 },
-          assetPath: `${assetRoot}/headrest-height-diagram-source-as-is.png`,
+          sourceRegion: { x: 1040, y: 2160, width: 820, height: 600 },
+          assetPath: `${assetRoot}/headrest-combined-diagram-source-as-is.jpg`,
           altRu:
-            "Схема высоты подголовника без испанских подписей, с сохраненными силуэтами головы и направляющими линиями.",
-          visibleSpanish: false,
+            "Цельная испанская схема регулировки подголовника по высоте, расстоянию и кнопке разблокировки.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
           bodyRu:
-            "Фрагмент показывает, что верх подголовника должен соответствовать верхней части головы, а центральная часть - линии глаз. Испанские подписи не входят в этот визуал; правило приведено русским текстом рядом."
-        },
-        {
-          id: "app2-headrest-distance-source-card",
-          titleRu: "Схема дистанции",
-          displayMode: "compact",
-          sourcePage: 132,
-          sourceRegion: { x: 1520, y: 2250, width: 260, height: 95 },
-          assetPath: `${assetRoot}/headrest-distance-diagram-source-as-is.png`,
-          altRu:
-            "Схема дистанции подголовника без испанских подписей, с сохраненными силуэтами головы и вертикальными направляющими.",
-          visibleSpanish: false,
-          bodyRu:
-            "Фрагмент сохраняет исходную геометрию расстояния между головой и подголовником. Чем ближе подголовник к голове без неудобства, тем лучше защита от хлыстовой травмы; русское объяснение находится вне изображения."
+            "Верх подголовника должен быть примерно на уровне верхней части головы, центр - около линии глаз. По расстоянию лучше, когда подголовник ближе к голове без неудобства: так он эффективнее снижает риск хлыстовой травмы.",
+          termTranslations: [
+            { termEs: "Altura apoyacabeza", translationRu: "Высота подголовника" },
+            { termEs: "Distancia del apoyacabeza", translationRu: "Расстояние до подголовника" },
+            { termEs: "Bueno", translationRu: "Хорошо" },
+            { termEs: "Aceptable", translationRu: "Допустимо" },
+            { termEs: "Regular", translationRu: "Средне" },
+            { termEs: "Malo", translationRu: "Плохо" },
+            { termEs: "Botón de desbloqueo", translationRu: "Кнопка разблокировки" }
+          ]
         }
       ],
       visualNotes: [
-        "The headrest visuals are tight source diagram crops from the Appendix II page 132 x5 evidence.",
-        "Spanish labels are excluded by crop boundary rather than cleaned or covered; silhouettes, dashed guides, pictograms, and spatial relationships are source pixels."
+        "The headrest visual is a source-as-is crop from the Appendix II page 132 x5 evidence using sips cropOffset 2160 1040 and crop 600x820.",
+        "Spanish labels remain unchanged inside the protected image; Russian term translations are rendered as selectable DOM text below the card."
       ]
     },
     {
