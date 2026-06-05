@@ -74,8 +74,8 @@
 
 | Purpose | Branch / PR | Base SHA | Head SHA | Status | Included in final validation |
 | --- | --- | --- | --- | --- | --- |
-| Analyst intake and Architect planning | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | current PR head `06f1d38cf5cd9d07420deb4404ba323032142cad` | intake/planning included in ready PR and covered by final Architect validation | yes |
-| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | effective content head `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`; current PR head `06f1d38cf5cd9d07420deb4404ba323032142cad` includes later process-evidence-only commits | ready PR open; required checks green; Review Agent reported no findings | yes |
+| Analyst intake and Architect planning | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | current PR head `e8b2df62f0a2991d1f8092ac0708bfe07f1640bd` | intake/planning included in ready PR and covered by final Architect validation; later commits are process-evidence-only | yes |
+| Implementation slice | `codex/032-term-translations` / PR [#197](https://github.com/cucumberfalse/cabadrive/pull/197) | `51e42f657d867fb802bbe3a68591b6008b45a60f` | effective content head `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`; current PR head `e8b2df62f0a2991d1f8092ac0708bfe07f1640bd` includes later process-evidence-only commits | ready PR open; required checks green at prior review/final-validation observations; Review Agent reported no findings | yes |
 
 ## Decisions
 
@@ -95,17 +95,18 @@
 
 ## Known Issues
 
-- No unresolved implementation known issues.
-- Context-sensitive terms reviewed in implementation: `Baliza`, `Ciclorodado`, `Detención`, `Estacionamiento`, `Sobrepaso`, `Tránsito`, and `Vía rápida` now have concise learner-facing `translationRu` values and are covered by content/E2E assertions where high risk.
-- Existing front-glossary screenshot paths remain in `visualEvidence`; focused Playwright and in-app Browser DOM evidence supersede old wording for the new structured term/translation treatment.
+- No unresolved known issues.
+- Context-sensitive translation review evidence: `Baliza`, `Ciclorodado`, `Detención`, `Estacionamiento`, `Sobrepaso`, `Tránsito`, and `Vía rápida` now have concise learner-facing `translationRu` values and are covered by content/E2E assertions where high risk. Resolution: resolved by implementation evidence; no further Architect disposition needed.
+- Front-glossary visual evidence compatibility: existing screenshot paths remain in `visualEvidence`, and focused Playwright plus in-app Browser DOM evidence supersede old wording for the new structured term/translation treatment. Resolution: superseded by current verification evidence.
 
 ## Implementation Agent Feedback
 
-- None. No Architect disposition requested.
+- No unresolved Implementation Agent feedback.
 
 ## Verification Evidence
 
-- Effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
+- Effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Current-PR-head read-only guard: effective content head a3302746b4ffb6eb8fb642ed60a49ab79b79bde6; current PR head e8b2df62f0a2991d1f8092ac0708bfe07f1640bd; post-effective-head diff paths are specs/032-term-translations/feature-request.md, specs/032-term-translations/spec.md, and specs/032-term-translations/tasks.md; the diff after the effective content head is evidence-only final-validation process memory and no non-evidence content changed.
 - Architect read-only context gathered on `2026-06-05`:
   - `git rev-parse HEAD` returned `51e42f657d867fb802bbe3a68591b6008b45a60f`.
   - Branch is `codex/032-term-translations`.
@@ -139,6 +140,7 @@
   - Commit `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6` pushed to `origin/codex/032-term-translations`.
   - Ready PR opened against `main`: https://github.com/cucumberfalse/cabadrive/pull/197.
   - Post-PR branch updates are process-memory evidence only.
+  - Final-validation evidence-only commit `e8b2df62f0a2991d1f8092ac0708bfe07f1640bd` changed only `specs/032-term-translations/feature-request.md`, `specs/032-term-translations/spec.md`, and `specs/032-term-translations/tasks.md`.
   - Review Agent reported no findings for PR #197 at head `06f1d38cf5cd9d07420deb4404ba323032142cad` and posted the no-findings comment: https://github.com/cucumberfalse/cabadrive/pull/197#issuecomment-4627831171.
   - Final Architect validation read-only `gh pr checks 197 --repo cucumberfalse/cabadrive` observed all required checks passing: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
 - Final Architect validation evidence on `2026-06-05T00:34:48-03:00`:
@@ -146,11 +148,26 @@
   - `git diff --name-status a3302746b4ffb6eb8fb642ed60a49ab79b79bde6..HEAD` showed only `M specs/032-term-translations/tasks.md`; the post-effective-head diff is process-evidence-only.
   - Architect inspected the structured glossary model, all-five-block source conversion, dedicated renderer branch, glossary styles, focused content/E2E assertions, durable manual conversion guidance, Review Agent result, required check state, open task state, process memory, and implementation evidence.
 
+## Final Validation Evidence
+
+- Effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Architect validation: passed at 2026-06-05T00:34:48-03:00 for effective content head a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Architect validated effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Architect return count: 0
+- Analyst validation: passed at 2026-06-05T00:39:21-03:00 for effective content head a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Analyst validated effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Analyst return count: 0
+- Current-PR-head read-only guard: effective content head a3302746b4ffb6eb8fb642ed60a49ab79b79bde6; current PR head e8b2df62f0a2991d1f8092ac0708bfe07f1640bd; post-effective-head diff paths are specs/032-term-translations/feature-request.md, specs/032-term-translations/spec.md, and specs/032-term-translations/tasks.md; diff after the effective content head is evidence-only final-validation process memory and no non-evidence content changed.
+- Final-validation evidence-only commit: e8b2df62f0a2991d1f8092ac0708bfe07f1640bd records role/process evidence only in specs/032-term-translations/feature-request.md, specs/032-term-translations/spec.md, and specs/032-term-translations/tasks.md
+- Limit escalation: none
+- Analyst feedback Architect disposition: no unresolved Implementation Agent feedback; no Architect follow-up required
+
 ## Final Architect Validation
 
-- Architect validation pass: passed.
-- Final Architect validation completed at: `2026-06-05T00:34:48-03:00`.
-- Architect validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
+- Effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T00:34:48-03:00
+- Architect validated effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
 - Architect return count: 0.
 - Architect final validation gaps: none.
 - No unresolved Implementation Agent feedback remains.
@@ -158,9 +175,9 @@
 
 ## Final Analyst Validation
 
-- Analyst validation pass: passed.
-- Final Analyst validation completed at: `2026-06-05T00:39:21-03:00`.
-- Analyst validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-05T00:39:21-03:00
+- Analyst validated effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
 - Analyst return count: 0.
 - Analyst final validation gaps: none.
 - Final Analyst validation passed after final Architect validation against the same effective content head.

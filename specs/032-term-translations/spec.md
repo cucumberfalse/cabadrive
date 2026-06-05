@@ -202,10 +202,10 @@ Recommended focused test additions:
 
 ### Final Architect Validation
 
-- Effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
-- Architect validation pass: passed.
-- Final Architect validation completed at: `2026-06-05T00:34:48-03:00`.
-- Architect validated effective content head: `a3302746b4ffb6eb8fb642ed60a49ab79b79bde6`.
+- Effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T00:34:48-03:00
+- Architect validated effective content head: a3302746b4ffb6eb8fb642ed60a49ab79b79bde6
 - Architect return count: 0.
 - Architect final validation gaps: none.
 - Final-validation scope confirmed PR #197 / `codex/032-term-translations` current head `06f1d38cf5cd9d07420deb4404ba323032142cad`; commits after the effective content head touch only `specs/032-term-translations/tasks.md` and are process-evidence-only.
