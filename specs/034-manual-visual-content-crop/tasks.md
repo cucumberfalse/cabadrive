@@ -2364,7 +2364,7 @@ No pending known issues.
 
 ## Cycle PR Set
 
-- PR `#200` <https://github.com/cucumberfalse/cabadrive/pull/200>, branch `codex/034-manual-visual-content-crop`, effective content head SHA `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, current read-only guard head SHA `f48738e448186c67d918320941081b333befa8aa`, status included in final validation and finalization readiness evidence.
+- PR `#200` <https://github.com/cucumberfalse/cabadrive/pull/200>, branch `codex/034-manual-visual-content-crop`, effective content head SHA `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`; finalization/merge requires the final Orchestrator read-only guard to run against the actual current PR head at that time and compare it with the effective content head.
 
 ## Final Validation Evidence
 
@@ -2376,7 +2376,79 @@ No pending known issues.
 - Analyst return count: 0
 - Analyst validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
 - Effective content head: validated by Architect and Analyst; later changes are role/process memory evidence only.
-- Current-PR-head read-only guard: Orchestrator verified current PR head `f48738e448186c67d918320941081b333befa8aa` against effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`; the range diff contains only `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` under `specs/034-manual-visual-content-crop/`.
-- Current-PR-head read-only guard: For effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, PR `#200` was open, mergeable, not draft, required checks were green on current head, review threads were empty, and `node scripts/check-feature-memory.mjs --worktree` passed.
+- Current-PR-head read-only guard: committed process memory must not pre-record a fixed current-head SHA as final-guard-verified. Immediately before finalization/merge, Orchestrator must run a live read-only guard that compares the actual current PR head with effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` and proves any intervening diff is final-validation evidence-only.
+- Current-PR-head read-only guard readiness: For effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, PR `#200` was open, mergeable, not draft, required checks were green on the observed head, review threads were empty, and `node scripts/check-feature-memory.mjs --worktree` passed. This readiness evidence supports but does not replace the live final Orchestrator guard against the actual current PR head immediately before merge.
 - Analyst feedback Architect disposition: all Analyst and Implementation Agent feedback items are disposed, resolved, accepted, or not needed for PR `#200`.
 - Limit escalation: none
+
+## Architect Disposition: Moving Current-Head Guard Evidence P2 - 2026-06-05
+
+- [x] T193 Architect receives and dispositions Codex AI Review thread
+  `PRRT_kwDOSX65IM6HgTO3` P2 on PR `#200` current head
+  `2d42d040604b2c35b809dc2959cf3de9206e2b7f`, path
+  `specs/034-manual-visual-content-crop/tasks.md` around line `2379`.
+- [x] T194 Architect accepts the finding as a same-cycle process blocker
+  before completion/finalization. Durable finalization evidence must not name
+  a moving PR current-head SHA such as
+  `f48738e448186c67d918320941081b333befa8aa` as if it remains current after a
+  later process-memory commit. The stable head for durable memory is effective
+  content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`; the mutable PR
+  current head must be verified by Orchestrator live immediately before
+  finalization/merge.
+- [x] T195 Implementation Agent superseded the `Cycle PR Set` wording that
+  currently says `current read-only guard head SHA
+  f48738e448186c67d918320941081b333befa8aa`. Replace that exact-current-head
+  wording with durable wording such as `actual current PR head at
+  finalization, to be verified by the final Orchestrator read-only guard`,
+  while still recording PR `#200`, branch
+  `codex/034-manual-visual-content-crop`, and effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`.
+- Implementation evidence: `Cycle PR Set` now records PR `#200`, branch
+  `codex/034-manual-visual-content-crop`, and effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, and requires the final
+  Orchestrator read-only guard to verify the actual current PR head at
+  finalization/merge time.
+- [x] T196 Implementation Agent superseded the `Final Validation Evidence`
+  line that says Orchestrator verified current PR head
+  `f48738e448186c67d918320941081b333befa8aa`. Replace it with guard wording
+  that does not pre-record a moving current-head SHA and instead requires the
+  final Orchestrator read-only current-PR-head guard to compare the actual
+  current PR head at finalization with effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`.
+- Implementation evidence: `Final Validation Evidence` now states that
+  committed process memory must not pre-record a fixed current-head SHA as
+  final-guard-verified, and it requires a live final Orchestrator guard against
+  the actual current PR head immediately before finalization/merge.
+- [x] T197 Implementation Agent preserved the stable final-validation
+  evidence: `Effective content head:
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, Architect and Analyst validated
+  effective-content-head markers, return counts, limit escalation, feedback
+  disposition, and known-issue disposition. Do not claim the SHA of the commit
+  that contains this process-memory fix as already guard-verified.
+- Implementation evidence: stable final-validation evidence and effective
+  content head markers remain intact; this process-memory fix does not claim
+  its commit SHA as final-guard-verified.
+- [x] T198 Implementation Agent kept this fix process-memory-only. Do not
+  edit product code, runtime assets, tests, validation evidence JSON,
+  package/workflow files, durable runtime docs, or protected source assets.
+- Implementation evidence: changed files are limited to
+  `specs/034-manual-visual-content-crop/tasks.md`.
+- [x] T199 Implementation Agent verified this process fix with
+  `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and
+  `git status --short --branch`, then record that T182 remains an Orchestrator
+  finalization guard: after this process-only commit and required checks are
+  green, Orchestrator must run a fresh live current-PR-head guard on the actual
+  latest PR head immediately before finalization/merge.
+- Implementation evidence: `node scripts/check-feature-memory.mjs --worktree`
+  passed with `No configured product paths changed; feature-memory gate
+  passes.`; `git diff --check` passed with no output; `git status --short
+  --branch` showed only `specs/034-manual-visual-content-crop/tasks.md`
+  modified on branch `codex/034-manual-visual-content-crop`. T182 remains the
+  live final Orchestrator guard and has not been run or claimed by
+  Implementation Agent.
+- [x] T200 Completion/finalization blocker disposition recorded: T195-T199 are
+  implemented/evidenced, but completion/finalization remains blocked until AI
+  Review thread `PRRT_kwDOSX65IM6HgTO3` is resolved, made outdated by the
+  process-memory fix, or explicitly accepted by Orchestrator under the
+  completion contract. T182 remains the live final Orchestrator guard and has
+  not been run or claimed by Implementation Agent.
