@@ -19,7 +19,7 @@ export function normalizeLogin(login) {
 }
 
 const defaultTrustedReviewLogins = {
-  codex: ["chatgpt-codex-connector[bot]"],
+  codex: ["chatgpt-codex-connector[bot]", "chatgpt-codex-connector"],
   claude: ["claude[bot]"],
   gemini: ["gemini-code-assist[bot]"]
 };
