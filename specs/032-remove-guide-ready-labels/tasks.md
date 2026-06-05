@@ -66,12 +66,12 @@
 
 ## Review Requirements
 
-- [ ] T044 Review Agent verifies complete feature memory and role-boundary compliance.
-- [ ] T045 Review Agent verifies the diff is narrow and justified by the `Руководство` ready-label request.
-- [ ] T046 Review Agent verifies no unrelated status/source labels, official/unofficial disclosures, manual content, archive metadata, validators, backend/runtime, PDF, or service-worker behavior changed unexpectedly.
-- [ ] T047 Review Agent verifies implemented manual section data attributes and deep-link behavior remain intact.
-- [ ] T048 Review Agent verifies Appendix III evidence, active-state evidence, no visible/accessibility-exposed `готово`, and Implementation Agent verification evidence.
-- [ ] T049 Review Agent verifies Implementation Agent feedback has Architect disposition before final validation.
+- [x] T044 Review Agent verifies complete feature memory and role-boundary compliance.
+- [x] T045 Review Agent verifies the diff is narrow and justified by the `Руководство` ready-label request.
+- [x] T046 Review Agent verifies no unrelated status/source labels, official/unofficial disclosures, manual content, archive metadata, validators, backend/runtime, PDF, or service-worker behavior changed unexpectedly.
+- [x] T047 Review Agent verifies implemented manual section data attributes and deep-link behavior remain intact.
+- [x] T048 Review Agent verifies Appendix III evidence, active-state evidence, no visible/accessibility-exposed `готово`, and Implementation Agent verification evidence.
+- [x] T049 Review Agent verifies Implementation Agent feedback has Architect disposition before final validation.
 
 ## Acceptance Checklist
 
@@ -142,3 +142,45 @@
 - `node scripts/check-feature-memory.mjs --worktree`: passed via `specs/032-remove-guide-ready-labels/{spec,plan,tasks}.md`.
 - `git diff --check`: passed with no output.
 - `pnpm run preflight`: passed. The command completed `check-feature-memory`, `check:repo`, `validate:content`, `pnpm run test` with 401/401 tests, repeated `pnpm run build`, and `pnpm run test:e2e` with 78/78 browser tests across `chromium` and `mobile`.
+- Review Agent evidence: PR #196 review `PRR_kwDOSX65IM8AAAABCDucOQ` / review id `4433091641` recorded `Codex Review: No blocking findings for b671cae9699c0bacfd2cd0961e630e663de20252`, covering scoped ready-label removal, feature memory, pending labels, route/deep-link state, active state, diagnostic metadata, and recorded verification evidence.
+
+## Cycle PR Set
+
+- PR #196: https://github.com/cucumberfalse/cabadrive/pull/196
+- Branch: `codex/032-remove-guide-ready-labels`
+- Purpose: remove learner-visible `готово` labels from `Руководство` manual navigation while preserving route/deep-link behavior, active state, pending labels, and status/source diagnostics.
+- Base SHA: `51e42f657d867fb802bbe3a68591b6008b45a60f`
+- Current/effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Status at Architect validation: open, ready for review/merge coordination, mergeable, not draft.
+- Included in final validation: yes; this is the only PR slice in the work cycle.
+
+## Final Validation Evidence
+
+- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Architect return count: 0
+- Analyst return count known to Architect before final Analyst validation: 0 from `feature-request.md`.
+- Limit escalation: none.
+- Implementation Agent feedback: none; no Architect disposition required.
+- Known issues: none.
+- Current-PR-head guard: local `HEAD`, remote PR head, and effective content head all equal `b671cae9699c0bacfd2cd0961e630e663de20252`; no later commits exist at this validation time, so no post-validation evidence-only/non-evidence distinction is required.
+- Required checks from `.unicorn-hub/config.json`: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`; read-only PR inspection showed all five completed with `SUCCESS` on `b671cae9699c0bacfd2cd0961e630e663de20252`.
+- PR state evidence: read-only `gh pr view 196` showed PR #196 open, not draft, mergeable, base `main` at `51e42f657d867fb802bbe3a68591b6008b45a60f`, and head `b671cae9699c0bacfd2cd0961e630e663de20252`.
+- Local diff evidence: the cycle diff changes only `src/App.tsx`, `tests/content-manual-guide-chapters.test.mjs`, `tests/e2e/app.spec.ts`, and feature memory under `specs/032-remove-guide-ready-labels/`.
+- Product scope evidence: `src/App.tsx` now renders implemented manual section buttons with the section title as the accessible name and renders `ожидает PR` only for unavailable sections; `data-status`, route hash, source page, source-region metadata, and visual-evidence attributes remain.
+- Test evidence: static tests reject the old implemented `готово` render path, e2e coverage asserts no visible/accessibility-exposed `готово`, includes Appendix III cargo rows, and verifies Appendix III deep links, active state, and content rendering.
+- Verification command evidence: Implementation Agent recorded passing focused static manual-guide tests, focused Playwright manual-guide tests, `pnpm run test`, `pnpm run build`, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and full `pnpm run preflight`.
+- Final Architect validation command evidence: Architect read-only `node scripts/check-feature-memory.mjs --worktree` passed before this final-validation evidence update, and `git diff --check 51e42f657d867fb802bbe3a68591b6008b45a60f..b671cae9699c0bacfd2cd0961e630e663de20252` passed with no output.
+- Role-boundary evidence: Analyst intake, Architect planning, Implementation Agent product/test changes, Review Agent no-finding review, and Orchestrator assignment were all present. The earlier Architect accidental wrong-worktree artifacts were explicitly recovered under Orchestrator authorization by copying only the three Architect-owned files into the assigned worktree and removing only those accidental wrong-location files plus the empty accidental directory.
+- Sibling preservation evidence: no sibling worktree, branch, dirty diff, PR, or process memory was edited by Architect final validation; `/Users/chap/devel/cabadrive/specs/032-manual-figures-full-width/` was not touched.
+
+## Final Architect Validation Notes
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T00:24:56-03:00
+- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Architect validated effective content head: b671cae9699c0bacfd2cd0961e630e663de20252
+- Architect return count: 0
+- Architect validation basis: single cycle PR #196 at head `b671cae9699c0bacfd2cd0961e630e663de20252`; complete feature memory; implementation diff; recorded verification evidence; Review Agent no-blocking review; read-only PR/check inspection; and current local clean status before final-validation evidence editing.
+- Architect customer-intent conclusion: passed. The implementation removes the visible and accessibility-exposed `готово` labels from the `Руководство` navigation, including the Appendix III cargo rows shown in the screenshot, while preserving navigation, active state, route/deep-link behavior, pending affordance, diagnostic status data, and unrelated source/status labels.
+- Architect task/disposition conclusion: all Architect-assigned implementation, verification, documentation, review, acceptance, and process-memory tasks are complete; Implementation Agent feedback is none, known issues are none, and no Architect disposition remains open.
+- Architect gaps: none.

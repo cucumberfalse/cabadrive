@@ -101,10 +101,13 @@ The `Руководство` navigation currently exposes visible `готово`
 
 Append-only Analyst-owned section used only when Orchestrator invokes final Analyst validation after final Architect validation passes.
 
-- Analyst validation pass: not yet invoked
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-05T00:27:21-03:00
+- Analyst validated effective content head: b671cae9699c0bacfd2cd0961e630e663de20252
 - Analyst return count for this work cycle: 0
-- Customer intent check: not yet invoked
-- Gaps, if any: not yet invoked
-- Architect disposition routing: Orchestrator must route any Analyst feedback to Architect for accept/task/ticket/dispose before follow-up development.
-- Analyst limit escalation: If another gap would exceed 5 returns, Analyst creates a new feature request in a separate latest-main branch/worktree and records the handoff.
+- Customer intent check: passed. The final result matches the original request in spirit and letter: the learner-facing `готово` labels are removed from the `Руководство` navigation, including the Appendix III cargo rows shown in the screenshot, while the guide remains navigable and the implementation preserves pending `ожидает PR`, route/deep-link behavior, active state, diagnostic data attributes, and unrelated source/status disclosures.
+- Evidence basis: Analyst reviewed this intake, Architect spec/plan, existing Architect final-validation evidence in `tasks.md`, local HEAD `b671cae9699c0bacfd2cd0961e630e663de20252`, and the effective-content diff. Evidence shows `src/App.tsx` now renders available manual section buttons with title-only visible text and accessible names, renders pending status only for unavailable sections, preserves manual section metadata attributes, and focused static/e2e tests cover absence of visible/accessibility-exposed `готово`, Appendix III cargo rows, active state, data attributes, and Appendix III deep links. Recorded verification includes focused manual-guide tests, full test/build/preflight evidence, green required checks, and Review Agent no-blocking review for PR #196.
+- Gaps, if any: none.
+- Architect disposition routing: No Analyst feedback or gaps require Architect disposition.
+- Analyst limit escalation: Not applicable; return count remains 0.
 - Analyst boundary reminder: Do not edit Architect artifacts, code, reviews, commits, pushes, PRs, merge state, or files outside Analyst-owned intake/final-validation notes except the new feature request required by limit-exceeded escalation.
