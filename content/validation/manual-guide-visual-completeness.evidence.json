@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "featureId": "034-manual-visual-content-crop",
+  "generatedBy": "scripts/manual-guide-visual-completeness-audit.mjs",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "scopeStatus": "first-controlled-batch-partial",
+  "userExamples": [
+    {
+      "id": "appendix-iv-regulatory-signs-no-avanzar",
+      "label": "Appendix IV regulatory signs and NO AVANZAR",
+      "status": "needs-implementation",
+      "sourcePages": [
+        185,
+        186
+      ],
+      "runtimeTargets": [
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card"
+      ],
+      "notes": "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
+    },
+    {
+      "id": "app2-hospital-map-source-card",
+      "label": "Hospital map",
+      "status": "needs-implementation",
+      "sourcePages": [
+        150
+      ],
+      "runtimeTargets": [
+        "app2-hospital-map-source-card"
+      ],
+      "notes": "Pending later batch: best official-original extraction and body-text-scale label readability evidence."
+    },
+    {
+      "id": "seatbelt-headrest-copy-problems",
+      "label": "Seatbelt/headrest learner-facing provenance copy",
+      "status": "implemented",
+      "sourcePages": [
+        113,
+        131,
+        132
+      ],
+      "runtimeTargets": [
+        "app2-seatbelt-use-source-card",
+        "headrest-position-source-card"
+      ],
+      "notes": "The copy guard now scans learner-facing Russian manual-section strings and fails on the provenance/meta phrases named by the user."
+    },
+    {
+      "id": "blind-spot-visual",
+      "label": "Blind-spot visual",
+      "status": "needs-implementation",
+      "sourcePages": [
+        108,
+        128
+      ],
+      "runtimeTargets": [
+        "app1-safety-elements",
+        "app2-safety-elements"
+      ],
+      "notes": "Pending later batch: official full-width blind-spot visual as-is."
+    },
+    {
+      "id": "tire-manufacturing-tread-life",
+      "label": "Tire manufacturing/date and tread-life visual",
+      "status": "needs-implementation",
+      "sourcePages": [
+        108,
+        128
+      ],
+      "runtimeTargets": [
+        "app1-safety-elements",
+        "app2-safety-elements"
+      ],
+      "notes": "Pending later batch: official tire visual export and runtime insertion."
+    },
+    {
+      "id": "matafuegos-chaleco-reflectivo",
+      "label": "Matafuegos and Chaleco reflectivo",
+      "status": "needs-implementation",
+      "sourcePages": [
+        119,
+        135
+      ],
+      "runtimeTargets": [
+        "app1-other-required-safety-elements",
+        "app2-safety-elements"
+      ],
+      "notes": "Pending later batch: official safety equipment visuals at normal manual scale."
+    },
+    {
+      "id": "headrest-combined-diagram",
+      "label": "Headrest combined diagram",
+      "status": "needs-implementation",
+      "sourcePages": [
+        113,
+        132
+      ],
+      "runtimeTargets": [
+        "headrest-position-source-card",
+        "app2-headrest-height-source-card",
+        "app2-headrest-distance-source-card"
+      ],
+      "notes": "Pending later batch: combined official Spanish image as-is with external Russian term glossary."
+    },
+    {
+      "id": "mobility-space-50-people",
+      "label": "50-people mobility-space visual",
+      "status": "implemented",
+      "sourcePages": [
+        23
+      ],
+      "runtimeTargets": [
+        "city-context-infographic"
+      ],
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+      "notes": "Implemented in first controlled batch: official Spanish row crop is shown as-is, and Russian mode translations are selectable DOM text below the image."
+    },
+    {
+      "id": "whole-guide-source-wording-copy-audit",
+      "label": "Whole-guide source/provenance wording cleanup guard",
+      "status": "implemented",
+      "runtimeTargets": [
+        "src/data/manual-sections/*.ts"
+      ],
+      "notes": "Implemented as this audit script and validation command wiring; ordinary legal/source citation context is allowed, while service/provenance visual-card wording fails."
+    }
+  ],
+  "copyAudit": {
+    "status": "pass",
+    "scannedRoot": "src/data/manual-sections",
+    "deniedPatternIds": [
+      "visual-source-label",
+      "main-source-takeaway",
+      "source-quote-card-title",
+      "raw-working-fragment",
+      "saved-as-source"
+    ],
+    "allowedContext": "Ordinary learner-visible legal/source citation wording such as 'source recommends' remains allowed in this first guard; visual-card provenance/service wording is denied.",
+    "findingCount": 0,
+    "findings": []
+  },
+  "visualRecords": [
+    {
+      "id": "mobility-space-50-people",
+      "status": "implemented",
+      "sourcePage": 23,
+      "sourceRegion": {
+        "coordinateSystem": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-context-infographic-source-crop.jpg pixels",
+        "x": 20,
+        "y": 268,
+        "width": 585,
+        "height": 125
+      },
+      "extractionMethod": "Source-faithful crop from retained official page-23 context infographic source crop using sips cropOffset 268 20, crop 125x585. A direct-PDF region probe was attempted first, but this page helper did not isolate the row cleanly enough for the committed output.",
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+      "dimensions": {
+        "width": 585,
+        "height": 125
+      },
+      "sourceDimensions": {
+        "width": 585,
+        "height": 125
+      },
+      "sha256": "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+      "sourceSha256": "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+      "protectedImagePolicy": "Spanish title and mode labels remain inside the official image; Russian translations are rendered below as selectable DOM text.",
+      "runtimeDisplay": {
+        "maxDisplayWidthPx": 585,
+        "noUpscale": true,
+        "translationDomSelector": ".manual-space-labels"
+      },
+      "terms": [
+        {
+          "termEs": "En colectivo",
+          "translationRu": "На автобусе"
+        },
+        {
+          "termEs": "A pie",
+          "translationRu": "Пешком"
+        },
+        {
+          "termEs": "En bicicleta",
+          "translationRu": "На велосипеде"
+        },
+        {
+          "termEs": "En auto",
+          "translationRu": "На автомобиле"
+        }
+      ]
+    }
+  ],
+  "remainingRequiredExamples": [
+    {
+      "id": "appendix-iv-regulatory-signs-no-avanzar",
+      "label": "Appendix IV regulatory signs and NO AVANZAR",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
+    },
+    {
+      "id": "app2-hospital-map-source-card",
+      "label": "Hospital map",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: best official-original extraction and body-text-scale label readability evidence."
+    },
+    {
+      "id": "blind-spot-visual",
+      "label": "Blind-spot visual",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: official full-width blind-spot visual as-is."
+    },
+    {
+      "id": "tire-manufacturing-tread-life",
+      "label": "Tire manufacturing/date and tread-life visual",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: official tire visual export and runtime insertion."
+    },
+    {
+      "id": "matafuegos-chaleco-reflectivo",
+      "label": "Matafuegos and Chaleco reflectivo",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: official safety equipment visuals at normal manual scale."
+    },
+    {
+      "id": "headrest-combined-diagram",
+      "label": "Headrest combined diagram",
+      "status": "needs-implementation",
+      "notes": "Pending later batch: combined official Spanish image as-is with external Russian term glossary."
+    }
+  ]
+}

@@ -99,7 +99,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
     {
       id: "drug-test-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: проверка на наркотические вещества",
+      titleRu: "Проверка на наркотические вещества",
       sourceTextEs: "Instrumento para la medición o detección de estupefacientes.",
       cards: [
         {
@@ -110,11 +110,11 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           sourcePage: 90,
           sourceRegion: { x: 1180, y: 2245, width: 820, height: 300 },
           assetPath: `${assetRoot}/drug-test-source-as-is.jpg`,
-          altRu: "Исходный визуал устройства проверки на наркотические вещества, оставленный без изменений.",
+          altRu: "Визуал устройства проверки на наркотические вещества, сохраненный без изменений.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Визуал оставлен как официальный источник: он показывает устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным русским текстом."
+            "Визуал сохранен без изменений: он показывает устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным русским текстом."
         }
       ],
       visualNotes: [
@@ -149,7 +149,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
     {
       id: "alcohol-limit-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: límites de alcohol en sangre",
+      titleRu: "Límites de alcohol en sangre",
       sourceTextEs: "Límites de alcohol en sangre para conducir.",
       cards: [
         {

@@ -170,20 +170,20 @@ export const app3SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "seatbelt-source-visual",
       kind: "source-image-cards",
-      titleRu: "Исходные фото правильного использования ремня",
+      titleRu: "Фото правильного использования ремня",
       sourceTextEs:
         "Uso correcto del cinturon: debe pasar por la clavicula, quedar sobre los huesos de la cadera y no colocarse sobre el cuello, pecho o abdomen.",
       cards: [
         {
           id: "app3-seatbelt-source-card",
-          titleRu: "Что означает исходное фото",
+          titleRu: "Что означает фото",
           displayMode: "full-width",
           maxDisplayWidthPx: 1175,
           sourcePage: 176,
           sourceRegion: { x: 875, y: 1250, width: 1175, height: 1125 },
           assetPath: `${assetRoot}/seatbelt-source-as-is.png`,
           altRu:
-            "Официальное исходное фото правильного и неправильного использования ремня безопасности, сохраненное без изменений.",
+            "Официальное фото правильного и неправильного использования ремня безопасности, сохраненное без изменений.",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",

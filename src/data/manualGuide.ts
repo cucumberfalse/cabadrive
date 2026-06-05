@@ -287,8 +287,12 @@ export type ManualGuideContentBlock =
       space: {
         titleRu: string;
         assetPath: string;
+        altRu: string;
+        visibleSpanish: boolean;
+        sourceImageException?: OriginalSourceImageTextException;
         modes: {
           id: string;
+          termEs: string;
           labelRu: string;
         }[];
       };

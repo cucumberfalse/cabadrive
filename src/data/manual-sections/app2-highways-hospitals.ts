@@ -84,11 +84,11 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
     {
       id: "hospital-map-disposition",
       kind: "list",
-      titleRu: "Карта больниц на странице источника",
+      titleRu: "Карта больниц CABA",
       sourceTextEs:
         "Mapa de Hospitales Generales de Agudos: Dr. I. Pirovano, A. Zubizarreta, D. Velez Sarsfield, Dr. T. Alvarez, P. Pinero, J. M. Penna, Dr. C. Argerich, J. M. Ramos Mejia, Dr. E. Tornu, Dr. C. Durand, Dr. J. A. Fernandez, B. Rivadavia, Donacion F. Santojanni, Cecilia Grierson.",
       itemsRu: [
-        "По решению владельца от 2026-06-04 карта на странице 150 показана как неизмененное исходное изображение высокого разрешения.",
+        "По решению владельца от 2026-06-04 карта на странице 150 показана как изображение высокого разрешения без правки подписей и маркеров.",
         "Испанские подписи остаются только внутри самой карты; перевод, легенда и список больниц даны рядом и ниже обычным выбираемым русским текстом.",
         "Маркеры H/H1/H2, цвета районов, границы, дороги, линии, иконки и вся геометрия карты сохранены без очистки, дорисовки или ретуши."
       ]
@@ -96,7 +96,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
     {
       id: "hospital-map-source-visual",
       kind: "source-image-cards",
-      titleRu: "Исходная карта больниц",
+      titleRu: "Карта больниц",
       sourceTextEs:
         "Mapa de Hospitales Generales de Agudos.",
       cards: [
@@ -109,7 +109,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1332, y: 1854, width: 780, height: 335 },
           assetPath: `${assetRoot}/hospital-map-source-as-is.png`,
           altRu:
-            "Исходная карта общих больниц CABA с сохраненными испанскими подписями и маркерами H/H1/H2.",
+            "Карта общих больниц CABA с сохраненными испанскими подписями и маркерами H/H1/H2.",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",

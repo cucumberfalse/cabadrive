@@ -1379,7 +1379,24 @@
               "height": 420
             },
             "cropSha256": "960c94c15b55045e80f6cc29115e40552900c2404de88bf6b2f0ab6ea2e5357f",
-            "cleanupScope": "reference-only source crop for city context, trips, and modal-space infographic; runtime uses Russian DOM labels plus non-text source pictogram crop"
+            "cleanupScope": "reference-only source crop for city context, trips, and modal-space infographic; runtime uses native Russian DOM labels for city/trip text and a protected source-as-is crop for the 50-person modal-space row"
+          },
+          {
+            "sourcePage": 23,
+            "sourceRegion": {
+              "x": 300,
+              "y": 698,
+              "width": 585,
+              "height": 125,
+              "unit": "page-023.jpg px; cropped from page-023-context-infographic-source-crop.jpg at x=20 y=268"
+            },
+            "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+            "cropDimensions": {
+              "width": 585,
+              "height": 125
+            },
+            "cropSha256": "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+            "cleanupScope": "protected source-as-is row crop; Spanish title and mode labels preserved inside the image, with Russian term translations outside as DOM text"
           },
           {
             "sourcePage": 23,
@@ -1405,18 +1422,35 @@
             "assetKind": "native-dom-text-and-infographic-data",
             "width": 760,
             "height": 620,
-            "sha256": "179c6ded9d799c8cc0992c1ca5b805eb96ccd9043f1d367f279e8769124ad105",
+            "sha256": "7992132de71078fab4a1d85197893894372f49608dff04e03511f4d3f2518ddb",
             "containsText": true,
             "visibleSpanish": false
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
-            "assetKind": "source-derived-nontext-50-person-space-comparison-row",
+            "assetKind": "high-resolution-original-source-50-person-space-comparison-row",
             "width": 585,
-            "height": 78,
-            "sha256": "baab91b6701ae95b1cde574f3c172ca6b2335e1cb0f84a3905e4021664135b2b",
-            "containsText": false,
-            "visibleSpanish": false
+            "height": 125,
+            "sha256": "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e",
+            "containsText": true,
+            "visibleSpanish": true,
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 585,
+              "noUpscale": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg",
@@ -1428,7 +1462,19 @@
             "visibleSpanish": false
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "kind": "source-image-original-visible-text",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            }
+          ]
+        },
         "selectableTextStatus": "pass",
         "desktopScreenshot": "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-mobile.png",
@@ -1451,12 +1497,12 @@
         ],
         "forbiddenPatternScan": {
           "status": "pass",
-          "notes": "No runtime PDF/page raster, raw page route, visible Spanish, remote asset, broad mask, DOM plate, or fake pending content. Spanish source crops are validation evidence only."
+          "notes": "No runtime PDF/page raster, raw page route, remote asset, broad mask, DOM plate, or fake pending content. The 50-person modal-space row is an explicit protected source-image exception with Spanish text preserved and Russian translations outside the image."
         },
         "visualReviewNotes": [
           "Source page 23 includes a top city-context/trips/modal-space infographic and a bottom vulnerability-order strip; neither visual is omitted.",
-          "Runtime learner content uses native Russian DOM labels for all visible text and local source-derived non-text pictogram crops for the modal-space and vulnerability rows.",
-          "The full Spanish source section crop and focused infographic crops are retained under validation evidence only and are not mounted in the learner view."
+          "The 50-person modal-space visual is now the official Spanish source row shown as-is, with Russian mode translations rendered as selectable DOM text below the image.",
+          "Runtime learner content still uses native Russian DOM labels for the city/trip statistics and the vulnerability strip; protected source pixels in the 50-person visual are not translated, redrawn, masked, or cleaned."
         ],
         "checkerResult": "pass"
       }

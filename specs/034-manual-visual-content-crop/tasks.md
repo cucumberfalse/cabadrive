@@ -261,6 +261,273 @@
   complete until T084-T094 are implemented or Orchestrator records a
   user-disposition blocker for accepted source-limited exceptions.
 
+## Latest Sign And Map Readability Refinement
+
+- [x] T096 Architect receives and dispositions latest user clarification:
+  whole Appendix IV sheets are not enough when signs/captions remain tiny;
+  signs such as `NO AVANZAR` should be extracted/rendered from the official
+  PDF/original in maximum practical quality; external sign captions may be
+  translated into Russian only outside protected sign pixels; text/pixels
+  inside sign bodies, supplementary plates/tablets, and placards remain
+  original; the hospital map must be best-quality official original with
+  readable labels and no internal translation/modification.
+- [x] T097 Architect records this as same-cycle acceptance refinement for
+  feature `034`, not a new feature request and not a reason to edit
+  `feature-request.md`.
+- [x] T098 Architect disposes the interrupted Swift direct PDF source-region
+  helper direction: useful supporting machinery to preserve/adapt, but
+  insufficient by itself if it only proves whole-sheet source limitation. It
+  must be adapted or supplemented for individual sign/sign-row fragments,
+  hospital-map source-region extraction, and maximum-practical official-source
+  quality probes.
+- [ ] T099 Implementation Agent must not treat current Appendix IV
+  `source-limited-exception` evidence as final completion. Final validation is
+  blocked until latest sign-fragment/map requirements are implemented and
+  evidenced, or a narrow evidence-backed blocker is routed to
+  Orchestrator/human after exhausting official-original extraction options.
+- [ ] T100 Implementation Agent must classify Appendix IV sign text/pixels into
+  protected sign body/plate/tablet/placard pixels versus external source
+  captions/labels. Ambiguous text is protected until evidence proves it is
+  external.
+- [ ] T101 Implementation Agent must extract/render individual signs, sign
+  rows, or equivalent official source fragments at maximum practical quality
+  from the canonical official PDF/original or better retained official source.
+  Whole-sheet overview may remain supplementary but cannot be the only
+  user-facing readable sign presentation.
+- [ ] T102 Implementation Agent must make representative signs, including a
+  `NO AVANZAR`-style regulatory sign, visually large enough to inspect with
+  no pixelated browser upscaling.
+- [ ] T103 Implementation Agent may translate external captions/labels under or
+  near signs into Russian DOM/SVG text only when source-region evidence proves
+  those captions are outside the protected sign/plate visual.
+- [ ] T104 Implementation Agent must preserve all text/pixels inside sign
+  bodies, supplementary plates/tablets, and official sign placards exactly as
+  source pixels: no translation, redraw, cleanup, mask, retouch, inpaint,
+  replacement, or relabeling.
+- [ ] T105 Implementation Agent must revisit `app2-hospital-map-source-card`
+  and extract/use the best available official original map source so all map
+  labels are readable with visual font no smaller than nearby document body
+  text.
+- [ ] T106 Implementation Agent must not translate, relabel, clean, redraw,
+  mask, retouch, or otherwise modify anything inside the hospital map image.
+- [ ] T107 Implementation Agent must update data/evidence/tests to record
+  per-sign/row/hospital-map source path, source region, extraction scale/probe
+  method, output dimensions, hashes, runtime display size, no-upscale proof,
+  protected-pixel classification, and translated-external-caption boundaries.
+- [ ] T108 Implementation Agent must update Playwright or equivalent visual
+  evidence with desktop/mobile screenshots for individual Appendix IV signs and
+  the hospital map, including nearby body text comparison.
+- [ ] T109 Implementation Agent must update content/static tests so protected
+  sign interiors and map internals cannot be translated/modified, while
+  external sign captions may be translated only as separate DOM/SVG text.
+- [ ] T110 If official original extraction still cannot meet readability for a
+  user-highlighted visual, Implementation Agent must record a narrow blocker
+  with all official-source attempts and route it to Orchestrator/human. Broad
+  "source-limited" completion is no longer acceptable for Appendix IV signs or
+  the hospital map.
+- [ ] T111 Implementation Agent reruns focused content tests,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+  `pnpm exec tsc --noEmit`, focused Playwright, `git diff --check`, and full
+  preflight if feasible, then records exact evidence in this `tasks.md`.
+
+## Latest Runtime Copy Cleanup Refinement
+
+- [x] T112 Architect receives and dispositions latest user clarification:
+  image/content size should preserve the official original's readability
+  relationship to document text, and runtime guide copy must be audited for
+  learner-facing provenance/service wording such as `источник`,
+  `Визуал источника`, `из источника`, `исходный фрагмент`,
+  `рабочий фрагмент`, `Главный вывод источника`, and similar.
+- [x] T113 Architect records this as same-cycle acceptance refinement for
+  feature `034`, not a new feature request and not a reason to edit
+  `feature-request.md`.
+- [ ] T114 Implementation Agent must audit the whole runtime `Руководство`
+  guide for learner-facing Russian strings containing source/provenance/meta
+  wording, including the explicit user examples:
+  `Визуал источника: правильный ремень`,
+  `Визуал источника: положение подголовника`,
+  `Фотографии сохранены как исходный фрагмент...`, and
+  `Главный вывод источника`.
+- [ ] T115 Implementation Agent must distinguish learner-visible strings from
+  internal technical provenance/evidence fields. Internal fields such as
+  `sourceTextEs`, `sourcePage`, `sourceRegion`, asset paths, validation
+  evidence, specs, and process memory may retain technical source wording.
+- [ ] T116 Implementation Agent must rewrite visual-card titles, card bodies,
+  captions, `visualNotes` that render to learners, `noteRu`, and similar
+  runtime copy into normal adapted Russian learning language.
+- [ ] T117 Implementation Agent must not overlay rewritten copy onto protected
+  maps/signs/photos/diagrams or edit protected pixels. This cleanup is DOM/text
+  copy only unless prior feature rules explicitly allow a separate overlay.
+- [x] T118 Implementation Agent must create or update tests/audit tooling so
+  banned learner-facing provenance wording fails in future. The audit should
+  scan runtime guide strings and include an explicit allowlist only for genuine
+  legal/source citation contexts.
+- [ ] T119 Implementation Agent must record grep/audit evidence showing all
+  runtime guide occurrences of `источник`-family and `исходн*`/`рабочий
+  фрагмент`-style wording are removed, rewritten, or allowlisted with rationale.
+- [ ] T120 Implementation Agent should provide DOM or screenshot evidence for
+  representative rewritten visual cards where useful, especially the examples
+  named by the user.
+- [ ] T121 Implementation Agent must keep the earlier protected-image rules and
+  latest image-quality work intact while doing the copy cleanup.
+- [ ] T122 Final validation remains blocked until both the latest sign/map image
+  quality work and this runtime copy audit/rewrite are implemented and
+  evidenced.
+
+## Consolidated 2026-06-05 Requirements Gate
+
+- [x] T123 Architect receives urgent Orchestrator instruction to consolidate
+  all latest user requirements in feature memory so context compaction does not
+  lose them.
+- [x] T124 Architect records consolidated requirements in `spec.md` as the
+  canonical same-cycle contract for feature `034`, including whole-document
+  visual completeness, image quality/scale, protected-image fidelity, separate
+  term translations, Appendix IV signs, hospital map, blind-spot visual,
+  learner-facing copy cleanup, evidence/tests, and completion gate.
+- [x] T125 Architect records latest concrete visual candidate: the current
+  runtime image/headline `СКОЛЬКО МЕСТА НУЖНО 50 ЛЮДЯМ, ЧТОБЫ
+  ПЕРЕДВИГАТЬСЯ?` with labels `НА АВТОБУСЕ`, `ПЕШКОМ`,
+  `НА ВЕЛОСИПЕДЕ`, and `НА АВТОМОБИЛЕ` appears low-quality/pixelated or
+  reconstructed and must be replaced by the official original image with
+  separate Russian translations outside protected pixels.
+- [ ] T126 Implementation Agent must perform a whole-document visual
+  completeness audit comparing official PDF/manual visual regions to runtime
+  guide visual blocks/assets, not only enumerating images already present in
+  runtime data.
+- [ ] T127 Implementation Agent must disposition every learner-meaningful PDF
+  visual as present, added, duplicate-covered, explicitly omitted with
+  rationale, or narrow missing-image blocker. Learner-meaningful means any
+  image/diagram/photo/infographic/map/sign sheet/chart/icon that conveys a
+  rule, risk, classification, comparison, example, label, or visual term.
+- [ ] T128 Implementation Agent must locate, export from the official
+  PDF/original, and insert or narrowly block the required candidate visuals:
+  tire manufacturing/date and tread-life visual (`Fecha de Fabricación`,
+  `Vida útil de los Neumáticos`), blind-spot visual
+  (`¿A qué se denomina punto ciego?`), `Matafuegos`,
+  `Chaleco reflectivo`, hospital map, Appendix IV signs, headrest diagrams,
+  and the public-space `50` people mobility visual.
+- [ ] T129 Implementation Agent must export images at best available faithful
+  official quality, remove excessive blank/white margins, avoid bitmap
+  stretching, cap runtime display at natural dimensions, and preserve the
+  original image-to-document-text scale relationship. For `Matafuegos`, record
+  the extinguisher visual-height comparison against the user's approximate
+  `15` body-text-line anchor.
+- [ ] T130 Implementation Agent must preserve protected image pixels for maps,
+  blind-spot, headrest, tire, extinguisher, vest, public-space, signs, photos,
+  diagrams, and similar visuals: no redraw, vector recreation, retouching,
+  recoloring, masking, inpainting, cleanup, replacement, or translation inside
+  the image unless a prior accepted feature explicitly allowed a specific
+  overlay/cleanup.
+- [ ] T131 Implementation Agent must keep visuals with Spanish terms as
+  original protected images and add Russian translations/glossaries separately
+  below or near the image as selectable DOM text. This includes the headrest
+  terms `Altura apoyacabeza`, `Distancia del apoyacabeza`, `Bueno`,
+  `Aceptable`, `Regular`, `Malo`, and `Botón de desbloqueo`, and similar
+  term-bearing visuals.
+- [x] T132 Implementation Agent must replace the public-space mobility visual
+  with the official original image, keep image internals unchanged, provide
+  separate Russian translations for terms such as by bus, walking, bicycle, and
+  car, extract at high faithful quality, avoid extra blank margins, and display
+  it at the original-like scale relative to body text.
+- [ ] T133 Implementation Agent must continue the Appendix IV sign follow-up:
+  whole sign sheets are insufficient when signs/captions remain tiny; use large
+  individual signs, sign rows, or source-faithful panels where possible, and
+  translate only proven external catalog captions such as `NO AVANZAR`.
+- [ ] T134 Implementation Agent must continue the hospital-map follow-up:
+  re-extract or verify `app2-hospital-map-source-card` from the best official
+  original source so labels are readable at body-text scale, without translating
+  or modifying the map image.
+- [ ] T135 Implementation Agent must insert/display the blind-spot visual
+  as-is from the official original; it should be full-width/tight like the
+  original and not a small centered image inside a large blank area.
+- [ ] T136 Implementation Agent must audit the whole learner-facing runtime
+  guide copy for provenance/service wording (`источник`, `Визуал источника`,
+  `из источника`, `исходный фрагмент`, `рабочий фрагмент`,
+  `Главный вывод источника`, and similar) and rewrite visible titles, bodies,
+  captions, and notes as normal adapted Russian learning copy. Internal
+  evidence/spec/provenance fields may retain technical `source` wording.
+- [ ] T137 Implementation Agent must preserve the interrupted Swift direct PDF
+  source-region helper work and adapt it where useful, but treat it only as
+  supporting machinery; it is insufficient unless it supports the actual
+  completeness/quality/scale evidence required here.
+- [ ] T138 Implementation Agent must record evidence listing present, added,
+  missing, duplicate-covered, explicitly omitted, and blocker visuals with
+  source page/region, extraction method/scale, asset dimensions, hash where
+  practical, runtime display size, no-upscale proof, protected-image policy,
+  and screenshots.
+- [ ] T139 Implementation Agent must add or update tests/audit scripts so
+  missing meaningful visuals, tiny image displays, excessive blank margins,
+  protected-image edits, missing separate translations, and learner-facing
+  source/provenance wording regressions fail.
+- [ ] T140 Implementation Agent must run and record focused content tests,
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+  `pnpm exec tsc --noEmit`, focused Playwright screenshots/checks for
+  representative required visuals, `git diff --check`, and full
+  `pnpm run preflight` if feasible.
+- [ ] T141 PR `#200` final validation remains blocked until T126-T140 and the
+  explicit user-example checklist below are implemented and evidenced, or every
+  remaining gap is a narrow evidence-backed blocker routed to
+  Orchestrator/human.
+- [x] T142 Architect records the explicit `Context Examples From User` section
+  in `spec.md`, listing the concrete user screenshot/callout examples, why each
+  matters, the expected implementation outcome, and the review/evidence hook.
+- [ ] T143 Implementation Agent must treat `spec.md` section
+  `Context Examples From User` as a named evidence checklist. For each listed
+  example, record one of: implemented with evidence, duplicate-covered with the
+  covering block named, explicitly omitted with rationale, or narrow blocker
+  routed to Orchestrator/human.
+- [ ] T144 Implementation Agent evidence must specifically cover the user
+  examples: Appendix IV regulatory signs and `NO AVANZAR`, hospital map,
+  seatbelt/headrest copy problems, blind-spot visual, tire
+  manufacturing/tread-life visual, `Matafuegos`, `Chaleco reflectivo`,
+  headrest combined diagram/glossary, `50` people mobility-space visual, and
+  whole-guide `источник` wording cleanup.
+
+## First Controlled Batch Evidence - 2026-06-05
+
+- Implementation Agent status: first controlled batch only; do not treat
+  feature `034` as complete.
+- Implemented repeatable audit script
+  `scripts/manual-guide-visual-completeness-audit.mjs`. It writes
+  `content/validation/manual-guide-visual-completeness.evidence.json` and
+  records every `spec.md` `Context Examples From User` example by name with
+  statuses such as `implemented` and `needs-implementation`.
+- Implemented learner-facing copy guard for runtime `Руководство` Russian
+  strings in `src/data/manual-sections/*.ts`. The guard blocks visible
+  provenance/meta wording including `Визуал источника`,
+  `Главный вывод источника`, `исходный фрагмент`, `рабочий фрагмент`, and
+  inappropriate visible `источник` / `из источника`, while allowing internal
+  technical fields such as `sourceTextEs`, `sourcePage`, validation evidence,
+  specs, and process memory. It is wired into `pnpm run validate:manual-guide`
+  and `pnpm run validate:content`.
+- Implemented user example `mobility-space-50-people`: runtime
+  `ch1-sustainable-mobility` now uses the official Spanish source crop
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg`
+  as protected source pixels, with separate selectable Russian term
+  translations below the image. Evidence source crop:
+  `content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg`,
+  dimensions `585x125`, SHA-256
+  `72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e`.
+- Evidence statuses in
+  `content/validation/manual-guide-visual-completeness.evidence.json` mark
+  `mobility-space-50-people`, `seatbelt-headrest-copy-problems`, and
+  `whole-guide-source-wording-copy-audit` as implemented for this batch.
+  Remaining user examples are still `needs-implementation`: Appendix IV
+  regulatory signs / `NO AVANZAR`, hospital map, blind-spot visual, tire
+  manufacturing/tread-life visual, `Matafuegos`, `Chaleco reflectivo`, and
+  headrest combined diagram/glossary.
+- Focused verification passed:
+  `node scripts/manual-guide-visual-completeness-audit.mjs`;
+  `node --test --test-name-pattern "Manual guide visual completeness audit records user examples and blocks learner-facing provenance copy|ch1 sustainable mobility section covers source page 23 infographics and no unrelated section content" tests/content-manual-guide-chapters.test.mjs`
+  (`2` pass, `94` skipped); `git diff --check`.
+- Broader validation note before this checkpoint: full
+  `node --test tests/content-manual-guide-chapters.test.mjs` failed after the
+  runtime copy cleanup because legacy Chapter 1 source-fidelity fingerprints
+  still need a coherent refresh for touched module bytes. Orchestrator
+  checkpoint requested stopping scope growth and using the focused batch checks
+  above; final PR validation remains blocked until full source-fidelity/content
+  validation is restored.
+
 ## Initial Evidence Notes
 
 - Orchestrator read-only evidence: `sign-sheet-185-source-as-is.jpg` natural
@@ -303,6 +570,54 @@
   validation because current crop evidence proves margin removal and
   no-upscale behavior, but does not yet prove that intended-readable text
   inside images is visually no smaller than nearby document body text.
+- Architect disposition `2026-06-05T09:29:59-03:00`: dispose
+  `cedulas-source-card` feedback as a future ticket, not a same-cycle task,
+  not a blocker, and not silently accepted as complete. Rationale:
+  `cedulas-source-card` is a supporting source-document example in
+  `ch2-required-documents`, already displayed full-width with no-upscale
+  source-as-is evidence and adjacent selectable DOM explanation for the
+  learner-critical rule. It is not one of the Appendix IV page-sheet visuals
+  that drove the user's urgent readability complaint, and evidence does not
+  classify it as a source-limited owner-disposition blocker. Implementation
+  correctly avoided replacing it without a reliable high-DPI extraction path
+  because an unsafe replacement could regress protected source fidelity. A
+  separate follow-up should verify or improve source-region/high-DPI extraction
+  for source-document examples, including `cedulas-source-card`, from a fresh
+  Orchestrator-routed feature or task slice if owner priority warrants it.
+  This disposition creates no additional required implementation work in
+  PR `#200`; the remaining completion blocker is the already-recorded
+  Orchestrator/user disposition for Appendix IV source-limited readability
+  exceptions.
+- Architect disposition `2026-06-05T11:19:40-03:00`: latest user clarification
+  blocks final validation and supersedes treating current Appendix IV
+  `source-limited-exception` records as enough for owner disposition. The user
+  wants large official signs/fragments, translated Russian external captions
+  only outside protected sign pixels, and strict preservation of anything
+  inside signs/plates/tablets/placards. The hospital map must also be
+  revisited from the official original/best source so map labels are readable
+  without translating or modifying the map. The interrupted Swift direct
+  source-region helper is useful supporting machinery and must be preserved or
+  adapted by Implementation Agent, but it is insufficient if it only confirms
+  whole-sheet source limitation. PR `#200` requires same-cycle implementation
+  follow-up before review/final validation.
+- Architect disposition `2026-06-05T11:19:40-03:00`: latest runtime-copy
+  clarification is same-cycle acceptance refinement. Learner-facing
+  `Руководство` text must be audited and rewritten so visual-card titles,
+  captions, bodies, and notes read as adapted Russian learning copy rather than
+  provenance/service commentary. Internal evidence/spec/provenance records may
+  keep technical source wording. PR `#200` requires same-cycle implementation
+  follow-up and evidence before review/final validation.
+- Architect disposition `2026-06-05T11:29:09-03:00`: urgent consolidated user
+  requirements and the new public-space `50` people mobility visual are
+  same-cycle acceptance refinements for feature `034`, not a new feature
+  request and not a reason to edit `feature-request.md`. The canonical summary
+  is now recorded in `spec.md`. PR `#200` must not proceed to final validation
+  until the full-document PDF-vs-runtime visual completeness audit, required
+  missing-image additions, original-image protected-pixel handling, separate
+  Russian term translations, image quality/scale evidence, Appendix IV sign
+  work, hospital map work, blind-spot/public-space visuals, and learner-facing
+  copy cleanup are implemented and evidenced, or narrow blockers are routed to
+  Orchestrator/human.
 - Implementation startup decision `2026-06-05T13:24:00-03:00`:
   Implementation Agent assignment confirmed for worktree
   `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
@@ -393,16 +708,36 @@
   each Appendix IV sheet at natural crop width with contained figure scrolling
   on narrow screens, but the strict "no smaller than body text" target remains
   unmet for the smallest Spanish labels and requires Orchestrator/user
-  disposition before final validation.
-  `cedulas-source-card` is separately recorded as Implementation Agent
-  feedback for source-region verification because a reliable high-DPI crop path
-  for the source-document example was not established in this Appendix IV
-  follow-up.
+  disposition before final validation. Latest user clarification now requires
+  implementation follow-up rather than owner acceptance of the broad
+  whole-sheet source-limited path: use large official sign fragments/rows or an
+  equivalent source-faithful layout where possible.
+  Hospital map quality/readability is now an explicit open same-cycle issue:
+  `app2-hospital-map-source-card` must be re-extracted or verified from the
+  official original/best source so map labels are readable and unchanged inside
+  the image.
+  Runtime learner-facing copy audit is also an explicit open same-cycle issue:
+  current guide strings include provenance/meta wording such as
+  `Визуал источника`, `исходный фрагмент`, and `Главный вывод источника`.
+  These must be rewritten as normal Russian learning copy with audit/test
+  evidence before final validation.
+  Whole-document visual completeness is now an explicit open same-cycle issue:
+  the guide must be compared against official PDF visual regions, and missing
+  learner-meaningful visuals must be added or dispositioned. Required named
+  candidates include tire manufacturing/date and tread-life, blind spot,
+  `Matafuegos`, `Chaleco reflectivo`, hospital map, Appendix IV signs,
+  headrest diagrams, and the public-space `50` people mobility visual.
+  `cedulas-source-card` feedback is disposed as a future ticket, not as a
+  same-cycle blocker. It remains a supporting source-document example with
+  existing no-upscale/source-as-is evidence; future work should verify whether
+  a reliable high-DPI source-region extraction can improve it without protected
+  source regression.
 
 ## Implementation Agent Feedback
 
 - Appendix IV source-limited readability exception requires
-  Orchestrator/user disposition before review/final validation as complete:
+  same-cycle implementation follow-up before review/final validation as
+  complete under the latest user clarification:
   `app4-regulatory-page-185-source-card`,
   `app4-regulatory-page-186-source-card`, `app4-warning-page-187-source-card`,
   `app4-warning-page-188-source-card`,
@@ -418,12 +753,30 @@
   `app4-traffic-lights-page-198-source-card`,
   `app4-traffic-lights-page-199-source-card`, and
   `app4-traffic-lights-page-200-source-card`.
-- `cedulas-source-card` remains Implementation Agent feedback for
-  Architect/Orchestrator disposition: the visual crop evidence records
-  attempted page-image and canonical-PDF explicit-region probes, but this
-  follow-up did not replace the source-document example because the reliable
-  high-DPI extraction path was not established without risking protected-source
-  regression.
+- `app2-hospital-map-source-card` now requires same-cycle implementation
+  follow-up for official-original/best-quality map extraction and label
+  readability evidence, with map pixels/text preserved unmodified.
+- Runtime learner-facing Russian guide copy now requires same-cycle
+  implementation follow-up: audit and rewrite source/provenance/meta wording
+  across the whole guide, update tests so regressions fail, and record grep or
+  structured audit evidence.
+- Whole-document visual completeness now requires same-cycle implementation
+  follow-up: compare official PDF/manual visual regions to current runtime
+  guide visuals, add or disposition all learner-meaningful missing visuals, and
+  produce evidence/tests. Named required candidates are tire
+  manufacturing/date and tread-life, blind spot, `Matafuegos`,
+  `Chaleco reflectivo`, hospital map, Appendix IV signs, headrest diagrams,
+  and the public-space `50` people mobility visual. The public-space visual
+  must use the official original image as-is with separate Russian translations
+  below/near the image, not the current low-quality/reconstructed Russian
+  version.
+- Architect disposition for `cedulas-source-card`: future ticket. The visual
+  crop evidence records attempted page-image and canonical-PDF explicit-region
+  probes, but this follow-up did not replace the source-document example
+  because the reliable high-DPI extraction path was not established without
+  risking protected-source regression. This is not a same-cycle task and not an
+  owner-disposition blocker for PR `#200`; Orchestrator may route a later
+  source-document example extraction/readability feature if desired.
 
 ## Verification Evidence
 

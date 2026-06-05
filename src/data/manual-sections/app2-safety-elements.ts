@@ -148,13 +148,13 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "mirror-orientation-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: ориентация зеркал",
+      titleRu: "Ориентация зеркал",
       sourceTextEs:
         "Sólo debe reflejarse como máximo el 10% de la parte trasera del vehículo.",
       cards: [
         {
           id: "app2-mirror-orientation-source-card",
-          titleRu: "Исходные фото зеркал",
+          titleRu: "Фото положения зеркал",
           displayMode: "full-width",
           maxDisplayWidthPx: 1260,
           minDisplayWidthPx: 760,
@@ -162,10 +162,10 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 930, y: 1960, width: 1260, height: 125 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.png`,
           altRu:
-            "Исходные фотографии правильной и неправильной ориентации бокового зеркала, оставленные без изменений.",
+            "Фотографии правильной и неправильной ориентации бокового зеркала, сохраненные без изменений.",
           visibleSpanish: false,
           bodyRu:
-            "Фотофрагмент оставлен как исходный материал без изменений: без перевода, ретуши, дорисовки или изменения дорожной сцены. Испанская подпись перенесена в русский текст: в зеркале должно отражаться не больше 10% задней части собственного транспортного средства."
+            "Фотофрагмент сохранен без изменений: без перевода, ретуши, дорисовки или изменения дорожной сцены. Испанская подпись перенесена в русский текст: в зеркале должно отражаться не больше 10% задней части собственного транспортного средства."
         }
       ],
       visualNotes: [
@@ -192,22 +192,22 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "seatbelt-use-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: правильный ремень",
+      titleRu: "Правильное положение ремня",
       sourceTextEs: "Uso correcto del cinturón de seguridad.",
       cards: [
         {
           id: "app2-seatbelt-use-source-card",
-          titleRu: "Исходные фото положения ремня",
+          titleRu: "Фото положения ремня",
           displayMode: "full-width",
           maxDisplayWidthPx: 1060,
           sourcePage: 131,
           sourceRegion: { x: 1015, y: 2005, width: 1060, height: 285 },
           assetPath: `${assetRoot}/seatbelt-use-photo-source-as-is.png`,
           altRu:
-            "Исходные фотографии правильного и неправильного положения ремня безопасности, оставленные без изменений.",
+            "Фотографии правильного и неправильного положения ремня безопасности, сохраненные без изменений.",
           visibleSpanish: false,
           bodyRu:
-            "Фотографии сохранены как исходный фрагмент: знак правильного и неправильного положения остается частью изображения без изменений. Русские правила расположения ремня приведены в тексте рядом, а испанские пункты под фото не входят в рабочий фрагмент."
+            "Фотографии сохранены без изменений: знак правильного и неправильного положения остается частью изображения. Русские правила расположения ремня приведены в тексте рядом; испанские пункты под фото не входят в этот визуал."
         }
       ],
       visualNotes: [
@@ -234,31 +234,31 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "headrest-position-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: положение подголовника",
+      titleRu: "Положение подголовника",
       sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
       cards: [
         {
           id: "app2-headrest-height-source-card",
-          titleRu: "Исходная схема высоты",
+          titleRu: "Схема высоты",
           displayMode: "compact",
           sourcePage: 132,
           sourceRegion: { x: 1330, y: 2240, width: 185, height: 105 },
           assetPath: `${assetRoot}/headrest-height-diagram-source-as-is.png`,
           altRu:
-            "Исходная схема высоты подголовника без испанских подписей, с сохраненными силуэтами головы и направляющими линиями.",
+            "Схема высоты подголовника без испанских подписей, с сохраненными силуэтами головы и направляющими линиями.",
           visibleSpanish: false,
           bodyRu:
-            "Фрагмент показывает, что верх подголовника должен соответствовать верхней части головы, а центральная часть - линии глаз. Испанские подписи не входят в этот рабочий фрагмент; правило приведено русским текстом рядом."
+            "Фрагмент показывает, что верх подголовника должен соответствовать верхней части головы, а центральная часть - линии глаз. Испанские подписи не входят в этот визуал; правило приведено русским текстом рядом."
         },
         {
           id: "app2-headrest-distance-source-card",
-          titleRu: "Исходная схема дистанции",
+          titleRu: "Схема дистанции",
           displayMode: "compact",
           sourcePage: 132,
           sourceRegion: { x: 1520, y: 2250, width: 260, height: 95 },
           assetPath: `${assetRoot}/headrest-distance-diagram-source-as-is.png`,
           altRu:
-            "Исходная схема дистанции подголовника без испанских подписей, с сохраненными силуэтами головы и вертикальными направляющими.",
+            "Схема дистанции подголовника без испанских подписей, с сохраненными силуэтами головы и вертикальными направляющими.",
           visibleSpanish: false,
           bodyRu:
             "Фрагмент сохраняет исходную геометрию расстояния между головой и подголовником. Чем ближе подголовник к голове без неудобства, тем лучше защита от хлыстовой травмы; русское объяснение находится вне изображения."

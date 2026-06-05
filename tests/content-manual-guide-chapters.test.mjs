@@ -10,6 +10,7 @@ const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interac
 const oldPageRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
 const visualCropEvidencePath = "content/validation/manual-guide-visual-content-crop.evidence.json";
+const visualCompletenessEvidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
@@ -68,6 +69,7 @@ const app4SignsTrafficLightsModulePath = "src/data/manual-sections/app4-signs-tr
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
+const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
 const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
 const implementedSectionIds = new Set([
   "front-presentation",
@@ -2073,6 +2075,54 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio, 0.3652);
 });
 
+test("Manual guide visual completeness audit records user examples and blocks learner-facing provenance copy", () => {
+  assert.equal(visualCompletenessEvidence.schemaVersion, 1);
+  assert.equal(visualCompletenessEvidence.featureId, "034-manual-visual-content-crop");
+  assert.equal(visualCompletenessEvidence.generatedBy, "scripts/manual-guide-visual-completeness-audit.mjs");
+  assert.equal(visualCompletenessEvidence.scopeStatus, "first-controlled-batch-partial");
+  assert.equal(visualCompletenessEvidence.copyAudit.status, "pass");
+  assert.equal(visualCompletenessEvidence.copyAudit.findingCount, 0);
+  assert.deepEqual(
+    visualCompletenessEvidence.copyAudit.deniedPatternIds,
+    ["visual-source-label", "main-source-takeaway", "source-quote-card-title", "raw-working-fragment", "saved-as-source"]
+  );
+
+  const examplesById = new Map(visualCompletenessEvidence.userExamples.map((entry) => [entry.id, entry]));
+  for (const requiredExampleId of [
+    "appendix-iv-regulatory-signs-no-avanzar",
+    "app2-hospital-map-source-card",
+    "seatbelt-headrest-copy-problems",
+    "blind-spot-visual",
+    "tire-manufacturing-tread-life",
+    "matafuegos-chaleco-reflectivo",
+    "headrest-combined-diagram",
+    "mobility-space-50-people",
+    "whole-guide-source-wording-copy-audit"
+  ]) {
+    assert.ok(examplesById.has(requiredExampleId), `${requiredExampleId} appears in user-example audit evidence`);
+    assert.match(examplesById.get(requiredExampleId).status, /^(implemented|needs-implementation|blocked)$/u);
+  }
+
+  const mobilityRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "mobility-space-50-people");
+  assert.ok(mobilityRecord, "mobility-space visual has a concrete evidence record");
+  assert.equal(mobilityRecord.status, "implemented");
+  assert.equal(mobilityRecord.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
+  assert.equal(mobilityRecord.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
+  assert.deepEqual(mobilityRecord.dimensions, { width: 585, height: 125 });
+  assert.equal(mobilityRecord.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(mobilityRecord.runtimeDisplay.noUpscale, true);
+  assert.deepEqual(
+    mobilityRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    ["En colectivo:На автобусе", "A pie:Пешком", "En bicicleta:На велосипеде", "En auto:На автомобиле"]
+  );
+
+  assert.equal(examplesById.get("mobility-space-50-people").status, "implemented");
+  assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
+  assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
+  assert.equal(examplesById.get("blind-spot-visual").status, "needs-implementation");
+  assert.equal(examplesById.get("headrest-combined-diagram").status, "needs-implementation");
+});
+
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
   const safeDriving = sectionById("app3-safe-driving");
   const safetyElements = sectionById("app3-safety-elements");
@@ -3137,17 +3187,32 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   }
   for (const asset of section.implementationEvidence.localAssetMetadata) {
     assert.equal(existsSync(asset.assetPath), true, `${asset.assetPath} exists`);
-    assert.equal(asset.visibleSpanish, false, `${asset.assetPath} records no visible Spanish`);
   }
-  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-50-person-space-comparison-row");
+  const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+
+  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "high-resolution-original-source-50-person-space-comparison-row");
   const vulnerabilityAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-vulnerability-pictogram-row");
   assert.ok(spaceAsset, "space comparison runtime crop metadata exists");
   assert.ok(vulnerabilityAsset, "vulnerability runtime crop metadata exists");
   assert.equal(spaceAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
+  assert.equal(exceptionPaths.includes(spaceAsset.assetPath), true, "space comparison records visible-Spanish source-image exception");
   assert.equal(spaceAsset.width, 585);
-  assert.equal(spaceAsset.height, 78);
-  assert.equal(spaceAsset.sha256, "baab91b6701ae95b1cde574f3c172ca6b2335e1cb0f84a3905e4021664135b2b");
+  assert.equal(spaceAsset.height, 125);
+  assert.equal(spaceAsset.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(spaceAsset.containsText, true);
+  assert.equal(spaceAsset.visibleSpanish, true);
+  assert.equal(spaceAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(spaceAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(spaceAsset.sourceImageException.sourceAsIs, true);
+  assert.equal(spaceAsset.sourceImageException.russianExplanationOutsideImage, true);
+  assert.equal(spaceAsset.runtimeDisplaySize.maxWidthCssPx, 585);
+  assert.equal(spaceAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(spaceAsset.sourceIntegrity.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
   assert.equal(sha256File(spaceAsset.assetPath), spaceAsset.sha256, "space comparison crop bytes match the recorded 50-person row hash");
+  assert.equal(sha256File(spaceAsset.sourceIntegrity.sourceAssetPath), spaceAsset.sha256, "space comparison runtime image matches source crop bytes");
+  assert.equal(vulnerabilityAsset.visibleSpanish, false);
   assert.equal(vulnerabilityAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg");
   assert.equal(vulnerabilityAsset.width, 590);
   assert.equal(vulnerabilityAsset.height, 115);
@@ -3166,6 +3231,11 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
     "84% - поездки жителей внутри города",
     "16% - поездки людей, въезжающих в город",
     "Сколько места нужно 50 людям",
+    "En colectivo",
+    "На автобусе",
+    "A pie",
+    "En bicicleta",
+    "En auto",
     "Устойчивая мобильность - это способ передвигаться плавно",
     "качество городской среды",
     "Мобильность - это право",
@@ -3185,9 +3255,12 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   assert.match(ch1SustainableModuleSource, /kind:\s*"mobility-context"/);
   assert.match(ch1SustainableModuleSource, /kind:\s*"vulnerability-ranking"/);
   assert.match(appSource, /function MobilityContextBlockView/);
+  assert.match(appSource, /data-source-image-exception=\{block\.space\.sourceImageException\?\.kind\}/);
   assert.match(appSource, /function VulnerabilityRankingBlockView/);
   assert.match(stylesSource, /\.manual-mobility-context[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-source-row-scroll[\s\S]*?overflow-x:\s*auto/);
+  assert.match(stylesSource, /\.manual-space-labels[\s\S]*?grid-template-columns:\s*1fr 1\.15fr 1\.15fr 2\.35fr/u);
+  assert.match(stylesSource, /\.manual-space-mobile-pairs[\s\S]*?display:\s*none/u);
   assert.match(ch1SustainableModuleSource, /space-comparison-50-people-source\.jpg/);
   assert.doesNotMatch(ch1SustainableModuleSource, /space-comparison-icons-source\.jpg/);
   assert.match(ch1SustainableModuleSource, /vulnerability-icons-source\.jpg/);

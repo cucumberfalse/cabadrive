@@ -72,7 +72,7 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
     {
       id: "mobility-context-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: контекст мобильности в CABA",
+      titleRu: "Контекст мобильности в CABA",
       sourceTextEs: "Contexto de Ciudad de Buenos Aires.",
       cards: [
         {

@@ -116,24 +116,24 @@ export const ch5AnticipatoryEfficientDrivingSection: ManualGuideSectionContent =
     {
       id: "driving-culture-source-photo",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: дорожное движение как культура",
+      titleRu: "Дорожное движение как часть культуры",
       sourceTextEs:
         "El tránsito, al igual que otras construcciones sociales, es una expresión de la cultura ciudadana.",
       cards: [
         {
           id: "driving-culture-photo-source-card",
-          titleRu: "Фото и цитата источника",
+          titleRu: "Официальное фото и цитата",
           displayMode: "full-width",
           maxDisplayWidthPx: 1500,
           sourcePage: 103,
           sourceRegion: { x: 740, y: 1080, width: 1500, height: 2200 },
           assetPath: `${assetRoot}/driving-culture-photo-source-as-is.jpg`,
           altRu:
-            "Исходное фото и цитата о дорожном движении как выражении городской культуры, оставленные без изменений.",
+            "Фото и цитата о дорожном движении как выражении городской культуры, сохраненные без изменений.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Фото и испанская цитата оставлены как официальный источник без перевода внутри изображения. Смысл цитаты: дорожное движение, как и другие социальные конструкции, является выражением городской культуры."
+            "Фото и испанская цитата сохранены без перевода внутри изображения. Смысл цитаты: дорожное движение, как и другие социальные конструкции, является выражением городской культуры."
         }
       ],
       visualNotes: [

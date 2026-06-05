@@ -83,7 +83,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист сохранен как официальный источник: цвета, стрелки, пиктограммы и испанские подписи не изменены."
+            "Лист сохранен без изменений: цвета, стрелки, пиктограммы и испанские подписи не изменены."
         },
         {
           id: "app4-informational-page-190-source-card",
@@ -131,7 +131,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Страница показана как неизмененный источник. Русский перевод содержания находится ниже, а исходная испанская страница не очищается и не переводится внутри изображения."
+            "Страница сохранена без изменений. Русский перевод содержания находится ниже, а испанская страница не очищается и не переводится внутри изображения."
         }
       ],
       visualNotes: [

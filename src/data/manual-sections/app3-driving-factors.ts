@@ -73,20 +73,20 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
     {
       id: "body-posture-source-visual",
       kind: "source-image-cards",
-      titleRu: "Исходная схема посадки водителя",
+      titleRu: "Схема посадки водителя",
       sourceTextEs:
         "Postura corporal: brazos, piernas, cabeza y espalda, el asiento.",
       cards: [
         {
           id: "app3-body-posture-source-card",
-          titleRu: "Что означает исходная схема",
+          titleRu: "Как читать схему",
           displayMode: "full-width",
           maxDisplayWidthPx: 1350,
           sourcePage: 161,
           sourceRegion: { x: 875, y: 1575, width: 1275, height: 725 },
           assetPath: `${assetRoot}/body-posture-source-as-is.png`,
           altRu:
-            "Официальное исходное изображение посадки водителя с испанскими подписями, сохраненное без изменений.",
+            "Официальное изображение посадки водителя с испанскими подписями, сохраненное без изменений.",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",
@@ -95,7 +95,7 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
             russianExplanationOutsideImage: true
           },
           bodyRu:
-            "Изображение оставлено как источник: не переведено, не перекрашено и не перерисовано. По-русски: руки держат руль на высоте, позволяющей маневрировать с расслабленными плечами; ноги не должны быть полностью прямыми; голова и спина опираются на сиденье; сиденье регулируют так, чтобы корпусу было удобно, а сиденье находилось минимум в 30 cm от пола."
+            "Изображение сохранено без изменений: не переведено, не перекрашено и не перерисовано. По-русски: руки держат руль на высоте, позволяющей маневрировать с расслабленными плечами; ноги не должны быть полностью прямыми; голова и спина опираются на сиденье; сиденье регулируют так, чтобы корпусу было удобно, а сиденье находилось минимум в 30 cm от пола."
         }
       ],
       visualNotes: [

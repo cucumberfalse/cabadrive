@@ -98,7 +98,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "maintenance-recommendations",
       kind: "list",
-      titleRu: "Рекомендации источника по обслуживанию",
+      titleRu: "Рекомендации по обслуживанию",
       sourceTextEs:
         "Amortiguadores en perfecto estado; revisar neumáticos; frenos anualmente; líquido de frenos cada dos años o 50.000 km...",
       itemsRu: [
@@ -165,21 +165,21 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "mirror-orientation-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: ориентация зеркал",
+      titleRu: "Ориентация зеркал",
       sourceTextEs: "Orientación correcta de los espejos retrovisores: máximo 10%.",
       cards: [
         {
           id: "mirror-orientation-source-card",
-          titleRu: "Исходная схема зеркал",
+          titleRu: "Схема ориентации зеркал",
           displayMode: "compact",
           sourcePage: 110,
           sourceRegion: { x: 1570, y: 1008, width: 495, height: 163 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.jpg`,
           altRu:
-            "Исходная схема правильной ориентации зеркал, оставленная без изменений.",
+            "Схема правильной ориентации зеркал, сохраненная без изменений.",
           visibleSpanish: false,
           bodyRu:
-            "Визуал оставлен как исходный фотофрагмент без перевода, ретуши или перерисовки. Испанская подпись страницы перенесена в русский текст: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля."
+            "Фотофрагмент сохранен без перевода, ретуши или перерисовки. Испанская подпись страницы перенесена в русский текст: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля."
         }
       ],
       visualNotes: [
@@ -239,7 +239,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "headrest-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: положение подголовника",
+      titleRu: "Положение подголовника",
       sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
       cards: [
         {
@@ -299,7 +299,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "sri-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: виды SRI",
+      titleRu: "Виды SRI",
       sourceTextEs: "Tipos de SRI.",
       cards: [
         {
@@ -322,7 +322,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
             { id: "sri-group-3", textRu: "8-12 лет, 22-36 kg", xPct: 61.6, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Схема перенесена как источник: пиктограммы и синие номера групп сохранены, испанские буквы очищены, а русские подписи наложены как текстовые элементы страницы."
+            "Схема показывает пиктограммы и синие номера групп; испанские буквы очищены, а русские подписи наложены как текстовые элементы страницы."
         }
       ],
       visualNotes: [

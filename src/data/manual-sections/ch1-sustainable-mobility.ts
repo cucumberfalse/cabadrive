@@ -67,29 +67,42 @@ export const ch1SustainableMobilitySection: ManualGuideSectionContent = {
         titleRu: "Сколько места нужно 50 людям, чтобы передвигаться?",
         assetPath:
           "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+        altRu:
+          "Официальный испанский визуал о том, сколько места нужно пятидесяти людям при передвижении на автобусе, пешком, на велосипеде и на автомобиле.",
+        visibleSpanish: true,
+        sourceImageException: {
+          kind: "source-image-original-visible-text",
+          visibleSpanishScope: "source-image-only",
+          sourceAsIs: true,
+          russianExplanationOutsideImage: true
+        },
         modes: [
           {
             id: "bus",
+            termEs: "En colectivo",
             labelRu: "На автобусе"
           },
           {
             id: "walking",
+            termEs: "A pie",
             labelRu: "Пешком"
           },
           {
             id: "bicycle",
+            termEs: "En bicicleta",
             labelRu: "На велосипеде"
           },
           {
             id: "car",
+            termEs: "En auto",
             labelRu: "На автомобиле"
           }
         ]
       },
       visualNotes: [
         "Map/stat/trip/space composition follows the source order from top to bottom.",
-        "The modal-space pictogram row is a local source-derived crop with Spanish labels excluded.",
-        "All labels and statistics visible to learners are Russian DOM text."
+        "The modal-space visual is the protected official crop with Spanish title and mode labels preserved.",
+        "Russian term translations for the mode labels are rendered as selectable DOM text outside the image."
       ]
     },
     {

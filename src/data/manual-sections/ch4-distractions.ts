@@ -76,7 +76,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
     {
       id: "eating-distraction-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: отвлечение едой и мате",
+      titleRu: "Отвлечение едой и мате",
       sourceTextEs: "Comer, beber, tomar mate y/o fumar...",
       cards: [
         {
@@ -87,7 +87,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           sourcePage: 95,
           sourceRegion: { x: 1190, y: 2160, width: 860, height: 260 },
           assetPath: `${assetRoot}/distraction-panels-transferred-infographic.png`,
-          altRu: "Перенесенный трехпанельный визуал отвлечений с сохраненными исходными рисунками.",
+          altRu: "Трехпанельный визуал отвлечений с сохраненными рисунками.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "distraction-food-label", textRu: "Еда / мате", xPct: 7.2, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" },
@@ -95,7 +95,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
             { id: "distraction-view-label", textRu: "Нет обзора", xPct: 44.4, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Официальный трехпанельный визуал перенесен из x5-фрагмента: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, мате и курение отвлекают внимание и занимают руки."
+            "Трехпанельный визуал сохранен в официальной композиции: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, мате и курение отвлекают внимание и занимают руки."
         }
       ],
       visualNotes: [
@@ -171,22 +171,22 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
     {
       id: "attention-source-photo",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: 100% внимания",
+      titleRu: "100% внимания за рулем",
       sourceTextEs: "Conducir, requiere del 100% de atención y coordinación.",
       cards: [
         {
           id: "attention-photo-source-card",
-          titleRu: "Фото и цитата источника",
+          titleRu: "Фото и цитата",
           displayMode: "full-width",
           maxDisplayWidthPx: 720,
           sourcePage: 97,
           sourceRegion: { x: 1160, y: 1680, width: 720, height: 900 },
           assetPath: `${assetRoot}/attention-photo-source-as-is.jpg`,
-          altRu: "Исходное фото и цитата о 100% внимания и координации, оставленные без изменений.",
+          altRu: "Фото и цитата о 100% внимания и координации, сохраненные без изменений.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Фото и цитата оставлены как официальный источник. Русская строка выше передает смысл: управление требует 100% внимания и координации."
+            "Фото и цитата сохранены без изменений. Русская строка выше передает смысл: управление требует 100% внимания и координации."
         }
       ],
       visualNotes: [
