@@ -19,7 +19,7 @@ export function normalizeLogin(login) {
 }
 
 const defaultTrustedReviewLogins = {
-  codex: ["chatgpt-codex-connector[bot]"],
+  codex: ["chatgpt-codex-connector[bot]", "chatgpt-codex-connector"],
   claude: ["claude[bot]"],
   gemini: ["gemini-code-assist[bot]"]
 };
@@ -34,6 +34,11 @@ export function trustedReviewLoginsForAgent(agent, config = {}) {
 
 export function isTrustedReviewLogin(login, agent, config = {}) {
   return trustedReviewLoginsForAgent(agent, config).has(normalizeLogin(login));
+}
+
+function extractShaLikeMarkers(body) {
+  return [...String(body || "").matchAll(/(?:^|[^A-Za-z0-9])([A-Fa-f0-9]{7,40})(?![A-Za-z0-9])/g)]
+    .map((match) => match[1].toLowerCase());
 }
 
 export function containsBlockingSeverity(body, agent) {
@@ -59,8 +64,11 @@ export function isAcceptableCodexSummaryComment(comment, headSha, headCommittedA
   if (!/^Codex Review:/i.test(body)) return false;
   if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(body)) return false;
 
-  const shortSha = String(headSha || "").slice(0, 10);
-  if (shortSha && (body.includes(headSha) || body.includes(shortSha))) return true;
+  const fullSha = String(headSha || "").toLowerCase();
+  const markers = extractShaLikeMarkers(body);
+  if (markers.length > 0) {
+    return markers.every((marker) => fullSha.startsWith(marker));
+  }
 
   const committedAt = Date.parse(headCommittedAt || "");
   const createdAt = Date.parse(comment?.created_at || "");
