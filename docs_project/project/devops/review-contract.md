@@ -176,9 +176,37 @@ issue, or protected-branch/ruleset policy blockers.
 
 ## Codex
 
-Native GitHub PR review. Blocking findings use `P0`, `P1`, or `P2`. Advisory findings use `P3`. Code review findings must be GitHub inline review threads.
+Native GitHub PR review. Blocking findings use `P0`, `P1`, or `P2`.
+Advisory findings use `P3`. Code review findings must be GitHub inline
+review threads.
 
-When Codex has no inline findings, a top-level `Codex Review:` summary comment from the trusted Codex bot also satisfies the gate, provided it either names the current head SHA in its body or was posted at or after the head commit timestamp (so stale summaries from prior heads cannot pass).
+Codex review evidence is trusted by login, not by GitHub author association.
+By default, the trusted Codex logins are `chatgpt-codex-connector[bot]` and
+`chatgpt-codex-connector`. Repository configuration may add shared trusted
+review logins with `trustedReviewLogins` or Codex-specific logins with
+`trustedReviewLoginsByAgent.codex`, but trusted associations such as `OWNER`,
+`MEMBER`, or `COLLABORATOR` do not satisfy AI review login trust. Unknown
+logins remain rejected.
+
+Native Codex review evidence is current-head only. If the review commit does
+not match the current PR head, it is stale and does not satisfy the gate. A
+trusted current-head Codex review with blocking `P0`, `P1`, or `P2` content
+fails the gate; trusted current-head native review evidence without blocking
+findings may satisfy it under the Codex native review classifier.
+
+When Codex has no inline findings, a top-level `Codex Review:` summary comment
+can also satisfy the gate only when it is from a trusted Codex login and uses
+the no-major-issues wording recognized by the gate, such as `did not find any
+major issues` or the supported contraction variants. Summary evidence remains
+current-head only:
+
+- If the summary body contains one or more 7-40 character hexadecimal
+  SHA-like markers, every marker must be the full current head SHA or a prefix
+  of the current head SHA. Any non-current 7-40 character marker is rejected
+  before timestamp fallback.
+- If the summary body contains no SHA-like marker, it may satisfy the gate only
+  by timestamp fallback: the trusted summary comment must have been posted at
+  or after the current head commit timestamp.
 
 ## Claude
 
