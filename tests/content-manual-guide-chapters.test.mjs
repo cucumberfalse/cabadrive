@@ -9,6 +9,7 @@ import assert from "node:assert/strict";
 const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const oldPageRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
+const visualCropEvidencePath = "content/validation/manual-guide-visual-content-crop.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
@@ -66,6 +67,7 @@ const app4SignsTrafficLightsModulePath = "src/data/manual-sections/app4-signs-tr
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
 const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
 const implementedSectionIds = new Set([
   "front-presentation",
@@ -221,6 +223,12 @@ function localAssetByPath(section, assetPath) {
   const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
   assert.ok(asset, `${section.id} records ${assetPath} in localAssetMetadata`);
   return asset;
+}
+
+function visualCropRecordByCardId(cardId) {
+  const record = visualCropEvidence.targets.find((entry) => entry.cardId === cardId);
+  assert.ok(record, `visual crop evidence records ${cardId}`);
+  return record;
 }
 
 function stableStringify(value) {
@@ -1896,7 +1904,17 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
     assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
-    assert.equal(section.implementationEvidence.sourceRegionMetadata.every((entry) => entry.cropDimensions.width === 2976 && entry.cropDimensions.height === 4209), true);
+    for (const entry of section.implementationEvidence.sourceRegionMetadata) {
+      const cropRecord = visualCropEvidence.targets.find((record) => record.sectionId === sectionId && record.sourcePage === entry.sourcePage);
+      assert.ok(cropRecord, `${sectionId} page ${entry.sourcePage} has feature 034 crop evidence`);
+      assert.notDeepEqual(entry.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
+      assert.deepEqual(entry.sourceRegion, cropRecord.sourceRegionAtBaseScale);
+      assert.deepEqual(entry.cropDimensions, cropRecord.outputDimensions);
+      assert.equal(entry.cropSha256, cropRecord.outputSha256);
+      assert.equal(entry.extractionScaleEvidence.target, "source-native-equivalent-or-better");
+      assert.ok(entry.extractionScaleEvidence.usefulContentRatios.before.areaRatio < 0.05);
+      assert.ok(entry.extractionScaleEvidence.usefulContentRatios.after.areaRatio >= 0.55);
+    }
   }
 
   for (const sectionId of [
@@ -1910,13 +1928,20 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     const imageAssets = section.implementationEvidence.localAssetMetadata.filter((entry) => entry.assetCategory === "source-as-is-traffic-sign");
     assert.ok(imageAssets.length > 0, `${sectionId} records source-as-is traffic sign/signal assets`);
     for (const asset of imageAssets) {
+      const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+      assert.ok(cropRecord, `${asset.assetPath} has feature 034 crop evidence`);
       assert.equal(asset.cleanupScope, "none-source-as-is");
       assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
       assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
       assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
-      assert.equal(asset.width, 2976);
-      assert.equal(asset.height, 4209);
+      assert.match(asset.assetPath, /-source-crop-as-is\.jpg$/u);
+      assert.equal(asset.width, cropRecord.outputDimensions.width);
+      assert.equal(asset.height, cropRecord.outputDimensions.height);
+      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, cropRecord.outputDimensions.width);
+      assert.equal(asset.runtimeDisplaySize.noUpscale, true);
       assert.equal(sha256File(asset.assetPath), asset.sha256);
+      assert.equal(asset.sha256, cropRecord.outputSha256);
+      assert.equal(asset.sourceIntegrity.sourceAssetPath, cropRecord.outputSourceAssetPath);
       assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
     }
   }
@@ -1926,9 +1951,16 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   assert.equal(markingAssets.length, 2);
   assert.equal(horizontal.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
   for (const asset of markingAssets) {
+    const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+    assert.ok(cropRecord, `${asset.assetPath} has feature 034 crop evidence`);
     assert.equal(asset.cleanupScope, "none-source-as-is");
     assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
     assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.match(asset.assetPath, /-source-crop-as-is\.jpg$/u);
+    assert.equal(asset.width, cropRecord.outputDimensions.width);
+    assert.equal(asset.height, cropRecord.outputDimensions.height);
+    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, cropRecord.outputDimensions.width);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
     assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
   }
 
@@ -1939,6 +1971,62 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   assert.match(app4SignsHorizontalModuleSource, /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u);
   assert.match(app4SignsTrafficLightsModuleSource, /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u);
   assert.match(app4SignsTrafficLightsModuleSource, /цвет, размер и положение/u);
+});
+
+test("Manual guide visual content crop evidence covers the whole manual and corrected Appendix IV page sheets", () => {
+  assert.equal(visualCropEvidence.schemaVersion, 1);
+  assert.equal(visualCropEvidence.featureId, "034-manual-visual-content-crop");
+  assert.equal(visualCropEvidence.sourcePdfPath, "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf");
+  assert.equal(visualCropEvidence.whiteThreshold, 245);
+  assert.match(visualCropEvidence.nonWhiteRule, /any RGB channel below threshold/u);
+  assert.equal(visualCropEvidence.paddingPxAtSourceBaseScale, 80);
+
+  const cropPages = visualCropEvidence.targets.map((record) => record.sourcePage);
+  assert.deepEqual(cropPages, sourcePagesForRange(185, 200));
+  assert.equal(visualCropEvidence.targets.length, 16);
+
+  for (const record of visualCropEvidence.targets) {
+    assert.ok(existsSync(record.currentAssetPath), `${record.currentAssetPath} remains available as prior-state evidence`);
+    assert.ok(existsSync(record.outputAssetPath), `${record.outputAssetPath} exists`);
+    assert.ok(existsSync(record.outputSourceAssetPath), `${record.outputSourceAssetPath} exists`);
+    assert.equal(sha256File(record.outputAssetPath), record.outputSha256);
+    assert.equal(sha256File(record.outputSourceAssetPath), record.outputSha256);
+    assert.equal(record.beforeDimensions.width, 2976);
+    assert.equal(record.beforeDimensions.height, 4209);
+    assert.ok(record.beforeUsefulRatios.areaRatio < 0.05, `${record.cardId} starts as an excessive-margin useful-content island`);
+    assert.ok(record.beforeUsefulRatios.widthRatio < 0.21, `${record.cardId} starts below the major-visual width threshold`);
+    assert.ok(record.outputUsefulRatios.areaRatio >= 0.55, `${record.cardId} corrected crop useful area ratio`);
+    assert.ok(record.outputUsefulRatios.widthRatio >= 0.75, `${record.cardId} corrected crop useful width ratio`);
+    assert.ok(record.outputUsefulRatios.heightRatio >= 0.75, `${record.cardId} corrected crop useful height ratio`);
+    assert.notDeepEqual(record.sourceRegionAtBaseScale, { x: 0, y: 0, width: 2976, height: 4209 });
+    assert.match(record.outputAssetPath, /-source-crop-as-is\.jpg$/u);
+    assert.match(record.sourceQualityDisposition, /source-limited-native-raster-in-official-pdf/u);
+    assert.ok(record.renderedUsefulWidthScaleRatio < 1.1, `${record.cardId} records the official PDF source-quality limitation`);
+  }
+
+  const summary = visualCropEvidence.wholeManualInventory.summary;
+  assert.equal(summary.sourceImageCardCount, 38);
+  assert.equal(summary.sourceArtworkCount, 2);
+  assert.equal(summary.correctedAppendixIvCount, 16);
+  assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
+  assert.equal(summary.compactSourceImageCardCount, 7);
+  assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 38);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
+  assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
+
+  const inventoryByCardId = new Map(visualCropEvidence.wholeManualInventory.sourceImageCards.map((entry) => [entry.cardId, entry]));
+  for (const cardId of ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card", "app4-horizontal-page-195-source-card"]) {
+    const entry = inventoryByCardId.get(cardId);
+    assert.ok(entry, `${cardId} exists in whole-manual inventory`);
+    assert.equal(entry.disposition, "corrected-source-limited-crop");
+    assert.ok(entry.beforeUsefulRatios.areaRatio < 0.05);
+    assert.ok(entry.afterUsefulRatios.areaRatio >= 0.55);
+  }
+  assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").disposition, "acceptable-tight-crop");
+  assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").measuredUsefulRatios.areaRatio, 0.4205);
+  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").disposition, "acceptable-tight-crop");
+  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio, 0.3652);
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -2753,13 +2841,21 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     .sort((a, b) => a.sourcePage - b.sourcePage || a.cardId.localeCompare(b.cardId));
   assert.deepEqual(appendixCards.map((card) => card.sourcePage), sourcePagesForRange(185, 200));
   assert.equal(appendixCards.every((card) => card.displayMode === "full-width"), true);
-  assert.equal(appendixCards.every((card) => card.maxDisplayWidthPx === 2976), true);
   assert.equal(appendixCards.every((card) => card.hasOfficialSignException || card.hasSourceImageException), true);
+  for (const card of appendixCards) {
+    const section = sectionById(card.sectionId);
+    const asset = localAssetByPath(section, card.assetPath);
+    const cropRecord = visualCropRecordByCardId(card.cardId);
+    assert.equal(card.maxDisplayWidthPx, asset.width, `${card.cardId} display cap matches corrected crop width`);
+    assert.equal(card.maxDisplayWidthPx, cropRecord.outputDimensions.width, `${card.cardId} display cap matches crop evidence`);
+    assert.notDeepEqual(card.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
+    assert.match(card.assetPath, /-source-crop-as-is\.jpg$/u);
+  }
 
   assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 780);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
-  assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 2976);
-  assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 2976);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 664);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 704);
   assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
   assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, undefined);

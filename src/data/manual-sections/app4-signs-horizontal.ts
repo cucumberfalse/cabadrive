@@ -35,7 +35,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-mobile.png"
     ],
     notes: [
-      "Pages 195-196 are implemented with unchanged x5 road-marking source sheets.",
+      "Pages 195-196 are implemented with unchanged official road-marking pixels cropped to remove empty outer page margins.",
       "Road-marking images are not translated, relabeled, recolored, cleaned, masked, retouched, reconstructed, or redrawn."
     ]
   },
@@ -71,10 +71,10 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           id: "app4-horizontal-page-195-source-card",
           titleRu: "Страница 195: продольная и поперечная разметка",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 674,
           sourcePage: 195,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/marking-sheet-195-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
+          assetPath: `${assetRoot}/marking-sheet-195-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист продольной и поперечной дорожной разметки, сохраненный без изменений.",
           visibleSpanish: true,
@@ -86,10 +86,10 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           id: "app4-horizontal-page-196-source-card",
           titleRu: "Страница 196: специальная разметка",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 704,
           sourcePage: 196,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/marking-sheet-196-source-as-is.jpg`,
+          sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
+          assetPath: `${assetRoot}/marking-sheet-196-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист специальной дорожной разметки, сохраненный без изменений.",
           visibleSpanish: true,
@@ -99,7 +99,8 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Both road-marking runtime images are byte-identical to x5 validation source crops.",
+        "Both road-marking runtime images are byte-identical to feature 034 official-source crop evidence.",
+        "The official PDF source is source-limited for useful marking pixels, so runtime display is capped at each natural crop width.",
         "Visible Spanish remains only inside the protected road-marking images."
       ]
     }

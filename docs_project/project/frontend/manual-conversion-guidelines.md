@@ -92,6 +92,15 @@ second guide destination.
   viewports, keep that overflow contained inside the figure/image visual only
   with horizontal scrolling. Do not create document-level horizontal overflow,
   and do not add card-id-specific CSS for this behavior.
+- Full-width is not enough when the raster itself contains a tiny useful island
+  inside a mostly blank page. Before accepting source-image cards, inventory
+  useful-content bounds where practical and crop empty outer margins from the
+  official PDF/source region so the protected visual itself fills the runtime
+  image. Evidence must record before/after useful-content ratios, crop bounds,
+  output dimensions, hashes, runtime display size, and no-upscale proof. If the
+  official PDF embeds a source-limited raster and higher-scale rendering does
+  not add useful pixels, record that limitation and cap display at natural crop
+  width; do not stretch, retouch, redraw, or reconstruct the protected image.
 - Infographics must be transferred as high-quality source images, not redrawn
   or reconstructed from approximate CSS/SVG/icon components. If Spanish text is
   removed from an infographic, cleanup is glyph/letter-level only: restore each

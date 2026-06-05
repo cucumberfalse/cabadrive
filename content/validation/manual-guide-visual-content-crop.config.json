@@ -1,0 +1,139 @@
+{
+  "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "sourceBaseScale": 5,
+  "renderScale": 12,
+  "quality": 0.95,
+  "whiteThreshold": 245,
+  "paddingPxAtSourceBaseScale": 80,
+  "outputEvidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json",
+  "targets": [
+    {
+      "sectionId": "app4-signs-regulatory",
+      "cardId": "app4-regulatory-page-185-source-card",
+      "sourcePage": 185,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-regulatory",
+      "cardId": "app4-regulatory-page-186-source-card",
+      "sourcePage": 186,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-warning",
+      "cardId": "app4-warning-page-187-source-card",
+      "sourcePage": 187,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-warning",
+      "cardId": "app4-warning-page-188-source-card",
+      "sourcePage": 188,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "cardId": "app4-informational-page-189-source-card",
+      "sourcePage": 189,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "cardId": "app4-informational-page-190-source-card",
+      "sourcePage": 190,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "cardId": "app4-informational-page-191-source-card",
+      "sourcePage": 191,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "cardId": "app4-informational-page-192-source-card",
+      "sourcePage": 192,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-temporary",
+      "cardId": "app4-temporary-page-193-source-card",
+      "sourcePage": 193,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-temporary",
+      "cardId": "app4-temporary-page-194-source-card",
+      "sourcePage": 194,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-horizontal",
+      "cardId": "app4-horizontal-page-195-source-card",
+      "sourcePage": 195,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-horizontal",
+      "cardId": "app4-horizontal-page-196-source-card",
+      "sourcePage": 196,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "cardId": "app4-traffic-lights-page-197-source-card",
+      "sourcePage": 197,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "cardId": "app4-traffic-lights-page-198-source-card",
+      "sourcePage": 198,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "cardId": "app4-traffic-lights-page-199-source-card",
+      "sourcePage": 199,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg"
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "cardId": "app4-traffic-lights-page-200-source-card",
+      "sourcePage": 200,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg"
+    }
+  ]
+}

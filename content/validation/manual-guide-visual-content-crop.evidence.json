@@ -1,0 +1,3330 @@
+{
+  "extractionMethod": "Source-region crops rendered from the official PDF at high scale, using useful-content bounds measured on the prior x5 page-sheet asset plus safety padding; no protected pixels are translated, redrawn, recolored, cleaned, retouched, masked, inpainted, or reconstructed.",
+  "featureId": "034-manual-visual-content-crop",
+  "nonWhiteRule": "alpha > 0 and any RGB channel below threshold; refined from the initial all-channel wording so saturated sign colors are not missed",
+  "paddingPxAtSourceBaseScale": 80,
+  "quality": 0.95,
+  "renderScale": 12,
+  "schemaVersion": 1,
+  "sourceBaseScale": 5,
+  "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "targets": [
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 503,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03296850770366624,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.16901881720430106
+      },
+      "cardId": "app4-regulatory-page-185-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 664,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1592
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 504,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 664
+      },
+      "outputSha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 504,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6351118760757315,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7590361445783133
+      },
+      "renderedUsefulWidthScaleRatio": 1.0019880715705765,
+      "sectionId": "app4-signs-regulatory",
+      "sourcePage": 185,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 663,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 544,
+        "x": 1242,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03565580157215593,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.1827956989247312
+      },
+      "cardId": "app4-regulatory-page-186-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 704,
+        "x": 458,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1691
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 538,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 704
+      },
+      "outputSha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6465677179962894,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7727272727272727
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-regulatory",
+      "sourcePage": 186,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 704,
+        "x": 1162,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 511,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.033492857726786174,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17170698924731181
+      },
+      "cardId": "app4-warning-page-187-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 672,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1611
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 512,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 672
+      },
+      "outputSha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 512,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6375121477162293,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7619047619047619
+      },
+      "renderedUsefulWidthScaleRatio": 1.0019569471624266,
+      "sectionId": "app4-signs-warning",
+      "sourcePage": 187,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 671,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 545,
+        "x": 1241,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03572134532504592,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.18313172043010753
+      },
+      "cardId": "app4-warning-page-188-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 705,
+        "x": 459,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1693
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 545,
+        "x": 539,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 705
+      },
+      "outputSha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6456506006657983,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7716312056737589
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-warning",
+      "sourcePage": 188,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 705,
+        "x": 1161,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 513,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03362394523256616,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17237903225806453
+      },
+      "cardId": "app4-informational-page-189-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 673,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1616
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 673
+      },
+      "outputSha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6378081693301392,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7622585438335809
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-informational",
+      "sourcePage": 189,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 673,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 544,
+        "x": 1242,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03565580157215593,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.1827956989247312
+      },
+      "cardId": "app4-informational-page-190-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 704,
+        "x": 458,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1691
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 538,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 704
+      },
+      "outputSha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6465677179962894,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7727272727272727
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-informational",
+      "sourcePage": 190,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 704,
+        "x": 1162,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 511,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.033492857726786174,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17170698924731181
+      },
+      "cardId": "app4-informational-page-191-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 672,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1611
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 512,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 672
+      },
+      "outputSha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 512,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6375121477162293,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7619047619047619
+      },
+      "renderedUsefulWidthScaleRatio": 1.0019569471624266,
+      "sectionId": "app4-signs-informational",
+      "sourcePage": 191,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 671,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 545,
+        "x": 1241,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03572134532504592,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.18313172043010753
+      },
+      "cardId": "app4-informational-page-192-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 706,
+        "x": 458,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1693
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 546,
+        "x": 538,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 706
+      },
+      "outputSha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 546,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6471064346418454,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.773371104815864
+      },
+      "renderedUsefulWidthScaleRatio": 1.001834862385321,
+      "sectionId": "app4-signs-informational",
+      "sourcePage": 192,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 705,
+        "x": 1161,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 513,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03362394523256616,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17237903225806453
+      },
+      "cardId": "app4-temporary-page-193-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 673,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1616
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 673
+      },
+      "outputSha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6378081693301392,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7622585438335809
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-temporary",
+      "sourcePage": 193,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 673,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 544,
+        "x": 1242,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03565580157215593,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.1827956989247312
+      },
+      "cardId": "app4-temporary-page-194-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 705,
+        "x": 457,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1691
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 545,
+        "x": 537,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 705
+      },
+      "outputSha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6456506006657983,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7716312056737589
+      },
+      "renderedUsefulWidthScaleRatio": 1.0018382352941178,
+      "sectionId": "app4-signs-temporary",
+      "sourcePage": 194,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 704,
+        "x": 1162,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 513,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03362394523256616,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17237903225806453
+      },
+      "cardId": "app4-horizontal-page-195-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 674,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1616
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 514,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 674
+      },
+      "outputSha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 514,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6381033125416339,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7626112759643917
+      },
+      "renderedUsefulWidthScaleRatio": 1.0019493177387915,
+      "sectionId": "app4-signs-horizontal",
+      "sourcePage": 195,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 673,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 544,
+        "x": 1242,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03565580157215593,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.1827956989247312
+      },
+      "cardId": "app4-horizontal-page-196-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 704,
+        "x": 458,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1691
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 538,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 704
+      },
+      "outputSha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 544,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6465677179962894,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7727272727272727
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-horizontal",
+      "sourcePage": 196,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 704,
+        "x": 1162,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 821,
+        "width": 513,
+        "x": 1190,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.03362394523256616,
+        "heightRatio": 0.19505820860061773,
+        "widthRatio": 0.17237903225806453
+      },
+      "cardId": "app4-traffic-lights-page-197-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 980,
+        "width": 673,
+        "x": 529,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2356,
+        "width": 1616
+      },
+      "intermediateUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 609,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 980,
+        "width": 673
+      },
+      "outputSha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 820,
+        "width": 513,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6378081693301392,
+        "heightRatio": 0.8367346938775511,
+        "widthRatio": 0.7622585438335809
+      },
+      "renderedUsefulWidthScaleRatio": 1,
+      "sectionId": "app4-signs-traffic-lights",
+      "sourcePage": 197,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 981,
+        "width": 673,
+        "x": 1110,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 844,
+        "width": 601,
+        "x": 1185,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.04049534152366792,
+        "heightRatio": 0.20052268947493465,
+        "widthRatio": 0.20194892473118278
+      },
+      "cardId": "app4-traffic-lights-page-198-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 1003,
+        "width": 757,
+        "x": 541,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2411,
+        "width": 1827
+      },
+      "intermediateUsefulBounds": {
+        "height": 843,
+        "width": 597,
+        "x": 621,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 1003,
+        "width": 757
+      },
+      "outputSha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 843,
+        "width": 597,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6628344820228877,
+        "heightRatio": 0.8404785643070788,
+        "widthRatio": 0.7886393659180978
+      },
+      "renderedUsefulWidthScaleRatio": 0.9933444259567388,
+      "sectionId": "app4-signs-traffic-lights",
+      "sourcePage": 198,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 1004,
+        "width": 761,
+        "x": 1105,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 843,
+        "width": 600,
+        "x": 1186,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.04038006115926701,
+        "heightRatio": 0.20028510334996436,
+        "widthRatio": 0.20161290322580644
+      },
+      "cardId": "app4-traffic-lights-page-199-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 1002,
+        "width": 757,
+        "x": 539,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2408,
+        "width": 1825
+      },
+      "intermediateUsefulBounds": {
+        "height": 842,
+        "width": 597,
+        "x": 619,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 1002,
+        "width": 757
+      },
+      "outputSha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 842,
+        "width": 597,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6627089282465453,
+        "heightRatio": 0.8403193612774451,
+        "widthRatio": 0.7886393659180978
+      },
+      "renderedUsefulWidthScaleRatio": 0.995,
+      "sectionId": "app4-signs-traffic-lights",
+      "sourcePage": 199,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 1003,
+        "width": 760,
+        "x": 1106,
+        "y": 1602
+      }
+    },
+    {
+      "beforeDimensions": {
+        "height": 4209,
+        "width": 2976
+      },
+      "beforeUsefulBounds": {
+        "height": 846,
+        "width": 604,
+        "x": 1186,
+        "y": 1682
+      },
+      "beforeUsefulRatios": {
+        "areaRatio": 0.04079392086082818,
+        "heightRatio": 0.20099786172487527,
+        "widthRatio": 0.20295698924731181
+      },
+      "cardId": "app4-traffic-lights-page-200-source-card",
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+      "finalTrimBounds": {
+        "height": 1003,
+        "width": 757,
+        "x": 539,
+        "y": 706
+      },
+      "intermediateRenderDimensions": {
+        "height": 2416,
+        "width": 1834
+      },
+      "intermediateUsefulBounds": {
+        "height": 843,
+        "width": 597,
+        "x": 619,
+        "y": 786
+      },
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+      "outputDimensions": {
+        "height": 1003,
+        "width": 757
+      },
+      "outputSha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
+      "outputSourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+      "outputUsefulBounds": {
+        "height": 845,
+        "width": 599,
+        "x": 80,
+        "y": 80
+      },
+      "outputUsefulRatios": {
+        "areaRatio": 0.6666328623113487,
+        "heightRatio": 0.8424725822532403,
+        "widthRatio": 0.7912813738441216
+      },
+      "renderedUsefulWidthScaleRatio": 0.9884105960264901,
+      "sectionId": "app4-signs-traffic-lights",
+      "sourcePage": 200,
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+      "sourceRegionAtBaseScale": {
+        "height": 1006,
+        "width": 764,
+        "x": 1106,
+        "y": 1602
+      }
+    }
+  ],
+  "whiteThreshold": 245,
+  "wholeManualInventory": {
+    "inventoryMethod": "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, and records reviewer dispositions where automated useful-content measurement is not practical.",
+    "sourceImageCards": [
+      {
+        "sectionId": "app1-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
+        "blockId": "mirror-orientation-source-visual",
+        "cardId": "mirror-orientation-source-card",
+        "displayMode": "compact",
+        "sourcePage": 110,
+        "sourceRegion": {
+          "x": 1570,
+          "y": 1008,
+          "width": 495,
+          "height": 163
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
+        "dimensions": {
+          "width": 495,
+          "height": 163
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "app1-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
+        "blockId": "headrest-source-visual",
+        "cardId": "headrest-position-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 113,
+        "sourceRegion": {
+          "x": 980,
+          "y": 1010,
+          "width": 1190,
+          "height": 185
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
+        "dimensions": {
+          "width": 1190,
+          "height": 185
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": true,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "app1-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
+        "blockId": "sri-source-visual",
+        "cardId": "sri-types-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 115,
+        "sourceRegion": {
+          "x": 900,
+          "y": 1320,
+          "width": 1220,
+          "height": 260
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
+        "dimensions": {
+          "width": 1220,
+          "height": 260
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": true,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "app2-highways-hospitals",
+        "sectionFile": "src/data/manual-sections/app2-highways-hospitals.ts",
+        "blockId": "hospital-map-source-visual",
+        "cardId": "app2-hospital-map-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 150,
+        "sourceRegion": {
+          "x": 1332,
+          "y": 1854,
+          "width": 780,
+          "height": 335
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+        "dimensions": {
+          "width": 780,
+          "height": 335
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "acceptable-tight-crop",
+        "reason": "Contrast example from feature 034 intake: useful bbox area ratio 0.4205 and no-upscale cap 780px; not blindly recropped.",
+        "measuredUsefulRatios": {
+          "areaRatio": 0.4205
+        }
+      },
+      {
+        "sectionId": "app2-safety-elements",
+        "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
+        "blockId": "mirror-orientation-source-visual",
+        "cardId": "app2-mirror-orientation-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 130,
+        "sourceRegion": {
+          "x": 930,
+          "y": 1960,
+          "width": 1260,
+          "height": 125
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+        "dimensions": {
+          "width": 1260,
+          "height": 125
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "app2-safety-elements",
+        "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
+        "blockId": "seatbelt-use-source-visual",
+        "cardId": "app2-seatbelt-use-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 131,
+        "sourceRegion": {
+          "x": 1015,
+          "y": 2005,
+          "width": 1060,
+          "height": 285
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+        "dimensions": {
+          "width": 1060,
+          "height": 285
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "app2-safety-elements",
+        "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
+        "blockId": "headrest-position-source-visual",
+        "cardId": "app2-headrest-height-source-card",
+        "displayMode": "compact",
+        "sourcePage": 132,
+        "sourceRegion": {
+          "x": 1330,
+          "y": 2240,
+          "width": 185,
+          "height": 105
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
+        "dimensions": {
+          "width": 185,
+          "height": 105
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "app2-safety-elements",
+        "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
+        "blockId": "headrest-position-source-visual",
+        "cardId": "app2-headrest-distance-source-card",
+        "displayMode": "compact",
+        "sourcePage": 132,
+        "sourceRegion": {
+          "x": 1520,
+          "y": 2250,
+          "width": 260,
+          "height": 95
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
+        "dimensions": {
+          "width": 260,
+          "height": 95
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "app3-driving-factors",
+        "sectionFile": "src/data/manual-sections/app3-driving-factors.ts",
+        "blockId": "body-posture-source-visual",
+        "cardId": "app3-body-posture-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 161,
+        "sourceRegion": {
+          "x": 875,
+          "y": 1575,
+          "width": 1275,
+          "height": 725
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
+        "dimensions": {
+          "width": 1350,
+          "height": 430
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "acceptable-tight-crop",
+        "reason": "Contrast example from feature 034 intake: useful bbox area ratio 0.3652 and no-upscale cap 1350px; not blindly recropped.",
+        "measuredUsefulRatios": {
+          "areaRatio": 0.3652
+        }
+      },
+      {
+        "sectionId": "app3-safety-elements",
+        "sectionFile": "src/data/manual-sections/app3-safety-elements.ts",
+        "blockId": "seatbelt-source-visual",
+        "cardId": "app3-seatbelt-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 176,
+        "sourceRegion": {
+          "x": 875,
+          "y": 1250,
+          "width": 1175,
+          "height": 1125
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
+        "dimensions": {
+          "width": 1175,
+          "height": 1125
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "app4-signs-horizontal",
+        "sectionFile": "src/data/manual-sections/app4-signs-horizontal.ts",
+        "blockId": "horizontal-source-sheets",
+        "cardId": "app4-horizontal-page-195-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 195,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 673,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 674,
+          "height": 980
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03362394523256616,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17237903225806453
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6381033125416339,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7626112759643917
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-horizontal",
+        "sectionFile": "src/data/manual-sections/app4-signs-horizontal.ts",
+        "blockId": "horizontal-source-sheets",
+        "cardId": "app4-horizontal-page-196-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 196,
+        "sourceRegion": {
+          "x": 1162,
+          "y": 1602,
+          "width": 704,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03565580157215593,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.1827956989247312
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6465677179962894,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7727272727272727
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-informational",
+        "sectionFile": "src/data/manual-sections/app4-signs-informational.ts",
+        "blockId": "informational-source-sheets",
+        "cardId": "app4-informational-page-189-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 189,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 673,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03362394523256616,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17237903225806453
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6378081693301392,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7622585438335809
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-informational",
+        "sectionFile": "src/data/manual-sections/app4-signs-informational.ts",
+        "blockId": "informational-source-sheets",
+        "cardId": "app4-informational-page-190-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 190,
+        "sourceRegion": {
+          "x": 1162,
+          "y": 1602,
+          "width": 704,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03565580157215593,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.1827956989247312
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6465677179962894,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7727272727272727
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-informational",
+        "sectionFile": "src/data/manual-sections/app4-signs-informational.ts",
+        "blockId": "informational-source-sheets",
+        "cardId": "app4-informational-page-191-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 191,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 671,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 672,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.033492857726786174,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17170698924731181
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6375121477162293,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7619047619047619
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-informational",
+        "sectionFile": "src/data/manual-sections/app4-signs-informational.ts",
+        "blockId": "informational-source-sheets",
+        "cardId": "app4-informational-page-192-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 192,
+        "sourceRegion": {
+          "x": 1161,
+          "y": 1602,
+          "width": 705,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 706,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03572134532504592,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.18313172043010753
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6471064346418454,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.773371104815864
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-source-sheets",
+        "cardId": "app4-regulatory-page-185-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 185,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 663,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 664,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03296850770366624,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.16901881720430106
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6351118760757315,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7590361445783133
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-source-sheets",
+        "cardId": "app4-regulatory-page-186-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 186,
+        "sourceRegion": {
+          "x": 1162,
+          "y": 1602,
+          "width": 704,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03565580157215593,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.1827956989247312
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6465677179962894,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7727272727272727
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-temporary",
+        "sectionFile": "src/data/manual-sections/app4-signs-temporary.ts",
+        "blockId": "temporary-source-sheets",
+        "cardId": "app4-temporary-page-193-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 193,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 673,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03362394523256616,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17237903225806453
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6378081693301392,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7622585438335809
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-temporary",
+        "sectionFile": "src/data/manual-sections/app4-signs-temporary.ts",
+        "blockId": "temporary-source-sheets",
+        "cardId": "app4-temporary-page-194-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 194,
+        "sourceRegion": {
+          "x": 1162,
+          "y": 1602,
+          "width": 704,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 705,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03565580157215593,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.1827956989247312
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6456506006657983,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7716312056737589
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-traffic-lights",
+        "sectionFile": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+        "blockId": "traffic-lights-source-sheets",
+        "cardId": "app4-traffic-lights-page-197-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 197,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 673,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03362394523256616,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17237903225806453
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6378081693301392,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7622585438335809
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-traffic-lights",
+        "sectionFile": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+        "blockId": "traffic-lights-source-sheets",
+        "cardId": "app4-traffic-lights-page-198-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 198,
+        "sourceRegion": {
+          "x": 1105,
+          "y": 1602,
+          "width": 761,
+          "height": 1004
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 757,
+          "height": 1003
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.04049534152366792,
+          "heightRatio": 0.20052268947493465,
+          "widthRatio": 0.20194892473118278
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6628344820228877,
+          "heightRatio": 0.8404785643070788,
+          "widthRatio": 0.7886393659180978
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-traffic-lights",
+        "sectionFile": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+        "blockId": "traffic-lights-source-sheets",
+        "cardId": "app4-traffic-lights-page-199-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 199,
+        "sourceRegion": {
+          "x": 1106,
+          "y": 1602,
+          "width": 760,
+          "height": 1003
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 757,
+          "height": 1002
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.04038006115926701,
+          "heightRatio": 0.20028510334996436,
+          "widthRatio": 0.20161290322580644
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6627089282465453,
+          "heightRatio": 0.8403193612774451,
+          "widthRatio": 0.7886393659180978
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-traffic-lights",
+        "sectionFile": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+        "blockId": "traffic-lights-source-sheets",
+        "cardId": "app4-traffic-lights-page-200-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 200,
+        "sourceRegion": {
+          "x": 1106,
+          "y": 1602,
+          "width": 764,
+          "height": 1006
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 757,
+          "height": 1003
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.04079392086082818,
+          "heightRatio": 0.20099786172487527,
+          "widthRatio": 0.20295698924731181
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6666328623113487,
+          "heightRatio": 0.8424725822532403,
+          "widthRatio": 0.7912813738441216
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-warning",
+        "sectionFile": "src/data/manual-sections/app4-signs-warning.ts",
+        "blockId": "warning-source-sheets",
+        "cardId": "app4-warning-page-187-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 187,
+        "sourceRegion": {
+          "x": 1110,
+          "y": 1602,
+          "width": 671,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 672,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.033492857726786174,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.17170698924731181
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6375121477162293,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7619047619047619
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "app4-signs-warning",
+        "sectionFile": "src/data/manual-sections/app4-signs-warning.ts",
+        "blockId": "warning-source-sheets",
+        "cardId": "app4-warning-page-188-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 188,
+        "sourceRegion": {
+          "x": 1161,
+          "y": 1602,
+          "width": 705,
+          "height": 981
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+        "dimensions": {
+          "width": 705,
+          "height": 980
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "corrected-source-limited-crop",
+        "reason": "Prior full-page source-as-is asset had excessive blank margins; corrected runtime asset is a tight official-source crop with useful-content ratio evidence and no browser upscaling.",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.03572134532504592,
+          "heightRatio": 0.19505820860061773,
+          "widthRatio": 0.18313172043010753
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.6456506006657983,
+          "heightRatio": 0.8367346938775511,
+          "widthRatio": 0.7716312056737589
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "identity-license-visuals",
+        "cardId": "dni-source-card",
+        "displayMode": "compact",
+        "sourcePage": 46,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 1795,
+          "width": 320,
+          "height": 118
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
+        "dimensions": {
+          "width": 320,
+          "height": 118
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "identity-license-visuals",
+        "cardId": "license-source-card",
+        "displayMode": "compact",
+        "sourcePage": 46,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 1950,
+          "width": 300,
+          "height": 105
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
+        "dimensions": {
+          "width": 300,
+          "height": 105
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "beginner-cedula-visuals",
+        "cardId": "beginner-sign-source-card",
+        "displayMode": "compact",
+        "sourcePage": 47,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 1605,
+          "width": 315,
+          "height": 215
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
+        "dimensions": {
+          "width": 315,
+          "height": 215
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "beginner-cedula-visuals",
+        "cardId": "cedulas-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 47,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 2490,
+          "width": 1110,
+          "height": 260
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
+        "dimensions": {
+          "width": 1110,
+          "height": 260
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "vtv-rva-visuals",
+        "cardId": "vtv-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 49,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 2000,
+          "width": 1150,
+          "height": 335
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
+        "dimensions": {
+          "width": 1150,
+          "height": 335
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch2-required-documents",
+        "sectionFile": "src/data/manual-sections/ch2-required-documents.ts",
+        "blockId": "vtv-rva-visuals",
+        "cardId": "rva-source-card",
+        "displayMode": "compact",
+        "sourcePage": 50,
+        "sourceRegion": {
+          "x": 1085,
+          "y": 2190,
+          "width": 360,
+          "height": 300
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
+        "dimensions": {
+          "width": 360,
+          "height": 300
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "compact-not-affected",
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+      },
+      {
+        "sectionId": "ch4-alcohol-drugs",
+        "sectionFile": "src/data/manual-sections/ch4-alcohol-drugs.ts",
+        "blockId": "drug-test-source-visual",
+        "cardId": "drug-test-device-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 90,
+        "sourceRegion": {
+          "x": 1180,
+          "y": 2245,
+          "width": 820,
+          "height": 300
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+        "dimensions": {
+          "width": 820,
+          "height": 300
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch4-alcohol-drugs",
+        "sectionFile": "src/data/manual-sections/ch4-alcohol-drugs.ts",
+        "blockId": "alcohol-limit-source-visual",
+        "cardId": "alcohol-limits-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 91,
+        "sourceRegion": {
+          "x": 1180,
+          "y": 2030,
+          "width": 850,
+          "height": 430
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+        "dimensions": {
+          "width": 850,
+          "height": 430
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": true,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch4-distractions",
+        "sectionFile": "src/data/manual-sections/ch4-distractions.ts",
+        "blockId": "eating-distraction-source-visual",
+        "cardId": "distraction-panels-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 95,
+        "sourceRegion": {
+          "x": 1190,
+          "y": 2160,
+          "width": 860,
+          "height": 260
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+        "dimensions": {
+          "width": 860,
+          "height": 260
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": true,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch4-distractions",
+        "sectionFile": "src/data/manual-sections/ch4-distractions.ts",
+        "blockId": "attention-source-photo",
+        "cardId": "attention-photo-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 97,
+        "sourceRegion": {
+          "x": 1160,
+          "y": 1680,
+          "width": 720,
+          "height": 900
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+        "dimensions": {
+          "width": 720,
+          "height": 900
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch5-anticipatory-efficient-driving",
+        "sectionFile": "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts",
+        "blockId": "driving-culture-source-photo",
+        "cardId": "driving-culture-photo-source-card",
+        "displayMode": "full-width",
+        "sourcePage": 103,
+        "sourceRegion": {
+          "x": 740,
+          "y": 1080,
+          "width": 1500,
+          "height": 2200
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+        "dimensions": {
+          "width": 1500,
+          "height": 2200
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      },
+      {
+        "sectionId": "ch5-equal-society",
+        "sectionFile": "src/data/manual-sections/ch5-equal-society.ts",
+        "blockId": "mobility-context-source-visual",
+        "cardId": "mobility-context-transferred-card",
+        "displayMode": "full-width",
+        "sourcePage": 100,
+        "sourceRegion": {
+          "x": 900,
+          "y": 1830,
+          "width": 1220,
+          "height": 175
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+        "dimensions": {
+          "width": 1220,
+          "height": 175
+        },
+        "protectedStatus": "not-protected",
+        "hasRussianOverlayLabels": true,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+      }
+    ],
+    "sourceArtwork": [
+      {
+        "sectionId": "ch1-bicycle",
+        "sectionFile": "src/data/manual-sections/ch1-bicycle.ts",
+        "blockId": "offtracking-risk",
+        "sourcePage": 35,
+        "sourceRegion": {
+          "x": 600,
+          "y": 500,
+          "width": 260,
+          "height": 260
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
+        "dimensions": {
+          "width": 270,
+          "height": 260
+        },
+        "disposition": "not-affected",
+        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect"
+      },
+      {
+        "sectionId": "ch1-bicycle",
+        "sectionFile": "src/data/manual-sections/ch1-bicycle.ts",
+        "blockId": "electric-scooter-photo",
+        "sourcePage": 38,
+        "sourceRegion": {
+          "x": 345,
+          "y": 520,
+          "width": 255,
+          "height": 145
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
+        "dimensions": {
+          "width": 255,
+          "height": 145
+        },
+        "disposition": "not-affected",
+        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect"
+      }
+    ],
+    "sectionAssetFiles": [
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1190,
+          "height": 185
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 495,
+          "height": 163
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1220,
+          "height": 260
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 780,
+          "height": 335
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 260,
+          "height": 95
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 185,
+          "height": 105
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1260,
+          "height": 125
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1060,
+          "height": 285
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1350,
+          "height": 430
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1175,
+          "height": 1125
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 674,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 672,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 706,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 664,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 704,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 705,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 673,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 757,
+          "height": 1003
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 757,
+          "height": 1002
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 757,
+          "height": 1003
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 672,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2976,
+          "height": 4209
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 705,
+          "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 255,
+          "height": 165
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 250,
+          "height": 130
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 255,
+          "height": 150
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 550,
+          "height": 220
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 255,
+          "height": 105
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 140,
+          "height": 230
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 255,
+          "height": 130
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 500,
+          "height": 115
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 500,
+          "height": 180
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 270,
+          "height": 260
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 150,
+          "height": 210
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 270,
+          "height": 205
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 255,
+          "height": 145
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 250,
+          "height": 205
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 3072,
+          "height": 1560
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2820,
+          "height": 348
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 630,
+          "height": 1740
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1560,
+          "height": 570
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 450,
+          "height": 450
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 720
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 900
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 2460,
+          "height": 2340
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1020,
+          "height": 900
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 552
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 870
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 750
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 870
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 1470,
+          "height": 750
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 510,
+          "height": 255
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 245,
+          "height": 130
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 245,
+          "height": 126
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 245,
+          "height": 126
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 245,
+          "height": 100
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 245,
+          "height": 126
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/carpool-diagram-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 440,
+          "height": 185
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 610,
+          "height": 850
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 585,
+          "height": 78
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 590,
+          "height": 115
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 315,
+          "height": 215
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1110,
+          "height": 260
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 320,
+          "height": 118
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 300,
+          "height": 105
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 360,
+          "height": 300
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1150,
+          "height": 335
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 850,
+          "height": 430
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 820,
+          "height": 300
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 720,
+          "height": 900
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 860,
+          "height": 260
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1500,
+          "height": 2200
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 1220,
+          "height": 175
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-recommendation-clipboard-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 26,
+          "height": 24
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-recommendation-clipboard-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 128,
+          "height": 128
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-ambiental-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 68,
+          "height": 70
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-ambiental-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 512,
+          "height": 512
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-humano-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 70,
+          "height": 72
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-humano-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 512,
+          "height": 512
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-vehicular-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 70,
+          "height": 68
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-vehicular-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 512,
+          "height": 512
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/child-seat-photo-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 596,
+          "height": 610
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/diagram-consequences-clean-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 3720,
+          "height": 1560
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/icon-family-economy-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 32,
+          "height": 32
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/icon-fatalities-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 30,
+          "height": 50
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/icon-health-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 38,
+          "height": 38
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/icon-institutions-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 38,
+          "height": 34
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-control-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 52,
+          "height": 44
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-control-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 192,
+          "height": 192
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-education-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 52,
+          "height": 46
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-education-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 192,
+          "height": 192
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-infrastructure-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 40,
+          "height": 38
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-infrastructure-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 192,
+          "height": 192
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.jpg",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 66,
+          "height": 36
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 192,
+          "height": 192
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-airplane-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 132,
+          "height": 92
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-airplane.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 60,
+          "height": 60
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-car-clean.svg",
+        "referencedByManualData": false,
+        "dimensions": null,
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-car-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 174,
+          "height": 85
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-car.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 104,
+          "height": 104
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-motorcyclist-clean.svg",
+        "referencedByManualData": false,
+        "dimensions": null,
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-motorcyclist-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 144,
+          "height": 167
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-motorcyclist.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 104,
+          "height": 104
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-pedestrian-clean.svg",
+        "referencedByManualData": false,
+        "dimensions": null,
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-pedestrian-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 166,
+          "height": 107
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-pedestrian.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 104,
+          "height": 104
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-grid-8m-2f.svg",
+        "referencedByManualData": false,
+        "dimensions": null,
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-grid-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 196,
+          "height": 148
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-grid.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 85,
+          "height": 90
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-pair-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 132,
+          "height": 119
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-pair.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 72,
+          "height": 72
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-stadium-source.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 132,
+          "height": 92
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-stadium.png",
+        "referencedByManualData": false,
+        "dimensions": {
+          "width": 60,
+          "height": 60
+        },
+        "disposition": "unreferenced-or-superseded-local-asset-file"
+      }
+    ],
+    "summary": {
+      "sourceImageCardCount": 38,
+      "sourceArtworkCount": 2,
+      "sectionAssetFileCount": 132,
+      "correctedAppendixIvCount": 16,
+      "appendixIvPagesCovered": [
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200
+      ],
+      "compactSourceImageCardCount": 7,
+      "acceptableContrastExamples": [
+        "app2-hospital-map-source-card",
+        "app3-body-posture-source-card"
+      ]
+    }
+  }
+}

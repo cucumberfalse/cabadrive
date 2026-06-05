@@ -34,7 +34,7 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-mobile.png"
     ],
     notes: [
-      "Pages 187-188 are implemented with unchanged x5 warning sign sheets.",
+      "Pages 187-188 are implemented with unchanged official warning sign sheet pixels cropped to remove empty outer page margins.",
       "Russian learner text explains the warning categories outside the protected source images."
     ]
   },
@@ -71,10 +71,10 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           id: "app4-warning-page-187-source-card",
           titleRu: "Страница 187: характеристики дороги",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 672,
           sourcePage: 187,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-187-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-187-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист предупреждающих знаков о характеристиках дороги, сохраненный без изменений.",
           visibleSpanish: true,
@@ -86,10 +86,10 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           id: "app4-warning-page-188-source-card",
           titleRu: "Страница 188: максимальная опасность и другие предупреждения",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 705,
           sourcePage: 188,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-188-source-as-is.jpg`,
+          sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-188-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист предупреждающих знаков максимальной опасности, возможного риска и окончания предупреждения, сохраненный без изменений.",
           visibleSpanish: true,
@@ -99,7 +99,8 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Warning signs remain source-as-is at x5 dimensions.",
+        "Warning signs remain source-as-is in feature 034 official-source crops with empty outer page margins removed.",
+        "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
         "No glyph cleanup or Russian overlay is applied to official sign sheets."
       ]
     }

@@ -11510,51 +11510,77 @@
           {
             "sourcePage": 185,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 663,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 664,
+              "height": 980
             },
-            "cropSha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 664,
+                "height": 980
               },
-              "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f"
+              "sha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03296850770366624,
+                  "widthRatio": 0.16901881720430106,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6351118760757315,
+                  "widthRatio": 0.7590361445783133,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 186,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1162,
+              "y": 1602,
+              "width": 704,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 704,
+              "height": 980
             },
-            "cropSha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f"
+              "sha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           }
         ],
@@ -11567,27 +11593,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-185",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f",
+            "width": 664,
+            "height": 980,
+            "sha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 664,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 664,
+                "height": 980
               },
-              "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f"
+              "sha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03296850770366624,
+                  "widthRatio": 0.16901881720430106,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6351118760757315,
+                  "widthRatio": 0.7590361445783133,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -11600,32 +11639,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-186",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f",
+            "width": 704,
+            "height": 980,
+            "sha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 704,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f"
+              "sha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -11638,7 +11690,7 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           }
@@ -11651,14 +11703,14 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           ]
@@ -11671,16 +11723,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -11726,51 +11778,77 @@
           {
             "sourcePage": 187,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 671,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 672,
+              "height": 980
             },
-            "cropSha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 672,
+                "height": 980
               },
-              "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc"
+              "sha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.033492857726786174,
+                  "widthRatio": 0.17170698924731181,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6375121477162293,
+                  "widthRatio": 0.7619047619047619,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 188,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1161,
+              "y": 1602,
+              "width": 705,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 705,
+              "height": 980
             },
-            "cropSha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 705,
+                "height": 980
               },
-              "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91"
+              "sha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03572134532504592,
+                  "widthRatio": 0.18313172043010753,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6456506006657983,
+                  "widthRatio": 0.7716312056737589,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           }
         ],
@@ -11783,27 +11861,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-187",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc",
+            "width": 672,
+            "height": 980,
+            "sha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 672,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 672,
+                "height": 980
               },
-              "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc"
+              "sha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.033492857726786174,
+                  "widthRatio": 0.17170698924731181,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6375121477162293,
+                  "widthRatio": 0.7619047619047619,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -11816,32 +11907,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-188",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91",
+            "width": 705,
+            "height": 980,
+            "sha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 705,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 705,
+                "height": 980
               },
-              "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91"
+              "sha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03572134532504592,
+                  "widthRatio": 0.18313172043010753,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6456506006657983,
+                  "widthRatio": 0.7716312056737589,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -11854,7 +11958,7 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           }
@@ -11867,14 +11971,14 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           ]
@@ -11887,16 +11991,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -11956,101 +12060,153 @@
           {
             "sourcePage": 189,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 673,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 673,
+              "height": 980
             },
-            "cropSha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09"
+              "sha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 190,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1162,
+              "y": 1602,
+              "width": 704,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 704,
+              "height": 980
             },
-            "cropSha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47"
+              "sha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 191,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 671,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 672,
+              "height": 980
             },
-            "cropSha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 672,
+                "height": 980
               },
-              "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9"
+              "sha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.033492857726786174,
+                  "widthRatio": 0.17170698924731181,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6375121477162293,
+                  "widthRatio": 0.7619047619047619,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 192,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1161,
+              "y": 1602,
+              "width": 705,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 706,
+              "height": 980
             },
-            "cropSha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 706,
+                "height": 980
               },
-              "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23"
+              "sha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03572134532504592,
+                  "widthRatio": 0.18313172043010753,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6471064346418454,
+                  "widthRatio": 0.773371104815864,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           }
         ],
@@ -12063,27 +12219,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-189",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09",
+            "width": 673,
+            "height": 980,
+            "sha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 673,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09"
+              "sha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12096,32 +12265,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-190",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47",
+            "width": 704,
+            "height": 980,
+            "sha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 704,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47"
+              "sha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12134,32 +12316,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-191",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9",
+            "width": 672,
+            "height": 980,
+            "sha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 672,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 672,
+                "height": 980
               },
-              "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9"
+              "sha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.033492857726786174,
+                  "widthRatio": 0.17170698924731181,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6375121477162293,
+                  "widthRatio": 0.7619047619047619,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12172,32 +12367,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-192",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23",
+            "width": 706,
+            "height": 980,
+            "sha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 706,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 706,
+                "height": 980
               },
-              "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23"
+              "sha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03572134532504592,
+                  "widthRatio": 0.18313172043010753,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6471064346418454,
+                  "widthRatio": 0.773371104815864,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12210,7 +12418,7 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           }
@@ -12223,28 +12431,28 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           ]
@@ -12257,16 +12465,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -12312,51 +12520,77 @@
           {
             "sourcePage": 193,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 673,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 673,
+              "height": 980
             },
-            "cropSha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235"
+              "sha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 194,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1162,
+              "y": 1602,
+              "width": 704,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 705,
+              "height": 980
             },
-            "cropSha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 705,
+                "height": 980
               },
-              "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a"
+              "sha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6456506006657983,
+                  "widthRatio": 0.7716312056737589,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           }
         ],
@@ -12369,27 +12603,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-193",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235",
+            "width": 673,
+            "height": 980,
+            "sha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 673,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235"
+              "sha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12402,32 +12649,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-194",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a",
+            "width": 705,
+            "height": 980,
+            "sha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 705,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 705,
+                "height": 980
               },
-              "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a"
+              "sha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6456506006657983,
+                  "widthRatio": 0.7716312056737589,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12440,7 +12700,7 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           }
@@ -12453,14 +12713,14 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           ]
@@ -12473,16 +12733,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -12528,51 +12788,77 @@
           {
             "sourcePage": 195,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 673,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 674,
+              "height": 980
             },
-            "cropSha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7",
-            "cleanupScope": "source-as-is runtime road-marking sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 674,
+                "height": 980
               },
-              "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7"
+              "sha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6381033125416339,
+                  "widthRatio": 0.7626112759643917,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 196,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1162,
+              "y": 1602,
+              "width": 704,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 704,
+              "height": 980
             },
-            "cropSha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1",
-            "cleanupScope": "source-as-is runtime road-marking sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1"
+              "sha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           }
         ],
@@ -12585,27 +12871,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
             "assetKind": "high-resolution-original-source-road-marking-sheet-page-195",
             "assetCategory": "source-as-is-road-marking",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7",
+            "width": 674,
+            "height": 980,
+            "sha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 674,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 674,
+                "height": 980
               },
-              "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7"
+              "sha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6381033125416339,
+                  "widthRatio": 0.7626112759643917,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12624,27 +12923,40 @@
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
             "assetKind": "high-resolution-original-source-road-marking-sheet-page-196",
             "assetCategory": "source-as-is-road-marking",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1",
+            "width": 704,
+            "height": 980,
+            "sha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 704,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 704,
+                "height": 980
               },
-              "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1"
+              "sha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03565580157215593,
+                  "widthRatio": 0.1827956989247312,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6465677179962894,
+                  "widthRatio": 0.7727272727272727,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12668,7 +12980,7 @@
           "nonSignVisibleSpanishStatus": "source-image-only",
           "exceptions": [
             {
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
               "kind": "source-image-original-visible-text",
               "visibleSpanishScope": "source-image-only",
               "sourceAsIs": true,
@@ -12677,7 +12989,7 @@
               "scope": "appendix-iv-road-marking-sheet-page-195-only"
             },
             {
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
               "kind": "source-image-original-visible-text",
               "visibleSpanishScope": "source-image-only",
               "sourceAsIs": true,
@@ -12695,16 +13007,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }
@@ -12764,101 +13076,153 @@
           {
             "sourcePage": 197,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1110,
+              "y": 1602,
+              "width": 673,
+              "height": 981
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 673,
+              "height": 980
             },
-            "cropSha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd"
+              "sha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             }
           },
           {
             "sourcePage": 198,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1105,
+              "y": 1602,
+              "width": 761,
+              "height": 1004
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 757,
+              "height": 1003
             },
-            "cropSha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1003
               },
-              "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e"
+              "sha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04049534152366792,
+                  "widthRatio": 0.20194892473118278,
+                  "heightRatio": 0.20052268947493465
+                },
+                "after": {
+                  "areaRatio": 0.6628344820228877,
+                  "widthRatio": 0.7886393659180978,
+                  "heightRatio": 0.8404785643070788
+                }
+              }
             }
           },
           {
             "sourcePage": 199,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1106,
+              "y": 1602,
+              "width": 760,
+              "height": 1003
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 757,
+              "height": 1002
             },
-            "cropSha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1002
               },
-              "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d"
+              "sha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04038006115926701,
+                  "widthRatio": 0.20161290322580644,
+                  "heightRatio": 0.20028510334996436
+                },
+                "after": {
+                  "areaRatio": 0.6627089282465453,
+                  "widthRatio": 0.7886393659180978,
+                  "heightRatio": 0.8403193612774451
+                }
+              }
             }
           },
           {
             "sourcePage": 200,
             "sourceRegion": {
-              "x": 0,
-              "y": 0,
-              "width": 2976,
-              "height": 4209
+              "x": 1106,
+              "y": 1602,
+              "width": 764,
+              "height": 1006
             },
             "sourceAssetPath": "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
             "cropDimensions": {
-              "width": 2976,
-              "height": 4209
+              "width": 757,
+              "height": 1003
             },
-            "cropSha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005",
-            "cleanupScope": "source-as-is runtime official sign/signal sheet; no Spanish cleanup or pixel modification",
+            "cropSha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
+            "cleanupScope": "source-as-is runtime official sheet crop; empty page margins removed only, with no Spanish cleanup or protected pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Appendix IV source export rendered from official PDF at x5 scale with Swift render-manual-pdf-pages, quality 0.95; copied without resizing, cleanup, retouching, relabeling, or translation.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Feature 034 Swift manual-visual-content-crops helper measured the prior x5 page-sheet useful bbox, attempted a scale-12 official PDF source-region render, detected the PDF's native raster source limitation, then trimmed only empty outer margins around the official pixels with 80px safety padding. No resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw was applied.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1003
               },
-              "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005"
+              "sha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04079392086082818,
+                  "widthRatio": 0.20295698924731181,
+                  "heightRatio": 0.20099786172487527
+                },
+                "after": {
+                  "areaRatio": 0.6666328623113487,
+                  "widthRatio": 0.7912813738441216,
+                  "heightRatio": 0.8424725822532403
+                }
+              }
             }
           }
         ],
@@ -12871,27 +13235,40 @@
             "visibleSpanish": false
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-197",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd",
+            "width": 673,
+            "height": 980,
+            "sha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 673,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 673,
+                "height": 980
               },
-              "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd"
+              "sha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.03362394523256616,
+                  "widthRatio": 0.17237903225806453,
+                  "heightRatio": 0.19505820860061773
+                },
+                "after": {
+                  "areaRatio": 0.6378081693301392,
+                  "widthRatio": 0.7622585438335809,
+                  "heightRatio": 0.8367346938775511
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12904,32 +13281,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-198",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e",
+            "width": 757,
+            "height": 1003,
+            "sha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 757,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1003
               },
-              "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e"
+              "sha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04049534152366792,
+                  "widthRatio": 0.20194892473118278,
+                  "heightRatio": 0.20052268947493465
+                },
+                "after": {
+                  "areaRatio": 0.6628344820228877,
+                  "widthRatio": 0.7886393659180978,
+                  "heightRatio": 0.8404785643070788
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12942,32 +13332,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-199",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d",
+            "width": 757,
+            "height": 1002,
+            "sha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 757,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1002
               },
-              "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d"
+              "sha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04038006115926701,
+                  "widthRatio": 0.20161290322580644,
+                  "heightRatio": 0.20028510334996436
+                },
+                "after": {
+                  "areaRatio": 0.6627089282465453,
+                  "widthRatio": 0.7886393659180978,
+                  "heightRatio": 0.8403193612774451
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -12980,32 +13383,45 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           },
           {
-            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
             "assetKind": "official-traffic-sign-source-as-is-page-200",
             "assetCategory": "source-as-is-traffic-sign",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 2976,
-            "height": 4209,
-            "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005",
+            "width": 757,
+            "height": 1003,
+            "sha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 2976,
+              "maxWidthCssPx": 757,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime image is byte-identical to the Appendix IV x5 source crop; Russian explanation is adjacent/under-image DOM text, not an edit inside the image.",
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime image is byte-identical to the feature 034 official-source crop. The PDF source is source-limited for useful sign pixels, so the display is capped at natural crop width instead of browser-upscaling.",
               "outputDimensions": {
-                "width": 2976,
-                "height": 4209
+                "width": 757,
+                "height": 1003
               },
-              "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005"
+              "sha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.04079392086082818,
+                  "widthRatio": 0.20295698924731181,
+                  "heightRatio": 0.20099786172487527
+                },
+                "after": {
+                  "areaRatio": 0.6666328623113487,
+                  "widthRatio": 0.7912813738441216,
+                  "heightRatio": 0.8424725822532403
+                }
+              }
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -13018,7 +13434,7 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           }
@@ -13031,28 +13447,28 @@
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             },
             {
               "kind": "official-traffic-sign-source-as-is",
               "visibleSpanishScope": "official-sign-image-only",
               "sourceAsIs": true,
-              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-as-is.jpg",
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
           ]
@@ -13065,16 +13481,16 @@
         "mobileScreenshot": "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png",
         "boundingBoxChecks": {
           "status": "pass",
-          "evidence": "Focused desktop and mobile screenshot evidence recorded; source-as-is image cards fit without overlap and keep contained scrolling on narrow screens when needed."
+          "evidence": "Feature 034 records before/after useful-content bbox ratios and Playwright useful-content width checks for corrected Appendix IV crops; corrected assets render at natural width with no browser upscaling."
         },
         "forbiddenPatternScan": {
           "status": "pass",
           "evidence": "No PDF viewer, remote assets, translated source-image pixels, broad visual edits, or fake pending content are used."
         },
         "visualReviewNotes": [
-          "Appendix IV high-resolution source evidence uses x5 source exports with recorded dimensions and SHA-256 hashes.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged; Russian explanations are adjacent or below as selectable DOM text.",
-          "No Appendix III, front matter, cleanup, or unrelated correction content is bundled in this Appendix IV implementation slice."
+          "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
+          "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
         ],
         "checkerResult": "pass"
       }

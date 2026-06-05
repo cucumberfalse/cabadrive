@@ -34,7 +34,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
     ],
     notes: [
-      "Pages 185-186 are implemented with source-as-is traffic sign sheets exported at x5.",
+      "Pages 185-186 are implemented with source-as-is traffic sign sheet crops extracted from the official PDF source.",
       "No sign pixels are translated, recolored, cleaned, masked, retouched, reconstructed, or redrawn.",
       "Russian explanations are adjacent to and below the images as selectable DOM text."
     ]
@@ -71,10 +71,10 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           id: "app4-regulatory-page-185-source-card",
           titleRu: "Страница 185: запрещающие",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 664,
           sourcePage: 185,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-185-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 663, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-185-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист запрещающих регулирующих дорожных знаков, сохраненный без изменений.",
           visibleSpanish: true,
@@ -86,10 +86,10 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           id: "app4-regulatory-page-186-source-card",
           titleRu: "Страница 186: ограничения, приоритет и конец предписания",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 704,
           sourcePage: 186,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-186-source-as-is.jpg`,
+          sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-186-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист регулирующих знаков ограничения, приоритета и окончания предписания, сохраненный без изменений.",
           visibleSpanish: true,
@@ -99,7 +99,8 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Both runtime images are byte-identical to their x5 validation source crops.",
+        "Both runtime images are byte-identical to their feature 034 official-source crop evidence.",
+        "Feature 034 removed only empty outer page margins and caps display at each natural crop width because the official PDF source is source-limited for useful sign pixels.",
         "The visible Spanish text is allowed only inside the official sign sheets.",
         "Russian explanatory text is selectable DOM text outside the protected images."
       ]

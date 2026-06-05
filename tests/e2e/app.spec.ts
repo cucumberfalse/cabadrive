@@ -177,12 +177,15 @@ type ManualSourceImageCardMetrics = {
   imageHeight: number;
   naturalWidth: number;
   naturalHeight: number;
+  usefulBounds: { x: number; y: number; width: number; height: number } | null;
+  usefulRenderedWidth: number;
+  usefulRenderedHeight: number;
   viewportWidth: number;
   documentOverflow: number;
   complete: boolean;
 };
 
-async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean }) {
+async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean; expectUsefulContent?: boolean }) {
   const card = page.locator(`[data-card-id="${cardId}"]`);
   await card.scrollIntoViewIfNeeded();
   await expect(card).toHaveAttribute("data-display-mode", "full-width");
@@ -199,6 +202,39 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
     const sectionRect = section.getBoundingClientRect();
     const imageRect = image.getBoundingClientRect();
     const root = document.documentElement;
+    let usefulBounds: { x: number; y: number; width: number; height: number } | null = null;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (context) {
+        context.drawImage(image, 0, 0);
+        const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
+        let minX = width;
+        let minY = height;
+        let maxX = -1;
+        let maxY = -1;
+        for (let y = 0; y < height; y += 1) {
+          for (let x = 0; x < width; x += 1) {
+            const offset = (y * width + x) * 4;
+            const alpha = data[offset + 3];
+            if (alpha > 0 && (data[offset] < 245 || data[offset + 1] < 245 || data[offset + 2] < 245)) {
+              minX = Math.min(minX, x);
+              minY = Math.min(minY, y);
+              maxX = Math.max(maxX, x);
+              maxY = Math.max(maxY, y);
+            }
+          }
+        }
+        if (maxX >= minX && maxY >= minY) {
+          usefulBounds = { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1 };
+        }
+      }
+    } catch {
+      usefulBounds = null;
+    }
+
     return {
       cardId: element.getAttribute("data-card-id") ?? "",
       displayMode: element.getAttribute("data-display-mode"),
@@ -214,6 +250,9 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
       imageHeight: imageRect.height,
       naturalWidth: image.naturalWidth,
       naturalHeight: image.naturalHeight,
+      usefulBounds,
+      usefulRenderedWidth: usefulBounds ? (usefulBounds.width / image.naturalWidth) * imageRect.width : 0,
+      usefulRenderedHeight: usefulBounds ? (usefulBounds.height / image.naturalHeight) * imageRect.height : 0,
       viewportWidth: window.innerWidth,
       documentOverflow: root.scrollWidth - root.clientWidth,
       complete: image.complete
@@ -232,6 +271,14 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
   expect(metrics.imageWidth, `${cardId} uses meaningful card width`).toBeGreaterThanOrEqual(Math.min(metrics.cardWidth * 0.7, metrics.naturalWidth));
   if (options.desktop && metrics.naturalWidth >= 600) {
     expect(metrics.imageWidth, `${cardId} is not the old desktop thumbnail`).toBeGreaterThan(480);
+  }
+  if (options.expectUsefulContent) {
+    expect(metrics.usefulBounds, `${cardId} useful-content bbox is measurable`).not.toBeNull();
+    expect(metrics.usefulRenderedWidth, `${cardId} useful content occupies the rendered image`).toBeGreaterThanOrEqual(metrics.imageWidth * 0.65);
+    expect(metrics.usefulRenderedHeight, `${cardId} useful content occupies the rendered image height`).toBeGreaterThanOrEqual(metrics.imageHeight * 0.65);
+    expect(metrics.usefulRenderedWidth, `${cardId} useful content occupies meaningful card width when source quality allows`).toBeGreaterThanOrEqual(
+      Math.min(metrics.cardWidth * 0.65, metrics.usefulBounds?.width ?? 0)
+    );
   }
   return metrics;
 }
@@ -4486,12 +4533,14 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     sectionId: string;
     hash: string;
     cards: string[];
+    usefulContentCards?: string[];
     panoramicCards?: Array<{ id: string; minDisplayWidthPx: number }>;
   }> = [
     {
       sectionId: "app4-signs-regulatory",
       hash: "/#manual-section-app4-signs-regulatory",
-      cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"]
+      cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+      usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"]
     },
     {
       sectionId: "app3-driving-factors",
@@ -4512,7 +4561,8 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app4-signs-horizontal",
       hash: "/#manual-section-app4-signs-horizontal",
-      cards: ["app4-horizontal-page-195-source-card"]
+      cards: ["app4-horizontal-page-195-source-card"],
+      usefulContentCards: ["app4-horizontal-page-195-source-card"]
     },
     {
       sectionId: "app3-safety-elements",
@@ -4532,7 +4582,10 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       const section = page.getByTestId("manual-guide-section");
       await expect(section).toHaveAttribute("data-manual-section-id", scenario.sectionId);
       for (const cardId of scenario.cards) {
-        await expectFullWidthSourceImageCard(page, cardId, { desktop: viewport.desktop });
+        await expectFullWidthSourceImageCard(page, cardId, {
+          desktop: viewport.desktop,
+          expectUsefulContent: scenario.usefulContentCards?.includes(cardId) ?? false
+        });
       }
       if (!viewport.desktop) {
         for (const panoramicCard of scenario.panoramicCards ?? []) {

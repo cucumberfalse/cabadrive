@@ -34,7 +34,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-mobile.png"
     ],
     notes: [
-      "Pages 193-194 are implemented with unchanged x5 temporary sign sheets.",
+      "Pages 193-194 are implemented with unchanged official temporary sign pixels cropped to remove empty outer page margins.",
       "Russian explanations for temporary-road, pedestrian, cycleway, and other-device categories are outside the images."
     ]
   },
@@ -71,10 +71,10 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           id: "app4-temporary-page-193-source-card",
           titleRu: "Страница 193: дорожные, пешеходные и велосипедные временные знаки",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 673,
           sourcePage: 193,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-193-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-193-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист временных дорожных, пешеходных и велосипедных знаков, сохраненный без изменений.",
           visibleSpanish: true,
@@ -86,10 +86,10 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           id: "app4-temporary-page-194-source-card",
           titleRu: "Страница 194: пешеходные, велосипедные и другие временные устройства",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 705,
           sourcePage: 194,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-194-source-as-is.jpg`,
+          sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-194-source-crop-as-is.jpg`,
           altRu:
             "Официальный лист временных пешеходных, велосипедных и других устройств, сохраненный без изменений.",
           visibleSpanish: true,
@@ -99,7 +99,8 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "Temporary signs and devices are treated as protected official source visuals.",
+        "Temporary signs and devices are treated as protected official source visuals cropped only to remove empty outer page margins.",
+        "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
         "No Spanish cleanup or Russian overlay is applied to the images."
       ]
     }
