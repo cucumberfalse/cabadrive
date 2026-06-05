@@ -228,7 +228,6 @@
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
-- Marker-boundary follow-up feedback: none; no scope tension, missing architecture decision, blocker, or sibling-work issue was identified during implementation.
 
 ## Architect Dispositions
 
