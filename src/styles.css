@@ -1096,6 +1096,33 @@ small,
   margin-top: 8px;
 }
 
+.manual-glossary-list ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.25rem;
+}
+
+.manual-glossary-item {
+  margin: 0;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.manual-glossary-term {
+  color: #1b6680;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+.manual-glossary-translation {
+  color: #365b63;
+  font-weight: 650;
+}
+
+.manual-glossary-definition {
+  color: #303535;
+}
+
 .intro-risk-panel {
   display: grid;
   gap: 10px;

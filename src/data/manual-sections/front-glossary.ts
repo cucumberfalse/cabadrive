@@ -11,7 +11,8 @@ export const frontGlossarySection: ManualGuideSectionContent = {
     "manual-prose",
     "manual-section-heading",
     "manual-legal-detail",
-    "manual-front-matter"
+    "manual-front-matter",
+    "manual-glossary"
   ],
   visualEvidence: {
     checkerStatus: "pass",
@@ -29,7 +30,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
       "content/validation/manual-guide/front-glossary/front-glossary-mobile.png"
     ],
     notes: [
-      "Glossary pages 5-11 are implemented as selectable Russian DOM text with Spanish terms retained where useful.",
+      "Glossary pages 5-11 are implemented as structured selectable DOM rows with Spanish terms, Russian translations in parentheses, and Russian definitions.",
       "No glossary source image is used at runtime; x5 source renders are validation evidence only.",
       "Exam-useful terms preserve legal/numeric road definitions such as avenida widths, stop duration, and fast-road names."
     ]
@@ -44,117 +45,492 @@ export const frontGlossarySection: ManualGuideSectionContent = {
     },
     {
       id: "glossary-a-b",
-      kind: "list",
+      kind: "glossary-list",
       titleRu: "A-B",
       sourceTextEs: "Accidente de transito, Acera, Adelantamiento, Arteria, Arterias multicarriles, Automotor, Automovil, Autopista, Avenida, Baliza, Banquina, Bicicleta.",
-      itemsRu: [
-        "Accidente de tránsito: в источнике заменяется термином incidente de tránsito.",
-        "Acera: тротуар, сектор общественной дороги рядом с проезжей частью для движения пешеходов.",
-        "Adelantamiento: опережение без необходимости менять полосу.",
-        "Arteria: городская общественная дорога для транспортного и, при необходимости, пешеходного движения.",
-        "Arterias multicarriles: проспекты, автомагистрали, полуавтомагистрали и vías rápidas.",
-        "Automotor: транспортное средство с движущей силой от мотора.",
-        "Automóvil: автомоторное транспортное средство для перевозки людей, кроме водителя не более 8 мест.",
-        "Autopista: многополосная дорога с физически разделенными направлениями, без пересечений в одном уровне и с контролируемыми въездами.",
-        "Avenida: артерия с проезжей частью минимум 13 м; также некоторые артерии с расстоянием более 17,32 м между линиями застройки.",
-        "Baliza: предупреждающая метка, опознавательный свет аварийного транспорта или аварийные мигающие огни.",
-        "Banquina: зона рядом и параллельно проезжей части дорог, автомагистралей или путей для большей безопасности движения.",
-        "Bicicleta: двухколесное велотранспортное средство."
+      items: [
+        {
+          id: "glossary-a-b-accidente-de-transito",
+          termEs: "Accidente de tránsito",
+          translationRu: "дорожное происшествие",
+          definitionRu: "в источнике заменяется термином incidente de tránsito."
+        },
+        {
+          id: "glossary-a-b-acera",
+          termEs: "Acera",
+          translationRu: "тротуар",
+          definitionRu: "сектор общественной дороги рядом с проезжей частью для движения пешеходов."
+        },
+        {
+          id: "glossary-a-b-adelantamiento",
+          termEs: "Adelantamiento",
+          translationRu: "опережение",
+          definitionRu: "маневр без необходимости менять полосу."
+        },
+        {
+          id: "glossary-a-b-arteria",
+          termEs: "Arteria",
+          translationRu: "городская дорога",
+          definitionRu: "общественная дорога для транспортного и, при необходимости, пешеходного движения."
+        },
+        {
+          id: "glossary-a-b-arterias-multicarriles",
+          termEs: "Arterias multicarriles",
+          translationRu: "многополосные артерии",
+          definitionRu: "проспекты, автомагистрали, полуавтомагистрали и vías rápidas."
+        },
+        {
+          id: "glossary-a-b-automotor",
+          termEs: "Automotor",
+          translationRu: "моторное транспортное средство",
+          definitionRu: "транспортное средство с движущей силой от мотора."
+        },
+        {
+          id: "glossary-a-b-automovil",
+          termEs: "Automóvil",
+          translationRu: "автомобиль",
+          definitionRu: "автомоторное транспортное средство для перевозки людей, кроме водителя не более 8 мест."
+        },
+        {
+          id: "glossary-a-b-autopista",
+          termEs: "Autopista",
+          translationRu: "автомагистраль",
+          definitionRu: "многополосная дорога с физически разделенными направлениями, без пересечений в одном уровне и с контролируемыми въездами."
+        },
+        {
+          id: "glossary-a-b-avenida",
+          termEs: "Avenida",
+          translationRu: "проспект",
+          definitionRu: "артерия с проезжей частью минимум 13 м; также некоторые артерии с расстоянием более 17,32 м между линиями застройки."
+        },
+        {
+          id: "glossary-a-b-baliza",
+          termEs: "Baliza",
+          translationRu: "аварийный маячок / аварийная сигнализация",
+          definitionRu: "предупреждающая метка, опознавательный свет аварийного транспорта или аварийные мигающие огни."
+        },
+        {
+          id: "glossary-a-b-banquina",
+          termEs: "Banquina",
+          translationRu: "обочина",
+          definitionRu: "зона рядом и параллельно проезжей части дорог, автомагистралей или путей для большей безопасности движения."
+        },
+        {
+          id: "glossary-a-b-bicicleta",
+          termEs: "Bicicleta",
+          translationRu: "велосипед",
+          definitionRu: "двухколесное велотранспортное средство."
+        }
       ]
     },
     {
       id: "glossary-b-c",
-      kind: "list",
+      kind: "glossary-list",
       titleRu: "B-C",
       sourceTextEs: "Bicisenda, Bocacalle, Bolardo, Bolson vehicular o de transito, Cajon azul, Calzada, Calle, Calle de convivencia, Carga y descarga, Carril, Chaleco reflectante, Ciclocarril, Ciclomotor, Ciclorodado, Ciclorodado con pedaleo asistido electricamente, Ciclovia, Circulacion, Colectora, Conductor/a, Cordon, Cuatriciclo motorizado.",
-      itemsRu: [
-        "Bicisenda: обозначенный и оборудованный сектор на тротуаре или в зеленой зоне для велотранспортных средств и средств индивидуальной мобильности.",
-        "Bocacalle: общая поверхность дороги на пересечении двух или более артерий, включая пешеходные переходы.",
-        "Bolardo: невысокий вертикальный элемент, ограничивающий проезд или стоянку.",
-        "Bolsón vehicular o de tránsito: пешеходная разметка, не совпадающая с продолжением тротуара и сопровождаемая светофорным регулированием.",
-        "Cajón azul: место на дороге для погрузки и разгрузки транспортных средств, занятых этой деятельностью.",
-        "Calzada: проезжая часть, сектор дороги для движения транспортных средств.",
-        "Calle: улица; в частном определении артерия с шириной проезжей части от 5 до 13 м.",
-        "Calle de convivencia: улица совместного пользования с преимущественным пешеходным движением и ограниченным движением транспорта.",
-        "Carga y descarga: погрузка и разгрузка только на строго необходимое время и в установленных пределах.",
-        "Carril: продольная размеченная полоса для организации движения, обычно для одного ряда транспортных средств.",
-        "Chaleco reflectante: светоотражающий жилет для видимости человека при плохой видимости.",
-        "Ciclocarril: обозначенный сектор проезжей части для преимущественного движения велотранспортных средств и средств индивидуальной мобильности.",
-        "Ciclomotor: двухколесное транспортное средство до 50 см3 или до 4 кВт, не более 50 км/ч.",
-        "Ciclorodado: немоторизованное транспортное средство с двумя или более колесами, движимое усилием пользователя.",
-        "Ciclorodado con pedaleo asistido eléctricamente: велотранспортное средство со вспомогательным электрическим мотором.",
-        "Ciclovía: отделенный сектор проезжей части для исключительного движения велотранспортных средств и средств индивидуальной мобильности.",
-        "Circulación: перемещение пешеходов и транспортных средств.",
-        "Colectora: боковая проезжая часть, параллельная центральным полосам автомагистрали или vías rápidas.",
-        "Conductor/a: лицо, непосредственно управляющее транспортным средством во время движения.",
-        "Cordón: бордюр, отделяющий проезжую часть от тротуаров, островков или площадок.",
-        "Cuatriciclo motorizado: моторное транспортное средство без кузова с четырьмя колесами не в одну линию."
+      items: [
+        {
+          id: "glossary-b-c-bicisenda",
+          termEs: "Bicisenda",
+          translationRu: "велодорожка вне проезжей части",
+          definitionRu: "обозначенный и оборудованный сектор на тротуаре или в зеленой зоне для велотранспортных средств и средств индивидуальной мобильности."
+        },
+        {
+          id: "glossary-b-c-bocacalle",
+          termEs: "Bocacalle",
+          translationRu: "зона перекрестка",
+          definitionRu: "общая поверхность дороги на пересечении двух или более артерий, включая пешеходные переходы."
+        },
+        {
+          id: "glossary-b-c-bolardo",
+          termEs: "Bolardo",
+          translationRu: "боллард / ограничительный столбик",
+          definitionRu: "невысокий вертикальный элемент, ограничивающий проезд или стоянку."
+        },
+        {
+          id: "glossary-b-c-bolson-vehicular-transito",
+          termEs: "Bolsón vehicular o de tránsito",
+          translationRu: "пешеходный накопитель",
+          definitionRu: "пешеходная разметка, не совпадающая с продолжением тротуара и сопровождаемая светофорным регулированием."
+        },
+        {
+          id: "glossary-b-c-cajon-azul",
+          termEs: "Cajón azul",
+          translationRu: "синий грузовой карман",
+          definitionRu: "место на дороге для погрузки и разгрузки транспортных средств, занятых этой деятельностью."
+        },
+        {
+          id: "glossary-b-c-calzada",
+          termEs: "Calzada",
+          translationRu: "проезжая часть",
+          definitionRu: "сектор дороги для движения транспортных средств."
+        },
+        {
+          id: "glossary-b-c-calle",
+          termEs: "Calle",
+          translationRu: "улица",
+          definitionRu: "в частном определении артерия с шириной проезжей части от 5 до 13 м."
+        },
+        {
+          id: "glossary-b-c-calle-de-convivencia",
+          termEs: "Calle de convivencia",
+          translationRu: "улица совместного пользования",
+          definitionRu: "улица с преимущественным пешеходным движением и ограниченным движением транспорта."
+        },
+        {
+          id: "glossary-b-c-carga-y-descarga",
+          termEs: "Carga y descarga",
+          translationRu: "погрузка и разгрузка",
+          definitionRu: "действия только на строго необходимое время и в установленных пределах."
+        },
+        {
+          id: "glossary-b-c-carril",
+          termEs: "Carril",
+          translationRu: "полоса движения",
+          definitionRu: "продольная размеченная полоса для организации движения, обычно для одного ряда транспортных средств."
+        },
+        {
+          id: "glossary-b-c-chaleco-reflectante",
+          termEs: "Chaleco reflectante",
+          translationRu: "светоотражающий жилет",
+          definitionRu: "жилет для видимости человека при плохой видимости."
+        },
+        {
+          id: "glossary-b-c-ciclocarril",
+          termEs: "Ciclocarril",
+          translationRu: "велополоса",
+          definitionRu: "обозначенный сектор проезжей части для преимущественного движения велотранспортных средств и средств индивидуальной мобильности."
+        },
+        {
+          id: "glossary-b-c-ciclomotor",
+          termEs: "Ciclomotor",
+          translationRu: "мопед",
+          definitionRu: "двухколесное транспортное средство до 50 см3 или до 4 кВт, не более 50 км/ч."
+        },
+        {
+          id: "glossary-b-c-ciclorodado",
+          termEs: "Ciclorodado",
+          translationRu: "велотранспорт",
+          definitionRu: "немоторизованное транспортное средство с двумя или более колесами, движимое усилием пользователя."
+        },
+        {
+          id: "glossary-b-c-ciclorodado-pedaleo-asistido-electricamente",
+          termEs: "Ciclorodado con pedaleo asistido eléctricamente",
+          translationRu: "электровелосипед с педальным ассистом",
+          definitionRu: "велотранспортное средство со вспомогательным электрическим мотором."
+        },
+        {
+          id: "glossary-b-c-ciclovia",
+          termEs: "Ciclovía",
+          translationRu: "выделенная велодорожка",
+          definitionRu: "отделенный сектор проезжей части для исключительного движения велотранспортных средств и средств индивидуальной мобильности."
+        },
+        {
+          id: "glossary-b-c-circulacion",
+          termEs: "Circulación",
+          translationRu: "движение",
+          definitionRu: "перемещение пешеходов и транспортных средств."
+        },
+        {
+          id: "glossary-b-c-colectora",
+          termEs: "Colectora",
+          translationRu: "сервисная боковая дорога",
+          definitionRu: "боковая проезжая часть, параллельная центральным полосам автомагистрали или vías rápidas."
+        },
+        {
+          id: "glossary-b-c-conductor",
+          termEs: "Conductor/a",
+          translationRu: "водитель",
+          definitionRu: "лицо, непосредственно управляющее транспортным средством во время движения."
+        },
+        {
+          id: "glossary-b-c-cordon",
+          termEs: "Cordón",
+          translationRu: "бордюр",
+          definitionRu: "элемент, отделяющий проезжую часть от тротуаров, островков или площадок."
+        },
+        {
+          id: "glossary-b-c-cuatriciclo-motorizado",
+          termEs: "Cuatriciclo motorizado",
+          translationRu: "моторизованный квадрицикл",
+          definitionRu: "моторное транспортное средство без кузова с четырьмя колесами не в одну линию."
+        }
       ]
     },
     {
       id: "glossary-d-i",
-      kind: "list",
+      kind: "glossary-list",
       titleRu: "D-I",
       sourceTextEs: "Darsena de estacionamiento o detencion, Detencion, Dispositivo de movilidad personal, Eje de calzada, Embotellamiento, Encrucijada, Estacionamiento, Giro, Guinada, Incidente de transito o incidente vial, Intervenciones peatonales, Isleta.",
-      itemsRu: [
-        "Dársena de estacionamiento o detención: защищенное место для стоянки или остановки, обычно шириной минимум 2 м.",
-        "Detención: неподвижное нахождение у тротуара на строго необходимое время; также до 2 минут, если водитель не покидает транспорт.",
-        "Dispositivo de movilidad personal: одноместное электрическое средство индивидуальной мобильности с одним или более колесами.",
-        "Eje de calzada: продольная линия проезжей части, определяющая зоны с противоположными направлениями движения.",
-        "Embotellamiento, atascamiento o congestión: скопление транспорта, затрудняющее или блокирующее движение.",
-        "Encrucijada: перекресточная зона.",
-        "Estacionamiento: неподвижное нахождение транспортного средства дольше, чем допускает определение detención.",
-        "Giro: маневр изменения направления для перехода на другую артерию.",
-        "Guiñada: быстрое включение и выключение дальнего света как предупреждение.",
-        "Incidente de tránsito o incidente vial: событие с вредом людям или вещам во время движения по общественной дороге.",
-        "Intervenciones peatonales: размеченные зоны проезжей части исключительно для пешеходного движения, иногда с городской мебелью.",
-        "Isleta: сухая площадка или размеченная зона, направляющая транспортные потоки."
+      items: [
+        {
+          id: "glossary-d-i-darsena-estacionamiento-detencion",
+          termEs: "Dársena de estacionamiento o detención",
+          translationRu: "карман для стоянки или остановки",
+          definitionRu: "защищенное место для стоянки или остановки, обычно шириной минимум 2 м."
+        },
+        {
+          id: "glossary-d-i-detencion",
+          termEs: "Detención",
+          translationRu: "остановка",
+          definitionRu: "неподвижное нахождение у тротуара на строго необходимое время; также до 2 минут, если водитель не покидает транспорт."
+        },
+        {
+          id: "glossary-d-i-dispositivo-movilidad-personal",
+          termEs: "Dispositivo de movilidad personal",
+          translationRu: "средство индивидуальной мобильности",
+          definitionRu: "одноместное электрическое средство с одним или более колесами."
+        },
+        {
+          id: "glossary-d-i-eje-de-calzada",
+          termEs: "Eje de calzada",
+          translationRu: "ось проезжей части",
+          definitionRu: "продольная линия проезжей части, определяющая зоны с противоположными направлениями движения."
+        },
+        {
+          id: "glossary-d-i-embotellamiento-atascamiento-congestion",
+          termEs: "Embotellamiento, atascamiento o congestión",
+          translationRu: "затор / пробка",
+          definitionRu: "скопление транспорта, затрудняющее или блокирующее движение."
+        },
+        {
+          id: "glossary-d-i-encrucijada",
+          termEs: "Encrucijada",
+          translationRu: "перекресток",
+          definitionRu: "перекресточная зона."
+        },
+        {
+          id: "glossary-d-i-estacionamiento",
+          termEs: "Estacionamiento",
+          translationRu: "стоянка",
+          definitionRu: "неподвижное нахождение транспортного средства дольше, чем допускает определение detención."
+        },
+        {
+          id: "glossary-d-i-giro",
+          termEs: "Giro",
+          translationRu: "поворот",
+          definitionRu: "маневр изменения направления для перехода на другую артерию."
+        },
+        {
+          id: "glossary-d-i-guinada",
+          termEs: "Guiñada",
+          translationRu: "мигание дальним светом",
+          definitionRu: "быстрое включение и выключение дальнего света как предупреждение."
+        },
+        {
+          id: "glossary-d-i-incidente-transito-vial",
+          termEs: "Incidente de tránsito o incidente vial",
+          translationRu: "дорожный инцидент",
+          definitionRu: "событие с вредом людям или вещам во время движения по общественной дороге."
+        },
+        {
+          id: "glossary-d-i-intervenciones-peatonales",
+          termEs: "Intervenciones peatonales",
+          translationRu: "пешеходные зоны на проезжей части",
+          definitionRu: "размеченные зоны проезжей части исключительно для пешеходного движения, иногда с городской мебелью."
+        },
+        {
+          id: "glossary-d-i-isleta",
+          termEs: "Isleta",
+          translationRu: "островок",
+          definitionRu: "сухая площадка или размеченная зона, направляющая транспортные потоки."
+        }
       ]
     },
     {
       id: "glossary-m-p",
-      kind: "list",
+      kind: "glossary-list",
       titleRu: "M-P",
       sourceTextEs: "Mano, Mensajeria urbana, Metrobus, Microplataforma de distribucion urbana, Motocicleta, Motofurgon, Motovehiculo, Parada de transporte publico, Pasaje, Paseo del Bajo, Peaton, Puente.",
-      itemsRu: [
-        "Mano: направление движения, которого должны придерживаться транспортные средства на артерии.",
-        "Mensajería urbana: городская курьерская доставка на мототранспортном или велотранспортном средстве.",
-        "Metrobus: массовая дифференцированная сеть автобусного транспорта, облегчающая пересадки.",
-        "Microplataforma de distribución urbana: место для разукрупнения грузов, погрузки, разгрузки и временного хранения товаров.",
-        "Motocicleta: двухколесное транспортное средство с мотором более 50 см3 или более 4 кВт, способное ехать быстрее 50 км/ч.",
-        "Motofurgón: трехколесный или четырехколесный моторный транспорт для перевозки грузов.",
-        "Motovehículo: моторное транспортное средство: мопед, моторизованный трицикл или квадрицикл, мотоцикл либо мотофургон.",
-        "Parada de transporte público: вертикальный указатель места посадки и высадки пассажиров.",
-        "Pasaje: артерия с шириной проезжей части меньше 5 м.",
-        "Paseo del Bajo: коридор между северными и южными автомагистралями, обязательный для тяжелого транспорта и междугородних пассажирских автобусов.",
-        "Peatón: лицо, которое движется или находится на дороге без транспортного средства.",
-        "Puente: сооружение для прохода людей или проезда транспорта над пересекаемым уровнем."
+      items: [
+        {
+          id: "glossary-m-p-mano",
+          termEs: "Mano",
+          translationRu: "направление движения",
+          definitionRu: "направление, которого должны придерживаться транспортные средства на артерии."
+        },
+        {
+          id: "glossary-m-p-mensajeria-urbana",
+          termEs: "Mensajería urbana",
+          translationRu: "городская доставка",
+          definitionRu: "городская курьерская доставка на мототранспортном или велотранспортном средстве."
+        },
+        {
+          id: "glossary-m-p-metrobus",
+          termEs: "Metrobus",
+          translationRu: "метробус",
+          definitionRu: "массовая дифференцированная сеть автобусного транспорта, облегчающая пересадки."
+        },
+        {
+          id: "glossary-m-p-microplataforma-distribucion-urbana",
+          termEs: "Microplataforma de distribución urbana",
+          translationRu: "городская микроплатформа распределения",
+          definitionRu: "место для разукрупнения грузов, погрузки, разгрузки и временного хранения товаров."
+        },
+        {
+          id: "glossary-m-p-motocicleta",
+          termEs: "Motocicleta",
+          translationRu: "мотоцикл",
+          definitionRu: "двухколесное транспортное средство с мотором более 50 см3 или более 4 кВт, способное ехать быстрее 50 км/ч."
+        },
+        {
+          id: "glossary-m-p-motofurgon",
+          termEs: "Motofurgón",
+          translationRu: "мотогрузовик",
+          definitionRu: "трехколесный или четырехколесный моторный транспорт для перевозки грузов."
+        },
+        {
+          id: "glossary-m-p-motovehiculo",
+          termEs: "Motovehículo",
+          translationRu: "мототранспортное средство",
+          definitionRu: "моторное транспортное средство: мопед, моторизованный трицикл или квадрицикл, мотоцикл либо мотофургон."
+        },
+        {
+          id: "glossary-m-p-parada-transporte-publico",
+          termEs: "Parada de transporte público",
+          translationRu: "остановка общественного транспорта",
+          definitionRu: "вертикальный указатель места посадки и высадки пассажиров."
+        },
+        {
+          id: "glossary-m-p-pasaje",
+          termEs: "Pasaje",
+          translationRu: "переулок / проезд",
+          definitionRu: "артерия с шириной проезжей части меньше 5 м."
+        },
+        {
+          id: "glossary-m-p-paseo-del-bajo",
+          termEs: "Paseo del Bajo",
+          translationRu: "коридор Пасео-дель-Бахо",
+          definitionRu: "коридор между северными и южными автомагистралями, обязательный для тяжелого транспорта и междугородних пассажирских автобусов."
+        },
+        {
+          id: "glossary-m-p-peaton",
+          termEs: "Peatón",
+          translationRu: "пешеход",
+          definitionRu: "лицо, которое движется или находится на дороге без транспортного средства."
+        },
+        {
+          id: "glossary-m-p-puente",
+          termEs: "Puente",
+          translationRu: "мост",
+          definitionRu: "сооружение для прохода людей или проезда транспорта над пересекаемым уровнем."
+        }
       ]
     },
     {
       id: "glossary-r-v",
-      kind: "list",
+      kind: "glossary-list",
       titleRu: "R-V",
       sourceTextEs: "Reductor de velocidad, Rotonda, Ruptura de carga, Sector de parada, Semaforo, Semiautopista, Senda peatonal, Sobrepaso, Sube y Baja, Trafico, Transito, Triciclo, Triciclo motorizado, Tunel, Vehiculo, Vehiculo abandonado, Via publica, Via rapida.",
-      itemsRu: [
-        "Reductor de velocidad: искусственная неровность или сужающее устройство, заставляющее снизить скорость.",
-        "Rotonda: круговое пересечение для распределения движения между двумя или более артериями.",
-        "Ruptura de carga: прием и разгрузка товаров с перераспределением в другие транспортные средства.",
-        "Sector de parada: зона на проезжей части рядом с остановкой пассажирского транспорта.",
-        "Semáforo: световое устройство, попеременно предоставляющее право проезда, а в отдельных случаях и прохода пешеходам.",
-        "Semiautopista: многополосная дорога с физически разделенными направлениями, некоторыми пересечениями в одном уровне и ограничением прямого въезда.",
-        "Senda peatonal: сектор проезжей части для перехода пешеходов; если не размечен, совпадает с продолжением тротуара через проезжую часть.",
-        "Sobrepaso: прохождение линии другого движущегося транспортного средства со сменой полосы.",
-        "Sube y Baja: система организации движения вокруг образовательных учреждений для безопасного входа и выхода учеников.",
-        "Tráfico: движение вещей или людей.",
-        "Tránsito: перемещение вещей или людей из одного места в другое.",
-        "Triciclo: трехколесное велотранспортное средство с колесами не в одну линию.",
-        "Triciclo motorizado: моторное транспортное средство без кузова с тремя колесами не в одну линию.",
-        "Túnel: сооружение для прохода людей или проезда транспорта ниже пересекаемого уровня.",
-        "Vehículo: средство, с помощью которого человек или вещь может перевозиться по общественной дороге.",
-        "Vehículo abandonado: транспортное средство или его часть на общественной территории в состоянии ухудшения, неподвижности и/или оставления.",
-        "Vía pública: тротуар, автомагистраль, полуавтомагистраль, переулок, проход, улица, проспект, переход, площадь, парк или иной общественный дорожный простор.",
-        "Vía rápida: Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz, AU1, AU6, AU7, 9 de Julio Sur, Illia, R. Balbín, Av. 27 de Febrero и Paseo del Bajo."
+      items: [
+        {
+          id: "glossary-r-v-reductor-de-velocidad",
+          termEs: "Reductor de velocidad",
+          translationRu: "замедлитель скорости",
+          definitionRu: "искусственная неровность или сужающее устройство, заставляющее снизить скорость."
+        },
+        {
+          id: "glossary-r-v-rotonda",
+          termEs: "Rotonda",
+          translationRu: "круговое пересечение",
+          definitionRu: "пересечение для распределения движения между двумя или более артериями."
+        },
+        {
+          id: "glossary-r-v-ruptura-de-carga",
+          termEs: "Ruptura de carga",
+          translationRu: "разукрупнение груза",
+          definitionRu: "прием и разгрузка товаров с перераспределением в другие транспортные средства."
+        },
+        {
+          id: "glossary-r-v-sector-de-parada",
+          termEs: "Sector de parada",
+          translationRu: "сектор остановки",
+          definitionRu: "зона на проезжей части рядом с остановкой пассажирского транспорта."
+        },
+        {
+          id: "glossary-r-v-semaforo",
+          termEs: "Semáforo",
+          translationRu: "светофор",
+          definitionRu: "световое устройство, попеременно предоставляющее право проезда, а в отдельных случаях и прохода пешеходам."
+        },
+        {
+          id: "glossary-r-v-semiautopista",
+          termEs: "Semiautopista",
+          translationRu: "полуавтомагистраль",
+          definitionRu: "многополосная дорога с физически разделенными направлениями, некоторыми пересечениями в одном уровне и ограничением прямого въезда."
+        },
+        {
+          id: "glossary-r-v-senda-peatonal",
+          termEs: "Senda peatonal",
+          translationRu: "пешеходный переход",
+          definitionRu: "сектор проезжей части для перехода пешеходов; если не размечен, совпадает с продолжением тротуара через проезжую часть."
+        },
+        {
+          id: "glossary-r-v-sobrepaso",
+          termEs: "Sobrepaso",
+          translationRu: "обгон",
+          definitionRu: "прохождение линии другого движущегося транспортного средства со сменой полосы."
+        },
+        {
+          id: "glossary-r-v-sube-y-baja",
+          termEs: "Sube y Baja",
+          translationRu: "школьная посадка и высадка",
+          definitionRu: "система организации движения вокруг образовательных учреждений для безопасного входа и выхода учеников."
+        },
+        {
+          id: "glossary-r-v-trafico",
+          termEs: "Tráfico",
+          translationRu: "трафик",
+          definitionRu: "движение вещей или людей."
+        },
+        {
+          id: "glossary-r-v-transito",
+          termEs: "Tránsito",
+          translationRu: "дорожное движение",
+          definitionRu: "перемещение вещей или людей из одного места в другое."
+        },
+        {
+          id: "glossary-r-v-triciclo",
+          termEs: "Triciclo",
+          translationRu: "трехколесный велосипед",
+          definitionRu: "трехколесное велотранспортное средство с колесами не в одну линию."
+        },
+        {
+          id: "glossary-r-v-triciclo-motorizado",
+          termEs: "Triciclo motorizado",
+          translationRu: "моторизованный трицикл",
+          definitionRu: "моторное транспортное средство без кузова с тремя колесами не в одну линию."
+        },
+        {
+          id: "glossary-r-v-tunel",
+          termEs: "Túnel",
+          translationRu: "туннель",
+          definitionRu: "сооружение для прохода людей или проезда транспорта ниже пересекаемого уровня."
+        },
+        {
+          id: "glossary-r-v-vehiculo",
+          termEs: "Vehículo",
+          translationRu: "транспортное средство",
+          definitionRu: "средство, с помощью которого человек или вещь может перевозиться по общественной дороге."
+        },
+        {
+          id: "glossary-r-v-vehiculo-abandonado",
+          termEs: "Vehículo abandonado",
+          translationRu: "брошенное транспортное средство",
+          definitionRu: "транспортное средство или его часть на общественной территории в состоянии ухудшения, неподвижности и/или оставления."
+        },
+        {
+          id: "glossary-r-v-via-publica",
+          termEs: "Vía pública",
+          translationRu: "дорога общего пользования",
+          definitionRu: "тротуар, автомагистраль, полуавтомагистраль, переулок, проход, улица, проспект, переход, площадь, парк или иной общественный дорожный простор."
+        },
+        {
+          id: "glossary-r-v-via-rapida",
+          termEs: "Vía rápida",
+          translationRu: "скоростная дорога",
+          definitionRu: "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz, AU1, AU6, AU7, 9 de Julio Sur, Illia, R. Balbín, Av. 27 de Febrero и Paseo del Bajo."
+        }
       ]
     }
   ]
