@@ -24,6 +24,21 @@ Preferred shape:
 
 Do not solve the issue with CSS zoom, image transforms, or browser stretching.
 
+## Readability Refinement
+
+The post-PR user clarification adds a whole-document readability gate:
+intended-readable text inside images should be visually no smaller than nearby
+manual body text. This stays inside the current feature because it refines the
+definition of "large enough to inspect" for the same image-content defect.
+
+Current PR `#200` crop evidence is not enough by itself for this clarified
+gate. Appendix IV crops are now tight, but their natural widths are only around
+`664-757px` and evidence records that the official PDF raster is
+source-limited. Implementation must prove the embedded labels/captions are
+still visually comparable to document text, or it must attempt a better
+official source/strategy and record any remaining source-limited exception for
+Orchestrator/user disposition.
+
 ## Inventory Method
 
 Implementation should create a systematic inventory before final asset changes.
@@ -51,6 +66,17 @@ For each item, record:
   `acceptable-tight-crop`, `compact`, `source-limited-exception`, or a similar
   clear local enum;
 - reason and reviewer note.
+
+Add these fields for every image containing intended-readable text:
+
+- text-readability relevance: `none`, `supporting`, `required`, or equivalent;
+- smallest inspected/estimated source-image text sample;
+- rendered text-height estimate or manual visual comparison result;
+- nearby manual body text baseline from computed CSS or documented screenshot
+  comparison;
+- disposition: `readable`, `needs-larger-display`, `needs-better-source`,
+  `source-limited-exception`, or equivalent;
+- evidence path for screenshot/OCR/manual inspection.
 
 The detector can be implemented with any repository-appropriate repeatable
 method. A Playwright/canvas based scan is acceptable because Playwright is
@@ -87,6 +113,23 @@ to high-DPI region extraction and is not part of runtime behavior.
 If the official PDF embeds a low-resolution raster and higher-DPI export does
 not improve source detail, record the source limitation and cap display; do not
 retouch or upscale.
+
+If embedded text remains smaller than nearby manual body text after a
+source-faithful crop, do not stop at the source limitation. First check whether
+a better official source or source-faithful strategy is available, such as:
+
+- a higher-quality official PDF/source asset already archived in the repo;
+- official sign/marking/signal source images from another governed official
+  document retained under `content/official-documents/`;
+- splitting an official sheet into smaller official sub-crops so each protected
+  source region can render larger without pixel upscaling;
+- presenting multiple official crop panels for one low-resolution page sheet
+  when that is the only source-faithful way to make labels readable.
+
+Any such strategy must preserve protected pixels and source provenance. If no
+strategy can satisfy the readability target, record a source-limited exception
+with attempted alternatives and send it back to Orchestrator for user
+disposition before review/final validation.
 
 ## Asset Naming And Provenance
 
@@ -182,6 +225,18 @@ Likely not affected by this margin-heavy defect but still inventory-required:
 - Compact document/license/headrest snippets accepted by feature `032` only if
   the new inventory confirms they are genuinely compact.
 
+New text-size priority candidates:
+
+- Appendix IV pages `185-200`, because each sheet includes many small Spanish
+  source labels/captions and current crop widths may be too small for the
+  user's body-text-size criterion.
+- Source-document examples in `ch2-required-documents`, because their document
+  text may be source-visible and learner-relevant.
+- Maps/diagrams with labels, especially hospital map and body posture, even
+  when their crop ratios are already acceptable.
+- Source-artwork/infographic blocks that keep visible source text under an
+  approved exception.
+
 ## Testing Strategy
 
 Content/static tests:
@@ -199,6 +254,13 @@ Content/static tests:
   no new card-id-specific CSS selectors become the crop mechanism.
 - Assert already tight crops are not forced through unnecessary recrops without
   evidence.
+- Require text-readability dispositions for every inventoried image with
+  intended-readable embedded text.
+- Assert Appendix IV pages `185-200` have text-readability evidence, not only
+  useful bbox evidence.
+- Assert any `source-limited-exception` records attempted better official
+  source/strategy checks and are called out in process memory for
+  Orchestrator/user disposition.
 
 Playwright tests:
 
@@ -216,6 +278,13 @@ Playwright tests:
   least one non-Appendix corrected asset if the inventory finds any.
 - Keep existing feature `032` scenarios passing for hospital map, body posture,
   panoramic mirror card, and representative full-width cards.
+- Where feasible, compare a sampled embedded text region against nearby
+  document body text by OCR, image-processing text-height estimate, or a
+  screenshot/manual-inspection protocol recorded in evidence. Automated
+  measurement is preferred but not required if it is unreliable for tiny source
+  labels; manual inspection must be explicit and representative.
+- Capture desktop and mobile screenshots that include the corrected image and
+  nearby manual body text in the same viewport for visual comparison.
 
 Standard checks:
 
@@ -232,6 +301,7 @@ the implementation adds reusable rules such as:
 
 - whole-manual excessive-margin/useful-content inventory;
 - required useful-content bbox ratio evidence;
+- whole-manual source-image embedded-text readability evidence;
 - crop-specific asset naming/provenance;
 - high-DPI source-region extraction beyond current x5 page renders;
 - regression checks for tiny useful-content islands.
@@ -245,6 +315,8 @@ Review Agent should especially check:
 - the reported screenshot symptom is fixed by source extraction/cropping, not
   CSS scale;
 - useful-content bbox evidence proves the signs themselves are large;
+- embedded image text is visually comparable to body text, or source-limited
+  exceptions are explicit and routed;
 - Appendix IV siblings were not missed;
 - protected source imagery was not edited;
 - no corrected crop is displayed beyond natural/source quality;

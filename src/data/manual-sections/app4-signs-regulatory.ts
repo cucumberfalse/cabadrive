@@ -72,6 +72,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           titleRu: "Страница 185: запрещающие",
           displayMode: "full-width",
           maxDisplayWidthPx: 664,
+          minDisplayWidthPx: 664,
           sourcePage: 185,
           sourceRegion: { x: 1110, y: 1602, width: 663, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-185-source-crop-as-is.jpg`,
@@ -87,6 +88,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           titleRu: "Страница 186: ограничения, приоритет и конец предписания",
           displayMode: "full-width",
           maxDisplayWidthPx: 704,
+          minDisplayWidthPx: 704,
           sourcePage: 186,
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-186-source-crop-as-is.jpg`,
@@ -101,6 +103,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       visualNotes: [
         "Both runtime images are byte-identical to their feature 034 official-source crop evidence.",
         "Feature 034 removed only empty outer page margins and caps display at each natural crop width because the official PDF source is source-limited for useful sign pixels.",
+        "For text-readability evidence, these source-limited sheets keep their natural crop width on narrow viewports with contained figure scrolling instead of being downscaled to phone width or browser-upscaled.",
         "The visible Spanish text is allowed only inside the official sign sheets.",
         "Russian explanatory text is selectable DOM text outside the protected images."
       ]

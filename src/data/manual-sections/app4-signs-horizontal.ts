@@ -72,6 +72,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           titleRu: "Страница 195: продольная и поперечная разметка",
           displayMode: "full-width",
           maxDisplayWidthPx: 674,
+          minDisplayWidthPx: 674,
           sourcePage: 195,
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/marking-sheet-195-source-crop-as-is.jpg`,
@@ -87,6 +88,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           titleRu: "Страница 196: специальная разметка",
           displayMode: "full-width",
           maxDisplayWidthPx: 704,
+          minDisplayWidthPx: 704,
           sourcePage: 196,
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/marking-sheet-196-source-crop-as-is.jpg`,
@@ -101,6 +103,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
       visualNotes: [
         "Both road-marking runtime images are byte-identical to feature 034 official-source crop evidence.",
         "The official PDF source is source-limited for useful marking pixels, so runtime display is capped at each natural crop width.",
+        "The cards use contained figure scrolling on narrow screens so source labels stay at natural crop width without browser upscaling.",
         "Visible Spanish remains only inside the protected road-marking images."
       ]
     }

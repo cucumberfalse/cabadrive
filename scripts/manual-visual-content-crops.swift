@@ -23,6 +23,8 @@ struct CropTarget: Codable {
   let currentAssetPath: String
   let outputAssetPath: String
   let outputSourceAssetPath: String
+  let sourceRegionAtBaseScale: BoundsRecord?
+  let sourceQualityDisposition: String?
 }
 
 struct SizeRecord: Codable {
@@ -261,7 +263,7 @@ do {
     let currentImage = try loadImage(target.currentAssetPath)
     let beforeSize = SizeRecord(width: currentImage.width, height: currentImage.height)
     let beforeBounds = try measureUsefulBounds(currentImage, threshold: config.whiteThreshold)
-    let cropBounds = padded(
+    let cropBounds = target.sourceRegionAtBaseScale ?? padded(
       beforeBounds,
       padding: config.paddingPxAtSourceBaseScale,
       imageWidth: beforeSize.width,
@@ -283,7 +285,8 @@ do {
     let intermediateBounds = try measureUsefulBounds(cropImage, threshold: config.whiteThreshold)
     let renderedUsefulWidthScaleRatio = Double(intermediateBounds.width) / Double(beforeBounds.width)
     let expectedUsefulWidthScaleRatio = scaleFactor
-    let sourceLimited = renderedUsefulWidthScaleRatio < expectedUsefulWidthScaleRatio * 0.75
+    let explicitSourceRegion = target.sourceRegionAtBaseScale != nil
+    let sourceLimited = !explicitSourceRegion && renderedUsefulWidthScaleRatio < expectedUsefulWidthScaleRatio * 0.75
     let outputPadding = sourceLimited
       ? config.paddingPxAtSourceBaseScale
       : Int((Double(config.paddingPxAtSourceBaseScale) * scaleFactor).rounded())
@@ -329,9 +332,9 @@ do {
         intermediateRenderDimensions: intermediateSize,
         intermediateUsefulBounds: intermediateBounds,
         renderedUsefulWidthScaleRatio: renderedUsefulWidthScaleRatio,
-        sourceQualityDisposition: sourceLimited
+        sourceQualityDisposition: target.sourceQualityDisposition ?? (sourceLimited
           ? "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
-          : "high-scale-source-render-expanded-useful-content",
+          : "high-scale-source-render-expanded-useful-content"),
         finalTrimBounds: finalTrimBounds,
         outputDimensions: outputSize,
         outputUsefulBounds: outputBounds,

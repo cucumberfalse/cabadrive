@@ -1020,7 +1020,7 @@
   ],
   "whiteThreshold": 245,
   "wholeManualInventory": {
-    "inventoryMethod": "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, and records reviewer dispositions where automated useful-content measurement is not practical.",
+    "inventoryMethod": "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, records reviewer dispositions where automated useful-content measurement is not practical, and attaches whole-manual embedded-text readability dispositions for the same source-image inventory.",
     "sourceImageCards": [
       {
         "sectionId": "app1-safety-elements",
@@ -1043,7 +1043,19 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 495,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app1-safety-elements",
@@ -1051,6 +1063,7 @@
         "blockId": "headrest-source-visual",
         "cardId": "headrest-position-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1190,
         "sourcePage": 113,
         "sourceRegion": {
           "x": 980,
@@ -1066,7 +1079,44 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": true,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-via-selectable-dom-overlay",
+          "intendedReadableText": "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+          "inspectedSample": "DOM overlay labels in transferred source image card.",
+          "renderedImageWidthPx": 1190,
+          "estimatedSmallestTextHeightPx": 14,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "learner-facing-dom-text-is-comparable",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1190,
+                "height": 185
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1190,
+                "height": 185
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-source-fidelity.evidence.json"
+        }
       },
       {
         "sectionId": "app1-safety-elements",
@@ -1074,6 +1124,7 @@
         "blockId": "sri-source-visual",
         "cardId": "sri-types-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1220,
         "sourcePage": 115,
         "sourceRegion": {
           "x": 900,
@@ -1089,7 +1140,44 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": true,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-via-selectable-dom-overlay",
+          "intendedReadableText": "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+          "inspectedSample": "DOM overlay labels in transferred source image card.",
+          "renderedImageWidthPx": 1220,
+          "estimatedSmallestTextHeightPx": 14,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "learner-facing-dom-text-is-comparable",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1220,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1220,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-source-fidelity.evidence.json"
+        }
       },
       {
         "sectionId": "app2-highways-hospitals",
@@ -1097,6 +1185,7 @@
         "blockId": "hospital-map-source-visual",
         "cardId": "app2-hospital-map-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 780,
         "sourcePage": 150,
         "sourceRegion": {
           "x": 1332,
@@ -1115,6 +1204,43 @@
         "reason": "Contrast example from feature 034 intake: useful bbox area ratio 0.4205 and no-upscale cap 780px; not blindly recropped.",
         "measuredUsefulRatios": {
           "areaRatio": 0.4205
+        },
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-with-adjacent-dom-text",
+          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+          "renderedImageWidthPx": 780,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 780,
+                "height": 335
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 780,
+                "height": 335
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
         }
       },
       {
@@ -1123,6 +1249,8 @@
         "blockId": "mirror-orientation-source-visual",
         "cardId": "app2-mirror-orientation-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1260,
+        "minDisplayWidthPx": 760,
         "sourcePage": 130,
         "sourceRegion": {
           "x": 930,
@@ -1138,7 +1266,19 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 760,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app2-safety-elements",
@@ -1146,6 +1286,7 @@
         "blockId": "seatbelt-use-source-visual",
         "cardId": "app2-seatbelt-use-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1060,
         "sourcePage": 131,
         "sourceRegion": {
           "x": 1015,
@@ -1161,7 +1302,19 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 1060,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app2-safety-elements",
@@ -1184,7 +1337,19 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 185,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app2-safety-elements",
@@ -1207,7 +1372,19 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 260,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app3-driving-factors",
@@ -1215,6 +1392,7 @@
         "blockId": "body-posture-source-visual",
         "cardId": "app3-body-posture-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1350,
         "sourcePage": 161,
         "sourceRegion": {
           "x": 875,
@@ -1233,6 +1411,43 @@
         "reason": "Contrast example from feature 034 intake: useful bbox area ratio 0.3652 and no-upscale cap 1350px; not blindly recropped.",
         "measuredUsefulRatios": {
           "areaRatio": 0.3652
+        },
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-with-adjacent-dom-text",
+          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+          "renderedImageWidthPx": 1350,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1350,
+                "height": 430
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1350,
+                "height": 430
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
         }
       },
       {
@@ -1241,6 +1456,7 @@
         "blockId": "seatbelt-source-visual",
         "cardId": "app3-seatbelt-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1175,
         "sourcePage": 176,
         "sourceRegion": {
           "x": 875,
@@ -1256,7 +1472,44 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-with-adjacent-dom-text",
+          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+          "renderedImageWidthPx": 1175,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1175,
+                "height": 1125
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1175,
+                "height": 1125
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "app4-signs-horizontal",
@@ -1264,6 +1517,8 @@
         "blockId": "horizontal-source-sheets",
         "cardId": "app4-horizontal-page-195-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 674,
+        "minDisplayWidthPx": 674,
         "sourcePage": 195,
         "sourceRegion": {
           "x": 1110,
@@ -1290,7 +1545,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7626112759643917
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 674,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 674,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 674,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-horizontal",
@@ -1298,6 +1607,8 @@
         "blockId": "horizontal-source-sheets",
         "cardId": "app4-horizontal-page-196-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 704,
+        "minDisplayWidthPx": 704,
         "sourcePage": 196,
         "sourceRegion": {
           "x": 1162,
@@ -1324,7 +1635,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7727272727272727
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 704,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-informational",
@@ -1332,6 +1697,8 @@
         "blockId": "informational-source-sheets",
         "cardId": "app4-informational-page-189-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 673,
+        "minDisplayWidthPx": 673,
         "sourcePage": 189,
         "sourceRegion": {
           "x": 1110,
@@ -1358,7 +1725,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7622585438335809
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 673,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-informational",
@@ -1366,6 +1787,8 @@
         "blockId": "informational-source-sheets",
         "cardId": "app4-informational-page-190-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 704,
+        "minDisplayWidthPx": 704,
         "sourcePage": 190,
         "sourceRegion": {
           "x": 1162,
@@ -1392,7 +1815,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7727272727272727
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 704,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-informational",
@@ -1400,6 +1877,8 @@
         "blockId": "informational-source-sheets",
         "cardId": "app4-informational-page-191-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 672,
+        "minDisplayWidthPx": 672,
         "sourcePage": 191,
         "sourceRegion": {
           "x": 1110,
@@ -1426,7 +1905,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7619047619047619
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 672,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 672,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 672,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-informational",
@@ -1434,6 +1967,8 @@
         "blockId": "informational-source-sheets",
         "cardId": "app4-informational-page-192-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 706,
+        "minDisplayWidthPx": 706,
         "sourcePage": 192,
         "sourceRegion": {
           "x": 1161,
@@ -1460,7 +1995,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.773371104815864
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 706,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 706,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 706,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-regulatory",
@@ -1468,6 +2057,8 @@
         "blockId": "regulatory-source-sheets",
         "cardId": "app4-regulatory-page-185-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 664,
+        "minDisplayWidthPx": 664,
         "sourcePage": 185,
         "sourceRegion": {
           "x": 1110,
@@ -1494,7 +2085,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7590361445783133
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 664,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 664,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 664,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-regulatory",
@@ -1502,6 +2147,8 @@
         "blockId": "regulatory-source-sheets",
         "cardId": "app4-regulatory-page-186-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 704,
+        "minDisplayWidthPx": 704,
         "sourcePage": 186,
         "sourceRegion": {
           "x": 1162,
@@ -1528,7 +2175,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7727272727272727
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 704,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 704,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-temporary",
@@ -1536,6 +2237,8 @@
         "blockId": "temporary-source-sheets",
         "cardId": "app4-temporary-page-193-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 673,
+        "minDisplayWidthPx": 673,
         "sourcePage": 193,
         "sourceRegion": {
           "x": 1110,
@@ -1562,7 +2265,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7622585438335809
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 673,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-temporary",
@@ -1570,6 +2327,8 @@
         "blockId": "temporary-source-sheets",
         "cardId": "app4-temporary-page-194-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 705,
+        "minDisplayWidthPx": 705,
         "sourcePage": 194,
         "sourceRegion": {
           "x": 1162,
@@ -1596,7 +2355,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7716312056737589
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 705,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 705,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 705,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-traffic-lights",
@@ -1604,6 +2417,8 @@
         "blockId": "traffic-lights-source-sheets",
         "cardId": "app4-traffic-lights-page-197-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 673,
+        "minDisplayWidthPx": 673,
         "sourcePage": 197,
         "sourceRegion": {
           "x": 1110,
@@ -1630,7 +2445,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7622585438335809
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 673,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 673,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-traffic-lights",
@@ -1638,6 +2507,8 @@
         "blockId": "traffic-lights-source-sheets",
         "cardId": "app4-traffic-lights-page-198-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 757,
+        "minDisplayWidthPx": 757,
         "sourcePage": 198,
         "sourceRegion": {
           "x": 1105,
@@ -1664,7 +2535,61 @@
           "heightRatio": 0.8404785643070788,
           "widthRatio": 0.7886393659180978
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 757,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1003
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1003
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 0.993; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-traffic-lights",
@@ -1672,6 +2597,8 @@
         "blockId": "traffic-lights-source-sheets",
         "cardId": "app4-traffic-lights-page-199-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 757,
+        "minDisplayWidthPx": 757,
         "sourcePage": 199,
         "sourceRegion": {
           "x": 1106,
@@ -1698,7 +2625,61 @@
           "heightRatio": 0.8403193612774451,
           "widthRatio": 0.7886393659180978
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 757,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1002
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1002
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 0.995; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-traffic-lights",
@@ -1706,6 +2687,8 @@
         "blockId": "traffic-lights-source-sheets",
         "cardId": "app4-traffic-lights-page-200-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 757,
+        "minDisplayWidthPx": 757,
         "sourcePage": 200,
         "sourceRegion": {
           "x": 1106,
@@ -1732,7 +2715,61 @@
           "heightRatio": 0.8424725822532403,
           "widthRatio": 0.7912813738441216
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 757,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1003
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 757,
+                "height": 1003
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 0.988; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-warning",
@@ -1740,6 +2777,8 @@
         "blockId": "warning-source-sheets",
         "cardId": "app4-warning-page-187-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 672,
+        "minDisplayWidthPx": 672,
         "sourcePage": 187,
         "sourceRegion": {
           "x": 1110,
@@ -1766,7 +2805,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7619047619047619
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 672,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 672,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 672,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.002; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "app4-signs-warning",
@@ -1774,6 +2867,8 @@
         "blockId": "warning-source-sheets",
         "cardId": "app4-warning-page-188-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 705,
+        "minDisplayWidthPx": 705,
         "sourcePage": 188,
         "sourceRegion": {
           "x": 1161,
@@ -1800,7 +2895,61 @@
           "heightRatio": 0.8367346938775511,
           "widthRatio": 0.7716312056737589
         },
-        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "source-limited-exception",
+          "intendedReadableText": "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+          "inspectedSample": "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+          "renderedImageWidthPx": 705,
+          "estimatedSmallestTextHeightPx": 6,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "below-body-text-at-natural-source-width",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 705,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 705,
+                "height": 980
+              },
+              "estimatedSmallestTextHeightPx": 6,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "source-limited-exception",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-manual-pdf-render-scale-12",
+              "result": "High-scale canonical PDF render produced rendered useful-width scale ratio 1.000; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-official-images",
+              "result": "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+            },
+            {
+              "id": "source-faithful-split-subcrop-presentation",
+              "result": "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+            }
+          ],
+          "requiresOwnerDisposition": true,
+          "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1823,7 +2972,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 320,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1846,7 +3007,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 300,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1869,7 +3042,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 315,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1877,6 +3062,7 @@
         "blockId": "beginner-cedula-visuals",
         "cardId": "cedulas-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1110,
         "sourcePage": 47,
         "sourceRegion": {
           "x": 1085,
@@ -1892,7 +3078,56 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "implementation-feedback-needs-source-region-verification",
+          "intendedReadableText": "Source-document example labels and captions are supporting visual context; learner-critical rules are translated in adjacent selectable DOM text.",
+          "inspectedSample": "Cédula color-example captions on source page 47.",
+          "renderedImageWidthPx": 1110,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-passed-for-source-visual",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1110,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": null,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": null,
+              "disposition": "implementation-feedback-needs-source-region-verification",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1110,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": null,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": null,
+              "disposition": "implementation-feedback-needs-source-region-verification",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json",
+          "attemptedAlternatives": [
+            {
+              "id": "page-047-trimmed-page-probe",
+              "result": "Local page-image probe found a better source-faithful row crop, but it is lower resolution than the x5/high-DPI contract."
+            },
+            {
+              "id": "canonical-pdf-explicit-region-probe",
+              "result": "Scale-2 PDF explicit-region probe rendered the intended cédula row, but scale-5/scale-12 probes produced bad or blank crops, so Implementation did not replace the committed source asset without a reliable high-DPI path."
+            }
+          ],
+          "requiresArchitectDisposition": true,
+          "routeDisposition": "Implementation Agent feedback for Architect/Orchestrator disposition; not fixed in this Appendix IV readability follow-up."
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1900,6 +3135,7 @@
         "blockId": "vtv-rva-visuals",
         "cardId": "vtv-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1150,
         "sourcePage": 49,
         "sourceRegion": {
           "x": 1085,
@@ -1915,7 +3151,44 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-with-adjacent-dom-text",
+          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+          "renderedImageWidthPx": 1150,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1150,
+                "height": 335
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1150,
+                "height": 335
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch2-required-documents",
@@ -1938,7 +3211,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present."
+        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+          "inspectedSample": "Compact source-card visual.",
+          "renderedImageWidthPx": 360,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch4-alcohol-drugs",
@@ -1946,6 +3231,7 @@
         "blockId": "drug-test-source-visual",
         "cardId": "drug-test-device-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 820,
         "sourcePage": 90,
         "sourceRegion": {
           "x": 1180,
@@ -1961,7 +3247,44 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-with-adjacent-dom-text",
+          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+          "renderedImageWidthPx": 820,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 820,
+                "height": 300
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 820,
+                "height": 300
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-with-adjacent-dom-text",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch4-alcohol-drugs",
@@ -1969,6 +3292,7 @@
         "blockId": "alcohol-limit-source-visual",
         "cardId": "alcohol-limits-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 850,
         "sourcePage": 91,
         "sourceRegion": {
           "x": 1180,
@@ -1984,7 +3308,44 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": true,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-via-selectable-dom-overlay",
+          "intendedReadableText": "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+          "inspectedSample": "DOM overlay labels in transferred source image card.",
+          "renderedImageWidthPx": 850,
+          "estimatedSmallestTextHeightPx": 14,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "learner-facing-dom-text-is-comparable",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 850,
+                "height": 430
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 850,
+                "height": 430
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-source-fidelity.evidence.json"
+        }
       },
       {
         "sectionId": "ch4-distractions",
@@ -1992,6 +3353,7 @@
         "blockId": "eating-distraction-source-visual",
         "cardId": "distraction-panels-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 860,
         "sourcePage": 95,
         "sourceRegion": {
           "x": 1190,
@@ -2007,7 +3369,44 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": true,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-via-selectable-dom-overlay",
+          "intendedReadableText": "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+          "inspectedSample": "DOM overlay labels in transferred source image card.",
+          "renderedImageWidthPx": 860,
+          "estimatedSmallestTextHeightPx": 14,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "learner-facing-dom-text-is-comparable",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 860,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 860,
+                "height": 260
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-source-fidelity.evidence.json"
+        }
       },
       {
         "sectionId": "ch4-distractions",
@@ -2015,6 +3414,7 @@
         "blockId": "attention-source-photo",
         "cardId": "attention-photo-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 720,
         "sourcePage": 97,
         "sourceRegion": {
           "x": 1160,
@@ -2030,7 +3430,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 720,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch5-anticipatory-efficient-driving",
@@ -2038,6 +3450,7 @@
         "blockId": "driving-culture-source-photo",
         "cardId": "driving-culture-photo-source-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1500,
         "sourcePage": 103,
         "sourceRegion": {
           "x": 740,
@@ -2053,7 +3466,19 @@
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 1500,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch5-equal-society",
@@ -2061,6 +3486,7 @@
         "blockId": "mobility-context-source-visual",
         "cardId": "mobility-context-transferred-card",
         "displayMode": "full-width",
+        "maxDisplayWidthPx": 1220,
         "sourcePage": 100,
         "sourceRegion": {
           "x": 900,
@@ -2076,7 +3502,44 @@
         "protectedStatus": "not-protected",
         "hasRussianOverlayLabels": true,
         "disposition": "not-affected-reviewer-disposition",
-        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "supporting",
+          "disposition": "readable-via-selectable-dom-overlay",
+          "intendedReadableText": "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+          "inspectedSample": "DOM overlay labels in transferred source image card.",
+          "renderedImageWidthPx": 1220,
+          "estimatedSmallestTextHeightPx": 14,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "learner-facing-dom-text-is-comparable",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 1220,
+                "height": 175
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 1220,
+                "height": 175
+              },
+              "estimatedSmallestTextHeightPx": 14,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "readable-via-selectable-dom-overlay",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "evidencePath": "content/validation/manual-guide-source-fidelity.evidence.json"
+        }
       }
     ],
     "sourceArtwork": [
@@ -2097,7 +3560,18 @@
           "height": 260
         },
         "disposition": "not-affected",
-        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect"
+        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Source-artwork block is a photo/diagram visual without learner-critical embedded text; surrounding Russian DOM text carries the learning content.",
+          "inspectedSample": "offtracking-risk",
+          "renderedImageWidthPx": 270,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       },
       {
         "sectionId": "ch1-bicycle",
@@ -2116,7 +3590,18 @@
           "height": 145
         },
         "disposition": "not-affected",
-        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect"
+        "reason": "source-artwork blocks do not use the source-image-card page-sheet raster display path and were not observed with the Appendix IV tiny-island defect",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "Source-artwork block is a photo/diagram visual without learner-critical embedded text; surrounding Russian DOM text carries the learning content.",
+          "inspectedSample": "electric-scooter-photo",
+          "renderedImageWidthPx": 255,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
       }
     ],
     "sectionAssetFiles": [
@@ -3297,6 +4782,200 @@
         "disposition": "unreferenced-or-superseded-local-asset-file"
       }
     ],
+    "textReadability": {
+      "baseline": {
+        "documentBodyTextFontSizePx": 16,
+        "sourceCardBodyTextFontSizePx": 14.88,
+        "measurementMethod": "Computed CSS baseline from the manual guide runtime: document prose is 1rem and source-card notes are 0.93rem. Focused Playwright checks assert those computed values beside representative source-image cards.",
+        "runtimeEvidencePath": "tests/e2e/app.spec.ts::Manual guide full-width source image cards stay readable and avoid upscaling",
+        "source": "Manual guide runtime CSS uses 1rem document body text and 0.93rem source-card body text; focused Playwright follow-up captures these computed values next to representative source images."
+      },
+      "officialBetterSourceAudit": {
+        "status": "checked",
+        "root": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images",
+        "imageCount": 15,
+        "widthRangePx": {
+          "min": 613,
+          "max": 620
+        },
+        "heightRangePx": {
+          "min": 618,
+          "max": 747
+        },
+        "result": "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs; their 613-620px widths are not higher quality than the corrected manual crop widths around 664-757px.",
+        "samplePaths": [
+          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+          "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg"
+        ]
+      },
+      "sourceImageCardRelevanceCounts": {
+        "none": 11,
+        "supporting": 11,
+        "required": 16
+      },
+      "sourceImageCardDispositionCounts": {
+        "not-intended-readable": 11,
+        "readable-via-selectable-dom-overlay": 5,
+        "readable-with-adjacent-dom-text": 5,
+        "source-limited-exception": 16,
+        "implementation-feedback-needs-source-region-verification": 1
+      },
+      "sourceImageCardDispositionTotal": 38,
+      "requiredCardIds": [
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "representativeNonAppendixReadableCardIds": [
+        "alcohol-limits-source-card",
+        "app2-hospital-map-source-card",
+        "app3-body-posture-source-card",
+        "app3-seatbelt-source-card",
+        "cedulas-source-card",
+        "distraction-panels-source-card",
+        "drug-test-device-source-card",
+        "headrest-position-source-card",
+        "mobility-context-transferred-card",
+        "sri-types-source-card",
+        "vtv-source-card"
+      ],
+      "sourceLimitedExceptionCardIds": [
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "ownerDispositionRequiredCardIds": [
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "architectDispositionRequiredCardIds": [
+        "cedulas-source-card"
+      ],
+      "naturalWidthMinDisplayCardIds": [
+        "app2-mirror-orientation-source-card",
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "followUpFeedbackCardIds": [
+        "cedulas-source-card"
+      ],
+      "representativeScreenshotEvidence": [
+        {
+          "sectionId": "app4-signs-regulatory",
+          "viewport": "desktop",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-desktop-chromium.png"
+        },
+        {
+          "sectionId": "app4-signs-regulatory",
+          "viewport": "mobile",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-mobile-chromium.png"
+        },
+        {
+          "sectionId": "app4-signs-horizontal",
+          "viewport": "desktop",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-desktop-chromium.png"
+        },
+        {
+          "sectionId": "app4-signs-horizontal",
+          "viewport": "mobile",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-mobile-chromium.png"
+        },
+        {
+          "sectionId": "app2-highways-hospitals",
+          "viewport": "desktop/mobile",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app2-highways-hospitals-*-chromium.png"
+        },
+        {
+          "sectionId": "app3-driving-factors",
+          "viewport": "desktop/mobile",
+          "path": "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-driving-factors-*-chromium.png"
+        },
+        {
+          "sectionId": "ch2-required-documents",
+          "viewport": "manual-inventory",
+          "path": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
+      ],
+      "splitSubcropAudit": {
+        "appendixIvPages": [
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200
+        ],
+        "attempted": true,
+        "strategy": "Evaluate splitting each source-limited Appendix IV sheet into smaller official sub-crops/cards/panels before declaring a readability exception.",
+        "conclusion": "Not selected for Appendix IV because the full corrected sheets already display at natural source width on desktop and now keep that width on mobile through contained figure scrolling. Splitting the same source-limited raster would not increase embedded glyph pixels without browser upscaling or protected-pixel reconstruction; it would only remove context or create more panels.",
+        "selectedMitigation": "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width."
+      }
+    },
     "summary": {
       "sourceImageCardCount": 38,
       "sourceArtworkCount": 2,

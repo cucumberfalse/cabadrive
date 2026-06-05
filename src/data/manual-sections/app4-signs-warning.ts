@@ -72,6 +72,7 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           titleRu: "Страница 187: характеристики дороги",
           displayMode: "full-width",
           maxDisplayWidthPx: 672,
+          minDisplayWidthPx: 672,
           sourcePage: 187,
           sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-187-source-crop-as-is.jpg`,
@@ -87,6 +88,7 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           titleRu: "Страница 188: максимальная опасность и другие предупреждения",
           displayMode: "full-width",
           maxDisplayWidthPx: 705,
+          minDisplayWidthPx: 705,
           sourcePage: 188,
           sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-188-source-crop-as-is.jpg`,
@@ -101,6 +103,7 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
       visualNotes: [
         "Warning signs remain source-as-is in feature 034 official-source crops with empty outer page margins removed.",
         "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
+        "The sheets keep natural crop width on narrow viewports with contained figure scrolling so embedded labels are not further reduced below the source-limited raster.",
         "No glyph cleanup or Russian overlay is applied to official sign sheets."
       ]
     }

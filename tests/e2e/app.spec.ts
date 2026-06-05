@@ -182,6 +182,9 @@ type ManualSourceImageCardMetrics = {
   usefulRenderedHeight: number;
   viewportWidth: number;
   documentOverflow: number;
+  rootFontSize: number;
+  documentBodyFontSize: number;
+  sourceCardBodyFontSize: number;
   complete: boolean;
 };
 
@@ -194,6 +197,9 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
     const figure = element.querySelector("figure") as HTMLElement | null;
     const grid = element.closest(".manual-source-image-card-grid") as HTMLElement | null;
     const section = element.closest(".manual-source-image-cards") as HTMLElement | null;
+    const guideSection = element.closest(".manual-guide-section") as HTMLElement | null;
+    const cardBody = element.querySelector("p") as HTMLElement | null;
+    const documentBodySample = guideSection?.querySelector(".intro-doc-lead, .intro-doc-list li, .intro-doc-block") as HTMLElement | null;
     if (!image || !figure || !grid || !section) throw new Error("source image card is missing image, figure, grid, or source-image-cards container");
     await image.decode?.().catch(() => undefined);
     const cardRect = element.getBoundingClientRect();
@@ -255,6 +261,9 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
       usefulRenderedHeight: usefulBounds ? (usefulBounds.height / image.naturalHeight) * imageRect.height : 0,
       viewportWidth: window.innerWidth,
       documentOverflow: root.scrollWidth - root.clientWidth,
+      rootFontSize: Number.parseFloat(getComputedStyle(root).fontSize),
+      documentBodyFontSize: Number.parseFloat(getComputedStyle(documentBodySample ?? document.body).fontSize),
+      sourceCardBodyFontSize: Number.parseFloat(getComputedStyle(cardBody ?? element).fontSize),
       complete: image.complete
     };
   });
@@ -267,6 +276,9 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
   expect(metrics.maxDisplayWidthPx, `${cardId} max display width does not exceed source width`).toBeLessThanOrEqual(metrics.naturalWidth);
   expect(metrics.imageWidth, `${cardId} avoids browser upscaling`).toBeLessThanOrEqual(metrics.naturalWidth + 1);
   expect(metrics.imageHeight, `${cardId} preserves visible height`).toBeGreaterThan(1);
+  expect(metrics.rootFontSize, `${cardId} root/body readability baseline`).toBeGreaterThanOrEqual(16);
+  expect(metrics.documentBodyFontSize, `${cardId} nearby document body text baseline`).toBeGreaterThanOrEqual(16);
+  expect(metrics.sourceCardBodyFontSize, `${cardId} source-card body text baseline`).toBeGreaterThanOrEqual(14.5);
   expect(metrics.cardWidth, `${cardId} card spans the source-image grid`).toBeGreaterThanOrEqual(metrics.gridWidth * 0.98);
   expect(metrics.imageWidth, `${cardId} uses meaningful card width`).toBeGreaterThanOrEqual(Math.min(metrics.cardWidth * 0.7, metrics.naturalWidth));
   if (options.desktop && metrics.naturalWidth >= 600) {
@@ -283,10 +295,10 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
   return metrics;
 }
 
-async function expectScrollablePanoramicSourceImageCard(page: Page, cardId: string, expectedMinDisplayWidthPx: number) {
+async function expectScrollableReadableSourceImageCard(page: Page, cardId: string, expectedMinDisplayWidthPx: number) {
   const metrics = await expectFullWidthSourceImageCard(page, cardId, { desktop: false });
 
-  expect(metrics.minDisplayWidthPx, `${cardId} panoramic min width metadata`).toBe(expectedMinDisplayWidthPx);
+  expect(metrics.minDisplayWidthPx, `${cardId} readable min width metadata`).toBe(expectedMinDisplayWidthPx);
   expect(metrics.minDisplayWidthPx, `${cardId} min width respects no-upscale cap`).toBeLessThanOrEqual(metrics.maxDisplayWidthPx);
   expect(metrics.figureWidth, `${cardId} figure stays inside the card`).toBeLessThanOrEqual(metrics.cardWidth + 1);
   expect(metrics.figureWidth, `${cardId} figure stays inside the viewport`).toBeLessThanOrEqual(metrics.viewportWidth + 1);
@@ -4534,13 +4546,17 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     hash: string;
     cards: string[];
     usefulContentCards?: string[];
-    panoramicCards?: Array<{ id: string; minDisplayWidthPx: number }>;
+    readableScrollCards?: Array<{ id: string; minDisplayWidthPx: number }>;
   }> = [
     {
       sectionId: "app4-signs-regulatory",
       hash: "/#manual-section-app4-signs-regulatory",
       cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
-      usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"]
+      usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+      readableScrollCards: [
+        { id: "app4-regulatory-page-185-source-card", minDisplayWidthPx: 664 },
+        { id: "app4-regulatory-page-186-source-card", minDisplayWidthPx: 704 }
+      ]
     },
     {
       sectionId: "app3-driving-factors",
@@ -4556,13 +4572,21 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       sectionId: "app2-safety-elements",
       hash: "/#manual-section-app2-safety-elements",
       cards: ["app2-mirror-orientation-source-card"],
-      panoramicCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
+      readableScrollCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
     },
     {
       sectionId: "app4-signs-horizontal",
       hash: "/#manual-section-app4-signs-horizontal",
       cards: ["app4-horizontal-page-195-source-card"],
-      usefulContentCards: ["app4-horizontal-page-195-source-card"]
+      usefulContentCards: ["app4-horizontal-page-195-source-card"],
+      readableScrollCards: [{ id: "app4-horizontal-page-195-source-card", minDisplayWidthPx: 674 }]
+    },
+    {
+      sectionId: "app4-signs-traffic-lights",
+      hash: "/#manual-section-app4-signs-traffic-lights",
+      cards: ["app4-traffic-lights-page-198-source-card"],
+      usefulContentCards: ["app4-traffic-lights-page-198-source-card"],
+      readableScrollCards: [{ id: "app4-traffic-lights-page-198-source-card", minDisplayWidthPx: 757 }]
     },
     {
       sectionId: "app3-safety-elements",
@@ -4588,8 +4612,8 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
         });
       }
       if (!viewport.desktop) {
-        for (const panoramicCard of scenario.panoramicCards ?? []) {
-          await expectScrollablePanoramicSourceImageCard(page, panoramicCard.id, panoramicCard.minDisplayWidthPx);
+        for (const readableScrollCard of scenario.readableScrollCards ?? []) {
+          await expectScrollableReadableSourceImageCard(page, readableScrollCard.id, readableScrollCard.minDisplayWidthPx);
         }
       }
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);

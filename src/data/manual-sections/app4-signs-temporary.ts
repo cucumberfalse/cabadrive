@@ -72,6 +72,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           titleRu: "Страница 193: дорожные, пешеходные и велосипедные временные знаки",
           displayMode: "full-width",
           maxDisplayWidthPx: 673,
+          minDisplayWidthPx: 673,
           sourcePage: 193,
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-193-source-crop-as-is.jpg`,
@@ -87,6 +88,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           titleRu: "Страница 194: пешеходные, велосипедные и другие временные устройства",
           displayMode: "full-width",
           maxDisplayWidthPx: 705,
+          minDisplayWidthPx: 705,
           sourcePage: 194,
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-194-source-crop-as-is.jpg`,
@@ -101,6 +103,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
       visualNotes: [
         "Temporary signs and devices are treated as protected official source visuals cropped only to remove empty outer page margins.",
         "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
+        "On narrow viewports, contained figure scrolling preserves the natural crop width for embedded source text rather than shrinking it further.",
         "No Spanish cleanup or Russian overlay is applied to the images."
       ]
     }

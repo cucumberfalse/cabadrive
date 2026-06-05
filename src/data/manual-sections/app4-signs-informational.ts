@@ -74,6 +74,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           titleRu: "Страница 189: характеристики дороги",
           displayMode: "full-width",
           maxDisplayWidthPx: 673,
+          minDisplayWidthPx: 673,
           sourcePage: 189,
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-189-source-crop-as-is.jpg`,
@@ -89,6 +90,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           titleRu: "Страница 190: дорожная и городская номенклатура",
           displayMode: "full-width",
           maxDisplayWidthPx: 704,
+          minDisplayWidthPx: 704,
           sourcePage: 190,
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-190-source-crop-as-is.jpg`,
@@ -104,6 +106,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           titleRu: "Страница 191: туристическая, сервисная и специальная информация",
           displayMode: "full-width",
           maxDisplayWidthPx: 672,
+          minDisplayWidthPx: 672,
           sourcePage: 191,
           sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-191-source-crop-as-is.jpg`,
@@ -119,6 +122,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           titleRu: "Страница 192: Желтая звезда",
           displayMode: "full-width",
           maxDisplayWidthPx: 706,
+          minDisplayWidthPx: 706,
           sourcePage: 192,
           sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-192-source-crop-as-is.jpg`,
@@ -133,6 +137,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
       visualNotes: [
         "Informational sign/source sheets are feature 034 official-source crops with empty outer page margins removed.",
         "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
+        "The cards keep natural crop width on narrow viewports with contained figure scrolling for source-faithful text readability instead of phone-width downscaling.",
         "Russian learner text remains outside the protected source images."
       ]
     },

@@ -207,6 +207,60 @@
   validation after implementation, checks, review, and feedback disposition are
   complete.
 
+## Same-Cycle Acceptance Clarification Follow-Up
+
+- [x] T081 Architect receives and dispositions user clarification:
+  `проверь весь документ, изображения должны быть крупными; один из ориенторов
+  - текст на изображениях, размер минимального шрифта должен быть визуально не
+  меньше, чем текст документа`.
+- [x] T082 Architect classifies the clarification as same-cycle acceptance
+  refinement for feature `034`, not a new feature request and not a reason to
+  edit `feature-request.md`.
+- [x] T083 Architect records that current PR `#200` crop evidence may be
+  insufficient for the clarified criterion because Appendix IV crop widths are
+  only about `664-757px` and source labels/captions may still render below
+  body text size.
+- [x] T084 Implementation Agent updates the whole-manual inventory with
+  text-readability relevance for every image containing intended-readable text:
+  `none`, `supporting`, `required`, or an equivalent local enum.
+- [x] T085 Implementation Agent records a nearby document body-text baseline
+  for manual comparison, preferably measured from computed runtime CSS for the
+  same section/card context.
+- [x] T086 Implementation Agent measures or manually inspects the smallest
+  intended-readable text in representative source images and records the text
+  sample, viewport, rendered image size, estimated/observed text height, body
+  text baseline, evidence path, and pass/fail disposition.
+- [x] T087 Implementation Agent must cover Appendix IV pages `185-200` for
+  embedded sign/marking/signal labels and captions.
+- [x] T088 Implementation Agent must cover representative non-Appendix images
+  with embedded readable text, including source-document examples and
+  maps/diagrams where present.
+- [x] T089 For any image whose embedded intended-readable text is visually
+  smaller than nearby document body text, Implementation Agent first attempts a
+  better official source or source-faithful strategy instead of silently
+  accepting the current crop.
+- [x] T090 Better-source/strategy attempts must consider higher-quality
+  official source assets retained in `content/official-documents/`, higher-DPI
+  source extraction, and source-faithful split/sub-crops or multi-panel
+  presentation when a full sheet cannot meet readability without upscaling.
+- [x] T091 If no official source/strategy can meet the text-size criterion
+  without pixelated upscaling or protected-pixel edits, Implementation Agent
+  records a `source-limited-exception` with attempted alternatives and routes it
+  to Orchestrator for user disposition before review/final validation.
+- [x] T092 Implementation Agent updates content/static tests or validation
+  evidence so images with intended-readable embedded text cannot pass with only
+  useful bbox ratio evidence.
+- [x] T093 Implementation Agent updates Playwright or equivalent browser
+  evidence to include desktop/mobile screenshots that show corrected images and
+  nearby body text together for readability comparison.
+- [x] T094 Implementation Agent records exact follow-up command results in this
+  `tasks.md` and reruns focused tests, `pnpm run validate:manual-guide`,
+  `pnpm run validate:content`, `pnpm exec tsc --noEmit`, `pnpm run test`,
+  focused Playwright, `git diff --check`, and preflight if feasible.
+- [x] T095 PR `#200` must not proceed to Review Agent/final validation as
+  complete until T084-T094 are implemented or Orchestrator records a
+  user-disposition blocker for accepted source-limited exceptions.
+
 ## Initial Evidence Notes
 
 - Orchestrator read-only evidence: `sign-sheet-185-source-as-is.jpg` natural
@@ -243,6 +297,12 @@
 - Architect decision: already tight crops such as hospital map and body posture
   need inventory evidence, not blind recropping.
 - Architect decision: no user clarification is needed before implementation.
+- Architect disposition `2026-06-05T08:50:24-03:00`: the new user
+  clarification is same-cycle acceptance refinement. Follow-up Implementation
+  Agent work is required before PR `#200` proceeds to Review Agent/final
+  validation because current crop evidence proves margin removal and
+  no-upscale behavior, but does not yet prove that intended-readable text
+  inside images is visually no smaller than nearby document body text.
 - Implementation startup decision `2026-06-05T13:24:00-03:00`:
   Implementation Agent assignment confirmed for worktree
   `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
@@ -275,6 +335,27 @@
   inspection, `node scripts/manual-visual-content-inventory.mjs` was rerun
   before this adoption note was written; the command completed successfully and
   regenerated the existing registry/evidence path for the inherited diff.
+- Replacement follow-up adoption decision `2026-06-05T09:21:39-03:00`:
+  current replacement Implementation Agent confirmed the assigned worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, PR `#200`, local `HEAD`
+  `98a5336fed769e30d716f95a1493b1b66848fefc`, and
+  `origin/codex/034-manual-visual-content-crop`
+  `98a5336fed769e30d716f95a1493b1b66848fefc`. Startup status was
+  `## codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`
+  with dirty inherited follow-up edits in
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `docs_project/project/frontend/manual-conversion-guidelines.md`,
+  `scripts/manual-visual-content-crops.swift`,
+  `scripts/manual-visual-content-inventory.mjs`,
+  `specs/034-manual-visual-content-crop/spec.md`,
+  `specs/034-manual-visual-content-crop/plan.md`,
+  `specs/034-manual-visual-content-crop/tasks.md`, Appendix IV section data,
+  `tests/content-manual-guide-chapters.test.mjs`, and
+  `tests/e2e/app.spec.ts`. This pass adopts and preserves the inherited diff,
+  including Architect process-memory edits and partial text-readability
+  inventory work, and fixes forward without discarding protected crop assets or
+  sibling work.
 - Implementation decision `2026-06-05T11:42:43Z`: adopted the inherited
   source-limited crop approach after verification. The Swift helper attempts a
   higher-scale official PDF render, but evidence records rendered useful-width
@@ -303,15 +384,46 @@
 
 ## Known Issues
 
-- No open known issues at implementation handoff. The official PDF
-  source-quality limitation for Appendix IV pages `185-200` is recorded as an
-  implementation decision and evidence-backed no-upscale disposition, not an
-  unresolved issue.
+- Open after Architect clarification disposition: current PR `#200` evidence
+  records `source-limited-exception` for Appendix IV page-sheet text
+  readability. The official PDF high-scale render and retained official Anexo L
+  image assets do not provide more source glyph pixels, and split/sub-crop
+  presentation would not make those protected source glyphs larger without
+  browser upscaling or reconstruction. The implementation mitigation keeps
+  each Appendix IV sheet at natural crop width with contained figure scrolling
+  on narrow screens, but the strict "no smaller than body text" target remains
+  unmet for the smallest Spanish labels and requires Orchestrator/user
+  disposition before final validation.
+  `cedulas-source-card` is separately recorded as Implementation Agent
+  feedback for source-region verification because a reliable high-DPI crop path
+  for the source-document example was not established in this Appendix IV
+  follow-up.
 
 ## Implementation Agent Feedback
 
-- None requiring Architect disposition. Replacement verification did not find a
-  need to split scope, request new user clarification, or alter the architecture.
+- Appendix IV source-limited readability exception requires
+  Orchestrator/user disposition before review/final validation as complete:
+  `app4-regulatory-page-185-source-card`,
+  `app4-regulatory-page-186-source-card`, `app4-warning-page-187-source-card`,
+  `app4-warning-page-188-source-card`,
+  `app4-informational-page-189-source-card`,
+  `app4-informational-page-190-source-card`,
+  `app4-informational-page-191-source-card`,
+  `app4-informational-page-192-source-card`,
+  `app4-temporary-page-193-source-card`,
+  `app4-temporary-page-194-source-card`,
+  `app4-horizontal-page-195-source-card`,
+  `app4-horizontal-page-196-source-card`,
+  `app4-traffic-lights-page-197-source-card`,
+  `app4-traffic-lights-page-198-source-card`,
+  `app4-traffic-lights-page-199-source-card`, and
+  `app4-traffic-lights-page-200-source-card`.
+- `cedulas-source-card` remains Implementation Agent feedback for
+  Architect/Orchestrator disposition: the visual crop evidence records
+  attempted page-image and canonical-PDF explicit-region probes, but this
+  follow-up did not replace the source-document example because the reliable
+  high-DPI extraction path was not established without risking protected-source
+  regression.
 
 ## Verification Evidence
 
@@ -366,3 +478,38 @@
   ready PR `#200` at
   <https://github.com/cucumberfalse/cabadrive/pull/200>. This follow-up line is
   process-memory evidence only.
+- Same-cycle readability follow-up verification `2026-06-05T09:26:56-03:00`:
+  `node scripts/manual-visual-content-inventory.mjs` passed and regenerated
+  `content/validation/manual-guide-visual-content-crop.evidence.json` with
+  `wholeManualInventory`, text-readability evidence for `38` source-image
+  cards and `2` source-artwork blocks, `16` Appendix IV
+  `source-limited-exception` records, `16` owner-disposition-required card ids,
+  `1` Architect-disposition-required feedback id
+  (`cedulas-source-card`), official Anexo L better-source audit width range
+  `613-620px`, and desktop/mobile viewport comparison records for readable or
+  source-limited image text. `node --test
+  tests/content-manual-guide-chapters.test.mjs` passed with `95` tests,
+  `95` pass, `0` fail, duration `11786.76825ms`; the focused content test now
+  fails if `wholeManualInventory` or per-card text-readability evidence is
+  missing. `node scripts/check-feature-memory.mjs --worktree` passed.
+  `pnpm run validate:manual-guide` passed with `50` implemented sections,
+  `0` pending sections, and manual source-fidelity status `pass`.
+  `pnpm run validate:content` passed with `460` category B fallback questions,
+  `276` local image references, `200/200` manual pages, and manual
+  source-fidelity status `pass`. `pnpm exec tsc --noEmit` passed.
+  `pnpm run test` passed with `421` tests, `421` pass, `0` fail, duration
+  `12450.450667ms`. `pnpm run build` passed, generated a service worker with
+  `1860` cached assets, and emitted only the existing Vite large-chunk warning.
+  Focused Playwright `pnpm exec playwright test --grep "Manual guide
+  full-width source image cards stay readable and avoid upscaling"` passed with
+  `2` tests, `2` pass, duration `11.3s`, producing representative desktop and
+  mobile screenshots under
+  `test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-*`.
+  `git diff --check` passed. Full `pnpm run preflight` passed: feature-memory
+  gate, repository baseline check, `validate:content`, `pnpm run test`
+  (`421` tests passed), `pnpm run build` (service worker with `1860` cached
+  assets), and nested `pnpm run test:e2e` with `82` tests passed in `47.1s`.
+  Post-preflight `git status --short --branch` remained scoped to the expected
+  dirty follow-up files on
+  `codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`;
+  no generated build/public noise was introduced.

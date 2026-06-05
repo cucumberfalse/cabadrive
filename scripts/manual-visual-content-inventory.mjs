@@ -6,6 +6,111 @@ const cropEvidencePath = "content/validation/manual-guide-visual-content-crop.ev
 const registryPath =
   "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const sectionAssetRoot = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections";
+const officialAnnexImageRoot =
+  "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images";
+
+const bodyTextBaseline = {
+  documentBodyTextFontSizePx: 16,
+  sourceCardBodyTextFontSizePx: 14.88,
+  measurementMethod:
+    "Computed CSS baseline from the manual guide runtime: document prose is 1rem and source-card notes are 0.93rem. Focused Playwright checks assert those computed values beside representative source-image cards.",
+  runtimeEvidencePath:
+    "tests/e2e/app.spec.ts::Manual guide full-width source image cards stay readable and avoid upscaling",
+  source:
+    "Manual guide runtime CSS uses 1rem document body text and 0.93rem source-card body text; focused Playwright follow-up captures these computed values next to representative source images."
+};
+
+const readabilityScreenshotEvidence = [
+  {
+    sectionId: "app4-signs-regulatory",
+    viewport: "desktop",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-desktop-chromium.png"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    viewport: "mobile",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-regulatory-mobile-chromium.png"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    viewport: "desktop",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-desktop-chromium.png"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    viewport: "mobile",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app4-signs-horizontal-mobile-chromium.png"
+  },
+  {
+    sectionId: "app2-highways-hospitals",
+    viewport: "desktop/mobile",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app2-highways-hospitals-*-chromium.png"
+  },
+  {
+    sectionId: "app3-driving-factors",
+    viewport: "desktop/mobile",
+    path:
+      "test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/manual-source-full-width-app3-driving-factors-*-chromium.png"
+  },
+  {
+    sectionId: "ch2-required-documents",
+    viewport: "manual-inventory",
+    path: "content/validation/manual-guide-visual-content-crop.evidence.json"
+  }
+];
+
+const domSupportedReadableCardIds = new Set([
+  "headrest-position-source-card",
+  "sri-types-source-card",
+  "alcohol-limits-source-card",
+  "distraction-panels-source-card",
+  "mobility-context-transferred-card"
+]);
+
+const sourceTextSupportingCardIds = new Set([
+  "app2-hospital-map-source-card",
+  "app3-body-posture-source-card",
+  "app3-seatbelt-source-card",
+  "cedulas-source-card",
+  "vtv-source-card",
+  "drug-test-device-source-card"
+]);
+
+const suspectCropCardIds = new Set(["cedulas-source-card"]);
+
+function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSmallestTextHeightPx, disposition) {
+  const renderedSize = {
+    width: renderedImageWidthPx,
+    height: card.dimensions?.height ?? null
+  };
+  return [
+    {
+      viewport: "desktop-natural-width",
+      renderedImageSizePx: renderedSize,
+      estimatedSmallestTextHeightPx,
+      bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
+      passesBodyTextSizeTarget:
+        typeof estimatedSmallestTextHeightPx === "number" ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx : null,
+      disposition,
+      evidencePath: "focused Playwright desktop screenshot for the same source-image-card scenario"
+    },
+    {
+      viewport: "mobile-contained-scroll-natural-width",
+      renderedImageSizePx: renderedSize,
+      estimatedSmallestTextHeightPx,
+      bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
+      passesBodyTextSizeTarget:
+        typeof estimatedSmallestTextHeightPx === "number" ? estimatedSmallestTextHeightPx >= bodyTextBaseline.documentBodyTextFontSizePx : null,
+      disposition,
+      evidencePath: "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+    }
+  ];
+}
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -41,6 +146,41 @@ function readImageDimensions(path) {
     }
   }
   return null;
+}
+
+function countBy(values) {
+  return values.reduce((counts, value) => {
+    counts[value] = (counts[value] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
+function officialAnnexImageAudit() {
+  if (!existsSync(officialAnnexImageRoot)) {
+    return {
+      status: "not-found",
+      root: officialAnnexImageRoot
+    };
+  }
+  const records = readdirSync(officialAnnexImageRoot)
+    .filter((fileName) => /\.(?:png|jpe?g)$/iu.test(fileName))
+    .sort()
+    .map((fileName) => {
+      const path = join(officialAnnexImageRoot, fileName);
+      return { path, dimensions: readImageDimensions(path) };
+    });
+  const widths = records.map((record) => record.dimensions?.width).filter((width) => typeof width === "number");
+  const heights = records.map((record) => record.dimensions?.height).filter((height) => typeof height === "number");
+  return {
+    status: "checked",
+    root: officialAnnexImageRoot,
+    imageCount: records.length,
+    widthRangePx: widths.length ? { min: Math.min(...widths), max: Math.max(...widths) } : null,
+    heightRangePx: heights.length ? { min: Math.min(...heights), max: Math.max(...heights) } : null,
+    result:
+      "Retained official Anexo L image assets were checked as a better-source alternative for Appendix IV signs; their 613-620px widths are not higher quality than the corrected manual crop widths around 664-757px.",
+    samplePaths: records.slice(0, 3).map((record) => record.path)
+  };
 }
 
 function balancedSourceSlice(source, startIndex, openChar, closeChar) {
@@ -156,6 +296,8 @@ function sourceImageCardInventory() {
           blockId,
           cardId: moduleStringField(cardSource, "id"),
           displayMode: moduleStringField(cardSource, "displayMode"),
+          maxDisplayWidthPx: moduleNumberField(cardSource, "maxDisplayWidthPx"),
+          minDisplayWidthPx: moduleNumberField(cardSource, "minDisplayWidthPx"),
           sourcePage: moduleNumberField(cardSource, "sourcePage"),
           sourceRegion: moduleSourceRegion(cardSource),
           assetPath,
@@ -244,6 +386,159 @@ function dispositionForCard(card, cropRecord) {
     disposition: "not-affected-reviewer-disposition",
     reason:
       "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence."
+  };
+}
+
+function textReadabilityForCard(card, cropRecord) {
+  const renderedImageWidthPx = card.minDisplayWidthPx ?? card.maxDisplayWidthPx ?? card.dimensions?.width ?? null;
+  const baseline = bodyTextBaseline;
+  if (cropRecord) {
+    return {
+      relevance: "required",
+      disposition: "source-limited-exception",
+      intendedReadableText:
+        "Official Spanish sign, marking, signal, or closing-page labels/captions inside the protected Appendix IV source sheet.",
+      inspectedSample:
+        "Smallest official labels/captions within the sheet; representative examples include sign captions on pages 185-186 and marking labels on page 195.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 6,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "below-body-text-at-natural-source-width",
+      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 6, "source-limited-exception"),
+      strategyApplied:
+        "Natural-width minimum display equals the no-upscale max display width, so narrow viewports use contained figure scrolling rather than shrinking source-limited labels further.",
+      evidencePath:
+        "content/validation/manual-guide-visual-content-crop.evidence.json plus focused Playwright screenshots under test-results/manual-source-full-width-app4-*-desktop-mobile-chromium.png",
+      attemptedAlternatives: [
+        {
+          id: "gcba-manual-pdf-render-scale-12",
+          result: `High-scale canonical PDF render produced rendered useful-width scale ratio ${cropRecord.renderedUsefulWidthScaleRatio.toFixed(
+            3
+          )}; this is near 1.0 rather than the expected 2.4x, proving the official PDF embeds a source-limited raster for this sheet.`
+        },
+        {
+          id: "decreto-779-1995-anexo-l-official-images",
+          result:
+            "Retained official Anexo L image assets were checked as a better-source candidate, but their widths are about 613-620px, not better than the corrected manual crops."
+        },
+        {
+          id: "source-faithful-split-subcrop-presentation",
+          result:
+            "Explored before declaring the exception. Because the full corrected sheets already render at natural crop width on desktop and now keep that width on mobile, splitting the same source-limited raster would not increase glyph pixels without browser upscaling; it would only remove context or multiply panels. Not selected."
+        }
+      ],
+      requiresOwnerDisposition: true,
+      routeDisposition:
+        "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+    };
+  }
+  if (suspectCropCardIds.has(card.cardId)) {
+    return {
+      relevance: "supporting",
+      disposition: "implementation-feedback-needs-source-region-verification",
+      intendedReadableText:
+        "Source-document example labels and captions are supporting visual context; learner-critical rules are translated in adjacent selectable DOM text.",
+      inspectedSample: "Cédula color-example captions on source page 47.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: null,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "not-passed-for-source-visual",
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        null,
+        "implementation-feedback-needs-source-region-verification"
+      ),
+      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json",
+      attemptedAlternatives: [
+        {
+          id: "page-047-trimmed-page-probe",
+          result:
+            "Local page-image probe found a better source-faithful row crop, but it is lower resolution than the x5/high-DPI contract."
+        },
+        {
+          id: "canonical-pdf-explicit-region-probe",
+          result:
+            "Scale-2 PDF explicit-region probe rendered the intended cédula row, but scale-5/scale-12 probes produced bad or blank crops, so Implementation did not replace the committed source asset without a reliable high-DPI path."
+        }
+      ],
+      requiresArchitectDisposition: true,
+      routeDisposition:
+        "Implementation Agent feedback for Architect/Orchestrator disposition; not fixed in this Appendix IV readability follow-up."
+    };
+  }
+  if (domSupportedReadableCardIds.has(card.cardId)) {
+    return {
+      relevance: "supporting",
+      disposition: "readable-via-selectable-dom-overlay",
+      intendedReadableText:
+        "Russian learner-facing labels are rendered as selectable DOM/SVG overlay text; source artwork remains provenance context.",
+      inspectedSample: "DOM overlay labels in transferred source image card.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 14,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "learner-facing-dom-text-is-comparable",
+      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 14, "readable-via-selectable-dom-overlay"),
+      evidencePath: "content/validation/manual-guide-source-fidelity.evidence.json"
+    };
+  }
+  if (sourceTextSupportingCardIds.has(card.cardId)) {
+    return {
+      relevance: "supporting",
+      disposition: "readable-with-adjacent-dom-text",
+      intendedReadableText:
+        "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
+      inspectedSample: "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 10,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "source-text-supporting-dom-text-carries-learning",
+      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 10, "readable-with-adjacent-dom-text"),
+      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+    };
+  }
+  if (card.displayMode === "compact") {
+    return {
+      relevance: "none",
+      disposition: "not-intended-readable",
+      intendedReadableText:
+        "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
+      inspectedSample: "Compact source-card visual.",
+      renderedImageWidthPx: card.dimensions?.width ?? null,
+      estimatedSmallestTextHeightPx: null,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "not-applicable",
+      viewportComparisons: [],
+      evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+    };
+  }
+  return {
+    relevance: "none",
+    disposition: "not-intended-readable",
+    intendedReadableText:
+      "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+    inspectedSample: "Whole-manual source-image-card inventory review.",
+    renderedImageWidthPx,
+    estimatedSmallestTextHeightPx: null,
+    bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+    comparisonToBodyText: "not-applicable",
+    viewportComparisons: [],
+    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
+  };
+}
+
+function textReadabilityForArtwork(entry) {
+  return {
+    relevance: "none",
+    disposition: "not-intended-readable",
+    intendedReadableText:
+      "Source-artwork block is a photo/diagram visual without learner-critical embedded text; surrounding Russian DOM text carries the learning content.",
+    inspectedSample: entry.blockId,
+    renderedImageWidthPx: entry.dimensions?.width ?? null,
+    estimatedSmallestTextHeightPx: null,
+    bodyTextBaselinePx: bodyTextBaseline.documentBodyTextFontSizePx,
+    comparisonToBodyText: "not-applicable",
+    evidencePath: "content/validation/manual-guide-visual-content-crop.evidence.json"
   };
 }
 
@@ -340,7 +635,18 @@ updateRegistryFromCropEvidence(registry, cropEvidence);
 
 const cropByCardId = new Map(cropEvidence.targets.map((record) => [record.cardId, record]));
 const cards = sourceImageCardInventory();
-const artwork = sourceArtworkInventory();
+const sourceImageCards = cards.map((card) => {
+  const cropRecord = cropByCardId.get(card.cardId);
+  return {
+    ...card,
+    ...dispositionForCard(card, cropRecord),
+    textReadability: textReadabilityForCard(card, cropRecord)
+  };
+});
+const artwork = sourceArtworkInventory().map((entry) => ({
+  ...entry,
+  textReadability: textReadabilityForArtwork(entry)
+}));
 const referencedAssetPaths = new Set([...cards.map((card) => card.assetPath), ...artwork.map((entry) => entry.assetPath)]);
 const sectionAssetFiles = walkFiles(sectionAssetRoot)
   .filter((path) => /\.(?:png|jpe?g|svg)$/iu.test(path))
@@ -354,13 +660,56 @@ const sectionAssetFiles = walkFiles(sectionAssetRoot)
 
 cropEvidence.wholeManualInventory = {
   inventoryMethod:
-    "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, and records reviewer dispositions where automated useful-content measurement is not practical.",
-  sourceImageCards: cards.map((card) => ({
-    ...card,
-    ...dispositionForCard(card, cropByCardId.get(card.cardId))
-  })),
+    "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, records reviewer dispositions where automated useful-content measurement is not practical, and attaches whole-manual embedded-text readability dispositions for the same source-image inventory.",
+  sourceImageCards,
   sourceArtwork: artwork,
   sectionAssetFiles,
+  textReadability: {
+    baseline: bodyTextBaseline,
+    officialBetterSourceAudit: officialAnnexImageAudit(),
+    sourceImageCardRelevanceCounts: countBy(sourceImageCards.map((card) => card.textReadability.relevance)),
+    sourceImageCardDispositionCounts: countBy(sourceImageCards.map((card) => card.textReadability.disposition)),
+    sourceImageCardDispositionTotal: sourceImageCards.length,
+    requiredCardIds: sourceImageCards
+      .filter((card) => card.textReadability.relevance === "required")
+      .map((card) => card.cardId)
+      .sort(),
+    representativeNonAppendixReadableCardIds: sourceImageCards
+      .filter((card) => card.textReadability.relevance === "supporting")
+      .map((card) => card.cardId)
+      .sort(),
+    sourceLimitedExceptionCardIds: sourceImageCards
+      .filter((card) => card.textReadability.disposition === "source-limited-exception")
+      .map((card) => card.cardId)
+      .sort(),
+    ownerDispositionRequiredCardIds: sourceImageCards
+      .filter((card) => card.textReadability.requiresOwnerDisposition)
+      .map((card) => card.cardId)
+      .sort(),
+    architectDispositionRequiredCardIds: sourceImageCards
+      .filter((card) => card.textReadability.requiresArchitectDisposition)
+      .map((card) => card.cardId)
+      .sort(),
+    naturalWidthMinDisplayCardIds: sourceImageCards
+      .filter((card) => card.minDisplayWidthPx !== undefined)
+      .map((card) => card.cardId)
+      .sort(),
+    followUpFeedbackCardIds: sourceImageCards
+      .filter((card) => card.textReadability.disposition.includes("implementation-feedback"))
+      .map((card) => card.cardId)
+      .sort(),
+    representativeScreenshotEvidence: readabilityScreenshotEvidence,
+    splitSubcropAudit: {
+      appendixIvPages: cropEvidence.targets.map((record) => record.sourcePage),
+      attempted: true,
+      strategy:
+        "Evaluate splitting each source-limited Appendix IV sheet into smaller official sub-crops/cards/panels before declaring a readability exception.",
+      conclusion:
+        "Not selected for Appendix IV because the full corrected sheets already display at natural source width on desktop and now keep that width on mobile through contained figure scrolling. Splitting the same source-limited raster would not increase embedded glyph pixels without browser upscaling or protected-pixel reconstruction; it would only remove context or create more panels.",
+      selectedMitigation:
+        "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width."
+    }
+  },
   summary: {
     sourceImageCardCount: cards.length,
     sourceArtworkCount: artwork.length,

@@ -2005,6 +2005,7 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   }
 
   const summary = visualCropEvidence.wholeManualInventory.summary;
+  const readability = visualCropEvidence.wholeManualInventory.textReadability;
   assert.equal(summary.sourceImageCardCount, 38);
   assert.equal(summary.sourceArtworkCount, 2);
   assert.equal(summary.correctedAppendixIvCount, 16);
@@ -2014,15 +2015,58 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 38);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
+  assert.equal(readability.baseline.documentBodyTextFontSizePx, 16);
+  assert.equal(readability.baseline.sourceCardBodyTextFontSizePx, 14.88);
+  assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
+  assert.equal(readability.officialBetterSourceAudit.status, "checked");
+  assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 16);
+  assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
+  assert.equal(readability.sourceImageCardDispositionTotal, 38);
+  assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
+  assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
+  assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
+  assert.deepEqual(readability.followUpFeedbackCardIds, ["cedulas-source-card"]);
+  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("app2-hospital-map-source-card"));
+  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("app3-body-posture-source-card"));
+  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("cedulas-source-card"));
+  assert.equal(readability.splitSubcropAudit.attempted, true);
+  assert.match(readability.splitSubcropAudit.conclusion, /Splitting the same source-limited raster would not increase embedded glyph pixels/u);
 
   const inventoryByCardId = new Map(visualCropEvidence.wholeManualInventory.sourceImageCards.map((entry) => [entry.cardId, entry]));
+  for (const entry of visualCropEvidence.wholeManualInventory.sourceImageCards) {
+    assert.ok(entry.textReadability, `${entry.cardId} records text-readability evidence`);
+    assert.match(entry.textReadability.relevance, /^(none|supporting|required)$/u);
+    assert.ok(entry.textReadability.disposition.length > 0, `${entry.cardId} records a text-readability disposition`);
+    assert.equal(entry.textReadability.bodyTextBaselinePx, 16, `${entry.cardId} records the body-text baseline`);
+    assert.ok(Array.isArray(entry.textReadability.viewportComparisons), `${entry.cardId} records viewport comparison evidence`);
+    if (entry.textReadability.relevance !== "none") {
+      assert.ok(entry.textReadability.viewportComparisons.length >= 2, `${entry.cardId} records desktop/mobile readability comparisons`);
+    }
+  }
+  for (const entry of visualCropEvidence.wholeManualInventory.sourceArtwork) {
+    assert.ok(entry.textReadability, `${entry.blockId} records source-artwork text-readability evidence`);
+    assert.equal(entry.textReadability.relevance, "none");
+    assert.equal(entry.textReadability.bodyTextBaselinePx, 16);
+  }
   for (const cardId of ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card", "app4-horizontal-page-195-source-card"]) {
     const entry = inventoryByCardId.get(cardId);
     assert.ok(entry, `${cardId} exists in whole-manual inventory`);
     assert.equal(entry.disposition, "corrected-source-limited-crop");
     assert.ok(entry.beforeUsefulRatios.areaRatio < 0.05);
     assert.ok(entry.afterUsefulRatios.areaRatio >= 0.55);
+    assert.equal(entry.textReadability.relevance, "required");
+    assert.equal(entry.textReadability.disposition, "source-limited-exception");
+    assert.equal(entry.textReadability.comparisonToBodyText, "below-body-text-at-natural-source-width");
+    assert.equal(entry.textReadability.requiresOwnerDisposition, true);
+    assert.ok(entry.textReadability.viewportComparisons.every((comparison) => comparison.passesBodyTextSizeTarget === false));
+    assert.match(entry.textReadability.routeDisposition, /Orchestrator\/user disposition/u);
+    assert.deepEqual(
+      entry.textReadability.attemptedAlternatives.map((alternative) => alternative.id),
+      ["gcba-manual-pdf-render-scale-12", "decreto-779-1995-anexo-l-official-images", "source-faithful-split-subcrop-presentation"]
+    );
   }
+  assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
   assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").disposition, "acceptable-tight-crop");
   assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").measuredUsefulRatios.areaRatio, 0.4205);
   assert.equal(inventoryByCardId.get("app3-body-posture-source-card").disposition, "acceptable-tight-crop");
@@ -2793,7 +2837,25 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "beginner-sign-source-card",
     "rva-source-card"
   ]);
-  const expectedPanoramicMinWidthByCardId = new Map([["app2-mirror-orientation-source-card", 760]]);
+  const expectedMinWidthByCardId = new Map([
+    ["app2-mirror-orientation-source-card", 760],
+    ["app4-horizontal-page-195-source-card", 674],
+    ["app4-horizontal-page-196-source-card", 704],
+    ["app4-informational-page-189-source-card", 673],
+    ["app4-informational-page-190-source-card", 704],
+    ["app4-informational-page-191-source-card", 672],
+    ["app4-informational-page-192-source-card", 706],
+    ["app4-regulatory-page-185-source-card", 664],
+    ["app4-regulatory-page-186-source-card", 704],
+    ["app4-temporary-page-193-source-card", 673],
+    ["app4-temporary-page-194-source-card", 705],
+    ["app4-traffic-lights-page-197-source-card", 673],
+    ["app4-traffic-lights-page-198-source-card", 757],
+    ["app4-traffic-lights-page-199-source-card", 757],
+    ["app4-traffic-lights-page-200-source-card", 757],
+    ["app4-warning-page-187-source-card", 672],
+    ["app4-warning-page-188-source-card", 705]
+  ]);
 
   assert.equal(cards.length, 38);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
@@ -2816,9 +2878,9 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, card.maxDisplayWidthPx, `${cardId} evidence matches display metadata`);
     assert.ok(asset.width >= card.maxDisplayWidthPx, `${cardId} max display width does not exceed natural/source asset width`);
     if (card.minDisplayWidthPx !== undefined) {
-      assert.equal(card.minDisplayWidthPx, expectedPanoramicMinWidthByCardId.get(cardId), `${cardId} records the expected panoramic min width`);
-      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} panoramic min width respects max display width`);
-      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} panoramic min width does not exceed natural/source asset width`);
+      assert.equal(card.minDisplayWidthPx, expectedMinWidthByCardId.get(cardId), `${cardId} records the expected readable minimum width`);
+      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} readable minimum width respects max display width`);
+      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} readable minimum width does not exceed natural/source asset width`);
     }
   }
 
@@ -2832,8 +2894,8 @@ test("Manual guide source image cards declare reusable full-width or compact dis
 
   assert.deepEqual(
     cards.filter((card) => card.minDisplayWidthPx !== undefined).map((card) => [card.cardId, card.minDisplayWidthPx]),
-    [...expectedPanoramicMinWidthByCardId],
-    "only explicit ultra-wide/panoramic source cards opt into visual-only scroll minimums"
+    [...expectedMinWidthByCardId],
+    "only explicit panoramic or source-limited text-readability source cards opt into visual-only scroll minimums"
   );
 
   const appendixCards = cards
@@ -2848,6 +2910,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     const cropRecord = visualCropRecordByCardId(card.cardId);
     assert.equal(card.maxDisplayWidthPx, asset.width, `${card.cardId} display cap matches corrected crop width`);
     assert.equal(card.maxDisplayWidthPx, cropRecord.outputDimensions.width, `${card.cardId} display cap matches crop evidence`);
+    assert.equal(card.minDisplayWidthPx, card.maxDisplayWidthPx, `${card.cardId} keeps source-limited embedded text at natural crop width on narrow screens`);
     assert.notDeepEqual(card.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
     assert.match(card.assetPath, /-source-crop-as-is\.jpg$/u);
   }
@@ -2858,8 +2921,8 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 704);
   assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
   assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
-  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, undefined);
-  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, 664);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, 704);
   assert.equal(byId.get("app2-mirror-orientation-source-card").minDisplayWidthPx, 760);
 
   assert.match(appSource, /data-display-mode=\{card\.displayMode\}/u);

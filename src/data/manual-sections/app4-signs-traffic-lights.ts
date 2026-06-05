@@ -74,6 +74,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           titleRu: "Страница 197: значение огней и специальные светофоры",
           displayMode: "full-width",
           maxDisplayWidthPx: 673,
+          minDisplayWidthPx: 673,
           sourcePage: 197,
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/signal-sheet-197-source-crop-as-is.jpg`,
@@ -89,6 +90,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           titleRu: "Страница 198: завершающее сообщение о знаках",
           displayMode: "full-width",
           maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 198,
           sourceRegion: { x: 1105, y: 1602, width: 761, height: 1004 },
           assetPath: `${assetRoot}/signal-sheet-198-source-crop-as-is.jpg`,
@@ -104,6 +106,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           titleRu: "Страница 199: завершающая иллюстрация",
           displayMode: "full-width",
           maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 199,
           sourceRegion: { x: 1106, y: 1602, width: 760, height: 1003 },
           assetPath: `${assetRoot}/signal-sheet-199-source-crop-as-is.jpg`,
@@ -119,6 +122,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           titleRu: "Страница 200: логотип города",
           displayMode: "full-width",
           maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 200,
           sourceRegion: { x: 1106, y: 1602, width: 764, height: 1006 },
           assetPath: `${assetRoot}/signal-sheet-200-source-crop-as-is.jpg`,
@@ -133,6 +137,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
       visualNotes: [
         "Traffic-light and closing source visuals are feature 034 official-source crops with empty outer page margins removed.",
         "The official PDF source is source-limited for useful signal pixels, so runtime display is capped at each natural crop width.",
+        "The cards keep natural crop width on narrow viewports with contained figure scrolling for source-faithful embedded text readability.",
         "Visible Spanish remains only inside the protected source images; Russian translation is adjacent or below."
       ]
     }

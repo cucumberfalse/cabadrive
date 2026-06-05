@@ -40,6 +40,32 @@ sheets, signal sheets, maps, diagrams, photos, and source-document examples in
 tiny source visual inside it, and the app does not blur the visual by stretching
 an insufficient raster.
 
+## Acceptance Clarification
+
+User clarification received after PR `#200` opened:
+
+> проверь весь документ, изображения должны быть крупными; один из ориенторов -
+> текст на изображениях, размер минимального шрифта должен быть визуально не
+> меньше, чем текст документа
+
+Architect disposition: this is a same-cycle acceptance refinement for feature
+`034`, not a new feature request. The original request already required checking
+the whole document and making the image content large enough to inspect without
+pixelated upscaling. The clarification adds a concrete readability anchor:
+where an official image contains text intended to be read, the smallest
+intended-readable text inside the rendered image should be visually no smaller
+than nearby manual body text. If that cannot be achieved from the official PDF
+or another best available official source without pixelated upscaling or
+protected-pixel edits, Implementation Agent must record a source-limited
+exception for Orchestrator/user disposition rather than silently accepting
+unreadable text.
+
+Current PR `#200` evidence records Appendix IV corrected crop widths around
+`664-757px` and a `source-limited-native-raster-in-official-pdf` disposition.
+That may be insufficient if sign labels/captions still render below manual body
+text size, even though the excessive-margin bbox ratios are corrected. Follow-up
+implementation evidence is required before review/final validation.
+
 ## Relationship To Feature `032`
 
 Feature `032-manual-figures-full-width` corrected the layout defect where
@@ -135,6 +161,47 @@ tight crop, intentionally sparse source material, a genuinely compact snippet,
 or a source-limited case where higher-quality extraction cannot improve the
 user outcome without altering official pixels.
 
+## Image Text Readability Criteria
+
+The whole-manual inventory must also flag images that contain text intended to
+be read by the learner, including sign labels, map labels, document examples,
+diagram captions, infographics, and source-visible Spanish text preserved under
+approved exceptions.
+
+Use nearby manual body text as the visual baseline. In current styling this is
+typically around `1rem` or `0.93rem-1.08rem` depending on the block; tests may
+measure the actual computed body/prose size at runtime instead of hard-coding a
+number.
+
+For each candidate image with readable source text:
+
+- record whether the embedded text is required for learning, source
+  traceability, or official visual identification;
+- estimate or measure the smallest intended-readable text height at the
+  rendered size;
+- compare that text height to nearby manual body text;
+- disposition the item as `readable`, `needs-larger-display`,
+  `needs-better-source`, `source-limited-exception`, or another clear local
+  equivalent.
+
+Where automated OCR/text-height measurement is practical, use it. Where it is
+not reliable for small source labels, Implementation Agent must perform and
+record manual visual inspection with representative screenshots and a concrete
+body-text comparison. A screenshot-only "looks okay" note is insufficient; the
+evidence must name the inspected image, viewport, text sample, nearby body text
+baseline, and pass/fail disposition.
+
+The target is strict: the minimum intended-readable text inside the image
+should be visually no smaller than nearby document text. If an official source
+image cannot satisfy that target at no-upscale size, implementation must try a
+better official source or strategy first. Acceptable strategies include a
+higher-quality official PDF/source extraction, official source-native sign or
+marking sheets retained in the archive, splitting a low-resolution sheet into
+official sub-crops that can be displayed larger, or another source-faithful
+presentation that does not alter protected pixels. Only after those options are
+exhausted may a source-limited exception be recorded for Orchestrator/user
+disposition.
+
 ## Extraction And Crop Requirements
 
 - Corrected affected assets must come from the official PDF or best retained
@@ -169,6 +236,10 @@ user outcome without altering official pixels.
   intended maximum CSS display width. Prefer enough source pixels for common
   high-DPI screens when feasible; if the official source cannot provide that,
   record the source limitation and cap display rather than upscaling.
+- If corrected crop widths are too small for embedded source text to meet the
+  body-text readability target, do not treat the crop as complete solely because
+  it passes useful bbox ratio thresholds. Find a better official source/strategy
+  or record a source-limited exception for Orchestrator/user disposition.
 
 ## Functional Requirements
 
@@ -200,6 +271,12 @@ user outcome without altering official pixels.
   source archive policy, and local-first behavior remain stable.
 - FR-011: Tooling/tests must catch regressions where a full-width image element
   hides a tiny useful-content island inside excessive blank margins.
+- FR-012: Tooling/evidence must catch images whose useful-content bbox is large
+  but whose intended-readable embedded text still renders smaller than nearby
+  manual body text.
+- FR-013: For any source-limited text-readability exception, Implementation
+  Agent must record the better-source strategies attempted and route the
+  exception for Orchestrator/user disposition before final validation.
 
 ## Acceptance Criteria
 
@@ -219,13 +296,19 @@ user outcome without altering official pixels.
    equivalent browser check proves the useful-content bbox occupies a meaningful
    share of the manual content width and the image is not blurry from browser
    upscaling.
-6. Given a corrected protected sign/marking/signal/photo/map/source-document
+6. Given a corrected asset contains intended-readable text, the smallest
+   intended-readable text inside the rendered image is visually no smaller than
+   nearby manual body text, or a source-limited exception is recorded after
+   better official source/strategy attempts and routed to Orchestrator/user
+   disposition.
+7. Given a corrected protected sign/marking/signal/photo/map/source-document
    image is inspected, meaningful official pixels remain source-faithful and
    Russian text remains outside the image.
-7. Given already tight crops such as the hospital map/body-posture examples are
+8. Given already tight crops such as the hospital map/body-posture examples are
    inventoried, they are not blindly recropped or enlarged; their disposition
-   explains why their ratio is acceptable or source-limited.
-8. Given local verification runs, content tests, source-fidelity validation,
+   explains why their ratio and embedded text readability are acceptable or
+   source-limited.
+9. Given local verification runs, content tests, source-fidelity validation,
    TypeScript/build, Playwright desktop/mobile evidence, `git diff --check`, and
    preflight all pass or any omitted check has a documented blocker.
 
@@ -239,8 +322,13 @@ user outcome without altering official pixels.
   other Appendix IV page sheets with the same excessive-margin ratio.
 - Recording the outer image/card width as evidence without measuring the useful
   content inside the image.
+- Passing useful-content bbox ratio tests while sign labels, captions, or other
+  intended-readable image text remain visually smaller than nearby document
+  body text.
 - Using CSS `transform`, `zoom`, `object-fit`, `clip-path`, `image-rendering`,
   or similar display tricks as the primary quality fix.
+- Silently accepting a source-limited PDF raster when a better official source
+  or source-faithful split/sub-crop strategy might make embedded text readable.
 - Removing sign labels, tiny captions, or other official source details while
   auto-cropping.
 - Retouching, repainting, inpainting, redrawing, vector-recreating, or
@@ -278,6 +366,8 @@ Evidence must include:
 - source PDF/page/crop bounds and SHA-256 where practical;
 - natural-dimension/runtime-display/no-upscale proof;
 - desktop/mobile screenshots or assertions for pages `185` and `186`;
+- representative OCR/manual text-size/readability checks comparing source-image
+  text to nearby manual body text;
 - representative Appendix IV and non-Appendix evidence when corrected;
 - proof that source-as-is protected pixels are unedited except empty-margin
   cropping.
