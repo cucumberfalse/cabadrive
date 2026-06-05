@@ -37,7 +37,7 @@ export function isTrustedReviewLogin(login, agent, config = {}) {
 }
 
 function extractShaLikeMarkers(body) {
-  return [...String(body || "").matchAll(/(?:^|[^A-Fa-f0-9])([A-Fa-f0-9]{7,40})(?![A-Fa-f0-9])/g)]
+  return [...String(body || "").matchAll(/(?:^|[^A-Za-z0-9])([A-Fa-f0-9]{7,40})(?![A-Za-z0-9])/g)]
     .map((match) => match[1].toLowerCase());
 }
 

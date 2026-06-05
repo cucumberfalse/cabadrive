@@ -205,6 +205,61 @@ test("isAcceptableCodexSummaryComment accepts fresh no-SHA summary by timestamp 
   );
 });
 
+test("isAcceptableCodexSummaryComment ignores hex-like word fragments before timestamp fallback", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
+  const comment = {
+    body: "Codex Review: did not find any major issues. Feedback accepted; abc1234z is a label.",
+    user: { login: "chatgpt-codex-connector" },
+    created_at: "2026-05-08T15:24:18Z"
+  };
+
+  assert.equal(
+    isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"),
+    true
+  );
+});
+
+test("isAcceptableCodexSummaryComment still accepts standalone current marker with punctuation boundaries", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
+  const comment = {
+    body: "Codex Review: did not find any major issues. Reviewed [83a6736].",
+    user: { login: "chatgpt-codex-connector" },
+    created_at: "2026-05-08T15:24:18Z"
+  };
+
+  assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
+});
+
+test("isAcceptableCodexSummaryComment still rejects standalone non-current marker before fallback", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
+  const comment = {
+    body: "Codex Review: did not find any major issues. Feedback checked for [deadbee].",
+    user: { login: "chatgpt-codex-connector" },
+    created_at: "2026-05-08T15:24:18Z"
+  };
+
+  assert.equal(
+    isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"),
+    false
+  );
+});
+
+test("isAcceptableCodexSummaryComment still rejects unknown login for no-SHA fallback", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
+  const comment = {
+    body: "Codex Review: did not find any major issues. Feedback looks complete.",
+    user: { login: "repo-owner" },
+    author_association: "OWNER",
+    created_at: "2026-05-08T15:24:18Z"
+  };
+
+  assert.equal(isTrustedAssociation(comment.author_association), true);
+  assert.equal(
+    isAcceptableCodexSummaryComment(comment, headSha, "2026-05-08T15:20:00Z"),
+    false
+  );
+});
+
 test("latestCodexNativeReviewResult accepts current-head native review from botless connector", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const review = {
