@@ -243,6 +243,32 @@ serve this consolidated contract.
     build commands must also prove committed evidence is current without
     silently rewriting tracked evidence files.
 
+## Post-Validation Evidence-Only Head Guard
+
+Final Architect and Analyst validation for this feature may remain valid for
+effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` only if all
+later commits are limited to role/process memory evidence. Durable process
+memory must clearly call `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` the
+effective content head, not the latest mutable PR head after evidence-only
+commits.
+
+Because a committed note cannot know the SHA of the commit that contains
+itself before it is created, this spec does not require process memory to
+pre-record its own future commit SHA. Instead, Implementation Agent must add
+wording that enables Orchestrator to run a final read-only current-PR-head
+guard immediately before finalization or merge. That guard must compare the
+actual current PR head with effective content head
+`860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, prove the intervening diff is only
+role/process memory evidence such as `feature-request.md`, `tasks.md`, and any
+subsequent guard note, and recheck mergeability, required checks, review
+threads, conflicts, process memory currency, and acceptance evidence against
+the actual current head.
+
+Any later product, runtime, source asset, test, package, workflow, durable
+implementation doc, validation JSON, or other non-evidence content change makes
+the previous final validation stale and must return through role-appropriate
+follow-up and final validation.
+
 ## Current Review Feedback Disposition
 
 Architect disposition `2026-06-05T17:30:29-03:00`: AI Review finding on PR

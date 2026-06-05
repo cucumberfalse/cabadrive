@@ -2085,9 +2085,11 @@
 - Architect validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
 - Cycle PR set: PR `#200`
   <https://github.com/cucumberfalse/cabadrive/pull/200>, branch
-  `codex/034-manual-visual-content-crop`, current/effective head
+  `codex/034-manual-visual-content-crop`, effective content head
   `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, status included in final
-  validation.
+  validation. Later current PR heads after final-validation evidence commits
+  are not the validated effective content head unless the final Orchestrator
+  current-PR-head guard proves the intervening diff is evidence-only.
 - Current PR/check evidence verified by Architect before this note:
   PR headRefOid `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, mergeable
   `MERGEABLE`, not draft; required checks passed on current head:
@@ -2113,3 +2115,110 @@
   user-called-out extinguisher/vest visuals are implemented from the official
   App I source, the residual is preserved for future Orchestrator disposition,
   and it is not hidden from `remainingRequiredExamples`.
+
+## Architect Disposition: Post-Validation Evidence-Only Current-Head Guard - 2026-06-05
+
+- [x] T177 Architect receives and dispositions Codex AI Review findings on PR
+  `#200` current head `a9e321abc5eb0846ef57860769a6ebc089b846a4`: thread
+  `PRRT_kwDOSX65IM6HfmSN` P1 on this `tasks.md` final-validation evidence and
+  thread `PRRT_kwDOSX65IM6HfqNE` P2 on the same final-validation head/check
+  evidence.
+- [x] T178 Architect accepts both findings as same-cycle process blockers
+  before completion/finalization. The existing final Architect validation
+  marker for `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` remains preserved as
+  validation of the effective content head only. It must not be read as proof
+  that a later evidence-only commit, including
+  `a9e321abc5eb0846ef57860769a6ebc089b846a4` or any newer process-memory
+  commit, was itself the effective content head at the time of validation.
+- [x] T179 Implementation Agent must update process memory to distinguish
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` as the effective content head
+  from the mutable/current PR head after final-validation evidence-only
+  commits. Do not edit product content, runtime files, source assets, tests,
+  validation evidence JSON, package files, workflow files, or durable runtime
+  docs for this process-only fix.
+- Evidence: this process-memory fix preserves the final Architect and Analyst
+  validation markers for
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` and calls that SHA the effective
+  content head. It no longer describes that SHA as both the current PR head
+  and the effective content head after later evidence-only commits.
+- [x] T180 Implementation Agent must add evidence-only-diff guard wording to
+  process memory. The wording must say that any current PR head after
+  validation evidence commits may differ from effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` only by role/process memory
+  evidence files such as
+  `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/tasks.md`, and any subsequent
+  final-guard note. If the diff includes product behavior, runtime assets,
+  tests, validation JSON, package/workflow files, durable implementation docs,
+  or other non-evidence content, prior final validation is stale.
+- Evidence: final-validation durability now requires the final Orchestrator
+  read-only guard to prove the diff from effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` to the actual current PR head is
+  limited to role/process memory evidence files, including
+  `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/tasks.md`, and any subsequent
+  final-guard note. Product behavior, runtime/source assets, tests, validation
+  JSON, package/workflow files, durable implementation docs, or any other
+  non-evidence content diff makes final validation stale and requires
+  role-appropriate follow-up plus renewed final validation.
+- [x] T181 Implementation Agent must avoid creating an impossible
+  self-referential SHA requirement. The committed process memory does not need
+  to know the SHA of the commit that contains itself before that commit exists.
+  It must instead name effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` and require Orchestrator to run a
+  final read-only current-PR-head guard after the latest evidence-only commit.
+- Evidence: this note names the effective content head but does not try to
+  pre-record the SHA of the process-memory commit that contains the note.
+  Orchestrator still must run the final read-only current-PR-head guard after
+  the latest evidence-only commit and immediately before finalization/merge.
+- [ ] T182 Orchestrator finalization remains blocked until a final read-only
+  current-PR-head guard is run immediately before finalization/merge. That
+  guard must compare the actual current PR head with effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, prove any intervening diff is
+  evidence-only as defined in T180, and recheck required checks, AI Review /
+  review-thread state, mergeability, conflicts, process memory currency, and
+  acceptance evidence against the actual current head.
+- Implementation disposition: requirement recorded and intentionally left
+  pending for Orchestrator. Implementation Agent has not run or claimed the
+  final Orchestrator current-PR-head guard.
+- [x] T183 Implementation Agent must record process-only verification for this
+  fix: `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`,
+  and a read-only diff/status summary proving only allowed feature-memory
+  process files changed. Broader build/content/e2e checks are not required for
+  this process-only update unless a non-process file changes, which would be a
+  scope violation and would require Orchestrator/Architect rerouting.
+- Verification evidence for this process-only fix:
+  `node scripts/check-feature-memory.mjs --worktree` passed with
+  `No configured product paths changed; feature-memory gate passes.`;
+  `git diff --check` passed with no output. Read-only status before commit:
+  `git status --short --branch` reported branch
+  `codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`
+  with modified process-memory files
+  `specs/034-manual-visual-content-crop/plan.md`,
+  `specs/034-manual-visual-content-crop/spec.md`, and
+  `specs/034-manual-visual-content-crop/tasks.md`. The `spec.md` and
+  `plan.md` changes are preserved Architect-owned process-memory edits from
+  T177-T178 disposition; Implementation-owned process fix changes are in this
+  `tasks.md` note. Read-only evidence-only context:
+  `git diff --name-status
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` reported only
+  `M specs/034-manual-visual-content-crop/feature-request.md` and
+  `M specs/034-manual-visual-content-crop/tasks.md`. Working-tree diff name
+  status before commit reported only process-memory files under
+  `specs/034-manual-visual-content-crop/`: `plan.md`, `spec.md`, and
+  `tasks.md`. No product, runtime, source asset, test, validation JSON,
+  package, workflow, or durable runtime-doc file changed for this process-only
+  fix; broader build/content/e2e checks are therefore not required.
+- [x] T184 Final validation/completion remains blocked until T179-T183 are
+  implemented/evidenced and the AI Review findings are resolved, made outdated
+  by the process-memory fix, or explicitly accepted by Orchestrator under the
+  completion contract. The prior final validation markers for effective
+  content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` must be preserved
+  unless a later non-evidence content change makes renewed validation required.
+- Implementation disposition: T179-T181 and T183 are implemented and evidenced
+  in process memory; T182 remains an Orchestrator finalization guard
+  requirement and has not been run or claimed by Implementation Agent. Final
+  validation/completion remains blocked until Orchestrator runs the final
+  read-only current-PR-head guard immediately before finalization/merge and
+  confirms the AI Review findings are resolved, outdated, or otherwise
+  accepted under the completion contract.

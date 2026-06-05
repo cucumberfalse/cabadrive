@@ -698,3 +698,38 @@ Implementation Agent must:
   where feasible, plus the local gates relevant to the failed `baseline-checks`
   path: build/content validation evidence if rerun, `node
   scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.
+
+## Post-Validation Evidence-Only Head Guard Plan - `a9e321abc5eb0846ef57860769a6ebc089b846a4`
+
+Architect accepts AI Review threads `PRRT_kwDOSX65IM6HfmSN` (P1) and
+`PRRT_kwDOSX65IM6HfqNE` (P2) as same-cycle process blockers before
+completion/finalization of PR `#200`. The prior final validation markers for
+effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` remain
+valid only as effective-content validation markers; process memory must stop
+calling that SHA the mutable/current PR head after later evidence-only commits.
+
+Implementation Agent must update process memory only. The update must:
+
+- Preserve the existing final Architect/Analyst validation markers for
+  effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`.
+- Clarify that `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` is the effective
+  content head, while the current PR head may be a later evidence-only commit.
+- Add durable wording that supports a final Orchestrator read-only
+  current-PR-head guard immediately before finalization or merge.
+- Require that guard to compare the actual current PR head with
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, prove the intervening diff is
+  limited to role/process memory evidence files such as
+  `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/tasks.md`, and any subsequent guard
+  note, and recheck required checks, review thread state, mergeability,
+  conflicts, process memory currency, and acceptance evidence against the
+  actual current head.
+- Avoid an impossible self-referential requirement to know the SHA of the
+  process-memory commit before it exists. The committed memory should name the
+  effective content head and require/readily support the final read-only guard
+  after the latest evidence-only commit.
+
+No code, tests, runtime assets, evidence JSON, package files, durable runtime
+docs, or product content should change for this process fix. Any non-evidence
+content change after final validation makes the prior validation stale and
+requires role-appropriate follow-up plus renewed final validation.
