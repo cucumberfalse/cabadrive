@@ -70,12 +70,14 @@ const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
 const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
 const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
-const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
+const strictRecordedChapter1SectionIds = new Set(["ch1-public-transport-system", "ch1-shared-trip"]);
+const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
 const implementedSectionIds = new Set([
   "front-presentation",
   "front-categories",
   "front-glossary",
   ...legacyBaselineSectionIds,
+  ...strictRecordedChapter1SectionIds,
   "ch2-legal-responsibility",
   "ch2-required-documents",
   "ch2-incident-obligations",
@@ -4061,9 +4063,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
-    "ch1-bicycle",
-    "ch1-public-transport-system",
-    "ch1-shared-trip"
+    "ch1-bicycle"
   ]);
   assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...legacyBaselineSectionIds].sort());
   assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...legacyBaselineSectionIds].sort());
@@ -4219,6 +4219,11 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
     const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
     assert.equal("visualEvidenceSchemaVersion" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
     assert.equal("visualRulePolicyId" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
+  }
+  for (const id of strictRecordedChapter1SectionIds) {
+    const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
+    assert.equal(implementedEvidence.visualEvidenceSchemaVersion, 3, `${id} evidence has graduated from legacy baseline to strict schema`);
+    assert.equal(implementedEvidence.visualRulePolicyId, "031-strict-source-fidelity", `${id} evidence uses strict source-fidelity policy`);
   }
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);

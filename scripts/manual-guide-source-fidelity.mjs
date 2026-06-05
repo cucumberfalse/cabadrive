@@ -170,9 +170,7 @@ const legacyVisualEvidenceSectionIds = new Set([
   "ch1-cities-for-people",
   "ch1-sustainable-mobility",
   "ch1-pedestrian-priority",
-  "ch1-bicycle",
-  "ch1-public-transport-system",
-  "ch1-shared-trip"
+  "ch1-bicycle"
 ]);
 const strictImageAssetCategories = new Set([
   "source-as-is-photo",

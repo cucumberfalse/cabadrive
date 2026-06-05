@@ -947,6 +947,36 @@
 
 ## Validator-Blocker Fix Evidence - 2026-06-05
 
+- Implementation Agent CI-blocker micro-slice for PR `#200` started from
+  assigned worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, HEAD
+  `ff75578cb7cec96be6a3c8e3797cbbf119d4b000`. Startup
+  `git status --short --branch` was clean on the assigned branch.
+- Narrow metadata/test fix: removed sections that already carry strict
+  source-fidelity evidence from the Chapter 1 legacy-baseline allowlists.
+  `ch1-public-transport-system` is now asserted as strict recorded evidence
+  with `visualEvidenceSchemaVersion: 3` and
+  `visualRulePolicyId: 031-strict-source-fidelity` instead of expecting
+  missing legacy fields. The same deterministic allowlist sync was applied to
+  `ch1-shared-trip` after the focused test showed it already has the same
+  strict recorded evidence in the current registry.
+- Updated only source-fidelity test/metadata surfaces:
+  `tests/content-manual-guide-chapters.test.mjs`,
+  `scripts/manual-guide-source-fidelity.mjs`, and
+  `content/validation/manual-guide-source-fidelity.evidence.json`. No visual
+  runtime content, source assets, crop assets, or guide rendering files were
+  modified.
+- Verification run during this micro-slice:
+  `node --test tests/content-manual-guide-chapters.test.mjs` passed with
+  `96` tests, `96` pass, `0` fail; `pnpm run validate:manual-guide` passed
+  with source-fidelity status `pass`, `50` implemented sections, `0` pending
+  sections, and strict visual rule policy `031-strict-source-fidelity`;
+  `pnpm exec tsc --noEmit` passed;
+  `node scripts/check-feature-memory.mjs --worktree` passed; `git diff
+  --check` passed; `pnpm run test` passed with `422` tests, `422` pass, `0`
+  fail.
+
 - Implementation Agent validator-blocker slice started from assigned PR `#200`
   worktree
   `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
