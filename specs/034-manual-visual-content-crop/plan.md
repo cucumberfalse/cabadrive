@@ -9,6 +9,9 @@ rendered.
 
 Preferred shape:
 
+- Add a PDF-vs-runtime visual completeness audit that identifies
+  learner-meaningful visual regions in the official manual and matches them to
+  interactive guide blocks/assets.
 - Add a repeatable inventory/detection path for manual visuals that can compute
   or record useful-content bounding boxes and excessive-margin ratios.
 - Use the canonical PDF
@@ -39,12 +42,39 @@ still visually comparable to document text, or it must attempt a better
 official source/strategy and record any remaining source-limited exception for
 Orchestrator/user disposition.
 
+Latest user clarification supersedes the current Appendix IV source-limited
+completion path for user-highlighted visuals. The implementation should not
+ask the owner to accept tiny sign labels merely because whole-sheet extraction
+from the manual PDF is source-limited. It must attempt a large-sign strategy:
+direct official PDF/source-region extraction of individual signs or sign rows,
+retained official original image assets where they are better, or another
+source-faithful multi-panel layout that makes signs large without modifying
+protected pixels.
+
+For the hospital map, the implementation must revisit the current
+`app2-hospital-map-source-card` with an official-original extraction target.
+The map image remains protected source-as-is: no translation, cleanup, redraw,
+mask, or relabeling inside the map. The goal is best available official source
+quality and readable map labels at body-text-equivalent visual size.
+
+Latest copy refinement: the runtime guide must stop exposing internal
+source/provenance phrasing as learner-facing Russian copy. Evidence/spec fields
+may keep technical source language, but rendered guide titles, captions, card
+bodies, notes, and explanations should read like normal adapted Russian
+learning material.
+
 ## Inventory Method
 
 Implementation should create a systematic inventory before final asset changes.
+The inventory has two layers: first, official PDF visual regions compared
+against runtime guide visuals; second, quality/readability checks for visuals
+that are present or newly added.
 
 Inventory coverage:
 
+- learner-meaningful visual regions visible in the official PDF/manual pages,
+  including images, diagrams, photos, infographics, signs, maps, charts,
+  source-document examples, labels, and meaningful safety icons;
 - all current `source-image-cards` cards in `src/data/manual-sections/`;
 - all `source-artwork` blocks;
 - all bespoke/manual visual local asset references under
@@ -67,6 +97,19 @@ For each item, record:
   clear local enum;
 - reason and reviewer note.
 
+For each official PDF visual region, also record:
+
+- PDF page and approximate source-region bounds;
+- visual type: sign, marking, signal, map, diagram, chart, photo,
+  infographic, object/icon, document example, or other;
+- learner-meaningful classification and rationale;
+- matching runtime section/block/card id, if present;
+- disposition: `present`, `added`, `duplicate-covered`,
+  `explicitly-omitted`, `missing-blocker`, or equivalent;
+- if omitted or duplicate-covered, the reason and covering block;
+- if added, the new asset path, runtime placement, dimensions, hash,
+  display-size evidence, and no-upscale proof.
+
 Add these fields for every image containing intended-readable text:
 
 - text-readability relevance: `none`, `supporting`, `required`, or equivalent;
@@ -78,6 +121,28 @@ Add these fields for every image containing intended-readable text:
   `source-limited-exception`, or equivalent;
 - evidence path for screenshot/OCR/manual inspection.
 
+For Appendix IV sign inventory, also record:
+
+- whether a text sample is inside the sign/plate visual or external catalog
+  caption;
+- source crop boundary proving external captions are outside the protected sign
+  body before translating them;
+- per-sign or per-row output asset/path, source page, source region, dimensions,
+  hash, and runtime display size when the implementation splits sheets;
+- the Russian external caption text and its DOM location when translated.
+
+For the hospital map inventory, record source-original search/extraction
+attempts, final source path, output dimensions, label readability evidence, and
+confirmation that map pixels/text are unmodified.
+
+For runtime-copy inventory, scan learner-visible Russian strings in manual
+section data and rendered guide components. Record each occurrence of banned or
+suspicious provenance wording, the runtime field where it appears, the rewrite,
+and any allowed exception. Do not count internal fields such as `sourceTextEs`,
+`sourcePage`, `sourceRegion`, `assetPath`, `implementationEvidence`,
+validation JSON, or specs/tasks as learner-facing copy unless the renderer
+actually displays them to the learner.
+
 The detector can be implemented with any repository-appropriate repeatable
 method. A Playwright/canvas based scan is acceptable because Playwright is
 already available and can inspect pixels without adding image-decoding
@@ -88,6 +153,57 @@ reviewable in normal repo checks.
 
 Use the initial RGB `<245` non-white threshold from Orchestrator evidence as a
 starting point. If the implementation refines the threshold, record why.
+
+## Visual Completeness Audit
+
+The latest user clarification makes visual completeness a same-cycle gate. Do
+not limit the scan to existing `source-image-card` and `source-artwork` entries:
+Implementation must inspect the official PDF/manual and identify visuals that
+teach or identify exam-relevant content even when they are currently absent
+from runtime data.
+
+Conservative inclusion rule:
+
+- include visuals that convey a rule, risk, classification, comparison,
+  example, diagram, map, sign, marking, signal, chart, photo, object, icon, or
+  label;
+- allow omission only for decorative/background/page-furniture visuals or
+  repeated simple icons whose learning meaning is fully covered elsewhere;
+- name the runtime block that covers a duplicate visual.
+
+Concrete required missing-image candidates:
+
+- Tire manufacturing/date and tread-life visual with `Fecha de Fabricación`
+  and `Vida útil de los Neumáticos`: locate exact source page/section, export
+  the full learner-meaningful region including the tire photo/date callout,
+  tread-life chart, and associated bullet text, then insert it at readable
+  manual scale or record a narrow official-source blocker.
+- Blind-spot full-width visual headed `¿A qué se denomina punto ciego?` with
+  `PUNTO CIEGO AUTOS`, `PUNTO CIEGO MOTOS`, `CAMIONES Y COLECTIVOS`, and
+  `Cuanto más grande es el vehículo, mayor es el punto ciego.` Locate exact
+  runtime owner, likely around the mirrors/blind-spots content where source
+  text references official page `108` and possibly related page `128`, export
+  from the official original, and display as-is at full-width scale with no
+  extra blank fields.
+- `Matafuegos` and `Chaleco reflectivo`: locate exact source page/section and
+  add the official visuals/icons at normal size. For `Matafuegos`, compare the
+  visual height to surrounding document body text; the user's anchor is about
+  `15` lines high, so implementation should not collapse it into a thumbnail.
+- Headrest diagrams: keep the official image intact, including Spanish terms
+  such as `Altura apoyacabeza`, `Distancia del apoyacabeza`, `Bueno`,
+  `Aceptable`, `Regular`, `Malo`, and `Botón de desbloqueo`; add Russian term
+  translations as separate selectable DOM text below/near the image.
+- Sustainable mobility/public-space visual: replace the current low-quality or
+  reconstructed Russian visual headed
+  `СКОЛЬКО МЕСТА НУЖНО 50 ЛЮДЯМ, ЧТОБЫ ПЕРЕДВИГАТЬСЯ?` with the original
+  official image, keep protected image text unchanged, and add Russian
+  translations for terms such as by bus, walking, bicycle, and car outside the
+  image. Runtime size should preserve the original image-to-text relationship.
+
+For each added candidate, update runtime data, source-fidelity evidence,
+content tests, and Playwright/visual evidence. If an official visual cannot be
+faithfully extracted, record the PDF/source attempts and route a
+`missing-blocker` to Orchestrator/human; do not silently omit it.
 
 ## Crop And Export Method
 
@@ -130,6 +246,20 @@ Any such strategy must preserve protected pixels and source provenance. If no
 strategy can satisfy the readability target, record a source-limited exception
 with attempted alternatives and send it back to Orchestrator for user
 disposition before review/final validation.
+
+Direct PDF/source-region helper direction:
+
+- The interrupted `scripts/manual-visual-content-crops.swift` direction adding
+  direct PDF source-region render/probe support is useful supporting machinery
+  and should be preserved by Implementation Agent.
+- It is insufficient by itself if it only proves whole-sheet raster source
+  limitation. It must be adapted or supplemented to target individual signs,
+  sign rows, the hospital map source region, and probe scales/strategies that
+  can demonstrate maximum practical official-original quality.
+- If the helper cannot reliably render a region at the needed quality,
+  Implementation Agent should record the failure with probe evidence and try a
+  different official source/strategy rather than reverting to browser upscaling
+  or protected-pixel edits.
 
 ## Asset Naming And Provenance
 
@@ -175,6 +305,9 @@ Expected file areas for Implementation Agent:
 - `src/App.tsx` only if runtime data attributes are needed for useful-content
   evidence; preserve existing `displayMode`, source exception, and lazy-loading
   attributes.
+- `src/data/manual-sections/*` for learner-facing Russian copy rewrites such as
+  visual-card titles, `bodyRu`, `visualNotes`, `noteRu`, captions, and
+  section-specific explanation text.
 - `src/styles.css` only for minimal preservation of feature `032` behavior; CSS
   cannot be the primary crop fix.
 - `content/assets/manuals/.../sections/...` for corrected crop assets.
@@ -216,6 +349,11 @@ High-priority inspect/correct group:
 | `app4-signs-horizontal` | `195-196` | page `195` ratio `0.0336` |
 | `app4-signs-traffic-lights` | `197-200` | same page-sheet pattern |
 
+For Appendix IV, expected implementation now shifts from "corrected sheet crop"
+to "large official sign fragments/rows/panels plus translated external
+captions where allowed." Whole-sheet crops may remain as overview/context, but
+they do not satisfy the latest acceptance criteria alone.
+
 Likely not affected by this margin-heavy defect but still inventory-required:
 
 - `hospital-map-source-as-is.png`, ratio `0.4205`, already a relatively tight
@@ -237,10 +375,55 @@ New text-size priority candidates:
 - Source-artwork/infographic blocks that keep visible source text under an
   approved exception.
 
+Additional latest-priority candidates:
+
+- Individual `NO AVANZAR`-style regulatory signs and their external captions,
+  using the official/original PDF/source at maximum practical quality.
+- Hospital map card `app2-hospital-map-source-card`, which must be rechecked
+  against the official original rather than treated as already acceptable only
+  because its bbox ratio is relatively tight.
+- Tire manufacturing/date and tread-life visual with `Fecha de Fabricación`
+  and `Vida útil de los Neumáticos`, because the user reports it as a missing
+  official learner visual.
+- Blind-spot full-width visual with `¿A qué se denomina punto ciego?`,
+  `PUNTO CIEGO AUTOS`, `PUNTO CIEGO MOTOS`, `CAMIONES Y COLECTIVOS`, and the
+  blue sentence `Cuanto más grande es el vehículo, mayor es el punto ciego.`,
+  because it is an official full-width visual that should not be reduced to
+  missing text-only summary.
+- `Matafuegos` and `Chaleco reflectivo` official visuals/icons, because the
+  user reports them as missing and expects normal original-scale display; for
+  `Matafuegos`, use the approximate `15` body-text-line visual-height anchor.
+- Headrest diagrams/terminology, because the latest requirement says they must
+  be displayed as the original image, with Russian term translations outside
+  the protected image.
+- Sustainable mobility/public-space visual about how much space `50` people
+  need to move by bus, walking, bicycle, or car, because the current runtime
+  Russian version appears low-quality/pixelated or reconstructed and must be
+  replaced by the official original.
+- Runtime copy examples explicitly called out by the user:
+  `Визуал источника: правильный ремень`,
+  `Визуал источника: положение подголовника`,
+  `Фотографии сохранены как исходный фрагмент...`, and
+  `Главный вывод источника`.
+- Whole-guide Russian copy using `источник`, `из источника`,
+  `исходный фрагмент`, `рабочий фрагмент`, `исходная схема`,
+  `исходная карта`, `исходные примеры`, or similar as visual provenance
+  shorthand.
+
 ## Testing Strategy
 
 Content/static tests:
 
+- Require a PDF-vs-runtime visual completeness inventory with dispositions for
+  official learner-meaningful visual regions, not only current runtime image
+  assets.
+- Assert every official learner-meaningful visual is present, added,
+  duplicate-covered, explicitly omitted with rationale, or recorded as a
+  narrow blocker.
+- Assert the required missing-image candidates are located and added or
+  narrowly blocked: tire manufacturing/date and tread-life visual, blind-spot
+  full-width visual, `Matafuegos`, `Chaleco reflectivo`, headrest diagrams,
+  and the public-space `50` people mobility visual.
 - Require a complete manual visual inventory or structured evidence file.
 - Assert reported pages `185` and `186` no longer use full-page source-region
   evidence with a `~0.03` useful bbox ratio.
@@ -258,9 +441,29 @@ Content/static tests:
   intended-readable embedded text.
 - Assert Appendix IV pages `185-200` have text-readability evidence, not only
   useful bbox evidence.
+- Assert Appendix IV sign rendering uses large source-faithful sign fragments,
+  rows, or panels when whole sheets fail the text-size target.
+- Assert translated Russian captions are present only for external source
+  captions/labels and are rendered as DOM/SVG text outside protected sign
+  pixels.
+- Assert no text inside a protected sign body, supplementary plate/tablet, or
+  sign placard is translated, masked, removed, or replaced.
+- Assert the hospital map uses a best-available official source extraction,
+  remains unmodified inside the image, and has map-label readability evidence.
+- Assert protected images with Spanish terms, including headrest diagrams and
+  the public-space mobility visual, keep image internals unchanged and expose
+  Russian translations only as separate DOM text below/near the image.
 - Assert any `source-limited-exception` records attempted better official
   source/strategy checks and are called out in process memory for
   Orchestrator/user disposition.
+- Add or update a runtime-copy audit test that extracts learner-facing Russian
+  strings from the manual guide data/components and fails on banned
+  source/provenance wording, while allowing internal technical fields.
+- Assert the specific bad examples named by the user no longer appear in
+  learner-facing runtime strings.
+- Assert any remaining `источник` occurrence in learner-facing Russian is
+  explicitly allowlisted as a legal/source citation context, not a visual-card
+  provenance label.
 
 Playwright tests:
 
@@ -285,6 +488,19 @@ Playwright tests:
   labels; manual inspection must be explicit and representative.
 - Capture desktop and mobile screenshots that include the corrected image and
   nearby manual body text in the same viewport for visual comparison.
+- Capture representative Appendix IV screenshots that show individual signs
+  large enough to inspect and external Russian captions beside/below them.
+- Capture hospital map desktop/mobile screenshots with nearby body text and
+  label-readability comparison evidence.
+- Capture screenshots for the added tire, blind-spot, `Matafuegos`,
+  `Chaleco reflectivo`, headrest, and public-space mobility visuals, including
+  nearby body text where practical.
+- For simple object/icon visuals such as `Matafuegos`, compare the rendered
+  visual height to body-text line height and record whether it preserves the
+  official scale relationship instead of becoming a thumbnail.
+- Where useful, capture DOM/screenshot evidence for representative rewritten
+  visual cards so review can see normal learning copy in place of provenance
+  wording.
 
 Standard checks:
 
@@ -300,8 +516,15 @@ Update `docs_project/project/frontend/manual-conversion-guidelines.md` only if
 the implementation adds reusable rules such as:
 
 - whole-manual excessive-margin/useful-content inventory;
+- whole-document PDF-vs-runtime visual completeness audit for missing
+  learner-meaningful visuals;
 - required useful-content bbox ratio evidence;
 - whole-manual source-image embedded-text readability evidence;
+- source-faithful individual sign/row extraction and translated external
+  caption rules;
+- hospital map official-original extraction and protected map-pixel rules;
+- runtime learner-facing copy must avoid provenance/service wording such as
+  `Визуал источника`, `исходный фрагмент`, and `Главный вывод источника`;
 - crop-specific asset naming/provenance;
 - high-DPI source-region extraction beyond current x5 page renders;
 - regression checks for tiny useful-content islands.
@@ -314,9 +537,21 @@ Review Agent should especially check:
 
 - the reported screenshot symptom is fixed by source extraction/cropping, not
   CSS scale;
+- missing learner-meaningful PDF visuals were found by a PDF-vs-runtime audit,
+  not by only looking at current runtime assets;
+- the tire, blind-spot, `Matafuegos`, and `Chaleco reflectivo` candidates are
+  present at faithful quality/scale or narrowly dispositioned;
+- headrest and public-space mobility visuals use protected official images
+  with separate Russian translations outside the image;
 - useful-content bbox evidence proves the signs themselves are large;
 - embedded image text is visually comparable to body text, or source-limited
   exceptions are explicit and routed;
+- Appendix IV uses large individual signs/fragments or an equivalent
+  source-faithful layout, not only a whole tiny sheet;
+- external sign captions are translated only outside protected sign pixels;
+- hospital map labels are readable and unmodified inside the map image;
+- runtime guide copy is natural adapted Russian and does not leak
+  source/provenance service wording into learner-facing labels/explanations;
 - Appendix IV siblings were not missed;
 - protected source imagery was not edited;
 - no corrected crop is displayed beyond natural/source quality;

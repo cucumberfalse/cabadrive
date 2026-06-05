@@ -9,11 +9,18 @@ struct CropConfig: Codable {
   let sourcePdfPath: String
   let sourceBaseScale: Double
   let renderScale: Double
+  let probeRenderScales: [Double]?
+  let skippedRenderScales: [SkippedRenderScaleRecord]?
   let quality: Double
   let whiteThreshold: UInt8
   let paddingPxAtSourceBaseScale: Int
   let outputEvidencePath: String
   let targets: [CropTarget]
+}
+
+struct SkippedRenderScaleRecord: Codable {
+  let scale: Double
+  let reason: String
 }
 
 struct CropTarget: Codable {
@@ -45,6 +52,17 @@ struct RatioRecord: Codable {
   let areaRatio: Double
 }
 
+struct RenderProbeRecord: Codable {
+  let renderScale: Double
+  let status: String
+  let estimatedBitmapMegabytes: Double
+  let renderDimensions: SizeRecord
+  let usefulBounds: BoundsRecord?
+  let usefulWidthScaleRatioVsBaseAsset: Double?
+  let usefulHeightScaleRatioVsBaseAsset: Double?
+  let error: String?
+}
+
 struct CropEvidenceRecord: Codable {
   let sectionId: String
   let cardId: String
@@ -56,9 +74,17 @@ struct CropEvidenceRecord: Codable {
   let beforeUsefulBounds: BoundsRecord
   let beforeUsefulRatios: RatioRecord
   let sourceRegionAtBaseScale: BoundsRecord
+  let renderMode: String
+  let renderProbes: [RenderProbeRecord]
+  let skippedRenderScales: [SkippedRenderScaleRecord]
+  let selectedRenderScale: Double
+  let maximumSuccessfulProbeScale: Double
+  let selectedRenderScaleReason: String
   let intermediateRenderDimensions: SizeRecord
   let intermediateUsefulBounds: BoundsRecord
   let renderedUsefulWidthScaleRatio: Double
+  let renderedUsefulHeightScaleRatio: Double
+  let glyphDetailDisposition: String
   let sourceQualityDisposition: String
   let finalTrimBounds: BoundsRecord
   let outputDimensions: SizeRecord
@@ -73,10 +99,13 @@ struct EvidenceDocument: Codable {
   let sourcePdfPath: String
   let sourceBaseScale: Double
   let renderScale: Double
+  let probeRenderScales: [Double]
+  let skippedRenderScales: [SkippedRenderScaleRecord]
   let quality: Double
   let whiteThreshold: UInt8
   let nonWhiteRule: String
   let paddingPxAtSourceBaseScale: Int
+  let renderMode: String
   let extractionMethod: String
   let targets: [CropEvidenceRecord]
 }
@@ -226,6 +255,67 @@ func renderFullPage(page: CGPDFPage, scale: CGFloat) throws -> CGImage {
   return image
 }
 
+func regionRenderDimensions(page: CGPDFPage, bounds: BoundsRecord, sourceBaseScale: Double, renderScale: Double) -> SizeRecord {
+  let scaleFactor = renderScale / sourceBaseScale
+  let cropRect = CGRect(
+    x: Double(bounds.x) * scaleFactor,
+    y: Double(bounds.y) * scaleFactor,
+    width: Double(bounds.width) * scaleFactor,
+    height: Double(bounds.height) * scaleFactor
+  ).integral
+  return SizeRecord(width: max(1, Int(cropRect.width)), height: max(1, Int(cropRect.height)))
+}
+
+func estimatedBitmapMegabytes(_ size: SizeRecord) -> Double {
+  Double(size.width) * Double(size.height) * 4 / 1024 / 1024
+}
+
+func renderPageRegion(page: CGPDFPage, bounds: BoundsRecord, sourceBaseScale: Double, renderScale: Double) throws -> CGImage {
+  let mediaBox = page.getBoxRect(.mediaBox)
+  let fullPageWidth = mediaBox.width * CGFloat(renderScale)
+  let fullPageHeight = mediaBox.height * CGFloat(renderScale)
+  let scaleFactor = renderScale / sourceBaseScale
+  let cropRect = CGRect(
+    x: Double(bounds.x) * scaleFactor,
+    y: Double(bounds.y) * scaleFactor,
+    width: Double(bounds.width) * scaleFactor,
+    height: Double(bounds.height) * scaleFactor
+  ).integral
+  let width = max(1, Int(cropRect.width))
+  let height = max(1, Int(cropRect.height))
+  let colorSpace = CGColorSpaceCreateDeviceRGB()
+  guard let context = CGContext(
+    data: nil,
+    width: width,
+    height: height,
+    bitsPerComponent: 8,
+    bytesPerRow: 0,
+    space: colorSpace,
+    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+  ) else {
+    throw NSError(domain: "cabadrive.manual.visual-crop", code: 10, userInfo: [NSLocalizedDescriptionKey: "Could not create region render context"])
+  }
+
+  context.interpolationQuality = .high
+  context.setFillColor(CGColor(red: 1, green: 1, blue: 1, alpha: 1))
+  context.fill(CGRect(x: 0, y: 0, width: width, height: height))
+  context.saveGState()
+  let shiftedFullPageRect = CGRect(
+    x: -cropRect.origin.x,
+    y: -cropRect.origin.y,
+    width: fullPageWidth,
+    height: fullPageHeight
+  )
+  context.concatenate(page.getDrawingTransform(.mediaBox, rect: shiftedFullPageRect, rotate: 0, preserveAspectRatio: true))
+  context.drawPDFPage(page)
+  context.restoreGState()
+
+  guard let image = context.makeImage() else {
+    throw NSError(domain: "cabadrive.manual.visual-crop", code: 11, userInfo: [NSLocalizedDescriptionKey: "Could not create rendered region image"])
+  }
+  return image
+}
+
 func jpegData(_ image: CGImage, quality: CGFloat) throws -> Data {
   let data = NSMutableData()
   guard let destination = CGImageDestinationCreateWithData(data, UTType.jpeg.identifier as CFString, 1, nil) else {
@@ -252,7 +342,8 @@ do {
     exit(1)
   }
 
-  let scaleFactor = config.renderScale / config.sourceBaseScale
+  let configuredProbeScales = (config.probeRenderScales ?? [config.renderScale]).sorted()
+  let skippedRenderScales = config.skippedRenderScales ?? []
   var records: [CropEvidenceRecord] = []
 
   for target in config.targets {
@@ -270,20 +361,66 @@ do {
       imageHeight: beforeSize.height
     )
 
-    let renderedPage = try renderFullPage(page: page, scale: CGFloat(config.renderScale))
-    let cropRect = CGRect(
-      x: Double(cropBounds.x) * scaleFactor,
-      y: Double(cropBounds.y) * scaleFactor,
-      width: Double(cropBounds.width) * scaleFactor,
-      height: Double(cropBounds.height) * scaleFactor
-    ).integral
-    guard let cropImage = renderedPage.cropping(to: cropRect) else {
-      throw NSError(domain: "cabadrive.manual.visual-crop", code: 8, userInfo: [NSLocalizedDescriptionKey: "Could not crop rendered page \(target.sourcePage)"])
+    var renderProbes: [RenderProbeRecord] = []
+    for probeScale in configuredProbeScales {
+      let probeDimensions = regionRenderDimensions(
+        page: page,
+        bounds: cropBounds,
+        sourceBaseScale: config.sourceBaseScale,
+        renderScale: probeScale
+      )
+      do {
+        let probeImage = try renderPageRegion(
+          page: page,
+          bounds: cropBounds,
+          sourceBaseScale: config.sourceBaseScale,
+          renderScale: probeScale
+        )
+        let usefulBounds = try measureUsefulBounds(probeImage, threshold: config.whiteThreshold)
+        renderProbes.append(
+          RenderProbeRecord(
+            renderScale: probeScale,
+            status: "succeeded",
+            estimatedBitmapMegabytes: estimatedBitmapMegabytes(probeDimensions),
+            renderDimensions: SizeRecord(width: probeImage.width, height: probeImage.height),
+            usefulBounds: usefulBounds,
+            usefulWidthScaleRatioVsBaseAsset: Double(usefulBounds.width) / Double(beforeBounds.width),
+            usefulHeightScaleRatioVsBaseAsset: Double(usefulBounds.height) / Double(beforeBounds.height),
+            error: nil
+          )
+        )
+      } catch {
+        renderProbes.append(
+          RenderProbeRecord(
+            renderScale: probeScale,
+            status: "failed",
+            estimatedBitmapMegabytes: estimatedBitmapMegabytes(probeDimensions),
+            renderDimensions: probeDimensions,
+            usefulBounds: nil,
+            usefulWidthScaleRatioVsBaseAsset: nil,
+            usefulHeightScaleRatioVsBaseAsset: nil,
+            error: error.localizedDescription
+          )
+        )
+      }
     }
+
+    let successfulProbeScales = renderProbes.filter { $0.status == "succeeded" }.map { $0.renderScale }
+    guard successfulProbeScales.contains(config.renderScale) else {
+      throw NSError(domain: "cabadrive.manual.visual-crop", code: 8, userInfo: [NSLocalizedDescriptionKey: "Configured render scale \(config.renderScale) did not succeed for page \(target.sourcePage)"])
+    }
+    let cropImage = try renderPageRegion(
+      page: page,
+      bounds: cropBounds,
+      sourceBaseScale: config.sourceBaseScale,
+      renderScale: config.renderScale
+    )
 
     let intermediateSize = SizeRecord(width: cropImage.width, height: cropImage.height)
     let intermediateBounds = try measureUsefulBounds(cropImage, threshold: config.whiteThreshold)
     let renderedUsefulWidthScaleRatio = Double(intermediateBounds.width) / Double(beforeBounds.width)
+    let renderedUsefulHeightScaleRatio = Double(intermediateBounds.height) / Double(beforeBounds.height)
+    let scaleFactor = config.renderScale / config.sourceBaseScale
     let expectedUsefulWidthScaleRatio = scaleFactor
     let explicitSourceRegion = target.sourceRegionAtBaseScale != nil
     let sourceLimited = !explicitSourceRegion && renderedUsefulWidthScaleRatio < expectedUsefulWidthScaleRatio * 0.75
@@ -329,11 +466,21 @@ do {
         beforeUsefulBounds: beforeBounds,
         beforeUsefulRatios: ratios(bounds: beforeBounds, in: beforeSize),
         sourceRegionAtBaseScale: cropBounds,
+        renderMode: "direct-pdf-source-region",
+        renderProbes: renderProbes,
+        skippedRenderScales: skippedRenderScales,
+        selectedRenderScale: config.renderScale,
+        maximumSuccessfulProbeScale: successfulProbeScales.max() ?? config.renderScale,
+        selectedRenderScaleReason: "Scale \(config.renderScale) was the highest successful committed crop-region render in this run; larger configured probe scales are recorded as skipped with resource evidence.",
         intermediateRenderDimensions: intermediateSize,
         intermediateUsefulBounds: intermediateBounds,
         renderedUsefulWidthScaleRatio: renderedUsefulWidthScaleRatio,
+        renderedUsefulHeightScaleRatio: renderedUsefulHeightScaleRatio,
+        glyphDetailDisposition: sourceLimited
+          ? "no-additional-source-glyph-detail-detected"
+          : "official-pdf-render-increased-useful-glyph-pixels",
         sourceQualityDisposition: target.sourceQualityDisposition ?? (sourceLimited
-          ? "source-limited-native-raster-in-official-pdf; high-scale PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
+          ? "source-limited-native-raster-in-official-pdf; maximum practical direct source-region PDF render did not add useful sign pixels, so final crop trims the official raster without browser upscaling"
           : "high-scale-source-render-expanded-useful-content"),
         finalTrimBounds: finalTrimBounds,
         outputDimensions: outputSize,
@@ -352,11 +499,14 @@ do {
     sourcePdfPath: config.sourcePdfPath,
     sourceBaseScale: config.sourceBaseScale,
     renderScale: config.renderScale,
+    probeRenderScales: configuredProbeScales,
+    skippedRenderScales: skippedRenderScales,
     quality: config.quality,
     whiteThreshold: config.whiteThreshold,
     nonWhiteRule: "alpha > 0 and any RGB channel below threshold; refined from the initial all-channel wording so saturated sign colors are not missed",
     paddingPxAtSourceBaseScale: config.paddingPxAtSourceBaseScale,
-    extractionMethod: "Source-region crops rendered from the official PDF at high scale, using useful-content bounds measured on the prior x5 page-sheet asset plus safety padding; no protected pixels are translated, redrawn, recolored, cleaned, retouched, masked, inpainted, or reconstructed.",
+    renderMode: "direct-pdf-source-region",
+    extractionMethod: "Direct source-region crops rendered from the official PDF at probed high scales, using useful-content bounds measured on the prior x5 page-sheet asset plus safety padding. The helper renders the crop-sized PDF region instead of a huge full page, records successful/skipped scales and useful-glyph scale ratios, and never translates, redraws, recolors, cleans, retouches, masks, inpaints, or reconstructs protected pixels.",
     targets: records
   )
   try writeJson(evidence, to: config.outputEvidencePath)

@@ -2516,7 +2516,16 @@
               "height": 820
             },
             "cropSha256": "404be954be9253d394c499e6bbc7992f238e9eaf5dd8077384de6d370459d85d",
-            "cleanupScope": "validation-source-only; runtime uses high-quality original source crops plus Russian DOM text outside images"
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render from the canonical GCBA PDF page 39 at the retained manual source-render scale, then crop the public-transport section reference region without resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 620,
+                "height": 820
+              },
+              "sha256": "404be954be9253d394c499e6bbc7992f238e9eaf5dd8077384de6d370459d85d"
+            }
           },
           {
             "sourcePage": 39,
@@ -2532,7 +2541,16 @@
               "height": 255
             },
             "cropSha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600",
-            "cleanupScope": "runtime original source photo comparison crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime avenue-comparison photo is byte-identical to the recorded source crop from page 39; Russian CO2 and occupancy facts are adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 510,
+                "height": 255
+              },
+              "sha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600"
+            }
           },
           {
             "sourcePage": 39,
@@ -2548,7 +2566,16 @@
               "height": 126
             },
             "cropSha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5",
-            "cleanupScope": "runtime original source yellow-box infrastructure crop; source markings remain as-is"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime yellow-box road-marking photo is byte-identical to the recorded source crop from page 39; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5"
+            }
           },
           {
             "sourcePage": 39,
@@ -2564,7 +2591,16 @@
               "height": 130
             },
             "cropSha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d",
-            "cleanupScope": "runtime original source bus-platform crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime bus-platform photo is byte-identical to the recorded source crop from page 39; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 130
+              },
+              "sha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d"
+            }
           },
           {
             "sourcePage": 40,
@@ -2580,7 +2616,16 @@
               "height": 820
             },
             "cropSha256": "c5e55f2b6eb007e5453a051d36e15b86f28bed68a66b42750802d6deb6a40696",
-            "cleanupScope": "validation-source-only; runtime uses high-quality original source crops plus Russian DOM text outside images"
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render from the canonical GCBA PDF page 40 at the retained manual source-render scale, then crop the public-transport section reference region without resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 620,
+                "height": 820
+              },
+              "sha256": "c5e55f2b6eb007e5453a051d36e15b86f28bed68a66b42750802d6deb6a40696"
+            }
           },
           {
             "sourcePage": 40,
@@ -2596,7 +2641,16 @@
               "height": 126
             },
             "cropSha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258",
-            "cleanupScope": "runtime original source exclusive-lane crop; BUS marking remains source-as-is with Russian explanation outside image"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime exclusive-lane BUS-marking photo is byte-identical to the recorded source crop from page 40; the BUS marking remains source-as-is and Russian explanation is outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258"
+            }
           },
           {
             "sourcePage": 40,
@@ -2612,7 +2666,16 @@
               "height": 126
             },
             "cropSha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85",
-            "cleanupScope": "runtime original source Metrobus crop; station sign and markings remain source-as-is with Russian explanation outside image"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime Metrobus station photo is byte-identical to the recorded source crop from page 40; station sign and street markings remain source-as-is and Russian explanation is outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85"
+            }
           },
           {
             "sourcePage": 40,
@@ -2628,7 +2691,16 @@
               "height": 100
             },
             "cropSha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1",
-            "cleanupScope": "runtime original source transport-center crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime transport-center photo is byte-identical to the recorded source crop from page 40; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 100
+              },
+              "sha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -2639,7 +2711,29 @@
             "height": 255,
             "sha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600",
             "containsText": false,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "assetCategory": "source-as-is-photo",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 510,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime avenue-comparison photo is byte-identical to the recorded source crop from page 39; Russian CO2 and occupancy facts are adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 510,
+                "height": 255
+              },
+              "sha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
@@ -2648,7 +2742,29 @@
             "height": 126,
             "sha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5",
             "containsText": false,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "assetCategory": "source-as-is-road-marking",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 245,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime yellow-box road-marking photo is byte-identical to the recorded source crop from page 39; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
@@ -2657,7 +2773,29 @@
             "height": 130,
             "sha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d",
             "containsText": false,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "assetCategory": "source-as-is-photo",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 245,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime bus-platform photo is byte-identical to the recorded source crop from page 39; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 130
+              },
+              "sha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
@@ -2671,6 +2809,28 @@
               "kind": "source-image-original-visible-text",
               "visibleSpanishScope": "source-image-only",
               "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            },
+            "assetCategory": "source-as-is-road-marking",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 245,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime exclusive-lane BUS-marking photo is byte-identical to the recorded source crop from page 40; the BUS marking remains source-as-is and Russian explanation is outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
               "russianExplanationOutsideImage": true
             }
           },
@@ -2687,6 +2847,28 @@
               "visibleSpanishScope": "source-image-only",
               "sourceAsIs": true,
               "russianExplanationOutsideImage": true
+            },
+            "assetCategory": "source-as-is-photo",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 245,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime Metrobus station photo is byte-identical to the recorded source crop from page 40; station sign and street markings remain source-as-is and Russian explanation is outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 126
+              },
+              "sha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
             }
           },
           {
@@ -2696,7 +2878,29 @@
             "height": 100,
             "sha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1",
             "containsText": false,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "assetCategory": "source-as-is-photo",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 245,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime transport-center photo is byte-identical to the recorded source crop from page 40; Russian explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 245,
+                "height": 100
+              },
+              "sha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            }
           }
         ],
         "visibleSpanishStatus": {
@@ -2746,7 +2950,10 @@
           "Yellow box, bus-platform, exclusive-lane, Metrobus, and transport-center cards use high-quality original source crops from pages 39-40.",
           "BUS road marking and Metrobus source sign/markings remain inside source-as-is images; Russian explanation is outside the images."
         ],
-        "checkerResult": "pass"
+        "checkerResult": "pass",
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded"
       }
     },
     {
@@ -2798,7 +3005,16 @@
               "height": 610
             },
             "cropSha256": "709ce4fdd80b8ef23fb3ddf8fa20907adf706457e2ee5df62e6d8817401c3ba9",
-            "cleanupScope": "validation-source-only crop proving source page 41 section coverage; runtime uses high-quality original source carpool crop and Russian DOM text outside the image"
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render from the canonical GCBA PDF page 41 at the retained manual source-render scale, then crop the shared-trip section reference region without resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 650,
+                "height": 610
+              },
+              "sha256": "709ce4fdd80b8ef23fb3ddf8fa20907adf706457e2ee5df62e6d8817401c3ba9"
+            }
           },
           {
             "sourcePage": 41,
@@ -2814,7 +3030,16 @@
               "height": 185
             },
             "cropSha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948",
-            "cleanupScope": "runtime original source carpool diagram crop; no translation, cleanup, relabeling, recoloring, simplification, or reconstruction"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime carpool diagram is byte-identical to the recorded page 41 source crop; Russian benefit explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 440,
+                "height": 185
+              },
+              "sha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948"
+            }
           },
           {
             "sourcePage": 42,
@@ -2830,7 +3055,16 @@
               "height": 850
             },
             "cropSha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725",
-            "cleanupScope": "validation-source-only crop proving source page 42 photo and embedded quote coverage; Russian quote/explanation remain outside the image"
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render from the canonical GCBA PDF page 42 at the retained manual source-render scale, then crop the shared-trip photo and quote reference region without resizing, cleanup, retouching, relabeling, translation, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 610,
+                "height": 850
+              },
+              "sha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725"
+            }
           },
           {
             "sourcePage": 42,
@@ -2846,7 +3080,16 @@
               "height": 850
             },
             "cropSha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725",
-            "cleanupScope": "runtime original source page 42 photo crop; embedded Spanish quote and shop sign remain source-as-is with Russian explanation outside the image"
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime mobility-priority photo is byte-identical to the recorded page 42 source crop; embedded Spanish quote and shop sign remain source-as-is with Russian quote/explanation outside the image.",
+              "outputDimensions": {
+                "width": 610,
+                "height": 850
+              },
+              "sha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -2857,7 +3100,35 @@
             "height": 185,
             "sha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948",
             "containsText": false,
-            "visibleSpanish": false
+            "visibleSpanish": false,
+            "assetCategory": "source-transferred-diagram",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 440,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime carpool diagram is byte-identical to the recorded page 41 source crop; Russian benefit explanation is adjacent DOM text outside the image.",
+              "outputDimensions": {
+                "width": 440,
+                "height": 185
+              },
+              "sha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948"
+            },
+            "diagramTransfer": {
+              "sourceDiagramTransfer": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/carpool-diagram-source.jpg",
+              "sourceCropSha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948",
+              "sourceCropDimensions": {
+                "width": 440,
+                "height": 185
+              },
+              "noApproximateRedraw": true,
+              "noReconstruction": true,
+              "noGenericIconReplacement": true,
+              "broadMaskPlatePatchStatus": "none"
+            }
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
@@ -2871,6 +3142,28 @@
               "kind": "source-image-original-visible-text",
               "visibleSpanishScope": "source-image-only",
               "sourceAsIs": true,
+              "russianExplanationOutsideImage": true
+            },
+            "assetCategory": "source-as-is-photo",
+            "cleanupScope": "none-source-as-is",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 610,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime mobility-priority photo is byte-identical to the recorded page 42 source crop; embedded Spanish quote and shop sign remain source-as-is with Russian quote/explanation outside the image.",
+              "outputDimensions": {
+                "width": 610,
+                "height": 850
+              },
+              "sha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725"
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
               "russianExplanationOutsideImage": true
             }
           }
@@ -2914,7 +3207,10 @@
           "The page 42 mobility-priority photo uses a high-quality original source crop with the embedded Spanish quote and shop sign left source-as-is.",
           "Russian learner quote/explanation is selectable DOM text outside the page 42 image."
         ],
-        "checkerResult": "pass"
+        "checkerResult": "pass",
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded"
       }
     },
     {

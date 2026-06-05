@@ -822,16 +822,16 @@
       "ch1-sustainable-mobility": "1b7a85e444c3dd6033da297b8118dc6c7aeca67cd9c6222b663229fb30bc3b8f",
       "ch1-pedestrian-priority": "82836bdcf64582298541043aad6f2b0393781bbbcfd64355a1764f75bee21167",
       "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14",
-      "ch1-public-transport-system": "373464b9d6026d2196fb12a836b1ec90a1c43cb0a399065c0d707f9f69cf0a5c",
-      "ch1-shared-trip": "01279a5990e2c7c31e09a4bf2cae4f15d1a701df77a4e8df541cdc8136411876"
+      "ch1-public-transport-system": "cb22c11668c8ad3862d16105e7d7f7be0c0c5d4303113b1420331859e7fad12c",
+      "ch1-shared-trip": "d8af894df5610e186654616effe3418c7afb3642d3e3739d410ef4eae8cfe4d8"
     },
     "legacyBaselineStateFingerprints": {
       "ch1-cities-for-people": "00f3aa2f0c157f1d1552677977a6c234a878e803ddf6be9b5b8ff0e324baf3bc",
       "ch1-sustainable-mobility": "503a680ccdcbf1082af2858a856ab692090c7f807549b8192c258a25ac0f0cf6",
       "ch1-pedestrian-priority": "6b9f42c7bbdfbc36f288d6f37f76de668d05d883b0338bce7d7d7ab9af1183a3",
       "ch1-bicycle": "f13938a6256811e2f659e34fcb1efb1fe8932847280fc57ee5acaed921dc7123",
-      "ch1-public-transport-system": "de79a2158b8ab6b43acb91f0b7e0d46eeacd9e07d38a46ea7ff65df28cf2021e",
-      "ch1-shared-trip": "6f6580ee40f8e143795712a86722013644cfa613534fd10f409116afad56800c"
+      "ch1-public-transport-system": "a7644701a02337b72502189d95e5720f1ed2cf2cacb3d24d33f34fc06aa78e10",
+      "ch1-shared-trip": "38054695a75b6854efe295afa506e4032c6637fab44bd5f20c4fd1a7a856a0f4"
     },
     "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints and their section module plus referenced source/runtime visual asset bytes match legacyBaselineStateFingerprints.",
     "highResolutionEvidence": {

@@ -866,3 +866,40 @@
   dirty follow-up files on
   `codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`;
   no generated build/public noise was introduced.
+
+## Validator-Blocker Fix Evidence - 2026-06-05
+
+- Implementation Agent validator-blocker slice started from assigned PR `#200`
+  worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, HEAD
+  `1a90836c382cdd77a30ae15512bc5f6e311b3a19`. Startup status preserved the
+  pre-existing dirty files `scripts/manual-visual-content-crops.swift`,
+  `spec.md`, and `plan.md`; this slice did not edit those files.
+- Reproduced blocker with `pnpm run validate:manual-guide`: source-fidelity
+  failed with
+  `ch1-public-transport-system implementationEvidence.visualEvidenceSchemaVersion must be 3 for new manual units`.
+- Inspected `scripts/manual-guide-source-fidelity.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`,
+  `src/data/manual-sections/ch1-public-transport-system.ts`,
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  and `content/validation/manual-guide-source-fidelity.evidence.json`.
+- Narrow fix: promoted `ch1-public-transport-system` implementation evidence to
+  strict visual evidence schema `3`, added strict source-region extraction
+  metadata, local asset categories, runtime no-upscale evidence, and
+  source-integrity records, then refreshed only that section's source-fidelity
+  policy fingerprints.
+- After that fix, `pnpm run validate:manual-guide` immediately reported the same
+  narrow issue for `ch1-shared-trip`. That section had unchanged legacy
+  evidence but a stale legacy state fingerprint, so this slice promoted
+  `ch1-shared-trip` to the same strict schema `3` metadata and refreshed only
+  its source-fidelity policy fingerprints.
+- Re-run `pnpm run validate:manual-guide` passed: `manual-guide-source-fidelity`
+  checked `50` sections, `0` pending sections, strict visual rule policy
+  `031-strict-source-fidelity`; `manual-guide-visual-completeness-audit.mjs`
+  completed and left no additional diff.
+- Required checks for this blocker slice passed:
+  `pnpm run validate:manual-guide`;
+  `pnpm exec tsc --noEmit`;
+  `node scripts/check-feature-memory.mjs --worktree`;
+  `git diff --check`.
