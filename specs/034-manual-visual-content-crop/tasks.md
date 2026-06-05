@@ -192,8 +192,11 @@
 
 ## Review / PR / Final Validation Prep
 
-- [ ] T077 Implementation Agent stages, commits, pushes, and opens/updates one
-  ready PR only if assigned by Orchestrator.
+- [x] T077 Implementation Agent stages, commits, pushes, and opens/updates one
+  ready PR only if assigned by Orchestrator. Status: implementation committed
+  at `a1529501649c1e79765ddedc1081fb26eea522d4`, pushed to
+  `origin/codex/034-manual-visual-content-crop`, and ready PR `#200`
+  <https://github.com/cucumberfalse/cabadrive/pull/200> opened.
 - [ ] T078 Review Agent checks source extraction quality, whole-manual
   inventory completeness, useful-content bbox evidence, protected-image
   preservation, no-upscale proof, mobile layout, feature `032` regression
@@ -357,3 +360,9 @@
   `1860` cached assets), and nested `pnpm run test:e2e` with `82` tests passed
   in `45.1s`. The build emitted the existing Vite large-chunk warning but no
   failure.
+- PR handoff evidence `2026-06-05T11:45:12Z`: staged feature-scoped files,
+  committed implementation as `a1529501649c1e79765ddedc1081fb26eea522d4`,
+  pushed branch `codex/034-manual-visual-content-crop` to origin, and opened
+  ready PR `#200` at
+  <https://github.com/cucumberfalse/cabadrive/pull/200>. This follow-up line is
+  process-memory evidence only.
