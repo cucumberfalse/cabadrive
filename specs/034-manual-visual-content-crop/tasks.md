@@ -606,6 +606,44 @@
   `Feature-memory gate passed via specs/034-manual-visual-content-crop/{spec,plan,tasks}.md`;
   `git diff --check` passed.
 
+## Sustainable Mobility Browser Smoke Expectation Micro-Slice - 2026-06-05
+
+- Implementation Agent status: ultra-narrow Orchestrator-assigned slice for
+  PR `#200` only. Scope is limited to stale e2e/browser smoke expectations for
+  the Chapter 1 sustainable mobility `50` people space-comparison visual after
+  the already accepted official Spanish source-as-is replacement.
+- Startup status before edits was clean:
+  `## codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`.
+  Assigned worktree, branch, and PR were confirmed:
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  `codex/034-manual-visual-content-crop`, PR `#200`; current saved HEAD before
+  this slice was `7c3b7f705345d2feb6c473a273a880c205d82f79`. Parallel
+  work/sibling state preservation warning was honored.
+- Updated only `tests/e2e/app.spec.ts` product test expectations: the
+  `ch1-sustainable-mobility` section now asserts the specific
+  `space-comparison-50-people-source.jpg` image has
+  `data-visible-spanish="true"`,
+  `data-source-image-exception="source-image-original-visible-text"`,
+  `data-visible-spanish-scope="source-image-only"`, and
+  `data-source-as-is="true"`; verifies the separate selectable Spanish/Russian
+  term translations for bus, walking, bicycle, and car; and reduces the
+  remaining `img[data-visible-spanish="false"]` count from `2` to `1`.
+- Updated the same stale smoke block so mobile layout checks no longer require
+  the old reconstructed `manual-space-mobile-pair` sprite icons or flag local
+  scrolling for protected source-as-is images. Vulnerability-ranking mobile
+  pair checks remain intact.
+- Verification:
+  initial focused Playwright before rebuilding `dist` failed because
+  `vite preview` served stale built assets with the old runtime metadata;
+  `pnpm run build` passed and regenerated the current preview bundle;
+  focused
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide exposes implemented Chapter 1"`
+  passed (`2` pass: chromium and mobile);
+  `pnpm run test` passed (`422` pass);
+  `pnpm run validate:manual-guide` passed;
+  `pnpm exec tsc --noEmit` passed;
+  `git diff --check` passed before this evidence entry.
+
 ## Initial Evidence Notes
 
 - Orchestrator read-only evidence: `sign-sheet-185-source-as-is.jpg` natural

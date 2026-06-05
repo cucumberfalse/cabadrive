@@ -3126,7 +3126,22 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   await expect(sustainableSection).toContainText("Такси / автомобиль");
   await expect(sustainableSection.locator('[data-block-kind="mobility-context"]')).toBeVisible();
   await expect(sustainableSection.locator('[data-block-kind="vulnerability-ranking"]')).toBeVisible();
-  await expect(sustainableSection.locator('img[data-visible-spanish="false"]')).toHaveCount(2);
+  const spaceComparisonImage = sustainableSection.locator('img[src*="space-comparison-50-people-source.jpg"]');
+  await expect(spaceComparisonImage).toBeVisible();
+  await expect(spaceComparisonImage).toHaveAttribute("data-visible-spanish", "true");
+  await expect(spaceComparisonImage).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(spaceComparisonImage).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(spaceComparisonImage).toHaveAttribute("data-source-as-is", "true");
+  const spaceTranslations = sustainableSection.locator(".manual-space-labels");
+  await expect(spaceTranslations).toContainText("En colectivo");
+  await expect(spaceTranslations).toContainText("На автобусе");
+  await expect(spaceTranslations).toContainText("A pie");
+  await expect(spaceTranslations).toContainText("Пешком");
+  await expect(spaceTranslations).toContainText("En bicicleta");
+  await expect(spaceTranslations).toContainText("На велосипеде");
+  await expect(spaceTranslations).toContainText("En auto");
+  await expect(spaceTranslations).toContainText("На автомобиле");
+  await expect(sustainableSection.locator('img[data-visible-spanish="false"]')).toHaveCount(1);
   await expect(sustainableSection).not.toContainText("Contexto");
   await expect(sustainableSection).not.toContainText("Ciudad de Buenos Aires");
   await expect(sustainableSection).not.toContainText("Prioridad peatonal");
@@ -3141,6 +3156,8 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
       problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
     }
     for (const scroller of Array.from(root.querySelectorAll(".manual-source-row-scroll"))) {
+      const sourceAsIsImage = scroller.querySelector('img[data-source-image-exception="source-image-original-visible-text"][data-source-as-is="true"]');
+      if (sourceAsIsImage) continue;
       if (scroller.scrollWidth > scroller.clientWidth + tolerance) {
         const parentBlock = scroller.closest("[data-block-id]");
         problems.push(`${parentBlock?.getAttribute("data-block-id") ?? "source row"} requires horizontal scroll`);
@@ -3173,7 +3190,6 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
     }
     if (window.matchMedia("(max-width: 760px)").matches) {
       const pairGroups = [
-        { name: "space comparison", selector: ".manual-space-mobile-pair", expected: 4 },
         { name: "vulnerability ranking", selector: ".manual-vulnerability-mobile-pair", expected: 6 }
       ];
       for (const group of pairGroups) {
