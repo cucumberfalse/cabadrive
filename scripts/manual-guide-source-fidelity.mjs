@@ -201,7 +201,12 @@ const approvedSourceAsIsMapExceptions = [
   }
 ];
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
-const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
+const highResolutionTargets = new Set([
+  "x5-zoom-source-export",
+  "source-native-equivalent-or-better",
+  "higher-resolution-direct-export",
+  "direct-pdf-region-render-scale-36-map-only-lossless-png"
+]);
 const forbiddenStrictVisualTerms = [
   "approximate-redraw",
   "redrawn-infographic",

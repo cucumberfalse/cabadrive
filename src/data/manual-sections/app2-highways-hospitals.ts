@@ -29,7 +29,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png"
     ],
     notes: [
-      "Page 150 hospital map is rendered at runtime as an unchanged source-as-is x5 crop after owner decision on 2026-06-04.",
+      "Page 150 hospital map is rendered at runtime as an unchanged source-as-is direct PDF region crop.",
       "Spanish map labels remain only inside the source image; Russian legend and full hospital-name translations are selectable DOM text below the image.",
       "Yellow H/H1/H2 hospital markers, colored regions, boundaries, roads/lines, icons, layout, and colors remain byte-identical to the source crop."
     ]
@@ -88,7 +88,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Mapa de Hospitales Generales de Agudos: Dr. I. Pirovano, A. Zubizarreta, D. Velez Sarsfield, Dr. T. Alvarez, P. Pinero, J. M. Penna, Dr. C. Argerich, J. M. Ramos Mejia, Dr. E. Tornu, Dr. C. Durand, Dr. J. A. Fernandez, B. Rivadavia, Donacion F. Santojanni, Cecilia Grierson.",
       itemsRu: [
-        "По решению владельца от 2026-06-04 карта на странице 150 показана как изображение высокого разрешения без правки подписей и маркеров.",
+        "Карта на странице 150 показана единым изображением без правки подписей и маркеров.",
         "Испанские подписи остаются только внутри самой карты; перевод, легенда и список больниц даны рядом и ниже обычным выбираемым русским текстом.",
         "Маркеры H/H1/H2, цвета районов, границы, дороги, линии, иконки и вся геометрия карты остаются такими, как на самой карте."
       ]
@@ -104,9 +104,10 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
           id: "app2-hospital-map-source-card",
           titleRu: "Карта больниц CABA",
           displayMode: "full-width",
-          maxDisplayWidthPx: 780,
+          maxDisplayWidthPx: 440,
+          minDisplayWidthPx: 440,
           sourcePage: 150,
-          sourceRegion: { x: 1332, y: 1854, width: 780, height: 335 },
+          sourceRegion: { x: 1332, y: 2050, width: 780, height: 335 },
           assetPath: `${assetRoot}/hospital-map-source-as-is.png`,
           altRu:
             "Карта общих больниц CABA с испанскими подписями и маркерами H/H1/H2.",
@@ -122,9 +123,9 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
         }
       ],
       visualNotes: [
-        "The runtime map is byte-identical to the x5 page 150 source crop, not a redraw.",
-        "Spanish map labels remain inside the source image under the owner-approved page-150 source-as-is exception.",
-        "Russian legend and full hospital names are selectable DOM text below the unchanged image."
+        "Карта показана без перевода подписей, перерисовки или ретуши.",
+        "Испанские подписи остаются внутри изображения.",
+        "Русская легенда и полный список больниц даны ниже выбираемым текстом."
       ]
     },
     {

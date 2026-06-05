@@ -2015,7 +2015,8 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(summary.correctedAppendixIvCount, 16);
   assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
   assert.equal(summary.compactSourceImageCardCount, 7);
-  assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
+  assert.deepEqual(summary.acceptableContrastExamples, ["app3-body-posture-source-card"]);
+  assert.deepEqual(summary.correctedNonAppendixSourceImageCardIds, ["app2-hospital-map-source-card"]);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 38);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
@@ -2024,7 +2025,9 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
   assert.equal(readability.officialBetterSourceAudit.status, "checked");
   assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
-  assert.equal(readability.sourceImageCardRelevanceCounts.required, 16);
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 17);
+  assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-best-official-map-only-crop-with-source-limited-label-detail"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
   assert.equal(readability.sourceImageCardDispositionTotal, 38);
   assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
@@ -2071,8 +2074,15 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
     );
   }
   assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
-  assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").disposition, "acceptable-tight-crop");
-  assert.equal(inventoryByCardId.get("app2-hospital-map-source-card").measuredUsefulRatios.areaRatio, 0.4205);
+  const hospitalMapInventory = inventoryByCardId.get("app2-hospital-map-source-card");
+  assert.equal(hospitalMapInventory.disposition, "corrected-best-official-map-only-crop");
+  assert.deepEqual(hospitalMapInventory.dimensions, { width: 440, height: 380 });
+  assert.equal(hospitalMapInventory.outputSha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(hospitalMapInventory.beforeUsefulRatios.areaRatio, 0.4205128205128205);
+  assert.ok(hospitalMapInventory.afterUsefulRatios.areaRatio > 0.71);
+  assert.equal(hospitalMapInventory.textReadability.relevance, "required");
+  assert.equal(hospitalMapInventory.textReadability.disposition, "implemented-best-official-map-only-crop-with-source-limited-label-detail");
+  assert.match(hospitalMapInventory.textReadability.sourceLimitation, /native raster/u);
   assert.equal(inventoryByCardId.get("app3-body-posture-source-card").disposition, "acceptable-tight-crop");
   assert.equal(inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio, 0.3652);
 });
@@ -2132,6 +2142,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   );
 
   assert.equal(examplesById.get("mobility-space-50-people").status, "implemented");
+  assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
   assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
   assert.equal(examplesById.get("blind-spot-visual").status, "needs-implementation");
@@ -2165,6 +2176,18 @@ test("Manual guide visual completeness audit records user examples and blocks le
       "Botón de desbloqueo:Кнопка разблокировки"
     ]
   );
+
+  const hospitalMapRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "app2-hospital-map-source-card");
+  assert.ok(hospitalMapRecord, "hospital map has a concrete evidence record");
+  assert.equal(hospitalMapRecord.status, "implemented");
+  assert.deepEqual(hospitalMapRecord.dimensions, { width: 440, height: 380 });
+  assert.equal(hospitalMapRecord.sha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(hospitalMapRecord.runtimeDisplay.maxDisplayWidthPx, 440);
+  assert.equal(hospitalMapRecord.runtimeDisplay.minDisplayWidthPx, 440);
+  assert.equal(hospitalMapRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(hospitalMapRecord.runtimeDisplay.mobileContainedScroll, true);
+  assert.match(hospitalMapRecord.extractionMethod, /map-only trim/u);
+  assert.match(hospitalMapRecord.sourceLimitation, /native raster/u);
   const equipmentRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "matafuegos-chaleco-reflectivo");
   assert.ok(equipmentRecord, "Matafuegos and Chaleco reflectivo have a concrete app1 evidence record");
   assert.equal(equipmentRecord.status, "implemented-app1-only");
@@ -2330,14 +2353,16 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   const safetyElements = sectionById("app2-safety-elements");
   const sourceCropPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
   const textCleanupMaskPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
+  const fullPanelSourcePath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-panel-source-crop.png";
   const runtimeAssetPath = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
   const oldTransferredAssetPath =
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-transferred-infographic.png";
-  const sourceCropSha256 = "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526";
+  const sourceCropSha256 = "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0";
 
   assert.equal(sha256File(sourceCropPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sha256File(sourceCropPath));
+  assert.equal(sha256File(fullPanelSourcePath), "6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454");
   assert.equal(existsSync(textCleanupMaskPath), false);
   assert.equal(existsSync(oldTransferredAssetPath), false);
   assert.equal(
@@ -2356,27 +2381,39 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.ok(
     highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) =>
       entry.sourceAssetPath === sourceCropPath &&
-      entry.cleanupScope === "source-as-is runtime hospital map; no Spanish cleanup or pixel modification" &&
+      entry.cleanupScope === "source-as-is runtime hospital map-only crop; no Spanish cleanup or pixel modification" &&
       entry.cropSha256 === sourceCropSha256 &&
       entry.sourceRegion.x === 1332 &&
-      entry.sourceRegion.y === 1854 &&
-      entry.cropDimensions.width === 780 &&
-      entry.cropDimensions.height === 335
+      entry.sourceRegion.y === 2050 &&
+      entry.sourceRegion.width === 780 &&
+      entry.sourceRegion.height === 335 &&
+      entry.cropDimensions.width === 440 &&
+      entry.cropDimensions.height === 380 &&
+      entry.extractionScaleEvidence.target === "direct-pdf-region-render-scale-36-map-only-lossless-png" &&
+      entry.extractionScaleEvidence.outputDimensions.width === 440 &&
+      entry.extractionScaleEvidence.outputDimensions.height === 380 &&
+      /map-only/.test(entry.extractionScaleEvidence.method) &&
+      /native-raster limited/.test(entry.extractionScaleEvidence.mapReadabilityDisposition)
     ),
-    "hospital map x5 source crop provenance is recorded"
+    "hospital map x36 map-only source crop provenance is recorded"
   );
 
   const asset = localAssetByPath(highwaysHospitals, runtimeAssetPath);
   assert.equal(asset.assetCategory, "source-as-is-map");
-  assert.equal(asset.assetKind, "high-resolution-original-source-hospital-map-page-150");
+  assert.equal(asset.assetKind, "best-official-original-source-hospital-map-only-page-150");
   assert.equal(asset.containsText, true);
   assert.equal(asset.visibleSpanish, true);
   assert.equal(asset.cleanupScope, "none-source-as-is");
-  assert.equal(asset.width, 780);
-  assert.equal(asset.height, 335);
+  assert.equal(asset.width, 440);
+  assert.equal(asset.height, 380);
   assert.equal(asset.sha256, sourceCropSha256);
-  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 780);
+  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 440);
+  assert.equal(asset.runtimeDisplaySize.minWidthCssPx, 440);
   assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(asset.runtimeDisplaySize.mobileContainedScroll, true);
+  assert.equal(asset.extractionScaleEvidence.target, "direct-pdf-region-render-scale-36-map-only-lossless-png");
+  assert.match(asset.extractionScaleEvidence.method, /map-only/);
+  assert.match(asset.extractionScaleEvidence.mapReadabilityDisposition, /native-raster limited/);
   assert.equal(asset.sourceIntegrity.sourceAsIs, true);
   assert.equal(asset.sourceIntegrity.sourceAssetPath, sourceCropPath);
   assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
@@ -3082,6 +3119,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "rva-source-card"
   ]);
   const expectedMinWidthByCardId = new Map([
+    ["app2-hospital-map-source-card", 440],
     ["app2-mirror-orientation-source-card", 760],
     ["app4-horizontal-page-195-source-card", 674],
     ["app4-horizontal-page-196-source-card", 704],
@@ -3159,11 +3197,11 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.match(card.assetPath, /-source-crop-as-is\.jpg$/u);
   }
 
-  assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 780);
+  assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 664);
   assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 704);
-  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, 664);
   assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, 704);
@@ -4225,7 +4263,8 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
     "source-native-equivalent-or-better",
-    "higher-resolution-direct-export"
+    "higher-resolution-direct-export",
+    "direct-pdf-region-render-scale-36-map-only-lossless-png"
   ]);
   for (const requiredCategory of [
     "source-as-is-photo",
@@ -4254,7 +4293,45 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
       assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
       sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
       ownerDecisionDate: "2026-06-04",
-      scope: "page-150-hospital-map-only"
+      scope: "page-150-hospital-map-only",
+      sourceRegion: {
+        height: 335,
+        width: 780,
+        x: 1332,
+        y: 2050
+      },
+      cropDimensions: {
+        height: 380,
+        width: 440
+      },
+      cropSha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      extractionScaleEvidence: {
+        target: "direct-pdf-region-render-scale-36-map-only-lossless-png",
+        method:
+          "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
+        outputDimensions: {
+          height: 380,
+          width: 440
+        },
+        sha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        probeEvidencePath: "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+        selectedRenderScale: 36,
+        maximumSuccessfulProbeScale: 36,
+        usefulContentRatios: {
+          before: {
+            areaRatio: 0.4205128205128205,
+            widthRatio: 0.4205128205128205,
+            heightRatio: 1
+          },
+          after: {
+            areaRatio: 0.7142763157894737,
+            widthRatio: 0.7477272727272727,
+            heightRatio: 0.9552631578947368
+          }
+        },
+        mapReadabilityDisposition:
+          "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
+      }
     }
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [

@@ -20,6 +20,12 @@ const chalecoAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg";
 const chalecoSourceAssetPath =
   "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg";
+const hospitalMapAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
+const hospitalMapSourceAssetPath =
+  "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
+const hospitalMapCropEvidencePath =
+  "content/validation/manual-guide-hospital-map-source-crop.evidence.json";
 
 const deniedCopyPatterns = [
   {
@@ -78,10 +84,13 @@ const userExampleRecords = [
   {
     id: "app2-hospital-map-source-card",
     label: "Hospital map",
-    status: "needs-implementation",
+    status: "implemented",
     sourcePages: [150],
     runtimeTargets: ["app2-hospital-map-source-card"],
-    notes: "Pending later batch: best official-original extraction and body-text-scale label readability evidence."
+    assetPath: hospitalMapAssetPath,
+    sourceAssetPath: hospitalMapSourceAssetPath,
+    notes:
+      "Implemented in the hospital-map follow-up: corrected official PDF region crop is shown source-as-is, with map internals unchanged and Russian explanation/list outside the image."
   },
   {
     id: "seatbelt-headrest-copy-problems",
@@ -419,6 +428,54 @@ function safetyEquipmentRecord() {
   };
 }
 
+function hospitalMapRecord() {
+  const dimensions = existsSync(hospitalMapAssetPath) ? readImageDimensions(hospitalMapAssetPath) : null;
+  const sourceDimensions = existsSync(hospitalMapSourceAssetPath) ? readImageDimensions(hospitalMapSourceAssetPath) : null;
+  const cropEvidence = existsSync(hospitalMapCropEvidencePath)
+    ? JSON.parse(readFileSync(hospitalMapCropEvidencePath, "utf8")).targets.find((entry) => entry.cardId === "app2-hospital-map-source-card")
+    : null;
+  return {
+    id: "app2-hospital-map-source-card",
+    status: "implemented",
+    sourcePage: 150,
+    sourceRegion: cropEvidence?.sourceRegionAtBaseScale ?? {
+      x: 1332,
+      y: 2050,
+      width: 780,
+      height: 335
+    },
+    extractionMethod:
+      "Best verified official PDF page-150 region crop rendered through scripts/manual-visual-content-crops.swift at scale 36. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected before commit; the committed runtime asset is the map-only trim that keeps the colored map and barrio labels while excluding the separate Spanish title/list panel.",
+    assetPath: hospitalMapAssetPath,
+    sourceAssetPath: hospitalMapSourceAssetPath,
+    cropEvidencePath: hospitalMapCropEvidencePath,
+    dimensions,
+    sourceDimensions,
+    sha256: existsSync(hospitalMapAssetPath) ? sha256File(hospitalMapAssetPath) : null,
+    sourceSha256: existsSync(hospitalMapSourceAssetPath) ? sha256File(hospitalMapSourceAssetPath) : null,
+    usefulContentRatios: cropEvidence
+      ? {
+          before: cropEvidence.beforeUsefulRatios,
+          after: cropEvidence.outputUsefulRatios
+        }
+      : null,
+    selectedRenderScale: cropEvidence?.selectedRenderScale ?? null,
+    maximumSuccessfulProbeScale: cropEvidence?.maximumSuccessfulProbeScale ?? null,
+    protectedImagePolicy:
+      "Spanish barrio labels, H/H1/H2 markers, colors, roads, boundaries, and geometry remain unchanged inside the protected map image; Russian legend/list text is rendered separately below.",
+    sourceLimitation:
+      "High-scale official PDF probes did not materially increase barrio-label glyph detail beyond the native raster. The runtime fix therefore uses the tightest source-faithful map-only crop, minDisplayWidthPx, and no browser upscaling.",
+    runtimeDisplay: {
+      cardId: "app2-hospital-map-source-card",
+      maxDisplayWidthPx: dimensions?.width ?? null,
+      minDisplayWidthPx: dimensions?.width ?? null,
+      noUpscale: true,
+      mobileContainedScroll: true,
+      translationDomSelector: ".manual-source-image-card + .manual-guide-section-block, .manual-source-image-term-translations"
+    }
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -428,7 +485,7 @@ const document = {
   scopeStatus: "first-controlled-batch-partial",
   userExamples: userExampleRecords,
   copyAudit,
-  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord()],
+  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord(), hospitalMapRecord()],
   remainingRequiredExamples: userExampleRecords
     .filter((entry) => !String(entry.status).startsWith("implemented"))
     .map((entry) => ({ id: entry.id, label: entry.label, status: entry.status, notes: entry.notes }))

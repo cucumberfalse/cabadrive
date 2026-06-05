@@ -1185,63 +1185,97 @@
         "blockId": "hospital-map-source-visual",
         "cardId": "app2-hospital-map-source-card",
         "displayMode": "full-width",
-        "maxDisplayWidthPx": 780,
+        "maxDisplayWidthPx": 440,
         "sourcePage": 150,
         "sourceRegion": {
-          "x": 1332,
-          "y": 1854,
+          "height": 335,
           "width": 780,
-          "height": 335
+          "x": 1332,
+          "y": 2050
         },
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "dimensions": {
-          "width": 780,
-          "height": 335
+          "height": 380,
+          "width": 440
         },
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
-        "disposition": "acceptable-tight-crop",
-        "reason": "Contrast example from feature 034 intake: useful bbox area ratio 0.4205 and no-upscale cap 780px; not blindly recropped.",
+        "disposition": "corrected-best-official-map-only-crop",
+        "reason": "User-highlighted hospital map follow-up: old asset included large blank side fields and the useful map area occupied only 42.05% of image width. The final runtime asset is a best verified official PDF x36 map-only crop; it keeps the colored map and barrio labels, excludes the separate Spanish title/list panel, and preserves all map pixels unchanged.",
         "measuredUsefulRatios": {
-          "areaRatio": 0.4205
+          "areaRatio": 0.7142763157894737,
+          "heightRatio": 0.9552631578947368,
+          "widthRatio": 0.7477272727272727
         },
         "textReadability": {
-          "relevance": "supporting",
-          "disposition": "readable-with-adjacent-dom-text",
-          "intendedReadableText": "Embedded source text is preserved as official context; learner-critical content is repeated or explained in nearby selectable Russian DOM text.",
-          "inspectedSample": "Representative source labels in maps, diagrams, document examples, or source-as-is photos.",
-          "renderedImageWidthPx": 780,
+          "relevance": "required",
+          "disposition": "implemented-best-official-map-only-crop-with-source-limited-label-detail",
+          "intendedReadableText": "Hospital map barrio labels, H/H1/H2 markers, roads/boundaries, and hospital marker placement are preserved inside the official image; Russian legend/list remains selectable DOM text below.",
+          "inspectedSample": "Barrio labels such as Palermo, Recoleta, Caballito, Flores, Barracas, and Villa Lugano.",
+          "renderedImageWidthPx": 440,
           "estimatedSmallestTextHeightPx": 10,
           "bodyTextBaselinePx": 16,
-          "comparisonToBodyText": "source-text-supporting-dom-text-carries-learning",
+          "comparisonToBodyText": "best-official-map-only-crop-at-natural-width-with-contained-mobile-scroll-source-limited",
           "viewportComparisons": [
             {
               "viewport": "desktop-natural-width",
               "renderedImageSizePx": {
-                "width": 780,
-                "height": 335
+                "height": 380,
+                "width": 440
               },
               "estimatedSmallestTextHeightPx": 10,
               "bodyTextBaselinePx": 16,
               "passesBodyTextSizeTarget": false,
-              "disposition": "readable-with-adjacent-dom-text",
-              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+              "disposition": "best-official-map-only-crop-source-limited-label-detail",
+              "evidencePath": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png"
             },
             {
               "viewport": "mobile-contained-scroll-natural-width",
               "renderedImageSizePx": {
-                "width": 780,
-                "height": 335
+                "height": 380,
+                "width": 440
               },
               "estimatedSmallestTextHeightPx": 10,
               "bodyTextBaselinePx": 16,
               "passesBodyTextSizeTarget": false,
-              "disposition": "readable-with-adjacent-dom-text",
-              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+              "disposition": "best-official-map-only-crop-source-limited-label-detail; mobile no longer shrinks below natural 440px width",
+              "evidencePath": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png"
             }
           ],
-          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
-        }
+          "extractionAttempts": [
+            {
+              "id": "direct-pdf-region-old-y-coordinate",
+              "status": "rejected",
+              "result": "Produced a mostly blank 2405x2413 crop and was not committed as final output."
+            },
+            {
+              "id": "direct-pdf-region-corrected-y-coordinate-scale-36-full-panel",
+              "status": "validation-only",
+              "result": "Rendered visible official map/title/list panel, 588x837, SHA-256 6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454; not selected for runtime because the title/list panel made the colored map less focused."
+            },
+            {
+              "id": "direct-pdf-region-corrected-y-coordinate-scale-36-map-only",
+              "status": "selected",
+              "result": "Rendered visible official map-only crop, output 440x380, SHA-256 742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0."
+            }
+          ],
+          "protectedImagePolicy": "No translation, relabeling, redraw, cleanup, mask, retouch, inpaint, recolor, or other internal map-pixel modification; Russian explanation remains outside the image.",
+          "sourceLimitation": "High-scale official PDF probes did not materially increase the barrio-label glyph detail beyond the native raster; implementation therefore uses the tight map-only crop and no-upscale/mobile-contained-scroll display rather than browser scaling or protected-pixel reconstruction.",
+          "evidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json"
+        },
+        "minDisplayWidthPx": 440,
+        "beforeUsefulRatios": {
+          "areaRatio": 0.4205128205128205,
+          "heightRatio": 1,
+          "widthRatio": 0.4205128205128205
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.7142763157894737,
+          "heightRatio": 0.9552631578947368,
+          "widthRatio": 0.7477272727272727
+        },
+        "sourceCropEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+        "outputSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0"
       },
       {
         "sectionId": "app2-safety-elements",
@@ -4811,13 +4845,14 @@
       },
       "sourceImageCardRelevanceCounts": {
         "none": 11,
-        "supporting": 11,
-        "required": 16
+        "supporting": 10,
+        "required": 17
       },
       "sourceImageCardDispositionCounts": {
         "not-intended-readable": 11,
         "readable-via-selectable-dom-overlay": 5,
-        "readable-with-adjacent-dom-text": 5,
+        "readable-with-adjacent-dom-text": 4,
+        "implemented-best-official-map-only-crop-with-source-limited-label-detail": 1,
         "source-limited-exception": 16,
         "implementation-feedback-needs-source-region-verification": 1
       },
@@ -4974,6 +5009,37 @@
         "strategy": "Evaluate splitting each source-limited Appendix IV sheet into smaller official sub-crops/cards/panels before declaring a readability exception.",
         "conclusion": "Not selected for Appendix IV because the full corrected sheets already display at natural source width on desktop and now keep that width on mobile through contained figure scrolling. Splitting the same source-limited raster would not increase embedded glyph pixels without browser upscaling or protected-pixel reconstruction; it would only remove context or create more panels.",
         "selectedMitigation": "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width."
+      },
+      "hospitalMapFollowUp": {
+        "status": "implemented-source-limited-map-only-crop",
+        "cardId": "app2-hospital-map-source-card",
+        "sourceCropEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+        "outputDimensions": {
+          "height": 380,
+          "width": 440
+        },
+        "outputSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        "selectedRenderScale": 36,
+        "maximumSuccessfulProbeScale": 36,
+        "usefulContentRatios": {
+          "before": {
+            "areaRatio": 0.4205128205128205,
+            "heightRatio": 1,
+            "widthRatio": 0.4205128205128205
+          },
+          "after": {
+            "areaRatio": 0.7142763157894737,
+            "heightRatio": 0.9552631578947368,
+            "widthRatio": 0.7477272727272727
+          }
+        },
+        "runtimeDisplay": {
+          "maxDisplayWidthPx": 440,
+          "minDisplayWidthPx": 440,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        },
+        "sourceLimitation": "Best official x36 PDF render confirms the hospital-map label glyph detail is native-raster limited; runtime uses the tight map-only crop and avoids CSS/browser upscale."
       }
     },
     "summary": {
@@ -5001,8 +5067,10 @@
       ],
       "compactSourceImageCardCount": 7,
       "acceptableContrastExamples": [
-        "app2-hospital-map-source-card",
         "app3-body-posture-source-card"
+      ],
+      "correctedNonAppendixSourceImageCardIds": [
+        "app2-hospital-map-source-card"
       ]
     }
   }

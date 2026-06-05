@@ -1,0 +1,166 @@
+{
+  "extractionMethod" : "Direct source-region crops rendered from the official PDF at probed high scales, using useful-content bounds measured on the prior x5 page-sheet asset plus safety padding. The helper renders the crop-sized PDF region instead of a huge full page, records successful/skipped scales and useful-glyph scale ratios, and never translates, redraws, recolors, cleans, retouches, masks, inpaints, or reconstructs protected pixels.",
+  "featureId" : "034-manual-visual-content-crop",
+  "nonWhiteRule" : "alpha > 0 and any RGB channel below threshold; refined from the initial all-channel wording so saturated sign colors are not missed",
+  "paddingPxAtSourceBaseScale" : 3,
+  "probeRenderScales" : [
+    12,
+    20,
+    30,
+    36
+  ],
+  "quality" : 0.95,
+  "renderMode" : "direct-pdf-source-region",
+  "renderScale" : 36,
+  "schemaVersion" : 1,
+  "skippedRenderScales" : [
+
+  ],
+  "sourceBaseScale" : 5,
+  "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "targets" : [
+    {
+      "beforeDimensions" : {
+        "height" : 335,
+        "width" : 780
+      },
+      "beforeUsefulBounds" : {
+        "height" : 335,
+        "width" : 328,
+        "x" : 251,
+        "y" : 0
+      },
+      "beforeUsefulRatios" : {
+        "areaRatio" : 0.4205128205128205,
+        "heightRatio" : 1,
+        "widthRatio" : 0.4205128205128205
+      },
+      "cardId" : "app2-hospital-map-source-card",
+      "currentAssetPath" : "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "finalTrimBounds" : {
+        "height" : 380,
+        "width" : 440,
+        "x" : 937,
+        "y" : 1705
+      },
+      "glyphDetailDisposition" : "official-pdf-render-increased-useful-glyph-pixels",
+      "intermediateRenderDimensions" : {
+        "height" : 2412,
+        "width" : 5617
+      },
+      "intermediateUsefulBounds" : {
+        "height" : 815,
+        "width" : 544,
+        "x" : 879,
+        "y" : 1597
+      },
+      "maximumSuccessfulProbeScale" : 36,
+      "outputAssetPath" : "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "outputDimensions" : {
+        "height" : 380,
+        "width" : 440
+      },
+      "outputSha256" : "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      "outputSourceAssetPath" : "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      "outputUsefulBounds" : {
+        "height" : 363,
+        "width" : 329,
+        "x" : 30,
+        "y" : 4
+      },
+      "outputUsefulRatios" : {
+        "areaRatio" : 0.7142763157894737,
+        "heightRatio" : 0.9552631578947368,
+        "widthRatio" : 0.7477272727272727
+      },
+      "renderMode" : "direct-pdf-source-region",
+      "renderProbes" : [
+        {
+          "estimatedBitmapMegabytes" : 5.7445220947265625,
+          "renderDimensions" : {
+            "height" : 804,
+            "width" : 1873
+          },
+          "renderScale" : 12,
+          "status" : "succeeded",
+          "usefulBounds" : {
+            "height" : 553,
+            "width" : 545,
+            "x" : 129,
+            "y" : 251
+          },
+          "usefulHeightScaleRatioVsBaseAsset" : 1.6507462686567165,
+          "usefulWidthScaleRatioVsBaseAsset" : 1.6615853658536586
+        },
+        {
+          "estimatedBitmapMegabytes" : 15.948486328125,
+          "renderDimensions" : {
+            "height" : 1340,
+            "width" : 3120
+          },
+          "renderScale" : 20,
+          "status" : "succeeded",
+          "usefulBounds" : {
+            "height" : 640,
+            "width" : 545,
+            "x" : 378,
+            "y" : 700
+          },
+          "usefulHeightScaleRatioVsBaseAsset" : 1.9104477611940298,
+          "usefulWidthScaleRatioVsBaseAsset" : 1.6615853658536586
+        },
+        {
+          "estimatedBitmapMegabytes" : 35.88409423828125,
+          "renderDimensions" : {
+            "height" : 2010,
+            "width" : 4680
+          },
+          "renderScale" : 30,
+          "status" : "succeeded",
+          "usefulBounds" : {
+            "height" : 682,
+            "width" : 544,
+            "x" : 691,
+            "y" : 1260
+          },
+          "usefulHeightScaleRatioVsBaseAsset" : 2.035820895522388,
+          "usefulWidthScaleRatioVsBaseAsset" : 1.6585365853658536
+        },
+        {
+          "estimatedBitmapMegabytes" : 51.68229675292969,
+          "renderDimensions" : {
+            "height" : 2412,
+            "width" : 5617
+          },
+          "renderScale" : 36,
+          "status" : "succeeded",
+          "usefulBounds" : {
+            "height" : 815,
+            "width" : 544,
+            "x" : 879,
+            "y" : 1597
+          },
+          "usefulHeightScaleRatioVsBaseAsset" : 2.4328358208955225,
+          "usefulWidthScaleRatioVsBaseAsset" : 1.6585365853658536
+        }
+      ],
+      "renderedUsefulHeightScaleRatio" : 2.4328358208955225,
+      "renderedUsefulWidthScaleRatio" : 1.6585365853658536,
+      "sectionId" : "app2-highways-hospitals",
+      "selectedRenderScale" : 36,
+      "selectedRenderScaleReason" : "Scale 36.0 was the highest successful committed crop-region render in this run; larger configured probe scales are recorded as skipped with resource evidence.",
+      "skippedRenderScales" : [
+
+      ],
+      "sourcePage" : 150,
+      "sourceQualityDisposition" : "best-official-original-direct-pdf-region-render; high-scale lossless PNG map-only crop keeps the colored hospital map and barrio labels while excluding the separate title/list panel; no map pixels are translated, redrawn, cleaned, retouched, masked, inpainted, relabeled, or otherwise modified",
+      "sourceRegionAtBaseScale" : {
+        "height" : 335,
+        "width" : 780,
+        "x" : 1332,
+        "y" : 2050
+      }
+    }
+  ],
+  "whiteThreshold" : 245
+}

@@ -10310,26 +10310,42 @@
           {
             "sourcePage": 150,
             "sourceRegion": {
-              "x": 1332,
-              "y": 1854,
+              "height": 335,
               "width": 780,
-              "height": 335
+              "x": 1332,
+              "y": 2050
             },
             "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
             "cropDimensions": {
-              "width": 780,
-              "height": 335
+              "height": 380,
+              "width": 440
             },
-            "cropSha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526",
-            "cleanupScope": "source-as-is runtime hospital map; no Spanish cleanup or pixel modification",
+            "cropSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+            "cleanupScope": "source-as-is runtime hospital map-only crop; no Spanish cleanup or pixel modification",
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Focused crop exported from the Appendix II x5 page 150 source evidence and reused byte-identically as the runtime hospital map image; crop is not resized, redrawn, cleaned, masked, inpainted, relabeled, or otherwise modified.",
+              "target": "direct-pdf-region-render-scale-36-map-only-lossless-png",
+              "method": "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
               "outputDimensions": {
-                "width": 780,
-                "height": 335
+                "height": 380,
+                "width": 440
               },
-              "sha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526"
+              "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+              "probeEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+              "selectedRenderScale": 36,
+              "maximumSuccessfulProbeScale": 36,
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.4205128205128205,
+                  "heightRatio": 1,
+                  "widthRatio": 0.4205128205128205
+                },
+                "after": {
+                  "areaRatio": 0.7142763157894737,
+                  "heightRatio": 0.9552631578947368,
+                  "widthRatio": 0.7477272727272727
+                }
+              },
+              "mapReadabilityDisposition": "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
             }
           },
           {
@@ -10368,26 +10384,44 @@
           },
           {
             "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
-            "assetKind": "high-resolution-original-source-hospital-map-page-150",
+            "assetKind": "best-official-original-source-hospital-map-only-page-150",
             "assetCategory": "source-as-is-map",
             "containsText": true,
             "visibleSpanish": true,
             "cleanupScope": "none-source-as-is",
-            "width": 780,
-            "height": 335,
-            "sha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526",
+            "width": 440,
+            "height": 380,
+            "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 780,
-              "noUpscale": true
+              "maxWidthCssPx": 440,
+              "minWidthCssPx": 440,
+              "noUpscale": true,
+              "mobileContainedScroll": true
             },
             "extractionScaleEvidence": {
-              "target": "x5-zoom-source-export",
-              "method": "Runtime PNG is byte-identical to the x5 hospital-map source crop; Russian title, legend, and hospital-name translations are adjacent/under-image DOM text, not edits inside the image.",
+              "target": "direct-pdf-region-render-scale-36-map-only-lossless-png",
+              "method": "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
               "outputDimensions": {
-                "width": 780,
-                "height": 335
+                "height": 380,
+                "width": 440
               },
-              "sha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526"
+              "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+              "probeEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+              "selectedRenderScale": 36,
+              "maximumSuccessfulProbeScale": 36,
+              "usefulContentRatios": {
+                "before": {
+                  "areaRatio": 0.4205128205128205,
+                  "heightRatio": 1,
+                  "widthRatio": 0.4205128205128205
+                },
+                "after": {
+                  "areaRatio": 0.7142763157894737,
+                  "heightRatio": 0.9552631578947368,
+                  "widthRatio": 0.7477272727272727
+                }
+              },
+              "mapReadabilityDisposition": "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
             },
             "sourceIntegrity": {
               "sourceAsIs": true,
@@ -10423,7 +10457,7 @@
         },
         "selectableTextStatus": {
           "status": "pass",
-          "evidence": "app2-highways-hospitals renders selectable Russian DOM text adjacent to and below the unchanged source-as-is hospital map; Spanish remains visible only inside the owner-approved page 150 source image exception."
+          "evidence": "app2-highways-hospitals renders selectable Russian DOM text adjacent to and below the unchanged hospital map-only image; Spanish remains visible only inside the page 150 source-image exception."
         },
         "desktopScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png",
@@ -10438,10 +10472,11 @@
           "evidence": "No raw source page route, full-page runtime raster base, remote asset, fake placeholder content, modified photo, translated sign, or translated road marking is introduced."
         },
         "visualReviewNotes": [
-          "Pages 149-151 are implemented as native Russian text for Paseo del Bajo, hospital-map owner-decision context, hospital names, and public-transport closure guidance.",
+          "Pages 149-151 are implemented as native Russian text for Paseo del Bajo, hospital map context, hospital names, and public-transport closure guidance.",
           "Paseo del Bajo runtime content remains in app2-highways-hospitals with local sourcePage 149 provenance under repository sourcePage convention.",
-          "Page 150 hospital map remains an owner-approved source-as-is visible-Spanish exception: the x5 source map is reused byte-identically at runtime, and Russian title/list translations are adjacent to or below the unchanged image as selectable DOM text.",
-          "No protected visual, source crop, source page render, photo, traffic sign, road marking, or hospital-map pixel was edited."
+          "Page 150 hospital map uses the best verified official PDF region crop from the x36 probe evidence; the first old-y direct-region attempt produced a blank crop and was rejected before commit.",
+          "The runtime hospital-map asset is a map-only crop: it keeps the colored map and barrio labels, excludes the separate Spanish title/list panel, and leaves the existing Russian legend/list as selectable DOM text below.",
+          "The official PDF map appears native-raster limited for label glyph detail, so the implementation avoids browser upscaling and keeps mobile from shrinking the map below its natural 440px width."
         ],
         "checkerResult": "pass"
       }

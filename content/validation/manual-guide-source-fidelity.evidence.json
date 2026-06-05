@@ -833,7 +833,8 @@
       "allowedTargets": [
         "x5-zoom-source-export",
         "source-native-equivalent-or-better",
-        "higher-resolution-direct-export"
+        "higher-resolution-direct-export",
+        "direct-pdf-region-render-scale-36-map-only-lossless-png"
       ],
       "requiredFields": [
         "extractionScaleEvidence.target",
@@ -873,7 +874,43 @@
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
         "ownerDecisionDate": "2026-06-04",
-        "scope": "page-150-hospital-map-only"
+        "scope": "page-150-hospital-map-only",
+        "sourceRegion": {
+          "height": 335,
+          "width": 780,
+          "x": 1332,
+          "y": 2050
+        },
+        "cropDimensions": {
+          "height": 380,
+          "width": 440
+        },
+        "cropSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        "extractionScaleEvidence": {
+          "target": "direct-pdf-region-render-scale-36-map-only-lossless-png",
+          "method": "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
+          "outputDimensions": {
+            "height": 380,
+            "width": 440
+          },
+          "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+          "probeEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+          "selectedRenderScale": 36,
+          "maximumSuccessfulProbeScale": 36,
+          "usefulContentRatios": {
+            "before": {
+              "areaRatio": 0.4205128205128205,
+              "heightRatio": 1,
+              "widthRatio": 0.4205128205128205
+            },
+            "after": {
+              "areaRatio": 0.7142763157894737,
+              "heightRatio": 0.9552631578947368,
+              "widthRatio": 0.7477272727272727
+            }
+          },
+          "mapReadabilityDisposition": "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
+        }
       }
     ],
     "documentExampleSourceAsIsCategories": [

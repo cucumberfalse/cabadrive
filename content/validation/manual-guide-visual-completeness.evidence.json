@@ -22,14 +22,16 @@
     {
       "id": "app2-hospital-map-source-card",
       "label": "Hospital map",
-      "status": "needs-implementation",
+      "status": "implemented",
       "sourcePages": [
         150
       ],
       "runtimeTargets": [
         "app2-hospital-map-source-card"
       ],
-      "notes": "Pending later batch: best official-original extraction and body-text-scale label readability evidence."
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      "notes": "Implemented in the hospital-map follow-up: corrected official PDF region crop is shown source-as-is, with map internals unchanged and Russian explanation/list outside the image."
     },
     {
       "id": "seatbelt-headrest-copy-problems",
@@ -341,6 +343,55 @@
         "visualHeightToBodyLineEstimate": "Matafuegos 330px natural crop height at 340px max display width; no browser pixel upscaling."
       },
       "remainingScopeNote": "This record covers only app1 page 120. App2/app3 safety equipment visuals remain pending for separate slices."
+    },
+    {
+      "id": "app2-hospital-map-source-card",
+      "status": "implemented",
+      "sourcePage": 150,
+      "sourceRegion": {
+        "height": 335,
+        "width": 780,
+        "x": 1332,
+        "y": 2050
+      },
+      "extractionMethod": "Best verified official PDF page-150 region crop rendered through scripts/manual-visual-content-crops.swift at scale 36. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected before commit; the committed runtime asset is the map-only trim that keeps the colored map and barrio labels while excluding the separate Spanish title/list panel.",
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      "cropEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+      "dimensions": {
+        "width": 440,
+        "height": 380
+      },
+      "sourceDimensions": {
+        "width": 440,
+        "height": 380
+      },
+      "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      "sourceSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      "usefulContentRatios": {
+        "before": {
+          "areaRatio": 0.4205128205128205,
+          "heightRatio": 1,
+          "widthRatio": 0.4205128205128205
+        },
+        "after": {
+          "areaRatio": 0.7142763157894737,
+          "heightRatio": 0.9552631578947368,
+          "widthRatio": 0.7477272727272727
+        }
+      },
+      "selectedRenderScale": 36,
+      "maximumSuccessfulProbeScale": 36,
+      "protectedImagePolicy": "Spanish barrio labels, H/H1/H2 markers, colors, roads, boundaries, and geometry remain unchanged inside the protected map image; Russian legend/list text is rendered separately below.",
+      "sourceLimitation": "High-scale official PDF probes did not materially increase barrio-label glyph detail beyond the native raster. The runtime fix therefore uses the tightest source-faithful map-only crop, minDisplayWidthPx, and no browser upscaling.",
+      "runtimeDisplay": {
+        "cardId": "app2-hospital-map-source-card",
+        "maxDisplayWidthPx": 440,
+        "minDisplayWidthPx": 440,
+        "noUpscale": true,
+        "mobileContainedScroll": true,
+        "translationDomSelector": ".manual-source-image-card + .manual-guide-section-block, .manual-source-image-term-translations"
+      }
     }
   ],
   "remainingRequiredExamples": [
@@ -349,12 +400,6 @@
       "label": "Appendix IV regulatory signs and NO AVANZAR",
       "status": "needs-implementation",
       "notes": "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
-    },
-    {
-      "id": "app2-hospital-map-source-card",
-      "label": "Hospital map",
-      "status": "needs-implementation",
-      "notes": "Pending later batch: best official-original extraction and body-text-scale label readability evidence."
     },
     {
       "id": "blind-spot-visual",

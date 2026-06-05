@@ -30,7 +30,11 @@ struct CropTarget: Codable {
   let currentAssetPath: String
   let outputAssetPath: String
   let outputSourceAssetPath: String
+  let renderScale: Double?
+  let probeRenderScales: [Double]?
+  let skippedRenderScales: [SkippedRenderScaleRecord]?
   let sourceRegionAtBaseScale: BoundsRecord?
+  let finalTrimBoundsAtRenderScale: BoundsRecord?
   let sourceQualityDisposition: String?
 }
 
@@ -329,6 +333,25 @@ func jpegData(_ image: CGImage, quality: CGFloat) throws -> Data {
   return data as Data
 }
 
+func pngData(_ image: CGImage) throws -> Data {
+  let data = NSMutableData()
+  guard let destination = CGImageDestinationCreateWithData(data, UTType.png.identifier as CFString, 1, nil) else {
+    throw NSError(domain: "cabadrive.manual.visual-crop", code: 12, userInfo: [NSLocalizedDescriptionKey: "Could not create PNG destination"])
+  }
+  CGImageDestinationAddImage(destination, image, nil)
+  guard CGImageDestinationFinalize(destination) else {
+    throw NSError(domain: "cabadrive.manual.visual-crop", code: 13, userInfo: [NSLocalizedDescriptionKey: "Could not encode PNG"])
+  }
+  return data as Data
+}
+
+func encodedImageData(_ image: CGImage, outputPath: String, quality: CGFloat) throws -> Data {
+  if outputPath.lowercased().hasSuffix(".png") {
+    return try pngData(image)
+  }
+  return try jpegData(image, quality: quality)
+}
+
 let arguments = CommandLine.arguments
 guard arguments.count == 2 else {
   usage()
@@ -342,11 +365,12 @@ do {
     exit(1)
   }
 
-  let configuredProbeScales = (config.probeRenderScales ?? [config.renderScale]).sorted()
-  let skippedRenderScales = config.skippedRenderScales ?? []
   var records: [CropEvidenceRecord] = []
 
   for target in config.targets {
+    let targetRenderScale = target.renderScale ?? config.renderScale
+    let configuredProbeScales = (target.probeRenderScales ?? config.probeRenderScales ?? [targetRenderScale]).sorted()
+    let skippedRenderScales = target.skippedRenderScales ?? config.skippedRenderScales ?? []
     guard let page = document.page(at: target.sourcePage) else {
       throw NSError(domain: "cabadrive.manual.visual-crop", code: 7, userInfo: [NSLocalizedDescriptionKey: "Could not read PDF page \(target.sourcePage)"])
     }
@@ -406,28 +430,28 @@ do {
     }
 
     let successfulProbeScales = renderProbes.filter { $0.status == "succeeded" }.map { $0.renderScale }
-    guard successfulProbeScales.contains(config.renderScale) else {
-      throw NSError(domain: "cabadrive.manual.visual-crop", code: 8, userInfo: [NSLocalizedDescriptionKey: "Configured render scale \(config.renderScale) did not succeed for page \(target.sourcePage)"])
+    guard successfulProbeScales.contains(targetRenderScale) else {
+      throw NSError(domain: "cabadrive.manual.visual-crop", code: 8, userInfo: [NSLocalizedDescriptionKey: "Configured render scale \(targetRenderScale) did not succeed for page \(target.sourcePage)"])
     }
     let cropImage = try renderPageRegion(
       page: page,
       bounds: cropBounds,
       sourceBaseScale: config.sourceBaseScale,
-      renderScale: config.renderScale
+      renderScale: targetRenderScale
     )
 
     let intermediateSize = SizeRecord(width: cropImage.width, height: cropImage.height)
     let intermediateBounds = try measureUsefulBounds(cropImage, threshold: config.whiteThreshold)
     let renderedUsefulWidthScaleRatio = Double(intermediateBounds.width) / Double(beforeBounds.width)
     let renderedUsefulHeightScaleRatio = Double(intermediateBounds.height) / Double(beforeBounds.height)
-    let scaleFactor = config.renderScale / config.sourceBaseScale
+    let scaleFactor = targetRenderScale / config.sourceBaseScale
     let expectedUsefulWidthScaleRatio = scaleFactor
     let explicitSourceRegion = target.sourceRegionAtBaseScale != nil
     let sourceLimited = !explicitSourceRegion && renderedUsefulWidthScaleRatio < expectedUsefulWidthScaleRatio * 0.75
     let outputPadding = sourceLimited
       ? config.paddingPxAtSourceBaseScale
       : Int((Double(config.paddingPxAtSourceBaseScale) * scaleFactor).rounded())
-    let finalTrimBounds = padded(
+    let finalTrimBounds = target.finalTrimBoundsAtRenderScale ?? padded(
       intermediateBounds,
       padding: outputPadding,
       imageWidth: intermediateSize.width,
@@ -443,7 +467,7 @@ do {
       throw NSError(domain: "cabadrive.manual.visual-crop", code: 9, userInfo: [NSLocalizedDescriptionKey: "Could not trim rendered crop for page \(target.sourcePage)"])
     }
 
-    let data = try jpegData(finalImage, quality: CGFloat(config.quality))
+    let data = try encodedImageData(finalImage, outputPath: target.outputAssetPath, quality: CGFloat(config.quality))
     try ensureParentDirectory(target.outputAssetPath)
     try ensureParentDirectory(target.outputSourceAssetPath)
     try data.write(to: URL(fileURLWithPath: target.outputAssetPath))
@@ -469,9 +493,9 @@ do {
         renderMode: "direct-pdf-source-region",
         renderProbes: renderProbes,
         skippedRenderScales: skippedRenderScales,
-        selectedRenderScale: config.renderScale,
-        maximumSuccessfulProbeScale: successfulProbeScales.max() ?? config.renderScale,
-        selectedRenderScaleReason: "Scale \(config.renderScale) was the highest successful committed crop-region render in this run; larger configured probe scales are recorded as skipped with resource evidence.",
+        selectedRenderScale: targetRenderScale,
+        maximumSuccessfulProbeScale: successfulProbeScales.max() ?? targetRenderScale,
+        selectedRenderScaleReason: "Scale \(targetRenderScale) was the highest successful committed crop-region render in this run; larger configured probe scales are recorded as skipped with resource evidence.",
         intermediateRenderDimensions: intermediateSize,
         intermediateUsefulBounds: intermediateBounds,
         renderedUsefulWidthScaleRatio: renderedUsefulWidthScaleRatio,
@@ -499,8 +523,8 @@ do {
     sourcePdfPath: config.sourcePdfPath,
     sourceBaseScale: config.sourceBaseScale,
     renderScale: config.renderScale,
-    probeRenderScales: configuredProbeScales,
-    skippedRenderScales: skippedRenderScales,
+    probeRenderScales: (config.probeRenderScales ?? [config.renderScale]).sorted(),
+    skippedRenderScales: config.skippedRenderScales ?? [],
     quality: config.quality,
     whiteThreshold: config.whiteThreshold,
     nonWhiteRule: "alpha > 0 and any RGB channel below threshold; refined from the initial all-channel wording so saturated sign colors are not missed",

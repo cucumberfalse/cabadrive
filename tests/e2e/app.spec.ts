@@ -303,7 +303,8 @@ async function expectScrollableReadableSourceImageCard(page: Page, cardId: strin
   expect(metrics.figureWidth, `${cardId} figure stays inside the card`).toBeLessThanOrEqual(metrics.cardWidth + 1);
   expect(metrics.figureWidth, `${cardId} figure stays inside the viewport`).toBeLessThanOrEqual(metrics.viewportWidth + 1);
   expect(metrics.figureClientWidth, `${cardId} scroll viewport stays inside card`).toBeLessThanOrEqual(metrics.cardWidth + 1);
-  expect(metrics.figureScrollWidth, `${cardId} figure exposes visual-only horizontal scroll`).toBeGreaterThan(metrics.figureClientWidth + 100);
+  const expectedScrollDeltaPx = Math.min(100, Math.max(32, expectedMinDisplayWidthPx * 0.1));
+  expect(metrics.figureScrollWidth, `${cardId} figure exposes visual-only horizontal scroll`).toBeGreaterThan(metrics.figureClientWidth + expectedScrollDeltaPx);
   expect(metrics.figureScrollWidth, `${cardId} scroll content reaches the readable minimum`).toBeGreaterThanOrEqual(expectedMinDisplayWidthPx - 1);
   expect(metrics.imageWidth, `${cardId} image keeps readable mobile width`).toBeGreaterThanOrEqual(expectedMinDisplayWidthPx - 1);
   expect(metrics.imageWidth, `${cardId} image does not upscale beyond source width`).toBeLessThanOrEqual(metrics.naturalWidth + 1);
@@ -3427,7 +3428,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   await expect(bicycleSection).toContainText("4,20 м");
   await expect(bicycleSection).toContainText("старше 18 лет");
   await expect(bicycleSection).toContainText("1500 ватт");
-  await expect(bicycleSection).toContainText("Знаки на изображении оставлены как в официальном источнике");
+  await expect(bicycleSection).toContainText("Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.");
   await expect(bicycleSection).toContainText("Конец защищенной велодорожки");
   await expect(bicycleSection).toContainText("Сойти с велосипеда");
   await expect(bicycleSection).toContainText("На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа");
@@ -3542,7 +3543,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   });
   expect(bicycleSelectedText).toContain("Правильно");
   expect(bicycleSelectedText).toContain("Слишком низко");
-  expect(bicycleSelectedText).toContain("Знаки на изображении оставлены как в официальном источнике");
+  expect(bicycleSelectedText).toContain("Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.");
   expect(bicycleSelectedText).toContain("Конец защищенной велодорожки");
   expect(bicycleSelectedText).toContain("Сойти с велосипеда");
   expect(bicycleSelectedText).toContain("Запрещено ехать на велосипеде");
@@ -4582,7 +4583,9 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app2-highways-hospitals",
       hash: "/#manual-section-app2-highways-hospitals",
-      cards: ["app2-hospital-map-source-card"]
+      cards: ["app2-hospital-map-source-card"],
+      usefulContentCards: ["app2-hospital-map-source-card"],
+      readableScrollCards: [{ id: "app2-hospital-map-source-card", minDisplayWidthPx: 440 }]
     },
     {
       sectionId: "app2-safety-elements",

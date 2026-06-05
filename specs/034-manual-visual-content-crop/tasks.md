@@ -304,13 +304,13 @@
   bodies, supplementary plates/tablets, and official sign placards exactly as
   source pixels: no translation, redraw, cleanup, mask, retouch, inpaint,
   replacement, or relabeling.
-- [ ] T105 Implementation Agent must revisit `app2-hospital-map-source-card`
+- [x] T105 Implementation Agent must revisit `app2-hospital-map-source-card`
   and extract/use the best available official original map source so all map
   labels are readable with visual font no smaller than nearby document body
   text.
-- [ ] T106 Implementation Agent must not translate, relabel, clean, redraw,
+- [x] T106 Implementation Agent must not translate, relabel, clean, redraw,
   mask, retouch, or otherwise modify anything inside the hospital map image.
-- [ ] T107 Implementation Agent must update data/evidence/tests to record
+- [x] T107 Implementation Agent must update data/evidence/tests to record
   per-sign/row/hospital-map source path, source region, extraction scale/probe
   method, output dimensions, hashes, runtime display size, no-upscale proof,
   protected-pixel classification, and translated-external-caption boundaries.
@@ -433,7 +433,7 @@
   whole sign sheets are insufficient when signs/captions remain tiny; use large
   individual signs, sign rows, or source-faithful panels where possible, and
   translate only proven external catalog captions such as `NO AVANZAR`.
-- [ ] T134 Implementation Agent must continue the hospital-map follow-up:
+- [x] T134 Implementation Agent must continue the hospital-map follow-up:
   re-extract or verify `app2-hospital-map-source-card` from the best official
   original source so labels are readable at body-text scale, without translating
   or modifying the map image.
@@ -1204,3 +1204,111 @@
   learner-facing copy/static audit coverage only and did not alter frontend
   runtime layout or image assets; earlier visual slices retain their screenshot
   evidence.
+
+## Hospital Map Follow-Up Evidence - 2026-06-05
+
+- Implementation Agent hospital-map slice started from assigned PR `#200`
+  worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`. Startup status before edits was
+  clean on assigned HEAD `3565eee00917def61e0acc9cff0bb6551a53165b`.
+  Parallel worktree/branch/PR preservation warning was honored; no sibling
+  worktrees, branches, or PRs were touched.
+- User example covered: `Hospital map` /
+  `app2-hospital-map-source-card`. Previous runtime asset
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png`
+  was `780x335`, SHA-256
+  `ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526`.
+  Useful-content bbox evidence from the old crop was `x=251`, `y=0`,
+  `width=328`, `height=335`, with area ratio `0.4205128205128205` and width
+  ratio `0.4205128205128205`.
+- Official-source extraction used
+  `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf`,
+  page `150`, through `scripts/manual-visual-content-crops.swift` and focused
+  config
+  `content/validation/manual-guide-hospital-map-source-crop.config.json`.
+  Probe scales `12`, `20`, `30`, and `36` all succeeded; selected render scale
+  was `36`, maximum successful probe scale was `36`.
+- A direct-PDF attempt using the old retained-page `y` coordinate produced a
+  mostly blank `2405x2413` crop during diagnosis. It was visually rejected
+  before commit and is not used as a runtime asset or source-integrity crop.
+  The corrected PDF-region coordinate uses `sourceRegionAtBaseScale`
+  `{ x: 1332, y: 2050, width: 780, height: 335 }`.
+- The first corrected visible official render produced a full map+title/list
+  panel `588x837`, SHA-256
+  `6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454`, saved as
+  validation-only evidence at
+  `content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-panel-source-crop.png`.
+  It was not selected for runtime because the title/list panel reduced the
+  colored map's useful runtime scale.
+- Final runtime/source-integrity asset is the source-faithful map-only crop:
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png`
+  and
+  `content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png`
+  are byte-identical `440x380` PNG files, SHA-256
+  `742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0`.
+  Final trim bounds at render scale are `{ x: 937, y: 1705, width: 440,
+  height: 380 }`.
+- Final useful-content ratios for the map-only crop are area ratio
+  `0.7142763157894737`, width ratio `0.7477272727272727`, and height ratio
+  `0.9552631578947368`. This removes the old blank side fields and keeps the
+  colored map itself as the runtime focus.
+- Source limitation recorded honestly: high-scale official PDF probes did not
+  materially increase the barrio-label glyph detail beyond the native raster.
+  The implementation therefore uses the tightest source-faithful map-only crop,
+  avoids browser/CSS upscaling, and keeps mobile from shrinking the map below
+  its natural width.
+- Runtime metadata updated in
+  `src/data/manual-sections/app2-highways-hospitals.ts`:
+  `sourceRegion: { x: 1332, y: 2050, width: 780, height: 335 }`,
+  `maxDisplayWidthPx: 440`, `minDisplayWidthPx: 440`, asset path unchanged.
+  Existing Russian legend/list remains selectable DOM text below the image.
+  Learner-facing copy avoids banned `источник` / `исходный` /
+  `фрагмент` wording.
+- Protected-image policy: Spanish barrio labels, H/H1/H2 markers, colors,
+  roads, boundaries, and geometry remain unchanged inside the protected map
+  image. No translation, relabeling, redraw, cleanup, mask, retouch, inpaint,
+  recolor, or other internal map-pixel modification was performed.
+- Registry/evidence/tests updated:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  `content/validation/manual-guide-source-fidelity.evidence.json`,
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `content/validation/manual-guide-visual-completeness.evidence.json`,
+  `scripts/manual-guide-source-fidelity.mjs`,
+  `scripts/manual-guide-visual-completeness-audit.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`, and
+  `tests/e2e/app.spec.ts`. Visual completeness now marks
+  `app2-hospital-map-source-card` as `implemented`, not
+  `needs-implementation`. The stale e2e expectation for bicycle source-wording
+  cleanup was changed from the removed provenance phrase to
+  `Официальная таблица знаков оставлена без изменений; пояснение ниже не
+  является частью изображения.`
+- Verification completed so far for this slice:
+  `node scripts/manual-guide-visual-completeness-audit.mjs` passed and rewrote
+  visual-completeness evidence; `node --test
+  tests/content-manual-guide-chapters.test.mjs` passed with `97` tests, `97`
+  pass, `0` fail, duration `12701.4785ms`; `pnpm run validate:manual-guide`
+  passed; `pnpm run validate:content` passed; `pnpm exec tsc --noEmit` passed;
+  `node scripts/check-feature-memory.mjs --worktree` passed after this feature
+  memory section was added; `git diff --check` passed; `pnpm run build` passed
+  and generated the service worker with `1863` cached assets.
+- Playwright/e2e verification for this slice:
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width
+  source image cards stay readable and avoid upscaling" --project=chromium`
+  passed (`1` test, `1` pass), covering desktop/mobile viewport loops and
+  screenshot capture for `app2-highways-hospitals` within the focused
+  source-card scenario. `pnpm exec playwright test tests/e2e/app.spec.ts -g
+  "Manual guide exposes implemented Chapter 1" --project=chromium` passed (`1`
+  test, `1` pass), covering the stale bicycle source-wording expectation.
+  Broader e2e ran as `pnpm exec playwright test tests/e2e/app.spec.ts
+  --project=chromium` (`41` passed, `34.3s`) and `pnpm exec playwright test
+  tests/e2e/app.spec.ts --project=mobile` (`41` passed, `44.3s`). Full
+  `pnpm run test:e2e` was not run as the wrapper because it would repeat the
+  already-passed build plus both Playwright projects; the equivalent build and
+  both configured projects were run directly.
+- Screenshot evidence from the focused/full source-card e2e is under
+  `test-results/app-Manual-guide-full-widt-84d9e-eadable-and-avoid-upscaling-chromium/`
+  and the corresponding mobile project output. The hospital-map runtime card
+  renders the `440x380` map-only asset at no more than natural width, with
+  `minDisplayWidthPx: 440` enabling contained visual-only horizontal scrolling
+  on narrow screens and no document-level horizontal overflow.

@@ -1,0 +1,38 @@
+{
+  "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "sourceBaseScale": 5,
+  "renderScale": 36,
+  "probeRenderScales": [
+    12,
+    20,
+    30,
+    36
+  ],
+  "quality": 0.95,
+  "whiteThreshold": 245,
+  "paddingPxAtSourceBaseScale": 3,
+  "outputEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+  "targets": [
+    {
+      "sectionId": "app2-highways-hospitals",
+      "cardId": "app2-hospital-map-source-card",
+      "sourcePage": 150,
+      "currentAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "outputSourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
+      "sourceRegionAtBaseScale": {
+        "x": 1332,
+        "y": 2050,
+        "width": 780,
+        "height": 335
+      },
+      "finalTrimBoundsAtRenderScale": {
+        "x": 937,
+        "y": 1705,
+        "width": 440,
+        "height": 380
+      },
+      "sourceQualityDisposition": "best-official-original-direct-pdf-region-render; high-scale lossless PNG map-only crop keeps the colored hospital map and barrio labels while excluding the separate title/list panel; no map pixels are translated, redrawn, cleaned, retouched, masked, inpainted, relabeled, or otherwise modified"
+    }
+  ]
+}
