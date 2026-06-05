@@ -120,8 +120,7 @@
 
 ### Known Issues
 
-- None known at Architect handoff.
-- None known after implementation and verification.
+- No known issues.
 
 ### Implementation Agent Feedback
 
@@ -150,24 +149,25 @@
 - Branch: `codex/032-remove-guide-ready-labels`
 - Purpose: remove learner-visible `готово` labels from `Руководство` manual navigation while preserving route/deep-link behavior, active state, pending labels, and status/source diagnostics.
 - Base SHA: `51e42f657d867fb802bbe3a68591b6008b45a60f`
-- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
-- Current PR head at Architect evidence disposition: `a777cfb3752105188f6f690870b17d3875926ec2`
-- Status at Architect validation: open, ready for review/merge coordination, mergeable, not draft.
+- Prior validated product/content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Historical Architect evidence-disposition head: `a777cfb3752105188f6f690870b17d3875926ec2`
+- Process-memory correction assignment observed PR head before this fix commit: `bdec6d223c4aeb3b61109d5e9fe12d85464ba0b8`
+- Status at historical Architect validation: open, ready for review/merge coordination, mergeable, not draft.
 - Included in final validation: yes; this is the only PR slice in the work cycle.
 
 ## Final Validation Evidence
 
-- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Historical effective content head before process-memory correction: `b671cae9699c0bacfd2cd0961e630e663de20252`
 - Architect return count: 0
 - Analyst return count known to Architect before final Analyst validation: 0 from `feature-request.md`.
 - Limit escalation: none.
 - Implementation Agent feedback: none; no Architect disposition required.
 - Known issues: none.
-- Current-PR-head guard disposition: PR head `a777cfb3752105188f6f690870b17d3875926ec2` is later than effective content head `b671cae9699c0bacfd2cd0961e630e663de20252`; the diff from `b671cae9699c0bacfd2cd0961e630e663de20252` to `a777cfb3752105188f6f690870b17d3875926ec2` is limited to Analyst/Architect role-owned process memory (`specs/032-remove-guide-ready-labels/feature-request.md` and `specs/032-remove-guide-ready-labels/tasks.md`) and is final-validation evidence only, with no product code, tests, runtime content, source archive, validator, backend, PDF, service-worker, or durable project-doc changes.
-- Finalization guard requirement: Orchestrator must run a fresh read-only current-PR-head guard immediately before finalization/merge; any later commit after this note must be checked from live PR/local state instead of relying on this static evidence line.
-- Check re-verification note: required check re-verification on the post-evidence PR head remains an Orchestrator merge-readiness gate after this Architect evidence note; this note does not claim checks are green on any later head.
-- Required checks from `.unicorn-hub/config.json`: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`; read-only PR inspection showed all five completed with `SUCCESS` on `b671cae9699c0bacfd2cd0961e630e663de20252`.
-- PR state evidence: read-only `gh pr view 196` showed PR #196 open, not draft, mergeable, base `main` at `51e42f657d867fb802bbe3a68591b6008b45a60f`, and head `b671cae9699c0bacfd2cd0961e630e663de20252`.
+- Historical current-head guard disposition: at the prior evidence-disposition point, PR head `a777cfb3752105188f6f690870b17d3875926ec2` was later than validated product/content head `b671cae9699c0bacfd2cd0961e630e663de20252`; that historical note is superseded by this process-memory correction and is not a live finalization guard for the current PR head.
+- Finalization guard requirement: after this process-memory correction is committed and becomes the new effective content head, Orchestrator must rerun final Architect validation, then final Analyst validation, then run a fresh read-only current-PR-head guard immediately before finalization/merge; any later commit after the rerun must be checked from live PR/local state instead of relying on historical static evidence.
+- Check re-verification note: required check re-verification on the future rerun/current PR head remains an Orchestrator merge-readiness gate after this process-memory correction; this note does not claim checks are green on `bdec6d223c4aeb3b61109d5e9fe12d85464ba0b8` or on any later head.
+- Historical required-check evidence: read-only PR inspection during the prior final-validation pass showed `.unicorn-hub/config.json` required checks `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan` completed with `SUCCESS` on `b671cae9699c0bacfd2cd0961e630e663de20252`; this is preserved as historical verification evidence, not current merge-readiness evidence.
+- Historical PR state evidence: read-only `gh pr view 196` during the prior final-validation pass showed PR #196 open, not draft, mergeable, base `main` at `51e42f657d867fb802bbe3a68591b6008b45a60f`, and head `b671cae9699c0bacfd2cd0961e630e663de20252`; this is preserved as historical evidence only.
 - Local diff evidence: the cycle diff changes only `src/App.tsx`, `tests/content-manual-guide-chapters.test.mjs`, `tests/e2e/app.spec.ts`, and feature memory under `specs/032-remove-guide-ready-labels/`.
 - Product scope evidence: `src/App.tsx` now renders implemented manual section buttons with the section title as the accessible name and renders `ожидает PR` only for unavailable sections; `data-status`, route hash, source page, source-region metadata, and visual-evidence attributes remain.
 - Test evidence: static tests reject the old implemented `готово` render path, e2e coverage asserts no visible/accessibility-exposed `готово`, includes Appendix III cargo rows, and verifies Appendix III deep links, active state, and content rendering.
@@ -180,10 +180,20 @@
 
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-06-05T00:24:56-03:00
-- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Historical effective content head before process-memory correction: `b671cae9699c0bacfd2cd0961e630e663de20252`
 - Architect validated effective content head: b671cae9699c0bacfd2cd0961e630e663de20252
 - Architect return count: 0
-- Architect validation basis: single cycle PR #196 at head `b671cae9699c0bacfd2cd0961e630e663de20252`; complete feature memory; implementation diff; recorded verification evidence; Review Agent no-blocking review; read-only PR/check inspection; and current local clean status before final-validation evidence editing.
+- Architect validation evidence: this 2026-06-05T00:24:56-03:00 validation pass is historical and superseded for finalization by the follow-up process-memory correction assignment at observed PR head `bdec6d223c4aeb3b61109d5e9fe12d85464ba0b8`; Orchestrator must rerun final Architect validation and then final Analyst validation after the process-memory correction commit creates the new effective content head.
+- Architect validation basis: single cycle PR #196 at prior head `b671cae9699c0bacfd2cd0961e630e663de20252`; complete feature memory; implementation diff; recorded verification evidence; Review Agent no-blocking review; read-only PR/check inspection; and current local clean status before final-validation evidence editing.
 - Architect customer-intent conclusion: passed. The implementation removes the visible and accessibility-exposed `готово` labels from the `Руководство` navigation, including the Appendix III cargo rows shown in the screenshot, while preserving navigation, active state, route/deep-link behavior, pending affordance, diagnostic status data, and unrelated source/status labels.
 - Architect task/disposition conclusion: all Architect-assigned implementation, verification, documentation, review, acceptance, and process-memory tasks are complete; Implementation Agent feedback is none, known issues are none, and no Architect disposition remains open.
 - Architect gaps: none.
+
+## Process-Memory Correction Before Final Validation Rerun
+
+- Correction reason: finalize gate dry-run after the prior validation found stale current-head guard evidence and parser-unsafe known-issue wording, and local post-effective diff validation showed the current post-effective diff was not append-only evidence because earlier validation notes replaced placeholder/checklist lines.
+- Correction scope: this follow-up edits only Architect-owned `specs/032-remove-guide-ready-labels/tasks.md`; it does not change product code, tests, source content, runtime files, `feature-request.md`, `spec.md`, or `plan.md`.
+- Prior validated product/content head: `b671cae9699c0bacfd2cd0961e630e663de20252`.
+- Observed PR head before this correction commit: `bdec6d223c4aeb3b61109d5e9fe12d85464ba0b8`.
+- Expected next step: once this correction is committed, that commit must become the new effective content head for finalization purposes; Orchestrator must rerun final Architect validation and then final Analyst validation against that new SHA.
+- Parser-safety disposition: the `Known Issues` section now records `No known issues.`, historical current-head evidence is marked as superseded and non-live, Implementation Agent feedback remains `None.`, and no new parser-facing `Effective content head:` line is added because the next effective content head is not known until after commit.
