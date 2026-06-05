@@ -101,6 +101,17 @@ test("isAcceptableCodexSummaryComment accepts head SHA marker from trusted login
   assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
 });
 
+test("isAcceptableCodexSummaryComment accepts current short head marker from trusted login", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
+  const comment = {
+    body: "Codex Review: did not find any major issues in head 83A6736A01.",
+    user: { login: "chatgpt-codex-connector[bot]" },
+    created_at: "2026-05-08T15:24:18Z"
+  };
+
+  assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
+});
+
 test("isAcceptableCodexSummaryComment accepts botless Codex connector login", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const comment = {
@@ -112,7 +123,7 @@ test("isAcceptableCodexSummaryComment accepts botless Codex connector login", ()
   assert.equal(isAcceptableCodexSummaryComment(comment, headSha), true);
 });
 
-test("isAcceptableCodexSummaryComment rejects stale and unknown-login evidence", () => {
+test("isAcceptableCodexSummaryComment rejects stale SHA marker before timestamp fallback", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const previousSha = "9df31d213419b107ca49797c0357ce8151c8effe";
   const staleComment = {
@@ -120,6 +131,15 @@ test("isAcceptableCodexSummaryComment rejects stale and unknown-login evidence",
     user: { login: "chatgpt-codex-connector" },
     created_at: "2026-05-08T15:24:18Z"
   };
+
+  assert.equal(
+    isAcceptableCodexSummaryComment(staleComment, headSha, "2026-05-08T15:20:00Z"),
+    false
+  );
+});
+
+test("isAcceptableCodexSummaryComment rejects unknown-login evidence", () => {
+  const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const unknownComment = {
     body: `Codex Review: did not find any major issues in head (${headSha}).`,
     user: { login: "repo-owner" },
@@ -127,12 +147,11 @@ test("isAcceptableCodexSummaryComment rejects stale and unknown-login evidence",
     created_at: "2026-05-08T15:24:18Z"
   };
 
-  assert.equal(isAcceptableCodexSummaryComment(staleComment, headSha), false);
   assert.equal(isTrustedAssociation(unknownComment.author_association), true);
   assert.equal(isAcceptableCodexSummaryComment(unknownComment, headSha), false);
 });
 
-test("isAcceptableCodexSummaryComment accepts fresh summary by timestamp fallback", () => {
+test("isAcceptableCodexSummaryComment accepts fresh no-SHA summary by timestamp fallback", () => {
   const headSha = "83a6736a01246465a46c900ee21926cf594c1825";
   const comment = {
     body: "Codex Review: did not find any major issues in current head.",

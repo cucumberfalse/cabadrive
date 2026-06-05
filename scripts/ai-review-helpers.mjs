@@ -36,6 +36,11 @@ export function isTrustedReviewLogin(login, agent, config = {}) {
   return trustedReviewLoginsForAgent(agent, config).has(normalizeLogin(login));
 }
 
+function extractShaLikeMarkers(body) {
+  return [...String(body || "").matchAll(/(?:^|[^A-Fa-f0-9])([A-Fa-f0-9]{7,40})(?![A-Fa-f0-9])/g)]
+    .map((match) => match[1].toLowerCase());
+}
+
 export function containsBlockingSeverity(body, agent) {
   const text = String(body || "");
   if (agent === "codex") {
@@ -59,8 +64,13 @@ export function isAcceptableCodexSummaryComment(comment, headSha, headCommittedA
   if (!/^Codex Review:/i.test(body)) return false;
   if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(body)) return false;
 
-  const shortSha = String(headSha || "").slice(0, 10);
-  if (shortSha && (body.includes(headSha) || body.includes(shortSha))) return true;
+  const fullSha = String(headSha || "").toLowerCase();
+  const shortSha = fullSha.slice(0, 10);
+  const acceptedMarkers = new Set([fullSha, shortSha].filter(Boolean));
+  const markers = extractShaLikeMarkers(body);
+  if (markers.length > 0) {
+    return markers.every((marker) => acceptedMarkers.has(marker));
+  }
 
   const committedAt = Date.parse(headCommittedAt || "");
   const createdAt = Date.parse(comment?.created_at || "");

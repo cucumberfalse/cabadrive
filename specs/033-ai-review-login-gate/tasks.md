@@ -52,6 +52,15 @@
 - [ ] T039 If any commit lands after final Architect or Analyst validation, record `Effective content head: <40-hex-sha>`, `Architect validated effective content head: <40-hex-sha>`, and `Analyst validated effective content head: <40-hex-sha>` for the same SHA, then confirm whether the later commit is final-validation evidence-only or makes prior validation stale.
 - [ ] T040 Confirm merge-readiness gates remain satisfied after final validation on the current PR head: required checks, blocking review status, conflicts, acceptance evidence, process memory, feedback disposition, current-PR-head read-only guard, final guards, cleanup evidence/refusal when relevant, branch-protection readiness, and absence of exceptional human blockers.
 
+## Review Finding Follow-Up
+
+- [x] T041 Architect disposition for Review Agent P2 finding `discussion_r3360346983`: accepted as same-cycle required follow-up for PR `#199` because an explicit old SHA in a trusted Codex summary can currently fall through to timestamp freshness when `headCommittedAt` is supplied.
+- [x] T042 Update `scripts/ai-review-helpers.mjs` so `isAcceptableCodexSummaryComment` rejects a summary body containing any 7-40 hex SHA-like marker that does not match the current full head SHA or accepted current short head before applying timestamp fallback. Evidence: `extractShaLikeMarkers` now scans summary bodies and `isAcceptableCodexSummaryComment` returns false for any marker outside the accepted current full SHA or 10-character current short head set before timestamp fallback.
+- [x] T043 Preserve timestamp fallback for otherwise acceptable trusted Codex summaries that contain no SHA-like marker. Evidence: no-SHA comments still reach the existing `created_at >= headCommittedAt` fallback after trusted login and `Codex Review:` summary checks.
+- [x] T044 Add focused helper tests for old-SHA summary rejection with `headCommittedAt` supplied and a fresh comment timestamp, current-SHA summary acceptance, unknown-login summary rejection, and fresh no-SHA summary acceptance by timestamp fallback. Evidence: helper tests now include current full-head acceptance, current short-head acceptance, stale SHA marker rejection before timestamp fallback, unknown-login rejection, and no-SHA timestamp fallback acceptance.
+- [x] T045 Run `node --test tests/ai-review-helpers.test.mjs`, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and `pnpm run preflight` when feasible after the follow-up implementation. Record evidence in this process memory. Evidence: focused helper tests, workflow guard tests, full preflight, post-process-memory feature-memory gate, and `git diff --check` all passed.
+- [ ] T046 Update process memory after implementation with the follow-up head SHA, verification evidence, changed-file scope, and any Implementation Agent feedback for Architect disposition. Pending final commit/head evidence.
+
 ## Process Memory
 
 ### Dead Ends
@@ -73,6 +82,8 @@
 - PR `#198` remains dependent on this fix landing on default before its AI Review check can be rerun or observed successfully with current default-branch gate logic.
 - If PR `#198` receives a new behaviorally meaningful commit, its existing Codex review evidence for `9df31d213419b107ca49797c0357ce8151c8effe` must remain stale and a fresh current-head review is required.
 - During implementation, local `origin/main` advanced from the assigned verified base `51e42f657d867fb802bbe3a68591b6008b45a60f` to `bcee0fbffc8878bfbaf0876352b32636b8a40790` (`Add structured manual glossary translations (#197)`). Read-only diff inspection showed no overlap with `scripts/ai-review-helpers.mjs`, `tests/ai-review-helpers.test.mjs`, or `specs/033-ai-review-login-gate/`. No merge or rebase was performed by Implementation Agent.
+- Review Agent found a stale-summary gap at PR `#199` head `4a6a0c09a6a9eebc7ca3ce40340253e78591dc88`: an explicit old SHA in a trusted Codex summary can still pass by timestamp freshness when `headCommittedAt` is supplied. This is accepted same-cycle work and blocks final validation until fixed and verified.
+- Implementation Agent follow-up fixed Review Agent P2 `discussion_r3360346983` by rejecting mismatched 7-40 hex SHA-like summary markers before timestamp fallback while preserving no-SHA timestamp fallback for trusted Codex summaries.
 
 ### Verification Evidence
 
@@ -92,6 +103,12 @@
 - Read-only post-preflight status: `git status --short --branch` showed branch `codex/033-ai-review-login-gate...origin/main [behind 1]`, modified `scripts/ai-review-helpers.mjs`, modified `tests/ai-review-helpers.test.mjs`, and untracked `specs/033-ai-review-login-gate/`; untracked generated/dependency directories were ignored by repository rules.
 - Read-only overlap inspection for advanced `origin/main`: `git diff HEAD..origin/main -- scripts/ai-review-helpers.mjs tests/ai-review-helpers.test.mjs specs/033-ai-review-login-gate` produced no diff.
 - Final post-process-memory verification: `node scripts/check-feature-memory.mjs --worktree` passed and `git diff --check` passed after verification evidence updates.
+- Follow-up helper verification at `2026-06-05T04:31:24Z`: `node --test tests/ai-review-helpers.test.mjs` passed with 18 tests, 18 pass.
+- Follow-up workflow guard verification at `2026-06-05T04:31:24Z`: `node --test tests/ai-review-workflow.test.mjs` passed with 3 tests, 3 pass.
+- Follow-up whitespace verification before process-memory update: `git diff --check` passed.
+- Follow-up full preflight: `pnpm run preflight` passed. Evidence included feature-memory gate pass, repository baseline pass, content validation pass, `node --test tests/*.test.mjs` with 410 tests passed, production build/service-worker generation passed with existing large-chunk warnings, and Playwright e2e with 78 tests passed.
+- Follow-up changed-file scope before final staging: code/test changes are limited to `scripts/ai-review-helpers.mjs` and `tests/ai-review-helpers.test.mjs`; process-memory changes are limited to `specs/033-ai-review-login-gate/tasks.md` plus pre-existing Architect dirty files in `specs/033-ai-review-login-gate/spec.md` and `specs/033-ai-review-login-gate/plan.md`.
+- Follow-up post-process-memory verification at `2026-06-05T04:32:53Z`: `node scripts/check-feature-memory.mjs --worktree` passed and `git diff --check` passed.
 
 ### Cycle PR Set
 
@@ -123,4 +140,4 @@
 
 ## Architect Dispositions
 
-- None.
+- Review Agent P2 `discussion_r3360346983`, stale summary evidence can still pass via timestamp fallback: accepted as same-cycle required follow-up. Required fix: `isAcceptableCodexSummaryComment` must reject any summary body containing a 7-40 hex SHA-like marker that does not match the current head full SHA or accepted current short head before timestamp fallback; timestamp fallback remains available only for trusted, no-SHA Codex summaries. Required tests: old-SHA with `headCommittedAt` rejected despite fresh timestamp, current-SHA accepted, unknown login still rejected, and fresh no-SHA summary still accepted by timestamp fallback. Implementation Agent follow-up is required.
