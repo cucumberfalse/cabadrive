@@ -65,11 +65,9 @@ export function isAcceptableCodexSummaryComment(comment, headSha, headCommittedA
   if (!/did(?:\s+not|\s*n['’]?t)\s+find\s+any\s+major\s+issues/i.test(body)) return false;
 
   const fullSha = String(headSha || "").toLowerCase();
-  const shortSha = fullSha.slice(0, 10);
-  const acceptedMarkers = new Set([fullSha, shortSha].filter(Boolean));
   const markers = extractShaLikeMarkers(body);
   if (markers.length > 0) {
-    return markers.every((marker) => acceptedMarkers.has(marker));
+    return markers.every((marker) => fullSha.startsWith(marker));
   }
 
   const committedAt = Date.parse(headCommittedAt || "");
