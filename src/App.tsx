@@ -2748,7 +2748,7 @@ function IntroductionSectionsView({
   function renderManualSectionButton(section: ManualGuideSectionEntry) {
     const isAvailable = manualGuideSectionIsAvailable(section);
     const isActiveSection = selectedManualSection?.id === section.id;
-    const sectionStatusLabel = isAvailable ? "готово" : "ожидает PR";
+    const pendingSectionStatusLabel = "ожидает PR";
     const sourcePagesLabel = section.sourcePageRange.start === section.sourcePageRange.end
       ? String(section.sourcePageRange.start)
       : `${section.sourcePageRange.start}-${section.sourcePageRange.end}`;
@@ -2760,7 +2760,7 @@ function IntroductionSectionsView({
         disabled={!isAvailable}
         aria-disabled={!isAvailable}
         aria-current={isActiveSection ? "page" : undefined}
-        aria-label={`${section.labelRu}: ${sectionStatusLabel}`}
+        aria-label={isAvailable ? section.labelRu : `${section.labelRu}: ${pendingSectionStatusLabel}`}
         onClick={() => isAvailable && onSelectManualSection(section)}
         data-testid={`manual-guide-pending-section-${section.id}`}
         data-manual-section-id={section.id}
@@ -2773,7 +2773,7 @@ function IntroductionSectionsView({
         data-status={section.status}
       >
         <span>{section.labelRu}</span>
-        <small>{sectionStatusLabel}</small>
+        {!isAvailable && <small>{pendingSectionStatusLabel}</small>}
       </button>
     );
   }

@@ -2621,7 +2621,7 @@ test("Introduction index routes open as separate native Russian document pages",
   }
 });
 
-test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chapter 4 section pages", async ({ page }, testInfo) => {
+test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 4, Chapter 5, and Appendix III section pages", async ({ page }, testInfo) => {
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");
@@ -2636,6 +2636,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   const chapter3 = nav.locator('[data-guide-entry-id="chapter-3-driving-rules"]');
   const chapter4 = nav.locator('[data-guide-entry-id="chapter-4-natural-capacity"]');
   const chapter5 = nav.locator('[data-guide-entry-id="chapter-5-driving-behavior"]');
+  const appendix3 = nav.locator('[data-guide-entry-id="appendix-3-cargo"]');
   if (!(await chapter1.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter1.locator("summary").click();
   }
@@ -2651,22 +2652,29 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   if (!(await chapter5.evaluate((element) => (element as HTMLDetailsElement).open))) {
     await chapter5.locator("summary").click();
   }
+  if (!(await appendix3.evaluate((element) => (element as HTMLDetailsElement).open))) {
+    await appendix3.locator("summary").click();
+  }
 
   await expect(chapter1.getByText("Глава 1. К устойчивой мобильности")).toBeVisible();
   await expect(chapter2.getByText("Глава 2. Вождение - ответственное действие")).toBeVisible();
   await expect(chapter3.getByText("Глава 3. Основные нормы вождения")).toBeVisible();
   await expect(chapter4.getByText("Глава 4. Естественная способность")).toBeVisible();
   await expect(chapter5.getByText("Глава 5. Поведение за рулем")).toBeVisible();
+  await expect(appendix3.getByText("Приложение III. Перевозка грузов и товаров")).toBeVisible();
   await expect(chapter1).toHaveAttribute("data-status", "active");
   await expect(chapter2).toHaveAttribute("data-status", "active");
   await expect(chapter3).toHaveAttribute("data-status", "active");
   await expect(chapter4).toHaveAttribute("data-status", "active");
   await expect(chapter5).toHaveAttribute("data-status", "active");
+  await expect(appendix3).toHaveAttribute("data-status", "active");
   await expect(chapter1.locator("summary small")).toHaveCount(0);
   await expect(chapter2.locator("summary small")).toHaveCount(0);
   await expect(chapter3.locator("summary small")).toHaveCount(0);
   await expect(chapter4.locator("summary small")).toHaveCount(0);
   await expect(chapter5.locator("summary small")).toHaveCount(0);
+  await expect(appendix3.locator("summary small")).toHaveCount(0);
+  await expect(nav).not.toContainText("готово");
   await expect(chapter1.getByText("Пешеходный приоритет")).toBeVisible();
   await expect(chapter1.getByText("Велосипед")).toBeVisible();
   await expect(chapter2.getByText("Обязательные документы")).toBeVisible();
@@ -2682,6 +2690,12 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(chapter5.getByText("К равноправному обществу")).toBeVisible();
   await expect(chapter5.getByText("Профилактика и помощь в ситуациях гендерного насилия")).toBeVisible();
   await expect(chapter5.getByText("Предупредительное и эффективное вождение")).toBeVisible();
+  await expect(appendix3.getByText("Профиль перевозчика грузов")).toBeVisible();
+  await expect(appendix3.getByText("Социальная ответственность")).toBeVisible();
+  await expect(appendix3.getByText("Факторы, участвующие в вождении")).toBeVisible();
+  await expect(appendix3.getByText("Безопасное вождение")).toBeVisible();
+  await expect(appendix3.getByText("Элементы безопасности")).toBeVisible();
+  await expect(appendix3.getByText("Автомагистрали")).toBeVisible();
 
   const cities = reader.getByTestId("manual-guide-pending-section-ch1-cities-for-people");
   const sustainable = reader.getByTestId("manual-guide-pending-section-ch1-sustainable-mobility");
@@ -2710,9 +2724,21 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   const equalSociety = reader.getByTestId("manual-guide-pending-section-ch5-equal-society");
   const genderViolencePrevention = reader.getByTestId("manual-guide-pending-section-ch5-gender-violence-prevention");
   const anticipatoryEfficientDriving = reader.getByTestId("manual-guide-pending-section-ch5-anticipatory-efficient-driving");
+  const app3CargoDriverProfile = reader.getByTestId("manual-guide-pending-section-app3-cargo-driver-profile");
+  const app3SocialResponsibility = reader.getByTestId("manual-guide-pending-section-app3-social-responsibility");
+  const app3DrivingFactors = reader.getByTestId("manual-guide-pending-section-app3-driving-factors");
+  const app3SafeDriving = reader.getByTestId("manual-guide-pending-section-app3-safe-driving");
+  const app3SafetyElements = reader.getByTestId("manual-guide-pending-section-app3-safety-elements");
+  const app3Highways = reader.getByTestId("manual-guide-pending-section-app3-highways");
   await expect(cities).toBeVisible();
   await expect(sustainable).toBeVisible();
   await expect(bicycle).toBeVisible();
+  await expect(app3CargoDriverProfile).toBeVisible();
+  await expect(app3SocialResponsibility).toBeVisible();
+  await expect(app3DrivingFactors).toBeVisible();
+  await expect(app3SafeDriving).toBeVisible();
+  await expect(app3SafetyElements).toBeVisible();
+  await expect(app3Highways).toBeVisible();
   for (const sectionButton of [
     cities,
     sustainable,
@@ -2740,13 +2766,23 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
     attitudeTypes,
     equalSociety,
     genderViolencePrevention,
-    anticipatoryEfficientDriving
+    anticipatoryEfficientDriving,
+    app3CargoDriverProfile,
+    app3SocialResponsibility,
+    app3DrivingFactors,
+    app3SafeDriving,
+    app3SafetyElements,
+    app3Highways
   ]) {
     await expect(sectionButton).toBeEnabled();
+    await expect(sectionButton).not.toContainText("готово");
+    await expect(sectionButton).not.toHaveAttribute("aria-label", /готово/u);
     await expect(sectionButton).toHaveAttribute("data-status", "implemented");
     await expect(sectionButton).toHaveAttribute("data-source-region-metadata-status", "recorded");
     await expect(sectionButton).toHaveAttribute("data-visual-evidence-status", "recorded");
   }
+  await expect(cities).toHaveAttribute("aria-label", "Города для людей");
+  await expect(app3DrivingFactors).toHaveAttribute("aria-label", "Факторы, участвующие в вождении");
 
   await expect(cities).toHaveAttribute("data-route-hash", "#manual-section-ch1-cities-for-people");
   await expect(cities).toHaveAttribute("data-source-pages", "22");
@@ -2802,6 +2838,19 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(genderViolencePrevention).toHaveAttribute("data-source-pages", "100-101");
   await expect(anticipatoryEfficientDriving).toHaveAttribute("data-route-hash", "#manual-section-ch5-anticipatory-efficient-driving");
   await expect(anticipatoryEfficientDriving).toHaveAttribute("data-source-pages", "101-103");
+  await expect(app3CargoDriverProfile).toHaveAttribute("data-route-hash", "#manual-section-app3-cargo-driver-profile");
+  await expect(app3CargoDriverProfile).toHaveAttribute("data-source-pages", "153-154");
+  await expect(app3SocialResponsibility).toHaveAttribute("data-route-hash", "#manual-section-app3-social-responsibility");
+  await expect(app3SocialResponsibility).toHaveAttribute("data-source-pages", "155-159");
+  await expect(app3DrivingFactors).toHaveAttribute("data-route-hash", "#manual-section-app3-driving-factors");
+  await expect(app3DrivingFactors).toHaveAttribute("data-source-pages", "160-161");
+  await expect(app3DrivingFactors).toHaveAttribute("data-content-module-path", "src/data/manual-sections/app3-driving-factors.ts");
+  await expect(app3SafeDriving).toHaveAttribute("data-route-hash", "#manual-section-app3-safe-driving");
+  await expect(app3SafeDriving).toHaveAttribute("data-source-pages", "162-168");
+  await expect(app3SafetyElements).toHaveAttribute("data-route-hash", "#manual-section-app3-safety-elements");
+  await expect(app3SafetyElements).toHaveAttribute("data-source-pages", "169-181");
+  await expect(app3Highways).toHaveAttribute("data-route-hash", "#manual-section-app3-highways");
+  await expect(app3Highways).toHaveAttribute("data-source-pages", "182-183");
   await expect(reader.locator('[data-route-hash="#manual-page-021"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-043"]')).toHaveCount(0);
   await expect(reader.locator('[data-route-hash="#manual-page-056"]')).toHaveCount(0);
@@ -2811,6 +2860,31 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(reader.locator('[data-manual-page-id^="manual-page-"]')).toHaveCount(0);
   await expect(content).not.toContainText("К УСТОЙЧИВОЙ МОБИЛЬНОСТИ");
   await expect(content).not.toContainText("placeholder");
+
+  await app3DrivingFactors.click();
+  await expect(page).toHaveURL(/#manual-section-app3-driving-factors$/);
+  await expect(nav).toHaveAttribute("data-active-group-id", "appendix-3-cargo");
+  await expect(nav).toHaveAttribute("data-active-child-id", "app3-driving-factors");
+  await expect(app3DrivingFactors).toHaveAttribute("aria-current", "page");
+  await expect(appendix3.locator(".manual-guide-children button.active")).toHaveCount(1);
+  await expect(app3SafeDriving).not.toHaveClass(/active/);
+  const app3Section = content.getByTestId("manual-guide-section");
+  await expect(app3Section).toBeVisible();
+  await expect(app3Section).toHaveAttribute("data-manual-section-id", "app3-driving-factors");
+  await expect(app3Section.getByRole("heading", { name: "Факторы, участвующие в вождении" })).toBeVisible();
+  await expect(app3Section).toContainText("Профессиональный водитель");
+  await expect(app3Section).toContainText("Поза тела и здоровье");
+  await expect(nav).not.toContainText("готово");
+
+  await page.goto("/#manual-section-app3-highways");
+  await expect(nav).toHaveAttribute("data-active-group-id", "appendix-3-cargo");
+  await expect(nav).toHaveAttribute("data-active-child-id", "app3-highways");
+  await expect(app3Highways).toHaveAttribute("aria-current", "page");
+  const app3HighwaysSection = content.getByTestId("manual-guide-section");
+  await expect(app3HighwaysSection).toHaveAttribute("data-manual-section-id", "app3-highways");
+  await expect(app3HighwaysSection.getByRole("heading", { name: "Автомагистрали" })).toBeVisible();
+  await expect(app3HighwaysSection).toContainText("Профессионализация перевозки грузов");
+  await expect(nav).not.toContainText("готово");
 
   await cities.click();
   await expect(page).toHaveURL(/#manual-section-ch1-cities-for-people$/);
