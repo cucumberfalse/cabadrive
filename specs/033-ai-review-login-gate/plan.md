@@ -52,7 +52,7 @@ No new abstraction should be introduced. The narrow change is adding a second Co
 1. Update `scripts/ai-review-helpers.mjs` so `defaultTrustedReviewLogins.codex` includes both `chatgpt-codex-connector[bot]` and `chatgpt-codex-connector`.
 2. Keep `trustedReviewLoginsForAgent` merging behavior intact: defaults plus optional `trustedReviewLogins` plus optional `trustedReviewLoginsByAgent[agent]`.
 3. Do not change `trustedAssociations` into AI review login trust. Associations can remain useful elsewhere, but they must not satisfy Codex review evidence.
-4. Tighten Codex summary SHA handling so a summary body containing any 7-40 hex SHA-like marker that does not match the current full head or accepted current short head returns false before timestamp fallback. Timestamp freshness remains valid only for otherwise acceptable no-SHA Codex summaries.
+4. Tighten Codex summary SHA handling so a summary body containing one or more 7-40 hex SHA-like markers returns true only when every marker is a prefix of the current full head SHA. Current 7-character, 9-character, 10-character, and full 40-character markers must be accepted; any non-current 7-40 marker must return false before timestamp fallback. Timestamp freshness remains valid only for otherwise acceptable no-SHA Codex summaries.
 5. Do not change `.github/workflows/ai-review.yml` unless implementation discovers a real workflow regression; the default-branch checkout behavior should remain intact.
 6. Avoid editing `.unicorn-hub/config.json` unless there is a clear reason. A broad `trustedReviewLogins` addition is disfavored because it applies globally across agents.
 7. If docs are touched, keep them limited to durable review/gate documentation and explain the exact trust boundary; docs are not required if tests and feature memory capture the behavior adequately.
@@ -73,7 +73,7 @@ No new abstraction should be introduced. The narrow change is adding a second Co
 | --- | --- |
 | AC-001, AC-002 | `node --test tests/ai-review-helpers.test.mjs` proves both `chatgpt-codex-connector[bot]` and `chatgpt-codex-connector` are trusted for `codex`. |
 | AC-003 | Helper tests cover current-head native Codex pass classification for both trusted connector login forms, or existing tests plus new targeted assertions prove the shared helper is consumed by native review classification. |
-| AC-004 | Helper tests prove stale native reviews and stale summary comments remain rejected for changed heads, including an old-SHA summary with `headCommittedAt` supplied and a fresh comment timestamp. |
+| AC-004 | Helper tests prove stale native reviews and stale summary comments remain rejected for changed heads, including an old-SHA summary with `headCommittedAt` supplied and a fresh comment timestamp. Summary-marker tests must also prove 7-character and 9-character current-head prefixes are accepted, while a non-matching 7-character marker is rejected before timestamp fallback. |
 | AC-005, AC-006 | Helper tests prove unknown logins and association-only trust do not satisfy Codex review evidence; cross-agent tests prove the new login is not trusted for Claude/Gemini unless explicitly configured. |
 | AC-007 | `node --test tests/ai-review-workflow.test.mjs` or static test evidence confirms `.github/workflows/ai-review.yml` still checks out `github.event.repository.default_branch`. |
 | AC-008 | Existing plus focused tests prove Claude/Gemini behavior is unchanged; run finalize tests if finalization trust behavior is directly asserted. |
@@ -105,6 +105,6 @@ Process enforcement evidence:
 ## Risks
 
 - Risk: a broad config addition could trust the new login for non-Codex backends. Mitigation: prefer helper-level Codex default and add cross-agent negative tests.
-- Risk: accepting `chatgpt-codex-connector` could accidentally allow stale PR `#198` evidence after a new head commit, especially if a summary names an old SHA but has a fresh timestamp. Mitigation: require current-head stale-rejection tests that pass `headCommittedAt`, reject mismatched SHA markers before timestamp fallback, and require Orchestrator rerun/observe on the current PR `#198` head after default merge.
+- Risk: accepting `chatgpt-codex-connector` could accidentally allow stale PR `#198` evidence after a new head commit, especially if a summary names an old SHA but has a fresh timestamp. Mitigation: require current-head stale-rejection tests that pass `headCommittedAt`, reject mismatched SHA markers before timestamp fallback, accept only 7-40 character markers that prefix-match the current head, and require Orchestrator rerun/observe on the current PR `#198` head after default merge.
 - Risk: changing workflow checkout could let PRs weaken their own gate. Mitigation: keep workflow untouched or preserve `github.event.repository.default_branch` with workflow tests.
 - Risk: finalization blocker detection also consumes trusted logins. Mitigation: consider focused finalize tests if implementation adds finalization-specific assertions or changes helper semantics beyond the default list.
