@@ -733,3 +733,26 @@ No code, tests, runtime assets, evidence JSON, package files, durable runtime
 docs, or product content should change for this process fix. Any non-evidence
 content change after final validation makes the prior validation stale and
 requires role-appropriate follow-up plus renewed final validation.
+
+## Current-Head Diff Evidence Correction Plan - `9baeafd9519372d11d33d9ed20844d4edd3a108c`
+
+Architect accepts AI Review thread `PRRT_kwDOSX65IM6HgFaA` (P2) as a
+same-cycle process blocker. The current-head guard evidence must be internally
+true: at current head `9baeafd9519372d11d33d9ed20844d4edd3a108c`, the
+read-only command
+`git diff --name-status 860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD`
+reports four modified process-memory files:
+
+- `specs/034-manual-visual-content-crop/feature-request.md`
+- `specs/034-manual-visual-content-crop/spec.md`
+- `specs/034-manual-visual-content-crop/plan.md`
+- `specs/034-manual-visual-content-crop/tasks.md`
+
+Implementation Agent must correct the T180/T183 process-memory wording so the
+evidence-only diff list includes all four files above, not only
+`feature-request.md` and `tasks.md`. The correction must preserve the meaning
+that these are role/process memory evidence changes after effective content
+head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, not product/runtime/test or
+validation-JSON changes. T182 remains pending for Orchestrator: finalization
+still requires a fresh read-only current-PR-head guard immediately before
+merge/finalization.

@@ -2147,20 +2147,28 @@
   `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` only by role/process memory
   evidence files such as
   `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/spec.md`,
+  `specs/034-manual-visual-content-crop/plan.md`,
   `specs/034-manual-visual-content-crop/tasks.md`, and any subsequent
-  final-guard note. If the diff includes product behavior, runtime assets,
-  tests, validation JSON, package/workflow files, durable implementation docs,
-  or other non-evidence content, prior final validation is stale.
+  role/process-memory final-guard note. The final Orchestrator guard must
+  compare the actual current PR head to the effective content head and prove
+  every post-validation diff is process-memory evidence only. If the diff
+  includes product behavior, runtime assets, tests, validation JSON,
+  package/workflow files, durable implementation docs, or other non-evidence
+  content, prior final validation is stale.
 - Evidence: final-validation durability now requires the final Orchestrator
   read-only guard to prove the diff from effective content head
   `860a4ef4ab66a28b066625d4ffe52f526cce2d5b` to the actual current PR head is
   limited to role/process memory evidence files, including
   `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/spec.md`,
+  `specs/034-manual-visual-content-crop/plan.md`,
   `specs/034-manual-visual-content-crop/tasks.md`, and any subsequent
-  final-guard note. Product behavior, runtime/source assets, tests, validation
-  JSON, package/workflow files, durable implementation docs, or any other
-  non-evidence content diff makes final validation stale and requires
-  role-appropriate follow-up plus renewed final validation.
+  role/process-memory final-guard note. Product behavior, runtime/source
+  assets, tests, validation JSON, package/workflow files, durable
+  implementation docs, or any other non-evidence content diff makes final
+  validation stale and requires role-appropriate follow-up plus renewed final
+  validation.
 - [x] T181 Implementation Agent must avoid creating an impossible
   self-referential SHA requirement. The committed process memory does not need
   to know the SHA of the commit that contains itself before that commit exists.
@@ -2200,11 +2208,16 @@
   `plan.md` changes are preserved Architect-owned process-memory edits from
   T177-T178 disposition; Implementation-owned process fix changes are in this
   `tasks.md` note. Read-only evidence-only context:
-  `git diff --name-status
-  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` reported only
-  `M specs/034-manual-visual-content-crop/feature-request.md` and
-  `M specs/034-manual-visual-content-crop/tasks.md`. Working-tree diff name
-  status before commit reported only process-memory files under
+  Corrected read-only evidence-only context: `git diff --name-status
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` reports four
+  process-memory files:
+  `M specs/034-manual-visual-content-crop/feature-request.md`,
+  `M specs/034-manual-visual-content-crop/spec.md`,
+  `M specs/034-manual-visual-content-crop/plan.md`, and
+  `M specs/034-manual-visual-content-crop/tasks.md`. This supersedes the
+  earlier incorrect two-file note that named only `feature-request.md` and
+  `tasks.md`. Working-tree diff name status before commit reported only
+  process-memory files under
   `specs/034-manual-visual-content-crop/`: `plan.md`, `spec.md`, and
   `tasks.md`. No product, runtime, source asset, test, validation JSON,
   package, workflow, or durable runtime-doc file changed for this process-only
@@ -2222,3 +2235,101 @@
   read-only current-PR-head guard immediately before finalization/merge and
   confirms the AI Review findings are resolved, outdated, or otherwise
   accepted under the completion contract.
+
+## Architect Disposition: Current-Head Diff Evidence Correction P2 - 2026-06-05
+
+- [x] T185 Architect receives and dispositions Codex AI Review thread
+  `PRRT_kwDOSX65IM6HgFaA` P2 on PR `#200` current head
+  `9baeafd9519372d11d33d9ed20844d4edd3a108c`, path
+  `specs/034-manual-visual-content-crop/tasks.md` around line `2206`.
+- [x] T186 Architect accepts the finding as a same-cycle process blocker
+  before completion/finalization. The recorded T183 evidence says
+  `git diff --name-status
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` reported only
+  `feature-request.md` and `tasks.md`, but read-only current-head evidence on
+  `9baeafd9519372d11d33d9ed20844d4edd3a108c` reports four modified
+  role/process memory files:
+  `specs/034-manual-visual-content-crop/feature-request.md`,
+  `specs/034-manual-visual-content-crop/spec.md`,
+  `specs/034-manual-visual-content-crop/plan.md`, and
+  `specs/034-manual-visual-content-crop/tasks.md`. Leaving out `spec.md` and
+  `plan.md` makes the post-validation evidence-only guard internally false.
+- [x] T187 Implementation Agent must correct the T180 evidence-only-diff
+  wording so the allowed post-effective-content diff explicitly includes all
+  four process-memory files changed after effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`:
+  `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` under
+  `specs/034-manual-visual-content-crop/`. This correction must not broaden
+  the allowed diff beyond role/process memory evidence.
+- Implementation evidence: T180 now explicitly permits only role/process
+  memory evidence files and names the four actual files in the post-validation
+  range diff: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` under
+  `specs/034-manual-visual-content-crop/`. It also states that final
+  Orchestrator guard must compare the actual current PR head to effective
+  content head and prove every post-validation diff is process-memory evidence
+  only.
+- [x] T188 Implementation Agent must correct the T183 verification evidence
+  text so it accurately reports the current-head range diff from
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` as four modified
+  process-memory files:
+  `M specs/034-manual-visual-content-crop/feature-request.md`,
+  `M specs/034-manual-visual-content-crop/spec.md`,
+  `M specs/034-manual-visual-content-crop/plan.md`, and
+  `M specs/034-manual-visual-content-crop/tasks.md`. It must remove or
+  supersede the false claim that only `feature-request.md` and `tasks.md`
+  changed in that range.
+- Implementation evidence: T183 now records the four-file range diff and
+  explicitly supersedes the earlier incorrect two-file note.
+- [x] T189 Implementation Agent must preserve T182 as pending for Orchestrator.
+  Correcting the diff evidence is not the final current-PR-head guard.
+  Orchestrator must still run a fresh read-only guard immediately before
+  finalization/merge and recheck the actual latest PR head, required checks,
+  AI Review/review threads, mergeability, conflicts, process memory currency,
+  and acceptance evidence.
+- Implementation evidence: T182 remains pending (`[ ]`) and this note does not
+  claim that Implementation Agent ran the final Orchestrator guard.
+- [x] T190 Implementation Agent must keep this as a process-memory-only fix.
+  Do not change product code, runtime assets, tests, validation evidence JSON,
+  package/workflow files, durable runtime docs, or protected source assets. If
+  any non-process file changes, stop and route back to Orchestrator/Architect
+  because prior final validation would become stale.
+- Implementation evidence: this correction only edits process memory under
+  `specs/034-manual-visual-content-crop/`; no product, runtime, source asset,
+  test, validation JSON, package, workflow, or durable runtime-doc file is in
+  scope.
+- [x] T191 Implementation Agent must record verification for this correction:
+  `git diff --name-status
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` showing the four
+  process-memory files above, `node scripts/check-feature-memory.mjs
+  --worktree`, `git diff --check`, and `git status --short --branch`.
+- Verification evidence for this correction:
+  `git diff --name-status
+  860a4ef4ab66a28b066625d4ffe52f526cce2d5b..HEAD` reported:
+  `M specs/034-manual-visual-content-crop/feature-request.md`,
+  `M specs/034-manual-visual-content-crop/plan.md`,
+  `M specs/034-manual-visual-content-crop/spec.md`, and
+  `M specs/034-manual-visual-content-crop/tasks.md`;
+  `node scripts/check-feature-memory.mjs --worktree` passed with
+  `No configured product paths changed; feature-memory gate passes.`;
+  `git diff --check` passed with no output; `git status --short --branch`
+  reported branch
+  `codex/034-manual-visual-content-crop...origin/codex/034-manual-visual-content-crop`
+  with modified process-memory files
+  `specs/034-manual-visual-content-crop/plan.md` and
+  `specs/034-manual-visual-content-crop/tasks.md`. Working-tree
+  `git diff --name-status` reported only those two process-memory files under
+  `specs/034-manual-visual-content-crop/`. The broader effective-head range
+  diff reports only the four process-memory files under
+  `specs/034-manual-visual-content-crop/`; no product, runtime, source asset,
+  test, validation JSON, package, workflow, or durable runtime-doc file is in
+  this correction.
+- [x] T192 Final validation/completion remains blocked until T187-T191 are
+  implemented/evidenced and AI Review thread `PRRT_kwDOSX65IM6HgFaA` is
+  resolved, made outdated by the correction, or explicitly accepted by
+  Orchestrator under the completion contract. T182 remains a separate pending
+  Orchestrator finalization guard after this correction.
+- Implementation disposition: T187-T191 are implemented/evidenced in process
+  memory. Completion remains blocked until Orchestrator confirms AI Review
+  thread `PRRT_kwDOSX65IM6HgFaA` is resolved, outdated, or explicitly accepted;
+  Implementation Agent has not resolved that thread and has not run or claimed
+  the T182 final current-PR-head guard.
