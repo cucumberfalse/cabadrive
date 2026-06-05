@@ -967,6 +967,10 @@
 
 ## Known Issues
 
+No pending known issues.
+
+## Known Issue History
+
 - Open after Architect clarification disposition: current PR `#200` evidence
   records `source-limited-exception` for Appendix IV page-sheet text
   readability. The official PDF high-scale render and retained official Anexo L
@@ -1000,6 +1004,13 @@
   existing no-upscale/source-as-is evidence; future work should verify whether
   a reliable high-DPI source-region extraction can improve it without protected
   source regression.
+  Architect disposition: resolved. All same-cycle items named in this known
+  issue were implemented, reviewed, and accepted by final Architect/Analyst
+  validation for effective content head
+  `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`; later process-memory-only
+  follow-up preserved that validation. The `cedulas-source-card` note is
+  disposed as a non-blocking future-ticket candidate, not a remaining known
+  issue and not an owner-decision blocker for PR `#200`.
 
 ## Implementation Agent Feedback
 
@@ -1021,13 +1032,23 @@
   `app4-traffic-lights-page-198-source-card`,
   `app4-traffic-lights-page-199-source-card`, and
   `app4-traffic-lights-page-200-source-card`.
+  Architect disposition: resolved. Same-cycle Appendix IV sign readability
+  follow-up was implemented through source-faithful large official panels and
+  focused sign evidence; no unresolved Implementation Agent feedback remains
+  for this item.
 - `app2-hospital-map-source-card` now requires same-cycle implementation
   follow-up for official-original/best-quality map extraction and label
   readability evidence, with map pixels/text preserved unmodified.
+  Architect disposition: resolved. The hospital map was re-extracted from the
+  official source as protected source-as-is content with readability evidence;
+  no unresolved Implementation Agent feedback remains for this item.
 - Runtime learner-facing Russian guide copy now requires same-cycle
   implementation follow-up: audit and rewrite source/provenance/meta wording
   across the whole guide, update tests so regressions fail, and record grep or
   structured audit evidence.
+  Architect disposition: resolved. Runtime learner-facing copy was rewritten
+  and guarded by audit/test evidence; no unresolved Implementation Agent
+  feedback remains for this item.
 - Whole-document visual completeness now requires same-cycle implementation
   follow-up: compare official PDF/manual visual regions to current runtime
   guide visuals, add or disposition all learner-meaningful missing visuals, and
@@ -1038,6 +1059,10 @@
   must use the official original image as-is with separate Russian translations
   below/near the image, not the current low-quality/reconstructed Russian
   version.
+  Architect disposition: resolved. Whole-document visual completeness evidence
+  was implemented and accepted, including the named user examples and explicit
+  residual disposition; no unresolved Implementation Agent feedback remains for
+  this item.
 - Architect disposition for `cedulas-source-card`: future ticket. The visual
   crop evidence records attempted page-image and canonical-PDF explicit-region
   probes, but this follow-up did not replace the source-document example
@@ -1045,6 +1070,9 @@
   risking protected-source regression. This is not a same-cycle task and not an
   owner-disposition blocker for PR `#200`; Orchestrator may route a later
   source-document example extraction/readability feature if desired.
+  Architect disposition: disposed as future-ticket candidate, not needed for
+  PR `#200`; no unresolved Implementation Agent feedback remains for this
+  item.
 
 ## Verification Evidence
 
@@ -2333,3 +2361,22 @@
   thread `PRRT_kwDOSX65IM6HgFaA` is resolved, outdated, or explicitly accepted;
   Implementation Agent has not resolved that thread and has not run or claimed
   the T182 final current-PR-head guard.
+
+## Cycle PR Set
+
+- PR `#200` <https://github.com/cucumberfalse/cabadrive/pull/200>, branch `codex/034-manual-visual-content-crop`, effective content head SHA `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, current read-only guard head SHA `f48738e448186c67d918320941081b333befa8aa`, status included in final validation and finalization readiness evidence.
+
+## Final Validation Evidence
+
+- Effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
+- Architect validation: passed before Analyst validation.
+- Architect return count: 0
+- Architect validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
+- Analyst validation: passed after Architect validation.
+- Analyst return count: 0
+- Analyst validated effective content head: 860a4ef4ab66a28b066625d4ffe52f526cce2d5b
+- Effective content head: validated by Architect and Analyst; later changes are role/process memory evidence only.
+- Current-PR-head read-only guard: Orchestrator verified current PR head `f48738e448186c67d918320941081b333befa8aa` against effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`; the range diff contains only `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` under `specs/034-manual-visual-content-crop/`.
+- Current-PR-head read-only guard: For effective content head `860a4ef4ab66a28b066625d4ffe52f526cce2d5b`, PR `#200` was open, mergeable, not draft, required checks were green on current head, review threads were empty, and `node scripts/check-feature-memory.mjs --worktree` passed.
+- Analyst feedback Architect disposition: all Analyst and Implementation Agent feedback items are disposed, resolved, accepted, or not needed for PR `#200`.
+- Limit escalation: none
