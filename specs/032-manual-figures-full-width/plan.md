@@ -155,3 +155,25 @@ Review Agent should especially check:
 ## Architect Disposition
 
 No additional user clarification is required. No implementation blocker is known. The only implementation feedback to watch is the hospital map: if the official source cannot provide a larger faithful crop, record a no-upscale quality limitation rather than editing the map pixels.
+
+## Merge-Gate Follow-Up Disposition
+
+Architect disposition `2026-06-05T03:54:59Z`: the stuck required `AI Review` check is a same-cycle merge-gate blocker for feature `032`, but it is not a manual-figure product defect. The blocker is trusted Codex review login compatibility: Orchestrator evidence shows the current-head native Codex review was submitted by `chatgpt-codex-connector`, while the default trusted Codex login set recognizes `chatgpt-codex-connector[bot]` only.
+
+Do not treat a PR-local edit in PR `#198` as sufficient to unblock the current required check. The `AI Review` workflow checks out trusted gate scripts from the repository default branch before running `scripts/ai-review-gate.mjs`, so changes to `scripts/ai-review-helpers.mjs`, `.unicorn-hub/config.json`, tests, or workflow files in PR `#198` would not affect the currently required `AI Review` job until after those changes are present on the default branch.
+
+Orchestrator should route a separate latest-main gate-fix implementation slice, or record a protected-branch/human blocker if branch protection prevents landing the prerequisite gate fix. That gate-fix slice should update trusted Codex review login handling or repository config so both observed connector forms are trusted for Codex review evidence:
+
+- Preserve existing trust for `chatgpt-codex-connector[bot]`.
+- Add trust for `chatgpt-codex-connector`.
+- Prefer `defaultTrustedReviewLogins.codex` when treating this as a globally observed Codex connector identity; use `.unicorn-hub/config.json` `trustedReviewLoginsByAgent.codex` only if Orchestrator explicitly wants a repository-local override.
+- Keep arbitrary `OWNER` comments untrusted as review evidence unless their login is explicitly trusted by the same helper/config path.
+- Preserve case normalization and current stale-head protection.
+
+Gate-fix verification requirements:
+
+- Add or update `tests/ai-review-helpers.test.mjs` to prove `trustedReviewLoginsForAgent("codex")` includes both connector login forms and that `isTrustedReviewLogin("chatgpt-codex-connector", "codex")` returns true.
+- Add coverage that a current-head native Codex review from `chatgpt-codex-connector` is accepted by the Codex gate path and stale-head or unknown-login evidence is still rejected.
+- Update finalization/blocking-review tests if they depend on the trusted Codex login defaults.
+- Run focused helper/workflow/finalization tests affected by the change, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and the repository preflight if feasible.
+- After the gate fix is present on the default branch, Orchestrator should rerun or observe `AI Review` for PR `#198` and confirm the required check accepts current-head Codex review evidence.

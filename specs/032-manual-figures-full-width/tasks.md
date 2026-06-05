@@ -98,6 +98,18 @@
 - [ ] T065 Implementation Agent records and resolves review findings only through Orchestrator assignment.
 - [ ] T066 Orchestrator invokes final Architect validation before final Analyst validation after implementation, checks, review, and feedback disposition are complete.
 
+## Merge-Gate Blocker Follow-Up
+
+- [x] T067 Architect records disposition for PR `#198` `AI Review` merge-gate blocker on current head `9df31d213419b107ca49797c0357ce8151c8effe`.
+- [ ] T068 Orchestrator preserves PR `#198` product implementation and does not rely on PR-local helper/config/test edits to unblock the current `AI Review` run, because `.github/workflows/ai-review.yml` checks out trusted gate scripts from the default branch.
+- [ ] T069 Orchestrator routes a separate latest-main gate-fix implementation slice, or records a protected-branch/human blocker if the prerequisite default-branch gate fix cannot land under current branch protection.
+- [ ] T070 Gate-fix Implementation Agent updates trusted Codex review login handling or config so Codex evidence trusts both `chatgpt-codex-connector[bot]` and `chatgpt-codex-connector`.
+- [ ] T071 Gate-fix Implementation Agent preserves strict evidence trust: arbitrary `OWNER` no-findings summary comments remain untrusted unless the author login is explicitly trusted, stale-head review evidence remains rejected, and case normalization remains intact.
+- [ ] T072 Gate-fix Implementation Agent adds focused tests proving `trustedReviewLoginsForAgent("codex")` and `isTrustedReviewLogin(..., "codex")` accept both connector login forms, and proving current-head native Codex review evidence from `chatgpt-codex-connector` is accepted while unknown-login or stale-head evidence is rejected.
+- [ ] T073 Gate-fix Implementation Agent updates finalization/blocking-review tests if trusted Codex login defaults affect those paths.
+- [ ] T074 Gate-fix Implementation Agent runs affected helper/workflow/finalization tests, `node scripts/check-feature-memory.mjs --worktree`, `git diff --check`, and `pnpm run preflight` if feasible; any omitted check requires recorded evidence and reason.
+- [ ] T075 After the default branch contains the gate fix, Orchestrator reruns or observes `AI Review` for PR `#198` and records that the required check accepts current-head Codex review evidence.
+
 ## Inventory Notes
 
 Initial Architect read-only scan found `38` `source-image-cards` cards. The implementation inventory must not treat this note as complete final evidence; it is a starting point.
@@ -137,6 +149,7 @@ Appendix IV group expected full-width unless implementation records a narrow exc
 - Architect decision: one implementation PR slice is appropriate unless asset re-export or repository state creates a documented blocker.
 - Architect decision: full-width behavior must be metadata/classification-driven, not a new pile of hard-coded `data-card-id` CSS selectors.
 - Architect decision: hospital-map "full width" is bounded by source quality. Do not upscale it past natural/source-faithful dimensions merely to fill a wider container.
+- Architect merge-gate disposition `2026-06-05T03:54:59Z`: a same-cycle gate follow-up is required, but not as a PR `#198` local implementation change intended to unblock itself. The manual-figure implementation has no known feature-code issue. The blocker is repository AI Review gate compatibility with the observed current-head Codex native review login `chatgpt-codex-connector`; default trusted Codex login handling currently recognizes `chatgpt-codex-connector[bot]` only. Because the workflow checks out trusted scripts from the default branch, Orchestrator should route a separate latest-main gate-fix slice or record a protected-branch/human blocker if that prerequisite cannot land.
 - Implementation startup decision `2026-06-05T03:09:14Z`: Implementation Agent assignment confirmed for worktree `/Users/chap/devel/cabadrive-worktrees/032-manual-figures-full-width`, branch `codex/032-manual-figures-full-width`, one implementation PR slice for feature `032-manual-figures-full-width`, verified base `origin/main` at `51e42f657d867fb802bbe3a68591b6008b45a60f`, and scoped files limited to manual source-visual data/renderer/CSS/tests/evidence/durable manual guidance when needed plus `specs/032-manual-figures-full-width/tasks.md`. Parallel work may exist; sibling worktrees, unrelated branches, commits, PRs, dirty diffs, and unrelated process memory must be preserved. Startup status before product edits: `## codex/032-manual-figures-full-width...origin/main` with untracked `specs/032-manual-figures-full-width/` feature memory only.
 - Implementation continuation decision `2026-06-05T03:39:56Z`: a direct typecheck found the new source-image-card display fields had been declared on a neighboring card-union member instead of the actual `kind: "source-image-cards"` card type. The continuation fixed that type contract forward in `src/data/manualGuide.ts`; `pnpm exec tsc --noEmit` now passes.
 - Implementation decision: no hospital-map asset re-export was performed. The existing source-as-is crop remains byte-preserved at `780x335`, the reusable full-width metadata caps it at `maxDisplayWidthPx: 780`, and Playwright asserts runtime display width never exceeds natural width.
@@ -145,6 +158,7 @@ Appendix IV group expected full-width unless implementation records a narrow exc
 
 - No unresolved implementation known issues.
 - Hospital map quality disposition: the current `780x335` source-as-is asset is intentionally capped at natural width. The user-visible fix is layout/full-width treatment bounded by no-upscale, not browser upscaling or source-pixel editing.
+- Merge-gate blocker: required GitHub `AI Review` is pending/stuck for PR `#198` despite current-head native Codex review evidence. This is not a manual-figure feature defect; it requires default-branch trusted Codex review login compatibility follow-up before the PR can satisfy branch protection.
 
 ## Implementation Agent Feedback
 
@@ -152,6 +166,7 @@ Appendix IV group expected full-width unless implementation records a narrow exc
 
 ## Verification Evidence
 
+- Architect merge-gate read-only evidence `2026-06-05T03:54:59Z`: PR `#198` head is `9df31d213419b107ca49797c0357ce8151c8effe`; required checks `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` pass while `AI Review` is stuck in `.github/workflows/ai-review.yml` job `Route and validate selected native review`; GitHub has a current-head native Codex review from `chatgpt-codex-connector`; Orchestrator read-only helper evidence shows `isTrustedReviewLogin("chatgpt-codex-connector[bot]", "codex")` is true and `isTrustedReviewLogin("chatgpt-codex-connector", "codex")` is false; `.unicorn-hub/config.json` has empty `trustedReviewLoginsByAgent`; `scripts/ai-review-helpers.mjs` default Codex trusted logins include only `chatgpt-codex-connector[bot]`.
 - `pnpm exec tsc --noEmit` initially failed with `TS2339`/`TS2353` errors because `displayMode` and `maxDisplayWidthPx` were not declared on the actual `source-image-cards` card type; after the forward fix it passed with exit code `0`.
 - `node --test tests/content-manual-guide-chapters.test.mjs` passed: `92` tests, `92` pass, `0` fail, duration `12030.860833ms`. This includes the full source-image-card inventory test: `38` cards, `31` full-width, `7` compact, Appendix IV pages `185-200` full-width, reported examples full-width, compact examples preserved, and full-width metadata matched `runtimeDisplaySize.maxWidthCssPx`/no-upscale evidence.
 - `pnpm run test:e2e` passed: `80` tests, `80` pass, `0` fail, duration `41.6s`. The new full-width Playwright test passed on Chromium and mobile projects and asserts display mode, card/grid width, image/container ratio, no browser upscaling, and no document-level horizontal overflow.
