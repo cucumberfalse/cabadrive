@@ -3636,6 +3636,60 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, and Chap
   await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
 });
 
+test("Manual guide front glossary renders structured term translations responsively", async ({ page }, testInfo) => {
+  await page.goto("/#manual-section-front-glossary");
+  const reader = page.getByTestId("introduction-reader");
+  const section = reader.getByTestId("manual-guide-section");
+  await expect(reader).toBeVisible();
+  await expect(section).toHaveAttribute("data-manual-section-id", "front-glossary");
+  await expect(section.getByRole("heading", { name: "Глоссарий" })).toBeVisible();
+
+  const glossaryBlocks = section.locator('[data-block-kind="glossary-list"]');
+  await expect(glossaryBlocks).toHaveCount(5);
+  await expect(section.getByText("Acera (тротуар):", { exact: false })).toBeVisible();
+  await expect(section.getByText("Automóvil (автомобиль):", { exact: false })).toBeVisible();
+  await expect(section.getByText("Vía rápida (скоростная дорога):", { exact: false })).toBeVisible();
+  await expect(section.getByText("Ciclorodado con pedaleo asistido eléctricamente (электровелосипед с педальным ассистом):", { exact: false })).toBeVisible();
+
+  const aceraItem = section.locator('[data-testid="manual-glossary-item"][data-term-es="Acera"]');
+  await expect(aceraItem.getByTestId("manual-glossary-term")).toHaveText("Acera");
+  await expect(aceraItem.getByTestId("manual-glossary-term")).toHaveAttribute("lang", "es");
+  await expect(aceraItem.locator(".manual-glossary-translation")).toHaveAttribute("lang", "ru");
+  await expect(aceraItem.locator(".manual-glossary-definition")).toHaveAttribute("lang", "ru");
+  await expect(aceraItem.locator(".manual-glossary-definition")).toContainText("сектор общественной дороги");
+
+  const longTermItem = section.locator('[data-testid="manual-glossary-item"][data-term-es="Ciclorodado con pedaleo asistido eléctricamente"]');
+  await expect(longTermItem.getByTestId("manual-glossary-term")).toHaveAttribute("lang", "es");
+  const styleProbe = await longTermItem.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const term = element.querySelector(".manual-glossary-term");
+    const termStyle = term ? window.getComputedStyle(term) : null;
+    return {
+      userSelect: style.userSelect,
+      overflowWrap: style.overflowWrap,
+      termTag: term?.tagName,
+      termWeight: termStyle?.fontWeight ?? ""
+    };
+  });
+  expect(styleProbe.userSelect).not.toBe("none");
+  expect(styleProbe.overflowWrap).toBe("anywhere");
+  expect(styleProbe.termTag).toBe("STRONG");
+  expect(Number.parseInt(styleProbe.termWeight, 10)).toBeGreaterThanOrEqual(600);
+
+  const overflow = await section.evaluate((element) => ({
+    sectionScrollWidth: element.scrollWidth,
+    sectionClientWidth: element.clientWidth,
+    bodyScrollWidth: document.documentElement.scrollWidth,
+    bodyClientWidth: document.documentElement.clientWidth
+  }));
+  expect(overflow.sectionScrollWidth).toBeLessThanOrEqual(overflow.sectionClientWidth + 1);
+  expect(overflow.bodyScrollWidth).toBeLessThanOrEqual(overflow.bodyClientWidth + 1);
+
+  await reader.screenshot({
+    path: testInfo.outputPath(`manual-front-glossary-terms-${testInfo.project.name}.png`)
+  });
+});
+
 test("Introduction guide exits on hash Back and keeps route buttons native", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("introduction-reader")).toHaveCount(0);

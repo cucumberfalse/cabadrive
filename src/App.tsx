@@ -2602,6 +2602,29 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
               </section>
             );
           }
+          if (block.kind === "glossary-list") {
+            return (
+              <section key={block.id} className="intro-doc-block intro-doc-list manual-glossary-list" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
+                {block.titleRu && <h3>{block.titleRu}</h3>}
+                <ul>
+                  {block.items.map((item) => (
+                    <li key={item.id} className="manual-glossary-item" data-testid="manual-glossary-item" data-term-es={item.termEs}>
+                      <strong className="manual-glossary-term" lang="es" data-testid="manual-glossary-term">
+                        {item.termEs}
+                      </strong>{" "}
+                      <span className="manual-glossary-translation" lang="ru">
+                        ({item.translationRu})
+                      </span>
+                      :{" "}
+                      <span className="manual-glossary-definition" lang="ru">
+                        {item.definitionRu}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          }
           if (block.kind === "source-artwork") {
             return (
               <figure key={block.id} className="manual-guide-source-artwork" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>

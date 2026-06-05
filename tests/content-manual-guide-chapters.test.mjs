@@ -194,6 +194,10 @@ function itemsRuSourceForBlock(moduleSource, blockId) {
   return blockMatch[1];
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+}
+
 function sourceBoundaryEvidenceFor(section, sourcePage) {
   if (Array.isArray(section.sourceBoundaryEvidence)) {
     return section.sourceBoundaryEvidence.find((entry) => entry.sharedSourcePage === sourcePage);
@@ -898,6 +902,75 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
     )
   );
   assert.deepEqual(duplicatedValues(coveredSourcePages), [55, 93, 94, 95, 99, 100, 101, 119]);
+});
+
+test("Front glossary rows use structured Spanish terms, Russian translations, and definitions", () => {
+  const glossaryBlockIds = ["glossary-a-b", "glossary-b-c", "glossary-d-i", "glossary-m-p", "glossary-r-v"];
+  assert.equal((frontGlossaryModuleSource.match(/kind:\s*"glossary-list"/gu) ?? []).length, glossaryBlockIds.length);
+  assert.doesNotMatch(frontGlossaryModuleSource, /itemsRu:\s*\[/u, "front glossary no longer stores colon-delimited list rows");
+
+  for (const blockId of glossaryBlockIds) {
+    assert.match(
+      frontGlossaryModuleSource,
+      new RegExp(`id:\\s*"${blockId}"[\\s\\S]*?kind:\\s*"glossary-list"[\\s\\S]*?items:\\s*\\[`, "u"),
+      `${blockId} is a structured glossary block`
+    );
+  }
+
+  assert.equal((frontGlossaryModuleSource.match(/\btermEs:\s*"/gu) ?? []).length, 75);
+  assert.equal((frontGlossaryModuleSource.match(/\btranslationRu:\s*"/gu) ?? []).length, 75);
+  assert.equal((frontGlossaryModuleSource.match(/\bdefinitionRu:\s*"/gu) ?? []).length, 75);
+  assert.doesNotMatch(frontGlossaryModuleSource, /\btermEs:\s*""|\btranslationRu:\s*""|\bdefinitionRu:\s*""/u);
+
+  for (const [termEs, translationRu] of [
+    ["Accidente de tránsito", "дорожное происшествие"],
+    ["Acera", "тротуар"],
+    ["Adelantamiento", "опережение"],
+    ["Arteria", "городская дорога"],
+    ["Arterias multicarriles", "многополосные артерии"],
+    ["Automotor", "моторное транспортное средство"],
+    ["Automóvil", "автомобиль"],
+    ["Autopista", "автомагистраль"],
+    ["Avenida", "проспект"],
+    ["Baliza", "аварийный маячок / аварийная сигнализация"],
+    ["Banquina", "обочина"],
+    ["Bicicleta", "велосипед"],
+    ["Ciclorodado con pedaleo asistido eléctricamente", "электровелосипед с педальным ассистом"],
+    ["Detención", "остановка"],
+    ["Estacionamiento", "стоянка"],
+    ["Sobrepaso", "обгон"],
+    ["Tránsito", "дорожное движение"],
+    ["Vía rápida", "скоростная дорога"]
+  ]) {
+    assert.match(
+      frontGlossaryModuleSource,
+      new RegExp(`termEs:\\s*"${escapeRegExp(termEs)}"[\\s\\S]*?translationRu:\\s*"${escapeRegExp(translationRu)}"[\\s\\S]*?definitionRu:\\s*"[^"]+"`, "u"),
+      `${termEs} has a structured Russian translation and definition`
+    );
+  }
+
+  for (const retainedDetail of ["13 м", "17,32 м", "до 2 минут", "50 см3", "4 кВт", "50 км/ч", "Av. Intendente Cantilo"]) {
+    assert.ok(frontGlossaryModuleSource.includes(retainedDetail), `front glossary keeps legal/numeric/source detail ${retainedDetail}`);
+  }
+
+  assert.ok(frontGlossaryModuleSource.includes("manual-glossary"), "front glossary declares the durable glossary style family");
+  assert.ok(frontGlossaryModuleSource.includes("Russian translations in parentheses"), "visual evidence notes mention the new term/translation treatment");
+});
+
+test("Manual guide renderer has a dedicated structured glossary branch without colon parsing", () => {
+  assert.match(manualGuideSource, /export type ManualGuideGlossaryItem/);
+  assert.match(manualGuideSource, /kind:\s*"glossary-list"/);
+  assert.match(manualGuideSource, /id:\s*"manual-glossary"/);
+  assert.match(manualGuideAppSource, /block\.kind === "glossary-list"/);
+  assert.match(manualGuideAppSource, /className="manual-glossary-term"/);
+  assert.match(manualGuideAppSource, /className="manual-glossary-translation"/);
+  assert.match(manualGuideAppSource, /className="manual-glossary-definition"/);
+  assert.match(manualGuideAppSource, /data-term-es=\{item\.termEs\}/);
+  assert.match(manualGuideAppSource, /lang="es"/);
+  assert.match(manualGuideAppSource, /lang="ru"/);
+  assert.doesNotMatch(manualGuideAppSource, /split\s*\(\s*["']:/u, "manual glossary renderer must not split strings on colon");
+  assert.match(stylesSource, /\.manual-glossary-item[\s\S]*?overflow-wrap:\s*anywhere/);
+  assert.match(stylesSource, /\.manual-glossary-item[\s\S]*?user-select:\s*text/);
 });
 
 test("Chapter 2 page 55 sharing is explicit and page 56 is book-only closing material", () => {
@@ -2490,6 +2563,7 @@ test("Manual guide schema prepares section-local implementation and reusable sty
     "manual-public-transport-visuals",
     "manual-shared-trip-visuals",
     "manual-legal-detail",
+    "manual-glossary",
     "introductionDocumentStyleGuide.tokens"
   ]) {
     assert.ok(manualGuideSource.includes(requiredToken), `manual guide style token registry includes ${requiredToken}`);

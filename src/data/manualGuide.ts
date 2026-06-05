@@ -129,6 +129,13 @@ export type ManualGuideNavigationEntry = {
   children?: ManualGuideNavigationChild[];
 };
 
+export type ManualGuideGlossaryItem = {
+  id: string;
+  termEs: string;
+  translationRu: string;
+  definitionRu: string;
+};
+
 type ManualGuideRegistrySection = Omit<ManualGuideSectionEntry, "kind">;
 type ManualGuideRegistryChapter = {
   id: string;
@@ -190,6 +197,13 @@ export type ManualGuideContentBlock =
       kind: "list";
       titleRu?: string;
       itemsRu: string[];
+      sourceTextEs: string;
+    }
+  | {
+      id: string;
+      kind: "glossary-list";
+      titleRu?: string;
+      items: ManualGuideGlossaryItem[];
       sourceTextEs: string;
     }
   | {
@@ -822,6 +836,11 @@ export const manualGuideDocumentStyleTokens = {
       id: "manual-front-matter",
       description: "Front-matter support routes for presentation, category scope, and glossary content rendered as selectable Russian DOM text.",
       tokenSource: "source pages 2-11 front matter"
+    },
+    {
+      id: "manual-glossary",
+      description: "Structured front-glossary term rows with emphasized Spanish source terms, adjacent Russian translations, and selectable Russian definitions.",
+      tokenSource: "source pages 5-11 Glosario"
     },
     {
       id: "manual-mobility-context",

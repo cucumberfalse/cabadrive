@@ -51,6 +51,11 @@ second guide destination.
   order, list order, diagram order, route order, or source heading order.
 - Visible footnotes, page markers, source attributions, and book-only
   decoration should be omitted when they do not help exam learning.
+- Manual glossary rows should use structured data rather than colon-delimited
+  prose strings: keep the Spanish source term, concise Russian translation, and
+  Russian definition in separate fields, render the Spanish term with semantic
+  selectable emphasis and `lang="es"`, and render the Russian translation and
+  definition as selectable Russian text close to the term.
 
 ## Artwork Transfer
 
