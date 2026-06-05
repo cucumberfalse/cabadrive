@@ -162,6 +162,65 @@ async function openCompleteManualPage(page: Page, pageNumber: number) {
   await expect(page.getByTestId("manual-page-detail")).toContainText(`${pageNumber} / 200`);
 }
 
+type ManualSourceImageCardMetrics = {
+  cardId: string;
+  displayMode: string | null;
+  maxDisplayWidthPx: number;
+  cardWidth: number;
+  gridWidth: number;
+  sectionWidth: number;
+  imageWidth: number;
+  imageHeight: number;
+  naturalWidth: number;
+  naturalHeight: number;
+  complete: boolean;
+};
+
+async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean }) {
+  const card = page.locator(`[data-card-id="${cardId}"]`);
+  await card.scrollIntoViewIfNeeded();
+  await expect(card).toHaveAttribute("data-display-mode", "full-width");
+  const metrics = await card.evaluate(async (element): Promise<ManualSourceImageCardMetrics> => {
+    const image = element.querySelector("img") as HTMLImageElement | null;
+    const grid = element.closest(".manual-source-image-card-grid") as HTMLElement | null;
+    const section = element.closest(".manual-source-image-cards") as HTMLElement | null;
+    if (!image || !grid || !section) throw new Error("source image card is missing image, grid, or source-image-cards container");
+    await image.decode?.().catch(() => undefined);
+    const cardRect = element.getBoundingClientRect();
+    const gridRect = grid.getBoundingClientRect();
+    const sectionRect = section.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+    return {
+      cardId: element.getAttribute("data-card-id") ?? "",
+      displayMode: element.getAttribute("data-display-mode"),
+      maxDisplayWidthPx: Number(element.getAttribute("data-max-display-width-px") ?? 0),
+      cardWidth: cardRect.width,
+      gridWidth: gridRect.width,
+      sectionWidth: sectionRect.width,
+      imageWidth: imageRect.width,
+      imageHeight: imageRect.height,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      complete: image.complete
+    };
+  });
+
+  expect(metrics.displayMode, `${cardId} display mode`).toBe("full-width");
+  expect(metrics.complete, `${cardId} image is loaded`).toBe(true);
+  expect(metrics.naturalWidth, `${cardId} natural width`).toBeGreaterThan(0);
+  expect(metrics.naturalHeight, `${cardId} natural height`).toBeGreaterThan(0);
+  expect(metrics.maxDisplayWidthPx, `${cardId} max display width metadata`).toBeGreaterThan(0);
+  expect(metrics.maxDisplayWidthPx, `${cardId} max display width does not exceed source width`).toBeLessThanOrEqual(metrics.naturalWidth);
+  expect(metrics.imageWidth, `${cardId} avoids browser upscaling`).toBeLessThanOrEqual(metrics.naturalWidth + 1);
+  expect(metrics.imageHeight, `${cardId} preserves visible height`).toBeGreaterThan(1);
+  expect(metrics.cardWidth, `${cardId} card spans the source-image grid`).toBeGreaterThanOrEqual(metrics.gridWidth * 0.98);
+  expect(metrics.imageWidth, `${cardId} uses meaningful card width`).toBeGreaterThanOrEqual(Math.min(metrics.cardWidth * 0.7, metrics.naturalWidth));
+  if (options.desktop && metrics.naturalWidth >= 600) {
+    expect(metrics.imageWidth, `${cardId} is not the old desktop thumbnail`).toBeGreaterThan(480);
+  }
+  return metrics;
+}
+
 type ManualRenderedBox = {
   id: string | null;
   type: string | null;
@@ -4261,4 +4320,55 @@ test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone wid
   });
   expect(overlayProblems).toEqual([]);
   await section.screenshot({ path: testInfo.outputPath(`ch4-alcohol-overlay-labels-phone-${testInfo.project.name}.png`) });
+});
+
+test("Manual guide full-width source image cards stay readable and avoid upscaling", async ({ page }, testInfo) => {
+  const scenarios = [
+    {
+      sectionId: "app4-signs-regulatory",
+      hash: "/#manual-section-app4-signs-regulatory",
+      cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"]
+    },
+    {
+      sectionId: "app3-driving-factors",
+      hash: "/#manual-section-app3-driving-factors",
+      cards: ["app3-body-posture-source-card"]
+    },
+    {
+      sectionId: "app2-highways-hospitals",
+      hash: "/#manual-section-app2-highways-hospitals",
+      cards: ["app2-hospital-map-source-card"]
+    },
+    {
+      sectionId: "app4-signs-horizontal",
+      hash: "/#manual-section-app4-signs-horizontal",
+      cards: ["app4-horizontal-page-195-source-card"]
+    },
+    {
+      sectionId: "app3-safety-elements",
+      hash: "/#manual-section-app3-safety-elements",
+      cards: ["app3-seatbelt-source-card"]
+    }
+  ];
+  const viewports = [
+    { name: "desktop", width: 1280, height: 950, desktop: true },
+    { name: "mobile", width: 390, height: 900, desktop: false }
+  ];
+
+  for (const viewport of viewports) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    for (const scenario of scenarios) {
+      await page.goto(scenario.hash);
+      const section = page.getByTestId("manual-guide-section");
+      await expect(section).toHaveAttribute("data-manual-section-id", scenario.sectionId);
+      for (const cardId of scenario.cards) {
+        await expectFullWidthSourceImageCard(page, cardId, { desktop: viewport.desktop });
+      }
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, `${scenario.sectionId} has no document-level horizontal overflow at ${viewport.name}`).toBeLessThanOrEqual(2);
+      await section.screenshot({
+        path: testInfo.outputPath(`manual-source-full-width-${scenario.sectionId}-${viewport.name}-${testInfo.project.name}.png`)
+      });
+    }
+  }
 });

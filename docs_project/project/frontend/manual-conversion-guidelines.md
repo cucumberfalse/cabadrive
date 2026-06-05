@@ -74,6 +74,15 @@ second guide destination.
   source-as-is assets. Do not translate, relabel, redraw, recolor, clean,
   reconstruct, retouch, mask, inpaint, remove meaningful content, or otherwise
   edit them. Russian explanation must live outside the protected image.
+- Source image cards must declare an explicit reusable display disposition.
+  Use `full-width` for complete or near-complete source pages, sign/marking or
+  signal sheets, major maps, diagrams, source-document examples, transferred
+  infographics, and large protected source visuals that need inspection at
+  manual-content width. Use `compact` only for genuinely small snippets whose
+  source role is compact. Full-width cards must render image and explanation in
+  vertical flow, span the manual content column, preserve aspect ratio, and cap
+  display width at the source/natural asset width so the browser does not
+  upscale low-resolution crops.
 - Infographics must be transferred as high-quality source images, not redrawn
   or reconstructed from approximate CSS/SVG/icon components. If Spanish text is
   removed from an infographic, cleanup is glyph/letter-level only: restore each

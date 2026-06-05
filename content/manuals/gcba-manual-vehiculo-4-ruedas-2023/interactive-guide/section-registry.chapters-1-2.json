@@ -3325,8 +3325,7 @@
               "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 180,
-              "maxHeightCssPx": 90,
+              "maxWidthCssPx": 1110,
               "noUpscale": true
             },
             "sourceIntegrity": {
@@ -3357,8 +3356,7 @@
               "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 180,
-              "maxHeightCssPx": 80,
+              "maxWidthCssPx": 1150,
               "noUpscale": true
             },
             "sourceIntegrity": {
@@ -5619,8 +5617,7 @@
             "height": 300,
             "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 640,
-              "maxHeightCssPx": 300,
+              "maxWidthCssPx": 820,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -5651,8 +5648,7 @@
             "height": 430,
             "sha256": "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 680,
-              "maxHeightCssPx": 430,
+              "maxWidthCssPx": 850,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -6345,8 +6341,7 @@
             "height": 260,
             "sha256": "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 680,
-              "maxHeightCssPx": 260,
+              "maxWidthCssPx": 860,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -6414,8 +6409,7 @@
             "height": 900,
             "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 480,
-              "maxHeightCssPx": 900,
+              "maxWidthCssPx": 720,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -6795,8 +6789,7 @@
             "height": 175,
             "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 680,
-              "maxHeightCssPx": 175,
+              "maxWidthCssPx": 1220,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -7242,8 +7235,7 @@
             "height": 2200,
             "sha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 520,
-              "maxHeightCssPx": 2200,
+              "maxWidthCssPx": 1500,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -7949,7 +7941,7 @@
               "sha256": "e1d0495817ba757b9d4f5acd1862ddb911170ee0094859f19548910e61edf066"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1190,
               "noUpscale": true
             },
             "infographicTransfer": {
@@ -8037,7 +8029,7 @@
               "sha256": "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1220,
               "noUpscale": true
             },
             "infographicTransfer": {
@@ -9101,7 +9093,7 @@
               "sha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1260,
               "noUpscale": true
             },
             "sourceIntegrity": {
@@ -9133,7 +9125,7 @@
               "sha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
             },
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1060,
               "noUpscale": true
             },
             "sourceIntegrity": {
@@ -9914,7 +9906,7 @@
             "height": 335,
             "sha256": "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 680,
+              "maxWidthCssPx": 780,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -10455,7 +10447,7 @@
             "height": 430,
             "sha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1350,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -11288,7 +11280,7 @@
             "height": 1125,
             "sha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 1175,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -11585,7 +11577,7 @@
             "height": 4209,
             "sha256": "8c4ed6bcc2516581a8e5bfb068c8b8b6b0c0df8e665ab9d398fe42a26e3dba2f",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -11623,7 +11615,7 @@
             "height": 4209,
             "sha256": "4dd019b39b4e1982900161d3fd024270a1708b86114286f29843d36c5026dd7f",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -11801,7 +11793,7 @@
             "height": 4209,
             "sha256": "4ed4b8876313965f16da52fea58e6fb516f2655032d50c765e5deb0d8350aacc",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -11839,7 +11831,7 @@
             "height": 4209,
             "sha256": "64e7b58ee9191fb5ad8728114b3d6106b62087aaacca77ace472d415bce16f91",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12081,7 +12073,7 @@
             "height": 4209,
             "sha256": "c7151985e7566ab5f486062a702404b95b271c1725d60bd29d10353d143e9e09",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12119,7 +12111,7 @@
             "height": 4209,
             "sha256": "b55db1b742a50f86c95d4c96d7de70bb47ecb00541cb8595ab8ee64e7c86eb47",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12157,7 +12149,7 @@
             "height": 4209,
             "sha256": "69c19855235fd4e54c237d36cbb67538e317d7b3eb2f8e344867066c048710b9",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12195,7 +12187,7 @@
             "height": 4209,
             "sha256": "1783efe539fd11f7579921236f4fb322b906efdecc6ad6a407de70cfe21cfb23",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12387,7 +12379,7 @@
             "height": 4209,
             "sha256": "932bd99473d187250f5e52afebe949a7007709a2d22dcb79bc3b4bc1e8df9235",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12425,7 +12417,7 @@
             "height": 4209,
             "sha256": "1d9b026b4bccdfcba495947ae6f617ba22b6687d696b665afd22441b3d9bfc7a",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12603,7 +12595,7 @@
             "height": 4209,
             "sha256": "5bab555cb39809ca28fa3f30fbe699d69035d4375b5eab4473b4332355d990f7",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12642,7 +12634,7 @@
             "height": 4209,
             "sha256": "e58d5f2e5aca41fc39a30b2cdae6c587b15167dd852515299330228f9e20e4c1",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12889,7 +12881,7 @@
             "height": 4209,
             "sha256": "6c961a36e9544013b16df5f48d5c91d820e54f15e6abdd589699388da7e7a0fd",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12927,7 +12919,7 @@
             "height": 4209,
             "sha256": "2e0cfb47f48bc5bb6bc89251d001d7f9c789a2a6a497ae5968f9e164cd3c509e",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -12965,7 +12957,7 @@
             "height": 4209,
             "sha256": "5238fc47d05525158ec9197cdeec43d5c5a80d09098f3d5751dbefc45371b47d",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {
@@ -13003,7 +12995,7 @@
             "height": 4209,
             "sha256": "59feb405d2287761159b70167e02b01b47474d42e4930dd76a3fb835ef2fc005",
             "runtimeDisplaySize": {
-              "maxWidthCssPx": 760,
+              "maxWidthCssPx": 2976,
               "noUpscale": true
             },
             "extractionScaleEvidence": {

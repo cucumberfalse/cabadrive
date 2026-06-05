@@ -65,6 +65,8 @@ type OriginalSourceImageTextException = {
   russianExplanationOutsideImage: true;
 };
 
+export type ManualSourceImageCardDisplayMode = "compact" | "full-width";
+
 export type ManualGuideSourcePage = {
   sourcePage: number;
   manualManifestPointer: string;
@@ -663,6 +665,8 @@ export type ManualGuideContentBlock =
       cards: {
         id: string;
         titleRu: string;
+        displayMode: ManualSourceImageCardDisplayMode;
+        maxDisplayWidthPx?: number;
         sourcePage: number;
         sourceRegion: {
           x: number;

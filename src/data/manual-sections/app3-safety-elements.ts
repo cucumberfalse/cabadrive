@@ -177,6 +177,8 @@ export const app3SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "app3-seatbelt-source-card",
           titleRu: "Что означает исходное фото",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1175,
           sourcePage: 176,
           sourceRegion: { x: 875, y: 1250, width: 1175, height: 1125 },
           assetPath: `${assetRoot}/seatbelt-source-as-is.png`,

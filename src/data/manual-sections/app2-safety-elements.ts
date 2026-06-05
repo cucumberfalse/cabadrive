@@ -155,6 +155,8 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "app2-mirror-orientation-source-card",
           titleRu: "Исходные фото зеркал",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1260,
           sourcePage: 130,
           sourceRegion: { x: 930, y: 1960, width: 1260, height: 125 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.png`,
@@ -195,6 +197,8 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "app2-seatbelt-use-source-card",
           titleRu: "Исходные фото положения ремня",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1060,
           sourcePage: 131,
           sourceRegion: { x: 1015, y: 2005, width: 1060, height: 285 },
           assetPath: `${assetRoot}/seatbelt-use-photo-source-as-is.png`,
@@ -235,6 +239,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "app2-headrest-height-source-card",
           titleRu: "Исходная схема высоты",
+          displayMode: "compact",
           sourcePage: 132,
           sourceRegion: { x: 1330, y: 2240, width: 185, height: 105 },
           assetPath: `${assetRoot}/headrest-height-diagram-source-as-is.png`,
@@ -247,6 +252,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         {
           id: "app2-headrest-distance-source-card",
           titleRu: "Исходная схема дистанции",
+          displayMode: "compact",
           sourcePage: 132,
           sourceRegion: { x: 1520, y: 2250, width: 260, height: 95 },
           assetPath: `${assetRoot}/headrest-distance-diagram-source-as-is.png`,

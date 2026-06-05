@@ -80,6 +80,8 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
         {
           id: "app3-body-posture-source-card",
           titleRu: "Что означает исходная схема",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1350,
           sourcePage: 161,
           sourceRegion: { x: 875, y: 1575, width: 1275, height: 725 },
           assetPath: `${assetRoot}/body-posture-source-as-is.png`,

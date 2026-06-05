@@ -78,6 +78,8 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
         {
           id: "mobility-context-transferred-card",
           titleRu: "Перенесенный визуал про поездки женщин",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 1220,
           sourcePage: 100,
           sourceRegion: { x: 900, y: 1830, width: 1220, height: 175 },
           assetPath: `${assetRoot}/mobility-context-transferred-infographic.png`,
