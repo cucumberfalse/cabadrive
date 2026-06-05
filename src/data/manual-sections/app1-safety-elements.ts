@@ -24,6 +24,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
@@ -47,7 +48,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "Source page 104 is the Appendix I divider and is recorded in registry evidence, not as a standalone runtime article.",
       "Pages 105-119 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
       "Page 119 is shared: the Equipaje paragraphs before the Otros elementos de seguridad obligatorios heading belong to this safety-elements section; the heading and following obligatory equipment content belong to the next section.",
-      "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text."
+      "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text.",
+      "The blind-spot visual is a tight source-as-is direct-PDF region crop from the official page 108 visual; Spanish heading, definition, diagram labels, and blue conclusion remain unchanged inside the image, with Russian explanation outside."
     ]
   },
   blocks: [
@@ -160,6 +162,50 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Перед маневром нужно снизить скорость, включить указатель, проверить зеркала, наклониться вперед и проверить ситуацию не менее двух раз.",
         "Во время движения используйте периферическое зрение и поворот головы через плечо.",
         "Сертифицированные выпуклые зеркала разрешены, но они делают объекты визуально меньше и дальше."
+      ]
+    },
+    {
+      id: "blind-spot-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Слепая зона на схеме",
+      sourceTextEs:
+        "¿A qué se denomina punto ciego? Cuanto más grande es el vehículo, mayor es el punto ciego.",
+      cards: [
+        {
+          id: "app1-blind-spot-source-card",
+          titleRu: "Как растет слепая зона",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 546,
+          minDisplayWidthPx: 546,
+          sourcePage: 109,
+          sourceRegion: { x: 838, y: 1100, width: 1525, height: 1100 },
+          assetPath: `${assetRoot}/blind-spot-source-as-is.jpg`,
+          altRu:
+            "Официальная схема слепых зон для автомобилей, мотоциклов, грузовиков и автобусов.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
+          termTranslations: [
+            { termEs: "PUNTO CIEGO AUTOS", translationRu: "Слепая зона автомобилей" },
+            { termEs: "PUNTO CIEGO MOTOS", translationRu: "Слепая зона мотоциклов" },
+            { termEs: "CAMIONES Y COLECTIVOS", translationRu: "Грузовики и автобусы" },
+            {
+              termEs: "Cuanto más grande es el vehículo, mayor es el punto ciego.",
+              translationRu: "Чем больше транспортное средство, тем больше слепая зона."
+            }
+          ],
+          bodyRu:
+            "На схеме видно главное правило: у более крупного транспорта зоны, которые водитель не видит напрямую или через зеркала, становятся больше. Испанские подписи внутри картинки не переводились, не закрашивались и не перерисовывались."
+        }
+      ],
+      visualNotes: [
+        "The runtime card is byte-identical to the feature 034 validation crop from the official PDF region.",
+        "The crop removes only surrounding page whitespace, the unrelated upper tire panel, and the printed page number.",
+        "The official Spanish heading, definition sentence, visual labels, road diagram, and blue conclusion remain protected image pixels."
       ]
     },
     {

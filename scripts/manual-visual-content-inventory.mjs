@@ -12,6 +12,8 @@ const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
 const noAvanzarSourceAssetPath =
   "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
+const blindSpotCropEvidencePath =
+  "content/validation/manual-guide-blind-spot-source-crop.evidence.json";
 
 const bodyTextBaseline = {
   documentBodyTextFontSizePx: 16,
@@ -77,6 +79,7 @@ const domSupportedReadableCardIds = new Set([
 ]);
 
 const sourceTextSupportingCardIds = new Set([
+  "app1-blind-spot-source-card",
   "app2-hospital-map-source-card",
   "app3-body-posture-source-card",
   "app3-seatbelt-source-card",
@@ -374,6 +377,20 @@ function dispositionForCard(card, cropRecord) {
         "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context."
     };
   }
+  if (card.cardId === "app1-blind-spot-source-card") {
+    const cropEvidence = existsSync(blindSpotCropEvidencePath) ? readJson(blindSpotCropEvidencePath) : null;
+    const target = cropEvidence?.targets?.find((entry) => entry.cardId === card.cardId);
+    return {
+      disposition: "implemented-source-limited-blind-spot-crop",
+      reason:
+        "Focused official page 108 blind-spot visual was added as a tight direct-PDF source-as-is crop. The card preserves internal Spanish pixels, excludes unrelated page content, caps display at the natural source-limited width, and renders Russian explanation outside the image.",
+      sourcePage: 108,
+      pdfPage: target?.sourcePage ?? 109,
+      beforeUsefulRatios: target?.beforeUsefulRatios ?? null,
+      afterUsefulRatios: target?.outputUsefulRatios ?? null,
+      sourceQualityDisposition: target?.sourceQualityDisposition ?? null
+    };
+  }
   if (card.cardId === "app2-hospital-map-source-card") {
     return {
       disposition: "corrected-best-official-map-only-crop",
@@ -480,6 +497,27 @@ function textReadabilityForCard(card, cropRecord) {
             "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation."
         }
       ],
+      requiresOwnerDisposition: false
+    };
+  }
+  if (card.cardId === "app1-blind-spot-source-card") {
+    return {
+      relevance: "required",
+      disposition: "implemented-source-limited-blind-spot-crop",
+      intendedReadableText:
+        "Official Spanish heading, definition sentence, PUNTO CIEGO AUTOS/MOTOS labels, CAMIONES Y COLECTIVOS label, and blue conclusion inside the protected blind-spot visual.",
+      inspectedSample: "App1 page 108 blind-spot crop rendered from PDF page/render file 109.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 10,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText:
+        "The smallest embedded labels remain below body-text height because the official PDF embeds the visual as a source-limited raster; the crop is capped at natural width and is not browser-upscaled.",
+      viewportComparisons: readabilityViewportComparisons(card, renderedImageWidthPx, 10, "implemented-source-limited-blind-spot-crop"),
+      strategyApplied:
+        "The runtime card uses maxDisplayWidthPx/minDisplayWidthPx equal to the natural 546px asset width, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the source-limited visual.",
+      evidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json plus focused Playwright checks for app1-blind-spot-source-card",
+      sourceLimitation:
+        "Direct official PDF region rendering at x5 produced a 546x440 crop; higher-scale raster enlargement was intentionally not committed because it would not add official source detail.",
       requiresOwnerDisposition: false
     };
   }

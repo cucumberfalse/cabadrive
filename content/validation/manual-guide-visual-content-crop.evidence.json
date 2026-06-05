@@ -1097,6 +1097,83 @@
       {
         "sectionId": "app1-safety-elements",
         "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
+        "blockId": "blind-spot-source-visual",
+        "cardId": "app1-blind-spot-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 546,
+        "minDisplayWidthPx": 546,
+        "sourcePage": 108,
+        "sourceRegion": {
+          "x": 838,
+          "y": 1100,
+          "width": 1525,
+          "height": 1100
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+        "dimensions": {
+          "width": 546,
+          "height": 440
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-source-limited-blind-spot-crop",
+        "reason": "Focused official page 108 blind-spot visual was added as a tight direct-PDF source-as-is crop. The card preserves internal Spanish pixels, excludes unrelated page content, caps display at the natural source-limited width, and renders Russian explanation outside the image.",
+        "pdfPage": 109,
+        "beforeUsefulRatios": {
+          "areaRatio": 0.22527427599314734,
+          "heightRatio": 0.48693586698337293,
+          "widthRatio": 0.4626364399664148
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.7726648351648352,
+          "heightRatio": 0.8522727272727273,
+          "widthRatio": 0.9065934065934066
+        },
+        "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-source-limited-blind-spot-crop",
+          "intendedReadableText": "Official Spanish heading, definition sentence, PUNTO CIEGO AUTOS/MOTOS labels, CAMIONES Y COLECTIVOS label, and blue conclusion inside the protected blind-spot visual.",
+          "inspectedSample": "App1 page 108 blind-spot crop rendered from PDF page/render file 109.",
+          "renderedImageWidthPx": 546,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "The smallest embedded labels remain below body-text height because the official PDF embeds the visual as a source-limited raster; the crop is capped at natural width and is not browser-upscaled.",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 546,
+                "height": 440
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-source-limited-blind-spot-crop",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 546,
+                "height": 440
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-source-limited-blind-spot-crop",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "The runtime card uses maxDisplayWidthPx/minDisplayWidthPx equal to the natural 546px asset width, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the source-limited visual.",
+          "evidencePath": "content/validation/manual-guide-blind-spot-source-crop.evidence.json plus focused Playwright checks for app1-blind-spot-source-card",
+          "sourceLimitation": "Direct official PDF region rendering at x5 produced a 546x440 crop; higher-scale raster enlargement was intentionally not committed because it would not add official source detail.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app1-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
         "blockId": "mirror-orientation-source-visual",
         "cardId": "mirror-orientation-source-card",
         "displayMode": "compact",
@@ -3743,6 +3820,15 @@
         "disposition": "referenced-current-manual-visual"
       },
       {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 546,
+          "height": 440
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
         "referencedByManualData": true,
         "dimensions": {
@@ -4966,11 +5052,12 @@
       },
       "sourceImageCardRelevanceCounts": {
         "none": 12,
-        "supporting": 10,
-        "required": 18
+        "required": 19,
+        "supporting": 10
       },
       "sourceImageCardDispositionCounts": {
         "not-intended-readable": 12,
+        "implemented-source-limited-blind-spot-crop": 1,
         "readable-via-selectable-dom-overlay": 5,
         "implemented-best-official-map-only-crop-with-source-limited-label-detail": 1,
         "readable-with-adjacent-dom-text": 4,
@@ -4978,8 +5065,9 @@
         "implemented-representative-focused-official-sign-crop": 1,
         "implementation-feedback-needs-source-region-verification": 1
       },
-      "sourceImageCardDispositionTotal": 40,
+      "sourceImageCardDispositionTotal": 41,
       "requiredCardIds": [
+        "app1-blind-spot-source-card",
         "app2-hospital-map-source-card",
         "app4-horizontal-page-195-source-card",
         "app4-horizontal-page-196-source-card",
@@ -5051,6 +5139,7 @@
         "cedulas-source-card"
       ],
       "naturalWidthMinDisplayCardIds": [
+        "app1-blind-spot-source-card",
         "app2-hospital-map-source-card",
         "app2-mirror-orientation-source-card",
         "app4-horizontal-page-195-source-card",
@@ -5137,9 +5226,9 @@
       }
     },
     "summary": {
-      "sourceImageCardCount": 40,
+      "sourceImageCardCount": 41,
       "sourceArtworkCount": 2,
-      "sectionAssetFileCount": 136,
+      "sectionAssetFileCount": 137,
       "correctedAppendixIvCount": 16,
       "appendixIvPagesCovered": [
         185,

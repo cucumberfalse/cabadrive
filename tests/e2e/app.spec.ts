@@ -4594,6 +4594,13 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       readableScrollCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
     },
     {
+      sectionId: "app1-safety-elements",
+      hash: "/#manual-section-app1-safety-elements",
+      cards: ["app1-blind-spot-source-card"],
+      usefulContentCards: ["app1-blind-spot-source-card"],
+      readableScrollCards: [{ id: "app1-blind-spot-source-card", minDisplayWidthPx: 546 }]
+    },
+    {
       sectionId: "app4-signs-horizontal",
       hash: "/#manual-section-app4-signs-horizontal",
       cards: ["app4-horizontal-page-195-source-card"],
@@ -4651,6 +4658,37 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
   await expect(noAvanzarCard).not.toContainText("источник");
   await expect(noAvanzarCard).not.toContainText("фрагмент");
+  await page.goto("/#manual-section-app1-safety-elements");
+  const blindSpotCard = page.locator('[data-card-id="app1-blind-spot-source-card"]');
+  await expect(blindSpotCard).toBeVisible();
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("src", /blind-spot-source-as-is\.jpg/);
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("PUNTO CIEGO AUTOS");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("Слепая зона автомобилей");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("CAMIONES Y COLECTIVOS");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("Грузовики и автобусы");
+  await expect(blindSpotCard).not.toContainText("источник");
+  await expect(blindSpotCard).not.toContainText("фрагмент");
+  const blindSpotSizing = await blindSpotCard.locator("img").evaluate(async (image: HTMLImageElement) => {
+    await image.decode?.().catch(() => undefined);
+    const rect = image.getBoundingClientRect();
+    const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      renderedWidth: rect.width,
+      renderedHeight: rect.height,
+      cardWidth: cardRect?.width ?? 0
+    };
+  });
+  expect(blindSpotSizing.naturalWidth).toBe(546);
+  expect(blindSpotSizing.naturalHeight).toBe(440);
+  expect(blindSpotSizing.renderedWidth).toBeLessThanOrEqual(546);
+  expect(blindSpotSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(blindSpotSizing.cardWidth * 0.7, 546));
+  await page.goto("/#manual-section-app4-signs-regulatory");
   const noAvanzarSizing = await page.evaluate(async () => {
     function redBounds(image: HTMLImageElement, crop: { x: number; y: number; width: number; height: number }) {
       const canvas = document.createElement("canvas");

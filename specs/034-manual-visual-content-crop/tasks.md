@@ -440,7 +440,7 @@
   re-extract or verify `app2-hospital-map-source-card` from the best official
   original source so labels are readable at body-text scale, without translating
   or modifying the map image.
-- [ ] T135 Implementation Agent must insert/display the blind-spot visual
+- [x] T135 Implementation Agent must insert/display the blind-spot visual
   as-is from the official original; it should be full-width/tight like the
   original and not a small centered image inside a large blank area.
 - [x] T136 Implementation Agent must audit the whole learner-facing runtime
@@ -461,6 +461,13 @@
   Partial 2026-06-05 representative slice: evidence for `NO AVANZAR` records
   source path, crop region, method, dimensions, hash, runtime display bounds,
   protected/external-caption boundary, and remaining Appendix IV scope.
+  Partial 2026-06-05 blind-spot slice: evidence for
+  `app1-blind-spot-source-card` records printed/manual page `108`, PDF/render
+  page `109`, direct-PDF crop and final trim coordinates, `546x440`
+  dimensions, SHA-256
+  `b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35`,
+  runtime no-upscale display bounds, source-limited PDF raster disposition, and
+  protected-image policy.
 - [ ] T139 Implementation Agent must add or update tests/audit scripts so
   missing meaningful visuals, tiny image displays, excessive blank margins,
   protected-image edits, missing separate translations, and learner-facing
@@ -469,6 +476,11 @@
   `NO AVANZAR` asset/hash/no-upscale policy, separate term translation, visible
   remaining-scope evidence, and Playwright readability relative to the overview
   sheet.
+  Partial 2026-06-05 blind-spot slice: tests and audits now assert the
+  blind-spot asset/hash/no-upscale policy, source-as-is visible Spanish
+  exception, page `108`/PDF page `109` offset, separate Russian DOM term
+  translations, absent learner-facing provenance wording, and remaining tire /
+  broader Appendix IV pending scope.
 - [ ] T140 Implementation Agent must run and record focused content tests,
   `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, focused Playwright screenshots/checks for
@@ -491,6 +503,9 @@
   Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
   `NO AVANZAR` is recorded as `implemented-representative`; blind spot and tire
   visuals remain required pending examples.
+  Partial 2026-06-05 blind-spot slice: blind-spot visual is recorded as
+  `implemented` with source-as-is crop evidence; tire manufacturing/tread-life
+  remains pending and `NO AVANZAR` remains `implemented-representative`.
 - [ ] T144 Implementation Agent evidence must specifically cover the user
   examples: Appendix IV regulatory signs and `NO AVANZAR`, hospital map,
   seatbelt/headrest copy problems, blind-spot visual, tire
@@ -500,6 +515,10 @@
   Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
   `NO AVANZAR` now has concrete representative evidence; broad Appendix IV
   rows/panels, blind spot, and tire examples remain visible in audit evidence.
+  Partial 2026-06-05 blind-spot slice: blind spot now has concrete evidence in
+  the app1 runtime card, visual completeness audit, crop inventory, registry,
+  static tests, and focused Playwright assertions. Tire and broad Appendix IV
+  rows/panels remain visible as pending/non-complete scope.
 - [x] T145 Implementation Agent app1 equipment slice restores the official
   Appendix I page 120 `Matafuegos` and `Chaleco reflectivo` images as
   source-faithful crops with Russian translations outside the image; app2/app3
@@ -1411,3 +1430,78 @@
   at its natural `200px` width without browser upscaling, and the focused sign's
   red-ring bbox is more than `1.45x` wider than the same sign measured inside
   the overview sheet.
+
+## Blind-Spot Source Visual Evidence - 2026-06-05
+
+- Implementation Agent blind-spot slice continued in assigned PR `#200`
+  worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`. Startup status before edits
+  was clean on assigned head
+  `786bef87bb50d303e7a3cced6439520bf6eb73d9`; parallel worktree/branch/PR
+  preservation was honored and no sibling worktrees, branches, commits, dirty
+  diffs, PR state, or process memory were reverted.
+- The user-reported official visual headed
+  `¿A qué se denomina punto ciego?` is implemented as
+  `app1-blind-spot-source-card` in
+  `src/data/manual-sections/app1-safety-elements.ts`, immediately after the
+  `mirrors-and-blind-spots` block. Runtime title/body/term translations are
+  Russian DOM text outside the image; learner-facing provenance wording such as
+  `источник`, `исходный фрагмент`, `рабочий фрагмент`, and
+  `Визуал источника` is absent from the card.
+- Source page numbering is intentionally offset and recorded explicitly:
+  printed/manual page `108` is rendered by the local PDF/page asset
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-109.jpg`
+  and PDF helper `sourcePage: 109`. Evidence and crop filenames use
+  `page-108` for the printed/manual page; registry extraction evidence records
+  `pdfPage: 109` for the render/PDF page.
+- Official source extraction used
+  `content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf`
+  through `scripts/manual-visual-content-crops.swift` with direct PDF region
+  rendering. The recorded source region is
+  `{ x: 838, y: 1100, width: 1525, height: 1100 }` at base scale `5`; final
+  trim is `{ x: 363, y: 1, width: 546, height: 440 }`, removing only unrelated
+  surrounding page content/whitespace and the printed page number.
+- Runtime asset
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg`
+  and validation crop
+  `content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg`
+  are byte-identical `546x440` JPEG files, SHA-256
+  `b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35`.
+  Crop evidence is recorded in
+  `content/validation/manual-guide-blind-spot-source-crop.evidence.json`.
+- Source quality disposition is
+  `source-limited-native-raster-in-official-pdf`: the official PDF embeds this
+  visual at limited raster detail, so the committed crop preserves the best
+  official direct-PDF pixels as-is, trims tightly, caps display at natural
+  `546px` width, and prevents browser upscaling rather than enlarging a
+  thumbnail.
+- Protected-image boundary: the Spanish internal pixels, including
+  `PUNTO CIEGO AUTOS`, `PUNTO CIEGO MOTOS`, `CAMIONES Y COLECTIVOS`, and
+  `Cuanto más grande es el vehículo, mayor es el punto ciego.`, remain
+  unchanged. No translation, relabeling, redraw, recolor, cleanup, retouch,
+  mask, inpaint, or reconstruction was performed inside the image. Russian
+  explanations/translations are separate DOM text outside the protected image.
+- Registry/evidence/tests updated:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  `content/validation/manual-guide-visual-completeness.evidence.json`,
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `scripts/manual-guide-visual-completeness-audit.mjs`,
+  `scripts/manual-visual-content-inventory.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
+  The audit now records `blind-spot-visual` as `implemented`; tire
+  manufacturing/tread-life remains pending and `NO AVANZAR` remains
+  `implemented-representative`.
+- Verification for this slice passed:
+  `node scripts/manual-guide-visual-completeness-audit.mjs`;
+  `node scripts/manual-visual-content-inventory.mjs`;
+  `node --test tests/content-manual-guide-chapters.test.mjs` (`97` tests,
+  `97` pass, `0` fail); `pnpm run validate:manual-guide`;
+  `pnpm run validate:content`; `pnpm exec tsc --noEmit`; `pnpm run build`
+  passed and generated the service worker with `1865` cached assets; focused
+  Playwright source-card scenario
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling" --project=mobile`
+  passed (`1` test, `1` pass); the same focused scenario with
+  `--project=chromium` passed (`1` test, `1` pass). A first parallel Chromium
+  attempt failed before running tests because the mobile run already occupied
+  preview port `5205`; Chromium was rerun sequentially and passed.

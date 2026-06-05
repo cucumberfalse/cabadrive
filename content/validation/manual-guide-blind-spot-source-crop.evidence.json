@@ -1,0 +1,118 @@
+{
+  "extractionMethod" : "Direct source-region crops rendered from the official PDF at probed high scales, using useful-content bounds measured on the prior x5 page-sheet asset plus safety padding. The helper renders the crop-sized PDF region instead of a huge full page, records successful/skipped scales and useful-glyph scale ratios, and never translates, redraws, recolors, cleans, retouches, masks, inpaints, or reconstructs protected pixels.",
+  "featureId" : "034-manual-visual-content-crop",
+  "nonWhiteRule" : "alpha > 0 and any RGB channel below threshold; refined from the initial all-channel wording so saturated sign colors are not missed",
+  "paddingPxAtSourceBaseScale" : 10,
+  "probeRenderScales" : [
+    5
+  ],
+  "quality" : 0.98,
+  "renderMode" : "direct-pdf-source-region",
+  "renderScale" : 5,
+  "schemaVersion" : 1,
+  "skippedRenderScales" : [
+    {
+      "reason" : "Not committed because the official PDF embeds this visual at source-limited raster detail; x5 direct region render already matches the usable native detail and avoids creating a browser-upscaled-looking asset.",
+      "scale" : 12
+    }
+  ],
+  "sourceBaseScale" : 5,
+  "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "targets" : [
+    {
+      "beforeDimensions" : {
+        "height" : 1684,
+        "width" : 1191
+      },
+      "beforeUsefulBounds" : {
+        "height" : 820,
+        "width" : 551,
+        "x" : 297,
+        "y" : 420
+      },
+      "beforeUsefulRatios" : {
+        "areaRatio" : 0.22527427599314734,
+        "heightRatio" : 0.48693586698337293,
+        "widthRatio" : 0.4626364399664148
+      },
+      "cardId" : "app1-blind-spot-source-card",
+      "currentAssetPath" : "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-109.jpg",
+      "finalTrimBounds" : {
+        "height" : 440,
+        "width" : 546,
+        "x" : 363,
+        "y" : 1
+      },
+      "glyphDetailDisposition" : "official-pdf-render-increased-useful-glyph-pixels",
+      "intermediateRenderDimensions" : {
+        "height" : 1100,
+        "width" : 1525
+      },
+      "intermediateUsefulBounds" : {
+        "height" : 483,
+        "width" : 526,
+        "x" : 373,
+        "y" : 11
+      },
+      "maximumSuccessfulProbeScale" : 5,
+      "outputAssetPath" : "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+      "outputDimensions" : {
+        "height" : 440,
+        "width" : 546
+      },
+      "outputSha256" : "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+      "outputSourceAssetPath" : "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+      "outputUsefulBounds" : {
+        "height" : 375,
+        "width" : 495,
+        "x" : 41,
+        "y" : 10
+      },
+      "outputUsefulRatios" : {
+        "areaRatio" : 0.7726648351648352,
+        "heightRatio" : 0.8522727272727273,
+        "widthRatio" : 0.9065934065934066
+      },
+      "renderMode" : "direct-pdf-source-region",
+      "renderProbes" : [
+        {
+          "estimatedBitmapMegabytes" : 6.3991546630859375,
+          "renderDimensions" : {
+            "height" : 1100,
+            "width" : 1525
+          },
+          "renderScale" : 5,
+          "status" : "succeeded",
+          "usefulBounds" : {
+            "height" : 483,
+            "width" : 526,
+            "x" : 373,
+            "y" : 11
+          },
+          "usefulHeightScaleRatioVsBaseAsset" : 0.5890243902439024,
+          "usefulWidthScaleRatioVsBaseAsset" : 0.9546279491833031
+        }
+      ],
+      "renderedUsefulHeightScaleRatio" : 0.5890243902439024,
+      "renderedUsefulWidthScaleRatio" : 0.9546279491833031,
+      "sectionId" : "app1-safety-elements",
+      "selectedRenderScale" : 5,
+      "selectedRenderScaleReason" : "Scale 5.0 was the highest successful committed crop-region render in this run; larger configured probe scales are recorded as skipped with resource evidence.",
+      "skippedRenderScales" : [
+        {
+          "reason" : "Not committed because the official PDF embeds this visual at source-limited raster detail; x5 direct region render already matches the usable native detail and avoids creating a browser-upscaled-looking asset.",
+          "scale" : 12
+        }
+      ],
+      "sourcePage" : 109,
+      "sourceQualityDisposition" : "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling",
+      "sourceRegionAtBaseScale" : {
+        "height" : 1100,
+        "width" : 1525,
+        "x" : 838,
+        "y" : 1100
+      }
+    }
+  ],
+  "whiteThreshold" : 245
+}

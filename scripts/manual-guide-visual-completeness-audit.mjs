@@ -32,6 +32,12 @@ const noAvanzarSourceAssetPath =
   "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 const noAvanzarCropEvidencePath =
   "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const blindSpotAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg";
+const blindSpotSourceAssetPath =
+  "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg";
+const blindSpotCropEvidencePath =
+  "content/validation/manual-guide-blind-spot-source-crop.evidence.json";
 
 const deniedCopyPatterns = [
   {
@@ -118,10 +124,13 @@ const userExampleRecords = [
   {
     id: "blind-spot-visual",
     label: "Blind-spot visual",
-    status: "needs-implementation",
-    sourcePages: [108, 128],
-    runtimeTargets: ["app1-safety-elements", "app2-safety-elements"],
-    notes: "Pending later batch: official full-width blind-spot visual as-is."
+    status: "implemented",
+    sourcePages: [108],
+    runtimeTargets: ["app1-blind-spot-source-card"],
+    assetPath: blindSpotAssetPath,
+    sourceAssetPath: blindSpotSourceAssetPath,
+    notes:
+      "Implemented in the blind-spot focused slice: official page 108 visual is shown source-as-is from a tight direct-PDF crop; Spanish internals are unchanged and Russian explanation/term translations are outside the image."
   },
   {
     id: "tire-manufacturing-tread-life",
@@ -536,6 +545,68 @@ function noAvanzarRecord() {
   };
 }
 
+function blindSpotRecord() {
+  const dimensions = existsSync(blindSpotAssetPath) ? readImageDimensions(blindSpotAssetPath) : null;
+  const sourceDimensions = existsSync(blindSpotSourceAssetPath) ? readImageDimensions(blindSpotSourceAssetPath) : null;
+  const cropEvidence = existsSync(blindSpotCropEvidencePath)
+    ? JSON.parse(readFileSync(blindSpotCropEvidencePath, "utf8"))
+    : null;
+  const target = cropEvidence?.targets?.find((entry) => entry.cardId === "app1-blind-spot-source-card");
+  return {
+    id: "blind-spot-visual",
+    status: "implemented",
+    sourcePage: 108,
+    pdfPage: target?.sourcePage ?? 109,
+    sourceRegion: target?.sourceRegionAtBaseScale ?? {
+      x: 838,
+      y: 1100,
+      width: 1525,
+      height: 1100
+    },
+    finalTrimBounds: target?.finalTrimBounds ?? {
+      x: 363,
+      y: 1,
+      width: 546,
+      height: 440
+    },
+    extractionMethod:
+      "Direct source-faithful PDF region crop from the official GCBA 4-wheel manual using scripts/manual-visual-content-crops.swift at x5. The committed crop preserves the official Spanish heading, definition sentence, diagram labels, and blue conclusion, while excluding only surrounding page whitespace, the unrelated upper tire panel, and the printed page number.",
+    assetPath: blindSpotAssetPath,
+    sourceAssetPath: blindSpotSourceAssetPath,
+    cropEvidencePath: blindSpotCropEvidencePath,
+    dimensions,
+    sourceDimensions,
+    sha256: existsSync(blindSpotAssetPath) ? sha256File(blindSpotAssetPath) : null,
+    sourceSha256: existsSync(blindSpotSourceAssetPath) ? sha256File(blindSpotSourceAssetPath) : null,
+    usefulContentRatios: target
+      ? {
+          before: target.beforeUsefulRatios,
+          after: target.outputUsefulRatios
+        }
+      : null,
+    sourceQualityDisposition: target?.sourceQualityDisposition ?? null,
+    protectedImagePolicy:
+      "The Spanish heading, definition sentence, PUNTO CIEGO AUTOS/MOTOS labels, CAMIONES Y COLECTIVOS label, road diagram, and blue sentence remain unchanged inside the protected image. Russian explanation and term translations are selectable DOM text outside the image.",
+    runtimeDisplay: {
+      cardId: "app1-blind-spot-source-card",
+      maxDisplayWidthPx: dimensions?.width ?? null,
+      minDisplayWidthPx: dimensions?.width ?? null,
+      noUpscale: true,
+      mobileContainedScroll: true,
+      translationDomSelector: ".manual-source-image-term-translations"
+    },
+    terms: [
+      { termEs: "PUNTO CIEGO AUTOS", translationRu: "Слепая зона автомобилей" },
+      { termEs: "PUNTO CIEGO MOTOS", translationRu: "Слепая зона мотоциклов" },
+      { termEs: "CAMIONES Y COLECTIVOS", translationRu: "Грузовики и автобусы" },
+      {
+        termEs: "Cuanto más grande es el vehículo, mayor es el punto ciego.",
+        translationRu: "Чем больше транспортное средство, тем больше слепая зона."
+      }
+    ]
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -545,7 +616,14 @@ const document = {
   scopeStatus: "first-controlled-batch-partial",
   userExamples: userExampleRecords,
   copyAudit,
-  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord(), hospitalMapRecord(), noAvanzarRecord()],
+  visualRecords: [
+    mobilitySpaceRecord(),
+    headrestCombinedRecord(),
+    safetyEquipmentRecord(),
+    hospitalMapRecord(),
+    noAvanzarRecord(),
+    blindSpotRecord()
+  ],
   remainingRequiredExamples: userExampleRecords
     .filter((entry) => !String(entry.status).startsWith("implemented") || String(entry.status).endsWith("representative"))
     .map((entry) => ({

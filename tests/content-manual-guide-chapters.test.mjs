@@ -2038,13 +2038,13 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
 
   const summary = visualCropEvidence.wholeManualInventory.summary;
   const readability = visualCropEvidence.wholeManualInventory.textReadability;
-  assert.equal(summary.sourceImageCardCount, 40);
+  assert.equal(summary.sourceImageCardCount, 41);
   assert.equal(summary.sourceArtworkCount, 2);
   assert.equal(summary.correctedAppendixIvCount, 16);
   assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
   assert.equal(summary.compactSourceImageCardCount, 5);
   assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
-  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 40);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 41);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
   assert.equal(readability.baseline.documentBodyTextFontSizePx, 16);
@@ -2052,11 +2052,12 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
   assert.equal(readability.officialBetterSourceAudit.status, "checked");
   assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
-  assert.equal(readability.sourceImageCardRelevanceCounts.required, 18);
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 19);
   assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-representative-focused-official-sign-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
-  assert.equal(readability.sourceImageCardDispositionTotal, 40);
+  assert.equal(readability.sourceImageCardDispositionTotal, 41);
   assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
   assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
   assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
@@ -2109,6 +2110,18 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(noAvanzarInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(noAvanzarInventory.textReadability.intendedReadableText, /DOM text/u);
   assert.ok(existsSync(noAvanzarCropEvidencePath), "focused NO AVANZAR crop evidence exists");
+  const blindSpotInventory = inventoryByCardId.get("app1-blind-spot-source-card");
+  assert.ok(blindSpotInventory, "blind-spot card exists in whole-manual inventory");
+  assert.equal(blindSpotInventory.disposition, "implemented-source-limited-blind-spot-crop");
+  assert.equal(blindSpotInventory.sourcePage, 108);
+  assert.equal(blindSpotInventory.pdfPage, 109);
+  assert.deepEqual(blindSpotInventory.dimensions, { width: 546, height: 440 });
+  assert.equal(blindSpotInventory.afterUsefulRatios.areaRatio, 0.7726648351648352);
+  assert.equal(blindSpotInventory.textReadability.relevance, "required");
+  assert.equal(blindSpotInventory.textReadability.disposition, "implemented-source-limited-blind-spot-crop");
+  assert.equal(blindSpotInventory.textReadability.renderedImageWidthPx, 546);
+  assert.equal(blindSpotInventory.textReadability.requiresOwnerDisposition, false);
+  assert.match(blindSpotInventory.textReadability.sourceLimitation, /x5 produced a 546x440 crop/u);
   assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
   const hospitalMapInventory = inventoryByCardId.get("app2-hospital-map-source-card");
   assert.equal(hospitalMapInventory.disposition, "corrected-best-official-map-only-crop");
@@ -2182,9 +2195,35 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
   assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
-  assert.equal(examplesById.get("blind-spot-visual").status, "needs-implementation");
+  assert.equal(examplesById.get("blind-spot-visual").status, "implemented");
   assert.equal(examplesById.get("matafuegos-chaleco-reflectivo").status, "implemented-app1-only");
   assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
+  const blindSpotRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "blind-spot-visual");
+  assert.ok(blindSpotRecord, "blind-spot visual has a concrete evidence record");
+  assert.equal(blindSpotRecord.status, "implemented");
+  assert.equal(blindSpotRecord.sourcePage, 108);
+  assert.equal(blindSpotRecord.pdfPage, 109);
+  assert.equal(
+    blindSpotRecord.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+  );
+  assert.equal(
+    blindSpotRecord.sourceAssetPath,
+    "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg"
+  );
+  assert.deepEqual(blindSpotRecord.dimensions, { width: 546, height: 440 });
+  assert.equal(blindSpotRecord.sha256, "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35");
+  assert.equal(blindSpotRecord.runtimeDisplay.cardId, "app1-blind-spot-source-card");
+  assert.equal(blindSpotRecord.runtimeDisplay.maxDisplayWidthPx, 546);
+  assert.equal(blindSpotRecord.runtimeDisplay.noUpscale, true);
+  assert.match(blindSpotRecord.sourceQualityDisposition, /source-limited-native-raster/u);
+  assert.match(blindSpotRecord.protectedImagePolicy, /PUNTO CIEGO AUTOS\/MOTOS/u);
+  assert.deepEqual(blindSpotRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
+    "PUNTO CIEGO AUTOS:Слепая зона автомобилей",
+    "PUNTO CIEGO MOTOS:Слепая зона мотоциклов",
+    "CAMIONES Y COLECTIVOS:Грузовики и автобусы",
+    "Cuanto más grande es el vehículo, mayor es el punto ciego.:Чем больше транспортное средство, тем больше слепая зона."
+  ]);
   const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
   assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
   assert.equal(headrestRecord.status, "implemented-app2-only");
@@ -2276,7 +2315,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.match(noAvanzarRecord.remainingScopeNote, /Remaining Appendix IV breadth/u);
   const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map((entry) => entry.id);
   assert.ok(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"));
-  assert.ok(remainingExampleIds.includes("blind-spot-visual"));
+  assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
   assert.ok(remainingExampleIds.includes("tire-manufacturing-tread-life"));
   assert.match(
     visualCompletenessEvidence.remainingRequiredExamples.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar").remainingScopeNote,
@@ -2800,6 +2839,15 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     height: 163,
     sha256: "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
   };
+  const blindSpot = {
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+    sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+    cropEvidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json",
+    assetKind: "high-resolution-original-source-diagram-blind-spot-page-108",
+    width: 546,
+    height: 440,
+    sha256: "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35"
+  };
   const transferred = [
     {
       assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
@@ -2824,7 +2872,8 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   ];
 
   assert.match(app1SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.jpg/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
+  assert.match(app1SafetyElementsModuleSource, /blind-spot-source-as-is\.jpg/u);
+  assert.match(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /sri-types-transferred-infographic\.png/u);
@@ -2851,6 +2900,51 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.equal(mirrorAsset.sourceIntegrity.surroundingSpanishCaptionAndBodyTextExcluded, true);
   assert.equal(sha256File(mirrorAsset.assetPath), sourceAsIsMirror.sha256);
   assert.equal(sha256File(sourceAsIsMirror.sourceAssetPath), sourceAsIsMirror.sha256);
+
+  const blindSpotAsset = localAssetByPath(safety, blindSpot.assetPath);
+  assert.equal(exceptionPaths.includes(blindSpot.assetPath), true);
+  assert.equal(safety.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(safety.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(blindSpotAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(blindSpotAsset.assetKind, blindSpot.assetKind);
+  assert.equal(blindSpotAsset.containsText, true);
+  assert.equal(blindSpotAsset.visibleSpanish, true);
+  assert.equal(blindSpotAsset.width, blindSpot.width);
+  assert.equal(blindSpotAsset.height, blindSpot.height);
+  assert.equal(blindSpotAsset.sha256, blindSpot.sha256);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.maxWidthCssPx, blindSpot.width);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.minWidthCssPx, blindSpot.width);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.sourceAssetPath, blindSpot.sourceAssetPath);
+  assert.equal(blindSpotAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.unrelatedPageContentExcluded, true);
+  assert.equal(blindSpotAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(blindSpotAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(blindSpotAsset.sourceImageException.scope, "app1-page-108-blind-spot-visual-only");
+  assert.deepEqual(
+    blindSpotAsset.termTranslations?.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    undefined
+  );
+  assert.equal(sha256File(blindSpotAsset.assetPath), blindSpot.sha256);
+  assert.equal(sha256File(blindSpot.sourceAssetPath), blindSpot.sha256);
+
+  const blindSpotSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
+    (entry) => entry.sourceAssetPath === blindSpot.sourceAssetPath
+  );
+  assert.ok(blindSpotSourceRegion, `${blindSpot.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.equal(blindSpotSourceRegion.sourcePage, 108);
+  assert.equal(blindSpotSourceRegion.extractionScaleEvidence.pdfPage, 109);
+  assert.deepEqual(blindSpotSourceRegion.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
+  assert.deepEqual(blindSpotSourceRegion.cropDimensions, { width: blindSpot.width, height: blindSpot.height });
+  assert.equal(blindSpotSourceRegion.cropSha256, blindSpot.sha256);
+  assert.match(blindSpotSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /source-limited-native-raster/u);
+  const blindSpotCropEvidence = JSON.parse(readFileSync(blindSpot.cropEvidencePath, "utf8"));
+  const blindSpotCropTarget = blindSpotCropEvidence.targets.find((entry) => entry.cardId === "app1-blind-spot-source-card");
+  assert.equal(blindSpotCropTarget.sourcePage, 109, "direct PDF render uses PDF page/render file 109");
+  assert.equal(blindSpotSourceRegion.sourcePage, 108, "runtime evidence names the printed/manual page shown in the official crop");
 
   for (const expectation of transferred) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -3143,6 +3237,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   const expectedFullWidthCardIds = new Set([
     "headrest-position-source-card",
     "sri-types-source-card",
+    "app1-blind-spot-source-card",
     "app1-chaleco-reflectivo-source-card",
     "app1-matafuegos-source-card",
     "app2-hospital-map-source-card",
@@ -3185,6 +3280,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "rva-source-card"
   ]);
   const expectedMinWidthByCardId = new Map([
+    ["app1-blind-spot-source-card", 546],
     ["app2-hospital-map-source-card", 440],
     ["app2-mirror-orientation-source-card", 760],
     ["app4-horizontal-page-195-source-card", 674],
@@ -3206,7 +3302,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-warning-page-188-source-card", 705]
   ]);
 
-  assert.equal(cards.length, 40);
+  assert.equal(cards.length, 41);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(
@@ -3269,6 +3365,17 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(noAvanzarCard.assetPath, noAvanzarAssetPath);
   assert.deepEqual(noAvanzarCard.sourceRegion, { x: 32, y: 85, width: 200, height: 145 });
   assert.equal(noAvanzarCard.hasOfficialSignException, true);
+
+  const blindSpotCard = byId.get("app1-blind-spot-source-card");
+  assert.equal(blindSpotCard.maxDisplayWidthPx, 546);
+  assert.equal(blindSpotCard.minDisplayWidthPx, 546);
+  assert.equal(
+    blindSpotCard.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+  );
+  assert.equal(blindSpotCard.sourcePage, 109);
+  assert.deepEqual(blindSpotCard.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
+  assert.equal(blindSpotCard.hasSourceImageException, true);
 
   assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);

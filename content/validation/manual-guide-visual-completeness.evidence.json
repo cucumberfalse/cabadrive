@@ -55,16 +55,16 @@
     {
       "id": "blind-spot-visual",
       "label": "Blind-spot visual",
-      "status": "needs-implementation",
+      "status": "implemented",
       "sourcePages": [
-        108,
-        128
+        108
       ],
       "runtimeTargets": [
-        "app1-safety-elements",
-        "app2-safety-elements"
+        "app1-blind-spot-source-card"
       ],
-      "notes": "Pending later batch: official full-width blind-spot visual as-is."
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+      "notes": "Implemented in the blind-spot focused slice: official page 108 visual is shown source-as-is from a tight direct-PDF crop; Spanish internals are unchanged and Russian explanation/term translations are outside the image."
     },
     {
       "id": "tire-manufacturing-tread-life",
@@ -439,6 +439,78 @@
         }
       ],
       "remainingScopeNote": "This record covers the user-reported NO AVANZAR example only. Remaining Appendix IV breadth is still represented by source-limited overview sheets unless later slices add more focused official sign rows or panels."
+    },
+    {
+      "id": "blind-spot-visual",
+      "status": "implemented",
+      "sourcePage": 108,
+      "pdfPage": 109,
+      "sourceRegion": {
+        "height": 1100,
+        "width": 1525,
+        "x": 838,
+        "y": 1100
+      },
+      "finalTrimBounds": {
+        "height": 440,
+        "width": 546,
+        "x": 363,
+        "y": 1
+      },
+      "extractionMethod": "Direct source-faithful PDF region crop from the official GCBA 4-wheel manual using scripts/manual-visual-content-crops.swift at x5. The committed crop preserves the official Spanish heading, definition sentence, diagram labels, and blue conclusion, while excluding only surrounding page whitespace, the unrelated upper tire panel, and the printed page number.",
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+      "cropEvidencePath": "content/validation/manual-guide-blind-spot-source-crop.evidence.json",
+      "dimensions": {
+        "width": 546,
+        "height": 440
+      },
+      "sourceDimensions": {
+        "width": 546,
+        "height": 440
+      },
+      "sha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+      "sourceSha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+      "usefulContentRatios": {
+        "before": {
+          "areaRatio": 0.22527427599314734,
+          "heightRatio": 0.48693586698337293,
+          "widthRatio": 0.4626364399664148
+        },
+        "after": {
+          "areaRatio": 0.7726648351648352,
+          "heightRatio": 0.8522727272727273,
+          "widthRatio": 0.9065934065934066
+        }
+      },
+      "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling",
+      "protectedImagePolicy": "The Spanish heading, definition sentence, PUNTO CIEGO AUTOS/MOTOS labels, CAMIONES Y COLECTIVOS label, road diagram, and blue sentence remain unchanged inside the protected image. Russian explanation and term translations are selectable DOM text outside the image.",
+      "runtimeDisplay": {
+        "cardId": "app1-blind-spot-source-card",
+        "maxDisplayWidthPx": 546,
+        "minDisplayWidthPx": 546,
+        "noUpscale": true,
+        "mobileContainedScroll": true,
+        "translationDomSelector": ".manual-source-image-term-translations"
+      },
+      "terms": [
+        {
+          "termEs": "PUNTO CIEGO AUTOS",
+          "translationRu": "Слепая зона автомобилей"
+        },
+        {
+          "termEs": "PUNTO CIEGO MOTOS",
+          "translationRu": "Слепая зона мотоциклов"
+        },
+        {
+          "termEs": "CAMIONES Y COLECTIVOS",
+          "translationRu": "Грузовики и автобусы"
+        },
+        {
+          "termEs": "Cuanto más grande es el vehículo, mayor es el punto ciego.",
+          "translationRu": "Чем больше транспортное средство, тем больше слепая зона."
+        }
+      ]
     }
   ],
   "remainingRequiredExamples": [
@@ -448,12 +520,6 @@
       "status": "implemented-representative",
       "notes": "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context.",
       "remainingScopeNote": "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row."
-    },
-    {
-      "id": "blind-spot-visual",
-      "label": "Blind-spot visual",
-      "status": "needs-implementation",
-      "notes": "Pending later batch: official full-width blind-spot visual as-is."
     },
     {
       "id": "tire-manufacturing-tread-life",

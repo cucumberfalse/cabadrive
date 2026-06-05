@@ -8221,6 +8221,42 @@
               },
               "sha256": "bc3cf04d3bc4fb4b6afeb85b8c75b9d3977868c54e960aad053669617646726a"
             }
+          },
+          {
+            "sourcePage": 108,
+            "sourceRegion": {
+              "height": 1100,
+              "width": 1525,
+              "x": 838,
+              "y": 1100
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+            "cropDimensions": {
+              "height": 440,
+              "width": 546
+            },
+            "cropSha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "source-native-equivalent-or-better",
+              "method": "Direct official PDF region render using scripts/manual-visual-content-crops.swift. The committed crop keeps the printed page 108 blind-spot visual as-is, removes only surrounding page whitespace, the unrelated upper tire panel, and the printed page number, and does not translate, relabel, redraw, recolor, clean, retouch, mask, inpaint, or reconstruct protected pixels.",
+              "outputDimensions": {
+                "height": 440,
+                "width": 546
+              },
+              "sha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+              "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+              "pdfPage": 109,
+              "sourceBaseScale": 5,
+              "selectedRenderScale": 5,
+              "finalTrimBoundsAtRenderScale": {
+                "height": 440,
+                "width": 546,
+                "x": 363,
+                "y": 1
+              },
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -8438,11 +8474,67 @@
               "overlayTextSelectability": "selectable-dom-text",
               "cleanupMethod": "glyph-letter-level-background-restoration"
             }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-diagram-blind-spot-page-108",
+            "assetCategory": "source-as-is-diagram",
+            "width": 546,
+            "height": 440,
+            "sha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "source-native-equivalent-or-better",
+              "method": "Runtime blind-spot visual is byte-identical to the feature 034 validation crop from the official PDF region; copied without resizing, cleanup, retouching, relabeling, translation, or redraw.",
+              "outputDimensions": {
+                "height": 440,
+                "width": 546
+              },
+              "sha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35",
+              "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 546,
+              "minWidthCssPx": 546,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishBodyTextIncludedBecauseItIsPartOfTheOfficialVisual": true,
+              "unrelatedPageContentExcluded": true,
+              "tightCropRemovesOuterWhitespaceOnly": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-108-blind-spot-visual-only"
+            }
           }
         ],
         "visibleSpanishStatus": {
-          "status": "pass",
-          "evidence": "Appendix I runtime images no longer expose Spanish body text in the mirror visual; the mirror asset is cropped to the protected photo collage only, and the official 10% mirror rule plus horn guidance are Russian selectable page text outside the image."
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-108-blind-spot-visual-only"
+            }
+          ]
         },
         "selectableTextStatus": {
           "status": "pass",
@@ -8465,7 +8557,8 @@
           "Page 119 is shared: app1-safety-elements owns the Equipaje luggage/max-load masks before the Otros elementos de seguridad obligatorios heading; the other-required route starts at that heading.",
           "Mirror orientation remains a protected source-as-is crop with Russian explanation outside the image.",
           "Headrest and SRI visuals are transferred from focused x5 source crops; cleanup is limited to detected Spanish glyph and antialias pixels inside label regions while preserving silhouettes, guide lines, pictograms, numerals, and geometry.",
-          "No photograph, traffic sign, or road marking is altered."
+          "No photograph, traffic sign, or road marking is altered.",
+          "Feature 034 blind-spot visual slice adds the official page 108 blind-spot diagram as a tight source-as-is crop; internal Spanish pixels are protected and Russian explanation/term translations are outside the image."
         ],
         "checkerResult": "pass"
       },
