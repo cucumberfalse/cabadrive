@@ -482,6 +482,10 @@
   manufacturing/tread-life visual, `Matafuegos`, `Chaleco reflectivo`,
   headrest combined diagram/glossary, `50` people mobility-space visual, and
   whole-guide `источник` wording cleanup.
+- [x] T145 Implementation Agent app1 equipment slice restores the official
+  Appendix I page 120 `Matafuegos` and `Chaleco reflectivo` images as
+  source-faithful crops with Russian translations outside the image; app2/app3
+  equipment visuals remain pending for separate slices.
 
 ## First Controlled Batch Evidence - 2026-06-05
 
@@ -1049,3 +1053,79 @@
   `pnpm exec tsc --noEmit`;
   `node scripts/check-feature-memory.mjs --worktree`;
   `git diff --check`.
+
+## App1 Equipment Source Crop Evidence - 2026-06-05
+
+- Implementation Agent app1 equipment slice started from assigned PR `#200`
+  worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, HEAD
+  `840352d30bb2f11c932ef318c329fba674b2b01e`. Startup status was clean on the
+  assigned branch. Parallel work may exist; this slice preserved sibling
+  worktrees, branches, PRs, and process memory.
+- Created official page-120 source-faithful crops from
+  `content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg`
+  without upscaling, redraw, relabeling, translation, cleanup, masking,
+  inpainting, or retouching. Orchestrator corrected the first coordinates to
+  tighter final crops before commit:
+  `Matafuegos` source region `x=1060`, `y=1660`, `width=340`,
+  `height=330`; `Chaleco reflectivo` source region `x=1060`, `y=1990`,
+  `width=340`, `height=340`.
+- Runtime assets are byte-identical to validation crops:
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg`
+  and
+  `content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg`
+  are `340x330`, SHA-256
+  `b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e`.
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg`
+  and
+  `content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg`
+  are `340x340`, SHA-256
+  `f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581`.
+- Runtime section
+  `src/data/manual-sections/app1-other-required-safety-elements.ts` now renders
+  `app1-matafuegos-source-card` and
+  `app1-chaleco-reflectivo-source-card` as full-width `source-image-cards`
+  capped at natural `340px` width. Spanish titles remain inside the official
+  images. Russian translations are selectable DOM text below the images:
+  `Matafuegos` -> `Огнетушитель`; `Chaleco reflectivo` ->
+  `Световозвращающий жилет`. Orchestrator copy correction before commit
+  removed learner-facing `источник` wording from this new block: the visible
+  title is `Огнетушитель и световозвращающий жилет`, and the extinguisher body
+  copy says the extinguisher is required equipment and must be safely secured
+  within the driver's reach, without referring to source provenance.
+- Updated source registry and audit evidence:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`
+  records source-region metadata, local asset metadata, source integrity,
+  no-upscale runtime display size, visible Spanish source-image exceptions, and
+  term translations for both app1 equipment images.
+  `scripts/manual-guide-visual-completeness-audit.mjs` and regenerated
+  `content/validation/manual-guide-visual-completeness.evidence.json` mark
+  `matafuegos-chaleco-reflectivo` as `implemented-app1-only`, with an explicit
+  remaining-scope note that app2/app3 equipment visuals are pending.
+- Focused verification before full suite:
+  `node scripts/manual-guide-source-fidelity.mjs` passed with `50`
+  implemented sections, `0` pending sections, and strict visual policy
+  `031-strict-source-fidelity`. `node --test
+  tests/content-manual-guide-chapters.test.mjs` passed with `97` tests, `97`
+  pass, `0` fail, duration `11830.099875ms`.
+- Final app1 equipment verification after copy correction:
+  `node --test tests/content-manual-guide-chapters.test.mjs` passed with `97`
+  tests, `97` pass, `0` fail, duration `11587.339875ms`. A focused visible
+  string scan of the new `mandatory-equipment-source-visuals` block inspected
+  `9` visible Russian strings and found `0` offenders for
+  `источник|исходн|фрагмент|source`. `pnpm run validate:manual-guide`
+  passed, `pnpm run validate:content` passed, and `pnpm exec tsc --noEmit`
+  passed after the copy correction.
+- Focused Playwright screenshot/probe ran against local Vite at
+  `http://127.0.0.1:5174/` after clicking the `Руководство` tab and the
+  `app1-other-required-safety-elements` manual section. It verified both
+  images have `data-source-image-exception="source-image-original-visible-text"`,
+  `data-visible-spanish-scope="source-image-only"`, `data-source-as-is="true"`,
+  no runtime upscaling, and no visible `источник|исходн|фрагмент|source`
+  wording in the new card title/body/translation text. Desktop rendered both
+  images at natural `340px` width; mobile rendered them at `271px` width.
+  Screenshot evidence:
+  `content/validation/manual-guide/app1-other-required-safety-elements/app1-equipment-source-cards-desktop.png`
+  and
+  `content/validation/manual-guide/app1-other-required-safety-elements/app1-equipment-source-cards-mobile.png`.

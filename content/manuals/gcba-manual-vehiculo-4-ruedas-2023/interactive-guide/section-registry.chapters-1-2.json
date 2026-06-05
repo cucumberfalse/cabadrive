@@ -8574,6 +8574,56 @@
               },
               "sha256": "05e7423ccc442097ecb0a7b7c3b440c2b70077a51a2782066ef3b8b4d5b76681"
             }
+          },
+          {
+            "sourcePage": 120,
+            "sourceRegion": {
+              "x": 1060,
+              "y": 1660,
+              "width": 340,
+              "height": 330
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+            "cropDimensions": {
+              "width": 340,
+              "height": 330
+            },
+            "cropSha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Source-faithful tight crop exported from the retained Appendix I page 120 x5 source render with sips --cropToHeightWidth 330 340 --cropOffset 1660 1060. The crop preserves the official Matafuegos title and icon without resizing, cleanup, retouching, relabeling, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 340,
+                "height": 330
+              },
+              "sha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e"
+            }
+          },
+          {
+            "sourcePage": 120,
+            "sourceRegion": {
+              "x": 1060,
+              "y": 1990,
+              "width": 340,
+              "height": 340
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg",
+            "cropDimensions": {
+              "width": 340,
+              "height": 340
+            },
+            "cropSha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Source-faithful tight crop exported from the retained Appendix I page 120 x5 source render with sips --cropToHeightWidth 340 340 --cropOffset 1990 1060. The crop preserves the official Chaleco reflectivo title and icon without resizing, cleanup, retouching, relabeling, masking, inpainting, reconstruction, or redraw.",
+              "outputDimensions": {
+                "width": 340,
+                "height": 340
+              },
+              "sha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -8583,29 +8633,147 @@
             "assetCategory": "native-dom-text-only",
             "containsText": true,
             "visibleSpanish": false
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-diagram-app1-matafuegos",
+            "assetCategory": "source-as-is-diagram",
+            "width": 340,
+            "height": 330,
+            "sha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime Matafuegos equipment image is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, translation, or reconstruction. Russian term translation is selectable DOM text outside the image.",
+              "outputDimensions": {
+                "width": 340,
+                "height": 330
+              },
+              "sha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 340,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishBodyTextExcluded": true,
+              "tightCropRemovesOuterWhitespaceOnly": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-120-matafuegos-only"
+            },
+            "termTranslations": [
+              {
+                "termEs": "Matafuegos",
+                "translationRu": "Огнетушитель"
+              }
+            ]
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-diagram-app1-chaleco-reflectivo",
+            "assetCategory": "source-as-is-diagram",
+            "width": 340,
+            "height": 340,
+            "sha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime Chaleco reflectivo equipment image is byte-identical to the focused x5 source crop; copied without resizing, cleanup, retouching, relabeling, translation, or reconstruction. Russian term translation is selectable DOM text outside the image.",
+              "outputDimensions": {
+                "width": 340,
+                "height": 340
+              },
+              "sha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 340,
+              "noUpscale": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishBodyTextExcluded": true,
+              "tightCropRemovesOuterWhitespaceOnly": true
+            },
+            "sourceImageException": {
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-120-chaleco-reflectivo-only"
+            },
+            "termTranslations": [
+              {
+                "termEs": "Chaleco reflectivo",
+                "translationRu": "Световозвращающий жилет"
+              }
+            ]
           }
         ],
-        "visibleSpanishStatus": "none",
+        "visibleSpanishStatus": {
+          "status": "source_image_exceptions_only",
+          "nonSignVisibleSpanishStatus": "source-image-only",
+          "exceptions": [
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-120-matafuegos-only"
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-120-chaleco-reflectivo-only"
+            }
+          ]
+        },
         "selectableTextStatus": {
           "status": "pass",
-          "evidence": "app1-other-required-safety-elements is rendered as selectable Russian DOM text."
+          "evidence": "app1-other-required-safety-elements is rendered as selectable Russian DOM text; Spanish remains only inside protected source-as-is equipment images and sourceTextEs/evidence metadata."
         },
         "desktopScreenshot": "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-desktop.png",
         "mobileScreenshot": "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-mobile.png",
         "boundingBoxChecks": [
           {
             "status": "pass",
-            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix I route."
+            "evidence": "Focused desktop and mobile screenshots recorded for this Appendix I route; app1 equipment crops are capped at natural 340px width with no runtime upscaling."
           }
         ],
         "forbiddenPatternScan": {
           "status": "pass",
-          "evidence": "No source image alteration, raw page route, remote asset, or fake placeholder content is introduced."
+          "evidence": "No source image alteration, raw page route, remote asset, fake placeholder content, or translated source-image pixels are introduced."
         },
         "visualReviewNotes": [
           "Page 119 is shared: this section begins at the Otros elementos de seguridad obligatorios heading and excludes the preceding Equipaje luggage/max-load masks owned by app1-safety-elements.",
-          "Pages 119-120 are implemented as native Russian text for hazard triangles, extinguisher, and reflective vest details.",
-          "No photograph, traffic sign, or road marking is altered."
+          "Pages 119-120 remain selectable Russian DOM text for hazard triangles, extinguisher, and reflective vest details.",
+          "The official Matafuegos and Chaleco reflectivo title+icon crops from page 120 are restored as protected source-as-is images with Russian term translations rendered below as DOM text.",
+          "The tighter crops use page-120 source-render coordinates Matafuegos x=1060 y=1660 width=340 height=330 and Chaleco reflectivo x=1060 y=1990 width=340 height=340; no source pixels are redrawn or translated."
         ],
         "checkerResult": "pass"
       },

@@ -12,6 +12,14 @@ const headrestAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg";
 const headrestSourceAssetPath =
   "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg";
+const matafuegosAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg";
+const matafuegosSourceAssetPath =
+  "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg";
+const chalecoAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg";
+const chalecoSourceAssetPath =
+  "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg";
 
 const deniedCopyPatterns = [
   {
@@ -87,10 +95,13 @@ const userExampleRecords = [
   {
     id: "matafuegos-chaleco-reflectivo",
     label: "Matafuegos and Chaleco reflectivo",
-    status: "needs-implementation",
+    status: "implemented-app1-only",
     sourcePages: [119, 135],
-    runtimeTargets: ["app1-other-required-safety-elements", "app2-safety-elements"],
-    notes: "Pending later batch: official safety equipment visuals at normal manual scale."
+    runtimeTargets: ["app1-matafuegos-source-card", "app1-chaleco-reflectivo-source-card", "app2-safety-elements"],
+    assetPaths: [matafuegosAssetPath, chalecoAssetPath],
+    sourceAssetPaths: [matafuegosSourceAssetPath, chalecoSourceAssetPath],
+    notes:
+      "Implemented for app1 only in this narrow batch: official page 120 safety equipment title+icon crops are shown as source pixels with external Russian term translations. App2/app3 equipment visuals remain outside this slice and are not claimed complete here."
   },
   {
     id: "headrest-combined-diagram",
@@ -312,6 +323,70 @@ function headrestCombinedRecord() {
   };
 }
 
+function safetyEquipmentRecord() {
+  const matafuegosDimensions = existsSync(matafuegosAssetPath) ? readImageDimensions(matafuegosAssetPath) : null;
+  const matafuegosSourceDimensions = existsSync(matafuegosSourceAssetPath) ? readImageDimensions(matafuegosSourceAssetPath) : null;
+  const chalecoDimensions = existsSync(chalecoAssetPath) ? readImageDimensions(chalecoAssetPath) : null;
+  const chalecoSourceDimensions = existsSync(chalecoSourceAssetPath) ? readImageDimensions(chalecoSourceAssetPath) : null;
+  return {
+    id: "matafuegos-chaleco-reflectivo",
+    status: "implemented-app1-only",
+    sourcePage: 120,
+    cards: [
+      {
+        cardId: "app1-matafuegos-source-card",
+        termEs: "Matafuegos",
+        translationRu: "Огнетушитель",
+        sourceRegion: {
+          coordinateSystem:
+            "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+          x: 1060,
+          y: 1660,
+          width: 340,
+          height: 330
+        },
+        assetPath: matafuegosAssetPath,
+        sourceAssetPath: matafuegosSourceAssetPath,
+        dimensions: matafuegosDimensions,
+        sourceDimensions: matafuegosSourceDimensions,
+        sha256: existsSync(matafuegosAssetPath) ? sha256File(matafuegosAssetPath) : null,
+        sourceSha256: existsSync(matafuegosSourceAssetPath) ? sha256File(matafuegosSourceAssetPath) : null
+      },
+      {
+        cardId: "app1-chaleco-reflectivo-source-card",
+        termEs: "Chaleco reflectivo",
+        translationRu: "Световозвращающий жилет",
+        sourceRegion: {
+          coordinateSystem:
+            "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+          x: 1060,
+          y: 1990,
+          width: 340,
+          height: 340
+        },
+        assetPath: chalecoAssetPath,
+        sourceAssetPath: chalecoSourceAssetPath,
+        dimensions: chalecoDimensions,
+        sourceDimensions: chalecoSourceDimensions,
+        sha256: existsSync(chalecoAssetPath) ? sha256File(chalecoAssetPath) : null,
+        sourceSha256: existsSync(chalecoSourceAssetPath) ? sha256File(chalecoSourceAssetPath) : null
+      }
+    ],
+    extractionMethod:
+      "Source-faithful tighter crops from retained official Appendix I page-120 x5 source render using sips cropOffset 1660 1060, crop 330x340 for Matafuegos and cropOffset 1990 1060, crop 340x340 for Chaleco reflectivo. Runtime assets are byte-identical to the validation/source crops.",
+    protectedImagePolicy:
+      "Spanish titles remain unchanged inside the protected images; Russian translations are rendered below as selectable DOM text.",
+    runtimeDisplay: {
+      maxDisplayWidthPx: 340,
+      noUpscale: true,
+      translationDomSelector: ".manual-source-image-term-translations",
+      visualHeightToBodyLineEstimate: "Matafuegos 330px natural crop height at 340px max display width; no browser pixel upscaling."
+    },
+    remainingScopeNote:
+      "This record covers only app1 page 120. App2/app3 safety equipment visuals remain pending for separate slices."
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -321,9 +396,9 @@ const document = {
   scopeStatus: "first-controlled-batch-partial",
   userExamples: userExampleRecords,
   copyAudit,
-  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord()],
+  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord()],
   remainingRequiredExamples: userExampleRecords
-    .filter((entry) => entry.status !== "implemented")
+    .filter((entry) => !String(entry.status).startsWith("implemented"))
     .map((entry) => ({ id: entry.id, label: entry.label, status: entry.status, notes: entry.notes }))
 };
 

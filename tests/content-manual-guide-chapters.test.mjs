@@ -2102,7 +2102,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
     "whole-guide-source-wording-copy-audit"
   ]) {
     assert.ok(examplesById.has(requiredExampleId), `${requiredExampleId} appears in user-example audit evidence`);
-    assert.match(examplesById.get(requiredExampleId).status, /^(implemented|needs-implementation|blocked)$/u);
+    assert.match(examplesById.get(requiredExampleId).status, /^(implemented|implemented-[a-z0-9-]+|needs-implementation|blocked)$/u);
   }
 
   const mobilityRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "mobility-space-50-people");
@@ -2122,6 +2122,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
   assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
   assert.equal(examplesById.get("blind-spot-visual").status, "needs-implementation");
+  assert.equal(examplesById.get("matafuegos-chaleco-reflectivo").status, "implemented-app1-only");
   assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
   const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
   assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
@@ -2151,6 +2152,35 @@ test("Manual guide visual completeness audit records user examples and blocks le
       "Botón de desbloqueo:Кнопка разблокировки"
     ]
   );
+  const equipmentRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "matafuegos-chaleco-reflectivo");
+  assert.ok(equipmentRecord, "Matafuegos and Chaleco reflectivo have a concrete app1 evidence record");
+  assert.equal(equipmentRecord.status, "implemented-app1-only");
+  assert.equal(equipmentRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(equipmentRecord.runtimeDisplay.maxDisplayWidthPx, 340);
+  assert.match(equipmentRecord.remainingScopeNote, /App2\/app3/u);
+  assert.deepEqual(
+    equipmentRecord.cards.map((entry) => `${entry.cardId}:${entry.termEs}:${entry.translationRu}:${entry.dimensions.width}x${entry.dimensions.height}:${entry.sha256}`),
+    [
+      "app1-matafuegos-source-card:Matafuegos:Огнетушитель:340x330:b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+      "app1-chaleco-reflectivo-source-card:Chaleco reflectivo:Световозвращающий жилет:340x340:f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+    ]
+  );
+  assert.deepEqual(equipmentRecord.cards[0].sourceRegion, {
+    coordinateSystem:
+      "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+    x: 1060,
+    y: 1660,
+    width: 340,
+    height: 330
+  });
+  assert.deepEqual(equipmentRecord.cards[1].sourceRegion, {
+    coordinateSystem:
+      "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+    x: 1060,
+    y: 1990,
+    width: 340,
+    height: 340
+  });
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -2536,6 +2566,27 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /Световозвращающий жилет/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-matafuegos-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1660,\s*width:\s*340,\s*height:\s*330\s*\}/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-chaleco-reflectivo-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1990,\s*width:\s*340,\s*height:\s*340\s*\}/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /matafuegos-source-as-is\.jpg/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /chaleco-reflectivo-source-as-is\.jpg/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /termTranslations[\s\S]*Matafuegos[\s\S]*Огнетушитель[\s\S]*Chaleco reflectivo[\s\S]*Световозвращающий жилет/u);
+  const app1EquipmentBlockStart = app1OtherRequiredSafetyElementsModuleSource.indexOf('id: "mandatory-equipment-source-visuals"');
+  assert.ok(app1EquipmentBlockStart > 0, "app1 equipment source-image block exists");
+  const app1EquipmentBlockSource = balancedSourceSlice(
+    app1OtherRequiredSafetyElementsModuleSource,
+    app1OtherRequiredSafetyElementsModuleSource.lastIndexOf("{", app1EquipmentBlockStart),
+    "{",
+    "}"
+  );
+  const app1EquipmentVisibleRuStrings = Array.from(
+    app1EquipmentBlockSource.matchAll(/(?:titleRu|bodyRu|altRu|translationRu):\s*"([^"]+)"/gu),
+    (match) => match[1]
+  );
+  assert.ok(app1EquipmentVisibleRuStrings.length >= 6, "app1 equipment block visible Russian strings are inspected");
+  assert.doesNotMatch(app1EquipmentVisibleRuStrings.join("\n"), /источник|исходн|фрагмент|source/iu);
   assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u);
 
   assert.match(app1RecommendedSafetyElementsModuleSource, /стерильную гидрофильную марлю/u);
@@ -2546,6 +2597,80 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1RecommendedSafetyElementsModuleSource, /уполномоченным автомобилем/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /состояния автомобиля и его элементов безопасности/u);
   assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /обозначается cross|secure fixed place|sterile hydrophilic gauze|Bandages or dressings|Hypoallergenic tape|Hydrogen peroxide|Iodine solution|latex or vinyl gloves|Burn cream|Antidiarrheal charcoal tablets|Analgesics and anti-inflammatory medicine|Insect-bite cream|Tweezers and scissors|Flashlight with spare batteries|homologated telescopic tow bar|ropes, cables and other flexible means|factory towing points|private vehicle|authorized vehicle/u);
+});
+
+test("Appendix I other required safety equipment restores official source images with external translations", () => {
+  const otherRequired = sectionById("app1-other-required-safety-elements");
+  const expectations = [
+    {
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+      assetKind: "high-resolution-original-source-diagram-app1-matafuegos",
+      width: 340,
+      height: 330,
+      sha256: "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+      term: "Matafuegos:Огнетушитель",
+      scope: "app1-page-120-matafuegos-only",
+      sourceRegion: { x: 1060, y: 1660, width: 340, height: 330 }
+    },
+    {
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg",
+      assetKind: "high-resolution-original-source-diagram-app1-chaleco-reflectivo",
+      width: 340,
+      height: 340,
+      sha256: "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+      term: "Chaleco reflectivo:Световозвращающий жилет",
+      scope: "app1-page-120-chaleco-reflectivo-only",
+      sourceRegion: { x: 1060, y: 1990, width: 340, height: 340 }
+    }
+  ];
+
+  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.deepEqual(
+    otherRequired.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => `${entry.scope}:${entry.visibleSpanishScope}:${entry.sourceAsIs}`),
+    [
+      "app1-page-120-matafuegos-only:source-image-only:true",
+      "app1-page-120-chaleco-reflectivo-only:source-image-only:true"
+    ]
+  );
+
+  for (const expectation of expectations) {
+    const asset = localAssetByPath(otherRequired, expectation.assetPath);
+    assert.equal(asset.assetCategory, "source-as-is-diagram");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.containsText, true);
+    assert.equal(asset.visibleSpanish, true);
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 340);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
+    assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
+    assert.equal(asset.sourceImageException.scope, expectation.scope);
+    assert.equal(asset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`).join(","), expectation.term);
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+
+    const sourceRegion = otherRequired.implementationEvidence.sourceRegionMetadata.find(
+      (entry) => entry.sourceAssetPath === expectation.sourceAssetPath
+    );
+    assert.ok(sourceRegion, `${expectation.sourceAssetPath} is recorded in Appendix I other-required sourceRegionMetadata`);
+    assert.deepEqual(sourceRegion.sourceRegion, expectation.sourceRegion);
+    assert.deepEqual(sourceRegion.cropDimensions, { width: expectation.width, height: expectation.height });
+    assert.equal(sourceRegion.cropSha256, expectation.sha256);
+  }
 });
 
 test("Appendix I visuals render source-as-is and transferred infographics with provenance evidence", () => {
@@ -2901,6 +3026,8 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   const expectedFullWidthCardIds = new Set([
     "headrest-position-source-card",
     "sri-types-source-card",
+    "app1-chaleco-reflectivo-source-card",
+    "app1-matafuegos-source-card",
     "app2-hospital-map-source-card",
     "app2-headrest-combined-source-card",
     "app2-mirror-orientation-source-card",
@@ -2959,7 +3086,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-warning-page-188-source-card", 705]
   ]);
 
-  assert.equal(cards.length, 37);
+  assert.equal(cards.length, 39);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(

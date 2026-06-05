@@ -77,16 +77,25 @@
     {
       "id": "matafuegos-chaleco-reflectivo",
       "label": "Matafuegos and Chaleco reflectivo",
-      "status": "needs-implementation",
+      "status": "implemented-app1-only",
       "sourcePages": [
         119,
         135
       ],
       "runtimeTargets": [
-        "app1-other-required-safety-elements",
+        "app1-matafuegos-source-card",
+        "app1-chaleco-reflectivo-source-card",
         "app2-safety-elements"
       ],
-      "notes": "Pending later batch: official safety equipment visuals at normal manual scale."
+      "assetPaths": [
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg"
+      ],
+      "sourceAssetPaths": [
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg"
+      ],
+      "notes": "Implemented for app1 only in this narrow batch: official page 120 safety equipment title+icon crops are shown as source pixels with external Russian term translations. App2/app3 equipment visuals remain outside this slice and are not claimed complete here."
     },
     {
       "id": "headrest-combined-diagram",
@@ -253,6 +262,70 @@
         }
       ],
       "remainingScopeNote": "This record covers only app2 page 132. App1 page 113 headrest visuals remain pending for a separate slice."
+    },
+    {
+      "id": "matafuegos-chaleco-reflectivo",
+      "status": "implemented-app1-only",
+      "sourcePage": 120,
+      "cards": [
+        {
+          "cardId": "app1-matafuegos-source-card",
+          "termEs": "Matafuegos",
+          "translationRu": "Огнетушитель",
+          "sourceRegion": {
+            "coordinateSystem": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+            "x": 1060,
+            "y": 1660,
+            "width": 340,
+            "height": 330
+          },
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+          "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+          "dimensions": {
+            "width": 340,
+            "height": 330
+          },
+          "sourceDimensions": {
+            "width": 340,
+            "height": 330
+          },
+          "sha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+          "sourceSha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e"
+        },
+        {
+          "cardId": "app1-chaleco-reflectivo-source-card",
+          "termEs": "Chaleco reflectivo",
+          "translationRu": "Световозвращающий жилет",
+          "sourceRegion": {
+            "coordinateSystem": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+            "x": 1060,
+            "y": 1990,
+            "width": 340,
+            "height": 340
+          },
+          "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+          "sourceAssetPath": "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg",
+          "dimensions": {
+            "width": 340,
+            "height": 340
+          },
+          "sourceDimensions": {
+            "width": 340,
+            "height": 340
+          },
+          "sha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+          "sourceSha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+        }
+      ],
+      "extractionMethod": "Source-faithful tighter crops from retained official Appendix I page-120 x5 source render using sips cropOffset 1660 1060, crop 330x340 for Matafuegos and cropOffset 1990 1060, crop 340x340 for Chaleco reflectivo. Runtime assets are byte-identical to the validation/source crops.",
+      "protectedImagePolicy": "Spanish titles remain unchanged inside the protected images; Russian translations are rendered below as selectable DOM text.",
+      "runtimeDisplay": {
+        "maxDisplayWidthPx": 340,
+        "noUpscale": true,
+        "translationDomSelector": ".manual-source-image-term-translations",
+        "visualHeightToBodyLineEstimate": "Matafuegos 330px natural crop height at 340px max display width; no browser pixel upscaling."
+      },
+      "remainingScopeNote": "This record covers only app1 page 120. App2/app3 safety equipment visuals remain pending for separate slices."
     }
   ],
   "remainingRequiredExamples": [
@@ -279,12 +352,6 @@
       "label": "Tire manufacturing/date and tread-life visual",
       "status": "needs-implementation",
       "notes": "Pending later batch: official tire visual export and runtime insertion."
-    },
-    {
-      "id": "matafuegos-chaleco-reflectivo",
-      "label": "Matafuegos and Chaleco reflectivo",
-      "status": "needs-implementation",
-      "notes": "Pending later batch: official safety equipment visuals at normal manual scale."
     }
   ]
 }
