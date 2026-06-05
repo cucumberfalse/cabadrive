@@ -45,7 +45,7 @@
 - [x] T032 Confirm changed files are limited to assigned scope and exclude sibling feature folders/worktrees. Evidence: changed tracked files are `scripts/ai-review-helpers.mjs` and `tests/ai-review-helpers.test.mjs`; untracked new feature memory is limited to `specs/033-ai-review-login-gate/`; no sibling worktree operations performed.
 - [ ] T033 Confirm Review Agent enforcement evidence covers Orchestrator-first bypasses, missing feature memory, role-boundary violations, unsafe recovery, sibling-work preservation, latest-main startup, strict trust, stale-head rejection, and cleanup not-applicable evidence. Pending Review Agent review.
 - [x] T034 Confirm every Implementation Agent feedback item has Architect disposition before completion. Evidence: no Implementation Agent feedback items were identified; no Architect disposition needed.
-- [ ] T035 Update cycle PR set with this slice's purpose, branch, PR metadata, head SHA, status, and final-validation inclusion. Pending commit and PR metadata.
+- [x] T035 Update cycle PR set with this slice's purpose, branch, PR metadata, head SHA, status, and final-validation inclusion. Evidence: PR `#199` opened ready for review at `https://github.com/cucumberfalse/cabadrive/pull/199`; implementation/effective content head at PR opening was `1eeb9236df513700c5d8dc73816af6fdcb1080bc`.
 - [x] T036 Record post-merge Orchestrator requirement: after this gate fix lands on default, rerun or observe `AI Review` on PR `#198` and verify it evaluates current PR `#198` head evidence. Evidence: requirement remains recorded in Known Issues and Cycle PR Set notes.
 - [ ] T037 Record final Architect validation evidence, return count, and gap dispositions when Orchestrator invokes it.
 - [ ] T038 Record final Analyst validation evidence, Analyst return count, and Architect disposition for any Analyst feedback when Orchestrator invokes it.
@@ -95,7 +95,8 @@
 
 ### Cycle PR Set
 
-- Planned slice: purpose `AI Review Codex connector login gate fix`; branch `codex/033-ai-review-login-gate`; PR metadata `pending`; head SHA `pending commit`; status `implemented locally, verification passed, commit/PR pending`; included in final validation `yes, once opened and implemented`.
+- Slice: purpose `AI Review Codex connector login gate fix`; branch `codex/033-ai-review-login-gate`; PR metadata `#199` at `https://github.com/cucumberfalse/cabadrive/pull/199`, ready/open, base `main`, head branch `codex/033-ai-review-login-gate`; implementation/effective content head at PR opening `1eeb9236df513700c5d8dc73816af6fdcb1080bc`; status `open, mergeable, required checks running at PR-open inspection`; included in final validation `yes`.
+- Process-memory note: this PR metadata update is process-memory-only after the implementation/effective content head. Orchestrator final-validation guards should treat any later commit containing only role/process evidence under `specs/033-ai-review-login-gate/` according to the repository evidence-only commit rules.
 - Post-merge Orchestrator handoff requirement: after this gate-fix PR lands on default, rerun or observe `AI Review` on PR `#198` and verify it evaluates current PR `#198` head evidence rather than stale review evidence.
 
 ### Final Validation Evidence
