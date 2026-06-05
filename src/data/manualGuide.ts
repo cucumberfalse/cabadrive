@@ -1,4 +1,10 @@
 import manualGuideChapter12Registry from "../../content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
+import { app4SignsHorizontalSection } from "./manual-sections/app4-signs-horizontal";
+import { app4SignsInformationalSection } from "./manual-sections/app4-signs-informational";
+import { app4SignsRegulatorySection } from "./manual-sections/app4-signs-regulatory";
+import { app4SignsTemporarySection } from "./manual-sections/app4-signs-temporary";
+import { app4SignsTrafficLightsSection } from "./manual-sections/app4-signs-traffic-lights";
+import { app4SignsWarningSection } from "./manual-sections/app4-signs-warning";
 import { app3CargoDriverProfileSection } from "./manual-sections/app3-cargo-driver-profile";
 import { app3DrivingFactorsSection } from "./manual-sections/app3-driving-factors";
 import { app3HighwaysSection } from "./manual-sections/app3-highways";
@@ -664,6 +670,11 @@ export type ManualGuideContentBlock =
         assetPath: string;
         altRu: string;
         visibleSpanish: boolean;
+        officialSignException?: {
+          kind: "official-traffic-sign-source-as-is";
+          visibleSpanishScope: "official-sign-image-only";
+          sourceAsIs: true;
+        };
         sourceImageException?: OriginalSourceImageTextException;
         russianOverlayLabels?: {
           id: string;
@@ -761,7 +772,13 @@ export const implementedManualGuideSections: ManualGuideSectionContent[] = [
   app3DrivingFactorsSection,
   app3SafeDrivingSection,
   app3SafetyElementsSection,
-  app3HighwaysSection
+  app3HighwaysSection,
+  app4SignsRegulatorySection,
+  app4SignsWarningSection,
+  app4SignsInformationalSection,
+  app4SignsTemporarySection,
+  app4SignsHorizontalSection,
+  app4SignsTrafficLightsSection
 ];
 export const manualGuideSectionContentById = new Map(implementedManualGuideSections.map((section) => [section.sectionId, section]));
 
@@ -929,16 +946,6 @@ export const manualGuideChapter12SectionSummary = {
   }))
 } as const;
 
-function pendingTopic(id: string, labelRu: string, sourceTitleEs: string): ManualGuideNavigationChild {
-  return {
-    id,
-    kind: "topic",
-    labelRu,
-    sourceTitleEs,
-    status: "pending"
-  };
-}
-
 export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
   { id: "presentation", kind: "support", labelRu: "Предисловие", sourceTitleEs: "Presentación", status: "pending" },
   { id: "glossary", kind: "support", labelRu: "Глоссарий", sourceTitleEs: "Glosario", status: "pending" },
@@ -961,22 +968,5 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
       introductionRouteId: entry.id
     }))
   },
-  ...chapter12NavigationEntries,
-  {
-    id: "annex-4",
-    kind: "annex",
-    labelRu: "Приложение IV. Дорожные знаки и разметка",
-    sourceTitleEs: "ANEXO IV SEÑALES VIALES",
-    sourcePage: 184,
-    requiredPrintedPage: 183,
-    status: "pending",
-    children: [
-      pendingTopic("annex-4-regulatory", "Предписывающие", "Reglamentarias"),
-      pendingTopic("annex-4-warning", "Предупреждающие", "Preventivas"),
-      pendingTopic("annex-4-informational", "Информационные", "Informativas"),
-      pendingTopic("annex-4-temporary", "Временные", "Transitorias"),
-      pendingTopic("annex-4-horizontal", "Горизонтальная разметка", "Horizontales"),
-      pendingTopic("annex-4-light", "Световые сигналы", "Señalamiento luminoso")
-    ]
-  }
+  ...chapter12NavigationEntries
 ];
