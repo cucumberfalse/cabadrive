@@ -44,7 +44,7 @@
 - [x] T031 Record verification evidence and update task status/process memory before commit. Evidence: command results and decisions recorded in Process Memory.
 - [x] T032 Confirm changed files are limited to assigned scope and exclude sibling feature folders/worktrees. Evidence: changed tracked files are `scripts/ai-review-helpers.mjs` and `tests/ai-review-helpers.test.mjs`; untracked new feature memory is limited to `specs/033-ai-review-login-gate/`; no sibling worktree operations performed.
 - [x] T033 Confirm Review Agent enforcement evidence covers Orchestrator-first bypasses, missing feature memory, role-boundary violations, unsafe recovery, sibling-work preservation, latest-main startup, strict trust, stale-head rejection, and cleanup not-applicable evidence. Evidence: Review Agent reported no findings on current head `900e516eeffe95a709ee5a4306df7f16b5cddce8` after same-cycle P2 fixes; prior review findings were disposed and fixed; read-only review-thread inspection found all PR `#199` review threads resolved, including the outdated duplicate Codex thread.
-- [x] T034 Confirm every Implementation Agent feedback item has Architect disposition before completion. Evidence: no Implementation Agent feedback items were identified; no Architect disposition needed.
+- [x] T034 Confirm every Implementation Agent feedback item has Architect disposition before completion. Evidence: `## Implementation Agent Feedback` records `No unresolved Implementation Agent feedback.` and no feedback item lacks Architect disposition.
 - [x] T035 Update cycle PR set with this slice's purpose, branch, PR metadata, head SHA, status, and final-validation inclusion. Evidence: PR `#199` opened ready for review at `https://github.com/cucumberfalse/cabadrive/pull/199`; implementation/effective content head at PR opening was `1eeb9236df513700c5d8dc73816af6fdcb1080bc`.
 - [x] T036 Record post-merge Orchestrator requirement: after this gate fix lands on default, rerun or observe `AI Review` on PR `#198` and verify it evaluates current PR `#198` head evidence. Evidence: requirement remains recorded in Known Issues and Cycle PR Set notes.
 - [x] T037 Record final Architect validation evidence, return count, and gap dispositions when Orchestrator invokes it. Evidence: final Architect validation passed at `2026-06-05T04:58:11Z` for effective content head `900e516eeffe95a709ee5a4306df7f16b5cddce8`; Architect return count remains 0; no gaps or new task/ticket dispositions were identified.
@@ -86,12 +86,19 @@
 ### Known Issues
 
 - PR `#198` remains dependent on this fix landing on default before its AI Review check can be rerun or observed successfully with current default-branch gate logic.
+  - Architect disposition: accepted; this is an Orchestrator post-merge handoff requirement after PR `#199` lands on default, not a human-blocking known issue or merge blocker for this feature.
 - If PR `#198` receives a new behaviorally meaningful commit, its existing Codex review evidence for `9df31d213419b107ca49797c0357ce8151c8effe` must remain stale and a fresh current-head review is required.
+  - Architect disposition: accepted; this is the intended stale-review guard for PR `#198` and requires no code or process-memory action in PR `#199`.
 - During implementation, local `origin/main` advanced from the assigned verified base `51e42f657d867fb802bbe3a68591b6008b45a60f` to `bcee0fbffc8878bfbaf0876352b32636b8a40790` (`Add structured manual glossary translations (#197)`). Read-only diff inspection showed no overlap with `scripts/ai-review-helpers.mjs`, `tests/ai-review-helpers.test.mjs`, or `specs/033-ai-review-login-gate/`. No merge or rebase was performed by Implementation Agent.
+  - Architect disposition: resolved; no overlap was found and no merge, rebase, or follow-up action is needed for this feature.
 - Review Agent found a stale-summary gap at PR `#199` head `4a6a0c09a6a9eebc7ca3ce40340253e78591dc88`: an explicit old SHA in a trusted Codex summary can still pass by timestamp freshness when `headCommittedAt` is supplied. This is accepted same-cycle work and blocks final validation until fixed and verified.
+  - Architect disposition: addressed; same-cycle follow-up fixed stale SHA marker rejection before timestamp fallback and verification evidence is recorded below.
 - Implementation Agent follow-up fixed Review Agent P2 `discussion_r3360346983` by rejecting mismatched 7-40 hex SHA-like summary markers before timestamp fallback while preserving no-SHA timestamp fallback for trusted Codex summaries.
+  - Architect disposition: resolved; the stale-summary review finding was fixed, verified, reviewed, and no longer blocks final validation.
 - Review Agent found a current-prefix abbreviation gap at PR `#199` head `4eb596bfc9115e6a8f80b42c47ea2eb02c995857`: trusted Codex summaries with current-head 7-character and 9-character SHA markers are rejected before timestamp fallback, while full SHA and 10-character prefix are accepted. This is accepted same-cycle work and blocks final validation until fixed and verified.
+  - Architect disposition: addressed; same-cycle follow-up fixed 7-40 character current-head prefix acceptance and verification evidence is recorded below.
 - Implementation Agent follow-up fixed Review Agent P2 `discussion_r3360400825` by accepting any 7-40 hex current-head prefix marker and continuing to reject any non-current 7-40 hex marker before timestamp fallback.
+  - Architect disposition: resolved; the current-prefix review finding was fixed, verified, reviewed, and no longer blocks final validation.
 
 ### Verification Evidence
 
@@ -140,6 +147,7 @@
 
 ### Final Validation Evidence
 
+- Historical scope: the validation lines below apply only to effective content head `900e516eeffe95a709ee5a4306df7f16b5cddce8`. They are not a final validation for the current post-`900e516eeffe95a709ee5a4306df7f16b5cddce8` process state; Orchestrator will invoke fresh final Architect and Analyst validation after the process-memory hygiene commit before finalization.
 - Architect validation pass: passed
 - Final Architect validation completed at: 2026-06-05T04:58:11Z
 - Architect validated effective content head: 900e516eeffe95a709ee5a4306df7f16b5cddce8
@@ -152,12 +160,12 @@
 - Conflict evidence: read-only PR inspection reported `mergeable: MERGEABLE` and `mergeStateStatus: CLEAN`.
 - Acceptance evidence: implementation and tests cover both Codex connector login forms, strict login trust, stale-head rejection before timestamp fallback, 7-40 character current-head prefix acceptance, unknown-login rejection, association-only rejection, cross-agent isolation, and default-branch trusted-script checkout preservation.
 - Process memory evidence: `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` exist for feature `033`; review dispositions, follow-up fixes, verification evidence, cycle PR set, cleanup not-applicable evidence, and known post-merge PR `#198` handoff requirement are current.
-- Implementation Agent feedback disposition: none; no Implementation Agent feedback items were identified.
-- Analyst validation: not yet invoked.
+- Implementation Agent feedback disposition: no unresolved Implementation Agent feedback.
+- Analyst validation evidence: historical Analyst validation for `900e516eeffe95a709ee5a4306df7f16b5cddce8` is recorded in `feature-request.md`; no validation is recorded here for the process-memory hygiene candidate.
 - Analyst return count: 0.
-- Analyst validated effective content head: not yet validated.
+- Historical Analyst validated effective content head: 900e516eeffe95a709ee5a4306df7f16b5cddce8.
 - Analyst feedback Architect disposition: none.
-- Final-validation evidence-only commit: pending; these Architect-owned validation notes are process evidence only and must not be treated as behaviorally meaningful implementation changes.
+- Final-validation evidence-only commit: historical note only for the prior `900e516eeffe95a709ee5a4306df7f16b5cddce8` validation cycle; process-memory hygiene after that head creates a fresh effective-content candidate and fresh role validation is required before completion.
 - Current-PR-head read-only guard: Orchestrator still must run the completion/finalization guard after Analyst validation and any evidence-only commit, verifying that current PR head either remains `900e516eeffe95a709ee5a4306df7f16b5cddce8` or contains only final-validation evidence committed after that effective content head.
 - Limit escalation: none.
 
@@ -167,7 +175,7 @@
 
 ## Implementation Agent Feedback
 
-- None for this follow-up.
+- No unresolved Implementation Agent feedback.
 
 ## Architect Dispositions
 
