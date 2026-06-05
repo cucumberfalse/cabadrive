@@ -1797,3 +1797,99 @@
   `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
   passed (`1` test); `node scripts/check-feature-memory.mjs --worktree`
   passed; `git diff --check` passed.
+
+## Architect Disposition: Current-Head Unicode Audit And E2E Timeout Blockers - 2026-06-05
+
+- [x] T153 Architect receives and dispositions AI Review P2 thread
+  `PRRT_kwDOSX65IM6Herjc` for PR `#200` current head
+  `d062fee35daa445d2caadbd2770900d1b93d2263`, path
+  `scripts/manual-guide-visual-completeness-audit.mjs`, around line `94`.
+  The finding is accepted as a same-cycle required fix: the
+  learner-facing provenance-copy audit must not use JavaScript ASCII `\b`
+  boundaries for Cyrillic source-word detection.
+- [x] T154 Architect receives and dispositions current-head `baseline-checks`
+  CI failure on the same head. The e2e test
+  `Manual guide full-width source image cards stay readable and avoid
+  upscaling` timed out in `tests/e2e/app.spec.ts` around lines `4762` and
+  `4778` while awaiting `image.decode()` during image sizing checks.
+  Implementation Agent Curie is assigned to stabilize this as same-cycle CI
+  blocker work.
+- [x] T155 Implementation Agent must update the learner-facing provenance-copy
+  audit to use Unicode-aware boundaries/lookarounds or explicit
+  Cyrillic/non-Cyrillic boundary checks. Forbidden learner-visible provenance
+  words and phrases including `источник`, `источника`, `из источника`,
+  `Визуал источника`, and `Главный вывод источника` must be detected even when
+  adjacent to Cyrillic letters, punctuation, or common Russian inflection.
+- [x] T156 Implementation Agent must preserve the legitimate allowlist for
+  semantic non-provenance usage, specifically `источник стресса`, and ensure
+  that allowlist does not permit visual/source provenance labels.
+- [x] T157 Implementation Agent must add focused audit tests or fixtures for
+  the Unicode/Cyrillic boundary behavior. Required cases: forbidden
+  `источник`, inflected forbidden `источника`, phrase `из источника`, at least
+  one explicit visual/source label such as `Визуал источника` or
+  `Главный вывод источника`, and allowed `источник стресса`.
+- [x] T158 Implementation Agent Curie must stabilize the Playwright image
+  sizing helper/check so it does not hang indefinitely on `image.decode()`.
+  The replacement path should use bounded waiting/fallbacks for image
+  readiness and natural dimensions, handle lazy-loaded guide images
+  deterministically, and fail clearly for broken images, zero natural
+  dimensions, upscaled display, or unreadable useful-content sizing. It must
+  not weaken the no-upscale/readability assertions for full-width source image
+  cards.
+- [x] T159 Implementation Agent must record focused verification for the
+  Unicode audit fix: focused unit/content/audit tests, read-only
+  `node scripts/manual-guide-visual-completeness-audit.mjs`, and evidence that
+  the committed visual-completeness evidence remains current or is regenerated
+  only through explicit write mode when needed.
+- [x] T160 Implementation Agent Curie must record CI stabilization evidence:
+  the focused Playwright command
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling"`
+  in the failing CI project(s) where feasible, plus
+  `node scripts/check-feature-memory.mjs --worktree` and `git diff --check`.
+  If full `baseline-checks` cannot be run locally, record the reason and the
+  closest reproducible focused command output.
+- [x] T161 Final validation remains blocked until T155-T160 are implemented,
+  evidenced, and any resulting review/CI findings are resolved or explicitly
+  dispositioned by Architect through Orchestrator.
+
+## Implementation Evidence: Unicode Audit And E2E Timeout Blockers - 2026-06-05
+
+- Implementation Agent Curie adopted Architect disposition recorded in
+  `spec.md`, `plan.md`, and T153-T161 above. Existing Architect-owned
+  `spec.md`/`plan.md` changes were preserved and not edited by Implementation
+  Agent.
+- Unicode audit fix: updated
+  `scripts/manual-guide-visual-completeness-audit.mjs` so
+  `source-family-provenance` uses Unicode-aware lookarounds/property escapes
+  instead of JavaScript ASCII `\b`; preserved the semantic `источник стресса`
+  allowlist; and tightened allowlist behavior so allowed text is removed from
+  the scan without letting another provenance phrase in the same literal pass.
+  Added `MANUAL_GUIDE_SECTION_ROOT` test override for focused fixture coverage.
+- Unicode audit test evidence:
+  `node --test tests/manual-guide-visual-completeness-audit.test.mjs` passed
+  with `2` tests. The focused fixture rejects `источник`, `источника`,
+  `из источника`, and `Визуал источника`, while allowing
+  `источник стресса`. Read-only
+  `node scripts/manual-guide-visual-completeness-audit.mjs` passed and checked
+  committed evidence at
+  `content/validation/manual-guide-visual-completeness.evidence.json`; no
+  write-mode evidence regeneration was needed.
+- E2E timeout stabilization: updated `tests/e2e/app.spec.ts` with bounded
+  `expectRenderedManualImage` polling for visible, complete images with
+  positive natural dimensions and nonzero rendered rects. The affected
+  full-width source-image sizing checks now measure synchronously after the
+  bounded readiness check instead of awaiting unbounded `image.decode()` inside
+  browser `evaluate()` calls. Existing assertions for display mode, useful
+  content, rendered size, natural dimensions, no browser upscaling, and mobile
+  no-overflow behavior remain in place.
+- Verification passed after this note:
+  `pnpm exec tsc --noEmit`; `pnpm run validate:content` with `460` category B
+  fallback questions and `276` local image references; `pnpm run build`, which
+  generated the service worker with `1870` cached assets and emitted only the
+  existing Vite large-chunk warning; focused Playwright
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium --project=mobile`
+  passed with `2` tests, `2` passed (`chromium` `5.1s`, `mobile` `14.2s`,
+  total `16.8s`); `node scripts/check-feature-memory.mjs --worktree` passed;
+  `git diff --check` passed. Full GitHub `baseline-checks` was not run locally;
+  the closest local reproduction used the failing Playwright grep in both
+  relevant projects plus the same build/content/TypeScript gates above.

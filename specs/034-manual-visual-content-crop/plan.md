@@ -626,3 +626,34 @@ Implementation Agent must:
   both fixes: partial app-specific residual scope is still surfaced, and the
   corrected `NO AVANZAR` translation appears in runtime/evidence without the
   misleading straight-ahead-only wording.
+
+## Current-Head AI Review And CI Follow-Up Plan - `d062fee35daa445d2caadbd2770900d1b93d2263`
+
+Architect accepts the new AI Review P2 and current CI failure as same-cycle
+blockers. Implementation Agent must:
+
+- Fix the learner-facing provenance-copy audit in
+  `scripts/manual-guide-visual-completeness-audit.mjs` so Cyrillic source-word
+  patterns do not depend on ASCII `\b` boundaries. Use Unicode-aware
+  lookarounds, Unicode property escapes where repository/runtime support
+  allows them, or explicit Cyrillic/non-Cyrillic boundary checks. The audit
+  must catch `источник`, `источника`, `из источника`,
+  `Визуал источника`, `Главный вывод источника`, and similar forbidden
+  provenance copy in learner-visible fields.
+- Preserve semantic allowlisting for legitimate non-provenance usage such as
+  `источник стресса`. The allowlist should be specific enough that it does not
+  reopen visual/source provenance labels.
+- Add focused test coverage for the Unicode/Cyrillic boundary behavior,
+  including at least one inflected forbidden form (`источника`) and the
+  allowed `источник стресса` phrase.
+- Stabilize the e2e image sizing path used by
+  `Manual guide full-width source image cards stay readable and avoid
+  upscaling`. The helper should avoid an unbounded `image.decode()` wait,
+  support lazy-loaded/manual images deterministically, and fail with a clear
+  diagnostic for broken images, zero natural dimensions, unreadable content, or
+  upscaled display. Do not remove the no-upscale or useful-content readability
+  intent of the test.
+- Record verification for both blockers: focused audit tests,
+  `node scripts/manual-guide-visual-completeness-audit.mjs`, the focused
+  Playwright grep in the same project(s) that failed CI where feasible,
+  `node scripts/check-feature-memory.mjs --worktree`, and `git diff --check`.

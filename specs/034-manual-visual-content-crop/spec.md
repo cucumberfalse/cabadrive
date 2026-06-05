@@ -936,3 +936,34 @@ Implementation evidence must cover both fixes with focused tests or audit
 assertions, regenerated/check-mode evidence as needed, and `tasks.md` notes
 showing the status/disposition semantics and corrected translation were
 verified.
+
+## Architect Review Disposition - Current Head `d062fee35daa445d2caadbd2770900d1b93d2263`
+
+Disposition recorded at `2026-06-05T18:02:47-03:00` for PR `#200` current-head
+AI Review and CI feedback. Both items are same-cycle blockers for feature
+`034` and block final validation until implemented, evidenced, and verified:
+
+1. AI Review P2 thread `PRRT_kwDOSX65IM6Herjc` on
+   `scripts/manual-guide-visual-completeness-audit.mjs` around line `94` is
+   accepted. The learner-facing provenance-copy audit must not rely on
+   JavaScript ASCII `\b` word boundaries for Cyrillic patterns. Forbidden
+   Russian provenance words and phrases such as `источник`, `источника`,
+   `из источника`, `Визуал источника`, and `Главный вывод источника` must be
+   detected in learner-visible copy with Unicode-aware boundaries/lookarounds
+   or explicit Cyrillic/non-Cyrillic boundary handling. The legitimate
+   allowlisted semantic phrase `источник стресса` must remain allowed because
+   it means a cause of stress rather than document/source provenance.
+2. Current-head `baseline-checks` CI failure is accepted as a same-cycle CI
+   stabilization blocker. The Playwright e2e test
+   `Manual guide full-width source image cards stay readable and avoid
+   upscaling` timed out in `tests/e2e/app.spec.ts` around lines `4762` and
+   `4778` while using `image.decode()` for image sizing checks. Implementation
+   Agent Curie is assigned to stabilize this. The fix must make the image
+   sizing helper robust and bounded rather than weakening the no-upscale /
+   readability assertion.
+
+Required evidence: focused tests or audit fixtures must prove Cyrillic
+forbidden provenance words are caught without regressing the
+`источник стресса` allowlist, and focused Playwright/CI evidence must prove the
+image sizing check no longer hangs on `image.decode()` while still failing
+clearly for unreadable, broken, or upscaled images.

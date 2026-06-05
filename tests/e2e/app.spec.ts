@@ -188,11 +188,26 @@ type ManualSourceImageCardMetrics = {
   complete: boolean;
 };
 
+async function expectRenderedManualImage(image: Locator, label: string) {
+  await expect(image, `${label} image is visible`).toBeVisible();
+  await expect
+    .poll(
+      () =>
+        image.evaluate((element: HTMLImageElement) => {
+          const rect = element.getBoundingClientRect();
+          return element.complete && element.naturalWidth > 0 && element.naturalHeight > 0 && rect.width > 1 && rect.height > 1;
+        }),
+      { message: `${label} image is loaded and rendered`, timeout: 5_000 }
+    )
+    .toBe(true);
+}
+
 async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean; expectUsefulContent?: boolean }) {
   const card = page.locator(`[data-card-id="${cardId}"]`);
   await card.scrollIntoViewIfNeeded();
   await expect(card).toHaveAttribute("data-display-mode", "full-width");
-  const metrics = await card.evaluate(async (element): Promise<ManualSourceImageCardMetrics> => {
+  await expectRenderedManualImage(card.locator("img"), cardId);
+  const metrics = await card.evaluate((element): ManualSourceImageCardMetrics => {
     const image = element.querySelector("img") as HTMLImageElement | null;
     const figure = element.querySelector("figure") as HTMLElement | null;
     const grid = element.closest(".manual-source-image-card-grid") as HTMLElement | null;
@@ -201,7 +216,6 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
     const cardBody = element.querySelector("p") as HTMLElement | null;
     const documentBodySample = guideSection?.querySelector(".intro-doc-lead, .intro-doc-list li, .intro-doc-block") as HTMLElement | null;
     if (!image || !figure || !grid || !section) throw new Error("source image card is missing image, figure, grid, or source-image-cards container");
-    await image.decode?.().catch(() => undefined);
     const cardRect = element.getBoundingClientRect();
     const figureRect = figure.getBoundingClientRect();
     const gridRect = grid.getBoundingClientRect();
@@ -4520,7 +4534,7 @@ test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone wid
   await expect(card).toBeVisible();
   const figure = card.locator('[data-russian-overlay-strategy="selectable-dom"]');
   const image = figure.locator('img[data-visible-spanish="false"]');
-  await image.evaluate((node) => (node as HTMLImageElement).decode?.().catch(() => undefined));
+  await expectRenderedManualImage(image, "ch4-alcohol-limits-source-card");
   await expect(figure).toBeVisible();
   await expect(image).toBeVisible();
   await expect(figure.locator('[data-overlay-label-id="acompanantes-label"]')).toContainText("Пасс. мото");
@@ -4700,7 +4714,16 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     await expect(panelCard).not.toContainText("источник");
     await expect(panelCard).not.toContainText("фрагмент");
   }
-  const anexoPanelSizing = await page.evaluate(async () => {
+  const anexoPanelCardIds = [
+    "app4-regulatory-anexo-panel-01-source-card",
+    "app4-regulatory-anexo-panel-02-source-card",
+    "app4-regulatory-anexo-panel-03-source-card",
+    "app4-regulatory-anexo-panel-04-source-card"
+  ];
+  for (const panelCardId of anexoPanelCardIds) {
+    await expectRenderedManualImage(page.locator(`[data-card-id="${panelCardId}"] img`), panelCardId);
+  }
+  const anexoPanelSizing = await page.evaluate(() => {
     const expected = new Map([
       ["app4-regulatory-anexo-panel-01-source-card", { width: 615, height: 743 }],
       ["app4-regulatory-anexo-panel-02-source-card", { width: 618, height: 733 }],
@@ -4711,7 +4734,6 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     for (const [id, size] of expected) {
       const image = document.querySelector(`[data-card-id="${id}"] img`) as HTMLImageElement | null;
       if (!image) throw new Error(`${id} image is missing`);
-      await image.decode?.().catch(() => undefined);
       const rect = image.getBoundingClientRect();
       results.push({
         id,
@@ -4759,8 +4781,8 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expect(tireCard).not.toContainText("источник");
   await expect(tireCard).not.toContainText("фрагмент");
   await expect(tireCard).not.toContainText("Визуал источника");
-  const tireSizing = await tireCard.locator("img").evaluate(async (image: HTMLImageElement) => {
-    await image.decode?.().catch(() => undefined);
+  await expectRenderedManualImage(tireCard.locator("img"), "app1-tire-manufacturing-tread-life-source-card");
+  const tireSizing = await tireCard.locator("img").evaluate((image: HTMLImageElement) => {
     const rect = image.getBoundingClientRect();
     const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
     return {
@@ -4775,8 +4797,8 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   expect(tireSizing.naturalHeight).toBe(995);
   expect(tireSizing.renderedWidth).toBeLessThanOrEqual(760);
   expect(tireSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(tireSizing.cardWidth * 0.7, 760));
-  const blindSpotSizing = await blindSpotCard.locator("img").evaluate(async (image: HTMLImageElement) => {
-    await image.decode?.().catch(() => undefined);
+  await expectRenderedManualImage(blindSpotCard.locator("img"), "app1-blind-spot-source-card");
+  const blindSpotSizing = await blindSpotCard.locator("img").evaluate((image: HTMLImageElement) => {
     const rect = image.getBoundingClientRect();
     const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
     return {
@@ -4792,7 +4814,9 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   expect(blindSpotSizing.renderedWidth).toBeLessThanOrEqual(546);
   expect(blindSpotSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(blindSpotSizing.cardWidth * 0.7, 546));
   await page.goto("/#manual-section-app4-signs-regulatory");
-  const noAvanzarSizing = await page.evaluate(async () => {
+  await expectRenderedManualImage(page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"] img'), "app4-regulatory-no-avanzar-source-card");
+  await expectRenderedManualImage(page.locator('[data-card-id="app4-regulatory-page-185-source-card"] img'), "app4-regulatory-page-185-source-card");
+  const noAvanzarSizing = await page.evaluate(() => {
     function redBounds(image: HTMLImageElement, crop: { x: number; y: number; width: number; height: number }) {
       const canvas = document.createElement("canvas");
       canvas.width = image.naturalWidth;
@@ -4826,7 +4850,6 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     const focusedImage = document.querySelector('[data-card-id="app4-regulatory-no-avanzar-source-card"] img') as HTMLImageElement | null;
     const sheetImage = document.querySelector('[data-card-id="app4-regulatory-page-185-source-card"] img') as HTMLImageElement | null;
     if (!focusedImage || !sheetImage) throw new Error("NO AVANZAR focused or overview image is missing");
-    await Promise.all([focusedImage.decode?.().catch(() => undefined), sheetImage.decode?.().catch(() => undefined)]);
     const focusedRect = focusedImage.getBoundingClientRect();
     const sheetRect = sheetImage.getBoundingClientRect();
     return {

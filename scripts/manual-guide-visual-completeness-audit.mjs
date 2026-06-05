@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const defaultEvidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
 const evidencePath = process.env.MANUAL_GUIDE_VISUAL_COMPLETENESS_EVIDENCE_PATH ?? defaultEvidencePath;
-const sectionRoot = "src/data/manual-sections";
+const sectionRoot = process.env.MANUAL_GUIDE_SECTION_ROOT ?? "src/data/manual-sections";
 const spaceAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg";
 const spaceSourceAssetPath =
@@ -91,7 +91,7 @@ const tireCropEvidencePath =
 const deniedCopyPatterns = [
   {
     id: "source-family-provenance",
-    pattern: /\bисточник[а-яё]*\b/iu,
+    pattern: /(?<![\p{L}\p{N}_])источник\p{Script=Cyrillic}*(?![\p{L}\p{N}_])/iu,
     reason:
       "Learner-facing guide copy should present the rule or learning point directly instead of naming the source/provenance."
   },
@@ -127,7 +127,7 @@ const deniedCopyPatterns = [
 const allowedCopyPatterns = [
   {
     id: "stress-cause-source",
-    pattern: /источник\s+стресса/iu,
+    pattern: /(?<![\p{L}\p{N}_])источник\s+стресса(?![\p{L}\p{N}_])/iu,
     reason: "Genuine semantic Russian use: source/cause of stress, not document provenance."
   }
 ];
@@ -328,14 +328,22 @@ function stringLiterals(source) {
   return literals;
 }
 
+function globalCopyPattern(pattern) {
+  return new RegExp(pattern.source, Array.from(new Set(`${pattern.flags}g`.split(""))).join(""));
+}
+
+function removeAllowedCopy(value) {
+  return allowedCopyPatterns.reduce((current, rule) => current.replace(globalCopyPattern(rule.pattern), " "), value);
+}
+
 function auditVisibleCopy() {
   const findings = [];
   const allowlistedOccurrences = [];
   for (const file of sectionFiles()) {
     for (const literal of stringLiterals(file.source)) {
       if (!/[А-Яа-яЁё]/u.test(literal.value)) continue;
-      const allowedRule = allowedCopyPatterns.find((rule) => rule.pattern.test(literal.value));
-      if (allowedRule) {
+      const allowedRules = allowedCopyPatterns.filter((rule) => rule.pattern.test(literal.value));
+      for (const allowedRule of allowedRules) {
         allowlistedOccurrences.push({
           ruleId: allowedRule.id,
           file: file.path,
@@ -344,10 +352,10 @@ function auditVisibleCopy() {
           reason: allowedRule.reason,
           status: "allowed"
         });
-        continue;
       }
+      const deniedValue = removeAllowedCopy(literal.value);
       for (const rule of deniedCopyPatterns) {
-        if (!rule.pattern.test(literal.value)) continue;
+        if (!rule.pattern.test(deniedValue)) continue;
         findings.push({
           ruleId: rule.id,
           file: file.path,
