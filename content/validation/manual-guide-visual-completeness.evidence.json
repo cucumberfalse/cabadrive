@@ -8,16 +8,20 @@
     {
       "id": "appendix-iv-regulatory-signs-no-avanzar",
       "label": "Appendix IV regulatory signs and NO AVANZAR",
-      "status": "needs-implementation",
+      "status": "implemented-representative",
       "sourcePages": [
         185,
         186
       ],
       "runtimeTargets": [
+        "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card"
       ],
-      "notes": "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
+      "remainingScopeNote": "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row.",
+      "notes": "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context."
     },
     {
       "id": "app2-hospital-map-source-card",
@@ -392,14 +396,58 @@
         "mobileContainedScroll": true,
         "translationDomSelector": ".manual-source-image-card + .manual-guide-section-block, .manual-source-image-term-translations"
       }
+    },
+    {
+      "id": "appendix-iv-regulatory-signs-no-avanzar",
+      "status": "implemented-representative",
+      "sourcePage": 185,
+      "officialSourceAsset": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+      "sourceRegion": {
+        "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+        "x": 32,
+        "y": 85,
+        "width": 200,
+        "height": 145
+      },
+      "extractionMethod": "Focused source-faithful crop from the retained official Anexo L R.1 sign image using sips cropOffset 85 32, crop 145x200. Direct CABA page-185 PDF probes were also checked and remained source-limited for sign glyph detail, so the retained official Anexo L image is used for the large representative NO AVANZAR card while the CABA sheets remain overview context.",
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+      "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
+      "cropEvidencePath": "content/validation/manual-guide-no-avanzar-source-crop.evidence.json",
+      "dimensions": {
+        "width": 200,
+        "height": 145
+      },
+      "sourceDimensions": {
+        "width": 200,
+        "height": 145
+      },
+      "sha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+      "sourceSha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+      "protectedImagePolicy": "The R.1 sign body, arrow, red prohibition mark, and Spanish catalog caption remain unchanged inside the protected image. Russian wording is rendered below as selectable DOM text.",
+      "externalCaptionBoundary": "The Spanish NO AVANZAR words are the external catalog caption printed below the R.1 sign in the official Anexo L image; they are not part of the sign body or an official supplementary plate.",
+      "runtimeDisplay": {
+        "cardId": "app4-regulatory-no-avanzar-source-card",
+        "maxDisplayWidthPx": 200,
+        "minDisplayWidthPx": 200,
+        "noUpscale": true,
+        "translationDomSelector": ".manual-source-image-term-translations"
+      },
+      "terms": [
+        {
+          "termEs": "NO AVANZAR",
+          "translationRu": "Движение прямо запрещено"
+        }
+      ],
+      "remainingScopeNote": "This record covers the user-reported NO AVANZAR example only. Remaining Appendix IV breadth is still represented by source-limited overview sheets unless later slices add more focused official sign rows or panels."
     }
   ],
   "remainingRequiredExamples": [
     {
       "id": "appendix-iv-regulatory-signs-no-avanzar",
       "label": "Appendix IV regulatory signs and NO AVANZAR",
-      "status": "needs-implementation",
-      "notes": "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
+      "status": "implemented-representative",
+      "notes": "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context.",
+      "remainingScopeNote": "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row."
     },
     {
       "id": "blind-spot-visual",

@@ -4568,7 +4568,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app4-signs-regulatory",
       hash: "/#manual-section-app4-signs-regulatory",
-      cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+      cards: ["app4-regulatory-no-avanzar-source-card", "app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
       usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
       readableScrollCards: [
         { id: "app4-regulatory-page-185-source-card", minDisplayWidthPx: 664 },
@@ -4642,4 +4642,77 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       });
     }
   }
+
+  await page.setViewportSize({ width: 1280, height: 950 });
+  await page.goto("/#manual-section-app4-signs-regulatory");
+  const noAvanzarCard = page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"]');
+  await expect(noAvanzarCard).toContainText("Движение прямо запрещено");
+  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
+  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Движение прямо запрещено");
+  await expect(noAvanzarCard).not.toContainText("источник");
+  await expect(noAvanzarCard).not.toContainText("фрагмент");
+  const noAvanzarSizing = await page.evaluate(async () => {
+    function redBounds(image: HTMLImageElement, crop: { x: number; y: number; width: number; height: number }) {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (!context) throw new Error("Could not create canvas context");
+      context.drawImage(image, 0, 0);
+      const data = context.getImageData(crop.x, crop.y, crop.width, crop.height).data;
+      let minX = crop.width;
+      let minY = crop.height;
+      let maxX = -1;
+      let maxY = -1;
+      for (let y = 0; y < crop.height; y += 1) {
+        for (let x = 0; x < crop.width; x += 1) {
+          const offset = (y * crop.width + x) * 4;
+          const red = data[offset];
+          const green = data[offset + 1];
+          const blue = data[offset + 2];
+          const alpha = data[offset + 3];
+          if (alpha > 0 && red > 145 && green < 95 && blue < 95) {
+            minX = Math.min(minX, x);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, x);
+            maxY = Math.max(maxY, y);
+          }
+        }
+      }
+      if (maxX < minX || maxY < minY) return null;
+      return { width: maxX - minX + 1, height: maxY - minY + 1 };
+    }
+    const focusedImage = document.querySelector('[data-card-id="app4-regulatory-no-avanzar-source-card"] img') as HTMLImageElement | null;
+    const sheetImage = document.querySelector('[data-card-id="app4-regulatory-page-185-source-card"] img') as HTMLImageElement | null;
+    if (!focusedImage || !sheetImage) throw new Error("NO AVANZAR focused or overview image is missing");
+    await Promise.all([focusedImage.decode?.().catch(() => undefined), sheetImage.decode?.().catch(() => undefined)]);
+    const focusedRect = focusedImage.getBoundingClientRect();
+    const sheetRect = sheetImage.getBoundingClientRect();
+    return {
+      focusedNatural: { width: focusedImage.naturalWidth, height: focusedImage.naturalHeight },
+      focusedRendered: { width: focusedRect.width, height: focusedRect.height },
+      sheetRendered: { width: sheetRect.width, height: sheetRect.height },
+      focusedRedBounds: redBounds(focusedImage, {
+        x: 0,
+        y: 0,
+        width: focusedImage.naturalWidth,
+        height: focusedImage.naturalHeight
+      }),
+      overviewFirstSignRedBounds: redBounds(sheetImage, {
+        x: 170,
+        y: 205,
+        width: 75,
+        height: 75
+      })
+    };
+  });
+  expect(noAvanzarSizing.focusedNatural).toEqual({ width: 200, height: 145 });
+  expect(noAvanzarSizing.focusedRendered.width, "focused NO AVANZAR does not upscale").toBeLessThanOrEqual(201);
+  expect(noAvanzarSizing.focusedRendered.width, "focused NO AVANZAR uses its natural readable width").toBeGreaterThanOrEqual(199);
+  expect(noAvanzarSizing.focusedRedBounds, "focused NO AVANZAR red sign bbox is measurable").not.toBeNull();
+  expect(noAvanzarSizing.overviewFirstSignRedBounds, "overview NO AVANZAR red sign bbox is measurable").not.toBeNull();
+  expect(
+    noAvanzarSizing.focusedRedBounds!.width,
+    "focused NO AVANZAR sign is substantially wider than the same sign inside the overview sheet"
+  ).toBeGreaterThan(noAvanzarSizing.overviewFirstSignRedBounds!.width * 1.45);
 });

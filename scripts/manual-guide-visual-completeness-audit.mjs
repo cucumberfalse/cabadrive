@@ -26,6 +26,12 @@ const hospitalMapSourceAssetPath =
   "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
 const hospitalMapCropEvidencePath =
   "content/validation/manual-guide-hospital-map-source-crop.evidence.json";
+const noAvanzarAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
+const noAvanzarSourceAssetPath =
+  "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
+const noAvanzarCropEvidencePath =
+  "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
 
 const deniedCopyPatterns = [
   {
@@ -75,11 +81,19 @@ const userExampleRecords = [
   {
     id: "appendix-iv-regulatory-signs-no-avanzar",
     label: "Appendix IV regulatory signs and NO AVANZAR",
-    status: "needs-implementation",
+    status: "implemented-representative",
     sourcePages: [185, 186],
-    runtimeTargets: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+    runtimeTargets: [
+      "app4-regulatory-no-avanzar-source-card",
+      "app4-regulatory-page-185-source-card",
+      "app4-regulatory-page-186-source-card"
+    ],
+    assetPath: noAvanzarAssetPath,
+    sourceAssetPath: noAvanzarSourceAssetPath,
+    remainingScopeNote:
+      "Representative only: this covers the reported NO AVANZAR example, not every Appendix IV regulatory sign or row.",
     notes:
-      "Pending later batch: large source-faithful individual signs/rows/panels and external-caption translation boundaries."
+      "Implemented for the reported NO AVANZAR example with a focused official Anexo L R.1 crop and separate Russian DOM translation. Remaining Appendix IV breadth is still not claimed complete; whole CABA sheets remain overview/source-limited context."
   },
   {
     id: "app2-hospital-map-source-card",
@@ -476,6 +490,52 @@ function hospitalMapRecord() {
   };
 }
 
+function noAvanzarRecord() {
+  const dimensions = existsSync(noAvanzarAssetPath) ? readImageDimensions(noAvanzarAssetPath) : null;
+  const sourceDimensions = existsSync(noAvanzarSourceAssetPath) ? readImageDimensions(noAvanzarSourceAssetPath) : null;
+  const cropEvidence = existsSync(noAvanzarCropEvidencePath)
+    ? JSON.parse(readFileSync(noAvanzarCropEvidencePath, "utf8"))
+    : null;
+  return {
+    id: "appendix-iv-regulatory-signs-no-avanzar",
+    status: "implemented-representative",
+    sourcePage: 185,
+    officialSourceAsset:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+    sourceRegion: cropEvidence?.sourceRegion ?? {
+      coordinateSystem:
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+      x: 32,
+      y: 85,
+      width: 200,
+      height: 145
+    },
+    extractionMethod:
+      "Focused source-faithful crop from the retained official Anexo L R.1 sign image using sips cropOffset 85 32, crop 145x200. Direct CABA page-185 PDF probes were also checked and remained source-limited for sign glyph detail, so the retained official Anexo L image is used for the large representative NO AVANZAR card while the CABA sheets remain overview context.",
+    assetPath: noAvanzarAssetPath,
+    sourceAssetPath: noAvanzarSourceAssetPath,
+    cropEvidencePath: noAvanzarCropEvidencePath,
+    dimensions,
+    sourceDimensions,
+    sha256: existsSync(noAvanzarAssetPath) ? sha256File(noAvanzarAssetPath) : null,
+    sourceSha256: existsSync(noAvanzarSourceAssetPath) ? sha256File(noAvanzarSourceAssetPath) : null,
+    protectedImagePolicy:
+      "The R.1 sign body, arrow, red prohibition mark, and Spanish catalog caption remain unchanged inside the protected image. Russian wording is rendered below as selectable DOM text.",
+    externalCaptionBoundary:
+      "The Spanish NO AVANZAR words are the external catalog caption printed below the R.1 sign in the official Anexo L image; they are not part of the sign body or an official supplementary plate.",
+    runtimeDisplay: {
+      cardId: "app4-regulatory-no-avanzar-source-card",
+      maxDisplayWidthPx: dimensions?.width ?? null,
+      minDisplayWidthPx: dimensions?.width ?? null,
+      noUpscale: true,
+      translationDomSelector: ".manual-source-image-term-translations"
+    },
+    terms: [{ termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" }],
+    remainingScopeNote:
+      "This record covers the user-reported NO AVANZAR example only. Remaining Appendix IV breadth is still represented by source-limited overview sheets unless later slices add more focused official sign rows or panels."
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -485,10 +545,16 @@ const document = {
   scopeStatus: "first-controlled-batch-partial",
   userExamples: userExampleRecords,
   copyAudit,
-  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord(), hospitalMapRecord()],
+  visualRecords: [mobilitySpaceRecord(), headrestCombinedRecord(), safetyEquipmentRecord(), hospitalMapRecord(), noAvanzarRecord()],
   remainingRequiredExamples: userExampleRecords
-    .filter((entry) => !String(entry.status).startsWith("implemented"))
-    .map((entry) => ({ id: entry.id, label: entry.label, status: entry.status, notes: entry.notes }))
+    .filter((entry) => !String(entry.status).startsWith("implemented") || String(entry.status).endsWith("representative"))
+    .map((entry) => ({
+      id: entry.id,
+      label: entry.label,
+      status: entry.status,
+      notes: entry.notes,
+      remainingScopeNote: entry.remainingScopeNote
+    }))
 };
 
 writeFileSync(evidencePath, `${JSON.stringify(document, null, 2)}\n`);

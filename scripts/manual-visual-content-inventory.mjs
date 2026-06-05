@@ -8,6 +8,10 @@ const registryPath =
 const sectionAssetRoot = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections";
 const officialAnnexImageRoot =
   "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images";
+const noAvanzarAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
+const noAvanzarSourceAssetPath =
+  "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 
 const bodyTextBaseline = {
   documentBodyTextFontSizePx: 16,
@@ -82,6 +86,7 @@ const sourceTextSupportingCardIds = new Set([
 ]);
 
 const suspectCropCardIds = new Set(["cedulas-source-card"]);
+const focusedOfficialSignCardIds = new Set(["app4-regulatory-no-avanzar-source-card"]);
 
 function readabilityViewportComparisons(card, renderedImageWidthPx, estimatedSmallestTextHeightPx, disposition) {
   const renderedSize = {
@@ -362,11 +367,22 @@ function dispositionForCard(card, cropRecord) {
       sourceQualityDisposition: cropRecord.sourceQualityDisposition
     };
   }
+  if (focusedOfficialSignCardIds.has(card.cardId)) {
+    return {
+      disposition: "implemented-representative-focused-official-sign-crop",
+      reason:
+        "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context."
+    };
+  }
   if (card.cardId === "app2-hospital-map-source-card") {
     return {
-      disposition: "acceptable-tight-crop",
-      reason: "Contrast example from feature 034 intake: useful bbox area ratio 0.4205 and no-upscale cap 780px; not blindly recropped.",
-      measuredUsefulRatios: { areaRatio: 0.4205 }
+      disposition: "corrected-best-official-map-only-crop",
+      reason:
+        "Hospital map follow-up replaced the broader map/list source visual with the tightest verified official map-only crop, preserving map internals unchanged and capping display at natural width.",
+      dimensions: { width: 440, height: 380 },
+      outputSha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      beforeUsefulRatios: { areaRatio: 0.4205128205128205 },
+      afterUsefulRatios: { areaRatio: 0.7142763157894737 }
     };
   }
   if (card.cardId === "app3-body-posture-source-card") {
@@ -430,6 +446,64 @@ function textReadabilityForCard(card, cropRecord) {
       requiresOwnerDisposition: true,
       routeDisposition:
         "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+    };
+  }
+  if (focusedOfficialSignCardIds.has(card.cardId)) {
+    return {
+      relevance: "required",
+      disposition: "implemented-representative-focused-official-sign-crop",
+      intendedReadableText:
+        "R.1 NO AVANZAR external catalog caption below the protected official sign image, with Russian learner wording rendered below as selectable DOM text.",
+      inspectedSample: "R.1 NO AVANZAR focused crop from retained official Anexo L image dec196AnexoIII-01.jpg.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 10,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "source-caption-below-body-text-but-separate-dom-translation-carries-learning",
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        10,
+        "implemented-representative-focused-official-sign-crop"
+      ),
+      strategyApplied:
+        "Use the retained official Anexo L R.1 crop rather than relying only on the smaller CABA Appendix IV whole-sheet label.",
+      evidencePath: "content/validation/manual-guide-visual-completeness.evidence.json",
+      attemptedAlternatives: [
+        {
+          id: "gcba-appendix-iv-page-185-whole-sheet",
+          result:
+            "Kept only as overview because the CABA page-sheet raster leaves NO AVANZAR too small when treated as the only representation."
+        },
+        {
+          id: "decreto-779-1995-anexo-l-dec196AnexoIII-01",
+          result:
+            "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation."
+        }
+      ],
+      requiresOwnerDisposition: false
+    };
+  }
+  if (card.cardId === "app2-hospital-map-source-card") {
+    return {
+      relevance: "required",
+      disposition: "implemented-best-official-map-only-crop-with-source-limited-label-detail",
+      intendedReadableText:
+        "Hospital map barrio labels and H/H1/H2 markers remain protected source pixels; Russian explanation/list text is rendered separately.",
+      inspectedSample: "Hospital map labels from source page 150.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 10,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText: "map-labels-source-limited-but-map-crop-is-tight-and-dom-text-carries-learning",
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        10,
+        "implemented-best-official-map-only-crop-with-source-limited-label-detail"
+      ),
+      evidencePath: "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+      sourceLimitation:
+        "Official PDF appears native-raster limited for barrio-label glyph detail; implementation uses the tightest map-only crop plus natural-width mobile containment.",
+      requiresOwnerDisposition: false
     };
   }
   if (suspectCropCardIds.has(card.cardId)) {
@@ -629,9 +703,110 @@ function updateRegistryFromCropEvidence(registry, cropEvidence) {
   }
 }
 
+function upsertFocusedNoAvanzarEvidence(registry) {
+  const section = registry.sections.find((entry) => entry.id === "app4-signs-regulatory");
+  if (!section) throw new Error("Missing registry section app4-signs-regulatory");
+  const implementation = section.implementationEvidence;
+  const dimensions = readImageDimensions(noAvanzarAssetPath);
+  const sourceDimensions = readImageDimensions(noAvanzarSourceAssetPath);
+  if (!dimensions || !sourceDimensions) throw new Error("Missing focused NO AVANZAR image dimensions");
+  const sha256 = sha256File(noAvanzarAssetPath);
+  const sourceSha256 = sha256File(noAvanzarSourceAssetPath);
+  if (sha256 !== sourceSha256) throw new Error("Focused NO AVANZAR runtime asset must match validation crop bytes");
+
+  const sourceRegionEntry = {
+    sourcePage: 185,
+    sourceRegion: {
+      coordinateSystem:
+        "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+      x: 32,
+      y: 85,
+      width: 200,
+      height: 145
+    },
+    sourceAssetPath: noAvanzarSourceAssetPath,
+    cropDimensions: sourceDimensions,
+    cropSha256: sourceSha256,
+    cleanupScope: "source-as-is focused official R.1 sign crop; no protected-pixel modification",
+    extractionScaleEvidence: {
+      target: "higher-resolution-direct-export",
+      method:
+        "Focused crop from retained official Anexo L R.1 sign image dec196AnexoIII-01.jpg using sips cropOffset 85 32, crop 145x200. The CABA page-185 whole-sheet PDF probes remained native-raster limited, so this retained official original image is used for the readable representative NO AVANZAR card.",
+      outputDimensions: sourceDimensions,
+      sha256: sourceSha256,
+      sourceQualityDisposition:
+        "retained-official-anexo-l-original-image-selected-for-focused-no-avanzar-card-after-caba-page-185-sheet-probes-remained-source-limited",
+      externalCaptionBoundary:
+        "R.1 NO AVANZAR is printed below the sign as the external catalog caption, not inside the sign body or a supplementary plate."
+    }
+  };
+  const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
+    (entry) => entry.sourceAssetPath === noAvanzarSourceAssetPath
+  );
+  if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+  else implementation.sourceRegionMetadata.push(sourceRegionEntry);
+
+  const exception = {
+    kind: "official-traffic-sign-source-as-is",
+    visibleSpanishScope: "official-sign-image-only",
+    sourceAsIs: true,
+    assetPath: noAvanzarAssetPath,
+    reason:
+      "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
+  };
+  const localAsset = {
+    assetPath: noAvanzarAssetPath,
+    assetKind: "official-traffic-sign-source-as-is-no-avanzar",
+    assetCategory: "source-as-is-traffic-sign",
+    containsText: true,
+    visibleSpanish: true,
+    cleanupScope: "none-source-as-is",
+    width: dimensions.width,
+    height: dimensions.height,
+    sha256,
+    runtimeDisplaySize: {
+      maxWidthCssPx: dimensions.width,
+      noUpscale: true
+    },
+    extractionScaleEvidence: {
+      target: "higher-resolution-direct-export",
+      method:
+        "Runtime image is byte-identical to the focused official Anexo L R.1 validation crop. The display is capped at natural crop width; Russian wording is separate DOM text below the image.",
+      outputDimensions: dimensions,
+      sha256,
+      externalCaptionBoundary:
+        "NO AVANZAR is translated only as separate DOM text because the printed Spanish words are an external catalog caption below the sign."
+    },
+    sourceIntegrity: {
+      sourceAsIs: true,
+      sourceAssetPath: noAvanzarSourceAssetPath,
+      noTranslationOrRelabeling: true,
+      noRedrawRecolorCleanupRetouchMaskInpaint: true,
+      russianExplanationOutsideImage: true
+    },
+    officialSignException: exception
+  };
+  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === noAvanzarAssetPath);
+  if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+  else implementation.localAssetMetadata.push(localAsset);
+
+  if (implementation.visibleSpanishStatus?.exceptions) {
+    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
+      (entry) => entry.assetPath !== noAvanzarAssetPath
+    );
+    implementation.visibleSpanishStatus.exceptions.push(exception);
+  }
+
+  implementation.visualReviewNotes = [
+    ...implementation.visualReviewNotes.filter((note) => !note.includes("NO AVANZAR")),
+    "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text."
+  ];
+}
+
 const cropEvidence = readJson(cropEvidencePath);
 const registry = readJson(registryPath);
 updateRegistryFromCropEvidence(registry, cropEvidence);
+upsertFocusedNoAvanzarEvidence(registry);
 
 const cropByCardId = new Map(cropEvidence.targets.map((record) => [record.cardId, record]));
 const cards = sourceImageCardInventory();

@@ -1023,6 +1023,78 @@
     "inventoryMethod": "scripts/manual-visual-content-inventory.mjs parses source-image-cards/source-artwork from src/data/manual-sections, enumerates local section asset files, joins feature 034 Swift crop evidence for corrected Appendix IV pages, records reviewer dispositions where automated useful-content measurement is not practical, and attaches whole-manual embedded-text readability dispositions for the same source-image inventory.",
     "sourceImageCards": [
       {
+        "sectionId": "app1-other-required-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-other-required-safety-elements.ts",
+        "blockId": "mandatory-equipment-source-visuals",
+        "cardId": "app1-matafuegos-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 340,
+        "sourcePage": 120,
+        "sourceRegion": {
+          "x": 1060,
+          "y": 1660,
+          "width": 340,
+          "height": 330
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+        "dimensions": {
+          "width": 340,
+          "height": 330
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 340,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
+      },
+      {
+        "sectionId": "app1-other-required-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-other-required-safety-elements.ts",
+        "blockId": "mandatory-equipment-source-visuals",
+        "cardId": "app1-chaleco-reflectivo-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 340,
+        "sourcePage": 120,
+        "sourceRegion": {
+          "x": 1060,
+          "y": 1990,
+          "width": 340,
+          "height": 340
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+        "dimensions": {
+          "width": 340,
+          "height": 340
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
+        "textReadability": {
+          "relevance": "none",
+          "disposition": "not-intended-readable",
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 340,
+          "estimatedSmallestTextHeightPx": null,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "not-applicable",
+          "viewportComparisons": [],
+          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
+        }
+      },
+      {
         "sectionId": "app1-safety-elements",
         "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
         "blockId": "mirror-orientation-source-visual",
@@ -1186,96 +1258,69 @@
         "cardId": "app2-hospital-map-source-card",
         "displayMode": "full-width",
         "maxDisplayWidthPx": 440,
+        "minDisplayWidthPx": 440,
         "sourcePage": 150,
         "sourceRegion": {
-          "height": 335,
-          "width": 780,
           "x": 1332,
-          "y": 2050
+          "y": 2050,
+          "width": 780,
+          "height": 335
         },
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "dimensions": {
-          "height": 380,
-          "width": 440
+          "width": 440,
+          "height": 380
         },
         "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
         "disposition": "corrected-best-official-map-only-crop",
-        "reason": "User-highlighted hospital map follow-up: old asset included large blank side fields and the useful map area occupied only 42.05% of image width. The final runtime asset is a best verified official PDF x36 map-only crop; it keeps the colored map and barrio labels, excludes the separate Spanish title/list panel, and preserves all map pixels unchanged.",
-        "measuredUsefulRatios": {
-          "areaRatio": 0.7142763157894737,
-          "heightRatio": 0.9552631578947368,
-          "widthRatio": 0.7477272727272727
+        "reason": "Hospital map follow-up replaced the broader map/list source visual with the tightest verified official map-only crop, preserving map internals unchanged and capping display at natural width.",
+        "outputSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        "beforeUsefulRatios": {
+          "areaRatio": 0.4205128205128205
+        },
+        "afterUsefulRatios": {
+          "areaRatio": 0.7142763157894737
         },
         "textReadability": {
           "relevance": "required",
           "disposition": "implemented-best-official-map-only-crop-with-source-limited-label-detail",
-          "intendedReadableText": "Hospital map barrio labels, H/H1/H2 markers, roads/boundaries, and hospital marker placement are preserved inside the official image; Russian legend/list remains selectable DOM text below.",
-          "inspectedSample": "Barrio labels such as Palermo, Recoleta, Caballito, Flores, Barracas, and Villa Lugano.",
+          "intendedReadableText": "Hospital map barrio labels and H/H1/H2 markers remain protected source pixels; Russian explanation/list text is rendered separately.",
+          "inspectedSample": "Hospital map labels from source page 150.",
           "renderedImageWidthPx": 440,
           "estimatedSmallestTextHeightPx": 10,
           "bodyTextBaselinePx": 16,
-          "comparisonToBodyText": "best-official-map-only-crop-at-natural-width-with-contained-mobile-scroll-source-limited",
+          "comparisonToBodyText": "map-labels-source-limited-but-map-crop-is-tight-and-dom-text-carries-learning",
           "viewportComparisons": [
             {
               "viewport": "desktop-natural-width",
               "renderedImageSizePx": {
-                "height": 380,
-                "width": 440
+                "width": 440,
+                "height": 380
               },
               "estimatedSmallestTextHeightPx": 10,
               "bodyTextBaselinePx": 16,
               "passesBodyTextSizeTarget": false,
-              "disposition": "best-official-map-only-crop-source-limited-label-detail",
-              "evidencePath": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png"
+              "disposition": "implemented-best-official-map-only-crop-with-source-limited-label-detail",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
             },
             {
               "viewport": "mobile-contained-scroll-natural-width",
               "renderedImageSizePx": {
-                "height": 380,
-                "width": 440
+                "width": 440,
+                "height": 380
               },
               "estimatedSmallestTextHeightPx": 10,
               "bodyTextBaselinePx": 16,
               "passesBodyTextSizeTarget": false,
-              "disposition": "best-official-map-only-crop-source-limited-label-detail; mobile no longer shrinks below natural 440px width",
-              "evidencePath": "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png"
+              "disposition": "implemented-best-official-map-only-crop-with-source-limited-label-detail",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
             }
           ],
-          "extractionAttempts": [
-            {
-              "id": "direct-pdf-region-old-y-coordinate",
-              "status": "rejected",
-              "result": "Produced a mostly blank 2405x2413 crop and was not committed as final output."
-            },
-            {
-              "id": "direct-pdf-region-corrected-y-coordinate-scale-36-full-panel",
-              "status": "validation-only",
-              "result": "Rendered visible official map/title/list panel, 588x837, SHA-256 6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454; not selected for runtime because the title/list panel made the colored map less focused."
-            },
-            {
-              "id": "direct-pdf-region-corrected-y-coordinate-scale-36-map-only",
-              "status": "selected",
-              "result": "Rendered visible official map-only crop, output 440x380, SHA-256 742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0."
-            }
-          ],
-          "protectedImagePolicy": "No translation, relabeling, redraw, cleanup, mask, retouch, inpaint, recolor, or other internal map-pixel modification; Russian explanation remains outside the image.",
-          "sourceLimitation": "High-scale official PDF probes did not materially increase the barrio-label glyph detail beyond the native raster; implementation therefore uses the tight map-only crop and no-upscale/mobile-contained-scroll display rather than browser scaling or protected-pixel reconstruction.",
-          "evidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json"
-        },
-        "minDisplayWidthPx": 440,
-        "beforeUsefulRatios": {
-          "areaRatio": 0.4205128205128205,
-          "heightRatio": 1,
-          "widthRatio": 0.4205128205128205
-        },
-        "afterUsefulRatios": {
-          "areaRatio": 0.7142763157894737,
-          "heightRatio": 0.9552631578947368,
-          "widthRatio": 0.7477272727272727
-        },
-        "sourceCropEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
-        "outputSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0"
+          "evidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+          "sourceLimitation": "Official PDF appears native-raster limited for barrio-label glyph detail; implementation uses the tightest map-only crop plus natural-width mobile containment.",
+          "requiresOwnerDisposition": false
+        }
       },
       {
         "sectionId": "app2-safety-elements",
@@ -1354,65 +1399,31 @@
         "sectionId": "app2-safety-elements",
         "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
         "blockId": "headrest-position-source-visual",
-        "cardId": "app2-headrest-height-source-card",
-        "displayMode": "compact",
+        "cardId": "app2-headrest-combined-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 820,
         "sourcePage": 132,
         "sourceRegion": {
-          "x": 1330,
-          "y": 2240,
-          "width": 185,
-          "height": 105
+          "x": 1040,
+          "y": 2160,
+          "width": 820,
+          "height": 600
         },
-        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
         "dimensions": {
-          "width": 185,
-          "height": 105
+          "width": 820,
+          "height": 600
         },
-        "protectedStatus": "not-protected",
+        "protectedStatus": "source-image-source-as-is",
         "hasRussianOverlayLabels": false,
-        "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
+        "disposition": "not-affected-reviewer-disposition",
+        "reason": "Whole-manual inventory reviewed this source-image card; it is not an Appendix IV full-page sheet with a measured below-threshold useful-content island and remains governed by existing no-upscale/source-fidelity evidence.",
         "textReadability": {
           "relevance": "none",
           "disposition": "not-intended-readable",
-          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
-          "inspectedSample": "Compact source-card visual.",
-          "renderedImageWidthPx": 185,
-          "estimatedSmallestTextHeightPx": null,
-          "bodyTextBaselinePx": 16,
-          "comparisonToBodyText": "not-applicable",
-          "viewportComparisons": [],
-          "evidencePath": "content/validation/manual-guide-visual-content-crop.evidence.json"
-        }
-      },
-      {
-        "sectionId": "app2-safety-elements",
-        "sectionFile": "src/data/manual-sections/app2-safety-elements.ts",
-        "blockId": "headrest-position-source-visual",
-        "cardId": "app2-headrest-distance-source-card",
-        "displayMode": "compact",
-        "sourcePage": 132,
-        "sourceRegion": {
-          "x": 1520,
-          "y": 2250,
-          "width": 260,
-          "height": 95
-        },
-        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
-        "dimensions": {
-          "width": 260,
-          "height": 95
-        },
-        "protectedStatus": "not-protected",
-        "hasRussianOverlayLabels": false,
-        "disposition": "compact-not-affected",
-        "reason": "Feature 032 inventory records this as a genuinely compact snippet; no excessive full-page margin symptom is present.",
-        "textReadability": {
-          "relevance": "none",
-          "disposition": "not-intended-readable",
-          "intendedReadableText": "Compact source snippet is visual/provenance support; learner-critical text is in adjacent selectable Russian DOM text.",
-          "inspectedSample": "Compact source-card visual.",
-          "renderedImageWidthPx": 260,
+          "intendedReadableText": "No intended-readable embedded image text was identified for the whole-manual source-image-card audit, or the visible learner text is already DOM text.",
+          "inspectedSample": "Whole-manual source-image-card inventory review.",
+          "renderedImageWidthPx": 820,
           "estimatedSmallestTextHeightPx": null,
           "bodyTextBaselinePx": 16,
           "comparisonToBodyText": "not-applicable",
@@ -2083,6 +2094,80 @@
           ],
           "requiresOwnerDisposition": true,
           "routeDisposition": "Requires Orchestrator/user disposition before final validation because the user text-size target cannot be met from verified official source pixels without upscaling or protected-pixel reconstruction."
+        }
+      },
+      {
+        "sectionId": "app4-signs-regulatory",
+        "sectionFile": "src/data/manual-sections/app4-signs-regulatory.ts",
+        "blockId": "regulatory-focused-signs",
+        "cardId": "app4-regulatory-no-avanzar-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 200,
+        "minDisplayWidthPx": 200,
+        "sourcePage": 185,
+        "sourceRegion": {
+          "x": 32,
+          "y": 85,
+          "width": 200,
+          "height": 145
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+        "dimensions": {
+          "width": 200,
+          "height": 145
+        },
+        "protectedStatus": "official-sign-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-representative-focused-official-sign-crop",
+        "reason": "Focused official Anexo L crop covers the reported NO AVANZAR example at native asset size, while Appendix IV whole sheets remain overview/source-limited context.",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-representative-focused-official-sign-crop",
+          "intendedReadableText": "R.1 NO AVANZAR external catalog caption below the protected official sign image, with Russian learner wording rendered below as selectable DOM text.",
+          "inspectedSample": "R.1 NO AVANZAR focused crop from retained official Anexo L image dec196AnexoIII-01.jpg.",
+          "renderedImageWidthPx": 200,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "source-caption-below-body-text-but-separate-dom-translation-carries-learning",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 200,
+                "height": 145
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-representative-focused-official-sign-crop",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 200,
+                "height": 145
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-representative-focused-official-sign-crop",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use the retained official Anexo L R.1 crop rather than relying only on the smaller CABA Appendix IV whole-sheet label.",
+          "evidencePath": "content/validation/manual-guide-visual-completeness.evidence.json",
+          "attemptedAlternatives": [
+            {
+              "id": "gcba-appendix-iv-page-185-whole-sheet",
+              "result": "Kept only as overview because the CABA page-sheet raster leaves NO AVANZAR too small when treated as the only representation."
+            },
+            {
+              "id": "decreto-779-1995-anexo-l-dec196AnexoIII-01",
+              "result": "Selected as retained official original-image source for a focused R.1 NO AVANZAR crop with protected sign pixels and a separate Russian DOM translation."
+            }
+          ],
+          "requiresOwnerDisposition": false
         }
       },
       {
@@ -3640,6 +3725,24 @@
     ],
     "sectionAssetFiles": [
       {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 340,
+          "height": 340
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 340,
+          "height": 330
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
         "referencedByManualData": true,
         "dimensions": {
@@ -3670,28 +3773,37 @@
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "referencedByManualData": true,
         "dimensions": {
-          "width": 780,
-          "height": 335
+          "width": 440,
+          "height": 380
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 820,
+          "height": 600
         },
         "disposition": "referenced-current-manual-visual"
       },
       {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
-        "referencedByManualData": true,
+        "referencedByManualData": false,
         "dimensions": {
           "width": 260,
           "height": 95
         },
-        "disposition": "referenced-current-manual-visual"
+        "disposition": "unreferenced-or-superseded-local-asset-file"
       },
       {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
-        "referencedByManualData": true,
+        "referencedByManualData": false,
         "dimensions": {
           "width": 185,
           "height": 105
         },
-        "disposition": "referenced-current-manual-visual"
+        "disposition": "unreferenced-or-superseded-local-asset-file"
       },
       {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
@@ -3834,6 +3946,15 @@
         "dimensions": {
           "width": 706,
           "height": 980
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 200,
+          "height": 145
         },
         "disposition": "referenced-current-manual-visual"
       },
@@ -4346,7 +4467,7 @@
         "referencedByManualData": false,
         "dimensions": {
           "width": 585,
-          "height": 78
+          "height": 125
         },
         "disposition": "unreferenced-or-superseded-local-asset-file"
       },
@@ -4844,26 +4965,29 @@
         ]
       },
       "sourceImageCardRelevanceCounts": {
-        "none": 11,
+        "none": 12,
         "supporting": 10,
-        "required": 17
+        "required": 18
       },
       "sourceImageCardDispositionCounts": {
-        "not-intended-readable": 11,
+        "not-intended-readable": 12,
         "readable-via-selectable-dom-overlay": 5,
-        "readable-with-adjacent-dom-text": 4,
         "implemented-best-official-map-only-crop-with-source-limited-label-detail": 1,
+        "readable-with-adjacent-dom-text": 4,
         "source-limited-exception": 16,
+        "implemented-representative-focused-official-sign-crop": 1,
         "implementation-feedback-needs-source-region-verification": 1
       },
-      "sourceImageCardDispositionTotal": 38,
+      "sourceImageCardDispositionTotal": 40,
       "requiredCardIds": [
+        "app2-hospital-map-source-card",
         "app4-horizontal-page-195-source-card",
         "app4-horizontal-page-196-source-card",
         "app4-informational-page-189-source-card",
         "app4-informational-page-190-source-card",
         "app4-informational-page-191-source-card",
         "app4-informational-page-192-source-card",
+        "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card",
         "app4-temporary-page-193-source-card",
@@ -4877,7 +5001,6 @@
       ],
       "representativeNonAppendixReadableCardIds": [
         "alcohol-limits-source-card",
-        "app2-hospital-map-source-card",
         "app3-body-posture-source-card",
         "app3-seatbelt-source-card",
         "cedulas-source-card",
@@ -4928,6 +5051,7 @@
         "cedulas-source-card"
       ],
       "naturalWidthMinDisplayCardIds": [
+        "app2-hospital-map-source-card",
         "app2-mirror-orientation-source-card",
         "app4-horizontal-page-195-source-card",
         "app4-horizontal-page-196-source-card",
@@ -4935,6 +5059,7 @@
         "app4-informational-page-190-source-card",
         "app4-informational-page-191-source-card",
         "app4-informational-page-192-source-card",
+        "app4-regulatory-no-avanzar-source-card",
         "app4-regulatory-page-185-source-card",
         "app4-regulatory-page-186-source-card",
         "app4-temporary-page-193-source-card",
@@ -5009,43 +5134,12 @@
         "strategy": "Evaluate splitting each source-limited Appendix IV sheet into smaller official sub-crops/cards/panels before declaring a readability exception.",
         "conclusion": "Not selected for Appendix IV because the full corrected sheets already display at natural source width on desktop and now keep that width on mobile through contained figure scrolling. Splitting the same source-limited raster would not increase embedded glyph pixels without browser upscaling or protected-pixel reconstruction; it would only remove context or create more panels.",
         "selectedMitigation": "Set minDisplayWidthPx equal to maxDisplayWidthPx for Appendix IV page-sheet cards so mobile never shrinks below natural crop width."
-      },
-      "hospitalMapFollowUp": {
-        "status": "implemented-source-limited-map-only-crop",
-        "cardId": "app2-hospital-map-source-card",
-        "sourceCropEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
-        "outputDimensions": {
-          "height": 380,
-          "width": 440
-        },
-        "outputSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
-        "selectedRenderScale": 36,
-        "maximumSuccessfulProbeScale": 36,
-        "usefulContentRatios": {
-          "before": {
-            "areaRatio": 0.4205128205128205,
-            "heightRatio": 1,
-            "widthRatio": 0.4205128205128205
-          },
-          "after": {
-            "areaRatio": 0.7142763157894737,
-            "heightRatio": 0.9552631578947368,
-            "widthRatio": 0.7477272727272727
-          }
-        },
-        "runtimeDisplay": {
-          "maxDisplayWidthPx": 440,
-          "minDisplayWidthPx": 440,
-          "noUpscale": true,
-          "mobileContainedScroll": true
-        },
-        "sourceLimitation": "Best official x36 PDF render confirms the hospital-map label glyph detail is native-raster limited; runtime uses the tight map-only crop and avoids CSS/browser upscale."
       }
     },
     "summary": {
-      "sourceImageCardCount": 38,
+      "sourceImageCardCount": 40,
       "sourceArtworkCount": 2,
-      "sectionAssetFileCount": 132,
+      "sectionAssetFileCount": 136,
       "correctedAppendixIvCount": 16,
       "appendixIvPagesCovered": [
         185,
@@ -5065,12 +5159,10 @@
         199,
         200
       ],
-      "compactSourceImageCardCount": 7,
+      "compactSourceImageCardCount": 5,
       "acceptableContrastExamples": [
+        "app2-hospital-map-source-card",
         "app3-body-posture-source-card"
-      ],
-      "correctedNonAppendixSourceImageCardIds": [
-        "app2-hospital-map-source-card"
       ]
     }
   }

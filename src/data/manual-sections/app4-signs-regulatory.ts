@@ -61,6 +61,38 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "regulatory-focused-signs",
+      kind: "source-image-cards",
+      titleRu: "Крупный пример запрещающего знака",
+      sourceTextEs: "R.1 NO AVANZAR.",
+      cards: [
+        {
+          id: "app4-regulatory-no-avanzar-source-card",
+          titleRu: "Движение прямо запрещено",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 200,
+          minDisplayWidthPx: 200,
+          sourcePage: 185,
+          sourceRegion: { x: 32, y: 85, width: 200, height: 145 },
+          assetPath: `${assetRoot}/no-avanzar-source-as-is.jpg`,
+          altRu:
+            "Знак R.1 NO AVANZAR с испанской подписью под знаком.",
+          visibleSpanish: true,
+          officialSignException,
+          termTranslations: [
+            { termEs: "NO AVANZAR", translationRu: "Движение прямо запрещено" }
+          ],
+          bodyRu:
+            "Здесь знак показан отдельно и крупнее, чем на обзорном листе. Русская расшифровка дана ниже, а изображение знака и испанская подпись внутри картинки не менялись."
+        }
+      ],
+      visualNotes: [
+        "The focused card uses the retained official Anexo L image for the R.1 sign because the CABA Appendix IV page-sheet raster is source-limited.",
+        "Only the external catalog caption is explained in Russian as selectable text below the image.",
+        "The sign body, arrow, red prohibition mark, and Spanish source caption remain protected image pixels."
+      ]
+    },
+    {
       id: "regulatory-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы регулирующих знаков",

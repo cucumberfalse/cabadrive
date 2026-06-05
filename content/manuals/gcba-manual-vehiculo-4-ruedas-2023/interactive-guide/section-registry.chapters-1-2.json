@@ -12088,6 +12088,34 @@
                 }
               }
             }
+          },
+          {
+            "sourcePage": 185,
+            "sourceRegion": {
+              "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+              "x": 32,
+              "y": 85,
+              "width": 200,
+              "height": 145
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
+            "cropDimensions": {
+              "width": 200,
+              "height": 145
+            },
+            "cropSha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+            "cleanupScope": "source-as-is focused official R.1 sign crop; no protected-pixel modification",
+            "extractionScaleEvidence": {
+              "target": "higher-resolution-direct-export",
+              "method": "Focused crop from retained official Anexo L R.1 sign image dec196AnexoIII-01.jpg using sips cropOffset 85 32, crop 145x200. The CABA page-185 whole-sheet PDF probes remained native-raster limited, so this retained official original image is used for the readable representative NO AVANZAR card.",
+              "outputDimensions": {
+                "width": 200,
+                "height": 145
+              },
+              "sha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+              "sourceQualityDisposition": "retained-official-anexo-l-original-image-selected-for-focused-no-avanzar-card-after-caba-page-185-sheet-probes-remained-source-limited",
+              "externalCaptionBoundary": "R.1 NO AVANZAR is printed below the sign as the external catalog caption, not inside the sign body or a supplementary plate."
+            }
           }
         ],
         "localAssetMetadata": [
@@ -12199,6 +12227,45 @@
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
             }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+            "assetKind": "official-traffic-sign-source-as-is-no-avanzar",
+            "assetCategory": "source-as-is-traffic-sign",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "width": 200,
+            "height": 145,
+            "sha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 200,
+              "noUpscale": true
+            },
+            "extractionScaleEvidence": {
+              "target": "higher-resolution-direct-export",
+              "method": "Runtime image is byte-identical to the focused official Anexo L R.1 validation crop. The display is capped at natural crop width; Russian wording is separate DOM text below the image.",
+              "outputDimensions": {
+                "width": 200,
+                "height": 145
+              },
+              "sha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+              "externalCaptionBoundary": "NO AVANZAR is translated only as separate DOM text because the printed Spanish words are an external catalog caption below the sign."
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true
+            },
+            "officialSignException": {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+              "reason": "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
+            }
           }
         ],
         "visibleSpanishStatus": {
@@ -12218,6 +12285,13 @@
               "sourceAsIs": true,
               "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
               "reason": "Official Appendix IV sign/signal/source sheet is protected source-as-is; Russian explanation is outside the image."
+            },
+            {
+              "kind": "official-traffic-sign-source-as-is",
+              "visibleSpanishScope": "official-sign-image-only",
+              "sourceAsIs": true,
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+              "reason": "Focused official R.1 NO AVANZAR sign crop is protected source-as-is; Russian explanation is outside the image."
             }
           ]
         },
@@ -12238,7 +12312,8 @@
         "visualReviewNotes": [
           "Feature 034 replaces excessive-margin Appendix IV page-sheet runtime assets with tight official-source crops and records before/after useful-content bbox evidence.",
           "The official PDF source is source-limited for useful sign/sheet pixel detail; corrected assets therefore cap runtime display at natural crop width instead of stretching or browser-upscaling.",
-          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text."
+          "Protected signs, road markings, traffic-light/signal visuals, and closing source visuals are left unchanged except for removing empty outer page margins; Russian explanations remain adjacent or below as selectable DOM text.",
+          "Focused NO AVANZAR card uses retained official Anexo L R.1 image pixels and translates only the proven external catalog caption as separate DOM text."
         ],
         "checkerResult": "pass"
       }

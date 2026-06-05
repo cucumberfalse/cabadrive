@@ -280,27 +280,27 @@
   must be adapted or supplemented for individual sign/sign-row fragments,
   hospital-map source-region extraction, and maximum-practical official-source
   quality probes.
-- [ ] T099 Implementation Agent must not treat current Appendix IV
+- [x] T099 Implementation Agent must not treat current Appendix IV
   `source-limited-exception` evidence as final completion. Final validation is
   blocked until latest sign-fragment/map requirements are implemented and
   evidenced, or a narrow evidence-backed blocker is routed to
   Orchestrator/human after exhausting official-original extraction options.
-- [ ] T100 Implementation Agent must classify Appendix IV sign text/pixels into
+- [x] T100 Implementation Agent must classify Appendix IV sign text/pixels into
   protected sign body/plate/tablet/placard pixels versus external source
   captions/labels. Ambiguous text is protected until evidence proves it is
   external.
-- [ ] T101 Implementation Agent must extract/render individual signs, sign
+- [x] T101 Implementation Agent must extract/render individual signs, sign
   rows, or equivalent official source fragments at maximum practical quality
   from the canonical official PDF/original or better retained official source.
   Whole-sheet overview may remain supplementary but cannot be the only
   user-facing readable sign presentation.
-- [ ] T102 Implementation Agent must make representative signs, including a
+- [x] T102 Implementation Agent must make representative signs, including a
   `NO AVANZAR`-style regulatory sign, visually large enough to inspect with
   no pixelated browser upscaling.
-- [ ] T103 Implementation Agent may translate external captions/labels under or
+- [x] T103 Implementation Agent may translate external captions/labels under or
   near signs into Russian DOM/SVG text only when source-region evidence proves
   those captions are outside the protected sign/plate visual.
-- [ ] T104 Implementation Agent must preserve all text/pixels inside sign
+- [x] T104 Implementation Agent must preserve all text/pixels inside sign
   bodies, supplementary plates/tablets, and official sign placards exactly as
   source pixels: no translation, redraw, cleanup, mask, retouch, inpaint,
   replacement, or relabeling.
@@ -314,10 +314,10 @@
   per-sign/row/hospital-map source path, source region, extraction scale/probe
   method, output dimensions, hashes, runtime display size, no-upscale proof,
   protected-pixel classification, and translated-external-caption boundaries.
-- [ ] T108 Implementation Agent must update Playwright or equivalent visual
+- [x] T108 Implementation Agent must update Playwright or equivalent visual
   evidence with desktop/mobile screenshots for individual Appendix IV signs and
   the hospital map, including nearby body text comparison.
-- [ ] T109 Implementation Agent must update content/static tests so protected
+- [x] T109 Implementation Agent must update content/static tests so protected
   sign interiors and map internals cannot be translated/modified, while
   external sign captions may be translated only as separate DOM/SVG text.
 - [ ] T110 If official original extraction still cannot meet readability for a
@@ -325,7 +325,7 @@
   with all official-source attempts and route it to Orchestrator/human. Broad
   "source-limited" completion is no longer acceptable for Appendix IV signs or
   the hospital map.
-- [ ] T111 Implementation Agent reruns focused content tests,
+- [x] T111 Implementation Agent reruns focused content tests,
   `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, focused Playwright, `git diff --check`, and full
   preflight if feasible, then records exact evidence in this `tasks.md`.
@@ -433,6 +433,9 @@
   whole sign sheets are insufficient when signs/captions remain tiny; use large
   individual signs, sign rows, or source-faithful panels where possible, and
   translate only proven external catalog captions such as `NO AVANZAR`.
+  Partial 2026-06-05 representative slice: `NO AVANZAR` now has a focused
+  official-source runtime crop and separate Russian DOM translation. Remaining
+  Appendix IV breadth is not claimed complete.
 - [x] T134 Implementation Agent must continue the hospital-map follow-up:
   re-extract or verify `app2-hospital-map-source-card` from the best official
   original source so labels are readable at body-text scale, without translating
@@ -455,15 +458,24 @@
   source page/region, extraction method/scale, asset dimensions, hash where
   practical, runtime display size, no-upscale proof, protected-image policy,
   and screenshots.
+  Partial 2026-06-05 representative slice: evidence for `NO AVANZAR` records
+  source path, crop region, method, dimensions, hash, runtime display bounds,
+  protected/external-caption boundary, and remaining Appendix IV scope.
 - [ ] T139 Implementation Agent must add or update tests/audit scripts so
   missing meaningful visuals, tiny image displays, excessive blank margins,
   protected-image edits, missing separate translations, and learner-facing
   source/provenance wording regressions fail.
+  Partial 2026-06-05 representative slice: tests now assert the focused
+  `NO AVANZAR` asset/hash/no-upscale policy, separate term translation, visible
+  remaining-scope evidence, and Playwright readability relative to the overview
+  sheet.
 - [ ] T140 Implementation Agent must run and record focused content tests,
   `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, focused Playwright screenshots/checks for
   representative required visuals, `git diff --check`, and full
   `pnpm run preflight` if feasible.
+  Partial 2026-06-05 representative slice: see `NO AVANZAR Representative
+  Focused Crop Evidence - 2026-06-05` for this slice's command evidence.
 - [ ] T141 PR `#200` final validation remains blocked until T126-T140 and the
   explicit user-example checklist below are implemented and evidenced, or every
   remaining gap is a narrow evidence-backed blocker routed to
@@ -476,12 +488,18 @@
   example, record one of: implemented with evidence, duplicate-covered with the
   covering block named, explicitly omitted with rationale, or narrow blocker
   routed to Orchestrator/human.
+  Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
+  `NO AVANZAR` is recorded as `implemented-representative`; blind spot and tire
+  visuals remain required pending examples.
 - [ ] T144 Implementation Agent evidence must specifically cover the user
   examples: Appendix IV regulatory signs and `NO AVANZAR`, hospital map,
   seatbelt/headrest copy problems, blind-spot visual, tire
   manufacturing/tread-life visual, `Matafuegos`, `Chaleco reflectivo`,
   headrest combined diagram/glossary, `50` people mobility-space visual, and
   whole-guide `источник` wording cleanup.
+  Partial 2026-06-05 representative slice: Appendix IV regulatory signs /
+  `NO AVANZAR` now has concrete representative evidence; broad Appendix IV
+  rows/panels, blind spot, and tire examples remain visible in audit evidence.
 - [x] T145 Implementation Agent app1 equipment slice restores the official
   Appendix I page 120 `Matafuegos` and `Chaleco reflectivo` images as
   source-faithful crops with Russian translations outside the image; app2/app3
@@ -1312,3 +1330,84 @@
   renders the `440x380` map-only asset at no more than natural width, with
   `minDisplayWidthPx: 440` enabling contained visual-only horizontal scrolling
   on narrow screens and no document-level horizontal overflow.
+
+## NO AVANZAR Representative Focused Crop Evidence - 2026-06-05
+
+- Implementation Agent `NO AVANZAR` slice continued in assigned PR `#200`
+  worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`. Startup status before edits
+  was clean on the assigned branch after previous worker commit
+  `9651f49845c53ae7a78f2631132139f738618801`; parallel worktree/branch/PR
+  preservation was honored and no sibling worktrees, branches, or PRs were
+  touched.
+- This is a representative focused crop, not full Appendix IV completion.
+  Visual-completeness evidence records
+  `appendix-iv-regulatory-signs-no-avanzar` as
+  `implemented-representative`, keeps that example in
+  `remainingRequiredExamples`, and adds the explicit note that it covers the
+  reported `NO AVANZAR` example only, not every Appendix IV regulatory sign or
+  row. Remaining visible required examples are the blind-spot visual and tire
+  manufacturing/tread-life visual, plus the broader Appendix IV sign/row scope
+  if future slices add more focused signs.
+- Official retained source used:
+  `content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg`,
+  dimensions `615x743`, SHA-256
+  `d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9`.
+  The crop region is official Anexo image pixels
+  `{ x: 32, y: 85, width: 200, height: 145 }`, covering the R.1 sign and its
+  external printed catalog caption `NO AVANZAR`.
+- Extraction command:
+  `sips -s format jpeg -s formatOptions 100 --cropToHeightWidth 145 200 --cropOffset 85 32 content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg --out content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg`.
+  Runtime asset and validation crop are byte-identical `200x145` JPEG files:
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg`
+  and
+  `content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg`,
+  SHA-256
+  `037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba`.
+- Direct CABA page `185` PDF/original probes were recorded in
+  `content/validation/manual-guide-no-avanzar-source-crop.evidence.json`.
+  Scale `12`, `20`, and `36` attempts all remained source-limited for useful
+  sign-caption glyph detail (`~503-504` useful-width pixels), so the retained
+  official Anexo L R.1 source image was selected for the focused runtime card
+  while the CABA Appendix IV sheets remain overview context.
+- Runtime card:
+  `app4-regulatory-no-avanzar-source-card` in
+  `src/data/manual-sections/app4-signs-regulatory.ts`, title
+  `Движение прямо запрещено`, `displayMode: "full-width"`,
+  `maxDisplayWidthPx: 200`, `minDisplayWidthPx: 200`, and no browser upscaling.
+  Separate selectable DOM term translation below the protected image is
+  `NO AVANZAR` -> `Движение прямо запрещено`.
+- Protected-image boundary: the sign body, red ring/slash, black arrow, and the
+  Spanish `NO AVANZAR` catalog-caption pixels inside the crop remain unchanged.
+  No AI generation, redraw, retouch, cleanup, mask, recolor, translation, or
+  reconstruction was performed inside the image. The Russian wording appears
+  only in DOM outside the image; ambiguous sign/plate/tablet/placard text
+  remains protected by default.
+- Registry/evidence/tests updated:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `content/validation/manual-guide-visual-completeness.evidence.json`,
+  `content/validation/manual-guide-no-avanzar-source-crop.evidence.json`,
+  `scripts/manual-visual-content-inventory.mjs`,
+  `scripts/manual-guide-visual-completeness-audit.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
+  Static tests assert the focused asset dimensions/hash, source-integrity crop,
+  no-upscale runtime metadata, `officialSignException`, separate term
+  translation, and that representative Appendix IV scope remains visible in
+  `remainingRequiredExamples`.
+- Verification for this slice after the evidence update passed:
+  `node scripts/manual-guide-visual-completeness-audit.mjs`;
+  `node --test tests/content-manual-guide-chapters.test.mjs` (`97` tests,
+  `97` pass, `0` fail); `pnpm run validate:manual-guide`;
+  `pnpm run validate:content`; `pnpm exec tsc --noEmit`; `pnpm run build`
+  passed and generated the service worker with `1864` cached assets; focused
+  Playwright source-card scenario
+  `pnpm exec playwright test tests/e2e/app.spec.ts --grep "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed (`1` test, `1` pass). The Playwright scenario captures desktop and
+  mobile screenshots for `/#manual-section-app4-signs-regulatory`, verifies the
+  focused card is visible, the separate DOM translation is present, banned
+  learner-facing provenance words are absent from the card, the image renders
+  at its natural `200px` width without browser upscaling, and the focused sign's
+  red-ring bbox is more than `1.45x` wider than the same sign measured inside
+  the overview sheet.
