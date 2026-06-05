@@ -150,7 +150,8 @@
 - Branch: `codex/032-remove-guide-ready-labels`
 - Purpose: remove learner-visible `готово` labels from `Руководство` manual navigation while preserving route/deep-link behavior, active state, pending labels, and status/source diagnostics.
 - Base SHA: `51e42f657d867fb802bbe3a68591b6008b45a60f`
-- Current/effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Effective content head: `b671cae9699c0bacfd2cd0961e630e663de20252`
+- Current PR head at Architect evidence disposition: `a777cfb3752105188f6f690870b17d3875926ec2`
 - Status at Architect validation: open, ready for review/merge coordination, mergeable, not draft.
 - Included in final validation: yes; this is the only PR slice in the work cycle.
 
@@ -162,7 +163,9 @@
 - Limit escalation: none.
 - Implementation Agent feedback: none; no Architect disposition required.
 - Known issues: none.
-- Current-PR-head guard: local `HEAD`, remote PR head, and effective content head all equal `b671cae9699c0bacfd2cd0961e630e663de20252`; no later commits exist at this validation time, so no post-validation evidence-only/non-evidence distinction is required.
+- Current-PR-head guard disposition: PR head `a777cfb3752105188f6f690870b17d3875926ec2` is later than effective content head `b671cae9699c0bacfd2cd0961e630e663de20252`; the diff from `b671cae9699c0bacfd2cd0961e630e663de20252` to `a777cfb3752105188f6f690870b17d3875926ec2` is limited to Analyst/Architect role-owned process memory (`specs/032-remove-guide-ready-labels/feature-request.md` and `specs/032-remove-guide-ready-labels/tasks.md`) and is final-validation evidence only, with no product code, tests, runtime content, source archive, validator, backend, PDF, service-worker, or durable project-doc changes.
+- Finalization guard requirement: Orchestrator must run a fresh read-only current-PR-head guard immediately before finalization/merge; any later commit after this note must be checked from live PR/local state instead of relying on this static evidence line.
+- Check re-verification note: required check re-verification on the post-evidence PR head remains an Orchestrator merge-readiness gate after this Architect evidence note; this note does not claim checks are green on any later head.
 - Required checks from `.unicorn-hub/config.json`: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`; read-only PR inspection showed all five completed with `SUCCESS` on `b671cae9699c0bacfd2cd0961e630e663de20252`.
 - PR state evidence: read-only `gh pr view 196` showed PR #196 open, not draft, mergeable, base `main` at `51e42f657d867fb802bbe3a68591b6008b45a60f`, and head `b671cae9699c0bacfd2cd0961e630e663de20252`.
 - Local diff evidence: the cycle diff changes only `src/App.tsx`, `tests/content-manual-guide-chapters.test.mjs`, `tests/e2e/app.spec.ts`, and feature memory under `specs/032-remove-guide-ready-labels/`.
