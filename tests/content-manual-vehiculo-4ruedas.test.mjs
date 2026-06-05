@@ -41,6 +41,11 @@ function findNavigationEntryById(entries, entryId) {
   return undefined;
 }
 
+function pickRange(entry) {
+  assert.ok(entry, "navigation entry exists");
+  return { startPage: entry.startPage, endPage: entry.endPage };
+}
+
 function flattenNavigationEntries(entries) {
   return entries.flatMap((entry) => [entry, ...flattenNavigationEntries(entry.children ?? [])]);
 }
@@ -135,6 +140,30 @@ test("manual 4 ruedas generated manifest is stable against committed assets and 
   assert.deepEqual(buildManualManifest(), manifest);
   assert.deepEqual(buildManualLayoutManifest(manifest), layout);
   assert.deepEqual(buildManualNavigationManifest(manifest), navigation);
+});
+
+test("manual 4 ruedas front-matter navigation keeps source-backed page ranges", () => {
+  const expectedFrontMatterRanges = new Map([
+    ["front-title", { startPage: 1, endPage: 1 }],
+    ["front-presentation", { startPage: 2, endPage: 2 }],
+    ["front-categories", { startPage: 3, endPage: 4 }],
+    ["front-glossary", { startPage: 5, endPage: 11 }],
+    ["front-index", { startPage: 12, endPage: 13 }]
+  ]);
+  const generatedNavigation = buildManualNavigationManifest(manifest);
+
+  for (const [entryId, expectedRange] of expectedFrontMatterRanges) {
+    assert.deepEqual(
+      pickRange(findNavigationEntryById(generatedNavigation.entries, entryId)),
+      expectedRange,
+      `generated ${entryId} range follows front-matter source evidence`
+    );
+    assert.deepEqual(
+      pickRange(findNavigationEntryById(navigation.entries, entryId)),
+      expectedRange,
+      `committed ${entryId} range follows front-matter source evidence`
+    );
+  }
 });
 
 test("manual 4 ruedas view lazy-loads the full layout corpus and computes summary after validation", () => {

@@ -2,12 +2,82 @@
   "schemaVersion": 2,
   "manualId": "gcba-manual-vehiculo-4-ruedas-2023",
   "featureId": "031-manual-document-completion",
-  "registryScope": "source-index-sections-for-complete-chapters-1-through-5-and-appendices-1-through-4",
+  "registryScope": "source-index-sections-for-complete-front-matter-chapters-1-through-5-and-appendices-1-through-4",
   "sourcePageRange": {
-    "start": 21,
+    "start": 1,
     "end": 200
   },
   "skippedSourcePages": [
+    {
+      "sourcePage": 1,
+      "reason": "front-title-navigation-only",
+      "parentChapterId": "front-matter",
+      "sourceTitleEs": "Manual de conducción vehicular - Categoría B / Automóviles",
+      "disposition": "Title/cover source material is represented by the front-matter navigation parent and does not improve exam learning as a standalone learner route."
+    },
+    {
+      "sourcePage": 12,
+      "reason": "front-index-navigation-only",
+      "parentChapterId": "front-matter",
+      "sourceTitleEs": "Índice, page 11",
+      "disposition": "Source index page duplicates runtime manual navigation; no standalone learner route, module, or visual asset is created."
+    },
+    {
+      "sourcePage": 13,
+      "reason": "front-index-navigation-only",
+      "parentChapterId": "front-matter",
+      "sourceTitleEs": "Índice, page 12",
+      "disposition": "Source index page duplicates runtime manual navigation; no standalone learner route, module, or visual asset is created."
+    },
+    {
+      "sourcePage": 14,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN divider/title",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 15,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 16,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 17,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 18,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 19,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
+    {
+      "sourcePage": 20,
+      "reason": "introduction-owned-by-existing-runtime",
+      "parentChapterId": "introduction",
+      "sourceTitleEs": "INTRODUCCIÓN existing implemented route",
+      "disposition": "Introduction pages 14-20 are already implemented by the existing Introduction runtime route system outside this section registry; this front-matter support PR does not reimplement or bundle Introduction content."
+    },
     {
       "sourcePage": 21,
       "reason": "chapter-divider-only",
@@ -489,6 +559,22 @@
   ],
   "chapters": [
     {
+      "id": "front-matter",
+      "labelRu": "Предисловие",
+      "sourceTitleEs": "Presentación, material por categorías y glosario",
+      "sourcePageRange": {
+        "start": 1,
+        "end": 13
+      },
+      "requiredPrintedPage": 1,
+      "status": "active",
+      "sectionIds": [
+        "front-presentation",
+        "front-categories",
+        "front-glossary"
+      ]
+    },
+    {
       "id": "chapter-1-sustainable-mobility",
       "labelRu": "Глава 1. К устойчивой мобильности",
       "sourceTitleEs": "CAPÍTULO 1: HACIA UNA MOVILIDAD SUSTENTABLE",
@@ -654,6 +740,500 @@
     }
   ],
   "sections": [
+    {
+      "id": "front-presentation",
+      "labelRu": "Презентация",
+      "sourceTitleEs": "Presentación",
+      "routeHash": "#manual-section-front-presentation",
+      "sourcePageRange": {
+        "start": 2,
+        "end": 2
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 2,
+          "manualManifestPointer": "/pages/1",
+          "layoutManifestPointer": "/pages/1",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-002.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "front-matter",
+      "sectionContentModulePath": "src/data/manual-sections/front-presentation.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "front-presentation",
+        "sourcePages": [
+          2
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 2,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-presentation/page-002-presentation-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "c6a321daf0542118e2a6076db1cdd67eb8378e03f23c987bf0512225f7a43389",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "c6a321daf0542118e2a6076db1cdd67eb8378e03f23c987bf0512225f7a43389"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/front-presentation.ts",
+            "assetKind": "selectable-russian-dom-text-front-matter-front-presentation",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "front-presentation renders learner-facing Russian support as selectable DOM text; no source image is used at runtime."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/front-presentation/front-presentation-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/front-presentation/front-presentation-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded for the front-matter support route."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No runtime PDF viewer, page-image reader, remote asset, source-image editing, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Front presentation source page 2 is implemented as selectable Russian DOM text only.",
+          "The x5 page render is source evidence only and is not used as a runtime image.",
+          "Page 1 title-only source material is recorded as navigation-only, not a learner route."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "front-categories",
+      "labelRu": "Материал по категориям",
+      "sourceTitleEs": "Material por categorías",
+      "routeHash": "#manual-section-front-categories",
+      "sourcePageRange": {
+        "start": 3,
+        "end": 4
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 3,
+          "manualManifestPointer": "/pages/2",
+          "layoutManifestPointer": "/pages/2",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-003.jpg"
+        },
+        {
+          "sourcePage": 4,
+          "manualManifestPointer": "/pages/3",
+          "layoutManifestPointer": "/pages/3",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-004.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "front-matter",
+      "sectionContentModulePath": "src/data/manual-sections/front-categories.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "front-categories",
+        "sourcePages": [
+          3,
+          4
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 3,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-categories/page-003-categories-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "33919847954e0146e08b55f06168c117bf6b7e093bd2a2d4d29b50b1ffe4cb02",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "33919847954e0146e08b55f06168c117bf6b7e093bd2a2d4d29b50b1ffe4cb02"
+            }
+          },
+          {
+            "sourcePage": 4,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-categories/page-004-categories-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "057d6469a6f849cc3a5bca4a0b9ae88b9ed8e46b3350b79eadb113c83f85acb2",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "057d6469a6f849cc3a5bca4a0b9ae88b9ed8e46b3350b79eadb113c83f85acb2"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/front-categories.ts",
+            "assetKind": "selectable-russian-dom-text-front-matter-front-categories",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "front-categories renders learner-facing Russian support as selectable DOM text; no source image is used at runtime."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/front-categories/front-categories-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/front-categories/front-categories-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded for the front-matter support route."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No runtime PDF viewer, page-image reader, remote asset, source-image editing, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Front category source pages 3-4 are implemented as compact selectable Russian DOM scope notes.",
+          "Category B study scope is retained because it helps learners distinguish Appendix I/IV from other category appendices.",
+          "No source visual is used at runtime; x5 source renders are source evidence only."
+        ],
+        "checkerResult": "pass"
+      }
+    },
+    {
+      "id": "front-glossary",
+      "labelRu": "Глоссарий",
+      "sourceTitleEs": "Glosario",
+      "routeHash": "#manual-section-front-glossary",
+      "sourcePageRange": {
+        "start": 5,
+        "end": 11
+      },
+      "sourcePages": [
+        {
+          "sourcePage": 5,
+          "manualManifestPointer": "/pages/4",
+          "layoutManifestPointer": "/pages/4",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-005.jpg"
+        },
+        {
+          "sourcePage": 6,
+          "manualManifestPointer": "/pages/5",
+          "layoutManifestPointer": "/pages/5",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-006.jpg"
+        },
+        {
+          "sourcePage": 7,
+          "manualManifestPointer": "/pages/6",
+          "layoutManifestPointer": "/pages/6",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-007.jpg"
+        },
+        {
+          "sourcePage": 8,
+          "manualManifestPointer": "/pages/7",
+          "layoutManifestPointer": "/pages/7",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-008.jpg"
+        },
+        {
+          "sourcePage": 9,
+          "manualManifestPointer": "/pages/8",
+          "layoutManifestPointer": "/pages/8",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-009.jpg"
+        },
+        {
+          "sourcePage": 10,
+          "manualManifestPointer": "/pages/9",
+          "layoutManifestPointer": "/pages/9",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-010.jpg"
+        },
+        {
+          "sourcePage": 11,
+          "manualManifestPointer": "/pages/10",
+          "layoutManifestPointer": "/pages/10",
+          "referenceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-011.jpg"
+        }
+      ],
+      "status": "implemented",
+      "parentChapterId": "front-matter",
+      "sectionContentModulePath": "src/data/manual-sections/front-glossary.ts",
+      "sourceRegionMetadataStatus": "recorded",
+      "visualEvidenceStatus": "recorded",
+      "implementationEvidence": {
+        "visualEvidenceSchemaVersion": 3,
+        "visualRulePolicyId": "031-strict-source-fidelity",
+        "highResolutionEvidenceStatus": "x5-or-equivalent-no-upscale-recorded",
+        "sectionId": "front-glossary",
+        "sourcePages": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "sourceRegionMetadata": [
+          {
+            "sourcePage": 5,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-005-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "b15bbd370373675e72ce06a9407df325a09317eccf2bfa579e8a46f3fb23316e",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "b15bbd370373675e72ce06a9407df325a09317eccf2bfa579e8a46f3fb23316e"
+            }
+          },
+          {
+            "sourcePage": 6,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-006-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "0809753fdbf24ef8c4645903212b5ab03695052a389a5e80f2503f8122ee837a",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "0809753fdbf24ef8c4645903212b5ab03695052a389a5e80f2503f8122ee837a"
+            }
+          },
+          {
+            "sourcePage": 7,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-007-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "87c845e094aab2ba9332295e9c8896153c765dae9db2d001c5db6b4810f70e84",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "87c845e094aab2ba9332295e9c8896153c765dae9db2d001c5db6b4810f70e84"
+            }
+          },
+          {
+            "sourcePage": 8,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-008-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "4b81d58ebb29b8d47beb77dcc0b533afde6dba51991fab194fe5c67a5e28bd0b",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "4b81d58ebb29b8d47beb77dcc0b533afde6dba51991fab194fe5c67a5e28bd0b"
+            }
+          },
+          {
+            "sourcePage": 9,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-009-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "5d5c200120628fc108c61e5f598c7acf99c16ec9dd82547f04f83e04f57184c4",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "5d5c200120628fc108c61e5f598c7acf99c16ec9dd82547f04f83e04f57184c4"
+            }
+          },
+          {
+            "sourcePage": 10,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-010-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "cd4ae7096a6443ef31e8c9df259f1ad4704fbc31300f7fe4e6ac827be3af3d28",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "cd4ae7096a6443ef31e8c9df259f1ad4704fbc31300f7fe4e6ac827be3af3d28"
+            }
+          },
+          {
+            "sourcePage": 11,
+            "sourceRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 2976,
+              "height": 4209
+            },
+            "sourceAssetPath": "content/validation/manual-guide/front-glossary/page-011-glossary-source-crop.jpg",
+            "cropDimensions": {
+              "width": 2976,
+              "height": 4209
+            },
+            "cropSha256": "0207cf85de316325804ff89f75ff4494a85e598ea9683a67d6a69e1c119ac0bd",
+            "cleanupScope": "reference-only-not-runtime",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Swift CGPDFDocument render at scale 5.0 from the canonical GCBA PDF, full-page reference crop copied without resizing or cleanup for front-matter source verification only",
+              "outputDimensions": {
+                "width": 2976,
+                "height": 4209
+              },
+              "sha256": "0207cf85de316325804ff89f75ff4494a85e598ea9683a67d6a69e1c119ac0bd"
+            }
+          }
+        ],
+        "localAssetMetadata": [
+          {
+            "assetPath": "src/data/manual-sections/front-glossary.ts",
+            "assetKind": "selectable-russian-dom-text-front-matter-front-glossary",
+            "assetCategory": "native-dom-text-only",
+            "containsText": true,
+            "visibleSpanish": false,
+            "cleanupScope": "reference-only-not-runtime"
+          }
+        ],
+        "visibleSpanishStatus": "none",
+        "selectableTextStatus": {
+          "status": "pass",
+          "evidence": "front-glossary renders learner-facing Russian support as selectable DOM text; no source image is used at runtime."
+        },
+        "desktopScreenshot": "content/validation/manual-guide/front-glossary/front-glossary-desktop.png",
+        "mobileScreenshot": "content/validation/manual-guide/front-glossary/front-glossary-mobile.png",
+        "boundingBoxChecks": {
+          "status": "pass",
+          "evidence": "Focused desktop and mobile screenshot evidence recorded for the front-matter support route."
+        },
+        "forbiddenPatternScan": {
+          "status": "pass",
+          "evidence": "No runtime PDF viewer, page-image reader, remote asset, source-image editing, or fake pending content is introduced."
+        },
+        "visualReviewNotes": [
+          "Front glossary source pages 5-11 are implemented as selectable Russian DOM glossary text.",
+          "Spanish terms are retained in DOM text where useful for exam vocabulary; no image text is translated or edited.",
+          "Pages 12-13 source index are recorded as navigation-only because runtime navigation already represents the Índice."
+        ],
+        "checkerResult": "pass"
+      }
+    },
     {
       "id": "ch1-cities-for-people",
       "labelRu": "Города для людей",

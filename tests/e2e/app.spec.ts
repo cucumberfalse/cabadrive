@@ -1654,9 +1654,16 @@ test("Introduction index routes open as separate native Russian document pages",
     await expect(reader.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-group-id", "introduction");
     await expect(reader.getByTestId("manual-guide-nav")).toHaveAttribute("data-active-child-id", route.id);
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Предисловие");
+    await expect(reader.getByTestId("manual-guide-nav")).toContainText("Введение");
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Глава 1. К устойчивой мобильности");
     await expect(reader.getByTestId("manual-guide-nav")).toContainText("Приложение IV. Дорожные знаки и сигналы");
-    await expect(reader.getByTestId("manual-guide-nav").locator('[data-status="pending"]').first()).toBeVisible();
+    const manualGuideNavText = await reader.getByTestId("manual-guide-nav").innerText();
+    expect(manualGuideNavText.indexOf("Предисловие")).toBeLessThan(manualGuideNavText.indexOf("Введение"));
+    expect(manualGuideNavText.indexOf("Введение")).toBeLessThan(
+      manualGuideNavText.indexOf("Глава 1. К устойчивой мобильности")
+    );
+    await expect(reader.getByTestId("manual-guide-pending-section-front-presentation")).toHaveAttribute("data-status", "implemented");
+    await expect(reader.getByTestId("manual-guide-pending-section-front-glossary")).toHaveAttribute("data-status", "implemented");
     await expect(reader.locator('[data-testid="intro-index-nav"]')).toHaveCount(0);
     const activeIntroRoute = page.getByTestId(`intro-route-${route.id}`);
     const activeRouteItem = reader.getByTestId(`manual-guide-route-item-${route.id}`);

@@ -130,7 +130,17 @@ test("Руководство uses full-document hierarchy and hides duplicate le
     assert.ok(manualGuideNavigationSource.includes(sourceMetadata), `Spanish source metadata retained internally: ${sourceMetadata}`);
   }
 
-  assert.match(manualGuideNavigationSource, /status:\s*"pending"/);
+  for (const implementedFrontMatterSection of ["front-presentation", "front-categories", "front-glossary"]) {
+    assert.ok(
+      manualGuideNavigationSource.includes(`"id": "${implementedFrontMatterSection}"`),
+      `front matter registry includes implemented section ${implementedFrontMatterSection}`
+    );
+    assert.ok(
+      manualGuideNavigationSource.includes(`"routeHash": "#manual-section-${implementedFrontMatterSection}"`),
+      `front matter registry includes route for ${implementedFrontMatterSection}`
+    );
+  }
+  assert.match(manualGuideNavigationSource, /"id":\s*"front-matter"[\s\S]*?"status":\s*"active"/);
   assert.match(introductionAppSource, /disabled=\{isDisabled\}/);
   assert.match(introductionAppSource, /data-source-title-es=\{child\.sourceTitleEs\}/);
   assert.match(appSource, /> Руководство<\/button>/);
