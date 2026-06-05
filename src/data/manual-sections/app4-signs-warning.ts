@@ -63,7 +63,7 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
     {
       id: "warning-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы предупреждающих знаков",
+      titleRu: "Листы предупреждающих знаков",
       sourceTextEs:
         "Preventivas: advertencias sobre caracteristicas de la via, maximo peligro, riesgo eventual, anticipo de otros dispositivos y fin de prevencion.",
       cards: [
@@ -77,11 +77,11 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-187-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист предупреждающих знаков о характеристиках дороги, сохраненный без изменений.",
+            "Лист предупреждающих знаков о характеристиках дороги.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Официальные пиктограммы, подписи и цвета оставлены без изменения. Русское объяснение не заменяет текст внутри листа и не накладывается на знаки."
+            "Пиктограммы, подписи и цвета остаются внутри листа. Русское объяснение не заменяет текст внутри листа и не накладывается на знаки."
         },
         {
           id: "app4-warning-page-188-source-card",
@@ -93,11 +93,11 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-188-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист предупреждающих знаков максимальной опасности, возможного риска и окончания предупреждения, сохраненный без изменений.",
+            "Лист предупреждающих знаков максимальной опасности, возможного риска и окончания предупреждения.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист сохранен без изменений. Любые испанские подписи остаются только внутри изображения; русская памятка находится в тексте вокруг него."
+            "Испанские подписи остаются только внутри изображения; русская памятка находится в тексте вокруг него."
         }
       ],
       visualNotes: [

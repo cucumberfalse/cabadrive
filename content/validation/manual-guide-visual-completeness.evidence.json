@@ -140,15 +140,30 @@
     "status": "pass",
     "scannedRoot": "src/data/manual-sections",
     "deniedPatternIds": [
-      "visual-source-label",
+      "source-family-provenance",
       "main-source-takeaway",
       "source-quote-card-title",
       "raw-working-fragment",
-      "saved-as-source"
+      "saved-as-source",
+      "transferred-visual-meta"
     ],
-    "allowedContext": "Ordinary learner-visible legal/source citation wording such as 'source recommends' remains allowed in this first guard; visual-card provenance/service wording is denied.",
+    "allowlistPatternIds": [
+      "stress-cause-source"
+    ],
+    "allowedContext": "Only genuine non-provenance Russian uses such as 'источник стресса' are allowlisted. Manual guide copy should not describe source/provenance, source fragments, or conversion work.",
     "findingCount": 0,
-    "findings": []
+    "findings": [],
+    "allowlistedCount": 1,
+    "allowlistedOccurrences": [
+      {
+        "ruleId": "stress-cause-source",
+        "file": "src/data/manual-sections/app2-driving-factors.ts",
+        "line": 57,
+        "text": "Постоянно принимать решения о маневрах, что создает значимый источник стресса и усталости.",
+        "reason": "Genuine semantic Russian use: source/cause of stress, not document provenance.",
+        "status": "allowed"
+      }
+    ]
   },
   "visualRecords": [
     {

@@ -64,7 +64,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
         "Prohibida circulacion de ciclorodados, motovehiculos, automoviles, taxis, remises, lineas de colectivos y vehiculos no permitidos; prohibido estacionamiento y detencion 24 horas; avisar a AUSA ante imposibilidad de continuar.",
       itemsRu: [
         "Запрещено движение велосипедных транспортных средств, мототранспорта, автомобилей, такси, ремисов и линий общественного пассажирского автотранспорта.",
-        "Запрещен любой транспорт, не разрешенный в соответствующем пункте источника.",
+        "Запрещен любой транспорт, не разрешенный для этого коридора.",
         "Стоянка и остановка запрещены 24 часа в сутки на обеих проезжих частях.",
         "Если транспорт не может продолжать нормальное движение, нужно уведомить AUSA; она отбуксирует и уберет транспорт."
       ]
@@ -90,7 +90,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
       itemsRu: [
         "По решению владельца от 2026-06-04 карта на странице 150 показана как изображение высокого разрешения без правки подписей и маркеров.",
         "Испанские подписи остаются только внутри самой карты; перевод, легенда и список больниц даны рядом и ниже обычным выбираемым русским текстом.",
-        "Маркеры H/H1/H2, цвета районов, границы, дороги, линии, иконки и вся геометрия карты сохранены без очистки, дорисовки или ретуши."
+        "Маркеры H/H1/H2, цвета районов, границы, дороги, линии, иконки и вся геометрия карты остаются такими, как на самой карте."
       ]
     },
     {
@@ -109,7 +109,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1332, y: 1854, width: 780, height: 335 },
           assetPath: `${assetRoot}/hospital-map-source-as-is.png`,
           altRu:
-            "Карта общих больниц CABA с сохраненными испанскими подписями и маркерами H/H1/H2.",
+            "Карта общих больниц CABA с испанскими подписями и маркерами H/H1/H2.",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",
@@ -118,7 +118,7 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
             russianExplanationOutsideImage: true
           },
           bodyRu:
-            "Карта показана без изменений из x5-фрагмента страницы 150. Испанские подписи не очищены и не переведены внутри изображения; русская легенда и полный список больниц приведены ниже."
+            "Испанские подписи остаются внутри карты; русская легенда и полный список больниц приведены ниже."
         }
       ],
       visualNotes: [

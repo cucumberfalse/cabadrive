@@ -52,20 +52,20 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
     {
       id: "traffic-lights-groups",
       kind: "list",
-      titleRu: "Что покрывает источник",
+      titleRu: "Что входит в тему",
       sourceTextEs:
         "Significado de las luces; disposicion de unidades opticas; semaforos especiales; las senales de transito por su color, tamano y posicion hacen mas agil, segura y eficiente la movilidad.",
       itemsRu: [
         "Значение огней объясняет, когда нужно остановиться, когда можно продолжить движение и когда следует подготовиться к изменению сигнала.",
         "Расположение оптических блоков помогает быстро распознать сигнал даже до чтения подписи.",
         "Специальные светофоры относятся к отдельным потокам или пользователям дороги, например пешеходам, велосипедам или общественному транспорту.",
-        "Источник завершает приложение мыслью: знаки через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
+        "Итог приложения: знаки через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
       ]
     },
     {
       id: "traffic-lights-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы световой сигнализации и закрывающие страницы",
+      titleRu: "Листы световой сигнализации и закрывающие страницы",
       sourceTextEs:
         "Senalizacion luminosa: significado de las luces, disposicion de unidades opticas, semaforos especiales, cierre del manual.",
       cards: [
@@ -79,11 +79,11 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/signal-sheet-197-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист световой сигнализации со значением огней, расположением оптических блоков и специальными светофорами, сохраненный без изменений.",
+            "Лист световой сигнализации со значением огней, расположением оптических блоков и специальными светофорами.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Световые сигналы, подписи и пиктограммы сохранены без изменения. Русское объяснение находится рядом и ниже, а не внутри изображения."
+            "Световые сигналы, подписи и пиктограммы остаются внутри изображения. Русское объяснение находится рядом и ниже."
         },
         {
           id: "app4-traffic-lights-page-198-source-card",
@@ -95,7 +95,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1105, y: 1602, width: 761, height: 1004 },
           assetPath: `${assetRoot}/signal-sheet-198-source-crop-as-is.jpg`,
           altRu:
-            "Официальная завершающая страница о роли дорожных знаков, сохраненная без изменений.",
+            "Завершающая страница о роли дорожных знаков.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
@@ -111,11 +111,11 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1106, y: 1602, width: 760, height: 1003 },
           assetPath: `${assetRoot}/signal-sheet-199-source-crop-as-is.jpg`,
           altRu:
-            "Официальная завершающая иллюстрация с повторяющимися надписями, сохраненная без изменений.",
+            "Завершающая иллюстрация с повторяющимися надписями.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "По-русски: завершающая иллюстрация повторяет темы дорожного движения, знаков, пешеходов и устойчивой мобильности. Изображение оставлено без перевода внутри."
+            "По-русски: завершающая иллюстрация повторяет темы дорожного движения, знаков, пешеходов и устойчивой мобильности. Текст внутри изображения не переводится."
         },
         {
           id: "app4-traffic-lights-page-200-source-card",
@@ -127,11 +127,11 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1106, y: 1602, width: 764, height: 1006 },
           assetPath: `${assetRoot}/signal-sheet-200-source-crop-as-is.jpg`,
           altRu:
-            "Официальная заключительная страница с логотипом Buenos Aires Ciudad, сохраненная без изменений.",
+            "Заключительная страница с логотипом Buenos Aires Ciudad.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "По-русски: город Буэнос-Айрес. Логотип и подпись источника сохранены без ретуши, перевода или замены."
+            "По-русски: город Буэнос-Айрес. Логотип и подпись не ретушировались, не переводились и не заменялись."
         }
       ],
       visualNotes: [

@@ -81,13 +81,13 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       cards: [
         {
           id: "distraction-panels-source-card",
-          titleRu: "Перенесенные три панели Distracciones",
+          titleRu: "Три панели Distracciones",
           displayMode: "full-width",
           maxDisplayWidthPx: 860,
           sourcePage: 95,
           sourceRegion: { x: 1190, y: 2160, width: 860, height: 260 },
           assetPath: `${assetRoot}/distraction-panels-transferred-infographic.png`,
-          altRu: "Трехпанельный визуал отвлечений с сохраненными рисунками.",
+          altRu: "Трехпанельная схема отвлечений с рисунками.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "distraction-food-label", textRu: "Еда / мате", xPct: 7.2, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" },
@@ -95,7 +95,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
             { id: "distraction-view-label", textRu: "Нет обзора", xPct: 44.4, yPct: 29.4, widthPct: 18.1, heightPct: 12.4, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Трехпанельный визуал сохранен в официальной композиции: испанские подписи очищены на уровне отдельных букв с восстановлением фона, без закрывающих плашек или перерисовки; русские подписи наложены поверх очищенных полос как выбираемый текст. Рядом русским текстом объясняется тот же риск: еда, напитки, мате и курение отвлекают внимание и занимают руки."
+            "Три панели показывают один и тот же риск: еда, напитки, мате и курение отвлекают внимание и занимают руки. Русские подписи доступны как выбираемый текст."
         }
       ],
       visualNotes: [
@@ -182,11 +182,11 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           sourcePage: 97,
           sourceRegion: { x: 1160, y: 1680, width: 720, height: 900 },
           assetPath: `${assetRoot}/attention-photo-source-as-is.jpg`,
-          altRu: "Фото и цитата о 100% внимания и координации, сохраненные без изменений.",
+          altRu: "Фото с цитатой о 100% внимания и координации.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Фото и цитата сохранены без изменений. Русская строка выше передает смысл: управление требует 100% внимания и координации."
+            "Смысл цитаты: управление требует 100% внимания и координации."
         }
       ],
       visualNotes: [

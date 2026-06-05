@@ -45,7 +45,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       kind: "lead",
       sourceTextEs: "Reglamentarias. De prohibicion, de restriccion, de prioridad y de fin de prescripcion.",
       textRu:
-        "Регулирующие знаки сообщают водителю обязательное правило: запрет, ограничение, приоритет или конец ранее действовавшего предписания. В источнике сами знаки оставлены на испанском как официальные визуальные образцы."
+        "Регулирующие знаки сообщают водителю обязательное правило: запрет, ограничение, приоритет или конец ранее действовавшего предписания. Сами знаки на листах идут на испанском как визуальные образцы."
     },
     {
       id: "regulatory-groups",
@@ -63,7 +63,7 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
     {
       id: "regulatory-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы регулирующих знаков",
+      titleRu: "Листы регулирующих знаков",
       sourceTextEs:
         "Reglamentarias: de prohibicion, de restriccion, de prioridad y de fin de prescripcion.",
       cards: [
@@ -77,11 +77,11 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 663, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-185-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист запрещающих регулирующих дорожных знаков, сохраненный без изменений.",
+            "Лист запрещающих регулирующих дорожных знаков с испанскими подписями.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист показан без изменения. Испанские названия внутри изображения не переведены и не закрыты; используйте их как официальный визуальный образец, а русскую расшифровку групп читайте рядом."
+            "Испанские названия внутри изображения не переведены и не закрыты; используйте знаки как визуальный образец, а русскую расшифровку групп читайте рядом."
         },
         {
           id: "app4-regulatory-page-186-source-card",
@@ -93,11 +93,11 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-186-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист регулирующих знаков ограничения, приоритета и окончания предписания, сохраненный без изменений.",
+            "Лист регулирующих знаков ограничения, приоритета и окончания предписания с испанскими подписями.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Знаки, подписи и цвета сохранены как в источнике. Русский текст не нанесен поверх знаков, чтобы не менять официальный визуальный материал."
+            "Русский текст дан рядом: он не нанесен поверх знаков, чтобы их внешний вид не менялся."
         }
       ],
       visualNotes: [

@@ -41,7 +41,7 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
       sourceTextEs:
         "Las ciudades fueron tradicionalmente pensadas, construidas y habitadas en función de las necesidades y roles sociales asignados a los varones.",
       textRu:
-        "Источник объясняет, что города традиционно проектировались, строились и использовались вокруг потребностей и социальных ролей, назначенных мужчинам. Женщины, дети, пожилые люди и люди с ограниченной мобильностью долго не учитывались как полноценные участники при планировании общественного пространства и транспорта."
+        "Города традиционно проектировались, строились и использовались вокруг потребностей и социальных ролей, назначенных мужчинам. Женщины, дети, пожилые люди и люди с ограниченной мобильностью долго не учитывались как полноценные участники при планировании общественного пространства и транспорта."
     },
     {
       id: "urban-debate-and-commitment",
@@ -51,14 +51,14 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
         "En los últimos años se generaron debates... teniendo en cuenta género, edad, salud y condición socioeconómica.",
       itemsRu: [
         "Во всем мире обсуждают, как строить городские пространства с учетом пола, возраста, здоровья и социально-экономического положения жителей.",
-        "Приверженность гендерному равенству источник называет историческим процессом для Аргентины и мира.",
+        "Приверженность гендерному равенству рассматривается как исторический процесс для Аргентины и мира.",
         "Эти изменения касаются публичной и частной жизни: семейных и эмоциональных связей, труда, политики и общественного пространства."
       ]
     },
     {
       id: "mobility-patterns",
       kind: "list",
-      titleRu: "Особенности мобильности, описанные источником",
+      titleRu: "Особенности мобильности",
       sourceTextEs:
         "Mayor cantidad de viajes, aunque más cortos... patrones de movilidad dispersos y no lineales... tareas de cuidado sólo representan el 13% de los viajes que realizan los varones.",
       itemsRu: [
@@ -77,14 +77,14 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
       cards: [
         {
           id: "mobility-context-transferred-card",
-          titleRu: "Перенесенный визуал про поездки женщин",
+          titleRu: "Поездки женщин в CABA",
           displayMode: "full-width",
           maxDisplayWidthPx: 1220,
           sourcePage: 100,
           sourceRegion: { x: 900, y: 1830, width: 1220, height: 175 },
           assetPath: `${assetRoot}/mobility-context-transferred-infographic.png`,
           altRu:
-            "Перенесенный визуал Contexto de Ciudad de Buenos Aires с исходными пиктограммами, процентами 54, 50 и 30, и русскими подписями.",
+            "Визуальная схема Contexto de Ciudad de Buenos Aires с пиктограммами, процентами 54, 50 и 30, и русскими подписями.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "public-transport-label", textRu: "общественный транспорт", xPct: 45.5, yPct: 10.5, widthPct: 25, heightPct: 23, tone: "dark-on-light" },
@@ -92,7 +92,7 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
             { id: "care-tasks-label", textRu: "задачи ухода", xPct: 50.5, yPct: 66, widthPct: 27, heightPct: 23, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Официальный визуал перенесен из x5-фрагмента: испанские буквы удалены на уровне отдельных глифов с восстановлением фона, без широких плашек и без перерисовки. Русские подписи наложены поверх очищенных строк как выбираемый текст. Смысл визуала: 54% ежедневных поездок женщин приходится на общественный транспорт, 50% связаны с работой или учебой, а 30% посвящены задачам ухода."
+            "Смысл схемы: 54% ежедневных поездок женщин приходится на общественный транспорт, 50% связаны с работой или учебой, а 30% посвящены задачам ухода."
         }
       ],
       visualNotes: [
@@ -114,7 +114,7 @@ export const ch5EqualSocietySection: ManualGuideSectionContent = {
       sourceTextEs:
         "La incorporación de una perspectiva de género en el diseño y planificación de las ciudades implica visibilizar las desigualdades...",
       textRu:
-        "Гендерная перспектива в дизайне и планировании города делает видимыми неравенства, которые женщины испытывают при пользовании транспортом и общественными пространствами. Поэтому источник подчеркивает необходимость равноправного и доступного города для женщин - от девочек до пожилых женщин."
+        "Гендерная перспектива в дизайне и планировании города делает видимыми неравенства, которые женщины испытывают при пользовании транспортом и общественными пространствами. Поэтому город должен быть равноправным и доступным для женщин - от девочек до пожилых женщин."
     }
   ]
 };

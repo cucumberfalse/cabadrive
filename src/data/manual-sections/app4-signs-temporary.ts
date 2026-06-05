@@ -63,7 +63,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
     {
       id: "temporary-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы временных знаков и устройств",
+      titleRu: "Листы временных знаков и устройств",
       sourceTextEs:
         "Transitorias: viales, peatonales y de ciclovias, peatonales, de ciclovias, otros dispositivos.",
       cards: [
@@ -77,11 +77,11 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-193-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист временных дорожных, пешеходных и велосипедных знаков, сохраненный без изменений.",
+            "Лист временных дорожных, пешеходных и велосипедных знаков.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист сохранен без изменений. Русские пояснения рядом не заменяют официальные испанские подписи внутри изображения."
+            "Русские пояснения рядом не заменяют испанские подписи внутри изображения."
         },
         {
           id: "app4-temporary-page-194-source-card",
@@ -93,7 +93,7 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-194-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист временных пешеходных, велосипедных и других устройств, сохраненный без изменений.",
+            "Лист временных пешеходных, велосипедных и других устройств.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:

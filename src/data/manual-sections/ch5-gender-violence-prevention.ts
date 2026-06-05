@@ -31,7 +31,7 @@ export const ch5GenderViolencePreventionSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Si se es víctima o testigo de una situación de acoso en el espacio público, en primer lugar contactar al 911.",
       textRu:
-        "Если человек стал жертвой или свидетелем домогательства в общественном пространстве, первым действием источник указывает контакт с 911, приоритет - физическая безопасность вовлеченных людей."
+        "Если человек стал жертвой или свидетелем домогательства в общественном пространстве, первое действие - связаться с 911. Приоритет - физическая безопасность вовлеченных людей."
     },
     {
       id: "support-line",

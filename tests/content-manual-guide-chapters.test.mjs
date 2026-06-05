@@ -1515,7 +1515,7 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(fewHoursSleepItemsRu, /бдительность/u);
   assert.doesNotMatch(fewHoursSleepItemsRu, /capacidad de reacción|estado de alerta/u);
   assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
-  assert.match(ch4SleepFatigueModuleSource, /усталость может усиливаться/u);
+  assert.match(ch4SleepFatigueModuleSource, /Усталость может усиливаться/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
   assert.match(ch4SleepFatigueModuleSource, /microsueños - микросон/u);
   const fatiguePreventionItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "fatigue-prevention");
@@ -1610,7 +1610,7 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
   }
 
-  assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установку или отношение/u);
+  assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установка или отношение/u);
   assert.match(ch5AttitudeTypesModuleSource, /Tolerante[\s\S]*терпимая/u);
   assert.match(ch5AttitudeTypesModuleSource, /Solidaria[\s\S]*солидарная/u);
   assert.match(ch5AttitudeTypesModuleSource, /Comprensiva[\s\S]*понимающая/u);
@@ -1844,7 +1844,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SocialResponsibilityModuleSource, /Питание должно планироваться/u);
   assert.match(app3DrivingFactorsModuleSource, /body-posture-source-as-is\.png/u);
   assert.match(app3DrivingFactorsModuleSource, /source-image-original-visible-text/u);
-  assert.match(app3DrivingFactorsModuleSource, /не переведено, не перекрашено и не перерисовано/u);
+  assert.match(app3DrivingFactorsModuleSource, /Испанские подписи внутри изображения не переводятся/u);
   assert.match(app3SafeDrivingModuleSource, /1,5 m/u);
   assert.match(app3SafeDrivingModuleSource, /более 12 t/u);
   assert.match(app3SafeDrivingModuleSource, /205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
@@ -1858,7 +1858,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SafetyElementsModuleSource, /Av\. Paseo Colon[\s\S]*Av\. San Juan/u);
   assert.match(app3SafetyElementsModuleSource, /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u);
   assert.match(app3SafetyElementsModuleSource, /seatbelt-source-as-is\.png/u);
-  assert.match(app3SafetyElementsModuleSource, /Фото и подписи оставлены без изменения/u);
+  assert.match(app3SafetyElementsModuleSource, /Как читать фото/u);
   assert.match(app3SafetyElementsModuleSource, /больше 1 kg/u);
   assert.match(app3HighwaysModuleSource, /Профессионализация перевозки грузов и товаров/u);
   assert.doesNotMatch(app3HighwaysModuleSource, /ANEXO IV|SEÑALES VIALES|appendix-4/u);
@@ -2086,7 +2086,20 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(visualCompletenessEvidence.copyAudit.findingCount, 0);
   assert.deepEqual(
     visualCompletenessEvidence.copyAudit.deniedPatternIds,
-    ["visual-source-label", "main-source-takeaway", "source-quote-card-title", "raw-working-fragment", "saved-as-source"]
+    [
+      "source-family-provenance",
+      "main-source-takeaway",
+      "source-quote-card-title",
+      "raw-working-fragment",
+      "saved-as-source",
+      "transferred-visual-meta"
+    ]
+  );
+  assert.deepEqual(visualCompletenessEvidence.copyAudit.allowlistPatternIds, ["stress-cause-source"]);
+  assert.equal(visualCompletenessEvidence.copyAudit.allowlistedCount, 1);
+  assert.equal(
+    visualCompletenessEvidence.copyAudit.allowlistedOccurrences[0].text,
+    "Постоянно принимать решения о маневрах, что создает значимый источник стресса и усталости."
   );
 
   const examplesById = new Map(visualCompletenessEvidence.userExamples.map((entry) => [entry.id, entry]));
@@ -2537,12 +2550,12 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /ABS[\s\S]*блокировке колес/u);
   assert.match(app1SafetyElementsModuleSource, /1\.6 mm/u);
   assert.match(app1SafetyElementsModuleSource, /аквапланирования/u);
-  assert.match(app1SafetyElementsModuleSource, /не использовать шины старше 5 лет/u);
+  assert.match(app1SafetyElementsModuleSource, /Шины старше 5 лет лучше не использовать/u);
   assert.match(app1SafetyElementsModuleSource, /Если во время движения шина лопнула/u);
-  assert.match(app1SafetyElementsModuleSource, /не тормозить сразу[\s\S]*постепенно снижать скорость/u);
+  assert.match(app1SafetyElementsModuleSource, /не тормозите сразу[\s\S]*постепенно снижать скорость/u);
   assert.match(app1SafetyElementsModuleSource, /Pinchaduras[\s\S]*no frenar inmediatamente[\s\S]*desacelerar lentamente/u);
   assert.match(app1SafetyElementsModuleSource, /не больше 10% задней части/u);
-  assert.match(app1SafetyElementsModuleSource, /сигнал в 90 dB[\s\S]*65 dB/u);
+  assert.match(app1SafetyElementsModuleSource, /Сигнал в 90 dB[\s\S]*65 dB/u);
   assert.match(app1SafetyElementsModuleSource, /врачи или фельдшеры[\s\S]*пожарные/u);
   assert.match(app1SafetyElementsModuleSource, /25 cm/u);
   assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*хлыстовой травмы/u);
@@ -2563,7 +2576,8 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка|Багажник на крыше|устойчивости направления/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два аварийных треугольника/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /огнетушитель 1 kg типа ABC/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим не допускается/u);
+  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /Световозвращающий жилет/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
@@ -2589,10 +2603,11 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.doesNotMatch(app1EquipmentVisibleRuStrings.join("\n"), /источник|исходн|фрагмент|source/iu);
   assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u);
 
-  assert.match(app1RecommendedSafetyElementsModuleSource, /стерильную гидрофильную марлю/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Стерильная гидрофильная марля/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Перекись водорода/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Фонарик с запасными батарейками/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /сертифицированную телескопическую буксировочную штангу/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Рекомендуется сертифицированная телескопическая буксировочная штанга/u);
+  assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /Источник рекомендует сертифицированную телескопическую буксировочную штангу/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /В CABA частному автомобилю запрещено буксировать/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /уполномоченным автомобилем/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /состояния автомобиля и его элементов безопасности/u);
@@ -3609,7 +3624,7 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "24 часа",
     "телефон 147",
     "электронный контроль",
-    "изображение знаков оставлено без изменений",
+    "знак с камерой обозначает электронный контроль",
     "Свободное движение в зоне",
     "Общественный транспорт",
     "Зона 30",
@@ -3811,7 +3826,7 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "Знаки и правила",
     "bicycle-signs-source-as-is.jpg",
     "official-traffic-sign-source-as-is",
-    "Знаки на изображении оставлены как в официальном источнике",
+    "Для экзамена ориентируйтесь на внешний вид знаков",
     "Полная остановка",
     "Конец защищенной велодорожки",
     "Сойти с велосипеда",

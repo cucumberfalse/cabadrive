@@ -38,7 +38,7 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
         "Botiquín de primeros auxilios: identificado con una cruz; gasas, vendas, cinta, agua oxigenada, solución yodada...",
       itemsRu: [
         "Аптечку рекомендуется иметь в автомобиле; она обозначается крестом и хранится в надежно закрепленном месте.",
-        "Источник перечисляет стерильную гидрофильную марлю.",
+        "Стерильная гидрофильная марля.",
         "Бинты или перевязочные материалы.",
         "Гипоаллергенный пластырь.",
         "Перекись водорода.",
@@ -60,8 +60,8 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Barra de remolque homologada, telescópica, reemplaza sogas, cables u otros medios flexibles; no puede usarse dentro de CABA.",
       itemsRu: [
-        "Источник рекомендует сертифицированную телескопическую буксировочную штангу.",
-        "Она заменяет веревки, тросы и другие гибкие средства, которые источник считает небезопасными и недействительными.",
+        "Рекомендуется сертифицированная телескопическая буксировочная штанга.",
+        "Она заменяет веревки, тросы и другие гибкие средства: они небезопасны и не считаются действительным способом буксировки.",
         "Штанга соединяет заводские точки буксировки двух автомобилей.",
         "В CABA частному автомобилю запрещено буксировать другой частный автомобиль.",
         "Буксировка должна выполняться уполномоченным автомобилем."
@@ -73,7 +73,7 @@ export const app1RecommendedSafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "La seguridad no sólo depende del comportamiento y responsabilidad, sino también del estado y elementos de seguridad del vehículo.",
       textRu:
-        "Итог источника: безопасность зависит не только от поведения и ответственности водителя. Она также зависит от состояния автомобиля и его элементов безопасности."
+        "Главный вывод: безопасность зависит не только от поведения и ответственности водителя. Она также зависит от состояния автомобиля и его элементов безопасности."
     }
   ]
 };

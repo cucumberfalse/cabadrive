@@ -23,9 +23,10 @@ const chalecoSourceAssetPath =
 
 const deniedCopyPatterns = [
   {
-    id: "visual-source-label",
-    pattern: /визуал\s+источника/iu,
-    reason: "Learner-facing card titles should name the learning object directly."
+    id: "source-family-provenance",
+    pattern: /\bисточник[а-яё]*\b/iu,
+    reason:
+      "Learner-facing guide copy should present the rule or learning point directly instead of naming the source/provenance."
   },
   {
     id: "main-source-takeaway",
@@ -39,13 +40,28 @@ const deniedCopyPatterns = [
   },
   {
     id: "raw-working-fragment",
-    pattern: /(?:исходн[а-яё]*|рабоч[а-яё]*)\s+(?:фрагмент|схем|карт|фото|фотограф|пример|визуал|изображ|рисунк)/iu,
+    pattern:
+      /(?:исходн[а-яё]*|рабоч[а-яё]*)\s+(?:фрагмент|схем|карт|фото|фотограф|пример|визуал|изображ|рисунк)|фотофрагмент|x5-фрагмент/iu,
     reason: "Fragment/source-region implementation wording is internal evidence, not guide copy."
   },
   {
     id: "saved-as-source",
-    pattern: /(?:(?:оставлен[ао]?|сохранен[ао]?|перенесен[ао]?|показан[ао]?)\s+как\s+(?:официальн(?:ый|ая|ое)\s+)?источник|неизмененн[а-яё]*\s+источник)/iu,
+    pattern:
+      /(?:(?:оставлен[аоы]?|сохранен[аоы]?|перенесен[аоы]?|показан[ао]?)\s+как\s+(?:официальн(?:ый|ая|ое)\s+)?источник|неизмененн[а-яё]*\s+источник|как\s+в\s+(?:официальном\s+)?источнике|из\s+источника|из\s+x5-фрагмента)/iu,
     reason: "Visible copy should say what the learner sees or needs to remember."
+  },
+  {
+    id: "transferred-visual-meta",
+    pattern: /перенес[её]нн[а-яё]*\s+(?:визуал|схем|таблиц|панел)|визуал\s+источника/iu,
+    reason: "Learner-facing image copy should name the learning object, not the conversion action."
+  }
+];
+
+const allowedCopyPatterns = [
+  {
+    id: "stress-cause-source",
+    pattern: /источник\s+стресса/iu,
+    reason: "Genuine semantic Russian use: source/cause of stress, not document provenance."
   }
 ];
 
@@ -214,9 +230,22 @@ function stringLiterals(source) {
 
 function auditVisibleCopy() {
   const findings = [];
+  const allowlistedOccurrences = [];
   for (const file of sectionFiles()) {
     for (const literal of stringLiterals(file.source)) {
       if (!/[А-Яа-яЁё]/u.test(literal.value)) continue;
+      const allowedRule = allowedCopyPatterns.find((rule) => rule.pattern.test(literal.value));
+      if (allowedRule) {
+        allowlistedOccurrences.push({
+          ruleId: allowedRule.id,
+          file: file.path,
+          line: literal.line,
+          text: literal.value,
+          reason: allowedRule.reason,
+          status: "allowed"
+        });
+        continue;
+      }
       for (const rule of deniedCopyPatterns) {
         if (!rule.pattern.test(literal.value)) continue;
         findings.push({
@@ -234,10 +263,13 @@ function auditVisibleCopy() {
     status: findings.length === 0 ? "pass" : "fail",
     scannedRoot: sectionRoot,
     deniedPatternIds: deniedCopyPatterns.map((rule) => rule.id),
+    allowlistPatternIds: allowedCopyPatterns.map((rule) => rule.id),
     allowedContext:
-      "Ordinary learner-visible legal/source citation wording such as 'source recommends' remains allowed in this first guard; visual-card provenance/service wording is denied.",
+      "Only genuine non-provenance Russian uses such as 'источник стресса' are allowlisted. Manual guide copy should not describe source/provenance, source fragments, or conversion work.",
     findingCount: findings.length,
-    findings
+    findings,
+    allowlistedCount: allowlistedOccurrences.length,
+    allowlistedOccurrences
   };
 }
 

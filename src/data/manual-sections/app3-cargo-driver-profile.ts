@@ -35,7 +35,7 @@ export const app3CargoDriverProfileSection: ManualGuideSectionContent = {
       sourceTextEs:
         "En este anexo se desarrollaran las particularidades relacionadas con el transporte de cargas y mercaderias, como asi tambien aspectos que hacen a la conduccion de vehiculos de gran porte en general.",
       textRu:
-        "Приложение III разбирает особенности перевозки грузов и товаров, а также правила и практику управления крупногабаритными транспортными средствами. Источник подчеркивает нормативные требования и повседневные задачи профессионального водителя."
+        "Приложение III разбирает особенности перевозки грузов и товаров, а также правила и практику управления крупногабаритными транспортными средствами. Для экзамена важно помнить и нормативные требования, и повседневные задачи профессионального водителя."
     },
     {
       id: "professional-license-context",

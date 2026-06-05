@@ -45,7 +45,7 @@ export const app3SafeDrivingSection: ManualGuideSectionContent = {
     {
       id: "unsafe-limit-actions",
       kind: "list",
-      titleRu: "Что источник относит к управлению на пределе",
+      titleRu: "Что относится к управлению на пределе",
       sourceTextEs:
         "Velocidad excesiva, continuar onda verde, sobrepasos arriesgados, pasar cerca, zigzaguear, velocidades inadecuadas, disputa agresiva por espacio, cruzar en amarillo.",
       itemsRu: [

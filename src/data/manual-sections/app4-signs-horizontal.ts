@@ -63,7 +63,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
     {
       id: "horizontal-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы дорожной разметки",
+      titleRu: "Листы дорожной разметки",
       sourceTextEs:
         "Horizontales: marcas longitudinales, marcas transversales, marcas especiales.",
       cards: [
@@ -77,11 +77,11 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/marking-sheet-195-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист продольной и поперечной дорожной разметки, сохраненный без изменений.",
+            "Лист продольной и поперечной дорожной разметки с испанскими подписями.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Разметка и испанские подписи внутри листа оставлены как в источнике. Русский текст рядом объясняет группы, не меняя изображение."
+            "Разметка и испанские подписи остаются внутри листа; русский текст рядом объясняет группы, не меняя изображение."
         },
         {
           id: "app4-horizontal-page-196-source-card",
@@ -93,11 +93,11 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/marking-sheet-196-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист специальной дорожной разметки, сохраненный без изменений.",
+            "Лист специальной дорожной разметки с испанскими подписями.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Специальная разметка сохранена без очистки текста, масок, перекраски или перерисовки. Перевод дается только отдельным DOM-текстом."
+            "Специальная разметка показана без очистки текста, масок, перекраски или перерисовки. Перевод дается только отдельным текстом рядом."
         }
       ],
       visualNotes: [

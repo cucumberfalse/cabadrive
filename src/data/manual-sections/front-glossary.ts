@@ -41,7 +41,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
       kind: "lead",
       sourceTextEs: "Glosario",
       textRu:
-        "Глоссарий полезен как словарь экзаменационных формулировок: многие вопросы используют не бытовые слова, а юридические определения из source manual."
+        "Глоссарий полезен как словарь экзаменационных формулировок: многие вопросы используют не бытовые слова, а юридические определения из manual."
     },
     {
       id: "glossary-a-b",
@@ -53,7 +53,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
           id: "glossary-a-b-accidente-de-transito",
           termEs: "Accidente de tránsito",
           translationRu: "дорожное происшествие",
-          definitionRu: "в источнике заменяется термином incidente de tránsito."
+          definitionRu: "в учебном manual вместо этого используется термин incidente de tránsito."
         },
         {
           id: "glossary-a-b-acera",

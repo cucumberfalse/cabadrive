@@ -61,12 +61,12 @@ export const ch2ScoringSection: ManualGuideSectionContent = {
     {
       id: "scoring-footnotes",
       kind: "list",
-      titleRu: "Ссылки и исключения из источника",
+      titleRu: "Ссылки и исключения",
       sourceTextEs:
         "35/ Para más información... 36/ Para más información... 37/ Las infracciones contempladas...",
       itemsRu: [
-        "Для информации о нарушениях, за которые списываются баллы, источник указывает страницу buenosaires.gob.ar/justiciayseguridad/infracciones/sistema-de-evaluacion-permanente-de-conductores.",
-        "Для информации о курсах и оценках дорожного переобучения источник указывает buenosaires.gob.ar/licenciadeconducir/educacion-vial-y-prevencion-de-siniestros-de-transito.",
+        "Информация о нарушениях, за которые списываются баллы: buenosaires.gob.ar/justiciayseguridad/infracciones/sistema-de-evaluacion-permanente-de-conductores.",
+        "Информация о курсах и оценках дорожного переобучения: buenosaires.gob.ar/licenciadeconducir/educacion-vial-y-prevencion-de-siniestros-de-transito.",
         "Нарушения, предусмотренные пунктами d) и e) статьи 11.1.4 Código de Tránsito y Transporte, не дают возможности повторно присвоить 50% списанных баллов."
       ]
     }

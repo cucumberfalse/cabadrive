@@ -82,7 +82,7 @@ export const ch3HighwaysSection: ManualGuideSectionContent = {
         "Нельзя estorbar la fluidez del tránsito: ехать заметно медленнее скорости своего carril без причины опасно.",
         "Если vehículo inmovilizado оказался на autopista/vía rápida из-за accidente, avería, malestar físico или другой emergency, нужно обозначить опасность balizas/intermitentes и запросить auxilio/asistencia.",
         "При необходимости помощи использовать teléfono celular, postes de auxilio или систему связи/телефонии autopista, чтобы вызвать auxilio vial и убрать транспорт с calzada как можно безопаснее.",
-        "В ситуациях аварийной остановки сохраняется обязанность использовать chaleco reflectante там, где это требует источник."
+        "В ситуациях аварийной остановки сохраняется обязанность использовать chaleco reflectante там, где это требуется правилами."
       ]
     },
     {

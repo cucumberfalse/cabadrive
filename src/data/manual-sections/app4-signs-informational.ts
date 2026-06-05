@@ -65,7 +65,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
     {
       id: "informational-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы информационных знаков",
+      titleRu: "Листы информационных знаков",
       sourceTextEs:
         "Informativas: caracteristicas de la via, nomenclatura vial y urbana, informacion turistica y de servicios, educativas y anuncios especiales.",
       cards: [
@@ -79,11 +79,11 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-189-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных знаков о характеристиках дороги, сохраненный без изменений.",
+            "Лист информационных знаков о характеристиках дороги.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист сохранен без изменений: цвета, стрелки, пиктограммы и испанские подписи не изменены."
+            "Цвета, стрелки, пиктограммы и испанские подписи остаются внутри изображения."
         },
         {
           id: "app4-informational-page-190-source-card",
@@ -95,7 +95,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-190-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных знаков дорожной и городской номенклатуры, сохраненный без изменений.",
+            "Лист информационных знаков дорожной и городской номенклатуры.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
@@ -111,11 +111,11 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-191-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных туристических, сервисных, образовательных и специальных знаков, сохраненный без изменений.",
+            "Лист информационных туристических, сервисных, образовательных и специальных знаков.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Все пиктограммы и подписи оставлены без ретуши, масок, перерисовки или русских надписей поверх изображения."
+            "Пиктограммы и подписи остаются внутри изображения; русские надписи поверх них не добавляются."
         },
         {
           id: "app4-informational-page-192-source-card",
@@ -127,11 +127,11 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
           assetPath: `${assetRoot}/sign-sheet-192-source-crop-as-is.jpg`,
           altRu:
-            "Официальная страница о знаке Желтая звезда, сохраненная без изменений.",
+            "Страница о знаке Желтая звезда с испанским текстом.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Страница сохранена без изменений. Русский перевод содержания находится ниже, а испанская страница не очищается и не переводится внутри изображения."
+            "Русский перевод содержания находится ниже; испанский текст внутри изображения не очищается и не переводится."
         }
       ],
       visualNotes: [
@@ -152,7 +152,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         "Пять лучей звезды обозначают ценности: память, предотвращение, закон, справедливость и образование.",
         "На звезде указывают имя или прозвище и возраст жертвы с надписью «En memoria de una victima de transito».",
         "Семья погибшего может бесплатно запросить установку по адресу estrellasamarillas@buenosaires.gob.ar или через НКО.",
-        "В источнике также упомянута интерактивная карта Желтых звезд с данными о месте, имени, возрасте, дате рождения и дате смерти."
+        "Также существует интерактивная карта Желтых звезд с данными о месте, имени, возрасте, дате рождения и дате смерти."
       ]
     }
   ]
