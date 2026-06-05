@@ -676,7 +676,7 @@ function blindSpotRecord() {
     id: "blind-spot-visual",
     status: "implemented",
     sourcePage: 108,
-    pdfPage: target?.sourcePage ?? 109,
+    pdfPage: target?.pdfPage ?? target?.renderPage ?? 109,
     sourceRegion: target?.sourceRegionAtBaseScale ?? {
       x: 838,
       y: 1100,

@@ -104,7 +104,9 @@
           "scale" : 12
         }
       ],
-      "sourcePage" : 109,
+      "pdfPage" : 109,
+      "renderPage" : 109,
+      "sourcePage" : 108,
       "sourceQualityDisposition" : "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling",
       "sourceRegionAtBaseScale" : {
         "height" : 1100,

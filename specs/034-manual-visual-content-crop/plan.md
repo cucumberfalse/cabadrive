@@ -522,6 +522,12 @@ Standard checks:
   does not rewrite
   `content/validation/manual-guide-visual-completeness.evidence.json` and
   fails on stale committed evidence.
+- Run focused blind-spot provenance tests proving the official source page is
+  `108` in runtime/source metadata and rendered `data-source-page`, while any
+  PDF/render page offset `109` is kept only in explicitly named internal
+  evidence fields.
+- Recheck the blind-spot asset dimensions/hash after the metadata fix to prove
+  protected image pixels were not changed.
 - Run focused content/static tests early.
 - Run `pnpm run validate:manual-guide`, `pnpm run validate:content`,
   `pnpm exec tsc --noEmit`, `pnpm run test`, `pnpm run build`, focused
@@ -573,6 +579,11 @@ Review Agent should especially check:
   source-faithful layout, not only a whole tiny sheet;
 - external sign captions are translated only outside protected sign pixels;
 - hospital map labels are readable and unmodified inside the map image;
+- blind-spot provenance metadata exposes official printed/manual page `108`
+  to learners/runtime audits and does not expose the PDF/render page offset
+  `109` as `data-source-page`;
+- blind-spot metadata/evidence/tests preserve the existing protected image
+  asset pixels, dimensions, and hash while correcting only provenance fields;
 - runtime guide copy is natural adapted Russian and does not leak
   source/provenance service wording into learner-facing labels/explanations;
 - Appendix IV siblings were not missed;

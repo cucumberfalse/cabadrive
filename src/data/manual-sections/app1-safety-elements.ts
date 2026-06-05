@@ -221,7 +221,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
           displayMode: "full-width",
           maxDisplayWidthPx: 546,
           minDisplayWidthPx: 546,
-          sourcePage: 109,
+          sourcePage: 108,
           sourceRegion: { x: 838, y: 1100, width: 1525, height: 1100 },
           assetPath: `${assetRoot}/blind-spot-source-as-is.jpg`,
           altRu:

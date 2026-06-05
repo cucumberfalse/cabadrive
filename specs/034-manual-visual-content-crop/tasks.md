@@ -1893,3 +1893,90 @@
   `git diff --check` passed. Full GitHub `baseline-checks` was not run locally;
   the closest local reproduction used the failing Playwright grep in both
   relevant projects plus the same build/content/TypeScript gates above.
+
+## Architect Disposition: Blind-Spot Source Page Metadata P2 - 2026-06-05
+
+- [x] T162 Architect receives and dispositions Codex AI Review P2 for PR
+  `#200` current head `2a2a196a0f8f2402d4441c52de57d968e1880fdd`, comment
+  `4439754562`, discussion `r3365430389`, path
+  `src/data/manual-sections/app1-safety-elements.ts`, line `224`. At the time
+  of finding, required checks except AI Review had passed on `2a2a196`; AI
+  Review produced this P2.
+- [x] T163 Architect classifies the finding as a same-cycle blocker for
+  feature `034`, not a future ticket. The blind-spot source visual points to
+  `page-108-blind-spot-source-crop.jpg` and records official printed/manual
+  page `108`, but the rendered card exposes `data-source-page="109"`. This can
+  mislead provenance display, audits, and screenshot evidence.
+- [x] T164 Implementation Agent must align `app1-blind-spot-source-card`
+  runtime/source metadata so the official printed/manual source page is `108`
+  in `sourcePage`, rendered `data-source-page`, learner-facing provenance, and
+  runtime audit surfaces. Any PDF/render asset offset `109` must be retained
+  only in explicitly named internal evidence fields such as `pdfPage`,
+  `renderPage`, or equivalent.
+- Evidence: changed the runtime card in
+  `src/data/manual-sections/app1-safety-elements.ts` from `sourcePage: 109` to
+  `sourcePage: 108`. The renderer therefore emits
+  `data-source-page="108"` for `app1-blind-spot-source-card`. The PDF/render
+  offset remains evidence-only through
+  `sourceRegionMetadata.extractionScaleEvidence.pdfPage: 109` and the crop
+  evidence fields `pdfPage: 109` / `renderPage: 109`.
+- [x] T165 Implementation Agent must update validation evidence, visual
+  completeness evidence, crop inventory, registry records, and screenshot or
+  Playwright evidence so they consistently distinguish official page `108`
+  from PDF/render page `109` for `app1-blind-spot-source-card`.
+- Evidence: updated
+  `content/validation/manual-guide-blind-spot-source-crop.evidence.json` so
+  the crop target records `sourcePage: 108`, `pdfPage: 109`, and
+  `renderPage: 109`; updated the visual-completeness audit and crop inventory
+  scripts to read the explicit internal PDF/render fields; regenerated/checked
+  `content/validation/manual-guide-visual-completeness.evidence.json` and
+  `content/validation/manual-guide-visual-content-crop.evidence.json` with no
+  additional committed evidence drift. Registry source-region metadata already
+  recorded official page `108` and internal `pdfPage: 109`.
+- [x] T166 Implementation Agent must add or update focused tests so the
+  blind-spot card fails if `data-source-page` regresses to `109`, if
+  `sourcePage` is ambiguous, or if evidence treats the PDF/render page offset
+  as the official source page.
+- Evidence: updated `tests/content-manual-guide-chapters.test.mjs` to assert
+  runtime `blindSpotCard.sourcePage === 108` and crop evidence
+  `sourcePage === 108`, `pdfPage === 109`, `renderPage === 109`; updated the
+  focused Playwright test to assert the rendered
+  `app1-blind-spot-source-card` has `data-source-page="108"` and not `109`.
+- [x] T167 Implementation Agent must not change protected blind-spot image
+  pixels while fixing metadata. Evidence must preserve or recheck the existing
+  `546x440` dimensions and SHA-256
+  `b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35` for
+  `blind-spot-source-as-is.jpg` and
+  `page-108-blind-spot-source-crop.jpg`, unless Orchestrator assigns a
+  separate image-extraction task.
+- Evidence: no protected image assets were edited. Rechecked both
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg`
+  and
+  `content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg`
+  with `sips` and `shasum -a 256`; both are still `546x440` and SHA-256
+  `b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35`.
+- [x] T168 Implementation Agent must run and record focused verification for
+  this review fix: targeted content/static tests for blind-spot metadata,
+  focused Playwright or DOM evidence proving `data-source-page="108"`,
+  `node scripts/manual-guide-visual-completeness-audit.mjs`,
+  `node scripts/manual-visual-content-inventory.mjs` if inventory/evidence is
+  updated, `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+  `pnpm exec tsc --noEmit`, `node scripts/check-feature-memory.mjs --worktree`,
+  and `git diff --check`. Rerun broader build/preflight if the metadata or
+  evidence changes affect those gates.
+- Evidence passed before this note:
+  `node --test tests/content-manual-guide-chapters.test.mjs` (`97` tests);
+  `node --test tests/manual-guide-visual-completeness-audit.test.mjs`
+  (`2` tests); `node scripts/manual-guide-visual-completeness-audit.mjs
+  --write`; `node scripts/manual-guide-visual-completeness-audit.mjs`;
+  `node scripts/manual-visual-content-inventory.mjs`; `pnpm run
+  validate:manual-guide`; `pnpm run validate:content`; `pnpm exec tsc
+  --noEmit`; `pnpm run build`, which generated the service worker with `1870`
+  cached assets and emitted only the existing Vite large-chunk warning; and
+  focused Playwright
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide
+  full-width source image cards stay readable and avoid upscaling"
+  --project=chromium --project=mobile` (`2` passed, including DOM evidence for
+  `data-source-page="108"`).
+- [ ] T169 Final validation remains blocked until T164-T168 are implemented,
+  evidenced, and the AI Review P2 is resolved or made outdated by the fix.

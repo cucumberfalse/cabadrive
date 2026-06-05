@@ -3096,7 +3096,9 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.match(blindSpotSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /source-limited-native-raster/u);
   const blindSpotCropEvidence = JSON.parse(readFileSync(blindSpot.cropEvidencePath, "utf8"));
   const blindSpotCropTarget = blindSpotCropEvidence.targets.find((entry) => entry.cardId === "app1-blind-spot-source-card");
-  assert.equal(blindSpotCropTarget.sourcePage, 109, "direct PDF render uses PDF page/render file 109");
+  assert.equal(blindSpotCropTarget.sourcePage, 108, "crop evidence names the official printed/manual page");
+  assert.equal(blindSpotCropTarget.pdfPage, 109, "direct PDF render uses PDF page/render file 109");
+  assert.equal(blindSpotCropTarget.renderPage, 109, "render asset keeps the PDF/page image offset explicit");
   assert.equal(blindSpotSourceRegion.sourcePage, 108, "runtime evidence names the printed/manual page shown in the official crop");
 
   const tireAsset = localAssetByPath(safety, tire.assetPath);
@@ -3591,7 +3593,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     blindSpotCard.assetPath,
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
   );
-  assert.equal(blindSpotCard.sourcePage, 109);
+  assert.equal(blindSpotCard.sourcePage, 108);
   assert.deepEqual(blindSpotCard.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
   assert.equal(blindSpotCard.hasSourceImageException, true);
   const tireCard = byId.get("app1-tire-manufacturing-tread-life-source-card");

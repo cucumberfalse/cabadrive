@@ -281,6 +281,43 @@ source-region helper work and adapt it where useful, but treat it only as
 supporting machinery. Implementation must preserve existing dirty/sibling work
 and update `tasks.md` as it works.
 
+Architect disposition `2026-06-05T18:26:17-03:00`: AI Review P2 finding on PR
+`#200` head `2a2a196a0f8f2402d4441c52de57d968e1880fdd`, Codex review
+comment `4439754562`, discussion `r3365430389`, is accepted as a same-cycle
+blocker for feature `034`.
+
+The finding reports that the newly added blind-spot card in
+`src/data/manual-sections/app1-safety-elements.ts` points to the
+`page-108-blind-spot-source-crop.jpg` evidence asset and describes official
+printed/manual page `108`, but the rendered card exposes
+`data-source-page="109"`. That mismatch can mislead learner provenance,
+audit tooling, and screenshot evidence by showing the PDF/render page offset
+as the official source page.
+
+Required outcome:
+
+- `app1-blind-spot-source-card` must expose official printed/manual page `108`
+  in learner-facing/runtime provenance such as `sourcePage` and
+  `data-source-page`;
+- PDF/render-page offset `109` may remain only in clearly named internal
+  evidence fields such as `pdfPage`, `renderPage`, or equivalent, never as the
+  official learner-facing source page for this card;
+- validation evidence, crop inventory, visual-completeness evidence, registry
+  records, screenshots, and tests must consistently distinguish official page
+  `108` from PDF/render page `109`;
+- static and/or Playwright coverage must fail if the blind-spot card regresses
+  to `data-source-page="109"` or if evidence names the official source page
+  ambiguously;
+- protected blind-spot image pixels must not change. Implementation should
+  prove this by preserving or rechecking the existing asset dimensions/hash for
+  `blind-spot-source-as-is.jpg` and the validation crop, unless a separate
+  Orchestrator-routed task explicitly authorizes image re-extraction.
+
+CI state at the time of this finding: required checks except AI Review had
+passed on head `2a2a196a0f8f2402d4441c52de57d968e1880fdd`; AI Review produced
+this P2. Final validation remains blocked until the metadata/evidence/test
+alignment is implemented and verified.
+
 ## Context Examples From User
 
 These concrete examples came from user screenshots or explicit user callouts.

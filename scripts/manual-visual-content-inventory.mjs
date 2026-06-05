@@ -449,7 +449,7 @@ function dispositionForCard(card, cropRecord) {
       reason:
         "Focused official page 108 blind-spot visual was added as a tight direct-PDF source-as-is crop. The card preserves internal Spanish pixels, excludes unrelated page content, caps display at the natural source-limited width, and renders Russian explanation outside the image.",
       sourcePage: 108,
-      pdfPage: target?.sourcePage ?? 109,
+      pdfPage: target?.pdfPage ?? target?.renderPage ?? 109,
       beforeUsefulRatios: target?.beforeUsefulRatios ?? null,
       afterUsefulRatios: target?.outputUsefulRatios ?? null,
       sourceQualityDisposition: target?.sourceQualityDisposition ?? null

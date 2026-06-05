@@ -4754,6 +4754,8 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await page.goto("/#manual-section-app1-safety-elements");
   const blindSpotCard = page.locator('[data-card-id="app1-blind-spot-source-card"]');
   await expect(blindSpotCard).toBeVisible();
+  await expect(blindSpotCard).toHaveAttribute("data-source-page", "108");
+  await expect(blindSpotCard).not.toHaveAttribute("data-source-page", "109");
   await expect(blindSpotCard.locator("img")).toHaveAttribute("src", /blind-spot-source-as-is\.jpg/);
   await expect(blindSpotCard.locator("img")).toHaveAttribute("data-visible-spanish", "true");
   await expect(blindSpotCard.locator("img")).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
