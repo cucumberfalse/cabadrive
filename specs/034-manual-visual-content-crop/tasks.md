@@ -1489,9 +1489,9 @@
   `scripts/manual-guide-visual-completeness-audit.mjs`,
   `scripts/manual-visual-content-inventory.mjs`,
   `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
-  The audit now records `blind-spot-visual` as `implemented`; tire
-  manufacturing/tread-life remains pending and `NO AVANZAR` remains
-  `implemented-representative`.
+  The audit recorded `blind-spot-visual` as `implemented`; at that slice's
+  close, tire manufacturing/tread-life still remained pending and
+  `NO AVANZAR` remained `implemented-representative`.
 - Verification for this slice passed:
   `node scripts/manual-guide-visual-completeness-audit.mjs`;
   `node scripts/manual-visual-content-inventory.mjs`;
@@ -1505,3 +1505,47 @@
   `--project=chromium` passed (`1` test, `1` pass). A first parallel Chromium
   attempt failed before running tests because the mobile run already occupied
   preview port `5205`; Chromium was rerun sequentially and passed.
+
+## Tire Manufacturing / Tread-Life Source Visual Evidence - 2026-06-05
+
+- Replacement Implementation Agent continued the assigned PR `#200` worktree
+  `/Users/chap/devel/cabadrive-worktrees/034-manual-visual-content-crop`,
+  branch `codex/034-manual-visual-content-crop`, from committed head
+  `6b6fe48fd58184cac167fadc6aa529ad88a9c729`. The dirty tire slice left by the
+  previous worker was preserved and adopted; no sibling worktrees, branches,
+  commits, dirty diffs, PR state, or process memory were reverted.
+- The user-reported official visual headed `Fecha de Fabricación` and
+  `Vida útil de los Neumáticos` is implemented as
+  `app1-tire-manufacturing-tread-life-source-card` in
+  `src/data/manual-sections/app1-safety-elements.ts`, immediately after the
+  pressure/depth callout. Runtime title, body, and term translations are
+  Russian DOM text outside the image; learner-facing provenance wording such
+  as `источник`, `исходный фрагмент`, `рабочий фрагмент`,
+  `Визуал источника`, and `Главный вывод источника` is absent from the card.
+- Runtime asset
+  `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg`
+  and validation crop
+  `content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg`
+  are byte-identical `760x995` JPEG files, SHA-256
+  `1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9`.
+  Crop evidence is recorded in
+  `content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json`.
+- Source page and crop evidence: printed/manual page `108`, source region
+  `{ x: 1115, y: 1635, width: 760, height: 995 }` from the retained official
+  page-108 x5 render. The crop removes only outer page whitespace around the
+  tire manufacturing/date, tread-life, recommendations, and pressure visual.
+- Protected-image boundary: Spanish internal pixels, including headings,
+  tire date callout, tread-life chart, bullets, `Recomendaciones`, and pressure
+  labels, remain unchanged. No translation, relabeling, redraw, recolor,
+  cleanup, retouch, mask, inpaint, or reconstruction was performed inside the
+  image. Russian explanations/translations are separate DOM text outside the
+  protected image.
+- Registry/evidence/tests updated:
+  `content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json`,
+  `content/validation/manual-guide-visual-completeness.evidence.json`,
+  `content/validation/manual-guide-visual-content-crop.evidence.json`,
+  `scripts/manual-guide-visual-completeness-audit.mjs`,
+  `scripts/manual-visual-content-inventory.mjs`,
+  `tests/content-manual-guide-chapters.test.mjs`, and `tests/e2e/app.spec.ts`.
+  The audit now records `tire-manufacturing-tread-life` as
+  `implemented-app1-canonical` and removes it from remaining required examples.

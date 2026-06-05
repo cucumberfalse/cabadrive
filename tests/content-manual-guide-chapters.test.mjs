@@ -69,6 +69,12 @@ const noAvanzarAssetPath =
   "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
 const noAvanzarSourceAssetPath = "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 const noAvanzarCropEvidencePath = "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const tireAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg";
+const tireSourceAssetPath =
+  "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg";
+const tireCropEvidencePath =
+  "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
@@ -2038,13 +2044,13 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
 
   const summary = visualCropEvidence.wholeManualInventory.summary;
   const readability = visualCropEvidence.wholeManualInventory.textReadability;
-  assert.equal(summary.sourceImageCardCount, 41);
+  assert.equal(summary.sourceImageCardCount, 42);
   assert.equal(summary.sourceArtworkCount, 2);
   assert.equal(summary.correctedAppendixIvCount, 16);
   assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
   assert.equal(summary.compactSourceImageCardCount, 5);
   assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
-  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 41);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 42);
   assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
   assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
   assert.equal(readability.baseline.documentBodyTextFontSizePx, 16);
@@ -2052,12 +2058,13 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
   assert.equal(readability.officialBetterSourceAudit.status, "checked");
   assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
-  assert.equal(readability.sourceImageCardRelevanceCounts.required, 19);
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 20);
   assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"], 1);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-tire-manufacturing-tread-life-source-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["implemented-representative-focused-official-sign-crop"], 1);
   assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
-  assert.equal(readability.sourceImageCardDispositionTotal, 41);
+  assert.equal(readability.sourceImageCardDispositionTotal, 42);
   assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
   assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
   assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
@@ -2122,6 +2129,18 @@ test("Manual guide visual content crop evidence covers the whole manual and corr
   assert.equal(blindSpotInventory.textReadability.renderedImageWidthPx, 546);
   assert.equal(blindSpotInventory.textReadability.requiresOwnerDisposition, false);
   assert.match(blindSpotInventory.textReadability.sourceLimitation, /x5 produced a 546x440 crop/u);
+  const tireInventory = inventoryByCardId.get("app1-tire-manufacturing-tread-life-source-card");
+  assert.ok(tireInventory, "tire manufacturing/tread-life card exists in whole-manual inventory");
+  assert.equal(tireInventory.disposition, "implemented-tire-manufacturing-tread-life-source-crop");
+  assert.equal(tireInventory.sourcePage, 108);
+  assert.deepEqual(tireInventory.dimensions, { width: 760, height: 995 });
+  assert.equal(tireInventory.afterUsefulRatios.areaRatio, 0.594234329542449);
+  assert.equal(tireInventory.textReadability.relevance, "required");
+  assert.equal(tireInventory.textReadability.disposition, "implemented-tire-manufacturing-tread-life-source-crop");
+  assert.equal(tireInventory.textReadability.renderedImageWidthPx, 760);
+  assert.equal(tireInventory.textReadability.requiresOwnerDisposition, false);
+  assert.match(tireInventory.textReadability.strategyApplied, /natural 760px width/u);
+  assert.ok(existsSync(tireCropEvidencePath), "tire manufacturing/tread-life crop evidence exists");
   assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
   const hospitalMapInventory = inventoryByCardId.get("app2-hospital-map-source-card");
   assert.equal(hospitalMapInventory.disposition, "corrected-best-official-map-only-crop");
@@ -2194,7 +2213,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   assert.equal(examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status, "implemented-representative");
   assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
   assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
-  assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "needs-implementation");
+  assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "implemented-app1-canonical");
   assert.equal(examplesById.get("blind-spot-visual").status, "implemented");
   assert.equal(examplesById.get("matafuegos-chaleco-reflectivo").status, "implemented-app1-only");
   assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
@@ -2224,6 +2243,19 @@ test("Manual guide visual completeness audit records user examples and blocks le
     "CAMIONES Y COLECTIVOS:Грузовики и автобусы",
     "Cuanto más grande es el vehículo, mayor es el punto ciego.:Чем больше транспортное средство, тем больше слепая зона."
   ]);
+  const tireRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "tire-manufacturing-tread-life");
+  assert.ok(tireRecord, "tire manufacturing/tread-life visual has a concrete evidence record");
+  assert.equal(tireRecord.status, "implemented-app1-canonical");
+  assert.equal(tireRecord.sourcePage, 108);
+  assert.equal(tireRecord.assetPath, tireAssetPath);
+  assert.equal(tireRecord.sourceAssetPath, tireSourceAssetPath);
+  assert.deepEqual(tireRecord.dimensions, { width: 760, height: 995 });
+  assert.equal(tireRecord.sha256, "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9");
+  assert.equal(tireRecord.runtimeDisplay.cardId, "app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireRecord.runtimeDisplay.maxDisplayWidthPx, 760);
+  assert.equal(tireRecord.runtimeDisplay.noUpscale, true);
+  assert.match(tireRecord.protectedImagePolicy, /Fecha de Fabricación/u);
+  assert.match(tireRecord.relatedScopeDisposition, /App II\/App III/u);
   const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
   assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
   assert.equal(headrestRecord.status, "implemented-app2-only");
@@ -2316,7 +2348,7 @@ test("Manual guide visual completeness audit records user examples and blocks le
   const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map((entry) => entry.id);
   assert.ok(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"));
   assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
-  assert.ok(remainingExampleIds.includes("tire-manufacturing-tread-life"));
+  assert.equal(remainingExampleIds.includes("tire-manufacturing-tread-life"), false);
   assert.match(
     visualCompletenessEvidence.remainingRequiredExamples.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar").remainingScopeNote,
     /Representative only[\s\S]*not every Appendix IV regulatory sign/u
@@ -2848,6 +2880,15 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     height: 440,
     sha256: "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35"
   };
+  const tire = {
+    assetPath: tireAssetPath,
+    sourceAssetPath: tireSourceAssetPath,
+    cropEvidencePath: tireCropEvidencePath,
+    assetKind: "high-resolution-original-source-diagram-tire-manufacturing-tread-life-page-108",
+    width: 760,
+    height: 995,
+    sha256: "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9"
+  };
   const transferred = [
     {
       assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
@@ -2873,6 +2914,7 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
 
   assert.match(app1SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.jpg/u);
   assert.match(app1SafetyElementsModuleSource, /blind-spot-source-as-is\.jpg/u);
+  assert.match(app1SafetyElementsModuleSource, /tire-manufacturing-tread-life-source-as-is\.jpg/u);
   assert.match(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
@@ -2945,6 +2987,45 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   const blindSpotCropTarget = blindSpotCropEvidence.targets.find((entry) => entry.cardId === "app1-blind-spot-source-card");
   assert.equal(blindSpotCropTarget.sourcePage, 109, "direct PDF render uses PDF page/render file 109");
   assert.equal(blindSpotSourceRegion.sourcePage, 108, "runtime evidence names the printed/manual page shown in the official crop");
+
+  const tireAsset = localAssetByPath(safety, tire.assetPath);
+  assert.equal(exceptionPaths.includes(tire.assetPath), true);
+  assert.equal(tireAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(tireAsset.assetKind, tire.assetKind);
+  assert.equal(tireAsset.containsText, true);
+  assert.equal(tireAsset.visibleSpanish, true);
+  assert.equal(tireAsset.width, tire.width);
+  assert.equal(tireAsset.height, tire.height);
+  assert.equal(tireAsset.sha256, tire.sha256);
+  assert.equal(tireAsset.runtimeDisplaySize.maxWidthCssPx, tire.width);
+  assert.equal(tireAsset.runtimeDisplaySize.minWidthCssPx, tire.width);
+  assert.equal(tireAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(tireAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(tireAsset.sourceIntegrity.sourceAssetPath, tire.sourceAssetPath);
+  assert.equal(tireAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(tireAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(tireAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(tireAsset.sourceIntegrity.unrelatedPageContentExcluded, true);
+  assert.equal(tireAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(tireAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(tireAsset.sourceImageException.scope, "app1-page-108-tire-manufacturing-tread-life-visual-only");
+  assert.equal(sha256File(tireAsset.assetPath), tire.sha256);
+  assert.equal(sha256File(tire.sourceAssetPath), tire.sha256);
+
+  const tireSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
+    (entry) => entry.sourceAssetPath === tire.sourceAssetPath
+  );
+  assert.ok(tireSourceRegion, `${tire.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.equal(tireSourceRegion.sourcePage, 108);
+  assert.deepEqual(tireSourceRegion.sourceRegion, { x: 1115, y: 1635, width: 760, height: 995 });
+  assert.deepEqual(tireSourceRegion.cropDimensions, { width: tire.width, height: tire.height });
+  assert.equal(tireSourceRegion.cropSha256, tire.sha256);
+  assert.match(tireSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /retained-official-x5-render-crop/u);
+  const tireCropEvidence = JSON.parse(readFileSync(tire.cropEvidencePath, "utf8"));
+  const tireCropTarget = tireCropEvidence.targets.find((entry) => entry.cardId === "app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireCropTarget.sourcePage, 108);
+  assert.deepEqual(tireCropTarget.outputDimensions, { width: tire.width, height: tire.height });
+  assert.equal(tireCropTarget.outputSha256, tire.sha256);
 
   for (const expectation of transferred) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -3238,6 +3319,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "headrest-position-source-card",
     "sri-types-source-card",
     "app1-blind-spot-source-card",
+    "app1-tire-manufacturing-tread-life-source-card",
     "app1-chaleco-reflectivo-source-card",
     "app1-matafuegos-source-card",
     "app2-hospital-map-source-card",
@@ -3280,6 +3362,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "rva-source-card"
   ]);
   const expectedMinWidthByCardId = new Map([
+    ["app1-tire-manufacturing-tread-life-source-card", 760],
     ["app1-blind-spot-source-card", 546],
     ["app2-hospital-map-source-card", 440],
     ["app2-mirror-orientation-source-card", 760],
@@ -3302,7 +3385,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     ["app4-warning-page-188-source-card", 705]
   ]);
 
-  assert.equal(cards.length, 41);
+  assert.equal(cards.length, 42);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(
@@ -3376,6 +3459,13 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(blindSpotCard.sourcePage, 109);
   assert.deepEqual(blindSpotCard.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
   assert.equal(blindSpotCard.hasSourceImageException, true);
+  const tireCard = byId.get("app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireCard.maxDisplayWidthPx, 760);
+  assert.equal(tireCard.minDisplayWidthPx, 760);
+  assert.equal(tireCard.assetPath, tireAssetPath);
+  assert.equal(tireCard.sourcePage, 108);
+  assert.deepEqual(tireCard.sourceRegion, { x: 1115, y: 1635, width: 760, height: 995 });
+  assert.equal(tireCard.hasSourceImageException, true);
 
   assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);

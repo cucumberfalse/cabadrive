@@ -14,6 +14,12 @@ const noAvanzarSourceAssetPath =
   "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
 const blindSpotCropEvidencePath =
   "content/validation/manual-guide-blind-spot-source-crop.evidence.json";
+const tireAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg";
+const tireSourceAssetPath =
+  "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg";
+const tireCropEvidencePath =
+  "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json";
 
 const bodyTextBaseline = {
   documentBodyTextFontSizePx: 16,
@@ -391,6 +397,19 @@ function dispositionForCard(card, cropRecord) {
       sourceQualityDisposition: target?.sourceQualityDisposition ?? null
     };
   }
+  if (card.cardId === "app1-tire-manufacturing-tread-life-source-card") {
+    const cropEvidence = existsSync(tireCropEvidencePath) ? readJson(tireCropEvidencePath) : null;
+    const target = cropEvidence?.targets?.find((entry) => entry.cardId === card.cardId);
+    return {
+      disposition: "implemented-tire-manufacturing-tread-life-source-crop",
+      reason:
+        "User-reported App I page-108 tire manufacturing/date and tread-life visual was restored as a tight source-as-is x5 crop. The card preserves internal Spanish pixels, caps display at the natural crop width, and renders Russian explanation/term translations outside the image.",
+      sourcePage: 108,
+      sourceRegion: target?.sourceRegionAtBaseScale ?? { x: 1115, y: 1635, width: 760, height: 995 },
+      afterUsefulRatios: target?.outputUsefulRatios ?? null,
+      sourceQualityDisposition: target?.sourceQualityDisposition ?? null
+    };
+  }
   if (card.cardId === "app2-hospital-map-source-card") {
     return {
       disposition: "corrected-best-official-map-only-crop",
@@ -518,6 +537,32 @@ function textReadabilityForCard(card, cropRecord) {
       evidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json plus focused Playwright checks for app1-blind-spot-source-card",
       sourceLimitation:
         "Direct official PDF region rendering at x5 produced a 546x440 crop; higher-scale raster enlargement was intentionally not committed because it would not add official source detail.",
+      requiresOwnerDisposition: false
+    };
+  }
+  if (card.cardId === "app1-tire-manufacturing-tread-life-source-card") {
+    return {
+      relevance: "required",
+      disposition: "implemented-tire-manufacturing-tread-life-source-crop",
+      intendedReadableText:
+        "Official Spanish headings, tire date callout, tread-life chart labels, bullet text, Recomendaciones heading, and pressure labels remain protected source pixels; Russian explanation and term translations are rendered separately.",
+      inspectedSample: "App1 printed page 108 tire manufacturing/date and tread-life crop from the retained x5 render.",
+      renderedImageWidthPx,
+      estimatedSmallestTextHeightPx: 10,
+      bodyTextBaselinePx: baseline.documentBodyTextFontSizePx,
+      comparisonToBodyText:
+        "Embedded source labels remain smaller than body text, but the full official visual is now tight, natural-width, and paired with selectable Russian DOM explanation for learning-critical terms.",
+      viewportComparisons: readabilityViewportComparisons(
+        card,
+        renderedImageWidthPx,
+        10,
+        "implemented-tire-manufacturing-tread-life-source-crop"
+      ),
+      strategyApplied:
+        "Use the retained official page-108 x5 crop at its natural 760px width with minDisplayWidthPx matching maxDisplayWidthPx, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the official text further.",
+      evidencePath: "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json",
+      sourceLimitation:
+        "The committed crop uses the best retained official x5 page render and is not browser-upscaled; Russian term translations outside the image carry the learner-facing wording.",
       requiresOwnerDisposition: false
     };
   }
@@ -841,10 +886,113 @@ function upsertFocusedNoAvanzarEvidence(registry) {
   ];
 }
 
+function upsertTireEvidence(registry) {
+  const section = registry.sections.find((entry) => entry.id === "app1-safety-elements");
+  if (!section) throw new Error("Missing registry section app1-safety-elements");
+  const implementation = section.implementationEvidence;
+  const dimensions = readImageDimensions(tireAssetPath);
+  const sourceDimensions = readImageDimensions(tireSourceAssetPath);
+  if (!dimensions || !sourceDimensions) throw new Error("Missing tire manufacturing/tread-life image dimensions");
+  const sha256 = sha256File(tireAssetPath);
+  const sourceSha256 = sha256File(tireSourceAssetPath);
+  if (sha256 !== sourceSha256) throw new Error("Tire runtime asset must match validation crop bytes");
+
+  const exception = {
+    assetPath: tireAssetPath,
+    kind: "source-image-original-visible-text",
+    visibleSpanishScope: "source-image-only",
+    sourceAsIs: true,
+    russianExplanationOutsideImage: true,
+    ownerDecisionDate: "2026-06-05",
+    scope: "app1-page-108-tire-manufacturing-tread-life-visual-only"
+  };
+  const sourceRegionEntry = {
+    sourcePage: 108,
+    sourceRegion: {
+      x: 1115,
+      y: 1635,
+      width: 760,
+      height: 995
+    },
+    sourceAssetPath: tireSourceAssetPath,
+    cropDimensions: sourceDimensions,
+    cropSha256: sourceSha256,
+    cleanupScope: "none-source-as-is",
+    extractionScaleEvidence: {
+      target: "x5-zoom-source-export",
+      method:
+        "Source-faithful crop from the retained official Appendix I page-108 x5 render using sips cropOffset 1635 1115, crop 995x760. The committed crop keeps the tire manufacturing/date callout, tread-life chart, bullet text, Recomendaciones pressure box, and pressure labels as-is; it removes only outer page whitespace and does not translate, relabel, redraw, recolor, clean, retouch, mask, inpaint, or reconstruct protected pixels.",
+      outputDimensions: sourceDimensions,
+      sha256: sourceSha256,
+      sourceQualityDisposition:
+        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
+    }
+  };
+  const existingSourceRegionIndex = implementation.sourceRegionMetadata.findIndex(
+    (entry) => entry.sourceAssetPath === tireSourceAssetPath
+  );
+  if (existingSourceRegionIndex >= 0) implementation.sourceRegionMetadata[existingSourceRegionIndex] = sourceRegionEntry;
+  else implementation.sourceRegionMetadata.push(sourceRegionEntry);
+
+  const localAsset = {
+    assetPath: tireAssetPath,
+    assetKind: "high-resolution-original-source-diagram-tire-manufacturing-tread-life-page-108",
+    assetCategory: "source-as-is-diagram",
+    width: dimensions.width,
+    height: dimensions.height,
+    sha256,
+    containsText: true,
+    visibleSpanish: true,
+    cleanupScope: "none-source-as-is",
+    extractionScaleEvidence: {
+      target: "x5-zoom-source-export",
+      method:
+        "Runtime tire visual is byte-identical to the feature 034 validation crop from the retained official page-108 x5 render; copied without resizing, cleanup, retouching, relabeling, translation, or redraw.",
+      outputDimensions: dimensions,
+      sha256,
+      sourceQualityDisposition:
+        "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
+    },
+    runtimeDisplaySize: {
+      maxWidthCssPx: dimensions.width,
+      minWidthCssPx: dimensions.width,
+      noUpscale: true,
+      mobileContainedScroll: true
+    },
+    sourceIntegrity: {
+      sourceAsIs: true,
+      sourceAssetPath: tireSourceAssetPath,
+      noTranslationOrRelabeling: true,
+      noRedrawRecolorCleanupRetouchMaskInpaint: true,
+      russianExplanationOutsideImage: true,
+      surroundingSpanishBodyTextIncludedBecauseItIsPartOfTheOfficialVisual: true,
+      unrelatedPageContentExcluded: true,
+      tightCropRemovesOuterWhitespaceOnly: true
+    },
+    sourceImageException: exception
+  };
+  const existingLocalAssetIndex = implementation.localAssetMetadata.findIndex((entry) => entry.assetPath === tireAssetPath);
+  if (existingLocalAssetIndex >= 0) implementation.localAssetMetadata[existingLocalAssetIndex] = localAsset;
+  else implementation.localAssetMetadata.push(localAsset);
+
+  if (implementation.visibleSpanishStatus?.exceptions) {
+    implementation.visibleSpanishStatus.exceptions = implementation.visibleSpanishStatus.exceptions.filter(
+      (entry) => entry.assetPath !== tireAssetPath
+    );
+    implementation.visibleSpanishStatus.exceptions.push(exception);
+  }
+
+  implementation.visualReviewNotes = [
+    ...implementation.visualReviewNotes.filter((note) => !note.includes("tire manufacturing")),
+    "App I tire manufacturing/date and tread-life card uses the retained official page-108 x5 crop as source pixels, with Russian explanation and term translations outside the protected image."
+  ];
+}
+
 const cropEvidence = readJson(cropEvidencePath);
 const registry = readJson(registryPath);
 updateRegistryFromCropEvidence(registry, cropEvidence);
 upsertFocusedNoAvanzarEvidence(registry);
+upsertTireEvidence(registry);
 
 const cropByCardId = new Map(cropEvidence.targets.map((record) => [record.cardId, record]));
 const cards = sourceImageCardInventory();

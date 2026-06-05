@@ -24,6 +24,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
@@ -48,6 +49,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "Source page 104 is the Appendix I divider and is recorded in registry evidence, not as a standalone runtime article.",
       "Pages 105-119 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
       "Page 119 is shared: the Equipaje paragraphs before the Otros elementos de seguridad obligatorios heading belong to this safety-elements section; the heading and following obligatory equipment content belong to the next section.",
+      "The tire manufacturing/date and tread-life visual is restored as a tight source-as-is crop from the official page 108 x5 render; Spanish headings, callouts, chart labels, bullets, and pressure recommendations remain unchanged inside the image, with Russian explanation outside.",
       "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text.",
       "The blind-spot visual is a tight source-as-is direct-PDF region crop from the official page 108 visual; Spanish heading, definition, diagram labels, and blue conclusion remain unchanged inside the image, with Russian explanation outside."
     ]
@@ -138,6 +140,48 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Шины старше 5 лет лучше не использовать.",
         "Давление берется из руководства автомобиля и измеряется на холодных шинах.",
         "Неверное давление снижает сцепление и увеличивает износ."
+      ]
+    },
+    {
+      id: "tire-manufacturing-tread-life-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Дата изготовления, срок службы и давление шин",
+      sourceTextEs: "Fecha de Fabricación. Vida útil de los Neumáticos. Recomendaciones.",
+      cards: [
+        {
+          id: "app1-tire-manufacturing-tread-life-source-card",
+          titleRu: "Как читать маркировку и износ шин",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 760,
+          minDisplayWidthPx: 760,
+          sourcePage: 108,
+          sourceRegion: { x: 1115, y: 1635, width: 760, height: 995 },
+          assetPath: `${assetRoot}/tire-manufacturing-tread-life-source-as-is.jpg`,
+          altRu:
+            "Официальный блок про дату изготовления шин, срок службы протектора и рекомендации по давлению.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
+          termTranslations: [
+            { termEs: "Fecha de Fabricación", translationRu: "Дата изготовления" },
+            { termEs: "Vida útil de los Neumáticos", translationRu: "Срок службы шин" },
+            { termEs: "Recomendaciones", translationRu: "Рекомендации" },
+            { termEs: "Falta de presión", translationRu: "Недостаточное давление" },
+            { termEs: "Presión excesiva", translationRu: "Избыточное давление" },
+            { termEs: "Presión adecuada", translationRu: "Правильное давление" }
+          ],
+          bodyRu:
+            "На боковине шины нужно искать дату изготовления, индекс нагрузки и скоростной индекс. По протектору ориентируются на глубину рисунка: при 1.6 mm шину заменяют, а шины старше 5 лет лучше не использовать. Давление проверяют на холодных шинах и берут из руководства автомобиля."
+        }
+      ],
+      visualNotes: [
+        "The runtime card is byte-identical to the feature 034 validation crop from the official page 108 x5 render.",
+        "The crop removes only outer page whitespace around the tire visual; Spanish headings, date callout, tread-life chart, bullets, recommendation box, and pressure labels remain protected image pixels.",
+        "Russian explanation and term translations are selectable page text outside the image."
       ]
     },
     {

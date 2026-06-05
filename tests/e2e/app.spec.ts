@@ -4596,9 +4596,12 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app1-safety-elements",
       hash: "/#manual-section-app1-safety-elements",
-      cards: ["app1-blind-spot-source-card"],
-      usefulContentCards: ["app1-blind-spot-source-card"],
-      readableScrollCards: [{ id: "app1-blind-spot-source-card", minDisplayWidthPx: 546 }]
+      cards: ["app1-tire-manufacturing-tread-life-source-card", "app1-blind-spot-source-card"],
+      usefulContentCards: ["app1-tire-manufacturing-tread-life-source-card", "app1-blind-spot-source-card"],
+      readableScrollCards: [
+        { id: "app1-tire-manufacturing-tread-life-source-card", minDisplayWidthPx: 760 },
+        { id: "app1-blind-spot-source-card", minDisplayWidthPx: 546 }
+      ]
     },
     {
       sectionId: "app4-signs-horizontal",
@@ -4672,6 +4675,38 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("Грузовики и автобусы");
   await expect(blindSpotCard).not.toContainText("источник");
   await expect(blindSpotCard).not.toContainText("фрагмент");
+  const tireCard = page.locator('[data-card-id="app1-tire-manufacturing-tread-life-source-card"]');
+  await expect(tireCard).toBeVisible();
+  await expect(tireCard.locator("img")).toHaveAttribute("src", /tire-manufacturing-tread-life-source-as-is\.jpg/);
+  await expect(tireCard.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Fecha de Fabricación");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Дата изготовления");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Vida útil de los Neumáticos");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Срок службы шин");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Presión adecuada");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Правильное давление");
+  await expect(tireCard).not.toContainText("источник");
+  await expect(tireCard).not.toContainText("фрагмент");
+  await expect(tireCard).not.toContainText("Визуал источника");
+  const tireSizing = await tireCard.locator("img").evaluate(async (image: HTMLImageElement) => {
+    await image.decode?.().catch(() => undefined);
+    const rect = image.getBoundingClientRect();
+    const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      renderedWidth: rect.width,
+      renderedHeight: rect.height,
+      cardWidth: cardRect?.width ?? 0
+    };
+  });
+  expect(tireSizing.naturalWidth).toBe(760);
+  expect(tireSizing.naturalHeight).toBe(995);
+  expect(tireSizing.renderedWidth).toBeLessThanOrEqual(760);
+  expect(tireSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(tireSizing.cardWidth * 0.7, 760));
   const blindSpotSizing = await blindSpotCard.locator("img").evaluate(async (image: HTMLImageElement) => {
     await image.decode?.().catch(() => undefined);
     const rect = image.getBoundingClientRect();

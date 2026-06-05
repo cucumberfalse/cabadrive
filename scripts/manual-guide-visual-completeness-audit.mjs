@@ -38,6 +38,12 @@ const blindSpotSourceAssetPath =
   "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg";
 const blindSpotCropEvidencePath =
   "content/validation/manual-guide-blind-spot-source-crop.evidence.json";
+const tireAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg";
+const tireSourceAssetPath =
+  "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg";
+const tireCropEvidencePath =
+  "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json";
 
 const deniedCopyPatterns = [
   {
@@ -135,10 +141,13 @@ const userExampleRecords = [
   {
     id: "tire-manufacturing-tread-life",
     label: "Tire manufacturing/date and tread-life visual",
-    status: "needs-implementation",
-    sourcePages: [108, 128],
-    runtimeTargets: ["app1-safety-elements", "app2-safety-elements"],
-    notes: "Pending later batch: official tire visual export and runtime insertion."
+    status: "implemented-app1-canonical",
+    sourcePages: [108],
+    runtimeTargets: ["app1-tire-manufacturing-tread-life-source-card"],
+    assetPath: tireAssetPath,
+    sourceAssetPath: tireSourceAssetPath,
+    notes:
+      "Implemented for the user-reported App I canonical page-108 tire manufacturing/date and tread-life visual. Related App II/App III tire sections remain separate textual/future visual scope and are not changed by this slice."
   },
   {
     id: "matafuegos-chaleco-reflectivo",
@@ -607,6 +616,61 @@ function blindSpotRecord() {
   };
 }
 
+function tireManufacturingTreadLifeRecord() {
+  const dimensions = existsSync(tireAssetPath) ? readImageDimensions(tireAssetPath) : null;
+  const sourceDimensions = existsSync(tireSourceAssetPath) ? readImageDimensions(tireSourceAssetPath) : null;
+  const cropEvidence = existsSync(tireCropEvidencePath)
+    ? JSON.parse(readFileSync(tireCropEvidencePath, "utf8"))
+    : null;
+  const target = cropEvidence?.targets?.find((entry) => entry.cardId === "app1-tire-manufacturing-tread-life-source-card");
+  return {
+    id: "tire-manufacturing-tread-life",
+    status: "implemented-app1-canonical",
+    sourcePage: 108,
+    sourceRegion: target?.sourceRegionAtBaseScale ?? {
+      x: 1115,
+      y: 1635,
+      width: 760,
+      height: 995
+    },
+    extractionMethod:
+      "Source-faithful crop from the retained official Appendix I page-108 x5 render using sips cropOffset 1635 1115, crop 995x760. The runtime asset is byte-identical to this validation/source crop.",
+    assetPath: tireAssetPath,
+    sourceAssetPath: tireSourceAssetPath,
+    cropEvidencePath: tireCropEvidencePath,
+    dimensions,
+    sourceDimensions,
+    sha256: existsSync(tireAssetPath) ? sha256File(tireAssetPath) : null,
+    sourceSha256: existsSync(tireSourceAssetPath) ? sha256File(tireSourceAssetPath) : null,
+    usefulContentRatios: target
+      ? {
+          before: target.beforeUsefulRatios,
+          after: target.outputUsefulRatios
+        }
+      : null,
+    protectedImagePolicy:
+      "The Spanish headings Fecha de Fabricación and Vida útil de los Neumáticos, tire date callout, tread-life chart, bullet text, Recomendaciones box, and pressure labels remain unchanged inside the protected image. Russian explanation and term translations are selectable DOM text outside the image.",
+    runtimeDisplay: {
+      cardId: "app1-tire-manufacturing-tread-life-source-card",
+      maxDisplayWidthPx: dimensions?.width ?? null,
+      minDisplayWidthPx: dimensions?.width ?? null,
+      noUpscale: true,
+      mobileContainedScroll: true,
+      translationDomSelector: ".manual-source-image-term-translations"
+    },
+    terms: [
+      { termEs: "Fecha de Fabricación", translationRu: "Дата изготовления" },
+      { termEs: "Vida útil de los Neumáticos", translationRu: "Срок службы шин" },
+      { termEs: "Recomendaciones", translationRu: "Рекомендации" },
+      { termEs: "Falta de presión", translationRu: "Недостаточное давление" },
+      { termEs: "Presión excesiva", translationRu: "Избыточное давление" },
+      { termEs: "Presión adecuada", translationRu: "Правильное давление" }
+    ],
+    relatedScopeDisposition:
+      "This record covers the user-reported App I page-108 visual only. App II/App III tire sections are not silently populated with this App I visual."
+  };
+}
+
 const copyAudit = auditVisibleCopy();
 const document = {
   schemaVersion: 1,
@@ -622,7 +686,8 @@ const document = {
     safetyEquipmentRecord(),
     hospitalMapRecord(),
     noAvanzarRecord(),
-    blindSpotRecord()
+    blindSpotRecord(),
+    tireManufacturingTreadLifeRecord()
   ],
   remainingRequiredExamples: userExampleRecords
     .filter((entry) => !String(entry.status).startsWith("implemented") || String(entry.status).endsWith("representative"))

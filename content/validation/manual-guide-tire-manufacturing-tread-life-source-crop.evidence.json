@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "featureId": "034-manual-visual-content-crop",
+  "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+  "sourceBaseScale": 5,
+  "whiteThreshold": 245,
+  "nonWhiteRule": "alpha > 0 and any RGB channel below threshold",
+  "extractionMethod": "Source-faithful crop from the retained official Appendix I page-108 x5 render using sips cropOffset 1635 1115, crop 995x760. The runtime asset is byte-identical to this validation/source crop.",
+  "targets": [
+    {
+      "sectionId": "app1-safety-elements",
+      "cardId": "app1-tire-manufacturing-tread-life-source-card",
+      "sourcePage": 108,
+      "currentAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+      "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+      "outputSourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+      "beforeDimensions": {
+        "width": 2976,
+        "height": 4209
+      },
+      "beforeUsefulBounds": {
+        "x": 1240,
+        "y": 1683,
+        "width": 546,
+        "height": 820
+      },
+      "beforeUsefulRatios": {
+        "widthRatio": 0.18346774193548387,
+        "heightRatio": 0.1948206224756474,
+        "areaRatio": 0.03574329968807241
+      },
+      "sourceRegionAtBaseScale": {
+        "x": 1115,
+        "y": 1635,
+        "width": 760,
+        "height": 995
+      },
+      "outputDimensions": {
+        "width": 760,
+        "height": 995
+      },
+      "outputUsefulBounds": {
+        "x": 124,
+        "y": 48,
+        "width": 548,
+        "height": 820
+      },
+      "outputUsefulRatios": {
+        "widthRatio": 0.7210526315789474,
+        "heightRatio": 0.8241206030150754,
+        "areaRatio": 0.594234329542449
+      },
+      "outputSha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+      "sourceQualityDisposition": "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling",
+      "protectedImagePolicy": "Spanish headings, tire date callout, tread-life chart, bullet text, Recomendaciones box, and pressure labels remain unchanged inside the protected image; Russian explanation and term translations are outside the image.",
+      "relatedScopeDisposition": "This is the user-reported App I canonical page-108 visual. App II/App III tire sections are not silently populated with this App I crop."
+    }
+  ]
+}

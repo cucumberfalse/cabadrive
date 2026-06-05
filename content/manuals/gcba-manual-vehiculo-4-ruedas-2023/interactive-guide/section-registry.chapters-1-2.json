@@ -8257,6 +8257,32 @@
               },
               "sourceQualityDisposition": "source-limited-native-raster-in-official-pdf; committed x5 direct PDF region crop preserves the official blind-spot visual as-is, trims only surrounding page whitespace and the unrelated printed page number, and caps runtime display at the natural 546px width instead of browser-upscaling"
             }
+          },
+          {
+            "sourcePage": 108,
+            "sourceRegion": {
+              "x": 1115,
+              "y": 1635,
+              "width": 760,
+              "height": 995
+            },
+            "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+            "cropDimensions": {
+              "width": 760,
+              "height": 995
+            },
+            "cropSha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Source-faithful crop from the retained official Appendix I page-108 x5 render using sips cropOffset 1635 1115, crop 995x760. The committed crop keeps the tire manufacturing/date callout, tread-life chart, bullet text, Recomendaciones pressure box, and pressure labels as-is; it removes only outer page whitespace and does not translate, relabel, redraw, recolor, clean, retouch, mask, inpaint, or reconstruct protected pixels.",
+              "outputDimensions": {
+                "width": 760,
+                "height": 995
+              },
+              "sha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+              "sourceQualityDisposition": "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
+            }
           }
         ],
         "localAssetMetadata": [
@@ -8519,6 +8545,52 @@
               "ownerDecisionDate": "2026-06-05",
               "scope": "app1-page-108-blind-spot-visual-only"
             }
+          },
+          {
+            "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+            "assetKind": "high-resolution-original-source-diagram-tire-manufacturing-tread-life-page-108",
+            "assetCategory": "source-as-is-diagram",
+            "width": 760,
+            "height": 995,
+            "sha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+            "containsText": true,
+            "visibleSpanish": true,
+            "cleanupScope": "none-source-as-is",
+            "extractionScaleEvidence": {
+              "target": "x5-zoom-source-export",
+              "method": "Runtime tire visual is byte-identical to the feature 034 validation crop from the retained official page-108 x5 render; copied without resizing, cleanup, retouching, relabeling, translation, or redraw.",
+              "outputDimensions": {
+                "width": 760,
+                "height": 995
+              },
+              "sha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9",
+              "sourceQualityDisposition": "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling"
+            },
+            "runtimeDisplaySize": {
+              "maxWidthCssPx": 760,
+              "minWidthCssPx": 760,
+              "noUpscale": true,
+              "mobileContainedScroll": true
+            },
+            "sourceIntegrity": {
+              "sourceAsIs": true,
+              "sourceAssetPath": "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+              "noTranslationOrRelabeling": true,
+              "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+              "russianExplanationOutsideImage": true,
+              "surroundingSpanishBodyTextIncludedBecauseItIsPartOfTheOfficialVisual": true,
+              "unrelatedPageContentExcluded": true,
+              "tightCropRemovesOuterWhitespaceOnly": true
+            },
+            "sourceImageException": {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-108-tire-manufacturing-tread-life-visual-only"
+            }
           }
         ],
         "visibleSpanishStatus": {
@@ -8533,6 +8605,15 @@
               "russianExplanationOutsideImage": true,
               "ownerDecisionDate": "2026-06-05",
               "scope": "app1-page-108-blind-spot-visual-only"
+            },
+            {
+              "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+              "kind": "source-image-original-visible-text",
+              "visibleSpanishScope": "source-image-only",
+              "sourceAsIs": true,
+              "russianExplanationOutsideImage": true,
+              "ownerDecisionDate": "2026-06-05",
+              "scope": "app1-page-108-tire-manufacturing-tread-life-visual-only"
             }
           ]
         },
@@ -8558,7 +8639,8 @@
           "Mirror orientation remains a protected source-as-is crop with Russian explanation outside the image.",
           "Headrest and SRI visuals are transferred from focused x5 source crops; cleanup is limited to detected Spanish glyph and antialias pixels inside label regions while preserving silhouettes, guide lines, pictograms, numerals, and geometry.",
           "No photograph, traffic sign, or road marking is altered.",
-          "Feature 034 blind-spot visual slice adds the official page 108 blind-spot diagram as a tight source-as-is crop; internal Spanish pixels are protected and Russian explanation/term translations are outside the image."
+          "Feature 034 blind-spot visual slice adds the official page 108 blind-spot diagram as a tight source-as-is crop; internal Spanish pixels are protected and Russian explanation/term translations are outside the image.",
+          "App I tire manufacturing/date and tread-life card uses the retained official page-108 x5 crop as source pixels, with Russian explanation and term translations outside the protected image."
         ],
         "checkerResult": "pass"
       },

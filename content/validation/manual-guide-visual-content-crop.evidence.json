@@ -1097,6 +1097,77 @@
       {
         "sectionId": "app1-safety-elements",
         "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
+        "blockId": "tire-manufacturing-tread-life-source-visual",
+        "cardId": "app1-tire-manufacturing-tread-life-source-card",
+        "displayMode": "full-width",
+        "maxDisplayWidthPx": 760,
+        "minDisplayWidthPx": 760,
+        "sourcePage": 108,
+        "sourceRegion": {
+          "x": 1115,
+          "y": 1635,
+          "width": 760,
+          "height": 995
+        },
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+        "dimensions": {
+          "width": 760,
+          "height": 995
+        },
+        "protectedStatus": "source-image-source-as-is",
+        "hasRussianOverlayLabels": false,
+        "disposition": "implemented-tire-manufacturing-tread-life-source-crop",
+        "reason": "User-reported App I page-108 tire manufacturing/date and tread-life visual was restored as a tight source-as-is x5 crop. The card preserves internal Spanish pixels, caps display at the natural crop width, and renders Russian explanation/term translations outside the image.",
+        "afterUsefulRatios": {
+          "widthRatio": 0.7210526315789474,
+          "heightRatio": 0.8241206030150754,
+          "areaRatio": 0.594234329542449
+        },
+        "sourceQualityDisposition": "retained-official-x5-render-crop; display capped at natural 760px width with no browser upscaling",
+        "textReadability": {
+          "relevance": "required",
+          "disposition": "implemented-tire-manufacturing-tread-life-source-crop",
+          "intendedReadableText": "Official Spanish headings, tire date callout, tread-life chart labels, bullet text, Recomendaciones heading, and pressure labels remain protected source pixels; Russian explanation and term translations are rendered separately.",
+          "inspectedSample": "App1 printed page 108 tire manufacturing/date and tread-life crop from the retained x5 render.",
+          "renderedImageWidthPx": 760,
+          "estimatedSmallestTextHeightPx": 10,
+          "bodyTextBaselinePx": 16,
+          "comparisonToBodyText": "Embedded source labels remain smaller than body text, but the full official visual is now tight, natural-width, and paired with selectable Russian DOM explanation for learning-critical terms.",
+          "viewportComparisons": [
+            {
+              "viewport": "desktop-natural-width",
+              "renderedImageSizePx": {
+                "width": 760,
+                "height": 995
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-tire-manufacturing-tread-life-source-crop",
+              "evidencePath": "focused Playwright desktop screenshot for the same source-image-card scenario"
+            },
+            {
+              "viewport": "mobile-contained-scroll-natural-width",
+              "renderedImageSizePx": {
+                "width": 760,
+                "height": 995
+              },
+              "estimatedSmallestTextHeightPx": 10,
+              "bodyTextBaselinePx": 16,
+              "passesBodyTextSizeTarget": false,
+              "disposition": "implemented-tire-manufacturing-tread-life-source-crop",
+              "evidencePath": "focused Playwright mobile screenshot plus minDisplayWidthPx/no-upscale assertions"
+            }
+          ],
+          "strategyApplied": "Use the retained official page-108 x5 crop at its natural 760px width with minDisplayWidthPx matching maxDisplayWidthPx, so desktop avoids upscaling and mobile uses contained figure scrolling instead of shrinking the official text further.",
+          "evidencePath": "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json",
+          "sourceLimitation": "The committed crop uses the best retained official x5 page render and is not browser-upscaled; Russian term translations outside the image carry the learner-facing wording.",
+          "requiresOwnerDisposition": false
+        }
+      },
+      {
+        "sectionId": "app1-safety-elements",
+        "sectionFile": "src/data/manual-sections/app1-safety-elements.ts",
         "blockId": "blind-spot-source-visual",
         "cardId": "app1-blind-spot-source-card",
         "displayMode": "full-width",
@@ -3856,6 +3927,15 @@
         "disposition": "referenced-current-manual-visual"
       },
       {
+        "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+        "referencedByManualData": true,
+        "dimensions": {
+          "width": 760,
+          "height": 995
+        },
+        "disposition": "referenced-current-manual-visual"
+      },
+      {
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "referencedByManualData": true,
         "dimensions": {
@@ -5052,11 +5132,12 @@
       },
       "sourceImageCardRelevanceCounts": {
         "none": 12,
-        "required": 19,
+        "required": 20,
         "supporting": 10
       },
       "sourceImageCardDispositionCounts": {
         "not-intended-readable": 12,
+        "implemented-tire-manufacturing-tread-life-source-crop": 1,
         "implemented-source-limited-blind-spot-crop": 1,
         "readable-via-selectable-dom-overlay": 5,
         "implemented-best-official-map-only-crop-with-source-limited-label-detail": 1,
@@ -5065,9 +5146,10 @@
         "implemented-representative-focused-official-sign-crop": 1,
         "implementation-feedback-needs-source-region-verification": 1
       },
-      "sourceImageCardDispositionTotal": 41,
+      "sourceImageCardDispositionTotal": 42,
       "requiredCardIds": [
         "app1-blind-spot-source-card",
+        "app1-tire-manufacturing-tread-life-source-card",
         "app2-hospital-map-source-card",
         "app4-horizontal-page-195-source-card",
         "app4-horizontal-page-196-source-card",
@@ -5140,6 +5222,7 @@
       ],
       "naturalWidthMinDisplayCardIds": [
         "app1-blind-spot-source-card",
+        "app1-tire-manufacturing-tread-life-source-card",
         "app2-hospital-map-source-card",
         "app2-mirror-orientation-source-card",
         "app4-horizontal-page-195-source-card",
@@ -5226,9 +5309,9 @@
       }
     },
     "summary": {
-      "sourceImageCardCount": 41,
+      "sourceImageCardCount": 42,
       "sourceArtworkCount": 2,
-      "sectionAssetFileCount": 137,
+      "sectionAssetFileCount": 138,
       "correctedAppendixIvCount": 16,
       "appendixIvPagesCovered": [
         185,
