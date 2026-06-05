@@ -89,24 +89,20 @@
 
 ### Known Issues
 
-- PR `#198` remains dependent on this fix landing on default before its AI Review check can be rerun or observed successfully with current default-branch gate logic.
-  - Architect disposition: accepted; this is an Orchestrator post-merge handoff requirement after PR `#199` lands on default, not a human-blocking known issue or merge blocker for this feature.
-- If PR `#198` receives a new behaviorally meaningful commit, its existing Codex review evidence for `9df31d213419b107ca49797c0357ce8151c8effe` must remain stale and a fresh current-head review is required.
-  - Architect disposition: accepted; this is the intended stale-review guard for PR `#198` and requires no code or process-memory action in PR `#199`.
+- PR `#198` AI Review recovery handoff is assigned to Orchestrator after PR `#199` lands on default.
+  - Architect disposition: resolved; this is an Orchestrator handoff for the PR `#198` cycle, not a human decision, feature `033` defect, or PR `#199` merge gate.
+- PR `#198` review-evidence freshness policy is recorded for the follow-on PR `#198` cycle.
+  - Architect disposition: resolved; later behavior-content commits on PR `#198` are outside feature `033` and belong to the PR `#198` cycle.
 - During implementation, local `origin/main` advanced from the assigned verified base `51e42f657d867fb802bbe3a68591b6008b45a60f` to `bcee0fbffc8878bfbaf0876352b32636b8a40790` (`Add structured manual glossary translations (#197)`). Read-only diff inspection showed no overlap with `scripts/ai-review-helpers.mjs`, `tests/ai-review-helpers.test.mjs`, or `specs/033-ai-review-login-gate/`. No merge or rebase was performed by Implementation Agent.
-  - Architect disposition: resolved; no overlap was found and no merge, rebase, or follow-up action is needed for this feature.
-- Review Agent found a stale-summary gap at PR `#199` head `4a6a0c09a6a9eebc7ca3ce40340253e78591dc88`: an explicit old SHA in a trusted Codex summary can still pass by timestamp freshness when `headCommittedAt` is supplied. This is accepted same-cycle work and blocks final validation until fixed and verified.
-  - Architect disposition: addressed; same-cycle follow-up fixed stale SHA marker rejection before timestamp fallback and verification evidence is recorded below.
-- Implementation Agent follow-up fixed Review Agent P2 `discussion_r3360346983` by rejecting mismatched 7-40 hex SHA-like summary markers before timestamp fallback while preserving no-SHA timestamp fallback for trusted Codex summaries.
-  - Architect disposition: resolved; the stale-summary review finding was fixed, verified, reviewed, and no longer blocks final validation.
-- Review Agent found a current-prefix abbreviation gap at PR `#199` head `4eb596bfc9115e6a8f80b42c47ea2eb02c995857`: trusted Codex summaries with current-head 7-character and 9-character SHA markers are rejected before timestamp fallback, while full SHA and 10-character prefix are accepted. This is accepted same-cycle work and blocks final validation until fixed and verified.
-  - Architect disposition: addressed; same-cycle follow-up fixed 7-40 character current-head prefix acceptance and verification evidence is recorded below.
-- Implementation Agent follow-up fixed Review Agent P2 `discussion_r3360400825` by accepting any 7-40 hex current-head prefix marker and continuing to reject any non-current 7-40 hex marker before timestamp fallback.
-  - Architect disposition: resolved; the current-prefix review finding was fixed, verified, reviewed, and no longer blocks final validation.
-- Review Agent found durable documentation drift at PR `#199` head `5515f50a1ff092ff8c2fb234bc6df6a66ed939e8`: `docs_project/project/devops/review-contract.md` still describes the older Codex trusted-login and current-SHA/timestamp evidence contract even though the helper now trusts botless `chatgpt-codex-connector` and accepts 7-40 character current-head summary prefixes while rejecting non-current markers before timestamp fallback. This is accepted same-cycle work and blocks final validation until fixed, verified, and reviewed.
-  - Architect disposition: accepted; Implementation Agent must update durable review-contract docs plus process memory, with no helper code/test changes expected unless implementation finds a narrower documented inconsistency that requires Architect disposition.
-- Implementation Agent documentation follow-up updated `docs_project/project/devops/review-contract.md` for Review Agent P2 `PRRT_kwDOSX65IM6HRSFw` / `discussion_r3360568886`. The change is docs/process-memory only and does not touch helper code, tests, runtime files, `.unicorn-hub/config.json`, workflow files, or unrelated docs.
-  - Architect disposition needed: Review Agent must confirm the documentation-drift finding is resolved or non-blocking, then Orchestrator must rerun final Architect validation and final Analyst validation; prior final-validation evidence remains stale until then.
+  - Architect disposition: resolved; no overlap was found and the assigned branch scope stayed isolated.
+- Review Agent P2 `discussion_r3360346983` stale-summary evidence finding was fixed by same-cycle helper and test updates.
+  - Architect disposition: resolved; mismatched 7-40 hex SHA-like summary markers are rejected before timestamp fallback, trusted no-SHA Codex summaries keep timestamp fallback, and verification evidence is recorded below.
+- Review Agent P2 `discussion_r3360400825` current-prefix abbreviation finding was fixed by same-cycle helper and test updates.
+  - Architect disposition: resolved; 7-40 character current-head prefix markers are accepted, non-current 7-40 hex markers are rejected before timestamp fallback, and verification evidence is recorded below.
+- Review Agent P2 `PRRT_kwDOSX65IM6HRSFw` / `discussion_r3360568886` documentation-drift finding was fixed by same-cycle durable documentation and process-memory updates.
+  - Architect disposition: resolved; Review Agent/Codex finding `PRRT_kwDOSX65IM6HRSFw` was fixed in `d4cf087f25db6731cd58b37d4406f9a9a1378b89`; Orchestrator replied to the review thread and resolved it; all review threads were resolved; required checks on `d4cf087f25db6731cd58b37d4406f9a9a1378b89` were green; final validation reran and evidence was committed in `537ca9168b4bfd6b367550c8e0fd161d9d0e4772`.
+- Process-memory parser cleanup for this section rewrote earlier mixed-state language into disposed historical notes.
+  - Architect disposition: resolved; the cleanup is Architect-owned process memory only and records no human decision for feature `033`.
 
 ### Verification Evidence
 
