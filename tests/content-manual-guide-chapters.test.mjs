@@ -347,6 +347,7 @@ function sourceImageCardInventory() {
           cardId: moduleStringField(cardSource, "id"),
           displayMode: moduleStringField(cardSource, "displayMode"),
           maxDisplayWidthPx: moduleNumberField(cardSource, "maxDisplayWidthPx"),
+          minDisplayWidthPx: moduleNumberField(cardSource, "minDisplayWidthPx"),
           sourcePage: moduleNumberField(cardSource, "sourcePage"),
           sourceRegion: moduleSourceRegion(cardSource),
           assetPath: moduleAssetPath(cardSource, assetRoot),
@@ -2108,7 +2109,12 @@ test("Appendix II safety visuals render as preserved source images with provenan
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /source-as-is изображ|runtime-crop/u);
-  assert.match(app2SafetyElementsModuleSource, /app2-mirror-orientation-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*1260/u);
+  assert.match(
+    app2SafetyElementsModuleSource,
+    /app2-mirror-orientation-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*1260[\s\S]*minDisplayWidthPx:\s*760/u
+  );
+  assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
+  assert.match(stylesSource, /--manual-source-image-min-width/u);
   assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
   assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id="app2-mirror-orientation-source-card"\]/u);
 
@@ -2626,6 +2632,7 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "beginner-sign-source-card",
     "rva-source-card"
   ]);
+  const expectedPanoramicMinWidthByCardId = new Map([["app2-mirror-orientation-source-card", 760]]);
 
   assert.equal(cards.length, 38);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
@@ -2647,6 +2654,11 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.equal(asset.runtimeDisplaySize.noUpscale, true, `${cardId} keeps no-upscale evidence`);
     assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, card.maxDisplayWidthPx, `${cardId} evidence matches display metadata`);
     assert.ok(asset.width >= card.maxDisplayWidthPx, `${cardId} max display width does not exceed natural/source asset width`);
+    if (card.minDisplayWidthPx !== undefined) {
+      assert.equal(card.minDisplayWidthPx, expectedPanoramicMinWidthByCardId.get(cardId), `${cardId} records the expected panoramic min width`);
+      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} panoramic min width respects max display width`);
+      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} panoramic min width does not exceed natural/source asset width`);
+    }
   }
 
   for (const cardId of expectedCompactCardIds) {
@@ -2654,7 +2666,14 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.ok(card, `${cardId} exists`);
     assert.equal(card.displayMode, "compact", `${cardId} remains compact`);
     assert.equal(card.maxDisplayWidthPx, undefined, `${cardId} does not opt into full-width no-upscale sizing`);
+    assert.equal(card.minDisplayWidthPx, undefined, `${cardId} does not opt into panoramic minimum sizing`);
   }
+
+  assert.deepEqual(
+    cards.filter((card) => card.minDisplayWidthPx !== undefined).map((card) => [card.cardId, card.minDisplayWidthPx]),
+    [...expectedPanoramicMinWidthByCardId],
+    "only explicit ultra-wide/panoramic source cards opt into visual-only scroll minimums"
+  );
 
   const appendixCards = cards
     .filter((card) => card.cardId.startsWith("app4-"))
@@ -2668,12 +2687,21 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
   assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 2976);
   assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 2976);
+  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app2-mirror-orientation-source-card").minDisplayWidthPx, 760);
 
   assert.match(appSource, /data-display-mode=\{card\.displayMode\}/u);
   assert.match(appSource, /data-max-display-width-px=\{card\.maxDisplayWidthPx\}/u);
+  assert.match(appSource, /data-min-display-width-px=\{card\.minDisplayWidthPx\}/u);
   assert.match(appSource, /--manual-source-image-max-width/u);
+  assert.match(appSource, /--manual-source-image-min-width/u);
   assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\][\s\S]*grid-column:\s*1 \/ -1/u);
   assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] figure[\s\S]*--manual-source-image-max-width/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] figure[\s\S]*overflow-x:\s*auto/u);
+  assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\]\[data-min-display-width-px\] img[\s\S]*--manual-source-image-min-width/u);
   assert.match(stylesSource, /\.manual-source-image-card\[data-display-mode="full-width"\] img[\s\S]*max-width:\s*none/u);
   assert.doesNotMatch(stylesSource, /\.manual-source-image-card\[data-card-id=/u);
 });

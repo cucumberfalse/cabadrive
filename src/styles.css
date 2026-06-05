@@ -2768,6 +2768,14 @@ small,
   overflow-x: hidden;
 }
 
+.manual-source-image-card[data-display-mode="full-width"][data-min-display-width-px] figure {
+  max-width: 100%;
+  justify-items: start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+}
+
 .manual-source-image-card img {
   display: block;
   width: 100%;
@@ -2777,6 +2785,16 @@ small,
 
 .manual-source-image-card[data-display-mode="full-width"] img {
   max-width: none;
+}
+
+.manual-source-image-card[data-display-mode="full-width"][data-min-display-width-px] img {
+  width: max(
+    100%,
+    min(
+      var(--manual-source-image-min-width, 100%),
+      var(--manual-source-image-max-width, var(--manual-source-image-min-width, 100%))
+    )
+  );
 }
 
 .manual-source-image-overlay {

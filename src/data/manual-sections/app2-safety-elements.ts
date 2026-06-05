@@ -157,6 +157,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
           titleRu: "Исходные фото зеркал",
           displayMode: "full-width",
           maxDisplayWidthPx: 1260,
+          minDisplayWidthPx: 760,
           sourcePage: 130,
           sourceRegion: { x: 930, y: 1960, width: 1260, height: 125 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.png`,

@@ -82,7 +82,11 @@ second guide destination.
   source role is compact. Full-width cards must render image and explanation in
   vertical flow, span the manual content column, preserve aspect ratio, and cap
   display width at the source/natural asset width so the browser does not
-  upscale low-resolution crops.
+  upscale low-resolution crops. Ultra-wide or panoramic full-width source cards
+  may additionally declare a reusable minimum readable display width; on narrow
+  viewports, keep that overflow contained inside the figure/image visual only
+  with horizontal scrolling. Do not create document-level horizontal overflow,
+  and do not add card-id-specific CSS for this behavior.
 - Infographics must be transferred as high-quality source images, not redrawn
   or reconstructed from approximate CSS/SVG/icon components. If Spanish text is
   removed from an infographic, cleanup is glyph/letter-level only: restore each

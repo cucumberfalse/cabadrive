@@ -2497,9 +2497,10 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
           const sourceImageException = card.sourceImageException;
           const visibleSpanishScope = officialSignException?.visibleSpanishScope ?? sourceImageException?.visibleSpanishScope;
           const sourceAsIs = officialSignException?.sourceAsIs ?? sourceImageException?.sourceAsIs;
-          const cardStyle = card.maxDisplayWidthPx
+          const cardStyle = card.maxDisplayWidthPx || card.minDisplayWidthPx
             ? ({
-                "--manual-source-image-max-width": `${card.maxDisplayWidthPx}px`
+                ...(card.maxDisplayWidthPx ? { "--manual-source-image-max-width": `${card.maxDisplayWidthPx}px` } : {}),
+                ...(card.minDisplayWidthPx ? { "--manual-source-image-min-width": `${card.minDisplayWidthPx}px` } : {})
               } as CSSProperties)
             : undefined;
 
@@ -2510,6 +2511,7 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
               data-card-id={card.id}
               data-display-mode={card.displayMode}
               data-max-display-width-px={card.maxDisplayWidthPx}
+              data-min-display-width-px={card.minDisplayWidthPx}
               data-has-russian-overlay={card.russianOverlayLabels ? true : undefined}
               data-source-page={card.sourcePage}
               data-source-region={`${card.sourceRegion.x},${card.sourceRegion.y},${card.sourceRegion.width},${card.sourceRegion.height}`}

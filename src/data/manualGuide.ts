@@ -667,6 +667,7 @@ export type ManualGuideContentBlock =
         titleRu: string;
         displayMode: ManualSourceImageCardDisplayMode;
         maxDisplayWidthPx?: number;
+        minDisplayWidthPx?: number;
         sourcePage: number;
         sourceRegion: {
           x: number;
