@@ -869,14 +869,16 @@ test("Front matter, Chapter 1, 2, 3, 4, 5, Appendix I, Appendix II, Appendix III
   }
 
   const topicSourceTitles = new Map(registry.sections.map((section) => [section.id, section.sourceTitleEs]));
-  assert.equal(topicSourceTitles.get("front-presentation"), "Presentacion");
-  assert.equal(topicSourceTitles.get("front-categories"), "Material por categorias");
+  assert.equal(topicSourceTitles.get("front-presentation"), "Presentación");
+  assert.equal(topicSourceTitles.get("front-categories"), "Material por categorías");
   assert.equal(topicSourceTitles.get("front-glossary"), "Glosario");
   const inPageLegalHeading = ["Responsabilidad", "jurídica"].join(" ");
   assert.equal(topicSourceTitles.get("ch2-legal-responsibility"), "Responsabilidades legales");
   assert.equal(topicSourceTitles.get("app1-recommended-safety-elements"), "Elementos de seguridad recomendables");
   assert.equal(topicSourceTitles.get("app2-driving-factors"), "Factores que intervienen en la conduccion");
   assert.equal(topicSourceTitles.get("app2-safe-driving"), "Conduccion segura");
+  assert.equal([...topicSourceTitles.values()].includes("Presentacion"), false);
+  assert.equal([...topicSourceTitles.values()].includes("Material por categorias"), false);
   assert.equal([...topicSourceTitles.values()].includes("Elementos de seguridad recomendados"), false);
   assert.equal([...topicSourceTitles.values()].includes(inPageLegalHeading), false);
 

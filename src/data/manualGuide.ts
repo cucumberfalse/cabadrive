@@ -941,6 +941,14 @@ const chapter12NavigationEntries: ManualGuideNavigationEntry[] = chapter12Regist
   };
 });
 
+const frontMatterNavigationEntry = chapter12NavigationEntries.find((entry) => entry.id === "front-matter");
+
+if (!frontMatterNavigationEntry) {
+  throw new Error("Missing front-matter manual guide navigation entry");
+}
+
+const postFrontMatterNavigationEntries = chapter12NavigationEntries.filter((entry) => entry.id !== "front-matter");
+
 function sourcePageRangeDescription(section: ManualGuideSectionEntry) {
   return `source pages ${sourcePageLabel(section)}`;
 }
@@ -958,6 +966,7 @@ export const manualGuideChapter12SectionSummary = {
 } as const;
 
 export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
+  frontMatterNavigationEntry,
   {
     id: "introduction",
     kind: "group",
@@ -977,5 +986,5 @@ export const manualGuideNavigation: ManualGuideNavigationEntry[] = [
       introductionRouteId: entry.id
     }))
   },
-  ...chapter12NavigationEntries
+  ...postFrontMatterNavigationEntries
 ];

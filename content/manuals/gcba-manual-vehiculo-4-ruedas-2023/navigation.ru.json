@@ -21,7 +21,7 @@
     {
       "id": "front-matter",
       "titleRu": "Начало и справочные страницы",
-      "titleEs": "Presentacion, glosario e indice",
+      "titleEs": "Presentación, glosario e índice",
       "level": "frontMatter",
       "startPage": 1,
       "endPage": 13,
@@ -39,7 +39,7 @@
         {
           "id": "front-presentation",
           "titleRu": "Презентация",
-          "titleEs": "Presentacion",
+          "titleEs": "Presentación",
           "startPage": 2,
           "sourceEvidence": "page_heading",
           "level": "topic",
@@ -48,7 +48,7 @@
         {
           "id": "front-categories",
           "titleRu": "Материал по категориям",
-          "titleEs": "Material por categorias",
+          "titleEs": "Material por categorías",
           "startPage": 3,
           "sourceEvidence": "page_heading",
           "level": "topic",
@@ -66,7 +66,7 @@
         {
           "id": "front-index",
           "titleRu": "Индекс",
-          "titleEs": "Indice",
+          "titleEs": "Índice",
           "startPage": 12,
           "sourceEvidence": "index_pages_11_12",
           "level": "topic",

@@ -5,7 +5,7 @@ export const frontCategoriesSection: ManualGuideSectionContent = {
   sectionId: "front-categories",
   titleRu: "Материал по категориям",
   sourcePages: [3, 4],
-  sourceTitleEs: "Material por categorias",
+  sourceTitleEs: "Material por categorías",
   status: "implemented",
   styleTokenFamilies: [
     "manual-prose",

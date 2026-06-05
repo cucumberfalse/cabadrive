@@ -5,7 +5,7 @@ export const frontPresentationSection: ManualGuideSectionContent = {
   sectionId: "front-presentation",
   titleRu: "Презентация",
   sourcePages: [2],
-  sourceTitleEs: "Presentacion",
+  sourceTitleEs: "Presentación",
   status: "implemented",
   styleTokenFamilies: [
     "manual-prose",

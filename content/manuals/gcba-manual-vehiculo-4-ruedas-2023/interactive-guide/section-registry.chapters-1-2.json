@@ -561,7 +561,7 @@
     {
       "id": "front-matter",
       "labelRu": "Предисловие",
-      "sourceTitleEs": "Presentacion, material por categorias y glosario",
+      "sourceTitleEs": "Presentación, material por categorías y glosario",
       "sourcePageRange": {
         "start": 1,
         "end": 13
@@ -743,7 +743,7 @@
     {
       "id": "front-presentation",
       "labelRu": "Презентация",
-      "sourceTitleEs": "Presentacion",
+      "sourceTitleEs": "Presentación",
       "routeHash": "#manual-section-front-presentation",
       "sourcePageRange": {
         "start": 2,
@@ -833,7 +833,7 @@
     {
       "id": "front-categories",
       "labelRu": "Материал по категориям",
-      "sourceTitleEs": "Material por categorias",
+      "sourceTitleEs": "Material por categorías",
       "routeHash": "#manual-section-front-categories",
       "sourcePageRange": {
         "start": 3,

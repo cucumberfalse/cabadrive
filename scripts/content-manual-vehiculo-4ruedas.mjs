@@ -62,17 +62,17 @@ const MANUAL_TOP_LEVEL_NAVIGATION = [
   {
     id: "front-matter",
     titleRu: "Начало и справочные страницы",
-    titleEs: "Presentacion, glosario e indice",
+    titleEs: "Presentación, glosario e índice",
     level: "frontMatter",
     startPage: 1,
     endPage: 13,
     sourceEvidence: "curated_manual_review",
     children: [
       { id: "front-title", titleRu: "Титульная страница", titleEs: "Portada", startPage: 1, sourceEvidence: "page_heading" },
-      { id: "front-presentation", titleRu: "Презентация", titleEs: "Presentacion", startPage: 2, sourceEvidence: "page_heading" },
-      { id: "front-categories", titleRu: "Материал по категориям", titleEs: "Material por categorias", startPage: 3, sourceEvidence: "page_heading" },
+      { id: "front-presentation", titleRu: "Презентация", titleEs: "Presentación", startPage: 2, sourceEvidence: "page_heading" },
+      { id: "front-categories", titleRu: "Материал по категориям", titleEs: "Material por categorías", startPage: 3, sourceEvidence: "page_heading" },
       { id: "front-glossary", titleRu: "Глоссарий", titleEs: "Glosario", startPage: 4, sourceEvidence: "page_heading" },
-      { id: "front-index", titleRu: "Индекс", titleEs: "Indice", startPage: 12, sourceEvidence: "index_pages_11_12" }
+      { id: "front-index", titleRu: "Индекс", titleEs: "Índice", startPage: 12, sourceEvidence: "index_pages_11_12" }
     ]
   },
   {
