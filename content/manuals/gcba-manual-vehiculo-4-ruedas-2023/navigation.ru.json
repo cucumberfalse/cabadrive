@@ -52,13 +52,13 @@
           "startPage": 3,
           "sourceEvidence": "page_heading",
           "level": "topic",
-          "endPage": 3
+          "endPage": 4
         },
         {
           "id": "front-glossary",
           "titleRu": "Глоссарий",
           "titleEs": "Glosario",
-          "startPage": 4,
+          "startPage": 5,
           "sourceEvidence": "page_heading",
           "level": "topic",
           "endPage": 11
