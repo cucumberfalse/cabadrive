@@ -111,3 +111,12 @@ Append-only Analyst-owned section used only when Orchestrator invokes final Anal
 - Architect disposition routing: No Analyst feedback or gaps require Architect disposition.
 - Analyst limit escalation: Not applicable; return count remains 0.
 - Analyst boundary reminder: Do not edit Architect artifacts, code, reviews, commits, pushes, PRs, merge state, or files outside Analyst-owned intake/final-validation notes except the new feature request required by limit-exceeded escalation.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-05T01:02:10-03:00
+- Analyst validated effective content head: 497e687f4bb05ddd4c7ab0abb047db730319a0ed
+- Analyst return count for this work cycle: 0
+- Customer intent check: passed. The final result at `497e687f4bb05ddd4c7ab0abb047db730319a0ed` still satisfies the original request in spirit and letter: visible and accessibility-exposed `готово` labels are removed from available `Руководство` manual section rows, including the Appendix III cargo rows from the screenshot, while guide navigation, active state, route/deep-link behavior, pending `ожидает PR`, diagnostic data attributes, and unrelated status/source labels remain preserved.
+- Analyst validation evidence: Analyst reviewed this intake, the final Architect validation rerun markers in `tasks.md` for `497e687f4bb05ddd4c7ab0abb047db730319a0ed`, current local HEAD `497e687f4bb05ddd4c7ab0abb047db730319a0ed`, the recorded tests/preflight/review evidence, and the `b671cae9699c0bacfd2cd0961e630e663de20252..497e687f4bb05ddd4c7ab0abb047db730319a0ed` delta showing process-memory changes only in `feature-request.md` and `tasks.md`. Product implementation evidence remains the same scoped `src/App.tsx` behavior plus static/e2e coverage for no visible/accessibility `готово`, Appendix III rows, active state, metadata attributes, and deep links.
+- Gaps, if any: none.
+- Architect disposition routing: No Analyst feedback or gaps require Architect disposition.
+- Analyst limit escalation: Not applicable; return count remains 0.

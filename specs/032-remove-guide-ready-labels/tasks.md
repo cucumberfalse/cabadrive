@@ -175,6 +175,13 @@
 - Final Architect validation command evidence: Architect read-only `node scripts/check-feature-memory.mjs --worktree` passed before this final-validation evidence update, and `git diff --check 51e42f657d867fb802bbe3a68591b6008b45a60f..b671cae9699c0bacfd2cd0961e630e663de20252` passed with no output.
 - Role-boundary evidence: Analyst intake, Architect planning, Implementation Agent product/test changes, Review Agent no-finding review, and Orchestrator assignment were all present. The earlier Architect accidental wrong-worktree artifacts were explicitly recovered under Orchestrator authorization by copying only the three Architect-owned files into the assigned worktree and removing only those accidental wrong-location files plus the empty accidental directory.
 - Sibling preservation evidence: no sibling worktree, branch, dirty diff, PR, or process memory was edited by Architect final validation; `/Users/chap/devel/cabadrive/specs/032-manual-figures-full-width/` was not touched.
+- Effective content head: 497e687f4bb05ddd4c7ab0abb047db730319a0ed
+- Architect return count: 0
+- Analyst return count: 0
+- Limit escalation: none.
+- Analyst feedback Architect disposition: none.
+- Current-PR-head read-only guard: effective content head 497e687f4bb05ddd4c7ab0abb047db730319a0ed validated by this Architect pass; Orchestrator must recheck live PR head before finalization.
+- Final-validation evidence-only commit: Architect validation evidence after effective content head 497e687f4bb05ddd4c7ab0abb047db730319a0ed is append-only process memory in `tasks.md`; no product code, tests, content, runtime, source archive, validator, backend, PDF, service-worker, or durable project-doc changes are included.
 
 ## Final Architect Validation Notes
 
@@ -187,6 +194,15 @@
 - Architect validation basis: single cycle PR #196 at prior head `b671cae9699c0bacfd2cd0961e630e663de20252`; complete feature memory; implementation diff; recorded verification evidence; Review Agent no-blocking review; read-only PR/check inspection; and current local clean status before final-validation evidence editing.
 - Architect customer-intent conclusion: passed. The implementation removes the visible and accessibility-exposed `готово` labels from the `Руководство` navigation, including the Appendix III cargo rows shown in the screenshot, while preserving navigation, active state, route/deep-link behavior, pending affordance, diagnostic status data, and unrelated source/status labels.
 - Architect task/disposition conclusion: all Architect-assigned implementation, verification, documentation, review, acceptance, and process-memory tasks are complete; Implementation Agent feedback is none, known issues are none, and no Architect disposition remains open.
+- Architect gaps: none.
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-05T00:59:53-03:00
+- Architect validated effective content head: 497e687f4bb05ddd4c7ab0abb047db730319a0ed
+- Architect return count: 0
+- Architect validation evidence: PR #196 current effective content head 497e687f4bb05ddd4c7ab0abb047db730319a0ed includes the scoped ready-label product content from b671cae9699c0bacfd2cd0961e630e663de20252 and the parser-safe process-memory correction; customer intent remains satisfied.
+- Architect validation evidence: the follow-up process-memory correction made known issues parser-safe, marked historical current-head evidence as superseded and non-live, preserved implementation and verification evidence, and requires Orchestrator to run live current-head and check guards before finalization.
+- Architect validation evidence: required checks are not claimed by Architect for this appended evidence commit; Orchestrator-owned merge readiness must recheck check state on the live PR head.
+- Architect disposition: Implementation Agent feedback remains none, Analyst feedback requiring Architect disposition is none, and no Architect follow-up task remains.
 - Architect gaps: none.
 
 ## Process-Memory Correction Before Final Validation Rerun
