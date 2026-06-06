@@ -234,12 +234,12 @@
 
 - [x] T088 Implementation Agent stages, commits, pushes, and opens or updates
   one ready PR only if assigned by Orchestrator.
-- [ ] T089 Review Agent checks whole-guide coverage, validator strength,
+- [x] T089 Review Agent checks whole-guide coverage, validator strength,
   protected-image preservation, readability evidence, Russian DOM translation
   completeness, UI responsiveness, tests, and process-memory compliance.
 - [x] T090 Implementation Agent records and resolves review findings only
   through Orchestrator assignment.
-- [ ] T091 Orchestrator routes any Implementation Agent feedback to Architect
+- [x] T091 Orchestrator routes any Implementation Agent feedback to Architect
   for task/ticket/not-needed disposition before final validation.
 - [ ] T092 Orchestrator invokes final Architect validation before final Analyst
   validation after implementation, checks, review, and feedback disposition are
@@ -249,6 +249,81 @@
 - [ ] T094 Orchestrator verifies required checks, current PR head, conflicts,
   review conversations, acceptance evidence, process memory, and final guards
   before completion/finalization/merge.
+
+## Decisions
+
+- Reused the existing `termTranslations`/`.manual-source-image-term-translations`
+  pattern as the default Russian DOM support for embedded Spanish image text,
+  extending compatible non-`source-image-cards` block shapes instead of adding
+  an unrelated display pattern.
+- Kept protected official image pixels unchanged. The implementation added DOM
+  translations/captions/glossaries and validation evidence; it did not add new
+  raster assets or translate/retouch/mask official pixels.
+- Accepted dense App IV sheet readability as source-limited only with
+  structured DOM glossaries, no-upscale display, and concrete official-source
+  alternative review recorded in evidence.
+- Resolved review feedback in scope: source-limited App IV evidence, non-empty
+  Spanish source terms, non-empty Russian translations, and source-faithful
+  horizontal marking wording are all guarded by audit tests/evidence.
+
+## Dead Ends
+
+- First focused Playwright run failed before browser startup because `dist`
+  did not exist for `vite preview`; after `pnpm run build`, the focused
+  Playwright check passed.
+- A review-fix `pnpm run validate:manual-guide` run failed on stale legacy
+  source-fidelity fingerprints after intentional section data changes; stable
+  checker fingerprints were refreshed without changing protected image bytes.
+- A preflight run failed because an older Spanish-residue assertion rejected
+  `Prioridad peatonal` inside the new structured translation DOM. The test was
+  updated to allow the translation block and still reject stray Spanish outside
+  translation support.
+
+## Known Issues
+
+- No known issues.
+
+## Verification Evidence
+
+- Evidence file passed: `content/validation/manual-guide-image-readability-translations.evidence.json`
+  records `50` implemented sections, `84` image references, `54`
+  visible-Spanish images, `54` with structured Russian support, `16` accepted
+  App IV source-limited readability exceptions, and `0` validation findings.
+- Required user-named groups passed in `requiredExampleCoverage`: App IV
+  warning/informational/temporary/horizontal/traffic-light/regulatory,
+  `app3-body-posture`, safety elements, hospital map, required documents,
+  bicycle visuals, distractions quote/photo, and anticipatory-efficient-driving
+  quote/photo.
+- Validation commands passed during implementation and review fixes:
+  `pnpm run validate:manual-guide`, `pnpm run validate:content`,
+  `pnpm exec tsc --noEmit`, `pnpm run test`, `pnpm run build`,
+  focused Playwright, `pnpm run test:e2e`, `git diff --check`, and
+  `pnpm run preflight`.
+- Review-fix tests passed: focused audit tests reject missing source-limited
+  proof, missing Spanish `termEs`, empty Russian `translationRu`,
+  min-display-width-only readability, and source-card `bodyRu`-only coverage.
+- Current process-memory prep verification passed locally:
+  `node scripts/check-feature-memory.mjs --worktree` passed and
+  `git diff --check` passed.
+
+## Cycle PR Set
+
+- PR #201, branch `codex/035-manual-image-readability-translations`, current
+  reviewed content head `260d6a255670fc6409b60fe9714fa18b00d2bf65`; status:
+  open and clean for the validated cycle, included in final validation as the
+  single implementation PR slice for feature `035`. Later final-validation
+  evidence-only commits will be guarded by Orchestrator before completion.
+
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+
+## Final Validation Evidence
+
+- Architect return count: 0
+- Analyst return count: 0
+- Limit escalation: none.
+- Analyst feedback Architect disposition: none before final validation rerun.
 
 ## Implementation Evidence Log
 
@@ -597,13 +672,3 @@ Implementation Agent should append concise evidence here during implementation.
   baseline, `validate:content`, `test` (433 tests, 0 failures), `build`,
   nested `test:e2e`, and full Playwright suite (82 tests, 0 failures). Build
   steps emitted the existing large-chunk warnings only.
-
-## Implementation Feedback For Architect Disposition
-
-Implementation Agent should append feedback items here. Orchestrator must route
-each item to Architect for disposition before final validation.
-
-- None requiring Architect disposition at this time. The ch1-bicycle legacy
-  source-fidelity schema limitation was resolved inside scope by preserving the
-  existing file and validating its already-rendered grouped Russian DOM
-  coverage rather than requesting a new product decision.
