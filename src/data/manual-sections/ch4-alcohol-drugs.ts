@@ -113,6 +113,13 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           altRu: "Изображение устройства проверки на наркотические вещества.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            {
+              termEs: "Instrumento para la medición o detección de estupefacientes",
+              translationRu: "Устройство для измерения или выявления наркотических веществ"
+            },
+            { termEs: "Estupefacientes", translationRu: "Наркотические вещества" }
+          ],
           bodyRu:
             "На изображении показаны устройство и шаг проверки слюны. Русское объяснение процедуры находится рядом обычным русским текстом."
         }

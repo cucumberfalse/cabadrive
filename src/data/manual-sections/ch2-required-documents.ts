@@ -69,6 +69,10 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Пример DNI.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Documento Nacional de Identidad", translationRu: "Национальный документ личности" },
+            { termEs: "DNI", translationRu: "Аргентинский документ личности" }
+          ],
           bodyRu:
             "DNI подтверждает личность гражданина Аргентины или иностранца с местом жительства в стране. Водительское удостоверение не заменяет документ личности; иностранцы должны иметь действующий личный документ."
         },
@@ -82,6 +86,10 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Пример Licencia Nacional de Conducir.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Licencia Nacional de Conducir", translationRu: "Национальное водительское удостоверение" },
+            { termEs: "Licencia de Conducir", translationRu: "Водительское удостоверение" }
+          ],
           bodyRu:
             "Лицензия, выданная компетентным органом, подтверждает право управлять указанным типом транспортного средства после проверки психофизических и теоретико-практических требований."
         }
@@ -124,6 +132,10 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Знак Conductor Principiante.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Conductor Principiante", translationRu: "Начинающий водитель" },
+            { termEs: "Principiante", translationRu: "Начинающий" }
+          ],
           bodyRu:
             "Статус principiante действует для человека, впервые получившего лицензию для мототранспортных средств или автомобилей. Знак нужно возить и показывать по правилам раздела."
         },
@@ -138,6 +150,13 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Примеры зеленой, синей, коричневой и розовой cédula.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Cédula de identificación del vehículo", translationRu: "Свидетельство идентификации транспортного средства" },
+            { termEs: "Cédula verde", translationRu: "Зеленая cédula" },
+            { termEs: "Cédula azul", translationRu: "Синяя cédula" },
+            { termEs: "Cédula marrón", translationRu: "Коричневая cédula" },
+            { termEs: "Cédula rosa", translationRu: "Розовая cédula" }
+          ],
           bodyRu:
             "Cédula, выданная DNRPA, идентифицирует транспортное средство и владельца или уполномоченное лицо. На изображении показаны прежние цветовые варианты; текущая логика раздела объясняется рядом текстом."
         }
@@ -214,6 +233,13 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Схема VTV с возрастом, пробегом и месяцем по последней цифре номера.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Verificación Técnica Vehicular", translationRu: "Техническая проверка транспортного средства" },
+            { termEs: "VTV", translationRu: "Обязательная техническая проверка" },
+            { termEs: "Primera VTV", translationRu: "Первая VTV" },
+            { termEs: "Renovación", translationRu: "Продление / повторная проверка" },
+            { termEs: "Último número de patente", translationRu: "Последняя цифра номерного знака" }
+          ],
           bodyRu:
             "Схема показывает первую VTV, renovación и связь последней цифры номера с месяцем процедуры. Правила рядом изложены русским текстом."
         },
@@ -227,6 +253,10 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           altRu: "Пример RVA Autopartes Grabadas.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "RVA", translationRu: "Registro de Verificación de Autopartes: реестр проверки автозапчастей" },
+            { termEs: "Autopartes Grabadas", translationRu: "Маркированные / выгравированные автозапчасти" }
+          ],
           bodyRu:
             "На изображении показан пример RVA Autopartes Grabadas. Смысл для экзамена: RVA снижает оборот украденных автозапчастей и дает возможность проверить происхождение деталей."
         }

@@ -118,6 +118,19 @@ export const app2HighwaysHospitalsSection: ManualGuideSectionContent = {
             sourceAsIs: true,
             russianExplanationOutsideImage: true
           },
+          termTranslations: [
+            { termEs: "Hospitales Generales de Agudos", translationRu: "Общие больницы острой помощи" },
+            { termEs: "H / H1 / H2", translationRu: "Маркеры больниц на карте; цифра различает точки в плотных районах." },
+            { termEs: "Dr. I. Pirovano", translationRu: "Доктор И. Пировано" },
+            { termEs: "A. Zubizarreta", translationRu: "А. Субисаррета" },
+            { termEs: "D. Vélez Sarsfield", translationRu: "Д. Велес Сарсфилд" },
+            { termEs: "J. M. Penna", translationRu: "Х. М. Пенна" },
+            { termEs: "Dr. C. Argerich", translationRu: "Доктор К. Аргерич" },
+            { termEs: "J. M. Ramos Mejía", translationRu: "Х. М. Рамос Мехия" },
+            { termEs: "Dr. C. Durand", translationRu: "Доктор К. Дуранд" },
+            { termEs: "B. Rivadavia", translationRu: "Б. Ривадавия" },
+            { termEs: "Cecilia Grierson", translationRu: "Сесилия Гриерсон" }
+          ],
           bodyRu:
             "Испанские подписи остаются внутри карты; русская легенда и полный список больниц приведены ниже."
         }

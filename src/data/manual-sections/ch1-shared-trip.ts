@@ -127,6 +127,12 @@ export const ch1SharedTripSection: ManualGuideSectionContent = {
         "Фотография велосипедистки на городской улице с испанской цитатой из manual.",
       visibleSpanish: true,
       sourceImageException,
+      termTranslations: [
+        {
+          termEs: "Priorizar una movilidad sustentable es cuidar de las personas y del medio ambiente.",
+          translationRu: "Отдавать приоритет устойчивой мобильности - значит заботиться о людях и окружающей среде."
+        }
+      ],
       quoteRu:
         "Отдавать приоритет устойчивой мобильности - значит заботиться о людях и окружающей среде.",
       captionRu:

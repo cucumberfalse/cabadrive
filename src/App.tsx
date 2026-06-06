@@ -1864,6 +1864,20 @@ function manualSpriteBackground(assetPath: string) {
   return { backgroundImage: `url(${assetUrl(assetPath)})` };
 }
 
+function ManualImageTermTranslations({ terms }: { terms?: { termEs: string; translationRu: string }[] }) {
+  if (!terms || terms.length === 0) return null;
+  return (
+    <dl className="manual-source-image-term-translations" aria-label="Перевод подписей на изображении">
+      {terms.map((term) => (
+        <div className="manual-source-image-term-translation" key={term.termEs}>
+          <dt lang="es">{term.termEs}</dt>
+          <dd>{term.translationRu}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "mobility-context" }> }) {
   const interjurisdictional = splitManualMobilityStat(block.trips.interjurisdictionalRu);
   const internal = splitManualMobilityStat(block.trips.internalRu);
@@ -2102,6 +2116,7 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
                     <strong>{detail.labelRu}:</strong> {detail.textRu}
                   </p>
                 ))}
+                <ManualImageTermTranslations terms={card.termTranslations} />
                 {card.noteRu && <p className="manual-infrastructure-note">{card.noteRu}</p>}
               </div>
             </article>
@@ -2145,6 +2160,7 @@ function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSection
           ))}
         </dl>
       </div>
+      <ManualImageTermTranslations terms={block.termTranslations} />
       <figcaption>{block.captionRu}</figcaption>
     </figure>
   );
@@ -2274,6 +2290,7 @@ function BicycleSignageBlockView({ block }: { block: Extract<ManualGuideSectionC
         />
         <figcaption>Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.</figcaption>
       </figure>
+      <ManualImageTermTranslations terms={block.termTranslations} />
       <ul className="manual-bicycle-sign-notes">
         {block.noticeItemsRu.map((item) => (
           <li key={item}>{item}</li>
@@ -2322,7 +2339,7 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
       <h3>{block.titleRu}</h3>
       <div className="manual-bicycle-distance-grid">
         {block.examples.map((example) => (
-          <article key={example.id} data-distance-status={example.status}>
+          <article key={example.id} data-distance-id={example.id} data-distance-status={example.status}>
             <div className="manual-bicycle-distance-image">
               <img
                 src={assetUrl(example.assetPath)}
@@ -2337,6 +2354,7 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
             </div>
             <h4>{example.titleRu}</h4>
             <p>{example.textRu}</p>
+            <ManualImageTermTranslations terms={example.termTranslations} />
           </article>
         ))}
       </div>
@@ -2428,6 +2446,7 @@ function PublicTransportInfrastructureBlockView({ block }: { block: Extract<Manu
                   <strong>{detail.labelRu}:</strong> {detail.textRu}
                 </p>
               ))}
+              <ManualImageTermTranslations terms={card.termTranslations} />
               {card.noteRu && <p className="manual-public-transport-note">{card.noteRu}</p>}
             </div>
           </article>
@@ -2493,6 +2512,7 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
         <h3>{block.titleRu}</h3>
         <blockquote>{block.quoteRu}</blockquote>
         <p>{block.captionRu}</p>
+        <ManualImageTermTranslations terms={block.termTranslations} />
       </figcaption>
     </figure>
   );
@@ -2562,16 +2582,7 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
               <div>
                 <h4>{card.titleRu}</h4>
                 <p>{card.bodyRu}</p>
-                {card.termTranslations && (
-                  <dl className="manual-source-image-term-translations" aria-label="Перевод подписей на изображении">
-                    {card.termTranslations.map((term) => (
-                      <div className="manual-source-image-term-translation" key={term.termEs}>
-                        <dt lang="es">{term.termEs}</dt>
-                        <dd>{term.translationRu}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
+                <ManualImageTermTranslations terms={card.termTranslations} />
               </div>
             </article>
           );

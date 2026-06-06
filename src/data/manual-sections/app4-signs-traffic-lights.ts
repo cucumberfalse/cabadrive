@@ -82,6 +82,22 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
             "Лист световой сигнализации со значением огней, расположением оптических блоков и специальными светофорами.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Señalamiento luminoso", translationRu: "Световая сигнализация" },
+            { termEs: "Significado de las luces", translationRu: "Значение огней" },
+            { termEs: "Rojo", translationRu: "Красный: остановиться до линии остановки." },
+            { termEs: "Rojo intermitente", translationRu: "Мигающий красный: остановиться и продолжить только при отсутствии риска." },
+            { termEs: "Amarillo", translationRu: "Желтый: остановиться, если это можно сделать безопасно." },
+            { termEs: "Amarillo intermitente", translationRu: "Мигающий желтый: пересекать осторожно." },
+            { termEs: "Verde", translationRu: "Зеленый: можно ехать, если перекресток свободен." },
+            { termEs: "Flechas direccionales", translationRu: "Направляющие стрелки" },
+            { termEs: "Disposición de unidades ópticas", translationRu: "Расположение оптических блоков" },
+            { termEs: "Semáforos especiales", translationRu: "Специальные светофоры" },
+            { termEs: "Peatones: esperar / avanzar", translationRu: "Пешеходы: ждать / идти" },
+            { termEs: "Intermitentes", translationRu: "Мигающие сигналы" },
+            { termEs: "Cruce ferroviario", translationRu: "Железнодорожный переезд" },
+            { termEs: "Carriles reversibles", translationRu: "Реверсивные полосы" }
+          ],
           bodyRu:
             "Световые сигналы, подписи и пиктограммы остаются внутри изображения. Русское объяснение находится рядом и ниже."
         },
@@ -98,6 +114,15 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
             "Завершающая страница о роли дорожных знаков.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Uruguay", translationRu: "Название улицы Uruguay" },
+            { termEs: "Subte", translationRu: "Метро / подземка" },
+            { termEs: "Área peatonal transitoria", translationRu: "Временная пешеходная зона" },
+            {
+              termEs: "Las señales de tránsito, a través de su color, tamaño y posición, hacen más ágil, segura y eficiente la movilidad.",
+              translationRu: "Дорожные знаки через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
+            }
+          ],
           bodyRu:
             "По-русски: дорожные знаки и сигналы через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
         },
@@ -114,6 +139,12 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
             "Завершающая иллюстрация с повторяющимися надписями.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Movilidad sustentable", translationRu: "Устойчивая мобильность" },
+            { termEs: "Señales", translationRu: "Знаки" },
+            { termEs: "Tránsito", translationRu: "Дорожное движение" },
+            { termEs: "Peatones", translationRu: "Пешеходы" }
+          ],
           bodyRu:
             "По-русски: завершающая иллюстрация повторяет темы дорожного движения, знаков, пешеходов и устойчивой мобильности. Текст внутри изображения не переводится."
         },
@@ -130,6 +161,9 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
             "Заключительная страница с логотипом Buenos Aires Ciudad.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Buenos Aires Ciudad", translationRu: "Город Буэнос-Айрес" }
+          ],
           bodyRu:
             "По-русски: город Буэнос-Айрес. Логотип и подпись не ретушировались, не переводились и не заменялись."
         }

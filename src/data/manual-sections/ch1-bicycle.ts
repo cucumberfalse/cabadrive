@@ -234,6 +234,24 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
         visibleSpanishScope: "official-sign-image-only",
         sourceAsIs: true
       },
+      termTranslations: [
+        { termEs: "Circulación exclusiva para bicicletas", translationRu: "Исключительное движение для велосипедов" },
+        { termEs: "Vereda de convivencia con peatones", translationRu: "Тротуар совместного движения с пешеходами" },
+        { termEs: "Direccionador en ciclovía", translationRu: "Указатель направления на велодорожке" },
+        { termEs: "Cruce de ciclistas", translationRu: "Пересечение велосипедистов" },
+        { termEs: "Deténgase por completo", translationRu: "Остановитесь полностью" },
+        { termEs: "Prohibido circular en bicicleta", translationRu: "Движение на велосипеде запрещено" },
+        { termEs: "Finalización de la ciclovía", translationRu: "Конец велодорожки" },
+        { termEs: "Descenso de la bicicleta", translationRu: "Сойти с велосипеда" },
+        { termEs: "Velocidad máxima 30 km/h", translationRu: "Максимальная скорость 30 км/ч" },
+        { termEs: "Comienzo de doble mano", translationRu: "Начало двустороннего движения" },
+        {
+          termEs: "Prohibido estacionar y detenerse sobre la ciclovía todos los días las 24 horas",
+          translationRu: "На велодорожке запрещены остановка и стоянка каждый день 24 часа"
+        },
+        { termEs: "Cruce de peatones", translationRu: "Пешеходный переход" },
+        { termEs: "Ceda el paso", translationRu: "Уступите дорогу" }
+      ],
       noticeItemsRu: [
         "Для экзамена ориентируйтесь на внешний вид знаков; русские пояснения идут рядом с таблицей.",
         "В таблице показаны исключительное движение велосипедов, совместное движение с пешеходами, направление велодорожки, пересечение велосипедистов, Полная остановка и Движение на велосипеде запрещено.",
@@ -369,6 +387,10 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           assetPath: `${assetRoot}/safe-distance-source.jpg`,
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "1,5 mtrs.", translationRu: "1,5 метра" },
+            { termEs: "Distancia de vehículos estacionados", translationRu: "Дистанция от припаркованных автомобилей" }
+          ],
           textRu: "Рекомендуется держаться на 1,5 м от припаркованных автомобилей, чтобы не попасть под открывающуюся дверь."
         },
         {
@@ -378,6 +400,12 @@ export const ch1BicycleSection: ManualGuideSectionContent = {
           assetPath: `${assetRoot}/unsafe-distance-source.jpg`,
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            {
+              termEs: "Prohibido circular agarrados de otros vehículos",
+              translationRu: "Запрещено ехать, держась за другие транспортные средства"
+            }
+          ],
           textRu: "Если ширины дороги не хватает для безопасного обгона, лучше ехать по центру полосы, пока не появится место."
         }
       ],

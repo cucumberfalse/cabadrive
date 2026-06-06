@@ -82,6 +82,23 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
             "Лист информационных знаков о характеристиках дороги.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Informativas", translationRu: "Информационные" },
+            { termEs: "Características de la vía", translationRu: "Характеристики дороги" },
+            { termEs: "Comienzo de autopista", translationRu: "Начало автомагистрали" },
+            { termEs: "Fin de autopista", translationRu: "Конец автомагистрали" },
+            { termEs: "Indicadora de utilización de carriles", translationRu: "Указатель использования полос" },
+            { termEs: "Camino o calle sin salida", translationRu: "Тупиковая дорога или улица" },
+            { termEs: "Camino o paso transitable", translationRu: "Проезжий путь / разрешенный проезд" },
+            { termEs: "Velocidades máximas permitidas", translationRu: "Разрешенные максимальные скорости" },
+            { termEs: "Esquema de recorrido", translationRu: "Схема маршрута" },
+            { termEs: "Desvío por cambio de sentido de circulación", translationRu: "Объезд из-за изменения направления движения" },
+            { termEs: "Estacionamiento permitido", translationRu: "Стоянка разрешена" },
+            { termEs: "Estacionamiento permitido (a 45° o 90°)", translationRu: "Стоянка разрешена под 45° или 90°" },
+            { termEs: "Estacionamiento ordenado", translationRu: "Упорядоченная стоянка" },
+            { termEs: "Permitido girar", translationRu: "Поворот разрешен" },
+            { termEs: "Direcciones permitidas", translationRu: "Разрешенные направления" }
+          ],
           bodyRu:
             "Цвета, стрелки, пиктограммы и испанские подписи остаются внутри изображения."
         },
@@ -98,6 +115,26 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
             "Лист информационных знаков дорожной и городской номенклатуры.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Cámara de control electrónico", translationRu: "Камера электронного контроля" },
+            { termEs: "Fin de camino peatonal", translationRu: "Конец пешеходного пути" },
+            { termEs: "Cruce peatonal", translationRu: "Пешеходный переход" },
+            { termEs: "Descenso de la bicicleta", translationRu: "Сойти с велосипеда" },
+            { termEs: "Finalización de la ciclovía", translationRu: "Конец велодорожки" },
+            { termEs: "Advertencia de escuela", translationRu: "Предупреждение о школе" },
+            { termEs: "Advertencia general", translationRu: "Общее предупреждение" },
+            { termEs: "Nomenclatura vial y urbana", translationRu: "Дорожная и городская номенклатура" },
+            { termEs: "Ruta Panamericana", translationRu: "Панамериканский маршрут" },
+            { termEs: "Ruta nacional", translationRu: "Национальный маршрут" },
+            { termEs: "Ruta provincial", translationRu: "Провинциальный маршрут" },
+            { termEs: "Nomenclatura urbana", translationRu: "Городская номенклатура / таблички улиц" },
+            { termEs: "Identificación de región y localidad", translationRu: "Обозначение региона и населенного пункта" },
+            { termEs: "Orientación", translationRu: "Ориентирование по дорогам" },
+            { termEs: "Comienzo o fin de zona urbana", translationRu: "Начало или конец городской зоны" },
+            { termEs: "Identificación de jurisdicción o accidente", translationRu: "Обозначение юрисдикции или дорожного объекта" },
+            { termEs: "Mojón kilométrico", translationRu: "Километровый столб" },
+            { termEs: "Nomenclatura de autopista", translationRu: "Номенклатура автомагистрали" }
+          ],
           bodyRu:
             "Названия и формы внутри листа не переводятся в изображении; русское пояснение дано отдельным текстом."
         },
@@ -114,6 +151,32 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
             "Лист информационных туристических, сервисных, образовательных и специальных знаков.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Información turística y de servicios", translationRu: "Туристическая и сервисная информация" },
+            { termEs: "Puesto sanitario", translationRu: "Медицинский пункт" },
+            { termEs: "Servicio telefónico", translationRu: "Телефонная связь" },
+            { termEs: "Estación de servicio", translationRu: "Автозаправочная станция" },
+            { termEs: "Teleférico", translationRu: "Канатная дорога" },
+            { termEs: "Servicio mecánico", translationRu: "Механическая помощь / сервис" },
+            { termEs: "Restaurante", translationRu: "Ресторан" },
+            { termEs: "Aeropuerto", translationRu: "Аэропорт" },
+            { termEs: "Gomería", translationRu: "Шиномонтаж" },
+            { termEs: "Estacionamiento", translationRu: "Стоянка" },
+            { termEs: "Punto panorámico", translationRu: "Панорамная точка" },
+            { termEs: "Plaza", translationRu: "Площадь / парк" },
+            { termEs: "Correo", translationRu: "Почта" },
+            { termEs: "Casas rodantes", translationRu: "Автодома / кемперы" },
+            { termEs: "Museo", translationRu: "Музей" },
+            { termEs: "Policía", translationRu: "Полиция" },
+            { termEs: "Terminal de ómnibus", translationRu: "Автовокзал" },
+            { termEs: "Estación de ferrocarril", translationRu: "Железнодорожная станция" },
+            { termEs: "Teatro", translationRu: "Театр" },
+            { termEs: "Ascenso y descenso", translationRu: "Подъем и спуск / посадка и высадка" },
+            { termEs: "Escolares", translationRu: "Школьники" },
+            { termEs: "Personas con movilidad reducida", translationRu: "Люди с ограниченной мобильностью" },
+            { termEs: "Educativas y anuncios especiales", translationRu: "Образовательные и специальные объявления" },
+            { termEs: "En conmemoración a una víctima de tránsito", translationRu: "В память о жертве дорожного инцидента" }
+          ],
           bodyRu:
             "Пиктограммы и подписи остаются внутри изображения; русские надписи поверх них не добавляются."
         },
@@ -130,6 +193,13 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
             "Страница о знаке Желтая звезда с испанским текстом.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Estrella Amarilla", translationRu: "Желтая звезда" },
+            { termEs: "En memoria de una víctima de tránsito", translationRu: "В память о жертве дорожного инцидента" },
+            { termEs: "Memoria, Prevención, Ley, Justicia y Educación", translationRu: "Память, предотвращение, закон, справедливость и образование" },
+            { termEs: "estrellasamarillas@buenosaires.gob.ar", translationRu: "Официальный адрес для запроса установки Желтой звезды" },
+            { termEs: "Mapa de estrellas amarillas", translationRu: "Карта Желтых звезд" }
+          ],
           bodyRu:
             "Русский перевод содержания находится ниже; испанский текст внутри изображения не очищается и не переводится."
         }

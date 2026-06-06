@@ -204,6 +204,13 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Фрагмент улицы совместного движения с боллардами и пешеходами",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Calle prioridad peatón", translationRu: "Улица с пешеходным приоритетом" },
+            { termEs: "Características", translationRu: "Характеристики" },
+            { termEs: "Aplicación", translationRu: "Применение" },
+            { termEs: "Circulación", translationRu: "Движение" },
+            { termEs: "Velocidad máxima 10 km/h", translationRu: "Максимальная скорость 10 км/ч" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -239,6 +246,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Фрагмент пешеходной улицы с кашпо и людьми",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Calle peatonal", translationRu: "Пешеходная улица" },
+            { termEs: "Características", translationRu: "Характеристики" },
+            { termEs: "Aplicación", translationRu: "Применение" },
+            { termEs: "Circulación", translationRu: "Движение" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -281,6 +294,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Оригинальное фото пешеходных указателей с направлениями и временем",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Direccionadores peatonales", translationRu: "Пешеходные указатели" },
+            { termEs: "Distancia", translationRu: "Расстояние" },
+            { termEs: "Tiempo aproximado", translationRu: "Примерное время" },
+            { termEs: "Dirección", translationRu: "Направление" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -306,6 +325,11 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Пешеходный переход рядом со школой с желто-белой разметкой",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Senderos escolares", translationRu: "Школьные маршруты" },
+            { termEs: "Senda peatonal", translationRu: "Пешеходный переход" },
+            { termEs: "Escuela", translationRu: "Школа" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -333,6 +357,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Оригинальная желтая дорожная разметка Sube y Baja у школы",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Sube y Baja", translationRu: "Посадка и высадка" },
+            { termEs: "Ascenso y descenso", translationRu: "Посадка и высадка пассажиров" },
+            { termEs: "Escuela", translationRu: "Школа" },
+            { termEs: "Prohibido estacionar", translationRu: "Стоянка запрещена" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -377,6 +407,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Улица с песочной разметкой и расширенным пешеходным пространством",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Intervenciones peatonales", translationRu: "Пешеходные вмешательства" },
+            { termEs: "Características", translationRu: "Характеристики" },
+            { termEs: "Aplicación", translationRu: "Применение" },
+            { termEs: "Prioridad peatonal", translationRu: "Пешеходный приоритет" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
@@ -414,6 +450,17 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
       visibleSpanish: true,
       sourceImageException: originalSourceImageException,
       areasRu: "Tribunales, Retiro, Casco Histórico, Once, Microcentro и Corrientes",
+      termTranslations: [
+        { termEs: "Áreas con prioridad peatonal", translationRu: "Зоны с пешеходным приоритетом" },
+        { termEs: "Tribunales Peatonal", translationRu: "Пешеходная зона Tribunales" },
+        { termEs: "Centro Peatonal", translationRu: "Пешеходный центр" },
+        { termEs: "arterias exceptuadas", translationRu: "исключенные артерии" },
+        { termEs: "Retiro", translationRu: "Retiro" },
+        { termEs: "Casco Histórico", translationRu: "Исторический центр" },
+        { termEs: "Once", translationRu: "Once" },
+        { termEs: "Microcentro", translationRu: "Microcentro" },
+        { termEs: "Corrientes", translationRu: "Corrientes" }
+      ],
       legend: [
         {
           id: "tribunales",
@@ -464,6 +511,13 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             visibleSpanishScope: "official-sign-image-only",
             sourceAsIs: true
           },
+          termTranslations: [
+            { termEs: "Centro Peatonal", translationRu: "Пешеходный центр" },
+            { termEs: "Tribunales Peatonal", translationRu: "Пешеходная зона Tribunales" },
+            { termEs: "Solo vehículos autorizados", translationRu: "Только разрешенные транспортные средства" },
+            { termEs: "Control electrónico", translationRu: "Электронный контроль" },
+            { termEs: "Prohibido estacionar de 7 a 21 hs", translationRu: "Стоянка запрещена с 7 до 21 часов" }
+          ],
           details: [
             {
               labelRu: "Разрешение",
@@ -568,6 +622,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           altRu: "Въезд в зону 30 с красно-белым пешеходным переходом",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
+          termTranslations: [
+            { termEs: "Zona 30", translationRu: "Зона 30" },
+            { termEs: "Velocidad máxima 30", translationRu: "Максимальная скорость 30" },
+            { termEs: "Villa Real", translationRu: "Villa Real" },
+            { termEs: "Senda peatonal", translationRu: "Пешеходный переход" }
+          ],
           details: [
             {
               labelRu: "Характеристики",
