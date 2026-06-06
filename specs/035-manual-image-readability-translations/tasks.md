@@ -232,7 +232,7 @@
 
 ## Review / PR / Final Validation Prep
 
-- [ ] T088 Implementation Agent stages, commits, pushes, and opens or updates
+- [x] T088 Implementation Agent stages, commits, pushes, and opens or updates
   one ready PR only if assigned by Orchestrator.
 - [ ] T089 Review Agent checks whole-guide coverage, validator strength,
   protected-image preservation, readability evidence, Russian DOM translation
@@ -347,6 +347,10 @@ Implementation Agent should append concise evidence here during implementation.
   `validate:content`, `test` (428 tests, 0 failures), `build`, and nested
   `test:e2e` (82 tests, 0 failures). Build emitted existing large-chunk
   warnings only.
+- Publication evidence: staged assigned slice, committed implementation as
+  `fa5e221` (`Add manual image readability translation audit`), pushed branch
+  `codex/035-manual-image-readability-translations` to origin, and opened ready
+  PR `#201`: `https://github.com/cucumberfalse/cabadrive/pull/201`.
 - Representative evidence paths:
   `content/validation/manual-guide-image-readability-translations.evidence.json`
   references each section's existing source and Russian screenshot evidence,
