@@ -88,6 +88,13 @@ test("manual guide image readability/translations evidence covers current whole-
       0
     );
     assert.equal(
+      evidence.inventory.filter((record) =>
+        record.visibleSpanish &&
+        record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !item.translationRu)
+      ).length,
+      0
+    );
+    assert.equal(
       evidence.inventory.find((record) => record.imageId === "app4-warning-page-187-source-card").textReadabilityEvidence.status,
       "source-limited-with-structured-dom-support"
     );
@@ -165,6 +172,69 @@ test("manual guide image readability/translations audit rejects App IV source-li
       ["--write"],
       { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
     );
+  } finally {
+    rmSync(tempRoot, { force: true, recursive: true });
+  }
+});
+
+test("manual guide image readability/translations audit rejects empty Russian glossary definitions", async () => {
+  const tempRoot = mkdtempSync(join(tmpdir(), "cabadrive-manual-image-readability-russian-translation-"));
+  const sectionRoot = join(tempRoot, "manual-sections");
+  const evidencePath = join(tempRoot, "manual-guide-image-readability-translations.evidence.json");
+  mkdirSync(sectionRoot);
+
+  try {
+    const fixtureAssetPath =
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg";
+    writeFileSync(
+      join(sectionRoot, "fixture.ts"),
+      `export const fixtureSection = {
+  sectionId: "fixture-empty-russian-translation",
+  titleRu: "Fixture",
+  sourcePages: [1],
+  visualEvidence: { sourceScreenshots: [], russianScreenshots: [] },
+  blocks: [{
+    id: "fixture-source-images",
+    kind: "source-image-cards",
+    titleRu: "Fixture images",
+    sourceTextEs: "Documento Nacional de Identidad.",
+    cards: [{
+      id: "fixture-empty-russian-card",
+      titleRu: "Empty Russian translation",
+      displayMode: "compact",
+      sourcePage: 1,
+      sourceRegion: { x: 0, y: 0, width: 320, height: 118 },
+      assetPath: ${JSON.stringify(fixtureAssetPath)},
+      altRu: "Fixture image",
+      visibleSpanish: true,
+      sourceImageException: {
+        kind: "source-document-example-original-visible-text",
+        visibleSpanishScope: "source-document-example-image-only",
+        sourceAsIs: true,
+        russianExplanationOutsideImage: true
+      },
+      termTranslations: [
+        { termEs: "Documento Nacional de Identidad", translationRu: "" }
+      ]
+    }],
+    visualNotes: []
+  }]
+};\n`
+    );
+
+    await assertAuditFails(
+      evidencePath,
+      /structured-russian-support-missing-russian-translation: fixture-empty-russian-card/u,
+      ["--write"],
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+    );
+
+    const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    const record = failedEvidence.inventory.find((entry) => entry.imageId === "fixture-empty-russian-card");
+    assert.equal(record.translationDomSelector, ".manual-source-image-term-translations");
+    assert.equal(record.structuredRussianSupport.itemCount, 1);
+    assert.equal(record.structuredRussianSupport.items[0].termEs, "Documento Nacional de Identidad");
+    assert.equal(record.structuredRussianSupport.items[0].translationRu, "");
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });
   }

@@ -490,6 +490,13 @@ Implementation Agent should append concise evidence here during implementation.
   Focused Playwright command
   `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
   passed: 1 test, 0 failures.
+- Third review final verification:
+  `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree`
+  passed after the third-review process-memory update. Full
+  `pnpm run preflight` passed end to end: feature-memory gate, repository
+  baseline, `validate:content`, `test` (433 tests, 0 failures), `build`,
+  nested `test:e2e`, and full Playwright suite (82 tests, 0 failures). Build
+  steps emitted the existing large-chunk warnings only.
 - Second review preflight dead end and fix:
   first second-review `pnpm run preflight` passed feature-memory, repo
   baseline, `validate:content`, `test` (432 tests, 0 failures), nested build,
@@ -511,6 +518,43 @@ Implementation Agent should append concise evidence here during implementation.
   baseline, `validate:content`, `test` (432 tests, 0 failures), `build`,
   nested `test:e2e`, and full Playwright suite (82 tests, 0 failures). Build
   steps emitted the existing large-chunk warnings only.
+- Third review fixes assignment for PR `#201` confirmed in the same
+  worktree/branch on current review head
+  `db36d40087e03c63883a3e784329756a76c02299`. Initial third-review status was
+  `## codex/035-manual-image-readability-translations...origin/codex/035-manual-image-readability-translations`
+  on branch `codex/035-manual-image-readability-translations`, with a clean
+  worktree. Parallel-work preservation warning was acknowledged again; no
+  sibling worktrees, branches, commits, PRs, or unrelated dirty diffs were
+  touched.
+- Third review P2 disposition:
+  Codex connector review correctly identified that the audit required
+  non-empty Spanish `termEs` but did not require non-empty Russian
+  `translationRu`. `scripts/manual-guide-image-readability-translations-audit.mjs`
+  now fails every learner-relevant visible-Spanish structured support item
+  whose `translationRu` is empty or whitespace-only, using rule
+  `structured-russian-support-missing-russian-translation`. The current
+  evidence-count test also asserts there are no visible-Spanish records with
+  learner-relevant structured items missing Russian translation text.
+- Third review tests added:
+  `tests/manual-guide-image-readability-translations-audit.test.mjs` now
+  includes a failing source-image-card fixture with non-empty
+  `termEs: "Documento Nacional de Identidad"` and empty `translationRu: ""`.
+  The fixture must fail with
+  `structured-russian-support-missing-russian-translation`, proving
+  `validate:manual-guide` cannot pass with blank rendered Russian glossary
+  definitions.
+- Third review command results so far:
+  `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+  passed and refreshed evidence; `node scripts/manual-guide-image-readability-translations-audit.mjs`
+  passed; `node --test tests/manual-guide-image-readability-translations-audit.test.mjs`
+  passed: 8 tests, 0 failures; `pnpm run validate:manual-guide` passed;
+  `pnpm run validate:content` passed; `pnpm exec tsc --noEmit` passed;
+  `pnpm run test` passed: 433 tests, 0 failures; `pnpm run build` passed,
+  including nested `validate:content`, asset sync, Vite build, and
+  service-worker generation. Vite emitted existing large-chunk warnings only.
+  Focused Playwright command
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed: 1 test, 0 failures.
 
 ## Implementation Feedback For Architect Disposition
 

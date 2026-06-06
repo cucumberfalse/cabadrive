@@ -821,6 +821,13 @@ function validateRecords(records, requiredExamples, readabilityGroups) {
         record
       });
     }
+    if (record.visibleSpanish && record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !nonEmptyString(item.translationRu))) {
+      findings.push({
+        ruleId: "structured-russian-support-missing-russian-translation",
+        message: `${record.imageId} learner-relevant image translations require non-empty Russian translation text`,
+        record
+      });
+    }
     if (record.visibleSpanish && record.imageKind === "source-image-cards" && record.structuredRussianSupport.itemCount === 0) {
       findings.push({ ruleId: "generic-body-only-coverage", message: `${record.imageId} cannot be covered only by bodyRu`, record });
     }
