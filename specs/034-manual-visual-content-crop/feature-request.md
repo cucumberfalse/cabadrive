@@ -208,3 +208,16 @@ Analyst validation evidence: Official-source and high-quality image handling is 
 Analyst validation evidence: Architect validation passed first at 2026-06-05T21:06:53-03:00 for the same effective content head 9b6300e6639e59149c2fea67df5c842a22b5b9aa, with Architect gaps recorded as none.
 Analyst validation evidence: Orchestrator guard snapshot reported PR #200 open, mergeable, not draft, required checks green on 9b6300e6639e59149c2fea67df5c842a22b5b9aa, unresolved review threads [], and feature-memory check passed.
 Analyst validation evidence: No Analyst gaps remain.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-05T21:24:24-03:00
+Analyst return count: 0
+Analyst validated effective content head: 96403aca709255506cda88fe1d7fef4b14ea6c57
+Analyst validation evidence: Customer intent is satisfied for PR #200 at effective content head 96403aca709255506cda88fe1d7fef4b14ea6c57: official-source and high-quality extraction/crop handling addresses tiny useful visual content rather than stretching margin-heavy rasters.
+Analyst validation evidence: Protected-image boundaries are satisfied: official signs, markings, signals, photos, maps, source-document examples, and protected pixels remain source-faithful aside from empty-margin cropping, with Russian translations and learner support kept separate outside protected images.
+Analyst validation evidence: Copy cleanup and missing visual restoration/disposition are satisfied by the recorded final feature memory and evidence for Appendix IV regulatory signs, NO AVANZAR, hospital map, blind spot, tire, Matafuegos, Chaleco reflectivo, headrest, public-space visual, and learner-facing provenance copy.
+Analyst validation evidence: Architect validation passed first at 2026-06-05T21:22:51-03:00 for the same effective content head 96403aca709255506cda88fe1d7fef4b14ea6c57, with Architect gaps recorded as none.
+Analyst validation evidence: Orchestrator read-only guard snapshot reported PR #200 open, mergeable, not draft, required checks green on 96403aca709255506cda88fe1d7fef4b14ea6c57, unresolved review threads [], and fresh Codex no-findings comment at 2026-06-06T00:19:02Z.
+Analyst validation evidence: No Analyst gaps remain.
