@@ -132,6 +132,12 @@ export const ch5AnticipatoryEfficientDrivingSection: ManualGuideSectionContent =
             "Фото с цитатой о дорожном движении как выражении городской культуры.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            {
+              termEs: "El tránsito, al igual que otras construcciones sociales, es una expresión de la cultura ciudadana.",
+              translationRu: "Дорожное движение, как и другие социальные конструкции, является выражением городской культуры."
+            }
+          ],
           bodyRu:
             "Смысл испанской цитаты на фото: дорожное движение, как и другие социальные конструкции, является выражением городской культуры."
         }

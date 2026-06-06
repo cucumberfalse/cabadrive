@@ -185,6 +185,12 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
           altRu: "Фото с цитатой о 100% внимания и координации.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            {
+              termEs: "Conducir requiere del 100% de atención y coordinación.",
+              translationRu: "Вождение требует 100% внимания и координации."
+            }
+          ],
           bodyRu:
             "Смысл цитаты: управление требует 100% внимания и координации."
         }

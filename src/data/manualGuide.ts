@@ -67,6 +67,11 @@ type OriginalSourceImageTextException = {
 
 export type ManualSourceImageCardDisplayMode = "compact" | "full-width";
 
+export type ManualImageTermTranslation = {
+  termEs: string;
+  translationRu: string;
+};
+
 export type ManualGuideSourcePage = {
   sourcePage: number;
   manualManifestPointer: string;
@@ -516,6 +521,7 @@ export type ManualGuideContentBlock =
         visibleSpanishScope: "official-sign-image-only";
         sourceAsIs: true;
       };
+      termTranslations?: ManualImageTermTranslation[];
       noticeItemsRu: string[];
       visualNotes: string[];
     }
@@ -559,6 +565,7 @@ export type ManualGuideContentBlock =
         badgeRu?: string;
         visibleSpanish?: boolean;
         sourceImageException?: OriginalSourceImageTextException;
+        termTranslations?: ManualImageTermTranslation[];
         textRu: string;
       }[];
       visualNotes: string[];
@@ -671,6 +678,7 @@ export type ManualGuideContentBlock =
       altRu: string;
       visibleSpanish: true;
       sourceImageException: OriginalSourceImageTextException;
+      termTranslations?: ManualImageTermTranslation[];
       quoteRu: string;
       captionRu: string;
       visualNotes: string[];
@@ -702,10 +710,7 @@ export type ManualGuideContentBlock =
           sourceAsIs: true;
         };
         sourceImageException?: OriginalSourceImageTextException;
-        termTranslations?: {
-          termEs: string;
-          translationRu: string;
-        }[];
+        termTranslations?: ManualImageTermTranslation[];
         russianOverlayLabels?: {
           id: string;
           textRu: string;

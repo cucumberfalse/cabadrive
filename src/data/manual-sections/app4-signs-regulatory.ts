@@ -250,6 +250,20 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
             "Лист запрещающих регулирующих дорожных знаков с испанскими подписями.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "Reglamentarias", translationRu: "Регулирующие / предписывающие" },
+            { termEs: "De prohibición", translationRu: "Запрещающие" },
+            { termEs: "No avanzar", translationRu: "Проезд запрещен" },
+            { termEs: "Contramano", translationRu: "Встречное направление" },
+            { termEs: "Prohibición de circular", translationRu: "Движение запрещено" },
+            { termEs: "Autos / motos / bicicleta / camión", translationRu: "Автомобили / мотоциклы / велосипеды / грузовики" },
+            { termEs: "Peatón / animal / tractor", translationRu: "Пешеход / животные / трактор" },
+            { termEs: "No girar", translationRu: "Поворот запрещен" },
+            { termEs: "No girar en U", translationRu: "Разворот запрещен" },
+            { termEs: "Prohibido adelantar", translationRu: "Обгон запрещен" },
+            { termEs: "No estacionar", translationRu: "Стоянка запрещена" },
+            { termEs: "No estacionar ni detenerse", translationRu: "Остановка и стоянка запрещены" }
+          ],
           bodyRu:
             "Испанские названия внутри изображения не переведены и не закрыты; используйте знаки как визуальный образец, а русскую расшифровку групп читайте рядом."
         },
@@ -266,6 +280,20 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
             "Лист регулирующих знаков ограничения, приоритета и окончания предписания с испанскими подписями.",
           visibleSpanish: true,
           officialSignException,
+          termTranslations: [
+            { termEs: "De restricción", translationRu: "Ограничивающие" },
+            { termEs: "Limitación de peso / altura / ancho / largo", translationRu: "Ограничение массы / высоты / ширины / длины" },
+            { termEs: "Limitación de velocidad máxima / mínima", translationRu: "Ограничение максимальной / минимальной скорости" },
+            { termEs: "Circulación exclusiva", translationRu: "Исключительное движение" },
+            { termEs: "Giro obligatorio", translationRu: "Обязательный поворот" },
+            { termEs: "Sentido de circulación", translationRu: "Направление движения" },
+            { termEs: "Paso obligado", translationRu: "Обязательный объезд" },
+            { termEs: "De prioridad", translationRu: "Знаки приоритета" },
+            { termEs: "Pare", translationRu: "Стоп" },
+            { termEs: "Ceda el paso", translationRu: "Уступите дорогу" },
+            { termEs: "Fin de la prescripción", translationRu: "Конец предписания" },
+            { termEs: "Cruce ferroviario", translationRu: "Железнодорожный переезд" }
+          ],
           bodyRu:
             "Русский текст дан рядом: он не нанесен поверх знаков, чтобы их внешний вид не менялся."
         }

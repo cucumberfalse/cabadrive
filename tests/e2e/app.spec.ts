@@ -331,6 +331,46 @@ async function expectScrollableReadableSourceImageCard(page: Page, cardId: strin
   expect(metrics.documentOverflow, `${cardId} does not create document-level horizontal overflow`).toBeLessThanOrEqual(2);
 }
 
+type ManualImageTermTranslationExpectation = {
+  termEs: string | RegExp;
+  translationRu: string | RegExp;
+};
+
+async function expectManualImageTermTranslations(
+  card: Locator,
+  expectedPairs: ManualImageTermTranslationExpectation[],
+  options: { minPairs?: number } = {}
+) {
+  await card.scrollIntoViewIfNeeded();
+  const translations = card.locator(".manual-source-image-term-translations");
+  await expect(translations).toBeVisible();
+  await expect(translations).toHaveAttribute("aria-label", "Перевод подписей на изображении");
+
+  const metrics = await translations.evaluate((element) => {
+    const terms = Array.from(element.querySelectorAll("dt"));
+    const definitions = Array.from(element.querySelectorAll("dd"));
+    const rect = element.getBoundingClientRect();
+    return {
+      renderedWidth: rect.width,
+      termCount: terms.length,
+      definitionCount: definitions.length,
+      allTermsMarkedSpanish: terms.every((term) => term.getAttribute("lang") === "es"),
+      emptyDefinitionCount: definitions.filter((definition) => !definition.textContent?.trim()).length
+    };
+  });
+
+  expect(metrics.renderedWidth, "translation glossary is rendered").toBeGreaterThan(1);
+  expect(metrics.termCount, "translation glossary has paired Spanish terms").toBeGreaterThanOrEqual(options.minPairs ?? expectedPairs.length);
+  expect(metrics.definitionCount, "translation glossary has one Russian definition per term").toBe(metrics.termCount);
+  expect(metrics.allTermsMarkedSpanish, "translation glossary marks Spanish source terms").toBe(true);
+  expect(metrics.emptyDefinitionCount, "translation glossary definitions are non-empty").toBe(0);
+
+  for (const pair of expectedPairs) {
+    await expect(translations.locator("dt").filter({ hasText: pair.termEs }).first()).toHaveAttribute("lang", "es");
+    await expect(translations.locator("dd").filter({ hasText: pair.translationRu }).first()).toBeVisible();
+  }
+}
+
 type ManualRenderedBox = {
   id: string | null;
   type: string | null;
@@ -4622,7 +4662,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app2-safety-elements",
       hash: "/#manual-section-app2-safety-elements",
-      cards: ["app2-mirror-orientation-source-card"],
+      cards: ["app2-mirror-orientation-source-card", "app2-headrest-combined-source-card"],
       readableScrollCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
     },
     {
@@ -4686,6 +4726,180 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   }
 
   await page.setViewportSize({ width: 1280, height: 950 });
+  async function openManualSection(hash: string, sectionId: string) {
+    await page.goto(hash);
+    const section = page.getByTestId("manual-guide-section");
+    await expect(section).toHaveAttribute("data-manual-section-id", sectionId);
+    return section;
+  }
+
+  const bodyPostureSection = await openManualSection("/#manual-section-app3-driving-factors", "app3-driving-factors");
+  const bodyPostureCard = bodyPostureSection.locator('[data-card-id="app3-body-posture-source-card"]');
+  await expectManualImageTermTranslations(
+    bodyPostureCard,
+    [
+      { termEs: "Brazos", translationRu: /Руки: держать руль/ },
+      { termEs: "Piernas", translationRu: /Ноги: не выпрямлять/ },
+      { termEs: "Cabeza y espalda", translationRu: /Голова и спина/ },
+      { termEs: "El asiento", translationRu: /Сиденье: отрегулировать/ }
+    ],
+    { minPairs: 4 }
+  );
+  await bodyPostureSection.screenshot({
+    path: testInfo.outputPath(`manual-source-translations-app3-driving-factors-${testInfo.project.name}.png`)
+  });
+
+  const hospitalSection = await openManualSection("/#manual-section-app2-highways-hospitals", "app2-highways-hospitals");
+  await expectManualImageTermTranslations(
+    hospitalSection.locator('[data-card-id="app2-hospital-map-source-card"]'),
+    [
+      { termEs: "Hospitales Generales de Agudos", translationRu: "Общие больницы острой помощи" },
+      { termEs: "H / H1 / H2", translationRu: /Маркеры больниц/ },
+      { termEs: "Dr. C. Argerich", translationRu: "Доктор К. Аргерич" },
+      { termEs: "Cecilia Grierson", translationRu: "Сесилия Гриерсон" }
+    ],
+    { minPairs: 10 }
+  );
+
+  const documentsSection = await openManualSection("/#manual-section-ch2-required-documents", "ch2-required-documents");
+  await expectManualImageTermTranslations(
+    documentsSection.locator('[data-card-id="dni-source-card"]'),
+    [
+      { termEs: "Documento Nacional de Identidad", translationRu: "Национальный документ личности" },
+      { termEs: "DNI", translationRu: "Аргентинский документ личности" }
+    ],
+    { minPairs: 2 }
+  );
+  await expectManualImageTermTranslations(
+    documentsSection.locator('[data-card-id="vtv-source-card"]'),
+    [
+      { termEs: "Verificación Técnica Vehicular", translationRu: "Техническая проверка транспортного средства" },
+      { termEs: "Último número de patente", translationRu: "Последняя цифра номерного знака" }
+    ],
+    { minPairs: 5 }
+  );
+
+  const app2SafetySection = await openManualSection("/#manual-section-app2-safety-elements", "app2-safety-elements");
+  await expectManualImageTermTranslations(
+    app2SafetySection.locator('[data-card-id="app2-headrest-combined-source-card"]'),
+    [
+      { termEs: "Altura apoyacabeza", translationRu: "Высота подголовника" },
+      { termEs: "Distancia del apoyacabeza", translationRu: "Расстояние до подголовника" },
+      { termEs: "Botón de desbloqueo", translationRu: "Кнопка разблокировки" }
+    ],
+    { minPairs: 7 }
+  );
+
+  const app3SafetySection = await openManualSection("/#manual-section-app3-safety-elements", "app3-safety-elements");
+  await expectManualImageTermTranslations(
+    app3SafetySection.locator('[data-card-id="app3-seatbelt-source-card"]'),
+    [
+      { termEs: "Uso Correcto", translationRu: "Правильное использование" },
+      { termEs: "Debe pasar por la clavícula", translationRu: /Плечевая лямка/ },
+      { termEs: "Embarazadas", translationRu: /Беременные/ }
+    ],
+    { minPairs: 6 }
+  );
+
+  const attentionSection = await openManualSection("/#manual-section-ch4-distractions", "ch4-distractions");
+  await expectManualImageTermTranslations(
+    attentionSection.locator('[data-card-id="attention-photo-source-card"]'),
+    [{ termEs: /100% de atención/, translationRu: /100% внимания и координации/ }],
+    { minPairs: 1 }
+  );
+
+  const drivingCultureSection = await openManualSection("/#manual-section-ch5-anticipatory-efficient-driving", "ch5-anticipatory-efficient-driving");
+  await expectManualImageTermTranslations(
+    drivingCultureSection.locator('[data-card-id="driving-culture-photo-source-card"]'),
+    [{ termEs: /expresión de la cultura ciudadana/, translationRu: /выражением городской культуры/ }],
+    { minPairs: 1 }
+  );
+
+  const app4TranslationScenarios: Array<{
+    sectionId: string;
+    hash: string;
+    cardId: string;
+    minPairs: number;
+    pairs: ManualImageTermTranslationExpectation[];
+  }> = [
+    {
+      sectionId: "app4-signs-warning",
+      hash: "/#manual-section-app4-signs-warning",
+      cardId: "app4-warning-page-187-source-card",
+      minPairs: 20,
+      pairs: [
+        { termEs: "Preventivas", translationRu: "Предупреждающие" },
+        { termEs: "Curva", translationRu: "Кривая / поворот" },
+        { termEs: "Puente angosto", translationRu: "Узкий мост" }
+      ]
+    },
+    {
+      sectionId: "app4-signs-informational",
+      hash: "/#manual-section-app4-signs-informational",
+      cardId: "app4-informational-page-189-source-card",
+      minPairs: 15,
+      pairs: [
+        { termEs: "Informativas", translationRu: "Информационные" },
+        { termEs: "Comienzo de autopista", translationRu: "Начало автомагистрали" },
+        { termEs: "Estacionamiento permitido", translationRu: "Стоянка разрешена" }
+      ]
+    },
+    {
+      sectionId: "app4-signs-temporary",
+      hash: "/#manual-section-app4-signs-temporary",
+      cardId: "app4-temporary-page-193-source-card",
+      minPairs: 20,
+      pairs: [
+        { termEs: "Transitorias", translationRu: "Временные" },
+        { termEs: "Personas trabajando", translationRu: "Люди работают" },
+        { termEs: "Solo acceso frentistas", translationRu: /Только доступ/ }
+      ]
+    },
+    {
+      sectionId: "app4-signs-horizontal",
+      hash: "/#manual-section-app4-signs-horizontal",
+      cardId: "app4-horizontal-page-195-source-card",
+      minPairs: 15,
+      pairs: [
+        { termEs: "Horizontales", translationRu: "Горизонтальная разметка" },
+        { termEs: "Línea de detención", translationRu: "Стоп-линия" },
+        { termEs: "Senda peatonal", translationRu: "Пешеходный переход" }
+      ]
+    },
+    {
+      sectionId: "app4-signs-traffic-lights",
+      hash: "/#manual-section-app4-signs-traffic-lights",
+      cardId: "app4-traffic-lights-page-197-source-card",
+      minPairs: 12,
+      pairs: [
+        { termEs: "Señalamiento luminoso", translationRu: "Световая сигнализация" },
+        { termEs: "Rojo", translationRu: /остановиться/ },
+        { termEs: "Semáforos especiales", translationRu: "Специальные светофоры" }
+      ]
+    },
+    {
+      sectionId: "app4-signs-regulatory",
+      hash: "/#manual-section-app4-signs-regulatory",
+      cardId: "app4-regulatory-page-185-source-card",
+      minPairs: 12,
+      pairs: [
+        { termEs: "Reglamentarias", translationRu: "Регулирующие / предписывающие" },
+        { termEs: "De prohibición", translationRu: "Запрещающие" },
+        { termEs: "No estacionar ni detenerse", translationRu: "Остановка и стоянка запрещены" }
+      ]
+    }
+  ];
+
+  for (const scenario of app4TranslationScenarios) {
+    const section = await openManualSection(scenario.hash, scenario.sectionId);
+    await expectManualImageTermTranslations(section.locator(`[data-card-id="${scenario.cardId}"]`), scenario.pairs, { minPairs: scenario.minPairs });
+    if (scenario.sectionId === "app4-signs-warning") {
+      await section.screenshot({
+        path: testInfo.outputPath(`manual-source-translations-app4-signs-warning-${testInfo.project.name}.png`)
+      });
+    }
+  }
+
   await page.goto("/#manual-section-app4-signs-regulatory");
   const noAvanzarCard = page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"]');
   await expect(noAvanzarCard).toContainText("Проезд запрещен");

@@ -191,6 +191,14 @@ export const app3SafetyElementsSection: ManualGuideSectionContent = {
             sourceAsIs: true,
             russianExplanationOutsideImage: true
           },
+          termTranslations: [
+            { termEs: "Uso Correcto", translationRu: "Правильное использование" },
+            { termEs: "Debe pasar por la clavícula", translationRu: "Плечевая лямка должна проходить по ключице." },
+            { termEs: "Debe colocarse sobre los huesos de la cadera", translationRu: "Нижняя лямка должна лежать на костях таза, ниже живота." },
+            { termEs: "Si está colocado sobre el cuello o pecho", translationRu: "Если ремень проходит по шее или груди, возможны тяжелые травмы." },
+            { termEs: "Si se coloca sobre el abdomen", translationRu: "Если ремень проходит по животу, он может повредить внутренние органы." },
+            { termEs: "Embarazadas", translationRu: "Беременные: настроить руль и сиденье так, чтобы оставалось минимум 25 cm до руля." }
+          ],
           bodyRu:
             "Как читать фото: верхняя лямка проходит через ключицу между плечом и шеей; нижняя лямка лежит на костях таза ниже живота; ремень должен плотно прилегать, не быть перекрученным и не проходить по твердым или хрупким предметам. Ремень на шее, груди или животе может вызвать тяжелые травмы и ухудшает удержание при ударе."
         }

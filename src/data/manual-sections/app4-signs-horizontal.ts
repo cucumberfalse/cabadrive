@@ -80,6 +80,23 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
             "Лист продольной и поперечной дорожной разметки с испанскими подписями.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Horizontales", translationRu: "Горизонтальная разметка" },
+            { termEs: "Marcas longitudinales", translationRu: "Продольная разметка" },
+            { termEs: "Línea de separación de circulación", translationRu: "Линия разделения движения" },
+            { termEs: "Líneas continuas y discontinuas paralelas", translationRu: "Параллельные сплошные и прерывистые линии" },
+            { termEs: "Líneas de separación de sentido de circulación opuesta", translationRu: "Линии разделения встречных направлений" },
+            { termEs: "Líneas divisorias de carriles con corrientes de tránsito del mismo sentido", translationRu: "Линии разделения полос одного направления" },
+            { termEs: "Línea de separación de sentido de circulación", translationRu: "Линия, показывающая возможность пересечения" },
+            { termEs: "Línea de carril exclusivo y carril preferencial", translationRu: "Линия выделенной или приоритетной полосы" },
+            { termEs: "Líneas de borde de calzada", translationRu: "Краевые линии проезжей части" },
+            { termEs: "Marcas transversales", translationRu: "Поперечная разметка" },
+            { termEs: "Línea de detención", translationRu: "Стоп-линия" },
+            { termEs: "Senda peatonal o senda para cruce de ciclistas", translationRu: "Пешеходный переход или пересечение велосипедистов" },
+            { termEs: "Senda peatonal", translationRu: "Пешеходный переход" },
+            { termEs: "Senda peatonal con línea de frenado previa", translationRu: "Переход с предварительной линией торможения" },
+            { termEs: "Líneas auxiliares para reducción de velocidad", translationRu: "Вспомогательные линии снижения скорости" }
+          ],
           bodyRu:
             "Разметка и испанские подписи остаются внутри листа; русский текст рядом объясняет группы, не меняя изображение."
         },
@@ -96,6 +113,22 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
             "Лист специальной дорожной разметки с испанскими подписями.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Marcas especiales", translationRu: "Специальная разметка" },
+            { termEs: "Carril exclusivo para transporte público de pasajeros", translationRu: "Выделенная полоса для пассажирского общественного транспорта" },
+            { termEs: "Marca de estacionamiento", translationRu: "Разметка места стоянки" },
+            { termEs: "Marca de carril exclusivo", translationRu: "Разметка выделенной полосы" },
+            { termEs: "Marca de ciclovía", translationRu: "Разметка велодорожки" },
+            { termEs: "Isletas canalizadoras de tránsito", translationRu: "Направляющие островки движения" },
+            { termEs: "Flechas de dirección", translationRu: "Стрелки направления" },
+            { termEs: "Pare", translationRu: "Стоп" },
+            { termEs: "Ceda el paso", translationRu: "Уступите дорогу" },
+            { termEs: "Velocidad máxima", translationRu: "Максимальная скорость" },
+            { termEs: "Escolar", translationRu: "Школьная зона" },
+            { termEs: "Cruce ferroviario", translationRu: "Железнодорожный переезд" },
+            { termEs: "Cruce de peatones", translationRu: "Пешеходный переход" },
+            { termEs: "Cruce de ciclistas", translationRu: "Пересечение велосипедистов" }
+          ],
           bodyRu:
             "Специальная разметка показана без очистки текста, масок, перекраски или перерисовки. Перевод дается только отдельным текстом рядом."
         }
