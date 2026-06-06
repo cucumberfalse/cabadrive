@@ -2337,7 +2337,7 @@ function BicycleDistanceBlockView({ block }: { block: Extract<ManualGuideSection
       <h3>{block.titleRu}</h3>
       <div className="manual-bicycle-distance-grid">
         {block.examples.map((example) => (
-          <article key={example.id} data-distance-status={example.status}>
+          <article key={example.id} data-distance-id={example.id} data-distance-status={example.status}>
             <div className="manual-bicycle-distance-image">
               <img
                 src={assetUrl(example.assetPath)}

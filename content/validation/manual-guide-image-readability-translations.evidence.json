@@ -16,7 +16,7 @@
     "visibleSpanishImages": 54,
     "visibleSpanishImagesWithStructuredRussianSupport": 54,
     "protectedSourceAsIsVisibleSpanishImages": 54,
-    "acceptedCoverageExceptions": 0,
+    "acceptedCoverageExceptions": 16,
     "validationFindings": 0
   },
   "blockKindCounts": {
@@ -178,7 +178,7 @@
         "unsafe-line"
       ],
       "visibleSpanishImageCount": 3,
-      "structuredSupportItemCount": 5
+      "structuredSupportItemCount": 16
     },
     {
       "id": "ch4-distractions",
@@ -201,13 +201,320 @@
       "structuredSupportItemCount": 1
     }
   ],
+  "readabilityEvidenceGroups": [
+    {
+      "id": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "label": "Appendix IV dense official catalog sheets",
+      "status": "pass",
+      "expectedSectionIds": [
+        "app4-signs-warning",
+        "app4-signs-informational",
+        "app4-signs-temporary",
+        "app4-signs-horizontal",
+        "app4-signs-traffic-lights",
+        "app4-signs-regulatory"
+      ],
+      "expectedImageIds": [
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card"
+      ],
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ],
+      "acceptance": "Dense official sign/marking/signal sheets are accepted only with protected source-as-is pixels, no upscaling, contained natural-width scrolling on mobile, and itemized Russian DOM translations for visible Spanish catalog captions.",
+      "matchedImageIds": [
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "coveredImageIds": [
+        "app4-horizontal-page-195-source-card",
+        "app4-horizontal-page-196-source-card",
+        "app4-informational-page-189-source-card",
+        "app4-informational-page-190-source-card",
+        "app4-informational-page-191-source-card",
+        "app4-informational-page-192-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card",
+        "app4-temporary-page-193-source-card",
+        "app4-temporary-page-194-source-card",
+        "app4-traffic-lights-page-197-source-card",
+        "app4-traffic-lights-page-198-source-card",
+        "app4-traffic-lights-page-199-source-card",
+        "app4-traffic-lights-page-200-source-card",
+        "app4-warning-page-187-source-card",
+        "app4-warning-page-188-source-card"
+      ],
+      "sourceLimitedExceptionCount": 16
+    }
+  ],
   "readabilityPolicy": {
     "minimumReadableTextHeightPx": 14,
-    "bodyTextParityTarget": "at-least-90-percent-of-nearby-body-text-when-measurable",
-    "noUpscaleRule": "Source-image-card display caps must not exceed natural asset width. Dense protected sheets may preserve readability through natural-width contained figure scrolling instead of phone-width downscaling.",
+    "bodyTextParityTargetPercent": 90,
+    "noUpscaleRule": "Source-image-card display caps must not exceed natural asset width. A minDisplayWidthPx or contained scrolling entry is display evidence only and is never sufficient without textReadabilityEvidence.",
+    "textReadabilityEvidenceRule": "Every visible-Spanish intended-readable image record must include textReadabilityEvidence with manual-reviewed text height/body-text parity or a source-limited exception with attempted alternatives and structured Russian DOM support.",
+    "acceptedReadabilityStatuses": [
+      "manual-reviewed-pass",
+      "source-limited-with-structured-dom-support"
+    ],
     "protectedPixelRule": "Protected source pixels remain Spanish/source-as-is. Russian translations are rendered only as selectable DOM text near the image."
   },
-  "exceptions": [],
+  "exceptions": [
+    {
+      "sectionId": "app4-signs-horizontal",
+      "blockId": "horizontal-source-sheets",
+      "imageId": "app4-horizontal-page-195-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-horizontal",
+      "blockId": "horizontal-source-sheets",
+      "imageId": "app4-horizontal-page-196-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "blockId": "informational-source-sheets",
+      "imageId": "app4-informational-page-189-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "blockId": "informational-source-sheets",
+      "imageId": "app4-informational-page-190-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "blockId": "informational-source-sheets",
+      "imageId": "app4-informational-page-191-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "blockId": "informational-source-sheets",
+      "imageId": "app4-informational-page-192-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-regulatory",
+      "blockId": "regulatory-source-sheets",
+      "imageId": "app4-regulatory-page-185-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-regulatory",
+      "blockId": "regulatory-source-sheets",
+      "imageId": "app4-regulatory-page-186-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-temporary",
+      "blockId": "temporary-source-sheets",
+      "imageId": "app4-temporary-page-193-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-temporary",
+      "blockId": "temporary-source-sheets",
+      "imageId": "app4-temporary-page-194-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "blockId": "traffic-lights-source-sheets",
+      "imageId": "app4-traffic-lights-page-197-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "blockId": "traffic-lights-source-sheets",
+      "imageId": "app4-traffic-lights-page-198-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "blockId": "traffic-lights-source-sheets",
+      "imageId": "app4-traffic-lights-page-199-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "blockId": "traffic-lights-source-sheets",
+      "imageId": "app4-traffic-lights-page-200-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-warning",
+      "blockId": "warning-source-sheets",
+      "imageId": "app4-warning-page-187-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    },
+    {
+      "sectionId": "app4-signs-warning",
+      "blockId": "warning-source-sheets",
+      "imageId": "app4-warning-page-188-source-card",
+      "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+      "status": "source-limited-with-structured-dom-support",
+      "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+      "attemptedAlternatives": [
+        "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+        "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+        "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+        "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+      ]
+    }
+  ],
   "inventory": [
     {
       "sectionId": "app1-other-required-safety-elements",
@@ -264,7 +571,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-desktop.png",
+          "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 340,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -332,7 +661,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-desktop.png",
+          "content/validation/manual-guide/app1-other-required-safety-elements/app1-other-required-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 340,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -448,7 +799,47 @@
         "minDisplayWidthPx": 760,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-111-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-112-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-113-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-114-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-115-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-116-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-117-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-118-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-desktop.png",
+          "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 6,
+        "displayEvidence": {
+          "minDisplayWidthPx": 760,
+          "maxDisplayWidthPx": 760,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -568,7 +959,47 @@
         "minDisplayWidthPx": 546,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-111-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-112-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-113-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-113-headrest-position-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-114-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-115-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-115-sri-types-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-116-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-117-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/page-118-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-other-required-safety-elements/page-119-other-required-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-desktop.png",
+          "content/validation/manual-guide/app1-safety-elements/app1-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": 546,
+          "maxDisplayWidthPx": 546,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -654,8 +1085,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
@@ -740,8 +1172,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
@@ -826,8 +1259,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/app1-safety-elements/page-105-safety-elements-source-crop.jpg",
@@ -983,7 +1417,30 @@
         "minDisplayWidthPx": 440,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app2-highways-hospitals/page-149-highways-hospitals-source-crop.jpg",
+          "content/validation/manual-guide/app2-highways-hospitals/page-150-highways-hospitals-source-crop.jpg",
+          "content/validation/manual-guide/app2-highways-hospitals/page-151-highways-hospitals-source-crop.jpg",
+          "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-desktop.png",
+          "content/validation/manual-guide/app2-highways-hospitals/app2-highways-hospitals-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 11,
+        "displayEvidence": {
+          "minDisplayWidthPx": 440,
+          "maxDisplayWidthPx": 440,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1049,8 +1506,9 @@
         "minDisplayWidthPx": 760,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/app2-safety-elements/page-125-safety-elements-source-crop.jpg",
@@ -1127,8 +1585,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/app2-safety-elements/page-125-safety-elements-source-crop.jpg",
@@ -1260,7 +1719,42 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app2-safety-elements/page-125-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-126-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-127-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-128-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-129-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-130-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-130-mirror-orientation-source-crop.png",
+          "content/validation/manual-guide/app2-safety-elements/page-131-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
+          "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-133-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-134-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-135-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/page-136-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app2-safety-elements/app2-safety-elements-desktop.png",
+          "content/validation/manual-guide/app2-safety-elements/app2-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 7,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 820,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1362,7 +1856,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app3-driving-factors/page-160-driving-factors-source-crop.jpg",
+          "content/validation/manual-guide/app3-driving-factors/page-161-driving-factors-source-crop.jpg",
+          "content/validation/manual-guide/app3-driving-factors/app3-driving-factors-desktop.png",
+          "content/validation/manual-guide/app3-driving-factors/app3-driving-factors-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 1350,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1476,7 +1992,40 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app3-safety-elements/page-169-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-170-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-171-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-172-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-173-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-174-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-175-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-176-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-177-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-178-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-179-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-180-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/page-181-safety-elements-source-crop.jpg",
+          "content/validation/manual-guide/app3-safety-elements/app3-safety-elements-desktop.png",
+          "content/validation/manual-guide/app3-safety-elements/app3-safety-elements-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 6,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 1175,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1653,7 +2202,38 @@
         "minDisplayWidthPx": 674,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-desktop.png",
+          "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 15,
+        "displayEvidence": {
+          "minDisplayWidthPx": 674,
+          "maxDisplayWidthPx": 674,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1812,7 +2392,38 @@
         "minDisplayWidthPx": 704,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-horizontal/page-195-horizontal-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-horizontal/page-196-horizontal-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-desktop.png",
+          "content/validation/manual-guide/app4-signs-horizontal/app4-signs-horizontal-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 14,
+        "displayEvidence": {
+          "minDisplayWidthPx": 704,
+          "maxDisplayWidthPx": 704,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -1980,7 +2591,40 @@
         "minDisplayWidthPx": 673,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-desktop.png",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 15,
+        "displayEvidence": {
+          "minDisplayWidthPx": 673,
+          "maxDisplayWidthPx": 673,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2171,7 +2815,40 @@
         "minDisplayWidthPx": 704,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-desktop.png",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 18,
+        "displayEvidence": {
+          "minDisplayWidthPx": 704,
+          "maxDisplayWidthPx": 704,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2404,7 +3081,40 @@
         "minDisplayWidthPx": 672,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-desktop.png",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 24,
+        "displayEvidence": {
+          "minDisplayWidthPx": 672,
+          "maxDisplayWidthPx": 672,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2504,7 +3214,40 @@
         "minDisplayWidthPx": 706,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-informational/page-189-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-190-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-191-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/page-192-informational-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-desktop.png",
+          "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 5,
+        "displayEvidence": {
+          "minDisplayWidthPx": 706,
+          "maxDisplayWidthPx": 706,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2574,7 +3317,29 @@
         "minDisplayWidthPx": 200,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": 200,
+          "maxDisplayWidthPx": 200,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2719,7 +3484,29 @@
         "minDisplayWidthPx": 615,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 12,
+        "displayEvidence": {
+          "minDisplayWidthPx": 615,
+          "maxDisplayWidthPx": 615,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -2878,7 +3665,29 @@
         "minDisplayWidthPx": 618,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 14,
+        "displayEvidence": {
+          "minDisplayWidthPx": 618,
+          "maxDisplayWidthPx": 618,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3044,7 +3853,29 @@
         "minDisplayWidthPx": 616,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 15,
+        "displayEvidence": {
+          "minDisplayWidthPx": 616,
+          "maxDisplayWidthPx": 616,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3182,7 +4013,29 @@
         "minDisplayWidthPx": 616,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 11,
+        "displayEvidence": {
+          "minDisplayWidthPx": 616,
+          "maxDisplayWidthPx": 616,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3327,7 +4180,38 @@
         "minDisplayWidthPx": 664,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 12,
+        "displayEvidence": {
+          "minDisplayWidthPx": 664,
+          "maxDisplayWidthPx": 664,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3472,7 +4356,38 @@
         "minDisplayWidthPx": 704,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-regulatory/page-185-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/page-186-regulatory-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-desktop.png",
+          "content/validation/manual-guide/app4-signs-regulatory/app4-signs-regulatory-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 12,
+        "displayEvidence": {
+          "minDisplayWidthPx": 704,
+          "maxDisplayWidthPx": 704,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3680,7 +4595,38 @@
         "minDisplayWidthPx": 673,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-desktop.png",
+          "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 21,
+        "displayEvidence": {
+          "minDisplayWidthPx": 673,
+          "maxDisplayWidthPx": 673,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -3902,7 +4848,38 @@
         "minDisplayWidthPx": 705,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-temporary/page-193-temporary-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-temporary/page-194-temporary-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-desktop.png",
+          "content/validation/manual-guide/app4-signs-temporary/app4-signs-temporary-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 23,
+        "displayEvidence": {
+          "minDisplayWidthPx": 705,
+          "maxDisplayWidthPx": 705,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4063,7 +5040,40 @@
         "minDisplayWidthPx": 673,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-desktop.png",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 14,
+        "displayEvidence": {
+          "minDisplayWidthPx": 673,
+          "maxDisplayWidthPx": 673,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4156,7 +5166,40 @@
         "minDisplayWidthPx": 757,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-desktop.png",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": 757,
+          "maxDisplayWidthPx": 757,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4249,7 +5292,40 @@
         "minDisplayWidthPx": 757,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-desktop.png",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": 757,
+          "maxDisplayWidthPx": 757,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4321,7 +5397,40 @@
         "minDisplayWidthPx": 757,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-197-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-198-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-199-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/page-200-traffic-lights-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-desktop.png",
+          "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": 757,
+          "maxDisplayWidthPx": 757,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4545,7 +5654,38 @@
         "minDisplayWidthPx": 672,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-desktop.png",
+          "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 23,
+        "displayEvidence": {
+          "minDisplayWidthPx": 672,
+          "maxDisplayWidthPx": 672,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4746,7 +5886,38 @@
         "minDisplayWidthPx": 705,
         "noUpscale": true,
         "mobileContainedScroll": true,
-        "readabilityDisposition": "fixed-by-contained-natural-width-display"
+        "readabilityDisposition": "no-upscale-contained-natural-width-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "source-limited-with-structured-dom-support",
+        "basis": "representative-group-review",
+        "groupId": "app4-dense-official-sheet-source-limited-dom-glossary",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/app4-signs-warning/page-187-warning-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-warning/page-188-warning-source-crop.jpg",
+          "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-desktop.png",
+          "content/validation/manual-guide/app4-signs-warning/app4-signs-warning-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": null,
+        "nearbyBodyTextHeightPx": null,
+        "bodyTextComparisonPercent": null,
+        "sourceLimitedException": {
+          "reason": "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+          "attemptedAlternatives": [
+            "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+            "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+            "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+            "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+          ]
+        },
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 20,
+        "displayEvidence": {
+          "minDisplayWidthPx": 705,
+          "maxDisplayWidthPx": 705,
+          "noUpscale": true,
+          "mobileContainedScroll": true
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -4808,8 +5979,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -4877,8 +6049,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -4946,8 +6119,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -4986,7 +6160,7 @@
       "imageKind": "bicycle-signage",
       "imageId": "traffic-rules-signs",
       "runtimeImageSelector": "[data-block-id=\"traffic-rules-signs\"] img",
-      "translationDomSelector": null,
+      "translationDomSelector": ".manual-source-image-term-translations",
       "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
       "assetExists": true,
       "naturalDimensions": {
@@ -5011,26 +6185,96 @@
       },
       "structuredRussianSupport": {
         "status": "pass",
-        "itemCount": 3,
+        "itemCount": 13,
         "items": [
           {
-            "termEs": null,
-            "translationRu": "Для экзамена ориентируйтесь на внешний вид знаков; русские пояснения идут рядом с таблицей.",
-            "role": "grouped-sign-caption-coverage",
+            "termEs": "Circulación exclusiva para bicicletas",
+            "translationRu": "Исключительное движение для велосипедов",
+            "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
-            "termEs": null,
-            "translationRu": "В таблице показаны исключительное движение велосипедов, совместное движение с пешеходами, направление велодорожки, пересечение велосипедистов, Полная остановка и Движение на велосипеде запрещено.",
-            "role": "grouped-sign-caption-coverage",
+            "termEs": "Vereda de convivencia con peatones",
+            "translationRu": "Тротуар совместного движения с пешеходами",
+            "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
-            "termEs": null,
-            "translationRu": "Также показаны Конец защищенной велодорожки, Сойти с велосипеда, Максимальная скорость 30 км/ч, Начало двустороннего движения, На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация, Пешеходный переход и Уступить дорогу.",
-            "role": "grouped-sign-caption-coverage",
+            "termEs": "Direccionador en ciclovía",
+            "translationRu": "Указатель направления на велодорожке",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Cruce de ciclistas",
+            "translationRu": "Пересечение велосипедистов",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Deténgase por completo",
+            "translationRu": "Остановитесь полностью",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Prohibido circular en bicicleta",
+            "translationRu": "Движение на велосипеде запрещено",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Finalización de la ciclovía",
+            "translationRu": "Конец велодорожки",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Descenso de la bicicleta",
+            "translationRu": "Сойти с велосипеда",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Velocidad máxima 30 km/h",
+            "translationRu": "Максимальная скорость 30 км/ч",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Comienzo de doble mano",
+            "translationRu": "Начало двустороннего движения",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Prohibido estacionar y detenerse sobre la ciclovía todos los días las 24 horas",
+            "translationRu": "На велодорожке запрещены остановка и стоянка каждый день 24 часа",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Cruce de peatones",
+            "translationRu": "Пешеходный переход",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Ceda el paso",
+            "translationRu": "Уступите дорогу",
+            "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           }
@@ -5042,7 +6286,36 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-031-protection-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-032-rules-signs-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-033-posture-age-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-034-distance-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-035-hand-signals-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-036-lanes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-037-parking-ecobici-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-038-scooter-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-desktop.png",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 13,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -5111,8 +6384,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5151,7 +6425,7 @@
       "imageKind": "bicycle-distance",
       "imageId": "safe-doors",
       "runtimeImageSelector": "[data-block-id=\"safe-distance\"] [data-card-id=\"safe-doors\"] img, [data-block-id=\"safe-distance\"] [data-distance-id=\"safe-doors\"] img",
-      "translationDomSelector": null,
+      "translationDomSelector": ".manual-source-image-term-translations",
       "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
       "assetExists": true,
       "naturalDimensions": {
@@ -5176,12 +6450,19 @@
       },
       "structuredRussianSupport": {
         "status": "pass",
-        "itemCount": 1,
+        "itemCount": 2,
         "items": [
           {
-            "termEs": "Оставляйте место от дверей",
-            "translationRu": "Рекомендуется держаться на 1,5 м от припаркованных автомобилей, чтобы не попасть под открывающуюся дверь.",
-            "role": "distance-panel-caption",
+            "termEs": "1,5 mtrs.",
+            "translationRu": "1,5 метра",
+            "role": "term-translation",
+            "learnerRelevant": true,
+            "coverageStatus": "covered"
+          },
+          {
+            "termEs": "Distancia de vehículos estacionados",
+            "translationRu": "Дистанция от припаркованных автомобилей",
+            "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           }
@@ -5193,7 +6474,36 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-031-protection-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-032-rules-signs-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-033-posture-age-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-034-distance-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-035-hand-signals-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-036-lanes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-037-parking-ecobici-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-038-scooter-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-desktop.png",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -5233,7 +6543,7 @@
       "imageKind": "bicycle-distance",
       "imageId": "unsafe-line",
       "runtimeImageSelector": "[data-block-id=\"safe-distance\"] [data-card-id=\"unsafe-line\"] img, [data-block-id=\"safe-distance\"] [data-distance-id=\"unsafe-line\"] img",
-      "translationDomSelector": null,
+      "translationDomSelector": ".manual-source-image-term-translations",
       "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
       "assetExists": true,
       "naturalDimensions": {
@@ -5261,9 +6571,9 @@
         "itemCount": 1,
         "items": [
           {
-            "termEs": "Не прижимайтесь к краю",
-            "translationRu": "Если ширины дороги не хватает для безопасного обгона, лучше ехать по центру полосы, пока не появится место.",
-            "role": "distance-panel-caption",
+            "termEs": "Prohibido circular agarrados de otros vehículos",
+            "translationRu": "Запрещено ехать, держась за другие транспортные средства",
+            "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           }
@@ -5275,7 +6585,36 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-031-protection-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-032-rules-signs-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-033-posture-age-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-034-distance-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-035-hand-signals-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-036-lanes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-037-parking-ecobici-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/page-038-scooter-source-crop.jpg",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-desktop.png",
+          "content/validation/manual-guide/ch1-bicycle/ch1-bicycle-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -5344,8 +6683,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5413,8 +6753,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5504,8 +6845,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5595,8 +6937,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5686,8 +7029,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5777,8 +7121,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5846,8 +7191,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-bicycle/page-030-bicycle-source-crop.jpg",
@@ -5912,8 +7258,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
@@ -5976,8 +7323,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
@@ -6040,8 +7388,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
@@ -6104,8 +7453,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
@@ -6202,7 +7552,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6293,7 +7670,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 3,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6377,7 +7781,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6461,7 +7892,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6552,7 +8010,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 3,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6643,7 +8128,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 3,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6741,7 +8253,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6839,7 +8378,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -6903,8 +8469,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
@@ -7001,7 +8568,34 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-pedestrian-priority-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-024-before-after-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-025-impact-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-026-infrastructure-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-027-school-routes-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-028-priority-areas-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/page-029-zone30-source-crop.jpg",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-desktop.png",
+          "content/validation/manual-guide/ch1-pedestrian-priority/ch1-pedestrian-priority-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7083,8 +8677,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
@@ -7153,8 +8748,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
@@ -7223,8 +8819,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
@@ -7305,7 +8902,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
+          "content/validation/manual-guide/ch1-public-transport-system/page-040-public-transport-source-crop.jpg",
+          "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-desktop.png",
+          "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 3,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7394,7 +9013,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
+          "content/validation/manual-guide/ch1-public-transport-system/page-040-public-transport-source-crop.jpg",
+          "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-desktop.png",
+          "content/validation/manual-guide/ch1-public-transport-system/ch1-public-transport-system-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7464,8 +9105,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-public-transport-system/page-039-public-transport-source-crop.jpg",
@@ -7519,8 +9161,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-shared-trip/page-041-shared-trip-source-crop.jpg",
@@ -7587,7 +9230,29 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-shared-trip/page-041-shared-trip-source-crop.jpg",
+          "content/validation/manual-guide/ch1-shared-trip/page-042-shared-trip-source-crop.jpg",
+          "content/validation/manual-guide/ch1-shared-trip/ch1-shared-trip-desktop.png",
+          "content/validation/manual-guide/ch1-shared-trip/ch1-shared-trip-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7675,7 +9340,30 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch1-sustainable-mobility/page-023-sustainable-mobility-source-crop.jpg",
+          "content/validation/manual-guide/ch1-sustainable-mobility/page-023-context-infographic-source-crop.jpg",
+          "content/validation/manual-guide/ch1-sustainable-mobility/page-023-vulnerability-source-crop.jpg",
+          "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-desktop.png",
+          "content/validation/manual-guide/ch1-sustainable-mobility/ch1-sustainable-mobility-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 4,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": null,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7730,8 +9418,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-existing-renderer-and-structured-dom-support"
+        "readabilityDisposition": "existing-renderer-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch1-sustainable-mobility/page-023-sustainable-mobility-source-crop.jpg",
@@ -7809,7 +9498,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 180,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7891,7 +9606,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 180,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -7973,7 +9714,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 180,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8076,7 +9843,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 5,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 1110,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8179,7 +9972,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 5,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 1150,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8261,7 +10080,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch2-required-documents/page-046-dni-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-046-license-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-beginner-sign-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-047-cedulas-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-049-vtv-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/page-050-rva-source-crop.jpg",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-desktop.png",
+          "content/validation/manual-guide/ch2-required-documents/ch2-required-documents-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 180,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8342,7 +10187,33 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-090-alcohol-drugs-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-090-drug-test-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-drugs-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-091-alcohol-limits-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-092-alcohol-drugs-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/page-093-alcohol-drugs-source-crop.jpg",
+          "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-desktop.png",
+          "content/validation/manual-guide/ch4-alcohol-drugs/ch4-alcohol-drugs-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 2,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 820,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8403,8 +10274,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch4-alcohol-drugs/page-090-alcohol-drugs-source-crop.jpg",
@@ -8463,8 +10335,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch4-distractions/page-095-distractions-source-crop.jpg",
@@ -8535,7 +10408,32 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch4-distractions/page-095-distractions-source-crop.jpg",
+          "content/validation/manual-guide/ch4-distractions/page-095-distraction-panels-source-crop.jpg",
+          "content/validation/manual-guide/ch4-distractions/page-096-distractions-source-crop.jpg",
+          "content/validation/manual-guide/ch4-distractions/page-097-distractions-source-crop.jpg",
+          "content/validation/manual-guide/ch4-distractions/page-097-attention-photo-source-crop.jpg",
+          "content/validation/manual-guide/ch4-distractions/ch4-distractions-desktop.png",
+          "content/validation/manual-guide/ch4-distractions/ch4-distractions-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 720,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8607,7 +10505,31 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
+      },
+      "textReadabilityEvidence": {
+        "status": "manual-reviewed-pass",
+        "basis": "manual-screenshot-review",
+        "reviewedEvidencePaths": [
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-101-anticipatory-efficient-source-crop.jpg",
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-102-anticipatory-efficient-source-crop.jpg",
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-anticipatory-efficient-source-crop.jpg",
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/page-103-driving-culture-photo-source-crop.jpg",
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/ch5-anticipatory-efficient-driving-desktop.png",
+          "content/validation/manual-guide/ch5-anticipatory-efficient-driving/ch5-anticipatory-efficient-driving-mobile.png"
+        ],
+        "minimumReadableTextHeightPx": 14,
+        "nearbyBodyTextHeightPx": 15,
+        "bodyTextComparisonPercent": 93,
+        "sourceLimitedException": null,
+        "structuredDomSupportRequired": true,
+        "translationItemCount": 1,
+        "displayEvidence": {
+          "minDisplayWidthPx": null,
+          "maxDisplayWidthPx": 1500,
+          "noUpscale": true,
+          "mobileContainedScroll": false
+        }
       },
       "visualEvidence": {
         "sourceScreenshots": [
@@ -8664,8 +10586,9 @@
         "minDisplayWidthPx": null,
         "noUpscale": true,
         "mobileContainedScroll": false,
-        "readabilityDisposition": "covered-by-structured-dom-support-and-no-upscale-cap"
+        "readabilityDisposition": "no-upscale-source-card-display"
       },
+      "textReadabilityEvidence": null,
       "visualEvidence": {
         "sourceScreenshots": [
           "content/validation/manual-guide/ch5-equal-society/page-099-equal-society-source-crop.jpg",

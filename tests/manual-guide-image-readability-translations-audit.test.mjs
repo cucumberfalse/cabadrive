@@ -75,10 +75,145 @@ test("manual guide image readability/translations evidence covers current whole-
     assert.equal(evidence.counts.imageReferences, 84);
     assert.equal(evidence.counts.visibleSpanishImages, 54);
     assert.equal(evidence.counts.visibleSpanishImagesWithStructuredRussianSupport, 54);
+    assert.equal(evidence.counts.acceptedCoverageExceptions, 16);
     assert.equal(evidence.counts.validationFindings, 0);
     assert.equal(evidence.requiredExampleCoverage.every((entry) => entry.status === "pass"), true);
+    assert.equal(evidence.readabilityEvidenceGroups.every((entry) => entry.status === "pass"), true);
+    assert.equal(evidence.inventory.filter((record) => record.visibleSpanish && !record.textReadabilityEvidence).length, 0);
+    assert.equal(
+      evidence.inventory.find((record) => record.imageId === "app4-warning-page-187-source-card").textReadabilityEvidence.status,
+      "source-limited-with-structured-dom-support"
+    );
+    assert.equal(
+      evidence.inventory.find((record) => record.imageId === "traffic-rules-signs").translationDomSelector,
+      ".manual-source-image-term-translations"
+    );
     assert.equal(evidence.blockKindCounts["source-image-cards"], 46);
     assert.equal(evidence.blockKindCounts["impact-diagram.body"], 1);
+  } finally {
+    rmSync(tempRoot, { force: true, recursive: true });
+  }
+});
+
+test("manual guide image readability/translations audit rejects minDisplayWidth-only readability evidence", async () => {
+  const tempRoot = mkdtempSync(join(tmpdir(), "cabadrive-manual-image-readability-min-width-"));
+  const sectionRoot = join(tempRoot, "manual-sections");
+  const evidencePath = join(tempRoot, "manual-guide-image-readability-translations.evidence.json");
+  mkdirSync(sectionRoot);
+
+  try {
+    const fixtureAssetPath =
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg";
+    writeFileSync(
+      join(sectionRoot, "fixture.ts"),
+      `export const fixtureSection = {
+  sectionId: "fixture-min-width-only",
+  titleRu: "Fixture",
+  sourcePages: [1],
+  visualEvidence: { sourceScreenshots: [], russianScreenshots: [] },
+  blocks: [{
+    id: "fixture-source-images",
+    kind: "source-image-cards",
+    titleRu: "Fixture images",
+    sourceTextEs: "Documento Nacional de Identidad.",
+    cards: [{
+      id: "fixture-min-width-card",
+      titleRu: "Min width only",
+      displayMode: "full-width",
+      maxDisplayWidthPx: 440,
+      minDisplayWidthPx: 440,
+      sourcePage: 1,
+      sourceRegion: { x: 0, y: 0, width: 320, height: 118 },
+      assetPath: ${JSON.stringify(fixtureAssetPath)},
+      altRu: "Fixture image",
+      visibleSpanish: true,
+      sourceImageException: {
+        kind: "source-document-example-original-visible-text",
+        visibleSpanishScope: "source-document-example-image-only",
+        sourceAsIs: true,
+        russianExplanationOutsideImage: true
+      },
+      termTranslations: [
+        { termEs: "Documento Nacional de Identidad", translationRu: "Национальный документ личности" }
+      ]
+    }],
+    visualNotes: []
+  }]
+};\n`
+    );
+
+    await assertAuditFails(
+      evidencePath,
+      /visible-spanish-missing-text-readability-evidence: fixture-min-width-card/u,
+      ["--write"],
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+    );
+
+    const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    const record = failedEvidence.inventory.find((entry) => entry.imageId === "fixture-min-width-card");
+    assert.equal(record.display.minDisplayWidthPx, 440);
+    assert.equal(record.structuredRussianSupport.itemCount, 1);
+    assert.equal(record.textReadabilityEvidence, null);
+  } finally {
+    rmSync(tempRoot, { force: true, recursive: true });
+  }
+});
+
+test("manual guide image readability/translations audit rejects bicycle sign support without Spanish source terms", async () => {
+  const tempRoot = mkdtempSync(join(tmpdir(), "cabadrive-manual-image-readability-bicycle-terms-"));
+  const sectionRoot = join(tempRoot, "manual-sections");
+  const evidencePath = join(tempRoot, "manual-guide-image-readability-translations.evidence.json");
+  mkdirSync(sectionRoot);
+
+  try {
+    const fixtureAssetPath =
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg";
+    writeFileSync(
+      join(sectionRoot, "fixture.ts"),
+      `export const fixtureSection = {
+  sectionId: "ch1-bicycle",
+  titleRu: "Fixture bicycle",
+  sourcePages: [32],
+  visualEvidence: {
+    sourceScreenshots: ["content/validation/manual-guide/ch1-bicycle/page-032-rules-signs-source-crop.jpg"],
+    russianScreenshots: ["content/validation/manual-guide/ch1-bicycle/ch1-bicycle-desktop.png"]
+  },
+  blocks: [{
+    id: "traffic-rules-signs",
+    kind: "bicycle-signage",
+    titleRu: "Fixture sign sheet",
+    sourceTextEs: "Señales de tránsito.",
+    sourcePage: 32,
+    sourceRegion: { x: 330, y: 545, width: 550, height: 220 },
+    assetPath: ${JSON.stringify(fixtureAssetPath)},
+    altRu: "Fixture sign sheet",
+    visibleSpanish: true,
+    officialSignException: {
+      kind: "official-traffic-sign-source-as-is",
+      visibleSpanishScope: "official-sign-image-only",
+      sourceAsIs: true
+    },
+    termTranslations: [
+      { termEs: "", translationRu: "Общий текст без испанской подписи" }
+    ],
+    noticeItemsRu: ["Generic grouped prose is not enough for this user-named image."],
+    visualNotes: []
+  }]
+};\n`
+    );
+
+    await assertAuditFails(
+      evidencePath,
+      /structured-russian-support-missing-source-spanish: traffic-rules-signs/u,
+      ["--write"],
+      { MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT: sectionRoot }
+    );
+
+    const failedEvidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    const record = failedEvidence.inventory.find((entry) => entry.imageId === "traffic-rules-signs");
+    assert.equal(record.translationDomSelector, ".manual-source-image-term-translations");
+    assert.equal(record.structuredRussianSupport.itemCount, 1);
+    assert.equal(record.structuredRussianSupport.items[0].termEs, "");
   } finally {
     rmSync(tempRoot, { force: true, recursive: true });
   }

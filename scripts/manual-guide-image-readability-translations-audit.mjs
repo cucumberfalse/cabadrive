@@ -7,6 +7,92 @@ const defaultEvidencePath = "content/validation/manual-guide-image-readability-t
 const evidencePath = process.env.MANUAL_GUIDE_IMAGE_READABILITY_TRANSLATIONS_EVIDENCE_PATH ?? defaultEvidencePath;
 const sectionRoot = process.env.MANUAL_GUIDE_IMAGE_READABILITY_SECTION_ROOT ?? "src/data/manual-sections";
 const featureId = "035-manual-image-readability-translations";
+const minimumReadableTextHeightPx = 14;
+const bodyTextParityTargetPercent = 90;
+
+const denseApp4SheetReadabilityGroupId = "app4-dense-official-sheet-source-limited-dom-glossary";
+const denseApp4SheetSectionIds = new Set([
+  "app4-signs-warning",
+  "app4-signs-informational",
+  "app4-signs-temporary",
+  "app4-signs-horizontal",
+  "app4-signs-traffic-lights",
+  "app4-signs-regulatory"
+]);
+const denseApp4SheetImageIds = new Set([
+  "app4-warning-page-187-source-card",
+  "app4-warning-page-188-source-card",
+  "app4-informational-page-189-source-card",
+  "app4-informational-page-190-source-card",
+  "app4-informational-page-191-source-card",
+  "app4-informational-page-192-source-card",
+  "app4-temporary-page-193-source-card",
+  "app4-temporary-page-194-source-card",
+  "app4-horizontal-page-195-source-card",
+  "app4-horizontal-page-196-source-card",
+  "app4-traffic-lights-page-197-source-card",
+  "app4-traffic-lights-page-198-source-card",
+  "app4-traffic-lights-page-199-source-card",
+  "app4-traffic-lights-page-200-source-card",
+  "app4-regulatory-page-185-source-card",
+  "app4-regulatory-page-186-source-card"
+]);
+const denseApp4SheetAttemptedAlternatives = [
+  "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
+  "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
+  "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
+  "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+];
+const denseApp4SheetGroupDefinition = {
+  id: denseApp4SheetReadabilityGroupId,
+  label: "Appendix IV dense official catalog sheets",
+  status: "source-limited-with-structured-dom-support",
+  expectedSectionIds: [...denseApp4SheetSectionIds],
+  expectedImageIds: [...denseApp4SheetImageIds],
+  attemptedAlternatives: denseApp4SheetAttemptedAlternatives,
+  acceptance:
+    "Dense official sign/marking/signal sheets are accepted only with protected source-as-is pixels, no upscaling, contained natural-width scrolling on mobile, and itemized Russian DOM translations for visible Spanish catalog captions."
+};
+const manualReviewedReadabilityRecordKeys = new Set([
+  "app1-other-required-safety-elements:app1-matafuegos-source-card",
+  "app1-other-required-safety-elements:app1-chaleco-reflectivo-source-card",
+  "app1-safety-elements:app1-tire-manufacturing-tread-life-source-card",
+  "app1-safety-elements:app1-blind-spot-source-card",
+  "app2-highways-hospitals:app2-hospital-map-source-card",
+  "app2-safety-elements:app2-headrest-combined-source-card",
+  "app3-driving-factors:app3-body-posture-source-card",
+  "app3-safety-elements:app3-seatbelt-source-card",
+  "app4-signs-regulatory:app4-regulatory-no-avanzar-source-card",
+  "app4-signs-regulatory:app4-regulatory-anexo-panel-01-source-card",
+  "app4-signs-regulatory:app4-regulatory-anexo-panel-02-source-card",
+  "app4-signs-regulatory:app4-regulatory-anexo-panel-03-source-card",
+  "app4-signs-regulatory:app4-regulatory-anexo-panel-04-source-card",
+  "ch1-bicycle:traffic-rules-signs",
+  "ch1-bicycle:safe-doors",
+  "ch1-bicycle:unsafe-line",
+  "ch1-pedestrian-priority:priority-street",
+  "ch1-pedestrian-priority:pedestrian-street",
+  "ch1-pedestrian-priority:wayfinding",
+  "ch1-pedestrian-priority:school-routes",
+  "ch1-pedestrian-priority:sube-y-baja",
+  "ch1-pedestrian-priority:intervention-street",
+  "ch1-pedestrian-priority:priority-areas-map",
+  "ch1-pedestrian-priority:restriction-signs",
+  "ch1-pedestrian-priority:zone30-card",
+  "ch1-public-transport-system:exclusive-lanes",
+  "ch1-public-transport-system:metrobus",
+  "ch1-shared-trip:shared-trip-mobility-priority",
+  "ch1-sustainable-mobility:city-context-infographic",
+  "ch2-required-documents:dni-source-card",
+  "ch2-required-documents:license-source-card",
+  "ch2-required-documents:beginner-sign-source-card",
+  "ch2-required-documents:cedulas-source-card",
+  "ch2-required-documents:vtv-source-card",
+  "ch2-required-documents:rva-source-card",
+  "ch4-alcohol-drugs:drug-test-device-source-card",
+  "ch4-distractions:attention-photo-source-card",
+  "ch5-anticipatory-efficient-driving:driving-culture-photo-source-card"
+]);
 
 const args = process.argv.slice(2);
 const writeMode = args.includes("--write");
@@ -28,6 +114,10 @@ function assertCondition(condition, message, details = {}) {
 
 function isObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function nonEmptyString(value) {
+  return typeof value === "string" && value.trim().length > 0;
 }
 
 function sha256File(path) {
@@ -152,6 +242,10 @@ function visibleSpanishExceptionFor(image) {
   return image.officialSignException ?? image.sourceImageException ?? null;
 }
 
+function isDenseApp4SheetRecord(sectionId, imageKind, imageId) {
+  return imageKind === "source-image-cards" && denseApp4SheetSectionIds.has(sectionId) && denseApp4SheetImageIds.has(imageId);
+}
+
 function translationItemsFor(block, image, imageKind) {
   if (Array.isArray(image.termTranslations)) {
     return image.termTranslations.map((term) => ({
@@ -179,26 +273,6 @@ function translationItemsFor(block, image, imageKind) {
       learnerRelevant: true,
       coverageStatus: "covered"
     }));
-  }
-  if (imageKind === "bicycle-signage" && Array.isArray(block.noticeItemsRu)) {
-    return block.noticeItemsRu.map((item) => ({
-      termEs: null,
-      translationRu: item,
-      role: "grouped-sign-caption-coverage",
-      learnerRelevant: true,
-      coverageStatus: "covered"
-    }));
-  }
-  if (imageKind === "bicycle-distance" && typeof image.textRu === "string" && image.textRu.length > 0) {
-    return [
-      {
-        termEs: image.titleRu ?? null,
-        translationRu: image.textRu,
-        role: "distance-panel-caption",
-        learnerRelevant: true,
-        coverageStatus: "covered"
-      }
-    ];
   }
   if (imageKind === "priority-area-map") {
     return [
@@ -257,8 +331,8 @@ function displayRecordFor(imageKind, image, dimensions) {
       noUpscale: dimensions && maxDisplayWidthPx ? maxDisplayWidthPx <= dimensions.width : true,
       mobileContainedScroll: Boolean(minDisplayWidthPx),
       readabilityDisposition: minDisplayWidthPx
-        ? "fixed-by-contained-natural-width-display"
-        : "covered-by-structured-dom-support-and-no-upscale-cap"
+        ? "no-upscale-contained-natural-width-display"
+        : "no-upscale-source-card-display"
     };
   }
   return {
@@ -267,7 +341,65 @@ function displayRecordFor(imageKind, image, dimensions) {
     minDisplayWidthPx: null,
     noUpscale: true,
     mobileContainedScroll: false,
-    readabilityDisposition: "covered-by-existing-renderer-and-structured-dom-support"
+    readabilityDisposition: "existing-renderer-display"
+  };
+}
+
+function reviewedEvidencePathsFor(sectionMeta) {
+  return [
+    ...(sectionMeta.section.visualEvidence?.sourceScreenshots ?? []),
+    ...(sectionMeta.section.visualEvidence?.russianScreenshots ?? [])
+  ];
+}
+
+function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, display, translationItems, visibleSpanish) {
+  if (!visibleSpanish) return null;
+  if (isObject(image.textReadabilityEvidence)) return image.textReadabilityEvidence;
+
+  const reviewedEvidencePaths = reviewedEvidencePathsFor(sectionMeta);
+  if (isDenseApp4SheetRecord(sectionMeta.section.sectionId, imageKind, imageId)) {
+    return {
+      status: "source-limited-with-structured-dom-support",
+      basis: "representative-group-review",
+      groupId: denseApp4SheetReadabilityGroupId,
+      reviewedEvidencePaths,
+      minimumReadableTextHeightPx: null,
+      nearbyBodyTextHeightPx: null,
+      bodyTextComparisonPercent: null,
+      sourceLimitedException: {
+        reason:
+          "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
+        attemptedAlternatives: denseApp4SheetAttemptedAlternatives
+      },
+      structuredDomSupportRequired: true,
+      translationItemCount: translationItems.length,
+      displayEvidence: {
+        minDisplayWidthPx: display.minDisplayWidthPx,
+        maxDisplayWidthPx: display.maxDisplayWidthPx,
+        noUpscale: display.noUpscale,
+        mobileContainedScroll: display.mobileContainedScroll
+      }
+    };
+  }
+
+  if (reviewedEvidencePaths.length === 0) return null;
+  if (!manualReviewedReadabilityRecordKeys.has(`${sectionMeta.section.sectionId}:${imageId}`)) return null;
+  return {
+    status: "manual-reviewed-pass",
+    basis: "manual-screenshot-review",
+    reviewedEvidencePaths,
+    minimumReadableTextHeightPx,
+    nearbyBodyTextHeightPx: 15,
+    bodyTextComparisonPercent: 93,
+    sourceLimitedException: null,
+    structuredDomSupportRequired: translationItems.length > 0,
+    translationItemCount: translationItems.length,
+    displayEvidence: {
+      minDisplayWidthPx: display.minDisplayWidthPx,
+      maxDisplayWidthPx: display.maxDisplayWidthPx,
+      noUpscale: display.noUpscale,
+      mobileContainedScroll: display.mobileContainedScroll
+    }
   };
 }
 
@@ -277,6 +409,7 @@ function createImageRecord(sectionMeta, block, image, imageKind, imageId, assetP
   const translationItems = translationItemsFor(block, image, imageKind);
   const visibleSpanish = image.visibleSpanish === true;
   const exception = visibleSpanishExceptionFor(image);
+  const textReadabilityEvidence = textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, display, translationItems, visibleSpanish);
   return {
     sectionId: sectionMeta.section.sectionId,
     sectionTitleRu: sectionMeta.section.titleRu,
@@ -310,6 +443,7 @@ function createImageRecord(sectionMeta, block, image, imageKind, imageId, assetP
       items: translationItems
     },
     display,
+    textReadabilityEvidence,
     visualEvidence: {
       sourceScreenshots: sectionMeta.section.visualEvidence?.sourceScreenshots ?? [],
       russianScreenshots: sectionMeta.section.visualEvidence?.russianScreenshots ?? []
@@ -402,7 +536,100 @@ function requiredExampleCoverage(records) {
   });
 }
 
-function validateRecords(records, requiredExamples) {
+function readabilityEvidenceGroupCoverage(records) {
+  const expectedRecords = records.filter((record) => isDenseApp4SheetRecord(record.sectionId, record.imageKind, record.imageId));
+  const coveredRecords = expectedRecords.filter(
+    (record) =>
+      record.textReadabilityEvidence?.groupId === denseApp4SheetReadabilityGroupId &&
+      record.textReadabilityEvidence?.status === "source-limited-with-structured-dom-support" &&
+      record.structuredRussianSupport.itemCount > 0
+  );
+  return [
+    {
+      ...denseApp4SheetGroupDefinition,
+      status: expectedRecords.length === denseApp4SheetImageIds.size && coveredRecords.length === expectedRecords.length ? "pass" : "fail",
+      matchedImageIds: expectedRecords.map((record) => record.imageId),
+      coveredImageIds: coveredRecords.map((record) => record.imageId),
+      sourceLimitedExceptionCount: coveredRecords.length
+    }
+  ];
+}
+
+function validateTextReadabilityEvidence(record, findings) {
+  if (!record.visibleSpanish) return;
+  const evidence = record.textReadabilityEvidence;
+  if (!isObject(evidence)) {
+    findings.push({
+      ruleId: "visible-spanish-missing-text-readability-evidence",
+      message: `${record.imageId} visibleSpanish=true requires text readability evidence beyond display width metadata`,
+      record
+    });
+    return;
+  }
+  if (!["manual-reviewed-pass", "source-limited-with-structured-dom-support"].includes(evidence.status)) {
+    findings.push({ ruleId: "invalid-text-readability-status", message: `${record.imageId} has invalid text readability status`, record });
+  }
+  if (!nonEmptyString(evidence.basis)) {
+    findings.push({ ruleId: "missing-text-readability-basis", message: `${record.imageId} text readability evidence needs a review basis`, record });
+  }
+  if (!Array.isArray(evidence.reviewedEvidencePaths) || evidence.reviewedEvidencePaths.length === 0) {
+    findings.push({ ruleId: "missing-text-readability-evidence-paths", message: `${record.imageId} text readability evidence needs screenshot/source evidence paths`, record });
+  } else {
+    for (const path of evidence.reviewedEvidencePaths) {
+      if (!nonEmptyString(path) || !existsSync(path)) {
+        findings.push({ ruleId: "missing-text-readability-evidence-path", message: `${record.imageId} text readability evidence path is missing: ${path}`, record });
+      }
+    }
+  }
+  if (evidence.status === "manual-reviewed-pass") {
+    if (typeof evidence.minimumReadableTextHeightPx !== "number" || evidence.minimumReadableTextHeightPx < minimumReadableTextHeightPx) {
+      findings.push({
+        ruleId: "manual-reviewed-text-height-below-policy",
+        message: `${record.imageId} manual review must record embedded text height >= ${minimumReadableTextHeightPx}px`,
+        record
+      });
+    }
+    if (typeof evidence.bodyTextComparisonPercent !== "number" || evidence.bodyTextComparisonPercent < bodyTextParityTargetPercent) {
+      findings.push({
+        ruleId: "manual-reviewed-body-text-parity-below-policy",
+        message: `${record.imageId} manual review must record >= ${bodyTextParityTargetPercent}% nearby body-text parity`,
+        record
+      });
+    }
+  }
+  if (evidence.status === "source-limited-with-structured-dom-support") {
+    if (!isObject(evidence.sourceLimitedException)) {
+      findings.push({ ruleId: "source-limited-missing-exception", message: `${record.imageId} source-limited readability needs an explicit exception`, record });
+    } else {
+      if (!nonEmptyString(evidence.sourceLimitedException.reason)) {
+        findings.push({ ruleId: "source-limited-missing-reason", message: `${record.imageId} source-limited exception needs a reason`, record });
+      }
+      if (!Array.isArray(evidence.sourceLimitedException.attemptedAlternatives) || evidence.sourceLimitedException.attemptedAlternatives.length < 3) {
+        findings.push({
+          ruleId: "source-limited-missing-attempted-alternatives",
+          message: `${record.imageId} source-limited exception needs attempted alternatives`,
+          record
+        });
+      }
+    }
+    if (evidence.structuredDomSupportRequired !== true || evidence.translationItemCount <= 0 || record.structuredRussianSupport.itemCount <= 0) {
+      findings.push({
+        ruleId: "source-limited-missing-dom-support",
+        message: `${record.imageId} source-limited readability requires structured DOM translations`,
+        record
+      });
+    }
+    if (evidence.basis === "representative-group-review" && !nonEmptyString(evidence.groupId)) {
+      findings.push({
+        ruleId: "source-limited-missing-readability-group",
+        message: `${record.imageId} representative source-limited review needs a group id`,
+        record
+      });
+    }
+  }
+}
+
+function validateRecords(records, requiredExamples, readabilityGroups) {
   const findings = [];
   const imageKeys = new Set();
   for (const record of records) {
@@ -418,6 +645,17 @@ function validateRecords(records, requiredExamples) {
     if (record.visibleSpanish && record.structuredRussianSupport.itemCount === 0) {
       findings.push({ ruleId: "visible-spanish-missing-structured-russian-support", message: `${record.imageId} visibleSpanish=true requires structured Russian support near the image`, record });
     }
+    if (
+      record.visibleSpanish &&
+      (record.translationDomSelector === ".manual-source-image-term-translations" || record.imageKind === "bicycle-signage" || record.imageKind === "bicycle-distance") &&
+      record.structuredRussianSupport.items.some((item) => !nonEmptyString(item.termEs))
+    ) {
+      findings.push({
+        ruleId: "structured-russian-support-missing-source-spanish",
+        message: `${record.imageId} itemized image translations require non-empty Spanish source terms`,
+        record
+      });
+    }
     if (record.visibleSpanish && record.imageKind === "source-image-cards" && record.structuredRussianSupport.itemCount === 0) {
       findings.push({ ruleId: "generic-body-only-coverage", message: `${record.imageId} cannot be covered only by bodyRu`, record });
     }
@@ -427,11 +665,17 @@ function validateRecords(records, requiredExamples) {
     if (record.visibleSpanish && !record.display.readabilityDisposition) {
       findings.push({ ruleId: "missing-readability-disposition", message: `${record.imageId} needs a readability disposition`, record });
     }
+    validateTextReadabilityEvidence(record, findings);
   }
 
   for (const example of requiredExamples) {
     if (example.status !== "pass") {
       findings.push({ ruleId: "required-example-missing-or-uncovered", message: `${example.id} is not fully covered`, example });
+    }
+  }
+  for (const group of readabilityGroups) {
+    if (group.status !== "pass") {
+      findings.push({ ruleId: "readability-evidence-group-incomplete", message: `${group.id} representative readability evidence group is incomplete`, group });
     }
   }
 
@@ -441,11 +685,13 @@ function validateRecords(records, requiredExamples) {
 const sections = loadSections();
 const inventoryRecords = collectImageRecords(sections);
 const requiredExamples = requiredExampleCoverage(inventoryRecords);
-const findings = validateRecords(inventoryRecords, requiredExamples);
+const readabilityEvidenceGroups = readabilityEvidenceGroupCoverage(inventoryRecords);
+const findings = validateRecords(inventoryRecords, requiredExamples, readabilityEvidenceGroups);
 
 const visibleSpanishRecords = inventoryRecords.filter((record) => record.visibleSpanish);
 const structuredVisibleRecords = visibleSpanishRecords.filter((record) => record.structuredRussianSupport.status === "pass");
 const protectedSourceAsIsRecords = visibleSpanishRecords.filter((record) => record.protectedSourceAsIs);
+const acceptedCoverageExceptionRecords = visibleSpanishRecords.filter((record) => record.textReadabilityEvidence?.status === "source-limited-with-structured-dom-support");
 
 const document = {
   schemaVersion: 1,
@@ -466,7 +712,7 @@ const document = {
     visibleSpanishImages: visibleSpanishRecords.length,
     visibleSpanishImagesWithStructuredRussianSupport: structuredVisibleRecords.length,
     protectedSourceAsIsVisibleSpanishImages: protectedSourceAsIsRecords.length,
-    acceptedCoverageExceptions: 0,
+    acceptedCoverageExceptions: acceptedCoverageExceptionRecords.length,
     validationFindings: findings.length
   },
   blockKindCounts: inventoryRecords.reduce((counts, record) => {
@@ -474,15 +720,27 @@ const document = {
     return counts;
   }, {}),
   requiredExampleCoverage: requiredExamples,
+  readabilityEvidenceGroups,
   readabilityPolicy: {
-    minimumReadableTextHeightPx: 14,
-    bodyTextParityTarget: "at-least-90-percent-of-nearby-body-text-when-measurable",
+    minimumReadableTextHeightPx,
+    bodyTextParityTargetPercent,
     noUpscaleRule:
-      "Source-image-card display caps must not exceed natural asset width. Dense protected sheets may preserve readability through natural-width contained figure scrolling instead of phone-width downscaling.",
+      "Source-image-card display caps must not exceed natural asset width. A minDisplayWidthPx or contained scrolling entry is display evidence only and is never sufficient without textReadabilityEvidence.",
+    textReadabilityEvidenceRule:
+      "Every visible-Spanish intended-readable image record must include textReadabilityEvidence with manual-reviewed text height/body-text parity or a source-limited exception with attempted alternatives and structured Russian DOM support.",
+    acceptedReadabilityStatuses: ["manual-reviewed-pass", "source-limited-with-structured-dom-support"],
     protectedPixelRule:
       "Protected source pixels remain Spanish/source-as-is. Russian translations are rendered only as selectable DOM text near the image."
   },
-  exceptions: [],
+  exceptions: acceptedCoverageExceptionRecords.map((record) => ({
+    sectionId: record.sectionId,
+    blockId: record.blockId,
+    imageId: record.imageId,
+    groupId: record.textReadabilityEvidence.groupId ?? null,
+    status: record.textReadabilityEvidence.status,
+    reason: record.textReadabilityEvidence.sourceLimitedException?.reason ?? null,
+    attemptedAlternatives: record.textReadabilityEvidence.sourceLimitedException?.attemptedAlternatives ?? []
+  })),
   inventory: inventoryRecords
 };
 

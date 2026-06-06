@@ -825,7 +825,7 @@
       "ch1-cities-for-people": "00f3aa2f0c157f1d1552677977a6c234a878e803ddf6be9b5b8ff0e324baf3bc",
       "ch1-sustainable-mobility": "503a680ccdcbf1082af2858a856ab692090c7f807549b8192c258a25ac0f0cf6",
       "ch1-pedestrian-priority": "35e2bdebc26967019de11e6512cfec1f0f619a5e1b9bef0067d215295bc658ae",
-      "ch1-bicycle": "2dc8beab4615d483b4ca45bd0bfad5260353a0197774c83d78095b715c3a99f1"
+      "ch1-bicycle": "ad06413f4e249cedfcd5f069f4f38fda3c566b04384d6686fabb692a968fa5e5"
     },
     "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints and their section module plus referenced source/runtime visual asset bytes match legacyBaselineStateFingerprints.",
     "highResolutionEvidence": {

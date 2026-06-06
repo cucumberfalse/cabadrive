@@ -237,7 +237,7 @@
 - [ ] T089 Review Agent checks whole-guide coverage, validator strength,
   protected-image preservation, readability evidence, Russian DOM translation
   completeness, UI responsiveness, tests, and process-memory compliance.
-- [ ] T090 Implementation Agent records and resolves review findings only
+- [x] T090 Implementation Agent records and resolves review findings only
   through Orchestrator assignment.
 - [ ] T091 Orchestrator routes any Implementation Agent feedback to Architect
   for task/ticket/not-needed disposition before final validation.
@@ -304,14 +304,19 @@ Implementation Agent should append concise evidence here during implementation.
   official pixels were translated, retouched, masked, inpainted, overlaid, or
   replaced. Fixes are DOM translations/captions/glossaries plus validation
   evidence against existing source-as-is assets.
-- ch1-bicycle decision/dead end: direct `termTranslations` edits to
-  `src/data/manual-sections/ch1-bicycle.ts` were attempted, but
-  `pnpm run validate:manual-guide` then failed because that legacy strict
-  source-fidelity entry would require an unrelated visual evidence schema v3
-  migration. The edit was reverted. The audit instead records the existing
-  nearby DOM support (`noticeItemsRu` for the sign sheet and `textRu` for the
-  distance examples) as justified grouped coverage, preserving the legacy
-  source-fidelity baseline.
+- ch1-bicycle review-fix decision: Review Agent correctly rejected the earlier
+  grouped `noticeItemsRu`/`textRu` coverage because it had no auditable Spanish
+  source terms. The fix now adds real `termTranslations` to
+  `src/data/manual-sections/ch1-bicycle.ts` for the page-32 sign sheet and the
+  page-34 safe/unsafe distance panels. `BicycleDistanceBlockView` now exposes
+  `data-distance-id` so Playwright and audit runtime selectors can target each
+  panel. The ch1 legacy source-fidelity baseline remains legacy, but its
+  `ch1-bicycle` state fingerprint in
+  `content/validation/manual-guide-source-fidelity.evidence.json` was updated
+  to the stable checker hash
+  `ad06413f4e249cedfcd5f069f4f38fda3c566b04384d6686fabb692a968fa5e5`
+  because the section module bytes intentionally changed; no protected image
+  asset hashes or implementation evidence fingerprints changed.
 - Tests added:
   `tests/manual-guide-image-readability-translations-audit.test.mjs` for
   write/check/stale/malformed evidence behavior, current whole-guide counts,
@@ -351,6 +356,63 @@ Implementation Agent should append concise evidence here during implementation.
   `fa5e221` (`Add manual image readability translation audit`), pushed branch
   `codex/035-manual-image-readability-translations` to origin, and opened ready
   PR `#201`: `https://github.com/cucumberfalse/cabadrive/pull/201`.
+- Review fixes assignment for PR `#201` confirmed in the same worktree/branch
+  on current review head
+  `fb6db697a58f90ffda464e0e0e18e74ac898dbb9`. Initial review-fix status was
+  `## codex/035-manual-image-readability-translations...origin/codex/035-manual-image-readability-translations`.
+  Parallel-work preservation warning was acknowledged again; no sibling
+  worktrees, branches, commits, PRs, or unrelated dirty diffs were touched.
+- Review finding disposition:
+  `scripts/manual-guide-image-readability-translations-audit.mjs` no longer
+  treats `minDisplayWidthPx`/contained scrolling as sufficient readability
+  evidence. Every visible-Spanish intended-readable image now records
+  `textReadabilityEvidence`; manual-reviewed records include text-height and
+  body-text parity fields, while dense App IV sheets use the explicit
+  `app4-dense-official-sheet-source-limited-dom-glossary` group with attempted
+  alternatives and structured DOM translation requirements. The audit fails on
+  missing text readability evidence and incomplete representative group
+  coverage.
+- Review finding disposition:
+  `ch1-bicycle` no longer passes through generic grouped prose with null
+  Spanish terms. The audit removed the bicycle `noticeItemsRu`/`textRu`
+  fallback, requires itemized `.manual-source-image-term-translations` entries
+  to have non-empty Spanish `termEs`, and the section data now includes 13 sign
+  pairs plus 2 safe-distance pairs and 1 unsafe-distance pair rendered next to
+  the images.
+- Review-fix evidence refresh:
+  `content/validation/manual-guide-image-readability-translations.evidence.json`
+  now records `acceptedCoverageExceptions: 16`, `readabilityEvidenceGroups`,
+  per-record `textReadabilityEvidence`, App IV source-limited exceptions with
+  attempted alternatives, and ch1-bicycle DOM selectors/itemized term counts.
+- Review-fix tests added:
+  `tests/manual-guide-image-readability-translations-audit.test.mjs` now has
+  direct fixture coverage for the two loopholes: a visible-Spanish
+  `source-image-card` with `minDisplayWidthPx` and translations but no text
+  readability evidence fails, and a `bicycle-signage` image with an empty
+  Spanish term fails. `tests/e2e/app.spec.ts` now asserts ch1-bicycle sign and
+  distance `termTranslations` are visible in DOM with `lang="es"`.
+- Review-fix command results so far:
+  `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+  passed; `node --test tests/manual-guide-image-readability-translations-audit.test.mjs`
+  passed: 5 tests, 0 failures; first review-fix
+  `pnpm run validate:manual-guide` failed on stale `ch1-bicycle` legacy
+  source-fidelity state fingerprint, then the stable fingerprint was updated;
+  rerun `pnpm run validate:manual-guide` passed; mid-loop
+  `node scripts/check-feature-memory.mjs --worktree` failed because this
+  `tasks.md` review-fix update had not been written yet; `node scripts/manual-guide-image-readability-translations-audit.mjs`
+  passed; `pnpm exec tsc --noEmit` passed; `pnpm run validate:content` passed;
+  `pnpm run test` passed: 430 tests, 0 failures.
+- Review-fix final verification:
+  `pnpm run build` passed, including nested `validate:content`, asset sync,
+  Vite build, and service-worker generation; Vite emitted the existing
+  large-chunk warnings only. Focused Playwright command
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed: 1 test, 0 failures. `git diff --check` passed.
+  `node scripts/check-feature-memory.mjs --worktree` passed after this
+  process-memory update. `pnpm run preflight` passed end to end: feature-memory
+  gate, repository baseline, `validate:content`, `test` (430 tests, 0
+  failures), `build`, nested `test:e2e`, and full Playwright suite (82 tests,
+  0 failures). Build steps emitted the existing large-chunk warnings only.
 - Representative evidence paths:
   `content/validation/manual-guide-image-readability-translations.evidence.json`
   references each section's existing source and Russian screenshot evidence,

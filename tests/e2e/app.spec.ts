@@ -4815,6 +4815,31 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     { minPairs: 1 }
   );
 
+  const bicycleSection = await openManualSection("/#manual-section-ch1-bicycle", "ch1-bicycle");
+  await expectManualImageTermTranslations(
+    bicycleSection.locator('[data-block-id="traffic-rules-signs"]'),
+    [
+      { termEs: "Circulación exclusiva para bicicletas", translationRu: "Исключительное движение для велосипедов" },
+      { termEs: "Vereda de convivencia con peatones", translationRu: "Тротуар совместного движения с пешеходами" },
+      { termEs: "Prohibido circular en bicicleta", translationRu: "Движение на велосипеде запрещено" },
+      { termEs: "Ceda el paso", translationRu: "Уступите дорогу" }
+    ],
+    { minPairs: 13 }
+  );
+  await expectManualImageTermTranslations(
+    bicycleSection.locator('[data-distance-id="safe-doors"]'),
+    [
+      { termEs: "1,5 mtrs.", translationRu: "1,5 метра" },
+      { termEs: "Distancia de vehículos estacionados", translationRu: "Дистанция от припаркованных автомобилей" }
+    ],
+    { minPairs: 2 }
+  );
+  await expectManualImageTermTranslations(
+    bicycleSection.locator('[data-distance-id="unsafe-line"]'),
+    [{ termEs: "Prohibido circular agarrados de otros vehículos", translationRu: /держась за другие транспортные средства/ }],
+    { minPairs: 1 }
+  );
+
   const app4TranslationScenarios: Array<{
     sectionId: string;
     hash: string;
