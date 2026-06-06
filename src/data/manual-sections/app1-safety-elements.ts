@@ -24,6 +24,8 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app1-safety-elements/page-106-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-107-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-108-safety-elements-source-crop.jpg",
+      "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg",
+      "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-109-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-110-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app1-safety-elements/page-110-mirror-orientation-source-crop.jpg",
@@ -47,7 +49,9 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       "Source page 104 is the Appendix I divider and is recorded in registry evidence, not as a standalone runtime article.",
       "Pages 105-119 are rendered as selectable Russian learner text while preserving the official safety, legal, maintenance, and numeric details.",
       "Page 119 is shared: the Equipaje paragraphs before the Otros elementos de seguridad obligatorios heading belong to this safety-elements section; the heading and following obligatory equipment content belong to the next section.",
-      "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text."
+      "The tire manufacturing/date and tread-life visual is restored as a tight source-as-is crop from the official page 108 x5 render; Spanish headings, callouts, chart labels, bullets, and pressure recommendations remain unchanged inside the image, with Russian explanation outside.",
+      "The mirror-orientation visual is an x5 source-as-is crop of only the protected mirror photo collage; Spanish body/caption text from the surrounding source page is translated in selectable Russian page text outside the image. The headrest and SRI visuals are transferred from x5 source crops with Spanish text cleaned at glyph level and Russian labels overlaid as selectable page text.",
+      "The blind-spot visual is a tight source-as-is direct-PDF region crop from the official page 108 visual; Spanish heading, definition, diagram labels, and blue conclusion remain unchanged inside the image, with Russian explanation outside."
     ]
   },
   blocks: [
@@ -57,7 +61,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El conocimiento práctico de conducir no es suficiente... es necesario conocer el estado del vehículo.",
       textRu:
-        "Практического умения водить недостаточно. Источник подчеркивает, что водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности."
+        "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности."
     },
     {
       id: "appendix-purpose",
@@ -65,7 +69,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "En el presente anexo se nombran los elementos de seguridad y se brindan algunas recomendaciones para el mantenimiento y la mecánica ligera.",
       textRu:
-        "В Приложении I перечислены элементы безопасности, а также рекомендации по обслуживанию и легкой механике. Износ и срок службы автомобиля повышают риск, в том числе для пешеходов; поэтому источник отдельно напоминает о периодической VTV как механической проверке."
+        "В Приложении I перечислены элементы безопасности, а также рекомендации по обслуживанию и легкой механике. Износ и срок службы автомобиля повышают риск, в том числе для пешеходов; поэтому важно помнить о периодической VTV как механической проверке."
     },
     {
       id: "active-safety-definition",
@@ -98,16 +102,16 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "maintenance-recommendations",
       kind: "list",
-      titleRu: "Рекомендации источника по обслуживанию",
+      titleRu: "Рекомендации по обслуживанию",
       sourceTextEs:
         "Amortiguadores en perfecto estado; revisar neumáticos; frenos anualmente; líquido de frenos cada dos años o 50.000 km...",
       itemsRu: [
         "Амортизаторы должны быть в идеальном состоянии: неисправные амортизаторы могут увеличить тормозной путь примерно на 10%.",
         "Нужно следить за давлением и общим состоянием шин.",
         "Тормоза рекомендуется проверять ежегодно.",
-        "Тормозную жидкость источник рекомендует менять каждые 2 года или каждые 50 000 km.",
+        "Тормозную жидкость рекомендуется менять каждые 2 года или каждые 50 000 km.",
         "Тормозные колодки меняют при износе или примерно каждые 25 000 km.",
-        "Тормозные диски источник связывает с заменой примерно после четырех замен колодок."
+        "Тормозные диски обычно меняют примерно после четырех замен колодок."
       ]
     },
     {
@@ -117,10 +121,10 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Tipos de dirección: mecánica, hidráulica, electrohidráulica y electromecánica o eléctrica. La suspensión... Los frenos...",
       itemsRu: [
-        "Источник перечисляет четыре типа рулевого управления: механическое, гидравлическое, электрогидравлическое и электромеханическое или электрическое.",
+        "Есть четыре типа рулевого управления: механическое, гидравлическое, электрогидравлическое и электромеханическое или электрическое.",
         "Подвеска поддерживает контакт шин с дорогой, поглощает неровности и влияет на устойчивость.",
         "Тормоза являются элементом активной безопасности.",
-        "ABS не является обязательным в источнике, но помогает при блокировке колес: система ограничивает и отпускает давление только в момент блокировки."
+        "ABS не является обязательным элементом, но помогает при блокировке колес: система ограничивает и отпускает давление только в момент блокировки."
       ]
     },
     {
@@ -133,9 +137,51 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Цифры и буквы на боковине показывают дату изготовления, индекс нагрузки и максимальную скорость.",
         "Шину нужно заменить при вздутиях, разрывах или глубине рисунка меньше 1.6 mm.",
         "Рисунок протектора отводит воду и помогает избежать аквапланирования.",
-        "Источник рекомендует не использовать шины старше 5 лет.",
+        "Шины старше 5 лет лучше не использовать.",
         "Давление берется из руководства автомобиля и измеряется на холодных шинах.",
         "Неверное давление снижает сцепление и увеличивает износ."
+      ]
+    },
+    {
+      id: "tire-manufacturing-tread-life-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Дата изготовления, срок службы и давление шин",
+      sourceTextEs: "Fecha de Fabricación. Vida útil de los Neumáticos. Recomendaciones.",
+      cards: [
+        {
+          id: "app1-tire-manufacturing-tread-life-source-card",
+          titleRu: "Как читать маркировку и износ шин",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 760,
+          minDisplayWidthPx: 760,
+          sourcePage: 108,
+          sourceRegion: { x: 1115, y: 1635, width: 760, height: 995 },
+          assetPath: `${assetRoot}/tire-manufacturing-tread-life-source-as-is.jpg`,
+          altRu:
+            "Официальный блок про дату изготовления шин, срок службы протектора и рекомендации по давлению.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
+          termTranslations: [
+            { termEs: "Fecha de Fabricación", translationRu: "Дата изготовления" },
+            { termEs: "Vida útil de los Neumáticos", translationRu: "Срок службы шин" },
+            { termEs: "Recomendaciones", translationRu: "Рекомендации" },
+            { termEs: "Falta de presión", translationRu: "Недостаточное давление" },
+            { termEs: "Presión excesiva", translationRu: "Избыточное давление" },
+            { termEs: "Presión adecuada", translationRu: "Правильное давление" }
+          ],
+          bodyRu:
+            "На боковине шины нужно искать дату изготовления, индекс нагрузки и скоростной индекс. По протектору ориентируются на глубину рисунка: при 1.6 mm шину заменяют, а шины старше 5 лет лучше не использовать. Давление проверяют на холодных шинах и берут из руководства автомобиля."
+        }
+      ],
+      visualNotes: [
+        "The runtime card is byte-identical to the feature 034 validation crop from the official page 108 x5 render.",
+        "The crop removes only outer page whitespace around the tire visual; Spanish headings, date callout, tread-life chart, bullets, recommendation box, and pressure labels remain protected image pixels.",
+        "Russian explanation and term translations are selectable page text outside the image."
       ]
     },
     {
@@ -144,7 +190,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Pinchaduras. Si esto ocurre mientras se está manejando: no frenar inmediatamente; es aconsejable desacelerar lentamente y sujetar firmemente el volante.",
       textRu:
-        "Если во время движения шина лопнула или резко потеряла давление, источник предупреждает: не тормозить сразу. Нужно крепко держать руль и постепенно снижать скорость, чтобы вернуть контроль над автомобилем."
+        "Если во время движения шина лопнула или резко потеряла давление, не тормозите сразу. Нужно крепко держать руль и постепенно снижать скорость, чтобы вернуть контроль над автомобилем."
     },
     {
       id: "mirrors-and-blind-spots",
@@ -158,28 +204,72 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Слепая зона - это область, которую водитель не видит ни напрямую, ни через зеркала.",
         "Чем больше транспортное средство, тем больше обычно его слепая зона.",
         "Перед маневром нужно снизить скорость, включить указатель, проверить зеркала, наклониться вперед и проверить ситуацию не менее двух раз.",
-        "Во время движения источник рекомендует использовать периферическое зрение и поворот головы через плечо.",
+        "Во время движения используйте периферическое зрение и поворот головы через плечо.",
         "Сертифицированные выпуклые зеркала разрешены, но они делают объекты визуально меньше и дальше."
+      ]
+    },
+    {
+      id: "blind-spot-source-visual",
+      kind: "source-image-cards",
+      titleRu: "Слепая зона на схеме",
+      sourceTextEs:
+        "¿A qué se denomina punto ciego? Cuanto más grande es el vehículo, mayor es el punto ciego.",
+      cards: [
+        {
+          id: "app1-blind-spot-source-card",
+          titleRu: "Как растет слепая зона",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 546,
+          minDisplayWidthPx: 546,
+          sourcePage: 108,
+          sourceRegion: { x: 838, y: 1100, width: 1525, height: 1100 },
+          assetPath: `${assetRoot}/blind-spot-source-as-is.jpg`,
+          altRu:
+            "Официальная схема слепых зон для автомобилей, мотоциклов, грузовиков и автобусов.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
+          termTranslations: [
+            { termEs: "PUNTO CIEGO AUTOS", translationRu: "Слепая зона автомобилей" },
+            { termEs: "PUNTO CIEGO MOTOS", translationRu: "Слепая зона мотоциклов" },
+            { termEs: "CAMIONES Y COLECTIVOS", translationRu: "Грузовики и автобусы" },
+            {
+              termEs: "Cuanto más grande es el vehículo, mayor es el punto ciego.",
+              translationRu: "Чем больше транспортное средство, тем больше слепая зона."
+            }
+          ],
+          bodyRu:
+            "На схеме видно главное правило: у более крупного транспорта зоны, которые водитель не видит напрямую или через зеркала, становятся больше. Испанские подписи внутри картинки не переводились, не закрашивались и не перерисовывались."
+        }
+      ],
+      visualNotes: [
+        "The runtime card is byte-identical to the feature 034 validation crop from the official PDF region.",
+        "The crop removes only surrounding page whitespace, the unrelated upper tire panel, and the printed page number.",
+        "The official Spanish heading, definition sentence, visual labels, road diagram, and blue conclusion remain protected image pixels."
       ]
     },
     {
       id: "mirror-orientation-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: ориентация зеркал",
+      titleRu: "Ориентация зеркал",
       sourceTextEs: "Orientación correcta de los espejos retrovisores: máximo 10%.",
       cards: [
         {
           id: "mirror-orientation-source-card",
-          titleRu: "Исходная схема зеркал",
+          titleRu: "Схема ориентации зеркал",
           displayMode: "compact",
           sourcePage: 110,
           sourceRegion: { x: 1570, y: 1008, width: 495, height: 163 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.jpg`,
           altRu:
-            "Исходная схема правильной ориентации зеркал, оставленная без изменений.",
+            "Схема правильной ориентации зеркал.",
           visibleSpanish: false,
           bodyRu:
-            "Визуал оставлен как исходный фотофрагмент без перевода, ретуши или перерисовки. Испанская подпись страницы перенесена в русский текст: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля."
+            "Главное правило по фото: в каждом зеркале должно отражаться не больше 10% задней части собственного автомобиля. Дорожная сцена внутри изображения не переводится и не перерисовывается."
         }
       ],
       visualNotes: [
@@ -193,7 +283,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "La bocina sólo debe utilizarse en una situación potencialmente peligrosa... 90 decibeles contra 65 decibeles aceptables.",
       textRu:
-        "Звуковой сигнал используется только в потенциально опасной ситуации, когда другой сигнал невозможен. Источник сравнивает сигнал в 90 dB с приемлемыми 65 dB и напоминает, что неправильное использование санкционируется."
+        "Звуковой сигнал используется только в потенциально опасной ситуации, когда другой сигнал невозможен. Сигнал в 90 dB намного громче приемлемых 65 dB, а неправильное использование санкционируется."
     },
     {
       id: "passive-safety-seatbelts",
@@ -218,7 +308,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Excepciones: médicos o paramédicos que asistan enfermos en la parte trasera de ambulancias y bomberos no ubicados en asiento delantero.",
       textRu:
-        "Исключения из использования ремня в источнике узкие: врачи или фельдшеры, которые помогают больным в задней части машин скорой помощи, и пожарные, если они не находятся на переднем сиденье пожарных автомобилей."
+        "Исключения из использования ремня узкие: врачи или фельдшеры, которые помогают больным в задней части машин скорой помощи, и пожарные, если они не находятся на переднем сиденье пожарных автомобилей."
     },
     {
       id: "pregnancy-and-seatbelt-fit",
@@ -229,7 +319,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
       itemsRu: [
         "Во время беременности водительница регулирует сиденье и руль так, чтобы живот и грудь находились примерно в 25 cm от руля.",
         "Регулируемый руль направляют к груди, а не к голове или животу.",
-        "Обычно можно водить, если физическое состояние позволяет и нет чрезмерной усталости; с восьмого месяца источник рекомендует, чтобы вел другой человек.",
+        "Обычно можно водить, если физическое состояние позволяет и нет чрезмерной усталости; с восьмого месяца лучше, чтобы вел другой человек.",
         "Плечевая часть ремня проходит по ключице между плечом и шеей, затем по центру груди.",
         "Нижняя часть ремня лежит на тазе ниже живота.",
         "Ремень должен прилегать, не быть перекрученным; толстая одежда и твердые или хрупкие предметы под ремнем опасны.",
@@ -239,19 +329,19 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "headrest-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: положение подголовника",
+      titleRu: "Положение подголовника",
       sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
       cards: [
         {
           id: "headrest-position-source-card",
-          titleRu: "Перенесенная схема подголовника",
+          titleRu: "Схема положения подголовника",
           displayMode: "full-width",
           maxDisplayWidthPx: 1190,
           sourcePage: 113,
           sourceRegion: { x: 980, y: 1010, width: 1190, height: 185 },
           assetPath: `${assetRoot}/headrest-position-transferred-infographic.png`,
           altRu:
-            "Перенесенная схема высоты и дистанции подголовника с сохраненными исходными силуэтами и направляющими.",
+            "Схема высоты и дистанции подголовника с силуэтами и направляющими.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "headrest-height-title", textRu: "Высота подголовника", xPct: 29.5, yPct: 2, widthPct: 16, heightPct: 13, tone: "dark-on-light" },
@@ -291,27 +381,27 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "Подушка безопасности не обязательна и не заменяет ремень; без ремня она может вызвать тяжелые травмы.",
         "Безопасная дистанция до подушки безопасности - минимум 25 cm.",
         "SRI - это детская удерживающая система: детские кресла и сертифицированные устройства.",
-        "По правилу CABA, указанному в источнике, SRI обязателен с рождения до 12 лет, если рост меньше 1.50 m или вес меньше 36 kg; дети в этой группе не едут на переднем сиденье.",
-        "Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги, он может занимать любое место с трехточечным ремнем; поясной двухточечный ремень источник прямо запрещает для такого случая.",
-        "Сноска источника уточняет: национальное правило аналогично, но действует до 10 лет."
+        "По правилу CABA SRI обязателен с рождения до 12 лет, если рост меньше 1.50 m или вес меньше 36 kg; дети в этой группе не едут на переднем сиденье.",
+        "Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги, он может занимать любое место с трехточечным ремнем; поясной двухточечный ремень для такого случая запрещен.",
+        "Национальное правило аналогично, но действует до 10 лет."
       ]
     },
     {
       id: "sri-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: виды SRI",
+      titleRu: "Виды SRI",
       sourceTextEs: "Tipos de SRI.",
       cards: [
         {
           id: "sri-types-source-card",
-          titleRu: "Перенесенная схема типов SRI",
+          titleRu: "Схема типов SRI",
           displayMode: "full-width",
           maxDisplayWidthPx: 1220,
           sourcePage: 115,
           sourceRegion: { x: 900, y: 1320, width: 1220, height: 260 },
           assetPath: `${assetRoot}/sri-types-transferred-infographic.png`,
           altRu:
-            "Перенесенная схема типов детских удерживающих систем SRI с сохраненными пиктограммами и номерами групп.",
+            "Схема типов детских удерживающих систем SRI с пиктограммами и номерами групп.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "sri-title", textRu: "Виды SRI", xPct: 28, yPct: 9, widthPct: 13, heightPct: 10, tone: "dark-on-light" },
@@ -322,7 +412,7 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
             { id: "sri-group-3", textRu: "8-12 лет, 22-36 kg", xPct: 61.6, yPct: 64, widthPct: 8.5, heightPct: 24, tone: "dark-on-light" }
           ],
           bodyRu:
-            "Схема перенесена как источник: пиктограммы и синие номера групп сохранены, испанские буквы очищены, а русские подписи наложены как текстовые элементы страницы."
+            "Схема показывает пиктограммы и синие номера групп; испанские буквы очищены, а русские подписи наложены как текстовые элементы страницы."
         }
       ],
       visualNotes: [
@@ -342,13 +432,13 @@ export const app1SafetyElementsSection: ManualGuideSectionContent = {
         "SRI снижает силу удара.",
         "Устройство должно соответствовать международным стандартам и иметь маркировку.",
         "Нужно читать руководство автомобиля и проверять, используется ли ремень, Isofix или Latch.",
-        "Источник не рекомендует покупать бывшую в употреблении SRI.",
+        "Бывшую в употреблении SRI покупать не рекомендуется.",
         "Детские кресла стареют; некоторые производители советуют не использовать их дольше 5 лет.",
         "До примерно 1 года и 10 kg ребенок едет спиной вперед: так лучше защищаются голова, шея и позвоночник.",
         "SRI меняют, когда превышен максимальный вес или голова выходит выше спинки.",
         "Ремни, которыми SRI крепится к автомобилю, должны быть натянуты; их проверяют часто и после длинных поездок.",
         "Ребенок должен быть правильно удержан внутренними ремнями; ремень не проходит по шее.",
-        "Теплую верхнюю одежду в SRI источник не рекомендует."
+        "Теплую верхнюю одежду в SRI использовать не рекомендуется."
       ]
     },
     {

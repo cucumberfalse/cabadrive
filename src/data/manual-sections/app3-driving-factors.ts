@@ -39,7 +39,7 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Quienes conducen de manera profesional necesitan alimentarse durante su horario laboral; conviene planificar la jornada para que manipulacion e ingesta queden fuera del momento de operar el vehiculo.",
       textRu:
-        "Профессиональный водитель часто должен питаться в рабочее время. Источник требует планировать день так, чтобы подготовка и прием пищи не происходили в момент управления транспортным средством."
+        "Профессиональный водитель часто должен питаться в рабочее время. Рабочий день нужно планировать так, чтобы подготовка и прием пищи не происходили в момент управления транспортным средством."
     },
     {
       id: "somnolence",
@@ -55,7 +55,7 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Si bien es recomendable evitar conduccion con fuertes lluvias o de noche, conductores profesionales pueden no estar en situacion de definirlas; se requiere respeto riguroso por normas y recomendaciones.",
       textRu:
-        "Хотя источник рекомендует избегать управления при сильном дожде, ночью и в других сложных условиях, профессиональный водитель не всегда может сам выбрать обстоятельства работы. Поэтому требуется особенно строго соблюдать нормы и рекомендации безопасности."
+        "Лучше избегать управления при сильном дожде, ночью и в других сложных условиях, но профессиональный водитель не всегда может сам выбрать обстоятельства работы. Поэтому требуется особенно строго соблюдать нормы и рекомендации безопасности."
     },
     {
       id: "body-posture",
@@ -73,20 +73,20 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
     {
       id: "body-posture-source-visual",
       kind: "source-image-cards",
-      titleRu: "Исходная схема посадки водителя",
+      titleRu: "Схема посадки водителя",
       sourceTextEs:
         "Postura corporal: brazos, piernas, cabeza y espalda, el asiento.",
       cards: [
         {
           id: "app3-body-posture-source-card",
-          titleRu: "Что означает исходная схема",
+          titleRu: "Как читать схему",
           displayMode: "full-width",
           maxDisplayWidthPx: 1350,
           sourcePage: 161,
           sourceRegion: { x: 875, y: 1575, width: 1275, height: 725 },
           assetPath: `${assetRoot}/body-posture-source-as-is.png`,
           altRu:
-            "Официальное исходное изображение посадки водителя с испанскими подписями, сохраненное без изменений.",
+            "Схема посадки водителя с испанскими подписями.",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",
@@ -95,7 +95,7 @@ export const app3DrivingFactorsSection: ManualGuideSectionContent = {
             russianExplanationOutsideImage: true
           },
           bodyRu:
-            "Изображение оставлено как источник: не переведено, не перекрашено и не перерисовано. По-русски: руки держат руль на высоте, позволяющей маневрировать с расслабленными плечами; ноги не должны быть полностью прямыми; голова и спина опираются на сиденье; сиденье регулируют так, чтобы корпусу было удобно, а сиденье находилось минимум в 30 cm от пола."
+            "Как читать схему: руки держат руль на высоте, позволяющей маневрировать с расслабленными плечами; ноги не должны быть полностью прямыми; голова и спина опираются на сиденье; сиденье регулируют так, чтобы корпусу было удобно, а сиденье находилось минимум в 30 cm от пола. Испанские подписи внутри изображения не переводятся."
         }
       ],
       visualNotes: [

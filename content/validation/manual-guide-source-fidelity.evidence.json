@@ -813,25 +813,19 @@
       "ch1-cities-for-people",
       "ch1-sustainable-mobility",
       "ch1-pedestrian-priority",
-      "ch1-bicycle",
-      "ch1-public-transport-system",
-      "ch1-shared-trip"
+      "ch1-bicycle"
     ],
     "legacyBaselineEvidenceFingerprints": {
       "ch1-cities-for-people": "f3af33cce8e057b2887618d72bc9d0b8a180a58f2e1ca5dfe516a8f16f7888dc",
-      "ch1-sustainable-mobility": "ec69d603a4e8915a5dbf28803020f3b8bb2b8a8a58023af3581b91f1a7e5b1d5",
+      "ch1-sustainable-mobility": "1b7a85e444c3dd6033da297b8118dc6c7aeca67cd9c6222b663229fb30bc3b8f",
       "ch1-pedestrian-priority": "82836bdcf64582298541043aad6f2b0393781bbbcfd64355a1764f75bee21167",
-      "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14",
-      "ch1-public-transport-system": "373464b9d6026d2196fb12a836b1ec90a1c43cb0a399065c0d707f9f69cf0a5c",
-      "ch1-shared-trip": "01279a5990e2c7c31e09a4bf2cae4f15d1a701df77a4e8df541cdc8136411876"
+      "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14"
     },
     "legacyBaselineStateFingerprints": {
       "ch1-cities-for-people": "00f3aa2f0c157f1d1552677977a6c234a878e803ddf6be9b5b8ff0e324baf3bc",
-      "ch1-sustainable-mobility": "09fb29d2f8cf8df3a6534558237addfe988696312516c71d852596ab3a1a57c7",
-      "ch1-pedestrian-priority": "6b9f42c7bbdfbc36f288d6f37f76de668d05d883b0338bce7d7d7ab9af1183a3",
-      "ch1-bicycle": "f13938a6256811e2f659e34fcb1efb1fe8932847280fc57ee5acaed921dc7123",
-      "ch1-public-transport-system": "de79a2158b8ab6b43acb91f0b7e0d46eeacd9e07d38a46ea7ff65df28cf2021e",
-      "ch1-shared-trip": "6f6580ee40f8e143795712a86722013644cfa613534fd10f409116afad56800c"
+      "ch1-sustainable-mobility": "503a680ccdcbf1082af2858a856ab692090c7f807549b8192c258a25ac0f0cf6",
+      "ch1-pedestrian-priority": "35e2bdebc26967019de11e6512cfec1f0f619a5e1b9bef0067d215295bc658ae",
+      "ch1-bicycle": "2dc8beab4615d483b4ca45bd0bfad5260353a0197774c83d78095b715c3a99f1"
     },
     "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints and their section module plus referenced source/runtime visual asset bytes match legacyBaselineStateFingerprints.",
     "highResolutionEvidence": {
@@ -839,7 +833,8 @@
       "allowedTargets": [
         "x5-zoom-source-export",
         "source-native-equivalent-or-better",
-        "higher-resolution-direct-export"
+        "higher-resolution-direct-export",
+        "direct-pdf-region-render-scale-36-map-only-lossless-png"
       ],
       "requiredFields": [
         "extractionScaleEvidence.target",
@@ -856,6 +851,7 @@
     },
     "assetCategories": [
       "source-as-is-photo",
+      "source-as-is-diagram",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking",
       "source-as-is-map",
@@ -867,6 +863,7 @@
     ],
     "protectedSourceAsIsCategories": [
       "source-as-is-photo",
+      "source-as-is-diagram",
       "source-as-is-traffic-sign",
       "source-as-is-road-marking"
     ],
@@ -877,7 +874,43 @@
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
         "sourceAssetPath": "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
         "ownerDecisionDate": "2026-06-04",
-        "scope": "page-150-hospital-map-only"
+        "scope": "page-150-hospital-map-only",
+        "sourceRegion": {
+          "height": 335,
+          "width": 780,
+          "x": 1332,
+          "y": 2050
+        },
+        "cropDimensions": {
+          "height": 380,
+          "width": 440
+        },
+        "cropSha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        "extractionScaleEvidence": {
+          "target": "direct-pdf-region-render-scale-36-map-only-lossless-png",
+          "method": "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
+          "outputDimensions": {
+            "height": 380,
+            "width": 440
+          },
+          "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+          "probeEvidencePath": "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+          "selectedRenderScale": 36,
+          "maximumSuccessfulProbeScale": 36,
+          "usefulContentRatios": {
+            "before": {
+              "areaRatio": 0.4205128205128205,
+              "heightRatio": 1,
+              "widthRatio": 0.4205128205128205
+            },
+            "after": {
+              "areaRatio": 0.7142763157894737,
+              "heightRatio": 0.9552631578947368,
+              "widthRatio": 0.7477272727272727
+            }
+          },
+          "mapReadabilityDisposition": "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
+        }
       }
     ],
     "documentExampleSourceAsIsCategories": [

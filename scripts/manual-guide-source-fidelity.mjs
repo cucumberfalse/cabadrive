@@ -170,12 +170,11 @@ const legacyVisualEvidenceSectionIds = new Set([
   "ch1-cities-for-people",
   "ch1-sustainable-mobility",
   "ch1-pedestrian-priority",
-  "ch1-bicycle",
-  "ch1-public-transport-system",
-  "ch1-shared-trip"
+  "ch1-bicycle"
 ]);
 const strictImageAssetCategories = new Set([
   "source-as-is-photo",
+  "source-as-is-diagram",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking",
   "source-as-is-map",
@@ -185,6 +184,7 @@ const strictImageAssetCategories = new Set([
 ]);
 const protectedSourceAsIsCategories = new Set([
   "source-as-is-photo",
+  "source-as-is-diagram",
   "source-as-is-traffic-sign",
   "source-as-is-road-marking"
 ]);
@@ -201,7 +201,13 @@ const approvedSourceAsIsMapExceptions = [
   }
 ];
 const strictNonImageAssetCategories = new Set(["native-dom-text-only", "reference-only-not-runtime"]);
-const highResolutionTargets = new Set(["x5-zoom-source-export", "source-native-equivalent-or-better", "higher-resolution-direct-export"]);
+const highResolutionTargets = new Set([
+  "x5-zoom-source-export",
+  "source-native-equivalent-or-better",
+  "higher-resolution-direct-export",
+  "retained-official-original-image-copy",
+  "direct-pdf-region-render-scale-36-map-only-lossless-png"
+]);
 const forbiddenStrictVisualTerms = [
   "approximate-redraw",
   "redrawn-infographic",

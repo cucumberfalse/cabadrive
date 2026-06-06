@@ -92,7 +92,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
       beforeLabelRu: "До",
       afterLabelRu: "После",
       captionRu:
-        "Источник показывает ту же площадь до и после вмешательства: короче переход, больше пешеходного пространства и лучше заметны люди.",
+        "На фото показана та же площадь до и после вмешательства: короче переход, больше пешеходного пространства и лучше заметны люди.",
       visualNotes: [
         "The runtime crop excludes the Spanish source title and ANTES/DESPUÉS labels.",
         "Russian before/after labels are selectable DOM text placed with the two photo halves.",
@@ -457,7 +457,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/restriction-signs-source-as-is.png`,
           altRu:
-            "Официальные дорожные знаки ограничения въезда и электронного контроля, оставленные как в источнике",
+            "Дорожные знаки ограничения въезда и электронного контроля",
           visibleSpanish: true,
           officialSignException: {
             kind: "official-traffic-sign-source-as-is",
@@ -475,14 +475,14 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             },
             {
               labelRu: "Контроль",
-              textRu: "официальный знак с камерой обозначает электронный контроль; изображение знаков оставлено без изменений."
+              textRu: "знак с камерой обозначает электронный контроль."
             },
             {
               labelRu: "Стоянка",
               textRu: "запрещена с 7 до 21 часов."
             }
           ],
-          noteRu: "Разрешение оформляется онлайн; для дополнительной информации источник указывает телефон 147."
+          noteRu: "Разрешение оформляется онлайн; для дополнительной информации используется телефон 147."
         },
         {
           id: "area-infrastructure",

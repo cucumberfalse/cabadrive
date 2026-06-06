@@ -88,7 +88,7 @@ export const ch3AdverseConditionsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Cuando hay altas temperaturas, dentro de un vehículo cerrado se produce un efecto invernadero... 24 grados... 50 grados en apenas 10 minutos.",
       textRu:
-        "При высокой температуре в закрытом автомобиле возникает эффект теплицы. Источник приводит пример: при 24 градусах снаружи внутри автомобиля может стать 50 градусов примерно за 10 минут."
+        "При высокой температуре в закрытом автомобиле возникает эффект теплицы. Пример для запоминания: при 24 градусах снаружи внутри автомобиля может стать 50 градусов примерно за 10 минут."
     }
   ]
 };

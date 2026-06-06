@@ -73,10 +73,10 @@ export const ch1SharedTripSection: ManualGuideSectionContent = {
       },
       assetPath: `${assetRoot}/carpool-diagram-source.jpg`,
       altRu:
-        "Исходная схема совместной поездки: несколько автомобилей заменяются одним автомобилем с несколькими пассажирами.",
+        "Схема совместной поездки: несколько автомобилей заменяются одним автомобилем с несколькими пассажирами.",
       visibleSpanish: false,
       introRu:
-        "Исходная схема показывает простую логику: когда несколько людей едут вместе, город получает меньше машин в потоке и меньше давления на парковку.",
+        "Схема показывает простую логику: когда несколько людей едут вместе, город получает меньше машин в потоке и меньше давления на парковку.",
       benefits: [
         {
           id: "less-congestion",
@@ -124,7 +124,7 @@ export const ch1SharedTripSection: ManualGuideSectionContent = {
       },
       assetPath: `${assetRoot}/mobility-priority-photo-source.jpg`,
       altRu:
-        "Исходная фотография велосипедистки на городской улице с испанской цитатой из manual.",
+        "Фотография велосипедистки на городской улице с испанской цитатой из manual.",
       visibleSpanish: true,
       sourceImageException,
       quoteRu:

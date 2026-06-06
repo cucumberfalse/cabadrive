@@ -28,14 +28,14 @@ export const ch5AttitudeTypesSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Una buena conducción no sólo depende de la aptitud de la persona... Existe un tercer aspecto que interviene: la actitud.",
       textRu:
-        "Хорошее вождение зависит не только от пригодности человека: недостаточно иметь знания, навыки и психофизическое состояние, позволяющее управлять. Источник выделяет третий аспект - actitud, то есть установку или отношение: способ чувствовать и думать, который предрасполагает к положительному или отрицательному поведению."
+        "Хорошее вождение зависит не только от пригодности человека: недостаточно иметь знания, навыки и психофизическое состояние, позволяющее управлять. Есть еще третий аспект - actitud, то есть установка или отношение: способ чувствовать и думать, который предрасполагает к положительному или отрицательному поведению."
     },
     {
       id: "positive-attitudes",
       kind: "table",
       titleRu: "Положительные установки",
       sourceTextEs: "Positivas: Tolerante, Solidaria, Comprensiva, Prudente.",
-      columnsRu: ["Термин источника", "Смысл для водителя"],
+      columnsRu: ["Термин", "Смысл для водителя"],
       rows: [
         {
           id: "positive-tolerante",
@@ -69,7 +69,7 @@ export const ch5AttitudeTypesSection: ManualGuideSectionContent = {
       kind: "table",
       titleRu: "Отрицательные установки",
       sourceTextEs: "Negativas: Prepotente, Desconsiderada, Exhibicionista, Transgresora.",
-      columnsRu: ["Термин источника", "Чем опасна"],
+      columnsRu: ["Термин", "Чем опасна"],
       rows: [
         {
           id: "negative-prepotente",

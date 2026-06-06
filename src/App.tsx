@@ -1918,12 +1918,23 @@ function MobilityContextBlockView({ block }: { block: Extract<ManualGuideSection
       <div className="manual-space-comparison">
         <h3>{block.space.titleRu}</h3>
         <div className="manual-source-row-scroll">
-          <div className="manual-space-labels">
+          <img
+            src={assetUrl(block.space.assetPath)}
+            alt={block.space.altRu}
+            data-visible-spanish={block.space.visibleSpanish}
+            data-source-image-exception={block.space.sourceImageException?.kind}
+            data-visible-spanish-scope={block.space.sourceImageException?.visibleSpanishScope}
+            data-source-as-is={block.space.sourceImageException?.sourceAsIs}
+            loading="lazy"
+          />
+          <div className="manual-space-labels" aria-label="Русские переводы испанских подписей в визуале">
             {block.space.modes.map((mode) => (
-              <span key={mode.id}>{mode.labelRu}</span>
+              <span key={mode.id}>
+                <strong lang="es">{mode.termEs}</strong>
+                <span lang="ru">{mode.labelRu}</span>
+              </span>
             ))}
           </div>
-          <img src={assetUrl(block.space.assetPath)} alt={block.space.titleRu} data-visible-spanish={false} loading="lazy" />
           <div className="manual-mobile-pairs manual-space-mobile-pairs">
             {block.space.modes.map((mode) => (
               <span className="manual-mobile-pair manual-space-mobile-pair" data-mobile-pair-id={mode.id} key={mode.id}>
@@ -2551,6 +2562,16 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
               <div>
                 <h4>{card.titleRu}</h4>
                 <p>{card.bodyRu}</p>
+                {card.termTranslations && (
+                  <dl className="manual-source-image-term-translations" aria-label="Перевод подписей на изображении">
+                    {card.termTranslations.map((term) => (
+                      <div className="manual-source-image-term-translation" key={term.termEs}>
+                        <dt lang="es">{term.termEs}</dt>
+                        <dd>{term.translationRu}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
               </div>
             </article>
           );

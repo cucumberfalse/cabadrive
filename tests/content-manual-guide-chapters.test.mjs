@@ -9,6 +9,8 @@ import assert from "node:assert/strict";
 const registryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json";
 const oldPageRegistryPath = "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/page-registry.chapters-1-2.json";
 const evidencePath = "content/validation/manual-guide-source-fidelity.evidence.json";
+const visualCropEvidencePath = "content/validation/manual-guide-visual-content-crop.evidence.json";
+const visualCompletenessEvidencePath = "content/validation/manual-guide-visual-completeness.evidence.json";
 const manualGuidePath = "src/data/manualGuide.ts";
 const appPath = "src/App.tsx";
 const checkerPath = "scripts/manual-guide-source-fidelity.mjs";
@@ -63,15 +65,68 @@ const app4SignsInformationalModulePath = "src/data/manual-sections/app4-signs-in
 const app4SignsTemporaryModulePath = "src/data/manual-sections/app4-signs-temporary.ts";
 const app4SignsHorizontalModulePath = "src/data/manual-sections/app4-signs-horizontal.ts";
 const app4SignsTrafficLightsModulePath = "src/data/manual-sections/app4-signs-traffic-lights.ts";
+const noAvanzarAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg";
+const noAvanzarSourceAssetPath = "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg";
+const noAvanzarCropEvidencePath = "content/validation/manual-guide-no-avanzar-source-crop.evidence.json";
+const anexoRegulatoryPanels = [
+  {
+    cardId: "app4-regulatory-anexo-panel-01-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+    dimensions: { width: 615, height: 743 },
+    sha256: "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-02-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+    dimensions: { width: 618, height: 733 },
+    sha256: "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-03-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+    dimensions: { width: 616, height: 734 },
+    sha256: "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+  },
+  {
+    cardId: "app4-regulatory-anexo-panel-04-source-card",
+    assetPath:
+      "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+    sourceAssetPath:
+      "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+    dimensions: { width: 616, height: 694 },
+    sha256: "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
+  }
+];
+const anexoRegulatoryPanelCardIds = new Set(anexoRegulatoryPanels.map((panel) => panel.cardId));
+const tireAssetPath =
+  "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg";
+const tireSourceAssetPath =
+  "content/validation/manual-guide/app1-safety-elements/page-108-tire-manufacturing-tread-life-source-crop.jpg";
+const tireCropEvidencePath =
+  "content/validation/manual-guide-tire-manufacturing-tread-life-source-crop.evidence.json";
 
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle", "ch1-public-transport-system", "ch1-shared-trip"]);
+const visualCropEvidence = JSON.parse(readFileSync(visualCropEvidencePath, "utf8"));
+const visualCompletenessEvidence = JSON.parse(readFileSync(visualCompletenessEvidencePath, "utf8"));
+const strictRecordedChapter1SectionIds = new Set(["ch1-public-transport-system", "ch1-shared-trip"]);
+const legacyBaselineSectionIds = new Set(["ch1-cities-for-people", "ch1-sustainable-mobility", "ch1-pedestrian-priority", "ch1-bicycle"]);
 const implementedSectionIds = new Set([
   "front-presentation",
   "front-categories",
   "front-glossary",
   ...legacyBaselineSectionIds,
+  ...strictRecordedChapter1SectionIds,
   "ch2-legal-responsibility",
   "ch2-required-documents",
   "ch2-incident-obligations",
@@ -221,6 +276,12 @@ function localAssetByPath(section, assetPath) {
   const asset = section.implementationEvidence.localAssetMetadata.find((entry) => entry.assetPath === assetPath);
   assert.ok(asset, `${section.id} records ${assetPath} in localAssetMetadata`);
   return asset;
+}
+
+function visualCropRecordByCardId(cardId) {
+  const record = visualCropEvidence.targets.find((entry) => entry.cardId === cardId);
+  assert.ok(record, `visual crop evidence records ${cardId}`);
+  return record;
 }
 
 function stableStringify(value) {
@@ -1503,7 +1564,7 @@ test("Chapter 4 sections retain alcohol, sleep, stress, and distraction details"
   assert.match(fewHoursSleepItemsRu, /бдительность/u);
   assert.doesNotMatch(fewHoursSleepItemsRu, /capacidad de reacción|estado de alerta/u);
   assert.match(ch4SleepFatigueModuleSource, /работоспособность/u);
-  assert.match(ch4SleepFatigueModuleSource, /усталость может усиливаться/u);
+  assert.match(ch4SleepFatigueModuleSource, /Усталость может усиливаться/u);
   assert.doesNotMatch(ch4SleepFatigueModuleSource, /снижается rendimiento|cansancio может усиливаться/u);
   assert.match(ch4SleepFatigueModuleSource, /microsueños - микросон/u);
   const fatiguePreventionItemsRu = itemsRuSourceForBlock(ch4SleepFatigueModuleSource, "fatigue-prevention");
@@ -1598,7 +1659,7 @@ test("Chapter 5 sections retain attitude, equality, support-line, and efficient-
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
   }
 
-  assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установку или отношение/u);
+  assert.match(ch5AttitudeTypesModuleSource, /actitud[\s\S]*установка или отношение/u);
   assert.match(ch5AttitudeTypesModuleSource, /Tolerante[\s\S]*терпимая/u);
   assert.match(ch5AttitudeTypesModuleSource, /Solidaria[\s\S]*солидарная/u);
   assert.match(ch5AttitudeTypesModuleSource, /Comprensiva[\s\S]*понимающая/u);
@@ -1832,7 +1893,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SocialResponsibilityModuleSource, /Питание должно планироваться/u);
   assert.match(app3DrivingFactorsModuleSource, /body-posture-source-as-is\.png/u);
   assert.match(app3DrivingFactorsModuleSource, /source-image-original-visible-text/u);
-  assert.match(app3DrivingFactorsModuleSource, /не переведено, не перекрашено и не перерисовано/u);
+  assert.match(app3DrivingFactorsModuleSource, /Испанские подписи внутри изображения не переводятся/u);
   assert.match(app3SafeDrivingModuleSource, /1,5 m/u);
   assert.match(app3SafeDrivingModuleSource, /более 12 t/u);
   assert.match(app3SafeDrivingModuleSource, /205 km[\s\S]*95 улиц[\s\S]*39 из 48 районов/u);
@@ -1846,7 +1907,7 @@ test("Appendix III sections retain cargo-driver legal, safety, equipment, and hi
   assert.match(app3SafetyElementsModuleSource, /Av\. Paseo Colon[\s\S]*Av\. San Juan/u);
   assert.match(app3SafetyElementsModuleSource, /Av\. Elvira Rawson de Dellepiane[\s\S]*Av\. Ing\. Huergo/u);
   assert.match(app3SafetyElementsModuleSource, /seatbelt-source-as-is\.png/u);
-  assert.match(app3SafetyElementsModuleSource, /Фото и подписи оставлены без изменения/u);
+  assert.match(app3SafetyElementsModuleSource, /Как читать фото/u);
   assert.match(app3SafetyElementsModuleSource, /больше 1 kg/u);
   assert.match(app3HighwaysModuleSource, /Профессионализация перевозки грузов и товаров/u);
   assert.doesNotMatch(app3HighwaysModuleSource, /ANEXO IV|SEÑALES VIALES|appendix-4/u);
@@ -1896,7 +1957,43 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
     assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
-    assert.equal(section.implementationEvidence.sourceRegionMetadata.every((entry) => entry.cropDimensions.width === 2976 && entry.cropDimensions.height === 4209), true);
+    for (const entry of section.implementationEvidence.sourceRegionMetadata) {
+      const cropRecord = visualCropEvidence.targets.find(
+        (record) => record.sectionId === sectionId && record.outputSourceAssetPath === entry.sourceAssetPath
+      );
+      if (!cropRecord) {
+        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.sourceAssetPath === entry.sourceAssetPath);
+        if (anexoPanel) {
+          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
+          assert.deepEqual(entry.cropDimensions, anexoPanel.dimensions);
+          assert.equal(entry.cropSha256, anexoPanel.sha256);
+          assert.deepEqual(entry.sourceRegion, {
+            coordinateSystem: `${anexoPanel.sourceAssetPath} pixels`,
+            x: 0,
+            y: 0,
+            width: anexoPanel.dimensions.width,
+            height: anexoPanel.dimensions.height
+          });
+          assert.equal(entry.extractionScaleEvidence.target, "retained-official-original-image-copy");
+          assert.equal(sha256File(anexoPanel.assetPath), anexoPanel.sha256);
+          assert.equal(sha256File(anexoPanel.sourceAssetPath), anexoPanel.sha256);
+          continue;
+        }
+        assert.equal(entry.sourceAssetPath, noAvanzarSourceAssetPath, `${sectionId} extra source region is the focused NO AVANZAR crop`);
+        assert.deepEqual(entry.cropDimensions, { width: 200, height: 145 });
+        assert.equal(entry.cropSha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+        assert.equal(entry.extractionScaleEvidence.target, "higher-resolution-direct-export");
+        assert.match(entry.extractionScaleEvidence.externalCaptionBoundary, /external catalog caption/u);
+        continue;
+      }
+      assert.notDeepEqual(entry.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
+      assert.deepEqual(entry.sourceRegion, cropRecord.sourceRegionAtBaseScale);
+      assert.deepEqual(entry.cropDimensions, cropRecord.outputDimensions);
+      assert.equal(entry.cropSha256, cropRecord.outputSha256);
+      assert.equal(entry.extractionScaleEvidence.target, "source-native-equivalent-or-better");
+      assert.ok(entry.extractionScaleEvidence.usefulContentRatios.before.areaRatio < 0.05);
+      assert.ok(entry.extractionScaleEvidence.usefulContentRatios.after.areaRatio >= 0.55);
+    }
   }
 
   for (const sectionId of [
@@ -1910,13 +2007,50 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
     const imageAssets = section.implementationEvidence.localAssetMetadata.filter((entry) => entry.assetCategory === "source-as-is-traffic-sign");
     assert.ok(imageAssets.length > 0, `${sectionId} records source-as-is traffic sign/signal assets`);
     for (const asset of imageAssets) {
+      const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+      if (!cropRecord) {
+        const anexoPanel = anexoRegulatoryPanels.find((panel) => panel.assetPath === asset.assetPath);
+        if (anexoPanel) {
+          assert.equal(sectionId, "app4-signs-regulatory", `${anexoPanel.cardId} belongs to regulatory signs`);
+          assert.equal(asset.assetKind, `official-traffic-sign-source-as-is-anexo-regulatory-panel-${anexoPanel.cardId.match(/panel-(\d+)/u)[1]}`);
+          assert.equal(asset.width, anexoPanel.dimensions.width);
+          assert.equal(asset.height, anexoPanel.dimensions.height);
+          assert.equal(asset.sha256, anexoPanel.sha256);
+          assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, anexoPanel.dimensions.width);
+          assert.equal(asset.runtimeDisplaySize.minWidthCssPx, anexoPanel.dimensions.width);
+          assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+          assert.equal(asset.sourceIntegrity.sourceAssetPath, anexoPanel.sourceAssetPath);
+          assert.equal(asset.sourceIntegrity.byteIdenticalCopy, true);
+          assert.equal(sha256File(asset.assetPath), anexoPanel.sha256);
+          assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), anexoPanel.sha256);
+          assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+          continue;
+        }
+        assert.equal(asset.assetPath, noAvanzarAssetPath, `${asset.assetPath} is the focused NO AVANZAR official-source crop`);
+        assert.equal(asset.assetKind, "official-traffic-sign-source-as-is-no-avanzar");
+        assert.equal(asset.width, 200);
+        assert.equal(asset.height, 145);
+        assert.equal(asset.sha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+        assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 200);
+        assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+        assert.equal(asset.sourceIntegrity.sourceAssetPath, noAvanzarSourceAssetPath);
+        assert.equal(sha256File(asset.assetPath), asset.sha256);
+        assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
+        assert.equal(asset.officialSignException.kind, "official-traffic-sign-source-as-is");
+        continue;
+      }
       assert.equal(asset.cleanupScope, "none-source-as-is");
       assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
       assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
       assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
-      assert.equal(asset.width, 2976);
-      assert.equal(asset.height, 4209);
+      assert.match(asset.assetPath, /-source-crop-as-is\.jpg$/u);
+      assert.equal(asset.width, cropRecord.outputDimensions.width);
+      assert.equal(asset.height, cropRecord.outputDimensions.height);
+      assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, cropRecord.outputDimensions.width);
+      assert.equal(asset.runtimeDisplaySize.noUpscale, true);
       assert.equal(sha256File(asset.assetPath), asset.sha256);
+      assert.equal(asset.sha256, cropRecord.outputSha256);
+      assert.equal(asset.sourceIntegrity.sourceAssetPath, cropRecord.outputSourceAssetPath);
       assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
     }
   }
@@ -1926,19 +2060,410 @@ test("Appendix IV keeps protected signs, markings, and signals source-as-is with
   assert.equal(markingAssets.length, 2);
   assert.equal(horizontal.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
   for (const asset of markingAssets) {
+    const cropRecord = visualCropEvidence.targets.find((record) => record.outputAssetPath === asset.assetPath);
+    assert.ok(cropRecord, `${asset.assetPath} has feature 034 crop evidence`);
     assert.equal(asset.cleanupScope, "none-source-as-is");
     assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
     assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.match(asset.assetPath, /-source-crop-as-is\.jpg$/u);
+    assert.equal(asset.width, cropRecord.outputDimensions.width);
+    assert.equal(asset.height, cropRecord.outputDimensions.height);
+    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, cropRecord.outputDimensions.width);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
     assert.equal(sha256File(asset.sourceIntegrity.sourceAssetPath), asset.sha256);
   }
 
   assert.match(app4SignsRegulatoryModuleSource, /Запрещающие[\s\S]*Ограничивающие[\s\S]*приоритет/u);
+  assert.match(app4SignsRegulatoryModuleSource, /app4-regulatory-no-avanzar-source-card/);
+  assert.match(app4SignsRegulatoryModuleSource, /NO AVANZAR[\s\S]*Проезд запрещен/u);
+  assert.doesNotMatch(app4SignsRegulatoryModuleSource, /Движение прямо запрещено/u);
   assert.match(app4SignsWarningModuleSource, /Предупреждение не всегда запрещает действие/u);
   assert.match(app4SignsInformationalModuleSource, /Желтая звезда[\s\S]*estrellasamarillas@buenosaires\.gob\.ar/u);
   assert.match(app4SignsTemporaryModuleSource, /Временные дорожные знаки имеют приоритет/u);
   assert.match(app4SignsHorizontalModuleSource, /Продольная разметка[\s\S]*Поперечная разметка[\s\S]*Специальная разметка/u);
   assert.match(app4SignsTrafficLightsModuleSource, /Значение огней[\s\S]*Расположение оптических блоков[\s\S]*Специальные светофоры/u);
   assert.match(app4SignsTrafficLightsModuleSource, /цвет, размер и положение/u);
+});
+
+test("Manual guide visual content crop evidence covers the whole manual and corrected Appendix IV page sheets", () => {
+  assert.equal(visualCropEvidence.schemaVersion, 1);
+  assert.equal(visualCropEvidence.featureId, "034-manual-visual-content-crop");
+  assert.equal(visualCropEvidence.sourcePdfPath, "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf");
+  assert.equal(visualCropEvidence.whiteThreshold, 245);
+  assert.match(visualCropEvidence.nonWhiteRule, /any RGB channel below threshold/u);
+  assert.equal(visualCropEvidence.paddingPxAtSourceBaseScale, 80);
+
+  const cropPages = visualCropEvidence.targets.map((record) => record.sourcePage);
+  assert.deepEqual(cropPages, sourcePagesForRange(185, 200));
+  assert.equal(visualCropEvidence.targets.length, 16);
+
+  for (const record of visualCropEvidence.targets) {
+    assert.ok(existsSync(record.currentAssetPath), `${record.currentAssetPath} remains available as prior-state evidence`);
+    assert.ok(existsSync(record.outputAssetPath), `${record.outputAssetPath} exists`);
+    assert.ok(existsSync(record.outputSourceAssetPath), `${record.outputSourceAssetPath} exists`);
+    assert.equal(sha256File(record.outputAssetPath), record.outputSha256);
+    assert.equal(sha256File(record.outputSourceAssetPath), record.outputSha256);
+    assert.equal(record.beforeDimensions.width, 2976);
+    assert.equal(record.beforeDimensions.height, 4209);
+    assert.ok(record.beforeUsefulRatios.areaRatio < 0.05, `${record.cardId} starts as an excessive-margin useful-content island`);
+    assert.ok(record.beforeUsefulRatios.widthRatio < 0.21, `${record.cardId} starts below the major-visual width threshold`);
+    assert.ok(record.outputUsefulRatios.areaRatio >= 0.55, `${record.cardId} corrected crop useful area ratio`);
+    assert.ok(record.outputUsefulRatios.widthRatio >= 0.75, `${record.cardId} corrected crop useful width ratio`);
+    assert.ok(record.outputUsefulRatios.heightRatio >= 0.75, `${record.cardId} corrected crop useful height ratio`);
+    assert.notDeepEqual(record.sourceRegionAtBaseScale, { x: 0, y: 0, width: 2976, height: 4209 });
+    assert.match(record.outputAssetPath, /-source-crop-as-is\.jpg$/u);
+    assert.match(record.sourceQualityDisposition, /source-limited-native-raster-in-official-pdf/u);
+    assert.ok(record.renderedUsefulWidthScaleRatio < 1.1, `${record.cardId} records the official PDF source-quality limitation`);
+  }
+
+  const summary = visualCropEvidence.wholeManualInventory.summary;
+  const readability = visualCropEvidence.wholeManualInventory.textReadability;
+  assert.equal(summary.sourceImageCardCount, 46);
+  assert.equal(summary.sourceArtworkCount, 2);
+  assert.equal(summary.correctedAppendixIvCount, 16);
+  assert.deepEqual(summary.appendixIvPagesCovered, sourcePagesForRange(185, 200));
+  assert.equal(summary.compactSourceImageCardCount, 5);
+  assert.deepEqual(summary.acceptableContrastExamples, ["app2-hospital-map-source-card", "app3-body-posture-source-card"]);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceImageCards.length, 46);
+  assert.equal(visualCropEvidence.wholeManualInventory.sourceArtwork.length, 2);
+  assert.ok(visualCropEvidence.wholeManualInventory.sectionAssetFiles.length >= 100);
+  assert.equal(readability.baseline.documentBodyTextFontSizePx, 16);
+  assert.equal(readability.baseline.sourceCardBodyTextFontSizePx, 14.88);
+  assert.match(readability.baseline.measurementMethod, /Computed CSS baseline/u);
+  assert.equal(readability.officialBetterSourceAudit.status, "checked");
+  assert.deepEqual(readability.officialBetterSourceAudit.widthRangePx, { min: 613, max: 620 });
+  assert.equal(readability.sourceImageCardRelevanceCounts.required, 24);
+  assert.equal(readability.sourceImageCardRelevanceCounts.supporting, 10);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-source-limited-blind-spot-crop"], 1);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-tire-manufacturing-tread-life-source-crop"], 1);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-representative-focused-official-sign-crop"], 1);
+  assert.equal(readability.sourceImageCardDispositionCounts["implemented-regulatory-panels-with-caba-overview"], 4);
+  assert.equal(readability.sourceImageCardDispositionCounts["source-limited-exception"], 16);
+  assert.equal(readability.sourceImageCardDispositionTotal, 46);
+  assert.match(readability.officialBetterSourceAudit.result, /Panels 01-04/u);
+  assert.match(readability.officialBetterSourceAudit.nonSelectedPanel05Disposition, /warning-sign/u);
+  assert.deepEqual(
+    readability.officialBetterSourceAudit.selectedRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`),
+    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}`)
+  );
+  assert.deepEqual(readability.sourceLimitedExceptionCardIds, sourcePagesForRange(185, 200).map((page) => visualCropEvidence.targets.find((record) => record.sourcePage === page).cardId).sort());
+  assert.deepEqual(readability.ownerDispositionRequiredCardIds, readability.sourceLimitedExceptionCardIds);
+  assert.deepEqual(readability.architectDispositionRequiredCardIds, ["cedulas-source-card"]);
+  assert.deepEqual(readability.followUpFeedbackCardIds, ["cedulas-source-card"]);
+  assert.equal(readability.requiredCardIds.includes("app2-hospital-map-source-card"), true);
+  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("app3-body-posture-source-card"));
+  assert.ok(readability.representativeNonAppendixReadableCardIds.includes("cedulas-source-card"));
+  assert.equal(readability.splitSubcropAudit.attempted, true);
+  assert.match(readability.splitSubcropAudit.conclusion, /Splitting the same source-limited raster would not increase embedded glyph pixels/u);
+
+  const inventoryByCardId = new Map(visualCropEvidence.wholeManualInventory.sourceImageCards.map((entry) => [entry.cardId, entry]));
+  for (const entry of visualCropEvidence.wholeManualInventory.sourceImageCards) {
+    assert.ok(entry.textReadability, `${entry.cardId} records text-readability evidence`);
+    assert.match(entry.textReadability.relevance, /^(none|supporting|required)$/u);
+    assert.ok(entry.textReadability.disposition.length > 0, `${entry.cardId} records a text-readability disposition`);
+    assert.equal(entry.textReadability.bodyTextBaselinePx, 16, `${entry.cardId} records the body-text baseline`);
+    assert.ok(Array.isArray(entry.textReadability.viewportComparisons), `${entry.cardId} records viewport comparison evidence`);
+    if (entry.textReadability.relevance !== "none") {
+      assert.ok(entry.textReadability.viewportComparisons.length >= 2, `${entry.cardId} records desktop/mobile readability comparisons`);
+    }
+  }
+  for (const entry of visualCropEvidence.wholeManualInventory.sourceArtwork) {
+    assert.ok(entry.textReadability, `${entry.blockId} records source-artwork text-readability evidence`);
+    assert.equal(entry.textReadability.relevance, "none");
+    assert.equal(entry.textReadability.bodyTextBaselinePx, 16);
+  }
+  for (const cardId of ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card", "app4-horizontal-page-195-source-card"]) {
+    const entry = inventoryByCardId.get(cardId);
+    assert.ok(entry, `${cardId} exists in whole-manual inventory`);
+    assert.equal(entry.disposition, "corrected-source-limited-crop");
+    assert.ok(entry.beforeUsefulRatios.areaRatio < 0.05);
+    assert.ok(entry.afterUsefulRatios.areaRatio >= 0.55);
+    assert.equal(entry.textReadability.relevance, "required");
+    assert.equal(entry.textReadability.disposition, "source-limited-exception");
+    assert.equal(entry.textReadability.comparisonToBodyText, "below-body-text-at-natural-source-width");
+    assert.equal(entry.textReadability.requiresOwnerDisposition, true);
+    assert.ok(entry.textReadability.viewportComparisons.every((comparison) => comparison.passesBodyTextSizeTarget === false));
+    assert.match(entry.textReadability.routeDisposition, /Orchestrator\/user disposition/u);
+    assert.deepEqual(
+      entry.textReadability.attemptedAlternatives.map((alternative) => alternative.id),
+      ["gcba-manual-pdf-render-scale-12", "decreto-779-1995-anexo-l-official-images", "source-faithful-split-subcrop-presentation"]
+    );
+  }
+  const noAvanzarInventory = inventoryByCardId.get("app4-regulatory-no-avanzar-source-card");
+  assert.ok(noAvanzarInventory, "focused NO AVANZAR card exists in whole-manual inventory");
+  assert.equal(noAvanzarInventory.disposition, "implemented-representative-focused-official-sign-crop");
+  assert.deepEqual(noAvanzarInventory.dimensions, { width: 200, height: 145 });
+  assert.equal(noAvanzarInventory.textReadability.relevance, "required");
+  assert.equal(noAvanzarInventory.textReadability.disposition, "implemented-representative-focused-official-sign-crop");
+  assert.equal(noAvanzarInventory.textReadability.requiresOwnerDisposition, false);
+  assert.match(noAvanzarInventory.textReadability.intendedReadableText, /DOM text/u);
+  assert.ok(existsSync(noAvanzarCropEvidencePath), "focused NO AVANZAR crop evidence exists");
+  for (const panel of anexoRegulatoryPanels) {
+    const panelInventory = inventoryByCardId.get(panel.cardId);
+    assert.ok(panelInventory, `${panel.cardId} exists in whole-manual inventory`);
+    assert.equal(panelInventory.disposition, "implemented-regulatory-panels-with-caba-overview");
+    assert.deepEqual(panelInventory.dimensions, panel.dimensions);
+    assert.equal(panelInventory.textReadability.relevance, "required");
+    assert.equal(panelInventory.textReadability.disposition, "implemented-regulatory-panels-with-caba-overview");
+    assert.equal(panelInventory.textReadability.requiresOwnerDisposition, false);
+    assert.match(panelInventory.textReadability.sourceIntegrity, /byte-identical/u);
+    assert.equal(sha256File(panel.assetPath), panel.sha256);
+    assert.equal(sha256File(panel.sourceAssetPath), panel.sha256);
+  }
+  const blindSpotInventory = inventoryByCardId.get("app1-blind-spot-source-card");
+  assert.ok(blindSpotInventory, "blind-spot card exists in whole-manual inventory");
+  assert.equal(blindSpotInventory.disposition, "implemented-source-limited-blind-spot-crop");
+  assert.equal(blindSpotInventory.sourcePage, 108);
+  assert.equal(blindSpotInventory.pdfPage, 109);
+  assert.deepEqual(blindSpotInventory.dimensions, { width: 546, height: 440 });
+  assert.equal(blindSpotInventory.afterUsefulRatios.areaRatio, 0.7726648351648352);
+  assert.equal(blindSpotInventory.textReadability.relevance, "required");
+  assert.equal(blindSpotInventory.textReadability.disposition, "implemented-source-limited-blind-spot-crop");
+  assert.equal(blindSpotInventory.textReadability.renderedImageWidthPx, 546);
+  assert.equal(blindSpotInventory.textReadability.requiresOwnerDisposition, false);
+  assert.match(blindSpotInventory.textReadability.sourceLimitation, /x5 produced a 546x440 crop/u);
+  const tireInventory = inventoryByCardId.get("app1-tire-manufacturing-tread-life-source-card");
+  assert.ok(tireInventory, "tire manufacturing/tread-life card exists in whole-manual inventory");
+  assert.equal(tireInventory.disposition, "implemented-tire-manufacturing-tread-life-source-crop");
+  assert.equal(tireInventory.sourcePage, 108);
+  assert.deepEqual(tireInventory.dimensions, { width: 760, height: 995 });
+  assert.equal(tireInventory.afterUsefulRatios.areaRatio, 0.594234329542449);
+  assert.equal(tireInventory.textReadability.relevance, "required");
+  assert.equal(tireInventory.textReadability.disposition, "implemented-tire-manufacturing-tread-life-source-crop");
+  assert.equal(tireInventory.textReadability.renderedImageWidthPx, 760);
+  assert.equal(tireInventory.textReadability.requiresOwnerDisposition, false);
+  assert.match(tireInventory.textReadability.strategyApplied, /natural 760px width/u);
+  assert.ok(existsSync(tireCropEvidencePath), "tire manufacturing/tread-life crop evidence exists");
+  assert.equal(inventoryByCardId.get("cedulas-source-card").textReadability.disposition, "implementation-feedback-needs-source-region-verification");
+  const hospitalMapInventory = inventoryByCardId.get("app2-hospital-map-source-card");
+  assert.equal(hospitalMapInventory.disposition, "corrected-best-official-map-only-crop");
+  assert.deepEqual(hospitalMapInventory.dimensions, { width: 440, height: 380 });
+  assert.equal(hospitalMapInventory.outputSha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(hospitalMapInventory.beforeUsefulRatios.areaRatio, 0.4205128205128205);
+  assert.ok(hospitalMapInventory.afterUsefulRatios.areaRatio > 0.71);
+  assert.equal(hospitalMapInventory.textReadability.relevance, "required");
+  assert.equal(hospitalMapInventory.textReadability.disposition, "implemented-best-official-map-only-crop-with-source-limited-label-detail");
+  assert.match(hospitalMapInventory.textReadability.sourceLimitation, /native[- ]raster/u);
+  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").disposition, "acceptable-tight-crop");
+  assert.equal(inventoryByCardId.get("app3-body-posture-source-card").measuredUsefulRatios.areaRatio, 0.3652);
+});
+
+test("Manual guide visual completeness audit records user examples and blocks learner-facing provenance copy", () => {
+  assert.equal(visualCompletenessEvidence.schemaVersion, 1);
+  assert.equal(visualCompletenessEvidence.featureId, "034-manual-visual-content-crop");
+  assert.equal(visualCompletenessEvidence.generatedBy, "scripts/manual-guide-visual-completeness-audit.mjs");
+  assert.equal(visualCompletenessEvidence.scopeStatus, "first-controlled-batch-partial");
+  assert.equal(visualCompletenessEvidence.copyAudit.status, "pass");
+  assert.equal(visualCompletenessEvidence.copyAudit.findingCount, 0);
+  assert.deepEqual(
+    visualCompletenessEvidence.copyAudit.deniedPatternIds,
+    [
+      "source-family-provenance",
+      "main-source-takeaway",
+      "source-quote-card-title",
+      "raw-working-fragment",
+      "saved-as-source",
+      "transferred-visual-meta"
+    ]
+  );
+  assert.deepEqual(visualCompletenessEvidence.copyAudit.allowlistPatternIds, ["stress-cause-source"]);
+  assert.equal(visualCompletenessEvidence.copyAudit.allowlistedCount, 1);
+  assert.equal(
+    visualCompletenessEvidence.copyAudit.allowlistedOccurrences[0].text,
+    "Постоянно принимать решения о маневрах, что создает значимый источник стресса и усталости."
+  );
+
+  const examplesById = new Map(visualCompletenessEvidence.userExamples.map((entry) => [entry.id, entry]));
+  for (const requiredExampleId of [
+    "appendix-iv-regulatory-signs-no-avanzar",
+    "app2-hospital-map-source-card",
+    "seatbelt-headrest-copy-problems",
+    "blind-spot-visual",
+    "tire-manufacturing-tread-life",
+    "matafuegos-chaleco-reflectivo",
+    "headrest-combined-diagram",
+    "mobility-space-50-people",
+    "whole-guide-source-wording-copy-audit"
+  ]) {
+    assert.ok(examplesById.has(requiredExampleId), `${requiredExampleId} appears in user-example audit evidence`);
+    assert.match(examplesById.get(requiredExampleId).status, /^(implemented|implemented-[a-z0-9-]+|needs-implementation|blocked)$/u);
+  }
+
+  const mobilityRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "mobility-space-50-people");
+  assert.ok(mobilityRecord, "mobility-space visual has a concrete evidence record");
+  assert.equal(mobilityRecord.status, "implemented");
+  assert.equal(mobilityRecord.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
+  assert.equal(mobilityRecord.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
+  assert.deepEqual(mobilityRecord.dimensions, { width: 585, height: 125 });
+  assert.equal(mobilityRecord.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(mobilityRecord.runtimeDisplay.noUpscale, true);
+  assert.deepEqual(
+    mobilityRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    ["En colectivo:На автобусе", "A pie:Пешком", "En bicicleta:На велосипеде", "En auto:На автомобиле"]
+  );
+
+  assert.equal(examplesById.get("mobility-space-50-people").status, "implemented");
+  assert.equal(examplesById.get("appendix-iv-regulatory-signs-no-avanzar").status, "implemented-regulatory-panels-with-caba-overview");
+  assert.equal(examplesById.get("app2-hospital-map-source-card").status, "implemented");
+  assert.equal(examplesById.get("seatbelt-headrest-copy-problems").status, "implemented");
+  assert.equal(examplesById.get("tire-manufacturing-tread-life").status, "implemented-app1-canonical");
+  assert.equal(examplesById.get("blind-spot-visual").status, "implemented");
+  assert.equal(examplesById.get("matafuegos-chaleco-reflectivo").status, "implemented-app1-only");
+  assert.equal(examplesById.get("headrest-combined-diagram").status, "implemented");
+  const blindSpotRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "blind-spot-visual");
+  assert.ok(blindSpotRecord, "blind-spot visual has a concrete evidence record");
+  assert.equal(blindSpotRecord.status, "implemented");
+  assert.equal(blindSpotRecord.sourcePage, 108);
+  assert.equal(blindSpotRecord.pdfPage, 109);
+  assert.equal(
+    blindSpotRecord.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+  );
+  assert.equal(
+    blindSpotRecord.sourceAssetPath,
+    "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg"
+  );
+  assert.deepEqual(blindSpotRecord.dimensions, { width: 546, height: 440 });
+  assert.equal(blindSpotRecord.sha256, "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35");
+  assert.equal(blindSpotRecord.runtimeDisplay.cardId, "app1-blind-spot-source-card");
+  assert.equal(blindSpotRecord.runtimeDisplay.maxDisplayWidthPx, 546);
+  assert.equal(blindSpotRecord.runtimeDisplay.noUpscale, true);
+  assert.match(blindSpotRecord.sourceQualityDisposition, /source-limited-native-raster/u);
+  assert.match(blindSpotRecord.protectedImagePolicy, /PUNTO CIEGO AUTOS\/MOTOS/u);
+  assert.deepEqual(blindSpotRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
+    "PUNTO CIEGO AUTOS:Слепая зона автомобилей",
+    "PUNTO CIEGO MOTOS:Слепая зона мотоциклов",
+    "CAMIONES Y COLECTIVOS:Грузовики и автобусы",
+    "Cuanto más grande es el vehículo, mayor es el punto ciego.:Чем больше транспортное средство, тем больше слепая зона."
+  ]);
+  const tireRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "tire-manufacturing-tread-life");
+  assert.ok(tireRecord, "tire manufacturing/tread-life visual has a concrete evidence record");
+  assert.equal(tireRecord.status, "implemented-app1-canonical");
+  assert.equal(tireRecord.sourcePage, 108);
+  assert.equal(tireRecord.assetPath, tireAssetPath);
+  assert.equal(tireRecord.sourceAssetPath, tireSourceAssetPath);
+  assert.deepEqual(tireRecord.dimensions, { width: 760, height: 995 });
+  assert.equal(tireRecord.sha256, "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9");
+  assert.equal(tireRecord.runtimeDisplay.cardId, "app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireRecord.runtimeDisplay.maxDisplayWidthPx, 760);
+  assert.equal(tireRecord.runtimeDisplay.noUpscale, true);
+  assert.match(tireRecord.protectedImagePolicy, /Fecha de Fabricación/u);
+  assert.match(tireRecord.relatedScopeDisposition, /App II\/App III/u);
+  const headrestRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "headrest-combined-diagram");
+  assert.ok(headrestRecord, "headrest combined diagram has a concrete evidence record");
+  assert.equal(headrestRecord.status, "implemented-app2-only");
+  assert.equal(
+    headrestRecord.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg"
+  );
+  assert.equal(
+    headrestRecord.sourceAssetPath,
+    "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg"
+  );
+  assert.deepEqual(headrestRecord.dimensions, { width: 820, height: 600 });
+  assert.equal(headrestRecord.sha256, "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c");
+  assert.equal(headrestRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(headrestRecord.runtimeDisplay.cardId, "app2-headrest-combined-source-card");
+  assert.match(headrestRecord.remainingScopeNote, /App1 page 113/u);
+  assert.deepEqual(
+    headrestRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    [
+      "Altura apoyacabeza:Высота подголовника",
+      "Distancia del apoyacabeza:Расстояние до подголовника",
+      "Bueno:Хорошо",
+      "Aceptable:Допустимо",
+      "Regular:Средне",
+      "Malo:Плохо",
+      "Botón de desbloqueo:Кнопка разблокировки"
+    ]
+  );
+
+  const hospitalMapRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "app2-hospital-map-source-card");
+  assert.ok(hospitalMapRecord, "hospital map has a concrete evidence record");
+  assert.equal(hospitalMapRecord.status, "implemented");
+  assert.deepEqual(hospitalMapRecord.dimensions, { width: 440, height: 380 });
+  assert.equal(hospitalMapRecord.sha256, "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0");
+  assert.equal(hospitalMapRecord.runtimeDisplay.maxDisplayWidthPx, 440);
+  assert.equal(hospitalMapRecord.runtimeDisplay.minDisplayWidthPx, 440);
+  assert.equal(hospitalMapRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(hospitalMapRecord.runtimeDisplay.mobileContainedScroll, true);
+  assert.match(hospitalMapRecord.extractionMethod, /map-only trim/u);
+  assert.match(hospitalMapRecord.sourceLimitation, /native raster/u);
+  const equipmentRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "matafuegos-chaleco-reflectivo");
+  assert.ok(equipmentRecord, "Matafuegos and Chaleco reflectivo have a concrete app1 evidence record");
+  assert.equal(equipmentRecord.status, "implemented-app1-only");
+  assert.equal(equipmentRecord.runtimeDisplay.noUpscale, true);
+  assert.equal(equipmentRecord.runtimeDisplay.maxDisplayWidthPx, 340);
+  assert.match(equipmentRecord.remainingScopeNote, /App2\/app3/u);
+  assert.deepEqual(
+    equipmentRecord.cards.map((entry) => `${entry.cardId}:${entry.termEs}:${entry.translationRu}:${entry.dimensions.width}x${entry.dimensions.height}:${entry.sha256}`),
+    [
+      "app1-matafuegos-source-card:Matafuegos:Огнетушитель:340x330:b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+      "app1-chaleco-reflectivo-source-card:Chaleco reflectivo:Световозвращающий жилет:340x340:f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+    ]
+  );
+  assert.deepEqual(equipmentRecord.cards[0].sourceRegion, {
+    coordinateSystem:
+      "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+    x: 1060,
+    y: 1660,
+    width: 340,
+    height: 330
+  });
+  assert.deepEqual(equipmentRecord.cards[1].sourceRegion, {
+    coordinateSystem:
+      "content/validation/manual-guide/app1-other-required-safety-elements/page-120-other-required-safety-elements-source-crop.jpg pixels",
+    x: 1060,
+    y: 1990,
+    width: 340,
+    height: 340
+  });
+
+  const noAvanzarRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-signs-no-avanzar");
+  assert.ok(noAvanzarRecord, "NO AVANZAR has a concrete representative evidence record");
+  assert.equal(noAvanzarRecord.status, "implemented-regulatory-panels-with-caba-overview");
+  assert.equal(noAvanzarRecord.assetPath, noAvanzarAssetPath);
+  assert.equal(noAvanzarRecord.sourceAssetPath, noAvanzarSourceAssetPath);
+  assert.equal(
+    noAvanzarRecord.officialSourceAsset,
+    "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg"
+  );
+  assert.deepEqual(noAvanzarRecord.dimensions, { width: 200, height: 145 });
+  assert.equal(noAvanzarRecord.sha256, "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba");
+  assert.equal(noAvanzarRecord.runtimeDisplay.cardId, "app4-regulatory-no-avanzar-source-card");
+  assert.equal(noAvanzarRecord.runtimeDisplay.maxDisplayWidthPx, 200);
+  assert.equal(noAvanzarRecord.runtimeDisplay.noUpscale, true);
+  assert.match(noAvanzarRecord.externalCaptionBoundary, /not part of the sign body/u);
+  assert.deepEqual(noAvanzarRecord.terms.map((entry) => `${entry.termEs}:${entry.translationRu}`), [
+    "NO AVANZAR:Проезд запрещен"
+  ]);
+  assert.match(noAvanzarRecord.remainingScopeNote, /Broad regulatory readability/u);
+  const anexoPanelsRecord = visualCompletenessEvidence.visualRecords.find((entry) => entry.id === "appendix-iv-regulatory-anexo-panels");
+  assert.ok(anexoPanelsRecord, "Anexo L regulatory panels have concrete evidence");
+  assert.equal(anexoPanelsRecord.status, "implemented-regulatory-panels-with-caba-overview");
+  assert.match(anexoPanelsRecord.extractionMethod, /Byte-identical copies/u);
+  assert.match(anexoPanelsRecord.protectedImagePolicy, /Russian translations/u);
+  assert.match(anexoPanelsRecord.nonSelectedPanel05Disposition, /warning-sign P\.\*/u);
+  assert.match(anexoPanelsRecord.cabaOverviewDisposition, /overview\/local variants/u);
+  assert.deepEqual(
+    anexoPanelsRecord.panels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:${panel.byteIdenticalToSource}`),
+    anexoRegulatoryPanels.map((panel) => `${panel.cardId}:${panel.dimensions.width}x${panel.dimensions.height}:${panel.sha256}:true`)
+  );
+  for (const panel of anexoPanelsRecord.panels) {
+    assert.equal(panel.runtimeDisplay.maxDisplayWidthPx, panel.dimensions.width);
+    assert.equal(panel.runtimeDisplay.minDisplayWidthPx, panel.dimensions.width);
+    assert.equal(panel.runtimeDisplay.noUpscale, true);
+  }
+  const remainingExampleIds = visualCompletenessEvidence.remainingRequiredExamples.map((entry) => entry.id);
+  assert.equal(remainingExampleIds.includes("appendix-iv-regulatory-signs-no-avanzar"), false);
+  assert.equal(remainingExampleIds.includes("blind-spot-visual"), false);
+  assert.equal(remainingExampleIds.includes("tire-manufacturing-tread-life"), false);
+  assert.equal(remainingExampleIds.includes("matafuegos-chaleco-reflectivo"), true);
+  const remainingEquipmentExample = visualCompletenessEvidence.remainingRequiredExamples.find(
+    (entry) => entry.id === "matafuegos-chaleco-reflectivo"
+  );
+  assert.equal(remainingEquipmentExample.status, "implemented-app1-only");
+  assert.match(remainingEquipmentExample.notes, /App2\/app3 equipment visuals remain outside this slice/u);
 });
 
 test("Appendix III keeps Paseo del Bajo page 169 carryover in the page-169 owner", () => {
@@ -1982,7 +2507,24 @@ test("Appendix II sections retain passenger-transport legal, safety, health, and
     assert.equal(section.implementationEvidence.visualRulePolicyId, "031-strict-source-fidelity");
     assert.equal(section.implementationEvidence.highResolutionEvidenceStatus, "x5-or-equivalent-no-upscale-recorded");
     assert.equal(section.implementationEvidence.localAssetMetadata[0].assetCategory, "native-dom-text-only");
-    if (sectionId === "app2-highways-hospitals") {
+    if (sectionId === "app2-safety-elements") {
+      assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
+        status: "source_image_exceptions_only",
+        nonSignVisibleSpanishStatus: "source-image-only",
+        exceptions: [
+          {
+            assetPath:
+              "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true,
+            ownerDecisionDate: "2026-06-05",
+            scope: "app2-page-132-headrest-combined-diagram-only"
+          }
+        ]
+      });
+    } else if (sectionId === "app2-highways-hospitals") {
       assert.deepEqual(section.implementationEvidence.visibleSpanishStatus, {
         status: "source_image_exceptions_only",
         nonSignVisibleSpanishStatus: "source-image-only",
@@ -2058,14 +2600,16 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   const safetyElements = sectionById("app2-safety-elements");
   const sourceCropPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png";
   const textCleanupMaskPath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-text-cleanup-mask.png";
+  const fullPanelSourcePath = "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-panel-source-crop.png";
   const runtimeAssetPath = "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png";
   const oldTransferredAssetPath =
     "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-transferred-infographic.png";
-  const sourceCropSha256 = "ee73e1266080824b0f1d2c9176b4e120e733db5f4a48440cbbdc974fab8af526";
+  const sourceCropSha256 = "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0";
 
   assert.equal(sha256File(sourceCropPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sourceCropSha256);
   assert.equal(sha256File(runtimeAssetPath), sha256File(sourceCropPath));
+  assert.equal(sha256File(fullPanelSourcePath), "6df8225c42b792a1d47d2d600f36a0ded89278952041fb809b866b3f86392454");
   assert.equal(existsSync(textCleanupMaskPath), false);
   assert.equal(existsSync(oldTransferredAssetPath), false);
   assert.equal(
@@ -2084,27 +2628,39 @@ test("Appendix II hospital map renders as an owner-approved source-as-is map wit
   assert.ok(
     highwaysHospitals.implementationEvidence.sourceRegionMetadata.some((entry) =>
       entry.sourceAssetPath === sourceCropPath &&
-      entry.cleanupScope === "source-as-is runtime hospital map; no Spanish cleanup or pixel modification" &&
+      entry.cleanupScope === "source-as-is runtime hospital map-only crop; no Spanish cleanup or pixel modification" &&
       entry.cropSha256 === sourceCropSha256 &&
       entry.sourceRegion.x === 1332 &&
-      entry.sourceRegion.y === 1854 &&
-      entry.cropDimensions.width === 780 &&
-      entry.cropDimensions.height === 335
+      entry.sourceRegion.y === 2050 &&
+      entry.sourceRegion.width === 780 &&
+      entry.sourceRegion.height === 335 &&
+      entry.cropDimensions.width === 440 &&
+      entry.cropDimensions.height === 380 &&
+      entry.extractionScaleEvidence.target === "direct-pdf-region-render-scale-36-map-only-lossless-png" &&
+      entry.extractionScaleEvidence.outputDimensions.width === 440 &&
+      entry.extractionScaleEvidence.outputDimensions.height === 380 &&
+      /map-only/.test(entry.extractionScaleEvidence.method) &&
+      /native-raster limited/.test(entry.extractionScaleEvidence.mapReadabilityDisposition)
     ),
-    "hospital map x5 source crop provenance is recorded"
+    "hospital map x36 map-only source crop provenance is recorded"
   );
 
   const asset = localAssetByPath(highwaysHospitals, runtimeAssetPath);
   assert.equal(asset.assetCategory, "source-as-is-map");
-  assert.equal(asset.assetKind, "high-resolution-original-source-hospital-map-page-150");
+  assert.equal(asset.assetKind, "best-official-original-source-hospital-map-only-page-150");
   assert.equal(asset.containsText, true);
   assert.equal(asset.visibleSpanish, true);
   assert.equal(asset.cleanupScope, "none-source-as-is");
-  assert.equal(asset.width, 780);
-  assert.equal(asset.height, 335);
+  assert.equal(asset.width, 440);
+  assert.equal(asset.height, 380);
   assert.equal(asset.sha256, sourceCropSha256);
-  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 780);
+  assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 440);
+  assert.equal(asset.runtimeDisplaySize.minWidthCssPx, 440);
   assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(asset.runtimeDisplaySize.mobileContainedScroll, true);
+  assert.equal(asset.extractionScaleEvidence.target, "direct-pdf-region-render-scale-36-map-only-lossless-png");
+  assert.match(asset.extractionScaleEvidence.method, /map-only/);
+  assert.match(asset.extractionScaleEvidence.mapReadabilityDisposition, /native-raster limited/);
   assert.equal(asset.sourceIntegrity.sourceAsIs, true);
   assert.equal(asset.sourceIntegrity.sourceAssetPath, sourceCropPath);
   assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
@@ -2154,30 +2710,25 @@ test("Appendix II safety visuals render as preserved source images with provenan
       sha256: "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
     }
   ];
-  const headrestDiagrams = [
-    {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-height-diagram-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-      assetKind: "high-resolution-source-diagram-app2-headrest-height",
-      width: 185,
-      height: 105,
-      sha256: "f6f79de779ab29b417ff92104ad9603cf0eab15294c942c37c59313e66e8516b"
-    },
-    {
-      assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-distance-diagram-source-as-is.png",
-      sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
-      assetKind: "high-resolution-source-diagram-app2-headrest-distance",
-      width: 260,
-      height: 95,
-      sha256: "d13071592dc7609e0e0353544e870ccf7eaba10e35204aeef7eb5232362a3ead"
-    }
-  ];
+  const headrestDiagram = {
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+    sourceAssetPath: "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
+    assetKind: "high-resolution-original-source-diagram-app2-headrest-combined",
+    width: 820,
+    height: 600,
+    sha256: "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
+  };
 
   assert.match(app2SafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
   assert.match(app2SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.png/u);
   assert.match(app2SafetyElementsModuleSource, /seatbelt-use-photo-source-as-is\.png/u);
-  assert.match(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
-  assert.match(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /headrest-combined-diagram-source-as-is\.jpg/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-height-diagram-source-as-is\.png/u);
+  assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-distance-diagram-source-as-is\.png/u);
+  assert.match(app2SafetyElementsModuleSource, /app2-headrest-combined-source-card[\s\S]*displayMode:\s*"full-width"[\s\S]*maxDisplayWidthPx:\s*820/u);
+  assert.match(app2SafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
+  assert.match(app2SafetyElementsModuleSource, /termTranslations[\s\S]*Altura apoyacabeza[\s\S]*Высота подголовника[\s\S]*Botón de desbloqueo[\s\S]*Кнопка разблокировки/u);
+  assert.match(appSource, /manual-source-image-term-translations/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app2SafetyElementsModuleSource, /manual-source-artwork/u);
   assert.doesNotMatch(app2SafetyElementsModuleSource, /safety, mirror, seat belt, headrest, and equipment visuals are retained as x5 source evidence only/u);
@@ -2219,30 +2770,41 @@ test("Appendix II safety visuals render as preserved source images with provenan
     assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
   }
 
-  for (const expectation of headrestDiagrams) {
-    const asset = localAssetByPath(safety, expectation.assetPath);
-    assert.equal(asset.assetCategory, "source-transferred-diagram");
-    assert.equal(asset.assetKind, expectation.assetKind);
-    assert.equal(asset.containsText, false);
-    assert.equal(asset.visibleSpanish, false);
-    assert.equal(asset.cleanupScope, "none-source-as-is");
-    assert.equal(asset.width, expectation.width);
-    assert.equal(asset.height, expectation.height);
-    assert.equal(asset.sha256, expectation.sha256);
-    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
-    assert.equal(asset.diagramTransfer.sourceDiagramTransfer, true);
-    assert.equal(asset.diagramTransfer.sourceAssetPath, expectation.sourceAssetPath);
-    assert.equal(asset.diagramTransfer.sourceCropSha256, expectation.sha256);
-    assert.deepEqual(asset.diagramTransfer.sourceCropDimensions, { width: expectation.width, height: expectation.height });
-    assert.equal(asset.diagramTransfer.noApproximateRedraw, true);
-    assert.equal(asset.diagramTransfer.noReconstruction, true);
-    assert.equal(asset.diagramTransfer.noGenericIconReplacement, true);
-    assert.equal(asset.diagramTransfer.broadMaskPlatePatchStatus, "none");
-    assert.equal(sha256File(asset.assetPath), expectation.sha256);
-    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
-  }
+  const headrestAsset = localAssetByPath(safety, headrestDiagram.assetPath);
+  assert.equal(headrestAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(headrestAsset.assetKind, headrestDiagram.assetKind);
+  assert.equal(headrestAsset.containsText, true);
+  assert.equal(headrestAsset.visibleSpanish, true);
+  assert.equal(headrestAsset.cleanupScope, "none-source-as-is");
+  assert.equal(headrestAsset.width, headrestDiagram.width);
+  assert.equal(headrestAsset.height, headrestDiagram.height);
+  assert.equal(headrestAsset.sha256, headrestDiagram.sha256);
+  assert.equal(headrestAsset.runtimeDisplaySize.maxWidthCssPx, 820);
+  assert.equal(headrestAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(headrestAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(headrestAsset.sourceIntegrity.sourceAssetPath, headrestDiagram.sourceAssetPath);
+  assert.equal(headrestAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(headrestAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(headrestAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(headrestAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(headrestAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(headrestAsset.sourceImageException.scope, "app2-page-132-headrest-combined-diagram-only");
+  assert.deepEqual(
+    headrestAsset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    [
+      "Altura apoyacabeza:Высота подголовника",
+      "Distancia del apoyacabeza:Расстояние до подголовника",
+      "Bueno:Хорошо",
+      "Aceptable:Допустимо",
+      "Regular:Средне",
+      "Malo:Плохо",
+      "Botón de desbloqueo:Кнопка разблокировки"
+    ]
+  );
+  assert.equal(sha256File(headrestAsset.assetPath), headrestDiagram.sha256);
+  assert.equal(sha256File(headrestDiagram.sourceAssetPath), headrestDiagram.sha256);
 
-  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), ...headrestDiagrams.map((entry) => entry.sourceAssetPath)]) {
+  for (const sourceAssetPath of [...sourceAsIs.map((entry) => entry.sourceAssetPath), headrestDiagram.sourceAssetPath]) {
     assert.ok(
       safety.implementationEvidence.sourceRegionMetadata.some((entry) => entry.sourceAssetPath === sourceAssetPath),
       `${sourceAssetPath} is recorded in Appendix II safety sourceRegionMetadata`
@@ -2272,12 +2834,12 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /ABS[\s\S]*блокировке колес/u);
   assert.match(app1SafetyElementsModuleSource, /1\.6 mm/u);
   assert.match(app1SafetyElementsModuleSource, /аквапланирования/u);
-  assert.match(app1SafetyElementsModuleSource, /не использовать шины старше 5 лет/u);
+  assert.match(app1SafetyElementsModuleSource, /Шины старше 5 лет лучше не использовать/u);
   assert.match(app1SafetyElementsModuleSource, /Если во время движения шина лопнула/u);
-  assert.match(app1SafetyElementsModuleSource, /не тормозить сразу[\s\S]*постепенно снижать скорость/u);
+  assert.match(app1SafetyElementsModuleSource, /не тормозите сразу[\s\S]*постепенно снижать скорость/u);
   assert.match(app1SafetyElementsModuleSource, /Pinchaduras[\s\S]*no frenar inmediatamente[\s\S]*desacelerar lentamente/u);
   assert.match(app1SafetyElementsModuleSource, /не больше 10% задней части/u);
-  assert.match(app1SafetyElementsModuleSource, /сигнал в 90 dB[\s\S]*65 dB/u);
+  assert.match(app1SafetyElementsModuleSource, /Сигнал в 90 dB[\s\S]*65 dB/u);
   assert.match(app1SafetyElementsModuleSource, /врачи или фельдшеры[\s\S]*пожарные/u);
   assert.match(app1SafetyElementsModuleSource, /25 cm/u);
   assert.match(app1SafetyElementsModuleSource, /Подголовник[\s\S]*хлыстовой травмы/u);
@@ -2298,19 +2860,116 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /Максимальная загрузка|Багажник на крыше|устойчивости направления/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /минимум два аварийных треугольника/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /огнетушитель 1 kg типа ABC/u);
-  assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим не допускается/u);
+  assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /эластичный зажим источник запрещает/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /Световозвращающий жилет/u);
   assert.match(app1OtherRequiredSafetyElementsModuleSource, /вынужденной остановки[\s\S]*автомагистралях и скоростных дорогах/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /kind:\s*"source-image-cards"/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-matafuegos-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1660,\s*width:\s*340,\s*height:\s*330\s*\}/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /app1-chaleco-reflectivo-source-card[\s\S]*sourceRegion:\s*\{\s*x:\s*1060,\s*y:\s*1990,\s*width:\s*340,\s*height:\s*340\s*\}/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /matafuegos-source-as-is\.jpg/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /chaleco-reflectivo-source-as-is\.jpg/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /sourceImageException[\s\S]*source-image-original-visible-text/u);
+  assert.match(app1OtherRequiredSafetyElementsModuleSource, /termTranslations[\s\S]*Matafuegos[\s\S]*Огнетушитель[\s\S]*Chaleco reflectivo[\s\S]*Световозвращающий жилет/u);
+  const app1EquipmentBlockStart = app1OtherRequiredSafetyElementsModuleSource.indexOf('id: "mandatory-equipment-source-visuals"');
+  assert.ok(app1EquipmentBlockStart > 0, "app1 equipment source-image block exists");
+  const app1EquipmentBlockSource = balancedSourceSlice(
+    app1OtherRequiredSafetyElementsModuleSource,
+    app1OtherRequiredSafetyElementsModuleSource.lastIndexOf("{", app1EquipmentBlockStart),
+    "{",
+    "}"
+  );
+  const app1EquipmentVisibleRuStrings = Array.from(
+    app1EquipmentBlockSource.matchAll(/(?:titleRu|bodyRu|altRu|translationRu):\s*"([^"]+)"/gu),
+    (match) => match[1]
+  );
+  assert.ok(app1EquipmentVisibleRuStrings.length >= 6, "app1 equipment block visible Russian strings are inspected");
+  assert.doesNotMatch(app1EquipmentVisibleRuStrings.join("\n"), /источник|исходн|фрагмент|source/iu);
   assert.doesNotMatch(app1OtherRequiredSafetyElementsModuleSource, /указана в manual|в trunk|Roof rack должен|aerodynamics, visibility|закрывать lights|установленные limits|hazard triangles|accessible|stopped vehicle|открытии valve|через hose|base of fire|extinguisher 1 kg|wood, plastics and rubber|petroleum|flammable liquids|electric risk|motors and panels|within driver's reach|metal securing system|elastic clamp|collision or rollover|Reflective vest|внутри cabin|roadway|force majeure|highways и fast roads/u);
 
-  assert.match(app1RecommendedSafetyElementsModuleSource, /стерильную гидрофильную марлю/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Стерильная гидрофильная марля/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Перекись водорода/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /Фонарик с запасными батарейками/u);
-  assert.match(app1RecommendedSafetyElementsModuleSource, /сертифицированную телескопическую буксировочную штангу/u);
+  assert.match(app1RecommendedSafetyElementsModuleSource, /Рекомендуется сертифицированная телескопическая буксировочная штанга/u);
+  assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /Источник рекомендует сертифицированную телескопическую буксировочную штангу/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /В CABA частному автомобилю запрещено буксировать/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /уполномоченным автомобилем/u);
   assert.match(app1RecommendedSafetyElementsModuleSource, /состояния автомобиля и его элементов безопасности/u);
   assert.doesNotMatch(app1RecommendedSafetyElementsModuleSource, /обозначается cross|secure fixed place|sterile hydrophilic gauze|Bandages or dressings|Hypoallergenic tape|Hydrogen peroxide|Iodine solution|latex or vinyl gloves|Burn cream|Antidiarrheal charcoal tablets|Analgesics and anti-inflammatory medicine|Insect-bite cream|Tweezers and scissors|Flashlight with spare batteries|homologated telescopic tow bar|ropes, cables and other flexible means|factory towing points|private vehicle|authorized vehicle/u);
+});
+
+test("Appendix I other required safety equipment restores official source images with external translations", () => {
+  const otherRequired = sectionById("app1-other-required-safety-elements");
+  const expectations = [
+    {
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-matafuegos-source-crop.jpg",
+      assetKind: "high-resolution-original-source-diagram-app1-matafuegos",
+      width: 340,
+      height: 330,
+      sha256: "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e",
+      term: "Matafuegos:Огнетушитель",
+      scope: "app1-page-120-matafuegos-only",
+      sourceRegion: { x: 1060, y: 1660, width: 340, height: 330 }
+    },
+    {
+      assetPath:
+        "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+      sourceAssetPath:
+        "content/validation/manual-guide/app1-other-required-safety-elements/page-120-chaleco-reflectivo-source-crop.jpg",
+      assetKind: "high-resolution-original-source-diagram-app1-chaleco-reflectivo",
+      width: 340,
+      height: 340,
+      sha256: "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581",
+      term: "Chaleco reflectivo:Световозвращающий жилет",
+      scope: "app1-page-120-chaleco-reflectivo-only",
+      sourceRegion: { x: 1060, y: 1990, width: 340, height: 340 }
+    }
+  ];
+
+  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(otherRequired.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.deepEqual(
+    otherRequired.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => `${entry.scope}:${entry.visibleSpanishScope}:${entry.sourceAsIs}`),
+    [
+      "app1-page-120-matafuegos-only:source-image-only:true",
+      "app1-page-120-chaleco-reflectivo-only:source-image-only:true"
+    ]
+  );
+
+  for (const expectation of expectations) {
+    const asset = localAssetByPath(otherRequired, expectation.assetPath);
+    assert.equal(asset.assetCategory, "source-as-is-diagram");
+    assert.equal(asset.assetKind, expectation.assetKind);
+    assert.equal(asset.containsText, true);
+    assert.equal(asset.visibleSpanish, true);
+    assert.equal(asset.width, expectation.width);
+    assert.equal(asset.height, expectation.height);
+    assert.equal(asset.sha256, expectation.sha256);
+    assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, 340);
+    assert.equal(asset.runtimeDisplaySize.noUpscale, true);
+    assert.equal(asset.sourceIntegrity.sourceAsIs, true);
+    assert.equal(asset.sourceIntegrity.sourceAssetPath, expectation.sourceAssetPath);
+    assert.equal(asset.sourceIntegrity.noTranslationOrRelabeling, true);
+    assert.equal(asset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+    assert.equal(asset.sourceIntegrity.russianExplanationOutsideImage, true);
+    assert.equal(asset.sourceImageException.kind, "source-image-original-visible-text");
+    assert.equal(asset.sourceImageException.visibleSpanishScope, "source-image-only");
+    assert.equal(asset.sourceImageException.scope, expectation.scope);
+    assert.equal(asset.termTranslations.map((entry) => `${entry.termEs}:${entry.translationRu}`).join(","), expectation.term);
+    assert.equal(sha256File(asset.assetPath), expectation.sha256);
+    assert.equal(sha256File(expectation.sourceAssetPath), expectation.sha256);
+
+    const sourceRegion = otherRequired.implementationEvidence.sourceRegionMetadata.find(
+      (entry) => entry.sourceAssetPath === expectation.sourceAssetPath
+    );
+    assert.ok(sourceRegion, `${expectation.sourceAssetPath} is recorded in Appendix I other-required sourceRegionMetadata`);
+    assert.deepEqual(sourceRegion.sourceRegion, expectation.sourceRegion);
+    assert.deepEqual(sourceRegion.cropDimensions, { width: expectation.width, height: expectation.height });
+    assert.equal(sourceRegion.cropSha256, expectation.sha256);
+  }
 });
 
 test("Appendix I visuals render source-as-is and transferred infographics with provenance evidence", () => {
@@ -2322,6 +2981,24 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
     width: 495,
     height: 163,
     sha256: "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
+  };
+  const blindSpot = {
+    assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+    sourceAssetPath: "content/validation/manual-guide/app1-safety-elements/page-108-blind-spot-source-crop.jpg",
+    cropEvidencePath: "content/validation/manual-guide-blind-spot-source-crop.evidence.json",
+    assetKind: "high-resolution-original-source-diagram-blind-spot-page-108",
+    width: 546,
+    height: 440,
+    sha256: "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35"
+  };
+  const tire = {
+    assetPath: tireAssetPath,
+    sourceAssetPath: tireSourceAssetPath,
+    cropEvidencePath: tireCropEvidencePath,
+    assetKind: "high-resolution-original-source-diagram-tire-manufacturing-tread-life-page-108",
+    width: 760,
+    height: 995,
+    sha256: "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9"
   };
   const transferred = [
     {
@@ -2347,7 +3024,9 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   ];
 
   assert.match(app1SafetyElementsModuleSource, /mirror-orientation-photo-source-as-is\.jpg/u);
-  assert.doesNotMatch(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
+  assert.match(app1SafetyElementsModuleSource, /blind-spot-source-as-is\.jpg/u);
+  assert.match(app1SafetyElementsModuleSource, /tire-manufacturing-tread-life-source-as-is\.jpg/u);
+  assert.match(app1SafetyElementsModuleSource, /source-image-original-visible-text/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /испанские подписи внутри изображения не переводятся/u);
   assert.match(app1SafetyElementsModuleSource, /headrest-position-transferred-infographic\.png/u);
   assert.match(app1SafetyElementsModuleSource, /sri-types-transferred-infographic\.png/u);
@@ -2374,6 +3053,92 @@ test("Appendix I visuals render source-as-is and transferred infographics with p
   assert.equal(mirrorAsset.sourceIntegrity.surroundingSpanishCaptionAndBodyTextExcluded, true);
   assert.equal(sha256File(mirrorAsset.assetPath), sourceAsIsMirror.sha256);
   assert.equal(sha256File(sourceAsIsMirror.sourceAssetPath), sourceAsIsMirror.sha256);
+
+  const blindSpotAsset = localAssetByPath(safety, blindSpot.assetPath);
+  assert.equal(exceptionPaths.includes(blindSpot.assetPath), true);
+  assert.equal(safety.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(safety.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+  assert.equal(blindSpotAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(blindSpotAsset.assetKind, blindSpot.assetKind);
+  assert.equal(blindSpotAsset.containsText, true);
+  assert.equal(blindSpotAsset.visibleSpanish, true);
+  assert.equal(blindSpotAsset.width, blindSpot.width);
+  assert.equal(blindSpotAsset.height, blindSpot.height);
+  assert.equal(blindSpotAsset.sha256, blindSpot.sha256);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.maxWidthCssPx, blindSpot.width);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.minWidthCssPx, blindSpot.width);
+  assert.equal(blindSpotAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.sourceAssetPath, blindSpot.sourceAssetPath);
+  assert.equal(blindSpotAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(blindSpotAsset.sourceIntegrity.unrelatedPageContentExcluded, true);
+  assert.equal(blindSpotAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(blindSpotAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(blindSpotAsset.sourceImageException.scope, "app1-page-108-blind-spot-visual-only");
+  assert.deepEqual(
+    blindSpotAsset.termTranslations?.map((entry) => `${entry.termEs}:${entry.translationRu}`),
+    undefined
+  );
+  assert.equal(sha256File(blindSpotAsset.assetPath), blindSpot.sha256);
+  assert.equal(sha256File(blindSpot.sourceAssetPath), blindSpot.sha256);
+
+  const blindSpotSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
+    (entry) => entry.sourceAssetPath === blindSpot.sourceAssetPath
+  );
+  assert.ok(blindSpotSourceRegion, `${blindSpot.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.equal(blindSpotSourceRegion.sourcePage, 108);
+  assert.equal(blindSpotSourceRegion.extractionScaleEvidence.pdfPage, 109);
+  assert.deepEqual(blindSpotSourceRegion.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
+  assert.deepEqual(blindSpotSourceRegion.cropDimensions, { width: blindSpot.width, height: blindSpot.height });
+  assert.equal(blindSpotSourceRegion.cropSha256, blindSpot.sha256);
+  assert.match(blindSpotSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /source-limited-native-raster/u);
+  const blindSpotCropEvidence = JSON.parse(readFileSync(blindSpot.cropEvidencePath, "utf8"));
+  const blindSpotCropTarget = blindSpotCropEvidence.targets.find((entry) => entry.cardId === "app1-blind-spot-source-card");
+  assert.equal(blindSpotCropTarget.sourcePage, 108, "crop evidence names the official printed/manual page");
+  assert.equal(blindSpotCropTarget.pdfPage, 109, "direct PDF render uses PDF page/render file 109");
+  assert.equal(blindSpotCropTarget.renderPage, 109, "render asset keeps the PDF/page image offset explicit");
+  assert.equal(blindSpotSourceRegion.sourcePage, 108, "runtime evidence names the printed/manual page shown in the official crop");
+
+  const tireAsset = localAssetByPath(safety, tire.assetPath);
+  assert.equal(exceptionPaths.includes(tire.assetPath), true);
+  assert.equal(tireAsset.assetCategory, "source-as-is-diagram");
+  assert.equal(tireAsset.assetKind, tire.assetKind);
+  assert.equal(tireAsset.containsText, true);
+  assert.equal(tireAsset.visibleSpanish, true);
+  assert.equal(tireAsset.width, tire.width);
+  assert.equal(tireAsset.height, tire.height);
+  assert.equal(tireAsset.sha256, tire.sha256);
+  assert.equal(tireAsset.runtimeDisplaySize.maxWidthCssPx, tire.width);
+  assert.equal(tireAsset.runtimeDisplaySize.minWidthCssPx, tire.width);
+  assert.equal(tireAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(tireAsset.sourceIntegrity.sourceAsIs, true);
+  assert.equal(tireAsset.sourceIntegrity.sourceAssetPath, tire.sourceAssetPath);
+  assert.equal(tireAsset.sourceIntegrity.noTranslationOrRelabeling, true);
+  assert.equal(tireAsset.sourceIntegrity.noRedrawRecolorCleanupRetouchMaskInpaint, true);
+  assert.equal(tireAsset.sourceIntegrity.russianExplanationOutsideImage, true);
+  assert.equal(tireAsset.sourceIntegrity.unrelatedPageContentExcluded, true);
+  assert.equal(tireAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(tireAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(tireAsset.sourceImageException.scope, "app1-page-108-tire-manufacturing-tread-life-visual-only");
+  assert.equal(sha256File(tireAsset.assetPath), tire.sha256);
+  assert.equal(sha256File(tire.sourceAssetPath), tire.sha256);
+
+  const tireSourceRegion = safety.implementationEvidence.sourceRegionMetadata.find(
+    (entry) => entry.sourceAssetPath === tire.sourceAssetPath
+  );
+  assert.ok(tireSourceRegion, `${tire.sourceAssetPath} is recorded in Appendix I safety sourceRegionMetadata`);
+  assert.equal(tireSourceRegion.sourcePage, 108);
+  assert.deepEqual(tireSourceRegion.sourceRegion, { x: 1115, y: 1635, width: 760, height: 995 });
+  assert.deepEqual(tireSourceRegion.cropDimensions, { width: tire.width, height: tire.height });
+  assert.equal(tireSourceRegion.cropSha256, tire.sha256);
+  assert.match(tireSourceRegion.extractionScaleEvidence.sourceQualityDisposition, /retained-official-x5-render-crop/u);
+  const tireCropEvidence = JSON.parse(readFileSync(tire.cropEvidencePath, "utf8"));
+  const tireCropTarget = tireCropEvidence.targets.find((entry) => entry.cardId === "app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireCropTarget.sourcePage, 108);
+  assert.deepEqual(tireCropTarget.outputDimensions, { width: tire.width, height: tire.height });
+  assert.equal(tireCropTarget.outputSha256, tire.sha256);
 
   for (const expectation of transferred) {
     const asset = localAssetByPath(safety, expectation.assetPath);
@@ -2666,7 +3431,12 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   const expectedFullWidthCardIds = new Set([
     "headrest-position-source-card",
     "sri-types-source-card",
+    "app1-blind-spot-source-card",
+    "app1-tire-manufacturing-tread-life-source-card",
+    "app1-chaleco-reflectivo-source-card",
+    "app1-matafuegos-source-card",
     "app2-hospital-map-source-card",
+    "app2-headrest-combined-source-card",
     "app2-mirror-orientation-source-card",
     "app2-seatbelt-use-source-card",
     "app3-body-posture-source-card",
@@ -2677,6 +3447,11 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     "app4-informational-page-190-source-card",
     "app4-informational-page-191-source-card",
     "app4-informational-page-192-source-card",
+    "app4-regulatory-anexo-panel-01-source-card",
+    "app4-regulatory-anexo-panel-02-source-card",
+    "app4-regulatory-anexo-panel-03-source-card",
+    "app4-regulatory-anexo-panel-04-source-card",
+    "app4-regulatory-no-avanzar-source-card",
     "app4-regulatory-page-185-source-card",
     "app4-regulatory-page-186-source-card",
     "app4-temporary-page-193-source-card",
@@ -2698,16 +3473,40 @@ test("Manual guide source image cards declare reusable full-width or compact dis
   ]);
   const expectedCompactCardIds = new Set([
     "mirror-orientation-source-card",
-    "app2-headrest-height-source-card",
-    "app2-headrest-distance-source-card",
     "dni-source-card",
     "license-source-card",
     "beginner-sign-source-card",
     "rva-source-card"
   ]);
-  const expectedPanoramicMinWidthByCardId = new Map([["app2-mirror-orientation-source-card", 760]]);
+  const expectedMinWidthByCardId = new Map([
+    ["app1-tire-manufacturing-tread-life-source-card", 760],
+    ["app1-blind-spot-source-card", 546],
+    ["app2-hospital-map-source-card", 440],
+    ["app2-mirror-orientation-source-card", 760],
+    ["app4-horizontal-page-195-source-card", 674],
+    ["app4-horizontal-page-196-source-card", 704],
+    ["app4-informational-page-189-source-card", 673],
+    ["app4-informational-page-190-source-card", 704],
+    ["app4-informational-page-191-source-card", 672],
+    ["app4-informational-page-192-source-card", 706],
+    ["app4-regulatory-no-avanzar-source-card", 200],
+    ["app4-regulatory-anexo-panel-01-source-card", 615],
+    ["app4-regulatory-anexo-panel-02-source-card", 618],
+    ["app4-regulatory-anexo-panel-03-source-card", 616],
+    ["app4-regulatory-anexo-panel-04-source-card", 616],
+    ["app4-regulatory-page-185-source-card", 664],
+    ["app4-regulatory-page-186-source-card", 704],
+    ["app4-temporary-page-193-source-card", 673],
+    ["app4-temporary-page-194-source-card", 705],
+    ["app4-traffic-lights-page-197-source-card", 673],
+    ["app4-traffic-lights-page-198-source-card", 757],
+    ["app4-traffic-lights-page-199-source-card", 757],
+    ["app4-traffic-lights-page-200-source-card", 757],
+    ["app4-warning-page-187-source-card", 672],
+    ["app4-warning-page-188-source-card", 705]
+  ]);
 
-  assert.equal(cards.length, 38);
+  assert.equal(cards.length, 46);
   assert.equal(cards.filter((card) => card.displayMode === "full-width").length, expectedFullWidthCardIds.size);
   assert.equal(cards.filter((card) => card.displayMode === "compact").length, expectedCompactCardIds.size);
   assert.deepEqual(
@@ -2728,9 +3527,9 @@ test("Manual guide source image cards declare reusable full-width or compact dis
     assert.equal(asset.runtimeDisplaySize.maxWidthCssPx, card.maxDisplayWidthPx, `${cardId} evidence matches display metadata`);
     assert.ok(asset.width >= card.maxDisplayWidthPx, `${cardId} max display width does not exceed natural/source asset width`);
     if (card.minDisplayWidthPx !== undefined) {
-      assert.equal(card.minDisplayWidthPx, expectedPanoramicMinWidthByCardId.get(cardId), `${cardId} records the expected panoramic min width`);
-      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} panoramic min width respects max display width`);
-      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} panoramic min width does not exceed natural/source asset width`);
+      assert.equal(card.minDisplayWidthPx, expectedMinWidthByCardId.get(cardId), `${cardId} records the expected readable minimum width`);
+      assert.ok(card.minDisplayWidthPx <= card.maxDisplayWidthPx, `${cardId} readable minimum width respects max display width`);
+      assert.ok(card.minDisplayWidthPx <= asset.width, `${cardId} readable minimum width does not exceed natural/source asset width`);
     }
   }
 
@@ -2744,26 +3543,84 @@ test("Manual guide source image cards declare reusable full-width or compact dis
 
   assert.deepEqual(
     cards.filter((card) => card.minDisplayWidthPx !== undefined).map((card) => [card.cardId, card.minDisplayWidthPx]),
-    [...expectedPanoramicMinWidthByCardId],
-    "only explicit ultra-wide/panoramic source cards opt into visual-only scroll minimums"
+    [...expectedMinWidthByCardId],
+    "only explicit panoramic or source-limited text-readability source cards opt into visual-only scroll minimums"
   );
 
   const appendixCards = cards
-    .filter((card) => card.cardId.startsWith("app4-"))
+    .filter(
+      (card) =>
+        card.cardId.startsWith("app4-") &&
+        card.cardId !== "app4-regulatory-no-avanzar-source-card" &&
+        !anexoRegulatoryPanelCardIds.has(card.cardId)
+    )
     .sort((a, b) => a.sourcePage - b.sourcePage || a.cardId.localeCompare(b.cardId));
   assert.deepEqual(appendixCards.map((card) => card.sourcePage), sourcePagesForRange(185, 200));
   assert.equal(appendixCards.every((card) => card.displayMode === "full-width"), true);
-  assert.equal(appendixCards.every((card) => card.maxDisplayWidthPx === 2976), true);
   assert.equal(appendixCards.every((card) => card.hasOfficialSignException || card.hasSourceImageException), true);
+  for (const card of appendixCards) {
+    const section = sectionById(card.sectionId);
+    const asset = localAssetByPath(section, card.assetPath);
+    const cropRecord = visualCropRecordByCardId(card.cardId);
+    assert.equal(card.maxDisplayWidthPx, asset.width, `${card.cardId} display cap matches corrected crop width`);
+    assert.equal(card.maxDisplayWidthPx, cropRecord.outputDimensions.width, `${card.cardId} display cap matches crop evidence`);
+    assert.equal(card.minDisplayWidthPx, card.maxDisplayWidthPx, `${card.cardId} keeps source-limited embedded text at natural crop width on narrow screens`);
+    assert.notDeepEqual(card.sourceRegion, { x: 0, y: 0, width: 2976, height: 4209 });
+    assert.match(card.assetPath, /-source-crop-as-is\.jpg$/u);
+  }
+  const noAvanzarCard = byId.get("app4-regulatory-no-avanzar-source-card");
+  assert.equal(noAvanzarCard.maxDisplayWidthPx, 200);
+  assert.equal(noAvanzarCard.minDisplayWidthPx, 200);
+  assert.equal(noAvanzarCard.assetPath, noAvanzarAssetPath);
+  assert.deepEqual(noAvanzarCard.sourceRegion, { x: 32, y: 85, width: 200, height: 145 });
+  assert.equal(noAvanzarCard.hasOfficialSignException, true);
+  for (const panel of anexoRegulatoryPanels) {
+    const card = byId.get(panel.cardId);
+    assert.ok(card, `${panel.cardId} exists`);
+    assert.equal(card.maxDisplayWidthPx, panel.dimensions.width);
+    assert.equal(card.minDisplayWidthPx, panel.dimensions.width);
+    assert.equal(card.assetPath, panel.assetPath);
+    assert.deepEqual(card.sourceRegion, { x: 0, y: 0, width: panel.dimensions.width, height: panel.dimensions.height });
+    assert.equal(card.hasOfficialSignException, true);
+    assert.equal(sha256File(panel.assetPath), panel.sha256);
+    assert.equal(sha256File(panel.sourceAssetPath), panel.sha256);
+  }
 
-  assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 780);
+  const blindSpotCard = byId.get("app1-blind-spot-source-card");
+  assert.equal(blindSpotCard.maxDisplayWidthPx, 546);
+  assert.equal(blindSpotCard.minDisplayWidthPx, 546);
+  assert.equal(
+    blindSpotCard.assetPath,
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg"
+  );
+  assert.equal(blindSpotCard.sourcePage, 108);
+  assert.deepEqual(blindSpotCard.sourceRegion, { x: 838, y: 1100, width: 1525, height: 1100 });
+  assert.equal(blindSpotCard.hasSourceImageException, true);
+  const tireCard = byId.get("app1-tire-manufacturing-tread-life-source-card");
+  assert.equal(tireCard.maxDisplayWidthPx, 760);
+  assert.equal(tireCard.minDisplayWidthPx, 760);
+  assert.equal(tireCard.assetPath, tireAssetPath);
+  assert.equal(tireCard.sourcePage, 108);
+  assert.deepEqual(tireCard.sourceRegion, { x: 1115, y: 1635, width: 760, height: 995 });
+  assert.equal(tireCard.hasSourceImageException, true);
+
+  assert.equal(byId.get("app2-hospital-map-source-card").maxDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").maxDisplayWidthPx, 1350);
-  assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 2976);
-  assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 2976);
-  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-01-source-card").maxDisplayWidthPx, 615);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-02-source-card").maxDisplayWidthPx, 618);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-03-source-card").maxDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-04-source-card").maxDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").maxDisplayWidthPx, 664);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").maxDisplayWidthPx, 704);
+  assert.equal(byId.get("app2-hospital-map-source-card").minDisplayWidthPx, 440);
   assert.equal(byId.get("app3-body-posture-source-card").minDisplayWidthPx, undefined);
-  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, undefined);
-  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, undefined);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-01-source-card").minDisplayWidthPx, 615);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-02-source-card").minDisplayWidthPx, 618);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-03-source-card").minDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-anexo-panel-04-source-card").minDisplayWidthPx, 616);
+  assert.equal(byId.get("app4-regulatory-page-185-source-card").minDisplayWidthPx, 664);
+  assert.equal(byId.get("app4-regulatory-page-186-source-card").minDisplayWidthPx, 704);
+  assert.equal(byId.get("app4-regulatory-no-avanzar-source-card").minDisplayWidthPx, 200);
   assert.equal(byId.get("app2-mirror-orientation-source-card").minDisplayWidthPx, 760);
 
   assert.match(appSource, /data-display-mode=\{card\.displayMode\}/u);
@@ -2978,17 +3835,32 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   }
   for (const asset of section.implementationEvidence.localAssetMetadata) {
     assert.equal(existsSync(asset.assetPath), true, `${asset.assetPath} exists`);
-    assert.equal(asset.visibleSpanish, false, `${asset.assetPath} records no visible Spanish`);
   }
-  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-50-person-space-comparison-row");
+  const exceptionPaths = section.implementationEvidence.visibleSpanishStatus.exceptions.map((entry) => entry.assetPath);
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.status, "source_image_exceptions_only");
+  assert.equal(section.implementationEvidence.visibleSpanishStatus.nonSignVisibleSpanishStatus, "source-image-only");
+
+  const spaceAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "high-resolution-original-source-50-person-space-comparison-row");
   const vulnerabilityAsset = section.implementationEvidence.localAssetMetadata.find((asset) => asset.assetKind === "source-derived-nontext-vulnerability-pictogram-row");
   assert.ok(spaceAsset, "space comparison runtime crop metadata exists");
   assert.ok(vulnerabilityAsset, "vulnerability runtime crop metadata exists");
   assert.equal(spaceAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg");
+  assert.equal(exceptionPaths.includes(spaceAsset.assetPath), true, "space comparison records visible-Spanish source-image exception");
   assert.equal(spaceAsset.width, 585);
-  assert.equal(spaceAsset.height, 78);
-  assert.equal(spaceAsset.sha256, "baab91b6701ae95b1cde574f3c172ca6b2335e1cb0f84a3905e4021664135b2b");
+  assert.equal(spaceAsset.height, 125);
+  assert.equal(spaceAsset.sha256, "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e");
+  assert.equal(spaceAsset.containsText, true);
+  assert.equal(spaceAsset.visibleSpanish, true);
+  assert.equal(spaceAsset.sourceImageException.kind, "source-image-original-visible-text");
+  assert.equal(spaceAsset.sourceImageException.visibleSpanishScope, "source-image-only");
+  assert.equal(spaceAsset.sourceImageException.sourceAsIs, true);
+  assert.equal(spaceAsset.sourceImageException.russianExplanationOutsideImage, true);
+  assert.equal(spaceAsset.runtimeDisplaySize.maxWidthCssPx, 585);
+  assert.equal(spaceAsset.runtimeDisplaySize.noUpscale, true);
+  assert.equal(spaceAsset.sourceIntegrity.sourceAssetPath, "content/validation/manual-guide/ch1-sustainable-mobility/page-023-space-comparison-50-people-source-crop.jpg");
   assert.equal(sha256File(spaceAsset.assetPath), spaceAsset.sha256, "space comparison crop bytes match the recorded 50-person row hash");
+  assert.equal(sha256File(spaceAsset.sourceIntegrity.sourceAssetPath), spaceAsset.sha256, "space comparison runtime image matches source crop bytes");
+  assert.equal(vulnerabilityAsset.visibleSpanish, false);
   assert.equal(vulnerabilityAsset.assetPath, "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg");
   assert.equal(vulnerabilityAsset.width, 590);
   assert.equal(vulnerabilityAsset.height, 115);
@@ -3007,6 +3879,11 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
     "84% - поездки жителей внутри города",
     "16% - поездки людей, въезжающих в город",
     "Сколько места нужно 50 людям",
+    "En colectivo",
+    "На автобусе",
+    "A pie",
+    "En bicicleta",
+    "En auto",
     "Устойчивая мобильность - это способ передвигаться плавно",
     "качество городской среды",
     "Мобильность - это право",
@@ -3026,9 +3903,12 @@ test("ch1 sustainable mobility section covers source page 23 infographics and no
   assert.match(ch1SustainableModuleSource, /kind:\s*"mobility-context"/);
   assert.match(ch1SustainableModuleSource, /kind:\s*"vulnerability-ranking"/);
   assert.match(appSource, /function MobilityContextBlockView/);
+  assert.match(appSource, /data-source-image-exception=\{block\.space\.sourceImageException\?\.kind\}/);
   assert.match(appSource, /function VulnerabilityRankingBlockView/);
   assert.match(stylesSource, /\.manual-mobility-context[\s\S]*?user-select:\s*text/);
   assert.match(stylesSource, /\.manual-source-row-scroll[\s\S]*?overflow-x:\s*auto/);
+  assert.match(stylesSource, /\.manual-space-labels[\s\S]*?grid-template-columns:\s*1fr 1\.15fr 1\.15fr 2\.35fr/u);
+  assert.match(stylesSource, /\.manual-space-mobile-pairs[\s\S]*?display:\s*none/u);
   assert.match(ch1SustainableModuleSource, /space-comparison-50-people-source\.jpg/);
   assert.doesNotMatch(ch1SustainableModuleSource, /space-comparison-icons-source\.jpg/);
   assert.match(ch1SustainableModuleSource, /vulnerability-icons-source\.jpg/);
@@ -3198,7 +4078,7 @@ test("ch1 pedestrian priority section covers source pages 24-29 visuals and no u
     "24 часа",
     "телефон 147",
     "электронный контроль",
-    "изображение знаков оставлено без изменений",
+    "знак с камерой обозначает электронный контроль",
     "Свободное движение в зоне",
     "Общественный транспорт",
     "Зона 30",
@@ -3400,7 +4280,7 @@ test("ch1 bicycle section covers source pages 30-38 visuals and no unrelated sec
     "Знаки и правила",
     "bicycle-signs-source-as-is.jpg",
     "official-traffic-sign-source-as-is",
-    "Знаки на изображении оставлены как в официальном источнике",
+    "Для экзамена ориентируйтесь на внешний вид знаков",
     "Полная остановка",
     "Конец защищенной велодорожки",
     "Сойти с велосипеда",
@@ -3779,9 +4659,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
     "ch1-cities-for-people",
     "ch1-sustainable-mobility",
     "ch1-pedestrian-priority",
-    "ch1-bicycle",
-    "ch1-public-transport-system",
-    "ch1-shared-trip"
+    "ch1-bicycle"
   ]);
   assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineEvidenceFingerprints).sort(), [...legacyBaselineSectionIds].sort());
   assert.deepEqual(Object.keys(evidence.strictVisualRulePolicy.legacyBaselineStateFingerprints).sort(), [...legacyBaselineSectionIds].sort());
@@ -3801,10 +4679,12 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.deepEqual(evidence.strictVisualRulePolicy.highResolutionEvidence.allowedTargets, [
     "x5-zoom-source-export",
     "source-native-equivalent-or-better",
-    "higher-resolution-direct-export"
+    "higher-resolution-direct-export",
+    "direct-pdf-region-render-scale-36-map-only-lossless-png"
   ]);
   for (const requiredCategory of [
     "source-as-is-photo",
+    "source-as-is-diagram",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking",
     "source-as-is-map",
@@ -3818,6 +4698,7 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
   assert.equal(evidence.strictVisualRulePolicy.assetCategories.includes("source-as-is-infographic"), false);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsCategories, [
     "source-as-is-photo",
+    "source-as-is-diagram",
     "source-as-is-traffic-sign",
     "source-as-is-road-marking"
   ]);
@@ -3828,7 +4709,45 @@ test("Manual guide source-fidelity evidence schema records strict full-manual vi
       assetPath: "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
       sourceAssetPath: "content/validation/manual-guide/app2-highways-hospitals/page-150-hospital-map-source-crop.png",
       ownerDecisionDate: "2026-06-04",
-      scope: "page-150-hospital-map-only"
+      scope: "page-150-hospital-map-only",
+      sourceRegion: {
+        height: 335,
+        width: 780,
+        x: 1332,
+        y: 2050
+      },
+      cropDimensions: {
+        height: 380,
+        width: 440
+      },
+      cropSha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+      extractionScaleEvidence: {
+        target: "direct-pdf-region-render-scale-36-map-only-lossless-png",
+        method:
+          "Focused hospital-map crop rendered from the official PDF page 150 region at scale 36 with Swift manual-visual-content-crops. The first direct-region attempt using the old retained-page y coordinate produced a blank crop and was rejected; the committed map-only trim keeps the colored map and barrio labels, excludes the separate title/list panel, and does not translate, redraw, clean, mask, retouch, inpaint, relabel, or otherwise modify map pixels.",
+        outputDimensions: {
+          height: 380,
+          width: 440
+        },
+        sha256: "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0",
+        probeEvidencePath: "content/validation/manual-guide-hospital-map-source-crop.evidence.json",
+        selectedRenderScale: 36,
+        maximumSuccessfulProbeScale: 36,
+        usefulContentRatios: {
+          before: {
+            areaRatio: 0.4205128205128205,
+            widthRatio: 0.4205128205128205,
+            heightRatio: 1
+          },
+          after: {
+            areaRatio: 0.7142763157894737,
+            widthRatio: 0.7477272727272727,
+            heightRatio: 0.9552631578947368
+          }
+        },
+        mapReadabilityDisposition:
+          "Official PDF appears native-raster limited for barrio label glyph detail: high-scale probes increased render canvas size but did not materially increase the dark map-label glyph bbox beyond the prior 328px useful width. Runtime therefore uses the tightest source-faithful map-only crop, plus minDisplayWidthPx so mobile does not shrink the map below natural size."
+      }
     }
   ]);
   assert.deepEqual(evidence.strictVisualRulePolicy.protectedSourceAsIsRequiredFields, [
@@ -3935,6 +4854,11 @@ test("Manual guide source-fidelity checker keeps already-merged Chapter 1 legacy
     const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
     assert.equal("visualEvidenceSchemaVersion" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
     assert.equal("visualRulePolicyId" in implementedEvidence, false, `${id} baseline evidence remains legacy before planned audit`);
+  }
+  for (const id of strictRecordedChapter1SectionIds) {
+    const implementedEvidence = registry.sections.find((entry) => entry.id === id).implementationEvidence;
+    assert.equal(implementedEvidence.visualEvidenceSchemaVersion, 3, `${id} evidence has graduated from legacy baseline to strict schema`);
+    assert.equal(implementedEvidence.visualRulePolicyId, "031-strict-source-fidelity", `${id} evidence uses strict source-fidelity policy`);
   }
   const output = execFileSync(process.execPath, ["scripts/manual-guide-source-fidelity.mjs"], { encoding: "utf8" });
   const result = JSON.parse(output);

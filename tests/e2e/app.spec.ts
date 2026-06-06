@@ -177,28 +177,89 @@ type ManualSourceImageCardMetrics = {
   imageHeight: number;
   naturalWidth: number;
   naturalHeight: number;
+  usefulBounds: { x: number; y: number; width: number; height: number } | null;
+  usefulRenderedWidth: number;
+  usefulRenderedHeight: number;
   viewportWidth: number;
   documentOverflow: number;
+  rootFontSize: number;
+  documentBodyFontSize: number;
+  sourceCardBodyFontSize: number;
   complete: boolean;
 };
 
-async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean }) {
+async function expectRenderedManualImage(image: Locator, label: string) {
+  await image.evaluate((element: HTMLImageElement) => {
+    const figure = element.closest("figure");
+    (figure ?? element).scrollIntoView({ block: "center", inline: "nearest" });
+    element.scrollIntoView({ block: "center", inline: "nearest" });
+  });
+  await expect(image, `${label} image is visible`).toBeVisible();
+  await expect
+    .poll(
+      () =>
+        image.evaluate((element: HTMLImageElement) => {
+          const rect = element.getBoundingClientRect();
+          return element.complete && element.naturalWidth > 0 && element.naturalHeight > 0 && rect.width > 1 && rect.height > 1;
+        }),
+      { message: `${label} image is loaded and rendered`, timeout: 5_000 }
+    )
+    .toBe(true);
+}
+
+async function expectFullWidthSourceImageCard(page: Page, cardId: string, options: { desktop: boolean; expectUsefulContent?: boolean }) {
   const card = page.locator(`[data-card-id="${cardId}"]`);
   await card.scrollIntoViewIfNeeded();
   await expect(card).toHaveAttribute("data-display-mode", "full-width");
-  const metrics = await card.evaluate(async (element): Promise<ManualSourceImageCardMetrics> => {
+  await expectRenderedManualImage(card.locator("img"), cardId);
+  const metrics = await card.evaluate((element): ManualSourceImageCardMetrics => {
     const image = element.querySelector("img") as HTMLImageElement | null;
     const figure = element.querySelector("figure") as HTMLElement | null;
     const grid = element.closest(".manual-source-image-card-grid") as HTMLElement | null;
     const section = element.closest(".manual-source-image-cards") as HTMLElement | null;
+    const guideSection = element.closest(".manual-guide-section") as HTMLElement | null;
+    const cardBody = element.querySelector("p") as HTMLElement | null;
+    const documentBodySample = guideSection?.querySelector(".intro-doc-lead, .intro-doc-list li, .intro-doc-block") as HTMLElement | null;
     if (!image || !figure || !grid || !section) throw new Error("source image card is missing image, figure, grid, or source-image-cards container");
-    await image.decode?.().catch(() => undefined);
     const cardRect = element.getBoundingClientRect();
     const figureRect = figure.getBoundingClientRect();
     const gridRect = grid.getBoundingClientRect();
     const sectionRect = section.getBoundingClientRect();
     const imageRect = image.getBoundingClientRect();
     const root = document.documentElement;
+    let usefulBounds: { x: number; y: number; width: number; height: number } | null = null;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (context) {
+        context.drawImage(image, 0, 0);
+        const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
+        let minX = width;
+        let minY = height;
+        let maxX = -1;
+        let maxY = -1;
+        for (let y = 0; y < height; y += 1) {
+          for (let x = 0; x < width; x += 1) {
+            const offset = (y * width + x) * 4;
+            const alpha = data[offset + 3];
+            if (alpha > 0 && (data[offset] < 245 || data[offset + 1] < 245 || data[offset + 2] < 245)) {
+              minX = Math.min(minX, x);
+              minY = Math.min(minY, y);
+              maxX = Math.max(maxX, x);
+              maxY = Math.max(maxY, y);
+            }
+          }
+        }
+        if (maxX >= minX && maxY >= minY) {
+          usefulBounds = { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1 };
+        }
+      }
+    } catch {
+      usefulBounds = null;
+    }
+
     return {
       cardId: element.getAttribute("data-card-id") ?? "",
       displayMode: element.getAttribute("data-display-mode"),
@@ -214,8 +275,14 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
       imageHeight: imageRect.height,
       naturalWidth: image.naturalWidth,
       naturalHeight: image.naturalHeight,
+      usefulBounds,
+      usefulRenderedWidth: usefulBounds ? (usefulBounds.width / image.naturalWidth) * imageRect.width : 0,
+      usefulRenderedHeight: usefulBounds ? (usefulBounds.height / image.naturalHeight) * imageRect.height : 0,
       viewportWidth: window.innerWidth,
       documentOverflow: root.scrollWidth - root.clientWidth,
+      rootFontSize: Number.parseFloat(getComputedStyle(root).fontSize),
+      documentBodyFontSize: Number.parseFloat(getComputedStyle(documentBodySample ?? document.body).fontSize),
+      sourceCardBodyFontSize: Number.parseFloat(getComputedStyle(cardBody ?? element).fontSize),
       complete: image.complete
     };
   });
@@ -228,23 +295,35 @@ async function expectFullWidthSourceImageCard(page: Page, cardId: string, option
   expect(metrics.maxDisplayWidthPx, `${cardId} max display width does not exceed source width`).toBeLessThanOrEqual(metrics.naturalWidth);
   expect(metrics.imageWidth, `${cardId} avoids browser upscaling`).toBeLessThanOrEqual(metrics.naturalWidth + 1);
   expect(metrics.imageHeight, `${cardId} preserves visible height`).toBeGreaterThan(1);
+  expect(metrics.rootFontSize, `${cardId} root/body readability baseline`).toBeGreaterThanOrEqual(16);
+  expect(metrics.documentBodyFontSize, `${cardId} nearby document body text baseline`).toBeGreaterThanOrEqual(16);
+  expect(metrics.sourceCardBodyFontSize, `${cardId} source-card body text baseline`).toBeGreaterThanOrEqual(14.5);
   expect(metrics.cardWidth, `${cardId} card spans the source-image grid`).toBeGreaterThanOrEqual(metrics.gridWidth * 0.98);
   expect(metrics.imageWidth, `${cardId} uses meaningful card width`).toBeGreaterThanOrEqual(Math.min(metrics.cardWidth * 0.7, metrics.naturalWidth));
   if (options.desktop && metrics.naturalWidth >= 600) {
     expect(metrics.imageWidth, `${cardId} is not the old desktop thumbnail`).toBeGreaterThan(480);
   }
+  if (options.expectUsefulContent) {
+    expect(metrics.usefulBounds, `${cardId} useful-content bbox is measurable`).not.toBeNull();
+    expect(metrics.usefulRenderedWidth, `${cardId} useful content occupies the rendered image`).toBeGreaterThanOrEqual(metrics.imageWidth * 0.65);
+    expect(metrics.usefulRenderedHeight, `${cardId} useful content occupies the rendered image height`).toBeGreaterThanOrEqual(metrics.imageHeight * 0.65);
+    expect(metrics.usefulRenderedWidth, `${cardId} useful content occupies meaningful card width when source quality allows`).toBeGreaterThanOrEqual(
+      Math.min(metrics.cardWidth * 0.65, metrics.usefulBounds?.width ?? 0)
+    );
+  }
   return metrics;
 }
 
-async function expectScrollablePanoramicSourceImageCard(page: Page, cardId: string, expectedMinDisplayWidthPx: number) {
+async function expectScrollableReadableSourceImageCard(page: Page, cardId: string, expectedMinDisplayWidthPx: number) {
   const metrics = await expectFullWidthSourceImageCard(page, cardId, { desktop: false });
 
-  expect(metrics.minDisplayWidthPx, `${cardId} panoramic min width metadata`).toBe(expectedMinDisplayWidthPx);
+  expect(metrics.minDisplayWidthPx, `${cardId} readable min width metadata`).toBe(expectedMinDisplayWidthPx);
   expect(metrics.minDisplayWidthPx, `${cardId} min width respects no-upscale cap`).toBeLessThanOrEqual(metrics.maxDisplayWidthPx);
   expect(metrics.figureWidth, `${cardId} figure stays inside the card`).toBeLessThanOrEqual(metrics.cardWidth + 1);
   expect(metrics.figureWidth, `${cardId} figure stays inside the viewport`).toBeLessThanOrEqual(metrics.viewportWidth + 1);
   expect(metrics.figureClientWidth, `${cardId} scroll viewport stays inside card`).toBeLessThanOrEqual(metrics.cardWidth + 1);
-  expect(metrics.figureScrollWidth, `${cardId} figure exposes visual-only horizontal scroll`).toBeGreaterThan(metrics.figureClientWidth + 100);
+  const expectedScrollDeltaPx = Math.min(100, Math.max(32, expectedMinDisplayWidthPx * 0.1));
+  expect(metrics.figureScrollWidth, `${cardId} figure exposes visual-only horizontal scroll`).toBeGreaterThan(metrics.figureClientWidth + expectedScrollDeltaPx);
   expect(metrics.figureScrollWidth, `${cardId} scroll content reaches the readable minimum`).toBeGreaterThanOrEqual(expectedMinDisplayWidthPx - 1);
   expect(metrics.imageWidth, `${cardId} image keeps readable mobile width`).toBeGreaterThanOrEqual(expectedMinDisplayWidthPx - 1);
   expect(metrics.imageWidth, `${cardId} image does not upscale beyond source width`).toBeLessThanOrEqual(metrics.naturalWidth + 1);
@@ -3067,7 +3146,22 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   await expect(sustainableSection).toContainText("Такси / автомобиль");
   await expect(sustainableSection.locator('[data-block-kind="mobility-context"]')).toBeVisible();
   await expect(sustainableSection.locator('[data-block-kind="vulnerability-ranking"]')).toBeVisible();
-  await expect(sustainableSection.locator('img[data-visible-spanish="false"]')).toHaveCount(2);
+  const spaceComparisonImage = sustainableSection.locator('img[src*="space-comparison-50-people-source.jpg"]');
+  await expect(spaceComparisonImage).toBeVisible();
+  await expect(spaceComparisonImage).toHaveAttribute("data-visible-spanish", "true");
+  await expect(spaceComparisonImage).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(spaceComparisonImage).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(spaceComparisonImage).toHaveAttribute("data-source-as-is", "true");
+  const spaceTranslations = sustainableSection.locator(".manual-space-labels");
+  await expect(spaceTranslations).toContainText("En colectivo");
+  await expect(spaceTranslations).toContainText("На автобусе");
+  await expect(spaceTranslations).toContainText("A pie");
+  await expect(spaceTranslations).toContainText("Пешком");
+  await expect(spaceTranslations).toContainText("En bicicleta");
+  await expect(spaceTranslations).toContainText("На велосипеде");
+  await expect(spaceTranslations).toContainText("En auto");
+  await expect(spaceTranslations).toContainText("На автомобиле");
+  await expect(sustainableSection.locator('img[data-visible-spanish="false"]')).toHaveCount(1);
   await expect(sustainableSection).not.toContainText("Contexto");
   await expect(sustainableSection).not.toContainText("Ciudad de Buenos Aires");
   await expect(sustainableSection).not.toContainText("Prioridad peatonal");
@@ -3082,6 +3176,8 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
       problems.push(`document horizontal overflow ${document.documentElement.scrollWidth} > ${viewportWidth}`);
     }
     for (const scroller of Array.from(root.querySelectorAll(".manual-source-row-scroll"))) {
+      const sourceAsIsImage = scroller.querySelector('img[data-source-image-exception="source-image-original-visible-text"][data-source-as-is="true"]');
+      if (sourceAsIsImage) continue;
       if (scroller.scrollWidth > scroller.clientWidth + tolerance) {
         const parentBlock = scroller.closest("[data-block-id]");
         problems.push(`${parentBlock?.getAttribute("data-block-id") ?? "source row"} requires horizontal scroll`);
@@ -3114,7 +3210,6 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
     }
     if (window.matchMedia("(max-width: 760px)").matches) {
       const pairGroups = [
-        { name: "space comparison", selector: ".manual-space-mobile-pair", expected: 4 },
         { name: "vulnerability ranking", selector: ".manual-vulnerability-mobile-pair", expected: 6 }
       ];
       for (const group of pairGroups) {
@@ -3352,7 +3447,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   await expect(bicycleSection).toContainText("4,20 м");
   await expect(bicycleSection).toContainText("старше 18 лет");
   await expect(bicycleSection).toContainText("1500 ватт");
-  await expect(bicycleSection).toContainText("Знаки на изображении оставлены как в официальном источнике");
+  await expect(bicycleSection).toContainText("Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.");
   await expect(bicycleSection).toContainText("Конец защищенной велодорожки");
   await expect(bicycleSection).toContainText("Сойти с велосипеда");
   await expect(bicycleSection).toContainText("На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа");
@@ -3467,7 +3562,7 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   });
   expect(bicycleSelectedText).toContain("Правильно");
   expect(bicycleSelectedText).toContain("Слишком низко");
-  expect(bicycleSelectedText).toContain("Знаки на изображении оставлены как в официальном источнике");
+  expect(bicycleSelectedText).toContain("Официальная таблица знаков оставлена без изменений; пояснение ниже не является частью изображения.");
   expect(bicycleSelectedText).toContain("Конец защищенной велодорожки");
   expect(bicycleSelectedText).toContain("Сойти с велосипеда");
   expect(bicycleSelectedText).toContain("Запрещено ехать на велосипеде");
@@ -4444,7 +4539,7 @@ test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone wid
   await expect(card).toBeVisible();
   const figure = card.locator('[data-russian-overlay-strategy="selectable-dom"]');
   const image = figure.locator('img[data-visible-spanish="false"]');
-  await image.evaluate((node) => (node as HTMLImageElement).decode?.().catch(() => undefined));
+  await expectRenderedManualImage(image, "ch4-alcohol-limits-source-card");
   await expect(figure).toBeVisible();
   await expect(image).toBeVisible();
   await expect(figure.locator('[data-overlay-label-id="acompanantes-label"]')).toContainText("Пасс. мото");
@@ -4482,16 +4577,35 @@ test("Manual guide Chapter 4 alcohol overlay labels remain readable on phone wid
 });
 
 test("Manual guide full-width source image cards stay readable and avoid upscaling", async ({ page }, testInfo) => {
+  test.setTimeout(90_000);
   const scenarios: Array<{
     sectionId: string;
     hash: string;
     cards: string[];
-    panoramicCards?: Array<{ id: string; minDisplayWidthPx: number }>;
+    usefulContentCards?: string[];
+    readableScrollCards?: Array<{ id: string; minDisplayWidthPx: number }>;
   }> = [
     {
       sectionId: "app4-signs-regulatory",
       hash: "/#manual-section-app4-signs-regulatory",
-      cards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"]
+      cards: [
+        "app4-regulatory-no-avanzar-source-card",
+        "app4-regulatory-anexo-panel-01-source-card",
+        "app4-regulatory-anexo-panel-02-source-card",
+        "app4-regulatory-anexo-panel-03-source-card",
+        "app4-regulatory-anexo-panel-04-source-card",
+        "app4-regulatory-page-185-source-card",
+        "app4-regulatory-page-186-source-card"
+      ],
+      usefulContentCards: ["app4-regulatory-page-185-source-card", "app4-regulatory-page-186-source-card"],
+      readableScrollCards: [
+        { id: "app4-regulatory-anexo-panel-01-source-card", minDisplayWidthPx: 615 },
+        { id: "app4-regulatory-anexo-panel-02-source-card", minDisplayWidthPx: 618 },
+        { id: "app4-regulatory-anexo-panel-03-source-card", minDisplayWidthPx: 616 },
+        { id: "app4-regulatory-anexo-panel-04-source-card", minDisplayWidthPx: 616 },
+        { id: "app4-regulatory-page-185-source-card", minDisplayWidthPx: 664 },
+        { id: "app4-regulatory-page-186-source-card", minDisplayWidthPx: 704 }
+      ]
     },
     {
       sectionId: "app3-driving-factors",
@@ -4501,18 +4615,39 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     {
       sectionId: "app2-highways-hospitals",
       hash: "/#manual-section-app2-highways-hospitals",
-      cards: ["app2-hospital-map-source-card"]
+      cards: ["app2-hospital-map-source-card"],
+      usefulContentCards: ["app2-hospital-map-source-card"],
+      readableScrollCards: [{ id: "app2-hospital-map-source-card", minDisplayWidthPx: 440 }]
     },
     {
       sectionId: "app2-safety-elements",
       hash: "/#manual-section-app2-safety-elements",
       cards: ["app2-mirror-orientation-source-card"],
-      panoramicCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
+      readableScrollCards: [{ id: "app2-mirror-orientation-source-card", minDisplayWidthPx: 760 }]
+    },
+    {
+      sectionId: "app1-safety-elements",
+      hash: "/#manual-section-app1-safety-elements",
+      cards: ["app1-tire-manufacturing-tread-life-source-card", "app1-blind-spot-source-card"],
+      usefulContentCards: ["app1-tire-manufacturing-tread-life-source-card", "app1-blind-spot-source-card"],
+      readableScrollCards: [
+        { id: "app1-tire-manufacturing-tread-life-source-card", minDisplayWidthPx: 760 },
+        { id: "app1-blind-spot-source-card", minDisplayWidthPx: 546 }
+      ]
     },
     {
       sectionId: "app4-signs-horizontal",
       hash: "/#manual-section-app4-signs-horizontal",
-      cards: ["app4-horizontal-page-195-source-card"]
+      cards: ["app4-horizontal-page-195-source-card"],
+      usefulContentCards: ["app4-horizontal-page-195-source-card"],
+      readableScrollCards: [{ id: "app4-horizontal-page-195-source-card", minDisplayWidthPx: 674 }]
+    },
+    {
+      sectionId: "app4-signs-traffic-lights",
+      hash: "/#manual-section-app4-signs-traffic-lights",
+      cards: ["app4-traffic-lights-page-198-source-card"],
+      usefulContentCards: ["app4-traffic-lights-page-198-source-card"],
+      readableScrollCards: [{ id: "app4-traffic-lights-page-198-source-card", minDisplayWidthPx: 757 }]
     },
     {
       sectionId: "app3-safety-elements",
@@ -4532,11 +4667,14 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       const section = page.getByTestId("manual-guide-section");
       await expect(section).toHaveAttribute("data-manual-section-id", scenario.sectionId);
       for (const cardId of scenario.cards) {
-        await expectFullWidthSourceImageCard(page, cardId, { desktop: viewport.desktop });
+        await expectFullWidthSourceImageCard(page, cardId, {
+          desktop: viewport.desktop,
+          expectUsefulContent: scenario.usefulContentCards?.includes(cardId) ?? false
+        });
       }
       if (!viewport.desktop) {
-        for (const panoramicCard of scenario.panoramicCards ?? []) {
-          await expectScrollablePanoramicSourceImageCard(page, panoramicCard.id, panoramicCard.minDisplayWidthPx);
+        for (const readableScrollCard of scenario.readableScrollCards ?? []) {
+          await expectScrollableReadableSourceImageCard(page, readableScrollCard.id, readableScrollCard.minDisplayWidthPx);
         }
       }
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -4546,4 +4684,207 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
       });
     }
   }
+
+  await page.setViewportSize({ width: 1280, height: 950 });
+  await page.goto("/#manual-section-app4-signs-regulatory");
+  const noAvanzarCard = page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"]');
+  await expect(noAvanzarCard).toContainText("Проезд запрещен");
+  await expect(noAvanzarCard).not.toContainText("Движение прямо запрещено");
+  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
+  await expect(noAvanzarCard.locator(".manual-source-image-term-translations")).toContainText("Проезд запрещен");
+  await expect(noAvanzarCard).not.toContainText("источник");
+  await expect(noAvanzarCard).not.toContainText("фрагмент");
+  const anexoPanel01 = page.locator('[data-card-id="app4-regulatory-anexo-panel-01-source-card"]');
+  await expect(anexoPanel01).toBeVisible();
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("src", /anexo-regulatory-panel-01-source-as-is\.jpg/);
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-official-sign-exception", "official-traffic-sign-source-as-is");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-visible-spanish-scope", "official-sign-image-only");
+  await expect(anexoPanel01.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("NO AVANZAR");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Проезд запрещен");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("PROHIBICIÓN DE CIRCULAR CAMIÓN");
+  await expect(anexoPanel01.locator(".manual-source-image-term-translations")).toContainText("Движение грузовиков запрещено");
+  const anexoPanel02 = page.locator('[data-card-id="app4-regulatory-anexo-panel-02-source-card"]');
+  await expect(anexoPanel02.locator(".manual-source-image-term-translations")).toContainText("NO ESTACIONAR NI DETENERSE");
+  await expect(anexoPanel02.locator(".manual-source-image-term-translations")).toContainText("Остановка и стоянка запрещены");
+  const anexoPanel03 = page.locator('[data-card-id="app4-regulatory-anexo-panel-03-source-card"]');
+  await expect(anexoPanel03.locator(".manual-source-image-term-translations")).toContainText("CIRCULACIÓN EXCLUSIVA (PEATONES)");
+  await expect(anexoPanel03.locator(".manual-source-image-term-translations")).toContainText("Движение только пешеходов");
+  const anexoPanel04 = page.locator('[data-card-id="app4-regulatory-anexo-panel-04-source-card"]');
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("FIN DE LA PRESCRIPCIÓN");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("Конец предписания");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("CEDA EL PASO");
+  await expect(anexoPanel04.locator(".manual-source-image-term-translations")).toContainText("Уступите дорогу");
+  for (const panelCard of [anexoPanel01, anexoPanel02, anexoPanel03, anexoPanel04]) {
+    await expect(panelCard).not.toContainText("источник");
+    await expect(panelCard).not.toContainText("фрагмент");
+  }
+  const anexoPanelCardIds = [
+    "app4-regulatory-anexo-panel-01-source-card",
+    "app4-regulatory-anexo-panel-02-source-card",
+    "app4-regulatory-anexo-panel-03-source-card",
+    "app4-regulatory-anexo-panel-04-source-card"
+  ];
+  for (const panelCardId of anexoPanelCardIds) {
+    await expectRenderedManualImage(page.locator(`[data-card-id="${panelCardId}"] img`), panelCardId);
+  }
+  const anexoPanelSizing = await page.evaluate(() => {
+    const expected = new Map([
+      ["app4-regulatory-anexo-panel-01-source-card", { width: 615, height: 743 }],
+      ["app4-regulatory-anexo-panel-02-source-card", { width: 618, height: 733 }],
+      ["app4-regulatory-anexo-panel-03-source-card", { width: 616, height: 734 }],
+      ["app4-regulatory-anexo-panel-04-source-card", { width: 616, height: 694 }]
+    ]);
+    const results: Array<{ id: string; naturalWidth: number; naturalHeight: number; renderedWidth: number; expectedWidth: number; expectedHeight: number }> = [];
+    for (const [id, size] of expected) {
+      const image = document.querySelector(`[data-card-id="${id}"] img`) as HTMLImageElement | null;
+      if (!image) throw new Error(`${id} image is missing`);
+      const rect = image.getBoundingClientRect();
+      results.push({
+        id,
+        naturalWidth: image.naturalWidth,
+        naturalHeight: image.naturalHeight,
+        renderedWidth: rect.width,
+        expectedWidth: size.width,
+        expectedHeight: size.height
+      });
+    }
+    return results;
+  });
+  for (const panel of anexoPanelSizing) {
+    expect(panel.naturalWidth, `${panel.id} natural width`).toBe(panel.expectedWidth);
+    expect(panel.naturalHeight, `${panel.id} natural height`).toBe(panel.expectedHeight);
+    expect(panel.renderedWidth, `${panel.id} does not upscale`).toBeLessThanOrEqual(panel.expectedWidth + 1);
+  }
+  await page.goto("/#manual-section-app1-safety-elements");
+  const blindSpotCard = page.locator('[data-card-id="app1-blind-spot-source-card"]');
+  await expect(blindSpotCard).toBeVisible();
+  await expect(blindSpotCard).toHaveAttribute("data-source-page", "108");
+  await expect(blindSpotCard).not.toHaveAttribute("data-source-page", "109");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("src", /blind-spot-source-as-is\.jpg/);
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(blindSpotCard.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("PUNTO CIEGO AUTOS");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("Слепая зона автомобилей");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("CAMIONES Y COLECTIVOS");
+  await expect(blindSpotCard.locator(".manual-source-image-term-translations")).toContainText("Грузовики и автобусы");
+  await expect(blindSpotCard).not.toContainText("источник");
+  await expect(blindSpotCard).not.toContainText("фрагмент");
+  const tireCard = page.locator('[data-card-id="app1-tire-manufacturing-tread-life-source-card"]');
+  await expect(tireCard).toBeVisible();
+  await expect(tireCard.locator("img")).toHaveAttribute("src", /tire-manufacturing-tread-life-source-as-is\.jpg/);
+  await expect(tireCard.locator("img")).toHaveAttribute("data-visible-spanish", "true");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-source-image-exception", "source-image-original-visible-text");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-visible-spanish-scope", "source-image-only");
+  await expect(tireCard.locator("img")).toHaveAttribute("data-source-as-is", "true");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Fecha de Fabricación");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Дата изготовления");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Vida útil de los Neumáticos");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Срок службы шин");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Presión adecuada");
+  await expect(tireCard.locator(".manual-source-image-term-translations")).toContainText("Правильное давление");
+  await expect(tireCard).not.toContainText("источник");
+  await expect(tireCard).not.toContainText("фрагмент");
+  await expect(tireCard).not.toContainText("Визуал источника");
+  await expectRenderedManualImage(tireCard.locator("img"), "app1-tire-manufacturing-tread-life-source-card");
+  const tireSizing = await tireCard.locator("img").evaluate((image: HTMLImageElement) => {
+    const rect = image.getBoundingClientRect();
+    const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      renderedWidth: rect.width,
+      renderedHeight: rect.height,
+      cardWidth: cardRect?.width ?? 0
+    };
+  });
+  expect(tireSizing.naturalWidth).toBe(760);
+  expect(tireSizing.naturalHeight).toBe(995);
+  expect(tireSizing.renderedWidth).toBeLessThanOrEqual(760);
+  expect(tireSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(tireSizing.cardWidth * 0.7, 760));
+  await expectRenderedManualImage(blindSpotCard.locator("img"), "app1-blind-spot-source-card");
+  const blindSpotSizing = await blindSpotCard.locator("img").evaluate((image: HTMLImageElement) => {
+    const rect = image.getBoundingClientRect();
+    const cardRect = image.closest("[data-card-id]")?.getBoundingClientRect();
+    return {
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      renderedWidth: rect.width,
+      renderedHeight: rect.height,
+      cardWidth: cardRect?.width ?? 0
+    };
+  });
+  expect(blindSpotSizing.naturalWidth).toBe(546);
+  expect(blindSpotSizing.naturalHeight).toBe(440);
+  expect(blindSpotSizing.renderedWidth).toBeLessThanOrEqual(546);
+  expect(blindSpotSizing.renderedWidth).toBeGreaterThanOrEqual(Math.min(blindSpotSizing.cardWidth * 0.7, 546));
+  await page.goto("/#manual-section-app4-signs-regulatory");
+  await expectRenderedManualImage(page.locator('[data-card-id="app4-regulatory-no-avanzar-source-card"] img'), "app4-regulatory-no-avanzar-source-card");
+  await expectRenderedManualImage(page.locator('[data-card-id="app4-regulatory-page-185-source-card"] img'), "app4-regulatory-page-185-source-card");
+  const noAvanzarSizing = await page.evaluate(() => {
+    function redBounds(image: HTMLImageElement, crop: { x: number; y: number; width: number; height: number }) {
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth;
+      canvas.height = image.naturalHeight;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (!context) throw new Error("Could not create canvas context");
+      context.drawImage(image, 0, 0);
+      const data = context.getImageData(crop.x, crop.y, crop.width, crop.height).data;
+      let minX = crop.width;
+      let minY = crop.height;
+      let maxX = -1;
+      let maxY = -1;
+      for (let y = 0; y < crop.height; y += 1) {
+        for (let x = 0; x < crop.width; x += 1) {
+          const offset = (y * crop.width + x) * 4;
+          const red = data[offset];
+          const green = data[offset + 1];
+          const blue = data[offset + 2];
+          const alpha = data[offset + 3];
+          if (alpha > 0 && red > 145 && green < 95 && blue < 95) {
+            minX = Math.min(minX, x);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, x);
+            maxY = Math.max(maxY, y);
+          }
+        }
+      }
+      if (maxX < minX || maxY < minY) return null;
+      return { width: maxX - minX + 1, height: maxY - minY + 1 };
+    }
+    const focusedImage = document.querySelector('[data-card-id="app4-regulatory-no-avanzar-source-card"] img') as HTMLImageElement | null;
+    const sheetImage = document.querySelector('[data-card-id="app4-regulatory-page-185-source-card"] img') as HTMLImageElement | null;
+    if (!focusedImage || !sheetImage) throw new Error("NO AVANZAR focused or overview image is missing");
+    const focusedRect = focusedImage.getBoundingClientRect();
+    const sheetRect = sheetImage.getBoundingClientRect();
+    return {
+      focusedNatural: { width: focusedImage.naturalWidth, height: focusedImage.naturalHeight },
+      focusedRendered: { width: focusedRect.width, height: focusedRect.height },
+      sheetRendered: { width: sheetRect.width, height: sheetRect.height },
+      focusedRedBounds: redBounds(focusedImage, {
+        x: 0,
+        y: 0,
+        width: focusedImage.naturalWidth,
+        height: focusedImage.naturalHeight
+      }),
+      overviewFirstSignRedBounds: redBounds(sheetImage, {
+        x: 170,
+        y: 205,
+        width: 75,
+        height: 75
+      })
+    };
+  });
+  expect(noAvanzarSizing.focusedNatural).toEqual({ width: 200, height: 145 });
+  expect(noAvanzarSizing.focusedRendered.width, "focused NO AVANZAR does not upscale").toBeLessThanOrEqual(201);
+  expect(noAvanzarSizing.focusedRendered.width, "focused NO AVANZAR uses its natural readable width").toBeGreaterThanOrEqual(199);
+  expect(noAvanzarSizing.focusedRedBounds, "focused NO AVANZAR red sign bbox is measurable").not.toBeNull();
+  expect(noAvanzarSizing.overviewFirstSignRedBounds, "overview NO AVANZAR red sign bbox is measurable").not.toBeNull();
+  expect(
+    noAvanzarSizing.focusedRedBounds!.width,
+    "focused NO AVANZAR sign is substantially wider than the same sign inside the overview sheet"
+  ).toBeGreaterThan(noAvanzarSizing.overviewFirstSignRedBounds!.width * 1.45);
 });

@@ -83,7 +83,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
         }
       ],
       captionRu:
-        "На исходных фотографиях виден контраст между обычным потоком на широкой авениде и коридором общественного транспорта. Числа из текста помогают понять, почему город поддерживает такой выбор.",
+        "На фотографиях виден контраст между обычным потоком на широкой авениде и коридором общественного транспорта. Числа из текста помогают понять, почему город поддерживает такой выбор.",
       visualNotes: [
         "The two avenue photos are a tight original crop from source page 39 with no translated or reconstructed imagery.",
         "CO2 and occupancy comparison labels are Russian DOM text outside the image.",
@@ -115,7 +115,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/yellow-box-source.jpg`,
           altRu:
-            "Исходная фотография желтой дорожной разметки зоны остановки автобуса.",
+            "Фотография желтой дорожной разметки зоны остановки автобуса.",
           visibleSpanish: false,
           details: [
             {
@@ -142,7 +142,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/bus-platform-source.jpg`,
           altRu:
-            "Исходная фотография приподнятой платформы остановки автобуса.",
+            "Фотография приподнятой платформы остановки автобуса.",
           visibleSpanish: false,
           details: [
             {
@@ -169,7 +169,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/exclusive-lane-source.jpg`,
           altRu:
-            "Исходная фотография эксклюзивной полосы с дорожной надписью BUS.",
+            "Фотография эксклюзивной полосы с дорожной надписью BUS.",
           visibleSpanish: true,
           sourceImageException,
           details: [
@@ -204,7 +204,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/metrobus-source.jpg`,
           altRu:
-            "Исходная фотография коридора Metrobus с остановкой и автобусами.",
+            "Фотография коридора Metrobus с остановкой и автобусами.",
           visibleSpanish: true,
           sourceImageException,
           details: [
@@ -244,7 +244,7 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
           },
           assetPath: `${assetRoot}/transport-center-source.jpg`,
           altRu:
-            "Исходная фотография пересадочного центра с автобусами, железнодорожными платформами и крытым павильоном.",
+            "Фотография пересадочного центра с автобусами, железнодорожными платформами и крытым павильоном.",
           visibleSpanish: false,
           details: [
             {

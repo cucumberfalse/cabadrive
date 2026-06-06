@@ -66,7 +66,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 46,
           sourceRegion: { x: 1085, y: 1795, width: 320, height: 118 },
           assetPath: `${assetRoot}/dni-source-as-is.jpg`,
-          altRu: "Исходный пример DNI из manual, оставленный без изменений.",
+          altRu: "Пример DNI.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
@@ -79,7 +79,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 46,
           sourceRegion: { x: 1085, y: 1950, width: 300, height: 105 },
           assetPath: `${assetRoot}/license-source-as-is.jpg`,
-          altRu: "Исходный пример Licencia Nacional de Conducir, оставленный без изменений.",
+          altRu: "Пример Licencia Nacional de Conducir.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
@@ -121,7 +121,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 47,
           sourceRegion: { x: 1085, y: 1605, width: 315, height: 215 },
           assetPath: `${assetRoot}/beginner-sign-source-as-is.jpg`,
-          altRu: "Исходный знак Conductor Principiante, оставленный без изменений.",
+          altRu: "Знак Conductor Principiante.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
@@ -135,11 +135,11 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 47,
           sourceRegion: { x: 1085, y: 2490, width: 1110, height: 260 },
           assetPath: `${assetRoot}/cedulas-source-as-is.jpg`,
-          altRu: "Исходные примеры зеленой, синей, коричневой и розовой cédula, оставленные без изменений.",
+          altRu: "Примеры зеленой, синей, коричневой и розовой cédula.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Cédula, выданная DNRPA, идентифицирует транспортное средство и владельца или уполномоченное лицо. Источник показывает прежние цветовые варианты; текущая логика раздела объясняется рядом текстом."
+            "Cédula, выданная DNRPA, идентифицирует транспортное средство и владельца или уполномоченное лицо. На изображении показаны прежние цветовые варианты; текущая логика раздела объясняется рядом текстом."
         }
       ],
       visualNotes: [
@@ -211,11 +211,11 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 49,
           sourceRegion: { x: 1085, y: 2000, width: 1150, height: 335 },
           assetPath: `${assetRoot}/vtv-source-as-is.jpg`,
-          altRu: "Исходная схема VTV с возрастом, пробегом и месяцем по последней цифре номера.",
+          altRu: "Схема VTV с возрастом, пробегом и месяцем по последней цифре номера.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Схема оставлена как источник: она показывает первую VTV, renovación и связь последней цифры номера с месяцем процедуры. Правила рядом изложены русским текстом."
+            "Схема показывает первую VTV, renovación и связь последней цифры номера с месяцем процедуры. Правила рядом изложены русским текстом."
         },
         {
           id: "rva-source-card",
@@ -224,11 +224,11 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 50,
           sourceRegion: { x: 1085, y: 2190, width: 360, height: 300 },
           assetPath: `${assetRoot}/rva-source-as-is.jpg`,
-          altRu: "Исходный визуальный пример RVA Autopartes Grabadas, оставленный без изменений.",
+          altRu: "Пример RVA Autopartes Grabadas.",
           visibleSpanish: true,
           sourceImageException,
           bodyRu:
-            "Этот источник оставлен без изменений. Русское пояснение вынесено наружу: цель RVA - снизить оборот украденных автозапчастей и дать возможность проверить происхождение деталей."
+            "На изображении показан пример RVA Autopartes Grabadas. Смысл для экзамена: RVA снижает оборот украденных автозапчастей и дает возможность проверить происхождение деталей."
         }
       ],
       visualNotes: [

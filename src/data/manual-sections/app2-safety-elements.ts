@@ -30,9 +30,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app2-safety-elements/page-131-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-131-seatbelt-use-source-crop.png",
       "content/validation/manual-guide/app2-safety-elements/page-132-safety-elements-source-crop.jpg",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-position-source-crop.png",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-height-diagram-source-crop.png",
-      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-distance-diagram-source-crop.png",
+      "content/validation/manual-guide/app2-safety-elements/page-132-headrest-combined-diagram-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-133-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-134-safety-elements-source-crop.jpg",
       "content/validation/manual-guide/app2-safety-elements/page-135-safety-elements-source-crop.jpg",
@@ -45,7 +43,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     notes: [
       "Pages 125-136 are implemented as selectable Russian DOM text with key source visual instructions preserved at runtime.",
       "The mirror and seat-belt visuals are tight x5 source-as-is photo crops with surrounding Spanish caption/body text translated outside the image.",
-      "The headrest-position visual is preserved as tight x5 source diagram crops that exclude Spanish labels; Russian explanation remains selectable outside the images, and no protected photo, traffic sign, road marking, source crop, or source page render is modified."
+      "The page 132 headrest-position visual is preserved as one source-as-is combined diagram crop with Spanish labels unchanged inside the image and Russian term translations rendered as selectable DOM text below it."
     ]
   },
   blocks: [
@@ -110,7 +108,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         "Шины являются точкой контакта с дорогой и могут выдерживать нагрузку до 50 раз больше собственного веса.",
         "Шины участвуют в устойчивости, подвеске и торможении.",
         "Рулевое управление направляет колеса и на высоких скоростях становится жестче, чтобы помогать устойчивости.",
-        "Источник перечисляет механическое, гидравлическое, электрогидравлическое и электромеханическое или электрическое рулевое управление."
+        "Есть механическое, гидравлическое, электрогидравлическое и электромеханическое или электрическое рулевое управление."
       ]
     },
     {
@@ -122,7 +120,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       itemsRu: [
         "На боковинах шин указаны дата изготовления, индекс нагрузки, максимальная скорость и другие характеристики.",
         "Если есть вздутия, разрывы или глубина рисунка меньше 1,6 mm, шину нужно заменить.",
-        "Для крупногабаритного транспорта при глубине 2 mm источник уже рекомендует замену.",
+        "Для крупногабаритного транспорта замену рекомендуется делать уже при глубине 2 mm.",
         "Рисунок отводит воду на мокром покрытии и помогает избежать гидропланирования или аквапланирования.",
         "Не рекомендуется использовать шины старше 5 лет с даты изготовления независимо от износа.",
         "Восстановленные шины запрещены на передних осях грузовиков и средне- и дальнемагистральных автобусов.",
@@ -141,20 +139,20 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         "Слепая зона - область вокруг транспорта, которую водитель не видит ни напрямую, ни через зеркала.",
         "Чем больше транспортное средство, тем больше слепая зона.",
         "У крупногабаритного транспорта высокая посадка ухудшает ближний передний обзор: водитель теряет примерно 3 метра перед собой.",
-        "Перед маневром источник советует немного податься корпусом вперед, использовать периферическое зрение и при необходимости смотреть через плечо.",
+        "Перед маневром немного подайтесь корпусом вперед, используйте периферическое зрение и при необходимости смотрите через плечо.",
         "В зеркале должно отражаться максимум 10% задней части транспортного средства."
       ]
     },
     {
       id: "mirror-orientation-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: ориентация зеркал",
+      titleRu: "Ориентация зеркал",
       sourceTextEs:
         "Sólo debe reflejarse como máximo el 10% de la parte trasera del vehículo.",
       cards: [
         {
           id: "app2-mirror-orientation-source-card",
-          titleRu: "Исходные фото зеркал",
+          titleRu: "Фото положения зеркал",
           displayMode: "full-width",
           maxDisplayWidthPx: 1260,
           minDisplayWidthPx: 760,
@@ -162,10 +160,10 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
           sourceRegion: { x: 930, y: 1960, width: 1260, height: 125 },
           assetPath: `${assetRoot}/mirror-orientation-photo-source-as-is.png`,
           altRu:
-            "Исходные фотографии правильной и неправильной ориентации бокового зеркала, оставленные без изменений.",
+            "Фото правильной и неправильной ориентации бокового зеркала.",
           visibleSpanish: false,
           bodyRu:
-            "Фотофрагмент оставлен как исходный материал без изменений: без перевода, ретуши, дорисовки или изменения дорожной сцены. Испанская подпись перенесена в русский текст: в зеркале должно отражаться не больше 10% задней части собственного транспортного средства."
+            "Главное правило по фото: в зеркале должно отражаться не больше 10% задней части собственного транспортного средства. Дорожная сцена внутри изображения не переводится и не дорисовывается."
         }
       ],
       visualNotes: [
@@ -192,22 +190,22 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "seatbelt-use-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: правильный ремень",
+      titleRu: "Правильное положение ремня",
       sourceTextEs: "Uso correcto del cinturón de seguridad.",
       cards: [
         {
           id: "app2-seatbelt-use-source-card",
-          titleRu: "Исходные фото положения ремня",
+          titleRu: "Фото положения ремня",
           displayMode: "full-width",
           maxDisplayWidthPx: 1060,
           sourcePage: 131,
           sourceRegion: { x: 1015, y: 2005, width: 1060, height: 285 },
           assetPath: `${assetRoot}/seatbelt-use-photo-source-as-is.png`,
           altRu:
-            "Исходные фотографии правильного и неправильного положения ремня безопасности, оставленные без изменений.",
+            "Фото правильного и неправильного положения ремня безопасности.",
           visibleSpanish: false,
           bodyRu:
-            "Фотографии сохранены как исходный фрагмент: знак правильного и неправильного положения остается частью изображения без изменений. Русские правила расположения ремня приведены в тексте рядом, а испанские пункты под фото не входят в рабочий фрагмент."
+            "На фотографиях показаны правильное и неправильное положения ремня. Русские правила расположения ремня приведены в тексте рядом; испанские пункты под фото не входят в изображение."
         }
       ],
       visualNotes: [
@@ -224,7 +222,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       itemsRu: [
         "Во время беременности нужно менять настройки руля и сиденья так, чтобы между животом или грудью и рулем было минимум 25 cm.",
         "Если руль регулируется по наклону, его направляют к груди, а не к голове или животу.",
-        "С восьмого месяца источник рекомендует, чтобы вел другой человек.",
+        "С восьмого месяца лучше, чтобы вел другой человек.",
         "Подголовник при правильной регулировке уменьшает хлыстовой эффект и дополняет ремень безопасности.",
         "Самая высокая часть подголовника должна быть на уровне верхней части головы, центральная - на уровне линии глаз.",
         "Подушка безопасности дополняет ремень и не заменяет его; без ремня она может причинить тяжелые травмы.",
@@ -234,39 +232,43 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
     {
       id: "headrest-position-source-visual",
       kind: "source-image-cards",
-      titleRu: "Визуал источника: положение подголовника",
-      sourceTextEs: "Altura apoyacabeza y distancia del apoyacabeza.",
+      titleRu: "Положение подголовника",
+      sourceTextEs:
+        "Altura apoyacabeza, distancia del apoyacabeza, Bueno, Aceptable, Regular, Malo y Botón de desbloqueo.",
       cards: [
         {
-          id: "app2-headrest-height-source-card",
-          titleRu: "Исходная схема высоты",
-          displayMode: "compact",
+          id: "app2-headrest-combined-source-card",
+          titleRu: "Как выставить подголовник",
+          displayMode: "full-width",
+          maxDisplayWidthPx: 820,
           sourcePage: 132,
-          sourceRegion: { x: 1330, y: 2240, width: 185, height: 105 },
-          assetPath: `${assetRoot}/headrest-height-diagram-source-as-is.png`,
+          sourceRegion: { x: 1040, y: 2160, width: 820, height: 600 },
+          assetPath: `${assetRoot}/headrest-combined-diagram-source-as-is.jpg`,
           altRu:
-            "Исходная схема высоты подголовника без испанских подписей, с сохраненными силуэтами головы и направляющими линиями.",
-          visibleSpanish: false,
+            "Цельная испанская схема регулировки подголовника по высоте, расстоянию и кнопке разблокировки.",
+          visibleSpanish: true,
+          sourceImageException: {
+            kind: "source-image-original-visible-text",
+            visibleSpanishScope: "source-image-only",
+            sourceAsIs: true,
+            russianExplanationOutsideImage: true
+          },
           bodyRu:
-            "Фрагмент показывает, что верх подголовника должен соответствовать верхней части головы, а центральная часть - линии глаз. Испанские подписи не входят в этот рабочий фрагмент; правило приведено русским текстом рядом."
-        },
-        {
-          id: "app2-headrest-distance-source-card",
-          titleRu: "Исходная схема дистанции",
-          displayMode: "compact",
-          sourcePage: 132,
-          sourceRegion: { x: 1520, y: 2250, width: 260, height: 95 },
-          assetPath: `${assetRoot}/headrest-distance-diagram-source-as-is.png`,
-          altRu:
-            "Исходная схема дистанции подголовника без испанских подписей, с сохраненными силуэтами головы и вертикальными направляющими.",
-          visibleSpanish: false,
-          bodyRu:
-            "Фрагмент сохраняет исходную геометрию расстояния между головой и подголовником. Чем ближе подголовник к голове без неудобства, тем лучше защита от хлыстовой травмы; русское объяснение находится вне изображения."
+            "Верх подголовника должен быть примерно на уровне верхней части головы, центр - около линии глаз. По расстоянию лучше, когда подголовник ближе к голове без неудобства: так он эффективнее снижает риск хлыстовой травмы.",
+          termTranslations: [
+            { termEs: "Altura apoyacabeza", translationRu: "Высота подголовника" },
+            { termEs: "Distancia del apoyacabeza", translationRu: "Расстояние до подголовника" },
+            { termEs: "Bueno", translationRu: "Хорошо" },
+            { termEs: "Aceptable", translationRu: "Допустимо" },
+            { termEs: "Regular", translationRu: "Средне" },
+            { termEs: "Malo", translationRu: "Плохо" },
+            { termEs: "Botón de desbloqueo", translationRu: "Кнопка разблокировки" }
+          ]
         }
       ],
       visualNotes: [
-        "The headrest visuals are tight source diagram crops from the Appendix II page 132 x5 evidence.",
-        "Spanish labels are excluded by crop boundary rather than cleaned or covered; silhouettes, dashed guides, pictograms, and spatial relationships are source pixels."
+        "The headrest visual is a source-as-is crop from the Appendix II page 132 x5 evidence using sips cropOffset 2160 1040 and crop 600x820.",
+        "Spanish labels remain unchanged inside the protected image; Russian term translations are rendered as selectable DOM text below the card."
       ]
     },
     {
@@ -299,7 +301,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
         "Огнетушитель размещают в салоне в пределах досягаемости водителя, кроме тех, емкость которых больше 1 kg.",
         "Крепление огнетушителя должно быть металлическим; эластичный хомут запрещен.",
         "Светоотражающий жилет обязателен внутри салона. При выходе на проезжую часть его рекомендуется надевать без одежды поверх; при форс-мажоре на автомагистралях и быстрых дорогах его использование обязательно.",
-        "Регламентная буксировочная сцепка - жесткая выдвижная штанга; источник отдельно отмечает обязательность ее наличия для перевозки школьников и людей с ограниченной мобильностью, если применимые нормы требуют это для деятельности."
+        "Регламентная буксировочная сцепка - жесткая выдвижная штанга; для перевозки школьников и людей с ограниченной мобильностью она обязательна, если применимые нормы требуют это для деятельности."
       ]
     },
     {
@@ -309,7 +311,7 @@ export const app2SafetyElementsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Botiquin con gasas, vendas, cinta, agua oxigenada, solucion yodada, alcohol, guantes, crema, antidiarreico, analgesicos, antiinflamatorio, pinzas, tijera y linterna; dispositivo telescopico homologado sustituye cuerdas y cables.",
       itemsRu: [
-        "Помимо случаев, когда аптечка обязательна по виду услуги, источник рекомендует возить набор для базовой первой помощи до прибытия медицинской помощи.",
+        "Помимо случаев, когда аптечка обязательна по виду услуги, полезно возить набор для базовой первой помощи до прибытия медицинской помощи.",
         "Аптечку обозначают красным крестом на белой коробке или наоборот и закрепляют в безопасном месте.",
         "В набор входят стерильные гидрофильные марлевые салфетки, бинты и повязки разных размеров, гипоаллергенный пластырь, перекись водорода, йодный раствор, спирт или другое дезинфицирующее средство.",
         "Также перечислены латексные или виниловые перчатки, крем от ожогов, таблетки активированного угля, обезболивающие, противовоспалительное средство, крем от укусов насекомых, пинцет, ножницы и фонарик с запасными батарейками или аккумулятором.",

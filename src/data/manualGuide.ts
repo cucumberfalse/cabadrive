@@ -287,8 +287,12 @@ export type ManualGuideContentBlock =
       space: {
         titleRu: string;
         assetPath: string;
+        altRu: string;
+        visibleSpanish: boolean;
+        sourceImageException?: OriginalSourceImageTextException;
         modes: {
           id: string;
+          termEs: string;
           labelRu: string;
         }[];
       };
@@ -698,6 +702,10 @@ export type ManualGuideContentBlock =
           sourceAsIs: true;
         };
         sourceImageException?: OriginalSourceImageTextException;
+        termTranslations?: {
+          termEs: string;
+          translationRu: string;
+        }[];
         russianOverlayLabels?: {
           id: string;
           textRu: string;

@@ -36,7 +36,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-informational/app4-signs-informational-mobile.png"
     ],
     notes: [
-      "Pages 189-192 are implemented with unchanged x5 informational sign/source sheets.",
+      "Pages 189-192 are implemented with unchanged official informational sign/source pixels cropped to remove empty outer page margins.",
       "The Yellow Star source text from page 192 is translated in selectable DOM text below the unchanged source page image."
     ]
   },
@@ -65,7 +65,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
     {
       id: "informational-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы информационных знаков",
+      titleRu: "Листы информационных знаков",
       sourceTextEs:
         "Informativas: caracteristicas de la via, nomenclatura vial y urbana, informacion turistica y de servicios, educativas y anuncios especiales.",
       cards: [
@@ -73,27 +73,29 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           id: "app4-informational-page-189-source-card",
           titleRu: "Страница 189: характеристики дороги",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 673,
+          minDisplayWidthPx: 673,
           sourcePage: 189,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-189-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-189-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных знаков о характеристиках дороги, сохраненный без изменений.",
+            "Лист информационных знаков о характеристиках дороги.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Лист сохранен как официальный источник: цвета, стрелки, пиктограммы и испанские подписи не изменены."
+            "Цвета, стрелки, пиктограммы и испанские подписи остаются внутри изображения."
         },
         {
           id: "app4-informational-page-190-source-card",
           titleRu: "Страница 190: дорожная и городская номенклатура",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 704,
+          minDisplayWidthPx: 704,
           sourcePage: 190,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-190-source-as-is.jpg`,
+          sourceRegion: { x: 1162, y: 1602, width: 704, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-190-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных знаков дорожной и городской номенклатуры, сохраненный без изменений.",
+            "Лист информационных знаков дорожной и городской номенклатуры.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
@@ -103,35 +105,39 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
           id: "app4-informational-page-191-source-card",
           titleRu: "Страница 191: туристическая, сервисная и специальная информация",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 672,
+          minDisplayWidthPx: 672,
           sourcePage: 191,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-191-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 671, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-191-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист информационных туристических, сервисных, образовательных и специальных знаков, сохраненный без изменений.",
+            "Лист информационных туристических, сервисных, образовательных и специальных знаков.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Все пиктограммы и подписи оставлены без ретуши, масок, перерисовки или русских надписей поверх изображения."
+            "Пиктограммы и подписи остаются внутри изображения; русские надписи поверх них не добавляются."
         },
         {
           id: "app4-informational-page-192-source-card",
           titleRu: "Страница 192: Желтая звезда",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 706,
+          minDisplayWidthPx: 706,
           sourcePage: 192,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/sign-sheet-192-source-as-is.jpg`,
+          sourceRegion: { x: 1161, y: 1602, width: 705, height: 981 },
+          assetPath: `${assetRoot}/sign-sheet-192-source-crop-as-is.jpg`,
           altRu:
-            "Официальная страница о знаке Желтая звезда, сохраненная без изменений.",
+            "Страница о знаке Желтая звезда с испанским текстом.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Страница показана как неизмененный источник. Русский перевод содержания находится ниже, а исходная испанская страница не очищается и не переводится внутри изображения."
+            "Русский перевод содержания находится ниже; испанский текст внутри изображения не очищается и не переводится."
         }
       ],
       visualNotes: [
-        "Informational sign/source sheets are x5 source-as-is runtime images.",
+        "Informational sign/source sheets are feature 034 official-source crops with empty outer page margins removed.",
+        "The official PDF source is source-limited for useful sign pixels, so runtime display is capped at each natural crop width.",
+        "The cards keep natural crop width on narrow viewports with contained figure scrolling for source-faithful text readability instead of phone-width downscaling.",
         "Russian learner text remains outside the protected source images."
       ]
     },
@@ -146,7 +152,7 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
         "Пять лучей звезды обозначают ценности: память, предотвращение, закон, справедливость и образование.",
         "На звезде указывают имя или прозвище и возраст жертвы с надписью «En memoria de una victima de transito».",
         "Семья погибшего может бесплатно запросить установку по адресу estrellasamarillas@buenosaires.gob.ar или через НКО.",
-        "В источнике также упомянута интерактивная карта Желтых звезд с данными о месте, имени, возрасте, дате рождения и дате смерти."
+        "Также существует интерактивная карта Желтых звезд с данными о месте, имени, возрасте, дате рождения и дате смерти."
       ]
     }
   ]

@@ -1731,16 +1731,36 @@ small,
   display: grid;
   grid-template-columns: 1fr 1.15fr 1.15fr 2.35fr;
   gap: 10px;
-  min-width: 560px;
+  width: 585px;
+  max-width: 100%;
+  color: #314441;
+  font-size: 0.82rem;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.manual-space-labels span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.manual-space-labels strong {
   color: #1b6680;
-  font-size: 0.78rem;
-  font-weight: 850;
-  line-height: 1.15;
-  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
-.manual-space-comparison img,
+.manual-space-comparison img {
+  display: block;
+  width: 585px;
+  max-width: 100%;
+  height: auto;
+  min-width: 560px;
+  border-radius: 0;
+}
+
 .manual-vulnerability-ranking img {
   display: block;
   width: 100%;
@@ -2873,6 +2893,40 @@ small,
   color: #3d4846;
   font-size: 0.93rem;
   line-height: 1.42;
+}
+
+.manual-source-image-term-translations {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 0;
+}
+
+.manual-source-image-term-translation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding-block: 4px;
+  border-top: 1px solid rgba(71, 93, 88, 0.16);
+}
+
+.manual-source-image-term-translation dt,
+.manual-source-image-term-translation dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+.manual-source-image-term-translation dt {
+  color: #41514d;
+  font-weight: 800;
+}
+
+.manual-source-image-term-translation dd {
+  color: #1b6680;
+  font-weight: 900;
 }
 
 @media (max-width: 840px) {
@@ -4215,11 +4269,26 @@ small,
     overflow-x: visible;
   }
 
-  .manual-space-labels,
   .manual-vulnerability-labels,
-  .manual-space-comparison .manual-source-row-scroll > img,
   .manual-vulnerability-ranking .manual-source-row-scroll > img {
     display: none;
+  }
+
+  .manual-space-comparison .manual-source-row-scroll {
+    overflow-x: auto;
+  }
+
+  .manual-space-comparison .manual-source-row-scroll > img {
+    display: block;
+    width: 585px;
+    max-width: none;
+    min-width: 585px;
+  }
+
+  .manual-space-labels {
+    width: 585px;
+    max-width: none;
+    min-width: 585px;
   }
 
   .manual-mobile-pairs {
@@ -4227,7 +4296,10 @@ small,
     min-width: 0;
   }
 
-  .manual-space-mobile-pairs,
+  .manual-space-mobile-pairs {
+    display: none;
+  }
+
   .manual-vulnerability-mobile-pairs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -4313,7 +4385,6 @@ small,
     background-position: -200px center;
   }
 
-  .manual-space-comparison img,
   .manual-vulnerability-ranking img {
     max-width: 100%;
     min-width: 0;

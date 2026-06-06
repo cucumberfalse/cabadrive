@@ -36,7 +36,7 @@ export const frontCategoriesSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Categoría B / Automóviles: Introducción, Capítulo 1, Capítulo 2, Capítulo 3, Capítulo 4, Capítulo 5, Anexo I, Anexo IV.",
       textRu:
-        "Для категории B / автомобилей источник задает такой набор учебного материала: Введение, главы 1-5, Приложение I для частных автомобилей и Приложение IV с дорожными знаками."
+        "Для категории B / автомобилей учебный набор такой: Введение, главы 1-5, Приложение I для частных автомобилей и Приложение IV с дорожными знаками."
     },
     {
       id: "category-map",
@@ -64,7 +64,7 @@ export const frontCategoriesSection: ManualGuideSectionContent = {
         }
       ],
       captionRu:
-        "Для Cabadrive основной маршрут подготовки остается категорией B; остальные строки оставлены только как источник объясняет структуру manual."
+        "Для Cabadrive основной маршрут подготовки остается категорией B; остальные строки помогают понять структуру полного manual."
     },
     {
       id: "category-navigation-note",

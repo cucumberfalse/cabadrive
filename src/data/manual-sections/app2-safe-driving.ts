@@ -38,7 +38,7 @@ export const app2SafeDrivingSection: ManualGuideSectionContent = {
       sourceTextEs:
         "La conduccion al limite siempre tiene consecuencias negativas; reconocer limites personales, del vehiculo y del entorno es fundamental.",
       textRu:
-        "Безопасное управление начинается с признания личных пределов, пределов транспортного средства и окружающей среды. При сомнении источник требует усиливать меры предосторожности и избегать риска, даже если условия кажутся безобидными."
+        "Безопасное управление начинается с признания личных пределов, пределов транспортного средства и окружающей среды. При сомнении нужно усиливать меры предосторожности и избегать риска, даже если условия кажутся безобидными."
     },
     {
       id: "bad-limit-driving",

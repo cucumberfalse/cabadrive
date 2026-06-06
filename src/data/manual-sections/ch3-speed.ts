@@ -52,7 +52,7 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Tiempo de reacción... Distancia de seguridad... Distancia de reacción... Distancia de frenado... Distancia de detención.",
       itemsRu: [
-        "Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее значение в источнике - примерно 1 секунда.",
+        "Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.",
         "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.",
         "Дистанция реакции - путь, пройденный за время реакции. Она растет при большем времени реакции и/или большей скорости.",
         "Тормозной путь - расстояние от нажатия на тормоз до полной остановки. На него влияют скорость, состояние шин, подвески и тормозов, груз, состояние покрытия и погода.",
@@ -65,7 +65,7 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       titleRu: "Максимальные скорости в CABA для транспорта до 3500 кг",
       sourceTextEs:
         "Velocidades máximas en CABA. Vehículos hasta 3500 kg de peso.",
-      columnsRu: ["Вид дороги / зона", "Максимум", "Как читать источник"],
+      columnsRu: ["Вид дороги / зона", "Максимум", "Как читать правило"],
       rows: [
         {
           id: "caba-passages-convivencia",
@@ -89,7 +89,7 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
         }
       ],
       captionRu:
-        "Источник напоминает: нормативные скорости могут изменяться на отдельных tramos по соображениям безопасности, и водитель узнает это через señales viales."
+        "Нормативные скорости могут изменяться на отдельных tramos по соображениям безопасности, и водитель узнает это через señales viales."
     },
     {
       id: "caba-avenue-exception-speed-table",
@@ -97,7 +97,7 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       titleRu: "Исключения в некоторых avenidas и vías rápidas CABA",
       sourceTextEs:
         "Excepciones en algunas avenidas: 40, 60, 70, 80 y 100 km/h según arteria o tramo.",
-      columnsRu: ["Максимум", "Именованные участки из источника", "Экзаменационная логика"],
+      columnsRu: ["Максимум", "Именованные участки", "Экзаменационная логика"],
       rows: [
         {
           id: "exception-40-corrientes",
@@ -193,7 +193,7 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       titleRu: "Максимальные скорости вне CABA по типу дороги и транспорта",
       sourceTextEs:
         "Velocidades máximas fuera de CABA de acuerdo al tipo de vía y vehículo.",
-      columnsRu: ["Транспорт / дорога", "Максимум", "Источник-логика"],
+      columnsRu: ["Транспорт / дорога", "Максимум", "Логика правила"],
       rows: [
         {
           id: "outside-urban-route",

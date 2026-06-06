@@ -36,7 +36,7 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
       "content/validation/manual-guide/app4-signs-traffic-lights/app4-signs-traffic-lights-mobile.png"
     ],
     notes: [
-      "Pages 197-200 are implemented with unchanged x5 signal and closing source visuals.",
+      "Pages 197-200 are implemented with unchanged official signal and closing-page pixels cropped to remove empty outer page margins.",
       "Traffic-light and signal source visuals remain source-as-is; Russian meaning and closing-page translations are below the images."
     ]
   },
@@ -52,20 +52,20 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
     {
       id: "traffic-lights-groups",
       kind: "list",
-      titleRu: "Что покрывает источник",
+      titleRu: "Что входит в тему",
       sourceTextEs:
         "Significado de las luces; disposicion de unidades opticas; semaforos especiales; las senales de transito por su color, tamano y posicion hacen mas agil, segura y eficiente la movilidad.",
       itemsRu: [
         "Значение огней объясняет, когда нужно остановиться, когда можно продолжить движение и когда следует подготовиться к изменению сигнала.",
         "Расположение оптических блоков помогает быстро распознать сигнал даже до чтения подписи.",
         "Специальные светофоры относятся к отдельным потокам или пользователям дороги, например пешеходам, велосипедам или общественному транспорту.",
-        "Источник завершает приложение мыслью: знаки через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
+        "Итог приложения: знаки через цвет, размер и положение делают мобильность более быстрой, безопасной и эффективной."
       ]
     },
     {
       id: "traffic-lights-source-sheets",
       kind: "source-image-cards",
-      titleRu: "Официальные листы световой сигнализации и закрывающие страницы",
+      titleRu: "Листы световой сигнализации и закрывающие страницы",
       sourceTextEs:
         "Senalizacion luminosa: significado de las luces, disposicion de unidades opticas, semaforos especiales, cierre del manual.",
       cards: [
@@ -73,27 +73,29 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           id: "app4-traffic-lights-page-197-source-card",
           titleRu: "Страница 197: значение огней и специальные светофоры",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 673,
+          minDisplayWidthPx: 673,
           sourcePage: 197,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/signal-sheet-197-source-as-is.jpg`,
+          sourceRegion: { x: 1110, y: 1602, width: 673, height: 981 },
+          assetPath: `${assetRoot}/signal-sheet-197-source-crop-as-is.jpg`,
           altRu:
-            "Официальный лист световой сигнализации со значением огней, расположением оптических блоков и специальными светофорами, сохраненный без изменений.",
+            "Лист световой сигнализации со значением огней, расположением оптических блоков и специальными светофорами.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "Световые сигналы, подписи и пиктограммы сохранены без изменения. Русское объяснение находится рядом и ниже, а не внутри изображения."
+            "Световые сигналы, подписи и пиктограммы остаются внутри изображения. Русское объяснение находится рядом и ниже."
         },
         {
           id: "app4-traffic-lights-page-198-source-card",
           titleRu: "Страница 198: завершающее сообщение о знаках",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 198,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/signal-sheet-198-source-as-is.jpg`,
+          sourceRegion: { x: 1105, y: 1602, width: 761, height: 1004 },
+          assetPath: `${assetRoot}/signal-sheet-198-source-crop-as-is.jpg`,
           altRu:
-            "Официальная завершающая страница о роли дорожных знаков, сохраненная без изменений.",
+            "Завершающая страница о роли дорожных знаков.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
@@ -103,35 +105,39 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
           id: "app4-traffic-lights-page-199-source-card",
           titleRu: "Страница 199: завершающая иллюстрация",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 199,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/signal-sheet-199-source-as-is.jpg`,
+          sourceRegion: { x: 1106, y: 1602, width: 760, height: 1003 },
+          assetPath: `${assetRoot}/signal-sheet-199-source-crop-as-is.jpg`,
           altRu:
-            "Официальная завершающая иллюстрация с повторяющимися надписями, сохраненная без изменений.",
+            "Завершающая иллюстрация с повторяющимися надписями.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "По-русски: завершающая иллюстрация повторяет темы дорожного движения, знаков, пешеходов и устойчивой мобильности. Изображение оставлено без перевода внутри."
+            "По-русски: завершающая иллюстрация повторяет темы дорожного движения, знаков, пешеходов и устойчивой мобильности. Текст внутри изображения не переводится."
         },
         {
           id: "app4-traffic-lights-page-200-source-card",
           titleRu: "Страница 200: логотип города",
           displayMode: "full-width",
-          maxDisplayWidthPx: 2976,
+          maxDisplayWidthPx: 757,
+          minDisplayWidthPx: 757,
           sourcePage: 200,
-          sourceRegion: { x: 0, y: 0, width: 2976, height: 4209 },
-          assetPath: `${assetRoot}/signal-sheet-200-source-as-is.jpg`,
+          sourceRegion: { x: 1106, y: 1602, width: 764, height: 1006 },
+          assetPath: `${assetRoot}/signal-sheet-200-source-crop-as-is.jpg`,
           altRu:
-            "Официальная заключительная страница с логотипом Buenos Aires Ciudad, сохраненная без изменений.",
+            "Заключительная страница с логотипом Buenos Aires Ciudad.",
           visibleSpanish: true,
           officialSignException,
           bodyRu:
-            "По-русски: город Буэнос-Айрес. Логотип и подпись источника сохранены без ретуши, перевода или замены."
+            "По-русски: город Буэнос-Айрес. Логотип и подпись не ретушировались, не переводились и не заменялись."
         }
       ],
       visualNotes: [
-        "Traffic-light and closing source visuals are x5 source-as-is runtime images.",
+        "Traffic-light and closing source visuals are feature 034 official-source crops with empty outer page margins removed.",
+        "The official PDF source is source-limited for useful signal pixels, so runtime display is capped at each natural crop width.",
+        "The cards keep natural crop width on narrow viewports with contained figure scrolling for source-faithful embedded text readability.",
         "Visible Spanish remains only inside the protected source images; Russian translation is adjacent or below."
       ]
     }

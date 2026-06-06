@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "featureId": "034-manual-visual-content-crop",
+  "id": "appendix-iv-regulatory-signs-no-avanzar",
+  "status": "implemented-representative",
+  "runtimeCardId": "app4-regulatory-no-avanzar-source-card",
+  "sourcePageContext": 185,
+  "officialSourceAssetPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+  "officialSourceAssetDimensions": {
+    "width": 615,
+    "height": 743
+  },
+  "officialSourceAssetSha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+  "sourceRegion": {
+    "coordinateSystem": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg pixels",
+    "x": 32,
+    "y": 85,
+    "width": 200,
+    "height": 145
+  },
+  "extractionMethod": {
+    "command": "sips -s format jpeg -s formatOptions 100 --cropToHeightWidth 145 200 --cropOffset 85 32 content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg --out content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+    "description": "Focused crop from retained official Anexo L R.1 sign image. The runtime asset and validation crop are byte-identical."
+  },
+  "runtimeAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+  "validationCropPath": "content/validation/manual-guide/app4-signs-regulatory/page-185-no-avanzar-source-crop.jpg",
+  "outputDimensions": {
+    "width": 200,
+    "height": 145
+  },
+  "outputSha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba",
+  "runtimeDisplay": {
+    "maxDisplayWidthPx": 200,
+    "minDisplayWidthPx": 200,
+    "noUpscale": true,
+    "displayMode": "full-width",
+    "translationDomSelector": ".manual-source-image-term-translations"
+  },
+  "protectedImageBoundary": {
+    "protectedInsideImage": [
+      "R.1 sign body",
+      "black arrow",
+      "red prohibition ring and slash",
+      "Spanish source caption pixels"
+    ],
+    "externalCatalogCaption": "R.1 NO AVANZAR is printed below the sign in the official catalog image and is not part of a supplementary plate or sign body.",
+    "domTranslationOutsideImage": {
+      "termEs": "NO AVANZAR",
+      "translationRu": "Проезд запрещен"
+    },
+    "sourceAsIsPolicy": {
+      "sourceAsIs": true,
+      "noTranslationOrRelabeling": true,
+      "noRedrawRecolorCleanupRetouchMaskInpaint": true,
+      "russianExplanationOutsideImage": true
+    }
+  },
+  "cabaPage185Probe": {
+    "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+    "sourceRegionAtBaseScale": {
+      "x": 1110,
+      "y": 1602,
+      "width": 663,
+      "height": 981
+    },
+    "probeRenderScales": [
+      {
+        "renderScale": 12,
+        "renderDimensions": {
+          "width": 1592,
+          "height": 2356
+        },
+        "usefulBounds": {
+          "x": 610,
+          "y": 727,
+          "width": 503,
+          "height": 820
+        },
+        "usefulWidthScaleRatioVsBaseAsset": 1
+      },
+      {
+        "renderScale": 20,
+        "renderDimensions": {
+          "width": 2652,
+          "height": 3924
+        },
+        "usefulBounds": {
+          "x": 1215,
+          "y": 1492,
+          "width": 504,
+          "height": 819
+        },
+        "usefulWidthScaleRatioVsBaseAsset": 1.0019880715705765
+      },
+      {
+        "renderScale": 36,
+        "renderDimensions": {
+          "width": 4774,
+          "height": 7064
+        },
+        "usefulBounds": {
+          "x": 2425,
+          "y": 3023,
+          "width": 504,
+          "height": 819
+        },
+        "usefulWidthScaleRatioVsBaseAsset": 1.0019880715705765
+      }
+    ],
+    "disposition": "The CABA page-185 sheet is retained as overview context, but high-scale PDF probes do not add useful sign glyph pixels. The focused runtime example therefore uses the retained official Anexo L R.1 image."
+  },
+  "remainingScope": "This representative implementation covers the reported NO AVANZAR example only. Other Appendix IV signs remain on source-limited overview sheets unless later task slices add more focused official sign rows or panels."
+}
