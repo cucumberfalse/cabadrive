@@ -3370,7 +3370,7 @@
           },
           {
             "termEs": "Línea de separación de sentido de circulación",
-            "translationRu": "Линия, показывающая возможность пересечения",
+            "translationRu": "Линия разделения направления движения",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"

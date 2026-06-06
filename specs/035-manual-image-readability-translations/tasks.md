@@ -555,6 +555,48 @@ Implementation Agent should append concise evidence here during implementation.
   Focused Playwright command
   `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
   passed: 1 test, 0 failures.
+- Fourth review fixes assignment for PR `#201` confirmed in the same
+  worktree/branch on current review head
+  `ab769a90b16f58d46ea91a740686df050057991e`. Initial fourth-review status was
+  `## codex/035-manual-image-readability-translations...origin/codex/035-manual-image-readability-translations`
+  on branch `codex/035-manual-image-readability-translations`, with a clean
+  worktree. Parallel-work preservation warning was acknowledged again; no
+  sibling worktrees, branches, commits, PRs, or unrelated dirty diffs were
+  touched.
+- Fourth review P2 disposition:
+  Codex connector review correctly identified that the App IV horizontal
+  marking translation for `Línea de separación de sentido de circulación`
+  added a crossing/permission concept not present in the source label.
+  `src/data/manual-sections/app4-signs-horizontal.ts` now uses the direct,
+  source-faithful Russian wording `Линия разделения направления движения`.
+  Any crossing/permission explanation remains outside this source-label
+  translation; this item no longer contains `пересеч`.
+- Fourth review evidence/test refresh:
+  `content/validation/manual-guide-image-readability-translations.evidence.json`
+  was regenerated so `app4-horizontal-page-195-source-card` records the same
+  direct translation. `tests/manual-guide-image-readability-translations-audit.test.mjs`
+  now asserts the evidence translation equals
+  `Линия разделения направления движения` and does not match `/пересеч/u`,
+  so this source-faithfulness regression fails in focused audit tests.
+- Fourth review command results so far:
+  `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+  passed and refreshed evidence; `node scripts/manual-guide-image-readability-translations-audit.mjs`
+  passed; `node --test tests/manual-guide-image-readability-translations-audit.test.mjs`
+  passed: 8 tests, 0 failures; `pnpm run validate:manual-guide` passed;
+  `pnpm run validate:content` passed; `pnpm exec tsc --noEmit` passed;
+  `pnpm run test` passed: 433 tests, 0 failures; `pnpm run build` passed,
+  including nested `validate:content`, asset sync, Vite build, and
+  service-worker generation. Vite emitted existing large-chunk warnings only.
+  Focused Playwright command
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed: 1 test, 0 failures.
+- Fourth review final verification:
+  `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree`
+  passed after the fourth-review process-memory update. Full
+  `pnpm run preflight` passed end to end: feature-memory gate, repository
+  baseline, `validate:content`, `test` (433 tests, 0 failures), `build`,
+  nested `test:e2e`, and full Playwright suite (82 tests, 0 failures). Build
+  steps emitted the existing large-chunk warnings only.
 
 ## Implementation Feedback For Architect Disposition
 

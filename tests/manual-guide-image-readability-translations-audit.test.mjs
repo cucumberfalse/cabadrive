@@ -106,6 +106,12 @@ test("manual guide image readability/translations evidence covers current whole-
     assert.equal(app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.width <= 8, true);
     assert.equal(app4WarningReview.currentTightCropAsset.sourceRegionToCropDeltaPx.height <= 8, true);
     assert.equal(app4WarningReview.exactEvidencePaths.every((evidencePath) => existsSync(evidencePath)), true);
+    const app4HorizontalPage195 = evidence.inventory.find((record) => record.imageId === "app4-horizontal-page-195-source-card");
+    const circulationDirectionLine = app4HorizontalPage195.structuredRussianSupport.items.find(
+      (item) => item.termEs === "Línea de separación de sentido de circulación"
+    );
+    assert.equal(circulationDirectionLine.translationRu, "Линия разделения направления движения");
+    assert.doesNotMatch(circulationDirectionLine.translationRu, /пересеч/u);
     assert.equal(
       evidence.inventory.find((record) => record.imageId === "traffic-rules-signs").translationDomSelector,
       ".manual-source-image-term-translations"

@@ -87,7 +87,7 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
             { termEs: "Líneas continuas y discontinuas paralelas", translationRu: "Параллельные сплошные и прерывистые линии" },
             { termEs: "Líneas de separación de sentido de circulación opuesta", translationRu: "Линии разделения встречных направлений" },
             { termEs: "Líneas divisorias de carriles con corrientes de tránsito del mismo sentido", translationRu: "Линии разделения полос одного направления" },
-            { termEs: "Línea de separación de sentido de circulación", translationRu: "Линия, показывающая возможность пересечения" },
+            { termEs: "Línea de separación de sentido de circulación", translationRu: "Линия разделения направления движения" },
             { termEs: "Línea de carril exclusivo y carril preferencial", translationRu: "Линия выделенной или приоритетной полосы" },
             { termEs: "Líneas de borde de calzada", translationRu: "Краевые линии проезжей части" },
             { termEs: "Marcas transversales", translationRu: "Поперечная разметка" },
