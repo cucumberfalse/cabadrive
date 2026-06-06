@@ -3379,7 +3379,13 @@ test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 
   await expect(
     pedestrianSection.locator(".manual-restriction-signs, .manual-no-parking-sign, .manual-authorized-sign, .manual-control-sign")
   ).toHaveCount(0);
-  await expect(pedestrianSection).not.toContainText("Prioridad peatonal");
+  await expect(pedestrianSection.locator(".manual-source-image-term-translations").filter({ hasText: "Prioridad peatonal" }).first()).toBeVisible();
+  const pedestrianTextOutsideTranslations = await pedestrianSection.evaluate((section) => {
+    const clone = section.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll(".manual-source-image-term-translations").forEach((element) => element.remove());
+    return clone.textContent ?? "";
+  });
+  expect(pedestrianTextOutsideTranslations).not.toContain("Prioridad peatonal");
   await expect(pedestrianSection).not.toContainText("ANTES");
   await expect(pedestrianSection).not.toContainText("DESPUÉS");
   await expect(pedestrianSection).not.toContainText("Cruce de peatones");
@@ -4838,6 +4844,43 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
     bicycleSection.locator('[data-distance-id="unsafe-line"]'),
     [{ termEs: "Prohibido circular agarrados de otros vehículos", translationRu: /держась за другие транспортные средства/ }],
     { minPairs: 1 }
+  );
+
+  const pedestrianPrioritySection = await openManualSection("/#manual-section-ch1-pedestrian-priority", "ch1-pedestrian-priority");
+  await expectManualImageTermTranslations(
+    pedestrianPrioritySection.locator('[data-card-id="priority-street"]'),
+    [
+      { termEs: "Calle prioridad peatón", translationRu: "Улица с пешеходным приоритетом" },
+      { termEs: "Velocidad máxima 10 km/h", translationRu: "Максимальная скорость 10 км/ч" }
+    ],
+    { minPairs: 5 }
+  );
+  await expectManualImageTermTranslations(
+    pedestrianPrioritySection.locator('[data-block-id="priority-areas-map"]'),
+    [
+      { termEs: "Áreas con prioridad peatonal", translationRu: "Зоны с пешеходным приоритетом" },
+      { termEs: "Centro Peatonal", translationRu: "Пешеходный центр" },
+      { termEs: "arterias exceptuadas", translationRu: "исключенные артерии" }
+    ],
+    { minPairs: 9 }
+  );
+
+  const publicTransportSection = await openManualSection("/#manual-section-ch1-public-transport-system", "ch1-public-transport-system");
+  await expectManualImageTermTranslations(
+    publicTransportSection.locator('[data-card-id="exclusive-lanes"]'),
+    [
+      { termEs: "BUS", translationRu: "Автобусная полоса" },
+      { termEs: "Carriles exclusivos", translationRu: "Эксклюзивные полосы" }
+    ],
+    { minPairs: 4 }
+  );
+  await expectManualImageTermTranslations(
+    publicTransportSection.locator('[data-card-id="metrobus"]'),
+    [
+      { termEs: "Metrobus de Buenos Aires", translationRu: "Metrobus Буэнос-Айреса" },
+      { termEs: "Solo líneas autorizadas", translationRu: "Только разрешенные линии" }
+    ],
+    { minPairs: 5 }
   );
 
   const app4TranslationScenarios: Array<{

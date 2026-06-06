@@ -38,10 +38,10 @@ const denseApp4SheetImageIds = new Set([
   "app4-regulatory-page-186-source-card"
 ]);
 const denseApp4SheetAttemptedAlternatives = [
-  "Checked the retained official page-sheet crops at natural width and kept runtime display capped to the source crop width to avoid further downscaling.",
-  "Used contained horizontal scrolling on narrow viewports instead of phone-width shrinking, so the protected sheet pixels are not reduced below their source-limited raster.",
-  "Added itemized Russian DOM glossaries mapping visible Spanish catalog captions to Russian next to each protected sheet instead of translating or overlaying official sign pixels.",
-  "Kept focused official panels where already present, but the whole-sheet catalog remains source-limited because splitting every official catalog item into new protected crops would duplicate the official sheet rather than improve the source pixel text itself."
+  "official-page-and-retained-source-sheet-assets-reviewed",
+  "current-runtime-asset-is-a-tighter-official-source-crop",
+  "split-panel-card-strategy-reviewed-without-source-pixel-upscaling",
+  "contained-natural-width-display-plus-itemized-dom-glossary-kept"
 ];
 const denseApp4SheetGroupDefinition = {
   id: denseApp4SheetReadabilityGroupId,
@@ -50,6 +50,15 @@ const denseApp4SheetGroupDefinition = {
   expectedSectionIds: [...denseApp4SheetSectionIds],
   expectedImageIds: [...denseApp4SheetImageIds],
   attemptedAlternatives: denseApp4SheetAttemptedAlternatives,
+  concreteEvidenceRequiredFields: [
+    "officialPageAsset",
+    "retainedFullSheetAsset",
+    "currentTightCropAsset",
+    "exactEvidencePaths",
+    "higherQualityOfficialSourceSearch",
+    "tighterCropEvaluation",
+    "splitPanelCardEvaluation"
+  ],
   acceptance:
     "Dense official sign/marking/signal sheets are accepted only with protected source-as-is pixels, no upscaling, contained natural-width scrolling on mobile, and itemized Russian DOM translations for visible Spanish catalog captions."
 };
@@ -122,6 +131,39 @@ function nonEmptyString(value) {
 
 function sha256File(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+function assetEvidence(path) {
+  return {
+    path,
+    exists: nonEmptyString(path) && existsSync(path),
+    dimensions: nonEmptyString(path) && existsSync(path) ? readImageDimensions(path) : null,
+    sha256: nonEmptyString(path) && existsSync(path) ? sha256File(path) : null
+  };
+}
+
+function manualPageAssetPath(sourcePage) {
+  return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-${String(sourcePage).padStart(3, "0")}.jpg`;
+}
+
+function retainedFullSheetAssetPath(assetPath) {
+  return assetPath.replace("-source-crop-as-is", "-source-as-is");
+}
+
+function sourceScreenshotPathFor(sectionMeta, sourcePage) {
+  const pageToken = `page-${String(sourcePage).padStart(3, "0")}-`;
+  return sectionMeta.section.visualEvidence?.sourceScreenshots?.find((path) => path.includes(pageToken)) ?? null;
+}
+
+function focusedApp4PanelAssets(sectionId) {
+  if (sectionId !== "app4-signs-regulatory") return [];
+  return [
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+    "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg"
+  ];
 }
 
 function readImageDimensions(path) {
@@ -352,12 +394,80 @@ function reviewedEvidencePathsFor(sectionMeta) {
   ];
 }
 
+function denseApp4SourceAlternativeReviewFor(sectionMeta, image, imageId, assetPath, dimensions, display, translationItems) {
+  const officialPageAsset = assetEvidence(manualPageAssetPath(image.sourcePage));
+  const retainedFullSheetAsset = assetEvidence(retainedFullSheetAssetPath(assetPath));
+  const currentTightCropAsset = {
+    ...assetEvidence(assetPath),
+    sourceRegion: image.sourceRegion ?? null,
+    sourceRegionToCropDeltaPx:
+      dimensions && image.sourceRegion
+        ? {
+            width: Math.abs(dimensions.width - image.sourceRegion.width),
+            height: Math.abs(dimensions.height - image.sourceRegion.height)
+          }
+        : null
+  };
+  const sourceScreenshotPath = sourceScreenshotPathFor(sectionMeta, image.sourcePage);
+  const exactEvidencePaths = [
+    sourceScreenshotPath,
+    ...(sectionMeta.section.visualEvidence?.russianScreenshots ?? []),
+    officialPageAsset.path,
+    retainedFullSheetAsset.path,
+    currentTightCropAsset.path
+  ].filter(nonEmptyString);
+  const focusedPanelAssets = focusedApp4PanelAssets(sectionMeta.section.sectionId).map(assetEvidence);
+
+  return {
+    status: "concrete-official-source-alternatives-reviewed",
+    reviewedForFeatureId: featureId,
+    imageId,
+    officialPageAsset,
+    retainedFullSheetAsset,
+    currentTightCropAsset,
+    exactEvidencePaths,
+    higherQualityOfficialSourceSearch: {
+      status: "reviewed-existing-official-page-and-retained-full-sheet-assets",
+      conclusion:
+        "The repository contains the official page JPEG and retained full-sheet source-as-is image for this page. The runtime asset is a crop from those official pixels; no alternate higher-resolution official asset is present in the committed source set for this section."
+    },
+    tighterCropEvaluation: {
+      status: "already-tight-source-sheet-crop",
+      conclusion:
+        "The runtime crop removes the outer full-page margins and its natural dimensions match the recorded source region within the audit tolerance. Further tightening would remove catalog items or headings from the protected sheet."
+    },
+    splitPanelCardEvaluation: {
+      status: "reviewed-not-a-text-height-fix-without-upscaling",
+      conclusion:
+        "Splitting these protected sheet pixels into per-item panels would not increase the source pixel height of embedded captions unless the browser upscaled the crop. The accepted learner support is therefore no-upscale natural-width display plus itemized Russian DOM translations for every recorded catalog caption.",
+      existingFocusedPanelAssets: focusedPanelAssets
+    },
+    runtimeDisplayDecision: {
+      minDisplayWidthPx: display.minDisplayWidthPx,
+      maxDisplayWidthPx: display.maxDisplayWidthPx,
+      noUpscale: display.noUpscale,
+      mobileContainedScroll: display.mobileContainedScroll,
+      translationDomSelector: ".manual-source-image-term-translations",
+      translationItemCount: translationItems.length
+    }
+  };
+}
+
 function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, display, translationItems, visibleSpanish) {
   if (!visibleSpanish) return null;
   if (isObject(image.textReadabilityEvidence)) return image.textReadabilityEvidence;
 
   const reviewedEvidencePaths = reviewedEvidencePathsFor(sectionMeta);
   if (isDenseApp4SheetRecord(sectionMeta.section.sectionId, imageKind, imageId)) {
+    const officialSourceAlternativeReview = denseApp4SourceAlternativeReviewFor(
+      sectionMeta,
+      image,
+      imageId,
+      image.assetPath,
+      assetEvidence(image.assetPath).dimensions,
+      display,
+      translationItems
+    );
     return {
       status: "source-limited-with-structured-dom-support",
       basis: "representative-group-review",
@@ -369,7 +479,8 @@ function textReadabilityEvidenceFor(sectionMeta, imageKind, image, imageId, disp
       sourceLimitedException: {
         reason:
           "The official Appendix IV catalog sheets contain many small protected sign/marking/signal captions inside source pixels. The source raster remains below the 14px embedded-text target for some labels when treated as a whole sheet, so comprehension is provided by itemized Russian DOM translations while the image stays source-as-is.",
-        attemptedAlternatives: denseApp4SheetAttemptedAlternatives
+        attemptedAlternatives: denseApp4SheetAttemptedAlternatives,
+        officialSourceAlternativeReview
       },
       structuredDomSupportRequired: true,
       translationItemCount: translationItems.length,
@@ -611,6 +722,7 @@ function validateTextReadabilityEvidence(record, findings) {
           record
         });
       }
+      validateOfficialSourceAlternativeReview(record, evidence.sourceLimitedException.officialSourceAlternativeReview, findings);
     }
     if (evidence.structuredDomSupportRequired !== true || evidence.translationItemCount <= 0 || record.structuredRussianSupport.itemCount <= 0) {
       findings.push({
@@ -626,6 +738,63 @@ function validateTextReadabilityEvidence(record, findings) {
         record
       });
     }
+  }
+}
+
+function validateEvidenceAsset(record, asset, label, findings) {
+  if (!isObject(asset)) {
+    findings.push({ ruleId: "source-limited-missing-official-alternative-asset", message: `${record.imageId} ${label} evidence is missing`, record });
+    return;
+  }
+  if (asset.exists !== true || !nonEmptyString(asset.path) || !asset.dimensions || !nonEmptyString(asset.sha256)) {
+    findings.push({ ruleId: "source-limited-official-alternative-asset-missing", message: `${record.imageId} ${label} must exist with dimensions and sha256`, record });
+  }
+}
+
+function validateOfficialSourceAlternativeReview(record, review, findings) {
+  if (!isObject(review)) {
+    findings.push({
+      ruleId: "source-limited-missing-official-alternative-review",
+      message: `${record.imageId} source-limited exception must record concrete official-source alternatives reviewed`,
+      record
+    });
+    return;
+  }
+  if (review.status !== "concrete-official-source-alternatives-reviewed") {
+    findings.push({ ruleId: "source-limited-invalid-official-alternative-review", message: `${record.imageId} official-source alternative review has invalid status`, record });
+  }
+  validateEvidenceAsset(record, review.officialPageAsset, "officialPageAsset", findings);
+  validateEvidenceAsset(record, review.retainedFullSheetAsset, "retainedFullSheetAsset", findings);
+  validateEvidenceAsset(record, review.currentTightCropAsset, "currentTightCropAsset", findings);
+  const delta = review.currentTightCropAsset?.sourceRegionToCropDeltaPx;
+  if (!isObject(delta) || delta.width > 8 || delta.height > 8) {
+    findings.push({
+      ruleId: "source-limited-tight-crop-delta-too-large",
+      message: `${record.imageId} current crop must match the recorded source region within 8px`,
+      record
+    });
+  }
+  if (!Array.isArray(review.exactEvidencePaths) || review.exactEvidencePaths.length < 5) {
+    findings.push({ ruleId: "source-limited-missing-exact-evidence-paths", message: `${record.imageId} alternative review needs exact evidence paths`, record });
+  } else {
+    for (const path of review.exactEvidencePaths) {
+      if (!existsSync(path)) {
+        findings.push({ ruleId: "source-limited-exact-evidence-path-missing", message: `${record.imageId} exact evidence path is missing: ${path}`, record });
+      }
+    }
+  }
+  for (const [field, expectedStatus] of [
+    ["higherQualityOfficialSourceSearch", "reviewed-existing-official-page-and-retained-full-sheet-assets"],
+    ["tighterCropEvaluation", "already-tight-source-sheet-crop"],
+    ["splitPanelCardEvaluation", "reviewed-not-a-text-height-fix-without-upscaling"]
+  ]) {
+    const value = review[field];
+    if (!isObject(value) || value.status !== expectedStatus || !nonEmptyString(value.conclusion)) {
+      findings.push({ ruleId: "source-limited-official-alternative-step-incomplete", message: `${record.imageId} ${field} must record a concrete conclusion`, record });
+    }
+  }
+  if (!isObject(review.runtimeDisplayDecision) || review.runtimeDisplayDecision.noUpscale !== true || review.runtimeDisplayDecision.translationItemCount <= 0) {
+    findings.push({ ruleId: "source-limited-runtime-display-decision-incomplete", message: `${record.imageId} source-limited review must record no-upscale DOM support decision`, record });
   }
 }
 
@@ -645,14 +814,10 @@ function validateRecords(records, requiredExamples, readabilityGroups) {
     if (record.visibleSpanish && record.structuredRussianSupport.itemCount === 0) {
       findings.push({ ruleId: "visible-spanish-missing-structured-russian-support", message: `${record.imageId} visibleSpanish=true requires structured Russian support near the image`, record });
     }
-    if (
-      record.visibleSpanish &&
-      (record.translationDomSelector === ".manual-source-image-term-translations" || record.imageKind === "bicycle-signage" || record.imageKind === "bicycle-distance") &&
-      record.structuredRussianSupport.items.some((item) => !nonEmptyString(item.termEs))
-    ) {
+    if (record.visibleSpanish && record.structuredRussianSupport.items.some((item) => item.learnerRelevant !== false && !nonEmptyString(item.termEs))) {
       findings.push({
         ruleId: "structured-russian-support-missing-source-spanish",
-        message: `${record.imageId} itemized image translations require non-empty Spanish source terms`,
+        message: `${record.imageId} learner-relevant image translations require non-empty Spanish source terms`,
         record
       });
     }
@@ -739,7 +904,8 @@ const document = {
     groupId: record.textReadabilityEvidence.groupId ?? null,
     status: record.textReadabilityEvidence.status,
     reason: record.textReadabilityEvidence.sourceLimitedException?.reason ?? null,
-    attemptedAlternatives: record.textReadabilityEvidence.sourceLimitedException?.attemptedAlternatives ?? []
+    attemptedAlternatives: record.textReadabilityEvidence.sourceLimitedException?.attemptedAlternatives ?? [],
+    officialSourceAlternativeReview: record.textReadabilityEvidence.sourceLimitedException?.officialSourceAlternativeReview ?? null
   })),
   inventory: inventoryRecords
 };

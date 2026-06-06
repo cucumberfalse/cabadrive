@@ -2116,6 +2116,7 @@ function PedestrianInfrastructureBlockView({ block }: { block: Extract<ManualGui
                     <strong>{detail.labelRu}:</strong> {detail.textRu}
                   </p>
                 ))}
+                <ManualImageTermTranslations terms={card.termTranslations} />
                 {card.noteRu && <p className="manual-infrastructure-note">{card.noteRu}</p>}
               </div>
             </article>
@@ -2159,6 +2160,7 @@ function PriorityAreaMapBlockView({ block }: { block: Extract<ManualGuideSection
           ))}
         </dl>
       </div>
+      <ManualImageTermTranslations terms={block.termTranslations} />
       <figcaption>{block.captionRu}</figcaption>
     </figure>
   );
@@ -2444,6 +2446,7 @@ function PublicTransportInfrastructureBlockView({ block }: { block: Extract<Manu
                   <strong>{detail.labelRu}:</strong> {detail.textRu}
                 </p>
               ))}
+              <ManualImageTermTranslations terms={card.termTranslations} />
               {card.noteRu && <p className="manual-public-transport-note">{card.noteRu}</p>}
             </div>
           </article>

@@ -389,6 +389,7 @@ export type ManualGuideContentBlock =
           sourceAsIs: true;
         };
         sourceImageException?: OriginalSourceImageTextException;
+        termTranslations?: ManualImageTermTranslation[];
         details: {
           labelRu: string;
           textRu: string;
@@ -413,6 +414,7 @@ export type ManualGuideContentBlock =
       visibleSpanish?: boolean;
       sourceImageException?: OriginalSourceImageTextException;
       areasRu: string;
+      termTranslations?: ManualImageTermTranslation[];
       legend: {
         id: string;
         color: "gray" | "cyan" | "blue";
@@ -631,6 +633,7 @@ export type ManualGuideContentBlock =
         altRu: string;
         visibleSpanish: boolean;
         sourceImageException?: OriginalSourceImageTextException;
+        termTranslations?: ManualImageTermTranslation[];
         details: {
           labelRu: string;
           textRu: string;

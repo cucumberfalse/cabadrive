@@ -172,6 +172,12 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
             "Фотография эксклюзивной полосы с дорожной надписью BUS.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "BUS", translationRu: "Автобусная полоса" },
+            { termEs: "Carriles exclusivos", translationRu: "Эксклюзивные полосы" },
+            { termEs: "Transporte público", translationRu: "Общественный транспорт" },
+            { termEs: "Permiso de ingreso y egreso", translationRu: "Разрешение на въезд и выезд" }
+          ],
           details: [
             {
               labelRu: "Разметка",
@@ -207,6 +213,13 @@ export const ch1PublicTransportSystemSection: ManualGuideSectionContent = {
             "Фотография коридора Metrobus с остановкой и автобусами.",
           visibleSpanish: true,
           sourceImageException,
+          termTranslations: [
+            { termEs: "Metrobus de Buenos Aires", translationRu: "Metrobus Буэнос-Айреса" },
+            { termEs: "MBA", translationRu: "Metrobus de Buenos Aires" },
+            { termEs: "Senda peatonal", translationRu: "Пешеходный переход" },
+            { termEs: "Carriles exclusivos", translationRu: "Эксклюзивные полосы" },
+            { termEs: "Solo líneas autorizadas", translationRu: "Только разрешенные линии" }
+          ],
           details: [
             {
               labelRu: "Система",

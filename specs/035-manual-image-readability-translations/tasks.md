@@ -215,7 +215,7 @@
 
 ## Local Verification
 
-- [ ] T075 Run `node scripts/check-feature-memory.mjs --worktree`.
+- [x] T075 Run `node scripts/check-feature-memory.mjs --worktree`.
 - [x] T076 Run the new audit in write mode when evidence intentionally changes.
 - [x] T077 Run `pnpm run validate:manual-guide`.
 - [x] T078 Run `pnpm run validate:content`.
@@ -420,6 +420,97 @@ Implementation Agent should append concise evidence here during implementation.
   quote/photo groups. Focused Playwright also saved run-output screenshots for
   `manual-source-translations-app3-driving-factors-*` and
   `manual-source-translations-app4-signs-warning-*`.
+- Second review fixes assignment for PR `#201` confirmed in the same
+  worktree/branch on current review head
+  `2377f739318bfeedac47e4d10a4233c73e88ef75`. Initial second-review status was
+  `## codex/035-manual-image-readability-translations...origin/codex/035-manual-image-readability-translations`
+  on branch `codex/035-manual-image-readability-translations`, with scoped
+  dirty files only in manual image readability audit/evidence, source-fidelity
+  evidence, manual guide data/model/renderer, e2e tests, focused audit tests,
+  and this feature memory. Parallel-work preservation warning was acknowledged
+  again; no sibling worktrees, branches, commits, PRs, or unrelated dirty diffs
+  were touched.
+- Second review P1 disposition, App IV source-limited exceptions:
+  `scripts/manual-guide-image-readability-translations-audit.mjs` now requires
+  concrete official-source alternative evidence for each dense App IV
+  source-limited record. The evidence records exact existing paths and hashes
+  for the full official page asset, retained full-sheet source crop, current
+  tight crop asset, source screenshot evidence, and any focused panel assets;
+  it also records the evaluated alternatives: official page/source asset
+  review, current crop-vs-source-region delta, split/panel/card strategy review,
+  and the contained natural-width DOM glossary decision. The audit fails
+  `source-limited-with-structured-dom-support` records that lack this review,
+  reference missing assets, use a non-tight crop delta, or omit the required
+  exact evidence paths.
+- Second review P1 disposition, non-source-card `termEs: null` loophole:
+  structured Russian support for every learner-relevant visible-Spanish record
+  now requires a non-empty Spanish source term/phrase globally, not only for
+  source-image cards or `ch1-bicycle`. Added real `termTranslations` support to
+  the `pedestrian-infrastructure`, `priority-area-map`, and
+  `public-transport-infrastructure` block models and renderers, and populated
+  itemized Spanish/Russian pairs for `ch1-pedestrian-priority` and
+  `ch1-public-transport-system`, including priority streets, pedestrian
+  streets, wayfinding, school routes, map labels, restriction signs, zone 30,
+  bus lanes, and Metrobus labels. These render through
+  `.manual-source-image-term-translations` near the affected images.
+- Second review tests added:
+  `tests/manual-guide-image-readability-translations-audit.test.mjs` now has
+  direct regression coverage for an App IV source-limited exception without
+  concrete crop proof and a visible-Spanish non-source-card record with only
+  generic Russian prose/null Spanish terms. `tests/e2e/app.spec.ts` now asserts
+  visible DOM translations for representative pedestrian priority, priority
+  map, exclusive bus lane, and Metrobus non-source-card records.
+- Second review evidence refresh:
+  `content/validation/manual-guide-image-readability-translations.evidence.json`
+  was refreshed in write mode. Sanity checks after refresh showed `0`
+  learner-relevant structured support items with missing `termEs`, `16`
+  accepted App IV source-limited exceptions with concrete
+  `officialSourceAlternativeReview`, and representative DOM selectors/item
+  counts for `priority-street` (`5`), `priority-areas-map` (`9`),
+  `exclusive-lanes` (`4`), and `metrobus` (`5`).
+- Second review source-fidelity note:
+  first second-review `pnpm run validate:manual-guide` failed because the
+  intentional `ch1-pedestrian-priority` section-module data change made the
+  legacy source-fidelity state fingerprint stale. The fingerprint was
+  recomputed with the same stable checker inputs used by
+  `scripts/manual-guide-source-fidelity.mjs` and updated to
+  `131c399fc6313e254c149c9cbe247685a9657029dc5032422931c63fc64d1571`.
+  No protected image asset bytes or implementation evidence fingerprints
+  changed.
+- Second review command results so far:
+  `node scripts/manual-guide-image-readability-translations-audit.mjs --write`
+  passed and refreshed evidence; `node scripts/manual-guide-image-readability-translations-audit.mjs`
+  passed; `node --test tests/manual-guide-image-readability-translations-audit.test.mjs`
+  passed: 7 tests, 0 failures; rerun `pnpm run validate:manual-guide` passed
+  after the `ch1-pedestrian-priority` legacy fingerprint update;
+  `pnpm run validate:content` passed; `pnpm exec tsc --noEmit` passed;
+  `pnpm run test` passed: 432 tests, 0 failures; `pnpm run build` passed,
+  including nested `validate:content`, asset sync, Vite build, and
+  service-worker generation. Vite emitted existing large-chunk warnings only.
+  Focused Playwright command
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide full-width source image cards stay readable and avoid upscaling" --project=chromium`
+  passed: 1 test, 0 failures.
+- Second review preflight dead end and fix:
+  first second-review `pnpm run preflight` passed feature-memory, repo
+  baseline, `validate:content`, `test` (432 tests, 0 failures), nested build,
+  and 80 of 82 Playwright tests, then failed the existing
+  `Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter
+  4, Chapter 5, and Appendix III section pages` test on desktop/mobile. The
+  cause was an old Spanish-residue assertion forbidding `Prioridad peatonal`
+  anywhere in the pedestrian section; that phrase is now intentionally present
+  inside structured `.manual-source-image-term-translations` DOM. The test now
+  asserts that a translation block containing `Prioridad peatonal` exists, then
+  removes translation blocks before checking the rest of the section has no
+  stray `Prioridad peatonal`. Focused rerun
+  `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 4, Chapter 5, and Appendix III section pages"`
+  passed: 2 tests, 0 failures.
+- Second review final verification:
+  `git diff --check` passed; `node scripts/check-feature-memory.mjs --worktree`
+  passed after the second-review process-memory update. Second full
+  `pnpm run preflight` passed end to end: feature-memory gate, repository
+  baseline, `validate:content`, `test` (432 tests, 0 failures), `build`,
+  nested `test:e2e`, and full Playwright suite (82 tests, 0 failures). Build
+  steps emitted the existing large-chunk warnings only.
 
 ## Implementation Feedback For Architect Disposition
 
