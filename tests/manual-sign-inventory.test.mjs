@@ -1166,6 +1166,208 @@ const informationalPage189Rows = [
   }
 ];
 
+const informationalPage190Rows = [
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Bifurcación",
+    russianTranslation: "разрешенные направления: разветвление",
+    cropRegion: { x: 125, y: 147, width: 75, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Bifurcación)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Derecha e izquierda",
+    russianTranslation: "направо и налево",
+    cropRegion: { x: 210, y: 147, width: 84, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Derecha e izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Giro en U",
+    russianTranslation: "разворот разрешен",
+    cropRegion: { x: 296, y: 147, width: 74, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Giro en U)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Cámara de control electrónico",
+    russianTranslation: "камера электронного контроля",
+    cropRegion: { x: 384, y: 147, width: 70, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Cámara de control electrónico"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de camino peatonal",
+    variant: "A 100 m",
+    russianTranslation: "конец пешеходного пути через 100 м",
+    cropRegion: { x: 476, y: 146, width: 72, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: Fin de camino peatonal (A 100 m)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de camino peatonal",
+    russianTranslation: "конец пешеходного пути",
+    cropRegion: { x: 134, y: 256, width: 67, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Fin de camino peatonal"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Cruce peatonal",
+    variant: "Derecha",
+    russianTranslation: "пешеходный переход справа",
+    cropRegion: { x: 220, y: 256, width: 70, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Cruce peatonal (Derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Cruce peatonal",
+    variant: "Izquierda",
+    russianTranslation: "пешеходный переход слева",
+    cropRegion: { x: 306, y: 256, width: 72, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Cruce peatonal (Izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Bidireccionales en ciclovía",
+    russianTranslation: "двустороннее движение на велодорожке",
+    cropRegion: { x: 386, y: 278, width: 90, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Bidireccionales en ciclovía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Proximidad de ciclovía",
+    russianTranslation: "близость велодорожки",
+    cropRegion: { x: 487, y: 278, width: 88, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Proximidad de ciclovía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Descenso de la bicicleta",
+    russianTranslation: "сойти с велосипеда",
+    cropRegion: { x: 124, y: 366, width: 88, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Descenso de la bicicleta"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Finalización de la ciclovía",
+    russianTranslation: "конец велодорожки",
+    cropRegion: { x: 210, y: 366, width: 88, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Finalización de la ciclovía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Advertencia de escuela",
+    russianTranslation: "предупреждение о школе",
+    cropRegion: { x: 296, y: 366, width: 88, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Advertencia de escuela"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Advertencia general",
+    russianTranslation: "общее предупреждение",
+    cropRegion: { x: 382, y: 366, width: 88, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Advertencia general"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Nomenclatura vial y urbana",
+    russianTranslation: "дорожная и городская номенклатура",
+    cropRegion: { x: 78, y: 455, width: 310, height: 35 },
+    sourceSheetLabelEvidence: "visible source heading: Nomenclatura vial y urbana"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Ruta Panamericana",
+    russianTranslation: "Панамериканская трасса",
+    cropRegion: { x: 118, y: 500, width: 85, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Ruta Panamericana"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Ruta nacional",
+    russianTranslation: "национальная трасса",
+    cropRegion: { x: 201, y: 508, width: 68, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Ruta nacional"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Ruta provincial",
+    russianTranslation: "провинциальная трасса",
+    cropRegion: { x: 273, y: 508, width: 72, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Ruta provincial"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Nomenclatura urbana",
+    variant: "placa de calle",
+    russianTranslation: "городская уличная табличка",
+    cropRegion: { x: 342, y: 505, width: 115, height: 85 },
+    sourceSheetLabelEvidence: "visible source label: Nomenclatura urbana (placa de calle)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Nomenclatura urbana",
+    variant: "flecha urbana",
+    russianTranslation: "городская навигация",
+    cropRegion: { x: 451, y: 505, width: 138, height: 85 },
+    sourceSheetLabelEvidence: "visible source label: Nomenclatura urbana (flecha urbana)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Identificación de región y localidad",
+    russianTranslation: "регион и населенный пункт",
+    cropRegion: { x: 116, y: 600, width: 95, height: 112 },
+    sourceSheetLabelEvidence: "visible source label: Identificación de región y localidad"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Orientación",
+    variant: "En caminos principales y secundarios",
+    russianTranslation: "ориентация на главных и второстепенных дорогах",
+    cropRegion: { x: 232, y: 635, width: 110, height: 94 },
+    sourceSheetLabelEvidence: "visible source label: Orientación (En caminos principales y secundarios)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Orientación",
+    variant: "En caminos secundarios",
+    russianTranslation: "ориентация на второстепенных дорогах",
+    cropRegion: { x: 354, y: 638, width: 100, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Orientación (En caminos secundarios)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Comienzo o fin de zona urbana",
+    russianTranslation: "начало или конец городской зоны",
+    cropRegion: { x: 446, y: 637, width: 98, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Comienzo o fin de zona urbana"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Identificación de jurisdicción o accidente",
+    russianTranslation: "обозначение юрисдикции или объекта",
+    cropRegion: { x: 103, y: 755, width: 125, height: 74 },
+    sourceSheetLabelEvidence: "visible source label: Identificación de jurisdicción o accidente"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Mojón kilométrico",
+    russianTranslation: "километровый столб",
+    cropRegion: { x: 245, y: 753, width: 83, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Mojón kilométrico"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Nomenclatura de autopista",
+    russianTranslation: "обозначение автомагистрали",
+    cropRegion: { x: 335, y: 755, width: 126, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Nomenclatura de autopista"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -1311,11 +1513,36 @@ test("informational source page 189 visual rows are complete and ordered", () =>
   });
 });
 
+test("informational source page 190 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-informational" && entry.sourcePage === 190);
+
+  assert.equal(rows.length, informationalPage190Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["190"], informationalPage190Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 1);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 26);
+  assert.equal(rows.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
+
+  rows.forEach((entry, index) => {
+    const expected = informationalPage190Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-informational-page-190-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
 test("reconciled visual rows are complete while unreconciled sections stay visibly pending", () => {
   const inventory = loadInventory();
   const isReconciled = (entry) =>
     ["app4-signs-regulatory", "app4-signs-warning"].includes(entry.sectionId) ||
-    (entry.sectionId === "app4-signs-informational" && entry.sourcePage === 189);
+    (entry.sectionId === "app4-signs-informational" && [189, 190].includes(entry.sourcePage));
   const reconciled = inventory.entries.filter(isReconciled);
   const pending = inventory.entries.filter((entry) => !isReconciled(entry));
 
