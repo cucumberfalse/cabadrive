@@ -23,13 +23,11 @@ const sourceSections = [
     sectionId: "app4-signs-regulatory",
     sectionFile: "src/data/manual-sections/app4-signs-regulatory.ts",
     includeCardIds: new Set([
-      "app4-regulatory-anexo-panel-01-source-card",
-      "app4-regulatory-anexo-panel-02-source-card",
-      "app4-regulatory-anexo-panel-03-source-card",
-      "app4-regulatory-anexo-panel-04-source-card"
+      "app4-regulatory-page-185-source-card",
+      "app4-regulatory-page-186-source-card"
     ]),
     sourceSelectionNote:
-      "Uses existing official Anexo L regulatory panels because current section data already treats them as higher-quality source-as-is references for individual regulatory signs."
+      "Uses existing official CABA Appendix IV regulatory source-sheet crops with explicit visual-source rows for the current reconciliation slice."
   },
   {
     sectionId: "app4-signs-warning",
@@ -127,6 +125,248 @@ const manualCropRegionsByCard = new Map([
     ]
   ]
 ]);
+
+const visualSourceEntries = [
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Reglamentarias / De prohibición",
+    russianTranslation: "Регулирующие / запрещающие",
+    cropRegion: { x: 85, y: 92, width: 290, height: 115 },
+    sourceSheetLabelEvidence: "visible source headings: Reglamentarias; De prohibición",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "NO AVANZAR",
+    russianTranslation: "Проезд запрещен",
+    cropRegion: { x: 150, y: 205, width: 82, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: NO AVANZAR",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CONTRAMANO",
+    russianTranslation: "Встречное направление",
+    cropRegion: { x: 245, y: 205, width: 82, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: CONTRAMANO",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "NO CIRCULAR",
+    variant: "Automóvil",
+    russianTranslation: "Движение автомобилей запрещено",
+    cropRegion: { x: 335, y: 205, width: 88, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: NO CIRCULAR (Automóvil)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "NO CIRCULAR",
+    variant: "Moto",
+    russianTranslation: "Движение мотоциклов запрещено",
+    cropRegion: { x: 430, y: 205, width: 88, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: NO CIRCULAR (Moto)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 185,
+    sourceCardId: "app4-regulatory-page-185-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "NO CIRCULAR",
+    variant: "Bicicleta",
+    russianTranslation: "Движение велосипедов запрещено",
+    cropRegion: { x: 525, y: 205, width: 88, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: NO CIRCULAR (Bicicleta)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 186,
+    sourceCardId: "app4-regulatory-page-186-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "De restricción",
+    russianTranslation: "Ограничивающие",
+    cropRegion: { x: 70, y: 95, width: 235, height: 72 },
+    sourceSheetLabelEvidence: "visible source heading: De restricción",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 186,
+    sourceCardId: "app4-regulatory-page-186-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE PESO",
+    russianTranslation: "Ограничение массы",
+    cropRegion: { x: 115, y: 160, width: 90, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE PESO",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 186,
+    sourceCardId: "app4-regulatory-page-186-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE ALTURA",
+    russianTranslation: "Ограничение высоты",
+    cropRegion: { x: 295, y: 160, width: 95, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE ALTURA",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 186,
+    sourceCardId: "app4-regulatory-page-186-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PARE",
+    russianTranslation: "Стоп",
+    cropRegion: { x: 115, y: 600, width: 95, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: PARE",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-regulatory",
+    sourcePage: 186,
+    sourceCardId: "app4-regulatory-page-186-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CEDA EL PASO",
+    russianTranslation: "Уступите дорогу",
+    cropRegion: { x: 215, y: 600, width: 95, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: CEDA EL PASO",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 187,
+    sourceCardId: "app4-warning-page-187-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Preventivas / Advertencias sobre características de la vía",
+    russianTranslation: "Предупреждающие / предупреждения об особенностях дороги",
+    cropRegion: { x: 80, y: 80, width: 420, height: 115 },
+    sourceSheetLabelEvidence: "visible source headings: Preventivas; Advertencias sobre características de la vía",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 187,
+    sourceCardId: "app4-warning-page-187-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA",
+    variant: "En \"S\"",
+    russianTranslation: "S-образная кривая",
+    cropRegion: { x: 330, y: 195, width: 82, height: 102 },
+    sourceSheetLabelEvidence: "visible source label: CURVA (En \"S\")",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 187,
+    sourceCardId: "app4-warning-page-187-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PENDIENTE",
+    variant: "Ascendente",
+    russianTranslation: "Подъем",
+    cropRegion: { x: 140, y: 305, width: 92, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: PENDIENTE (Ascendente)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 187,
+    sourceCardId: "app4-warning-page-187-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTRECHAMIENTO",
+    variant: "En una sola mano",
+    russianTranslation: "Сужение с одной стороны",
+    cropRegion: { x: 330, y: 305, width: 92, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: ESTRECHAMIENTO (En una sola mano)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Posibilidad de riesgo eventual",
+    russianTranslation: "Возможность случайного риска",
+    cropRegion: { x: 78, y: 80, width: 360, height: 70 },
+    sourceSheetLabelEvidence: "visible source heading: Posibilidad de riesgo eventual",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUZ DE SAN ANDRÉS",
+    variant: "Más de dos vías",
+    russianTranslation: "Андреевский крест: более двух путей",
+    cropRegion: { x: 260, y: 520, width: 115, height: 110 },
+    sourceSheetLabelEvidence: "visible source label: CRUZ DE SAN ANDRÉS (Más de dos vías)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Pare",
+    russianTranslation: "Приближение к знаку STOP",
+    cropRegion: { x: 230, y: 710, width: 90, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Pare)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Paso",
+    russianTranslation: "Приближение к знаку уступите дорогу",
+    cropRegion: { x: 320, y: 710, width: 90, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Paso)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Otra",
+    russianTranslation: "Приближение к другому ограничивающему знаку",
+    cropRegion: { x: 410, y: 710, width: 90, height: 105 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Otra)",
+    auditStatus: "reconciled-source-visual"
+  }
+];
+
+const visualSourceEntriesByCard = visualSourceEntries.reduce((entriesByCard, entry) => {
+  const entries = entriesByCard.get(entry.sourceCardId) ?? [];
+  entries.push(entry);
+  entriesByCard.set(entry.sourceCardId, entries);
+  return entriesByCard;
+}, new Map());
+
+const visualSourceSectionIds = new Set(["app4-signs-regulatory", "app4-signs-warning"]);
 
 function repoPath(relativePath) {
   return join(repoRoot, relativePath);
@@ -377,6 +617,10 @@ function buildInventory() {
       if (!scopePages.includes(card.sourcePage)) continue;
       const dimensions = readImageDimensions(card.assetPath);
       const hash = sha256File(card.assetPath);
+      const visualEntries = visualSourceEntriesByCard.get(card.id);
+      if (visualSourceSectionIds.has(section.sectionId) && !visualEntries) {
+        throw new Error(`${card.id}: regulatory/warning cards must use explicit visualSourceEntries`);
+      }
       const explicitRegions = manualCropRegionsByCard.get(card.id);
       if (explicitRegions && explicitRegions.length !== card.terms.length) {
         throw new Error(`${card.id}: explicit crop region count ${explicitRegions.length} must match term count ${card.terms.length}`);
@@ -387,8 +631,48 @@ function buildInventory() {
         sourcePage: card.sourcePage,
         assetPath: card.assetPath,
         termCount: card.terms.length,
+        visualSourceEntryCount: visualEntries?.length ?? null,
         sourceSelectionNote: section.sourceSelectionNote
       });
+      if (visualEntries) {
+        visualEntries.forEach((visualEntry, visualEntryIndex) => {
+          const cropRegion = clampRegionToDimensions(visualEntry.cropRegion, dimensions);
+          const sourceOrder = entries.length + 1;
+          const pageOrder = (pageCounters.get(card.sourcePage) ?? 0) + 1;
+          pageCounters.set(card.sourcePage, pageOrder);
+          entries.push({
+            id: `${section.sectionId.replace("app4-signs-", "app4")}-p${card.sourcePage}-${String(pageOrder).padStart(3, "0")}-${slugify(`${visualEntry.spanishLabel}-${visualEntry.variant ?? visualEntry.entryKind}`)}`,
+            sectionId: section.sectionId,
+            sourcePage: card.sourcePage,
+            sourceOrder,
+            sourceOrderWithinPage: pageOrder,
+            entryKind: visualEntry.entryKind,
+            spanishLabel: visualEntry.spanishLabel,
+            ...(visualEntry.variant ? { variant: visualEntry.variant } : {}),
+            russianTranslation: visualEntry.russianTranslation,
+            sourceSheetLabelEvidence: visualEntry.sourceSheetLabelEvidence,
+            auditStatus: visualEntry.auditStatus,
+            sourceRef: `${section.sectionFile}#${card.id}.visualSourceEntries[${visualEntryIndex}]`,
+            sourceAsset: card.assetPath,
+            sourceRegion: card.sourceRegion,
+            assetPath: card.assetPath,
+            naturalWidth: dimensions.width,
+            naturalHeight: dimensions.height,
+            cropRegion,
+            displayRegion: cropRegion,
+            cropNaturalWidth: cropRegion.width,
+            cropNaturalHeight: cropRegion.height,
+            renderMode,
+            hash,
+            extractionMethod:
+              "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
+            noUpscale: true,
+            preservationNote:
+              "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
+          });
+        });
+        continue;
+      }
       card.terms.forEach((term, termIndex) => {
         const cropRegion = cropRegionForEntry(card, termIndex, card.terms.length, dimensions);
         const sourceOrder = entries.length + 1;
@@ -400,8 +684,11 @@ function buildInventory() {
           sourcePage: card.sourcePage,
           sourceOrder,
           sourceOrderWithinPage: pageOrder,
+          entryKind: "catalog-entry",
           spanishLabel: term.termEs,
           russianTranslation: term.translationRu,
+          sourceSheetLabelEvidence: "pending visual-source reconciliation",
+          auditStatus: "pending-reconciliation",
           sourceRef: `${section.sectionFile}#${card.id}.termTranslations[${termIndex}]`,
           sourceAsset: card.assetPath,
           sourceRegion: card.sourceRegion,
@@ -443,9 +730,9 @@ function buildInventory() {
       entriesBySourcePage
     },
     sourceSelection: {
-      status: "individual-source-regions-from-existing-termTranslations",
+      status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Entries preserve the existing Appendix IV termTranslations order and render as deterministic CSS-clipped regions of unchanged official source sheet/panel assets. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory and warning slice entries are generated from explicit visualSourceEntries. Remaining sections still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {
@@ -465,6 +752,8 @@ function assertCondition(condition, message, errors) {
 
 function validateInventory(inventory) {
   const errors = [];
+  const validEntryKinds = new Set(["catalog-entry", "category-heading"]);
+  const validAuditStatuses = new Set(["reconciled-source-visual", "pending-reconciliation"]);
   assertCondition(inventory?.schemaVersion === 1, "schemaVersion must be 1.", errors);
   assertCondition(inventory?.featureId === "036-manual-sign-pages", "featureId must be 036-manual-sign-pages.", errors);
   assertCondition(inventory?.inventoryStatus === "individual-source-regions", "inventoryStatus must be individual-source-regions.", errors);
@@ -487,6 +776,28 @@ function validateInventory(inventory) {
     (pageOrders.get(entry.sourcePage) ?? pageOrders.set(entry.sourcePage, []).get(entry.sourcePage)).push(entry.sourceOrderWithinPage);
     assertCondition(typeof entry.spanishLabel === "string" && entry.spanishLabel.trim() !== "", `${label}: spanishLabel is required.`, errors);
     assertCondition(typeof entry.russianTranslation === "string" && entry.russianTranslation.trim() !== "", `${label}: russianTranslation is required.`, errors);
+    assertCondition(validEntryKinds.has(entry.entryKind), `${label}: entryKind must be catalog-entry or category-heading.`, errors);
+    assertCondition(validAuditStatuses.has(entry.auditStatus), `${label}: auditStatus is invalid.`, errors);
+    assertCondition(
+      typeof entry.sourceSheetLabelEvidence === "string" && entry.sourceSheetLabelEvidence.trim() !== "",
+      `${label}: sourceSheetLabelEvidence is required.`,
+      errors
+    );
+    if (visualSourceSectionIds.has(entry.sectionId)) {
+      assertCondition(entry.auditStatus === "reconciled-source-visual", `${label}: regulatory/warning entries must be reconciled-source-visual.`, errors);
+      assertCondition(
+        entry.sourceSheetLabelEvidence !== "pending visual-source reconciliation",
+        `${label}: regulatory/warning entries must not use pending sourceSheetLabelEvidence.`,
+        errors
+      );
+    } else {
+      assertCondition(entry.auditStatus === "pending-reconciliation", `${label}: non-regulatory/warning entries must remain pending-reconciliation in this slice.`, errors);
+      assertCondition(
+        entry.sourceSheetLabelEvidence === "pending visual-source reconciliation",
+        `${label}: pending entries must use the pending sourceSheetLabelEvidence marker.`,
+        errors
+      );
+    }
     assertCondition(typeof entry.sourceRef === "string" && entry.sourceRef.trim() !== "", `${label}: sourceRef is required.`, errors);
     assertCondition(typeof entry.sourceAsset === "string" && entry.sourceAsset.trim() !== "", `${label}: sourceAsset is required.`, errors);
     assertCondition(typeof entry.assetPath === "string" && entry.assetPath.trim() !== "", `${label}: assetPath is required.`, errors);

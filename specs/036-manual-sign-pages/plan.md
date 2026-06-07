@@ -13,11 +13,13 @@ Introduce a stable data shape equivalent to:
 ```ts
 type ManualSignEntry = {
   id: string;
+  entryKind: "catalog-entry" | "category-heading";
   sectionId: string;
   sourcePage: number;
   sourceOrder: number;
   spanishLabel: string;
   russianTranslation: string;
+  sourceSheetLabelEvidence: string;
   assetPath: string;
   naturalWidth: number;
   naturalHeight: number;
@@ -30,6 +32,23 @@ type ManualSignEntry = {
 ```
 
 The exact format may follow repository conventions, but it must be machine-checkable. Prefer one inventory file plus section-specific imports or generated section arrays over hand-duplicating the same facts in many files.
+
+The inventory must not treat existing `termTranslations` ordering as the final source of truth.
+Those translations can seed Russian captions only after each row is reconciled to an actual
+source-sheet visual item or source heading. The implementation model should make this explicit
+with an entry kind, source-label evidence, and per-entry audit status so category headings are
+not accidentally counted as sign coverage.
+
+## Source Inventory Reconciliation
+
+Before additional crop-coordinate work continues, Implementation must reconcile the inventory
+against pages `185-197` themselves:
+
+1. Enumerate actual visual items and Spanish labels/headings from each source sheet in visual reading order.
+2. Classify each row as an actual catalog sign/sign-like item or a category heading/structural source label.
+3. Keep category headings only when they help preserve source structure, and exclude them from sign coverage counts unless the source sheet presents the heading as a catalog entry.
+4. Match or add Russian translations after the Spanish source row is established; `termTranslations` may supply translations but must not create unverified visual rows.
+5. Record any split, merge, omitted row, or heading treatment in process memory/evidence so Review and final validation can audit the count and order.
 
 ## Asset Production Approach
 
@@ -90,6 +109,11 @@ Appendix IV sign sections plus per-entry crop audit evidence or contact sheets t
 Architect explicitly records a narrowed non-blocking residual risk after reviewing objective
 evidence.
 
+Validation/evidence must also prove caption-to-visual correctness. A passing result must show
+that each final sign/sign-like row's Spanish label and Russian translation correspond to the
+visual shown in that row, and that headings are typed as headings rather than silently consuming
+sign coverage. Crop-bound, hash, order, and no-upscale checks are necessary but not sufficient.
+
 ## Documentation And Process Memory
 
 Update durable docs only if Implementation changes conversion rules, validation commands, asset conventions, or the sign-section content contract. If the existing manual conversion guidelines already state the protected-image rule sufficiently, do not duplicate broad documentation.
@@ -121,10 +145,11 @@ Orchestrator will coordinate implementation, review, required checks, final Arch
 Review must specifically inspect:
 
 - completeness of the source inventory;
+- reconciliation of the inventory to actual source-sheet visual items/headings rather than unverified `termTranslations` rows;
 - source-order preservation;
 - protected-pixel compliance;
 - asset quality and no-upscale behavior;
-- caption correctness and placement outside protected images;
+- caption correctness, caption-to-visual match, and placement outside protected images;
 - validation coverage.
 
 Final validation must compare the implemented result against the original user request and this feature memory, with special attention to "all signs," source order, and unmodified sign imagery.

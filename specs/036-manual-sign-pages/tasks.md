@@ -27,7 +27,9 @@
 Architect disposition recorded at `2026-06-07T11:51:30-03:00`: PR `#202` at head
 `7187b6986f5ad03af83a8f756aa85c2b3815c927` is not merge-ready. The residual crop QA issue is
 accepted as required follow-up work, not as a non-blocking known issue. Architect return count
-for this work cycle: `1/10`. Final Architect validation has not been performed.
+for this work cycle: `1/10` at that point. Current Architect return count is `2/10` after the
+additional inventory-source blocker recorded below. Final Architect validation has not been
+performed.
 
 - [ ] Replace or refine the deterministic equal-grid crop generation/data with per-entry source regions for every inventory entry on pages `185-197`.
 - [ ] Give special attention to non-uniform sheets and sections: warning pages `187-188`, informational pages `189-192`, temporary pages `193-194`, horizontal-marking pages `195-196`, and traffic-light/signal page `197`.
@@ -39,6 +41,31 @@ for this work cycle: `1/10`. Final Architect validation has not been performed.
 - [ ] Update validation so the PR cannot pass with `spot-check`/`representative-only` crop evidence or unaudited crop boxes.
 - [ ] Re-run and record: `node scripts/manual-sign-inventory.mjs --write`, `pnpm run validate:manual-sign-inventory`, `node --test tests/manual-sign-inventory.test.mjs`, `pnpm run test`, `pnpm run build`, `git diff --check`, and full `pnpm run preflight` unless a concrete blocker is recorded.
 - [ ] Update this feature memory with the corrected crop count, all-section visual evidence paths, validation outcomes, and any remaining known issue for Architect disposition.
+
+## Architect Inventory-Source Follow-Up Required Before Implementation Continues
+
+Architect disposition recorded at `2026-06-07T12:11:45-03:00`: after horizontal follow-up commit
+`820a4a0f5d5517c5483ba92e70dd017583e8fdae`, the horizontal contact sheet still shows a deeper
+merge-blocking model issue. The inventory is derived from existing `termTranslations` rather
+than proven actual visual entries on the source sheets, so source order and caption-to-visual
+correctness are not guaranteed even when crop coordinates are refined. Example observed by
+Orchestrator: page `196` row `Carril exclusivo para transporte público de pasajeros` maps to a
+visual showing arrow markings, while other rows show category headings, partial material, or
+mismatched visual content. PR `#202` must not proceed to further implementation completion,
+final Architect validation, final Analyst validation, or merge until this inventory-source
+blocker is resolved.
+
+- [ ] Rebuild or reconcile the final inventory from actual source-sheet visual items and Spanish labels/headings on pages `185-197`, in visual reading order.
+- [ ] Treat existing `termTranslations` only as translation seed data unless each row is reconciled to an actual visual catalog item or intentional source heading.
+- [ ] Add an explicit row classification such as catalog sign/sign-like item versus category heading/structural label, using repository-consistent naming.
+- [ ] Include category headings only when intentionally preserving source structure; do not count headings as sign/sign-like coverage unless the source sheet presents that heading as an actual catalog entry.
+- [ ] For every final sign/sign-like entry, prove the Spanish label and Russian translation match the clipped/displayed source visual.
+- [ ] Record any source-sheet item that is split, merged, excluded, converted to a heading row, or newly added compared with the old `termTranslations`-derived scaffold.
+- [ ] Update inventory counts by section/page after reconciliation, distinguishing sign/sign-like coverage counts from optional heading rows.
+- [ ] Regenerate crops/source regions only after the reconciled source inventory is established, so coordinate work follows the actual visual catalog rather than the old translation list.
+- [ ] Add validation/evidence that fails on unreconciled translation-derived rows, caption-to-visual mismatches, heading rows counted as sign coverage, or rows whose source visual contradicts the Spanish/Russian caption.
+- [ ] Add all-section contact sheets or equivalent per-entry evidence that shows every final row's source visual together with Spanish and Russian captions for audit.
+- [ ] Re-run and record the same validation/build/test/preflight commands listed in the crop follow-up after inventory reconciliation and crop correction are complete.
 
 ## Horizontal Follow-Up Slice 2026-06-07
 
@@ -55,18 +82,37 @@ for this work cycle: `1/10`. Final Architect validation has not been performed.
   - Optional `pnpm run test` passed: `435/435` tests.
 - [ ] Broader Architect follow-up remains open for non-horizontal sections and for full all-`244` crop-box audit/validation. This slice intentionally corrected and verified only horizontal pages `195-196`.
 
+## Regulatory/Warning Visual Inventory Slice 2026-06-07
+
+- [x] Add the explicit visual inventory model in `scripts/manual-sign-inventory.mjs` as `visualSourceEntries` with `sectionId`, `sourcePage`, `sourceCardId`, `entryKind`, `spanishLabel`, optional `variant`, `russianTranslation`, `cropRegion`, `sourceSheetLabelEvidence`, and `auditStatus: "reconciled-source-visual"`.
+- [x] Switch regulatory generation from Anexo panel cards to the CABA source sheet cards `app4-regulatory-page-185-source-card` and `app4-regulatory-page-186-source-card` for the explicit visual rows.
+- [x] Generate regulatory and warning rows from `visualSourceEntries` instead of `termTranslations` for this narrow slice. Scope is intentionally partial: `20` reconciled source-visual rows total, covering regulatory examples on pages `185-186` and required warning variants on pages `187-188`, not every visual sign on those pages.
+- [x] Keep all non-regulatory/warning sections on the old scaffold path, but mark each remaining row with `entryKind: "catalog-entry"`, `sourceSheetLabelEvidence: "pending visual-source reconciliation"`, and `auditStatus: "pending-reconciliation"`.
+- [x] Regenerate `src/data/manual-signs/app4SignEntries.json`; current mixed inventory summary is `169` entries: `20` `reconciled-source-visual` rows and `149` `pending-reconciliation` rows.
+- [x] Update `tests/manual-sign-inventory.test.mjs` to require `entryKind`, `auditStatus`, and `sourceSheetLabelEvidence`, forbid pending regulatory/warning rows, assert required real variants (`CURVA (En "S")`, `PENDIENTE (Ascendente)`, `ESTRECHAMIENTO (En una sola mano)`, `CRUZ DE SAN ANDRÉS (Más de dos vías)`, and `PROXIMIDAD DE SEÑAL RESTRICTIVA` variants `Pare`/`Paso`/`Otra`), and assert pending non-regulatory/warning rows remain visible.
+- [x] Update the manual sign caption renderer so entries with a `variant` show it in the Spanish text caption and image alt text.
+- [x] Run bounded validation for this slice:
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `169` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `4/4` tests.
+  - `git diff --check` passed with no whitespace errors.
+  - Additional quick check `pnpm run build` passed and generated a service worker with `1870` cached assets.
+- [ ] PR `#202` remains not merge-ready. This slice does not complete full regulatory/warning coverage, does not reconcile informational/temporary/horizontal/traffic-light sections into the new visual inventory model, and does not eliminate all `pending-reconciliation` rows.
+
 ## Required Evidence To Fill During Implementation
 
 Inventory summary:
 
-- Total scaffold entries: `244`
-- Regulatory, pages `185-186`: `52`
-- Warning, pages `187-188`: `43`
+- Total current mixed inventory entries: `169`
+- Reconciled source-visual rows: `20`
+- Pending reconciliation rows: `149`
+- Regulatory, pages `185-186`: `11` partial reconciled rows
+- Warning, pages `187-188`: `9` partial reconciled rows
 - Informational, pages `189-192`: `62`
 - Temporary, pages `193-194`: `44`
 - Horizontal markings, pages `195-196`: `29`
 - Traffic lights/signals, page `197`: `14`
-- Source-page counts: p185 `12`, p186 `40`, p187 `23`, p188 `20`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
+- Source-page counts: p185 `6`, p186 `5`, p187 `4`, p188 `5`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
 - Inventory scaffold file: `src/data/manual-signs/app4SignEntries.json`
 
 Pages `198-200` disposition:
@@ -112,6 +158,7 @@ Screenshot evidence:
 
 Known issues and dead ends:
 
+- Architect disposition 2026-06-07 after commit `820a4a0f5d5517c5483ba92e70dd017583e8fdae`: coordinate refinement alone is insufficient. The current row set must be reconciled from source-sheet visual items/headings, not accepted as a `termTranslations`-derived inventory. Caption-to-visual correctness for every final entry is now an explicit merge gate.
 - Architect disposition 2026-06-07: the current screenshot evidence confirms only regulatory and horizontal-marking sections, while the known issue records that warning/traffic-light exploratory screenshots exposed partial neighboring content or excess whitespace. This violates the user requirement that every sign/sign-like entry be processed separately without cutting protected parts or mixing in wrong neighboring content. PR `#202` must return to Implementation for the follow-up tasks above before review completion, final Architect validation, final Analyst validation, or merge.
 - 2026-06-07T00:00:00-03:00: Slice 1 started; inventory scaffold in progress.
 - Slice 2 changed inventory status from `source-sheet-placeholder` to `individual-source-regions`: it governs order, captions, source references, source asset dimensions, hashes, no-upscale flags, render mode, per-entry CSS clip regions, and p198-p200 disposition.
@@ -124,6 +171,7 @@ Known issues and dead ends:
 Implementation feedback for Architect disposition:
 
 - PR `#202` residual crop QA issue disposed by Architect as required follow-up work before merge. It is not accepted as a non-blocking known issue, and final Architect validation is intentionally deferred.
+- PR `#202` inventory-source issue disposed by Architect as required follow-up work before implementation continues toward completion or merge. `termTranslations`-derived inventory is not accepted as final source of truth without row-by-row reconciliation to actual source-sheet visual items/headings and caption-to-visual evidence.
 
 ## Review Requirements
 
@@ -146,6 +194,7 @@ Architect final validation, when invoked by Orchestrator after implementation an
 - any Implementation Agent feedback has Architect disposition;
 - acceptance criteria in `spec.md` have evidence;
 - the Architect follow-up tasks above are complete, or any remaining crop/evidence risk has an explicit non-blocking Architect disposition based on objective full-entry evidence;
+- the inventory-source follow-up is complete, with caption-to-visual evidence for every final sign/sign-like row and heading rows excluded from sign coverage unless explicitly justified;
 - the effective content head is identified for final Analyst validation.
 
 Analyst final validation, when invoked after Architect final validation passes, must verify the final result against the user's original request: every sign processed separately, maximum practical quality, original source order, Spanish/Russian captions, all signs covered, and no modification of protected sign imagery.

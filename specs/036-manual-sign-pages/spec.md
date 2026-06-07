@@ -55,11 +55,13 @@ Implementation must create or update a governed inventory/evidence model that ma
 Each inventory entry must include at least:
 
 - stable entry id;
+- entry kind, distinguishing actual catalog sign/sign-like items from category headings or other structural labels;
 - section id matching the manual section where it appears;
 - source page number;
 - source-order index, preserving page order and visual reading order;
 - Spanish label;
 - Russian translation;
+- source-sheet Spanish label or heading evidence used to justify the row;
 - source visual reference, such as PDF page crop coordinates or official retained source asset id/path;
 - output asset path;
 - output natural width and height;
@@ -67,6 +69,14 @@ Each inventory entry must include at least:
 - extraction/export method and source document identity;
 - explicit no-upscale display constraint;
 - preservation note for signs with plates/tablets, embedded text, or multi-part visuals.
+
+The final inventory source of truth must be reconciled from actual visual items and Spanish
+labels/headings present on the source sheets in visual reading order. Existing
+`termTranslations` may be used as translation seed data, but a `termTranslations`-derived row
+set is not acceptable for final acceptance unless each row is matched to an actual source-sheet
+visual item or intentionally classified source heading. Category headings may be represented as
+heading rows only when useful for learner structure; they must not be counted as sign/sign-like
+coverage unless the source sheet presents the heading itself as an actual catalog entry.
 
 The evidence model may be JSON, TypeScript data with generated evidence, Markdown plus machine-readable JSON, or another repository-consistent format. It must support automated validation for count, order, captions, assets, hashes, source identity, and no-upscale constraints.
 
@@ -110,6 +120,9 @@ Implementation must add or update automated checks so regressions are caught whe
 
 - every inventory entry has Spanish and Russian captions;
 - source-order indexes are contiguous and stable within the defined source boundary;
+- every final inventory row is reconciled to an actual source-sheet visual item or an intentional source heading;
+- every sign/sign-like row has a caption-to-visual match between the Spanish label, Russian translation, and clipped source visual;
+- category-heading rows are clearly typed and excluded from sign coverage counts unless explicitly justified as actual catalog entries;
 - every referenced output asset exists;
 - every output asset hash matches the inventory;
 - every output asset has recorded dimensions;
@@ -129,13 +142,21 @@ traffic-light/signal pages. Evidence may be per-entry audit data, contact sheets
 desktop/mobile screenshots, or an equivalent auditable proof, but it must prove all `244`
 entries rather than only representative sections.
 
+After horizontal follow-up commit `820a4a0f5d5517c5483ba92e70dd017583e8fdae`, PR `#202` also
+has a deeper inventory-model blocker: crop bounds and no-upscale checks do not prove that the
+inventory row corresponds to the actual visual item on the source sheet. Before implementation
+continues toward final validation or merge, Implementation must rebuild or reconcile the
+inventory from source-sheet visual items and Spanish labels/headings, then apply Russian
+translations outside images. Evidence must prove caption-to-visual correctness for every final
+entry, not merely crop geometry.
+
 ## Acceptance Criteria
 
 1. Every catalog entry on source pages `185-197` is represented as an individual learner-facing entry.
 2. Pages `198-200` have an explicit included/excluded disposition if inspected during implementation.
-3. Entries preserve official source order by page and visual reading order.
+3. Entries are derived from actual source-sheet visual items/headings and preserve official source order by page and visual reading order.
 4. Each entry includes a source-as-is visual asset produced from official material.
-5. Each entry includes Spanish and Russian caption text outside the protected image.
+5. Each sign/sign-like entry includes Spanish and Russian caption text outside the protected image, and evidence proves the caption matches the displayed source visual.
 6. Protected sign pixels and sign parts are not modified, translated, covered, or omitted.
 7. Whole-sheet or broad-panel visuals are supplemental only and do not count as coverage.
 8. The app remains static, local-first, offline-capable, and uses bundled local assets only.

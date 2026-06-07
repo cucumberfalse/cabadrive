@@ -2521,6 +2521,7 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
 
 function ManualSignSourceClip({ entry }: { entry: ManualSignEntry }) {
   const region = entry.displayRegion;
+  const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
   const clipStyle = {
     "--manual-sign-source-width": `${entry.naturalWidth}px`,
     "--manual-sign-source-height": `${entry.naturalHeight}px`,
@@ -2535,7 +2536,7 @@ function ManualSignSourceClip({ entry }: { entry: ManualSignEntry }) {
       <div className="manual-sign-source-viewport" style={clipStyle} data-render-mode={entry.renderMode} data-no-upscale={entry.noUpscale}>
         <img
           src={assetUrl(entry.assetPath)}
-          alt={`${entry.spanishLabel} - ${entry.russianTranslation}`}
+          alt={`${spanishCaption} - ${entry.russianTranslation}`}
           data-source-as-is="true"
           data-render-mode={entry.renderMode}
           data-source-page={entry.sourcePage}
@@ -2562,25 +2563,32 @@ function ManualSignCatalogBlockView({ block }: { block: Extract<ManualGuideSecti
       <h3>{block.titleRu}</h3>
       <div className="manual-sign-catalog-grid">
         {entries.map((entry) => (
-          <article
-            className="manual-sign-card"
-            key={entry.id}
-            data-manual-sign-entry-id={entry.id}
-            data-source-page={entry.sourcePage}
-            data-source-order={entry.sourceOrder}
-            data-source-order-within-page={entry.sourceOrderWithinPage}
-          >
-            <figure className="manual-sign-figure">
-              <ManualSignSourceClip entry={entry} />
-            </figure>
-            <div className="manual-sign-caption">
-              <h4 lang="es">{entry.spanishLabel}</h4>
-              <p lang="ru">{entry.russianTranslation}</p>
-            </div>
-          </article>
+          <ManualSignCatalogEntryCard entry={entry} key={entry.id} />
         ))}
       </div>
     </section>
+  );
+}
+
+function ManualSignCatalogEntryCard({ entry }: { entry: ManualSignEntry }) {
+  const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
+
+  return (
+    <article
+      className="manual-sign-card"
+      data-manual-sign-entry-id={entry.id}
+      data-source-page={entry.sourcePage}
+      data-source-order={entry.sourceOrder}
+      data-source-order-within-page={entry.sourceOrderWithinPage}
+    >
+      <figure className="manual-sign-figure">
+        <ManualSignSourceClip entry={entry} />
+      </figure>
+      <div className="manual-sign-caption">
+        <h4 lang="es">{spanishCaption}</h4>
+        <p lang="ru">{entry.russianTranslation}</p>
+      </div>
+    </article>
   );
 }
 

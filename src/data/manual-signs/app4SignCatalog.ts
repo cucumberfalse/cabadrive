@@ -13,8 +13,12 @@ export type ManualSignEntry = {
   sourcePage: number;
   sourceOrder: number;
   sourceOrderWithinPage: number;
+  entryKind: "catalog-entry" | "category-heading";
   spanishLabel: string;
+  variant?: string;
   russianTranslation: string;
+  sourceSheetLabelEvidence: string;
+  auditStatus: "reconciled-source-visual" | "pending-reconciliation";
   sourceRef: string;
   sourceAsset: string;
   sourceRegion: ManualSignRegion | null;
