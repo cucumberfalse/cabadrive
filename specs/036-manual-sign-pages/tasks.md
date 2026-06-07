@@ -331,23 +331,30 @@ Validation commands:
 
 Screenshot evidence:
 
-- Desktop dense section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-desktop.png`
-- Desktop representative section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-desktop.png`
-- Mobile dense section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-mobile.png`
-- Mobile representative section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-mobile.png`
+- Desktop regulatory section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-desktop.png`
+- Desktop warning section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-warning-desktop.png`
+- Desktop informational section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-informational-desktop.png`
+- Desktop temporary section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-temporary-desktop.png`
+- Desktop horizontal-marking section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-desktop.png`
+- Desktop traffic-light section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-traffic-lights-desktop.png`
+- Mobile regulatory section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-mobile.png`
+- Mobile warning section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-warning-mobile.png`
+- Mobile informational section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-informational-mobile.png`
+- Mobile temporary section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-temporary-mobile.png`
+- Mobile horizontal-marking section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-mobile.png`
+- Mobile traffic-light section: `specs/036-manual-sign-pages/evidence/screenshots/manual-signs-traffic-lights-mobile.png`
 - Visual QA summary: `specs/036-manual-sign-pages/evidence/screenshots/visual-qa-summary.json`
-- Screenshot command: local dev server on `http://localhost:5174`, then a bounded Playwright script imported `chromium` from `@playwright/test`, navigated by section hash, scrolled images into view for lazy-loading, captured the two catalog sections at desktop `1440x1100` and mobile `390x1100`, and wrote the summary JSON. The summary recorded `0` no-upscale violations, `0` unloaded images, `0` render-mode/source-flag violations, `0` caption gaps, monotonic order `true`, and document horizontal overflow `0` for all four captures.
+- Screenshot command: local Vite server on `http://127.0.0.1:5174/`, then a bounded Playwright script imported `chromium` from `@playwright/test`, navigated by section hash for all six Appendix IV sign sections, scrolled every catalog card into view for lazy-loading, captured full catalog elements at desktop `1440x1100` and mobile `390x1100`, removed the obsolete regulatory/horizontal-only screenshots, and wrote the summary JSON. The summary records `316` inventory rows, `12` captures, regulatory `60`, warning `59`, informational `95`, temporary `56`, horizontal `33`, traffic-lights `13`, `0` no-upscale violations, `0` unloaded images, `0` render-mode/source-flag violations, `0` caption gaps, `0` bad overflow, monotonic order `true`, and document horizontal overflow `0` for every capture.
 
 Known issues and dead ends:
 
 - Architect disposition 2026-06-07 after commit `820a4a0f5d5517c5483ba92e70dd017583e8fdae`: coordinate refinement alone is insufficient. The current row set must be reconciled from source-sheet visual items/headings, not accepted as a `termTranslations`-derived inventory. Caption-to-visual correctness for every final entry is now an explicit merge gate.
-- Architect disposition 2026-06-07: the current screenshot evidence confirms only regulatory and horizontal-marking sections, while the known issue records that warning/traffic-light exploratory screenshots exposed partial neighboring content or excess whitespace. This violates the user requirement that every sign/sign-like entry be processed separately without cutting protected parts or mixing in wrong neighboring content. PR `#202` must return to Implementation for the follow-up tasks above before review completion, final Architect validation, final Analyst validation, or merge.
+- Architect disposition 2026-06-07: the earlier regulatory/horizontal-only screenshot evidence was insufficient. Review-fix follow-up for thread `PRRT_kwDOSX65IM6HrfvY` regenerated current desktop and mobile visual QA screenshots for all six Appendix IV sign sections against the final `316`-row inventory.
 - 2026-06-07T00:00:00-03:00: Slice 1 started; inventory scaffold in progress.
 - Slice 2 changed inventory status from `source-sheet-placeholder` to `individual-source-regions`: it governs order, captions, source references, source asset dimensions, hashes, no-upscale flags, render mode, per-entry CSS clip regions, and p198-p200 disposition.
 - Slice 2 added `src/data/manual-signs/app4SignCatalog.ts`, a `manual-sign-catalog` manual-guide block, section inserts for all six Appendix IV sign sections, React rendering in `App.tsx`, and responsive CSS for CSS-clipped source-region cards. The primary learner view now renders entries from `app4SignEntries.json`; existing whole-sheet/panel cards remain after the individual catalog as supplemental context.
-- Deterministic grid cells are intentionally coarse for this reduced slice. They create individual source regions smaller than the source asset and preserve original asset bytes; final visual QA covered regulatory dense and horizontal-marking representative sections on desktop and mobile, but did not manually audit every one of the `244` crop boxes. Residual risk: some warning, informational, temporary, traffic-light, or non-screenshoted entries may still need coordinate fine-tuning if later review requires a strict per-entry visual audit.
-- During final screenshot work, warning/traffic-light exploratory screenshots exposed that some coarse grid regions can show partial neighboring content or excess whitespace. Those exploratory screenshots were removed from committed evidence; the residual risk is recorded here for Architect disposition rather than claimed as fully resolved.
-- Visual QA evidence is screenshot/spot-check based, not a full manual audit of all `244` individual crop boxes. The committed screenshot evidence covers one dense section (`app4-signs-regulatory`) and one representative horizontal-marking section (`app4-signs-horizontal`) on desktop and mobile.
+- Historical deterministic-grid and `244`-row spot-check risk is superseded by the final `316`-row reconciled source-visual inventory, all-section final contact sheets, and regenerated all-section desktop/mobile visual QA screenshots.
+- Visual QA evidence now covers full catalog element screenshots for every Appendix IV sign section on desktop and mobile, with metrics recorded for all rendered entries. Per-entry visual audit evidence remains the final-catalog contact-sheet set under `specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/`.
 - Current source-quality limitation: Appendix IV page-sheet crops are source-limited official rasters. This is not a blocker because the spec allows documented official-source extraction and no-upscale caps; Implementation will record per-entry source refs, natural dimensions, SHA-256 hashes, and preservation notes. Browser upscaling, sharpening, vectorization, or generated replacements remain forbidden and will not be used.
 
 Implementation feedback for Architect disposition:
@@ -388,12 +395,14 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Architect disposition: Review Agent finding on `ManualSignEntry.entryKind` was valid; product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` adds `contextual-visual` to the exported `ManualSignEntry.entryKind` union in `src/data/manual-signs/app4SignCatalog.ts`.
 - Architect disposition: Review Agent classified `13` stale review threads as outdated/superseded and `3` duplicate contextual-visual type threads as fixed by `100799eaa66448f5a7b287c00577b5d60c7f1a84`.
 - Review-fix implementation decision at 2026-06-07T15:30:24-03:00 for review thread `PRRT_kwDOSX65IM6HrbRG`: explicit visual-source inventory rows remain hard-coded in `scripts/manual-sign-inventory.mjs`; generated `sourceRef` values now point to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` instead of dead `src/data/manual-sections/*.ts#*.visualSourceEntries[index]` targets.
+- Review-fix implementation decision for review thread `PRRT_kwDOSX65IM6HrfvY`: stale screenshot visual QA evidence is replaced with current all-section desktop and mobile screenshots and a regenerated summary for the final `316`-row inventory. Source-image pixels remain unmodified; screenshots are evidence artifacts only.
 
 ## Dead Ends
 
 - Architect disposition: deterministic grid crop and term-translation-derived inventory paths are superseded/resolved by row-by-row source-sheet visual reconciliation.
 - Architect disposition: pre-fix final validation notes for earlier heads are stale after product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` and are intentionally omitted from this foundation memory so later final validation can run on the new effective content head.
 - Previous final Architect/Analyst validation evidence for effective content head `e5041ad79eb7034e01374b65ac3ceebf44f775da` is stale after the sourceRef review-fix content changes to `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; final validation is ready to rerun after this review-fix PR head is committed and pushed.
+- Previous final Architect/Analyst validation evidence for effective content head `202af0dd1e7b92a308220ac5805afac2740e25dd` and PR head `96721c0bed8fd334d13281de6d6bdbf01b1833ca` is stale after review thread `PRRT_kwDOSX65IM6HrfvY` required replacing screenshot evidence artifacts and process memory. Final Architect validation and final Analyst validation must be rerun by their assigned roles after this review-fix evidence commit is pushed.
 
 ## Known Issues
 
@@ -415,18 +424,25 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `pnpm run validate:manual-sign-inventory` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
 - Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests, including regression coverage that explicit visual rows use `scripts/manual-sign-inventory.mjs#visualSourceEntries[...]` and reject dead `src/data/manual-sections/*.ts#*.visualSourceEntries[...]` targets.
 - Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `pnpm run build` passed; Vite production build completed and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
+- Review visual QA fix evidence for thread `PRRT_kwDOSX65IM6HrfvY`: Playwright screenshot generation passed against local Vite `http://127.0.0.1:5174/`, producing `12` full-catalog screenshots and `specs/036-manual-sign-pages/evidence/screenshots/visual-qa-summary.json` with inventory total `316`, all six section counts, both viewports, and zero unloaded/no-upscale/render/source/caption/overflow violations.
+- Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `pnpm run validate:manual-sign-inventory` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
+- Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests.
+- Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `pnpm run build` passed; Vite emitted the existing large-chunk warning, production build completed, and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
+- Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `git diff --check` passed with no whitespace errors after evidence and process-memory updates.
 
 ## Cycle PR Set
 
 - PR #202 branch `codex/036-manual-sign-pages` current content head `2a11be5dee6307e9df1cedad094ded5c58e6c659`; status after review fixes: contextual-visual type issue fixed, sourceRef review fix applied, stale/duplicate review threads classified, no unresolved Implementation Agent feedback recorded; included in the final-validation cycle PR set.
-- Process-memory foundation commit after this `tasks.md` rewrite is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
+- Process-memory foundation commit after this `tasks.md` rewrite was superseded by review thread `PRRT_kwDOSX65IM6HrfvY`; the visual-QA evidence commit is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
 - PR #202 sourceRef review-fix content changed `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; previous final validation for `e5041ad79eb7034e01374b65ac3ceebf44f775da` must not be reused because generated inventory data and test contracts changed.
+- PR #202 visual-QA review fix changed only screenshot evidence artifacts and Implementation-owned process memory; previous final validation for `202af0dd1e7b92a308220ac5805afac2740e25dd`/`96721c0bed8fd334d13281de6d6bdbf01b1833ca` must not be reused until Architect and Analyst rerun validation on the new effective content head.
 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
 - Disposition: resolved by review-fix commit 100799eaa66448f5a7b287c00577b5d60c7f1a84 adding contextual-visual to ManualSignEntry.entryKind.
 - Disposition: sourceRef review finding resolved at content head `2a11be5dee6307e9df1cedad094ded5c58e6c659` by pointing explicit visual-source generated refs to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` and adding regression coverage.
+- Disposition: screenshot visual QA review finding `PRRT_kwDOSX65IM6HrfvY` resolved by regenerating all-section desktop/mobile screenshots and `visual-qa-summary.json` against the current final `316`-row inventory.
 
 ## Final Validation Evidence
 
@@ -444,6 +460,7 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 - Current-PR-head read-only guard: Orchestrator will compare current PR head against effective content head 202af0dd1e7b92a308220ac5805afac2740e25dd and verify later commits are final-validation evidence-only before finalization.
+- Post-validation stale notice: review thread `PRRT_kwDOSX65IM6HrfvY` required non-validation evidence changes after effective content head `202af0dd1e7b92a308220ac5805afac2740e25dd` and PR head `96721c0bed8fd334d13281de6d6bdbf01b1833ca`; the final Architect and Analyst validation notes below are historical until those roles rerun validation.
 
 ## Superseded Architect Validation Notes
 

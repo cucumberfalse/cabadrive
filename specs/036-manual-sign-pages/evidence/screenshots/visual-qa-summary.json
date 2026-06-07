@@ -1,11 +1,32 @@
 {
-  "generatedAt": "2026-06-07T14:44:33.001Z",
+  "generatedAt": "2026-06-07T18:57:59.494Z",
+  "generatedBy": "Playwright catalog-section screenshot QA against local Vite http://127.0.0.1:5174/",
+  "inventoryTotal": 316,
+  "coverage": {
+    "sections": [
+      "app4-signs-regulatory",
+      "app4-signs-warning",
+      "app4-signs-informational",
+      "app4-signs-temporary",
+      "app4-signs-horizontal",
+      "app4-signs-traffic-lights"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "captures": 12
+  },
   "summary": [
     {
-      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-desktop.png",
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-desktop.png",
       "viewport": "desktop",
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
       "sectionId": "app4-signs-regulatory",
-      "entryCount": 52,
+      "entryCount": 60,
       "noUpscaleViolations": 0,
       "unloadedImages": 0,
       "badRenderMode": 0,
@@ -14,14 +35,26 @@
       "emptyCaptions": 0,
       "monotonicOrder": true,
       "documentOverflowX": 0,
-      "firstEntry": "app4regulatory-p185-001-no-avanzar",
-      "lastEntry": "app4regulatory-p186-040-cruce-ferroviario"
+      "firstEntry": "app4regulatory-p185-001-reglamentarias-category-heading",
+      "lastEntry": "app4regulatory-p186-031-fin-de-la-prescripcion-velocidad-minima-35",
+      "firstSourceOrder": 1,
+      "lastSourceOrder": 60,
+      "sourcePages": [
+        185,
+        186
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 4648
     },
     {
-      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-desktop.png",
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-warning-desktop.png",
       "viewport": "desktop",
-      "sectionId": "app4-signs-horizontal",
-      "entryCount": 29,
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-warning",
+      "entryCount": 59,
       "noUpscaleViolations": 0,
       "unloadedImages": 0,
       "badRenderMode": 0,
@@ -30,14 +63,139 @@
       "emptyCaptions": 0,
       "monotonicOrder": true,
       "documentOverflowX": 0,
-      "firstEntry": "app4horizontal-p195-001-horizontales",
-      "lastEntry": "app4horizontal-p196-014-cruce-de-ciclistas"
+      "firstEntry": "app4warning-p187-001-preventivas-category-heading",
+      "lastEntry": "app4warning-p188-030-fin-de-prevencion-catalog-entry",
+      "firstSourceOrder": 61,
+      "lastSourceOrder": 119,
+      "sourcePages": [
+        187,
+        188
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 4031
     },
     {
-      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-mobile.png",
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-informational-desktop.png",
+      "viewport": "desktop",
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-informational",
+      "entryCount": 95,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4informational-p189-001-informativas-category-heading",
+      "lastEntry": "app4informational-p192-001-en-memoria-de-una-victima-de-transito-estrella-a",
+      "firstSourceOrder": 120,
+      "lastSourceOrder": 214,
+      "sourcePages": [
+        189,
+        190,
+        191,
+        192
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 6680
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-temporary-desktop.png",
+      "viewport": "desktop",
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-temporary",
+      "entryCount": 56,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4temporary-p193-001-transitorias-category-heading",
+      "lastEntry": "app4temporary-p194-029-paneles-catalog-entry",
+      "firstSourceOrder": 215,
+      "lastSourceOrder": 270,
+      "sourcePages": [
+        193,
+        194
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 3553
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-desktop.png",
+      "viewport": "desktop",
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-horizontal",
+      "entryCount": 33,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4horizontal-p195-001-horizontales-category-heading",
+      "lastEntry": "app4horizontal-p196-016-separadores-fisicos-de-transito-catalog-entry",
+      "firstSourceOrder": 271,
+      "lastSourceOrder": 303,
+      "sourcePages": [
+        195,
+        196
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 2884
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-traffic-lights-desktop.png",
+      "viewport": "desktop",
+      "viewportSize": {
+        "width": 1440,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-traffic-lights",
+      "entryCount": 13,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4traffic-lights-p197-001-senalamiento-luminoso-category-heading",
+      "lastEntry": "app4traffic-lights-p197-013-carriles-reversibles-catalog-entry",
+      "firstSourceOrder": 304,
+      "lastSourceOrder": 316,
+      "sourcePages": [
+        197
+      ],
+      "screenshotWidth": 790,
+      "screenshotHeight": 1490
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-mobile.png",
       "viewport": "mobile",
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
       "sectionId": "app4-signs-regulatory",
-      "entryCount": 52,
+      "entryCount": 60,
       "noUpscaleViolations": 0,
       "unloadedImages": 0,
       "badRenderMode": 0,
@@ -46,14 +204,26 @@
       "emptyCaptions": 0,
       "monotonicOrder": true,
       "documentOverflowX": 0,
-      "firstEntry": "app4regulatory-p185-001-no-avanzar",
-      "lastEntry": "app4regulatory-p186-040-cruce-ferroviario"
+      "firstEntry": "app4regulatory-p185-001-reglamentarias-category-heading",
+      "lastEntry": "app4regulatory-p186-031-fin-de-la-prescripcion-velocidad-minima-35",
+      "firstSourceOrder": 1,
+      "lastSourceOrder": 60,
+      "sourcePages": [
+        185,
+        186
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 11564
     },
     {
-      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-mobile.png",
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-warning-mobile.png",
       "viewport": "mobile",
-      "sectionId": "app4-signs-horizontal",
-      "entryCount": 29,
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-warning",
+      "entryCount": 59,
       "noUpscaleViolations": 0,
       "unloadedImages": 0,
       "badRenderMode": 0,
@@ -62,8 +232,129 @@
       "emptyCaptions": 0,
       "monotonicOrder": true,
       "documentOverflowX": 0,
-      "firstEntry": "app4horizontal-p195-001-horizontales",
-      "lastEntry": "app4horizontal-p196-014-cruce-de-ciclistas"
+      "firstEntry": "app4warning-p187-001-preventivas-category-heading",
+      "lastEntry": "app4warning-p188-030-fin-de-prevencion-catalog-entry",
+      "firstSourceOrder": 61,
+      "lastSourceOrder": 119,
+      "sourcePages": [
+        187,
+        188
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 10589
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-informational-mobile.png",
+      "viewport": "mobile",
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-informational",
+      "entryCount": 95,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4informational-p189-001-informativas-category-heading",
+      "lastEntry": "app4informational-p192-001-en-memoria-de-una-victima-de-transito-estrella-a",
+      "firstSourceOrder": 120,
+      "lastSourceOrder": 214,
+      "sourcePages": [
+        189,
+        190,
+        191,
+        192
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 17440
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-temporary-mobile.png",
+      "viewport": "mobile",
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-temporary",
+      "entryCount": 56,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4temporary-p193-001-transitorias-category-heading",
+      "lastEntry": "app4temporary-p194-029-paneles-catalog-entry",
+      "firstSourceOrder": 215,
+      "lastSourceOrder": 270,
+      "sourcePages": [
+        193,
+        194
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 9089
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-mobile.png",
+      "viewport": "mobile",
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-horizontal",
+      "entryCount": 33,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4horizontal-p195-001-horizontales-category-heading",
+      "lastEntry": "app4horizontal-p196-016-separadores-fisicos-de-transito-catalog-entry",
+      "firstSourceOrder": 271,
+      "lastSourceOrder": 303,
+      "sourcePages": [
+        195,
+        196
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 6781
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-traffic-lights-mobile.png",
+      "viewport": "mobile",
+      "viewportSize": {
+        "width": 390,
+        "height": 1100
+      },
+      "sectionId": "app4-signs-traffic-lights",
+      "entryCount": 13,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4traffic-lights-p197-001-senalamiento-luminoso-category-heading",
+      "lastEntry": "app4traffic-lights-p197-013-carriles-reversibles-catalog-entry",
+      "firstSourceOrder": 304,
+      "lastSourceOrder": 316,
+      "sourcePages": [
+        197
+      ],
+      "screenshotWidth": 329,
+      "screenshotHeight": 2646
     }
   ]
 }
