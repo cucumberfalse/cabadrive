@@ -167,16 +167,8 @@ No external web research was used for this intake. Sources used were repository-
 - Implementation must treat the protected-pixel rule as a hard requirement, not a visual preference.
 - The user's no-follow-up instruction means unresolved product details above should be handled through assumptions, Architect disposition, or blocker exceptions only if absolutely necessary.
 
-## Final Analyst Validation
+## Superseded Analyst Validation History
 
-Analyst validation pass: passed
+The prior Analyst final-validation note for effective content head `21d843fc1fad4f64459718941cd6f03026c0e23c` is historical only and must not be treated as the live final Analyst validation for PR #202. It was superseded by the post-validation type fix `100799eaa66448f5a7b287c00577b5d60c7f1a84` and the process-memory foundation commit `3003c501a07708a35c5f7830171e54302d60ebec`.
 
-Final Analyst validation completed at: 2026-06-07T14:49:51-03:00
-
-Effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
-
-Analyst validated effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
-
-Analyst return count remains `0/5`.
-
-Final Analyst validation confirms the result satisfies the user's original request in spirit and letter: every affected sign/sign-like item is handled individually; source page and visual reading order are preserved; the final inventory reconciles `316` rows with `283` catalog-entry rows, `30` headings, `3` contextual visuals, `0` pending rows, and pages `185-197` represented; p198-p200 disposition is recorded; Spanish and Russian captions are outside protected imagery, including `NO AVANZAR` -> `Проезд запрещен`; runtime rendering clips unchanged official source-as-is assets without generated/redrawn replacements or source crop files. Architect validation passed first for the same effective content head, and the current PR head successor `f4f65031beb1e52a4741390ebf40c20b8592a624` is evidence-only final Architect validation memory.
+Live final Analyst validation is deferred. Orchestrator must invoke Analyst validation again after Architect validation passes on the new effective content head.
