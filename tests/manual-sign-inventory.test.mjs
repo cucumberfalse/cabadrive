@@ -1846,6 +1846,215 @@ const temporaryPage193Rows = [
   }
 ];
 
+const temporaryPage194Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Peatonales",
+    russianTranslation: "пешеходные",
+    cropRegion: { x: 80, y: 132, width: 135, height: 27 },
+    sourceSheetLabelEvidence: "visible source heading: Peatonales"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Anuncio de obra",
+    russianTranslation: "объявление о работах",
+    cropRegion: { x: 132, y: 180, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Anuncio de obra"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Comienzo de obra",
+    russianTranslation: "начало работ",
+    cropRegion: { x: 215, y: 180, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Comienzo de obra"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío",
+    russianTranslation: "обход / объезд",
+    cropRegion: { x: 301, y: 180, width: 64, height: 67 },
+    sourceSheetLabelEvidence: "visible source label: Desvío"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Anulación temporal de paradas",
+    russianTranslation: "временная отмена остановок",
+    cropRegion: { x: 386, y: 180, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Anulación temporal de paradas"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Acérquese a la parada más cercana",
+    russianTranslation: "подойдите к ближайшей остановке",
+    cropRegion: { x: 470, y: 180, width: 78, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Acérquese a la parada más cercana"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Anulación de parada",
+    russianTranslation: "отмена остановки",
+    cropRegion: { x: 132, y: 264, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Anulación de parada"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Prohibido el paso",
+    russianTranslation: "проход запрещен",
+    cropRegion: { x: 215, y: 264, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Prohibido el paso"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda deshabilitada",
+    russianTranslation: "путь / переход закрыт",
+    cropRegion: { x: 300, y: 264, width: 70, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Senda deshabilitada"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "De ciclovías",
+    russianTranslation: "для велодорожек",
+    cropRegion: { x: 80, y: 376, width: 135, height: 28 },
+    sourceSheetLabelEvidence: "visible source heading: De ciclovías"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Interrupción de ciclovía",
+    variant: "Anticipación",
+    russianTranslation: "прерывание велодорожки заранее",
+    cropRegion: { x: 128, y: 407, width: 74, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Interrupción de ciclovía (Anticipación)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Interrupción de ciclovía",
+    russianTranslation: "прерывание велодорожки",
+    cropRegion: { x: 213, y: 407, width: 74, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Interrupción de ciclovía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Descenso de la bicicleta",
+    russianTranslation: "сойти с велосипеда",
+    cropRegion: { x: 300, y: 407, width: 72, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Descenso de la bicicleta"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Otros dispositivos",
+    russianTranslation: "другие устройства",
+    cropRegion: { x: 80, y: 542, width: 205, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Otros dispositivos"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla barricada",
+    russianTranslation: "барьерная ограда",
+    cropRegion: { x: 132, y: 581, width: 68, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla barricada"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla peatonal",
+    russianTranslation: "пешеходное ограждение",
+    cropRegion: { x: 207, y: 581, width: 86, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla peatonal"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla de obra",
+    russianTranslation: "строительное ограждение",
+    cropRegion: { x: 291, y: 581, width: 88, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla de obra"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Anuncio de obra",
+    variant: "dispositivo",
+    russianTranslation: "объявление о работах",
+    cropRegion: { x: 387, y: 581, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Anuncio de obra (dispositivo)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Conos",
+    russianTranslation: "конусы",
+    cropRegion: { x: 468, y: 582, width: 76, height: 65 },
+    sourceSheetLabelEvidence: "visible source label: Conos"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Tambores",
+    russianTranslation: "дорожные бочки",
+    cropRegion: { x: 132, y: 663, width: 64, height: 71 },
+    sourceSheetLabelEvidence: "visible source label: Tambores"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Delineadores",
+    russianTranslation: "направляющие делинеаторы",
+    cropRegion: { x: 214, y: 662, width: 66, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Delineadores"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Barandas canalizadoras de tránsito",
+    russianTranslation: "направляющие барьеры для движения",
+    cropRegion: { x: 292, y: 665, width: 86, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: Barandas canalizadoras de tránsito"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Barandas canalizadoras de tránsito",
+    variant: "Hormigón",
+    russianTranslation: "бетонные направляющие барьеры для движения",
+    cropRegion: { x: 382, y: 668, width: 86, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Barandas canalizadoras de tránsito (Hormigón)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Reflector",
+    russianTranslation: "отражатель / осветитель",
+    cropRegion: { x: 477, y: 663, width: 62, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Reflector"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Baliza delineadora",
+    russianTranslation: "направляющий маячок",
+    cropRegion: { x: 130, y: 750, width: 68, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Baliza delineadora"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Baliza intermitente",
+    russianTranslation: "мигающий маяк",
+    cropRegion: { x: 213, y: 750, width: 68, height: 73 },
+    sourceSheetLabelEvidence: "visible source label: Baliza intermitente"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Flecha vial intermitente",
+    russianTranslation: "мигающая дорожная стрелка",
+    cropRegion: { x: 292, y: 750, width: 82, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Flecha vial intermitente"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Semáforo",
+    russianTranslation: "светофор",
+    cropRegion: { x: 388, y: 747, width: 62, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Semáforo"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Paneles",
+    russianTranslation: "панели",
+    cropRegion: { x: 470, y: 748, width: 64, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Paneles"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -2092,12 +2301,37 @@ test("temporary source page 193 visual rows are complete and ordered", () => {
   });
 });
 
+test("temporary source page 194 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-temporary" && entry.sourcePage === 194);
+
+  assert.equal(rows.length, temporaryPage194Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["194"], temporaryPage194Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 3);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 26);
+  assert.equal(rows.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
+
+  rows.forEach((entry, index) => {
+    const expected = temporaryPage194Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-temporary-page-194-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
 test("reconciled visual rows are complete while unreconciled sections stay visibly pending", () => {
   const inventory = loadInventory();
   const isReconciled = (entry) =>
     ["app4-signs-regulatory", "app4-signs-warning"].includes(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-temporary" && entry.sourcePage === 193);
+    (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage));
   const reconciled = inventory.entries.filter(isReconciled);
   const pending = inventory.entries.filter((entry) => !isReconciled(entry));
 

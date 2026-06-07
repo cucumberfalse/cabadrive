@@ -2890,6 +2890,328 @@ const visualSourceEntries = [
     cropRegion: { x: 181, y: 670, width: 55, height: 82 },
     sourceSheetLabelEvidence: "visible source label: Desvío (Peatonales y de ciclovías)",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Peatonales",
+    russianTranslation: "пешеходные",
+    cropRegion: { x: 80, y: 132, width: 135, height: 27 },
+    sourceSheetLabelEvidence: "visible source heading: Peatonales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Anuncio de obra",
+    russianTranslation: "объявление о работах",
+    cropRegion: { x: 132, y: 180, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Anuncio de obra",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Comienzo de obra",
+    russianTranslation: "начало работ",
+    cropRegion: { x: 215, y: 180, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Comienzo de obra",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío",
+    russianTranslation: "обход / объезд",
+    cropRegion: { x: 301, y: 180, width: 64, height: 67 },
+    sourceSheetLabelEvidence: "visible source label: Desvío",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Anulación temporal de paradas",
+    russianTranslation: "временная отмена остановок",
+    cropRegion: { x: 386, y: 180, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Anulación temporal de paradas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Acérquese a la parada más cercana",
+    russianTranslation: "подойдите к ближайшей остановке",
+    cropRegion: { x: 470, y: 180, width: 78, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Acérquese a la parada más cercana",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Anulación de parada",
+    russianTranslation: "отмена остановки",
+    cropRegion: { x: 132, y: 264, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Anulación de parada",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Prohibido el paso",
+    russianTranslation: "проход запрещен",
+    cropRegion: { x: 215, y: 264, width: 66, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Prohibido el paso",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda deshabilitada",
+    russianTranslation: "путь / переход закрыт",
+    cropRegion: { x: 300, y: 264, width: 70, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Senda deshabilitada",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "De ciclovías",
+    russianTranslation: "для велодорожек",
+    cropRegion: { x: 80, y: 376, width: 135, height: 28 },
+    sourceSheetLabelEvidence: "visible source heading: De ciclovías",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Interrupción de ciclovía",
+    variant: "Anticipación",
+    russianTranslation: "прерывание велодорожки заранее",
+    cropRegion: { x: 128, y: 407, width: 74, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Interrupción de ciclovía (Anticipación)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Interrupción de ciclovía",
+    russianTranslation: "прерывание велодорожки",
+    cropRegion: { x: 213, y: 407, width: 74, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Interrupción de ciclovía",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Descenso de la bicicleta",
+    russianTranslation: "сойти с велосипеда",
+    cropRegion: { x: 300, y: 407, width: 72, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Descenso de la bicicleta",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Otros dispositivos",
+    russianTranslation: "другие устройства",
+    cropRegion: { x: 80, y: 542, width: 205, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Otros dispositivos",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla barricada",
+    russianTranslation: "барьерная ограда",
+    cropRegion: { x: 132, y: 581, width: 68, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla barricada",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla peatonal",
+    russianTranslation: "пешеходное ограждение",
+    cropRegion: { x: 207, y: 581, width: 86, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla peatonal",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Valla de obra",
+    russianTranslation: "строительное ограждение",
+    cropRegion: { x: 291, y: 581, width: 88, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Valla de obra",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Anuncio de obra",
+    variant: "dispositivo",
+    russianTranslation: "объявление о работах",
+    cropRegion: { x: 387, y: 581, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Anuncio de obra (dispositivo)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Conos",
+    russianTranslation: "конусы",
+    cropRegion: { x: 468, y: 582, width: 76, height: 65 },
+    sourceSheetLabelEvidence: "visible source label: Conos",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Tambores",
+    russianTranslation: "дорожные бочки",
+    cropRegion: { x: 132, y: 663, width: 64, height: 71 },
+    sourceSheetLabelEvidence: "visible source label: Tambores",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Delineadores",
+    russianTranslation: "направляющие делинеаторы",
+    cropRegion: { x: 214, y: 662, width: 66, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Delineadores",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Barandas canalizadoras de tránsito",
+    russianTranslation: "направляющие барьеры для движения",
+    cropRegion: { x: 292, y: 665, width: 86, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: Barandas canalizadoras de tránsito",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Barandas canalizadoras de tránsito",
+    variant: "Hormigón",
+    russianTranslation: "бетонные направляющие барьеры для движения",
+    cropRegion: { x: 382, y: 668, width: 86, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Barandas canalizadoras de tránsito (Hormigón)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Reflector",
+    russianTranslation: "отражатель / осветитель",
+    cropRegion: { x: 477, y: 663, width: 62, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Reflector",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Baliza delineadora",
+    russianTranslation: "направляющий маячок",
+    cropRegion: { x: 130, y: 750, width: 68, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Baliza delineadora",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Baliza intermitente",
+    russianTranslation: "мигающий маяк",
+    cropRegion: { x: 213, y: 750, width: 68, height: 73 },
+    sourceSheetLabelEvidence: "visible source label: Baliza intermitente",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Flecha vial intermitente",
+    russianTranslation: "мигающая дорожная стрелка",
+    cropRegion: { x: 292, y: 750, width: 82, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Flecha vial intermitente",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Semáforo",
+    russianTranslation: "светофор",
+    cropRegion: { x: 388, y: 747, width: 62, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Semáforo",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 194,
+    sourceCardId: "app4-temporary-page-194-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Paneles",
+    russianTranslation: "панели",
+    cropRegion: { x: 470, y: 748, width: 64, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Paneles",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -2906,7 +3228,7 @@ function isReconciledVisualScope(entry) {
   return (
     visualSourceSectionIds.has(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-temporary" && entry.sourcePage === 193)
+    (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage))
   );
 }
 
@@ -3274,7 +3596,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, and temporary source page 193 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, and temporary source pages 193-194 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {

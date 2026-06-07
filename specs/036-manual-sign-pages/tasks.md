@@ -257,6 +257,18 @@ Validation commands:
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `13/13` tests, including exact page `193` order, labels, variants, Russian translations, crop regions, and no pending page `193` rows.
   - `git diff --check` passed with no whitespace errors.
   - Known issues: broader source-visual reconciliation remains open for temporary page `194`, horizontal pages `195-196`, and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed temporary page `193` only.
+- Temporary page `194` completion validation on 2026-06-07:
+  - Scope completed: source page `194` only, source card `app4-temporary-page-194-source-card`, section `app4-signs-temporary`.
+  - Added `29` explicit `visualSourceEntries` in source order: `3` `category-heading` rows and `26` `catalog-entry` rows.
+  - Page `194` now has `29` `reconciled-source-visual` rows and `0` `pending-reconciliation` rows; old grid/pending placeholders for page `194` are replaced by the explicit visual rows.
+  - Temporary section status after this slice: `0` pending rows remain.
+  - No cropped image files were created and no source pixels were altered; each entry continues to use CSS clipping from the unchanged official source image.
+  - Generated inventory summary after this slice: `313` total entries. Pending rows remaining by section: `app4-signs-horizontal: 29`, `app4-signs-traffic-lights: 14`.
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `313` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `313` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `14/14` tests, including exact page `194` order, labels, variants, Russian translations, crop regions, and no pending page `194` rows.
+  - `git diff --check` passed with no whitespace errors.
+  - Known issues: broader source-visual reconciliation remains open for horizontal pages `195-196` and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed temporary page `194` only.
 
 Screenshot evidence:
 
