@@ -478,6 +478,13 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 - Current-PR-head read-only guard: Orchestrator will compare current PR head against effective content head ea2a1546522f70e5da3299297f6165199a29eab7 and verify later commits are final-validation evidence-only before finalization.
+- Effective content head: fbf159553c3fed8ca36f2766fab769baeeef8a6f
+- Architect validation: passed at 2026-06-07T16:14:05-03:00.
+- Architect return count: 2
+- Architect validated effective content head: fbf159553c3fed8ca36f2766fab769baeeef8a6f.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
+- Current-PR-head read-only guard: Orchestrator will compare current PR head against effective content head fbf159553c3fed8ca36f2766fab769baeeef8a6f and verify later commits are final-validation evidence-only before finalization.
 
 ## Superseded Architect Validation Notes
 
@@ -545,4 +552,25 @@ Architect disposition: no unresolved Implementation Agent feedback remains.
 Architect disposition: sourceRef fix is resolved.
 Architect disposition: screenshot evidence fix is resolved.
 Architect disposition: inventory, evidence, and test coverage are accepted for final Architect validation.
+Architect validation evidence: Orchestrator must recheck required checks and current-head guard before merge.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-07T16:14:05-03:00
+Effective content head: fbf159553c3fed8ca36f2766fab769baeeef8a6f
+Architect validated effective content head: fbf159553c3fed8ca36f2766fab769baeeef8a6f
+Architect return count: 2
+Architect validation evidence: complete feature memory exists at specs/036-manual-sign-pages/feature-request.md, spec.md, plan.md, and tasks.md.
+Architect validation evidence: deploy/build guard fix is accepted; package.json validate:content runs pnpm run validate:manual-sign-inventory and pnpm run build runs validate:content.
+Architect validation evidence: tests/content-validation.test.mjs regression coverage for the deploy/build guard fix is accepted.
+Architect validation evidence: visual QA evidence is accepted with 12 current screenshots covering all six Appendix IV sections on desktop and mobile and zero QA violations.
+Architect validation evidence: sourceRef fix is accepted.
+Architect validation evidence: Review Agent no-findings comment for fbf159553c3fed8ca36f2766fab769baeeef8a6f is recorded at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643730717.
+Architect validation evidence: all relevant review threads are resolved, including PRRT_kwDOSX65IM6Hrks3.
+Architect validation evidence: inventory contract is accepted with 316 rows, 316 reconciled-source-visual rows, 0 rows awaiting reconciliation, 283 catalog-entry rows, 30 category-heading rows, and 3 contextual-visual rows across pages 185-197.
+Architect validation evidence: NO AVANZAR translation remains Проезд запрещен.
+Architect validation evidence: implementation verification passed pnpm run validate:content, pnpm run validate:manual-sign-inventory, node --test tests/manual-sign-inventory.test.mjs, node --test tests/manual-sign-inventory.test.mjs tests/content-validation.test.mjs, pnpm run build, and git diff --check.
+Architect disposition: no unresolved Implementation Agent feedback remains.
+Architect disposition: inventory, evidence, test, and build coverage are accepted for final Architect validation.
 Architect validation evidence: Orchestrator must recheck required checks and current-head guard before merge.
