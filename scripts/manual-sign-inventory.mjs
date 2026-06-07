@@ -3409,6 +3409,193 @@ const visualSourceEntries = [
     cropRegion: { x: 407, y: 748, width: 175, height: 90 },
     sourceSheetLabelEvidence: "visible source label: Líneas auxiliares para reducción de velocidad (Distribución logarítmica)",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Marcas especiales",
+    russianTranslation: "Специальная разметка",
+    cropRegion: { x: 79, y: 132, width: 230, height: 34 },
+    sourceSheetLabelEvidence: "visible source heading: Marcas especiales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Marcas canalizadoras de tránsito e isletas para circulación bidireccional",
+    variant: "No se puede circular sobre ellas; dos variantes visibles",
+    russianTranslation: "направляющие островки для двустороннего движения; по ним ехать нельзя",
+    cropRegion: { x: 100, y: 185, width: 230, height: 78 },
+    sourceSheetLabelEvidence:
+      "visible source label: Marcas canalizadoras de tránsito e isletas para circulación bidireccional (No se puede circular sobre ellas; dos variantes visibles)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Flechas indicadoras de circulación dentro del carril",
+    russianTranslation: "стрелки направления движения в пределах полосы",
+    cropRegion: { x: 343, y: 187, width: 165, height: 65 },
+    sourceSheetLabelEvidence: "visible source label: Flechas indicadoras de circulación dentro del carril",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Marcas canalizadoras de tránsito e isletas para circulación unidireccional",
+    variant: "No se puede circular sobre ellas; dos variantes visibles",
+    russianTranslation: "направляющие островки для одностороннего движения; по ним ехать нельзя",
+    cropRegion: { x: 100, y: 284, width: 230, height: 80 },
+    sourceSheetLabelEvidence:
+      "visible source label: Marcas canalizadoras de tránsito e isletas para circulación unidireccional (No se puede circular sobre ellas; dos variantes visibles)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PARE",
+    variant: "Obligación de detener totalmente la marcha",
+    russianTranslation: "PARE / стоп; обязательная полная остановка",
+    cropRegion: { x: 350, y: 283, width: 150, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: PARE (Obligación de detener totalmente la marcha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios destinados a estacionamiento",
+    variant: "diagonales",
+    russianTranslation: "места, предназначенные для парковки",
+    cropRegion: { x: 154, y: 376, width: 130, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Espacios destinados a estacionamiento (diagonales)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Cordones",
+    variant: "Amarillo: prohibición de estacionar, pudiendo detenerse",
+    russianTranslation: "бордюры; желтый запрещает стоянку, остановка допускается",
+    cropRegion: { x: 354, y: 374, width: 145, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Cordones (Amarillo: prohibición de estacionar, pudiendo detenerse)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios destinados a estacionamiento",
+    variant: "bicicleta",
+    russianTranslation: "места, предназначенные для парковки велосипедов",
+    cropRegion: { x: 154, y: 454, width: 130, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Espacios destinados a estacionamiento (bicicleta)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Tachas no reflectivas",
+    russianTranslation: "несветоотражающие дорожные кнопки",
+    cropRegion: { x: 352, y: 455, width: 150, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Tachas no reflectivas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios restringidos al estacionamiento",
+    russianTranslation: "зоны с ограничением парковки",
+    cropRegion: { x: 154, y: 530, width: 130, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Espacios restringidos al estacionamiento",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Tachas reflectivas",
+    russianTranslation: "светоотражающие дорожные кнопки",
+    cropRegion: { x: 353, y: 531, width: 150, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Tachas reflectivas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Ceda el paso / Velocidad máxima / Carril exclusivo / Parada",
+    variant: "Emergencia",
+    russianTranslation: "надписи и символы на покрытии: уступи дорогу, максимальная скорость, выделенная полоса, аварийная остановка",
+    cropRegion: { x: 144, y: 606, width: 150, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Ceda el paso / Velocidad máxima / Carril exclusivo / Parada (Emergencia)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Delineadores",
+    variant: "Canalizan o guían al tránsito y destacan variaciones en la vía",
+    russianTranslation: "делинеаторы; направляют поток и выделяют изменения дороги",
+    cropRegion: { x: 350, y: 602, width: 155, height: 110 },
+    sourceSheetLabelEvidence: "visible source label: Delineadores (Canalizan o guían al tránsito y destacan variaciones en la vía)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Advertencia de cruce ferroviario",
+    russianTranslation: "предупреждение о железнодорожном переезде",
+    cropRegion: { x: 151, y: 683, width: 145, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Advertencia de cruce ferroviario",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Para niebla",
+    variant: "Si se ve una: máx. 40 km/h, si se ven dos: máx. 60 km/h",
+    russianTranslation: "разметка для тумана: одна отметка - максимум 40 км/ч, две - максимум 60 км/ч",
+    cropRegion: { x: 354, y: 684, width: 150, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Para niebla (Si se ve una: máx. 40 km/h, si se ven dos: máx. 60 km/h)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 196,
+    sourceCardId: "app4-horizontal-page-196-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Separadores físicos de tránsito",
+    russianTranslation: "физические разделители движения",
+    cropRegion: { x: 145, y: 762, width: 165, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Separadores físicos de tránsito",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -3426,7 +3613,7 @@ function isReconciledVisualScope(entry) {
     visualSourceSectionIds.has(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
     (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-horizontal" && entry.sourcePage === 195)
+    (entry.sectionId === "app4-signs-horizontal" && [195, 196].includes(entry.sourcePage))
   );
 }
 
@@ -3794,7 +3981,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, temporary source pages 193-194, and horizontal source page 195 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, temporary source pages 193-194, and horizontal source pages 195-196 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {

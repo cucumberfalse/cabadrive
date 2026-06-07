@@ -280,6 +280,18 @@ Validation commands:
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `15/15` tests, including exact page `195` order, labels, variants, Russian translations, crop regions, and no pending page `195` rows.
   - `git diff --check` passed with no whitespace errors.
   - Known issues: broader source-visual reconciliation remains open for horizontal page `196` and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed horizontal-marking page `195` only.
+- Horizontal-marking page `196` completion validation on 2026-06-07:
+  - Scope completed: source page `196` only, source card `app4-horizontal-page-196-source-card`, section `app4-signs-horizontal`.
+  - Added `16` explicit `visualSourceEntries` in source order: `1` `category-heading` row and `15` `catalog-entry` rows.
+  - Page `196` now has `16` `reconciled-source-visual` rows and `0` `pending-reconciliation` rows; old grid/pending placeholders for page `196` are replaced by the explicit visual rows.
+  - Horizontal section status after this slice: `0` pending rows remain.
+  - No cropped image files were created and no source pixels were altered; each entry continues to use CSS clipping from the unchanged official source image.
+  - Generated inventory summary after this slice: `317` total entries. Pending rows remaining by section: `app4-signs-traffic-lights: 14`.
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `317` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `317` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `16/16` tests, including exact page `196` order, labels, variants, Russian translations, crop regions, and no pending page `196` rows.
+  - `git diff --check` passed with no whitespace errors.
+  - Known issues: broader source-visual reconciliation remains open for traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed horizontal-marking page `196` only.
 
 Screenshot evidence:
 

@@ -2187,6 +2187,132 @@ const horizontalPage195Rows = [
   }
 ];
 
+const horizontalPage196Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Marcas especiales",
+    russianTranslation: "Специальная разметка",
+    cropRegion: { x: 79, y: 132, width: 230, height: 34 },
+    sourceSheetLabelEvidence: "visible source heading: Marcas especiales"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Marcas canalizadoras de tránsito e isletas para circulación bidireccional",
+    variant: "No se puede circular sobre ellas; dos variantes visibles",
+    russianTranslation: "направляющие островки для двустороннего движения; по ним ехать нельзя",
+    cropRegion: { x: 100, y: 185, width: 230, height: 78 },
+    sourceSheetLabelEvidence:
+      "visible source label: Marcas canalizadoras de tránsito e isletas para circulación bidireccional (No se puede circular sobre ellas; dos variantes visibles)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Flechas indicadoras de circulación dentro del carril",
+    russianTranslation: "стрелки направления движения в пределах полосы",
+    cropRegion: { x: 343, y: 187, width: 165, height: 65 },
+    sourceSheetLabelEvidence: "visible source label: Flechas indicadoras de circulación dentro del carril"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Marcas canalizadoras de tránsito e isletas para circulación unidireccional",
+    variant: "No se puede circular sobre ellas; dos variantes visibles",
+    russianTranslation: "направляющие островки для одностороннего движения; по ним ехать нельзя",
+    cropRegion: { x: 100, y: 284, width: 230, height: 80 },
+    sourceSheetLabelEvidence:
+      "visible source label: Marcas canalizadoras de tránsito e isletas para circulación unidireccional (No se puede circular sobre ellas; dos variantes visibles)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PARE",
+    variant: "Obligación de detener totalmente la marcha",
+    russianTranslation: "PARE / стоп; обязательная полная остановка",
+    cropRegion: { x: 350, y: 283, width: 150, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: PARE (Obligación de detener totalmente la marcha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios destinados a estacionamiento",
+    variant: "diagonales",
+    russianTranslation: "места, предназначенные для парковки",
+    cropRegion: { x: 154, y: 376, width: 130, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Espacios destinados a estacionamiento (diagonales)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Cordones",
+    variant: "Amarillo: prohibición de estacionar, pudiendo detenerse",
+    russianTranslation: "бордюры; желтый запрещает стоянку, остановка допускается",
+    cropRegion: { x: 354, y: 374, width: 145, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Cordones (Amarillo: prohibición de estacionar, pudiendo detenerse)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios destinados a estacionamiento",
+    variant: "bicicleta",
+    russianTranslation: "места, предназначенные для парковки велосипедов",
+    cropRegion: { x: 154, y: 454, width: 130, height: 68 },
+    sourceSheetLabelEvidence: "visible source label: Espacios destinados a estacionamiento (bicicleta)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Tachas no reflectivas",
+    russianTranslation: "несветоотражающие дорожные кнопки",
+    cropRegion: { x: 352, y: 455, width: 150, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Tachas no reflectivas"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Espacios restringidos al estacionamiento",
+    russianTranslation: "зоны с ограничением парковки",
+    cropRegion: { x: 154, y: 530, width: 130, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Espacios restringidos al estacionamiento"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Tachas reflectivas",
+    russianTranslation: "светоотражающие дорожные кнопки",
+    cropRegion: { x: 353, y: 531, width: 150, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Tachas reflectivas"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Ceda el paso / Velocidad máxima / Carril exclusivo / Parada",
+    variant: "Emergencia",
+    russianTranslation: "надписи и символы на покрытии: уступи дорогу, максимальная скорость, выделенная полоса, аварийная остановка",
+    cropRegion: { x: 144, y: 606, width: 150, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Ceda el paso / Velocidad máxima / Carril exclusivo / Parada (Emergencia)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Delineadores",
+    variant: "Canalizan o guían al tránsito y destacan variaciones en la vía",
+    russianTranslation: "делинеаторы; направляют поток и выделяют изменения дороги",
+    cropRegion: { x: 350, y: 602, width: 155, height: 110 },
+    sourceSheetLabelEvidence: "visible source label: Delineadores (Canalizan o guían al tránsito y destacan variaciones en la vía)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Advertencia de cruce ferroviario",
+    russianTranslation: "предупреждение о железнодорожном переезде",
+    cropRegion: { x: 151, y: 683, width: 145, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Advertencia de cruce ferroviario"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Para niebla",
+    variant: "Si se ve una: máx. 40 km/h, si se ven dos: máx. 60 km/h",
+    russianTranslation: "разметка для тумана: одна отметка - максимум 40 км/ч, две - максимум 60 км/ч",
+    cropRegion: { x: 354, y: 684, width: 150, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Para niebla (Si se ve una: máx. 40 km/h, si se ven dos: máx. 60 km/h)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Separadores físicos de tránsito",
+    russianTranslation: "физические разделители движения",
+    cropRegion: { x: 145, y: 762, width: 165, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Separadores físicos de tránsito"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -2483,13 +2609,38 @@ test("horizontal source page 195 visual rows are complete and ordered", () => {
   });
 });
 
+test("horizontal source page 196 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-horizontal" && entry.sourcePage === 196);
+
+  assert.equal(rows.length, horizontalPage196Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["196"], horizontalPage196Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 1);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 15);
+  assert.equal(rows.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
+
+  rows.forEach((entry, index) => {
+    const expected = horizontalPage196Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-horizontal-page-196-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
 test("reconciled visual rows are complete while unreconciled sections stay visibly pending", () => {
   const inventory = loadInventory();
   const isReconciled = (entry) =>
     ["app4-signs-regulatory", "app4-signs-warning"].includes(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
     (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-horizontal" && entry.sourcePage === 195);
+    (entry.sectionId === "app4-signs-horizontal" && [195, 196].includes(entry.sourcePage));
   const reconciled = inventory.entries.filter(isReconciled);
   const pending = inventory.entries.filter((entry) => !isReconciled(entry));
 
