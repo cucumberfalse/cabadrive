@@ -381,47 +381,48 @@ Architect final validation, when invoked by Orchestrator after implementation an
 
 Analyst final validation, when invoked after Architect final validation passes, must verify the final result against the user's original request: every sign processed separately, maximum practical quality, original source order, Spanish/Russian captions, all signs covered, and no modification of protected sign imagery.
 
-## Final Architect Validation
+## Decisions
 
-Architect validation pass: passed
+- Architect disposition: final inventory accepts `283` catalog-entry rows, `30` category-heading rows, and `3` contextual-visual rows as the reconciled source-visual model for Appendix IV pages `185-197`.
+- Architect disposition: category-heading and contextual-visual rows are typed separately and excluded from sign-like catalog coverage expectations where appropriate.
+- Architect disposition: Review Agent finding on `ManualSignEntry.entryKind` was valid; product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` adds `contextual-visual` to the exported `ManualSignEntry.entryKind` union in `src/data/manual-signs/app4SignCatalog.ts`.
+- Architect disposition: Review Agent classified `13` stale review threads as outdated/superseded and `3` duplicate contextual-visual type threads as fixed by `100799eaa66448f5a7b287c00577b5d60c7f1a84`.
 
-Final Architect validation completed at: 2026-06-07T14:47:00-03:00
+## Dead Ends
 
-Effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
+- Architect disposition: deterministic grid crop and term-translation-derived inventory paths are superseded/resolved by row-by-row source-sheet visual reconciliation.
+- Architect disposition: pre-fix final validation notes for earlier heads are stale after product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` and are intentionally omitted from this foundation memory so later final validation can run on the new effective content head.
 
-Architect validated effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
+## Known Issues
 
-Architect return count remains `2/10`.
+- Architect disposition: superseded/resolved historical crop QA and inventory-source blockers by the final `316`-row reconciled source-visual inventory, all-section contact-sheet evidence, stricter validation/tests, and final preflight evidence.
+- No known issues.
 
-Final validation scope: PR `#202` / branch `codex/036-manual-sign-pages` through effective
-content head `21d843fc1fad4f64459718941cd6f03026c0e23c`.
+## Verification Evidence
 
-Architect validation evidence reviewed:
+- Verification evidence passed: `316` entries across source pages `185-197`, p198-p200 disposition recorded, `316` reconciled-source-visual rows, `0` pending rows, final counts `283` catalog-entry rows, `30` category-heading rows, and `3` contextual-visual rows.
+- Verification evidence passed: final section counts regulatory `60`, warning `59`, informational `95`, temporary `56`, horizontal `33`, and traffic-lights/signals `13`.
+- Verification evidence passed: final page counts p185 `29`, p186 `31`, p187 `29`, p188 `30`, p189 `31`, p190 `27`, p191 `36`, p192 `1`, p193 `27`, p194 `29`, p195 `17`, p196 `16`, p197 `13`.
+- Verification evidence passed: final all-section contact-sheet evidence and summary exist under `specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/`.
+- Verification evidence passed for final implementation evidence/preflight slice: `node scripts/manual-sign-inventory.mjs --write`, `pnpm run validate:manual-sign-inventory`, `node --test tests/manual-sign-inventory.test.mjs`, `pnpm run test`, `pnpm run build`, `pnpm run preflight`, and `git diff --check`.
+- Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: `pnpm run validate:manual-sign-inventory` passed.
+- Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: focused Node inventory test passed with the updated `ManualSignEntry.entryKind` union accepting `contextual-visual`.
+- Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: `pnpm run build` passed.
+- Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: diff check passed before this process-memory foundation rewrite; `git diff --check` must also pass after this file update.
 
-- Current worktree HEAD matched the effective content head, and the branch was clean before
-  validation-note writing.
-- Final inventory validation passed: `316` entries across source pages `185-197`, p198-p200
-  disposition recorded, `316` `reconciled-source-visual` rows, `0` pending rows, `283`
-  catalog-entry rows, `30` category-heading rows, and `3` contextual-visual rows.
-- Final section counts were verified as regulatory `60`, warning `59`, informational `95`,
-  temporary `56`, horizontal `33`, and traffic-lights/signals `13`; page counts were verified
-  for pages `185-197` as recorded in the final implementation evidence/preflight slice.
-- `pnpm run validate:manual-sign-inventory`, `node --test tests/manual-sign-inventory.test.mjs`,
-  and `git diff --check` passed locally during Architect validation; implementation memory also
-  records full `pnpm run preflight` passed at this effective content head.
-- GitHub PR evidence showed required checks `AI Review`, `baseline-checks`, `docker-validation`,
-  `guard`, and `osv-scan` successful for
-  `21d843fc1fad4f64459718941cd6f03026c0e23c`, with Review Agent no actionable findings for that
-  head.
-- Final all-section contact-sheet evidence and summary were present under
-  `specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/`.
+## Cycle PR Set
 
-Architect dispositions:
+- PR #202 branch `codex/036-manual-sign-pages` current product head `100799eaa66448f5a7b287c00577b5d60c7f1a84`; status after review fix: contextual-visual type issue fixed, stale/duplicate review threads classified, no unresolved Implementation Agent feedback recorded; included in the final-validation cycle PR set.
+- Process-memory foundation commit after this uncommitted `tasks.md` rewrite is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
 
-- No open Architect dispositions or unresolved Implementation Agent feedback remain.
-- Historical crop QA and inventory-source blocker notes are superseded and resolved by the final
-  `316`-row reconciled source-visual inventory, all-section contact-sheet evidence, stricter
-  final validation/tests, and final implementation preflight evidence.
-- Category-heading and contextual-visual rows are explicitly typed and excluded from sign-like
-  coverage expectations where appropriate; final sign/sign-like catalog coverage is represented
-  by the `283` catalog-entry rows in source-page/visual reading order.
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+- Review-fix disposition is complete: `100799eaa66448f5a7b287c00577b5d60c7f1a84` adds `contextual-visual` to the exported `ManualSignEntry.entryKind` union, resolving the narrow post-validation type issue.
+
+## Final Validation Evidence
+
+- Architect return count: 2
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
+- Final validation live pass markers are intentionally deferred until Orchestrator invokes final Architect validation and final Analyst validation on the post-foundation effective content head.
