@@ -223,6 +223,42 @@ Analyst boundary reminder: Analyst final validation appended only to specs/036-m
 ## Final Analyst Validation Notes
 
 Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T16:24:22-03:00
+Effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst validated effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T16:22:40-03:00 for the same effective content head 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114.
+Analyst validation evidence: Review Agent no-findings exists for PR #202 at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643751169, and trailing whitespace thread PRRT_kwDOSX65IM6HrnF4 is resolved.
+Analyst validation evidence: Prior accepted fixes remain in scope: validate:content/build runs the manual sign guard, visual QA evidence has 12 screenshots covering all six Appendix IV sections on desktop and mobile with zero violations, sourceRefs are fixed, inventory records 316 rows all reconciled with no pending rows, NO AVANZAR maps to Проезд запрещен, and protected imagery remains unmodified with captions outside images.
+Customer intent check: every in-scope sign/sign-like item is processed separately, all signs are covered, and source order is preserved.
+Customer intent check: maximum practical original-source quality is preserved through protected sign imagery left unmodified, with Spanish/Russian captions outside images.
+Customer intent check: no clarification is needed to validate the final result against the original Russian request in spirit and letter, including the request to continue to merge.
+Gaps, if any: none remain.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is 0.
+Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T16:23:55-03:00
+Effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst validated effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T16:22:40-03:00 for the same effective content head 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114.
+Analyst validation evidence: Review Agent no-findings exists for PR #202 at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643751169, and trailing whitespace thread PRRT_kwDOSX65IM6HrnF4 is resolved.
+Analyst validation evidence: Prior accepted fixes remain in scope: validate:content/build runs the manual sign guard, visual QA evidence has 12 screenshots covering all six Appendix IV sections on desktop and mobile with zero violations, sourceRefs are fixed, inventory records 316 rows all reconciled with no pending rows, NO AVANZAR maps to Проезд запрещен, and protected imagery remains unmodified with captions outside images.
+Customer intent check: every in-scope sign/sign-like item is processed separately, all signs are covered, and source order is preserved.
+Customer intent check: maximum practical original-source quality is preserved through protected sign imagery left unmodified, with Spanish/Russian captions outside images.
+Customer intent check: no clarification is needed to validate the final result against the original Russian request in spirit and letter, including the request to continue to merge.
+Gaps, if any: none remain.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is 0.
+Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
 Final Analyst validation completed at: 2026-06-07T19:06:14Z
 Effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
 Analyst validated effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
@@ -255,6 +291,24 @@ Analyst validation evidence: Twelve refreshed screenshots cover all six Appendix
 Customer intent check: every in-scope sign/sign-like item is processed separately and all signs are covered in source order.
 Customer intent check: maximum practical original-source quality is preserved through protected imagery left unmodified, with Spanish/Russian captions outside images.
 Customer intent check: NO AVANZAR maps to Проезд запрещен.
+Customer intent check: no clarification is needed to validate the final result against the original Russian request in spirit and letter, including the request to continue to merge.
+Gaps, if any: none remain.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is 0.
+Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T16:24:53-03:00
+Effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst validated effective content head: 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T16:22:40-03:00 for the same effective content head 47b09a03e2fa19e9e2442603d6f8ccbfb18f3114.
+Analyst validation evidence: Review Agent no-findings exists for PR #202 at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643751169, and trailing whitespace thread PRRT_kwDOSX65IM6HrnF4 is resolved.
+Analyst validation evidence: Prior accepted fixes remain in scope: validate:content/build runs the manual sign guard, visual QA evidence has 12 screenshots covering all six Appendix IV sections on desktop and mobile with zero violations, sourceRefs are fixed, inventory records 316 rows all reconciled with no pending rows, NO AVANZAR maps to Проезд запрещен, and protected imagery remains unmodified with captions outside images.
+Customer intent check: every in-scope sign/sign-like item is processed separately, all signs are covered, and source order is preserved.
+Customer intent check: maximum practical original-source quality is preserved through protected sign imagery left unmodified, with Spanish/Russian captions outside images.
 Customer intent check: no clarification is needed to validate the final result against the original Russian request in spirit and letter, including the request to continue to merge.
 Gaps, if any: none remain.
 Architect disposition routing: none required because no final Analyst gaps remain.
