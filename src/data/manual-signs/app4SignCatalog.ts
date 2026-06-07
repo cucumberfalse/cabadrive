@@ -13,7 +13,7 @@ export type ManualSignEntry = {
   sourcePage: number;
   sourceOrder: number;
   sourceOrderWithinPage: number;
-  entryKind: "catalog-entry" | "category-heading";
+  entryKind: "catalog-entry" | "category-heading" | "contextual-visual";
   spanishLabel: string;
   variant?: string;
   russianTranslation: string;
