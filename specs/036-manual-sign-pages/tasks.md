@@ -269,6 +269,17 @@ Validation commands:
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `14/14` tests, including exact page `194` order, labels, variants, Russian translations, crop regions, and no pending page `194` rows.
   - `git diff --check` passed with no whitespace errors.
   - Known issues: broader source-visual reconciliation remains open for horizontal pages `195-196` and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed temporary page `194` only.
+- Horizontal-marking page `195` completion validation on 2026-06-07:
+  - Scope completed: source page `195` only, source card `app4-horizontal-page-195-source-card`, section `app4-signs-horizontal`.
+  - Added `17` explicit `visualSourceEntries` in source order: `3` `category-heading` rows and `14` `catalog-entry` rows.
+  - Page `195` now has `17` `reconciled-source-visual` rows and `0` `pending-reconciliation` rows; old grid/pending placeholders for page `195` are replaced by the explicit visual rows.
+  - No cropped image files were created and no source pixels were altered; each entry continues to use CSS clipping from the unchanged official source image.
+  - Generated inventory summary after this slice: `315` total entries. Pending rows remaining by section: `app4-signs-horizontal: 14`, `app4-signs-traffic-lights: 14`.
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `315` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `315` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `15/15` tests, including exact page `195` order, labels, variants, Russian translations, crop regions, and no pending page `195` rows.
+  - `git diff --check` passed with no whitespace errors.
+  - Known issues: broader source-visual reconciliation remains open for horizontal page `196` and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed horizontal-marking page `195` only.
 
 Screenshot evidence:
 

@@ -3212,6 +3212,203 @@ const visualSourceEntries = [
     cropRegion: { x: 470, y: 748, width: 64, height: 78 },
     sourceSheetLabelEvidence: "visible source label: Paneles",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Horizontales",
+    russianTranslation: "Горизонтальная разметка",
+    cropRegion: { x: 125, y: 120, width: 210, height: 45 },
+    sourceSheetLabelEvidence: "visible source heading: Horizontales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Marcas longitudinales",
+    russianTranslation: "Продольная разметка",
+    cropRegion: { x: 124, y: 172, width: 255, height: 32 },
+    sourceSheetLabelEvidence: "visible source heading: Marcas longitudinales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Línea de separación de circulación",
+    variant: "No debe ser traspasada ni circular sobre ella",
+    russianTranslation: "линия разделения движения; ее нельзя пересекать или ехать по ней",
+    cropRegion: { x: 170, y: 210, width: 165, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: Línea de separación de circulación (No debe ser traspasada ni circular sobre ella)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Líneas continuas y discontinuas paralelas",
+    variant: "Línea discontinua del lado del carril que se circula: traspaso autorizado",
+    russianTranslation: "параллельные сплошная и прерывистая линии; пересечение разрешено со стороны прерывистой",
+    cropRegion: { x: 390, y: 205, width: 175, height: 86 },
+    sourceSheetLabelEvidence:
+      "visible source label: Líneas continuas y discontinuas paralelas (Línea discontinua del lado del carril que se circula: traspaso autorizado)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Líneas de separación de sentido de circulación opuesta",
+    variant: "No debe ser traspasada ni circular sobre ella",
+    russianTranslation: "линии разделения встречных направлений; пересекать нельзя",
+    cropRegion: { x: 164, y: 286, width: 178, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Líneas de separación de sentido de circulación opuesta (No debe ser traspasada ni circular sobre ella)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Líneas divisorias de carriles con corrientes de tránsito del mismo sentido",
+    russianTranslation: "линии разделения полос попутного движения",
+    cropRegion: { x: 397, y: 285, width: 182, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Líneas divisorias de carriles con corrientes de tránsito del mismo sentido",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Línea de separación de sentido de circulación",
+    variant: "Indica la posibilidad de ser traspasada",
+    russianTranslation: "разделительная линия, которую можно пересекать",
+    cropRegion: { x: 152, y: 364, width: 195, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Línea de separación de sentido de circulación (Indica la posibilidad de ser traspasada)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Línea de carril exclusivo y carril preferencial",
+    variant: "dos variantes visibles",
+    russianTranslation: "линия выделенной или приоритетной полосы",
+    cropRegion: { x: 417, y: 363, width: 150, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Línea de carril exclusivo y carril preferencial (dos variantes visibles)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Línea de separación de sentido de circulación, en vías con sentido reversible",
+    russianTranslation: "линия разделения на дорогах с реверсивным движением",
+    cropRegion: { x: 145, y: 438, width: 210, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: Línea de separación de sentido de circulación, en vías con sentido reversible",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Líneas de borde de calzada",
+    russianTranslation: "краевые линии проезжей части",
+    cropRegion: { x: 421, y: 437, width: 150, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Líneas de borde de calzada",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Marcas transversales",
+    russianTranslation: "Поперечная разметка",
+    cropRegion: { x: 124, y: 532, width: 260, height: 38 },
+    sourceSheetLabelEvidence: "visible source heading: Marcas transversales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Línea de detención",
+    russianTranslation: "стоп-линия",
+    cropRegion: { x: 190, y: 596, width: 135, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Línea de detención",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda peatonal o senda para cruce de ciclistas",
+    variant: "punteada",
+    russianTranslation: "пешеходный переход или пересечение велосипедистов",
+    cropRegion: { x: 409, y: 596, width: 165, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Senda peatonal o senda para cruce de ciclistas (punteada)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda peatonal",
+    variant: "Prohibido detener o estacionar vehículos sobre la misma",
+    russianTranslation: "пешеходный переход; остановка и стоянка на нем запрещены",
+    cropRegion: { x: 190, y: 670, width: 145, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: Senda peatonal (Prohibido detener o estacionar vehículos sobre la misma)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda peatonal o senda para cruce de ciclistas",
+    variant: "líneas continuas",
+    russianTranslation: "пешеходный переход или пересечение велосипедистов",
+    cropRegion: { x: 410, y: 670, width: 165, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Senda peatonal o senda para cruce de ciclistas (líneas continuas)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Senda peatonal con línea de frenado previa",
+    russianTranslation: "переход с предварительной линией торможения",
+    cropRegion: { x: 185, y: 748, width: 150, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Senda peatonal con línea de frenado previa",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-horizontal",
+    sourcePage: 195,
+    sourceCardId: "app4-horizontal-page-195-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Líneas auxiliares para reducción de velocidad",
+    variant: "Distribución logarítmica",
+    russianTranslation: "вспомогательные линии для снижения скорости",
+    cropRegion: { x: 407, y: 748, width: 175, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Líneas auxiliares para reducción de velocidad (Distribución logarítmica)",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -3228,7 +3425,8 @@ function isReconciledVisualScope(entry) {
   return (
     visualSourceSectionIds.has(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage))
+    (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage)) ||
+    (entry.sectionId === "app4-signs-horizontal" && entry.sourcePage === 195)
   );
 }
 
@@ -3596,7 +3794,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, and temporary source pages 193-194 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, temporary source pages 193-194, and horizontal source page 195 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {
