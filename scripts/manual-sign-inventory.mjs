@@ -57,7 +57,7 @@ const sourceSections = [
     sectionFile: "src/data/manual-sections/app4-signs-horizontal.ts",
     includeCardIdPattern: /^app4-horizontal-page-\d+-source-card$/u,
     sourceSelectionNote:
-      "Uses existing official CABA Appendix IV road-marking sheet crops as placeholders until individual marking crops are produced."
+      "Uses existing official CABA Appendix IV road-marking sheet crops with explicit per-term CSS clip regions verified for pages 195-196."
   },
   {
     sectionId: "app4-signs-traffic-lights",
@@ -84,6 +84,48 @@ const cardGridConfigs = new Map([
   ["app4-horizontal-page-195-source-card", { columns: 2, rows: 8, bounds: { x: 130, y: 184, width: 500, height: 660 } }],
   ["app4-horizontal-page-196-source-card", { columns: 2, rows: 7, bounds: { x: 110, y: 156, width: 518, height: 682 } }],
   ["app4-traffic-lights-page-197-source-card", { columns: 2, rows: 7, bounds: { x: 130, y: 206, width: 520, height: 650 } }]
+]);
+
+const manualCropRegionsByCard = new Map([
+  [
+    "app4-horizontal-page-195-source-card",
+    [
+      { x: 95, y: 95, width: 220, height: 55 },
+      { x: 95, y: 140, width: 260, height: 45 },
+      { x: 165, y: 185, width: 190, height: 90 },
+      { x: 390, y: 185, width: 205, height: 90 },
+      { x: 160, y: 270, width: 205, height: 95 },
+      { x: 390, y: 285, width: 205, height: 95 },
+      { x: 160, y: 370, width: 205, height: 95 },
+      { x: 390, y: 385, width: 210, height: 90 },
+      { x: 390, y: 480, width: 210, height: 75 },
+      { x: 95, y: 520, width: 280, height: 55 },
+      { x: 165, y: 575, width: 180, height: 85 },
+      { x: 390, y: 575, width: 210, height: 85 },
+      { x: 165, y: 655, width: 190, height: 100 },
+      { x: 385, y: 655, width: 220, height: 100 },
+      { x: 155, y: 740, width: 220, height: 100 }
+    ]
+  ],
+  [
+    "app4-horizontal-page-196-source-card",
+    [
+      { x: 75, y: 120, width: 250, height: 55 },
+      { x: 335, y: 170, width: 230, height: 100 },
+      { x: 110, y: 175, width: 240, height: 170 },
+      { x: 330, y: 265, width: 235, height: 95 },
+      { x: 125, y: 355, width: 205, height: 90 },
+      { x: 330, y: 355, width: 235, height: 100 },
+      { x: 125, y: 455, width: 205, height: 135 },
+      { x: 335, y: 455, width: 225, height: 75 },
+      { x: 125, y: 545, width: 225, height: 95 },
+      { x: 120, y: 595, width: 235, height: 105 },
+      { x: 335, y: 540, width: 235, height: 95 },
+      { x: 330, y: 635, width: 240, height: 120 },
+      { x: 125, y: 720, width: 240, height: 110 },
+      { x: 330, y: 755, width: 240, height: 95 }
+    ]
+  ]
 ]);
 
 function repoPath(relativePath) {
@@ -298,6 +340,13 @@ function regionForGridCell(config, termIndex, termCount, dimensions) {
 }
 
 function cropRegionForEntry(card, termIndex, termCount, dimensions) {
+  const explicitRegions = manualCropRegionsByCard.get(card.id);
+  if (explicitRegions) {
+    if (termIndex >= explicitRegions.length) {
+      throw new Error(`${card.id}: missing explicit crop region for term index ${termIndex}`);
+    }
+    return clampRegionToDimensions(explicitRegions[termIndex], dimensions);
+  }
   const config = cardGridConfigs.get(card.id);
   return regionForGridCell(config, termIndex, termCount, dimensions);
 }
@@ -328,6 +377,10 @@ function buildInventory() {
       if (!scopePages.includes(card.sourcePage)) continue;
       const dimensions = readImageDimensions(card.assetPath);
       const hash = sha256File(card.assetPath);
+      const explicitRegions = manualCropRegionsByCard.get(card.id);
+      if (explicitRegions && explicitRegions.length !== card.terms.length) {
+        throw new Error(`${card.id}: explicit crop region count ${explicitRegions.length} must match term count ${card.terms.length}`);
+      }
       cardInventorySources.push({
         sectionId: section.sectionId,
         sourceCardId: card.id,

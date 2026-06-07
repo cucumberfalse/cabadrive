@@ -184,7 +184,7 @@
         "sourcePage": 195,
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
         "termCount": 15,
-        "sourceSelectionNote": "Uses existing official CABA Appendix IV road-marking sheet crops as placeholders until individual marking crops are produced."
+        "sourceSelectionNote": "Uses existing official CABA Appendix IV road-marking sheet crops with explicit per-term CSS clip regions verified for pages 195-196."
       },
       {
         "sectionId": "app4-signs-horizontal",
@@ -192,7 +192,7 @@
         "sourcePage": 196,
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
         "termCount": 14,
-        "sourceSelectionNote": "Uses existing official CABA Appendix IV road-marking sheet crops as placeholders until individual marking crops are produced."
+        "sourceSelectionNote": "Uses existing official CABA Appendix IV road-marking sheet crops with explicit per-term CSS clip regions verified for pages 195-196."
       },
       {
         "sectionId": "app4-signs-traffic-lights",
@@ -8101,19 +8101,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 184,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 95,
+        "width": 220,
+        "height": 55
       },
       "displayRegion": {
-        "x": 130,
-        "y": 184,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 95,
+        "width": 220,
+        "height": 55
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 220,
+      "cropNaturalHeight": 55,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8140,19 +8140,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 184,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 140,
+        "width": 260,
+        "height": 45
       },
       "displayRegion": {
-        "x": 380,
-        "y": 184,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 140,
+        "width": 260,
+        "height": 45
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 260,
+      "cropNaturalHeight": 45,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8179,19 +8179,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 267,
-        "width": 250,
-        "height": 82
+        "x": 165,
+        "y": 185,
+        "width": 190,
+        "height": 90
       },
       "displayRegion": {
-        "x": 130,
-        "y": 267,
-        "width": 250,
-        "height": 82
+        "x": 165,
+        "y": 185,
+        "width": 190,
+        "height": 90
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 190,
+      "cropNaturalHeight": 90,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8218,19 +8218,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 267,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 185,
+        "width": 205,
+        "height": 90
       },
       "displayRegion": {
-        "x": 380,
-        "y": 267,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 185,
+        "width": 205,
+        "height": 90
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 90,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8257,19 +8257,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 349,
-        "width": 250,
-        "height": 83
+        "x": 160,
+        "y": 270,
+        "width": 205,
+        "height": 95
       },
       "displayRegion": {
-        "x": 130,
-        "y": 349,
-        "width": 250,
-        "height": 83
+        "x": 160,
+        "y": 270,
+        "width": 205,
+        "height": 95
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8296,19 +8296,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 349,
-        "width": 250,
-        "height": 83
+        "x": 390,
+        "y": 285,
+        "width": 205,
+        "height": 95
       },
       "displayRegion": {
-        "x": 380,
-        "y": 349,
-        "width": 250,
-        "height": 83
+        "x": 390,
+        "y": 285,
+        "width": 205,
+        "height": 95
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8335,19 +8335,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 432,
-        "width": 250,
-        "height": 82
+        "x": 160,
+        "y": 370,
+        "width": 205,
+        "height": 95
       },
       "displayRegion": {
-        "x": 130,
-        "y": 432,
-        "width": 250,
-        "height": 82
+        "x": 160,
+        "y": 370,
+        "width": 205,
+        "height": 95
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8374,19 +8374,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 432,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 385,
+        "width": 210,
+        "height": 90
       },
       "displayRegion": {
-        "x": 380,
-        "y": 432,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 385,
+        "width": 210,
+        "height": 90
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 210,
+      "cropNaturalHeight": 90,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8413,19 +8413,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 514,
-        "width": 250,
-        "height": 83
+        "x": 390,
+        "y": 480,
+        "width": 210,
+        "height": 75
       },
       "displayRegion": {
-        "x": 130,
-        "y": 514,
-        "width": 250,
-        "height": 83
+        "x": 390,
+        "y": 480,
+        "width": 210,
+        "height": 75
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 210,
+      "cropNaturalHeight": 75,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8452,19 +8452,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 514,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 520,
+        "width": 280,
+        "height": 55
       },
       "displayRegion": {
-        "x": 380,
-        "y": 514,
-        "width": 250,
-        "height": 83
+        "x": 95,
+        "y": 520,
+        "width": 280,
+        "height": 55
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 280,
+      "cropNaturalHeight": 55,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8491,19 +8491,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 597,
-        "width": 250,
-        "height": 82
+        "x": 165,
+        "y": 575,
+        "width": 180,
+        "height": 85
       },
       "displayRegion": {
-        "x": 130,
-        "y": 597,
-        "width": 250,
-        "height": 82
+        "x": 165,
+        "y": 575,
+        "width": 180,
+        "height": 85
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 180,
+      "cropNaturalHeight": 85,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8530,19 +8530,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 597,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 575,
+        "width": 210,
+        "height": 85
       },
       "displayRegion": {
-        "x": 380,
-        "y": 597,
-        "width": 250,
-        "height": 82
+        "x": 390,
+        "y": 575,
+        "width": 210,
+        "height": 85
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 210,
+      "cropNaturalHeight": 85,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8569,19 +8569,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 679,
-        "width": 250,
-        "height": 83
+        "x": 165,
+        "y": 655,
+        "width": 190,
+        "height": 100
       },
       "displayRegion": {
-        "x": 130,
-        "y": 679,
-        "width": 250,
-        "height": 83
+        "x": 165,
+        "y": 655,
+        "width": 190,
+        "height": 100
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 190,
+      "cropNaturalHeight": 100,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8608,19 +8608,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 380,
-        "y": 679,
-        "width": 250,
-        "height": 83
+        "x": 385,
+        "y": 655,
+        "width": 220,
+        "height": 100
       },
       "displayRegion": {
-        "x": 380,
-        "y": 679,
-        "width": 250,
-        "height": 83
+        "x": 385,
+        "y": 655,
+        "width": 220,
+        "height": 100
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 83,
+      "cropNaturalWidth": 220,
+      "cropNaturalHeight": 100,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8647,19 +8647,19 @@
       "naturalWidth": 674,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 762,
-        "width": 250,
-        "height": 82
+        "x": 155,
+        "y": 740,
+        "width": 220,
+        "height": 100
       },
       "displayRegion": {
-        "x": 130,
-        "y": 762,
-        "width": 250,
-        "height": 82
+        "x": 155,
+        "y": 740,
+        "width": 220,
+        "height": 100
       },
-      "cropNaturalWidth": 250,
-      "cropNaturalHeight": 82,
+      "cropNaturalWidth": 220,
+      "cropNaturalHeight": 100,
       "renderMode": "source-image-css-clip",
       "hash": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8686,19 +8686,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 156,
-        "width": 259,
-        "height": 97
+        "x": 75,
+        "y": 120,
+        "width": 250,
+        "height": 55
       },
       "displayRegion": {
-        "x": 110,
-        "y": 156,
-        "width": 259,
-        "height": 97
+        "x": 75,
+        "y": 120,
+        "width": 250,
+        "height": 55
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 250,
+      "cropNaturalHeight": 55,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8725,19 +8725,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 156,
-        "width": 259,
-        "height": 97
+        "x": 335,
+        "y": 170,
+        "width": 230,
+        "height": 100
       },
       "displayRegion": {
-        "x": 369,
-        "y": 156,
-        "width": 259,
-        "height": 97
+        "x": 335,
+        "y": 170,
+        "width": 230,
+        "height": 100
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 230,
+      "cropNaturalHeight": 100,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8765,18 +8765,18 @@
       "naturalHeight": 980,
       "cropRegion": {
         "x": 110,
-        "y": 253,
-        "width": 259,
-        "height": 98
+        "y": 175,
+        "width": 240,
+        "height": 170
       },
       "displayRegion": {
         "x": 110,
-        "y": 253,
-        "width": 259,
-        "height": 98
+        "y": 175,
+        "width": 240,
+        "height": 170
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 240,
+      "cropNaturalHeight": 170,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8803,19 +8803,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 253,
-        "width": 259,
-        "height": 98
+        "x": 330,
+        "y": 265,
+        "width": 235,
+        "height": 95
       },
       "displayRegion": {
-        "x": 369,
-        "y": 253,
-        "width": 259,
-        "height": 98
+        "x": 330,
+        "y": 265,
+        "width": 235,
+        "height": 95
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 235,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8842,19 +8842,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 351,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 355,
+        "width": 205,
+        "height": 90
       },
       "displayRegion": {
-        "x": 110,
-        "y": 351,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 355,
+        "width": 205,
+        "height": 90
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 90,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8881,19 +8881,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 351,
-        "width": 259,
-        "height": 97
+        "x": 330,
+        "y": 355,
+        "width": 235,
+        "height": 100
       },
       "displayRegion": {
-        "x": 369,
-        "y": 351,
-        "width": 259,
-        "height": 97
+        "x": 330,
+        "y": 355,
+        "width": 235,
+        "height": 100
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 235,
+      "cropNaturalHeight": 100,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8920,19 +8920,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 448,
-        "width": 259,
-        "height": 98
+        "x": 125,
+        "y": 455,
+        "width": 205,
+        "height": 135
       },
       "displayRegion": {
-        "x": 110,
-        "y": 448,
-        "width": 259,
-        "height": 98
+        "x": 125,
+        "y": 455,
+        "width": 205,
+        "height": 135
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 205,
+      "cropNaturalHeight": 135,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8959,19 +8959,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 448,
-        "width": 259,
-        "height": 98
+        "x": 335,
+        "y": 455,
+        "width": 225,
+        "height": 75
       },
       "displayRegion": {
-        "x": 369,
-        "y": 448,
-        "width": 259,
-        "height": 98
+        "x": 335,
+        "y": 455,
+        "width": 225,
+        "height": 75
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 225,
+      "cropNaturalHeight": 75,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -8998,19 +8998,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 546,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 545,
+        "width": 225,
+        "height": 95
       },
       "displayRegion": {
-        "x": 110,
-        "y": 546,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 545,
+        "width": 225,
+        "height": 95
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 225,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -9037,19 +9037,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 546,
-        "width": 259,
-        "height": 97
+        "x": 120,
+        "y": 595,
+        "width": 235,
+        "height": 105
       },
       "displayRegion": {
-        "x": 369,
-        "y": 546,
-        "width": 259,
-        "height": 97
+        "x": 120,
+        "y": 595,
+        "width": 235,
+        "height": 105
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 235,
+      "cropNaturalHeight": 105,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -9076,19 +9076,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 643,
-        "width": 259,
-        "height": 98
+        "x": 335,
+        "y": 540,
+        "width": 235,
+        "height": 95
       },
       "displayRegion": {
-        "x": 110,
-        "y": 643,
-        "width": 259,
-        "height": 98
+        "x": 335,
+        "y": 540,
+        "width": 235,
+        "height": 95
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 235,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -9115,19 +9115,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 643,
-        "width": 259,
-        "height": 98
+        "x": 330,
+        "y": 635,
+        "width": 240,
+        "height": 120
       },
       "displayRegion": {
-        "x": 369,
-        "y": 643,
-        "width": 259,
-        "height": 98
+        "x": 330,
+        "y": 635,
+        "width": 240,
+        "height": 120
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 98,
+      "cropNaturalWidth": 240,
+      "cropNaturalHeight": 120,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -9154,19 +9154,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 110,
-        "y": 741,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 720,
+        "width": 240,
+        "height": 110
       },
       "displayRegion": {
-        "x": 110,
-        "y": 741,
-        "width": 259,
-        "height": 97
+        "x": 125,
+        "y": 720,
+        "width": 240,
+        "height": 110
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 240,
+      "cropNaturalHeight": 110,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -9193,19 +9193,19 @@
       "naturalWidth": 704,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 369,
-        "y": 741,
-        "width": 259,
-        "height": 97
+        "x": 330,
+        "y": 755,
+        "width": 240,
+        "height": 95
       },
       "displayRegion": {
-        "x": 369,
-        "y": 741,
-        "width": 259,
-        "height": 97
+        "x": 330,
+        "y": 755,
+        "width": 240,
+        "height": 95
       },
-      "cropNaturalWidth": 259,
-      "cropNaturalHeight": 97,
+      "cropNaturalWidth": 240,
+      "cropNaturalHeight": 95,
       "renderMode": "source-image-css-clip",
       "hash": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",

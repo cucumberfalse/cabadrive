@@ -45,6 +45,12 @@ Recommended workflow:
 6. Store assets in a repository-consistent local static asset location.
 7. Run validation to ensure all inventory rows have corresponding files and matching hashes.
 
+PR `#202` follow-up direction: deterministic equal-grid regions are not acceptable unless
+each resulting region is individually verified against the source sheet. Implementation must
+replace or refine the generated `cropRegion` data with per-page/per-entry coordinates for all
+pages `185-197`, with special attention to non-uniform layouts in warning, informational,
+temporary, horizontal-marking, and traffic-light/signal sheets.
+
 The implementation may use scripts to generate assets and evidence, but generated scripts/data must be committed only if they are needed for repeatability or validation.
 
 ## UI Approach
@@ -77,7 +83,12 @@ Add focused automated validation. The preferred shape is a repository script/tes
 
 If image dimensions or hashes need helper libraries, use existing project tooling where possible and keep dependencies consistent with the repo.
 
-Manual verification must include desktop and mobile screenshots of representative sign sections and at least one dense section.
+Manual verification for this feature must prove every inventory entry, not only representative
+sections. Required visual evidence should include desktop and mobile coverage for all six
+Appendix IV sign sections plus per-entry crop audit evidence or contact sheets that make all
+`244` crop regions inspectable. A spot-check-only result remains merge-blocking unless
+Architect explicitly records a narrowed non-blocking residual risk after reviewing objective
+evidence.
 
 ## Documentation And Process Memory
 
@@ -117,4 +128,3 @@ Review must specifically inspect:
 - validation coverage.
 
 Final validation must compare the implemented result against the original user request and this feature memory, with special attention to "all signs," source order, and unmodified sign imagery.
-

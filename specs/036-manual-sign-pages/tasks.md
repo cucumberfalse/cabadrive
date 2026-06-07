@@ -22,6 +22,39 @@
 - [x] Record slice 1 validation evidence, known issues, dead ends, and implementation feedback in this file.
 - [x] Commit, push, and open a ready PR only after the implementation slice passes local evidence requirements.
 
+## Architect Follow-Up Tasks Required Before Merge
+
+Architect disposition recorded at `2026-06-07T11:51:30-03:00`: PR `#202` at head
+`7187b6986f5ad03af83a8f756aa85c2b3815c927` is not merge-ready. The residual crop QA issue is
+accepted as required follow-up work, not as a non-blocking known issue. Architect return count
+for this work cycle: `1/10`. Final Architect validation has not been performed.
+
+- [ ] Replace or refine the deterministic equal-grid crop generation/data with per-entry source regions for every inventory entry on pages `185-197`.
+- [ ] Give special attention to non-uniform sheets and sections: warning pages `187-188`, informational pages `189-192`, temporary pages `193-194`, horizontal-marking pages `195-196`, and traffic-light/signal page `197`.
+- [ ] Verify all `244` entries against their source sheets so each crop/source region contains the intended sign/sign-like item, including attached plates/tablets, embedded labels, arrows, borders, colors, and multi-part visual content that belongs to the entry.
+- [ ] Confirm every crop/source region avoids clipped protected parts, mismatched neighboring items, unrelated page headings, misleading blank-only regions, and source content that contradicts the Spanish/Russian caption.
+- [ ] Preserve existing source-as-is constraints while correcting crops: no redraw, vectorization, cleanup, sharpening, recolor, translation inside images, generated replacement, or browser upscaling beyond natural source dimensions.
+- [ ] Regenerate `src/data/manual-signs/app4SignEntries.json` and any supporting validation output after crop corrections.
+- [ ] Add auditable evidence that covers every entry, such as per-entry crop audit data/contact sheets plus desktop and mobile screenshots for all six Appendix IV sign sections, or an equivalent proof that all entries were checked.
+- [ ] Update validation so the PR cannot pass with `spot-check`/`representative-only` crop evidence or unaudited crop boxes.
+- [ ] Re-run and record: `node scripts/manual-sign-inventory.mjs --write`, `pnpm run validate:manual-sign-inventory`, `node --test tests/manual-sign-inventory.test.mjs`, `pnpm run test`, `pnpm run build`, `git diff --check`, and full `pnpm run preflight` unless a concrete blocker is recorded.
+- [ ] Update this feature memory with the corrected crop count, all-section visual evidence paths, validation outcomes, and any remaining known issue for Architect disposition.
+
+## Horizontal Follow-Up Slice 2026-06-07
+
+- [x] Correct horizontal-marking pages `195-196` only by replacing equal-grid crop fallback for `app4-horizontal-page-195-source-card` and `app4-horizontal-page-196-source-card` with explicit per-term regions in `manualCropRegionsByCard`.
+- [x] Regenerate `src/data/manual-signs/app4SignEntries.json` with `node scripts/manual-sign-inventory.mjs --write`; command passed with `244` entries, pages `185-197`, and p198-p200 disposition recorded.
+- [x] Capture horizontal-only contact-sheet evidence after corrected regions:
+  - `specs/036-manual-sign-pages/evidence/contact-sheets/manual-signs-horizontal-195-196-contact-sheet.png`
+  - `specs/036-manual-sign-pages/evidence/contact-sheets/manual-signs-horizontal-195-196-contact-sheet.summary.json`
+- [x] Verify the horizontal contact sheet with a bounded Playwright screenshot run against local Vite on `http://127.0.0.1:5175/#manual-section-app4-signs-horizontal`; summary recorded `29` entries, source pages `[195, 196]`, `0` no-upscale violations, `0` unloaded images, `0` empty captions, monotonic order `true`, and document horizontal overflow `0`.
+- [x] Run bounded checks for this narrow slice:
+  - `pnpm run validate:manual-sign-inventory` passed.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `2/2` tests.
+  - `git diff --check` passed with no whitespace errors.
+  - Optional `pnpm run test` passed: `435/435` tests.
+- [ ] Broader Architect follow-up remains open for non-horizontal sections and for full all-`244` crop-box audit/validation. This slice intentionally corrected and verified only horizontal pages `195-196`.
+
 ## Required Evidence To Fill During Implementation
 
 Inventory summary:
@@ -79,6 +112,7 @@ Screenshot evidence:
 
 Known issues and dead ends:
 
+- Architect disposition 2026-06-07: the current screenshot evidence confirms only regulatory and horizontal-marking sections, while the known issue records that warning/traffic-light exploratory screenshots exposed partial neighboring content or excess whitespace. This violates the user requirement that every sign/sign-like entry be processed separately without cutting protected parts or mixing in wrong neighboring content. PR `#202` must return to Implementation for the follow-up tasks above before review completion, final Architect validation, final Analyst validation, or merge.
 - 2026-06-07T00:00:00-03:00: Slice 1 started; inventory scaffold in progress.
 - Slice 2 changed inventory status from `source-sheet-placeholder` to `individual-source-regions`: it governs order, captions, source references, source asset dimensions, hashes, no-upscale flags, render mode, per-entry CSS clip regions, and p198-p200 disposition.
 - Slice 2 added `src/data/manual-signs/app4SignCatalog.ts`, a `manual-sign-catalog` manual-guide block, section inserts for all six Appendix IV sign sections, React rendering in `App.tsx`, and responsive CSS for CSS-clipped source-region cards. The primary learner view now renders entries from `app4SignEntries.json`; existing whole-sheet/panel cards remain after the individual catalog as supplemental context.
@@ -89,7 +123,7 @@ Known issues and dead ends:
 
 Implementation feedback for Architect disposition:
 
-- None so far.
+- PR `#202` residual crop QA issue disposed by Architect as required follow-up work before merge. It is not accepted as a non-blocking known issue, and final Architect validation is intentionally deferred.
 
 ## Review Requirements
 
@@ -111,6 +145,7 @@ Architect final validation, when invoked by Orchestrator after implementation an
 - this task list is current and all implementation tasks are complete or explicitly disposed;
 - any Implementation Agent feedback has Architect disposition;
 - acceptance criteria in `spec.md` have evidence;
+- the Architect follow-up tasks above are complete, or any remaining crop/evidence risk has an explicit non-blocking Architect disposition based on objective full-entry evidence;
 - the effective content head is identified for final Analyst validation.
 
 Analyst final validation, when invoked after Architect final validation passes, must verify the final result against the user's original request: every sign processed separately, maximum practical quality, original source order, Spanish/Russian captions, all signs covered, and no modification of protected sign imagery.

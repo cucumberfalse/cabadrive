@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-06-07T15:07:13.290Z",
+  "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/manual-signs-horizontal-195-196-contact-sheet.png",
+  "summary": {
+    "sectionId": "app4-signs-horizontal",
+    "entryCount": 29,
+    "sourcePages": [
+      195,
+      196
+    ],
+    "firstEntry": "app4horizontal-p195-001-horizontales",
+    "lastEntry": "app4horizontal-p196-014-cruce-de-ciclistas",
+    "noUpscaleViolations": 0,
+    "unloadedImages": 0,
+    "emptyCaptions": 0,
+    "monotonicOrder": true,
+    "documentOverflowX": 0
+  }
+}

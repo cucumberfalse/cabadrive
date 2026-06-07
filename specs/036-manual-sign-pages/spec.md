@@ -120,6 +120,15 @@ Implementation must add or update automated checks so regressions are caught whe
 
 Implementation must record evidence for pages `198-200` disposition and for total covered count by section.
 
+For PR `#202`, representative screenshot/spot-check evidence is not sufficient because the
+implemented equal-grid source regions can clip protected visual parts or include neighboring
+content on non-uniform sheets. Before final validation or merge readiness, the inventory must
+record that every individual entry's crop/source region has been corrected and verified against
+the source page, including warning, informational, temporary, horizontal-marking, and
+traffic-light/signal pages. Evidence may be per-entry audit data, contact sheets, all-section
+desktop/mobile screenshots, or an equivalent auditable proof, but it must prove all `244`
+entries rather than only representative sections.
+
 ## Acceptance Criteria
 
 1. Every catalog entry on source pages `185-197` is represented as an individual learner-facing entry.
@@ -130,7 +139,7 @@ Implementation must record evidence for pages `198-200` disposition and for tota
 6. Protected sign pixels and sign parts are not modified, translated, covered, or omitted.
 7. Whole-sheet or broad-panel visuals are supplemental only and do not count as coverage.
 8. The app remains static, local-first, offline-capable, and uses bundled local assets only.
-9. Desktop and mobile screenshots show readable individual entries without layout overflow or overlap.
+9. Desktop and mobile screenshots or equivalent visual QA evidence cover all Appendix IV sign sections and prove readable individual entries without clipped protected parts, mismatched neighboring content, layout overflow, or overlap.
 10. Automated validation covers inventory completeness, captions, order, assets, hashes, dimensions, and no-upscale constraints.
 11. Local preflight/build/test evidence is recorded before PR completion.
 12. Review, final Architect validation, final Analyst validation, merge-readiness gates, and merge are coordinated by Orchestrator.
@@ -144,4 +153,3 @@ Implementation must record evidence for pages `198-200` disposition and for tota
 - Plates/tablets or embedded sign text are cropped away or replaced.
 - Captions omit Spanish or Russian text.
 - The final surface requires network access, a backend, or runtime PDF viewing.
-
