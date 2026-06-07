@@ -478,6 +478,226 @@ const regulatoryPage186Rows = [
   }
 ];
 
+const warningPage187Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Preventivas",
+    russianTranslation: "Предупреждающие",
+    cropRegion: { x: 132, y: 132, width: 165, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Preventivas"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Advertencias sobre características de la vía",
+    russianTranslation: "Предупреждения об особенностях дороги",
+    cropRegion: { x: 132, y: 171, width: 500, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Advertencias sobre características de la vía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA",
+    variant: "Común y pronunciada",
+    russianTranslation: "Опасный поворот",
+    cropRegion: { x: 176, y: 198, width: 75, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: CURVA (Común y pronunciada)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA",
+    variant: "Contracurva",
+    russianTranslation: "Обратный / следующий поворот",
+    cropRegion: { x: 263, y: 198, width: 75, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: CURVA (Contracurva)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA",
+    variant: "En \"S\"",
+    russianTranslation: "S-образный поворот",
+    cropRegion: { x: 349, y: 198, width: 75, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: CURVA (En \"S\")"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CAMINO SINUOSO",
+    russianTranslation: "Извилистая дорога",
+    cropRegion: { x: 434, y: 198, width: 75, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: CAMINO SINUOSO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PENDIENTE",
+    variant: "Descendente",
+    russianTranslation: "Спуск",
+    cropRegion: { x: 520, y: 198, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: PENDIENTE (Descendente)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PENDIENTE",
+    variant: "Ascendente",
+    russianTranslation: "Подъем",
+    cropRegion: { x: 176, y: 309, width: 78, height: 91 },
+    sourceSheetLabelEvidence: "visible source label: PENDIENTE (Ascendente)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTRECHAMIENTO",
+    variant: "Ambas manos",
+    russianTranslation: "Сужение с обеих сторон",
+    cropRegion: { x: 263, y: 309, width: 79, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: ESTRECHAMIENTO (Ambas manos)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTRECHAMIENTO",
+    variant: "En una sola mano",
+    russianTranslation: "Сужение с одной стороны",
+    cropRegion: { x: 349, y: 309, width: 82, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: ESTRECHAMIENTO (En una sola mano)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PERFIL IRREGULAR",
+    variant: "Irregular",
+    russianTranslation: "Неровная дорога",
+    cropRegion: { x: 434, y: 309, width: 82, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: PERFIL IRREGULAR (Irregular)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PERFIL IRREGULAR",
+    variant: "Badén",
+    russianTranslation: "Впадина / понижение дороги",
+    cropRegion: { x: 520, y: 309, width: 83, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: PERFIL IRREGULAR (Badén)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PERFIL IRREGULAR",
+    variant: "Lomada",
+    russianTranslation: "Возвышение / бугор",
+    cropRegion: { x: 176, y: 420, width: 82, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: PERFIL IRREGULAR (Lomada)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CALZADA RESBALADIZA",
+    russianTranslation: "Скользкая дорога",
+    cropRegion: { x: 263, y: 420, width: 78, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: CALZADA RESBALADIZA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PROYECCIÓN DE PIEDRAS",
+    russianTranslation: "Выброс камней",
+    cropRegion: { x: 349, y: 420, width: 82, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: PROYECCIÓN DE PIEDRAS"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "DERRUMBES",
+    russianTranslation: "Обвалы",
+    cropRegion: { x: 436, y: 420, width: 78, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: DERRUMBES"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "TÚNEL",
+    russianTranslation: "Туннель",
+    cropRegion: { x: 520, y: 420, width: 78, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: TÚNEL"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PUENTE ANGOSTO",
+    russianTranslation: "Узкий мост",
+    cropRegion: { x: 176, y: 528, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: PUENTE ANGOSTO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PUENTE MÓVIL",
+    russianTranslation: "Разводной мост",
+    cropRegion: { x: 263, y: 528, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: PUENTE MÓVIL"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ALTURA LIMITADA",
+    russianTranslation: "Ограничение высоты",
+    cropRegion: { x: 350, y: 527, width: 78, height: 89 },
+    sourceSheetLabelEvidence: "visible source label: ALTURA LIMITADA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ANCHO LIMITADO",
+    russianTranslation: "Ограничение ширины",
+    cropRegion: { x: 436, y: 527, width: 78, height: 89 },
+    sourceSheetLabelEvidence: "visible source label: ANCHO LIMITADO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CALZADA DIVIDIDA",
+    russianTranslation: "Разделенная проезжая часть",
+    cropRegion: { x: 520, y: 527, width: 78, height: 89 },
+    sourceSheetLabelEvidence: "visible source label: CALZADA DIVIDIDA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ROTONDA",
+    russianTranslation: "Круговое движение",
+    cropRegion: { x: 176, y: 637, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: ROTONDA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "INCORPORACIÓN DE TRÁNSITO LATERAL",
+    russianTranslation: "Въезд транспорта сбоку",
+    cropRegion: { x: 263, y: 637, width: 83, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: INCORPORACIÓN DE TRÁNSITO LATERAL"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "INICIO DE DOBLE CIRCULACIÓN",
+    russianTranslation: "Начало двустороннего движения",
+    cropRegion: { x: 349, y: 637, width: 88, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: INICIO DE DOBLE CIRCULACIÓN"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ENCRUCIJADA",
+    variant: "Cruce",
+    russianTranslation: "Перекресток",
+    cropRegion: { x: 436, y: 637, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: ENCRUCIJADA (Cruce)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ENCRUCIJADA",
+    variant: "Empalme",
+    russianTranslation: "Примыкание",
+    cropRegion: { x: 522, y: 637, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: ENCRUCIJADA (Empalme)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ENCRUCIJADA",
+    variant: "Bifurcación 1",
+    russianTranslation: "Развилка",
+    cropRegion: { x: 176, y: 748, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: ENCRUCIJADA (Bifurcación 1)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ENCRUCIJADA",
+    variant: "Bifurcación 2",
+    russianTranslation: "Т-образная развилка",
+    cropRegion: { x: 263, y: 748, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: ENCRUCIJADA (Bifurcación 2)"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -547,6 +767,30 @@ test("regulatory source page 186 visual rows are complete and ordered", () => {
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
     assert.match(entry.sourceRef, /app4-regulatory-page-186-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
+test("warning source page 187 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-warning" && entry.sourcePage === 187);
+
+  assert.equal(rows.length, warningPage187Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["187"], warningPage187Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 2);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 27);
+
+  rows.forEach((entry, index) => {
+    const expected = warningPage187Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-warning-page-187-source-card\.visualSourceEntries/u, entry.id);
   });
 });
 
