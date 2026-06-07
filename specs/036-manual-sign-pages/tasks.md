@@ -233,6 +233,19 @@ Validation commands:
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `10/10` tests, including exact page `190` order, labels, variants, Russian translations, crop regions, and no pending page `190` rows.
   - `git diff --check` passed with no whitespace errors.
   - Known issues: broader source-visual reconciliation remains open for informational pages `191-192`, temporary pages `193-194`, horizontal pages `195-196`, and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed page `190` only.
+- Informational pages `191-192` completion validation on 2026-06-07:
+  - Scope completed: source pages `191-192`, source cards `app4-informational-page-191-source-card` and `app4-informational-page-192-source-card`, section `app4-signs-informational`.
+  - Added `36` explicit source page `191` `visualSourceEntries` in source order: `2` `category-heading` rows and `34` `catalog-entry` rows.
+  - Added `1` explicit source page `192` `visualSourceEntry` with `entryKind: contextual-visual` for the Estrella Amarilla photo. It renders as an individually clipped source visual but is recorded separately from sign/catalog coverage counts.
+  - Pages `191-192` now have `37` `reconciled-source-visual` rows and `0` `pending-reconciliation` rows; old grid/pending placeholders for pages `191-192` are replaced by explicit visual rows.
+  - Informational section status after this slice: `0` pending rows remain.
+  - No cropped image files were created and no source pixels were altered; each entry continues to use CSS clipping from unchanged official source images.
+  - Generated inventory summary after this slice: `301` total entries. Pending rows remaining by section: `app4-signs-temporary: 44`, `app4-signs-horizontal: 29`, `app4-signs-traffic-lights: 14`.
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `301` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `301` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `12/12` tests, including exact page `191` order, labels, variants, Russian translations, crop regions, page `192` contextual visual metadata, and no pending page `191-192` rows.
+  - `git diff --check` passed with no whitespace errors.
+  - Known issues: broader source-visual reconciliation remains open for temporary pages `193-194`, horizontal pages `195-196`, and traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed informational pages `191-192` only.
 
 Screenshot evidence:
 

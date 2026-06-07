@@ -2165,6 +2165,418 @@ const visualSourceEntries = [
     cropRegion: { x: 335, y: 755, width: 126, height: 72 },
     sourceSheetLabelEvidence: "visible source label: Nomenclatura de autopista",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Información turística y de servicios",
+    russianTranslation: "туристическая и сервисная информация",
+    cropRegion: { x: 132, y: 130, width: 405, height: 34 },
+    sourceSheetLabelEvidence: "visible source heading: Información turística y de servicios",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Puesto sanitario",
+    russianTranslation: "медицинский пункт",
+    cropRegion: { x: 174, y: 162, width: 72, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Puesto sanitario",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Servicio telefónico",
+    russianTranslation: "телефонная связь",
+    cropRegion: { x: 257, y: 162, width: 76, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Servicio telefónico",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estación de servicio",
+    russianTranslation: "автозаправочная станция",
+    cropRegion: { x: 342, y: 162, width: 83, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: Estación de servicio",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Teleférico",
+    russianTranslation: "канатная дорога",
+    cropRegion: { x: 432, y: 162, width: 78, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Teleférico",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Servicio mecánico",
+    russianTranslation: "механический сервис",
+    cropRegion: { x: 515, y: 162, width: 88, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Servicio mecánico",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Restaurante",
+    russianTranslation: "ресторан",
+    cropRegion: { x: 174, y: 258, width: 72, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Restaurante",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Aeropuerto",
+    russianTranslation: "аэропорт",
+    cropRegion: { x: 257, y: 258, width: 76, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Aeropuerto",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Gomería",
+    russianTranslation: "шиномонтаж",
+    cropRegion: { x: 342, y: 258, width: 83, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Gomería",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento",
+    russianTranslation: "стоянка",
+    cropRegion: { x: 432, y: 258, width: 78, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Punto panorámico",
+    russianTranslation: "панорамная точка",
+    cropRegion: { x: 515, y: 258, width: 88, height: 95 },
+    sourceSheetLabelEvidence: "visible source label: Punto panorámico",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Plaza",
+    russianTranslation: "площадь / парк",
+    cropRegion: { x: 174, y: 355, width: 72, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Plaza",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Correo",
+    russianTranslation: "почта",
+    cropRegion: { x: 257, y: 355, width: 76, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Correo",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento de casas rodantes",
+    russianTranslation: "стоянка автодомов",
+    cropRegion: { x: 337, y: 355, width: 92, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento de casas rodantes",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Museo",
+    russianTranslation: "музей",
+    cropRegion: { x: 432, y: 355, width: 78, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Museo",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Policía",
+    russianTranslation: "полиция",
+    cropRegion: { x: 515, y: 355, width: 88, height: 88 },
+    sourceSheetLabelEvidence: "visible source label: Policía",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Zona de detención transporte público de pasajeros",
+    russianTranslation: "остановочная зона общественного транспорта",
+    cropRegion: { x: 166, y: 451, width: 90, height: 108 },
+    sourceSheetLabelEvidence: "visible source label: Zona de detención transporte público de pasajeros",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Taxi",
+    russianTranslation: "такси",
+    cropRegion: { x: 257, y: 451, width: 76, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Taxi",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Terminal de ómnibus",
+    russianTranslation: "автовокзал",
+    cropRegion: { x: 337, y: 451, width: 92, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Terminal de ómnibus",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estación de ferrocarril",
+    russianTranslation: "железнодорожная станция",
+    cropRegion: { x: 432, y: 451, width: 78, height: 96 },
+    sourceSheetLabelEvidence: "visible source label: Estación de ferrocarril",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Teatro",
+    russianTranslation: "театр",
+    cropRegion: { x: 515, y: 451, width: 88, height: 90 },
+    sourceSheetLabelEvidence: "visible source label: Teatro",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Turismo",
+    russianTranslation: "туризм",
+    cropRegion: { x: 178, y: 578, width: 70, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: Turismo",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Institución religiosa",
+    russianTranslation: "религиозное учреждение",
+    cropRegion: { x: 262, y: 548, width: 82, height: 108 },
+    sourceSheetLabelEvidence: "visible source label: Institución religiosa",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Escolares",
+    variant: "Ascenso y descenso",
+    russianTranslation: "школьники: посадка и высадка",
+    cropRegion: { x: 348, y: 548, width: 76, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: Escolares (Ascenso y descenso)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Escolares",
+    variant: "Circular o subir al colectivo",
+    russianTranslation: "школьники: движение или посадка в автобус",
+    cropRegion: { x: 432, y: 548, width: 92, height: 123 },
+    sourceSheetLabelEvidence: "visible source label: Escolares (Circular o subir al colectivo)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Personas con movilidad reducida",
+    variant: "Ascenso y descenso",
+    russianTranslation: "люди с ограниченной мобильностью",
+    cropRegion: { x: 518, y: 548, width: 88, height: 108 },
+    sourceSheetLabelEvidence: "visible source label: Personas con movilidad reducida (Ascenso y descenso)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Educativas y anuncios especiales",
+    russianTranslation: "образовательные и специальные объявления",
+    cropRegion: { x: 130, y: 684, width: 400, height: 35 },
+    sourceSheetLabelEvidence: "visible source heading: Educativas y anuncios especiales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Evite accidentes estacione lejos de la calzada",
+    russianTranslation: "избегайте аварий, стойте вдали от проезжей части",
+    cropRegion: { x: 177, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Evite accidentes estacione lejos de la calzada",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Destruir señales es un delito",
+    russianTranslation: "уничтожать знаки - преступление",
+    cropRegion: { x: 228, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Destruir señales es un delito",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Evite encandilar",
+    russianTranslation: "не ослепляйте",
+    cropRegion: { x: 279, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Evite encandilar",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "No se adelante sin advertir",
+    russianTranslation: "не обгоняйте без предупреждения",
+    cropRegion: { x: 330, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: No se adelante sin advertir",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Transite dentro de su carril",
+    russianTranslation: "двигайтесь в своей полосе",
+    cropRegion: { x: 381, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Transite dentro de su carril",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "No adelante en curvas y puentes",
+    russianTranslation: "не обгоняйте на поворотах и мостах",
+    cropRegion: { x: 432, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: No adelante en curvas y puentes",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Adelante por la izquierda",
+    russianTranslation: "обгоняйте слева",
+    cropRegion: { x: 484, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Adelante por la izquierda",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Respete las señales",
+    russianTranslation: "соблюдайте знаки",
+    cropRegion: { x: 537, y: 719, width: 50, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Respete las señales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 191,
+    sourceCardId: "app4-informational-page-191-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "En conmemoración a una víctima de tránsito",
+    variant: "Estrella Amarilla",
+    russianTranslation: "в память о жертве дорожного движения",
+    cropRegion: { x: 175, y: 800, width: 90, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: En conmemoración a una víctima de tránsito (Estrella Amarilla)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 192,
+    sourceCardId: "app4-informational-page-192-source-card",
+    entryKind: "contextual-visual",
+    spanishLabel: "En memoria de una víctima de tránsito",
+    variant: "Estrella Amarilla photo",
+    russianTranslation: "в память о жертве дорожного движения",
+    cropRegion: { x: 205, y: 382, width: 235, height: 220 },
+    sourceSheetLabelEvidence: "visible source contextual visual: Estrella Amarilla photo",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -2178,7 +2590,10 @@ const visualSourceEntriesByCard = visualSourceEntries.reduce((entriesByCard, ent
 const visualSourceSectionIds = new Set(["app4-signs-regulatory", "app4-signs-warning"]);
 
 function isReconciledVisualScope(entry) {
-  return visualSourceSectionIds.has(entry.sectionId) || (entry.sectionId === "app4-signs-informational" && [189, 190].includes(entry.sourcePage));
+  return (
+    visualSourceSectionIds.has(entry.sectionId) ||
+    (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage))
+  );
 }
 
 function repoPath(relativePath) {
@@ -2545,7 +2960,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory, warning, and informational source pages 189-190 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, informational source pages 189-191, and the page 192 contextual visual slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {
@@ -2565,7 +2980,7 @@ function assertCondition(condition, message, errors) {
 
 function validateInventory(inventory) {
   const errors = [];
-  const validEntryKinds = new Set(["catalog-entry", "category-heading"]);
+  const validEntryKinds = new Set(["catalog-entry", "category-heading", "contextual-visual"]);
   const validAuditStatuses = new Set(["reconciled-source-visual", "pending-reconciliation"]);
   assertCondition(inventory?.schemaVersion === 1, "schemaVersion must be 1.", errors);
   assertCondition(inventory?.featureId === "036-manual-sign-pages", "featureId must be 036-manual-sign-pages.", errors);
@@ -2589,7 +3004,7 @@ function validateInventory(inventory) {
     (pageOrders.get(entry.sourcePage) ?? pageOrders.set(entry.sourcePage, []).get(entry.sourcePage)).push(entry.sourceOrderWithinPage);
     assertCondition(typeof entry.spanishLabel === "string" && entry.spanishLabel.trim() !== "", `${label}: spanishLabel is required.`, errors);
     assertCondition(typeof entry.russianTranslation === "string" && entry.russianTranslation.trim() !== "", `${label}: russianTranslation is required.`, errors);
-    assertCondition(validEntryKinds.has(entry.entryKind), `${label}: entryKind must be catalog-entry or category-heading.`, errors);
+    assertCondition(validEntryKinds.has(entry.entryKind), `${label}: entryKind must be catalog-entry, category-heading, or contextual-visual.`, errors);
     assertCondition(validAuditStatuses.has(entry.auditStatus), `${label}: auditStatus is invalid.`, errors);
     assertCondition(
       typeof entry.sourceSheetLabelEvidence === "string" && entry.sourceSheetLabelEvidence.trim() !== "",
