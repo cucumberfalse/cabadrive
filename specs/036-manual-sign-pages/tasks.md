@@ -461,6 +461,13 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Limit escalation: none.
 - Current-PR-head read-only guard: Orchestrator will compare current PR head against effective content head 202af0dd1e7b92a308220ac5805afac2740e25dd and verify later commits are final-validation evidence-only before finalization.
 - Post-validation stale notice: review thread `PRRT_kwDOSX65IM6HrfvY` required non-validation evidence changes after effective content head `202af0dd1e7b92a308220ac5805afac2740e25dd` and PR head `96721c0bed8fd334d13281de6d6bdbf01b1833ca`; the final Architect and Analyst validation notes below are historical until those roles rerun validation.
+- Effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
+- Architect validation: passed at 2026-06-07T19:05:01Z.
+- Architect return count: 2
+- Architect validated effective content head: ea2a1546522f70e5da3299297f6165199a29eab7.
+- Analyst feedback Architect disposition: none.
+- Limit escalation: none.
+- Current-PR-head read-only guard: Orchestrator will compare current PR head against effective content head ea2a1546522f70e5da3299297f6165199a29eab7 and verify later commits are final-validation evidence-only before finalization.
 
 ## Superseded Architect Validation Notes
 
@@ -503,4 +510,29 @@ Architect disposition: no open Architect dispositions remain.
 Architect disposition: no unresolved Implementation Agent feedback remains.
 Architect disposition: sourceRef review fix is resolved.
 Architect disposition: final inventory/evidence/test coverage is accepted for final Architect validation.
+Architect validation evidence: Orchestrator must recheck required checks and current-head guard before merge.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-07T19:05:01Z
+Effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
+Architect validated effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
+Architect return count: 2
+Architect validation evidence: complete feature memory exists at specs/036-manual-sign-pages/feature-request.md, spec.md, plan.md, and tasks.md.
+Architect validation evidence: refreshed visual QA evidence is accepted with 12 current full-catalog screenshots covering all six Appendix IV sections on desktop and mobile.
+Architect validation evidence: visual QA summary represents 632 desktop and mobile sign instances with section counts regulatory 60, warning 59, informational 95, temporary 56, horizontal 33, and traffic-lights 13.
+Architect validation evidence: visual QA summary records zero QA violations for the refreshed screenshot evidence.
+Architect validation evidence: Review Agent no-findings comment for ea2a1546522f70e5da3299297f6165199a29eab7 is recorded at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643708899.
+Architect validation evidence: review thread PRRT_kwDOSX65IM6HrfvY is resolved.
+Architect validation evidence: inventory sourceRef contract remains 316 rows, 316 reconciled-source-visual rows, 0 rows awaiting reconciliation, 283 catalog-entry rows, 30 category-heading rows, and 3 contextual-visual rows across pages 185-197.
+Architect validation evidence: all sourceRefs point to scripts/manual-sign-inventory.mjs#visualSourceEntries and the NO AVANZAR translation remains Проезд запрещен.
+Architect validation evidence: implementation verification passed pnpm run validate:manual-sign-inventory.
+Architect validation evidence: implementation verification passed node --test tests/manual-sign-inventory.test.mjs.
+Architect validation evidence: implementation verification passed pnpm run build.
+Architect validation evidence: implementation verification passed git diff --check.
+Architect disposition: no unresolved Implementation Agent feedback remains.
+Architect disposition: sourceRef fix is resolved.
+Architect disposition: screenshot evidence fix is resolved.
+Architect disposition: inventory, evidence, and test coverage are accepted for final Architect validation.
 Architect validation evidence: Orchestrator must recheck required checks and current-head guard before merge.

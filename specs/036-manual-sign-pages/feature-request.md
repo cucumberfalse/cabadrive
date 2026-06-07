@@ -219,3 +219,24 @@ Gaps, if any: none remain.
 Architect disposition routing: none required because no final Analyst gaps remain.
 Analyst limit escalation: not applicable; Analyst return count is 0.
 Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T19:06:14Z
+Effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
+Analyst validated effective content head: ea2a1546522f70e5da3299297f6165199a29eab7
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T19:05:01Z for the same effective content head ea2a1546522f70e5da3299297f6165199a29eab7.
+Analyst validation evidence: Review Agent no-findings exists for PR #202 at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643708899, and review thread PRRT_kwDOSX65IM6HrfvY is resolved.
+Analyst validation evidence: Inventory evidence records 316 total rows, 316 reconciled-source-visual rows, 0 pending rows, 283 catalog-entry rows, 30 category-heading rows, 3 contextual-visual rows, covered source pages 185-197, and recorded p198-p200 disposition.
+Analyst validation evidence: Source order is preserved, sourceRefs point to scripts/manual-sign-inventory.mjs#visualSourceEntries, and 12 refreshed screenshots cover all six Appendix IV sections on desktop and mobile with zero QA violations.
+Analyst validation evidence: Implementation validation, tests, build, and diff-check passed for the effective content head.
+Customer intent check: every in-scope sign/sign-like item is processed separately and all signs are covered.
+Customer intent check: maximum practical original-source quality is preserved through source-faithful protected imagery, with sign images unmodified.
+Customer intent check: Spanish and Russian captions remain outside images, including NO AVANZAR -> Проезд запрещен.
+Customer intent check: no clarification is needed to validate the final result against the original Russian request in spirit and letter.
+Gaps, if any: none remain.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is 0.
+Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
