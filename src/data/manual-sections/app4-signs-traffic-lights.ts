@@ -63,6 +63,17 @@ export const app4SignsTrafficLightsSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "traffic-lights-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки световых сигналов",
+      sourceTextEs: "Señalamiento luminoso: individual source-region catalog.",
+      sectionId: "app4-signs-traffic-lights",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "traffic-lights-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы световой сигнализации и закрывающие страницы",
