@@ -21,6 +21,7 @@ struct CropTarget: Codable {
   let sourceOrder: Int
   let outputAssetPath: String
   let candidateRegionAtBaseScale: BoundsRecord
+  let baselineCropRegionAtCandidateScale: BoundsRecord
   let tailTrimMode: String
   let cardTrimBoundsAtCardRenderScale: BoundsRecord
   let cardRenderScale: Double
@@ -42,6 +43,18 @@ struct SizeRecord: Codable {
   let height: Int
 }
 
+struct PixelComponent {
+  var minX: Int
+  var minY: Int
+  var maxX: Int
+  var maxY: Int
+  var area: Int
+
+  var bounds: BoundsRecord {
+    BoundsRecord(x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1)
+  }
+}
+
 struct CropOutputRecord: Codable {
   let rowId: String
   let entryKind: String
@@ -50,6 +63,7 @@ struct CropOutputRecord: Codable {
   let sourceOrder: Int
   let sourcePdfPath: String
   let candidateRegionAtBaseScale: BoundsRecord
+  let baselineCropRegionAtCandidateScale: BoundsRecord
   let sourceRegionAtBaseScale: BoundsRecord
   let contentTrimBoundsAtCandidateScale: BoundsRecord
   let tailTrimMode: String
@@ -197,7 +211,148 @@ func scaleCrop(_ crop: CGImage, outputSize: SizeRecord) throws -> CGImage {
   return image
 }
 
-func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String) throws -> BoundsRecord {
+func clampBounds(_ bounds: BoundsRecord, width: Int, height: Int) -> BoundsRecord {
+  let x = max(0, min(width - 1, bounds.x))
+  let y = max(0, min(height - 1, bounds.y))
+  let right = max(x + 1, min(width, bounds.x + bounds.width))
+  let bottom = max(y + 1, min(height, bounds.y + bounds.height))
+  return BoundsRecord(x: x, y: y, width: right - x, height: bottom - y)
+}
+
+func expandBounds(_ bounds: BoundsRecord, by padding: Int, width: Int, height: Int) -> BoundsRecord {
+  return clampBounds(
+    BoundsRecord(
+      x: bounds.x - padding,
+      y: bounds.y - padding,
+      width: bounds.width + padding * 2,
+      height: bounds.height + padding * 2
+    ),
+    width: width,
+    height: height
+  )
+}
+
+func expandBounds(_ bounds: BoundsRecord, xPadding: Int, yPadding: Int, width: Int, height: Int) -> BoundsRecord {
+  return clampBounds(
+    BoundsRecord(
+      x: bounds.x - xPadding,
+      y: bounds.y - yPadding,
+      width: bounds.width + xPadding * 2,
+      height: bounds.height + yPadding * 2
+    ),
+    width: width,
+    height: height
+  )
+}
+
+func boundsIntersect(_ left: BoundsRecord, _ right: BoundsRecord) -> Bool {
+  return left.x < right.x + right.width &&
+    left.x + left.width > right.x &&
+    left.y < right.y + right.height &&
+    left.y + left.height > right.y
+}
+
+func boundsCenterDistanceSquared(_ left: BoundsRecord, _ right: BoundsRecord) -> Double {
+  let leftX = Double(left.x) + Double(left.width) / 2
+  let leftY = Double(left.y) + Double(left.height) / 2
+  let rightX = Double(right.x) + Double(right.width) / 2
+  let rightY = Double(right.y) + Double(right.height) / 2
+  let dx = leftX - rightX
+  let dy = leftY - rightY
+  return dx * dx + dy * dy
+}
+
+func pixelComponents(mask: [Bool], width: Int, height: Int) -> [PixelComponent] {
+  var visited = [Bool](repeating: false, count: mask.count)
+  var components: [PixelComponent] = []
+  let neighborOffsets = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1)]
+
+  for index in 0..<mask.count {
+    if visited[index] || !mask[index] {
+      continue
+    }
+
+    var stack = [index]
+    visited[index] = true
+    var minX = index % width
+    var maxX = minX
+    var minY = index / width
+    var maxY = minY
+    var area = 0
+
+    while let current = stack.popLast() {
+      let x = current % width
+      let y = current / width
+      area += 1
+      minX = min(minX, x)
+      maxX = max(maxX, x)
+      minY = min(minY, y)
+      maxY = max(maxY, y)
+
+      for (dx, dy) in neighborOffsets {
+        let nextX = x + dx
+        let nextY = y + dy
+        if nextX < 0 || nextX >= width || nextY < 0 || nextY >= height {
+          continue
+        }
+        let next = nextY * width + nextX
+        if visited[next] || !mask[next] {
+          continue
+        }
+        visited[next] = true
+        stack.append(next)
+      }
+    }
+
+    components.append(PixelComponent(minX: minX, minY: minY, maxX: maxX, maxY: maxY, area: area))
+  }
+
+  return components
+}
+
+func mergeComponentBounds(_ components: [PixelComponent]) -> BoundsRecord? {
+  guard let first = components.first else {
+    return nil
+  }
+  var minX = first.minX
+  var minY = first.minY
+  var maxX = first.maxX
+  var maxY = first.maxY
+  for component in components.dropFirst() {
+    minX = min(minX, component.minX)
+    minY = min(minY, component.minY)
+    maxX = max(maxX, component.maxX)
+    maxY = max(maxY, component.maxY)
+  }
+  return BoundsRecord(x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1)
+}
+
+func selectComponentBounds(_ components: [PixelComponent], anchorRect: BoundsRecord) -> BoundsRecord? {
+  if components.isEmpty {
+    return nil
+  }
+
+  let intersecting = components.filter { boundsIntersect($0.bounds, anchorRect) }
+  if !intersecting.isEmpty {
+    return mergeComponentBounds(intersecting)
+  }
+
+  let nearest = components.min { left, right in
+    let leftDistance = boundsCenterDistanceSquared(left.bounds, anchorRect)
+    let rightDistance = boundsCenterDistanceSquared(right.bounds, anchorRect)
+    if leftDistance == rightDistance {
+      return left.area > right.area
+    }
+    return leftDistance < rightDistance
+  }
+  return nearest?.bounds
+}
+
+func paddedTrimBounds(_ bounds: BoundsRecord, padding: Int, width: Int, height: Int) -> BoundsRecord {
+  return expandBounds(bounds, by: padding, width: width, height: height)
+}
+
+func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String, anchorRect: BoundsRecord) throws -> BoundsRecord {
   let width = image.width
   let height = image.height
   let bytesPerPixel = 4
@@ -220,12 +375,9 @@ func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String) throws -> B
   context.fill(CGRect(x: 0, y: 0, width: width, height: height))
   context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
 
-  var minX = width
-  var minY = height
-  var maxX = -1
-  var maxY = -1
-  var rowMeaningful = [Int](repeating: 0, count: height)
-  var rowColorful = [Int](repeating: 0, count: height)
+  var meaningfulMask = [Bool](repeating: false, count: width * height)
+  var colorMask = [Bool](repeating: false, count: width * height)
+  var totalMeaningful = 0
   var totalColorful = 0
 
   for y in 0..<height {
@@ -237,92 +389,57 @@ func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String) throws -> B
       let alpha = pixels[offset + 3]
       let isMeaningful = alpha > 8 && (red < 245 || green < 245 || blue < 245)
       if isMeaningful {
-        minX = min(minX, x)
-        minY = min(minY, y)
-        maxX = max(maxX, x)
-        maxY = max(maxY, y)
-        rowMeaningful[y] += 1
+        let maskIndex = y * width + x
+        meaningfulMask[maskIndex] = true
+        totalMeaningful += 1
         let channelMax = max(Int(red), max(Int(green), Int(blue)))
         let channelMin = min(Int(red), min(Int(green), Int(blue)))
         if channelMax > channelMin + 30 {
-          rowColorful[y] += 1
+          colorMask[maskIndex] = true
           totalColorful += 1
         }
       }
     }
   }
 
-  if maxX < minX || maxY < minY {
+  if totalMeaningful == 0 {
     return BoundsRecord(x: 0, y: 0, width: width, height: height)
   }
 
-  if width <= 160 && height <= 190 && totalColorful > 30 {
-    var y = minY + max(8, Int(Double(height) * 0.25))
-    while y <= maxY {
-      if rowMeaningful[y] <= 1 {
-        let gapStart = y
-        while y <= maxY && rowMeaningful[y] <= 1 {
-          y += 1
-        }
-        let gapLength = y - gapStart
-        if gapLength >= 3 && y <= maxY && y > minY + Int(Double(height) * 0.45) {
-          let tailStart = y
-          let tailColorful = rowColorful[tailStart...maxY].reduce(0, +)
-          let tailHeight = maxY - tailStart + 1
-          var segmentEnd = tailStart
-          while segmentEnd <= maxY && rowMeaningful[segmentEnd] > 1 {
-            segmentEnd += 1
-          }
-          segmentEnd = max(tailStart, segmentEnd - 1)
-          let firstSegmentHeight = segmentEnd - tailStart + 1
-          let firstSegmentMax = rowMeaningful[tailStart...segmentEnd].max() ?? 0
-          let looksLikeAttachedPlate = firstSegmentHeight >= 8 && firstSegmentMax >= Int(Double(width) * 0.4)
-          if !looksLikeAttachedPlate && tailHeight >= 5 && tailColorful <= max(8, totalColorful / 50) {
-            maxY = max(minY, gapStart - 1)
-            break
-          }
-        }
-      } else {
-        y += 1
-      }
-    }
+  let padding = tailTrimMode == "preserve-colorless-lower-attachment" ? 5 : 6
+  let anchor = expandBounds(clampBounds(anchorRect, width: width, height: height), by: 6, width: width, height: height)
+  let meaningfulComponents = pixelComponents(mask: meaningfulMask, width: width, height: height)
+  let meaningfulBounds = selectComponentBounds(meaningfulComponents, anchorRect: anchor)
 
-    if tailTrimMode != "preserve-colorless-lower-attachment",
-       let lastColorfulY = rowColorful.lastIndex(where: { $0 > 0 }),
-       lastColorfulY + 3 < maxY {
-      var revisedMaxY = lastColorfulY
-      var probeY = lastColorfulY + 1
-      while probeY <= maxY && rowMeaningful[probeY] <= 1 {
-        probeY += 1
+  if tailTrimMode != "preserve-colorless-lower-attachment" && totalColorful > 30 {
+    let colorComponents = pixelComponents(mask: colorMask, width: width, height: height)
+    if let colorBounds = selectComponentBounds(colorComponents, anchorRect: anchor) {
+      let minimumUsefulWidth = max(14, Int((Double(anchor.width) * 0.38).rounded()))
+      let minimumUsefulHeight = max(14, Int((Double(anchor.height) * 0.28).rounded()))
+      if colorBounds.width >= minimumUsefulWidth && colorBounds.height >= minimumUsefulHeight {
+        return paddedTrimBounds(colorBounds, padding: padding, width: width, height: height)
       }
-      if probeY <= maxY {
-        var segmentEnd = probeY
-        while segmentEnd <= maxY && rowMeaningful[segmentEnd] > 1 {
-          segmentEnd += 1
-        }
-        segmentEnd = max(probeY, segmentEnd - 1)
-        let firstSegmentHeight = segmentEnd - probeY + 1
-        let firstSegmentMax = rowMeaningful[probeY...segmentEnd].max() ?? 0
-        let looksLikeAttachedPlate = firstSegmentHeight >= 10 && firstSegmentMax >= Int(Double(width) * 0.4)
-        if looksLikeAttachedPlate {
-          revisedMaxY = segmentEnd
-        }
+      let focusXPadding = max(24, anchor.width / 2)
+      let focusYPadding = max(14, min(22, anchor.height / 5))
+      let focusedAnchor = expandBounds(
+        colorBounds,
+        xPadding: focusXPadding,
+        yPadding: focusYPadding,
+        width: width,
+        height: height
+      )
+      let focusedMeaningfulComponents = meaningfulComponents.filter { boundsIntersect($0.bounds, focusedAnchor) }
+      if let focusedMeaningfulBounds = mergeComponentBounds(focusedMeaningfulComponents) {
+        return paddedTrimBounds(focusedMeaningfulBounds, padding: padding, width: width, height: height)
       }
-      maxY = min(maxY, revisedMaxY)
     }
   }
 
-  let padding = 4
-  let paddedMinX = max(0, minX - padding)
-  let paddedMinY = max(0, minY - padding)
-  let paddedMaxX = min(width - 1, maxX + padding)
-  let paddedMaxY = min(height - 1, maxY + padding)
-  return BoundsRecord(
-    x: paddedMinX,
-    y: paddedMinY,
-    width: paddedMaxX - paddedMinX + 1,
-    height: paddedMaxY - paddedMinY + 1
-  )
+  if let meaningfulBounds = meaningfulBounds {
+    return paddedTrimBounds(meaningfulBounds, padding: padding, width: width, height: height)
+  }
+
+  return BoundsRecord(x: 0, y: 0, width: width, height: height)
 }
 
 func ratio(_ numerator: Int, _ denominator: Int) -> Double {
@@ -366,7 +483,11 @@ do {
     guard let candidateCrop = pageImage.cropping(to: candidateRect) else {
       throw NSError(domain: "cabadrive.manual.sign-crop", code: 19, userInfo: [NSLocalizedDescriptionKey: "Could not crop rendered page for \(target.rowId)"])
     }
-    let contentTrim = try meaningfulContentBounds(candidateCrop, tailTrimMode: target.tailTrimMode)
+    let contentTrim = try meaningfulContentBounds(
+      candidateCrop,
+      tailTrimMode: target.tailTrimMode,
+      anchorRect: target.baselineCropRegionAtCandidateScale
+    )
     let sourceRegion = BoundsRecord(
       x: target.candidateRegionAtBaseScale.x + contentTrim.x,
       y: target.candidateRegionAtBaseScale.y + contentTrim.y,
@@ -403,6 +524,7 @@ do {
         sourceOrder: target.sourceOrder,
         sourcePdfPath: config.sourcePdfPath,
         candidateRegionAtBaseScale: target.candidateRegionAtBaseScale,
+        baselineCropRegionAtCandidateScale: target.baselineCropRegionAtCandidateScale,
         sourceRegionAtBaseScale: sourceRegion,
         contentTrimBoundsAtCandidateScale: contentTrim,
         tailTrimMode: target.tailTrimMode,

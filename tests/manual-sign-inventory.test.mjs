@@ -10,6 +10,7 @@ const finalSummaryPath = "specs/037-manual-sign-crop-resolution/evidence/final/m
 const sourceManifestPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json";
 const rowSourceMappingPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json";
 const scriptPath = "scripts/manual-sign-inventory.mjs";
+const cropResolutionScriptPath = "scripts/manual-sign-crop-resolution.mjs";
 const appPath = "src/App.tsx";
 const cssPath = "src/styles.css";
 
@@ -64,6 +65,12 @@ function countBy(rows, key) {
 
 function signLike(entry) {
   return entry.entryKind === "catalog-entry" || entry.entryKind === "contextual-visual";
+}
+
+function entryById(entries, id) {
+  const entry = entries.find((candidate) => candidate.id === id);
+  assert.ok(entry, id);
+  return entry;
 }
 
 test("manual sign inventory validator passes for feature 037 output", () => {
@@ -141,10 +148,76 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
     assert.ok(entry.qualityScaleRatioWidth < 1, entry.id);
     assert.ok(entry.qualityScaleRatioHeight < 1, entry.id);
     assert.equal(entry.cropAuditStatus, "reviewed-final-correct", entry.id);
+    assert.equal(entry.cropAuditBasis?.passes, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.outputPixelTargetPass, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.sourceBoundsPass, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.edgeContactPass, true, entry.id);
+    assert.equal(typeof entry.cropAuditBasis?.relativeSourceWidthRatio, "number", entry.id);
+    assert.equal(typeof entry.cropAuditBasis?.relativeSourceHeightRatio, "number", entry.id);
     assert.equal(entry.noUpscaleProof?.passes, true, entry.id);
     assert.match(entry.finalOutputComposition, /aspect-fit/u, entry.id);
     assert.match(entry.protectedPixelPreservation, /without stretching/u, entry.id);
   }
+});
+
+test("review-blocked crop regressions have explicit passing audit basis and corrected bounds", () => {
+  const inventory = loadJson(inventoryPath);
+  const expectations = [
+    {
+      id: "app4regulatory-p185-029-no-cambiar-de-carril-catalog-entry",
+      minSourceWidth: 50,
+      minSourceHeight: 50
+    },
+    {
+      id: "app4regulatory-p186-018-uso-de-cadenas-para-nieve-catalog-entry",
+      minSourceWidth: 50,
+      minSourceHeight: 50
+    },
+    {
+      id: "app4regulatory-p186-019-giro-obligatorio-derecha",
+      minSourceWidth: 50,
+      minSourceHeight: 50
+    },
+    {
+      id: "app4regulatory-p186-020-giro-obligatorio-izquierda",
+      minSourceWidth: 50,
+      minSourceHeight: 50
+    },
+    {
+      id: "app4informational-p190-005-fin-de-camino-peatonal-a-100-m",
+      minSourceWidth: 35,
+      minSourceHeight: 50,
+      maxSourceWidth: 60,
+      maxSourceHeight: 70
+    },
+    {
+      id: "app4traffic-lights-p197-010-avanzar-peatones",
+      minSourceWidth: 80,
+      minSourceHeight: 40,
+      maxSourceHeight: 55,
+      minSourceY: 2200
+    }
+  ];
+
+  for (const expectation of expectations) {
+    const entry = entryById(inventory.entries, expectation.id);
+    const sourceRegion = entry.finalSourceRegionAtBaseScale;
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", expectation.id);
+    assert.equal(entry.cropAuditBasis?.passes, true, expectation.id);
+    assert.ok(sourceRegion.width >= expectation.minSourceWidth, expectation.id);
+    assert.ok(sourceRegion.height >= expectation.minSourceHeight, expectation.id);
+    if (expectation.maxSourceWidth) assert.ok(sourceRegion.width <= expectation.maxSourceWidth, expectation.id);
+    if (expectation.maxSourceHeight) assert.ok(sourceRegion.height <= expectation.maxSourceHeight, expectation.id);
+    if (expectation.minSourceY) assert.ok(sourceRegion.y >= expectation.minSourceY, expectation.id);
+  }
+});
+
+test("crop generator cannot stamp reviewed-final-correct without audit pass", () => {
+  const cropResolutionSource = readFileSync(cropResolutionScriptPath, "utf8");
+  assert.match(cropResolutionSource, /automatedCropAudit\.passes\s*\?\s*"reviewed-final-correct"\s*:\s*"pending-crop-audit"/u);
+  assert.doesNotMatch(cropResolutionSource, /cropAuditStatus:\s*"reviewed-final-correct"/u);
+  assert.match(cropResolutionSource, /edgeContactPass/u);
+  assert.match(cropResolutionSource, /sourceBoundsPass/u);
 });
 
 test("category headings are DOM dispositions and excluded from sign quality counts", () => {
@@ -168,7 +241,9 @@ test("known screenshot problem rows have corrected source bounds and no old CSS 
   assert.equal(animalCart.finalTailTrimMode, "trim-external-catalog-label");
   assert.equal(noParkingPlate.finalTailTrimMode, "preserve-colorless-lower-attachment");
   assert.ok(animalCart.finalSourceRegionAtBaseScale.width < animalCart.baselineCropNaturalWidth, animalCart.id);
-  assert.ok(noParkingPlate.finalSourceRegionAtBaseScale.height < noParkingPlate.baselineCropNaturalHeight, noParkingPlate.id);
+  assert.ok(noParkingPlate.finalSourceRegionAtBaseScale.height >= noParkingPlate.baselineCropNaturalHeight, noParkingPlate.id);
+  assert.equal(animalCart.cropAuditBasis?.passes, true, animalCart.id);
+  assert.equal(noParkingPlate.cropAuditBasis?.passes, true, noParkingPlate.id);
   assert.equal(animalCart.renderMode, "individual-source-crop-3x");
   assert.equal(noParkingPlate.renderMode, "individual-source-crop-3x");
 });

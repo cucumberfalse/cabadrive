@@ -22,7 +22,8 @@ const renderMode = "individual-source-crop-3x";
 const generatedBy = "scripts/manual-sign-crop-resolution.mjs";
 const generatedAt = process.env.MANUAL_SIGN_CROP_GENERATED_AT || new Date().toISOString();
 const rowGroupTolerancePx = 30;
-const cellExpansionPx = 6;
+const horizontalExpansionPx = 28;
+const bottomExpansionPx = 42;
 const neighborGapPx = 4;
 
 function repoPath(path) {
@@ -66,6 +67,10 @@ function sectionAssetPath(row) {
   return `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/${row.sectionId}/individual-3x/${row.id}.png`;
 }
 
+function canSpanNextColumn(row) {
+  return row.sectionId === "app4-signs-horizontal" || row.entryKind === "contextual-visual" || row.baselineCropRegion.width >= 120;
+}
+
 function tailTrimMode(row) {
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
   if (
@@ -75,6 +80,20 @@ function tailTrimMode(row) {
     return "preserve-colorless-lower-attachment";
   }
   return "trim-external-catalog-label";
+}
+
+function verticalLookbackPx(row) {
+  if (row.sectionId === "app4-signs-traffic-lights" && /p197-0(?:09|10)-/.test(row.id)) {
+    return 8;
+  }
+  return Math.min(120, Math.max(36, Math.round(row.baselineCropRegion.height * 0.9)));
+}
+
+function bottomLookaheadPx(row) {
+  if (row.sectionId === "app4-signs-traffic-lights" && /p197-0(?:09|10)-/.test(row.id)) {
+    return 18;
+  }
+  return bottomExpansionPx;
 }
 
 function clusterByCoordinate(rows, coordinateKey, tolerance) {
@@ -115,6 +134,17 @@ function makeCropLayoutIndex(baseline) {
         const row = sameVisualRow[xIndex];
         const rowLeft = row.baselineCropRegion.x;
         const rowRight = row.baselineCropRegion.x + row.baselineCropRegion.width;
+        let previousOverlappingRowY = null;
+        for (const earlierCluster of yClusters.slice(0, yIndex).reverse()) {
+          const overlappingRows = earlierCluster.rows.filter((earlierRow) => {
+            const earlierLeft = earlierRow.baselineCropRegion.x;
+            const earlierRight = earlierRow.baselineCropRegion.x + earlierRow.baselineCropRegion.width;
+            return earlierLeft < rowRight && earlierRight > rowLeft;
+          });
+          if (!overlappingRows.length) continue;
+          previousOverlappingRowY = earlierCluster.min;
+          break;
+        }
         let nextOverlappingRowY = null;
         for (const laterCluster of yClusters.slice(yIndex + 1)) {
           const overlappingRows = laterCluster.rows.filter((laterRow) => {
@@ -123,12 +153,11 @@ function makeCropLayoutIndex(baseline) {
             return laterLeft < rowRight && laterRight > rowLeft;
           });
           if (!overlappingRows.length) continue;
-          const minOverlappingHeight = Math.min(...overlappingRows.map((laterRow) => laterRow.baselineCropRegion.height));
-          const guard = Math.min(32, Math.max(14, Math.round(minOverlappingHeight * 0.35)));
-          nextOverlappingRowY = laterCluster.min - guard;
+          nextOverlappingRowY = laterCluster.min;
           break;
         }
         index.set(row.id, {
+          previousVisualRowY: previousOverlappingRowY,
           nextVisualRowY: nextOverlappingRowY,
           nextVisualColumnX: sameVisualRow[xIndex + 1]?.baselineCropRegion.x ?? null
         });
@@ -144,15 +173,23 @@ function candidateSourceRegion(row, cropLayoutIndex) {
   if (!sourceRegion || !cropRegion) throw new Error(`${row.id}: missing sourceRegion/cropRegion`);
   const layout = cropLayoutIndex.get(row.id);
 
-  let localX = Math.max(0, cropRegion.x - cellExpansionPx);
-  let localY = Math.max(0, cropRegion.y - cellExpansionPx);
-  let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + cellExpansionPx);
-  let localBottom = Math.min(sourceRegion.height, cropRegion.y + cropRegion.height + cellExpansionPx);
+  let localX = Math.max(0, cropRegion.x - horizontalExpansionPx);
+  let localY = Math.max(0, cropRegion.y - verticalLookbackPx(row));
+  let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + horizontalExpansionPx);
+  let localBottom = Math.min(sourceRegion.height, cropRegion.y + cropRegion.height + bottomLookaheadPx(row));
 
-  if (layout?.nextVisualColumnX != null && localRight > layout.nextVisualColumnX - neighborGapPx) {
+  if (
+    layout?.nextVisualColumnX != null &&
+    !canSpanNextColumn(row) &&
+    localRight > layout.nextVisualColumnX - neighborGapPx
+  ) {
     localRight = Math.max(cropRegion.x + 1, layout.nextVisualColumnX - neighborGapPx);
   }
-  if (layout?.nextVisualRowY != null && localBottom > layout.nextVisualRowY - neighborGapPx) {
+  if (
+    layout?.nextVisualRowY != null &&
+    cropRegion.y + cropRegion.height <= layout.nextVisualRowY &&
+    localBottom > layout.nextVisualRowY - neighborGapPx
+  ) {
     localBottom = Math.max(cropRegion.y + 1, layout.nextVisualRowY - neighborGapPx);
   }
 
@@ -166,22 +203,37 @@ function candidateSourceRegion(row, cropLayoutIndex) {
 
 function makeTargets(baseline) {
   const cropLayoutIndex = makeCropLayoutIndex(baseline);
-  return baseline.rows.filter(signLike).map((row) => ({
-    rowId: row.id,
-    entryKind: row.entryKind,
-    sectionId: row.sectionId,
-    sourcePage: row.sourcePage,
-    sourceOrder: row.sourceOrder,
-    outputAssetPath: sectionAssetPath(row),
-    candidateRegionAtBaseScale: candidateSourceRegion(row, cropLayoutIndex),
-    tailTrimMode: tailTrimMode(row),
-    cardTrimBoundsAtCardRenderScale: { x: 0, y: 0, width: row.baselineCropRegion.width, height: row.baselineCropRegion.height },
-    cardRenderScale: sourceBaseScale,
-    baselineCropNaturalWidth: row.baselineCropNaturalWidth,
-    baselineCropNaturalHeight: row.baselineCropNaturalHeight,
-    requiredMinimumWidth: Math.ceil(3 * row.baselineCropNaturalWidth),
-    requiredMinimumHeight: Math.ceil(3 * row.baselineCropNaturalHeight)
-  }));
+  return baseline.rows.filter(signLike).map((row) => {
+    const candidateRegionAtBaseScale = candidateSourceRegion(row, cropLayoutIndex);
+    const absoluteBaselineCropRegion = {
+      x: row.baselineSourceRegion.x + row.baselineCropRegion.x,
+      y: row.baselineSourceRegion.y + row.baselineCropRegion.y,
+      width: row.baselineCropRegion.width,
+      height: row.baselineCropRegion.height
+    };
+    return {
+      rowId: row.id,
+      entryKind: row.entryKind,
+      sectionId: row.sectionId,
+      sourcePage: row.sourcePage,
+      sourceOrder: row.sourceOrder,
+      outputAssetPath: sectionAssetPath(row),
+      candidateRegionAtBaseScale,
+      baselineCropRegionAtCandidateScale: {
+        x: absoluteBaselineCropRegion.x - candidateRegionAtBaseScale.x,
+        y: absoluteBaselineCropRegion.y - candidateRegionAtBaseScale.y,
+        width: absoluteBaselineCropRegion.width,
+        height: absoluteBaselineCropRegion.height
+      },
+      tailTrimMode: tailTrimMode(row),
+      cardTrimBoundsAtCardRenderScale: { x: 0, y: 0, width: row.baselineCropRegion.width, height: row.baselineCropRegion.height },
+      cardRenderScale: sourceBaseScale,
+      baselineCropNaturalWidth: row.baselineCropNaturalWidth,
+      baselineCropNaturalHeight: row.baselineCropNaturalHeight,
+      requiredMinimumWidth: Math.ceil(3 * row.baselineCropNaturalWidth),
+      requiredMinimumHeight: Math.ceil(3 * row.baselineCropNaturalHeight)
+    };
+  });
 }
 
 function runSwiftRenderer() {
@@ -195,6 +247,65 @@ function runSwiftRenderer() {
   if (result.status !== 0) {
     throw new Error(`Swift crop renderer failed with exit ${result.status}`);
   }
+}
+
+function makeAutomatedCropAudit(row, renderRecord, dimensions) {
+  const candidate = renderRecord.candidateRegionAtBaseScale;
+  const trim = renderRecord.contentTrimBoundsAtCandidateScale;
+  const edgeContact = {
+    left: trim.x <= 0,
+    top: trim.y <= 0,
+    right: trim.x + trim.width >= candidate.width,
+    bottom: trim.y + trim.height >= candidate.height
+  };
+  const edgeContactSides = Object.entries(edgeContact)
+    .filter(([, hasContact]) => hasContact)
+    .map(([side]) => side);
+  const outputPixelTargetPass =
+    dimensions.width >= Math.ceil(3 * row.baselineCropNaturalWidth) &&
+    dimensions.height >= Math.ceil(3 * row.baselineCropNaturalHeight);
+  const relativeSourceWidthRatio = Number((renderRecord.sourceRegionAtBaseScale.width / row.baselineCropNaturalWidth).toFixed(6));
+  const relativeSourceHeightRatio = Number((renderRecord.sourceRegionAtBaseScale.height / row.baselineCropNaturalHeight).toFixed(6));
+  const minimumRelativeSourceWidthRatio = 0.35;
+  const minimumRelativeSourceHeightRatio = 0.35;
+  const edgeContactMinimumRelativeWidthRatio = 0.5;
+  const edgeContactMinimumRelativeHeightRatio = 0.5;
+  const sourceBoundsPass =
+    renderRecord.sourceRegionAtBaseScale.width >= 12 &&
+    renderRecord.sourceRegionAtBaseScale.height >= 12 &&
+    relativeSourceWidthRatio >= minimumRelativeSourceWidthRatio &&
+    relativeSourceHeightRatio >= minimumRelativeSourceHeightRatio;
+  const edgeContactPass =
+    edgeContactSides.length === 0 ||
+    (relativeSourceWidthRatio >= edgeContactMinimumRelativeWidthRatio &&
+      relativeSourceHeightRatio >= edgeContactMinimumRelativeHeightRatio);
+  const hasTrimmedContent = trim.width > 0 && trim.height > 0;
+  const passes = outputPixelTargetPass && sourceBoundsPass && hasTrimmedContent && edgeContactPass;
+  return {
+    auditId: `feature-037-automated-crop-audit:${row.id}`,
+    method:
+      "cell-expanded official-PDF candidate, baseline-anchor component trim, relative source-bounds guard, and explicit edge-contact policy; reviewed-final-correct is assigned only when this audit passes",
+    outputPixelTargetPass,
+    sourceBoundsPass,
+    minimumRelativeSourceWidthRatio,
+    minimumRelativeSourceHeightRatio,
+    relativeSourceWidthRatio,
+    relativeSourceHeightRatio,
+    hasTrimmedContent,
+    candidateRegionAtBaseScale: candidate,
+    contentTrimBoundsAtCandidateScale: trim,
+    finalSourceRegionAtBaseScale: renderRecord.sourceRegionAtBaseScale,
+    edgeContact,
+    edgeContactSides,
+    edgeContactPolicy:
+      edgeContactSides.length === 0
+        ? "no-edge-contact"
+        : "allowed-only-when-relative-source-coverage-meets-thresholds",
+    edgeContactPass,
+    edgeContactMinimumRelativeWidthRatio,
+    edgeContactMinimumRelativeHeightRatio,
+    passes
+  };
 }
 
 function rowQualityFields(row, renderRecord, sourceMappingById) {
@@ -213,6 +324,8 @@ function rowQualityFields(row, renderRecord, sourceMappingById) {
   const effectiveFinalNaturalHeight = renderRecord.sourceRegionAtBaseScale.height;
   const qualityScaleRatioWidth = Number((effectiveFinalNaturalWidth / requiredMinimumWidth).toFixed(6));
   const qualityScaleRatioHeight = Number((effectiveFinalNaturalHeight / requiredMinimumHeight).toFixed(6));
+  const automatedCropAudit = makeAutomatedCropAudit(row, renderRecord, dimensions);
+  const cropAuditStatus = automatedCropAudit.passes ? "reviewed-final-correct" : "pending-crop-audit";
 
   return {
     sourceEvaluationId: sourceMapping.sourceEvaluationId,
@@ -250,9 +363,11 @@ function rowQualityFields(row, renderRecord, sourceMappingById) {
     sourceLimitedDisposition: "best-official-source-3x-output-pixels",
     sourceLimitedReason:
       "Mandatory source-evaluation found no exact official source with true native/effective 3x detail. The final PNG is a source-faithful 3x output-pixel crop rendered directly from the retained official CABA manual PDF.",
-    cropAuditStatus: "reviewed-final-correct",
-    cropAuditNote:
-      "Final crop uses the reconciled feature-036 sourceRegion/cropRegion as a source candidate, constrains it by neighboring table rows/columns, then trims to non-white official pixels from a fresh retained CABA PDF page render. External captions remain selectable DOM text, and the crop excludes browser sheet clipping and obvious neighboring entries.",
+    cropAuditStatus,
+    cropAuditBasis: automatedCropAudit,
+    cropAuditNote: automatedCropAudit.passes
+      ? "Final crop uses a cell-expanded source candidate, trims to official visual content with baseline-anchor component checks, and passes the feature-037 crop audit basis. Edge-contact rows must meet explicit relative source-coverage thresholds. External captions remain selectable DOM text; source-limited disclosure remains separate from crop correctness."
+      : "Final crop is pending manual/automated crop audit because the generated source bounds indicate a possible partial crop.",
     noUpscale: true,
     runtimeDisplayMaxWidth: dimensions.width,
     runtimeDisplayMaxHeight: dimensions.height,
@@ -415,6 +530,13 @@ function validateFinalRows(finalRows) {
     if (row.threeXStatus !== "source-limited-exception") errors.push(`${row.id}: source-limited row must not be marked as native/effective pass`);
     if (row.sourceLimitedDisposition !== "best-official-source-3x-output-pixels") errors.push(`${row.id}: missing source-limited disposition`);
     if (row.cropAuditStatus !== "reviewed-final-correct") errors.push(`${row.id}: crop audit must be reviewed-final-correct`);
+    if (row.cropAuditBasis?.passes !== true) errors.push(`${row.id}: crop audit basis must pass`);
+    if (row.cropAuditBasis?.outputPixelTargetPass !== true) errors.push(`${row.id}: crop audit output pixel target must pass`);
+    if (row.cropAuditBasis?.sourceBoundsPass !== true) errors.push(`${row.id}: crop audit source bounds must pass`);
+    if (row.cropAuditBasis?.edgeContactPass !== true) errors.push(`${row.id}: crop audit edge-contact policy must pass`);
+    if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
+      errors.push(`${row.id}: crop audit relative source ratios are required`);
+    }
     if (row.renderMode !== renderMode) errors.push(`${row.id}: renderMode must be ${renderMode}`);
     if (row.outputPixelScaleRatioWidth < 3 || row.outputPixelScaleRatioHeight < 3) errors.push(`${row.id}: output pixel scale ratios must be at least 3`);
     if (row.qualityScaleRatioWidth >= 1 || row.qualityScaleRatioHeight >= 1) errors.push(`${row.id}: quality ratio should disclose source limitation below native/effective 3x`);

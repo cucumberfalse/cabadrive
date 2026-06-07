@@ -4251,6 +4251,7 @@ function applyFeature037Inventory(baseInventory) {
       sourceLimitedDisposition: finalRow.sourceLimitedDisposition,
       sourceLimitedReason: finalRow.sourceLimitedReason,
       cropAuditStatus: finalRow.cropAuditStatus,
+      cropAuditBasis: finalRow.cropAuditBasis,
       cropAuditNote: finalRow.cropAuditNote,
       runtimeDisplayMaxWidth: finalRow.runtimeDisplayMaxWidth,
       runtimeDisplayMaxHeight: finalRow.runtimeDisplayMaxHeight,
@@ -4349,6 +4350,12 @@ function validateFeature037Inventory(inventory) {
     assertCondition(entry.threeXStatus === "source-limited-exception", `${label}: sign-like row must remain source-limited-exception.`, errors);
     assertCondition(entry.sourceLimitedDisposition === "best-official-source-3x-output-pixels", `${label}: sourceLimitedDisposition is required.`, errors);
     assertCondition(entry.cropAuditStatus === "reviewed-final-correct", `${label}: cropAuditStatus must be reviewed-final-correct.`, errors);
+    assertCondition(entry.cropAuditBasis?.passes === true, `${label}: cropAuditBasis.passes must be true.`, errors);
+    assertCondition(entry.cropAuditBasis?.outputPixelTargetPass === true, `${label}: cropAuditBasis.outputPixelTargetPass must be true.`, errors);
+    assertCondition(entry.cropAuditBasis?.sourceBoundsPass === true, `${label}: cropAuditBasis.sourceBoundsPass must be true.`, errors);
+    assertCondition(entry.cropAuditBasis?.edgeContactPass === true, `${label}: cropAuditBasis.edgeContactPass must be true.`, errors);
+    assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
+    assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
     assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);
     assertCondition(entry.finalOutputComposition?.includes("aspect-fit"), `${label}: finalOutputComposition must record aspect-fit output.`, errors);
     assertCondition(entry.protectedPixelPreservation?.includes("without stretching"), `${label}: protectedPixelPreservation must record no stretching.`, errors);

@@ -7,6 +7,33 @@ export type ManualSignRegion = {
   height: number;
 };
 
+export type ManualSignCropAuditBasis = {
+  auditId: string;
+  method: string;
+  outputPixelTargetPass: boolean;
+  sourceBoundsPass: boolean;
+  minimumRelativeSourceWidthRatio: number;
+  minimumRelativeSourceHeightRatio: number;
+  relativeSourceWidthRatio: number;
+  relativeSourceHeightRatio: number;
+  hasTrimmedContent: boolean;
+  candidateRegionAtBaseScale: ManualSignRegion;
+  contentTrimBoundsAtCandidateScale: ManualSignRegion;
+  finalSourceRegionAtBaseScale: ManualSignRegion;
+  edgeContact: {
+    left: boolean;
+    top: boolean;
+    right: boolean;
+    bottom: boolean;
+  };
+  edgeContactSides: Array<"left" | "top" | "right" | "bottom">;
+  edgeContactPolicy: "no-edge-contact" | "allowed-only-when-relative-source-coverage-meets-thresholds";
+  edgeContactPass: boolean;
+  edgeContactMinimumRelativeWidthRatio: number;
+  edgeContactMinimumRelativeHeightRatio: number;
+  passes: boolean;
+};
+
 export type ManualSignEntry = {
   id: string;
   sectionId: string;
@@ -73,7 +100,8 @@ export type ManualSignEntry = {
   sourceLimitedExceptionId?: string;
   sourceLimitedDisposition?: "best-official-source-3x-output-pixels" | null;
   sourceLimitedReason?: string;
-  cropAuditStatus?: "reviewed-final-correct" | "category-heading-dom";
+  cropAuditStatus?: "reviewed-final-correct" | "pending-crop-audit" | "category-heading-dom";
+  cropAuditBasis?: ManualSignCropAuditBasis;
   cropAuditNote?: string;
   runtimeDisplayMaxWidth?: number;
   runtimeDisplayMaxHeight?: number;
