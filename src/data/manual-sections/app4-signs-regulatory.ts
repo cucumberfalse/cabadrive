@@ -61,6 +61,17 @@ export const app4SignsRegulatorySection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "regulatory-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки регулирующих знаков",
+      sourceTextEs: "Reglamentarias: individual source-region catalog.",
+      sectionId: "app4-signs-regulatory",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "regulatory-focused-signs",
       kind: "source-image-cards",
       titleRu: "Крупный пример запрещающего знака",

@@ -688,6 +688,14 @@ export type ManualGuideContentBlock =
     }
   | {
       id: string;
+      kind: "manual-sign-catalog";
+      titleRu: string;
+      sourceTextEs: string;
+      sectionId: string;
+      visualNotes: string[];
+    }
+  | {
+      id: string;
       kind: "source-image-cards";
       titleRu: string;
       sourceTextEs: string;

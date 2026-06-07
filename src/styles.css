@@ -2929,6 +2929,110 @@ small,
   font-weight: 900;
 }
 
+.manual-sign-catalog {
+  box-sizing: border-box;
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #263532;
+  user-select: text;
+}
+
+.manual-sign-catalog h3 {
+  margin: 0;
+  color: #2b3536;
+  font-size: 1.24rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.manual-sign-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.manual-sign-card {
+  display: grid;
+  grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #d8e6e6;
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.manual-sign-figure {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.manual-sign-clip-scroll {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.manual-sign-source-viewport {
+  position: relative;
+  width: var(--manual-sign-crop-width);
+  height: var(--manual-sign-crop-height);
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.manual-sign-source-viewport img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: var(--manual-sign-source-width);
+  max-width: none;
+  height: var(--manual-sign-source-height);
+  transform: translate(calc(-1 * var(--manual-sign-crop-x)), calc(-1 * var(--manual-sign-crop-y)));
+}
+
+.manual-sign-caption {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.manual-sign-caption h4,
+.manual-sign-caption p {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+.manual-sign-caption h4 {
+  color: #263532;
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.manual-sign-caption p {
+  color: #1b6680;
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
 @media (max-width: 840px) {
   .status-strip,
   .manual-public-transport-comparison-layout,
@@ -2937,6 +3041,10 @@ small,
   .manual-shared-trip-closing,
   .manual-source-image-card-grid,
   .manual-source-image-card {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-sign-catalog-grid {
     grid-template-columns: 1fr;
   }
 

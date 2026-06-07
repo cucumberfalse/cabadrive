@@ -61,6 +61,17 @@ export const app4SignsTemporarySection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "temporary-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки временных знаков и устройств",
+      sourceTextEs: "Transitorias: individual source-region catalog.",
+      sectionId: "app4-signs-temporary",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "temporary-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы временных знаков и устройств",

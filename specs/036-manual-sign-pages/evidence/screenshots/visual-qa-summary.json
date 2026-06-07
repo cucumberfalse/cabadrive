@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-06-07T14:44:33.001Z",
+  "summary": [
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-desktop.png",
+      "viewport": "desktop",
+      "sectionId": "app4-signs-regulatory",
+      "entryCount": 52,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4regulatory-p185-001-no-avanzar",
+      "lastEntry": "app4regulatory-p186-040-cruce-ferroviario"
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-desktop.png",
+      "viewport": "desktop",
+      "sectionId": "app4-signs-horizontal",
+      "entryCount": 29,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4horizontal-p195-001-horizontales",
+      "lastEntry": "app4horizontal-p196-014-cruce-de-ciclistas"
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-regulatory-dense-mobile.png",
+      "viewport": "mobile",
+      "sectionId": "app4-signs-regulatory",
+      "entryCount": 52,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4regulatory-p185-001-no-avanzar",
+      "lastEntry": "app4regulatory-p186-040-cruce-ferroviario"
+    },
+    {
+      "file": "specs/036-manual-sign-pages/evidence/screenshots/manual-signs-horizontal-markings-representative-mobile.png",
+      "viewport": "mobile",
+      "sectionId": "app4-signs-horizontal",
+      "entryCount": 29,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "badRenderMode": 0,
+      "badSourceFlag": 0,
+      "badOverflow": 0,
+      "emptyCaptions": 0,
+      "monotonicOrder": true,
+      "documentOverflowX": 0,
+      "firstEntry": "app4horizontal-p195-001-horizontales",
+      "lastEntry": "app4horizontal-p196-014-cruce-de-ciclistas"
+    }
+  ]
+}

@@ -61,6 +61,17 @@ export const app4SignsHorizontalSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "horizontal-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки дорожной разметки",
+      sourceTextEs: "Horizontales: individual source-region catalog.",
+      sectionId: "app4-signs-horizontal",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "horizontal-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы дорожной разметки",

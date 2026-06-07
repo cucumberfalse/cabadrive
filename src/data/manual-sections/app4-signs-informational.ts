@@ -63,6 +63,17 @@ export const app4SignsInformationalSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "informational-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки информационных знаков",
+      sourceTextEs: "Informativas: individual source-region catalog.",
+      sectionId: "app4-signs-informational",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "informational-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы информационных знаков",

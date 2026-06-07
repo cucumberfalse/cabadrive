@@ -38,6 +38,7 @@ import {
   type ManualGuideSectionContent,
   type ManualGuideSectionEntry
 } from "./data/manualGuide";
+import { manualSignEntriesForSection, type ManualSignEntry } from "./data/manual-signs/app4SignCatalog";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -2518,6 +2519,71 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
   );
 }
 
+function ManualSignSourceClip({ entry }: { entry: ManualSignEntry }) {
+  const region = entry.displayRegion;
+  const clipStyle = {
+    "--manual-sign-source-width": `${entry.naturalWidth}px`,
+    "--manual-sign-source-height": `${entry.naturalHeight}px`,
+    "--manual-sign-crop-x": `${region.x}px`,
+    "--manual-sign-crop-y": `${region.y}px`,
+    "--manual-sign-crop-width": `${region.width}px`,
+    "--manual-sign-crop-height": `${region.height}px`
+  } as CSSProperties;
+
+  return (
+    <div className="manual-sign-clip-scroll">
+      <div className="manual-sign-source-viewport" style={clipStyle} data-render-mode={entry.renderMode} data-no-upscale={entry.noUpscale}>
+        <img
+          src={assetUrl(entry.assetPath)}
+          alt={`${entry.spanishLabel} - ${entry.russianTranslation}`}
+          data-source-as-is="true"
+          data-render-mode={entry.renderMode}
+          data-source-page={entry.sourcePage}
+          data-source-region={`${region.x},${region.y},${region.width},${region.height}`}
+          loading={entry.sourceOrder <= 8 ? "eager" : "lazy"}
+        />
+      </div>
+    </div>
+  );
+}
+
+function ManualSignCatalogBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "manual-sign-catalog" }> }) {
+  const entries = manualSignEntriesForSection(block.sectionId);
+
+  return (
+    <section
+      className="manual-sign-catalog"
+      data-testid="manual-guide-section-block"
+      data-block-kind={block.kind}
+      data-block-id={block.id}
+      data-manual-sign-section-id={block.sectionId}
+      data-entry-count={entries.length}
+    >
+      <h3>{block.titleRu}</h3>
+      <div className="manual-sign-catalog-grid">
+        {entries.map((entry) => (
+          <article
+            className="manual-sign-card"
+            key={entry.id}
+            data-manual-sign-entry-id={entry.id}
+            data-source-page={entry.sourcePage}
+            data-source-order={entry.sourceOrder}
+            data-source-order-within-page={entry.sourceOrderWithinPage}
+          >
+            <figure className="manual-sign-figure">
+              <ManualSignSourceClip entry={entry} />
+            </figure>
+            <div className="manual-sign-caption">
+              <h4 lang="es">{entry.spanishLabel}</h4>
+              <p lang="ru">{entry.russianTranslation}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectionContent["blocks"][number], { kind: "source-image-cards" }> }) {
   return (
     <section className="manual-source-image-cards" data-testid="manual-guide-section-block" data-block-kind={block.kind} data-block-id={block.id}>
@@ -2755,6 +2821,9 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
           }
           if (block.kind === "shared-trip-closing") {
             return <SharedTripClosingBlockView key={block.id} block={block} />;
+          }
+          if (block.kind === "manual-sign-catalog") {
+            return <ManualSignCatalogBlockView key={block.id} block={block} />;
           }
           if (block.kind === "source-image-cards") {
             return <SourceImageCardsBlockView key={block.id} block={block} />;

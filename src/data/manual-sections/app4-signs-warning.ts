@@ -61,6 +61,17 @@ export const app4SignsWarningSection: ManualGuideSectionContent = {
       ]
     },
     {
+      id: "warning-individual-sign-catalog",
+      kind: "manual-sign-catalog",
+      titleRu: "Карточки предупреждающих знаков",
+      sourceTextEs: "Preventivas: individual source-region catalog.",
+      sectionId: "app4-signs-warning",
+      visualNotes: [
+        "Each entry clips an unchanged official source image region with CSS.",
+        "Spanish and Russian captions are selectable text outside the protected source image."
+      ]
+    },
+    {
       id: "warning-source-sheets",
       kind: "source-image-cards",
       titleRu: "Листы предупреждающих знаков",
