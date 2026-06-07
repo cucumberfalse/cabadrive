@@ -422,7 +422,31 @@ Analyst final validation, when invoked after Architect final validation passes, 
 
 ## Final Validation Evidence
 
+- Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+- Architect validation: passed at 2026-06-07T15:17:00-03:00.
 - Architect return count: 2
+- Architect validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
-- Final validation live pass markers are intentionally deferred until Orchestrator invokes final Architect validation and final Analyst validation on the post-foundation effective content head.
+- Current-PR-head read-only guard: Orchestrator will verify current PR head as an evidence-only successor of effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da before merge.
+
+## Final Architect Validation Notes
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-07T15:17:00-03:00
+Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+Architect validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+Architect return count: 2
+Architect validation evidence: complete feature memory exists at specs/036-manual-sign-pages/feature-request.md, spec.md, plan.md, and tasks.md.
+Architect validation evidence: final inventory evidence covers `316` rows across source pages `185-197`, with `283` catalog-entry rows, `30` category-heading rows, `3` contextual-visual rows, `316` reconciled-source-visual rows, and `0` pending rows.
+Architect validation evidence: final all-section contact-sheet evidence and summary exist under specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/.
+Architect validation evidence: `pnpm run validate:manual-sign-inventory` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
+Architect validation evidence: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests.
+Architect validation evidence: `git diff --check` passed before Architect validation notes were written.
+Architect validation evidence: PR #202 head before validation notes matched effective content head `e5041ad79eb7034e01374b65ac3ceebf44f775da`.
+Architect validation evidence: no live final Analyst validation marker was present before this final Architect pass.
+Architect validation evidence: PR #202 current-head Review Agent comment reports no actionable findings for `e5041ad79eb7034e01374b65ac3ceebf44f775da`.
+Architect validation evidence: required checks were still running at validation time; Orchestrator must recheck current-head checks before merge.
+Architect disposition: no open Architect dispositions remain.
+Architect disposition: no unresolved Implementation Agent feedback remains.
+Architect disposition: review fix `100799eaa66448f5a7b287c00577b5d60c7f1a84` is resolved.
