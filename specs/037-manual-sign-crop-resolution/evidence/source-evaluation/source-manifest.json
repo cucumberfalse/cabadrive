@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "featureId": "037-manual-sign-crop-resolution",
+  "generatedBy": "scripts/manual-sign-source-evaluation.mjs",
+  "generatedAt": "2026-06-07T21:33:31.803Z",
+  "sourceGateStatus": "blocked-source-limited-threshold-exceeded",
+  "baselineEvidencePath": "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json",
+  "rowSourceMappingPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json",
+  "archivedSourceRoot": "content/official-documents/originals/traffic-sign-source-evaluation-037",
+  "evaluatedSourceCount": 9,
+  "mandatorySourceIds": [
+    "caba-manual-pdf",
+    "retained-anexo-l-panels",
+    "argentina-anexo-l-html",
+    "argentina-anexo-l-html-images",
+    "argentina-ansv-sign-catalog-pdf",
+    "argentina-anexo-art22-archive-pdf",
+    "gcba-boletin-anx-58",
+    "gcba-boletin-anx-59",
+    "gcba-pliego-signage-pdf"
+  ],
+  "sources": [
+    {
+      "id": "caba-manual-pdf",
+      "label": "GCBA Manual del Conductor, vehiculo 4 ruedas, Appendix IV source pages",
+      "issuer": "Gobierno de la Ciudad Autonoma de Buenos Aires",
+      "sourceType": "retained-official-pdf",
+      "sourceUrl": "https://buenosaires.gob.ar/licenciasdeconducir/material-de-estudio-para-el-examen-teorico",
+      "retainedPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+      "officialStatusBasis": "Existing retained GCBA manual PDF used by the current Appendix IV inventory for source order, caption mapping, and CABA-specific visual intent.",
+      "pageCount": 200,
+      "hashAlgorithm": "sha256",
+      "path": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+      "bytes": 71667934,
+      "mtime": "2026-06-07T20:41:24.774Z",
+      "sha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+      "nativeResolutionNotes": "The PDF is the exact row-order source. Prior feature-037 scale-15 probe did not prove additional native detail beyond the retained feature-036 sheet crops for the tested Appendix IV sign.",
+      "rowUseDecision": "Chosen as the exact visual-match source for every sign-like baseline row, but only as a source-limited exception candidate until a better exact official 3x source is found.",
+      "rowCoverage": {
+        "signLikeRowsCoveredByExactIntent": 286,
+        "sourcePages": [
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197
+        ]
+      }
+    },
+    {
+      "id": "retained-anexo-l-panels",
+      "label": "Retained Decreto 779/1995 Anexo L image panels",
+      "issuer": "Poder Ejecutivo Nacional / Argentina.gob.ar retained archive",
+      "sourceType": "retained-official-image-panels",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
+      "retainedPath": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images",
+      "officialStatusBasis": "Existing retained repository archive of official Anexo L panel images.",
+      "assetCount": 15,
+      "assets": [
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+          "bytes": 96982,
+          "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9",
+          "dimensions": {
+            "width": 615,
+            "height": 743
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+          "bytes": 111542,
+          "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6",
+          "dimensions": {
+            "width": 618,
+            "height": 733
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+          "bytes": 108200,
+          "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3",
+          "dimensions": {
+            "width": 616,
+            "height": 734
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+          "bytes": 78627,
+          "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868",
+          "dimensions": {
+            "width": 616,
+            "height": 694
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-05.jpg",
+          "bytes": 74452,
+          "sha256": "2af1a4467fbb3e4878b7edc4dc8b9ba77f71bd1f05436f931dfb5f11d8ebea4b",
+          "dimensions": {
+            "width": 617,
+            "height": 718
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-06.jpg",
+          "bytes": 104224,
+          "sha256": "ec1eb862d846c60142e13c75871870f1121f9daa896af5efb05dedbe45f211de",
+          "dimensions": {
+            "width": 619,
+            "height": 735
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-07.jpg",
+          "bytes": 93673,
+          "sha256": "e527ac472878610905b86a41368e55e0710ed07680f67a21f0900d1e559ac2f7",
+          "dimensions": {
+            "width": 619,
+            "height": 645
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-08.jpg",
+          "bytes": 128676,
+          "sha256": "b97a4b5a89c18c46914449ff8d852dd137a45fabc2aeb1d9ce307347326d41d8",
+          "dimensions": {
+            "width": 620,
+            "height": 747
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-09.jpg",
+          "bytes": 74011,
+          "sha256": "e4537242e8c8610629b19835d7af01ffff7905a99c2c78a080cadbcb3cbbdee0",
+          "dimensions": {
+            "width": 616,
+            "height": 709
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-10.jpg",
+          "bytes": 94031,
+          "sha256": "19d7823182511d2bb698e2a385a81ee9edbfb5f06d385271f1176ce68d39c6de",
+          "dimensions": {
+            "width": 617,
+            "height": 740
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-11.jpg",
+          "bytes": 87069,
+          "sha256": "73ad3e2571dd1482ceb2f32a54e1821be4d02b87c985fbea754bf4558b35a4bd",
+          "dimensions": {
+            "width": 616,
+            "height": 734
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-12.jpg",
+          "bytes": 76665,
+          "sha256": "7b292487c95c45a433938e03175a7bc83a984461a613eb30472b1358e2807123",
+          "dimensions": {
+            "width": 614,
+            "height": 728
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-13.jpg",
+          "bytes": 73395,
+          "sha256": "5364b87fce4bea906c0e1f53bf2180b49070c1b275c637601048ca98cc629ab8",
+          "dimensions": {
+            "width": 613,
+            "height": 684
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-14.jpg",
+          "bytes": 90743,
+          "sha256": "97771a26be4d99ef22f31cc6cc1bb29cd902425d8a11502c19230789f97e17a3",
+          "dimensions": {
+            "width": 614,
+            "height": 674
+          }
+        },
+        {
+          "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-15.jpg",
+          "bytes": 51959,
+          "sha256": "051dd1f9c1f77ed24bcf5e850afd93f85b188160762198ef0f0d3df6ac4b7813",
+          "dimensions": {
+            "width": 620,
+            "height": 618
+          }
+        }
+      ],
+      "nativeResolutionNotes": "Panel images are larger than many current row clips, but they are panel-level national material and do not by themselves prove row-level exact equivalence to each CABA learner-facing row, especially CABA-local variants, plates, arrows, embedded labels, and contextual visuals.",
+      "rowUseDecision": "Evaluated as official national panels; not selected for final row crops without row-level exact visual proof."
+    },
+    {
+      "id": "argentina-anexo-l-html",
+      "label": "Argentina.gob.ar Decreto 779/1995 Anexo L HTML",
+      "issuer": "Argentina.gob.ar",
+      "sourceType": "archived-official-html",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
+      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
+      "officialStatusBasis": "Official Argentina.gob.ar Anexo L HTML page archived for source evaluation.",
+      "hashAlgorithm": "sha256",
+      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
+      "bytes": 150099,
+      "mtime": "2026-06-07T21:21:39.495Z",
+      "sha256": "c2240e677d06b6ec01d0bc12fbf12573aea279dc8f2f1a06c54d4f050114937d",
+      "embeddedImageUrlCount": 0,
+      "embeddedImageUrls": [],
+      "nativeResolutionNotes": "The HTML gives legal text and panel image references, not a deterministic CABA row-level crop mapping.",
+      "rowUseDecision": "Evaluated for legal/source coverage; not selected as a direct final crop source."
+    },
+    {
+      "id": "argentina-anexo-l-html-images",
+      "label": "Argentina.gob.ar Anexo L embedded image panels",
+      "issuer": "Argentina.gob.ar",
+      "sourceType": "archived-official-image-panels",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
+      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images",
+      "officialStatusBasis": "Images referenced by the official Argentina.gob.ar Anexo L HTML and archived locally for evaluation.",
+      "assetCount": 16,
+      "assets": [
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-01.jpg",
+          "bytes": 16406,
+          "sha256": "9eefd8e8f9c1c0aaa980316da709c6f432f8a1a7254a12df77daf87ad4d960a0",
+          "dimensions": {
+            "width": 631,
+            "height": 209
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-02.jpg",
+          "bytes": 68290,
+          "sha256": "024044444933e8ddfd3e39a0ab39052f58bdec7d9a26882d7c22997da9c7cf25",
+          "dimensions": {
+            "width": 637,
+            "height": 815
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-03.jpg",
+          "bytes": 75461,
+          "sha256": "fbc7d66a3855a0ca2f9b821b7b3f5f4bc28ec22eede95633371c71d228392be8",
+          "dimensions": {
+            "width": 637,
+            "height": 795
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-04.jpg",
+          "bytes": 70077,
+          "sha256": "964d418379372ecd844c9f4ebcb061bf157cf434b040ffeebd4aee1c6c1484d7",
+          "dimensions": {
+            "width": 647,
+            "height": 809
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-05.jpg",
+          "bytes": 69784,
+          "sha256": "a13dfb491f893ad68f5f1106ba8134964d180e9c6ff64317d51612801109067d",
+          "dimensions": {
+            "width": 639,
+            "height": 815
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-06.jpg",
+          "bytes": 69069,
+          "sha256": "50589bc5e32e95defc0c1a1c7012a85e3f08546ad8853f076a9fde6d0bd8c532",
+          "dimensions": {
+            "width": 643,
+            "height": 799
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-07.jpg",
+          "bytes": 81708,
+          "sha256": "25d6c5b013811b668a905d831cd1a1b2253f4e96ac20f296f5e6025240f67973",
+          "dimensions": {
+            "width": 633,
+            "height": 813
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-08.jpg",
+          "bytes": 78694,
+          "sha256": "aa2fc75c3a55920c6637e5cba90d62bf405cd949cd4f588416316561b7bc79fa",
+          "dimensions": {
+            "width": 635,
+            "height": 801
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-09.jpg",
+          "bytes": 82393,
+          "sha256": "7dee3e1ad61bae53330a0858e6bf5cd8124c44f66aef61719ec0b0f4a7a350d1",
+          "dimensions": {
+            "width": 633,
+            "height": 821
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-10.jpg",
+          "bytes": 68235,
+          "sha256": "cbe62c08b952aaeb3f588a83fe1c932cccc35c8140eb4fd8b888ef10b52045d9",
+          "dimensions": {
+            "width": 645,
+            "height": 803
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-11.jpg",
+          "bytes": 64887,
+          "sha256": "7f807bf1c6e992e3f4c6ecb16742b3913fe7dceb76cd495a690a78afb4190440",
+          "dimensions": {
+            "width": 637,
+            "height": 819
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-12.jpg",
+          "bytes": 70174,
+          "sha256": "79e4bb56aa2f2cf767f424e9a04aa29065fb67eebc4a452cf2210fdf6fe6c6f0",
+          "dimensions": {
+            "width": 639,
+            "height": 803
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-13.jpg",
+          "bytes": 53463,
+          "sha256": "7edf21126209ed9c055f1025619e481dc0e88b3752c228d0cde1d4b5b5f72f42",
+          "dimensions": {
+            "width": 605,
+            "height": 835
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-14.jpg",
+          "bytes": 57121,
+          "sha256": "8aa9ec956218684b6a43f12dac559e06c62c53b4ea2b523a10e2cd0dd949e182",
+          "dimensions": {
+            "width": 623,
+            "height": 839
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-15.jpg",
+          "bytes": 83460,
+          "sha256": "63befdb49a80aaf1b6c83831ade50905125aa5558f1a9799c47208a91f293218",
+          "dimensions": {
+            "width": 643,
+            "height": 909
+          }
+        },
+        {
+          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-16.jpg",
+          "bytes": 13942,
+          "sha256": "88a313ed1b6541191b79815cbdc150e7258611f6b8758d9a52738eab5a1048c3",
+          "dimensions": {
+            "width": 601,
+            "height": 189
+          }
+        }
+      ],
+      "nativeResolutionNotes": "The archived panels are official national source material, but the gate did not establish exact row-level equivalence to all CABA manual rows or 3x effective per-row crop dimensions.",
+      "rowUseDecision": "Evaluated as official national panels; not selected without row-level exact visual proof."
+    },
+    {
+      "id": "argentina-ansv-sign-catalog-pdf",
+      "label": "ANSV Manual de Senaletica",
+      "issuer": "Agencia Nacional de Seguridad Vial / Argentina.gob.ar",
+      "sourceType": "archived-official-pdf",
+      "sourceUrl": "https://www.argentina.gob.ar/sites/default/files/2022/02/ansv_licencias_manual_senaletica_2.pdf",
+      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
+      "officialStatusBasis": "Official Argentina.gob.ar hosted ANSV sign catalog PDF archived for evaluation.",
+      "pageCount": 27,
+      "hashAlgorithm": "sha256",
+      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
+      "bytes": 1111211,
+      "mtime": "2026-06-07T21:21:39.570Z",
+      "sha256": "b2b387e22cd67777ccc8688da396d4d0fbc8af951265fb9f14030a76289eb6a2",
+      "nativeResolutionNotes": "Catalog may contain nationally defined sign visuals, but this gate did not establish deterministic row-level exact matches and crop coordinates for CABA Appendix IV entries.",
+      "rowUseDecision": "Evaluated; not selected without row-level exact visual proof."
+    },
+    {
+      "id": "argentina-anexo-art22-archive-pdf",
+      "label": "Argentina.gob.ar Anexo article 22 archive PDF",
+      "issuer": "Argentina.gob.ar",
+      "sourceType": "archived-official-pdf",
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/30389_dec196-3_pdf/archivo",
+      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
+      "officialStatusBasis": "Official Argentina.gob.ar legal archive PDF downloaded for evaluation.",
+      "pageCount": 70,
+      "hashAlgorithm": "sha256",
+      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
+      "bytes": 1698626,
+      "mtime": "2026-06-07T21:21:39.885Z",
+      "sha256": "835a7709649da45456cf752008e369ecb0643554b5ac934e0ec5824286a9c6be",
+      "nativeResolutionNotes": "Legal archive source is official but did not produce all-row exact visual matches with CABA learner-facing variants during this gate.",
+      "rowUseDecision": "Evaluated; not selected without row-level exact visual proof."
+    },
+    {
+      "id": "gcba-boletin-anx-58",
+      "label": "GCBA Boletin Oficial ANX-58",
+      "issuer": "Gobierno de la Ciudad Autonoma de Buenos Aires",
+      "sourceType": "official-gcba-pdf-web-verified-archive-unavailable",
+      "sourceUrl": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-58.pdf",
+      "officialStatusBasis": "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
+      "pageCount": 217,
+      "archivedPath": null,
+      "unavailableReason": "Repeated local curl attempts stalled at zero transferred bytes and exited with curl (28) timeout/too-slow errors; no local file was retained.",
+      "nativeResolutionNotes": "Potential GCBA local-variant source, but unavailable as a local archived source in this worktree and no exact row-level variant mapping was established.",
+      "rowUseDecision": "Evaluated as web-verified candidate; not selected."
+    },
+    {
+      "id": "gcba-boletin-anx-59",
+      "label": "GCBA Boletin Oficial ANX-59",
+      "issuer": "Gobierno de la Ciudad Autonoma de Buenos Aires",
+      "sourceType": "official-gcba-pdf-web-verified-archive-unavailable",
+      "sourceUrl": "https://documentosboletinoficial.buenosaires.gob.ar/publico/PE-RES-MIGC-SSPO-18-25-ANX-59.pdf",
+      "officialStatusBasis": "Official GCBA Boletin PDF URL opened and page-count verified via web evidence during source evaluation.",
+      "pageCount": 178,
+      "archivedPath": null,
+      "unavailableReason": "Repeated local curl attempts stalled at zero transferred bytes and exited with curl (28) timeout/too-slow errors; no local file was retained.",
+      "nativeResolutionNotes": "Potential GCBA local-variant source, but unavailable as a local archived source in this worktree and no exact row-level variant mapping was established.",
+      "rowUseDecision": "Evaluated as web-verified candidate; not selected."
+    },
+    {
+      "id": "gcba-pliego-signage-pdf",
+      "label": "GCBA public pliego/signage PDF candidate",
+      "issuer": "Gobierno de la Ciudad Autonoma de Buenos Aires",
+      "sourceType": "archived-official-gcba-pdf",
+      "sourceUrl": "https://buenosaires.gob.ar/areas/planeamiento_obras/licitations/web/uploads/82c01107e6211ae413694ce564d255a3.pdf",
+      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
+      "officialStatusBasis": "Public GCBA-hosted PDF archived for evaluation as a possible local signage variant source.",
+      "pageCount": 52,
+      "hashAlgorithm": "sha256",
+      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
+      "bytes": 892473,
+      "mtime": "2026-06-07T21:24:18.634Z",
+      "sha256": "d29ada6d7f34e7ac8806ef95b8eb82622438f1f4c70dd22391f54927dd9e4ed8",
+      "nativeResolutionNotes": "Official GCBA candidate, but no deterministic exact row-level mapping was established for the CABA manual sign catalog entries.",
+      "rowUseDecision": "Evaluated; not selected without row-level exact visual proof."
+    }
+  ],
+  "previousSourceAttemptEvidence": [
+    "specs/037-manual-sign-crop-resolution/evidence/source-attempts/source-attempts-summary.json",
+    "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-baseline-x5-crop.jpg",
+    "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-pdf-scale15-scaled-coordinate-probe.png"
+  ]
+}

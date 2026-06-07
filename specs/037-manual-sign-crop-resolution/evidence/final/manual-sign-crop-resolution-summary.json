@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "featureId": "037-manual-sign-crop-resolution",
+  "generatedBy": "scripts/manual-sign-crop-resolution.mjs",
+  "generatedAt": "2026-06-07T22:11:16.323Z",
+  "baselinePath": "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json",
+  "sourceManifestPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json",
+  "rowSourceMappingPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json",
+  "swiftOutputPath": "specs/037-manual-sign-crop-resolution/evidence/final/manual-sign-crop-resolution-render-output.json",
+  "finalRowsPath": "specs/037-manual-sign-crop-resolution/evidence/final/manual-sign-crop-resolution-rows.json",
+  "sourcePdfPath": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+  "sourcePdfSha256": "69c6e1c582db4f96337fc13db09fffab26f9ce6364279c6beb2abc21d9ad3e8e",
+  "sourceBaseScale": 5,
+  "renderScale": 5,
+  "totalRows": 316,
+  "signLikeRows": 286,
+  "catalogEntryRows": 283,
+  "contextualVisualRows": 3,
+  "categoryHeadingRows": 30,
+  "rowsBySection": {
+    "app4-signs-regulatory": 60,
+    "app4-signs-warning": 59,
+    "app4-signs-informational": 95,
+    "app4-signs-temporary": 56,
+    "app4-signs-horizontal": 33,
+    "app4-signs-traffic-lights": 13
+  },
+  "rowsByEntryKind": {
+    "category-heading": 30,
+    "catalog-entry": 283,
+    "contextual-visual": 3
+  },
+  "outputPixelThreeXRows": 286,
+  "trueNativeEffectiveThreeXPassRows": 0,
+  "sourceLimitedExceptionRows": 286,
+  "sourceLimitedDispositionCounts": {
+    "best-official-source-3x-output-pixels": 286
+  },
+  "cropAuditStatusCounts": {
+    "category-heading-dom": 30,
+    "reviewed-final-correct": 286
+  },
+  "renderModeCounts": {
+    "category-heading-dom": 30,
+    "individual-source-crop-3x": 286
+  },
+  "extractionMethodCounts": {
+    "category-heading-rendered-as-dom-text-no-raster-output": 30,
+    "fresh-official-pdf-full-page-render-scale-5-row-candidate-crop-content-trim-aspect-fit-to-3x-output-pixels-source-limited; protected pixels are rendered/cropped and aspect-fit inside a white 3x PNG canvas only, with no cleanup, sharpening, redraw, OCR, translation, recolor, vectorization, mask, retouch, stretch, or inpaint": 286
+  },
+  "finalAssetRows": 286,
+  "sourceEvaluationGate": {
+    "evaluatedSourceCount": 9,
+    "mappedSignLikeRows": 286,
+    "exactThreeXCandidateCount": 0,
+    "sourceLimitedExceptionCandidateCount": 286,
+    "gateStatusBeforeSecondDisposition": "blocked-source-limited-threshold-exceeded",
+    "architectSecondDispositionAcceptedAt": "2026-06-07T21:36:51Z"
+  },
+  "disclosure": "All sign-like rows satisfy 3x output-pixel file dimensions from the retained official CABA manual PDF, but all remain source-limited exceptions for native/effective detail and are not counted as true native/effective 3x passes.",
+  "validationExpectations": {
+    "oldSourceImageCssClipAllowedForSignLikeRows": false,
+    "remoteAssetsAllowed": false,
+    "runtimePdfRenderingAllowed": false,
+    "generatedOrRetouchedArtAllowed": false,
+    "categoryHeadingCountedAsSignQuality": false
+  },
+  "baselineSummary": {
+    "totalRows": 316,
+    "rowsBySection": {
+      "app4-signs-regulatory": 60,
+      "app4-signs-warning": 59,
+      "app4-signs-informational": 95,
+      "app4-signs-temporary": 56,
+      "app4-signs-horizontal": 33,
+      "app4-signs-traffic-lights": 13
+    },
+    "rowsByEntryKind": {
+      "category-heading": 30,
+      "catalog-entry": 283,
+      "contextual-visual": 3
+    }
+  }
+}

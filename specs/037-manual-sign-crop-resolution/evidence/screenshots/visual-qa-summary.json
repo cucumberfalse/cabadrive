@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "featureId": "037-manual-sign-crop-resolution",
+  "generatedBy": "scripts/manual-sign-visual-qa.mjs",
+  "generatedAt": "2026-06-07T22:23:09.837Z",
+  "inventoryPath": "src/data/manual-signs/app4SignEntries.json",
+  "contactSheetHtmlPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/manual-sign-contact-sheets.html",
+  "sections": [
+    "app4-signs-regulatory",
+    "app4-signs-warning",
+    "app4-signs-informational",
+    "app4-signs-temporary",
+    "app4-signs-horizontal",
+    "app4-signs-traffic-lights"
+  ],
+  "entryCounts": {
+    "total": 316,
+    "signLike": 286,
+    "categoryHeading": 30,
+    "bySection": {
+      "app4-signs-regulatory": 60,
+      "app4-signs-warning": 59,
+      "app4-signs-informational": 95,
+      "app4-signs-temporary": 56,
+      "app4-signs-horizontal": 33,
+      "app4-signs-traffic-lights": 13
+    }
+  },
+  "contactSheets": {
+    "app4-signs-regulatory": {
+      "expectedRows": 60,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-regulatory.png",
+      "imageCount": 55,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    },
+    "app4-signs-warning": {
+      "expectedRows": 59,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-warning.png",
+      "imageCount": 53,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    },
+    "app4-signs-informational": {
+      "expectedRows": 95,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-informational.png",
+      "imageCount": 90,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    },
+    "app4-signs-temporary": {
+      "expectedRows": 56,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-temporary.png",
+      "imageCount": 50,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    },
+    "app4-signs-horizontal": {
+      "expectedRows": 33,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-horizontal.png",
+      "imageCount": 29,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    },
+    "app4-signs-traffic-lights": {
+      "expectedRows": 13,
+      "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/app4-signs-traffic-lights.png",
+      "imageCount": 9,
+      "unloadedImages": 0,
+      "noUpscaleViolations": 0,
+      "overflowCount": 0,
+      "captionGapCount": 0,
+      "oldRenderModeCount": 0
+    }
+  },
+  "runtime": {
+    "desktop": {
+      "app4-signs-regulatory": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-regulatory.png",
+        "imageCount": 55,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-warning": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-warning.png",
+        "imageCount": 53,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-informational": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-informational.png",
+        "imageCount": 90,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-temporary": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-temporary.png",
+        "imageCount": 50,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-horizontal": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-horizontal.png",
+        "imageCount": 29,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-traffic-lights": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/desktop-app4-signs-traffic-lights.png",
+        "imageCount": 9,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      }
+    },
+    "mobile": {
+      "app4-signs-regulatory": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-regulatory.png",
+        "imageCount": 55,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-warning": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-warning.png",
+        "imageCount": 53,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-informational": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-informational.png",
+        "imageCount": 90,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-temporary": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-temporary.png",
+        "imageCount": 50,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-horizontal": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-horizontal.png",
+        "imageCount": 29,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      },
+      "app4-signs-traffic-lights": {
+        "screenshotPath": "specs/037-manual-sign-crop-resolution/evidence/screenshots/mobile-app4-signs-traffic-lights.png",
+        "imageCount": 9,
+        "unloadedImages": 0,
+        "noUpscaleViolations": 0,
+        "overflowCount": 0,
+        "captionGapCount": 0,
+        "oldRenderModeCount": 0
+      }
+    }
+  },
+  "pendingAuditCount": 0,
+  "renderModeViolations": 0,
+  "noUpscaleViolationsInInventory": 0
+}

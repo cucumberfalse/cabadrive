@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "featureId": "037-manual-sign-crop-resolution",
+  "baselineFeatureId": "036-manual-sign-pages",
+  "baselineHead": "a371374aa9234f671db9604d98936e73651adb6b",
+  "inventoryPath": "src/data/manual-signs/app4SignEntries.json",
+  "capturedAt": "2026-06-07T20:58:58.529Z",
+  "inventorySha256": "eb16b7c0f9f7ee2086d087921c34daca3c7b528834ae5fc17e89be00fd56ffc0",
+  "totalRows": 316,
+  "rowsBySection": {
+    "app4-signs-regulatory": 60,
+    "app4-signs-warning": 59,
+    "app4-signs-informational": 95,
+    "app4-signs-temporary": 56,
+    "app4-signs-horizontal": 33,
+    "app4-signs-traffic-lights": 13
+  },
+  "rowsBySourcePage": {
+    "185": 29,
+    "186": 31,
+    "187": 29,
+    "188": 30,
+    "189": 31,
+    "190": 27,
+    "191": 36,
+    "192": 1,
+    "193": 27,
+    "194": 29,
+    "195": 17,
+    "196": 16,
+    "197": 13
+  },
+  "rowsByEntryKind": {
+    "category-heading": 30,
+    "catalog-entry": 283,
+    "contextual-visual": 3
+  },
+  "renderModeCounts": {
+    "source-image-css-clip": 316
+  },
+  "extractionMethodCounts": {
+    "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded": 316
+  },
+  "cropNaturalWidth": {
+    "min": 36,
+    "max": 555,
+    "median": 86
+  },
+  "cropNaturalHeight": {
+    "min": 27,
+    "max": 320,
+    "median": 83
+  },
+  "screenshotNoEstacionarExamples": [
+    {
+      "id": "app4regulatory-p185-020-no-estacionar-catalog-entry",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": null,
+      "baselineCropNaturalWidth": 78,
+      "baselineCropNaturalHeight": 78,
+      "baselineCropRegion": {
+        "x": 351,
+        "y": 477,
+        "width": 78,
+        "height": 78
+      }
+    },
+    {
+      "id": "app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Acarreo de infractores - placa horaria superior 1",
+      "baselineCropNaturalWidth": 88,
+      "baselineCropNaturalHeight": 125,
+      "baselineCropRegion": {
+        "x": 436,
+        "y": 477,
+        "width": 88,
+        "height": 125
+      }
+    },
+    {
+      "id": "app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Acarreo de infractores - placa horaria superior 2",
+      "baselineCropNaturalWidth": 92,
+      "baselineCropNaturalHeight": 125,
+      "baselineCropRegion": {
+        "x": 520,
+        "y": 477,
+        "width": 92,
+        "height": 125
+      }
+    },
+    {
+      "id": "app4regulatory-p185-023-no-estacionar-entre-discos",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Entre discos",
+      "baselineCropNaturalWidth": 88,
+      "baselineCropNaturalHeight": 88,
+      "baselineCropRegion": {
+        "x": 176,
+        "y": 590,
+        "width": 88,
+        "height": 88
+      }
+    },
+    {
+      "id": "app4regulatory-p185-024-no-estacionar-entre-aceras",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Entre aceras",
+      "baselineCropNaturalWidth": 88,
+      "baselineCropNaturalHeight": 88,
+      "baselineCropRegion": {
+        "x": 262,
+        "y": 590,
+        "width": 88,
+        "height": 88
+      }
+    },
+    {
+      "id": "app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Zona de Caudales - flecha derecha",
+      "baselineCropNaturalWidth": 96,
+      "baselineCropNaturalHeight": 126,
+      "baselineCropRegion": {
+        "x": 346,
+        "y": 590,
+        "width": 96,
+        "height": 126
+      }
+    },
+    {
+      "id": "app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
+      "spanishLabel": "NO ESTACIONAR",
+      "variant": "Zona de Caudales - flecha izquierda",
+      "baselineCropNaturalWidth": 96,
+      "baselineCropNaturalHeight": 126,
+      "baselineCropRegion": {
+        "x": 433,
+        "y": 590,
+        "width": 96,
+        "height": 126
+      }
+    },
+    {
+      "id": "app4regulatory-p185-027-no-estacionar-ni-detenerse-catalog-entry",
+      "spanishLabel": "NO ESTACIONAR NI DETENERSE",
+      "variant": null,
+      "baselineCropNaturalWidth": 94,
+      "baselineCropNaturalHeight": 88,
+      "baselineCropRegion": {
+        "x": 518,
+        "y": 590,
+        "width": 94,
+        "height": 88
+      }
+    },
+    {
+      "id": "app4regulatory-p185-028-no-estacionar-ni-detenerse-sobre-la-ciclovia",
+      "spanishLabel": "NO ESTACIONAR NI DETENERSE",
+      "variant": "Sobre la ciclovía",
+      "baselineCropNaturalWidth": 96,
+      "baselineCropNaturalHeight": 140,
+      "baselineCropRegion": {
+        "x": 176,
+        "y": 716,
+        "width": 96,
+        "height": 140
+      }
+    }
+  ]
+}

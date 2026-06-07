@@ -8,6 +8,11 @@ const manualId = "gcba-manual-vehiculo-4-ruedas-2023";
 const sourceDocument =
   "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf";
 const renderMode = "source-image-css-clip";
+const feature037Id = "037-manual-sign-crop-resolution";
+const feature037FinalRowsPath = "specs/037-manual-sign-crop-resolution/evidence/final/manual-sign-crop-resolution-rows.json";
+const feature037FinalSummaryPath = "specs/037-manual-sign-crop-resolution/evidence/final/manual-sign-crop-resolution-summary.json";
+const feature037SourceManifestPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json";
+const feature037RowSourceMappingPath = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json";
 const scopePages = Array.from({ length: 13 }, (_, index) => 185 + index);
 const validSectionPages = new Map([
   ["app4-signs-regulatory", [185, 186]],
@@ -4147,11 +4152,259 @@ function buildInventory() {
   };
 }
 
+function isSignLikeEntry(entry) {
+  return entry.entryKind === "catalog-entry" || entry.entryKind === "contextual-visual";
+}
+
+function applyFeature037Inventory(baseInventory) {
+  if (!existsSync(repoPath(feature037FinalRowsPath))) {
+    return baseInventory;
+  }
+  const finalRowsDocument = JSON.parse(readFileSync(repoPath(feature037FinalRowsPath), "utf8"));
+  const finalSummary = JSON.parse(readFileSync(repoPath(feature037FinalSummaryPath), "utf8"));
+  const finalRowsById = new Map(finalRowsDocument.rows.map((row) => [row.id, row]));
+  const entries = baseInventory.entries.map((entry) => {
+    const finalRow = finalRowsById.get(entry.id);
+    if (!finalRow) throw new Error(`${entry.id}: missing feature 037 final row evidence`);
+    const baselineFields = {
+      baselineSourceAsset: finalRow.baselineSourceAsset,
+      baselineSourceRegion: finalRow.baselineSourceRegion,
+      baselineCropRegion: finalRow.baselineCropRegion,
+      baselineCropNaturalWidth: finalRow.baselineCropNaturalWidth,
+      baselineCropNaturalHeight: finalRow.baselineCropNaturalHeight,
+      baselineRenderMode: finalRow.baselineRenderMode,
+      baselineAssetHash: finalRow.baselineAssetHash,
+      baselineExtractionMethod: finalRow.baselineExtractionMethod
+    };
+
+    if (!isSignLikeEntry(entry)) {
+      return {
+        ...entry,
+        ...baselineFields,
+        auditStatus: "category-heading-dom",
+        assetPath: null,
+        naturalWidth: null,
+        naturalHeight: null,
+        cropRegion: null,
+        displayRegion: null,
+        cropNaturalWidth: null,
+        cropNaturalHeight: null,
+        renderMode: "category-heading-dom",
+        hash: null,
+        extractionMethod: finalRow.extractionMethod,
+        noUpscale: true,
+        preservationNote: finalRow.protectedPixelPreservation,
+        disposition: finalRow.disposition,
+        threeXStatus: finalRow.threeXStatus,
+        cropAuditStatus: finalRow.cropAuditStatus,
+        noUpscaleProof: finalRow.noUpscaleProof,
+        protectedPixelPreservation: finalRow.protectedPixelPreservation
+      };
+    }
+
+    return {
+      ...entry,
+      ...baselineFields,
+      auditStatus: finalRow.cropAuditStatus,
+      sourceAsset: finalRow.finalSourceDocument,
+      assetPath: finalRow.finalOutputAssetPath,
+      naturalWidth: finalRow.finalOutputNaturalWidth,
+      naturalHeight: finalRow.finalOutputNaturalHeight,
+      cropRegion: { x: 0, y: 0, width: finalRow.finalOutputNaturalWidth, height: finalRow.finalOutputNaturalHeight },
+      displayRegion: { x: 0, y: 0, width: finalRow.finalOutputNaturalWidth, height: finalRow.finalOutputNaturalHeight },
+      cropNaturalWidth: finalRow.finalOutputNaturalWidth,
+      cropNaturalHeight: finalRow.finalOutputNaturalHeight,
+      renderMode: finalRow.renderMode,
+      hash: finalRow.finalOutputSha256,
+      extractionMethod: finalRow.extractionMethod,
+      noUpscale: true,
+      preservationNote: finalRow.protectedPixelPreservation,
+      disposition: finalRow.disposition,
+      sourceEvaluationId: finalRow.sourceEvaluationId,
+      chosenSourceId: finalRow.chosenSourceId,
+      finalSourceDocument: finalRow.finalSourceDocument,
+      finalSourceTrustTier: finalRow.finalSourceTrustTier,
+      finalSourcePageOrItem: finalRow.finalSourcePageOrItem,
+      finalCandidateRegionAtBaseScale: finalRow.finalCandidateRegionAtBaseScale,
+      finalSourceRegionAtBaseScale: finalRow.finalSourceRegionAtBaseScale,
+      finalContentTrimBoundsAtCandidateScale: finalRow.finalContentTrimBoundsAtCandidateScale,
+      finalTailTrimMode: finalRow.finalTailTrimMode,
+      finalOutputAssetPath: finalRow.finalOutputAssetPath,
+      finalOutputNaturalWidth: finalRow.finalOutputNaturalWidth,
+      finalOutputNaturalHeight: finalRow.finalOutputNaturalHeight,
+      finalOutputSha256: finalRow.finalOutputSha256,
+      finalOutputComposition: finalRow.finalOutputComposition,
+      requiredMinimumWidth: finalRow.requiredMinimumWidth,
+      requiredMinimumHeight: finalRow.requiredMinimumHeight,
+      outputPixelScaleRatioWidth: finalRow.outputPixelScaleRatioWidth,
+      outputPixelScaleRatioHeight: finalRow.outputPixelScaleRatioHeight,
+      outputPixelTargetRatioWidth: finalRow.outputPixelTargetRatioWidth,
+      outputPixelTargetRatioHeight: finalRow.outputPixelTargetRatioHeight,
+      effectiveFinalNaturalWidth: finalRow.effectiveFinalNaturalWidth,
+      effectiveFinalNaturalHeight: finalRow.effectiveFinalNaturalHeight,
+      sourceNativeWidth: finalRow.sourceNativeWidth,
+      sourceNativeHeight: finalRow.sourceNativeHeight,
+      qualityScaleRatioWidth: finalRow.qualityScaleRatioWidth,
+      qualityScaleRatioHeight: finalRow.qualityScaleRatioHeight,
+      threeXStatus: finalRow.threeXStatus,
+      sourceLimitedExceptionId: finalRow.sourceLimitedExceptionId,
+      sourceLimitedDisposition: finalRow.sourceLimitedDisposition,
+      sourceLimitedReason: finalRow.sourceLimitedReason,
+      cropAuditStatus: finalRow.cropAuditStatus,
+      cropAuditNote: finalRow.cropAuditNote,
+      runtimeDisplayMaxWidth: finalRow.runtimeDisplayMaxWidth,
+      runtimeDisplayMaxHeight: finalRow.runtimeDisplayMaxHeight,
+      noUpscaleProof: finalRow.noUpscaleProof,
+      protectedPixelPreservation: finalRow.protectedPixelPreservation
+    };
+  });
+
+  return {
+    ...baseInventory,
+    featureId: feature037Id,
+    inventoryStatus: "individual-source-crop-3x-source-limited",
+    sourceSelection: {
+      ...baseInventory.sourceSelection,
+      status: "feature-037-final-source-limited-crops",
+      note:
+        "Feature 037 replaces learner-facing sign-like CSS sheet clips with committed per-row official-source PNG crops. All sign-like rows are source-limited exceptions under the 2026-06-07T21:36:51Z Architect disposition and must not be described as true native/effective 3x passes."
+    },
+    feature037Evidence: {
+      finalRowsPath: feature037FinalRowsPath,
+      finalSummaryPath: feature037FinalSummaryPath,
+      sourceManifestPath: feature037SourceManifestPath,
+      rowSourceMappingPath: feature037RowSourceMappingPath,
+      sourceLimitedDisposition: "best-official-source-3x-output-pixels",
+      architectDispositionAcceptedAt: "2026-06-07T21:36:51Z"
+    },
+    summary: {
+      ...baseInventory.summary,
+      totalEntries: entries.length,
+      entriesBySection: countBy(entries, "sectionId"),
+      entriesBySourcePage: countBy(entries, "sourcePage"),
+      entriesByKind: countBy(entries, "entryKind"),
+      renderModeCounts: countBy(entries, "renderMode"),
+      signLikeRows: finalSummary.signLikeRows,
+      categoryHeadingRows: finalSummary.categoryHeadingRows,
+      outputPixelThreeXRows: finalSummary.outputPixelThreeXRows,
+      trueNativeEffectiveThreeXPassRows: finalSummary.trueNativeEffectiveThreeXPassRows,
+      sourceLimitedExceptionRows: finalSummary.sourceLimitedExceptionRows,
+      sourceLimitedDispositionCounts: finalSummary.sourceLimitedDispositionCounts
+    },
+    entries
+  };
+}
+
 function assertCondition(condition, message, errors) {
   if (!condition) errors.push(message);
 }
 
+function validateFeature037Inventory(inventory) {
+  const errors = [];
+  assertCondition(inventory?.schemaVersion === 1, "schemaVersion must be 1.", errors);
+  assertCondition(inventory?.featureId === feature037Id, `featureId must be ${feature037Id}.`, errors);
+  assertCondition(inventory?.inventoryStatus === "individual-source-crop-3x-source-limited", "inventoryStatus must be individual-source-crop-3x-source-limited.", errors);
+  assertCondition(existsSync(repoPath(feature037FinalRowsPath)), `${feature037FinalRowsPath} must exist.`, errors);
+  assertCondition(existsSync(repoPath(feature037FinalSummaryPath)), `${feature037FinalSummaryPath} must exist.`, errors);
+  assertCondition(existsSync(repoPath(feature037SourceManifestPath)), `${feature037SourceManifestPath} must exist.`, errors);
+  assertCondition(existsSync(repoPath(feature037RowSourceMappingPath)), `${feature037RowSourceMappingPath} must exist.`, errors);
+
+  const finalRowsDocument = existsSync(repoPath(feature037FinalRowsPath))
+    ? JSON.parse(readFileSync(repoPath(feature037FinalRowsPath), "utf8"))
+    : { rows: [] };
+  const finalRowsById = new Map((finalRowsDocument.rows ?? []).map((row) => [row.id, row]));
+  const entries = inventory?.entries ?? [];
+  const seenIds = new Set();
+  const pageOrders = new Map();
+
+  entries.forEach((entry, index) => {
+    const label = entry?.id ?? `entries[${index}]`;
+    const finalRow = finalRowsById.get(entry.id);
+    assertCondition(Boolean(finalRow), `${label}: final feature 037 evidence row is required.`, errors);
+    assertCondition(typeof entry.id === "string" && entry.id.trim() !== "", `${label}: id is required.`, errors);
+    assertCondition(!seenIds.has(entry.id), `${label}: id must be unique.`, errors);
+    seenIds.add(entry.id);
+    assertCondition(validSectionPages.has(entry.sectionId), `${label}: sectionId is invalid.`, errors);
+    assertCondition(Number.isInteger(entry.sourcePage) && scopePages.includes(entry.sourcePage), `${label}: sourcePage must be in 185-197.`, errors);
+    assertCondition(entry.sourceOrder === index + 1, `${label}: sourceOrder must be contiguous from 1.`, errors);
+    assertCondition(Number.isInteger(entry.sourceOrderWithinPage) && entry.sourceOrderWithinPage > 0, `${label}: sourceOrderWithinPage must be a positive integer.`, errors);
+    (pageOrders.get(entry.sourcePage) ?? pageOrders.set(entry.sourcePage, []).get(entry.sourcePage)).push(entry.sourceOrderWithinPage);
+    assertCondition(typeof entry.spanishLabel === "string" && entry.spanishLabel.trim() !== "", `${label}: spanishLabel is required.`, errors);
+    assertCondition(typeof entry.russianTranslation === "string" && entry.russianTranslation.trim() !== "", `${label}: russianTranslation is required.`, errors);
+    assertCondition(entry.noUpscale === true, `${label}: noUpscale must be true.`, errors);
+    assertCondition(entry.baselineRenderMode === "source-image-css-clip", `${label}: baselineRenderMode must record source-image-css-clip.`, errors);
+
+    if (!isSignLikeEntry(entry)) {
+      assertCondition(entry.renderMode === "category-heading-dom", `${label}: category headings must render as DOM.`, errors);
+      assertCondition(entry.assetPath === null, `${label}: category headings must not require final raster assets.`, errors);
+      assertCondition(entry.threeXStatus === "not-applicable-category-heading", `${label}: heading threeXStatus must be not-applicable-category-heading.`, errors);
+      assertCondition(entry.cropAuditStatus === "category-heading-dom", `${label}: heading cropAuditStatus must be category-heading-dom.`, errors);
+      return;
+    }
+
+    assertCondition(entry.renderMode === "individual-source-crop-3x", `${label}: sign-like renderMode must be individual-source-crop-3x.`, errors);
+    assertCondition(entry.renderMode !== renderMode, `${label}: sign-like entry must not use old ${renderMode}.`, errors);
+    assertCondition(typeof entry.assetPath === "string" && entry.assetPath.includes("/individual-3x/"), `${label}: final individual asset path is required.`, errors);
+    assertCondition(typeof entry.finalOutputAssetPath === "string" && entry.finalOutputAssetPath === entry.assetPath, `${label}: finalOutputAssetPath must match assetPath.`, errors);
+    assertCondition(entry.threeXStatus === "source-limited-exception", `${label}: sign-like row must remain source-limited-exception.`, errors);
+    assertCondition(entry.sourceLimitedDisposition === "best-official-source-3x-output-pixels", `${label}: sourceLimitedDisposition is required.`, errors);
+    assertCondition(entry.cropAuditStatus === "reviewed-final-correct", `${label}: cropAuditStatus must be reviewed-final-correct.`, errors);
+    assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);
+    assertCondition(entry.finalOutputComposition?.includes("aspect-fit"), `${label}: finalOutputComposition must record aspect-fit output.`, errors);
+    assertCondition(entry.protectedPixelPreservation?.includes("without stretching"), `${label}: protectedPixelPreservation must record no stretching.`, errors);
+    assertCondition(entry.outputPixelScaleRatioWidth >= 3, `${label}: outputPixelScaleRatioWidth must be at least 3.`, errors);
+    assertCondition(entry.outputPixelScaleRatioHeight >= 3, `${label}: outputPixelScaleRatioHeight must be at least 3.`, errors);
+    assertCondition(entry.qualityScaleRatioWidth < 1, `${label}: qualityScaleRatioWidth must disclose source limitation.`, errors);
+    assertCondition(entry.qualityScaleRatioHeight < 1, `${label}: qualityScaleRatioHeight must disclose source limitation.`, errors);
+    assertCondition(entry.trueNativeEffectiveThreeXPass !== true, `${label}: must not claim true native/effective 3x pass.`, errors);
+    assertCondition(entry.finalSourceDocument === sourceDocument, `${label}: finalSourceDocument must be the retained CABA manual PDF.`, errors);
+    assertCondition(typeof entry.sourceEvaluationId === "string" && entry.sourceEvaluationId.startsWith("source-eval:"), `${label}: sourceEvaluationId is required.`, errors);
+
+    if (entry.assetPath && existsSync(repoPath(entry.assetPath))) {
+      const dimensions = readImageDimensions(entry.assetPath);
+      const actualHash = sha256File(entry.assetPath);
+      assertCondition(entry.naturalWidth === dimensions.width, `${label}: naturalWidth must match final PNG width.`, errors);
+      assertCondition(entry.naturalHeight === dimensions.height, `${label}: naturalHeight must match final PNG height.`, errors);
+      assertCondition(entry.finalOutputNaturalWidth === dimensions.width, `${label}: finalOutputNaturalWidth must match PNG width.`, errors);
+      assertCondition(entry.finalOutputNaturalHeight === dimensions.height, `${label}: finalOutputNaturalHeight must match PNG height.`, errors);
+      assertCondition(entry.hash === actualHash, `${label}: hash must match final PNG sha256.`, errors);
+      assertCondition(entry.finalOutputSha256 === actualHash, `${label}: finalOutputSha256 must match final PNG sha256.`, errors);
+      assertCondition(entry.naturalWidth >= entry.requiredMinimumWidth, `${label}: final PNG width below required output-pixel target.`, errors);
+      assertCondition(entry.naturalHeight >= entry.requiredMinimumHeight, `${label}: final PNG height below required output-pixel target.`, errors);
+      assertCondition(JSON.stringify(entry.cropRegion) === JSON.stringify({ x: 0, y: 0, width: dimensions.width, height: dimensions.height }), `${label}: final cropRegion must cover the individual PNG.`, errors);
+      assertCondition(JSON.stringify(entry.displayRegion) === JSON.stringify(entry.cropRegion), `${label}: displayRegion must match final cropRegion.`, errors);
+    } else {
+      errors.push(`${label}: final assetPath does not exist: ${entry.assetPath}`);
+    }
+  });
+
+  for (const page of scopePages) {
+    assertCondition(entries.some((entry) => entry.sourcePage === page), `source page ${page} must have at least one inventory entry.`, errors);
+  }
+  for (const [page, orders] of pageOrders.entries()) {
+    const sorted = [...orders].sort((left, right) => left - right);
+    sorted.forEach((order, index) => {
+      assertCondition(order === index + 1, `source page ${page}: sourceOrderWithinPage must be contiguous.`, errors);
+    });
+  }
+
+  const signLikeEntries = entries.filter(isSignLikeEntry);
+  const categoryEntries = entries.filter((entry) => entry.entryKind === "category-heading");
+  assertCondition(entries.length === 316, "feature 037 inventory must retain all 316 baseline rows.", errors);
+  assertCondition(signLikeEntries.length === 286, "feature 037 inventory must retain 286 sign-like rows.", errors);
+  assertCondition(categoryEntries.length === 30, "feature 037 inventory must retain 30 category-heading rows.", errors);
+  assertCondition(inventory.summary?.renderModeCounts?.["individual-source-crop-3x"] === 286, "summary must count 286 individual-source-crop-3x rows.", errors);
+  assertCondition(inventory.summary?.renderModeCounts?.["category-heading-dom"] === 30, "summary must count 30 category-heading-dom rows.", errors);
+  assertCondition(inventory.summary?.renderModeCounts?.["source-image-css-clip"] == null, "summary must not expose source-image-css-clip render mode.", errors);
+  assertCondition(inventory.summary?.trueNativeEffectiveThreeXPassRows === 0, "summary must not count true native/effective 3x passes.", errors);
+  assertCondition(inventory.summary?.sourceLimitedExceptionRows === 286, "summary must count 286 source-limited exceptions.", errors);
+  return errors;
+}
+
 function validateInventory(inventory) {
+  if (inventory?.featureId === feature037Id) {
+    return validateFeature037Inventory(inventory);
+  }
   const errors = [];
   const validEntryKinds = new Set(["catalog-entry", "category-heading", "contextual-visual"]);
   const validAuditStatuses = new Set(["reconciled-source-visual", "pending-reconciliation"]);
@@ -4285,7 +4538,7 @@ function validateCropRegion(entry, dimensions, label, errors) {
 
 function main() {
   const shouldWrite = process.argv.includes("--write");
-  const inventory = shouldWrite ? buildInventory() : JSON.parse(readFileSync(repoPath(inventoryPath), "utf8"));
+  const inventory = shouldWrite ? applyFeature037Inventory(buildInventory()) : JSON.parse(readFileSync(repoPath(inventoryPath), "utf8"));
   if (shouldWrite) {
     mkdirSync(dirname(repoPath(inventoryPath)), { recursive: true });
     writeFileSync(repoPath(inventoryPath), `${JSON.stringify(inventory, null, 2)}\n`);
