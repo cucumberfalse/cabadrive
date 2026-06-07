@@ -1,0 +1,285 @@
+{
+  "schema": "manual-sign-final-catalog-evidence.v1",
+  "generatedAt": "2026-06-07T17:34:33.871Z",
+  "inventoryPath": "src/data/manual-signs/app4SignEntries.json",
+  "scopePages": [
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197
+  ],
+  "totalEntries": 316,
+  "entriesBySection": {
+    "app4-signs-regulatory": 60,
+    "app4-signs-warning": 59,
+    "app4-signs-informational": 95,
+    "app4-signs-temporary": 56,
+    "app4-signs-horizontal": 33,
+    "app4-signs-traffic-lights": 13
+  },
+  "entriesBySourcePage": {
+    "185": 29,
+    "186": 31,
+    "187": 29,
+    "188": 30,
+    "189": 31,
+    "190": 27,
+    "191": 36,
+    "192": 1,
+    "193": 27,
+    "194": 29,
+    "195": 17,
+    "196": 16,
+    "197": 13
+  },
+  "entryKindCounts": {
+    "category-heading": 30,
+    "catalog-entry": 283,
+    "contextual-visual": 3
+  },
+  "auditStatusCounts": {
+    "reconciled-source-visual": 316
+  },
+  "pendingReconciliation": 0,
+  "renderModeCounts": {
+    "source-image-css-clip": 316
+  },
+  "noUpscaleFalseCount": 0,
+  "extractionMethods": [
+    "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded"
+  ],
+  "preservationNotes": [
+    "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
+  ],
+  "sourceAssetCount": 13,
+  "sourceAssets": [
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+      "sha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+      "sha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+      "sha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+      "sha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+      "sha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+      "sha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+      "sha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+      "sha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+      "sha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+      "sha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+      "sha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+      "sha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab"
+    },
+    {
+      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+      "sha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223"
+    }
+  ],
+  "p198To200Disposition": {
+    "status": "recorded",
+    "decision": "excluded-from-slice-1-individual-catalog-inventory",
+    "pages": [
+      {
+        "sourcePage": 198,
+        "sourceCardId": "app4-traffic-lights-page-198-source-card",
+        "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+        "naturalWidth": 757,
+        "naturalHeight": 1003,
+        "hash": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7",
+        "decision": "excluded-contextual-closing-visual",
+        "reason": "Page is outside the p185-197 individual catalog-entry scope for this feature slice; existing section data treats it as closing message, illustration, or logo material rather than page-197 signal catalog rows."
+      },
+      {
+        "sourcePage": 199,
+        "sourceCardId": "app4-traffic-lights-page-199-source-card",
+        "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+        "naturalWidth": 757,
+        "naturalHeight": 1002,
+        "hash": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd",
+        "decision": "excluded-contextual-closing-visual",
+        "reason": "Page is outside the p185-197 individual catalog-entry scope for this feature slice; existing section data treats it as closing message, illustration, or logo material rather than page-197 signal catalog rows."
+      },
+      {
+        "sourcePage": 200,
+        "sourceCardId": "app4-traffic-lights-page-200-source-card",
+        "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+        "naturalWidth": 757,
+        "naturalHeight": 1003,
+        "hash": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997",
+        "decision": "excluded-contextual-closing-visual",
+        "reason": "Page is outside the p185-197 individual catalog-entry scope for this feature slice; existing section data treats it as closing message, illustration, or logo material rather than page-197 signal catalog rows."
+      }
+    ],
+    "evidence": "Existing app4-signs-traffic-lights source cards for pages 198-200 were parsed and retained as contextual closing visuals, not source pages inside the p185-197 governed sign-entry inventory."
+  },
+  "contactSheets": [
+    {
+      "sectionId": "app4-signs-regulatory",
+      "displayName": "Reglamentarias",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-regulatory-contact-sheet.png",
+      "entryCount": 60,
+      "sourcePages": [
+        185,
+        186
+      ],
+      "entryKindCounts": {
+        "category-heading": 5,
+        "catalog-entry": 55
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4regulatory-p185-001-reglamentarias-category-heading",
+      "lastEntry": "app4regulatory-p186-031-fin-de-la-prescripcion-velocidad-minima-35"
+    },
+    {
+      "sectionId": "app4-signs-warning",
+      "displayName": "Preventivas",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-warning-contact-sheet.png",
+      "entryCount": 59,
+      "sourcePages": [
+        187,
+        188
+      ],
+      "entryKindCounts": {
+        "category-heading": 6,
+        "catalog-entry": 53
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4warning-p187-001-preventivas-category-heading",
+      "lastEntry": "app4warning-p188-030-fin-de-prevencion-catalog-entry"
+    },
+    {
+      "sectionId": "app4-signs-informational",
+      "displayName": "Informativas",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-informational-contact-sheet.png",
+      "entryCount": 95,
+      "sourcePages": [
+        189,
+        190,
+        191,
+        192
+      ],
+      "entryKindCounts": {
+        "category-heading": 5,
+        "catalog-entry": 89,
+        "contextual-visual": 1
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4informational-p189-001-informativas-category-heading",
+      "lastEntry": "app4informational-p192-001-en-memoria-de-una-victima-de-transito-estrella-a"
+    },
+    {
+      "sectionId": "app4-signs-temporary",
+      "displayName": "Transitorias",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-temporary-contact-sheet.png",
+      "entryCount": 56,
+      "sourcePages": [
+        193,
+        194
+      ],
+      "entryKindCounts": {
+        "category-heading": 6,
+        "catalog-entry": 50
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4temporary-p193-001-transitorias-category-heading",
+      "lastEntry": "app4temporary-p194-029-paneles-catalog-entry"
+    },
+    {
+      "sectionId": "app4-signs-horizontal",
+      "displayName": "Horizontales",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-horizontal-contact-sheet.png",
+      "entryCount": 33,
+      "sourcePages": [
+        195,
+        196
+      ],
+      "entryKindCounts": {
+        "category-heading": 4,
+        "catalog-entry": 29
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4horizontal-p195-001-horizontales-category-heading",
+      "lastEntry": "app4horizontal-p196-016-separadores-fisicos-de-transito-catalog-entry"
+    },
+    {
+      "sectionId": "app4-signs-traffic-lights",
+      "displayName": "Señalamiento luminoso",
+      "screenshotPath": "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-traffic-lights-contact-sheet.png",
+      "entryCount": 13,
+      "sourcePages": [
+        197
+      ],
+      "entryKindCounts": {
+        "category-heading": 4,
+        "catalog-entry": 7,
+        "contextual-visual": 2
+      },
+      "pendingReconciliation": 0,
+      "noUpscaleViolations": 0,
+      "unloadedImages": 0,
+      "emptyCaptions": 0,
+      "firstEntry": "app4traffic-lights-p197-001-senalamiento-luminoso-category-heading",
+      "lastEntry": "app4traffic-lights-p197-013-carriles-reversibles-catalog-entry"
+    }
+  ],
+  "notes": [
+    "Each contact sheet tile renders the original source asset through CSS clipping using the inventory cropRegion/displayRegion; no cropped image files are referenced by inventory entries.",
+    "Spanish and Russian captions are rendered outside the protected source image pixels.",
+    "The committed PNG contact sheets are evidence artifacts only; the app inventory continues to source visuals from original source assets."
+  ]
+}

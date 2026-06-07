@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 const inventoryPath = "src/data/manual-signs/app4SignEntries.json";
+const finalEvidenceSummaryPath =
+  "specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/manual-signs-final-catalog-evidence.summary.json";
 const scriptPath = "scripts/manual-sign-inventory.mjs";
 const appPath = "src/App.tsx";
 const sectionPaths = [
@@ -14,6 +16,29 @@ const sectionPaths = [
   "src/data/manual-sections/app4-signs-horizontal.ts",
   "src/data/manual-sections/app4-signs-traffic-lights.ts"
 ];
+const expectedFinalEntriesBySection = {
+  "app4-signs-regulatory": 60,
+  "app4-signs-warning": 59,
+  "app4-signs-informational": 95,
+  "app4-signs-temporary": 56,
+  "app4-signs-horizontal": 33,
+  "app4-signs-traffic-lights": 13
+};
+const expectedFinalEntriesBySourcePage = {
+  185: 29,
+  186: 31,
+  187: 29,
+  188: 30,
+  189: 31,
+  190: 27,
+  191: 36,
+  192: 1,
+  193: 27,
+  194: 29,
+  195: 17,
+  196: 16,
+  197: 13
+};
 
 function loadInventory() {
   return JSON.parse(readFileSync(inventoryPath, "utf8"));
@@ -2420,6 +2445,18 @@ test("manual sign inventory validator passes and requires individual CSS-clipped
   const inventory = loadInventory();
   assert.equal(inventory.inventoryStatus, "individual-source-regions");
   assert.equal(inventory.entries.length, inventory.summary.totalEntries);
+  assert.equal(inventory.summary.totalEntries, 316);
+  assert.deepEqual(inventory.summary.entriesBySection, expectedFinalEntriesBySection);
+  assert.deepEqual(inventory.summary.entriesBySourcePage, expectedFinalEntriesBySourcePage);
+  assert.equal(inventory.entries.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
+  assert.deepEqual(
+    [...new Set(inventory.entries.map((entry) => entry.sourcePage))],
+    Object.keys(expectedFinalEntriesBySourcePage).map(Number)
+  );
+  assert.deepEqual(
+    inventory.p198To200Disposition.pages.map((page) => page.sourcePage),
+    [198, 199, 200]
+  );
   assert.ok(inventory.entries.length > 0);
 
   for (const entry of inventory.entries) {
@@ -2782,6 +2819,34 @@ test("reconciled visual rows are complete with no unreconciled source-page rows 
   for (const entry of pending) {
     assert.equal(entry.auditStatus, "pending-reconciliation", entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, "pending visual-source reconciliation", entry.id);
+  }
+});
+
+test("final manual sign evidence summary covers the complete reconciled catalog", () => {
+  const inventory = loadInventory();
+  const evidence = JSON.parse(readFileSync(finalEvidenceSummaryPath, "utf8"));
+
+  assert.equal(evidence.totalEntries, 316);
+  assert.equal(evidence.pendingReconciliation, 0);
+  assert.deepEqual(evidence.entriesBySection, inventory.summary.entriesBySection);
+  assert.deepEqual(evidence.entriesBySourcePage, inventory.summary.entriesBySourcePage);
+  assert.deepEqual(evidence.auditStatusCounts, { "reconciled-source-visual": 316 });
+  assert.deepEqual(evidence.renderModeCounts, { "source-image-css-clip": 316 });
+  assert.equal(evidence.noUpscaleFalseCount, 0);
+  assert.deepEqual(evidence.scopePages, Object.keys(expectedFinalEntriesBySourcePage).map(Number));
+  assert.deepEqual(
+    evidence.p198To200Disposition.pages.map((page) => page.sourcePage),
+    [198, 199, 200]
+  );
+  assert.equal(evidence.contactSheets.length, Object.keys(expectedFinalEntriesBySection).length);
+
+  for (const sheet of evidence.contactSheets) {
+    assert.equal(sheet.entryCount, expectedFinalEntriesBySection[sheet.sectionId], sheet.sectionId);
+    assert.equal(sheet.pendingReconciliation, 0, sheet.sectionId);
+    assert.equal(sheet.noUpscaleViolations, 0, sheet.sectionId);
+    assert.equal(sheet.unloadedImages, 0, sheet.sectionId);
+    assert.equal(sheet.emptyCaptions, 0, sheet.sectionId);
+    assert.ok(existsSync(sheet.screenshotPath), `${sheet.screenshotPath} exists`);
   }
 });
 
