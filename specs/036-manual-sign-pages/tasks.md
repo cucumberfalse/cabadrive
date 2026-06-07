@@ -88,7 +88,7 @@ blocker is resolved.
 - [x] Switch regulatory generation from Anexo panel cards to the CABA source sheet cards `app4-regulatory-page-185-source-card` and `app4-regulatory-page-186-source-card` for the explicit visual rows.
 - [x] Generate regulatory and warning rows from `visualSourceEntries` instead of `termTranslations` for this narrow slice. Scope is intentionally partial: `20` reconciled source-visual rows total, covering regulatory examples on pages `185-186` and required warning variants on pages `187-188`, not every visual sign on those pages.
 - [x] Keep all non-regulatory/warning sections on the old scaffold path, but mark each remaining row with `entryKind: "catalog-entry"`, `sourceSheetLabelEvidence: "pending visual-source reconciliation"`, and `auditStatus: "pending-reconciliation"`.
-- [x] Regenerate `src/data/manual-signs/app4SignEntries.json`; current mixed inventory summary is `169` entries: `20` `reconciled-source-visual` rows and `149` `pending-reconciliation` rows.
+- [x] Regenerate `src/data/manual-signs/app4SignEntries.json`; at the end of this partial regulatory/warning slice, the mixed inventory summary was `169` entries: `20` `reconciled-source-visual` rows and `149` `pending-reconciliation` rows.
 - [x] Update `tests/manual-sign-inventory.test.mjs` to require `entryKind`, `auditStatus`, and `sourceSheetLabelEvidence`, forbid pending regulatory/warning rows, assert required real variants (`CURVA (En "S")`, `PENDIENTE (Ascendente)`, `ESTRECHAMIENTO (En una sola mano)`, `CRUZ DE SAN ANDRÉS (Más de dos vías)`, and `PROXIMIDAD DE SEÑAL RESTRICTIVA` variants `Pare`/`Paso`/`Otra`), and assert pending non-regulatory/warning rows remain visible.
 - [x] Update the manual sign caption renderer so entries with a `variant` show it in the Spanish text caption and image alt text.
 - [x] Run bounded validation for this slice:
@@ -99,20 +99,31 @@ blocker is resolved.
   - Additional quick check `pnpm run build` passed and generated a service worker with `1870` cached assets.
 - [ ] PR `#202` remains not merge-ready. This slice does not complete full regulatory/warning coverage, does not reconcile informational/temporary/horizontal/traffic-light sections into the new visual inventory model, and does not eliminate all `pending-reconciliation` rows.
 
+## Regulatory Page 185 Completion Slice 2026-06-07
+
+- [x] Replace the existing partial regulatory page `185` rows in `scripts/manual-sign-inventory.mjs` with the complete visual-source row list for `app4-regulatory-page-185-source-card`: `2` category headings and `27` catalog entries, all with `sectionId: "app4-signs-regulatory"`, `sourcePage: 185`, `auditStatus: "reconciled-source-visual"`, source label/heading evidence, and the requested exact `cropRegion` values.
+- [x] Regenerate `src/data/manual-signs/app4SignEntries.json` with `node scripts/manual-sign-inventory.mjs --write`; command passed with `192` entries, pages `185-197`, and p198-p200 disposition recorded.
+- [x] Update focused inventory tests so page `185` must keep the complete ordered row set, exact crop regions, heading/catalog-entry split, Russian captions, source evidence strings, reconciled audit status, and source-card references.
+- [x] Run requested focused validation for this slice:
+  - `pnpm run validate:manual-sign-inventory` passed: `192` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `5/5` tests.
+- [x] Run final whitespace check after this `tasks.md` update: `git diff --check` passed with no whitespace errors.
+- [ ] PR `#202` remains not merge-ready after this tiny slice. Page `185` is complete, but page `186`, warning pages beyond the current selected rows, and informational/temporary/horizontal/traffic-light sections still need their remaining visual-source reconciliation work before final validation or merge.
+
 ## Required Evidence To Fill During Implementation
 
 Inventory summary:
 
-- Total current mixed inventory entries: `169`
-- Reconciled source-visual rows: `20`
+- Total current mixed inventory entries: `192`
+- Reconciled source-visual rows: `43`
 - Pending reconciliation rows: `149`
-- Regulatory, pages `185-186`: `11` partial reconciled rows
+- Regulatory, pages `185-186`: `34` reconciled rows (`29` on complete page `185`, `5` partial rows on page `186`)
 - Warning, pages `187-188`: `9` partial reconciled rows
 - Informational, pages `189-192`: `62`
 - Temporary, pages `193-194`: `44`
 - Horizontal markings, pages `195-196`: `29`
 - Traffic lights/signals, page `197`: `14`
-- Source-page counts: p185 `6`, p186 `5`, p187 `4`, p188 `5`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
+- Source-page counts: p185 `29`, p186 `5`, p187 `4`, p188 `5`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
 - Inventory scaffold file: `src/data/manual-signs/app4SignEntries.json`
 
 Pages `198-200` disposition:
@@ -146,6 +157,11 @@ Validation commands:
   - `pnpm run build` passed: content validation passed, Vite production build completed, and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
   - `git diff --check` passed with no whitespace errors.
   - Full `pnpm run preflight` was skipped in this final bounded slice because it would duplicate `validate:content`, `test`, and `build` already run inside the required commands and add the full Playwright e2e suite after the Orchestrator explicitly requested the bounded command set.
+- Regulatory page `185` completion validation on 2026-06-07:
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `192` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `192` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `5/5` tests.
+  - `git diff --check` passed with no whitespace errors.
 
 Screenshot evidence:
 
