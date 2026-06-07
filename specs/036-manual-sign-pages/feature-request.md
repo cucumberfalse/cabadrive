@@ -173,10 +173,10 @@ The prior Analyst final-validation note for effective content head `21d843fc1fad
 
 Live final Analyst validation is deferred. Orchestrator must invoke Analyst validation again after Architect validation passes on the new effective content head.
 
-## Final Analyst Validation Notes
+## Superseded Analyst Validation History For e5041ad7
 
-Analyst validation pass: passed
-Final Analyst validation completed at: 2026-06-07T15:22:53-03:00
+Historical Analyst validation pass: passed for the superseded effective content head only.
+Historical Analyst validation completed at, superseded: 2026-06-07T15:22:53-03:00
 Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 Analyst validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 Analyst return count: 0
@@ -194,3 +194,9 @@ Customer intent check: contextual-visual type fix is included in effective conte
 Customer intent check: stale prior Analyst validation is marked superseded/history and live final Analyst validation was deferred before this section.
 Gaps, if any: none.
 Architect disposition routing: none required.
+
+## Deferred Analyst Validation Notice
+
+No live final Analyst validation is recorded for PR #202 after the later sourceRef content/test fix at `2a11be5dee6307e9df1cedad094ded5c58e6c659`. That newer content head changed `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, `tests/manual-sign-inventory.test.mjs`, and `specs/036-manual-sign-pages/tasks.md`, making the historical validation for `e5041ad79eb7034e01374b65ac3ceebf44f775da` stale.
+
+Final Analyst validation is deferred until Orchestrator invokes Analyst after fresh Architect validation on the new effective content head.

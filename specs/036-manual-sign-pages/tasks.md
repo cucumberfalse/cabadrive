@@ -418,29 +418,30 @@ Analyst final validation, when invoked after Architect final validation passes, 
 
 ## Cycle PR Set
 
-- PR #202 branch `codex/036-manual-sign-pages` current product head `100799eaa66448f5a7b287c00577b5d60c7f1a84`; status after review fix: contextual-visual type issue fixed, stale/duplicate review threads classified, no unresolved Implementation Agent feedback recorded; included in the final-validation cycle PR set.
-- Process-memory foundation commit after this uncommitted `tasks.md` rewrite is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
-- PR #202 sourceRef review-fix successor commit is expected to become the next effective content head candidate after commit/push; previous final validation must not be reused because generated inventory data and test contracts changed.
+- PR #202 branch `codex/036-manual-sign-pages` current content head `2a11be5dee6307e9df1cedad094ded5c58e6c659`; status after review fixes: contextual-visual type issue fixed, sourceRef review fix applied, stale/duplicate review threads classified, no unresolved Implementation Agent feedback recorded; included in the final-validation cycle PR set.
+- Process-memory foundation commit after this `tasks.md` rewrite is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
+- PR #202 sourceRef review-fix content changed `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; previous final validation for `e5041ad79eb7034e01374b65ac3ceebf44f775da` must not be reused because generated inventory data and test contracts changed.
 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
 - Disposition: resolved by review-fix commit 100799eaa66448f5a7b287c00577b5d60c7f1a84 adding contextual-visual to ManualSignEntry.entryKind.
+- Disposition: sourceRef review finding resolved at content head `2a11be5dee6307e9df1cedad094ded5c58e6c659` by pointing explicit visual-source generated refs to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` and adding regression coverage.
 
 ## Final Validation Evidence
 
-- Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
-- Architect validation: passed at 2026-06-07T15:17:00-03:00.
-- Architect return count: 2
-- Architect validation: Architect validated effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da.
-- Analyst feedback Architect disposition: none.
-- Limit escalation: none.
-- Current-PR-head read-only guard: Orchestrator will verify current PR head as an evidence-only successor of effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da before merge.
+- Historical effective content head `e5041ad79eb7034e01374b65ac3ceebf44f775da` has been superseded by later sourceRef content and test changes at PR #202 content head `2a11be5dee6307e9df1cedad094ded5c58e6c659`.
+- Current final Architect validation is deferred and ready to rerun after this process-memory foundation commit establishes the new effective content head candidate.
+- Current final Analyst validation is deferred until after the rerun final Architect validation passes for the new effective content head candidate.
+- Architect return count before rerun: 2.
+- Analyst feedback Architect disposition before rerun: none.
+- Limit escalation before rerun: none.
+- Current-PR-head read-only guard will compare the rerun-validated effective content head candidate against the current PR head before finalization.
 
-## Final Architect Validation Notes
+## Superseded Architect Validation Notes
 
 Architect validation pass: passed
-Final Architect validation completed at: 2026-06-07T15:17:00-03:00
+Superseded Architect validation completed at: 2026-06-07T15:17:00-03:00
 Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 Architect validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 Architect return count: 2
@@ -457,3 +458,4 @@ Architect validation evidence: required checks were still running at validation 
 Architect disposition: no open Architect dispositions remain.
 Architect disposition: no unresolved Implementation Agent feedback remains.
 Architect disposition: review fix `100799eaa66448f5a7b287c00577b5d60c7f1a84` is resolved.
+Historical note: this Architect validation is retained only as superseded evidence for `e5041ad79eb7034e01374b65ac3ceebf44f775da`; it is not a live final validation marker for current PR #202 content.
