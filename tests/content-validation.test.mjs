@@ -25,6 +25,12 @@ test("content validation wires learning-image runtime manifest into validator", 
   assert.match(source, /runtimeManifest:\s*learningImageRuntimeManifest/);
 });
 
+test("build content validation chain includes manual sign inventory guard", () => {
+  const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
+  assert.match(packageJson.scripts["validate:content"], /pnpm run validate:manual-sign-inventory/u);
+  assert.match(packageJson.scripts.build, /pnpm run validate:content/u);
+});
+
 test("category B fallback questions keep local image references", () => {
   const questions = JSON.parse(readFileSync("content/questions/caba-b.unofficial-fallback.questions.json", "utf8"));
   const withImages = questions.filter((question) => question.image);

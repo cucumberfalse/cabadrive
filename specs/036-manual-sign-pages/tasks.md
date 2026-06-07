@@ -396,6 +396,7 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Architect disposition: Review Agent classified `13` stale review threads as outdated/superseded and `3` duplicate contextual-visual type threads as fixed by `100799eaa66448f5a7b287c00577b5d60c7f1a84`.
 - Review-fix implementation decision at 2026-06-07T15:30:24-03:00 for review thread `PRRT_kwDOSX65IM6HrbRG`: explicit visual-source inventory rows remain hard-coded in `scripts/manual-sign-inventory.mjs`; generated `sourceRef` values now point to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` instead of dead `src/data/manual-sections/*.ts#*.visualSourceEntries[index]` targets.
 - Review-fix implementation decision for review thread `PRRT_kwDOSX65IM6HrfvY`: stale screenshot visual QA evidence is replaced with current all-section desktop and mobile screenshots and a regenerated summary for the final `316`-row inventory. Source-image pixels remain unmodified; screenshots are evidence artifacts only.
+- Review-fix implementation decision at 2026-06-07T16:08:39-03:00 for review thread `PRRT_kwDOSX65IM6Hrks3`: `validate:content` now invokes the existing standalone `validate:manual-sign-inventory` package script, so `pnpm run build` and deploy/build validation run the manual sign inventory guard before production assets are built.
 
 ## Dead Ends
 
@@ -403,6 +404,7 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Architect disposition: pre-fix final validation notes for earlier heads are stale after product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` and are intentionally omitted from this foundation memory so later final validation can run on the new effective content head.
 - Previous final Architect/Analyst validation evidence for effective content head `e5041ad79eb7034e01374b65ac3ceebf44f775da` is stale after the sourceRef review-fix content changes to `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; final validation is ready to rerun after this review-fix PR head is committed and pushed.
 - Previous final Architect/Analyst validation evidence for effective content head `202af0dd1e7b92a308220ac5805afac2740e25dd` and PR head `96721c0bed8fd334d13281de6d6bdbf01b1833ca` is stale after review thread `PRRT_kwDOSX65IM6HrfvY` required replacing screenshot evidence artifacts and process memory. Final Architect validation and final Analyst validation must be rerun by their assigned roles after this review-fix evidence commit is pushed.
+- Previous final Architect/Analyst validation evidence for effective content head `ea2a1546522f70e5da3299297f6165199a29eab7` is stale after review thread `PRRT_kwDOSX65IM6Hrks3` required package/test/process-memory changes to wire manual sign validation into the build content validation chain. Final Architect validation and final Analyst validation must be rerun by their assigned roles after this review-fix commit is pushed.
 
 ## Known Issues
 
@@ -429,6 +431,12 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests.
 - Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `pnpm run build` passed; Vite emitted the existing large-chunk warning, production build completed, and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
 - Review visual QA fix verification for thread `PRRT_kwDOSX65IM6HrfvY`: `git diff --check` passed with no whitespace errors after evidence and process-memory updates.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `pnpm run validate:content` passed and showed `pnpm run validate:manual-sign-inventory` running inside the content validation chain.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `pnpm run validate:manual-sign-inventory` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `node --test tests/manual-sign-inventory.test.mjs tests/content-validation.test.mjs` passed `24/24` tests, including package-script regression coverage that `build` uses `validate:content` and `validate:content` runs `validate:manual-sign-inventory`.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `pnpm run build` passed; the build invoked the updated `validate:content` chain, Vite emitted the existing large-chunk warning, production build completed, and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
+- Review validation-chain fix verification for thread `PRRT_kwDOSX65IM6Hrks3`: `git diff --check` passed with no whitespace errors after package, test, and process-memory updates.
 
 ## Cycle PR Set
 
@@ -436,6 +444,7 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Process-memory foundation commit after this `tasks.md` rewrite was superseded by review thread `PRRT_kwDOSX65IM6HrfvY`; the visual-QA evidence commit is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
 - PR #202 sourceRef review-fix content changed `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; previous final validation for `e5041ad79eb7034e01374b65ac3ceebf44f775da` must not be reused because generated inventory data and test contracts changed.
 - PR #202 visual-QA review fix changed only screenshot evidence artifacts and Implementation-owned process memory; previous final validation for `202af0dd1e7b92a308220ac5805afac2740e25dd`/`96721c0bed8fd334d13281de6d6bdbf01b1833ca` must not be reused until Architect and Analyst rerun validation on the new effective content head.
+- PR #202 validation-chain review fix changed `package.json`, `tests/content-validation.test.mjs`, and Implementation-owned process memory; previous final validation for `ea2a1546522f70e5da3299297f6165199a29eab7` must not be reused until Architect and Analyst rerun validation on the new effective content head.
 
 ## Implementation Agent Feedback
 
@@ -443,6 +452,7 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Disposition: resolved by review-fix commit 100799eaa66448f5a7b287c00577b5d60c7f1a84 adding contextual-visual to ManualSignEntry.entryKind.
 - Disposition: sourceRef review finding resolved at content head `2a11be5dee6307e9df1cedad094ded5c58e6c659` by pointing explicit visual-source generated refs to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` and adding regression coverage.
 - Disposition: screenshot visual QA review finding `PRRT_kwDOSX65IM6HrfvY` resolved by regenerating all-section desktop/mobile screenshots and `visual-qa-summary.json` against the current final `316`-row inventory.
+- Disposition: validation-chain review finding `PRRT_kwDOSX65IM6Hrks3` resolved by wiring `validate:manual-sign-inventory` into `validate:content` and adding package-script regression coverage.
 
 ## Final Validation Evidence
 
