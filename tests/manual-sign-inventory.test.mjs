@@ -152,6 +152,7 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
     assert.equal(entry.cropAuditBasis?.outputPixelTargetPass, true, entry.id);
     assert.equal(entry.cropAuditBasis?.sourceBoundsPass, true, entry.id);
     assert.equal(entry.cropAuditBasis?.edgeContactPass, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, entry.id);
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceWidthRatio, "number", entry.id);
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceHeightRatio, "number", entry.id);
     assert.equal(entry.noUpscaleProof?.passes, true, entry.id);
@@ -212,12 +213,62 @@ test("review-blocked crop regressions have explicit passing audit basis and corr
   }
 });
 
+test("review-blocked warning contamination regressions have isolated final crops", () => {
+  const inventory = loadJson(inventoryPath);
+  const expectations = [
+    {
+      id: "app4warning-p188-004-cruce-de-ciclistas-catalog-entry",
+      maxSourceWidth: 80,
+      maxSourceHeight: 80
+    },
+    {
+      id: "app4warning-p188-005-jinetes-catalog-entry",
+      maxSourceWidth: 75,
+      maxSourceHeight: 80
+    },
+    {
+      id: "app4warning-p188-009-presencia-de-vehiculos-extranos-tranvia",
+      maxSourceWidth: 80,
+      maxSourceHeight: 80
+    },
+    {
+      id: "app4warning-p188-010-presencia-de-vehiculos-extranos-tractor",
+      maxSourceWidth: 80,
+      maxSourceHeight: 80
+    }
+  ];
+
+  for (const expectation of expectations) {
+    const entry = entryById(inventory.entries, expectation.id);
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", expectation.id);
+    assert.equal(entry.cropAuditBasis?.passes, true, expectation.id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, expectation.id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.width <= expectation.maxSourceWidth, expectation.id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.height <= expectation.maxSourceHeight, expectation.id);
+  }
+});
+
+test("external source captions are trimmed from informational pedestrian crossing crops", () => {
+  const inventory = loadJson(inventoryPath);
+  for (const id of [
+    "app4informational-p190-007-cruce-peatonal-derecha",
+    "app4informational-p190-008-cruce-peatonal-izquierda"
+  ]) {
+    const entry = entryById(inventory.entries, id);
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", id);
+    assert.equal(entry.cropAuditBasis?.passes, true, id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.y >= 1840, id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.height <= 60, id);
+  }
+});
+
 test("crop generator cannot stamp reviewed-final-correct without audit pass", () => {
   const cropResolutionSource = readFileSync(cropResolutionScriptPath, "utf8");
   assert.match(cropResolutionSource, /automatedCropAudit\.passes\s*\?\s*"reviewed-final-correct"\s*:\s*"pending-crop-audit"/u);
   assert.doesNotMatch(cropResolutionSource, /cropAuditStatus:\s*"reviewed-final-correct"/u);
   assert.match(cropResolutionSource, /edgeContactPass/u);
   assert.match(cropResolutionSource, /sourceBoundsPass/u);
+  assert.match(cropResolutionSource, /neighborContaminationGuardPass/u);
 });
 
 test("category headings are DOM dispositions and excluded from sign quality counts", () => {

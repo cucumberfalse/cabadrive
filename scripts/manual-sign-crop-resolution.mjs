@@ -22,7 +22,7 @@ const renderMode = "individual-source-crop-3x";
 const generatedBy = "scripts/manual-sign-crop-resolution.mjs";
 const generatedAt = process.env.MANUAL_SIGN_CROP_GENERATED_AT || new Date().toISOString();
 const rowGroupTolerancePx = 30;
-const horizontalExpansionPx = 28;
+const defaultHorizontalExpansionPx = 28;
 const bottomExpansionPx = 42;
 const neighborGapPx = 4;
 
@@ -71,7 +71,25 @@ function canSpanNextColumn(row) {
   return row.sectionId === "app4-signs-horizontal" || row.entryKind === "contextual-visual" || row.baselineCropRegion.width >= 120;
 }
 
+function shouldApplyColumnGuards(row) {
+  return row.sectionId !== "app4-signs-warning" && !canSpanNextColumn(row);
+}
+
+function horizontalExpansionPx(row) {
+  if (row.sectionId === "app4-signs-warning") {
+    return Math.min(24, Math.max(16, Math.round(row.baselineCropRegion.width * 0.22)));
+  }
+  return defaultHorizontalExpansionPx;
+}
+
+function columnGapPx(row) {
+  return neighborGapPx;
+}
+
 function tailTrimMode(row) {
+  if (row.sectionId === "app4-signs-warning") {
+    return "trim-external-catalog-label";
+  }
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
   if (
     row.baselineCropNaturalHeight >= 110 ||
@@ -86,12 +104,18 @@ function verticalLookbackPx(row) {
   if (row.sectionId === "app4-signs-traffic-lights" && /p197-0(?:09|10)-/.test(row.id)) {
     return 8;
   }
+  if (row.sectionId === "app4-signs-warning") {
+    return Math.min(24, Math.max(10, Math.round(row.baselineCropRegion.height * 0.18)));
+  }
   return Math.min(120, Math.max(36, Math.round(row.baselineCropRegion.height * 0.9)));
 }
 
 function bottomLookaheadPx(row) {
   if (row.sectionId === "app4-signs-traffic-lights" && /p197-0(?:09|10)-/.test(row.id)) {
     return 18;
+  }
+  if (row.sectionId === "app4-signs-warning") {
+    return Math.min(16, Math.max(8, Math.round(row.baselineCropRegion.height * 0.12)));
   }
   return bottomExpansionPx;
 }
@@ -159,6 +183,10 @@ function makeCropLayoutIndex(baseline) {
         index.set(row.id, {
           previousVisualRowY: previousOverlappingRowY,
           nextVisualRowY: nextOverlappingRowY,
+          previousVisualColumnRight:
+            xIndex > 0
+              ? sameVisualRow[xIndex - 1].baselineCropRegion.x + sameVisualRow[xIndex - 1].baselineCropRegion.width
+              : null,
           nextVisualColumnX: sameVisualRow[xIndex + 1]?.baselineCropRegion.x ?? null
         });
       }
@@ -173,17 +201,26 @@ function candidateSourceRegion(row, cropLayoutIndex) {
   if (!sourceRegion || !cropRegion) throw new Error(`${row.id}: missing sourceRegion/cropRegion`);
   const layout = cropLayoutIndex.get(row.id);
 
-  let localX = Math.max(0, cropRegion.x - horizontalExpansionPx);
+  const horizontalExpansion = horizontalExpansionPx(row);
+  const columnGap = columnGapPx(row);
+  let localX = Math.max(0, cropRegion.x - horizontalExpansion);
   let localY = Math.max(0, cropRegion.y - verticalLookbackPx(row));
-  let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + horizontalExpansionPx);
+  let localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width + horizontalExpansion);
   let localBottom = Math.min(sourceRegion.height, cropRegion.y + cropRegion.height + bottomLookaheadPx(row));
 
   if (
-    layout?.nextVisualColumnX != null &&
-    !canSpanNextColumn(row) &&
-    localRight > layout.nextVisualColumnX - neighborGapPx
+    layout?.previousVisualColumnRight != null &&
+    shouldApplyColumnGuards(row) &&
+    localX < layout.previousVisualColumnRight + columnGap
   ) {
-    localRight = Math.max(cropRegion.x + 1, layout.nextVisualColumnX - neighborGapPx);
+    localX = Math.min(cropRegion.x, Math.max(0, layout.previousVisualColumnRight + columnGap));
+  }
+  if (
+    layout?.nextVisualColumnX != null &&
+    shouldApplyColumnGuards(row) &&
+    localRight > layout.nextVisualColumnX - columnGap
+  ) {
+    localRight = Math.max(cropRegion.x + cropRegion.width, layout.nextVisualColumnX - columnGap);
   }
   if (
     layout?.nextVisualRowY != null &&
@@ -191,6 +228,11 @@ function candidateSourceRegion(row, cropLayoutIndex) {
     localBottom > layout.nextVisualRowY - neighborGapPx
   ) {
     localBottom = Math.max(cropRegion.y + 1, layout.nextVisualRowY - neighborGapPx);
+  }
+
+  if (localRight <= localX) {
+    localX = Math.max(0, cropRegion.x);
+    localRight = Math.min(sourceRegion.width, cropRegion.x + cropRegion.width);
   }
 
   return {
@@ -268,17 +310,30 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const relativeSourceHeightRatio = Number((renderRecord.sourceRegionAtBaseScale.height / row.baselineCropNaturalHeight).toFixed(6));
   const minimumRelativeSourceWidthRatio = 0.35;
   const minimumRelativeSourceHeightRatio = 0.35;
-  const edgeContactMinimumRelativeWidthRatio = 0.5;
-  const edgeContactMinimumRelativeHeightRatio = 0.5;
-  const sourceBoundsPass =
+  const edgeContactMinimumRelativeWidthRatio = 0.25;
+  const edgeContactMinimumRelativeHeightRatio = 0.35;
+  const warningEdgeMaximumRelativeWidthRatio = 1.05;
+  const standardSourceBoundsPass =
     renderRecord.sourceRegionAtBaseScale.width >= 12 &&
     renderRecord.sourceRegionAtBaseScale.height >= 12 &&
     relativeSourceWidthRatio >= minimumRelativeSourceWidthRatio &&
     relativeSourceHeightRatio >= minimumRelativeSourceHeightRatio;
+  const slenderSourceBoundsPass =
+    renderRecord.sourceRegionAtBaseScale.width >= 18 &&
+    renderRecord.sourceRegionAtBaseScale.height >= 48 &&
+    relativeSourceHeightRatio >= 0.6 &&
+    renderRecord.sourceRegionAtBaseScale.width / renderRecord.sourceRegionAtBaseScale.height <= 0.45;
+  const sourceBoundsPass = standardSourceBoundsPass || slenderSourceBoundsPass;
+  const horizontalEdgeContact = edgeContact.left || edgeContact.right;
+  const neighborContaminationGuardPass =
+    row.sectionId !== "app4-signs-warning" ||
+    !horizontalEdgeContact ||
+    relativeSourceWidthRatio <= warningEdgeMaximumRelativeWidthRatio;
   const edgeContactPass =
     edgeContactSides.length === 0 ||
     (relativeSourceWidthRatio >= edgeContactMinimumRelativeWidthRatio &&
-      relativeSourceHeightRatio >= edgeContactMinimumRelativeHeightRatio);
+      relativeSourceHeightRatio >= edgeContactMinimumRelativeHeightRatio &&
+      neighborContaminationGuardPass);
   const hasTrimmedContent = trim.width > 0 && trim.height > 0;
   const passes = outputPixelTargetPass && sourceBoundsPass && hasTrimmedContent && edgeContactPass;
   return {
@@ -287,6 +342,8 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
       "cell-expanded official-PDF candidate, baseline-anchor component trim, relative source-bounds guard, and explicit edge-contact policy; reviewed-final-correct is assigned only when this audit passes",
     outputPixelTargetPass,
     sourceBoundsPass,
+    standardSourceBoundsPass,
+    slenderSourceBoundsPass,
     minimumRelativeSourceWidthRatio,
     minimumRelativeSourceHeightRatio,
     relativeSourceWidthRatio,
@@ -304,6 +361,8 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     edgeContactPass,
     edgeContactMinimumRelativeWidthRatio,
     edgeContactMinimumRelativeHeightRatio,
+    neighborContaminationGuardPass,
+    warningEdgeMaximumRelativeWidthRatio,
     passes
   };
 }
@@ -366,7 +425,7 @@ function rowQualityFields(row, renderRecord, sourceMappingById) {
     cropAuditStatus,
     cropAuditBasis: automatedCropAudit,
     cropAuditNote: automatedCropAudit.passes
-      ? "Final crop uses a cell-expanded source candidate, trims to official visual content with baseline-anchor component checks, and passes the feature-037 crop audit basis. Edge-contact rows must meet explicit relative source-coverage thresholds. External captions remain selectable DOM text; source-limited disclosure remains separate from crop correctness."
+      ? "Final crop uses a cell-expanded source candidate, trims to official visual content with baseline-anchor component checks, and passes the feature-037 crop audit basis. Edge-contact rows must meet explicit source-coverage and neighbor-contamination guards. External captions remain selectable DOM text; source-limited disclosure remains separate from crop correctness."
       : "Final crop is pending manual/automated crop audit because the generated source bounds indicate a possible partial crop.",
     noUpscale: true,
     runtimeDisplayMaxWidth: dimensions.width,
@@ -534,6 +593,7 @@ function validateFinalRows(finalRows) {
     if (row.cropAuditBasis?.outputPixelTargetPass !== true) errors.push(`${row.id}: crop audit output pixel target must pass`);
     if (row.cropAuditBasis?.sourceBoundsPass !== true) errors.push(`${row.id}: crop audit source bounds must pass`);
     if (row.cropAuditBasis?.edgeContactPass !== true) errors.push(`${row.id}: crop audit edge-contact policy must pass`);
+    if (row.cropAuditBasis?.neighborContaminationGuardPass !== true) errors.push(`${row.id}: crop audit neighbor-contamination guard must pass`);
     if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
       errors.push(`${row.id}: crop audit relative source ratios are required`);
     }

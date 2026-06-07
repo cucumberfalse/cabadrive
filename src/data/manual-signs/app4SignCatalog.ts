@@ -12,6 +12,8 @@ export type ManualSignCropAuditBasis = {
   method: string;
   outputPixelTargetPass: boolean;
   sourceBoundsPass: boolean;
+  standardSourceBoundsPass: boolean;
+  slenderSourceBoundsPass: boolean;
   minimumRelativeSourceWidthRatio: number;
   minimumRelativeSourceHeightRatio: number;
   relativeSourceWidthRatio: number;
@@ -31,6 +33,8 @@ export type ManualSignCropAuditBasis = {
   edgeContactPass: boolean;
   edgeContactMinimumRelativeWidthRatio: number;
   edgeContactMinimumRelativeHeightRatio: number;
+  neighborContaminationGuardPass: boolean;
+  warningEdgeMaximumRelativeWidthRatio: number;
   passes: boolean;
 };
 

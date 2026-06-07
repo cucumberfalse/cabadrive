@@ -262,6 +262,26 @@ func boundsCenterDistanceSquared(_ left: BoundsRecord, _ right: BoundsRecord) ->
   return dx * dx + dy * dy
 }
 
+func boundsCenterInside(_ bounds: BoundsRecord, _ container: BoundsRecord) -> Bool {
+  let centerX = Double(bounds.x) + Double(bounds.width) / 2
+  let centerY = Double(bounds.y) + Double(bounds.height) / 2
+  return centerX >= Double(container.x) &&
+    centerX <= Double(container.x + container.width) &&
+    centerY >= Double(container.y) &&
+    centerY <= Double(container.y + container.height)
+}
+
+func boundsIntersectionArea(_ left: BoundsRecord, _ right: BoundsRecord) -> Int {
+  let x1 = max(left.x, right.x)
+  let y1 = max(left.y, right.y)
+  let x2 = min(left.x + left.width, right.x + right.width)
+  let y2 = min(left.y + left.height, right.y + right.height)
+  if x2 <= x1 || y2 <= y1 {
+    return 0
+  }
+  return (x2 - x1) * (y2 - y1)
+}
+
 func pixelComponents(mask: [Bool], width: Int, height: Int) -> [PixelComponent] {
   var visited = [Bool](repeating: false, count: mask.count)
   var components: [PixelComponent] = []
@@ -334,10 +354,50 @@ func selectComponentBounds(_ components: [PixelComponent], anchorRect: BoundsRec
 
   let intersecting = components.filter { boundsIntersect($0.bounds, anchorRect) }
   if !intersecting.isEmpty {
-    return mergeComponentBounds(intersecting)
+    let centeredOrSubstantial = intersecting.filter { component in
+      let bounds = component.bounds
+      if boundsCenterInside(bounds, anchorRect) {
+        return true
+      }
+      let intersectionArea = boundsIntersectionArea(bounds, anchorRect)
+      let componentArea = max(1, bounds.width * bounds.height)
+      return Double(intersectionArea) / Double(componentArea) >= 0.35
+    }
+    if !centeredOrSubstantial.isEmpty {
+      return mergeComponentBounds(centeredOrSubstantial)
+    }
+    let nearestIntersecting = intersecting.min { left, right in
+      let leftDistance = boundsCenterDistanceSquared(left.bounds, anchorRect)
+      let rightDistance = boundsCenterDistanceSquared(right.bounds, anchorRect)
+      if leftDistance == rightDistance {
+        return left.area > right.area
+      }
+      return leftDistance < rightDistance
+    }
+    return nearestIntersecting?.bounds
   }
 
   let nearest = components.min { left, right in
+    let leftDistance = boundsCenterDistanceSquared(left.bounds, anchorRect)
+    let rightDistance = boundsCenterDistanceSquared(right.bounds, anchorRect)
+    if leftDistance == rightDistance {
+      return left.area > right.area
+    }
+    return leftDistance < rightDistance
+  }
+  return nearest?.bounds
+}
+
+func selectNearestComponentBounds(_ components: [PixelComponent], anchorRect: BoundsRecord) -> BoundsRecord? {
+  if components.isEmpty {
+    return nil
+  }
+
+  let intersecting = components.filter { boundsIntersect($0.bounds, anchorRect) }
+  if intersecting.isEmpty {
+    return nil
+  }
+  let nearest = intersecting.min { left, right in
     let leftDistance = boundsCenterDistanceSquared(left.bounds, anchorRect)
     let rightDistance = boundsCenterDistanceSquared(right.bounds, anchorRect)
     if leftDistance == rightDistance {
@@ -352,7 +412,80 @@ func paddedTrimBounds(_ bounds: BoundsRecord, padding: Int, width: Int, height: 
   return expandBounds(bounds, by: padding, width: width, height: height)
 }
 
-func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String, anchorRect: BoundsRecord) throws -> BoundsRecord {
+func isolatedWarningBounds(_ bounds: BoundsRecord, anchorRect: BoundsRecord, width: Int, height: Int) -> BoundsRecord {
+  let maximumWidth = max(54, min(width, Int((Double(anchorRect.width) * 0.9).rounded(.up))))
+  if bounds.width <= maximumWidth {
+    return bounds
+  }
+
+  let touchesLeft = bounds.x <= 1
+  let touchesRight = bounds.x + bounds.width >= width - 1
+  let anchorCenterX = Double(anchorRect.x) + Double(anchorRect.width) / 2
+  let boundsCenterX = Double(bounds.x) + Double(bounds.width) / 2
+  let newX: Int
+  if touchesLeft && touchesRight {
+    newX = anchorCenterX <= boundsCenterX ? bounds.x : bounds.x + bounds.width - maximumWidth
+  } else if touchesLeft {
+    newX = bounds.x
+  } else if touchesRight {
+    newX = bounds.x + bounds.width - maximumWidth
+  } else {
+    newX = Int((anchorCenterX - Double(maximumWidth) / 2).rounded())
+  }
+
+  return clampBounds(
+    BoundsRecord(x: newX, y: bounds.y, width: maximumWidth, height: bounds.height),
+    width: width,
+    height: height
+  )
+}
+
+func trimLowerDetachedContent(_ bounds: BoundsRecord, mask: [Bool], width: Int, height: Int) -> BoundsRecord {
+  let clamped = clampBounds(bounds, width: width, height: height)
+  let minOccupiedPixels = max(2, Int((Double(clamped.width) * 0.035).rounded(.up)))
+  var rowCounts = [Int](repeating: 0, count: clamped.height)
+
+  for localY in 0..<clamped.height {
+    let y = clamped.y + localY
+    var count = 0
+    for x in clamped.x..<(clamped.x + clamped.width) {
+      if mask[y * width + x] {
+        count += 1
+      }
+    }
+    rowCounts[localY] = count
+  }
+
+  guard let firstOccupied = rowCounts.firstIndex(where: { $0 >= minOccupiedPixels }),
+    let lastOccupied = rowCounts.lastIndex(where: { $0 >= minOccupiedPixels })
+  else {
+    return clamped
+  }
+
+  let minimumUpperVisualHeight = max(24, Int((Double(clamped.height) * 0.32).rounded()))
+  let minimumDetachedContentRows = 4
+  let minimumGapRows = 5
+  var localY = firstOccupied + minimumUpperVisualHeight
+  while localY <= lastOccupied - minimumGapRows - minimumDetachedContentRows {
+    var gapLength = 0
+    while localY + gapLength <= lastOccupied && rowCounts[localY + gapLength] < minOccupiedPixels {
+      gapLength += 1
+    }
+    if gapLength >= minimumGapRows {
+      let belowStart = localY + gapLength
+      let belowRows = rowCounts[belowStart...lastOccupied].filter { $0 >= minOccupiedPixels }.count
+      if belowRows >= minimumDetachedContentRows {
+        let newHeight = max(1, localY)
+        return BoundsRecord(x: clamped.x, y: clamped.y, width: clamped.width, height: newHeight)
+      }
+    }
+    localY = max(localY + 1, localY + gapLength + 1)
+  }
+
+  return clamped
+}
+
+func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: String, anchorRect: BoundsRecord) throws -> BoundsRecord {
   let width = image.width
   let height = image.height
   let bytesPerPixel = 4
@@ -406,18 +539,29 @@ func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String, anchorRect:
     return BoundsRecord(x: 0, y: 0, width: width, height: height)
   }
 
-  let padding = tailTrimMode == "preserve-colorless-lower-attachment" ? 5 : 6
-  let anchor = expandBounds(clampBounds(anchorRect, width: width, height: height), by: 6, width: width, height: height)
+  let padding = tailTrimMode == "preserve-colorless-lower-attachment" ? 5 : 3
+  let baseAnchor = clampBounds(anchorRect, width: width, height: height)
+  let anchor = expandBounds(baseAnchor, by: 6, width: width, height: height)
   let meaningfulComponents = pixelComponents(mask: meaningfulMask, width: width, height: height)
   let meaningfulBounds = selectComponentBounds(meaningfulComponents, anchorRect: anchor)
 
   if tailTrimMode != "preserve-colorless-lower-attachment" && totalColorful > 30 {
     let colorComponents = pixelComponents(mask: colorMask, width: width, height: height)
-    if let colorBounds = selectComponentBounds(colorComponents, anchorRect: anchor) {
+    let selectedColorBounds = tailTrimMode == "trim-external-catalog-label"
+      ? selectNearestComponentBounds(colorComponents, anchorRect: anchor)
+      : selectComponentBounds(colorComponents, anchorRect: anchor)
+    if let colorBounds = selectedColorBounds {
       let minimumUsefulWidth = max(14, Int((Double(anchor.width) * 0.38).rounded()))
       let minimumUsefulHeight = max(14, Int((Double(anchor.height) * 0.28).rounded()))
       if colorBounds.width >= minimumUsefulWidth && colorBounds.height >= minimumUsefulHeight {
-        return paddedTrimBounds(colorBounds, padding: padding, width: width, height: height)
+        var paddedBounds = paddedTrimBounds(colorBounds, padding: padding, width: width, height: height)
+        if tailTrimMode == "trim-external-catalog-label" {
+          paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
+        }
+        if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+          return isolatedWarningBounds(paddedBounds, anchorRect: baseAnchor, width: width, height: height)
+        }
+        return paddedBounds
       }
       let focusXPadding = max(24, anchor.width / 2)
       let focusYPadding = max(14, min(22, anchor.height / 5))
@@ -430,13 +574,27 @@ func meaningfulContentBounds(_ image: CGImage, tailTrimMode: String, anchorRect:
       )
       let focusedMeaningfulComponents = meaningfulComponents.filter { boundsIntersect($0.bounds, focusedAnchor) }
       if let focusedMeaningfulBounds = mergeComponentBounds(focusedMeaningfulComponents) {
-        return paddedTrimBounds(focusedMeaningfulBounds, padding: padding, width: width, height: height)
+        var paddedBounds = paddedTrimBounds(focusedMeaningfulBounds, padding: padding, width: width, height: height)
+        if tailTrimMode == "trim-external-catalog-label" {
+          paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
+        }
+        if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+          return isolatedWarningBounds(paddedBounds, anchorRect: baseAnchor, width: width, height: height)
+        }
+        return paddedBounds
       }
     }
   }
 
   if let meaningfulBounds = meaningfulBounds {
-    return paddedTrimBounds(meaningfulBounds, padding: padding, width: width, height: height)
+    var paddedBounds = paddedTrimBounds(meaningfulBounds, padding: padding, width: width, height: height)
+    if tailTrimMode == "trim-external-catalog-label" {
+      paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
+    }
+    if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+      return isolatedWarningBounds(paddedBounds, anchorRect: baseAnchor, width: width, height: height)
+    }
+    return paddedBounds
   }
 
   return BoundsRecord(x: 0, y: 0, width: width, height: height)
@@ -485,6 +643,7 @@ do {
     }
     let contentTrim = try meaningfulContentBounds(
       candidateCrop,
+      sectionId: target.sectionId,
       tailTrimMode: target.tailTrimMode,
       anchorRect: target.baselineCropRegionAtCandidateScale
     )

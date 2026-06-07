@@ -44,13 +44,13 @@
       "sourceOrder": 4,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-004-contramano-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1346,
+        "x": 1364,
         "y": 1750,
-        "width": 110,
+        "width": 92,
         "height": 150
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 67,
         "width": 74,
         "height": 74
@@ -76,13 +76,13 @@
       "sourceOrder": 5,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-005-no-circular-automovil.png",
       "candidateRegionAtBaseScale": {
-        "x": 1432,
+        "x": 1452,
         "y": 1741,
-        "width": 110,
+        "width": 90,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 8,
         "y": 76,
         "width": 82,
         "height": 84
@@ -108,13 +108,13 @@
       "sourceOrder": 6,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-006-no-circular-moto.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1546,
         "y": 1741,
-        "width": 108,
+        "width": 82,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 82,
         "height": 84
@@ -140,13 +140,13 @@
       "sourceOrder": 7,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-007-no-circular-bicicleta.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
+        "x": 1630,
         "y": 1741,
-        "width": 144,
+        "width": 116,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 88,
         "height": 84
@@ -204,13 +204,13 @@
       "sourceOrder": 9,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-009-no-circular-acoplado.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1369,
         "y": 1828,
-        "width": 111,
+        "width": 86,
         "height": 160
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 76,
         "width": 82,
         "height": 84
@@ -236,13 +236,13 @@
       "sourceOrder": 10,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-010-no-circular-peaton.png",
       "candidateRegionAtBaseScale": {
-        "x": 1431,
+        "x": 1458,
         "y": 1828,
-        "width": 103,
+        "width": 83,
         "height": 160
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 76,
         "width": 82,
         "height": 84
@@ -268,13 +268,13 @@
       "sourceOrder": 11,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-011-no-circular-carro-de-traccion-animal.png",
       "candidateRegionAtBaseScale": {
-        "x": 1510,
+        "x": 1538,
         "y": 1828,
-        "width": 116,
+        "width": 108,
         "height": 160
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 108,
         "height": 84
@@ -300,13 +300,13 @@
       "sourceOrder": 12,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-012-no-circular-jinetes.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
+        "x": 1630,
         "y": 1828,
-        "width": 144,
+        "width": 116,
         "height": 160
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 88,
         "height": 84
@@ -334,7 +334,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1258,
         "y": 1916,
-        "width": 108,
+        "width": 112,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
@@ -364,13 +364,13 @@
       "sourceOrder": 14,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-014-no-circular-tractor-agricola.png",
       "candidateRegionAtBaseScale": {
-        "x": 1342,
+        "x": 1370,
         "y": 1916,
-        "width": 115,
+        "width": 92,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 92,
         "height": 84
@@ -396,13 +396,13 @@
       "sourceOrder": 15,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-015-no-girar-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1433,
+        "x": 1461,
         "y": 1916,
-        "width": 109,
+        "width": 81,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 78,
         "height": 84
@@ -428,13 +428,13 @@
       "sourceOrder": 16,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-016-no-girar-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1543,
         "y": 1916,
-        "width": 110,
+        "width": 85,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 76,
         "width": 80,
         "height": 84
@@ -460,13 +460,13 @@
       "sourceOrder": 17,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-017-no-girar-en-u-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1604,
+        "x": 1630,
         "y": 1916,
-        "width": 138,
+        "width": 112,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 2,
         "y": 76,
         "width": 82,
         "height": 84
@@ -524,13 +524,13 @@
       "sourceOrder": 19,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-019-no-ruidos-molestos-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
+        "x": 1372,
         "y": 2003,
-        "width": 112,
+        "width": 85,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 76,
         "width": 82,
         "height": 84
@@ -556,13 +556,13 @@
       "sourceOrder": 20,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-020-no-estacionar-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1433,
+        "x": 1459,
         "y": 2009,
-        "width": 109,
+        "width": 83,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 2,
         "y": 70,
         "width": 78,
         "height": 78
@@ -588,13 +588,13 @@
       "sourceOrder": 21,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1543,
         "y": 1966,
-        "width": 108,
+        "width": 91,
         "height": 280
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 113,
         "width": 88,
         "height": 125
@@ -620,13 +620,13 @@
       "sourceOrder": 22,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
+        "x": 1630,
         "y": 1966,
-        "width": 148,
+        "width": 120,
         "height": 280
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 113,
         "width": 92,
         "height": 125
@@ -654,7 +654,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1258,
         "y": 2113,
-        "width": 110,
+        "width": 116,
         "height": 201
       },
       "baselineCropRegionAtCandidateScale": {
@@ -684,13 +684,13 @@
       "sourceOrder": 24,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-024-no-estacionar-entre-aceras.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1372,
         "y": 2113,
-        "width": 108,
+        "width": 88,
         "height": 201
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 79,
         "width": 88,
         "height": 88
@@ -716,13 +716,13 @@
       "sourceOrder": 25,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1428,
+        "x": 1456,
         "y": 2079,
-        "width": 111,
+        "width": 96,
         "height": 235
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 113,
         "width": 96,
         "height": 126
@@ -748,13 +748,13 @@
       "sourceOrder": 26,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1515,
+        "x": 1543,
         "y": 2079,
-        "width": 109,
+        "width": 96,
         "height": 281
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 113,
         "width": 96,
         "height": 126
@@ -780,13 +780,13 @@
       "sourceOrder": 27,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-027-no-estacionar-ni-detenerse-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1600,
+        "x": 1628,
         "y": 2113,
-        "width": 150,
+        "width": 122,
         "height": 209
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 79,
         "width": 94,
         "height": 88
@@ -814,7 +814,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1258,
         "y": 2198,
-        "width": 110,
+        "width": 124,
         "height": 302
       },
       "baselineCropRegionAtCandidateScale": {
@@ -844,13 +844,13 @@
       "sourceOrder": 29,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-029-no-cambiar-de-carril-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1372,
         "y": 2232,
-        "width": 142,
+        "width": 114,
         "height": 224
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 86,
         "width": 86,
         "height": 96
@@ -908,13 +908,13 @@
       "sourceOrder": 32,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-003-limitacion-de-peso-por-eje-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1358,
         "y": 1697,
-        "width": 106,
+        "width": 96,
         "height": 151
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 14,
         "y": 70,
         "width": 82,
         "height": 78
@@ -940,13 +940,13 @@
       "sourceOrder": 33,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-004-limitacion-de-altura-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1426,
+        "x": 1454,
         "y": 1697,
-        "width": 116,
+        "width": 88,
         "height": 151
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 86,
         "height": 78
@@ -972,13 +972,13 @@
       "sourceOrder": 34,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-005-limitacion-de-ancho-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1544,
         "y": 1697,
-        "width": 98,
+        "width": 74,
         "height": 151
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 2,
         "y": 70,
         "width": 72,
         "height": 78
@@ -1004,13 +1004,13 @@
       "sourceOrder": 35,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-006-limitacion-de-largo-de-vehiculo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1592,
+        "x": 1620,
         "y": 1697,
-        "width": 164,
+        "width": 136,
         "height": 151
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 108,
         "height": 78
@@ -1038,7 +1038,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1246,
         "y": 1775,
-        "width": 120,
+        "width": 134,
         "height": 194
       },
       "baselineCropRegionAtCandidateScale": {
@@ -1068,13 +1068,13 @@
       "sourceOrder": 37,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-008-limite-de-velocidad-minima-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1342,
+        "x": 1370,
         "y": 1775,
-        "width": 106,
+        "width": 88,
         "height": 194
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 88,
         "height": 86
@@ -1100,13 +1100,13 @@
       "sourceOrder": 38,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-009-estacionamiento-exclusivo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1452,
         "y": 1775,
-        "width": 106,
+        "width": 90,
         "height": 194
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 90,
         "height": 86
@@ -1132,13 +1132,13 @@
       "sourceOrder": 39,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-010-estacionamiento-exclusivo-cajon-azul.png",
       "candidateRegionAtBaseScale": {
-        "x": 1506,
+        "x": 1534,
         "y": 1732,
-        "width": 110,
+        "width": 92,
         "height": 312
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 120,
         "width": 92,
         "height": 150
@@ -1164,13 +1164,13 @@
       "sourceOrder": 40,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-011-estacionamiento-exclusivo-discapacitados.png",
       "candidateRegionAtBaseScale": {
-        "x": 1592,
+        "x": 1620,
         "y": 1732,
-        "width": 160,
+        "width": 132,
         "height": 312
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 120,
         "width": 104,
         "height": 150
@@ -1198,7 +1198,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1246,
         "y": 1879,
-        "width": 118,
+        "width": 134,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
@@ -1228,13 +1228,13 @@
       "sourceOrder": 42,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-013-circulacion-exclusiva-moto.png",
       "candidateRegionAtBaseScale": {
-        "x": 1340,
+        "x": 1368,
         "y": 1879,
-        "width": 108,
+        "width": 90,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 94,
         "width": 90,
         "height": 104
@@ -1260,13 +1260,13 @@
       "sourceOrder": 43,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-014-circulacion-exclusiva-bicicleta.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1452,
         "y": 1879,
-        "width": 110,
+        "width": 92,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 94,
         "width": 92,
         "height": 104
@@ -1292,13 +1292,13 @@
       "sourceOrder": 44,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-015-circulacion-exclusiva-jinetes.png",
       "candidateRegionAtBaseScale": {
-        "x": 1510,
+        "x": 1538,
         "y": 1879,
-        "width": 110,
+        "width": 92,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 94,
         "width": 92,
         "height": 104
@@ -1324,13 +1324,13 @@
       "sourceOrder": 45,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-016-circulacion-exclusiva-peatones.png",
       "candidateRegionAtBaseScale": {
-        "x": 1596,
+        "x": 1624,
         "y": 1879,
-        "width": 148,
+        "width": 120,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 94,
         "width": 92,
         "height": 104
@@ -1358,7 +1358,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1254,
         "y": 1986,
-        "width": 110,
+        "width": 126,
         "height": 202
       },
       "baselineCropRegionAtCandidateScale": {
@@ -1388,13 +1388,13 @@
       "sourceOrder": 47,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-018-uso-de-cadenas-para-nieve-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1340,
+        "x": 1368,
         "y": 1997,
-        "width": 110,
+        "width": 94,
         "height": 191
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 83,
         "width": 94,
         "height": 92
@@ -1420,13 +1420,13 @@
       "sourceOrder": 48,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-019-giro-obligatorio-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1426,
+        "x": 1454,
         "y": 1997,
-        "width": 114,
+        "width": 92,
         "height": 191
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 83,
         "width": 92,
         "height": 92
@@ -1452,13 +1452,13 @@
       "sourceOrder": 49,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-020-giro-obligatorio-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
+        "x": 1544,
         "y": 1997,
-        "width": 104,
+        "width": 92,
         "height": 191
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 83,
         "width": 92,
         "height": 92
@@ -1484,13 +1484,13 @@
       "sourceOrder": 50,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-021-sentido-de-circulacion-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1596,
+        "x": 1624,
         "y": 1979,
-        "width": 158,
+        "width": 130,
         "height": 209
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 101,
         "width": 102,
         "height": 112
@@ -1548,13 +1548,13 @@
       "sourceOrder": 53,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-024-ceda-el-paso-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1342,
+        "x": 1360,
         "y": 2122,
-        "width": 104,
+        "width": 92,
         "height": 180
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 70,
         "width": 82,
         "height": 78
@@ -1580,13 +1580,13 @@
       "sourceOrder": 54,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-025-ceda-el-paso-a-ciclistas-y-peatones.png",
       "candidateRegionAtBaseScale": {
-        "x": 1422,
+        "x": 1450,
         "y": 2080,
-        "width": 118,
+        "width": 102,
         "height": 278
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 112,
         "width": 102,
         "height": 124
@@ -1612,13 +1612,13 @@
       "sourceOrder": 55,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-026-preferencia-de-avance-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
+        "x": 1544,
         "y": 2116,
-        "width": 104,
+        "width": 86,
         "height": 202
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 76,
         "width": 86,
         "height": 84
@@ -1644,13 +1644,13 @@
       "sourceOrder": 56,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-027-descienda-de-la-bicicleta-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1596,
+        "x": 1624,
         "y": 2086,
-        "width": 160,
+        "width": 132,
         "height": 266
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 106,
         "width": 104,
         "height": 118
@@ -1740,13 +1740,13 @@
       "sourceOrder": 60,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-031-fin-de-la-prescripcion-velocidad-minima-35.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1372,
         "y": 2324,
-        "width": 138,
+        "width": 110,
         "height": 232
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 90,
         "width": 82,
         "height": 100
@@ -1772,14 +1772,14 @@
       "sourceOrder": 63,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-003-curva-comun-y-pronunciada.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 1721,
-        "width": 111,
-        "height": 186
+        "x": 1269,
+        "y": 1784,
+        "width": 109,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 75,
         "height": 88
       },
@@ -1804,14 +1804,14 @@
       "sourceOrder": 64,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-004-curva-contracurva.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 1721,
-        "width": 110,
-        "height": 186
+        "x": 1356,
+        "y": 1784,
+        "width": 109,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 75,
         "height": 88
       },
@@ -1836,14 +1836,14 @@
       "sourceOrder": 65,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-005-curva-en-s.png",
       "candidateRegionAtBaseScale": {
-        "x": 1431,
-        "y": 1721,
+        "x": 1442,
+        "y": 1784,
         "width": 109,
-        "height": 186
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 75,
         "height": 88
       },
@@ -1868,14 +1868,14 @@
       "sourceOrder": 66,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-006-camino-sinuoso-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
-        "y": 1721,
-        "width": 110,
-        "height": 186
+        "x": 1527,
+        "y": 1784,
+        "width": 109,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 75,
         "height": 88
       },
@@ -1900,14 +1900,14 @@
       "sourceOrder": 67,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-007-pendiente-descendente.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
-        "y": 1721,
-        "width": 134,
-        "height": 186
+        "x": 1613,
+        "y": 1784,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -1932,14 +1932,14 @@
       "sourceOrder": 68,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-008-pendiente-ascendente.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 1829,
-        "width": 111,
-        "height": 189
+        "x": 1269,
+        "y": 1895,
+        "width": 112,
+        "height": 118
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 82,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 91
       },
@@ -1964,14 +1964,14 @@
       "sourceOrder": 69,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-009-estrechamiento-ambas-manos.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 1828,
-        "width": 110,
-        "height": 190
+        "x": 1356,
+        "y": 1894,
+        "width": 113,
+        "height": 120
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 83,
+        "x": 17,
+        "y": 17,
         "width": 79,
         "height": 92
       },
@@ -1996,14 +1996,14 @@
       "sourceOrder": 70,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-010-estrechamiento-en-una-sola-mano.png",
       "candidateRegionAtBaseScale": {
-        "x": 1431,
-        "y": 1828,
-        "width": 109,
-        "height": 190
+        "x": 1441,
+        "y": 1894,
+        "width": 118,
+        "height": 120
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 83,
+        "x": 18,
+        "y": 17,
         "width": 82,
         "height": 92
       },
@@ -2028,14 +2028,14 @@
       "sourceOrder": 71,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-011-perfil-irregular-irregular.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
-        "y": 1828,
-        "width": 110,
-        "height": 190
+        "x": 1526,
+        "y": 1894,
+        "width": 118,
+        "height": 120
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 83,
+        "x": 18,
+        "y": 17,
         "width": 82,
         "height": 92
       },
@@ -2060,14 +2060,14 @@
       "sourceOrder": 72,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-012-perfil-irregular-baden.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
-        "y": 1828,
-        "width": 139,
-        "height": 190
+        "x": 1612,
+        "y": 1894,
+        "width": 119,
+        "height": 120
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 83,
+        "x": 18,
+        "y": 17,
         "width": 83,
         "height": 92
       },
@@ -2092,14 +2092,14 @@
       "sourceOrder": 73,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-013-perfil-irregular-lomada.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 1944,
-        "width": 111,
-        "height": 181
+        "x": 1268,
+        "y": 2006,
+        "width": 118,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 18,
+        "y": 16,
         "width": 82,
         "height": 87
       },
@@ -2124,14 +2124,14 @@
       "sourceOrder": 74,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-014-calzada-resbaladiza-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 1944,
-        "width": 110,
-        "height": 181
+        "x": 1356,
+        "y": 2006,
+        "width": 112,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 87
       },
@@ -2156,14 +2156,14 @@
       "sourceOrder": 75,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-015-proyeccion-de-piedras-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1431,
-        "y": 1944,
-        "width": 111,
-        "height": 181
+        "x": 1441,
+        "y": 2006,
+        "width": 118,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 18,
+        "y": 16,
         "width": 82,
         "height": 87
       },
@@ -2188,14 +2188,14 @@
       "sourceOrder": 76,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-016-derrumbes-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
-        "y": 1944,
-        "width": 108,
-        "height": 181
+        "x": 1529,
+        "y": 2006,
+        "width": 112,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 87
       },
@@ -2220,14 +2220,14 @@
       "sourceOrder": 77,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-017-tunel-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
-        "y": 1944,
-        "width": 134,
-        "height": 181
+        "x": 1613,
+        "y": 2006,
+        "width": 112,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 87
       },
@@ -2252,14 +2252,14 @@
       "sourceOrder": 78,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-018-puente-angosto-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 2051,
-        "width": 111,
-        "height": 184
+        "x": 1269,
+        "y": 2114,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2284,14 +2284,14 @@
       "sourceOrder": 79,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-019-puente-movil-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 2051,
-        "width": 111,
-        "height": 184
+        "x": 1356,
+        "y": 2114,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2316,14 +2316,14 @@
       "sourceOrder": 80,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-020-altura-limitada-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1432,
-        "y": 2049,
-        "width": 110,
-        "height": 186
+        "x": 1443,
+        "y": 2113,
+        "width": 112,
+        "height": 116
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 80,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 89
       },
@@ -2348,14 +2348,14 @@
       "sourceOrder": 81,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-021-ancho-limitado-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
-        "y": 2049,
-        "width": 108,
-        "height": 186
+        "x": 1529,
+        "y": 2113,
+        "width": 112,
+        "height": 116
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 80,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 89
       },
@@ -2380,14 +2380,14 @@
       "sourceOrder": 82,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-022-calzada-dividida-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
-        "y": 2049,
-        "width": 134,
-        "height": 186
+        "x": 1613,
+        "y": 2113,
+        "width": 112,
+        "height": 116
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 80,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 89
       },
@@ -2412,14 +2412,14 @@
       "sourceOrder": 83,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-023-rotonda-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 2160,
-        "width": 111,
-        "height": 186
+        "x": 1269,
+        "y": 2223,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2444,14 +2444,14 @@
       "sourceOrder": 84,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-024-incorporacion-de-transito-lateral-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 2160,
-        "width": 110,
-        "height": 186
+        "x": 1355,
+        "y": 2223,
+        "width": 119,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 18,
+        "y": 16,
         "width": 83,
         "height": 88
       },
@@ -2476,14 +2476,14 @@
       "sourceOrder": 85,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-025-inicio-de-doble-circulacion-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1431,
-        "y": 2158,
-        "width": 111,
-        "height": 213
+        "x": 1440,
+        "y": 2223,
+        "width": 126,
+        "height": 117
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 81,
+        "x": 19,
+        "y": 16,
         "width": 88,
         "height": 90
       },
@@ -2508,14 +2508,14 @@
       "sourceOrder": 86,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-026-encrucijada-cruce.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
-        "y": 2160,
-        "width": 110,
-        "height": 209
+        "x": 1529,
+        "y": 2223,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2540,14 +2540,14 @@
       "sourceOrder": 87,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-027-encrucijada-empalme.png",
       "candidateRegionAtBaseScale": {
-        "x": 1604,
-        "y": 2160,
-        "width": 134,
-        "height": 209
+        "x": 1615,
+        "y": 2223,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2572,14 +2572,14 @@
       "sourceOrder": 88,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-028-encrucijada-bifurcacion-1.png",
       "candidateRegionAtBaseScale": {
-        "x": 1258,
-        "y": 2271,
-        "width": 111,
-        "height": 209
+        "x": 1269,
+        "y": 2334,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2604,14 +2604,14 @@
       "sourceOrder": 89,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-029-encrucijada-bifurcacion-2.png",
       "candidateRegionAtBaseScale": {
-        "x": 1345,
-        "y": 2271,
-        "width": 134,
-        "height": 209
+        "x": 1356,
+        "y": 2334,
+        "width": 112,
+        "height": 115
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 79,
+        "x": 17,
+        "y": 16,
         "width": 78,
         "height": 88
       },
@@ -2636,14 +2636,14 @@
       "sourceOrder": 91,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-002-escolares-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1249,
-        "y": 1685,
-        "width": 110,
-        "height": 181
+        "x": 1261,
+        "y": 1744,
+        "width": 106,
+        "height": 107
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 74,
+        "x": 16,
+        "y": 15,
         "width": 74,
         "height": 82
       },
@@ -2668,14 +2668,14 @@
       "sourceOrder": 92,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-003-ninos-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1335,
-        "y": 1685,
-        "width": 109,
-        "height": 181
+        "x": 1347,
+        "y": 1744,
+        "width": 106,
+        "height": 107
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 74,
+        "x": 16,
+        "y": 15,
         "width": 74,
         "height": 82
       },
@@ -2700,18 +2700,18 @@
       "sourceOrder": 93,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-004-cruce-de-ciclistas-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1420,
-        "y": 1676,
-        "width": 133,
-        "height": 190
+        "x": 1427,
+        "y": 1742,
+        "width": 136,
+        "height": 120
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 83,
+        "x": 21,
+        "y": 17,
         "width": 94,
         "height": 92
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "trim-external-catalog-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -2732,14 +2732,14 @@
       "sourceOrder": 94,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-005-jinetes-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1529,
-        "y": 1685,
-        "width": 111,
-        "height": 181
+        "x": 1541,
+        "y": 1744,
+        "width": 106,
+        "height": 107
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 74,
+        "x": 16,
+        "y": 15,
         "width": 74,
         "height": 82
       },
@@ -2764,14 +2764,14 @@
       "sourceOrder": 95,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-006-animales-sueltos-vaca.png",
       "candidateRegionAtBaseScale": {
-        "x": 1616,
-        "y": 1682,
-        "width": 142,
-        "height": 184
+        "x": 1625,
+        "y": 1744,
+        "width": 124,
+        "height": 111
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 77,
+        "x": 19,
+        "y": 15,
         "width": 86,
         "height": 86
       },
@@ -2796,14 +2796,14 @@
       "sourceOrder": 96,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-007-animales-sueltos-ciervo.png",
       "candidateRegionAtBaseScale": {
-        "x": 1249,
-        "y": 1790,
-        "width": 111,
-        "height": 211
+        "x": 1258,
+        "y": 1854,
+        "width": 126,
+        "height": 116
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 80,
+        "x": 19,
+        "y": 16,
         "width": 88,
         "height": 89
       },
@@ -2828,14 +2828,14 @@
       "sourceOrder": 97,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-008-corredor-aereo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1336,
-        "y": 1794,
-        "width": 111,
-        "height": 202
+        "x": 1347,
+        "y": 1855,
+        "width": 112,
+        "height": 109
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 76,
+        "x": 17,
+        "y": 15,
         "width": 78,
         "height": 84
       },
@@ -2860,14 +2860,14 @@
       "sourceOrder": 98,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-009-presencia-de-vehiculos-extranos-tranvia.png",
       "candidateRegionAtBaseScale": {
-        "x": 1423,
-        "y": 1781,
-        "width": 132,
-        "height": 230
+        "x": 1430,
+        "y": 1852,
+        "width": 136,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 21,
+        "y": 18,
         "width": 94,
         "height": 99
       },
@@ -2892,14 +2892,14 @@
       "sourceOrder": 99,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-010-presencia-de-vehiculos-extranos-tractor.png",
       "candidateRegionAtBaseScale": {
-        "x": 1531,
-        "y": 1781,
-        "width": 112,
-        "height": 230
+        "x": 1541,
+        "y": 1852,
+        "width": 119,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 18,
+        "y": 18,
         "width": 83,
         "height": 99
       },
@@ -2924,14 +2924,14 @@
       "sourceOrder": 100,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-011-presencia-de-vehiculos-extranos-ambulancia.png",
       "candidateRegionAtBaseScale": {
-        "x": 1619,
-        "y": 1781,
-        "width": 147,
-        "height": 230
+        "x": 1627,
+        "y": 1852,
+        "width": 131,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 20,
+        "y": 18,
         "width": 91,
         "height": 99
       },
@@ -2956,14 +2956,14 @@
       "sourceOrder": 102,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-013-cruce-ferroviario-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1250,
-        "y": 1952,
-        "width": 126,
-        "height": 160
+        "x": 1258,
+        "y": 2007,
+        "width": 129,
+        "height": 100
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 69,
+        "x": 20,
+        "y": 14,
         "width": 89,
         "height": 77
       },
@@ -2988,14 +2988,14 @@
       "sourceOrder": 103,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-014-paneles-de-prevencion-aproximacion.png",
       "candidateRegionAtBaseScale": {
-        "x": 1352,
-        "y": 1976,
-        "width": 120,
-        "height": 136
+        "x": 1363,
+        "y": 2023,
+        "width": 110,
+        "height": 86
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 59,
+        "x": 17,
+        "y": 12,
         "width": 76,
         "height": 66
       },
@@ -3020,14 +3020,14 @@
       "sourceOrder": 104,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-015-paneles-de-prevencion-objeto-rigido.png",
       "candidateRegionAtBaseScale": {
-        "x": 1448,
-        "y": 1965,
-        "width": 112,
-        "height": 147
+        "x": 1459,
+        "y": 2017,
+        "width": 109,
+        "height": 94
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 65,
+        "x": 17,
+        "y": 13,
         "width": 75,
         "height": 72
       },
@@ -3052,14 +3052,14 @@
       "sourceOrder": 105,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-016-paneles-de-prevencion-curva-chevron.png",
       "candidateRegionAtBaseScale": {
-        "x": 1536,
-        "y": 1963,
-        "width": 107,
-        "height": 149
+        "x": 1545,
+        "y": 2017,
+        "width": 124,
+        "height": 95
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 67,
+        "x": 19,
+        "y": 13,
         "width": 86,
         "height": 74
       },
@@ -3084,14 +3084,14 @@
       "sourceOrder": 106,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-017-cruz-de-san-andres-hasta-dos-vias.png",
       "candidateRegionAtBaseScale": {
-        "x": 1619,
-        "y": 1946,
-        "width": 164,
-        "height": 166
+        "x": 1623,
+        "y": 2006,
+        "width": 156,
+        "height": 106
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 75,
+        "x": 24,
+        "y": 15,
         "width": 108,
         "height": 83
       },
@@ -3116,14 +3116,14 @@
       "sourceOrder": 107,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-018-cruz-de-san-andres-mas-de-dos-vias.png",
       "candidateRegionAtBaseScale": {
-        "x": 1240,
-        "y": 2061,
-        "width": 141,
-        "height": 175
+        "x": 1246,
+        "y": 2111,
+        "width": 145,
+        "height": 91
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 63,
+        "x": 22,
+        "y": 13,
         "width": 101,
         "height": 70
       },
@@ -3148,14 +3148,14 @@
       "sourceOrder": 108,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-019-curva-cerrada-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1357,
-        "y": 2044,
-        "width": 111,
-        "height": 194
+        "x": 1369,
+        "y": 2102,
+        "width": 96,
+        "height": 104
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 72,
+        "x": 16,
+        "y": 14,
         "width": 64,
         "height": 80
       },
@@ -3180,18 +3180,18 @@
       "sourceOrder": 109,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-020-cruce-de-peatones-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1444,
-        "y": 2044,
-        "width": 109,
-        "height": 194
+        "x": 1456,
+        "y": 2102,
+        "width": 96,
+        "height": 104
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 72,
+        "x": 16,
+        "y": 14,
         "width": 64,
         "height": 80
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "trim-external-catalog-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -3212,18 +3212,18 @@
       "sourceOrder": 110,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-021-cruce-de-peatones-prioridad-peaton.png",
       "candidateRegionAtBaseScale": {
-        "x": 1529,
-        "y": 2025,
-        "width": 111,
-        "height": 234
+        "x": 1540,
+        "y": 2098,
+        "width": 109,
+        "height": 131
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 91,
+        "x": 17,
+        "y": 18,
         "width": 75,
         "height": 101
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "trim-external-catalog-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -3244,14 +3244,14 @@
       "sourceOrder": 111,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-022-atencion-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1616,
-        "y": 2044,
-        "width": 120,
-        "height": 194
+        "x": 1628,
+        "y": 2102,
+        "width": 96,
+        "height": 104
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 72,
+        "x": 16,
+        "y": 14,
         "width": 64,
         "height": 80
       },
@@ -3276,14 +3276,14 @@
       "sourceOrder": 113,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-024-flecha-direccional-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1248,
-        "y": 2202,
-        "width": 115,
-        "height": 202
+        "x": 1258,
+        "y": 2263,
+        "width": 119,
+        "height": 109
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 76,
+        "x": 18,
+        "y": 15,
         "width": 83,
         "height": 84
       },
@@ -3308,14 +3308,14 @@
       "sourceOrder": 114,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-025-proximidad-de-semaforo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
-        "y": 2202,
-        "width": 109,
-        "height": 207
+        "x": 1350,
+        "y": 2264,
+        "width": 110,
+        "height": 113
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 78,
+        "x": 17,
+        "y": 16,
         "width": 76,
         "height": 87
       },
@@ -3340,14 +3340,14 @@
       "sourceOrder": 115,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-026-proximidad-de-senal-restrictiva-pare.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
-        "y": 2187,
-        "width": 131,
-        "height": 230
+        "x": 1433,
+        "y": 2258,
+        "width": 126,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 19,
+        "y": 18,
         "width": 88,
         "height": 99
       },
@@ -3372,14 +3372,14 @@
       "sourceOrder": 116,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-027-proximidad-de-senal-restrictiva-paso.png",
       "candidateRegionAtBaseScale": {
-        "x": 1531,
-        "y": 2187,
-        "width": 111,
-        "height": 230
+        "x": 1540,
+        "y": 2258,
+        "width": 126,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 19,
+        "y": 18,
         "width": 88,
         "height": 99
       },
@@ -3404,14 +3404,14 @@
       "sourceOrder": 117,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-028-proximidad-de-senal-restrictiva-otra.png",
       "candidateRegionAtBaseScale": {
-        "x": 1618,
-        "y": 2187,
-        "width": 150,
-        "height": 230
+        "x": 1625,
+        "y": 2258,
+        "width": 136,
+        "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 89,
+        "x": 21,
+        "y": 18,
         "width": 94,
         "height": 99
       },
@@ -3436,14 +3436,14 @@
       "sourceOrder": 119,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-030-fin-de-prevencion-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1255,
-        "y": 2339,
-        "width": 126,
-        "height": 198
+        "x": 1267,
+        "y": 2398,
+        "width": 102,
+        "height": 107
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
-        "y": 74,
+        "x": 16,
+        "y": 15,
         "width": 70,
         "height": 82
       },
@@ -3500,13 +3500,13 @@
       "sourceOrder": 123,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-004-fin-de-autopista-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
+        "x": 1361,
         "y": 1717,
-        "width": 110,
+        "width": 88,
         "height": 197
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 6,
         "y": 87,
         "width": 75,
         "height": 97
@@ -3532,13 +3532,13 @@
       "sourceOrder": 124,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-005-indicadora-de-utilizacion-de-carriles-catalog-en.png",
       "candidateRegionAtBaseScale": {
-        "x": 1425,
+        "x": 1446,
         "y": 1753,
-        "width": 129,
+        "width": 108,
         "height": 161
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 75,
         "width": 98,
         "height": 83
@@ -3564,13 +3564,13 @@
       "sourceOrder": 125,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-006-camino-o-calle-sin-salida-traza-en-t.png",
       "candidateRegionAtBaseScale": {
-        "x": 1530,
+        "x": 1555,
         "y": 1753,
-        "width": 112,
+        "width": 87,
         "height": 161
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 75,
         "width": 62,
         "height": 83
@@ -3596,13 +3596,13 @@
       "sourceOrder": 126,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-007-camino-o-calle-sin-salida-traza-lateral.png",
       "candidateRegionAtBaseScale": {
-        "x": 1618,
+        "x": 1624,
         "y": 1753,
-        "width": 118,
+        "width": 112,
         "height": 161
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 22,
         "y": 75,
         "width": 62,
         "height": 83
@@ -3660,13 +3660,13 @@
       "sourceOrder": 128,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-009-velocidades-maximas-permitidas-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1341,
+        "x": 1362,
         "y": 1828,
-        "width": 107,
+        "width": 86,
         "height": 225
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 92,
         "width": 76,
         "height": 102
@@ -3692,13 +3692,13 @@
       "sourceOrder": 129,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-010-esquema-de-recorrido-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1449,
         "y": 1830,
-        "width": 153,
+        "width": 128,
         "height": 223
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 88,
         "width": 119,
         "height": 98
@@ -3758,7 +3758,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1248,
         "y": 1983,
-        "width": 108,
+        "width": 111,
         "height": 180
       },
       "baselineCropRegionAtCandidateScale": {
@@ -3788,13 +3788,13 @@
       "sourceOrder": 132,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-013-estacionamiento-permitido-a-45-o-90.png",
       "candidateRegionAtBaseScale": {
-        "x": 1332,
+        "x": 1360,
         "y": 1973,
-        "width": 112,
+        "width": 95,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 84,
         "width": 95,
         "height": 93
@@ -3820,13 +3820,13 @@
       "sourceOrder": 133,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-014-estacionamiento-permitido-motos-a-45.png",
       "candidateRegionAtBaseScale": {
-        "x": 1420,
+        "x": 1448,
         "y": 1973,
-        "width": 113,
+        "width": 95,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 84,
         "width": 95,
         "height": 93
@@ -3852,13 +3852,13 @@
       "sourceOrder": 134,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-015-estacionamiento-ordenado-verde-45.png",
       "candidateRegionAtBaseScale": {
-        "x": 1509,
+        "x": 1537,
         "y": 1980,
-        "width": 108,
+        "width": 83,
         "height": 183
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 83,
         "height": 86
@@ -3884,13 +3884,13 @@
       "sourceOrder": 135,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-016-estacionamiento-ordenado-naranja-45.png",
       "candidateRegionAtBaseScale": {
-        "x": 1593,
+        "x": 1621,
         "y": 1980,
-        "width": 142,
+        "width": 114,
         "height": 183
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 86,
         "height": 86
@@ -3918,7 +3918,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1248,
         "y": 2089,
-        "width": 109,
+        "width": 112,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
@@ -3948,13 +3948,13 @@
       "sourceOrder": 137,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-018-estacionamiento-ordenado-naranja-45-inferior.png",
       "candidateRegionAtBaseScale": {
-        "x": 1333,
+        "x": 1361,
         "y": 2089,
-        "width": 111,
+        "width": 93,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 78,
         "width": 93,
         "height": 87
@@ -3980,13 +3980,13 @@
       "sourceOrder": 138,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-019-estacionamiento-ordenado-verde-90.png",
       "candidateRegionAtBaseScale": {
-        "x": 1420,
+        "x": 1448,
         "y": 2089,
-        "width": 110,
+        "width": 92,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 78,
         "width": 92,
         "height": 87
@@ -4012,13 +4012,13 @@
       "sourceOrder": 139,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-020-estacionamiento-ordenado-naranja-90.png",
       "candidateRegionAtBaseScale": {
-        "x": 1506,
+        "x": 1534,
         "y": 2089,
-        "width": 111,
+        "width": 91,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 78,
         "width": 91,
         "height": 87
@@ -4044,13 +4044,13 @@
       "sourceOrder": 140,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-021-estacionamiento-ordenado-verde-90-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1593,
+        "x": 1621,
         "y": 2089,
-        "width": 144,
+        "width": 116,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 78,
         "width": 88,
         "height": 87
@@ -4108,13 +4108,13 @@
       "sourceOrder": 142,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-023-estacionamiento-ordenado-s-verde.png",
       "candidateRegionAtBaseScale": {
-        "x": 1337,
+        "x": 1365,
         "y": 2249,
-        "width": 110,
+        "width": 89,
         "height": 124
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 45,
         "width": 89,
         "height": 50
@@ -4140,13 +4140,13 @@
       "sourceOrder": 143,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-024-estacionamiento-ordenado-p-naranja.png",
       "candidateRegionAtBaseScale": {
-        "x": 1423,
+        "x": 1451,
         "y": 2249,
-        "width": 122,
+        "width": 94,
         "height": 124
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 45,
         "width": 88,
         "height": 50
@@ -4172,13 +4172,13 @@
       "sourceOrder": 144,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-025-permitido-girar-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1521,
+        "x": 1543,
         "y": 2206,
-        "width": 108,
+        "width": 88,
         "height": 167
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 6,
         "y": 72,
         "width": 82,
         "height": 80
@@ -4204,13 +4204,13 @@
       "sourceOrder": 145,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-026-permitido-girar-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1605,
+        "x": 1633,
         "y": 2206,
-        "width": 138,
+        "width": 110,
         "height": 167
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 72,
         "width": 82,
         "height": 80
@@ -4238,7 +4238,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1247,
         "y": 2318,
-        "width": 109,
+        "width": 114,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
@@ -4268,13 +4268,13 @@
       "sourceOrder": 147,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-028-direcciones-permitidas-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1332,
+        "x": 1360,
         "y": 2318,
-        "width": 110,
+        "width": 89,
         "height": 185
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 68,
         "width": 89,
         "height": 75
@@ -4300,13 +4300,13 @@
       "sourceOrder": 148,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-029-direcciones-permitidas-igual-sentido-o-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1418,
+        "x": 1446,
         "y": 2293,
-        "width": 112,
+        "width": 92,
         "height": 219
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 84,
         "width": 92,
         "height": 93
@@ -4332,13 +4332,13 @@
       "sourceOrder": 149,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-030-direcciones-permitidas-igual-sentido-o-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1506,
+        "x": 1534,
         "y": 2293,
-        "width": 111,
+        "width": 92,
         "height": 219
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 84,
         "width": 92,
         "height": 93
@@ -4364,13 +4364,13 @@
       "sourceOrder": 150,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-031-direcciones-permitidas-ambas-direcciones.png",
       "candidateRegionAtBaseScale": {
-        "x": 1593,
+        "x": 1621,
         "y": 2316,
-        "width": 147,
+        "width": 119,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 91,
         "height": 78
@@ -4428,13 +4428,13 @@
       "sourceOrder": 152,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-002-direcciones-permitidas-derecha-e-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1366,
         "y": 1672,
-        "width": 110,
+        "width": 90,
         "height": 182
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 6,
         "y": 77,
         "width": 84,
         "height": 86
@@ -4460,13 +4460,13 @@
       "sourceOrder": 153,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-003-direcciones-permitidas-giro-en-u.png",
       "candidateRegionAtBaseScale": {
-        "x": 1430,
+        "x": 1458,
         "y": 1672,
-        "width": 112,
+        "width": 84,
         "height": 182
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 74,
         "height": 86
@@ -4492,13 +4492,13 @@
       "sourceOrder": 154,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-004-camara-de-control-electronico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1536,
         "y": 1672,
-        "width": 116,
+        "width": 98,
         "height": 182
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 77,
         "width": 70,
         "height": 86
@@ -4524,13 +4524,13 @@
       "sourceOrder": 155,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-005-fin-de-camino-peatonal-a-100-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1610,
+        "x": 1620,
         "y": 1654,
-        "width": 128,
+        "width": 118,
         "height": 200
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 18,
         "y": 94,
         "width": 72,
         "height": 104
@@ -4588,13 +4588,13 @@
       "sourceOrder": 157,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-007-cruce-peatonal-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1354,
+        "x": 1367,
         "y": 1772,
-        "width": 110,
+        "width": 97,
         "height": 192
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 15,
         "y": 86,
         "width": 70,
         "height": 96
@@ -4620,13 +4620,13 @@
       "sourceOrder": 158,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-008-cruce-peatonal-izquierda.png",
       "candidateRegionAtBaseScale": {
-        "x": 1440,
+        "x": 1456,
         "y": 1772,
-        "width": 104,
+        "width": 88,
         "height": 192
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 12,
         "y": 86,
         "width": 72,
         "height": 96
@@ -4652,13 +4652,13 @@
       "sourceOrder": 159,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-009-bidireccionales-en-ciclovia-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1520,
+        "x": 1544,
         "y": 1817,
-        "width": 125,
+        "width": 101,
         "height": 147
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 4,
         "y": 63,
         "width": 90,
         "height": 70
@@ -4684,13 +4684,13 @@
       "sourceOrder": 160,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-010-proximidad-de-ciclovia-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1621,
+        "x": 1642,
         "y": 1817,
-        "width": 144,
+        "width": 123,
         "height": 175
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 63,
         "width": 88,
         "height": 70
@@ -4718,7 +4718,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1258,
         "y": 1907,
-        "width": 110,
+        "width": 116,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
@@ -4748,13 +4748,13 @@
       "sourceOrder": 162,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-012-finalizacion-de-la-ciclovia-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1372,
         "y": 1907,
-        "width": 110,
+        "width": 88,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 61,
         "width": 88,
         "height": 68
@@ -4780,13 +4780,13 @@
       "sourceOrder": 163,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-013-advertencia-de-escuela-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1430,
+        "x": 1458,
         "y": 1907,
-        "width": 110,
+        "width": 88,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 61,
         "width": 88,
         "height": 68
@@ -4812,13 +4812,13 @@
       "sourceOrder": 164,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-014-advertencia-general-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
+        "x": 1544,
         "y": 1907,
-        "width": 144,
+        "width": 116,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 61,
         "width": 88,
         "height": 68
@@ -4846,7 +4846,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1252,
         "y": 2032,
-        "width": 107,
+        "width": 113,
         "height": 166
       },
       "baselineCropRegionAtCandidateScale": {
@@ -4876,13 +4876,13 @@
       "sourceOrder": 167,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-017-ruta-nacional-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1335,
+        "x": 1363,
         "y": 2040,
-        "width": 96,
+        "width": 68,
         "height": 158
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 68,
         "height": 78
@@ -4908,13 +4908,13 @@
       "sourceOrder": 168,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-018-ruta-provincial-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1407,
+        "x": 1435,
         "y": 2040,
-        "width": 93,
+        "width": 72,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 72,
         "height": 78
@@ -4940,13 +4940,13 @@
       "sourceOrder": 169,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-019-nomenclatura-urbana-placa-de-calle.png",
       "candidateRegionAtBaseScale": {
-        "x": 1476,
+        "x": 1504,
         "y": 2030,
-        "width": 133,
+        "width": 115,
         "height": 203
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 77,
         "width": 115,
         "height": 85
@@ -5068,13 +5068,13 @@
       "sourceOrder": 173,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-023-orientacion-en-caminos-secundarios.png",
       "candidateRegionAtBaseScale": {
-        "x": 1488,
+        "x": 1508,
         "y": 2161,
-        "width": 116,
+        "width": 108,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 8,
         "y": 79,
         "width": 100,
         "height": 88
@@ -5100,13 +5100,13 @@
       "sourceOrder": 174,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-024-comienzo-o-fin-de-zona-urbana-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1580,
+        "x": 1608,
         "y": 2165,
-        "width": 154,
+        "width": 126,
         "height": 186
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 74,
         "width": 98,
         "height": 82
@@ -5164,13 +5164,13 @@
       "sourceOrder": 176,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-026-mojon-kilometrico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1379,
+        "x": 1394,
         "y": 2290,
-        "width": 114,
+        "width": 99,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 13,
         "y": 65,
         "width": 83,
         "height": 72
@@ -5260,13 +5260,13 @@
       "sourceOrder": 180,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-003-servicio-telefonico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
+        "x": 1360,
         "y": 1678,
-        "width": 109,
+        "width": 88,
         "height": 178
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 86,
         "width": 76,
         "height": 96
@@ -5292,13 +5292,13 @@
       "sourceOrder": 181,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-004-estacion-de-servicio-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1447,
         "y": 1674,
-        "width": 114,
+        "width": 91,
         "height": 232
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 5,
         "y": 90,
         "width": 83,
         "height": 100
@@ -5324,13 +5324,13 @@
       "sourceOrder": 182,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-005-teleferico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1539,
         "y": 1678,
-        "width": 107,
+        "width": 82,
         "height": 178
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 86,
         "width": 78,
         "height": 96
@@ -5356,13 +5356,13 @@
       "sourceOrder": 183,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-006-servicio-mecanico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1597,
+        "x": 1624,
         "y": 1678,
-        "width": 144,
+        "width": 117,
         "height": 178
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 86,
         "width": 88,
         "height": 96
@@ -5420,13 +5420,13 @@
       "sourceOrder": 185,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-008-aeropuerto-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
+        "x": 1360,
         "y": 1779,
-        "width": 109,
+        "width": 88,
         "height": 174
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 81,
         "width": 76,
         "height": 90
@@ -5452,13 +5452,13 @@
       "sourceOrder": 186,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-009-gomeria-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1447,
         "y": 1779,
-        "width": 114,
+        "width": 91,
         "height": 174
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 5,
         "y": 81,
         "width": 83,
         "height": 90
@@ -5484,13 +5484,13 @@
       "sourceOrder": 187,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-010-estacionamiento-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1539,
         "y": 1779,
-        "width": 107,
+        "width": 82,
         "height": 174
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 81,
         "width": 78,
         "height": 90
@@ -5516,13 +5516,13 @@
       "sourceOrder": 188,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-011-punto-panoramico-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1597,
+        "x": 1624,
         "y": 1774,
-        "width": 144,
+        "width": 117,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 86,
         "width": 88,
         "height": 95
@@ -5580,13 +5580,13 @@
       "sourceOrder": 190,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-013-correo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
+        "x": 1360,
         "y": 1878,
-        "width": 104,
+        "width": 83,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 79,
         "width": 76,
         "height": 88
@@ -5612,13 +5612,13 @@
       "sourceOrder": 191,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-014-estacionamiento-de-casas-rodantes-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1419,
+        "x": 1447,
         "y": 1871,
-        "width": 119,
+        "width": 92,
         "height": 178
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 86,
         "width": 92,
         "height": 96
@@ -5644,13 +5644,13 @@
       "sourceOrder": 192,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-015-museo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1542,
         "y": 1878,
-        "width": 107,
+        "width": 79,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 79,
         "width": 78,
         "height": 88
@@ -5676,13 +5676,13 @@
       "sourceOrder": 193,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-016-policia-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1597,
+        "x": 1624,
         "y": 1878,
-        "width": 144,
+        "width": 117,
         "height": 171
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 79,
         "width": 88,
         "height": 88
@@ -5710,7 +5710,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1248,
         "y": 1956,
-        "width": 115,
+        "width": 118,
         "height": 247
       },
       "baselineCropRegionAtCandidateScale": {
@@ -5740,13 +5740,13 @@
       "sourceOrder": 195,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-018-taxi-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1339,
+        "x": 1367,
         "y": 1972,
-        "width": 104,
+        "width": 76,
         "height": 174
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 81,
         "width": 76,
         "height": 90
@@ -5772,13 +5772,13 @@
       "sourceOrder": 196,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-019-terminal-de-omnibus-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1419,
+        "x": 1447,
         "y": 1967,
-        "width": 119,
+        "width": 92,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 86,
         "width": 92,
         "height": 96
@@ -5804,13 +5804,13 @@
       "sourceOrder": 197,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-020-estacion-de-ferrocarril-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1542,
         "y": 1967,
-        "width": 107,
+        "width": 79,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 86,
         "width": 78,
         "height": 96
@@ -5836,13 +5836,13 @@
       "sourceOrder": 198,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-021-teatro-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1597,
+        "x": 1624,
         "y": 1972,
-        "width": 144,
+        "width": 117,
         "height": 174
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 1,
         "y": 81,
         "width": 88,
         "height": 90
@@ -5900,13 +5900,13 @@
       "sourceOrder": 200,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-023-institucion-religiosa-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1344,
+        "x": 1362,
         "y": 2053,
-        "width": 110,
+        "width": 92,
         "height": 247
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 97,
         "width": 82,
         "height": 108
@@ -5932,13 +5932,13 @@
       "sourceOrder": 201,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-024-escolares-ascenso-y-descenso.png",
       "candidateRegionAtBaseScale": {
-        "x": 1430,
+        "x": 1458,
         "y": 2060,
-        "width": 108,
+        "width": 80,
         "height": 232
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 90,
         "width": 76,
         "height": 100
@@ -5964,13 +5964,13 @@
       "sourceOrder": 202,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-025-escolares-circular-o-subir-al-colectivo.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1538,
         "y": 2039,
-        "width": 110,
+        "width": 96,
         "height": 276
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 4,
         "y": 111,
         "width": 92,
         "height": 123
@@ -5996,13 +5996,13 @@
       "sourceOrder": 203,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-026-personas-con-movilidad-reducida-ascenso-y-descen.png",
       "candidateRegionAtBaseScale": {
-        "x": 1600,
+        "x": 1628,
         "y": 2053,
-        "width": 144,
+        "width": 116,
         "height": 247
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 97,
         "width": 88,
         "height": 108
@@ -6030,7 +6030,7 @@
       "candidateRegionAtBaseScale": {
         "x": 1259,
         "y": 2263,
-        "width": 75,
+        "width": 78,
         "height": 135
       },
       "baselineCropRegionAtCandidateScale": {
@@ -6060,13 +6060,13 @@
       "sourceOrder": 206,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-029-destruir-senales-es-un-delito-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1310,
+        "x": 1338,
         "y": 2263,
-        "width": 75,
+        "width": 50,
         "height": 135
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6092,13 +6092,13 @@
       "sourceOrder": 207,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-030-evite-encandilar-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1361,
+        "x": 1389,
         "y": 2263,
-        "width": 75,
+        "width": 50,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6124,13 +6124,13 @@
       "sourceOrder": 208,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-031-no-se-adelante-sin-advertir-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1412,
+        "x": 1440,
         "y": 2263,
-        "width": 75,
+        "width": 50,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6156,13 +6156,13 @@
       "sourceOrder": 209,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-032-transite-dentro-de-su-carril-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1463,
+        "x": 1491,
         "y": 2263,
-        "width": 75,
+        "width": 50,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6188,13 +6188,13 @@
       "sourceOrder": 210,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-033-no-adelante-en-curvas-y-puentes-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1514,
+        "x": 1542,
         "y": 2263,
-        "width": 76,
+        "width": 50,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6220,13 +6220,13 @@
       "sourceOrder": 211,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-034-adelante-por-la-izquierda-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1566,
+        "x": 1594,
         "y": 2263,
-        "width": 77,
+        "width": 50,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6252,13 +6252,13 @@
       "sourceOrder": 212,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-035-respete-las-senales-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1619,
+        "x": 1647,
         "y": 2263,
-        "width": 106,
+        "width": 78,
         "height": 164
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 58,
         "width": 50,
         "height": 64
@@ -6380,13 +6380,13 @@
       "sourceOrder": 218,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-004-no-girar-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1348,
+        "x": 1354,
         "y": 1740,
-        "width": 100,
+        "width": 94,
         "height": 148
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 22,
         "y": 68,
         "width": 61,
         "height": 76
@@ -6412,13 +6412,13 @@
       "sourceOrder": 219,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-005-giro-anulado-a-100-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1424,
+        "x": 1441,
         "y": 1761,
-        "width": 118,
+        "width": 101,
         "height": 127
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 11,
         "y": 59,
         "width": 77,
         "height": 65
@@ -6444,13 +6444,13 @@
       "sourceOrder": 220,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-006-no-estacionar-ni-detenerse-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1518,
+        "x": 1533,
         "y": 1736,
-        "width": 111,
+        "width": 96,
         "height": 152
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 13,
         "y": 72,
         "width": 62,
         "height": 80
@@ -6476,13 +6476,13 @@
       "sourceOrder": 221,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-007-limite-de-velocidad-maxima-20.png",
       "candidateRegionAtBaseScale": {
-        "x": 1605,
+        "x": 1612,
         "y": 1735,
-        "width": 121,
+        "width": 114,
         "height": 153
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 21,
         "y": 73,
         "width": 65,
         "height": 81
@@ -6540,13 +6540,13 @@
       "sourceOrder": 223,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-009-sentido-de-circulacion-derecha.png",
       "candidateRegionAtBaseScale": {
-        "x": 1349,
+        "x": 1359,
         "y": 1824,
-        "width": 109,
+        "width": 99,
         "height": 157
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 18,
         "y": 68,
         "width": 66,
         "height": 76
@@ -6572,13 +6572,13 @@
       "sourceOrder": 224,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-010-direcciones-permitidas-ambas-direcciones.png",
       "candidateRegionAtBaseScale": {
-        "x": 1434,
+        "x": 1447,
         "y": 1822,
-        "width": 109,
+        "width": 96,
         "height": 159
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 15,
         "y": 71,
         "width": 68,
         "height": 79
@@ -6604,13 +6604,13 @@
       "sourceOrder": 225,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-011-estrechamiento-en-una-sola-mano.png",
       "candidateRegionAtBaseScale": {
-        "x": 1519,
+        "x": 1534,
         "y": 1825,
-        "width": 103,
+        "width": 88,
         "height": 156
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 13,
         "y": 68,
         "width": 71,
         "height": 75
@@ -6636,13 +6636,13 @@
       "sourceOrder": 226,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-012-reduccion-de-calzada-a-100-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1598,
+        "x": 1622,
         "y": 1849,
-        "width": 144,
+        "width": 120,
         "height": 132
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 4,
         "y": 58,
         "width": 88,
         "height": 64
@@ -6700,13 +6700,13 @@
       "sourceOrder": 228,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-014-calzada-dividida-a-100-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1346,
+        "x": 1360,
         "y": 1940,
-        "width": 114,
+        "width": 100,
         "height": 132
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 14,
         "y": 58,
         "width": 78,
         "height": 64
@@ -6732,13 +6732,13 @@
       "sourceOrder": 229,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-015-personas-trabajando-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1436,
+        "x": 1456,
         "y": 1919,
-        "width": 104,
+        "width": 84,
         "height": 153
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 8,
         "y": 66,
         "width": 67,
         "height": 73
@@ -6764,13 +6764,13 @@
       "sourceOrder": 230,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-016-inicio-obras-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
+        "x": 1535,
         "y": 1942,
-        "width": 111,
+        "width": 92,
         "height": 130
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 9,
         "y": 56,
         "width": 78,
         "height": 62
@@ -6796,13 +6796,13 @@
       "sourceOrder": 231,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-017-inicio-obras-a-x-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1603,
+        "x": 1626,
         "y": 1942,
-        "width": 132,
+        "width": 109,
         "height": 130
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 5,
         "y": 56,
         "width": 76,
         "height": 62
@@ -6860,13 +6860,13 @@
       "sourceOrder": 233,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-019-desvio-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1346,
+        "x": 1362,
         "y": 2026,
-        "width": 110,
+        "width": 94,
         "height": 129
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 12,
         "y": 50,
         "width": 70,
         "height": 55
@@ -6892,13 +6892,13 @@
       "sourceOrder": 234,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-020-desvio-a-x-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1432,
+        "x": 1448,
         "y": 2025,
-        "width": 109,
+        "width": 93,
         "height": 130
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 12,
         "y": 51,
         "width": 70,
         "height": 57
@@ -6924,13 +6924,13 @@
       "sourceOrder": 235,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-021-calle-cerrada-a-x-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1517,
+        "x": 1534,
         "y": 2020,
-        "width": 109,
+        "width": 92,
         "height": 160
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 11,
         "y": 56,
         "width": 72,
         "height": 62
@@ -6956,13 +6956,13 @@
       "sourceOrder": 236,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-022-calle-transversal-en-obra-a-x-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
+        "x": 1621,
         "y": 2016,
-        "width": 136,
+        "width": 117,
         "height": 169
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 9,
         "y": 60,
         "width": 80,
         "height": 67
@@ -7020,13 +7020,13 @@
       "sourceOrder": 238,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-024-evento-a-x-m.png",
       "candidateRegionAtBaseScale": {
-        "x": 1346,
+        "x": 1364,
         "y": 2109,
-        "width": 110,
+        "width": 92,
         "height": 148
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 50,
         "width": 71,
         "height": 56
@@ -7052,13 +7052,13 @@
       "sourceOrder": 239,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-025-solo-acceso-frentistas-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1432,
+        "x": 1449,
         "y": 2108,
-        "width": 128,
+        "width": 111,
         "height": 150
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 11,
         "y": 51,
         "width": 72,
         "height": 57
@@ -7148,13 +7148,13 @@
       "sourceOrder": 244,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-003-comienzo-de-obra-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1349,
+        "x": 1364,
         "y": 1717,
-        "width": 110,
+        "width": 95,
         "height": 145
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 13,
         "y": 65,
         "width": 66,
         "height": 72
@@ -7180,13 +7180,13 @@
       "sourceOrder": 245,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-004-desvio-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1435,
+        "x": 1447,
         "y": 1722,
-        "width": 109,
+        "width": 97,
         "height": 140
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 16,
         "y": 60,
         "width": 64,
         "height": 67
@@ -7212,13 +7212,13 @@
       "sourceOrder": 246,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-005-anulacion-temporal-de-paradas-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1520,
+        "x": 1531,
         "y": 1708,
-        "width": 108,
+        "width": 97,
         "height": 198
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 17,
         "y": 74,
         "width": 70,
         "height": 82
@@ -7244,13 +7244,13 @@
       "sourceOrder": 247,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-006-acerquese-a-la-parada-mas-cercana-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1604,
+        "x": 1622,
         "y": 1708,
-        "width": 134,
+        "width": 116,
         "height": 198
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 74,
         "width": 78,
         "height": 82
@@ -7308,13 +7308,13 @@
       "sourceOrder": 249,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-008-prohibido-el-paso-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1349,
+        "x": 1364,
         "y": 1801,
-        "width": 109,
+        "width": 94,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 13,
         "y": 65,
         "width": 66,
         "height": 72
@@ -7340,13 +7340,13 @@
       "sourceOrder": 250,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-009-senda-deshabilitada-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1434,
+        "x": 1447,
         "y": 1801,
-        "width": 126,
+        "width": 113,
         "height": 179
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 15,
         "y": 65,
         "width": 70,
         "height": 72
@@ -7404,13 +7404,13 @@
       "sourceOrder": 253,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-012-interrupcion-de-ciclovia-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1347,
+        "x": 1368,
         "y": 1934,
-        "width": 111,
+        "width": 90,
         "height": 200
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 75,
         "width": 74,
         "height": 83
@@ -7436,13 +7436,13 @@
       "sourceOrder": 254,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-013-descenso-de-la-bicicleta-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1434,
+        "x": 1453,
         "y": 1934,
-        "width": 128,
+        "width": 109,
         "height": 200
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 9,
         "y": 75,
         "width": 72,
         "height": 83
@@ -7500,13 +7500,13 @@
       "sourceOrder": 257,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-016-valla-peatonal-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1341,
+        "x": 1366,
         "y": 2118,
-        "width": 108,
+        "width": 89,
         "height": 142
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 3,
         "y": 65,
         "width": 86,
         "height": 72
@@ -7532,13 +7532,13 @@
       "sourceOrder": 258,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-017-valla-de-obra-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1425,
+        "x": 1453,
         "y": 2118,
-        "width": 120,
+        "width": 92,
         "height": 142
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 65,
         "width": 88,
         "height": 72
@@ -7564,13 +7564,13 @@
       "sourceOrder": 259,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-018-anuncio-de-obra-dispositivo.png",
       "candidateRegionAtBaseScale": {
-        "x": 1521,
+        "x": 1545,
         "y": 2109,
-        "width": 105,
+        "width": 81,
         "height": 198
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 4,
         "y": 74,
         "width": 70,
         "height": 82
@@ -7596,13 +7596,13 @@
       "sourceOrder": 260,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-019-conos-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1602,
+        "x": 1623,
         "y": 2125,
-        "width": 132,
+        "width": 111,
         "height": 135
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 59,
         "width": 76,
         "height": 65
@@ -7660,13 +7660,13 @@
       "sourceOrder": 262,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-021-delineadores-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1348,
+        "x": 1362,
         "y": 2203,
-        "width": 102,
+        "width": 88,
         "height": 142
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 14,
         "y": 61,
         "width": 66,
         "height": 68
@@ -7692,13 +7692,13 @@
       "sourceOrder": 263,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-022-barandas-canalizadoras-de-transito-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1426,
+        "x": 1446,
         "y": 2199,
-        "width": 114,
+        "width": 94,
         "height": 146
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 8,
         "y": 68,
         "width": 86,
         "height": 76
@@ -7724,13 +7724,13 @@
       "sourceOrder": 264,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-023-barandas-canalizadoras-de-transito-hormigon.png",
       "candidateRegionAtBaseScale": {
-        "x": 1516,
+        "x": 1544,
         "y": 2200,
-        "width": 119,
+        "width": 91,
         "height": 145
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 0,
         "y": 70,
         "width": 86,
         "height": 78
@@ -7756,13 +7756,13 @@
       "sourceOrder": 265,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-024-reflector-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1611,
+        "x": 1634,
         "y": 2200,
-        "width": 118,
+        "width": 95,
         "height": 145
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 5,
         "y": 65,
         "width": 62,
         "height": 72
@@ -7820,13 +7820,13 @@
       "sourceOrder": 267,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-026-baliza-intermitente-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1347,
+        "x": 1364,
         "y": 2286,
-        "width": 103,
+        "width": 86,
         "height": 181
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 11,
         "y": 66,
         "width": 68,
         "height": 73
@@ -7852,13 +7852,13 @@
       "sourceOrder": 268,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-027-flecha-vial-intermitente-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1426,
+        "x": 1447,
         "y": 2278,
-        "width": 120,
+        "width": 99,
         "height": 198
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 7,
         "y": 74,
         "width": 82,
         "height": 82
@@ -7884,13 +7884,13 @@
       "sourceOrder": 269,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-028-semaforo-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1522,
+        "x": 1540,
         "y": 2279,
-        "width": 106,
+        "width": 88,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 10,
         "y": 70,
         "width": 62,
         "height": 78
@@ -7916,13 +7916,13 @@
       "sourceOrder": 270,
       "outputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-029-paneles-catalog-entry.png",
       "candidateRegionAtBaseScale": {
-        "x": 1604,
+        "x": 1616,
         "y": 2280,
-        "width": 120,
+        "width": 108,
         "height": 190
       },
       "baselineCropRegionAtCandidateScale": {
-        "x": 28,
+        "x": 16,
         "y": 70,
         "width": 64,
         "height": 78

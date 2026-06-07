@@ -4354,6 +4354,7 @@ function validateFeature037Inventory(inventory) {
     assertCondition(entry.cropAuditBasis?.outputPixelTargetPass === true, `${label}: cropAuditBasis.outputPixelTargetPass must be true.`, errors);
     assertCondition(entry.cropAuditBasis?.sourceBoundsPass === true, `${label}: cropAuditBasis.sourceBoundsPass must be true.`, errors);
     assertCondition(entry.cropAuditBasis?.edgeContactPass === true, `${label}: cropAuditBasis.edgeContactPass must be true.`, errors);
+    assertCondition(entry.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: cropAuditBasis.neighborContaminationGuardPass must be true.`, errors);
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
     assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);
