@@ -44,6 +44,20 @@ function loadInventory() {
   return JSON.parse(readFileSync(inventoryPath, "utf8"));
 }
 
+function assertVisualSourceRef(entry, sourceCardId) {
+  assert.match(
+    entry.sourceRef,
+    /^scripts\/manual-sign-inventory\.mjs#visualSourceEntries\[\d+\]\([a-z0-9-]+\)$/u,
+    entry.id
+  );
+  assert.ok(entry.sourceRef.endsWith(`(${sourceCardId})`), entry.id);
+  assert.doesNotMatch(
+    entry.sourceRef,
+    /^src\/data\/manual-sections\/[^#]+#.+\.visualSourceEntries\[\d+\]/u,
+    entry.id
+  );
+}
+
 const regulatoryPage185Rows = [
   {
     entryKind: "category-heading",
@@ -2494,7 +2508,7 @@ test("regulatory source page 185 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-regulatory-page-185-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-regulatory-page-185-source-card");
   });
 });
 
@@ -2518,7 +2532,7 @@ test("regulatory source page 186 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-regulatory-page-186-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-regulatory-page-186-source-card");
   });
 });
 
@@ -2542,7 +2556,7 @@ test("warning source page 187 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-warning-page-187-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-warning-page-187-source-card");
   });
 });
 
@@ -2566,7 +2580,7 @@ test("warning source page 188 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-warning-page-188-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-warning-page-188-source-card");
   });
 });
 
@@ -2591,7 +2605,7 @@ test("informational source page 189 visual rows are complete and ordered", () =>
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-informational-page-189-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-informational-page-189-source-card");
   });
 });
 
@@ -2616,7 +2630,7 @@ test("informational source page 190 visual rows are complete and ordered", () =>
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-informational-page-190-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-informational-page-190-source-card");
   });
 });
 
@@ -2641,7 +2655,7 @@ test("informational source page 191 visual rows are complete and ordered", () =>
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-informational-page-191-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-informational-page-191-source-card");
   });
 });
 
@@ -2667,7 +2681,7 @@ test("informational source page 192 contextual visual is reconciled and excluded
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-informational-page-192-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-informational-page-192-source-card");
   });
 });
 
@@ -2692,7 +2706,7 @@ test("temporary source page 193 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-temporary-page-193-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-temporary-page-193-source-card");
   });
 });
 
@@ -2717,7 +2731,7 @@ test("temporary source page 194 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-temporary-page-194-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-temporary-page-194-source-card");
   });
 });
 
@@ -2742,7 +2756,7 @@ test("horizontal source page 195 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-horizontal-page-195-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-horizontal-page-195-source-card");
   });
 });
 
@@ -2767,7 +2781,7 @@ test("horizontal source page 196 visual rows are complete and ordered", () => {
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-horizontal-page-196-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-horizontal-page-196-source-card");
   });
 });
 
@@ -2793,7 +2807,7 @@ test("traffic-light source page 197 visual rows are complete and ordered", () =>
     assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
-    assert.match(entry.sourceRef, /app4-traffic-lights-page-197-source-card\.visualSourceEntries/u, entry.id);
+    assertVisualSourceRef(entry, "app4-traffic-lights-page-197-source-card");
   });
 });
 

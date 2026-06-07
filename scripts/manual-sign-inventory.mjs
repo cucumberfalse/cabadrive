@@ -3748,12 +3748,14 @@ const visualSourceEntries = [
   }
 ];
 
-const visualSourceEntriesByCard = visualSourceEntries.reduce((entriesByCard, entry) => {
+const visualSourceEntriesByCard = visualSourceEntries.reduce((entriesByCard, entry, sourceEntryIndex) => {
   const entries = entriesByCard.get(entry.sourceCardId) ?? [];
-  entries.push(entry);
+  entries.push({ entry, sourceEntryIndex });
   entriesByCard.set(entry.sourceCardId, entries);
   return entriesByCard;
 }, new Map());
+
+const visualSourceEntriesSourcePath = "scripts/manual-sign-inventory.mjs";
 
 const visualSourceSectionIds = new Set(["app4-signs-regulatory", "app4-signs-warning"]);
 
@@ -4034,7 +4036,7 @@ function buildInventory() {
         sourceSelectionNote: section.sourceSelectionNote
       });
       if (visualEntries) {
-        visualEntries.forEach((visualEntry, visualEntryIndex) => {
+        visualEntries.forEach(({ entry: visualEntry, sourceEntryIndex }) => {
           const cropRegion = clampRegionToDimensions(visualEntry.cropRegion, dimensions);
           const sourceOrder = entries.length + 1;
           const pageOrder = (pageCounters.get(card.sourcePage) ?? 0) + 1;
@@ -4051,7 +4053,7 @@ function buildInventory() {
             russianTranslation: visualEntry.russianTranslation,
             sourceSheetLabelEvidence: visualEntry.sourceSheetLabelEvidence,
             auditStatus: visualEntry.auditStatus,
-            sourceRef: `${section.sectionFile}#${card.id}.visualSourceEntries[${visualEntryIndex}]`,
+            sourceRef: `${visualSourceEntriesSourcePath}#visualSourceEntries[${sourceEntryIndex}](${card.id})`,
             sourceAsset: card.assetPath,
             sourceRegion: card.sourceRegion,
             assetPath: card.assetPath,

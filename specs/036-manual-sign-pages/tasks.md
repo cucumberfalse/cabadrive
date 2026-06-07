@@ -387,11 +387,13 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Architect disposition: category-heading and contextual-visual rows are typed separately and excluded from sign-like catalog coverage expectations where appropriate.
 - Architect disposition: Review Agent finding on `ManualSignEntry.entryKind` was valid; product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` adds `contextual-visual` to the exported `ManualSignEntry.entryKind` union in `src/data/manual-signs/app4SignCatalog.ts`.
 - Architect disposition: Review Agent classified `13` stale review threads as outdated/superseded and `3` duplicate contextual-visual type threads as fixed by `100799eaa66448f5a7b287c00577b5d60c7f1a84`.
+- Review-fix implementation decision at 2026-06-07T15:30:24-03:00 for review thread `PRRT_kwDOSX65IM6HrbRG`: explicit visual-source inventory rows remain hard-coded in `scripts/manual-sign-inventory.mjs`; generated `sourceRef` values now point to `scripts/manual-sign-inventory.mjs#visualSourceEntries[index](source-card-id)` instead of dead `src/data/manual-sections/*.ts#*.visualSourceEntries[index]` targets.
 
 ## Dead Ends
 
 - Architect disposition: deterministic grid crop and term-translation-derived inventory paths are superseded/resolved by row-by-row source-sheet visual reconciliation.
 - Architect disposition: pre-fix final validation notes for earlier heads are stale after product/type fix commit `100799eaa66448f5a7b287c00577b5d60c7f1a84` and are intentionally omitted from this foundation memory so later final validation can run on the new effective content head.
+- Previous final Architect/Analyst validation evidence for effective content head `e5041ad79eb7034e01374b65ac3ceebf44f775da` is stale after the sourceRef review-fix content changes to `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, and `tests/manual-sign-inventory.test.mjs`; final validation is ready to rerun after this review-fix PR head is committed and pushed.
 
 ## Known Issues
 
@@ -409,11 +411,16 @@ Analyst final validation, when invoked after Architect final validation passes, 
 - Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: focused Node inventory test passed with the updated `ManualSignEntry.entryKind` union accepting `contextual-visual`.
 - Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: `pnpm run build` passed.
 - Type-fix verification for commit `100799eaa66448f5a7b287c00577b5d60c7f1a84`: diff check passed before this process-memory foundation rewrite; `git diff --check` must also pass after this file update.
+- Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `node scripts/manual-sign-inventory.mjs --write` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
+- Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `pnpm run validate:manual-sign-inventory` passed with `316` entries, pages `185-197`, and p198-p200 disposition recorded.
+- Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `node --test tests/manual-sign-inventory.test.mjs` passed `18/18` tests, including regression coverage that explicit visual rows use `scripts/manual-sign-inventory.mjs#visualSourceEntries[...]` and reject dead `src/data/manual-sections/*.ts#*.visualSourceEntries[...]` targets.
+- Review sourceRef fix verification at 2026-06-07T15:30:24-03:00: `pnpm run build` passed; Vite production build completed and `scripts/generate-service-worker.mjs` generated `1870` cached assets.
 
 ## Cycle PR Set
 
 - PR #202 branch `codex/036-manual-sign-pages` current product head `100799eaa66448f5a7b287c00577b5d60c7f1a84`; status after review fix: contextual-visual type issue fixed, stale/duplicate review threads classified, no unresolved Implementation Agent feedback recorded; included in the final-validation cycle PR set.
 - Process-memory foundation commit after this uncommitted `tasks.md` rewrite is expected to become the next effective content head candidate for final Architect validation and final Analyst validation.
+- PR #202 sourceRef review-fix successor commit is expected to become the next effective content head candidate after commit/push; previous final validation must not be reused because generated inventory data and test contracts changed.
 
 ## Implementation Agent Feedback
 
