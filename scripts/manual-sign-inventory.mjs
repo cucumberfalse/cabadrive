@@ -2577,6 +2577,319 @@ const visualSourceEntries = [
     cropRegion: { x: 205, y: 382, width: 235, height: 220 },
     sourceSheetLabelEvidence: "visible source contextual visual: Estrella Amarilla photo",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Transitorias",
+    russianTranslation: "Временные",
+    cropRegion: { x: 132, y: 128, width: 180, height: 42 },
+    sourceSheetLabelEvidence: "visible source heading: Transitorias",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Viales",
+    russianTranslation: "Дорожные",
+    cropRegion: { x: 132, y: 171, width: 80, height: 28 },
+    sourceSheetLabelEvidence: "visible source heading: Viales",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "No girar",
+    variant: "Izquierda",
+    russianTranslation: "поворот налево запрещен",
+    cropRegion: { x: 179, y: 206, width: 61, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: No girar (Izquierda)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "No girar",
+    variant: "Derecha",
+    russianTranslation: "поворот направо запрещен",
+    cropRegion: { x: 266, y: 206, width: 61, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: No girar (Derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Giro anulado",
+    variant: "A 100 m",
+    russianTranslation: "через 100 м поворот отменен",
+    cropRegion: { x: 342, y: 218, width: 77, height: 65 },
+    sourceSheetLabelEvidence: "visible source label: Giro anulado (A 100 m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "No estacionar ni detenerse",
+    russianTranslation: "остановка и стоянка запрещены",
+    cropRegion: { x: 436, y: 206, width: 62, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: No estacionar ni detenerse",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Límite de velocidad máxima",
+    variant: "20",
+    russianTranslation: "ограничение максимальной скорости 20",
+    cropRegion: { x: 523, y: 206, width: 65, height: 81 },
+    sourceSheetLabelEvidence: "visible source label: Límite de velocidad máxima (20)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Sentido de circulación",
+    variant: "Izquierda",
+    russianTranslation: "направление движения налево",
+    cropRegion: { x: 181, y: 290, width: 64, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: Sentido de circulación (Izquierda)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Sentido de circulación",
+    variant: "Derecha",
+    russianTranslation: "направление движения направо",
+    cropRegion: { x: 267, y: 290, width: 66, height: 76 },
+    sourceSheetLabelEvidence: "visible source label: Sentido de circulación (Derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Ambas direcciones",
+    russianTranslation: "разрешенные направления: обе стороны",
+    cropRegion: { x: 352, y: 291, width: 68, height: 79 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Ambas direcciones)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estrechamiento",
+    variant: "En una sola mano",
+    russianTranslation: "сужение на одностороннем участке",
+    cropRegion: { x: 437, y: 291, width: 71, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Estrechamiento (En una sola mano)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Reducción de calzada",
+    variant: "A 100 m",
+    russianTranslation: "через 100 м сужение проезжей части",
+    cropRegion: { x: 516, y: 305, width: 88, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Reducción de calzada (A 100 m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Calzada dividida",
+    russianTranslation: "разделенная проезжая часть",
+    cropRegion: { x: 181, y: 387, width: 65, height: 66 },
+    sourceSheetLabelEvidence: "visible source label: Calzada dividida",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Calzada dividida",
+    variant: "A 100 m",
+    russianTranslation: "через 100 м разделенная проезжая часть",
+    cropRegion: { x: 264, y: 396, width: 78, height: 64 },
+    sourceSheetLabelEvidence: "visible source label: Calzada dividida (A 100 m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Personas trabajando",
+    russianTranslation: "люди работают",
+    cropRegion: { x: 354, y: 383, width: 67, height: 73 },
+    sourceSheetLabelEvidence: "visible source label: Personas trabajando",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Inicio obras",
+    russianTranslation: "начало работ",
+    cropRegion: { x: 434, y: 396, width: 78, height: 62 },
+    sourceSheetLabelEvidence: "visible source label: Inicio obras",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Inicio obras",
+    variant: "A X m",
+    russianTranslation: "через X м начало работ",
+    cropRegion: { x: 521, y: 396, width: 76, height: 62 },
+    sourceSheetLabelEvidence: "visible source label: Inicio obras (A X m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin obras",
+    russianTranslation: "конец работ",
+    cropRegion: { x: 179, y: 474, width: 69, height: 55 },
+    sourceSheetLabelEvidence: "visible source label: Fin obras",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío",
+    russianTranslation: "объезд",
+    cropRegion: { x: 264, y: 474, width: 70, height: 55 },
+    sourceSheetLabelEvidence: "visible source label: Desvío",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío",
+    variant: "A X m",
+    russianTranslation: "через X м объезд",
+    cropRegion: { x: 350, y: 474, width: 70, height: 57 },
+    sourceSheetLabelEvidence: "visible source label: Desvío (A X m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Calle cerrada",
+    variant: "A X m",
+    russianTranslation: "через X м улица закрыта",
+    cropRegion: { x: 435, y: 474, width: 72, height: 62 },
+    sourceSheetLabelEvidence: "visible source label: Calle cerrada (A X m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Calle transversal en obra",
+    variant: "A X m",
+    russianTranslation: "через X м поперечная улица в работах",
+    cropRegion: { x: 520, y: 474, width: 80, height: 67 },
+    sourceSheetLabelEvidence: "visible source label: Calle transversal en obra (A X m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Inicio evento",
+    russianTranslation: "начало события",
+    cropRegion: { x: 179, y: 557, width: 71, height: 55 },
+    sourceSheetLabelEvidence: "visible source label: Inicio evento",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Evento",
+    variant: "A X m",
+    russianTranslation: "через X м событие",
+    cropRegion: { x: 264, y: 557, width: 71, height: 56 },
+    sourceSheetLabelEvidence: "visible source label: Evento (A X m)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Solo acceso frentistas",
+    russianTranslation: "только доступ для жителей прилегающих домов",
+    cropRegion: { x: 350, y: 557, width: 72, height: 57 },
+    sourceSheetLabelEvidence: "visible source label: Solo acceso frentistas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Peatonales y de ciclovías",
+    russianTranslation: "пешеходные и велосипедные",
+    cropRegion: { x: 132, y: 603, width: 260, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Peatonales y de ciclovías",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-temporary",
+    sourcePage: 193,
+    sourceCardId: "app4-temporary-page-193-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío",
+    variant: "Peatonales y de ciclovías",
+    russianTranslation: "объезд / обход для пешеходов и велосипедистов",
+    cropRegion: { x: 181, y: 670, width: 55, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Desvío (Peatonales y de ciclovías)",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -2592,7 +2905,8 @@ const visualSourceSectionIds = new Set(["app4-signs-regulatory", "app4-signs-war
 function isReconciledVisualScope(entry) {
   return (
     visualSourceSectionIds.has(entry.sectionId) ||
-    (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage))
+    (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
+    (entry.sectionId === "app4-signs-temporary" && entry.sourcePage === 193)
   );
 }
 
@@ -2960,7 +3274,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory, warning, informational source pages 189-191, and the page 192 contextual visual slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, and temporary source page 193 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {
