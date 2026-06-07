@@ -418,14 +418,14 @@ Analyst final validation, when invoked after Architect final validation passes, 
 ## Implementation Agent Feedback
 
 - No unresolved Implementation Agent feedback.
-- Review-fix disposition is complete: `100799eaa66448f5a7b287c00577b5d60c7f1a84` adds `contextual-visual` to the exported `ManualSignEntry.entryKind` union, resolving the narrow post-validation type issue.
+- Disposition: resolved by review-fix commit 100799eaa66448f5a7b287c00577b5d60c7f1a84 adding contextual-visual to ManualSignEntry.entryKind.
 
 ## Final Validation Evidence
 
 - Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
 - Architect validation: passed at 2026-06-07T15:17:00-03:00.
 - Architect return count: 2
-- Architect validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+- Architect validation: Architect validated effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da.
 - Analyst feedback Architect disposition: none.
 - Limit escalation: none.
 - Current-PR-head read-only guard: Orchestrator will verify current PR head as an evidence-only successor of effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da before merge.
