@@ -2313,6 +2313,106 @@ const horizontalPage196Rows = [
   }
 ];
 
+const trafficLightPage197Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Señalamiento luminoso",
+    russianTranslation: "Световая сигнализация",
+    cropRegion: { x: 132, y: 130, width: 350, height: 42 },
+    sourceSheetLabelEvidence: "visible source heading: Señalamiento luminoso"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Significado de las luces",
+    russianTranslation: "Значение огней",
+    cropRegion: { x: 132, y: 171, width: 260, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Significado de las luces"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ROJO / ROJO INTERMITENTE / AMARILLO / AMARILLO INTERMITENTE / VERDE",
+    variant: "bloque explicativo",
+    russianTranslation: "красный, мигающий красный, желтый, мигающий желтый, зеленый",
+    cropRegion: { x: 156, y: 219, width: 306, height: 165 },
+    sourceSheetLabelEvidence: "visible source label: ROJO / ROJO INTERMITENTE / AMARILLO / AMARILLO INTERMITENTE / VERDE (bloque explicativo)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "FLECHAS DIRECCIONALES",
+    russianTranslation: "направляющие стрелки",
+    cropRegion: { x: 424, y: 211, width: 155, height: 122 },
+    sourceSheetLabelEvidence: "visible source label: FLECHAS DIRECCIONALES"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Disposición de unidades ópticas",
+    russianTranslation: "Расположение оптических блоков",
+    cropRegion: { x: 132, y: 396, width: 336, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Disposición de unidades ópticas"
+  },
+  {
+    entryKind: "contextual-visual",
+    spanishLabel: "Disposición de unidades ópticas",
+    variant: "vertical",
+    russianTranslation: "вертикальное расположение секций",
+    cropRegion: { x: 158, y: 438, width: 36, height: 320 },
+    sourceSheetLabelEvidence: "visible source contextual visual: Disposición de unidades ópticas (vertical)"
+  },
+  {
+    entryKind: "contextual-visual",
+    spanishLabel: "Disposición de unidades ópticas",
+    variant: "horizontal",
+    russianTranslation: "горизонтальное расположение секций",
+    cropRegion: { x: 248, y: 444, width: 298, height: 32 },
+    sourceSheetLabelEvidence: "visible source contextual visual: Disposición de unidades ópticas (horizontal)"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Semáforos especiales",
+    russianTranslation: "Специальные светофоры",
+    cropRegion: { x: 225, y: 518, width: 250, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Semáforos especiales"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Esperar",
+    variant: "peatones",
+    russianTranslation: "ждать",
+    cropRegion: { x: 249, y: 572, width: 105, height: 38 },
+    sourceSheetLabelEvidence: "visible source label: Esperar (peatones)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Avanzar",
+    variant: "peatones",
+    russianTranslation: "идти",
+    cropRegion: { x: 249, y: 613, width: 105, height: 38 },
+    sourceSheetLabelEvidence: "visible source label: Avanzar (peatones)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Prevención de peligro y advertencia de intersecciones",
+    variant: "intermitentes",
+    russianTranslation: "предупреждение об опасности и перекрестках",
+    cropRegion: { x: 443, y: 572, width: 155, height: 74 },
+    sourceSheetLabelEvidence: "visible source label: Prevención de peligro y advertencia de intersecciones (intermitentes)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE FERROVIAL",
+    russianTranslation: "железнодорожный переезд",
+    cropRegion: { x: 247, y: 660, width: 142, height: 154 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE FERROVIAL"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CARRILES REVERSIBLES",
+    russianTranslation: "реверсивные полосы",
+    cropRegion: { x: 423, y: 698, width: 176, height: 114 },
+    sourceSheetLabelEvidence: "visible source label: CARRILES REVERSIBLES"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -2634,18 +2734,45 @@ test("horizontal source page 196 visual rows are complete and ordered", () => {
   });
 });
 
-test("reconciled visual rows are complete while unreconciled sections stay visibly pending", () => {
+test("traffic-light source page 197 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-traffic-lights" && entry.sourcePage === 197);
+
+  assert.equal(rows.length, trafficLightPage197Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["197"], trafficLightPage197Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 4);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 7);
+  assert.equal(rows.filter((entry) => entry.entryKind === "contextual-visual").length, 2);
+  assert.equal(rows.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
+
+  rows.forEach((entry, index) => {
+    const expected = trafficLightPage197Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-traffic-lights-page-197-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
+test("reconciled visual rows are complete with no unreconciled source-page rows remaining", () => {
   const inventory = loadInventory();
   const isReconciled = (entry) =>
     ["app4-signs-regulatory", "app4-signs-warning"].includes(entry.sectionId) ||
     (entry.sectionId === "app4-signs-informational" && [189, 190, 191, 192].includes(entry.sourcePage)) ||
     (entry.sectionId === "app4-signs-temporary" && [193, 194].includes(entry.sourcePage)) ||
-    (entry.sectionId === "app4-signs-horizontal" && [195, 196].includes(entry.sourcePage));
+    (entry.sectionId === "app4-signs-horizontal" && [195, 196].includes(entry.sourcePage)) ||
+    (entry.sectionId === "app4-signs-traffic-lights" && entry.sourcePage === 197);
   const reconciled = inventory.entries.filter(isReconciled);
   const pending = inventory.entries.filter((entry) => !isReconciled(entry));
 
   assert.ok(reconciled.length > 0, "explicit visual rows exist");
-  assert.ok(pending.length > 0, "unreconciled pending rows remain visible");
+  assert.equal(pending.length, 0, "no unreconciled pending rows remain");
 
   for (const entry of reconciled) {
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);

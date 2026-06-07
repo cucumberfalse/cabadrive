@@ -292,6 +292,18 @@ Validation commands:
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `16/16` tests, including exact page `196` order, labels, variants, Russian translations, crop regions, and no pending page `196` rows.
   - `git diff --check` passed with no whitespace errors.
   - Known issues: broader source-visual reconciliation remains open for traffic-light/signal page `197` as recorded in Architect follow-up tasks; this slice intentionally completed horizontal-marking page `196` only.
+- Traffic-light/signal page `197` completion validation on 2026-06-07:
+  - Scope completed: source page `197` only, source card `app4-traffic-lights-page-197-source-card`, section `app4-signs-traffic-lights`.
+  - Added `13` explicit `visualSourceEntries` in source order: `4` `category-heading` rows, `7` `catalog-entry` rows, and `2` `contextual-visual` rows for the vertical and horizontal optical-unit layouts.
+  - Page `197` now has `13` `reconciled-source-visual` rows and `0` `pending-reconciliation` rows; old grid/pending placeholders for page `197` are replaced by the explicit visual rows.
+  - All sections status after this slice: `0` pending rows remain.
+  - No cropped image files were created and no source pixels were altered; each entry continues to use CSS clipping from the unchanged official source image.
+  - Generated inventory summary after this slice: `316` total entries. Pending rows remaining by section: none.
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `316` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `316` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `17/17` tests, including exact page `197` order, labels, variants, Russian translations, crop regions, contextual visual metadata, and no pending page `197` rows.
+  - `git diff --check` passed with no whitespace errors.
+  - Known issues: source-visual reconciliation rows are complete for pages `185-197`; broader review, final validation, and merge readiness remain with Review/Architect/Analyst/Orchestrator gates.
 
 Screenshot evidence:
 

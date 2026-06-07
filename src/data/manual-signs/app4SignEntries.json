@@ -53,14 +53,14 @@
     "sourceDocument": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf"
   },
   "summary": {
-    "totalEntries": 317,
+    "totalEntries": 316,
     "entriesBySection": {
       "app4-signs-regulatory": 60,
       "app4-signs-warning": 59,
       "app4-signs-informational": 95,
       "app4-signs-temporary": 56,
       "app4-signs-horizontal": 33,
-      "app4-signs-traffic-lights": 14
+      "app4-signs-traffic-lights": 13
     },
     "entriesBySourcePage": {
       "185": 29,
@@ -75,12 +75,12 @@
       "194": 29,
       "195": 17,
       "196": 16,
-      "197": 14
+      "197": 13
     }
   },
   "sourceSelection": {
     "status": "mixed-visual-source-reconciled-and-pending-reconciliation",
-    "note": "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, temporary source pages 193-194, and horizontal source pages 195-196 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+    "note": "Regulatory, warning, informational source pages 189-191, the page 192 contextual visual, temporary source pages 193-194, horizontal source pages 195-196, and traffic-light/signal source page 197 slice entries are generated from explicit visualSourceEntries. All in-scope source pages now use audited visual source rows, and no generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
     "cardInventorySources": [
       {
         "sectionId": "app4-signs-regulatory",
@@ -196,7 +196,7 @@
         "sourcePage": 197,
         "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
         "termCount": 14,
-        "visualSourceEntryCount": null,
+        "visualSourceEntryCount": 13,
         "sourceSelectionNote": "Uses the existing official page 197 traffic-light/signal sheet crop as a placeholder until individual signal crops are produced."
       }
     ]
@@ -13100,17 +13100,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-001-senalamiento-luminoso",
+      "id": "app4traffic-lights-p197-001-senalamiento-luminoso-category-heading",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 304,
       "sourceOrderWithinPage": 1,
-      "entryKind": "catalog-entry",
+      "entryKind": "category-heading",
       "spanishLabel": "Señalamiento luminoso",
       "russianTranslation": "Световая сигнализация",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[0]",
+      "sourceSheetLabelEvidence": "visible source heading: Señalamiento luminoso",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[0]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13122,19 +13122,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 206,
-        "width": 260,
-        "height": 93
+        "x": 132,
+        "y": 130,
+        "width": 350,
+        "height": 42
       },
       "displayRegion": {
-        "x": 130,
-        "y": 206,
-        "width": 260,
-        "height": 93
+        "x": 132,
+        "y": 130,
+        "width": 350,
+        "height": 42
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 350,
+      "cropNaturalHeight": 42,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13142,17 +13142,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-002-significado-de-las-luces",
+      "id": "app4traffic-lights-p197-002-significado-de-las-luces-category-heading",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 305,
       "sourceOrderWithinPage": 2,
-      "entryKind": "catalog-entry",
+      "entryKind": "category-heading",
       "spanishLabel": "Significado de las luces",
       "russianTranslation": "Значение огней",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[1]",
+      "sourceSheetLabelEvidence": "visible source heading: Significado de las luces",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[1]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13164,19 +13164,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 206,
+        "x": 132,
+        "y": 171,
         "width": 260,
-        "height": 93
+        "height": 30
       },
       "displayRegion": {
-        "x": 390,
-        "y": 206,
+        "x": 132,
+        "y": 171,
         "width": 260,
-        "height": 93
+        "height": 30
       },
       "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalHeight": 30,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13184,17 +13184,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-003-rojo",
+      "id": "app4traffic-lights-p197-003-rojo-rojo-intermitente-amarillo-amarillo-intermi",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 306,
       "sourceOrderWithinPage": 3,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Rojo",
-      "russianTranslation": "Красный: остановиться до линии остановки.",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[2]",
+      "spanishLabel": "ROJO / ROJO INTERMITENTE / AMARILLO / AMARILLO INTERMITENTE / VERDE",
+      "variant": "bloque explicativo",
+      "russianTranslation": "красный, мигающий красный, желтый, мигающий желтый, зеленый",
+      "sourceSheetLabelEvidence": "visible source label: ROJO / ROJO INTERMITENTE / AMARILLO / AMARILLO INTERMITENTE / VERDE (bloque explicativo)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[2]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13206,19 +13207,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 299,
-        "width": 260,
-        "height": 93
+        "x": 156,
+        "y": 219,
+        "width": 306,
+        "height": 165
       },
       "displayRegion": {
-        "x": 130,
-        "y": 299,
-        "width": 260,
-        "height": 93
+        "x": 156,
+        "y": 219,
+        "width": 306,
+        "height": 165
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 306,
+      "cropNaturalHeight": 165,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13226,17 +13227,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-004-rojo-intermitente",
+      "id": "app4traffic-lights-p197-004-flechas-direccionales-catalog-entry",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 307,
       "sourceOrderWithinPage": 4,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Rojo intermitente",
-      "russianTranslation": "Мигающий красный: остановиться и продолжить только при отсутствии риска.",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[3]",
+      "spanishLabel": "FLECHAS DIRECCIONALES",
+      "russianTranslation": "направляющие стрелки",
+      "sourceSheetLabelEvidence": "visible source label: FLECHAS DIRECCIONALES",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[3]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13248,19 +13249,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 299,
-        "width": 260,
-        "height": 93
+        "x": 424,
+        "y": 211,
+        "width": 155,
+        "height": 122
       },
       "displayRegion": {
-        "x": 390,
-        "y": 299,
-        "width": 260,
-        "height": 93
+        "x": 424,
+        "y": 211,
+        "width": 155,
+        "height": 122
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 155,
+      "cropNaturalHeight": 122,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13268,17 +13269,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-005-amarillo",
+      "id": "app4traffic-lights-p197-005-disposicion-de-unidades-opticas-category-heading",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 308,
       "sourceOrderWithinPage": 5,
-      "entryKind": "catalog-entry",
-      "spanishLabel": "Amarillo",
-      "russianTranslation": "Желтый: остановиться, если это можно сделать безопасно.",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[4]",
+      "entryKind": "category-heading",
+      "spanishLabel": "Disposición de unidades ópticas",
+      "russianTranslation": "Расположение оптических блоков",
+      "sourceSheetLabelEvidence": "visible source heading: Disposición de unidades ópticas",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[4]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13290,19 +13291,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 392,
-        "width": 260,
-        "height": 93
+        "x": 132,
+        "y": 396,
+        "width": 336,
+        "height": 31
       },
       "displayRegion": {
-        "x": 130,
-        "y": 392,
-        "width": 260,
-        "height": 93
+        "x": 132,
+        "y": 396,
+        "width": 336,
+        "height": 31
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 336,
+      "cropNaturalHeight": 31,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13310,17 +13311,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-006-amarillo-intermitente",
+      "id": "app4traffic-lights-p197-006-disposicion-de-unidades-opticas-vertical",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 309,
       "sourceOrderWithinPage": 6,
-      "entryKind": "catalog-entry",
-      "spanishLabel": "Amarillo intermitente",
-      "russianTranslation": "Мигающий желтый: пересекать осторожно.",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[5]",
+      "entryKind": "contextual-visual",
+      "spanishLabel": "Disposición de unidades ópticas",
+      "variant": "vertical",
+      "russianTranslation": "вертикальное расположение секций",
+      "sourceSheetLabelEvidence": "visible source contextual visual: Disposición de unidades ópticas (vertical)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[5]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13332,19 +13334,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 392,
-        "width": 260,
-        "height": 93
+        "x": 158,
+        "y": 438,
+        "width": 36,
+        "height": 320
       },
       "displayRegion": {
-        "x": 390,
-        "y": 392,
-        "width": 260,
-        "height": 93
+        "x": 158,
+        "y": 438,
+        "width": 36,
+        "height": 320
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 36,
+      "cropNaturalHeight": 320,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13352,17 +13354,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-007-verde",
+      "id": "app4traffic-lights-p197-007-disposicion-de-unidades-opticas-horizontal",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 310,
       "sourceOrderWithinPage": 7,
-      "entryKind": "catalog-entry",
-      "spanishLabel": "Verde",
-      "russianTranslation": "Зеленый: можно ехать, если перекресток свободен.",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[6]",
+      "entryKind": "contextual-visual",
+      "spanishLabel": "Disposición de unidades ópticas",
+      "variant": "horizontal",
+      "russianTranslation": "горизонтальное расположение секций",
+      "sourceSheetLabelEvidence": "visible source contextual visual: Disposición de unidades ópticas (horizontal)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[6]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13374,19 +13377,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 485,
-        "width": 260,
-        "height": 92
+        "x": 248,
+        "y": 444,
+        "width": 298,
+        "height": 32
       },
       "displayRegion": {
-        "x": 130,
-        "y": 485,
-        "width": 260,
-        "height": 92
+        "x": 248,
+        "y": 444,
+        "width": 298,
+        "height": 32
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 92,
+      "cropNaturalWidth": 298,
+      "cropNaturalHeight": 32,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13394,17 +13397,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-008-flechas-direccionales",
+      "id": "app4traffic-lights-p197-008-semaforos-especiales-category-heading",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 311,
       "sourceOrderWithinPage": 8,
-      "entryKind": "catalog-entry",
-      "spanishLabel": "Flechas direccionales",
-      "russianTranslation": "Направляющие стрелки",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[7]",
+      "entryKind": "category-heading",
+      "spanishLabel": "Semáforos especiales",
+      "russianTranslation": "Специальные светофоры",
+      "sourceSheetLabelEvidence": "visible source heading: Semáforos especiales",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[7]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13416,19 +13419,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 485,
-        "width": 260,
-        "height": 92
+        "x": 225,
+        "y": 518,
+        "width": 250,
+        "height": 31
       },
       "displayRegion": {
-        "x": 390,
-        "y": 485,
-        "width": 260,
-        "height": 92
+        "x": 225,
+        "y": 518,
+        "width": 250,
+        "height": 31
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 92,
+      "cropNaturalWidth": 250,
+      "cropNaturalHeight": 31,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13436,17 +13439,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-009-disposicion-de-unidades-opticas",
+      "id": "app4traffic-lights-p197-009-esperar-peatones",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 312,
       "sourceOrderWithinPage": 9,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Disposición de unidades ópticas",
-      "russianTranslation": "Расположение оптических блоков",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[8]",
+      "spanishLabel": "Esperar",
+      "variant": "peatones",
+      "russianTranslation": "ждать",
+      "sourceSheetLabelEvidence": "visible source label: Esperar (peatones)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[8]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13458,19 +13462,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 577,
-        "width": 260,
-        "height": 93
+        "x": 249,
+        "y": 572,
+        "width": 105,
+        "height": 38
       },
       "displayRegion": {
-        "x": 130,
-        "y": 577,
-        "width": 260,
-        "height": 93
+        "x": 249,
+        "y": 572,
+        "width": 105,
+        "height": 38
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 105,
+      "cropNaturalHeight": 38,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13478,17 +13482,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-010-semaforos-especiales",
+      "id": "app4traffic-lights-p197-010-avanzar-peatones",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 313,
       "sourceOrderWithinPage": 10,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Semáforos especiales",
-      "russianTranslation": "Специальные светофоры",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[9]",
+      "spanishLabel": "Avanzar",
+      "variant": "peatones",
+      "russianTranslation": "идти",
+      "sourceSheetLabelEvidence": "visible source label: Avanzar (peatones)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[9]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13500,19 +13505,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 577,
-        "width": 260,
-        "height": 93
+        "x": 249,
+        "y": 613,
+        "width": 105,
+        "height": 38
       },
       "displayRegion": {
-        "x": 390,
-        "y": 577,
-        "width": 260,
-        "height": 93
+        "x": 249,
+        "y": 613,
+        "width": 105,
+        "height": 38
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 105,
+      "cropNaturalHeight": 38,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13520,17 +13525,18 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-011-peatones-esperar-avanzar",
+      "id": "app4traffic-lights-p197-011-prevencion-de-peligro-y-advertencia-de-intersecc",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 314,
       "sourceOrderWithinPage": 11,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Peatones: esperar / avanzar",
-      "russianTranslation": "Пешеходы: ждать / идти",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[10]",
+      "spanishLabel": "Prevención de peligro y advertencia de intersecciones",
+      "variant": "intermitentes",
+      "russianTranslation": "предупреждение об опасности и перекрестках",
+      "sourceSheetLabelEvidence": "visible source label: Prevención de peligro y advertencia de intersecciones (intermitentes)",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[10]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13542,19 +13548,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 670,
-        "width": 260,
-        "height": 93
+        "x": 443,
+        "y": 572,
+        "width": 155,
+        "height": 74
       },
       "displayRegion": {
-        "x": 130,
-        "y": 670,
-        "width": 260,
-        "height": 93
+        "x": 443,
+        "y": 572,
+        "width": 155,
+        "height": 74
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 155,
+      "cropNaturalHeight": 74,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13562,17 +13568,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-012-intermitentes",
+      "id": "app4traffic-lights-p197-012-cruce-ferrovial-catalog-entry",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 315,
       "sourceOrderWithinPage": 12,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Intermitentes",
-      "russianTranslation": "Мигающие сигналы",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[11]",
+      "spanishLabel": "CRUCE FERROVIAL",
+      "russianTranslation": "железнодорожный переезд",
+      "sourceSheetLabelEvidence": "visible source label: CRUCE FERROVIAL",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[11]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13584,19 +13590,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 390,
-        "y": 670,
-        "width": 260,
-        "height": 93
+        "x": 247,
+        "y": 660,
+        "width": 142,
+        "height": 154
       },
       "displayRegion": {
-        "x": 390,
-        "y": 670,
-        "width": 260,
-        "height": 93
+        "x": 247,
+        "y": 660,
+        "width": 142,
+        "height": 154
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 142,
+      "cropNaturalHeight": 154,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
@@ -13604,17 +13610,17 @@
       "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
     },
     {
-      "id": "app4traffic-lights-p197-013-cruce-ferroviario",
+      "id": "app4traffic-lights-p197-013-carriles-reversibles-catalog-entry",
       "sectionId": "app4-signs-traffic-lights",
       "sourcePage": 197,
       "sourceOrder": 316,
       "sourceOrderWithinPage": 13,
       "entryKind": "catalog-entry",
-      "spanishLabel": "Cruce ferroviario",
-      "russianTranslation": "Железнодорожный переезд",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[12]",
+      "spanishLabel": "CARRILES REVERSIBLES",
+      "russianTranslation": "реверсивные полосы",
+      "sourceSheetLabelEvidence": "visible source label: CARRILES REVERSIBLES",
+      "auditStatus": "reconciled-source-visual",
+      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.visualSourceEntries[12]",
       "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
       "sourceRegion": {
         "x": 1110,
@@ -13626,61 +13632,19 @@
       "naturalWidth": 673,
       "naturalHeight": 980,
       "cropRegion": {
-        "x": 130,
-        "y": 763,
-        "width": 260,
-        "height": 93
+        "x": 423,
+        "y": 698,
+        "width": 176,
+        "height": 114
       },
       "displayRegion": {
-        "x": 130,
-        "y": 763,
-        "width": 260,
-        "height": 93
+        "x": 423,
+        "y": 698,
+        "width": 176,
+        "height": 114
       },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
-      "renderMode": "source-image-css-clip",
-      "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
-      "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
-      "noUpscale": true,
-      "preservationNote": "Entry uses a CSS-clipped viewport over the unchanged official source-as-is sheet or panel asset. Protected sign, marking, signal, plate/tablet, pictogram, arrow, border, color, and embedded-text pixels are not edited, redrawn, cleaned, translated, or re-encoded."
-    },
-    {
-      "id": "app4traffic-lights-p197-014-carriles-reversibles",
-      "sectionId": "app4-signs-traffic-lights",
-      "sourcePage": 197,
-      "sourceOrder": 317,
-      "sourceOrderWithinPage": 14,
-      "entryKind": "catalog-entry",
-      "spanishLabel": "Carriles reversibles",
-      "russianTranslation": "Реверсивные полосы",
-      "sourceSheetLabelEvidence": "pending visual-source reconciliation",
-      "auditStatus": "pending-reconciliation",
-      "sourceRef": "src/data/manual-sections/app4-signs-traffic-lights.ts#app4-traffic-lights-page-197-source-card.termTranslations[13]",
-      "sourceAsset": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
-      "sourceRegion": {
-        "x": 1110,
-        "y": 1602,
-        "width": 673,
-        "height": 981
-      },
-      "assetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
-      "naturalWidth": 673,
-      "naturalHeight": 980,
-      "cropRegion": {
-        "x": 390,
-        "y": 763,
-        "width": 260,
-        "height": 93
-      },
-      "displayRegion": {
-        "x": 390,
-        "y": 763,
-        "width": 260,
-        "height": 93
-      },
-      "cropNaturalWidth": 260,
-      "cropNaturalHeight": 93,
+      "cropNaturalWidth": 176,
+      "cropNaturalHeight": 114,
       "renderMode": "source-image-css-clip",
       "hash": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223",
       "extractionMethod": "source-image-css-clip-from-existing-official-source-as-is-asset; no crop file written or re-encoded",
