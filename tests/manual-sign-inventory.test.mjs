@@ -244,6 +244,240 @@ const regulatoryPage185Rows = [
   }
 ];
 
+const regulatoryPage186Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "De restricción",
+    russianTranslation: "Ограничительные",
+    cropRegion: { x: 78, y: 132, width: 180, height: 34 },
+    sourceSheetLabelEvidence: "visible source heading: De restricción"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE PESO",
+    russianTranslation: "Ограничение массы",
+    cropRegion: { x: 126, y: 165, width: 66, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE PESO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE PESO POR EJE",
+    russianTranslation: "Ограничение нагрузки на ось",
+    cropRegion: { x: 210, y: 165, width: 82, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE PESO POR EJE"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE ALTURA",
+    russianTranslation: "Ограничение высоты",
+    cropRegion: { x: 292, y: 165, width: 86, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE ALTURA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE ANCHO",
+    russianTranslation: "Ограничение ширины",
+    cropRegion: { x: 384, y: 165, width: 72, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE ANCHO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LIMITACIÓN DE LARGO DE VEHÍCULO",
+    russianTranslation: "Ограничение длины транспортного средства",
+    cropRegion: { x: 458, y: 165, width: 108, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: LIMITACIÓN DE LARGO DE VEHÍCULO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LÍMITE DE VELOCIDAD MÁXIMA",
+    russianTranslation: "Максимальная скорость",
+    cropRegion: { x: 112, y: 250, width: 106, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: LÍMITE DE VELOCIDAD MÁXIMA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "LÍMITE DE VELOCIDAD MÍNIMA",
+    russianTranslation: "Минимальная скорость",
+    cropRegion: { x: 208, y: 250, width: 88, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: LÍMITE DE VELOCIDAD MÍNIMA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTACIONAMIENTO EXCLUSIVO",
+    russianTranslation: "Зарезервированная стоянка",
+    cropRegion: { x: 290, y: 250, width: 90, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: ESTACIONAMIENTO EXCLUSIVO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTACIONAMIENTO EXCLUSIVO",
+    variant: "Cajón azul",
+    russianTranslation: "Зарезервированное синее место",
+    cropRegion: { x: 372, y: 250, width: 92, height: 150 },
+    sourceSheetLabelEvidence: "visible source label: ESTACIONAMIENTO EXCLUSIVO (Cajón azul)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESTACIONAMIENTO EXCLUSIVO",
+    variant: "Discapacitados",
+    russianTranslation: "Стоянка для людей с инвалидностью",
+    cropRegion: { x: 458, y: 250, width: 104, height: 150 },
+    sourceSheetLabelEvidence: "visible source label: ESTACIONAMIENTO EXCLUSIVO (Discapacitados)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Transporte público",
+    russianTranslation: "Движение только общественного транспорта",
+    cropRegion: { x: 112, y: 371, width: 106, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Transporte público)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Moto",
+    russianTranslation: "Движение только мотоциклов",
+    cropRegion: { x: 206, y: 371, width: 90, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Moto)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Bicicleta",
+    russianTranslation: "Движение только велосипедов",
+    cropRegion: { x: 290, y: 371, width: 92, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Bicicleta)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Jinetes",
+    russianTranslation: "Движение только всадников",
+    cropRegion: { x: 376, y: 371, width: 92, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Jinetes)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Peatones",
+    russianTranslation: "Движение только пешеходов",
+    cropRegion: { x: 462, y: 371, width: 92, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Peatones)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CIRCULACIÓN EXCLUSIVA",
+    variant: "Convivencia",
+    russianTranslation: "Движение только в зоне совместного пользования",
+    cropRegion: { x: 120, y: 478, width: 98, height: 104 },
+    sourceSheetLabelEvidence: "visible source label: CIRCULACIÓN EXCLUSIVA (Convivencia)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "USO DE CADENAS PARA NIEVE",
+    russianTranslation: "Использование цепей для снега",
+    cropRegion: { x: 206, y: 478, width: 94, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: USO DE CADENAS PARA NIEVE"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "GIRO OBLIGATORIO",
+    variant: "Derecha",
+    russianTranslation: "Обязательный поворот направо",
+    cropRegion: { x: 292, y: 478, width: 92, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: GIRO OBLIGATORIO (Derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "GIRO OBLIGATORIO",
+    variant: "Izquierda",
+    russianTranslation: "Обязательный поворот налево",
+    cropRegion: { x: 382, y: 478, width: 92, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: GIRO OBLIGATORIO (Izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "SENTIDO DE CIRCULACIÓN",
+    variant: "Derecha",
+    russianTranslation: "Направление движения направо",
+    cropRegion: { x: 462, y: 478, width: 102, height: 112 },
+    sourceSheetLabelEvidence: "visible source label: SENTIDO DE CIRCULACIÓN (Derecha)"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "De prioridad",
+    russianTranslation: "Приоритет",
+    cropRegion: { x: 78, y: 548, width: 180, height: 34 },
+    sourceSheetLabelEvidence: "visible source heading: De prioridad"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PARE",
+    russianTranslation: "Стоп",
+    cropRegion: { x: 122, y: 590, width: 72, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: PARE"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CEDA EL PASO",
+    russianTranslation: "Уступите дорогу",
+    cropRegion: { x: 208, y: 590, width: 82, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: CEDA EL PASO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CEDA EL PASO",
+    variant: "A ciclistas y peatones",
+    russianTranslation: "Уступите велосипедистам и пешеходам",
+    cropRegion: { x: 288, y: 590, width: 102, height: 124 },
+    sourceSheetLabelEvidence: "visible source label: CEDA EL PASO (A ciclistas y peatones)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PREFERENCIA DE AVANCE",
+    russianTranslation: "Преимущество встречного разъезда",
+    cropRegion: { x: 382, y: 590, width: 86, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: PREFERENCIA DE AVANCE"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "DESCIENDA DE LA BICICLETA",
+    russianTranslation: "Сойдите с велосипеда",
+    cropRegion: { x: 462, y: 590, width: 104, height: 118 },
+    sourceSheetLabelEvidence: "visible source label: DESCIENDA DE LA BICICLETA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "BARRERAS FERROVIARIAS",
+    russianTranslation: "Железнодорожные шлагбаумы",
+    cropRegion: { x: 124, y: 704, width: 96, height: 108 },
+    sourceSheetLabelEvidence: "visible source label: BARRERAS FERROVIARIAS"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "De fin de prescripción",
+    russianTranslation: "Конец действия предписания",
+    cropRegion: { x: 78, y: 782, width: 278, height: 38 },
+    sourceSheetLabelEvidence: "visible source heading: De fin de prescripción"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "FIN DE LA PRESCRIPCIÓN",
+    variant: "genérico",
+    russianTranslation: "Конец действия предписания",
+    cropRegion: { x: 124, y: 812, width: 82, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: FIN DE LA PRESCRIPCIÓN (genérico)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "FIN DE LA PRESCRIPCIÓN",
+    variant: "velocidad mínima 35",
+    russianTranslation: "Конец действия предписания",
+    cropRegion: { x: 210, y: 812, width: 82, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: FIN DE LA PRESCRIPCIÓN (velocidad mínima 35)"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -289,6 +523,30 @@ test("regulatory source page 185 visual rows are complete and ordered", () => {
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
     assert.match(entry.sourceRef, /app4-regulatory-page-185-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
+test("regulatory source page 186 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-regulatory" && entry.sourcePage === 186);
+
+  assert.equal(rows.length, regulatoryPage186Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["186"], regulatoryPage186Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 3);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 28);
+
+  rows.forEach((entry, index) => {
+    const expected = regulatoryPage186Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-regulatory-page-186-source-card\.visualSourceEntries/u, entry.id);
   });
 });
 
