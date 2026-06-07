@@ -380,3 +380,48 @@ Architect final validation, when invoked by Orchestrator after implementation an
 - the effective content head is identified for final Analyst validation.
 
 Analyst final validation, when invoked after Architect final validation passes, must verify the final result against the user's original request: every sign processed separately, maximum practical quality, original source order, Spanish/Russian captions, all signs covered, and no modification of protected sign imagery.
+
+## Final Architect Validation
+
+Architect validation pass: passed
+
+Final Architect validation completed at: 2026-06-07T14:47:00-03:00
+
+Effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
+
+Architect validated effective content head: 21d843fc1fad4f64459718941cd6f03026c0e23c
+
+Architect return count remains `2/10`.
+
+Final validation scope: PR `#202` / branch `codex/036-manual-sign-pages` through effective
+content head `21d843fc1fad4f64459718941cd6f03026c0e23c`.
+
+Architect validation evidence reviewed:
+
+- Current worktree HEAD matched the effective content head, and the branch was clean before
+  validation-note writing.
+- Final inventory validation passed: `316` entries across source pages `185-197`, p198-p200
+  disposition recorded, `316` `reconciled-source-visual` rows, `0` pending rows, `283`
+  catalog-entry rows, `30` category-heading rows, and `3` contextual-visual rows.
+- Final section counts were verified as regulatory `60`, warning `59`, informational `95`,
+  temporary `56`, horizontal `33`, and traffic-lights/signals `13`; page counts were verified
+  for pages `185-197` as recorded in the final implementation evidence/preflight slice.
+- `pnpm run validate:manual-sign-inventory`, `node --test tests/manual-sign-inventory.test.mjs`,
+  and `git diff --check` passed locally during Architect validation; implementation memory also
+  records full `pnpm run preflight` passed at this effective content head.
+- GitHub PR evidence showed required checks `AI Review`, `baseline-checks`, `docker-validation`,
+  `guard`, and `osv-scan` successful for
+  `21d843fc1fad4f64459718941cd6f03026c0e23c`, with Review Agent no actionable findings for that
+  head.
+- Final all-section contact-sheet evidence and summary were present under
+  `specs/036-manual-sign-pages/evidence/contact-sheets/final-catalog/`.
+
+Architect dispositions:
+
+- No open Architect dispositions or unresolved Implementation Agent feedback remain.
+- Historical crop QA and inventory-source blocker notes are superseded and resolved by the final
+  `316`-row reconciled source-visual inventory, all-section contact-sheet evidence, stricter
+  final validation/tests, and final implementation preflight evidence.
+- Category-heading and contextual-visual rows are explicitly typed and excluded from sign-like
+  coverage expectations where appropriate; final sign/sign-like catalog coverage is represented
+  by the `283` catalog-entry rows in source-page/visual reading order.
