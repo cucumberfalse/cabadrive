@@ -200,3 +200,22 @@ Architect disposition routing: none required.
 No live final Analyst validation is recorded for PR #202 after the later sourceRef content/test fix at `2a11be5dee6307e9df1cedad094ded5c58e6c659`. That newer content head changed `scripts/manual-sign-inventory.mjs`, `src/data/manual-signs/app4SignEntries.json`, `tests/manual-sign-inventory.test.mjs`, and `specs/036-manual-sign-pages/tasks.md`, making the historical validation for `e5041ad79eb7034e01374b65ac3ceebf44f775da` stale.
 
 Final Analyst validation is deferred until Orchestrator invokes Analyst after fresh Architect validation on the new effective content head.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T15:50:02-03:00
+Effective content head: 202af0dd1e7b92a308220ac5805afac2740e25dd
+Analyst validated effective content head: 202af0dd1e7b92a308220ac5805afac2740e25dd
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T15:48:08-03:00 for the same effective content head 202af0dd1e7b92a308220ac5805afac2740e25dd.
+Analyst validation evidence: Review Agent no-findings exists for the current head in PR #202 at https://github.com/cucumberfalse/cabadrive/pull/202#issuecomment-4643666394.
+Analyst validation evidence: Inventory evidence records 316 total rows, 316 reconciled-source-visual rows, 0 pending rows, 283 catalog-entry rows, 30 category-heading rows, 3 contextual-visual rows, covered source pages 185-197, and recorded p198-p200 disposition.
+Analyst validation evidence: All sourceRefs are fixed to scripts/manual-sign-inventory.mjs#visualSourceEntries, local validate passed, and focused tests passed.
+Customer intent check: every sign/sign-like item in scope is covered as a separate governed inventory row while preserving source order.
+Customer intent check: highest practical original-source image quality is preserved through source-faithful visuals, with protected sign imagery unmodified and Spanish/Russian captions kept outside images.
+Customer intent check: NO AVANZAR maps to Проезд запрещен.
+Gaps, if any: none remain.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is 0.
+Analyst boundary reminder: Analyst final validation appended only to specs/036-manual-sign-pages/feature-request.md and did not edit code, tests, tasks, spec, plan, staging, commits, pushes, PRs, or merge state.
