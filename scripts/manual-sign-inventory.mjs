@@ -34,7 +34,7 @@ const sourceSections = [
     sectionFile: "src/data/manual-sections/app4-signs-warning.ts",
     includeCardIdPattern: /^app4-warning-page-\d+-source-card$/u,
     sourceSelectionNote:
-      "Uses existing official CABA Appendix IV source-sheet crops as placeholders until individual warning crops are produced."
+      "Uses existing official CABA Appendix IV warning source-sheet crops with explicit visual-source rows for pages 187-188."
   },
   {
     sectionId: "app4-signs-informational",
@@ -1159,9 +1159,194 @@ const visualSourceEntries = [
     sourceCardId: "app4-warning-page-188-source-card",
     entryKind: "category-heading",
     spanishLabel: "Posibilidad de riesgo eventual",
-    russianTranslation: "Возможность случайного риска",
-    cropRegion: { x: 78, y: 80, width: 360, height: 70 },
+    russianTranslation: "Возможная опасность",
+    cropRegion: { x: 80, y: 132, width: 330, height: 31 },
     sourceSheetLabelEvidence: "visible source heading: Posibilidad de riesgo eventual",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "ESCOLARES",
+    russianTranslation: "Школьники",
+    cropRegion: { x: 116, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: ESCOLARES",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "NIÑOS",
+    russianTranslation: "Дети",
+    cropRegion: { x: 202, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: NIÑOS",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE CICLISTAS",
+    russianTranslation: "Пересечение с велосипедистами",
+    cropRegion: { x: 287, y: 157, width: 94, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE CICLISTAS",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "JINETES",
+    russianTranslation: "Всадники",
+    cropRegion: { x: 396, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: JINETES",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "ANIMALES SUELTOS",
+    variant: "Vaca",
+    russianTranslation: "Животные на дороге: корова",
+    cropRegion: { x: 483, y: 157, width: 86, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: ANIMALES SUELTOS (Vaca)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "ANIMALES SUELTOS",
+    variant: "Ciervo",
+    russianTranslation: "Животные на дороге: олень",
+    cropRegion: { x: 116, y: 268, width: 88, height: 89 },
+    sourceSheetLabelEvidence: "visible source label: ANIMALES SUELTOS (Ciervo)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CORREDOR AÉREO",
+    russianTranslation: "Воздушный коридор",
+    cropRegion: { x: 203, y: 268, width: 78, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: CORREDOR AÉREO",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Tranvía",
+    russianTranslation: "Возможное появление трамвая",
+    cropRegion: { x: 290, y: 268, width: 94, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Tranvía)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Tractor",
+    russianTranslation: "Возможное появление трактора",
+    cropRegion: { x: 398, y: 268, width: 83, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Tractor)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Ambulancia",
+    russianTranslation: "Возможное появление скорой помощи",
+    cropRegion: { x: 486, y: 268, width: 91, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Ambulancia)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Advertencias de máximo peligro",
+    russianTranslation: "Предупреждения максимальной опасности",
+    cropRegion: { x: 79, y: 394, width: 360, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Advertencias de máximo peligro",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE FERROVIARIO",
+    russianTranslation: "Железнодорожный переезд",
+    cropRegion: { x: 117, y: 419, width: 89, height: 77 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE FERROVIARIO",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Aproximación",
+    russianTranslation: "Предупредительные панели приближения",
+    cropRegion: { x: 219, y: 433, width: 76, height: 66 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Aproximación)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Objeto rígido",
+    russianTranslation: "Панель у жесткого препятствия",
+    cropRegion: { x: 315, y: 428, width: 75, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Objeto rígido)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Curva / Chevron",
+    russianTranslation: "Шеврон поворота",
+    cropRegion: { x: 403, y: 428, width: 86, height: 74 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Curva / Chevron)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUZ DE SAN ANDRÉS",
+    variant: "Hasta dos vías",
+    russianTranslation: "Андреевский крест: до двух путей",
+    cropRegion: { x: 486, y: 419, width: 108, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: CRUZ DE SAN ANDRÉS (Hasta dos vías)",
     auditStatus: "reconciled-source-visual"
   },
   {
@@ -1172,8 +1357,86 @@ const visualSourceEntries = [
     spanishLabel: "CRUZ DE SAN ANDRÉS",
     variant: "Más de dos vías",
     russianTranslation: "Андреевский крест: более двух путей",
-    cropRegion: { x: 260, y: 520, width: 115, height: 110 },
+    cropRegion: { x: 107, y: 522, width: 101, height: 70 },
     sourceSheetLabelEvidence: "visible source label: CRUZ DE SAN ANDRÉS (Más de dos vías)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA CERRADA",
+    russianTranslation: "Крутой поворот",
+    cropRegion: { x: 224, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: CURVA CERRADA",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE PEATONES",
+    russianTranslation: "Пешеходный переход",
+    cropRegion: { x: 311, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE PEATONES",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE PEATONES",
+    variant: "Prioridad peatón",
+    russianTranslation: "Пешеходы имеют приоритет",
+    cropRegion: { x: 396, y: 514, width: 75, height: 101 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE PEATONES (Prioridad peatón)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "ATENCIÓN",
+    russianTranslation: "Внимание",
+    cropRegion: { x: 483, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: ATENCIÓN",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Anticipo de otros dispositivos de control del tránsito",
+    russianTranslation: "Предупреждение о других устройствах контроля движения",
+    cropRegion: { x: 80, y: 640, width: 555, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Anticipo de otros dispositivos de control del tránsito",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "FLECHA DIRECCIONAL",
+    russianTranslation: "Направляющая стрелка",
+    cropRegion: { x: 115, y: 676, width: 83, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: FLECHA DIRECCIONAL",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEMÁFORO",
+    russianTranslation: "Приближение к светофору",
+    cropRegion: { x: 206, y: 678, width: 76, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEMÁFORO",
     auditStatus: "reconciled-source-visual"
   },
   {
@@ -1184,7 +1447,7 @@ const visualSourceEntries = [
     spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
     variant: "Pare",
     russianTranslation: "Приближение к знаку STOP",
-    cropRegion: { x: 230, y: 710, width: 90, height: 105 },
+    cropRegion: { x: 291, y: 674, width: 88, height: 99 },
     sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Pare)",
     auditStatus: "reconciled-source-visual"
   },
@@ -1196,7 +1459,7 @@ const visualSourceEntries = [
     spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
     variant: "Paso",
     russianTranslation: "Приближение к знаку уступите дорогу",
-    cropRegion: { x: 320, y: 710, width: 90, height: 105 },
+    cropRegion: { x: 398, y: 674, width: 88, height: 99 },
     sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Paso)",
     auditStatus: "reconciled-source-visual"
   },
@@ -1208,8 +1471,30 @@ const visualSourceEntries = [
     spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
     variant: "Otra",
     russianTranslation: "Приближение к другому ограничивающему знаку",
-    cropRegion: { x: 410, y: 710, width: 90, height: 105 },
+    cropRegion: { x: 485, y: 674, width: 94, height: 99 },
     sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Otra)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Fin de prevención",
+    russianTranslation: "Конец предупреждения",
+    cropRegion: { x: 79, y: 785, width: 230, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Fin de prevención",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-warning",
+    sourcePage: 188,
+    sourceCardId: "app4-warning-page-188-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de prevención",
+    russianTranslation: "Конец зоны предупреждения",
+    cropRegion: { x: 122, y: 811, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Fin de prevención",
     auditStatus: "reconciled-source-visual"
   }
 ];

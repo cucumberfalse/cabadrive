@@ -698,6 +698,233 @@ const warningPage187Rows = [
   }
 ];
 
+const warningPage188Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Posibilidad de riesgo eventual",
+    russianTranslation: "Возможная опасность",
+    cropRegion: { x: 80, y: 132, width: 330, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Posibilidad de riesgo eventual"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ESCOLARES",
+    russianTranslation: "Школьники",
+    cropRegion: { x: 116, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: ESCOLARES"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "NIÑOS",
+    russianTranslation: "Дети",
+    cropRegion: { x: 202, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: NIÑOS"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE CICLISTAS",
+    russianTranslation: "Пересечение с велосипедистами",
+    cropRegion: { x: 287, y: 157, width: 94, height: 92 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE CICLISTAS"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "JINETES",
+    russianTranslation: "Всадники",
+    cropRegion: { x: 396, y: 157, width: 74, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: JINETES"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ANIMALES SUELTOS",
+    variant: "Vaca",
+    russianTranslation: "Животные на дороге: корова",
+    cropRegion: { x: 483, y: 157, width: 86, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: ANIMALES SUELTOS (Vaca)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ANIMALES SUELTOS",
+    variant: "Ciervo",
+    russianTranslation: "Животные на дороге: олень",
+    cropRegion: { x: 116, y: 268, width: 88, height: 89 },
+    sourceSheetLabelEvidence: "visible source label: ANIMALES SUELTOS (Ciervo)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CORREDOR AÉREO",
+    russianTranslation: "Воздушный коридор",
+    cropRegion: { x: 203, y: 268, width: 78, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: CORREDOR AÉREO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Tranvía",
+    russianTranslation: "Возможное появление трамвая",
+    cropRegion: { x: 290, y: 268, width: 94, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Tranvía)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Tractor",
+    russianTranslation: "Возможное появление трактора",
+    cropRegion: { x: 398, y: 268, width: 83, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Tractor)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PRESENCIA DE VEHÍCULOS EXTRAÑOS",
+    variant: "Ambulancia",
+    russianTranslation: "Возможное появление скорой помощи",
+    cropRegion: { x: 486, y: 268, width: 91, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PRESENCIA DE VEHÍCULOS EXTRAÑOS (Ambulancia)"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Advertencias de máximo peligro",
+    russianTranslation: "Предупреждения максимальной опасности",
+    cropRegion: { x: 79, y: 394, width: 360, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Advertencias de máximo peligro"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE FERROVIARIO",
+    russianTranslation: "Железнодорожный переезд",
+    cropRegion: { x: 117, y: 419, width: 89, height: 77 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE FERROVIARIO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Aproximación",
+    russianTranslation: "Предупредительные панели приближения",
+    cropRegion: { x: 219, y: 433, width: 76, height: 66 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Aproximación)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Objeto rígido",
+    russianTranslation: "Панель у жесткого препятствия",
+    cropRegion: { x: 315, y: 428, width: 75, height: 72 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Objeto rígido)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PANELES DE PREVENCIÓN",
+    variant: "Curva / Chevron",
+    russianTranslation: "Шеврон поворота",
+    cropRegion: { x: 403, y: 428, width: 86, height: 74 },
+    sourceSheetLabelEvidence: "visible source label: PANELES DE PREVENCIÓN (Curva / Chevron)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUZ DE SAN ANDRÉS",
+    variant: "Hasta dos vías",
+    russianTranslation: "Андреевский крест: до двух путей",
+    cropRegion: { x: 486, y: 419, width: 108, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: CRUZ DE SAN ANDRÉS (Hasta dos vías)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUZ DE SAN ANDRÉS",
+    variant: "Más de dos vías",
+    russianTranslation: "Андреевский крест: более двух путей",
+    cropRegion: { x: 107, y: 522, width: 101, height: 70 },
+    sourceSheetLabelEvidence: "visible source label: CRUZ DE SAN ANDRÉS (Más de dos vías)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CURVA CERRADA",
+    russianTranslation: "Крутой поворот",
+    cropRegion: { x: 224, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: CURVA CERRADA"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE PEATONES",
+    russianTranslation: "Пешеходный переход",
+    cropRegion: { x: 311, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE PEATONES"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "CRUCE DE PEATONES",
+    variant: "Prioridad peatón",
+    russianTranslation: "Пешеходы имеют приоритет",
+    cropRegion: { x: 396, y: 514, width: 75, height: 101 },
+    sourceSheetLabelEvidence: "visible source label: CRUCE DE PEATONES (Prioridad peatón)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "ATENCIÓN",
+    russianTranslation: "Внимание",
+    cropRegion: { x: 483, y: 514, width: 64, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: ATENCIÓN"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Anticipo de otros dispositivos de control del tránsito",
+    russianTranslation: "Предупреждение о других устройствах контроля движения",
+    cropRegion: { x: 80, y: 640, width: 555, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Anticipo de otros dispositivos de control del tránsito"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "FLECHA DIRECCIONAL",
+    russianTranslation: "Направляющая стрелка",
+    cropRegion: { x: 115, y: 676, width: 83, height: 84 },
+    sourceSheetLabelEvidence: "visible source label: FLECHA DIRECCIONAL"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEMÁFORO",
+    russianTranslation: "Приближение к светофору",
+    cropRegion: { x: 206, y: 678, width: 76, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEMÁFORO"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Pare",
+    russianTranslation: "Приближение к знаку STOP",
+    cropRegion: { x: 291, y: 674, width: 88, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Pare)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Paso",
+    russianTranslation: "Приближение к знаку уступите дорогу",
+    cropRegion: { x: 398, y: 674, width: 88, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Paso)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "PROXIMIDAD DE SEÑAL RESTRICTIVA",
+    variant: "Otra",
+    russianTranslation: "Приближение к другому ограничивающему знаку",
+    cropRegion: { x: 485, y: 674, width: 94, height: 99 },
+    sourceSheetLabelEvidence: "visible source label: PROXIMIDAD DE SEÑAL RESTRICTIVA (Otra)"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Fin de prevención",
+    russianTranslation: "Конец предупреждения",
+    cropRegion: { x: 79, y: 785, width: 230, height: 31 },
+    sourceSheetLabelEvidence: "visible source heading: Fin de prevención"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de prevención",
+    russianTranslation: "Конец зоны предупреждения",
+    cropRegion: { x: 122, y: 811, width: 70, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Fin de prevención"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -791,6 +1018,30 @@ test("warning source page 187 visual rows are complete and ordered", () => {
     assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
     assert.match(entry.sourceRef, /app4-warning-page-187-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
+test("warning source page 188 visual rows are complete and ordered", () => {
+  const inventory = loadInventory();
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-warning" && entry.sourcePage === 188);
+
+  assert.equal(rows.length, warningPage188Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["188"], warningPage188Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 4);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 26);
+
+  rows.forEach((entry, index) => {
+    const expected = warningPage188Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-warning-page-188-source-card\.visualSourceEntries/u, entry.id);
   });
 });
 

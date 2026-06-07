@@ -131,22 +131,34 @@ blocker is resolved.
 - [x] Run requested focused validation for this slice:
   - `pnpm run validate:manual-sign-inventory` passed: `243` entries, pages `185-197`, p198-p200 disposition recorded.
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `7/7` tests.
-- [ ] PR `#202` remains not merge-ready after this tiny slice. Regulatory pages `185-186` and warning page `187` are complete, but warning page `188` and informational/temporary/horizontal/traffic-light sections still need their remaining visual-source reconciliation work before final validation or merge.
+- [x] Historical note: PR `#202` remained not merge-ready after this tiny slice. Regulatory pages `185-186` and warning page `187` were complete, but warning page `188` and informational/temporary/horizontal/traffic-light sections still needed their remaining visual-source reconciliation work before final validation or merge.
+
+## Warning Page 188 Completion Slice 2026-06-07
+
+- [x] Replace the partial warning page `188` rows in `scripts/manual-sign-inventory.mjs` with the complete visual-source row list for `app4-warning-page-188-source-card`: `4` category headings and `26` catalog entries, all with `sectionId: "app4-signs-warning"`, `sourcePage: 188`, `auditStatus: "reconciled-source-visual"`, source label/heading evidence, and the requested exact `cropRegion` values.
+- [x] Regenerate `src/data/manual-signs/app4SignEntries.json` with `node scripts/manual-sign-inventory.mjs --write`; command passed with `268` entries, pages `185-197`, and p198-p200 disposition recorded.
+- [x] Update focused inventory tests so page `188` must keep the complete ordered row set, exact crop regions, heading/catalog-entry split, Russian captions, source evidence strings, reconciled audit status, and source-card references.
+- [x] Record that warning pages `187-188` are now complete in the explicit visual-source inventory: `59` warning rows total, with `29` rows on complete page `187` and `30` rows on complete page `188`.
+- [x] Run requested focused validation for this slice:
+  - `pnpm run validate:manual-sign-inventory` passed: `268` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `8/8` tests.
+  - `git diff --check` passed with no whitespace errors.
+- [ ] PR `#202` remains not merge-ready after this tiny slice. Regulatory pages `185-186` and warning pages `187-188` are complete, but informational/temporary/horizontal/traffic-light sections still need their remaining visual-source reconciliation work before final validation or merge.
 
 ## Required Evidence To Fill During Implementation
 
 Inventory summary:
 
-- Total current mixed inventory entries: `243`
-- Reconciled source-visual rows: `94`
+- Total current mixed inventory entries: `268`
+- Reconciled source-visual rows: `119`
 - Pending reconciliation rows: `149`
 - Regulatory, pages `185-186`: `60` reconciled rows (`29` on complete page `185`, `31` on complete page `186`)
-- Warning, pages `187-188`: `34` reconciled rows (`29` on complete page `187`, `5` partial rows on page `188`)
+- Warning, pages `187-188`: `59` reconciled rows (`29` on complete page `187`, `30` on complete page `188`)
 - Informational, pages `189-192`: `62`
 - Temporary, pages `193-194`: `44`
 - Horizontal markings, pages `195-196`: `29`
 - Traffic lights/signals, page `197`: `14`
-- Source-page counts: p185 `29`, p186 `31`, p187 `29`, p188 `5`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
+- Source-page counts: p185 `29`, p186 `31`, p187 `29`, p188 `30`, p189 `15`, p190 `18`, p191 `24`, p192 `5`, p193 `21`, p194 `23`, p195 `15`, p196 `14`, p197 `14`.
 - Inventory scaffold file: `src/data/manual-signs/app4SignEntries.json`
 
 Pages `198-200` disposition:
@@ -194,6 +206,11 @@ Validation commands:
   - `node scripts/manual-sign-inventory.mjs --write` passed: `243` entries, pages `185-197`, p198-p200 disposition recorded.
   - `pnpm run validate:manual-sign-inventory` passed: `243` entries, pages `185-197`, p198-p200 disposition recorded.
   - `node --test tests/manual-sign-inventory.test.mjs` passed: `7/7` tests.
+- Warning page `188` completion validation on 2026-06-07:
+  - `node scripts/manual-sign-inventory.mjs --write` passed: `268` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `pnpm run validate:manual-sign-inventory` passed: `268` entries, pages `185-197`, p198-p200 disposition recorded.
+  - `node --test tests/manual-sign-inventory.test.mjs` passed: `8/8` tests.
+  - `git diff --check` passed with no whitespace errors.
 
 Screenshot evidence:
 
