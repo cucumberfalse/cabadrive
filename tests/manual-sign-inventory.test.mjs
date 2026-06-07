@@ -925,6 +925,247 @@ const warningPage188Rows = [
   }
 ];
 
+const informationalPage189Rows = [
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Informativas",
+    russianTranslation: "Информационные",
+    cropRegion: { x: 132, y: 131, width: 178, height: 38 },
+    sourceSheetLabelEvidence: "visible source heading: Informativas"
+  },
+  {
+    entryKind: "category-heading",
+    spanishLabel: "Características de la vía",
+    russianTranslation: "Характеристики дороги",
+    cropRegion: { x: 132, y: 171, width: 258, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Características de la vía"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Comienzo de autopista",
+    russianTranslation: "начало автомагистрали",
+    cropRegion: { x: 172, y: 202, width: 75, height: 97 },
+    sourceSheetLabelEvidence: "visible source label: Comienzo de autopista"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de autopista",
+    russianTranslation: "конец автомагистрали",
+    cropRegion: { x: 257, y: 202, width: 75, height: 97 },
+    sourceSheetLabelEvidence: "visible source label: Fin de autopista"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Indicadora de utilización de carriles",
+    russianTranslation: "указатель использования полос",
+    cropRegion: { x: 343, y: 226, width: 98, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Indicadora de utilización de carriles"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o calle sin salida",
+    variant: "traza en T",
+    russianTranslation: "тупиковая дорога или улица",
+    cropRegion: { x: 448, y: 226, width: 62, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Camino o calle sin salida (traza en T)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o calle sin salida",
+    variant: "traza lateral",
+    russianTranslation: "тупиковая дорога или улица",
+    cropRegion: { x: 536, y: 226, width: 62, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Camino o calle sin salida (traza lateral)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o paso transitable",
+    russianTranslation: "проезжий путь / разрешенный проезд",
+    cropRegion: { x: 157, y: 318, width: 91, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: Camino o paso transitable"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Velocidades máximas permitidas",
+    russianTranslation: "разрешенные максимальные скорости",
+    cropRegion: { x: 259, y: 318, width: 76, height: 102 },
+    sourceSheetLabelEvidence: "visible source label: Velocidades máximas permitidas"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Esquema de recorrido",
+    russianTranslation: "схема маршрута",
+    cropRegion: { x: 342, y: 316, width: 119, height: 98 },
+    sourceSheetLabelEvidence: "visible source label: Esquema de recorrido"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío por cambio de sentido de circulación",
+    russianTranslation: "объезд из-за изменения направления движения",
+    cropRegion: { x: 471, y: 316, width: 124, height: 103 },
+    sourceSheetLabelEvidence: "visible source label: Desvío por cambio de sentido de circulación"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    russianTranslation: "стоянка разрешена",
+    cropRegion: { x: 166, y: 455, width: 83, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    variant: "a 45° o 90°",
+    russianTranslation: "стоянка под 45° или 90°",
+    cropRegion: { x: 250, y: 455, width: 95, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido (a 45° o 90°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    variant: "Motos a 45°",
+    russianTranslation: "стоянка мотоциклов под 45°",
+    cropRegion: { x: 338, y: 455, width: 95, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido (Motos a 45°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 45°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 427, y: 455, width: 83, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 45°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 45°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 511, y: 455, width: 86, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 45°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 45° inferior",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 166, y: 565, width: 84, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 45° inferior)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 45° inferior",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 251, y: 565, width: 93, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 45° inferior)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 90°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 338, y: 565, width: 92, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 90°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 90°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 424, y: 565, width: 91, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 90°)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 90° derecha",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 511, y: 565, width: 88, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 90° derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "E naranja",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 168, y: 676, width: 83, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (E naranja)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "S verde",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 255, y: 692, width: 89, height: 50 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (S verde)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "P naranja",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 341, y: 692, width: 88, height: 50 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (P naranja)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Permitido girar",
+    variant: "Derecha",
+    russianTranslation: "поворот направо разрешен",
+    cropRegion: { x: 439, y: 676, width: 82, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: Permitido girar (Derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Permitido girar",
+    variant: "Izquierda",
+    russianTranslation: "поворот налево разрешен",
+    cropRegion: { x: 523, y: 676, width: 82, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: Permitido girar (Izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Derecha",
+    russianTranslation: "разрешенное направление направо",
+    cropRegion: { x: 165, y: 784, width: 86, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Izquierda",
+    russianTranslation: "разрешенное направление налево",
+    cropRegion: { x: 250, y: 784, width: 89, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Igual sentido o derecha",
+    russianTranslation: "прямо или направо",
+    cropRegion: { x: 336, y: 775, width: 92, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Igual sentido o derecha)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Igual sentido o izquierda",
+    russianTranslation: "прямо или налево",
+    cropRegion: { x: 424, y: 775, width: 92, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Igual sentido o izquierda)"
+  },
+  {
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Ambas direcciones",
+    russianTranslation: "оба направления",
+    cropRegion: { x: 511, y: 784, width: 91, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Ambas direcciones)"
+  }
+];
+
 test("manual sign inventory validator passes and requires individual CSS-clipped regions", () => {
   const output = execFileSync("node", [scriptPath], { encoding: "utf8" });
   assert.match(output, /Manual sign inventory validation passed: \d+ entries/u);
@@ -1045,16 +1286,43 @@ test("warning source page 188 visual rows are complete and ordered", () => {
   });
 });
 
-test("regulatory and warning visual rows are reconciled while other sections stay visibly pending", () => {
+test("informational source page 189 visual rows are complete and ordered", () => {
   const inventory = loadInventory();
-  const reconciledSections = new Set(["app4-signs-regulatory", "app4-signs-warning"]);
-  const regulatoryWarning = inventory.entries.filter((entry) => reconciledSections.has(entry.sectionId));
-  const pending = inventory.entries.filter((entry) => !reconciledSections.has(entry.sectionId));
+  const rows = inventory.entries.filter((entry) => entry.sectionId === "app4-signs-informational" && entry.sourcePage === 189);
 
-  assert.ok(regulatoryWarning.length > 0, "regulatory/warning explicit visual rows exist");
-  assert.ok(pending.length > 0, "non-regulatory/warning pending rows remain visible");
+  assert.equal(rows.length, informationalPage189Rows.length);
+  assert.equal(inventory.summary.entriesBySourcePage["189"], informationalPage189Rows.length);
+  assert.equal(rows.filter((entry) => entry.entryKind === "category-heading").length, 2);
+  assert.equal(rows.filter((entry) => entry.entryKind === "catalog-entry").length, 29);
+  assert.equal(rows.filter((entry) => entry.auditStatus === "pending-reconciliation").length, 0);
 
-  for (const entry of regulatoryWarning) {
+  rows.forEach((entry, index) => {
+    const expected = informationalPage189Rows[index];
+    assert.equal(entry.sourceOrderWithinPage, index + 1, entry.id);
+    assert.equal(entry.entryKind, expected.entryKind, entry.id);
+    assert.equal(entry.spanishLabel, expected.spanishLabel, entry.id);
+    assert.equal(entry.variant, expected.variant, entry.id);
+    assert.equal(entry.russianTranslation, expected.russianTranslation, entry.id);
+    assert.deepEqual(entry.cropRegion, expected.cropRegion, entry.id);
+    assert.deepEqual(entry.displayRegion, expected.cropRegion, entry.id);
+    assert.equal(entry.sourceSheetLabelEvidence, expected.sourceSheetLabelEvidence, entry.id);
+    assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
+    assert.match(entry.sourceRef, /app4-informational-page-189-source-card\.visualSourceEntries/u, entry.id);
+  });
+});
+
+test("reconciled visual rows are complete while unreconciled sections stay visibly pending", () => {
+  const inventory = loadInventory();
+  const isReconciled = (entry) =>
+    ["app4-signs-regulatory", "app4-signs-warning"].includes(entry.sectionId) ||
+    (entry.sectionId === "app4-signs-informational" && entry.sourcePage === 189);
+  const reconciled = inventory.entries.filter(isReconciled);
+  const pending = inventory.entries.filter((entry) => !isReconciled(entry));
+
+  assert.ok(reconciled.length > 0, "explicit visual rows exist");
+  assert.ok(pending.length > 0, "unreconciled pending rows remain visible");
+
+  for (const entry of reconciled) {
     assert.equal(entry.auditStatus, "reconciled-source-visual", entry.id);
     assert.notEqual(entry.sourceSheetLabelEvidence, "pending visual-source reconciliation", entry.id);
   }

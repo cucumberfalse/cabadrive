@@ -1496,6 +1496,368 @@ const visualSourceEntries = [
     cropRegion: { x: 122, y: 811, width: 70, height: 82 },
     sourceSheetLabelEvidence: "visible source label: Fin de prevención",
     auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Informativas",
+    russianTranslation: "Информационные",
+    cropRegion: { x: 132, y: 131, width: 178, height: 38 },
+    sourceSheetLabelEvidence: "visible source heading: Informativas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "category-heading",
+    spanishLabel: "Características de la vía",
+    russianTranslation: "Характеристики дороги",
+    cropRegion: { x: 132, y: 171, width: 258, height: 30 },
+    sourceSheetLabelEvidence: "visible source heading: Características de la vía",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Comienzo de autopista",
+    russianTranslation: "начало автомагистрали",
+    cropRegion: { x: 172, y: 202, width: 75, height: 97 },
+    sourceSheetLabelEvidence: "visible source label: Comienzo de autopista",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Fin de autopista",
+    russianTranslation: "конец автомагистрали",
+    cropRegion: { x: 257, y: 202, width: 75, height: 97 },
+    sourceSheetLabelEvidence: "visible source label: Fin de autopista",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Indicadora de utilización de carriles",
+    russianTranslation: "указатель использования полос",
+    cropRegion: { x: 343, y: 226, width: 98, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Indicadora de utilización de carriles",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o calle sin salida",
+    variant: "traza en T",
+    russianTranslation: "тупиковая дорога или улица",
+    cropRegion: { x: 448, y: 226, width: 62, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Camino o calle sin salida (traza en T)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o calle sin salida",
+    variant: "traza lateral",
+    russianTranslation: "тупиковая дорога или улица",
+    cropRegion: { x: 536, y: 226, width: 62, height: 83 },
+    sourceSheetLabelEvidence: "visible source label: Camino o calle sin salida (traza lateral)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Camino o paso transitable",
+    russianTranslation: "проезжий путь / разрешенный проезд",
+    cropRegion: { x: 157, y: 318, width: 91, height: 100 },
+    sourceSheetLabelEvidence: "visible source label: Camino o paso transitable",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Velocidades máximas permitidas",
+    russianTranslation: "разрешенные максимальные скорости",
+    cropRegion: { x: 259, y: 318, width: 76, height: 102 },
+    sourceSheetLabelEvidence: "visible source label: Velocidades máximas permitidas",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Esquema de recorrido",
+    russianTranslation: "схема маршрута",
+    cropRegion: { x: 342, y: 316, width: 119, height: 98 },
+    sourceSheetLabelEvidence: "visible source label: Esquema de recorrido",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Desvío por cambio de sentido de circulación",
+    russianTranslation: "объезд из-за изменения направления движения",
+    cropRegion: { x: 471, y: 316, width: 124, height: 103 },
+    sourceSheetLabelEvidence: "visible source label: Desvío por cambio de sentido de circulación",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    russianTranslation: "стоянка разрешена",
+    cropRegion: { x: 166, y: 455, width: 83, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    variant: "a 45° o 90°",
+    russianTranslation: "стоянка под 45° или 90°",
+    cropRegion: { x: 250, y: 455, width: 95, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido (a 45° o 90°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento permitido",
+    variant: "Motos a 45°",
+    russianTranslation: "стоянка мотоциклов под 45°",
+    cropRegion: { x: 338, y: 455, width: 95, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento permitido (Motos a 45°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 45°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 427, y: 455, width: 83, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 45°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 45°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 511, y: 455, width: 86, height: 86 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 45°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 45° inferior",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 166, y: 565, width: 84, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 45° inferior)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 45° inferior",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 251, y: 565, width: 93, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 45° inferior)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 90°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 338, y: 565, width: 92, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 90°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "naranja 90°",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 424, y: 565, width: 91, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (naranja 90°)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "verde 90° derecha",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 511, y: 565, width: 88, height: 87 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (verde 90° derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "E naranja",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 168, y: 676, width: 83, height: 82 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (E naranja)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "S verde",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 255, y: 692, width: 89, height: 50 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (S verde)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Estacionamiento ordenado",
+    variant: "P naranja",
+    russianTranslation: "упорядоченная стоянка",
+    cropRegion: { x: 341, y: 692, width: 88, height: 50 },
+    sourceSheetLabelEvidence: "visible source label: Estacionamiento ordenado (P naranja)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Permitido girar",
+    variant: "Derecha",
+    russianTranslation: "поворот направо разрешен",
+    cropRegion: { x: 439, y: 676, width: 82, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: Permitido girar (Derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Permitido girar",
+    variant: "Izquierda",
+    russianTranslation: "поворот налево разрешен",
+    cropRegion: { x: 523, y: 676, width: 82, height: 80 },
+    sourceSheetLabelEvidence: "visible source label: Permitido girar (Izquierda)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Derecha",
+    russianTranslation: "разрешенное направление направо",
+    cropRegion: { x: 165, y: 784, width: 86, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Izquierda",
+    russianTranslation: "разрешенное направление налево",
+    cropRegion: { x: 250, y: 784, width: 89, height: 75 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Izquierda)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Igual sentido o derecha",
+    russianTranslation: "прямо или направо",
+    cropRegion: { x: 336, y: 775, width: 92, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Igual sentido o derecha)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Igual sentido o izquierda",
+    russianTranslation: "прямо или налево",
+    cropRegion: { x: 424, y: 775, width: 92, height: 93 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Igual sentido o izquierda)",
+    auditStatus: "reconciled-source-visual"
+  },
+  {
+    sectionId: "app4-signs-informational",
+    sourcePage: 189,
+    sourceCardId: "app4-informational-page-189-source-card",
+    entryKind: "catalog-entry",
+    spanishLabel: "Direcciones permitidas",
+    variant: "Ambas direcciones",
+    russianTranslation: "оба направления",
+    cropRegion: { x: 511, y: 784, width: 91, height: 78 },
+    sourceSheetLabelEvidence: "visible source label: Direcciones permitidas (Ambas direcciones)",
+    auditStatus: "reconciled-source-visual"
   }
 ];
 
@@ -1507,6 +1869,10 @@ const visualSourceEntriesByCard = visualSourceEntries.reduce((entriesByCard, ent
 }, new Map());
 
 const visualSourceSectionIds = new Set(["app4-signs-regulatory", "app4-signs-warning"]);
+
+function isReconciledVisualScope(entry) {
+  return visualSourceSectionIds.has(entry.sectionId) || (entry.sectionId === "app4-signs-informational" && entry.sourcePage === 189);
+}
 
 function repoPath(relativePath) {
   return join(repoRoot, relativePath);
@@ -1872,7 +2238,7 @@ function buildInventory() {
     sourceSelection: {
       status: "mixed-visual-source-reconciled-and-pending-reconciliation",
       note:
-        "Regulatory and warning slice entries are generated from explicit visualSourceEntries. Remaining sections still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
+        "Regulatory, warning, and informational source page 189 slice entries are generated from explicit visualSourceEntries. Remaining sections/pages still preserve the existing Appendix IV termTranslations order and are marked pending-reconciliation until their visual source rows are audited. No generated, redrawn, cleaned, translated, or re-encoded crop files are written.",
       cardInventorySources
     },
     p198To200Disposition: {
@@ -1923,15 +2289,15 @@ function validateInventory(inventory) {
       `${label}: sourceSheetLabelEvidence is required.`,
       errors
     );
-    if (visualSourceSectionIds.has(entry.sectionId)) {
-      assertCondition(entry.auditStatus === "reconciled-source-visual", `${label}: regulatory/warning entries must be reconciled-source-visual.`, errors);
+    if (isReconciledVisualScope(entry)) {
+      assertCondition(entry.auditStatus === "reconciled-source-visual", `${label}: reconciled visual-scope entries must be reconciled-source-visual.`, errors);
       assertCondition(
         entry.sourceSheetLabelEvidence !== "pending visual-source reconciliation",
-        `${label}: regulatory/warning entries must not use pending sourceSheetLabelEvidence.`,
+        `${label}: reconciled visual-scope entries must not use pending sourceSheetLabelEvidence.`,
         errors
       );
     } else {
-      assertCondition(entry.auditStatus === "pending-reconciliation", `${label}: non-regulatory/warning entries must remain pending-reconciliation in this slice.`, errors);
+      assertCondition(entry.auditStatus === "pending-reconciliation", `${label}: unreconciled entries must remain pending-reconciliation in this slice.`, errors);
       assertCondition(
         entry.sourceSheetLabelEvidence === "pending visual-source reconciliation",
         `${label}: pending entries must use the pending sourceSheetLabelEvidence marker.`,
