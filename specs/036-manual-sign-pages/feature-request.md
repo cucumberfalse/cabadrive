@@ -172,3 +172,25 @@ No external web research was used for this intake. Sources used were repository-
 The prior Analyst final-validation note for effective content head `21d843fc1fad4f64459718941cd6f03026c0e23c` is historical only and must not be treated as the live final Analyst validation for PR #202. It was superseded by the post-validation type fix `100799eaa66448f5a7b287c00577b5d60c7f1a84` and the process-memory foundation commit `3003c501a07708a35c5f7830171e54302d60ebec`.
 
 Live final Analyst validation is deferred. Orchestrator must invoke Analyst validation again after Architect validation passes on the new effective content head.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-07T15:22:53-03:00
+Effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+Analyst validated effective content head: e5041ad79eb7034e01374b65ac3ceebf44f775da
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-07T15:17:00-03:00 for effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da.
+Analyst validation evidence: Architect validated effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da before final Analyst validation.
+Analyst validation evidence: Current PR head 55c99bb73d0004a7bc4384677848ee0b08301ae0 differs from effective content head only by tasks.md final Architect validation evidence.
+Analyst validation evidence: git status showed branch codex/036-manual-sign-pages tracking origin/codex/036-manual-sign-pages with no pre-existing dirty work before Analyst evidence was appended.
+Analyst validation evidence: git diff --check passed before Analyst evidence was appended.
+Customer intent check: all affected sign/sign-like items are processed individually in the governed inventory.
+Customer intent check: source order is preserved by nondecreasing source pages 185-197 and sourceOrder/sourceOrderWithinPage inventory fields.
+Customer intent check: final inventory covers 316 rows, 283 catalog entries, 30 headings, 3 contextual visuals, 0 pending rows, pages 185-197, and recorded p198-p200 disposition.
+Customer intent check: Spanish and Russian captions are outside protected imagery, including NO AVANZAR -> Проезд запрещен.
+Customer intent check: source-as-is CSS clipping from unchanged official assets is used for 316 rows, with no generated, redrawn, replaced, re-encoded, translated-inside-image, cleaned, recolored, or retouched protected images.
+Customer intent check: contextual-visual type fix is included in effective content head e5041ad79eb7034e01374b65ac3ceebf44f775da via parent commit 100799eaa66448f5a7b287c00577b5d60c7f1a84.
+Customer intent check: stale prior Analyst validation is marked superseded/history and live final Analyst validation was deferred before this section.
+Gaps, if any: none.
+Architect disposition routing: none required.
