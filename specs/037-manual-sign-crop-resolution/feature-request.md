@@ -224,3 +224,19 @@ Sources read during intake:
 ## Analyst Handoff
 
 This intake is ready for Orchestrator handoff to Architect. The customer intent is clear: the individual sign catalog must be corrected, not merely accepted because inventory rows exist. Some signs are cropped incorrectly, and all sign images need a higher-quality official-source re-extraction at roughly `3x` higher natural resolution, while preserving every protected sign pixel and keeping captions outside images. Architect should turn this into measurable resolution/crop-quality requirements and all-entry verification tasks before Implementation Agent edits code, assets, or tests.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-08T00:19:36Z
+Effective content head: 076cf8c8090decb4722f8bf0ca7814a158494137
+Analyst validated effective content head: 076cf8c8090decb4722f8bf0ca7814a158494137
+Analyst return count: 0
+Analyst validation evidence: Final Architect validation passed first at 2026-06-08T00:18:14Z for the same effective content head 076cf8c8090decb4722f8bf0ca7814a158494137.
+Analyst validation evidence: Review Agent latest PR #203 review reports no findings for the effective content head, and Orchestrator evidence reports required non-draft checks green except AI Review skipped while draft for later finalization handling.
+Customer intent check: the reported crooked/clipped sign crops are addressed by direct per-entry sign-like assets, all cited crop clipping and neighboring-content contamination classes fixed, all six Appendix IV sign sections covered, source order and captions preserved, and Spanish/Russian captions kept outside protected imagery.
+Customer intent check: the poor-quality sign issue is addressed under the Architect-disposed source-limited contract: `286` sign-like rows use source-faithful best-official-source `3x` output-pixel PNG crops with no browser upscaling, while honestly recording `286` source-limited exceptions and `0` true native/effective `3x` detail passes.
+Customer intent check: this satisfies the original request in spirit and letter as far as the available official source permits, provided completion wording remains honest and does not claim true native/effective `3x` detail.
+Gaps, if any: none remain under the recorded source-limited disposition.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst boundary reminder: Analyst final validation appended only to `specs/037-manual-sign-crop-resolution/feature-request.md` and did not edit code, tests, runtime assets, scripts, source data, Architect-owned artifacts, staging, commits, pushes, PR review state, checks, conversations, or merge state.
