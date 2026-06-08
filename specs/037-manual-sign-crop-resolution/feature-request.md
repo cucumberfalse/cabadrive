@@ -240,3 +240,20 @@ Customer intent check: this satisfies the original request in spirit and letter 
 Gaps, if any: none remain under the recorded source-limited disposition.
 Architect disposition routing: none required because no final Analyst gaps remain.
 Analyst boundary reminder: Analyst final validation appended only to `specs/037-manual-sign-crop-resolution/feature-request.md` and did not edit code, tests, runtime assets, scripts, source data, Architect-owned artifacts, staging, commits, pushes, PR review state, checks, conversations, or merge state.
+
+## Final Analyst Validation Refresh
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-08T03:29:12Z
+Effective content head: 696bc400fc2a1b9f4f61759438ddf7744ff82196
+Analyst validated effective content head: 696bc400fc2a1b9f4f61759438ddf7744ff82196
+Analyst return count: 0, within the 5-return Analyst limit.
+Prior Analyst validation freshness: the earlier Analyst validation for effective content head `076cf8c8090decb4722f8bf0ca7814a158494137` is stale for completion because later PR #203 commits changed product assets, source data, scripts, tests, official-source manifest/content records, runtime JSON projection, and evidence. This refresh validates only current effective content head `696bc400fc2a1b9f4f61759438ddf7744ff82196`.
+Analyst validation evidence: Fresh final Architect validation passed first at 2026-06-08T03:27:37Z for the same effective content head `696bc400fc2a1b9f4f61759438ddf7744ff82196`.
+Analyst validation evidence: Orchestrator reports PR #203 required checks passed on this head, including AI Review run `27113984933`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`; latest Review Agent review `pullrequestreview-4446426483` has no findings, and older connector P1/P2 findings were addressed in commit `696bc400`.
+Customer intent check: the original crooked-crop complaint is satisfied under the recorded evidence: all six Appendix IV sign sections are covered, `316` baseline rows are preserved, `286` sign-like rows use direct per-entry PNG assets, crop clipping/neighbor contamination classes from earlier reviews are fixed, source order and Spanish/Russian captions are preserved, and captions remain outside protected imagery.
+Customer intent check: the original poor-quality / "3x higher resolution" request is satisfied under the accepted source-limited caveat: all `286` sign-like rows are source-faithful best-official-source `3x` output-pixel crops with no browser upscaling, while the implementation honestly records `286` source-limited exceptions and `0` true native/effective `3x` detail passes.
+Customer intent check: protected official pixels remain source-faithful: no redraw, cleanup, sharpening, recolor, translation inside images, masking, retouching, vectorization, generated replacement, runtime PDF rendering, or remote asset dependency is accepted by the validation evidence.
+Gaps, if any: none remain under the Architect-disposed source-limited contract and honest completion wording requirement.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst boundary reminder: Analyst final validation refresh appended only to `specs/037-manual-sign-crop-resolution/feature-request.md` and did not edit code, tests, assets, scripts, runtime files, source data, Architect-owned artifacts, GitHub state, staging, commits, pushes, review threads, required checks, or merge state.
