@@ -4360,6 +4360,12 @@ function validateFeature037Inventory(inventory) {
       assertCondition(entry.cropAuditBasis?.warningLeftEdgeGuardPass === true, `${label}: cropAuditBasis.warningLeftEdgeGuardPass must be true.`, errors);
       assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: warning crops must not pass with right-edge contact.`, errors);
     }
+    if (entry.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(`${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase())) {
+      assertCondition(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryCaudalesRightEdgeGuardPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryCaudalesSourceLabelTrimPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: regulatory caudales crops must not pass with right-edge contact.`, errors);
+      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory caudales crop must use detached-label trim mode.`, errors);
+    }
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
     assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);

@@ -157,6 +157,10 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
       assert.equal(entry.cropAuditBasis?.warningRightEdgeGuardPass, true, entry.id);
       assert.equal(entry.cropAuditBasis?.warningLeftEdgeGuardPass, true, entry.id);
     }
+    if (entry.sectionId === "app4-signs-regulatory" && /zona-de-caudales/u.test(entry.id)) {
+      assert.equal(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass, true, entry.id);
+      assert.equal(entry.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass, true, entry.id);
+    }
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceWidthRatio, "number", entry.id);
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceHeightRatio, "number", entry.id);
     assert.equal(entry.noUpscaleProof?.passes, true, entry.id);
@@ -283,6 +287,35 @@ test("warning crops cannot pass reviewed audit with right-edge neighboring fragm
   }
 });
 
+test("regulatory Zona de Caudales crops trim neighboring right-edge labels and signs", () => {
+  const inventory = loadJson(inventoryPath);
+  const expectations = [
+    {
+      id: "app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
+      maxSourceWidth: 82,
+      maxSourceHeight: 92
+    },
+    {
+      id: "app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
+      maxSourceWidth: 82,
+      maxSourceHeight: 92
+    }
+  ];
+
+  for (const expectation of expectations) {
+    const entry = entryById(inventory.entries, expectation.id);
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", expectation.id);
+    assert.equal(entry.cropAuditBasis?.passes, true, expectation.id);
+    assert.equal(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass, true, expectation.id);
+    assert.equal(entry.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass, true, expectation.id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, expectation.id);
+    assert.equal(entry.finalTailTrimMode, "preserve-colorless-lower-attachment-trim-detached-source-label", expectation.id);
+    assert.notEqual(entry.cropAuditBasis?.edgeContact?.right, true, expectation.id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.width <= expectation.maxSourceWidth, expectation.id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.height <= expectation.maxSourceHeight, expectation.id);
+  }
+});
+
 test("external source captions are trimmed from informational pedestrian crossing crops", () => {
   const inventory = loadJson(inventoryPath);
   for (const id of [
@@ -305,6 +338,7 @@ test("crop generator cannot stamp reviewed-final-correct without audit pass", ()
   assert.match(cropResolutionSource, /sourceBoundsPass/u);
   assert.match(cropResolutionSource, /neighborContaminationGuardPass/u);
   assert.match(cropResolutionSource, /warningRightEdgeGuardPass/u);
+  assert.match(cropResolutionSource, /regulatoryCaudalesRightEdgeGuardPass/u);
 });
 
 test("category headings are DOM dispositions and excluded from sign quality counts", () => {

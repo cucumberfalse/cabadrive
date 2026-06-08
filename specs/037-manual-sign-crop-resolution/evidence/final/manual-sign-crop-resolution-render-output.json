@@ -1433,15 +1433,15 @@
         "y" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 0,
+        "height" : 79,
+        "width" : 49,
+        "x" : 7,
         "y" : 96
       },
       "cropRectAtRenderScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 1456,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1463,
         "y" : 2175
       },
       "entryKind" : "catalog-entry",
@@ -1455,7 +1455,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "f2fe667bf0c0fce6864be3a4b1de6ddb885efe802127892b6ee898ccbf257d60",
+      "outputSha256" : "a6f9242f5036d6616ef038b4f50bb371d7de454eacdc0ec600543f8ab6f4958f",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 378,
       "requiredMinimumWidth" : 288,
@@ -1467,12 +1467,12 @@
       "sourcePage" : 185,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 1456,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1463,
         "y" : 2175
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 126,
@@ -1497,15 +1497,15 @@
         "y" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 0,
+        "height" : 79,
+        "width" : 49,
+        "x" : 6,
         "y" : 96
       },
       "cropRectAtRenderScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 1543,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1549,
         "y" : 2175
       },
       "entryKind" : "catalog-entry",
@@ -1519,7 +1519,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "9051e4b9462a631029c61d4364c18f4d4c8d9f1d78a47c819dbed7196331ebd9",
+      "outputSha256" : "09bd8189c297599ee101c1e4aa6980d6319fd9cb64e068893680d89f47030fef",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 378,
       "requiredMinimumWidth" : 288,
@@ -1531,12 +1531,12 @@
       "sourcePage" : 185,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 105,
-        "width" : 96,
-        "x" : 1543,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1549,
         "y" : 2175
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 88,

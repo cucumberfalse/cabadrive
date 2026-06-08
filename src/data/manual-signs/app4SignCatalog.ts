@@ -35,6 +35,8 @@ export type ManualSignCropAuditBasis = {
   edgeContactMinimumRelativeHeightRatio: number;
   warningRightEdgeGuardPass: boolean;
   warningLeftEdgeGuardPass: boolean;
+  regulatoryCaudalesRightEdgeGuardPass: boolean;
+  regulatoryCaudalesSourceLabelTrimPass: boolean;
   neighborContaminationGuardPass: boolean;
   warningHorizontalEdgeMaximumRelativeWidthRatio: number;
   passes: boolean;

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "featureId": "037-manual-sign-crop-resolution",
   "generatedBy": "scripts/manual-sign-visual-qa.mjs",
-  "generatedAt": "2026-06-08T00:06:12.550Z",
+  "generatedAt": "2026-06-08T00:58:13.445Z",
   "inventoryPath": "src/data/manual-signs/app4SignEntries.json",
   "contactSheetHtmlPath": "specs/037-manual-sign-crop-resolution/evidence/contact-sheets/manual-sign-contact-sheets.html",
   "sections": [

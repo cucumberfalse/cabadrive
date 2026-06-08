@@ -727,7 +727,7 @@
         "width": 96,
         "height": 126
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -759,7 +759,7 @@
         "width": 96,
         "height": 126
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,

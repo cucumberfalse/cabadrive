@@ -91,6 +91,9 @@ function tailTrimMode(row) {
     return "trim-external-catalog-label";
   }
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
+  if (row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(searchable)) {
+    return "preserve-colorless-lower-attachment-trim-detached-source-label";
+  }
   if (
     row.baselineCropNaturalHeight >= 110 ||
     /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(searchable)
@@ -292,6 +295,9 @@ function runSwiftRenderer() {
 }
 
 function makeAutomatedCropAudit(row, renderRecord, dimensions) {
+  const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
+  const regulatoryCaudalesParkingRow =
+    row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(searchable);
   const candidate = renderRecord.candidateRegionAtBaseScale;
   const trim = renderRecord.contentTrimBoundsAtCandidateScale;
   const edgeContact = {
@@ -330,10 +336,15 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     row.sectionId !== "app4-signs-warning" ||
     !edgeContact.left ||
     relativeSourceWidthRatio <= warningHorizontalEdgeMaximumRelativeWidthRatio;
+  const regulatoryCaudalesRightEdgeGuardPass = !regulatoryCaudalesParkingRow || !edgeContact.right;
+  const regulatoryCaudalesSourceLabelTrimPass =
+    !regulatoryCaudalesParkingRow || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
   const neighborContaminationGuardPass =
-    row.sectionId !== "app4-signs-warning" ||
-    !horizontalEdgeContact ||
-    (warningRightEdgeGuardPass && warningLeftEdgeGuardPass);
+    (row.sectionId !== "app4-signs-warning" ||
+      !horizontalEdgeContact ||
+      (warningRightEdgeGuardPass && warningLeftEdgeGuardPass)) &&
+    regulatoryCaudalesRightEdgeGuardPass &&
+    regulatoryCaudalesSourceLabelTrimPass;
   const edgeContactPass =
     edgeContactSides.length === 0 ||
     (relativeSourceWidthRatio >= edgeContactMinimumRelativeWidthRatio &&
@@ -368,6 +379,8 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     edgeContactMinimumRelativeHeightRatio,
     warningRightEdgeGuardPass,
     warningLeftEdgeGuardPass,
+    regulatoryCaudalesRightEdgeGuardPass,
+    regulatoryCaudalesSourceLabelTrimPass,
     neighborContaminationGuardPass,
     warningHorizontalEdgeMaximumRelativeWidthRatio,
     passes
@@ -606,6 +619,14 @@ function validateFinalRows(finalRows) {
     }
     if (row.sectionId === "app4-signs-warning" && row.cropAuditBasis?.warningLeftEdgeGuardPass !== true) {
       errors.push(`${row.id}: warning left-edge contamination guard must pass`);
+    }
+    if (row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(`${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase())) {
+      if (row.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass !== true) {
+        errors.push(`${row.id}: regulatory caudales right-edge contamination guard must pass`);
+      }
+      if (row.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass !== true) {
+        errors.push(`${row.id}: regulatory caudales detached source-label trim guard must pass`);
+      }
     }
     if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
       errors.push(`${row.id}: crop audit relative source ratios are required`);

@@ -521,6 +521,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -687,6 +689,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -854,6 +858,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1021,6 +1027,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1188,6 +1196,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1355,6 +1365,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1522,6 +1534,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1689,6 +1703,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -1856,6 +1872,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2023,6 +2041,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2190,6 +2210,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2357,6 +2379,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2524,6 +2548,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2691,6 +2717,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -2857,6 +2885,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3023,6 +3053,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3189,6 +3221,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3355,6 +3389,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3525,6 +3561,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3694,6 +3732,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -3861,6 +3901,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4028,6 +4070,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4083,7 +4127,7 @@
       "cropNaturalWidth": 288,
       "cropNaturalHeight": 378,
       "renderMode": "individual-source-crop-3x",
-      "hash": "f2fe667bf0c0fce6864be3a4b1de6ddb885efe802127892b6ee898ccbf257d60",
+      "hash": "a6f9242f5036d6616ef038b4f50bb371d7de454eacdc0ec600543f8ab6f4958f",
       "extractionMethod": "fresh-official-pdf-full-page-render-scale-5-row-candidate-crop-content-trim-aspect-fit-to-3x-output-pixels-source-limited; protected pixels are rendered/cropped and aspect-fit inside a white 3x PNG canvas only, with no cleanup, sharpening, redraw, OCR, translation, recolor, vectorization, mask, retouch, stretch, or inpaint",
       "noUpscale": true,
       "preservationNote": "Protected official pixels are rendered and cropped from the retained official CABA PDF only, then aspect-fit into the final PNG without stretching. No generated art, unofficial art, redraw, vectorization, cleanup, sharpening, denoise, recolor, retouch, mask, inpaint, OCR/retyping, or embedded-text translation is applied.",
@@ -4118,22 +4162,22 @@
         "y": 2079
       },
       "finalSourceRegionAtBaseScale": {
-        "height": 105,
-        "width": 96,
-        "x": 1456,
+        "height": 79,
+        "width": 49,
+        "x": 1463,
         "y": 2175
       },
       "finalContentTrimBoundsAtCandidateScale": {
-        "height": 105,
-        "width": 96,
-        "x": 0,
+        "height": 79,
+        "width": 49,
+        "x": 7,
         "y": 96
       },
-      "finalTailTrimMode": "preserve-colorless-lower-attachment",
+      "finalTailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "finalOutputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha.png",
       "finalOutputNaturalWidth": 288,
       "finalOutputNaturalHeight": 378,
-      "finalOutputSha256": "f2fe667bf0c0fce6864be3a4b1de6ddb885efe802127892b6ee898ccbf257d60",
+      "finalOutputSha256": "a6f9242f5036d6616ef038b4f50bb371d7de454eacdc0ec600543f8ab6f4958f",
       "finalOutputComposition": "aspect-fit official source crop centered on a white PNG canvas sized to the required 3x output-pixel target; protected pixels are not stretched or distorted",
       "requiredMinimumWidth": 288,
       "requiredMinimumHeight": 378,
@@ -4141,12 +4185,12 @@
       "outputPixelScaleRatioHeight": 3,
       "outputPixelTargetRatioWidth": 1,
       "outputPixelTargetRatioHeight": 1,
-      "effectiveFinalNaturalWidth": 96,
-      "effectiveFinalNaturalHeight": 105,
-      "sourceNativeWidth": 96,
-      "sourceNativeHeight": 105,
-      "qualityScaleRatioWidth": 0.333333,
-      "qualityScaleRatioHeight": 0.277778,
+      "effectiveFinalNaturalWidth": 49,
+      "effectiveFinalNaturalHeight": 79,
+      "sourceNativeWidth": 49,
+      "sourceNativeHeight": 79,
+      "qualityScaleRatioWidth": 0.170139,
+      "qualityScaleRatioHeight": 0.208995,
       "threeXStatus": "source-limited-exception",
       "sourceLimitedExceptionId": "source-limited:app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
       "sourceLimitedDisposition": "best-official-source-3x-output-pixels",
@@ -4161,8 +4205,8 @@
         "slenderSourceBoundsPass": false,
         "minimumRelativeSourceWidthRatio": 0.35,
         "minimumRelativeSourceHeightRatio": 0.35,
-        "relativeSourceWidthRatio": 1,
-        "relativeSourceHeightRatio": 0.833333,
+        "relativeSourceWidthRatio": 0.510417,
+        "relativeSourceHeightRatio": 0.626984,
         "hasTrimmedContent": true,
         "candidateRegionAtBaseScale": {
           "height": 235,
@@ -4171,33 +4215,32 @@
           "y": 2079
         },
         "contentTrimBoundsAtCandidateScale": {
-          "height": 105,
-          "width": 96,
-          "x": 0,
+          "height": 79,
+          "width": 49,
+          "x": 7,
           "y": 96
         },
         "finalSourceRegionAtBaseScale": {
-          "height": 105,
-          "width": 96,
-          "x": 1456,
+          "height": 79,
+          "width": 49,
+          "x": 1463,
           "y": 2175
         },
         "edgeContact": {
-          "left": true,
+          "left": false,
           "top": false,
-          "right": true,
+          "right": false,
           "bottom": false
         },
-        "edgeContactSides": [
-          "left",
-          "right"
-        ],
-        "edgeContactPolicy": "allowed-only-when-relative-source-coverage-meets-thresholds",
+        "edgeContactSides": [],
+        "edgeContactPolicy": "no-edge-contact",
         "edgeContactPass": true,
         "edgeContactMinimumRelativeWidthRatio": 0.25,
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4253,7 +4296,7 @@
       "cropNaturalWidth": 288,
       "cropNaturalHeight": 378,
       "renderMode": "individual-source-crop-3x",
-      "hash": "9051e4b9462a631029c61d4364c18f4d4c8d9f1d78a47c819dbed7196331ebd9",
+      "hash": "09bd8189c297599ee101c1e4aa6980d6319fd9cb64e068893680d89f47030fef",
       "extractionMethod": "fresh-official-pdf-full-page-render-scale-5-row-candidate-crop-content-trim-aspect-fit-to-3x-output-pixels-source-limited; protected pixels are rendered/cropped and aspect-fit inside a white 3x PNG canvas only, with no cleanup, sharpening, redraw, OCR, translation, recolor, vectorization, mask, retouch, stretch, or inpaint",
       "noUpscale": true,
       "preservationNote": "Protected official pixels are rendered and cropped from the retained official CABA PDF only, then aspect-fit into the final PNG without stretching. No generated art, unofficial art, redraw, vectorization, cleanup, sharpening, denoise, recolor, retouch, mask, inpaint, OCR/retyping, or embedded-text translation is applied.",
@@ -4288,22 +4331,22 @@
         "y": 2079
       },
       "finalSourceRegionAtBaseScale": {
-        "height": 105,
-        "width": 96,
-        "x": 1543,
+        "height": 79,
+        "width": 49,
+        "x": 1549,
         "y": 2175
       },
       "finalContentTrimBoundsAtCandidateScale": {
-        "height": 105,
-        "width": 96,
-        "x": 0,
+        "height": 79,
+        "width": 49,
+        "x": 6,
         "y": 96
       },
-      "finalTailTrimMode": "preserve-colorless-lower-attachment",
+      "finalTailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "finalOutputAssetPath": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda.png",
       "finalOutputNaturalWidth": 288,
       "finalOutputNaturalHeight": 378,
-      "finalOutputSha256": "9051e4b9462a631029c61d4364c18f4d4c8d9f1d78a47c819dbed7196331ebd9",
+      "finalOutputSha256": "09bd8189c297599ee101c1e4aa6980d6319fd9cb64e068893680d89f47030fef",
       "finalOutputComposition": "aspect-fit official source crop centered on a white PNG canvas sized to the required 3x output-pixel target; protected pixels are not stretched or distorted",
       "requiredMinimumWidth": 288,
       "requiredMinimumHeight": 378,
@@ -4311,12 +4354,12 @@
       "outputPixelScaleRatioHeight": 3,
       "outputPixelTargetRatioWidth": 1,
       "outputPixelTargetRatioHeight": 1,
-      "effectiveFinalNaturalWidth": 96,
-      "effectiveFinalNaturalHeight": 105,
-      "sourceNativeWidth": 96,
-      "sourceNativeHeight": 105,
-      "qualityScaleRatioWidth": 0.333333,
-      "qualityScaleRatioHeight": 0.277778,
+      "effectiveFinalNaturalWidth": 49,
+      "effectiveFinalNaturalHeight": 79,
+      "sourceNativeWidth": 49,
+      "sourceNativeHeight": 79,
+      "qualityScaleRatioWidth": 0.170139,
+      "qualityScaleRatioHeight": 0.208995,
       "threeXStatus": "source-limited-exception",
       "sourceLimitedExceptionId": "source-limited:app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
       "sourceLimitedDisposition": "best-official-source-3x-output-pixels",
@@ -4331,8 +4374,8 @@
         "slenderSourceBoundsPass": false,
         "minimumRelativeSourceWidthRatio": 0.35,
         "minimumRelativeSourceHeightRatio": 0.35,
-        "relativeSourceWidthRatio": 1,
-        "relativeSourceHeightRatio": 0.833333,
+        "relativeSourceWidthRatio": 0.510417,
+        "relativeSourceHeightRatio": 0.626984,
         "hasTrimmedContent": true,
         "candidateRegionAtBaseScale": {
           "height": 281,
@@ -4341,33 +4384,32 @@
           "y": 2079
         },
         "contentTrimBoundsAtCandidateScale": {
-          "height": 105,
-          "width": 96,
-          "x": 0,
+          "height": 79,
+          "width": 49,
+          "x": 6,
           "y": 96
         },
         "finalSourceRegionAtBaseScale": {
-          "height": 105,
-          "width": 96,
-          "x": 1543,
+          "height": 79,
+          "width": 49,
+          "x": 1549,
           "y": 2175
         },
         "edgeContact": {
-          "left": true,
+          "left": false,
           "top": false,
-          "right": true,
+          "right": false,
           "bottom": false
         },
-        "edgeContactSides": [
-          "left",
-          "right"
-        ],
-        "edgeContactPolicy": "allowed-only-when-relative-source-coverage-meets-thresholds",
+        "edgeContactSides": [],
+        "edgeContactPolicy": "no-edge-contact",
         "edgeContactPass": true,
         "edgeContactMinimumRelativeWidthRatio": 0.25,
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4534,6 +4576,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4703,6 +4747,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -4869,6 +4915,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5093,6 +5141,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5259,6 +5309,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5425,6 +5477,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5591,6 +5645,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5757,6 +5813,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -5923,6 +5981,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6089,6 +6149,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6258,6 +6320,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6428,6 +6492,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6597,6 +6663,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6764,6 +6832,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -6931,6 +7001,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7098,6 +7170,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7265,6 +7339,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7434,6 +7510,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7604,6 +7682,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7770,6 +7850,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -7937,6 +8019,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8104,6 +8188,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8271,6 +8357,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8495,6 +8583,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8661,6 +8751,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8831,6 +8923,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -8997,6 +9091,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -9165,6 +9261,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -9331,6 +9429,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -9556,6 +9656,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -9723,6 +9825,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10006,6 +10110,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10173,6 +10279,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10340,6 +10448,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10506,6 +10616,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10673,6 +10785,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -10840,6 +10954,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11007,6 +11123,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11174,6 +11292,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11341,6 +11461,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11508,6 +11630,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11675,6 +11799,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -11841,6 +11967,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12007,6 +12135,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12173,6 +12303,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12339,6 +12471,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12505,6 +12639,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12671,6 +12807,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -12837,6 +12975,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13003,6 +13143,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13169,6 +13311,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13335,6 +13479,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13501,6 +13647,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13667,6 +13815,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -13834,6 +13984,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14001,6 +14153,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14168,6 +14322,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14335,6 +14491,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14559,6 +14717,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14725,6 +14885,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -14891,6 +15053,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15059,6 +15223,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15228,6 +15394,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15395,6 +15563,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15561,6 +15731,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15728,6 +15900,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -15897,6 +16071,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16066,6 +16242,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16290,6 +16468,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16457,6 +16637,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16624,6 +16806,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16791,6 +16975,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -16960,6 +17146,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -17127,6 +17315,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -17293,6 +17483,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -17459,6 +17651,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -17626,6 +17820,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -17792,6 +17988,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18016,6 +18214,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18182,6 +18382,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18349,6 +18551,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18518,6 +18722,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18687,6 +18893,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -18911,6 +19119,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -19193,6 +19403,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -19359,6 +19571,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -19525,6 +19739,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -19692,6 +19908,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -19861,6 +20079,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20029,6 +20249,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20198,6 +20420,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20367,6 +20591,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20533,6 +20759,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20699,6 +20927,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -20866,6 +21096,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21033,6 +21265,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21200,6 +21434,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21367,6 +21603,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21534,6 +21772,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21701,6 +21941,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -21868,6 +22110,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22035,6 +22279,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22202,6 +22448,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22369,6 +22617,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22536,6 +22786,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22703,6 +22955,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -22870,6 +23124,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23039,6 +23295,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23206,6 +23464,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23373,6 +23633,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23540,6 +23802,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23707,6 +23971,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -23874,6 +24140,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24041,6 +24309,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24208,6 +24478,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24375,6 +24647,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24543,6 +24817,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24710,6 +24986,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -24876,6 +25154,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25046,6 +25326,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25216,6 +25498,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25385,6 +25669,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25553,6 +25839,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25719,6 +26007,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -25887,6 +26177,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26053,6 +26345,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26221,6 +26515,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26445,6 +26741,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26611,6 +26909,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26779,6 +27079,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -26949,6 +27251,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27116,6 +27420,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27282,6 +27588,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27449,6 +27757,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27618,6 +27928,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27784,6 +28096,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -27950,6 +28264,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -28119,6 +28435,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -28285,6 +28603,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -28509,6 +28829,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -28675,6 +28997,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -28841,6 +29165,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29007,6 +29333,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29173,6 +29501,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29339,6 +29669,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29505,6 +29837,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29671,6 +30005,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -29837,6 +30173,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30003,6 +30341,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30169,6 +30509,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30335,6 +30677,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30501,6 +30845,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30667,6 +31013,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30833,6 +31181,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -30999,6 +31349,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31165,6 +31517,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31331,6 +31685,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31497,6 +31853,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31663,6 +32021,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31829,6 +32189,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -31995,6 +32357,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -32162,6 +32526,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -32331,6 +32697,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -32498,6 +32866,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -32722,6 +33092,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -32890,6 +33262,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33058,6 +33432,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33226,6 +33602,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33394,6 +33772,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33562,6 +33942,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33730,6 +34112,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -33898,6 +34282,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -34065,6 +34451,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -34235,6 +34623,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -34518,6 +34908,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -34685,6 +35077,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -34852,6 +35246,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35018,6 +35414,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35185,6 +35583,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35352,6 +35752,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35519,6 +35921,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35686,6 +36090,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -35853,6 +36259,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36022,6 +36430,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36188,6 +36598,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36355,6 +36767,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36521,6 +36935,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36687,6 +37103,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -36856,6 +37274,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37022,6 +37442,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37188,6 +37610,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37355,6 +37779,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37522,6 +37948,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37691,6 +38119,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -37857,6 +38287,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38024,6 +38456,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38190,6 +38624,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38415,6 +38851,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38639,6 +39077,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38805,6 +39245,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -38971,6 +39413,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -39137,6 +39581,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -39303,6 +39749,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -39469,6 +39917,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -39635,6 +40085,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -39801,6 +40253,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40026,6 +40480,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40194,6 +40650,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40360,6 +40818,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40584,6 +41044,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40750,6 +41212,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -40918,6 +41382,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41085,6 +41551,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41253,6 +41721,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41419,6 +41889,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41585,6 +42057,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41751,6 +42225,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -41921,6 +42397,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42087,6 +42565,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42253,6 +42733,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42419,6 +42901,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42585,6 +43069,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42751,6 +43237,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -42917,6 +43405,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -43200,6 +43690,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -43367,6 +43859,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -43536,6 +44030,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -43702,6 +44198,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -43869,6 +44367,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44036,6 +44536,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44202,6 +44704,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44368,6 +44872,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44592,6 +45098,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44759,6 +45267,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -44926,6 +45436,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45095,6 +45607,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45261,6 +45775,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45428,6 +45944,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45655,6 +46173,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45821,6 +46341,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -45990,6 +46512,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46159,6 +46683,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46326,6 +46852,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46493,6 +47021,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46660,6 +47190,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46826,6 +47358,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -46992,6 +47526,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47158,6 +47694,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47325,6 +47863,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47492,6 +48032,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47658,6 +48200,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47825,6 +48369,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -47991,6 +48537,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -48276,6 +48824,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -48442,6 +48992,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -48667,6 +49219,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -48834,6 +49388,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -49061,6 +49617,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -49230,6 +49788,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -49397,6 +49957,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -49563,6 +50125,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true
@@ -49729,6 +50293,8 @@
         "edgeContactMinimumRelativeHeightRatio": 0.35,
         "warningRightEdgeGuardPass": true,
         "warningLeftEdgeGuardPass": true,
+        "regulatoryCaudalesRightEdgeGuardPass": true,
+        "regulatoryCaudalesSourceLabelTrimPass": true,
         "neighborContaminationGuardPass": true,
         "warningHorizontalEdgeMaximumRelativeWidthRatio": 0.92,
         "passes": true

@@ -640,13 +640,15 @@ func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: 
     return BoundsRecord(x: 0, y: 0, width: width, height: height)
   }
 
-  let padding = tailTrimMode == "preserve-colorless-lower-attachment" ? 5 : 3
+  let preservesColorlessLowerAttachment = tailTrimMode.hasPrefix("preserve-colorless-lower-attachment")
+  let trimsDetachedSourceLabel = tailTrimMode == "preserve-colorless-lower-attachment-trim-detached-source-label"
+  let padding = preservesColorlessLowerAttachment ? 5 : 3
   let baseAnchor = clampBounds(anchorRect, width: width, height: height)
   let anchor = expandBounds(baseAnchor, by: 6, width: width, height: height)
   let meaningfulComponents = pixelComponents(mask: meaningfulMask, width: width, height: height)
   let meaningfulBounds = selectComponentBounds(meaningfulComponents, anchorRect: anchor)
 
-  if tailTrimMode != "preserve-colorless-lower-attachment" && totalColorful > 30 {
+  if !preservesColorlessLowerAttachment && totalColorful > 30 {
     let colorComponents = pixelComponents(mask: colorMask, width: width, height: height)
     let selectedColorBounds = tailTrimMode == "trim-external-catalog-label"
       ? selectNearestComponentBounds(colorComponents, anchorRect: anchor)
@@ -695,10 +697,10 @@ func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: 
 
   if let meaningfulBounds = meaningfulBounds {
     var paddedBounds = paddedTrimBounds(meaningfulBounds, padding: padding, width: width, height: height)
-    if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+    if (sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label") || trimsDetachedSourceLabel {
       paddedBounds = trimDetachedHorizontalContent(paddedBounds, mask: colorMask, anchorRect: baseAnchor, width: width, height: height)
     }
-    if tailTrimMode == "trim-external-catalog-label" {
+    if tailTrimMode == "trim-external-catalog-label" || trimsDetachedSourceLabel {
       paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
     }
     if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
