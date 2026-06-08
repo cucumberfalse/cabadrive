@@ -312,7 +312,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const minimumRelativeSourceHeightRatio = 0.35;
   const edgeContactMinimumRelativeWidthRatio = 0.25;
   const edgeContactMinimumRelativeHeightRatio = 0.35;
-  const warningEdgeMaximumRelativeWidthRatio = 1.05;
+  const warningHorizontalEdgeMaximumRelativeWidthRatio = 0.92;
   const standardSourceBoundsPass =
     renderRecord.sourceRegionAtBaseScale.width >= 12 &&
     renderRecord.sourceRegionAtBaseScale.height >= 12 &&
@@ -325,10 +325,15 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     renderRecord.sourceRegionAtBaseScale.width / renderRecord.sourceRegionAtBaseScale.height <= 0.45;
   const sourceBoundsPass = standardSourceBoundsPass || slenderSourceBoundsPass;
   const horizontalEdgeContact = edgeContact.left || edgeContact.right;
+  const warningRightEdgeGuardPass = row.sectionId !== "app4-signs-warning" || !edgeContact.right;
+  const warningLeftEdgeGuardPass =
+    row.sectionId !== "app4-signs-warning" ||
+    !edgeContact.left ||
+    relativeSourceWidthRatio <= warningHorizontalEdgeMaximumRelativeWidthRatio;
   const neighborContaminationGuardPass =
     row.sectionId !== "app4-signs-warning" ||
     !horizontalEdgeContact ||
-    relativeSourceWidthRatio <= warningEdgeMaximumRelativeWidthRatio;
+    (warningRightEdgeGuardPass && warningLeftEdgeGuardPass);
   const edgeContactPass =
     edgeContactSides.length === 0 ||
     (relativeSourceWidthRatio >= edgeContactMinimumRelativeWidthRatio &&
@@ -361,8 +366,10 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     edgeContactPass,
     edgeContactMinimumRelativeWidthRatio,
     edgeContactMinimumRelativeHeightRatio,
+    warningRightEdgeGuardPass,
+    warningLeftEdgeGuardPass,
     neighborContaminationGuardPass,
-    warningEdgeMaximumRelativeWidthRatio,
+    warningHorizontalEdgeMaximumRelativeWidthRatio,
     passes
   };
 }
@@ -594,6 +601,12 @@ function validateFinalRows(finalRows) {
     if (row.cropAuditBasis?.sourceBoundsPass !== true) errors.push(`${row.id}: crop audit source bounds must pass`);
     if (row.cropAuditBasis?.edgeContactPass !== true) errors.push(`${row.id}: crop audit edge-contact policy must pass`);
     if (row.cropAuditBasis?.neighborContaminationGuardPass !== true) errors.push(`${row.id}: crop audit neighbor-contamination guard must pass`);
+    if (row.sectionId === "app4-signs-warning" && row.cropAuditBasis?.warningRightEdgeGuardPass !== true) {
+      errors.push(`${row.id}: warning right-edge contamination guard must pass`);
+    }
+    if (row.sectionId === "app4-signs-warning" && row.cropAuditBasis?.warningLeftEdgeGuardPass !== true) {
+      errors.push(`${row.id}: warning left-edge contamination guard must pass`);
+    }
     if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
       errors.push(`${row.id}: crop audit relative source ratios are required`);
     }

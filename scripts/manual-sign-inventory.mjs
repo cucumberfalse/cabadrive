@@ -4355,6 +4355,11 @@ function validateFeature037Inventory(inventory) {
     assertCondition(entry.cropAuditBasis?.sourceBoundsPass === true, `${label}: cropAuditBasis.sourceBoundsPass must be true.`, errors);
     assertCondition(entry.cropAuditBasis?.edgeContactPass === true, `${label}: cropAuditBasis.edgeContactPass must be true.`, errors);
     assertCondition(entry.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: cropAuditBasis.neighborContaminationGuardPass must be true.`, errors);
+    if (entry.sectionId === "app4-signs-warning") {
+      assertCondition(entry.cropAuditBasis?.warningRightEdgeGuardPass === true, `${label}: cropAuditBasis.warningRightEdgeGuardPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.warningLeftEdgeGuardPass === true, `${label}: cropAuditBasis.warningLeftEdgeGuardPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: warning crops must not pass with right-edge contact.`, errors);
+    }
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
     assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);

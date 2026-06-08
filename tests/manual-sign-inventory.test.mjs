@@ -153,6 +153,10 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
     assert.equal(entry.cropAuditBasis?.sourceBoundsPass, true, entry.id);
     assert.equal(entry.cropAuditBasis?.edgeContactPass, true, entry.id);
     assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, entry.id);
+    if (entry.sectionId === "app4-signs-warning") {
+      assert.equal(entry.cropAuditBasis?.warningRightEdgeGuardPass, true, entry.id);
+      assert.equal(entry.cropAuditBasis?.warningLeftEdgeGuardPass, true, entry.id);
+    }
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceWidthRatio, "number", entry.id);
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceHeightRatio, "number", entry.id);
     assert.equal(entry.noUpscaleProof?.passes, true, entry.id);
@@ -235,6 +239,16 @@ test("review-blocked warning contamination regressions have isolated final crops
       id: "app4warning-p188-010-presencia-de-vehiculos-extranos-tractor",
       maxSourceWidth: 80,
       maxSourceHeight: 80
+    },
+    {
+      id: "app4warning-p188-016-paneles-de-prevencion-curva-chevron",
+      maxSourceWidth: 45,
+      maxSourceHeight: 55
+    },
+    {
+      id: "app4warning-p188-024-flecha-direccional-catalog-entry",
+      maxSourceWidth: 60,
+      maxSourceHeight: 40
     }
   ];
 
@@ -243,8 +257,29 @@ test("review-blocked warning contamination regressions have isolated final crops
     assert.equal(entry.cropAuditStatus, "reviewed-final-correct", expectation.id);
     assert.equal(entry.cropAuditBasis?.passes, true, expectation.id);
     assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, expectation.id);
+    assert.notEqual(entry.cropAuditBasis?.edgeContact?.right, true, expectation.id);
     assert.ok(entry.finalSourceRegionAtBaseScale.width <= expectation.maxSourceWidth, expectation.id);
     assert.ok(entry.finalSourceRegionAtBaseScale.height <= expectation.maxSourceHeight, expectation.id);
+  }
+});
+
+test("warning crops cannot pass reviewed audit with right-edge neighboring fragments", () => {
+  const inventory = loadJson(inventoryPath);
+  const warningEntries = inventory.entries.filter(
+    (entry) => signLike(entry) && entry.sectionId === "app4-signs-warning"
+  );
+
+  for (const entry of warningEntries) {
+    assert.equal(entry.cropAuditBasis?.warningRightEdgeGuardPass, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.warningLeftEdgeGuardPass, true, entry.id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, entry.id);
+    assert.notEqual(entry.cropAuditBasis?.edgeContact?.right, true, entry.id);
+    if (entry.cropAuditBasis?.edgeContact?.left) {
+      assert.ok(
+        entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.warningHorizontalEdgeMaximumRelativeWidthRatio,
+        entry.id
+      );
+    }
   }
 });
 
@@ -269,6 +304,7 @@ test("crop generator cannot stamp reviewed-final-correct without audit pass", ()
   assert.match(cropResolutionSource, /edgeContactPass/u);
   assert.match(cropResolutionSource, /sourceBoundsPass/u);
   assert.match(cropResolutionSource, /neighborContaminationGuardPass/u);
+  assert.match(cropResolutionSource, /warningRightEdgeGuardPass/u);
 });
 
 test("category headings are DOM dispositions and excluded from sign quality counts", () => {

@@ -485,6 +485,107 @@ func trimLowerDetachedContent(_ bounds: BoundsRecord, mask: [Bool], width: Int, 
   return clamped
 }
 
+func trimDetachedHorizontalContent(_ bounds: BoundsRecord, mask: [Bool], anchorRect: BoundsRecord, width: Int, height: Int) -> BoundsRecord {
+  let clamped = clampBounds(bounds, width: width, height: height)
+  let minOccupiedPixels = max(2, Int((Double(clamped.height) * 0.08).rounded(.up)))
+  let maximumInternalGap = 8
+  let sidePadding = 2
+  var columnCounts = [Int](repeating: 0, count: clamped.width)
+
+  for localX in 0..<clamped.width {
+    let x = clamped.x + localX
+    var count = 0
+    for y in clamped.y..<(clamped.y + clamped.height) {
+      if mask[y * width + x] {
+        count += 1
+      }
+    }
+    columnCounts[localX] = count
+  }
+
+  struct HorizontalRun {
+    let start: Int
+    let end: Int
+    let area: Int
+    let anchorOverlap: Int
+  }
+
+  let anchorLeft = max(0, anchorRect.x - clamped.x)
+  let anchorRight = min(clamped.width, anchorRect.x + anchorRect.width - clamped.x)
+  var runs: [HorizontalRun] = []
+  var runStart: Int? = nil
+  var runEnd = 0
+  var runArea = 0
+  var gapLength = 0
+
+  func appendRun(start: Int, end: Int, area: Int) {
+    if end < start {
+      return
+    }
+    let overlapLeft = max(start, anchorLeft)
+    let overlapRight = min(end + 1, anchorRight)
+    let anchorOverlap = max(0, overlapRight - overlapLeft)
+    runs.append(HorizontalRun(start: start, end: end, area: area, anchorOverlap: anchorOverlap))
+  }
+
+  for localX in 0..<clamped.width {
+    let occupied = columnCounts[localX] >= minOccupiedPixels
+    if occupied {
+      if runStart == nil {
+        runStart = localX
+        runArea = 0
+      }
+      runEnd = localX
+      runArea += columnCounts[localX]
+      gapLength = 0
+    } else if let start = runStart {
+      gapLength += 1
+      if gapLength > maximumInternalGap {
+        appendRun(start: start, end: runEnd, area: runArea)
+        runStart = nil
+        runArea = 0
+        gapLength = 0
+      }
+    }
+  }
+  if let start = runStart {
+    appendRun(start: start, end: runEnd, area: runArea)
+  }
+
+  guard runs.count > 1 else {
+    return clamped
+  }
+
+  let overlappingRuns = runs.filter { $0.anchorOverlap > 0 }
+  let candidateRuns = overlappingRuns.isEmpty ? runs : overlappingRuns
+  let selected = candidateRuns.sorted { left, right in
+    if left.start != right.start {
+      return left.start < right.start
+    }
+    if left.anchorOverlap != right.anchorOverlap {
+      return left.anchorOverlap > right.anchorOverlap
+    }
+    if left.area != right.area {
+      return left.area > right.area
+    }
+    return (left.end - left.start) > (right.end - right.start)
+  }.first
+  guard let selected else {
+    return clamped
+  }
+
+  let selectedX = clamped.x + max(0, selected.start - sidePadding)
+  let selectedRight = clamped.x + min(clamped.width, selected.end + 1 + sidePadding)
+  if selectedX == clamped.x && selectedRight == clamped.x + clamped.width {
+    return clamped
+  }
+  return clampBounds(
+    BoundsRecord(x: selectedX, y: clamped.y, width: selectedRight - selectedX, height: clamped.height),
+    width: width,
+    height: height
+  )
+}
+
 func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: String, anchorRect: BoundsRecord) throws -> BoundsRecord {
   let width = image.width
   let height = image.height
@@ -555,6 +656,9 @@ func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: 
       let minimumUsefulHeight = max(14, Int((Double(anchor.height) * 0.28).rounded()))
       if colorBounds.width >= minimumUsefulWidth && colorBounds.height >= minimumUsefulHeight {
         var paddedBounds = paddedTrimBounds(colorBounds, padding: padding, width: width, height: height)
+        if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+          paddedBounds = trimDetachedHorizontalContent(paddedBounds, mask: colorMask, anchorRect: baseAnchor, width: width, height: height)
+        }
         if tailTrimMode == "trim-external-catalog-label" {
           paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
         }
@@ -575,6 +679,9 @@ func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: 
       let focusedMeaningfulComponents = meaningfulComponents.filter { boundsIntersect($0.bounds, focusedAnchor) }
       if let focusedMeaningfulBounds = mergeComponentBounds(focusedMeaningfulComponents) {
         var paddedBounds = paddedTrimBounds(focusedMeaningfulBounds, padding: padding, width: width, height: height)
+        if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+          paddedBounds = trimDetachedHorizontalContent(paddedBounds, mask: colorMask, anchorRect: baseAnchor, width: width, height: height)
+        }
         if tailTrimMode == "trim-external-catalog-label" {
           paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
         }
@@ -588,6 +695,9 @@ func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: 
 
   if let meaningfulBounds = meaningfulBounds {
     var paddedBounds = paddedTrimBounds(meaningfulBounds, padding: padding, width: width, height: height)
+    if sectionId == "app4-signs-warning" && tailTrimMode == "trim-external-catalog-label" {
+      paddedBounds = trimDetachedHorizontalContent(paddedBounds, mask: colorMask, anchorRect: baseAnchor, width: width, height: height)
+    }
     if tailTrimMode == "trim-external-catalog-label" {
       paddedBounds = trimLowerDetachedContent(paddedBounds, mask: meaningfulMask, width: width, height: height)
     }
