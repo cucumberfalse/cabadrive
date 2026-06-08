@@ -160,6 +160,57 @@
 - [x] Ensure no review/final-validation claim relies on representative-only evidence.
 - [x] Leave PR review, final Architect validation, final Analyst validation, merge-readiness checks, and merge to Orchestrator and assigned roles.
 
+## Decisions
+
+- Accepted the Feature 037 source-limited official-source constraint by Architect disposition `2026-06-07T21:36:51Z`: all sign-like rows must be described as source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail.
+- Kept the retained CABA manual PDF as the authoritative final visual source for all sign-like rows because source evaluation covered `9` official/public candidates and found `0` exact native/effective `3x` alternatives for the `286` mapped sign-like rows.
+- Replaced the learner-facing `source-image-css-clip` sign path with direct per-entry local PNG assets under `content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/<section-id>/individual-3x/`.
+- Kept all `30` category-heading rows as DOM/non-sign rows and excluded them from sign-quality counts.
+- Registered the Feature 037 archived source-evaluation originals in the governed official-documents manifest as evidence-only records that do not enter the primary-source learner reader or current guide claims.
+- Slimmed `src/data/manual-signs/app4SignEntries.json` to learner/runtime fields while keeping detailed proof in `specs/037-manual-sign-crop-resolution/evidence/final/manual-sign-crop-resolution-rows.json`.
+
+## Dead Ends
+
+- Exact native/effective `3x` detail from currently evaluated official sources was not achievable for any sign-like row; this is resolved by the accepted Architect source-limited disposition rather than by fabricating detail.
+- Early scale-15 PDF coordinate probing and direct `sourceRegion + cropRegion` scaling produced invalid or misleading crop proof and was rejected before runtime use.
+- Retained Anexo L panels and newly evaluated national/GCBA sources did not prove all-row exact CABA visual equivalence or better effective detail; they remain source-evaluation evidence, not replacement runtime imagery.
+- Several crop-audit approaches initially allowed clipped or neighboring-content crops to pass; follow-up implementation assignments strengthened warning and regulatory guards, regenerated affected assets/evidence, and added regression tests for those classes.
+- No dead-end path remains active in the implementation scope.
+
+## Known Issues
+
+- No unresolved known issues remain for Feature 037; the source-limited caveat and evidence-only archive limitation are accepted/disposed process constraints, not pending known issues.
+
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+
+## Verification Evidence
+
+- Coverage evidence: `316` baseline rows preserved, with `283` catalog entries, `3` contextual visuals, and `30` category headings across source pages `185-197` and all six Appendix IV sign sections.
+- Asset evidence: `286` sign-like rows use direct local PNG assets in `individual-3x` folders; `30` category headings use `category-heading-dom`.
+- Resolution/disclosure evidence: final summary records `286/286` output-pixel `3x` rows, `286` source-limited exceptions, `286` `sourceLimitedDisposition: best-official-source-3x-output-pixels`, and `0` true native/effective `3x` passes.
+- Crop-audit evidence: all `286` sign-like rows are `reviewed-final-correct`; review-fix assignments regenerated and tested cited clipped/partial, warning contamination, page-185 parking/no-stopping, page-186 detached-label, and official-source/runtime-proof issues.
+- Visual QA evidence: six contact sheets, six desktop screenshots, six mobile screenshots, and `visual-qa-summary.json` report `0` unloaded images, no-upscale violations, overflow counts, caption gaps, old render-mode counts, render-mode violations, inventory no-upscale violations, and audit gaps.
+- Runtime proof evidence: learner runtime JSON is slimmed to runtime fields and omits proof-only fields such as `cropAuditBasis`, `noUpscaleProof`, `baselineCropNaturalWidth`, and `finalOutputSha256`; detailed proof remains in Feature 037 final evidence.
+- Official-source archive evidence: five Feature 037 source-evaluation archive records are registered in `content/official-documents/manifest.json` with `primarySourceReader: false`, `currentClaim: false`, and `claimUse: feature_evidence_only`.
+- Local verification evidence: latest recorded preflight passed with feature-memory gate, repo baseline check, content validation, manual-sign inventory validation, `452/452` Node tests, build/service worker generation, and `82/82` Playwright e2e tests.
+- Current PR check evidence: PR #203 head `15c8d08920a45a1c7be48f277063e53d0a3cc1e8` has successful `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` checks.
+- Review evidence: Orchestrator resolved the five old review threads separately; latest no-finding Review Agent evidence for the current work remains part of PR #203 state and final validation will refresh after this process-memory repair commit.
+
+## Cycle PR Set
+
+- PR #203: `[codex] Fix Appendix IV manual sign crops`, branch `codex/037-manual-sign-crop-resolution`, current head reference `15c8d08920a45a1c7be48f277063e53d0a3cc1e8`, status open/not draft/mergeable, included in final validation.
+- Cycle scope: PR #203 is the only PR in the Feature 037 cycle PR set.
+
+## Final Validation Evidence
+
+- Limit escalation: none.
+- Architect return count: 0.
+- Existing final validation records in this file are superseded by later product/content/evidence changes and by this process-memory repair. They are retained as historical process evidence only.
+- Fresh final Architect validation and final Analyst validation will be rerun by Orchestrator after this process-memory repair commit.
+- Final validation must preserve the accepted source-limited wording: source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail.
+
 ## Architect Disposition Log
 
 - Architect disposition `2026-06-07T21:16:39Z`, return/disposition count for this source blocker: `1`. Implementation feedback accepted: current CABA PDF scale-15 coordinate probe and retained Anexo L panels do not prove honest all-row `3x` output. Disposition: continue feature `037` with a mandatory official source-evaluation gate, keep exact per-row `3x` as the primary target, allow row-level `source-limited-exception` only under the source-evaluation and effective-dimension contract in `spec.md`, and require a new Architect reroute if exceptions exceed `28` sign-like rows or `20%` of any section.
