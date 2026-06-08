@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "featureId": "037-manual-sign-crop-resolution",
   "generatedBy": "scripts/manual-sign-crop-resolution.mjs",
-  "generatedAt": "2026-06-08T00:55:06.496Z",
+  "generatedAt": "2026-06-08T02:00:00.666Z",
   "baselinePath": "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json",
   "sourceManifestPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/source-manifest.json",
   "rowSourceMappingPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json",

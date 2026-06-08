@@ -599,7 +599,7 @@
         "width": 88,
         "height": 125
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -631,7 +631,7 @@
         "width": 92,
         "height": 125
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -823,7 +823,7 @@
         "width": 96,
         "height": 140
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,

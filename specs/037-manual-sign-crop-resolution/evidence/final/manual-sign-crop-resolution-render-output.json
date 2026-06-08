@@ -1177,13 +1177,13 @@
         "y" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 91,
         "x" : 0,
         "y" : 103
       },
       "cropRectAtRenderScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 91,
         "x" : 1543,
         "y" : 2069
@@ -1199,7 +1199,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "ea1e55fb11f465e0df0ad2bc0521c86d9c750aaef4c30c944f062b46719a3a0d",
+      "outputSha256" : "44ffa749fe30598e1bba58d77862b338e0daf1b37b2068a052e0b423b1281ff1",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 375,
       "requiredMinimumWidth" : 264,
@@ -1211,12 +1211,12 @@
       "sourcePage" : 185,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 91,
         "x" : 1543,
         "y" : 2069
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 125,
@@ -1241,13 +1241,13 @@
         "y" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 69,
         "x" : 0,
         "y" : 103
       },
       "cropRectAtRenderScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 69,
         "x" : 1630,
         "y" : 2069
@@ -1263,7 +1263,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "c0d6ddc6f9587857771dff507454e51092c72ff81fee6fe14a6cc336ba1f1148",
+      "outputSha256" : "dda0768312773accfd83e6e90ce574c52aa725790ec1e4ab11014b301d193670",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 375,
       "requiredMinimumWidth" : 276,
@@ -1275,12 +1275,12 @@
       "sourcePage" : 185,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 164,
+        "height" : 73,
         "width" : 69,
         "x" : 1630,
         "y" : 2069
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 88,
@@ -1625,15 +1625,15 @@
         "y" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 113,
-        "width" : 102,
-        "x" : 22,
+        "height" : 79,
+        "width" : 49,
+        "x" : 35,
         "y" : 89
       },
       "cropRectAtRenderScale" : {
-        "height" : 113,
-        "width" : 102,
-        "x" : 1280,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1293,
         "y" : 2287
       },
       "entryKind" : "catalog-entry",
@@ -1647,7 +1647,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "6feb07832cc8f2e70cccb4792763557353459da5d33ea8b628579712083af0d0",
+      "outputSha256" : "cc94800e64e074c7c4c06afe35b99eb4c78dd8efb7b6211481c88db268ca9be5",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 420,
       "requiredMinimumWidth" : 288,
@@ -1659,12 +1659,12 @@
       "sourcePage" : 185,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 113,
-        "width" : 102,
-        "x" : 1280,
+        "height" : 79,
+        "width" : 49,
+        "x" : 1293,
         "y" : 2287
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 96,

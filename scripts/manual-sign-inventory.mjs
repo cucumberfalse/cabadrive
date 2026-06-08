@@ -4366,6 +4366,30 @@ function validateFeature037Inventory(inventory) {
       assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: regulatory caudales crops must not pass with right-edge contact.`, errors);
       assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory caudales crop must use detached-label trim mode.`, errors);
     }
+    const regulatoryPage185ParkingText = `${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase();
+    const regulatoryPage185ParkingRow =
+      entry.sectionId === "app4-signs-regulatory" &&
+      entry.sourcePage === 185 &&
+      /no-estacionar|no estacionar|detenerse/.test(regulatoryPage185ParkingText);
+    const regulatoryPage185ParkingAttachmentRow =
+      regulatoryPage185ParkingRow && /acarreo|zona-de-caudales|ciclovia/.test(regulatoryPage185ParkingText);
+    if (regulatoryPage185ParkingRow) {
+      assertCondition(entry.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: regulatory parking neighbor-contamination guard must pass.`, errors);
+      assertCondition(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true for page-185 parking rows.`, errors);
+      assertCondition(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true for page-185 parking rows.`, errors);
+    }
+    if (regulatoryPage185ParkingAttachmentRow) {
+      assertCondition(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true.`, errors);
+      if (entry.cropAuditBasis?.edgeContact?.right === true) {
+        assertCondition(
+          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
+          `${label}: regulatory parking right-edge contact must stay within the clean attachment width guard.`,
+          errors
+        );
+      }
+      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory parking attachment crop must use detached-label trim mode.`, errors);
+    }
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
     assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
     assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);

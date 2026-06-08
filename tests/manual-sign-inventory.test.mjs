@@ -161,6 +161,24 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
       assert.equal(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass, true, entry.id);
       assert.equal(entry.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass, true, entry.id);
     }
+    const page185RegulatoryParkingRow =
+      entry.sectionId === "app4-signs-regulatory" &&
+      entry.sourcePage === 185 &&
+      /no-estacionar|detenerse/u.test(entry.id);
+    const page185RegulatoryParkingAttachmentRow = page185RegulatoryParkingRow && /acarreo|zona-de-caudales|ciclovia/u.test(entry.id);
+    if (page185RegulatoryParkingRow) {
+      assert.equal(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass, true, entry.id);
+      assert.equal(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass, true, entry.id);
+      assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, entry.id);
+    }
+    if (page185RegulatoryParkingAttachmentRow) {
+      if (entry.cropAuditBasis?.edgeContact?.right) {
+        assert.ok(
+          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
+          entry.id
+        );
+      }
+    }
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceWidthRatio, "number", entry.id);
     assert.equal(typeof entry.cropAuditBasis?.relativeSourceHeightRatio, "number", entry.id);
     assert.equal(entry.noUpscaleProof?.passes, true, entry.id);
@@ -316,6 +334,59 @@ test("regulatory Zona de Caudales crops trim neighboring right-edge labels and s
   }
 });
 
+test("page-185 regulatory parking crops use the generalized right-edge and source-label guard", () => {
+  const inventory = loadJson(inventoryPath);
+  const page185ParkingExpectations = [
+    "app4regulatory-p185-020-no-estacionar-catalog-entry",
+    "app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-023-no-estacionar-entre-discos",
+    "app4regulatory-p185-024-no-estacionar-entre-aceras",
+    "app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
+    "app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
+    "app4regulatory-p185-027-no-estacionar-ni-detenerse-catalog-entry",
+    "app4regulatory-p185-028-no-estacionar-ni-detenerse-sobre-la-ciclovia"
+  ];
+  const attachmentExpectations = new Set([
+    "app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
+    "app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
+    "app4regulatory-p185-028-no-estacionar-ni-detenerse-sobre-la-ciclovia"
+  ]);
+
+  const regulatoryParkingRows = inventory.entries.filter(
+    (entry) => signLike(entry) && entry.sectionId === "app4-signs-regulatory" && entry.sourcePage === 185 && /no-estacionar|detenerse/u.test(entry.id)
+  );
+  assert.deepEqual(regulatoryParkingRows.map((entry) => entry.id), page185ParkingExpectations);
+
+  for (const id of page185ParkingExpectations) {
+    const entry = entryById(inventory.entries, id);
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", id);
+    assert.equal(entry.cropAuditBasis?.passes, true, id);
+    assert.equal(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass, true, id);
+    assert.equal(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass, true, id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, id);
+    if (attachmentExpectations.has(id)) {
+      assert.equal(entry.finalTailTrimMode, "preserve-colorless-lower-attachment-trim-detached-source-label", id);
+    }
+    if (/zona-de-caudales|ciclovia/u.test(id)) {
+      assert.notEqual(entry.cropAuditBasis?.edgeContact?.right, true, id);
+      assert.ok(entry.finalSourceRegionAtBaseScale.width <= 82, id);
+      assert.ok(entry.finalSourceRegionAtBaseScale.height <= 92, id);
+    }
+    if (entry.cropAuditBasis?.edgeContact?.right) {
+      assert.ok(
+        entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
+        id
+      );
+    }
+    if (attachmentExpectations.has(id)) {
+      assert.ok(entry.finalSourceRegionAtBaseScale.height <= Math.ceil(entry.baselineCropNaturalHeight * 0.72), id);
+    }
+  }
+});
+
 test("external source captions are trimmed from informational pedestrian crossing crops", () => {
   const inventory = loadJson(inventoryPath);
   for (const id of [
@@ -339,6 +410,7 @@ test("crop generator cannot stamp reviewed-final-correct without audit pass", ()
   assert.match(cropResolutionSource, /neighborContaminationGuardPass/u);
   assert.match(cropResolutionSource, /warningRightEdgeGuardPass/u);
   assert.match(cropResolutionSource, /regulatoryCaudalesRightEdgeGuardPass/u);
+  assert.match(cropResolutionSource, /regulatoryParkingRightEdgeGuardPass/u);
 });
 
 test("category headings are DOM dispositions and excluded from sign quality counts", () => {
@@ -360,9 +432,10 @@ test("known screenshot problem rows have corrected source bounds and no old CSS 
   assert.ok(animalCart);
   assert.ok(noParkingPlate);
   assert.equal(animalCart.finalTailTrimMode, "trim-external-catalog-label");
-  assert.equal(noParkingPlate.finalTailTrimMode, "preserve-colorless-lower-attachment");
+  assert.equal(noParkingPlate.finalTailTrimMode, "preserve-colorless-lower-attachment-trim-detached-source-label");
   assert.ok(animalCart.finalSourceRegionAtBaseScale.width < animalCart.baselineCropNaturalWidth, animalCart.id);
-  assert.ok(noParkingPlate.finalSourceRegionAtBaseScale.height >= noParkingPlate.baselineCropNaturalHeight, noParkingPlate.id);
+  assert.ok(noParkingPlate.finalSourceRegionAtBaseScale.height <= Math.ceil(noParkingPlate.baselineCropNaturalHeight * 0.72), noParkingPlate.id);
+  assert.equal(noParkingPlate.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass, true, noParkingPlate.id);
   assert.equal(animalCart.cropAuditBasis?.passes, true, animalCart.id);
   assert.equal(noParkingPlate.cropAuditBasis?.passes, true, noParkingPlate.id);
   assert.equal(animalCart.renderMode, "individual-source-crop-3x");

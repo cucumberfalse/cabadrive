@@ -86,12 +86,21 @@ function columnGapPx(row) {
   return neighborGapPx;
 }
 
+function regulatoryParkingAttachmentRow(row) {
+  const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
+  return (
+    row.sectionId === "app4-signs-regulatory" &&
+    (row.baselineCropNaturalHeight >= 110 || /placa|zona-de-caudales|ciclovia/.test(searchable)) &&
+    /no-estacionar|no estacionar|detenerse|ciclovia|zona-de-caudales|caudales|acarreo/.test(searchable)
+  );
+}
+
 function tailTrimMode(row) {
   if (row.sectionId === "app4-signs-warning") {
     return "trim-external-catalog-label";
   }
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
-  if (row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(searchable)) {
+  if (regulatoryParkingAttachmentRow(row)) {
     return "preserve-colorless-lower-attachment-trim-detached-source-label";
   }
   if (
@@ -298,6 +307,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
   const regulatoryCaudalesParkingRow =
     row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(searchable);
+  const regulatoryParkingAttachment = regulatoryParkingAttachmentRow(row);
   const candidate = renderRecord.candidateRegionAtBaseScale;
   const trim = renderRecord.contentTrimBoundsAtCandidateScale;
   const edgeContact = {
@@ -319,6 +329,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const edgeContactMinimumRelativeWidthRatio = 0.25;
   const edgeContactMinimumRelativeHeightRatio = 0.35;
   const warningHorizontalEdgeMaximumRelativeWidthRatio = 0.92;
+  const regulatoryParkingRightEdgeMaximumRelativeWidthRatio = 1.04;
   const standardSourceBoundsPass =
     renderRecord.sourceRegionAtBaseScale.width >= 12 &&
     renderRecord.sourceRegionAtBaseScale.height >= 12 &&
@@ -339,12 +350,18 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const regulatoryCaudalesRightEdgeGuardPass = !regulatoryCaudalesParkingRow || !edgeContact.right;
   const regulatoryCaudalesSourceLabelTrimPass =
     !regulatoryCaudalesParkingRow || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
+  const regulatoryParkingRightEdgeGuardPass =
+    !regulatoryParkingAttachment ||
+    !edgeContact.right ||
+    relativeSourceWidthRatio <= regulatoryParkingRightEdgeMaximumRelativeWidthRatio;
+  const regulatoryParkingSourceLabelTrimPass =
+    !regulatoryParkingAttachment || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
   const neighborContaminationGuardPass =
     (row.sectionId !== "app4-signs-warning" ||
       !horizontalEdgeContact ||
       (warningRightEdgeGuardPass && warningLeftEdgeGuardPass)) &&
-    regulatoryCaudalesRightEdgeGuardPass &&
-    regulatoryCaudalesSourceLabelTrimPass;
+    regulatoryParkingRightEdgeGuardPass &&
+    regulatoryParkingSourceLabelTrimPass;
   const edgeContactPass =
     edgeContactSides.length === 0 ||
     (relativeSourceWidthRatio >= edgeContactMinimumRelativeWidthRatio &&
@@ -381,6 +398,9 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     warningLeftEdgeGuardPass,
     regulatoryCaudalesRightEdgeGuardPass,
     regulatoryCaudalesSourceLabelTrimPass,
+    regulatoryParkingRightEdgeGuardPass,
+    regulatoryParkingSourceLabelTrimPass,
+    regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
     neighborContaminationGuardPass,
     warningHorizontalEdgeMaximumRelativeWidthRatio,
     passes
@@ -626,6 +646,14 @@ function validateFinalRows(finalRows) {
       }
       if (row.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass !== true) {
         errors.push(`${row.id}: regulatory caudales detached source-label trim guard must pass`);
+      }
+    }
+    if (regulatoryParkingAttachmentRow(row)) {
+      if (row.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass !== true) {
+        errors.push(`${row.id}: regulatory parking right-edge contamination guard must pass`);
+      }
+      if (row.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass !== true) {
+        errors.push(`${row.id}: regulatory parking detached source-label trim guard must pass`);
       }
     }
     if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {
