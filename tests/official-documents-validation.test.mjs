@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { test } from "node:test";
 import { validateOfficialDocumentsManifest } from "../scripts/official-documents-validation.mjs";
 
@@ -63,9 +63,10 @@ function validate({ manifestData = manifest(), fileMetadata = files(), sourceTra
 
 function repositoryFileMetadata(relativePath) {
   const exists = existsSync(relativePath);
+  const isFile = exists ? statSync(relativePath).isFile() : false;
   return {
     exists,
-    ...(exists ? { sha256: createHash("sha256").update(readFileSync(relativePath)).digest("hex") } : {})
+    ...(isFile ? { sha256: createHash("sha256").update(readFileSync(relativePath)).digest("hex") } : {})
   };
 }
 

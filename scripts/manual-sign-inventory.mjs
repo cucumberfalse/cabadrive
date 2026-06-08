@@ -4165,6 +4165,92 @@ function isRegulatoryDetachedLabelAttachmentEntry(entry) {
   );
 }
 
+const feature037RuntimeProofOnlyFields = [
+  "sourceSheetLabelEvidence",
+  "sourceRef",
+  "sourceAsset",
+  "sourceRegion",
+  "cropRegion",
+  "displayRegion",
+  "cropNaturalWidth",
+  "cropNaturalHeight",
+  "hash",
+  "extractionMethod",
+  "preservationNote",
+  "baselineSourceAsset",
+  "baselineSourceRegion",
+  "baselineCropRegion",
+  "baselineCropNaturalWidth",
+  "baselineCropNaturalHeight",
+  "baselineRenderMode",
+  "baselineAssetHash",
+  "baselineExtractionMethod",
+  "disposition",
+  "sourceEvaluationId",
+  "chosenSourceId",
+  "finalSourceDocument",
+  "finalSourceTrustTier",
+  "finalSourcePageOrItem",
+  "finalCandidateRegionAtBaseScale",
+  "finalContentTrimBoundsAtCandidateScale",
+  "finalTailTrimMode",
+  "finalOutputAssetPath",
+  "finalOutputSha256",
+  "finalOutputComposition",
+  "requiredMinimumWidth",
+  "requiredMinimumHeight",
+  "outputPixelScaleRatioWidth",
+  "outputPixelScaleRatioHeight",
+  "outputPixelTargetRatioWidth",
+  "outputPixelTargetRatioHeight",
+  "effectiveFinalNaturalWidth",
+  "effectiveFinalNaturalHeight",
+  "sourceNativeWidth",
+  "sourceNativeHeight",
+  "qualityScaleRatioWidth",
+  "qualityScaleRatioHeight",
+  "sourceLimitedExceptionId",
+  "cropAuditBasis",
+  "cropAuditNote",
+  "runtimeDisplayMaxWidth",
+  "runtimeDisplayMaxHeight",
+  "noUpscaleProof",
+  "protectedPixelPreservation"
+];
+
+function compactFeature037RuntimeEntry(entry, finalRow) {
+  const base = {
+    id: entry.id,
+    sectionId: entry.sectionId,
+    sourcePage: entry.sourcePage,
+    sourceOrder: entry.sourceOrder,
+    sourceOrderWithinPage: entry.sourceOrderWithinPage,
+    entryKind: entry.entryKind,
+    spanishLabel: entry.spanishLabel,
+    ...(entry.variant ? { variant: entry.variant } : {}),
+    russianTranslation: entry.russianTranslation,
+    auditStatus: finalRow.cropAuditStatus,
+    assetPath: isSignLikeEntry(entry) ? finalRow.finalOutputAssetPath : null,
+    naturalWidth: isSignLikeEntry(entry) ? finalRow.finalOutputNaturalWidth : null,
+    naturalHeight: isSignLikeEntry(entry) ? finalRow.finalOutputNaturalHeight : null,
+    renderMode: isSignLikeEntry(entry) ? finalRow.renderMode : "category-heading-dom",
+    noUpscale: true,
+    threeXStatus: finalRow.threeXStatus,
+    sourceLimitedDisposition: finalRow.sourceLimitedDisposition ?? null,
+    sourceLimitedReason: finalRow.sourceLimitedReason,
+    cropAuditStatus: finalRow.cropAuditStatus,
+    finalOutputNaturalWidth: isSignLikeEntry(entry) ? finalRow.finalOutputNaturalWidth : null,
+    finalOutputNaturalHeight: isSignLikeEntry(entry) ? finalRow.finalOutputNaturalHeight : null
+  };
+
+  if (!isSignLikeEntry(entry)) return base;
+
+  return {
+    ...base,
+    finalSourceRegionAtBaseScale: finalRow.finalSourceRegionAtBaseScale
+  };
+}
+
 function applyFeature037Inventory(baseInventory) {
   if (!existsSync(repoPath(feature037FinalRowsPath))) {
     return baseInventory;
@@ -4175,98 +4261,7 @@ function applyFeature037Inventory(baseInventory) {
   const entries = baseInventory.entries.map((entry) => {
     const finalRow = finalRowsById.get(entry.id);
     if (!finalRow) throw new Error(`${entry.id}: missing feature 037 final row evidence`);
-    const baselineFields = {
-      baselineSourceAsset: finalRow.baselineSourceAsset,
-      baselineSourceRegion: finalRow.baselineSourceRegion,
-      baselineCropRegion: finalRow.baselineCropRegion,
-      baselineCropNaturalWidth: finalRow.baselineCropNaturalWidth,
-      baselineCropNaturalHeight: finalRow.baselineCropNaturalHeight,
-      baselineRenderMode: finalRow.baselineRenderMode,
-      baselineAssetHash: finalRow.baselineAssetHash,
-      baselineExtractionMethod: finalRow.baselineExtractionMethod
-    };
-
-    if (!isSignLikeEntry(entry)) {
-      return {
-        ...entry,
-        ...baselineFields,
-        auditStatus: "category-heading-dom",
-        assetPath: null,
-        naturalWidth: null,
-        naturalHeight: null,
-        cropRegion: null,
-        displayRegion: null,
-        cropNaturalWidth: null,
-        cropNaturalHeight: null,
-        renderMode: "category-heading-dom",
-        hash: null,
-        extractionMethod: finalRow.extractionMethod,
-        noUpscale: true,
-        preservationNote: finalRow.protectedPixelPreservation,
-        disposition: finalRow.disposition,
-        threeXStatus: finalRow.threeXStatus,
-        cropAuditStatus: finalRow.cropAuditStatus,
-        noUpscaleProof: finalRow.noUpscaleProof,
-        protectedPixelPreservation: finalRow.protectedPixelPreservation
-      };
-    }
-
-    return {
-      ...entry,
-      ...baselineFields,
-      auditStatus: finalRow.cropAuditStatus,
-      sourceAsset: finalRow.finalSourceDocument,
-      assetPath: finalRow.finalOutputAssetPath,
-      naturalWidth: finalRow.finalOutputNaturalWidth,
-      naturalHeight: finalRow.finalOutputNaturalHeight,
-      cropRegion: { x: 0, y: 0, width: finalRow.finalOutputNaturalWidth, height: finalRow.finalOutputNaturalHeight },
-      displayRegion: { x: 0, y: 0, width: finalRow.finalOutputNaturalWidth, height: finalRow.finalOutputNaturalHeight },
-      cropNaturalWidth: finalRow.finalOutputNaturalWidth,
-      cropNaturalHeight: finalRow.finalOutputNaturalHeight,
-      renderMode: finalRow.renderMode,
-      hash: finalRow.finalOutputSha256,
-      extractionMethod: finalRow.extractionMethod,
-      noUpscale: true,
-      preservationNote: finalRow.protectedPixelPreservation,
-      disposition: finalRow.disposition,
-      sourceEvaluationId: finalRow.sourceEvaluationId,
-      chosenSourceId: finalRow.chosenSourceId,
-      finalSourceDocument: finalRow.finalSourceDocument,
-      finalSourceTrustTier: finalRow.finalSourceTrustTier,
-      finalSourcePageOrItem: finalRow.finalSourcePageOrItem,
-      finalCandidateRegionAtBaseScale: finalRow.finalCandidateRegionAtBaseScale,
-      finalSourceRegionAtBaseScale: finalRow.finalSourceRegionAtBaseScale,
-      finalContentTrimBoundsAtCandidateScale: finalRow.finalContentTrimBoundsAtCandidateScale,
-      finalTailTrimMode: finalRow.finalTailTrimMode,
-      finalOutputAssetPath: finalRow.finalOutputAssetPath,
-      finalOutputNaturalWidth: finalRow.finalOutputNaturalWidth,
-      finalOutputNaturalHeight: finalRow.finalOutputNaturalHeight,
-      finalOutputSha256: finalRow.finalOutputSha256,
-      finalOutputComposition: finalRow.finalOutputComposition,
-      requiredMinimumWidth: finalRow.requiredMinimumWidth,
-      requiredMinimumHeight: finalRow.requiredMinimumHeight,
-      outputPixelScaleRatioWidth: finalRow.outputPixelScaleRatioWidth,
-      outputPixelScaleRatioHeight: finalRow.outputPixelScaleRatioHeight,
-      outputPixelTargetRatioWidth: finalRow.outputPixelTargetRatioWidth,
-      outputPixelTargetRatioHeight: finalRow.outputPixelTargetRatioHeight,
-      effectiveFinalNaturalWidth: finalRow.effectiveFinalNaturalWidth,
-      effectiveFinalNaturalHeight: finalRow.effectiveFinalNaturalHeight,
-      sourceNativeWidth: finalRow.sourceNativeWidth,
-      sourceNativeHeight: finalRow.sourceNativeHeight,
-      qualityScaleRatioWidth: finalRow.qualityScaleRatioWidth,
-      qualityScaleRatioHeight: finalRow.qualityScaleRatioHeight,
-      threeXStatus: finalRow.threeXStatus,
-      sourceLimitedExceptionId: finalRow.sourceLimitedExceptionId,
-      sourceLimitedDisposition: finalRow.sourceLimitedDisposition,
-      sourceLimitedReason: finalRow.sourceLimitedReason,
-      cropAuditStatus: finalRow.cropAuditStatus,
-      cropAuditBasis: finalRow.cropAuditBasis,
-      cropAuditNote: finalRow.cropAuditNote,
-      runtimeDisplayMaxWidth: finalRow.runtimeDisplayMaxWidth,
-      runtimeDisplayMaxHeight: finalRow.runtimeDisplayMaxHeight,
-      noUpscaleProof: finalRow.noUpscaleProof,
-      protectedPixelPreservation: finalRow.protectedPixelPreservation
-    };
+    return compactFeature037RuntimeEntry(entry, finalRow);
   });
 
   return {
@@ -4285,7 +4280,8 @@ function applyFeature037Inventory(baseInventory) {
       sourceManifestPath: feature037SourceManifestPath,
       rowSourceMappingPath: feature037RowSourceMappingPath,
       sourceLimitedDisposition: "best-official-source-3x-output-pixels",
-      architectDispositionAcceptedAt: "2026-06-07T21:36:51Z"
+      architectDispositionAcceptedAt: "2026-06-07T21:36:51Z",
+      proofStorage: "Detailed crop audit basis, no-upscale proof, baseline geometry, source hashes, and source-evaluation proof fields are retained in finalRowsPath instead of the learner runtime JSON."
     },
     summary: {
       ...baseInventory.summary,
@@ -4342,41 +4338,45 @@ function validateFeature037Inventory(inventory) {
     assertCondition(typeof entry.spanishLabel === "string" && entry.spanishLabel.trim() !== "", `${label}: spanishLabel is required.`, errors);
     assertCondition(typeof entry.russianTranslation === "string" && entry.russianTranslation.trim() !== "", `${label}: russianTranslation is required.`, errors);
     assertCondition(entry.noUpscale === true, `${label}: noUpscale must be true.`, errors);
-    assertCondition(entry.baselineRenderMode === "source-image-css-clip", `${label}: baselineRenderMode must record source-image-css-clip.`, errors);
+    assertCondition(finalRow?.baselineRenderMode === "source-image-css-clip", `${label}: final evidence baselineRenderMode must record source-image-css-clip.`, errors);
+    for (const field of feature037RuntimeProofOnlyFields) {
+      assertCondition(!Object.hasOwn(entry, field), `${label}: ${field} must remain in feature 037 evidence, not runtime JSON.`, errors);
+    }
 
     if (!isSignLikeEntry(entry)) {
       assertCondition(entry.renderMode === "category-heading-dom", `${label}: category headings must render as DOM.`, errors);
       assertCondition(entry.assetPath === null, `${label}: category headings must not require final raster assets.`, errors);
       assertCondition(entry.threeXStatus === "not-applicable-category-heading", `${label}: heading threeXStatus must be not-applicable-category-heading.`, errors);
       assertCondition(entry.cropAuditStatus === "category-heading-dom", `${label}: heading cropAuditStatus must be category-heading-dom.`, errors);
+      assertCondition(entry.sourceLimitedDisposition === null, `${label}: heading sourceLimitedDisposition must be null.`, errors);
       return;
     }
 
     assertCondition(entry.renderMode === "individual-source-crop-3x", `${label}: sign-like renderMode must be individual-source-crop-3x.`, errors);
     assertCondition(entry.renderMode !== renderMode, `${label}: sign-like entry must not use old ${renderMode}.`, errors);
     assertCondition(typeof entry.assetPath === "string" && entry.assetPath.includes("/individual-3x/"), `${label}: final individual asset path is required.`, errors);
-    assertCondition(typeof entry.finalOutputAssetPath === "string" && entry.finalOutputAssetPath === entry.assetPath, `${label}: finalOutputAssetPath must match assetPath.`, errors);
+    assertCondition(finalRow?.finalOutputAssetPath === entry.assetPath, `${label}: runtime assetPath must match final evidence finalOutputAssetPath.`, errors);
     assertCondition(entry.threeXStatus === "source-limited-exception", `${label}: sign-like row must remain source-limited-exception.`, errors);
     assertCondition(entry.sourceLimitedDisposition === "best-official-source-3x-output-pixels", `${label}: sourceLimitedDisposition is required.`, errors);
     assertCondition(entry.cropAuditStatus === "reviewed-final-correct", `${label}: cropAuditStatus must be reviewed-final-correct.`, errors);
-    assertCondition(entry.cropAuditBasis?.passes === true, `${label}: cropAuditBasis.passes must be true.`, errors);
-    assertCondition(entry.cropAuditBasis?.outputPixelTargetPass === true, `${label}: cropAuditBasis.outputPixelTargetPass must be true.`, errors);
-    assertCondition(entry.cropAuditBasis?.sourceBoundsPass === true, `${label}: cropAuditBasis.sourceBoundsPass must be true.`, errors);
-    assertCondition(entry.cropAuditBasis?.edgeContactPass === true, `${label}: cropAuditBasis.edgeContactPass must be true.`, errors);
-    assertCondition(entry.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: cropAuditBasis.neighborContaminationGuardPass must be true.`, errors);
+    assertCondition(finalRow?.cropAuditBasis?.passes === true, `${label}: evidence cropAuditBasis.passes must be true.`, errors);
+    assertCondition(finalRow?.cropAuditBasis?.outputPixelTargetPass === true, `${label}: evidence cropAuditBasis.outputPixelTargetPass must be true.`, errors);
+    assertCondition(finalRow?.cropAuditBasis?.sourceBoundsPass === true, `${label}: evidence cropAuditBasis.sourceBoundsPass must be true.`, errors);
+    assertCondition(finalRow?.cropAuditBasis?.edgeContactPass === true, `${label}: evidence cropAuditBasis.edgeContactPass must be true.`, errors);
+    assertCondition(finalRow?.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: evidence cropAuditBasis.neighborContaminationGuardPass must be true.`, errors);
     if (entry.sectionId === "app4-signs-warning") {
-      assertCondition(entry.cropAuditBasis?.warningRightEdgeGuardPass === true, `${label}: cropAuditBasis.warningRightEdgeGuardPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.warningLeftEdgeGuardPass === true, `${label}: cropAuditBasis.warningLeftEdgeGuardPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: warning crops must not pass with right-edge contact.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.warningRightEdgeGuardPass === true, `${label}: evidence cropAuditBasis.warningRightEdgeGuardPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.warningLeftEdgeGuardPass === true, `${label}: evidence cropAuditBasis.warningLeftEdgeGuardPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.edgeContact?.right !== true, `${label}: warning crops must not pass with right-edge contact.`, errors);
     }
-    if (isRegulatoryDetachedLabelAttachmentEntry(entry)) {
-      assertCondition(entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryDetachedLabelRightEdgeGuardPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryDetachedLabelSourceLabelTrimPass must be true.`, errors);
-      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory attachment crop must use detached-label trim mode.`, errors);
-      if (entry.cropAuditBasis?.edgeContact?.right === true) {
+    if (isRegulatoryDetachedLabelAttachmentEntry(finalRow)) {
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass === true, `${label}: evidence cropAuditBasis.regulatoryDetachedLabelRightEdgeGuardPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass === true, `${label}: evidence cropAuditBasis.regulatoryDetachedLabelSourceLabelTrimPass must be true.`, errors);
+      assertCondition(finalRow?.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory attachment crop must use detached-label trim mode.`, errors);
+      if (finalRow?.cropAuditBasis?.edgeContact?.right === true) {
         const withinWidthGuard =
-          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio;
-        const withinPixelGuard = entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgePixelGuardPass === true;
+          finalRow.cropAuditBasis.relativeSourceWidthRatio <= finalRow.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio;
+        const withinPixelGuard = finalRow.cropAuditBasis?.regulatoryDetachedLabelRightEdgePixelGuardPass === true;
         assertCondition(
           withinWidthGuard || withinPixelGuard,
           `${label}: regulatory attachment right-edge contact must stay within the clean attachment width or edge-pixel guard.`,
@@ -4384,16 +4384,16 @@ function validateFeature037Inventory(inventory) {
         );
       }
       assertCondition(
-        entry.cropAuditBasis.relativeSourceHeightRatio <= entry.cropAuditBasis.regulatoryDetachedLabelMaximumRelativeHeightRatio,
+        finalRow.cropAuditBasis.relativeSourceHeightRatio <= finalRow.cropAuditBasis.regulatoryDetachedLabelMaximumRelativeHeightRatio,
         `${label}: regulatory attachment crop must trim detached source captions.`,
         errors
       );
     }
     if (entry.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(`${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase())) {
-      assertCondition(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryCaudalesRightEdgeGuardPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryCaudalesSourceLabelTrimPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: regulatory caudales crops must not pass with right-edge contact.`, errors);
-      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory caudales crop must use detached-label trim mode.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass === true, `${label}: evidence cropAuditBasis.regulatoryCaudalesRightEdgeGuardPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryCaudalesSourceLabelTrimPass === true, `${label}: evidence cropAuditBasis.regulatoryCaudalesSourceLabelTrimPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.edgeContact?.right !== true, `${label}: regulatory caudales crops must not pass with right-edge contact.`, errors);
+      assertCondition(finalRow?.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory caudales crop must use detached-label trim mode.`, errors);
     }
     const regulatoryPage185ParkingText = `${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase();
     const regulatoryPage185ParkingRow =
@@ -4403,34 +4403,34 @@ function validateFeature037Inventory(inventory) {
     const regulatoryPage185ParkingAttachmentRow =
       regulatoryPage185ParkingRow && /acarreo|zona-de-caudales|ciclovia/.test(regulatoryPage185ParkingText);
     if (regulatoryPage185ParkingRow) {
-      assertCondition(entry.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: regulatory parking neighbor-contamination guard must pass.`, errors);
-      assertCondition(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true for page-185 parking rows.`, errors);
-      assertCondition(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true for page-185 parking rows.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.neighborContaminationGuardPass === true, `${label}: regulatory parking neighbor-contamination guard must pass.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: evidence cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true for page-185 parking rows.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: evidence cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true for page-185 parking rows.`, errors);
     }
     if (regulatoryPage185ParkingAttachmentRow) {
-      assertCondition(entry.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true.`, errors);
-      assertCondition(entry.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true.`, errors);
-      if (entry.cropAuditBasis?.edgeContact?.right === true) {
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryParkingRightEdgeGuardPass === true, `${label}: evidence cropAuditBasis.regulatoryParkingRightEdgeGuardPass must be true.`, errors);
+      assertCondition(finalRow?.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass === true, `${label}: evidence cropAuditBasis.regulatoryParkingSourceLabelTrimPass must be true.`, errors);
+      if (finalRow?.cropAuditBasis?.edgeContact?.right === true) {
         assertCondition(
-          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
+          finalRow.cropAuditBasis.relativeSourceWidthRatio <= finalRow.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
           `${label}: regulatory parking right-edge contact must stay within the clean attachment width guard.`,
           errors
         );
       }
-      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory parking attachment crop must use detached-label trim mode.`, errors);
+      assertCondition(finalRow?.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory parking attachment crop must use detached-label trim mode.`, errors);
     }
-    assertCondition(typeof entry.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
-    assertCondition(typeof entry.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
-    assertCondition(entry.noUpscaleProof?.passes === true, `${label}: noUpscaleProof must pass.`, errors);
-    assertCondition(entry.finalOutputComposition?.includes("aspect-fit"), `${label}: finalOutputComposition must record aspect-fit output.`, errors);
-    assertCondition(entry.protectedPixelPreservation?.includes("without stretching"), `${label}: protectedPixelPreservation must record no stretching.`, errors);
-    assertCondition(entry.outputPixelScaleRatioWidth >= 3, `${label}: outputPixelScaleRatioWidth must be at least 3.`, errors);
-    assertCondition(entry.outputPixelScaleRatioHeight >= 3, `${label}: outputPixelScaleRatioHeight must be at least 3.`, errors);
-    assertCondition(entry.qualityScaleRatioWidth < 1, `${label}: qualityScaleRatioWidth must disclose source limitation.`, errors);
-    assertCondition(entry.qualityScaleRatioHeight < 1, `${label}: qualityScaleRatioHeight must disclose source limitation.`, errors);
+    assertCondition(typeof finalRow?.cropAuditBasis?.relativeSourceWidthRatio === "number", `${label}: evidence cropAuditBasis.relativeSourceWidthRatio is required.`, errors);
+    assertCondition(typeof finalRow?.cropAuditBasis?.relativeSourceHeightRatio === "number", `${label}: evidence cropAuditBasis.relativeSourceHeightRatio is required.`, errors);
+    assertCondition(finalRow?.noUpscaleProof?.passes === true, `${label}: evidence noUpscaleProof must pass.`, errors);
+    assertCondition(finalRow?.finalOutputComposition?.includes("aspect-fit"), `${label}: evidence finalOutputComposition must record aspect-fit output.`, errors);
+    assertCondition(finalRow?.protectedPixelPreservation?.includes("without stretching"), `${label}: evidence protectedPixelPreservation must record no stretching.`, errors);
+    assertCondition(finalRow?.outputPixelScaleRatioWidth >= 3, `${label}: evidence outputPixelScaleRatioWidth must be at least 3.`, errors);
+    assertCondition(finalRow?.outputPixelScaleRatioHeight >= 3, `${label}: evidence outputPixelScaleRatioHeight must be at least 3.`, errors);
+    assertCondition(finalRow?.qualityScaleRatioWidth < 1, `${label}: evidence qualityScaleRatioWidth must disclose source limitation.`, errors);
+    assertCondition(finalRow?.qualityScaleRatioHeight < 1, `${label}: evidence qualityScaleRatioHeight must disclose source limitation.`, errors);
     assertCondition(entry.trueNativeEffectiveThreeXPass !== true, `${label}: must not claim true native/effective 3x pass.`, errors);
-    assertCondition(entry.finalSourceDocument === sourceDocument, `${label}: finalSourceDocument must be the retained CABA manual PDF.`, errors);
-    assertCondition(typeof entry.sourceEvaluationId === "string" && entry.sourceEvaluationId.startsWith("source-eval:"), `${label}: sourceEvaluationId is required.`, errors);
+    assertCondition(finalRow?.finalSourceDocument === sourceDocument, `${label}: evidence finalSourceDocument must be the retained CABA manual PDF.`, errors);
+    assertCondition(typeof finalRow?.sourceEvaluationId === "string" && finalRow.sourceEvaluationId.startsWith("source-eval:"), `${label}: evidence sourceEvaluationId is required.`, errors);
 
     if (entry.assetPath && existsSync(repoPath(entry.assetPath))) {
       const dimensions = readImageDimensions(entry.assetPath);
@@ -4439,12 +4439,9 @@ function validateFeature037Inventory(inventory) {
       assertCondition(entry.naturalHeight === dimensions.height, `${label}: naturalHeight must match final PNG height.`, errors);
       assertCondition(entry.finalOutputNaturalWidth === dimensions.width, `${label}: finalOutputNaturalWidth must match PNG width.`, errors);
       assertCondition(entry.finalOutputNaturalHeight === dimensions.height, `${label}: finalOutputNaturalHeight must match PNG height.`, errors);
-      assertCondition(entry.hash === actualHash, `${label}: hash must match final PNG sha256.`, errors);
-      assertCondition(entry.finalOutputSha256 === actualHash, `${label}: finalOutputSha256 must match final PNG sha256.`, errors);
-      assertCondition(entry.naturalWidth >= entry.requiredMinimumWidth, `${label}: final PNG width below required output-pixel target.`, errors);
-      assertCondition(entry.naturalHeight >= entry.requiredMinimumHeight, `${label}: final PNG height below required output-pixel target.`, errors);
-      assertCondition(JSON.stringify(entry.cropRegion) === JSON.stringify({ x: 0, y: 0, width: dimensions.width, height: dimensions.height }), `${label}: final cropRegion must cover the individual PNG.`, errors);
-      assertCondition(JSON.stringify(entry.displayRegion) === JSON.stringify(entry.cropRegion), `${label}: displayRegion must match final cropRegion.`, errors);
+      assertCondition(finalRow?.finalOutputSha256 === actualHash, `${label}: evidence finalOutputSha256 must match final PNG sha256.`, errors);
+      assertCondition(entry.naturalWidth >= finalRow?.requiredMinimumWidth, `${label}: final PNG width below required output-pixel target.`, errors);
+      assertCondition(entry.naturalHeight >= finalRow?.requiredMinimumHeight, `${label}: final PNG height below required output-pixel target.`, errors);
     } else {
       errors.push(`${label}: final assetPath does not exist: ${entry.assetPath}`);
     }

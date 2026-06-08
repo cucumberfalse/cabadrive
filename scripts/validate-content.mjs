@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validatePracticeQuestionSourceScope } from "./content-source-scope.mjs";
@@ -282,9 +282,10 @@ errors.push(
     sourceTrace: topicGuideSourceTrace,
     fileMetadata: (relativePath) => {
       const exists = existsSync(path(relativePath));
+      const isFile = exists ? statSync(path(relativePath)).isFile() : false;
       return {
         exists,
-        ...(exists ? { sha256: sha256(relativePath) } : {})
+        ...(isFile ? { sha256: sha256(relativePath) } : {})
       };
     }
   })

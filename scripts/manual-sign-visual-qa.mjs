@@ -8,6 +8,7 @@ import { pathToFileURL } from "node:url";
 const repoRoot = process.cwd();
 const inventoryPath = "src/data/manual-signs/app4SignEntries.json";
 const evidenceRoot = "specs/037-manual-sign-crop-resolution/evidence";
+const finalRowsPath = `${evidenceRoot}/final/manual-sign-crop-resolution-rows.json`;
 const contactSheetDir = `${evidenceRoot}/contact-sheets`;
 const screenshotDir = `${evidenceRoot}/screenshots`;
 const contactSheetHtmlPath = `${contactSheetDir}/manual-sign-contact-sheets.html`;
@@ -45,7 +46,7 @@ function signLike(entry) {
   return entry.entryKind === "catalog-entry" || entry.entryKind === "contextual-visual";
 }
 
-function writeContactSheetHtml(inventory) {
+function writeContactSheetHtml(inventory, finalRowsById) {
   mkdirSync(repoPath(contactSheetDir), { recursive: true });
   const bySection = new Map(sections.map((sectionId) => [sectionId, inventory.entries.filter((entry) => entry.sectionId === sectionId)]));
   const html = `<!doctype html>
@@ -81,6 +82,7 @@ ${sections.map((sectionId) => {
   </header>
   <div class="grid">
     ${entries.map((entry) => {
+      const finalRow = finalRowsById.get(entry.id);
       const caption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
       const image = signLike(entry)
         ? `<div class="imageWrap"><img src="${fileUrl(entry.assetPath)}" alt="${htmlEscape(caption)}" width="${entry.naturalWidth}" height="${entry.naturalHeight}" data-render-mode="${entry.renderMode}" data-no-upscale="true"></div>`
@@ -94,7 +96,7 @@ ${sections.map((sectionId) => {
         <div class="meta">
           <span>${htmlEscape(entry.id)}</span>
           <span>p${entry.sourcePage} #${entry.sourceOrderWithinPage}</span>
-          <span>${entry.baselineCropNaturalWidth ?? "-"}x${entry.baselineCropNaturalHeight ?? "-"} -> ${entry.naturalWidth ?? "-"}x${entry.naturalHeight ?? "-"}</span>
+          <span>${finalRow?.baselineCropNaturalWidth ?? "-"}x${finalRow?.baselineCropNaturalHeight ?? "-"} -> ${entry.naturalWidth ?? "-"}x${entry.naturalHeight ?? "-"}</span>
           <span class="status">${htmlEscape(entry.threeXStatus ?? entry.renderMode)}</span>
           <span>${htmlEscape(entry.cropAuditStatus ?? entry.auditStatus)}</span>
         </div>
@@ -201,9 +203,11 @@ async function main() {
   const runtimeUrlArgIndex = process.argv.indexOf("--runtime-url");
   const runtimeUrl = runtimeUrlArgIndex >= 0 ? process.argv[runtimeUrlArgIndex + 1] : null;
   const inventory = readJson(inventoryPath);
+  const finalRows = readJson(finalRowsPath).rows ?? [];
+  const finalRowsById = new Map(finalRows.map((row) => [row.id, row]));
   mkdirSync(repoPath(contactSheetDir), { recursive: true });
   mkdirSync(repoPath(screenshotDir), { recursive: true });
-  writeContactSheetHtml(inventory);
+  writeContactSheetHtml(inventory, finalRowsById);
 
   const browser = await chromium.launch();
   try {
@@ -227,7 +231,7 @@ async function main() {
       runtime,
       pendingAuditCount: inventory.entries.filter((entry) => entry.cropAuditStatus !== "reviewed-final-correct" && entry.cropAuditStatus !== "category-heading-dom").length,
       renderModeViolations: inventory.entries.filter((entry) => signLike(entry) && entry.renderMode !== "individual-source-crop-3x").length,
-      noUpscaleViolationsInInventory: inventory.entries.filter((entry) => signLike(entry) && entry.noUpscaleProof?.passes !== true).length
+      noUpscaleViolationsInInventory: finalRows.filter((row) => signLike(row) && row.noUpscaleProof?.passes !== true).length
     };
     writeFileSync(repoPath(visualQaSummaryPath), `${JSON.stringify(summary, null, 2)}\n`);
     console.log(`manual sign visual QA wrote ${visualQaSummaryPath}`);
