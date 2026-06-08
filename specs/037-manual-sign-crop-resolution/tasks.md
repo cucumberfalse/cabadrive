@@ -214,7 +214,7 @@
 - Fresh final Architect validation and final Analyst validation will be rerun by Orchestrator after this process-memory repair commit.
 - Effective content head: 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64
 - Current-PR-head read-only guard: effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64 is the comparison base; Orchestrator must verify any later current PR head against this SHA and confirm the diff is final-validation evidence-only before finalization.
-- Architect validation evidence: Required checks successful on effective content head `2b33ddbc4ae20c1af054a9ead46b17eeaa776e64`: `AI Review` run `27114767540`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
+- Architect validation: Required checks successful on effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64: AI Review run 27114767540, baseline-checks, docker-validation, guard, and osv-scan.
 - Final validation must preserve the accepted source-limited wording: source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail.
 
 ## Architect Disposition Log
