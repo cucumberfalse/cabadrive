@@ -197,10 +197,13 @@
 - Local verification evidence: latest recorded preflight passed with feature-memory gate, repo baseline check, content validation, manual-sign inventory validation, `452/452` Node tests, build/service worker generation, and `82/82` Playwright e2e tests.
 - Current PR check evidence: PR #203 head `15c8d08920a45a1c7be48f277063e53d0a3cc1e8` has successful `AI Review`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` checks.
 - Review evidence: Orchestrator resolved the five old review threads separately; latest no-finding Review Agent evidence for the current work remains part of PR #203 state and final validation will refresh after this process-memory repair commit.
+- Current PR check evidence: PR #203 head `2b33ddbc4ae20c1af054a9ead46b17eeaa776e64` has successful `AI Review` run `27114767540`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` checks.
+- Review evidence: Orchestrator resolved the five old review threads separately after verifying they referred to fixed/outdated crop and manifest findings; latest no-finding Review Agent evidence remains part of PR #203 current-head validation state.
 
 ## Cycle PR Set
 
 - PR #203: `[codex] Fix Appendix IV manual sign crops`, branch `codex/037-manual-sign-crop-resolution`, current head reference `15c8d08920a45a1c7be48f277063e53d0a3cc1e8`, status open/not draft/mergeable, included in final validation.
+- PR #203 current-head evidence: branch `codex/037-manual-sign-crop-resolution`, effective/current head reference `2b33ddbc4ae20c1af054a9ead46b17eeaa776e64`, status open/not draft/mergeable, included in final validation.
 - Cycle scope: PR #203 is the only PR in the Feature 037 cycle PR set.
 
 ## Final Validation Evidence
@@ -209,6 +212,9 @@
 - Architect return count: 0.
 - Existing final validation records in this file are superseded by later product/content/evidence changes and by this process-memory repair. They are retained as historical process evidence only.
 - Fresh final Architect validation and final Analyst validation will be rerun by Orchestrator after this process-memory repair commit.
+- Effective content head: 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64
+- Current-PR-head read-only guard: effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64 is the comparison base; Orchestrator must verify any later current PR head against this SHA and confirm the diff is final-validation evidence-only before finalization.
+- Architect validation evidence: Required checks successful on effective content head `2b33ddbc4ae20c1af054a9ead46b17eeaa776e64`: `AI Review` run `27114767540`, `baseline-checks`, `docker-validation`, `guard`, and `osv-scan`.
 - Final validation must preserve the accepted source-limited wording: source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail.
 
 ## Architect Disposition Log
@@ -247,6 +253,22 @@
 - Architect return count status: within limit. Architect source-disposition return count remains `2`; final Architect validation refresh return count is `0` because no final-validation gap is being returned.
 - Accepted known issues/dispositions: all `286` sign-like rows remain source-limited for native/effective detail due to evaluated official-source limits. This is accepted only with the explicit source-limited disclosure that the result is source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail. No unresolved Implementation Agent feedback remains for Architect disposition.
 - Post-validation evidence note: this validation refresh is Architect-owned process evidence only. Any later non-evidence change to product behavior, runtime assets, code, tests, validation scripts, source data, durable docs, official-source manifest/content records, or source/evidence content makes this refreshed final Architect validation stale and must return through role-appropriate follow-up.
+
+## Final Architect Validation Notes
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-08T03:53:48Z
+Architect validated effective content head: 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64
+Architect return count: 0
+Architect validation evidence: Full Feature 037 cycle and PR #203 were validated at effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64; PR #203 is open, not draft, mergeable, and included as the only cycle PR set member.
+Architect validation evidence: Required current-head checks are successful on 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64: AI Review run 27114767540, baseline-checks, docker-validation, guard, and osv-scan.
+Architect validation evidence: Customer intent passes under the accepted source-limited disposition: the result corrects crop bounds and replaces poor-quality learner-facing sheet clips with source-faithful best-official-source 3x output-pixel crops while not claiming true native/effective 3x detail.
+Architect validation evidence: Evidence records 316 rows preserved, 286 sign-like direct PNG assets, 30 DOM/non-sign category headings, 286/286 output-pixel 3x rows, 286 source-limited exceptions, and 0 true native/effective 3x passes.
+Architect validation evidence: Visual and crop evidence records all 286 sign-like rows as reviewed-final-correct, all warning right-edge contact rows at 0 after final fix, all six contact sheets, all six desktop screenshots, all six mobile screenshots, 0 unloaded images, 0 no-upscale violations, 0 overflow counts, 0 caption gaps, and 0 old render-mode counts.
+Architect validation evidence: Local verification evidence records focused inventory validation, manual-sign regression tests, build/service-worker generation, 452/452 Node tests, 82/82 Playwright e2e tests, and local preflight passing for the current implementation evidence set.
+Architect validation evidence: Process-memory evidence records no unresolved known issues, no unresolved Implementation Agent feedback, accepted Architect source-limited disposition, current cycle PR set, current checks, and final validation evidence for effective head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64.
+Architect gaps: none.
+Architect disposition: passed for final Analyst validation handoff with mandatory completion wording that this is source-faithful best-official-source 3x output-pixel output, not true native/effective 3x detail.
+Open Architect dispositions: none.
 
 ## Implementation Evidence Log
 
