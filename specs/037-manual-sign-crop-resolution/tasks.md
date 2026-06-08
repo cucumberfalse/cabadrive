@@ -215,6 +215,10 @@
 - Effective content head: 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64
 - Current-PR-head read-only guard: effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64 is the comparison base; Orchestrator must verify any later current PR head against this SHA and confirm the diff is final-validation evidence-only before finalization.
 - Architect validation: Required checks successful on effective content head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64: AI Review run 27114767540, baseline-checks, docker-validation, guard, and osv-scan.
+- Effective content head: 3393bceb100d28fc23ea8123ff1286723c598505
+- Current-PR-head read-only guard: effective content head 3393bceb100d28fc23ea8123ff1286723c598505 is the comparison base; Orchestrator must verify any later current PR head against this SHA and confirm the diff is final-validation evidence-only before finalization.
+- Architect validation: Current-head check context for effective content head 3393bceb100d28fc23ea8123ff1286723c598505: baseline-checks, docker-validation, guard, and osv-scan passed; AI Review opened only the stale-final-validation evidence P1 expected to be addressed by this fresh Architect and Analyst validation sequence.
+- Architect validation: Assignment #8 verification passed for effective content head 3393bceb100d28fc23ea8123ff1286723c598505: source-evaluation write produced the expected source-limited threshold exit, official-documents validation passed, source validation tests passed 69/69, content validation passed, preflight passed with 451/451 Node tests and 82/82 Playwright tests, git diff check passed, and feature-memory gate passed.
 - Final validation must preserve the accepted source-limited wording: source-faithful best-official-source `3x` output-pixel crops, not true native/effective `3x` detail.
 
 ## Architect Disposition Log
@@ -266,6 +270,23 @@ Architect validation evidence: Evidence records 316 rows preserved, 286 sign-lik
 Architect validation evidence: Visual and crop evidence records all 286 sign-like rows as reviewed-final-correct, all warning right-edge contact rows at 0 after final fix, all six contact sheets, all six desktop screenshots, all six mobile screenshots, 0 unloaded images, 0 no-upscale violations, 0 overflow counts, 0 caption gaps, and 0 old render-mode counts.
 Architect validation evidence: Local verification evidence records focused inventory validation, manual-sign regression tests, build/service-worker generation, 452/452 Node tests, 82/82 Playwright e2e tests, and local preflight passing for the current implementation evidence set.
 Architect validation evidence: Process-memory evidence records no unresolved known issues, no unresolved Implementation Agent feedback, accepted Architect source-limited disposition, current cycle PR set, current checks, and final validation evidence for effective head 2b33ddbc4ae20c1af054a9ead46b17eeaa776e64.
+Architect gaps: none.
+Architect disposition: passed for final Analyst validation handoff with mandatory completion wording that this is source-faithful best-official-source 3x output-pixel output, not true native/effective 3x detail.
+Open Architect dispositions: none.
+
+## Final Architect Validation Notes
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-08T05:02:51Z
+Architect validated effective content head: 3393bceb100d28fc23ea8123ff1286723c598505
+Architect return count: 0
+Architect validation evidence: Full Feature 037 cycle and PR #203 were validated at effective content/process head 3393bceb100d28fc23ea8123ff1286723c598505 after assignment #8 review-fix work.
+Architect validation evidence: Assignment #8 correctly removes Feature 037 evidence-only Markdown limitation records and manifest entries from the governed official-documents corpus; current official-documents manifest contains 19 governed entries and no Feature 037 source-evaluation entries.
+Architect validation evidence: Feature 037 raw source-evaluation archives now live under Feature 037 evidence, with paths and hashes recorded in source-manifest.json; this is the accepted archive boundary for source-evaluation evidence, not a learner primary-source-reader document claim.
+Architect validation evidence: Current-head check context records baseline-checks, docker-validation, guard, and osv-scan passed on 3393bceb100d28fc23ea8123ff1286723c598505; the AI Review P1 on stale final validation evidence is the expected process blocker addressed by this fresh validation sequence, not a product/content gap.
+Architect validation evidence: Assignment #8 verification records source-evaluation write with expected source-limited threshold exit, official-documents validation passed, source validation tests passed 69/69, content validation passed, preflight passed with 451/451 Node tests and 82/82 Playwright tests, git diff check passed, and feature-memory gate passed.
+Architect validation evidence: Product evidence still records 316 rows preserved, 286 sign-like direct PNG assets, 30 DOM/non-sign category headings, 286/286 output-pixel 3x rows, 286 source-limited exceptions, and 0 true native/effective 3x passes.
+Architect validation evidence: Customer intent passes under the accepted source-limited disposition: the implementation corrects crop bounds and replaces poor-quality learner-facing sheet clips with source-faithful best-official-source 3x output-pixel crops while not claiming true native/effective 3x detail.
+Architect validation evidence: No unresolved Implementation Agent feedback remains after assignment #8; the earlier evidence-only governed official-documents manifest approach is superseded and disposed by the Feature 037 evidence-archive boundary.
 Architect gaps: none.
 Architect disposition: passed for final Analyst validation handoff with mandatory completion wording that this is source-faithful best-official-source 3x output-pixel output, not true native/effective 3x detail.
 Open Architect dispositions: none.

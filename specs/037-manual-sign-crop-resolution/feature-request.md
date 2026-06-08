@@ -276,3 +276,23 @@ Gaps, if any: none remain under the Architect-disposed source-limited contract a
 Architect disposition routing: none required because no final Analyst gaps remain.
 Analyst limit escalation: not applicable; Analyst return count is `0`, within the 5-return limit.
 Analyst boundary reminder: Analyst final validation appended only to `specs/037-manual-sign-crop-resolution/feature-request.md` and did not edit code, tests, assets, scripts, runtime files, source data, Architect-owned artifacts, GitHub state, staging, commits, pushes, review threads, required checks, or merge state.
+
+## Final Analyst Validation Notes
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-08T05:04:51Z
+Effective content head: 3393bceb100d28fc23ea8123ff1286723c598505
+Analyst validated effective content head: 3393bceb100d28fc23ea8123ff1286723c598505
+Analyst return count: 0
+Analyst validation evidence: Fresh final Architect validation passed first at 2026-06-08T05:02:51Z for the same effective content head `3393bceb100d28fc23ea8123ff1286723c598505`, with Architect return count `0`.
+Analyst validation evidence: Prior Analyst validations for earlier effective heads are stale for completion because later PR #203 assignment #8 changed source-evaluation archive placement, official-document manifest/content records, source-evaluation evidence, and process memory.
+Analyst validation evidence: Assignment #8 correctly moves Feature 037 source-evaluation archives out of governed official-documents records and into Feature 037 evidence; this preserves the official-documents exact-text boundary without weakening the sign-crop acceptance evidence.
+Analyst validation evidence: Orchestrator reports `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed on this head; AI Review opened the expected stale-final-validation blocker that this fresh Architect-to-Analyst validation sequence addresses, not a product/content gap.
+Analyst validation evidence: Assignment #8 verification records source-evaluation write with expected source-limited exit `2`, official-documents validation passed, focused official-doc/primary-source tests `69/69`, content validation passed, preflight passed with `451/451` Node tests and `82/82` Playwright tests, git diff check passed, and feature-memory gate passed.
+Customer intent check: the original badly cropped sign complaint remains satisfied because all six Appendix IV sign sections are covered, `316` rows are preserved, `286` sign-like rows use direct PNG assets, known clipping and neighboring-content contamination classes are fixed, source order and captions remain aligned, and Spanish/Russian captions remain outside protected imagery.
+Customer intent check: the original poor-quality and `3x` re-cut request remains satisfied under the accepted source-limited caveat because `286/286` sign-like rows are source-faithful best-official-source `3x` output-pixel crops with no browser upscaling, while all `286` are honestly recorded as source-limited exceptions and `0` are claimed as true native/effective `3x` detail passes.
+Customer intent check: protected official pixels remain source-faithful under the evidence: no redraw, cleanup, sharpening, recolor, translation inside images, masking, retouching, vectorization, generated replacement, runtime PDF rendering, or remote asset dependency is accepted.
+Gaps, if any: none remain under the Architect-disposed source-limited contract and mandatory honest completion wording.
+Architect disposition routing: none required because no final Analyst gaps remain.
+Analyst limit escalation: not applicable; Analyst return count is `0`, within the 5-return limit.
+Analyst boundary reminder: Analyst final validation appended only to `specs/037-manual-sign-crop-resolution/feature-request.md` and did not edit code, tests, assets, scripts, runtime files, source data, Architect-owned artifacts, GitHub state, staging, commits, pushes, review threads, required checks, or merge state.
