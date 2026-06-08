@@ -2519,31 +2519,42 @@ function SharedTripClosingBlockView({ block }: { block: Extract<ManualGuideSecti
   );
 }
 
-function ManualSignSourceClip({ entry }: { entry: ManualSignEntry }) {
-  const region = entry.displayRegion;
+function ManualSignImage({ entry }: { entry: ManualSignEntry }) {
   const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
-  const clipStyle = {
-    "--manual-sign-source-width": `${entry.naturalWidth}px`,
-    "--manual-sign-source-height": `${entry.naturalHeight}px`,
-    "--manual-sign-crop-x": `${region.x}px`,
-    "--manual-sign-crop-y": `${region.y}px`,
-    "--manual-sign-crop-width": `${region.width}px`,
-    "--manual-sign-crop-height": `${region.height}px`
+  if (!entry.assetPath || !entry.naturalWidth || !entry.naturalHeight) return null;
+  const imageStyle = {
+    "--manual-sign-natural-width": `${entry.naturalWidth}px`,
+    "--manual-sign-natural-height": `${entry.naturalHeight}px`
   } as CSSProperties;
 
   return (
-    <div className="manual-sign-clip-scroll">
-      <div className="manual-sign-source-viewport" style={clipStyle} data-render-mode={entry.renderMode} data-no-upscale={entry.noUpscale}>
-        <img
-          src={assetUrl(entry.assetPath)}
-          alt={`${spanishCaption} - ${entry.russianTranslation}`}
-          data-source-as-is="true"
-          data-render-mode={entry.renderMode}
-          data-source-page={entry.sourcePage}
-          data-source-region={`${region.x},${region.y},${region.width},${region.height}`}
-          loading={entry.sourceOrder <= 8 ? "eager" : "lazy"}
-        />
-      </div>
+    <div
+      className="manual-sign-image-shell"
+      style={imageStyle}
+      data-render-mode={entry.renderMode}
+      data-three-x-status={entry.threeXStatus}
+      data-source-limited-disposition={entry.sourceLimitedDisposition ?? undefined}
+      data-no-upscale={entry.noUpscale}
+      data-final-output-width={entry.finalOutputNaturalWidth ?? entry.naturalWidth}
+      data-final-output-height={entry.finalOutputNaturalHeight ?? entry.naturalHeight}
+    >
+      <img
+        className="manual-sign-image"
+        src={assetUrl(entry.assetPath)}
+        alt={`${spanishCaption} - ${entry.russianTranslation}`}
+        width={entry.naturalWidth}
+        height={entry.naturalHeight}
+        data-source-as-is="true"
+        data-render-mode={entry.renderMode}
+        data-source-page={entry.sourcePage}
+        data-source-region={
+          entry.finalSourceRegionAtBaseScale
+            ? `${entry.finalSourceRegionAtBaseScale.x},${entry.finalSourceRegionAtBaseScale.y},${entry.finalSourceRegionAtBaseScale.width},${entry.finalSourceRegionAtBaseScale.height}`
+            : undefined
+        }
+        data-no-upscale={entry.noUpscale}
+        loading={entry.sourceOrder <= 8 ? "eager" : "lazy"}
+      />
     </div>
   );
 }
@@ -2572,6 +2583,24 @@ function ManualSignCatalogBlockView({ block }: { block: Extract<ManualGuideSecti
 
 function ManualSignCatalogEntryCard({ entry }: { entry: ManualSignEntry }) {
   const spanishCaption = entry.variant ? `${entry.spanishLabel} (${entry.variant})` : entry.spanishLabel;
+  if (entry.renderMode === "category-heading-dom") {
+    return (
+      <article
+        className="manual-sign-card manual-sign-card-heading"
+        data-manual-sign-entry-id={entry.id}
+        data-source-page={entry.sourcePage}
+        data-source-order={entry.sourceOrder}
+        data-source-order-within-page={entry.sourceOrderWithinPage}
+        data-render-mode={entry.renderMode}
+        data-three-x-status={entry.threeXStatus}
+      >
+        <div className="manual-sign-caption manual-sign-caption-heading">
+          <h4 lang="es">{spanishCaption}</h4>
+          <p lang="ru">{entry.russianTranslation}</p>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article
@@ -2580,9 +2609,12 @@ function ManualSignCatalogEntryCard({ entry }: { entry: ManualSignEntry }) {
       data-source-page={entry.sourcePage}
       data-source-order={entry.sourceOrder}
       data-source-order-within-page={entry.sourceOrderWithinPage}
+      data-render-mode={entry.renderMode}
+      data-three-x-status={entry.threeXStatus}
+      data-source-limited-disposition={entry.sourceLimitedDisposition ?? undefined}
     >
       <figure className="manual-sign-figure">
-        <ManualSignSourceClip entry={entry} />
+        <ManualSignImage entry={entry} />
       </figure>
       <div className="manual-sign-caption">
         <h4 lang="es">{spanishCaption}</h4>

@@ -2978,32 +2978,37 @@ small,
   overflow: hidden;
 }
 
-.manual-sign-clip-scroll {
-  max-width: 100%;
+.manual-sign-image-shell {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: min(100%, var(--manual-sign-natural-width));
+  max-height: 272px;
   min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-inline: contain;
-}
-
-.manual-sign-source-viewport {
-  position: relative;
-  width: var(--manual-sign-crop-width);
-  height: var(--manual-sign-crop-height);
+  min-height: 96px;
   overflow: hidden;
   border-radius: 6px;
   background: #ffffff;
 }
 
-.manual-sign-source-viewport img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.manual-sign-image {
   display: block;
-  width: var(--manual-sign-source-width);
-  max-width: none;
-  height: var(--manual-sign-source-height);
-  transform: translate(calc(-1 * var(--manual-sign-crop-x)), calc(-1 * var(--manual-sign-crop-y)));
+  width: auto;
+  max-width: min(100%, var(--manual-sign-natural-width));
+  height: auto;
+  max-height: min(260px, var(--manual-sign-natural-height));
+  object-fit: contain;
+}
+
+.manual-sign-card-heading {
+  grid-template-rows: minmax(0, auto);
+  background: #f5fbfb;
+}
+
+.manual-sign-caption-heading {
+  align-content: center;
+  min-height: 96px;
 }
 
 .manual-sign-caption {

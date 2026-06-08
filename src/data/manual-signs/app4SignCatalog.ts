@@ -17,27 +17,23 @@ export type ManualSignEntry = {
   spanishLabel: string;
   variant?: string;
   russianTranslation: string;
-  sourceSheetLabelEvidence: string;
-  auditStatus: "reconciled-source-visual" | "pending-reconciliation";
-  sourceRef: string;
-  sourceAsset: string;
-  sourceRegion: ManualSignRegion | null;
-  assetPath: string;
-  naturalWidth: number;
-  naturalHeight: number;
-  cropRegion: ManualSignRegion;
-  displayRegion: ManualSignRegion;
-  cropNaturalWidth: number;
-  cropNaturalHeight: number;
-  renderMode: "source-image-css-clip";
-  hash: string;
-  extractionMethod: string;
+  auditStatus: "reviewed-final-correct" | "category-heading-dom";
+  assetPath: string | null;
+  naturalWidth: number | null;
+  naturalHeight: number | null;
+  renderMode: "individual-source-crop-3x" | "category-heading-dom";
   noUpscale: true;
-  preservationNote: string;
+  finalSourceRegionAtBaseScale?: ManualSignRegion;
+  finalOutputNaturalWidth?: number | null;
+  finalOutputNaturalHeight?: number | null;
+  threeXStatus?: "source-limited-exception" | "not-applicable-category-heading";
+  sourceLimitedDisposition?: "best-official-source-3x-output-pixels" | null;
+  sourceLimitedReason?: string;
+  cropAuditStatus?: "reviewed-final-correct" | "category-heading-dom";
 };
 
 type ManualSignInventory = {
-  inventoryStatus: "individual-source-regions";
+  inventoryStatus: "individual-source-regions" | "individual-source-crop-3x-source-limited";
   entries: ManualSignEntry[];
 };
 

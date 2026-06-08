@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "featureId": "037-manual-sign-crop-resolution",
+  "status": "blocked-source-attempt-not-runtime-final",
+  "recordedAt": "2026-06-07T21:12:12.958Z",
+  "attemptedTarget": {
+    "id": "app4regulatory-p185-020-no-estacionar-catalog-entry",
+    "sourcePage": 185,
+    "baselineCropRegion": {
+      "x": 351,
+      "y": 477,
+      "width": 78,
+      "height": 78
+    },
+    "baselineSourceRegion": {
+      "x": 1110,
+      "y": 1602,
+      "width": 663,
+      "height": 981
+    },
+    "requiredMinimum": {
+      "width": 234,
+      "height": 234
+    }
+  },
+  "officialPdfAttempt": {
+    "sourceDocument": "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
+    "sourceBaseScale": 5,
+    "renderScale": 15,
+    "scale15RenderedPageDimensions": {
+      "width": 8929,
+      "height": 12628
+    },
+    "result": "not accepted as final evidence",
+    "finding": "The high-scale PDF coordinate probe did not produce an isolated 3x NO ESTACIONAR row crop from the current feature-036 region mapping; it produced a 234x234 multi-entry sheet area instead of a row-only higher-detail crop. The generated runtime assets from this attempt were removed and the inventory was restored."
+  },
+  "probeFiles": [
+    {
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-baseline-x5-crop.jpg",
+      "width": 78,
+      "height": 78,
+      "sha256": "e972efffa8bb584125248d7338e25e5b60caa47847e4b01f1800dd0c6e278849"
+    },
+    {
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-attempts/page185-no-estacionar-pdf-scale15-scaled-coordinate-probe.png",
+      "width": 234,
+      "height": 234,
+      "sha256": "8d6e04a2835d10b82ef3e946b79c9fb62828121472d479566c80867f43a33561"
+    }
+  ],
+  "retainedOfficialAnexoLAttempt": {
+    "sourceDirectory": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images",
+    "assetCount": 15,
+    "dimensionsSummary": {
+      "minWidth": 613,
+      "maxWidth": 620,
+      "minHeight": 618,
+      "maxHeight": 747
+    },
+    "finding": "Retained official Anexo L panels are official and useful for focused examples, but they are limited panels and do not provide row-level coverage for all 286 CABA sign-like entries or all CABA-specific variants required by feature 037.",
+    "assets": [
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-01.jpg",
+        "width": 615,
+        "height": 743,
+        "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-02.jpg",
+        "width": 618,
+        "height": 733,
+        "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-03.jpg",
+        "width": 616,
+        "height": 734,
+        "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-04.jpg",
+        "width": 616,
+        "height": 694,
+        "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-05.jpg",
+        "width": 617,
+        "height": 718,
+        "sha256": "2af1a4467fbb3e4878b7edc4dc8b9ba77f71bd1f05436f931dfb5f11d8ebea4b"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-06.jpg",
+        "width": 619,
+        "height": 735,
+        "sha256": "ec1eb862d846c60142e13c75871870f1121f9daa896af5efb05dedbe45f211de"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-07.jpg",
+        "width": 619,
+        "height": 645,
+        "sha256": "e527ac472878610905b86a41368e55e0710ed07680f67a21f0900d1e559ac2f7"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-08.jpg",
+        "width": 620,
+        "height": 747,
+        "sha256": "b97a4b5a89c18c46914449ff8d852dd137a45fabc2aeb1d9ce307347326d41d8"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-09.jpg",
+        "width": 616,
+        "height": 709,
+        "sha256": "e4537242e8c8610629b19835d7af01ffff7905a99c2c78a080cadbcb3cbbdee0"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-10.jpg",
+        "width": 617,
+        "height": 740,
+        "sha256": "19d7823182511d2bb698e2a385a81ee9edbfb5f06d385271f1176ce68d39c6de"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-11.jpg",
+        "width": 616,
+        "height": 734,
+        "sha256": "73ad3e2571dd1482ceb2f32a54e1821be4d02b87c985fbea754bf4558b35a4bd"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-12.jpg",
+        "width": 614,
+        "height": 728,
+        "sha256": "7b292487c95c45a433938e03175a7bc83a984461a613eb30472b1358e2807123"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-13.jpg",
+        "width": 613,
+        "height": 684,
+        "sha256": "5364b87fce4bea906c0e1f53bf2180b49070c1b275c637601048ca98cc629ab8"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-14.jpg",
+        "width": 614,
+        "height": 674,
+        "sha256": "97771a26be4d99ef22f31cc6cc1bb29cd902425d8a11502c19230789f97e17a3"
+      },
+      {
+        "path": "content/official-documents/originals/decreto-779-1995-anexo-l-senalizacion-vial-uniforme-images/dec196AnexoIII-15.jpg",
+        "width": 620,
+        "height": 618,
+        "sha256": "051dd1f9c1f77ed24bcf5e850afd93f85b188160762198ef0f0d3df6ac4b7813"
+      }
+    ]
+  },
+  "blocker": "Implementation cannot honestly mark the feature 037 3x requirement complete from currently available official sources without Architect disposition. Options need Architect/Orchestrator disposition: accept row-level source-limited exceptions, locate/acquire better official retained source material for all entries, or revise the measurable 3x target for source-limited CABA raster sheets.",
+  "revertedRuntimeChanges": true
+}
