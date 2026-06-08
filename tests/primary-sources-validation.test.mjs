@@ -230,20 +230,6 @@ test("current repository primary-source corpus passes strict published validatio
   assert.deepEqual(validatePrimarySourcesFromFiles({ mode: "strict" }), []);
 });
 
-test("strict primary-source validation skips manifest entries marked outside the learner reader", () => {
-  const manifestData = manifest({ includeDoc2: true });
-  manifestData.entries[1] = {
-    ...manifestData.entries[1],
-    primarySourceReader: false,
-    currentClaim: false,
-    claimUse: "feature_evidence_only",
-    currentness: { status: "unknown", validationStatus: "pending" },
-    exactTextValidation: { status: "pending" }
-  };
-
-  assert.deepEqual(validate({ manifest: manifestData, mode: "strict" }), []);
-});
-
 test("primary-source shard directory loading combines document, QA, and search shards", () => {
   const corpusRoot = { ...corpus(), documents: [], documentShardDirectories: ["content/primary-sources/documents"] };
   const qaRoot = { ...qa(), documents: [], qaShardDirectories: ["content/primary-sources/qa"] };

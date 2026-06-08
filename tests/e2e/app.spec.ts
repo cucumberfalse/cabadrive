@@ -79,7 +79,7 @@ function loadPrimarySourceDocuments() {
       documentsById.set(shard.officialDocumentId, current);
     }
   }
-  return primarySourceManifest.entries.filter((entry: { primarySourceReader?: boolean }) => entry.primarySourceReader !== false).map((entry: { id: string }) => {
+  return primarySourceManifest.entries.map((entry: { id: string }) => {
     const document = documentsById.get(entry.id);
     if (!document) throw new Error(`Missing primary source fixture document ${entry.id}`);
     return { ...document, chunks: [...document.chunks].sort((a, b) => a.order - b.order || a.chunkId.localeCompare(b.chunkId)) };
@@ -135,11 +135,10 @@ async function storedAnswerCount(page: Page) {
 }
 
 async function openPrimarySources(page: Page) {
-  const readerDocumentCount = primarySourceManifest.entries.filter((entry: { primarySourceReader?: boolean }) => entry.primarySourceReader !== false).length;
   await page.goto("/");
   await page.getByRole("button", { name: /Источники/ }).click();
   await expect(page.getByRole("heading", { name: "Официальные первоисточники" })).toBeVisible();
-  await expect(page.getByLabel("Покрытие корпуса источников").getByText(`${readerDocumentCount} документов`, { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Покрытие корпуса источников").getByText(`${primarySourceManifest.entries.length} документов`, { exact: true })).toBeVisible();
 }
 
 async function openCompleteManual(page: Page) {

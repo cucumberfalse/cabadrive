@@ -615,10 +615,6 @@ function validateManifestReleaseReadiness(errors, entry, label) {
   }
 }
 
-function isPrimarySourceReaderManifestEntry(entry) {
-  return entry?.primarySourceReader !== false;
-}
-
 export function validatePrimarySources({
   manifest,
   corpus,
@@ -687,10 +683,8 @@ export function validatePrimarySources({
     if (!isPlainObject(entry) || !isNonEmptyString(entry.id)) continue;
     if (manifestEntryById.has(entry.id)) errors.push(`${entry.id}: duplicate official document id in manifest.`);
     manifestEntryById.set(entry.id, entry);
-    if (isPrimarySourceReaderManifestEntry(entry)) {
-      manifestIds.push(entry.id);
-      if (strictMode) validateManifestReleaseReadiness(errors, entry, entry.id);
-    }
+    manifestIds.push(entry.id);
+    if (strictMode) validateManifestReleaseReadiness(errors, entry, entry.id);
   }
 
   if (!coverageOnlyMode) {

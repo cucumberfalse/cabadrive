@@ -9,7 +9,8 @@ const baselineEvidencePath = "specs/037-manual-sign-crop-resolution/evidence/bas
 const sourceEvaluationDir = "specs/037-manual-sign-crop-resolution/evidence/source-evaluation";
 const sourceManifestPath = `${sourceEvaluationDir}/source-manifest.json`;
 const rowSourceMappingPath = `${sourceEvaluationDir}/row-source-mapping.json`;
-const archivedSourceRoot = "content/official-documents/originals/traffic-sign-source-evaluation-037";
+const archivedSourceRoot =
+  "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037";
 const generatedBy = "scripts/manual-sign-source-evaluation.mjs";
 const generatedAt = process.env.SOURCE_EVALUATION_GENERATED_AT || new Date().toISOString();
 

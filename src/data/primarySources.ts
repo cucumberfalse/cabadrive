@@ -91,10 +91,6 @@ function manifestEntryStatus(entry: ManifestEntry) {
   };
 }
 
-function isPrimarySourceReaderEntry(entry: ManifestEntry) {
-  return (entry as { primarySourceReader?: boolean }).primarySourceReader !== false;
-}
-
 export function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocumentShard[]): PrimarySourceDocument[] {
   const shardsByDocument = new Map<string, SourceDocumentPayload[]>();
 
@@ -107,7 +103,7 @@ export function mergeDocumentShards(entries: ManifestEntry[], shards: SourceDocu
     }
   }
 
-  return entries.filter(isPrimarySourceReaderEntry).map((entry) => {
+  return entries.map((entry) => {
     const documentShards = shardsByDocument.get(entry.id) ?? [];
     const firstShard = documentShards[0];
     const chunks = documentShards
@@ -144,7 +140,6 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
     )
   ]);
   const manifest = manifestModuleResult.default as OfficialManifest;
-  const primarySourceEntries = manifest.entries.filter(isPrimarySourceReaderEntry);
   const shards = shardModules
     .map(({ path, module }) => normalizeSourceDocumentShard(path, module))
     .sort((a, b) => {
@@ -154,12 +149,12 @@ async function readPrimarySources(): Promise<PrimarySourceCorpus> {
       if (documentCompare) return documentCompare;
       return (documentA.chunks[0]?.order ?? 0) - (documentB.chunks[0]?.order ?? 0);
     });
-  const documents = mergeDocumentShards(primarySourceEntries, shards);
+  const documents = mergeDocumentShards(manifest.entries, shards);
   const chunkCount = documents.reduce((sum, document) => sum + document.chunks.length, 0);
 
   return {
     documents,
-    manifestEntryCount: primarySourceEntries.length,
+    manifestEntryCount: manifest.entries.length,
     chunkCount
   };
 }

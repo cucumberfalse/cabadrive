@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "featureId": "037-manual-sign-crop-resolution",
   "generatedBy": "scripts/manual-sign-source-evaluation.mjs",
-  "generatedAt": "2026-06-07T21:33:31.803Z",
+  "generatedAt": "2026-06-08T04:47:02.840Z",
   "sourceGateStatus": "blocked-source-limited-threshold-exceeded",
   "baselineEvidencePath": "specs/037-manual-sign-crop-resolution/evidence/baseline/manual-sign-baseline-036.json",
   "rowSourceMappingPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/row-source-mapping.json",
-  "archivedSourceRoot": "content/official-documents/originals/traffic-sign-source-evaluation-037",
+  "archivedSourceRoot": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037",
   "evaluatedSourceCount": 9,
   "mandatorySourceIds": [
     "caba-manual-pdf",
@@ -210,10 +210,10 @@
       "issuer": "Argentina.gob.ar",
       "sourceType": "archived-official-html",
       "sourceUrl": "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
-      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
+      "archivedPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
       "officialStatusBasis": "Official Argentina.gob.ar Anexo L HTML page archived for source evaluation.",
       "hashAlgorithm": "sha256",
-      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-l.html",
       "bytes": 150099,
       "mtime": "2026-06-07T21:21:39.495Z",
       "sha256": "c2240e677d06b6ec01d0bc12fbf12573aea279dc8f2f1a06c54d4f050114937d",
@@ -228,12 +228,12 @@
       "issuer": "Argentina.gob.ar",
       "sourceType": "archived-official-image-panels",
       "sourceUrl": "https://www.argentina.gob.ar/normativa/recurso/30389/dto779-1995-anexoL/htm",
-      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images",
+      "archivedPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images",
       "officialStatusBasis": "Images referenced by the official Argentina.gob.ar Anexo L HTML and archived locally for evaluation.",
       "assetCount": 16,
       "assets": [
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-01.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-01.jpg",
           "bytes": 16406,
           "sha256": "9eefd8e8f9c1c0aaa980316da709c6f432f8a1a7254a12df77daf87ad4d960a0",
           "dimensions": {
@@ -242,7 +242,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-02.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-02.jpg",
           "bytes": 68290,
           "sha256": "024044444933e8ddfd3e39a0ab39052f58bdec7d9a26882d7c22997da9c7cf25",
           "dimensions": {
@@ -251,7 +251,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-03.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-03.jpg",
           "bytes": 75461,
           "sha256": "fbc7d66a3855a0ca2f9b821b7b3f5f4bc28ec22eede95633371c71d228392be8",
           "dimensions": {
@@ -260,7 +260,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-04.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-04.jpg",
           "bytes": 70077,
           "sha256": "964d418379372ecd844c9f4ebcb061bf157cf434b040ffeebd4aee1c6c1484d7",
           "dimensions": {
@@ -269,7 +269,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-05.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-05.jpg",
           "bytes": 69784,
           "sha256": "a13dfb491f893ad68f5f1106ba8134964d180e9c6ff64317d51612801109067d",
           "dimensions": {
@@ -278,7 +278,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-06.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-06.jpg",
           "bytes": 69069,
           "sha256": "50589bc5e32e95defc0c1a1c7012a85e3f08546ad8853f076a9fde6d0bd8c532",
           "dimensions": {
@@ -287,7 +287,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-07.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-07.jpg",
           "bytes": 81708,
           "sha256": "25d6c5b013811b668a905d831cd1a1b2253f4e96ac20f296f5e6025240f67973",
           "dimensions": {
@@ -296,7 +296,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-08.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-08.jpg",
           "bytes": 78694,
           "sha256": "aa2fc75c3a55920c6637e5cba90d62bf405cd949cd4f588416316561b7bc79fa",
           "dimensions": {
@@ -305,7 +305,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-09.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-09.jpg",
           "bytes": 82393,
           "sha256": "7dee3e1ad61bae53330a0858e6bf5cd8124c44f66aef61719ec0b0f4a7a350d1",
           "dimensions": {
@@ -314,7 +314,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-10.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-10.jpg",
           "bytes": 68235,
           "sha256": "cbe62c08b952aaeb3f588a83fe1c932cccc35c8140eb4fd8b888ef10b52045d9",
           "dimensions": {
@@ -323,7 +323,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-11.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-11.jpg",
           "bytes": 64887,
           "sha256": "7f807bf1c6e992e3f4c6ecb16742b3913fe7dceb76cd495a690a78afb4190440",
           "dimensions": {
@@ -332,7 +332,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-12.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-12.jpg",
           "bytes": 70174,
           "sha256": "79e4bb56aa2f2cf767f424e9a04aa29065fb67eebc4a452cf2210fdf6fe6c6f0",
           "dimensions": {
@@ -341,7 +341,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-13.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-13.jpg",
           "bytes": 53463,
           "sha256": "7edf21126209ed9c055f1025619e481dc0e88b3752c228d0cde1d4b5b5f72f42",
           "dimensions": {
@@ -350,7 +350,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-14.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-14.jpg",
           "bytes": 57121,
           "sha256": "8aa9ec956218684b6a43f12dac559e06c62c53b4ea2b523a10e2cd0dd949e182",
           "dimensions": {
@@ -359,7 +359,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-15.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-15.jpg",
           "bytes": 83460,
           "sha256": "63befdb49a80aaf1b6c83831ade50905125aa5558f1a9799c47208a91f293218",
           "dimensions": {
@@ -368,7 +368,7 @@
           }
         },
         {
-          "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-16.jpg",
+          "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-anexo-l-images/argentina-gob-ar-anexo-l-16.jpg",
           "bytes": 13942,
           "sha256": "88a313ed1b6541191b79815cbdc150e7258611f6b8758d9a52738eab5a1048c3",
           "dimensions": {
@@ -386,11 +386,11 @@
       "issuer": "Agencia Nacional de Seguridad Vial / Argentina.gob.ar",
       "sourceType": "archived-official-pdf",
       "sourceUrl": "https://www.argentina.gob.ar/sites/default/files/2022/02/ansv_licencias_manual_senaletica_2.pdf",
-      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
+      "archivedPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
       "officialStatusBasis": "Official Argentina.gob.ar hosted ANSV sign catalog PDF archived for evaluation.",
       "pageCount": 27,
       "hashAlgorithm": "sha256",
-      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-ansv-licencias-manual-senaletica-2.pdf",
       "bytes": 1111211,
       "mtime": "2026-06-07T21:21:39.570Z",
       "sha256": "b2b387e22cd67777ccc8688da396d4d0fbc8af951265fb9f14030a76289eb6a2",
@@ -403,11 +403,11 @@
       "issuer": "Argentina.gob.ar",
       "sourceType": "archived-official-pdf",
       "sourceUrl": "https://www.argentina.gob.ar/normativa/30389_dec196-3_pdf/archivo",
-      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
+      "archivedPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
       "officialStatusBasis": "Official Argentina.gob.ar legal archive PDF downloaded for evaluation.",
       "pageCount": 70,
       "hashAlgorithm": "sha256",
-      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/argentina-gob-ar-decreto-779-1995-anexo-articulo-22-archivo.pdf",
       "bytes": 1698626,
       "mtime": "2026-06-07T21:21:39.885Z",
       "sha256": "835a7709649da45456cf752008e369ecb0643554b5ac934e0ec5824286a9c6be",
@@ -446,11 +446,11 @@
       "issuer": "Gobierno de la Ciudad Autonoma de Buenos Aires",
       "sourceType": "archived-official-gcba-pdf",
       "sourceUrl": "https://buenosaires.gob.ar/areas/planeamiento_obras/licitations/web/uploads/82c01107e6211ae413694ce564d255a3.pdf",
-      "archivedPath": "content/official-documents/originals/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
+      "archivedPath": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
       "officialStatusBasis": "Public GCBA-hosted PDF archived for evaluation as a possible local signage variant source.",
       "pageCount": 52,
       "hashAlgorithm": "sha256",
-      "path": "content/official-documents/originals/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
+      "path": "specs/037-manual-sign-crop-resolution/evidence/source-evaluation/archived-sources/traffic-sign-source-evaluation-037/gcba-planeamiento-obras-licitations-82c01107e6211ae413694ce564d255a3.pdf",
       "bytes": 892473,
       "mtime": "2026-06-07T21:24:18.634Z",
       "sha256": "d29ada6d7f34e7ac8806ef95b8eb82622438f1f4c70dd22391f54927dd9e4ed8",
