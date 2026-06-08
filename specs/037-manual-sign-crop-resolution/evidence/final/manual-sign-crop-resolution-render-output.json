@@ -24,6 +24,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.012821,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0.051282
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -87,6 +94,13 @@
         "width" : 74,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0.044872
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -152,6 +166,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.038462,
+        "rightMeaningfulPixelRatio" : 0.00641,
+        "topMeaningfulPixelRatio" : 0.051282
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -215,6 +236,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.051282,
+        "topMeaningfulPixelRatio" : 0.038462
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -280,6 +308,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.057692,
+        "rightMeaningfulPixelRatio" : 0.00641,
+        "topMeaningfulPixelRatio" : 0.044872
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -343,6 +378,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.044872,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.012821,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -408,6 +450,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.057692,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -471,6 +520,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.044872,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.044872,
+        "rightMeaningfulPixelRatio" : 0.019231,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -536,6 +592,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.044872,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -599,6 +662,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.069182,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.069182
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
@@ -664,6 +734,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019231,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0.057692
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -727,6 +804,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0.064103
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -792,6 +876,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.038462,
+        "rightMeaningfulPixelRatio" : 0.019231,
+        "topMeaningfulPixelRatio" : 0.064103
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -855,6 +946,13 @@
         "width" : 80,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0.057692
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -920,6 +1018,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.057692,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.057692
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -983,6 +1088,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.019231,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019231,
+        "rightMeaningfulPixelRatio" : 0.038462,
+        "topMeaningfulPixelRatio" : 0.019231
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -1048,6 +1160,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0.012821
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -1111,6 +1230,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.032051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.038462,
+        "rightMeaningfulPixelRatio" : 0.00641,
+        "topMeaningfulPixelRatio" : 0.025641
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -1176,6 +1302,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.512821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 73,
         "width" : 91,
@@ -1239,6 +1372,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.676329,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 73,
@@ -1304,6 +1444,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.012821,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0.051282
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -1367,6 +1514,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0.044872
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -1432,6 +1586,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.938776,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.185654,
+        "rightMeaningfulPixelRatio" : 0.337553,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 79,
         "width" : 49,
@@ -1495,6 +1656,13 @@
         "width" : 96,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.945578,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.316456,
+        "rightMeaningfulPixelRatio" : 0.303797,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 79,
@@ -1560,6 +1728,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.057692,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.044872
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -1623,6 +1798,13 @@
         "width" : 96,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.938776,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.345992,
+        "rightMeaningfulPixelRatio" : 0.2827,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 79,
@@ -1688,6 +1870,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.070513,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0.045752
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 51,
@@ -1751,6 +1940,13 @@
         "width" : 66,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.032051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -1816,6 +2012,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.038462,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -1879,6 +2082,13 @@
         "width" : 86,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.00641,
+        "rightMeaningfulPixelRatio" : 0.051282,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -1944,6 +2154,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.051282,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -2007,6 +2224,13 @@
         "width" : 108,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.025641,
+        "rightMeaningfulPixelRatio" : 0.032051,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -2072,6 +2296,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.070513,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.058824,
+        "topMeaningfulPixelRatio" : 0.064103
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
         "width" : 52,
@@ -2135,6 +2366,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.064103,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.045752,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.064103
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
@@ -2200,14 +2438,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.174074,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 103,
+        "height" : 52,
         "width" : 90,
         "x" : 0,
         "y" : 72
       },
       "cropRectAtRenderScale" : {
-        "height" : 103,
+        "height" : 52,
         "width" : 90,
         "x" : 1452,
         "y" : 1847
@@ -2223,7 +2468,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "b7e17103503472fc548c8c7f1f94b649d48fbd56c88e24a5285950511aca4b3a",
+      "outputSha256" : "8f9d68ce6f3b2a4e29a9d33a236a594fe1edc5377ee4d4f913998f6a863d5f28",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 258,
       "requiredMinimumWidth" : 270,
@@ -2235,12 +2480,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 103,
+        "height" : 52,
         "width" : 90,
         "x" : 1452,
         "y" : 1847
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 150,
@@ -2264,14 +2509,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.51087,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 92,
         "x" : 0,
         "y" : 115
       },
       "cropRectAtRenderScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 92,
         "x" : 1534,
         "y" : 1847
@@ -2287,7 +2539,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "1c2f09d610efaa0e6ec0bcb91305306a1589f3313fb6255197eb891e591e15a9",
+      "outputSha256" : "e8725d00f16a4721f6b02c6281c4e9e14d87eed66ad550a35cda125afe64ea4e",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 450,
       "requiredMinimumWidth" : 276,
@@ -2299,12 +2551,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 92,
         "x" : 1534,
         "y" : 1847
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 150,
@@ -2328,14 +2580,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.54902,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 85,
         "x" : 0,
         "y" : 115
       },
       "cropRectAtRenderScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 85,
         "x" : 1620,
         "y" : 1847
@@ -2351,7 +2610,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "4f9101621ec2a700a0c847201c9669a8f2549597d910f209e852343bbf3bd6a7",
+      "outputSha256" : "723ded07ad92563cdad49ce0d9cc082aec4fc3ac38865b95235b0a40551f97ee",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 450,
       "requiredMinimumWidth" : 312,
@@ -2363,12 +2622,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 177,
+        "height" : 86,
         "width" : 85,
         "x" : 1620,
         "y" : 1847
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 104,
@@ -2391,6 +2650,13 @@
         "width" : 106,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0.032051
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -2456,6 +2722,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.038462,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.038462
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -2519,6 +2792,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0.038462
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -2584,6 +2864,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.057692,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.038462
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -2648,14 +2935,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.276923,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 110,
+        "height" : 52,
         "width" : 65,
         "x" : 3,
         "y" : 87
       },
       "cropRectAtRenderScale" : {
-        "height" : 110,
+        "height" : 52,
         "width" : 65,
         "x" : 1627,
         "y" : 1966
@@ -2671,7 +2965,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "e49c37a702fde8771bc0969a866036dfb70f92c065c1e6a9a9b19bb40571d6f4",
+      "outputSha256" : "033af3f1cc01bfa0bbc9c9bd05c2dd407dbdcb187195c15620370ccfdee32227",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 312,
       "requiredMinimumWidth" : 276,
@@ -2683,12 +2977,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 110,
+        "height" : 52,
         "width" : 65,
         "x" : 1627,
         "y" : 1966
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 104,
@@ -2712,14 +3006,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.165165,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 137,
+        "height" : 52,
         "width" : 111,
         "x" : 15,
         "y" : 65
       },
       "cropRectAtRenderScale" : {
-        "height" : 137,
+        "height" : 52,
         "width" : 111,
         "x" : 1269,
         "y" : 2051
@@ -2735,7 +3036,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "fc240c86d6b66142e763b4e487340099ec114a285f08758da14af89e7f114888",
+      "outputSha256" : "de7d5882fe3c5e599a222b9c9b9dbaa837204c6a300d0377667db8ca8a3ad79a",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 312,
       "requiredMinimumWidth" : 294,
@@ -2747,12 +3048,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 137,
+        "height" : 52,
         "width" : 111,
         "x" : 1269,
         "y" : 2051
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 92,
@@ -2775,6 +3076,13 @@
         "width" : 94,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.044872,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -2840,6 +3148,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.051282,
+        "topMeaningfulPixelRatio" : 0.025641
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -2903,6 +3218,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.051282,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.032051
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -2968,14 +3290,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.276923,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 89,
+        "height" : 52,
         "width" : 65,
         "x" : 2,
         "y" : 72
       },
       "cropRectAtRenderScale" : {
-        "height" : 89,
+        "height" : 52,
         "width" : 65,
         "x" : 1626,
         "y" : 2051
@@ -2991,7 +3320,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "13f43a1e4580848539b382dcb926f64cf6cdd2dd47146b24e12771b24b74faf9",
+      "outputSha256" : "a6d19c1bc6dac30d6c97f977a7189bd6324321f73b6a3636c46736a5d8030499",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 336,
       "requiredMinimumWidth" : 306,
@@ -3003,12 +3332,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 89,
+        "height" : 52,
         "width" : 65,
         "x" : 1626,
         "y" : 2051
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 82,
@@ -3031,6 +3360,13 @@
         "width" : 72,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 65,
@@ -3096,6 +3432,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.005952,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.02,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 56,
@@ -3160,16 +3503,23 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.978723,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.320175,
+        "rightMeaningfulPixelRatio" : 0.350877,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 102,
-        "width" : 102,
-        "x" : 0,
+        "height" : 76,
+        "width" : 47,
+        "x" : 14,
         "y" : 108
       },
       "cropRectAtRenderScale" : {
-        "height" : 102,
-        "width" : 102,
-        "x" : 1450,
+        "height" : 76,
+        "width" : 47,
+        "x" : 1464,
         "y" : 2188
       },
       "entryKind" : "catalog-entry",
@@ -3183,7 +3533,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "e2afe0dfe345e7797312cca4a576617c56a9fe1e9025c3c7640f210e6d78d63b",
+      "outputSha256" : "c014705e83aa07b2ef60515d128922534632062496838620c9743208900c0cb0",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 372,
       "requiredMinimumWidth" : 306,
@@ -3195,12 +3545,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 102,
-        "width" : 102,
-        "x" : 1450,
+        "height" : 76,
+        "width" : 47,
+        "x" : 1464,
         "y" : 2188
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 84,
@@ -3223,6 +3573,13 @@
         "width" : 86,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -3288,14 +3645,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.212121,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 105,
+        "height" : 52,
         "width" : 77,
         "x" : 0,
         "y" : 98
       },
       "cropRectAtRenderScale" : {
-        "height" : 105,
+        "height" : 52,
         "width" : 77,
         "x" : 1624,
         "y" : 2184
@@ -3311,7 +3675,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "0316a252d3d0f3a24cd34ed1713888a26bc66e26edd97de6b29a2df1a19e6405",
+      "outputSha256" : "02110155c4aa527d010d8ecf1030a80b1de3b161fa67cc2a394bc5c5b055ea17",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 354,
       "requiredMinimumWidth" : 312,
@@ -3323,12 +3687,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 105,
+        "height" : 52,
         "width" : 77,
         "x" : 1624,
         "y" : 2184
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 108,
@@ -3352,14 +3716,21 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.276423,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
-        "height" : 113,
+        "height" : 41,
         "width" : 123,
         "x" : 19,
         "y" : 86
       },
       "cropRectAtRenderScale" : {
-        "height" : 113,
+        "height" : 41,
         "width" : 123,
         "x" : 1277,
         "y" : 2295
@@ -3375,7 +3746,7 @@
       "outputPixelScaleRatioWidth" : 3,
       "outputPixelTargetRatioHeight" : 1,
       "outputPixelTargetRatioWidth" : 1,
-      "outputSha256" : "626a64f6cde94c26e557c596a5c65bbfdaaa5ad3911de87b4c6b7f312b845636",
+      "outputSha256" : "dccb0af88c36ec739e7d17996bed4c3344940a020420659db26525e1a84ed8ee",
       "renderMode" : "individual-source-crop-3x",
       "requiredMinimumHeight" : 324,
       "requiredMinimumWidth" : 288,
@@ -3387,12 +3758,12 @@
       "sourcePage" : 186,
       "sourcePdfPath" : "content/official-documents/originals/gcba-manual-vehiculo-4-ruedas-2023.pdf",
       "sourceRegionAtBaseScale" : {
-        "height" : 113,
+        "height" : 41,
         "width" : 123,
         "x" : 1277,
         "y" : 2295
       },
-      "tailTrimMode" : "preserve-colorless-lower-attachment"
+      "tailTrimMode" : "preserve-colorless-lower-attachment-trim-detached-source-label"
     },
     {
       "baselineCropNaturalHeight" : 100,
@@ -3415,6 +3786,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -3480,6 +3858,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.051282,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.058824,
+        "topMeaningfulPixelRatio" : 0.057692
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
         "width" : 52,
@@ -3543,6 +3928,13 @@
         "width" : 75,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.239437,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -3608,6 +4000,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.28169,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 68,
@@ -3671,6 +4070,13 @@
         "width" : 75,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.295775,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -3736,6 +4142,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.295775,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 68,
@@ -3799,6 +4212,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.014085,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -3864,6 +4284,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.004762,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.019048,
+        "topMeaningfulPixelRatio" : 0.004762
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -3927,6 +4354,13 @@
         "width" : 79,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014286,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -3992,6 +4426,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.009524,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.004762
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -4055,6 +4496,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.004762,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019048,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.004762
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -4120,6 +4568,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.009524,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -4183,6 +4638,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.014085,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -4248,6 +4710,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.00939,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 70,
@@ -4311,6 +4780,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -4376,6 +4852,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 71,
@@ -4439,6 +4922,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.014085,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -4504,6 +4994,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.014286,
+        "topMeaningfulPixelRatio" : 0.004762
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -4567,6 +5064,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.004762
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -4632,6 +5136,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 70,
@@ -4695,6 +5206,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.014286,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.004762
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -4760,6 +5278,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.014286,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.009524
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -4823,6 +5348,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014286,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.019048,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -4888,6 +5420,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014286,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -4951,6 +5490,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.009524,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5016,6 +5562,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014085,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 71,
@@ -5079,6 +5632,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.009524,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5144,6 +5704,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.014286,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -5207,6 +5774,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5272,6 +5846,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.126761,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 67,
@@ -5335,6 +5916,13 @@
         "width" : 74,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.126761,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -5400,6 +5988,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 70,
@@ -5463,6 +6058,13 @@
         "width" : 74,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.098592,
+        "rightMeaningfulPixelRatio" : 0.014085,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
@@ -5528,6 +6130,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014493,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.042857,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 69,
@@ -5591,6 +6200,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.019048,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.014286,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5656,6 +6272,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.014085,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 71,
@@ -5719,6 +6342,13 @@
         "width" : 94,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.019048,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5784,6 +6414,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.089202,
+        "rightMeaningfulPixelRatio" : 0.065728,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 71,
         "width" : 65,
@@ -5847,6 +6484,13 @@
         "width" : 91,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.0199,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.109524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -5912,6 +6556,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00463,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.015873,
+        "topMeaningfulPixelRatio" : 0.013889
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 63,
         "width" : 72,
@@ -5975,6 +6626,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.069767,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 30,
@@ -6040,6 +6698,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.142857,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 35,
         "width" : 42,
@@ -6103,6 +6768,13 @@
         "width" : 86,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.569892,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.125926,
+        "rightMeaningfulPixelRatio" : 0.133333,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 45,
@@ -6168,6 +6840,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.347222,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 48,
         "width" : 83,
@@ -6231,6 +6910,13 @@
         "width" : 101,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.25,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.479853
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 32,
@@ -6296,6 +6982,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.02,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.011905
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 56,
@@ -6359,6 +7052,13 @@
         "width" : 64,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.006667,
+        "rightMeaningfulPixelRatio" : 0.013333,
+        "topMeaningfulPixelRatio" : 0.011905
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
@@ -6424,6 +7124,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.547619,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.013333,
+        "rightMeaningfulPixelRatio" : 0.013333,
+        "topMeaningfulPixelRatio" : 0.011905
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 56,
@@ -6487,6 +7194,13 @@
         "width" : 64,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.017544
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
@@ -6552,6 +7266,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.588235,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.544444,
+        "rightMeaningfulPixelRatio" : 0.266667,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 30,
         "width" : 51,
@@ -6615,6 +7336,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.085714,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -6680,6 +7408,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -6743,6 +7478,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019048,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -6808,6 +7550,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009524,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 70,
@@ -6871,6 +7620,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.107843,
+        "rightMeaningfulPixelRatio" : 0.04902,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 68,
@@ -6936,6 +7692,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.260684,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 77,
         "width" : 78,
@@ -6999,6 +7762,13 @@
         "width" : 75,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.272727,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.272727,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 77,
@@ -7064,6 +7834,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.926667,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 100,
@@ -7127,6 +7904,13 @@
         "width" : 62,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.259259,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
@@ -7192,6 +7976,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.228758,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.864198,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
         "width" : 51,
@@ -7255,6 +8046,13 @@
         "width" : 91,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.816239,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 78,
@@ -7320,6 +8118,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.74902,
+        "rightMeaningfulPixelRatio" : 0.105882,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 85,
         "width" : 86,
@@ -7383,6 +8188,13 @@
         "width" : 119,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.848958,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.111111,
+        "rightMeaningfulPixelRatio" : 0.658436,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 81,
@@ -7448,6 +8260,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 109,
         "width" : 143,
@@ -7511,6 +8330,13 @@
         "width" : 83,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.057692,
+        "topMeaningfulPixelRatio" : 0.057692
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -7576,6 +8402,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.057692,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.057692
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -7639,6 +8472,13 @@
         "width" : 95,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.032051,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.064103
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -7704,6 +8544,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.288462,
+        "topMeaningfulPixelRatio" : 0.288462
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -7767,6 +8614,13 @@
         "width" : 86,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.294872
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -7832,6 +8686,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.282051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.282051,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -7895,6 +8756,13 @@
         "width" : 93,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.282051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.275641,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -7960,6 +8828,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.282051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -8023,6 +8898,13 @@
         "width" : 91,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.294118,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.275641,
+        "rightMeaningfulPixelRatio" : 0.288462,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -8088,6 +8970,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.282051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -8151,6 +9040,13 @@
         "width" : 83,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.288462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.287582,
+        "topMeaningfulPixelRatio" : 0.275641
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
@@ -8216,6 +9112,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.252874,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.282051
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 29,
         "width" : 52,
@@ -8279,6 +9182,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.011494,
+        "topMeaningfulPixelRatio" : 0.282051
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 29,
@@ -8344,6 +9254,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.056604,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 52,
@@ -8407,6 +9324,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.037736,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -8472,6 +9396,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.032051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.032051,
+        "rightMeaningfulPixelRatio" : 0.019231,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -8535,6 +9466,13 @@
         "width" : 89,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.044872,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -8600,6 +9538,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.025641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.070513,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -8663,6 +9608,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.038462,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019231,
+        "rightMeaningfulPixelRatio" : 0.00641,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -8728,6 +9680,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.064103,
+        "topMeaningfulPixelRatio" : 0.00641
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 52,
@@ -8791,6 +9750,13 @@
         "width" : 75,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.062893,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -8856,6 +9822,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.012579,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 52,
@@ -8919,6 +9892,13 @@
         "width" : 74,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.069182,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -8984,6 +9964,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.371648,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 87,
@@ -9047,6 +10034,13 @@
         "width" : 72,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -9112,6 +10106,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 38,
@@ -9175,6 +10176,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.298969,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
@@ -9240,6 +10248,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.32197,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
         "width" : 88,
@@ -9303,6 +10318,13 @@
         "width" : 90,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.134503,
+        "rightMeaningfulPixelRatio" : 0.403509,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 57,
@@ -9368,6 +10390,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.403509,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 57,
         "width" : 50,
@@ -9431,6 +10460,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 30,
@@ -9496,6 +10532,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.072727,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 55,
         "width" : 69,
@@ -9559,6 +10602,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 30,
@@ -9624,6 +10674,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.719577,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 27,
         "width" : 63,
@@ -9687,6 +10744,13 @@
         "width" : 85,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.215962,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 44,
@@ -9752,6 +10816,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.159722,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 34,
         "width" : 48,
@@ -9815,6 +10886,13 @@
         "width" : 72,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.506173,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 31,
@@ -9880,6 +10958,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.531401,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 69,
         "width" : 115,
@@ -9943,6 +11028,13 @@
         "width" : 138,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.934708,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 40,
@@ -10008,6 +11100,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 115,
         "width" : 97,
@@ -10071,6 +11170,13 @@
         "width" : 110,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.912281,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 50,
@@ -10136,6 +11242,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.112613,
+        "rightMeaningfulPixelRatio" : 0.490991,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
         "width" : 93,
@@ -10199,6 +11312,13 @@
         "width" : 98,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.006873,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.019608,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.003436
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
@@ -10264,6 +11384,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 51,
         "width" : 97,
@@ -10327,6 +11454,13 @@
         "width" : 83,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.074074,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 58,
@@ -10392,6 +11526,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.215054,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.006944,
+        "rightMeaningfulPixelRatio" : 0.263889,
+        "topMeaningfulPixelRatio" : 0.304659
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 48,
         "width" : 93,
@@ -10455,6 +11596,13 @@
         "width" : 72,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.288889,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -10520,6 +11668,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.269231,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.293333,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -10583,6 +11738,13 @@
         "width" : 83,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.013333,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -10648,6 +11810,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.271111,
+        "rightMeaningfulPixelRatio" : 0.288889,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -10711,6 +11880,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.026667,
+        "rightMeaningfulPixelRatio" : 0.297778,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -10776,6 +11952,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.275641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.288288,
+        "topMeaningfulPixelRatio" : 0.269231
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
         "width" : 52,
@@ -10839,6 +12022,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.275641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.297297,
+        "topMeaningfulPixelRatio" : 0.275641
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
@@ -10904,6 +12094,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.275641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.018018,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.275641
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
         "width" : 52,
@@ -10967,6 +12164,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.282051,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.274775,
+        "rightMeaningfulPixelRatio" : 0.292793,
+        "topMeaningfulPixelRatio" : 0.173077
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
@@ -11032,6 +12236,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.281046,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.027027,
+        "rightMeaningfulPixelRatio" : 0.297297,
+        "topMeaningfulPixelRatio" : 0.281046
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
         "width" : 51,
@@ -11095,6 +12306,13 @@
         "width" : 72,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.288889,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11160,6 +12378,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.293333,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11223,6 +12448,13 @@
         "width" : 92,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.017778,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.012821
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11288,6 +12520,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.28,
+        "rightMeaningfulPixelRatio" : 0.288889,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11351,6 +12590,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.013072,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.017778,
+        "rightMeaningfulPixelRatio" : 0.297778,
+        "topMeaningfulPixelRatio" : 0.006536
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11416,6 +12662,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.008889,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11479,6 +12732,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.128205,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.004444,
+        "rightMeaningfulPixelRatio" : 0.022222,
+        "topMeaningfulPixelRatio" : 0.00641
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11544,6 +12804,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.00641,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.017778,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11607,6 +12874,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.28,
+        "rightMeaningfulPixelRatio" : 0.284444,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11672,6 +12946,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012821,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.297778,
+        "topMeaningfulPixelRatio" : 0.00641
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11735,6 +13016,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
@@ -11800,6 +13088,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.008889,
+        "topMeaningfulPixelRatio" : 0.012821
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 52,
@@ -11863,6 +13158,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.297778,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -11928,6 +13230,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.084615,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 130,
         "width" : 90,
@@ -11991,6 +13300,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.28,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.00641
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -12056,6 +13372,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 50,
@@ -12119,6 +13442,13 @@
         "width" : 50,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.614286,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -12184,6 +13514,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.619048,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 46,
@@ -12247,6 +13584,13 @@
         "width" : 50,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.857143,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -12312,6 +13656,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.819048,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 48,
@@ -12375,6 +13726,13 @@
         "width" : 50,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.561905,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -12440,6 +13798,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.857143,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 48,
@@ -12503,6 +13868,13 @@
         "width" : 50,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.619048,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -12568,6 +13940,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.416667,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 46,
         "width" : 92,
@@ -12631,6 +14010,13 @@
         "width" : 235,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.847545,
+        "rightMeaningfulPixelRatio" : 0.828165,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 258,
@@ -12696,6 +14082,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.289308,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.295597,
+        "rightMeaningfulPixelRatio" : 0.295597,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 53,
@@ -12759,6 +14152,13 @@
         "width" : 61,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.283019,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.295597,
+        "rightMeaningfulPixelRatio" : 0.295597,
+        "topMeaningfulPixelRatio" : 0.283019
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -12824,6 +14224,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.278539,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 39,
         "width" : 73,
@@ -12887,6 +14294,13 @@
         "width" : 62,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.283951,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.289308,
+        "topMeaningfulPixelRatio" : 0.290123
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -12952,6 +14366,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.283951,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
         "width" : 53,
@@ -13015,6 +14436,13 @@
         "width" : 64,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.277778,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.295597,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.290123
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
@@ -13080,6 +14508,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.283951,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.283019,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.290123
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 54,
@@ -13143,6 +14578,13 @@
         "width" : 68,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.290123,
+        "topMeaningfulPixelRatio" : 0.296296
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
@@ -13208,6 +14650,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.012346,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.006173,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 54,
         "width" : 54,
@@ -13271,6 +14720,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.283105,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.225,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 40,
@@ -13336,6 +14792,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.018868,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.018868,
+        "rightMeaningfulPixelRatio" : 0.012579,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 53,
@@ -13399,6 +14862,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.252252,
+        "topMeaningfulPixelRatio" : 0.283582
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 37,
@@ -13464,6 +14934,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 84,
         "width" : 62,
@@ -13527,6 +15004,13 @@
         "width" : 78,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 62,
@@ -13592,6 +15076,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 69,
         "width" : 67,
@@ -13655,6 +15146,13 @@
         "width" : 69,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 58,
@@ -13720,6 +15218,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 58,
         "width" : 64,
@@ -13783,6 +15288,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 66,
@@ -13848,6 +15360,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.037634,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.257576,
+        "rightMeaningfulPixelRatio" : 0.25,
+        "topMeaningfulPixelRatio" : 0.290323
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 44,
         "width" : 62,
@@ -13911,6 +15430,13 @@
         "width" : 80,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.053333,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -13976,6 +15502,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 60,
         "width" : 71,
@@ -14039,6 +15572,13 @@
         "width" : 71,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 68,
@@ -14104,6 +15644,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 68,
         "width" : 67,
@@ -14167,6 +15714,13 @@
         "width" : 55,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 95,
@@ -14232,6 +15786,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 81,
         "width" : 61,
@@ -14295,6 +15856,13 @@
         "width" : 66,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 81,
@@ -14360,6 +15928,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 72,
         "width" : 46,
@@ -14423,6 +15998,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 91,
@@ -14488,6 +16070,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 91,
         "width" : 69,
@@ -14551,6 +16140,13 @@
         "width" : 66,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 79,
@@ -14616,6 +16212,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 59,
         "width" : 42,
@@ -14679,6 +16282,13 @@
         "width" : 70,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 59,
@@ -14744,6 +16354,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 93,
         "width" : 70,
@@ -14807,6 +16424,13 @@
         "width" : 74,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 82,
@@ -14872,6 +16496,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.183673,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 79,
         "width" : 49,
@@ -14935,6 +16566,13 @@
         "width" : 68,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.205674,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.016129,
+        "rightMeaningfulPixelRatio" : 0.005376,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 62,
@@ -15000,6 +16638,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.372549,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.1,
+        "topMeaningfulPixelRatio" : 0.245098
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 40,
         "width" : 68,
@@ -15063,6 +16708,13 @@
         "width" : 88,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.195556,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
@@ -15128,6 +16780,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 85,
         "width" : 49,
@@ -15191,6 +16850,13 @@
         "width" : 76,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 62,
@@ -15256,6 +16922,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 66,
         "width" : 50,
@@ -15319,6 +16992,13 @@
         "width" : 66,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 55,
@@ -15384,6 +17064,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
         "width" : 75,
@@ -15447,6 +17134,13 @@
         "width" : 86,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.120879,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 46,
@@ -15512,6 +17206,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 53,
         "width" : 41,
@@ -15575,6 +17276,13 @@
         "width" : 68,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.972222,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.361905,
+        "rightMeaningfulPixelRatio" : 0.447619,
+        "topMeaningfulPixelRatio" : 0.111111
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 35,
@@ -15640,6 +17348,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.171875,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 56,
         "width" : 64,
@@ -15703,6 +17418,13 @@
         "width" : 82,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.281609,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.009259,
+        "rightMeaningfulPixelRatio" : 0.013889,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 72,
@@ -15768,6 +17490,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.27451,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.130719
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
         "width" : 51,
@@ -15831,6 +17560,13 @@
         "width" : 64,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.642857,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 52,
@@ -15896,6 +17632,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.774074,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 49,
         "width" : 180,
@@ -15959,6 +17702,13 @@
         "width" : 175,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.294785,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.005556,
+        "rightMeaningfulPixelRatio" : 0.005556,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 60,
@@ -16024,6 +17774,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.004415,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.071111,
+        "rightMeaningfulPixelRatio" : 0.04,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 75,
         "width" : 151,
@@ -16087,6 +17844,13 @@
         "width" : 182,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.012821,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.516074
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 78,
@@ -16152,6 +17916,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 69,
         "width" : 218,
@@ -16215,6 +17986,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.620614,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 138,
@@ -16280,6 +18058,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
         "width" : 220,
@@ -16343,6 +18128,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -16408,6 +18200,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.439614,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 64,
         "width" : 138,
@@ -16471,6 +18270,13 @@
         "width" : 165,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.05977,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 80,
@@ -16536,6 +18342,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.007246,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 137,
         "width" : 138,
@@ -16599,6 +18412,13 @@
         "width" : 165,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.517241,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.01182,
+        "rightMeaningfulPixelRatio" : 0.004728,
+        "topMeaningfulPixelRatio" : 0.133333
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 141,
@@ -16664,6 +18484,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.07381
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 76,
         "width" : 140,
@@ -16727,6 +18554,13 @@
         "width" : 175,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 77,
@@ -16792,6 +18626,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.190278,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.015625,
+        "rightMeaningfulPixelRatio" : 0.635417,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 64,
         "width" : 240,
@@ -16855,6 +18696,13 @@
         "width" : 165,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 80,
@@ -16920,6 +18768,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.193056,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.005208,
+        "rightMeaningfulPixelRatio" : 0.640625,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 64,
         "width" : 240,
@@ -16983,6 +18838,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.107407,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 98,
@@ -17048,6 +18910,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 63,
         "width" : 132,
@@ -17111,6 +18980,13 @@
         "width" : 145,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.037037,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 70,
@@ -17176,6 +19052,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 63,
         "width" : 131,
@@ -17239,6 +19122,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.128736,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 46,
@@ -17304,6 +19194,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 63,
         "width" : 131,
@@ -17367,6 +19264,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.078161,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 46,
@@ -17432,6 +19336,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.462025,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.007576,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 132,
         "width" : 158,
@@ -17495,6 +19406,13 @@
         "width" : 155,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.155419,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 142,
@@ -17560,6 +19478,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 57,
         "width" : 162,
@@ -17623,6 +19548,13 @@
         "width" : 150,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 74,
@@ -17688,6 +19620,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.009195,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 46,
         "width" : 145,
@@ -17751,6 +19690,13 @@
         "width" : 306,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0.211765,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 170,
@@ -17816,6 +19762,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 117,
         "width" : 166,
@@ -17879,6 +19832,13 @@
         "width" : 36,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 331,
@@ -17944,6 +19904,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.326711,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0.280702,
+        "rightMeaningfulPixelRatio" : 0.263158,
+        "topMeaningfulPixelRatio" : 0.326711
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 38,
         "width" : 302,
@@ -18007,6 +19974,13 @@
         "width" : 105,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0.449438,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 41,
@@ -18072,6 +20046,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0.43956
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 44,
         "width" : 91,
@@ -18135,6 +20116,13 @@
         "width" : 155,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 95,
@@ -18200,6 +20188,13 @@
         "x" : 0,
         "y" : 0
       },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
+      },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 161,
         "width" : 151,
@@ -18263,6 +20258,13 @@
         "width" : 176,
         "x" : 0,
         "y" : 0
+      },
+      "contentEdgeProfileAtCandidateScale" : {
+        "bottomMeaningfulPixelRatio" : 0,
+        "edgeBandSize" : 3,
+        "leftMeaningfulPixelRatio" : 0,
+        "rightMeaningfulPixelRatio" : 0,
+        "topMeaningfulPixelRatio" : 0
       },
       "contentTrimBoundsAtCandidateScale" : {
         "height" : 120,

@@ -1111,7 +1111,7 @@
         "width": 90,
         "height": 86
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1143,7 +1143,7 @@
         "width": 92,
         "height": 150
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1175,7 +1175,7 @@
         "width": 104,
         "height": 150
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1335,7 +1335,7 @@
         "width": 92,
         "height": 104
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1367,7 +1367,7 @@
         "width": 98,
         "height": 104
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1495,7 +1495,7 @@
         "width": 102,
         "height": 112
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1591,7 +1591,7 @@
         "width": 102,
         "height": 124
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1655,7 +1655,7 @@
         "width": 104,
         "height": 118
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,
@@ -1687,7 +1687,7 @@
         "width": 96,
         "height": 108
       },
-      "tailTrimMode": "preserve-colorless-lower-attachment",
+      "tailTrimMode": "preserve-colorless-lower-attachment-trim-detached-source-label",
       "cardTrimBoundsAtCardRenderScale": {
         "x": 0,
         "y": 0,

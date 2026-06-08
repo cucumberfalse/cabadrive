@@ -43,6 +43,14 @@ struct SizeRecord: Codable {
   let height: Int
 }
 
+struct ContentEdgeProfileRecord: Codable {
+  let edgeBandSize: Int
+  let leftMeaningfulPixelRatio: Double
+  let rightMeaningfulPixelRatio: Double
+  let topMeaningfulPixelRatio: Double
+  let bottomMeaningfulPixelRatio: Double
+}
+
 struct PixelComponent {
   var minX: Int
   var minY: Int
@@ -66,6 +74,7 @@ struct CropOutputRecord: Codable {
   let baselineCropRegionAtCandidateScale: BoundsRecord
   let sourceRegionAtBaseScale: BoundsRecord
   let contentTrimBoundsAtCandidateScale: BoundsRecord
+  let contentEdgeProfileAtCandidateScale: ContentEdgeProfileRecord
   let tailTrimMode: String
   let cardTrimBoundsAtCardRenderScale: BoundsRecord
   let cardRenderScale: Double
@@ -586,6 +595,76 @@ func trimDetachedHorizontalContent(_ bounds: BoundsRecord, mask: [Bool], anchorR
   )
 }
 
+func contentEdgeProfile(_ image: CGImage) throws -> ContentEdgeProfileRecord {
+  let width = image.width
+  let height = image.height
+  let bytesPerPixel = 4
+  let bytesPerRow = width * bytesPerPixel
+  var pixels = [UInt8](repeating: 255, count: bytesPerRow * height)
+  let colorSpace = CGColorSpaceCreateDeviceRGB()
+  guard let context = CGContext(
+    data: &pixels,
+    width: width,
+    height: height,
+    bitsPerComponent: 8,
+    bytesPerRow: bytesPerRow,
+    space: colorSpace,
+    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+  ) else {
+    throw NSError(domain: "cabadrive.manual.sign-crop", code: 22, userInfo: [NSLocalizedDescriptionKey: "Could not create edge-profile context"])
+  }
+  context.interpolationQuality = .none
+  context.setFillColor(CGColor(red: 1, green: 1, blue: 1, alpha: 1))
+  context.fill(CGRect(x: 0, y: 0, width: width, height: height))
+  context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+
+  let edgeBandSize = max(1, min(3, min(width, height)))
+  var leftMeaningful = 0
+  var rightMeaningful = 0
+  var topMeaningful = 0
+  var bottomMeaningful = 0
+
+  func isMeaningful(x: Int, y: Int) -> Bool {
+    let offset = y * bytesPerRow + x * bytesPerPixel
+    let red = pixels[offset]
+    let green = pixels[offset + 1]
+    let blue = pixels[offset + 2]
+    let alpha = pixels[offset + 3]
+    return alpha > 8 && (red < 245 || green < 245 || blue < 245)
+  }
+
+  for y in 0..<height {
+    for offset in 0..<edgeBandSize {
+      if isMeaningful(x: offset, y: y) {
+        leftMeaningful += 1
+      }
+      if isMeaningful(x: width - 1 - offset, y: y) {
+        rightMeaningful += 1
+      }
+    }
+  }
+  for x in 0..<width {
+    for offset in 0..<edgeBandSize {
+      if isMeaningful(x: x, y: offset) {
+        topMeaningful += 1
+      }
+      if isMeaningful(x: x, y: height - 1 - offset) {
+        bottomMeaningful += 1
+      }
+    }
+  }
+
+  let verticalEdgePixels = max(1, edgeBandSize * height)
+  let horizontalEdgePixels = max(1, edgeBandSize * width)
+  return ContentEdgeProfileRecord(
+    edgeBandSize: edgeBandSize,
+    leftMeaningfulPixelRatio: ratio(leftMeaningful, verticalEdgePixels),
+    rightMeaningfulPixelRatio: ratio(rightMeaningful, verticalEdgePixels),
+    topMeaningfulPixelRatio: ratio(topMeaningful, horizontalEdgePixels),
+    bottomMeaningfulPixelRatio: ratio(bottomMeaningful, horizontalEdgePixels)
+  )
+}
+
 func meaningfulContentBounds(_ image: CGImage, sectionId: String, tailTrimMode: String, anchorRect: BoundsRecord) throws -> BoundsRecord {
   let width = image.width
   let height = image.height
@@ -769,6 +848,7 @@ do {
     guard let sourceCrop = candidateCrop.cropping(to: sourceRect) else {
       throw NSError(domain: "cabadrive.manual.sign-crop", code: 21, userInfo: [NSLocalizedDescriptionKey: "Could not trim rendered crop for \(target.rowId)"])
     }
+    let edgeProfile = try contentEdgeProfile(sourceCrop)
     let image = try scaleCrop(sourceCrop, outputSize: SizeRecord(width: target.requiredMinimumWidth, height: target.requiredMinimumHeight))
     let data = try pngData(image)
     try ensureParentDirectory(target.outputAssetPath)
@@ -798,6 +878,7 @@ do {
         baselineCropRegionAtCandidateScale: target.baselineCropRegionAtCandidateScale,
         sourceRegionAtBaseScale: sourceRegion,
         contentTrimBoundsAtCandidateScale: contentTrim,
+        contentEdgeProfileAtCandidateScale: edgeProfile,
         tailTrimMode: target.tailTrimMode,
         cardTrimBoundsAtCardRenderScale: target.cardTrimBoundsAtCardRenderScale,
         cardRenderScale: target.cardRenderScale,

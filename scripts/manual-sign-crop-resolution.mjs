@@ -95,12 +95,21 @@ function regulatoryParkingAttachmentRow(row) {
   );
 }
 
+function regulatoryDetachedLabelAttachmentRow(row) {
+  const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
+  return (
+    row.sectionId === "app4-signs-regulatory" &&
+    (row.baselineCropNaturalHeight >= 110 ||
+      /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(searchable))
+  );
+}
+
 function tailTrimMode(row) {
   if (row.sectionId === "app4-signs-warning") {
     return "trim-external-catalog-label";
   }
   const searchable = `${row.id} ${row.spanishLabel ?? ""} ${row.variant ?? ""}`.toLowerCase();
-  if (regulatoryParkingAttachmentRow(row)) {
+  if (regulatoryDetachedLabelAttachmentRow(row)) {
     return "preserve-colorless-lower-attachment-trim-detached-source-label";
   }
   if (
@@ -308,6 +317,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const regulatoryCaudalesParkingRow =
     row.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(searchable);
   const regulatoryParkingAttachment = regulatoryParkingAttachmentRow(row);
+  const regulatoryDetachedLabelAttachment = regulatoryDetachedLabelAttachmentRow(row);
   const candidate = renderRecord.candidateRegionAtBaseScale;
   const trim = renderRecord.contentTrimBoundsAtCandidateScale;
   const edgeContact = {
@@ -330,6 +340,13 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const edgeContactMinimumRelativeHeightRatio = 0.35;
   const warningHorizontalEdgeMaximumRelativeWidthRatio = 0.92;
   const regulatoryParkingRightEdgeMaximumRelativeWidthRatio = 1.04;
+  const regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio = 1.04;
+  const regulatoryDetachedLabelMaximumRelativeHeightRatio = 0.82;
+  const regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio = 0.02;
+  const rightEdgeMeaningfulPixelRatio =
+    typeof renderRecord.contentEdgeProfileAtCandidateScale?.rightMeaningfulPixelRatio === "number"
+      ? renderRecord.contentEdgeProfileAtCandidateScale.rightMeaningfulPixelRatio
+      : 1;
   const standardSourceBoundsPass =
     renderRecord.sourceRegionAtBaseScale.width >= 12 &&
     renderRecord.sourceRegionAtBaseScale.height >= 12 &&
@@ -350,16 +367,30 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
   const regulatoryCaudalesRightEdgeGuardPass = !regulatoryCaudalesParkingRow || !edgeContact.right;
   const regulatoryCaudalesSourceLabelTrimPass =
     !regulatoryCaudalesParkingRow || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
+  const regulatoryDetachedLabelRightEdgeGuardPass =
+    !regulatoryDetachedLabelAttachment ||
+    !edgeContact.right ||
+    relativeSourceWidthRatio <= regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio ||
+    rightEdgeMeaningfulPixelRatio <= regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio;
+  const regulatoryDetachedLabelRightEdgePixelGuardPass =
+    !regulatoryDetachedLabelAttachment ||
+    !edgeContact.right ||
+    rightEdgeMeaningfulPixelRatio <= regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio;
+  const regulatoryDetachedLabelSourceLabelTrimPass =
+    !regulatoryDetachedLabelAttachment ||
+    relativeSourceHeightRatio <= regulatoryDetachedLabelMaximumRelativeHeightRatio;
   const regulatoryParkingRightEdgeGuardPass =
     !regulatoryParkingAttachment ||
-    !edgeContact.right ||
-    relativeSourceWidthRatio <= regulatoryParkingRightEdgeMaximumRelativeWidthRatio;
+    regulatoryDetachedLabelRightEdgeGuardPass;
   const regulatoryParkingSourceLabelTrimPass =
-    !regulatoryParkingAttachment || renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
+    !regulatoryParkingAttachment ||
+    renderRecord.sourceRegionAtBaseScale.height <= Math.ceil(row.baselineCropNaturalHeight * 0.72);
   const neighborContaminationGuardPass =
     (row.sectionId !== "app4-signs-warning" ||
       !horizontalEdgeContact ||
       (warningRightEdgeGuardPass && warningLeftEdgeGuardPass)) &&
+    regulatoryDetachedLabelRightEdgeGuardPass &&
+    regulatoryDetachedLabelSourceLabelTrimPass &&
     regulatoryParkingRightEdgeGuardPass &&
     regulatoryParkingSourceLabelTrimPass;
   const edgeContactPass =
@@ -385,6 +416,7 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     candidateRegionAtBaseScale: candidate,
     contentTrimBoundsAtCandidateScale: trim,
     finalSourceRegionAtBaseScale: renderRecord.sourceRegionAtBaseScale,
+    contentEdgeProfileAtCandidateScale: renderRecord.contentEdgeProfileAtCandidateScale,
     edgeContact,
     edgeContactSides,
     edgeContactPolicy:
@@ -398,6 +430,13 @@ function makeAutomatedCropAudit(row, renderRecord, dimensions) {
     warningLeftEdgeGuardPass,
     regulatoryCaudalesRightEdgeGuardPass,
     regulatoryCaudalesSourceLabelTrimPass,
+    regulatoryDetachedLabelRightEdgeGuardPass,
+    regulatoryDetachedLabelRightEdgePixelGuardPass,
+    regulatoryDetachedLabelSourceLabelTrimPass,
+    regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio,
+    regulatoryDetachedLabelMaximumRelativeHeightRatio,
+    regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio,
+    regulatoryDetachedLabelRightEdgeMeaningfulPixelRatio: rightEdgeMeaningfulPixelRatio,
     regulatoryParkingRightEdgeGuardPass,
     regulatoryParkingSourceLabelTrimPass,
     regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
@@ -654,6 +693,24 @@ function validateFinalRows(finalRows) {
       }
       if (row.cropAuditBasis?.regulatoryParkingSourceLabelTrimPass !== true) {
         errors.push(`${row.id}: regulatory parking detached source-label trim guard must pass`);
+      }
+    }
+    if (regulatoryDetachedLabelAttachmentRow(row)) {
+      if (row.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass !== true) {
+        errors.push(`${row.id}: regulatory detached-label right-edge contamination guard must pass`);
+      }
+      if (
+        row.cropAuditBasis?.edgeContact?.right === true &&
+        row.cropAuditBasis.relativeSourceWidthRatio > row.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio &&
+        row.cropAuditBasis?.regulatoryDetachedLabelRightEdgePixelGuardPass !== true
+      ) {
+        errors.push(`${row.id}: regulatory detached-label right-edge pixel guard must pass when geometry is wider than the attachment guard`);
+      }
+      if (row.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass !== true) {
+        errors.push(`${row.id}: regulatory detached-label source caption trim guard must pass`);
+      }
+      if (row.finalTailTrimMode !== "preserve-colorless-lower-attachment-trim-detached-source-label") {
+        errors.push(`${row.id}: regulatory detached-label row must use detached-label trim mode`);
       }
     }
     if (typeof row.cropAuditBasis?.relativeSourceWidthRatio !== "number" || typeof row.cropAuditBasis?.relativeSourceHeightRatio !== "number") {

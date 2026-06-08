@@ -4156,6 +4156,15 @@ function isSignLikeEntry(entry) {
   return entry.entryKind === "catalog-entry" || entry.entryKind === "contextual-visual";
 }
 
+function isRegulatoryDetachedLabelAttachmentEntry(entry) {
+  const searchable = `${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase();
+  return (
+    entry.sectionId === "app4-signs-regulatory" &&
+    (entry.baselineCropNaturalHeight >= 110 ||
+      /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/.test(searchable))
+  );
+}
+
 function applyFeature037Inventory(baseInventory) {
   if (!existsSync(repoPath(feature037FinalRowsPath))) {
     return baseInventory;
@@ -4359,6 +4368,26 @@ function validateFeature037Inventory(inventory) {
       assertCondition(entry.cropAuditBasis?.warningRightEdgeGuardPass === true, `${label}: cropAuditBasis.warningRightEdgeGuardPass must be true.`, errors);
       assertCondition(entry.cropAuditBasis?.warningLeftEdgeGuardPass === true, `${label}: cropAuditBasis.warningLeftEdgeGuardPass must be true.`, errors);
       assertCondition(entry.cropAuditBasis?.edgeContact?.right !== true, `${label}: warning crops must not pass with right-edge contact.`, errors);
+    }
+    if (isRegulatoryDetachedLabelAttachmentEntry(entry)) {
+      assertCondition(entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryDetachedLabelRightEdgeGuardPass must be true.`, errors);
+      assertCondition(entry.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass === true, `${label}: cropAuditBasis.regulatoryDetachedLabelSourceLabelTrimPass must be true.`, errors);
+      assertCondition(entry.finalTailTrimMode === "preserve-colorless-lower-attachment-trim-detached-source-label", `${label}: regulatory attachment crop must use detached-label trim mode.`, errors);
+      if (entry.cropAuditBasis?.edgeContact?.right === true) {
+        const withinWidthGuard =
+          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio;
+        const withinPixelGuard = entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgePixelGuardPass === true;
+        assertCondition(
+          withinWidthGuard || withinPixelGuard,
+          `${label}: regulatory attachment right-edge contact must stay within the clean attachment width or edge-pixel guard.`,
+          errors
+        );
+      }
+      assertCondition(
+        entry.cropAuditBasis.relativeSourceHeightRatio <= entry.cropAuditBasis.regulatoryDetachedLabelMaximumRelativeHeightRatio,
+        `${label}: regulatory attachment crop must trim detached source captions.`,
+        errors
+      );
     }
     if (entry.sectionId === "app4-signs-regulatory" && /zona-de-caudales/.test(`${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase())) {
       assertCondition(entry.cropAuditBasis?.regulatoryCaudalesRightEdgeGuardPass === true, `${label}: cropAuditBasis.regulatoryCaudalesRightEdgeGuardPass must be true.`, errors);

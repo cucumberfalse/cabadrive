@@ -22,6 +22,13 @@ export type ManualSignCropAuditBasis = {
   candidateRegionAtBaseScale: ManualSignRegion;
   contentTrimBoundsAtCandidateScale: ManualSignRegion;
   finalSourceRegionAtBaseScale: ManualSignRegion;
+  contentEdgeProfileAtCandidateScale: {
+    edgeBandSize: number;
+    leftMeaningfulPixelRatio: number;
+    rightMeaningfulPixelRatio: number;
+    topMeaningfulPixelRatio: number;
+    bottomMeaningfulPixelRatio: number;
+  };
   edgeContact: {
     left: boolean;
     top: boolean;
@@ -37,6 +44,13 @@ export type ManualSignCropAuditBasis = {
   warningLeftEdgeGuardPass: boolean;
   regulatoryCaudalesRightEdgeGuardPass: boolean;
   regulatoryCaudalesSourceLabelTrimPass: boolean;
+  regulatoryDetachedLabelRightEdgeGuardPass: boolean;
+  regulatoryDetachedLabelRightEdgePixelGuardPass: boolean;
+  regulatoryDetachedLabelSourceLabelTrimPass: boolean;
+  regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio: number;
+  regulatoryDetachedLabelMaximumRelativeHeightRatio: number;
+  regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio: number;
+  regulatoryDetachedLabelRightEdgeMeaningfulPixelRatio: number;
   regulatoryParkingRightEdgeGuardPass: boolean;
   regulatoryParkingSourceLabelTrimPass: boolean;
   regulatoryParkingRightEdgeMaximumRelativeWidthRatio: number;
@@ -89,7 +103,10 @@ export type ManualSignEntry = {
   finalCandidateRegionAtBaseScale?: ManualSignRegion;
   finalSourceRegionAtBaseScale?: ManualSignRegion;
   finalContentTrimBoundsAtCandidateScale?: ManualSignRegion;
-  finalTailTrimMode?: "trim-external-catalog-label" | "preserve-colorless-lower-attachment";
+  finalTailTrimMode?:
+    | "trim-external-catalog-label"
+    | "preserve-colorless-lower-attachment"
+    | "preserve-colorless-lower-attachment-trim-detached-source-label";
   finalOutputAssetPath?: string | null;
   finalOutputNaturalWidth?: number | null;
   finalOutputNaturalHeight?: number | null;

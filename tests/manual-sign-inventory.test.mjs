@@ -67,6 +67,15 @@ function signLike(entry) {
   return entry.entryKind === "catalog-entry" || entry.entryKind === "contextual-visual";
 }
 
+function regulatoryDetachedLabelAttachment(entry) {
+  const searchable = `${entry.id} ${entry.spanishLabel ?? ""} ${entry.variant ?? ""}`.toLowerCase();
+  return (
+    entry.sectionId === "app4-signs-regulatory" &&
+    (entry.baselineCropNaturalHeight >= 110 ||
+      /placa|zona-de-caudales|ciclovia|exclusivo|discapacitados|ciclistas|peatones|barreras|ferroviarias|cajon|descienda|convivencia|interrupcion|desvio|obra|parada|evento|frentistas/u.test(searchable))
+  );
+}
+
 function entryById(entries, id) {
   const entry = entries.find((candidate) => candidate.id === id);
   assert.ok(entry, id);
@@ -175,6 +184,24 @@ test("source-limited rows disclose output-pixel 3x separately from effective/nat
       if (entry.cropAuditBasis?.edgeContact?.right) {
         assert.ok(
           entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryParkingRightEdgeMaximumRelativeWidthRatio,
+          entry.id
+        );
+      }
+    }
+    if (regulatoryDetachedLabelAttachment(entry)) {
+      assert.equal(entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass, true, entry.id);
+      assert.equal(entry.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass, true, entry.id);
+      assert.equal(entry.finalTailTrimMode, "preserve-colorless-lower-attachment-trim-detached-source-label", entry.id);
+      assert.ok(
+        entry.cropAuditBasis.relativeSourceHeightRatio <= entry.cropAuditBasis.regulatoryDetachedLabelMaximumRelativeHeightRatio,
+        entry.id
+      );
+      if (entry.cropAuditBasis?.edgeContact?.right) {
+        const withinWidthGuard =
+          entry.cropAuditBasis.relativeSourceWidthRatio <= entry.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio;
+        const withinPixelGuard = entry.cropAuditBasis.regulatoryDetachedLabelRightEdgePixelGuardPass === true;
+        assert.ok(
+          withinWidthGuard || withinPixelGuard,
           entry.id
         );
       }
@@ -387,6 +414,66 @@ test("page-185 regulatory parking crops use the generalized right-edge and sourc
   }
 });
 
+test("regulatory attachment crops trim detached source captions and right-edge neighbors", () => {
+  const inventory = loadJson(inventoryPath);
+  const expectedAttachmentIds = [
+    "app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar",
+    "app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha",
+    "app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda",
+    "app4regulatory-p185-028-no-estacionar-ni-detenerse-sobre-la-ciclovia",
+    "app4regulatory-p186-009-estacionamiento-exclusivo-catalog-entry",
+    "app4regulatory-p186-010-estacionamiento-exclusivo-cajon-azul",
+    "app4regulatory-p186-011-estacionamiento-exclusivo-discapacitados",
+    "app4regulatory-p186-016-circulacion-exclusiva-peatones",
+    "app4regulatory-p186-017-circulacion-exclusiva-convivencia",
+    "app4regulatory-p186-021-sentido-de-circulacion-derecha",
+    "app4regulatory-p186-025-ceda-el-paso-a-ciclistas-y-peatones",
+    "app4regulatory-p186-027-descienda-de-la-bicicleta-catalog-entry",
+    "app4regulatory-p186-028-barreras-ferroviarias-catalog-entry"
+  ];
+  const actualAttachmentIds = inventory.entries
+    .filter((entry) => signLike(entry) && regulatoryDetachedLabelAttachment(entry))
+    .map((entry) => entry.id);
+  assert.deepEqual(actualAttachmentIds, expectedAttachmentIds);
+
+  for (const id of expectedAttachmentIds) {
+    const entry = entryById(inventory.entries, id);
+    assert.equal(entry.cropAuditStatus, "reviewed-final-correct", id);
+    assert.equal(entry.cropAuditBasis?.passes, true, id);
+    assert.equal(entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgeGuardPass, true, id);
+    assert.equal(typeof entry.cropAuditBasis?.regulatoryDetachedLabelRightEdgeMeaningfulPixelRatio, "number", id);
+    assert.equal(entry.cropAuditBasis?.regulatoryDetachedLabelSourceLabelTrimPass, true, id);
+    assert.equal(entry.cropAuditBasis?.neighborContaminationGuardPass, true, id);
+    assert.equal(entry.finalTailTrimMode, "preserve-colorless-lower-attachment-trim-detached-source-label", id);
+    assert.ok(
+      entry.cropAuditBasis.relativeSourceHeightRatio <= entry.cropAuditBasis.regulatoryDetachedLabelMaximumRelativeHeightRatio,
+      id
+    );
+  }
+
+  const noRightEdgeExpected = [
+    "app4regulatory-p186-025-ceda-el-paso-a-ciclistas-y-peatones"
+  ];
+  for (const id of noRightEdgeExpected) {
+    const entry = entryById(inventory.entries, id);
+    assert.notEqual(entry.cropAuditBasis?.edgeContact?.right, true, id);
+    assert.ok(entry.finalSourceRegionAtBaseScale.width <= entry.baselineCropNaturalWidth, id);
+  }
+
+  const cleanRightEdgeByPixelGuard = entryById(inventory.entries, "app4regulatory-p186-017-circulacion-exclusiva-convivencia");
+  assert.equal(cleanRightEdgeByPixelGuard.cropAuditBasis?.edgeContact?.right, true);
+  assert.ok(
+    cleanRightEdgeByPixelGuard.cropAuditBasis.relativeSourceWidthRatio >
+      cleanRightEdgeByPixelGuard.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumRelativeWidthRatio
+  );
+  assert.equal(cleanRightEdgeByPixelGuard.cropAuditBasis.regulatoryDetachedLabelRightEdgePixelGuardPass, true);
+  assert.ok(
+    cleanRightEdgeByPixelGuard.cropAuditBasis.regulatoryDetachedLabelRightEdgeMeaningfulPixelRatio <=
+      cleanRightEdgeByPixelGuard.cropAuditBasis.regulatoryDetachedLabelRightEdgeMaximumMeaningfulPixelRatio
+  );
+});
+
 test("external source captions are trimmed from informational pedestrian crossing crops", () => {
   const inventory = loadJson(inventoryPath);
   for (const id of [
@@ -410,6 +497,7 @@ test("crop generator cannot stamp reviewed-final-correct without audit pass", ()
   assert.match(cropResolutionSource, /neighborContaminationGuardPass/u);
   assert.match(cropResolutionSource, /warningRightEdgeGuardPass/u);
   assert.match(cropResolutionSource, /regulatoryCaudalesRightEdgeGuardPass/u);
+  assert.match(cropResolutionSource, /regulatoryDetachedLabelRightEdgeGuardPass/u);
   assert.match(cropResolutionSource, /regulatoryParkingRightEdgeGuardPass/u);
 });
 
