@@ -9,7 +9,7 @@
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
 - Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, starting pushed head `2688192e36815cf81741882ebda68f29f3ca1030`.
-- Current process status: `F038-IA-003 implemented and locally verified`; `F038-RA-001` remains current with `71` answer-bearing / `389` audited fallback placements. Commit/push handoff and fresh review remain.
+- Current process status: `F038-IA-003 implemented, locally verified, and committed at effective content head f9645722bd823b400b122774365e05fead59daec`; `F038-RA-001` remains current with `71` answer-bearing / `389` audited fallback placements. Push handoff and fresh review remain.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -700,7 +700,8 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
   - `pnpm run validate:manual-ticket-placement`: passed (`460` questions, `460` placements, `34` destination routes, density `1/11/44`, `71` answer-bearing, `389` fallbacks);
   - `pnpm run preflight`: passed, including feature-memory/repository gates, content validation, `458/458` unit/content tests, production build, and `88/88` Playwright tests;
   - `git diff --check`: passed.
-- Effective content head: recorded by the following evidence-only commit after the implementation commit is created.
+- Effective content head: `f9645722bd823b400b122774365e05fead59daec`.
+- Effective-head scope: the commit contains the `src/App.tsx` lifecycle fix, focused E2E regression, preserved Architect dispositions, and reconciled implementation evidence. The following commit is evidence-only and records this SHA.
 - Review thread `PRRT_kwDOSX65IM6LxRUf`: intentionally not resolved by Implementation Agent.
 - Merge performed by Implementation Agent: `no`.
 - Final Architect validation performed: `no`.
@@ -736,6 +737,6 @@ Architect return count: `1 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-001 and F038-IA-003 implemented and locally verified; fresh Review Agent review and later final role validations remain`.
+Process status: `F038-RA-001 and F038-IA-003 implemented and locally verified at effective content head f9645722bd823b400b122774365e05fead59daec; push, fresh Review Agent review, and later final role validations remain`.
 
 Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after remediation, fresh Review Agent review, checks, and follow-up development are complete.
