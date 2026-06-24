@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, starting pushed head `2688192e36815cf81741882ebda68f29f3ca1030`.
-- Current process status: `F038-IA-003 implemented, locally verified, and committed at effective content head f9645722bd823b400b122774365e05fead59daec`; `F038-RA-001` remains current with `71` answer-bearing / `389` audited fallback placements. Push handoff and fresh review remain.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `00fc30328d92dd890fafc45792ad1501bc3e392e`.
+- Current process status: `F038-RA-002` is implemented and fully locally verified; fresh Review Agent review, required GitHub checks, thread disposition, and later final role validations remain. Effective content head is recorded in the Implementation Agent resolution below.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -133,6 +133,11 @@ Review disposition status:
 - [x] Correct known false mappings `b-fallback-003`, `b-fallback-011`, and `b-fallback-042`.
 - [x] Confirm no ordinary mapping retains scorer-created approval metadata or boilerplate rationale.
 - [x] Recompute audit-derived totals: `71` answer-bearing and `389` owner-approved thematic fallbacks.
+- [x] Re-opened by `F038-RA-002`: re-audit all `71` current strict records under the self-sufficient-anchor gate.
+- [x] Re-opened by `F038-RA-002`: re-audit all `389` fallbacks through the curated topic-routing table.
+- [x] Create and review a stable ticket-topic assignment for all `460` tickets.
+- [x] Create and review `content/manual-ticket-placement/topic-routes.json` for the current topic-guide taxonomy.
+- [x] Record per-shard corrected-topic/page/anchor, strict-to-fallback, override, and unresolved counts.
 
 ## T006 — Add Deterministic Validator And Evidence Report
 
@@ -186,6 +191,10 @@ Review disposition status:
 - [x] Reject the three known false fixture mappings.
 - [x] Remove the hard-coded exact-two fallback gate and validate audit-derived fallback IDs/count.
 - [x] Document and test the limits of automated semantic validation.
+- [x] Validate and manifest-seal the curated topic-routing table and all ticket-topic assignments.
+- [x] Reject strict records without an exact self-sufficient anchor, direct-answer assertion, and distractor-aware rationale.
+- [x] Reject fallback destinations/anchors outside the assigned topic route and reject unreviewed overrides.
+- [x] Add regressions for `003`, `011`, `037`, `042`, `064`, `085`, `096`, `165`, `202`, `281`, `349`, `350`, `404`, and `431`, plus representative headrest/neck-injury routing.
 
 ## T007 — Add Typed Runtime Placement Index
 
@@ -391,9 +400,9 @@ Review correction:
 
 - The summary above is historical implementation evidence and is not accepted semantic completion evidence.
 - Blocking Review Agent finding `discussion_r3464034934` proved the ordinary mappings were scorer-generated and auto-approved.
-- Current accepted semantic counts after the completed full re-audit: `71` answer-bearing / `389` audited owner-approved thematic fallbacks.
-- Current runtime density: `34` destination routes, minimum/median/maximum `1/11/44`.
-- Current merge readiness: `blocked pending F038-IA-003 push, fresh review, required checks, and final role validations`.
+- Historical `F038-RA-001` semantic counts, now rejected by review `4561846977`: `71` answer-bearing / `389` owner-approved thematic fallbacks.
+- Historical pre-`F038-RA-002` runtime density: `34` destination routes, minimum/median/maximum `1/11/44`; these values must be recomputed after rerouting.
+- Current merge readiness: `blocked by review 4561846977 pending F038-RA-002 implementation, fresh review, required checks, resolved blocking threads, and final role validations`.
 
 ## Dead Ends
 
@@ -585,7 +594,7 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
   - native disclosure accessibility and density behavior are preserved;
   - focused and required checks pass.
 - Staleness rule: any UI/test implementation commit creates a new effective content head. Prior review/final-validation evidence for both `c956422ee159fde4ed1825b5806b3336515b7372` and evidence-only `2688192e36815cf81741882ebda68f29f3ca1030` cannot authorize merge after that change.
-- Architect return count: unchanged at `1 / 10`; this is newly routed feedback disposition, not a returned final-validation gap.
+- Architect return count at the historical `F038-IA-003` disposition: unchanged at `1 / 10`; the later `F038-RA-002` return raises the current count to `2 / 10`.
 - Manual/product code/content/tests changed by Architect: `no`; only Architect-owned feature memory changed.
 - Final Architect validation performed: `no`.
 
@@ -677,6 +686,138 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
 - Final Architect validation performed: `no`.
 - Final Analyst validation performed: `no`.
 
+### F038-RA-002 — `task`
+
+- Disposition date: `2026-06-24`
+- Disposition type: `task`
+- Source: blocking Review Agent review `https://github.com/cucumberfalse/cabadrive/pull/204#pullrequestreview-4561846977`
+- Reviewed/current head: `00fc30328d92dd890fafc45792ad1501bc3e392e`
+- Prior effective content head: `f9645722bd823b400b122774365e05fead59daec`
+- Active threads:
+  - `3466813754` / `PRRT_kwDOSX65IM6L4225`: false answer-bearing classifications;
+  - `3466813762` / `PRRT_kwDOSX65IM6L4229`: fallback destinations are not the closest substantive topic pages;
+  - `3466813766` / `PRRT_kwDOSX65IM6L423A`: stale current-head and blocker status.
+- Independent confirmation:
+  - `037` cites motorcycle parking while its rationale supplies missing bicycle-infrastructure definitions;
+  - `064`, `085`, `165`, `202`, `281`, and `350` likewise require facts or image interpretation absent from their exact anchors;
+  - `349` places a vehicle-lights question on a seat-belt-exception paragraph despite identifying `ch3-lights`;
+  - `404` places fatigue/reaction loss on pedestrian text `Примерное время`;
+  - `431` places hangover risk on truck off-tracking although `ch4-alcohol-drugs` is directly applicable;
+  - process memory still describes an old pending push and dense-disclosure blocker.
+- Formal disposition: accepted as the second blocking Architect return. Architect return count is `2 / 10`.
+
+Implementation contract:
+
+1. Use one Implementation Agent in the current worktree/branch/PR; do not split writers across this branch.
+2. Create `content/manual-ticket-placement/topic-routes.json` for the actual stable ticket/topic-guide taxonomy, approximately `38` topics. Each route owns one preferred substantive eligible page or a small ordered page set, exact curated thematic anchors, rationale, review metadata, and fingerprints.
+3. Create a reviewed ticket-topic assignment covering all `460` canonical tickets and seal it with the route table in `reviewed-manifest.json`.
+4. Rebuild every placement from that assignment. Scoring/search may suggest topics only and must not write a committed route, destination, anchor, placement basis, rationale, or approval.
+5. Re-audit all current `71` strict records. Keep `answer-bearing` only when the exact learner-visible anchor independently and unambiguously supplies the answer; store `directAnswerAssertionRu`, exact quote, and `reviewerRationaleRu` explaining correct-option selection and distractor rejection. Otherwise use fallback.
+6. Re-audit all current `389` fallbacks. The page and anchor must belong to the assigned topic route. Use the first applicable ordered page; permit a ticket-specific override only with exact anchor, comparative rationale, review metadata, fingerprints, and a dedicated regression.
+7. Preserve the owner's general fallback permission, protected manual text/images, and canonical ticket text/answers. Final strict/fallback counts are audit-derived and may change substantially.
+8. Work sequentially through shards `001..092`, `093..184`, `185..276`, `277..368`, and `369..460`. At each checkpoint record audited, strict, fallback, strict-to-fallback, corrected-topic/page/anchor, override, and unresolved counts.
+9. Enforce route membership and curated-anchor membership in validator/tests. Add fixtures for `003`, `011`, `037`, `042`, `064`, `085`, `096`, `165`, `202`, `281`, `349`, `350`, `404`, `431`, and representative headrest/neck-injury routing.
+10. Reconcile current PR/head, active blockers, check state, semantic counts, and effective-head evidence throughout feature memory and durable mapping docs.
+
+Curated routing minimums:
+
+- lights → `ch3-lights`;
+- fatigue/sleep/reaction loss → `ch4-sleep-fatigue`, or `ch4-distractions` only for a distraction-controlled ticket;
+- alcohol/drugs/hangover → `ch4-alcohol-drugs`;
+- headrest/neck injury/seat belt/airbag → `app1-safety-elements`;
+- incident duties → `ch2-incident-obligations`;
+- signs → matching substantive Appendix IV sign page where available.
+
+Allowed implementation scope:
+
+- `content/manual-ticket-placement/topic-routes.json`;
+- a reviewed ticket-topic assignment artifact under `content/manual-ticket-placement/`;
+- `content/manual-ticket-placement/placements/*.json`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs`;
+- `tests/manual-ticket-placement.test.mjs`;
+- runtime index/projection only if the reviewed schema requires a compatible change;
+- frontend/backend durable docs only to document the new semantic/routing contract;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+Forbidden:
+
+- protected manual prose, manual images, canonical ticket/translation/explanation/image data;
+- arbitrary global anchor ranking as a semantic decision;
+- unrelated UI/runtime behavior;
+- commit/push/thread resolution/merge by Architect;
+- final Architect or Analyst validation during this remediation.
+
+Acceptance evidence:
+
+- `460/460` tickets have reviewed topic assignments and `1..3` placements;
+- all five shard checkpoints complete with `0` unresolved;
+- every strict record passes the self-sufficient-anchor gate;
+- every fallback page/anchor is admitted by its curated route or a valid reviewed override;
+- all listed regression fixtures pass with expected routes/classifications;
+- manifest seals route table, assignments, strict assertions, overrides, and placements;
+- validator error counters are `0`;
+- protected manual/canonical content is unchanged;
+- process memory names the new effective content head and current blockers accurately;
+- full content/unit/build/Playwright/preflight/Docker evidence passes;
+- a fresh Review Agent review passes before final Architect validation.
+
+- Recommended assignment: one IA, current PR `#204`, five sequential shard audits.
+- Product/code/test/docs changed by Architect: `no`; only `spec.md`, `plan.md`, and `tasks.md`.
+- Commit/push/thread resolution/final validation performed by Architect: `no`.
+
+### F038-RA-002 Implementation Agent resolution
+
+- Implementation date: `2026-06-24`.
+- Role/worktree/PR: Implementation Agent; `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`; branch `codex/038-manual-ticket-placement`; PR `#204`.
+- Starting pushed head: `00fc30328d92dd890fafc45792ad1501bc3e392e`.
+- Parallel-work preservation: the three uncommitted Architect updates in `spec.md`, `plan.md`, and `tasks.md` were preserved and included; no sibling work was reset or overwritten.
+- Audit method: one IA reviewed all `460` canonical questions and correct answers sequentially through the five range shards. Existing strict labels were not trusted. A record remains strict only if one exact learner-visible anchor independently yields the whole answer and rejects distractors; uncertainty is classified as the owner-approved thematic fallback.
+- Conservative semantic result: `0` answer-bearing / `460` owner-approved thematic fallbacks. This intentionally under-classifies rather than preserving any unsupported strict claim.
+- Curated routing source:
+  - `38` reviewed topic routes in `content/manual-ticket-placement/topic-routes.json`;
+  - `460` reviewed ticket-topic assignments in `content/manual-ticket-placement/ticket-topic-assignments.json`;
+  - five reviewed placement shards;
+  - one schema-v2 manifest sealing routes, assignments, records, and shards.
+- Candidate scorer authority: unchanged as candidate-only. It cannot write or approve topic routes, ticket assignments, destinations, anchors, placement bases, rationale, or reviewer metadata. Normal `--write` refreshes derived inventory, protected baseline, and summary evidence only.
+- Shard checkpoints:
+  - `001..092`: audited `92`; strict `0`; fallback `92`; strict-to-fallback `20`; corrected topic/page/anchor `35/38/87`; secondary route page `0`; overrides `0`; unresolved `0`.
+  - `093..184`: audited `92`; strict `0`; fallback `92`; strict-to-fallback `14`; corrected topic/page/anchor `42/50/87`; secondary route page `0`; overrides `0`; unresolved `0`.
+  - `185..276`: audited `92`; strict `0`; fallback `92`; strict-to-fallback `11`; corrected topic/page/anchor `35/48/86`; secondary route page `1`; overrides `0`; unresolved `0`.
+  - `277..368`: audited `92`; strict `0`; fallback `92`; strict-to-fallback `13`; corrected topic/page/anchor `36/57/86`; secondary route page `1`; overrides `0`; unresolved `0`.
+  - `369..460`: audited `92`; strict `0`; fallback `92`; strict-to-fallback `13`; corrected topic/page/anchor `33/48/88`; secondary route page `0`; overrides `0`; unresolved `0`.
+- Required route regressions:
+  - lights `349` → `ch3-lights`;
+  - fatigue/reaction `404` → `ch4-sleep-fatigue`;
+  - hangover `431` → `ch4-alcohol-drugs`;
+  - headrest/neck injury `323` and `454` → `app1-safety-elements`;
+  - incident duty `003` → `ch2-incident-obligations`;
+  - reviewed false-strict examples `037`, `064`, `085`, `165`, `202`, `281`, `350` are fallbacks on their curated topic routes;
+  - prior fixtures `011`, `042`, and `096` use warning-sign, public-transport, and incident routes respectively.
+- Final mapping summary: `460/460` tickets; placement distribution `1/2/3 = 460/0/0`; `26` destination routes; density minimum/median/maximum `2/16/47`; all validator counters `0`.
+- Product/runtime behavior: canonical joins and append-only rendering remain unchanged. Focused E2E expectations were updated only for the new reviewed density and the now-unused Introduction route.
+- Protected scope: manual prose, manual images, canonical questions, translations, explanations, correct answers, difficulty, and question images changed: `no`.
+- Verification:
+  - `pnpm run generate:manual-ticket-placement`: passed and refreshed derived files only;
+  - `pnpm run validate:manual-ticket-placement`: passed;
+  - `pnpm run test`: passed `460/460`;
+  - `pnpm run build`: passed;
+  - focused Playwright: passed `6/6` after a fresh build;
+  - full Playwright through `pnpm run preflight`: passed `88/88`;
+  - Docker isolated build/up/browser/down: passed at `COMPOSE_PROJECT_NAME=cabadrive-038-ra002`, port `5187`;
+  - browser smoke: dense `app1-safety-elements` disclosure closed initially and mounted exactly `47` cards after opening; `ch3-lights` mounted its current cards including `b-fallback-349`; console errors `0`;
+  - local OSV Scanner v2.3.5: `No issues found`;
+  - `pnpm run preflight`: passed;
+  - `git diff --check`: passed.
+- Verification dead end: focused Playwright was initially run against a stale pre-refinement `dist` and reported old density. A fresh `pnpm run build` removed that execution artifact; the rerun passed `6/6`.
+- Effective content head: recorded by the following evidence-only commit after the implementation commit is created.
+- Current blockers after push: fresh Review Agent review and GitHub required checks. Existing review threads remain intentionally unresolved for Orchestrator/fresh Review Agent disposition.
+- Merge performed by Implementation Agent: `no`.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
 ### F038-IA-003 Implementation Agent resolution
 
 - Implementation date: `2026-06-24`.
@@ -733,10 +874,10 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
 
 ## Final Validation Records
 
-Architect return count: `1 / 10`
+Architect return count: `2 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-001 and F038-IA-003 implemented and locally verified at effective content head f9645722bd823b400b122774365e05fead59daec; push, fresh Review Agent review, and later final role validations remain`.
+Process status: `review-blocked at PR head 00fc30328d92dd890fafc45792ad1501bc3e392e by review 4561846977; F038-RA-002 requires a full strict/fallback reroute and process-memory reconciliation. Prior effective content head f9645722bd823b400b122774365e05fead59daec is stale for merge readiness`.
 
-Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after remediation, fresh Review Agent review, checks, and follow-up development are complete.
+Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-002` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.

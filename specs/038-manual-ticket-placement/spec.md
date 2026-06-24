@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head at `F038-IA-003` disposition: `#204` / `2688192e36815cf81741882ebda68f29f3ca1030`
-- Process status: `review-blocked`; semantic remediation is pushed and active dense-disclosure finding `discussion_r3464076641` is accepted as a blocking follow-up task
-- Prior `458 answer-bearing / 2 fallback` evidence is invalidated; remediation evidence at content head `c956422ee159fde4ed1825b5806b3336515b7372` becomes historical when the required UI/test fix creates a new effective content head
+- Current PR/head: `#204` / `00fc30328d92dd890fafc45792ad1501bc3e392e`
+- Process status: `review-blocked` by fresh Review Agent review `4561846977`; unresolved threads `3466813754`, `3466813762`, and `3466813766` require a second semantic remediation and process-memory reconciliation
+- Prior effective content head `f9645722bd823b400b122774365e05fead59daec` and all `71 answer-bearing / 389 fallback` completion claims are stale for merge readiness; `00fc30328d92dd890fafc45792ad1501bc3e392e` is its later evidence-only head
 
 ## Goal
 
@@ -381,6 +381,73 @@ The remediation effective content head `c956422ee159fde4ed1825b5806b3336515b7372
 
 This disposition does not increment the Architect return count because it classifies newly routed Implementation Agent/review feedback before final Architect validation; it is not a returned final-validation gap. Final Architect validation is not performed by this disposition.
 
+### F038-RA-002 Architect disposition
+
+Disposition: `task` — all three findings in fresh Review Agent review `4561846977` are accepted as blocking.
+
+Independent Architect verification on `2026-06-24` confirmed:
+
+- thread `3466813754`: the cited `b-fallback-037` anchor discusses motorcycle parking, not the sidewalk/carriageway distinction between `bicisenda` and `ciclovía`; the same extra-anchor inference is present in sampled strict records `064`, `085`, `165`, `202`, `281`, and `350`;
+- thread `3466813762`: `b-fallback-349` routes a vehicle-lights question to a seat-belt-exception paragraph despite recording `ch3-lights` as a candidate; `404` routes fatigue/reaction loss to pedestrian text `Примерное время`; `431` routes hangover risk to truck off-tracking although `ch4-alcohol-drugs` is the direct topic page;
+- thread `3466813766`: durable status still describes a pending push and the old dense-disclosure blocker although PR `#204` is already at `00fc30328d92dd890fafc45792ad1501bc3e392e`.
+
+The first remediation fixed approval provenance but did not establish reliable semantic classification or closest-topic routing. Fingerprints, immutable manifests, and reviewer metadata cannot convert an unrelated anchor into answer-bearing evidence or prove that a fallback destination is the nearest topic page.
+
+#### Conservative answer-bearing gate
+
+`placementBasis: "answer-bearing"` is allowed only when all of the following are true:
+
+1. the exact `anchorTextAtReview`, read in its existing page context, independently and unambiguously supplies the fact, rule, definition, sign meaning, numerical value, exception, or causal relationship needed to select the canonical correct answer;
+2. the selection does not depend on unstated general driving knowledge, the implementation reviewer's interpretation of an image, another manual block, the ticket explanation, or wording copied from the canonical answer;
+3. the record contains a ticket-specific `directAnswerAssertionRu` stating the proposition supplied by the anchor and a `reviewerRationaleRu` explaining how that proposition selects the correct option and excludes the relevant distractors;
+4. the stored exact quote and locator resolve to one current learner-visible anchor and the reviewer metadata belongs to the new audit pass;
+5. a conservative reviewer would reach the same answer from the anchor. If this is uncertain, the placement is a fallback.
+
+Under-classification as `owner-approved-thematic-fallback` is safer than a false strict claim. No score, keyword overlap, topic label, page title, image resemblance, or global anchor ranking may satisfy this gate. All current `71` strict records must be re-audited; the final strict count may shrink substantially.
+
+#### Curated thematic routing
+
+Create a reviewed topic-routing source, `content/manual-ticket-placement/topic-routes.json`, covering the current ticket/topic-guide taxonomy (approximately `38` topics, using the repository's actual stable topic IDs). Each route record owns:
+
+- stable `topicRouteId` and canonical topic ID/label;
+- one preferred substantive eligible `pageId` or a small ordered list of approved pages;
+- one or more exact stable thematic anchors for each approved page;
+- Russian rationale explaining the page order and scope;
+- reviewer identity, review timestamp, and fingerprints.
+
+Every canonical ticket must receive one explicitly reviewed `topicRouteId` in a sealed ticket-topic assignment. For a thematic fallback:
+
+- the destination page must belong to that topic route's approved ordered pages;
+- the exact anchor must be one of that route's curated thematic anchors;
+- selection normally uses the first applicable route page;
+- a ticket-specific override is allowed only when it names another substantive eligible page, records why the route default is less suitable for this ticket, supplies an exact curated/override anchor, and is independently reviewed and regression-tested;
+- global anchor ranking and arbitrary per-ticket lexical candidate selection are forbidden.
+
+Required route expectations include:
+
+- vehicle lights and lighting use → `ch3-lights`;
+- fatigue, sleepiness, reaction loss, and rest → `ch4-sleep-fatigue`, or `ch4-distractions` only when distraction rather than fatigue is the controlling topic;
+- alcohol, drugs, hangover, and impairment → `ch4-alcohol-drugs`;
+- head restraints, neck injury, seat belts, airbags, and occupant protection → `app1-safety-elements`;
+- incident duties → `ch2-incident-obligations`;
+- signs → the matching substantive Appendix IV sign page when available.
+
+These expectations are minimum regression fixtures, not an exhaustive routing table.
+
+#### Required remediation
+
+1. Rebuild all `460` reviewed records from the sealed ticket-topic assignment and curated topic-routing table; do not preserve a placement merely because it survived `F038-RA-001`.
+2. Sequentially audit shards `001..092`, `093..184`, `185..276`, `277..368`, and `369..460` with one Implementation Agent on the current PR.
+3. Apply the conservative answer-bearing gate to all `71` currently strict records; otherwise reclassify them as topic-routed fallback.
+4. Re-audit all `389` current fallbacks against their reviewed topic route and replace arbitrary destinations/anchors.
+5. Make candidate/scoring code advisory only; it may suggest a ticket topic but may not select a route, page, anchor, placement basis, review status, or rationale.
+6. Extend the reviewed manifest to seal the topic-routing table, ticket-topic assignment, strict-gate assertions, placements, and all override evidence.
+7. Update validator/tests so a fallback fails unless its page and anchor are approved by its ticket's route, and so every override is explicit, reviewed, fingerprinted, and fixture-backed.
+8. Add regression fixtures for `003`, `011`, `037`, `042`, `064`, `085`, `096`, `165`, `202`, `281`, `349`, `350`, `404`, and `431`, plus representative headrest/neck-injury routing.
+9. Reconcile all current-head, push, blocker, review, and merge-readiness statements. Product/mapping/validator/test/doc changes create a new effective content head and stale all prior effective-head evidence.
+
+Architect return count becomes `2 / 10`. Final Architect validation is not performed by this disposition.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -611,6 +678,11 @@ Negative exception tests must prove that validation fails when:
 - reviewed shards or records are missing from, differ from, or are overwritten despite the immutable reviewed manifest;
 - any of the known false fixture mappings for `b-fallback-003`, `b-fallback-011`, or `b-fallback-042` is restored;
 - false ordinary mappings are bulk relabeled as fallback without a ticket-specific no-answer audit.
+- an `answer-bearing` record lacks a self-sufficient exact anchor, `directAnswerAssertionRu`, or ticket-specific distractor-aware rationale;
+- a ticket or fallback lacks a reviewed topic-route assignment;
+- a fallback page is outside the assigned curated route, its anchor is not one of the route's curated anchors, or a non-default destination lacks a reviewed ticket-specific override;
+- global lexical/semantic ranking selects or approves a committed topic route, page, anchor, placement basis, or rationale;
+- any fresh-review regression fixture (`037`, `064`, `085`, `165`, `202`, `281`, `349`, `350`, `404`, `431`) restores the reported false classification or destination.
 
 ## Required Verification Evidence
 
@@ -645,4 +717,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks fresh explicit audit evidence, any answer-bearing placement lacks ticket-specific reviewed evidence, any thematic fallback lacks a complete no-answer/candidate-selection audit, any fallback is malformed or uses an ineligible/non-substantive destination, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture approvals, any protected manual content has changed, the active dense-disclosure review finding remains unremediated or unresolved, any other blocking review thread remains unresolved, or any required gate is red. The previous review/effective-content evidence is stale. Orchestrator must obtain a fresh Review Agent result on the new effective content head after the `F038-IA-003` UI/test fix, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4561846977`, effective content head `f9645722bd823b400b122774365e05fead59daec`, and evidence-only head `00fc30328d92dd890fafc45792ad1501bc3e392e` are stale for merge authorization. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.

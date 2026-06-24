@@ -20,6 +20,8 @@ const candidatesOnly = process.argv.includes("--candidates");
 const placementRoot = join(root, "content/manual-ticket-placement");
 const evidencePath = join(root, "content/validation/manual-ticket-placement.evidence.json");
 const reviewedManifestPath = join(placementRoot, "reviewed-manifest.json");
+const topicRoutesPath = join(placementRoot, "topic-routes.json");
+const ticketTopicAssignmentsPath = join(placementRoot, "ticket-topic-assignments.json");
 
 function writeJson(path, value) {
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
@@ -49,6 +51,8 @@ if (candidatesOnly) {
 }
 
 const records = loadShardEntries(root, "content/manual-ticket-placement/placements");
+const topicRoutes = readJson(topicRoutesPath);
+const ticketTopicAssignments = readJson(ticketTopicAssignmentsPath);
 const generatedSummary = placementSummary(records, generatedPages);
 const generatedEvidence = {
   schemaVersion: PLACEMENT_SCHEMA_VERSION,
@@ -67,7 +71,12 @@ const generatedEvidence = {
     zeroPlacementTickets: questions.length - records.length,
     overThreePlacementTickets: 0,
     protectedManualContentChanges: 0,
-    unauthorizedOrMalformedThematicFallbacks: 0
+    unauthorizedOrMalformedThematicFallbacks: 0,
+    missingOrStaleTopicRoutes: 0,
+    missingOrStaleTicketTopicAssignments: 0,
+    strictWithoutDirectAnswerEvidence: 0,
+    fallbackOutsideCuratedRoute: 0,
+    unreviewedTicketOverrides: 0
   }
 };
 
@@ -96,7 +105,9 @@ const result = validatePlacementData({
   baseline,
   records,
   evidence,
-  reviewedManifest
+  reviewedManifest,
+  topicRoutes,
+  ticketTopicAssignments
 });
 if (!generatedFilesMatch) result.errors.push("Generated manual ticket placement files are stale; run pnpm run generate:manual-ticket-placement.");
 

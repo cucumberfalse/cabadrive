@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For remediation of `F038-RA-001`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards are useful sequential audit checkpoints, but they share generator, validator, manifest, evidence, runtime-index, and process-memory files. Multiple agents must not write the same branch/worktree. Parallel implementation slices would require separate latest-main worktrees/branches/PRs and a planned integration sequence; that adds merge and provenance risk without isolating the shared acceptance gate. The safe default is therefore one IA, one branch, one PR, five sequential range checkpoints.
+For remediation of `F038-RA-002`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards are sequential audit checkpoints, but they share the curated topic-routing table, ticket-topic assignment, validator, manifest, evidence, runtime index, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -70,7 +70,7 @@ The resolver is validation tooling. Runtime does not need to perform semantic ma
    - no duplicate same-question/same-page relation;
    - zero unknown/ineligible/unreviewed/stale records.
 
-The prior claimed audit is invalidated by `F038-RA-001`. Re-audit all `460` tickets; do not limit remediation to known false fixtures and do not carry forward `approved` solely because a record already exists.
+The `F038-RA-001` audit is invalidated by fresh review `4561846977`. Rebuild all `460` records from reviewed ticket-topic assignments and curated topic routes; do not carry forward a strict classification, fallback destination, or approval solely because it exists in the current shards.
 
 Use five sequential checkpoints:
 
@@ -82,10 +82,29 @@ Use five sequential checkpoints:
 
 For each ticket, the assigned IA must inspect the canonical Spanish/Russian question, canonical correct answer, image when present, candidate page context, and exact resolved learner-visible anchor text. The checkpoint record must state either:
 
-- why the exact text independently yields the correct answer; or
-- why no answer-bearing anchor exists, which candidates were checked/rejected, and why the selected substantive page is the closest thematic fallback.
+- the exact proposition independently and unambiguously supplied by the anchor, how it selects the correct option and excludes distractors, and why no external knowledge is required; or
+- why the strict gate fails and which reviewed topic route supplies the approved fallback page and curated anchor.
 
-At each checkpoint, update the reviewed shard and reviewed manifest together, run structural/freshness validation, and record counts of audited, answer-bearing, fallback, corrected-page, corrected-anchor, and unresolved tickets. Do not mark the checkpoint complete while any ticket in its range retains scorer-created rationale or approval metadata.
+At each checkpoint, update the reviewed shard, ticket-topic assignment, and reviewed manifest together, run structural/freshness/routing validation, and record counts of audited, answer-bearing, fallback, corrected-topic, corrected-page, corrected-anchor, overrides, and unresolved tickets. Do not mark the checkpoint complete while any ticket in its range retains a scorer-selected semantic decision or a non-self-sufficient strict rationale.
+
+### Curated topic routing
+
+1. Inventory the actual stable ticket/topic-guide taxonomy, expected to contain approximately `38` topics.
+2. Create `content/manual-ticket-placement/topic-routes.json`.
+3. For each topic, curate one preferred substantive eligible manual page or a small ordered set and exact stable thematic anchors per page.
+4. Create a reviewed ticket-topic assignment covering all `460` canonical IDs.
+5. Seal both artifacts in `reviewed-manifest.json`.
+6. Allow a ticket-specific route override only with exact anchor, rationale, reviewer metadata, fingerprints, and a regression fixture.
+7. Prohibit global anchor ranking from writing routes, pages, anchors, placement bases, rationale, or approval.
+
+Minimum route regressions:
+
+- lights → `ch3-lights`;
+- fatigue/reaction → `ch4-sleep-fatigue` or, only when controlling, `ch4-distractions`;
+- hangover/alcohol/drugs → `ch4-alcohol-drugs`;
+- headrest/neck injury/occupant protection → `app1-safety-elements`;
+- incident duties → `ch2-incident-obligations`;
+- signs → matching Appendix IV sign pages.
 
 ### No-answer audit and thematic fallback
 
@@ -93,9 +112,9 @@ If no eligible route contains the answer for a ticket:
 
 1. do not mislabel a thematic placement as answer-bearing;
 2. do not edit manual content;
-3. record searched answer forms/concepts, all credible candidate pages, exact anchors, and answer-bearing rejection reasons;
-4. compare substantive thematic candidates and choose the closest by subject and learning context;
-5. create one `owner-approved-thematic-fallback` with the common owner decision reference/date, exact anchor, selection/rejection rationale, approved review, and fresh fingerprints;
+3. assign the ticket to its reviewed topic route;
+4. select the first applicable approved route page and one of its curated thematic anchors;
+5. create one `owner-approved-thematic-fallback` with the common owner decision reference/date, route ID, exact anchor, selection rationale, approved review, and fresh fingerprints;
 6. leave coverage failing and hand back to Orchestrator only when no substantive thematic page exists.
 
 ### F038-IA-001 owner decision and implementation
@@ -137,6 +156,10 @@ The validator must accept thematic fallbacks for any canonical ticket only when 
 6. Remove the hard-coded `fallbackCount === 2` gate. Derive fallback count and IDs from the completed audit.
 7. Add immutable manifest checks for every record and every shard.
 8. Add known-false regression fixtures for `b-fallback-003`, `b-fallback-011`, and `b-fallback-042`.
+9. Validate the curated topic-routing table and ticket-topic assignment.
+10. Reject strict records without the direct-answer assertion and distractor-aware rationale.
+11. Reject fallback pages/anchors outside the assigned route and reject unreviewed overrides.
+12. Add fresh-review regressions for `037`, `064`, `085`, `165`, `202`, `281`, `349`, `350`, `404`, and `431`.
 
 These checks demonstrate provenance and catch known bad patterns; they do not mechanically prove semantic correctness. The per-ticket audit remains mandatory.
 
@@ -348,4 +371,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-IA-003` is accepted as a blocking implementation task on the current PR. Its UI/test change will supersede remediation effective content head `c956422ee159fde4ed1825b5806b3336515b7372`; `2688192e36815cf81741882ebda68f29f3ca1030` is only the later evidence-only head. The Implementation Agent must record the new full effective content SHA after the fix and rerun focused and required checks. Final Architect validation is not part of this disposition; it occurs only after the fix, fresh Review Agent review, checks, and follow-up development are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-002` is the current blocking implementation task on PR `#204` at evidence-only head `00fc30328d92dd890fafc45792ad1501bc3e392e`; prior effective content head `f9645722bd823b400b122774365e05fead59daec` is stale. One Implementation Agent must execute the five shard audits sequentially, keep the curated routing artifacts and manifest current, reconcile process memory, record the new effective content SHA, and rerun all required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.

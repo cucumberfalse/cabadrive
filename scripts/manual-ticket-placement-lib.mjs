@@ -3,10 +3,10 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 import { createServer } from "vite";
 
-export const PLACEMENT_SCHEMA_VERSION = 1;
+export const PLACEMENT_SCHEMA_VERSION = 2;
 export const ANCHOR_SCHEMA_VERSION = 1;
-export const REVIEWED_MANIFEST_SCHEMA_VERSION = 1;
-export const GENERATED_AT = "2026-06-24T03:00:00Z";
+export const REVIEWED_MANIFEST_SCHEMA_VERSION = 2;
+export const GENERATED_AT = "2026-06-24T15:00:00Z";
 export const EXPECTED_BASE_SHA = "4247b0e90ae5799a0875cc3751c96589fef96ef2";
 export const RESERVED_REVIEWER_PATTERNS = [
   /^feature-\d+-semantic-review$/u,
@@ -717,12 +717,37 @@ export function reviewedRecordFingerprint(record) {
   });
 }
 
-export function createReviewedManifest(records, shardPayloads, sealedAt, sealedBy) {
+export function reviewedTopicRouteFingerprint(topicRoutes) {
+  return fingerprint({
+    schemaVersion: REVIEWED_MANIFEST_SCHEMA_VERSION,
+    topicRoutes
+  });
+}
+
+export function reviewedTicketTopicAssignmentFingerprint(ticketTopicAssignments) {
+  return fingerprint({
+    schemaVersion: REVIEWED_MANIFEST_SCHEMA_VERSION,
+    ticketTopicAssignments
+  });
+}
+
+export function createReviewedManifest(
+  records,
+  shardPayloads,
+  topicRoutes,
+  ticketTopicAssignments,
+  sealedAt,
+  sealedBy
+) {
   const manifestCore = {
     schemaVersion: REVIEWED_MANIFEST_SCHEMA_VERSION,
     sealedAt,
     sealedBy,
     recordCount: records.length,
+    topicRouteCount: topicRoutes.routes.length,
+    ticketTopicAssignmentCount: ticketTopicAssignments.entries.length,
+    topicRoutesFingerprint: reviewedTopicRouteFingerprint(topicRoutes),
+    ticketTopicAssignmentsFingerprint: reviewedTicketTopicAssignmentFingerprint(ticketTopicAssignments),
     records: records.map((record) => ({
       questionId: record.questionId,
       fingerprint: reviewedRecordFingerprint(record)
@@ -752,13 +777,23 @@ function rationaleIsGeneric(value) {
     normalized.includes("выбран потому что относится к теме вопроса");
 }
 
-function validateReviewedManifest(records, manifest) {
+function validateReviewedManifest(records, manifest, topicRoutes, ticketTopicAssignments) {
   const errors = [];
   if (!manifest || manifest.schemaVersion !== REVIEWED_MANIFEST_SCHEMA_VERSION) {
     return ["Reviewed manifest is missing or has an unsupported schema version."];
   }
   if (reviewerIsReserved(manifest.sealedBy)) errors.push("Reviewed manifest uses a reserved or synthetic reviewer identity.");
   if (manifest.recordCount !== records.length) errors.push("Reviewed manifest record count is stale.");
+  if (manifest.topicRouteCount !== topicRoutes?.routes?.length) errors.push("Reviewed manifest topic-route count is stale.");
+  if (manifest.ticketTopicAssignmentCount !== ticketTopicAssignments?.entries?.length) {
+    errors.push("Reviewed manifest ticket-topic assignment count is stale.");
+  }
+  if (manifest.topicRoutesFingerprint !== reviewedTopicRouteFingerprint(topicRoutes)) {
+    errors.push("Reviewed topic-routing source differs from immutable manifest.");
+  }
+  if (manifest.ticketTopicAssignmentsFingerprint !== reviewedTicketTopicAssignmentFingerprint(ticketTopicAssignments)) {
+    errors.push("Reviewed ticket-topic assignment source differs from immutable manifest.");
+  }
   const manifestEntries = manifest.records || [];
   const manifestByQuestion = new Map(manifestEntries.map((entry) => [entry.questionId, entry]));
   for (const record of records) {
@@ -810,14 +845,66 @@ export function validatePlacementData({
   baseline,
   records,
   evidence,
-  reviewedManifest
+  reviewedManifest,
+  topicRoutes,
+  ticketTopicAssignments
 }) {
-  const errors = validateReviewedManifest(records, reviewedManifest);
+  const errors = validateReviewedManifest(records, reviewedManifest, topicRoutes, ticketTopicAssignments);
   const questionById = new Map(questions.map((question) => [question.id, question]));
   const translationById = new Map(translations.map((item) => [item.questionId, item]));
   const pageById = new Map(pageInventory.pages.map((page) => [page.pageId, page]));
+  const routeById = new Map((topicRoutes?.routes || []).map((route) => [route.topicRouteId, route]));
+  const assignmentByQuestion = new Map(
+    (ticketTopicAssignments?.entries || []).map((assignment) => [assignment.questionId, assignment])
+  );
   const seenQuestions = new Set();
-  let fallbackCount = 0;
+
+  if (routeById.size !== (topicRoutes?.routes || []).length) errors.push("Topic-routing source has duplicate route IDs.");
+  if (assignmentByQuestion.size !== (ticketTopicAssignments?.entries || []).length) {
+    errors.push("Ticket-topic assignment source has duplicate question IDs.");
+  }
+
+  for (const route of topicRoutes?.routes || []) {
+    if (route.review?.status !== "approved" || reviewerIsReserved(route.review?.reviewedBy)) {
+      errors.push(`${route.topicRouteId}: topic route is not independently reviewed.`);
+    }
+    if (!Array.isArray(route.pages) || route.pages.length < 1 || route.pages.length > 3) {
+      errors.push(`${route.topicRouteId}: topic route must contain 1..3 ordered pages.`);
+      continue;
+    }
+    for (const routePage of route.pages) {
+      const page = pageById.get(routePage.pageId);
+      if (page?.eligibility !== "eligible" || page?.implementationStatus !== "implemented") {
+        errors.push(`${route.topicRouteId}: route page ${routePage.pageId} is not substantive and eligible.`);
+      }
+      if (page && routePage.pageContentFingerprint !== page.contentFingerprint) {
+        errors.push(`${route.topicRouteId}/${routePage.pageId}: stale curated page fingerprint.`);
+      }
+      if (!Array.isArray(routePage.anchors) || routePage.anchors.length < 1) {
+        errors.push(`${route.topicRouteId}/${routePage.pageId}: curated route has no thematic anchors.`);
+      }
+      for (const curated of routePage.anchors || []) {
+        const resolved = resolveAnchor(corpus, routePage.pageId, curated.anchor);
+        if (resolved !== curated.anchorTextAtReview ||
+            anchorFingerprint(curated.anchor, resolved || "") !== curated.anchor?.textFingerprint) {
+          errors.push(`${route.topicRouteId}/${routePage.pageId}: stale curated thematic anchor.`);
+        }
+      }
+    }
+  }
+
+  for (const assignment of ticketTopicAssignments?.entries || []) {
+    if (!questionById.has(assignment.questionId)) errors.push(`${assignment.questionId}: assignment references unknown ticket.`);
+    if (!routeById.has(assignment.topicRouteId)) {
+      errors.push(`${assignment.questionId}: assignment references unknown topic route ${assignment.topicRouteId}.`);
+    }
+    if (assignment.review?.status !== "approved" || reviewerIsReserved(assignment.review?.reviewedBy)) {
+      errors.push(`${assignment.questionId}: ticket-topic assignment is not independently reviewed.`);
+    }
+    if (typeof assignment.reviewerRationaleRu !== "string" || assignment.reviewerRationaleRu.length < 40) {
+      errors.push(`${assignment.questionId}: ticket-topic assignment lacks review rationale.`);
+    }
+  }
 
   for (const record of records) {
     const question = questionById.get(record.questionId);
@@ -830,6 +917,11 @@ export function validatePlacementData({
     if (question) {
       const expected = canonicalEvidence(question, translationById.get(question.id));
       if (canonicalJson(expected) !== canonicalJson(record.canonicalEvidence)) errors.push(`${record.questionId}: stale canonical evidence.`);
+    }
+    const assignment = assignmentByQuestion.get(record.questionId);
+    if (!assignment) errors.push(`${record.questionId}: missing reviewed topic-route assignment.`);
+    if (record.topicRouteId !== assignment?.topicRouteId) {
+      errors.push(`${record.questionId}: placement record differs from reviewed topic-route assignment.`);
     }
     const seenPages = new Set();
     for (const placement of record.placements || []) {
@@ -860,48 +952,33 @@ export function validatePlacementData({
         errors.push(`${record.questionId}/${placement.pageId}: exact reviewed anchor text is stale.`);
       }
       if (placement.placementBasis === "owner-approved-thematic-fallback") {
-        fallbackCount += 1;
         const fallback = placement.fallbackEvidence;
+        const route = routeById.get(assignment?.topicRouteId);
+        const routePage = route?.pages?.find((candidate) => candidate.pageId === placement.pageId);
+        const curatedAnchor = routePage?.anchors?.find(
+          (candidate) => canonicalJson(candidate.anchor) === canonicalJson(placement.anchor)
+        );
         const commonValid =
           fallback?.questionId === record.questionId &&
           fallback?.ownerDecisionDate === "2026-06-23" &&
           fallback?.ownerDecisionRef === "feature-038-owner-decision-2026-06-23" &&
+          fallback?.topicRouteId === assignment?.topicRouteId &&
           typeof fallback?.auditId === "string" &&
           typeof fallback?.auditConclusionRu === "string" &&
           fallback.auditConclusionRu.length >= 40 &&
-          Array.isArray(fallback?.searchedConcepts) &&
-          fallback.searchedConcepts.length >= 3 &&
-          Array.isArray(fallback?.candidatesReviewed) &&
-          fallback.candidatesReviewed.length >= 1 &&
-          fallback.candidatesReviewed.every((candidate) =>
-            typeof candidate.pageId === "string" &&
-            typeof candidate.anchor === "string" &&
-            typeof candidate.rejectionRu === "string" &&
-            candidate.rejectionRu.length >= 20
-          ) &&
           typeof fallback?.selectionRationaleRu === "string" &&
           fallback.selectionRationaleRu.length >= 40 &&
           typeof placement.thematicBasisRu === "string" &&
           placement.thematicBasisRu.length >= 40;
-        const knownExact = record.questionId === "b-fallback-235"
-          ? placement.pageId === "ch2-incident-obligations" &&
-            placement.anchor.kind === "manual-block" &&
-            placement.anchor.blockId === "incident-duty-core" &&
-            placement.anchor.textPath === "textRu" &&
-            fallback?.auditId === "F038-IA-001"
-          : record.questionId === "b-fallback-126"
-            ? placement.pageId === "app1-safety-elements" &&
-              placement.anchor.kind === "manual-list-item" &&
-              placement.anchor.blockId === "pre-driving-checks" &&
-              placement.anchor.itemIndex === 0 &&
-              placement.anchor.textPath === "itemsRu" &&
-              fallback?.auditId === "F038-IA-002"
-            : true;
-        if (!commonValid || !knownExact) errors.push(`${record.questionId}/${placement.pageId}: malformed or unauthorized thematic fallback.`);
+        if (!commonValid || !routePage || !curatedAnchor) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback is outside its reviewed curated route.`);
+        }
       } else {
         if (placement.placementBasis !== "answer-bearing") errors.push(`${record.questionId}/${placement.pageId}: unsupported placement basis.`);
-        if (rationaleIsGeneric(placement.answerBasisRu)) {
-          errors.push(`${record.questionId}/${placement.pageId}: generic or missing answer-bearing rationale.`);
+        if (typeof placement.directAnswerAssertionRu !== "string" ||
+            placement.directAnswerAssertionRu.length < 40 ||
+            rationaleIsGeneric(placement.reviewerRationaleRu)) {
+          errors.push(`${record.questionId}/${placement.pageId}: strict placement lacks direct-answer evidence.`);
         }
       }
     }
@@ -909,6 +986,7 @@ export function validatePlacementData({
 
   for (const question of questions) {
     if (!seenQuestions.has(question.id)) errors.push(`${question.id}: zero placements.`);
+    if (!assignmentByQuestion.has(question.id)) errors.push(`${question.id}: zero reviewed topic assignments.`);
   }
   if (records.length !== questions.length) errors.push(`Expected ${questions.length} mapping records, found ${records.length}.`);
   const currentBaseline = createProtectedBaseline(root, pageInventory, corpus);
