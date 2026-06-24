@@ -491,6 +491,30 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
 - Manual/product code/content/tests/docs changed by Architect: `no`.
 - Final Architect validation performed: `no`.
 
+## Follow-up CI Fix — OSV Scan
+
+- Implementation Agent assignment date: `2026-06-24`.
+- Starting PR/head: `#204` / `77669a15fafa4c9d9b47dfecabdb33dcbd6cb442`.
+- Failed required check: `osv-scan`, run `28069189843`, job `83099973709`.
+- Root cause:
+  - `vite@6.4.2` was affected by `GHSA-fx2h-pf6j-xcff` and `GHSA-v6wh-96g9-6wx3`; fixed in `6.4.3`.
+  - transitive `@babel/core@7.29.0` was affected by `GHSA-4x5r-pxfx-6jf8`; fixed in `7.29.6`.
+- Minimal dependency change:
+  - raised the existing Vite range from `^6.4.1` to the safe floor `^6.4.3`;
+  - added a root pnpm override for transitive `@babel/core` at exactly `7.29.6`, because a normal targeted transitive update retained `7.29.0`;
+  - regenerated `pnpm-lock.yaml`; resolved versions are `vite@6.4.3` and one deduplicated `@babel/core@7.29.6`.
+- Changed files: `package.json`, `pnpm-lock.yaml`, and this Implementation Agent process-evidence section in `specs/038-manual-ticket-placement/tasks.md`.
+- Scope guard: no feature behavior, protected manual corpus, canonical ticket data, placement records, mapping semantics, or final-validation records changed.
+- Verification:
+  - `pnpm install --frozen-lockfile`: passed.
+  - `pnpm list vite @babel/core --depth 10`: passed; only safe resolved versions present.
+  - local CI-equivalent `ghcr.io/google/osv-scanner-action:v2.3.5 --recursive .`: passed, `No issues found`.
+  - `pnpm run validate:manual-ticket-placement`: passed (`460` questions, `460` placements, `458` answer-bearing, `2` approved fallbacks).
+  - `pnpm run preflight`: passed, including `455/455` unit/content tests, Vite `6.4.3` production builds, and `88/88` Playwright tests.
+  - `git diff --check`: passed.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
 ## Final Validation Records
 
 Architect return count: `0 / 10`

@@ -42,7 +42,7 @@
     "lucide-react": "^0.555.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "vite": "^6.4.1"
+    "vite": "^6.4.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
@@ -52,6 +52,9 @@
     "typescript": "^5.9.3"
   },
   "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6"
+    },
     "onlyBuiltDependencies": [
       "esbuild"
     ]
