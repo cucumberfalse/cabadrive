@@ -634,18 +634,18 @@
     },
     {
       "questionId": "b-fallback-042",
-      "topicRouteId": "public-transport-and-exclusive-lanes",
+      "topicRouteId": "information-signs",
       "sourceTopicIdsAtReview": [
-        "public-transport-and-exclusive-lanes"
+        "information-signs"
       ],
-      "reviewerRationaleRu": "Проверены формулировка билета и канонический правильный ответ; основной учебный предмет отнесён к теме «Автобусы, Metrobus и выделенные полосы», а не к случайному лексическому совпадению.",
+      "reviewerRationaleRu": "Билет b-fallback-042 проверен по изображению и правильному ответу об автобусном терминале; он отнесён к теме информационных знаков, где существует точная learner-visible подпись «автовокзал».",
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra002",
-        "reviewedAt": "2026-06-24T15:00:00Z",
+        "reviewedBy": "codex-implementation-agent-f038-ra003",
+        "reviewedAt": "2026-06-24T20:06:33Z",
         "auditShard": "001-092"
       },
-      "assignmentFingerprint": "38d8c66530de3cd67eef00d36957ccec978e741c3cb1fd8cffabd5c49549089c"
+      "assignmentFingerprint": "55af1ac70b6a3af2bfa41f3910b557c3d96a0de0856695571c6c28a566204ba9"
     },
     {
       "questionId": "b-fallback-043",

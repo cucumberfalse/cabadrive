@@ -130,6 +130,16 @@
           "anchors": [
             {
               "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "pre-driving-checks",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "d7193082a9dd2069505fe3b83e6b46c52bc5629183c4aea5e5e96cae02260023"
+              },
+              "anchorTextAtReview": "Масло, охлаждающую жидкость и жидкость стеклоомывателя."
+            },
+            {
+              "anchor": {
                 "kind": "manual-block",
                 "blockId": "why-vehicle-condition-matters",
                 "textPath": "textRu",
@@ -143,10 +153,10 @@
       "routingRationaleRu": "Тема «Состояние автомобиля, обслуживание и груз» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra002",
-        "reviewedAt": "2026-06-24T15:00:00Z"
+        "reviewedBy": "codex-implementation-agent-f038-ra003",
+        "reviewedAt": "2026-06-24T20:06:33Z"
       },
-      "routeFingerprint": "5dcf0b0eb8232992a9330df8c36d30666667882c8d85ba821f35a91f7567ad23"
+      "routeFingerprint": "09adbe1061dc0a4450156848c18f9c3030fa5125de59a6e654e4d20ffe8e10c3"
     },
     {
       "topicRouteId": "pedestrian-and-school-road-markings",
@@ -451,6 +461,16 @@
           "anchors": [
             {
               "anchor": {
+                "kind": "manual-sign-entry",
+                "blockId": "informational-individual-sign-catalog",
+                "entryId": "app4informational-p191-019-terminal-de-omnibus-catalog-entry",
+                "textPath": "russianTranslation",
+                "textFingerprint": "69cd9fed09b1c50d94a8a9f0e22abe8c9680747e42fecd7edab933468e84cc69"
+              },
+              "anchorTextAtReview": "автовокзал"
+            },
+            {
+              "anchor": {
                 "kind": "manual-block",
                 "blockId": "informational-role",
                 "textPath": "textRu",
@@ -464,10 +484,10 @@
       "routingRationaleRu": "Тема «Информационные знаки, сервисы и ориентиры» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra002",
-        "reviewedAt": "2026-06-24T15:00:00Z"
+        "reviewedBy": "codex-implementation-agent-f038-ra003",
+        "reviewedAt": "2026-06-24T20:06:33Z"
       },
-      "routeFingerprint": "6c9265cf728d0d8e8e5acc5614cd3ee00fbdc7bd69622e6ed5fa850164c4d359"
+      "routeFingerprint": "3ea17ea2e1b7df5eb8b5f977fa13d4d73da00ee4e42898db44d1518cf08a321e"
     },
     {
       "topicRouteId": "traffic-lights-and-rail-crossings",

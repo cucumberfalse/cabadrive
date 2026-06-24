@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For remediation of `F038-RA-002`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards are sequential audit checkpoints, but they share the curated topic-routing table, ticket-topic assignment, validator, manifest, evidence, runtime index, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
+For remediation of `F038-RA-003`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards share fallback-ledger schema, curated routes, assignments, validator, manifest, evidence, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -116,6 +116,54 @@ If no eligible route contains the answer for a ticket:
 4. select the first applicable approved route page and one of its curated thematic anchors;
 5. create one `owner-approved-thematic-fallback` with the common owner decision reference/date, route ID, exact anchor, selection rationale, approved review, and fresh fingerprints;
 6. leave coverage failing and hand back to Orchestrator only when no substantive thematic page exists.
+
+### F038-RA-003 bounded remediation
+
+1. Upgrade every current fallback record to the mandatory ticket-specific ledger defined in `spec.md`: distinct searched concepts, one exact selected candidate, at least one exact rejected candidate, rejection reasons, no-answer conclusion, and comparative selection rationale.
+2. Work sequentially through the five existing shards. After each shard, run the focused validator/tests and record audited count, complete-ledger count, corrected destination/anchor count, and unresolved count.
+3. Restore `b-fallback-042` to the `information-signs` route and exact `app4-signs-informational` entry `app4informational-p191-019-terminal-de-omnibus-catalog-entry`; compare and reject the current generic public-transport anchor in its ledger.
+4. Restore `b-fallback-126` to `app1-safety-elements` at `pre-driving-checks.itemsRu[0]`; retain explicit comparisons with the oil-filter and professional inspection-fluid candidates.
+5. Update the reviewed manifest and deterministic evidence only after all ledgers and both ticket invariants pass.
+6. Keep generator/scorer behavior candidate-only. It may not synthesize approval metadata, selected outcomes, rejection reasons, audit conclusions, or comparative rationales.
+
+Exact Implementation Agent write scope:
+
+- `content/manual-ticket-placement/topic-routes.json`;
+- `content/manual-ticket-placement/ticket-topic-assignments.json`;
+- `content/manual-ticket-placement/placements/001-092.json`;
+- `content/manual-ticket-placement/placements/093-184.json`;
+- `content/manual-ticket-placement/placements/185-276.json`;
+- `content/manual-ticket-placement/placements/277-368.json`;
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs` only if the command wrapper must expose the stricter validation summary;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if the `042` route move changes an existing deterministic density/route assertion;
+- `docs_project/project/backend/backend-docs.md` only to document the now-mandatory fallback ledger;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+No other file is allowed without a new Architect disposition. In particular, do not edit protected manual source/images, canonical questions/translations/explanations/images, runtime UI/CSS, package metadata, lockfiles, route inventory/baseline files, frontend docs, or unrelated tests.
+
+Acceptance:
+
+- all `460` fallback records contain complete ticket-specific ledgers;
+- all selected and rejected candidate anchors resolve and are fresh;
+- every selected ledger candidate equals its committed placement;
+- `042` and `126` satisfy their exact invariants;
+- manifest/evidence are current and all validator counters are zero;
+- focused negative tests cover missing concepts, missing rejected candidate, unresolved/stale candidate anchor, selected/placement mismatch, generic ledger reuse, and alternate `042`/`126` anchors;
+- protected/canonical content remains unchanged;
+- required local checks pass and a new effective content head is recorded.
+
+Freshness:
+
+- any mapping, route, assignment, manifest, validator, test, or durable-doc change in this remediation creates a new effective content head;
+- Review Agent review `4565465801`, effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8`, and evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a` cannot authorize merge afterward;
+- all three current threads require fresh Review Agent disposition on the new head;
+- final Architect validation remains forbidden until fresh review passes, required checks are green, threads are resolved/outdated, and process memory is current;
+- any later non-evidence change stales that fresh review and all subsequent final-validation evidence.
 
 ### F038-IA-001 owner decision and implementation
 
@@ -371,4 +419,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-002` is the current blocking implementation task on PR `#204` at evidence-only head `00fc30328d92dd890fafc45792ad1501bc3e392e`; prior effective content head `f9645722bd823b400b122774365e05fead59daec` is stale. One Implementation Agent must execute the five shard audits sequentially, keep the curated routing artifacts and manifest current, reconcile process memory, record the new effective content SHA, and rerun all required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-003` is the current blocking implementation task on PR `#204` at head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a`; prior effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8` is stale. One Implementation Agent must complete the five fallback-ledger checkpoints, restore the exact `042` and `126` invariants, keep manifest/evidence/process memory current, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.

@@ -126,6 +126,37 @@ test("validator rejects malformed fallbacks and support-page destinations", () =
   assert.ok(validate(supportPage).errors.some((error) => error.includes("ineligible destination front-glossary")));
 });
 
+test("validator requires complete ticket-specific fallback ledgers", () => {
+  const missingConcepts = structuredClone(records);
+  delete missingConcepts[0].placements[0].fallbackEvidence.searchedConcepts;
+  assert.ok(validate(missingConcepts).errors.some((error) => error.includes("two distinct searched concepts")));
+
+  const duplicatedConcepts = structuredClone(records);
+  const duplicatedFallback = duplicatedConcepts[0].placements[0].fallbackEvidence;
+  duplicatedFallback.searchedConcepts = [duplicatedFallback.searchedConcepts[0], duplicatedFallback.searchedConcepts[0]];
+  assert.ok(validate(duplicatedConcepts).errors.some((error) => error.includes("two distinct searched concepts")));
+
+  const noRejectedCandidate = structuredClone(records);
+  noRejectedCandidate[0].placements[0].fallbackEvidence.candidatesReviewed =
+    noRejectedCandidate[0].placements[0].fallbackEvidence.candidatesReviewed.filter(
+      (candidate) => candidate.outcome !== "rejected"
+    );
+  assert.ok(validate(noRejectedCandidate).errors.some((error) => error.includes("one selected and at least one rejected")));
+
+  const staleCandidate = structuredClone(records);
+  staleCandidate[0].placements[0].fallbackEvidence.candidatesReviewed[1].anchorTextAtReview = "stale";
+  assert.ok(validate(staleCandidate).errors.some((error) => error.includes("stale exact-anchor evidence")));
+
+  const mismatchedSelected = structuredClone(records);
+  mismatchedSelected[0].placements[0].fallbackEvidence.candidatesReviewed[0].pageId = "ch3-speed";
+  assert.ok(validate(mismatchedSelected).errors.some((error) => error.includes("differs from the committed placement")));
+
+  const genericConclusion = structuredClone(records);
+  genericConclusion[0].placements[0].fallbackEvidence.auditConclusionRu =
+    "Общий вывод без идентификатора и формулировки конкретного билета.";
+  assert.ok(validate(genericConclusion).errors.some((error) => error.includes("generic")));
+});
+
 test("validator rejects fallback pages or anchors outside the reviewed route", () => {
   const wrongPage = structuredClone(records);
   const lights = wrongPage.find((record) => record.questionId === "b-fallback-349");
@@ -150,7 +181,7 @@ test("fresh and prior review regression tickets use conservative classifications
     "b-fallback-003": ["emergency-response-and-crash-scene", "ch2-incident-obligations"],
     "b-fallback-011": ["warning-signs", "app4-signs-warning"],
     "b-fallback-037": ["bicycles-and-micromobility", "ch1-bicycle"],
-    "b-fallback-042": ["public-transport-and-exclusive-lanes", "ch1-public-transport-system"],
+    "b-fallback-042": ["information-signs", "app4-signs-informational"],
     "b-fallback-064": ["mirrors-blind-spots-and-visibility", "app1-safety-elements"],
     "b-fallback-085": ["right-of-way-basic-intersections", "ch3-right-of-way"],
     "b-fallback-096": ["emergency-response-and-crash-scene", "ch2-incident-obligations"],
@@ -182,13 +213,48 @@ test("known false mappings 003, 011, and 042 cannot return", () => {
   assert.equal(current003.pageId, "ch2-incident-obligations");
   assert.equal(current011.pageId, "app4-signs-warning");
   assert.equal(current011.placementBasis, "owner-approved-thematic-fallback");
-  assert.equal(current042.pageId, "ch1-public-transport-system");
+  assert.equal(current042.pageId, "app4-signs-informational");
+  assert.equal(current042.anchor.entryId, "app4informational-p191-019-terminal-de-omnibus-catalog-entry");
 
   const restored = structuredClone(records);
   const record003 = restored.find((record) => record.questionId === "b-fallback-003");
   record003.placements[0].pageId = "app1-other-required-safety-elements";
   record003.placements[0].anchor.blockId = "extinguisher";
   assert.ok(validate(restored).errors.some((error) => error.includes("known false mapping fixture was restored")));
+});
+
+test("tickets 042 and 126 preserve their exact approved anchors and comparison ledgers", () => {
+  const record042 = records.find((record) => record.questionId === "b-fallback-042");
+  assert.equal(record042.topicRouteId, "information-signs");
+  assert.equal(record042.placements[0].anchorTextAtReview, "автовокзал");
+  assert.ok(record042.placements[0].fallbackEvidence.candidatesReviewed.some((candidate) =>
+    candidate.outcome === "rejected" && candidate.pageId === "ch1-public-transport-system"
+  ));
+
+  const record126 = records.find((record) => record.questionId === "b-fallback-126");
+  assert.equal(record126.placements[0].anchor.kind, "manual-list-item");
+  assert.equal(record126.placements[0].anchor.blockId, "pre-driving-checks");
+  assert.equal(record126.placements[0].anchor.itemIndex, 0);
+  assert.ok(record126.placements[0].fallbackEvidence.candidatesReviewed.some((candidate) =>
+    candidate.outcome === "rejected" &&
+    candidate.pageId === "ch5-anticipatory-efficient-driving" &&
+    candidate.anchor.blockId === "efficient-driving-measures"
+  ));
+  assert.ok(record126.placements[0].fallbackEvidence.candidatesReviewed.some((candidate) =>
+    candidate.outcome === "rejected" &&
+    candidate.pageId === "app3-social-responsibility" &&
+    candidate.anchor.blockId === "vehicle-precheck"
+  ));
+
+  const alternate042 = structuredClone(records);
+  const placement042 = alternate042.find((record) => record.questionId === "b-fallback-042").placements[0];
+  placement042.pageId = "ch1-public-transport-system";
+  assert.ok(validate(alternate042).errors.some((error) => error.includes("bus-terminal invariant")));
+
+  const alternate126 = structuredClone(records);
+  const placement126 = alternate126.find((record) => record.questionId === "b-fallback-126").placements[0];
+  placement126.anchor = structuredClone(records[0].placements[0].anchor);
+  assert.ok(validate(alternate126).errors.some((error) => error.includes("oil-check invariant")));
 });
 
 test("runtime source appends tickets after existing page flows and keeps canonical joins", () => {

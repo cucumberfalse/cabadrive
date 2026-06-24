@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head: `#204` / `00fc30328d92dd890fafc45792ad1501bc3e392e`
-- Process status: `review-blocked` by fresh Review Agent review `4561846977`; unresolved threads `3466813754`, `3466813762`, and `3466813766` require a second semantic remediation and process-memory reconciliation
-- Prior effective content head `f9645722bd823b400b122774365e05fead59daec` and all `71 answer-bearing / 389 fallback` completion claims are stale for merge readiness; `00fc30328d92dd890fafc45792ad1501bc3e392e` is its later evidence-only head
+- Current PR/head: `#204` / `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a`
+- Process status: `review-blocked` by Review Agent review `4565465801`; unresolved threads `PRRT_kwDOSX65IM6MBYWW`, `PRRT_kwDOSX65IM6MBYWc`, and `PRRT_kwDOSX65IM6MBYWh` require the bounded `F038-RA-003` remediation
+- Effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8` and its later evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a` are stale for merge readiness because the current fallback ledger is incomplete and tickets `042` and `126` regress approved placement requirements
 
 ## Goal
 
@@ -448,6 +448,56 @@ These expectations are minimum regression fixtures, not an exhaustive routing ta
 
 Architect return count becomes `2 / 10`. Final Architect validation is not performed by this disposition.
 
+### F038-RA-003 Architect disposition
+
+Disposition: `task` — all three findings in Review Agent review `4565465801` are accepted as blocking.
+
+Independent Architect verification on `2026-06-24` confirmed:
+
+- `PRRT_kwDOSX65IM6MBYWW`: all current `460` fallback records omit `searchedConcepts` and `candidatesReviewed`; the validator accepts generic audit conclusions and selection rationales, so the sealed manifest proves immutability but not the required ticket-specific no-answer/closest-page audit;
+- `PRRT_kwDOSX65IM6MBYWc`: `b-fallback-042` is routed to generic public-transport prose although the learner-visible exact Appendix IV entry `app4informational-p191-019-terminal-de-omnibus-catalog-entry` labels the sign `автовокзал`;
+- `PRRT_kwDOSX65IM6MBYWh`: `b-fallback-126` uses generic vehicle-condition prose instead of the already approved `manual-list-item` anchor `pre-driving-checks.itemsRu[0]` with text `Масло, охлаждающую жидкость и жидкость стеклоомывателя.`.
+
+Formal dispositions:
+
+1. `PRRT_kwDOSX65IM6MBYWW` → `task`: restore mandatory ticket-specific fallback audit evidence for every fallback record and enforce it structurally and negatively.
+2. `PRRT_kwDOSX65IM6MBYWc` → `task`: assign `b-fallback-042` to topic route `information-signs`, page `app4-signs-informational`, and exact `manual-sign-entry` anchor `app4informational-p191-019-terminal-de-omnibus-catalog-entry`. The placement may remain conservatively classified as `owner-approved-thematic-fallback`, but the exact sign label must be the selected closest-topic anchor.
+3. `PRRT_kwDOSX65IM6MBYWh` → `task`: restore the exact `F038-IA-002` destination and list-item anchor for `b-fallback-126`; generic page-level vehicle-condition prose is forbidden for this ticket.
+
+#### Mandatory fallback audit ledger
+
+Every `owner-approved-thematic-fallback` must contain a ticket-specific `fallbackEvidence` ledger with:
+
+- `searchedConcepts`: at least two non-empty, distinct search concepts/forms derived from that ticket's canonical question, correct answer, governed translation, or image meaning; a single shared boilerplate array across tickets is invalid;
+- `candidatesReviewed`: at least two distinct exact candidate anchors, including exactly one selected candidate and at least one rejected candidate;
+- for every candidate: `pageId`, complete resolvable `anchor`, `anchorTextAtReview`, and outcome `selected-closest-topic` or `rejected`;
+- for every rejected candidate: a ticket-specific `rejectionRu` explaining both why it does not supply the answer and why it is less suitable than the selected context;
+- `auditConclusionRu`: a ticket-specific no-answer conclusion;
+- `selectionRationaleRu`: a comparative rationale naming the selected page/anchor and at least one rejected candidate, without claiming the fallback anchor contains the answer.
+
+The selected candidate must exactly equal the committed placement page and anchor. Every candidate anchor must resolve to current learner-visible text and carry fresh anchor/page fingerprints. The reviewed manifest must seal the complete ledger. Candidate generation may suggest evidence for human review but may not author, approve, or overwrite this ledger.
+
+#### Ticket-specific invariants
+
+- `b-fallback-042`:
+  - `topicRouteId`: `information-signs`;
+  - page: `app4-signs-informational`;
+  - anchor kind: `manual-sign-entry`;
+  - entry: `app4informational-p191-019-terminal-de-omnibus-catalog-entry`;
+  - learner-visible Russian label must resolve to `автовокзал`;
+  - the fallback audit must compare this exact sign entry against the rejected generic public-transport destination.
+- `b-fallback-126`:
+  - `topicRouteId`: `vehicle-condition-maintenance-loads`;
+  - page: `app1-safety-elements`;
+  - anchor kind: `manual-list-item`;
+  - block: `pre-driving-checks`;
+  - `itemIndex: 0`;
+  - `textPath: itemsRu`;
+  - learner-visible text must resolve to `Масло, охлаждающую жидкость и жидкость стеклоомывателя.`;
+  - the fallback audit must retain the earlier comparisons with the oil-filter context and the professional inspection-fluid context.
+
+Architect return count becomes `3 / 10`. This disposition is not final Architect validation.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -678,6 +728,11 @@ Negative exception tests must prove that validation fails when:
 - reviewed shards or records are missing from, differ from, or are overwritten despite the immutable reviewed manifest;
 - any of the known false fixture mappings for `b-fallback-003`, `b-fallback-011`, or `b-fallback-042` is restored;
 - false ordinary mappings are bulk relabeled as fallback without a ticket-specific no-answer audit.
+- a fallback omits `searchedConcepts`, has fewer than two distinct exact candidates, lacks a rejected candidate, or uses a generic/shared audit ledger;
+- a candidate omits exact anchor text, does not resolve to learner-visible text, or is stale;
+- the selected candidate differs from the committed placement, or comparative rationale does not identify why rejected candidates are less suitable;
+- `b-fallback-042` does not use the exact `автовокзал` Appendix IV sign entry;
+- `b-fallback-126` does not use `pre-driving-checks.itemsRu[0]`;
 - an `answer-bearing` record lacks a self-sufficient exact anchor, `directAnswerAssertionRu`, or ticket-specific distractor-aware rationale;
 - a ticket or fallback lacks a reviewed topic-route assignment;
 - a fallback page is outside the assigned curated route, its anchor is not one of the route's curated anchors, or a non-default destination lacks a reviewed ticket-specific override;
@@ -717,4 +772,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4561846977`, effective content head `f9645722bd823b400b122774365e05fead59daec`, and evidence-only head `00fc30328d92dd890fafc45792ad1501bc3e392e` are stale for merge authorization. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, either ticket-specific invariant for `042` or `126` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4565465801`, effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8`, and evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a` are stale for merge authorization. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.

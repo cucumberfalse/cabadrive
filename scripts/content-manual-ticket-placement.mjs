@@ -76,7 +76,11 @@ const generatedEvidence = {
     missingOrStaleTicketTopicAssignments: 0,
     strictWithoutDirectAnswerEvidence: 0,
     fallbackOutsideCuratedRoute: 0,
-    unreviewedTicketOverrides: 0
+    unreviewedTicketOverrides: 0,
+    incompleteFallbackLedgers: 0,
+    staleFallbackCandidateEvidence: 0,
+    selectedCandidateMismatches: 0,
+    ticketSpecificInvariantFailures: 0
   }
 };
 

@@ -777,6 +777,23 @@ function rationaleIsGeneric(value) {
     normalized.includes("выбран потому что относится к теме вопроса");
 }
 
+function distinctNormalizedStrings(values) {
+  return new Set((values || []).map((value) => normalizeText(value)).filter(Boolean));
+}
+
+function candidateKey(candidate) {
+  return canonicalJson({
+    pageId: candidate?.pageId,
+    anchor: candidate?.anchor ? locatorWithoutFingerprint(candidate.anchor) : null
+  });
+}
+
+function textContains(value, expected) {
+  const normalizedValue = normalizeText(value);
+  const normalizedExpected = normalizeText(expected);
+  return normalizedExpected.length >= 4 && normalizedValue.includes(normalizedExpected);
+}
+
 function validateReviewedManifest(records, manifest, topicRoutes, ticketTopicAssignments) {
   const errors = [];
   if (!manifest || manifest.schemaVersion !== REVIEWED_MANIFEST_SCHEMA_VERSION) {
@@ -858,6 +875,9 @@ export function validatePlacementData({
     (ticketTopicAssignments?.entries || []).map((assignment) => [assignment.questionId, assignment])
   );
   const seenQuestions = new Set();
+  const searchedConceptSignatures = new Map();
+  const auditConclusionSignatures = new Map();
+  const selectionRationaleSignatures = new Map();
 
   if (routeById.size !== (topicRoutes?.routes || []).length) errors.push("Topic-routing source has duplicate route IDs.");
   if (assignmentByQuestion.size !== (ticketTopicAssignments?.entries || []).length) {
@@ -973,6 +993,101 @@ export function validatePlacementData({
         if (!commonValid || !routePage || !curatedAnchor) {
           errors.push(`${record.questionId}/${placement.pageId}: fallback is outside its reviewed curated route.`);
         }
+
+        const searchedConcepts = fallback?.searchedConcepts;
+        const normalizedConcepts = distinctNormalizedStrings(searchedConcepts);
+        const ticketSearchCorpus = [
+          question?.officialTextEs,
+          translationById.get(record.questionId)?.questionTextRu,
+          question?.answers?.find((answer) => answer.id === question.correctAnswerId)?.officialTextEs,
+          translationById.get(record.questionId)?.answerTranslations?.[question?.correctAnswerId]
+        ].filter(Boolean);
+        if (!Array.isArray(searchedConcepts) || searchedConcepts.length < 2 || normalizedConcepts.size < 2) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback lacks two distinct searched concepts.`);
+        } else if (searchedConcepts.some((concept) => !ticketSearchCorpus.some((source) =>
+          textContains(source, concept) || textContains(concept, source)
+        ))) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback searched concepts are not ticket-specific.`);
+        }
+
+        const conceptSignature = [...normalizedConcepts].sort().join("|");
+        const priorConceptQuestion = searchedConceptSignatures.get(conceptSignature);
+        if (conceptSignature && priorConceptQuestion && priorConceptQuestion !== record.questionId) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback reuses another ticket's searched-concept ledger.`);
+        } else if (conceptSignature) {
+          searchedConceptSignatures.set(conceptSignature, record.questionId);
+        }
+
+        const candidates = fallback?.candidatesReviewed;
+        const candidateKeys = new Set((candidates || []).map(candidateKey));
+        const selectedCandidates = (candidates || []).filter((candidate) => candidate.outcome === "selected-closest-topic");
+        const rejectedCandidates = (candidates || []).filter((candidate) => candidate.outcome === "rejected");
+        if (!Array.isArray(candidates) || candidates.length < 2 || candidateKeys.size !== candidates.length) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback lacks two distinct exact candidates.`);
+        }
+        if (selectedCandidates.length !== 1 || rejectedCandidates.length < 1) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback must have one selected and at least one rejected candidate.`);
+        }
+
+        for (const candidate of candidates || []) {
+          const candidatePage = pageById.get(candidate.pageId);
+          const candidateText = resolveAnchor(corpus, candidate.pageId, candidate.anchor);
+          if (!candidatePage || candidatePage.eligibility !== "eligible" || candidatePage.implementationStatus !== "implemented") {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback candidate ${candidate.pageId} is not substantive and eligible.`);
+          }
+          if (candidatePage && candidate.pageContentFingerprint !== candidatePage.contentFingerprint) {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback candidate ${candidate.pageId} has a stale page fingerprint.`);
+          }
+          if (typeof candidateText !== "string" || !candidateText.trim()) {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback candidate ${candidate.pageId} does not resolve.`);
+          } else if (
+            candidate.anchorTextAtReview !== candidateText ||
+            anchorFingerprint(candidate.anchor, candidateText) !== candidate.anchor?.textFingerprint
+          ) {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback candidate ${candidate.pageId} has stale exact-anchor evidence.`);
+          }
+          if (candidate.outcome === "rejected" && (
+            typeof candidate.rejectionRu !== "string" ||
+            candidate.rejectionRu.length < 80 ||
+            !candidate.rejectionRu.includes(record.questionId) ||
+            !candidate.rejectionRu.includes(placement.pageId)
+          )) {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback rejection is not ticket-specific and comparative.`);
+          }
+        }
+
+        const selectedCandidate = selectedCandidates[0];
+        if (selectedCandidate && (
+          selectedCandidate.pageId !== placement.pageId ||
+          canonicalJson(selectedCandidate.anchor) !== canonicalJson(placement.anchor) ||
+          selectedCandidate.anchorTextAtReview !== placement.anchorTextAtReview ||
+          selectedCandidate.pageContentFingerprint !== placement.pageContentFingerprint
+        )) {
+          errors.push(`${record.questionId}/${placement.pageId}: selected fallback candidate differs from the committed placement.`);
+        }
+
+        const rejectedPageIds = rejectedCandidates.map((candidate) => candidate.pageId);
+        if (
+          !fallback?.auditConclusionRu?.includes(record.questionId) ||
+          !textContains(fallback.auditConclusionRu, translationById.get(record.questionId)?.questionTextRu || question?.officialTextEs) ||
+          !fallback?.selectionRationaleRu?.includes(placement.pageId) ||
+          !rejectedPageIds.some((pageId) => fallback.selectionRationaleRu.includes(pageId))
+        ) {
+          errors.push(`${record.questionId}/${placement.pageId}: fallback audit conclusion or selection rationale is generic.`);
+        }
+
+        for (const [value, signatures, label] of [
+          [fallback?.auditConclusionRu, auditConclusionSignatures, "audit conclusion"],
+          [fallback?.selectionRationaleRu, selectionRationaleSignatures, "selection rationale"]
+        ]) {
+          const signature = normalizeText(value);
+          const priorQuestion = signatures.get(signature);
+          if (signature && priorQuestion && priorQuestion !== record.questionId) {
+            errors.push(`${record.questionId}/${placement.pageId}: fallback reuses another ticket's ${label}.`);
+          } else if (signature) {
+            signatures.set(signature, record.questionId);
+          }
+        }
       } else {
         if (placement.placementBasis !== "answer-bearing") errors.push(`${record.questionId}/${placement.pageId}: unsupported placement basis.`);
         if (typeof placement.directAnswerAssertionRu !== "string" ||
@@ -982,6 +1097,45 @@ export function validatePlacementData({
         }
       }
     }
+  }
+
+  const record042 = records.find((record) => record.questionId === "b-fallback-042");
+  const placement042 = record042?.placements?.[0];
+  if (
+    record042?.topicRouteId !== "information-signs" ||
+    assignmentByQuestion.get("b-fallback-042")?.topicRouteId !== "information-signs" ||
+    placement042?.pageId !== "app4-signs-informational" ||
+    placement042?.anchor?.kind !== "manual-sign-entry" ||
+    placement042?.anchor?.entryId !== "app4informational-p191-019-terminal-de-omnibus-catalog-entry" ||
+    resolveAnchor(corpus, placement042?.pageId, placement042?.anchor) !== "автовокзал"
+  ) {
+    errors.push("b-fallback-042: exact informational-sign bus-terminal invariant failed.");
+  }
+
+  const record126 = records.find((record) => record.questionId === "b-fallback-126");
+  const placement126 = record126?.placements?.[0];
+  const candidates126 = placement126?.fallbackEvidence?.candidatesReviewed || [];
+  if (
+    record126?.topicRouteId !== "vehicle-condition-maintenance-loads" ||
+    placement126?.pageId !== "app1-safety-elements" ||
+    placement126?.anchor?.kind !== "manual-list-item" ||
+    placement126?.anchor?.blockId !== "pre-driving-checks" ||
+    placement126?.anchor?.itemIndex !== 0 ||
+    placement126?.anchor?.textPath !== "itemsRu" ||
+    !candidates126.some((candidate) =>
+      candidate.pageId === "ch5-anticipatory-efficient-driving" &&
+      candidate.anchor?.blockId === "efficient-driving-measures" &&
+      candidate.anchor?.itemIndex === 5 &&
+      candidate.outcome === "rejected"
+    ) ||
+    !candidates126.some((candidate) =>
+      candidate.pageId === "app3-social-responsibility" &&
+      candidate.anchor?.blockId === "vehicle-precheck" &&
+      candidate.anchor?.itemIndex === 2 &&
+      candidate.outcome === "rejected"
+    )
+  ) {
+    errors.push("b-fallback-126: exact pre-driving oil-check invariant or comparison ledger failed.");
   }
 
   for (const question of questions) {
