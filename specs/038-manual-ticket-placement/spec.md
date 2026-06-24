@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head at review disposition: `#204` / `917c43618a25be13ff9b51f9319af84cdd24cb64`
-- Process status: `review-blocked`; Review Agent finding `discussion_r3464034934` is accepted as a follow-up task
-- Prior `458 answer-bearing / 2 fallback` evidence is invalidated by the accepted finding and must not be used as completion or merge-readiness evidence
+- Current PR/head at `F038-IA-003` disposition: `#204` / `2688192e36815cf81741882ebda68f29f3ca1030`
+- Process status: `review-blocked`; semantic remediation is pushed and active dense-disclosure finding `discussion_r3464076641` is accepted as a blocking follow-up task
+- Prior `458 answer-bearing / 2 fallback` evidence is invalidated; remediation evidence at content head `c956422ee159fde4ed1825b5806b3336515b7372` becomes historical when the required UI/test fix creates a new effective content head
 
 ## Goal
 
@@ -352,6 +352,35 @@ Required remediation:
 
 Final Architect validation is not performed by this disposition.
 
+### F038-IA-003 Architect disposition
+
+Disposition: `task` — active Review Agent finding accepted as a blocking follow-up.
+
+Independent Architect verification on `2026-06-24` confirmed:
+
+- `ManualTicketAppendix` stores card-mount state in React as `expanded` and resets it in a `useEffect` keyed by `pageId`;
+- the dense branch renders an uncontrolled native `<details>` without an `open` prop or a `pageId` key;
+- React can therefore reuse the same native disclosure node across dense-page navigation while the browser retains its `open` state independently of the later React-state reset;
+- the existing Playwright route-transition assertion opens `ch3-right-of-way`, navigates to `app1-safety-elements`, and checks only that zero cards remain mounted; it does not assert that the new disclosure is natively closed.
+
+Required remediation:
+
+1. in `src/App.tsx`, add `key={pageId}` to the dense appendix `<details>` so a dense destination page receives a fresh native disclosure node in the default closed state;
+2. retain the existing `expanded` state, `pageId` reset effect, conditional card mounting, native `<summary>`, and `onToggle` behavior;
+3. in `tests/e2e/manual-ticket-placement.spec.ts`, extend the existing dense-page transition regression to open the `44`-ticket `ch3-right-of-way` appendix, navigate to the `26`-ticket `app1-safety-elements` appendix, and assert both that the destination disclosure lacks the native `open` attribute and that it contains zero mounted `.materials-ticket` cards;
+4. preserve the accessibility contract of a native keyboard-operable `<details>/<summary>` disclosure, the direct-render threshold, deterministic ordering, lazy images, responsive layout, and the closed-state density contract of zero mounted rich ticket cards;
+5. rerun focused Playwright for the manual-ticket spec and the normal required checks.
+
+Allowed implementation files are exactly:
+
+- `src/App.tsx`;
+- `tests/e2e/manual-ticket-placement.spec.ts`;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+The remediation effective content head `c956422ee159fde4ed1825b5806b3336515b7372` and later evidence-only head `2688192e36815cf81741882ebda68f29f3ca1030` remain valid historical evidence only. Any UI or test fix creates a new effective content head and makes prior review/final-validation evidence stale. Fresh Review Agent review and later final Architect/Analyst validation are required on that new effective content head.
+
+This disposition does not increment the Architect return count because it classifies newly routed Implementation Agent/review feedback before final Architect validation; it is not a returned final-validation gap. Final Architect validation is not performed by this disposition.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -601,6 +630,7 @@ Negative exception tests must prove that validation fails when:
   - one image-backed ticket;
   - low-, medium-, and highest-density pages;
   - collapsed and expanded dense appendix states;
+  - navigation from an already-open dense appendix to another dense page, proving the destination native disclosure is closed and has zero mounted ticket cards;
   - direct route-hash navigation after the feature.
 - Performance/usability evidence for the highest-density page: ticket count, closed-state mounted card count, expanded-state completion, local image loading behavior, and no document-level horizontal overflow.
 - Recorded successful commands:
@@ -615,4 +645,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks fresh explicit audit evidence, any answer-bearing placement lacks ticket-specific reviewed evidence, any thematic fallback lacks a complete no-answer/candidate-selection audit, any fallback is malformed or uses an ineligible/non-substantive destination, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture approvals, any protected manual content has changed, the blocking review thread remains unresolved, or any required gate is red. The previous review/effective-content evidence is stale. Orchestrator must obtain a fresh Review Agent result on the remediation head, then later run final Architect validation and final Analyst validation against the same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks fresh explicit audit evidence, any answer-bearing placement lacks ticket-specific reviewed evidence, any thematic fallback lacks a complete no-answer/candidate-selection audit, any fallback is malformed or uses an ineligible/non-substantive destination, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture approvals, any protected manual content has changed, the active dense-disclosure review finding remains unremediated or unresolved, any other blocking review thread remains unresolved, or any required gate is red. The previous review/effective-content evidence is stale. Orchestrator must obtain a fresh Review Agent result on the new effective content head after the `F038-IA-003` UI/test fix, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.

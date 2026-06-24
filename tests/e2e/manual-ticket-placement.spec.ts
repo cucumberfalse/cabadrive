@@ -27,8 +27,12 @@ test("manual route appends canonical tickets and mounts dense cards only after o
 
   await page.goto("/#manual-section-app1-safety-elements");
   const nextAppendix = page.getByTestId("manual-ticket-appendix");
+  const nextDisclosure = nextAppendix.getByTestId("manual-ticket-disclosure");
   await expect(nextAppendix).toHaveAttribute("data-ticket-count", "26");
+  await expect(nextDisclosure).not.toHaveAttribute("open", "");
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(0);
+  await nextDisclosure.getByText("Показать билеты (26)").click();
+  await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(26);
 });
 
 test("fallback and image-backed tickets preserve canonical content", async ({ page }) => {

@@ -314,6 +314,18 @@ Mitigation: protected file hashes, referenced image byte hashes, page content fi
 
 Mitigation: route-end disclosure, zero hidden rich cards while closed, lazy local images, deterministic order, responsive browser checks.
 
+For `F038-IA-003`, preserve the native `<details>/<summary>` accessibility behavior and make the smallest lifecycle correction: add `key={pageId}` to the dense appendix `<details>` in `src/App.tsx`. This forces a fresh closed native disclosure node when navigation changes from one dense `pageId` to another, while the existing `pageId` effect resets React `expanded` state and keeps closed appendices at zero mounted rich cards.
+
+Extend the first test in `tests/e2e/manual-ticket-placement.spec.ts` rather than creating a parallel fixture:
+
+1. open `ch3-right-of-way` and its `44`-ticket disclosure;
+2. prove the source disclosure mounted `44` cards;
+3. navigate to dense `app1-safety-elements` with `26` tickets;
+4. assert the destination `details[data-testid="manual-ticket-disclosure"]` has no `open` attribute;
+5. assert the destination appendix has zero mounted `.materials-ticket` cards.
+
+Do not replace the native disclosure, change the direct-render threshold, eagerly render hidden cards, alter ticket/manual content, or broaden the fix beyond `src/App.tsx`, the focused Playwright spec, and Implementation Agent evidence in `tasks.md`.
+
 ### `Материалы` regression
 
 Mitigation: thin adapters over a shared component, focused regression assertions, and browser comparison.
@@ -336,4 +348,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. The remediation changes product mapping, generator/validator behavior, tests, evidence, docs, and process memory, so prior review and effective-content evidence are stale. Final Architect validation is not part of this disposition; it occurs only after remediation, fresh Review Agent review, checks, and follow-up development are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-IA-003` is accepted as a blocking implementation task on the current PR. Its UI/test change will supersede remediation effective content head `c956422ee159fde4ed1825b5806b3336515b7372`; `2688192e36815cf81741882ebda68f29f3ca1030` is only the later evidence-only head. The Implementation Agent must record the new full effective content SHA after the fix and rerun focused and required checks. Final Architect validation is not part of this disposition; it occurs only after the fix, fresh Review Agent review, checks, and follow-up development are complete. Final Analyst validation follows only after Architect passes.

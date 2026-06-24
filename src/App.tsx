@@ -1187,6 +1187,7 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
         <div className="manual-ticket-list">{cards}</div>
       ) : (
         <details
+          key={pageId}
           className="manual-ticket-disclosure"
           onToggle={(event) => setExpanded(event.currentTarget.open)}
           data-testid="manual-ticket-disclosure"

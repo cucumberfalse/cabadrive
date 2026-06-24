@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current remediation assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, verified disposition head `917c43618a25be13ff9b51f9319af84cdd24cb64`.
-- Current process status: `review-blocked`; prior `458/2` semantic evidence and completion checkmarks for mapping/validator/final verification are stale.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, starting pushed head `2688192e36815cf81741882ebda68f29f3ca1030`.
+- Current process status: `F038-IA-003 implemented and locally verified`; `F038-RA-001` remains current with `71` answer-bearing / `389` audited fallback placements. Commit/push handoff and fresh review remain.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -119,7 +119,7 @@ Evidence:
 - Tickets with three placements: `0`
 - Total placement relations: `460`
 - Unmatched tickets: `0`
-- Owner-approved thematic fallbacks: `2` — `b-fallback-126/F038-IA-002`, `b-fallback-235/F038-IA-001`
+- Owner-approved thematic fallbacks: `389`; complete IDs and per-ticket audits are sealed in the reviewed shards and `content/validation/manual-ticket-placement.evidence.json`. This total includes the original explicit dispositions `b-fallback-126/F038-IA-002` and `b-fallback-235/F038-IA-001`.
 - Duplicate same-ticket/same-page relations: `0`
 
 Review disposition status:
@@ -173,7 +173,7 @@ Required zero counters:
 
 Evidence:
 
-- Validator summary: `460 questions / 460 placements / 46 destinations / density 1/7/30 / 458 answer-bearing / 2 fallback`; all required error counters `0`.
+- Validator summary after `F038-RA-001`: `460 questions / 460 placements / 34 destinations / density 1/11/44 / 71 answer-bearing / 389 fallback`; all required error counters `0`.
 - Focused test result: `4/4` Node tests passed; malformed fallback, support destination, stale anchor/canonical evidence, and alternate approved fallback destination are rejected.
 
 Review disposition status:
@@ -249,10 +249,10 @@ Evidence:
 Evidence:
 
 - Density thresholds: direct render `1..6`; native collapsed disclosure `7+`.
-- Minimum/median/maximum: `1 / 7 / 30`.
-- Highest-density page: `ch1-bicycle` (`30` tickets).
+- Minimum/median/maximum: `1 / 11 / 44`.
+- Highest-density page: `ch3-right-of-way` (`44` tickets).
 - Closed mounted-card count: `0`.
-- Expanded mounted-card count: `30`; disclosure resets to closed on route change.
+- Expanded mounted-card count: `44`; `F038-IA-003` adds direct regression evidence that navigation from this open disclosure to dense `app1-safety-elements` creates a closed destination disclosure with `0` mounted cards.
 
 ## T011 — Update Durable Documentation
 
@@ -324,7 +324,8 @@ Review disposition status:
 - [x] Record semantic review counts and dense-page metrics.
 - [x] Record dead ends and known issues.
 - [x] Record all Implementation Agent feedback for Architect disposition.
-- [x] Confirm no unresolved feedback remains before readiness.
+- [x] Confirm every recorded feedback item has Architect disposition. `F038-IA-003` is disposed as a blocking implementation task.
+- [x] Complete and verify the `F038-IA-003` dense-disclosure reset task before readiness.
 - [x] Commit, push, and open the ready PR only if Orchestrator assigned those actions.
 - [x] Do not merge.
 
@@ -347,8 +348,9 @@ Final changed-file groups:
 
 Review disposition status:
 
-- [ ] Re-opened by `F038-RA-001`.
-- [ ] Replace stale `458/2` and merge-readiness claims with re-audit results.
+- [x] `F038-RA-001` implemented with `71/389` re-audit evidence.
+- [x] Replace stale current `458/2` and merge-readiness claims with re-audit results; retained occurrences are labeled historical where needed.
+- [x] Complete and locally verify `F038-IA-003`; commit/push evidence is recorded in its resolution section.
 - [ ] Obtain fresh Review Agent review on the remediation head.
 - [ ] Do not perform final Architect validation until the fresh review and all checks pass.
 
@@ -371,13 +373,13 @@ Architect owner-decision disposition update on `2026-06-23`:
 - `tasks.md`: converts `F038-IA-001` and `F038-IA-002` into implementable tasks with selected pages/anchors and required verification.
 - Product code/content/tests/docs changed by Architect: `no`.
 
-## Acceptance Evidence Summary
+## Historical Acceptance Evidence Summary — Superseded By F038-RA-001
 
 - Canonical questions: `460`
 - Total placements: `460`
 - Questions with 1 / 2 / 3 placements: `460 / 0 / 0`
 - Eligible / ineligible routes: `51 / 14`
-- Answer-bearing / owner-approved thematic fallback placements: `458 / 2`
+- Historical claimed answer-bearing / owner-approved thematic fallback placements: `458 / 2`
 - Unknown/ineligible/duplicate/unreviewed/stale/zero/over-three/malformed-fallback counters: all `0`.
 - Protected content status: unchanged; `git diff` over the protected source corpus is empty.
 - Highest-density route: `ch1-bicycle`, `30`; closed/open mounted cards `0/30`; no horizontal overflow.
@@ -389,22 +391,23 @@ Review correction:
 
 - The summary above is historical implementation evidence and is not accepted semantic completion evidence.
 - Blocking Review Agent finding `discussion_r3464034934` proved the ordinary mappings were scorer-generated and auto-approved.
-- Current accepted semantic counts: `unknown pending full 460-ticket re-audit`.
-- Current merge readiness: `blocked`.
+- Current accepted semantic counts after the completed full re-audit: `71` answer-bearing / `389` audited owner-approved thematic fallbacks.
+- Current runtime density: `34` destination routes, minimum/median/maximum `1/11/44`.
+- Current merge readiness: `blocked pending F038-IA-003 push, fresh review, required checks, and final role validations`.
 
 ## Dead Ends
 
 Record attempted approaches that were rejected, including why they violated relevance, canonical reuse, protected-content, or density requirements.
 
-- The first replacement-IA regeneration exposed stale generator logic added after the prior evidence run: it reclassified `424` reviewed relations as generic auto-generated thematic fallbacks (`36/424`) and reduced destinations to `37`. That output was rejected because it contradicted the approved `458/2` contract and treated lexical ranking as fallback approval. The generator was corrected to reproduce the reviewed mapping, and the validator now requires exactly the two Architect-approved fallback records.
-- Automated lexical candidate ranking remains a deterministic way to reproduce the previously reviewed ordinary placements, but it is not sufficient to authorize a new thematic fallback. Short answers and generic words can produce plausible destinations, so fallback approval stays limited to the two documented Architect dispositions.
+- The first replacement-IA regeneration exposed stale generator logic added after the prior evidence run: it reclassified `424` relations as generic auto-generated thematic fallbacks (`36/424`) and reduced destinations to `37`. That output was rejected because it still manufactured review outcomes from lexical ranking. `F038-RA-001` replaced this path with immutable reviewed shards and a candidate-only scorer.
+- Automated lexical candidate ranking is useful only for surfacing candidate pages. It cannot authorize answer-bearing or fallback status; every one of the current `71/389` relations has committed ticket-specific review evidence.
 - `b-fallback-235` has no answer-bearing anchor. The owner approved the closest-topic fallback; this dead end remains recorded so it is never misrepresented as answer-bearing evidence.
 - `b-fallback-126` has no answer-bearing anchor in the protected Руководство corpus. The nearest maintenance text names oil among fluids to check, but never states that a combustion engine is lubricated by motor oil and cannot identify canonical image option C. The provisional automated candidate was rejected and the ticket was deliberately left unmatched.
 
 ## Known Issues
 
-- Accepted fallbacks include `b-fallback-235` and `b-fallback-126`; neither may be represented as answer-bearing.
-- The owner decision is general for audited no-answer tickets, while each selected page/anchor remains ticket-specific and evidence-bound.
+- Current accepted fallbacks total `389`; none may be represented as answer-bearing.
+- The owner decision is general for audited no-answer tickets, while every selected page/anchor remains ticket-specific and evidence-bound. `b-fallback-235` and `b-fallback-126` retain their original explicit dispositions.
 - A future no-answer ticket is not automatically a blocker when a substantive thematic eligible page exists.
 - The remaining hard-stop case is absence of any substantive thematically relevant eligible page.
 
@@ -468,6 +471,18 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
 - Proposed disposition: apply the general owner rule to the closest substantive maintenance page, preserving the complete candidate/rejection audit.
 - Manual content changed: `no`
 - Status: `disposed — task; audited thematic fallback approved, implementation may resume`
+
+### F038-IA-003
+
+- ID: `F038-IA-003`
+- Type: `improvement`
+- Source: active Review Agent inline finding `https://github.com/cucumberfalse/cabadrive/pull/204#discussion_r3464076641`, thread `PRRT_kwDOSX65IM6LxRUf`
+- Description: the dense-page native `<details>` element in `src/App.tsx` is uncontrolled. If a learner opens it and then navigates to another dense manual page, React may preserve the disclosure's `open` state because the element is reused across `pageId` changes.
+- Current evidence: the existing route-transition E2E assertion covers the initial closed state but does not dispose the active review finding about an already-open disclosure surviving navigation.
+- Proposed disposition: Architect must classify this as a task, ticket, or explicit not-needed decision. If accepted as a task, key or control the disclosure by `pageId` and add a regression that opens one dense appendix before navigating to another.
+- Scope decision: not implemented in `F038-RA-001` because the finding is outside the assigned semantic-audit/generator/validator repair and has no Architect disposition. `src/App.tsx` remains unchanged by this remediation.
+- Manual content changed: `no`
+- Status: `implemented and locally verified; review thread intentionally left unresolved for Orchestrator/fresh Review Agent`
 
 ## Architect Dispositions
 
@@ -536,6 +551,42 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
   7. resume semantic review without stopping on later no-answer tickets when a substantive thematic eligible page exists.
 - Formal result: `F038-IA-002` hard stop is removed. Stop only if no substantive thematically relevant eligible page exists.
 - Manual/product code/content/tests/docs changed by Architect: `no`.
+- Final Architect validation performed: `no`.
+
+### F038-IA-003 — `task`
+
+- Disposition date: `2026-06-24`
+- Disposition type: `task`
+- Source: active Review Agent inline finding `https://github.com/cucumberfalse/cabadrive/pull/204#discussion_r3464076641`, thread `PRRT_kwDOSX65IM6LxRUf`
+- Current verified worktree/PR head at disposition: `2688192e36815cf81741882ebda68f29f3ca1030`
+- Remediation effective content head before this follow-up: `c956422ee159fde4ed1825b5806b3336515b7372`
+- Evidence-only head before this follow-up: `2688192e36815cf81741882ebda68f29f3ca1030`
+- Independent confirmation:
+  - `src/App.tsx` resets React `expanded` state in a `pageId` effect;
+  - dense appendices use an uncontrolled native `<details>` without `open` control or a `pageId` key;
+  - React may reuse that native node across dense `pageId` changes and preserve browser-owned `open` state;
+  - the existing E2E opens the `44`-ticket source appendix and checks zero cards after navigating to the `26`-ticket destination, but does not assert that the destination disclosure is natively closed.
+- Formal disposition: accepted as a blocking implementation task because stale native disclosure state violates the intended closed-by-default density behavior and creates an avoidable extra-click state.
+- Exact implementation:
+  1. edit `src/App.tsx` only within the dense `ManualTicketAppendix` branch to add `key={pageId}` to `<details className="manual-ticket-disclosure">`;
+  2. retain native `<details>/<summary>` semantics, `onToggle`, the `pageId` reset effect, conditional `{expanded && ...}` card mounting, the direct-render limit, ticket ordering, and lazy-image behavior;
+  3. extend the first test in `tests/e2e/manual-ticket-placement.spec.ts`: after opening `ch3-right-of-way` and observing `44` mounted cards, navigate to `app1-safety-elements`, assert its disclosure has no `open` attribute, and assert zero mounted `.materials-ticket` cards;
+  4. run focused Playwright for `tests/e2e/manual-ticket-placement.spec.ts`, then the repository-required validation/preflight checks assigned by Orchestrator;
+  5. record exact command results and the new effective content head in this file.
+- Allowed implementation files:
+  - `src/App.tsx`
+  - `tests/e2e/manual-ticket-placement.spec.ts`
+  - `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence
+- Acceptance evidence:
+  - source dense appendix opens and mounts all `44` cards;
+  - destination dense appendix reports `26` tickets;
+  - destination native `<details>` lacks the `open` attribute;
+  - destination appendix contains zero mounted ticket cards;
+  - native disclosure accessibility and density behavior are preserved;
+  - focused and required checks pass.
+- Staleness rule: any UI/test implementation commit creates a new effective content head. Prior review/final-validation evidence for both `c956422ee159fde4ed1825b5806b3336515b7372` and evidence-only `2688192e36815cf81741882ebda68f29f3ca1030` cannot authorize merge after that change.
+- Architect return count: unchanged at `1 / 10`; this is newly routed feedback disposition, not a returned final-validation gap.
+- Manual/product code/content/tests changed by Architect: `no`; only Architect-owned feature memory changed.
 - Final Architect validation performed: `no`.
 
 ### F038-RA-001 — `task`
@@ -626,7 +677,36 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
 - Final Architect validation performed: `no`.
 - Final Analyst validation performed: `no`.
 
-## Follow-up CI Fix — OSV Scan
+### F038-IA-003 Implementation Agent resolution
+
+- Implementation date: `2026-06-24`.
+- Role/worktree/PR: Implementation Agent; `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`; branch `codex/038-manual-ticket-placement`; PR `#204`.
+- Starting pushed head: `2688192e36815cf81741882ebda68f29f3ca1030`.
+- Parallel-work preservation: the three uncommitted Architect updates in `spec.md`, `plan.md`, and `tasks.md` were preserved and included; no sibling work was reset.
+- Implementation:
+  - added `key={pageId}` to the dense native `<details>` in `ManualTicketAppendix`;
+  - extended the existing desktop/mobile regression to open `ch3-right-of-way` (`44` cards), navigate to dense `app1-safety-elements` (`26` tickets), assert no destination `open` attribute and `0` mounted cards, then open it and assert all `26` cards mount;
+  - retained native `<details>/<summary>`, `onToggle`, the `pageId` state reset, conditional card mounting, direct-render threshold, ordering, lazy images, and canonical joins.
+- Changed files in this follow-up:
+  - `src/App.tsx`;
+  - `tests/e2e/manual-ticket-placement.spec.ts`;
+  - `specs/038-manual-ticket-placement/spec.md`;
+  - `specs/038-manual-ticket-placement/plan.md`;
+  - `specs/038-manual-ticket-placement/tasks.md`.
+- Scope guard: protected manual corpus, manual images, canonical tickets/translations/explanations/images, placement shards, reviewed manifest, evidence mapping semantics, styles, and unrelated product behavior changed: `no`.
+- Verification:
+  - initial direct focused Playwright invocation used the existing `dist` preview and reproduced the stale open-state failure; this was a test-execution dead end, not a product failure on the new source;
+  - fresh `pnpm run build` followed by `pnpm exec playwright test tests/e2e/manual-ticket-placement.spec.ts`: passed `6/6`;
+  - `pnpm run validate:manual-ticket-placement`: passed (`460` questions, `460` placements, `34` destination routes, density `1/11/44`, `71` answer-bearing, `389` fallbacks);
+  - `pnpm run preflight`: passed, including feature-memory/repository gates, content validation, `458/458` unit/content tests, production build, and `88/88` Playwright tests;
+  - `git diff --check`: passed.
+- Effective content head: recorded by the following evidence-only commit after the implementation commit is created.
+- Review thread `PRRT_kwDOSX65IM6LxRUf`: intentionally not resolved by Implementation Agent.
+- Merge performed by Implementation Agent: `no`.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
+## Historical Follow-up CI Fix — OSV Scan
 
 - Implementation Agent assignment date: `2026-06-24`.
 - Starting PR/head: `#204` / `77669a15fafa4c9d9b47dfecabdb33dcbd6cb442`.
@@ -640,11 +720,11 @@ Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or 
   - regenerated `pnpm-lock.yaml`; resolved versions are `vite@6.4.3` and one deduplicated `@babel/core@7.29.6`.
 - Changed files: `package.json`, `pnpm-lock.yaml`, and this Implementation Agent process-evidence section in `specs/038-manual-ticket-placement/tasks.md`.
 - Scope guard: no feature behavior, protected manual corpus, canonical ticket data, placement records, mapping semantics, or final-validation records changed.
-- Verification:
+- Historical verification at pre-`F038-RA-001` head:
   - `pnpm install --frozen-lockfile`: passed.
   - `pnpm list vite @babel/core --depth 10`: passed; only safe resolved versions present.
   - local CI-equivalent `ghcr.io/google/osv-scanner-action:v2.3.5 --recursive .`: passed, `No issues found`.
-  - `pnpm run validate:manual-ticket-placement`: passed (`460` questions, `460` placements, `458` answer-bearing, `2` approved fallbacks).
+  - `pnpm run validate:manual-ticket-placement`: passed at that historical head (`460` questions, `460` placements, claimed `458` answer-bearing, `2` approved fallbacks); these semantic counts were later superseded by `F038-RA-001`.
   - `pnpm run preflight`: passed, including `455/455` unit/content tests, Vite `6.4.3` production builds, and `88/88` Playwright tests.
   - `git diff --check`: passed.
 - Final Architect validation performed: `no`.
@@ -656,6 +736,6 @@ Architect return count: `1 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `returned to Orchestrator for F038-RA-001 remediation; review-blocked`.
+Process status: `F038-RA-001 and F038-IA-003 implemented and locally verified; fresh Review Agent review and later final role validations remain`.
 
 Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after remediation, fresh Review Agent review, checks, and follow-up development are complete.
