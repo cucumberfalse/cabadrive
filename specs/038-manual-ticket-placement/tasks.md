@@ -924,7 +924,8 @@ Staleness and handoff:
   - protected/canonical diff guard from starting head: empty.
 - Verification dead end: the first full ledger validation rejected reused ES/RU search pairs for tickets with identical short sign questions. The ledger was corrected by adding canonical ES/RU correct-answer forms and omitting unusably short search tokens; the rerun passed without using ticket IDs as artificial search concepts.
 - Implementation Agent feedback requiring Architect disposition: `none`.
-- Effective content head: to be recorded by the following evidence-only commit after the implementation commit is created.
+- Effective content head: `0f777a89450e26608b3eeda7c9198959ce576179`.
+- The following commit is evidence-only and changes only this Implementation Agent process record.
 - Review threads, review submission, and final role validations performed by Implementation Agent: `no`.
 - Merge performed by Implementation Agent: `no`.
 
