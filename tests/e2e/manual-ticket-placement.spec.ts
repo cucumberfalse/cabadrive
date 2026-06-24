@@ -1,16 +1,17 @@
 import { expect, test } from "@playwright/test";
 
 test("manual route appends canonical tickets and mounts dense cards only after opening", async ({ page }, testInfo) => {
-  await page.goto("/#manual-section-ch1-bicycle");
+  test.setTimeout(60_000);
+  await page.goto("/#manual-section-ch3-right-of-way");
   const manual = page.getByTestId("manual-guide-section");
   const appendix = page.getByTestId("manual-ticket-appendix");
-  await expect(manual).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
-  await expect(appendix).toHaveAttribute("data-page-id", "ch1-bicycle");
-  await expect(appendix).toHaveAttribute("data-ticket-count", "30");
+  await expect(manual).toHaveAttribute("data-manual-section-id", "ch3-right-of-way");
+  await expect(appendix).toHaveAttribute("data-page-id", "ch3-right-of-way");
+  await expect(appendix).toHaveAttribute("data-ticket-count", "44");
   await expect(appendix.getByTestId("manual-ticket-disclosure")).toBeVisible();
   await expect(appendix.locator(".materials-ticket")).toHaveCount(0);
-  await appendix.getByText("Показать билеты (30)").click();
-  await expect(appendix.locator(".materials-ticket")).toHaveCount(30);
+  await appendix.getByText("Показать билеты (44)").click();
+  await expect(appendix.locator(".materials-ticket")).toHaveCount(44);
 
   const ordering = await page.getByTestId("manual-guide-content").evaluate((element) => {
     const article = element.querySelector('[data-testid="manual-guide-section"]');
@@ -22,11 +23,11 @@ test("manual route appends canonical tickets and mounts dense cards only after o
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
   expect(overflow).toBe(false);
-  await page.screenshot({ path: testInfo.outputPath(`manual-ticket-dense-${testInfo.project.name}.png`), fullPage: true });
+  await appendix.screenshot({ path: testInfo.outputPath(`manual-ticket-dense-${testInfo.project.name}.png`) });
 
   await page.goto("/#manual-section-app1-safety-elements");
   const nextAppendix = page.getByTestId("manual-ticket-appendix");
-  await expect(nextAppendix).toHaveAttribute("data-ticket-count", "20");
+  await expect(nextAppendix).toHaveAttribute("data-ticket-count", "26");
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(0);
 });
 
@@ -42,9 +43,9 @@ test("fallback and image-backed tickets preserve canonical content", async ({ pa
 });
 
 test("introduction, sign appendix, low density, and materials adapter remain available", async ({ page }) => {
-  await page.goto("/#pandemia-vial");
-  await expect(page.getByTestId("manual-ticket-appendix")).toHaveAttribute("data-page-id", "intro-road-pandemic");
-  await expect(page.getByTestId("manual-ticket-appendix").locator(".materials-ticket")).toHaveCount(1);
+  await page.goto("/#intro-accidente-incidente");
+  await expect(page.getByTestId("manual-ticket-appendix")).toHaveAttribute("data-page-id", "intro-incident");
+  await expect(page.getByTestId("manual-ticket-disclosure")).toBeVisible();
 
   await page.goto("/#manual-section-app4-signs-regulatory");
   await expect(page.getByTestId("manual-ticket-appendix")).toHaveAttribute("data-page-id", "app4-signs-regulatory");

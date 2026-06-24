@@ -1,25 +1,25 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import {
   PLACEMENT_SCHEMA_VERSION,
-  REVIEWED_AT,
+  GENERATED_AT,
   canonicalJson,
   createPageInventory,
-  createPlacements,
+  createPlacementCandidates,
   createProtectedBaseline,
   loadManualCorpus,
   loadShardEntries,
   placementSummary,
   readJson,
-  shardRecords,
   validatePlacementData
 } from "./manual-ticket-placement-lib.mjs";
 
 const root = resolve(process.cwd());
 const write = process.argv.includes("--write");
+const candidatesOnly = process.argv.includes("--candidates");
 const placementRoot = join(root, "content/manual-ticket-placement");
-const placementShardRoot = join(placementRoot, "placements");
 const evidencePath = join(root, "content/validation/manual-ticket-placement.evidence.json");
+const reviewedManifestPath = join(placementRoot, "reviewed-manifest.json");
 
 function writeJson(path, value) {
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
@@ -32,18 +32,27 @@ const guide = readJson(join(root, "content/guide/topic-study-guide.ru.json"));
 const corpus = await loadManualCorpus(root);
 const generatedPages = createPageInventory(corpus);
 const generatedBaseline = createProtectedBaseline(root, generatedPages, corpus);
-const generatedRecords = createPlacements({
-  questions,
-  translations,
-  explanations,
-  guide,
-  corpus,
-  pageInventory: generatedPages
-});
-const generatedSummary = placementSummary(generatedRecords, generatedPages);
+if (candidatesOnly) {
+  const candidates = createPlacementCandidates({
+    questions,
+    translations,
+    explanations,
+    guide,
+    corpus,
+    pageInventory: generatedPages
+  });
+  console.log(JSON.stringify({
+    warning: "Candidate-only lexical/topic aid. It has no approval authority and is never committed as reviewed placement source.",
+    candidates
+  }, null, 2));
+  process.exit(0);
+}
+
+const records = loadShardEntries(root, "content/manual-ticket-placement/placements");
+const generatedSummary = placementSummary(records, generatedPages);
 const generatedEvidence = {
   schemaVersion: PLACEMENT_SCHEMA_VERSION,
-  generatedAt: REVIEWED_AT,
+  generatedAt: GENERATED_AT,
   summary: generatedSummary,
   counters: {
     unknownTickets: 0,
@@ -55,7 +64,7 @@ const generatedEvidence = {
     staleAnchorOrPageFingerprints: 0,
     duplicateSamePagePlacements: 0,
     unreviewedRecords: 0,
-    zeroPlacementTickets: questions.length - generatedRecords.length,
+    zeroPlacementTickets: questions.length - records.length,
     overThreePlacementTickets: 0,
     protectedManualContentChanges: 0,
     unauthorizedOrMalformedThematicFallbacks: 0
@@ -63,22 +72,19 @@ const generatedEvidence = {
 };
 
 if (write) {
-  mkdirSync(placementShardRoot, { recursive: true });
   writeJson(join(placementRoot, "manual-pages.json"), generatedPages);
   writeJson(join(placementRoot, "manual-content-baseline.json"), generatedBaseline);
-  for (const shard of shardRecords(generatedRecords)) writeJson(join(placementShardRoot, shard.fileName), shard.content);
   writeJson(evidencePath, generatedEvidence);
-  console.log(`Wrote manual ticket placement data for ${generatedRecords.length} questions.`);
+  console.log(`Refreshed derived manual ticket placement data for ${records.length} immutable reviewed records.`);
 }
 
 const pageInventory = readJson(join(placementRoot, "manual-pages.json"));
 const baseline = readJson(join(placementRoot, "manual-content-baseline.json"));
-const records = loadShardEntries(root, "content/manual-ticket-placement/placements");
 const evidence = readJson(evidencePath);
+const reviewedManifest = readJson(reviewedManifestPath);
 const generatedFilesMatch =
   canonicalJson(pageInventory) === canonicalJson(generatedPages) &&
   canonicalJson(baseline) === canonicalJson(generatedBaseline) &&
-  canonicalJson(records) === canonicalJson(generatedRecords) &&
   canonicalJson(evidence) === canonicalJson(generatedEvidence);
 
 const result = validatePlacementData({
@@ -89,7 +95,8 @@ const result = validatePlacementData({
   pageInventory,
   baseline,
   records,
-  evidence
+  evidence,
+  reviewedManifest
 });
 if (!generatedFilesMatch) result.errors.push("Generated manual ticket placement files are stale; run pnpm run generate:manual-ticket-placement.");
 
@@ -102,6 +109,7 @@ if (result.errors.length > 0) {
     `${result.summary.placementRelationCount} placements, ${result.summary.destinationRouteCount} destination routes, ` +
     `density ${result.summary.density.minimum}/${result.summary.density.median}/${result.summary.density.maximum}, ` +
     `answer-bearing ${result.summary.answerBearingPlacementCount}, ` +
-    `fallbacks ${result.summary.ownerApprovedThematicFallbacks.map((item) => `${item.questionId}/${item.auditId}`).join(", ")}.`
+    `fallbacks ${result.summary.ownerApprovedThematicFallbacks.length} ` +
+    `(IDs in content/validation/manual-ticket-placement.evidence.json).`
   );
 }

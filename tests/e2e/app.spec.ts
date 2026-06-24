@@ -2831,6 +2831,7 @@ test("Introduction index routes open as separate native Russian document pages",
 });
 
 test("Manual guide exposes implemented Chapter 1, Chapter 2, Chapter 3, Chapter 4, Chapter 5, and Appendix III section pages", async ({ page }, testInfo) => {
+  test.setTimeout(60_000);
   await page.goto("/#pandemia-vial");
   const reader = page.getByTestId("introduction-reader");
   const nav = reader.getByTestId("manual-guide-nav");

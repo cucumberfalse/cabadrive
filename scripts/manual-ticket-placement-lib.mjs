@@ -5,9 +5,17 @@ import { createServer } from "vite";
 
 export const PLACEMENT_SCHEMA_VERSION = 1;
 export const ANCHOR_SCHEMA_VERSION = 1;
-export const REVIEWED_AT = "2026-06-24T00:00:00Z";
-export const REVIEWED_BY = "feature-038-semantic-review";
+export const REVIEWED_MANIFEST_SCHEMA_VERSION = 1;
+export const GENERATED_AT = "2026-06-24T03:00:00Z";
 export const EXPECTED_BASE_SHA = "4247b0e90ae5799a0875cc3751c96589fef96ef2";
+export const RESERVED_REVIEWER_PATTERNS = [
+  /^feature-\d+-semantic-review$/u,
+  /generator/iu,
+  /scorer/iu,
+  /candidate/iu,
+  /automatic/iu,
+  /synthetic/iu
+];
 
 export function canonicalJson(value) {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
@@ -331,7 +339,7 @@ export function createPageInventory(corpus) {
       eligibilityReasonRu: "Содержит содержательный учебный текст введения.",
       contentSourceIds: [entry.id === "intro-road-pandemic" ? introduction.pandemiaVialSection.id : entry.id],
       contentFingerprint: pageContentFingerprint(entry.id, anchors, contentImagesByPage.get(entry.id) || new Set()),
-      review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT }
+      review: { status: "derived", generatedAt: GENERATED_AT }
     });
   }
 
@@ -361,7 +369,7 @@ export function createPageInventory(corpus) {
       eligibilityReasonRu: excludedReason || "Содержит содержательные правила, определения, числовые значения или пояснения.",
       contentSourceIds: [section.id],
       contentFingerprint: pageContentFingerprint(section.sectionId, anchors, contentImagesByPage.get(section.sectionId) || new Set()),
-      review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT }
+      review: { status: "derived", generatedAt: GENERATED_AT }
     });
   }
 
@@ -375,13 +383,13 @@ export function createPageInventory(corpus) {
       eligibilityReasonRu: "Навигационная группа не является содержательной страницей Руководства.",
       contentSourceIds: [group.id],
       contentFingerprint: fingerprint({ schemaVersion: PLACEMENT_SCHEMA_VERSION, navigationId: group.id, labelRu: group.labelRu }),
-      review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT }
+      review: { status: "derived", generatedAt: GENERATED_AT }
     });
   }
 
   return {
     schemaVersion: PLACEMENT_SCHEMA_VERSION,
-    generatedAt: REVIEWED_AT,
+    generatedAt: GENERATED_AT,
     pages: pages.sort((a, b) => a.pageId.localeCompare(b.pageId))
   };
 }
@@ -484,7 +492,7 @@ export function createProtectedBaseline(root, pageInventory, corpus) {
   });
   return {
     schemaVersion: PLACEMENT_SCHEMA_VERSION,
-    generatedAt: REVIEWED_AT,
+    generatedAt: GENERATED_AT,
     effectiveBaseSha: EXPECTED_BASE_SHA,
     protectedSources: sources,
     referencedImages: images,
@@ -497,7 +505,7 @@ export function createProtectedBaseline(root, pageInventory, corpus) {
   };
 }
 
-const TOPIC_PAGE_CANDIDATES = {
+export const TOPIC_PAGE_CANDIDATES = {
   "parking-clearances-and-corners": ["ch3-stopping-parking"],
   "parking-prohibitions-and-signed-zones": ["ch3-stopping-parking", "app4-signs-regulatory"],
   "driver-hand-signals": ["ch3-turns", "ch1-bicycle"],
@@ -560,7 +568,7 @@ const GENERIC_CORRECT_ANSWERS = new Set([
   "нет"
 ]);
 
-function scoreAnchor(anchor, texts, preferredPageIds) {
+export function scoreAnchor(anchor, texts, preferredPageIds) {
   const anchorTokens = new Set(tokens(anchor.text));
   const correctEs = normalizeText(texts.correctEs);
   const correctRu = normalizeText(texts.correctRu);
@@ -590,7 +598,7 @@ function scoreAnchor(anchor, texts, preferredPageIds) {
   return score;
 }
 
-export function createPlacements({ questions, translations, explanations, guide, corpus, pageInventory }) {
+export function createPlacementCandidates({ questions, translations, explanations, guide, corpus, pageInventory }) {
   const translationsById = new Map(translations.map((item) => [item.questionId, item]));
   const explanationsById = new Map(explanations.map((item) => [item.questionId, item]));
   const topicsByQuestion = new Map();
@@ -617,98 +625,12 @@ export function createPlacements({ questions, translations, explanations, guide,
     const correctAnswer = question.answers.find((answer) => answer.id === question.correctAnswerId);
     if (!translation || !explanation || !correctAnswer) throw new Error(`Canonical support is incomplete for ${question.id}.`);
 
-    const approvedFallback = question.id === "b-fallback-126"
-      ? {
-          auditId: "F038-IA-002",
-          pageId: "app1-safety-elements",
-          anchorKind: "manual-list-item",
-          blockId: "pre-driving-checks",
-          itemIndex: 0,
-          textPath: "itemsRu",
-          thematicBasisRu: "Якорь называет масло среди рабочих жидкостей, проверяемых перед поездкой; это наиболее близкий существующий содержательный контекст для вопроса о смазке двигателя, хотя связь «двигатель смазывается моторным маслом» в тексте страницы отсутствует.",
-          searchedConcepts: ["motor", "lubricar", "aceite", "двигатель", "смазка", "моторное масло"],
-          candidatesReviewed: [
-            {
-              pageId: "ch5-anticipatory-efficient-driving",
-              anchor: "manual-list-item / efficient-driving-measures / itemsRu",
-              rejectionRu: "Упоминается чистота масляного фильтра в контексте экономичного вождения, но не рабочая жидкость двигателя."
-            },
-            {
-              pageId: "app3-social-responsibility",
-              anchor: "manual-card-text / maintenance / bodyRu",
-              rejectionRu: "Перечень профессиональной проверки смешивает масло с жидкостями тормозной системы и менее близок к обычной проверке моторного отсека."
-            }
-          ],
-          auditConclusionRu: "В learner-visible тексте Руководства нет утверждения, что двигатель смазывается моторным маслом, и текста, позволяющего независимо определить вариант C.",
-          selectionRationaleRu: "Выбрана содержательная страница о проверке автомобиля перед поездкой: её точный якорь прямо называет масло среди рабочих жидкостей и ближе остальных проверенных кандидатов к обслуживанию двигателя."
-        }
-      : question.id === "b-fallback-235"
-        ? {
-            auditId: "F038-IA-001",
-            pageId: "ch2-incident-obligations",
-            anchorKind: "manual-block",
-            blockId: "incident-duty-core",
-            textPath: "textRu",
-            thematicBasisRu: "Якорь описывает обязательные действия после дорожного инцидента, включая выполнение необходимых сообщений; это наиболее близкий существующий содержательный контекст для вопроса об уведомлении страховщика после инцидента, хотя срок 72 часа в тексте страницы отсутствует.",
-            searchedConcepts: ["72 horas", "72 часа", "tres días", "3 días", "уведомление страховщика"],
-            candidatesReviewed: [
-              {
-                pageId: "ch2-required-documents",
-                anchor: "manual-list-item / insurance-vtv-rva / itemsRu",
-                rejectionRu: "Страница объясняет назначение и подтверждение страховки, но не действие водителя после инцидента."
-              },
-              {
-                pageId: "ch2-legal-responsibility",
-                anchor: "manual-list-item / civil-criminal-responsibility / itemsRu",
-                rejectionRu: "Страница описывает ответственность и возмещение, но не процедуру уведомления страховщика."
-              }
-            ],
-            auditConclusionRu: "В learner-visible тексте Руководства нет срока 72 часа или эквивалентного трёхдневного срока уведомления страховщика.",
-            selectionRationaleRu: "Выбранный якорь прямо относится к обязательным действиям и сообщениям после дорожного инцидента и тематически ближе страниц о страховом документе и юридической ответственности."
-          }
-        : null;
-
-    if (approvedFallback) {
-      const thematic = corpus.anchors.find((item) =>
-        item.pageId === approvedFallback.pageId &&
-        item.anchor.kind === approvedFallback.anchorKind &&
-        item.anchor.blockId === approvedFallback.blockId &&
-        item.anchor.textPath === approvedFallback.textPath &&
-        (approvedFallback.itemIndex === undefined || item.anchor.itemIndex === approvedFallback.itemIndex)
-      );
-      if (!thematic) throw new Error(`Owner-approved ${approvedFallback.auditId} thematic anchor is missing.`);
-      return {
-        questionId: question.id,
-        canonicalEvidence: canonicalEvidence(question, translation),
-        review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT },
-        placements: [{
-          pageId: thematic.pageId,
-          routeHash: pageById.get(thematic.pageId).routeHash,
-          placementBasis: "owner-approved-thematic-fallback",
-          anchor: thematic.anchor,
-          pageContentFingerprint: pageById.get(thematic.pageId).contentFingerprint,
-          thematicBasisRu: approvedFallback.thematicBasisRu,
-          fallbackEvidence: {
-            auditId: approvedFallback.auditId,
-            questionId: question.id,
-            ownerDecisionDate: "2026-06-23",
-            ownerDecisionRef: "feature-038-owner-decision-2026-06-23",
-            auditConclusionRu: approvedFallback.auditConclusionRu,
-            searchedConcepts: approvedFallback.searchedConcepts,
-            candidatesReviewed: approvedFallback.candidatesReviewed,
-            selectionRationaleRu: approvedFallback.selectionRationaleRu
-          },
-          review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT }
-        }]
-      };
-    }
-
     const topicIds = topicsByQuestion.get(question.id) || [];
     const candidatePageIds = [...new Set(topicIds.flatMap((topicId) => TOPIC_PAGE_CANDIDATES[topicId] || []))]
       .filter((pageId) => eligiblePages.has(pageId));
     if (candidatePageIds.length === 0) throw new Error(`${question.id} has no eligible candidate page from reviewed topic routing.`);
     const preferredPageIds = new Set(candidatePageIds);
-    const candidateAnchors = [...anchorsByPage.values()].flat();
+    const candidateAnchors = candidatePageIds.flatMap((pageId) => anchorsByPage.get(pageId) || []);
     const texts = {
       questionEs: question.officialTextEs,
       questionRu: translation.questionTextRu,
@@ -719,23 +641,21 @@ export function createPlacements({ questions, translations, explanations, guide,
     const ranked = candidateAnchors
       .map((anchor) => ({ anchor, score: scoreAnchor(anchor, texts, preferredPageIds) }))
       .sort((a, b) => b.score - a.score || a.anchor.pageId.localeCompare(b.anchor.pageId) || a.anchor.key.localeCompare(b.anchor.key));
-    const selected = ranked[0];
-    if (!selected) throw new Error(`${question.id} has no exact learner-visible anchor candidates.`);
     return {
       questionId: question.id,
-      canonicalEvidence: canonicalEvidence(question, translation),
-      review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT },
-      placements: [{
-        pageId: selected.anchor.pageId,
-        routeHash: pageById.get(selected.anchor.pageId).routeHash,
-        placementBasis: "answer-bearing",
-        anchor: selected.anchor.anchor,
-        pageContentFingerprint: pageById.get(selected.anchor.pageId).contentFingerprint,
-        answerBasisRu: `Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «${texts.correctRu}».`,
-        review: { status: "approved", reviewedBy: REVIEWED_BY, reviewedAt: REVIEWED_AT }
-      }]
+      topicIds,
+      questionRu: translation.questionTextRu,
+      correctAnswerRu: translation.answerTranslations[question.correctAnswerId],
+      correctAnswerExplanationRu: explanation.correctAnswerExplanationRu,
+      candidates: ranked.slice(0, 8).map(({ anchor, score }) => ({
+        pageId: anchor.pageId,
+        routeHash: pageById.get(anchor.pageId).routeHash,
+        anchor: anchor.anchor,
+        anchorText: anchor.text,
+        score
+      }))
     };
-  }).filter(Boolean);
+  });
 }
 
 export function placementSummary(records, pageInventory) {
@@ -787,6 +707,100 @@ export function shardRecords(records) {
   }));
 }
 
+export function reviewedRecordFingerprint(record) {
+  return fingerprint({
+    schemaVersion: REVIEWED_MANIFEST_SCHEMA_VERSION,
+    questionId: record.questionId,
+    canonicalEvidence: record.canonicalEvidence,
+    review: record.review,
+    placements: record.placements
+  });
+}
+
+export function createReviewedManifest(records, shardPayloads, sealedAt, sealedBy) {
+  const manifestCore = {
+    schemaVersion: REVIEWED_MANIFEST_SCHEMA_VERSION,
+    sealedAt,
+    sealedBy,
+    recordCount: records.length,
+    records: records.map((record) => ({
+      questionId: record.questionId,
+      fingerprint: reviewedRecordFingerprint(record)
+    })),
+    shards: shardPayloads.map(({ fileName, content }) => ({
+      fileName,
+      fingerprint: fingerprint(content)
+    }))
+  };
+  return {
+    ...manifestCore,
+    aggregateFingerprint: fingerprint(manifestCore)
+  };
+}
+
+function reviewerIsReserved(reviewedBy) {
+  return typeof reviewedBy !== "string" ||
+    reviewedBy.length < 8 ||
+    RESERVED_REVIEWER_PATTERNS.some((pattern) => pattern.test(reviewedBy));
+}
+
+function rationaleIsGeneric(value) {
+  if (typeof value !== "string" || value.length < 80) return true;
+  const normalized = normalizeText(value);
+  return normalized.includes("каноническии правильныи ответ") ||
+    normalized.includes("якорь страницы прямо фиксирует правило значение или условие") ||
+    normalized.includes("выбран потому что относится к теме вопроса");
+}
+
+function validateReviewedManifest(records, manifest) {
+  const errors = [];
+  if (!manifest || manifest.schemaVersion !== REVIEWED_MANIFEST_SCHEMA_VERSION) {
+    return ["Reviewed manifest is missing or has an unsupported schema version."];
+  }
+  if (reviewerIsReserved(manifest.sealedBy)) errors.push("Reviewed manifest uses a reserved or synthetic reviewer identity.");
+  if (manifest.recordCount !== records.length) errors.push("Reviewed manifest record count is stale.");
+  const manifestEntries = manifest.records || [];
+  const manifestByQuestion = new Map(manifestEntries.map((entry) => [entry.questionId, entry]));
+  for (const record of records) {
+    const entry = manifestByQuestion.get(record.questionId);
+    if (!entry) {
+      errors.push(`${record.questionId}: missing immutable reviewed-manifest entry.`);
+    } else if (entry.fingerprint !== reviewedRecordFingerprint(record)) {
+      errors.push(`${record.questionId}: reviewed source differs from immutable manifest.`);
+    }
+  }
+  if (manifestEntries.length !== records.length || manifestByQuestion.size !== manifestEntries.length) {
+    errors.push("Reviewed manifest has duplicate or extra record entries.");
+  }
+  const shardPayloads = shardRecords(records);
+  const shardByName = new Map((manifest.shards || []).map((entry) => [entry.fileName, entry]));
+  for (const shard of shardPayloads) {
+    const entry = shardByName.get(shard.fileName);
+    if (!entry || entry.fingerprint !== fingerprint(shard.content)) {
+      errors.push(`${shard.fileName}: reviewed shard differs from immutable manifest.`);
+    }
+  }
+  const { aggregateFingerprint, ...manifestCore } = manifest;
+  if (aggregateFingerprint !== fingerprint(manifestCore)) errors.push("Reviewed manifest aggregate fingerprint is stale.");
+  return errors;
+}
+
+function isKnownFalseFixture(questionId, placement) {
+  if (questionId === "b-fallback-003") {
+    return placement.pageId === "app1-other-required-safety-elements" &&
+      placement.anchor?.blockId === "extinguisher";
+  }
+  if (questionId === "b-fallback-011") {
+    return placement.pageId === "intro-road-pandemic" &&
+      placement.anchor?.segmentId === "airplane-strip";
+  }
+  if (questionId === "b-fallback-042") {
+    return placement.pageId === "app1-safety-elements" &&
+      placement.anchor?.blockId === "steering-suspension-brakes";
+  }
+  return false;
+}
+
 export function validatePlacementData({
   root,
   corpus,
@@ -795,9 +809,10 @@ export function validatePlacementData({
   pageInventory,
   baseline,
   records,
-  evidence
+  evidence,
+  reviewedManifest
 }) {
-  const errors = [];
+  const errors = validateReviewedManifest(records, reviewedManifest);
   const questionById = new Map(questions.map((question) => [question.id, question]));
   const translationById = new Map(translations.map((item) => [item.questionId, item]));
   const pageById = new Map(pageInventory.pages.map((page) => [page.pageId, page]));
@@ -810,6 +825,7 @@ export function validatePlacementData({
     if (seenQuestions.has(record.questionId)) errors.push(`${record.questionId}: duplicate mapping record.`);
     seenQuestions.add(record.questionId);
     if (record.review?.status !== "approved") errors.push(`${record.questionId}: ticket review is not approved.`);
+    if (reviewerIsReserved(record.review?.reviewedBy)) errors.push(`${record.questionId}: ticket review uses a reserved or synthetic reviewer identity.`);
     if (record.placements?.length < 1 || record.placements?.length > 3) errors.push(`${record.questionId}: placement count must be 1..3.`);
     if (question) {
       const expected = canonicalEvidence(question, translationById.get(question.id));
@@ -829,11 +845,19 @@ export function validatePlacementData({
       if (seenPages.has(placement.pageId)) errors.push(`${record.questionId}: duplicate destination ${placement.pageId}.`);
       seenPages.add(placement.pageId);
       if (placement.review?.status !== "approved") errors.push(`${record.questionId}/${placement.pageId}: placement review is not approved.`);
+      if (reviewerIsReserved(placement.review?.reviewedBy)) {
+        errors.push(`${record.questionId}/${placement.pageId}: placement review uses a reserved or synthetic reviewer identity.`);
+      }
+      if (isKnownFalseFixture(record.questionId, placement)) {
+        errors.push(`${record.questionId}/${placement.pageId}: known false mapping fixture was restored.`);
+      }
       const resolved = resolveAnchor(corpus, placement.pageId, placement.anchor);
       if (typeof resolved !== "string" || !resolved.trim()) {
         errors.push(`${record.questionId}/${placement.pageId}: anchor does not resolve to learner-visible text.`);
       } else if (anchorFingerprint(placement.anchor, resolved) !== placement.anchor.textFingerprint) {
         errors.push(`${record.questionId}/${placement.pageId}: stale anchor fingerprint.`);
+      } else if (placement.anchorTextAtReview !== resolved) {
+        errors.push(`${record.questionId}/${placement.pageId}: exact reviewed anchor text is stale.`);
       }
       if (placement.placementBasis === "owner-approved-thematic-fallback") {
         fallbackCount += 1;
@@ -876,8 +900,8 @@ export function validatePlacementData({
         if (!commonValid || !knownExact) errors.push(`${record.questionId}/${placement.pageId}: malformed or unauthorized thematic fallback.`);
       } else {
         if (placement.placementBasis !== "answer-bearing") errors.push(`${record.questionId}/${placement.pageId}: unsupported placement basis.`);
-        if (!placement.answerBasisRu?.includes("канонический правильный ответ")) {
-          errors.push(`${record.questionId}/${placement.pageId}: missing answer-bearing rationale.`);
+        if (rationaleIsGeneric(placement.answerBasisRu)) {
+          errors.push(`${record.questionId}/${placement.pageId}: generic or missing answer-bearing rationale.`);
         }
       }
     }
@@ -887,8 +911,6 @@ export function validatePlacementData({
     if (!seenQuestions.has(question.id)) errors.push(`${question.id}: zero placements.`);
   }
   if (records.length !== questions.length) errors.push(`Expected ${questions.length} mapping records, found ${records.length}.`);
-  if (fallbackCount !== 2) errors.push(`Expected exactly two owner-approved thematic fallbacks, found ${fallbackCount}.`);
-
   const currentBaseline = createProtectedBaseline(root, pageInventory, corpus);
   if (canonicalJson(currentBaseline.protectedSources) !== canonicalJson(baseline.protectedSources)) errors.push("Protected manual source files changed.");
   if (canonicalJson(currentBaseline.referencedImages) !== canonicalJson(baseline.referencedImages)) errors.push("Protected manual image paths or bytes changed.");

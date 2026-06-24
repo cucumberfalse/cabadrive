@@ -8,6 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
+- Current PR/head at review disposition: `#204` / `917c43618a25be13ff9b51f9319af84cdd24cb64`
+- Process status: `review-blocked`; Review Agent finding `discussion_r3464034934` is accepted as a follow-up task
+- Prior `458 answer-bearing / 2 fallback` evidence is invalidated by the accepted finding and must not be used as completion or merge-readiness evidence
 
 ## Goal
 
@@ -291,6 +294,64 @@ When the documented audit finds no answer-bearing anchor, `placementBasis: "owne
 
 This fallback is not permission to choose an arbitrary related page, use an ineligible/support page, skip the audit, edit manual or ticket content, or label thematic evidence as answer-bearing. Implementation stops only when neither an answer-bearing placement nor any substantive thematically relevant eligible page exists.
 
+### Durable reviewed-mapping workflow
+
+The five committed placement shards are reviewed source data, not generator output. A machine may:
+
+- inventory eligible pages and exact learner-visible anchors;
+- rank or emit candidate pages/anchors into a separate candidate report;
+- compute canonical, anchor, page, shard, and manifest fingerprints;
+- validate structure, freshness, completeness, and immutable reviewed evidence.
+
+A machine must not:
+
+- create or overwrite a committed ticket or placement `review.status: "approved"`;
+- set or change `placementBasis` to `answer-bearing` or `owner-approved-thematic-fallback`;
+- create ticket-specific semantic rationale, no-answer conclusions, candidate rejection reasons, reviewer identity, or review timestamp;
+- promote the highest lexical/keyword/topic score into a committed placement;
+- rewrite reviewed shards when `--write` is used.
+
+Each committed placement must be explicitly reviewed ticket by ticket against the canonical question, correct answer, image where applicable, exact resolved anchor text, and destination page context. The reviewed record must preserve:
+
+- exact `anchorTextAtReview`, not only its fingerprint;
+- a ticket-specific rationale explaining how that exact text yields the correct answer, or a complete no-answer and closest-topic fallback audit;
+- non-generator reviewer metadata tied to the assigned audit pass;
+- canonical and page fingerprints current at review time.
+
+Add an immutable reviewed manifest, for example `content/manual-ticket-placement/reviewed-manifest.json`, containing the ordered question IDs, per-record canonical hash, exact reviewed placement hash, resolved-anchor-text hash, rationale/evidence hash, reviewer identity, review timestamp, and aggregate hashes for all five shards. Validation and regeneration must fail closed when the manifest is missing, stale, internally inconsistent, or references a reviewed source record that is absent. Regeneration may refresh derived inventory, fingerprints, runtime indexes, and aggregate evidence only by preserving reviewed records byte-for-byte or canonical-JSON-equivalent; it must never reconstruct approvals from a scorer.
+
+Automated validation cannot prove semantic truth. It can prove that an explicit audit artifact exists, is ticket-specific, resolves to current text, has not been replaced by known boilerplate or generator metadata, and remains immutable relative to the reviewed manifest. Final semantic confidence still depends on the recorded per-ticket audit and Review Agent inspection.
+
+### F038-RA-001 Architect disposition
+
+Disposition: `task` — blocking Review Agent finding accepted.
+
+Independent Architect verification on `2026-06-24` confirmed:
+
+- `createPlacements` ranks all eligible anchors, selects `ranked[0]`, and immediately emits ticket and placement `review.status: "approved"` with `placementBasis: "answer-bearing"`;
+- the emitted `answerBasisRu` is generic boilerplate that interpolates the correct-answer translation without explaining the actual anchor;
+- the validator accepts the record when that boilerplate merely contains `канонический правильный ответ`;
+- `generate:manual-ticket-placement --write` regenerates and overwrites the committed placement shards from this scorer-created output;
+- committed false mappings include:
+  - `b-fallback-003`: first action after a crash mapped to `Огнетушитель должен оставаться на месте при столкновении или опрокидывании...`;
+  - `b-fallback-011`: low-flying-aircraft/airport sign mapped to `= 4700 полных самолетов`;
+  - `b-fallback-042`: bus-terminal sign mapped to a list of steering-system types.
+
+These examples establish a systemic provenance failure affecting the ordinary mapping set. The current `458` ordinary placements cannot be presumed reviewed, and correcting only the three known fixtures or bulk-reclassifying lexical guesses as thematic fallbacks is forbidden.
+
+Required remediation:
+
+1. remove scorer authority over committed placement basis, approval metadata, and rationale;
+2. perform and record a fresh ticket-specific audit of all `460` canonical tickets;
+3. preserve only mappings that pass that audit, correcting pages/anchors as needed;
+4. classify every genuine no-answer case through the general owner-approved thematic fallback rule; the final fallback count may exceed `2`;
+5. create and validate immutable reviewed-manifest evidence;
+6. add negative tests for generic rationale, reserved/synthetic generator reviewer metadata, scorer-created approval attempts, reviewed-source overwrite, stale/missing manifest evidence, and the three known false fixtures;
+7. regenerate all derived summaries from the re-audited reviewed source;
+8. treat every product, mapping, validator, test, durable-doc, or process change after the prior review as a new effective content head requiring fresh Review Agent review and later final Architect/Analyst validation.
+
+Final Architect validation is not performed by this disposition.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -446,6 +507,11 @@ The validator must fail unless all of the following are true:
 18. The protected manual-content baseline is fresh; existing manual text/image source files and referenced manual image bytes are unchanged.
 19. Shard boundaries, ordering, schema versions, generated index, and evidence report are deterministic and current.
 20. The evidence summary reports zero unknown tickets, unknown pages, ineligible placements, missing/ambiguous anchors, stale fingerprints, duplicate page placements, unreviewed records, zero-placement questions, over-three-placement questions, and unauthorized/malformed thematic fallbacks.
+21. The reviewed manifest is present, current, internally consistent, and binds every committed record, exact anchor text, rationale/fallback evidence, reviewer identity, and all five shard hashes.
+22. Generator/scorer code cannot create, mutate, or overwrite approval metadata, placement basis, ticket-specific rationale, or committed reviewed records.
+23. Reviewer metadata does not use reserved generator identities or generated timestamps, and ordinary rationales are not generic boilerplate or identical templates with only the answer substituted.
+24. Known false fixtures `b-fallback-003`, `b-fallback-011`, and `b-fallback-042` cannot validate with their currently committed false pages/anchors.
+25. Fallback count is derived from the completed audit and is not hard-coded to exactly two.
 
 The validator must emit a concise deterministic summary including:
 
@@ -476,6 +542,9 @@ The validator must emit a concise deterministic summary including:
 14. Existing `Материалы`, manual routing, hashes, navigation, and local-first behavior do not regress.
 15. Dense pages remain usable and do not eagerly mount all hidden rich cards.
 16. All deterministic validators, focused tests, build, browser evidence, preflight, and whitespace checks pass on the current PR head.
+17. All `460` tickets have fresh explicit audit evidence; none inherits approval from lexical/topic scoring or from the invalidated pre-review output.
+18. The final answer-bearing/fallback counts are audit results, not preset targets; every fallback independently satisfies the general owner rule.
+19. The reviewed manifest proves the committed approved mapping source is immutable and regeneration preserves it.
 
 ## Negative Scenario
 
@@ -507,11 +576,19 @@ Negative exception tests must prove that validation fails when:
 - a fallback is silently classified as answer-bearing or the evidence report does not separately enumerate fallback count and IDs;
 - mapping data changes canonical Spanish/Russian ticket content or canonical correct answer;
 - protected manual text or images are changed to support the exception.
+- generator/scorer output attempts to set `approved`, `answer-bearing`, fallback approval, reviewer identity, review time, or semantic rationale;
+- a rationale is generic boilerplate, repeats a banned template, or does not cite and explain the exact anchor text for that ticket;
+- reviewer metadata uses a reserved generator identity or synthetic fixed metadata;
+- reviewed shards or records are missing from, differ from, or are overwritten despite the immutable reviewed manifest;
+- any of the known false fixture mappings for `b-fallback-003`, `b-fallback-011`, or `b-fallback-042` is restored;
+- false ordinary mappings are bulk relabeled as fallback without a ticket-specific no-answer audit.
 
 ## Required Verification Evidence
 
 - Machine-readable route inventory with explicit eligible/ineligible reasons.
 - Complete placement shards for all current IDs.
+- Immutable reviewed manifest covering every ticket and placement.
+- Per-ticket audit evidence containing exact anchor text and ticket-specific rationale or complete fallback audit.
 - Fresh deterministic evidence report with all error counters at zero.
 - Manual-content baseline report proving protected source files and referenced manual images unchanged.
 - Focused unit/content tests for schema, anchors, fingerprints, counts, duplicate rejection, unknown/ineligible route rejection, canonical integrity, answer-bearing preference, audited thematic fallbacks, and rejection of every unauthorized or malformed fallback variant.
@@ -538,4 +615,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any answer-bearing placement lacks approved evidence, any thematic fallback lacks a complete no-answer/candidate-selection audit, any fallback is malformed or uses an ineligible/non-substantive destination, any protected manual content has changed, or any required gate is red. Orchestrator must later run final Architect validation and then final Analyst validation against the effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks fresh explicit audit evidence, any answer-bearing placement lacks ticket-specific reviewed evidence, any thematic fallback lacks a complete no-answer/candidate-selection audit, any fallback is malformed or uses an ineligible/non-substantive destination, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture approvals, any protected manual content has changed, the blocking review thread remains unresolved, or any required gate is red. The previous review/effective-content evidence is stale. Orchestrator must obtain a fresh Review Agent result on the remediation head, then later run final Architect validation and final Analyst validation against the same effective content head before finalization or merge.

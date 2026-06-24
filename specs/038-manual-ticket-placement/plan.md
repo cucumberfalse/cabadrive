@@ -14,6 +14,8 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
+For remediation of `F038-RA-001`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards are useful sequential audit checkpoints, but they share generator, validator, manifest, evidence, runtime-index, and process-memory files. Multiple agents must not write the same branch/worktree. Parallel implementation slices would require separate latest-main worktrees/branches/PRs and a planned integration sequence; that adds merge and provenance risk without isolating the shared acceptance gate. The safe default is therefore one IA, one branch, one PR, five sequential range checkpoints.
+
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
 ## Phase 1: Baseline And Protected Corpus
@@ -68,6 +70,23 @@ The resolver is validation tooling. Runtime does not need to perform semantic ma
    - no duplicate same-question/same-page relation;
    - zero unknown/ineligible/unreviewed/stale records.
 
+The prior claimed audit is invalidated by `F038-RA-001`. Re-audit all `460` tickets; do not limit remediation to known false fixtures and do not carry forward `approved` solely because a record already exists.
+
+Use five sequential checkpoints:
+
+1. tickets `001..092`;
+2. tickets `093..184`;
+3. tickets `185..276`;
+4. tickets `277..368`;
+5. tickets `369..460`.
+
+For each ticket, the assigned IA must inspect the canonical Spanish/Russian question, canonical correct answer, image when present, candidate page context, and exact resolved learner-visible anchor text. The checkpoint record must state either:
+
+- why the exact text independently yields the correct answer; or
+- why no answer-bearing anchor exists, which candidates were checked/rejected, and why the selected substantive page is the closest thematic fallback.
+
+At each checkpoint, update the reviewed shard and reviewed manifest together, run structural/freshness validation, and record counts of audited, answer-bearing, fallback, corrected-page, corrected-anchor, and unresolved tickets. Do not mark the checkpoint complete while any ticket in its range retains scorer-created rationale or approval metadata.
+
 ### No-answer audit and thematic fallback
 
 If no eligible route contains the answer for a ticket:
@@ -107,6 +126,19 @@ The validator must accept thematic fallbacks for any canonical ticket only when 
 4. Add a deterministic generated runtime index only if it materially simplifies imports; otherwise import shards directly and validate deterministic assembly.
 5. Expose a typed `placementsByPageId` lookup without duplicating ticket prose.
 6. Update backend docs with the validator, files, commands, and failure contract.
+
+### Reviewed source and candidate separation
+
+1. Refactor the scorer into candidate-only output. Candidate generation must write to a separate ignored/ephemeral report or stdout and must not write placement shards.
+2. Treat committed placement shards plus `reviewed-manifest.json` as the only approved source.
+3. Make `generate:manual-ticket-placement` preserve reviewed records and fail when reviewed source/manifest is absent or stale; it may regenerate only derived route inventory, fingerprints, runtime index, and summary evidence.
+4. Reserve generator identities and reject them in approved review metadata.
+5. Reject generic rationale patterns, identical answer-substitution templates, and missing exact `anchorTextAtReview`.
+6. Remove the hard-coded `fallbackCount === 2` gate. Derive fallback count and IDs from the completed audit.
+7. Add immutable manifest checks for every record and every shard.
+8. Add known-false regression fixtures for `b-fallback-003`, `b-fallback-011`, and `b-fallback-042`.
+
+These checks demonstrate provenance and catch known bad patterns; they do not mechanically prove semantic correctness. The per-ticket audit remains mandatory.
 
 ## Phase 5: Shared Read-Only Ticket Rendering
 
@@ -166,6 +198,12 @@ The existing route content must render byte-for-byte from the same source data i
 - `Материалы` renderer regression.
 - Read-only manual ticket semantics.
 - Appendix ordering after existing content.
+- Candidate/scorer output cannot create or overwrite reviewed approvals, placement basis, rationale, or reviewer metadata.
+- Generic boilerplate rationale and reserved/synthetic reviewer metadata are rejected.
+- Missing, stale, or inconsistent reviewed-manifest evidence is rejected.
+- Regeneration preserves reviewed mapping source and fails closed when reviewed source is absent/stale.
+- Known false mappings for `b-fallback-003`, `b-fallback-011`, and `b-fallback-042` are rejected.
+- Fallback count is audit-derived and may exceed two.
 
 ### Browser evidence
 
@@ -247,12 +285,18 @@ Review Agent must verify:
 - dense-page accessibility/performance;
 - objective command/browser evidence;
 - unmatched-ticket blockers are not hidden.
+- all five audit checkpoints cover `460/460` tickets and have no carried-forward scorer approvals;
+- reviewed source/manifest provenance and regeneration preservation;
+- candidate-only scorer behavior;
+- known false fixtures are corrected and protected by negative tests;
+- final answer-bearing/fallback counts are audit-derived;
+- automated semantic validation limits are documented and not misrepresented.
 
 ## Risks And Mitigations
 
 ### False semantic relevance
 
-Mitigation: exact visible-text anchors, human approval metadata, rationale, fingerprint freshness, and review sampling across all shards.
+Mitigation: exact visible-text anchors, explicit ticket-by-ticket review, exact anchor text stored at review time, ticket-specific rationale, non-generator approval metadata, immutable reviewed manifest, fingerprint freshness, and Review Agent inspection. Lexical/topic scoring is candidate discovery only.
 
 ### Unmatched fallback-bank question
 
@@ -287,5 +331,9 @@ Implementation Agent must keep `tasks.md` current with:
 - known issues;
 - verification commands and results;
 - Implementation Agent feedback for Architect disposition.
+- per-range re-audit checkpoints and correction counts;
+- reviewed-manifest hashes and provenance;
+- evidence that generator/scorer paths cannot create approvals;
+- final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. Final Architect validation occurs only after implementation, review, checks, and follow-up development are complete; final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. The remediation changes product mapping, generator/validator behavior, tests, evidence, docs, and process memory, so prior review and effective-content evidence are stale. Final Architect validation is not part of this disposition; it occurs only after remediation, fresh Review Agent review, checks, and follow-up development are complete. Final Analyst validation follows only after Architect passes.

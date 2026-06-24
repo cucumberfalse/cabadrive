@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-24T00:00:00Z",
+  "generatedAt": "2026-06-24T03:00:00Z",
   "pages": [
     {
       "pageId": "app1-other-required-safety-elements",
@@ -14,9 +14,8 @@
       ],
       "contentFingerprint": "c19fb73d75658d19622e609bf39155da5aada6a139a4d957dbcc6539b20019e9",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -31,9 +30,8 @@
       ],
       "contentFingerprint": "37b38e868c480cd169acd0a37694380ed3af8a3735a0540bd49d17d63fbe9b85",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -48,9 +46,8 @@
       ],
       "contentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -65,9 +62,8 @@
       ],
       "contentFingerprint": "15a993a55e7f61ac8fe95fc5ce5dfcc7ff8e65822b91594c6afce7fb8b6b6f23",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -82,9 +78,8 @@
       ],
       "contentFingerprint": "7e85c22c69d8b8a700111ba194d725ea7e7171a27bd092c088b5d405b00d92c7",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -99,9 +94,8 @@
       ],
       "contentFingerprint": "78636de9451ec06cfbe4d99f32b7e460ddc118262f014dfe8740b5e8d7772bcb",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -116,9 +110,8 @@
       ],
       "contentFingerprint": "f81091c9c01573283d6e9471bd74167bb598bb69b745dc300984c38d96514eb7",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -133,9 +126,8 @@
       ],
       "contentFingerprint": "dedc29d1aeca7648791946f81ea7c5cc2e58bf9f97fc27b9d3bc79d8905ce6e0",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -150,9 +142,8 @@
       ],
       "contentFingerprint": "4105350b82a96d0c086d286a7c1f8b43f58af81725b9ff59f4fd256a4e5c5618",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -167,9 +158,8 @@
       ],
       "contentFingerprint": "3bc11e998c8ee00ef38ed676a916851662dc1d4f530cd5d7c17104178cb9aa45",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -184,9 +174,8 @@
       ],
       "contentFingerprint": "d5b544c60cc90166981c480620d145871865f314fe53808b11073effe90c50ac",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -201,9 +190,8 @@
       ],
       "contentFingerprint": "d119a83d7fd8d469eb0c1c37e7a7a10faba2428920e0466453ecd69d1a2cc449",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -218,9 +206,8 @@
       ],
       "contentFingerprint": "d42b72b54a5299653b5ce48ceec7f00aab9b6568b969a04487d1c6b1bb65e2a6",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -235,9 +222,8 @@
       ],
       "contentFingerprint": "21d6476dcaf26ac1aaee66fb37bc179b1a301a466e8ebac7644ce9364aebd3b9",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -252,9 +238,8 @@
       ],
       "contentFingerprint": "40d2d16278194e8c09f646e49acdb751420746c55b2aa48c5ac14312930711a9",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -269,9 +254,8 @@
       ],
       "contentFingerprint": "702c3f021d79fffaa5d15c07ccfb88cbec534c769798882e23af29c4b0334e34",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -286,9 +270,8 @@
       ],
       "contentFingerprint": "34d1251e36bf508739b186b23ea6eed5f84161bd905c6fbcc9d265a8972eb977",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -303,9 +286,8 @@
       ],
       "contentFingerprint": "56ea6ae54599f4a74e5a5274ff0445cfeaf3caa70e2d8b3b4474fdd62d4c8619",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -320,9 +302,8 @@
       ],
       "contentFingerprint": "add8e2bdde958aa6cf8e2d09f18fcafee0ffb265407f37db7b9df84a6c85952e",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -337,9 +318,8 @@
       ],
       "contentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -354,9 +334,8 @@
       ],
       "contentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -371,9 +350,8 @@
       ],
       "contentFingerprint": "6cee803bdb10afa52da2cc4835e37a72e8bceb5131a72d3183ce495318b12c8c",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -388,9 +366,8 @@
       ],
       "contentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -405,9 +382,8 @@
       ],
       "contentFingerprint": "aadbf636e44a18fca384ddbc5b007864d763b628aa1ea52b97a11a145910c74e",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -422,9 +398,8 @@
       ],
       "contentFingerprint": "5209d356022f7d80c9f50a03abda21920e852605ab025bb475bb3b429e8c5061",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -439,9 +414,8 @@
       ],
       "contentFingerprint": "240ef4bc7f65a4502ac3669e0059b710256a206be3965cb0cbe0badf6ae11670",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -456,9 +430,8 @@
       ],
       "contentFingerprint": "a1ad6edd1b784b2004e01c308c7e208addbf66237e52dc81202841e30f6745fa",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -473,9 +446,8 @@
       ],
       "contentFingerprint": "ffe2edafd7800783f6b29873e34ea82b2933f985a3ea88abe078f59ea2f124b7",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -490,9 +462,8 @@
       ],
       "contentFingerprint": "0e6ddf07a3f80e7f54236535d4e68c9fc69f8c5a50ea54679b91a1f9e4cbcc61",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -507,9 +478,8 @@
       ],
       "contentFingerprint": "ac291eb1c1a42608d9a054f01c697ae86175349d30cc7fd3cd6ff40e427a7864",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -524,9 +494,8 @@
       ],
       "contentFingerprint": "867cf6f7f4b590d81e658cb4a5f8444273efe0f4d6f28f940157b69e9dfb0f19",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -541,9 +510,8 @@
       ],
       "contentFingerprint": "4ba3314ef51d34a481d9b4569aa9ef80ef89bf4ff8890d4e97403ced81d02df5",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -558,9 +526,8 @@
       ],
       "contentFingerprint": "ddace880e09b0a36ec26b633705c06467b29c05cfd4f8cee0e254a4e259942dd",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -575,9 +542,8 @@
       ],
       "contentFingerprint": "19f42e33e3b5e9dc90e89ccef2d6f545d56377020cb38c6ee7eaddf676b07b65",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -592,9 +558,8 @@
       ],
       "contentFingerprint": "3c5cc7cec1c5418d078c4d6437df0283803f282460aadda78c00a3149df406a8",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -609,9 +574,8 @@
       ],
       "contentFingerprint": "fb2b58b07ea907642ed55f7f2e8d45f209f01bd6de8ae0bf455081a30625f6f4",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -626,9 +590,8 @@
       ],
       "contentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -643,9 +606,8 @@
       ],
       "contentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -660,9 +622,8 @@
       ],
       "contentFingerprint": "a6087b0eea79152ffdbf6e63aad7e8a9572beca5be6eaf31eeaa542461703caf",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -677,9 +638,8 @@
       ],
       "contentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -694,9 +654,8 @@
       ],
       "contentFingerprint": "5c62557ade667447357ccbf6be7477ad51d64f68e064338cf338586763cc5f44",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -711,9 +670,8 @@
       ],
       "contentFingerprint": "357ba00c956a73eb68e118611f088f486c3734cc2bcee05ffc77f969a7ae514f",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -728,9 +686,8 @@
       ],
       "contentFingerprint": "90a23210b825ab3775f57642f40b9602c7aa7a045c5d997dacbf9f422ec75f8d",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -745,9 +702,8 @@
       ],
       "contentFingerprint": "8145074323d493ee979750bb515734b5cf33e28bf0062d323826eb79792a618b",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -762,9 +718,8 @@
       ],
       "contentFingerprint": "ba3e7849ef40aed4968ce42b19a5ddfc158422ee7b42d60e91911115f973ff4a",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -779,9 +734,8 @@
       ],
       "contentFingerprint": "1a66e6b3f25363f1d253492957e3e84adea7dcc5f0c32c103dfd80627fd49a2e",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -796,9 +750,8 @@
       ],
       "contentFingerprint": "09091b84c9ee8047572848d87ed2f216a56987cd49c6f3f48cafb13c24f1e3f6",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -813,9 +766,8 @@
       ],
       "contentFingerprint": "43fe1e65958d046abcfa81e4b88cd9155ac68d751158aecda9cddafef2ee191a",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -830,9 +782,8 @@
       ],
       "contentFingerprint": "9c76638eb9a0309d3d993fe785332ea575b8487587548717a10b6f54f5b85ebe",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -847,9 +798,8 @@
       ],
       "contentFingerprint": "428cddd13400db5c38392ae950a9b56ab48def2a30fe4c3f947d4b6124d0f615",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -864,9 +814,8 @@
       ],
       "contentFingerprint": "cec17969502f037d98843582936c5cf0047a4bb0abab0442dba8419a5bd0c8b2",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -881,9 +830,8 @@
       ],
       "contentFingerprint": "06a207206bac722ced5fbe6c10e1943a1cb099673ad29fe7145727b51b12408c",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -898,9 +846,8 @@
       ],
       "contentFingerprint": "ad4a138df604f9c256694514af208dc8c1bdacc7ede83d1f05831f4d9ac3e348",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -915,9 +862,8 @@
       ],
       "contentFingerprint": "0b1977ad369706698ecd5ee9e5450ac1f69c9ea58fb9597b5b21b47084e57727",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -932,9 +878,8 @@
       ],
       "contentFingerprint": "fbc4f32aafc30719666ec3739384cbf673248ac8f0ae7ea3c61a6ed01781695e",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -949,9 +894,8 @@
       ],
       "contentFingerprint": "228284412c47044291c07f43f157134a0a38eb18cf2a150dd67b1965bda337f6",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -966,9 +910,8 @@
       ],
       "contentFingerprint": "7ff3facb9e63be459bbfd1639236477c43890e7623d4ff8ae407c19d6c82ddbe",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -983,9 +926,8 @@
       ],
       "contentFingerprint": "b108d4f19d42e2c1dc0f066d0e1acffbccc0e75b6bd944aef79ace02cb20d12b",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1000,9 +942,8 @@
       ],
       "contentFingerprint": "0dd84eeab3b0e79d37ed695cab009fd581fae30bc610340a0e66adae8bb1636e",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1017,9 +958,8 @@
       ],
       "contentFingerprint": "0ac39b28e1b5277ecc9741539cb9539dc2c9eaba3cb759bb0bbdd58a6ab67b6c",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1034,9 +974,8 @@
       ],
       "contentFingerprint": "e553bac255f2087983e6365d334210edbe1026cda484930ae8a0bcd7f968a852",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1051,9 +990,8 @@
       ],
       "contentFingerprint": "3d089d513b878d2cb9ec66467b591b4fc534282b4193ba9c8c9d6390f1d18179",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1068,9 +1006,8 @@
       ],
       "contentFingerprint": "089f8176617e0341826ce1fedb2df8e5ee092c68e219b6a8aa828721d3151dcd",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1085,9 +1022,8 @@
       ],
       "contentFingerprint": "2ed1b77a500266db2743de7b4f9fa130b1c07bf232acfb1b925e209ee3f13f0c",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     },
     {
@@ -1102,9 +1038,8 @@
       ],
       "contentFingerprint": "acf476dc001d9eb82c11740adb56100f7345ea407897728a7ae57b3e718a13ae",
       "review": {
-        "status": "approved",
-        "reviewedBy": "feature-038-semantic-review",
-        "reviewedAt": "2026-06-24T00:00:00Z"
+        "status": "derived",
+        "generatedAt": "2026-06-24T03:00:00Z"
       }
     }
   ]
