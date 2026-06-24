@@ -310,13 +310,13 @@ Evidence:
 - Commands and results: reviewed-shard preservation across `generate:manual-ticket-placement --write`; validator pass (`460/460`, `71` answer-bearing, `389` audited fallbacks); content validation pass; `458/458` unit/content tests; build pass; focused Playwright `6/6`; full Playwright `88/88`; CI-mode `pnpm run preflight` pass; isolated Docker build/up/browser/down pass; OSV `No issues found`; `git diff --check` pass.
 - Protected baseline: `54` source files and `387` referenced images unchanged; canonical questions/translations/explanations unchanged; all validator counters remain `0`.
 - Prior effective implementation/content head `7dc2e9c56c83fc3ce431fd10cbd2961bcf815c22` is stale.
-- Remediation effective content head: pending the assigned Implementation Agent commit; record after commit before handoff.
+- Remediation effective content head: `c956422ee159fde4ed1825b5806b3336515b7372`.
 
 Review disposition status:
 
 - [x] Re-opened by `F038-RA-001`; all prior semantic validator and completion evidence is stale.
 - [x] Re-run full verification after the `460/460` re-audit and validator changes.
-- [ ] Record a new effective content head.
+- [x] Record a new effective content head.
 
 ## T014 — Process Memory And Handoff
 
@@ -331,7 +331,8 @@ Review disposition status:
 Publication evidence:
 
 - Branch: `codex/038-manual-ticket-placement`.
-- Effective implementation/content commit: `7dc2e9c56c83fc3ce431fd10cbd2961bcf815c22`.
+- Prior implementation/content commit `7dc2e9c56c83fc3ce431fd10cbd2961bcf815c22` is stale.
+- Remediation effective content commit: `c956422ee159fde4ed1825b5806b3336515b7372`.
 - Ready PR: `#204` — `https://github.com/cucumberfalse/cabadrive/pull/204`.
 - Merge performed by Implementation Agent: `no`.
 
