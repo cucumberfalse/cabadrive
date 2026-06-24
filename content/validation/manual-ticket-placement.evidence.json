@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-24T00:00:00Z",
+  "summary": {
+    "canonicalQuestionCount": 460,
+    "placementRelationCount": 460,
+    "questionsByPlacementCount": {
+      "1": 460,
+      "2": 0,
+      "3": 0
+    },
+    "eligibleRouteCount": 51,
+    "ineligibleRouteCount": 14,
+    "destinationRouteCount": 46,
+    "density": {
+      "minimum": 1,
+      "median": 7,
+      "maximum": 30,
+      "densePageIds": [
+        "app1-safety-elements",
+        "app2-safety-elements",
+        "app4-signs-regulatory",
+        "app4-signs-warning",
+        "ch1-bicycle",
+        "ch1-pedestrian-priority",
+        "ch3-right-of-way",
+        "ch3-speed",
+        "ch3-stopping-parking",
+        "ch4-alcohol-drugs"
+      ],
+      "byPageId": {
+        "app1-other-required-safety-elements": 3,
+        "app1-recommended-safety-elements": 1,
+        "app1-safety-elements": 20,
+        "app2-driving-factors": 2,
+        "app2-highways-hospitals": 5,
+        "app2-safe-driving": 5,
+        "app2-safety-elements": 21,
+        "app2-social-responsibility": 1,
+        "app3-cargo-driver-profile": 4,
+        "app3-safe-driving": 7,
+        "app3-safety-elements": 9,
+        "app3-social-responsibility": 1,
+        "app4-signs-horizontal": 18,
+        "app4-signs-informational": 18,
+        "app4-signs-regulatory": 20,
+        "app4-signs-temporary": 5,
+        "app4-signs-traffic-lights": 5,
+        "app4-signs-warning": 23,
+        "ch1-bicycle": 30,
+        "ch1-cities-for-people": 5,
+        "ch1-pedestrian-priority": 24,
+        "ch1-public-transport-system": 2,
+        "ch1-shared-trip": 1,
+        "ch1-sustainable-mobility": 2,
+        "ch2-incident-obligations": 13,
+        "ch2-legal-responsibility": 5,
+        "ch2-required-documents": 17,
+        "ch2-scoring": 2,
+        "ch3-adverse-conditions": 7,
+        "ch3-highways": 15,
+        "ch3-lights": 11,
+        "ch3-overtaking": 7,
+        "ch3-priority-of-rules": 13,
+        "ch3-right-of-way": 25,
+        "ch3-speed": 26,
+        "ch3-stopping-parking": 27,
+        "ch3-turns": 2,
+        "ch4-alcohol-drugs": 21,
+        "ch4-distractions": 7,
+        "ch4-sleep-fatigue": 10,
+        "ch4-stress": 3,
+        "ch5-anticipatory-efficient-driving": 7,
+        "intro-ethical-civic-approach": 2,
+        "intro-incident": 6,
+        "intro-road-pandemic": 1,
+        "intro-road-safety-plan": 1
+      }
+    },
+    "answerBearingPlacementCount": 458,
+    "ownerApprovedThematicFallbacks": [
+      {
+        "questionId": "b-fallback-126",
+        "auditId": "F038-IA-002",
+        "pageId": "app1-safety-elements"
+      },
+      {
+        "questionId": "b-fallback-235",
+        "auditId": "F038-IA-001",
+        "pageId": "ch2-incident-obligations"
+      }
+    ]
+  },
+  "counters": {
+    "unknownTickets": 0,
+    "unknownPages": 0,
+    "routeMismatches": 0,
+    "ineligiblePlacements": 0,
+    "missingOrAmbiguousAnchors": 0,
+    "staleCanonicalFingerprints": 0,
+    "staleAnchorOrPageFingerprints": 0,
+    "duplicateSamePagePlacements": 0,
+    "unreviewedRecords": 0,
+    "zeroPlacementTickets": 0,
+    "overThreePlacementTickets": 0,
+    "protectedManualContentChanges": 0,
+    "unauthorizedOrMalformedThematicFallbacks": 0
+  }
+}

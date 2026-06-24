@@ -39,6 +39,7 @@ import {
   type ManualGuideSectionEntry
 } from "./data/manualGuide";
 import { manualSignEntriesForSection, type ManualSignEntry } from "./data/manual-signs/app4SignCatalog";
+import { manualTicketQuestionIdsByPage } from "./data/manualTicketPlacement";
 import { loadPrimarySources, type PrimarySourceChunk, type PrimarySourceCorpus, type PrimarySourceDocument } from "./data/primarySources";
 import { DifficultyIndicator } from "./difficulty";
 import { formatDuration, isPassing, learningTicketTargetSeconds, mistakesFromHistory, scorePercent, selectExamSet, shuffleQuestions } from "./domain";
@@ -1061,31 +1062,40 @@ function explanationByAnswer(ticket: TopicGuideTicket) {
   return new Map(ticket.answerExplanations.map((item) => [item.answerId, item]));
 }
 
-function safeLocalImagePath(question: Question | undefined, ticket: TopicGuideTicket) {
+function safeLocalImagePath(question: Question | undefined, imageLocalPath?: string) {
   if (question?.image?.localPath) return question.image.localPath;
-  if (ticket.imageLocalPath?.startsWith("content/assets/")) return ticket.imageLocalPath;
+  if (imageLocalPath?.startsWith("content/assets/")) return imageLocalPath;
   return undefined;
 }
 
-function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
-  const question = questionById.get(ticket.questionId);
-  const explanations = explanationByAnswer(ticket);
-  const localImagePath = safeLocalImagePath(question, ticket);
-  const translation = translationByQuestion.get(ticket.questionId);
+function CanonicalStudyTicketBlock({
+  questionId,
+  topicTicket,
+  testIdPrefix
+}: {
+  questionId: string;
+  topicTicket?: TopicGuideTicket;
+  testIdPrefix: "materials-ticket" | "manual-ticket";
+}) {
+  const question = questionById.get(questionId);
+  const topicExplanations = topicTicket ? explanationByAnswer(topicTicket) : undefined;
+  const canonicalExplanation = explanationByQuestion.get(questionId);
+  const localImagePath = safeLocalImagePath(question, topicTicket?.imageLocalPath);
+  const translation = translationByQuestion.get(questionId);
   const source = question ? sourceById.get(question.sourceId) : undefined;
   const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
 
   if (!question) {
     return (
-      <article className="materials-ticket missing" data-testid={`materials-ticket-${ticket.questionId}`}>
-        <h3>Билет {ticket.questionId}</h3>
+      <article className="materials-ticket missing" data-testid={`${testIdPrefix}-${questionId}`}>
+        <h3>Билет {questionId}</h3>
         <p>Канонический вопрос не найден. Материал не упал, но этот блок требует проверки данных.</p>
       </article>
     );
   }
 
   return (
-    <article className="materials-ticket" data-testid={`materials-ticket-${ticket.questionId}`}>
+    <article className="materials-ticket" data-testid={`${testIdPrefix}-${questionId}`} data-question-id={questionId}>
       <div className="question-meta">
         <span>Билет {question.id}</span>
         <span>Категория {question.category}</span>
@@ -1109,22 +1119,25 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
       )}
       {localImagePath && (
         <figure className="question-image materials-image">
-          <img src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
+          <img loading="lazy" src={assetUrl(localImagePath)} alt={question.image?.altEs || `Изображение билета ${question.id}`} />
           <figcaption>
             <ImageIcon size={16} aria-hidden="true" /> Локальное изображение вопроса
           </figcaption>
         </figure>
       )}
-      {ticket.sourceConflictNoteRu && (
+      {topicTicket?.sourceConflictNoteRu && (
         <aside className="support-block explanation">
           <span className="block-label">Заметка о старой формулировке</span>
-          <p>{ticket.sourceConflictNoteRu}</p>
+          <p>{topicTicket.sourceConflictNoteRu}</p>
         </aside>
       )}
       <div className="materials-answers" role="list" aria-label={`Ответы к билету ${question.id}`}>
         {question.answers.map((answer) => {
-          const answerExplanation = explanations.get(answer.id);
+          const answerExplanation = topicExplanations?.get(answer.id);
           const isCorrectAnswer = answer.id === question.correctAnswerId;
+          const canonicalAnswerExplanation = isCorrectAnswer
+            ? canonicalExplanation?.correctAnswerExplanationRu
+            : canonicalExplanation?.wrongAnswerExplanations[answer.id];
           return (
             <div className={isCorrectAnswer ? "material-answer correct" : "material-answer"} role="listitem" key={answer.id}>
               <div>
@@ -1132,7 +1145,7 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
                 {translation?.answerTranslations[answer.id] && <small className="answer-translation" lang="ru">{translation.answerTranslations[answer.id]}</small>}
                 {isCorrectAnswer && <span className="answer-badge">Правильный ответ</span>}
               </div>
-              <p lang="ru">{answerExplanation?.explanationRu || "Пояснение для этого варианта пока не связано с материалом."}</p>
+              <p lang="ru">{answerExplanation?.explanationRu || canonicalAnswerExplanation || "Пояснение для этого варианта пока не связано с материалом."}</p>
             </div>
           );
         })}
@@ -1141,6 +1154,48 @@ function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
         Источник: {source?.title || question.sourceId}; {sourceStatusLabel(source?.status)}. Правильный ответ: {correctAnswer?.officialTextEs || question.correctAnswerId}.
       </footer>
     </article>
+  );
+}
+
+function TopicGuideTicketBlock({ ticket }: { ticket: TopicGuideTicket }) {
+  return <CanonicalStudyTicketBlock questionId={ticket.questionId} topicTicket={ticket} testIdPrefix="materials-ticket" />;
+}
+
+const manualTicketDirectRenderLimit = 6;
+
+function ManualTicketAppendix({ pageId }: { pageId: string }) {
+  const questionIds = manualTicketQuestionIdsByPage.get(pageId) ?? [];
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [pageId]);
+
+  if (questionIds.length === 0) return null;
+
+  const cards = questionIds.map((questionId) => (
+    <CanonicalStudyTicketBlock questionId={questionId} testIdPrefix="manual-ticket" key={questionId} />
+  ));
+
+  return (
+    <section className="manual-ticket-appendix" data-testid="manual-ticket-appendix" data-page-id={pageId} data-ticket-count={questionIds.length}>
+      <div className="manual-ticket-appendix-heading">
+        <p className="eyebrow">Билеты по теме страницы</p>
+        <h3>{questionIds.length} {questionIds.length === 1 ? "билет" : "билетов"}</h3>
+      </div>
+      {questionIds.length <= manualTicketDirectRenderLimit ? (
+        <div className="manual-ticket-list">{cards}</div>
+      ) : (
+        <details
+          className="manual-ticket-disclosure"
+          onToggle={(event) => setExpanded(event.currentTarget.open)}
+          data-testid="manual-ticket-disclosure"
+        >
+          <summary>Показать билеты ({questionIds.length})</summary>
+          {expanded && <div className="manual-ticket-list">{cards}</div>}
+        </details>
+      )}
+    </section>
   );
 }
 
@@ -1647,22 +1702,23 @@ function PandemiaVialPrototypeView() {
   );
 
   return (
-    <article className="intro-document pandemia-prototype" aria-labelledby="pandemia-vial-title" data-testid="pandemia-prototype" data-intro-section-id="intro-road-pandemic">
-      <header className="intro-document-header">
-        <h2 id="pandemia-vial-title">
-          <span
-            className="pandemia-segment"
-            data-testid="pandemia-segment"
-            data-segment-id={headingSegment?.id ?? "heading"}
-            data-segment-role="heading"
-            data-prose-role="responsive"
-            title={headingSegment?.fitNote}
-          >
-            {headingSegment?.textRu ?? "Дорожная пандемия"}
-          </span>
-        </h2>
-      </header>
-      <div className="intro-document-flow">
+    <>
+      <article className="intro-document pandemia-prototype" aria-labelledby="pandemia-vial-title" data-testid="pandemia-prototype" data-intro-section-id="intro-road-pandemic">
+        <header className="intro-document-header">
+          <h2 id="pandemia-vial-title">
+            <span
+              className="pandemia-segment"
+              data-testid="pandemia-segment"
+              data-segment-id={headingSegment?.id ?? "heading"}
+              data-segment-role="heading"
+              data-prose-role="responsive"
+              title={headingSegment?.fitNote}
+            >
+              {headingSegment?.textRu ?? "Дорожная пандемия"}
+            </span>
+          </h2>
+        </header>
+        <div className="intro-document-flow">
         <div className="pandemia-prose pandemia-prose-intro" data-testid="pandemia-responsive-prose">
           {introSegments.map(renderSegment)}
         </div>
@@ -1718,8 +1774,10 @@ function PandemiaVialPrototypeView() {
         <div className="pandemia-prose pandemia-prose-conclusion" data-testid="pandemia-responsive-prose">
           {bodySegments.map(renderSegment)}
         </div>
-      </div>
-    </article>
+        </div>
+      </article>
+      <ManualTicketAppendix pageId="intro-road-pandemic" />
+    </>
   );
 }
 
@@ -1834,16 +1892,19 @@ function IntroductionArticleBlockView({ block }: { block: IntroductionArticleBlo
 
 function IntroductionArticleView({ section }: { section: IntroductionArticleSection }) {
   return (
-    <article className="intro-document" aria-labelledby={`${section.id}-title`} data-testid="intro-article" data-intro-section-id={section.id}>
-      <header className="intro-document-header">
-        <h2 id={`${section.id}-title`}>{section.titleRu}</h2>
-      </header>
-      <div className="intro-document-flow">
-        {section.blocks.map((block) => (
-          <IntroductionArticleBlockView key={block.id} block={block} />
-        ))}
-      </div>
-    </article>
+    <>
+      <article className="intro-document" aria-labelledby={`${section.id}-title`} data-testid="intro-article" data-intro-section-id={section.id}>
+        <header className="intro-document-header">
+          <h2 id={`${section.id}-title`}>{section.titleRu}</h2>
+        </header>
+        <div className="intro-document-flow">
+          {section.blocks.map((block) => (
+            <IntroductionArticleBlockView key={block.id} block={block} />
+          ))}
+        </div>
+      </article>
+      <ManualTicketAppendix pageId={section.id} />
+    </>
   );
 }
 
@@ -2700,12 +2761,13 @@ function SourceImageCardsBlockView({ block }: { block: Extract<ManualGuideSectio
 
 function ManualGuideSectionContentView({ content }: { content: ManualGuideSectionContent }) {
   return (
-    <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
-      <header className="intro-document-header">
-        <p className="eyebrow">{manualGuideSectionSourceLabel(content.sourcePages)}</p>
-        <h2 id={`${content.sectionId}-title`}>{content.titleRu}</h2>
-      </header>
-      <div className="intro-document-flow">
+    <>
+      <article className="intro-document manual-guide-section" aria-labelledby={`${content.sectionId}-title`} data-testid="manual-guide-section" data-manual-section-id={content.sectionId}>
+        <header className="intro-document-header">
+          <p className="eyebrow">{manualGuideSectionSourceLabel(content.sourcePages)}</p>
+          <h2 id={`${content.sectionId}-title`}>{content.titleRu}</h2>
+        </header>
+        <div className="intro-document-flow">
         {content.blocks.map((block) => {
           if (block.kind === "table") {
             return (
@@ -2882,8 +2944,10 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
             </Tag>
           );
         })}
-      </div>
-    </article>
+        </div>
+      </article>
+      <ManualTicketAppendix pageId={content.sectionId} />
+    </>
   );
 }
 

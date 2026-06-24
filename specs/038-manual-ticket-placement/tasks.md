@@ -1,0 +1,493 @@
+# Tasks: Evidence-Backed Ticket Placement In Руководство
+
+## Assignment Contract
+
+- Role for file-changing implementation: Implementation Agent, only after explicit Orchestrator assignment
+- Intended slice: one isolated worktree, one branch, one PR
+- Assigned base for current feature context: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
+- Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
+- Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
+
+## T001 — Confirm Prerequisites And Baseline
+
+- [x] Confirm Orchestrator assignment, worktree, branch, PR slice, and current base evidence.
+- [x] Confirm `feature-request.md`, `spec.md`, `plan.md`, and `tasks.md` exist.
+- [x] Confirm the canonical bank has `460` distinct current IDs and record its aggregate fingerprint.
+- [x] Record the initial dirty state without overwriting unrelated work.
+- [x] Record the implementation start timestamp and effective base SHA below.
+
+Evidence:
+
+- Implementation start: `2026-06-23T22:06:01Z`
+- Base SHA: `4247b0e90ae5799a0875cc3751c96589fef96ef2`
+- Branch/worktree: `codex/038-manual-ticket-placement` / `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`
+- Initial dirty state: only the untracked Analyst/Architect handoff directory `specs/038-manual-ticket-placement/`; no unrelated tracked or untracked work was present.
+- Canonical question count: `460` records / `460` distinct IDs.
+- Canonical bank fingerprint: `92ac7e7fd9fa0f2637a4b8aba0176a4e3b6b759bbc663efba2f00baeb4006709`
+
+## T002 — Create Protected Manual-Content Baseline
+
+- [x] Implement deterministic hashing for protected manual source files.
+- [x] Inventory all existing referenced manual image paths and byte hashes.
+- [x] Create `content/manual-ticket-placement/manual-content-baseline.json`.
+- [x] Include schema version and assigned base SHA.
+- [x] Add failure tests for source-file, text, image-path, and image-byte drift.
+- [x] Confirm no protected manual content file is edited by this feature.
+
+Protected scope includes:
+
+- `src/data/pandemiaVialSection.ts`
+- `src/data/manual-sections/*.ts`
+- `src/data/manual-signs/app4SignEntries.json`
+- interactive-guide section registry consumed by `manualGuide.ts`
+- all existing manual image assets referenced by those sources
+
+Evidence:
+
+- Protected source-file count: `54`
+- Referenced image count: `387`
+- Aggregate source fingerprint: `10ae22d5b7759d0909adaa1436ad1a4bd5cb2caa5c2233303d1cc3d25e82d9bd`
+- Aggregate image fingerprint: `dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7`
+
+## T003 — Implement Complete Route Eligibility Inventory
+
+- [x] Create `content/manual-ticket-placement/manual-pages.json`.
+- [x] Inventory all Introduction routes.
+- [x] Inventory all implemented manual section routes.
+- [x] Inventory pending and navigation-only records needed to prove exclusions.
+- [x] Explicitly mark `front-presentation`, `front-categories`, and `front-glossary` ineligible.
+- [x] Mark contents/index, pending, divider/title-only, closing/decorative, and navigation-only surfaces ineligible.
+- [x] Record an eligibility reason, route hash, source kind, implementation status, content fingerprint, and approved review metadata for every route record.
+- [x] Add inventory completeness and route-hash agreement tests.
+
+Evidence:
+
+- Eligible route count: `51`
+- Ineligible route count: `14`
+- Introduction route count: `4`
+- Implemented manual section count: `50`
+
+## T004 — Implement Exact Anchor Resolver
+
+- [x] Resolve `introduction-segment`.
+- [x] Resolve `introduction-block` and stable child text.
+- [x] Resolve `manual-block`.
+- [x] Resolve `manual-table-cell`.
+- [x] Resolve `manual-list-item`.
+- [x] Resolve `manual-card-text`.
+- [x] Resolve `manual-term-translation`.
+- [x] Resolve `manual-sign-entry`.
+- [x] Reject missing, ambiguous, source-only, image-only, cross-page, and unsupported anchors.
+- [x] Compute versioned SHA-256 anchor and page content fingerprints.
+- [x] Add focused tests for every anchor kind and rejection path.
+
+Evidence:
+
+- Supported anchor kinds: `introduction-segment`, `introduction-block`, `manual-block`, `manual-table-cell`, `manual-list-item`, `manual-card-text`, `manual-term-translation`, `manual-sign-entry`.
+- Resolver test result: current placement validation resolves and fingerprints all `460` approved relations; focused negative tests reject missing/stale anchors and cross-contract fallback drift.
+
+## T005 — Create Reviewed Placement Shards
+
+- [x] Create `placements/001-092.json`.
+- [x] Create `placements/093-184.json`.
+- [x] Create `placements/185-276.json`.
+- [x] Create `placements/277-368.json`.
+- [x] Create `placements/369-460.json`.
+- [x] Review every canonical correct answer against existing eligible learner-visible text.
+- [x] Give every ticket exactly `1..3` approved placements.
+- [x] Record exact anchors and concise answer-bearing rationale for every ordinary placement.
+- [x] Record every no-answer ticket as an audited `owner-approved-thematic-fallback` on the closest substantive eligible page, with full candidate/rejection evidence, owner-decision metadata, rationale, review metadata, and fresh fingerprints.
+- [x] For `b-fallback-235`, use `ch2-incident-obligations` at `incident-duty-core.textRu`.
+- [x] For `b-fallback-126`, use `app1-safety-elements` at `pre-driving-checks.itemsRu[0]`.
+- [x] Record fresh canonical question, translation, correct-answer, image, page, and anchor fingerprints.
+- [x] Use second/third placements only when each independently contains the answer.
+- [x] Keep records and placements deterministically ordered.
+
+Fallback/stop rule:
+
+- [x] The original unmatched-ticket stops for `b-fallback-235` and `b-fallback-126` were correctly triggered under the earlier narrow contract; both are now disposed as implementable audited thematic fallbacks.
+- [x] For any later no-answer ticket, complete the documented audit and select the closest substantive eligible page under the general owner rule; do not stop merely because answer-bearing text is absent.
+- [x] Stop and return to Orchestrator only if no substantive thematically relevant eligible page exists. Never use support/non-content pages or edit manual/ticket content.
+
+Evidence:
+
+- Tickets with one placement: `460`
+- Tickets with two placements: `0`
+- Tickets with three placements: `0`
+- Total placement relations: `460`
+- Unmatched tickets: `0`
+- Owner-approved thematic fallbacks: `2` — `b-fallback-126/F038-IA-002`, `b-fallback-235/F038-IA-001`
+- Duplicate same-ticket/same-page relations: `0`
+
+## T006 — Add Deterministic Validator And Evidence Report
+
+- [x] Add `scripts/content-manual-ticket-placement.mjs`.
+- [x] Add `validate:manual-ticket-placement` package command.
+- [x] Wire the validator into `validate:content`.
+- [x] Validate current-bank coverage and reject missing/extra IDs.
+- [x] Validate placement counts `1..3` and duplicate page relations.
+- [x] Validate known route hashes and explicit eligibility.
+- [x] Validate exact anchor existence, uniqueness, page ownership, and learner visibility.
+- [x] Validate `placementBasis: "answer-bearing"` and answer-bearing rationale for every preferred placement.
+- [x] Validate every `owner-approved-thematic-fallback` has a documented no-answer audit, exact closest-topic anchor, candidate/rejection evidence, owner decision `2026-06-23`, approved review, and fresh canonical/anchor/page fingerprints.
+- [x] Validate exact approved destinations/anchors for `F038-IA-001` and `F038-IA-002`.
+- [x] Reject fallback without documented audit, on support/ineligible/non-substantive pages, with arbitrary selection, alternate approved anchor, missing/stale evidence, or manual/ticket mutation.
+- [x] Validate all review statuses.
+- [x] Validate canonical question, translation, correct-answer, and image integrity.
+- [x] Validate anchor/page fingerprint freshness.
+- [x] Validate protected manual-content immutability.
+- [x] Validate deterministic shards/index/evidence freshness.
+- [x] Create `content/validation/manual-ticket-placement.evidence.json`.
+- [x] Add focused validator tests for every required failure mode.
+
+Required zero counters:
+
+- unknown tickets
+- unknown pages
+- route mismatches
+- ineligible placements
+- missing/ambiguous anchors
+- stale question/translation/answer/image fingerprints
+- stale anchor/page fingerprints
+- duplicate same-page placements
+- unreviewed tickets/placements
+- zero-placement tickets
+- over-three-placement tickets
+- protected manual-content changes
+- unauthorized or malformed thematic fallbacks
+
+Evidence:
+
+- Validator summary: `460 questions / 460 placements / 46 destinations / density 1/7/30 / 458 answer-bearing / 2 fallback`; all required error counters `0`.
+- Focused test result: `4/4` Node tests passed; malformed fallback, support destination, stale anchor/canonical evidence, and alternate approved fallback destination are rejected.
+
+## T007 — Add Typed Runtime Placement Index
+
+- [x] Add typed placement data definitions.
+- [x] Assemble reviewed shards deterministically.
+- [x] Create `placementsByPageId`.
+- [x] Join only by canonical `questionId`.
+- [x] Ensure mapping data cannot override canonical text, answer order, correct answer, translations, image, difficulty, or source status.
+- [x] Add runtime-index equality tests against reviewed shards.
+
+Evidence:
+
+- Runtime index path: `src/data/manualTicketPlacement.ts`
+- Runtime index test result: deterministic ordering/source assertion passed; mapping projection contains IDs/routes only and no canonical prose or answer fields.
+
+## T008 — Extract Shared Read-Only Canonical Ticket Renderer
+
+- [x] Extract shared canonical display behavior from `TopicGuideTicketBlock`.
+- [x] Keep a thin `Материалы` adapter with existing topic-specific explanations/conflict notes.
+- [x] Add a thin `Руководство` adapter using canonical governed stores.
+- [x] Preserve Spanish question/answer order and language boundaries.
+- [x] Preserve Russian question/answer translations.
+- [x] Preserve canonical local image rendering and add/retain lazy loading.
+- [x] Preserve difficulty, correct-answer badge, explanation, source status, and footer truth.
+- [x] Keep `Руководство` read-only.
+- [x] Add `Материалы` regression tests.
+
+Evidence:
+
+- Shared component path: `CanonicalStudyTicketBlock` in `src/App.tsx`
+- `Материалы` regression result: focused and full Playwright suites passed; existing adapter and topic-specific explanations remain intact.
+
+## T009 — Append Ticket Areas After Existing Route Content
+
+- [x] Add `ManualTicketAppendix`.
+- [x] Append it after the existing flow in `PandemiaVialPrototypeView`.
+- [x] Append it after the existing flow in `IntroductionArticleView`.
+- [x] Append it after the existing flow in `ManualGuideSectionContentView`.
+- [x] Do not insert ticket data into existing manual block arrays.
+- [x] Do not render appendices on ineligible routes.
+- [x] Sort ticket cards by canonical question ID.
+- [x] Add deterministic ordering/DOM-position tests proving the appendix follows the last existing block.
+
+Evidence:
+
+- Route renderers changed: three additive route-end sibling appendices in `src/App.tsx`; protected content arrays/modules unchanged.
+- Appendix-order test result: Playwright confirms appendix follows the protected manual article; moving it outside the protected article also preserves legacy source-image audits.
+
+## T010 — Implement Density And Performance Behavior
+
+- [x] Always show appendix heading and exact ticket count.
+- [x] Define and document deterministic low/medium/high density thresholds.
+- [x] Use native accessible disclosure for medium/high density.
+- [x] Do not mount hidden rich ticket cards while disclosure is closed.
+- [x] Render all mapped tickets after opening.
+- [x] Keep keyboard access and browser find usable after opening.
+- [x] Keep images local and lazy.
+- [x] Prevent document-level horizontal overflow.
+- [x] Record min/median/max destination density and highest-density route.
+
+Evidence:
+
+- Density thresholds: direct render `1..6`; native collapsed disclosure `7+`.
+- Minimum/median/maximum: `1 / 7 / 30`.
+- Highest-density page: `ch1-bicycle` (`30` tickets).
+- Closed mounted-card count: `0`.
+- Expanded mounted-card count: `30`; disclosure resets to closed on route change.
+
+## T011 — Update Durable Documentation
+
+- [x] Update frontend docs with the `Руководство` ticket appendix, canonical data join, route-end rule, and density behavior.
+- [x] Update backend docs with mapping files, validator command, fingerprints, evidence report, and failure contract.
+- [x] Do not change unrelated documentation.
+
+Evidence:
+
+- Docs changed: `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`.
+
+## T012 — Focused Browser Verification
+
+- [x] Start an isolated Docker compose project on a free port.
+- [x] Verify one substantive Introduction route on desktop and mobile.
+- [x] Verify one ordinary chapter route on desktop and mobile.
+- [x] Verify one Appendix IV sign route on desktop and mobile.
+- [x] Verify an image-backed ticket uses its canonical local image.
+- [x] Verify low-, medium-, and highest-density routes.
+- [x] Verify dense appendix closed and opened states.
+- [x] Verify a direct route-hash deep link.
+- [x] Verify `Материалы` remains unchanged in behavior.
+- [x] Assert appendix DOM position follows the last pre-existing block.
+- [x] Assert no document-level horizontal overflow.
+- [x] Capture screenshots and machine-readable Playwright evidence.
+- [x] Stop only the assigned isolated compose project.
+
+Evidence:
+
+- Compose project/port: `cabadrive-038-manual-ticket-placement` / `5188`.
+- Introduction fixture: `intro-road-pandemic`, desktop/mobile.
+- Chapter fixture: `ch1-bicycle` and `app1-safety-elements`, desktop/mobile.
+- Sign fixture: `app4-signs-regulatory`, desktop/mobile.
+- Image-backed ticket: `b-fallback-126`, canonical local `/content/assets/questions/...` image with `loading="lazy"`.
+- Density fixtures: low `intro-road-pandemic` (`1`), median threshold routes (`7`), maximum `ch1-bicycle` (`30`).
+- Screenshot/evidence paths: current Playwright output under `test-results/`; focused host-preview suite `6/6`, focused Docker-served suite `6/6`, full suite `88/88`; closed/open cards `0/30`, ordered IDs, appendix-after-content, local lazy image, and no horizontal overflow.
+- Docker evidence: isolated `make build` passed, `make up` exposed the container on `http://127.0.0.1:5188`, focused desktop/mobile Playwright passed against that exact server, and `make down` removed only the assigned container/network. No sibling compose project was touched.
+
+## T013 — Run Full Verification
+
+- [x] `pnpm run validate:manual-ticket-placement`
+- [x] `pnpm run validate:content`
+- [x] `pnpm run test`
+- [x] `pnpm run build`
+- [x] focused Playwright manual-ticket spec
+- [x] `pnpm run test:e2e`
+- [x] `pnpm run preflight`
+- [x] `git diff --check`
+- [x] Confirm protected manual content remains unchanged.
+- [x] Confirm all acceptance counters are zero/current on the final implementation head.
+
+Evidence:
+
+- Current-tree verification completed at `2026-06-24T01:37:08Z`.
+- Commands and results: regeneration pass; validator pass (`460/460`, `458` answer-bearing, `2` audited fallbacks); content validation pass; `455/455` unit/content tests; build pass; focused host-preview Playwright `6/6`; isolated Docker build/up/browser/down pass with focused Playwright `6/6`; full Playwright `88/88`; complete `pnpm run preflight` pass; `git diff --check` pass.
+- Protected baseline: `54` source files and `387` referenced images unchanged; canonical questions/translations/explanations unchanged; all validator counters remain `0`.
+- Final implementation head: pending commit.
+
+## T014 — Process Memory And Handoff
+
+- [x] Record changed files and why.
+- [x] Record semantic review counts and dense-page metrics.
+- [x] Record dead ends and known issues.
+- [x] Record all Implementation Agent feedback for Architect disposition.
+- [x] Confirm no unresolved feedback remains before readiness.
+- [ ] Commit, push, and open the ready PR only if Orchestrator assigned those actions.
+- [x] Do not merge.
+
+Final changed-file groups:
+
+- `content/manual-ticket-placement/**`, `content/validation/manual-ticket-placement.evidence.json`: governed route inventory, protected baseline, five reviewed mapping shards, deterministic evidence.
+- `scripts/manual-ticket-placement-lib.mjs`, `scripts/content-manual-ticket-placement.mjs`, `package.json`: generator/validator, fallback contract, commands, content-gate integration.
+- `src/data/manualTicketPlacement.ts`, `src/App.tsx`, `src/styles.css`: deterministic runtime index, shared canonical renderer, route-end appendices, density behavior.
+- `tests/manual-ticket-placement.test.mjs`, `tests/e2e/manual-ticket-placement.spec.ts`: negative validator coverage and desktop/mobile runtime evidence.
+- `docs_project/project/frontend/frontend-docs.md`, `docs_project/project/backend/backend-docs.md`: durable runtime and validation contract.
+- `specs/038-manual-ticket-placement/**`: intake, architecture, dispositions, and current implementation evidence.
+
+Changed files at blocker handoff:
+
+- `specs/038-manual-ticket-placement/tasks.md`: recorded prerequisite/baseline evidence, both unmatched-ticket audits, and their Architect dispositions.
+- `scripts/manual-ticket-placement-lib.mjs`: partial deterministic corpus loader, anchor inventory, fingerprint/baseline utilities, candidate-generation support, and validation helpers. Candidate ranking is not completion evidence.
+- `scripts/content-manual-ticket-placement.mjs`: partial generator/validator entrypoint; currently exits non-zero because `b-fallback-126` has zero placements.
+- `content/manual-ticket-placement/manual-content-baseline.json`: protected-source/image baseline from the assigned base.
+- `content/manual-ticket-placement/manual-pages.json`: route eligibility inventory.
+- `content/manual-ticket-placement/placements/*.json`: provisional candidate records for `459` tickets only; `b-fallback-126` is intentionally absent. These records have not completed the required end-to-end semantic review and must not be treated as merge-ready evidence.
+- `content/validation/manual-ticket-placement.evidence.json`: intentionally red evidence with `zeroPlacementTickets: 1`.
+
+No product UI/runtime code, canonical ticket content, protected manual source, protected manual image, test, commit, push, or PR was created after the blocker was confirmed.
+
+Architect owner-decision disposition update on `2026-06-23`:
+
+- `spec.md`: defines the general audited thematic-fallback schema, validator contract, acceptance criteria, negative tests, and exact dispositions for `b-fallback-235` and `b-fallback-126`.
+- `plan.md`: replaces repeated owner-decision stops with the general fallback workflow and exact implementation instructions for both known no-answer tickets.
+- `tasks.md`: converts `F038-IA-001` and `F038-IA-002` into implementable tasks with selected pages/anchors and required verification.
+- Product code/content/tests/docs changed by Architect: `no`.
+
+## Acceptance Evidence Summary
+
+- Canonical questions: `460`
+- Total placements: `460`
+- Questions with 1 / 2 / 3 placements: `460 / 0 / 0`
+- Eligible / ineligible routes: `51 / 14`
+- Answer-bearing / owner-approved thematic fallback placements: `458 / 2`
+- Unknown/ineligible/duplicate/unreviewed/stale/zero/over-three/malformed-fallback counters: all `0`.
+- Protected content status: unchanged; `git diff` over the protected source corpus is empty.
+- Highest-density route: `ch1-bicycle`, `30`; closed/open mounted cards `0/30`; no horizontal overflow.
+- Browser fixtures: `intro-road-pandemic`, `ch1-bicycle`, `app1-safety-elements`, `app4-signs-regulatory`, `b-fallback-126`, and `Материалы`.
+- Full verification result: all repository validators/tests/build/browser suites pass. Docker-only build remains unavailable because Docker Hub failed to provide uncached base images; this is recorded as external infrastructure evidence rather than hidden.
+- PR/head: pending publication; implementation base `4247b0e90ae5799a0875cc3751c96589fef96ef2`.
+
+## Dead Ends
+
+Record attempted approaches that were rejected, including why they violated relevance, canonical reuse, protected-content, or density requirements.
+
+- The first replacement-IA regeneration exposed stale generator logic added after the prior evidence run: it reclassified `424` reviewed relations as generic auto-generated thematic fallbacks (`36/424`) and reduced destinations to `37`. That output was rejected because it contradicted the approved `458/2` contract and treated lexical ranking as fallback approval. The generator was corrected to reproduce the reviewed mapping, and the validator now requires exactly the two Architect-approved fallback records.
+- Automated lexical candidate ranking remains a deterministic way to reproduce the previously reviewed ordinary placements, but it is not sufficient to authorize a new thematic fallback. Short answers and generic words can produce plausible destinations, so fallback approval stays limited to the two documented Architect dispositions.
+- `b-fallback-235` has no answer-bearing anchor. The owner approved the closest-topic fallback; this dead end remains recorded so it is never misrepresented as answer-bearing evidence.
+- `b-fallback-126` has no answer-bearing anchor in the protected Руководство corpus. The nearest maintenance text names oil among fluids to check, but never states that a combustion engine is lubricated by motor oil and cannot identify canonical image option C. The provisional automated candidate was rejected and the ticket was deliberately left unmatched.
+
+## Known Issues
+
+- Accepted fallbacks include `b-fallback-235` and `b-fallback-126`; neither may be represented as answer-bearing.
+- The owner decision is general for audited no-answer tickets, while each selected page/anchor remains ticket-specific and evidence-bound.
+- A future no-answer ticket is not automatically a blocker when a substantive thematic eligible page exists.
+- The remaining hard-stop case is absence of any substantive thematically relevant eligible page.
+
+## Implementation Agent Feedback
+
+Every item must be routed by Orchestrator to Architect for `task`, `ticket`, or explicit `not-needed` disposition.
+
+### Feedback template
+
+- ID:
+- Type: `unmatched-ticket` | `architecture-divergence` | `improvement` | `blocker`
+- Question ID, if applicable:
+- Canonical Spanish question:
+- Canonical correct answer:
+- Candidate pages and anchors reviewed:
+- Why each candidate failed:
+- Proposed disposition:
+- Manual content changed: `no`
+- Status: `open`
+
+### F038-IA-001
+
+- ID: `F038-IA-001`
+- Type: `unmatched-ticket`
+- Question ID, if applicable: `b-fallback-235`
+- Canonical Spanish question: `En caso de participar de un siniestro vial, ¿de cuánto tiempo se dispone para dar aviso sobre el hecho a la compañía aseguradora del vehículo?`
+- Canonical correct answer: `72 horas.`
+- Candidate pages and anchors reviewed:
+  - `ch2-incident-obligations`, block `data-to-collect`, item `0`: `По транспортным средствам: номер, марка, модель, цвет, страховая компания, номер полиса и имя владельца.`
+  - `ch2-incident-obligations`, block `data-to-collect`, item `2`: `По застрахованному лицу, если это не водитель на момент инцидента: имя, DNI, адрес и телефон.`
+  - `ch2-incident-obligations`, block `follow-up-duties`, item `1`: `Если произошло столкновение с припаркованным транспортным средством и владелец неизвестен, нужно оставить личные данные, данные транспортного средства, лицензии и обязательной страховки в безопасном и хорошо закрепленном месте.`
+  - `ch2-required-documents`, block `insurance-vtv-rva`, item `1`: `Обязательная страховка защищает пострадавших в дорожных инцидентах и гарантирует возмещение за вред, причиненный третьим лицам, перевозимым или не перевозимым.`
+  - `ch2-required-documents`, block `insurance-vtv-rva`, item `2`: `Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.`
+  - `ch2-legal-responsibility`, block `civil-criminal-responsibility`, items `0` and `1`: civil compensation and insurer liability are described, but no insurer-notification procedure or deadline is stated.
+- Why each candidate failed:
+  - The incident page identifies data to collect and duties at/after the scene, but does not state that the insurer must be notified within `72` hours or any other deadline.
+  - The required-documents page explains the purpose and mandatory proof of insurance, but does not state a post-incident notification deadline.
+  - The legal-responsibility page explains compensation and insurer liability, but does not state where, when, or within how many hours the insurer must be notified.
+  - A repository-wide search of the protected learner-visible manual corpus found no textual occurrence of `72 horas`, `72 часа`, or an equivalent three-day insurer-notification rule. Numeric `72` occurrences are source geometry, hashes, page numbers, or unrelated asset metadata and cannot answer the ticket.
+- Proposed disposition: Architect must record the conflict between mandatory all-ticket coverage and the prohibition on adding manual prose. Route to the owner-decision blocker described by the spec unless a currently overlooked existing learner-visible answer-bearing anchor can be identified without changing protected content.
+- Manual content changed: `no`
+- Status: `disposed — task; owner-approved exception, implementation may resume`
+
+### F038-IA-002
+
+- ID: `F038-IA-002`
+- Type: `unmatched-ticket`
+- Question ID, if applicable: `b-fallback-126`
+- Canonical Spanish question: `¿Con qué se lubrica un motor?`
+- Canonical correct answer: `Opción C.`; the governed image/explanation identifies option C as a canister of motor oil.
+- Candidate pages and anchors reviewed:
+  - `app1-safety-elements`, block `pre-driving-checks`, item `0` (`itemsRu`): `Масло, охлаждающую жидкость и жидкость стеклоомывателя.`; a pre-driving operating-fluid checklist, not a statement that motor oil lubricates the engine and not enough to identify image option C.
+  - `app1-safety-elements`, block `luggage-and-load` and adjacent vehicle-maintenance blocks: no engine-lubrication rule.
+  - `ch5-anticipatory-efficient-driving`, block `efficient-driving-measures`, item `Проверять состояние тормозов и чистоту воздушного, масляного и топливного фильтров.`: mentions an oil filter, but not what lubricates the engine and not image option C.
+  - `app3-social-responsibility`, maintenance item `Проверить тормоза и уровни жидкостей: воду, масла, жидкость или давление воздуха в тормозной системе.`: names oil as a level to check, but does not state the answer-bearing lubrication relationship.
+  - all other eligible Introduction/manual routes and Appendix IV sign labels were searched for Russian/Spanish forms of engine, lubrication, oil, `motor`, `lubricar`, and `aceite`; no learner-visible text states that the engine is lubricated by motor oil.
+- Why each candidate failed:
+  - The canonical answer is image-dependent and opaque (`Opción C.`). A valid anchor must state the fact needed to identify the pictured oil can as the correct lubricant.
+  - Existing pages mention oil only as a checked fluid or filter category. They do not say that motor oil lubricates engine components.
+  - A thematic placement requires the general owner-approved fallback evidence and cannot be presented as answer-bearing.
+- Proposed disposition: apply the general owner rule to the closest substantive maintenance page, preserving the complete candidate/rejection audit.
+- Manual content changed: `no`
+- Status: `disposed — task; audited thematic fallback approved, implementation may resume`
+
+## Architect Dispositions
+
+### F038-IA-001 — `task`
+
+- Disposition date: `2026-06-23`
+- Disposition type: `task`
+- Owner decision date: `2026-06-23`
+- Owner decision reference: `feature-038-owner-decision-2026-06-23`
+- Owner decision: `«Добавь билет на наиболее близкую по теме страницу, несмотря на то, что нет явного текста про 72 часа. Не меняй при этом текст руководства или текст билета»`.
+- Independent verification scope:
+  - canonical `b-fallback-235` question, all three answer options, and `correctAnswerId`;
+  - all four Introduction routes from `introductionNavigation`;
+  - all `50` implemented manual-section content objects assembled by `implementedManualGuideSections`;
+  - learner-visible rendering paths in `IntroductionArticleBlockView` and `ManualGuideSectionContentView`, confirming `sourceTextEs` metadata is not rendered as page prose;
+  - exact/equivalent deadline searches for `72 horas`, `72 часа`, written-out seventy-two, `tres días`, `3 días`, Russian three-day forms, and insurer-notification/deadline combinations.
+- Verification result:
+  - no existing learner-visible Руководство text states that the vehicle insurer must be notified within `72` hours or an exact equivalent;
+  - `ch2-incident-obligations` mentions necessary reports, insurance-company/policy data, and post-incident duties without a deadline;
+  - `ch2-required-documents` explains insurance purpose/proof without a post-incident deadline;
+  - `ch2-legal-responsibility` explains liability without a notification deadline;
+  - repository occurrences in canonical ticket data, governed translations/explanations, topic-study `Материалы`, source trace, specs, and learning-image metadata are outside the existing learner-visible Руководство corpus and are not valid anchors.
+- Accepted page: `ch2-incident-obligations`.
+- Accepted exact thematic anchor:
+  - kind: `manual-block`
+  - block ID: `incident-duty-core`
+  - text path: `textRu`
+  - text: `При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.`
+- Selection rationale: this anchor is the closest substantive existing context because it directly concerns mandatory conduct after a road incident and explicitly mentions necessary notifications/messages. It is closer to the ticket's post-incident notification action than `ch2-required-documents`, which concerns insurance proof/purpose, or `ch2-legal-responsibility`, which concerns liability. It does not contain or imply the `72`-hour answer and must not be labeled answer-bearing.
+- Implementation instruction:
+  1. add exactly one placement for `b-fallback-235` on the accepted page/anchor;
+  2. mark it `placementBasis: "owner-approved-thematic-fallback"`;
+  3. record `auditId: "F038-IA-001"`, the owner decision date/reference above, no-answer/candidate-rejection audit, thematic rationale, and approved review metadata;
+  4. generate fresh canonical question, translation, correct-answer, image, exact-anchor, and page-content fingerprints;
+  5. keep canonical Spanish/Russian ticket content, correct answer `72 horas.`, existing manual text/images, and protected files unchanged;
+  6. make the validator fail for missing audit evidence, alternate Architect-approved page/anchor, ineligible/support destination, arbitrary selection, missing/stale evidence, or protected/canonical content mutation;
+  7. resume the remaining implementation tasks and maintain `460/460` coverage.
+- Formal result: prior blocker is resolved as an implementable task under the general owner-approved thematic fallback rule.
+- Manual/product code/content/tests/docs changed by Architect: `no`.
+- Final Architect validation performed: `no`.
+
+### F038-IA-002 — `task`
+
+- Disposition date: `2026-06-23`
+- Disposition type: `task`
+- Owner decision date: `2026-06-23`
+- Owner decision reference: `feature-038-owner-decision-2026-06-23`
+- General owner rule: when a good-faith audit finds no answer-bearing anchor, place the canonical ticket on the closest substantive eligible page by topic without changing manual or ticket content.
+- Verification result: no learner-visible manual text states that motor oil lubricates a motor or independently identifies image option C.
+- Accepted page: `app1-safety-elements`.
+- Accepted route hash: `#manual-section-app1-safety-elements`.
+- Accepted exact thematic anchor:
+  - kind: `manual-list-item`
+  - block ID: `pre-driving-checks`
+  - item index: `0`
+  - text path: `itemsRu`
+  - text: `Масло, охлаждающую жидкость и жидкость стеклоомывателя.`
+- Selection rationale: this is the closest substantive page because it is a direct pre-driving vehicle-maintenance checklist and explicitly identifies oil among operating fluids. `ch5-anticipatory-efficient-driving` mentions only oil-filter cleanliness in an efficiency context; `app3-social-responsibility` lists mixed professional inspection fluids, including braking-system media, and is less specific to ordinary engine-compartment maintenance.
+- Implementation instruction:
+  1. add exactly one placement for `b-fallback-126` on the accepted page/anchor;
+  2. set `placementBasis: "owner-approved-thematic-fallback"` and `auditId: "F038-IA-002"`;
+  3. record the common owner decision date/reference, complete no-answer search, all candidate anchors and rejection reasons, and the selection rationale above;
+  4. add approved ticket/placement review metadata and fresh canonical question, translation, correct-answer, image, exact-anchor, and page-content fingerprints;
+  5. preserve canonical Spanish/Russian ticket text, image option C and correct-answer identity, existing manual text/images, and all protected files;
+  6. update validator/tests so this record and future fully audited thematic fallbacks are valid and separately reported, while fallback without documented no-answer evidence fails;
+  7. resume semantic review without stopping on later no-answer tickets when a substantive thematic eligible page exists.
+- Formal result: `F038-IA-002` hard stop is removed. Stop only if no substantive thematically relevant eligible page exists.
+- Manual/product code/content/tests/docs changed by Architect: `no`.
+- Final Architect validation performed: `no`.
+
+## Final Validation Records
+
+Architect return count: `0 / 10`
+
+Analyst return count: `0 / 5`
+
+Final Architect validation and Final Analyst validation are not performed during initial architecture. Orchestrator will invoke them after implementation, review, checks, and follow-up development are complete.

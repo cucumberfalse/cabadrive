@@ -1,0 +1,3332 @@
+{
+  "schemaVersion": 1,
+  "range": {
+    "start": 185,
+    "end": 276
+  },
+  "entries": [
+    {
+      "questionId": "b-fallback-185",
+      "canonicalEvidence": {
+        "questionFingerprint": "3df3e06b8b6d8ebbe3614ccf87106443d43ec04b07b249e1287a7c000d89bb79",
+        "translationFingerprint": "46b6aed789e89e58ae542f2a4e25a97c3c24ee12d939197570d17e4a6782077c",
+        "correctAnswerIdAtReview": "b-fallback-185-a3",
+        "correctAnswerFingerprint": "05f9d49d4bfd99b8e6ab3a1cf2205a6ebc202c10b2b32a1277f277f38e58f91b",
+        "imageFingerprint": "69a12a69de88bd6debcd8d671ab8e7b22571443d7624fee487a587168d5c8939"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p188-024-flecha-direccional-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "cdb2ca33b6f5abe11e96bdc1fbd92a115f8eec539416eaafc3472fc1740a96c3"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Предупреждающая направляющая панель на кривой.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-186",
+      "canonicalEvidence": {
+        "questionFingerprint": "a5e2a3c7474e269f36eb2539f9af1ace118e83185af4da4ea010525bd5384707",
+        "translationFingerprint": "ce82712311b155551967c9f1fd9ec4c6ff1a159d9d368a977acb92c800180539",
+        "correctAnswerIdAtReview": "b-fallback-186-a2",
+        "correctAnswerFingerprint": "9b1a36b57aee7e844b6d2f9a484ffc53a65e3ede5d5643d680c192357870083b",
+        "imageFingerprint": "43d0f9b71a2807e5deebca8a884350e775f2741e702e0c645dabf76fc1074e79"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "driver-recommendations",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "09edba9002bb78da87be723a0caa648d06893e49ff5998c8f74693b3565dda6a"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «У велосипедиста, потому что автомобиль теряет преимущество, когда собирается повернуть.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-187",
+      "canonicalEvidence": {
+        "questionFingerprint": "953f880388e935650b6446074d40eaac3fd5a65a3b804d9d89309733a6923b5b",
+        "translationFingerprint": "a334a4a98499faeffacb9cb9fc353f7cf14fded9631868614d75435a309aa7a8",
+        "correctAnswerIdAtReview": "b-fallback-187-a3",
+        "correctAnswerFingerprint": "9f182b5713bd284f366e690feb5eb35a8c8e999846e4d39a1e999a672d9e4ea3",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-turns",
+          "routeHash": "#manual-section-ch3-turns",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "turns-rules",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "e1dac3abd08de130ac9f125dc87fa7bae0d27656ad6f6663d1f44e27db8db17a"
+          },
+          "pageContentFingerprint": "a6087b0eea79152ffdbf6e63aad7e8a9572beca5be6eaf31eeaa542461703caf",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «За 30 метров до манёвра.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-188",
+      "canonicalEvidence": {
+        "questionFingerprint": "ef624dda779ae170708dc286cd37b4842ffe44c8a5d1dab094352cfeba7e9545",
+        "translationFingerprint": "c534e480fb270dd5b3358e6bd21e373d94977fa9e5a34c11039cbda20359c0cf",
+        "correctAnswerIdAtReview": "b-fallback-188-a3",
+        "correctAnswerFingerprint": "ee838309872d79543b8e0b0d809f996e8ad8db2bd5c191b59d2fb955c5e83e0c",
+        "imageFingerprint": "70d4f5f5475cce5b267671879f42ebfa00c00c34ba3cee45608c6a882df4e4b5"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "horizontal-individual-sign-catalog",
+            "entryId": "app4horizontal-p195-003-linea-de-separacion-de-circulacion-no-debe-ser-t",
+            "textPath": "russianTranslation",
+            "textFingerprint": "7dc0e2e8c05f84cab5538c6a9327656c0759551ba249816d0da75c6ec3e8c732"
+          },
+          "pageContentFingerprint": "40d2d16278194e8c09f646e49acdb751420746c55b2aa48c5ac14312930711a9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «По этой зоне нельзя ехать.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-189",
+      "canonicalEvidence": {
+        "questionFingerprint": "5dd1c2df1cf294e7216bdc20d4f9acbb086afb246e5f3159d7e5ef84fafce0d3",
+        "translationFingerprint": "b1ab8c4155192458f9edce017b07c183de069969ac318246538e1fb2591b53e5",
+        "correctAnswerIdAtReview": "b-fallback-189-a2",
+        "correctAnswerFingerprint": "13b90bdb9347a6df7a312c8a313c70ee047704967231c7a9beaf19f9c59153fe",
+        "imageFingerprint": "81da230ce7a695e80a6a780bb8e540aba944b63aded15cfe35787d72978dc845"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "precautionary-speed",
+            "itemIndex": 5,
+            "textPath": "itemsRu",
+            "textFingerprint": "c7cdd47bec8c7efa584ebc3140c7f7a3facb51e0176914a4682c1c1aa86a4d60"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нужно подбирать скорость с учётом погодных условий и состояния этой дороги.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-190",
+      "canonicalEvidence": {
+        "questionFingerprint": "d9548d36120c64639a107f5548f7882ff7901fe711460d7c255c40f9bfe862fc",
+        "translationFingerprint": "0f665c0d40a4b32c49bff468575250a1d14890895c1b6a45404adac00e8eee49",
+        "correctAnswerIdAtReview": "b-fallback-190-a1",
+        "correctAnswerFingerprint": "d4f4d52dc2310408eb060901c6fb24937a355c0bbce58abe8d62e9f49d175022",
+        "imageFingerprint": "efb0c7139bd95eb1fe24df54b62612f90178ae2b9a233ddc7bf33f09a1153a39"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "warning-groups",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "076defa96371e7f7c17f7e1da51db542b8fdfaf401bc3d1ffda38f70c5b21e22"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Снизить скорость и внимательно следить за возможным приближением поездов.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-191",
+      "canonicalEvidence": {
+        "questionFingerprint": "034af7cbcd82eaaaa91c51da5b231b6221c1ef4c08c074e32e847d05872b2a6b",
+        "translationFingerprint": "a6a74b5ebea0e215edc859805e40c9a9c118330d4a6efeeb4d154360b5ce2380",
+        "correctAnswerIdAtReview": "b-fallback-191-a1",
+        "correctAnswerFingerprint": "4219fb17a9ff120b1853d22a1aade5a0a2ad47949bfc923c783b06481fd8e670",
+        "imageFingerprint": "0231670130063a7cc1f60ed9131765baa30446fe0b3052f139b68d40614ba3cf"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-overtaking",
+          "routeHash": "#manual-section-ch3-overtaking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "law-24449",
+            "textPath": "textRu",
+            "textFingerprint": "d87cfe3e00ede36e4765f78969c169e74a7c297aabab122da7037556f28d1e21"
+          },
+          "pageContentFingerprint": "19f42e33e3b5e9dc90e89ccef2d6f545d56377020cb38c6ee7eaddf676b07b65",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что это перекрёсток со светофором, но без разрешающей секции поворота; такой манёвр не разрешён.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-192",
+      "canonicalEvidence": {
+        "questionFingerprint": "016b7dc11e73b0c285735bf0fa0587215fc1fc2fcd5d8a2b1dbcaa09705b67d7",
+        "translationFingerprint": "f601a0b4687c05ddc93414c823de3083c9357c981329a835be9f03c3e437ab4d",
+        "correctAnswerIdAtReview": "b-fallback-192-a2",
+        "correctAnswerFingerprint": "58f53ca25ffd1d3dd2b54cbc371597782c0544b7ad989280bfc5cbe016dafa0a",
+        "imageFingerprint": "39570ad8cc25c0e7f924dea43551ec63112a776a5d0b58d9410e1cc98e538912"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "incorrect-and-maneuver",
+            "itemIndex": 6,
+            "textPath": "itemsRu",
+            "textFingerprint": "34f07b24db8cc27d97ececa6122cc9cf9111beb8468a8e0c7fea98eca6227a52"
+          },
+          "pageContentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Что автомобиль скоро заедет в гараж или остановится.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-193",
+      "canonicalEvidence": {
+        "questionFingerprint": "ccc7742d0edfcb10fc7064d59bf1c54e8a1cef7ab1377e57578327a28113acfd",
+        "translationFingerprint": "946894fa39d2dfd2edc2b30fb59f2dbe44456566299f809702854fc6b7377afd",
+        "correctAnswerIdAtReview": "b-fallback-193-a3",
+        "correctAnswerFingerprint": "40af3320aaf9991b794714f2f602f14e657e99adfaea0f90228edeca8cc9aced",
+        "imageFingerprint": "80f567249fb9fad34b4085148d474dc298c569f319c7ee0e16db0c734a544ca0"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app3-safety-elements",
+          "routeHash": "#manual-section-app3-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "seatbelt-pregnancy-headrest",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "2834eaf6989c9eaa08392dae31141e38b0a15e3123f94e1ca6c406f216323782"
+          },
+          "pageContentFingerprint": "d42b72b54a5299653b5ce48ceec7f00aab9b6568b969a04487d1c6b1bb65e2a6",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что ремень безопасности обязателен для всех перевозимых людей.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-194",
+      "canonicalEvidence": {
+        "questionFingerprint": "fce8ea8e35d79a5d5fa3426a1dba4afe02aa7e5c37b0061015093259d8411af0",
+        "translationFingerprint": "fd16d716af98dd568fa9dd4fcc044d3d6c13240d5a4e4666722c4c0a09dd8803",
+        "correctAnswerIdAtReview": "b-fallback-194-a3",
+        "correctAnswerFingerprint": "aeaf5a0295ff6284cc8f1b739752528d161013f85baa9629a2acc5cfd92723ab",
+        "imageFingerprint": "17f7c9a8e4dbf9fee712f270a1cd234b5f2b81e713cca4c895b0be6d6992ee46"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "age-and-paths",
+            "itemIndex": 3,
+            "textPath": "itemsRu",
+            "textFingerprint": "9741f14e283e87086c0cfa0750bc0225e57eadf2c90463ed8af902962324f4a0"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет. Если ехать невозможно, нужно отойти как можно дальше от проезжей части и обочины.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-195",
+      "canonicalEvidence": {
+        "questionFingerprint": "3683d67150faa1e74422a7e41c7820149aa998e769df66f630ed52882cab62a5",
+        "translationFingerprint": "d3f9bd3654a342d4f58ee77d5fe5ce90c4781d41a6dc8a24f63a46b8b3098b6d",
+        "correctAnswerIdAtReview": "b-fallback-195-a2",
+        "correctAnswerFingerprint": "6b9e0a860cd24ec26de99a724e669f37bc4c6d27a04e35c0191482a7a47caf62",
+        "imageFingerprint": "5c07764f46ed6028509b0cb8995a2ac2808bfba6c99fed172fbad432d77cabc3"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch5-anticipatory-efficient-driving",
+          "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "efficient-driving-benefits",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "31639d83f59b68ed95bb8abd32db11915770683a550c9b5d1dafbe3f24349dcf"
+          },
+          "pageContentFingerprint": "8145074323d493ee979750bb515734b5cf33e28bf0062d323826eb79792a618b",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Увеличивается сопротивление воздуха, а вместе с ним и расход топлива.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-196",
+      "canonicalEvidence": {
+        "questionFingerprint": "f4575810860b23e51bff5cb9fbb88d7edcae147c1f2ed866d4be0864bae44d73",
+        "translationFingerprint": "2e41b46b768408f418d42be96e073d83e587af45685cae8fc552d997ba7e0e14",
+        "correctAnswerIdAtReview": "b-fallback-196-a3",
+        "correctAnswerFingerprint": "d31ce058c79a263751f85b553f1ff362a6141733f3b756130ce69a065c37e95b",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "speed-risk",
+            "textPath": "textRu",
+            "textFingerprint": "164495d61ee0987324d4a8d26940c358e6036bbb543300db86ad12140606c351"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Являются причиной большинства смертельных аварий независимо от типа дороги.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-197",
+      "canonicalEvidence": {
+        "questionFingerprint": "45f0decb224f20aa2e36052f6dd79625104b7665d3aea437a8389ed79044e6d8",
+        "translationFingerprint": "3f5b08609f2b2551378bc1ca51c5d019a3890389f08252983eb2cba073e3fe9d",
+        "correctAnswerIdAtReview": "b-fallback-197-a3",
+        "correctAnswerFingerprint": "308c1764d68dda635e9b86238bef368c6118a70d498d038fae297cdfd61a5ecf",
+        "imageFingerprint": "5f78b9a4d3068059f5df0fa1df44b27b94f06426018d9b8730520c3c0d9eb943"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-highways",
+          "routeHash": "#manual-section-ch3-highways",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "highway-circulation-lane-use",
+            "itemIndex": 3,
+            "textPath": "itemsRu",
+            "textFingerprint": "e6c809cc172f8e351ecd57de52280d53a9d4b6a13dc76579221d71ee978eb51b"
+          },
+          "pageContentFingerprint": "4ba3314ef51d34a481d9b4569aa9ef80ef89bf4ff8890d4e97403ced81d02df5",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что он движется по обочине.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-198",
+      "canonicalEvidence": {
+        "questionFingerprint": "012326168dbbddc88eedfd10fe2f60f2e7b1227e9569196252175a791af4fd14",
+        "translationFingerprint": "f8af3991a4595ba6472233e4f62b8d16001c46e0c2483e9f87bf281e1c1ba56a",
+        "correctAnswerIdAtReview": "b-fallback-198-a1",
+        "correctAnswerFingerprint": "6aa7850d1c5b261aec323f079f69ead8fa2740455f84652f3ca98c0a54168f9e",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "why-vehicle-condition-matters",
+            "textPath": "textRu",
+            "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Пространство, которое занимают водитель и пассажиры.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-199",
+      "canonicalEvidence": {
+        "questionFingerprint": "747176dbf8c1db0c83cbeadb2d8f940874a5a81c656267b8bc4ea2e957ca816c",
+        "translationFingerprint": "a2762c132aeb23770c60a8975f3fd867d70fa073165e4e6c37608490a08ba095",
+        "correctAnswerIdAtReview": "b-fallback-199-a1",
+        "correctAnswerFingerprint": "2689c14e2130b6ce66ce3c42a12c1c84adc1771b6f61e90ac8f1848ecf98e0e6",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-legal-responsibility",
+          "routeHash": "#manual-section-ch2-legal-responsibility",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "civil-criminal-responsibility",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "53bafae10ffc7954353495c85345333b6e72671631282dd63422dbf0b4628045"
+          },
+          "pageContentFingerprint": "ffe2edafd7800783f6b29873e34ea82b2933f985a3ea88abe078f59ea2f124b7",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Тот, кто подписал разрешение на получение удостоверения.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-200",
+      "canonicalEvidence": {
+        "questionFingerprint": "01f800803764d7b2ef9f8f39ea6dec301c4d2420ac042189995489c4db44a98f",
+        "translationFingerprint": "876309e4fee36f0414358cda8c9abf8a93d85b4aef3caf2d3ac1890a86a594dd",
+        "correctAnswerIdAtReview": "b-fallback-200-a2",
+        "correctAnswerFingerprint": "f4065b051808ae88902b2bfde7641bbe70b72c8de9a165738f0432421253c297",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "intro-road-safety-plan",
+          "routeHash": "#intro-plan-seguridad-vial",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "introduction-block",
+            "blockId": "vision-zero",
+            "textPath": "textRu",
+            "textFingerprint": "27e368e851530f3ecebe99a6680d1182b837e2cafbe2c5d82868afba2da892e6"
+          },
+          "pageContentFingerprint": "0b1977ad369706698ecd5ee9e5450ac1f69c9ea58fb9597b5b21b47084e57727",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Это этический принцип, по которому никто не должен погибать или получать необратимые травмы в дорожных происшествиях.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-201",
+      "canonicalEvidence": {
+        "questionFingerprint": "d18d651912238f4faa31580ff63d65fcf445702c50ebcf1859b5069db75b6368",
+        "translationFingerprint": "e16585ef62a2affae64897b27a66f4d3c2aa63a94e98cc01331fa801b28e84b7",
+        "correctAnswerIdAtReview": "b-fallback-201-a2",
+        "correctAnswerFingerprint": "24c3175631a2ec1409976d4843d11ec955461baf21da769c102e05c3b594da5f",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-legal-responsibility",
+          "routeHash": "#manual-section-ch2-legal-responsibility",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "administrative-responsibility",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "6d8aa886720ebbb2d3f938ecb49e61ee1ad6422b6e8b70bcbbe937070c36a2f3"
+          },
+          "pageContentFingerprint": "ffe2edafd7800783f6b29873e34ea82b2933f985a3ea88abe078f59ea2f124b7",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «В соответствующем отделении управления по администрированию нарушений.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-202",
+      "canonicalEvidence": {
+        "questionFingerprint": "a7051bb44db0b49423f32a8ebbd07f6bbb1bec8af4ea407331eb390e979b28b4",
+        "translationFingerprint": "3142445a9be6204c2b6d783625a939adbce23c90efa99581bea0eb7d37e11eee",
+        "correctAnswerIdAtReview": "b-fallback-202-a1",
+        "correctAnswerFingerprint": "c7f775e44839ba736f17ef882960b7eb31ca7ec8205afbcc1e75fe3a9be4b88b",
+        "imageFingerprint": "1843a82fc53f208e18952fa25cc087aafee99e7fbac0c6939695a7b4aed10838"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-traffic-lights",
+          "routeHash": "#manual-section-app4-signs-traffic-lights",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "traffic-lights-individual-sign-catalog",
+            "entryId": "app4traffic-lights-p197-012-cruce-ferrovial-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "d4c4fddbeb8ebe4865d13d184decace51e9a19b41db8886ea82c00ddb7d7fca1"
+          },
+          "pageContentFingerprint": "add8e2bdde958aa6cf8e2d09f18fcafee0ffb265407f37db7b9df84a6c85952e",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Железнодорожный переезд с более чем двумя путями.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-203",
+      "canonicalEvidence": {
+        "questionFingerprint": "335a4f52fe02278334ae8ecb025df86db8d53d18a21e70ba918c6a7477306e4d",
+        "translationFingerprint": "f169fb5a33065c7645ed2579f2bdc9d20cf4bd4eb35746567b4ead77dbee9155",
+        "correctAnswerIdAtReview": "b-fallback-203-a1",
+        "correctAnswerFingerprint": "54300e6c9cbf1d79672b2403048baca5d284382f0c60595675f4d48291402def",
+        "imageFingerprint": "9d09ec1af8fb5130ee5d61df7d9eae4ccecb8a5e0439f49e5ff02eac2c513141"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "caba-legal-limit",
+            "textPath": "textRu",
+            "textFingerprint": "bd756b5657bd8861c075e0c8c31237bcc70615901c6f2b3e2d49b2709e687543"
+          },
+          "pageContentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «0,5 грамма алкоголя на литр крови.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-204",
+      "canonicalEvidence": {
+        "questionFingerprint": "c0c237bbbba27c176f77c2e1b685f04970aa33b8047338dc9f71ec0f04719470",
+        "translationFingerprint": "0cad640ebdd36b4ef1ca788943876c3d4a5e8bef79f673dfc3b5b5f858836c6f",
+        "correctAnswerIdAtReview": "b-fallback-204-a2",
+        "correctAnswerFingerprint": "ad414de651993481b18488ab29d08a1115fd27bf89b2303b2a7dd4b3791cf7d8",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-sleep-fatigue",
+          "routeHash": "#manual-section-ch4-sleep-fatigue",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "physical-fatigue-symptoms",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "99b3689c012356c6e6a4d09b472c98932974bf84564fe8ca886aab9b3e8c6b45"
+          },
+          "pageContentFingerprint": "357ba00c956a73eb68e118611f088f486c3734cc2bcee05ffc77f969a7ae514f",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Затуманенное зрение и увеличение количества и длительности морганий.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-205",
+      "canonicalEvidence": {
+        "questionFingerprint": "1e5395f4bb177c5b3ff242e7bb6313adf0c2f3e41837b9061a8041847891b8cf",
+        "translationFingerprint": "06009bfa49ef0a531706c47f62ed26a7873cb3cfffcbd5dacb129608a367a764",
+        "correctAnswerIdAtReview": "b-fallback-205-a1",
+        "correctAnswerFingerprint": "c04241f51b8aaff2ef5e88563dee7239efb41ac162ac56e92f4d962e3d60eca2",
+        "imageFingerprint": "f2d7a2f7d9e43d226f7b6c60067146772d66701006042d3c9fd5bb7bbb66a546"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "yellow-star-meaning",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "8971a7ac8669221d3cc71ccb9bd8a4ea66d3262d9f0ae874fa421ed281809023"
+          },
+          "pageContentFingerprint": "702c3f021d79fffaa5d15c07ccfb88cbec534c769798882e23af29c4b0334e34",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-206",
+      "canonicalEvidence": {
+        "questionFingerprint": "5b40285eeec96783511274ad55570062fd45423f5612d8ab2125b77114fb5f54",
+        "translationFingerprint": "01d281673b9c5c8934a1d6717db0007d88cb4268cb6470c513af32d5538eaa6e",
+        "correctAnswerIdAtReview": "b-fallback-206-a2",
+        "correctAnswerFingerprint": "1c13a8d2996261dd24cbf310dcc89d11cbb5778a934ce9314634e507b59335dc",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "bicycle-safety-check",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "864f672b3d267e4f07becef472cfdca1b23984a7e2fec6cd204ab054fefe0876"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Да, потому что при намокании тормоза могут работать менее эффективно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-207",
+      "canonicalEvidence": {
+        "questionFingerprint": "f18289667b436a68db8e0ab335ab6484e3e1a336e503211bceb40c5a11083044",
+        "translationFingerprint": "291d6be86faeb2779f51b1c1000f51fcf63618e10c6a552be6f2055494cb8520",
+        "correctAnswerIdAtReview": "b-fallback-207-a2",
+        "correctAnswerFingerprint": "07d6597b47800c329009cec84091dbe88cc42b127a3a0433918fe927f38f1617",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "regulatory-individual-sign-catalog",
+            "entryId": "app4regulatory-p185-005-no-circular-automovil",
+            "textPath": "russianTranslation",
+            "textFingerprint": "b5ce3e7ec0925c06dcf7c69b07f4f4e51a61030112c189e70e53b027cf009a4b"
+          },
+          "pageContentFingerprint": "34d1251e36bf508739b186b23ea6eed5f84161bd905c6fbcc9d265a8972eb977",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, это запрещено правилами.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-208",
+      "canonicalEvidence": {
+        "questionFingerprint": "5e4918a80525569a71c3bf2543dfd30628785ce0664c9b85618d7d0b5bf22e5c",
+        "translationFingerprint": "39d2b2a9079bde0d2d35c0f9d5ecb79a0a0a88e0f4ee3f94c60896cdcb2b32f9",
+        "correctAnswerIdAtReview": "b-fallback-208-a1",
+        "correctAnswerFingerprint": "a6f2732f1a53b2d6cda8d5354a9db333ebe5425090bc38797ee3d334348f6048",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "precautionary-speed",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "037096be980519b8b8b357baac9ba5d969628fd10b55f6172e0fd1996cee9d94"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Скорость, соответствующая обстоятельствам и установленным пределам, позволяющая полностью контролировать автомобиль без создания риска.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-209",
+      "canonicalEvidence": {
+        "questionFingerprint": "e8eac64c32e4555d3642177a620f00eeec79dd8221bb989504f7a31c2f25c875",
+        "translationFingerprint": "c1d57f0e27227f807ed7a70b9a95670e25764b48b23d09254c10f107301963fe",
+        "correctAnswerIdAtReview": "b-fallback-209-a2",
+        "correctAnswerFingerprint": "d332d9a14d5e3a81ae34b579f9506d21ee36f25b3c778323c9c47a4d86df04dd",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-stress",
+          "routeHash": "#manual-section-ch4-stress",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "stress-recommendations",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "a9144b1a29d17ded5d59b56cd9a873798a38fca038475572cf6c8474865bb4b5"
+          },
+          "pageContentFingerprint": "90a23210b825ab3775f57642f40b9602c7aa7a045c5d997dacbf9f422ec75f8d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Да, это может мешать вниманию к обстановке, потому что споры вызывают стресс.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-210",
+      "canonicalEvidence": {
+        "questionFingerprint": "37a31b714a332c1d2cdbecfb3283f6a0766f64029066f31fe8c1128bb101ea81",
+        "translationFingerprint": "196bbfb3018f7039fb908bd5a5da208c1abc4184fa6c1fbaf84e4ccfaaa0d67f",
+        "correctAnswerIdAtReview": "b-fallback-210-a3",
+        "correctAnswerFingerprint": "82e4649570187e691152236a3faac68a1c8c536cac8c23104a86bc11ef61f7e2",
+        "imageFingerprint": "8d3b37c059d85d1ea054e86b23887e12864683e0d8544dd8a7c16af171d7b5de"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "airbag-and-sri-law",
+            "itemIndex": 5,
+            "textPath": "itemsRu",
+            "textFingerprint": "b6a72e92eac5ecfb35eba24d0cf10d82fcf80bbdc920506813071a90ef86f4e6"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что девочка не использует ремень безопасности детского устройства.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-211",
+      "canonicalEvidence": {
+        "questionFingerprint": "6c26457a5b61c47066d3ff39869cafe3b4d1fedb76b6f78f886267ca15341ef5",
+        "translationFingerprint": "ed20091d7c0c5c0802fc90d6513efc5ba599eb5a7e2a0b2865dd846bd1549a3d",
+        "correctAnswerIdAtReview": "b-fallback-211-a2",
+        "correctAnswerFingerprint": "d0809be7c79f92ae155b6d4cf8b40a737089d3ca51fef23dd5f28fdb71d95294",
+        "imageFingerprint": "398d78e7cfb8844b8132dfac6112de877fdcd26b1edb6071c23b58561440aeb0"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "regulatory-individual-sign-catalog",
+            "entryId": "app4regulatory-p185-027-no-estacionar-ni-detenerse-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "bfab3c3a08dca58021e96b5d584b1fc5724b925c539e4ab74a8bdc16e53e6222"
+          },
+          "pageContentFingerprint": "34d1251e36bf508739b186b23ea6eed5f84161bd905c6fbcc9d265a8972eb977",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, остановка и стоянка здесь запрещены правилами.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-212",
+      "canonicalEvidence": {
+        "questionFingerprint": "70d0f0d0dfec630f7e3183ce8578a1ba0faefeec018fb13d60875277c4ac8250",
+        "translationFingerprint": "25bfe8f14c02949000e02c9efc3e88bceb83979a7f94fb99c06057e09e2df0aa",
+        "correctAnswerIdAtReview": "b-fallback-212-a3",
+        "correctAnswerFingerprint": "4af1912a110d9284bafdae507d7ecba01bd43880ec128901dee0cb45bad74953",
+        "imageFingerprint": "12916dea49cfd6bb96c36093ac63f5097168c0b69b3a1f4419dcaefec9171044"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "bumper-glass-pets",
+            "itemIndex": 5,
+            "textPath": "itemsRu",
+            "textFingerprint": "804ae4bc98d866c64bb2022f81a85308c9d45ffeee87e9c0f3934fa6503ac1f3"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что домашних животных нужно перевозить на задних сиденьях с шлейкой или соответствующей удерживающей системой.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-213",
+      "canonicalEvidence": {
+        "questionFingerprint": "814110bd2911ffbcde9d4dec45c388f29edf258767372488dc400970e7ac2b12",
+        "translationFingerprint": "0583997b4e0841bc1786d6c02d944d8349110ece2357b0b50a4d8e054b0ad60d",
+        "correctAnswerIdAtReview": "b-fallback-213-a2",
+        "correctAnswerFingerprint": "4aa7ff45c695c90019e4e9f41a4cab32754f8283d0859f6b1685ad3629a45a44",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app3-cargo-driver-profile",
+          "routeHash": "#manual-section-app3-cargo-driver-profile",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "cargo-definitions",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "c645609844273764056433a4d0cef4022f6fa9ccd98854882a4d9bcbc1d2ea6d"
+          },
+          "pageContentFingerprint": "4105350b82a96d0c086d286a7c1f8b43f58af81725b9ff59f4fd256a4e5c5618",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «У автомобиля, который поднимается.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-214",
+      "canonicalEvidence": {
+        "questionFingerprint": "7cd0fbe08fdfb6750426e12ec9a82de102792623bcddfea8ec2ae7695ba1f867",
+        "translationFingerprint": "8a424d13822b7d66346f93f74c4b8875a76dcfc2a0af5386d20423a11bdae1fe",
+        "correctAnswerIdAtReview": "b-fallback-214-a2",
+        "correctAnswerFingerprint": "1c991b5d8bd0029eef0923e61d57d952efdbd83aa94c947d815ee947ae7ea44c",
+        "imageFingerprint": "5c7894e1268d346a20489faf016865fd6ad17704a64b7f22d4cc3434725e1069"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "age-and-paths",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "4a976d07b54c921f2c3584c089f4a8bdb0dee3ad1b9e4431c6e273f78ffc3861"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «В июле.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-215",
+      "canonicalEvidence": {
+        "questionFingerprint": "5af28103857f7d372a6c813f13129eb7c0d0b525b1eaec35a12512aaf5db5217",
+        "translationFingerprint": "472f9645105bf9905957295aa6a998cf4342a8f400dfae7f995348ea19227918",
+        "correctAnswerIdAtReview": "b-fallback-215-a2",
+        "correctAnswerFingerprint": "bc974d47cc4590a50d4ad676e6d85e8f4482b44874163282aa062f93fb67c70b",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "metabolism-and-next-day-risk",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "6c3fd8b21bbc6d94d8ae1842718eb3f2964aa9afb2f2c0341c727e0c979e0d56"
+          },
+          "pageContentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Она продолжает расти около часа, а затем постепенно снижается.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-216",
+      "canonicalEvidence": {
+        "questionFingerprint": "f102ac4a9bb8e65433917f31006ec577b8821acb16fd934553ae0e68ca7a81e9",
+        "translationFingerprint": "dbed9833fcd52be7f0b57522c28c7935f425aa2dede3452f5fbfd2de6bc06850",
+        "correctAnswerIdAtReview": "b-fallback-216-a1",
+        "correctAnswerFingerprint": "802649753ff3cea22a076438192d607e00051ee082dbe45c21f23710fff59df5",
+        "imageFingerprint": "808c23faf608a8b026468d80b62b1c38e375a77bea112d460b45239aaa88e51a"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-priority-of-rules",
+          "routeHash": "#manual-section-ch3-priority-of-rules",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "emergency-vehicles",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "2b881a886bf6ca19e68dc0e960093178fefeeabacda06eb1a3bcbc4877734b48"
+          },
+          "pageContentFingerprint": "3c5cc7cec1c5418d078c4d6437df0283803f282460aadda78c00a3149df406a8",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-217",
+      "canonicalEvidence": {
+        "questionFingerprint": "5f0358f886c4de07786767d4f2df97659319c5a759d23f940a991f31f73d739c",
+        "translationFingerprint": "438f91fe6143b6408368883106b66cdcdd37c86bf6bfa69cc6836aa71c7f452f",
+        "correctAnswerIdAtReview": "b-fallback-217-a2",
+        "correctAnswerFingerprint": "187cddaab42b752874867cbff919449543d9a81301713f4f9dc8271bad3a2029",
+        "imageFingerprint": "0d59deaf37a0fc68fd149b0d6ebcd2fc1cbea5e32e3be1e41031b2b11aeeb2a9"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-recommended-safety-elements",
+          "routeHash": "#manual-section-app1-recommended-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "closing-safety-condition",
+            "textPath": "textRu",
+            "textFingerprint": "5ef8a59c773837ecef0b5a2435fa6a8e38cc6b189b8e5ca12b45b6b0f1995d7e"
+          },
+          "pageContentFingerprint": "37b38e868c480cd169acd0a37694380ed3af8a3735a0540bd49d17d63fbe9b85",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что запрет пользоваться мобильным телефоном относится только к водителю автомобиля.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-218",
+      "canonicalEvidence": {
+        "questionFingerprint": "32f8cf0905397346ad7bd8c6bdb9e16804f61d35690fd8fcb9a75953c7094a69",
+        "translationFingerprint": "573468b682b165027a7021931c3417ae126715be12620b0f17d6e4179b20fb3d",
+        "correctAnswerIdAtReview": "b-fallback-218-a3",
+        "correctAnswerFingerprint": "aeace54b61a1ea2c8c1956c3c2a1ca3faf1fdd6f40a617638120638b52b860e6",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-required-documents",
+          "routeHash": "#manual-section-ch2-required-documents",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "license-rules",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "f20ce2d69356492b6d31b4d1b2b2da520a9b02eaff5744278d9e9e2dac3b5f82"
+          },
+          "pageContentFingerprint": "0e6ddf07a3f80e7f54236535d4e68c9fc69f8c5a50ea54679b91a1f9e4cbcc61",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Ездить с просроченным удостоверением нельзя, кроме случая, когда срок истёк в нерабочий день; тогда он переносится на следующий рабочий день.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-219",
+      "canonicalEvidence": {
+        "questionFingerprint": "eca337c77c08beb319cabf01972994e8fd17df965791a32d95890a3d4d0d6fa2",
+        "translationFingerprint": "2de19c19b5991d3c9caecf4ccd29c85f0746be68e3dd8cbe62e54aa683ad3492",
+        "correctAnswerIdAtReview": "b-fallback-219-a3",
+        "correctAnswerFingerprint": "2a5506941ed3aad6b0327a6e9e9a390285086d2ee99550e2aaf441341b14b345",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-overtaking",
+          "routeHash": "#manual-section-ch3-overtaking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "definitions",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "889bf5bca5df3a576f435c1d704e48caa6989cbffbc7b67951a793dac0f3f34e"
+          },
+          "pageContentFingerprint": "19f42e33e3b5e9dc90e89ccef2d6f545d56377020cb38c6ee7eaddf676b07b65",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Чтобы выполнять манёвры обгона.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-220",
+      "canonicalEvidence": {
+        "questionFingerprint": "176ada88f5cab598c6f73d66aaf0759b42bc3cf2e7b6a68bd2bd51259835552a",
+        "translationFingerprint": "d80b58ddc9cc53782160411e535589832999256804ffc7dd6eb7bd5771e74790",
+        "correctAnswerIdAtReview": "b-fallback-220-a2",
+        "correctAnswerFingerprint": "fccace6b5e379116ca850577569bd598e6799d3c7aafe605d05d625631b1b739",
+        "imageFingerprint": "99a3b3e52da4400ecb28c702595a04bfb9a6f0190625890194dd7e5c19540088"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p188-030-fin-de-prevencion-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "65d71325d18466d18e55c3ae8bf9d4824c9ea4321d50cfba612504d49491dcfb"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Фигура B.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-221",
+      "canonicalEvidence": {
+        "questionFingerprint": "d2b34eaf4bd71afcc9ddb1bad14c1fa873635fbf3f69b47cf18046d2ffb99d6d",
+        "translationFingerprint": "6d1d659b04fae653a991fb240574254526fdd78fcb2a79f88aeaaa78ba4dc86a",
+        "correctAnswerIdAtReview": "b-fallback-221-a2",
+        "correctAnswerFingerprint": "49bb5693efe03b44fd2319bfd4874ba3dd7c69a8d3eb2bcbc2f4f7c848a409a0",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-priority-of-rules",
+          "routeHash": "#manual-section-ch3-priority-of-rules",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "temporary-signals",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "61857cbafaf3e3527b91416046b7df84543c3319da33e3ef34880c3cce3f19a9"
+          },
+          "pageContentFingerprint": "3c5cc7cec1c5418d078c4d6437df0283803f282460aadda78c00a3149df406a8",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Воображаемую линию продолжения скошенного угла.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-222",
+      "canonicalEvidence": {
+        "questionFingerprint": "d98fbfdb9094196ab4b317efad6d14a06e6bd5e32ea1b833aca1b827343e6a7d",
+        "translationFingerprint": "a4e7e288b610f0a973d66b870b7bf26fe4c7553e4a718a11c79dfbcdf4249649",
+        "correctAnswerIdAtReview": "b-fallback-222-a1",
+        "correctAnswerFingerprint": "a1e380d358262804ae898726337a6168314b364bee03570abd6672bdd3b02a28",
+        "imageFingerprint": "4e76e186c7b50fee40d0aa124e54ece769d90e90bed9e125992a602520ac3268"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "horizontal-individual-sign-catalog",
+            "entryId": "app4horizontal-p195-004-lineas-continuas-y-discontinuas-paralelas-linea-",
+            "textPath": "russianTranslation",
+            "textFingerprint": "30d1d269f8e694aa2be0c5c443100b2bbaf65cfa00ec3752d3ee96a3067ca16f"
+          },
+          "pageContentFingerprint": "40d2d16278194e8c09f646e49acdb751420746c55b2aa48c5ac14312930711a9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Соблюдать правило для ближайшей линии: если она сплошная, не пересекать её; если прерывистая, пересечение разрешено.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-223",
+      "canonicalEvidence": {
+        "questionFingerprint": "beb47f52d649df1d14a0223c464d77ec457e57dc37c3c426fe54f6aaa5693d05",
+        "translationFingerprint": "5873c66400249f694cf14e88d91a93fb2fef9e8660cc6ecb23ace38a4608b963",
+        "correctAnswerIdAtReview": "b-fallback-223-a3",
+        "correctAnswerFingerprint": "5f5cc0045fce62870c3cc36b20056c930fae160acaa40f3abfbf4a3e0b9e5b3a",
+        "imageFingerprint": "f9b1b2d60dd80ccd8eeaa20b9f184d9f254d2017ed70efce2bb7e4f42e75b03e"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-public-transport-system",
+          "routeHash": "#manual-section-ch1-public-transport-system",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "public-transport-infrastructure",
+            "childId": "exclusive-lanes",
+            "textPath": "cards.2.noteRu",
+            "textFingerprint": "c417ddac7c3e578e23cc33df83e03d1523ebcb6781b78d63012e1da52ef5c9c5"
+          },
+          "pageContentFingerprint": "aadbf636e44a18fca384ddbc5b007864d763b628aa1ea52b97a11a145910c74e",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Только если он делает это вне времени действия ограничения выделенных полос.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-224",
+      "canonicalEvidence": {
+        "questionFingerprint": "71b6ded6b6a2b05d10df073ebde9c9a818b9b12eaf4e73fdbf4c377e0b8775ef",
+        "translationFingerprint": "8075a1a58f15fbf523fefa60785f1919f69e5a41ea14ecae9a8abee1ce282cb3",
+        "correctAnswerIdAtReview": "b-fallback-224-a2",
+        "correctAnswerFingerprint": "383269a88be6bb4da411f0be66e8555eb71db54efd8111d4e10d468cd068660f",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "medications-and-sedatives",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "8211168708ee5baea1027a9e9a6c2dfba98a3c8fbf922934ebbc0b05dc92ccb6"
+          },
+          "pageContentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Все лекарства с седативным действием.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-225",
+      "canonicalEvidence": {
+        "questionFingerprint": "b778b2f11367dc42ff77e365c81f6f1fa164f0f1fb294b00768381e49ed6592b",
+        "translationFingerprint": "09714a242e7edd73c804a73a01a577a031f2af755a57aae7d195eb95033760f4",
+        "correctAnswerIdAtReview": "b-fallback-225-a3",
+        "correctAnswerFingerprint": "392bca9007c1f729b040e5fe37a81928e93bc3984d436f7c3ca38b092d4e4607",
+        "imageFingerprint": "52b846cce9062a33c0163f381e726c5b0bc4fd5e8a1b622da5257204ca3e3144"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "regulatory-focused-signs",
+            "childId": "app4-regulatory-no-avanzar-source-card",
+            "textPath": "cards.0.bodyRu",
+            "textFingerprint": "bf6e9ab12d3531dfd52e02cd5a43b1d9e07817577755c4503655db0cc649cb8f"
+          },
+          "pageContentFingerprint": "34d1251e36bf508739b186b23ea6eed5f84161bd905c6fbcc9d265a8972eb977",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Знак C.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-226",
+      "canonicalEvidence": {
+        "questionFingerprint": "125487c5d1e2666ba4b7ef7b5183057eac3ffd26fa7856e967f82d841a0aa2e7",
+        "translationFingerprint": "b42a5333a5395f2b2a46e011d9ecef4c9e1550d3cf1a20e3e8ab35b86038e985",
+        "correctAnswerIdAtReview": "b-fallback-226-a2",
+        "correctAnswerFingerprint": "4f90069813c8438cfef04c12d927a7c2df323a9a297b8bd884d08252a3504809",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-required-documents",
+          "routeHash": "#manual-section-ch2-required-documents",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "cedula-rules",
+            "itemIndex": 6,
+            "textPath": "itemsRu",
+            "textFingerprint": "8242c4defb2e022e5febb62add6bc70dd5631f6bf5d1fab199ea6ac104d83c7a"
+          },
+          "pageContentFingerprint": "0e6ddf07a3f80e7f54236535d4e68c9fc69f8c5a50ea54679b91a1f9e4cbcc61",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «В соответствующем Национальном реестре собственности на автомобили.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-227",
+      "canonicalEvidence": {
+        "questionFingerprint": "a58f2fae0c1e0badbf051f339e9826359598352257f867e1c2c1fc0814d8fd1c",
+        "translationFingerprint": "daf63ba48d90534453cb9b08a0f841378ad7e4ddaca8864856ea6f129f03f057",
+        "correctAnswerIdAtReview": "b-fallback-227-a1",
+        "correctAnswerFingerprint": "245c8b8e0f83c79f549f4ecf476289587a7f687a888be2fb477148974b27cf63",
+        "imageFingerprint": "3c25cf001a11d1922384f9adab04dc0e202aefc98c8c2ab0856305f7a2cc75bd"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "horizontal-role",
+            "textPath": "textRu",
+            "textFingerprint": "cb95976e3d6c2354a9f7f82a2e9c4b2a8a0cbaee799636ef8978a3e887959869"
+          },
+          "pageContentFingerprint": "40d2d16278194e8c09f646e49acdb751420746c55b2aa48c5ac14312930711a9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Да, потому что она организует движение по полосам и показывает, что обгон другого автомобиля разрешён.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-228",
+      "canonicalEvidence": {
+        "questionFingerprint": "bc967e594ebf7801731abe5ccc2f7da074bc2b3b403801c19fdee3188edad8d8",
+        "translationFingerprint": "f13f8e4a2833696eeeaa37d3af808c4408b0298eb50557eee8bd387d064b8df1",
+        "correctAnswerIdAtReview": "b-fallback-228-a3",
+        "correctAnswerFingerprint": "c33b5a6cbd081029c33240fe2ccf45095ba6d10b875bd21adf2193a9277ae1da",
+        "imageFingerprint": "f7b31e2301e955873d272916e8e80e48e996e9e2b661ddc19e46b884f9d38acb"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "parking-and-ecobici",
+            "childId": "bike-parking",
+            "textPath": "cards.0.details.0.textRu",
+            "textFingerprint": "aad168796ea2697fed7081884464c27a2041670af7301efdcb0a64f111defb65"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Да, парковки обязаны выделять место для велосипедов.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-229",
+      "canonicalEvidence": {
+        "questionFingerprint": "a0f428a4065c8fb0d04b26a031f9ad8aeacb43c81a7fa24f3ce11ed5b0531e03",
+        "translationFingerprint": "c317fbd6cc2d8fb3773710dbbddb78bfdaa43629b6dc8ef2058462b87de62227",
+        "correctAnswerIdAtReview": "b-fallback-229-a1",
+        "correctAnswerFingerprint": "7e4eaff44120b0b170e47bcedc655f80c9023b7d375acdb33cc59f54e3271ef1",
+        "imageFingerprint": "83c4a5b28eae106a812bca90f19ead62b31c21b42e0a19bdb4c9dbb20ab01e46"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-distractions",
+          "routeHash": "#manual-section-ch4-distractions",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "eating-drinking-mate-smoking",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "6a360cb78b597006b2faf24825296264c5becba10b30e3e9e650fe4bbb4410da"
+          },
+          "pageContentFingerprint": "5c62557ade667447357ccbf6be7477ad51d64f68e064338cf338586763cc5f44",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Варианты A, B и C.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-230",
+      "canonicalEvidence": {
+        "questionFingerprint": "04bfdf6e2fa4600cbbcd519dddaf1d6dbd3f2a8ab94e1f77e92c7bb537c82dce",
+        "translationFingerprint": "c73753a125fd1496c41b9ebd5278814ce1e1ba7a9c4772042fad100f11016750",
+        "correctAnswerIdAtReview": "b-fallback-230-a2",
+        "correctAnswerFingerprint": "6b91e8e3485bc7d60a43ae1cb4e8726aa9dc2f17bae9e3aae2e814fe02a6c128",
+        "imageFingerprint": "eacfe0c825c00a17972ed3744feb3a8a2ba41495f16a12c72caf8418c19904aa"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "school-and-wayfinding",
+            "childId": "sube-y-baja",
+            "textPath": "cards.2.details.0.textRu",
+            "textFingerprint": "0ed93ade10e25d28c9e79fca985a3307d70b20cfc13a60d5bdbb08c86ffaa5ee"
+          },
+          "pageContentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Полоса остановки для посадки и высадки школьников.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-231",
+      "canonicalEvidence": {
+        "questionFingerprint": "a8b2e09fa0c1d3a4b5ca695d249abdf86167b97860dcb79f7d5fdf83e468aac4",
+        "translationFingerprint": "e10b5403ef2c6aa1a94b6ed22aa5f4c2a7a5d55cc570819951d4e62ba1c0248c",
+        "correctAnswerIdAtReview": "b-fallback-231-a1",
+        "correctAnswerFingerprint": "1c03bc6d598297867424c318276badce41b1093e41756c090a764fdb2f49b979",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "cabin-passive-safety",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "a32b11ea3d488b97021397cc9c8db7083743fdec022829da5765bd7f327a622d"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-232",
+      "canonicalEvidence": {
+        "questionFingerprint": "a0a02f401ee9f8f252b13e4a9db3dce57fcba958ce6197bec4b78e4b0b3da4be",
+        "translationFingerprint": "3425f2ee0e104b4087b00adfd2aee0c914627ddc912f6183ad507108caf96571",
+        "correctAnswerIdAtReview": "b-fallback-232-a3",
+        "correctAnswerFingerprint": "cdaf25557ff6167820f53b65ccd2ec98452092710ad2a12a0b71db07fd1673e9",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "detention-method",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "d58961a03f7624e3d9d517a391aef65e4636e8d7d67c2c2db3ceaea05678468a"
+          },
+          "pageContentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Аварийными огнями.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-233",
+      "canonicalEvidence": {
+        "questionFingerprint": "bf859408817f4b7e72c5bc12cc64e1156d7761c05123dd5a6be9c5e5698511f4",
+        "translationFingerprint": "57a9f70e665369b8db403653b01c6ad4c7bb981db63e23fdf48779f0920290d9",
+        "correctAnswerIdAtReview": "b-fallback-233-a3",
+        "correctAnswerFingerprint": "45a2f94b59061f01d994b8852adccef26cb200f5a7be08bb62bd9f2d850ca523",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-priority-of-rules",
+          "routeHash": "#manual-section-ch3-priority-of-rules",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "priority-order",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "9ab8c7e6b4b63031b0510d0195a9a11cec9994d9ed9714c43f6dea5be7521d19"
+          },
+          "pageContentFingerprint": "3c5cc7cec1c5418d078c4d6437df0283803f282460aadda78c00a3149df406a8",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Она равна минимальной скорости, установленной для соответствующего типа дороги.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-234",
+      "canonicalEvidence": {
+        "questionFingerprint": "f34c3922ad12a12a51656f1a7967434df3fae3a2a327896e93a84a1508c032b1",
+        "translationFingerprint": "f71ae2bc658eb4a80f8dca8684bb08d191004bf951ac5ed3746cc667dbefad4e",
+        "correctAnswerIdAtReview": "b-fallback-234-a2",
+        "correctAnswerFingerprint": "2ebfc1e6d7d483d9400d6aa392ca8a1e30f4795dafe52e29a28c2745f6395f3e",
+        "imageFingerprint": "046a3bac91a275c55a725e2a809c058fa35b85e0a50b9c6ac121763e832f3abe"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "driver-duties-list",
+            "itemIndex": 3,
+            "textPath": "itemsRu",
+            "textFingerprint": "53d9331f64ef57925f10c04e24735c6fd0880e03c9666c6ef3dc050286b86aa6"
+          },
+          "pageContentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Затормозить и дождаться, пока пешеходка закончит переход, даже если автомобиль временно помешает движению.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-235",
+      "canonicalEvidence": {
+        "questionFingerprint": "ac213c50e4d4c982576533223c42f3c439b8a8f840169db7d1b5ae608fbb03f1",
+        "translationFingerprint": "f2a2a8f7e8a1457f695c504ac4f9c90a4007c6dcef5339b9a33b0d38ae60ba4f",
+        "correctAnswerIdAtReview": "b-fallback-235-a3",
+        "correctAnswerFingerprint": "dd517904a1696d19fcd5efd709ad87e9cd5467e4f73dd71a709da48721b5e3bc",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-incident-obligations",
+          "routeHash": "#manual-section-ch2-incident-obligations",
+          "placementBasis": "owner-approved-thematic-fallback",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "incident-duty-core",
+            "textPath": "textRu",
+            "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
+          },
+          "pageContentFingerprint": "a1ad6edd1b784b2004e01c308c7e208addbf66237e52dc81202841e30f6745fa",
+          "thematicBasisRu": "Якорь описывает обязательные действия после дорожного инцидента, включая выполнение необходимых сообщений; это наиболее близкий существующий содержательный контекст для вопроса об уведомлении страховщика после инцидента, хотя срок 72 часа в тексте страницы отсутствует.",
+          "fallbackEvidence": {
+            "auditId": "F038-IA-001",
+            "questionId": "b-fallback-235",
+            "ownerDecisionDate": "2026-06-23",
+            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
+            "auditConclusionRu": "В learner-visible тексте Руководства нет срока 72 часа или эквивалентного трёхдневного срока уведомления страховщика.",
+            "searchedConcepts": [
+              "72 horas",
+              "72 часа",
+              "tres días",
+              "3 días",
+              "уведомление страховщика"
+            ],
+            "candidatesReviewed": [
+              {
+                "pageId": "ch2-required-documents",
+                "anchor": "manual-list-item / insurance-vtv-rva / itemsRu",
+                "rejectionRu": "Страница объясняет назначение и подтверждение страховки, но не действие водителя после инцидента."
+              },
+              {
+                "pageId": "ch2-legal-responsibility",
+                "anchor": "manual-list-item / civil-criminal-responsibility / itemsRu",
+                "rejectionRu": "Страница описывает ответственность и возмещение, но не процедуру уведомления страховщика."
+              }
+            ],
+            "selectionRationaleRu": "Выбранный якорь прямо относится к обязательным действиям и сообщениям после дорожного инцидента и тематически ближе страниц о страховом документе и юридической ответственности."
+          },
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-236",
+      "canonicalEvidence": {
+        "questionFingerprint": "39a247bc6b17f261c165b5de8e6086b3e712e26a383517806fb419a433842253",
+        "translationFingerprint": "d8fce1e5856f8932551f3f851c76441ebb30b1cb6ac064d2a3bb4c6f9cd96700",
+        "correctAnswerIdAtReview": "b-fallback-236-a3",
+        "correctAnswerFingerprint": "ce1d7e1cc1d9f13809eb512f4bc5fb6b5f81e77852d5bcb283314b6bde74c86d",
+        "imageFingerprint": "92526baf67c7b32c6f8ae544d8db271b0978bbd02ea2857087f42cdfd170728f"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-table-cell",
+            "blockId": "caba-avenue-exception-speed-table",
+            "rowId": "exception-40-corrientes",
+            "cellIndex": 2,
+            "textPath": "cellsRu",
+            "textFingerprint": "59268e4e548aacf5a6f2a0e3cf4e83984169d24689e7b9adb1cc7548321e9e6f"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «60 км/ч.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-237",
+      "canonicalEvidence": {
+        "questionFingerprint": "d7dd921c08530c2a5a00c60ce254edb6910e48cc159895e755a71fc18d31f0ca",
+        "translationFingerprint": "b7d494aaf263409b90fbd61c4f47bf0248e710e2e869a3107d52eab2951dc497",
+        "correctAnswerIdAtReview": "b-fallback-237-a1",
+        "correctAnswerFingerprint": "97ae14d3ae7294ad94931f19abf1a50f1fe417037cf85ed4cfe294f7d5fd2e13",
+        "imageFingerprint": "969b0102f6509b53ea28155707a8e0074ebd6ded544377f02f207130e2d70e69"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app2-safe-driving",
+          "routeHash": "#manual-section-app2-safe-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "slopes-curves",
+            "textPath": "textRu",
+            "textFingerprint": "70cfc743e0c76214573be39bbbf216d54973c8aa2e2da00dc3da938e42f46f09"
+          },
+          "pageContentFingerprint": "78636de9451ec06cfbe4d99f32b7e460ddc118262f014dfe8740b5e8d7772bcb",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-238",
+      "canonicalEvidence": {
+        "questionFingerprint": "6d536662219e7fb0cac146cc2f981fd8f3cb315e589d42e80065eee258bf0d50",
+        "translationFingerprint": "0128d36ba2ebb396016bd7087b211ff0fe5c54a0870bd543541dcfa6299053fe",
+        "correctAnswerIdAtReview": "b-fallback-238-a1",
+        "correctAnswerFingerprint": "0fa21ccc96e0822cebda397b75de931f2624d36b7c986fa97d33588030768db5",
+        "imageFingerprint": "625ec54f3d3a196364c00b32ae8eac7532d2b9037b21cd0c9948f71b9cd8fbcc"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p188-025-proximidad-de-semaforo-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "7e4cacfd8444b76577c1452d0b703fb481ef5e83cba259f73beaecae1606225e"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Приближение к разводному, поворотному или плавучему мосту.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-239",
+      "canonicalEvidence": {
+        "questionFingerprint": "1699b99421e2d5b42fb8eac42399a5727e6ff8c490681f6f8ec5f7217c761164",
+        "translationFingerprint": "4ff2e4a4de98365f13b7409095efee3d0b64695fea5aaf1a8d1ecaa0f22628de",
+        "correctAnswerIdAtReview": "b-fallback-239-a1",
+        "correctAnswerFingerprint": "820e2b86a162841a28211193777a19dde1bfce9059cfb69f50892145c1265bd8",
+        "imageFingerprint": "7d38ed18a866bd2eb981d0703696cdcef322c92571d802c97e7ac5f72e3fdf5d"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-other-required-safety-elements",
+          "routeHash": "#manual-section-app1-other-required-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "mandatory-equipment-source-visuals",
+            "childId": "app1-chaleco-reflectivo-source-card",
+            "textPath": "cards.1.bodyRu",
+            "textFingerprint": "20ab7e83ace34b2a6f63abfb27e5364721a43e32d5fb927adfd6a50ec5e0e992"
+          },
+          "pageContentFingerprint": "c19fb73d75658d19622e609bf39155da5aada6a139a4d957dbcc6539b20019e9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «С ближайшего возвышения у дороги могут падать камни или части породы на проезжую часть.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-240",
+      "canonicalEvidence": {
+        "questionFingerprint": "08721a269c3bfd18368784534ff1928443d181e7ba001df221375fc8546ff85c",
+        "translationFingerprint": "1125f6726b93ebd7c18b981cb5a6f505b81d725b7b12a98fbd6f7d285c9bf7be",
+        "correctAnswerIdAtReview": "b-fallback-240-a1",
+        "correctAnswerFingerprint": "0a8d868079178f605a5fc1fe42ff3bce2658473369c08959ad5d01980e41858d",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "precautionary-speed",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "d25cfffaf7a6e57c91a8bb173c6db605f570447b6e912c5f83acdc238d9ce347"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Поле зрения водителя, восприятие окружения, световую эффективность автомобиля и сцепление шин.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-241",
+      "canonicalEvidence": {
+        "questionFingerprint": "73fd115f67b6bcd68c049aa1c1f519c02553424ef404e0b133710b1783ff7a7b",
+        "translationFingerprint": "96669160a60de3588c6441fd05e9e3ae3a414fad266e7984154157ff893cfcb2",
+        "correctAnswerIdAtReview": "b-fallback-241-a3",
+        "correctAnswerFingerprint": "18421c627bf1cf60e24badeeb284e50eb7d0ec8896523dd2137254f3aeca0ac1",
+        "imageFingerprint": "4ce4c66afe83fe9cd5a2d0ea8289663cb78472f8efe9cae7bc5c4939ed565bd2"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "tire-blowout",
+            "textPath": "textRu",
+            "textFingerprint": "3b24a85f8e8a93cb6e2c6a92900f6d14ce8747fb6020b9523742c88c2e8d9106"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Плавно снизить скорость и крепко держать руль.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-242",
+      "canonicalEvidence": {
+        "questionFingerprint": "ede811c542981f912b1997af1a90d5430fc87d1db225662270fae845bf8eb095",
+        "translationFingerprint": "7bd0e64ca3a325d5b40d9cf1335eb1c401e47fb4a09215c5e3ed729074ba2555",
+        "correctAnswerIdAtReview": "b-fallback-242-a1",
+        "correctAnswerFingerprint": "37349b31844d5433ed6ee20c4437f92294402fd2735a4bb64b545901b425de37",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app3-safe-driving",
+          "routeHash": "#manual-section-app3-safe-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "stopping-loading-and-speed",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "ad0aa9ba03b613e11a05f6ca74e5ddb36af11cee15b15065a78abeb0df5ca59b"
+          },
+          "pageContentFingerprint": "d119a83d7fd8d469eb0c1c37e7a7a10faba2428920e0466453ecd69d1a2cc449",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-243",
+      "canonicalEvidence": {
+        "questionFingerprint": "38d351656bf9d9fa5ff03d6b6688ba61849cd59e617d243e64f9874366384d3f",
+        "translationFingerprint": "96fb04354eab2cd741eadcbe8bf6f511f777c0a9b5341604e1549c7fc2218246",
+        "correctAnswerIdAtReview": "b-fallback-243-a2",
+        "correctAnswerFingerprint": "666e60a1ebf92cc7a8d510b6e4c991316e7bee21b4eb0618e6f5f94954f19584",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-scoring",
+          "routeHash": "#manual-section-ch2-scoring",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "scoring-definition",
+            "textPath": "textRu",
+            "textFingerprint": "d3d6d3e1eb7f5f0b1d817087c123483971cdd5a1efb835e1dc6a4f18afb80678"
+          },
+          "pageContentFingerprint": "ac291eb1c1a42608d9a054f01c697ae86175349d30cc7fd3cd6ff40e427a7864",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «20 баллов.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-244",
+      "canonicalEvidence": {
+        "questionFingerprint": "843b7a0e06c36fa8e901f6ecef1c868107f71ab34e3c1582bd6efca0d659b8b0",
+        "translationFingerprint": "c24dd7eec87a7d91eeb241f89c02a0041e1c9a932b9300677d196ae6e52a7c9a",
+        "correctAnswerIdAtReview": "b-fallback-244-a3",
+        "correctAnswerFingerprint": "816179bd4271e286484234077deaba70962a7d9401b523577b557b5897334446",
+        "imageFingerprint": "54f1cdde6d9fdf874425526158ed47d356f6c9f4e619f83552ea70b2a909969c"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p189-031-direcciones-permitidas-ambas-direcciones",
+            "textPath": "russianTranslation",
+            "textFingerprint": "d87c80954e18dd877422d85ba23aa641323440b55aed8ae5e76fc6b14562f13d"
+          },
+          "pageContentFingerprint": "702c3f021d79fffaa5d15c07ccfb88cbec534c769798882e23af29c4b0334e34",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оба ответа, A и B, неверны.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-245",
+      "canonicalEvidence": {
+        "questionFingerprint": "0013cbc71cc9be0c8f715c9827386ea8f05b483f7c11341d2481446557e81341",
+        "translationFingerprint": "ec577192c13e18e7daab97e7571c9d34676d1314b9642d0a57560711fdf4505a",
+        "correctAnswerIdAtReview": "b-fallback-245-a3",
+        "correctAnswerFingerprint": "8003c3de7e2b37fe731fbc85ad6bf4be0a3e38817502d0e6eefa22a23523a90b",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-sleep-fatigue",
+          "routeHash": "#manual-section-ch4-sleep-fatigue",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "few-hours-sleep-effects",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "a70cbefba444681e32f210968209ba0cd2632746fdd4cc88f56a5c10af80a0a9"
+          },
+          "pageContentFingerprint": "357ba00c956a73eb68e118611f088f486c3734cc2bcee05ffc77f969a7ae514f",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оба ответа, A и B, правильные.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-246",
+      "canonicalEvidence": {
+        "questionFingerprint": "f1ae45f99a5e0b9cdedbe46259c36eff9d0a485c8bf2ae2a426ab2918d561623",
+        "translationFingerprint": "8e2630ffed94a8f152d5b363f8204bb78e797e3e2799a176976130e1f88b0ade",
+        "correctAnswerIdAtReview": "b-fallback-246-a2",
+        "correctAnswerFingerprint": "581c6cfd695309338f43c4679ea5ba46a4730d5dc5db988f20da4f3de591cd83",
+        "imageFingerprint": "e025d5667248efb2d4c5e21038dbaffe5b27f15f4285d2fd972670e0f66bfa32"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-traffic-lights",
+          "routeHash": "#manual-section-app4-signs-traffic-lights",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "traffic-lights-groups",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "64ce64d34be3c2dfe080cb074120314cae3052399d0be6ddd0b322fa33eda976"
+          },
+          "pageContentFingerprint": "add8e2bdde958aa6cf8e2d09f18fcafee0ffb265407f37db7b9df84a6c85952e",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Остановиться и ждать указания инспектора, чтобы продолжить движение.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-247",
+      "canonicalEvidence": {
+        "questionFingerprint": "7650660c03501f60165fd5618494a3ec6753a2234926d10442f70ade05a5d5c4",
+        "translationFingerprint": "ff409d9926ad76a2ed86daa1d7e30835069ccebe89600692bccccca68b322a0b",
+        "correctAnswerIdAtReview": "b-fallback-247-a1",
+        "correctAnswerFingerprint": "e44a6e84ce0721673598c416aed4c9c00be82837be29ee69d8e04c8e2d9e983e",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-lights",
+          "routeHash": "#manual-section-ch3-lights",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "lights-purpose",
+            "textPath": "textRu",
+            "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
+          },
+          "pageContentFingerprint": "ddace880e09b0a36ec26b633705c06467b29c05cfd4f8cee0e254a4e259942dd",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-248",
+      "canonicalEvidence": {
+        "questionFingerprint": "9d2f1396c73087da4e1aa84e9a29c2793e142785262e16e4db2d7d36a3c0ee59",
+        "translationFingerprint": "14f0f2313d3815a523db3c543f71b00584d302e9da1ecb354d22910c1db3fd7e",
+        "correctAnswerIdAtReview": "b-fallback-248-a1",
+        "correctAnswerFingerprint": "1890d92d43b4031edd2c7c0dda017f6d1aa92cde38e94a83391bbc0210f952ca",
+        "imageFingerprint": "16b1bc97d1fa6e0c30997e7c937a2d0a542a569de1054544cb135eddf8233026"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "slopes-loading-disability",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "23a9115934b07525ea8eea8dfc3d124ba6d68b48a855ed44ce128033a6c686b0"
+          },
+          "pageContentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Повернуть колёса к бордюру и оставить заднюю передачу либо режим стоянки у автоматической коробки.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-249",
+      "canonicalEvidence": {
+        "questionFingerprint": "afdf48a3b6efddbd28cb0c13e6359b4d0289218ff5b12d0a63b06e1c846ae367",
+        "translationFingerprint": "376781e722eacd8de6de0ef20ce875fccf1337ed2320d65d74501dcd9461eccd",
+        "correctAnswerIdAtReview": "b-fallback-249-a3",
+        "correctAnswerFingerprint": "b337d40902896881a0c1d93eff2c384953dcf78a3cade5ea78b41b18a12dcdc3",
+        "imageFingerprint": "a4c7c5dc206a3d1da6e4f8ecfac5ed7db7fd49e592ab3ec451ec3c2b4b393dfc"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "correct-parking-forms",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "70a55da63d143116e967b09c3a34929148612724de0775bdca6f9333880cbbb3"
+          },
+          "pageContentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что автомобиль должен стоять дальше от бордюра, примерно на 20 сантиметров.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-250",
+      "canonicalEvidence": {
+        "questionFingerprint": "daa4617fe7c13726d80be6d8fa7839ee8cdb8e9195d0325d9b58587c4bc70969",
+        "translationFingerprint": "4f47b8cafa391559e436207f0270589c41c7ddd748203929e81539e9c926157d",
+        "correctAnswerIdAtReview": "b-fallback-250-a3",
+        "correctAnswerFingerprint": "7f7af2112646494a8733c94e07e8b029a97f72fe722550b24b870f504f34cfb3",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p189-031-direcciones-permitidas-ambas-direcciones",
+            "textPath": "russianTranslation",
+            "textFingerprint": "d87c80954e18dd877422d85ba23aa641323440b55aed8ae5e76fc6b14562f13d"
+          },
+          "pageContentFingerprint": "702c3f021d79fffaa5d15c07ccfb88cbec534c769798882e23af29c4b0334e34",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оба ответа, A и B, правильные.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-251",
+      "canonicalEvidence": {
+        "questionFingerprint": "95c2362138ff573913897361e6f16c1414c3ffe2d153443cf87127caf6f97b0c",
+        "translationFingerprint": "fb80d185d8647920388fa38e7bd5ed87e9cfa6b281029ed4eedc3fc198499bb6",
+        "correctAnswerIdAtReview": "b-fallback-251-a1",
+        "correctAnswerFingerprint": "00c64cffcfc0d3031a8131a895bc38a5df9b85221b27fafd8fcd116e4877a5d5",
+        "imageFingerprint": "e4f40872d59bf15817e29b22d9c9494318bbf5ccbb92dc2a2f7b8baa3af84de2"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-adverse-conditions",
+          "routeHash": "#manual-section-ch3-adverse-conditions",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "rain",
+            "itemIndex": 3,
+            "textPath": "itemsRu",
+            "textFingerprint": "7791bf810dde5a827c15144101caef0e57df25ddcf0f0b627910ae1283bf431d"
+          },
+          "pageContentFingerprint": "867cf6f7f4b590d81e658cb4a5f8444273efe0f4d6f28f940157b69e9dfb0f19",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Аквапланирование.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-252",
+      "canonicalEvidence": {
+        "questionFingerprint": "352068e8855cba4603a57dbc719358f507f6e1943e311d3ffa2dfb559c116247",
+        "translationFingerprint": "bb23601fbf1b545a9b170230ed8c177830310149b4ea1e208938295a9d0d6838",
+        "correctAnswerIdAtReview": "b-fallback-252-a1",
+        "correctAnswerFingerprint": "17bbe06102785cf34208b23a08a3f4a464879163a7d49405ba7d565b57162247",
+        "imageFingerprint": "4f43156d7678b77e621c591bf62ad1c7ed06fc836d7732b3bc34493416858340"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "traffic-rules-signs",
+            "childId": "traffic-rules-signs",
+            "textPath": "noticeItemsRu.2",
+            "textFingerprint": "5616d9b7833888d83185748a72d3038bc8ffa540cbe3220800a3086a03d3b9d8"
+          },
+          "pageContentFingerprint": "415fdb574c9b33eeeaaaf05411b9ef64a773d9c598638d73e745dd80811a57d9",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «30 км/ч.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-253",
+      "canonicalEvidence": {
+        "questionFingerprint": "931b4f10b669b86045c25cd7ebcdab0a93cf44d01ee0ec6c7a34c8ca4e6cbf14",
+        "translationFingerprint": "123ed0c4d0f26abfa9ae80bef4f73743d3a60bb2ed38f1f10f3cad93317fc3de",
+        "correctAnswerIdAtReview": "b-fallback-253-a3",
+        "correctAnswerFingerprint": "e7f0d66bc9ac3a39ef7632b6322d45e446d83ed0bcd6876d34752ba1b0d5c909",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-incident-obligations",
+          "routeHash": "#manual-section-ch2-incident-obligations",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "incident-duty-core",
+            "textPath": "textRu",
+            "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
+          },
+          "pageContentFingerprint": "a1ad6edd1b784b2004e01c308c7e208addbf66237e52dc81202841e30f6745fa",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оба ответа, A и B, правильные.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-254",
+      "canonicalEvidence": {
+        "questionFingerprint": "aaf8b715fa32c6fa5a0760a3f586fb8db4443b25fd3a36be042593ae41b89062",
+        "translationFingerprint": "34ff9293cd9d2b833bad126d5ba215191e86969f5af6b4f309a93231a4744c90",
+        "correctAnswerIdAtReview": "b-fallback-254-a1",
+        "correctAnswerFingerprint": "cfd9c290860893afe05a2b28ef5ecd9a05db251d7d8f2662869b6021723d8378",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "outside-caba-minimums",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "999eee01f4a4e5444fe78512b41ac2a00e037ad2df76c1940b214b3666af34fc"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «40 км/ч.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-255",
+      "canonicalEvidence": {
+        "questionFingerprint": "b7ede22af226181a49122b94cf551a63a09b0081a5099c694e55e890b98031a6",
+        "translationFingerprint": "fca50420da27d8c58d4b7015bc8ab373de1a8fc2a2241e6b5a5aaf4e29341616",
+        "correctAnswerIdAtReview": "b-fallback-255-a1",
+        "correctAnswerFingerprint": "a857cfcbcc6adb2c4d64022aa4ac134908c783eb528a84e6067c759831cbe795",
+        "imageFingerprint": "a3de9c0665cbfb28307d80e3fbf7bb7dd52ba76c4a0f7521b87bbbf2972b0163"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app3-safe-driving",
+          "routeHash": "#manual-section-app3-safe-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "heavy-traffic-network",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "654368b23fed61ca326f0bc8be3cddf17230836c94609381fba2e5d19835fc28"
+          },
+          "pageContentFingerprint": "d119a83d7fd8d469eb0c1c37e7a7a10faba2428920e0466453ecd69d1a2cc449",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «До 4 секунд.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-256",
+      "canonicalEvidence": {
+        "questionFingerprint": "42a0ef3972dd99a30993dca19d3e7ea9bcd1a0d4bea750283cb1fb2f4b948c8d",
+        "translationFingerprint": "df3548078920e97fd1184fa368bb26d5a3a4969e360bd89ba44c2acb25a9dc36",
+        "correctAnswerIdAtReview": "b-fallback-256-a2",
+        "correctAnswerFingerprint": "9768eb1536f84535e27df923bc48ed2c3f720170235bd6013793929695b795c2",
+        "imageFingerprint": "fa96e7bce2f3514a024c5f7cd133d71f07adf904dd54a2e5f44a3de750ac8ca3"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "pedestrian-crossing-rules",
+            "textPath": "titleRu",
+            "textFingerprint": "a7518d702e3f4730e557613f90e9b7be6bfc4acfedcc0c21605fd8cef1df87aa"
+          },
+          "pageContentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Вариант B.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-257",
+      "canonicalEvidence": {
+        "questionFingerprint": "596a8c7f6ad2762ad05d27df0c671b774ca385b96839560e952dee4470d44bac",
+        "translationFingerprint": "305d67fb82f8d346f015a8c7827d6858833fed4a2d6f52ccfb4a7d4f1931e245",
+        "correctAnswerIdAtReview": "b-fallback-257-a1",
+        "correctAnswerFingerprint": "419a392787a9a09dfbdfb6c004d2bc25666085750ed4dabe8c872cc04e86b3e0",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "health-and-aptitude",
+            "textPath": "textRu",
+            "textFingerprint": "05d788459193ee3fa84cdf11fb915031601250e107688f3fa8e37bfd3694a349"
+          },
+          "pageContentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Да.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-258",
+      "canonicalEvidence": {
+        "questionFingerprint": "2794d88f663181369c2ed479d9d0d4e915782073ee183d291ed4ed7f8353f4b2",
+        "translationFingerprint": "24226a8d0b284fe5035af2577d55090e3b2ae06970a23622f6d20aab8cea9d8e",
+        "correctAnswerIdAtReview": "b-fallback-258-a1",
+        "correctAnswerFingerprint": "1a6264de66d76b057f84f9848b57788dd4ff1f5c2b8a74f61b5e2c6b602bdd65",
+        "imageFingerprint": "2e12a9304e5c0c975ba3be29a60d5b7881e808c6e24d2e1a8aa74a3830194bc0"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch5-anticipatory-efficient-driving",
+          "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "preventive-driving",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "cc5b62436fb6c1873b15986100a9e744a82a22b6f16d269b3e5afc271a33cbb2"
+          },
+          "pageContentFingerprint": "8145074323d493ee979750bb515734b5cf33e28bf0062d323826eb79792a618b",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-259",
+      "canonicalEvidence": {
+        "questionFingerprint": "bae4c864ef1f965fcf657b2212bd4c4c2585cb4e6e75e5474d0a05d028269121",
+        "translationFingerprint": "b48207649019e73a6dcb8f7264d0b63444f1adedfd6bf37ea5a77521d83ab90f",
+        "correctAnswerIdAtReview": "b-fallback-259-a3",
+        "correctAnswerFingerprint": "fde0f31c202cd01f1fb5c53a6ada9a16579a12cfdb233034dc06f4d5374c0d0b",
+        "imageFingerprint": "f4dacac9a916b8cea72a4ff50bf74d9c71d776f55735d163ea59603e17004332"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch5-anticipatory-efficient-driving",
+          "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "efficient-driving-measures",
+            "itemIndex": 9,
+            "textPath": "itemsRu",
+            "textFingerprint": "0c1e0d9c5f17eb2888adc7c1761b893645d5a23dcc9a348a675b6eb2471be09e"
+          },
+          "pageContentFingerprint": "8145074323d493ee979750bb515734b5cf33e28bf0062d323826eb79792a618b",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «В марте.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-260",
+      "canonicalEvidence": {
+        "questionFingerprint": "7c4ba52ec32da2ba82ef3047a78791eafc49f711682bf4b991569a68b3134ac9",
+        "translationFingerprint": "77911ffd7cb97106bb461d474aad8fad9303a62046f091b8e4708c089d32e437",
+        "correctAnswerIdAtReview": "b-fallback-260-a1",
+        "correctAnswerFingerprint": "d39de3ee1ad8b4cfe54efb11c3d20306ba160675fb9c5177a34c14908ea9fae1",
+        "imageFingerprint": "e74489923b1f0011cfc1fb948c83496cba40c7d7b6e1049cc3f1100bde82f857"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "regulatory-anexo-panels",
+            "childId": "app4-regulatory-anexo-panel-02-source-card",
+            "textPath": "cards.1.bodyRu",
+            "textFingerprint": "32db88a7129ae80837e093f16365602f68cc53454eb69cd9d4dcb78035d8fb13"
+          },
+          "pageContentFingerprint": "34d1251e36bf508739b186b23ea6eed5f84161bd905c6fbcc9d265a8972eb977",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Наличие театра поблизости.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-261",
+      "canonicalEvidence": {
+        "questionFingerprint": "6a6f3e4cdc0fffab2d1e2dc6756bb597596ed31096e404d3cb87e53807ea44f3",
+        "translationFingerprint": "5df019d0f66ab850485fab52840f914a9beca01cfd567ad37a57656e38658a89",
+        "correctAnswerIdAtReview": "b-fallback-261-a2",
+        "correctAnswerFingerprint": "934d88620fbcc4cba4ab85b9a338024362ffbca6b30deacdcaa259892c1bb321",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "precautionary-speed",
+            "itemIndex": 6,
+            "textPath": "itemsRu",
+            "textFingerprint": "981b9b1fee62e49c83e503122542e5662886217eed035ebe7363589b57ce2f67"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Двигаться по правой стороне проезжей части и сохранять это положение; при необходимости снизить скорость.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-262",
+      "canonicalEvidence": {
+        "questionFingerprint": "10a5b49c929d49d4d246e7b494d383708a91dd0c8cafce402bbba78b8c8419f2",
+        "translationFingerprint": "3db0a6e9d44b552e954f9473cdbff0afea505bac4902ad7f0aee4ae730392564",
+        "correctAnswerIdAtReview": "b-fallback-262-a2",
+        "correctAnswerFingerprint": "9d723b68ca249131ae8efd9ff0eea59f2fc0fef7c433b986064fdd7832646e2d",
+        "imageFingerprint": "97052a9e85c2e7a0d890923a086a6ef3ba64904803127b99f0040d34967e737c"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p187-026-encrucijada-cruce",
+            "textPath": "russianTranslation",
+            "textFingerprint": "f868432d851fd80e67437045227a32fc59ff8d93aca9af8ef861a7dbd9030caf"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Перекрёсток с разветвлением.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-263",
+      "canonicalEvidence": {
+        "questionFingerprint": "bd32a267e4c09f761be0baf8f582d45340c6beacf51a3f3746b44d015462d015",
+        "translationFingerprint": "43f2d3ce5320df9f9d21ee115fb790e6bfbe02e3cab0a1aede7c14cf8a2ac468",
+        "correctAnswerIdAtReview": "b-fallback-263-a3",
+        "correctAnswerFingerprint": "d42aa94bf456ee906183fed63eefc8f367e6812609a78223d540a4c670142533",
+        "imageFingerprint": "10b73b364441c79d58fe51a1d87d74511a0eb8a672131af2429af3eae5c2977c"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch2-incident-obligations",
+          "routeHash": "#manual-section-ch2-incident-obligations",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "incident-first-actions",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "34994e5df831f5779d2341936ee02846065af9cd385bff98102e7984ec4dc6cf"
+          },
+          "pageContentFingerprint": "a1ad6edd1b784b2004e01c308c7e208addbf66237e52dc81202841e30f6745fa",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оставаться в автомобиле с пристёгнутым ремнём, включить аварийную сигнализацию и позвонить в экстренный номер автомагистрали.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-264",
+      "canonicalEvidence": {
+        "questionFingerprint": "b554c9899c97dbb51d0dbea4d8eba694b4f3ff7609cc8c2030b3d73b599706ef",
+        "translationFingerprint": "1b059a6a1b74893a7b3902261b5e9fa29e2de9a4bc7313b4ea5b555ebf3a211e",
+        "correctAnswerIdAtReview": "b-fallback-264-a2",
+        "correctAnswerFingerprint": "b9432cef6be3817a0174c9c77abf99d6d92118ffa754c29190228daab872f373",
+        "imageFingerprint": "e9ef95b79cba474c4a57b324cbbb22e043a31523ad4ba3e0487c557523c424ee"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-priority-of-rules",
+          "routeHash": "#manual-section-ch3-priority-of-rules",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "emergency-vehicles",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "b8350852685c0a8a74d3804f4e22d67c5ecf118dbbc52580f61cf6c1daa91c0b"
+          },
+          "pageContentFingerprint": "3c5cc7cec1c5418d078c4d6437df0283803f282460aadda78c00a3149df406a8",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «У автомобиля B.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-265",
+      "canonicalEvidence": {
+        "questionFingerprint": "550fe6dc5842275c6a93e2558117680b1f8759c621c7ae158d7148a0e57b66b6",
+        "translationFingerprint": "028d6006d0a5a91b199ec16251a8d5907aa606bc4a6743c74026d86bf33f9768",
+        "correctAnswerIdAtReview": "b-fallback-265-a2",
+        "correctAnswerFingerprint": "bddbd1c4fec6b6fb8ead2b133c05d5bf10e5fa248db9a33b3211bf41b11ff69f",
+        "imageFingerprint": "4b9772e70f8c465c07030945391373366ba5794a912c085090e9b79a54d1e544"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-temporary",
+          "routeHash": "#manual-section-app4-signs-temporary",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "temporary-individual-sign-catalog",
+            "entryId": "app4temporary-p193-010-direcciones-permitidas-ambas-direcciones",
+            "textPath": "russianTranslation",
+            "textFingerprint": "028c1c988dffec285c773203cf5327b36d918ecdf8adb0a34f0ca46e36b29087"
+          },
+          "pageContentFingerprint": "56ea6ae54599f4a74e5a5274ff0445cfeaf3caa70e2d8b3b4474fdd62d4c8619",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Разрешённое направление в обе стороны.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-266",
+      "canonicalEvidence": {
+        "questionFingerprint": "0cb672f9699e55c9fc562d43f3dbee1a6f4bc2f2ce9f0ae4beefb1fbec8863c9",
+        "translationFingerprint": "b81165df4d2bf83140a54886f3e6019c2a1a17cad94ddb145abc82cbb2849bab",
+        "correctAnswerIdAtReview": "b-fallback-266-a1",
+        "correctAnswerFingerprint": "38886bf757b17c6b04ffe0b19e1b7d05ca453ddd96066737f07590241cb1a7f1",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "outside-caba-minimums",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "528a6479dc02782931187799a1fb22abe2ff2225b37ecdf241529d298bcdba24"
+          },
+          "pageContentFingerprint": "ff265f1ff94b16b682381311fbad597f17e34c637f77efe44c1e6d50388378d2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-267",
+      "canonicalEvidence": {
+        "questionFingerprint": "9b9205bd4e047aeb095ea7fdd6b867489318d911c562d1dcad28ef4321f96707",
+        "translationFingerprint": "bb1e6f61e6afe3528e332a343a3bff2bae797bf76eb77d694e9ae5c90d8e2fca",
+        "correctAnswerIdAtReview": "b-fallback-267-a2",
+        "correctAnswerFingerprint": "905a68ce783ba7f78c38152e8d95835a205bc7d1a0805e5030c4252b59a8ad3f",
+        "imageFingerprint": "2ac448f2167033835b644efdf6e31cb3fdf2eac5f4fcab71f4c91b180f7b887a"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-card-text",
+            "blockId": "pedestrian-street-types",
+            "childId": "priority-street",
+            "textPath": "cards.0.noteRu",
+            "textFingerprint": "8568695028abd8c6184b4c816b3f375f49cbf0932fe9fee88d08828a6d85908e"
+          },
+          "pageContentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «20 км/ч.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-268",
+      "canonicalEvidence": {
+        "questionFingerprint": "21c4f1e28f3d4712c29699fd31722307f156f9d7f486300d9784787041d981f6",
+        "translationFingerprint": "9d129ea27fc00bf4ea7ce4817c68b4d50ba231961b8660500b2a641f863e957e",
+        "correctAnswerIdAtReview": "b-fallback-268-a3",
+        "correctAnswerFingerprint": "feca3835997c717dfc997f7c0955c53b628980a727c95772536299c445651ce6",
+        "imageFingerprint": "9c0baa60067c15dc7b33aeccdccc196d6a14e3a8b6076a7bd8ce15c91a26f1d8"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app2-highways-hospitals",
+          "routeHash": "#manual-section-app2-highways-hospitals",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "hospital-map-disposition",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "83ca58b8bf451b732ccc66b758714540edfc290be46251e747e6800a96ef4d53"
+          },
+          "pageContentFingerprint": "7e85c22c69d8b8a700111ba194d725ea7e7171a27bd092c088b5d405b00d92c7",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Автомобиль 1 — влево, автомобиль 2 — вправо.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-269",
+      "canonicalEvidence": {
+        "questionFingerprint": "b84624698934a92b2eb7276a90a7751d0c404fa404c6622c0d6599105baaf967",
+        "translationFingerprint": "7f757e609de475f4aa06e8645858ca1926e720f666b93ec386125c8d43d26746",
+        "correctAnswerIdAtReview": "b-fallback-269-a2",
+        "correctAnswerFingerprint": "4726bbbfa87bd72e10e028d99b88c1d72c4be9c0a642ec8f42eaf0606385997f",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-block",
+            "blockId": "why-vehicle-condition-matters",
+            "textPath": "textRu",
+            "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
+          },
+          "pageContentFingerprint": "d7f51fe84fae7ed705c2fe793889f2d2eb902e8e63ec84b2a43282e9d06108e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «То, которое указано в руководстве пользователя этого автомобиля.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-270",
+      "canonicalEvidence": {
+        "questionFingerprint": "abcc7e4ffa3d272bf77c3ca12cc05beba3a2bac55db30934ba432895412e787e",
+        "translationFingerprint": "b230291d177ae12696c9ed1c88c13a7e4c4fa756e213280e35392d354a73ab54",
+        "correctAnswerIdAtReview": "b-fallback-270-a3",
+        "correctAnswerFingerprint": "cf7e7846ecb43bac53017d655af71639ab7396e223db23b3914de552cabb44cc",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "positive-and-refusal-procedure",
+            "itemIndex": 3,
+            "textPath": "itemsRu",
+            "textFingerprint": "19d680a82a5aac43255603338946ff08083d6c99f67d19fb04afb45769296871"
+          },
+          "pageContentFingerprint": "3306e64440d3548647cbe32a30fa085ff24ffc893440ad3ce091595020a5ea6d",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Оба ответа, A и B, правильные.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-271",
+      "canonicalEvidence": {
+        "questionFingerprint": "97fbc46bc59b8bd693a02c51f1e90983a983197c6e1bb331df06dfa8cd667106",
+        "translationFingerprint": "57fc59f97a1d60b88d35c94c2130e84c25e9b2666b6170f732c06b442d82a14e",
+        "correctAnswerIdAtReview": "b-fallback-271-a3",
+        "correctAnswerFingerprint": "ec3c8e834d56ab6347d7dac78ed5584220fa8d9bc48233a276243df0168da40b",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "incorrect-and-maneuver",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "b43f148a4d25909c932a76a6b2997297924ebde23ec8ce49fe264014175641f2"
+          },
+          "pageContentFingerprint": "4a9bb31257116b3f3813c17de72af4aa9ffa3ace4935d440a1cc8b471cad34e2",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Минимально необходимое расстояние, если это манёвр парковки.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-272",
+      "canonicalEvidence": {
+        "questionFingerprint": "1e8c96fff6fa528d1b3660db4168123e0da42399690ab0701b82e6d7e2fed2b4",
+        "translationFingerprint": "d713c6889066c61f1c0d8ef11b81c8de732bb1befcf8790dc1729e455ba6f8c3",
+        "correctAnswerIdAtReview": "b-fallback-272-a2",
+        "correctAnswerFingerprint": "29107635736805503e06aa60e21f6906d9545d2e8a0beedd39cbac93a7182eee",
+        "imageFingerprint": "2fc5a17e264a6d120e3287f36995af624e7e1b299127d4e9b125130c48f44039"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "driver-duties-list",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "d708d9b18ce61e8afb7a1ccac977f896d96909213d9c6b720299ebf96518848f"
+          },
+          "pageContentFingerprint": "a61abf4867b9a25be74c685ee93f029a27ef280e594fe7e0df37b59548101234",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Нет, потому что пешеходы ещё переходят с одной стороны дороги на другую.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-273",
+      "canonicalEvidence": {
+        "questionFingerprint": "5baa769f1e6aad2c8a8d046007e5d1d11c5b41efd2223214ba4159831d593d51",
+        "translationFingerprint": "b7e62ef71c04d4452702e1c29849912382b018dcfe2d340fe5c924236ac53b24",
+        "correctAnswerIdAtReview": "b-fallback-273-a2",
+        "correctAnswerFingerprint": "be21ac19fa814f9b3c698151e1413f0097a23bd195b5e900f94505985b79e21d",
+        "imageFingerprint": "7d8cdbb5839d2639254ff116d1d28d91a66387f55fa106ce773afa4b3e6e631f"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p187-022-calzada-dividida-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "8aa29719a3da763baec43efad36b29b5db3283f75d51b0212ecc3c22933ebca7"
+          },
+          "pageContentFingerprint": "e55891fae69b33105392fcba6bff3a71a6f5ec542840f7486fb26c931c51cb35",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Разделённая проезжая часть.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-274",
+      "canonicalEvidence": {
+        "questionFingerprint": "ac590016430e2f5288b89a1d5d57d0bad0c37f27fbd9d54cc315a32ce574b6f3",
+        "translationFingerprint": "aa7fa1bf7f612802645c78aad37a1ba20794037f9d9d96b8c76ebbd2e9f1513c",
+        "correctAnswerIdAtReview": "b-fallback-274-a1",
+        "correctAnswerFingerprint": "b06ce80bad15a114270fb778bb4c5cec93bca12f08d6acf0064a505752cb6eb8",
+        "imageFingerprint": "f3dbb6d81bbdbaa73bcf80460465e1dff5ec81cabfe7dce088c97c6d5847369e"
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p189-005-indicadora-de-utilizacion-de-carriles-catalog-en",
+            "textPath": "russianTranslation",
+            "textFingerprint": "e6f482eefc5ded0af4a6cae19adda1dd59aabf2645e8d3070db3ee2038f72102"
+          },
+          "pageContentFingerprint": "702c3f021d79fffaa5d15c07ccfb88cbec534c769798882e23af29c4b0334e34",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Верно.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-275",
+      "canonicalEvidence": {
+        "questionFingerprint": "d7b303633abf513fb58de38651d6cc06ec483d5abdfde1aadd2275697b3c06dd",
+        "translationFingerprint": "41f6330bd4e986f58dee1d13b440592b1a385d78b421ce8030bfb173749f39df",
+        "correctAnswerIdAtReview": "b-fallback-275-a2",
+        "correctAnswerFingerprint": "2884a2c6a06d352f7a099234c86ee984cbd0c75bb572da265f071909fa2e9624",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "intro-incident",
+          "routeHash": "#intro-accidente-incidente",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "introduction-block",
+            "blockId": "risk-factors",
+            "textPath": "recommendationRu",
+            "textFingerprint": "d1ccad6879a37822ff1a558ed6be80f5b7f1781aafa80c23e0c36b58a9888f4a"
+          },
+          "pageContentFingerprint": "06a207206bac722ced5fbe6c10e1943a1cb099673ad29fe7145727b51b12408c",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «На состояние автомобиля, дорожной инфраструктуры, погодных условий и самого водителя.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "questionId": "b-fallback-276",
+      "canonicalEvidence": {
+        "questionFingerprint": "7af770ff1f65f0ad1f3455bd13ef18ff2e6143a53bd04ffe9bed8a90a95009a4",
+        "translationFingerprint": "2e774e9bb70697e3920b9a26d303ce4e3d097ccaa47ed8834098a1995de9dcd0",
+        "correctAnswerIdAtReview": "b-fallback-276-a3",
+        "correctAnswerFingerprint": "2f6f15371ee692c9c8be29e99ed8023de7db33452375f2a81f680dfe41012a46",
+        "imageFingerprint": null
+      },
+      "review": {
+        "status": "approved",
+        "reviewedBy": "feature-038-semantic-review",
+        "reviewedAt": "2026-06-24T00:00:00Z"
+      },
+      "placements": [
+        {
+          "pageId": "ch4-distractions",
+          "routeHash": "#manual-section-ch4-distractions",
+          "placementBasis": "answer-bearing",
+          "anchor": {
+            "kind": "manual-list-item",
+            "blockId": "phone-recommendations",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "4e592deae2978ba8c5cf3bfdcd7edff0bd22ef333429cf51fa5caa847c48d776"
+          },
+          "pageContentFingerprint": "5c62557ade667447357ccbf6be7477ad51d64f68e064338cf338586763cc5f44",
+          "answerBasisRu": "Якорь страницы прямо фиксирует правило, значение или условие, по которому выбирается канонический правильный ответ «Выключить двигатель, выставить переносные аварийные знаки, оставить включёнными габаритные и аварийные огни и позвонить в службу помощи.».",
+          "review": {
+            "status": "approved",
+            "reviewedBy": "feature-038-semantic-review",
+            "reviewedAt": "2026-06-24T00:00:00Z"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -32,6 +32,7 @@ Current tooling:
 - `scripts/generate-learning-support.mjs` is a guarded draft-scaffold helper from the pre-review phase. It can overwrite reviewed learning-support content and now requires explicit `--allow-draft-overwrite`; do not use it for feature 009 completed-content maintenance or integration.
 - `scripts/sync-public-assets.mjs` copies committed content assets into Vite public assets before dev/build.
 - `scripts/generate-service-worker.mjs` writes a production service worker with the built asset list for offline reload.
+- `scripts/content-manual-ticket-placement.mjs` validates the reviewed `Руководство` ticket mapping under `content/manual-ticket-placement/`. It enforces complete `460/460` coverage, `1..3` eligible placements per ticket, exact learner-visible anchors, canonical question/translation/answer/image fingerprints, route and page fingerprints, protected manual source/image hashes, deterministic shards, and separately audited `owner-approved-thematic-fallback` records. Run `pnpm run generate:manual-ticket-placement` only to regenerate deterministic reviewed artifacts and `pnpm run validate:manual-ticket-placement` to fail closed on missing, stale, ineligible, unreviewed, or malformed records.
 
 `pnpm run validate:content` is the structural offline validation used by build. `pnpm run validate:content:quality` enables the feature-009 hard gate and must pass for completed reviewed range shards.
 
