@@ -284,7 +284,7 @@ Evidence:
 - Current-tree verification completed at `2026-06-24T01:37:08Z`.
 - Commands and results: regeneration pass; validator pass (`460/460`, `458` answer-bearing, `2` audited fallbacks); content validation pass; `455/455` unit/content tests; build pass; focused host-preview Playwright `6/6`; isolated Docker build/up/browser/down pass with focused Playwright `6/6`; full Playwright `88/88`; complete `pnpm run preflight` pass; `git diff --check` pass.
 - Protected baseline: `54` source files and `387` referenced images unchanged; canonical questions/translations/explanations unchanged; all validator counters remain `0`.
-- Final implementation head: pending commit.
+- Effective implementation/content head: `7dc2e9c56c83fc3ce431fd10cbd2961bcf815c22`.
 
 ## T014 — Process Memory And Handoff
 
@@ -293,8 +293,15 @@ Evidence:
 - [x] Record dead ends and known issues.
 - [x] Record all Implementation Agent feedback for Architect disposition.
 - [x] Confirm no unresolved feedback remains before readiness.
-- [ ] Commit, push, and open the ready PR only if Orchestrator assigned those actions.
+- [x] Commit, push, and open the ready PR only if Orchestrator assigned those actions.
 - [x] Do not merge.
+
+Publication evidence:
+
+- Branch: `codex/038-manual-ticket-placement`.
+- Effective implementation/content commit: `7dc2e9c56c83fc3ce431fd10cbd2961bcf815c22`.
+- Ready PR: `#204` — `https://github.com/cucumberfalse/cabadrive/pull/204`.
+- Merge performed by Implementation Agent: `no`.
 
 Final changed-file groups:
 
