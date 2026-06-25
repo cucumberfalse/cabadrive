@@ -3,6 +3,7 @@ import { join, resolve } from "node:path";
 import {
   PLACEMENT_SCHEMA_VERSION,
   GENERATED_AT,
+  buildManualTicketRuntimeProjection,
   canonicalJson,
   createPageInventory,
   createPlacementCandidates,
@@ -20,6 +21,7 @@ const candidatesOnly = process.argv.includes("--candidates");
 const placementRoot = join(root, "content/manual-ticket-placement");
 const evidencePath = join(root, "content/validation/manual-ticket-placement.evidence.json");
 const reviewedManifestPath = join(placementRoot, "reviewed-manifest.json");
+const runtimeProjectionPath = join(placementRoot, "manual-ticket-placement.runtime.json");
 const topicRoutesPath = join(placementRoot, "topic-routes.json");
 const ticketTopicAssignmentsPath = join(placementRoot, "ticket-topic-assignments.json");
 
@@ -53,6 +55,7 @@ if (candidatesOnly) {
 const records = loadShardEntries(root, "content/manual-ticket-placement/placements");
 const topicRoutes = readJson(topicRoutesPath);
 const ticketTopicAssignments = readJson(ticketTopicAssignmentsPath);
+const generatedRuntimeProjection = buildManualTicketRuntimeProjection(records);
 const generatedSummary = placementSummary(records, generatedPages);
 const preliminaryValidation = validatePlacementData({
   root,
@@ -65,7 +68,8 @@ const preliminaryValidation = validatePlacementData({
   evidence: undefined,
   reviewedManifest: readJson(reviewedManifestPath),
   topicRoutes,
-  ticketTopicAssignments
+  ticketTopicAssignments,
+  runtimeProjection: generatedRuntimeProjection
 });
 const generatedEvidence = {
   schemaVersion: PLACEMENT_SCHEMA_VERSION,
@@ -103,6 +107,7 @@ const generatedEvidence = {
 if (write) {
   writeJson(join(placementRoot, "manual-pages.json"), generatedPages);
   writeJson(join(placementRoot, "manual-content-baseline.json"), generatedBaseline);
+  writeJson(runtimeProjectionPath, generatedRuntimeProjection);
   writeJson(evidencePath, generatedEvidence);
   console.log(`Refreshed derived manual ticket placement data for ${records.length} immutable reviewed records.`);
 }
@@ -111,10 +116,12 @@ const pageInventory = readJson(join(placementRoot, "manual-pages.json"));
 const baseline = readJson(join(placementRoot, "manual-content-baseline.json"));
 const evidence = readJson(evidencePath);
 const reviewedManifest = readJson(reviewedManifestPath);
+const runtimeProjection = readJson(runtimeProjectionPath);
 const generatedFilesMatch =
   canonicalJson(pageInventory) === canonicalJson(generatedPages) &&
   canonicalJson(baseline) === canonicalJson(generatedBaseline) &&
-  canonicalJson(evidence) === canonicalJson(generatedEvidence);
+  canonicalJson(evidence) === canonicalJson(generatedEvidence) &&
+  canonicalJson(runtimeProjection) === canonicalJson(generatedRuntimeProjection);
 
 const result = validatePlacementData({
   root,
@@ -127,7 +134,8 @@ const result = validatePlacementData({
   evidence,
   reviewedManifest,
   topicRoutes,
-  ticketTopicAssignments
+  ticketTopicAssignments,
+  runtimeProjection
 });
 if (!generatedFilesMatch) result.errors.push("Generated manual ticket placement files are stale; run pnpm run generate:manual-ticket-placement.");
 

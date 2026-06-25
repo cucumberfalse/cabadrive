@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head: `#204` / `f6f9484d3869c7beea957cd3458c826cb008d467`
-- Process status: `review-blocked` by Review Agent review `4565608440`; unresolved threads `PRRT_kwDOSX65IM6MBsV4` and `PRRT_kwDOSX65IM6MBsV8` require bounded `F038-RA-004` remediation
-- Effective content head `0f777a89450e26608b3eeda7c9198959ce576179` is followed only by evidence update `f6f9484d3869c7beea957cd3458c826cb008d467`; `F038-RA-003` ledger and `042`/`126` work is complete, but containment/equivalence contradictions and stale live process status block merge readiness
+- Current PR/head: `#204` / `002f98814f92299edeb377c34ba40eb2341d589f`
+- Process status: `review-blocked` by Review Agent review `4574141351` plus active runtime thread `PRRT_kwDOSX65IM6MBvab`; bounded `F038-RA-005` remediation is required
+- Effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` is followed only by tasks evidence commits `cdf8015...` and `002f988...`; `F038-RA-004` implementation is complete, this Architect update reconciles live status, and tickets `390`, `422`, `430` plus the lean runtime-projection requirement remain implementation blockers
 
 ## Goal
 
@@ -144,7 +144,7 @@ content/validation/
   manual-ticket-placement.evidence.json
 ```
 
-The shard boundaries mirror existing translation/explanation ownership and keep review diffs bounded. The runtime may import a generated or assembled index, but that index must be deterministically checked against the shards.
+The shard boundaries mirror existing translation/explanation ownership and keep review diffs bounded. They are validation/review source and must not be imported into the browser bundle. Runtime imports a generated lean projection containing only the fields needed to build the page-to-question lookup, and validation checks exact deterministic equality between that projection and the reviewed shards.
 
 ### Per-ticket record
 
@@ -549,6 +549,84 @@ All `39` currently detected lexical candidates and any additional semantic-equiv
 
 Architect return count becomes `4 / 10`. This disposition is not final Architect validation.
 
+### F038-RA-005 Architect disposition
+
+Disposition: `task` — all five current-head findings are accepted as one blocking Architect return with two sequential atomic Implementation Agent work packages.
+
+Reviewed state:
+
+- PR: `#204`;
+- Review Agent review: `4574141351`;
+- reviewed/current head: `002f98814f92299edeb377c34ba40eb2341d589f`;
+- effective content head: `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`;
+- commits after the effective content head change only `specs/038-manual-ticket-placement/tasks.md`;
+- active threads: `PRRT_kwDOSX65IM6MU7dX`, `PRRT_kwDOSX65IM6MU7da`, `PRRT_kwDOSX65IM6MU7dd`, `PRRT_kwDOSX65IM6MU7df`, and `PRRT_kwDOSX65IM6MBvab`.
+
+Independent Architect verification on `2026-06-25` confirmed:
+
+1. `PRRT_kwDOSX65IM6MU7dX` — `b-fallback-390` asks whether low beams must be used in the pictured reduced-visibility rain condition, but the selected `ch3-lights/front-lights.itemsRu[4]` anchor governs fog lamps. The types of lamp are not interchangeable. The unchanged manual already has an exact answer-bearing anchor on `ch3-adverse-conditions`, `rain.itemsRu[1]`: `Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор.` The canonical image shows rain on a city street, so this anchor supplies the required low-beam rule for the depicted condition and excludes the night-only and routes-only distractors.
+2. `PRRT_kwDOSX65IM6MU7da` — `b-fallback-422` currently selects only the consequence of placing a belt over the abdomen. That text rejects the affirmative distractor but cannot choose `костям таза` over `бедрам`. The same eligible page has exact self-sufficient alternatives, preferably `app3-safety-elements/seatbelt-source-visual`, term `Debe colocarse sobre los huesos de la cadera`, `cards.0.termTranslations.2.translationRu`: `Нижняя лямка должна лежать на костях таза, ниже живота.` The card body and `seatbelt-and-headrest.itemsRu[7]` are also answer-bearing, but one exact strongest anchor must be selected and sealed.
+3. `PRRT_kwDOSX65IM6MU7dd` — `b-fallback-430` asks priority on a narrow incline and its image shows B ascending. The selected railway-crossing exception has no slope or ascending-vehicle condition. The same page has an exact answer-bearing anchor at `ch3-right-of-way/other-priority-situations.itemsRu[1]`: `На уклоне, где ширина дороги не позволяет двум транспортным средствам двигаться одновременно, приоритет у поднимающегося...`. This rule plus the canonical image identifies vehicle B.
+4. `PRRT_kwDOSX65IM6MU7df` — the live `Status And Ownership` block and matching plan handoff still report pre-`F038-RA-004` heads and blockers. `tasks.md` correctly records `2cd692f...` / `002f988...`; Architect-owned memory must agree before later validation.
+5. `PRRT_kwDOSX65IM6MBvab` — `src/data/manualTicketPlacement.ts` imports all five full reviewed shards. Those files total `3,135,773` raw bytes at the reviewed head, and the production entry bundle contains review-only markers `auditConclusionRu`, `searchedConcepts`, and `selectionRationaleRu` for all `375` fallbacks. Runtime consumes only `questionId` and `pageId`, so bundling audit ledgers, fingerprints, rationales, review metadata, and candidate evidence is unnecessary and violates the intended generated-runtime-index boundary.
+
+#### Atomic work package A — exact semantic corrections
+
+One Implementation Agent must:
+
+1. Replace the three false `answer-bearing` relations with the exact self-sufficient anchors above.
+2. Recompute route/anchor/canonical fingerprints, direct-answer assertions, distractor-aware rationale, contradiction review, reviewed-manifest hashes, evidence totals, destinations, and density.
+3. Preserve `placementBasis: "answer-bearing"` for all three only after the exact anchor independently passes the full question/distractor/image gate.
+4. Update `topic-routes.json` and `ticket-topic-assignments.json` only where the `390` route change requires coherent reviewed routing; do not weaken routing merely to retain the old placement.
+5. Add exact regressions that reject the fog-lamp anchor for `390`, the abdomen-only anchor for `422`, and the railway-crossing anchor for `430`, and require the approved exact propositions.
+
+#### Atomic work package B — lean runtime projection
+
+After package A is internally consistent, the same Implementation Agent must:
+
+1. Generate `content/manual-ticket-placement/manual-ticket-placement.runtime.json` from the reviewed shards. It is derived runtime data, never reviewed semantic source.
+2. Use an exact allowlisted schema containing only:
+   - top-level `schemaVersion`, `contentKind: "manual-ticket-placement-runtime"`, and deterministic `records`;
+   - each record: `questionId` and `pageIds`, with IDs sorted and duplicate-free.
+3. Make `src/data/manualTicketPlacement.ts` import only that runtime projection; it must not import any file under `content/manual-ticket-placement/placements/`.
+4. Add one pure deterministic builder used by generation and validation. Validation must fail when the runtime projection is missing, stale, reordered, has an extra/missing question or page, has duplicates, or differs in any value from the projection of the current reviewed shards.
+5. Reject all non-allowlisted fields recursively, including placement basis, route hashes, topic routes, anchors, fingerprints, review metadata, rationales, audit conclusions, searched concepts, candidates, and contradiction evidence.
+6. Preserve exact runtime behavior and ordering: the derived `pageId -> sorted questionId[]` lookup must equal the lookup produced from the full reviewed shards.
+7. After a clean production build, prove that the browser entry chunk contains none of `auditConclusionRu`, `selectionRationaleRu`, `searchedConcepts`, `candidatesReviewed`, or `contradictionReview` due to manual-ticket placement data. No fixed bundle-size SLA is required; schema allowlisting and bundle-marker absence are the durable gates.
+
+#### Exact allowed Implementation Agent files
+
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/topic-routes.json` only if required for the corrected `390` route;
+- `content/manual-ticket-placement/ticket-topic-assignments.json` only if required for the corrected `390` assignment;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/manual-ticket-placement/manual-ticket-placement.runtime.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs`;
+- `src/data/manualTicketPlacement.ts`;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if destination-density fixtures change;
+- `docs_project/project/backend/backend-docs.md`;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence and live status.
+
+No other file is allowed without a new Architect disposition. In particular, do not edit protected manual prose/images, canonical questions/translations/explanations/answers/difficulty/images, route inventory, protected baseline, `src/App.tsx`, CSS, package/lockfiles, frontend docs, unrelated tests, or Architect-owned `spec.md`/`plan.md`.
+
+#### Acceptance and negative tests
+
+- `390`, `422`, and `430` resolve to the exact propositions above with fresh evidence; their three reported wrong anchors fail focused mutation tests.
+- Mapping totals, reviewed manifest, contradiction audit, deterministic evidence, route assignments, and density are fresh and internally consistent.
+- The runtime projection is exact, deterministic, minimal, duplicate-free, and behaviorally equal to the reviewed-shard projection.
+- Missing/stale/extra/reordered runtime records or page IDs fail validation.
+- Any governance/review field in the runtime projection fails validation.
+- Runtime source imports the lean projection only, and production bundle-marker checks pass.
+- Protected/canonical diff guards remain empty.
+- Focused tests, full validation, build, browser suites, preflight, and `git diff --check` pass.
+
+Architect return count becomes `5 / 10`. This disposition is not final Architect validation.
+
+Any implementation change creates a new effective content head and makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization. A fresh Review Agent review is mandatory after both packages. Final Architect validation remains forbidden until fresh review passes, required checks are green, blocking threads are resolved or outdated, and process memory is current.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -631,12 +709,12 @@ Implementation must not edit protected manual content files. If a technical need
 
 Add a typed loader/index that:
 
-1. loads reviewed placement shards;
-2. validates or assumes build-time validation has established integrity;
-3. creates `placementsByPageId`;
+1. imports only `content/manual-ticket-placement/manual-ticket-placement.runtime.json`;
+2. relies on deterministic validation that proves this lean file is the exact allowlisted projection of the reviewed placement shards;
+3. creates the page-to-sorted-question-ID lookup;
 4. joins `questionId` to `questionById`, `translationByQuestion`, `explanationByQuestion`, source metadata, and canonical local image data.
 
-No ticket prose is stored in manual-section modules.
+No ticket prose is stored in manual-section modules. Review-only shards and fields are validation/build inputs and must not enter the browser dependency graph.
 
 ### Shared ticket renderer
 
@@ -709,6 +787,9 @@ The validator must fail unless all of the following are true:
 23. Reviewer metadata does not use reserved generator identities or generated timestamps, and ordinary rationales are not generic boilerplate or identical templates with only the answer substituted.
 24. Known false fixtures `b-fallback-003`, `b-fallback-011`, and `b-fallback-042` cannot validate with their currently committed false pages/anchors.
 25. Fallback count is derived from the completed audit and is not hard-coded to exactly two.
+26. The lean runtime projection is present and exactly equals the deterministic `questionId`/sorted-`pageIds` projection of the reviewed shards.
+27. The runtime projection contains only its allowlisted schema and no governance, review, audit, rationale, anchor, fingerprint, route, or placement-basis fields.
+28. Runtime source imports no reviewed placement shard, and the clean production entry bundle contains no manual-placement review markers.
 
 The validator must emit a concise deterministic summary including:
 
@@ -742,6 +823,8 @@ The validator must emit a concise deterministic summary including:
 17. All `460` tickets have fresh explicit audit evidence; none inherits approval from lexical/topic scoring or from the invalidated pre-review output.
 18. The final answer-bearing/fallback counts are audit results, not preset targets; every fallback independently satisfies the general owner rule.
 19. The reviewed manifest proves the committed approved mapping source is immutable and regeneration preserves it.
+20. Tickets `390`, `422`, and `430` use the exact low-beam, pelvic-bones, and narrow-incline propositions recorded in `F038-RA-005`.
+21. Browser runtime consumes only the exact lean placement projection; review-only placement shards remain outside the production dependency graph.
 
 ## Negative Scenario
 
@@ -793,6 +876,10 @@ Negative exception tests must prove that validation fails when:
 - a rejected candidate has canonical-answer containment/equivalence without an explicit reviewed `supplies-canonical-answer` or ticket-specific `not-self-sufficient` disposition;
 - a `not-self-sufficient` disposition uses generic denial, contradicts the exact anchor text, or omits the limiting scope/condition/context;
 - an answer-bearing reclassification retains fallback-only evidence or does not update manifest, evidence totals, and process status.
+- `390` uses a fog-lamp rule, `422` uses abdomen-only text that cannot distinguish pelvis from thighs, or `430` uses a railway-crossing rule;
+- the runtime projection is missing, stale, differently ordered, incomplete, has extra IDs/page IDs, or does not reproduce the reviewed-shard page-to-question lookup exactly;
+- the runtime projection contains any non-allowlisted field, including review, audit, rationale, anchor, fingerprint, route, placement-basis, topic, or candidate data;
+- `src/data/manualTicketPlacement.ts` imports reviewed placement shards or a clean production bundle contains manual-placement audit markers.
 
 ## Required Verification Evidence
 
@@ -827,4 +914,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, either ticket-specific invariant for `042` or `126` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Blocking review `4565608440`, current head `f6f9484d3869c7beea957cd3458c826cb008d467`, and effective content head `0f777a89450e26608b3eeda7c9198959ce576179` are stale for merge authorization once `F038-RA-004` implementation changes content. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, any exact invariant for `042`, `126`, `390`, `422`, or `430` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, the lean runtime projection is missing/stale/non-minimal or reviewed shards enter the browser bundle, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` become stale for merge authorization once `F038-RA-005` implementation changes content. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.

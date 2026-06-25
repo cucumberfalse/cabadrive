@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
-  "sealedAt": "2026-06-25T01:30:00Z",
-  "sealedBy": "codex-replacement-implementation-agent-f038-ra004",
+  "sealedAt": "2026-06-25T19:11:53Z",
+  "sealedBy": "codex-implementation-agent-f038-ra005",
   "recordCount": 460,
   "topicRouteCount": 38,
   "ticketTopicAssignmentCount": 460,
   "topicRoutesFingerprint": "9ecb33fbe6df67eed151ec2e9e5cfdee3cbb16bd3104623ced851c71ff17f096",
-  "ticketTopicAssignmentsFingerprint": "289e9d65be97e673bbee18194b9f96e1eada9a6c6c0d738a8352e12f766dd9ba",
+  "ticketTopicAssignmentsFingerprint": "a1d4b054797bb388a42db2015d5cb629ec578b98ac6bc4ecc0c563ede8783c5a",
   "records": [
     {
       "questionId": "b-fallback-001",
@@ -1566,7 +1566,7 @@
     },
     {
       "questionId": "b-fallback-390",
-      "fingerprint": "39624263b335624ce9e43d0b272633fc45376884cc4e198e9bb7b8c9669352ef"
+      "fingerprint": "9d01d3a28a4fc357b747ada8b85d503143c62be7bae41bb8a2e1fe3d78bba0a6"
     },
     {
       "questionId": "b-fallback-391",
@@ -1694,7 +1694,7 @@
     },
     {
       "questionId": "b-fallback-422",
-      "fingerprint": "abb62267d0b26d7596ae8eaaaaca83681073da831e3aa4368e10b4a2f612378a"
+      "fingerprint": "5324ab6c320ab991dd216955a2601f9cbedd2283ebc52f97008d722966ce1152"
     },
     {
       "questionId": "b-fallback-423",
@@ -1726,7 +1726,7 @@
     },
     {
       "questionId": "b-fallback-430",
-      "fingerprint": "ea584edf296c462cbf3ae642dc60562e2c3bc83ea551770cbeec393b55040e43"
+      "fingerprint": "ee0f06ea7cee195cf0febdf74a38ea7408f019ebae91f4de57ebf0b56ba21ed3"
     },
     {
       "questionId": "b-fallback-431",
@@ -1868,8 +1868,8 @@
     },
     {
       "fileName": "369-460.json",
-      "fingerprint": "8550bcb39a1875374ce6895b66a1e50dc7cb5606501dddf16b07e97bcb99e3e5"
+      "fingerprint": "4a8396e746578c319ca947e9480beee4ee892a563c99032f9d74cd96645ca41a"
     }
   ],
-  "aggregateFingerprint": "5c083d465385345a78659401798176931df099734ff4f1b3f25467c009a7ec87"
+  "aggregateFingerprint": "83f1277037f073eae0ae753c49f386816246270a25e7997f177268f347aca20c"
 }

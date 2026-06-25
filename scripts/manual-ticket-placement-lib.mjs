@@ -6,6 +6,7 @@ import { createServer } from "vite";
 export const PLACEMENT_SCHEMA_VERSION = 2;
 export const ANCHOR_SCHEMA_VERSION = 1;
 export const REVIEWED_MANIFEST_SCHEMA_VERSION = 2;
+export const MANUAL_TICKET_RUNTIME_SCHEMA_VERSION = 1;
 export const GENERATED_AT = "2026-06-24T15:00:00Z";
 export const EXPECTED_BASE_SHA = "4247b0e90ae5799a0875cc3751c96589fef96ef2";
 export const RESERVED_REVIEWER_PATTERNS = [
@@ -809,6 +810,70 @@ export function placementSummary(records, pageInventory) {
   };
 }
 
+export function buildManualTicketRuntimeProjection(records) {
+  return {
+    schemaVersion: MANUAL_TICKET_RUNTIME_SCHEMA_VERSION,
+    contentKind: "manual-ticket-placement-runtime",
+    records: records
+      .map((record) => ({
+        questionId: record.questionId,
+        pageIds: [...new Set(record.placements.map((placement) => placement.pageId))].sort()
+      }))
+      .sort((left, right) => left.questionId.localeCompare(right.questionId))
+  };
+}
+
+export function validateManualTicketRuntimeProjection(records, runtimeProjection) {
+  const errors = [];
+  if (!runtimeProjection || typeof runtimeProjection !== "object" || Array.isArray(runtimeProjection)) {
+    return ["Manual ticket runtime projection is missing or malformed."];
+  }
+
+  const topLevelKeys = Object.keys(runtimeProjection).sort();
+  const allowedTopLevelKeys = ["contentKind", "records", "schemaVersion"];
+  if (canonicalJson(topLevelKeys) !== canonicalJson(allowedTopLevelKeys)) {
+    errors.push("Manual ticket runtime projection has non-allowlisted top-level fields.");
+  }
+  if (runtimeProjection.schemaVersion !== MANUAL_TICKET_RUNTIME_SCHEMA_VERSION) {
+    errors.push("Manual ticket runtime projection has an unsupported schema version.");
+  }
+  if (runtimeProjection.contentKind !== "manual-ticket-placement-runtime") {
+    errors.push("Manual ticket runtime projection has an invalid content kind.");
+  }
+  if (!Array.isArray(runtimeProjection.records)) {
+    errors.push("Manual ticket runtime projection records must be an array.");
+    return errors;
+  }
+
+  for (const record of runtimeProjection.records) {
+    if (!record || typeof record !== "object" || Array.isArray(record)) {
+      errors.push("Manual ticket runtime projection contains a malformed record.");
+      continue;
+    }
+    const recordKeys = Object.keys(record).sort();
+    if (canonicalJson(recordKeys) !== canonicalJson(["pageIds", "questionId"])) {
+      errors.push(`${record.questionId || "unknown"}: runtime projection record has non-allowlisted fields.`);
+    }
+    if (typeof record.questionId !== "string" || !record.questionId) {
+      errors.push("Manual ticket runtime projection record has an invalid questionId.");
+    }
+    if (!Array.isArray(record.pageIds) || record.pageIds.some((pageId) => typeof pageId !== "string" || !pageId)) {
+      errors.push(`${record.questionId || "unknown"}: runtime projection pageIds must be non-empty strings.`);
+      continue;
+    }
+    const sortedUniquePageIds = [...new Set(record.pageIds)].sort();
+    if (canonicalJson(record.pageIds) !== canonicalJson(sortedUniquePageIds)) {
+      errors.push(`${record.questionId || "unknown"}: runtime projection pageIds must be sorted and duplicate-free.`);
+    }
+  }
+
+  const expected = buildManualTicketRuntimeProjection(records);
+  if (canonicalJson(runtimeProjection) !== canonicalJson(expected)) {
+    errors.push("Manual ticket runtime projection is stale or differs from reviewed placement shards.");
+  }
+  return errors;
+}
+
 export function shardRecords(records) {
   const ranges = [[1, 92], [93, 184], [185, 276], [277, 368], [369, 460]];
   return ranges.map(([start, end]) => ({
@@ -978,9 +1043,13 @@ export function validatePlacementData({
   evidence,
   reviewedManifest,
   topicRoutes,
-  ticketTopicAssignments
+  ticketTopicAssignments,
+  runtimeProjection
 }) {
-  const errors = validateReviewedManifest(records, reviewedManifest, topicRoutes, ticketTopicAssignments);
+  const errors = [
+    ...validateReviewedManifest(records, reviewedManifest, topicRoutes, ticketTopicAssignments),
+    ...validateManualTicketRuntimeProjection(records, runtimeProjection)
+  ];
   const questionById = new Map(questions.map((question) => [question.id, question]));
   const translationById = new Map(translations.map((item) => [item.questionId, item]));
   const pageById = new Map(pageInventory.pages.map((page) => [page.pageId, page]));
@@ -1296,6 +1365,61 @@ export function validatePlacementData({
     )
   ) {
     errors.push("b-fallback-126: exact pre-driving oil-check invariant or comparison ledger failed.");
+  }
+
+  const exactF038RA005Fixtures = [
+    {
+      questionId: "b-fallback-390",
+      topicRouteId: "adverse-weather-and-visibility",
+      pageId: "ch3-adverse-conditions",
+      anchor: {
+        kind: "manual-list-item",
+        blockId: "rain",
+        itemIndex: 1,
+        textPath: "itemsRu"
+      },
+      anchorText: "Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор."
+    },
+    {
+      questionId: "b-fallback-422",
+      topicRouteId: "occupant-protection",
+      pageId: "app3-safety-elements",
+      anchor: {
+        kind: "manual-term-translation",
+        blockId: "seatbelt-source-visual",
+        termEs: "Debe colocarse sobre los huesos de la cadera",
+        textPath: "cards.0.termTranslations.2.translationRu"
+      },
+      anchorText: "Нижняя лямка должна лежать на костях таза, ниже живота."
+    },
+    {
+      questionId: "b-fallback-430",
+      topicRouteId: "right-of-way-special-situations",
+      pageId: "ch3-right-of-way",
+      anchor: {
+        kind: "manual-list-item",
+        blockId: "other-priority-situations",
+        itemIndex: 1,
+        textPath: "itemsRu"
+      },
+      anchorText: "На уклоне, где ширина дороги не позволяет двум транспортным средствам двигаться одновременно, приоритет у поднимающегося. Исключение: спускающийся сочлененный транспорт, например грузовик с прицепом или автомобиль с trailer. Для спуска рекомендуется низкая передача, первая или вторая."
+    }
+  ];
+  for (const fixture of exactF038RA005Fixtures) {
+    const record = records.find((candidate) => candidate.questionId === fixture.questionId);
+    const placement = record?.placements?.[0];
+    const locator = placement?.anchor ? locatorWithoutFingerprint(placement.anchor) : null;
+    if (
+      record?.topicRouteId !== fixture.topicRouteId ||
+      assignmentByQuestion.get(fixture.questionId)?.topicRouteId !== fixture.topicRouteId ||
+      placement?.pageId !== fixture.pageId ||
+      placement?.placementBasis !== "answer-bearing" ||
+      canonicalJson(locator) !== canonicalJson(fixture.anchor) ||
+      resolveAnchor(corpus, placement?.pageId, placement?.anchor) !== fixture.anchorText ||
+      placement?.contradictionReview?.auditId !== `F038-RA-005-${fixture.questionId}`
+    ) {
+      errors.push(`${fixture.questionId}: F038-RA-005 exact semantic anchor invariant failed.`);
+    }
   }
 
   for (const fixtureId of ["b-fallback-001", "b-fallback-065", "b-fallback-086"]) {

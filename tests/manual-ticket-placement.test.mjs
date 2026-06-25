@@ -1,16 +1,20 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { build } from "vite";
 import {
   F038_RA004_LEXICAL_BASELINE_IDS,
   F038_RA004_SEMANTIC_EQUIVALENCE_IDS,
+  buildManualTicketRuntimeProjection,
   createPageInventory,
   createPlacementCandidates,
   detectRejectedCandidateAnswerOverlap,
   loadManualCorpus,
   loadShardEntries,
   readJson,
+  validateManualTicketRuntimeProjection,
   validatePlacementData
 } from "../scripts/manual-ticket-placement-lib.mjs";
 
@@ -26,6 +30,7 @@ const evidence = readJson("content/validation/manual-ticket-placement.evidence.j
 const reviewedManifest = readJson("content/manual-ticket-placement/reviewed-manifest.json");
 const topicRoutes = readJson("content/manual-ticket-placement/topic-routes.json");
 const ticketTopicAssignments = readJson("content/manual-ticket-placement/ticket-topic-assignments.json");
+const runtimeProjection = readJson("content/manual-ticket-placement/manual-ticket-placement.runtime.json");
 const corpus = await loadManualCorpus(root);
 
 function validate(
@@ -33,7 +38,8 @@ function validate(
   candidateEvidence = undefined,
   candidateManifest = reviewedManifest,
   candidateRoutes = topicRoutes,
-  candidateAssignments = ticketTopicAssignments
+  candidateAssignments = ticketTopicAssignments,
+  candidateRuntimeProjection = runtimeProjection
 ) {
   return validatePlacementData({
     root,
@@ -46,7 +52,8 @@ function validate(
     evidence: candidateEvidence,
     reviewedManifest: candidateManifest,
     topicRoutes: candidateRoutes,
-    ticketTopicAssignments: candidateAssignments
+    ticketTopicAssignments: candidateAssignments,
+    runtimeProjection: candidateRuntimeProjection
   });
 }
 
@@ -308,6 +315,111 @@ test("F038-RA-004 rejects undisposed overlaps and seals lexical plus semantic re
   assert.ok(validate(records, staleEvidence).errors.some((error) => error.includes("contradiction-audit evidence is stale")));
 });
 
+test("F038-RA-005 seals exact answer-bearing anchors for tickets 390, 422, and 430", () => {
+  const expected = {
+    "b-fallback-390": {
+      topicRouteId: "adverse-weather-and-visibility",
+      pageId: "ch3-adverse-conditions",
+      anchorText: "Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор."
+    },
+    "b-fallback-422": {
+      topicRouteId: "occupant-protection",
+      pageId: "app3-safety-elements",
+      anchorText: "Нижняя лямка должна лежать на костях таза, ниже живота."
+    },
+    "b-fallback-430": {
+      topicRouteId: "right-of-way-special-situations",
+      pageId: "ch3-right-of-way",
+      anchorText: "На уклоне, где ширина дороги не позволяет двум транспортным средствам двигаться одновременно, приоритет у поднимающегося. Исключение: спускающийся сочлененный транспорт, например грузовик с прицепом или автомобиль с trailer. Для спуска рекомендуется низкая передача, первая или вторая."
+    }
+  };
+
+  for (const [questionId, fixture] of Object.entries(expected)) {
+    const record = records.find((entry) => entry.questionId === questionId);
+    assert.equal(record.topicRouteId, fixture.topicRouteId);
+    assert.equal(record.placements[0].pageId, fixture.pageId);
+    assert.equal(record.placements[0].placementBasis, "answer-bearing");
+    assert.equal(record.placements[0].anchorTextAtReview, fixture.anchorText);
+    assert.equal(record.placements[0].contradictionReview.auditId, `F038-RA-005-${questionId}`);
+  }
+
+  for (const [questionId, wrongAnchor] of [
+    ["b-fallback-390", records.find((entry) => entry.questionId === "b-fallback-349").placements[0].anchor],
+    ["b-fallback-422", {
+      kind: "manual-term-translation",
+      blockId: "seatbelt-source-visual",
+      termEs: "Si se coloca sobre el abdomen",
+      textPath: "cards.0.termTranslations.4.translationRu",
+      textFingerprint: "327817b11ee61306339f9ae413b7cf0789c0a0efec9796ec80d76980815723b7"
+    }],
+    ["b-fallback-430", {
+      kind: "manual-list-item",
+      blockId: "uncontrolled-intersections",
+      itemIndex: 2,
+      textPath: "itemsRu",
+      textFingerprint: "1146ef8cd25e8399c58458782941208f9594babb8aef2a0a10962a811035c709"
+    }]
+  ]) {
+    const fixture = structuredClone(records);
+    fixture.find((entry) => entry.questionId === questionId).placements[0].anchor = structuredClone(wrongAnchor);
+    assert.ok(validate(fixture).errors.some((error) =>
+      error.includes("F038-RA-005 exact semantic anchor invariant failed")
+    ));
+  }
+});
+
+test("lean runtime projection is exact, minimal, ordered, and behaviorally equal to reviewed shards", () => {
+  assert.deepEqual(runtimeProjection, buildManualTicketRuntimeProjection(records));
+  assert.deepEqual(validateManualTicketRuntimeProjection(records, runtimeProjection), []);
+
+  const reviewedLookup = new Map();
+  for (const record of records) {
+    for (const placement of record.placements) {
+      const questionIds = reviewedLookup.get(placement.pageId) ?? [];
+      questionIds.push(record.questionId);
+      reviewedLookup.set(placement.pageId, questionIds);
+    }
+  }
+  for (const questionIds of reviewedLookup.values()) questionIds.sort();
+
+  const runtimeLookup = new Map();
+  for (const record of runtimeProjection.records) {
+    for (const pageId of record.pageIds) {
+      const questionIds = runtimeLookup.get(pageId) ?? [];
+      questionIds.push(record.questionId);
+      runtimeLookup.set(pageId, questionIds);
+    }
+  }
+  for (const questionIds of runtimeLookup.values()) questionIds.sort();
+  assert.deepEqual(runtimeLookup, reviewedLookup);
+});
+
+test("validator rejects stale, reordered, duplicate, incomplete, and governance-heavy runtime projections", () => {
+  const missing = structuredClone(runtimeProjection);
+  missing.records.pop();
+  assert.ok(validate(records, undefined, reviewedManifest, topicRoutes, ticketTopicAssignments, missing).errors.some(
+    (error) => error.includes("runtime projection is stale")
+  ));
+
+  const reordered = structuredClone(runtimeProjection);
+  reordered.records.reverse();
+  assert.ok(validate(records, undefined, reviewedManifest, topicRoutes, ticketTopicAssignments, reordered).errors.some(
+    (error) => error.includes("runtime projection is stale")
+  ));
+
+  const duplicate = structuredClone(runtimeProjection);
+  duplicate.records[0].pageIds.push(duplicate.records[0].pageIds[0]);
+  assert.ok(validate(records, undefined, reviewedManifest, topicRoutes, ticketTopicAssignments, duplicate).errors.some(
+    (error) => error.includes("sorted and duplicate-free")
+  ));
+
+  const extra = structuredClone(runtimeProjection);
+  extra.records[0].review = { status: "approved" };
+  assert.ok(validate(records, undefined, reviewedManifest, topicRoutes, ticketTopicAssignments, extra).errors.some(
+    (error) => error.includes("non-allowlisted fields")
+  ));
+});
+
 test("runtime source appends tickets after existing page flows and keeps canonical joins", () => {
   const appSource = readFileSync("src/App.tsx", "utf8");
   const runtimeSource = readFileSync("src/data/manualTicketPlacement.ts", "utf8");
@@ -317,5 +429,36 @@ test("runtime source appends tickets after existing page flows and keeps canonic
   assert.match(appSource, /<ManualTicketAppendix pageId=\{content\.sectionId\} \/>/u);
   assert.match(appSource, /expanded && <div className="manual-ticket-list">/u);
   assert.match(runtimeSource, /questionIds\.sort\(\(left, right\) => left\.localeCompare\(right\)\)/u);
+  assert.match(runtimeSource, /manual-ticket-placement\.runtime\.json/u);
+  assert.doesNotMatch(runtimeSource, /manual-ticket-placement\/placements\//u);
   assert.doesNotMatch(runtimeSource, /officialTextEs|questionTextRu|correctAnswerId/u);
+});
+
+test("clean production bundle excludes manual-placement review and audit markers", async () => {
+  const outDir = mkdtempSync(join(tmpdir(), "cabadrive-manual-ticket-runtime-"));
+  try {
+    await build({
+      root,
+      logLevel: "silent",
+      build: {
+        outDir,
+        emptyOutDir: true
+      }
+    });
+    const entryChunks = readdirSync(join(outDir, "assets"))
+      .filter((name) => /^index-.*\.js$/u.test(name))
+      .map((name) => readFileSync(join(outDir, "assets", name), "utf8"))
+      .join("\n");
+    for (const marker of [
+      "auditConclusionRu",
+      "selectionRationaleRu",
+      "searchedConcepts",
+      "candidatesReviewed",
+      "contradictionReview"
+    ]) {
+      assert.doesNotMatch(entryChunks, new RegExp(marker, "u"));
+    }
+  } finally {
+    rmSync(outDir, { recursive: true, force: true });
+  }
 });

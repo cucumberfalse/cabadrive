@@ -1715,7 +1715,7 @@
     {
       "schemaVersion": 2,
       "questionId": "b-fallback-390",
-      "topicRouteId": "vehicle-lights-and-signaling",
+      "topicRouteId": "adverse-weather-and-visibility",
       "canonicalEvidence": {
         "questionFingerprint": "1d30614ca0d167b08a2d1f6ab2279a757e68d4e5671fb2e26f54417e6853a5bc",
         "translationFingerprint": "1ede52ff383ac9c6162419e98e4673a1ec5d03babd72a0bcd14461c3d7103efd",
@@ -1725,42 +1725,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-        "reviewedAt": "2026-06-25T01:30:00Z",
+        "reviewedBy": "codex-implementation-agent-f038-ra005",
+        "reviewedAt": "2026-06-25T19:11:53Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
-          "pageId": "ch3-lights",
-          "routeHash": "#manual-section-ch3-lights",
+          "pageId": "ch3-adverse-conditions",
+          "routeHash": "#manual-section-ch3-adverse-conditions",
           "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
-            "blockId": "front-lights",
-            "itemIndex": 4,
+            "blockId": "rain",
+            "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "d6e554820bec806bd29be8087a13ba4342bd96513560e6ee045bdd2081f692df"
+            "textFingerprint": "68c253c4033500b9faa2fb9696b0d80b2834d3e8b0143c3c5cfa744ea12a9f4e"
           },
-          "anchorTextAtReview": "Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "anchorTextAtReview": "Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор.",
+          "pageContentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z",
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z",
             "auditShard": "369-460"
           },
-          "directAnswerAssertionRu": "Для b-fallback-390 точный якорь «Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.» непосредственно подтверждает правильный ответ «Да, всегда, когда видимость снижена.» на вопрос «При таких погодных условиях нужно ли включать ближний свет фар?».",
-          "reviewerRationaleRu": "Якорь прямо связывает противотуманные фары со сниженной видимостью при тумане, дожде, пыли или дыме. Неверные варианты «Нет, фары нужно использовать только ночью.» и «Да, но только на трассах.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "directAnswerAssertionRu": "Для b-fallback-390 точный якорь «Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор.» прямо требует ближний свет в показанных дождевых условиях со сниженной видимостью и подтверждает ответ «Да, всегда, когда видимость снижена.».",
+          "reviewerRationaleRu": "Каноническое изображение показывает дождь и ухудшенный обзор, а якорь прямо предписывает включать ближний свет при дожде. Поэтому варианты о применении фар только ночью или только на трассах исключаются: правило не ограничено временем суток или типом дороги.",
           "contradictionReview": {
-            "auditId": "F038-RA-004-b-fallback-390",
+            "auditId": "F038-RA-005-b-fallback-390",
             "outcome": "supplies-canonical-answer",
             "screeningSource": "reviewed-semantic-equivalence",
             "matchKinds": [
               "reviewed-semantic-equivalence"
             ],
             "priorFallbackPageId": "ch3-lights",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z"
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z"
           }
         }
       ]
@@ -4308,8 +4308,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-        "reviewedAt": "2026-06-25T01:30:00Z",
+        "reviewedBy": "codex-implementation-agent-f038-ra005",
+        "reviewedAt": "2026-06-25T19:11:53Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -4320,30 +4320,30 @@
           "anchor": {
             "kind": "manual-term-translation",
             "blockId": "seatbelt-source-visual",
-            "termEs": "Si se coloca sobre el abdomen",
-            "textPath": "cards.0.termTranslations.4.translationRu",
-            "textFingerprint": "327817b11ee61306339f9ae413b7cf0789c0a0efec9796ec80d76980815723b7"
+            "termEs": "Debe colocarse sobre los huesos de la cadera",
+            "textPath": "cards.0.termTranslations.2.translationRu",
+            "textFingerprint": "9ca525a0f0d9d90a952740657a8d54ab8eabe1c6e5d418231643fdf77c368623"
           },
-          "anchorTextAtReview": "Если ремень проходит по животу, он может повредить внутренние органы.",
+          "anchorTextAtReview": "Нижняя лямка должна лежать на костях таза, ниже живота.",
           "pageContentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z",
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z",
             "auditShard": "369-460"
           },
-          "directAnswerAssertionRu": "Для b-fallback-422 точный якорь «Если ремень проходит по животу, он может повредить внутренние органы.» непосредственно подтверждает правильный ответ «Нет, потому что он проходит по животу, а должен проходить по костям таза.» на вопрос «Правильно ли у этого человека пристегнут ремень безопасности?».",
-          "reviewerRationaleRu": "Правильный ответ — «нет, потому что ремень проходит по животу, а должен проходить по костям таза». Именно это видно по нижней лямке ремня. Формулировка Руководства «Если ремень проходит по животу, он может повредить внутренние органы.» прямо подтверждает или опровергает утверждение билета. Неверные варианты «Нет, потому что он проходит по животу, а должен проходить по бедрам.» и «Да, потому что он проходит через ключицу и живот.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "directAnswerAssertionRu": "Для b-fallback-422 точный якорь «Нижняя лямка должна лежать на костях таза, ниже живота.» прямо подтверждает ответ «Нет, потому что он проходит по животу, а должен проходить по костям таза.».",
+          "reviewerRationaleRu": "Якорь называет обе различающие части правильного варианта: ремень должен проходить ниже живота и лежать именно на костях таза. Это исключает как утверждение о правильном положении через живот, так и отвлекающий вариант про бёдра.",
           "contradictionReview": {
-            "auditId": "F038-RA-004-b-fallback-422",
+            "auditId": "F038-RA-005-b-fallback-422",
             "outcome": "supplies-canonical-answer",
             "screeningSource": "reviewed-semantic-equivalence",
             "matchKinds": [
               "reviewed-semantic-equivalence"
             ],
             "priorFallbackPageId": "app1-safety-elements",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z"
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z"
           }
         }
       ]
@@ -4901,8 +4901,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-        "reviewedAt": "2026-06-25T01:30:00Z",
+        "reviewedBy": "codex-implementation-agent-f038-ra005",
+        "reviewedAt": "2026-06-25T19:11:53Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -4912,31 +4912,31 @@
           "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
-            "blockId": "uncontrolled-intersections",
-            "itemIndex": 2,
+            "blockId": "other-priority-situations",
+            "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "1146ef8cd25e8399c58458782941208f9594babb8aef2a0a10962a811035c709"
+            "textFingerprint": "0b012eb7c6f189c299aff55775405e1718b73db098409e5adcbffcaf5ee4a401"
           },
-          "anchorTextAtReview": "Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.",
+          "anchorTextAtReview": "На уклоне, где ширина дороги не позволяет двум транспортным средствам двигаться одновременно, приоритет у поднимающегося. Исключение: спускающийся сочлененный транспорт, например грузовик с прицепом или автомобиль с trailer. Для спуска рекомендуется низкая передача, первая или вторая.",
           "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z",
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z",
             "auditShard": "369-460"
           },
-          "directAnswerAssertionRu": "Для b-fallback-430 точный якорь «Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.» непосредственно подтверждает правильный ответ «У транспортного средства B.» на вопрос «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?».",
-          "reviewerRationaleRu": "Якорь формулирует специальное правило приоритета для транспортного средства, выезжающего с железнодорожного переезда. Неверные варианты «У транспортного средства A.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "directAnswerAssertionRu": "Для b-fallback-430 точный якорь устанавливает приоритет поднимающегося транспортного средства на узком уклоне; на каноническом изображении поднимается B, поэтому правильный ответ — «У транспортного средства B.».",
+          "reviewerRationaleRu": "Якорь совпадает с условиями билета: узкий уклон не позволяет двум автомобилям разъехаться одновременно, и приоритет принадлежит поднимающемуся. Изображение определяет B как поднимающийся автомобиль, поэтому вариант A исключается.",
           "contradictionReview": {
-            "auditId": "F038-RA-004-b-fallback-430",
+            "auditId": "F038-RA-005-b-fallback-430",
             "outcome": "supplies-canonical-answer",
             "screeningSource": "reviewed-semantic-equivalence",
             "matchKinds": [
               "reviewed-semantic-equivalence"
             ],
             "priorFallbackPageId": "ch3-right-of-way",
-            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
-            "reviewedAt": "2026-06-25T01:30:00Z"
+            "reviewedBy": "codex-implementation-agent-f038-ra005",
+            "reviewedAt": "2026-06-25T19:11:53Z"
           }
         }
       ]

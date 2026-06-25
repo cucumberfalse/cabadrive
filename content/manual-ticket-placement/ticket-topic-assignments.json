@@ -5989,19 +5989,19 @@
     },
     {
       "questionId": "b-fallback-390",
-      "topicRouteId": "vehicle-lights-and-signaling",
+      "topicRouteId": "adverse-weather-and-visibility",
       "sourceTopicIdsAtReview": [
         "vehicle-lights-and-signaling",
         "adverse-weather-and-visibility"
       ],
-      "reviewerRationaleRu": "Проверены формулировка билета и канонический правильный ответ; основной учебный предмет отнесён к теме «Свет, поворотники и аварийная сигнализация», а не к случайному лексическому совпадению.",
+      "reviewerRationaleRu": "Повторно проверены вопрос, дождевое изображение, правильный ответ о ближнем свете и отвлекающие варианты; точный ответ несёт правило страницы неблагоприятных погодных условий, поэтому билет закреплён за темой видимости и погоды.",
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra002",
-        "reviewedAt": "2026-06-24T15:00:00Z",
+        "reviewedBy": "codex-implementation-agent-f038-ra005",
+        "reviewedAt": "2026-06-25T19:11:53Z",
         "auditShard": "369-460"
       },
-      "assignmentFingerprint": "a5fb00138853c26762c9ec08128c44e330c972d8789e98191115b9014ee838c4"
+      "assignmentFingerprint": "18b4914f642b04613a1e1f73312c7330a0642226037307e4c7c28f168d214b36"
     },
     {
       "questionId": "b-fallback-391",

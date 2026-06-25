@@ -1,37 +1,19 @@
-import shard001092 from "../../content/manual-ticket-placement/placements/001-092.json";
-import shard093184 from "../../content/manual-ticket-placement/placements/093-184.json";
-import shard185276 from "../../content/manual-ticket-placement/placements/185-276.json";
-import shard277368 from "../../content/manual-ticket-placement/placements/277-368.json";
-import shard369460 from "../../content/manual-ticket-placement/placements/369-460.json";
+import runtimeProjection from "../../content/manual-ticket-placement/manual-ticket-placement.runtime.json";
 
-export type ManualTicketPlacementBasis = "answer-bearing" | "owner-approved-thematic-fallback";
-
-export type ManualTicketPlacement = {
-  pageId: string;
-  routeHash: string;
-  placementBasis: ManualTicketPlacementBasis;
-};
-
-export type ManualTicketPlacementRecord = {
+export type ManualTicketRuntimeRecord = {
   questionId: string;
-  placements: ManualTicketPlacement[];
+  pageIds: string[];
 };
 
-const shards = [shard001092, shard093184, shard185276, shard277368, shard369460] as {
-  entries: ManualTicketPlacementRecord[];
-}[];
-
-export const manualTicketPlacementRecords = shards
-  .flatMap((shard) => shard.entries)
-  .sort((left, right) => left.questionId.localeCompare(right.questionId));
+const records = runtimeProjection.records as ManualTicketRuntimeRecord[];
 
 export const manualTicketQuestionIdsByPage = new Map<string, string[]>();
 
-for (const record of manualTicketPlacementRecords) {
-  for (const placement of record.placements) {
-    const questionIds = manualTicketQuestionIdsByPage.get(placement.pageId) ?? [];
+for (const record of records) {
+  for (const pageId of record.pageIds) {
+    const questionIds = manualTicketQuestionIdsByPage.get(pageId) ?? [];
     questionIds.push(record.questionId);
-    manualTicketQuestionIdsByPage.set(placement.pageId, questionIds);
+    manualTicketQuestionIdsByPage.set(pageId, questionIds);
   }
 }
 

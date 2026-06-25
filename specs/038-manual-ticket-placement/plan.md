@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For remediation of `F038-RA-004`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards share contradiction detection/disposition, fallback-ledger schema, curated routes, assignments, validator, manifest, evidence, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
+For remediation of `F038-RA-005`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The semantic corrections and lean runtime projection share the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and two sequential atomic work packages.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -190,7 +190,7 @@ The validator must accept thematic fallbacks for any canonical ticket only when 
 1. Add `scripts/content-manual-ticket-placement.mjs`.
 2. Add a focused package command and wire it into `validate:content`.
 3. Validate schemas, coverage, counts, eligibility, anchors, placement bases, answer-bearing preference, audited thematic fallbacks including the exact `b-fallback-235` and `b-fallback-126` dispositions, reviews, fingerprints, canonical translations/answers/images, protected corpus, shard/index freshness, and evidence summary.
-4. Add a deterministic generated runtime index only if it materially simplifies imports; otherwise import shards directly and validate deterministic assembly.
+4. Generate a deterministic lean runtime projection with only `questionId` and sorted `pageIds`; importing reviewed shards into browser runtime is forbidden.
 5. Expose a typed `placementsByPageId` lookup without duplicating ticket prose.
 6. Update backend docs with the validator, files, commands, and failure contract.
 
@@ -453,6 +453,75 @@ Verification must include focused contradiction-detector and mutation fixtures, 
 
 Any implementation change creates a new effective content head and makes review `4565608440`, head `f6f9484d3869c7beea957cd3458c826cb008d467`, and effective content head `0f777a89450e26608b3eeda7c9198959ce576179` stale for merge authorization. Fresh Review Agent review is mandatory. Final Architect validation is not part of this follow-up and may begin only after fresh review passes, required checks are green, blocking threads are resolved/outdated, and process memory is current.
 
+## F038-RA-005 Follow-up Plan
+
+One Implementation Agent must remediate review `4574141351` and active runtime thread `PRRT_kwDOSX65IM6MBvab` on PR `#204`. Starting state is current evidence-only head `002f98814f92299edeb377c34ba40eb2341d589f` over effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`. Parallel work may exist; preserve every sibling worktree, branch, commit, PR, dirty diff, and process-memory record.
+
+### Package A — exact semantic corrections
+
+1. Correct only the three reviewed records in `placements/369-460.json`:
+   - `390` → `ch3-adverse-conditions`, `rain.itemsRu[1]`, exact low-beam text;
+   - `422` → `app3-safety-elements`, `seatbelt-source-visual`, term `Debe colocarse sobre los huesos de la cadera`, `cards.0.termTranslations.2.translationRu`;
+   - `430` → `ch3-right-of-way`, `other-priority-situations.itemsRu[1]`, exact narrow-incline/ascending-vehicle rule.
+2. Re-review each against the full canonical question, image, correct answer, and distractors. Preserve `answer-bearing` only with fresh direct-answer and distractor-aware evidence.
+3. Update route/assignment evidence only as needed for `390`; do not alter unrelated routes or tickets.
+4. Rebuild reviewed manifest, contradiction evidence, totals, destinations, and density.
+5. Add mutation fixtures that reject the exact three reported wrong anchors and require the approved propositions.
+
+Package A acceptance:
+
+- all three exact anchors resolve and are fresh;
+- the canonical images plus anchors identify the correct options without importing another rule;
+- wrong lamp type, abdomen-only distinction, and railway-crossing scope cannot validate;
+- all other `457` ticket records remain canonical-JSON-equivalent except derived manifest/evidence effects.
+
+### Package B — lean runtime projection
+
+1. Add a pure `buildManualTicketRuntimeProjection(records)`-equivalent helper.
+2. Generate `content/manual-ticket-placement/manual-ticket-placement.runtime.json` with:
+   - `schemaVersion`;
+   - `contentKind: "manual-ticket-placement-runtime"`;
+   - sorted `records`, each containing only `questionId` and sorted unique `pageIds`.
+3. Make generation write this derived file together with other derived evidence.
+4. Make validation compare the committed runtime file to a freshly built projection by exact canonical JSON and reject missing, stale, reordered, duplicate, extra, or incomplete data.
+5. Validate an exact recursive field allowlist; governance/review/audit/rationale/anchor/fingerprint/route/basis/topic/candidate fields are forbidden.
+6. Change `src/data/manualTicketPlacement.ts` to import only the lean runtime file and construct the same sorted page-to-question lookup.
+7. Add tests for exact projection equality, malformed/stale projection rejection, forbidden fields, runtime-source import boundaries, and lookup equality.
+8. Run a clean production build and verify the entry chunk does not contain `auditConclusionRu`, `selectionRationaleRu`, `searchedConcepts`, `candidatesReviewed`, or `contradictionReview` from manual-placement data.
+
+Package B acceptance:
+
+- runtime behavior, ticket ordering, route appendices, and canonical ticket joins are unchanged;
+- reviewed shards remain the only semantic source and are not browser imports;
+- the runtime projection is deterministic, minimal, and exactly fresh;
+- no fixed bundle-size threshold is introduced.
+
+Exact allowed implementation files:
+
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/topic-routes.json` only if required for `390`;
+- `content/manual-ticket-placement/ticket-topic-assignments.json` only if required for `390`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/manual-ticket-placement/manual-ticket-placement.runtime.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs`;
+- `src/data/manualTicketPlacement.ts`;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if destination-density fixtures change;
+- `docs_project/project/backend/backend-docs.md`;
+- `specs/038-manual-ticket-placement/tasks.md`.
+
+Forbidden:
+
+- protected manual prose/images, canonical ticket content, route inventory, protected baseline, `src/App.tsx`, CSS, package/lockfiles, frontend docs, unrelated tests, and Architect-owned artifacts;
+- commit/push/review/thread resolution/merge/final validation by Architect;
+- semantic auto-approval or runtime projection becoming reviewed source.
+
+Verification must include focused semantic/runtime-projection mutation tests, `pnpm run validate:manual-ticket-placement`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, bundle-marker inspection, focused Playwright if density fixtures change, `pnpm run test:e2e`, `pnpm run preflight`, protected/canonical diff guards, and `git diff --check`.
+
+Any implementation change creates a new effective content head and makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization. Fresh Review Agent review is mandatory after both packages. Final Architect validation is not part of this follow-up and may begin only after fresh review passes, required checks are green, blocking threads are resolved/outdated, and process memory is current.
+
 ## Process Memory Requirements
 
 Implementation Agent must keep `tasks.md` current with:
@@ -471,4 +540,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-003` implementation is complete at effective content head `0f777a89450e26608b3eeda7c9198959ce576179`, followed by evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`; exact `042` and `126` invariants are restored. `F038-RA-004` is now the active blocking implementation task from review `4565608440`: one Implementation Agent must re-audit all containment/equivalence contradictions, correctly select answer-bearing anchors, retain only justified fallbacks, refresh manifest/evidence/process memory, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-004` implementation is complete at effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`, followed only by tasks evidence commits through `002f98814f92299edeb377c34ba40eb2341d589f`. `F038-RA-005` is now the active blocking implementation task: one Implementation Agent must correct exact anchors for `390`, `422`, and `430`, add the exact lean runtime projection/freshness contract, refresh manifest/evidence/process memory, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.

@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`, effective content head `0f777a89450e26608b3eeda7c9198959ce576179`.
-- Current process status: replacement Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-004` remediation at effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`; tasks-only evidence updates follow it before fresh review, current-head checks, thread disposition, and later final role validations.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `002f98814f92299edeb377c34ba40eb2341d589f`, effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`.
+- Current process status: Implementation Agent completed and verified bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection; implementation commit/push, evidence-only head recording, fresh review, thread disposition, and final role validations remain.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1076,6 +1076,113 @@ Staleness and handoff:
 - The following commit is evidence-only and changes only this Implementation Agent process record; its exact pushed head is returned in the Implementation Agent handoff.
 - Review/thread resolution/final role validation/merge performed by Implementation Agent: `no`.
 
+### F038-RA-005 — `task`
+
+- Disposition date: `2026-06-25`
+- Disposition type: `task`
+- Source review: `https://github.com/cucumberfalse/cabadrive/pull/204#pullrequestreview-4574141351`
+- Reviewed/current head: `002f98814f92299edeb377c34ba40eb2341d589f`
+- Effective content head that review covered: `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`
+- Head relation: commits after `2cd692f...` change only this Implementation Agent evidence file.
+- Active threads:
+  - `PRRT_kwDOSX65IM6MU7dX`: `390` uses a fog-lamp rule for a low-beam question;
+  - `PRRT_kwDOSX65IM6MU7da`: `422` uses abdomen-only text that cannot distinguish pelvis from thighs;
+  - `PRRT_kwDOSX65IM6MU7dd`: `430` uses a railway-crossing rule for a narrow-incline question;
+  - `PRRT_kwDOSX65IM6MU7df`: Architect-owned live status is stale;
+  - `PRRT_kwDOSX65IM6MBvab`: runtime imports full review-only placement shards.
+- Formal disposition: all five findings are accepted as blocking tasks in one Architect return. Architect return count is `5 / 10`.
+
+Independent Architect evidence:
+
+- `390`: canonical image `b181.jpg` shows rain. Exact existing anchor: `ch3-adverse-conditions` / `rain` / `itemsRu[1]` — `Включать ближний свет и использовать стеклоочистители и обдув, чтобы сохранять обзор.`
+- `422`: exact existing strongest anchor: `app3-safety-elements` / `seatbelt-source-visual` / term `Debe colocarse sobre los huesos de la cadera` / `cards.0.termTranslations.2.translationRu` — `Нижняя лямка должна лежать на костях таза, ниже живота.`
+- `430`: canonical image `b108.jpg` shows B ascending. Exact existing anchor: `ch3-right-of-way` / `other-priority-situations` / `itemsRu[1]` — the narrow-road incline rule granting priority to the ascending vehicle.
+- Full reviewed shards total `3,135,773` raw bytes. `src/data/manualTicketPlacement.ts` imports all five, and the built entry chunk contains `auditConclusionRu`, `searchedConcepts`, and `selectionRationaleRu` for all `375` current fallbacks although runtime consumes only question/page IDs.
+
+Atomic package A — semantic corrections:
+
+- [x] Correct `b-fallback-390` to the exact low-beam/rain anchor.
+- [x] Correct `b-fallback-422` to the exact pelvic-bones anchor.
+- [x] Correct `b-fallback-430` to the exact narrow-incline/ascending-vehicle anchor.
+- [x] Re-review each against canonical image, answer, and distractors; refresh direct-answer and contradiction evidence.
+- [x] Update topic route/assignment only if required for `390`.
+- [x] Refresh reviewed manifest, deterministic evidence, totals, destinations, and density.
+- [x] Add negative fixtures for the fog-lamp, abdomen-only, and railway-crossing anchors and positive exact-anchor fixtures.
+
+Atomic package B — lean runtime projection:
+
+- [x] Add a pure deterministic runtime-projection builder.
+- [x] Generate `content/manual-ticket-placement/manual-ticket-placement.runtime.json`.
+- [x] Restrict the runtime schema to top-level `schemaVersion`, `contentKind`, `records`, and per-record `questionId`, sorted unique `pageIds`.
+- [x] Validate exact canonical-JSON equality against the reviewed-shard projection.
+- [x] Reject missing, stale, reordered, duplicate, extra, or incomplete projection data.
+- [x] Reject every non-allowlisted governance/review/audit/rationale/anchor/fingerprint/route/basis/topic/candidate field.
+- [x] Change `src/data/manualTicketPlacement.ts` to import only the lean runtime projection.
+- [x] Prove runtime page-to-question lookup equality and deterministic ordering.
+- [x] Build cleanly and prove the entry bundle contains none of `auditConclusionRu`, `selectionRationaleRu`, `searchedConcepts`, `candidatesReviewed`, or `contradictionReview` from placement data.
+- [x] Update backend durable documentation and this process evidence.
+
+Exact allowed files:
+
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/topic-routes.json` only if required for `390`;
+- `content/manual-ticket-placement/ticket-topic-assignments.json` only if required for `390`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/manual-ticket-placement/manual-ticket-placement.runtime.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs`;
+- `src/data/manualTicketPlacement.ts`;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if density fixtures change;
+- `docs_project/project/backend/backend-docs.md`;
+- `specs/038-manual-ticket-placement/tasks.md`.
+
+Forbidden files/actions:
+
+- no protected manual prose/images, canonical ticket/translation/explanation/answer/difficulty/image changes, route inventory, protected baseline, `src/App.tsx`, CSS, package/lockfile, frontend-doc, or unrelated-test changes;
+- no IA edits to `spec.md` or `plan.md`;
+- no Architect commit, push, review, thread resolution, merge, or final validation.
+
+Acceptance evidence:
+
+- the exact `390`, `422`, and `430` propositions pass; the three reported wrong anchors fail;
+- reviewed manifest, contradiction audit, deterministic evidence, mapping totals, and current process status are fresh;
+- runtime projection is exact, minimal, deterministic, duplicate-free, and behaviorally equal to reviewed shards;
+- runtime source imports no reviewed shard and clean bundle markers are absent;
+- protected/canonical diff guards are empty;
+- focused tests and all required repository checks pass on a new effective content head.
+
+Implementation Agent evidence:
+
+- Implementation completed at: `2026-06-25T19:23:20Z`.
+- `390`: moved from the fog-lamp relation to `ch3-adverse-conditions/rain/itemsRu[1]`; reviewed topic assignment changed to `adverse-weather-and-visibility`.
+- `422`: moved from the abdomen-injury relation to `app3-safety-elements/seatbelt-source-visual/cards.0.termTranslations.2.translationRu`, which explicitly names pelvic bones below the abdomen.
+- `430`: moved from the railway-crossing exception to `ch3-right-of-way/other-priority-situations/itemsRu[1]`, which grants priority to the ascending vehicle on a narrow incline.
+- All three remain `answer-bearing` with fresh `F038-RA-005-*` contradiction records, image-aware direct-answer assertions, and distractor-aware rationales.
+- Reviewed source resealed: `460` records, `85` answer-bearing, `375` audited fallbacks, `0` unresolved contradictions; density remains `1/12/45` across `31` destination routes.
+- Runtime projection: `460` sorted records, only `schemaVersion`, `contentKind`, `records`, `questionId`, and sorted unique `pageIds`; committed size `49,477` bytes versus `3,134,985` bytes for the five review shards.
+- Runtime import reads only `manual-ticket-placement.runtime.json`; lookup equality with reviewed shards is covered by tests.
+- Focused manual-placement suite: `16/16` passed, including exact wrong-anchor mutations, projection freshness/order/duplicate/allowlist failures, lookup equality, import boundary, and clean Vite bundle-marker absence.
+- Full unit/content suite: `467/467` passed.
+- Full Playwright: `88/88` passed.
+- `pnpm run validate:manual-ticket-placement`, `pnpm run validate:content`, `pnpm run build`, `pnpm run test:e2e`, and `CI=1 pnpm run preflight` passed.
+- Clean entry bundle `dist/assets/index-B5aKrTyu.js` contains none of `auditConclusionRu`, `selectionRationaleRu`, `searchedConcepts`, `candidatesReviewed`, or `contradictionReview`.
+- Protected/canonical diff against assigned current head `002f98814f92299edeb377c34ba40eb2341d589f`: empty.
+- `git diff --check`: passed.
+- Expected dead end: the first `generate:manual-ticket-placement --write` run created the new projection but correctly failed the newly added `390`/`422`/`430` invariants while old reviewed records were still present; after exact corrections and manifest reseal, generation and validation passed.
+- Implementation Agent feedback for Architect: none.
+- Review threads resolved, review submitted, final validation performed, or merge performed by Implementation Agent: `no`.
+
+Staleness and handoff:
+
+- Any implementation change makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization.
+- A fresh Review Agent pass after both packages is mandatory.
+- Final Architect validation must not begin until fresh review passes, required checks are green, all blocking threads are resolved/outdated, and process memory is current.
+- Any non-evidence change after fresh review or final validation makes that evidence stale.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
 ### F038-IA-003 Implementation Agent resolution
 
 - Implementation date: `2026-06-24`.
@@ -1132,10 +1239,10 @@ Staleness and handoff:
 
 ## Final Validation Records
 
-Architect return count: `4 / 10`
+Architect return count: `5 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-004 replacement Implementation Agent remediation is complete and pushed at effective content head 2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea: 104 screened, 85 answer-bearing, 19 justified retained fallbacks, 0 unresolved. Tasks-only evidence updates follow that content head; fresh review, current-head checks, thread disposition, and final role validations remain`.
+Process status: `F038-RA-005 implementation and local verification are complete. Exact corrections for 390/422/430 and the lean runtime projection are ready for the implementation commit and push; an evidence-only tasks.md commit will then record exact effective/current heads. Fresh review, current-head checks, thread disposition, and later final role validations remain`.
 
-Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-004` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
+Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-005` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
