@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `002f98814f92299edeb377c34ba40eb2341d589f`, effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`.
-- Current process status: Implementation Agent completed and verified bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection; implementation commit/push, evidence-only head recording, fresh review, thread disposition, and final role validations remain.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the exact pushed evidence-only current head is returned in the Implementation Agent handoff.
+- Current process status: Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection; this tasks-only evidence update follows the effective content head. Fresh review, thread disposition, current-head checks, and final role validations remain.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1177,6 +1177,9 @@ Implementation Agent evidence:
 Staleness and handoff:
 
 - Any implementation change makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization.
+- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`.
+- The following commit changes only this Implementation Agent process record; its exact pushed current head is returned in the handoff.
+- Effective-head-to-current-head guard: the post-effective-head diff is limited to `specs/038-manual-ticket-placement/tasks.md`.
 - A fresh Review Agent pass after both packages is mandatory.
 - Final Architect validation must not begin until fresh review passes, required checks are green, all blocking threads are resolved/outdated, and process memory is current.
 - Any non-evidence change after fresh review or final validation makes that evidence stale.
@@ -1243,6 +1246,6 @@ Architect return count: `5 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-005 implementation and local verification are complete. Exact corrections for 390/422/430 and the lean runtime projection are ready for the implementation commit and push; an evidence-only tasks.md commit will then record exact effective/current heads. Fresh review, current-head checks, thread disposition, and later final role validations remain`.
+Process status: `F038-RA-005 implementation and local verification are complete and pushed at effective content head c32d6d93998feaa03ab371378a067acddf608cb4. A tasks-only evidence commit follows it; its exact pushed current head is returned in the Implementation Agent handoff. Fresh review, current-head checks, thread disposition, and later final role validations remain`.
 
 Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-005` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
