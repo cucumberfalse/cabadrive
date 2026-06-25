@@ -9,7 +9,7 @@
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
 - Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`, effective content head `0f777a89450e26608b3eeda7c9198959ce576179`.
-- Current process status: replacement Implementation Agent completed and fully verified the bounded `F038-RA-004` remediation locally; publication of the new effective content head and a following evidence-only head remain before fresh review, current-head checks, thread disposition, and later final role validations.
+- Current process status: replacement Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-004` remediation at effective content head `2cd692fe6ce076389a9ebd916753c861d681c04b`; this tasks-only evidence update follows it before fresh review, current-head checks, thread disposition, and later final role validations.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1071,7 +1071,9 @@ Staleness and handoff:
   - `git diff --check`: passed.
 - Dead end: substring-only containment treated the short answer `Да` as part of `выдачей`; phrase-boundary normalization removed the false candidate without weakening exact sign labels, numeric/unit equivalence, or manually reviewed semantic hooks.
 - Implementation Agent feedback requiring Architect disposition: `none`.
-- Effective content head: pending the implementation commit below; the following commit must be evidence-only and change only this Implementation Agent process record.
+- Effective content head: `2cd692fe6ce076389a9ebd916753c861d681c04b`.
+- Current implementation head at evidence capture: `2cd692fe6ce076389a9ebd916753c861d681c04b`.
+- The following commit is evidence-only and changes only this Implementation Agent process record; its exact pushed head is returned in the Implementation Agent handoff.
 - Review/thread resolution/final role validation/merge performed by Implementation Agent: `no`.
 
 ### F038-IA-003 Implementation Agent resolution
@@ -1134,6 +1136,6 @@ Architect return count: `4 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-004 replacement Implementation Agent remediation is locally complete and fully verified: 104 screened, 85 answer-bearing, 19 justified retained fallbacks, 0 unresolved. Implementation/effective-head publication and a following tasks-only evidence commit remain before fresh review, current-head checks, thread disposition, and final role validations`.
+Process status: `F038-RA-004 replacement Implementation Agent remediation is complete and pushed at effective content head 2cd692fe6ce076389a9ebd916753c861d681c04b: 104 screened, 85 answer-bearing, 19 justified retained fallbacks, 0 unresolved. This tasks-only evidence update follows that content head; fresh review, current-head checks, thread disposition, and final role validations remain`.
 
 Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-004` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
