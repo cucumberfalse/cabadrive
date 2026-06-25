@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head: `#204` / `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a`
-- Process status: `review-blocked` by Review Agent review `4565465801`; unresolved threads `PRRT_kwDOSX65IM6MBYWW`, `PRRT_kwDOSX65IM6MBYWc`, and `PRRT_kwDOSX65IM6MBYWh` require the bounded `F038-RA-003` remediation
-- Effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8` and its later evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a` are stale for merge readiness because the current fallback ledger is incomplete and tickets `042` and `126` regress approved placement requirements
+- Current PR/head: `#204` / `f6f9484d3869c7beea957cd3458c826cb008d467`
+- Process status: `review-blocked` by Review Agent review `4565608440`; unresolved threads `PRRT_kwDOSX65IM6MBsV4` and `PRRT_kwDOSX65IM6MBsV8` require bounded `F038-RA-004` remediation
+- Effective content head `0f777a89450e26608b3eeda7c9198959ce576179` is followed only by evidence update `f6f9484d3869c7beea957cd3458c826cb008d467`; `F038-RA-003` ledger and `042`/`126` work is complete, but containment/equivalence contradictions and stale live process status block merge readiness
 
 ## Goal
 
@@ -498,6 +498,57 @@ The selected candidate must exactly equal the committed placement page and ancho
 
 Architect return count becomes `3 / 10`. This disposition is not final Architect validation.
 
+### F038-RA-004 Architect disposition
+
+Disposition: `task` — both findings in blocking Review Agent review `4565608440` are accepted.
+
+Reviewed state:
+
+- PR: `#204`;
+- reviewed/current head: `f6f9484d3869c7beea957cd3458c826cb008d467`;
+- effective content head: `0f777a89450e26608b3eeda7c9198959ce576179`;
+- `f6f9484d3869c7beea957cd3458c826cb008d467` is an evidence-only successor to that effective content head;
+- active threads: `PRRT_kwDOSX65IM6MBsV4` and `PRRT_kwDOSX65IM6MBsV8`.
+
+Independent Architect verification on `2026-06-24` confirmed:
+
+- `PRRT_kwDOSX65IM6MBsV4`: the validator verifies ledger shape, fingerprints, and selected-placement identity but does not reject a fallback whose rejected candidate independently supplies the canonical answer. `b-fallback-001` rejects exact learner-visible text `Поворот направо` while the canonical Russian correct answer is `Поворот направо.` and selects generic bicycle-introduction prose. The same defect is directly reproducible for `b-fallback-065` (`Извилистая дорога`) and `b-fallback-086` (the exact approximately-eight-hours sleep instruction).
+- A normalization-based independent scan of all five current shards found `39` rejected-candidate/canonical-answer containment candidates, including every reviewer-named ID `001`, `065`, `086`, `120`, `144`, `203`, `350`, `380`, `401`, and `456`. This is a screening set, not an automatic answer-bearing verdict: examples such as `026` (`не отвечать автоматически 60 км/ч...`) and `202` (generic `железнодорожный переезд` without the required more-than-two-tracks distinction) contain answer text but are not necessarily self-sufficient.
+- `PRRT_kwDOSX65IM6MBsV8`: `tasks.md` still names `F038-RA-003` as unimplemented at old head `0dc37b6...`, although its implementation record identifies effective content head `0f777a89450e26608b3eeda7c9198959ce576179`, current evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`, complete ledgers, and restored `042`/`126` invariants.
+
+Formal dispositions:
+
+1. `PRRT_kwDOSX65IM6MBsV4` → `task`: detect and independently re-audit every rejected-candidate/canonical-answer containment or semantic-equivalence contradiction across all `460` records. Reclassify to `answer-bearing` whenever an exact eligible learner-visible anchor independently supplies the canonical answer under the conservative gate. Retain a fallback only when the apparent match is negated, scoped to a different condition, incomplete, ambiguous without missing context, or otherwise not self-sufficient, and record the exact ticket-specific limitation.
+2. `PRRT_kwDOSX65IM6MBsV8` → `task`: reconcile live process status, current/effective heads, completed `F038-RA-003` evidence, the new `F038-RA-004` blocker, remaining review/check/thread/final-validation work, and audit-derived answer-bearing/fallback totals.
+
+#### Contradiction audit contract
+
+The implementation must add a deterministic advisory screen over every rejected exact candidate using canonical Spanish and Russian correct-answer forms. The screen must report, at minimum:
+
+- normalized exact equality after case, punctuation, whitespace, and diacritic normalization;
+- rejected anchor contains the complete canonical answer;
+- canonical answer contains the rejected anchor;
+- numeric/unit equivalence;
+- manually reviewed semantic equivalence such as an exact sign label or synonymous learner-visible formulation.
+
+The screen must not choose a placement basis, approve a record, or rewrite review evidence. Every reported candidate requires an explicit reviewed disposition:
+
+- `supplies-canonical-answer`: the anchor is self-sufficient for the complete question and relevant distractors; the committed placement must use that exact anchor and `placementBasis: "answer-bearing"`, with fresh `directAnswerAssertionRu`, distractor-aware `reviewerRationaleRu`, review metadata, and fingerprints; or
+- `not-self-sufficient`: the fallback may remain only with ticket-specific evidence naming the overlap and why it cannot determine the complete answer. Allowed reason classes are limited to negated/warning text, incomplete or broader/narrower proposition, wrong scope/condition, ambiguity without required visual or textual context, or another equally explicit semantic limitation.
+
+A generic statement that an exact matching text “does not report the answer” is invalid. If an answer-bearing rejected candidate exists, generic topic prose cannot remain selected merely because it is the route default. The answer-bearing anchor becomes the placement even when it changes the page/anchor previously selected for fallback. Topic-route and override evidence must be updated coherently rather than used to block the correct answer-bearing placement.
+
+#### Required fixtures
+
+- Negative rejection fixtures must fail validation when `001`, `065`, or `086` remains a fallback while rejecting the exact answer-bearing anchor.
+- A positive answer-bearing fixture must pass only when the exact anchor is selected, the fallback ledger is removed for that placement, and direct-answer/distractor-aware evidence is present.
+- Positive retained-fallback fixtures must cover at least `026` (negated/warning overlap) and `202` (partial answer missing the more-than-two-tracks condition), with explicit `not-self-sufficient` dispositions.
+- Mutation fixtures must fail when a contradiction is undisposed, a disposition is generic, a purported `not-self-sufficient` reason conflicts with exact self-sufficient text, an answer-bearing reclassification retains fallback approval fields, or manifest/evidence totals are stale.
+
+All `39` currently detected lexical candidates and any additional semantic-equivalence candidates found during review must be audited. The final answer-bearing/fallback counts are audit results, not preset targets.
+
+Architect return count becomes `4 / 10`. This disposition is not final Architect validation.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -738,6 +789,10 @@ Negative exception tests must prove that validation fails when:
 - a fallback page is outside the assigned curated route, its anchor is not one of the route's curated anchors, or a non-default destination lacks a reviewed ticket-specific override;
 - global lexical/semantic ranking selects or approves a committed topic route, page, anchor, placement basis, or rationale;
 - any fresh-review regression fixture (`037`, `064`, `085`, `165`, `202`, `281`, `349`, `350`, `404`, `431`) restores the reported false classification or destination.
+- a fallback rejects a candidate that independently supplies the canonical answer;
+- a rejected candidate has canonical-answer containment/equivalence without an explicit reviewed `supplies-canonical-answer` or ticket-specific `not-self-sufficient` disposition;
+- a `not-self-sufficient` disposition uses generic denial, contradicts the exact anchor text, or omits the limiting scope/condition/context;
+- an answer-bearing reclassification retains fallback-only evidence or does not update manifest, evidence totals, and process status.
 
 ## Required Verification Evidence
 
@@ -772,4 +827,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, either ticket-specific invariant for `042` or `126` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4565465801`, effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8`, and evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a` are stale for merge authorization. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, either ticket-specific invariant for `042` or `126` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Blocking review `4565608440`, current head `f6f9484d3869c7beea957cd3458c826cb008d467`, and effective content head `0f777a89450e26608b3eeda7c9198959ce576179` are stale for merge authorization once `F038-RA-004` implementation changes content. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.

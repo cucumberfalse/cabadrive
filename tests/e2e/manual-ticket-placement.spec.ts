@@ -7,11 +7,11 @@ test("manual route appends canonical tickets and mounts dense cards only after o
   const appendix = page.getByTestId("manual-ticket-appendix");
   await expect(manual).toHaveAttribute("data-manual-section-id", "ch3-right-of-way");
   await expect(appendix).toHaveAttribute("data-page-id", "ch3-right-of-way");
-  await expect(appendix).toHaveAttribute("data-ticket-count", "33");
+  await expect(appendix).toHaveAttribute("data-ticket-count", "35");
   await expect(appendix.getByTestId("manual-ticket-disclosure")).toBeVisible();
   await expect(appendix.locator(".materials-ticket")).toHaveCount(0);
-  await appendix.getByText("Показать билеты (33)").click();
-  await expect(appendix.locator(".materials-ticket")).toHaveCount(33);
+  await appendix.getByText("Показать билеты (35)").click();
+  await expect(appendix.locator(".materials-ticket")).toHaveCount(35);
 
   const ordering = await page.getByTestId("manual-guide-content").evaluate((element) => {
     const article = element.querySelector('[data-testid="manual-guide-section"]');
@@ -28,11 +28,11 @@ test("manual route appends canonical tickets and mounts dense cards only after o
   await page.goto("/#manual-section-app1-safety-elements");
   const nextAppendix = page.getByTestId("manual-ticket-appendix");
   const nextDisclosure = nextAppendix.getByTestId("manual-ticket-disclosure");
-  await expect(nextAppendix).toHaveAttribute("data-ticket-count", "47");
+  await expect(nextAppendix).toHaveAttribute("data-ticket-count", "45");
   await expect(nextDisclosure).not.toHaveAttribute("open", "");
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(0);
-  await nextDisclosure.getByText("Показать билеты (47)").click();
-  await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(47);
+  await nextDisclosure.getByText("Показать билеты (45)").click();
+  await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(45);
 });
 
 test("fallback and image-backed tickets preserve canonical content", async ({ page }) => {

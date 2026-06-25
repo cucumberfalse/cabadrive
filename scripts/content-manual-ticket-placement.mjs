@@ -54,10 +54,24 @@ const records = loadShardEntries(root, "content/manual-ticket-placement/placemen
 const topicRoutes = readJson(topicRoutesPath);
 const ticketTopicAssignments = readJson(ticketTopicAssignmentsPath);
 const generatedSummary = placementSummary(records, generatedPages);
+const preliminaryValidation = validatePlacementData({
+  root,
+  corpus,
+  questions,
+  translations,
+  pageInventory: generatedPages,
+  baseline: generatedBaseline,
+  records,
+  evidence: undefined,
+  reviewedManifest: readJson(reviewedManifestPath),
+  topicRoutes,
+  ticketTopicAssignments
+});
 const generatedEvidence = {
   schemaVersion: PLACEMENT_SCHEMA_VERSION,
   generatedAt: GENERATED_AT,
   summary: generatedSummary,
+  contradictionAudit: preliminaryValidation.contradictionAudit,
   counters: {
     unknownTickets: 0,
     unknownPages: 0,
@@ -80,7 +94,9 @@ const generatedEvidence = {
     incompleteFallbackLedgers: 0,
     staleFallbackCandidateEvidence: 0,
     selectedCandidateMismatches: 0,
-    ticketSpecificInvariantFailures: 0
+    ticketSpecificInvariantFailures: 0,
+    undisposedAnswerOverlapContradictions: preliminaryValidation.contradictionAudit.unresolvedIds.length,
+    rejectedSelfSufficientAnswerBearingCandidates: preliminaryValidation.contradictionAudit.rejectedSelfSufficientAnswerBearingCount
   }
 };
 

@@ -3,8 +3,11 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
+  F038_RA004_LEXICAL_BASELINE_IDS,
+  F038_RA004_SEMANTIC_EQUIVALENCE_IDS,
   createPageInventory,
   createPlacementCandidates,
+  detectRejectedCandidateAnswerOverlap,
   loadManualCorpus,
   loadShardEntries,
   readJson,
@@ -53,8 +56,14 @@ test("reviewed manual placement covers all tickets through sealed curated topic 
   assert.equal(result.summary.canonicalQuestionCount, 460);
   assert.equal(result.summary.placementRelationCount, 460);
   assert.deepEqual(result.summary.questionsByPlacementCount, { 1: 460, 2: 0, 3: 0 });
-  assert.equal(result.summary.answerBearingPlacementCount, 0);
-  assert.equal(result.summary.ownerApprovedThematicFallbacks.length, 460);
+  assert.equal(result.summary.answerBearingPlacementCount, 85);
+  assert.equal(result.summary.ownerApprovedThematicFallbacks.length, 375);
+  assert.equal(result.contradictionAudit.architectLexicalBaselineCount, 39);
+  assert.equal(result.contradictionAudit.reviewedSemanticEquivalenceCount, 65);
+  assert.equal(result.contradictionAudit.screenedQuestionCount, 104);
+  assert.equal(result.contradictionAudit.reclassifiedAnswerBearingIds.length, 85);
+  assert.equal(result.contradictionAudit.retainedFallbackIds.length, 19);
+  assert.deepEqual(result.contradictionAudit.unresolvedIds, []);
   assert.equal(topicRoutes.routes.length, 38);
   assert.equal(ticketTopicAssignments.entries.length, 460);
   assert.ok(result.summary.ownerApprovedThematicFallbacks.some(({ questionId }) => questionId === "b-fallback-011"));
@@ -99,9 +108,7 @@ test("validator rejects missing, stale, or synthetic reviewed-manifest evidence"
 
 test("validator rejects strict records without direct-answer evidence, synthetic reviewers, and stale exact anchors", () => {
   const unsupportedStrict = structuredClone(records);
-  unsupportedStrict[0].placements[0].placementBasis = "answer-bearing";
-  delete unsupportedStrict[0].placements[0].fallbackEvidence;
-  delete unsupportedStrict[0].placements[0].thematicBasisRu;
+  delete unsupportedStrict[0].placements[0].directAnswerAssertionRu;
   assert.ok(validate(unsupportedStrict).errors.some((error) => error.includes("strict placement lacks direct-answer evidence")));
 
   const syntheticReviewer = structuredClone(records);
@@ -128,31 +135,36 @@ test("validator rejects malformed fallbacks and support-page destinations", () =
 
 test("validator requires complete ticket-specific fallback ledgers", () => {
   const missingConcepts = structuredClone(records);
-  delete missingConcepts[0].placements[0].fallbackEvidence.searchedConcepts;
+  const missingConceptsFallback = missingConcepts.find((record) => record.questionId === "b-fallback-126").placements[0].fallbackEvidence;
+  delete missingConceptsFallback.searchedConcepts;
   assert.ok(validate(missingConcepts).errors.some((error) => error.includes("two distinct searched concepts")));
 
   const duplicatedConcepts = structuredClone(records);
-  const duplicatedFallback = duplicatedConcepts[0].placements[0].fallbackEvidence;
+  const duplicatedFallback = duplicatedConcepts.find((record) => record.questionId === "b-fallback-126").placements[0].fallbackEvidence;
   duplicatedFallback.searchedConcepts = [duplicatedFallback.searchedConcepts[0], duplicatedFallback.searchedConcepts[0]];
   assert.ok(validate(duplicatedConcepts).errors.some((error) => error.includes("two distinct searched concepts")));
 
   const noRejectedCandidate = structuredClone(records);
-  noRejectedCandidate[0].placements[0].fallbackEvidence.candidatesReviewed =
-    noRejectedCandidate[0].placements[0].fallbackEvidence.candidatesReviewed.filter(
+  const noRejectedFallback = noRejectedCandidate.find((record) => record.questionId === "b-fallback-126").placements[0].fallbackEvidence;
+  noRejectedFallback.candidatesReviewed =
+    noRejectedFallback.candidatesReviewed.filter(
       (candidate) => candidate.outcome !== "rejected"
     );
   assert.ok(validate(noRejectedCandidate).errors.some((error) => error.includes("one selected and at least one rejected")));
 
   const staleCandidate = structuredClone(records);
-  staleCandidate[0].placements[0].fallbackEvidence.candidatesReviewed[1].anchorTextAtReview = "stale";
+  staleCandidate.find((record) => record.questionId === "b-fallback-126")
+    .placements[0].fallbackEvidence.candidatesReviewed[1].anchorTextAtReview = "stale";
   assert.ok(validate(staleCandidate).errors.some((error) => error.includes("stale exact-anchor evidence")));
 
   const mismatchedSelected = structuredClone(records);
-  mismatchedSelected[0].placements[0].fallbackEvidence.candidatesReviewed[0].pageId = "ch3-speed";
+  mismatchedSelected.find((record) => record.questionId === "b-fallback-126")
+    .placements[0].fallbackEvidence.candidatesReviewed[0].pageId = "ch3-speed";
   assert.ok(validate(mismatchedSelected).errors.some((error) => error.includes("differs from the committed placement")));
 
   const genericConclusion = structuredClone(records);
-  genericConclusion[0].placements[0].fallbackEvidence.auditConclusionRu =
+  genericConclusion.find((record) => record.questionId === "b-fallback-126")
+    .placements[0].fallbackEvidence.auditConclusionRu =
     "Общий вывод без идентификатора и формулировки конкретного билета.";
   assert.ok(validate(genericConclusion).errors.some((error) => error.includes("generic")));
 });
@@ -165,7 +177,7 @@ test("validator rejects fallback pages or anchors outside the reviewed route", (
   assert.ok(validate(wrongPage).errors.some((error) => error.includes("outside its reviewed curated route")));
 
   const wrongAnchor = structuredClone(records);
-  const fatigue = wrongAnchor.find((record) => record.questionId === "b-fallback-404");
+  const fatigue = wrongAnchor.find((record) => record.questionId === "b-fallback-349");
   fatigue.placements[0].anchor = structuredClone(records[0].placements[0].anchor);
   assert.ok(validate(wrongAnchor).errors.some((error) => error.includes("outside its reviewed curated route")));
 
@@ -178,31 +190,31 @@ test("validator rejects fallback pages or anchors outside the reviewed route", (
 
 test("fresh and prior review regression tickets use conservative classifications and closest curated routes", () => {
   const expected = {
-    "b-fallback-003": ["emergency-response-and-crash-scene", "ch2-incident-obligations"],
-    "b-fallback-011": ["warning-signs", "app4-signs-warning"],
-    "b-fallback-037": ["bicycles-and-micromobility", "ch1-bicycle"],
-    "b-fallback-042": ["information-signs", "app4-signs-informational"],
-    "b-fallback-064": ["mirrors-blind-spots-and-visibility", "app1-safety-elements"],
-    "b-fallback-085": ["right-of-way-basic-intersections", "ch3-right-of-way"],
-    "b-fallback-096": ["emergency-response-and-crash-scene", "ch2-incident-obligations"],
-    "b-fallback-165": ["lane-choice-and-lane-changes", "ch3-highways"],
-    "b-fallback-202": ["warning-signs", "app4-signs-warning"],
-    "b-fallback-281": ["right-of-way-basic-intersections", "ch3-right-of-way"],
-    "b-fallback-323": ["occupant-protection", "app1-safety-elements"],
-    "b-fallback-349": ["vehicle-lights-and-signaling", "ch3-lights"],
-    "b-fallback-350": ["driver-hand-signals", "ch1-bicycle"],
-    "b-fallback-404": ["fatigue-distraction-and-attention", "ch4-sleep-fatigue"],
-    "b-fallback-431": ["alcohol-drugs-and-impairment", "ch4-alcohol-drugs"],
-    "b-fallback-454": ["occupant-protection", "app1-safety-elements"]
+    "b-fallback-003": ["emergency-response-and-crash-scene", "ch2-incident-obligations", "answer-bearing"],
+    "b-fallback-011": ["warning-signs", "app4-signs-warning", "owner-approved-thematic-fallback"],
+    "b-fallback-037": ["bicycles-and-micromobility", "ch1-bicycle", "owner-approved-thematic-fallback"],
+    "b-fallback-042": ["information-signs", "app4-signs-informational", "answer-bearing"],
+    "b-fallback-064": ["mirrors-blind-spots-and-visibility", "app1-safety-elements", "owner-approved-thematic-fallback"],
+    "b-fallback-085": ["right-of-way-basic-intersections", "ch3-right-of-way", "owner-approved-thematic-fallback"],
+    "b-fallback-096": ["emergency-response-and-crash-scene", "ch2-incident-obligations", "owner-approved-thematic-fallback"],
+    "b-fallback-165": ["lane-choice-and-lane-changes", "ch3-highways", "owner-approved-thematic-fallback"],
+    "b-fallback-202": ["warning-signs", "app4-signs-warning", "owner-approved-thematic-fallback"],
+    "b-fallback-281": ["right-of-way-basic-intersections", "ch3-right-of-way", "owner-approved-thematic-fallback"],
+    "b-fallback-323": ["occupant-protection", "app1-safety-elements", "owner-approved-thematic-fallback"],
+    "b-fallback-349": ["vehicle-lights-and-signaling", "ch3-lights", "owner-approved-thematic-fallback"],
+    "b-fallback-350": ["driver-hand-signals", "ch1-bicycle", "answer-bearing"],
+    "b-fallback-404": ["fatigue-distraction-and-attention", "ch4-sleep-fatigue", "answer-bearing"],
+    "b-fallback-431": ["alcohol-drugs-and-impairment", "ch4-alcohol-drugs", "answer-bearing"],
+    "b-fallback-454": ["occupant-protection", "app1-safety-elements", "owner-approved-thematic-fallback"]
   };
   const assignmentById = new Map(ticketTopicAssignments.entries.map((entry) => [entry.questionId, entry]));
   const recordById = new Map(records.map((record) => [record.questionId, record]));
-  for (const [questionId, [topicRouteId, pageId]] of Object.entries(expected)) {
+  for (const [questionId, [topicRouteId, pageId, placementBasis]] of Object.entries(expected)) {
     const record = recordById.get(questionId);
     assert.equal(assignmentById.get(questionId).topicRouteId, topicRouteId);
     assert.equal(record.topicRouteId, topicRouteId);
     assert.equal(record.placements[0].pageId, pageId);
-    assert.equal(record.placements[0].placementBasis, "owner-approved-thematic-fallback");
+    assert.equal(record.placements[0].placementBasis, placementBasis);
   }
 });
 
@@ -226,10 +238,9 @@ test("known false mappings 003, 011, and 042 cannot return", () => {
 test("tickets 042 and 126 preserve their exact approved anchors and comparison ledgers", () => {
   const record042 = records.find((record) => record.questionId === "b-fallback-042");
   assert.equal(record042.topicRouteId, "information-signs");
+  assert.equal(record042.placements[0].placementBasis, "answer-bearing");
   assert.equal(record042.placements[0].anchorTextAtReview, "автовокзал");
-  assert.ok(record042.placements[0].fallbackEvidence.candidatesReviewed.some((candidate) =>
-    candidate.outcome === "rejected" && candidate.pageId === "ch1-public-transport-system"
-  ));
+  assert.equal(record042.placements[0].fallbackEvidence, undefined);
 
   const record126 = records.find((record) => record.questionId === "b-fallback-126");
   assert.equal(record126.placements[0].anchor.kind, "manual-list-item");
@@ -255,6 +266,46 @@ test("tickets 042 and 126 preserve their exact approved anchors and comparison l
   const placement126 = alternate126.find((record) => record.questionId === "b-fallback-126").placements[0];
   placement126.anchor = structuredClone(records[0].placements[0].anchor);
   assert.ok(validate(alternate126).errors.some((error) => error.includes("oil-check invariant")));
+});
+
+test("F038-RA-004 rejects undisposed overlaps and seals lexical plus semantic review outcomes", () => {
+  assert.equal(F038_RA004_LEXICAL_BASELINE_IDS.length, 39);
+  assert.equal(F038_RA004_SEMANTIC_EQUIVALENCE_IDS.length, 65);
+
+  for (const questionId of ["b-fallback-001", "b-fallback-065", "b-fallback-086"]) {
+    const fixture = structuredClone(records);
+    const record = fixture.find((entry) => entry.questionId === questionId);
+    const fallbackTemplate = structuredClone(
+      fixture.find((entry) => entry.questionId === "b-fallback-026").placements[0]
+    );
+    record.placements[0].placementBasis = "owner-approved-thematic-fallback";
+    record.placements[0].fallbackEvidence = fallbackTemplate.fallbackEvidence;
+    record.placements[0].thematicBasisRu = fallbackTemplate.thematicBasisRu;
+    delete record.placements[0].contradictionReview;
+    assert.ok(validate(fixture).errors.some((error) => error.includes("exact self-sufficient answer-bearing candidate remains rejected")));
+  }
+
+  const fallback026 = records.find((record) => record.questionId === "b-fallback-026");
+  const candidate026 = fallback026.placements[0].fallbackEvidence.candidatesReviewed.find((candidate) => candidate.outcome === "rejected");
+  const question026 = questions.find((question) => question.id === "b-fallback-026");
+  const translation026 = translations.find((translation) => translation.questionId === "b-fallback-026");
+  assert.ok(detectRejectedCandidateAnswerOverlap(candidate026, question026, translation026).length > 0);
+  assert.equal(candidate026.answerOverlapDisposition.limitationClass, "negated-or-warning");
+
+  const fallback202 = records.find((record) => record.questionId === "b-fallback-202");
+  const candidate202 = fallback202.placements[0].fallbackEvidence.candidatesReviewed.find((candidate) => candidate.outcome === "rejected");
+  assert.equal(candidate202.answerOverlapDisposition.limitationClass, "incomplete-proposition");
+  assert.match(candidate202.answerOverlapDisposition.limitationRu, /более чем двумя путями/u);
+
+  const undisposed = structuredClone(records);
+  const undisposedCandidate = undisposed.find((record) => record.questionId === "b-fallback-026")
+    .placements[0].fallbackEvidence.candidatesReviewed.find((candidate) => candidate.outcome === "rejected");
+  delete undisposedCandidate.answerOverlapDisposition;
+  assert.ok(validate(undisposed).errors.some((error) => error.includes("lacks a reviewed not-self-sufficient disposition")));
+
+  const staleEvidence = structuredClone(evidence);
+  staleEvidence.contradictionAudit.reclassifiedAnswerBearingIds = [];
+  assert.ok(validate(records, staleEvidence).errors.some((error) => error.includes("contradiction-audit evidence is stale")));
 });
 
 test("runtime source appends tickets after existing page flows and keeps canonical joins", () => {

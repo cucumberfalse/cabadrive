@@ -891,76 +891,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "app4-signs-informational",
           "routeHash": "#manual-section-app4-signs-informational",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "information-signs",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "informational-role",
-            "textPath": "textRu",
-            "textFingerprint": "51b3cfd45e75be4c2b4f4e4db7c1707e09cd623ffedcfb136a6820c3cbe459e4"
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p191-009-gomeria-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "722a42ea1c04eab656173c1b5f9ae8a31b368274285b1a00e25ffd90233c68a8"
           },
-          "anchorTextAtReview": "Информационные знаки помогают ориентироваться: сообщают характеристики дороги, городскую и дорожную номенклатуру, туристическую или сервисную информацию, образовательные сообщения и специальные объявления.",
+          "anchorTextAtReview": "шиномонтаж",
           "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-287 «На какой ориентир указывает показанный дорожный знак?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-informational после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-287",
-            "questionId": "b-fallback-287",
-            "topicRouteId": "information-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿A qué punto de referencia hace alusión la señal que a continuación se presenta?",
-              "На какой ориентир указывает показанный дорожный знак?",
-              "Gomería.",
-              "Шиномонтаж."
+          "directAnswerAssertionRu": "Для b-fallback-287 точный якорь «шиномонтаж» непосредственно подтверждает правильный ответ «Шиномонтаж.» на вопрос «На какой ориентир указывает показанный дорожный знак?».",
+          "reviewerRationaleRu": "Синий информационный знак содержит изображение шины, поэтому он указывает на шиномонтаж или место обслуживания шин. В каталоге Руководства знак подписан «шиномонтаж»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Механический сервис.» и «Автозаправочная станция.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-287",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "normalized-equality"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-informational",
-                "routeHash": "#manual-section-app4-signs-informational",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "informational-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "51b3cfd45e75be4c2b4f4e4db7c1707e09cd623ffedcfb136a6820c3cbe459e4"
-                },
-                "anchorTextAtReview": "Информационные знаки помогают ориентироваться: сообщают характеристики дороги, городскую и дорожную номенклатуру, туристическую или сервисную информацию, образовательные сообщения и специальные объявления.",
-                "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-informational",
-                "routeHash": "#manual-section-app4-signs-informational",
-                "anchor": {
-                  "kind": "manual-sign-entry",
-                  "blockId": "informational-individual-sign-catalog",
-                  "entryId": "app4informational-p191-009-gomeria-catalog-entry",
-                  "textPath": "russianTranslation",
-                  "textFingerprint": "722a42ea1c04eab656173c1b5f9ae8a31b368274285b1a00e25ffd90233c68a8"
-                },
-                "anchorTextAtReview": "шиномонтаж",
-                "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-287 проверен точный текст «шиномонтаж». Он не сообщает ответ «Шиномонтаж.» на вопрос «На какой ориентир указывает показанный дорожный знак?» и по учебному предмету уступает выбранному контексту app4-signs-informational."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-287 по вопросу «На какой ориентир указывает показанный дорожный знак?» проверены канонический ответ «Шиномонтаж.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-287 выбран app4-signs-informational, потому что его точный якорь ближе к предмету вопроса «На какой ориентир указывает показанный дорожный знак?», чем отклонённые кандидаты app4-signs-informational; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-informational",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -978,76 +944,43 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
-          "pageId": "app4-signs-warning",
-          "routeHash": "#manual-section-app4-signs-warning",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "warning-signs",
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "warning-role",
-            "textPath": "textRu",
-            "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+            "kind": "manual-term-translation",
+            "blockId": "regulatory-anexo-panels",
+            "termEs": "SENTIDO DE CIRCULACIÓN (comienzo sentido único)",
+            "textPath": "cards.2.termTranslations.11.translationRu",
+            "textFingerprint": "ab089d35dd173c87bae9db3bbb47156b109ee16ae58a8f8414b30b995d057421"
           },
-          "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-          "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
+          "anchorTextAtReview": "Начало одностороннего движения",
+          "pageContentFingerprint": "e1717765e721e0c00d9fec028a91323f72d84d028fa92826775226a5a1106bcd",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-288 «Что означает этот знак?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-warning после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-288",
-            "questionId": "b-fallback-288",
-            "topicRouteId": "warning-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Qué indica esta señal?",
-              "Что означает этот знак?",
-              "Comienzo de sentido único.",
-              "Начало одностороннего движения."
+          "directAnswerAssertionRu": "Для b-fallback-288 точный якорь «Начало одностороннего движения» непосредственно подтверждает правильный ответ «Начало одностороннего движения.» на вопрос «Что означает этот знак?».",
+          "reviewerRationaleRu": "Знак с одной стрелкой вверх обозначает начало движения в одном направлении по данной дороге. Текст Руководства «Начало одностороннего движения» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Движение запрещено.» и «Начало двустороннего движения.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-288",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "normalized-equality",
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "warning-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
-                },
-                "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-sign-entry",
-                  "blockId": "warning-individual-sign-catalog",
-                  "entryId": "app4warning-p187-025-inicio-de-doble-circulacion-catalog-entry",
-                  "textPath": "russianTranslation",
-                  "textFingerprint": "8478cba6598e837a046b6e6a390baac10fabf7754d7af9f3696af2f915405014"
-                },
-                "anchorTextAtReview": "Начало двустороннего движения",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-288 проверен точный текст «Начало двустороннего движения». Он не сообщает ответ «Начало одностороннего движения.» на вопрос «Что означает этот знак?» и по учебному предмету уступает выбранному контексту app4-signs-warning."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-288 по вопросу «Что означает этот знак?» проверены канонический ответ «Начало одностороннего движения.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-288 выбран app4-signs-warning, потому что его точный якорь ближе к предмету вопроса «Что означает этот знак?», чем отклонённые кандидаты app4-signs-warning; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-warning",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -1065,8 +998,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
@@ -1085,18 +1018,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
           "thematicBasisRu": "Билет b-fallback-289 «Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-289",
+            "auditId": "F038-RA-004-b-fallback-289",
             "questionId": "b-fallback-289",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿Cuál es la velocidad máxima permitida para automóviles particulares en la Avenida Costanera Rafael Obligado que se visualiza en la imagen?",
               "Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?",
@@ -1131,10 +1064,20 @@
                 "anchorTextAtReview": "70 км/ч",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-289 проверен точный текст «70 км/ч». Он не сообщает ответ «70 км/ч.» на вопрос «Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-289 совпадение с ответом «70 км/ч.» не самодостаточно: Изолированное значение 70 км/ч не называет проспект Костанера Рафаэль Облигадо и не связывает число с изображённым участком дороги. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «50 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "normalized-equality"
+                  ],
+                  "limitationClass": "ambiguous-without-context",
+                  "limitationRu": "Для b-fallback-289 совпадение с ответом «70 км/ч.» не самодостаточно: Изолированное значение 70 км/ч не называет проспект Костанера Рафаэль Облигадо и не связывает число с изображённым участком дороги. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «50 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-289 по вопросу «Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?» проверены канонический ответ «70 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-289 по вопросу «Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?» проверены канонический ответ «70 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Изолированное значение 70 км/ч не называет проспект Костанера Рафаэль Облигадо и не связывает число с изображённым участком дороги.",
             "selectionRationaleRu": "Для b-fallback-289 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Какая максимальная разрешенная скорость для легковых автомобилей на проспекте Костанера Рафаэль Облигадо, показанном на изображении?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -1587,76 +1530,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "app4-signs-warning",
           "routeHash": "#manual-section-app4-signs-warning",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "warning-signs",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "warning-role",
-            "textPath": "textRu",
-            "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p187-025-inicio-de-doble-circulacion-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "8478cba6598e837a046b6e6a390baac10fabf7754d7af9f3696af2f915405014"
           },
-          "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
+          "anchorTextAtReview": "Начало двустороннего движения",
           "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-295 «Определите, что означает показанный знак:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-warning после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-295",
-            "questionId": "b-fallback-295",
-            "topicRouteId": "warning-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Determine qué indica la señal que a continuación se presenta:",
-              "Определите, что означает показанный знак:",
-              "Inicio de doble circulación.",
-              "Начало двустороннего движения."
+          "directAnswerAssertionRu": "Для b-fallback-295 точный якорь «Начало двустороннего движения» непосредственно подтверждает правильный ответ «Начало двустороннего движения.» на вопрос «Определите, что означает показанный знак:».",
+          "reviewerRationaleRu": "Желтый предупреждающий знак с двумя противоположными стрелками означает начало участка с двусторонним движением. В каталоге Руководства знак подписан «Начало двустороннего движения»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Разделенная проезжая часть.» и «Извилистая дорога.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-295",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "normalized-equality"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "warning-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
-                },
-                "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-sign-entry",
-                  "blockId": "warning-individual-sign-catalog",
-                  "entryId": "app4warning-p187-025-inicio-de-doble-circulacion-catalog-entry",
-                  "textPath": "russianTranslation",
-                  "textFingerprint": "8478cba6598e837a046b6e6a390baac10fabf7754d7af9f3696af2f915405014"
-                },
-                "anchorTextAtReview": "Начало двустороннего движения",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-295 проверен точный текст «Начало двустороннего движения». Он не сообщает ответ «Начало двустороннего движения.» на вопрос «Определите, что означает показанный знак:» и по учебному предмету уступает выбранному контексту app4-signs-warning."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-295 по вопросу «Определите, что означает показанный знак:» проверены канонический ответ «Начало двустороннего движения.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-295 выбран app4-signs-warning, потому что его точный якорь ближе к предмету вопроса «Определите, что означает показанный знак:», чем отклонённые кандидаты app4-signs-warning; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-warning",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -2027,8 +1936,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
@@ -2048,18 +1957,18 @@
           "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
           "thematicBasisRu": "Билет b-fallback-300 «Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app1-safety-elements после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-300",
+            "auditId": "F038-RA-004-b-fallback-300",
             "questionId": "b-fallback-300",
             "topicRouteId": "occupant-protection",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿Quién es el responsable frente a la autoridad de control, si uno de los pasajeros del automóvil no lleva puesto el cinturón de seguridad?",
               "Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?",
@@ -2093,10 +2002,20 @@
                 "anchorTextAtReview": "Начинающий водитель и cédula",
                 "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-300 проверен точный текст «Начинающий водитель и cédula». Он не сообщает ответ «Водитель.» на вопрос «Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
+                "rejectionRu": "Для b-fallback-300 совпадение с ответом «Водитель.» не самодостаточно: Слово «водитель» встречается в заголовке про начинающего водителя и cédula, но текст не определяет, кто отвечает перед контролирующим органом за непристёгнутого пассажира. Поэтому точный якорь не позволяет исключить варианты «Страхователь.» и «Пассажир, если он совершеннолетний.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст app1-safety-elements, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "anchor-contains-canonical-answer"
+                  ],
+                  "limitationClass": "wrong-scope-or-condition",
+                  "limitationRu": "Для b-fallback-300 совпадение с ответом «Водитель.» не самодостаточно: Слово «водитель» встречается в заголовке про начинающего водителя и cédula, но текст не определяет, кто отвечает перед контролирующим органом за непристёгнутого пассажира. Поэтому точный якорь не позволяет исключить варианты «Страхователь.» и «Пассажир, если он совершеннолетний.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-300 по вопросу «Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?» проверены канонический ответ «Водитель.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-300 по вопросу «Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?» проверены канонический ответ «Водитель.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Слово «водитель» встречается в заголовке про начинающего водителя и cédula, но текст не определяет, кто отвечает перед контролирующим органом за непристёгнутого пассажира.",
             "selectionRationaleRu": "Для b-fallback-300 выбран app1-safety-elements, потому что его точный якорь ближе к предмету вопроса «Кто отвечает перед контролирующим органом, если один из пассажиров автомобиля не пристегнут ремнем безопасности?», чем отклонённые кандидаты ch2-required-documents; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -2115,76 +2034,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "speed-limits",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "speed-definition",
-            "textPath": "textRu",
-            "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
+            "kind": "manual-list-item",
+            "blockId": "precautionary-speed",
+            "itemIndex": 6,
+            "textPath": "itemsRu",
+            "textFingerprint": "981b9b1fee62e49c83e503122542e5662886217eed035ebe7363589b57ce2f67"
           },
-          "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
+          "anchorTextAtReview": "При животных на проезжей части или обочине нужно снижать скорость, при необходимости остановиться и сообщить властям.",
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-301 «Если вы едете по трассе и видите такую ситуацию, нужно...» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-301",
-            "questionId": "b-fallback-301",
-            "topicRouteId": "speed-limits",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Si ud. circula por la ruta y observa esta situación, debe…",
-              "Если вы едете по трассе и видите такую ситуацию, нужно...",
-              "Reducir la velocidad y si es necesario detenerse.",
-              "Снизить скорость и при необходимости остановиться."
+          "directAnswerAssertionRu": "Для b-fallback-301 точный якорь «При животных на проезжей части или обочине нужно снижать скорость, при необходимости остановиться и сообщить властям.» непосредственно подтверждает правильный ответ «Снизить скорость и при необходимости остановиться.» на вопрос «Если вы едете по трассе и видите такую ситуацию, нужно...».",
+          "reviewerRationaleRu": "На дороге видны животные, которые пересекают или находятся у проезжей части. Безопасное действие — снизить скорость и при необходимости остановиться, чтобы сохранить контроль и не спровоцировать непредсказуемое движение животных. Текст Руководства «При животных на проезжей части или обочине нужно снижать скорость, при необходимости остановиться и сообщить властям.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Увеличить скорость, чтобы быстро проехать мимо животного.» и «Посигналить, чтобы отпугнуть животное, и сохранить скорость.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-301",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-speed",
-                "routeHash": "#manual-section-ch3-speed",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "speed-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
-                },
-                "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-stopping-parking",
-                "routeHash": "#manual-section-ch3-stopping-parking",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "incorrect-and-maneuver",
-                  "itemIndex": 6,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "34f07b24db8cc27d97ececa6122cc9cf9111beb8468a8e0c7fea98eca6227a52"
-                },
-                "anchorTextAtReview": "О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-301 проверен точный текст «О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.». Он не сообщает ответ «Снизить скорость и при необходимости остановиться.» на вопрос «Если вы едете по трассе и видите такую ситуацию, нужно...» и по учебному предмету уступает выбранному контексту ch3-speed."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-301 по вопросу «Если вы едете по трассе и видите такую ситуацию, нужно...» проверены канонический ответ «Снизить скорость и при необходимости остановиться.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-301 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Если вы едете по трассе и видите такую ситуацию, нужно...», чем отклонённые кандидаты ch3-stopping-parking; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-speed",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -2813,76 +2698,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch2-required-documents",
           "routeHash": "#manual-section-ch2-required-documents",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "documents-licenses-and-insurance",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "documents-scope",
-            "textPath": "textRu",
-            "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
+            "kind": "manual-list-item",
+            "blockId": "cedula-rules",
+            "itemIndex": 7,
+            "textPath": "itemsRu",
+            "textFingerprint": "3ff1b5a06cb91a247112858c41e3e78427e082b7e0e3b3211e8e05a064b6d1bf"
           },
-          "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
+          "anchorTextAtReview": "Владелец может оформить столько cédulas для уполномоченных, сколько пожелает.",
           "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-309 «Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch2-required-documents после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-309",
-            "questionId": "b-fallback-309",
-            "topicRouteId": "documents-licenses-and-insurance",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Cuántas “cédulas para autorizados a conducir” podrán otorgarse para un mismo vehículo?",
-              "Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?",
-              "La cantidad que solicite el titular del vehículo.",
-              "Столько, сколько запросит владелец автомобиля."
+          "directAnswerAssertionRu": "Для b-fallback-309 точный якорь «Владелец может оформить столько cédulas для уполномоченных, сколько пожелает.» непосредственно подтверждает правильный ответ «Столько, сколько запросит владелец автомобиля.» на вопрос «Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?».",
+          "reviewerRationaleRu": "Якорь прямо разрешает владельцу оформить столько cédulas для уполномоченных, сколько он пожелает. Неверные варианты «Только одну.» и «До пяти.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-309",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch2-required-documents",
-                "routeHash": "#manual-section-ch2-required-documents",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "documents-scope",
-                  "textPath": "textRu",
-                  "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
-                },
-                "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch2-required-documents",
-                "routeHash": "#manual-section-ch2-required-documents",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "cedula-rules",
-                  "itemIndex": 7,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "3ff1b5a06cb91a247112858c41e3e78427e082b7e0e3b3211e8e05a064b6d1bf"
-                },
-                "anchorTextAtReview": "Владелец может оформить столько cédulas для уполномоченных, сколько пожелает.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-309 проверен точный текст «Владелец может оформить столько cédulas для уполномоченных, сколько пожелает.». Он не сообщает ответ «Столько, сколько запросит владелец автомобиля.» на вопрос «Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-309 по вопросу «Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?» проверены канонический ответ «Столько, сколько запросит владелец автомобиля.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-309 выбран ch2-required-documents, потому что его точный якорь ближе к предмету вопроса «Сколько карточек для лиц, которым разрешено управлять, можно выдать на один и тот же автомобиль?», чем отклонённые кандидаты ch2-required-documents; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch2-required-documents",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -3248,8 +3099,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
@@ -3268,18 +3119,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
           "thematicBasisRu": "Билет b-fallback-314 «Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-314",
+            "auditId": "F038-RA-004-b-fallback-314",
             "questionId": "b-fallback-314",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "Según las normas generales, ¿cuál es la velocidad máxima permitida para automóviles particulares en esta zona de la ruta?",
               "Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?",
@@ -3314,10 +3165,20 @@
                 "anchorTextAtReview": "110 км/ч",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-314 проверен точный текст «110 км/ч». Он не сообщает ответ «110 км/ч.» на вопрос «Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-314 совпадение с ответом «110 км/ч.» не самодостаточно: Изолированное значение 110 км/ч не содержит условия о легковом автомобиле и конкретной зоне трассы, поэтому не является самодостаточным правилом. Поэтому точный якорь не позволяет исключить варианты «130 км/ч.» и «80 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "normalized-equality"
+                  ],
+                  "limitationClass": "ambiguous-without-context",
+                  "limitationRu": "Для b-fallback-314 совпадение с ответом «110 км/ч.» не самодостаточно: Изолированное значение 110 км/ч не содержит условия о легковом автомобиле и конкретной зоне трассы, поэтому не является самодостаточным правилом. Поэтому точный якорь не позволяет исключить варианты «130 км/ч.» и «80 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-314 по вопросу «Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?» проверены канонический ответ «110 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-314 по вопросу «Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?» проверены канонический ответ «110 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Изолированное значение 110 км/ч не содержит условия о легковом автомобиле и конкретной зоне трассы, поэтому не является самодостаточным правилом.",
             "selectionRationaleRu": "Для b-fallback-314 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Согласно общим нормам, какая максимальная скорость разрешена легковым автомобилям в этой зоне трассы?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -3423,76 +3284,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
-          "pageId": "ch1-pedestrian-priority",
-          "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "pedestrian-crossings-and-priority",
+          "pageId": "ch3-right-of-way",
+          "routeHash": "#manual-section-ch3-right-of-way",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "pedestrian-priority-intro",
-            "textPath": "textRu",
-            "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+            "kind": "manual-list-item",
+            "blockId": "other-priority-situations",
+            "itemIndex": 5,
+            "textPath": "itemsRu",
+            "textFingerprint": "12e928b754e04ef1e76a8b1dda0bcdab911476b6aab79760e20e398724fc3729"
           },
-          "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "anchorTextAtReview": "Обгоняя остановившийся colectivo, нужно ожидать, что пешеходы могли быть скрыты за ним и могут начать переходить перед ним или за ним.",
+          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-316 «Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-pedestrian-priority после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-316",
-            "questionId": "b-fallback-316",
-            "topicRouteId": "pedestrian-crossings-and-priority",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Qué peligro debe preverse al sobrepasar un colectivo detenido?",
-              "Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?",
-              "Que los peatones, ocultos por el colectivo, puedan cruzar por delante o por detrás de éste.",
-              "Пешеходы, скрытые автобусом, могут выйти перед ним или позади него."
+          "directAnswerAssertionRu": "Для b-fallback-316 точный якорь «Обгоняя остановившийся colectivo, нужно ожидать, что пешеходы могли быть скрыты за ним и могут начать переходить перед ним или за ним.» непосредственно подтверждает правильный ответ «Пешеходы, скрытые автобусом, могут выйти перед ним или позади него.» на вопрос «Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?».",
+          "reviewerRationaleRu": "Якорь прямо предупреждает о пешеходах, скрытых автобусом и способных выйти перед ним либо позади него. Неверные варианты «Пассажиры могут выйти с левой стороны остановившегося автобуса.» и «Никакой, если не превышать установленную законом максимальную скорость.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-316",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "pedestrian-priority-intro",
-                  "textPath": "textRu",
-                  "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
-                },
-                "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-right-of-way",
-                "routeHash": "#manual-section-ch3-right-of-way",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "other-priority-situations",
-                  "itemIndex": 5,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "12e928b754e04ef1e76a8b1dda0bcdab911476b6aab79760e20e398724fc3729"
-                },
-                "anchorTextAtReview": "Обгоняя остановившийся colectivo, нужно ожидать, что пешеходы могли быть скрыты за ним и могут начать переходить перед ним или за ним.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-316 проверен точный текст «Обгоняя остановившийся colectivo, нужно ожидать, что пешеходы могли быть скрыты за ним и могут начать переходить перед ним или за ним.». Он не сообщает ответ «Пешеходы, скрытые автобусом, могут выйти перед ним или позади него.» на вопрос «Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?» и по учебному предмету уступает выбранному контексту ch1-pedestrian-priority."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-316 по вопросу «Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?» проверены канонический ответ «Пешеходы, скрытые автобусом, могут выйти перед ним или позади него.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-316 выбран ch1-pedestrian-priority, потому что его точный якорь ближе к предмету вопроса «Какую опасность нужно предусмотреть при обгоне остановившегося автобуса?», чем отклонённые кандидаты ch3-right-of-way; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-pedestrian-priority",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -3597,76 +3424,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
-          "pageId": "ch1-pedestrian-priority",
-          "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "pedestrian-crossings-and-priority",
+          "pageId": "ch3-right-of-way",
+          "routeHash": "#manual-section-ch3-right-of-way",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "pedestrian-priority-intro",
-            "textPath": "textRu",
-            "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+            "kind": "manual-list-item",
+            "blockId": "uncontrolled-intersections",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
           },
-          "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-318 «Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-pedestrian-priority после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-318",
-            "questionId": "b-fallback-318",
-            "topicRouteId": "pedestrian-crossings-and-priority",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Como conductor de un vehículo, ¿cómo debe proceder frente a esta señal horizontal?",
-              "Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?",
-              "Reducir la velocidad y detener el vehículo antes de la senda peatonal.",
-              "Снизить скорость и остановить автомобиль перед пешеходным переходом."
+          "directAnswerAssertionRu": "Для b-fallback-318 точный якорь «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.» непосредственно подтверждает правильный ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» на вопрос «Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?».",
+          "reviewerRationaleRu": "На проезжей части перед пешеходным переходом нанесена разметка остановки. Водитель должен снизить скорость и остановиться до перехода, чтобы не занять зону, предназначенную для пешеходов. Текст Руководства «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Немного снизить скорость и посмотреть, не приближаются ли автомобили по дороге, на которую он собирается выехать.» и «Продолжить движение.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-318",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "pedestrian-priority-intro",
-                  "textPath": "textRu",
-                  "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
-                },
-                "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "pedestrian-crossing-rules",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "a61ff7a4560cb42ee46e433e067cd641fab526b4b24a03dbe4d03e6b3e1df0c6"
-                },
-                "anchorTextAtReview": "Перед переходом смотрите в обе стороны и устанавливайте зрительный контакт с водителями первых транспортных средств, чтобы убедиться, что вас видят.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-318 проверен точный текст «Перед переходом смотрите в обе стороны и устанавливайте зрительный контакт с водителями первых транспортных средств, чтобы убедиться, что вас видят.». Он не сообщает ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» на вопрос «Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?» и по учебному предмету уступает выбранному контексту ch1-pedestrian-priority."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-318 по вопросу «Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?» проверены канонический ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-318 выбран ch1-pedestrian-priority, потому что его точный якорь ближе к предмету вопроса «Как водитель транспортного средства должен действовать перед этой горизонтальной разметкой?», чем отклонённые кандидаты ch1-pedestrian-priority; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-pedestrian-priority",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -4123,8 +3916,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
@@ -4143,18 +3936,18 @@
           "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
           "thematicBasisRu": "Билет b-fallback-324 «Какого цвета знаки, обозначающие разрешенную стоянку?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-stopping-parking после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-324",
+            "auditId": "F038-RA-004-b-fallback-324",
             "questionId": "b-fallback-324",
             "topicRouteId": "parking-prohibitions-and-signed-zones",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿De qué color es la cartelería de Permitido Estacionar?",
               "Какого цвета знаки, обозначающие разрешенную стоянку?",
@@ -4188,10 +3981,20 @@
                 "anchorTextAtReview": "Cajones azules обозначены синей или сине-белой линией и предназначены только для погрузки/разгрузки. Максимум - 30 минут, если знак не указывает другое; частные автомобили там не паркуются.",
                 "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-324 проверен точный текст «Cajones azules обозначены синей или сине-белой линией и предназначены только для погрузки/разгрузки. Максимум - 30 минут, если знак не указывает другое; частные автомобили там не паркуются.». Он не сообщает ответ «Синего.» на вопрос «Какого цвета знаки, обозначающие разрешенную стоянку?» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
+                "rejectionRu": "Для b-fallback-324 совпадение с ответом «Синего.» не самодостаточно: Синий цвет в якоре относится к cajones azules для погрузки и разгрузки, где частным автомобилям парковаться нельзя, а не к цвету знаков разрешённой стоянки. Поэтому точный якорь не позволяет исключить варианты «Белого.» и «Красного.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-stopping-parking, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "reviewed-semantic-equivalence"
+                  ],
+                  "limitationClass": "wrong-scope-or-condition",
+                  "limitationRu": "Для b-fallback-324 совпадение с ответом «Синего.» не самодостаточно: Синий цвет в якоре относится к cajones azules для погрузки и разгрузки, где частным автомобилям парковаться нельзя, а не к цвету знаков разрешённой стоянки. Поэтому точный якорь не позволяет исключить варианты «Белого.» и «Красного.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-324 по вопросу «Какого цвета знаки, обозначающие разрешенную стоянку?» проверены канонический ответ «Синего.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-324 по вопросу «Какого цвета знаки, обозначающие разрешенную стоянку?» проверены канонический ответ «Синего.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Синий цвет в якоре относится к cajones azules для погрузки и разгрузки, где частным автомобилям парковаться нельзя, а не к цвету знаков разрешённой стоянки.",
             "selectionRationaleRu": "Для b-fallback-324 выбран ch3-stopping-parking, потому что его точный якорь ближе к предмету вопроса «Какого цвета знаки, обозначающие разрешенную стоянку?», чем отклонённые кандидаты ch3-stopping-parking; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -4386,78 +4189,43 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
-          "pageId": "ch3-highways",
-          "routeHash": "#manual-section-ch3-highways",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "road-types-highways-and-routes",
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-list-item",
-            "blockId": "highway-towing-guidance",
-            "itemIndex": 0,
-            "textPath": "itemsRu",
-            "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p189-004-fin-de-autopista-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "1bded2a78f6dbbd831a8ddae9189c788c72a8793eb335f819141791dfb72c621"
           },
-          "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге.",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "anchorTextAtReview": "конец автомагистрали",
+          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-327 «Определите, что означает показанный ниже знак:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-highways после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-327",
-            "questionId": "b-fallback-327",
-            "topicRouteId": "road-types-highways-and-routes",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Determine qué indica la señal que a continuación se presenta:",
-              "Определите, что означает показанный ниже знак:",
-              "Fin de autopista.",
-              "Конец автомагистрали."
+          "directAnswerAssertionRu": "Для b-fallback-327 точный якорь «конец автомагистрали» непосредственно подтверждает правильный ответ «Конец автомагистрали.» на вопрос «Определите, что означает показанный ниже знак:».",
+          "reviewerRationaleRu": "Синее поле с белым символом автомагистрали перечеркнуто красной диагональной полосой, значит заканчивается режим автомагистрали. В каталоге Руководства знак подписан «конец автомагистрали»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Конец полуавтомагистрали.» и «Конец дороги.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-327",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "normalized-equality",
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-highways",
-                "routeHash": "#manual-section-ch3-highways",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "highway-towing-guidance",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
-                },
-                "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге.",
-                "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app2-highways-hospitals",
-                "routeHash": "#manual-section-app2-highways-hospitals",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "paseo-del-bajo-allowed",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "e7d6e78353e13bd6c39524675c9945ef816a3aebe9cb2de3a93ee51ce2adf90d"
-                },
-                "anchorTextAtReview": "Он соединяет Autopista Illia, Autopista Buenos Aires-La Plata и Autopista 25 de Mayo.",
-                "pageContentFingerprint": "83900c73e939fe8d2ae3cce9b462b35c5c4261084e5def2cc86a2696701a7454",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-327 проверен точный текст «Он соединяет Autopista Illia, Autopista Buenos Aires-La Plata и Autopista 25 de Mayo.». Он не сообщает ответ «Конец автомагистрали.» на вопрос «Определите, что означает показанный ниже знак:» и по учебному предмету уступает выбранному контексту ch3-highways."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-327 по вопросу «Определите, что означает показанный ниже знак:» проверены канонический ответ «Конец автомагистрали.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-327 выбран ch3-highways, потому что его точный якорь ближе к предмету вопроса «Определите, что означает показанный ниже знак:», чем отклонённые кандидаты app2-highways-hospitals; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-highways",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -5958,76 +5726,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "app4-signs-warning",
           "routeHash": "#manual-section-app4-signs-warning",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "warning-signs",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "warning-role",
-            "textPath": "textRu",
-            "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p187-023-rotonda-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "1d7151eb4b6abc9a94eb66245bfc8b87ba18f1a05f5539a710ffd7601a6c4dd2"
           },
-          "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
+          "anchorTextAtReview": "Круговое движение",
           "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-345 «Определите, что означает показанный ниже знак:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-warning после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-345",
-            "questionId": "b-fallback-345",
-            "topicRouteId": "warning-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Determine qué indica la señal que a continuación se presenta:",
-              "Определите, что означает показанный ниже знак:",
-              "Rotonda.",
-              "Круговое движение."
+          "directAnswerAssertionRu": "Для b-fallback-345 точный якорь «Круговое движение» непосредственно подтверждает правильный ответ «Круговое движение.» на вопрос «Определите, что означает показанный ниже знак:».",
+          "reviewerRationaleRu": "Желтый ромб с тремя черными стрелками, расположенными по кругу, предупреждает о круговом движении впереди, поэтому правильный вариант — круговое движение. В каталоге Руководства знак подписан «Круговое движение»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Крайняя опасность кругового движения.» и «Преимущество движения вперед.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-345",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "normalized-equality"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "warning-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
-                },
-                "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-sign-entry",
-                  "blockId": "warning-individual-sign-catalog",
-                  "entryId": "app4warning-p187-023-rotonda-catalog-entry",
-                  "textPath": "russianTranslation",
-                  "textFingerprint": "1d7151eb4b6abc9a94eb66245bfc8b87ba18f1a05f5539a710ffd7601a6c4dd2"
-                },
-                "anchorTextAtReview": "Круговое движение",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-345 проверен точный текст «Круговое движение». Он не сообщает ответ «Круговое движение.» на вопрос «Определите, что означает показанный ниже знак:» и по учебному предмету уступает выбранному контексту app4-signs-warning."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-345 по вопросу «Определите, что означает показанный ниже знак:» проверены канонический ответ «Круговое движение.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-345 выбран app4-signs-warning, потому что его точный якорь ближе к предмету вопроса «Определите, что означает показанный ниже знак:», чем отклонённые кандидаты app4-signs-warning; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-warning",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -6395,76 +6129,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "driver-hand-signals",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "bicycle-intro-growth",
-            "textPath": "textRu",
-            "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+            "kind": "manual-card-text",
+            "blockId": "hand-signals",
+            "childId": "stop",
+            "textPath": "signals.1.titleRu",
+            "textFingerprint": "3dde7d52d1b29316f2ab706f98cf3d8384f6ea799742b18b92e8125e37056a83"
           },
-          "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
+          "anchorTextAtReview": "Остановка",
           "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-350 «Что означает этот жест?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-bicycle после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-350",
-            "questionId": "b-fallback-350",
-            "topicRouteId": "driver-hand-signals",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Qué indica esta seña?",
-              "Что означает этот жест?",
-              "Detenerse.",
-              "Остановка."
+          "directAnswerAssertionRu": "Для b-fallback-350 точный якорь «Остановка» непосредственно подтверждает правильный ответ «Остановка.» на вопрос «Что означает этот жест?».",
+          "reviewerRationaleRu": "Якорь является точной русской подписью жеста остановки, а не общим текстом о велосипедной инфраструктуре. Неверные варианты «Поворот налево.» и «Обгон слева.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-350",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "normalized-equality"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "bicycle-intro-growth",
-                  "textPath": "textRu",
-                  "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
-                },
-                "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "hand-signals",
-                  "childId": "stop",
-                  "textPath": "signals.1.titleRu",
-                  "textFingerprint": "3dde7d52d1b29316f2ab706f98cf3d8384f6ea799742b18b92e8125e37056a83"
-                },
-                "anchorTextAtReview": "Остановка",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-350 проверен точный текст «Остановка». Он не сообщает ответ «Остановка.» на вопрос «Что означает этот жест?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-350 по вопросу «Что означает этот жест?» проверены канонический ответ «Остановка.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-350 выбран ch1-bicycle, потому что его точный якорь ближе к предмету вопроса «Что означает этот жест?», чем отклонённые кандидаты ch1-bicycle; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-bicycle",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -6829,16 +6529,15 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch4-alcohol-drugs",
           "routeHash": "#manual-section-ch4-alcohol-drugs",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "alcohol-drugs-and-impairment",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-block",
             "blockId": "legal-and-illegal-substances",
@@ -6849,55 +6548,22 @@
           "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-355 «Человек, который управляет транспортным средством под воздействием наркотических веществ...» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-alcohol-drugs после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-355",
-            "questionId": "b-fallback-355",
-            "topicRouteId": "alcohol-drugs-and-impairment",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "La persona que conduce bajo los efectos de estupefacientes…",
-              "Человек, который управляет транспортным средством под воздействием наркотических веществ...",
-              "Se pone en grave riesgo a sí mismo y a todos los que lo rodean.",
-              "Подвергает серьезной опасности себя и всех окружающих."
+          "directAnswerAssertionRu": "Для b-fallback-355 точный якорь «Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.» непосредственно подтверждает правильный ответ «Подвергает серьезной опасности себя и всех окружающих.» на вопрос «Человек, который управляет транспортным средством под воздействием наркотических веществ...».",
+          "reviewerRationaleRu": "Управление под воздействием наркотических веществ опасно для самого водителя и для всех окружающих участников движения. Текст Руководства «Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Подвергает риску только собственную жизнь.» и «Из-за раскрепощенности принимает меньше рисков.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-355",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-alcohol-drugs",
-                "routeHash": "#manual-section-ch4-alcohol-drugs",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "legal-and-illegal-substances",
-                  "textPath": "textRu",
-                  "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
-                },
-                "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-alcohol-drugs",
-                "routeHash": "#manual-section-ch4-alcohol-drugs",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "test-instruments-and-hangover",
-                  "textPath": "textRu",
-                  "textFingerprint": "3d3f6717b918b71e15abc0c80048d906d446c61ffd044e4544f958521b7e4de2"
-                },
-                "anchorTextAtReview": "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-355 проверен точный текст «Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).». Он не сообщает ответ «Подвергает серьезной опасности себя и всех окружающих.» на вопрос «Человек, который управляет транспортным средством под воздействием наркотических веществ...» и по учебному предмету уступает выбранному контексту ch4-alcohol-drugs."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-355 по вопросу «Человек, который управляет транспортным средством под воздействием наркотических веществ...» проверены канонический ответ «Подвергает серьезной опасности себя и всех окружающих.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-355 выбран ch4-alcohol-drugs, потому что его точный якорь ближе к предмету вопроса «Человек, который управляет транспортным средством под воздействием наркотических веществ...», чем отклонённые кандидаты ch4-alcohol-drugs; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-alcohol-drugs",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7271,75 +6937,41 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch3-lights",
           "routeHash": "#manual-section-ch3-lights",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "vehicle-lights-and-signaling",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-block",
-            "blockId": "lights-purpose",
+            "blockId": "lights-modification-ban",
             "textPath": "textRu",
-            "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
+            "textFingerprint": "92770493bdf6ba2c0b12db770f27b7f9ca0f9010a4b6c8713cd394a6e87625ed"
           },
-          "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
+          "anchorTextAtReview": "Запрещено менять тип и мощность заводских огней, соответствующих модели, а также добавлять фары или свет, не предусмотренные Código de Tránsito y Transporte de CABA. Допускается только добавление двух противотуманных фар и до двух верхних стоп-сигналов. Изменения могут превратить элемент безопасности в фактор риска, например вызвать ослепление ксеноном.",
           "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-360 «Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-lights после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-360",
-            "questionId": "b-fallback-360",
-            "topicRouteId": "vehicle-lights-and-signaling",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Según la Ley Nº 2148, ¿está permitido colocar a un automóvil particular luces adicionales?",
-              "Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?",
-              "Está permitido el agregado de dos faros rompeniebla y de hasta dos faros elevados con luces de freno.",
-              "Разрешено добавить две противотуманные фары и до двух верхних стоп-сигналов."
+          "directAnswerAssertionRu": "Для b-fallback-360 точный якорь «Запрещено менять тип и мощность заводских огней, соответствующих модели, а также добавлять фары или свет, не предусмотренные Código de Tránsito y Transporte de CABA. Допускается только добавление двух противотуманных фар и до двух верхних стоп-сигналов. Изменения могут превратить элемент безопасности в фактор риска, например вызвать ослепление ксеноном.» непосредственно подтверждает правильный ответ «Разрешено добавить две противотуманные фары и до двух верхних стоп-сигналов.» на вопрос «Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?».",
+          "reviewerRationaleRu": "Формулировка билета допускает добавление строго определенных огней: противотуманных фар и верхних стоп-сигналов в установленном количестве. Текст Руководства «Запрещено менять тип и мощность заводских огней, соответствующих модели, а также добавлять фары или свет, не предусмотренные Código de Tránsito y Transporte de CABA. Допускается только добавление двух противотуманных фар и до двух верхних стоп-сигналов. Изменения могут превратить элемент безопасности в фактор риска, например вызвать ослепление ксеноном.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Да. Можно добавить любые огни, потому что чем больше освещение автомобиля, тем лучше видимость для водителя.» и «Нет, запрещено добавлять любые дополнительные огни. Можно только заменить заводские огни, если они повреждены.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-360",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-lights",
-                "routeHash": "#manual-section-ch3-lights",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "lights-purpose",
-                  "textPath": "textRu",
-                  "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
-                },
-                "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-lights",
-                "routeHash": "#manual-section-ch3-lights",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "lights-modification-ban",
-                  "textPath": "textRu",
-                  "textFingerprint": "92770493bdf6ba2c0b12db770f27b7f9ca0f9010a4b6c8713cd394a6e87625ed"
-                },
-                "anchorTextAtReview": "Запрещено менять тип и мощность заводских огней, соответствующих модели, а также добавлять фары или свет, не предусмотренные Código de Tránsito y Transporte de CABA. Допускается только добавление двух противотуманных фар и до двух верхних стоп-сигналов. Изменения могут превратить элемент безопасности в фактор риска, например вызвать ослепление ксеноном.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-360 проверен точный текст «Запрещено менять тип и мощность заводских огней, соответствующих модели, а также добавлять фары или свет, не предусмотренные Código de Tránsito y Transporte de CABA. Допускается только добавление двух противотуманных фар и до двух верхних стоп-сигналов. Изменения могут превратить элемент безопасности в фактор риска, например вызвать ослепление ксеноном.». Он не сообщает ответ «Разрешено добавить две противотуманные фары и до двух верхних стоп-сигналов.» на вопрос «Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?» и по учебному предмету уступает выбранному контексту ch3-lights."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-360 по вопросу «Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?» проверены канонический ответ «Разрешено добавить две противотуманные фары и до двух верхних стоп-сигналов.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-360 выбран ch3-lights, потому что его точный якорь ближе к предмету вопроса «Согласно Закону 2148, разрешено ли устанавливать на частный автомобиль дополнительные огни?», чем отклонённые кандидаты ch3-lights; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-lights",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7799,76 +7431,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "bicycles-and-micromobility",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "bicycle-intro-growth",
-            "textPath": "textRu",
-            "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+            "kind": "manual-list-item",
+            "blockId": "passenger-cargo-rules",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "5854ad1dfee626c2fc0b64f5b2fe6b6c9a041ae50ceddbabed4655aa8f435944"
           },
-          "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
+          "anchorTextAtReview": "Груз или багаж можно перевозить только надежно закрепленным, если он не ухудшает устойчивость и управление.",
           "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-366 «Разрешено ли перевозить груз на велосипеде?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-bicycle после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-366",
-            "questionId": "b-fallback-366",
-            "topicRouteId": "bicycles-and-micromobility",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Está permitido llevar carga en una bicicleta?",
-              "Разрешено ли перевозить груз на велосипеде?",
-              "Sí, debe estar firmemente asegurada, permitiendo maniobrar y no perder la estabilidad.",
-              "Да, груз должен быть надежно закреплен, позволять маневрировать и не нарушать устойчивость."
+          "directAnswerAssertionRu": "Для b-fallback-366 точный якорь «Груз или багаж можно перевозить только надежно закрепленным, если он не ухудшает устойчивость и управление.» непосредственно подтверждает правильный ответ «Да, груз должен быть надежно закреплен, позволять маневрировать и не нарушать устойчивость.» на вопрос «Разрешено ли перевозить груз на велосипеде?».",
+          "reviewerRationaleRu": "Перевозка груза допустима, когда груз закреплен и не мешает управлению, обзору, маневрам и устойчивости велосипеда. Формулировка Руководства «Груз или багаж можно перевозить только надежно закрепленным, если он не ухудшает устойчивость и управление.» прямо подтверждает или опровергает утверждение билета. Неверные варианты «Да, нужно учитывать только то, чтобы груз не ограничивал обзор.» и «Нет, это запрещено, потому что груз может нарушить устойчивость велосипеда.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-366",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "bicycle-intro-growth",
-                  "textPath": "textRu",
-                  "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
-                },
-                "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "passenger-cargo-rules",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "5854ad1dfee626c2fc0b64f5b2fe6b6c9a041ae50ceddbabed4655aa8f435944"
-                },
-                "anchorTextAtReview": "Груз или багаж можно перевозить только надежно закрепленным, если он не ухудшает устойчивость и управление.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-366 проверен точный текст «Груз или багаж можно перевозить только надежно закрепленным, если он не ухудшает устойчивость и управление.». Он не сообщает ответ «Да, груз должен быть надежно закреплен, позволять маневрировать и не нарушать устойчивость.» на вопрос «Разрешено ли перевозить груз на велосипеде?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-366 по вопросу «Разрешено ли перевозить груз на велосипеде?» проверены канонический ответ «Да, груз должен быть надежно закреплен, позволять маневрировать и не нарушать устойчивость.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-366 выбран ch1-bicycle, потому что его точный якорь ближе к предмету вопроса «Разрешено ли перевозить груз на велосипеде?», чем отклонённые кандидаты ch1-bicycle; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-bicycle",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7886,16 +7484,15 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "277-368"
       },
       "placements": [
         {
           "pageId": "ch2-scoring",
           "routeHash": "#manual-section-ch2-scoring",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "authorities-controls-and-sanctions",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-block",
             "blockId": "scoring-definition",
@@ -7906,56 +7503,22 @@
           "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "277-368"
           },
-          "thematicBasisRu": "Билет b-fallback-367 «В чем состоит система постоянной оценки водителей по баллам?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch2-scoring после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-367",
-            "questionId": "b-fallback-367",
-            "topicRouteId": "authorities-controls-and-sanctions",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿En qué consiste el Sistema de Evaluación Permanente de Conductores (Scoring)?",
-              "В чем состоит система постоянной оценки водителей по баллам?",
-              "En la asignación de un puntaje para cada conductor, al que se le irá restando puntos por infracciones cometidas.",
-              "В присвоении каждому водителю баллов, которые затем вычитаются за совершенные нарушения."
+          "directAnswerAssertionRu": "Для b-fallback-367 точный якорь «Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения.» непосредственно подтверждает правильный ответ «В присвоении каждому водителю баллов, которые затем вычитаются за совершенные нарушения.» на вопрос «В чем состоит система постоянной оценки водителей по баллам?».",
+          "reviewerRationaleRu": "Смысл балльной системы — учет нарушений через вычитание баллов из присвоенного водителю запаса. Текст Руководства «Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «В обязанности водителей ежегодно проходить курс по безопасности дорожного движения.» и «Оба ответа, A и B, неверны.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-367",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch2-scoring",
-                "routeHash": "#manual-section-ch2-scoring",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "scoring-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "d3d6d3e1eb7f5f0b1d817087c123483971cdd5a1efb835e1dc6a4f18afb80678"
-                },
-                "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения.",
-                "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch2-scoring",
-                "routeHash": "#manual-section-ch2-scoring",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "scoring-footnotes",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "3cd7841c6305349f1ddd8092fb646ca1e4235e744aeaa1e6a5e5cd0a112da3c1"
-                },
-                "anchorTextAtReview": "Информация о нарушениях, за которые списываются баллы: buenosaires.gob.ar/justiciayseguridad/infracciones/sistema-de-evaluacion-permanente-de-conductores.",
-                "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-367 проверен точный текст «Информация о нарушениях, за которые списываются баллы: buenosaires.gob.ar/justiciayseguridad/infracciones/sistema-de-evaluacion-permanente-de-conductores.». Он не сообщает ответ «В присвоении каждому водителю баллов, которые затем вычитаются за совершенные нарушения.» на вопрос «В чем состоит система постоянной оценки водителей по баллам?» и по учебному предмету уступает выбранному контексту ch2-scoring."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-367 по вопросу «В чем состоит система постоянной оценки водителей по баллам?» проверены канонический ответ «В присвоении каждому водителю баллов, которые затем вычитаются за совершенные нарушения.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-367 выбран ch2-scoring, потому что его точный якорь ближе к предмету вопроса «В чем состоит система постоянной оценки водителей по баллам?», чем отклонённые кандидаты ch2-scoring; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch2-scoring",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]

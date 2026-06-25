@@ -194,75 +194,41 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
-          "pageId": "ch1-sustainable-mobility",
-          "routeHash": "#manual-section-ch1-sustainable-mobility",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "sustainable-mobility-and-vulnerable-users",
+          "pageId": "ch1-cities-for-people",
+          "routeHash": "#manual-section-ch1-cities-for-people",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-block",
-            "blockId": "definition",
+            "blockId": "motorized-crash-likelihood",
             "textPath": "textRu",
-            "textFingerprint": "54f0c1ce95d48b34312692f444a8ba2c17763ca241e13fcc2491b6a7c6068bfa"
+            "textFingerprint": "3e0677b31ca22a9b9553a1cd5f55c937226eac732fefd43c6d1d948b6a293b9c"
           },
-          "anchorTextAtReview": "Устойчивая мобильность - это способ передвигаться плавно, безопасно и организованно, особенно учитывая тех, кто идет пешком или едет на велосипеде. Такой подход помогает улучшать качество городской среды.",
-          "pageContentFingerprint": "8aa624c9f07bbc192598e03e904640a67af03901dc44f8619a3a48c622c51a20",
+          "anchorTextAtReview": "Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов.",
+          "pageContentFingerprint": "8d3010ff1d79a940ed36c816de4f1bed6b2f15733e5b16f8e53e15b8087579cd",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-371 «Укажите правильное утверждение:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-sustainable-mobility после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-371",
-            "questionId": "b-fallback-371",
-            "topicRouteId": "sustainable-mobility-and-vulnerable-users",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Indique cuál es la premisa correcta:",
-              "Укажите правильное утверждение:",
-              "A menor cantidad de vehículos, menor probabilidad de siniestralidad.",
-              "Чем меньше транспортных средств, тем ниже вероятность ДТП."
+          "directAnswerAssertionRu": "Для b-fallback-371 точный якорь «Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов.» непосредственно подтверждает правильный ответ «Чем меньше транспортных средств, тем ниже вероятность ДТП.» на вопрос «Укажите правильное утверждение:».",
+          "reviewerRationaleRu": "Якорь формулирует логически эквивалентную зависимость: больше моторизованных машин означает больше дорожных инцидентов. Неверные варианты «Чем меньше транспортных средств, тем выше вероятность ДТП.» и «Чем больше транспортных средств, тем ниже вероятность ДТП.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-371",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-sustainable-mobility",
-                "routeHash": "#manual-section-ch1-sustainable-mobility",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "54f0c1ce95d48b34312692f444a8ba2c17763ca241e13fcc2491b6a7c6068bfa"
-                },
-                "anchorTextAtReview": "Устойчивая мобильность - это способ передвигаться плавно, безопасно и организованно, особенно учитывая тех, кто идет пешком или едет на велосипеде. Такой подход помогает улучшать качество городской среды.",
-                "pageContentFingerprint": "8aa624c9f07bbc192598e03e904640a67af03901dc44f8619a3a48c622c51a20",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-cities-for-people",
-                "routeHash": "#manual-section-ch1-cities-for-people",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "motorized-crash-likelihood",
-                  "textPath": "textRu",
-                  "textFingerprint": "3e0677b31ca22a9b9553a1cd5f55c937226eac732fefd43c6d1d948b6a293b9c"
-                },
-                "anchorTextAtReview": "Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов.",
-                "pageContentFingerprint": "8d3010ff1d79a940ed36c816de4f1bed6b2f15733e5b16f8e53e15b8087579cd",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-371 проверен точный текст «Чем больше моторизованных транспортных средств, тем выше вероятность дорожных инцидентов.». Он не сообщает ответ «Чем меньше транспортных средств, тем ниже вероятность ДТП.» на вопрос «Укажите правильное утверждение:» и по учебному предмету уступает выбранному контексту ch1-sustainable-mobility."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-371 по вопросу «Укажите правильное утверждение:» проверены канонический ответ «Чем меньше транспортных средств, тем ниже вероятность ДТП.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-371 выбран ch1-sustainable-mobility, потому что его точный якорь ближе к предмету вопроса «Укажите правильное утверждение:», чем отклонённые кандидаты ch1-cities-for-people; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-sustainable-mobility",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -716,8 +682,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -736,18 +702,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
           "thematicBasisRu": "Билет b-fallback-377 «Какая максимальная разрешённая скорость на этом участке улицы?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-377",
+            "auditId": "F038-RA-004-b-fallback-377",
             "questionId": "b-fallback-377",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿Cuál es la velocidad máxima permitida en este tramo de calle?",
               "Какая максимальная разрешённая скорость на этом участке улицы?",
@@ -782,10 +748,20 @@
                 "anchorTextAtReview": "20 км/ч",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-377 проверен точный текст «20 км/ч». Он не сообщает ответ «20 км/ч.» на вопрос «Какая максимальная разрешённая скорость на этом участке улицы?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-377 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не указывает показанный участок улицы и не устанавливает именно максимальную скорость для этой ситуации. Поэтому точный якорь не позволяет исключить варианты «40 км/ч.» и «30 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "normalized-equality"
+                  ],
+                  "limitationClass": "ambiguous-without-context",
+                  "limitationRu": "Для b-fallback-377 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не указывает показанный участок улицы и не устанавливает именно максимальную скорость для этой ситуации. Поэтому точный якорь не позволяет исключить варианты «40 км/ч.» и «30 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-377 по вопросу «Какая максимальная разрешённая скорость на этом участке улицы?» проверены канонический ответ «20 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-377 по вопросу «Какая максимальная разрешённая скорость на этом участке улицы?» проверены канонический ответ «20 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Изолированное значение 20 км/ч не указывает показанный участок улицы и не устанавливает именно максимальную скорость для этой ситуации.",
             "selectionRationaleRu": "Для b-fallback-377 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Какая максимальная разрешённая скорость на этом участке улицы?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -891,76 +867,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "app4-signs-warning",
           "routeHash": "#manual-section-app4-signs-warning",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "warning-signs",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "warning-role",
-            "textPath": "textRu",
-            "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+            "kind": "manual-sign-entry",
+            "blockId": "warning-individual-sign-catalog",
+            "entryId": "app4warning-p188-015-paneles-de-prevencion-objeto-rigido",
+            "textPath": "russianTranslation",
+            "textFingerprint": "27c0d139259b3a8c79e952d97b5d7990656805f27be930b300cde958c3bfd716"
           },
-          "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
+          "anchorTextAtReview": "Панель у жесткого препятствия",
           "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-379 «Определите, что означает показанный ниже знак:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-warning после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-379",
-            "questionId": "b-fallback-379",
-            "topicRouteId": "warning-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Determine qué indica la señal que a continuación se presenta:",
-              "Определите, что означает показанный ниже знак:",
-              "Panel de Prevención (Objeto Rígido).",
-              "Предупреждающая панель для жёсткого препятствия."
+          "directAnswerAssertionRu": "Для b-fallback-379 точный якорь «Панель у жесткого препятствия» непосредственно подтверждает правильный ответ «Предупреждающая панель для жёсткого препятствия.» на вопрос «Определите, что означает показанный ниже знак:».",
+          "reviewerRationaleRu": "Красно-белая диагональная панель служит для обозначения жёсткого препятствия и предупреждает водителя о нём. В каталоге Руководства знак подписан «Панель у жесткого препятствия»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Сужение проезжей части.» и «Движение против установленного направления.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-379",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "warning-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
-                },
-                "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-regulatory",
-                "routeHash": "#manual-section-app4-signs-regulatory",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "regulatory-anexo-panels",
-                  "childId": "app4-regulatory-anexo-panel-01-source-card",
-                  "textPath": "cards.0.bodyRu",
-                  "textFingerprint": "ab8c44b09f9b08cc12e2f49b8db3b3be36f9d7d784ef37540c30146abdec1280"
-                },
-                "anchorTextAtReview": "Панель показывает первые запрещающие знаки крупнее обзорного листа CABA. Испанские подписи остаются частью изображения; русская расшифровка дана отдельным текстом ниже.",
-                "pageContentFingerprint": "e1717765e721e0c00d9fec028a91323f72d84d028fa92826775226a5a1106bcd",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-379 проверен точный текст «Панель показывает первые запрещающие знаки крупнее обзорного листа CABA. Испанские подписи остаются частью изображения; русская расшифровка дана отдельным текстом ниже.». Он не сообщает ответ «Предупреждающая панель для жёсткого препятствия.» на вопрос «Определите, что означает показанный ниже знак:» и по учебному предмету уступает выбранному контексту app4-signs-warning."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-379 по вопросу «Определите, что означает показанный ниже знак:» проверены канонический ответ «Предупреждающая панель для жёсткого препятствия.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-379 выбран app4-signs-warning, потому что его точный якорь ближе к предмету вопроса «Определите, что означает показанный ниже знак:», чем отклонённые кандидаты app4-signs-regulatory; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-warning",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -978,76 +920,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "driver-hand-signals",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "bicycle-intro-growth",
-            "textPath": "textRu",
-            "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+            "kind": "manual-card-text",
+            "blockId": "hand-signals",
+            "childId": "left",
+            "textPath": "signals.0.titleRu",
+            "textFingerprint": "4505037cfa06d22294d912d5e5e4dc5c0eedede4a32c92d4aaa9dbed66f2a3a3"
           },
-          "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
+          "anchorTextAtReview": "Поворот налево",
           "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-380 «Что означает этот жест?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-bicycle после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-380",
-            "questionId": "b-fallback-380",
-            "topicRouteId": "driver-hand-signals",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Qué indica esta seña?",
-              "Что означает этот жест?",
-              "Giro a la izquierda.",
-              "Поворот налево."
+          "directAnswerAssertionRu": "Для b-fallback-380 точный якорь «Поворот налево» непосредственно подтверждает правильный ответ «Поворот налево.» на вопрос «Что означает этот жест?».",
+          "reviewerRationaleRu": "Прямо вытянутая влево рука велосипедиста является видимым ручным сигналом поворота налево; красный овал подсказывает анализировать именно этот жест, а не окружающую улицу. Текст Руководства «Поворот налево» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Обгон слева.» и «Остановиться.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-380",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "normalized-equality"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "bicycle-intro-growth",
-                  "textPath": "textRu",
-                  "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
-                },
-                "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "hand-signals",
-                  "childId": "left",
-                  "textPath": "signals.0.titleRu",
-                  "textFingerprint": "4505037cfa06d22294d912d5e5e4dc5c0eedede4a32c92d4aaa9dbed66f2a3a3"
-                },
-                "anchorTextAtReview": "Поворот налево",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-380 проверен точный текст «Поворот налево». Он не сообщает ответ «Поворот налево.» на вопрос «Что означает этот жест?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-380 по вопросу «Что означает этот жест?» проверены канонический ответ «Поворот налево.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-380 выбран ch1-bicycle, потому что его точный якорь ближе к предмету вопроса «Что означает этот жест?», чем отклонённые кандидаты ch1-bicycle; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-bicycle",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -1152,76 +1060,43 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-lights",
           "routeHash": "#manual-section-ch3-lights",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "vehicle-lights-and-signaling",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "lights-purpose",
-            "textPath": "textRu",
-            "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
+            "kind": "manual-list-item",
+            "blockId": "front-lights",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "a0e981ce5206bc640e4c8d8493f8d0e604efb3a25a9daa0f8d2a837af3154d51"
           },
-          "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
+          "anchorTextAtReview": "Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.",
           "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-382 «Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-lights после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-382",
-            "questionId": "b-fallback-382",
-            "topicRouteId": "vehicle-lights-and-signaling",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Para circular de noche por una calle de la Ciudad de Buenos Aires, ¿qué luces deben utilizarse?",
-              "Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?",
-              "Las bajas.",
-              "Ближний свет."
+          "directAnswerAssertionRu": "Для b-fallback-382 точный якорь «Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.» непосредственно подтверждает правильный ответ «Ближний свет.» на вопрос «Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?».",
+          "reviewerRationaleRu": "Ближний свет является правильным вариантом для ночного движения по городской улице: он освещает дорогу перед автомобилем и при этом не слепит других участников так, как дальний свет. Текст Руководства «Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Дальний свет.» и «Только габаритные огни.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-382",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "anchor-contains-canonical-answer",
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-lights",
-                "routeHash": "#manual-section-ch3-lights",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "lights-purpose",
-                  "textPath": "textRu",
-                  "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
-                },
-                "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-highways",
-                "routeHash": "#manual-section-ch3-highways",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "highway-circulation-lane-use",
-                  "itemIndex": 3,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "e6c809cc172f8e351ecd57de52280d53a9d4b6a13dc76579221d71ee978eb51b"
-                },
-                "anchorTextAtReview": "Banquina не является полосой обычного движения, остановки или стоянки. Ее нельзя использовать, чтобы объехать поток или продвинуться быстрее.",
-                "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-382 проверен точный текст «Banquina не является полосой обычного движения, остановки или стоянки. Ее нельзя использовать, чтобы объехать поток или продвинуться быстрее.». Он не сообщает ответ «Ближний свет.» на вопрос «Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?» и по учебному предмету уступает выбранному контексту ch3-lights."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-382 по вопросу «Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?» проверены канонический ответ «Ближний свет.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-382 выбран ch3-lights, потому что его точный якорь ближе к предмету вопроса «Какие фары нужно использовать для движения ночью по улице города Буэнос-Айрес?», чем отклонённые кандидаты ch3-highways; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-lights",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -1850,76 +1725,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-lights",
           "routeHash": "#manual-section-ch3-lights",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "vehicle-lights-and-signaling",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "lights-purpose",
-            "textPath": "textRu",
-            "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
+            "kind": "manual-list-item",
+            "blockId": "front-lights",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "d6e554820bec806bd29be8087a13ba4342bd96513560e6ee045bdd2081f692df"
           },
-          "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
+          "anchorTextAtReview": "Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.",
           "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-390 «При таких погодных условиях нужно ли включать ближний свет фар?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-lights после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-390",
-            "questionId": "b-fallback-390",
-            "topicRouteId": "vehicle-lights-and-signaling",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Frente a esta condición climática, ¿se deben encender las luces bajas?",
-              "При таких погодных условиях нужно ли включать ближний свет фар?",
-              "Sí, siempre que está disminuida la visibilidad.",
-              "Да, всегда, когда видимость снижена."
+          "directAnswerAssertionRu": "Для b-fallback-390 точный якорь «Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.» непосредственно подтверждает правильный ответ «Да, всегда, когда видимость снижена.» на вопрос «При таких погодных условиях нужно ли включать ближний свет фар?».",
+          "reviewerRationaleRu": "Якорь прямо связывает противотуманные фары со сниженной видимостью при тумане, дожде, пыли или дыме. Неверные варианты «Нет, фары нужно использовать только ночью.» и «Да, но только на трассах.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-390",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-lights",
-                "routeHash": "#manual-section-ch3-lights",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "lights-purpose",
-                  "textPath": "textRu",
-                  "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
-                },
-                "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-lights",
-                "routeHash": "#manual-section-ch3-lights",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "front-lights",
-                  "itemIndex": 4,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "d6e554820bec806bd29be8087a13ba4342bd96513560e6ee045bdd2081f692df"
-                },
-                "anchorTextAtReview": "Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-390 проверен точный текст «Противотуманные фары используются при тумане, сильном дожде, пыли или дыме, когда видимость ухудшена.». Он не сообщает ответ «Да, всегда, когда видимость снижена.» на вопрос «При таких погодных условиях нужно ли включать ближний свет фар?» и по учебному предмету уступает выбранному контексту ch3-lights."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-390 по вопросу «При таких погодных условиях нужно ли включать ближний свет фар?» проверены канонический ответ «Да, всегда, когда видимость снижена.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-390 выбран ch3-lights, потому что его точный якорь ближе к предмету вопроса «При таких погодных условиях нужно ли включать ближний свет фар?», чем отклонённые кандидаты ch3-lights; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-lights",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -1937,8 +1778,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -1957,18 +1798,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
           "thematicBasisRu": "Билет b-fallback-391 «Какое максимальное ограничение скорости действует в этой ситуации?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-391",
+            "auditId": "F038-RA-004-b-fallback-391",
             "questionId": "b-fallback-391",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿Cuál es el límite de velocidad máxima en esta situación?",
               "Какое максимальное ограничение скорости действует в этой ситуации?",
@@ -2003,10 +1844,20 @@
                 "anchorTextAtReview": "не отвечать автоматически 60 км/ч только потому, что это avenida",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-391 проверен точный текст «не отвечать автоматически 60 км/ч только потому, что это avenida». Он не сообщает ответ «60 км/ч.» на вопрос «Какое максимальное ограничение скорости действует в этой ситуации?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-391 совпадение с ответом «60 км/ч.» не самодостаточно: Текст содержит 60 км/ч внутри предупреждения не выбирать этот ответ автоматически по типу avenida и не устанавливает предел для изображённой ситуации. Поэтому точный якорь не позволяет исключить варианты «80 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "anchor-contains-canonical-answer"
+                  ],
+                  "limitationClass": "negated-or-warning",
+                  "limitationRu": "Для b-fallback-391 совпадение с ответом «60 км/ч.» не самодостаточно: Текст содержит 60 км/ч внутри предупреждения не выбирать этот ответ автоматически по типу avenida и не устанавливает предел для изображённой ситуации. Поэтому точный якорь не позволяет исключить варианты «80 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-391 по вопросу «Какое максимальное ограничение скорости действует в этой ситуации?» проверены канонический ответ «60 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-391 по вопросу «Какое максимальное ограничение скорости действует в этой ситуации?» проверены канонический ответ «60 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Текст содержит 60 км/ч внутри предупреждения не выбирать этот ответ автоматически по типу avenida и не устанавливает предел для изображённой ситуации.",
             "selectionRationaleRu": "Для b-fallback-391 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Какое максимальное ограничение скорости действует в этой ситуации?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -2549,8 +2400,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -2569,18 +2420,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
           "thematicBasisRu": "Билет b-fallback-398 «Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-398",
+            "auditId": "F038-RA-004-b-fallback-398",
             "questionId": "b-fallback-398",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "¿Cuál es la velocidad máxima permitida para un automóvil particular en Av. Intendente Cantilo, salvo señalización que indique otra velocidad?",
               "Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?",
@@ -2615,10 +2466,20 @@
                 "anchorTextAtReview": "100 км/ч",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-398 проверен точный текст «100 км/ч». Он не сообщает ответ «100 км/ч.» на вопрос «Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-398 совпадение с ответом «100 км/ч.» не самодостаточно: Изолированное значение 100 км/ч не называет проспект Интенденте Кантило и условие отсутствия иных знаков, поэтому число без контекста не определяет ответ. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «110 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "normalized-equality"
+                  ],
+                  "limitationClass": "ambiguous-without-context",
+                  "limitationRu": "Для b-fallback-398 совпадение с ответом «100 км/ч.» не самодостаточно: Изолированное значение 100 км/ч не называет проспект Интенденте Кантило и условие отсутствия иных знаков, поэтому число без контекста не определяет ответ. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «110 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-398 по вопросу «Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?» проверены канонический ответ «100 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-398 по вопросу «Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?» проверены канонический ответ «100 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Изолированное значение 100 км/ч не называет проспект Интенденте Кантило и условие отсутствия иных знаков, поэтому число без контекста не определяет ответ.",
             "selectionRationaleRu": "Для b-fallback-398 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Какая максимально разрешенная скорость для частного автомобиля на проспекте Интенденте Кантило, если знаки не указывают другую скорость?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -2813,78 +2674,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "safe-distance-and-braking",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
             "blockId": "reaction-and-stopping",
-            "itemIndex": 1,
+            "itemIndex": 0,
             "textPath": "itemsRu",
-            "textFingerprint": "84cd2f0d9e1a8687766c541021210ceeb73c2ecdf68f6288a868dabdf553aa65"
+            "textFingerprint": "2405106d5d8b45a837e7130136630dfac00f86375ded9006ea7f1fa81c68e74f"
           },
-          "anchorTextAtReview": "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.",
+          "anchorTextAtReview": "Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.",
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-401 «Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-401",
-            "questionId": "b-fallback-401",
-            "topicRouteId": "safe-distance-and-braking",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Cuál es el tiempo promedio de reacción de un conductor desde que percibe un peligro hasta que acciona el freno?",
-              "Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?",
-              "Aproximadamente 1 segundo.",
-              "Примерно 1 секунда."
+          "directAnswerAssertionRu": "Для b-fallback-401 точный якорь «Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.» непосредственно подтверждает правильный ответ «Примерно 1 секунда.» на вопрос «Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?».",
+          "reviewerRationaleRu": "Примерно 1 секунда — стандартный учебный ориентир для времени реакции водителя. За это время автомобиль продолжает движение до начала фактического торможения. Точный якорь Руководства «Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.» содержит проверяемое числовое условие или предел. Неверные варианты «От 2 до 3 секунд.» и «Мгновенно; между этими действиями время не проходит.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-401",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "anchor-contains-canonical-answer"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-speed",
-                "routeHash": "#manual-section-ch3-speed",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "reaction-and-stopping",
-                  "itemIndex": 1,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "84cd2f0d9e1a8687766c541021210ceeb73c2ecdf68f6288a868dabdf553aa65"
-                },
-                "anchorTextAtReview": "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-speed",
-                "routeHash": "#manual-section-ch3-speed",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "reaction-and-stopping",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "2405106d5d8b45a837e7130136630dfac00f86375ded9006ea7f1fa81c68e74f"
-                },
-                "anchorTextAtReview": "Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-401 проверен точный текст «Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.». Он не сообщает ответ «Примерно 1 секунда.» на вопрос «Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?» и по учебному предмету уступает выбранному контексту ch3-speed."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-401 по вопросу «Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?» проверены канонический ответ «Примерно 1 секунда.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-401 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Каково среднее время реакции водителя с момента, когда он заметил опасность, до нажатия на тормоз?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-speed",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -2902,76 +2727,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "stopping-vs-parking-maneuvers",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "detention-definition",
-            "textPath": "textRu",
-            "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+            "kind": "manual-list-item",
+            "blockId": "slopes-loading-disability",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "2fe07d168fa540c6a3e5a3832e3fc4a3038228246212137ce70905c5ca6054c1"
           },
-          "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль.",
+          "anchorTextAtReview": "На подъеме повернуть колеса к центру проезжей части и оставить первую передачу или режим parking для автоматической коробки.",
           "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-402 «Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-stopping-parking после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-402",
-            "questionId": "b-fallback-402",
-            "topicRouteId": "stopping-vs-parking-maneuvers",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Qué precauciones se deben tener al dejar estacionado un vehículo en esta situación?",
-              "Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?",
-              "Orientar las ruedas hacia el centro de la calzada y dejar la marcha en primera o en posición de estacionamiento en el caso de tener caja automática.",
-              "Повернуть колеса к центру проезжей части и оставить первую передачу либо режим парковки, если коробка автоматическая."
+          "directAnswerAssertionRu": "Для b-fallback-402 точный якорь «На подъеме повернуть колеса к центру проезжей части и оставить первую передачу или режим parking для автоматической коробки.» непосредственно подтверждает правильный ответ «Повернуть колеса к центру проезжей части и оставить первую передачу либо режим парковки, если коробка автоматическая.» на вопрос «Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?».",
+          "reviewerRationaleRu": "Положение автомобиля на уклоне требует дополнительных мер против скатывания. Для этой ситуации билет ожидает поворот колес к центру проезжей части и первую передачу или режим парковки. Текст Руководства «На подъеме повернуть колеса к центру проезжей части и оставить первую передачу или режим parking для автоматической коробки.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Повернуть колеса к бордюру и оставить заднюю передачу либо режим парковки, если коробка автоматическая.» и «Поставить колеса параллельно бордюру и оставить без передачи либо в режиме парковки, если коробка автоматическая.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-402",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-stopping-parking",
-                "routeHash": "#manual-section-ch3-stopping-parking",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "detention-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
-                },
-                "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "priority-area-restrictions",
-                  "childId": "area-infrastructure",
-                  "textPath": "cards.1.details.0.textRu",
-                  "textFingerprint": "e217bcbfcfd5704c514805bd7c9aded7550bcc5fffa6f2bee3d2ad14abbf0c83"
-                },
-                "anchorTextAtReview": "выравнивание проезжей части, восстановление тротуаров, лучшее освещение, велосипедные парковки, автобусные остановки, новые цветники, скамейки и светильники.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-402 проверен точный текст «выравнивание проезжей части, восстановление тротуаров, лучшее освещение, велосипедные парковки, автобусные остановки, новые цветники, скамейки и светильники.». Он не сообщает ответ «Повернуть колеса к центру проезжей части и оставить первую передачу либо режим парковки, если коробка автоматическая.» на вопрос «Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-402 по вопросу «Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?» проверены канонический ответ «Повернуть колеса к центру проезжей части и оставить первую передачу либо режим парковки, если коробка автоматическая.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-402 выбран ch3-stopping-parking, потому что его точный якорь ближе к предмету вопроса «Какие меры предосторожности нужно принять, оставляя автомобиль припаркованным в такой ситуации?», чем отклонённые кандидаты ch1-pedestrian-priority; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-stopping-parking",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -3076,76 +2867,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch4-sleep-fatigue",
           "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "fatigue-distraction-and-attention",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "fatigue-definition",
-            "textPath": "textRu",
-            "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
+            "kind": "manual-list-item",
+            "blockId": "few-hours-sleep-effects",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "a70cbefba444681e32f210968209ba0cd2632746fdd4cc88f56a5c10af80a0a9"
           },
-          "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
+          "anchorTextAtReview": "Снижается скорость реакции и увеличивается время ответа на стимул.",
           "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-404 «Почему опасно вести автомобиль в уставшем состоянии?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-sleep-fatigue после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-404",
-            "questionId": "b-fallback-404",
-            "topicRouteId": "fatigue-distraction-and-attention",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Por qué es peligroso conducir cansado?",
-              "Почему опасно вести автомобиль в уставшем состоянии?",
-              "Porque reduce la capacidad de reacción y aumenta el tiempo necesario para responder ante un estímulo.",
-              "Потому что снижается способность реагировать и увеличивается время, необходимое для ответа на раздражитель."
+          "directAnswerAssertionRu": "Для b-fallback-404 точный якорь «Снижается скорость реакции и увеличивается время ответа на стимул.» непосредственно подтверждает правильный ответ «Потому что снижается способность реагировать и увеличивается время, необходимое для ответа на раздражитель.» на вопрос «Почему опасно вести автомобиль в уставшем состоянии?».",
+          "reviewerRationaleRu": "Якорь дословно передаёт оба существенных последствия усталости: снижение скорости реакции и увеличение времени ответа. Неверные варианты «Потому что при этом едут быстрее.» и «Потому что поездка длится дольше.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-404",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "fatigue-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
-                },
-                "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "few-hours-sleep-effects",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "a70cbefba444681e32f210968209ba0cd2632746fdd4cc88f56a5c10af80a0a9"
-                },
-                "anchorTextAtReview": "Снижается скорость реакции и увеличивается время ответа на стимул.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-404 проверен точный текст «Снижается скорость реакции и увеличивается время ответа на стимул.». Он не сообщает ответ «Потому что снижается способность реагировать и увеличивается время, необходимое для ответа на раздражитель.» на вопрос «Почему опасно вести автомобиль в уставшем состоянии?» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-404 по вопросу «Почему опасно вести автомобиль в уставшем состоянии?» проверены канонический ответ «Потому что снижается способность реагировать и увеличивается время, необходимое для ответа на раздражитель.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-404 выбран ch4-sleep-fatigue, потому что его точный якорь ближе к предмету вопроса «Почему опасно вести автомобиль в уставшем состоянии?», чем отклонённые кандидаты ch4-sleep-fatigue; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-sleep-fatigue",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -3163,76 +2920,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
-          "pageId": "ch4-sleep-fatigue",
-          "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "fatigue-distraction-and-attention",
+          "pageId": "ch4-distractions",
+          "routeHash": "#manual-section-ch4-distractions",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "fatigue-definition",
-            "textPath": "textRu",
-            "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
+            "kind": "manual-list-item",
+            "blockId": "phone-recommendations",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "4e592deae2978ba8c5cf3bfdcd7edff0bd22ef333429cf51fa5caa847c48d776"
           },
-          "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "anchorTextAtReview": "Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.",
+          "pageContentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-405 «Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-sleep-fatigue после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-405",
-            "questionId": "b-fallback-405",
-            "topicRouteId": "fatigue-distraction-and-attention",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Si un conductor necesita realizar una llamada de urgencia con el teléfono celular, ¿qué debe hacer para no generar una situación de riesgo en la vía pública?",
-              "Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?",
-              "Colocar balizas y detenerse en un lugar donde esté permitido.",
-              "Включить аварийную сигнализацию и остановиться в разрешенном месте."
+          "directAnswerAssertionRu": "Для b-fallback-405 точный якорь «Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.» непосредственно подтверждает правильный ответ «Включить аварийную сигнализацию и остановиться в разрешенном месте.» на вопрос «Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?».",
+          "reviewerRationaleRu": "Безопасное решение — включить аварийную сигнализацию и остановиться в разрешенном месте, а уже затем совершить срочный звонок. Так водитель не управляет автомобилем во время разговора. Текст Руководства «Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Занять правую полосу, ехать медленно и пользоваться аварийной сигнализацией.» и «Поскольку звонок срочный, неважно, где его сделать.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-405",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "fatigue-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
-                },
-                "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-distractions",
-                "routeHash": "#manual-section-ch4-distractions",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "phone-recommendations",
-                  "itemIndex": 4,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "4e592deae2978ba8c5cf3bfdcd7edff0bd22ef333429cf51fa5caa847c48d776"
-                },
-                "anchorTextAtReview": "Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.",
-                "pageContentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-405 проверен точный текст «Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.». Он не сообщает ответ «Включить аварийную сигнализацию и остановиться в разрешенном месте.» на вопрос «Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-405 по вопросу «Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?» проверены канонический ответ «Включить аварийную сигнализацию и остановиться в разрешенном месте.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-405 выбран ch4-sleep-fatigue, потому что его точный якорь ближе к предмету вопроса «Если водителю нужно срочно позвонить по мобильному телефону, что он должен сделать, чтобы не создавать опасную ситуацию на дороге общего пользования?», чем отклонённые кандидаты ch4-distractions; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-sleep-fatigue",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -3599,76 +3322,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "app4-signs-warning",
           "routeHash": "#manual-section-app4-signs-warning",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "warning-signs",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "warning-role",
-            "textPath": "textRu",
-            "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+            "kind": "manual-list-item",
+            "blockId": "warning-groups",
+            "itemIndex": 0,
+            "textPath": "itemsRu",
+            "textFingerprint": "076defa96371e7f7c17f7e1da51db542b8fdfaf401bc3d1ffda38f70c5b21e22"
           },
-          "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
+          "anchorTextAtReview": "Предупреждение не всегда запрещает действие, но требует заранее снизить риск: уменьшить скорость, увеличить внимание и подготовиться к маневру.",
           "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-410 «Если во время движения вы видите этот знак, вы должны...» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-warning после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-410",
-            "questionId": "b-fallback-410",
-            "topicRouteId": "warning-signs",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Si ve esta señal mientras conduce, usted debe…",
-              "Если во время движения вы видите этот знак, вы должны...",
-              "Reducir la velocidad del vehículo",
-              "Снизить скорость автомобиля."
+          "directAnswerAssertionRu": "Для b-fallback-410 точный якорь «Предупреждение не всегда запрещает действие, но требует заранее снизить риск: уменьшить скорость, увеличить внимание и подготовиться к маневру.» непосредственно подтверждает правильный ответ «Снизить скорость автомобиля.» на вопрос «Если во время движения вы видите этот знак, вы должны...».",
+          "reviewerRationaleRu": "Предупреждение о скользкой дороге требует уменьшить скорость, чтобы сохранить управляемость и иметь больше времени на реакцию при возможном заносе. Текст Руководства «Предупреждение не всегда запрещает действие, но требует заранее снизить риск: уменьшить скорость, увеличить внимание и подготовиться к маневру.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Увеличить скорость автомобиля.» и «Повернуть налево, а затем направо.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-410",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "warning-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
-                },
-                "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-warning",
-                "routeHash": "#manual-section-app4-signs-warning",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "warning-groups",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "076defa96371e7f7c17f7e1da51db542b8fdfaf401bc3d1ffda38f70c5b21e22"
-                },
-                "anchorTextAtReview": "Предупреждение не всегда запрещает действие, но требует заранее снизить риск: уменьшить скорость, увеличить внимание и подготовиться к маневру.",
-                "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-410 проверен точный текст «Предупреждение не всегда запрещает действие, но требует заранее снизить риск: уменьшить скорость, увеличить внимание и подготовиться к маневру.». Он не сообщает ответ «Снизить скорость автомобиля.» на вопрос «Если во время движения вы видите этот знак, вы должны...» и по учебному предмету уступает выбранному контексту app4-signs-warning."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-410 по вопросу «Если во время движения вы видите этот знак, вы должны...» проверены канонический ответ «Снизить скорость автомобиля.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-410 выбран app4-signs-warning, потому что его точный якорь ближе к предмету вопроса «Если во время движения вы видите этот знак, вы должны...», чем отклонённые кандидаты app4-signs-warning; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-warning",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -4469,8 +4158,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -4489,18 +4178,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
           "thematicBasisRu": "Билет b-fallback-420 «Согласно общим нормам, какая максимально разрешенная скорость на этой улице?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-420",
+            "auditId": "F038-RA-004-b-fallback-420",
             "questionId": "b-fallback-420",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "Según las normas generales, ¿cuál es la velocidad máxima permitida en esta calle?",
               "Согласно общим нормам, какая максимально разрешенная скорость на этой улице?",
@@ -4534,10 +4223,20 @@
                 "anchorTextAtReview": "Специальный минимум для semiautopistas y rutas - 40 км/ч.",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-420 проверен точный текст «Специальный минимум для semiautopistas y rutas - 40 км/ч.». Он не сообщает ответ «40 км/ч.» на вопрос «Согласно общим нормам, какая максимально разрешенная скорость на этой улице?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-420 совпадение с ответом «40 км/ч.» не самодостаточно: Якорь называет 40 км/ч минимальной скоростью для semiautopistas и rutas, тогда как билет спрашивает максимальную скорость на улице. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «70 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "anchor-contains-canonical-answer"
+                  ],
+                  "limitationClass": "wrong-scope-or-condition",
+                  "limitationRu": "Для b-fallback-420 совпадение с ответом «40 км/ч.» не самодостаточно: Якорь называет 40 км/ч минимальной скоростью для semiautopistas и rutas, тогда как билет спрашивает максимальную скорость на улице. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «70 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-420 по вопросу «Согласно общим нормам, какая максимально разрешенная скорость на этой улице?» проверены канонический ответ «40 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-420 по вопросу «Согласно общим нормам, какая максимально разрешенная скорость на этой улице?» проверены канонический ответ «40 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Якорь называет 40 км/ч минимальной скоростью для semiautopistas и rutas, тогда как билет спрашивает максимальную скорость на улице.",
             "selectionRationaleRu": "Для b-fallback-420 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Согласно общим нормам, какая максимально разрешенная скорость на этой улице?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -4556,76 +4255,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "pedestrian-crossings-and-priority",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "pedestrian-priority-intro",
-            "textPath": "textRu",
-            "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+            "kind": "manual-list-item",
+            "blockId": "driver-duties-list",
+            "itemIndex": 2,
+            "textPath": "itemsRu",
+            "textFingerprint": "8f1f2368eb97032d1913cd38f8ede2e1e19d86b8486a410f4a678f6a16c7f69f"
           },
-          "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
+          "anchorTextAtReview": "При въезде в гараж или выезде из него всегда отдавайте приоритет пешеходам. Когда возможно, двигайтесь вперед, а не задним ходом, чтобы лучше видеть.",
           "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-421 «С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-pedestrian-priority после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-421",
-            "questionId": "b-fallback-421",
-            "topicRouteId": "pedestrian-crossings-and-priority",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Dadas las características de esta intersección, ¿el peatón también tiene prioridad?",
-              "С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?",
-              "Sí, siempre.",
-              "Да, всегда."
+          "directAnswerAssertionRu": "Для b-fallback-421 точный якорь «При въезде в гараж или выезде из него всегда отдавайте приоритет пешеходам. Когда возможно, двигайтесь вперед, а не задним ходом, чтобы лучше видеть.» непосредственно подтверждает правильный ответ «Да, всегда.» на вопрос «С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?».",
+          "reviewerRationaleRu": "Якорь содержит безусловное правило всегда уступать пешеходам при въезде в гараж и выезде из него. Неверные варианты «Нет, но если пешеход уже переходит, водитель должен пропустить его, чтобы не создать ДТП.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-421",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "pedestrian-priority-intro",
-                  "textPath": "textRu",
-                  "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
-                },
-                "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "driver-duties-list",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "8f1f2368eb97032d1913cd38f8ede2e1e19d86b8486a410f4a678f6a16c7f69f"
-                },
-                "anchorTextAtReview": "При въезде в гараж или выезде из него всегда отдавайте приоритет пешеходам. Когда возможно, двигайтесь вперед, а не задним ходом, чтобы лучше видеть.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-421 проверен точный текст «При въезде в гараж или выезде из него всегда отдавайте приоритет пешеходам. Когда возможно, двигайтесь вперед, а не задним ходом, чтобы лучше видеть.». Он не сообщает ответ «Да, всегда.» на вопрос «С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?» и по учебному предмету уступает выбранному контексту ch1-pedestrian-priority."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-421 по вопросу «С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?» проверены канонический ответ «Да, всегда.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-421 выбран ch1-pedestrian-priority, потому что его точный якорь ближе к предмету вопроса «С учетом особенностей этого перекрестка пешеход тоже имеет преимущество?», чем отклонённые кандидаты ch1-pedestrian-priority; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-pedestrian-priority",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -4643,78 +4308,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
-          "pageId": "app1-safety-elements",
-          "routeHash": "#manual-section-app1-safety-elements",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "occupant-protection",
+          "pageId": "app3-safety-elements",
+          "routeHash": "#manual-section-app3-safety-elements",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-list-item",
-            "blockId": "passive-safety-seatbelts",
-            "itemIndex": 2,
-            "textPath": "itemsRu",
-            "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
+            "kind": "manual-term-translation",
+            "blockId": "seatbelt-source-visual",
+            "termEs": "Si se coloca sobre el abdomen",
+            "textPath": "cards.0.termTranslations.4.translationRu",
+            "textFingerprint": "327817b11ee61306339f9ae413b7cf0789c0a0efec9796ec80d76980815723b7"
           },
-          "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "anchorTextAtReview": "Если ремень проходит по животу, он может повредить внутренние органы.",
+          "pageContentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-422 «Правильно ли у этого человека пристегнут ремень безопасности?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app1-safety-elements после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-422",
-            "questionId": "b-fallback-422",
-            "topicRouteId": "occupant-protection",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Esta persona tiene el cinturón correctamente colocado?",
-              "Правильно ли у этого человека пристегнут ремень безопасности?",
-              "No, porque pasa por el abdomen y debería hacerlo por los huesos de la cadera.",
-              "Нет, потому что он проходит по животу, а должен проходить по костям таза."
+          "directAnswerAssertionRu": "Для b-fallback-422 точный якорь «Если ремень проходит по животу, он может повредить внутренние органы.» непосредственно подтверждает правильный ответ «Нет, потому что он проходит по животу, а должен проходить по костям таза.» на вопрос «Правильно ли у этого человека пристегнут ремень безопасности?».",
+          "reviewerRationaleRu": "Правильный ответ — «нет, потому что ремень проходит по животу, а должен проходить по костям таза». Именно это видно по нижней лямке ремня. Формулировка Руководства «Если ремень проходит по животу, он может повредить внутренние органы.» прямо подтверждает или опровергает утверждение билета. Неверные варианты «Нет, потому что он проходит по животу, а должен проходить по бедрам.» и «Да, потому что он проходит через ключицу и живот.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-422",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app1-safety-elements",
-                "routeHash": "#manual-section-app1-safety-elements",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "passive-safety-seatbelts",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
-                },
-                "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app3-safety-elements",
-                "routeHash": "#manual-section-app3-safety-elements",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "seatbelt-source-visual",
-                  "childId": "app3-seatbelt-source-card",
-                  "textPath": "cards.0.bodyRu",
-                  "textFingerprint": "d5f593bb8e9926386c93d9a26ff815607467a890d27dba4ce3a9952fd492b1dc"
-                },
-                "anchorTextAtReview": "Как читать фото: верхняя лямка проходит через ключицу между плечом и шеей; нижняя лямка лежит на костях таза ниже живота; ремень должен плотно прилегать, не быть перекрученным и не проходить по твердым или хрупким предметам. Ремень на шее, груди или животе может вызвать тяжелые травмы и ухудшает удержание при ударе.",
-                "pageContentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-422 проверен точный текст «Как читать фото: верхняя лямка проходит через ключицу между плечом и шеей; нижняя лямка лежит на костях таза ниже живота; ремень должен плотно прилегать, не быть перекрученным и не проходить по твердым или хрупким предметам. Ремень на шее, груди или животе может вызвать тяжелые травмы и ухудшает удержание при ударе.». Он не сообщает ответ «Нет, потому что он проходит по животу, а должен проходить по костям таза.» на вопрос «Правильно ли у этого человека пристегнут ремень безопасности?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-422 по вопросу «Правильно ли у этого человека пристегнут ремень безопасности?» проверены канонический ответ «Нет, потому что он проходит по животу, а должен проходить по костям таза.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-422 выбран app1-safety-elements, потому что его точный якорь ближе к предмету вопроса «Правильно ли у этого человека пристегнут ремень безопасности?», чем отклонённые кандидаты app3-safety-elements; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app1-safety-elements",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -4732,78 +4361,43 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
-          "pageId": "ch3-highways",
-          "routeHash": "#manual-section-ch3-highways",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "road-types-highways-and-routes",
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-list-item",
-            "blockId": "highway-towing-guidance",
-            "itemIndex": 0,
-            "textPath": "itemsRu",
-            "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
+            "kind": "manual-sign-entry",
+            "blockId": "informational-individual-sign-catalog",
+            "entryId": "app4informational-p189-003-comienzo-de-autopista-catalog-entry",
+            "textPath": "russianTranslation",
+            "textFingerprint": "9d13dcbb7be7c496b02331f31dc0b0fab71c2d58436b73d8804aa059cb61c050"
           },
-          "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге.",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "anchorTextAtReview": "начало автомагистрали",
+          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-423 «Определите, что обозначает показанный ниже знак:» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-highways после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-423",
-            "questionId": "b-fallback-423",
-            "topicRouteId": "road-types-highways-and-routes",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Determine qué indica la señal que a continuación se presenta:",
-              "Определите, что обозначает показанный ниже знак:",
-              "Comienzo de autopista.",
-              "Начало автомагистрали."
+          "directAnswerAssertionRu": "Для b-fallback-423 точный якорь «начало автомагистрали» непосредственно подтверждает правильный ответ «Начало автомагистрали.» на вопрос «Определите, что обозначает показанный ниже знак:».",
+          "reviewerRationaleRu": "Правильный ответ — начало автомагистрали: синий фон и белая схема разделенной дороги указывают именно на этот тип дороги. В каталоге Руководства знак подписан «начало автомагистрали»; эта подпись в контексте раздела даёт проверяемое значение. Неверные варианты «Начало трассы.» и «Начало полуавтомагистрали.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-423",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "normalized-equality",
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-highways",
-                "routeHash": "#manual-section-ch3-highways",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "highway-towing-guidance",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
-                },
-                "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге.",
-                "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app2-highways-hospitals",
-                "routeHash": "#manual-section-app2-highways-hospitals",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "paseo-del-bajo-allowed",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "e7d6e78353e13bd6c39524675c9945ef816a3aebe9cb2de3a93ee51ce2adf90d"
-                },
-                "anchorTextAtReview": "Он соединяет Autopista Illia, Autopista Buenos Aires-La Plata и Autopista 25 de Mayo.",
-                "pageContentFingerprint": "83900c73e939fe8d2ae3cce9b462b35c5c4261084e5def2cc86a2696701a7454",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-423 проверен точный текст «Он соединяет Autopista Illia, Autopista Buenos Aires-La Plata и Autopista 25 de Mayo.». Он не сообщает ответ «Начало автомагистрали.» на вопрос «Определите, что обозначает показанный ниже знак:» и по учебному предмету уступает выбранному контексту ch3-highways."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-423 по вопросу «Определите, что обозначает показанный ниже знак:» проверены канонический ответ «Начало автомагистрали.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-423 выбран ch3-highways, потому что его точный якорь ближе к предмету вопроса «Определите, что обозначает показанный ниже знак:», чем отклонённые кандидаты app2-highways-hospitals; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-highways",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -4907,76 +4501,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "bicycles-and-micromobility",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "bicycle-intro-growth",
-            "textPath": "textRu",
-            "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+            "kind": "manual-list-item",
+            "blockId": "age-and-paths",
+            "itemIndex": 5,
+            "textPath": "itemsRu",
+            "textFingerprint": "5956ccd2740e391f5be52d534e34bbd678ba3c622628cc850e4535ac2656d4e9"
           },
-          "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
+          "anchorTextAtReview": "Велосипед с электрической помощью: с 16 лет, максимум 25 км/ч, вспомогательный мотор до 1500 ватт.",
           "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-425 «Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch1-bicycle после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-425",
-            "questionId": "b-fallback-425",
-            "topicRouteId": "bicycles-and-micromobility",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Cuál es la velocidad máxima permitida para circular con una bicicleta con asistencia eléctrica?",
-              "Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?",
-              "25 km/h.",
-              "25 км/ч."
+          "directAnswerAssertionRu": "Для b-fallback-425 точный якорь «Велосипед с электрической помощью: с 16 лет, максимум 25 км/ч, вспомогательный мотор до 1500 ватт.» непосредственно подтверждает правильный ответ «25 км/ч.» на вопрос «Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?».",
+          "reviewerRationaleRu": "Якорь прямо называет максимальную скорость велосипеда с электрической помощью — 25 км/ч. Неверные варианты «Максимальная разрешенная скорость на дороге, где расположена велодорожка.» и «30 км/ч.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-425",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "anchor-contains-canonical-answer"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "bicycle-intro-growth",
-                  "textPath": "textRu",
-                  "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
-                },
-                "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-bicycle",
-                "routeHash": "#manual-section-ch1-bicycle",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "age-and-paths",
-                  "itemIndex": 5,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "5956ccd2740e391f5be52d534e34bbd678ba3c622628cc850e4535ac2656d4e9"
-                },
-                "anchorTextAtReview": "Велосипед с электрической помощью: с 16 лет, максимум 25 км/ч, вспомогательный мотор до 1500 ватт.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-425 проверен точный текст «Велосипед с электрической помощью: с 16 лет, максимум 25 км/ч, вспомогательный мотор до 1500 ватт.». Он не сообщает ответ «25 км/ч.» на вопрос «Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-425 по вопросу «Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?» проверены канонический ответ «25 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-425 выбран ch1-bicycle, потому что его точный якорь ближе к предмету вопроса «Какая максимально разрешенная скорость для движения на велосипеде с электрической поддержкой?», чем отклонённые кандидаты ch1-bicycle; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch1-bicycle",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -5341,78 +4901,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "right-of-way-special-situations",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
             "blockId": "uncontrolled-intersections",
-            "itemIndex": 1,
+            "itemIndex": 2,
             "textPath": "itemsRu",
-            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+            "textFingerprint": "1146ef8cd25e8399c58458782941208f9594babb8aef2a0a10962a811035c709"
           },
-          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+          "anchorTextAtReview": "Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.",
           "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-430 «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-right-of-way после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-430",
-            "questionId": "b-fallback-430",
-            "topicRouteId": "right-of-way-special-situations",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "En esta pendiente estrecha, ¿cuál de los dos vehículos tiene prioridad de paso?",
-              "На этом узком подъеме у какого из двух транспортных средств преимущество проезда?",
-              "El vehículo B.",
-              "У транспортного средства B."
+          "directAnswerAssertionRu": "Для b-fallback-430 точный якорь «Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.» непосредственно подтверждает правильный ответ «У транспортного средства B.» на вопрос «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?».",
+          "reviewerRationaleRu": "Якорь формулирует специальное правило приоритета для транспортного средства, выезжающего с железнодорожного переезда. Неверные варианты «У транспортного средства A.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-430",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-right-of-way",
-                "routeHash": "#manual-section-ch3-right-of-way",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "uncontrolled-intersections",
-                  "itemIndex": 1,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
-                },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch3-right-of-way",
-                "routeHash": "#manual-section-ch3-right-of-way",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "uncontrolled-intersections",
-                  "itemIndex": 2,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "1146ef8cd25e8399c58458782941208f9594babb8aef2a0a10962a811035c709"
-                },
-                "anchorTextAtReview": "Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-430 проверен точный текст «Исключение 2: у железнодорожного переезда приоритет у транспортного средства, которое выезжает с paso a nivel.». Он не сообщает ответ «У транспортного средства B.» на вопрос «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-430 по вопросу «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?» проверены канонический ответ «У транспортного средства B.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-430 выбран ch3-right-of-way, потому что его точный якорь ближе к предмету вопроса «На этом узком подъеме у какого из двух транспортных средств преимущество проезда?», чем отклонённые кандидаты ch3-right-of-way; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-right-of-way",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -5430,75 +4954,41 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch4-alcohol-drugs",
           "routeHash": "#manual-section-ch4-alcohol-drugs",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "alcohol-drugs-and-impairment",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-block",
-            "blockId": "legal-and-illegal-substances",
+            "blockId": "test-instruments-and-hangover",
             "textPath": "textRu",
-            "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+            "textFingerprint": "3d3f6717b918b71e15abc0c80048d906d446c61ffd044e4544f958521b7e4de2"
           },
-          "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
+          "anchorTextAtReview": "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).",
           "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-431 «Опасно ли управлять автомобилем с похмелья?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-alcohol-drugs после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-431",
-            "questionId": "b-fallback-431",
-            "topicRouteId": "alcohol-drugs-and-impairment",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Es peligroso conducir con resaca?",
-              "Опасно ли управлять автомобилем с похмелья?",
-              "Sí, es peligroso porque tiene efectos en el organismo.",
-              "Да, это опасно, потому что похмелье влияет на организм."
+          "directAnswerAssertionRu": "Для b-fallback-431 точный якорь «Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).» непосредственно подтверждает правильный ответ «Да, это опасно, потому что похмелье влияет на организм.» на вопрос «Опасно ли управлять автомобилем с похмелья?».",
+          "reviewerRationaleRu": "Якорь прямо называет похмелье опасным для вождения и объясняет его влияние на координацию, внимание и реакцию. Неверные варианты «Нет, потому что действие алкоголя проявляется только в первые часы после употребления.» и «Нет, потому что последствия похмелья не влияют на управление автомобилем.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-431",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-alcohol-drugs",
-                "routeHash": "#manual-section-ch4-alcohol-drugs",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "legal-and-illegal-substances",
-                  "textPath": "textRu",
-                  "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
-                },
-                "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-alcohol-drugs",
-                "routeHash": "#manual-section-ch4-alcohol-drugs",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "test-instruments-and-hangover",
-                  "textPath": "textRu",
-                  "textFingerprint": "3d3f6717b918b71e15abc0c80048d906d446c61ffd044e4544f958521b7e4de2"
-                },
-                "anchorTextAtReview": "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-431 проверен точный текст «Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).». Он не сообщает ответ «Да, это опасно, потому что похмелье влияет на организм.» на вопрос «Опасно ли управлять автомобилем с похмелья?» и по учебному предмету уступает выбранному контексту ch4-alcohol-drugs."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-431 по вопросу «Опасно ли управлять автомобилем с похмелья?» проверены канонический ответ «Да, это опасно, потому что похмелье влияет на организм.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-431 выбран ch4-alcohol-drugs, потому что его точный якорь ближе к предмету вопроса «Опасно ли управлять автомобилем с похмелья?», чем отклонённые кандидаты ch4-alcohol-drugs; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-alcohol-drugs",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -5777,76 +5267,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch4-sleep-fatigue",
           "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "fatigue-distraction-and-attention",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "fatigue-definition",
-            "textPath": "textRu",
-            "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
+            "kind": "manual-list-item",
+            "blockId": "fatigue-prevention",
+            "itemIndex": 1,
+            "textPath": "itemsRu",
+            "textFingerprint": "6344ad5aa8419e22438f6178510c197de6b52b7188bb883eda8d4840a2a92020"
           },
-          "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
+          "anchorTextAtReview": "Прерывать поездку каждые 200 км или каждые 2 часа.",
           "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-435 «Как часто рекомендуется останавливаться во время долгой поездки?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-sleep-fatigue после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-435",
-            "questionId": "b-fallback-435",
-            "topicRouteId": "fatigue-distraction-and-attention",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Cada cuánto tiempo es recomendable parar si se realiza un viaje largo?",
-              "Как часто рекомендуется останавливаться во время долгой поездки?",
-              "Cada 2 horas aproximadamente.",
-              "Примерно каждые 2 часа."
+          "directAnswerAssertionRu": "Для b-fallback-435 точный якорь «Прерывать поездку каждые 200 км или каждые 2 часа.» непосредственно подтверждает правильный ответ «Примерно каждые 2 часа.» на вопрос «Как часто рекомендуется останавливаться во время долгой поездки?».",
+          "reviewerRationaleRu": "Якорь прямо рекомендует прерывать поездку каждые два часа, одновременно приводя альтернативный ориентир 200 км. Неверные варианты «Примерно каждые 4 часа.» и «Примерно каждый час.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-435",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "fatigue-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
-                },
-                "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "fatigue-prevention",
-                  "itemIndex": 1,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "6344ad5aa8419e22438f6178510c197de6b52b7188bb883eda8d4840a2a92020"
-                },
-                "anchorTextAtReview": "Прерывать поездку каждые 200 км или каждые 2 часа.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-435 проверен точный текст «Прерывать поездку каждые 200 км или каждые 2 часа.». Он не сообщает ответ «Примерно каждые 2 часа.» на вопрос «Как часто рекомендуется останавливаться во время долгой поездки?» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-435 по вопросу «Как часто рекомендуется останавливаться во время долгой поездки?» проверены канонический ответ «Примерно каждые 2 часа.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-435 выбран ch4-sleep-fatigue, потому что его точный якорь ближе к предмету вопроса «Как часто рекомендуется останавливаться во время долгой поездки?», чем отклонённые кандидаты ch4-sleep-fatigue; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-sleep-fatigue",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -5953,76 +5409,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch4-sleep-fatigue",
           "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "fatigue-distraction-and-attention",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "fatigue-definition",
-            "textPath": "textRu",
-            "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
+            "kind": "manual-list-item",
+            "blockId": "fatigue-prevention",
+            "itemIndex": 6,
+            "textPath": "itemsRu",
+            "textFingerprint": "454f67ab64e6bfd67d4ddcb4ae2af0482385654c12aaf87fadb67c11a440a1ab"
           },
-          "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
+          "anchorTextAtReview": "У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.",
           "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-437 «Может ли начинающий водитель быстрее почувствовать усталость?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch4-sleep-fatigue после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-437",
-            "questionId": "b-fallback-437",
-            "topicRouteId": "fatigue-distraction-and-attention",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Un conductor principiante, ¿puede sentirse más fácilmente fatigado?",
-              "Может ли начинающий водитель быстрее почувствовать усталость?",
-              "Sí, por la falta de experiencia en la conducción.",
-              "Да, из-за недостатка опыта вождения."
+          "directAnswerAssertionRu": "Для b-fallback-437 точный якорь «У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.» непосредственно подтверждает правильный ответ «Да, из-за недостатка опыта вождения.» на вопрос «Может ли начинающий водитель быстрее почувствовать усталость?».",
+          "reviewerRationaleRu": "Правильный ответ «да»: причина в недостатке опыта, который увеличивает умственную и зрительную нагрузку во время управления. Формулировка Руководства «У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.» прямо подтверждает или опровергает утверждение билета. Неверные варианты «Нет, потому что все равны перед законом.» и «Только если речь идет о человеке с хронической усталостью.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-437",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "fatigue-definition",
-                  "textPath": "textRu",
-                  "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
-                },
-                "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch4-sleep-fatigue",
-                "routeHash": "#manual-section-ch4-sleep-fatigue",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "fatigue-prevention",
-                  "itemIndex": 6,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "454f67ab64e6bfd67d4ddcb4ae2af0482385654c12aaf87fadb67c11a440a1ab"
-                },
-                "anchorTextAtReview": "У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-437 проверен точный текст «У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.». Он не сообщает ответ «Да, из-за недостатка опыта вождения.» на вопрос «Может ли начинающий водитель быстрее почувствовать усталость?» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-437 по вопросу «Может ли начинающий водитель быстрее почувствовать усталость?» проверены канонический ответ «Да, из-за недостатка опыта вождения.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-437 выбран ch4-sleep-fatigue, потому что его точный якорь ближе к предмету вопроса «Может ли начинающий водитель быстрее почувствовать усталость?», чем отклонённые кандидаты ch4-sleep-fatigue; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch4-sleep-fatigue",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -6826,76 +6248,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch2-incident-obligations",
           "routeHash": "#manual-section-ch2-incident-obligations",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "emergency-response-and-crash-scene",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "incident-duty-core",
-            "textPath": "textRu",
-            "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
+            "kind": "manual-list-item",
+            "blockId": "incident-first-actions",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "a54353375e3ba99abae0658ce125ca0b4dd0104d046bd963182534c203dae674"
           },
-          "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
+          "anchorTextAtReview": "Если есть раненые, нужно немедленно звонить в службу скорой медицинской помощи 107, а затем в 911, который централизует экстренные вызовы.",
           "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-447 «Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch2-incident-obligations после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-447",
-            "questionId": "b-fallback-447",
-            "topicRouteId": "emergency-response-and-crash-scene",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿Cuáles son los números de emergencia que todo usuario de la vía pública debe conocer con el objetivo de poder llamar y pedir ayuda ante el acontecimiento de algún incidente?",
-              "Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?",
-              "107 y 911.",
-              "107 и 911."
+          "directAnswerAssertionRu": "Для b-fallback-447 точный якорь «Если есть раненые, нужно немедленно звонить в службу скорой медицинской помощи 107, а затем в 911, который централизует экстренные вызовы.» непосредственно подтверждает правильный ответ «107 и 911.» на вопрос «Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?».",
+          "reviewerRationaleRu": "Якорь прямо указывает последовательность экстренных номеров 107 и 911 при наличии раненых. Неверные варианты «911 и 109.» и «103 и 107.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-447",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch2-incident-obligations",
-                "routeHash": "#manual-section-ch2-incident-obligations",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "incident-duty-core",
-                  "textPath": "textRu",
-                  "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
-                },
-                "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch2-incident-obligations",
-                "routeHash": "#manual-section-ch2-incident-obligations",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "incident-first-actions",
-                  "itemIndex": 4,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "a54353375e3ba99abae0658ce125ca0b4dd0104d046bd963182534c203dae674"
-                },
-                "anchorTextAtReview": "Если есть раненые, нужно немедленно звонить в службу скорой медицинской помощи 107, а затем в 911, который централизует экстренные вызовы.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-447 проверен точный текст «Если есть раненые, нужно немедленно звонить в службу скорой медицинской помощи 107, а затем в 911, который централизует экстренные вызовы.». Он не сообщает ответ «107 и 911.» на вопрос «Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?» и по учебному предмету уступает выбранному контексту ch2-incident-obligations."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-447 по вопросу «Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?» проверены канонический ответ «107 и 911.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-447 выбран ch2-incident-obligations, потому что его точный якорь ближе к предмету вопроса «Какие номера экстренных служб должен знать каждый участник дорожного движения, чтобы позвать помощь при происшествии?», чем отклонённые кандидаты ch2-incident-obligations; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch2-incident-obligations",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7000,8 +6388,8 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
@@ -7020,18 +6408,18 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
           "thematicBasisRu": "Билет b-fallback-449 «Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
           "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-449",
+            "auditId": "F038-RA-004-b-fallback-449",
             "questionId": "b-fallback-449",
             "topicRouteId": "speed-limits",
             "ownerDecisionDate": "2026-06-23",
             "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
+            "auditMethod": "containment-equivalence-contradiction-review",
             "searchedConcepts": [
               "Según las normas generales, ¿cuál es la velocidad mínima permitida en esta calle?",
               "Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?",
@@ -7066,10 +6454,20 @@
                 "anchorTextAtReview": "20 км/ч",
                 "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
                 "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-449 проверен точный текст «20 км/ч». Он не сообщает ответ «20 км/ч.» на вопрос «Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?» и по учебному предмету уступает выбранному контексту ch3-speed."
+                "rejectionRu": "Для b-fallback-449 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не связывает число с минимальной скоростью именно на показанной улице и допускает иные скоростные значения. Поэтому точный якорь не позволяет исключить варианты «30 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
+                "answerOverlapDisposition": {
+                  "outcome": "not-self-sufficient",
+                  "matchKinds": [
+                    "normalized-equality"
+                  ],
+                  "limitationClass": "ambiguous-without-context",
+                  "limitationRu": "Для b-fallback-449 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не связывает число с минимальной скоростью именно на показанной улице и допускает иные скоростные значения. Поэтому точный якорь не позволяет исключить варианты «30 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста.",
+                  "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+                  "reviewedAt": "2026-06-25T01:30:00Z"
+                }
               }
             ],
-            "auditConclusionRu": "Для b-fallback-449 по вопросу «Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?» проверены канонический ответ «20 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
+            "auditConclusionRu": "Для b-fallback-449 по вопросу «Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?» проверены канонический ответ «20 км/ч.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback. F038-RA-004: Изолированное значение 20 км/ч не связывает число с минимальной скоростью именно на показанной улице и допускает иные скоростные значения.",
             "selectionRationaleRu": "Для b-fallback-449 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Согласно общим нормам, какая минимальная разрешенная скорость на этой улице?», чем отклонённые кандидаты ch3-speed; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
           }
         }
@@ -7174,16 +6572,15 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "safe-distance-and-braking",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
             "blockId": "reaction-and-stopping",
@@ -7195,57 +6592,22 @@
           "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-451 «Что называется безопасной дистанцией?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-speed после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-451",
-            "questionId": "b-fallback-451",
-            "topicRouteId": "safe-distance-and-braking",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "¿A qué se denomina “distancia de seguridad”?",
-              "Что называется безопасной дистанцией?",
-              "A la distancia mínima que se debe mantener con el vehículo que circula adelante para tener un mayor margen de reacción y en caso de frenada repentina no se colisione con él.",
-              "Минимальное расстояние до автомобиля впереди, которое дает больший запас реакции и помогает не столкнуться с ним при резком торможении."
+          "directAnswerAssertionRu": "Для b-fallback-451 точный якорь «Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.» непосредственно подтверждает правильный ответ «Минимальное расстояние до автомобиля впереди, которое дает больший запас реакции и помогает не столкнуться с ним при резком торможении.» на вопрос «Что называется безопасной дистанцией?».",
+          "reviewerRationaleRu": "Правильный ответ — минимальная дистанция до автомобиля впереди, достаточная для реакции и предотвращения столкновения при резком торможении. Текст Руководства «Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Расстояние до автомобиля в соседней полосе, которое нужно выдерживать для безопасного обгона.» и «Расстояние, которое автомобиль проходит от момента, когда водитель замечает опасность, до нажатия на тормоз.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-451",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-speed",
-                "routeHash": "#manual-section-ch3-speed",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "reaction-and-stopping",
-                  "itemIndex": 1,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "84cd2f0d9e1a8687766c541021210ceeb73c2ecdf68f6288a868dabdf553aa65"
-                },
-                "anchorTextAtReview": "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch2-required-documents",
-                "routeHash": "#manual-section-ch2-required-documents",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "insurance-vtv-rva",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "6dd2c162dfb1141be178a72bba37ddea90ffd5b1e36f1290cdb35ff15714110e"
-                },
-                "anchorTextAtReview": "Если у автомобиля есть оборудование GNC, нужно иметь cédula de identificación этого оборудования и действующую обязательную oblea.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-451 проверен точный текст «Если у автомобиля есть оборудование GNC, нужно иметь cédula de identificación этого оборудования и действующую обязательную oblea.». Он не сообщает ответ «Минимальное расстояние до автомобиля впереди, которое дает больший запас реакции и помогает не столкнуться с ним при резком торможении.» на вопрос «Что называется безопасной дистанцией?» и по учебному предмету уступает выбранному контексту ch3-speed."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-451 по вопросу «Что называется безопасной дистанцией?» проверены канонический ответ «Минимальное расстояние до автомобиля впереди, которое дает больший запас реакции и помогает не столкнуться с ним при резком торможении.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-451 выбран ch3-speed, потому что его точный якорь ближе к предмету вопроса «Что называется безопасной дистанцией?», чем отклонённые кандидаты ch2-required-documents; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-speed",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7615,76 +6977,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch2-required-documents",
           "routeHash": "#manual-section-ch2-required-documents",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "documents-licenses-and-insurance",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "documents-scope",
-            "textPath": "textRu",
-            "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
+            "kind": "manual-list-item",
+            "blockId": "cedula-rules",
+            "itemIndex": 4,
+            "textPath": "itemsRu",
+            "textFingerprint": "df9229050507a8b6b47a27b3c50cd2193684fbeed96b6ce92a10f03533d33bfc"
           },
-          "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
+          "anchorTextAtReview": "Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.",
           "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-456 «Кто имеет право управлять автомобилем с таким документом?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch2-required-documents после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-456",
-            "questionId": "b-fallback-456",
-            "topicRouteId": "documents-licenses-and-insurance",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Con esta documentación, ¿quién está autorizado a conducir el vehículo?",
-              "Кто имеет право управлять автомобилем с таким документом?",
-              "Sólo el titular.",
-              "Только владелец."
+          "directAnswerAssertionRu": "Для b-fallback-456 точный якорь «Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.» непосредственно подтверждает правильный ответ «Только владелец.» на вопрос «Кто имеет право управлять автомобилем с таким документом?».",
+          "reviewerRationaleRu": "Правильный ответ — только владелец: изображенный документ не означает автоматическое право для родственников или любых других лиц. Текст Руководства «Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Никто, потому что документ просрочен и его нужно продлить.» и «Владелец и его ближайшие родственники, потому что у них такая же фамилия.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-456",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "lexical-containment",
+            "matchKinds": [
+              "anchor-contains-canonical-answer"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch2-required-documents",
-                "routeHash": "#manual-section-ch2-required-documents",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "documents-scope",
-                  "textPath": "textRu",
-                  "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
-                },
-                "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch2-required-documents",
-                "routeHash": "#manual-section-ch2-required-documents",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "cedula-rules",
-                  "itemIndex": 4,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "df9229050507a8b6b47a27b3c50cd2193684fbeed96b6ce92a10f03533d33bfc"
-                },
-                "anchorTextAtReview": "Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-456 проверен точный текст «Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.». Он не сообщает ответ «Только владелец.» на вопрос «Кто имеет право управлять автомобилем с таким документом?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-456 по вопросу «Кто имеет право управлять автомобилем с таким документом?» проверены канонический ответ «Только владелец.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-456 выбран ch2-required-documents, потому что его точный якорь ближе к предмету вопроса «Кто имеет право управлять автомобилем с таким документом?», чем отклонённые кандидаты ch2-required-documents; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch2-required-documents",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7702,76 +7030,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "app4-signs-horizontal",
           "routeHash": "#manual-section-app4-signs-horizontal",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "center-lines-and-crossing-rules",
+          "placementBasis": "answer-bearing",
           "anchor": {
-            "kind": "manual-block",
-            "blockId": "horizontal-role",
-            "textPath": "textRu",
-            "textFingerprint": "cb95976e3d6c2354a9f7f82a2e9c4b2a8a0cbaee799636ef8978a3e887959869"
+            "kind": "manual-sign-entry",
+            "blockId": "horizontal-individual-sign-catalog",
+            "entryId": "app4horizontal-p195-007-linea-de-separacion-de-sentido-de-circulacion-in",
+            "textPath": "russianTranslation",
+            "textFingerprint": "c23428442786bc6b338ad1863fc977e4ad22524f6df82548abdf2f710773d08b"
           },
-          "anchorTextAtReview": "Горизонтальная сигнализация - это дорожная разметка на покрытии. Она направляет поток, разделяет полосы, показывает места остановки, переходы, особые зоны и другие правила движения.",
+          "anchorTextAtReview": "разделительная линия, которую можно пересекать",
           "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-457 «Что обозначают отмеченные на изображении центральные линии проезжей части?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст app4-signs-horizontal после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-457",
-            "questionId": "b-fallback-457",
-            "topicRouteId": "center-lines-and-crossing-rules",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "En la siguiente imagen, ¿qué indican las líneas centrales de la calzada señaladas?",
-              "Что обозначают отмеченные на изображении центральные линии проезжей части?",
-              "Que se pueden traspasar.",
-              "Их можно пересекать."
+          "directAnswerAssertionRu": "Для b-fallback-457 точный якорь «разделительная линия, которую можно пересекать» непосредственно подтверждает правильный ответ «Их можно пересекать.» на вопрос «Что обозначают отмеченные на изображении центральные линии проезжей части?».",
+          "reviewerRationaleRu": "Якорь прямо определяет линию как разделительную разметку, которую разрешено пересекать. Неверные варианты «Их запрещено пересекать.» и «Это зона максимальной опасности.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-457",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "app4-signs-horizontal",
-                "routeHash": "#manual-section-app4-signs-horizontal",
-                "anchor": {
-                  "kind": "manual-block",
-                  "blockId": "horizontal-role",
-                  "textPath": "textRu",
-                  "textFingerprint": "cb95976e3d6c2354a9f7f82a2e9c4b2a8a0cbaee799636ef8978a3e887959869"
-                },
-                "anchorTextAtReview": "Горизонтальная сигнализация - это дорожная разметка на покрытии. Она направляет поток, разделяет полосы, показывает места остановки, переходы, особые зоны и другие правила движения.",
-                "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "app4-signs-horizontal",
-                "routeHash": "#manual-section-app4-signs-horizontal",
-                "anchor": {
-                  "kind": "manual-sign-entry",
-                  "blockId": "horizontal-individual-sign-catalog",
-                  "entryId": "app4horizontal-p195-007-linea-de-separacion-de-sentido-de-circulacion-in",
-                  "textPath": "russianTranslation",
-                  "textFingerprint": "c23428442786bc6b338ad1863fc977e4ad22524f6df82548abdf2f710773d08b"
-                },
-                "anchorTextAtReview": "разделительная линия, которую можно пересекать",
-                "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-457 проверен точный текст «разделительная линия, которую можно пересекать». Он не сообщает ответ «Их можно пересекать.» на вопрос «Что обозначают отмеченные на изображении центральные линии проезжей части?» и по учебному предмету уступает выбранному контексту app4-signs-horizontal."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-457 по вопросу «Что обозначают отмеченные на изображении центральные линии проезжей части?» проверены канонический ответ «Их можно пересекать.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-457 выбран app4-signs-horizontal, потому что его точный якорь ближе к предмету вопроса «Что обозначают отмеченные на изображении центральные линии проезжей части?», чем отклонённые кандидаты app4-signs-horizontal; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "app4-signs-horizontal",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]
@@ -7876,78 +7170,42 @@
       },
       "review": {
         "status": "approved",
-        "reviewedBy": "codex-implementation-agent-f038-ra003",
-        "reviewedAt": "2026-06-24T20:06:33Z",
+        "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+        "reviewedAt": "2026-06-25T01:30:00Z",
         "auditShard": "369-460"
       },
       "placements": [
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "placementBasis": "owner-approved-thematic-fallback",
-          "topicRouteId": "right-of-way-signals-and-rail-crossings",
+          "placementBasis": "answer-bearing",
           "anchor": {
             "kind": "manual-list-item",
             "blockId": "uncontrolled-intersections",
-            "itemIndex": 0,
+            "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
+            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
           },
-          "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
+          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
           "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
           "review": {
             "status": "approved",
-            "reviewedBy": "codex-implementation-agent-f038-ra003",
-            "reviewedAt": "2026-06-24T20:06:33Z",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z",
             "auditShard": "369-460"
           },
-          "thematicBasisRu": "Билет b-fallback-459 «Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?» не имеет подтверждённого самодостаточного answer-bearing якоря; выбран точный ближайший тематический контекст ch3-right-of-way после сравнения с отклонёнными кандидатами.",
-          "fallbackEvidence": {
-            "auditId": "F038-RA-003-b-fallback-459",
-            "questionId": "b-fallback-459",
-            "topicRouteId": "right-of-way-signals-and-rail-crossings",
-            "ownerDecisionDate": "2026-06-23",
-            "ownerDecisionRef": "feature-038-owner-decision-2026-06-23",
-            "auditMethod": "five-shard-ticket-specific-fallback-ledger-review",
-            "searchedConcepts": [
-              "Al conducir un vehículo y llegar a esta intersección, ¿cómo debe proceder frente a esta señal?",
-              "Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?",
-              "Reducir la velocidad y detener el vehículo antes de la senda peatonal.",
-              "Снизить скорость и остановить автомобиль перед пешеходным переходом."
+          "directAnswerAssertionRu": "Для b-fallback-459 точный якорь «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.» непосредственно подтверждает правильный ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» на вопрос «Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?».",
+          "reviewerRationaleRu": "Правильный ответ — снизить скорость и остановиться перед пешеходным переходом: это требуется знаком остановки на фото. Текст Руководства «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.» описывает то же действие, условие или значение, которое требуется выбрать в билете. Неверные варианты «Немного снизить скорость и посмотреть, не приближаются ли автомобили по дороге, на которую вы собираетесь въехать.» и «Продолжить движение.» не согласуются с точным правилом, определением, числом или подписью якоря.",
+          "contradictionReview": {
+            "auditId": "F038-RA-004-b-fallback-459",
+            "outcome": "supplies-canonical-answer",
+            "screeningSource": "reviewed-semantic-equivalence",
+            "matchKinds": [
+              "reviewed-semantic-equivalence"
             ],
-            "candidatesReviewed": [
-              {
-                "pageId": "ch3-right-of-way",
-                "routeHash": "#manual-section-ch3-right-of-way",
-                "anchor": {
-                  "kind": "manual-list-item",
-                  "blockId": "uncontrolled-intersections",
-                  "itemIndex": 0,
-                  "textPath": "itemsRu",
-                  "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
-                },
-                "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
-                "outcome": "selected-closest-topic"
-              },
-              {
-                "pageId": "ch1-pedestrian-priority",
-                "routeHash": "#manual-section-ch1-pedestrian-priority",
-                "anchor": {
-                  "kind": "manual-card-text",
-                  "blockId": "zone-30",
-                  "childId": "zone30-card",
-                  "textPath": "cards.0.details.0.textRu",
-                  "textFingerprint": "0f811aaf5167b7ab37a9444956b07ed4c954f4463beab434029026d7f9c885de"
-                },
-                "anchorTextAtReview": "въезды обозначены красно-белым пешеходным переходом, вертикальными предупреждающими знаками и горизонтальной разметкой «Максимум 30».",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
-                "outcome": "rejected",
-                "rejectionRu": "Для b-fallback-459 проверен точный текст «въезды обозначены красно-белым пешеходным переходом, вертикальными предупреждающими знаками и горизонтальной разметкой «Максимум 30».». Он не сообщает ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» на вопрос «Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
-              }
-            ],
-            "auditConclusionRu": "Для b-fallback-459 по вопросу «Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?» проверены канонический ответ «Снизить скорость и остановить автомобиль перед пешеходным переходом.» и точные learner-visible кандидаты; ни один проверенный текст не даёт весь ответ без внешнего знания, поэтому сохранён тематический fallback.",
-            "selectionRationaleRu": "Для b-fallback-459 выбран ch3-right-of-way, потому что его точный якорь ближе к предмету вопроса «Подъезжая к этому перекрестку на автомобиле, как нужно действовать при таком знаке?», чем отклонённые кандидаты ch1-pedestrian-priority; это сравнительное тематическое решение, а не утверждение о наличии полного ответа в якоре."
+            "priorFallbackPageId": "ch3-right-of-way",
+            "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
+            "reviewedAt": "2026-06-25T01:30:00Z"
           }
         }
       ]

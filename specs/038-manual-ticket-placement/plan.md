@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For remediation of `F038-RA-003`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards share fallback-ledger schema, curated routes, assignments, validator, manifest, evidence, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
+For remediation of `F038-RA-004`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The five range shards share contradiction detection/disposition, fallback-ledger schema, curated routes, assignments, validator, manifest, evidence, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and five sequential checkpoints.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -401,6 +401,58 @@ Do not replace the native disclosure, change the direct-render threshold, eagerl
 
 Mitigation: thin adapters over a shared component, focused regression assertions, and browser comparison.
 
+## F038-RA-004 Follow-up Plan
+
+One Implementation Agent must remediate blocking review `4565608440` on PR `#204`. Starting state is current evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467` over effective content head `0f777a89450e26608b3eeda7c9198959ce576179`. Parallel work may exist; preserve every sibling worktree, branch, commit, PR, dirty diff, and process-memory record.
+
+Execution sequence:
+
+1. Add an advisory contradiction detector over all rejected fallback candidates. Compare exact learner-visible anchor text with canonical Spanish and Russian correct answers using normalized equality, containment in both directions, numeric/unit equivalence, and a reviewed semantic-equivalence hook. Do not let the detector approve or classify records.
+2. Run the detector across all five shards and record the complete candidate ID set. The Architect baseline scan found `39` lexical candidates; implementation must explain any count difference and must also add manually discovered semantic equivalents.
+3. Re-audit every reported candidate against the full canonical question, correct answer, distractors, exact anchor, destination page, and any necessary local visual context.
+4. When the exact anchor independently supplies the complete answer, select that anchor and convert the placement to `answer-bearing`; remove fallback-only fields and add direct-answer, distractor-aware review evidence.
+5. Retain fallback only when the overlap is demonstrably negated, partial, differently scoped, conditional, ambiguous, or otherwise not self-sufficient. Record a structured ticket-specific `not-self-sufficient` disposition; generic denial is forbidden.
+6. Re-run the contradiction detector and validator until there are zero undisposed contradictions and zero answer-bearing candidates rejected in favor of generic prose.
+7. Seal changed placements, candidate dispositions, any necessary route/assignment/override updates, and final audit-derived totals in the reviewed manifest and deterministic evidence.
+8. Update `tasks.md` with per-shard screened/reclassified/retained/unresolved counts, exact changed files, command results, the new effective content head, and accurate live blockers.
+
+Required fixtures:
+
+- rejection: `001`, `065`, and `086` cannot remain fallback while rejecting their exact answer-bearing anchors;
+- acceptance: an exact selected anchor with valid `answer-bearing` evidence passes;
+- justified fallback: `026` passes only with a negated/warning limitation, and `202` passes only with the missing more-than-two-tracks limitation;
+- rejection: undisposed contradiction, generic limitation, contradiction between limitation and exact text, fallback fields on an answer-bearing record, or stale manifest/evidence totals.
+
+Exact allowed implementation files:
+
+- `content/manual-ticket-placement/topic-routes.json` only if a corrected answer-bearing anchor requires route admission;
+- `content/manual-ticket-placement/ticket-topic-assignments.json` only if independent re-audit proves the current assignment wrong;
+- `content/manual-ticket-placement/placements/001-092.json`;
+- `content/manual-ticket-placement/placements/093-184.json`;
+- `content/manual-ticket-placement/placements/185-276.json`;
+- `content/manual-ticket-placement/placements/277-368.json`;
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs` only for deterministic contradiction/evidence reporting;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if corrected destinations change existing deterministic density fixtures;
+- `docs_project/project/backend/backend-docs.md` only to document the durable contradiction-disposition validator contract;
+- `specs/038-manual-ticket-placement/tasks.md` only for Implementation Agent evidence and current process status.
+
+Forbidden:
+
+- protected manual prose/images, route inventory, protected baseline, or canonical ticket/translation/explanation/answer/difficulty/image changes;
+- runtime UI/CSS, package/lockfile, frontend docs, or unrelated tests;
+- automatic semantic approval from containment/equivalence detection;
+- edits to `spec.md` or `plan.md` by Implementation Agent;
+- commit/push/review/thread resolution/merge/final validation by Architect.
+
+Verification must include focused contradiction-detector and mutation fixtures, `pnpm run validate:manual-ticket-placement`, `pnpm run validate:content`, `pnpm run test`, `pnpm run build`, focused Playwright when density fixtures change, `pnpm run test:e2e`, `pnpm run preflight`, and `git diff --check`. Protected/canonical diff guards must remain empty.
+
+Any implementation change creates a new effective content head and makes review `4565608440`, head `f6f9484d3869c7beea957cd3458c826cb008d467`, and effective content head `0f777a89450e26608b3eeda7c9198959ce576179` stale for merge authorization. Fresh Review Agent review is mandatory. Final Architect validation is not part of this follow-up and may begin only after fresh review passes, required checks are green, blocking threads are resolved/outdated, and process memory is current.
+
 ## Process Memory Requirements
 
 Implementation Agent must keep `tasks.md` current with:
@@ -419,4 +471,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-003` is the current blocking implementation task on PR `#204` at head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a`; prior effective content head `2cc53914622a5e1015b3c0ca322931f64c32d7f8` is stale. One Implementation Agent must complete the five fallback-ledger checkpoints, restore the exact `042` and `126` invariants, keep manifest/evidence/process memory current, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-003` implementation is complete at effective content head `0f777a89450e26608b3eeda7c9198959ce576179`, followed by evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`; exact `042` and `126` invariants are restored. `F038-RA-004` is now the active blocking implementation task from review `4565608440`: one Implementation Agent must re-audit all containment/equivalence contradictions, correctly select answer-bearing anchors, retain only justified fallbacks, refresh manifest/evidence/process memory, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.

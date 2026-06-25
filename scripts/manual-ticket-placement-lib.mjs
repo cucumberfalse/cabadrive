@@ -16,6 +16,31 @@ export const RESERVED_REVIEWER_PATTERNS = [
   /automatic/iu,
   /synthetic/iu
 ];
+export const F038_RA004_LEXICAL_BASELINE_IDS = [
+  "b-fallback-001", "b-fallback-026", "b-fallback-032", "b-fallback-046", "b-fallback-049",
+  "b-fallback-065", "b-fallback-086", "b-fallback-110", "b-fallback-120", "b-fallback-123",
+  "b-fallback-124", "b-fallback-125", "b-fallback-144", "b-fallback-159", "b-fallback-202",
+  "b-fallback-203", "b-fallback-236", "b-fallback-251", "b-fallback-254", "b-fallback-262",
+  "b-fallback-267", "b-fallback-273", "b-fallback-287", "b-fallback-289", "b-fallback-295",
+  "b-fallback-300", "b-fallback-314", "b-fallback-324", "b-fallback-345", "b-fallback-350",
+  "b-fallback-377", "b-fallback-380", "b-fallback-391", "b-fallback-398", "b-fallback-401",
+  "b-fallback-420", "b-fallback-425", "b-fallback-449", "b-fallback-456"
+];
+export const F038_RA004_SEMANTIC_EQUIVALENCE_IDS = [
+  "b-fallback-003", "b-fallback-007", "b-fallback-009", "b-fallback-023", "b-fallback-028",
+  "b-fallback-031", "b-fallback-041", "b-fallback-042", "b-fallback-051", "b-fallback-063",
+  "b-fallback-072", "b-fallback-081", "b-fallback-097", "b-fallback-115", "b-fallback-128",
+  "b-fallback-133", "b-fallback-152", "b-fallback-154", "b-fallback-173", "b-fallback-174",
+  "b-fallback-177", "b-fallback-178", "b-fallback-180", "b-fallback-204", "b-fallback-205",
+  "b-fallback-211", "b-fallback-215", "b-fallback-218", "b-fallback-224", "b-fallback-228",
+  "b-fallback-230", "b-fallback-241", "b-fallback-243", "b-fallback-248", "b-fallback-260",
+  "b-fallback-271", "b-fallback-288", "b-fallback-301", "b-fallback-309", "b-fallback-316",
+  "b-fallback-318", "b-fallback-327", "b-fallback-355", "b-fallback-360", "b-fallback-366",
+  "b-fallback-367", "b-fallback-371", "b-fallback-379", "b-fallback-382", "b-fallback-390",
+  "b-fallback-402", "b-fallback-404", "b-fallback-405", "b-fallback-410", "b-fallback-421",
+  "b-fallback-422", "b-fallback-423", "b-fallback-430", "b-fallback-431", "b-fallback-435",
+  "b-fallback-437", "b-fallback-447", "b-fallback-451", "b-fallback-457", "b-fallback-459"
+];
 
 export function canonicalJson(value) {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
@@ -52,6 +77,95 @@ function normalizeText(value) {
     .toLocaleLowerCase("ru")
     .replace(/[^\p{Letter}\p{Number}]+/gu, " ")
     .trim();
+}
+
+function containsNormalizedPhrase(value, expected) {
+  const normalizedValue = normalizeText(value);
+  const normalizedExpected = normalizeText(expected);
+  if (normalizedExpected.length < 4) return false;
+  return normalizedValue === normalizedExpected ||
+    ` ${normalizedValue} `.includes(` ${normalizedExpected} `);
+}
+
+function numericUnitSignature(value) {
+  const normalized = normalizeText(value);
+  const numbers = normalized.match(/\d+(?:[.,]\d+)?/gu) || [];
+  const units = normalized.match(/\b(?:км ч|km h|грамм(?:а|ов)?|gramos?|литр(?:а|ов)?|litros?|секунд(?:а|ы)?|segundos?|час(?:а|ов)?|horas?)\b/gu) || [];
+  if (numbers.length === 0 || units.length === 0) return null;
+  return `${numbers.join("|")}::${units.join("|")}`;
+}
+
+export function detectRejectedCandidateAnswerOverlap(candidate, question, translation) {
+  const correctAnswer = question?.answers?.find((answer) => answer.id === question.correctAnswerId);
+  const answerForms = [
+    correctAnswer?.officialTextEs,
+    translation?.answerTranslations?.[question?.correctAnswerId]
+  ].filter(Boolean);
+  const matchKinds = new Set();
+  for (const answer of answerForms) {
+    const anchorNormalized = normalizeText(candidate?.anchorTextAtReview);
+    const answerNormalized = normalizeText(answer);
+    if (anchorNormalized === answerNormalized && answerNormalized.length >= 4) {
+      matchKinds.add("normalized-equality");
+    } else {
+      if (containsNormalizedPhrase(candidate?.anchorTextAtReview, answer)) {
+        matchKinds.add("anchor-contains-canonical-answer");
+      }
+      if (containsNormalizedPhrase(answer, candidate?.anchorTextAtReview)) {
+        matchKinds.add("canonical-answer-contains-anchor");
+      }
+    }
+    const anchorNumeric = numericUnitSignature(candidate?.anchorTextAtReview);
+    const answerNumeric = numericUnitSignature(answer);
+    if (anchorNumeric && answerNumeric && anchorNumeric === answerNumeric) {
+      matchKinds.add("numeric-unit-equivalence");
+    }
+  }
+  if (candidate?.answerOverlapDisposition?.matchKinds?.includes("reviewed-semantic-equivalence")) {
+    matchKinds.add("reviewed-semantic-equivalence");
+  }
+  return [...matchKinds].sort();
+}
+
+function contradictionAuditSummary(records, questions, translations) {
+  const questionById = new Map(questions.map((question) => [question.id, question]));
+  const translationById = new Map(translations.map((translation) => [translation.questionId, translation]));
+  const reclassified = [];
+  const retained = [];
+  const unresolved = [];
+  for (const record of records) {
+    const placement = record.placements?.[0];
+    if (placement?.placementBasis === "answer-bearing" && placement.contradictionReview?.outcome === "supplies-canonical-answer") {
+      reclassified.push(record.questionId);
+      continue;
+    }
+    for (const candidate of placement?.fallbackEvidence?.candidatesReviewed || []) {
+      if (candidate.outcome !== "rejected") continue;
+      const matchKinds = detectRejectedCandidateAnswerOverlap(
+        candidate,
+        questionById.get(record.questionId),
+        translationById.get(record.questionId)
+      );
+      if (matchKinds.length === 0) continue;
+      if (candidate.answerOverlapDisposition?.outcome === "not-self-sufficient") retained.push(record.questionId);
+      else unresolved.push(record.questionId);
+    }
+  }
+  const distinct = (values) => [...new Set(values)].sort();
+  return {
+    architectLexicalBaselineCount: F038_RA004_LEXICAL_BASELINE_IDS.length,
+    architectLexicalBaselineIds: F038_RA004_LEXICAL_BASELINE_IDS,
+    reviewedSemanticEquivalenceCount: F038_RA004_SEMANTIC_EQUIVALENCE_IDS.length,
+    reviewedSemanticEquivalenceIds: F038_RA004_SEMANTIC_EQUIVALENCE_IDS,
+    screenedQuestionCount: new Set([
+      ...F038_RA004_LEXICAL_BASELINE_IDS,
+      ...F038_RA004_SEMANTIC_EQUIVALENCE_IDS
+    ]).size,
+    reclassifiedAnswerBearingIds: distinct(reclassified),
+    retainedFallbackIds: distinct(retained),
+    unresolvedIds: distinct(unresolved),
+    rejectedSelfSufficientAnswerBearingCount: unresolved.length
+  };
 }
 
 function pathValue(root, path) {
@@ -878,6 +992,11 @@ export function validatePlacementData({
   const searchedConceptSignatures = new Map();
   const auditConclusionSignatures = new Map();
   const selectionRationaleSignatures = new Map();
+  const contradictionAudit = contradictionAuditSummary(records, questions, translations);
+  const contradictionAuditIds = new Set([
+    ...contradictionAudit.reclassifiedAnswerBearingIds,
+    ...contradictionAudit.retainedFallbackIds
+  ]);
 
   if (routeById.size !== (topicRoutes?.routes || []).length) errors.push("Topic-routing source has duplicate route IDs.");
   if (assignmentByQuestion.size !== (ticketTopicAssignments?.entries || []).length) {
@@ -1054,6 +1173,34 @@ export function validatePlacementData({
           )) {
             errors.push(`${record.questionId}/${placement.pageId}: fallback rejection is not ticket-specific and comparative.`);
           }
+          if (candidate.outcome === "rejected") {
+            const matchKinds = detectRejectedCandidateAnswerOverlap(
+              candidate,
+              question,
+              translationById.get(record.questionId)
+            );
+            if (matchKinds.length > 0) {
+              const disposition = candidate.answerOverlapDisposition;
+              const validClasses = new Set([
+                "negated-or-warning",
+                "incomplete-proposition",
+                "wrong-scope-or-condition",
+                "ambiguous-without-context"
+              ]);
+              if (
+                disposition?.outcome !== "not-self-sufficient" ||
+                !validClasses.has(disposition?.limitationClass) ||
+                typeof disposition?.limitationRu !== "string" ||
+                disposition.limitationRu.length < 100 ||
+                !disposition.limitationRu.includes(record.questionId) ||
+                reviewerIsReserved(disposition?.reviewedBy) ||
+                !Array.isArray(disposition?.matchKinds) ||
+                !matchKinds.every((kind) => disposition.matchKinds.includes(kind))
+              ) {
+                errors.push(`${record.questionId}/${placement.pageId}: rejected canonical-answer overlap lacks a reviewed not-self-sufficient disposition.`);
+              }
+            }
+          }
         }
 
         const selectedCandidate = selectedCandidates[0];
@@ -1094,6 +1241,19 @@ export function validatePlacementData({
             placement.directAnswerAssertionRu.length < 40 ||
             rationaleIsGeneric(placement.reviewerRationaleRu)) {
           errors.push(`${record.questionId}/${placement.pageId}: strict placement lacks direct-answer evidence.`);
+        }
+        const contradictionReview = placement.contradictionReview;
+        if (
+          contradictionReview?.outcome !== "supplies-canonical-answer" ||
+          !["lexical-containment", "reviewed-semantic-equivalence"].includes(contradictionReview?.screeningSource) ||
+          !Array.isArray(contradictionReview?.matchKinds) ||
+          contradictionReview.matchKinds.length < 1 ||
+          reviewerIsReserved(contradictionReview?.reviewedBy)
+        ) {
+          errors.push(`${record.questionId}/${placement.pageId}: answer-bearing remediation lacks reviewed contradiction evidence.`);
+        }
+        if (placement.fallbackEvidence || placement.thematicBasisRu) {
+          errors.push(`${record.questionId}/${placement.pageId}: answer-bearing placement retains fallback-only evidence.`);
         }
       }
     }
@@ -1138,6 +1298,39 @@ export function validatePlacementData({
     errors.push("b-fallback-126: exact pre-driving oil-check invariant or comparison ledger failed.");
   }
 
+  for (const fixtureId of ["b-fallback-001", "b-fallback-065", "b-fallback-086"]) {
+    const fixturePlacement = records.find((record) => record.questionId === fixtureId)?.placements?.[0];
+    if (fixturePlacement?.placementBasis !== "answer-bearing") {
+      errors.push(`${fixtureId}: exact self-sufficient answer-bearing candidate remains rejected.`);
+    }
+  }
+  const fallback026 = records.find((record) => record.questionId === "b-fallback-026")?.placements?.[0];
+  const disposition026 = fallback026?.fallbackEvidence?.candidatesReviewed
+    ?.find((candidate) => candidate.outcome === "rejected")?.answerOverlapDisposition;
+  if (fallback026?.placementBasis !== "owner-approved-thematic-fallback" ||
+      disposition026?.limitationClass !== "negated-or-warning") {
+    errors.push("b-fallback-026: negated speed-warning fallback disposition failed.");
+  }
+  const fallback202 = records.find((record) => record.questionId === "b-fallback-202")?.placements?.[0];
+  const disposition202 = fallback202?.fallbackEvidence?.candidatesReviewed
+    ?.find((candidate) => candidate.outcome === "rejected")?.answerOverlapDisposition;
+  if (fallback202?.placementBasis !== "owner-approved-thematic-fallback" ||
+      disposition202?.limitationClass !== "incomplete-proposition" ||
+      !disposition202?.limitationRu?.includes("более чем двумя путями")) {
+    errors.push("b-fallback-202: partial railway-crossing fallback disposition failed.");
+  }
+  for (const questionId of [
+    ...F038_RA004_LEXICAL_BASELINE_IDS,
+    ...F038_RA004_SEMANTIC_EQUIVALENCE_IDS
+  ]) {
+    if (!contradictionAuditIds.has(questionId)) {
+      errors.push(`${questionId}: F038-RA-004 contradiction audit has no reviewed disposition.`);
+    }
+  }
+  if (contradictionAudit.unresolvedIds.length > 0) {
+    errors.push(`F038-RA-004 has unresolved answer-overlap contradictions: ${contradictionAudit.unresolvedIds.join(", ")}.`);
+  }
+
   for (const question of questions) {
     if (!seenQuestions.has(question.id)) errors.push(`${question.id}: zero placements.`);
     if (!assignmentByQuestion.has(question.id)) errors.push(`${question.id}: zero reviewed topic assignments.`);
@@ -1151,7 +1344,10 @@ export function validatePlacementData({
 
   const summary = placementSummary(records, pageInventory);
   if (evidence && canonicalJson(evidence.summary) !== canonicalJson(summary)) errors.push("Placement evidence summary is stale.");
-  return { errors, summary };
+  if (evidence && canonicalJson(evidence.contradictionAudit) !== canonicalJson(contradictionAudit)) {
+    errors.push("Placement contradiction-audit evidence is stale.");
+  }
+  return { errors, summary, contradictionAudit };
 }
 
 export function relativePath(root, path) {

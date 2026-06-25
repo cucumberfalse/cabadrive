@@ -11,11 +11,11 @@
     },
     "eligibleRouteCount": 51,
     "ineligibleRouteCount": 14,
-    "destinationRouteCount": 26,
+    "destinationRouteCount": 31,
     "density": {
-      "minimum": 2,
-      "median": 16,
-      "maximum": 47,
+      "minimum": 1,
+      "median": 12,
+      "maximum": 45,
       "densePageIds": [
         "app1-safety-elements",
         "app4-signs-horizontal",
@@ -29,50 +29,45 @@
         "ch5-anticipatory-efficient-driving"
       ],
       "byPageId": {
-        "app1-safety-elements": 47,
-        "app4-signs-horizontal": 23,
-        "app4-signs-informational": 8,
+        "app1-other-required-safety-elements": 1,
+        "app1-safety-elements": 45,
+        "app2-safety-elements": 1,
+        "app3-safety-elements": 1,
+        "app4-signs-horizontal": 22,
+        "app4-signs-informational": 12,
         "app4-signs-regulatory": 21,
-        "app4-signs-traffic-lights": 5,
-        "app4-signs-warning": 34,
+        "app4-signs-traffic-lights": 4,
+        "app4-signs-warning": 31,
         "ch1-bicycle": 29,
+        "ch1-cities-for-people": 1,
         "ch1-pedestrian-priority": 15,
         "ch1-public-transport-system": 4,
-        "ch1-sustainable-mobility": 5,
+        "ch1-sustainable-mobility": 4,
         "ch2-incident-obligations": 18,
         "ch2-legal-responsibility": 6,
         "ch2-required-documents": 17,
         "ch2-scoring": 2,
         "ch3-adverse-conditions": 10,
-        "ch3-highways": 12,
+        "ch3-highways": 10,
         "ch3-lights": 23,
         "ch3-overtaking": 9,
-        "ch3-priority-of-rules": 8,
-        "ch3-right-of-way": 33,
+        "ch3-priority-of-rules": 9,
+        "ch3-right-of-way": 35,
         "ch3-speed": 37,
         "ch3-stopping-parking": 25,
         "ch3-turns": 10,
         "ch4-alcohol-drugs": 16,
-        "ch4-sleep-fatigue": 19,
-        "ch5-anticipatory-efficient-driving": 24
+        "ch4-distractions": 1,
+        "ch4-sleep-fatigue": 18,
+        "ch5-anticipatory-efficient-driving": 23
       }
     },
-    "answerBearingPlacementCount": 0,
+    "answerBearingPlacementCount": 85,
     "ownerApprovedThematicFallbacks": [
-      {
-        "questionId": "b-fallback-001",
-        "auditId": "F038-RA-003-b-fallback-001",
-        "pageId": "ch1-bicycle"
-      },
       {
         "questionId": "b-fallback-002",
         "auditId": "F038-RA-003-b-fallback-002",
         "pageId": "ch1-bicycle"
-      },
-      {
-        "questionId": "b-fallback-003",
-        "auditId": "F038-RA-003-b-fallback-003",
-        "pageId": "ch2-incident-obligations"
       },
       {
         "questionId": "b-fallback-004",
@@ -90,19 +85,9 @@
         "pageId": "ch3-speed"
       },
       {
-        "questionId": "b-fallback-007",
-        "auditId": "F038-RA-003-b-fallback-007",
-        "pageId": "app1-safety-elements"
-      },
-      {
         "questionId": "b-fallback-008",
         "auditId": "F038-RA-003-b-fallback-008",
         "pageId": "ch1-bicycle"
-      },
-      {
-        "questionId": "b-fallback-009",
-        "auditId": "F038-RA-003-b-fallback-009",
-        "pageId": "ch3-right-of-way"
       },
       {
         "questionId": "b-fallback-010",
@@ -170,11 +155,6 @@
         "pageId": "app1-safety-elements"
       },
       {
-        "questionId": "b-fallback-023",
-        "auditId": "F038-RA-003-b-fallback-023",
-        "pageId": "ch2-legal-responsibility"
-      },
-      {
         "questionId": "b-fallback-024",
         "auditId": "F038-RA-003-b-fallback-024",
         "pageId": "ch2-required-documents"
@@ -186,18 +166,13 @@
       },
       {
         "questionId": "b-fallback-026",
-        "auditId": "F038-RA-003-b-fallback-026",
+        "auditId": "F038-RA-004-b-fallback-026",
         "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-027",
         "auditId": "F038-RA-003-b-fallback-027",
         "pageId": "ch2-required-documents"
-      },
-      {
-        "questionId": "b-fallback-028",
-        "auditId": "F038-RA-003-b-fallback-028",
-        "pageId": "ch3-stopping-parking"
       },
       {
         "questionId": "b-fallback-029",
@@ -210,13 +185,8 @@
         "pageId": "app1-safety-elements"
       },
       {
-        "questionId": "b-fallback-031",
-        "auditId": "F038-RA-003-b-fallback-031",
-        "pageId": "ch3-right-of-way"
-      },
-      {
         "questionId": "b-fallback-032",
-        "auditId": "F038-RA-003-b-fallback-032",
+        "auditId": "F038-RA-004-b-fallback-032",
         "pageId": "ch3-speed"
       },
       {
@@ -260,16 +230,6 @@
         "pageId": "app1-safety-elements"
       },
       {
-        "questionId": "b-fallback-041",
-        "auditId": "F038-RA-003-b-fallback-041",
-        "pageId": "ch3-speed"
-      },
-      {
-        "questionId": "b-fallback-042",
-        "auditId": "F038-RA-003-b-fallback-042",
-        "pageId": "app4-signs-informational"
-      },
-      {
         "questionId": "b-fallback-043",
         "auditId": "F038-RA-003-b-fallback-043",
         "pageId": "ch3-turns"
@@ -286,7 +246,7 @@
       },
       {
         "questionId": "b-fallback-046",
-        "auditId": "F038-RA-003-b-fallback-046",
+        "auditId": "F038-RA-004-b-fallback-046",
         "pageId": "app1-safety-elements"
       },
       {
@@ -301,18 +261,13 @@
       },
       {
         "questionId": "b-fallback-049",
-        "auditId": "F038-RA-003-b-fallback-049",
+        "auditId": "F038-RA-004-b-fallback-049",
         "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-050",
         "auditId": "F038-RA-003-b-fallback-050",
         "pageId": "ch3-priority-of-rules"
-      },
-      {
-        "questionId": "b-fallback-051",
-        "auditId": "F038-RA-003-b-fallback-051",
-        "pageId": "ch3-stopping-parking"
       },
       {
         "questionId": "b-fallback-052",
@@ -370,19 +325,9 @@
         "pageId": "ch2-incident-obligations"
       },
       {
-        "questionId": "b-fallback-063",
-        "auditId": "F038-RA-003-b-fallback-063",
-        "pageId": "app4-signs-traffic-lights"
-      },
-      {
         "questionId": "b-fallback-064",
         "auditId": "F038-RA-003-b-fallback-064",
         "pageId": "app1-safety-elements"
-      },
-      {
-        "questionId": "b-fallback-065",
-        "auditId": "F038-RA-003-b-fallback-065",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-066",
@@ -413,11 +358,6 @@
         "questionId": "b-fallback-071",
         "auditId": "F038-RA-003-b-fallback-071",
         "pageId": "app1-safety-elements"
-      },
-      {
-        "questionId": "b-fallback-072",
-        "auditId": "F038-RA-003-b-fallback-072",
-        "pageId": "ch2-required-documents"
       },
       {
         "questionId": "b-fallback-073",
@@ -460,11 +400,6 @@
         "pageId": "app4-signs-regulatory"
       },
       {
-        "questionId": "b-fallback-081",
-        "auditId": "F038-RA-003-b-fallback-081",
-        "pageId": "app1-safety-elements"
-      },
-      {
         "questionId": "b-fallback-082",
         "auditId": "F038-RA-003-b-fallback-082",
         "pageId": "ch1-pedestrian-priority"
@@ -483,11 +418,6 @@
         "questionId": "b-fallback-085",
         "auditId": "F038-RA-003-b-fallback-085",
         "pageId": "ch3-right-of-way"
-      },
-      {
-        "questionId": "b-fallback-086",
-        "auditId": "F038-RA-003-b-fallback-086",
-        "pageId": "ch4-sleep-fatigue"
       },
       {
         "questionId": "b-fallback-087",
@@ -538,11 +468,6 @@
         "questionId": "b-fallback-096",
         "auditId": "F038-RA-003-b-fallback-096",
         "pageId": "ch2-incident-obligations"
-      },
-      {
-        "questionId": "b-fallback-097",
-        "auditId": "F038-RA-003-b-fallback-097",
-        "pageId": "ch3-stopping-parking"
       },
       {
         "questionId": "b-fallback-098",
@@ -605,11 +530,6 @@
         "pageId": "ch3-stopping-parking"
       },
       {
-        "questionId": "b-fallback-110",
-        "auditId": "F038-RA-003-b-fallback-110",
-        "pageId": "ch3-adverse-conditions"
-      },
-      {
         "questionId": "b-fallback-111",
         "auditId": "F038-RA-003-b-fallback-111",
         "pageId": "app4-signs-horizontal"
@@ -628,11 +548,6 @@
         "questionId": "b-fallback-114",
         "auditId": "F038-RA-003-b-fallback-114",
         "pageId": "ch2-required-documents"
-      },
-      {
-        "questionId": "b-fallback-115",
-        "auditId": "F038-RA-003-b-fallback-115",
-        "pageId": "app4-signs-regulatory"
       },
       {
         "questionId": "b-fallback-116",
@@ -655,11 +570,6 @@
         "pageId": "app4-signs-traffic-lights"
       },
       {
-        "questionId": "b-fallback-120",
-        "auditId": "F038-RA-003-b-fallback-120",
-        "pageId": "app1-safety-elements"
-      },
-      {
         "questionId": "b-fallback-121",
         "auditId": "F038-RA-003-b-fallback-121",
         "pageId": "ch3-stopping-parking"
@@ -670,18 +580,8 @@
         "pageId": "ch4-sleep-fatigue"
       },
       {
-        "questionId": "b-fallback-123",
-        "auditId": "F038-RA-003-b-fallback-123",
-        "pageId": "app4-signs-warning"
-      },
-      {
-        "questionId": "b-fallback-124",
-        "auditId": "F038-RA-003-b-fallback-124",
-        "pageId": "app4-signs-warning"
-      },
-      {
         "questionId": "b-fallback-125",
-        "auditId": "F038-RA-003-b-fallback-125",
+        "auditId": "F038-RA-004-b-fallback-125",
         "pageId": "ch3-speed"
       },
       {
@@ -693,11 +593,6 @@
         "questionId": "b-fallback-127",
         "auditId": "F038-RA-003-b-fallback-127",
         "pageId": "app4-signs-regulatory"
-      },
-      {
-        "questionId": "b-fallback-128",
-        "auditId": "F038-RA-003-b-fallback-128",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-129",
@@ -718,11 +613,6 @@
         "questionId": "b-fallback-132",
         "auditId": "F038-RA-003-b-fallback-132",
         "pageId": "ch1-public-transport-system"
-      },
-      {
-        "questionId": "b-fallback-133",
-        "auditId": "F038-RA-003-b-fallback-133",
-        "pageId": "ch3-right-of-way"
       },
       {
         "questionId": "b-fallback-134",
@@ -776,7 +666,7 @@
       },
       {
         "questionId": "b-fallback-144",
-        "auditId": "F038-RA-003-b-fallback-144",
+        "auditId": "F038-RA-004-b-fallback-144",
         "pageId": "ch3-speed"
       },
       {
@@ -815,18 +705,8 @@
         "pageId": "ch2-incident-obligations"
       },
       {
-        "questionId": "b-fallback-152",
-        "auditId": "F038-RA-003-b-fallback-152",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
         "questionId": "b-fallback-153",
         "auditId": "F038-RA-003-b-fallback-153",
-        "pageId": "app4-signs-warning"
-      },
-      {
-        "questionId": "b-fallback-154",
-        "auditId": "F038-RA-003-b-fallback-154",
         "pageId": "app4-signs-warning"
       },
       {
@@ -848,11 +728,6 @@
         "questionId": "b-fallback-158",
         "auditId": "F038-RA-003-b-fallback-158",
         "pageId": "ch3-speed"
-      },
-      {
-        "questionId": "b-fallback-159",
-        "auditId": "F038-RA-003-b-fallback-159",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-160",
@@ -920,16 +795,6 @@
         "pageId": "app4-signs-horizontal"
       },
       {
-        "questionId": "b-fallback-173",
-        "auditId": "F038-RA-003-b-fallback-173",
-        "pageId": "ch2-required-documents"
-      },
-      {
-        "questionId": "b-fallback-174",
-        "auditId": "F038-RA-003-b-fallback-174",
-        "pageId": "app4-signs-horizontal"
-      },
-      {
         "questionId": "b-fallback-175",
         "auditId": "F038-RA-003-b-fallback-175",
         "pageId": "ch4-sleep-fatigue"
@@ -940,24 +805,9 @@
         "pageId": "ch3-overtaking"
       },
       {
-        "questionId": "b-fallback-177",
-        "auditId": "F038-RA-003-b-fallback-177",
-        "pageId": "app4-signs-regulatory"
-      },
-      {
-        "questionId": "b-fallback-178",
-        "auditId": "F038-RA-003-b-fallback-178",
-        "pageId": "ch3-right-of-way"
-      },
-      {
         "questionId": "b-fallback-179",
         "auditId": "F038-RA-003-b-fallback-179",
         "pageId": "app4-signs-horizontal"
-      },
-      {
-        "questionId": "b-fallback-180",
-        "auditId": "F038-RA-003-b-fallback-180",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-181",
@@ -1066,23 +916,8 @@
       },
       {
         "questionId": "b-fallback-202",
-        "auditId": "F038-RA-003-b-fallback-202",
+        "auditId": "F038-RA-004-b-fallback-202",
         "pageId": "app4-signs-warning"
-      },
-      {
-        "questionId": "b-fallback-203",
-        "auditId": "F038-RA-003-b-fallback-203",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
-        "questionId": "b-fallback-204",
-        "auditId": "F038-RA-003-b-fallback-204",
-        "pageId": "ch4-sleep-fatigue"
-      },
-      {
-        "questionId": "b-fallback-205",
-        "auditId": "F038-RA-003-b-fallback-205",
-        "pageId": "app4-signs-informational"
       },
       {
         "questionId": "b-fallback-206",
@@ -1110,11 +945,6 @@
         "pageId": "app1-safety-elements"
       },
       {
-        "questionId": "b-fallback-211",
-        "auditId": "F038-RA-003-b-fallback-211",
-        "pageId": "app4-signs-regulatory"
-      },
-      {
         "questionId": "b-fallback-212",
         "auditId": "F038-RA-003-b-fallback-212",
         "pageId": "app1-safety-elements"
@@ -1130,11 +960,6 @@
         "pageId": "ch2-required-documents"
       },
       {
-        "questionId": "b-fallback-215",
-        "auditId": "F038-RA-003-b-fallback-215",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
         "questionId": "b-fallback-216",
         "auditId": "F038-RA-003-b-fallback-216",
         "pageId": "ch2-incident-obligations"
@@ -1143,11 +968,6 @@
         "questionId": "b-fallback-217",
         "auditId": "F038-RA-003-b-fallback-217",
         "pageId": "ch4-sleep-fatigue"
-      },
-      {
-        "questionId": "b-fallback-218",
-        "auditId": "F038-RA-003-b-fallback-218",
-        "pageId": "ch2-required-documents"
       },
       {
         "questionId": "b-fallback-219",
@@ -1175,11 +995,6 @@
         "pageId": "ch3-highways"
       },
       {
-        "questionId": "b-fallback-224",
-        "auditId": "F038-RA-003-b-fallback-224",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
         "questionId": "b-fallback-225",
         "auditId": "F038-RA-003-b-fallback-225",
         "pageId": "app4-signs-regulatory"
@@ -1195,19 +1010,9 @@
         "pageId": "app4-signs-horizontal"
       },
       {
-        "questionId": "b-fallback-228",
-        "auditId": "F038-RA-003-b-fallback-228",
-        "pageId": "ch1-bicycle"
-      },
-      {
         "questionId": "b-fallback-229",
         "auditId": "F038-RA-003-b-fallback-229",
         "pageId": "ch4-sleep-fatigue"
-      },
-      {
-        "questionId": "b-fallback-230",
-        "auditId": "F038-RA-003-b-fallback-230",
-        "pageId": "app4-signs-horizontal"
       },
       {
         "questionId": "b-fallback-231",
@@ -1236,7 +1041,7 @@
       },
       {
         "questionId": "b-fallback-236",
-        "auditId": "F038-RA-003-b-fallback-236",
+        "auditId": "F038-RA-004-b-fallback-236",
         "pageId": "ch3-speed"
       },
       {
@@ -1260,19 +1065,9 @@
         "pageId": "ch3-adverse-conditions"
       },
       {
-        "questionId": "b-fallback-241",
-        "auditId": "F038-RA-003-b-fallback-241",
-        "pageId": "ch5-anticipatory-efficient-driving"
-      },
-      {
         "questionId": "b-fallback-242",
         "auditId": "F038-RA-003-b-fallback-242",
         "pageId": "ch3-lights"
-      },
-      {
-        "questionId": "b-fallback-243",
-        "auditId": "F038-RA-003-b-fallback-243",
-        "pageId": "ch2-scoring"
       },
       {
         "questionId": "b-fallback-244",
@@ -1295,11 +1090,6 @@
         "pageId": "ch3-lights"
       },
       {
-        "questionId": "b-fallback-248",
-        "auditId": "F038-RA-003-b-fallback-248",
-        "pageId": "ch3-stopping-parking"
-      },
-      {
         "questionId": "b-fallback-249",
         "auditId": "F038-RA-003-b-fallback-249",
         "pageId": "ch3-stopping-parking"
@@ -1310,11 +1100,6 @@
         "pageId": "ch3-lights"
       },
       {
-        "questionId": "b-fallback-251",
-        "auditId": "F038-RA-003-b-fallback-251",
-        "pageId": "ch3-adverse-conditions"
-      },
-      {
         "questionId": "b-fallback-252",
         "auditId": "F038-RA-003-b-fallback-252",
         "pageId": "ch3-speed"
@@ -1323,11 +1108,6 @@
         "questionId": "b-fallback-253",
         "auditId": "F038-RA-003-b-fallback-253",
         "pageId": "ch2-incident-obligations"
-      },
-      {
-        "questionId": "b-fallback-254",
-        "auditId": "F038-RA-003-b-fallback-254",
-        "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-255",
@@ -1355,18 +1135,13 @@
         "pageId": "ch2-required-documents"
       },
       {
-        "questionId": "b-fallback-260",
-        "auditId": "F038-RA-003-b-fallback-260",
-        "pageId": "app4-signs-informational"
-      },
-      {
         "questionId": "b-fallback-261",
         "auditId": "F038-RA-003-b-fallback-261",
         "pageId": "ch3-overtaking"
       },
       {
         "questionId": "b-fallback-262",
-        "auditId": "F038-RA-003-b-fallback-262",
+        "auditId": "F038-RA-004-b-fallback-262",
         "pageId": "app4-signs-warning"
       },
       {
@@ -1391,7 +1166,7 @@
       },
       {
         "questionId": "b-fallback-267",
-        "auditId": "F038-RA-003-b-fallback-267",
+        "auditId": "F038-RA-004-b-fallback-267",
         "pageId": "ch3-speed"
       },
       {
@@ -1410,19 +1185,9 @@
         "pageId": "ch4-alcohol-drugs"
       },
       {
-        "questionId": "b-fallback-271",
-        "auditId": "F038-RA-003-b-fallback-271",
-        "pageId": "ch3-stopping-parking"
-      },
-      {
         "questionId": "b-fallback-272",
         "auditId": "F038-RA-003-b-fallback-272",
         "pageId": "ch1-pedestrian-priority"
-      },
-      {
-        "questionId": "b-fallback-273",
-        "auditId": "F038-RA-003-b-fallback-273",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-274",
@@ -1490,18 +1255,8 @@
         "pageId": "ch4-sleep-fatigue"
       },
       {
-        "questionId": "b-fallback-287",
-        "auditId": "F038-RA-003-b-fallback-287",
-        "pageId": "app4-signs-informational"
-      },
-      {
-        "questionId": "b-fallback-288",
-        "auditId": "F038-RA-003-b-fallback-288",
-        "pageId": "app4-signs-warning"
-      },
-      {
         "questionId": "b-fallback-289",
-        "auditId": "F038-RA-003-b-fallback-289",
+        "auditId": "F038-RA-004-b-fallback-289",
         "pageId": "ch3-speed"
       },
       {
@@ -1530,11 +1285,6 @@
         "pageId": "ch1-bicycle"
       },
       {
-        "questionId": "b-fallback-295",
-        "auditId": "F038-RA-003-b-fallback-295",
-        "pageId": "app4-signs-warning"
-      },
-      {
         "questionId": "b-fallback-296",
         "auditId": "F038-RA-003-b-fallback-296",
         "pageId": "ch3-highways"
@@ -1556,13 +1306,8 @@
       },
       {
         "questionId": "b-fallback-300",
-        "auditId": "F038-RA-003-b-fallback-300",
+        "auditId": "F038-RA-004-b-fallback-300",
         "pageId": "app1-safety-elements"
-      },
-      {
-        "questionId": "b-fallback-301",
-        "auditId": "F038-RA-003-b-fallback-301",
-        "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-302",
@@ -1600,11 +1345,6 @@
         "pageId": "ch3-stopping-parking"
       },
       {
-        "questionId": "b-fallback-309",
-        "auditId": "F038-RA-003-b-fallback-309",
-        "pageId": "ch2-required-documents"
-      },
-      {
         "questionId": "b-fallback-310",
         "auditId": "F038-RA-003-b-fallback-310",
         "pageId": "ch4-alcohol-drugs"
@@ -1626,7 +1366,7 @@
       },
       {
         "questionId": "b-fallback-314",
-        "auditId": "F038-RA-003-b-fallback-314",
+        "auditId": "F038-RA-004-b-fallback-314",
         "pageId": "ch3-speed"
       },
       {
@@ -1635,19 +1375,9 @@
         "pageId": "ch3-speed"
       },
       {
-        "questionId": "b-fallback-316",
-        "auditId": "F038-RA-003-b-fallback-316",
-        "pageId": "ch1-pedestrian-priority"
-      },
-      {
         "questionId": "b-fallback-317",
         "auditId": "F038-RA-003-b-fallback-317",
         "pageId": "ch3-lights"
-      },
-      {
-        "questionId": "b-fallback-318",
-        "auditId": "F038-RA-003-b-fallback-318",
-        "pageId": "ch1-pedestrian-priority"
       },
       {
         "questionId": "b-fallback-319",
@@ -1676,7 +1406,7 @@
       },
       {
         "questionId": "b-fallback-324",
-        "auditId": "F038-RA-003-b-fallback-324",
+        "auditId": "F038-RA-004-b-fallback-324",
         "pageId": "ch3-stopping-parking"
       },
       {
@@ -1688,11 +1418,6 @@
         "questionId": "b-fallback-326",
         "auditId": "F038-RA-003-b-fallback-326",
         "pageId": "ch3-turns"
-      },
-      {
-        "questionId": "b-fallback-327",
-        "auditId": "F038-RA-003-b-fallback-327",
-        "pageId": "ch3-highways"
       },
       {
         "questionId": "b-fallback-328",
@@ -1780,11 +1505,6 @@
         "pageId": "ch4-sleep-fatigue"
       },
       {
-        "questionId": "b-fallback-345",
-        "auditId": "F038-RA-003-b-fallback-345",
-        "pageId": "app4-signs-warning"
-      },
-      {
         "questionId": "b-fallback-346",
         "auditId": "F038-RA-003-b-fallback-346",
         "pageId": "ch3-highways"
@@ -1803,11 +1523,6 @@
         "questionId": "b-fallback-349",
         "auditId": "F038-RA-003-b-fallback-349",
         "pageId": "ch3-lights"
-      },
-      {
-        "questionId": "b-fallback-350",
-        "auditId": "F038-RA-003-b-fallback-350",
-        "pageId": "ch1-bicycle"
       },
       {
         "questionId": "b-fallback-351",
@@ -1830,11 +1545,6 @@
         "pageId": "ch1-bicycle"
       },
       {
-        "questionId": "b-fallback-355",
-        "auditId": "F038-RA-003-b-fallback-355",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
         "questionId": "b-fallback-356",
         "auditId": "F038-RA-003-b-fallback-356",
         "pageId": "app4-signs-horizontal"
@@ -1853,11 +1563,6 @@
         "questionId": "b-fallback-359",
         "auditId": "F038-RA-003-b-fallback-359",
         "pageId": "app4-signs-horizontal"
-      },
-      {
-        "questionId": "b-fallback-360",
-        "auditId": "F038-RA-003-b-fallback-360",
-        "pageId": "ch3-lights"
       },
       {
         "questionId": "b-fallback-361",
@@ -1885,16 +1590,6 @@
         "pageId": "app1-safety-elements"
       },
       {
-        "questionId": "b-fallback-366",
-        "auditId": "F038-RA-003-b-fallback-366",
-        "pageId": "ch1-bicycle"
-      },
-      {
-        "questionId": "b-fallback-367",
-        "auditId": "F038-RA-003-b-fallback-367",
-        "pageId": "ch2-scoring"
-      },
-      {
         "questionId": "b-fallback-368",
         "auditId": "F038-RA-003-b-fallback-368",
         "pageId": "ch1-sustainable-mobility"
@@ -1908,11 +1603,6 @@
         "questionId": "b-fallback-370",
         "auditId": "F038-RA-003-b-fallback-370",
         "pageId": "ch3-right-of-way"
-      },
-      {
-        "questionId": "b-fallback-371",
-        "auditId": "F038-RA-003-b-fallback-371",
-        "pageId": "ch1-sustainable-mobility"
       },
       {
         "questionId": "b-fallback-372",
@@ -1941,7 +1631,7 @@
       },
       {
         "questionId": "b-fallback-377",
-        "auditId": "F038-RA-003-b-fallback-377",
+        "auditId": "F038-RA-004-b-fallback-377",
         "pageId": "ch3-speed"
       },
       {
@@ -1950,24 +1640,9 @@
         "pageId": "ch3-lights"
       },
       {
-        "questionId": "b-fallback-379",
-        "auditId": "F038-RA-003-b-fallback-379",
-        "pageId": "app4-signs-warning"
-      },
-      {
-        "questionId": "b-fallback-380",
-        "auditId": "F038-RA-003-b-fallback-380",
-        "pageId": "ch1-bicycle"
-      },
-      {
         "questionId": "b-fallback-381",
         "auditId": "F038-RA-003-b-fallback-381",
         "pageId": "ch3-speed"
-      },
-      {
-        "questionId": "b-fallback-382",
-        "auditId": "F038-RA-003-b-fallback-382",
-        "pageId": "ch3-lights"
       },
       {
         "questionId": "b-fallback-383",
@@ -2005,13 +1680,8 @@
         "pageId": "ch3-right-of-way"
       },
       {
-        "questionId": "b-fallback-390",
-        "auditId": "F038-RA-003-b-fallback-390",
-        "pageId": "ch3-lights"
-      },
-      {
         "questionId": "b-fallback-391",
-        "auditId": "F038-RA-003-b-fallback-391",
+        "auditId": "F038-RA-004-b-fallback-391",
         "pageId": "ch3-speed"
       },
       {
@@ -2046,7 +1716,7 @@
       },
       {
         "questionId": "b-fallback-398",
-        "auditId": "F038-RA-003-b-fallback-398",
+        "auditId": "F038-RA-004-b-fallback-398",
         "pageId": "ch3-speed"
       },
       {
@@ -2060,29 +1730,9 @@
         "pageId": "ch3-overtaking"
       },
       {
-        "questionId": "b-fallback-401",
-        "auditId": "F038-RA-003-b-fallback-401",
-        "pageId": "ch3-speed"
-      },
-      {
-        "questionId": "b-fallback-402",
-        "auditId": "F038-RA-003-b-fallback-402",
-        "pageId": "ch3-stopping-parking"
-      },
-      {
         "questionId": "b-fallback-403",
         "auditId": "F038-RA-003-b-fallback-403",
         "pageId": "ch3-turns"
-      },
-      {
-        "questionId": "b-fallback-404",
-        "auditId": "F038-RA-003-b-fallback-404",
-        "pageId": "ch4-sleep-fatigue"
-      },
-      {
-        "questionId": "b-fallback-405",
-        "auditId": "F038-RA-003-b-fallback-405",
-        "pageId": "ch4-sleep-fatigue"
       },
       {
         "questionId": "b-fallback-406",
@@ -2103,11 +1753,6 @@
         "questionId": "b-fallback-409",
         "auditId": "F038-RA-003-b-fallback-409",
         "pageId": "app1-safety-elements"
-      },
-      {
-        "questionId": "b-fallback-410",
-        "auditId": "F038-RA-003-b-fallback-410",
-        "pageId": "app4-signs-warning"
       },
       {
         "questionId": "b-fallback-411",
@@ -2156,32 +1801,12 @@
       },
       {
         "questionId": "b-fallback-420",
-        "auditId": "F038-RA-003-b-fallback-420",
+        "auditId": "F038-RA-004-b-fallback-420",
         "pageId": "ch3-speed"
-      },
-      {
-        "questionId": "b-fallback-421",
-        "auditId": "F038-RA-003-b-fallback-421",
-        "pageId": "ch1-pedestrian-priority"
-      },
-      {
-        "questionId": "b-fallback-422",
-        "auditId": "F038-RA-003-b-fallback-422",
-        "pageId": "app1-safety-elements"
-      },
-      {
-        "questionId": "b-fallback-423",
-        "auditId": "F038-RA-003-b-fallback-423",
-        "pageId": "ch3-highways"
       },
       {
         "questionId": "b-fallback-424",
         "auditId": "F038-RA-003-b-fallback-424",
-        "pageId": "ch1-bicycle"
-      },
-      {
-        "questionId": "b-fallback-425",
-        "auditId": "F038-RA-003-b-fallback-425",
         "pageId": "ch1-bicycle"
       },
       {
@@ -2205,16 +1830,6 @@
         "pageId": "app4-signs-warning"
       },
       {
-        "questionId": "b-fallback-430",
-        "auditId": "F038-RA-003-b-fallback-430",
-        "pageId": "ch3-right-of-way"
-      },
-      {
-        "questionId": "b-fallback-431",
-        "auditId": "F038-RA-003-b-fallback-431",
-        "pageId": "ch4-alcohol-drugs"
-      },
-      {
         "questionId": "b-fallback-432",
         "auditId": "F038-RA-003-b-fallback-432",
         "pageId": "ch2-required-documents"
@@ -2230,19 +1845,9 @@
         "pageId": "ch2-legal-responsibility"
       },
       {
-        "questionId": "b-fallback-435",
-        "auditId": "F038-RA-003-b-fallback-435",
-        "pageId": "ch4-sleep-fatigue"
-      },
-      {
         "questionId": "b-fallback-436",
         "auditId": "F038-RA-003-b-fallback-436",
         "pageId": "ch3-right-of-way"
-      },
-      {
-        "questionId": "b-fallback-437",
-        "auditId": "F038-RA-003-b-fallback-437",
-        "pageId": "ch4-sleep-fatigue"
       },
       {
         "questionId": "b-fallback-438",
@@ -2290,29 +1895,19 @@
         "pageId": "ch4-alcohol-drugs"
       },
       {
-        "questionId": "b-fallback-447",
-        "auditId": "F038-RA-003-b-fallback-447",
-        "pageId": "ch2-incident-obligations"
-      },
-      {
         "questionId": "b-fallback-448",
         "auditId": "F038-RA-003-b-fallback-448",
         "pageId": "ch3-adverse-conditions"
       },
       {
         "questionId": "b-fallback-449",
-        "auditId": "F038-RA-003-b-fallback-449",
+        "auditId": "F038-RA-004-b-fallback-449",
         "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-450",
         "auditId": "F038-RA-003-b-fallback-450",
         "pageId": "ch5-anticipatory-efficient-driving"
-      },
-      {
-        "questionId": "b-fallback-451",
-        "auditId": "F038-RA-003-b-fallback-451",
-        "pageId": "ch3-speed"
       },
       {
         "questionId": "b-fallback-452",
@@ -2335,24 +1930,9 @@
         "pageId": "app4-signs-informational"
       },
       {
-        "questionId": "b-fallback-456",
-        "auditId": "F038-RA-003-b-fallback-456",
-        "pageId": "ch2-required-documents"
-      },
-      {
-        "questionId": "b-fallback-457",
-        "auditId": "F038-RA-003-b-fallback-457",
-        "pageId": "app4-signs-horizontal"
-      },
-      {
         "questionId": "b-fallback-458",
         "auditId": "F038-RA-003-b-fallback-458",
         "pageId": "ch1-bicycle"
-      },
-      {
-        "questionId": "b-fallback-459",
-        "auditId": "F038-RA-003-b-fallback-459",
-        "pageId": "ch3-right-of-way"
       },
       {
         "questionId": "b-fallback-460",
@@ -2360,6 +1940,229 @@
         "pageId": "ch3-adverse-conditions"
       }
     ]
+  },
+  "contradictionAudit": {
+    "architectLexicalBaselineCount": 39,
+    "architectLexicalBaselineIds": [
+      "b-fallback-001",
+      "b-fallback-026",
+      "b-fallback-032",
+      "b-fallback-046",
+      "b-fallback-049",
+      "b-fallback-065",
+      "b-fallback-086",
+      "b-fallback-110",
+      "b-fallback-120",
+      "b-fallback-123",
+      "b-fallback-124",
+      "b-fallback-125",
+      "b-fallback-144",
+      "b-fallback-159",
+      "b-fallback-202",
+      "b-fallback-203",
+      "b-fallback-236",
+      "b-fallback-251",
+      "b-fallback-254",
+      "b-fallback-262",
+      "b-fallback-267",
+      "b-fallback-273",
+      "b-fallback-287",
+      "b-fallback-289",
+      "b-fallback-295",
+      "b-fallback-300",
+      "b-fallback-314",
+      "b-fallback-324",
+      "b-fallback-345",
+      "b-fallback-350",
+      "b-fallback-377",
+      "b-fallback-380",
+      "b-fallback-391",
+      "b-fallback-398",
+      "b-fallback-401",
+      "b-fallback-420",
+      "b-fallback-425",
+      "b-fallback-449",
+      "b-fallback-456"
+    ],
+    "reviewedSemanticEquivalenceCount": 65,
+    "reviewedSemanticEquivalenceIds": [
+      "b-fallback-003",
+      "b-fallback-007",
+      "b-fallback-009",
+      "b-fallback-023",
+      "b-fallback-028",
+      "b-fallback-031",
+      "b-fallback-041",
+      "b-fallback-042",
+      "b-fallback-051",
+      "b-fallback-063",
+      "b-fallback-072",
+      "b-fallback-081",
+      "b-fallback-097",
+      "b-fallback-115",
+      "b-fallback-128",
+      "b-fallback-133",
+      "b-fallback-152",
+      "b-fallback-154",
+      "b-fallback-173",
+      "b-fallback-174",
+      "b-fallback-177",
+      "b-fallback-178",
+      "b-fallback-180",
+      "b-fallback-204",
+      "b-fallback-205",
+      "b-fallback-211",
+      "b-fallback-215",
+      "b-fallback-218",
+      "b-fallback-224",
+      "b-fallback-228",
+      "b-fallback-230",
+      "b-fallback-241",
+      "b-fallback-243",
+      "b-fallback-248",
+      "b-fallback-260",
+      "b-fallback-271",
+      "b-fallback-288",
+      "b-fallback-301",
+      "b-fallback-309",
+      "b-fallback-316",
+      "b-fallback-318",
+      "b-fallback-327",
+      "b-fallback-355",
+      "b-fallback-360",
+      "b-fallback-366",
+      "b-fallback-367",
+      "b-fallback-371",
+      "b-fallback-379",
+      "b-fallback-382",
+      "b-fallback-390",
+      "b-fallback-402",
+      "b-fallback-404",
+      "b-fallback-405",
+      "b-fallback-410",
+      "b-fallback-421",
+      "b-fallback-422",
+      "b-fallback-423",
+      "b-fallback-430",
+      "b-fallback-431",
+      "b-fallback-435",
+      "b-fallback-437",
+      "b-fallback-447",
+      "b-fallback-451",
+      "b-fallback-457",
+      "b-fallback-459"
+    ],
+    "screenedQuestionCount": 104,
+    "reclassifiedAnswerBearingIds": [
+      "b-fallback-001",
+      "b-fallback-003",
+      "b-fallback-007",
+      "b-fallback-009",
+      "b-fallback-023",
+      "b-fallback-028",
+      "b-fallback-031",
+      "b-fallback-041",
+      "b-fallback-042",
+      "b-fallback-051",
+      "b-fallback-063",
+      "b-fallback-065",
+      "b-fallback-072",
+      "b-fallback-081",
+      "b-fallback-086",
+      "b-fallback-097",
+      "b-fallback-110",
+      "b-fallback-115",
+      "b-fallback-120",
+      "b-fallback-123",
+      "b-fallback-124",
+      "b-fallback-128",
+      "b-fallback-133",
+      "b-fallback-152",
+      "b-fallback-154",
+      "b-fallback-159",
+      "b-fallback-173",
+      "b-fallback-174",
+      "b-fallback-177",
+      "b-fallback-178",
+      "b-fallback-180",
+      "b-fallback-203",
+      "b-fallback-204",
+      "b-fallback-205",
+      "b-fallback-211",
+      "b-fallback-215",
+      "b-fallback-218",
+      "b-fallback-224",
+      "b-fallback-228",
+      "b-fallback-230",
+      "b-fallback-241",
+      "b-fallback-243",
+      "b-fallback-248",
+      "b-fallback-251",
+      "b-fallback-254",
+      "b-fallback-260",
+      "b-fallback-271",
+      "b-fallback-273",
+      "b-fallback-287",
+      "b-fallback-288",
+      "b-fallback-295",
+      "b-fallback-301",
+      "b-fallback-309",
+      "b-fallback-316",
+      "b-fallback-318",
+      "b-fallback-327",
+      "b-fallback-345",
+      "b-fallback-350",
+      "b-fallback-355",
+      "b-fallback-360",
+      "b-fallback-366",
+      "b-fallback-367",
+      "b-fallback-371",
+      "b-fallback-379",
+      "b-fallback-380",
+      "b-fallback-382",
+      "b-fallback-390",
+      "b-fallback-401",
+      "b-fallback-402",
+      "b-fallback-404",
+      "b-fallback-405",
+      "b-fallback-410",
+      "b-fallback-421",
+      "b-fallback-422",
+      "b-fallback-423",
+      "b-fallback-425",
+      "b-fallback-430",
+      "b-fallback-431",
+      "b-fallback-435",
+      "b-fallback-437",
+      "b-fallback-447",
+      "b-fallback-451",
+      "b-fallback-456",
+      "b-fallback-457",
+      "b-fallback-459"
+    ],
+    "retainedFallbackIds": [
+      "b-fallback-026",
+      "b-fallback-032",
+      "b-fallback-046",
+      "b-fallback-049",
+      "b-fallback-125",
+      "b-fallback-144",
+      "b-fallback-202",
+      "b-fallback-236",
+      "b-fallback-262",
+      "b-fallback-267",
+      "b-fallback-289",
+      "b-fallback-300",
+      "b-fallback-314",
+      "b-fallback-324",
+      "b-fallback-377",
+      "b-fallback-391",
+      "b-fallback-398",
+      "b-fallback-420",
+      "b-fallback-449"
+    ],
+    "unresolvedIds": [],
+    "rejectedSelfSufficientAnswerBearingCount": 0
   },
   "counters": {
     "unknownTickets": 0,
@@ -2383,6 +2186,8 @@
     "incompleteFallbackLedgers": 0,
     "staleFallbackCandidateEvidence": 0,
     "selectedCandidateMismatches": 0,
-    "ticketSpecificInvariantFailures": 0
+    "ticketSpecificInvariantFailures": 0,
+    "undisposedAnswerOverlapContradictions": 0,
+    "rejectedSelfSufficientAnswerBearingCandidates": 0
   }
 }

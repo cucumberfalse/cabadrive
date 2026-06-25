@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `0dc37b6d3b3f426c24a979dd0590984acb1e0e4a`.
-- Current process status: `F038-RA-003` is the active blocking Architect return from Review Agent review `4565465801`; implementation, fresh review, current-head checks, thread disposition, and later final role validations remain.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current evidence-only head `f6f9484d3869c7beea957cd3458c826cb008d467`, effective content head `0f777a89450e26608b3eeda7c9198959ce576179`.
+- Current process status: replacement Implementation Agent completed and fully verified the bounded `F038-RA-004` remediation locally; publication of the new effective content head and a following evidence-only head remain before fresh review, current-head checks, thread disposition, and later final role validations.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -929,6 +929,151 @@ Staleness and handoff:
 - Review threads, review submission, and final role validations performed by Implementation Agent: `no`.
 - Merge performed by Implementation Agent: `no`.
 
+### F038-RA-004 — `task`
+
+- Disposition date: `2026-06-24`
+- Disposition type: `task`
+- Source review: `https://github.com/cucumberfalse/cabadrive/pull/204#pullrequestreview-4565608440`
+- Reviewed/current head: `f6f9484d3869c7beea957cd3458c826cb008d467`
+- Effective content head that review covered: `0f777a89450e26608b3eeda7c9198959ce576179`
+- Head relation: `f6f9484d3869c7beea957cd3458c826cb008d467` is evidence-only after the effective content head.
+- Active threads:
+  - `PRRT_kwDOSX65IM6MBsV4`: fallback ledgers reject answer-bearing anchors in at least `25` records;
+  - `PRRT_kwDOSX65IM6MBsV8`: live process status is stale after `F038-RA-003`.
+- Formal disposition: both findings are accepted as blocking implementation tasks. Architect return count is `4 / 10`.
+
+Independent Architect evidence:
+
+- `b-fallback-001` rejects `Поворот направо` while the canonical Russian answer is `Поворот направо.`, then selects generic bicycle-introduction prose.
+- The same exact defect is reproduced for `065` (`Извилистая дорога`) and `086` (the exact approximately-eight-hours sleep instruction).
+- A normalization-based scan across all five shards found `39` rejected-candidate/canonical-answer containment candidates. This screening set includes all reviewer-named IDs but also contains legitimate false positives such as negated/warning text (`026`) and incomplete propositions (`202`); no detector may auto-classify them.
+- The existing validator checks ledger shape, identity, fingerprints, and selected-placement equality but has no containment/equivalence contradiction guard.
+- The live status still describes completed `F038-RA-003` work as pending and names old head `0dc37b6...`.
+
+Bounded Implementation Agent contract:
+
+1. Use one Implementation Agent in the existing feature worktree/branch/PR. Preserve all sibling work and current process memory.
+2. Add a deterministic advisory detector for rejected-candidate/canonical-answer normalized equality, bidirectional containment, numeric/unit equivalence, and manually reviewed semantic equivalence. It must not approve or classify records.
+3. Run it over all five shards. Record every detected ID and explain any difference from the Architect baseline of `39` lexical candidates.
+4. Independently re-audit every detected candidate against the canonical question, correct answer, distractors, exact anchor, page, and required visual/text context.
+5. If the exact anchor independently supplies the complete answer, select it and convert the placement to `answer-bearing`; remove fallback-only evidence and add fresh direct-answer, distractor-aware rationale, review metadata, and fingerprints.
+6. Retain fallback only with a structured ticket-specific `not-self-sufficient` disposition that names the actual overlap and its negation, missing condition, scope mismatch, ambiguity, partial proposition, or other explicit limitation. Generic denial is forbidden.
+7. Re-run detection and validation until undisposed contradictions and rejected self-sufficient answer-bearing candidates are both `0`.
+8. Seal all changed placements, contradiction dispositions, any necessary route/assignment/override updates, and final audit-derived totals in `reviewed-manifest.json` and deterministic evidence.
+9. Update this file with per-shard screened/reclassified/retained/unresolved counts, exact changed files, dead ends, command results, the new effective content head, and accurate remaining blockers.
+
+Required fixtures:
+
+- [x] Reject `001`, `065`, and `086` as fallback when their exact answer-bearing candidates remain rejected.
+- [x] Accept an exact selected `answer-bearing` anchor only with direct-answer and distractor-aware evidence and no fallback-only fields.
+- [x] Accept `026` as fallback only with an explicit negated/warning limitation.
+- [x] Accept `202` as fallback only with an explicit partial-answer limitation naming the missing more-than-two-tracks condition.
+- [x] Reject an undisposed contradiction, generic limitation, limitation contradicted by exact text, answer-bearing record retaining fallback fields, or stale manifest/evidence totals.
+
+Exact allowed files:
+
+- `content/manual-ticket-placement/topic-routes.json` only if a corrected answer-bearing anchor requires route admission;
+- `content/manual-ticket-placement/ticket-topic-assignments.json` only if independent re-audit proves the current assignment wrong;
+- `content/manual-ticket-placement/placements/001-092.json`;
+- `content/manual-ticket-placement/placements/093-184.json`;
+- `content/manual-ticket-placement/placements/185-276.json`;
+- `content/manual-ticket-placement/placements/277-368.json`;
+- `content/manual-ticket-placement/placements/369-460.json`;
+- `content/manual-ticket-placement/reviewed-manifest.json`;
+- `content/validation/manual-ticket-placement.evidence.json`;
+- `scripts/manual-ticket-placement-lib.mjs`;
+- `scripts/content-manual-ticket-placement.mjs` only for deterministic contradiction/evidence reporting;
+- `tests/manual-ticket-placement.test.mjs`;
+- `tests/e2e/manual-ticket-placement.spec.ts` only if corrected destinations alter deterministic density assertions;
+- `docs_project/project/backend/backend-docs.md` only for the durable contradiction-disposition validator contract;
+- `specs/038-manual-ticket-placement/tasks.md` only for Implementation Agent evidence.
+
+Forbidden files/actions:
+
+- no protected manual prose/images, route inventory, protected baseline, or canonical ticket/translation/explanation/answer/difficulty/image changes;
+- no runtime UI/CSS, package/lockfile, frontend-doc, or unrelated-test changes;
+- no automatic semantic approval from detection;
+- no Implementation Agent edits to `spec.md` or `plan.md`;
+- no Architect commit, push, review, thread resolution, merge, or final validation.
+
+Acceptance evidence:
+
+- all five shards are screened and every containment/equivalence candidate has an explicit reviewed disposition;
+- every exact self-sufficient answer-bearing candidate is selected rather than rejected for generic fallback prose;
+- every retained fallback has a non-generic limitation consistent with the exact text and full question;
+- undisposed contradictions and rejected self-sufficient answer-bearing candidates are `0`;
+- `001`, `065`, `086`, `026`, and `202` fixtures pass with the required classifications/evidence;
+- reviewed manifest, deterministic evidence, answer-bearing/fallback totals, and current process status are fresh;
+- protected/canonical diff guards are empty;
+- focused tests and all required repository checks pass on a new effective content head.
+
+Staleness and handoff:
+
+- Any implementation change makes review `4565608440`, current head `f6f9484d3869c7beea957cd3458c826cb008d467`, and effective content head `0f777a89450e26608b3eeda7c9198959ce576179` stale for merge authorization.
+- A fresh Review Agent pass on the new effective content head is mandatory.
+- Final Architect validation must not begin until fresh review passes, required checks are green, all blocking threads are resolved/outdated, and process memory is current.
+- Any non-evidence change after fresh review or final validation makes that evidence stale and returns the work through role-appropriate review/validation.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
+### F038-RA-004 replacement Implementation Agent resolution
+
+- Implementation date: `2026-06-25`.
+- Assignment: explicit Orchestrator replacement assignment after the prior Implementation Agent hit a service usage limit before product edits.
+- Starting branch/head: `codex/038-manual-ticket-placement` / `f6f9484d3869c7beea957cd3458c826cb008d467`.
+- Preserved Architect handoff: the pre-existing uncommitted `spec.md`, `plan.md`, and `tasks.md` changes were retained; Implementation Agent changed only the allowed product/evidence files plus this Implementation Agent evidence section.
+- Detector result:
+  - strict normalized phrase boundaries reproduce the Architect baseline of `39` lexical containment/equality/numeric candidates;
+  - a naive substring-only probe produced `40` because the two-letter answer `Да` appeared inside the unrelated word `выдачей` for `b-fallback-257`; the production detector requires normalized phrase boundaries and correctly excludes that false positive;
+  - independent semantic review added `65` reviewed equivalence candidates;
+  - total screened tickets: `104`;
+  - answer-bearing reclassifications: `85`;
+  - retained fallbacks with structured `not-self-sufficient` limitations: `19`;
+  - unresolved contradictions: `0`;
+  - rejected self-sufficient answer-bearing candidates: `0`.
+- Per-shard checkpoints:
+  - `001-092`: screened `19`, answer-bearing `15`, retained fallback `4`, unresolved `0`;
+  - `093-184`: screened `18`, answer-bearing `16`, retained fallback `2`, unresolved `0`;
+  - `185-276`: screened `21`, answer-bearing `17`, retained fallback `4`, unresolved `0`;
+  - `277-368`: screened `18`, answer-bearing `14`, retained fallback `4`, unresolved `0`;
+  - `369-460`: screened `28`, answer-bearing `23`, retained fallback `5`, unresolved `0`.
+- Reclassified answer-bearing IDs:
+  - `001, 003, 007, 009, 023, 028, 031, 041, 042, 051, 063, 065, 072, 081, 086`;
+  - `097, 110, 115, 120, 123, 124, 128, 133, 152, 154, 159, 173, 174, 177, 178, 180`;
+  - `203, 204, 205, 211, 215, 218, 224, 228, 230, 241, 243, 248, 251, 254, 260, 271, 273`;
+  - `287, 288, 295, 301, 309, 316, 318, 327, 345, 350, 355, 360, 366, 367`;
+  - `371, 379, 380, 382, 390, 401, 402, 404, 405, 410, 421, 422, 423, 425, 430, 431, 435, 437, 447, 451, 456, 457, 459`.
+- Retained fallback IDs and limitation classes:
+  - negated/warning: `026, 125, 236, 391`;
+  - incomplete proposition: `046, 202, 262`;
+  - wrong scope or condition: `032, 300, 324, 420`;
+  - ambiguous without required context: `049, 144, 267, 289, 314, 377, 398, 449`.
+- Exact invariants:
+  - `b-fallback-042` remains on `app4-signs-informational` at `app4informational-p191-019-terminal-de-omnibus-catalog-entry` / `автовокзал` and is now correctly classified `answer-bearing`;
+  - `b-fallback-126` remains the approved fallback on `app1-safety-elements` at `pre-driving-checks.itemsRu[0]`, retaining the oil-filter and professional inspection-fluid comparisons.
+- Final mapping/evidence totals: `460` questions, `460` placements, `85` answer-bearing, `375` audited fallbacks, `31` destination routes, density `1/12/45`.
+- Changed implementation files:
+  - all five placement shards, `reviewed-manifest.json`, and deterministic evidence;
+  - `scripts/manual-ticket-placement-lib.mjs` and `scripts/content-manual-ticket-placement.mjs`;
+  - focused unit/mutation tests and density-adjusted Playwright assertions;
+  - backend durable validator documentation.
+- Topic routes and ticket-topic assignments changed: `no`.
+- Protected/canonical diff guard from starting head: empty for manual prose/images, route inventory, protected baseline, canonical questions/translations/explanations/answers/difficulty/images, runtime UI/CSS, package/lockfile, and frontend docs.
+- Verification:
+  - `pnpm run validate:manual-ticket-placement`: passed;
+  - `node --test tests/manual-ticket-placement.test.mjs`: `12/12` passed;
+  - `pnpm run validate:content`: passed;
+  - `pnpm run test`: `463/463` passed;
+  - `pnpm run build`: passed;
+  - focused Playwright: `6/6` passed;
+  - `pnpm run test:e2e`: `88/88` passed;
+  - `pnpm run preflight`: passed, including the same `463/463` unit/content and `88/88` Playwright results;
+  - `git diff --check`: passed.
+- Dead end: substring-only containment treated the short answer `Да` as part of `выдачей`; phrase-boundary normalization removed the false candidate without weakening exact sign labels, numeric/unit equivalence, or manually reviewed semantic hooks.
+- Implementation Agent feedback requiring Architect disposition: `none`.
+- Effective content head: pending the implementation commit below; the following commit must be evidence-only and change only this Implementation Agent process record.
+- Review/thread resolution/final role validation/merge performed by Implementation Agent: `no`.
+
 ### F038-IA-003 Implementation Agent resolution
 
 - Implementation date: `2026-06-24`.
@@ -985,10 +1130,10 @@ Staleness and handoff:
 
 ## Final Validation Records
 
-Architect return count: `3 / 10`
+Architect return count: `4 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-003 assigned from blocking Review Agent review 4565465801 on head 0dc37b6d3b3f426c24a979dd0590984acb1e0e4a. Ticket-specific fallback-ledger remediation plus exact ticket 042 and 126 anchor restoration remain before fresh review, current-head checks, thread disposition, and final role validations`.
+Process status: `F038-RA-004 replacement Implementation Agent remediation is locally complete and fully verified: 104 screened, 85 answer-bearing, 19 justified retained fallbacks, 0 unresolved. Implementation/effective-head publication and a following tasks-only evidence commit remain before fresh review, current-head checks, thread disposition, and final role validations`.
 
-Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-003` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
+Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-004` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
