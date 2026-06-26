@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const practiceStatusLabel = "Текущие билеты: неофициальная B-практика, не полная официальная база GCBA";
+
 test("manual route appends canonical tickets and mounts dense cards only after opening", async ({ page }, testInfo) => {
   test.setTimeout(60_000);
   await page.goto("/#manual-section-ch3-right-of-way");
@@ -9,6 +11,7 @@ test("manual route appends canonical tickets and mounts dense cards only after o
   await expect(appendix).toHaveAttribute("data-page-id", "ch3-right-of-way");
   await expect(appendix).toHaveAttribute("data-ticket-count", "35");
   await expect(appendix.getByTestId("manual-ticket-disclosure")).toBeVisible();
+  await expect(appendix.getByText(practiceStatusLabel)).toBeVisible();
   await expect(appendix.locator(".materials-ticket")).toHaveCount(0);
   await appendix.getByText("Показать билеты (35)").click();
   await expect(appendix.locator(".materials-ticket")).toHaveCount(35);
@@ -25,12 +28,46 @@ test("manual route appends canonical tickets and mounts dense cards only after o
   expect(overflow).toBe(false);
   await appendix.screenshot({ path: testInfo.outputPath(`manual-ticket-dense-${testInfo.project.name}.png`) });
 
-  await page.goto("/#manual-section-app1-safety-elements");
+  await page.evaluate(() => {
+    const win = window as typeof window & {
+      __manualTicketTransientMounts?: string[];
+      __manualTicketStopObserver?: () => void;
+    };
+    win.__manualTicketTransientMounts = [];
+    const observer = new MutationObserver(() => {
+      const destinationAppendix = document.querySelector(
+        '[data-testid="manual-ticket-appendix"][data-page-id="app1-safety-elements"]'
+      );
+      const destinationDisclosure = destinationAppendix?.querySelector('[data-testid="manual-ticket-disclosure"]');
+      const isDestinationClosed = destinationDisclosure && !destinationDisclosure.hasAttribute("open");
+      const destinationMountedCards = destinationAppendix?.querySelectorAll(".materials-ticket").length ?? 0;
+      if (isDestinationClosed && destinationMountedCards > 0) {
+        win.__manualTicketTransientMounts?.push(`closed destination mounted ${destinationMountedCards} rich cards`);
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    win.__manualTicketStopObserver = () => observer.disconnect();
+  });
+
+  await page.evaluate(() => {
+    window.location.hash = "#manual-section-app1-safety-elements";
+  });
   const nextAppendix = page.getByTestId("manual-ticket-appendix");
   const nextDisclosure = nextAppendix.getByTestId("manual-ticket-disclosure");
+  await expect(nextAppendix).toHaveAttribute("data-page-id", "app1-safety-elements");
   await expect(nextAppendix).toHaveAttribute("data-ticket-count", "45");
   await expect(nextDisclosure).not.toHaveAttribute("open", "");
+  await expect(nextAppendix.getByText(practiceStatusLabel)).toBeVisible();
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(0);
+  const transientMounts = await page.evaluate(() => {
+    const win = window as typeof window & {
+      __manualTicketTransientMounts?: string[];
+      __manualTicketStopObserver?: () => void;
+    };
+    win.__manualTicketStopObserver?.();
+    return win.__manualTicketTransientMounts ?? [];
+  });
+  expect(transientMounts).toEqual([]);
   await nextDisclosure.getByText("Показать билеты (45)").click();
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(45);
 });

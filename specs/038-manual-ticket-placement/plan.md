@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over the effective content head and touches only `specs/038-manual-ticket-placement/spec.md`, `plan.md`, and `tasks.md`. Final Architect validation passed at `2026-06-26T14:18:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. The validation evidence commit to be published by the assigned workflow must be treated as Architect-validation evidence-only, not as a new effective content head.
+For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. Final Architect validation passed at `2026-06-26T14:18:23Z` and final Analyst validation passed at `2026-06-26T14:25:23Z` for that effective content head, but the current trusted connector P2 threads disposed in `F038-RA-007` block completion until implemented and reviewed. Any `F038-RA-007` product/runtime implementation creates a new effective content head and requires fresh Review Agent review, final Architect validation, and final Analyst validation.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -589,4 +589,62 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, and current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over that effective content head. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before `F038-FAV-002` passed at `2026-06-26T14:18:23Z`. Final Analyst validation is the next required role gate before finalization or merge.
+Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before `F038-FAV-002` passed at `2026-06-26T14:18:23Z`, followed by final Analyst validation at `2026-06-26T14:25:23Z`. Current follow-up `F038-RA-007` accepts new runtime UX work, so finalization/merge is blocked until implementation, fresh review, required checks, and fresh final Architect then Analyst validation pass.
+
+## F038-RA-007 Follow-up Plan
+
+Review disposition timestamp: `2026-06-26T20:51:28Z`.
+
+Starting state: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `ae7eb75d50e96af7256074b2a67d54e01a67d534`, effective content head before this follow-up `c32d6d93998feaa03ab371378a067acddf608cb4`. Parallel work may exist; preserve every sibling worktree, branch, commit, PR, dirty diff, and process-memory record.
+
+One Implementation Agent should handle both accepted P2 threads in the assigned PR/worktree because both are bounded to the manual ticket appendix UI and focused browser regression.
+
+### Package A — reset dense appendix expansion before page switches
+
+Accepted thread: `PRRT_kwDOSX65IM6Mi3sk` / comment `PRRC_kwDOSX65IM7Pi3hq`, `src/App.tsx` line `1196`.
+
+Independent Architect confirmation: the dense appendix `<details>` is keyed by `pageId`, but `ManualTicketAppendix` owns `expanded` state. When a dense page is opened and navigation switches to another dense page, React can render the destination once with the previous `expanded === true` value before the `useEffect([pageId])` reset commits. That means rich ticket cards can mount inside the new closed native disclosure for one render, violating the zero-hidden-card density contract even though the destination `<details>` is closed and later resets.
+
+Implementation requirements:
+
+1. Reset expansion synchronously across page identities by keying the whole `ManualTicketAppendix` component by `pageId` at every route-end call site, or by replacing the local boolean with an equivalent page-scoped state that cannot carry `expanded: true` into a different `pageId` render.
+2. Do not rely only on the existing post-commit `useEffect([pageId])` reset.
+3. Preserve native `<details>/<summary>` accessibility, the direct-render threshold, deterministic ticket ordering, lazy images, and zero mounted rich cards while a dense appendix is closed.
+4. Keep the appendix after existing route content and do not change manual or ticket content.
+5. Extend focused browser coverage so dense-to-dense navigation from an open source appendix to a closed destination proves both:
+   - the destination disclosure has no `open` attribute; and
+   - no destination `.materials-ticket` rich cards mount before the user opens the destination disclosure, including the initial route-switch render. A `MutationObserver` or equivalent in-page assertion is acceptable for the transient-mount guard.
+
+### Package B — label manual ticket appendices as unofficial practice
+
+Accepted thread: `PRRT_kwDOSX65IM6Mnrnk` / comment `PRRC_kwDOSX65IM7PpgTy`, `src/App.tsx` lines `1182-1184`.
+
+Independent Architect confirmation: `Материалы` has a top-level status row that includes `practiceContentStatusLabel()`, but manual appendices only render the heading and per-card footer. Direct manual-section routes can therefore show appended exam-like cards under official-looking manual content without an appendix-level reminder that the current tickets are the unofficial category-B fallback/practice bank. Per-card source-currentness text is not an adequate section-level unofficial-practice label.
+
+Implementation requirements:
+
+1. Add a visible appendix-level status/disclaimer in `ManualTicketAppendix` before any ticket cards or dense disclosure, reusing `practiceContentStatusLabel()` or exact equivalent wording.
+2. Keep the label semantically tied to the appendix, for example with a status row/accessible label inside the appendix heading area.
+3. Preserve the existing card footer and canonical data join; do not alter canonical question/source data or manual content.
+4. Add focused browser assertions for direct manual-section routes proving the manual appendix displays the unofficial-practice status before cards are rendered/opened. Also preserve existing `Материалы` status-row regression coverage.
+
+Allowed implementation files:
+
+- `src/App.tsx`;
+- `tests/e2e/manual-ticket-placement.spec.ts`;
+- `tests/e2e/app.spec.ts` only if the existing `Материалы` status regression must be adjusted or strengthened;
+- `src/App.css` only if minimal styling is required for the new status row;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+Forbidden implementation scope:
+
+- protected manual prose, manual images, canonical ticket/translation/explanation/image data, placement shards, reviewed manifest, validation evidence, generator/validator scripts, durable `docs_project`, `feature-request.md`, unrelated UI behavior, commit/push/review/thread resolution/merge/final validation by Architect.
+
+Verification:
+
+- focused Playwright for `tests/e2e/manual-ticket-placement.spec.ts`;
+- repository-required validation/preflight checks assigned by Orchestrator, including build and the full browser suite if runtime UI changed;
+- `git diff --check`;
+- record exact command results, changed files, the new effective content head, and any dead ends in `tasks.md`.
+
+Staleness rule: any product/runtime/test implementation for `F038-RA-007` creates a new effective content head and makes prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head stale for merge authorization. After implementation, Orchestrator must obtain fresh Review Agent disposition/current-head thread state, verify required checks, and rerun final Architect validation before final Analyst validation.

@@ -1165,11 +1165,8 @@ const manualTicketDirectRenderLimit = 6;
 
 function ManualTicketAppendix({ pageId }: { pageId: string }) {
   const questionIds = manualTicketQuestionIdsByPage.get(pageId) ?? [];
-  const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    setExpanded(false);
-  }, [pageId]);
+  const [expandedPageId, setExpandedPageId] = useState<string | null>(null);
+  const expanded = expandedPageId === pageId;
 
   if (questionIds.length === 0) return null;
 
@@ -1182,6 +1179,9 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
       <div className="manual-ticket-appendix-heading">
         <p className="eyebrow">Билеты по теме страницы</p>
         <h3>{questionIds.length} {questionIds.length === 1 ? "билет" : "билетов"}</h3>
+        <div className="materials-status" aria-label="Статус билетов в приложении к руководству">
+          <span>{practiceContentStatusLabel()}</span>
+        </div>
       </div>
       {questionIds.length <= manualTicketDirectRenderLimit ? (
         <div className="manual-ticket-list">{cards}</div>
@@ -1189,7 +1189,7 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
         <details
           key={pageId}
           className="manual-ticket-disclosure"
-          onToggle={(event) => setExpanded(event.currentTarget.open)}
+          onToggle={(event) => setExpandedPageId(event.currentTarget.open ? pageId : null)}
           data-testid="manual-ticket-disclosure"
         >
           <summary>Показать билеты ({questionIds.length})</summary>

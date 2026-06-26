@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head verified for this final Architect validation: `#204` / `47cded8f8909d9db044041b033b19bb1a15077d0`
-- Process status: `final-architect-validation-passed`; `F038-RA-005` content/runtime remediation for tickets `390`, `422`, `430`, and the lean runtime projection remains complete at the effective content head below. Fresh Review Agent review `4580025675` reported no blocking findings on `47cded8f8909d9db044041b033b19bb1a15077d0`; all review threads are resolved or outdated; required checks on that head are green; PR `#204` is mergeable.
-- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`; current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over the effective content head, and `c32d6d93998feaa03ab371378a067acddf608cb4..47cded8f8909d9db044041b033b19bb1a15077d0` changes only `specs/038-manual-ticket-placement/spec.md`, `plan.md`, and `tasks.md`.
+- Current PR/head verified for follow-up review disposition `F038-RA-007`: `#204` / `ae7eb75d50e96af7256074b2a67d54e01a67d534`
+- Process status: `F038-RA-007 accepted for implementation`; two current trusted connector P2 threads identify runtime UX gaps in the manual appendix. Prior final Architect validation at `2026-06-26T14:18:23Z` and final Analyst validation at `2026-06-26T14:25:23Z` remain historical evidence for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but they are blocked for completion by the current accepted review disposition and become stale for merge authorization if product/runtime code changes.
+- Effective content head before `F038-RA-007`: `c32d6d93998feaa03ab371378a067acddf608cb4`; current head `ae7eb75d50e96af7256074b2a67d54e01a67d534` is the review-disposition starting head supplied by Orchestrator. The next Implementation Agent follow-up must record a new effective content head if it changes product/runtime code.
 
 ## Goal
 
