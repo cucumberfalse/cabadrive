@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the later pushed heads through pre-validation PR head `47cded8f8909d9db044041b033b19bb1a15077d0` are process/evidence-only successors touching only `specs/038-manual-ticket-placement/spec.md`, `plan.md`, and `tasks.md`. Final Architect validation passed at `2026-06-26T14:18:19Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. The validation evidence commit to be published by the assigned workflow must be treated as Architect-validation evidence-only, not as a new effective content head.
+For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over the effective content head and touches only `specs/038-manual-ticket-placement/spec.md`, `plan.md`, and `tasks.md`. Final Architect validation passed at `2026-06-26T14:18:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. The validation evidence commit to be published by the assigned workflow must be treated as Architect-validation evidence-only, not as a new effective content head.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -554,6 +554,23 @@ Final Architect validation therefore does not pass in this attempt. The remainin
 4. wait for `AI Review` to finish green on the actual current PR head;
 5. rerun final Architect validation before any final Analyst validation.
 
+## F038-FAV-002 Final Architect Validation Pass
+
+Read-only final Architect validation passed at `2026-06-26T14:18:23Z`.
+
+Validation evidence:
+
+1. PR `#204` current head verified from GitHub: `47cded8f8909d9db044041b033b19bb1a15077d0`;
+2. effective content head validated: `c32d6d93998feaa03ab371378a067acddf608cb4`;
+3. current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over the effective content head, and the diff between them remains limited to `specs/038-manual-ticket-placement/spec.md`, `plan.md`, and `tasks.md`;
+4. required checks on `47cded8f8909d9db044041b033b19bb1a15077d0` are green: `AI Review`, `baseline-checks`, `docker-validation`, `guard`, `osv-scan`;
+5. fresh Review Agent review `4580025675` reported no blocking findings on `47cded8f8909d9db044041b033b19bb1a15077d0`;
+6. review-thread query returned zero unresolved current-head threads and PR `#204` is mergeable.
+
+Architect validation pass: passed
+Final Architect validation completed at: 2026-06-26T14:18:23Z
+Architect validated effective content head: c32d6d93998feaa03ab371378a067acddf608cb4
+
 ## Process Memory Requirements
 
 Implementation Agent must keep `tasks.md` current with:
@@ -572,6 +589,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, followed only by process/evidence-only successors through pre-validation PR head `47cded8f8909d9db044041b033b19bb1a15077d0`. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before the passing validation below. Final Analyst validation follows only after Architect passes.
-
-Final Architect validation has since passed at `2026-06-26T14:18:19Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. Pre-validation PR head `47cded8f8909d9db044041b033b19bb1a15077d0` was process/evidence-only over that effective content head; fresh Review Agent review `4580025675` reported no blocking findings, all review threads were resolved after disposition of `PRRT_kwDOSX65IM6MigTD`, and required checks were green.
+Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, and current head `47cded8f8909d9db044041b033b19bb1a15077d0` is a role/process evidence-only successor over that effective content head. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before `F038-FAV-002` passed at `2026-06-26T14:18:23Z`. Final Analyst validation is the next required role gate before finalization or merge.

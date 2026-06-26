@@ -287,3 +287,19 @@ No external research was needed. The user request, canonical local content, and 
 This intake is ready for Orchestrator handoff to Architect.
 
 The controlling customer intent is strict: all `460` canonical tickets must be appended to the ends of substantive `Руководство` pages, each ticket on one to three pages, and every individual placement must be justified by existing answer-bearing page text. Existing manual text and images are immutable for this feature. `Материалы` supplies the presentation/data precedent, while canonical question, translation, answer, explanation, and image sources remain authoritative. Non-content pages are forbidden destinations, and a numeric coverage target must never be satisfied through false semantic matches.
+
+## Final Analyst Validation
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-06-26T14:25:23Z
+Analyst validated effective content head: c32d6d93998feaa03ab371378a067acddf608cb4
+
+Final Architect validation passed first at `2026-06-26T14:18:19Z` for the same effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+
+Pre-Analyst-validation PR head: `ca445373404b0802712c1f14eb7c4c52c7374582`.
+
+Analyst validation scope reviewed the original request, recorded assumptions, owner-approved thematic-fallback exception, acceptance expectations, feature memory, final Architect validation evidence, current-head guard evidence, and focused placement validation evidence. The effective result satisfies the customer intent in spirit and letter: every current canonical ticket is represented on exactly one substantive manual page; ordinary placements use reviewed answer-bearing anchors; audited no-answer cases use the owner-approved closest-topic fallback without changing manual or ticket text; ticket rendering remains canonical, translated, read-only, local-first, and appended after existing manual content; prohibited support pages remain excluded.
+
+The post-effective-head commits through the pre-Analyst-validation PR head are role/process evidence-only successors. The Analyst validation evidence commit to be published by the assigned workflow is Analyst-validation evidence-only and is not a new effective content head.
+
+Analyst return count remains `0 / 5`.
