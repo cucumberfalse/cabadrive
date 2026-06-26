@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the exact pushed evidence-only current head is returned in the Implementation Agent handoff.
-- Current process status: Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection; this tasks-only evidence update follows the effective content head. Fresh review, thread disposition, current-head checks, and final role validations remain.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `cdb13166af2f6abea868c887990d763afe2c0ea9`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+- Current process status: Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; Review Agent review `4579222926` verified the content/runtime fixes and found stale Architect-owned process memory only. `F038-RA-006` is the current process-memory-only Architect correction. Fresh review/current-head checks, required checks, thread disposition, and final role validations remain after these artifact updates are committed and pushed.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -360,8 +360,8 @@ Review disposition status:
 - [x] `F038-RA-001` implemented with `71/389` re-audit evidence.
 - [x] Replace stale current `458/2` and merge-readiness claims with re-audit results; retained occurrences are labeled historical where needed.
 - [x] Complete and locally verify `F038-IA-003`; commit/push evidence is recorded in its resolution section.
-- [ ] Obtain fresh Review Agent review on the remediation head.
-- [ ] Do not perform final Architect validation until the fresh review and all checks pass.
+- [x] Fresh Review Agent reviews have since been obtained through review `4579222926`; current remaining blocker is the `F038-RA-006` process-memory correction recorded below.
+- [ ] Do not perform final Architect validation until the current process-memory update is committed/pushed, fresh review/current-head disposition passes, required checks are green, and all blocking threads are resolved/outdated.
 
 Changed files at blocker handoff:
 
@@ -1186,6 +1186,40 @@ Staleness and handoff:
 - Final Architect validation performed: `no`.
 - Final Analyst validation performed: `no`.
 
+### F038-RA-006 — `task`
+
+- Disposition date: `2026-06-26`
+- Disposition type: `task`
+- Source review: `https://github.com/cucumberfalse/cabadrive/pull/204#pullrequestreview-4579222926`
+- Reviewed/current head: `cdb13166af2f6abea868c887990d763afe2c0ea9`
+- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`
+- Head relation reported by Review Agent: the only post-effective-head commit changes `specs/038-manual-ticket-placement/tasks.md` evidence.
+- Finding: `spec.md` and `plan.md` still named old live heads `002f98814f92299edeb377c34ba40eb2341d589f` / `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` and still described `F038-RA-005` implementation work as required.
+- Review Agent implementation status: `F038-RA-005` content/runtime fixes passed; the stale-memory finding is process-only and does not require product/runtime/content/test changes.
+- Formal disposition: accepted as a blocking Architect process-memory correction. Architect return count is `6 / 10`.
+
+Architect correction scope:
+
+- [x] Update `spec.md` live status to current head `cdb13166af2f6abea868c887990d763afe2c0ea9`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, completed `F038-RA-005` state, and remaining gates.
+- [x] Update `plan.md` handoff/process-memory status to treat `F038-RA-005` as completed historical work and `F038-RA-006` as the current process-memory-only blocker.
+- [x] Update this `tasks.md` process record and final-validation return count/status.
+- [x] Leave evidence that this change is process-memory-only and changes no implementation requirements.
+
+Process-memory-only evidence:
+
+- Product/runtime code changed by Architect: `no`.
+- Content data, placement shards, runtime projection, validation evidence, scripts, tests, protected manual corpus, canonical ticket data, or durable product docs changed by Architect: `no`.
+- Implementation requirements changed: `no`; `F038-RA-005` package A/B acceptance remains satisfied as recorded by the Implementation Agent and Review Agent.
+- Final Architect validation performed: `no`.
+- Final Analyst validation performed: `no`.
+
+Remaining required follow-up:
+
+- Assigned implementation workflow must commit and push these Architect-owned artifact updates.
+- Orchestrator must obtain fresh Review Agent/current-head disposition after the artifact update is published.
+- Orchestrator must verify required checks, thread state, process memory, and final-validation prerequisites before invoking final Architect validation.
+- No additional Implementation Agent product follow-up is required by this disposition unless fresh review, checks, or current-head guards identify a new issue.
+
 ### F038-IA-003 Implementation Agent resolution
 
 - Implementation date: `2026-06-24`.
@@ -1242,10 +1276,10 @@ Staleness and handoff:
 
 ## Final Validation Records
 
-Architect return count: `5 / 10`
+Architect return count: `6 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-005 implementation and local verification are complete and pushed at effective content head c32d6d93998feaa03ab371378a067acddf608cb4. A tasks-only evidence commit follows it; its exact pushed current head is returned in the Implementation Agent handoff. Fresh review, current-head checks, thread disposition, and later final role validations remain`.
+Process status: `F038-RA-005 implementation and local verification are complete and pushed at effective content head c32d6d93998feaa03ab371378a067acddf608cb4. Current reviewed head cdb13166af2f6abea868c887990d763afe2c0ea9 is a tasks-evidence-only successor. Review Agent review 4579222926 accepted the implementation/runtime fixes and raised only stale Architect-owned process memory. F038-RA-006 is this process-memory-only correction; fresh review/current-head checks, required checks, thread disposition, and later final role validations remain after these artifact updates are committed and pushed`.
 
-Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after `F038-RA-005` remediation, fresh passing Review Agent review, checks, and follow-up development are complete.
+Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after this `F038-RA-006` artifact update is committed and pushed, fresh Review Agent/current-head disposition passes, required checks are green, blocking threads are resolved/outdated, and follow-up development remains complete.

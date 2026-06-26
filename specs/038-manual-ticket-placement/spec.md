@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head: `#204` / `002f98814f92299edeb377c34ba40eb2341d589f`
-- Process status: `review-blocked` by Review Agent review `4574141351` plus active runtime thread `PRRT_kwDOSX65IM6MBvab`; bounded `F038-RA-005` remediation is required
-- Effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` is followed only by tasks evidence commits `cdf8015...` and `002f988...`; `F038-RA-004` implementation is complete, this Architect update reconciles live status, and tickets `390`, `422`, `430` plus the lean runtime-projection requirement remain implementation blockers
+- Current PR/head at this Architect disposition: `#204` / `cdb13166af2f6abea868c887990d763afe2c0ea9`
+- Process status: `process-memory-review-blocked` by Review Agent review `4579222926`; `F038-RA-005` content/runtime remediation for tickets `390`, `422`, `430`, and the lean runtime projection is complete at the effective content head below
+- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`; the later pushed head `cdb13166af2f6abea868c887990d763afe2c0ea9` is understood from the Review Agent handoff as a tasks-evidence-only successor. This `F038-RA-006` Architect update is process-memory-only and changes no implementation requirements, runtime/content data, tests, or product behavior. Remaining work is commit/push of these artifact updates by the assigned implementation workflow, fresh Review Agent/current-head disposition, required check verification, thread disposition, and later Orchestrator-invoked final Architect/Analyst validation.
 
 ## Goal
 
@@ -627,6 +627,28 @@ Architect return count becomes `5 / 10`. This disposition is not final Architect
 
 Any implementation change creates a new effective content head and makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization. A fresh Review Agent review is mandatory after both packages. Final Architect validation remains forbidden until fresh review passes, required checks are green, blocking threads are resolved or outdated, and process memory is current.
 
+### F038-RA-006 Architect disposition
+
+Disposition: `task` — Review Agent review `4579222926` is accepted as a blocking process-memory correction.
+
+Reviewed state:
+
+- PR: `#204`;
+- Review Agent review: `4579222926`;
+- reviewed/current head: `cdb13166af2f6abea868c887990d763afe2c0ea9`;
+- effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`;
+- head relation reported by Review Agent: the post-effective-head commit changes only `specs/038-manual-ticket-placement/tasks.md` evidence.
+
+Independent Architect disposition:
+
+- `F038-RA-005` implementation is no longer an outstanding product/runtime task. Its semantic fixes for tickets `390`, `422`, and `430`, plus the lean runtime projection/import-boundary fix, are recorded as completed and verified at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+- The fresh blocker is stale Architect-owned process memory: this `spec.md` and matching `plan.md` still named pre-remediation heads `002f98814f92299edeb377c34ba40eb2341d589f` / `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` as live and still described `F038-RA-005` implementation work as required.
+- The required fix is narrowly process-memory-only: reconcile current/effective heads, completed `F038-RA-005` state, remaining review/check/thread/final-validation gates, and the return count in Architect-owned feature memory. No code, runtime data, placement shard, validator, test, durable product doc, or implementation requirement changes are authorized or needed by this disposition.
+
+Architect return count becomes `6 / 10`. This disposition is not final Architect validation.
+
+After these artifact updates are committed and pushed by the assigned implementation workflow, Orchestrator must obtain fresh Review Agent/current-head disposition and verify required checks, thread state, process memory, and final-validation prerequisites before invoking final Architect validation. Final Analyst validation remains later and only after final Architect validation passes.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -914,4 +936,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, any exact invariant for `042`, `126`, `390`, `422`, or `430` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, the lean runtime projection is missing/stale/non-minimal or reviewed shards enter the browser bundle, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. Review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` become stale for merge authorization once `F038-RA-005` implementation changes content. Orchestrator must obtain a fresh Review Agent result on the new remediation effective content head, then later run final Architect validation and final Analyst validation against that same effective content head before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, any exact invariant for `042`, `126`, `390`, `422`, or `430` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, the lean runtime projection is missing/stale/non-minimal or reviewed shards enter the browser bundle, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, or any required gate is red. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, and Review Agent review `4579222926` at current head `cdb13166af2f6abea868c887990d763afe2c0ea9` identified only stale Architect-owned process memory as the remaining blocker. This `F038-RA-006` update is process-memory-only; Orchestrator must have it committed/pushed, obtain fresh Review Agent/current-head disposition and green required checks, then later run final Architect validation and final Analyst validation before finalization or merge.

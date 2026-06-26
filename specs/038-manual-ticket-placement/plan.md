@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For remediation of `F038-RA-005`, preserve PR `#204` and assign one Implementation Agent to the existing isolated worktree/branch. The semantic corrections and lean runtime projection share the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. Multiple agents must not write the same branch/worktree. The safe default is one IA, one branch, one PR, and two sequential atomic work packages.
+For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the current PR head at the `F038-RA-006` disposition is `cdb13166af2f6abea868c887990d763afe2c0ea9`, reported as a tasks-evidence-only successor. Current remaining work is process-memory correction, fresh review/current-head disposition, required check verification, thread disposition, and later final role validations.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -455,7 +455,7 @@ Any implementation change creates a new effective content head and makes review 
 
 ## F038-RA-005 Follow-up Plan
 
-One Implementation Agent must remediate review `4574141351` and active runtime thread `PRRT_kwDOSX65IM6MBvab` on PR `#204`. Starting state is current evidence-only head `002f98814f92299edeb377c34ba40eb2341d589f` over effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`. Parallel work may exist; preserve every sibling worktree, branch, commit, PR, dirty diff, and process-memory record.
+Historical status: one Implementation Agent remediated review `4574141351` and active runtime thread `PRRT_kwDOSX65IM6MBvab` on PR `#204`. The original starting state was current evidence-only head `002f98814f92299edeb377c34ba40eb2341d589f` over effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`. The completed remediation effective content head is `c32d6d93998feaa03ab371378a067acddf608cb4`; Review Agent review `4579222926` confirmed the content/runtime fixes passed and found only stale Architect-owned process memory. The plan below is retained as historical implementation guidance and is not a remaining product/runtime task.
 
 ### Package A — exact semantic corrections
 
@@ -522,6 +522,19 @@ Verification must include focused semantic/runtime-projection mutation tests, `p
 
 Any implementation change creates a new effective content head and makes review `4574141351`, current head `002f98814f92299edeb377c34ba40eb2341d589f`, and effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea` stale for merge authorization. Fresh Review Agent review is mandatory after both packages. Final Architect validation is not part of this follow-up and may begin only after fresh review passes, required checks are green, blocking threads are resolved/outdated, and process memory is current.
 
+## F038-RA-006 Follow-up Plan
+
+Review Agent review `4579222926` on PR `#204` accepted the `F038-RA-005` content/runtime remediation and raised one blocking process-memory finding: `spec.md` and `plan.md` still described old heads and outstanding `F038-RA-005` work. The reviewed/current head is `cdb13166af2f6abea868c887990d763afe2c0ea9`; the effective content head is `c32d6d93998feaa03ab371378a067acddf608cb4`; the post-effective-head diff reported by Review Agent is tasks-evidence-only.
+
+Architect scope for this return is limited to:
+
+1. update `specs/038-manual-ticket-placement/spec.md` and this `plan.md` so current/effective heads, completed `F038-RA-005` state, remaining gates, and final-validation status are accurate;
+2. update `specs/038-manual-ticket-placement/tasks.md` only to record the Architect disposition/current process status;
+3. leave clear evidence that this correction is process-memory-only and changes no implementation requirements, product/runtime code, placement data, validators, tests, or durable product docs;
+4. do not perform final Architect validation.
+
+Architect return count becomes `6 / 10`. Required Implementation Agent follow-up is to commit and push the Architect-owned artifact updates through the assigned workflow. No additional product implementation is required by this disposition unless fresh review, checks, or Orchestrator current-head guards find a new issue. After the artifact update is published, Orchestrator must obtain fresh Review Agent/current-head disposition, verify required checks and thread state, and only then request final Architect validation.
+
 ## Process Memory Requirements
 
 Implementation Agent must keep `tasks.md` current with:
@@ -540,4 +553,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-004` implementation is complete at effective content head `2cd692fb6babdc1404f8210bd5ef5c9f2cd5b4ea`, followed only by tasks evidence commits through `002f98814f92299edeb377c34ba40eb2341d589f`. `F038-RA-005` is now the active blocking implementation task: one Implementation Agent must correct exact anchors for `390`, `422`, and `430`, add the exact lean runtime projection/freshness contract, refresh manifest/evidence/process memory, record a new effective content SHA, and rerun required checks. Final Architect validation is not part of this disposition; it occurs only after fresh Review Agent review passes and all follow-up development/checks are complete. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, followed by a tasks-evidence-only successor through current reviewed head `cdb13166af2f6abea868c887990d763afe2c0ea9`. `F038-RA-006` is the current blocking Architect process-memory correction; no product/runtime implementation task remains in this disposition. Final Architect validation is not part of this disposition; it occurs only after this process-memory update is committed/pushed, fresh Review Agent review/current-head checks pass, required checks are green, blocking threads are resolved/outdated, and Orchestrator explicitly invokes final validation. Final Analyst validation follows only after Architect passes.
