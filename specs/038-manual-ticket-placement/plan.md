@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the current PR head at the `F038-RA-006` disposition is `cdb13166af2f6abea868c887990d763afe2c0ea9`, reported as a tasks-evidence-only successor. Current remaining work is process-memory correction, fresh review/current-head disposition, required check verification, thread disposition, and later final role validations.
+For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; the later head `cdb13166af2f6abea868c887990d763afe2c0ea9` is a tasks-evidence-only successor, and the actual current PR head at the failed `F038-FAV-001` validation attempt is `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`, a further Architect process-memory-only successor. Current remaining work is publish the reconciled current-head/process-memory update, clear the current unresolved review thread, wait for `AI Review` and all required checks to be green on the actual current head, and then rerun final Architect validation before final Analyst validation.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -535,6 +535,25 @@ Architect scope for this return is limited to:
 
 Architect return count becomes `6 / 10`. Required Implementation Agent follow-up is to commit and push the Architect-owned artifact updates through the assigned workflow. No additional product implementation is required by this disposition unless fresh review, checks, or Orchestrator current-head guards find a new issue. After the artifact update is published, Orchestrator must obtain fresh Review Agent/current-head disposition, verify required checks and thread state, and only then request final Architect validation.
 
+## F038-FAV-001 Final Architect Validation Gap
+
+Final Architect validation was attempted at `2026-06-26T12:04:43Z` against the actual GitHub PR head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`, with effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+
+Read-only validation confirmed:
+
+1. the post-effective-head diff remains process-memory-only (`tasks.md` at `cdb13166af2f6abea868c887990d763afe2c0ea9`, then `spec.md`/`plan.md`/`tasks.md` at `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`);
+2. `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` were green on `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`;
+3. `AI Review` was still `IN_PROGRESS`;
+4. one current-head review thread on `spec.md` line `11` remained unresolved because the live status blocks still named `cdb13166af2f6abea868c887990d763afe2c0ea9` as the current head.
+
+Final Architect validation therefore does not pass in this attempt. The remaining work is still process-memory/final-gate only:
+
+1. reconcile the live current-head references in `spec.md`, `plan.md`, and `tasks.md` to `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`;
+2. publish those Architect-owned artifact updates;
+3. obtain fresh current-head Review Agent disposition or have the unresolved thread become addressed/outdated;
+4. wait for `AI Review` to finish green on the actual current PR head;
+5. rerun final Architect validation before any final Analyst validation.
+
 ## Process Memory Requirements
 
 Implementation Agent must keep `tasks.md` current with:
@@ -553,4 +572,4 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, followed by a tasks-evidence-only successor through current reviewed head `cdb13166af2f6abea868c887990d763afe2c0ea9`. `F038-RA-006` is the current blocking Architect process-memory correction; no product/runtime implementation task remains in this disposition. Final Architect validation is not part of this disposition; it occurs only after this process-memory update is committed/pushed, fresh Review Agent review/current-head checks pass, required checks are green, blocking threads are resolved/outdated, and Orchestrator explicitly invokes final validation. Final Analyst validation follows only after Architect passes.
+Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, followed by a tasks-evidence-only successor at `cdb13166af2f6abea868c887990d763afe2c0ea9` and then a further Architect process-memory-only successor at the actual current PR head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`. `F038-FAV-001` is the current blocking final-validation gap: the live current-head memory is still one head stale on the published PR, one matching review thread remains unresolved, and `AI Review` is still pending on the actual current head. Final Architect validation did not pass on `2026-06-26T12:04:43Z`; it must be rerun only after the reconciled process-memory update is published, current-head review/thread state is clean, and every required check is green. Final Analyst validation follows only after Architect passes.

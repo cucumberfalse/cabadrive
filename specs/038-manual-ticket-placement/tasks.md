@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `cdb13166af2f6abea868c887990d763afe2c0ea9`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
-- Current process status: Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; Review Agent review `4579222926` verified the content/runtime fixes and found stale Architect-owned process memory only. `F038-RA-006` is the current process-memory-only Architect correction. Fresh review/current-head checks, required checks, thread disposition, and final role validations remain after these artifact updates are committed and pushed.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`, effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+- Current process status: Implementation Agent completed, verified, committed, and pushed bounded `F038-RA-005` remediation for tickets `390`/`422`/`430` and the lean runtime projection at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; `cdb13166af2f6abea868c887990d763afe2c0ea9` is a tasks-evidence-only successor and `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f` is a further Architect process-memory-only successor. Final Architect validation was attempted on `2026-06-26T12:04:43Z` and failed because the published live current-head memory was still stale at `cdb13166af2f6abea868c887990d763afe2c0ea9`, one matching review thread remained unresolved, and `AI Review` was still pending on the actual current head.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1220,6 +1220,35 @@ Remaining required follow-up:
 - Orchestrator must verify required checks, thread state, process memory, and final-validation prerequisites before invoking final Architect validation.
 - No additional Implementation Agent product follow-up is required by this disposition unless fresh review, checks, or current-head guards identify a new issue.
 
+### F038-FAV-001 — `task`
+
+- Validation attempt timestamp: `2026-06-26T12:04:43Z`
+- Validation type: `final Architect validation`
+- PR/head validated read-only: `#204` / `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`
+- Effective content head under validation: `c32d6d93998feaa03ab371378a067acddf608cb4`
+- Current-head guard result: `c32d6d93998feaa03ab371378a067acddf608cb4..c12da38f28781c3c4ec168c5dbef0e3e940eeb2f` remains Architect/process-memory-only (`tasks.md` at `cdb13166af2f6abea868c887990d763afe2c0ea9`, then `spec.md`, `plan.md`, and `tasks.md` at `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`).
+- Required checks at validation time:
+  - `baseline-checks`: `SUCCESS`
+  - `docker-validation`: `SUCCESS`
+  - `guard`: `SUCCESS`
+  - `osv-scan`: `SUCCESS`
+  - `AI Review`: `IN_PROGRESS`
+- Review-thread state at validation time: one unresolved thread remained at `https://github.com/cucumberfalse/cabadrive/pull/204#discussion_r3481240048`, reporting that the live Architect-owned current-head status still named `cdb13166af2f6abea868c887990d763afe2c0ea9` instead of the actual PR head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`.
+- Formal disposition: final Architect validation does not pass. This is a blocking Architect return focused on process-memory/current-head gate correctness. Architect return count is `7 / 10`.
+
+Architect-only correction recorded locally in this disposition:
+
+- [x] Reconcile the Architect-owned live current-head/process-memory statements in `spec.md`, `plan.md`, and this `tasks.md` to the actual PR head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`.
+- [x] Record the failed final-validation attempt, actual required-check state, unresolved-thread state, and current-head guard result.
+- [x] Keep the correction limited to Architect-owned feature memory; no code, runtime/content data, tests, validators, durable product docs, or implementation requirements changed.
+
+Remaining required follow-up:
+
+- Publish these Architect-owned artifact updates through the assigned implementation workflow.
+- Obtain fresh current-head Review Agent disposition or have the unresolved thread rendered addressed/outdated on the published head.
+- Wait for `AI Review` to finish green on the actual current PR head.
+- Re-run final Architect validation before any final Analyst validation.
+
 ### F038-IA-003 Implementation Agent resolution
 
 - Implementation date: `2026-06-24`.
@@ -1276,10 +1305,10 @@ Remaining required follow-up:
 
 ## Final Validation Records
 
-Architect return count: `6 / 10`
+Architect return count: `7 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-005 implementation and local verification are complete and pushed at effective content head c32d6d93998feaa03ab371378a067acddf608cb4. Current reviewed head cdb13166af2f6abea868c887990d763afe2c0ea9 is a tasks-evidence-only successor. Review Agent review 4579222926 accepted the implementation/runtime fixes and raised only stale Architect-owned process memory. F038-RA-006 is this process-memory-only correction; fresh review/current-head checks, required checks, thread disposition, and later final role validations remain after these artifact updates are committed and pushed`.
+Process status: `F038-RA-005 implementation and local verification are complete and pushed at effective content head c32d6d93998feaa03ab371378a067acddf608cb4. Current PR head c12da38f28781c3c4ec168c5dbef0e3e940eeb2f remains process-memory-only over the effective content head, but final Architect validation failed at 2026-06-26T12:04:43Z because the published live current-head memory was still stale at cdb13166af2f6abea868c887990d763afe2c0ea9, one matching review thread remained unresolved, and AI Review was still pending on the actual current head. Publish this Architect-owned memory correction, clear the current-head review/thread state, and wait for all required checks to be green before the next final Architect validation attempt.`
 
-Final Architect validation and Final Analyst validation are not performed. Orchestrator may invoke them only after this `F038-RA-006` artifact update is committed and pushed, fresh Review Agent/current-head disposition passes, required checks are green, blocking threads are resolved/outdated, and follow-up development remains complete.
+Final Architect validation is attempted and failed in `F038-FAV-001`. Final Analyst validation is not performed. Orchestrator may invoke the next final Architect validation only after this Architect-owned memory correction is committed and pushed, fresh Review Agent/current-head disposition passes, all required checks are green, blocking threads are resolved/outdated, and follow-up development remains complete.

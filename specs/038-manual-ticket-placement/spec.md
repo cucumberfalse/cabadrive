@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head at this Architect disposition: `#204` / `cdb13166af2f6abea868c887990d763afe2c0ea9`
-- Process status: `process-memory-review-blocked` by Review Agent review `4579222926`; `F038-RA-005` content/runtime remediation for tickets `390`, `422`, `430`, and the lean runtime projection is complete at the effective content head below
-- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`; the later pushed head `cdb13166af2f6abea868c887990d763afe2c0ea9` is understood from the Review Agent handoff as a tasks-evidence-only successor. This `F038-RA-006` Architect update is process-memory-only and changes no implementation requirements, runtime/content data, tests, or product behavior. Remaining work is commit/push of these artifact updates by the assigned implementation workflow, fresh Review Agent/current-head disposition, required check verification, thread disposition, and later Orchestrator-invoked final Architect/Analyst validation.
+- Current PR/head at this Architect disposition: `#204` / `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`
+- Process status: `final-architect-validation-blocked`; `F038-RA-005` content/runtime remediation for tickets `390`, `422`, `430`, and the lean runtime projection remains complete at the effective content head below. The post-effective-head commits through the actual current PR head remain Architect/process-memory-only, but the PR still has one unresolved current-head review thread and `AI Review` is still in progress on `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`.
+- Effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`; the later pushed head `cdb13166af2f6abea868c887990d763afe2c0ea9` is a tasks-evidence-only successor, and the current PR head `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f` is a further Architect process-memory-only successor touching `spec.md`, `plan.md`, and `tasks.md`. Final Architect validation attempted on `2026-06-26T12:04:43Z` does not pass because the published current-head/process-memory state is still one head stale in live status blocks, the matching review thread remains unresolved, and not all required checks are green yet.
 
 ## Goal
 
@@ -648,6 +648,34 @@ Independent Architect disposition:
 Architect return count becomes `6 / 10`. This disposition is not final Architect validation.
 
 After these artifact updates are committed and pushed by the assigned implementation workflow, Orchestrator must obtain fresh Review Agent/current-head disposition and verify required checks, thread state, process memory, and final-validation prerequisites before invoking final Architect validation. Final Analyst validation remains later and only after final Architect validation passes.
+
+### F038-FAV-001 Final Architect validation attempt
+
+Disposition: `task` — final Architect validation failed on the actual current PR head.
+
+Validation state at `2026-06-26T12:04:43Z`:
+
+- PR: `#204`;
+- actual current head verified from GitHub: `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`;
+- effective content head: `c32d6d93998feaa03ab371378a067acddf608cb4`;
+- post-effective-head diff to `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f`: Architect/process-memory-only edits in `spec.md`, `plan.md`, and `tasks.md`;
+- required checks on the actual current head: `baseline-checks`, `docker-validation`, `guard`, and `osv-scan` passed; `AI Review` remained `IN_PROGRESS`;
+- review thread state on the actual current head: one unresolved thread at `spec.md` line `11` reported the live current-head/process-memory block was still stale at `cdb13166af2f6abea868c887990d763afe2c0ea9`.
+
+Independent Architect finding:
+
+- The effective product/content/runtime implementation remains the validated `c32d6d93998feaa03ab371378a067acddf608cb4` package, and the post-effective-head commits remain evidence/process-memory-only.
+- Final Architect validation still cannot pass on `c12da38f28781c3c4ec168c5dbef0e3e940eeb2f` because the published Architect-owned live status blocks were not yet fully reconciled to that actual head, the matching review thread is unresolved, and `AI Review` is not yet green on the current PR head.
+- This gap is process-memory/final-gate only. No additional product/runtime/content/test work is authorized or required by this disposition.
+
+Architect return count becomes `7 / 10`. Final Architect validation is not passed by this disposition.
+
+Required follow-up before another final Architect validation attempt:
+
+1. publish the reconciled Architect-owned current-head/process-memory updates for `spec.md`, `plan.md`, and `tasks.md`;
+2. obtain fresh current-head Review Agent disposition or have the current unresolved thread rendered addressed/outdated on the published head;
+3. wait for all required checks, including `AI Review`, to be green on the actual current PR head;
+4. invoke final Architect validation again before any final Analyst validation.
 
 ### F038-IA-001 Architect disposition
 
