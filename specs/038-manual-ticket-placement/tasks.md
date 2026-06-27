@@ -1382,6 +1382,24 @@ Staleness and gates:
 - Final Architect validation performed by this disposition: `no`.
 - Final Analyst validation performed by this disposition: `no`.
 
+### F038-RA-007 follow-up — discussion_r3484873625
+
+- Orchestrator assignment: Implementation Agent for PR `#204`, worktree `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`, branch `codex/038-manual-ticket-placement`, current-head review thread `PRRT_kwDOSX65IM6Mqvs_` / `discussion_r3484873625` on head `647ef3fde21d51dab86f762faf1ff80d4fce181a`.
+- Scope honored: changed only `src/App.tsx`, `tests/e2e/manual-ticket-placement.spec.ts`, and this `tasks.md` evidence. Did not edit protected/canonical/manual content, `feature-request.md`, `spec.md`, `plan.md`, placement data, validation evidence, or scripts.
+- New effective content head after runtime/test commit: `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`.
+- Changed files:
+  - `src/App.tsx`: keyed each route-end `ManualTicketAppendix` by its `pageId` and replaced retained `expandedPageId` state with local disclosure-open state. This prevents page A expansion state from surviving A -> B -> A revisits into a closed remounted native `<details>`.
+  - `tests/e2e/manual-ticket-placement.spec.ts`: extended the dense appendix regression to cover open `ch3-right-of-way` -> navigate closed `app1-safety-elements` -> open it -> navigate back to closed `ch3-right-of-way`, with a `MutationObserver` guarding both dense page IDs against transient closed `.materials-ticket` mounts.
+  - `specs/038-manual-ticket-placement/tasks.md`: recorded changed files, verification, effective content head, stale validation state, and the feature-memory guard result.
+- Verification commands and results:
+  - `pnpm exec playwright test tests/e2e/manual-ticket-placement.spec.ts`: passed, `6/6`.
+  - `pnpm run validate:manual-ticket-placement`: passed; `460` questions, `460` placements, `31` destination routes, density `1/12/45`, `85` answer-bearing, `375` fallbacks.
+  - `git diff --check`: passed.
+  - `node scripts/check-feature-memory.mjs --worktree`: initially failed before this tasks evidence was written because product/test paths were dirty without a feature-memory file in the worktree diff; rerun after this tasks update passed.
+- Prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head are stale after this runtime/test change. Fresh review/current-head thread disposition, required checks, final Architect validation, and final Analyst validation remain required before finalization or merge.
+- Final Architect validation performed by this disposition: `no`.
+- Final Analyst validation performed by this disposition: `no`.
+
 ## Final Validation Records
 
 Architect return count: `8 / 10`
