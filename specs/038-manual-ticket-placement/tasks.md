@@ -1478,6 +1478,14 @@ Implementation Agent evidence update at `2026-06-27T07:32:11Z`:
 - Pushed head after push: unavailable because commit was blocked and no push was attempted.
 - Stale validation state: prior final Architect and Analyst validation remain stale. Fresh required checks, review/current-head disposition, final Architect validation, and final Analyst validation remain required before finalization or merge.
 
+Publication evidence update at `2026-06-27T07:45:02Z`:
+
+- The earlier sandbox/index-lock blocker above is preserved as a historical dead-end record only; the later assigned publication attempt in this worktree succeeded.
+- Published implementation commit/head: `b08e2a85b40df0b2a6cc28970287c846b721767b`.
+- Pushed branch/head: `origin/codex/038-manual-ticket-placement` at `b08e2a85b40df0b2a6cc28970287c846b721767b` (`git push origin codex/038-manual-ticket-placement`, fast-forward from `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`).
+- Published files in the implementation commit: `specs/038-manual-ticket-placement/plan.md`, `specs/038-manual-ticket-placement/spec.md`, `specs/038-manual-ticket-placement/tasks.md`, and `tests/manual-ticket-placement.test.mjs`.
+- Post-publication evidence note file: this `tasks.md` section only; no runtime/product/protected/canonical/manual/content/doc/package/lockfile/route-inventory files were edited.
+
 Staleness and gates:
 
 - The implementation/test follow-up will create a new effective content head after `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`.
