@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`, new effective content head for `F038-RA-007` `9c72e539d7803a545ad74d78abf3d1f0aec033dc`.
-- Current process status: `F038-RA-007` accepted two current trusted connector P2 threads as one bounded implementation return and was implemented at current/effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`. Prior final Architect validation passed on `2026-06-26T14:18:23Z` and final Analyst validation passed on `2026-06-26T14:25:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but those validations are stale after `F038-RA-007`; finalization/merge is blocked until fresh review/checks and fresh final Architect then Analyst validation pass.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, current pushed/evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`.
+- Current process status: `F038-RA-007` accepted the earlier trusted connector P2 runtime UX findings and was implemented at superseded effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`. `F038-RA-008` remains valid process-memory-correction evidence for Review Agent review `4582775436` / thread `PRRT_kwDOSX65IM6MotmG`. `F038-RA-009` accepts current trusted connector thread `PRRT_kwDOSX65IM6Mqvs_` / discussion `r3484873625` and is implemented locally at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; pushed/evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef` has failing `baseline-checks` because `tests/manual-ticket-placement.test.mjs` still expects the old exact `ManualTicketAppendix` call without the intentional `key` prop. `F038-CI-001` accepts this as a narrow test-contract sync follow-up. Prior final Architect validation passed on `2026-06-26T14:18:23Z` and final Analyst validation passed on `2026-06-26T14:25:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; those validations and the older RA-007 head are stale for merge. Finalization/merge is blocked until the CI follow-up is implemented, fresh review/current-head thread disposition and checks pass, process memory is current, and fresh final Architect then Analyst validation pass.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1382,9 +1382,42 @@ Staleness and gates:
 - Final Architect validation performed by this disposition: `no`.
 - Final Analyst validation performed by this disposition: `no`.
 
-### F038-RA-007 follow-up — discussion_r3484873625
+### F038-RA-008 — `task`
 
+- Disposition date: `2026-06-27`
+- Disposition timestamp: `2026-06-27T01:45:02Z`
+- Disposition type: `task`
+- Source PR: `#204`
+- Source branch/worktree: `codex/038-manual-ticket-placement` / `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`
+- Review Agent review/thread: `4582775436` / `PRRT_kwDOSX65IM6MotmG` / discussion `r3484140325`
+- Pre-evidence-update PR head and RA-007 effective content head: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`
+- Prior effective content head before RA-007: `c32d6d93998feaa03ab371378a067acddf608cb4`
+- Finding: RA-007 code/tests were fixed, but live Architect-owned process memory still required reconciliation to the RA-007 effective content head, stale prior-validation state, and Architect return count.
+- Formal disposition: accepted as a blocking Architect process-memory correction. Architect return count is `9 / 10`.
+
+Required process-memory correction:
+
+- [x] Update `spec.md` live status to the RA-007 effective content head, stale prior validation status, remaining gates, and return count disposition.
+- [x] Update `plan.md` delivery/status and follow-up plan language to record RA-007 complete at the new effective content head and this process-memory-only correction.
+- [x] Update this `tasks.md` process record and final-validation return count/status.
+- [x] Confirm no product/runtime/content/test/docs_project/feature-request changes are required by this disposition.
+
+Remaining gates:
+
+- Assigned implementation workflow must commit and push these Architect-owned process-memory updates.
+- Orchestrator must obtain fresh Review Agent/current-head thread disposition after the evidence update and the `F038-CI-001` required-check follow-up are published.
+- Required checks must be green on the current PR head.
+- Fresh final Architect validation must run before fresh final Analyst validation.
+- Final Architect validation performed by this disposition: `no`.
+- Final Analyst validation performed by this disposition: `no`.
+
+### F038-RA-009 — `task`
+
+- Disposition date: `2026-06-27`
+- Disposition timestamp: `2026-06-27T01:52:34Z`
+- Disposition type: `task`
 - Orchestrator assignment: Implementation Agent for PR `#204`, worktree `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`, branch `codex/038-manual-ticket-placement`, current-head review thread `PRRT_kwDOSX65IM6Mqvs_` / `discussion_r3484873625` on head `647ef3fde21d51dab86f762faf1ff80d4fce181a`.
+- Formal Architect disposition: accepted as a blocking runtime/test follow-up. Architect return count is `10 / 10`.
 - Scope honored: changed only `src/App.tsx`, `tests/e2e/manual-ticket-placement.spec.ts`, and this `tasks.md` evidence. Did not edit protected/canonical/manual content, `feature-request.md`, `spec.md`, `plan.md`, placement data, validation evidence, or scripts.
 - New effective content head after runtime/test commit: `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`.
 - Changed files:
@@ -1396,19 +1429,71 @@ Staleness and gates:
   - `pnpm run validate:manual-ticket-placement`: passed; `460` questions, `460` placements, `31` destination routes, density `1/12/45`, `85` answer-bearing, `375` fallbacks.
   - `git diff --check`: passed.
   - `node scripts/check-feature-memory.mjs --worktree`: initially failed before this tasks evidence was written because product/test paths were dirty without a feature-memory file in the worktree diff; rerun after this tasks update passed.
-- Prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head are stale after this runtime/test change. Fresh review/current-head thread disposition, required checks, final Architect validation, and final Analyst validation remain required before finalization or merge.
+- Prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head are stale after this runtime/test change. The older RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc` is superseded by current effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; `78b54b491c1de2e3e913e81d1eab5ff08499a6ef` is local process-evidence successor. Fresh review/current-head thread disposition, required checks, current process memory, final Architect validation, and final Analyst validation remain required before finalization or merge.
+- Architect return limit: `10 / 10`, reached but not exceeded. Any additional Architect return in this work cycle requires Orchestrator escalation under the repository workflow.
+- Final Architect validation performed by this disposition: `no`.
+- Final Analyst validation performed by this disposition: `no`.
+
+### F038-CI-001 — `task`
+
+- Disposition date: `2026-06-27`
+- Disposition type: `task`
+- Source PR: `#204`
+- Source branch/worktree: `codex/038-manual-ticket-placement` / `/Users/chap/devel/cabadrive-worktrees/038-manual-ticket-placement`
+- Current pushed/evidence head with failed required check: `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`
+- Latest effective content head before this follow-up: `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`
+- Failed required check: `baseline-checks`
+- Failing subtest: `tests/manual-ticket-placement.test.mjs` / `runtime source appends tickets after existing page flows and keeps canonical joins`
+- Root cause: assertion line `427` uses stale exact regex `/<ManualTicketAppendix pageId="intro-road-pandemic" \\/>/u`; `F038-RA-009` intentionally added `key` props to route-end `ManualTicketAppendix` instances, so the source-contract test must be synchronized.
+- Formal Architect disposition: accepted as a narrow implementation/test follow-up. Product behavior change requested: `no`.
+- Architect return count: remains `10 / 10`; this CI-only test-contract sync is folded into the existing dirty process-memory refresh and does not exceed the return limit. If Orchestrator determines workflow requires a new Architect return, the cycle is already at its limit and must escalate rather than record `11 / 10`.
+
+Required implementation package:
+
+- [x] Update `tests/manual-ticket-placement.test.mjs` so the source assertion tolerates and preferably requires the intentional `key` prop on `ManualTicketAppendix` route instances.
+- [x] Preserve source assertions that Introduction, manual-section, and content-flow route calls append `ManualTicketAppendix` after existing page flows.
+- [x] Preserve canonical-join assertions that the runtime appendix joins canonical question IDs/data and cannot source ticket text, answers, translations, images, or correct-answer state from placement mapping data.
+- [x] Record Implementation Agent evidence in this section after the follow-up attempt.
+
+Allowed Implementation Agent files:
+
+- `tests/manual-ticket-placement.test.mjs`
+- `specs/038-manual-ticket-placement/tasks.md`
+
+Current dirty Architect-owned `spec.md`, `plan.md`, and `tasks.md` may be included/published with this follow-up. Do not edit product runtime behavior, protected/manual/canonical content, placement records, validation evidence, generator/validator scripts, durable product docs, `feature-request.md`, `spec.md`, or `plan.md` as Implementation Agent follow-up scope.
+
+Implementation Agent evidence update at `2026-06-27T07:32:11Z`:
+
+- Changed files in this follow-up: `tests/manual-ticket-placement.test.mjs` and this Implementation Agent evidence section in `specs/038-manual-ticket-placement/tasks.md`.
+- Already-dirty Architect-owned files preserved and not edited by Implementation Agent: `specs/038-manual-ticket-placement/spec.md` and `specs/038-manual-ticket-placement/plan.md`.
+- Test/source change: the three `ManualTicketAppendix` source assertions now require the intentional keyed call shapes for `intro-road-pandemic`, `section.id`, and `content.sectionId`; appendix-after-flow coverage and canonical join/no-placement-ticket-data assertions remain in the same subtest.
+- Product behavior change: `no`; no runtime, protected manual, canonical ticket, placement, manifest, evidence, generator, validator, product-doc, `feature-request.md`, `spec.md`, or `plan.md` edits were made by Implementation Agent.
+- Verification:
+  - `node --test tests/manual-ticket-placement.test.mjs`: passed, `16/16`.
+  - `pnpm run validate:manual-ticket-placement`: passed; `460` questions, `460` placements, `31` destination routes, density `1/12/45`, `85` answer-bearing, `375` fallbacks.
+  - `git diff --check`: passed.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed via `specs/038-manual-ticket-placement/{spec,plan,tasks}.md`.
+- Dead end / blocker: `git commit` failed before writing with `fatal: Unable to create '/Users/chap/devel/cabadrive/.git/worktrees/038-manual-ticket-placement/index.lock': Operation not permitted`. The Git worktree metadata is outside the writable sandbox root, so Implementation Agent could not commit or push in this environment.
+- Effective content head after commit: unavailable because commit was blocked by filesystem permissions.
+- Pushed head after push: unavailable because commit was blocked and no push was attempted.
+- Stale validation state: prior final Architect and Analyst validation remain stale. Fresh required checks, review/current-head disposition, final Architect validation, and final Analyst validation remain required before finalization or merge.
+
+Staleness and gates:
+
+- The implementation/test follow-up will create a new effective content head after `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`.
+- Prior effective/current-head evidence, including `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5` and `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`, is stale until this test sync is implemented and required checks are green on the new head.
 - Final Architect validation performed by this disposition: `no`.
 - Final Analyst validation performed by this disposition: `no`.
 
 ## Final Validation Records
 
-Architect return count: `8 / 10`
+Architect return count: `10 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-007 accepted current trusted connector P2 runtime UX findings and was implemented at current/effective content head 9c72e539d7803a545ad74d78abf3d1f0aec033dc. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4, but those validations are stale after F038-RA-007; completion is blocked until fresh review/checks and fresh final Architect then Analyst validation.`
+Process status: `F038-RA-007 accepted earlier trusted connector P2 runtime UX findings and was implemented at superseded effective content head 9c72e539d7803a545ad74d78abf3d1f0aec033dc. F038-RA-008 accepts review 4582775436 / thread PRRT_kwDOSX65IM6MotmG as a preserved process-memory correction. F038-RA-009 accepts current trusted connector thread PRRT_kwDOSX65IM6Mqvs_ / discussion r3484873625 and is implemented locally at effective content head c1d9aaef573f53e99cbe40fb8487e2d8cd433db5; pushed/evidence head 78b54b491c1de2e3e913e81d1eab5ff08499a6ef has failing baseline-checks from a stale ManualTicketAppendix source regex. F038-CI-001 accepts that as a narrow test-contract sync follow-up that will create a new effective content head after c1d9aaef573f53e99cbe40fb8487e2d8cd433db5. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4; those validations are stale for merge. Completion is blocked until the CI follow-up is implemented, fresh review/current-head thread disposition, required checks, current process memory, and fresh final Architect then Analyst validation pass. Architect return count is 10 / 10.`
 
-Final Architect validation passed historically in `F038-FAV-002`. Final Analyst validation also passed historically for the same effective content head and is recorded in `feature-request.md`. Those validations must be rerun after the accepted `F038-RA-007` product/runtime implementation.
+Final Architect validation passed historically in `F038-FAV-002`. Final Analyst validation also passed historically for the same effective content head and is recorded in `feature-request.md`. Those validations must be rerun after the accepted `F038-RA-009` product/runtime implementation at `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, after `F038-CI-001` creates a new effective content head, and after required checks are green on that new head.
 
 ### F038-FAV-002 — final Architect validation pass
 

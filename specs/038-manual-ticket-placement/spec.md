@@ -8,9 +8,9 @@
 - Assigned base: `origin/main` at `4247b0e90ae5799a0875cc3751c96589fef96ef2`
 - Intended delivery: one implementation branch and one PR slice unless Orchestrator records an objective blocker requiring a new latest-main slice
 - Parallel-work rule: preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory
-- Current PR/head verified for follow-up review disposition `F038-RA-007`: `#204` / `ae7eb75d50e96af7256074b2a67d54e01a67d534`
-- Process status: `F038-RA-007 accepted for implementation`; two current trusted connector P2 threads identify runtime UX gaps in the manual appendix. Prior final Architect validation at `2026-06-26T14:18:23Z` and final Analyst validation at `2026-06-26T14:25:23Z` remain historical evidence for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but they are blocked for completion by the current accepted review disposition and become stale for merge authorization if product/runtime code changes.
-- Effective content head before `F038-RA-007`: `c32d6d93998feaa03ab371378a067acddf608cb4`; current head `ae7eb75d50e96af7256074b2a67d54e01a67d534` is the review-disposition starting head supplied by Orchestrator. The next Implementation Agent follow-up must record a new effective content head if it changes product/runtime code.
+- Current PR/head verified for CI follow-up disposition `F038-CI-001`: `#204` / current pushed evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`; latest runtime/test fix effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`
+- Process status: `F038-RA-007` runtime UX implementation is complete but superseded for live effective-head purposes by the `F038-RA-009` appendix-revisit runtime/test fix. `F038-RA-008` remains valid process-memory-correction evidence for review `4582775436` / thread `PRRT_kwDOSX65IM6MotmG`. `F038-RA-009` accepts trusted connector thread `PRRT_kwDOSX65IM6Mqvs_` / discussion `r3484873625` as a runtime/test follow-up and records the local fix at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, with local process-evidence successor `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`. Required check `baseline-checks` failed on `78b54b491c1de2e3e913e81d1eab5ff08499a6ef` because `tests/manual-ticket-placement.test.mjs` still asserts the old exact `<ManualTicketAppendix pageId="intro-road-pandemic" />` source shape after the runtime fix intentionally added `key` props to route-end `ManualTicketAppendix` instances. Prior final Architect validation at `2026-06-26T14:18:23Z` and final Analyst validation at `2026-06-26T14:25:23Z` are historical evidence for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but are stale after RA-007 and the later RA-009 runtime/test change.
+- Current effective content head: `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; current pushed evidence head with failing `baseline-checks`: `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`; superseded RA-007 effective content head: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`; prior effective content head before RA-007: `c32d6d93998feaa03ab371378a067acddf608cb4`. Remaining gates before finalization/merge are the narrow CI test-contract follow-up in `F038-CI-001`, fresh Review Agent/current-head thread disposition, green required checks, current process memory, and fresh final Architect validation followed by fresh final Analyst validation.
 
 ## Goal
 
@@ -703,6 +703,77 @@ Architect validation pass: passed
 Final Architect validation completed at: 2026-06-26T14:18:23Z
 Architect validated effective content head: c32d6d93998feaa03ab371378a067acddf608cb4
 
+### F038-RA-008 Architect disposition
+
+Disposition: `task` — Review Agent review `4582775436` / thread `PRRT_kwDOSX65IM6MotmG` / discussion `r3484140325` is accepted as a blocking process-memory correction.
+
+Reviewed state:
+
+- PR: `#204`;
+- pre-evidence-update PR head and RA-007 effective content head: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`;
+- prior effective content head before RA-007: `c32d6d93998feaa03ab371378a067acddf608cb4`;
+- Review Agent finding: RA-007 code and tests were fixed, but Architect-owned process memory still had stale live status/current-head wording and had not recorded the return count for this follow-up.
+
+Independent Architect disposition:
+
+- `F038-RA-007` implementation was recorded as complete at RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`.
+- Prior final Architect validation on `2026-06-26T14:18:23Z` and final Analyst validation on `2026-06-26T14:25:23Z` validated effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; they are stale for merge authorization after the RA-007 runtime/test change.
+- The required fix was process-memory-only: reconcile live status/current-head wording, preserve the RA-007 effective content head, identify stale prior validations, and record the new return count. No product/runtime/content/test implementation follow-up was required by this disposition.
+
+Architect return count becomes `9 / 10`. This disposition is not final Architect validation.
+
+This process-memory correction remains preserved as historical evidence, but its live-head status is superseded by the later `F038-RA-009` runtime/test follow-up.
+
+### F038-RA-009 Architect disposition
+
+Disposition: `task` — trusted connector thread `PRRT_kwDOSX65IM6Mqvs_` / discussion `r3484873625` is accepted as a blocking runtime/test follow-up.
+
+Reviewed state:
+
+- PR: `#204`;
+- review-thread head: `647ef3fde21d51dab86f762faf1ff80d4fce181a`;
+- local runtime/test fix effective content head: `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`;
+- local process-evidence successor: `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`;
+- superseded RA-007 effective content head: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`;
+- finding: a dense manual appendix could retain expansion/card-mount state across page A -> page B -> page A revisits instead of remounting closed with zero mounted ticket cards.
+
+Independent Architect disposition:
+
+- The finding is accepted as a product/runtime UX bug in the manual appendix disclosure lifecycle.
+- The accepted fix is limited to resetting appendix expansion on route revisits and adding focused Playwright coverage for the revisit path; the recorded implementation touched `src/App.tsx`, `tests/e2e/manual-ticket-placement.spec.ts`, and `tasks.md` evidence only.
+- The new live effective content head is `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`. The earlier RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc` remains historical/superseded evidence, not the current effective head.
+- Prior final Architect and Analyst validations remain stale. Fresh Review Agent/current-head thread disposition, green required checks, current process memory, final Architect validation, and final Analyst validation are required before completion/finalization.
+
+Architect return count becomes `10 / 10`. This disposition is not final Architect validation. The Architect return limit is now reached but not exceeded; any additional Architect return in this work cycle would require Orchestrator escalation under the repository workflow.
+
+### F038-CI-001 Architect disposition
+
+Disposition: `task` — accept the failed `baseline-checks` run on current pushed/evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef` as a narrow implementation/test follow-up, not a product behavior change.
+
+CI root cause:
+
+- `tests/manual-ticket-placement.test.mjs` subtest `runtime source appends tickets after existing page flows and keeps canonical joins` fails at assertion line `427`;
+- the stale exact regex `/<ManualTicketAppendix pageId="intro-road-pandemic" \\/>/u` no longer matches `src/App.tsx`;
+- the mismatch is expected after the accepted runtime fix at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, because route-end `ManualTicketAppendix` instances intentionally include `key` props while preserving the route-end appendix behavior.
+
+Required implementation follow-up:
+
+1. Update only the stale source assertion in `tests/manual-ticket-placement.test.mjs` so the test tolerates and preferably requires the intentional `key` prop on `ManualTicketAppendix` route instances.
+2. Preserve the existing source-contract coverage that Introduction, manual-section, and content-flow route calls append `ManualTicketAppendix` after existing page flows.
+3. Preserve canonical-join assertions that the runtime appendix uses canonical question IDs/data and cannot source ticket text, answers, translations, images, or correctness from placement mappings.
+4. Keep the fix limited to the test contract and implementation evidence; do not alter product runtime behavior, manual/canonical content, placement data, validators, durable product docs, `feature-request.md`, `spec.md`, or `plan.md`.
+
+Allowed Implementation Agent files for this follow-up:
+
+- `tests/manual-ticket-placement.test.mjs`;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+The current dirty Architect-owned `spec.md`, `plan.md`, and `tasks.md` process-memory updates may be included/published with the follow-up. Any test/evidence implementation commit for `F038-CI-001` creates a new effective content head after `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; previous effective/current-head evidence, including `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5` and `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`, is stale until the follow-up is implemented and required checks are rerun green.
+
+Architect return count remains `10 / 10`, reached by `F038-RA-009` and not exceeded. This CI blocker is folded into the current dirty process-memory refresh as a check-failure/test-contract synchronization disposition rather than counted as an additional Architect return. If Orchestrator determines repository workflow requires a new Architect return for this CI-only blocker, the current cycle is at its limit and must escalate under the return-limit rule instead of recording `11 / 10`.
+
+Final Architect validation is not performed by this disposition.
+
 ### F038-IA-001 Architect disposition
 
 Disposition: `task` — accepted owner-approved thematic fallback, implementable.
@@ -990,4 +1061,4 @@ Negative exception tests must prove that validation fails when:
 
 ## Completion Boundary
 
-This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, any exact invariant for `042`, `126`, `390`, `422`, or `430` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, the lean runtime projection is missing/stale/non-minimal or reviewed shards enter the browser bundle, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, any required gate is red, or final Analyst validation has not yet passed. Final Architect validation passed at `2026-06-26T14:18:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, with current head `47cded8f8909d9db044041b033b19bb1a15077d0` as a role/process evidence-only successor. Final Analyst validation remains required before finalization or merge.
+This feature is not complete while any ticket is unmatched, any of the `460` tickets lacks a fresh reviewed topic assignment, any answer-bearing placement fails the conservative self-sufficient-anchor gate, any thematic fallback lacks the mandatory ticket-specific search/candidate/rejection/comparison ledger, any rejected candidate/canonical-answer containment or equivalence contradiction lacks a valid reviewed disposition, any answer-bearing candidate is discarded in favor of generic fallback prose, any thematic fallback is outside its curated topic route or lacks an approved route anchor/override, any exact invariant for `042`, `126`, `390`, `422`, or `430` fails, reviewed-manifest evidence is missing/stale, generator/scorer code can manufacture semantic decisions, the lean runtime projection is missing/stale/non-minimal or reviewed shards enter the browser bundle, any protected manual content has changed, any blocking review thread remains unresolved, process memory is stale, any required gate is red, or fresh final Analyst validation has not yet passed. Historical final Architect validation passed at `2026-06-26T14:18:23Z` and historical final Analyst validation passed at `2026-06-26T14:25:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`; both are stale after RA-007 and the later RA-009 effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`. Fresh Review Agent/current-head thread disposition, green required checks, final Architect validation, and final Analyst validation remain required before finalization or merge.

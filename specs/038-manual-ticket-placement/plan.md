@@ -14,7 +14,7 @@ Use one implementation PR slice on the Orchestrator-assigned isolated worktree/b
 
 One PR is preferred because validator, route inventory, reviewed mapping, runtime join, shared renderer, immutable-content baseline, and browser evidence form one inseparable acceptance gate. Splitting infrastructure from mappings would temporarily permit an incomplete or unvalidated surface and complicate effective-head validation.
 
-For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. Final Architect validation passed at `2026-06-26T14:18:23Z` and final Analyst validation passed at `2026-06-26T14:25:23Z` for that effective content head, but the current trusted connector P2 threads disposed in `F038-RA-007` block completion until implemented and reviewed. Any `F038-RA-007` product/runtime implementation creates a new effective content head and requires fresh Review Agent review, final Architect validation, and final Analyst validation.
+For historical remediation of `F038-RA-005`, PR `#204` used one Implementation Agent in the existing isolated worktree/branch. The semantic corrections and lean runtime projection shared the reviewed shard, manifest, evidence, generator/validator, runtime index, tests, and process memory. That remediation was complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. Final Architect validation passed at `2026-06-26T14:18:23Z` and final Analyst validation passed at `2026-06-26T14:25:23Z` for that effective content head, but those validations are stale after `F038-RA-007` runtime UX implementation and the later `F038-RA-009` appendix-revisit runtime/test fix. The older RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc` is superseded. The current effective content head is `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; current pushed/evidence head is `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`, where `baseline-checks` failed because `tests/manual-ticket-placement.test.mjs` still expects the old exact `ManualTicketAppendix` call without the intentional `key` prop. Finalization/merge remains blocked until the `F038-CI-001` test-contract follow-up is implemented, fresh Review Agent/current-head thread disposition and required checks pass, and fresh final Architect then Analyst validation pass.
 
 If the semantic audit finds another ticket without an answer-bearing anchor, record the audit and choose the closest substantive eligible page under the general owner rule. Stop only when no substantive thematically relevant eligible page exists.
 
@@ -589,7 +589,7 @@ Implementation Agent must keep `tasks.md` current with:
 - evidence that generator/scorer paths cannot create approvals;
 - final audit-derived answer-bearing/fallback counts.
 
-Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before `F038-FAV-002` passed at `2026-06-26T14:18:23Z`, followed by final Analyst validation at `2026-06-26T14:25:23Z`. Current follow-up `F038-RA-007` accepts new runtime UX work, so finalization/merge is blocked until implementation, fresh review, required checks, and fresh final Architect then Analyst validation pass.
+Orchestrator must route every feedback item to Architect. `F038-RA-005` implementation is complete at effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`. `F038-FAV-001` remains a historical failed final-validation attempt from `2026-06-26T12:04:43Z`; its live-current-head, unresolved-thread, and pending-`AI Review` blockers were corrected before `F038-FAV-002` passed at `2026-06-26T14:18:23Z`, followed by final Analyst validation at `2026-06-26T14:25:23Z`. `F038-RA-007` runtime UX work is complete at superseded effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`; `F038-RA-008` remains preserved as process-memory-correction evidence. Current follow-up `F038-RA-009` accepted the appendix-revisit thread and is complete locally at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, making prior final validations stale for merge authorization. Current pushed/evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef` failed `baseline-checks` because of the stale `ManualTicketAppendix` source assertion accepted in `F038-CI-001`. Finalization/merge is blocked until the CI follow-up is implemented, fresh review/current-head thread disposition, required checks, current process memory, and fresh final Architect then Analyst validation pass.
 
 ## F038-RA-007 Follow-up Plan
 
@@ -647,4 +647,69 @@ Verification:
 - `git diff --check`;
 - record exact command results, changed files, the new effective content head, and any dead ends in `tasks.md`.
 
-Staleness rule: any product/runtime/test implementation for `F038-RA-007` creates a new effective content head and makes prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head stale for merge authorization. After implementation, Orchestrator must obtain fresh Review Agent disposition/current-head thread state, verify required checks, and rerun final Architect validation before final Analyst validation.
+Staleness rule: product/runtime/test implementation for `F038-RA-007` created RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc` and made prior final Architect validation on `c32d6d93998feaa03ab371378a067acddf608cb4` and final Analyst validation for that same head stale for merge authorization. The later `F038-RA-009` runtime/test fix supersedes `9c72e539d7803a545ad74d78abf3d1f0aec033dc` as the live effective content head. Orchestrator must obtain fresh Review Agent disposition/current-head thread state, verify required checks and current process memory, and rerun final Architect validation before final Analyst validation.
+
+## F038-RA-008 Process-Memory Correction Plan
+
+Review disposition timestamp: `2026-06-27T01:45:02Z`.
+
+Accepted Review Agent review/thread: `4582775436` / `PRRT_kwDOSX65IM6MotmG` / discussion `r3484140325`.
+
+Starting state: PR `#204`, branch `codex/038-manual-ticket-placement`, pre-evidence-update PR head and RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`; prior effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`.
+
+Disposition: accept as a process-memory correction. RA-007 code/tests were fixed at RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`; no product/runtime implementation follow-up was required by this disposition. The required package was limited to Architect-owned memory:
+
+1. reconcile live status/current-head language in `spec.md`, `plan.md`, and `tasks.md`;
+2. record that prior final Architect and Analyst validations for `c32d6d93998feaa03ab371378a067acddf608cb4` are stale after RA-007;
+3. record remaining gates as fresh Review Agent/current-head thread disposition, green required checks, current process memory, final Architect validation, then final Analyst validation;
+4. increment Architect return count to `9 / 10`;
+5. do not perform final Architect validation.
+
+This process-memory correction remains preserved as historical evidence at Architect return count `9 / 10`, but its live-head status is superseded by the later `F038-RA-009` runtime/test follow-up.
+
+## F038-RA-009 Appendix-Revisit Follow-up Plan
+
+Review disposition timestamp: `2026-06-27T01:52:34Z`.
+
+Accepted trusted connector thread: `PRRT_kwDOSX65IM6Mqvs_` / discussion `r3484873625`.
+
+Starting state: PR `#204`, branch `codex/038-manual-ticket-placement`, review-thread head `647ef3fde21d51dab86f762faf1ff80d4fce181a`; superseded RA-007 effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`.
+
+Disposition: accept as a runtime/test follow-up. The local fix is complete at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, with local process-evidence successor `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`. The accepted package resets manual appendix expansion on dense-page revisits and adds focused browser regression coverage. The remaining `F038-RA-009` package was limited to Architect-owned memory; the later `F038-CI-001` blocker separately allows the narrow test-contract sync in `tests/manual-ticket-placement.test.mjs` plus `tasks.md` evidence:
+
+1. record `PRRT_kwDOSX65IM6Mqvs_` / discussion `r3484873625` as accepted and implemented by the local runtime/test fix;
+2. treat `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5` as the current effective content head;
+3. preserve `9c72e539d7803a545ad74d78abf3d1f0aec033dc` as the superseded RA-007 effective content head;
+4. preserve `F038-RA-008` process-memory correction evidence as historical, not live current-head status;
+5. increment Architect return count to `10 / 10`;
+6. do not perform final Architect validation.
+
+The assigned implementation workflow may commit and push these Architect-owned artifact updates together with the existing local runtime/test and evidence commits. Any additional Architect return would exceed the limit and require Orchestrator escalation under the repository workflow.
+
+## F038-CI-001 Baseline-Checks Follow-up Plan
+
+CI disposition timestamp: `2026-06-27T00:00:00-03:00`.
+
+Starting state: PR `#204`, branch `codex/038-manual-ticket-placement`, current pushed/evidence head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`, latest effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`.
+
+Required check failure: `baseline-checks` failed on head `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`.
+
+Root cause: `tests/manual-ticket-placement.test.mjs` subtest `runtime source appends tickets after existing page flows and keeps canonical joins` has a stale exact regex at assertion line `427` expecting `<ManualTicketAppendix pageId="intro-road-pandemic" />`. The `F038-RA-009` runtime fix intentionally added `key` props to `ManualTicketAppendix` route instances, so the source assertion is stale while the intended runtime contract is unchanged.
+
+Implementation requirements:
+
+1. Change `tests/manual-ticket-placement.test.mjs` so source assertions tolerate and preferably require the intentional `key` props on route-end `ManualTicketAppendix` instances.
+2. Preserve assertions that Introduction, manual-section, and content-flow route appendices remain after existing page flows.
+3. Preserve canonical-join source assertions: runtime appendix calls must continue joining by canonical question IDs/data, not by placement-provided ticket text, answers, translations, images, or correct-answer fields.
+4. Do not change product runtime behavior, manual/canonical content, placement records, validation evidence, generator/validator scripts, durable product docs, `feature-request.md`, `spec.md`, or `plan.md`.
+
+Allowed implementation files:
+
+- `tests/manual-ticket-placement.test.mjs`;
+- `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+
+The current dirty Architect-owned `spec.md`, this `plan.md`, and `tasks.md` may be included/published with the implementation follow-up. The follow-up creates a new effective content head after `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; prior effective/current-head evidence, including `78b54b491c1de2e3e913e81d1eab5ff08499a6ef`, is stale until the test sync is implemented and required checks are green on the new head.
+
+Architect return count remains `10 / 10`. This CI-only test-contract sync is folded into the existing dirty process-memory refresh and does not record an additional Architect return. If Orchestrator concludes the repository workflow requires a new Architect return for this blocker, the cycle is already at the return limit and must be escalated rather than exceeded.
+
+Final Architect validation is not part of this follow-up.

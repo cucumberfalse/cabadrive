@@ -424,9 +424,9 @@ test("runtime source appends tickets after existing page flows and keeps canonic
   const appSource = readFileSync("src/App.tsx", "utf8");
   const runtimeSource = readFileSync("src/data/manualTicketPlacement.ts", "utf8");
   assert.match(appSource, /<CanonicalStudyTicketBlock questionId=\{ticket\.questionId\} topicTicket=\{ticket\} testIdPrefix="materials-ticket"/u);
-  assert.match(appSource, /<ManualTicketAppendix pageId="intro-road-pandemic" \/>/u);
-  assert.match(appSource, /<ManualTicketAppendix pageId=\{section\.id\} \/>/u);
-  assert.match(appSource, /<ManualTicketAppendix pageId=\{content\.sectionId\} \/>/u);
+  assert.match(appSource, /<ManualTicketAppendix key="intro-road-pandemic" pageId="intro-road-pandemic" \/>/u);
+  assert.match(appSource, /<ManualTicketAppendix key=\{section\.id\} pageId=\{section\.id\} \/>/u);
+  assert.match(appSource, /<ManualTicketAppendix key=\{content\.sectionId\} pageId=\{content\.sectionId\} \/>/u);
   assert.match(appSource, /expanded && <div className="manual-ticket-list">/u);
   assert.match(runtimeSource, /questionIds\.sort\(\(left, right\) => left\.localeCompare\(right\)\)/u);
   assert.match(runtimeSource, /manual-ticket-placement\.runtime\.json/u);
