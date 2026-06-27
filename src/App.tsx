@@ -1165,8 +1165,7 @@ const manualTicketDirectRenderLimit = 6;
 
 function ManualTicketAppendix({ pageId }: { pageId: string }) {
   const questionIds = manualTicketQuestionIdsByPage.get(pageId) ?? [];
-  const [expandedPageId, setExpandedPageId] = useState<string | null>(null);
-  const expanded = expandedPageId === pageId;
+  const [expanded, setExpanded] = useState(false);
 
   if (questionIds.length === 0) return null;
 
@@ -1189,7 +1188,7 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
         <details
           key={pageId}
           className="manual-ticket-disclosure"
-          onToggle={(event) => setExpandedPageId(event.currentTarget.open ? pageId : null)}
+          onToggle={(event) => setExpanded(event.currentTarget.open)}
           data-testid="manual-ticket-disclosure"
         >
           <summary>Показать билеты ({questionIds.length})</summary>
@@ -1777,7 +1776,7 @@ function PandemiaVialPrototypeView() {
         </div>
         </div>
       </article>
-      <ManualTicketAppendix pageId="intro-road-pandemic" />
+      <ManualTicketAppendix key="intro-road-pandemic" pageId="intro-road-pandemic" />
     </>
   );
 }
@@ -1904,7 +1903,7 @@ function IntroductionArticleView({ section }: { section: IntroductionArticleSect
           ))}
         </div>
       </article>
-      <ManualTicketAppendix pageId={section.id} />
+      <ManualTicketAppendix key={section.id} pageId={section.id} />
     </>
   );
 }
@@ -2947,7 +2946,7 @@ function ManualGuideSectionContentView({ content }: { content: ManualGuideSectio
         })}
         </div>
       </article>
-      <ManualTicketAppendix pageId={content.sectionId} />
+      <ManualTicketAppendix key={content.sectionId} pageId={content.sectionId} />
     </>
   );
 }

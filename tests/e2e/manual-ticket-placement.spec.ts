@@ -35,14 +35,16 @@ test("manual route appends canonical tickets and mounts dense cards only after o
     };
     win.__manualTicketTransientMounts = [];
     const observer = new MutationObserver(() => {
-      const destinationAppendix = document.querySelector(
-        '[data-testid="manual-ticket-appendix"][data-page-id="app1-safety-elements"]'
-      );
-      const destinationDisclosure = destinationAppendix?.querySelector('[data-testid="manual-ticket-disclosure"]');
-      const isDestinationClosed = destinationDisclosure && !destinationDisclosure.hasAttribute("open");
-      const destinationMountedCards = destinationAppendix?.querySelectorAll(".materials-ticket").length ?? 0;
-      if (isDestinationClosed && destinationMountedCards > 0) {
-        win.__manualTicketTransientMounts?.push(`closed destination mounted ${destinationMountedCards} rich cards`);
+      for (const pageId of ["app1-safety-elements", "ch3-right-of-way"]) {
+        const destinationAppendix = document.querySelector(
+          `[data-testid="manual-ticket-appendix"][data-page-id="${pageId}"]`
+        );
+        const destinationDisclosure = destinationAppendix?.querySelector('[data-testid="manual-ticket-disclosure"]');
+        const isDestinationClosed = destinationDisclosure && !destinationDisclosure.hasAttribute("open");
+        const destinationMountedCards = destinationAppendix?.querySelectorAll(".materials-ticket").length ?? 0;
+        if (isDestinationClosed && destinationMountedCards > 0) {
+          win.__manualTicketTransientMounts?.push(`${pageId} closed disclosure mounted ${destinationMountedCards} rich cards`);
+        }
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
@@ -59,7 +61,26 @@ test("manual route appends canonical tickets and mounts dense cards only after o
   await expect(nextDisclosure).not.toHaveAttribute("open", "");
   await expect(nextAppendix.getByText(practiceStatusLabel)).toBeVisible();
   await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(0);
-  const transientMounts = await page.evaluate(() => {
+  let transientMounts = await page.evaluate(() => {
+    const win = window as typeof window & {
+      __manualTicketTransientMounts?: string[];
+    };
+    return win.__manualTicketTransientMounts ?? [];
+  });
+  expect(transientMounts).toEqual([]);
+  await nextDisclosure.getByText("Показать билеты (45)").click();
+  await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(45);
+
+  await page.evaluate(() => {
+    window.location.hash = "#manual-section-ch3-right-of-way";
+  });
+  const returnAppendix = page.getByTestId("manual-ticket-appendix");
+  const returnDisclosure = returnAppendix.getByTestId("manual-ticket-disclosure");
+  await expect(returnAppendix).toHaveAttribute("data-page-id", "ch3-right-of-way");
+  await expect(returnAppendix).toHaveAttribute("data-ticket-count", "35");
+  await expect(returnDisclosure).not.toHaveAttribute("open", "");
+  await expect(returnAppendix.locator(".materials-ticket")).toHaveCount(0);
+  transientMounts = await page.evaluate(() => {
     const win = window as typeof window & {
       __manualTicketTransientMounts?: string[];
       __manualTicketStopObserver?: () => void;
@@ -68,8 +89,6 @@ test("manual route appends canonical tickets and mounts dense cards only after o
     return win.__manualTicketTransientMounts ?? [];
   });
   expect(transientMounts).toEqual([]);
-  await nextDisclosure.getByText("Показать билеты (45)").click();
-  await expect(nextAppendix.locator(".materials-ticket")).toHaveCount(45);
 });
 
 test("fallback and image-backed tickets preserve canonical content", async ({ page }) => {
