@@ -8,8 +8,8 @@
 - Parallel work may exist. Preserve all sibling worktrees, branches, commits, PRs, dirty diffs, and process memory.
 - Do not edit existing manual text/image content files. If a protected-file edit appears necessary, stop that edit and record feedback for Architect.
 - Do not mark the feature complete with an unmatched or falsely classified ticket. Answer-bearing placement is preferred; a non-answer-bearing placement is permitted only as a fully audited `owner-approved-thematic-fallback` under `spec.md`.
-- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `ae7eb75d50e96af7256074b2a67d54e01a67d534`, effective content head before `F038-RA-007` `c32d6d93998feaa03ab371378a067acddf608cb4`.
-- Current process status: `F038-RA-007` accepted two current trusted connector P2 threads as one bounded implementation return. Prior final Architect validation passed on `2026-06-26T14:18:23Z` and final Analyst validation passed on `2026-06-26T14:25:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but finalization/merge is now blocked until the accepted runtime UX fixes are implemented, reviewed, checked, and fresh final Architect then Analyst validation pass.
+- Current follow-up assignment target: PR `#204`, branch `codex/038-manual-ticket-placement`, current head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`, new effective content head for `F038-RA-007` `9c72e539d7803a545ad74d78abf3d1f0aec033dc`.
+- Current process status: `F038-RA-007` accepted two current trusted connector P2 threads as one bounded implementation return and was implemented at current/effective content head `9c72e539d7803a545ad74d78abf3d1f0aec033dc`. Prior final Architect validation passed on `2026-06-26T14:18:23Z` and final Analyst validation passed on `2026-06-26T14:25:23Z` for effective content head `c32d6d93998feaa03ab371378a067acddf608cb4`, but those validations are stale after `F038-RA-007`; finalization/merge is blocked until fresh review/checks and fresh final Architect then Analyst validation pass.
 
 ## T001 — Confirm Prerequisites And Baseline
 
@@ -1350,8 +1350,8 @@ Implementation Agent evidence:
 
 - Implementation completed at: `2026-06-26T21:02:24Z`
 - Starting head at assignment and implementation start: `ae7eb75d50e96af7256074b2a67d54e01a67d534`
-- New effective content head after commit: `pending until commit creation; Implementation Agent final response records the actual pushed SHA`
-- Current pushed head after commit: `pending until push`
+- New effective content head after commit: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`
+- Current pushed head after commit: `9c72e539d7803a545ad74d78abf3d1f0aec033dc`
 - Changed implementation files:
   - `src/App.tsx`: replaced the post-commit `useEffect([pageId])` dense-disclosure reset with page-scoped expansion state (`expandedPageId === pageId`), so an opened dense appendix cannot carry into the first render of another `pageId`; added a visible appendix-level `practiceContentStatusLabel()` status row before direct cards or dense disclosure.
   - `tests/e2e/manual-ticket-placement.spec.ts`: added direct manual-route status assertions before opening dense tickets; added a `MutationObserver` guard during dense-to-dense hash navigation proving the closed destination appendix never mounts destination `.materials-ticket` rich cards before user expansion.
@@ -1388,7 +1388,7 @@ Architect return count: `8 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-007 accepted current trusted connector P2 runtime UX findings at PR head ae7eb75d50e96af7256074b2a67d54e01a67d534. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4, but completion is blocked until F038-RA-007 implementation, fresh review/checks, and fresh final Architect then Analyst validation.`
+Process status: `F038-RA-007 accepted current trusted connector P2 runtime UX findings and was implemented at current/effective content head 9c72e539d7803a545ad74d78abf3d1f0aec033dc. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4, but those validations are stale after F038-RA-007; completion is blocked until fresh review/checks and fresh final Architect then Analyst validation.`
 
 Final Architect validation passed historically in `F038-FAV-002`. Final Analyst validation also passed historically for the same effective content head and is recorded in `feature-request.md`. Those validations must be rerun after the accepted `F038-RA-007` product/runtime implementation.
 
