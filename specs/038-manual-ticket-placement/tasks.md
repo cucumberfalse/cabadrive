@@ -1493,13 +1493,47 @@ Staleness and gates:
 - Final Architect validation performed by this disposition: `no`.
 - Final Analyst validation performed by this disposition: `no`.
 
+### F038-RA-010 — `blocked-escalation`
+
+- Disposition date: `2026-06-27`
+- Disposition type: `blocked-escalation`
+- Orchestrator assignment: Architect-only disposition for PR `#204`, current PR head `06663f79d7011feb22e4688557adc162856f2c7a`, after `F038-CI-001`.
+- Source review thread: `PRRT_kwDOSX65IM6MtZ8i` / `discussion_r3485853526`, `src/App.tsx` line `1173`, current-head AI Review failure.
+- Finding: manual appendices render `CanonicalStudyTicketBlock` with only `questionId`, while `sourceConflictNoteRu` is rendered only through `topicTicket?.sourceConflictNoteRu`. Therefore Руководство manual cards can omit trusted Materials warnings for canonical tickets that have source-conflict notes in `content/guide/topic-study-guide.ru.json`.
+- Independent source confirmation:
+  - `TopicGuideTicketBlock` passes `topicTicket={ticket}` to `CanonicalStudyTicketBlock`.
+  - `ManualTicketAppendix` maps each manual `questionId` to `<CanonicalStudyTicketBlock questionId={questionId} testIdPrefix="manual-ticket" key={questionId} />`.
+  - `CanonicalStudyTicketBlock` renders the warning block only when `topicTicket?.sourceConflictNoteRu` is present.
+  - The current implementation has no manual-side `questionId -> sourceConflictNoteRu` join, so manual cards can show canonical answer/source footer without the existing warning context carried by Materials.
+- Architecture disposition on the merits: the finding is valid and would normally be accepted as a narrow runtime/test implementation task named `F038-RA-010`.
+- Workflow disposition: do not authorize implementation in this work cycle because Architect return count is already `10 / 10`, reached by `F038-RA-009`. Accepting this as another blocking implementation return would require recording `11 / 10`, which exceeds the repository workflow limit. Per AGENTS, the correct outcome is Orchestrator escalation or a new feature/request cycle rather than inventing authority to continue.
+- Current status of earlier unresolved relevant threads:
+  - `PRRT_kwDOSX65IM6Mqvs_` / `discussion_r3484873625`: remains architecturally addressed by `F038-RA-009` at effective content head `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`; no additional Architect task is opened here.
+  - `PRRT_kwDOSX65IM6Mq6zR` / `discussion_r3484935838`: stale source-regex failure is addressed by `F038-CI-001` at effective content head `b08e2a85b40df0b2a6cc28970287c846b721767b` and evidence-only successor `06663f79d7011feb22e4688557adc162856f2c7a`; no additional Architect task is opened here.
+- If Orchestrator escalates into a new authorized cycle, the narrow candidate implementation package should:
+  1. keep `Материалы` behavior unchanged;
+  2. make manual cards surface existing source-conflict notes by joining the topic-guide note by canonical `questionId`, or by an equivalent explicit adapter field;
+  3. avoid changing canonical ticket content, placement mapping records, protected manual content, translations, explanations, images, source metadata, answer order, or correct-answer identity;
+  4. preserve the shared renderer contract and keep manual appendices read-only.
+- Candidate allowed implementation files for a future authorized package:
+  - `src/App.tsx`;
+  - `tests/manual-ticket-placement.test.mjs` and/or focused Playwright coverage if runtime-visible warning behavior is asserted there;
+  - `specs/038-manual-ticket-placement/tasks.md` for Implementation Agent evidence.
+- Candidate verification for a future authorized package:
+  - add or update focused tests proving a manual appendix card for a known conflict-note question renders the same warning note available in Materials;
+  - prove a no-note manual card does not render an empty/stale warning block;
+  - run `node --test tests/manual-ticket-placement.test.mjs` or the focused equivalent, `pnpm run validate:manual-ticket-placement`, `git diff --check`, and any Orchestrator-required preflight/check suite.
+- Freshness rule: any future runtime/test fix for this finding would create a new effective content head after `b08e2a85b40df0b2a6cc28970287c846b721767b` and would stale current review/check/final-validation evidence. Fresh Review Agent/current-head disposition, green required checks, current process memory, final Architect validation, and final Analyst validation would be required before finalization or merge.
+- Final Architect validation performed by this disposition: `no`.
+- Final Analyst validation performed by this disposition: `no`.
+
 ## Final Validation Records
 
 Architect return count: `10 / 10`
 
 Analyst return count: `0 / 5`
 
-Process status: `F038-RA-007 accepted earlier trusted connector P2 runtime UX findings and was implemented at superseded effective content head 9c72e539d7803a545ad74d78abf3d1f0aec033dc. F038-RA-008 accepts review 4582775436 / thread PRRT_kwDOSX65IM6MotmG as a preserved process-memory correction. F038-RA-009 accepts current trusted connector thread PRRT_kwDOSX65IM6Mqvs_ / discussion r3484873625 and is implemented locally at effective content head c1d9aaef573f53e99cbe40fb8487e2d8cd433db5; pushed/evidence head 78b54b491c1de2e3e913e81d1eab5ff08499a6ef has failing baseline-checks from a stale ManualTicketAppendix source regex. F038-CI-001 accepts that as a narrow test-contract sync follow-up that will create a new effective content head after c1d9aaef573f53e99cbe40fb8487e2d8cd433db5. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4; those validations are stale for merge. Completion is blocked until the CI follow-up is implemented, fresh review/current-head thread disposition, required checks, current process memory, and fresh final Architect then Analyst validation pass. Architect return count is 10 / 10.`
+Process status: `F038-RA-007 accepted earlier trusted connector P2 runtime UX findings and was implemented at superseded effective content head 9c72e539d7803a545ad74d78abf3d1f0aec033dc. F038-RA-008 accepts review 4582775436 / thread PRRT_kwDOSX65IM6MotmG as a preserved process-memory correction. F038-RA-009 accepts thread PRRT_kwDOSX65IM6Mqvs_ / discussion r3484873625 and is implemented at effective content head c1d9aaef573f53e99cbe40fb8487e2d8cd433db5. F038-CI-001 is implemented at effective content head b08e2a85b40df0b2a6cc28970287c846b721767b with evidence-only successor 06663f79d7011feb22e4688557adc162856f2c7a. Current-head AI Review thread PRRT_kwDOSX65IM6MtZ8i / discussion r3485853526 is valid on the merits, but opening F038-RA-010 as an implementation return would exceed the recorded Architect return limit of 10 / 10; this is recorded as a workflow escalation/blocker rather than an authorized implementation task. Prior final Architect validation passed at 2026-06-26T14:18:23Z and final Analyst validation passed at 2026-06-26T14:25:23Z for effective content head c32d6d93998feaa03ab371378a067acddf608cb4; those validations are stale for merge. Completion/finalization is blocked until Orchestrator resolves the return-limit escalation, any authorized follow-up runs through role-appropriate implementation/review, required checks are green, process memory is current, and fresh final Architect then Analyst validation pass. Architect return count is 10 / 10.`
 
 Final Architect validation passed historically in `F038-FAV-002`. Final Analyst validation also passed historically for the same effective content head and is recorded in `feature-request.md`. Those validations must be rerun after the accepted `F038-RA-009` product/runtime implementation at `c1d9aaef573f53e99cbe40fb8487e2d8cd433db5`, after `F038-CI-001` creates a new effective content head, and after required checks are green on that new head.
 
