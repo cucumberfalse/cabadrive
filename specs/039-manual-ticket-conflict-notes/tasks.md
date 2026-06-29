@@ -131,7 +131,9 @@ Evidence:
   - `tests/manual-ticket-placement.test.mjs`: added note lookup/source contract tests.
   - `tests/e2e/manual-ticket-placement.spec.ts`: added browser regression for required-documents manual notes and Materials reachability.
   - `specs/039-manual-ticket-conflict-notes/tasks.md`: recorded implementation evidence.
-- Commit/effective content head evidence: pending commit and push.
+- Effective content head after implementation commit: `a9d480ea8192267b892f6d93ce78aa66ba9b47aa`.
+- Pushed head after implementation push: `a9d480ea8192267b892f6d93ce78aa66ba9b47aa` (`origin/codex/038-manual-ticket-placement` observed at the same SHA after push).
+- This follow-up process-memory update records commit/push evidence only and does not change product behavior, tests, runtime files, content, or source contracts.
 
 ## Allowed Implementation Files
 
