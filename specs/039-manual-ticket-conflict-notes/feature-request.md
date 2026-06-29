@@ -205,3 +205,14 @@ No external research was needed. The review blocker, active PR code, and local r
 This intake is ready for Orchestrator handoff to Architect.
 
 The controlling intent is narrow: unblock PR `#204` by making manual appendix ticket cards surface the same existing `sourceConflictNoteRu` warnings that `Материалы` already shows for the same canonical question IDs, while preserving all canonical content, protected manual content, placement mappings, `Материалы` behavior, local-first runtime constraints, required checks, and role/process boundaries.
+
+## Analyst Final Validation
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-06-29T19:05:17-03:00
+- Analyst validated effective content head: a9d480ea8192267b892f6d93ce78aa66ba9b47aa
+- Final Architect validation completed first at: 2026-06-29T18:53:31-03:00 for the same effective head.
+- Current/pre-validation head reviewed: 94ede4d1a97598d41d48b90011bce43300b12b95
+- Evidence-only successor rule: 0a698e, 389213e, 94ede4d, and the Analyst validation evidence commit are process/role evidence-only successors over a9d480e, to be checked by Orchestrator current-head guard.
+- User-facing acceptance expectations are satisfied; no Analyst return is needed.
+- Analyst return count remains 0/5.
