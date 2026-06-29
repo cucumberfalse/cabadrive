@@ -1,0 +1,1993 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-24T15:00:00Z",
+  "effectiveBaseSha": "4247b0e90ae5799a0875cc3751c96589fef96ef2",
+  "protectedSources": [
+    {
+      "path": "content/manuals/gcba-manual-vehiculo-4-ruedas-2023/interactive-guide/section-registry.chapters-1-2.json",
+      "sha256": "3484f0b0c1de551504b58079ecfac90c6954f1b5f8afbc2149fd8aaf95249571"
+    },
+    {
+      "path": "src/data/manual-sections/app1-other-required-safety-elements.ts",
+      "sha256": "0654c5217414c050a71ee59373c087718fe59e4cabc50f35fb6c7c8d19b45b25"
+    },
+    {
+      "path": "src/data/manual-sections/app1-recommended-safety-elements.ts",
+      "sha256": "2b0bf2cd970c73534fa368a1581c8310a71c0b81780b11820a6f7c7fb1737910"
+    },
+    {
+      "path": "src/data/manual-sections/app1-safety-elements.ts",
+      "sha256": "65bcea35eda9ef2a79104994c3e8bcad0090784f704c1697cbe1dee531f3bca8"
+    },
+    {
+      "path": "src/data/manual-sections/app2-driving-factors.ts",
+      "sha256": "acda78ac197cf74334fd999e2479dd50842c84c9cc477c1185c6d944c3fdc1a9"
+    },
+    {
+      "path": "src/data/manual-sections/app2-highways-hospitals.ts",
+      "sha256": "cfaa789a4b5d7c24f525a68530d3bfe6e64aa572d1acab2d85ccf909ab16e2c2"
+    },
+    {
+      "path": "src/data/manual-sections/app2-safe-driving.ts",
+      "sha256": "384f510c913d697bda4df1ab1361a3945e7b15a9b913455a66c9b6ffdab6a908"
+    },
+    {
+      "path": "src/data/manual-sections/app2-safety-elements.ts",
+      "sha256": "5b0f86a33eec725ed63b81ac45779ba4cf6dba141052a6034ce95ff48a172330"
+    },
+    {
+      "path": "src/data/manual-sections/app2-social-responsibility.ts",
+      "sha256": "4d3a4588b64eac79ec86b83d0384466edb3ee41804a8295a4d54b71a151560d8"
+    },
+    {
+      "path": "src/data/manual-sections/app3-cargo-driver-profile.ts",
+      "sha256": "af4e88df91b570cfe3c36e034aa5c6a04fba879888c1853d99f684b65320ea72"
+    },
+    {
+      "path": "src/data/manual-sections/app3-driving-factors.ts",
+      "sha256": "dcef40c609f0559ba54e63759fc184b64a5a7319d93b02734fc98324e99a4eb8"
+    },
+    {
+      "path": "src/data/manual-sections/app3-highways.ts",
+      "sha256": "29281cf4b264e33e889c4c92befb61b5b4960a4570ff1534e83c7fdbcdddb523"
+    },
+    {
+      "path": "src/data/manual-sections/app3-safe-driving.ts",
+      "sha256": "80c1d9822462ba9629a149415eb363379aed96ff20a9a25ad29462ed7cba1967"
+    },
+    {
+      "path": "src/data/manual-sections/app3-safety-elements.ts",
+      "sha256": "3f12429633376d5538d13cc5a5d4701f430b2363f96427a692b802ee92cab78f"
+    },
+    {
+      "path": "src/data/manual-sections/app3-social-responsibility.ts",
+      "sha256": "b7719873a0c0d5026e43102bdaf08e66b510a2e879735e40cd52fa0b23b2ec7d"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-horizontal.ts",
+      "sha256": "561d2dcaa6b5334be6176e533829880b925ae3a287644b8cde7ae859d2783096"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-informational.ts",
+      "sha256": "7651df8fde3c62d6a691c001d2bd72de23ea5ae231dbcb00b07009365e24dd10"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-regulatory.ts",
+      "sha256": "76ad7aa8edac28b780999adb64f2ce12b8cd61993692728b5ecf4da166f2d91a"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-temporary.ts",
+      "sha256": "d6829ef5d116892d3973344e1cca78bce400b9a65f6f70d6d01964c4f3477539"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-traffic-lights.ts",
+      "sha256": "6eec28f61198d87014fb670d8967ae7d0166c7ea30cac2ef1d75f5d758171e1c"
+    },
+    {
+      "path": "src/data/manual-sections/app4-signs-warning.ts",
+      "sha256": "0eab2342df4b1b78d07adcb51398a6702b755ad59e279d19ac76e94b6a3e487a"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-bicycle.ts",
+      "sha256": "0b0c8142596c0278abb765a7b0c0b219d34889263f3323446e899e163594e7db"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-cities-for-people.ts",
+      "sha256": "cf3b4dbdc2ce8a569fc05db957c7436e012db28dab4cdd31d42109de5a3f2b43"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-pedestrian-priority.ts",
+      "sha256": "2b349bb38d176d18cc12778c13eb344fb9f24db87278ceeb93aa615baf7d77c0"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-public-transport-system.ts",
+      "sha256": "d839c06ad6f54d22778076f849fb9c0e499ed8621e02a6f1bbae65dc0c804720"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-shared-trip.ts",
+      "sha256": "1653fe9410d075570023384fec3ffbeb2f6f1afa16ab0d6f1f6e091d933fffd3"
+    },
+    {
+      "path": "src/data/manual-sections/ch1-sustainable-mobility.ts",
+      "sha256": "7992132de71078fab4a1d85197893894372f49608dff04e03511f4d3f2518ddb"
+    },
+    {
+      "path": "src/data/manual-sections/ch2-incident-obligations.ts",
+      "sha256": "056c58cb646cff72abc841e14f4b7d8ad44593635d3a6d6d79c9262a61cb5edf"
+    },
+    {
+      "path": "src/data/manual-sections/ch2-legal-responsibility.ts",
+      "sha256": "3f11338788df031ff94dc31811f930c9698476c5521dffb2e540915fd2a4681a"
+    },
+    {
+      "path": "src/data/manual-sections/ch2-required-documents.ts",
+      "sha256": "e7c7db38bb26860ac7b79579da09d8f93fbcf9d9448f4fac2d8c4c0e2b770884"
+    },
+    {
+      "path": "src/data/manual-sections/ch2-scoring.ts",
+      "sha256": "be7363beaf045830f690bed4b9c409df695a81a5d3db1d59ec0d08b69ef06b48"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-adverse-conditions.ts",
+      "sha256": "8dc701cebab46b80e627f3285ea964d6e51adcd80b8684a06f4d7f83fad5f582"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-highways.ts",
+      "sha256": "bea405b5757e495b491df6c944dc9a279fc4da8519b5f59ed177d2a82019eb5f"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-lights.ts",
+      "sha256": "7e85fb8893ca1037e287f7825cd7aabcd97ec1d941e343e17011684a86c8a302"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-overtaking.ts",
+      "sha256": "63966ddafcaf80018765d6797df25578f81c364eb5ab9859bc4b8429093520ff"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-priority-of-rules.ts",
+      "sha256": "6936ddea7237d4b2626016f03b1cfe380fb06695ce818e0a6c14139ce0110837"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-right-of-way.ts",
+      "sha256": "335fb012970b3699300a3f5fe1afcd5adb0cfc9aab2ead2f802167645139e1b5"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-speed.ts",
+      "sha256": "3cea5d8501fe9374fd69e74e36ca40bc93d5807b45c7b121e0e8d6eead366452"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-stopping-parking.ts",
+      "sha256": "0d9b471563b829ee2e6024edbb4b309bec9a1ef01d652546266eeecc12465f12"
+    },
+    {
+      "path": "src/data/manual-sections/ch3-turns.ts",
+      "sha256": "418cb0b79d91a483728cee8955b6483d509e2e4105c634592c425a5d3ac23e6f"
+    },
+    {
+      "path": "src/data/manual-sections/ch4-alcohol-drugs.ts",
+      "sha256": "2a25f4275ab499e2160a99431062f32f10e78c13d66c1fe5c0a51b081961d077"
+    },
+    {
+      "path": "src/data/manual-sections/ch4-distractions.ts",
+      "sha256": "ef8850f4ef1045f42dafb38311d2d9097ff79163514ce5f6259b4dd560a214cb"
+    },
+    {
+      "path": "src/data/manual-sections/ch4-sleep-fatigue.ts",
+      "sha256": "1b2537e5b35cdf26b531c633e4ffa0e34ded94109af280a142ead2352e69f719"
+    },
+    {
+      "path": "src/data/manual-sections/ch4-stress.ts",
+      "sha256": "12dc71bc427990ae3a1cac55fcc5f8713e1ace28933f4a6c24701d4b6e371a8a"
+    },
+    {
+      "path": "src/data/manual-sections/ch5-anticipatory-efficient-driving.ts",
+      "sha256": "b899b16b3498ca26e7167bbff86e2e277ddeeb8560a1cb55633ba071889e2fd6"
+    },
+    {
+      "path": "src/data/manual-sections/ch5-attitude-types.ts",
+      "sha256": "d7488fcc8ee272b1b3b6887f39b7d7bdf2db494a5b15400a875bc2c2991712b3"
+    },
+    {
+      "path": "src/data/manual-sections/ch5-equal-society.ts",
+      "sha256": "aa546603161dcb032d2ffc5f962d668b7b5c9f9ff9f6ca10a8fa4e05c248df20"
+    },
+    {
+      "path": "src/data/manual-sections/ch5-gender-violence-prevention.ts",
+      "sha256": "ab869d0e27d61766b8ff7aa6ff570d9082245bd6a6285a074757eb0a94b9c677"
+    },
+    {
+      "path": "src/data/manual-sections/front-categories.ts",
+      "sha256": "7fc86aa3deae7b51af5b7f65304ae4b9ee9a7d5ec5bd42619b27529094dcdeb5"
+    },
+    {
+      "path": "src/data/manual-sections/front-glossary.ts",
+      "sha256": "c3fb0acbd39fb5e10eb38d6d60f2eb6469eab9eb37cff845e0b7f9b34bd1ce0e"
+    },
+    {
+      "path": "src/data/manual-sections/front-presentation.ts",
+      "sha256": "736ba6dbe231cb6c18a2e352ed5180b19b7a9bb6432ce7b59f36590d663a550a"
+    },
+    {
+      "path": "src/data/manual-signs/app4SignEntries.json",
+      "sha256": "7103fdf4aa2dc3fbd7f540308c32f2500f0789f3bb9651d591f95a21b2cad191"
+    },
+    {
+      "path": "src/data/manualGuide.ts",
+      "sha256": "0575ffa4965159bcdd23cda16b694f45888cd28432013d03ba6281d1e7caa870"
+    },
+    {
+      "path": "src/data/pandemiaVialSection.ts",
+      "sha256": "47cc297635a60305b476bbc505884f7e80a96ad0416e65b1b9f9ab91c489509e"
+    }
+  ],
+  "referencedImages": [
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/pages/page-015.jpg",
+      "sha256": "9e25a91abe857426dfcc978e361a2511a6ab7a0c144ccc97f757c72ffe4b1496"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/chaleco-reflectivo-source-as-is.jpg",
+      "sha256": "f4935b08d31512a4b06e39b00766cc3a5036c9f9cab4be3442ab7a83a7904581"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-other-required-safety-elements/matafuegos-source-as-is.jpg",
+      "sha256": "b8e5bb0ccea12bf6b4be881fff17cd4da3c935557cfa670d8e39cf49ea05376e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/blind-spot-source-as-is.jpg",
+      "sha256": "b5457a99da41bbb3f46985072e39641c20ee408844bd34f83051eefa55e2ed35"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/headrest-position-transferred-infographic.png",
+      "sha256": "e1d0495817ba757b9d4f5acd1862ddb911170ee0094859f19548910e61edf066"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/mirror-orientation-photo-source-as-is.jpg",
+      "sha256": "97482f9f579ce4a8e0fede2789a20466319adaf7004680497c58411d995bee48"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/sri-types-transferred-infographic.png",
+      "sha256": "9df0c6892d1b78aa14bc04915125070b4679c93885fc09194f4476ee751d087b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app1-safety-elements/tire-manufacturing-tread-life-source-as-is.jpg",
+      "sha256": "1ee27aab0a0def7d6b0cd859adabb5f604889e1da604db54bf5cb0d8de7bdbf9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-highways-hospitals/hospital-map-source-as-is.png",
+      "sha256": "742f7e66213866c7e07861b9a93ab7fdd8c00e8b384e96a239b1b1cb712ca1d0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/headrest-combined-diagram-source-as-is.jpg",
+      "sha256": "cd08c88256c94afec04b3a9b601d56d9c71743702e7d17106af2d918946b174c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/mirror-orientation-photo-source-as-is.png",
+      "sha256": "d9ca7e643deb5f90a0e3f2f292f3782fa9beea7ddd1cf389052350cb53150787"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app2-safety-elements/seatbelt-use-photo-source-as-is.png",
+      "sha256": "4646bf488a80173353615c03fab752b18ec992a2a505e7e12d214dbcf44be203"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-driving-factors/body-posture-source-as-is.png",
+      "sha256": "223ba6d9395a9ace10a41bcb75b2d304660a4456c67aa32a65b4f8b6ca6e9b8e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app3-safety-elements/seatbelt-source-as-is.png",
+      "sha256": "416018dbd9b0f0e4fd001bea44d1be0d04a065165b7774b7904c88f21fda1741"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-003-linea-de-separacion-de-circulacion-no-debe-ser-t.png",
+      "sha256": "b66e565162c67aef9e1f681051b9da4773e0a61ed5e30506b5e496881aa7d3dc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-004-lineas-continuas-y-discontinuas-paralelas-linea-.png",
+      "sha256": "f9070d4f9e6f4a26e40b6e0b23d76b5df1753686567b08336f8087b857df5b5a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-005-lineas-de-separacion-de-sentido-de-circulacion-o.png",
+      "sha256": "9aa5e7cf870e1f5723149d0db369d8669b196290df6379e75be054705e494161"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-006-lineas-divisorias-de-carriles-con-corrientes-de-.png",
+      "sha256": "c5e9071c03b90eeeea099154787a659a9007f216b8c14d36f6c2830e1f30ae6b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-007-linea-de-separacion-de-sentido-de-circulacion-in.png",
+      "sha256": "d213124cdd5c46de5fc01c034a7455fc10c79464d85433cef50fa68f45fbfdb6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-008-linea-de-carril-exclusivo-y-carril-preferencial-.png",
+      "sha256": "77b5ddb3be5de9e96caf078cc0a1055544ff2d310f4766f50e33515e52e0c304"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-009-linea-de-separacion-de-sentido-de-circulacion-en.png",
+      "sha256": "a34cb6a99462f111af2eee2eec9d30b2d14d5cab6634dc7cc9555a0e5dcb8a7a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-010-lineas-de-borde-de-calzada-catalog-entry.png",
+      "sha256": "a497a7ad80d49ace4efa673fbf346c4c83d6e38c445cafaa548e0b26ba57c5c7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-012-linea-de-detencion-catalog-entry.png",
+      "sha256": "6bbf8e0200b5e1550dfd7c31a77ac4c115f37bb1efc2e8c068afbbe7adec4fc8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-013-senda-peatonal-o-senda-para-cruce-de-ciclistas-p.png",
+      "sha256": "8f82c08593d9e5e1f383322a13560b5b58667f3ca9688c3e125fe3a7c6339871"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-014-senda-peatonal-prohibido-detener-o-estacionar-ve.png",
+      "sha256": "a2163276bff98b2c667a44aa8bc35c1d7195f100f0b911620f9ef871890dc341"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-015-senda-peatonal-o-senda-para-cruce-de-ciclistas-l.png",
+      "sha256": "6d77cb52976b1c2877cf141df201d51235fe3242234deb2211506002dbf60f3d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-016-senda-peatonal-con-linea-de-frenado-previa-catal.png",
+      "sha256": "9d17417a9a5d4d57797cb9a4358329a9db2525a44ae0f9cce32da7547725d647"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p195-017-lineas-auxiliares-para-reduccion-de-velocidad-di.png",
+      "sha256": "2bcfa0567d26aa32fd03b4da834df8fa7d1efa9dc294c56fa03211e59ac338b2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-002-marcas-canalizadoras-de-transito-e-isletas-para-.png",
+      "sha256": "3459f316152149fbc5050f9d9a4fc3b32ecb8c8b933cc8e6cc0e52ffddc323bd"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-003-flechas-indicadoras-de-circulacion-dentro-del-ca.png",
+      "sha256": "30e7ff5fa1d461a66a759113a0840d4824f90c0d49f213fbdbc03714870f21b7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-004-marcas-canalizadoras-de-transito-e-isletas-para-.png",
+      "sha256": "5135f9bb204f24827b21d53eebfcef8cfc7243f1d6e92be2a09aa6d38dc2e138"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-005-pare-obligacion-de-detener-totalmente-la-marcha.png",
+      "sha256": "8691910d7279d0a312ab0587daa7b9c9480c05493c650f427c220daac128e15a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-006-espacios-destinados-a-estacionamiento-diagonales.png",
+      "sha256": "ce1a472eb760aa47f39252dc06ae7642ec0fbabcf00b70b97e9e5da6576b0d16"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-007-cordones-amarillo-prohibicion-de-estacionar-pudi.png",
+      "sha256": "5f539c95d447214a27a66e8d3fd37206538a9c5298ff5bc326093deb9d513da6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-008-espacios-destinados-a-estacionamiento-bicicleta.png",
+      "sha256": "7487eade6b04455e0287c63f5adc88f8a082f1dad0fb7ce80b4e42e766f64df9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-009-tachas-no-reflectivas-catalog-entry.png",
+      "sha256": "6aaab5a105cdc215f110fbdb0ccd22ad79775b131a1ca6fceac1674a4eb81175"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-010-espacios-restringidos-al-estacionamiento-catalog.png",
+      "sha256": "4c53e3c074ce41b612ce6a2330b2df1930eda4c1981d7e5f664a94bc0635a54a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-011-tachas-reflectivas-catalog-entry.png",
+      "sha256": "72b9bbf3078de3596b3faf42c15fae39a3e253b2c2aba0d331f1338f5a91b081"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-012-ceda-el-paso-velocidad-maxima-carril-exclusivo-p.png",
+      "sha256": "878ec35f0933b5b34d3736fe4869ff5af51de0e3c19316b64a243678cf5b1892"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-013-delineadores-canalizan-o-guian-al-transito-y-des.png",
+      "sha256": "0612d0871eea4a621d579a02e8808a7ede49d8355c57175ab3ec329b69733b8b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-014-advertencia-de-cruce-ferroviario-catalog-entry.png",
+      "sha256": "64fb31abd43221f4f99771c85a2680282610cc2b5dffa9fcfd0ad7d73d09969c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-015-para-niebla-si-se-ve-una-max-40-km-h-si-se-ven-d.png",
+      "sha256": "75b7bfa73105e170670c478cd8b68351611304453353423ce5b4626138e007b3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/individual-3x/app4horizontal-p196-016-separadores-fisicos-de-transito-catalog-entry.png",
+      "sha256": "108e151dc219b40e6598b5cddb95abc310e924e751722ed92683572dd882fb96"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-195-source-crop-as-is.jpg",
+      "sha256": "7c8499e5bae22c9a4d2dd96d1fb1694a68bd078a6d76b31872e105dc1b23360f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-horizontal/marking-sheet-196-source-crop-as-is.jpg",
+      "sha256": "192dcdd2cac449aec658bb1fae51a66095ad4f051b049ca338f2d12608aa13ab"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-003-comienzo-de-autopista-catalog-entry.png",
+      "sha256": "23418c34c3fc31d9fe8369bd89a8313273ad0943847a3a276ebce55685b04020"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-004-fin-de-autopista-catalog-entry.png",
+      "sha256": "e0ce09b7ee4d7699b3384b793c31f3590611fc2bd74fd6839e83470dc5b38ecc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-005-indicadora-de-utilizacion-de-carriles-catalog-en.png",
+      "sha256": "cc1fc9e8e74ada5973b56a6552651d5e058dcdbffd7bcc81541ca2504a45b6b9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-006-camino-o-calle-sin-salida-traza-en-t.png",
+      "sha256": "ab9d3590dc92d1c7f0ba9e46349a01ad35f6cbce479263cff60259245d6ab241"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-007-camino-o-calle-sin-salida-traza-lateral.png",
+      "sha256": "a719cfee0354acd62905e3114a9cc435805da2cfbb615f6d7729cc3f41eecaba"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-008-camino-o-paso-transitable-catalog-entry.png",
+      "sha256": "28fb0b793f08ebf8e9ca6be2441e679fcaf3d6fe60f2afc9e975b2acfa703660"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-009-velocidades-maximas-permitidas-catalog-entry.png",
+      "sha256": "6b7d50d04cb691d3a15af6596dc0faf86656ed00c3292ae8bec80cd0a388c9d5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-010-esquema-de-recorrido-catalog-entry.png",
+      "sha256": "bb0917db21c926c3f6d8c5c9697ef277361b4f958361065ec852d5a906cbb24d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-011-desvio-por-cambio-de-sentido-de-circulacion-cata.png",
+      "sha256": "693eda707fed275241755f2ef18646d6b097d1a7b8d34deecfbc55bb268ab7c8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-012-estacionamiento-permitido-catalog-entry.png",
+      "sha256": "d922bc6b3a1212d0c5eb67a437fbb7b31925acc194b02f7633948b252ce5a482"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-013-estacionamiento-permitido-a-45-o-90.png",
+      "sha256": "c004baeb9c2391f51365dc77573143bec55a067899689e94e9f95223fb57eba9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-014-estacionamiento-permitido-motos-a-45.png",
+      "sha256": "a6760548b563ff85ad2914ddf8d2528306a3b2d64c67864a2a1885042c64d3cc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-015-estacionamiento-ordenado-verde-45.png",
+      "sha256": "61da10531a65997306def4cab92b60b98648041694334ec5d3aa49357046cef5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-016-estacionamiento-ordenado-naranja-45.png",
+      "sha256": "06c3b529963ba5c5e3f7d1ca148994b2dde8277a2c528fd9a528e037a0e64d85"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-017-estacionamiento-ordenado-verde-45-inferior.png",
+      "sha256": "5913544c78bf935b0ef34b7cf1a48d46517b143357163faec7c0a263b8faa77b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-018-estacionamiento-ordenado-naranja-45-inferior.png",
+      "sha256": "8815e1ae23f3a452f3b64d4192d3406b961d653201f71882e508491a8fa54944"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-019-estacionamiento-ordenado-verde-90.png",
+      "sha256": "26e965af48d05b1ba13aafbe8cf23278ea86b7cad907f7602151c8eed082672d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-020-estacionamiento-ordenado-naranja-90.png",
+      "sha256": "980dfba028528102e0eb294543343fdb28219cb1181c1b9a7639eb592fddef28"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-021-estacionamiento-ordenado-verde-90-derecha.png",
+      "sha256": "f62e775b0c0abcffc93f6df74d261f214828c5a6aec7a45138412d913ed8a602"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-022-estacionamiento-ordenado-e-naranja.png",
+      "sha256": "3e7b996d8a82486bc5e329bfd221633e455d57665a200d9159fb56076d240210"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-023-estacionamiento-ordenado-s-verde.png",
+      "sha256": "455aaf3653e77aa468f7b1b8eb0b33b8f0c9adfd77f5090c86d2d66311f67559"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-024-estacionamiento-ordenado-p-naranja.png",
+      "sha256": "f77eeb11378a427b4615094c26427b386463c03d539f4a490fc9e33538ac6470"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-025-permitido-girar-derecha.png",
+      "sha256": "4351273b822ccef33cd95176a8c98ee3df582b2f39a57e53f299646b399db500"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-026-permitido-girar-izquierda.png",
+      "sha256": "8a01b4732130004aa881543a7f80168811d991ac6166cc25d4ca62f2fcde782e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-027-direcciones-permitidas-derecha.png",
+      "sha256": "a80c412ed8525d0595476c8b335ab44c62db2b3ee88a9f849556197c9008e548"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-028-direcciones-permitidas-izquierda.png",
+      "sha256": "5d2e4c5eb6fc5a07364b95fa57c8361f65315763d63a9bb866a5ec0974044128"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-029-direcciones-permitidas-igual-sentido-o-derecha.png",
+      "sha256": "d6057b5479481c05a23a0ad204202d5970664170126bc1a8ddcd4f5164ef2110"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-030-direcciones-permitidas-igual-sentido-o-izquierda.png",
+      "sha256": "5f02f0700dbb49fa82d5ee05d8c3af84d67561d9ee50c83788d76ef6cc542025"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p189-031-direcciones-permitidas-ambas-direcciones.png",
+      "sha256": "4a27ac88870f7db1ad9a3fabc052eeedf38f1de2623bc1b85fc0642873cc8c4b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-001-direcciones-permitidas-bifurcacion.png",
+      "sha256": "19ddd8ba9eb341e0171db878a7d5ced9efbaa2c7d44896f86c1ce36ddb930f21"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-002-direcciones-permitidas-derecha-e-izquierda.png",
+      "sha256": "6ad567672019d1cf8092bc79f6e4518ccb200ef7402a5ea3a58cc619d67641e8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-003-direcciones-permitidas-giro-en-u.png",
+      "sha256": "b708b742f81407cba561728632f4682bd720bbf2ceb52214fb48649937bbb173"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-004-camara-de-control-electronico-catalog-entry.png",
+      "sha256": "1911abb902cc4a72b492185937d188b50d79d1b6c9164ef63ea20d6b09830645"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-005-fin-de-camino-peatonal-a-100-m.png",
+      "sha256": "926e341f888af639c2b642d65b732d33c460b8b32cb9fa13d52ccb45c253a957"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-006-fin-de-camino-peatonal-catalog-entry.png",
+      "sha256": "7812112b943dba477ef432d30e02da77ae93503ac89f525e6863c6c163f14a6e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-007-cruce-peatonal-derecha.png",
+      "sha256": "1577af8e286858e5df6e368718bdfa24aab971b7da07b15c80695833ddfd1db7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-008-cruce-peatonal-izquierda.png",
+      "sha256": "4b7aec745b1f0db2b81a2b405eb9622bf86bca1df5a10e1e8a572b22b1a125f2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-009-bidireccionales-en-ciclovia-catalog-entry.png",
+      "sha256": "4be09e55e71aaed3de2ea0d4a4b6af0dddf641cb6295000c1c55c1fd02a51a70"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-010-proximidad-de-ciclovia-catalog-entry.png",
+      "sha256": "8916bfec1d845cedc5b7a02e5fc204a7477aa4cea543210c489ab4188c26b9d9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-011-descenso-de-la-bicicleta-catalog-entry.png",
+      "sha256": "44e8f4b03b4adbc511a5507c4f750fee6e115d142954de5a34068be0da00441b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-012-finalizacion-de-la-ciclovia-catalog-entry.png",
+      "sha256": "57885f08d294ec76ba51457ab96eb909c597f7c38e780d718b6aaa3d4ddf13bd"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-013-advertencia-de-escuela-catalog-entry.png",
+      "sha256": "42ac28355e2b90d948dc58a178e5876d18a626032f275fb36e0cffaaef3ab556"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-014-advertencia-general-catalog-entry.png",
+      "sha256": "ce99b576cdd922f29d09ccfcd3e63e448091ee89c77f63316a224c0c342e1491"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-016-ruta-panamericana-catalog-entry.png",
+      "sha256": "0c76555da55f28d22e4484381dce4769a44c06b74dda3035b6015d5971652a9a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-017-ruta-nacional-catalog-entry.png",
+      "sha256": "b0350491b14c67058983a93acda371df05fbba0f8f5e5be023efe0224a58764a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-018-ruta-provincial-catalog-entry.png",
+      "sha256": "137bb357d7b979e05ff0b0f495610e7a415253127545b297a9acec5a7d95ab12"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-019-nomenclatura-urbana-placa-de-calle.png",
+      "sha256": "8d62573d1aefba0d2110126afce3e4042f86a22eaef493450e96bde2bb1145ec"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-020-nomenclatura-urbana-flecha-urbana.png",
+      "sha256": "20084915a2677a4d2d5c5ce8fd08abdb29d87d467527ec4bd3e5f89da91bcea1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-021-identificacion-de-region-y-localidad-catalog-ent.png",
+      "sha256": "53a2bebefa58b69026d7656928e5fd2cd0e43c45358f4a04b5c71d5bea581724"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-022-orientacion-en-caminos-principales-y-secundarios.png",
+      "sha256": "c9bb3b1d5d9c4b123927ce8be62bd46975723087c764cf5698d2bb39c2c7ff9b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-023-orientacion-en-caminos-secundarios.png",
+      "sha256": "dffb4b58d010658b79f98245e2e21c6132e8be2682d2508c2664f86d2a6ab893"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-024-comienzo-o-fin-de-zona-urbana-catalog-entry.png",
+      "sha256": "0478bdaa2767f79e9fb5ad4b9284d2ffffc90f7e15e69ad333515fdb485e193b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-025-identificacion-de-jurisdiccion-o-accidente-catal.png",
+      "sha256": "6725d0df2346347d00a4551e18e1e7929a10e502fe234864b2c1bf30867fc8ad"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-026-mojon-kilometrico-catalog-entry.png",
+      "sha256": "887f864d8a907b7ed19c654722ede205cd56ce62328a7888ef07c923ddab88ff"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p190-027-nomenclatura-de-autopista-catalog-entry.png",
+      "sha256": "edd500b0aa4c0c37d1bd1b83d27bbe56c49c817e8ac18509c0febde42bfc1083"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-002-puesto-sanitario-catalog-entry.png",
+      "sha256": "a589312bc362ad4c4dfe15f81bb72afe42ef96436356659f332bcd76e803d629"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-003-servicio-telefonico-catalog-entry.png",
+      "sha256": "cd29bab006eeda56a42f345ff69d899d48c0ca59dcdc0d0b720634a39577cc3d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-004-estacion-de-servicio-catalog-entry.png",
+      "sha256": "0b92fe1e5c055de5514da92a6622a096b638f43f9e15dc49ec0b2b915229557e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-005-teleferico-catalog-entry.png",
+      "sha256": "597e7c359bdaab46f65ba3df5c4b97642867f0736c5d236070196f524d0afebc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-006-servicio-mecanico-catalog-entry.png",
+      "sha256": "00792a3ce8015ddd8b58509bd3d1d40689936169b7fc830511ecdb02070dcb51"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-007-restaurante-catalog-entry.png",
+      "sha256": "de9610fef299fc627414a1bb161bb65038674b405cdf1f96eacec6569d01f96c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-008-aeropuerto-catalog-entry.png",
+      "sha256": "81df09d42cc87f6c94d7b595c3538cdabacdc85829aa1ebd9012324487bd8f0c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-009-gomeria-catalog-entry.png",
+      "sha256": "d9d6696e2bf43a7769ad4ccfcf43e814c9ace745af2e70a721821aed885bce00"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-010-estacionamiento-catalog-entry.png",
+      "sha256": "7d340491235925bbc898b7683d1934a4fd244fee74ef645df065852d7336fb3b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-011-punto-panoramico-catalog-entry.png",
+      "sha256": "47a9ead875fa9035c4a75e8384ceb965a54b49596667ef3c43d46f37f96c7331"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-012-plaza-catalog-entry.png",
+      "sha256": "f1e3a18e2d2bec3a81d49604e30536ba830b0a44f7558d3f6058d1aec657dbe5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-013-correo-catalog-entry.png",
+      "sha256": "4ba27690ac7b5a44cc8ab5a37f9a2d316d8a5ffbd61179477fe3b2985134b54d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-014-estacionamiento-de-casas-rodantes-catalog-entry.png",
+      "sha256": "208b7f96df18cc08424a2b29490ae0d9142ba3efe222dbc649008945db42e650"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-015-museo-catalog-entry.png",
+      "sha256": "57e0ebd2bccccb81e807d194b7eee6e7c0d1cfdc539f5eeec719912bbd625de3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-016-policia-catalog-entry.png",
+      "sha256": "8c2ad527a70786b0446b4442793ac1a3f0b93f19845ede2a37c791aa94dd06e2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-017-zona-de-detencion-transporte-publico-de-pasajero.png",
+      "sha256": "243aa9cad1dc33f48f3180a174b998129ec824b43119a6debaa07f58ec2c272b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-018-taxi-catalog-entry.png",
+      "sha256": "1c89dcb5462892f368db5596fbf9489f0eaa3b3ea7ac30f499603ccc36122dba"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-019-terminal-de-omnibus-catalog-entry.png",
+      "sha256": "e63488b0ebba06d2eff2dfcb3fde3350dd83de43d341276576fd59d4f979ecb1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-020-estacion-de-ferrocarril-catalog-entry.png",
+      "sha256": "9b992c88caba8fd8986ba52cb72cd21878e2d18de03802562faa1644bb8e03ad"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-021-teatro-catalog-entry.png",
+      "sha256": "200fa7f05f17282aa3d4059d77573dfae4855982251c643466a0dc5cad2ee5f8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-022-turismo-catalog-entry.png",
+      "sha256": "d84c0dae6011b7febb83cfbd896b35d00b6c15e6babef5101d9beec56a9c4be8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-023-institucion-religiosa-catalog-entry.png",
+      "sha256": "5037d4a019f2f60a7c02eaa2521e80d67ee1f0debae121266bfd576b9eb9adda"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-024-escolares-ascenso-y-descenso.png",
+      "sha256": "619d56677d394ab8c15ad930bb80c17563a0bc2cc82684141cd83fc4e2c48492"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-025-escolares-circular-o-subir-al-colectivo.png",
+      "sha256": "40fde07396544e2b790cd763f530773329a01127955f87dbd963c66aee202453"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-026-personas-con-movilidad-reducida-ascenso-y-descen.png",
+      "sha256": "966adc6ab29e10f6cb6cab657c1c57e828f5dab80f1d2c46bdf8e5ea4ea13319"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-028-evite-accidentes-estacione-lejos-de-la-calzada-c.png",
+      "sha256": "af73012845dc1c6bca58951aae7cf755c809d9127e0e252471fc49c952faecf4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-029-destruir-senales-es-un-delito-catalog-entry.png",
+      "sha256": "9d97ffb0c372ec3cb2723d5ecea732ff74a7b09e241a88cc106a27d1fa8e2581"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-030-evite-encandilar-catalog-entry.png",
+      "sha256": "3ad28e7094847c30e8a15e25c5eec091a1a8562e6e943d4e027f0e1e3282a754"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-031-no-se-adelante-sin-advertir-catalog-entry.png",
+      "sha256": "8c90d036a7d952c15145229c77e20914af7cd036024707fa7f40e2ddef7fa54c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-032-transite-dentro-de-su-carril-catalog-entry.png",
+      "sha256": "193eb5c1d037ba56fc466b975af0a243b707a2455f16d977dc0e5d4cc81e4f2b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-033-no-adelante-en-curvas-y-puentes-catalog-entry.png",
+      "sha256": "171cf122ff305659252f9828b728d2953016cf24b17eb5408ca5a766f578e091"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-034-adelante-por-la-izquierda-catalog-entry.png",
+      "sha256": "e44a5ff0fc4d5135ea77ee6850cf698c0264419d1b665806fa9f0ec352d8eb72"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-035-respete-las-senales-catalog-entry.png",
+      "sha256": "dc512e62ce3872d55cdc9b795ce84c54905c357ec5ad6b7c39b5f5f47cb758b6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p191-036-en-conmemoracion-a-una-victima-de-transito-estre.png",
+      "sha256": "43ce01a2dfc77e3e67f520d5fb68bb29853ae2ca1c3a7fb84601c101f161f45d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/individual-3x/app4informational-p192-001-en-memoria-de-una-victima-de-transito-estrella-a.png",
+      "sha256": "dfd23861a731629be1e26c963d148e6137d0174e84e24a299e17a298be6c3856"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-189-source-crop-as-is.jpg",
+      "sha256": "c08493cf711fa2bd30a789a6b387913abc05b9da81cfa3944648d5c8279c1df3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-190-source-crop-as-is.jpg",
+      "sha256": "fb4b0738bd26cf08621f83bae547cea5f806622cc8a2ff73b65c140b160c7cd3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-191-source-crop-as-is.jpg",
+      "sha256": "4b31f6df98f4a94646b881cbee1347b6ffc4980feefcfefd48babb80475b8c3b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-informational/sign-sheet-192-source-crop-as-is.jpg",
+      "sha256": "31c98b1fdd5b39bf0de1d9020db4ac3dee4513f9261c91640e19e7099b65ef70"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-01-source-as-is.jpg",
+      "sha256": "d6a784a157b9f4822dab33a9cd56fb7bda3dfb415283cb5c2acf0a731d7b5ef9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-02-source-as-is.jpg",
+      "sha256": "1661401f0b8ce8036cab1e489e67ad29be05bfd78d695b396d18b67083230be6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-03-source-as-is.jpg",
+      "sha256": "ba8b2b3dca9b02e564fe0f4d463d36449b748ddb63e8ad7163eb29624e65eea3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/anexo-regulatory-panel-04-source-as-is.jpg",
+      "sha256": "93a4a1c7267b4ad8122c944c0cfaa420aa3dc7be8b39c6107e72903f77b9c868"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-003-no-avanzar-catalog-entry.png",
+      "sha256": "f875db1c340f91c7156d85eda789af817d55607e10449732ca24a6570636026a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-004-contramano-catalog-entry.png",
+      "sha256": "bfb98e583e7aceb814d4948e141f3d574b840165c6325bc9bf83ad80f0ef81ec"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-005-no-circular-automovil.png",
+      "sha256": "a1b5cf5b0abeb39c595c8a7a8f0d8e536cd90f092ec95997a79b4b98a381f545"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-006-no-circular-moto.png",
+      "sha256": "561d88684214f18a76b3f3f910f8e3c610aaa0f2e73c80ff0f6f510d12e6f757"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-007-no-circular-bicicleta.png",
+      "sha256": "824345ad71d8cccf07556e18acdcb814ecd3b501c29cff05fbdccb7159787231"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-008-no-circular-camion.png",
+      "sha256": "d12e1e23fc5123bed45e8f7baeaa33f288558a3c03742d718764915b13d28238"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-009-no-circular-acoplado.png",
+      "sha256": "1a870c68cf9a5733d14e07917e10529743421f1582c2604359f7ae59f999f584"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-010-no-circular-peaton.png",
+      "sha256": "335ec22cc9e196080681363d2fb808379594c8928539924e0dfba60c88510a86"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-011-no-circular-carro-de-traccion-animal.png",
+      "sha256": "916200dba1f13395c940a3696e1b358fd3a3448262db3832ec7e3d3d26320938"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-012-no-circular-jinetes.png",
+      "sha256": "409f2906b77db77a7b7155e11069aa1153d7224f24f9e84d78330e4a72402683"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-013-no-circular-carro-a-mano.png",
+      "sha256": "d3be5fd12756c92e3f56d9012761c2014e9450aa7fbd12ae7d0602dc42e521b8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-014-no-circular-tractor-agricola.png",
+      "sha256": "1792a0a846f2e3b2d8170e997df475288f6348939af4ec3e8575d98d7354e204"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-015-no-girar-izquierda.png",
+      "sha256": "58e4a2095dbd2bd111ea12adfc23d8f71c27b6aee63a7cb03398f4408a779ff3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-016-no-girar-derecha.png",
+      "sha256": "503b1561bce54f7dbcf1facc697e45a8c77cee9d366f45b98f89dbdb959287a6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-017-no-girar-en-u-catalog-entry.png",
+      "sha256": "c7a4fef2990ce43f0fb25f4813eeb578e643d1949d48e89c38d30a0c7fbf7237"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-018-no-adelantar-catalog-entry.png",
+      "sha256": "214643930d5f4da9479f6ec95e24c5aa4109f3501ffef8baf1e7511f0994ab31"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-019-no-ruidos-molestos-catalog-entry.png",
+      "sha256": "8b38e0c51e69555fbb1ce07da5f8a1fbd498c168af24a7c2ca1a83ead702725b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-020-no-estacionar-catalog-entry.png",
+      "sha256": "207fdb2058afd098226463e7d48c74a1ae5ae2af6714261e5892b45219cae360"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-021-no-estacionar-acarreo-de-infractores-placa-horar.png",
+      "sha256": "44ffa749fe30598e1bba58d77862b338e0daf1b37b2068a052e0b423b1281ff1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-022-no-estacionar-acarreo-de-infractores-placa-horar.png",
+      "sha256": "dda0768312773accfd83e6e90ce574c52aa725790ec1e4ab11014b301d193670"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-023-no-estacionar-entre-discos.png",
+      "sha256": "3a672906709b979219fe7f5142d4c4e6acd372065478d1b28e177f0ed75b0816"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-024-no-estacionar-entre-aceras.png",
+      "sha256": "a2af4cd0ad53d794cd6857f352d8aa36553773d5a4b8d436779751dfcdb69aba"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-025-no-estacionar-zona-de-caudales-flecha-derecha.png",
+      "sha256": "a6f9242f5036d6616ef038b4f50bb371d7de454eacdc0ec600543f8ab6f4958f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-026-no-estacionar-zona-de-caudales-flecha-izquierda.png",
+      "sha256": "09bd8189c297599ee101c1e4aa6980d6319fd9cb64e068893680d89f47030fef"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-027-no-estacionar-ni-detenerse-catalog-entry.png",
+      "sha256": "da83e96eac80e66fb233333992ae689adb2c699690df3bd619d0a00c23f08778"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-028-no-estacionar-ni-detenerse-sobre-la-ciclovia.png",
+      "sha256": "cc94800e64e074c7c4c06afe35b99eb4c78dd8efb7b6211481c88db268ca9be5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p185-029-no-cambiar-de-carril-catalog-entry.png",
+      "sha256": "9cf0b84ec889f482997ef1cf93c68f48e2e5a1349c89d05d06e4c0cda653fc50"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-002-limitacion-de-peso-catalog-entry.png",
+      "sha256": "832b070561f7dc0761811990b804d9f629d92d08bd7c90b5b06bbbcefe7a8c1e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-003-limitacion-de-peso-por-eje-catalog-entry.png",
+      "sha256": "b551cb67ae6536ea5911bf7d3bf4e5ea25012b4c201ed001798f3ec82fdf6f15"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-004-limitacion-de-altura-catalog-entry.png",
+      "sha256": "50c26628501127e288b662071c7eb0c4f98e353b8f7cf19619d0f5baac778878"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-005-limitacion-de-ancho-catalog-entry.png",
+      "sha256": "0e6fa530353acc371b3a4617469049f873e92f36602b93f73f433c02d78dc9d3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-006-limitacion-de-largo-de-vehiculo-catalog-entry.png",
+      "sha256": "caa9d62173a766c8041c2ade3ce44972e46256dc06219654d26d22cab2bd9996"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-007-limite-de-velocidad-maxima-catalog-entry.png",
+      "sha256": "e3500cb1761eb38a1a994cab6a3d2b3cb4f8b02cb3f9ddbb174741c261986f06"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-008-limite-de-velocidad-minima-catalog-entry.png",
+      "sha256": "7b627fa4620afd6a8ac2caa9ed76b104eaaa5a8cd3a10596bceca59eee7ba16e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-009-estacionamiento-exclusivo-catalog-entry.png",
+      "sha256": "8f9d68ce6f3b2a4e29a9d33a236a594fe1edc5377ee4d4f913998f6a863d5f28"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-010-estacionamiento-exclusivo-cajon-azul.png",
+      "sha256": "e8725d00f16a4721f6b02c6281c4e9e14d87eed66ad550a35cda125afe64ea4e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-011-estacionamiento-exclusivo-discapacitados.png",
+      "sha256": "723ded07ad92563cdad49ce0d9cc082aec4fc3ac38865b95235b0a40551f97ee"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-012-circulacion-exclusiva-transporte-publico.png",
+      "sha256": "8d93bed025781297aa1a361c32a66eab263a744342c7a95eb72b22bdabde0b14"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-013-circulacion-exclusiva-moto.png",
+      "sha256": "1a916f327eef11dc00f5a3b8a065e743014bdf7ecd0a94c41ad34a9cb27affd2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-014-circulacion-exclusiva-bicicleta.png",
+      "sha256": "7b3d0979f85dc350246f986385c7d4aed4d99d432f52a5da3cc67c33d30b5488"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-015-circulacion-exclusiva-jinetes.png",
+      "sha256": "6e300485a7eeaadf3d16a798c77729a0fd88979d92a7b08ab36fd0d7c56e3d51"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-016-circulacion-exclusiva-peatones.png",
+      "sha256": "033af3f1cc01bfa0bbc9c9bd05c2dd407dbdcb187195c15620370ccfdee32227"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-017-circulacion-exclusiva-convivencia.png",
+      "sha256": "de7d5882fe3c5e599a222b9c9b9dbaa837204c6a300d0377667db8ca8a3ad79a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-018-uso-de-cadenas-para-nieve-catalog-entry.png",
+      "sha256": "f575d390d85aed48db6f5ad8f54c7281af99571a430253e57014b0e21fd39a05"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-019-giro-obligatorio-derecha.png",
+      "sha256": "368ea7e0f65418ca8db4f5e852ae331e8a560a8d8809e4dd10e97df870a91523"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-020-giro-obligatorio-izquierda.png",
+      "sha256": "508a28d4b8cd07ad9d050ddd1675b12b6779db007a47107c359dd775c0f9485f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-021-sentido-de-circulacion-derecha.png",
+      "sha256": "a6d19c1bc6dac30d6c97f977a7189bd6324321f73b6a3636c46736a5d8030499"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-023-pare-catalog-entry.png",
+      "sha256": "6f5d4749a6086787fb922357c4d6b59e67ed47097ecb52d3c5a329769af91867"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-024-ceda-el-paso-catalog-entry.png",
+      "sha256": "cf2e10c5ae1fbe35a810f7c230f38782f0926a86a5d301a3b08dd2999ca73aae"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-025-ceda-el-paso-a-ciclistas-y-peatones.png",
+      "sha256": "c014705e83aa07b2ef60515d128922534632062496838620c9743208900c0cb0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-026-preferencia-de-avance-catalog-entry.png",
+      "sha256": "c9dc5ea1179a2131bbcbc0f77308dcde3232a71001df38e69023e8a1e4b91a89"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-027-descienda-de-la-bicicleta-catalog-entry.png",
+      "sha256": "02110155c4aa527d010d8ecf1030a80b1de3b161fa67cc2a394bc5c5b055ea17"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-028-barreras-ferroviarias-catalog-entry.png",
+      "sha256": "dccb0af88c36ec739e7d17996bed4c3344940a020420659db26525e1a84ed8ee"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-030-fin-de-la-prescripcion-generico.png",
+      "sha256": "37bc44fd425ffa2d9f66b7d290d8fe4828497deac5447b9fe0604c0e06fe2924"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/individual-3x/app4regulatory-p186-031-fin-de-la-prescripcion-velocidad-minima-35.png",
+      "sha256": "d6e15440e1f5e46198d2676efc8cc2dce47056613f16d51c12a73a6b7b1acffa"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/no-avanzar-source-as-is.jpg",
+      "sha256": "037f998385ae004aeb7bf4ece381ea6cf4e6b0eaec77d8c2a2f5816cb783afba"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-185-source-crop-as-is.jpg",
+      "sha256": "9a40d56d49fc4e6af8887ce2b6373ac557977a3e5c609f2eafce1709bc4d0a8c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-regulatory/sign-sheet-186-source-crop-as-is.jpg",
+      "sha256": "d18a558b6148dee9f20e167c81351446b01d8ddc019fce80cc81540ae4226d56"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-003-no-girar-izquierda.png",
+      "sha256": "582bd7d276364d4ea50bdbff10dd0c64d070f4d907ad23d4f75f9b60692d750e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-004-no-girar-derecha.png",
+      "sha256": "8b9e403150d900c3e74a7f7baf7c4beafedb985acc0cb246fe954df7e405c842"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-005-giro-anulado-a-100-m.png",
+      "sha256": "1583fd469cab3c3a74df2f9fdbefe9613728e5144ad5c4b4e88e6c7fd00c135a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-006-no-estacionar-ni-detenerse-catalog-entry.png",
+      "sha256": "1227fa868eba70cf38ef942135734f0cf26965174b5d9a8a650723e8ae212080"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-007-limite-de-velocidad-maxima-20.png",
+      "sha256": "3ec86e9874b8b342ef19c3b34028c0ecbbe2b74221c85f2b56194e2faed490d4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-008-sentido-de-circulacion-izquierda.png",
+      "sha256": "8e25930de300d172ca5b4d02612cc02bd7da21bfcea1c6405d71e7d40f65f57e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-009-sentido-de-circulacion-derecha.png",
+      "sha256": "570d7f457e0598e893865daf61372fb550a24174df50cb321e039e7ee7269fec"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-010-direcciones-permitidas-ambas-direcciones.png",
+      "sha256": "2acfa6c1976e37a61d8748f0a804fee80ec919e33d73871768a415315e942adb"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-011-estrechamiento-en-una-sola-mano.png",
+      "sha256": "b51edd527de4c23431c72f620b014dc4240ed2e8f2d221cbf424a43cc4b0cf42"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-012-reduccion-de-calzada-a-100-m.png",
+      "sha256": "ae02f48ffa7ed438dd8950ae4077cd97050884c7a31c49e610a659bab6038a38"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-013-calzada-dividida-catalog-entry.png",
+      "sha256": "59136ccc68ebb9ae9a3acb413e72fc06fcfdd889ea6762e39d1dd25270991530"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-014-calzada-dividida-a-100-m.png",
+      "sha256": "266f7f446f44e5251329729f58d44f85ca344e024267566b9ed6fbf44819b5af"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-015-personas-trabajando-catalog-entry.png",
+      "sha256": "9f2024d7dbd22f72c1fafafaf44fe435442ae10f34cadc5b59955a2413ce137a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-016-inicio-obras-catalog-entry.png",
+      "sha256": "6b13f5b64c9ec6b2a317c35e905675ba53696299d8c71df2a501a1cbf8650c1a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-017-inicio-obras-a-x-m.png",
+      "sha256": "b0a6bad6be5791ef11728032b19945ae8f08d3e9f1d6447ae5409534879276c5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-018-fin-obras-catalog-entry.png",
+      "sha256": "fb5b927c7c024085340040f3fb21b1b483984a2667d55de644787f0e458b023e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-019-desvio-catalog-entry.png",
+      "sha256": "aaeda7fb03feeb4410b9959a571d43de82352e34aa7690f89bab8ac7fcdfaf51"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-020-desvio-a-x-m.png",
+      "sha256": "7ad992595b1898f777f26ca5234387691fd4d726d54ba562dbb5077ed2d6fb90"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-021-calle-cerrada-a-x-m.png",
+      "sha256": "d729809ce32f02e4c2ea4d391248ff7fb8ac67d98cd6c60a349a2e2e944b611b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-022-calle-transversal-en-obra-a-x-m.png",
+      "sha256": "3e02788560e9e64d12e37e692f64d5b758e5485e41afb460d31924e0302cdec3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-023-inicio-evento-catalog-entry.png",
+      "sha256": "527b1a2da730976988a10b9d2796dc7e82723723842329ef25485794758be0e7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-024-evento-a-x-m.png",
+      "sha256": "31b8df3ee1697bc50df45e4e0ff6a7f689f356c12b87b66da7e2ba4f889d2491"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-025-solo-acceso-frentistas-catalog-entry.png",
+      "sha256": "2139e52901fee9fef6c148b4f3722471340a7b13203592cd5458639dab432518"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p193-027-desvio-peatonales-y-de-ciclovias.png",
+      "sha256": "77c3697a681aeb708b3023f2ff90b993bdec196fec4e572422d40f9ec639c7b1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-002-anuncio-de-obra-catalog-entry.png",
+      "sha256": "0ef40e33edf1d4b12b035c7141583a8addc87c10811011b85f23245b76ba0d7c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-003-comienzo-de-obra-catalog-entry.png",
+      "sha256": "a20f298736af86f3bb3fcf53ce287b4dbd21b72822d62467a8ab8570260a07a5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-004-desvio-catalog-entry.png",
+      "sha256": "6d1a6909a5de9181baff5179370a2d900c28048b6781a8bd24c990c9ab82dfc6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-005-anulacion-temporal-de-paradas-catalog-entry.png",
+      "sha256": "e8ca5bd4f714adc84a18e7b3ac9ec3509556503f9efdbef300d0a98fa3da777c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-006-acerquese-a-la-parada-mas-cercana-catalog-entry.png",
+      "sha256": "551382aefeb29a92d587532643cc489ecd0815cd5189218527d4c89a3dc71b9a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-007-anulacion-de-parada-catalog-entry.png",
+      "sha256": "dc35aa8c2e3b10975897a213946dfc440296bb0cc5150c4f71d2f6e6db577bbb"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-008-prohibido-el-paso-catalog-entry.png",
+      "sha256": "ff086c5af8f2f99ac81990a96f61437bf86850c3f27bbaf0a345379e878e0921"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-009-senda-deshabilitada-catalog-entry.png",
+      "sha256": "6af8e8cdc39e3f8201621c228a78546ba3b6298f4e77814c42ee5d9b1e80d0c0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-011-interrupcion-de-ciclovia-anticipacion.png",
+      "sha256": "be85eea67eb2e7d314925c6453893959d3e4eda23b26e0e4e6621dcc4564a3eb"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-012-interrupcion-de-ciclovia-catalog-entry.png",
+      "sha256": "2b8104a3efc1d46d7477259e5c136e7f45af5c7d22a9a859f48a994535948b3c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-013-descenso-de-la-bicicleta-catalog-entry.png",
+      "sha256": "2de5ecddcc72288a14b52b83aea61d1a2f76cfee6bacf749b0686a66a94786ab"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-015-valla-barricada-catalog-entry.png",
+      "sha256": "931e4cb14649c0fd140e24dced3f97b9d8ef7bc390648f37095f0e49f028a709"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-016-valla-peatonal-catalog-entry.png",
+      "sha256": "45b69641ca698993af4d2d0af2fe9a6da97f431cf2b572bb1feebd1562a2bcea"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-017-valla-de-obra-catalog-entry.png",
+      "sha256": "6ee2b01107f6d0d52709a65ed5400a2f76c559b69c46e95a77e7f46cbf51f849"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-018-anuncio-de-obra-dispositivo.png",
+      "sha256": "74f73736aa0474226a2b77e857c62836c9266a74982907dc91e854d323276c82"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-019-conos-catalog-entry.png",
+      "sha256": "16136e7d0271a99b091ebe9100692c5bf23a03c98708fc018093d1657da45fcc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-020-tambores-catalog-entry.png",
+      "sha256": "ed67074fb91c1728c3f63aef2fe173aecf4da22ceb2373988b0610fa88dcabb8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-021-delineadores-catalog-entry.png",
+      "sha256": "ae1b70e21302837fd2541093d082074d15016562335c1341923363ceda8134d7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-022-barandas-canalizadoras-de-transito-catalog-entry.png",
+      "sha256": "125eb0707a8bcf8f5dbd9c71e0c04c1f37f7d851a64e82538cc4858be4a3b21d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-023-barandas-canalizadoras-de-transito-hormigon.png",
+      "sha256": "3b45017e416f38074ce167618134baef101ec6c8dd9a18de3e3e4b58e9440388"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-024-reflector-catalog-entry.png",
+      "sha256": "6fd1e3e8ac81e03dda95712daf1dc250f686ac361bb280ab2370ba2ee22946f7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-025-baliza-delineadora-catalog-entry.png",
+      "sha256": "89dab13c4863399ca6a48f22201d821387e3416a994badd825ec67446077f580"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-026-baliza-intermitente-catalog-entry.png",
+      "sha256": "9485bd3eb4164498a726963b17ac7d1b640d3d5a4ed171d22c133c00ef322b1a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-027-flecha-vial-intermitente-catalog-entry.png",
+      "sha256": "a501b00e07110140bca03e59a2a031d4ea8444240178eab8d01227e2000df8b2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-028-semaforo-catalog-entry.png",
+      "sha256": "e98ec312304aa96262a1dcf4e72f7c43e6a91d2818f9c4a7568a3e8244dfe6bd"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/individual-3x/app4temporary-p194-029-paneles-catalog-entry.png",
+      "sha256": "ff45b5f33c7d94fb7e9e35d9797a8fbac900fd73fe77e15a9b3273c4aff56c27"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-193-source-crop-as-is.jpg",
+      "sha256": "2063a1e7301f584b0ce1e887dd5410120babe314675de4893399b171795675f1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-temporary/sign-sheet-194-source-crop-as-is.jpg",
+      "sha256": "2f4a44e6c746e90019a82b22e4a4633ab46a8eb38803d3f43698823f550f5e91"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-003-rojo-rojo-intermitente-amarillo-amarillo-intermi.png",
+      "sha256": "bbe99619eb7f5ba0719ba407c1f2f879ec4780213c3dfecce253cd3aadccc56d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-004-flechas-direccionales-catalog-entry.png",
+      "sha256": "e37cf09c10a09672a4268cc033e7817016b8eab63e05fd56576e68d6d2e62943"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-006-disposicion-de-unidades-opticas-vertical.png",
+      "sha256": "b899d357ed6f1ea12537e6fad39de7f02eeceed244257d7a30e4258fbafc43a6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-007-disposicion-de-unidades-opticas-horizontal.png",
+      "sha256": "5c842d339034e19d7d09bfb6fad9cd9419782c35595947431a628425334a10e0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-009-esperar-peatones.png",
+      "sha256": "3201353b3e6cdd84c119ace4da8c8da38e140c7d64eaab7a431621e9682a04cc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-010-avanzar-peatones.png",
+      "sha256": "85629dda0b20a8b55328bbad80b70433522e5643ac125dfb35dfdc905705e722"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-011-prevencion-de-peligro-y-advertencia-de-intersecc.png",
+      "sha256": "12ff38b93f3bbfd6646f6d3a8bbf5ea6d3c22b7fa2b896a2605d9c1ec52a3940"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-012-cruce-ferrovial-catalog-entry.png",
+      "sha256": "4f9c25b9be8ae501b7447994dc2ba59aa74d1d6573368aa6e7c6e67a568ff8ee"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/individual-3x/app4traffic-lights-p197-013-carriles-reversibles-catalog-entry.png",
+      "sha256": "3bf545ebf7046084363da7c4b1d10de9486ccc11671f454423384ad3116d7659"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-197-source-crop-as-is.jpg",
+      "sha256": "b9e9c00f52ff533d92e8cb19624e15a4b9e11d82201448fdb876481ae6d7d223"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-198-source-crop-as-is.jpg",
+      "sha256": "7d0c04c124f66b175a5fc9b46bb6fdd16f0673201bcb91e06dda23e1dda4d1f7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-199-source-crop-as-is.jpg",
+      "sha256": "2ed9cbb64112e79b8c956e6ab9b24f2571b743ef2c9f02d01860bff1080c74bd"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-traffic-lights/signal-sheet-200-source-crop-as-is.jpg",
+      "sha256": "522342330e4a2cf197d4d880c0a6b65b8dca81fc25ada9607723e09e955f0997"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-003-curva-comun-y-pronunciada.png",
+      "sha256": "fa7e6193cffccbf7673ff264ce1dbf9102ff3f0e4e944bd4c87d0a37ff45f381"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-004-curva-contracurva.png",
+      "sha256": "af88541e33c301b988a3d330b78d3c5281f9cfd671a17e084182e0eb557a699c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-005-curva-en-s.png",
+      "sha256": "b3bf08414250f26d7635ebc9ff1136ddcfea02cea4b69b43ee80c832d3f0d4d4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-006-camino-sinuoso-catalog-entry.png",
+      "sha256": "cd61ff38295aeecf2fad8ebbe3f34af0fe097c11d521a6e0d03072973d0e48ea"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-007-pendiente-descendente.png",
+      "sha256": "4f4fee93b67edcebfdc8c4aafcf2dff4f16560a7a4ff9f1f510b7825e2e42079"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-008-pendiente-ascendente.png",
+      "sha256": "432560fa2dce3fa9cf01b78736655bf76f2c0b1507c742686d07bb9c7587ee8f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-009-estrechamiento-ambas-manos.png",
+      "sha256": "8787edbcf99a105f4bb269ac3f4098525f68653c2eaa36bd2b74b84a70438326"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-010-estrechamiento-en-una-sola-mano.png",
+      "sha256": "1ede57133fd999f3f940418b752b2f6572cc62dd2f6f97526696200e44f6b5ad"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-011-perfil-irregular-irregular.png",
+      "sha256": "168f832fecccddf24ddae99373af8453c35ad892a69913f6d2f238902b1033df"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-012-perfil-irregular-baden.png",
+      "sha256": "7e37e211d6f11cb7db3eac9c05e0a1adb7a1272c3d7cc4a209483362d5700846"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-013-perfil-irregular-lomada.png",
+      "sha256": "2d4eb597f1be322c35a5f4fdc485cb7dcdc3f678b6ebb29f5df15cd7f53898b0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-014-calzada-resbaladiza-catalog-entry.png",
+      "sha256": "845bd150d2f6c25f76f0874e4c114c2321724b17d653a6cfba1ccdb697f181d0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-015-proyeccion-de-piedras-catalog-entry.png",
+      "sha256": "38712ce5c48fc70af676080eccfed41e7a020846bf31d5bb1ba2e98e0cf2746e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-016-derrumbes-catalog-entry.png",
+      "sha256": "35d495a63cc5cb17cc162686a92c71722cc7dc5b9cc900f5292b3d09a82e976e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-017-tunel-catalog-entry.png",
+      "sha256": "62d3df09a59d5a1d6cee4e9a51120c8caaf23c1b52505a18f624fb21cee8a0dc"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-018-puente-angosto-catalog-entry.png",
+      "sha256": "f79c4fa65e9ae7ec11cfbb4f100ac2d7475e4b7ab6155d7362eca16272583946"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-019-puente-movil-catalog-entry.png",
+      "sha256": "2ae7e8ec9eb65c852f61076f2dd55cf1b2b51c6e9d33c8115701217d5942b639"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-020-altura-limitada-catalog-entry.png",
+      "sha256": "0b567928dd8d9d3d7c116ec8232122636d333e76c093b02eb578ba2406eebad5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-021-ancho-limitado-catalog-entry.png",
+      "sha256": "0abb640ec762a785156c156baee1408f818d2802b70a9e6af417eb07cb2fc5f9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-022-calzada-dividida-catalog-entry.png",
+      "sha256": "aac4ae394787dbc4a670d840b2abdd0f89982441761fc6a6e84fb4d56da3fa23"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-023-rotonda-catalog-entry.png",
+      "sha256": "964cac2089253f1c9ea92c87ee00da242a63831ef915b790ecec1714a3542c46"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-024-incorporacion-de-transito-lateral-catalog-entry.png",
+      "sha256": "59b7fbcac8d24c7a0753d56100d771f56d71ff35c6f10f2ecf470dc5b761b835"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-025-inicio-de-doble-circulacion-catalog-entry.png",
+      "sha256": "189e59791da19c81b29a93ab281960bc03ce1fd8cd617fcc4b77bb1b39db9cc7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-026-encrucijada-cruce.png",
+      "sha256": "db19eb1886eddf7ae90a38ac2f6c74c6e14af63952b4bc5f1b6c1ba0a22fb324"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-027-encrucijada-empalme.png",
+      "sha256": "ad7973d6646ec1dd2bd516f0294adb9a11f6a6687ba90046daeda10b0490586a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-028-encrucijada-bifurcacion-1.png",
+      "sha256": "da68ed5fddb2001ad83aa6b24044760f6b2514c34466796398695e081955a210"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p187-029-encrucijada-bifurcacion-2.png",
+      "sha256": "47dd2324d2655692f458a75bdd14c07abf242d6b99ebe166d711bcb95af064d4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-002-escolares-catalog-entry.png",
+      "sha256": "60101de3e7d08000d4a1214f04bc03aa223229129563c983293957257dec387c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-003-ninos-catalog-entry.png",
+      "sha256": "2ce044d77c4bbe9d62f77c11e7d328c4b4c767cab0e8c25d96b302bb21e39089"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-004-cruce-de-ciclistas-catalog-entry.png",
+      "sha256": "48190b6b87e13ade5243c2ef1e9148015a5c6f7d14bf5814cd81b1d9af73918b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-005-jinetes-catalog-entry.png",
+      "sha256": "cebbb256b3aef950eb8c52b02d16af846f748f0eebdac1618bbdb5d4f256da98"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-006-animales-sueltos-vaca.png",
+      "sha256": "e8999e025239711d3cfe43878c46ba661cb7303de0a9cfba5718a46305d4f290"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-007-animales-sueltos-ciervo.png",
+      "sha256": "5a969e6341e755c36e30fb91df6ecb93a3a328756c5c87d7adf272afdfec05e5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-008-corredor-aereo-catalog-entry.png",
+      "sha256": "dbad1545e765d27d08e86b13061b62d1ddbff2fc9f8c0bfab902e0ff7cc06722"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-009-presencia-de-vehiculos-extranos-tranvia.png",
+      "sha256": "3189b5cd927c5fa561299d774b66406268b0aa3e68fe3c24786b83ca9652a4af"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-010-presencia-de-vehiculos-extranos-tractor.png",
+      "sha256": "7625f6c76a862cfab8954632a1f62fb5043bccfcf5eee231036e89db94390d8b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-011-presencia-de-vehiculos-extranos-ambulancia.png",
+      "sha256": "e56362ef0c403adcad96078686bdfbc5d07efee753480d75534c5df92ca05ca3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-013-cruce-ferroviario-catalog-entry.png",
+      "sha256": "1b0b351567b59c0b08fa41498563c830a2caffadd02e527ca22825bba53d5526"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-014-paneles-de-prevencion-aproximacion.png",
+      "sha256": "36113bc0e1edd21f276162f0e580efd0196eeb480b5336cff62b4bdce02c864a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-015-paneles-de-prevencion-objeto-rigido.png",
+      "sha256": "4372fb41b2796ed4d6cab6445076a0e1139cc49ed8e3434a39a03ae757e207b6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-016-paneles-de-prevencion-curva-chevron.png",
+      "sha256": "2ff4eeb5528bfe4e14f780f46fd822fe7132cdd0c0c03f627637535f963ff5b2"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-017-cruz-de-san-andres-hasta-dos-vias.png",
+      "sha256": "b8d3bdfa6310f0d3ea925ca9db49e3f92f2758b9299b743022fc0a3787340fe0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-018-cruz-de-san-andres-mas-de-dos-vias.png",
+      "sha256": "5f0f5a3e62dea9a50eeabd71347b12acd5e390626fd07be97eb24e9a07a9cd8d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-019-curva-cerrada-catalog-entry.png",
+      "sha256": "a36db04e7220a292ab9b45579f5b1584398309e0a5c696c965aa5e9d48738ced"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-020-cruce-de-peatones-catalog-entry.png",
+      "sha256": "5134866466446c5c27a50f25808dc2cf9b39040341d582f35bc521f12b6b6d7a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-021-cruce-de-peatones-prioridad-peaton.png",
+      "sha256": "06fabd12fa80413ce5b0e75a6e8b3ba378d05f04533eac4ea7b3456cd26e2d3b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-022-atencion-catalog-entry.png",
+      "sha256": "8a8fedd6059c3cb8152f59397ad12cd724fcee5abb48f2a0ea2e63f0a55f0dee"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-024-flecha-direccional-catalog-entry.png",
+      "sha256": "5b6e92ae3cc0b124be24d96316ddfa05e0f58283896a01cfcfda531432ac9b38"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-025-proximidad-de-semaforo-catalog-entry.png",
+      "sha256": "de2bac1de6c3919eb6591ed9783966e66f13af73b7becb910d849aa07859050a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-026-proximidad-de-senal-restrictiva-pare.png",
+      "sha256": "84529d589747b2338ec1aa8746b8ad7469cc569128f0ed005d9dd67ba9e09bc7"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-027-proximidad-de-senal-restrictiva-paso.png",
+      "sha256": "10954efe8e2f21b868ed8abcbeff3e55913c692444028be6d726860427a67389"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-028-proximidad-de-senal-restrictiva-otra.png",
+      "sha256": "065c7c8c420b1a2f98e33810fdcf8ad545e034ceab79f3dc86b432d0408bef96"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/individual-3x/app4warning-p188-030-fin-de-prevencion-catalog-entry.png",
+      "sha256": "181c9e87f5175b8c2015393f944aab5fc482ce958e70986b082caaf7199f290c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-187-source-crop-as-is.jpg",
+      "sha256": "31f059bc0f9bbaa28e12d55df40dd18fbf570bd9b6bb87f67a63186b1dfe173d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/app4-signs-warning/sign-sheet-188-source-crop-as-is.jpg",
+      "sha256": "b44da35e30af3a77ba279ef5657cbfad350f5762a152bd347afc30e3c13bfd04"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicisenda-photo-source.jpg",
+      "sha256": "d0719bf65fb4d5b2df0f695879b5793046750d443c465e9daa73fa96a98d6d6f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-change-cyclists-source.jpg",
+      "sha256": "1a888b8936c2ec987f8a4c2fa92bd9f2b07b0a61f9749f69fc9e597af062b33b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-parking-source.jpg",
+      "sha256": "91a078759ad9d42691029fb7b379b09120351b4bb48cf20c0ddf98ac33145a7d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/bicycle-signs-source-as-is.jpg",
+      "sha256": "4dfcbefd5731a4a9677e9b66beab652e7bdb0c8db1fcdc6794d4aa97c0f9ac65"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ciclovia-photo-source.jpg",
+      "sha256": "7b2e404dd7365ffe41a0c559a9accb1fa13f74c378174ac13feef3717f1aeb8d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/cyclist-gear-source.jpg",
+      "sha256": "872fd40c00cddc2afa9d5489574b87e605802d7e95a582d2922c36a9c3964edd"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/ecobici-source.jpg",
+      "sha256": "8e361a5e391e5de186247a3164fe1ad76f42ef2cd6917a9a30b9e14ba8647781"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/hand-signals-source.jpg",
+      "sha256": "dcbe4cf381e85536b609bf467cf225d1c77fef6ae16826c1022c583b3a2b4379"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/helmet-fit-source.jpg",
+      "sha256": "59b5dde3ced464cf10760d4b7acfff4fcd1345ad49a1ba1424b348544bc07391"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/offtracking-bus-source.jpg",
+      "sha256": "98b4e0867f96ed3bb6671c4d0aa5dfde145d43c5bbc42cbc10d798a3f76ffac0"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/posture-cyclist-source.jpg",
+      "sha256": "3da169144ff919429503b14c7c764e45e663ec76b564d4e39ee7da812533c587"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/safe-distance-source.jpg",
+      "sha256": "8ad1706e10ffe13e394c113c921cf14735feb0ec0da8ea3e5c69a6a1bf160595"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/scooter-source.jpg",
+      "sha256": "a8983da5902a66d9ed54252087f7228242a43f243775a1453770d1b53bc56962"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-bicycle/unsafe-distance-source.jpg",
+      "sha256": "e219de23c7855483e274057ac9627dcbc0129c90dd83b95786a0a0a06de1c8b9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/before-after-photos-source.jpg",
+      "sha256": "21ad238fb1622c84899a7c0b65b2f24487c8a0a516bb66d637620d60d283d02a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/circulation-icons-source.jpg",
+      "sha256": "bed15de5034b89eb332f64e937cb90024304cfdda9d7a2f6952dcbd7c286e2a1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-body-source.jpg",
+      "sha256": "42c864bfc9df2b2d824165a8127ef3c1a4b407fe2109314b4b171790407eb101"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-car-source.jpg",
+      "sha256": "6741d5921e347984d56b08b38ac147e4d8a365328363edf313db83a9b1deef8c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/impact-target-source.jpg",
+      "sha256": "4f46f2a52c919015cb6b258a21563ae0e4f02f8a58e37fc0541b800fe31da1d4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/intervention-street-source.jpg",
+      "sha256": "c3012aca894e6d05b4ec0f94030291e653befe7da9bdd6c21ae1bd3212dd6146"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/pedestrian-street-source.jpg",
+      "sha256": "8113005c51dd845f4b42ba6621fea12b5d900548774dc2130d3811fa3908ea9f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-area-map-source.jpg",
+      "sha256": "d88ecd0fc39dac7f9c0227894794ef648cb7327b1ff229508787ce1f5222056b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/priority-street-source.jpg",
+      "sha256": "508dec0e2948e13aacd9980dc51946a8af79aad03f5ca1c3ca9bc40161782cc9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/restriction-signs-source-as-is.png",
+      "sha256": "03c8354fc44acff48de3fb0d40aa49757254f047b44de79179ec7f3b168e3f71"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/school-routes-source.jpg",
+      "sha256": "829a25bda728e6352c363c81c126915d015bf91621c64e8ed7cc8dad38c8a7bb"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/sube-y-baja-source.jpg",
+      "sha256": "9173c0d979968dc60b661cb5d796f5f75d7d02b76c1031828639d0cad28211e1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/wayfinding-source.jpg",
+      "sha256": "c708f1d34803a7b2d905998d90f97334aba498f893c295300a907333fd5da732"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-pedestrian-priority/zone30-photo-source.jpg",
+      "sha256": "8035cdc4f94cdf7f92560e84ce9f0fa6828c56af250a6feb5130c710290e8e93"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/avenue-comparison-source.jpg",
+      "sha256": "9de57b9a15546910585ff23ec253cf06aa585f53f71c68551cb0508d51e48600"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/bus-platform-source.jpg",
+      "sha256": "9f3b5b111b6bc948e33c60db3d88cac5e641592570ec5a0f7ebd7515aaf77e8d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/exclusive-lane-source.jpg",
+      "sha256": "12d9b8e69b463b9e7c5e4b5729d8fdc6c3bf44595373d5fbc0b9912f6b513258"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/metrobus-source.jpg",
+      "sha256": "d54e4519912634abfd34e196bc283e112dbbffa5eaed86d035dc3edf8dbbad85"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/transport-center-source.jpg",
+      "sha256": "c0eb116ddde111639c4c76bf0f917ce842c956b35e66cc13bc9f2e3ab797c6e1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-public-transport-system/yellow-box-source.jpg",
+      "sha256": "235efcd971e7523907d0e90bb5c426f373b148e8dd94684c6ef9af1d49fe21d5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/carpool-diagram-source.jpg",
+      "sha256": "59fc44938f1ff3adde5fe911cbaf50c27cf7f4231529f64231425a1b42f7b948"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-shared-trip/mobility-priority-photo-source.jpg",
+      "sha256": "1b385683e748596097a5f5e24b886a221daa0377dc675397e70cea9511865725"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/space-comparison-50-people-source.jpg",
+      "sha256": "72598aaf807780e1745a1ce3fc5ab0f307bd2703b23f53ecbf499457cf3eba6e"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch1-sustainable-mobility/vulnerability-icons-source.jpg",
+      "sha256": "016d48984bc5b463de8539e63f7608b0b6d227997d3aca84ee17da2f3edb91c5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/beginner-sign-source-as-is.jpg",
+      "sha256": "6fe70f64c3b69fc698ed047ff449a58282458c23adab168a9659a23395ec0d99"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/cedulas-source-as-is.jpg",
+      "sha256": "adeb536810ea86c9b609cbc208b55d9183e1a6efbf1bf537ed4dcd94d979adb5"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/dni-source-as-is.jpg",
+      "sha256": "de7f545a95d353a3a1063f32ef2e93ba58b914ef63cfab45be5321e3c5b4e78d"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/license-source-as-is.jpg",
+      "sha256": "6064232027843c12a7cd3ca0f3c1368d7b8a6a1f90cf42f54d686259214d6dee"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/rva-source-as-is.jpg",
+      "sha256": "17fe5f93e2288fd307d75e60fe4e078e22b591c5eeea85b98c8394d7587fcfd8"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch2-required-documents/vtv-source-as-is.jpg",
+      "sha256": "0ad9624064c55ea095bbb64bc5dda2560490899cc616b574f2c1e54c8e5c8b98"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/alcohol-limits-transferred-infographic.png",
+      "sha256": "012e5486c56a8b25174019e53d4fab66599adf58cc920136fd9f447e0e8b3251"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-alcohol-drugs/drug-test-source-as-is.jpg",
+      "sha256": "a0ea059e6819b48027877b2ff349c77589878f5b912bd77e4e220e579a4e27a3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/attention-photo-source-as-is.jpg",
+      "sha256": "91389610896484f41ba060c8b531077031f9e849b2087c4a21fa7f389fb08338"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch4-distractions/distraction-panels-transferred-infographic.png",
+      "sha256": "878c270c90a550c3ee6c45d6d13f28592dc05338599029046ab1c5d193fc502c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-anticipatory-efficient-driving/driving-culture-photo-source-as-is.jpg",
+      "sha256": "e0d17ff71479ddf0042720439bf4ff6c21ea156a71b561e5a59a4efa9baee4d6"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/ch5-equal-society/mobility-context-transferred-infographic.png",
+      "sha256": "78f0e1d73d8db71e71c4b553ff9b91ece6fbfaeeed052df66f2854d793fb2846"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-ambiental-source.png",
+      "sha256": "3cd6ea97bd1f26d3654ff5a3b93259f3b905bf3e4003a18f26a05ccf22592806"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-humano-source.png",
+      "sha256": "f4b441cbfad0f02fd1f027cebbc405ab50d836a01ade93896706de5b59e44176"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-incident/icon-risk-vehicular-source.png",
+      "sha256": "a5eb3b9de76fec493983b673c88786a3268e4cb264820f5b3e86b637aff0098a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/child-seat-photo-source.jpg",
+      "sha256": "d02ca4cc7a413636f06025552776a86a7e6f60242bc170a09fd0d6df0e395da9"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-018/diagram-consequences-clean-source.png",
+      "sha256": "aa0a89489728c67816176093d3146c2a0bebb77d4d52fa9c78f188c3565d2e62"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-control-source.png",
+      "sha256": "6f865034d3258222bfdd41749ea405f87edf561c528cb2f9a4c1ed495b06b75b"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-education-source.png",
+      "sha256": "ae129102c90f37fe338237576171ac31bd01a4723fde6a5f14adca01ebb883ea"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-infrastructure-source.png",
+      "sha256": "ee6ed9928cbd72f8fdbb36506e79c341d9c8750315319ef261bd56cdf29a52e1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/intro-road-safety-plan/page-019/icon-axis-participation-source.png",
+      "sha256": "cd9f2c5cd55c68864adda1c3cc108c1b87583b9e415982b5979ba446e453649f"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-airplane-source.png",
+      "sha256": "f7db340e31090d8f03bd09007305763c7196fcd55f9637be3f2f291e5e3634b1"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-car-source.png",
+      "sha256": "d61faa1c99b0835829c3ad70b6d2688636807d7aaec1df69b05fc6be868ca3a4"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-motorcyclist-source.png",
+      "sha256": "2549b3ffc6b03888261b3af315a38cb37f8962e8681c08008b7cae4359e1554c"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-pedestrian-source.png",
+      "sha256": "f952f7287a088c958c91fe4af4f28e51246f7c37dfe585cc65592be9d4d0c8c3"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-grid-source.png",
+      "sha256": "d0bbd309d173c41f7326c6b8a162a6cb8ed922f918b79ff354bb36af279363df"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-people-pair-source.png",
+      "sha256": "3345a607600c6b68bdf62db7fc390d3345774eb4bad14e4e81d9c794387d014a"
+    },
+    {
+      "path": "content/assets/manuals/gcba-manual-vehiculo-4-ruedas-2023/sections/pandemia-vial/icon-stadium-source.png",
+      "sha256": "8af514e511b164cec30a7973955b02f49a8a1325d191540b7b019f6802dc0d0b"
+    }
+  ],
+  "pageContentFingerprints": [
+    {
+      "pageId": "app1-other-required-safety-elements",
+      "contentFingerprint": "7e3451a61b94accf0c0659ab75cd6c57ae72a7c76b4d3a39f45d871c69b746c0"
+    },
+    {
+      "pageId": "app1-recommended-safety-elements",
+      "contentFingerprint": "67f71954b639cece505ed64c95a53bc27d62d103bc4d333d50837ceb4781ae4f"
+    },
+    {
+      "pageId": "app1-safety-elements",
+      "contentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a"
+    },
+    {
+      "pageId": "app2-driving-factors",
+      "contentFingerprint": "d7c9aebe0a8e49d64a539e2024677f3dca016b1764439a0737a3ba86a402ddf2"
+    },
+    {
+      "pageId": "app2-highways-hospitals",
+      "contentFingerprint": "83900c73e939fe8d2ae3cce9b462b35c5c4261084e5def2cc86a2696701a7454"
+    },
+    {
+      "pageId": "app2-safe-driving",
+      "contentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3"
+    },
+    {
+      "pageId": "app2-safety-elements",
+      "contentFingerprint": "c5beb330670a0c027b6dc1492cca7a49de920d61aeef3ae6dfa015029ff5a18c"
+    },
+    {
+      "pageId": "app2-social-responsibility",
+      "contentFingerprint": "a4fab984a388b9afb669c6ab01224c043f8109478b138b047138e059490932bc"
+    },
+    {
+      "pageId": "app3-cargo-driver-profile",
+      "contentFingerprint": "4707c217262d73b4d998e30f9d4128276d9174cfa04c9e0fbc36f67f79aefdb2"
+    },
+    {
+      "pageId": "app3-driving-factors",
+      "contentFingerprint": "357d0ab5fbff85b15a2ff02cf2727969a956b491bd683410a48a7c0c62cb4a09"
+    },
+    {
+      "pageId": "app3-highways",
+      "contentFingerprint": "867f3460369c58e04cac26461edfbe80dec667ea1f1b162dac63209ec90aba55"
+    },
+    {
+      "pageId": "app3-safe-driving",
+      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477"
+    },
+    {
+      "pageId": "app3-safety-elements",
+      "contentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9"
+    },
+    {
+      "pageId": "app3-social-responsibility",
+      "contentFingerprint": "d5bbf86f90ab90603b57dae501a804d6183d7eabcb80982319ac9e1c84840ba9"
+    },
+    {
+      "pageId": "app4-signs-horizontal",
+      "contentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e"
+    },
+    {
+      "pageId": "app4-signs-informational",
+      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50"
+    },
+    {
+      "pageId": "app4-signs-regulatory",
+      "contentFingerprint": "e1717765e721e0c00d9fec028a91323f72d84d028fa92826775226a5a1106bcd"
+    },
+    {
+      "pageId": "app4-signs-temporary",
+      "contentFingerprint": "ab08a3220c6bc3c8c5070cfca988b10f9b6fe90621fa7c59b2c9f4a079c70192"
+    },
+    {
+      "pageId": "app4-signs-traffic-lights",
+      "contentFingerprint": "9157d974a41d80c3d9bd004c527ef133746717f212c955ec7f2f20bc873613d2"
+    },
+    {
+      "pageId": "app4-signs-warning",
+      "contentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855"
+    },
+    {
+      "pageId": "ch1-bicycle",
+      "contentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e"
+    },
+    {
+      "pageId": "ch1-cities-for-people",
+      "contentFingerprint": "8d3010ff1d79a940ed36c816de4f1bed6b2f15733e5b16f8e53e15b8087579cd"
+    },
+    {
+      "pageId": "ch1-pedestrian-priority",
+      "contentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10"
+    },
+    {
+      "pageId": "ch1-public-transport-system",
+      "contentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf"
+    },
+    {
+      "pageId": "ch1-shared-trip",
+      "contentFingerprint": "3c986bc54ff14788464ee2e979c1d9dffb2788c37c4d4a5d5d680d18c6e86c4c"
+    },
+    {
+      "pageId": "ch1-sustainable-mobility",
+      "contentFingerprint": "8aa624c9f07bbc192598e03e904640a67af03901dc44f8619a3a48c622c51a20"
+    },
+    {
+      "pageId": "ch2-incident-obligations",
+      "contentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5"
+    },
+    {
+      "pageId": "ch2-legal-responsibility",
+      "contentFingerprint": "56bcea5321021b4ca4a4f440a6661d9ba603b0e2d9c6b01bd13ecbcff9f4fc4c"
+    },
+    {
+      "pageId": "ch2-required-documents",
+      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e"
+    },
+    {
+      "pageId": "ch2-scoring",
+      "contentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7"
+    },
+    {
+      "pageId": "ch3-adverse-conditions",
+      "contentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8"
+    },
+    {
+      "pageId": "ch3-highways",
+      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa"
+    },
+    {
+      "pageId": "ch3-lights",
+      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57"
+    },
+    {
+      "pageId": "ch3-overtaking",
+      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e"
+    },
+    {
+      "pageId": "ch3-priority-of-rules",
+      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815"
+    },
+    {
+      "pageId": "ch3-right-of-way",
+      "contentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b"
+    },
+    {
+      "pageId": "ch3-speed",
+      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60"
+    },
+    {
+      "pageId": "ch3-stopping-parking",
+      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf"
+    },
+    {
+      "pageId": "ch3-turns",
+      "contentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6"
+    },
+    {
+      "pageId": "ch4-alcohol-drugs",
+      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90"
+    },
+    {
+      "pageId": "ch4-distractions",
+      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5"
+    },
+    {
+      "pageId": "ch4-sleep-fatigue",
+      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96"
+    },
+    {
+      "pageId": "ch4-stress",
+      "contentFingerprint": "e3c2873b3e80013c7b7c883b0bbbdd1853a42cdda43f98c39b84c9c3c88ed077"
+    },
+    {
+      "pageId": "ch5-anticipatory-efficient-driving",
+      "contentFingerprint": "159dab3108ab1a55dd981139ebb9494405a72cde811493b8507a203f7f0d91d9"
+    },
+    {
+      "pageId": "ch5-attitude-types",
+      "contentFingerprint": "7a41779e38bddd55566cf85159c8d039880cc3fbeb4882157271312733aa4202"
+    },
+    {
+      "pageId": "ch5-equal-society",
+      "contentFingerprint": "7d193ea2722774ef2395dfedc91ae9a963b60ece8d901490d56e446760edfbe2"
+    },
+    {
+      "pageId": "ch5-gender-violence-prevention",
+      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff"
+    },
+    {
+      "pageId": "front-categories",
+      "contentFingerprint": "8615cfc92caacba4c5fdcaf9ee867b4e5dc8565024b0a6198de77031caf7a0c2"
+    },
+    {
+      "pageId": "front-glossary",
+      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc"
+    },
+    {
+      "pageId": "front-presentation",
+      "contentFingerprint": "505065ea8b3968e1bac7054fa6111fa3d2e1679b29a3442a23c8e8bdd54b3f14"
+    },
+    {
+      "pageId": "intro-ethical-civic-approach",
+      "contentFingerprint": "7d51710430234310807c10909eba103eb919ec4192e0618fcaa2660e34b49060"
+    },
+    {
+      "pageId": "intro-incident",
+      "contentFingerprint": "84e98efdb78086ac7bc3eb95ff015d8c355c3388357bea7a9e9386413e9165ff"
+    },
+    {
+      "pageId": "intro-road-pandemic",
+      "contentFingerprint": "3488653b324c4d4e1a628ad38d37d178d9f0500cd71ae890b2ba14523d1b77a3"
+    },
+    {
+      "pageId": "intro-road-safety-plan",
+      "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c"
+    }
+  ],
+  "aggregateSourceFingerprint": "10ae22d5b7759d0909adaa1436ad1a4bd5cb2caa5c2233303d1cc3d25e82d9bd",
+  "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
+}

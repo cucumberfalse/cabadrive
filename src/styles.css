@@ -1034,6 +1034,53 @@ small,
   padding: 0 clamp(18px, 5vw, 60px) clamp(24px, 5vw, 52px);
 }
 
+.manual-ticket-appendix {
+  box-sizing: border-box;
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  margin: 14px auto 0;
+  border: 1px solid #d7ded9;
+  border-radius: 8px;
+  background: #f7faf8;
+  padding: clamp(24px, 5vw, 52px) clamp(18px, 5vw, 60px);
+}
+
+.manual-ticket-appendix-heading h3,
+.manual-ticket-appendix-heading p {
+  margin: 0;
+}
+
+.manual-ticket-list {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.manual-ticket-disclosure {
+  min-width: 0;
+}
+
+.manual-ticket-disclosure > summary {
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 999px;
+  background: #173f35;
+  color: #fff;
+  padding: 11px 16px;
+  font-weight: 800;
+}
+
+.manual-ticket-disclosure[open] > summary {
+  margin-bottom: 18px;
+}
+
+.manual-ticket-appendix .materials-ticket {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .intro-doc-block {
   box-sizing: border-box;
   min-width: 0;

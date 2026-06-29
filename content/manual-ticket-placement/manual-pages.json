@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-24T15:00:00Z",
+  "pages": [
+    {
+      "pageId": "app1-other-required-safety-elements",
+      "routeHash": "#manual-section-app1-other-required-safety-elements",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app1-other-required-safety-elements-content"
+      ],
+      "contentFingerprint": "7e3451a61b94accf0c0659ab75cd6c57ae72a7c76b4d3a39f45d871c69b746c0",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app1-recommended-safety-elements",
+      "routeHash": "#manual-section-app1-recommended-safety-elements",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app1-recommended-safety-elements-content"
+      ],
+      "contentFingerprint": "67f71954b639cece505ed64c95a53bc27d62d103bc4d333d50837ceb4781ae4f",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app1-safety-elements",
+      "routeHash": "#manual-section-app1-safety-elements",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app1-safety-elements-content"
+      ],
+      "contentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app2-driving-factors",
+      "routeHash": "#manual-section-app2-driving-factors",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app2-driving-factors-content"
+      ],
+      "contentFingerprint": "d7c9aebe0a8e49d64a539e2024677f3dca016b1764439a0737a3ba86a402ddf2",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app2-highways-hospitals",
+      "routeHash": "#manual-section-app2-highways-hospitals",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app2-highways-hospitals-content"
+      ],
+      "contentFingerprint": "83900c73e939fe8d2ae3cce9b462b35c5c4261084e5def2cc86a2696701a7454",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app2-safe-driving",
+      "routeHash": "#manual-section-app2-safe-driving",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app2-safe-driving-content"
+      ],
+      "contentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app2-safety-elements",
+      "routeHash": "#manual-section-app2-safety-elements",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app2-safety-elements-content"
+      ],
+      "contentFingerprint": "c5beb330670a0c027b6dc1492cca7a49de920d61aeef3ae6dfa015029ff5a18c",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app2-social-responsibility",
+      "routeHash": "#manual-section-app2-social-responsibility",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app2-social-responsibility-content"
+      ],
+      "contentFingerprint": "a4fab984a388b9afb669c6ab01224c043f8109478b138b047138e059490932bc",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-cargo-driver-profile",
+      "routeHash": "#manual-section-app3-cargo-driver-profile",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-cargo-driver-profile-content"
+      ],
+      "contentFingerprint": "4707c217262d73b4d998e30f9d4128276d9174cfa04c9e0fbc36f67f79aefdb2",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-driving-factors",
+      "routeHash": "#manual-section-app3-driving-factors",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-driving-factors-content"
+      ],
+      "contentFingerprint": "357d0ab5fbff85b15a2ff02cf2727969a956b491bd683410a48a7c0c62cb4a09",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-highways",
+      "routeHash": "#manual-section-app3-highways",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-highways-content"
+      ],
+      "contentFingerprint": "867f3460369c58e04cac26461edfbe80dec667ea1f1b162dac63209ec90aba55",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-safe-driving",
+      "routeHash": "#manual-section-app3-safe-driving",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-safe-driving-content"
+      ],
+      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-safety-elements",
+      "routeHash": "#manual-section-app3-safety-elements",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-safety-elements-content"
+      ],
+      "contentFingerprint": "b12646c2c619212eebe9dde95fa4f4a82956b8455349ae05a6a71129349c81d9",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app3-social-responsibility",
+      "routeHash": "#manual-section-app3-social-responsibility",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app3-social-responsibility-content"
+      ],
+      "contentFingerprint": "d5bbf86f90ab90603b57dae501a804d6183d7eabcb80982319ac9e1c84840ba9",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-horizontal",
+      "routeHash": "#manual-section-app4-signs-horizontal",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-horizontal-content"
+      ],
+      "contentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-informational",
+      "routeHash": "#manual-section-app4-signs-informational",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-informational-content"
+      ],
+      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-regulatory",
+      "routeHash": "#manual-section-app4-signs-regulatory",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-regulatory-content"
+      ],
+      "contentFingerprint": "e1717765e721e0c00d9fec028a91323f72d84d028fa92826775226a5a1106bcd",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-temporary",
+      "routeHash": "#manual-section-app4-signs-temporary",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-temporary-content"
+      ],
+      "contentFingerprint": "ab08a3220c6bc3c8c5070cfca988b10f9b6fe90621fa7c59b2c9f4a079c70192",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-traffic-lights",
+      "routeHash": "#manual-section-app4-signs-traffic-lights",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-traffic-lights-content"
+      ],
+      "contentFingerprint": "9157d974a41d80c3d9bd004c527ef133746717f212c955ec7f2f20bc873613d2",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "app4-signs-warning",
+      "routeHash": "#manual-section-app4-signs-warning",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "app4-signs-warning-content"
+      ],
+      "contentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-bicycle",
+      "routeHash": "#manual-section-ch1-bicycle",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-bicycle-content"
+      ],
+      "contentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-cities-for-people",
+      "routeHash": "#manual-section-ch1-cities-for-people",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-cities-for-people-content"
+      ],
+      "contentFingerprint": "8d3010ff1d79a940ed36c816de4f1bed6b2f15733e5b16f8e53e15b8087579cd",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-pedestrian-priority",
+      "routeHash": "#manual-section-ch1-pedestrian-priority",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-pedestrian-priority-content"
+      ],
+      "contentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-public-transport-system",
+      "routeHash": "#manual-section-ch1-public-transport-system",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-public-transport-system-content"
+      ],
+      "contentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-shared-trip",
+      "routeHash": "#manual-section-ch1-shared-trip",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-shared-trip-content"
+      ],
+      "contentFingerprint": "3c986bc54ff14788464ee2e979c1d9dffb2788c37c4d4a5d5d680d18c6e86c4c",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch1-sustainable-mobility",
+      "routeHash": "#manual-section-ch1-sustainable-mobility",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch1-sustainable-mobility-content"
+      ],
+      "contentFingerprint": "8aa624c9f07bbc192598e03e904640a67af03901dc44f8619a3a48c622c51a20",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch2-incident-obligations",
+      "routeHash": "#manual-section-ch2-incident-obligations",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch2-incident-obligations-content"
+      ],
+      "contentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch2-legal-responsibility",
+      "routeHash": "#manual-section-ch2-legal-responsibility",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch2-legal-responsibility-content"
+      ],
+      "contentFingerprint": "56bcea5321021b4ca4a4f440a6661d9ba603b0e2d9c6b01bd13ecbcff9f4fc4c",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch2-required-documents",
+      "routeHash": "#manual-section-ch2-required-documents",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch2-required-documents-content"
+      ],
+      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch2-scoring",
+      "routeHash": "#manual-section-ch2-scoring",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch2-scoring-content"
+      ],
+      "contentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-adverse-conditions",
+      "routeHash": "#manual-section-ch3-adverse-conditions",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-adverse-conditions-content"
+      ],
+      "contentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-highways",
+      "routeHash": "#manual-section-ch3-highways",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-highways-content"
+      ],
+      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-lights",
+      "routeHash": "#manual-section-ch3-lights",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-lights-content"
+      ],
+      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-overtaking",
+      "routeHash": "#manual-section-ch3-overtaking",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-overtaking-content"
+      ],
+      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-priority-of-rules",
+      "routeHash": "#manual-section-ch3-priority-of-rules",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-priority-of-rules-content"
+      ],
+      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-right-of-way",
+      "routeHash": "#manual-section-ch3-right-of-way",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-right-of-way-content"
+      ],
+      "contentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-speed",
+      "routeHash": "#manual-section-ch3-speed",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-speed-content"
+      ],
+      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-stopping-parking",
+      "routeHash": "#manual-section-ch3-stopping-parking",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-stopping-parking-content"
+      ],
+      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch3-turns",
+      "routeHash": "#manual-section-ch3-turns",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch3-turns-content"
+      ],
+      "contentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch4-alcohol-drugs",
+      "routeHash": "#manual-section-ch4-alcohol-drugs",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch4-alcohol-drugs-content"
+      ],
+      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch4-distractions",
+      "routeHash": "#manual-section-ch4-distractions",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch4-distractions-content"
+      ],
+      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch4-sleep-fatigue",
+      "routeHash": "#manual-section-ch4-sleep-fatigue",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch4-sleep-fatigue-content"
+      ],
+      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch4-stress",
+      "routeHash": "#manual-section-ch4-stress",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch4-stress-content"
+      ],
+      "contentFingerprint": "e3c2873b3e80013c7b7c883b0bbbdd1853a42cdda43f98c39b84c9c3c88ed077",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch5-anticipatory-efficient-driving",
+      "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch5-anticipatory-efficient-driving-content"
+      ],
+      "contentFingerprint": "159dab3108ab1a55dd981139ebb9494405a72cde811493b8507a203f7f0d91d9",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch5-attitude-types",
+      "routeHash": "#manual-section-ch5-attitude-types",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch5-attitude-types-content"
+      ],
+      "contentFingerprint": "7a41779e38bddd55566cf85159c8d039880cc3fbeb4882157271312733aa4202",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch5-equal-society",
+      "routeHash": "#manual-section-ch5-equal-society",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch5-equal-society-content"
+      ],
+      "contentFingerprint": "7d193ea2722774ef2395dfedc91ae9a963b60ece8d901490d56e446760edfbe2",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "ch5-gender-violence-prevention",
+      "routeHash": "#manual-section-ch5-gender-violence-prevention",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательные правила, определения, числовые значения или пояснения.",
+      "contentSourceIds": [
+        "ch5-gender-violence-prevention-content"
+      ],
+      "contentFingerprint": "79704973edc4c1c137b8ef66a10627d7c6034c72b566eb11e39b738740f29cff",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "front-categories",
+      "routeHash": "#manual-section-front-categories",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Справочный перечень категорий, исключённый решением feature 038.",
+      "contentSourceIds": [
+        "front-categories-content"
+      ],
+      "contentFingerprint": "8615cfc92caacba4c5fdcaf9ee867b4e5dc8565024b0a6198de77031caf7a0c2",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "front-glossary",
+      "routeHash": "#manual-section-front-glossary",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Глоссарий прямо запрещён как место размещения билетов.",
+      "contentSourceIds": [
+        "front-glossary-content"
+      ],
+      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "front-presentation",
+      "routeHash": "#manual-section-front-presentation",
+      "surfaceKind": "manual-section",
+      "implementationStatus": "implemented",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Титульно-презентационная страница без самостоятельного ответа на билеты.",
+      "contentSourceIds": [
+        "front-presentation-content"
+      ],
+      "contentFingerprint": "505065ea8b3968e1bac7054fa6111fa3d2e1679b29a3442a23c8e8bdd54b3f14",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "intro-ethical-civic-approach",
+      "routeHash": "#intro-enfoque-etico",
+      "surfaceKind": "introduction",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательный учебный текст введения.",
+      "contentSourceIds": [
+        "intro-ethical-civic-approach"
+      ],
+      "contentFingerprint": "7d51710430234310807c10909eba103eb919ec4192e0618fcaa2660e34b49060",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "intro-incident",
+      "routeHash": "#intro-accidente-incidente",
+      "surfaceKind": "introduction",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательный учебный текст введения.",
+      "contentSourceIds": [
+        "intro-incident"
+      ],
+      "contentFingerprint": "84e98efdb78086ac7bc3eb95ff015d8c355c3388357bea7a9e9386413e9165ff",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "intro-road-pandemic",
+      "routeHash": "#pandemia-vial",
+      "surfaceKind": "introduction",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательный учебный текст введения.",
+      "contentSourceIds": [
+        "pandemia-vial-section"
+      ],
+      "contentFingerprint": "3488653b324c4d4e1a628ad38d37d178d9f0500cd71ae890b2ba14523d1b77a3",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "intro-road-safety-plan",
+      "routeHash": "#intro-plan-seguridad-vial",
+      "surfaceKind": "introduction",
+      "implementationStatus": "implemented",
+      "eligibility": "eligible",
+      "eligibilityReasonRu": "Содержит содержательный учебный текст введения.",
+      "contentSourceIds": [
+        "intro-road-safety-plan"
+      ],
+      "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:appendix-1-private-cars",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "appendix-1-private-cars"
+      ],
+      "contentFingerprint": "7ee559623ad5b18f5edef3f02052a20c2213d54dd109127182721df3ed040633",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:appendix-2-passenger-transport",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "appendix-2-passenger-transport"
+      ],
+      "contentFingerprint": "9ce8574db85d031089160347f156e9d41fb934bb1939fc252b5801f2f91cc4e9",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:appendix-3-cargo",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "appendix-3-cargo"
+      ],
+      "contentFingerprint": "499bb3c085501491f8f5b00d0ea09acae0a837d8a322bb64db050b4440ab2855",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:appendix-4-road-signs",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "appendix-4-road-signs"
+      ],
+      "contentFingerprint": "f9f77f24bdad0c9fd68ed9522618e34e535442e9c9b1ec25872c677b412d5dfd",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:chapter-1-sustainable-mobility",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "chapter-1-sustainable-mobility"
+      ],
+      "contentFingerprint": "ebe12a75753ef5800c54b43239f44dcbd4aef22f7c24ea7bc52242ad959de2e1",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:chapter-2-responsibility",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "chapter-2-responsibility"
+      ],
+      "contentFingerprint": "55c51671698467d4e97baf20f5ef182c5f203611fdc9953a70abe57937891636",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:chapter-3-driving-rules",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "chapter-3-driving-rules"
+      ],
+      "contentFingerprint": "ae3af571c1aab5873bbbd5a0072fced5bdd80e36ed61a23a059438bced34d15c",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:chapter-4-natural-capacity",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "chapter-4-natural-capacity"
+      ],
+      "contentFingerprint": "9ec6e2e49fa7b9397d653ac5c99f5c56b0c9b6d21888061ac5e041ef58c6db73",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:chapter-5-driving-behavior",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "chapter-5-driving-behavior"
+      ],
+      "contentFingerprint": "dd12e9acf051975ed13f79aef55826cb8d02a1fd59e173819ec389d9f495da75",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:front-matter",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "front-matter"
+      ],
+      "contentFingerprint": "f50709dc4a05d70c09b9c70257acd0c2c8bc229a691a467272132ba0bd7f73d7",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    },
+    {
+      "pageId": "navigation:introduction",
+      "routeHash": null,
+      "surfaceKind": "navigation-support",
+      "implementationStatus": "navigation-only",
+      "eligibility": "ineligible",
+      "eligibilityReasonRu": "Навигационная группа не является содержательной страницей Руководства.",
+      "contentSourceIds": [
+        "introduction"
+      ],
+      "contentFingerprint": "f876c6703230fe9be9bcee58964d172fb205622563f5fe785f8a148e172803cd",
+      "review": {
+        "status": "derived",
+        "generatedAt": "2026-06-24T15:00:00Z"
+      }
+    }
+  ]
+}

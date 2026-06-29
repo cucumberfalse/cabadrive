@@ -14,7 +14,9 @@
     "validate:manual-4ruedas": "node scripts/content-manual-vehiculo-4ruedas.mjs",
     "validate:manual-guide": "node scripts/manual-guide-source-fidelity.mjs && node scripts/manual-guide-visual-completeness-audit.mjs && node scripts/manual-guide-image-readability-translations-audit.mjs",
     "validate:manual-sign-inventory": "node scripts/manual-sign-inventory.mjs",
-    "validate:content": "node scripts/validate-content.mjs && pnpm run validate:manual-sign-inventory && node scripts/manual-guide-source-fidelity.mjs && node scripts/manual-guide-visual-completeness-audit.mjs && node scripts/manual-guide-image-readability-translations-audit.mjs",
+    "validate:manual-ticket-placement": "node scripts/content-manual-ticket-placement.mjs",
+    "generate:manual-ticket-placement": "node scripts/content-manual-ticket-placement.mjs --write",
+    "validate:content": "node scripts/validate-content.mjs && pnpm run validate:manual-sign-inventory && node scripts/manual-guide-source-fidelity.mjs && node scripts/manual-guide-visual-completeness-audit.mjs && node scripts/manual-guide-image-readability-translations-audit.mjs && pnpm run validate:manual-ticket-placement",
     "validate:content:quality": "node scripts/validate-content.mjs --quality-gate",
     "validate:overlays": "node scripts/content-image-overlays.mjs",
     "generate:manual-guide-visual-completeness-evidence": "node scripts/manual-guide-visual-completeness-audit.mjs --write",
@@ -40,7 +42,7 @@
     "lucide-react": "^0.555.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "vite": "^6.4.1"
+    "vite": "^6.4.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
@@ -50,6 +52,9 @@
     "typescript": "^5.9.3"
   },
   "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6"
+    },
     "onlyBuiltDependencies": [
       "esbuild"
     ]

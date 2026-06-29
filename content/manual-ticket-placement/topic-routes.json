@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": 2,
+  "reviewedAt": "2026-06-24T15:00:00Z",
+  "reviewedBy": "codex-implementation-agent-f038-ra002",
+  "routes": [
+    {
+      "topicRouteId": "parking-clearances-and-corners",
+      "topicTitleRu": "Отступы при парковке, углы и въезды",
+      "pages": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "general-parking-prohibited",
+                "textPath": "titleRu",
+                "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
+              },
+              "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное"
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Отступы при парковке, углы и въезды» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "bc3609b3299dc8e2a019a7e2a0570df3e30dacd071e2398d22d150bebc393506"
+    },
+    {
+      "topicRouteId": "parking-prohibitions-and-signed-zones",
+      "topicTitleRu": "Запреты парковки и знаки",
+      "pages": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "general-parking-prohibited",
+                "textPath": "titleRu",
+                "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
+              },
+              "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное"
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Запреты парковки и знаки» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "11806bc8b8ea63a73adf9ee834707394e45fbdd0564aaacb5a78416c0c586a0f"
+    },
+    {
+      "topicRouteId": "driver-hand-signals",
+      "topicTitleRu": "Жесты водителя",
+      "pages": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "bicycle-intro-growth",
+                "textPath": "textRu",
+                "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+              },
+              "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Жесты водителя» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "a6a5810b3c18792ccee2c8dadafc21b1d97efeaf0e2f62a3e3370d68134c51f9"
+    },
+    {
+      "topicRouteId": "vehicle-lights-and-signaling",
+      "topicTitleRu": "Свет, поворотники и аварийная сигнализация",
+      "pages": [
+        {
+          "pageId": "ch3-lights",
+          "routeHash": "#manual-section-ch3-lights",
+          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "lights-purpose",
+                "textPath": "textRu",
+                "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
+              },
+              "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Свет, поворотники и аварийная сигнализация» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "eff39ce931b7e1792130b83d68d3542333b62776eec4f1d6471980e1a1747a2b"
+    },
+    {
+      "topicRouteId": "vehicle-condition-maintenance-loads",
+      "topicTitleRu": "Состояние автомобиля, обслуживание и груз",
+      "pages": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "pre-driving-checks",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "d7193082a9dd2069505fe3b83e6b46c52bc5629183c4aea5e5e96cae02260023"
+              },
+              "anchorTextAtReview": "Масло, охлаждающую жидкость и жидкость стеклоомывателя."
+            },
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "why-vehicle-condition-matters",
+                "textPath": "textRu",
+                "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
+              },
+              "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Состояние автомобиля, обслуживание и груз» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra003",
+        "reviewedAt": "2026-06-24T20:06:33Z"
+      },
+      "routeFingerprint": "09adbe1061dc0a4450156848c18f9c3030fa5125de59a6e654e4d20ffe8e10c3"
+    },
+    {
+      "topicRouteId": "pedestrian-and-school-road-markings",
+      "topicTitleRu": "Пешеходная и школьная разметка",
+      "pages": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "horizontal-role",
+                "textPath": "textRu",
+                "textFingerprint": "cb95976e3d6c2354a9f7f82a2e9c4b2a8a0cbaee799636ef8978a3e887959869"
+              },
+              "anchorTextAtReview": "Горизонтальная сигнализация - это дорожная разметка на покрытии. Она направляет поток, разделяет полосы, показывает места остановки, переходы, особые зоны и другие правила движения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Пешеходная и школьная разметка» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "e1ea030ed0c59a0362b39132b21778d312c7b8dce13ef58c334a6dfed8f20c98"
+    },
+    {
+      "topicRouteId": "pedestrian-school-zones-and-markings",
+      "topicTitleRu": "Пешеходы, школы и разметка зон",
+      "pages": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "pedestrian-priority-intro",
+                "textPath": "textRu",
+                "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+              },
+              "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Пешеходы, школы и разметка зон» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "be872b826a29e7ee2df3597ca97c8dfb4a0effdf26d5c340d38c08a4551f20d4"
+    },
+    {
+      "topicRouteId": "speed-limits",
+      "topicTitleRu": "Скорость: город, трасса и особые зоны",
+      "pages": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "speed-definition",
+                "textPath": "textRu",
+                "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
+              },
+              "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Скорость: город, трасса и особые зоны» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "11a321bf8e0c5eccb9803e079f885b0e92c7d3fb29e51ce6e4c06967705c4f5f"
+    },
+    {
+      "topicRouteId": "safe-distance-and-braking",
+      "topicTitleRu": "Дистанция, торможение и реакция",
+      "pages": [
+        {
+          "pageId": "ch3-speed",
+          "routeHash": "#manual-section-ch3-speed",
+          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "reaction-and-stopping",
+                "itemIndex": 1,
+                "textPath": "itemsRu",
+                "textFingerprint": "84cd2f0d9e1a8687766c541021210ceeb73c2ecdf68f6288a868dabdf553aa65"
+              },
+              "anchorTextAtReview": "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Дистанция, торможение и реакция» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "bec71e3c86d012ff193a3054f491eb645379248ab896cedd18984fb8c9348c5f"
+    },
+    {
+      "topicRouteId": "alcohol-drugs-and-impairment",
+      "topicTitleRu": "Алкоголь, препараты и состояние водителя",
+      "pages": [
+        {
+          "pageId": "ch4-alcohol-drugs",
+          "routeHash": "#manual-section-ch4-alcohol-drugs",
+          "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "legal-and-illegal-substances",
+                "textPath": "textRu",
+                "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+              },
+              "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Алкоголь, препараты и состояние водителя» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "8556fe300cd2f82eeef6245a370aa490c96aee56cb14e8de9a5e63e47dd83f59"
+    },
+    {
+      "topicRouteId": "adverse-weather-and-visibility",
+      "topicTitleRu": "Погода, видимость и сцепление",
+      "pages": [
+        {
+          "pageId": "ch3-adverse-conditions",
+          "routeHash": "#manual-section-ch3-adverse-conditions",
+          "pageContentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "adverse-lead",
+                "textPath": "textRu",
+                "textFingerprint": "8d8ea33705abb6e345948eb4e3727f61202c340a9668c87725aae20fcc2e4bdb"
+              },
+              "anchorTextAtReview": "Погодные условия меняются, поэтому водитель должен быть готов к туману, дождю, ветру, снегу и жаре. В каждой ситуации главный принцип один: снизить риск до того, как ухудшение видимости или сцепления станет критическим."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Погода, видимость и сцепление» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "602b1bdb48a3c86d8c144441638a41d2f374ee84d8de4056c8af0c66b60e7d7d"
+    },
+    {
+      "topicRouteId": "fatigue-distraction-and-attention",
+      "topicTitleRu": "Усталость, стресс и отвлечения",
+      "pages": [
+        {
+          "pageId": "ch4-sleep-fatigue",
+          "routeHash": "#manual-section-ch4-sleep-fatigue",
+          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "fatigue-definition",
+                "textPath": "textRu",
+                "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
+              },
+              "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Усталость, стресс и отвлечения» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "29545262345b04b373d52e4d8aeffd620e3d2237aae14d914c888eb36d4c192d"
+    },
+    {
+      "topicRouteId": "road-types-highways-and-routes",
+      "topicTitleRu": "Типы дорог: улицы, трассы и быстрые дороги",
+      "pages": [
+        {
+          "pageId": "ch3-highways",
+          "routeHash": "#manual-section-ch3-highways",
+          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "highway-towing-guidance",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
+              },
+              "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Типы дорог: улицы, трассы и быстрые дороги» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "caea7cf6fc7463c83057eb549a40791aa3569878a77eed9dd6d31c60b387dd56"
+    },
+    {
+      "topicRouteId": "regulatory-signs",
+      "topicTitleRu": "Знаки приказа и запрета",
+      "pages": [
+        {
+          "pageId": "app4-signs-regulatory",
+          "routeHash": "#manual-section-app4-signs-regulatory",
+          "pageContentFingerprint": "e1717765e721e0c00d9fec028a91323f72d84d028fa92826775226a5a1106bcd",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "regulatory-role",
+                "textPath": "textRu",
+                "textFingerprint": "595279018f40ccfd6daf9261b8e64229a4fe66960c23d49bf7dce3fac4743544"
+              },
+              "anchorTextAtReview": "Регулирующие знаки сообщают водителю обязательное правило: запрет, ограничение, приоритет или конец ранее действовавшего предписания. Сами знаки на листах идут на испанском как визуальные образцы."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Знаки приказа и запрета» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "8b33840cd67bb84aa9ebc511a551099af3d8fedb21dfd5d51501b9b414dbc477"
+    },
+    {
+      "topicRouteId": "warning-signs",
+      "topicTitleRu": "Предупреждающие знаки: опасные участки и сигналы",
+      "pages": [
+        {
+          "pageId": "app4-signs-warning",
+          "routeHash": "#manual-section-app4-signs-warning",
+          "pageContentFingerprint": "0b5253b1af5ebad25331adf1414eb1ac158200ad56e81292de610d9b19d01855",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "warning-role",
+                "textPath": "textRu",
+                "textFingerprint": "274d1c5e0500160503e96b69262cf191cdef751c8bcc7d9b9d3e39e548d40077"
+              },
+              "anchorTextAtReview": "Предупреждающие знаки заранее готовят водителя к риску: особенности дороги, место максимальной опасности, возможная временная опасность, приближение другого устройства управления движением или конец предупреждения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Предупреждающие знаки: опасные участки и сигналы» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "ccc58d595b138dd0d0b8d5084c88e4f1479f435f3fb5dd699e4dbc74f09e2a94"
+    },
+    {
+      "topicRouteId": "information-signs",
+      "topicTitleRu": "Информационные знаки, сервисы и ориентиры",
+      "pages": [
+        {
+          "pageId": "app4-signs-informational",
+          "routeHash": "#manual-section-app4-signs-informational",
+          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-sign-entry",
+                "blockId": "informational-individual-sign-catalog",
+                "entryId": "app4informational-p191-019-terminal-de-omnibus-catalog-entry",
+                "textPath": "russianTranslation",
+                "textFingerprint": "69cd9fed09b1c50d94a8a9f0e22abe8c9680747e42fecd7edab933468e84cc69"
+              },
+              "anchorTextAtReview": "автовокзал"
+            },
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "informational-role",
+                "textPath": "textRu",
+                "textFingerprint": "51b3cfd45e75be4c2b4f4e4db7c1707e09cd623ffedcfb136a6820c3cbe459e4"
+              },
+              "anchorTextAtReview": "Информационные знаки помогают ориентироваться: сообщают характеристики дороги, городскую и дорожную номенклатуру, туристическую или сервисную информацию, образовательные сообщения и специальные объявления."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Информационные знаки, сервисы и ориентиры» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra003",
+        "reviewedAt": "2026-06-24T20:06:33Z"
+      },
+      "routeFingerprint": "3ea17ea2e1b7df5eb8b5f977fa13d4d73da00ee4e42898db44d1518cf08a321e"
+    },
+    {
+      "topicRouteId": "traffic-lights-and-rail-crossings",
+      "topicTitleRu": "Светофоры, переезды и сигналы",
+      "pages": [
+        {
+          "pageId": "app4-signs-traffic-lights",
+          "routeHash": "#manual-section-app4-signs-traffic-lights",
+          "pageContentFingerprint": "9157d974a41d80c3d9bd004c527ef133746717f212c955ec7f2f20bc873613d2",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "traffic-lights-groups",
+                "itemIndex": 2,
+                "textPath": "itemsRu",
+                "textFingerprint": "9d743ef0eb0477c548c4b8b2be68e80975319acd55a7c66b61c821841e684915"
+              },
+              "anchorTextAtReview": "Специальные светофоры относятся к отдельным потокам или пользователям дороги, например пешеходам, велосипедам или общественному транспорту."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Светофоры, переезды и сигналы» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "ca2a0cb8cb3d29ba6201c5b0b867f28b61c28a61654a51ed60ff31e7bae9305e"
+    },
+    {
+      "topicRouteId": "right-of-way-signals-and-rail-crossings",
+      "topicTitleRu": "Приоритет: сигналы, перекрестки и переезды",
+      "pages": [
+        {
+          "pageId": "ch3-right-of-way",
+          "routeHash": "#manual-section-ch3-right-of-way",
+          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "uncontrolled-intersections",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
+              },
+              "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Приоритет: сигналы, перекрестки и переезды» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "e99170beb54d15826705da4953de3572bccc998d9432a1a1c1253ad9c651fbc2"
+    },
+    {
+      "topicRouteId": "right-of-way-basic-intersections",
+      "topicTitleRu": "Приоритет на обычных перекрестках",
+      "pages": [
+        {
+          "pageId": "ch3-right-of-way",
+          "routeHash": "#manual-section-ch3-right-of-way",
+          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "uncontrolled-intersections",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
+              },
+              "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Приоритет на обычных перекрестках» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "0cf5193a47d4482d1e6774b83967267b420f8635cee70cdac91018a1de01b477"
+    },
+    {
+      "topicRouteId": "right-of-way-special-situations",
+      "topicTitleRu": "Особые случаи приоритета и уступания",
+      "pages": [
+        {
+          "pageId": "ch3-right-of-way",
+          "routeHash": "#manual-section-ch3-right-of-way",
+          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "uncontrolled-intersections",
+                "itemIndex": 1,
+                "textPath": "itemsRu",
+                "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+              },
+              "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Особые случаи приоритета и уступания» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "d58b44a03f3f5424f30fba855f1d9e8aa53aadd903e0ea683b23787f2b0bc85c"
+    },
+    {
+      "topicRouteId": "documents-licenses-and-insurance",
+      "topicTitleRu": "Документы, лицензия, VTV, страховка и номерные знаки",
+      "pages": [
+        {
+          "pageId": "ch2-required-documents",
+          "routeHash": "#manual-section-ch2-required-documents",
+          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "documents-scope",
+                "textPath": "textRu",
+                "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
+              },
+              "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Документы, лицензия, VTV, страховка и номерные знаки» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "66fe973f0d6b94725f603d06ff0478d8ce10f481825a8132895884db6aaa4d48"
+    },
+    {
+      "topicRouteId": "authorities-controls-and-sanctions",
+      "topicTitleRu": "Регулировщики, контроль и санкции",
+      "pages": [
+        {
+          "pageId": "ch3-priority-of-rules",
+          "routeHash": "#manual-section-ch3-priority-of-rules",
+          "pageContentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "rule-priority-lead",
+                "textPath": "textRu",
+                "textFingerprint": "3bb458bd69e649ad9f08cb315153300ec77e6266b9c20f6623f87ff14c559866"
+              },
+              "anchorTextAtReview": "Чтобы вести автомобиль безопасно, водитель должен учитывать все сигналы дорожного движения, указания и разметку. Цвет и форма знаков помогают понять, как двигаться и какую ситуацию ожидать на маршруте."
+            }
+          ]
+        },
+        {
+          "pageId": "ch2-scoring",
+          "routeHash": "#manual-section-ch2-scoring",
+          "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "scoring-definition",
+                "textPath": "textRu",
+                "textFingerprint": "d3d6d3e1eb7f5f0b1d817087c123483971cdd5a1efb835e1dc6a4f18afb80678"
+              },
+              "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Регулировщики, контроль и санкции» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "1a0b3c6c5544c2a8054f2c847449b19ee9d062f82af40d7dff361968bad13d87"
+    },
+    {
+      "topicRouteId": "safety-principles-and-risk",
+      "topicTitleRu": "Базовая безопасность и риск",
+      "pages": [
+        {
+          "pageId": "ch5-anticipatory-efficient-driving",
+          "routeHash": "#manual-section-ch5-anticipatory-efficient-driving",
+          "pageContentFingerprint": "159dab3108ab1a55dd981139ebb9494405a72cde811493b8507a203f7f0d91d9",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "two-cross-cutting-concepts",
+                "textPath": "textRu",
+                "textFingerprint": "30541f28296a2c4f5f44547f865c09b076d06d8122323eb0cf664070415b1dfa"
+              },
+              "anchorTextAtReview": "Предупредительное и эффективное вождение - два сквозных понятия хорошей водительской практики."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Базовая безопасность и риск» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "3b6624fee9e2606cf435f5c46bcec888d3cd34a276a34dfaa2f0a4a9183be992"
+    },
+    {
+      "topicRouteId": "stopping-vs-parking-maneuvers",
+      "topicTitleRu": "Остановка, стоянка и маневры парковки",
+      "pages": [
+        {
+          "pageId": "ch3-stopping-parking",
+          "routeHash": "#manual-section-ch3-stopping-parking",
+          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "detention-definition",
+                "textPath": "textRu",
+                "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+              },
+              "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Остановка, стоянка и маневры парковки» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "7ff018e4e924d01bd4bf61290819345cf51eac6dad5b3d844728b41f6c9ecbc3"
+    },
+    {
+      "topicRouteId": "center-lines-and-crossing-rules",
+      "topicTitleRu": "Осевые линии и пересечение разметки",
+      "pages": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "horizontal-role",
+                "textPath": "textRu",
+                "textFingerprint": "cb95976e3d6c2354a9f7f82a2e9c4b2a8a0cbaee799636ef8978a3e887959869"
+              },
+              "anchorTextAtReview": "Горизонтальная сигнализация - это дорожная разметка на покрытии. Она направляет поток, разделяет полосы, показывает места остановки, переходы, особые зоны и другие правила движения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Осевые линии и пересечение разметки» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "7c1ae712eb839b4778a0460eba2271327f97eadd8f7b6b4389a40eeaa8493dac"
+    },
+    {
+      "topicRouteId": "lane-and-channelization-markings",
+      "topicTitleRu": "Полосы, островки и направляющая разметка",
+      "pages": [
+        {
+          "pageId": "app4-signs-horizontal",
+          "routeHash": "#manual-section-app4-signs-horizontal",
+          "pageContentFingerprint": "c1b00981be46aa887f3bab5fe2375d126818c4ad2187261a04519bd5297c661e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "horizontal-groups",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "55be1d925ab05a66c61f780544429656ccf14f36788a0babffbb26ba8ee010f4"
+              },
+              "anchorTextAtReview": "Продольная разметка идет вдоль направления движения: линии полос, разделение потоков, край проезжей части, выделенные полосы и направления."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Полосы, островки и направляющая разметка» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "42e030bc138702e862b6896de88ef40224ca9fe49d7f6ab751d5386d2a198924"
+    },
+    {
+      "topicRouteId": "lane-choice-and-lane-changes",
+      "topicTitleRu": "Выбор полосы и перестроение",
+      "pages": [
+        {
+          "pageId": "ch3-highways",
+          "routeHash": "#manual-section-ch3-highways",
+          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "highway-lead",
+                "textPath": "textRu",
+                "textFingerprint": "2dd369de1e2c98e0c3b6e4d131a5465674bcfa89243a07626dddd6edc4629e2d"
+              },
+              "anchorTextAtReview": "Autopistas и другие vías rápidas требуют более строгого планирования: скорость выше, пространство для ошибки меньше, а решения о въезде, выезде, полосе и дистанции нужно принимать заранее."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Выбор полосы и перестроение» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "aaaa8b299d862f9337df186a811f71b323f0b9a8b4eeadc98e81b8c8324af892"
+    },
+    {
+      "topicRouteId": "public-transport-and-exclusive-lanes",
+      "topicTitleRu": "Автобусы, Metrobus и выделенные полосы",
+      "pages": [
+        {
+          "pageId": "ch1-public-transport-system",
+          "routeHash": "#manual-section-ch1-public-transport-system",
+          "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "public-transport-intro",
+                "textPath": "textRu",
+                "textFingerprint": "3dd65db619f030810bad6e9eb8bb14b594c8ccf8e5ecd21cabeb6eeb52b9f9b7"
+              },
+              "anchorTextAtReview": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Автобусы, Metrobus и выделенные полосы» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "c8b4c8f6c804b88cbf57b3cebab9cc180699943c5881415a3f456a88032a0e8f"
+    },
+    {
+      "topicRouteId": "sustainable-mobility-and-vulnerable-users",
+      "topicTitleRu": "Устойчивая мобильность и уязвимые участники",
+      "pages": [
+        {
+          "pageId": "ch1-sustainable-mobility",
+          "routeHash": "#manual-section-ch1-sustainable-mobility",
+          "pageContentFingerprint": "8aa624c9f07bbc192598e03e904640a67af03901dc44f8619a3a48c622c51a20",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "definition",
+                "textPath": "textRu",
+                "textFingerprint": "54f0c1ce95d48b34312692f444a8ba2c17763ca241e13fcc2491b6a7c6068bfa"
+              },
+              "anchorTextAtReview": "Устойчивая мобильность - это способ передвигаться плавно, безопасно и организованно, особенно учитывая тех, кто идет пешком или едет на велосипеде. Такой подход помогает улучшать качество городской среды."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Устойчивая мобильность и уязвимые участники» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "6be8dd152cf191f993944379615584f796040e26b7e1a0e331b7f25048b209c6"
+    },
+    {
+      "topicRouteId": "vulnerable-users-and-shared-spaces",
+      "topicTitleRu": "Уязвимые участники и общее пространство",
+      "pages": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "pedestrian-priority-intro",
+                "textPath": "textRu",
+                "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+              },
+              "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Уязвимые участники и общее пространство» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "fd68f95361ff970ebff7a8059802be15568d2793efb69dd83c7a6203dd644e1c"
+    },
+    {
+      "topicRouteId": "bicycles-and-micromobility",
+      "topicTitleRu": "Велосипеды, ciclorrodados и DMP",
+      "pages": [
+        {
+          "pageId": "ch1-bicycle",
+          "routeHash": "#manual-section-ch1-bicycle",
+          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "bicycle-intro-growth",
+                "textPath": "textRu",
+                "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
+              },
+              "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Велосипеды, ciclorrodados и DMP» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "e0a4860c333579e7dc0f3167a0478adb055977da89715f546ae3c1ef420a4857"
+    },
+    {
+      "topicRouteId": "mirrors-blind-spots-and-visibility",
+      "topicTitleRu": "Зеркала, слепые зоны и обзор",
+      "pages": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "mirrors-and-blind-spots",
+                "itemIndex": 0,
+                "textPath": "itemsRu",
+                "textFingerprint": "1f5ac890f3aa28b225d451e579d039c9629f8e39ff4ca0dc38716f16472eeda8"
+              },
+              "anchorTextAtReview": "В автомобиле используются три зеркала: левое, центральное и правое."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Зеркала, слепые зоны и обзор» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "f132480b7e2a111508ee8eab952c9c9ea48014d8f594cf35a80e040a5c190af0"
+    },
+    {
+      "topicRouteId": "occupant-protection",
+      "topicTitleRu": "Ремни, детские кресла и подголовники",
+      "pages": [
+        {
+          "pageId": "app1-safety-elements",
+          "routeHash": "#manual-section-app1-safety-elements",
+          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "passive-safety-seatbelts",
+                "itemIndex": 2,
+                "textPath": "itemsRu",
+                "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
+              },
+              "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Ремни, детские кресла и подголовники» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "51a78a621ba98b49d3d644452f55d3445763e30d7c6436fe9b786884dc59c98f"
+    },
+    {
+      "topicRouteId": "emergency-response-and-crash-scene",
+      "topicTitleRu": "Аварии, экстренные действия и место ДТП",
+      "pages": [
+        {
+          "pageId": "ch2-incident-obligations",
+          "routeHash": "#manual-section-ch2-incident-obligations",
+          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "incident-duty-core",
+                "textPath": "textRu",
+                "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
+              },
+              "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Аварии, экстренные действия и место ДТП» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "5a868c0e1e1378827e9124a1542078b354dec8b53f5be8389a5ed729a7c7faca"
+    },
+    {
+      "topicRouteId": "crash-liability-and-legal-duties",
+      "topicTitleRu": "Ответственность и юридические обязанности после ДТП",
+      "pages": [
+        {
+          "pageId": "ch2-legal-responsibility",
+          "routeHash": "#manual-section-ch2-legal-responsibility",
+          "pageContentFingerprint": "56bcea5321021b4ca4a4f440a6661d9ba603b0e2d9c6b01bd13ecbcff9f4fc4c",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "driving-is-higher-risk",
+                "textPath": "textRu",
+                "textFingerprint": "72678629e018bffc943707e172af0988beb0930c9491b7a97201433af134e672"
+              },
+              "anchorTextAtReview": "Когда человек выбирает управлять транспортным средством, его ответственность выше: скорость, размер кузова и перевозимый вес увеличивают возможный вред. Поэтому вождение прямо описано как акт ответственности перед всеми, кто делит общественную дорогу."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Ответственность и юридические обязанности после ДТП» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "a14d162600aea0e8ef50b7277847716d79b9c1bff02cd66b2fbf5b6e27b57f83"
+    },
+    {
+      "topicRouteId": "pedestrian-crossings-and-priority",
+      "topicTitleRu": "Пешеходы на переходах и приоритет",
+      "pages": [
+        {
+          "pageId": "ch1-pedestrian-priority",
+          "routeHash": "#manual-section-ch1-pedestrian-priority",
+          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "pedestrian-priority-intro",
+                "textPath": "textRu",
+                "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
+              },
+              "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Пешеходы на переходах и приоритет» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "5c87e5e51304534ad9e04c4f7134f3aee96bed1c7691e8bcfc1a3252751abbdd"
+    },
+    {
+      "topicRouteId": "turns-direction-and-reversing",
+      "topicTitleRu": "Повороты, направление движения и задний ход",
+      "pages": [
+        {
+          "pageId": "ch3-turns",
+          "routeHash": "#manual-section-ch3-turns",
+          "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-block",
+                "blockId": "turns-core",
+                "textPath": "textRu",
+                "textFingerprint": "634ae2db2e980aefb1710fec0cd15236d2b3ccbda35b105d8430dd10f4c6a547"
+              },
+              "anchorTextAtReview": "Поворот на перекрестке должен быть заранее понятен другим участникам движения и выполняться плавно, без внезапного торможения и без ускоренного входа в боковую улицу."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Повороты, направление движения и задний ход» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "a79eb4f0bde97d4b11d3757b99e6d9cbc63bd03f824cf5116d69d91e97004c44"
+    },
+    {
+      "topicRouteId": "overtaking-and-passing",
+      "topicTitleRu": "Обгон и опережение",
+      "pages": [
+        {
+          "pageId": "ch3-overtaking",
+          "routeHash": "#manual-section-ch3-overtaking",
+          "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+          "anchors": [
+            {
+              "anchor": {
+                "kind": "manual-list-item",
+                "blockId": "definitions",
+                "itemIndex": 2,
+                "textPath": "itemsRu",
+                "textFingerprint": "5eb33dd47f104c9c35d4a570fb7278f4bd97f23c39484fd4eb75ce711dcaa3b2"
+              },
+              "anchorTextAtReview": "Использование полосы зависит от ситуации: левая полоса связана с обгоном и более быстрым движением, правая - с обычным движением и подготовкой к поворотам или съездам, если знаки не указывают иное."
+            }
+          ]
+        }
+      ],
+      "routingRationaleRu": "Тема «Обгон и опережение» проверена против содержательных страниц Руководства; страницы перечислены от наиболее прямого учебного контекста к более узкому допустимому контексту.",
+      "review": {
+        "status": "approved",
+        "reviewedBy": "codex-implementation-agent-f038-ra002",
+        "reviewedAt": "2026-06-24T15:00:00Z"
+      },
+      "routeFingerprint": "d29eda846ea31e1dc4a006a9020a846384d3f742f8218bf20ed099c0bd2aa66c"
+    }
+  ]
+}
