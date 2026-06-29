@@ -126,6 +126,21 @@ If no eligible route contains the answer for a ticket:
 5. Update the reviewed manifest and deterministic evidence only after all ledgers and both ticket invariants pass.
 6. Keep generator/scorer behavior candidate-only. It may not synthesize approval metadata, selected outcomes, rejection reasons, audit conclusions, or comparative rationales.
 
+### F038-FAV-003 Final Architect validation pass
+
+- Architect validation pass: passed
+- Final Architect validation completed at: 2026-06-29T18:53:31-03:00
+- Architect validated effective content head: a9d480ea8192267b892f6d93ce78aa66ba9b47aa
+- Pre-validation/current PR head reviewed: 389213eb71bd72dbd4d5d779bb56354cd4592929
+- Evidence/process-memory-only successors over the effective content head: `0a698aedc0814b218fc670afe1a33e4e958b5947` and `389213eb71bd72dbd4d5d779bb56354cd4592929` are evidence/process-memory-only successors over `a9d480ea8192267b892f6d93ce78aa66ba9b47aa`.
+- The current validation-evidence commit itself is evidence-only and must be checked by the Orchestrator current-head guard before finalization/merge.
+- Required checks on the reviewed current head were green: `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and `osv-scan`.
+- Thread-aware review state: 0 unresolved review threads.
+- Review Agent evidence on `389213eb71bd72dbd4d5d779bb56354cd4592929`: no blocking findings.
+- Return counts at pass: Architect `10 / 10`; F039 Architect `0 / 10`.
+- No unresolved Implementation Agent feedback remains.
+- Validation scope: full current PR content relevant to features `038` and `039`, customer intent, Architect-assigned tasks and dispositions, review findings, process memory, acceptance evidence, local guards, required checks, and final gates.
+
 Exact Implementation Agent write scope:
 
 - `content/manual-ticket-placement/topic-routes.json`;
