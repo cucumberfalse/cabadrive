@@ -16,7 +16,8 @@ import {
   type ProgressAnswer,
   type ProcessGuideSection,
   type Question,
-  type TopicGuideTicket
+  type TopicGuideTicket,
+  type TopicGuideTopic
 } from "./data/content";
 import type { ManualLayoutBlock, ManualNavigationEntry, ManualLayoutManifest, ManualPage, ManualPageBounds, ManualPageLayout, ManualRuManifest, ManualNavigationManifest } from "./data/manual4Ruedas";
 import {
@@ -1068,12 +1069,32 @@ function safeLocalImagePath(question: Question | undefined, imageLocalPath?: str
   return undefined;
 }
 
+function buildSourceConflictNoteByQuestionId(topics: TopicGuideTopic[]) {
+  const notesByQuestionId = new Map<string, string>();
+  for (const topic of topics) {
+    for (const ticket of topic.tickets) {
+      const note = ticket.sourceConflictNoteRu;
+      if (!note) continue;
+      const existingNote = notesByQuestionId.get(ticket.questionId);
+      if (existingNote && existingNote !== note) {
+        throw new Error(`Divergent sourceConflictNoteRu for ticket ${ticket.questionId}`);
+      }
+      notesByQuestionId.set(ticket.questionId, note);
+    }
+  }
+  return notesByQuestionId;
+}
+
+const manualTicketSourceConflictNoteByQuestionId = buildSourceConflictNoteByQuestionId(data.topicStudyGuide.topics);
+
 function CanonicalStudyTicketBlock({
   questionId,
+  sourceConflictNoteRu,
   topicTicket,
   testIdPrefix
 }: {
   questionId: string;
+  sourceConflictNoteRu?: string;
   topicTicket?: TopicGuideTicket;
   testIdPrefix: "materials-ticket" | "manual-ticket";
 }) {
@@ -1084,6 +1105,7 @@ function CanonicalStudyTicketBlock({
   const translation = translationByQuestion.get(questionId);
   const source = question ? sourceById.get(question.sourceId) : undefined;
   const correctAnswer = question?.answers.find((answer) => answer.id === question.correctAnswerId);
+  const resolvedSourceConflictNoteRu = sourceConflictNoteRu ?? topicTicket?.sourceConflictNoteRu;
 
   if (!question) {
     return (
@@ -1125,10 +1147,10 @@ function CanonicalStudyTicketBlock({
           </figcaption>
         </figure>
       )}
-      {topicTicket?.sourceConflictNoteRu && (
+      {resolvedSourceConflictNoteRu && (
         <aside className="support-block explanation">
           <span className="block-label">Заметка о старой формулировке</span>
-          <p>{topicTicket.sourceConflictNoteRu}</p>
+          <p>{resolvedSourceConflictNoteRu}</p>
         </aside>
       )}
       <div className="materials-answers" role="list" aria-label={`Ответы к билету ${question.id}`}>
@@ -1170,7 +1192,12 @@ function ManualTicketAppendix({ pageId }: { pageId: string }) {
   if (questionIds.length === 0) return null;
 
   const cards = questionIds.map((questionId) => (
-    <CanonicalStudyTicketBlock questionId={questionId} testIdPrefix="manual-ticket" key={questionId} />
+    <CanonicalStudyTicketBlock
+      questionId={questionId}
+      sourceConflictNoteRu={manualTicketSourceConflictNoteByQuestionId.get(questionId)}
+      testIdPrefix="manual-ticket"
+      key={questionId}
+    />
   ));
 
   return (

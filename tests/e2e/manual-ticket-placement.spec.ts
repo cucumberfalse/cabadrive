@@ -1,6 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 const practiceStatusLabel = "Текущие билеты: неофициальная B-практика, не полная официальная база GCBA";
+const conflictNoteFixtures = [
+  ["b-fallback-024", "cédula azul no es exigible"],
+  ["b-fallback-135", "36 месяцев/60.000 km"],
+  ["b-fallback-309", "количество cédula azul"],
+  ["b-fallback-456", "изображением cédula"]
+] as const;
 
 test("manual route appends canonical tickets and mounts dense cards only after opening", async ({ page }, testInfo) => {
   test.setTimeout(60_000);
@@ -100,6 +106,29 @@ test("fallback and image-backed tickets preserve canonical content", async ({ pa
   await expect(fallback).toContainText("Правильный ответ");
   await expect(fallback.locator("img")).toHaveAttribute("loading", "lazy");
   await expect(fallback.locator("img")).toHaveAttribute("src", /^\/content\/assets\/questions\//u);
+});
+
+test("manual required-documents tickets surface topic-guide conflict notes", async ({ page }) => {
+  await page.goto("/#manual-section-ch2-required-documents");
+  const appendix = page.getByTestId("manual-ticket-appendix");
+  await expect(appendix).toHaveAttribute("data-page-id", "ch2-required-documents");
+  await expect(appendix.getByTestId("manual-ticket-disclosure")).toBeVisible();
+  await expect(appendix.locator(".materials-ticket")).toHaveCount(0);
+
+  await appendix.getByText(/Показать билеты/).click();
+  for (const [questionId, distinctiveText] of conflictNoteFixtures) {
+    const ticket = page.getByTestId(`manual-ticket-${questionId}`);
+    await expect(ticket.getByText("Заметка о старой формулировке")).toBeVisible();
+    await expect(ticket.getByText(distinctiveText)).toBeVisible();
+  }
+
+  const noNoteTicket = page.getByTestId("manual-ticket-b-fallback-027");
+  await expect(noNoteTicket).toBeVisible();
+  await expect(noNoteTicket.getByText("Заметка о старой формулировке")).toHaveCount(0);
+  await expect(noNoteTicket.locator(".support-block.explanation").filter({ hasText: "Заметка о старой формулировке" })).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.locator('[data-testid^="materials-ticket-"]').first()).toBeVisible();
 });
 
 test("unused introduction, sign appendix, and materials adapter remain available", async ({ page }) => {

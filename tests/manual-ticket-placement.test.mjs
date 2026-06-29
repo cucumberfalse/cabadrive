@@ -32,6 +32,23 @@ const topicRoutes = readJson("content/manual-ticket-placement/topic-routes.json"
 const ticketTopicAssignments = readJson("content/manual-ticket-placement/ticket-topic-assignments.json");
 const runtimeProjection = readJson("content/manual-ticket-placement/manual-ticket-placement.runtime.json");
 const corpus = await loadManualCorpus(root);
+const conflictNoteQuestionIds = ["b-fallback-024", "b-fallback-135", "b-fallback-309", "b-fallback-456"];
+
+function buildSourceConflictNoteByQuestionIdFixture(topics) {
+  const notesByQuestionId = new Map();
+  for (const topic of topics) {
+    for (const ticket of topic.tickets) {
+      const note = ticket.sourceConflictNoteRu;
+      if (!note) continue;
+      const existingNote = notesByQuestionId.get(ticket.questionId);
+      if (existingNote && existingNote !== note) {
+        throw new Error(`Divergent sourceConflictNoteRu for ticket ${ticket.questionId}`);
+      }
+      notesByQuestionId.set(ticket.questionId, note);
+    }
+  }
+  return notesByQuestionId;
+}
 
 function validate(
   candidateRecords,
@@ -432,6 +449,60 @@ test("runtime source appends tickets after existing page flows and keeps canonic
   assert.match(runtimeSource, /manual-ticket-placement\.runtime\.json/u);
   assert.doesNotMatch(runtimeSource, /manual-ticket-placement\/placements\//u);
   assert.doesNotMatch(runtimeSource, /officialTextEs|questionTextRu|correctAnswerId/u);
+});
+
+test("source-conflict notes derive from topic guide and reject divergent duplicate notes", () => {
+  const notesByQuestionId = buildSourceConflictNoteByQuestionIdFixture(guide.topics);
+  assert.equal(notesByQuestionId.size, conflictNoteQuestionIds.length);
+
+  for (const questionId of conflictNoteQuestionIds) {
+    const guideNotes = guide.topics
+      .flatMap((topic) => topic.tickets)
+      .filter((ticket) => ticket.questionId === questionId)
+      .map((ticket) => ticket.sourceConflictNoteRu)
+      .filter(Boolean);
+    assert.equal(guideNotes.length, 1);
+    assert.equal(notesByQuestionId.get(questionId), guideNotes[0]);
+  }
+  assert.equal(notesByQuestionId.has("b-fallback-027"), false);
+
+  const duplicatedIdentical = structuredClone(guide.topics);
+  duplicatedIdentical[0].tickets.push(structuredClone(
+    guide.topics.flatMap((topic) => topic.tickets).find((ticket) => ticket.questionId === "b-fallback-024")
+  ));
+  assert.equal(
+    buildSourceConflictNoteByQuestionIdFixture(duplicatedIdentical).get("b-fallback-024"),
+    notesByQuestionId.get("b-fallback-024")
+  );
+
+  const divergentDuplicate = structuredClone(guide.topics);
+  divergentDuplicate[0].tickets.push({
+    questionId: "b-fallback-024",
+    sourceConflictNoteRu: "Другая заметка, которую нельзя выбирать молча.",
+    answerExplanations: []
+  });
+  assert.throws(
+    () => buildSourceConflictNoteByQuestionIdFixture(divergentDuplicate),
+    /Divergent sourceConflictNoteRu for ticket b-fallback-024/u
+  );
+});
+
+test("manual source contract passes note-only prop while Materials keeps topicTicket", () => {
+  const appSource = readFileSync("src/App.tsx", "utf8");
+  assert.match(appSource, /function buildSourceConflictNoteByQuestionId\(topics: TopicGuideTopic\[\]\)/u);
+  assert.match(appSource, /const manualTicketSourceConflictNoteByQuestionId = buildSourceConflictNoteByQuestionId\(data\.topicStudyGuide\.topics\);/u);
+  assert.match(appSource, /throw new Error\(`Divergent sourceConflictNoteRu for ticket \$\{ticket\.questionId\}`\);/u);
+  assert.match(appSource, /const resolvedSourceConflictNoteRu = sourceConflictNoteRu \?\? topicTicket\?\.sourceConflictNoteRu;/u);
+
+  const manualCardsStart = appSource.indexOf("const cards = questionIds.map");
+  const manualCardsEnd = appSource.indexOf("  return (", manualCardsStart);
+  assert.notEqual(manualCardsStart, -1);
+  assert.notEqual(manualCardsEnd, -1);
+  const manualCardsSource = appSource.slice(manualCardsStart, manualCardsEnd);
+  assert.match(manualCardsSource, /sourceConflictNoteRu=\{manualTicketSourceConflictNoteByQuestionId\.get\(questionId\)\}/u);
+  assert.doesNotMatch(manualCardsSource, /topicTicket=/u);
+
+  assert.match(appSource, /<CanonicalStudyTicketBlock questionId=\{ticket\.questionId\} topicTicket=\{ticket\} testIdPrefix="materials-ticket" \/>/u);
 });
 
 test("clean production bundle excludes manual-placement review and audit markers", async () => {
