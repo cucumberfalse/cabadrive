@@ -95,3 +95,18 @@ Recommended evidence for later roles:
 ## Handoff Notes
 
 This is a single-goal bug fix request and should remain one feature memory item. The next role is Architect, which should create `spec.md`, `plan.md`, and `tasks.md` before any implementation work begins.
+
+## Final Analyst Validation
+
+Analyst validation pass: passed
+Final Analyst validation completed at: 2026-07-06T21:47:16Z
+Analyst validated effective content head: 40ca4186b9d8761aa371c892ded9eab56290635d
+
+Analyst validation evidence:
+
+- The original request asked that switching between pages lands at the start of the new page rather than preserving the previous page's scroll offset. The effective content head implements centralized route-keyed scroll reset in `src/App.tsx` for top-level routes, manual route identity, app-owned hash changes, and browser back/forward route entry.
+- The screenshot scenario is covered in spirit and letter: from a scrolled `Руководство` Chapter 3 manual route, selecting another Chapter 3 manual route is verified to land at `window.scrollY <= 1` rather than retaining the stale mid-page position.
+- Recorded verification covers desktop top-level navigation, desktop manual navigation, mobile navigation, app-owned manual hash/back navigation, and a same-page manual disclosure negative case that confirms ordinary same-page interaction does not reset scroll.
+- Required checks and review evidence recorded by Orchestrator/Architect are green/pass on the same effective content head, with no unresolved review findings and no accepted known issues requiring an owner decision.
+
+Analyst final-validation return count: 0.

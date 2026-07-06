@@ -99,12 +99,12 @@
 
 ## Review / Final Validation Tasks
 
-- [ ] T034 Review Agent verifies centralized route-key behavior, manual route
+- [x] T034 Review Agent verifies centralized route-key behavior, manual route
   coverage, hash/popstate coverage, same-page negative coverage, and absence
   of unrelated content/runtime changes.
-- [ ] T035 Orchestrator resolves or dispositions review findings and required
+- [x] T035 Orchestrator resolves or dispositions review findings and required
   checks.
-- [ ] T036 Orchestrator invokes final Architect validation only after
+- [x] T036 Orchestrator invokes final Architect validation only after
   implementation, review, checks, and process memory appear current.
 - [ ] T037 Orchestrator invokes final Analyst validation only after final
   Architect validation passes.
@@ -214,5 +214,58 @@
 
 ## Final Validation
 
-Final Architect validation has not been performed. This planning assignment
-only creates the implementation-ready feature memory.
+Architect validation pass: passed
+Final Architect validation completed at: 2026-07-06T21:45:49Z
+Architect validated effective content head:
+`40ca4186b9d8761aa371c892ded9eab56290635d`
+
+Cycle PR-set summary:
+
+- PR: #205, `https://github.com/cucumberfalse/cabadrive/pull/205`
+- Branch: `codex/040-scroll-top-navigation`
+- Purpose: scroll-to-top navigation fix for top-level routes, manual routes,
+  app-owned hashes/popstate, and mobile route entry.
+- Verified base: `origin/main` at
+  `a714064dc205395ff734d86358e5010cd256e574`.
+- Effective content head:
+  `40ca4186b9d8761aa371c892ded9eab56290635d`.
+- Current local and remote branch head matched the effective content head at
+  validation time.
+- PR state at validation time: open, non-draft, mergeable, 1 commit, 6 changed
+  files.
+- Required checks at validation time were green on the effective content head:
+  `baseline-checks`, `docker-validation`, `guard`, `AI Review`, and
+  `osv-scan`.
+- Review outcome: pass/no findings. GitHub review comments included
+  `Codex Review` no-finding summaries for
+  `40ca4186b9d8761aa371c892ded9eab56290635d`; review thread listing returned
+  no unresolved review threads.
+
+Architect validation evidence:
+
+- Architect-assigned implementation scope matched the planned files:
+  `src/App.tsx`, `tests/e2e/app.spec.ts`, and feature memory.
+- The implementation follows the Architect guidance by using a centralized
+  route/page identity scroll effect in `src/App.tsx`, keyed by `view` and the
+  active manual route identity, rather than per-button scroll calls.
+- The implementation uses instant deterministic scroll behavior and sets
+  `history.scrollRestoration` to `manual` while mounted, restoring the prior
+  value on cleanup.
+- App-owned manual hashes and browser back/forward paths are covered by the
+  same route-key behavior. Non-app-owned real element anchors remain eligible
+  to scroll to their DOM target after render.
+- Same-page UI state is intentionally excluded from the route key; recorded
+  Playwright evidence covers a manual disclosure negative case that does not
+  reset scroll.
+- Implementation evidence covers desktop top-level route reset, desktop manual
+  route reset, mobile route reset, app-owned manual hash/back navigation, and
+  same-page negative behavior.
+- Verification evidence records `git diff --check`, `pnpm run build`, focused
+  Playwright coverage, and `pnpm run test` passing.
+- Implementation Agent feedback for Architect disposition: none.
+- Accepted known issues requiring owner decision: none.
+- Architect final-validation return count for this work cycle: 0.
+
+This final Architect validation is evidence-only process memory. Analyst final
+validation is the next required role step before Orchestrator completion or
+finalization.
