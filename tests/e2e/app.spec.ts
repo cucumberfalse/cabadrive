@@ -572,6 +572,23 @@ async function visibleTicketId(page: Page) {
   return match[1];
 }
 
+async function scrollWindowTo(page: Page, top: number) {
+  await page.evaluate((scrollTop) => window.scrollTo(0, scrollTop), top);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(100);
+}
+
+async function expectWindowAtRouteTop(page: Page) {
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThanOrEqual(1);
+}
+
+async function dispatchClickWithoutAutoScroll(locator: Locator) {
+  return locator.evaluate((element) => {
+    const scrollBeforeClick = window.scrollY;
+    (element as HTMLElement).click();
+    return scrollBeforeClick;
+  });
+}
+
 async function firstVisibleTicketIds(page: Page, count: number) {
   const ids = [];
   const nav = page.getByTestId("question-card").locator(".question-flow-nav");
@@ -4025,6 +4042,102 @@ test("Introduction guide exits on hash Back and keeps route buttons native", asy
   await expect(page.getByTestId("introduction-reader")).toBeVisible();
   await expect(page.getByTestId("intro-route-intro-incident")).toHaveAttribute("aria-current", "page");
   await expect(page.getByRole("heading", { name: "Авария или дорожный инцидент?" })).toBeVisible();
+});
+
+test("route navigation resets stale window scroll on desktop top-level pages", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openPrimarySources(page);
+  await openSourceDocument(page, longPrimarySource);
+
+  await scrollWindowTo(page, 900);
+  const scrollBeforeClick = await dispatchClickWithoutAutoScroll(page.locator(".tabs").getByRole("button", { name: "Материалы", exact: true }));
+  expect(scrollBeforeClick).toBeGreaterThan(100);
+
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+  await expectWindowAtRouteTop(page);
+});
+
+test("manual route navigation resets stale window scroll on desktop", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/#manual-section-ch3-speed");
+  const reader = page.getByTestId("introduction-reader");
+  const section = reader.getByTestId("manual-guide-section");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch3-speed");
+
+  const scrollOwnerProbe = await reader.evaluate((root) => {
+    const content = root.querySelector('[data-testid="manual-guide-content"]') as HTMLElement | null;
+    const nav = root.querySelector('[data-testid="manual-guide-nav"]') as HTMLElement | null;
+    return {
+      windowScrollY: window.scrollY,
+      contentOverflowY: content ? window.getComputedStyle(content).overflowY : null,
+      contentScrollTop: content?.scrollTop ?? null,
+      navOverflowY: nav ? window.getComputedStyle(nav).overflowY : null,
+      navCanScroll: nav ? nav.scrollHeight > nav.clientHeight : null
+    };
+  });
+  expect(scrollOwnerProbe.windowScrollY).toBe(0);
+  expect(scrollOwnerProbe.contentOverflowY).toBe("visible");
+  expect(scrollOwnerProbe.contentScrollTop).toBe(0);
+  expect(scrollOwnerProbe.navOverflowY).toBe("auto");
+  expect(scrollOwnerProbe.navCanScroll).toBe(true);
+
+  await scrollWindowTo(page, 950);
+  const scrollBeforeClick = await dispatchClickWithoutAutoScroll(page.getByTestId("manual-guide-pending-section-ch3-stopping-parking"));
+  expect(scrollBeforeClick).toBeGreaterThan(100);
+
+  await expect(page).toHaveURL(/#manual-section-ch3-stopping-parking$/);
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch3-stopping-parking");
+  await expectWindowAtRouteTop(page);
+});
+
+test("mobile route navigation resets stale window scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 900 });
+  await page.goto("/");
+  await page.getByRole("button", { name: /Материалы/ }).click();
+  await expect(page.getByRole("heading", { name: topicGuide.titleRu })).toBeVisible();
+
+  await scrollWindowTo(page, 900);
+  const scrollBeforeClick = await dispatchClickWithoutAutoScroll(page.getByRole("button", { name: /Источники/ }));
+  expect(scrollBeforeClick).toBeGreaterThan(100);
+
+  await expect(page.getByRole("heading", { name: "Официальные первоисточники" })).toBeVisible();
+  await expectWindowAtRouteTop(page);
+});
+
+test("app-owned manual hash navigation resets stale window scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/#manual-section-ch3-speed");
+  await expect(page.getByTestId("manual-guide-section")).toHaveAttribute("data-manual-section-id", "ch3-speed");
+
+  await scrollWindowTo(page, 950);
+  await page.evaluate(() => {
+    window.location.hash = "#manual-section-ch1-bicycle";
+  });
+
+  const section = page.getByTestId("manual-guide-section");
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch1-bicycle");
+  await expectWindowAtRouteTop(page);
+
+  await scrollWindowTo(page, 950);
+  await page.goBack();
+  await expect(section).toHaveAttribute("data-manual-section-id", "ch3-speed");
+  await expectWindowAtRouteTop(page);
+});
+
+test("same-page manual disclosure does not trigger route scroll reset", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/#manual-section-ch3-speed");
+  const disclosure = page.getByTestId("manual-ticket-disclosure");
+  await expect(disclosure).toBeVisible();
+
+  await disclosure.evaluate((element) => element.scrollIntoView({ block: "center", inline: "nearest" }));
+  const scrollBeforeClick = await page.evaluate(() => window.scrollY);
+  expect(scrollBeforeClick).toBeGreaterThan(100);
+  await dispatchClickWithoutAutoScroll(disclosure.locator("summary"));
+  await expect(disclosure).toHaveAttribute("open", "");
+  const scrollAfterClick = await page.evaluate(() => window.scrollY);
+
+  expect(scrollAfterClick).toBeGreaterThan(100);
 });
 
 test("Introduction guide legacyManual URLs reload into the intended guide", async ({ page }) => {

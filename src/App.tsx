@@ -1637,6 +1637,17 @@ function nonIntroductionRouteUrl() {
   return `${url.pathname}${url.search}`;
 }
 
+function realElementAnchorForHash(hash: string) {
+  if (!hash || introductionEntryForHash(hash) || manualGuideSectionByHash.has(hash)) return undefined;
+  const rawId = hash.slice(1);
+  if (!rawId) return undefined;
+  try {
+    return document.getElementById(decodeURIComponent(rawId)) ?? document.getElementById(rawId);
+  } catch {
+    return document.getElementById(rawId);
+  }
+}
+
 function introductionArticleById(id: string) {
   return introductionArticleSections.find((section) => section.id === id);
 }
@@ -3961,6 +3972,10 @@ export function App() {
     return manualSectionForHash && manualGuideSectionIsAvailable(manualSectionForHash) ? manualSectionForHash.id : undefined;
   });
   const [progress, setProgress] = useState(loadProgress);
+  const routeScrollKey = useMemo(
+    () => `${view}:${view === "pandemia" ? selectedManualSectionId ?? selectedIntroductionId : ""}`,
+    [selectedIntroductionId, selectedManualSectionId, view]
+  );
 
   useEffect(() => {
     function syncHashView() {
@@ -3986,6 +4001,27 @@ export function App() {
       window.removeEventListener("popstate", syncHashView);
     };
   }, []);
+
+  useEffect(() => {
+    if (!("scrollRestoration" in window.history)) return undefined;
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const targetAnchor = realElementAnchorForHash(window.location.hash);
+      if (targetAnchor) {
+        targetAnchor.scrollIntoView({ block: "start", inline: "nearest", behavior: "auto" });
+        return;
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [routeScrollKey]);
 
   function reset() {
     clearProgress();
