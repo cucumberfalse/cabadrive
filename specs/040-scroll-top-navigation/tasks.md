@@ -150,6 +150,7 @@
 ## Known Issues
 
 - None accepted during implementation.
+  Resolution: not applicable; no known issues remain.
 
 ## Implementation Notes
 
@@ -270,3 +271,37 @@ This final Architect validation is evidence-only process memory. Final Analyst
 validation passed at 2026-07-06T21:47:16Z for effective content head
 `40ca4186b9d8761aa371c892ded9eab56290635d`; the timestamp and effective
 content head are recorded in `feature-request.md`.
+
+## Decisions
+
+- Route scroll boundary: reset stale scroll on route/page identity changes,
+  including top-level routes, manual routes, and app-owned hash/popstate
+  navigation.
+- Evidence-only finalization: preserve validated implementation content at
+  `40ca4186b9d8761aa371c892ded9eab56290635d`; later final-validation updates
+  are process-memory evidence only.
+
+## Cycle PR Set
+
+- PR #205, branch `codex/040-scroll-top-navigation`, implementation/effective
+  content head SHA `40ca4186b9d8761aa371c892ded9eab56290635d`, status included
+  in final validation; current PR head
+  `b115b4ddfbac558487d137de44d0a8b741c323c0` is an evidence-only follow-up.
+
+## Implementation Agent Feedback
+
+- No unresolved Implementation Agent feedback.
+
+## Final Validation Evidence
+
+- Effective content head: 40ca4186b9d8761aa371c892ded9eab56290635d
+- Architect validation: passed at 2026-07-06T21:45:49Z for 40ca4186b9d8761aa371c892ded9eab56290635d
+- Architect validated effective content head: 40ca4186b9d8761aa371c892ded9eab56290635d
+- Analyst validation: passed at 2026-07-06T21:47:16Z for 40ca4186b9d8761aa371c892ded9eab56290635d
+- Final-validation evidence-only commit: current PR head b115b4ddfbac558487d137de44d0a8b741c323c0 contains only process-memory evidence changes after effective content head 40ca4186b9d8761aa371c892ded9eab56290635d
+- Current-PR-head read-only guard: current PR head b115b4ddfbac558487d137de44d0a8b741c323c0 was compared with effective content head 40ca4186b9d8761aa371c892ded9eab56290635d; post-effective-head files are only specs/040-scroll-top-navigation/feature-request.md and specs/040-scroll-top-navigation/tasks.md final-validation/process evidence; required checks and review are green/resolved on current head.
+- Analyst feedback Architect disposition: no Analyst gaps and no Implementation Agent feedback required follow-up.
+- Limit escalation: not needed; Architect return count 0 and Analyst return count 0.
+- Limit escalation: not applicable; Architect return count 0 and Analyst return count 0.
+- Architect return count: 0
+- Analyst return count: 0
