@@ -122,11 +122,11 @@ export const app3SafeDrivingSection: ManualGuideSectionContent = {
     {
       id: "heavy-traffic-network",
       kind: "list",
-      titleRu: "Red de transito pesado и Paseo del Bajo",
+      titleRu: "Red de tránsito pesado (сеть тяжелого транспорта) и Paseo del Bajo",
       sourceTextEs:
         "Red de transito pesado permite vehiculos de peso total bruto superior a 12 toneladas; comprende 205 km, 95 calles y avenidas, 39 barrios; Paseo del Bajo es corredor preferencial para transito pesado y omnibus larga distancia, 60 km/h.",
       itemsRu: [
-        "Red de transito pesado - сеть улиц и проспектов, по которым могут двигаться транспортные средства с полной массой более 12 t.",
+        "Red de tránsito pesado (сеть тяжелого транспорта) - сеть улиц и проспектов, по которым могут двигаться транспортные средства с полной массой более 12 t.",
         "Сеть включает 205 km, 95 улиц и проспектов и 39 из 48 районов города; больше всего километров приходится на Комуну 4 - 35,5 km, а по районам на Barracas - 20,9 km.",
         "Самая длинная артерия сети - Avenida Juan B. Justo, 12,0 km.",
         "Paseo del Bajo - первый предпочтительный коридор для тяжелого транспорта: грузовиков и прицепов с индивидуальной массой 12 t или больше, а также междугородних пассажирских автобусов больше чем на 19 мест, допущенных к туризму, с пассажирами или без них.",

@@ -10,7 +10,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "anchors": [
             {
               "anchor": {
@@ -39,7 +39,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "anchors": [
             {
               "anchor": {
@@ -97,7 +97,7 @@
         {
           "pageId": "ch3-lights",
           "routeHash": "#manual-section-ch3-lights",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "anchors": [
             {
               "anchor": {
@@ -223,7 +223,7 @@
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "anchors": [
             {
               "anchor": {
@@ -252,7 +252,7 @@
         {
           "pageId": "ch3-speed",
           "routeHash": "#manual-section-ch3-speed",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "anchors": [
             {
               "anchor": {
@@ -282,7 +282,7 @@
         {
           "pageId": "ch4-alcohol-drugs",
           "routeHash": "#manual-section-ch4-alcohol-drugs",
-          "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
           "anchors": [
             {
               "anchor": {
@@ -340,7 +340,7 @@
         {
           "pageId": "ch4-sleep-fatigue",
           "routeHash": "#manual-section-ch4-sleep-fatigue",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "anchors": [
             {
               "anchor": {
@@ -369,7 +369,7 @@
         {
           "pageId": "ch3-highways",
           "routeHash": "#manual-section-ch3-highways",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "pageContentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
           "anchors": [
             {
               "anchor": {
@@ -377,9 +377,9 @@
                 "blockId": "highway-towing-guidance",
                 "itemIndex": 0,
                 "textPath": "itemsRu",
-                "textFingerprint": "d5951da4183bb62dafccbd65b8862326579beebf9b3a6071783f28999c6fb5d6"
+                "textFingerprint": "e897918870bd662a60eb736bcffca622710767f1dcfcc1296b6d5584cab78c93"
               },
-              "anchorTextAtReview": "В случае remolque/acarreo ориентироваться на vehículo destinado a ese fin: обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге."
+              "anchorTextAtReview": "В случае remolque/acarreo (буксировки/эвакуации) ориентироваться на vehículo destinado a ese fin (транспорт, предназначенный для этой цели): обычная частная машина не должна импровизированно тянуть аварийный автомобиль на скоростной дороге."
             }
           ]
         }
@@ -457,7 +457,7 @@
         {
           "pageId": "app4-signs-informational",
           "routeHash": "#manual-section-app4-signs-informational",
-          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+          "pageContentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
           "anchors": [
             {
               "anchor": {
@@ -616,7 +616,7 @@
         {
           "pageId": "ch2-required-documents",
           "routeHash": "#manual-section-ch2-required-documents",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
           "anchors": [
             {
               "anchor": {
@@ -645,7 +645,7 @@
         {
           "pageId": "ch3-priority-of-rules",
           "routeHash": "#manual-section-ch3-priority-of-rules",
-          "pageContentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+          "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
           "anchors": [
             {
               "anchor": {
@@ -719,16 +719,16 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "detention-definition",
                 "textPath": "textRu",
-                "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+                "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
               },
-              "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль."
+              "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль."
             }
           ]
         }
@@ -807,16 +807,16 @@
         {
           "pageId": "ch3-highways",
           "routeHash": "#manual-section-ch3-highways",
-          "pageContentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+          "pageContentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "highway-lead",
                 "textPath": "textRu",
-                "textFingerprint": "2dd369de1e2c98e0c3b6e4d131a5465674bcfa89243a07626dddd6edc4629e2d"
+                "textFingerprint": "df9fa1b21245766ff9e8c47d80c293f2792f8a2e44a9118f0a6f23148ecb0bcf"
               },
-              "anchorTextAtReview": "Autopistas и другие vías rápidas требуют более строгого планирования: скорость выше, пространство для ошибки меньше, а решения о въезде, выезде, полосе и дистанции нужно принимать заранее."
+              "anchorTextAtReview": "Autopistas (автомагистрали) и vías rápidas (скоростные дороги) требуют более строгого планирования: скорость выше, пространство для ошибки меньше, а решения о въезде, выезде, полосе и дистанции нужно принимать заранее."
             }
           ]
         }
@@ -1128,7 +1128,7 @@
         {
           "pageId": "ch3-overtaking",
           "routeHash": "#manual-section-ch3-overtaking",
-          "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+          "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
           "anchors": [
             {
               "anchor": {

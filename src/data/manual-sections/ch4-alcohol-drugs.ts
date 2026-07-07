@@ -220,7 +220,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         {
           id: "limit-acompanantes",
           cellsRu: [
-            "Acompañantes en motovehículos - пассажиры мототранспорта",
+            "Acompañantes en motovehículos (пассажиры мототранспорта)",
             "0.50 g/l",
             "специальный случай Ley 2148: нельзя занимать plaza de acompañante в motovehículo с более чем 0,5 g/l, кроме отдельного внешнего habitáculo; это не общий предел для всех сопровождающих в автомобиле"
           ]
@@ -235,7 +235,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
         }
       ],
       captionRu:
-        "Для экзамена важно сохранить конкретные строки: principiantes и profesionales - 0.00 g/l, motociclistas - 0.20 g/l, particulares - 0.50 g/l; строка acompañantes читается как acompañantes en motovehículos по Ley 2148 Art. 5.4.5, а не как правило для любого пассажира автомобиля."
+        "Для экзамена важно сохранить конкретные строки: principiantes (новички) и profesionales (профессиональные водители) - 0.00 g/l, motociclistas (мотоциклисты) - 0.20 g/l, particulares (частные водители) - 0.50 g/l; строка acompañantes (пассажиры) читается как acompañantes en motovehículos (пассажиры мототранспорта) по Ley 2148 Art. 5.4.5, а не как правило для любого пассажира автомобиля."
     },
     {
       id: "absorption-factors",
@@ -283,8 +283,8 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       itemsRu: [
         "При положительной проверке на алкоголь (alcoholemia positiva) применяется административная санкция и, если есть основание, санкция за нарушение (contravencional).",
         "У водителя удерживают водительское удостоверение (retener la licencia de conducir).",
-        "Транспорт направляют или эвакуируют (remitir el vehículo), чтобы водитель не продолжал движение.",
-        "При отказе от проверки на алкоголь контролирующий орган должен запретить продолжать управление и приказать направить или эвакуировать транспорт (remitir el vehículo), потому что состояние водителя считается положительным (se presume positivo)."
+        "Транспорт remitir el vehículo (направляют или эвакуируют), чтобы водитель не продолжал движение.",
+        "При отказе от проверки на алкоголь контролирующий орган должен запретить продолжать управление и приказать remitir el vehículo (направить или эвакуировать транспорт), потому что состояние водителя se presume positivo (считается положительным)."
       ]
     },
     {

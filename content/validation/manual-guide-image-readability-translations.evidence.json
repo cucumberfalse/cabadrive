@@ -12379,28 +12379,28 @@
           },
           {
             "termEs": "Cédula verde",
-            "translationRu": "Зеленая cédula",
+            "translationRu": "Зеленая регистрационная карточка",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
             "termEs": "Cédula azul",
-            "translationRu": "Синяя cédula",
+            "translationRu": "Синяя регистрационная карточка",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
             "termEs": "Cédula marrón",
-            "translationRu": "Коричневая cédula",
+            "translationRu": "Коричневая регистрационная карточка",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
             "termEs": "Cédula rosa",
-            "translationRu": "Розовая cédula",
+            "translationRu": "Розовая регистрационная карточка",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"

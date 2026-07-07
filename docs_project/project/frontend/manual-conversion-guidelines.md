@@ -42,6 +42,15 @@ second guide destination.
   selection blockers on learning text.
 - Use natural, simple Russian. Prefer common words, short sentences, and clear
   learner-facing phrasing over formal literal translation.
+- Learner-facing Spanish terms or phrases in `Руководство` must either be
+  translated into Russian or retained with immediate Russian support, normally
+  `Spanish term (Russian translation)`. Dense tables, glossary rows, cards, and
+  image-adjacent support may use an equivalent Spanish/Russian structured pair.
+  Source/provenance Spanish fields and protected source-image pixels are not
+  learner-facing text for this rule, but any adjacent DOM support text is.
+- Generic traffic/document terms such as lane, roadway, speed, emergency,
+  parking, document-card, or assistance terminology must not be broadly
+  allowlisted as "official Spanish" without nearby Russian support.
 - Simplification is allowed only when source meaning and ticket-critical detail
   are retained. Preserve named entities, numbers, years, obligations,
   definitions, conditions, lists, safety principles, and exception words unless

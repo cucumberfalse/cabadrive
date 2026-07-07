@@ -53,7 +53,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
           id: "glossary-a-b-accidente-de-transito",
           termEs: "Accidente de tránsito",
           translationRu: "дорожное происшествие",
-          definitionRu: "в учебном manual вместо этого используется термин incidente de tránsito."
+          definitionRu: "в учебном manual вместо этого используется термин incidente de tránsito (дорожный инцидент)."
         },
         {
           id: "glossary-a-b-acera",
@@ -77,7 +77,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
           id: "glossary-a-b-arterias-multicarriles",
           termEs: "Arterias multicarriles",
           translationRu: "многополосные артерии",
-          definitionRu: "проспекты, автомагистрали, полуавтомагистрали и vías rápidas."
+          definitionRu: "проспекты, автомагистрали, полуавтомагистрали и vías rápidas (скоростные дороги)."
         },
         {
           id: "glossary-a-b-automotor",
@@ -235,7 +235,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
           id: "glossary-b-c-colectora",
           termEs: "Colectora",
           translationRu: "сервисная боковая дорога",
-          definitionRu: "боковая проезжая часть, параллельная центральным полосам автомагистрали или vías rápidas."
+          definitionRu: "боковая проезжая часть, параллельная центральным полосам автомагистрали или vías rápidas (скоростной дороги)."
         },
         {
           id: "glossary-b-c-conductor",
@@ -303,7 +303,7 @@ export const frontGlossarySection: ManualGuideSectionContent = {
           id: "glossary-d-i-estacionamiento",
           termEs: "Estacionamiento",
           translationRu: "стоянка",
-          definitionRu: "неподвижное нахождение транспортного средства дольше, чем допускает определение detención."
+          definitionRu: "неподвижное нахождение транспортного средства дольше, чем допускает определение detención (краткой остановки)."
         },
         {
           id: "glossary-d-i-giro",

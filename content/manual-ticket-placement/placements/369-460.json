@@ -439,7 +439,7 @@
             "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
           },
           "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -471,7 +471,7 @@
                   "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
                 },
                 "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+                "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -484,7 +484,7 @@
                   "textFingerprint": "ed73ffbfd0cb9db27c8fbc9fd609229b5495e2367d8ba3d2bcf162f2fcc9f1cd"
                 },
                 "anchorTextAtReview": "Distracción - это отклонение внимания человека от того, чему он должен уделять внимание. В применении к вождению это означает небезопасное и неосторожное (imprudente) управление, потому что вождение требует организации и координации воспринимаемых стимулов и достаточного уровня внимания.",
-                "pageContentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
+                "pageContentFingerprint": "80dbf1b888b2e06d6f9c417750b735ef7c2782b9e487492809e37d16a0792ada",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-374 проверен точный текст «Distracción - это отклонение внимания человека от того, чему он должен уделять внимание. В применении к вождению это означает небезопасное и неосторожное (imprudente) управление, потому что вождение требует организации и координации воспринимаемых стимулов и достаточного уровня внимания.». Он не сообщает ответ «Да, потому что это считается отвлекающим фактором.» на вопрос «Является ли показанное поведение рискованным во время управления автомобилем?» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
               }
@@ -699,7 +699,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -731,7 +731,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -746,7 +746,7 @@
                   "textFingerprint": "603b00998a60a3265b244a82c8a8fbfbe6736bc0834664897a747189f85dcca4"
                 },
                 "anchorTextAtReview": "20 км/ч",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-377 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не указывает показанный участок улицы и не устанавливает именно максимальную скорость для этой ситуации. Поэтому точный якорь не позволяет исключить варианты «40 км/ч.» и «30 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
                 "answerOverlapDisposition": {
@@ -797,7 +797,7 @@
             "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
           },
           "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -829,7 +829,7 @@
                   "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
                 },
                 "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+                "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -840,10 +840,10 @@
                   "blockId": "incorrect-and-maneuver",
                   "itemIndex": 6,
                   "textPath": "itemsRu",
-                  "textFingerprint": "34f07b24db8cc27d97ececa6122cc9cf9111beb8468a8e0c7fea98eca6227a52"
+                  "textFingerprint": "f9c9777b226e32d75692358d7ffc7a492b4fe46012c83f7ad69a9aa8139fa816"
                 },
-                "anchorTextAtReview": "О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "anchorTextAtReview": "О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas (аварийными огнями), маневрировать без толкания других автомобилей, без заезда на acera (тротуар) и с контролем через зеркала.",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-378 проверен точный текст «О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.». Он не сообщает ответ «Верно.» на вопрос «Если автомобиль на изображении собирается заехать в гараж, он заранее предупреждает о манёвре правильными огнями.» и по учебному предмету уступает выбранному контексту ch3-lights."
               }
@@ -990,7 +990,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1022,7 +1022,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1077,7 +1077,7 @@
             "textFingerprint": "a0e981ce5206bc640e4c8d8493f8d0e604efb3a25a9daa0f8d2a837af3154d51"
           },
           "anchorTextAtReview": "Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -1479,7 +1479,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1511,7 +1511,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1795,7 +1795,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -1827,7 +1827,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1839,10 +1839,10 @@
                   "rowId": "exception-40-corrientes",
                   "cellIndex": 2,
                   "textPath": "cellsRu",
-                  "textFingerprint": "59268e4e548aacf5a6f2a0e3cf4e83984169d24689e7b9adb1cc7548321e9e6f"
+                  "textFingerprint": "c295a9264b37492e5c5ef43ae35be131c26226e9526426e522c7ce32fb028416"
                 },
-                "anchorTextAtReview": "не отвечать автоматически 60 км/ч только потому, что это avenida",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "anchorTextAtReview": "не отвечать автоматически 60 км/ч только потому, что это проспект",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-391 совпадение с ответом «60 км/ч.» не самодостаточно: Текст содержит 60 км/ч внутри предупреждения не выбирать этот ответ автоматически по типу avenida и не устанавливает предел для изображённой ситуации. Поэтому точный якорь не позволяет исключить варианты «80 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
                 "answerOverlapDisposition": {
@@ -2156,7 +2156,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2188,7 +2188,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2199,10 +2199,10 @@
                   "blockId": "license-rules",
                   "itemIndex": 4,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3765605d9e1cfc6d2f389aa932f2af7905b198ca88c3906cd2fe8af826bc2a17"
+                  "textFingerprint": "3487fcebeac7723cf41711c0fccb7130858b4e2fd7e0ee10da32148e9604a18c"
                 },
-                "anchorTextAtReview": "Если срок истек не более года назад, возможна renovación. Если прошло больше года, оформление идет как новое otorgamiento.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "anchorTextAtReview": "Если срок истек не более года назад, возможна renovación (продление). Если прошло больше года, оформление идет как новое otorgamiento (первичная выдача).",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-395 проверен точный текст «Если срок истек не более года назад, возможна renovación. Если прошло больше года, оформление идет как новое otorgamiento.». Он не сообщает ответ «Не должно пройти больше одного года с даты окончания срока действия.» на вопрос «После истечения срока действия водительского удостоверения сколько времени может пройти для его продления, прежде чем придется оформлять его как новое?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -2243,7 +2243,7 @@
             "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
           },
           "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2275,7 +2275,7 @@
                   "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
                 },
                 "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2289,7 +2289,7 @@
                   "textFingerprint": "b43f148a4d25909c932a76a6b2997297924ebde23ec8ce49fe264014175641f2"
                 },
                 "anchorTextAtReview": "Движение задним ходом в городе запрещено, кроме парковки, въезда и выезда из гаража или объезда препятствия. Назад можно сдавать только минимально необходимую дистанцию.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-396 проверен точный текст «Движение задним ходом в городе запрещено, кроме парковки, въезда и выезда из гаража или объезда препятствия. Назад можно сдавать только минимально необходимую дистанцию.». Он не сообщает ответ «Нет. Это запрещено, потому что создает риск для велосипедистов.» на вопрос «Правильно ли припарковать автомобиль таким образом?» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
               }
@@ -2417,7 +2417,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -2449,7 +2449,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2464,7 +2464,7 @@
                   "textFingerprint": "63098a26a4002863a94f068881cf6f6cc39c22dacfa0a011b6de355ef160db2f"
                 },
                 "anchorTextAtReview": "100 км/ч",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-398 совпадение с ответом «100 км/ч.» не самодостаточно: Изолированное значение 100 км/ч не называет проспект Интенденте Кантило и условие отсутствия иных знаков, поэтому число без контекста не определяет ответ. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «110 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
                 "answerOverlapDisposition": {
@@ -2603,7 +2603,7 @@
             "textFingerprint": "5eb33dd47f104c9c35d4a570fb7278f4bd97f23c39484fd4eb75ce711dcaa3b2"
           },
           "anchorTextAtReview": "Использование полосы зависит от ситуации: левая полоса связана с обгоном и более быстрым движением, правая - с обычным движением и подготовкой к поворотам или съездам, если знаки не указывают иное.",
-          "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+          "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2636,7 +2636,7 @@
                   "textFingerprint": "5eb33dd47f104c9c35d4a570fb7278f4bd97f23c39484fd4eb75ce711dcaa3b2"
                 },
                 "anchorTextAtReview": "Использование полосы зависит от ситуации: левая полоса связана с обгоном и более быстрым движением, правая - с обычным движением и подготовкой к поворотам или съездам, если знаки не указывают иное.",
-                "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+                "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2691,7 +2691,7 @@
             "textFingerprint": "2405106d5d8b45a837e7130136630dfac00f86375ded9006ea7f1fa81c68e74f"
           },
           "anchorTextAtReview": "Время реакции - интервал между восприятием стимула и действием. Оно зависит от психофизического состояния водителя; среднее учебное значение - примерно 1 секунда.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -2744,7 +2744,7 @@
             "textFingerprint": "2fe07d168fa540c6a3e5a3832e3fc4a3038228246212137ce70905c5ca6054c1"
           },
           "anchorTextAtReview": "На подъеме повернуть колеса к центру проезжей части и оставить первую передачу или режим parking для автоматической коробки.",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -2884,7 +2884,7 @@
             "textFingerprint": "a70cbefba444681e32f210968209ba0cd2632746fdd4cc88f56a5c10af80a0a9"
           },
           "anchorTextAtReview": "Снижается скорость реакции и увеличивается время ответа на стимул.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -2934,10 +2934,10 @@
             "blockId": "phone-recommendations",
             "itemIndex": 4,
             "textPath": "itemsRu",
-            "textFingerprint": "4e592deae2978ba8c5cf3bfdcd7edff0bd22ef333429cf51fa5caa847c48d776"
+            "textFingerprint": "f20e7b70f852fa0e96247ca569a3dcd890332543c1807c31eada8aee1fd2d0a9"
           },
-          "anchorTextAtReview": "Если ожидается важный звонок и другие меры невозможны, включить аварийные огни (balizas) и остановиться в разрешенном месте, чтобы не создавать риска.",
-          "pageContentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
+          "anchorTextAtReview": "Если ожидается важный звонок и другие меры невозможны, включить balizas (аварийные огни) и остановиться в разрешенном месте, чтобы не создавать риска.",
+          "pageContentFingerprint": "80dbf1b888b2e06d6f9c417750b735ef7c2782b9e487492809e37d16a0792ada",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -3078,7 +3078,7 @@
             "textFingerprint": "5eb33dd47f104c9c35d4a570fb7278f4bd97f23c39484fd4eb75ce711dcaa3b2"
           },
           "anchorTextAtReview": "Использование полосы зависит от ситуации: левая полоса связана с обгоном и более быстрым движением, правая - с обычным движением и подготовкой к поворотам или съездам, если знаки не указывают иное.",
-          "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+          "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3111,7 +3111,7 @@
                   "textFingerprint": "5eb33dd47f104c9c35d4a570fb7278f4bd97f23c39484fd4eb75ce711dcaa3b2"
                 },
                 "anchorTextAtReview": "Использование полосы зависит от ситуации: левая полоса связана с обгоном и более быстрым движением, правая - с обычным движением и подготовкой к поворотам или съездам, если знаки не указывают иное.",
-                "pageContentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+                "pageContentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3479,7 +3479,7 @@
             "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
           },
           "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3511,7 +3511,7 @@
                   "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
                 },
                 "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3525,7 +3525,7 @@
                   "textFingerprint": "2fe4369b10edec210e1cfdf25876d02ff64940b297e669bddc2218580f74bde1"
                 },
                 "anchorTextAtReview": "На железнодорожных рельсах. Если переезд без барьеров, минимальная дистанция от рельсов - 5 м.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-412 проверен точный текст «На железнодорожных рельсах. Если переезд без барьеров, минимальная дистанция от рельсов - 5 м.». Он не сообщает ответ «Неверно.» на вопрос «Чтобы припарковаться в этой зоне, нужно оставить свободными как минимум по 5 метров с каждой стороны входа.» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
               }
@@ -3563,10 +3563,10 @@
             "kind": "manual-block",
             "blockId": "detention-definition",
             "textPath": "textRu",
-            "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+            "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
           },
-          "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль.",
-          "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+          "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль.",
+          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3595,10 +3595,10 @@
                   "kind": "manual-block",
                   "blockId": "detention-definition",
                   "textPath": "textRu",
-                  "textFingerprint": "cf48f62816b412e6032cceb36dd2dfa3521304969cd0361b93eaec4f14fcc399"
+                  "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
                 },
-                "anchorTextAtReview": "Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль.",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3609,10 +3609,10 @@
                   "blockId": "detention-method",
                   "itemIndex": 3,
                   "textPath": "itemsRu",
-                  "textFingerprint": "0b6df33a7ce06b138f0a30f1479aca277a502e567b6e3e79f36a48e40aaff035"
+                  "textFingerprint": "35274d535a090a971c5e8c252d704af55ca9638a29223f7a5db18a70ae3b1934"
                 },
-                "anchorTextAtReview": "Остановка из-за светофора, пробки, дорожной ситуации или силы majeure не считается detención или estacionamiento.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "anchorTextAtReview": "Остановка из-за светофора, пробки, дорожной ситуации или fuerza mayor (непреодолимой силы) не считается detención (остановкой) или estacionamiento (стоянкой/парковкой).",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-413 проверен точный текст «Остановка из-за светофора, пробки, дорожной ситуации или силы majeure не считается detención или estacionamiento.». Он не сообщает ответ «Нет, потому что в этом месте запрещены и остановка, и парковка.» на вопрос «Правильно ли остановлен автомобиль в этом месте?» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
               }
@@ -3961,7 +3961,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-417 проверен точный текст «Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.». Он не сообщает ответ «С небольшого расстояния должны быть различимы находящиеся в автомобиле люди.» на вопрос «Что устанавливает Закон № 2148 относительно проверки на дороге степени или тона затемнения стекол автомобиля?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
               }
@@ -4048,7 +4048,7 @@
                   "textFingerprint": "70fc3578b8240a4b1d382f4f9d02853c523990f292d34935f1756ccb9754e762"
                 },
                 "anchorTextAtReview": "Велосипеды, мотоциклы, автомобили, такси, remises, городские автобусные линии и любой неразрешенный транспорт там запрещены.",
-                "pageContentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477",
+                "pageContentFingerprint": "75ba99348f2efcb886916c18092f5070ce73cc49932b9644985ad1c4ed34acba",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-418 проверен точный текст «Велосипеды, мотоциклы, автомобили, такси, remises, городские автобусные линии и любой неразрешенный транспорт там запрещены.». Он не сообщает ответ «Автомобили B и C.» на вопрос «Какие из следующих транспортных средств НЕ находятся в нарушении?» и по учебному предмету уступает выбранному контексту ch5-anticipatory-efficient-driving."
               }
@@ -4175,7 +4175,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -4207,7 +4207,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4218,10 +4218,10 @@
                   "blockId": "outside-caba-minimums",
                   "itemIndex": 2,
                   "textPath": "itemsRu",
-                  "textFingerprint": "999eee01f4a4e5444fe78512b41ac2a00e037ad2df76c1940b214b3666af34fc"
+                  "textFingerprint": "ec4e5cddaca0f483eb15ff9dd14beac306824238078e364eb0b247e785e46d94"
                 },
-                "anchorTextAtReview": "Специальный минимум для semiautopistas y rutas - 40 км/ч.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "anchorTextAtReview": "Специальный минимум для semiautopistas y rutas (полуавтомагистралей и дорог) - 40 км/ч.",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-420 совпадение с ответом «40 км/ч.» не самодостаточно: Якорь называет 40 км/ч минимальной скоростью для semiautopistas и rutas, тогда как билет спрашивает максимальную скорость на улице. Поэтому точный якорь не позволяет исключить варианты «60 км/ч.» и «70 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
                 "answerOverlapDisposition": {
@@ -4378,7 +4378,7 @@
             "textFingerprint": "9d13dcbb7be7c496b02331f31dc0b0fab71c2d58436b73d8804aa059cb61c050"
           },
           "anchorTextAtReview": "начало автомагистрали",
-          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+          "pageContentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -4477,7 +4477,7 @@
                   "textFingerprint": "48135d14b89df554f3d90abacb2800d8eaf14b867527990ed80221c547ff1d9c"
                 },
                 "anchorTextAtReview": "На спусках, подъемах и крутых поворотах обзор вперед ограничен, а скорость транспортного средства может стать небезопасной. Нужно ехать настолько медленно, чтобы можно было остановиться, потому что водитель не знает, что находится с другой стороны.",
-                "pageContentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477",
+                "pageContentFingerprint": "75ba99348f2efcb886916c18092f5070ce73cc49932b9644985ad1c4ed34acba",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-424 проверен точный текст «На спусках, подъемах и крутых поворотах обзор вперед ограничен, а скорость транспортного средства может стать небезопасной. Нужно ехать настолько медленно, чтобы можно было остановиться, потому что водитель не знает, что находится с другой стороны.». Он не сообщает ответ «Неверно.» на вопрос «Велосипедисты не обязаны соблюдать все правила дорожного движения, поскольку их транспортное средство не развивает высокую скорость.» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -4744,7 +4744,7 @@
             "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
           },
           "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4776,7 +4776,7 @@
                   "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
                 },
                 "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+                "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4790,7 +4790,7 @@
                   "textFingerprint": "a0e981ce5206bc640e4c8d8493f8d0e604efb3a25a9daa0f8d2a837af3154d51"
                 },
                 "anchorTextAtReview": "Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+                "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-428 проверен точный текст «Ближний свет используется как основной режим движения в условиях, где дальний свет неуместен. Он помогает видеть дорогу и делает автомобиль заметным.». Он не сообщает ответ «Неверно.» на вопрос «В таких погодных условиях во время движения нужно использовать аварийную сигнализацию.» и по учебному предмету уступает выбранному контексту ch3-lights."
               }
@@ -4970,7 +4970,7 @@
             "textFingerprint": "3d3f6717b918b71e15abc0c80048d906d446c61ffd044e4544f958521b7e4de2"
           },
           "anchorTextAtReview": "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización).",
-          "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -5023,7 +5023,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5055,7 +5055,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5069,7 +5069,7 @@
                   "textFingerprint": "d0f00fc6c65e64cbcbdd6d08c9e04aca9a69a62be0b2db6146a331dacf273b84"
                 },
                 "anchorTextAtReview": "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-432 проверен точный текст «Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.». Он не сообщает ответ «Неверно.» на вопрос «Свидетельство о страховании гражданской ответственности обязательно иметь при себе только при движении по междугородним дорогам.» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -5110,7 +5110,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5142,7 +5142,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5156,7 +5156,7 @@
                   "textFingerprint": "bb4f8882cff3e73a209c91605ac6ae3b5a5355268cc962378d5dfb3afbac9eec"
                 },
                 "anchorTextAtReview": "Номерные знаки должны быть официальными, установленными в положенном месте и без изменений. У автомобиля знак спереди и сзади; у мототранспортного средства один знак сзади.",
-                "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-433 проверен точный текст «Номерные знаки должны быть официальными, установленными в положенном месте и без изменений. У автомобиля знак спереди и сзади; у мототранспортного средства один знак сзади.». Он не сообщает ответ «Нет, потому что номерной знак должен быть установлен в предусмотренном месте и надлежащим образом.» на вопрос «Разрешено ли ездить с номерным знаком, размещенным таким образом?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -5284,7 +5284,7 @@
             "textFingerprint": "6344ad5aa8419e22438f6178510c197de6b52b7188bb883eda8d4840a2a92020"
           },
           "anchorTextAtReview": "Прерывать поездку каждые 200 км или каждые 2 часа.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -5426,7 +5426,7 @@
             "textFingerprint": "454f67ab64e6bfd67d4ddcb4ae2af0482385654c12aaf87fadb67c11a440a1ab"
           },
           "anchorTextAtReview": "У профессиональных водителей повышена склонность к усталости из-за длительного времени за рулем, а у новичков (principiantes) - из-за высокой нагрузки задачи и недостатка опыта.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -5566,7 +5566,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5598,7 +5598,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5612,7 +5612,7 @@
                   "textFingerprint": "0a9eef18db7be0a2a1a81d873cb19e417e595fac46699e9d84bf2c244f784bad"
                 },
                 "anchorTextAtReview": "Дистанция реакции - путь, пройденный за время реакции. Она растет при большем времени реакции и/или большей скорости.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-439 проверен точный текст «Дистанция реакции - путь, пройденный за время реакции. Она растет при большем времени реакции и/или большей скорости.». Он не сообщает ответ «Неверно.» на вопрос «Двигаясь по трассе с максимально разрешенной скоростью, разрешено превышать ее только во время обгона.» и по учебному предмету уступает выбранному контексту ch3-speed."
               }
@@ -5742,7 +5742,7 @@
             "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
           },
           "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-          "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+          "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5774,7 +5774,7 @@
                   "textFingerprint": "b4a80beeb8bc8fd87d25c61d8e50abf09ea1f7ad74e6e32f3d697f66be78faf9"
                 },
                 "anchorTextAtReview": "Fatiga - ощущение нехватки энергии, истощения или усталости, сопровождаемое отсутствием мотивации. Она может появиться из-за недостаточного сна, чрезмерного усилия или длительного напряжения; бывает временной или хронической.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+                "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5788,7 +5788,7 @@
                   "textFingerprint": "a70cbefba444681e32f210968209ba0cd2632746fdd4cc88f56a5c10af80a0a9"
                 },
                 "anchorTextAtReview": "Снижается скорость реакции и увеличивается время ответа на стимул.",
-                "pageContentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+                "pageContentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-441 проверен точный текст «Снижается скорость реакции и увеличивается время ответа на стимул.». Он не сообщает ответ «Оба ответа, A и B, верны.» на вопрос «Следующее действие водителя рискованно, потому что:» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
               }
@@ -5829,7 +5829,7 @@
             "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
           },
           "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-          "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+          "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5861,7 +5861,7 @@
                   "textFingerprint": "99b9020c4cbff0b9a86e2420f054bf39633fd428e914ef41027bdadc0c673b3f"
                 },
                 "anchorTextAtReview": "Световые приборы нужны не только для освещения. Они передают информацию другим водителям и пешеходам, поэтому являются частью коммуникации на дороге.",
-                "pageContentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+                "pageContentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5872,10 +5872,10 @@
                   "blockId": "incorrect-and-maneuver",
                   "itemIndex": 6,
                   "textPath": "itemsRu",
-                  "textFingerprint": "34f07b24db8cc27d97ececa6122cc9cf9111beb8468a8e0c7fea98eca6227a52"
+                  "textFingerprint": "f9c9777b226e32d75692358d7ffc7a492b4fe46012c83f7ad69a9aa8139fa816"
                 },
-                "anchorTextAtReview": "О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "anchorTextAtReview": "О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas (аварийными огнями), маневрировать без толкания других автомобилей, без заезда на acera (тротуар) и с контролем через зеркала.",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-442 проверен точный текст «О намерении остановиться, припарковаться или въехать в гараж нужно заранее сообщать balizas, маневрировать без толкания других автомобилей, без заезда на acera и с контролем через зеркала.». Он не сообщает ответ «Неверно.» на вопрос «Если автомобиль на изображении собирается въехать в гараж справа, он заранее показывает маневр правильными огнями.» и по учебному предмету уступает выбранному контексту ch3-lights."
               }
@@ -6179,7 +6179,7 @@
             "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
           },
           "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-          "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6211,7 +6211,7 @@
                   "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
                 },
                 "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+                "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6224,7 +6224,7 @@
                   "textFingerprint": "bd756b5657bd8861c075e0c8c31237bcc70615901c6f2b3e2d49b2709e687543"
                 },
                 "anchorTextAtReview": "Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires. Общее правило: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre; к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia, потому что провинции и муниципалитеты имеют собственную нормативную автономию.",
-                "pageContentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+                "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-446 проверен точный текст «Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires. Общее правило: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre; к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia, потому что провинции и муниципалитеты имеют собственную нормативную автономию.». Он не сообщает ответ «0,0 грамма алкоголя на литр крови.» на вопрос «С учетом знака на автомобиле, какой максимальный уровень алкоголя в крови допускается для водителя этого транспортного средства?» и по учебному предмету уступает выбранному контексту ch4-alcohol-drugs."
               }
@@ -6405,7 +6405,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -6437,7 +6437,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6452,7 +6452,7 @@
                   "textFingerprint": "603b00998a60a3265b244a82c8a8fbfbe6736bc0834664897a747189f85dcca4"
                 },
                 "anchorTextAtReview": "20 км/ч",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-449 совпадение с ответом «20 км/ч.» не самодостаточно: Изолированное значение 20 км/ч не связывает число с минимальной скоростью именно на показанной улице и допускает иные скоростные значения. Поэтому точный якорь не позволяет исключить варианты «30 км/ч.» и «40 км/ч.» без отсутствующего условия или контекста. После сравнения сохранён выбранный тематический контекст ch3-speed, а этот кандидат отклонён как answer-bearing.",
                 "answerOverlapDisposition": {
@@ -6548,7 +6548,7 @@
                   "textFingerprint": "164495d61ee0987324d4a8d26940c358e6036bbb543300db86ad12140606c351"
                 },
                 "anchorTextAtReview": "Превышение скорости - один из ключевых факторов дорожных инцидентов и тяжелых последствий. Чем выше скорость, тем экспоненциально выше вероятность смерти или тяжелых травм, а поле зрения сужается вплоть до эффекта туннеля.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-450 проверен точный текст «Превышение скорости - один из ключевых факторов дорожных инцидентов и тяжелых последствий. Чем выше скорость, тем экспоненциально выше вероятность смерти или тяжелых травм, а поле зрения сужается вплоть до эффекта туннеля.». Он не сообщает ответ «Оба ответа, A и B, верны.» на вопрос «Какой из перечисленных факторов влияет на чрезмерный расход топлива?» и по учебному предмету уступает выбранному контексту ch5-anticipatory-efficient-driving."
               }
@@ -6589,7 +6589,7 @@
             "textFingerprint": "84cd2f0d9e1a8687766c541021210ceeb73c2ecdf68f6288a868dabdf553aa65"
           },
           "anchorTextAtReview": "Дистанция безопасности - минимальное разумное расстояние до впереди идущего транспорта, которое дает запас реакции. В общем случае закон указывает минимум 2 секунды.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -6642,7 +6642,7 @@
             "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
           },
           "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-          "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+          "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6674,7 +6674,7 @@
                   "textFingerprint": "3622d84f2d240a6e9ec802fbfcf8819c353d637b07ab39f93c413fe85a9ae8a1"
                 },
                 "anchorTextAtReview": "Скорость - это отношение расстояния ко времени, обычно в километрах в час. Понимание пройденной дистанции за конкретное время дает водителю запас для маневра при неожиданной ситуации.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6688,7 +6688,7 @@
                   "textFingerprint": "d25cfffaf7a6e57c91a8bb173c6db605f570447b6e912c5f83acdc238d9ce347"
                 },
                 "anchorTextAtReview": "Нужно учитывать состояние водителя, состояние автомобиля и груза, видимость, тип дороги, покрытие, погоду и плотность движения.",
-                "pageContentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+                "pageContentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-452 проверен точный текст «Нужно учитывать состояние водителя, состояние автомобиля и груза, видимость, тип дороги, покрытие, погоду и плотность движения.». Он не сообщает ответ «Верно.» на вопрос «Согласно закону 2148, ограничения скорости для легкового автомобиля на этой магистральной улице составляют 30 км/ч минимум и 60 км/ч максимум.» и по учебному предмету уступает выбранному контексту ch3-speed."
               }
@@ -6907,7 +6907,7 @@
             "textFingerprint": "51b3cfd45e75be4c2b4f4e4db7c1707e09cd623ffedcfb136a6820c3cbe459e4"
           },
           "anchorTextAtReview": "Информационные знаки помогают ориентироваться: сообщают характеристики дороги, городскую и дорожную номенклатуру, туристическую или сервисную информацию, образовательные сообщения и специальные объявления.",
-          "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+          "pageContentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6939,7 +6939,7 @@
                   "textFingerprint": "51b3cfd45e75be4c2b4f4e4db7c1707e09cd623ffedcfb136a6820c3cbe459e4"
                 },
                 "anchorTextAtReview": "Информационные знаки помогают ориентироваться: сообщают характеристики дороги, городскую и дорожную номенклатуру, туристическую или сервисную информацию, образовательные сообщения и специальные объявления.",
-                "pageContentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+                "pageContentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6950,10 +6950,10 @@
                   "blockId": "parking-exceptions-and-allowed",
                   "itemIndex": 2,
                   "textPath": "itemsRu",
-                  "textFingerprint": "34f918a6a66cada7ed8751e6a2a6625fdfe548a2312244272869deb9034eec90"
+                  "textFingerprint": "c3cf05547f582e24495c10bce2dd01b4168cf10669e7e21115426901d93ec399"
                 },
-                "anchorTextAtReview": "На calles парковка у обеих aceras разрешена каждый день 24 часа, если знак не указывает другое.",
-                "pageContentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+                "anchorTextAtReview": "На calles (улицах) парковка у обеих aceras (тротуаров/бордюров) разрешена каждый день 24 часа, если знак не указывает другое.",
+                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-455 проверен точный текст «На calles парковка у обеих aceras разрешена каждый день 24 часа, если знак не указывает другое.». Он не сообщает ответ «Поблизости находится автомобильная парковка.» на вопрос «Что означает этот знак?» и по учебному предмету уступает выбранному контексту app4-signs-informational."
               }
@@ -6991,10 +6991,10 @@
             "blockId": "cedula-rules",
             "itemIndex": 4,
             "textPath": "itemsRu",
-            "textFingerprint": "df9229050507a8b6b47a27b3c50cd2193684fbeed96b6ce92a10f03533d33bfc"
+            "textFingerprint": "a40f693e99c8875f3226b84a5ac1a0d25edbaef1464d08578b4dcd564f8abab1"
           },
-          "anchorTextAtReview": "Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.",
-          "pageContentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+          "anchorTextAtReview": "Если cédula (карточка) просрочена, управлять может только владелец. Нельзя управлять с cédula (карточкой), оформленной на другое лицо как уполномоченного.",
+          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",

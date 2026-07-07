@@ -188,7 +188,7 @@
       "contentSourceIds": [
         "app3-safe-driving-content"
       ],
-      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477",
+      "contentFingerprint": "75ba99348f2efcb886916c18092f5070ce73cc49932b9644985ad1c4ed34acba",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -252,7 +252,7 @@
       "contentSourceIds": [
         "app4-signs-informational-content"
       ],
-      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50",
+      "contentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -460,7 +460,7 @@
       "contentSourceIds": [
         "ch2-required-documents-content"
       ],
-      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e",
+      "contentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -508,7 +508,7 @@
       "contentSourceIds": [
         "ch3-highways-content"
       ],
-      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa",
+      "contentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -524,7 +524,7 @@
       "contentSourceIds": [
         "ch3-lights-content"
       ],
-      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57",
+      "contentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -540,7 +540,7 @@
       "contentSourceIds": [
         "ch3-overtaking-content"
       ],
-      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e",
+      "contentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -556,7 +556,7 @@
       "contentSourceIds": [
         "ch3-priority-of-rules-content"
       ],
-      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815",
+      "contentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -588,7 +588,7 @@
       "contentSourceIds": [
         "ch3-speed-content"
       ],
-      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60",
+      "contentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -604,7 +604,7 @@
       "contentSourceIds": [
         "ch3-stopping-parking-content"
       ],
-      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf",
+      "contentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -636,7 +636,7 @@
       "contentSourceIds": [
         "ch4-alcohol-drugs-content"
       ],
-      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90",
+      "contentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -652,7 +652,7 @@
       "contentSourceIds": [
         "ch4-distractions-content"
       ],
-      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5",
+      "contentFingerprint": "80dbf1b888b2e06d6f9c417750b735ef7c2782b9e487492809e37d16a0792ada",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -668,7 +668,7 @@
       "contentSourceIds": [
         "ch4-sleep-fatigue-content"
       ],
-      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96",
+      "contentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"
@@ -780,7 +780,7 @@
       "contentSourceIds": [
         "front-glossary-content"
       ],
-      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc",
+      "contentFingerprint": "e126ec40fd7f2bc1051a2a00a14ba0118ca1ef3828d7452f9b1e077c2cf695fa",
       "review": {
         "status": "derived",
         "generatedAt": "2026-06-24T15:00:00Z"

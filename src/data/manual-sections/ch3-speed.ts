@@ -70,31 +70,31 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
         {
           id: "caba-passages-convivencia",
           cellsRu: [
-            "Pasajes y calles de convivencia",
+            "Пассажи и улицы совместного пользования",
             "20 км/ч",
             "низкоскоростная совместная среда; если знак ниже, соблюдается знак"
           ]
         },
         {
           id: "caba-streets",
-          cellsRu: ["Calles", "40 км/ч", "обычная городская calle"]
+          cellsRu: ["Улицы", "40 км/ч", "обычная городская улица"]
         },
         {
           id: "caba-avenues",
-          cellsRu: ["Avenidas", "60 км/ч", "обычный максимум avenida, кроме специальных tramos и знаков"]
+          cellsRu: ["Проспекты", "60 км/ч", "обычный максимум для проспекта, кроме специальных участков и знаков"]
         },
         {
           id: "caba-highways-fast-roads",
-          cellsRu: ["Autopistas CABA", "100 км/ч", "для autopistas CABA; vías rápidas и знаки могут уточнять предел"]
+          cellsRu: ["Автомагистрали CABA", "100 км/ч", "для автомагистралей CABA; скоростные дороги и знаки могут уточнять предел"]
         }
       ],
       captionRu:
-        "Нормативные скорости могут изменяться на отдельных tramos по соображениям безопасности, и водитель узнает это через señales viales."
+        "Нормативные скорости могут изменяться на отдельных tramos (участках) по соображениям безопасности, и водитель узнает это через señales viales (дорожные знаки)."
     },
     {
       id: "caba-avenue-exception-speed-table",
       kind: "table",
-      titleRu: "Исключения в некоторых avenidas и vías rápidas CABA",
+      titleRu: "Исключения на некоторых проспектах и скоростных дорогах CABA",
       sourceTextEs:
         "Excepciones en algunas avenidas: 40, 60, 70, 80 y 100 km/h según arteria o tramo.",
       columnsRu: ["Максимум", "Именованные участки", "Экзаменационная логика"],
@@ -103,31 +103,31 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
           id: "exception-40-corrientes",
           cellsRu: [
             "40 км/ч",
-            "Av. Corrientes, tramo entre calles Junín y Libertad",
-            "не отвечать автоматически 60 км/ч только потому, что это avenida"
+            "Av. Corrientes, участок между улицами Junín и Libertad",
+            "не отвечать автоматически 60 км/ч только потому, что это проспект"
           ]
         },
         {
           id: "exception-60-general-paz-heavy",
           cellsRu: [
             "60 км/ч",
-            "Av. Gral. Paz на calzadas para tránsito pesado, tramo entre Autopista Ingeniero Pascual Palazzo (Acceso Norte) y Av. del Libertador",
-            "конкретный tramo и знак важнее общего городского правила"
+            "Av. Gral. Paz на calzadas para tránsito pesado (проезжих частях для тяжелого транспорта), участок между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. del Libertador",
+            "конкретный участок и знак важнее общего городского правила"
           ]
         },
         {
           id: "exception-70-avenues",
           cellsRu: [
             "70 км/ч",
-            "Av. Figueroa Alcorta, Av. Del Libertador, Av. 27 de Febrero, Av. Brig. Gral. Juan Facundo Quiroga и Av. Costanera Rafael Obligado на указанных tramos",
-            "именованные avenidas сохраняются как отдельная категория, а не сводятся к 60"
+            "Av. Figueroa Alcorta, Av. Del Libertador, Av. 27 de Febrero, Av. Brig. Gral. Juan Facundo Quiroga и Av. Costanera Rafael Obligado на указанных участках",
+            "именованные проспекты сохраняются как отдельная категория, а не сводятся к 60"
           ]
         },
         {
           id: "exception-80-general-paz",
           cellsRu: [
             "80 км/ч",
-            "Av. Gral. Paz, calzadas centrales entre Autopista Ingeniero Pascual Palazzo (Acceso Norte) y Av. 27 de Febrero",
+            "Av. Gral. Paz, центральные проезжие части между Autopista Ingeniero Pascual Palazzo (Acceso Norte) и Av. 27 de Febrero",
             "соблюдать конкретный предел участка"
           ]
         },
@@ -135,13 +135,13 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
           id: "exception-100-fast-roads",
           cellsRu: [
             "100 км/ч",
-            "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz en calzadas centrales entre Av. Leopoldo Lugones y Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopista Perito Moreno, Autopista Hector J. Campora, Autopista 9 de Julio Sur, Autopista Presidente Arturo U. Illia и Autopista R. Balbin (Bs.As.-La Plata)",
-            "vías rápidas/autopistas CABA проверяются по имени, tramo и señalización"
+            "Av. Intendente Cantilo, Av. Leopoldo Lugones, Av. Tte. Gral. Luis J. Dellepiane, Av. Gral. Paz на центральных проезжих частях между Av. Leopoldo Lugones и Autopista Ingeniero Pascual Palazzo (Acceso Norte), Autopista 25 de Mayo, Autopista Perito Moreno, Autopista Hector J. Campora, Autopista 9 de Julio Sur, Autopista Presidente Arturo U. Illia и Autopista R. Balbin (Bs.As.-La Plata)",
+            "vías rápidas/autopistas CABA (скоростные дороги/автомагистрали CABA) проверяются по имени, tramo (участку) и señalización (сигнализации/знакам)"
           ]
         }
       ],
       captionRu:
-        "Таблица нужна именно как исключение: водитель сверяет arteria/tramo и знак, а не заменяет все avenidas одним числом."
+        "Таблица нужна именно как исключение: водитель сверяет arteria/tramo (дорогу/участок) и знак, а не заменяет все avenidas (проспекты) одним числом."
     },
     {
       id: "max-speed-heavy-passenger",
@@ -153,35 +153,35 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       rows: [
         {
           id: "special-machinery",
-          cellsRu: ["Maquinaria especial", "Calles y avenidas", "30 км/ч"]
+          cellsRu: ["Спецтехника", "Улицы и проспекты", "30 км/ч"]
         },
         {
           id: "special-streets-40",
           cellsRu: [
-            "Camiones, transporte colectivo de pasajeros/as, escolares, movilidad reducida",
-            "Calles",
+            "Грузовики, коллективный пассажирский транспорт, школьный транспорт, транспорт для людей с ограниченной мобильностью",
+            "Улицы",
             "40 км/ч"
           ]
         },
         {
           id: "special-avenues-45",
-          cellsRu: ["Escolares y movilidad reducida", "Avenidas", "45 км/ч"]
+          cellsRu: ["Школьный транспорт и транспорт для людей с ограниченной мобильностью", "Проспекты", "45 км/ч"]
         },
         {
           id: "special-avenues-50",
-          cellsRu: ["Camiones y transporte colectivo de pasajeros/as", "Avenidas", "50 км/ч"]
+          cellsRu: ["Грузовики и коллективный пассажирский транспорт", "Проспекты", "50 км/ч"]
         },
         {
           id: "special-fast-roads-60",
           cellsRu: [
-            "Camiones, transporte colectivo de pasajeros/as, escolares, movilidad reducida",
-            "Autopistas y otras vias rapidas en CABA",
+            "Грузовики, коллективный пассажирский транспорт, школьный транспорт, транспорт для людей с ограниченной мобильностью",
+            "Автомагистрали и другие скоростные дороги в CABA",
             "60 км/ч"
           ]
         },
         {
           id: "special-paseo-bajo-60",
-          cellsRu: ["Transito pesado y omnibus de larga distancia", "Paseo del Bajo", "60 км/ч"]
+          cellsRu: ["Тяжелый транспорт и междугородние автобусы", "Paseo del Bajo", "60 км/ч"]
         }
       ],
       captionRu:
@@ -197,55 +197,55 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       rows: [
         {
           id: "outside-urban-route",
-          cellsRu: ["Todos los vehiculos, ruta que atraviese area urbana", "60 км/ч", "городской tramo маршрута вне CABA"]
+          cellsRu: ["Все транспортные средства, маршрут через городскую зону", "60 км/ч", "городской tramo (участок) маршрута вне CABA"]
         },
         {
           id: "outside-heavy-hazardous-rv",
           cellsRu: [
-            "Camiones, transporte de sustancias peligrosas, automotores con casa rodante",
+            "Грузовики, транспорт опасных веществ, автомобили с жилым прицепом/домом",
             "80 км/ч",
-            "rutas, semiautopistas y autopistas nacionales"
+            "национальные дороги, полуавтомагистрали и автомагистрали"
           ]
         },
         {
           id: "outside-passenger-routes-semihighways",
           cellsRu: [
-            "Microbuses, omnibus y casas rodantes motorizadas",
+            "Микроавтобусы, автобусы и моторизованные дома на колесах",
             "90 км/ч",
-            "rutas y semiautopistas"
+            "дороги и полуавтомагистрали"
           ]
         },
         {
           id: "outside-passenger-national-highways",
           cellsRu: [
-            "Microbuses, omnibus y casas rodantes motorizadas",
+            "Микроавтобусы, автобусы и моторизованные дома на колесах",
             "100 км/ч",
-            "autopistas nacionales"
+            "национальные автомагистрали"
           ]
         },
         {
           id: "outside-cars-motorcycles-route",
-          cellsRu: ["Motocicletas y automoviles", "110 км/ч", "ruta"]
+          cellsRu: ["Мотоциклы и автомобили", "110 км/ч", "дорога"]
         },
         {
           id: "outside-pickups-network",
           cellsRu: [
-            "Camionetas",
+            "Пикапы",
             "110 км/ч",
-            "rutas, semiautopistas y autopistas nacionales"
+            "дороги, полуавтомагистрали и национальные автомагистрали"
           ]
         },
         {
           id: "outside-cars-motorcycles-semihighway",
-          cellsRu: ["Motocicletas y automoviles", "120 км/ч", "semiautopistas"]
+          cellsRu: ["Мотоциклы и автомобили", "120 км/ч", "полуавтомагистрали"]
         },
         {
           id: "outside-cars-motorcycles-highway",
-          cellsRu: ["Motocicletas y automoviles", "130 км/ч", "autopistas nacionales"]
+          cellsRu: ["Мотоциклы и автомобили", "130 км/ч", "национальные автомагистрали"]
         }
       ],
       captionRu:
-        "Страница 73 показывает именно комбинации vehicle/via; поэтому вне CABA число выбирается по строке таблицы, а не по одному универсальному максимуму."
+        "Страница 73 показывает именно комбинации типа транспорта и дороги; поэтому вне CABA число выбирается по строке таблицы, а не по одному универсальному максимуму."
     },
     {
       id: "outside-caba-minimums",
@@ -256,14 +256,14 @@ export const ch3SpeedSection: ManualGuideSectionContent = {
       itemsRu: [
         "Слишком медленное движение тоже может вызвать дорожный инцидент.",
         "Минимальные лимиты обычно устанавливаются как половина соответствующих максимальных лимитов для данного типа артерии.",
-        "Специальный минимум для semiautopistas y rutas - 40 км/ч.",
-        "Специальный минимум для autopistas - 60 км/ч."
+        "Специальный минимум для semiautopistas y rutas (полуавтомагистралей и дорог) - 40 км/ч.",
+        "Специальный минимум для autopistas (автомагистралей) - 60 км/ч."
       ]
     },
     {
       id: "precautionary-speed",
       kind: "list",
-      titleRu: "Precautoria: скорость по обстоятельствам",
+      titleRu: "Предосторожная скорость по обстоятельствам",
       sourceTextEs:
         "Velocidad precautoria... tener en cuenta la salud, estado del vehículo y su carga, visibilidad, condiciones de la arteria, calzada, clima y densidad del tránsito.",
       itemsRu: [

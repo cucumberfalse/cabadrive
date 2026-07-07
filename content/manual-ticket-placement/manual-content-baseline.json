@@ -53,7 +53,7 @@
     },
     {
       "path": "src/data/manual-sections/app3-safe-driving.ts",
-      "sha256": "80c1d9822462ba9629a149415eb363379aed96ff20a9a25ad29462ed7cba1967"
+      "sha256": "2bb144e3ba9d1cee5b77b644847609fc032cfd402ed68ba1b8971237d0de32ec"
     },
     {
       "path": "src/data/manual-sections/app3-safety-elements.ts",
@@ -69,7 +69,7 @@
     },
     {
       "path": "src/data/manual-sections/app4-signs-informational.ts",
-      "sha256": "7651df8fde3c62d6a691c001d2bd72de23ea5ae231dbcb00b07009365e24dd10"
+      "sha256": "d99d1e9906ab1048eb26bd3ddccfc29b07744500d161d0d3a4732737296bb901"
     },
     {
       "path": "src/data/manual-sections/app4-signs-regulatory.ts",
@@ -121,7 +121,7 @@
     },
     {
       "path": "src/data/manual-sections/ch2-required-documents.ts",
-      "sha256": "e7c7db38bb26860ac7b79579da09d8f93fbcf9d9448f4fac2d8c4c0e2b770884"
+      "sha256": "8583e94882d2392a8a8b93fa98f50c619620c9c7adeeb60c485d26ac4fe59bd6"
     },
     {
       "path": "src/data/manual-sections/ch2-scoring.ts",
@@ -133,19 +133,19 @@
     },
     {
       "path": "src/data/manual-sections/ch3-highways.ts",
-      "sha256": "bea405b5757e495b491df6c944dc9a279fc4da8519b5f59ed177d2a82019eb5f"
+      "sha256": "e30af068c9ac834d91b5ecd0ef4f5b155901b2973b4751fc415fcd1db2f2df26"
     },
     {
       "path": "src/data/manual-sections/ch3-lights.ts",
-      "sha256": "7e85fb8893ca1037e287f7825cd7aabcd97ec1d941e343e17011684a86c8a302"
+      "sha256": "1581872fba42b1b301c181f5feaca324945ba4540b214bc824c2ec27c46f143d"
     },
     {
       "path": "src/data/manual-sections/ch3-overtaking.ts",
-      "sha256": "63966ddafcaf80018765d6797df25578f81c364eb5ab9859bc4b8429093520ff"
+      "sha256": "73b22ae9af45c2d75ea9e4619c73eec11e5250995a263c1d78d2cc9d694a6e64"
     },
     {
       "path": "src/data/manual-sections/ch3-priority-of-rules.ts",
-      "sha256": "6936ddea7237d4b2626016f03b1cfe380fb06695ce818e0a6c14139ce0110837"
+      "sha256": "6a0982fae4a43f022535fe8b9ce46032e5e06aec5c3f3b5b9ebe79e128256445"
     },
     {
       "path": "src/data/manual-sections/ch3-right-of-way.ts",
@@ -153,11 +153,11 @@
     },
     {
       "path": "src/data/manual-sections/ch3-speed.ts",
-      "sha256": "3cea5d8501fe9374fd69e74e36ca40bc93d5807b45c7b121e0e8d6eead366452"
+      "sha256": "72c0f4b223dbc931aa1d00307fd1fa68af1dafbb0281eb29ee8ca90f6066cb7b"
     },
     {
       "path": "src/data/manual-sections/ch3-stopping-parking.ts",
-      "sha256": "0d9b471563b829ee2e6024edbb4b309bec9a1ef01d652546266eeecc12465f12"
+      "sha256": "fcba10dfea070742616c743a8a2c5cb7d1eccdb33e9bb0ad46a8ae114bcd451b"
     },
     {
       "path": "src/data/manual-sections/ch3-turns.ts",
@@ -165,15 +165,15 @@
     },
     {
       "path": "src/data/manual-sections/ch4-alcohol-drugs.ts",
-      "sha256": "2a25f4275ab499e2160a99431062f32f10e78c13d66c1fe5c0a51b081961d077"
+      "sha256": "22d860cd4aee2eef26e46aa3f28a3ff721fb47a8cbc65c80f3e7cc7952c3a5fc"
     },
     {
       "path": "src/data/manual-sections/ch4-distractions.ts",
-      "sha256": "ef8850f4ef1045f42dafb38311d2d9097ff79163514ce5f6259b4dd560a214cb"
+      "sha256": "1c6d99a943d4e284195c2d19c7a2b45679d1ff525a97ceac32da296a4de8cb97"
     },
     {
       "path": "src/data/manual-sections/ch4-sleep-fatigue.ts",
-      "sha256": "1b2537e5b35cdf26b531c633e4ffa0e34ded94109af280a142ead2352e69f719"
+      "sha256": "75795f57f759007ab15b6f4bc499597421d99eeb6a9126c32a7bf37756c93b72"
     },
     {
       "path": "src/data/manual-sections/ch4-stress.ts",
@@ -201,7 +201,7 @@
     },
     {
       "path": "src/data/manual-sections/front-glossary.ts",
-      "sha256": "c3fb0acbd39fb5e10eb38d6d60f2eb6469eab9eb37cff845e0b7f9b34bd1ce0e"
+      "sha256": "3d3bd97dc8771b8ebe7884eee27cf2d6e923f97a3f9a171358267cf23784c498"
     },
     {
       "path": "src/data/manual-sections/front-presentation.ts",
@@ -1817,7 +1817,7 @@
     },
     {
       "pageId": "app3-safe-driving",
-      "contentFingerprint": "e854ca8d5c6b500b6e1be9adbd047a8b7b63937b9906df5aa86c8031a335e477"
+      "contentFingerprint": "75ba99348f2efcb886916c18092f5070ce73cc49932b9644985ad1c4ed34acba"
     },
     {
       "pageId": "app3-safety-elements",
@@ -1833,7 +1833,7 @@
     },
     {
       "pageId": "app4-signs-informational",
-      "contentFingerprint": "bc34dea9ad61ba5aa52a869fdb8143e9d99f5d114189e040bf1d12ec99de8d50"
+      "contentFingerprint": "67af1fdd3cfb2ec4cc8a319ea7922b249108bde464c9f1211adddb64b13c99ac"
     },
     {
       "pageId": "app4-signs-regulatory",
@@ -1885,7 +1885,7 @@
     },
     {
       "pageId": "ch2-required-documents",
-      "contentFingerprint": "f43b87862ef7ba34d0e88fccea942ddf577fc04753a9ce09b2408b8c2c29b96e"
+      "contentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad"
     },
     {
       "pageId": "ch2-scoring",
@@ -1897,19 +1897,19 @@
     },
     {
       "pageId": "ch3-highways",
-      "contentFingerprint": "af6a1c342f46e45046dc172116637cc337207754e968f9534f31b4fc577bc7aa"
+      "contentFingerprint": "fabf64067811ed511fa011933f6392f0a8272fcf6908dad68c590585021eb507"
     },
     {
       "pageId": "ch3-lights",
-      "contentFingerprint": "b8273fcd412b93cdfc9d3dda61d0f1c6cc7166dae5acfcca56d0df254467bb57"
+      "contentFingerprint": "0680c6704c7fcc3792bbe01931ded07a5b0e50ae5a11ed06004053510baa39be"
     },
     {
       "pageId": "ch3-overtaking",
-      "contentFingerprint": "a11c3cc5e7ec0fbb6e29a9f5851d1ceab50841f3f7d9ee183c5ef13dd7dff13e"
+      "contentFingerprint": "836c8d3cd1b7b63f6006ce003d4ba52344e28024e8b48b3b8f7799e68a59ff49"
     },
     {
       "pageId": "ch3-priority-of-rules",
-      "contentFingerprint": "65514dd65be9047a930aff29c5189229b56468d4fb838cf1e05757b1a72a2815"
+      "contentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe"
     },
     {
       "pageId": "ch3-right-of-way",
@@ -1917,11 +1917,11 @@
     },
     {
       "pageId": "ch3-speed",
-      "contentFingerprint": "009ea695682908c2d21b4f0eb7d63a894b3f30a903e9470bf1f2dd9096bc9e60"
+      "contentFingerprint": "d29be9e73b245e4c3930713a61b21dc4a6ffc084c08e9f09bbbd924fcf6dba1c"
     },
     {
       "pageId": "ch3-stopping-parking",
-      "contentFingerprint": "578d13762e7525047295640fee01392ee6ef88b57d4f1dcc45b49df0f643c5cf"
+      "contentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf"
     },
     {
       "pageId": "ch3-turns",
@@ -1929,15 +1929,15 @@
     },
     {
       "pageId": "ch4-alcohol-drugs",
-      "contentFingerprint": "3e79cf2b0d1d1d0c9d135fd90ba3929415d7e849f5d8f816a229577be5b70d90"
+      "contentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3"
     },
     {
       "pageId": "ch4-distractions",
-      "contentFingerprint": "d4ad7391215fd02c0627da42c7c055f696d08fead0aed5649491cadb61ebd7e5"
+      "contentFingerprint": "80dbf1b888b2e06d6f9c417750b735ef7c2782b9e487492809e37d16a0792ada"
     },
     {
       "pageId": "ch4-sleep-fatigue",
-      "contentFingerprint": "05d81cd38155c1ac421c14a9a40e4af9a9960cbd8c9429aaab028044a1d8eb96"
+      "contentFingerprint": "14289a5081ef3a05f20a1c53557bec7ff519752756731b90fcd44cdc2148d1b5"
     },
     {
       "pageId": "ch4-stress",
@@ -1965,7 +1965,7 @@
     },
     {
       "pageId": "front-glossary",
-      "contentFingerprint": "e94d60ae89313c68def61fd4ebda131dbe713b0d5170f29b5d2dc8eff65c77dc"
+      "contentFingerprint": "e126ec40fd7f2bc1051a2a00a14ba0118ca1ef3828d7452f9b1e077c2cf695fa"
     },
     {
       "pageId": "front-presentation",
@@ -1988,6 +1988,6 @@
       "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c"
     }
   ],
-  "aggregateSourceFingerprint": "10ae22d5b7759d0909adaa1436ad1a4bd5cb2caa5c2233303d1cc3d25e82d9bd",
+  "aggregateSourceFingerprint": "9bbc8af6d34ddea8227b9afbe28011d4f32b3f81abf053d764603c48afeb1760",
   "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
 }
