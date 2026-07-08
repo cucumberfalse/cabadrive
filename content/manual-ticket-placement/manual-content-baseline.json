@@ -217,7 +217,7 @@
     },
     {
       "path": "src/data/pandemiaVialSection.ts",
-      "sha256": "47cc297635a60305b476bbc505884f7e80a96ad0416e65b1b9f9ab91c489509e"
+      "sha256": "2aa49c429360ee9a700fe67938758ec5c1db48c1414dddcca1017016446f9c7c"
     }
   ],
   "referencedImages": [
@@ -1985,9 +1985,9 @@
     },
     {
       "pageId": "intro-road-safety-plan",
-      "contentFingerprint": "2a4787682d96edb1d74ed405426558adc555dd4939eb6cc505e84a5d0b88622c"
+      "contentFingerprint": "30b8b2a8c120eaeda3f9127bc34da99597c1116ddd74c135a693b75c15864c0a"
     }
   ],
-  "aggregateSourceFingerprint": "db15b2533ff96a3656aae2c5b7db1367384f6effac8b3b76685e01421a56b46e",
+  "aggregateSourceFingerprint": "6ce88d20c50ee4bb491341f521dedacb4cacec42101be2dc84c2b8dce225cc7e",
   "aggregateImageFingerprint": "dec6dbd54887b1aeb3d0d7bccd88449176fba01178ff3b616669b7f2b82c39a7"
 }

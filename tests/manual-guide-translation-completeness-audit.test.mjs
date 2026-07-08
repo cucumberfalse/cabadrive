@@ -12,13 +12,14 @@ function tempRoot(prefix) {
   return mkdtempSync(join(tmpdir(), prefix));
 }
 
-function runAudit(sectionRoot, evidencePath, args = []) {
+function runAudit(sectionRoot, evidencePath, args = [], options = {}) {
   return spawnSync(process.execPath, [auditScript, ...args], {
     cwd: process.cwd(),
     env: {
       ...process.env,
       MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT: sectionRoot,
-      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH: evidencePath
+      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH: evidencePath,
+      MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH: options.introductionPath ?? ""
     },
     encoding: "utf8"
   });
@@ -86,16 +87,144 @@ export const ch3HighwaysSection: ManualGuideSectionContent = {
 `;
 }
 
+function supportedIntroductionFixture(replacementText = "Дорожная культура начинается с уважения к другим участникам движения.") {
+  return `
+export const pandemiaVialSection = {
+  id: "pandemia-vial-section",
+  routeHash: "#pandemia-vial",
+  titleRu: "Дорожная пандемия",
+  titleEs: "Pandemia vial",
+  segments: [
+    {
+      id: "heading",
+      role: "heading",
+      sourceTextEs: "Pandemia vial",
+      textRu: "Дорожная пандемия"
+    },
+    {
+      id: "body",
+      role: "body",
+      sourceTextEs: "Texto fuente",
+      textRu: "Все выводы объяснены по-русски."
+    }
+  ],
+  visualRegions: [
+    {
+      id: "city-context",
+      labelRu: "Контекст города Буэнос-Айрес",
+      labelEs: "Contexto Ciudad de Buenos Aires",
+      focusDescriptionRu: "Статистика CABA показана как русская подпись."
+    }
+  ]
+} as const;
+
+export const introductionNavigation = [
+  {
+    id: "intro-road-pandemic",
+    routeHash: "#pandemia-vial",
+    titleRu: "Дорожная пандемия",
+    titleEs: "Pandemia vial",
+    sourceIndexHeadingEs: "Pandemia vial",
+    startPage: 15,
+    endPage: 15,
+    renderer: "pandemia"
+  },
+  {
+    id: "intro-ethical-civic-approach",
+    routeHash: "#intro-enfoque-etico",
+    titleRu: "Этико-гражданский подход в дорожной культуре",
+    titleEs: "Enfoque ético - ciudadano en la cultura vial",
+    sourceIndexHeadingEs: "Enfoque ético - ciudadano en la cultura vial",
+    startPage: 16,
+    endPage: 16,
+    renderer: "article"
+  }
+];
+
+export const introductionArticleSections = [
+  {
+    id: "intro-ethical-civic-approach",
+    routeHash: "#intro-enfoque-etico",
+    titleRu: "Этико-гражданский подход в дорожной культуре",
+    titleEs: "Enfoque ético - ciudadano en la cultura vial",
+    sourceIndexHeadingEs: "Enfoque ético - ciudadano en la cultura vial",
+    startPage: 16,
+    endPage: 16,
+    blocks: [
+      {
+        id: "culture",
+        kind: "paragraph",
+        sourceTextEs: "Texto fuente",
+        textRu: ${JSON.stringify(replacementText)}
+      }
+    ]
+  }
+];
+`;
+}
+
 test("manual guide translation completeness committed evidence covers screenshot probes", () => {
   const evidence = JSON.parse(readFileSync(committedEvidencePath, "utf8"));
   assert.equal(evidence.generatedBy, auditScript);
   assert.equal(evidence.featureId, "041-manual-translation-completion");
   assert.equal(evidence.counts.implementedSections, 50);
+  assert.equal(evidence.counts.introductionRoutes, 4);
+  assert.equal(evidence.counts.renderedGuideRoutes, 54);
+  assert.equal(evidence.routeInventory.counts.manualSectionRoutes, 50);
+  assert.equal(evidence.routeInventory.counts.introductionRoutes, 4);
+  assert.equal(evidence.routeInventory.counts.renderedGuideRoutes, 54);
+  assert.deepEqual(
+    evidence.routeInventory.introductionRoutes.map((route) => route.id),
+    ["intro-road-pandemic", "intro-ethical-civic-approach", "intro-incident", "intro-road-safety-plan"]
+  );
   assert.equal(evidence.counts.unresolvedFindings, 0);
   assert.equal(evidence.requiredProbeCoverage.length, 11);
   assert.deepEqual(new Set(evidence.requiredProbeCoverage.map((probe) => probe.status)), new Set(["pass"]));
   assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "Ingreso: carriles de aceleración"));
   assert.ok(evidence.requiredProbeCoverage.some((probe) => probe.probe === "vía rápida"));
+});
+
+test("manual guide translation completeness audit includes rendered Introduction routes", () => {
+  const root = tempRoot("manual-guide-translation-intro-pass-");
+  const evidencePath = join(root, "evidence.json");
+  const introductionPath = join(root, "pandemiaVialSection.ts");
+  try {
+    writeSection(root, "ch3-highways.ts", supportedProbeFixture());
+    writeFileSync(introductionPath, supportedIntroductionFixture());
+    const write = runAudit(root, evidencePath, ["--write"], { introductionPath });
+    assert.equal(write.status, 0, write.stderr);
+    const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+    assert.equal(evidence.counts.implementedSections, 1);
+    assert.equal(evidence.counts.introductionRoutes, 2);
+    assert.equal(evidence.counts.renderedGuideRoutes, 3);
+    assert.deepEqual(
+      evidence.routeInventory.introductionRoutes.map((route) => route.id),
+      ["intro-road-pandemic", "intro-ethical-civic-approach"]
+    );
+    assert.ok(evidence.residues.some((entry) => entry.sectionId === "intro-road-pandemic"));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("manual guide translation completeness audit rejects Introduction route Spanish residue", () => {
+  const root = tempRoot("manual-guide-translation-intro-fail-");
+  const evidencePath = join(root, "evidence.json");
+  const introductionPath = join(root, "pandemiaVialSection.ts");
+  try {
+    writeSection(root, "ch3-highways.ts", supportedProbeFixture());
+    writeFileSync(
+      introductionPath,
+      supportedIntroductionFixture("Введение оставляет calzada без русского пояснения.")
+    );
+    const result = runAudit(root, evidencePath, ["--write"], { introductionPath });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /learner-facing-spanish-without-russian-support/);
+    assert.match(result.stderr, /intro-ethical-civic-approach/);
+    assert.match(result.stderr, /calzada/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("manual guide translation completeness audit writes evidence and accepts fresh check mode", () => {

@@ -4,8 +4,14 @@ import { join } from "node:path";
 import ts from "typescript";
 
 const defaultEvidencePath = "content/validation/manual-guide-translation-completeness.evidence.json";
+const defaultSectionRoot = "src/data/manual-sections";
+const defaultIntroductionPath = "src/data/pandemiaVialSection.ts";
 const evidencePath = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_EVIDENCE_PATH ?? defaultEvidencePath;
-const sectionRoot = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT ?? "src/data/manual-sections";
+const sectionRoot = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_SECTION_ROOT ?? defaultSectionRoot;
+const introductionPathValue = process.env.MANUAL_GUIDE_TRANSLATION_COMPLETENESS_INTRODUCTION_PATH;
+const introductionPath = introductionPathValue === ""
+  ? null
+  : introductionPathValue ?? (sectionRoot === defaultSectionRoot ? defaultIntroductionPath : null);
 const featureId = "041-manual-translation-completion";
 
 const args = process.argv.slice(2);
@@ -327,38 +333,104 @@ function sectionFiles() {
     }));
 }
 
-function loadSections() {
+function evaluateModuleExports(filePath) {
+  const source = readFileSync(filePath, "utf8");
+  const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  const env = new Map();
+  const exports = new Map();
+
+  for (const statement of sourceFile.statements) {
+    if (!ts.isVariableStatement(statement)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (!ts.isIdentifier(declaration.name)) continue;
+      const value = evaluateExpression(declaration.initializer, env);
+      if (value !== undefined) env.set(declaration.name.text, value);
+    }
+  }
+
+  for (const statement of sourceFile.statements) {
+    if (!ts.isVariableStatement(statement) || !statement.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword)) continue;
+    for (const declaration of statement.declarationList.declarations) {
+      if (!ts.isIdentifier(declaration.name)) continue;
+      exports.set(declaration.name.text, evaluateExpression(declaration.initializer, env));
+    }
+  }
+
+  return exports;
+}
+
+function loadManualSections() {
   const sections = [];
   for (const file of sectionFiles()) {
-    const sourceFile = ts.createSourceFile(file.path, file.source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
-    const env = new Map();
-
-    for (const statement of sourceFile.statements) {
-      if (!ts.isVariableStatement(statement)) continue;
-      for (const declaration of statement.declarationList.declarations) {
-        if (!ts.isIdentifier(declaration.name)) continue;
-        const value = evaluateExpression(declaration.initializer, env);
-        if (value !== undefined) env.set(declaration.name.text, value);
-      }
-    }
-
-    for (const statement of sourceFile.statements) {
-      if (!ts.isVariableStatement(statement) || !statement.modifiers?.some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword)) continue;
-      for (const declaration of statement.declarationList.declarations) {
-        if (!ts.isIdentifier(declaration.name)) continue;
-        const value = evaluateExpression(declaration.initializer, env);
-        if (isObject(value) && typeof value.sectionId === "string" && Array.isArray(value.blocks)) {
-          sections.push({
-            exportName: declaration.name.text,
-            modulePath: file.path,
-            sourceFile: file.fileName,
-            section: value
-          });
-        }
+    const exports = evaluateModuleExports(file.path);
+    for (const [exportName, value] of exports) {
+      if (isObject(value) && typeof value.sectionId === "string" && Array.isArray(value.blocks)) {
+        sections.push({
+          exportName,
+          sourceKind: "manual-section",
+          modulePath: file.path,
+          sourceFile: file.fileName,
+          routeHash: value.routeHash ?? null,
+          section: value
+        });
       }
     }
   }
   return sections;
+}
+
+function synthesizeIntroductionSections(modulePath, exports) {
+  const navigation = exports.get("introductionNavigation");
+  const pandemia = exports.get("pandemiaVialSection");
+  const articles = exports.get("introductionArticleSections");
+
+  assertCondition(Array.isArray(navigation), "introductionNavigation must be exported as an array", { modulePath });
+  assertCondition(isObject(pandemia), "pandemiaVialSection must be exported as an object", { modulePath });
+  assertCondition(Array.isArray(articles), "introductionArticleSections must be exported as an array", { modulePath });
+
+  const articleById = new Map(articles.filter(isObject).map((section) => [section.id, section]));
+  return navigation.map((entry) => {
+    assertCondition(isObject(entry) && typeof entry.id === "string", "introductionNavigation entry must have an id", { modulePath, entry });
+    const article = articleById.get(entry.id);
+    const isPandemiaRoute = entry.renderer === "pandemia";
+    if (!isPandemiaRoute) {
+      assertCondition(isObject(article), "article introduction route must have matching introductionArticleSections data", { modulePath, entry });
+    }
+    const blocks = isPandemiaRoute
+      ? [
+          {
+            id: pandemia.id ?? entry.id,
+            kind: "pandemia-vial",
+            titleRu: pandemia.titleRu ?? entry.titleRu,
+            segments: pandemia.segments ?? [],
+            visualRegions: pandemia.visualRegions ?? []
+          }
+        ]
+      : article.blocks;
+
+    return {
+      exportName: isPandemiaRoute ? "pandemiaVialSection" : "introductionArticleSections",
+      sourceKind: "introduction-route",
+      modulePath,
+      sourceFile: modulePath.split(/[\\/]/u).at(-1),
+      routeHash: entry.routeHash ?? article?.routeHash ?? null,
+      navigationTitleRu: entry.titleRu,
+      section: {
+        sectionId: entry.id,
+        titleRu: entry.titleRu,
+        routeHash: entry.routeHash ?? article?.routeHash ?? null,
+        sourceTitleEs: entry.sourceIndexHeadingEs ?? entry.titleEs,
+        status: "implemented",
+        blocks
+      }
+    };
+  });
+}
+
+function loadIntroductionSections() {
+  if (!introductionPath) return [];
+  assertCondition(existsSync(introductionPath), "introduction data source is missing", { introductionPath });
+  return synthesizeIntroductionSections(introductionPath, evaluateModuleExports(introductionPath));
 }
 
 function shouldInspectPath(path, key, value, parent) {
@@ -380,6 +452,7 @@ function collectLearnerStrings(sectionMeta) {
       if (shouldInspectPath(path, key, value, parent)) {
         records.push({
           sectionId: sectionMeta.section.sectionId,
+          sourceKind: sectionMeta.sourceKind,
           modulePath: sectionMeta.modulePath,
           blockId: path.includes("blocks") ? blockIdForPath(sectionMeta.section, path) : null,
           blockKind: path.includes("blocks") ? blockKindForPath(sectionMeta.section, path) : null,
@@ -515,6 +588,7 @@ function candidateRecords(records) {
       }
       candidates.push({
         sectionId: record.sectionId,
+        sourceKind: record.sourceKind,
         modulePath: record.modulePath,
         blockId: record.blockId,
         blockKind: record.blockKind,
@@ -554,6 +628,12 @@ function validateEvidenceShape(value) {
   assertCondition(Array.isArray(value.residues), "evidence.residues must be an array");
   assertCondition(Array.isArray(value.requiredProbeCoverage), "evidence.requiredProbeCoverage must be an array");
   assertCondition(Array.isArray(value.exceptions), "evidence.exceptions must be an array");
+  assertCondition(isObject(value.routeInventory), "evidence.routeInventory must be an object");
+  assertCondition(isObject(value.routeInventory.counts), "evidence.routeInventory.counts must be an object");
+  assertCondition(
+    value.routeInventory.counts.renderedGuideRoutes === value.counts.renderedGuideRoutes,
+    "route inventory rendered route count must match evidence counts"
+  );
   for (const exception of value.exceptions) {
     assertCondition(exception.disposition === "allowed-narrow-exception", "exceptions must use allowed-narrow-exception disposition", exception);
     assertCondition(!genericTrafficTerms.has(normalizeText(exception.detectedSpanishPhrase)), "generic traffic terms cannot be allowlisted as exceptions", exception);
@@ -595,7 +675,9 @@ function reportValidationFindings(findings) {
   }
 }
 
-const sections = loadSections();
+const manualSections = loadManualSections();
+const introductionSections = loadIntroductionSections();
+const sections = [...manualSections, ...introductionSections];
 const stringsBySection = new Map();
 const learnerStrings = [];
 for (const section of sections) {
@@ -641,6 +723,29 @@ for (const exception of broadExceptions) {
   });
 }
 
+const routeInventory = {
+  appSurface: "Руководство",
+  inventoryRule:
+    "Rendered guide routes are the active Introduction routes from introductionNavigation plus implemented manual sections from implementedManualGuideSections/manual section modules.",
+  counts: {
+    introductionRoutes: introductionSections.length,
+    manualSectionRoutes: manualSections.length,
+    renderedGuideRoutes: introductionSections.length + manualSections.length
+  },
+  introductionRoutes: introductionSections.map((entry) => ({
+    id: entry.section.sectionId,
+    routeHash: entry.routeHash,
+    titleRu: entry.navigationTitleRu ?? entry.section.titleRu,
+    sourceModule: entry.modulePath
+  })),
+  manualSectionRoutes: manualSections.map((entry) => ({
+    id: entry.section.sectionId,
+    routeHash: entry.routeHash ?? entry.section.routeHash ?? null,
+    titleRu: entry.section.titleRu,
+    sourceModule: entry.modulePath
+  }))
+};
+
 const document = {
   schemaVersion: 1,
   featureId,
@@ -652,16 +757,19 @@ const document = {
       .join("\n---manual-section---\n")
   ),
   counts: {
-    implementedSections: sections.length,
+    implementedSections: manualSections.length,
+    introductionRoutes: introductionSections.length,
+    renderedGuideRoutes: routeInventory.counts.renderedGuideRoutes,
     inspectedStrings: learnerStrings.length,
     candidateResidues: residues.length,
     translatedOrRetainedWithSupport: residues.filter((entry) => entry.disposition !== "unresolved" && entry.disposition !== "allowed-narrow-exception").length,
     acceptedExceptions: exceptions.length,
     unresolvedFindings: findings.length
   },
+  routeInventory,
   inspectedFieldPolicy: {
     inspected:
-      "Learner-facing Russian/manual fields such as titleRu, textRu, itemsRu, columnsRu, cellsRu, captionRu, altRu, card/body/label fields, and structured termTranslations.",
+      "Learner-facing Russian/manual fields such as titleRu, textRu, itemsRu, columnsRu, cellsRu, captionRu, altRu, card/body/label fields, structured termTranslations, and Introduction route learner text rendered under Руководство.",
     ignored:
       "sourceTextEs, sourceTitleEs, source/provenance notes, route hashes, asset paths, URLs, hashes, selectors, source regions, screenshot paths, validation metadata, and protected image pixels.",
     protectedImagePixels:
@@ -712,5 +820,5 @@ if (!existsSync(evidencePath)) {
 if (failed) process.exit(1);
 
 console.log(
-  `manual guide translation completeness audit passed: ${sections.length} sections, ${learnerStrings.length} strings, ${residues.length} residue record(s), ${exceptions.length} exception(s)`
+  `manual guide translation completeness audit passed: ${manualSections.length} manual sections, ${introductionSections.length} introduction route(s), ${learnerStrings.length} strings, ${residues.length} residue record(s), ${exceptions.length} exception(s)`
 );

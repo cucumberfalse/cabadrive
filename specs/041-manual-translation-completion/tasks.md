@@ -219,6 +219,21 @@
   learner-facing wording changed only to add Russian support.
 - [x] T081 Run focused tests, required validation, build, diff hygiene, and
   preflight after the review-fix memory update.
+- [x] T082 Address PR #206 review discussion `discussion_r3546310363` by
+  including rendered Introduction routes in the translation-completeness audit
+  scope.
+- [x] T083 Add structured route inventory evidence proving the audit covers all
+  currently rendered `Руководство` routes: manual section routes plus
+  Introduction routes.
+- [x] T084 Fix newly surfaced Introduction learner-facing residue
+  `Vision Zero` with immediate Russian support in
+  `src/data/pandemiaVialSection.ts`.
+- [x] T085 Add focused tests proving Introduction route data is audited and an
+  Introduction Spanish residue fails.
+- [x] T086 Refresh translation-completeness evidence and derived manual ticket
+  placement data affected by the Introduction wording fingerprint.
+- [x] T087 Run focused and required validations for the
+  `discussion_r3546310363` follow-up.
 
 ## Decisions
 
@@ -288,6 +303,16 @@
   derived artifacts were refreshed consistently; `b-fallback-430` keeps the
   same route and answer-bearing anchor with only added Russian support for
   `trailer`.
+- Review-fix decision: `discussion_r3546310363` is valid because
+  `manualGuideNavigation` renders `introductionNavigation` under the same
+  `Руководство` surface. The audit now synthesizes Introduction route records
+  from `src/data/pandemiaVialSection.ts` and records a route inventory of 50
+  manual section routes plus 4 Introduction routes, 54 rendered guide routes in
+  total.
+- Review-fix decision: The expanded Introduction audit surfaced one
+  learner-facing retained term, `Vision Zero`; it now renders as
+  `Vision Zero (нулевая смертность и отсутствие тяжелых травм)` instead of
+  being treated as an untranslated exception.
 
 ## Dead Ends
 
@@ -315,6 +340,19 @@
   `Отвлечения` heading and the updated `Metrobus de Buenos Aires` Russian
   support text. Updated those E2E expectations and reran the affected tests
   before the final preflight.
+- During `discussion_r3546310363` review fixes, the first expanded
+  `node scripts/manual-guide-translation-completeness-audit.mjs --write` failed
+  after writing evidence because Introduction route `intro-road-safety-plan`
+  retained `Vision Zero` without adjacent Russian support. Fixed the content
+  instead of broadening exceptions.
+- During `discussion_r3546310363` review fixes, the first
+  `pnpm run validate:content` and full `pnpm run test` failed because the
+  Introduction wording changed protected manual source fingerprints. Ran
+  `pnpm run generate:manual-ticket-placement` to refresh only derived placement
+  data.
+- During `discussion_r3546310363` review fixes, the next full `pnpm run test`
+  failed on a stale exact Introduction content assertion for `Vision Zero`.
+  Updated the assertion to require the new immediate Russian support.
 
 ## Known Issues
 
@@ -440,3 +478,45 @@
   - `pnpm run preflight`: passed on rerun at 2026-07-08T18:07:47Z; feature
     memory gate, repo baseline check, content validation, unit tests, build, and
     full Playwright E2E all passed. Full E2E passed 102/102 tests.
+- PR #206 review-fix verification for `discussion_r3546310363`,
+  2026-07-08T21:33:00Z:
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    first run failed after writing evidence because
+    `intro-road-safety-plan blocks.1.textRu` retained `Vision Zero` without
+    adjacent Russian support.
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed after the Introduction content fix and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    Evidence now reports 50 manual sections, 4 Introduction routes, 54 rendered
+    guide routes, 3000 inspected strings, 1184 candidate residue records, 995
+    supported retained/translated records, 189 accepted exceptions, and 0
+    unresolved findings.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 10/10 tests, including Introduction route inclusion and an
+    Introduction residue failure fixture.
+  - `pnpm run validate:manual-guide`: passed; source fidelity, visual
+    completeness, image readability/translations, and expanded translation
+    completeness all green.
+  - `pnpm exec tsc --noEmit`: passed.
+  - `git diff --check`: passed.
+  - `pnpm run validate:content`: first run failed only because manual ticket
+    placement derived data was stale after the Introduction wording change.
+  - `pnpm run test`: first run failed only because manual ticket placement
+    derived data was stale; rerun after placement refresh later failed on one
+    stale exact `Vision Zero` content assertion.
+  - `pnpm run generate:manual-ticket-placement`: passed and refreshed derived
+    manual ticket placement data for 460 immutable reviewed records.
+  - `pnpm run validate:content`: passed after placement refresh; manual ticket
+    placement remained 460 questions, 460 placements, 31 destination routes,
+    density 1/12/45, 85 answer-bearing, and 375 fallbacks.
+  - `pnpm exec node --test tests/manual-ticket-placement.test.mjs`: passed,
+    18/18 tests.
+  - `pnpm exec node --test tests/content-pandemia-vial-section.test.mjs`:
+    passed, 14/14 tests after updating the expected `Vision Zero` support.
+  - `pnpm run test`: passed, 479/479 tests.
+  - `node scripts/check-feature-memory.mjs --worktree`: passed.
+  - `pnpm run build`: passed; generated service worker with 2156 cached
+    assets. Build still emits the existing large Rollup chunk warnings.
+  - `pnpm run preflight`: passed; feature-memory gate, repo baseline check,
+    content validation, unit tests, build, and full Playwright E2E all passed.
+    Full E2E passed 102/102 tests.

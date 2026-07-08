@@ -226,7 +226,11 @@ test("Road safety plan opening uses simplified Russian while preserving ticket-c
     roadSafetyPlanArticleSource.indexOf("Безопасность на дорогах") < roadSafetyPlanArticleSource.indexOf('titleRu: "Основные принципы"'),
     "simplified Plan opening stays before the principles list"
   );
-  assert.match(roadSafetyPlanArticleSource, /Идея Vision Zero простая и этическая/u, "local simplification is explicit in runtime content");
+  assert.match(
+    roadSafetyPlanArticleSource,
+    /Идея Vision Zero \(нулевая смертность и отсутствие тяжелых травм\) простая и этическая/u,
+    "local simplification keeps immediate Russian support for retained Vision Zero wording"
+  );
 });
 
 test("Introduction visual assets avoid full-page raster and Spanish quote text", () => {
