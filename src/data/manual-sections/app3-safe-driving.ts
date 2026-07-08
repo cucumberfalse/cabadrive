@@ -80,12 +80,12 @@ export const app3SafeDrivingSection: ManualGuideSectionContent = {
     {
       id: "cyclists-motorcyclists-offtracking",
       kind: "list",
-      titleRu: "Велосипедисты, мотоциклисты и off-tracking",
+      titleRu: "Велосипедисты, мотоциклисты и смещение траекторий колес (off-tracking)",
       sourceTextEs:
         "Mantener distancia de seguridad de 1,5 metros respecto de ciclistas; en giros de camiones/colectivos hay off tracking; ruedas traseras siguen arco de menor radio.",
       itemsRu: [
         "Рядом с велосипедистом нужно сохранять безопасную дистанцию 1,5 m.",
-        "Для грузовика или автобуса повороты опаснее из-за off-tracking: задние колеса идут по дуге меньшего радиуса, чем передние.",
+        "Для грузовика или автобуса повороты опаснее из-за смещения траекторий колес (off-tracking): задние колеса идут по дуге меньшего радиуса, чем передние.",
         "При таком маневре задняя часть может задеть велосипедиста, пешехода или мотоцикл рядом с задними колесами.",
         "Перед поворотом на перекрестке нужно смотреть в обе стороны, особенно там, где есть пересечение велодорожек или велосипедных полос.",
         "С мотоциклистами нужно держать разумную дистанцию с учетом радиуса поворота, воздушных потоков от кузова и увеличенной площади слепых зон."
@@ -141,7 +141,7 @@ export const app3SafeDrivingSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Prohibida circulacion de vehiculos no permitidos; prohibido estacionamiento y detencion 24 horas; aviso a AUSA por inconvenientes, emergencias, sustancias peligrosas, cargas excepcionales e indivisibles.",
       itemsRu: [
-        "Велосипеды, мотоциклы, автомобили, такси, remises, городские автобусные линии и любой неразрешенный транспорт там запрещены.",
+        "Велосипеды, мотоциклы, автомобили, такси, remises (частные наемные автомобили), городские автобусные линии и любой неразрешенный транспорт там запрещены.",
         "Стоянка и остановка запрещены 24 часа на обеих проезжих частях.",
         "Если транспорт не может продолжить нормальное движение, нужно уведомить AUSA, которая организует буксировку и удаление.",
         "Экстренные транспортные средства и автомобили сопровождения тяжелого транспорта могут двигаться исключительным образом при обязательном предварительном уведомлении Autopistas Urbanas S.A.",

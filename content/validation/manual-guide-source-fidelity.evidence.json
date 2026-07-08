@@ -818,14 +818,14 @@
     "legacyBaselineEvidenceFingerprints": {
       "ch1-cities-for-people": "f3af33cce8e057b2887618d72bc9d0b8a180a58f2e1ca5dfe516a8f16f7888dc",
       "ch1-sustainable-mobility": "1b7a85e444c3dd6033da297b8118dc6c7aeca67cd9c6222b663229fb30bc3b8f",
-      "ch1-pedestrian-priority": "82836bdcf64582298541043aad6f2b0393781bbbcfd64355a1764f75bee21167",
+      "ch1-pedestrian-priority": "6ca64a22241965243164da377569f4c4098b5c2cf654e1c06c0e43ec745ac53c",
       "ch1-bicycle": "556e1fd50f420bd26e56b55efd4f84fff0c6f4276423fda70c0333fbba6daa14"
     },
     "legacyBaselineStateFingerprints": {
       "ch1-cities-for-people": "00f3aa2f0c157f1d1552677977a6c234a878e803ddf6be9b5b8ff0e324baf3bc",
       "ch1-sustainable-mobility": "503a680ccdcbf1082af2858a856ab692090c7f807549b8192c258a25ac0f0cf6",
-      "ch1-pedestrian-priority": "131c399fc6313e254c149c9cbe247685a9657029dc5032422931c63fc64d1571",
-      "ch1-bicycle": "ad06413f4e249cedfcd5f069f4f38fda3c566b04384d6686fabb692a968fa5e5"
+      "ch1-pedestrian-priority": "ac6da8ea40666b57dc6f8241e4e6149c2c08dbb0d3caaca71f15e1ad7f129aa9",
+      "ch1-bicycle": "25be05e9c237a0149582da0b59317d5bc65d9c1a535f2662825f17df2444a033"
     },
     "scope": "Future manual support, chapter, appendix, audit, and correction units must use this strict visual evidence vocabulary. Only the already-implemented merged Chapter 1 sections listed in legacyBaselineSectionIds may keep legacy evidence until the planned audit/correction slice, and only while their implementation evidence matches legacyBaselineEvidenceFingerprints and their section module plus referenced source/runtime visual asset bytes match legacyBaselineStateFingerprints.",
     "highResolutionEvidence": {

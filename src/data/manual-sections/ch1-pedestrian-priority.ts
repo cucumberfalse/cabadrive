@@ -230,7 +230,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             }
           ],
           noteRu:
-            "В обычных «улицах совместного пользования» допускается ограниченное движение до 20 км/ч, но в Centro Peatonal из-за большого пешеходного потока скорость снижена знаками до 10 км/ч."
+            "В обычных «улицах совместного пользования» допускается ограниченное движение до 20 км/ч, но в Centro Peatonal (пешеходном центре) из-за большого пешеходного потока скорость снижена знаками до 10 км/ч."
         },
         {
           id: "pedestrian-street",
@@ -345,7 +345,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         },
         {
           id: "sube-y-baja",
-          titleRu: "Sube y Baja",
+          titleRu: "Sube y Baja (посадка и высадка)",
           sourcePage: 27,
           sourceRegion: {
             x: 348,
@@ -354,7 +354,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             height: 125
           },
           assetPath: `${assetRoot}/sube-y-baja-source.jpg`,
-          altRu: "Оригинальная желтая дорожная разметка Sube y Baja у школы",
+          altRu: "Оригинальная желтая дорожная разметка Sube y Baja (посадка и высадка) у школы",
           visibleSpanish: true,
           sourceImageException: originalSourceImageException,
           termTranslations: [
@@ -370,7 +370,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
             },
             {
               labelRu: "Применение",
-              textRu: "у входа в школы; это часть программы Sube y Baja."
+              textRu: "у входа в школы; это часть программы Sube y Baja (посадка и высадка)."
             },
             {
               labelRu: "Движение",
@@ -465,12 +465,12 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
         {
           id: "tribunales",
           color: "gray",
-          labelRu: "Tribunales Peatonal"
+          labelRu: "Tribunales Peatonal (пешеходная зона Tribunales)"
         },
         {
           id: "centro",
           color: "cyan",
-          labelRu: "Centro Peatonal"
+          labelRu: "Centro Peatonal (пешеходный центр)"
         },
         {
           id: "excepted",
@@ -521,7 +521,7 @@ export const ch1PedestrianPrioritySection: ManualGuideSectionContent = {
           details: [
             {
               labelRu: "Разрешение",
-              textRu: "в рабочие дни с 11:00 до 16:00 могут ехать только те, у кого есть действующее разрешение на въезд в Centro Peatonal или Tribunales Peatonal."
+              textRu: "в рабочие дни с 11:00 до 16:00 могут ехать только те, у кого есть действующее разрешение на въезд в Centro Peatonal (пешеходный центр) или Tribunales Peatonal (пешеходную зону Tribunales)."
             },
             {
               labelRu: "Условие",

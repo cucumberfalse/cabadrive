@@ -60,7 +60,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "No sólo se trata del consumo de drogas ilegales sino también de las legales, como el alcohol y algunos medicamentos.",
       textRu:
-        "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
+        "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
     },
     {
       id: "health-and-aptitude",
@@ -68,7 +68,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "La salud influye en la conducción... La aptitud para conducir se considera disminuida cuando existe una alteración de la coordinación motora, la atención, la percepción sensorial o el juicio crítico.",
       textRu:
-        "Здоровье влияет на вождение. Болезни, временные состояния и настроение могут ухудшать безопасность. Aptitud para conducir считается сниженной, если нарушены моторная координация, внимание, сенсорное восприятие или критическое суждение; поэтому перед выдачей лицензии государство проверяет кандидата психофизическим examen psicofísico."
+        "Здоровье влияет на вождение. Болезни, временные состояния и настроение могут ухудшать безопасность. Aptitud para conducir (пригодность к вождению) считается сниженной, если нарушены моторная координация, внимание, сенсорное восприятие или критическое суждение; поэтому перед выдачей лицензии государство проверяет кандидата психофизическим examen psicofísico (психофизическим экзаменом)."
     },
     {
       id: "factors-that-impair-driving",
@@ -104,7 +104,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       cards: [
         {
           id: "drug-test-device-source-card",
-          titleRu: "Устройство проверки на estupefacientes",
+          titleRu: "Устройство проверки на estupefacientes (наркотические вещества)",
           displayMode: "full-width",
           maxDisplayWidthPx: 820,
           sourcePage: 90,
@@ -151,12 +151,12 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "La Ley 2148 determina los valores límite... Está prohibido conducir cualquier tipo de vehículo con más de 0,5 gramos de alcohol por litro de sangre.",
       textRu:
-        "Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires. Общее правило: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre; к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia, потому что провинции и муниципалитеты имеют собственную нормативную автономию."
+        "Ley 2148 устанавливает пределы концентрации алкоголя в крови для вождения в Ciudad de Buenos Aires (городе Буэнос-Айрес). Общее правило: запрещено управлять любым транспортом при более чем 0,5 gramos de alcohol por litro de sangre (грамма алкоголя на литр крови); к нему применяются дополнительные ограничения по конкретному случаю. В остальной части страны нужно знать местный límite de alcoholemia (предел алкоголя в крови), потому что провинции и муниципалитеты имеют собственную нормативную автономию."
     },
     {
       id: "alcohol-limit-source-visual",
       kind: "source-image-cards",
-      titleRu: "Límites de alcohol en sangre",
+      titleRu: "Límites de alcohol en sangre (пределы алкоголя в крови)",
       sourceTextEs: "Límites de alcohol en sangre para conducir.",
       cards: [
         {
@@ -167,7 +167,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           sourcePage: 91,
           sourceRegion: { x: 1180, y: 2030, width: 850, height: 430 },
           assetPath: `${assetRoot}/alcohol-limits-transferred-infographic.png`,
-          altRu: "Таблица пределов alcohol en sangre с пиктограммами и числовыми порогами.",
+          altRu: "Таблица пределов alcohol en sangre (алкоголя в крови) с пиктограммами и числовыми порогами.",
           visibleSpanish: false,
           russianOverlayLabels: [
             { id: "principiantes-label", textRu: "Нович.", xPct: 9.1, yPct: 36.5, widthPct: 10.2, heightPct: 4.4, tone: "light-on-blue" },
@@ -177,7 +177,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
             { id: "particulares-label", textRu: "Частн.", xPct: 52.4, yPct: 36.5, widthPct: 10.3, heightPct: 4.4, tone: "light-on-blue" }
           ],
           bodyRu:
-            "Визуальная таблица показывает категории и пороги alcohol en sangre; русские подписи доступны как выбираемый текст. Конкретные пороги продублированы ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям."
+            "Визуальная таблица показывает категории и пороги alcohol en sangre (алкоголя в крови); русские подписи доступны как выбираемый текст. Конкретные пороги продублированы ниже в русской текстовой таблице: 0.00 g/l, 0.20 g/l и 0.50 g/l по категориям."
         }
       ],
       visualNotes: [
@@ -188,7 +188,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
     {
       id: "blood-alcohol-limit-table",
       kind: "table",
-      titleRu: "Límites de alcohol en sangre para conducir",
+      titleRu: "Límites de alcohol en sangre para conducir (пределы алкоголя в крови для вождения)",
       sourceTextEs:
         "Límites de alcohol en sangre para conducir: principiantes, profesionales, motociclistas, acompañantes y particulares. Ley 2148 art. 5.4.5: plaza de acompañante en motovehículos.",
       columnsRu: ["Категория", "Предел", "Как читать для экзамена"],
@@ -222,7 +222,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
           cellsRu: [
             "Acompañantes en motovehículos (пассажиры мототранспорта)",
             "0.50 g/l",
-            "специальный случай Ley 2148: нельзя занимать plaza de acompañante в motovehículo с более чем 0,5 g/l, кроме отдельного внешнего habitáculo; это не общий предел для всех сопровождающих в автомобиле"
+            "специальный случай Ley 2148: нельзя занимать plaza de acompañante (место пассажира) в motovehículo (мототранспортном средстве) с более чем 0,5 g/l, кроме отдельного внешнего habitáculo (кабины/отсека); это не общий предел для всех сопровождающих в автомобиле"
           ]
         },
         {
@@ -277,7 +277,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
     {
       id: "positive-and-refusal-procedure",
       kind: "list",
-      titleRu: "Alcoholemia positiva и отказ от проверки",
+      titleRu: "Alcoholemia positiva (положительный тест на алкоголь) и отказ от проверки",
       sourceTextEs:
         "Procedimiento en caso de alcoholemia positiva... Negativa a realizar una prueba de alcoholemia.",
       itemsRu: [
@@ -301,7 +301,7 @@ export const ch4AlcoholDrugsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "El control de alcoholemia o toxicológico se realiza utilizando instrumentos... frente a un resultado positivo o la negativa... el procedimiento es el mismo. Resaca o veisalgia.",
       textRu:
-        "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia, опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización)."
+        "Контроль алкоголя или токсикологических веществ (alcoholemia или toxicológico) проводится приборами, которые гарантируют качество измерения или выявления, потому что они должным образом сертифицированы и откалиброваны (certificados y calibrados). При положительном результате или отказе пройти контроль алкоголя или наркотических веществ (estupefacientes) процедура одинакова. Похмелье (resaca), или медицинским термином veisalgia (вейсалгия), опасно для вождения: оно нарушает координацию, внимание и время реакции, поэтому вождение с похмельем (conducir con resaca) приравнивается к управлению в состоянии алкоголизации (alcoholización)."
     }
   ]
 };

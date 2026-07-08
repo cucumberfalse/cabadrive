@@ -165,6 +165,69 @@ test("manual guide translation completeness audit ignores source fields but reje
   }
 });
 
+test("manual guide translation completeness audit rejects unmatched learner-facing Latin residue beyond dictionary terms", () => {
+  const root = tempRoot("manual-guide-translation-unmatched-latin-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    writeSection(
+      root,
+      "ch3-highways.ts",
+      supportedProbeFixture().replace(
+        "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+        "Первые 6 месяцев нельзя ездить по arterias."
+      )
+    );
+    const result = runAudit(root, evidencePath, ["--write"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /learner-facing-spanish-without-russian-support/);
+    assert.match(result.stderr, /arterias/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("manual guide translation completeness audit rejects document phrases without Russian support", () => {
+  const root = tempRoot("manual-guide-translation-document-latin-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    writeSection(
+      root,
+      "ch3-highways.ts",
+      supportedProbeFixture().replace(
+        "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+        "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil."
+      )
+    );
+    const result = runAudit(root, evidencePath, ["--write"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /certificado del seguro de responsabilidad civil/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("manual guide translation completeness audit rejects alcohol-limit Latin residues without support", () => {
+  const root = tempRoot("manual-guide-translation-alcohol-latin-");
+  const evidencePath = join(root, "evidence.json");
+  try {
+    writeSection(
+      root,
+      "ch3-highways.ts",
+      supportedProbeFixture().replace(
+        "espacio / gap (свободный промежуток) нужен перед входом в поток.",
+        "нельзя занимать plaza de acompañante в motovehículo, кроме отдельного habitáculo"
+      )
+    );
+    const result = runAudit(root, evidencePath, ["--write"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /plaza de acompañante/);
+    assert.match(result.stderr, /motovehículo/);
+    assert.match(result.stderr, /habitáculo/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("manual guide translation completeness audit rejects generic traffic term exceptions", () => {
   const root = tempRoot("manual-guide-translation-exception-");
   const evidencePath = join(root, "evidence.json");

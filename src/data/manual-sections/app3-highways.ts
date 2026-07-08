@@ -34,7 +34,7 @@ export const app3HighwaysSection: ManualGuideSectionContent = {
       kind: "lead",
       sourceTextEs: "Autopistas",
       textRu:
-        "Раздел Appendix III завершает грузовую тему автомагистралями и профессиональной ответственностью перевозчика грузов."
+        "Раздел Приложение III (Appendix III) завершает грузовую тему автомагистралями и профессиональной ответственностью перевозчика грузов."
     },
     {
       id: "closing-message",
@@ -49,7 +49,7 @@ export const app3HighwaysSection: ManualGuideSectionContent = {
       kind: "callout",
       sourceTextEs: "Anexo IV comienza despues de la pagina 183.",
       textRu:
-        "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в этот Appendix III PR и остается отдельной будущей работой."
+        "После этой закрывающей страницы начинается Приложение IV о дорожных знаках. Оно не входит в PR по Приложению III (Appendix III PR) и остается отдельной будущей работой."
     }
   ]
 };

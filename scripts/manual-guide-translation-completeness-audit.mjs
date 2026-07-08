@@ -132,19 +132,44 @@ const genericTrafficTerms = new Set(
 
 const acceptedExceptionPatterns = [
   {
+    id: "measurement-unit",
+    pattern: /^(?:km|km\/h|cm|m|kg|t|g\/l|dB|ºC|H\/H)$/iu,
+    reason: "measurement unit"
+  },
+  {
     id: "official-acronym",
-    pattern: /^(?:CABA|GCBA|DNI|BUI|VTV|RTO|RUTA|RVA|ANSV|SRI|SUBE|QR)$/u,
+    pattern: /^(?:CABA|GCBA|DNI|BUI|VTV|RTO|RUTA|RVA|ANSV|SRI|SUBE|QR|GNC|DNRPA|AUSA|LiNTI)$/u,
     reason: "official acronym or system identifier"
   },
   {
+    id: "uppercase-acronym",
+    pattern: /^[A-Z0-9]{2,8}(?:\s+[A-Z0-9]{2,8})*$/u,
+    reason: "uppercase acronym or compact official identifier"
+  },
+  {
+    id: "address-abbreviation",
+    pattern: /^(?:Av|Pte|Nº)$/u,
+    reason: "address abbreviation"
+  },
+  {
     id: "official-product-or-service-name",
-    pattern: /^(?:MiBA|Boti|WhatsApp|Ecobici|Metrobus)$/u,
+    pattern: /^(?:MiBA|Boti|WhatsApp|Ecobici|Metrobus|Metrobús|BA Ecobici by Tembici|Sube y Baja|Metrobus de Buenos Aires|Scoring|Cabadrive|Bitren|Isofix|Latch)$/u,
     reason: "official product, service, or system name"
+  },
+  {
+    id: "alphabetic-range-label",
+    pattern: /^[A-Z](?:-[A-Z])+$/u,
+    reason: "alphabetic glossary range label"
   },
   {
     id: "legal-code-or-road-name",
     pattern: /^(?:Ley|Decreto|Anexo|Autopista|Avenida|Calle|Paseo|Buenos Aires|Ciudad Autonoma de Buenos Aires|Ciudad Autónoma de Buenos Aires)(?:\b|$)/u,
     reason: "official legal title, road name, or place name"
+  },
+  {
+    id: "road-place-or-person-name",
+    pattern: /^(?:Alem|Leandro N|San Martin|Mariquita Sanchez de Thompson|Barracas|Uruguay|Callao|Cerrito|Nogoyá|Villa Real|Ramón Lista|Juan E\. Martínez|Irigoyen|Ema Cibotti-Lischinsky|Norma Bonelli|Viviam Perrone|Patricia Pistarini|Teresa Mellano|Cinthya Toledo|Familias Por La Vida ONG|Junín|Libertad|Gral|Paz|Sáenz|Macrocentro|Balbín|Illia|de Julio Sur)$/u,
+    reason: "official road, place, program contact, or proper name"
   }
 ];
 
@@ -154,6 +179,7 @@ const ignoredContextPatterns = [
   /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/giu,
   /\bAutopistas?\s+Urbanas\s+S\.?A\.?/giu,
   /\bAutopista\s+(?:Illia|Buenos Aires-La Plata|25 de Mayo|Dellepiane|Perito Moreno|Riccheri|9 de Julio Sur|Ingeniero Pascual Palazzo|Hector J\. Campora|Presidente Arturo U\. Illia|R\. Balbin)\b/giu,
+  /\bAv\.\s+\d+(?:\s+(?:de|del|la|las|los|y|e|[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*))*\b/giu,
   /\bAv\.\s+[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*(?:\s+(?:de|del|la|las|los|y|e|[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*))*\b/giu,
   /\b(?:Calle|Avenida|Paseo)\s+[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*(?:\s+(?:de|del|la|las|los|y|e|[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*))*\b/giu,
   /\b(?:Ministerio|Agencia|Dirección|Registro|Sistema|Código|Centro|Centros|Oficina|Unidades|Asociación|Palacio)\s+[A-ZÁÉÍÓÚÑÜa-záéíóúñü][\p{Script=Latin}\p{Mark}.]*(?:\s+(?:de|del|la|las|los|y|e|a|por|para|Civil|Público|Fiscal|Nacional|General|Permanente|Profesional|Justicia|Transporte|Tránsito|Víctima|Víctimas|Conductores|Infracciones|Autopartes|Formación|Familiares|Siniestros|Viales|Nación|CABA|DDHH|[A-ZÁÉÍÓÚÑÜ][\p{Script=Latin}\p{Mark}.]*))*\b/giu,
@@ -394,7 +420,10 @@ function blockKindForPath(section, path) {
 function isStructuredPair(record) {
   if (record.key !== "termEs") return false;
   const translationPath = record.fieldPath.replace(/\.termEs$/u, ".translationRu");
-  return record.sectionStrings?.some((candidate) => candidate.fieldPath === translationPath && /\p{Script=Cyrillic}/u.test(candidate.text)) === true;
+  const labelPath = record.fieldPath.replace(/\.termEs$/u, ".labelRu");
+  return record.sectionStrings?.some((candidate) =>
+    (candidate.fieldPath === translationPath || candidate.fieldPath === labelPath) && /\p{Script=Cyrillic}/u.test(candidate.text)
+  ) === true;
 }
 
 function isAcceptedException(segment) {
@@ -406,6 +435,10 @@ function isAcceptedException(segment) {
 function phraseHasInlineRussianSupport(text, phrase) {
   const pattern = new RegExp(`${escapeRegExp(phrase)}[»”"']?\\s*\\([^)]*\\p{Script=Cyrillic}[^)]*\\)`, "iu");
   if (pattern.test(text)) return true;
+  const immediatePairPattern = new RegExp(`${escapeRegExp(phrase)}[»”"']?\\s*(?:[-:–—]|=)\\s*\\p{Script=Cyrillic}`, "iu");
+  if (immediatePairPattern.test(text)) return true;
+  const reverseParentheticalPattern = new RegExp(`\\p{Script=Cyrillic}[^()]{0,120}\\([^)]*${escapeRegExp(phrase)}[^)]*\\)`, "iu");
+  if (reverseParentheticalPattern.test(text)) return true;
   const combinedSpanPattern = new RegExp(
     `[\\p{Script=Latin}\\p{Mark} /'’.:-]*${escapeRegExp(phrase)}[\\p{Script=Latin}\\p{Mark} /'’.:-]*[»”"']?\\s*\\([^)]*\\p{Script=Cyrillic}[^)]*\\)`,
     "iu"
@@ -416,7 +449,10 @@ function phraseHasInlineRussianSupport(text, phrase) {
 function phraseHasAdjacentRussianSupport(record, phrase) {
   if (record.key === "termEs") {
     const translationPath = record.fieldPath.replace(/\.termEs$/u, ".translationRu");
-    return record.sectionStrings?.some((candidate) => candidate.fieldPath === translationPath && /\p{Script=Cyrillic}/u.test(candidate.text)) === true;
+    const labelPath = record.fieldPath.replace(/\.termEs$/u, ".labelRu");
+    return record.sectionStrings?.some((candidate) =>
+      (candidate.fieldPath === translationPath || candidate.fieldPath === labelPath) && /\p{Script=Cyrillic}/u.test(candidate.text)
+    ) === true;
   }
   if (phraseHasInlineRussianSupport(record.text, phrase)) return true;
   return false;
@@ -446,16 +482,20 @@ function latinSegments(text) {
   return matches.map((value) => value.trim()).filter(Boolean);
 }
 
+function isIgnoredLatinSegment(segment) {
+  const normalized = normalizeText(segment);
+  if (normalized.length <= 1) return true;
+  if (/^[ivxlcdm]+$/iu.test(segment)) return true;
+  if (/^(?:a|y|e|o|u|de|del|la|las|los|el|en|por|para|con)$/iu.test(segment)) return true;
+  return false;
+}
+
 function candidateRecords(records) {
   const candidates = [];
   for (const record of records) {
     const phrases = detectedSpanishPhrases(record.text);
     const segments = latinSegments(textWithoutIgnoredContexts(record.text));
-    const explicitSegments = segments.filter((segment) => {
-      if (segment.length <= 1) return false;
-      if (isAcceptedException(segment)) return true;
-      return detectedSpanishPhrases(segment).length > 0;
-    });
+    const explicitSegments = segments.filter((segment) => !isIgnoredLatinSegment(segment));
     const detected = [...new Set([...phrases, ...explicitSegments])];
     for (const phrase of detected) {
       const exception = isAcceptedException(phrase);

@@ -33,10 +33,10 @@
             "blockId": "uncontrolled-intersections",
             "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+            "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
           },
-          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -66,10 +66,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -124,7 +124,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -156,7 +156,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -170,7 +170,7 @@
                   "textFingerprint": "0510c10218717891aa8c60263c3498e28d78053c6dd849838310182896191a31"
                 },
                 "anchorTextAtReview": "общий максимальный предел скорости - 25 км/ч;",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-094 проверен точный текст «общий максимальный предел скорости - 25 км/ч;». Он не сообщает ответ «Да, только если его мощность постепенно уменьшается и отключается при достижении максимальной скорости 25 км/ч.» на вопрос «Может ли этот велосипед с электрической поддержкой педалирования двигаться по этой полосе?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -257,7 +257,7 @@
                   "textFingerprint": "34994e5df831f5779d2341936ee02846065af9cd385bff98102e7984ec4dc6cf"
                 },
                 "anchorTextAtReview": "1-й шаг: Защитить. Остановиться, включить аварийную сигнализацию, оценить риск нового столкновения и не создавать дополнительной опасности.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-095 проверен точный текст «1-й шаг: Защитить. Остановиться, включить аварийную сигнализацию, оценить риск нового столкновения и не создавать дополнительной опасности.». Он не сообщает ответ «Верно.» на вопрос «Движение со скоростью выше безопасной по обстоятельствам увеличивает вероятность того, что дорожное происшествие будет более тяжелым.» и по учебному предмету уступает выбранному контексту ch3-speed."
               }
@@ -298,7 +298,7 @@
             "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
           },
           "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -330,7 +330,7 @@
                   "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
                 },
                 "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -341,10 +341,10 @@
                   "blockId": "public-organizations",
                   "itemIndex": 4,
                   "textPath": "itemsRu",
-                  "textFingerprint": "df8271b658de05064536ad55c46b65019422e19e8b89fe0927f35be01b990933"
+                  "textFingerprint": "50a6cfaf34e56c5298d7509a9dc5c795747704088a6dc50e82c9dfb472e8949f"
                 },
-                "anchorTextAtReview": "Centro de Formación Profesional, Palacio de Justicia de la Nación. Консультация и представительство пострадавших; дела о daños y perjuicios не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж / www.argentina.gob.ar/justicia",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "anchorTextAtReview": "Centro de Formación Profesional, Palacio de Justicia de la Nación. Консультация и представительство пострадавших; дела о daños y perjuicios (возмещении вреда и убытков) не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж / www.argentina.gob.ar/justicia",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-096 проверен точный текст «Centro de Formación Profesional, Palacio de Justicia de la Nación. Консультация и представительство пострадавших; дела о daños y perjuicios не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж / www.argentina.gob.ar/justicia». Он не сообщает ответ «Материальный ущерб, расходы на медицинскую помощь и административные расходы.» на вопрос «Какие еще последствия, кроме погибших или тяжело раненых, может вызвать дорожное происшествие?» и по учебному предмету уступает выбранному контексту ch2-incident-obligations."
               }
@@ -385,7 +385,7 @@
             "textFingerprint": "ecb50bf50c15fd9426a23e542a7881e9d43cfbb52e6f54efae7b9007b337e8a4"
           },
           "anchorTextAtReview": "При параллельной парковке краткая остановка во второй ряд допустима только непосредственно перед движением назад.",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -483,7 +483,7 @@
                   "textFingerprint": "275cb10dda2882f30527a02af62621da3131ec1e3588642ab0532ed506d7a1da"
                 },
                 "anchorTextAtReview": "В этих районах пешеходный поток настолько велик, что зоны с приоритетом создаются для качества жизни, сосуществования, движения, дорожной безопасности и окружающей среды.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+                "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-098 проверен точный текст «В этих районах пешеходный поток настолько велик, что зоны с приоритетом создаются для качества жизни, сосуществования, движения, дорожной безопасности и окружающей среды.». Он не сообщает ответ «Способ передвижения быстро, безопасно и упорядоченно, с акцентом на пешеходах и велосипедистах и вкладом в лучшее состояние окружающей среды.» на вопрос «Что называется устойчивой мобильностью?» и по учебному предмету уступает выбранному контексту ch1-sustainable-mobility."
               }
@@ -610,7 +610,7 @@
             "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
           },
           "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -642,7 +642,7 @@
                   "textFingerprint": "8992cabcd8921887b23648d3b83ef364c1452add2729618237b23bf4651d5910"
                 },
                 "anchorTextAtReview": "Пешеходный приоритет - одна из главных задач города в сфере движения и транспорта. Все люди в какой-то момент становятся пешеходами: даже водитель или пассажир становится пешеходом, когда выходит из транспортного средства.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+                "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -656,7 +656,7 @@
                   "textFingerprint": "26f3f5718c8c50992072cdef8c1dc7a6c3e79845105331f30271721e90ae566d"
                 },
                 "anchorTextAtReview": "Перед началом движения нужно дать закончить переход или проезд тому транспортному средству или пешеходу, кто уже начал пересечение до смены сигнала.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-100 проверен точный текст «Перед началом движения нужно дать закончить переход или проезд тому транспортному средству или пешеходу, кто уже начал пересечение до смены сигнала.». Он не сообщает ответ «Оба ответа, «А» и «Б», правильные.» на вопрос «Когда светофор меняет красный сигнал на зеленый, движение можно возобновить. Какие меры предосторожности при этом нужно принять?» и по учебному предмету уступает выбранному контексту ch1-pedestrian-priority."
               }
@@ -697,7 +697,7 @@
             "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
           },
           "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -729,7 +729,7 @@
                   "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
                 },
                 "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -785,7 +785,7 @@
             "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
           },
           "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -818,7 +818,7 @@
                   "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
                 },
                 "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -873,7 +873,7 @@
             "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
           },
           "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -905,7 +905,7 @@
                   "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
                 },
                 "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -960,7 +960,7 @@
             "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
           },
           "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -992,7 +992,7 @@
                   "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
                 },
                 "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1005,7 +1005,7 @@
                   "textFingerprint": "634ae2db2e980aefb1710fec0cd15236d2b3ccbda35b105d8430dd10f4c6a547"
                 },
                 "anchorTextAtReview": "Поворот на перекрестке должен быть заранее понятен другим участникам движения и выполняться плавно, без внезапного торможения и без ускоренного входа в боковую улицу.",
-                "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+                "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-104 проверен точный текст «Поворот на перекрестке должен быть заранее понятен другим участникам движения и выполняться плавно, без внезапного торможения и без ускоренного входа в боковую улицу.». Он не сообщает ответ «Самые тяжелые вещи в глубине багажника, ближе к центру автомобиля. Это помогает курсовой устойчивости и поведению в поворотах.» на вопрос «В какой части транспортного средства лучше размещать багаж?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
               }
@@ -1046,7 +1046,7 @@
             "textFingerprint": "3bb458bd69e649ad9f08cb315153300ec77e6266b9c20f6623f87ff14c559866"
           },
           "anchorTextAtReview": "Чтобы вести автомобиль безопасно, водитель должен учитывать все сигналы дорожного движения, указания и разметку. Цвет и форма знаков помогают понять, как двигаться и какую ситуацию ожидать на маршруте.",
-          "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+          "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1078,7 +1078,7 @@
                   "textFingerprint": "3bb458bd69e649ad9f08cb315153300ec77e6266b9c20f6623f87ff14c559866"
                 },
                 "anchorTextAtReview": "Чтобы вести автомобиль безопасно, водитель должен учитывать все сигналы дорожного движения, указания и разметку. Цвет и форма знаков помогают понять, как двигаться и какую ситуацию ожидать на маршруте.",
-                "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+                "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1091,7 +1091,7 @@
                   "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
                 },
                 "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль.",
-                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+                "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-105 проверен точный текст «Detención - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención, если длится не более 2 минут и водитель не покидает автомобиль.». Он не сообщает ответ «Неверно.» на вопрос «Инспекторы дорожного движения могут задержать транспортное средство только в присутствии полиции.» и по учебному предмету уступает выбранному контексту ch3-priority-of-rules."
               }
@@ -1178,7 +1178,7 @@
                   "textFingerprint": "a8da7e29710254fb604205ea9721243f26ddd496fedaca79e191c1497f092528"
                 },
                 "anchorTextAtReview": "Не начинайте переход, когда пешеходный светофор мигает оранжевым: времени закончить переход может не хватить. Если мигание началось уже во время перехода, завершайте его очень осторожно.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+                "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-106 проверен точный текст «Не начинайте переход, когда пешеходный светофор мигает оранжевым: времени закончить переход может не хватить. Если мигание началось уже во время перехода, завершайте его очень осторожно.». Он не сообщает ответ «Пешеходный переход, максимальная опасность.» на вопрос «Определите, что означает показанный далее вертикальный знак:» и по учебному предмету уступает выбранному контексту app4-signs-regulatory."
               }
@@ -1219,7 +1219,7 @@
             "textFingerprint": "3dd65db619f030810bad6e9eb8bb14b594c8ccf8e5ecd21cabeb6eeb52b9f9b7"
           },
           "anchorTextAtReview": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
-          "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+          "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1251,7 +1251,7 @@
                   "textFingerprint": "3dd65db619f030810bad6e9eb8bb14b594c8ccf8e5ecd21cabeb6eeb52b9f9b7"
                 },
                 "anchorTextAtReview": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
-                "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+                "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1265,7 +1265,7 @@
                   "textFingerprint": "c417ddac7c3e578e23cc33df83e03d1523ebcb6781b78d63012e1da52ef5c9c5"
                 },
                 "anchorTextAtReview": "Если частный автомобиль въезжает в гараж через такую полосу, нужно бесплатное разрешение: въезд выполняют на ближайшем предыдущем перекрестке, выезд - только до ближайшего перекрестка, где полосу нужно покинуть. Вне часов ограничения другие транспортные средства могут ехать свободно.",
-                "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+                "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-107 проверен точный текст «Если частный автомобиль въезжает в гараж через такую полосу, нужно бесплатное разрешение: въезд выполняют на ближайшем предыдущем перекрестке, выезд - только до ближайшего перекрестка, где полосу нужно покинуть. Вне часов ограничения другие транспортные средства могут ехать свободно.». Он не сообщает ответ «Разрешенные автобусы и транспортные средства экстренных служб при выполнении своих функций.» на вопрос «Какие транспортные средства могут двигаться по полосе, обозначенной на изображении?» и по учебному предмету уступает выбранному контексту ch1-public-transport-system."
               }
@@ -1306,7 +1306,7 @@
             "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
           },
           "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1338,7 +1338,7 @@
                   "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
                 },
                 "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1351,7 +1351,7 @@
                   "textFingerprint": "46afaa38409d892d55478076ee129a34f8317b55a69b7d5951da11529a5b6a48"
                 },
                 "anchorTextAtReview": "Граница темы: на странице 55 после списка НКО начинается отдельный раздел Scoring. Он вынесен в следующую страницу сайта `Система баллов Scoring`, чтобы не смешивать обязанности после инцидента с системой баллов.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-108 проверен точный текст «Граница темы: на странице 55 после списка НКО начинается отдельный раздел Scoring. Он вынесен в следующую страницу сайта `Система баллов Scoring`, чтобы не смешивать обязанности после инцидента с системой баллов.». Он не сообщает ответ «Верно.» на вопрос «Если вы участвуете в дорожном происшествии на проспекте, рекомендуется обозначить зону, чтобы не возникли новые дорожные инциденты.» и по учебному предмету уступает выбранному контексту ch2-incident-obligations."
               }
@@ -1392,7 +1392,7 @@
             "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
           },
           "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль.",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1424,7 +1424,7 @@
                   "textFingerprint": "82f9b0bd32e9fcc4896b6a7083726bd6b2fd4334a404bfe232f4169c4ec110fe"
                 },
                 "anchorTextAtReview": "Detención (краткая остановка) - это пребывание автомобиля без движения у бордюра только на строго необходимое время: контроль движения компетентным органом, посадка или высадка пассажиров, погрузка или разгрузка. При другой причине это считается detención (остановкой), если длится не более 2 минут и водитель не покидает автомобиль.",
-                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+                "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1479,7 +1479,7 @@
             "textFingerprint": "fe9210e2e5cffbc5541e4440c5966403a8c18055624df8144ef5d690e40fe116"
           },
           "anchorTextAtReview": "Сильный боковой ветер может менять траекторию автомобиля, особенно на открытых участках, мостах и рядом с крупным транспортом.",
-          "pageContentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+          "pageContentFingerprint": "89cdbc038c32bb8cc2563662df08b9f3a951297716276179afa6ddccd2a88a29",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -1707,7 +1707,7 @@
             "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
           },
           "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1740,7 +1740,7 @@
                   "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
                 },
                 "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1794,7 +1794,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1826,7 +1826,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1840,7 +1840,7 @@
                   "textFingerprint": "0d0f2daee67404474898d46d2bcd7f24276c5be70c7d9e32eda90880380e2169"
                 },
                 "anchorTextAtReview": "Последняя цифра номерного знака",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-114 проверен точный текст «Последняя цифра номерного знака». Он не сообщает ответ «Цифра 3.» на вопрос «Какая цифра на следующем регистрационном знаке указывает месяц прохождения обязательного технического осмотра?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -1935,7 +1935,7 @@
             "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
           },
           "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -1968,7 +1968,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -1978,10 +1978,10 @@
                   "kind": "manual-block",
                   "blockId": "artery-hierarchy",
                   "textPath": "textRu",
-                  "textFingerprint": "00e0220bdec924f49ebd6780959faac376d6d3901331cc4afc54101b6a78b74a"
+                  "textFingerprint": "d39206fc97cb98a70cbedae796d905079785bc861c68a167f2a85300d1cbe09e"
                 },
-                "anchorTextAtReview": "Если пересекаются дороги разных категорий, преимущество у транспорта на более важной артерии. Иерархия такая: avenida выше calle, calle выше pasaje.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Если пересекаются дороги разных категорий, преимущество у транспорта на более важной артерии. Иерархия такая: avenida (проспект) выше calle (улицы), calle (улица) выше pasaje (пассажа/узкого проезда).",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-116 проверен точный текст «Если пересекаются дороги разных категорий, преимущество у транспорта на более важной артерии. Иерархия такая: avenida выше calle, calle выше pasaje.». Он не сообщает ответ «Автобусу.» на вопрос «В следующей ситуации кому принадлежит преимущество проезда?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
               }
@@ -2019,10 +2019,10 @@
             "kind": "manual-block",
             "blockId": "legal-and-illegal-substances",
             "textPath": "textRu",
-            "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+            "textFingerprint": "e015e3bd1cebaec032239401a46be7eb04864b5c64f3a864398bfc0acf6c9c17"
           },
-          "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
+          "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
+          "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2051,10 +2051,10 @@
                   "kind": "manual-block",
                   "blockId": "legal-and-illegal-substances",
                   "textPath": "textRu",
-                  "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+                  "textFingerprint": "e015e3bd1cebaec032239401a46be7eb04864b5c64f3a864398bfc0acf6c9c17"
                 },
-                "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-                "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
+                "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
+                "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2068,7 +2068,7 @@
                   "textFingerprint": "9ab8c7e6b4b63031b0510d0195a9a11cec9994d9ed9714c43f6dea5be7521d19"
                 },
                 "anchorTextAtReview": "2. Временная сигнализация на участках работ или рядом с ними. Она действует только пока есть конкретная ситуация и имеет приоритет над обычной сигнализацией дороги.",
-                "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+                "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-117 проверен точный текст «2. Временная сигнализация на участках работ или рядом с ними. Она действует только пока есть конкретная ситуация и имеет приоритет над обычной сигнализацией дороги.». Он не сообщает ответ «2 года.» на вопрос «Согласно следующему символу, сколько времени водителю этого транспортного средства запрещено управлять с содержанием алкоголя выше 0,0 грамма на литр крови?» и по учебному предмету уступает выбранному контексту ch4-alcohol-drugs."
               }
@@ -2243,10 +2243,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-119 проверен точный текст «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.». Он не сообщает ответ «Верно.» на вопрос «Временная дорожная сигнализация имеет нормативный приоритет над светофорами, если она изменяет обычный режим пользования дорогой.» и по учебному предмету уступает выбранному контексту app4-signs-traffic-lights."
               }
@@ -2287,7 +2287,7 @@
             "textFingerprint": "756c2e5899b1ebde3eca6dbc29ca4b98599eb1d2edbea703530df8fcbc16c342"
           },
           "anchorTextAtReview": "Подушка безопасности не обязательна и не заменяет ремень; без ремня она может вызвать тяжелые травмы.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -2340,7 +2340,7 @@
             "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
           },
           "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2372,7 +2372,7 @@
                   "textFingerprint": "ae1ad17339fecc7be4dd803df75badb4b83c2adaff66ba81e76c4a7da2abec0f"
                 },
                 "anchorTextAtReview": "Общие запреты парковки в CABA, если знак не говорит иное",
-                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+                "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -2385,7 +2385,7 @@
                   "textFingerprint": "50ab83c3a94fb744b793f030f0002c91c26c0f41206b55603ae0738561adf115"
                 },
                 "anchorTextAtReview": "Правильные формы парковки",
-                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+                "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-121 проверен точный текст «Правильные формы парковки». Он не сообщает ответ «Неверно.» на вопрос «В этих зонах разрешено парковаться начиная с 20 метров в каждую сторону.» и по учебному предмету уступает выбранному контексту ch3-stopping-parking."
               }
@@ -2472,7 +2472,7 @@
                   "textFingerprint": "6d5278b7123dde5ef8e293e354141782694a9e70b63d812e5a5f74959dba1150"
                 },
                 "anchorTextAtReview": "Снижает скорость реакции и увеличивает время ответа на стимул.",
-                "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
+                "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-122 проверен точный текст «Снижает скорость реакции и увеличивает время ответа на стимул.». Он не сообщает ответ «Оба ответа, «А» и «Б», правильные.» на вопрос «Усталость может быть вызвана употреблением:» и по учебному предмету уступает выбранному контексту ch4-sleep-fatigue."
               }
@@ -2718,7 +2718,7 @@
             "textFingerprint": "d7193082a9dd2069505fe3b83e6b46c52bc5629183c4aea5e5e96cae02260023"
           },
           "anchorTextAtReview": "Масло, охлаждающую жидкость и жидкость стеклоомывателя.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -2751,7 +2751,7 @@
                   "textFingerprint": "d7193082a9dd2069505fe3b83e6b46c52bc5629183c4aea5e5e96cae02260023"
                 },
                 "anchorTextAtReview": "Масло, охлаждающую жидкость и жидкость стеклоомывателя.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3139,7 +3139,7 @@
             "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
           },
           "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3172,7 +3172,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3183,10 +3183,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-131 проверен точный текст «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.». Он не сообщает ответ «1-е место: проспект; 2-е место: улица; 3-е место: переулок.» на вопрос «Согласно Закону № 2148, каков порядок преимущества проезда на перекрестках без светофоров по типу улицы?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
               }
@@ -3227,7 +3227,7 @@
             "textFingerprint": "3dd65db619f030810bad6e9eb8bb14b594c8ccf8e5ecd21cabeb6eeb52b9f9b7"
           },
           "anchorTextAtReview": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
-          "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+          "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3259,7 +3259,7 @@
                   "textFingerprint": "3dd65db619f030810bad6e9eb8bb14b594c8ccf8e5ecd21cabeb6eeb52b9f9b7"
                 },
                 "anchorTextAtReview": "Общественный транспорт в CABA рассматривается как практический способ уменьшить выбросы CO2 и сделать движение более плавным и здоровым.",
-                "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+                "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3313,7 +3313,7 @@
             "textFingerprint": "2b881a886bf6ca19e68dc0e960093178fefeeabacda06eb1a3bcbc4877734b48"
           },
           "anchorTextAtReview": "Остальные водители должны освободить предпочтительную полосу для экстренных служб и при необходимости остановиться.",
-          "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+          "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -3366,7 +3366,7 @@
             "textFingerprint": "3bb458bd69e649ad9f08cb315153300ec77e6266b9c20f6623f87ff14c559866"
           },
           "anchorTextAtReview": "Чтобы вести автомобиль безопасно, водитель должен учитывать все сигналы дорожного движения, указания и разметку. Цвет и форма знаков помогают понять, как двигаться и какую ситуацию ожидать на маршруте.",
-          "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+          "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3398,7 +3398,7 @@
                   "textFingerprint": "3bb458bd69e649ad9f08cb315153300ec77e6266b9c20f6623f87ff14c559866"
                 },
                 "anchorTextAtReview": "Чтобы вести автомобиль безопасно, водитель должен учитывать все сигналы дорожного движения, указания и разметку. Цвет и форма знаков помогают понять, как двигаться и какую ситуацию ожидать на маршруте.",
-                "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+                "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3452,7 +3452,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3484,7 +3484,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3498,7 +3498,7 @@
                   "textFingerprint": "f0b0280ec21b57f298d465e4d96300ca96122f06089d6efed410f2ecb48a5965"
                 },
                 "anchorTextAtReview": "После первой VTV для частных автомобилей и мототранспортных средств срок действия остается 2 года, пока транспортному средству не исполнится 8 лет или оно не достигнет 80 000 км; если переход связан с пробегом, действует допуск 4 000 км. После этого VTV обновляется ежегодно.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-135 проверен точный текст «После первой VTV для частных автомобилей и мототранспортных средств срок действия остается 2 года, пока транспортному средству не исполнится 8 лет или оно не достигнет 80 000 км; если переход связан с пробегом, действует допуск 4 000 км. После этого VTV обновляется ежегодно.». Он не сообщает ответ «После 3 лет с даты выпуска, в соответствующий месяц, либо после превышения 60 000 км.» на вопрос «Согласно Закону № 2265, когда автомобиль с нулевым пробегом, зарегистрированный в городе Буэнос-Айресе, должен пройти первый обязательный технический осмотр?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -3539,7 +3539,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3571,7 +3571,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3585,7 +3585,7 @@
                   "textFingerprint": "9741f14e283e87086c0cfa0750bc0225e57eadf2c90463ed8af902962324f4a0"
                 },
                 "anchorTextAtReview": "Защищенные велодорожки обязательны на тех участках, где они есть. Если их нет, можно ехать по проезжей части, избегая центральной зоны.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-136 проверен точный текст «Защищенные велодорожки обязательны на тех участках, где они есть. Если их нет, можно ехать по проезжей части, избегая центральной зоны.». Он не сообщает ответ «У правого края проезжей части.» на вопрос «Где должны двигаться велосипедисты на этой улице?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -3672,7 +3672,7 @@
                   "textFingerprint": "a40f693e99c8875f3226b84a5ac1a0d25edbaef1464d08578b4dcd564f8abab1"
                 },
                 "anchorTextAtReview": "Если cédula (карточка) просрочена, управлять может только владелец. Нельзя управлять с cédula (карточкой), оформленной на другое лицо как уполномоченного.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-137 проверен точный текст «Если cédula просрочена, управлять может только владелец. Нельзя управлять с cédula, оформленной на другое лицо как уполномоченного.». Он не сообщает ответ «Нет, безопасность управления обеспечивает только обувь, закрепленная на ноге.» на вопрос «Безопасно ли управлять автомобилем в обуви такого типа?» и по учебному предмету уступает выбранному контексту ch5-anticipatory-efficient-driving."
               }
@@ -3713,7 +3713,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3745,7 +3745,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3759,7 +3759,7 @@
                   "textFingerprint": "d8ad3e8cd61781f8e309719f47cfc75a323f4da707df5ac79f3fbb60bfb6203f"
                 },
                 "anchorTextAtReview": "В таблице показаны исключительное движение велосипедов, совместное движение с пешеходами, направление велодорожки, пересечение велосипедистов, Полная остановка и Движение на велосипеде запрещено.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-138 проверен точный текст «В таблице показаны исключительное движение велосипедов, совместное движение с пешеходами, направление велодорожки, пересечение велосипедистов, Полная остановка и Движение на велосипеде запрещено.». Он не сообщает ответ «Пересечение линии Метробуса.» на вопрос «Что означает красная горизонтальная разметка, нанесенная на проезжей части?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -3798,10 +3798,10 @@
             "blockId": "uncontrolled-intersections",
             "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+            "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
           },
-          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -3831,10 +3831,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -3848,7 +3848,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-139 проверен точный текст «Общее правило: преимущество имеет транспортное средство, которое пересекает справа.». Он не сообщает ответ «Объехать его справа безопасным образом, включив указатель поворота и проверив зеркала заднего вида.» на вопрос «Если на перекрестке без светофора транспортное средство впереди остановилось, ожидая возможности повернуть налево, что делать, если вы хотите продолжить прямо?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
               }
@@ -3935,7 +3935,7 @@
                   "textFingerprint": "ab51b8adb796496d8ec54a136f73624a1c4d110c1db034d4eb825e1d1a45c786"
                 },
                 "anchorTextAtReview": "По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-140 проверен точный текст «По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.». Он не сообщает ответ «С места установки знака велосипедист обязан слезть с велосипеда.» на вопрос «Что означает этот предписывающий знак?» и по учебному предмету уступает выбранному контексту app4-signs-regulatory."
               }
@@ -4021,7 +4021,7 @@
                   "textFingerprint": "20da0206211ec562f48acfe95bb52468f1d86612d558f74b5cf1ef12f744866b"
                 },
                 "anchorTextAtReview": "Безопасное управление начинается с признания личных пределов, пределов транспортного средства и окружающей среды. При сомнении нужно усиливать меры предосторожности и избегать риска, даже если условия кажутся безобидными.",
-                "pageContentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3",
+                "pageContentFingerprint": "73a824b9575bba6af0017b4c8d16475e68a6606df11fb87b4c354ab97843f971",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-141 проверен точный текст «Безопасное управление начинается с признания личных пределов, пределов транспортного средства и окружающей среды. При сомнении нужно усиливать меры предосторожности и избегать риска, даже если условия кажутся безобидными.». Он не сообщает ответ «Человеческий фактор, фактор транспортного средства и фактор окружающей среды.» на вопрос «Всемирная организация здравоохранения указывает, что риск на дороге возникает как результат разных факторов. Каких именно?» и по учебному предмету уступает выбранному контексту ch5-anticipatory-efficient-driving."
               }
@@ -4062,7 +4062,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4094,7 +4094,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4108,7 +4108,7 @@
                   "textFingerprint": "ab51b8adb796496d8ec54a136f73624a1c4d110c1db034d4eb825e1d1a45c786"
                 },
                 "anchorTextAtReview": "По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-142 проверен точный текст «По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.». Он не сообщает ответ «Оба ответа, «А» и «Б», правильные.» на вопрос «Где разрешено двигаться велосипедистам старше 12 лет?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -4149,7 +4149,7 @@
             "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
           },
           "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4181,7 +4181,7 @@
                   "textFingerprint": "c0050b7411dfb5388d0710f257e80645075ee600aaa3801952233f72efeb4233"
                 },
                 "anchorTextAtReview": "Практического умения водить недостаточно. Водитель должен знать состояние своего автомобиля: безопасность поездки зависит и от поведения человека, и от исправности элементов безопасности.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4195,7 +4195,7 @@
                   "textFingerprint": "d6915cc4ed1ef57c5250d101f4533632e3a16edfa4ac0cedbba8e3d79dc4219a"
                 },
                 "anchorTextAtReview": "Нужно предлагать пассажирам больше безопасности, а не больше скорости.",
-                "pageContentFingerprint": "6c7db5e8282489d1b37fa59d01711cf535f64909a335127e3f8966efdd4dd0b3",
+                "pageContentFingerprint": "73a824b9575bba6af0017b4c8d16475e68a6606df11fb87b4c354ab97843f971",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-143 проверен точный текст «Нужно предлагать пассажирам больше безопасности, а не больше скорости.». Он не сообщает ответ «Оба ответа, «А» и «Б», правильные.» на вопрос «Какова цель обязательного технического осмотра?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
               }
@@ -4334,7 +4334,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4366,7 +4366,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4465,7 +4465,7 @@
                   "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
                 },
                 "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-146 проверен точный текст «При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.». Он не сообщает ответ «Он действовал не в соответствии с требованиями закона.» на вопрос «Что означает в дорожном происшествии, что водитель считается ответственным по небрежности?» и по учебному предмету уступает выбранному контексту ch2-legal-responsibility."
               }
@@ -4507,7 +4507,7 @@
             "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
           },
           "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4540,7 +4540,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4641,7 +4641,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-148 проверен точный текст «Общее правило: преимущество имеет транспортное средство, которое пересекает справа.». Он не сообщает ответ «Транспортное средство, которое движется по полосе, которую хотят занять.» на вопрос «Кто имеет преимущество на таком типе дороги при намерении перестроиться?» и по учебному предмету уступает выбранному контексту ch3-highways."
               }
@@ -4683,7 +4683,7 @@
             "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
           },
           "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4716,7 +4716,7 @@
                   "textFingerprint": "bebb50a4263db78ac740b0208c5fe74b1458d172e7730a976366d38e8555955d"
                 },
                 "anchorTextAtReview": "После сильного столкновения компоненты ремня нужно заменить.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4730,7 +4730,7 @@
                   "textFingerprint": "58254cad2bcc8b6ad0231675f1951e9472ec8516b1e1dcddd40563fd973e1c07"
                 },
                 "anchorTextAtReview": "Подголовник снижает риск хлыстовой травмы шеи и работает вместе с ремнем. Верх должен быть на уровне верхней части головы, а центр - примерно на линии глаз; плохое положение делает элемент бесполезным или увеличивает травмы.",
-                "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+                "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-149 проверен точный текст «Подголовник снижает риск хлыстовой травмы шеи и работает вместе с ремнем. Верх должен быть на уровне верхней части головы, а центр - примерно на линии глаз; плохое положение делает элемент бесполезным или увеличивает травмы.». Он не сообщает ответ «Вариант «А».» на вопрос «Каково правильное положение нижней лямки трехточечного ремня безопасности?» и по учебному предмету уступает выбранному контексту app1-safety-elements."
               }
@@ -4819,7 +4819,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-150 проверен точный текст «Общее правило: преимущество имеет транспортное средство, которое пересекает справа.». Он не сообщает ответ «Транспортное средство «В».» на вопрос «В этой ситуации кто имеет преимущество для обгона грузовика?» и по учебному предмету уступает выбранному контексту ch3-overtaking."
               }
@@ -4860,7 +4860,7 @@
             "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
           },
           "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -4892,7 +4892,7 @@
                   "textFingerprint": "59b6f4343206d224fe63b8f773d57cdfad860519e16d7a2e0e7b90358ffde4f0"
                 },
                 "anchorTextAtReview": "При дорожном инциденте водитель обязан остановиться сразу, безопасно обозначить место, предоставить данные и выполнить необходимые сообщения. Эти обязанности существуют независимо от того, насколько небольшим кажется ущерб.",
-                "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+                "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -4942,10 +4942,10 @@
             "kind": "manual-block",
             "blockId": "legal-and-illegal-substances",
             "textPath": "textRu",
-            "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+            "textFingerprint": "e015e3bd1cebaec032239401a46be7eb04864b5c64f3a864398bfc0acf6c9c17"
           },
-          "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
-          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
+          "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих.",
+          "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -5271,7 +5271,7 @@
                   "textFingerprint": "aa56a9774c2f8e949bab44ba537a6a58fe5fd831b2522cd9a43029e455731a92"
                 },
                 "anchorTextAtReview": "Во второй ряд, кроме краткой остановки прямо перед маневром парковки.",
-                "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+                "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-156 проверен точный текст «Во второй ряд, кроме краткой остановки прямо перед маневром парковки.». Он не сообщает ответ «Наличие площади поблизости.» на вопрос «Что означает этот знак?» и по учебному предмету уступает выбранному контексту app4-signs-regulatory."
               }
@@ -5312,7 +5312,7 @@
             "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
           },
           "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5344,7 +5344,7 @@
                   "textFingerprint": "47de7b3228eca2b021b0fe1f3ce033a31a96fc77313a29fb7629b68721146c44"
                 },
                 "anchorTextAtReview": "Этот набор документов требуется для управления любым типом транспортного средства в CABA. Национальный закон 24449 также добавляет подтверждения оплаты налога на регистрацию транспортного средства и, когда применимо, оплаты проезда; для профессиональных или специальных услуг могут требоваться дополнительные документы.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5358,7 +5358,7 @@
                   "textFingerprint": "ba91af8d5a966bc9c9d35df80c802ef3324ba8664fdd303884d3c47fdcc27a57"
                 },
                 "anchorTextAtReview": "В некоторых случаях устанавливается прекращение действия лицензии, и нужно начинать новый процесс получения.",
-                "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+                "pageContentFingerprint": "54dec382ea349fdc89229dea233ebfbb72d5b71e70d1875366de6912fe10345c",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-157 проверен точный текст «В некоторых случаях устанавливается прекращение действия лицензии, и нужно начинать новый процесс получения.». Он не сообщает ответ «Только в случаях, предусмотренных действующими нормами.» на вопрос «Если нарушение установлено, может ли инспектор дорожного движения удержать водительское удостоверение?» и по учебному предмету уступает выбранному контексту ch2-required-documents."
               }
@@ -5759,7 +5759,7 @@
                   "textFingerprint": "ab51b8adb796496d8ec54a136f73624a1c4d110c1db034d4eb825e1d1a45c786"
                 },
                 "anchorTextAtReview": "По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-162 проверен точный текст «По тротуару могут ехать только дети младше 12 лет, на минимально возможной скорости и с приоритетом пешеходов. Если человеку старше 12 лет нужно попасть на тротуар, он должен слезть с велосипеда.». Он не сообщает ответ «Полоса, над которой установлен знак, предназначена исключительно для мотоциклов и мопедов.» на вопрос «Что означает этот предписывающий знак?» и по учебному предмету уступает выбранному контексту app4-signs-regulatory."
               }
@@ -5887,7 +5887,7 @@
             "textFingerprint": "634ae2db2e980aefb1710fec0cd15236d2b3ccbda35b105d8430dd10f4c6a547"
           },
           "anchorTextAtReview": "Поворот на перекрестке должен быть заранее понятен другим участникам движения и выполняться плавно, без внезапного торможения и без ускоренного входа в боковую улицу.",
-          "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+          "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -5919,7 +5919,7 @@
                   "textFingerprint": "634ae2db2e980aefb1710fec0cd15236d2b3ccbda35b105d8430dd10f4c6a547"
                 },
                 "anchorTextAtReview": "Поворот на перекрестке должен быть заранее понятен другим участникам движения и выполняться плавно, без внезапного торможения и без ускоренного входа в боковую улицу.",
-                "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+                "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -5930,10 +5930,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-164 проверен точный текст «Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.». Он не сообщает ответ «Верно.» на вопрос «Показанный знак устанавливается перед перекрестком с обязанностью повернуть направо.» и по учебному предмету уступает выбранному контексту ch3-turns."
               }
@@ -6020,7 +6020,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-165 проверен точный текст «Общее правило: преимущество имеет транспортное средство, которое пересекает справа.». Он не сообщает ответ «Транспортное средство «Б».» на вопрос «Транспортное средство «А» намерено перестроиться вправо. Какое из двух транспортных средств имеет преимущество?» и по учебному предмету уступает выбранному контексту ch3-highways."
               }
@@ -6147,7 +6147,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6179,7 +6179,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6193,7 +6193,7 @@
                   "textFingerprint": "6b8d40ba79b92fdf20c2f91bde0a925458542893158c308ae97e2aab9fdeed96"
                 },
                 "anchorTextAtReview": "10 км/ч.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+                "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-167 проверен точный текст «10 км/ч.». Он не сообщает ответ «Улице с приоритетом пешеходов.» на вопрос «Следующее изображение соответствует:» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -6234,7 +6234,7 @@
             "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
           },
           "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6266,7 +6266,7 @@
                   "textFingerprint": "ed8c13c20253eed6dd087463a2c5cb6d52a1a4f5cb9e174405117c4e33711c96"
                 },
                 "anchorTextAtReview": "Буэнос-Айрес меняет инфраструктуру под потребности постоянно растущего города. В этой модели велосипед становится не украшением, а полноценным способом передвижения.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6280,7 +6280,7 @@
                   "textFingerprint": "5616d9b7833888d83185748a72d3038bc8ffa540cbe3220800a3086a03d3b9d8"
                 },
                 "anchorTextAtReview": "Также показаны Конец защищенной велодорожки, Сойти с велосипеда, Максимальная скорость 30 км/ч, Начало двустороннего движения, На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация, Пешеходный переход и Уступить дорогу.",
-                "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+                "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-168 проверен точный текст «Также показаны Конец защищенной велодорожки, Сойти с велосипеда, Максимальная скорость 30 км/ч, Начало двустороннего движения, На защищенных велодорожках запрещены остановка и стоянка каждый день 24 часа; возможна эвакуация, Пешеходный переход и Уступить дорогу.». Он не сообщает ответ «Вариант «А».» на вопрос «На каком из следующих изображений показана велодорожка?» и по учебному предмету уступает выбранному контексту ch1-bicycle."
               }
@@ -6496,7 +6496,7 @@
             "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
           },
           "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -6529,7 +6529,7 @@
                   "textFingerprint": "501e6833c26147df382000b474eea0df34e66741dd0df7c861f85df42b60c1f3"
                 },
                 "anchorTextAtReview": "Общее правило: преимущество имеет транспортное средство, которое пересекает справа.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -6543,7 +6543,7 @@
                   "textFingerprint": "26f3f5718c8c50992072cdef8c1dc7a6c3e79845105331f30271721e90ae566d"
                 },
                 "anchorTextAtReview": "Перед началом движения нужно дать закончить переход или проезд тому транспортному средству или пешеходу, кто уже начал пересечение до смены сигнала.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-171 проверен точный текст «Перед началом движения нужно дать закончить переход или проезд тому транспортному средству или пешеходу, кто уже начал пересечение до смены сигнала.». Он не сообщает ответ «То, которое движется ближе всего к транспортному средству, которое хотят обогнать.» на вопрос «Когда несколько транспортных средств движутся колонной, какое из них имеет преимущество для обгона?» и по учебному предмету уступает выбранному контексту ch3-right-of-way."
               }
@@ -6630,7 +6630,7 @@
                   "textFingerprint": "53d9331f64ef57925f10c04e24735c6fd0880e03c9666c6ef3dc050286b86aa6"
                 },
                 "anchorTextAtReview": "Остановитесь, чтобы люди закончили переход, и перед началом движения установите зрительный контакт с теми, кто еще не начал переход, даже если на короткое время будет перекрыт угол перекрестка.",
-                "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+                "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-172 проверен точный текст «Остановитесь, чтобы люди закончили переход, и перед началом движения установите зрительный контакт с теми, кто еще не начал переход, даже если на короткое время будет перекрыт угол перекрестка.». Он не сообщает ответ «Люди работают.» на вопрос «Определите, что означает показанный далее знак:» и по учебному предмету уступает выбранному контексту app4-signs-horizontal."
               }
@@ -6671,7 +6671,7 @@
             "textFingerprint": "5656f2098d928e209685bdf31f873f21a27311392e618c02d4989ee7df18ef4b"
           },
           "anchorTextAtReview": "Обязательная страховка защищает пострадавших в дорожных инцидентах и гарантирует возмещение за вред, причиненный третьим лицам, перевозимым или не перевозимым.",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -6724,7 +6724,7 @@
             "textFingerprint": "53d9331f64ef57925f10c04e24735c6fd0880e03c9666c6ef3dc050286b86aa6"
           },
           "anchorTextAtReview": "Остановитесь, чтобы люди закончили переход, и перед началом движения установите зрительный контакт с теми, кто еще не начал переход, даже если на короткое время будет перекрыт угол перекрестка.",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -7006,7 +7006,7 @@
             "textFingerprint": "c54d55848eefdd3afa129a02a95aee4724d0daa5a2bd5d9834cacc89bd1a3a5c"
           },
           "anchorTextAtReview": "Исключение 3: на круговом движении приоритет у того, кто уже находится на круговой проезжей части; между въезжающим и выезжающим приоритет у выезжающего.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-replacement-implementation-agent-f038-ra004",
@@ -7246,7 +7246,7 @@
                   "textFingerprint": "e1dac3abd08de130ac9f125dc87fa7bae0d27656ad6f6663d1f44e27db8db17a"
                 },
                 "anchorTextAtReview": "Предупредить о маневре за 30 м соответствующим указателем поворота.",
-                "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+                "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-181 проверен точный текст «Предупредить о маневре за 30 м соответствующим указателем поворота.». Он не сообщает ответ «Оба ответа, «А» и «Б», правильные.» на вопрос «Что означает использование такого типа огней?» и по учебному предмету уступает выбранному контексту ch3-lights."
               }
@@ -7371,10 +7371,10 @@
             "blockId": "uncontrolled-intersections",
             "itemIndex": 1,
             "textPath": "itemsRu",
-            "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+            "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
           },
-          "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "review": {
             "status": "approved",
             "reviewedBy": "codex-implementation-agent-f038-ra003",
@@ -7404,10 +7404,10 @@
                   "blockId": "uncontrolled-intersections",
                   "itemIndex": 1,
                   "textPath": "itemsRu",
-                  "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                  "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
                 },
-                "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
-                "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+                "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество.",
+                "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
                 "outcome": "selected-closest-topic"
               },
               {
@@ -7505,10 +7505,10 @@
                   "blockId": "insurance-vtv-rva",
                   "itemIndex": 2,
                   "textPath": "itemsRu",
-                  "textFingerprint": "d0f00fc6c65e64cbcbdd6d08c9e04aca9a69a62be0b2db6146a331dacf273b84"
+                  "textFingerprint": "6f13852093ccee2a9b657e576a67889ffc26705bead306054e3ffe178600f0a8"
                 },
-                "anchorTextAtReview": "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.",
-                "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+                "anchorTextAtReview": "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil (сертификат страхования гражданской ответственности) независимо от дороги, по которой движется транспорт.",
+                "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
                 "outcome": "rejected",
                 "rejectionRu": "Для b-fallback-184 проверен точный текст «Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.». Он не сообщает ответ «Да, потому что каждый обязан не создавать опасность и не затруднять движение.» на вопрос ««Каждый участник дороги отвечает за часть дорожного движения». Верно ли это утверждение?» и по учебному предмету уступает выбранному контексту ch5-anticipatory-efficient-driving."
               }

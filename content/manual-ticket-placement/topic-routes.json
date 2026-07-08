@@ -10,7 +10,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
@@ -39,7 +39,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
@@ -68,7 +68,7 @@
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "anchors": [
             {
               "anchor": {
@@ -126,7 +126,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -194,7 +194,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -282,16 +282,16 @@
         {
           "pageId": "ch4-alcohol-drugs",
           "routeHash": "#manual-section-ch4-alcohol-drugs",
-          "pageContentFingerprint": "9c133bcc0fbb614681ca9dc0677809c264715d6bae41ace284fd32cb051062d3",
+          "pageContentFingerprint": "e474d9d5abfcf2af791f6b596000d425c331fc1ea2bff277212c796009537ee1",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "legal-and-illegal-substances",
                 "textPath": "textRu",
-                "textFingerprint": "b9c28ad98d68748d06e44e85b4110febd6a98b2ec07c2e63b486f3c6b8e61fc8"
+                "textFingerprint": "e015e3bd1cebaec032239401a46be7eb04864b5c64f3a864398bfc0acf6c9c17"
               },
-              "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
+              "anchorTextAtReview": "Риск связан не только с нелегальными наркотиками. К нему относятся и легальные вещества, например alcohol (алкоголь) и некоторые лекарства: человек под их воздействием теряет часть способности управлять безопасно и подвергает риску себя и окружающих."
             }
           ]
         }
@@ -311,7 +311,7 @@
         {
           "pageId": "ch3-adverse-conditions",
           "routeHash": "#manual-section-ch3-adverse-conditions",
-          "pageContentFingerprint": "6813853c2c4f09ac8f8a87fe4a32f50753fc56e0f5187fa1a4fb808ac9fa4ca8",
+          "pageContentFingerprint": "89cdbc038c32bb8cc2563662df08b9f3a951297716276179afa6ddccd2a88a29",
           "anchors": [
             {
               "anchor": {
@@ -526,7 +526,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -556,7 +556,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -586,7 +586,7 @@
         {
           "pageId": "ch3-right-of-way",
           "routeHash": "#manual-section-ch3-right-of-way",
-          "pageContentFingerprint": "40b36c76cb8e0d385f06ac81d3a00bf79185e5305f604f35e45fab49f29f974b",
+          "pageContentFingerprint": "e70896f5bd994663e2fbf063e25e02fa2bbffc962616f00ea92ffeba1dfd86e6",
           "anchors": [
             {
               "anchor": {
@@ -594,9 +594,9 @@
                 "blockId": "uncontrolled-intersections",
                 "itemIndex": 1,
                 "textPath": "itemsRu",
-                "textFingerprint": "3168d5355fb79f9f3a5b599e76b3758eccf852dff8a1abd2d17c7d732fc12ff9"
+                "textFingerprint": "3d35c60cf4a9b565745381c5fc6bff5c151c1d8c93e1ce12765beb1c5a7dacd7"
               },
-              "anchorTextAtReview": "Исключение 1: знак Pare или Ceda el Paso отменяет приоритет на перекрестке без светофора. Pare требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество."
+              "anchorTextAtReview": "Исключение 1: знак Pare (стоп) или Ceda el Paso (уступите дорогу) отменяет приоритет на перекрестке без светофора. Pare (стоп) требует снизить скорость и полностью остановиться до нуля перед пешеходным переходом; Ceda el Paso (уступите дорогу) требует уступить, но полная остановка обязательна только если она нужна для движения имеющих преимущество."
             }
           ]
         }
@@ -616,7 +616,7 @@
         {
           "pageId": "ch2-required-documents",
           "routeHash": "#manual-section-ch2-required-documents",
-          "pageContentFingerprint": "11e6db50d8257f27ca986daf68b424f9752676312ff230ce4dcf9539a46851ad",
+          "pageContentFingerprint": "0ca11e4053986f90be8e7e2af0b91fb0f14a6e67180b070ef7d9c6dea850a9fb",
           "anchors": [
             {
               "anchor": {
@@ -645,7 +645,7 @@
         {
           "pageId": "ch3-priority-of-rules",
           "routeHash": "#manual-section-ch3-priority-of-rules",
-          "pageContentFingerprint": "48f4ede628fb4ffe147e1f7e17fd1b63982a1a664e4d469212dbac1cbe752ebe",
+          "pageContentFingerprint": "f021a3208ecfa2c6ab7a5acf3ed457b902a0fdc63f5e7f68a938a98377fb939b",
           "anchors": [
             {
               "anchor": {
@@ -661,16 +661,16 @@
         {
           "pageId": "ch2-scoring",
           "routeHash": "#manual-section-ch2-scoring",
-          "pageContentFingerprint": "1988d63233f3da75fc366d9ffb09674259fa6435314468a886ee5f9c3e8807d7",
+          "pageContentFingerprint": "54dec382ea349fdc89229dea233ebfbb72d5b71e70d1875366de6912fe10345c",
           "anchors": [
             {
               "anchor": {
                 "kind": "manual-block",
                 "blockId": "scoring-definition",
                 "textPath": "textRu",
-                "textFingerprint": "d3d6d3e1eb7f5f0b1d817087c123483971cdd5a1efb835e1dc6a4f18afb80678"
+                "textFingerprint": "890e293d9c9f35e791b17d8d3038c5cbeb63ba7dddbf4c55604eddd0c319f692"
               },
-              "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores, или Scoring, присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения."
+              "anchorTextAtReview": "Sistema de Evaluación Permanente de Conductores (постоянная система оценки водителей), или Scoring (система баллов), присваивает каждому человеку с водительским удостоверением баллы. При первом получении лицензии дается 20 баллов; затем из этой базы списываются баллы в зависимости от вида нарушения."
             }
           ]
         }
@@ -719,7 +719,7 @@
         {
           "pageId": "ch3-stopping-parking",
           "routeHash": "#manual-section-ch3-stopping-parking",
-          "pageContentFingerprint": "0a8c576d51442f829eab1fd5185ce79b05834941f26edf11e073d59992f5cddf",
+          "pageContentFingerprint": "349a719f2d5b65c9bfdbce40f7421a3c5245fa3d40945ffcde32a773005ed408",
           "anchors": [
             {
               "anchor": {
@@ -836,7 +836,7 @@
         {
           "pageId": "ch1-public-transport-system",
           "routeHash": "#manual-section-ch1-public-transport-system",
-          "pageContentFingerprint": "0cc381eae34c1b03f59f5bf0ae5dcf87d4e7e3d825084dd7dbac5cd21f382fdf",
+          "pageContentFingerprint": "05a7f37d169d33aa9375e54faeb35f36164cc44a69b9b1a6b28ac2ac08094659",
           "anchors": [
             {
               "anchor": {
@@ -894,7 +894,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -923,7 +923,7 @@
         {
           "pageId": "ch1-bicycle",
           "routeHash": "#manual-section-ch1-bicycle",
-          "pageContentFingerprint": "e0e71c87bbd923b639520b094561701c53a5eafd8321af5ecf686e805cc5d00e",
+          "pageContentFingerprint": "76871fc0f3ab24f84095d604f4c9ffe705ee20a79cd7261396fb913192a9354b",
           "anchors": [
             {
               "anchor": {
@@ -952,7 +952,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -982,7 +982,7 @@
         {
           "pageId": "app1-safety-elements",
           "routeHash": "#manual-section-app1-safety-elements",
-          "pageContentFingerprint": "8ae62236501e968d02b051f55597acb77e754f491aebe36b6f8a808bd9eeb82a",
+          "pageContentFingerprint": "060c842b82a036c16f979eb1cd5934784d9eac27666d722a1e21ecf7b7a37feb",
           "anchors": [
             {
               "anchor": {
@@ -1012,7 +1012,7 @@
         {
           "pageId": "ch2-incident-obligations",
           "routeHash": "#manual-section-ch2-incident-obligations",
-          "pageContentFingerprint": "d0dcc4879ede314f922df7eb18ba8f2b5f3be57b2c3d34717c1afb40c7f20de5",
+          "pageContentFingerprint": "4a8dcb13fb5e5b84d462a63adebde9d3cbea4bbbed2f9bf37841bcfcfa0580f3",
           "anchors": [
             {
               "anchor": {
@@ -1070,7 +1070,7 @@
         {
           "pageId": "ch1-pedestrian-priority",
           "routeHash": "#manual-section-ch1-pedestrian-priority",
-          "pageContentFingerprint": "dc6d89b965be2f6a551042bc74d54d5f8e2a7723951ad3a0e033b27ccce9ce10",
+          "pageContentFingerprint": "1f2c810616557fe295013d0036036b3c26cee6b813dedf7c3e332f30e42098d9",
           "anchors": [
             {
               "anchor": {
@@ -1099,7 +1099,7 @@
         {
           "pageId": "ch3-turns",
           "routeHash": "#manual-section-ch3-turns",
-          "pageContentFingerprint": "aaccd98b82b8e2242079c2109d290cf6381e947d57f858586589cbc0b4fee9d6",
+          "pageContentFingerprint": "b34a84641c645465b5a8a468f5e3e0d4b5c7389faaee836c349b9cfc4bfe1e77",
           "anchors": [
             {
               "anchor": {

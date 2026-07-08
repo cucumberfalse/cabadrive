@@ -102,7 +102,7 @@ export const ch2IncidentObligationsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Asesoramiento jurídico y atención psicológica... seleccionar con calma el asesoramiento legal...",
       textRu:
-        "После дорожного инцидента рекомендуется спокойно выбирать юридическую консультацию по компенсациям и возмещению вреда, не принимая поспешные предложения специалистов без предварительных рекомендаций. Для юридической консультации и/или бесплатной психологической помощи manual приводит публичные органы и организации."
+        "После дорожного инцидента рекомендуется спокойно выбирать юридическую консультацию по компенсациям и возмещению вреда, не принимая поспешные предложения специалистов без предварительных рекомендаций. Для юридической консультации и/или бесплатной психологической помощи руководство приводит публичные органы и организации."
     },
     {
       id: "public-organizations",
@@ -115,7 +115,7 @@ export const ch2IncidentObligationsSection: ManualGuideSectionContent = {
         "Unidades de Orientación y Denuncia, Ministerio Público Fiscal de CABA. Сопровождение по уголовным делам в CABA. Тел.: 6089-9114/9135 / Pte. Perón 671 / mpf.gob.ar/dovic",
         "Oficina de Asistencia a la Víctima y Testigo (OFAVYT), Ministerio Público Fiscal de CABA. Помощь людям после физического или эмоционального насилия. Тел.: 4014-1984 / Beruti Nº 3345, 3-й этаж, CABA / mpfciudad.gob.ar",
         "Centros de Acceso a la Justicia (CAJ), Ministerio de Justicia y DDHH de la Nación. Юридическая консультация и/или психологическая помощь. Тел.: 0800-222-3425 / argentina.gob.ar/justicia/afianzar/caj",
-        "Centro de Formación Profesional, Palacio de Justicia de la Nación. Консультация и представительство пострадавших; дела о daños y perjuicios не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж / www.argentina.gob.ar/justicia"
+        "Centro de Formación Profesional, Palacio de Justicia de la Nación. Консультация и представительство пострадавших; дела о daños y perjuicios (возмещении вреда и убытков) не принимаются. Тел.: 4372861/7679 / Talcahuano 550, 8-й этаж / www.argentina.gob.ar/justicia"
       ]
     },
     {

@@ -55,7 +55,7 @@ export const app1OtherRequiredSafetyElementsSection: ManualGuideSectionContent =
           sourcePage: 120,
           sourceRegion: { x: 1060, y: 1660, width: 340, height: 330 },
           assetPath: `${assetRoot}/matafuegos-source-as-is.jpg`,
-          altRu: "Официальная испанская иллюстрация обязательного огнетушителя Matafuegos.",
+          altRu: "Официальная испанская иллюстрация обязательного огнетушителя Matafuegos (огнетушители).",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",
@@ -75,7 +75,7 @@ export const app1OtherRequiredSafetyElementsSection: ManualGuideSectionContent =
           sourcePage: 120,
           sourceRegion: { x: 1060, y: 1990, width: 340, height: 340 },
           assetPath: `${assetRoot}/chaleco-reflectivo-source-as-is.jpg`,
-          altRu: "Официальная испанская иллюстрация обязательного световозвращающего жилета Chaleco reflectivo.",
+          altRu: "Официальная испанская иллюстрация обязательного световозвращающего жилета Chaleco reflectivo (световозвращающий жилет).",
           visibleSpanish: true,
           sourceImageException: {
             kind: "source-image-original-visible-text",

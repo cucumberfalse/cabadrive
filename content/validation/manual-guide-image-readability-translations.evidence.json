@@ -9566,7 +9566,7 @@
           },
           {
             "termEs": null,
-            "translationRu": "Как взять: подойти к станции, сгенерировать код в последней версии приложения BA Ecobici by Tembici и ввести его в крепление велосипеда.",
+            "translationRu": "Как взять: подойти к станции, сгенерировать код в последней версии приложения BA Ecobici by Tembici (городской велопрокат Ecobici от Tembici) и ввести его в крепление велосипеда.",
             "role": "structured-russian-detail",
             "learnerRelevant": true,
             "coverageStatus": "covered"
@@ -11542,14 +11542,14 @@
         "items": [
           {
             "termEs": "Metrobus de Buenos Aires",
-            "translationRu": "Metrobus Буэнос-Айреса",
+            "translationRu": "метробус Буэнос-Айреса",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"
           },
           {
             "termEs": "MBA",
-            "translationRu": "Metrobus de Buenos Aires",
+            "translationRu": "метробус Буэнос-Айреса",
             "role": "term-translation",
             "learnerRelevant": true,
             "coverageStatus": "covered"

@@ -78,12 +78,12 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         },
         {
           id: "license-source-card",
-          titleRu: "Licencia de Conducir",
+          titleRu: "Licencia de Conducir (водительское удостоверение)",
           displayMode: "compact",
           sourcePage: 46,
           sourceRegion: { x: 1085, y: 1950, width: 300, height: 105 },
           assetPath: `${assetRoot}/license-source-as-is.jpg`,
-          altRu: "Пример Licencia Nacional de Conducir.",
+          altRu: "Пример Licencia Nacional de Conducir (национального водительского удостоверения).",
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [
@@ -129,7 +129,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
           sourcePage: 47,
           sourceRegion: { x: 1085, y: 1605, width: 315, height: 215 },
           assetPath: `${assetRoot}/beginner-sign-source-as-is.jpg`,
-          altRu: "Знак Conductor Principiante.",
+          altRu: "Знак Conductor Principiante (начинающий водитель).",
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [
@@ -173,7 +173,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Durante los primeros 6 meses... No podrán circular con más de 0,0 gramos de alcohol por litro de sangre durante los dos años...",
       itemsRu: [
-        "Первые 6 месяцев нельзя ездить по arterias, где разрешена скорость выше 70 км/ч.",
+        "Первые 6 месяцев нельзя ездить по arterias (артериям/дорогам), где разрешена скорость выше 70 км/ч.",
         "В автомобиле знак начинающего водителя должен быть в нижней части лобового стекла и на заднем стекле; для мототранспортного средства его нужно иметь с собой вместе с остальными обязательными документами.",
         "В течение двух лет статуса начинающего водителя нельзя двигаться с уровнем алкоголя в крови выше 0,0 г/л.",
         "Классы лицензий не дают стаж друг для друга; тот, кто доказывает стаж с лицензией из другого муниципалитета или страны, не считается начинающим."
@@ -205,7 +205,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
       itemsRu: [
         "Если у автомобиля есть оборудование GNC, нужно иметь cédula de identificación (идентификационную карточку) этого оборудования и действующую обязательную oblea (наклейку/стикер).",
         "Обязательная страховка защищает пострадавших в дорожных инцидентах и гарантирует возмещение за вред, причиненный третьим лицам, перевозимым или не перевозимым.",
-        "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil независимо от дороги, по которой движется транспорт.",
+        "Для подтверждения страховки обязательно иметь certificado del seguro de responsabilidad civil (сертификат страхования гражданской ответственности) независимо от дороги, по которой движется транспорт.",
         "VTV обязательна для транспортных средств и мототранспортных средств, зарегистрированных в CABA или в другой юрисдикции и движущихся по CABA.",
         "При VTV проводится механический контроль: безопасность, загрязнение, состояние шин, тормозов, световых приборов, аварийного оборудования и документации.",
         "Первая VTV для частных автомобилей и мототранспортных средств в CABA выполняется с четвертого года от регистрации или при достижении 60 000 км, в зависимости от того, что наступит раньше, с допуском до 4 000 км.",
@@ -245,12 +245,12 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
         },
         {
           id: "rva-source-card",
-          titleRu: "RVA Autopartes Grabadas",
+          titleRu: "RVA Autopartes Grabadas (реестр маркированных автозапчастей)",
           displayMode: "compact",
           sourcePage: 50,
           sourceRegion: { x: 1085, y: 2190, width: 360, height: 300 },
           assetPath: `${assetRoot}/rva-source-as-is.jpg`,
-          altRu: "Пример RVA Autopartes Grabadas.",
+          altRu: "Пример RVA Autopartes Grabadas (реестра маркированных автозапчастей).",
           visibleSpanish: true,
           sourceImageException,
           termTranslations: [
@@ -258,7 +258,7 @@ export const ch2RequiredDocumentsSection: ManualGuideSectionContent = {
             { termEs: "Autopartes Grabadas", translationRu: "Маркированные / выгравированные автозапчасти" }
           ],
           bodyRu:
-            "На изображении показан пример RVA Autopartes Grabadas. Смысл для экзамена: RVA снижает оборот украденных автозапчастей и дает возможность проверить происхождение деталей."
+            "На изображении показан пример RVA Autopartes Grabadas (реестра маркированных автозапчастей). Смысл для экзамена: RVA снижает оборот украденных автозапчастей и дает возможность проверить происхождение деталей."
         }
       ],
       visualNotes: [

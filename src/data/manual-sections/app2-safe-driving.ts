@@ -85,7 +85,7 @@ export const app2SafeDrivingSection: ManualGuideSectionContent = {
       sourceTextEs:
         "Off-tracking: al girar, ruedas traseras tienen arco de menor radio que las delanteras y puede ser peligroso para personas, bicis y motos.",
       textRu:
-        "Смещение траекторий колес, то есть off-tracking, особенно опасно у автобусов и грузовиков. При повороте задние колеса идут по дуге меньшего радиуса, чем передние, и боковая часть транспортного средства может неожиданно наехать на пешехода, велосипед или мотоцикл."
+        "Смещение траекторий колес (off-tracking) особенно опасно у автобусов и грузовиков. При повороте задние колеса идут по дуге меньшего радиуса, чем передние, и боковая часть транспортного средства может неожиданно наехать на пешехода, велосипед или мотоцикл."
     },
     {
       id: "stopping-parking-speed",

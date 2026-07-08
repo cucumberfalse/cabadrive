@@ -4721,7 +4721,7 @@ test("Manual guide opens Chapter 4 stress and distractions from direct routes", 
   await expect(distractionsButton).toHaveAttribute("aria-current", "page");
   await expect(distractionsButton).toHaveAttribute("data-source-pages", "95-97");
   await expect(section).toHaveAttribute("data-manual-section-id", "ch4-distractions");
-  await expect(section.getByRole("heading", { name: "Отвлечения" })).toBeVisible();
+  await expect(section.getByRole("heading", { name: "Отвлечения", exact: true })).toBeVisible();
   await expect(section).toContainText("Еда, питье, мате");
   await expect(section).toContainText("Использование мобильного телефона запрещено");
   await expect(section).toContainText("GPS");
@@ -5053,7 +5053,7 @@ test("Manual guide full-width source image cards stay readable and avoid upscali
   await expectManualImageTermTranslations(
     publicTransportSection.locator('[data-card-id="metrobus"]'),
     [
-      { termEs: "Metrobus de Buenos Aires", translationRu: "Metrobus Буэнос-Айреса" },
+      { termEs: "Metrobus de Buenos Aires", translationRu: "метробус Буэнос-Айреса" },
       { termEs: "Solo líneas autorizadas", translationRu: "Только разрешенные линии" }
     ],
     { minPairs: 5 }

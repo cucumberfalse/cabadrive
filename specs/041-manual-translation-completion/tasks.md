@@ -169,7 +169,7 @@
 - [ ] T065 Review Agent checks whole-guide coverage, audit strength,
   terminology consistency, protected-image preservation, responsive/selectable
   text, tests, and process-memory compliance.
-- [ ] T066 Implementation Agent records and resolves review findings only
+- [x] T066 Implementation Agent records and resolves review findings only
   through Orchestrator assignment.
 - [x] T067 Orchestrator routes any Implementation Agent feedback to Architect
   for task/ticket/not-needed disposition before final validation.
@@ -181,6 +181,44 @@
 - [ ] T070 Orchestrator verifies required checks, current PR head, conflicts,
   review conversations, acceptance evidence, process memory, and final guards
   before completion/finalization/merge.
+
+## PR #206 Review Fix Tasks
+
+- [x] T071 Confirm Implementation Agent assignment for PR #206 review fixes on
+  `/Users/chap/devel/cabadrive-worktrees/040-manual-translation-completion`,
+  branch `codex/040-manual-translation-completion`, preserving sibling
+  worktrees, branches, commits, PRs, dirty diffs, and process memory.
+- [x] T072 Strengthen
+  `scripts/manual-guide-translation-completeness-audit.mjs` so meaningful
+  learner-facing Latin segments are candidates by default, not only terms in
+  `spanishDetectorTerms`.
+- [x] T073 Keep accepted exceptions narrow to official names, acronyms, URLs,
+  road names, legal identifiers, units, and equivalent non-prose cases; require
+  generic Spanish prose, traffic terms, document terms, and learner-facing
+  Latin residues to have support, structured pairing, or unresolved evidence.
+- [x] T074 Add audit support for reverse parenthetical Russian/Spanish
+  support, immediate dash/colon support, and structured `termEs` pair support
+  for either `translationRu` or `labelRu`.
+- [x] T075 Add Russian support for `certificado del seguro de responsabilidad
+  civil` in `src/data/manual-sections/ch2-required-documents.ts`.
+- [x] T076 Fix newly surfaced learner-facing residues across
+  `src/data/manual-sections/*.ts`, including `arterias`,
+  `plaza de acompañante`, singular `motovehículo`, `habitáculo`, `trailer`,
+  `Isofix`, `Latch`, `aquaplaning`, `manual`, and related document, traffic,
+  alcohol, safety, mobility, parking, priority, and glossary terms.
+- [x] T077 Refresh
+  `content/validation/manual-guide-translation-completeness.evidence.json`
+  with the strengthened audit.
+- [x] T078 Add focused tests proving unmatched Latin learner-facing residues
+  fail even when they are not dictionary terms, including the document and
+  alcohol examples from the review findings.
+- [x] T079 Refresh source-fidelity, image-readability, registry hash, and manual
+  ticket-placement evidence affected by manual wording changes while preserving
+  reviewed placement route/anchor decisions.
+- [x] T080 Update placement invariants/tests for reviewed anchors whose exact
+  learner-facing wording changed only to add Russian support.
+- [x] T081 Run focused tests, required validation, build, diff hygiene, and
+  preflight after the review-fix memory update.
 
 ## Decisions
 
@@ -216,10 +254,10 @@
   narrow official-name/acronym/URL-style exception is recorded.
 - Implementation decision: The committed evidence is
   `content/validation/manual-guide-translation-completeness.evidence.json`.
-  Current evidence covers 50 sections, 2920 inspected learner-facing strings,
-  433 Spanish-residue records, 344 supported retained/translated records, 89
-  narrow exceptions, 0 unresolved records, and all 11 required screenshot
-  probes.
+  The original implementation evidence covered 50 sections, 2920 inspected
+  learner-facing strings, 433 Spanish-residue records, 344
+  supported/translated records, 89 narrow exceptions, 0 unresolved records, and
+  all 11 required screenshot probes.
 - Implementation decision: Content fixes were sufficient. No renderer or CSS
   changes were needed; existing manual-guide block shapes support adjacent
   Spanish/Russian wording and remain selectable DOM text.
@@ -230,6 +268,26 @@
 - Implementation decision: Updated
   `docs_project/project/frontend/manual-conversion-guidelines.md` because the
   Spanish retention rule is reusable durable conversion guidance.
+- Review-fix decision: PR #206 findings `discussion_r3537379264`,
+  `discussion_r3537379273`, and `discussion_r3537389209` exposed that the
+  first audit had a detector/evidence blind spot. The review fix changes the
+  audit from dictionary-term discovery to meaningful Latin-segment discovery so
+  unmatched learner-facing Latin text is classified as supported, structured
+  pair, narrow exception, or unresolved finding.
+- Review-fix decision: Narrow exceptions remain allowed for official acronyms,
+  names, URLs, road/place/person names, legal identifiers, measurement units,
+  and similar non-prose text. Generic Spanish traffic, document, safety, and
+  learner-facing prose terms do not pass as exceptions without Russian support.
+- Review-fix decision: Newly surfaced residues were fixed in manual section
+  data rather than hidden in broader exceptions. The final strengthened evidence
+  covers 50 sections, 2920 inspected learner-facing strings, 1181 candidate
+  residue records, 994 supported retained/translated records, 187 narrow
+  exceptions, and 0 unresolved findings.
+- Review-fix decision: Manual wording changes changed source-fidelity hashes,
+  image-readability wording evidence, and ticket-placement fingerprints. Those
+  derived artifacts were refreshed consistently; `b-fallback-430` keeps the
+  same route and answer-bearing anchor with only added Russian support for
+  `trailer`.
 
 ## Dead Ends
 
@@ -243,6 +301,20 @@
   placement generator, then refreshed reviewed placement fingerprints and
   manifest seal mechanically; `pnpm run validate:manual-ticket-placement`
   passed afterward.
+- During PR #206 review fixes, `pnpm run test` initially failed because exact
+  retention/placement invariants still expected the old unsupported wording for
+  `trailer`, `avenida`, `Isofix`, and `Latch`. Updated those tests to assert the
+  supported Spanish/Russian wording now present in manual content and reviewed
+  placement evidence.
+- During PR #206 review fixes, the first `pnpm run preflight` stopped at
+  `scripts/check-feature-memory.mjs --worktree` because product files had
+  changed before this review-fix evidence section was updated. This task log is
+  now touched in the same PR, and preflight must be rerun after this update.
+- During PR #206 review fixes, the first post-memory `pnpm run preflight`
+  reached E2E and failed only on stale Playwright expectations for an exact
+  `Отвлечения` heading and the updated `Metrobus de Buenos Aires` Russian
+  support text. Updated those E2E expectations and reran the affected tests
+  before the final preflight.
 
 ## Known Issues
 
@@ -329,3 +401,42 @@
   - Created implementation commit `Complete manual guide translation audit`.
   - Pushed branch `codex/040-manual-translation-completion` to origin.
   - Opened ready PR: https://github.com/cucumberfalse/cabadrive/pull/206.
+- PR #206 review-fix verification, 2026-07-08T18:01:03Z:
+  - `node scripts/manual-guide-translation-completeness-audit.mjs --write`:
+    passed and refreshed
+    `content/validation/manual-guide-translation-completeness.evidence.json`.
+    Strengthened evidence reports 50 sections, 2920 inspected strings, 1181
+    candidate residue records, 994 supported retained/translated records, 187
+    accepted exceptions, and 0 unresolved findings.
+  - `pnpm exec node --test tests/manual-guide-translation-completeness-audit.test.mjs`:
+    passed, 8/8 tests, including non-dictionary Latin residue, document phrase,
+    alcohol-limit residue, and generic traffic-term rejection fixtures.
+  - `pnpm run generate:manual-ticket-placement`: passed; refreshed derived
+    manual ticket placement data for 460 immutable reviewed records.
+  - `pnpm run validate:manual-ticket-placement`: passed; 460 questions, 460
+    placements, 31 destination routes, density 1/12/45, 85 answer-bearing, 375
+    fallbacks.
+  - `pnpm run validate:manual-guide`: passed; source fidelity, visual
+    completeness, image readability/translations, and strengthened translation
+    completeness all green.
+  - `pnpm exec tsc --noEmit`: passed.
+  - `pnpm run validate:content`: passed; strengthened translation completeness
+    audit reports 50 sections, 2920 strings, 1181 residue records, 187
+    exceptions.
+  - `pnpm exec node --test tests/manual-ticket-placement.test.mjs`: passed,
+    18/18 tests after updating the reviewed exact anchor fixture for
+    `b-fallback-430`.
+  - `pnpm exec node --test tests/content-manual-guide-chapters.test.mjs`:
+    passed, 97/97 tests after updating the retention assertions for supported
+    `avenida`, `Isofix`, and `Latch` wording.
+  - `pnpm run test`: passed, 477/477 tests.
+  - `pnpm run build`: passed; generated service worker with 2156 cached assets.
+    Build still emits the existing large Rollup chunk warnings.
+  - `pnpm run preflight`: first review-fix run failed at feature-memory guard
+    before this evidence update; rerun required after this task-memory change.
+  - `pnpm exec playwright test tests/e2e/app.spec.ts -g "Manual guide opens Chapter 4 stress and distractions from direct routes|Manual guide full-width source image cards stay readable and avoid upscaling"`:
+    passed, 4/4 tests, after updating stale E2E expectations for the supported
+    text.
+  - `pnpm run preflight`: passed on rerun at 2026-07-08T18:07:47Z; feature
+    memory gate, repo baseline check, content validation, unit tests, build, and
+    full Playwright E2E all passed. Full E2E passed 102/102 tests.

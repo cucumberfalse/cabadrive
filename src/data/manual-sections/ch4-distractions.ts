@@ -81,7 +81,7 @@ export const ch4DistractionsSection: ManualGuideSectionContent = {
       cards: [
         {
           id: "distraction-panels-source-card",
-          titleRu: "Три панели Distracciones",
+          titleRu: "Три панели Distracciones (отвлечения)",
           displayMode: "full-width",
           maxDisplayWidthPx: 860,
           sourcePage: 95,

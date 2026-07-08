@@ -1279,7 +1279,7 @@ test("Chapter 3 sections retain priority, speed, adverse-condition, and parking 
   assert.match(ch3RightOfWayModuleSource, /Pare/u);
   assert.match(ch3RightOfWayModuleSource, /Ceda el Paso/u);
   assert.match(ch3RightOfWayModuleSource, /rotonda|круговом движении/u);
-  assert.match(ch3RightOfWayModuleSource, /avenida выше calle/u);
+  assert.match(ch3RightOfWayModuleSource, /avenida \(проспект\) выше calle \(улицы\)/u);
 
   assert.match(ch3LightsModuleSource, /Запрещено менять тип и мощность заводских огней/u);
   assert.match(ch3LightsModuleSource, /противотуманные/ui);
@@ -2847,7 +2847,7 @@ test("Appendix I sections retain private-car safety details", () => {
   assert.match(app1SafetyElementsModuleSource, /Только если ребенок одновременно превышает возрастной, ростовой и весовой пороги/u);
   assert.doesNotMatch(app1SafetyElementsModuleSource, /Если ребенок превышает возраст, рост или вес/u);
   assert.match(app1SafetyElementsModuleSource, /80%[\s\S]*70%/u);
-  assert.match(app1SafetyElementsModuleSource, /Isofix или Latch/u);
+  assert.match(app1SafetyElementsModuleSource, /Isofix \(система крепления детского кресла\) или Latch \(система крепления детского кресла\)/u);
   assert.match(app1SafetyElementsModuleSource, /50 km\/h[\s\S]*40-кратного веса/u);
   assert.match(app1SafetyElementsModuleSource, /Закон CABA 2148[\s\S]*бамперы/u);
   assert.match(app1SafetyElementsModuleSource, /Животных нельзя перевозить без фиксации/u);
