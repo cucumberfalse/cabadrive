@@ -225,3 +225,13 @@ Architect should plan a whole-`Руководство` translation-completeness 
 - Analyst gaps: none
 - Validation basis: final Architect validation passed first and recorded the same effective content head; committed evidence reports 54 rendered `Руководство` routes, including 50 manual section routes and 4 Introduction routes, 3000 inspected learner-facing strings, 1184 candidate residues, 995 retained/translated-with-support records, 189 narrow accepted exceptions, and 0 unresolved findings.
 - Customer-outcome conclusion: the final result satisfies the original request to check the whole manual for incomplete translations. Screenshot probes are represented with passing support evidence, retained Spanish learner-facing terms are paired with Russian translations in parentheses or structured adjacent translation, Introduction route coverage includes the `Vision Zero` fix, protected source-image rules remain intact, and no Analyst-blocking gaps remain.
+
+## Final Analyst Validation Notes
+
+- Analyst validation evidence: one prior validation return was routed to Architect; the deterministic audit rerun passed and required no implementation follow-up.
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-07-09T21:34:27Z
+- Analyst validated effective content head: 31084fcfe3870dfe242527254f37c6d926d2c6ef
+- Analyst return count: 1
+- Customer intent check: passed; all 54 rendered Руководство routes have no unresolved learner-facing Spanish residue without Russian support.
+- Analyst validation evidence: current PR head 2ff9f41f0e5b6afee73d3491126bbbafe1d81d03 differs from the effective content head only by Architect-owned final-validation evidence.
