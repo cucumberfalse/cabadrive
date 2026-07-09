@@ -215,3 +215,13 @@ Relevant local context from those sources:
 This intake is ready for Orchestrator handoff to Architect.
 
 Architect should plan a whole-`Руководство` translation-completeness audit and implementation path that fixes screenshot-highlighted Spanish residues plus any analogous learner-facing manual text. The key acceptance rule is: if Spanish remains visible for source/exam fidelity, the learner still gets a Russian translation in parentheses or an equivalent adjacent structured translation.
+
+## Final Analyst Validation
+
+- Analyst validation pass: passed
+- Final Analyst validation completed at: 2026-07-09T15:46:27Z
+- Analyst validated effective content head: 950985e84b24081067ef1221e3a09b17b047ae33
+- Analyst return count: 0
+- Analyst gaps: none
+- Validation basis: final Architect validation passed first and recorded the same effective content head; committed evidence reports 54 rendered `Руководство` routes, including 50 manual section routes and 4 Introduction routes, 3000 inspected learner-facing strings, 1184 candidate residues, 995 retained/translated-with-support records, 189 narrow accepted exceptions, and 0 unresolved findings.
+- Customer-outcome conclusion: the final result satisfies the original request to check the whole manual for incomplete translations. Screenshot probes are represented with passing support evidence, retained Spanish learner-facing terms are paired with Russian translations in parentheses or structured adjacent translation, Introduction route coverage includes the `Vision Zero` fix, protected source-image rules remain intact, and no Analyst-blocking gaps remain.
